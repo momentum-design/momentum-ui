@@ -3,7 +3,7 @@ import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, ContentChildren, QueryList, ViewChild } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { SelectModule } from '@momentum-ui/angular/select/select.module';
+import { SelectModule } from '../../select/select.module';
 import { TableService } from 'src/lib/data-table/data-table.service';
 import { ListItemComponent } from 'src/lib/list-item';
 import { ButtonModule } from 'src/lib/public_api';

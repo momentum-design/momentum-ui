@@ -48,7 +48,7 @@ describe('tests for <TimePicker />', () => {
       .find('.icon-arrow-up_24')
       .simulate('click');
     dropdown
-      .childAt(1)
+      .childAt(2)
       .find('.icon-arrow-up_24')
       .simulate('click');
     expect(container.state().selectedTime.format('HH')).toEqual('15');
@@ -61,7 +61,7 @@ describe('tests for <TimePicker />', () => {
       .find('.icon-arrow-down_24')
       .simulate('click');
     dropdown
-      .childAt(1)
+      .childAt(2)
       .find('.icon-arrow-down_24')
       .simulate('click');
     expect(container.state().selectedTime.format('HH')).toEqual('14');
@@ -86,7 +86,7 @@ describe('tests for <TimePicker />', () => {
       .childAt(1)
       .simulate('focus');
     const minuteInput = dropdown
-      .childAt(1)
+      .childAt(2)
       .children()
       .childAt(1)
       .simulate('focus');
@@ -125,7 +125,7 @@ describe('tests for <TimePicker />', () => {
       .childAt(1)
       .simulate('focus');
     const minuteInput = dropdown
-      .childAt(1)
+      .childAt(2)
       .children()
       .childAt(1)
       .simulate('focus');
@@ -159,7 +159,7 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     dropdown
-      .childAt(2)
+      .childAt(3)
       .find('.icon-arrow-up_24')
       .simulate('click');
     // Test Up Arrow
@@ -168,7 +168,7 @@ describe('tests for <TimePicker />', () => {
 
     // Test Down Arrow
     dropdown
-      .childAt(2)
+      .childAt(3)
       .find('.icon-arrow-down_24')
       .simulate('click');
     expect(container.state().selectedTime.format('A')).toEqual('PM');
@@ -187,7 +187,7 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const meridianInput = dropdown
-      .childAt(2)
+      .childAt(3)
       .children()
       .childAt(1)
       .simulate('focus');
@@ -216,9 +216,9 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
 
-    expect(dropdown.childAt(2).length).toEqual(0);
+    expect(dropdown.childAt(3).length).toEqual(0);
     expect(dropdown.childAt(0).props().value).toEqual('14');
-    expect(dropdown.childAt(1).props().value).toEqual('00');
+    expect(dropdown.childAt(2).props().value).toEqual('00');
   });
 
   it('allows minuteInterval prop to be passed', () => {
@@ -233,13 +233,13 @@ describe('tests for <TimePicker />', () => {
     const dropdown = container.find('.inline-flex');
     // Test Up Arrow
     dropdown
-      .childAt(1)
+      .childAt(2)
       .find('.icon-arrow-up_24')
       .simulate('click');
     expect(container.state().selectedTime.format('mm')).toEqual('15');
     // Test Down Arrow
     dropdown
-      .childAt(1)
+      .childAt(2)
       .find('.icon-arrow-down_24')
       .simulate('click');
     expect(container.state().selectedTime.format('mm')).toEqual('00');

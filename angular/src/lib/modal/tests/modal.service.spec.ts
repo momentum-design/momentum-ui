@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement, Injector } from '@angular/core';
-import { ModalModule, ModalRef } from '@momentum-ui/angular/modal';
+import { async, TestBed } from '@angular/core/testing';
+import { Component, Injector } from '@angular/core';
+import { ModalModule, ModalRef } from '../';
 import { ModalService } from '../modal.service';
 import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
 

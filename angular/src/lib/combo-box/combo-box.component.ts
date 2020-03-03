@@ -145,7 +145,7 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
     }
   }
   /** @prop pass in formControl errors boolean | false */
-  @Input() errors: boolean= false;
+  @Input() errors: boolean = false;
 
   @Output() readonly select: EventEmitter<any> = new EventEmitter<any>();
   @Output() readonly inputValueChange: EventEmitter<any> = new EventEmitter<any>();

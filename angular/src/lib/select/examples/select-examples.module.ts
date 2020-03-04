@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectModule } from '../select.module';
 import { SelectFormComponent } from './select-forms.component';
 import { SelectCustomComponent } from './select-custom-content.component';
+import { SelectErrorsComponent } from './select-errors.component';
 import { SharedModule } from 'src/lib/data-table/shared';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SharedModule } from 'src/lib/data-table/shared';
     SelectFilterComponent,
     SelectMultiFilterComponent,
     SelectFormComponent,
-    SelectCustomComponent
+    SelectCustomComponent,
+    SelectErrorsComponent
   ],
   exports: [
     SelectDefaultComponent,
@@ -37,7 +39,8 @@ import { SharedModule } from 'src/lib/data-table/shared';
     SelectFilterComponent,
     SelectMultiFilterComponent,
     SelectFormComponent,
-    SelectCustomComponent
+    SelectCustomComponent,
+    SelectErrorsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

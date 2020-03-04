@@ -247,11 +247,11 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   /** @prop Optional prop to know if user is able to select multiple options | false */
   @Input() isMulti = false;
   /** @prop show the warning message | false */
-  @HostBinding() @Input() public isWarn: boolean = false;
+  @HostBinding('class.md-warn') @Input() public isWarn: boolean = false;
   /** @prop message to show when there is a warning | '' */
   @Input() warnMsg: string = '';
   /** @prop show the error message | false */
-  @HostBinding() @Input() public isError: boolean = false;
+  @HostBinding('class.nd-error') @Input() public isError: boolean = false;
   /** @prop message to show when there is a error | '' */
   @Input() errorMsg: string = '';
 

@@ -43,13 +43,13 @@ export class SelectErrorsComponent {
   }
 
   onChange(e) {
-    if (e.value.choice == 'Warning' || e.value.choice == 'Error and Warning') {
+    if (e.value.choice === 'Warning' || e.value.choice === 'Error and Warning') {
       this.isWarn = true;
     } else {
       this.isWarn = false;
     }
 
-    if (e.value.choice == 'Error' || e.value.choice == 'Error and Warning') {
+    if (e.value.choice === 'Error' || e.value.choice === 'Error and Warning') {
       this.isError = true;
     } else {
       this.isError = false;

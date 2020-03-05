@@ -251,7 +251,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   /** @prop message to show when there is a warning | '' */
   @Input() warnMsg: string = '';
   /** @prop show the error message | false */
-  @HostBinding('class.nd-error') @Input() public isError: boolean = false;
+  @HostBinding('class.md-error') @Input() public isError: boolean = false;
   /** @prop message to show when there is a error | '' */
   @Input() errorMsg: string = '';
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.66](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.65...@momentum-ui/vue@1.0.0-beta.66) (2020-03-07)
+
+
+### Features
+
+* **Vue:** add DataTable, Sidebar, Slider, TimePicker, Topbar ([aace6ec](https://github.com/momentum-design/momentum-ui/commit/aace6ec1221a150ace3a7008811cd93acf5b050d))
+
+
+
+
+
 # [1.0.0-beta.65](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/vue@1.0.0-beta.64...@momentum-ui/vue@1.0.0-beta.65) (2020-02-18)
 
 **Note:** Version bump only for package @momentum-ui/vue

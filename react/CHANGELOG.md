@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.2.2...@momentum-ui/react@23.3.0) (2020-03-07)
+
+
+### Features
+
+* **SpaceListMeeting:** add eventOverlayProps prop ([a8bd7e8](https://github.com/momentum-design/momentum-ui/commit/a8bd7e886590c424c572d6376e48875a58b03df5))
+
+
+
+
+
 ## [23.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.2.1...@momentum-ui/react@23.2.2) (2020-02-18)
 
 **Note:** Version bump only for package @momentum-ui/react

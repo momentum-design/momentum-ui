@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.3.0...@momentum-ui/core@19.4.0) (2020-03-07)
+
+
+### Features
+
+* **combo-box:** add error message ([69f9e8e](https://github.com/momentum-design/momentum-ui/commit/69f9e8e484ff8ae85ca0b4dc9a066ffbcc13ad93))
+
+
+
+
+
 # [19.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.4...@momentum-ui/core@19.3.0) (2020-02-18)
 
 

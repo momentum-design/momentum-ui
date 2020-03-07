@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.0.0...@momentum-ui/angular@11.1.0) (2020-03-07)
+
+
+### Bug Fixes
+
+* **select:** clear out filter value on overlay close and restore options ([266e95f](https://github.com/momentum-design/momentum-ui/commit/266e95f8ddbb3df2f3e1c0a2a48ec60ebfc41d89))
+
+
+### Features
+
+* **combo-box:** add error message ([69f9e8e](https://github.com/momentum-design/momentum-ui/commit/69f9e8e484ff8ae85ca0b4dc9a066ffbcc13ad93))
+
+
+
+
+
 # [11.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@10.6.1...@momentum-ui/angular@11.0.0) (2020-02-18)
 
 

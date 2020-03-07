@@ -39,6 +39,7 @@ export class SelectChange {
         disabled ? 'disabled' : '',
         buttonClass
       ]"
+      class='md-input md-select__input'
       [ngStyle]="buttonStyle"
       type="button"
     >
@@ -57,6 +58,20 @@ export class SelectChange {
         <md-icon name="arrow-down_16"></md-icon>
       </div>
     </button>
+
+    <md-input-message
+      *ngIf='isError && errorMsg !== ""'
+      class='md-input__messages'
+    >
+      {{errorMsg}}
+    </md-input-message>
+
+    <md-input-message
+      *ngIf='(isWarn && warnMsg !== "") && !(isError && errorMsg !== "")'
+      class='md-input__messages'
+    >
+      {{warnMsg}}
+    </md-input-message>
 
     <ng-template
       cdkConnectedOverlay
@@ -136,7 +151,9 @@ export class SelectChange {
   providers: [SELECT_VALUE_ACCESSOR, SelectService, TableService],
   host: {
     class: 'md-input-container md-select',
-    '[class.disabled]': 'disabled'
+    '[class.disabled]': 'disabled',
+    '[class.md-error]': 'isError',
+    '[class.md-warning]': 'isWarn'
   }
 })
 export class SelectComponent implements AfterContentChecked, AfterContentInit, ControlValueAccessor {
@@ -229,6 +246,14 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   @Input() id = uniqueId('md-select-');
   /** @prop Optional prop to know if user is able to select multiple options | false */
   @Input() isMulti = false;
+  /** @prop show the warning message | false */
+  @HostBinding('class.md-warn') @Input() public isWarn: boolean = false;
+  /** @prop message to show when there is a warning | '' */
+  @Input() warnMsg: string = '';
+  /** @prop show the error message | false */
+  @HostBinding('class.md-error') @Input() public isError: boolean = false;
+  /** @prop message to show when there is a error | '' */
+  @Input() errorMsg: string = '';
 
   /** @prop emitter to fire the select option value change  */
   @Output() handleChange: EventEmitter<any> = new EventEmitter();

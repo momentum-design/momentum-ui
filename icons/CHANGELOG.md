@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.22.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.21.0...@momentum-ui/icons@7.22.0) (2020-03-07)
+
+
+### Features
+
+* **icons:** add contact-card-active_24 ([f499f2f](https://github.com/momentum-design/momentum-ui/commit/f499f2f00f45e25927076429fe00d7e7e0754140))
+* **icons:** add pull-call_24 ([4e73e1a](https://github.com/momentum-design/momentum-ui/commit/4e73e1af5449aa26b278d43ebcdcdfb8026dd2bf))
+* **icons:** add share-c-native-adr_12 ([3a7867a](https://github.com/momentum-design/momentum-ui/commit/3a7867abeab17b88032d14178302e523c4fbc715))
+* **icons:** add sms_16 ([0e33344](https://github.com/momentum-design/momentum-ui/commit/0e33344319d81c374726c5c2f9d336258cd2e2a1))
+* **icons:** add whatsApp_16 ([adc276a](https://github.com/momentum-design/momentum-ui/commit/adc276a6e020c5b30053f23e01df56141b1c9005))
+* **SpaceListMeeting:** add eventOverlayProps prop ([a8bd7e8](https://github.com/momentum-design/momentum-ui/commit/a8bd7e886590c424c572d6376e48875a58b03df5))
+
+
+
+
+
 # [7.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.20.0...@momentum-ui/icons@7.21.0) (2020-01-18)
 
 

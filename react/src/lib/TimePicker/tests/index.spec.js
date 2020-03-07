@@ -4,7 +4,6 @@ import { shallow, mount } from 'enzyme';
 import { TimePicker } from '@momentum-ui/react';
 
 describe('tests for <TimePicker />', () => {
-
   beforeAll(() => {
     // setting timezone to CST
     moment.tz.setDefault('Asia/Kolkata');
@@ -16,10 +15,7 @@ describe('tests for <TimePicker />', () => {
 
   it('should match SnapShot', () => {
     const container = shallow(
-      <TimePicker
-        id="test"
-        selectedTime={new Date('Mon Jan 29 2018 14:42:40 GMT+0530 (IST)')}
-      />
+      <TimePicker id="test" selectedTime={new Date('Mon Jan 29 2018 14:42:40 GMT+0530 (IST)')} />
     );
 
     expect(container).toMatchSnapshot();
@@ -41,15 +37,17 @@ describe('tests for <TimePicker />', () => {
     );
 
     container.find('.md-input').simulate('focus');
+    container.update();
     const dropdown = container.find('.inline-flex');
+
     // Test Up Arrow
     dropdown
-      .childAt(0)
       .find('.icon-arrow-up_24')
+      .at(0)
       .simulate('click');
     dropdown
-      .childAt(2)
       .find('.icon-arrow-up_24')
+      .at(1)
       .simulate('click');
     expect(container.state().selectedTime.format('HH')).toEqual('15');
     expect(container.state().selectedTime.format('mm')).toEqual('01');
@@ -57,12 +55,12 @@ describe('tests for <TimePicker />', () => {
 
     // Test Down Arrow
     dropdown
-      .childAt(0)
       .find('.icon-arrow-down_24')
+      .at(0)
       .simulate('click');
     dropdown
-      .childAt(2)
       .find('.icon-arrow-down_24')
+      .at(1)
       .simulate('click');
     expect(container.state().selectedTime.format('HH')).toEqual('14');
     expect(container.state().selectedTime.format('mm')).toEqual('00');
@@ -81,14 +79,12 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const hourInput = dropdown
-      .childAt(0)
-      .children()
-      .childAt(1)
+      .find('input')
+      .at(0)
       .simulate('focus');
     const minuteInput = dropdown
-      .childAt(2)
-      .children()
-      .childAt(1)
+      .find('input')
+      .at(1)
       .simulate('focus');
 
     // Test Up Arrow KeyPress
@@ -120,14 +116,12 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const hourInput = dropdown
-      .childAt(0)
-      .children()
-      .childAt(1)
+      .find('input')
+      .at(0)
       .simulate('focus');
     const minuteInput = dropdown
-      .childAt(2)
-      .children()
-      .childAt(1)
+      .find('input')
+      .at(1)
       .simulate('focus');
 
     // Test Scroll Up
@@ -159,8 +153,8 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     dropdown
-      .childAt(3)
       .find('.icon-arrow-up_24')
+      .at(2)
       .simulate('click');
     // Test Up Arrow
     expect(container.state().selectedTime.format('A')).toEqual('AM');
@@ -168,8 +162,8 @@ describe('tests for <TimePicker />', () => {
 
     // Test Down Arrow
     dropdown
-      .childAt(3)
       .find('.icon-arrow-down_24')
+      .at(2)
       .simulate('click');
     expect(container.state().selectedTime.format('A')).toEqual('PM');
     expect(onChange).toHaveBeenLastCalledWith(14, 0, -1);
@@ -187,9 +181,8 @@ describe('tests for <TimePicker />', () => {
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
     const meridianInput = dropdown
-      .childAt(3)
-      .children()
-      .childAt(1)
+      .find('input')
+      .at(2)
       .simulate('focus');
 
     // Test Up Arrow KeyPress
@@ -207,18 +200,25 @@ describe('tests for <TimePicker />', () => {
 
   it('renders military Time', () => {
     const container = mount(
-      <TimePicker
-        selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')}
-        militaryTime
-      />
+      <TimePicker selectedTime={new Date('Mon Jan 29 2018 14:00:00 GMT+0530 (IST)')} militaryTime />
     );
 
     container.find('.md-input').simulate('focus');
     const dropdown = container.find('.inline-flex');
 
-    expect(dropdown.childAt(3).length).toEqual(0);
-    expect(dropdown.childAt(0).props().value).toEqual('14');
-    expect(dropdown.childAt(2).props().value).toEqual('00');
+    expect(dropdown.find('input').at(2).length).toEqual(0);
+    expect(
+      dropdown
+        .find('input')
+        .at(0)
+        .props().value
+    ).toEqual('14');
+    expect(
+      dropdown
+        .find('input')
+        .at(1)
+        .props().value
+    ).toEqual('00');
   });
 
   it('allows minuteInterval prop to be passed', () => {
@@ -233,14 +233,14 @@ describe('tests for <TimePicker />', () => {
     const dropdown = container.find('.inline-flex');
     // Test Up Arrow
     dropdown
-      .childAt(2)
       .find('.icon-arrow-up_24')
+      .at(1)
       .simulate('click');
     expect(container.state().selectedTime.format('mm')).toEqual('15');
     // Test Down Arrow
     dropdown
-      .childAt(2)
       .find('.icon-arrow-down_24')
+      .at(1)
       .simulate('click');
     expect(container.state().selectedTime.format('mm')).toEqual('00');
   });
@@ -264,11 +264,10 @@ describe('tests for <TimePicker />', () => {
     hourInput.props().onChange({ currentTarget: { value: '08' } });
     hourInput.simulate('keyup', {
       keyCode: 27,
-      target: hourInput.simulate('blur')
+      target: hourInput.simulate('blur'),
     });
 
     expect(container.state().selectedTime.format('HH')).toEqual('20');
     expect(onChange).toHaveBeenLastCalledWith(20, 0, 0);
   });
-
 });

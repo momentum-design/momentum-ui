@@ -10,6 +10,7 @@ ShallowWrapper {
     childrenLeft={null}
     childrenRight={null}
     className=""
+    eventOverlayProps={null}
     header="header"
     id=""
     isBold={false}

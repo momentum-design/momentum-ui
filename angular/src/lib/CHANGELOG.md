@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.1.0...@momentum-ui/angular@11.2.0) (2020-03-08)
+
+
+### Features
+
+* **combo-box:** add emitter on clear ([8870791](https://github.com/momentum-design/momentum-ui/commit/8870791e527cc4f5830b03786edfff274f3c7e9a))
+* **select:** add error and warning messages ([#554](https://github.com/momentum-design/momentum-ui/issues/554)) ([d2f4dc0](https://github.com/momentum-design/momentum-ui/commit/d2f4dc01fa61411c3dc5658608cb3e48ca247f85))
+
+
+
+
+
 # [11.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.0.0...@momentum-ui/angular@11.1.0) (2020-03-07)
 
 

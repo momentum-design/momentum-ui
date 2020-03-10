@@ -14,6 +14,7 @@ ShallowWrapper {
     doesAnchorToggle={true}
     hideDelay={0}
     hoverDelay={500}
+    includeFocusOnHover={true}
     onClose={null}
     overflowType="auto"
     popoverTrigger="MouseEnter"

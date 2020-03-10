@@ -6,10 +6,9 @@ import { EventOverlay } from '@momentum-ui/react';
 import omit from 'lodash/omit';
 
 class Popover extends React.Component {
-
   state = {
     isOpen: this.props.startOpen || false,
-    isHovering: this.props.startOpen || false
+    isHovering: this.props.startOpen || false,
   };
 
   componentDidMount() {
@@ -24,24 +23,18 @@ class Popover extends React.Component {
   delayedHide = e => {
     const { delay, hideDelay, onClose } = this.props;
     const { isHovering } = this.state;
-    if ( isHovering ) return;
+    if (isHovering) return;
 
     if (this.showTimerId) {
       clearTimeout(this.showTimerId);
       this.showTimerId = null;
     }
 
-    const popoverHideTime = hideDelay
-      ? hideDelay
-      : delay;
+    const popoverHideTime = hideDelay ? hideDelay : delay;
 
     this.hideTimerId = setTimeout(() => {
       this.hideTimerId = null;
-      this.setState(() => (
-        { isOpen: false, isHovering: false }
-      ),
-        onClose && onClose(e)
-      );
+      this.setState(() => ({ isOpen: false, isHovering: false }), onClose && onClose(e));
     }, popoverHideTime);
 
     e && e.stopPropagation();
@@ -55,15 +48,11 @@ class Popover extends React.Component {
       this.hideTimerId = null;
     }
 
-    const popoverShowTime = showDelay
-      ? showDelay
-      : delay;
+    const popoverShowTime = showDelay ? showDelay : delay;
 
     this.showTimerId = setTimeout(() => {
       this.showTimerId = null;
-      this.setState(() => (
-        { isOpen: true, isHovering: true }
-      ));
+      this.setState(() => ({ isOpen: true, isHovering: true }));
     }, popoverShowTime);
 
     e && e.stopPropagation();
@@ -72,10 +61,7 @@ class Popover extends React.Component {
   handleClose = e => {
     const { onClose } = this.props;
 
-    this.setState(
-      { isOpen: false },
-      onClose && onClose(e)
-    );
+    this.setState({ isOpen: false }, onClose && onClose(e));
   };
 
   handleMouseEnter = e => {
@@ -90,11 +76,8 @@ class Popover extends React.Component {
     const delay = popoverTrigger === 'MouseEnter' ? hoverDelay : 0;
     e.persist();
 
-    this.setState(
-      { isHovering: false },
-      () => setTimeout(() => this.delayedHide(e), delay)
-    );
-  }
+    this.setState({ isHovering: false }, () => setTimeout(() => this.delayedHide(e), delay));
+  };
 
   handleMouseLeave = e => {
     const { children } = this.props;
@@ -127,12 +110,10 @@ class Popover extends React.Component {
 
     children.props.onClick && children.props.onClick(e);
 
-    if(!this.showTimerId) {
-      return !isOpen
-        ? this.delayedShow(e)
-        : doesAnchorToggle && this.handleBlur(e);
+    if (!this.showTimerId) {
+      return !isOpen ? this.delayedShow(e) : doesAnchorToggle && this.handleBlur(e);
     }
-  }
+  };
 
   handleFocus = e => {
     const { children } = this.props;
@@ -142,10 +123,8 @@ class Popover extends React.Component {
 
     children.props.onFocus && children.props.onFocus(e);
 
-    if(!this.showTimerId) {
-      return !isOpen
-        ? this.delayedShow(e)
-        : this.handleBlur(e);
+    if (!this.showTimerId) {
+      return !isOpen ? this.delayedShow(e) : this.handleBlur(e);
     }
   };
 
@@ -155,13 +134,14 @@ class Popover extends React.Component {
       children,
       className,
       content,
+      includeFocusOnHover,
       overflowType,
       popoverTrigger,
       showArrow,
       ...props
     } = this.props;
 
-    const otherProps = omit({...props}, [
+    const otherProps = omit({ ...props }, [
       'delay',
       'doesAnchorToggle',
       'hideDelay',
@@ -181,8 +161,8 @@ class Popover extends React.Component {
           triggerProps.onMouseEnter = this.handleMouseEnter;
           triggerProps.onMouseLeave = this.handleMouseLeave;
 
-          triggerProps.onFocus = this.handleFocus;
-          triggerProps.onBlur = this.handleBlur;
+          triggerProps.onFocus = includeFocusOnHover && this.handleFocus;
+          triggerProps.onBlur = includeFocusOnHover && this.handleBlur;
           break;
 
         case 'Click':
@@ -216,42 +196,35 @@ class Popover extends React.Component {
       return triggerProps;
     };
 
-    const anchorWithTriggers = () => (
-      children && React.cloneElement(children, getTriggers())
-    );
+    const anchorWithTriggers = () => children && React.cloneElement(children, getTriggers());
 
     return (
       <React.Fragment>
         {anchorWithTriggers()}
-        {isOpen &&
+        {isOpen && (
           <EventOverlay
             anchorNode={this.anchorRef}
             className={className}
             close={this.handleClose}
             isOpen={isOpen}
-            ref={ref => this.overlay = ref}
+            ref={ref => (this.overlay = ref)}
             showArrow={showArrow}
-            style={
-              { overflow: overflowType }
-            }
-            {...popoverTrigger === 'MouseEnter' && {
+            style={{ overflow: overflowType }}
+            {...(popoverTrigger === 'MouseEnter' && {
               onMouseEnter: () => {
-                this.setState({isHovering: true, isOpen: true});
+                this.setState({ isHovering: true, isOpen: true });
               },
               onMouseLeave: e => {
                 e.persist();
-                this.setState(
-                  {isHovering: false}
-                  , () => this.delayedHide(e)
-                );
-              }}
-            }
-            {...popoverTrigger === 'Focus' && { allowClickAway: false }}
+                this.setState({ isHovering: false }, () => this.delayedHide(e));
+              },
+            })}
+            {...(popoverTrigger === 'Focus' && { allowClickAway: false })}
             {...otherProps}
           >
             {content}
           </EventOverlay>
-        }
+        )}
       </React.Fragment>
     );
   }
@@ -272,13 +245,15 @@ Popover.propTypes = {
   hideDelay: PropTypes.number,
   /** @prop The hover delay for checking whether we are still hovering before closing | 500 */
   hoverDelay: PropTypes.number,
+  /** @prop Optional prop that determines whether Focus triggers apply to MouseEnter | true */
+  includeFocusOnHover: PropTypes.bool,
   /** @prop Callback function that will execute on close | null */
   onClose: PropTypes.func,
   /** @prop Optional prop that controls overflow css style of EventOverlay | 'auto' */
   overflowType: PropTypes.string,
   /** @prop Event that will trigger popover appearance | 'MouseEnter' */
   popoverTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus', 'None']),
-   /** @prop Boolean for whether the Arrow should show | true */
+  /** @prop Boolean for whether the Arrow should show | true */
   showArrow: PropTypes.bool,
   /** @prop The show delay for popover on hover, click, focus | 0 */
   showDelay: PropTypes.number,
@@ -292,6 +267,7 @@ Popover.defaultProps = {
   doesAnchorToggle: true,
   hideDelay: 0,
   hoverDelay: 500,
+  includeFocusOnHover: true,
   onClose: null,
   overflowType: 'auto',
   popoverTrigger: 'MouseEnter',

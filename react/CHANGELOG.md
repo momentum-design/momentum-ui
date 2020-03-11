@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.3.1...@momentum-ui/react@23.4.0) (2020-03-11)
+
+
+### Features
+
+* **Popover:** add prop for removing focus/blur handlers on hover ([486baa1](https://github.com/momentum-design/momentum-ui/commit/486baa1bf72aadbb8d84368c26ff76fdacb4ec3c))
+
+
+
+
+
 ## [23.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.3.0...@momentum-ui/react@23.3.1) (2020-03-10)
 
 **Note:** Version bump only for package @momentum-ui/react

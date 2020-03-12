@@ -53,7 +53,6 @@ export interface ComboBoxOffset {
           mdInput
           aria-autocomplete="list"
           [disabled]="disabled"
-          (input)="handleInput()"
           (click)="handleInput()"
           (mousedown)="handleInputMousedown($event)"
           (keydown)="handleKeydown($event)"
@@ -350,6 +349,7 @@ export class ComboBoxComponent implements OnInit, OnDestroy, ControlValueAccesso
   }
 
   onInputChange(event): void {
+    this.handleInput();
     this.inputValueChange.emit(event.target.value);
   }
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.2...@momentum-ui/core@19.4.3) (2020-03-12)
+
+
+### Bug Fixes
+
+* **core:** Phone number input has extra padding ([d087755](https://github.com/momentum-design/momentum-ui/commit/d087755ba3a5f75301bee840bb8c1fc20a2c9b9d))
+
+
+
+
+
 ## [19.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.1...@momentum-ui/core@19.4.2) (2020-03-11)
 
 **Note:** Version bump only for package @momentum-ui/core

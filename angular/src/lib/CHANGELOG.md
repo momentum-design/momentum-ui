@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.2.1...@momentum-ui/angular@11.2.2) (2020-03-12)
+
+
+### Bug Fixes
+
+* **ComboBox:** options do not update on some cases ([2beabaa](https://github.com/momentum-design/momentum-ui/commit/2beabaa3814695020d3bd76c24ac49fcb17526ea))
+
+
+
+
+
 ## [11.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.2.0...@momentum-ui/angular@11.2.1) (2020-03-10)
 
 **Note:** Version bump only for package @momentum-ui/angular

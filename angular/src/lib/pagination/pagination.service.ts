@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { takeUntil } from 'rxjs/operators';
 
 @Injectable()
-export class PaginationService {
-
+export class PaginationService implements OnDestroy {
   public href: string = '';
   public hrefReplaceReg: string | RegExp = '$page$';
 
@@ -15,19 +15,26 @@ export class PaginationService {
   private current = new Subject<number>();
   private focused = new Subject<any>();
   private total = new Subject<number>();
+  private unsubscribe$ = new Subject();
 
   current$ = this.current.asObservable();
   focused$ = this.focused.asObservable();
   total$ = this.total.asObservable();
 
   constructor(private sanitizer: DomSanitizer) {
-    this.current$.subscribe((v) => {
+    this.current$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((v) => {
       this.currentPage = v;
     });
-    this.focused$.subscribe((v) => {
+    this.focused$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((v) => {
       this.focusPage = v;
     });
-    this.total$.subscribe((v) => {
+    this.total$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((v) => {
       this.totalPage = v;
     });
   }
@@ -78,6 +85,13 @@ export class PaginationService {
     }
   }
 
+  updateTotal(total) {
+    this.total.next(total);
+    if (this.totalPage < this.currentPage) {
+      this.current.next(total);
+    }
+  }
+
   public getHref = (index): String | SafeUrl => {
     if (this.href !== '' && this.href) {
       return this.href.replace(this.hrefReplaceReg, index);
@@ -112,4 +126,8 @@ export class PaginationService {
     }
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }

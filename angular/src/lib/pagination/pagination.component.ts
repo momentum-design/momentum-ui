@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, OnDestroy } from '@angular/core';
 import { PaginationService } from './pagination.service';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'md-pagination',
@@ -18,7 +20,7 @@ import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
       [index]='item'
       [ifPreventDefault]='ifPreventDefault'
     ></md-pagination-number>
-    <li class='pagination_li ellipsis' *ngIf='lastGroupStart < total && lastGroupStart > midGroupEnd + 1' aria-hidden="true">...</li>
+    <li class='pagination_li ellipsis' *ngIf='lastGroupStart <= total && lastGroupStart > midGroupEnd + 1' aria-hidden="true">...</li>
     <md-pagination-number *ngFor='let item of renderGroupLast'
       [index]='item'
       [ifPreventDefault]='ifPreventDefault'
@@ -44,7 +46,7 @@ import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
   },
   providers: [PaginationService]
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges, OnDestroy {
 
   /** @option set the href format | '' */
   @Input() href: string = '';
@@ -78,6 +80,8 @@ export class PaginationComponent implements OnInit {
   private minCurrentForFirstGroup = 0;
   private maxCurrentForLastGroup = 0;
 
+  private unsubscribe$ = new Subject();
+
   constructor(
     private paginationService: PaginationService
   ) { }
@@ -85,11 +89,30 @@ export class PaginationComponent implements OnInit {
   ngOnInit() {
     const s = this.paginationService;
     s.initConfig(this.href, this.hrefReplaceReg, this.total);
-    s.current$.subscribe((v) => {
+    s.current$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((v) => {
       this.build();
       this.whenClick.emit(v);
     });
     this.paginationService.select(this.current);
+    this.build();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let needsBuild = true;
+    if (changes['total']) {
+      needsBuild = changes['total'].currentValue >= this.paginationService.currentPage;
+      this.paginationService.updateTotal(changes['total'].currentValue);
+    }
+
+    if (changes['current']) { // Will trigger a build
+      this.paginationService.select(changes['current'].currentValue);
+    } else if (needsBuild) {
+        this.build();
+    }
+
+    this.paginationService.focus(this.paginationService.currentPage);
   }
 
   public handleKeydown = (event) => {
@@ -190,4 +213,8 @@ export class PaginationComponent implements OnInit {
     }
   }
 
+  ngOnDestroy () {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }

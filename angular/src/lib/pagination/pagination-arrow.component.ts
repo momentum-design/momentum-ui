@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PaginationService } from './pagination.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'md-pagination-arrow',
@@ -23,7 +25,7 @@ import { PaginationService } from './pagination.service';
     '[class.icon-arrow-right-optical_20]': '!isPrevious && !isEnable'
   }
 })
-export class PaginationArrowComponent implements OnInit {
+export class PaginationArrowComponent implements OnInit, OnDestroy {
   /** @option set isPrevious | '' */
   @Input() isPrevious: boolean = true;
   /** @option set ifPreventDefault | '' */
@@ -42,11 +44,22 @@ export class PaginationArrowComponent implements OnInit {
     'icon-arrow-right_20': false
   };
 
+  private unsubscribe$ = new Subject();
+
   constructor(private paginationService: PaginationService) {
-    this.paginationService.current$.subscribe(() => {
+    this.paginationService.current$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(() => {
       this.build();
     });
-    this.paginationService.focused$.subscribe((v) => {
+    this.paginationService.total$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(() => {
+      this.build();
+    });
+    this.paginationService.focused$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((v) => {
       if (this.isPrevious) {
         this.ngClassA.pagination_li_a_focus = v === 'previous';
       } else {
@@ -90,4 +103,8 @@ export class PaginationArrowComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }

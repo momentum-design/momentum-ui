@@ -16,15 +16,9 @@ exports[`Modal Service modal should open when modalService is called 1`] = `
     role="dialog"
   >
     <div
-      aria-hidden="true"
-      class="cdk-visually-hidden cdk-focus-trap-anchor"
-      tabindex="0"
-    />
-    <div
       _ngcontent-a-c0=""
-      cdktrapfocus=""
+      cdktrapfocusautocapture=""
       class="md-modal__content"
-      ng-reflect-enabled=""
     >
       <div
         _ngcontent-a-c0=""
@@ -45,6 +39,7 @@ exports[`Modal Service modal should open when modalService is called 1`] = `
           <button
             aria-label="close"
             class="md-close md-modal__close"
+            tabindex="-1"
             type="button"
           />
         </md-modal-header>
@@ -58,11 +53,6 @@ exports[`Modal Service modal should open when modalService is called 1`] = `
         />
       </div>
     </div>
-    <div
-      aria-hidden="true"
-      class="cdk-visually-hidden cdk-focus-trap-anchor"
-      tabindex="0"
-    />
   </div>
 </md-modal>
 `;

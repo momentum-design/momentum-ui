@@ -28,7 +28,7 @@ export type SizeType =
       attr.aria-labelledby="{{ariaLabel}}"
       aria-modal="true"
     >
-      <div class="md-modal__content" cdkTrapFocus >
+      <div class="md-modal__content" cdkTrapFocusAutoCapture >
         <div class="md-modal__flex-container">
           <ng-content></ng-content>
         </div>

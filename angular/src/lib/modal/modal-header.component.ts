@@ -22,6 +22,7 @@ import { ModalRef } from './modal-ref';
     (click)="close()"
     aria-label="close"
     type="button"
+    tabIndex="-1"
   >
   </button>
   `,

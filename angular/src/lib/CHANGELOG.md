@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.2.2...@momentum-ui/angular@11.2.3) (2020-03-13)
+
+
+### Bug Fixes
+
+* **ComboBox:** watch options change ([6a671d7](https://github.com/momentum-design/momentum-ui/commit/6a671d7d0b3547d9dd3d1f04386c0900ed747002))
+
+
+
+
+
 ## [11.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.2.1...@momentum-ui/angular@11.2.2) (2020-03-12)
 
 

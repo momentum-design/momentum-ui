@@ -121,7 +121,8 @@
   $background-color: $list-item__background--dark,
   $background-color--hover: $list-item__background--hover--dark,
   $background-color--active: $list-item__background--pressed--dark,
-  $separator-border: $list-item-separator--dark
+  $separator-border: $list-item-separator--dark,
+  $hover-header-color: $list-item__color--dark,
 ) {
   .#{$dark-class} & {
     color: $color;
@@ -148,6 +149,28 @@
     .#{$dark-class} & {
       color: $color;
       background-color: $background-color--hover;
+    }
+  }
+
+  &:hover:not(.disabled),
+  &:hover:not(.#{$list-item__class}--read-only),
+  &:hover:not(:active),
+  &:hover:not(.active),
+  &:focus:not(.disabled),
+  &:focus:not(.#{$list-item__class}--read-only),
+  &:focus:not(:active),
+  &:focus:not(.active),
+  &.focus:not(.disabled),
+  &.focus:not(.#{$list-item__class}--read-only),
+  &.focus:not(:active),
+  &.focus:not(.active)
+    {
+    .#{$list-item__class} {
+      &__header {
+        .#{$dark-class} & {
+          color: $hover-header-color;
+        }
+      }
     }
   }
 

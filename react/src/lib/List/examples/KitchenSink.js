@@ -3,6 +3,7 @@ import {
   ListDefault,
   ListListItemHeader,
   ListListItemSeparator,
+  ListWithEventBubbling,
 } from './index';
 
 export default class ListKitchenSink extends React.Component {
@@ -12,6 +13,7 @@ export default class ListKitchenSink extends React.Component {
         <ListDefault />
         <ListListItemHeader />
         <ListListItemSeparator />
+        <ListWithEventBubbling />
       </React.Fragment>
     );
   }

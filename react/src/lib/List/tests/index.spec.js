@@ -125,6 +125,63 @@ describe('tests for <List />', () => {
     expect(container.state().listContext.focus).toEqual('test-list-3');
   });
 
+  it('should handle keyPress event with <shouldPropagateKeyDown = true> props (Up/Down/Left/Right)', () => {
+    let count = 0;
+    const onKeyDown = () => count++;
+    const container = mount(
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div onKeyDown={onKeyDown}>
+        <List shouldPropagateKeyDown>
+          <ListItem className='firstIndex' label="test" id='test-list-1' />
+          <ListItem className='secondIndex' label="test" id='test-list-2' />
+          <ListItem className='thirdIndex' label="test" id='test-list-3' />
+        </List>
+      </div>
+    );
+
+    container.update();
+    container.update();
+
+    const anchor1 = container.find('.firstIndex').first();
+ 
+    expect(container.children().state().listContext.focus).toEqual('test-list-1');
+    anchor1.simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+    expect(container.children().state().listContext.focus).toEqual('test-list-2');
+    anchor1.simulate('keydown', {keyCode: 39, which: 39, charCode: 39});
+    expect(container.children().state().listContext.focus).toEqual('test-list-2');
+    anchor1.simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    anchor1.simulate('keydown', {keyCode: 37, which: 37, charCode: 37});
+
+    expect(count).toEqual(4);
+  });
+
+  it('should handle keyPress event with <shouldPropagateKeyDown = false> props (Up/Down/Left/Right)', () => {
+    let count = 0;
+    const onKeyDown = () => count++;
+    const container = mount(
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div onKeyDown={onKeyDown}>
+        <List shouldPropagateKeyDown={false}>
+          <ListItem className='firstIndex' label="test" id='test-list-1' />
+          <ListItem className='secondIndex' label="test" id='test-list-2' />
+          <ListItem className='thirdIndex' label="test" id='test-list-3' />
+        </List>
+      </div>
+    );
+
+    container.update();
+    container.update();
+
+    const anchor1 = container.find('.firstIndex').first();
+ 
+    anchor1.simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+    anchor1.simulate('keydown', {keyCode: 39, which: 39, charCode: 39});
+    anchor1.simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    anchor1.simulate('keydown', {keyCode: 37, which: 37, charCode: 37});
+
+    expect(count).toEqual(0);
+  });
+
   it('should handle keyPress event (PageUp/PageDown/Home/End)', () => {
     const container = mount(
       <List>

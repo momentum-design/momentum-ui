@@ -133,7 +133,7 @@ class List extends React.Component {
   }
 
   handleKeyDown = e => {
-    const { shouldFocusActive } = this.props;
+    const { shouldFocusActive, shouldPropagateKeyDown} = this.props;
     const { focus } = this.state.listContext;
     let clickEvent;
     const tgt = e.currentTarget;
@@ -177,14 +177,14 @@ class List extends React.Component {
       case 37:
         this.getNextFocusedChild(items, tgt, -1);
         this._needsRefocus = true;
-        flag = true;
+        if(!shouldPropagateKeyDown) flag = true;
         break;
 
       case 39:
       case 40:
         this.getNextFocusedChild(items, tgt, 1);
         this._needsRefocus = true;
-        flag = true;
+        if(!shouldPropagateKeyDown) flag = true;
         break;
 
       case 33:
@@ -354,6 +354,7 @@ class List extends React.Component {
       'focusFirstQuery',
       'focusQuery',
       'itemRole',
+      'shouldPropagateKeyDown',
       'shouldFocusActive',
       'shouldFocusInitial',
       'shouldLoop',
@@ -422,6 +423,8 @@ List.propTypes = {
   itemRole: PropTypes.string,
   /** @prop Callback function invoked by user selecting an interactive item within List | null */
   onSelect: PropTypes.func,
+  /** @prop Disables the stopPropagation() & preventDefault() for ArrowKey Events | false */  
+  shouldPropagateKeyDown: PropTypes.bool,
   /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   role: PropTypes.string,
   /** @prop Invokes dom focus method on mount | true */
@@ -451,6 +454,7 @@ List.defaultProps = {
   focusFirstQuery: '',
   focusQuery: '',
   onSelect: null,
+  shouldPropagateKeyDown: false,
   role: 'list',
   shouldFocusActive: false,
   shouldFocusInitial: true,

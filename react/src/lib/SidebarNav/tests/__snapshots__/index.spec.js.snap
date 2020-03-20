@@ -54,6 +54,7 @@ ShallowWrapper {
             shouldFocusActive={false}
             shouldFocusInitial={true}
             shouldLoop={true}
+            shouldPropagateKeyDown={false}
             tabType="vertical"
             trackActive={true}
             type={null}
@@ -91,6 +92,7 @@ ShallowWrapper {
             shouldFocusActive={false}
             shouldFocusInitial={true}
             shouldLoop={true}
+            shouldPropagateKeyDown={false}
             tabType="vertical"
             trackActive={true}
             type={null}
@@ -129,6 +131,7 @@ ShallowWrapper {
               shouldFocusActive={false}
               shouldFocusInitial={true}
               shouldLoop={true}
+              shouldPropagateKeyDown={false}
               tabType="vertical"
               trackActive={true}
               type={null}
@@ -165,6 +168,7 @@ ShallowWrapper {
               "shouldFocusActive": false,
               "shouldFocusInitial": true,
               "shouldLoop": true,
+              "shouldPropagateKeyDown": false,
               "tabType": "vertical",
               "trackActive": true,
               "type": null,
@@ -234,6 +238,7 @@ ShallowWrapper {
               shouldFocusActive={false}
               shouldFocusInitial={true}
               shouldLoop={true}
+              shouldPropagateKeyDown={false}
               tabType="vertical"
               trackActive={true}
               type={null}
@@ -271,6 +276,7 @@ ShallowWrapper {
               shouldFocusActive={false}
               shouldFocusInitial={true}
               shouldLoop={true}
+              shouldPropagateKeyDown={false}
               tabType="vertical"
               trackActive={true}
               type={null}
@@ -309,6 +315,7 @@ ShallowWrapper {
                 shouldFocusActive={false}
                 shouldFocusInitial={true}
                 shouldLoop={true}
+                shouldPropagateKeyDown={false}
                 tabType="vertical"
                 trackActive={true}
                 type={null}
@@ -345,6 +352,7 @@ ShallowWrapper {
                 "shouldFocusActive": false,
                 "shouldFocusInitial": true,
                 "shouldLoop": true,
+                "shouldPropagateKeyDown": false,
                 "tabType": "vertical",
                 "trackActive": true,
                 "type": null,

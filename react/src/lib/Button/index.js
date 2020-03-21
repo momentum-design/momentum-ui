@@ -34,6 +34,7 @@ class Button extends React.Component {
       active,
       ariaLabel,
       ariaLabelledBy,
+      ariaPressed,
       children,
       circle,
       className,
@@ -185,6 +186,7 @@ class Button extends React.Component {
         ...ariaLabel
           ? { 'aria-label': ariaLabel }
           : { 'aria-labelledby': ariaLabelledBy },
+        'aria-pressed': ariaPressed,
         tabIndex: cxtProps.tabIndex,
         ...tag && tag !== 'button' && {role: 'button'},
         ...otherProps,
@@ -216,6 +218,8 @@ Button.propTypes = {
   ariaLabel: PropTypes.string,
   /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
+  /** @prop Boolean value for aria-pressed (toggle button accessibility) | undefined */
+  ariaPressed: PropTypes.bool,
   /** @prop Children Nodes to Render inside Button | null */
   children: PropTypes.node,
   /** @prop Sets circle css styling | false */
@@ -266,6 +270,7 @@ Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
+  ariaPressed: undefined,
   children: null,
   circle: false,
   className: '',

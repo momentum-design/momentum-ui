@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PaginationService } from './pagination.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'md-pagination-number',
@@ -18,7 +20,7 @@ import { PaginationService } from './pagination.service';
     '[class.pagination_li_focus]': 'isCurrent && isFocus'
   }
 })
-export class PaginationNumberComponent implements OnInit {
+export class PaginationNumberComponent implements OnInit, OnDestroy {
   /** @option set index | '' */
   @Input() index: number;
   /** @option set ifPreventDefault | '' */
@@ -31,14 +33,19 @@ export class PaginationNumberComponent implements OnInit {
     'pagination_li_a': true,
     'pagination_li_a_focus': false
   };
+  private unsubscribe$ = new Subject();
 
   constructor(
     private paginationService: PaginationService
   ) {
-    this.paginationService.current$.subscribe(() => {
+    this.paginationService.current$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(() => {
       this.build();
     });
-    this.paginationService.focused$.subscribe((v) => {
+    this.paginationService.focused$
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((v) => {
       this.isFocus = v === this.index;
       this.ngClassA.pagination_li_a_focus = this.isFocus;
     });
@@ -63,4 +70,8 @@ export class PaginationNumberComponent implements OnInit {
     }
   }
 
+  ngOnDestroy () {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }

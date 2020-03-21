@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.23.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.22.0...@momentum-ui/icons@7.23.0) (2020-03-19)
+
+
+### Features
+
+* **icons:** add speaker-muted_14 ([886c8a9](https://github.com/momentum-design/momentum-ui/commit/886c8a9287e02945ff93db33efc801f72875d4cc))
+* **icons:** add voicemail_22 ([0bfde37](https://github.com/momentum-design/momentum-ui/commit/0bfde37821c3b2b107d74e3982c87c28f84aaafa))
+
+
+
+
+
 # [7.22.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.21.0...@momentum-ui/icons@7.22.0) (2020-03-07)
 
 

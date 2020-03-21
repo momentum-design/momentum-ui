@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PaginationComponent should create and match snapshot 1`] = `
+exports[`PaginationComponent creation and rendering should create and match snapshot 1`] = `
 <md-pagination
   build={[Function Function]}
   current={[Function Number]}
@@ -23,6 +23,7 @@ exports[`PaginationComponent should create and match snapshot 1`] = `
   renderGroupLast={[Function Array]}
   renderGroupMid={[Function Array]}
   total={[Function Number]}
+  unsubscribe$={[Function Subject]}
   whenClick={[Function EventEmitter]}
 >
   <md-pagination-arrow

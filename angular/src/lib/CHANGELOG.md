@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.2.4...@momentum-ui/angular@11.3.0) (2020-03-21)
+
+
+### Features
+
+* **pagination:** add change detection to angular pagination ([5268a6e](https://github.com/momentum-design/momentum-ui/commit/5268a6e2b5b6d848b88e54a368a9d5a7f03cddff))
+
+
+
+
+
 ## [11.2.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.2.3...@momentum-ui/angular@11.2.4) (2020-03-19)
 
 **Note:** Version bump only for package @momentum-ui/angular

@@ -1,23 +1,8 @@
-import {
-  AfterContentInit,
-  ChangeDetectorRef,
-  Component,
-  ContentChildren,
-  ElementRef,
-  EventEmitter,
-  Input,
-  NgZone,
-  OnInit,
-  Output,
-  QueryList,
-  TemplateRef,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
-import { TableService } from './data-table.service';
-import { TemplateNameDirective } from './shared';
-import { Handler } from './handler';
+import { AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, QueryList, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import findIndex from 'lodash-es/findIndex';
+import { TableService } from './data-table.service';
+import { Handler } from './handler';
+import { TemplateNameDirective } from './shared';
 
 @Component({
   selector: 'md-data-table',
@@ -268,6 +253,7 @@ export class DataTableComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     this.initialized = true;
+    this.applySort();
   }
 
   ngAfterContentInit() {

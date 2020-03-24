@@ -10,6 +10,8 @@ const moment = require('moment');
     [containerStyle]="{'width': '80%'}"
     [customSort]="true"
     (sortBy)="mySort($event)"
+    sortField="age"
+    sortOrder="-1"
   >
     <ng-template mdTemplateName="header" let-columns>
       <tr>

@@ -86,6 +86,8 @@ export interface ComboBoxOffset {
           [id]="id"
           [ngStyle]="{width: dropdownWidth + 'px'}"
           role="listbox"
+          [style.max-height]="scrollHeight"
+          style="overflow-y: scroll"
         >
           <ng-container *ngFor="let option of filteredOptions; index as i">
             <div
@@ -130,6 +132,8 @@ export class ComboBoxComponent implements OnInit, OnChanges, OnDestroy, ControlV
   @Input() options: Array<Object | string> = [];
   /** @prop Text that initially populates the input field for guidence | ''  */
   @Input() placeholder: string = '';
+  /** @prop set the scroll height of the overlay | '' */
+  @Input() scrollHeight: string = '22rem';
   /** @prop Sets the search prop | 'label' */
   @Input() searchProp: string = 'label';
   /** @prop Sets the target offset | { horizontal: 0, vertical: 4 } */

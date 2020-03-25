@@ -217,7 +217,7 @@ export class MenuTriggerDirective implements OnDestroy {
         if (overlayY === 'top') {
           menu.style['margin-top'] = `${arrow.offsetHeight}px`;
           menu.style['margin-bottom'] = 'auto';
-          arrow.style['top'] = '1px';
+          arrow.style['top'] = '0';
           arrow.style['bottom'] = 'auto';
         } else {
           menu.style['margin-bottom'] = `${arrow.offsetHeight}px`;
@@ -244,7 +244,7 @@ export class MenuTriggerDirective implements OnDestroy {
         if (overlayX === 'start') {
           menu.style['margin-left'] = `${arrow.offsetWidth}px`;
           menu.style['margin-right'] = 'auto';
-          arrow.style['left'] = '1px';
+          arrow.style['left'] = '0';
           arrow.style['right'] = 'auto';
         } else {
           menu.style['margin-right'] = `${arrow.offsetWidth}px`;

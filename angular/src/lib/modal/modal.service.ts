@@ -38,6 +38,7 @@ constructor(private overlay: Overlay, private injector: Injector) {}
     const config = new OverlayConfig({
       hasBackdrop:  true || backdrop,
       positionStrategy: strategy,
+      backdropClass: 'md-modal__backdrop',
     });
     const overlayRef = this.overlay.create(config);
     const modalRef = new ModalRef(overlayRef, content, data, backdropClickExit);

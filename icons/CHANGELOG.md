@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.24.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.23.0...@momentum-ui/icons@7.24.0) (2020-03-24)
+
+
+### Features
+
+* **icons:** add call-activities_16 ([0ae44d2](https://github.com/momentum-design/momentum-ui/commit/0ae44d20616a8a249e16fd4630c7e56d73b63ca7))
+* **icons:** add call-activities_24 ([eb348c4](https://github.com/momentum-design/momentum-ui/commit/eb348c41f1908b3b0b62c34b060d1d25d4c4f4c8))
+* **icons:** add call-forward-active_24 ([9828c6a](https://github.com/momentum-design/momentum-ui/commit/9828c6aff1004d070bacf9ff36979d2b7076747c))
+* **icons:** add contact-card_22 ([d832398](https://github.com/momentum-design/momentum-ui/commit/d832398464df0a19b630f7aa9b59bb69efa6c132))
+* **icons:** add contact-card-active_22 ([d0b5ab6](https://github.com/momentum-design/momentum-ui/commit/d0b5ab6f0eab66b42b912b58c9a6ecc24aa9f46c))
+* **icons:** add hunt-group-fowarded_20 ([dc4cb5c](https://github.com/momentum-design/momentum-ui/commit/dc4cb5c98941ca785e385a426d8fb55ee7ba1318))
+* **icons:** add set-variable_16 ([e002263](https://github.com/momentum-design/momentum-ui/commit/e002263cb09d1e2c586f0b99a8c061384e50b9f3))
+* **icons:** add set-variable_20 ([54e1e4a](https://github.com/momentum-design/momentum-ui/commit/54e1e4a2598220a2d2417448c221c689bd4b7447))
+* **icons:** add voicemail-active_22 ([50e436c](https://github.com/momentum-design/momentum-ui/commit/50e436ccebd844e84d1c70597a75b43ee6deeda6))
+
+
+
+
+
 # [7.23.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.22.0...@momentum-ui/icons@7.23.0) (2020-03-19)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.25.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.24.0...@momentum-ui/icons@7.25.0) (2020-03-26)
+
+
+### Features
+
+* **icons:** add contact-card-active_24 ([6937396](https://github.com/momentum-design/momentum-ui/commit/6937396f481c913bb3c735c347bc65ec9d0c0afa))
+
+
+
+
+
 # [7.24.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.23.0...@momentum-ui/icons@7.24.0) (2020-03-24)
 
 

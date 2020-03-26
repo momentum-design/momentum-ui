@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.3.1...@momentum-ui/angular@11.4.0) (2020-03-26)
+
+
+### Bug Fixes
+
+* **angular:** dataTable:applySort() after initialization ([e8775aa](https://github.com/momentum-design/momentum-ui/commit/e8775aa425d7efa6be554b5506001bd1bb98e9c2))
+* **modal:** Set the backdropClass for the angular modals ([929b278](https://github.com/momentum-design/momentum-ui/commit/929b2789d69b78cb9fcbcfc27fb5307b31c190f4))
+
+
+### Features
+
+* **ComboBox:** add scrollHeight ([ac772ed](https://github.com/momentum-design/momentum-ui/commit/ac772ed68fffed5dd11e0255e13b36aa1296b70d))
+
+
+
+
+
 ## [11.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.3.0...@momentum-ui/angular@11.3.1) (2020-03-24)
 
 **Note:** Version bump only for package @momentum-ui/angular

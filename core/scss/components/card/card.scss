@@ -17,6 +17,9 @@
       &.active {
         box-shadow: 1px 3px 8px rgba(52, 53, 55, 0.18);
       }
+      &:focus {
+        box-shadow: 2px 6px 10px rgba(0,160,209,.75);
+      }
     }
 
     .md-card-section {

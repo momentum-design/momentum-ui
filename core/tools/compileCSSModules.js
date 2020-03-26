@@ -1,4 +1,5 @@
-const fs = require('fs-extra');
+const fs = require('fs');
+const fsExtra = require('fs-extra');
 const sass = require('node-sass');
 const path = require('path');
 const tildeImporter = require('node-sass-tilde-importer');
@@ -14,7 +15,6 @@ const modules = [
   'button',
   'button-group',
   'card',
-  'cdk-overlay',
   'checkbox',
   'chip',
   'close',
@@ -26,11 +26,7 @@ const modules = [
   'date-picker',
   'drawer',
   'date-range-picker',
-  'editable-textfield',
   'overlay',
-  'footer',
-  'hero',
-  'icon',
   'input',
   'input-phone-number',
   'label',
@@ -64,8 +60,9 @@ const modules = [
 
 const compileCSSModules = () => {
   modules.forEach((module, idx) => {
-    const outFile = path.resolve(__dirname, `../css/components/${module}.css`);
-    const mapFile = path.resolve(__dirname, `../css/components/${module}.map.css`);
+    const componentsDirectory = path.resolve(__dirname, `../css/components/${module}`);
+    const outFile = path.resolve(__dirname, componentsDirectory, `${module}.css`);
+    const mapFile = path.resolve(__dirname, componentsDirectory, `${module}.map.css`);
 
     sass.render(
       {
@@ -85,8 +82,10 @@ const compileCSSModules = () => {
           console.log(error.message);
           console.log(error.line);
         } else {
-          fs.writeFile(outFile, result.css, err => {});
-          fs.writeFile(mapFile, result.map, err => {});
+          fsExtra.ensureDir(componentsDirectory).then(() => {
+            fs.writeFileSync(outFile, result.css);
+            fs.writeFileSync(mapFile, result.map);
+          });
         }
       }
     );
@@ -94,5 +93,3 @@ const compileCSSModules = () => {
 };
 
 compileCSSModules();
-
-

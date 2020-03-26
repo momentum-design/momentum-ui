@@ -187,7 +187,7 @@ class Button extends React.Component {
           ? { 'aria-label': ariaLabel }
           : { 'aria-labelledby': ariaLabelledBy },
         'aria-pressed': ariaPressed,
-        ...(ariaPressed ? {'aria-pressed': ariaPressed} : {}),
+        ...(ariaPressed && ariaPressed !== '' ? {'aria-pressed': ariaPressed} : {}),
         tabIndex: cxtProps.tabIndex,
         ...tag && tag !== 'button' && {role: 'button'},
         ...otherProps,

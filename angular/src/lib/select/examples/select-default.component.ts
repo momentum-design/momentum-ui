@@ -33,7 +33,7 @@ export class SelectDefaultComponent {
       {name: 'Dwayne Wade', initial: 'DW'},
       {name: 'John Paul Jones', initial: 'JPJ'},
       {name: 'Hannah Brown', initial: 'HB'},
-      {name: 'Kobe Bryant', initial: 'KB'},
+      {name: 'Kobe Bryant', initial: 'KB', disabled: true},
       {name: 'Tim Duncan', initial: 'TD'},
       {name: 'Reggie Miller', initial: 'RM'},
       {name: 'Steph Curry', initial: 'SC'},

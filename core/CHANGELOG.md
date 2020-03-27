@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.4.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.6...@momentum-ui/core@19.4.7) (2020-03-27)
+
+
+### Bug Fixes
+
+* **card:** add focus border when card is in focus ([346afd9](https://github.com/momentum-design/momentum-ui/commit/346afd9d3148211da8946f163835b271d4f62ec0))
+
+
+
+
+
 ## [19.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.5...@momentum-ui/core@19.4.6) (2020-03-26)
 
 **Note:** Version bump only for package @momentum-ui/core

@@ -394,7 +394,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     if (option && option.length) {
       selectItems = [];
       for (const item of option) {
-        selectItems.push({label: item[label], value: item});
+        selectItems.push({label: item[label], value: item, disabled: item['disabled']});
       }
     }
     return selectItems;
@@ -677,6 +677,7 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
       class="md-list-item"
       [ngClass]="[
         selected ? 'active md-select-item--focus' : '',
+        option.disabled ? 'disabled' : '',
         optionClass
       ]"
     >

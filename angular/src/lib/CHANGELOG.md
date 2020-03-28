@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.4.1...@momentum-ui/angular@11.5.0) (2020-03-28)
+
+
+### Features
+
+* **select:** add disabled state to select item ([3c348b5](https://github.com/momentum-design/momentum-ui/commit/3c348b52087b3501f187184bb1b8d9ad70f5103a))
+
+
+
+
+
 ## [11.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.4.0...@momentum-ui/angular@11.4.1) (2020-03-27)
 
 **Note:** Version bump only for package @momentum-ui/angular

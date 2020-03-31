@@ -19,6 +19,7 @@ class Menu extends React.Component {
       listContext: {
         active: [],
         focus: null,
+        ariaConfig: this.props.ariaConfig,
       },
       selectContext: {
         parentKeyDown: this.handleKeyDown,
@@ -303,6 +304,7 @@ class Menu extends React.Component {
     } = this.state;
 
     const otherProps = omit({...props}, [
+      'ariaConfig',
       'focusFirst',
       'parentOnSelect'
     ]);
@@ -335,6 +337,8 @@ class Menu extends React.Component {
 Menu.propTypes = {
   /** @prop Text to display for accessibility features | ''  */
   ariaLabel: PropTypes.string,
+  /** @prop Accessibility Configuration Object */
+  ariaConfig: PropTypes.object,
   /** @prop Children nodes to render inside Menu | null */
   children: PropTypes.node,
   /** @prop Optional css class name | '' */
@@ -349,6 +353,7 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   ariaLabel: '',
+  ariaConfig: null,
   children: null,
   className: '',
   focusFirst: true,

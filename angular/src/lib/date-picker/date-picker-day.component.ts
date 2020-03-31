@@ -22,7 +22,7 @@ import { DatePickerService } from './date-picker.service';
     '[class.md-datepicker__day--start]': 'isStartDay',
     '[class.md-datepicker__day--end]': 'isEndDay',
     '[class.md-datepicker__day--hovered]': 'isHovered',
-    '[class.md-datepicker__day--unselectable]': 'isUnselectable',
+    '[class.md-datepicker__day--unselectable]': 'isUnselectable || isDisable',
     '[class.md-datepicker__day--inrange-selected]': 'isInRangeSelected',
     '[attr.aria-label]': '""',
     '[attr.aria-selected]': 'false',

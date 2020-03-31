@@ -187,7 +187,7 @@ export class DatePickerService {
           this.endDate.next(d);
         }
       }
-    } else {
+    } else if (!this.isDayDisabled(d)) {
       this.selected.next(d);
     }
   }

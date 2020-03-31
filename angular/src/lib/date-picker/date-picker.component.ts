@@ -119,6 +119,16 @@ export class DatePickerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.datePickerService.select(this.selectedDate);
+    this.datePickerService.initConfig({
+      locale: this.locale,
+      maxDate: this.maxDate,
+      minDate: this.minDate,
+      monthFormat: this.monthFormat,
+      nextArialLabel: this.nextArialLabel,
+      previousArialLabel: this.previousArialLabel,
+      filterDate: this.filterDate
+    });
 
     const strategy = this.overlay
       .position()
@@ -155,6 +165,7 @@ export class DatePickerComponent implements OnInit {
         this.dismissContent();
       }
     });
+
   }
 
   public show = () => {

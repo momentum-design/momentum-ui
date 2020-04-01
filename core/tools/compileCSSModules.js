@@ -60,16 +60,13 @@ const modules = [
 
 const compileCSSModules = () => {
   modules.forEach((module, idx) => {
-    const componentsDirectory = path.resolve(__dirname, `../css/components/${module}`);
+    const componentsDirectory = path.resolve(__dirname, `../css/components`);
     const outFile = path.resolve(__dirname, componentsDirectory, `${module}.css`);
-    const mapFile = path.resolve(__dirname, componentsDirectory, `${module}.map.css`);
 
     sass.render(
       {
         file: path.resolve(__dirname, `../scss/components/${module}/module.scss`),
-        // data: 'body{background:blue; a{color:black;}}',
         importer: tildeImporter,
-        // includePaths: [ 'lib/', 'mod/' ],
         outputStyle: 'compressed',
         outFile: outFile,
         sourceMap: true,
@@ -84,7 +81,6 @@ const compileCSSModules = () => {
         } else {
           fsExtra.ensureDir(componentsDirectory).then(() => {
             fs.writeFileSync(outFile, result.css);
-            fs.writeFileSync(mapFile, result.map);
           });
         }
       }

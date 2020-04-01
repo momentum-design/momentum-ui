@@ -1,5 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { DatePickerComponent } from '@momentum-ui/angular';
+let moment = require('moment');
+if ('default' in moment) {
+  moment = moment['default'];
+}
 
 @Component({
   selector: 'example-date-picker-default',
@@ -8,7 +12,10 @@ import { DatePickerComponent } from '@momentum-ui/angular';
     <md-date-picker #datepicker
       [ngClass]="{'custom': true}"
       className='High'
-      [backdropClickExit]='true'
+      [backdropClickExit]='false'
+      [minDate]='minDate'
+      [maxDate]='maxDate'
+      [selectedDate]='selectedDate'
       (whenChange)='whenChange($event)'
       (whenMonthChange)='whenMonthChange($event)'
       (whenSelect)='whenSelect($event)'
@@ -24,6 +31,10 @@ export class ExampleDatePickerDefaultComponent {
 
   @ViewChild('datepicker') datePickerComponent: DatePickerComponent;
   @ViewChild('dateTitle') dateTitle: ElementRef;
+
+  public selectedDate =  moment().add(5, 'days').clone();
+  public minDate =  moment().add(-5, 'days').clone();
+  public maxDate = moment().add(10, 'days').clone();
 
   constructor() {
 

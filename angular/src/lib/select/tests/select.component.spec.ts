@@ -143,4 +143,20 @@ describe('SelectComponent', () => {
 
     expect(selectComponent.overlayOpen).toBe(true);
   }));
+
+    it('should open the overlay of options when select button is invoked even the options array is empty', fakeAsync(() => {
+    testComponent.people = [];
+    fixture.detectChanges();
+
+    selectNativeElement = fixture.nativeElement;
+    const button = selectNativeElement.querySelector('button');
+    expect(button).not.toBeNull();
+
+    // open overlay
+    button.click();
+    fixture.detectChanges();
+    flush();
+
+    expect(selectComponent.overlayOpen).toBe(true);
+  }));
 });

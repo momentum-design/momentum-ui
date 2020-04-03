@@ -14,6 +14,7 @@ yarn-*
 
 # Ignore IDE files #
 ####################
+*.code-workspace
 build
 bundle.js
 bundle.js.map

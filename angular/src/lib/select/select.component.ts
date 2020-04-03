@@ -206,8 +206,8 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
     return this._options;
   }
 
-  set options(item: any[]) {
-    const options = this.optionLabel ? this.makeSelectOptions(item, this.optionLabel) : item;
+  set options(items: any[]) {
+    const options = this.optionLabel ? this.makeSelectOptions(items, this.optionLabel) : items;
     this._options = options;
     this.selectOptionsToDisplay = this._options;
     this.updateSelectedItem(this.value);
@@ -390,9 +390,8 @@ export class SelectComponent implements AfterContentChecked, AfterContentInit, C
   }
 
   makeSelectOptions(option: any[], label: string) {
-    let selectItems;
+    const selectItems = [];
     if (option && option.length) {
-      selectItems = [];
       for (const item of option) {
         selectItems.push({label: item[label], value: item, disabled: item['disabled']});
       }

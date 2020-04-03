@@ -14,6 +14,7 @@ import { MenuComponent } from './menu.component';
     <div
       md-list-item
       [active]="active"
+      [disabled]="disabled"
       [isReadOnly]="isHeader"
       [ngClass]="{'md-menu-item__header': isHeader}"
       role="menuitem"
@@ -51,6 +52,8 @@ import { MenuComponent } from './menu.component';
 export class MenuItemComponent implements FocusableOption, OnDestroy {
   /** @prop Active prop to determine styles | false */
   @Input() active = false;
+  /** @prop Disables the MenuItem | false */
+  @Input() disabled = false;
   /** @prop Determines if MenuItem is the header | false */
   @Input() isHeader: boolean = false;
   /** @prop Initial selected value within SubMenu | '' */
@@ -98,7 +101,7 @@ export class MenuItemComponent implements FocusableOption, OnDestroy {
   }
 
   onClick(_: MouseEvent): void {
-    if (this._parentMenu && !this.triggersSubmenu && !this.isHeader) {
+    if (this._parentMenu && !this.triggersSubmenu && !this.isHeader && !this.disabled) {
       this._parentMenu.select.emit(this);
       this._parentMenu.closed.emit('click');
     }
@@ -108,7 +111,7 @@ export class MenuItemComponent implements FocusableOption, OnDestroy {
     switch (event.code) {
       case 'Enter':
       case 'Space':
-        if (this._parentMenu && !this.triggersSubmenu && !this.isHeader) {
+        if (this._parentMenu && !this.triggersSubmenu && !this.isHeader && !this.disabled) {
           this._parentMenu.select.emit(this);
           this._parentMenu.closed.emit('click');
         }

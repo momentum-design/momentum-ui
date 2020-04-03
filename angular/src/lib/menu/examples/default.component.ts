@@ -12,7 +12,7 @@ import { MenuItemComponent } from '@momentum-ui/angular';
       </md-menu-content>
       <md-menu-item (click)="onClick($event)">Language</md-menu-item>
       <md-menu-item (click)="onClick($event)">Profile</md-menu-item>
-      <md-menu-item (click)="onClick($event)">Settings</md-menu-item>
+      <md-menu-item [disabled]="true" (click)="onClick($event)">Settings</md-menu-item>
     </md-menu>
   `,
 })

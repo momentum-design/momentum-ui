@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.5.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.5.2...@momentum-ui/angular@11.5.3) (2020-04-04)
+
+
+### Bug Fixes
+
+* **angular-selector:** default to an empty array in makeSelectOptions ([147b2c6](https://github.com/momentum-design/momentum-ui/commit/147b2c612d8edcd9d96c5c87faa0418d09981527))
+
+
+
+
+
 ## [11.5.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.5.1...@momentum-ui/angular@11.5.2) (2020-04-02)
 
 **Note:** Version bump only for package @momentum-ui/angular

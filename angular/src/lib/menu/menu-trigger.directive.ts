@@ -92,7 +92,7 @@ export class MenuTriggerDirective implements OnDestroy {
   }
 
   triggersSubmenu(): boolean {
-    return !!(this._menuItemInstance && this._parentMenu);
+    return !!(this._menuItemInstance && !this._menuItemInstance.disabled && this._parentMenu);
   }
 
   toggleMenu(): void {
@@ -433,12 +433,13 @@ export class MenuTriggerDirective implements OnDestroy {
   }
 
   onClick(event: MouseEvent): void {
-    if (this.triggersSubmenu()) {
-      event.stopPropagation();
-      this.openMenu();
-    } else {
-      this.toggleMenu();
+    event.stopPropagation();
+
+    if (this._menuItemInstance && !this.triggersSubmenu()) {
+      return;
     }
+
+    this.toggleMenu();
   }
 
   onKeydown(event: KeyboardEvent): void {

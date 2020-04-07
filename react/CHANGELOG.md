@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.6...@momentum-ui/react@23.5.0) (2020-04-07)
+
+
+### Features
+
+* **List:** new prop for enabling event propagation ([cb189c4](https://github.com/momentum-design/momentum-ui/commit/cb189c4e5a3bcff21d798164fab321dac0d3e2e2))
+
+
+
+
+
 ## [23.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.5...@momentum-ui/react@23.4.6) (2020-04-01)
 
 **Note:** Version bump only for package @momentum-ui/react

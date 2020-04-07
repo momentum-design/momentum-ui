@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.5.3...@momentum-ui/angular@11.6.0) (2020-04-07)
+
+
+### Features
+
+* 🎸 add disabled state for menu item ([6168b39](https://github.com/momentum-design/momentum-ui/commit/6168b39f005b25ea8fa75d2e8d3f5e242c3ebc9c))
+
+
+
+
+
 ## [11.5.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.5.2...@momentum-ui/angular@11.5.3) (2020-04-04)
 
 

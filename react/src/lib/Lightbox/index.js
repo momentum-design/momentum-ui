@@ -127,7 +127,7 @@ class Lightbox extends React.Component {
   }
 
   render() {
-    const { pages, index, width, height, tooltips, downloading, info, name, applicationId } = this.props;
+    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
@@ -250,7 +250,7 @@ class Lightbox extends React.Component {
           viewport = (
             <img
               alt=""
-              className="md-lightbox__viewport-image"
+              className={"md-lightbox__viewport-image" + `${(imgClassName && ` ${imgClassName}`) || ''}`}
               draggable="false"
               onClick={this.stopPropagation}
               onKeyPress={this.stopPropagation}
@@ -265,7 +265,7 @@ class Lightbox extends React.Component {
           viewport = (
             <img
               alt=""
-              className="md-lightbox__viewport-image"
+              className={"md-lightbox__viewport-image" + `${(imgClassName && ` ${imgClassName}`) || ''}`}
               draggable="false"
               onClick={this.stopPropagation}
               onKeyPress={this.stopPropagation}
@@ -500,6 +500,8 @@ Lightbox.propTypes = {
   downloading: PropTypes.bool,
   /** @prop Set Height value of Lightbox */
   height: PropTypes.number.isRequired,
+  /** @prop Classname appended to img viewport | '' */
+  imgClassName: PropTypes.string,
   /** @prop Initial index of start page | 0 */
   index: PropTypes.number,
   /** @prop Lightbox information Object | {} */
@@ -535,6 +537,7 @@ Lightbox.propTypes = {
 Lightbox.defaultProps = {
   decrypting: false,
   downloading: false,
+  imgClassName: '',
   index: 0,
   info: {},
   name: '',

@@ -62,6 +62,32 @@ describe('tests for <Lightbox />', () => {
     expect(spinner.length).toEqual(0);
   });
 
+  it('appends className to image', () => {
+    const className = "new-class-name";
+    const container = shallow(
+      <Lightbox
+        applicationId="app"
+        name="test"
+        height={100}
+        imgClassName={className}
+        width={100}
+        info={{
+          sharedBy:"Shared by abcd",
+          sharedOn: "At 4/17/2018, 10:02 AM",
+          size: "34.4 KB"
+        }}
+        pages={[{
+          decrypting: false,
+          image: "testImage",
+          thumb: "testImage"
+        }]}
+      />
+    );
+    const imageViewport = container.find('.md-lightbox__viewport-image');
+    expect(imageViewport.length).toEqual(1);
+    expect(imageViewport.prop('className')).toContain(className);
+  });
+
   it('should display file meta data and name', () => {
     const container = shallow(
       <Lightbox

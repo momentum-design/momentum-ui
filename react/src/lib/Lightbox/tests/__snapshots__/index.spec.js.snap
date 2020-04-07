@@ -8,6 +8,7 @@ ShallowWrapper {
     decrypting={false}
     downloading={false}
     height={100}
+    imgClassName=""
     index={0}
     info={Object {}}
     name="test"

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.5.0...@momentum-ui/react@23.6.0) (2020-04-09)
+
+
+### Features
+
+* **Lightbox:** pass img class name to viewport ([6c390f9](https://github.com/momentum-design/momentum-ui/commit/6c390f9753fd0b113e9798405dc5def76079115e))
+
+
+
+
+
 # [23.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.6...@momentum-ui/react@23.5.0) (2020-04-07)
 
 

@@ -5,6 +5,7 @@
     "core",
     "icons",
     "react",
+    "tokens",
     "utils",
     "www"
   ],

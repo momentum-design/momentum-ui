@@ -12,7 +12,7 @@
     "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "engines": {
-    "node": ">=8",
+    "node": ">=8 && <=12.16.3",
     "npm": ">=5"
   },
   "keywords": [
@@ -103,6 +103,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
     "@cypress/webpack-preprocessor": "^4.1.0",
+    "@momentum-ui/tokens": "^1.0.0",
     "@hot-loader/react-dom": "~16.8.0",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",

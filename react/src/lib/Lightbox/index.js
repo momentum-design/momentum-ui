@@ -18,6 +18,17 @@ class Lightbox extends React.Component {
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown, true);
     window.addEventListener('resize', this.handleResize, true);
+    const { viewport } = this;
+    if (viewport) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({
+        viewportDimensions: {
+          width: viewport.clientWidth,
+          height: viewport.clientHeight
+        }
+      });
+    }
+
   }
 
   componentDidUpdate(prevProps) {
@@ -127,16 +138,26 @@ class Lightbox extends React.Component {
   }
 
   render() {
-    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName } = this.props;
+    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
 
     const calculateAspectRatioFit = (srcWidth, srcHeight, maxWidth, maxHeight) => {
-      const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight, 1);
+      let maxW, maxH;
+      if (isImageRotated) {
+        maxW = maxHeight;
+        maxH = maxWidth;
+      }
+      else {
+        maxW = maxWidth;
+        maxH = maxHeight;
+      }
+      const ratio = Math.min(maxW / srcWidth, maxH / srcHeight, 1);
       return {
         width: Math.round(srcWidth * ratio),
-        height: Math.round(srcHeight * ratio)
+        height: Math.round(srcHeight * ratio),
+        ratio
       };
     };
 
@@ -208,18 +229,12 @@ class Lightbox extends React.Component {
       );
     };
 
+    let newWidth = width;
+    let newHeight = height;
+
     const getViewport = () => {
       let viewport;
-      const dimensions = calculateAspectRatioFit(
-        width * zoom,
-        height * zoom,
-        viewportDimensions.width,
-        viewportDimensions.height
-      );
-      let imageContainerStyles = {
-        width: `${dimensions.width}px`,
-        height: `${dimensions.height}px`
-      };
+      let imageContainerStyles;
 
       if (currentPage.content) {
         if (currentPage.fullView) {
@@ -246,6 +261,18 @@ class Lightbox extends React.Component {
       }
       else if (currentPage.image) {
         if (zoom <= 1) {
+          const dimensions = calculateAspectRatioFit(
+            width * zoom,
+            height * zoom,
+            viewportDimensions.width,
+            viewportDimensions.height
+          );
+          newHeight = dimensions.height;
+          newWidth = dimensions.width;
+          imageContainerStyles = {
+            width: `${dimensions.width}px`,
+            height: `${dimensions.height}px`
+          };
           /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
           viewport = (
             <img
@@ -261,7 +288,15 @@ class Lightbox extends React.Component {
           );
         }
         else {
+          const dimensions = calculateAspectRatioFit(
+            width,
+            height,
+            viewportDimensions.width,
+            viewportDimensions.height
+          );
           imageContainerStyles = {};
+          newHeight = dimensions.height * zoom;
+          newWidth = dimensions.width * zoom;
           viewport = (
             <img
               alt=""
@@ -273,10 +308,10 @@ class Lightbox extends React.Component {
               onDragStart={() => false}
               src={currentPage.image}
               style={{
-                maxHeight: height * zoom,
-                maxWidth: width * zoom,
-                minHeight: height * zoom,
-                minWidth: width * zoom
+                maxHeight: newHeight,
+                maxWidth: newWidth,
+                minHeight: newHeight,
+                minWidth: newWidth
               }}
             />
           );
@@ -373,7 +408,6 @@ class Lightbox extends React.Component {
         </div>
       );
 
-
       return (
         <div
           className="md-lightbox__viewer-controls"
@@ -393,7 +427,7 @@ class Lightbox extends React.Component {
                   <Icon name="zoom-out_16"/>
               </div>
             </Tooltip>
-            <span className="md-lightbox__control-value">{Math.round(zoom * 100)}%</span>
+            <span className="md-lightbox__control-value">{Math.round((newHeight * 1.0)/height * 100)}%</span>
             <Tooltip tooltip={tooltips.zoomIn}>
               <div className="md-lightbox__control"
                 role="button"
@@ -510,6 +544,8 @@ Lightbox.propTypes = {
     sharedOn: PropTypes.string,
     size: PropTypes.string
   }),
+  /** @prop Optional indication if image is rotated | false */
+  isImageRotated: PropTypes.bool,
   /** @prop Required name prop for Lightbox */
   name: PropTypes.string.isRequired,
   /** @prop Callback function invoked by user when interact with Lightbox | null */
@@ -540,6 +576,7 @@ Lightbox.defaultProps = {
   imgClassName: '',
   index: 0,
   info: {},
+  isImageRotated: false,
   name: '',
   onChange: null,
   onClose: null,

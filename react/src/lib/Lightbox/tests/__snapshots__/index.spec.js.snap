@@ -11,6 +11,7 @@ ShallowWrapper {
     imgClassName=""
     index={0}
     info={Object {}}
+    isImageRotated={false}
     name="test"
     onChange={null}
     onClose={null}

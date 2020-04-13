@@ -1,0 +1,76 @@
+# Ignore Node
+###################
+node_modules
+npm-debug.log*
+.bower-cache
+.bower-registry
+package-lock.json
+
+# Ignore IDE files #
+*.sublime*
+.vscode
+.idea
+.history
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.xap
+*.rdb
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+# *.sdf
+*.mdf
+*.ldf
+*.pyc
+*.iml
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+packages
+.tmp
+
+# Library Specific files #
+##########################
+build
+dist
+node_modules
+templates
+.eslintrc.json
+yarn*
+/config
+/scripts
+/src
+/docs
+/utils
+/tools
+/fonts/spark-ui-icons.html
+/fonts/momentum-ui-icons.html
+.babelrc.js
+.percy.yml
+cypress.json
+.env

@@ -37,7 +37,8 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.2"
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.2",
+    "@momentum-ui/tokens": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"

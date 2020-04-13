@@ -29,7 +29,7 @@
   "scss": "scss/momentum-ui.scss",
   "scripts": {
     "build": "run-s build:data build:lib",
-    "build:app": "run-s build:react build:data build:tokens build:settings build:sink",
+    "build:app": "run-s build:tokens build:react build:data build:settings build:sink",
     "build:data": "rimraf ../data && node ../tools/generateComponentsData.js",
     "build:sink": "node ./tools/buildKitchenSink.js",
     "build:lib": "run-s build:tokens build:settings build:settingsNg css:clean css:build css:build:components css:optimize css:minify css:header",
@@ -76,6 +76,7 @@
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "~16.8.0",
     "@momentum-ui/react": "^23.9.0",
+    "@momentum-ui/tokens": "^1.0.0",
     "@momentum-ui/utils": "^6.1.0",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",

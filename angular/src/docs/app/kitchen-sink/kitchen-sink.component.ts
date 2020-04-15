@@ -15,6 +15,7 @@ import { Component } from '@angular/core';
               <md-sidebar-nav-item title="radio" [routerLink]="['/kitchen-sink/radio']"></md-sidebar-nav-item>
               <md-sidebar-nav-item title="select" [routerLink]="['/kitchen-sink/select']"></md-sidebar-nav-item>
               <md-sidebar-nav-item title="stepper" [routerLink]="['/kitchen-sink/stepper']"></md-sidebar-nav-item>
+              <md-sidebar-nav-item title="tooltip" [routerLink]="['/kitchen-sink/tooltip']"></md-sidebar-nav-item>
             </md-sidebar-nav-item>
           </md-sidebar-nav>
         </md-sidebar-body>

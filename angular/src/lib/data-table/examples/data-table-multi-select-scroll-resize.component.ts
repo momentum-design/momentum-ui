@@ -96,9 +96,8 @@ export class DataTableMultiSelectCheckboxResizeScrollComponent {
 
   constructor() {
     this.selectedPeople = [
-      {'name': 'Mike', 'state': 'New York', 'age': 45, 'color': 'Orange'},
-      {'name': 'Joe', 'state': 'Texas', 'age': 86, 'color': 'Black'},
-      {'name': 'Thomas', 'state': 'Texas', 'age': 32, 'color': 'Black'}
+      {'name': 'Thomas', 'state': 'Texas', 'age': 32, 'color': 'Black'},
+      {'name': 'John', 'state': 'Texas', 'age': 32, 'color': 'Orange'},
     ];
   }
 }

@@ -1,24 +1,9 @@
-import {
-  ComponentRef,
-  Directive,
-  ElementRef,
-  HostListener,
-  HostBinding,
-  Input,
-  OnDestroy,
-  TemplateRef,
-} from '@angular/core';
-import {
-  Overlay,
-  OverlayPositionBuilder,
-  OverlayRef,
-  ScrollStrategyOptions,
-  FlexibleConnectedPositionStrategy
-} from '@angular/cdk/overlay';
+import { FlexibleConnectedPositionStrategy, Overlay, OverlayPositionBuilder, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-
-import { TooltipContainerComponent } from './tooltip-container.component';
+import { ComponentRef, Directive, ElementRef, HostBinding, HostListener, Input, OnDestroy, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { TooltipContainerComponent } from './tooltip-container.component';
+
 
 export type tooltipDirection = 'right' | 'left' | 'top' | 'bottom';
 
@@ -51,6 +36,9 @@ export class TooltipDirective implements OnDestroy {
 
   /** @prop Allows tooltip to stay open when you hover over the tooltip | false  */
   @Input() allowHover: boolean = false;
+
+  /** @prop Allows direct injection of raw HTML (warning, ensure HTML is safe!) */
+  @Input() tooltipHTML: string;
 
   @HostBinding('attr.aria-describedby')
     ariaDescribedby = `md-tooltip-${this.tooltipId}`;
@@ -209,6 +197,9 @@ export class TooltipDirective implements OnDestroy {
       this.tooltipRef.instance.maxWidth = this.maxWidth;
       if ( typeof this.content === 'string') {
         this.tooltipRef.instance.text = this.content;
+      }
+      if ( (typeof this.tooltipHTML === 'string') && (this.tooltipHTML.length > 0)) {
+        this.tooltipRef.instance.tooltipHTML = this.tooltipHTML;
       }
       if ( this.content instanceof TemplateRef ) {
         this.tooltipRef.instance.tooltipTemplate = this.content;

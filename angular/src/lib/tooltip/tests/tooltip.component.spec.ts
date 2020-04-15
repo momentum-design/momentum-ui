@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed, inject, fakeAsync } from '@angular/core/testing';
-
+import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
 import { Component, DebugElement } from '@angular/core';
+import { async, ComponentFixture, fakeAsync, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BadgeModule } from 'src/lib/public_api';
 import { TooltipModule } from '../tooltip.module';
-import { OverlayContainer, Overlay } from '@angular/cdk/overlay';
+
 
 @Component({
   template: `<md-badge mdTooltip="Hello World!">tooltip with text only</md-badge>
@@ -53,7 +53,6 @@ describe('tooltip Test', () => {
   });
 
   it('default tooltip should have the the default classes', () => {
-
     const divEl = overlayContainerEl.querySelectorAll('div');
     expect(divEl[2].className).toContain('md-event-overlay md-event-overlay--top md-tooltip md-event-overlay--arrow');
   });

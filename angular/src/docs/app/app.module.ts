@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ListItemModule, ListModule, SideBarBodyModule, SideBarModule, SidebarNavItemModule, SidebarNavModule, TopbarModule } from '@momentum-ui/angular';
+import { ListItemModule, ListModule, SideBarBodyModule, SideBarModule, SidebarNavItemModule, SidebarNavModule, TooltipModule, TopbarModule } from '@momentum-ui/angular';
 import { ExamplesModule } from 'src/lib/examples.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { PlaygroundComponent } from './playground/playground.component';
     SideBarBodyModule,
     SidebarNavModule,
     SidebarNavItemModule,
+    TooltipModule,
     TopbarModule,
     AppRoutingModule,
     ExamplesModule,

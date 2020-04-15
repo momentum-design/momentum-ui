@@ -1,13 +1,4 @@
-import {
-  Component,
-  Input,
-  TemplateRef,
-  ElementRef,
-  OnInit,
-  HostListener,
-  Output,
-  EventEmitter
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
 
 
 
@@ -22,6 +13,7 @@ import {
           #mdtooltip
           id={{this.id}}
           text={{this.text}}
+          tooltipHTML="{{this.tooltipHTML}}"
           maxWidth={{this.maxWidth}}
           [tooltipTemplate]="tooltipTemplate"
         ></md-tooltip>
@@ -48,6 +40,9 @@ export class TooltipContainerComponent implements OnInit {
 
    /** @prop Allows tooltip to stay open when you hover over the tooltip | false  */
   @Input() allowHover: boolean;
+
+  /** @prop Allows direct injection of raw HTML (warning, ensure HTML is safe!) */
+  @Input() tooltipHTML: string;
 
   /** @prop shows the arrow or not */
   @Input() showArrow: boolean  = true;

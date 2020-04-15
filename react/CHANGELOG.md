@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.6.0...@momentum-ui/react@23.6.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **Lightbox:** update viewport dimensions onMount and display correct % size of image ([d3d892b](https://github.com/momentum-design/momentum-ui/commit/d3d892bda1b406d4510a7917fef1b330a9e7c2ee))
+
+
+
+
+
 # [23.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.5.0...@momentum-ui/react@23.6.0) (2020-04-09)
 
 

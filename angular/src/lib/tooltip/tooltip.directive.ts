@@ -37,9 +37,6 @@ export class TooltipDirective implements OnDestroy {
   /** @prop Allows tooltip to stay open when you hover over the tooltip | false  */
   @Input() allowHover: boolean = false;
 
-  /** @prop Allows direct injection of raw HTML (warning, ensure HTML is safe!) */
-  @Input() tooltipHTML: string;
-
   @HostBinding('attr.aria-describedby')
     ariaDescribedby = `md-tooltip-${this.tooltipId}`;
 
@@ -197,9 +194,6 @@ export class TooltipDirective implements OnDestroy {
       this.tooltipRef.instance.maxWidth = this.maxWidth;
       if ( typeof this.content === 'string') {
         this.tooltipRef.instance.text = this.content;
-      }
-      if ( (typeof this.tooltipHTML === 'string') && (this.tooltipHTML.length > 0)) {
-        this.tooltipRef.instance.tooltipHTML = this.tooltipHTML;
       }
       if ( this.content instanceof TemplateRef ) {
         this.tooltipRef.instance.tooltipTemplate = this.content;

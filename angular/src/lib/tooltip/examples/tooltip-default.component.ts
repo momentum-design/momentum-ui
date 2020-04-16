@@ -4,14 +4,15 @@ import { Component } from '@angular/core';
   selector: 'example-tooltip-default',
   template: `
   <button md-button aria-label="myAriaLabel" mdTooltip="Hello World!" (click)="onClick()">
-    Using Text
+    Text
   </button>
-  <button md-button aria-label="myAriaLabel" mdTooltip="" tooltipHTML="<b>Inner HTML template</b><br><i>Italic</i><br>Normal" (click)="onClick()">
-    Using tooltipHTML
+  <button md-button aria-label="myAriaLabel" [mdTooltip]="tooltipTemplate" [closeOnClick]="true" (click)="onClick()">
+    Template
   </button>
-  <button md-button aria-label="myAriaLabel" mdTooltip="Hello World!" tooltipHTML="<b>Inner HTML template</b><br><i>Italic</i><br>Normal" (click)="onClick()">
-    Both
-  </button>
+  <ng-template #tooltipTemplate>
+    <span style="color:white">Enter Text&nbsp;</span>
+    <input>
+  </ng-template>
   `,
   styles: []
 })

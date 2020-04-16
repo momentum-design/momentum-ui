@@ -1,11 +1,10 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BadgeModule, ButtonModule } from '@momentum-ui/angular';
+import { TooltipModule } from '.././tooltip.module';
 import { TooltipDefaultComponent } from './tooltip-default.component';
 import { TooltipDirectionComponent } from './tooltip-direction.component';
 import { TooltipTriggerComponent } from './tooltip-trigger.component';
-import { TooltipModule } from '.././tooltip.module';
-import { ButtonModule } from '@momentum-ui/angular';
-import { BadgeModule } from '@momentum-ui/angular';
 
 @NgModule({
   declarations: [

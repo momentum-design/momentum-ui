@@ -5,18 +5,13 @@ import { Component, HostBinding, Input, OnInit, TemplateRef, ViewContainerRef } 
   styleUrls: ['tooltip.scss'],
   template: `
   <div id="{{id}}" [style.max-width.px]="maxWidth" class="md-tooltip__wrapper">
-    <span *ngIf="(tooltipHTML !== '')" class="md-tooltip__text" role="tooltip" [innerHTML]="tooltipHTML">
-    </span>
-    <span *ngIf="(text !== '')" class="md-tooltip__text" role="tooltip">
-      {{ text }}
-    </span>
+    <span *ngIf="text != ''" class="md-tooltip__text" role="tooltip">{{ text }}</span>
     <ng-content></ng-content>
   </div>
   `,
 })
 export class TooltipComponent implements OnInit {
 
-  @Input() tooltipHTML: string = '';
   @Input() text: string = '';
   @Input() tooltipTemplate: TemplateRef<any>;
   @Input() id: string;

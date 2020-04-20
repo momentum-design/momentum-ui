@@ -13,6 +13,7 @@ const Radio = props => {
     htmlId,
     inputRef,
     label,
+    labelProps,
     name,
     nestedLevel,
     onChange,
@@ -42,7 +43,7 @@ const Radio = props => {
         onChange={onChange}
         tabIndex={tabIndex}
       />
-      <Label className='md-radio__label' label={label} htmlFor={htmlId} />
+      <Label className='md-radio__label' label={label} htmlFor={htmlId} {...lableProps}/>
       {children}
     </div>
   );
@@ -63,6 +64,8 @@ Radio.propTypes = {
   inputRef: PropTypes.func,
   /** @prop Radio label text | '' */
   label: PropTypes.string,
+  /** @prop Optional props for Label | null */
+  labelProps: PropTypes.object,
   /** @prop Radio name string | '' */
   name: PropTypes.string,
   /** @prop Set the level of nested Radios | 0 */
@@ -84,6 +87,7 @@ Radio.defaultProps = {
   disabled: false,
   inputRef: null,
   label: '',
+  labelProps: null,
   name: '',
   nestedLevel: 0,
   onChange: () => {},

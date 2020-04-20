@@ -16,6 +16,7 @@ import { UIDConsumer } from 'react-uid';
 class SelectOption extends React.Component {
   render() {
     const {
+      checkboxProps,
       className,
       active,
       children,
@@ -33,6 +34,7 @@ class SelectOption extends React.Component {
           label={label}
           checked={cxtActive || false}
           onChange={() => {}}
+          {...checkboxProps}
         />
       ) : (
         [
@@ -91,6 +93,8 @@ class SelectOption extends React.Component {
 SelectOption.propTypes = {
   /** @prop SelectOption Boolean that describes active state | false */
   active: PropTypes.bool,
+  /** @prop Optional props for Checkbox | null */
+  checkboxProps: PropTypes.object,
   /** @prop Children nodes to render inside SelectOption | null */
   children: PropTypes.node,
   /** @prop Optional HTML Class Name for ListItem | '' */
@@ -107,6 +111,7 @@ SelectOption.propTypes = {
 
 SelectOption.defaultProps = {
   active: false,
+  checkboxProps: null,
   children: null,
   className: '',
   id: '',

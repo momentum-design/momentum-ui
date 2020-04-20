@@ -19,6 +19,7 @@ const Checkbox = props => {
     onChange,
     required,
     value,
+    checkboxLabelProps,
     ...otherProps
   } = props;
 
@@ -52,6 +53,7 @@ const Checkbox = props => {
         className="md-checkbox__label"
         label={label}
         htmlFor={htmlId}
+        {...checkboxLabelProps}
       />
       {children}
     </div>
@@ -59,6 +61,8 @@ const Checkbox = props => {
 };
 
 Checkbox.propTypes = {
+  /** @prop Optional props to pass to Label component | null */
+  checkboxLabelProps: PropTypes.object,
   /** @prop Sets Checkbox status as checked | false */
   checked: PropTypes.bool,
   /** @prop Child component to display next to the input | null */
@@ -89,6 +93,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   autoFocus: false,
+  checkboxLabelProps: null,
   checked: false,
   className: '',
   disabled: false,

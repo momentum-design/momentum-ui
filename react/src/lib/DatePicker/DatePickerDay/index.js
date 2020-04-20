@@ -33,7 +33,7 @@ class DatePickerDay extends React.Component {
   };
 
   render() {
-    const { selected, focus, day, month } = this.props;
+    const { selected, focus, day, month, buttonProps } = this.props;
 
     const isOutsideMonth = month !== getMonth(day);
     const isSelected = isSameDay(day, selected);
@@ -58,6 +58,7 @@ class DatePickerDay extends React.Component {
         aria-selected={isSelected}
         tabIndex={-1}
         ref={this.dayButton}
+        {...buttonProps}
       >
         <div aria-hidden="true">
           {getDate(day)}
@@ -68,6 +69,8 @@ class DatePickerDay extends React.Component {
 }
 
 DatePickerDay.propTypes = {
+  /** @prop Optional props for Button | null */
+  buttonProps: PropTypes.object,
   /** Required day that the DatePickerDay displays */
   day: PropTypes.instanceOf(moment).isRequired,
   // Internal Context Use Only
@@ -78,6 +81,10 @@ DatePickerDay.propTypes = {
   month: PropTypes.number.isRequired,
   // Internal Context Use Only
   selected: PropTypes.instanceOf(moment),
+};
+
+DatePickerDay.defaultProps = {
+  buttonProps: null,
 };
 
 DatePickerDay.displayName = 'DatePickerDay';

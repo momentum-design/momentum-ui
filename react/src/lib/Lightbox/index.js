@@ -138,7 +138,7 @@ class Lightbox extends React.Component {
   }
 
   render() {
-    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated } = this.props;
+    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated, iconProps, tooltipProps } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
@@ -183,7 +183,7 @@ class Lightbox extends React.Component {
               data-index={idx}
               style={style}
             >
-              <Icon className="md-lightbox__thumbnail--icon" name="secure_28" />
+              <Icon className="md-lightbox__thumbnail--icon" name="secure_28" {...iconProps}/>
             </div>
           );
         }
@@ -341,8 +341,9 @@ class Lightbox extends React.Component {
           onClick={e => this.triggerPageChange(index - 1, e)}
           style={{transform: 'rotate(-180deg)'}}
         >
-          <Icon name="arrow-right_16" />
+          <Icon name="arrow-right_16" {...iconProps}/>
         </div>
+        {...tooltipProps}
       </Tooltip>
     );
 
@@ -355,8 +356,9 @@ class Lightbox extends React.Component {
           onKeyPress={e => this.triggerPageChange(index + 1, e)}
           onClick={e => this.triggerPageChange(index + 1, e)}
         >
-          <Icon name="arrow-right_16" />
+          <Icon name="arrow-right_16" {...iconProps}/>
         </div>
+        {...tooltipProps}
       </Tooltip>
     );
 
@@ -369,7 +371,7 @@ class Lightbox extends React.Component {
           onClick={this.handleDownload}
           onKeyPress={this.handleDownload}
         >
-          <Icon name="download_16"/>
+          <Icon name="download_16" {...iconProps}/>
         </div>
       );
 
@@ -387,8 +389,9 @@ class Lightbox extends React.Component {
               onKeyPress={e => this.triggerPageChange(index - 1, e)}
               style={{transform: 'rotate(-180deg)'}}
             >
-              <Icon name="arrow-right_16"/>
+              <Icon name="arrow-right_16" {...iconProps}/>
             </div>
+            {...tooltipProps}
           </Tooltip>
           <span className="md-lightbox__control-value">{`${index + 1} / ${pages.length}`}</span>
           <Tooltip tooltip={tooltips.next}>
@@ -400,6 +403,7 @@ class Lightbox extends React.Component {
             >
               <Icon name="arrow-right_16"/>
             </div>
+            {...tooltipProps}
           </Tooltip>
         </div>
       ) : (
@@ -424,8 +428,9 @@ class Lightbox extends React.Component {
                 tabIndex="0"
                 onKeyPress={() => this.setZoom(-0.25)}
               >
-                  <Icon name="zoom-out_16"/>
+                <Icon name="zoom-out_16" {...iconProps}/>
               </div>
+              {...tooltipProps}
             </Tooltip>
             <span className="md-lightbox__control-value">{Math.round((newHeight * 1.0)/height * 100)}%</span>
             <Tooltip tooltip={tooltips.zoomIn}>
@@ -437,6 +442,7 @@ class Lightbox extends React.Component {
               >
                 <Icon name="zoom-in_16"/>
               </div>
+              {...tooltipProps}
             </Tooltip>
           </div>
           {pageControl}
@@ -449,6 +455,7 @@ class Lightbox extends React.Component {
                     </div> :
                     downloadButton
                 }
+              {...tooltipProps}
             </Tooltip>
           </div>
         </div>
@@ -488,8 +495,9 @@ class Lightbox extends React.Component {
                 role="button"
                 tabIndex="0"
                 onKeyPress={this.handleClose}>
-                  <Icon name="cancel_16"/>
+                <Icon name="cancel_16" {...iconProps}/>
               </div>
+              {...tooltipProps}
             </Tooltip>
           </div>
         </div>
@@ -534,6 +542,8 @@ Lightbox.propTypes = {
   downloading: PropTypes.bool,
   /** @prop Set Height value of Lightbox */
   height: PropTypes.number.isRequired,
+  /** @prop Optional props for Icon | null */
+  iconProps: PropTypes.object,
   /** @prop Classname appended to img viewport | '' */
   imgClassName: PropTypes.string,
   /** @prop Initial index of start page | 0 */
@@ -556,6 +566,7 @@ Lightbox.propTypes = {
   onDownload: PropTypes.func,
   /** @prop Array of Lightbox pages */
   pages: PropTypes.array.isRequired,
+  /** @prop Optional Props for Tooltip | null */
   /** @prop Collection of predefined tootips for various Lightbox actions | { download: 'Download', etc } */
   tooltips: PropTypes.shape({
     download: PropTypes.string,
@@ -573,6 +584,7 @@ Lightbox.propTypes = {
 Lightbox.defaultProps = {
   decrypting: false,
   downloading: false,
+  iconProps: null,
   imgClassName: '',
   index: 0,
   info: {},
@@ -581,6 +593,7 @@ Lightbox.defaultProps = {
   onChange: null,
   onClose: null,
   onDownload: null,
+  tooltipProps: null,
   tooltips: {
     download: 'Download',
     downloading: 'Downloading...',

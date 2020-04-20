@@ -203,7 +203,7 @@ class ListItem extends React.Component {
               contextProps.type = type || (listContext && listContext.type);
               contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
               contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
-              contextProps.role = (listContext && listContext.role) || role;
+              contextProps.role = role || (listContext && listContext.role);
 
               return (
                 customAnchorNode

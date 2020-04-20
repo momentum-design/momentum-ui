@@ -9,6 +9,7 @@ const CollapseButton = props => {
     alignment,
     className,
     collapse,
+    iconProps,
     onClick,
     ...otherProps
   } = props;
@@ -29,7 +30,7 @@ const CollapseButton = props => {
         ` md-collapse-button--${alignment}` +
         `${(className && ` ${className}`) || ''}`
       }
-      children={<Icon name={getIconName()}/>}
+      children={<Icon name={getIconName()} {...iconProps}/>}
       onClick={() => handleClick()}
       {...otherProps}
     />
@@ -43,6 +44,8 @@ CollapseButton.propTypes = {
   className: PropTypes.string,
   /** @prop Sets the collapse css styling | true */
   collapse: PropTypes.bool,
+  /** @prop Optional props to pass to Icon | null */
+  iconProps: PropTypes.object,
   /** @prop Handler to be called when the user taps the CollapseButton | null */
   onClick: PropTypes.func,
 };
@@ -51,6 +54,7 @@ CollapseButton.defaultProps = {
   alignment: 'left',
   className: '',
   collapse: true,
+  iconProps: null,
   onClick: null,
 };
 

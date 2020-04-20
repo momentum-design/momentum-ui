@@ -50,10 +50,10 @@ class ComboBox extends React.Component {
   }
 
   mapOptionsToListItem = () => {
-    const { options } = this.props;
+    const { options, listItemProps } = this.props;
 
     return options.map((option, i) =>
-      <ListItem key={i} label={option} />
+      <ListItem key={i} label={option} {...listItemProps}/>
     );
   }
 
@@ -300,6 +300,8 @@ ComboBox.propTypes = {
   id: PropTypes.string,
   /** @prop Collection of props unique for Input element | null */
   inputProps: PropTypes.shape({}),
+  /** @prop Optional props for ListItem | null */
+  listItemProps: PropTypes.object,
   /** @prop Handler invoked when the user presses any key | null */
   onChange: PropTypes.func,
   /** @prop Handler invoked when the user selects the ComboBox | null  */
@@ -325,6 +327,7 @@ ComboBox.defaultProps = {
   hasSearchIcon: true,
   id: null,
   inputProps: null,
+  listItemProps: null,
   onChange: null,
   onSelect: null,
   options: [],

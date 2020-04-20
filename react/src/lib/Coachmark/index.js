@@ -88,6 +88,7 @@ class Coachmark extends React.Component {
       closeOnClick,
       contentNode,
       direction,
+      eventOverlayProps,
       header,
       maxWidth,
       onClick,
@@ -144,6 +145,7 @@ class Coachmark extends React.Component {
             close={this.handleClose}
             closeOnClick={closeOnClick}
             {...maxWidth && {maxWidth: maxWidth}}
+            {...eventOverlayProps}
           >
             {content}
           </EventOverlay>
@@ -162,6 +164,7 @@ Coachmark.defaultProps = {
   contentNode: null,
   delay: 0,
   direction: 'top-center',
+  eventOverlayProps: null,
   header: '',
   hideDelay: 0,
   isOpen: false,
@@ -202,6 +205,8 @@ Coachmark.propTypes = {
     'right-top',
     'right-bottom'
   ]),
+  /** @prop Optional props to pass to EventOverlay | null */
+  eventOverlayProps: PropTypes.object,
   /** @prop Sets the header node of Coachmark | '' */
   header: PropTypes.node,
   /** @prop Sets the time delay to hide the Coachmark | 0 */

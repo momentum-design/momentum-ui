@@ -76,6 +76,7 @@ class DatePickerCalendar extends React.Component {
 
     const { date } = this.state;
     const {
+      iconProps,
       locale,
       monthFormat,
       nextArialLabel,
@@ -106,6 +107,7 @@ class DatePickerCalendar extends React.Component {
           name='arrow-left_16'
           buttonProps={{ref: ref => this.prevMonthRef = ref}}
           tabIndex={-1}
+          {...iconProps}
         />
       );
     };
@@ -125,6 +127,7 @@ class DatePickerCalendar extends React.Component {
           name='arrow-right_16'
           buttonProps={{ref: ref => this.nextMonthRef = ref}}
           tabIndex={-1}
+          {...iconProps}
         />
       );
     };
@@ -182,6 +185,8 @@ DatePickerCalendar.propTypes = {
   focus: PropTypes.instanceOf(moment),
   // Internal Context Use Only
   handleMonthChange: PropTypes.func,
+  /** @prop Optional props for Icon | null */
+  iconProps: PropTypes.object,
   /** Sets the language for the DatePickerCalendar | 'en' */
   locale: PropTypes.string,
   /** Sets the last date in which the calendar does not disable | null */
@@ -203,6 +208,7 @@ DatePickerCalendar.propTypes = {
 DatePickerCalendar.defaultProps = {
   focus: null,
   handleMonthChange: null,
+  iconProps: null,
   locale: 'en',
   maxDate: null,
   minDate: null,

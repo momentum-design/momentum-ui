@@ -11,6 +11,7 @@ class CloseWrapper extends React.PureComponent {
       children,
       className,
       actionNode,
+      iconProps,
       onClick,
       ...otherProps
     } = this.props;
@@ -30,6 +31,7 @@ class CloseWrapper extends React.PureComponent {
             buttonClassName='md-close-wrapper__action'
             name='clear-active_20'
             onClick={onClick}
+            {...iconProps}
           />
         )
     );
@@ -54,6 +56,7 @@ CloseWrapper.defaultProps = {
   className: '',
   actionNode: null,
   onClick: null,
+  iconProps: null,
 };
 
 CloseWrapper.propTypes = {
@@ -67,6 +70,8 @@ CloseWrapper.propTypes = {
   actionNode: PropTypes.node,
   /** @prop Handler when the user clicks the close icon button | () => {} */
   onClick: PropTypes.func,
+  /** @prop Optional props to pass to Icon | null */
+  iconProps: PropTypes.object,
 };
 
 CloseWrapper.displayName = 'CloseWrapper';

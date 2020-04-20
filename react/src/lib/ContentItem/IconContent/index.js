@@ -7,6 +7,7 @@ const IconContent = props => {
     actionNode,
     className,
     icon,
+    iconProps,
     isProtected,
     loading,
     onClick,
@@ -44,7 +45,7 @@ const IconContent = props => {
           <div className="md-content-file__icon">{actionNode}</div>
         )}
         <span>
-          <Icon name={icon} />
+          <Icon name={icon} {...iconProps}/>
         </span>
       </div>
       <div className="md-content-file__info-container">
@@ -61,6 +62,7 @@ IconContent.defaultProps = {
   actionNode: null,
   className: '',
   icon: '',
+  iconProps: null,
   isProtected: null,
   loading: false,
   onClick: null,
@@ -72,6 +74,7 @@ IconContent.propTypes = {
   actionNode: PropTypes.node,
   className: PropTypes.string,
   icon: PropTypes.string,
+  iconProps: PropTypes.object,
   isProtected: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,

@@ -173,6 +173,7 @@ class DatePicker extends React.Component {
       children,
       className,
       direction,
+      eventOverlayProps,
       isDynamic,
       onMonthChange,
       showArrow,
@@ -215,6 +216,7 @@ class DatePicker extends React.Component {
         showArrow={showArrow}
         isDynamic={isDynamic}
         onKeyDown={this.handleInputKeyDown}
+        {...eventOverlayProps}
       >
         {calendar}
       </EventOverlay>
@@ -242,6 +244,8 @@ DatePicker.propTypes = {
   className: PropTypes.string,
   /** @prop Set the direction in which the DatePicker opens | 'bottom-center' */
   direction: PropTypes.string,
+  /** @prop Optional props for EventOverlay | null */
+  eventOverlayProps: PropTypes.object,
   /** @prop Function to filter Dates | null */
   filterDate: PropTypes.func,
   /** @prop Sets the DatePicker EventOverlay to be dynamic | true */
@@ -276,6 +280,7 @@ DatePicker.defaultProps = {
   children: null,
   className: '',
   direction: 'bottom-center',
+  eventOverlayProps: null,
   filterDate: null,
   isDynamic: true,
   locale: 'en',

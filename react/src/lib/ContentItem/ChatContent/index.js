@@ -14,6 +14,7 @@ const ChatContentItem = props => {
     isProtected,
     loading,
     onClick,
+    spinnerProps,
     style,
     title,
     ...otherProps
@@ -79,7 +80,7 @@ const ChatContentItem = props => {
           loading
           &&
           <div className={`${(content ? ' md-content--opacity' : ' md-content--centered')}`}>
-            <Spinner />
+            <Spinner {...spinnerProps}/>
           </div>
         }
         {
@@ -123,6 +124,7 @@ ChatContentItem.defaultProps = {
   isProtected: null,
   loading: false,
   onClick: null,
+  spinnerProps: null,
   style: null,
   title: '',
   type: '',
@@ -148,6 +150,7 @@ ChatContentItem.propTypes = {
   isProtected: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
+  spinnerProps: PropTypes.object,
   style: PropTypes.object,
   title: PropTypes.string,
   type: PropTypes.string,

@@ -61,6 +61,7 @@ class SidebarNavItem extends React.Component {
       className,
       level,
       icon,
+      iconProps,
       keyboardKey,
       title,
       titleNode,
@@ -85,6 +86,7 @@ class SidebarNavItem extends React.Component {
             name={icon}
             sizeOverride
             size={secondary ? 20 : 16}
+            {...iconProps}
           />
         );
       } else return icon;
@@ -176,6 +178,8 @@ SidebarNavItem.propTypes = {
   expanded: PropTypes.bool,
   /** @prop Icon string or node for the title | null */
   icon: PropTypes.node,
+  /** @prop Optional props for Icon | null */
+  iconProps: PropTypes.object,
   /** @prop Unique string used for keyboard navigation | '' */
   keyboardKey: PropTypes.string,
   // Internal Context Use Only
@@ -198,6 +202,7 @@ SidebarNavItem.defaultProps = {
   children: null,
   expanded: false,
   icon: null,
+  iconProps: null,
   keyboardKey: '',
   level: null,
   primary: false,

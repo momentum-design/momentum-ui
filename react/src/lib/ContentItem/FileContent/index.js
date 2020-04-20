@@ -14,6 +14,7 @@ const FileContentItem = props => {
     loading,
     loadingText,
     onClick,
+    spinnerProps,
     style,
     subtitle,
     title,
@@ -56,7 +57,7 @@ const FileContentItem = props => {
         style={{backgroundImage:content && `url(${content})`}}
       >
         <div className={`${(content && ' md-content--opacity') || ''}`}>
-          <Spinner />
+          <Spinner {...spinnerProps}/>
         </div>
       </div>
       :
@@ -124,6 +125,7 @@ FileContentItem.defaultProps = {
   loading: false,
   loadingText: 'Loading',
   onClick: null,
+  spinnerProps: null,
   style: null,
   subtitle: '',
   title: '',
@@ -140,6 +142,7 @@ FileContentItem.propTypes = {
   loading: PropTypes.bool,
   loadingText: PropTypes.string,
   onClick: PropTypes.func,
+  spinnerProps: PropTypes.object,
   style: PropTypes.object,
   subtitle: PropTypes.string,
   title: PropTypes.string,

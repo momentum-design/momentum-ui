@@ -10,6 +10,7 @@ import {
 
 const SearchInput = props => {
   const {
+    iconProps,
     isLoading,
     ...otherProps
   } = props;
@@ -19,7 +20,7 @@ const SearchInput = props => {
       inputBefore={
         isLoading
           ? <Spinner size={20} />
-          : <Icon name='search_20'/>
+          : <Icon name='search_20' {...iconProps}/>
       }
       {...otherProps}
     />
@@ -27,11 +28,14 @@ const SearchInput = props => {
 };
 
 SearchInput.propTypes = {
+  /** @prop Optional props for Icon | null */
+  iconProps: PropTypes.object,
   /** @prop Determines if spinner is present | false */
   isLoading: PropTypes.bool
 };
 
 SearchInput.defaultProps = {
+  iconProps: null,
   isLoading: false
 };
 

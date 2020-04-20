@@ -490,4 +490,97 @@
       background-color: $md-gray-10;
     }
   }
+
+  .#{$prefix}-tab__item {
+    flex-grow: 1;
+    &.#{$prefix}-type--pills {
+      min-width: 200px;
+      text-align: center;
+
+      > a {
+        padding: $tab-pills__padding;
+        font-size: $tab-pills__font-size;
+        line-height: 1.5;
+        color: $tab-pills__color;
+        background: $tab-pills__background;
+        border: $tab-pills__border;
+        background-clip: padding-box;
+
+        &:hover {
+          background: $tab-pills--hover__background;
+        }
+      }
+
+      &.active {
+        > a,
+        a:hover,
+        a:focus {
+          background: $tab-pills--active__background;
+        }
+      }
+
+      &.disabled {
+        pointer-events: none;
+
+        > a,
+        &:hover,
+        &:focus {
+          background: $tab-pills__background;
+        }
+      }
+
+      &:first-child {
+        > a {
+          @include border-left-radius(20px);
+        }
+      }
+
+      &:last-child {
+        > a {
+          @include border-right-radius(20px);
+        }
+      }
+    }
+    &.#{$prefix}-type--tabs {
+      float: left;
+
+      > a {
+        padding-right: 30px;
+        padding-bottom: 9.5px;
+        padding-left: 0;
+        margin-right: 12px;
+        color: $md-gray-90;
+        text-align: left;
+        cursor: pointer;
+        border: 0px;
+        border-bottom: 1px solid $md-gray-30;
+        border-radius: 0px;
+
+        &:hover {
+          padding-bottom: 8px;
+          background-color: transparent;
+          border-bottom: $tab-tabs--hover__border;
+          transition: border-bottom-color 0.5s ease;
+        }
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          padding-bottom: 8px;
+          color: $tab-tabs--active__color;
+          cursor: default;
+          background-color: transparent;
+          border: 0px;
+          border-bottom: $tab-tabs--active__border;
+          transition: border-bottom-color 0.5s ease, color 0.5s ease;
+        }
+      }
+    }
+  }
 }

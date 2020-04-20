@@ -13,6 +13,9 @@ class ModalHeader extends React.PureComponent {
       headerLabel,
       message,
       showCloseButton,
+      role,
+      ariaLevel,
+      ariaLabel,
       ...props
     } = this.props;
     const {
@@ -31,7 +34,7 @@ class ModalHeader extends React.PureComponent {
           children
           ? children
           : [
-              <span key='title-0' className='md-modal__title'>{headerLabel}</span>,
+              <span key='title-0' className='md-modal__title' role={role} aria-level={ariaLevel} aria-label={ariaLabel}>{headerLabel}</span>,
               message && <span key='title-1' className='md-modal__message'>{message}</span>
           ]
         }
@@ -60,7 +63,13 @@ ModalHeader.propTypes = {
    /** @prop Modal message | '' */
   message: PropTypes.string,
   /** @prop show/hide close button | true */
-  showCloseButton: PropTypes.bool
+  showCloseButton: PropTypes.bool,
+    /** @prop show/hide close button | null */
+  role: PropTypes.string,
+    /** @prop show/hide close button | null */
+  ariaLevel: PropTypes.number,
+    /** @prop show/hide close button | null */
+  ariaLabel: PropTypes.string,
 };
 
 ModalHeader.defaultProps = {
@@ -70,6 +79,9 @@ ModalHeader.defaultProps = {
   headerLabel: '',
   message: '',
   showCloseButton: true,
+  role: null,
+  ariaLabel: null,
+  ariaLevel: null,
 };
 
 ModalHeader.contextTypes = {

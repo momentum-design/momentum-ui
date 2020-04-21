@@ -8,7 +8,7 @@ import React from 'react';
 } from '@momentum-ui/react';
  export default function TabsDefault() {
   return (
-    <Tabs>
+    <Tabs tabType="tabs">
       <TabList>
         <Tab
           heading='First Tab'

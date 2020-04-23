@@ -567,6 +567,7 @@ Lightbox.propTypes = {
   /** @prop Array of Lightbox pages */
   pages: PropTypes.array.isRequired,
   /** @prop Optional Props for Tooltip | null */
+  tooltipProps: PropTypes.object,
   /** @prop Collection of predefined tootips for various Lightbox actions | { download: 'Download', etc } */
   tooltips: PropTypes.shape({
     download: PropTypes.string,

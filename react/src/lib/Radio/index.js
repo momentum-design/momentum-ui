@@ -43,7 +43,7 @@ const Radio = props => {
         onChange={onChange}
         tabIndex={tabIndex}
       />
-      <Label className='md-radio__label' label={label} htmlFor={htmlId} {...lableProps}/>
+      <Label className='md-radio__label' label={label} htmlFor={htmlId} {...labelProps}/>
       {children}
     </div>
   );

@@ -169,7 +169,7 @@ class ListItem extends React.Component {
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
-      ...cxtProps.focus && { 'aria-current': `${cxtProps.focus}` },
+      ...!cxtProps?.ariaConfig?.disableAriaCurrent && {...cxtProps.focus && { 'aria-current': `${cxtProps.focus}` }},
       ...keyboardNavKey && { 'data-md-keyboard-key': keyboardNavKey },
       ...(title || label) && {title: title || label},
       ...otherProps
@@ -203,7 +203,8 @@ class ListItem extends React.Component {
               contextProps.type = type || (listContext && listContext.type);
               contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
               contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
-              contextProps.role = role || (listContext && listContext.role);
+              contextProps.role = (listContext && listContext.role) || role;
+              contextProps.ariaConfig = listContext && listContext.ariaConfig;
 
               return (
                 customAnchorNode

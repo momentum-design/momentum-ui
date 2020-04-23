@@ -38,6 +38,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "active": null,
+      "ariaConfig": null,
       "children": Array [
         <ListItemHeader
           className=""
@@ -131,6 +132,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "active": null,
+        "ariaConfig": null,
         "children": Array [
           <ListItemHeader
             className=""

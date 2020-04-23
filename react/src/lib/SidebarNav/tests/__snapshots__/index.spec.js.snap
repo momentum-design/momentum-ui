@@ -36,6 +36,7 @@ ShallowWrapper {
         >
           <List
             active={null}
+            ariaConfig={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
             focus={null}
             focusFirst={true}
@@ -74,6 +75,7 @@ ShallowWrapper {
         >
           <List
             active={null}
+            ariaConfig={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
             focus={null}
             focusFirst={true}
@@ -113,6 +115,7 @@ ShallowWrapper {
             null,
             <List
               active={null}
+              ariaConfig={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focus={null}
               focusFirst={true}
@@ -149,6 +152,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "active": null,
+              "ariaConfig": null,
               "children": null,
               "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
               "focus": null,
@@ -220,6 +224,7 @@ ShallowWrapper {
           >
             <List
               active={null}
+              ariaConfig={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focus={null}
               focusFirst={true}
@@ -258,6 +263,7 @@ ShallowWrapper {
           >
             <List
               active={null}
+              ariaConfig={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focus={null}
               focusFirst={true}
@@ -297,6 +303,7 @@ ShallowWrapper {
               null,
               <List
                 active={null}
+                ariaConfig={null}
                 className="md-sidebar-nav__group md-sidebar-nav__group--primary"
                 focus={null}
                 focusFirst={true}
@@ -333,6 +340,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "active": null,
+                "ariaConfig": null,
                 "children": null,
                 "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
                 "focus": null,

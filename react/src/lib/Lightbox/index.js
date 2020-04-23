@@ -332,23 +332,22 @@ class Lightbox extends React.Component {
 
 
     const leftArrowControl = (
-      <Tooltip tooltip={tooltips.previous} direction="right-center">
+      <Tooltip tooltip={tooltips.previous} direction="right-center" {...tooltipProps}>
         <div
           className="md-lightbox__page-control md-lightbox__page-control-icon md-lightbox__page-controls--left"
           role="button"
           tabIndex="0"
           onKeyPress={e => this.triggerPageChange(index - 1, e)}
           onClick={e => this.triggerPageChange(index - 1, e)}
-          style={{transform: 'rotate(-180deg)'}}
+          style={{ transform: 'rotate(-180deg)' }}
         >
-          <Icon name="arrow-right_16" {...iconProps}/>
+          <Icon name="arrow-right_16" {...iconProps} />
         </div>
-        {...tooltipProps}
       </Tooltip>
     );
 
     const rightArrowControl = (
-      <Tooltip tooltip={tooltips.next} direction="left-center">
+      <Tooltip tooltip={tooltips.next} direction="left-center" {...tooltipProps}>
         <div
           className="md-lightbox__page-control md-lightbox__page-control-icon md-lightbox__page-controls--right"
           role="button"
@@ -356,9 +355,8 @@ class Lightbox extends React.Component {
           onKeyPress={e => this.triggerPageChange(index + 1, e)}
           onClick={e => this.triggerPageChange(index + 1, e)}
         >
-          <Icon name="arrow-right_16" {...iconProps}/>
+          <Icon name="arrow-right_16" {...iconProps} />
         </div>
-        {...tooltipProps}
       </Tooltip>
     );
 
@@ -379,38 +377,39 @@ class Lightbox extends React.Component {
         visibility: 'hidden'
       } : {};
 
-      const pageControl = pages.length > 1 ? (
-        <div className="md-lightbox__controls md-lightbox__controls--center">
-          <Tooltip tooltip={tooltips.previous}>
-            <div className="md-lightbox__control"
-              onClick={e => this.triggerPageChange(index - 1, e)}
-              role="button"
-              tabIndex="0"
-              onKeyPress={e => this.triggerPageChange(index - 1, e)}
-              style={{transform: 'rotate(-180deg)'}}
-            >
-              <Icon name="arrow-right_16" {...iconProps}/>
-            </div>
-            {...tooltipProps}
-          </Tooltip>
-          <span className="md-lightbox__control-value">{`${index + 1} / ${pages.length}`}</span>
-          <Tooltip tooltip={tooltips.next}>
-            <div className="md-lightbox__control"
-              role="button"
-              onClick={e => this.triggerPageChange(index + 1, e)}
-              tabIndex="0"
-              onKeyPress={e => this.triggerPageChange(index + 1, e)}
-            >
-              <Icon name="arrow-right_16"/>
-            </div>
-            {...tooltipProps}
-          </Tooltip>
-        </div>
-      ) : (
-        <div className="md-lightbox__controls">
-          <span className="md-lightbox__control-value">{index + 1}</span>
-        </div>
-      );
+      const pageControl =
+        pages.length > 1 ? (
+          <div className="md-lightbox__controls md-lightbox__controls--center">
+            <Tooltip tooltip={tooltips.previous} {...tooltipProps}>
+              <div
+                className="md-lightbox__control"
+                onClick={e => this.triggerPageChange(index - 1, e)}
+                role="button"
+                tabIndex="0"
+                onKeyPress={e => this.triggerPageChange(index - 1, e)}
+                style={{ transform: 'rotate(-180deg)' }}
+              >
+                <Icon name="arrow-right_16" {...iconProps} />
+              </div>
+            </Tooltip>
+            <span className="md-lightbox__control-value">{`${index + 1} / ${pages.length}`}</span>
+            <Tooltip tooltip={tooltips.next} {...tooltipProps}>
+              <div
+                className="md-lightbox__control"
+                role="button"
+                onClick={e => this.triggerPageChange(index + 1, e)}
+                tabIndex="0"
+                onKeyPress={e => this.triggerPageChange(index + 1, e)}
+              >
+                <Icon name="arrow-right_16" />
+              </div>
+            </Tooltip>
+          </div>
+        ) : (
+          <div className="md-lightbox__controls">
+            <span className="md-lightbox__control-value">{index + 1}</span>
+          </div>
+        );
 
       return (
         <div
@@ -421,41 +420,46 @@ class Lightbox extends React.Component {
           tabIndex="0"
         >
           <div className="md-lightbox__controls" style={controlStyle}>
-            <Tooltip tooltip={tooltips.zoomOut}>
-              <div className="md-lightbox__control"
+            <Tooltip tooltip={tooltips.zoomOut} {...tooltipProps}>
+              <div
+                className="md-lightbox__control"
                 onClick={() => this.setZoom(-0.25)}
                 role="button"
                 tabIndex="0"
                 onKeyPress={() => this.setZoom(-0.25)}
               >
-                <Icon name="zoom-out_16" {...iconProps}/>
+                <Icon name="zoom-out_16" {...iconProps} />
               </div>
-              {...tooltipProps}
             </Tooltip>
-            <span className="md-lightbox__control-value">{Math.round((newHeight * 1.0)/height * 100)}%</span>
-            <Tooltip tooltip={tooltips.zoomIn}>
-              <div className="md-lightbox__control"
+            <span className="md-lightbox__control-value">
+              {Math.round(((newHeight * 1.0) / height) * 100)}%
+            </span>
+            <Tooltip tooltip={tooltips.zoomIn} {...tooltipProps}>
+              <div
+                className="md-lightbox__control"
                 role="button"
                 onClick={() => this.setZoom(0.25)}
                 tabIndex="0"
                 onKeyPress={() => this.setZoom(0.25)}
               >
-                <Icon name="zoom-in_16"/>
+                <Icon name="zoom-in_16" />
               </div>
-              {...tooltipProps}
             </Tooltip>
           </div>
           {pageControl}
           <div className="md-lightbox__controls" style={controlStyle}>
             <span className="md-lightbox__control-value">{info.size}</span>
-            <Tooltip tooltip={downloading ? tooltips.downloading : tooltips.download}>
-                { downloading ?
-                    <div className="md-lightbox__control md-lightbox__control-spinner">
-                      <Spinner size={28}/>
-                    </div> :
-                    downloadButton
-                }
+            <Tooltip
+              tooltip={downloading ? tooltips.downloading : tooltips.download}
               {...tooltipProps}
+            >
+              {downloading ? (
+                <div className="md-lightbox__control md-lightbox__control-spinner">
+                  <Spinner size={28} />
+                </div>
+              ) : (
+                downloadButton
+              )}
             </Tooltip>
           </div>
         </div>
@@ -472,32 +476,32 @@ class Lightbox extends React.Component {
         dialogClass="md-lightbox"
         underlayClass="md-lightbox__container"
       >
-        <div className="md-lightbox__header" ref={ref => this.lightBox = ref}>
+        <div className="md-lightbox__header" ref={ref => (this.lightBox = ref)}>
           <div className="md-lightbox__header-item--left">
             <div className="md-lightbox__header-meta">
-              <div className="md-lightbox__header-sharer">
-                {info.sharedBy}
-              </div>
-              <div className="md-lightbox__header-timestamp">
-                {info.sharedOn}
-              </div>
+              <div className="md-lightbox__header-sharer">{info.sharedBy}</div>
+              <div className="md-lightbox__header-timestamp">{info.sharedOn}</div>
             </div>
           </div>
           <div className="md-lightbox__header-item--center">
-            <div className="md-lightbox__header-name">
-              {name}
-            </div>
+            <div className="md-lightbox__header-name">{name}</div>
           </div>
           <div className="md-lightbox__header-item--right">
-            <Tooltip popoverProps={{ isContained: true }} tooltip={tooltips.exit} direction="bottom-right">
-              <div className="md-lightbox__control"
+            <Tooltip
+              popoverProps={{ isContained: true }}
+              tooltip={tooltips.exit}
+              direction="bottom-right"
+              {...tooltipProps}
+            >
+              <div
+                className="md-lightbox__control"
                 onClick={this.handleClose}
                 role="button"
                 tabIndex="0"
-                onKeyPress={this.handleClose}>
-                <Icon name="cancel_16" {...iconProps}/>
+                onKeyPress={this.handleClose}
+              >
+                <Icon name="cancel_16" {...iconProps} />
               </div>
-              {...tooltipProps}
             </Tooltip>
           </div>
         </div>
@@ -515,12 +519,9 @@ class Lightbox extends React.Component {
                 `md-lightbox__viewport` +
                 `${(!!currentPage.decrypting && ` md-lightbox__viewport--decrypting`) || ''}`
               }
-              ref={ref => this.viewport = ref}
+              ref={ref => (this.viewport = ref)}
             >
-              {
-                pages[index].decrypting &&
-                <Spinner className="md-lightbox__decrypting-spinner" />
-              }
+              {pages[index].decrypting && <Spinner className="md-lightbox__decrypting-spinner" />}
               {getViewport()}
             </div>
             {showColumn && leftArrowControl}

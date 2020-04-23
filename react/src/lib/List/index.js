@@ -33,7 +33,8 @@ class List extends React.Component {
         active: props.active,
         focus: (props.shouldFocusActive && props.active) || props.focus,
         role: props.itemRole,
-        type: props.type
+        type: props.type,
+        ariaConfig: props.ariaConfig
       },
       selectContext: {
         parentKeyDown: this.handleKeyDown,
@@ -350,6 +351,7 @@ class List extends React.Component {
     } = this.state;
 
     const otherProps = omit({...props}, [
+      'ariaConfig',
       'focusFirst',
       'focusFirstQuery',
       'focusQuery',
@@ -405,6 +407,8 @@ List.propTypes = {
     PropTypes.array,
     PropTypes.number
   ]),
+  /** @prop Optional parameter for accessibility configuration | null */
+  ariaConfig: PropTypes.object,
   /** @prop Children nodes to render inside List | null */
   children: PropTypes.node,
   /** @prop Optional css class string | '' */
@@ -445,6 +449,7 @@ List.propTypes = {
 
 List.defaultProps = {
   active: null,
+  ariaConfig: null,
   children: null,
   className: '',
   id: null,

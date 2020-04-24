@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <List
     active={null}
+    ariaConfig={null}
     className=""
     focus={null}
     focusFirst={true}
@@ -41,6 +42,7 @@ ShallowWrapper {
         value={
           Object {
             "active": null,
+            "ariaConfig": null,
             "focus": null,
             "role": "listitem",
             "type": null,
@@ -77,6 +79,7 @@ ShallowWrapper {
         />,
         "value": Object {
           "active": null,
+          "ariaConfig": null,
           "focus": null,
           "role": "listitem",
           "type": null,
@@ -148,6 +151,7 @@ ShallowWrapper {
           value={
             Object {
               "active": null,
+              "ariaConfig": null,
               "focus": null,
               "role": "listitem",
               "type": null,
@@ -184,6 +188,7 @@ ShallowWrapper {
           />,
           "value": Object {
             "active": null,
+            "ariaConfig": null,
             "focus": null,
             "role": "listitem",
             "type": null,

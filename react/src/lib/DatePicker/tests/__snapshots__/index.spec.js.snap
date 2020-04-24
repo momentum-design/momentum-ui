@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <DatePicker
     className=""
     direction="bottom-center"
+    eventOverlayProps={null}
     filterDate={null}
     isDynamic={true}
     locale="en"

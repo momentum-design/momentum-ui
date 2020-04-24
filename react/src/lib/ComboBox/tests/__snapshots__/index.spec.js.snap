@@ -10,6 +10,7 @@ ShallowWrapper {
     hasSearchIcon={true}
     id={null}
     inputProps={null}
+    listItemProps={null}
     onChange={null}
     onSelect={null}
     options={
@@ -50,6 +51,7 @@ ShallowWrapper {
           aria-autocomplete="list"
           clear={false}
           disabled={false}
+          iconProps={null}
           inputRef={[Function]}
           isLoading={false}
           onChange={[Function]}
@@ -73,6 +75,7 @@ ShallowWrapper {
           "aria-autocomplete": "list",
           "clear": false,
           "disabled": false,
+          "iconProps": null,
           "inputRef": [Function],
           "isLoading": false,
           "onChange": [Function],
@@ -103,6 +106,7 @@ ShallowWrapper {
             aria-autocomplete="list"
             clear={false}
             disabled={false}
+            iconProps={null}
             inputRef={[Function]}
             isLoading={false}
             onChange={[Function]}
@@ -126,6 +130,7 @@ ShallowWrapper {
             "aria-autocomplete": "list",
             "clear": false,
             "disabled": false,
+            "iconProps": null,
             "inputRef": [Function],
             "isLoading": false,
             "onChange": [Function],

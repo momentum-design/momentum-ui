@@ -8,6 +8,7 @@ ShallowWrapper {
     decrypting={false}
     downloading={false}
     height={100}
+    iconProps={null}
     imgClassName=""
     index={0}
     info={Object {}}
@@ -25,6 +26,7 @@ ShallowWrapper {
         },
       ]
     }
+    tooltipProps={null}
     tooltips={
       Object {
         "download": "Download",

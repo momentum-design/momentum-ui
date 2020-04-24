@@ -43,6 +43,7 @@ ShallowWrapper {
         isProtected={false}
         loading={false}
         onClick={null}
+        spinnerProps={null}
         style={null}
         title=""
         type="chat"
@@ -64,6 +65,7 @@ ShallowWrapper {
         "isProtected": false,
         "loading": false,
         "onClick": null,
+        "spinnerProps": null,
         "style": null,
         "title": "",
         "type": "chat",
@@ -91,6 +93,7 @@ ShallowWrapper {
           isProtected={false}
           loading={false}
           onClick={null}
+          spinnerProps={null}
           style={null}
           title=""
           type="chat"
@@ -112,6 +115,7 @@ ShallowWrapper {
           "isProtected": false,
           "loading": false,
           "onClick": null,
+          "spinnerProps": null,
           "style": null,
           "title": "",
           "type": "chat",

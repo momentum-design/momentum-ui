@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.6.0...@momentum-ui/angular@11.7.0) (2020-04-18)
+
+
+### Features
+
+* **tooltip:** add innerHTML property ([e215a3e](https://github.com/momentum-design/momentum-ui/commit/e215a3eeacddb3a5b0a53860d0b4437035d926bc))
+
+
+
+
+
 # [11.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.5.3...@momentum-ui/angular@11.6.0) (2020-04-07)
 
 

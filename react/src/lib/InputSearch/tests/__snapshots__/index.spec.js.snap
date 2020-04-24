@@ -4,6 +4,7 @@ exports[`tests for <InputSearch /> should match loading SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput
+    iconProps={null}
     id="1"
     isLoading={true}
     name="test"
@@ -152,6 +153,7 @@ exports[`tests for <InputSearch /> should match normal SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput
+    iconProps={null}
     id="1"
     isLoading={false}
     name="test"
@@ -318,6 +320,7 @@ exports[`tests for <InputSearch /> should match pill SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SearchInput
+    iconProps={null}
     id="1"
     isLoading={false}
     name="test"

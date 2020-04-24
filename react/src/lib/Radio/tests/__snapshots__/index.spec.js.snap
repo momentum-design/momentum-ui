@@ -10,6 +10,7 @@ ShallowWrapper {
     htmlId="test123"
     inputRef={null}
     label=""
+    labelProps={null}
     name=""
     nestedLevel={0}
     onChange={[Function]}

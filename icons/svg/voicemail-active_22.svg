@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-    <title>voicemail_active_22</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="voicemail_active_22" fill="#000000" fill-rule="nonzero">
-            <g transform="translate(0.000000, 2.000000)">
-                <circle id="Oval" cx="15" cy="9" r="2"></circle>
-                <path d="M20,0 L2,0 C0.9,0 0,0.9 0,2 L0,16 C0,17.1 0.9,18 2,18 L20,18 C21.1,18 22,17.1 22,16 L22,2 C22,0.9 21.1,0 20,0 Z M15,12 L7,12 C5.35,12 4,10.65 4,9 C4,7.35 5.35,6 7,6 C8.65,6 10,7.35 10,9 C10,9.77 9.7,10.47 9.22,11 L12.78,11 C12.3,10.47 12,9.77 12,9 C12,7.35 13.35,6 15,6 C16.65,6 18,7.35 18,9 C18,10.65 16.65,12 15,12 Z" id="Shape"></path>
-                <circle id="Oval" cx="7" cy="9" r="2"></circle>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="22" height="22" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 2)" fill="#000" fill-rule="nonzero"><circle cx="15" cy="9" r="2"/><path d="M20 0H2C.9 0 0 .9 0 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zm-5 12H7c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3c0 .77-.3 1.47-.78 2h3.56c-.48-.53-.78-1.23-.78-2 0-1.65 1.35-3 3-3s3 1.35 3 3-1.35 3-3 3z"/><circle cx="7" cy="9" r="2"/></g></svg>

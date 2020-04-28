@@ -71,16 +71,84 @@ class ListItem extends React.Component {
   }
 
   handleKeyDown = (e, eventKey) => {
-    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
+    const { disabled, onKeyDown, parentKeyDown, value, label, focusLockTabbableChildren, tabbableChildrenQuery } = this.props;
+
+    if(disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    if (focusLockTabbableChildren && e.target) {
+      const currListItem = e.target.closest('md-list-item');
+
+      if  (currListItem) {
+        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
+        if (tabbableChildren.length) {
+          if (e.keyCode === 9 && !e.shiftKey) { // TAB only
+            // only allow focus of tabbable children if TAB on the current listitem
+            if (e.target.classList.contains('md-list-item')) {
+              for (let i = 0; i < tabbableChildren.length; i++) {
+                if (tabbableChildren[i].tabIndex === -1) {
+                  tabbableChildren[i].tabIndex = 0;
+                }
+              }
+            } else if (e.target === tabbableChildren[tabbableChildren.length - 1]) {
+              e.preventDefault();
+              e.stopPropagation();
+              // cycle focus between tabbable children (last tabbable child wil' cycle back to first tabbable child)
+              tabbableChildren[0].focus();
+            }
+          } else if (e.keyCode === 9 && e.shiftKey) { // SHIFT + TAB
+            e.preventDefault();
+            e.stopPropagation();
+            // focus on the tabbable children's associated lisitem
+            e.target.closest('.md-list-item').focus();
+          }
+        }
+      }
+    }
+
+    e.persist();
+    onKeyDown && onKeyDown(e);
+    parentKeyDown && parentKeyDown(e, { value, label, eventKey });
+  }
+
+  isFocusSwitchedToDifferentListItem = (relatedTarget, tabbableChildren, currListItem) => {
+    if (relatedTarget !== currListItem) {
+      for (let i = 0; i < tabbableChildren.length; i++) {
+        if (tabbableChildren[i] === relatedTarget) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  handleBlur = (e) => {
+    const { disabled, focusLockTabbableChildren, tabbableChildrenQuery } = this.props;
 
     if(disabled) {
       e.preventDefault();
       e.stopPropagation();
     }
 
-    e.persist();
-    onKeyDown && onKeyDown(e);
-    parentKeyDown && parentKeyDown(e, { value, label, eventKey });
+    if (focusLockTabbableChildren && e.target && e.relatedTarget) {
+      const currListItem = e.target.closest('.md-list-item');
+      if (currListItem) {
+        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
+        // only disable focus on tabbable children of the current listitem if focus is changing to another listitem
+        if (tabbableChildren.length &&
+            this.isFocusSwitchedToDifferentListItem(e.relatedTarget, tabbableChildren, currListItem)
+        ) {
+          for (let i = 0; i < tabbableChildren.length; i++) {
+            if (tabbableChildren[i].tabIndex === 0) {
+              tabbableChildren[i].tabIndex = -1;
+            }
+          }
+        }
+      }
+    }
   }
 
   verifyStructure() {
@@ -166,6 +234,7 @@ class ListItem extends React.Component {
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
         onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
+        onBlur: e => this.handleBlur(e),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
@@ -235,6 +304,8 @@ ListItem.propTypes = {
   eventKey: PropTypes.string,
   /** @prop Specifies if ListItem should automatically get focus | false */
   focus: PropTypes.bool,
+  /** @prop Locks focus to cycle between all tabbable children  | false */
+  focusLockTabbableChildren: PropTypes.bool,
   /** @prop Specifies if ListItem should automatically get focus when page loads | false */
   focusOnLoad: PropTypes.bool,
   /** @prop Sets ListItem id | null */
@@ -274,6 +345,7 @@ ListItem.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+  tabbableChildrenQuery: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -285,6 +357,7 @@ ListItem.defaultProps = {
   disabled: false,
   eventKey: '',
   focus: false,
+  focusLockTabbableChildren: false,
   focusOnLoad: false,
   id: null,
   itemIndex: null,
@@ -302,6 +375,7 @@ ListItem.defaultProps = {
   title: '',
   type: '',
   value: '',
+  tabbableChildrenQuery: '',
 };
 
 ListItem.displayName = 'ListItem';

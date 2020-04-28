@@ -70,8 +70,8 @@ class ListItem extends React.Component {
     parentOnSelect && parentOnSelect(e, { value, label, eventKey });
   }
 
-  handleKeyDown = (e, eventKey) => {
-    const { disabled, onKeyDown, parentKeyDown, value, label, focusLockTabbableChildren, tabbableChildrenQuery } = this.props;
+  handleKeyDown = (e, eventKey, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
 
     if(disabled) {
       e.preventDefault();
@@ -125,8 +125,8 @@ class ListItem extends React.Component {
     return true;
   }
 
-  handleBlur = (e) => {
-    const { disabled, focusLockTabbableChildren, tabbableChildrenQuery } = this.props;
+  handleBlur = (e, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { disabled } = this.props;
 
     if(disabled) {
       e.preventDefault();
@@ -187,6 +187,7 @@ class ListItem extends React.Component {
       disabled,
       eventKey,
       focus,
+      focusLockTabbableChildren,
       isReadOnly,
       keyboardKey,
       label,
@@ -194,6 +195,7 @@ class ListItem extends React.Component {
       refName,
       role,
       separator,
+      tabbableChildrenQuery,
       title,
       type,
       ...props
@@ -233,8 +235,8 @@ class ListItem extends React.Component {
       },
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
-        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
-        onBlur: e => this.handleBlur(e),
+        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey, focusLockTabbableChildren, tabbableChildrenQuery),
+        onBlur: e => this.handleBlur(e, focusLockTabbableChildren, tabbableChildrenQuery),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
@@ -335,6 +337,8 @@ ListItem.propTypes = {
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
+  /** @prop Query for focusLockTabbableChildren | '' */
+  tabbableChildrenQuery: PropTypes.string,
   /** @prop ListItem Title | '' */
   title: PropTypes.string,
   /** @prop ListItem size | '' */
@@ -346,7 +350,6 @@ ListItem.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  tabbableChildrenQuery: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -373,10 +376,10 @@ ListItem.defaultProps = {
   refName: 'navLink',
   role: 'listitem',
   separator: false,
+  tabbableChildrenQuery: '',
   title: '',
   type: '',
   value: '',
-  tabbableChildrenQuery: '',
 };
 
 ListItem.displayName = 'ListItem';

@@ -271,7 +271,7 @@ Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
-  ariaPressed: '',
+  ariaPressed: null,
   children: null,
   circle: false,
   className: '',

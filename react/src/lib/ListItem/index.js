@@ -79,7 +79,7 @@ class ListItem extends React.Component {
     }
     
     if (focusLockTabbableChildren && e.target) {
-      const currListItem = e.target.closest('md-list-item');
+      const currListItem = e.target.closest('.md-list-item');
 
       if  (currListItem) {
         const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);

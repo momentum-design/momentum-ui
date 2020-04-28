@@ -13,6 +13,7 @@ ShallowWrapper {
     focusQuery=""
     id="test"
     itemRole="listitem"
+    navigationDirection="both"
     onSelect={null}
     role="list"
     shouldFocusActive={false}

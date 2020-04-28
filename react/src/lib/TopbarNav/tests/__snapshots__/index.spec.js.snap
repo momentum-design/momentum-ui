@@ -33,6 +33,7 @@ ShallowWrapper {
         focusQuery=""
         id={null}
         itemRole="listitem"
+        navigationDirection="both"
         onSelect={null}
         role="list"
         shouldFocusActive={false}
@@ -63,6 +64,7 @@ ShallowWrapper {
         "focusQuery": "",
         "id": null,
         "itemRole": "listitem",
+        "navigationDirection": "both",
         "onSelect": null,
         "role": "list",
         "shouldFocusActive": false,
@@ -96,6 +98,7 @@ ShallowWrapper {
           focusQuery=""
           id={null}
           itemRole="listitem"
+          navigationDirection="both"
           onSelect={null}
           role="list"
           shouldFocusActive={false}
@@ -126,6 +129,7 @@ ShallowWrapper {
           "focusQuery": "",
           "id": null,
           "itemRole": "listitem",
+          "navigationDirection": "both",
           "onSelect": null,
           "role": "list",
           "shouldFocusActive": false,

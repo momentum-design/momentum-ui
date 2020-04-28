@@ -35,6 +35,17 @@
           &:before {
             color: $form-control__content;
             cursor: pointer;
+            border: 1px solid transparent;
+            content: "\FB23";
+          }
+        }
+      }
+      &:not(:checked) {
+        + .#{$radio__class}__label {
+          &:before {
+            color: $form-control__content;
+            border: 1px solid $md-gray-30;
+            content: no-close-quote;
           }
         }
       }

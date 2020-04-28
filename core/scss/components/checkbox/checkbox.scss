@@ -37,6 +37,17 @@
           &:before {
             color: $form-control__content;
             cursor: pointer;
+            border: 1px solid transparent;
+          }
+        }
+      }
+
+      &:not(:checked) {
+        + .#{$checkbox__class}__label {
+          &:before {
+            color: $form-control__content;
+            content: close-quote;
+            border: 1px solid $md-gray-30;
           }
         }
       }

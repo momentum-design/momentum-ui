@@ -70,8 +70,8 @@ class ListItem extends React.Component {
     parentOnSelect && parentOnSelect(e, { value, label, eventKey });
   }
 
-  handleKeyDown = (e, eventKey) => {
-    const { disabled, onKeyDown, parentKeyDown, value, label, focusLockTabbableChildren, tabbableChildrenQuery } = this.props;
+  handleKeyDown = (e, eventKey, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
 
     if(disabled) {
       e.preventDefault();
@@ -125,8 +125,8 @@ class ListItem extends React.Component {
     return true;
   }
 
-  handleBlur = (e) => {
-    const { disabled, focusLockTabbableChildren, tabbableChildrenQuery } = this.props;
+  handleBlur = (e, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { disabled } = this.props;
 
     if(disabled) {
       e.preventDefault();
@@ -235,8 +235,8 @@ class ListItem extends React.Component {
       },
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
-        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
-        onBlur: e => this.handleBlur(e),
+        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey, focusLockTabbableChildren, tabbableChildrenQuery),
+        onBlur: e => this.handleBlur(e, focusLockTabbableChildren, tabbableChildrenQuery),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
@@ -350,7 +350,6 @@ ListItem.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  tabbableChildrenQuery: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -381,7 +380,6 @@ ListItem.defaultProps = {
   title: '',
   type: '',
   value: '',
-  tabbableChildrenQuery: '',
 };
 
 ListItem.displayName = 'ListItem';

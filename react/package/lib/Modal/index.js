@@ -1,0 +1,170 @@
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactAriaModal = _interopRequireDefault(require("react-aria-modal"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var Modal = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(Modal, _React$Component);
+
+  function Modal() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.state = {
+      animationClass: _this.props.show ? 'in' : ''
+    };
+
+    _this.getChildContext = function () {
+      return {
+        handleClose: function handleClose(e) {
+          return _this.closeModal(e);
+        }
+      };
+    };
+
+    _this.closeModal = function (e) {
+      _this.setAnimationState();
+
+      return setTimeout(function () {
+        _this.props.onHide(e);
+      }, 300);
+    };
+
+    _this.setAnimationState = function (isOpen) {
+      _this.setState({
+        animationClass: isOpen ? 'in' : ''
+      });
+    };
+
+    return _this;
+  }
+
+  var _proto = Modal.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    prevProps.show !== this.props.show && this.props.show && this.setAnimationState(true);
+  };
+
+  _proto.render = function render() {
+    var _this2 = this;
+
+    var _this$props = this.props,
+        applicationId = _this$props.applicationId,
+        backdrop = _this$props.backdrop,
+        backdropClickExit = _this$props.backdropClickExit,
+        children = _this$props.children,
+        className = _this$props.className,
+        escapeExits = _this$props.escapeExits,
+        focusDialog = _this$props.focusDialog,
+        htmlId = _this$props.htmlId,
+        renderTo = _this$props.renderTo,
+        show = _this$props.show,
+        size = _this$props.size,
+        props = _objectWithoutPropertiesLoose(_this$props, ["applicationId", "backdrop", "backdropClickExit", "children", "className", "escapeExits", "focusDialog", "htmlId", "renderTo", "show", "size"]);
+
+    var modalContent = _react.default.createElement("div", {
+      className: "md-modal__content"
+    }, _react.default.createElement("div", {
+      className: "md-modal__flex-container"
+    }, children));
+
+    var RenderModal = renderTo ? _reactAriaModal.default.renderTo("#" + renderTo) : _reactAriaModal.default;
+
+    var getModal = function getModal() {
+      return show && _react.default.createElement(RenderModal, _extends({
+        onExit: _this2.closeModal,
+        getApplicationNode: function getApplicationNode() {
+          return document.querySelector("#" + applicationId);
+        },
+        dialogClass: "md-modal" + (" md-modal--" + size) + (" " + _this2.state.animationClass) + ("" + (className && " " + className || '')),
+        includeDefaultStyles: false,
+        titleId: htmlId,
+        underlayClass: backdrop ? "md-modal__backdrop fade" + (" " + _this2.state.animationClass) : '',
+        underlayClickExits: backdropClickExit,
+        escapeExits: escapeExits,
+        focusDialog: focusDialog
+      }, props), modalContent);
+    };
+
+    return getModal();
+  };
+
+  return Modal;
+}(_react.default.Component);
+
+Modal.childContextTypes = {
+  handleClose: _propTypes.default.func
+};
+Modal.propTypes = {
+  /** @prop application DOM id, used to set aria-hidden to true when modal is open */
+  applicationId: _propTypes.default.string.isRequired,
+
+  /** @prop Determines the visibility and ability to edit the backdrop of the Modal | true */
+  backdrop: _propTypes.default.bool,
+
+  /** @prop To enable/disable clicking on underlay to exit modal | false */
+  backdropClickExit: _propTypes.default.bool,
+
+  /** @prop Children nodes to render inside the Modal | null */
+  children: _propTypes.default.node,
+
+  /** @prop Optional css class names | '' */
+  className: _propTypes.default.string,
+
+  /** @prop To enable/disable escape to exit modal | true */
+  escapeExits: _propTypes.default.bool,
+
+  /** @prop To set focus to the entire modal rather than elements within modal | true */
+  focusDialog: _propTypes.default.bool,
+
+  /** @prop Unique HTML ID used for tying label to HTML input for automated testing */
+  htmlId: _propTypes.default.string.isRequired,
+
+  /** @prop Icon node to be rendered for Dialog | null */
+  icon: _propTypes.default.element,
+
+  /** @prop Callback function invoked when user clicks on cross button or esc key */
+  onHide: _propTypes.default.func.isRequired,
+
+  /** @prop To render to an element other than the browser window | null */
+  renderTo: _propTypes.default.string,
+
+  /** @prop Show/hide modal */
+  show: _propTypes.default.bool.isRequired,
+
+  /** @prop Size of the modal | 'default' */
+  size: _propTypes.default.oneOf(['large', 'medium', 'default', 'small', 'full', 'dialog'])
+};
+Modal.defaultProps = {
+  backdrop: true,
+  backdropClickExit: false,
+  children: null,
+  className: '',
+  escapeExits: true,
+  focusDialog: true,
+  icon: null,
+  renderTo: null,
+  show: false,
+  size: 'default'
+};
+Modal.displayName = 'Modal';
+var _default = Modal;
+exports.default = _default;

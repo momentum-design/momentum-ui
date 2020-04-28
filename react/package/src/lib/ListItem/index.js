@@ -1,0 +1,391 @@
+/** @component list-item */
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import omit from 'lodash/omit';
+import { UIDConsumer } from 'react-uid';
+import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
+import ListContext from '../ListContext';
+import mapContextToProps from '@restart/context/mapContextToProps';
+
+class ListItem extends React.Component {
+  componentDidMount() {
+    const { focus, refName, focusOnLoad } = this.props;
+    this.verifyStructure();
+
+    focusOnLoad && focus
+    && this[refName]
+    && this[refName].focus();
+  }
+
+  checkElements = tag => {
+    const children = Object.values(ReactDOM.findDOMNode(this).childNodes);
+
+    return this.countDOMChildren(children, tag);
+  };
+
+  countDOMChildren = (children, tag) =>
+    children.reduce(
+      (agg, child) => (
+        child.tagName === tag
+          ? { ...agg, count: (agg.count += 1) }
+          : agg
+      ), { count: 0, children: children.length }
+    );
+
+  getChildrenElements = nameArr => {
+    const { children } = this.props;
+    let elementCount = 0;
+
+    React.Children.forEach(children, child => {
+      if (child && (child.type && nameArr.includes(child.type.displayName))) {
+        return elementCount++;
+      }
+    });
+
+    return (
+      elementCount && {
+        length: elementCount
+      }
+    );
+  };
+
+  handleClick = (e, eventKey) => {
+    const {
+      disabled,
+      label,
+      onClick,
+      parentOnSelect,
+      value,
+    } = this.props;
+
+    if(disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    e.persist();
+    onClick && onClick(e);
+    parentOnSelect && parentOnSelect(e, { value, label, eventKey });
+  }
+
+  handleKeyDown = (e, eventKey, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
+
+    if(disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    if (focusLockTabbableChildren && e.target) {
+      const currListItem = e.target.closest('md-list-item');
+
+      if  (currListItem) {
+        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
+        if (tabbableChildren.length) {
+          if (e.keyCode === 9 && !e.shiftKey) { // TAB only
+            // only allow focus of tabbable children if TAB on the current listitem
+            if (e.target.classList.contains('md-list-item')) {
+              for (let i = 0; i < tabbableChildren.length; i++) {
+                if (tabbableChildren[i].tabIndex === -1) {
+                  tabbableChildren[i].tabIndex = 0;
+                }
+              }
+            } else if (e.target === tabbableChildren[tabbableChildren.length - 1]) {
+              e.preventDefault();
+              e.stopPropagation();
+              // cycle focus between tabbable children (last tabbable child wil' cycle back to first tabbable child)
+              tabbableChildren[0].focus();
+            }
+          } else if (e.keyCode === 9 && e.shiftKey) { // SHIFT + TAB
+            e.preventDefault();
+            e.stopPropagation();
+            // focus on the tabbable children's associated lisitem
+            e.target.closest('.md-list-item').focus();
+          }
+        }
+      }
+    }
+
+    e.persist();
+    onKeyDown && onKeyDown(e);
+    parentKeyDown && parentKeyDown(e, { value, label, eventKey });
+  }
+
+  isFocusSwitchedToDifferentListItem = (relatedTarget, tabbableChildren, currListItem) => {
+    if (relatedTarget !== currListItem) {
+      for (let i = 0; i < tabbableChildren.length; i++) {
+        if (tabbableChildren[i] === relatedTarget) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  handleBlur = (e, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { disabled } = this.props;
+
+    if(disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    if (focusLockTabbableChildren && e.target && e.relatedTarget) {
+      const currListItem = e.target.closest('.md-list-item');
+      if (currListItem) {
+        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
+        // only disable focus on tabbable children of the current listitem if focus is changing to another listitem
+        if (tabbableChildren.length &&
+            this.isFocusSwitchedToDifferentListItem(e.relatedTarget, tabbableChildren, currListItem)
+        ) {
+          for (let i = 0; i < tabbableChildren.length; i++) {
+            if (tabbableChildren[i].tabIndex === 0) {
+              tabbableChildren[i].tabIndex = -1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  verifyStructure() {
+    if (!this.props.children) return;
+
+    const anchorCount = this.checkElements('A');
+    const checkAllChildren = this.getChildrenElements(['ListItemSection', 'EventOverlay']);
+    const checkSectionChildren = this.getChildrenElements(['ListItemSection']);
+
+    if (anchorCount.count > 1) {
+      throw new Error(
+        'Only 1 primary child anchor tag may be used with ListItem component'
+      );
+    } else if (anchorCount.count === 1 && anchorCount.children > 1) {
+      throw new Error('Anchor tag can not have sibling');
+    }
+
+    if (!checkAllChildren) {
+      return;
+    } else if (checkSectionChildren.length > 3) {
+      throw new Error(
+        `Only 3 ListItemSection components can be used as children. You've used ${
+          checkSectionChildren.length
+        }`
+      );
+    }
+  }
+
+  render() {
+    const {
+      active,
+      children,
+      className,
+      customAnchorNode,
+      customRefProp,
+      disabled,
+      eventKey,
+      focus,
+      focusLockTabbableChildren,
+      isReadOnly,
+      keyboardKey,
+      label,
+      link,
+      refName,
+      role,
+      separator,
+      tabbableChildrenQuery,
+      title,
+      type,
+      ...props
+    } = this.props;
+
+    const keyboardNavKey = makeKeyboardKey(keyboardKey || title || label);
+
+    const otherProps = omit({...props}, [
+      'focusOnLoad',
+      'id',
+      'itemIndex',
+      'onClick',
+      'onKeyDown',
+      'parentKeyDown',
+      'parentOnSelect',
+      'value',
+    ]);
+
+    const setProps = cxtProps => ({
+      className:
+        'md-list-item' +
+        `${(cxtProps.type && ` md-list-item--${cxtProps.type}`) || ''}` +
+        `${(cxtProps.active && ` active`) || ''}` +
+        `${(disabled && ` disabled`) || ''}` +
+        `${(isReadOnly && ` md-list-item--read-only`) || ''}` +
+        `${(separator && ` md-list-item--separator`) || ''}` +
+        `${(className && ` ${className}`) || ''}` +
+        `${(customAnchorNode && customAnchorNode.props.className && ` ${customAnchorNode.props.className}`) || ''}`,
+      id: cxtProps.id,
+      role: cxtProps.role,
+      ...!customAnchorNode && {
+        ref: ref => (this[refName] = ref),
+        ...link && { href: link }
+      },
+      ...customAnchorNode && customRefProp && {
+        [customRefProp]: ref => this[refName] = ref
+      },
+      ...!isReadOnly && {
+        onClick: e => this.handleClick(e, cxtProps.uniqueKey),
+        onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey, focusLockTabbableChildren, tabbableChildrenQuery),
+        onBlur: e => this.handleBlur(e, focusLockTabbableChildren, tabbableChildrenQuery),
+        tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
+      },
+      'data-md-event-key': cxtProps.uniqueKey,
+      ...!cxtProps?.ariaConfig?.disableAriaCurrent && {...cxtProps.focus && { 'aria-current': `${cxtProps.focus}` }},
+      ...keyboardNavKey && { 'data-md-keyboard-key': keyboardNavKey },
+      ...(title || label) && {title: title || label},
+      ...otherProps
+    });
+
+    const addRefToAnchor = cxtProps => {
+      return React.cloneElement(
+        customAnchorNode,
+        setProps(cxtProps),
+        children || customAnchorNode.props.children || label
+      );
+    };
+
+    const createElement = cxtProps => {
+      return React.createElement(
+        link ? 'a' : 'div',
+        setProps(cxtProps),
+        children || label
+      );
+    };
+
+    return (
+      <UIDConsumer name={id => `md-list-item-${id}`}>
+        {id => (
+          <ListContext.Consumer>
+            {listContext => {
+              let contextProps = {};
+
+              contextProps.id = this.props.id || id;
+              contextProps.uniqueKey = eventKey || contextProps.id;
+              contextProps.type = type || (listContext && listContext.type);
+              contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
+              contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
+              contextProps.role = (listContext && listContext.role) || role;
+              contextProps.ariaConfig = listContext && listContext.ariaConfig;
+
+              return (
+                customAnchorNode
+                  ? addRefToAnchor(contextProps)
+                  : createElement(contextProps)
+              );
+            }}
+          </ListContext.Consumer>
+        )}
+      </UIDConsumer>
+    );
+  }
+}
+
+ListItem.propTypes = {
+  /** @prop Active prop to help determine styles | false */
+  active: PropTypes.bool,
+  /** @prop Children nodes to render inside ListItem | null  */
+  children: PropTypes.node,
+  /** @prop Optional css class string | '' */
+  className: PropTypes.string,
+  /** @prop Node in which the selection begins | null */
+  customAnchorNode: PropTypes.element,
+  /** @prop ListItem Custom Prop Name for child with custom Ref | null */
+  customRefProp: PropTypes.string,
+  /** @prop Disabled attribute for ListItem to determine styles | false */
+  disabled: PropTypes.bool,
+  /** @prop Unique string used for tracking events among ancestors | '' */
+  eventKey: PropTypes.string,
+  /** @prop Specifies if ListItem should automatically get focus | false */
+  focus: PropTypes.bool,
+  /** @prop Locks focus to cycle between all tabbable children  | false */
+  focusLockTabbableChildren: PropTypes.bool,
+  /** @prop Specifies if ListItem should automatically get focus when page loads | false */
+  focusOnLoad: PropTypes.bool,
+  /** @prop Sets ListItem id | null */
+  id: PropTypes.string,
+  /** @prop Determines if ListItem is clickable | false */
+  isReadOnly: PropTypes.bool,
+  /** @prop ListItem index number | null */
+  itemIndex: PropTypes.number,
+  /** @prop Unique string used for keyboard navigation | '' */
+  keyboardKey: PropTypes.string,
+  /** @prop ListItem label text | '' */
+  label: PropTypes.string,
+  /** @prop external link associated input | '' */
+  link: PropTypes.string,
+  /** @prop Callback function invoked by user tapping on ListItem | null */
+  onClick: PropTypes.func,
+  /** @prop Callback function invoked by user pressing on a key | null */
+  onKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentKeyDown: PropTypes.func,
+  // Internal Context Use Only
+  parentOnSelect: PropTypes.func,
+  /** @prop ListItem ref name | 'navLink' */
+  refName: PropTypes.string,
+  /** @prop Aria role | 'listitem' */
+  role: PropTypes.string,
+  /** @prop Prop that controls whether to show separator or not | false */
+  separator: PropTypes.bool,
+  /** @prop Query for focusLockTabbableChildren | '' */
+  tabbableChildrenQuery: PropTypes.string,
+  /** @prop ListItem Title | '' */
+  title: PropTypes.string,
+  /** @prop ListItem size | '' */
+  type: PropTypes.oneOf(['', 'small', 'large', 'xlarge', 'space', 'header', 36, 52, 60]),
+  /** @prop ListItem value for OnSelect value | '' */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array
+  ]),
+};
+
+ListItem.defaultProps = {
+  active: false,
+  children: null,
+  className: '',
+  customAnchorNode: null,
+  customRefProp: '',
+  disabled: false,
+  eventKey: '',
+  focus: false,
+  focusLockTabbableChildren: false,
+  focusOnLoad: false,
+  id: null,
+  itemIndex: null,
+  isReadOnly: false,
+  keyboardKey: '',
+  label: '',
+  link: '',
+  onClick: null,
+  onKeyDown: null,
+  parentKeyDown: null,
+  parentOnSelect: null,
+  refName: 'navLink',
+  role: 'listitem',
+  separator: false,
+  tabbableChildrenQuery: '',
+  title: '',
+  type: '',
+  value: '',
+};
+
+ListItem.displayName = 'ListItem';
+
+export default mapContextToProps(
+  SelectableContext,
+  context => context,
+  ListItem
+);

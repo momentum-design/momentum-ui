@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.7.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.0...@momentum-ui/react@23.7.1) (2020-04-28)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.6.1...@momentum-ui/react@23.7.0) (2020-04-25)
+
+
+### Features
+
+* **accessibility:** optionally disable aria-current tag ([#582](https://github.com/momentum-design/momentum-ui/issues/582)) ([0165ab6](https://github.com/momentum-design/momentum-ui/commit/0165ab680e008641cc567863b5db800f77e710b5))
+
+
+
+
+
 ## [23.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.6.0...@momentum-ui/react@23.6.1) (2020-04-15)
 
 

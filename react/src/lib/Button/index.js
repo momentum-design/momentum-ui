@@ -219,7 +219,7 @@ Button.propTypes = {
   ariaLabel: PropTypes.string,
   /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
-  /** @prop Boolean value for aria-pressed (toggle button accessibility) | undefined */
+  /** @prop Boolean value for aria-pressed (toggle button accessibility) | null */
   ariaPressed: PropTypes.bool,
   /** @prop Children Nodes to Render inside Button | null */
   children: PropTypes.node,
@@ -271,7 +271,7 @@ Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
-  ariaPressed: '',
+  ariaPressed: null,
   children: null,
   circle: false,
   className: '',

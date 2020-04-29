@@ -40,6 +40,9 @@ export default class ModalLarge extends React.PureComponent {
             <ModalHeader
               headerLabel='Large Modal'
               showCloseButton
+              role="heading"
+              ariaLabel="Large Modal"
+              ariaLevel="2"
             />
             <ModalBody>
               <form ref={form1 => this.form1 = form1} />

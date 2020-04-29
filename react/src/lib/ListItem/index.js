@@ -70,6 +70,14 @@ class ListItem extends React.Component {
     parentOnSelect && parentOnSelect(e, { value, label, eventKey });
   }
 
+  changeTabIndex = (tabbableChildren, index) => {
+    for (let i = 0; i < tabbableChildren.length; i++) {
+      if (tabbableChildren[i].tabIndex === (index === 0 ? -1 : 0)) {
+        tabbableChildren[i].tabIndex = index;
+      }
+    }
+  }
+
   handleKeyDown = (e, eventKey, focusLockTabbableChildren, tabbableChildrenQuery) => {
     const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
 
@@ -87,11 +95,7 @@ class ListItem extends React.Component {
           if (e.keyCode === 9 && !e.shiftKey) { // TAB only
             // only allow focus of tabbable children if TAB on the current listitem
             if (e.target.classList.contains('md-list-item')) {
-              for (let i = 0; i < tabbableChildren.length; i++) {
-                if (tabbableChildren[i].tabIndex === -1) {
-                  tabbableChildren[i].tabIndex = 0;
-                }
-              }
+              this.changeTabIndex(tabbableChildren, 0);
             } else if (e.target === tabbableChildren[tabbableChildren.length - 1]) {
               e.preventDefault();
               e.stopPropagation();
@@ -99,10 +103,20 @@ class ListItem extends React.Component {
               tabbableChildren[0].focus();
             }
           } else if (e.keyCode === 9 && e.shiftKey) { // SHIFT + TAB
-            e.preventDefault();
-            e.stopPropagation();
-            // focus on the tabbable children's associated lisitem
-            e.target.closest('.md-list-item').focus();
+            // If we are on one of the tabbable children
+            if (e.target === tabbableChildren[0]) {
+              e.preventDefault();
+              e.stopPropagation();
+              // focus on the tabbable children's associated lisitem
+              e.target.closest('.md-list-item').focus();
+              // If we are on a listitem, SHIFT + TAB exits the list
+              // so we change tabindex of children to -1
+            } else if (e.target.classList.contains('md-list-item')) {
+              this.changeTabIndex(tabbableChildren, -1);
+            }
+          } else if (e.keyCode === 38 || e.keyCode == 40) {
+            // UP/DOWN guarantees change of listitem, so we change tabindex of children to -1
+            this.changeTabIndex(tabbableChildren, -1);
           }
         }
       }
@@ -111,44 +125,6 @@ class ListItem extends React.Component {
     e.persist();
     onKeyDown && onKeyDown(e);
     parentKeyDown && parentKeyDown(e, { value, label, eventKey });
-  }
-
-  isFocusSwitchedToDifferentListItem = (relatedTarget, tabbableChildren, currListItem) => {
-    if (relatedTarget !== currListItem) {
-      for (let i = 0; i < tabbableChildren.length; i++) {
-        if (tabbableChildren[i] === relatedTarget) {
-          return false;
-        }
-      }
-    }
-
-    return true;
-  }
-
-  handleBlur = (e, focusLockTabbableChildren, tabbableChildrenQuery) => {
-    const { disabled } = this.props;
-
-    if(disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    if (focusLockTabbableChildren && e.target && e.relatedTarget) {
-      const currListItem = e.target.closest('.md-list-item');
-      if (currListItem) {
-        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
-        // only disable focus on tabbable children of the current listitem if focus is changing to another listitem
-        if (tabbableChildren.length &&
-            this.isFocusSwitchedToDifferentListItem(e.relatedTarget, tabbableChildren, currListItem)
-        ) {
-          for (let i = 0; i < tabbableChildren.length; i++) {
-            if (tabbableChildren[i].tabIndex === 0) {
-              tabbableChildren[i].tabIndex = -1;
-            }
-          }
-        }
-      }
-    }
   }
 
   verifyStructure() {
@@ -236,7 +212,6 @@ class ListItem extends React.Component {
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
         onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey, focusLockTabbableChildren, tabbableChildrenQuery),
-        onBlur: e => this.handleBlur(e, focusLockTabbableChildren, tabbableChildrenQuery),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,

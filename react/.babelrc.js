@@ -36,6 +36,7 @@ module.exports = {
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-transform-react-constant-elements'
     ['@babel/plugin-transform-runtime', { useESModules: !commonjs }],
-    'babel-plugin-dev-expression'
+    'babel-plugin-dev-expression',
+    '@babel/plugin-proposal-optional-chaining'
   ].filter(Boolean)
 };

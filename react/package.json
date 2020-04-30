@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/react",
-  "version": "23.7.1",
+  "version": "23.8.0",
   "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -78,8 +78,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^19.4.13",
-    "@momentum-ui/icons": "^7.26.0",
+    "@momentum-ui/core": "^19.4.14",
+    "@momentum-ui/icons": "^7.27.0",
     "@momentum-ui/utils": "6.0.4",
     "@restart/context": "^2.1.4",
     "dom-helpers": "^3.4.0",
@@ -96,8 +96,8 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
-    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",

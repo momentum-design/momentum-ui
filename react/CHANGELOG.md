@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.1...@momentum-ui/react@23.8.0) (2020-04-30)
+
+
+### Features
+
+* **modal:** modal header accessibility ([#596](https://github.com/momentum-design/momentum-ui/issues/596)) ([dfe6723](https://github.com/momentum-design/momentum-ui/commit/dfe6723e2d0567142f12ac9b37c29f0dd24b44bf))
+
+
+
+
+
 ## [23.7.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.0...@momentum-ui/react@23.7.1) (2020-04-28)
 
 **Note:** Version bump only for package @momentum-ui/react

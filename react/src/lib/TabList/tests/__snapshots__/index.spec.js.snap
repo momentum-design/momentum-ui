@@ -13,6 +13,7 @@ ShallowWrapper {
       disabled={false}
       focus={false}
       heading="one"
+      isType="pills"
       myKey={0}
       onKeyDown={null}
       onPress={null}
@@ -40,6 +41,7 @@ ShallowWrapper {
           disabled={false}
           focus={true}
           heading="one"
+          isType="pills"
           myKey={0}
           onKeyDown={[Function]}
           onPress={[Function]}
@@ -62,6 +64,7 @@ ShallowWrapper {
           "disabled": false,
           "focus": true,
           "heading": "one",
+          "isType": "pills",
           "myKey": 0,
           "onKeyDown": [Function],
           "onPress": [Function],
@@ -88,6 +91,7 @@ ShallowWrapper {
             disabled={false}
             focus={true}
             heading="one"
+            isType="pills"
             myKey={0}
             onKeyDown={[Function]}
             onPress={[Function]}
@@ -110,6 +114,7 @@ ShallowWrapper {
             "disabled": false,
             "focus": true,
             "heading": "one",
+            "isType": "pills",
             "myKey": 0,
             "onKeyDown": [Function],
             "onPress": [Function],

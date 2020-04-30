@@ -1,21 +1,25 @@
 /** @component tabs */
 
- import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 class Tabs extends React.Component {
 
   state = {
     activeIndex: 0,
-    focus: this.props.focus
+    focus: this.props.focus,
+    tabType: this.props.tabType
   };
 
   getChildContext = () => {
     return {
       activeIndex: this.state.activeIndex,
       onActivate: index => this.setSelected(index),
-      onFocus: index => this.setState({ focus: index }),
+      onFocus: index => this.setState({
+        focus: index
+      }),
       focus: this.state.focus,
+      tabType: this.props.tabType
     };
   };
 
@@ -42,9 +46,9 @@ class Tabs extends React.Component {
 
     React.Children.forEach(this.props.children, child => {
       if (child.type.displayName === name) {
-        return child.props.children.length
-          ? (elementCount += child.props.children.length)
-          : elementCount++;
+        return child.props.children.length ?
+          (elementCount += child.props.children.length) :
+          elementCount++;
       }
     });
 
@@ -64,7 +68,9 @@ class Tabs extends React.Component {
     const last = this.state.activeIndex;
 
     // Update state with selected index
-    this.setState({ activeIndex: index });
+    this.setState({
+      activeIndex: index
+    });
     // Call change event handler
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect(index, last);
@@ -72,7 +78,12 @@ class Tabs extends React.Component {
   };
 
   render() {
-    const { children, className, tabType, justified } = this.props;
+    const {
+      children,
+      className,
+      tabType,
+      justified
+    } = this.props;
 
     const cloneChildren = React.Children.map(children, child => {
       if (child.type.displayName === 'TabContent') {
@@ -81,24 +92,27 @@ class Tabs extends React.Component {
         });
       } else if (child.type.displayName === 'TabList') {
         return React.cloneElement(child, {
-          role: 'tab'
+          role: 'tab',
+          isType: this.props.tabType
         });
       } else {
         return child;
       }
     });
 
-    return (
-      <div
-        className={
+    return ( <
+      div className = {
         'md-tab' +
         `${(tabType && ` md-tab--${tabType}`) || ''}` +
         `${(justified && ` md-tab--justified`) || ''}` +
-        (className && ` ${className}`) || ''}
-        type={tabType}
-        >
-        {cloneChildren}
-      </div>
+        (className && ` ${className}`) || ''
+      }
+      type = {
+        tabType
+      } > {
+        cloneChildren
+      } <
+      /div>
     );
   }
 }
@@ -134,6 +148,7 @@ Tabs.childContextTypes = {
   activeIndex: PropTypes.number,
   onActivate: PropTypes.func,
   onFocus: PropTypes.func,
+  tabType: PropTypes.string,
 };
 
 Tabs.displayName = 'Tabs';

@@ -28,13 +28,18 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <div />,
+        " ",
+        Array [
+          <div />,
+        ],
+        " ",
       ],
       "className": "md-tab md-tab--pills",
       "type": "pills",
     },
     "ref": null,
     "rendered": Array [
+      " ",
       Object {
         "instance": null,
         "key": ".0",
@@ -44,6 +49,7 @@ ShallowWrapper {
         "rendered": null,
         "type": "div",
       },
+      " ",
     ],
     "type": "div",
   },
@@ -54,13 +60,18 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div />,
+          " ",
+          Array [
+            <div />,
+          ],
+          " ",
         ],
         "className": "md-tab md-tab--pills",
         "type": "pills",
       },
       "ref": null,
       "rendered": Array [
+        " ",
         Object {
           "instance": null,
           "key": ".0",
@@ -70,6 +81,7 @@ ShallowWrapper {
           "rendered": null,
           "type": "div",
         },
+        " ",
       ],
       "type": "div",
     },
@@ -105,6 +117,7 @@ ShallowWrapper {
     "focus": 0,
     "onActivate": [Function],
     "onFocus": [Function],
+    "tabType": "pills",
   },
 }
 `;

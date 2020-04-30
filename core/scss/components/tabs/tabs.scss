@@ -14,7 +14,7 @@
       position: relative;
       display: block;
 
-      > a {
+      >a {
         position: relative;
         display: block;
         padding: $tab--link__padding;
@@ -26,7 +26,7 @@
         }
       }
 
-      &.disabled > a {
+      &.disabled>a {
         color: $tab--disabled-link__color;
 
         &:hover,
@@ -39,7 +39,8 @@
       }
     }
 
-    .open > a {
+    .open>a {
+
       &,
       &:hover,
       &:focus {
@@ -52,7 +53,7 @@
       @include nav-divider;
     }
 
-    > .#{$prefix}-tab__item > a > img {
+    >.#{$prefix}-tab__item>a>img {
       max-width: none;
     }
   }
@@ -66,7 +67,7 @@
       min-width: 200px;
       text-align: center;
 
-      > a {
+      >a {
         padding: $tab-pills__padding;
         font-size: $tab-pills__font-size;
         line-height: 1.5;
@@ -81,7 +82,8 @@
       }
 
       &.active {
-        > a,
+
+        >a,
         a:hover,
         a:focus {
           background: $tab-pills--active__background;
@@ -91,7 +93,7 @@
       &.disabled {
         pointer-events: none;
 
-        > a,
+        >a,
         &:hover,
         &:focus {
           background: $tab-pills__background;
@@ -99,13 +101,13 @@
       }
 
       &:first-child {
-        > a {
+        >a {
           @include border-left-radius(20px);
         }
       }
 
       &:last-child {
-        > a {
+        >a {
           @include border-right-radius(20px);
         }
       }
@@ -113,19 +115,19 @@
 
     .md-tab__list {
       md-tab:first-child {
-        > li > a {
+        >li>a {
           @include border-right-radius(0px);
         }
       }
 
       md-tab:last-child {
-        > li > a {
+        >li>a {
           @include border-left-radius(0px);
         }
       }
 
-      md-tab:not(:first-child):not(:last-child)  {
-        > li > a {
+      md-tab:not(:first-child):not(:last-child) {
+        >li>a {
           border-radius: 0px;
         }
       }
@@ -133,13 +135,13 @@
   }
 
   .#{$prefix}-tab--justified {
-    > .#{$prefix}-tab__list {
+    >.#{$prefix}-tab__list {
       display: flex;
       width: 100%;
     }
 
     .#{$prefix}-tab__item {
-      + .#{$prefix}-tab__item {
+      +.#{$prefix}-tab__item {
         margin-left: 0;
       }
     }
@@ -162,18 +164,18 @@
     background-color: $md-white-100;
     border: 1px solid $md-gray-10;
     border-top: none;
+  }
 
-    > .#{$prefix}-tab__pane {
-      display: none;
-    }
+  .#{$prefix}-tab__pane {
+    display: none;
 
-    > .active {
+    &.active {
       display: block;
     }
   }
 
   .#{$prefix}-tab--tabs {
-    > .#{$prefix}-tab__list {
+    >.#{$prefix}-tab__list {
       margin-bottom: 17px;
       border-bottom: 0px;
     }
@@ -181,7 +183,7 @@
     .#{$prefix}-tab__item {
       float: left;
 
-      > a {
+      >a {
         padding-right: 30px;
         padding-bottom: 9.5px;
         padding-left: 0;
@@ -205,7 +207,8 @@
         }
       }
 
-      &.active > a {
+      &.active>a {
+
         &,
         &:hover,
         &:focus {
@@ -224,13 +227,13 @@
       display: flex;
       justify-content: center;
 
-      .#{$prefix}-tab__item > a {
+      .#{$prefix}-tab__item>a {
         padding-right: 15px;
         padding-left: 15px;
       }
     }
 
-    &.#{$prefix}-tab--justified > .#{$prefix}-tab__list {
+    &.#{$prefix}-tab--justified>.#{$prefix}-tab__list {
       @extend .#{$prefix}-tab--justified;
       @extend .#{$prefix}-tab--tabs;
     }
@@ -279,23 +282,23 @@
       }
     }
 
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
+    >.active>a,
+    >.active>a:hover,
+    >.active>a:focus {
       color: $tab-tabs--active__color;
       border: 0px;
       border-bottom: $tab-tabs--active__border;
     }
 
     @media (min-width: $screen-sm-min) {
-      .#{$prefix}-tab__item > a {
+      .#{$prefix}-tab__item>a {
         border-bottom: 1px solid $md-gray-30;
         border-radius: 0px;
       }
 
-      > .active > a,
-      > .active > a:hover,
-      > .active > a:focus {
+      >.active>a,
+      >.active>a:hover,
+      >.active>a:focus {
         border-bottom: $tab-tabs--active__border;
       }
     }
@@ -316,13 +319,13 @@
       &.current {
         color: $md-theme-50;
 
-        > a {
+        >a {
           color: $md-theme-50;
           border-bottom: 1px solid $md-theme-50;
         }
       }
 
-      + .#{$prefix}-tab__item {
+      +.#{$prefix}-tab__item {
         margin-left: 0px;
 
         .#{$prefix}-tab__item {
@@ -330,7 +333,7 @@
         }
       }
 
-      > a {
+      >a {
         padding: 8px 15px;
         color: $md-gray-90;
         background: none;
@@ -352,18 +355,18 @@
       margin-bottom: 0;
     }
 
-    .#{$prefix}-tab__item > a {
+    .#{$prefix}-tab__item>a {
       border-radius: $global-radius;
     }
 
     @media (min-width: $screen-sm-min) {
-      .#{$prefix}-tab__item > a {
+      .#{$prefix}-tab__item>a {
         border-radius: $global-radius $global-radius 0 0;
       }
 
-      > .active > a,
-      > .active > a:hover,
-      > .active > a:focus {
+      >.active>a,
+      >.active>a:hover,
+      >.active>a:focus {
         border-bottom-color: $tab-tabs--justified-active__border-color;
       }
     }
@@ -376,11 +379,11 @@
   }
 
   .#{$prefix}-tab--cstabs {
-    > .#{$prefix}-tab__list {
+    >.#{$prefix}-tab__list {
       display: flex;
 
-      > .#{$prefix}-tab__item {
-        > a {
+      >.#{$prefix}-tab__item {
+        >a {
           display: block;
           height: 59px;
           padding-top: 18px;
@@ -407,8 +410,8 @@
             box-shadow: none;
           }
 
-          > md-tab-heading > div,
-          > md-tab-heading > div {
+          >md-tab-heading>div,
+          >md-tab-heading>div {
             font-family: $brand-font-extra-light;
             font-size: 30px;
             color: $md-theme-50;
@@ -416,19 +419,19 @@
         }
 
         &:first-of-type {
-          > a {
+          >a {
             margin-left: 0px;
           }
         }
 
         &:last-of-type {
-          > a {
+          >a {
             margin-right: 0px;
           }
         }
 
         &.active {
-          > a {
+          >a {
             height: 64px;
             margin-bottom: 0px;
             color: $md-black-100;
@@ -454,20 +457,20 @@
     }
 
     &.#{$prefix}-tab--largetabs {
-      .#{$prefix}-tab__item > a {
+      .#{$prefix}-tab__item>a {
         height: 87px;
         padding-top: 10px;
         font-size: 14px;
       }
 
-      .#{$prefix}-tab__item.active > a {
+      .#{$prefix}-tab__item.active>a {
         height: 88px;
       }
     }
   }
 
   .#{$prefix}-tab--graytab {
-    &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item > a {
+    &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item>a {
       border: 1px solid $md-gray-10;
       opacity: 0.5;
 
@@ -477,7 +480,7 @@
       }
     }
 
-    &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item.active > a {
+    &.#{$prefix}-tab--cstabs .#{$prefix}-tab__item.active>a {
       background-color: $md-gray-10;
 
       &:hover,
@@ -488,6 +491,105 @@
 
     .#{$prefix}-tab__content {
       background-color: $md-gray-10;
+    }
+  }
+
+  .#{$prefix}-tab__item {
+    flex-grow: 1;
+
+    &.#{$prefix}-type--pills {
+      min-width: 200px;
+      text-align: center;
+
+      >a {
+        padding: $tab-pills__padding;
+        font-size: $tab-pills__font-size;
+        line-height: 1.5;
+        color: $tab-pills__color;
+        background: $tab-pills__background;
+        border: $tab-pills__border;
+        background-clip: padding-box;
+
+        &:hover {
+          background: $tab-pills--hover__background;
+        }
+      }
+
+      &.active {
+
+        >a,
+        a:hover,
+        a:focus {
+          background: $tab-pills--active__background;
+        }
+      }
+
+      &.disabled {
+        pointer-events: none;
+
+        >a,
+        &:hover,
+        &:focus {
+          background: $tab-pills__background;
+        }
+      }
+
+      &:first-child,
+      &.first {
+        >a {
+          @include border-left-radius(20px);
+        }
+      }
+
+      &:last-child,
+      &.last {
+        >a {
+          @include border-right-radius(20px);
+        }
+      }
+    }
+
+    &.#{$prefix}-type--tabs {
+      float: left;
+
+      >a {
+        padding-right: 30px;
+        padding-bottom: 9.5px;
+        padding-left: 0;
+        margin-right: 12px;
+        color: $md-gray-90;
+        text-align: left;
+        cursor: pointer;
+        border: 0px;
+        border-bottom: 1px solid $md-gray-30;
+        border-radius: 0px;
+
+        &:hover {
+          padding-bottom: 8px;
+          background-color: transparent;
+          border-bottom: $tab-tabs--hover__border;
+          transition: border-bottom-color 0.5s ease;
+        }
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+
+      &.active>a {
+
+        &,
+        &:hover,
+        &:focus {
+          padding-bottom: 8px;
+          color: $tab-tabs--active__color;
+          cursor: default;
+          background-color: transparent;
+          border: 0px;
+          border-bottom: $tab-tabs--active__border;
+          transition: border-bottom-color 0.5s ease, color 0.5s ease;
+        }
+      }
     }
   }
 }

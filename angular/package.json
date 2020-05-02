@@ -1,6 +1,6 @@
 {
   "name": "momentum-ui-angular-cli",
-  "version": "140.0.0",
+  "version": "141.0.0",
   "scripts": {
     "build": "run-s build:lib build:schematics",
     "build:docs": "ng build --project=docs",
@@ -46,7 +46,7 @@
     "@angular/platform-browser": "^7.2.1",
     "@angular/platform-browser-dynamic": "^7.2.1",
     "@angular/router": "^7.2.1",
-    "@momentum-ui/core": "^19.4.14",
+    "@momentum-ui/core": "^19.4.15",
     "@momentum-ui/utils": "^6.0.4",
     "@percy/cypress": "^0.2.3",
     "@types/jest": "^24.0.9",

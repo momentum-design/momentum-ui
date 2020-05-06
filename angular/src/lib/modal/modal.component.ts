@@ -39,7 +39,11 @@ export type SizeType =
   .md-modal.md-modal--full {
       position: static;
     }
-  `]
+  `, `
+  ::ng-deep .md-modal__backdrop {
+      z-index: 1000;
+    }
+  `],
 })
 export class ModalComponent implements OnInit, AfterViewInit {
   /** @prop Determines the visibility and ability to edit the backdrop of the Modal | true */

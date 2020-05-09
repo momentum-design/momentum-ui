@@ -103,6 +103,7 @@ class SpaceListMeeting extends React.PureComponent {
               direction="bottom-center"
               targetOffset={{ vertical: 3 }}
               isDynamic
+              includeFocusOnHover={false}
               {...eventOverlayProps}
             >
               <span role="button" tabIndex={0} className="md-list-item--space-meeting--attendees">

@@ -1,6 +1,7 @@
 /** @component popover */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { EventOverlay } from '@momentum-ui/react';
 import omit from 'lodash/omit';
@@ -13,6 +14,20 @@ class Popover extends React.Component {
 
   componentDidMount() {
     this.props.startOpen && this.forceUpdate();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // focus on the first button in the EventOverlay
+    const { isOpen } = this.state;
+
+    if (isOpen && !prevState.isOpen && this.overlay) {
+      const eventOverlay = ReactDOM.findDOMNode(this.overlay);
+
+      if (eventOverlay) {
+        const firstTabbableElement = eventOverlay.querySelector('[tabindex="0"]');
+        if (firstTabbableElement) firstTabbableElement.focus();
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -63,6 +78,10 @@ class Popover extends React.Component {
 
     this.setState({ isOpen: false }, onClose && onClose(e));
   };
+
+  handleHide = e => {
+    this.setState({ isHovering: false }, () => this.delayedHide(e));
+  }
 
   handleMouseEnter = e => {
     const { children } = this.props;
@@ -128,6 +147,36 @@ class Popover extends React.Component {
     }
   };
 
+  handleKeyDown = e => {
+    switch (e.which) {
+      case 13: // ENTER
+        e.preventDefault();
+        e.stopPropagation();
+        e.persist();
+        
+        // Open Popover
+        this.setState(
+          { isHovering: true },
+          () => this.delayedShow(e)
+        );
+        break;
+      case 27: // ESC
+        e.persist();
+        e.stopPropagation();
+
+        // Close Popover
+        this.setState({isHovering: false}, () =>
+          this.delayedHide(e)
+        );
+
+        // Focus on trigger
+        if (e.target) {
+          e.target.focus();
+        }
+        break;
+    }
+  }
+
   render() {
     const { isOpen } = this.state;
     const {
@@ -161,8 +210,9 @@ class Popover extends React.Component {
           triggerProps.onMouseEnter = this.handleMouseEnter;
           triggerProps.onMouseLeave = this.handleMouseLeave;
 
-          triggerProps.onFocus = includeFocusOnHover && this.handleFocus;
-          triggerProps.onBlur = includeFocusOnHover && this.handleBlur;
+          triggerProps.onFocus = includeFocusOnHover ? this.handleFocus : undefined;
+          triggerProps.onBlur = includeFocusOnHover ? this.handleBlur : undefined;
+          triggerProps.onKeyDown = this.handleKeyDown;
           break;
 
         case 'Click':
@@ -216,8 +266,39 @@ class Popover extends React.Component {
               },
               onMouseLeave: e => {
                 e.persist();
-                this.setState({ isHovering: false }, () => this.delayedHide(e));
+                this.handleHide(e);
               },
+              onKeyDown: (e) => {
+                if (this.state.isOpen && this.overlay && this.anchorRef) {
+                  const eventOverlay = ReactDOM.findDOMNode(this.overlay);
+                  const trigger = ReactDOM.findDOMNode(this.anchorRef);
+                  const tabbableElements = eventOverlay.querySelectorAll('[tabindex="0"]');
+
+                  switch (e.which) {
+                    case 9:
+                        if (tabbableElements.length) {
+                          if (e.shiftKey) { // SHIFT + TAB
+                            if (document.activeElement === tabbableElements[0]) {
+                              this.handleHide(e);
+                            }
+                          } else { // TAB
+                            if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              this.handleHide(e);
+                              trigger.focus();
+                            }
+                          }
+                        }
+                      break;
+                    case 27:
+                        e.stopPropagation();
+                        this.handleHide(e);
+                        trigger.focus();
+                      break;
+                  }
+                }
+              }
             })}
             {...(popoverTrigger === 'Focus' && { allowClickAway: false })}
             {...otherProps}

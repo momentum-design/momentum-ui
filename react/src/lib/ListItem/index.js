@@ -96,11 +96,6 @@ class ListItem extends React.Component {
             // only allow focus of tabbable children if TAB on the current listitem
             if (e.target.classList.contains('md-list-item')) {
               this.changeTabIndex(tabbableChildren, 0);
-            } else if (e.target === tabbableChildren[tabbableChildren.length - 1]) {
-              //e.preventDefault();
-              //e.stopPropagation();
-              // cycle focus between tabbable children (last tabbable child wil' cycle back to first tabbable child)
-              this.changeTabIndex(tabbableChildren, 0);
             }
           } else if (e.keyCode === 9 && e.shiftKey) { // SHIFT + TAB
             // If we are on one of the tabbable children

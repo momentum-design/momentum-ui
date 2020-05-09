@@ -119,7 +119,6 @@ class ListItem extends React.Component {
       disabled,
       eventKey,
       focus,
-      focusLockTabbableChildren,
       isReadOnly,
       keyboardKey,
       label,
@@ -127,7 +126,6 @@ class ListItem extends React.Component {
       refName,
       role,
       separator,
-      tabbableChildrenQuery,
       title,
       type,
       ...props

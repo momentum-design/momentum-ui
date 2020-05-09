@@ -1,0 +1,18 @@
+import React from 'react';
+import { Button, Tooltip } from '@momentum-ui/react';
+
+export default function TooltipDelay() {
+  return (
+    <div className="row">
+      <div className="docs-example docs-example--spacing">
+        <Tooltip
+          tooltip="Delayed!"
+          tooltipTrigger="Click"
+          popoverProps={{ delay: 500 }}
+        >
+          <Button id='delay' children="Delay" ariaLabel="Delay" />
+        </Tooltip>
+      </div>
+    </div>
+  );
+}

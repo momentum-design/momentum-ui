@@ -160,7 +160,7 @@ class TabList extends React.Component {
 
   render() {
     const { children, role } = this.props;
-    const { activeIndex, focus } = this.context;
+    const { activeIndex, focus, tabType } = this.context;
 
     const setTabs = () =>
       React.Children.map(children, (child, idx) => {
@@ -172,6 +172,7 @@ class TabList extends React.Component {
           onPress: (e) => this.handleClick(e, idx, disabled),
           onKeyDown: e => this.handleListKeyPress(e, idx, arrLength, disabled),
           refName: 'navLink',
+          isType: tabType,
         });
       });
 
@@ -210,6 +211,7 @@ TabList.contextTypes = {
   focus: PropTypes.number,
   activeIndex: PropTypes.number,
   onActivate: PropTypes.func,
+  tabType: PropTypes.string,
 };
 
 TabList.displayName = 'TabList';

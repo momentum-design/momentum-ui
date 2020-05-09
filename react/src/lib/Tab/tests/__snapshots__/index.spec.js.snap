@@ -9,6 +9,7 @@ ShallowWrapper {
     disabled={false}
     focus={false}
     heading="test"
+    isType="pills"
     myKey={0}
     onKeyDown={null}
     onPress={null}
@@ -38,7 +39,7 @@ ShallowWrapper {
       >
         test
       </a>,
-      "className": "md-tab__item",
+      "className": "md-tab__item md-type--pills",
       "tabIndex": "-1",
     },
     "ref": null,
@@ -77,7 +78,7 @@ ShallowWrapper {
         >
           test
         </a>,
-        "className": "md-tab__item",
+        "className": "md-tab__item md-type--pills",
         "tabIndex": "-1",
       },
       "ref": null,

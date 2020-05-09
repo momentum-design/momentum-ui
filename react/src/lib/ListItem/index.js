@@ -127,6 +127,7 @@ class ListItem extends React.Component {
       role,
       separator,
       title,
+      theme,
       type,
       ...props
     } = this.props;
@@ -148,6 +149,7 @@ class ListItem extends React.Component {
       className:
         'md-list-item' +
         `${(cxtProps.type && ` md-list-item--${cxtProps.type}`) || ''}` +
+        `${(theme && ` ${theme}`) || ''}` +
         `${(cxtProps.active && ` active`) || ''}` +
         `${(disabled && ` disabled`) || ''}` +
         `${(isReadOnly && ` md-list-item--read-only`) || ''}` +
@@ -264,6 +266,8 @@ ListItem.propTypes = {
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
+  /** @prop ListItem theme | '' */
+  theme: PropTypes.string,
   /** @prop ListItem Title | '' */
   title: PropTypes.string,
   /** @prop ListItem size | '' */

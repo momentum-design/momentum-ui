@@ -81,7 +81,7 @@ class ListItem extends React.Component {
   handleKeyDown = (e, eventKey, focusLockTabbableChildren, tabbableChildrenQuery) => {
     const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
 
-    if(disabled) {
+    if (disabled) {
       e.preventDefault();
       e.stopPropagation();
     }
@@ -120,6 +120,27 @@ class ListItem extends React.Component {
     e.persist();
     onKeyDown && onKeyDown(e);
     parentKeyDown && parentKeyDown(e, { value, label, eventKey });
+  }
+
+  handleBlur = (e, focusLockTabbableChildren, tabbableChildrenQuery) => {
+    const { onBlur } = this.props;
+
+    if (focusLockTabbableChildren) {
+      if (e.target) {
+        const currListItem = e.target.closest('.md-list-item');
+        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
+        if (e.relatedTarget) {
+          const newFocus = e.relatedTarget.closest('.md-list-item');
+          if (currListItem !== newFocus) {
+            this.changeTabIndex(tabbableChildren, -1);
+          }
+        } else {
+          this.changeTabIndex(tabbableChildren, -1);
+        }
+      }
+    }
+
+    onBlur && onBlur(e);
   }
 
   verifyStructure() {
@@ -178,6 +199,7 @@ class ListItem extends React.Component {
       'focusOnLoad',
       'id',
       'itemIndex',
+      'onBlur',
       'onClick',
       'onKeyDown',
       'parentKeyDown',
@@ -207,6 +229,7 @@ class ListItem extends React.Component {
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
         onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey, focusLockTabbableChildren, tabbableChildrenQuery),
+        onBlur: e => this.handleBlur(e, focusLockTabbableChildren, tabbableChildrenQuery),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
@@ -293,6 +316,8 @@ ListItem.propTypes = {
   label: PropTypes.string,
   /** @prop external link associated input | '' */
   link: PropTypes.string,
+  /** @prop Callback function invoked by user changing focus from current ListItem ListItem | null */
+  onBlur: PropTypes.func,
   /** @prop Callback function invoked by user tapping on ListItem | null */
   onClick: PropTypes.func,
   /** @prop Callback function invoked by user pressing on a key | null */
@@ -339,6 +364,7 @@ ListItem.defaultProps = {
   keyboardKey: '',
   label: '',
   link: '',
+  onBlur: null,
   onClick: null,
   onKeyDown: null,
   parentKeyDown: null,

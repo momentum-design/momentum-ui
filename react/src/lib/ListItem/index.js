@@ -129,13 +129,15 @@ class ListItem extends React.Component {
       if (e.target) {
         const currListItem = e.target.closest('.md-list-item');
         const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
-        if (e.relatedTarget) {
-          const newFocus = e.relatedTarget.closest('.md-list-item');
-          if (currListItem !== newFocus) {
+        if (currListItem && tabbableChildren.length) {
+          if (e.relatedTarget) {
+            const newFocus = e.relatedTarget.closest('.md-list-item');
+            if (newFocus && currListItem !== newFocus) {
+              this.changeTabIndex(tabbableChildren, -1);
+            }
+          } else {
             this.changeTabIndex(tabbableChildren, -1);
           }
-        } else {
-          this.changeTabIndex(tabbableChildren, -1);
         }
       }
     }

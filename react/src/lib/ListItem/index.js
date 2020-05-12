@@ -125,6 +125,8 @@ class ListItem extends React.Component {
   handleBlur = (e, focusLockTabbableChildren, tabbableChildrenQuery) => {
     const { onBlur } = this.props;
 
+    // For when you click or navigate away from the current listitem
+    // Cleans up tabindex="0" before you navigate away
     if (focusLockTabbableChildren) {
       if (e.target) {
         const currListItem = e.target.closest('.md-list-item');
@@ -132,6 +134,7 @@ class ListItem extends React.Component {
         if (currListItem && tabbableChildren.length) {
           if (e.relatedTarget) {
             const newFocus = e.relatedTarget.closest('.md-list-item');
+            // If the element that is going to get focus is not the current listitem or the children in it
             if (newFocus && currListItem !== newFocus) {
               this.changeTabIndex(tabbableChildren, -1);
             }

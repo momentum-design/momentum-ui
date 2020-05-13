@@ -19,9 +19,9 @@ class Popover extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // focus on the first button in the EventOverlay
     const { isOpen } = this.state;
-    const { autoFocusOnFirstInteractiveElt } = this.props;
+    const { autoFocus } = this.props;
     
-    if (autoFocusOnFirstInteractiveElt
+    if (autoFocus
         && isOpen 
         && !prevState.isOpen 
         && this.overlay
@@ -198,7 +198,7 @@ class Popover extends React.Component {
     } = this.props;
 
     const otherProps = omit({ ...props }, [
-      'autoFocusOnFirstInteractiveElt',
+      'autoFocus',
       'delay',
       'doesAnchorToggle',
       'hideDelay',
@@ -323,7 +323,7 @@ class Popover extends React.Component {
 
 Popover.propTypes = {
   /** @prop Focus on the first interactable (tabindex="0") element in the popover | false */
-  autoFocusOnFirstInteractiveElt: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   /** @prop Children node that should be the popover trigger(this should be a stateful component) */
   children: PropTypes.element.isRequired,
   /** @prop Optional CSS class names which goes over popover container | '' */
@@ -357,7 +357,7 @@ Popover.propTypes = {
 };
 
 Popover.defaultProps = {
-  autoFocusOnFirstInteractiveElt: false,
+  autoFocus: false,
   className: '',
   closeOnFocusLeavesContent: false,
   delay: 0,

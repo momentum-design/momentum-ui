@@ -4,7 +4,9 @@ exports[`tests for <Popover /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Popover
+    autoFocusOnFirstInteractiveElt={false}
     className=""
+    closeOnFocusLeavesContent={false}
     content={
       <span>
         Hello how are you doing

@@ -18,7 +18,7 @@ class Popover extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // focus on the first button in the EventOverlay
-    const { isOpen } = this.state;
+    const { isOpen, autoFocusOnFirstInteractiveElt } = this.state;
     
     if (autoFocusOnFirstInteractiveElt
         && isOpen 
@@ -328,7 +328,7 @@ Popover.propTypes = {
   /** @prop Optional CSS class names which goes over popover container | '' */
   className: PropTypes.string,
   /** @prop  Applies to TAB and SHIFT+TAB, when either makes the focus leave the EventOverlay | false */
-  closeOnFocusLeavesContent,
+  closeOnFocusLeavesContent: PropTypes.bool,
   /** @prop The content that goes into the popover */
   content: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
   /** @prop The delay for popover on hover, click, focus (hide/show) | 0 */

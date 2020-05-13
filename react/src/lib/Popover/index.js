@@ -19,8 +19,12 @@ class Popover extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // focus on the first button in the EventOverlay
     const { isOpen } = this.state;
-
-    if (isOpen && !prevState.isOpen && this.overlay) {
+    
+    if (autoFocusOnFirstInteractiveElt
+        && isOpen 
+        && !prevState.isOpen 
+        && this.overlay
+    ) {
       const eventOverlay = ReactDOM.findDOMNode(this.overlay);
 
       if (eventOverlay) {
@@ -147,6 +151,7 @@ class Popover extends React.Component {
     }
   };
 
+  // Handle keydown for the trigger element
   handleKeyDown = e => {
     switch (e.which) {
       case 13: // ENTER
@@ -182,6 +187,7 @@ class Popover extends React.Component {
     const {
       children,
       className,
+      closeOnFocusLeavesContent,
       content,
       includeFocusOnHover,
       overflowType,
@@ -191,6 +197,7 @@ class Popover extends React.Component {
     } = this.props;
 
     const otherProps = omit({ ...props }, [
+      'autoFocusOnFirstInteractiveElt',
       'delay',
       'doesAnchorToggle',
       'hideDelay',
@@ -276,12 +283,14 @@ class Popover extends React.Component {
 
                   switch (e.which) {
                     case 9:
-                        if (tabbableElements.length) {
+                        if (closeOnFocusLeavesContent && tabbableElements.length) {
                           if (e.shiftKey) { // SHIFT + TAB
+                            // If first interactable element in EventOvcerlay, hide the popover
                             if (document.activeElement === tabbableElements[0]) {
                               this.handleHide(e);
                             }
                           } else { // TAB
+                            // If last interactable element in EventOvcerlay, hide the popover
                             if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
                               e.preventDefault();
                               e.stopPropagation();
@@ -291,7 +300,7 @@ class Popover extends React.Component {
                           }
                         }
                       break;
-                    case 27:
+                    case 27: // ESC
                         e.stopPropagation();
                         this.handleHide(e);
                         trigger.focus();
@@ -312,10 +321,14 @@ class Popover extends React.Component {
 }
 
 Popover.propTypes = {
+  /** @prop Focus on the first interactable (tabindex="0") element in the popover | false */
+  autoFocusOnFirstInteractiveElt: PropTypes.bool,
   /** @prop Children node that should be the popover trigger(this should be a stateful component) */
   children: PropTypes.element.isRequired,
   /** @prop Optional CSS class names which goes over popover container | '' */
   className: PropTypes.string,
+  /** @prop  Applies to TAB and SHIFT+TAB, when either makes the focus leave the EventOverlay | false */
+  closeOnFocusLeavesContent,
   /** @prop The content that goes into the popover */
   content: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
   /** @prop The delay for popover on hover, click, focus (hide/show) | 0 */
@@ -343,7 +356,9 @@ Popover.propTypes = {
 };
 
 Popover.defaultProps = {
+  autoFocusOnFirstInteractiveElt: false,
   className: '',
+  closeOnFocusLeavesContent: false,
   delay: 0,
   doesAnchorToggle: true,
   hideDelay: 0,

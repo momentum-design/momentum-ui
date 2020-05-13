@@ -3,31 +3,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {
-  Checkbox,
-  Icon,
-  ListItem,
-  ListItemSection,
-} from '@momentum-ui/react';
+import { Checkbox, Icon, ListItem, ListItemSection } from '@momentum-ui/react';
 import SelectContext from '../SelectContext';
 import ListContext from '../ListContext';
 import { UIDConsumer } from 'react-uid';
 
 class SelectOption extends React.Component {
   render() {
-    const {
-      className,
-      active,
-      children,
-      label,
-      title,
-      ...props
-    } = this.props;
+    const { className, active, children, label, title, ...props } = this.props;
 
     const separateChildren = (isMulti, cxtActive, uniqueId) => {
-      return (
-        isMulti
-      ? (
+      return isMulti ? (
         <Checkbox
           htmlId={`${uniqueId}__checkbox`}
           label={label}
@@ -36,15 +22,17 @@ class SelectOption extends React.Component {
         />
       ) : (
         [
-          <ListItemSection key='child-0' position='center'>
+          <ListItemSection key="child-0" position="center">
             {label || children}
           </ListItemSection>,
-          <ListItemSection key='child-1' position='right'>
-            {cxtActive && <Icon color='blue-50' name='check_20'/>}
-          </ListItemSection>
+          <ListItemSection key="child-1" position="right">
+            {cxtActive && <Icon color="blue-50" name="check_20" />}
+          </ListItemSection>,
         ]
-       ) );
+      );
     };
+
+    const keySource = isMulti => `data-md-${isMulti ? 'keyboard' : 'event'}-key`;
 
     return (
       <UIDConsumer name={id => `md-select-option-${id}`}>
@@ -53,17 +41,16 @@ class SelectOption extends React.Component {
             {isMulti => (
               <ListContext.Consumer>
                 {listContext => {
-                  const cxtActive = active
-                    || listContext
-                    && listContext.active
-                    && ReactDOM.findDOMNode(this)
-                    && ReactDOM.findDOMNode(this).attributes['data-md-event-key']
-                    && ReactDOM.findDOMNode(this).attributes['data-md-event-key'].value
-                    && listContext.active.includes(
-                      ReactDOM.findDOMNode(this)
-                        .attributes['data-md-event-key']
-                        .value
-                    );
+                  const cxtActive =
+                    active ||
+                    (listContext &&
+                      listContext.active &&
+                      ReactDOM.findDOMNode(this) &&
+                      ReactDOM.findDOMNode(this).attributes[keySource(isMulti)] &&
+                      ReactDOM.findDOMNode(this).attributes[keySource(isMulti)].value &&
+                      listContext.active.includes(
+                        ReactDOM.findDOMNode(this).attributes[keySource(isMulti)].value
+                      ));
 
                   const uniqueId = this.props.id || id;
 
@@ -112,7 +99,7 @@ SelectOption.defaultProps = {
   id: '',
   label: '',
   title: '',
-  value:'',
+  value: '',
 };
 
 SelectOption.displayName = 'SelectOption';

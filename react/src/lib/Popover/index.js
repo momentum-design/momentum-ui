@@ -18,7 +18,8 @@ class Popover extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // focus on the first button in the EventOverlay
-    const { isOpen, autoFocusOnFirstInteractiveElt } = this.state;
+    const { isOpen } = this.state;
+    const { autoFocusOnFirstInteractiveElt } = this.props;
     
     if (autoFocusOnFirstInteractiveElt
         && isOpen 

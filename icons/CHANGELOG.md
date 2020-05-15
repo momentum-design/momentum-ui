@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.29.0...@momentum-ui/icons@7.30.0) (2020-05-15)
+
+
+### Features
+
+* **icons:** add generic-device-video_12 ([21b8164](https://github.com/momentum-design/momentum-ui/commit/21b8164a464bca23684a0836f67181859a493a05))
+* **icons:** add generic-device-video_14 ([82f2a34](https://github.com/momentum-design/momentum-ui/commit/82f2a34b4e637bcf842d512cd32004ba01e4b38b))
+* **icons:** add generic-device-video_16 ([65734f3](https://github.com/momentum-design/momentum-ui/commit/65734f3db00c8f36f4f7344513fb2a16fff85948))
+* **icons:** add generic-device-video_20 ([85b89b0](https://github.com/momentum-design/momentum-ui/commit/85b89b0c2b3518b18a516fcd48f93d40c88bd1d5))
+
+
+
+
+
 # [7.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.28.0...@momentum-ui/icons@7.29.0) (2020-05-07)
 
 

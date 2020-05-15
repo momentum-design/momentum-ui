@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.7.4...@momentum-ui/angular@11.7.5) (2020-05-15)
+
+**Note:** Version bump only for package @momentum-ui/angular
+
+
+
+
+
 ## [11.7.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/angular@11.7.3...@momentum-ui/angular@11.7.4) (2020-05-07)
 
 **Note:** Version bump only for package @momentum-ui/angular

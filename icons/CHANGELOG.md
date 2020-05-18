@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.32.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.31.0...@momentum-ui/icons@7.32.0) (2020-05-18)
+
+
+### Features
+
+* **icons:** add text-color_12 ([223a275](https://github.com/momentum-design/momentum-ui/commit/223a2759a1267fb7d80a4e3b5a55d2b2b012aab3))
+
+
+
+
+
 # [7.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.30.0...@momentum-ui/icons@7.31.0) (2020-05-16)
 
 

@@ -19,9 +19,6 @@ class CodeTab extends React.PureComponent {
         ||
         section.variations.react.example
         && { type: 'jsx', example: section.variations.react.example}
-        ||
-        section.variations.angular.example
-        && { type: 'ts', example: section.variations.angular.example}
       );
     };
 

@@ -1,12 +1,12 @@
-import React from 'react';
+import { camelCase, startCase, toLower } from 'lodash';
 import PropTypes from 'prop-types';
-import { startCase, toLower, camelCase } from 'lodash';
+import React from 'react';
 import { connect } from 'react-redux';
-import CodeBlock from '../../momentum-ui/CodeBlock';
-import AsyncComponent from '../AsyncComponent';
 import { Button } from '@momentum-ui/react';
 import { setCodePreference } from '../../containers/Component/actions';
+import CodeBlock from '../../momentum-ui/CodeBlock';
 import Collapse from '../../momentum-ui/Collapse';
+import AsyncComponent from '../AsyncComponent';
 
 class CodeSection extends React.Component {
   static displayName = 'CodeSection';
@@ -47,8 +47,6 @@ class CodeSection extends React.Component {
       switch (language) {
         case 'core':
           return 'html';
-        case 'angular':
-          return 'ts';
         case 'react':
           return 'jsx';
       }
@@ -101,15 +99,6 @@ class CodeSection extends React.Component {
                 onClick={() => setCodePreference('react')}
               >
                 React
-              </Button>
-            )}
-            {variations.angular.example && (
-              <Button
-                ariaLabel="Angular"
-                className={`${(codePreference === 'angular' && 'active') || ''}`}
-                onClick={() => setCodePreference('angular')}
-              >
-                Angular
               </Button>
             )}
           </div>

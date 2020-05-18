@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`InputMessage should match snapshot 1`] = `
-<div role="alert" class="md-input__message">
-  test
-</div>
-`;

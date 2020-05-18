@@ -1,13 +1,11 @@
 import fs from 'fs';
-import fileSave from 'file-save';
 import path from 'path';
+import fileSave from 'file-save';
 import { kebabCase } from 'lodash';
 
 const componentListPaths = {
   'core': '../../core/data/components.json',
   'react': '../../react/src/app/ComponentList.js',
-  'angular': '../../angular/src/lib/public_api.ts',
-  'vue': '../../vue/components.json'
 };
 
 const jsonDirectory = path.resolve(__dirname, '../client/data');
@@ -27,13 +25,6 @@ const getReactComponentList = str => {
   });
 };
 
-const getAngularComponentList = str => {
-  let res = str.match(/'\.\/(.+?)\//g);
-  return res.map(function(item){
-    return item.replace(/'\.\/|\//g, '');
-  });
-};
-
 const getComponentList = (fileName) => {
   let filePath = path.resolve(__dirname, componentListPaths[fileName]);
   if (filePath) {
@@ -49,13 +40,6 @@ const getComponentList = (fileName) => {
     } else if (fileName === 'react') {
       const res = getReactComponentList(result);
       listStr = JSON.stringify(res);
-    } else if (fileName === 'angular') {
-      const res = getAngularComponentList(result);
-      listStr = JSON.stringify(res);
-    } else if (fileName === 'vue') {
-      const lst = JSON.parse(result);
-      let names = Object.keys(lst);
-      listStr = JSON.stringify(names);
     }
 
     save(jsonDirectory, 'component-list-' + fileName + '.json', listStr);

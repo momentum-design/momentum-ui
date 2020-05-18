@@ -80,9 +80,6 @@ const addOrUpdateSection = async (block, componentIndex, sectionIndex) => {
       : block.react
       ? block.react
       : section.variations.react;
-    section.variations.angular = block.angular
-      ? block.angular
-      : section.variations.angular;
     section.variations.scss = block.scss ? block.scss : section.variations.scss;
     section.hidecode = block.hidecode ? block.hidecode : section.hidecode;
 

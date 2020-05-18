@@ -682,20 +682,6 @@ commentsParser.parser('react', function() {
     });
   });
 
-  commentsParser.parser('angular', function() {
-    return ({
-      example: this.line.contents,
-      escaped: this.line.contents.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    });
-  });
-
-  commentsParser.parser('angularjs', function() {
-    return ({
-      example: this.line.contents,
-      escaped: this.line.contents.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    });
-  });
-
 // commentsParser.parser('param', function() {
 //   var param = this.line.contents.split(' - ');
 //   var typeExp = /\(([^)]+)\)/;

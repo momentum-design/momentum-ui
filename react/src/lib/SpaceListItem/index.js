@@ -35,8 +35,8 @@ class SpaceListItem extends React.PureComponent {
       resultRight,
       searchTerm,
       subheader,
-      title,
       theme,
+      title,
       type,
       ...props
     } = this.props;
@@ -61,14 +61,9 @@ class SpaceListItem extends React.PureComponent {
       return null;
     };
 
-    let color = theme && theme === 'light-mode' ? '#545454' : '';
-
-    const leftSection = isOverview ? (
-      <Avatar
-        className="md-list-item__avatar"
-        isOverview
-        icon={<Icon name="handset_24" color={color} />}
-      />
+    const leftSection = isOverview
+      ? (
+        <Avatar className='md-list-item__avatar' isOverview icon={<Icon name="handset_24" />} />
       ) : (
         childrenLeft
       );
@@ -128,10 +123,7 @@ class SpaceListItem extends React.PureComponent {
       ? [
           <span key="header-0" className="md-list-item__header-main">{header}</span>,
           headerSecondary && (
-            <span
-              className={'md-list-item__header-secondary' + `${(theme && ` ${theme}`) || ''}`}
-              key="header-1"
-            >
+            <span className="md-list-item__header-secondary" key="header-1">
               {headerSecondary}
             </span>
           )
@@ -147,7 +139,6 @@ class SpaceListItem extends React.PureComponent {
           className={
             'md-list-item__header' +
             `${((searchTerm || isOverview) && ` md-list-item__header--overview`) || ''}` +
-            `${(theme && ` ${theme}`) || ''}` +
             `${(isDecrypting && ` md-decrypting`) || ''}`
           }
         >
@@ -169,8 +160,7 @@ class SpaceListItem extends React.PureComponent {
                     <div className="md-list-item__attachment--top">
                       <ListItemSection
                         position="center"
-                    className={'md-list-item__attachment--top-left' + `${(theme && ` ${theme}`) || ''}`}
-                  >
+                        className="md-list-item__attachment--top-left">
                         {highlightSubheader(subheader)}
                       </ListItemSection>
                       {resultRight && (
@@ -181,14 +171,15 @@ class SpaceListItem extends React.PureComponent {
                         </ListItemSection>
                       )}
                     </div>
-                {attachments && attachments.length && (
-                  <div className={'md-list-item__attachment--bottom' + `${(theme && ` ${theme}`) || ''}`}>
+                    {attachments &&
+                      attachments.length && (
+                        <div className="md-list-item__attachment--bottom">
                           {attachments[0]}
                         </div>
                     )}
                   </ListItemSection>
                 ) : (
-              <div className={'md-list-item__result' + `${(theme && ` ${theme}`) || ''}`}>
+                  <div className="md-list-item__result">
                     {highlightSubheader(subheader)}
                   </div>
                 )
@@ -214,7 +205,7 @@ class SpaceListItem extends React.PureComponent {
         className={
           `${(isBold && ` md-list-item--unread`) || ''}` +
           `${(type && ` md-list-item--space-${type}`) || ''}` +
-          `${(theme && ` ${theme}`) || ''}` +
+          `${(theme && ` md-list-item--space-${theme}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -265,10 +256,10 @@ SpaceListItem.propTypes = {
   searchTerm: PropTypes.string,
   /** @prop SpaceListItem subheader node | ''s */
   subheader: PropTypes.node,
-  /** @prop SpaceListItem title | '' */
-  title: PropTypes.string,
   /** @prop SpaceListItem theme | '' */
   theme: PropTypes.string,
+  /** @prop SpaceListItem title | '' */
+  title: PropTypes.string,
   /** @prop SpaceListItem type | '' */
   type: PropTypes.oneOf([
     '',

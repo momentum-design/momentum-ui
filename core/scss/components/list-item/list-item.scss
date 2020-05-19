@@ -70,7 +70,7 @@
           $header-color: $list-item-header__color--dark
         );
 
-        &.light-mode {
+        &-light {
           @include list-item-color(
             $background-color: #f7f7f7,
             $color: #545454,

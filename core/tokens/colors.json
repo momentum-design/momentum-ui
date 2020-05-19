@@ -5,7 +5,7 @@
       "variations": [
         {
           "value": 5,
-          "name": "theme-5",
+          "name": "theme-05",
           "hex": "#EBFCFF",
           "rgb": { "r": 235, "g": 235, "b": 235 },
           "rgba": { "r": 235, "g": 235, "b": 235, "a": 1 }
@@ -86,7 +86,7 @@
       "variations": [
         {
           "value": 5,
-          "name": "blue-5",
+          "name": "blue-05",
           "hex": "#EBFCFF",
           "rgb": { "r": 235, "g": 235, "b": 235 },
           "rgba": { "r": 235, "g": 235, "b": 235, "a": 1 }
@@ -413,7 +413,7 @@
       "variations": [
         {
           "value": 5,
-          "name": "gray-5",
+          "name": "gray-05",
           "hex": "#F7F7F7",
           "rgb": {"r": 247, "g": 247, "b": 247 },
           "rgba": {"r": 247, "g": 247, "b": 247, "a": 1}

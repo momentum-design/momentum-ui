@@ -300,25 +300,25 @@
 
       &-light {
         @include list-item-color(
-          $background-color: #f7f7f7,
-          $color: #545454,
-          $active-color: #121212,
-          $hover-bgrd-color: #ededed,
-          $active-bgrd-color: #ededed,
-          $hover-header-color: #121212,
-          $hover-subheader-color: #121212,
-          $header-color: #545454,
-          $subheader-color: #545454,
-          $focus-color: #ededed
+          $background-color: $md-gray-5,
+          $color: $md-gray-70,
+          $active-color: $md-gray-100,
+          $hover-bgrd-color: $md-gray-10,
+          $active-bgrd-color: $md-gray-10,
+          $hover-header-color: $md-gray-100,
+          $hover-subheader-color: $md-gray-100,
+          $header-color: $md-gray-70,
+          $subheader-color: $md-gray-70,
+          $focus-color: $md-gray-10
         );
 
         .md-icon {
-          color: #545454;
+          color: $md-gray-70;
         }
 
         &.#{$list-item__class}--space-filter-summary {
           [class*='__header'] {
-            color: #545454;
+            color: $md-gray-70;
           }
         }
 
@@ -329,7 +329,7 @@
           > [class$='__center'] {
             > [class*='__header'] {
               > [class$='-secondary'] {
-                color: #545454;
+                color: $md-gray-70;
               }
             }
           }
@@ -338,14 +338,14 @@
             [class$='__attachment'] {
               [class$='__attachment--top'] {
                 [class$='-left'] {
-                  color: #545454;
+                  color: $md-gray-70;
                 }
               }
             }
           }
 
           [class*='__result'] {
-            color: #545454;
+            color: $md-gray-70;
           }
         }
 
@@ -355,18 +355,18 @@
           > [class$='__center'] {
             [class$='__header'],
             [class$='__header--overview'] {
-              color: #545454;
+              color: $md-gray-70;
             }
           }
         }
 
         [class$='__header--overview'] {
-          color: #545454;
+          color: $md-gray-70;
         }
 
         &.#{$list-item__class}--unread {
           .#{$list-item__class}__header {
-            color: #121212;
+            color: $md-gray-100;
           }
         }
       }

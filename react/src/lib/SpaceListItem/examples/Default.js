@@ -18,7 +18,7 @@ export default class ListItemDefault extends React.PureComponent {
           <SpaceListItem header='isMuted' isMuted/>
           <SpaceListItem header='Disabled' subheader='subheader' disabled/>
           <SpaceListItem header='Subheader as Node' subheader={<span style={{color: '#98D5CA'}}>Marketing</span>}/>
-          <ListItemHeader header='List Header-Type(space)' children={<a href="more">More</a>} type='space-light'/>
+          <ListItemHeader header='List Header-Type(space)' children={<a href="more">More</a>} type='space'/>
           <SpaceListItem header='Header with SearchTerm' searchTerm='search'/>
           <SpaceListItem header='Both Headers w/ SearchTerm' subheader='Searchable subheader' searchTerm='search'/>
           <SpaceListItem header='Subheader(node)-searchTerm' subheader={<span style={{color: '#D7ABE1'}}>Searching</span>} searchTerm='search'/>

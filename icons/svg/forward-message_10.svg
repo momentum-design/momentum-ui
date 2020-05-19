@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
-    <title>forward-message_10</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="chat/forward-message_10" fill="#000000">
-            <g id="forward-message_10" transform="translate(0.000000, 1.000000)">
-                <path d="M1,2.00067028 C0.447857625,2.00067028 0,2.4485279 0,3.00067028 L0,5.00067028 C0,5.55362217 0.44766643,6.00067028 1,6.00067028 L5,6.00067028 L5,7.39867028 C5,7.91593896 5.60905851,8.19237511 5.99766156,7.85160013 L9.79944044,4.44925244 C10.0669394,4.21147943 10.0669394,3.78986112 9.79818192,3.55096562 L6.00138596,0.154039354 C5.61176445,-0.193623501 5,0.0862982386 5,0.603670275 L5,2.00067027 L1,2.00067028 Z M6,6.50755637 L6,5.00067028 L1,5.00067028 L1,3.00067028 L6,3.00067028 L6,1.49460916 L8.80111557,4.00071563 L6,6.50755637 Z" id="fill"></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 3a1 1 0 00-1 1v2a1 1 0 001 1h4V8.4c0 .517.61.793.998.453l3.801-3.403a.602.602 0 000-.898L6 1.154A.601.601 0 005 1.604V3H1zm5 4.508V6H1V4h5V2.495L8.801 5 6 7.508z" fill="#000" fill-rule="evenodd"/></svg>

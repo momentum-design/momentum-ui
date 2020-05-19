@@ -1,16 +1,11 @@
 {
   "npmClient": "yarn",
   "packages": [
-    "angular",
-    "angular/src/lib",
-    "angularjs",
     "charts",
     "core",
     "icons",
     "react",
     "utils",
-    "vue",
-    "web-components",
     "www"
   ],
   "useWorkspaces": true,
@@ -35,7 +30,6 @@
         "**/*.spec*",
         "**/*.cy*",
         "**/*.md",
-        "**/angular.json",
         "**/yarn.lock",
         "**/package.json"
       ],

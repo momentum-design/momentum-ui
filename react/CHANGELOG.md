@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.8.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.4...@momentum-ui/react@23.8.5) (2020-05-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.3...@momentum-ui/react@23.8.4) (2020-05-16)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.2...@momentum-ui/react@23.8.3) (2020-05-15)
+
+
+### Bug Fixes
+
+* **select:** multiselect options stay selected ([eb0b528](https://github.com/momentum-design/momentum-ui/commit/eb0b5284be6e73eecb8461132a6966d300ca73b1))
+
+
+
+
+
+## [23.8.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.1...@momentum-ui/react@23.8.2) (2020-05-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.8.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.0...@momentum-ui/react@23.8.1) (2020-05-02)
 
 **Note:** Version bump only for package @momentum-ui/react

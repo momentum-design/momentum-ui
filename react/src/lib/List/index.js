@@ -237,6 +237,7 @@ class List extends React.Component {
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, {
+        keyboardKey: this.getValue(items, index, 'keyboard'),
         eventKey: this.getValue(items, index, 'event'),
         label,
         value,

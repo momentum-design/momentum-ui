@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SidebarBody should match snapshot 1`] = `<div class="md-sidebar__body"></div>`;

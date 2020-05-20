@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import omit from 'lodash/omit';
 import FocusLock from 'react-focus-lock';
-import eventPath from '../../helpers/getEventPath';
 
 const defaultDims = {
   offsetTop: 0,
@@ -18,6 +17,34 @@ const defaultDims = {
   top: 0,
   width: 0,
 };
+
+ function eventPath(evt) {
+  let path = (evt.composedPath && evt.composedPath()) || evt.path,
+    target = evt.target;
+
+  if (path != null) {
+    // Safari doesn't include Window, and it should.
+    path = path.indexOf(window) < 0 ? path.concat([window]) : path;
+    return path;
+  }
+
+  if (target === window) {
+    return [window];
+  }
+
+  function getParents(node, memo) {
+    memo = memo || [];
+    let parentNode = node !== undefined ? node.parentNode : false;
+
+    if (!parentNode) {
+      return memo;
+    } else {
+      return getParents(parentNode, memo.concat([parentNode]));
+    }
+  }
+
+  return [target].concat(getParents(target)).concat([window]);
+}
 
 class EventOverlay extends React.Component {
   static getDerivedStateFromProps({ isOpen }, state) {

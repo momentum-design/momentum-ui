@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.19...@momentum-ui/core@19.5.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* **colors:** update color examples and 05 values ([88cec7a](https://github.com/momentum-design/momentum-ui/commit/88cec7aa6e155d778b9c8309c3a982092b2ef091))
+
+
+### Features
+
+* **colors:** updated colors to Momentum 2.0 ([f5393da](https://github.com/momentum-design/momentum-ui/commit/f5393da888fe055024d762c41c3d93e51c6cb8bf))
+
+
+
+
+
 ## [19.4.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.18...@momentum-ui/core@19.4.19) (2020-05-18)
 
 **Note:** Version bump only for package @momentum-ui/core

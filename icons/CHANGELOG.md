@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.32.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.32.0...@momentum-ui/icons@7.32.1) (2020-05-20)
+
+
+### Bug Fixes
+
+* **icons:** fix broken paths in svg files ([9db75e3](https://github.com/momentum-design/momentum-ui/commit/9db75e3d8ce650262f71e94d41ae7934cab18c9a))
+
+
+
+
+
 # [7.32.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.31.0...@momentum-ui/icons@7.32.0) (2020-05-18)
 
 

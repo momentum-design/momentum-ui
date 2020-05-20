@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.0.4...@momentum-ui/utils@6.1.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* remove angular references in www ([ccb6e44](https://github.com/momentum-design/momentum-ui/commit/ccb6e4462514272fad445b4f489a40ba77dad19d))
+
+
+### Features
+
+* remove angular and vue from utils and tools ([e2ee1a0](https://github.com/momentum-design/momentum-ui/commit/e2ee1a00c89721b917a15b4300ee8616352cace4))
+
+
+
+
+
 ## [6.0.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.0.3...@momentum-ui/utils@6.0.4) (2019-11-04)
 
 **Note:** Version bump only for package @momentum-ui/utils

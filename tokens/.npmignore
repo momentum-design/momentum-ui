@@ -57,14 +57,12 @@ packages
 # Library Specific files #
 ##########################
 build
-dist
 node_modules
 templates
 .eslintrc.json
 yarn*
 /config
 /scripts
-/src
 /docs
 /utils
 /tools

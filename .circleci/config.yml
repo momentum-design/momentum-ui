@@ -32,6 +32,25 @@ jobs:
           name: Lint all Libraries
           command: yarn lint:all
 
+  build_tokens:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build tokens library
+          command: yarn build:tokens
+      - store_artifacts:
+          path: ~/repo/tokens/dist/
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo/tokens/dist/
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+
   test_icons:
     <<: *image_defaults
     steps:
@@ -114,6 +133,9 @@ jobs:
           command: yarn lint:all
       - run: yarn build:react
       - run:
+          name: Build tokens library
+          command: yarn build:tokens
+      - run:
           name: Test icons library
           command: yarn ci:test:icons
       - run:
@@ -156,22 +178,23 @@ workflows:
       - lint:
           requires:
             - checkout_install
+      - build_tokens:
+          requires:
+            - lint
       - test_react:
           requires:
-            - lint
+            - build_tokens
       - test_core_percy:
           requires:
-            - lint
+            - build_tokens
       - test_www:
           requires:
-            - lint
+            - build_tokens
       - test_icons:
           requires:
             - lint
       - percy_finalize_all:
           requires:
-            - test_icons
-            - test_core_percy
             - test_react
 
   daily_release:
@@ -184,4 +207,3 @@ workflows:
                 - master
     jobs:
       - lint_test_release
-

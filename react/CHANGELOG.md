@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.5...@momentum-ui/react@23.9.0) (2020-05-20)
+
+
+### Features
+
+* **colors:** updated colors to Momentum 2.0 ([f5393da](https://github.com/momentum-design/momentum-ui/commit/f5393da888fe055024d762c41c3d93e51c6cb8bf))
+
+
+
+
+
 ## [23.8.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.4...@momentum-ui/react@23.8.5) (2020-05-18)
 
 **Note:** Version bump only for package @momentum-ui/react

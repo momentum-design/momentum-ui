@@ -1,9 +1,8 @@
 const startsWith = require('lodash/startsWith');
 const trimStart = require('lodash/trimStart');
-const find = require('lodash/find');
 const isEmpty = require('lodash/isEmpty');
-const colorTokens = require('@momentum-ui/core/tokens/colors.json').colors;
-const legacyColors = require('@momentum-ui/core/tokens/legacyColors.json');
+const colorTokens = require('@momentum-ui/tokens/dist/colors.json');
+const legacyColors = require('@momentum-ui/tokens/src/legacyColors.json');
 
 const getColorValue = (color, colorFormat) => {
   const colorName = convertScssVariableToName(color);
@@ -33,11 +32,13 @@ const getColorObject = colorName => {
   return colorObject;
 };
 
+const getColor = (name, value) => {
+  return (colorTokens[name] && colorTokens[name][value]) || {};
+};
+
 const getColorObjectFromTokens = colorName => {
-  return colorTokens.reduce((agg, ele) => {
-    const colorObject = find(ele.variations, { name: colorName });
-    return colorObject ? colorObject : agg;
-  }, {});
+  colorData = colorName.split('-');
+  return getColor(colorData[0], colorData[1]);
 };
 
 const getNewColorName = colorName => {

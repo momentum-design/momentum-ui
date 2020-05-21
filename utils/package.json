@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/utils",
-  "version": "6.0.4",
+  "version": "6.2.0",
   "description": "Momentum UI Utility functions.",
   "license": "MIT",
   "main": "lib/index.js",
@@ -37,7 +37,8 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.2"
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.2",
+    "@momentum-ui/tokens": "^1.1.0"
   },
   "publishConfig": {
     "access": "public"

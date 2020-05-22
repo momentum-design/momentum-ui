@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.10.0...@momentum-ui/react@23.11.0) (2020-05-22)
+
+
+### Features
+
+* **eventoverlay:** add event path find for shadow elements ([#611](https://github.com/momentum-design/momentum-ui/issues/611)) ([e5af7e1](https://github.com/momentum-design/momentum-ui/commit/e5af7e1fcf86de066264e97255374d7f2314e854))
+
+
+
+
+
 # [23.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.9.0...@momentum-ui/react@23.10.0) (2020-05-21)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.0...@momentum-ui/utils@6.2.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* **utils:** add tokens dependency & build:tokens in bootstrap script ([6b1088b](https://github.com/momentum-design/momentum-ui/commit/6b1088b32735073190c46ea7c28ac1ad0aac6279))
+* **utils:** alpha utils/src/index.js ([7bcb56f](https://github.com/momentum-design/momentum-ui/commit/7bcb56f54bfddc41ecd02010b7b93d3b48491be7))
+
+
+
+
+
 # [6.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.1.0...@momentum-ui/utils@6.2.0) (2020-05-21)
 
 

@@ -369,6 +369,21 @@
             color: $md-gray-100;
           }
         }
+
+        &.#{$list-item__class}--space-meeting {
+          [class$='--attendees'] {
+            color: $md-gray-70;
+            fill: $md-gray-70;
+          }
+
+          .#{$button__class} {
+            color: $md-gray-05;
+            background-color: $md-green-60;
+            &:hover {
+              background-color: $md-green-70;
+            }
+          }
+        }
       }
     }
   }

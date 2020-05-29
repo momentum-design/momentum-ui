@@ -32,6 +32,7 @@ class SpaceListMeeting extends React.PureComponent {
       isBold,
       meetingType,
       subheader,
+      theme,
       title,
       ...props
     } = this.props;
@@ -128,6 +129,7 @@ class SpaceListMeeting extends React.PureComponent {
         className={
           'md-list-item--space-meeting' +
           `${(isBold && ` md-list-item--unread`) || ''}` +
+          `${(theme && ` md-list-item--space-${theme}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -175,6 +177,8 @@ SpaceListMeeting.propTypes = {
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
   /** @prop SpaceListMeeting sub header node | '' */
   subheader: PropTypes.node,
+  /** @prop SpaceListMeeting color theme */
+  theme: PropTypes.string,
   /** @prop SpaceListMeeting title | '' */
   title: PropTypes.string,
 };
@@ -192,6 +196,7 @@ SpaceListMeeting.defaultProps = {
   eventOverlayProps: null,
   meetingType: '',
   subheader: '',
+  theme: '',
   title: '',
 };
 

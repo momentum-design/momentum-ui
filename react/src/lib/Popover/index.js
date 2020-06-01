@@ -19,9 +19,9 @@ class Popover extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // focus on the first button in the EventOverlay
     const { isOpen } = this.state;
-    const { autoFocus } = this.props;
+    const { autoFocusOnFirstElt } = this.props;
     
-    if (autoFocus
+    if (autoFocusOnFirstElt
         && isOpen 
         && !prevState.isOpen 
         && this.overlay
@@ -153,7 +153,7 @@ class Popover extends React.Component {
   };
 
   // Handle keydown for the trigger element
-  handleKeyDown = e => {
+  handleKeyDownTrigger = e => {
     switch (e.which) {
       case 13: // ENTER
         e.preventDefault();
@@ -171,9 +171,7 @@ class Popover extends React.Component {
         e.stopPropagation();
 
         // Close Popover
-        this.setState({isHovering: false}, () =>
-          this.delayedHide(e)
-        );
+        this.handleHide(e);
 
         // Focus on trigger
         if (e.target) {
@@ -183,12 +181,45 @@ class Popover extends React.Component {
     }
   }
 
+  handleKeyDownEventOverlay = e => {
+    if (this.state.isOpen && this.overlay && this.anchorRef) {
+      const eventOverlay = ReactDOM.findDOMNode(this.overlay);
+      const trigger = ReactDOM.findDOMNode(this.anchorRef);
+      const tabbableElements = eventOverlay.querySelectorAll('[tabindex="0"]');
+
+      switch (e.which) {
+        case 9:
+            if (this.props.closeOnFocusLeavesContent && tabbableElements.length) {
+              if (e.shiftKey) { // SHIFT + TAB
+                // If first interactable element in EventOverlay, hide the popover
+                if (document.activeElement === tabbableElements[0]) {
+                  this.handleHide(e);
+                }
+              } else { // TAB
+                // If last interactable element in EventOverlay, hide the popover
+                if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  this.handleHide(e);
+                  trigger.focus();
+                }
+              }
+            }
+          break;
+        case 27: // ESC
+            e.stopPropagation();
+            this.handleHide(e);
+            trigger.focus();
+          break;
+      }
+    }
+  }
+
   render() {
     const { isOpen } = this.state;
     const {
       children,
       className,
-      closeOnFocusLeavesContent,
       content,
       includeFocusOnHover,
       overflowType,
@@ -198,7 +229,8 @@ class Popover extends React.Component {
     } = this.props;
 
     const otherProps = omit({ ...props }, [
-      'autoFocus',
+      'autoFocusOnFirstElt',
+      'closeOnFocusLeavesContent',
       'delay',
       'doesAnchorToggle',
       'hideDelay',
@@ -220,7 +252,7 @@ class Popover extends React.Component {
 
           triggerProps.onFocus = includeFocusOnHover ? this.handleFocus : undefined;
           triggerProps.onBlur = includeFocusOnHover ? this.handleBlur : undefined;
-          triggerProps.onKeyDown = this.handleKeyDown;
+          triggerProps.onKeyDown = includeFocusOnHover ? undefined : this.handleKeyDownTrigger;
           break;
 
         case 'Click':
@@ -256,6 +288,7 @@ class Popover extends React.Component {
 
     const anchorWithTriggers = () => children && React.cloneElement(children, getTriggers());
 
+
     return (
       <React.Fragment>
         {anchorWithTriggers()}
@@ -276,40 +309,7 @@ class Popover extends React.Component {
                 e.persist();
                 this.handleHide(e);
               },
-              onKeyDown: (e) => {
-                if (this.state.isOpen && this.overlay && this.anchorRef) {
-                  const eventOverlay = ReactDOM.findDOMNode(this.overlay);
-                  const trigger = ReactDOM.findDOMNode(this.anchorRef);
-                  const tabbableElements = eventOverlay.querySelectorAll('[tabindex="0"]');
-
-                  switch (e.which) {
-                    case 9:
-                        if (closeOnFocusLeavesContent && tabbableElements.length) {
-                          if (e.shiftKey) { // SHIFT + TAB
-                            // If first interactable element in EventOvcerlay, hide the popover
-                            if (document.activeElement === tabbableElements[0]) {
-                              this.handleHide(e);
-                            }
-                          } else { // TAB
-                            // If last interactable element in EventOvcerlay, hide the popover
-                            if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              this.handleHide(e);
-                              trigger.focus();
-                            }
-                          }
-                        }
-                      break;
-                    case 27: // ESC
-                        e.stopPropagation();
-                        this.handleHide(e);
-                        trigger.focus();
-                      break;
-                  }
-                }
-              }
-            })}
+              onKeyDown: !includeFocusOnHover ? this.handleKeyDownEventOverlay : undefined})}
             {...(popoverTrigger === 'Focus' && { allowClickAway: false })}
             {...otherProps}
           >
@@ -323,7 +323,7 @@ class Popover extends React.Component {
 
 Popover.propTypes = {
   /** @prop Focus on the first interactable (tabindex="0") element in the popover | false */
-  autoFocus: PropTypes.bool,
+  autoFocusOnFirstElt: PropTypes.bool,
   /** @prop Children node that should be the popover trigger(this should be a stateful component) */
   children: PropTypes.element.isRequired,
   /** @prop Optional CSS class names which goes over popover container | '' */
@@ -357,7 +357,7 @@ Popover.propTypes = {
 };
 
 Popover.defaultProps = {
-  autoFocus: false,
+  autoFocusOnFirstElt: false,
   className: '',
   closeOnFocusLeavesContent: false,
   delay: 0,

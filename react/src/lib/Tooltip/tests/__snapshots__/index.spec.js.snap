@@ -28,7 +28,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "autoFocusOnFirstInteractiveElt": false,
+      "autoFocusOnFirstElt": false,
       "children": <div>
         Hi
       </div>,
@@ -71,7 +71,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "autoFocusOnFirstInteractiveElt": false,
+        "autoFocusOnFirstElt": false,
         "children": <div>
           Hi
         </div>,

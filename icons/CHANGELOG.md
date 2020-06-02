@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.34.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.33.1...@momentum-ui/icons@7.34.0) (2020-06-02)
+
+
+### Features
+
+* **icons:** add invited-user_16 ([f551714](https://github.com/momentum-design/momentum-ui/commit/f551714ae9ae6db0592ae92aaf9061393d124ed5))
+* **icons:** add invited-user_32 ([6fb8aa3](https://github.com/momentum-design/momentum-ui/commit/6fb8aa398a18c4afe96d569cf513fe5c89b82350))
+* **icons:** add invited-user_56 ([be8ab61](https://github.com/momentum-design/momentum-ui/commit/be8ab61f87d2705a1631f09545fa677858716c45))
+* **icons:** add join-audio_20 ([53f4785](https://github.com/momentum-design/momentum-ui/commit/53f4785d78fb3d7db9b92c76cbb37986e36aa8e7))
+* **icons:** add mirror_16 ([3d3e06b](https://github.com/momentum-design/momentum-ui/commit/3d3e06bddf204029753266ae1db43252c49fbfe2))
+* **icons:** add sort-down_16 ([d7b5f4d](https://github.com/momentum-design/momentum-ui/commit/d7b5f4dcd9a34ba19b22fce5e89ebfa839c63e48))
+* **icons:** add start-chat_24 ([13247e1](https://github.com/momentum-design/momentum-ui/commit/13247e1c57b8a6e5c03214edd7b6f11a2ce882cf))
+* **icons:** add team-new_24 ([0dfc21f](https://github.com/momentum-design/momentum-ui/commit/0dfc21f31fb551806aa804fd94885be7f4a3ce43))
+* **icons:** add video-effect_16 ([8882334](https://github.com/momentum-design/momentum-ui/commit/88823340acd5a6bc698a619e79fbea9602464d0a))
+
+
+
+
+
 ## [7.33.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.33.0...@momentum-ui/icons@7.33.1) (2020-05-27)
 
 **Note:** Version bump only for package @momentum-ui/icons

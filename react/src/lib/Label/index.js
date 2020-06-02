@@ -22,7 +22,7 @@ const Label = ({
       {...props}
     >
       {
-        label 
+        label
         ? <span>{label}</span>
         : children
       }

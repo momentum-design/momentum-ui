@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const InputHelper = ({ message, className, ...props }) => {
   return (
-    <div 
+    <div
       className={
         `md-input__help-text` +
         `${className && ` ${className}` || ''}`

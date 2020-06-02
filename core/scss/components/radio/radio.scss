@@ -37,6 +37,14 @@
             cursor: pointer;
           }
         }
+        + .#{$radio__class}--label {
+          .#{$radio__class}__label {
+            &:before {
+              color: $form-control__content;
+              cursor: pointer;
+            }
+          }
+        }
       }
 
       &:disabled,
@@ -49,9 +57,19 @@
             cursor: default;
           }
         }
+        + .#{$radio__class}--label {
+          .#{$radio__class}__label {
+            cursor: default;
+            opacity: $form-control__opacity--disabled;
+
+            &:before {
+              cursor: default;
+            }
+          }
+        }
       }
     }
-
+    .#{$radio__class}--label .#{$radio__class}__label,
     .#{$radio__class}__label {
       display: flex;
       line-height: $radio__size;

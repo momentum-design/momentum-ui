@@ -189,7 +189,8 @@ class Popover extends React.Component {
 
       switch (e.which) {
         case 9:
-            if (this.props.closeOnFocusLeavesContent && tabbableElements.length) {
+          if (tabbableElements.length) {
+            if (this.props.closeOnFocusLeavesContent) { // if closeOnFocusLeavesContent = true
               if (e.shiftKey) { // SHIFT + TAB
                 // If first interactable element in EventOverlay, hide the popover
                 if (document.activeElement === tabbableElements[0]) {
@@ -204,12 +205,30 @@ class Popover extends React.Component {
                   trigger.focus();
                 }
               }
+            } else {  // if closeOnFocusLeavesContent = false
+              // Intent is for TAB and SHIFT+TAB to trap the user inside the dialog (AKA popover)
+              if (e.shiftKey) { // SHIFT + TAB
+                // If first interactable element in EventOverlay, go to the last interatable element
+                if (document.activeElement === tabbableElements[0]) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  tabbableElements[tabbableElements.length - 1].focus();
+                }
+              } else { // TAB
+                // If last interactable element in EventOverlay, go to the first interatable element
+                if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  tabbableElements[0].focus();
+                }
+              }
             }
+          }
           break;
         case 27: // ESC
-            e.stopPropagation();
-            this.handleHide(e);
-            trigger.focus();
+          e.stopPropagation();
+          this.handleHide(e);
+          trigger.focus();
           break;
       }
     }

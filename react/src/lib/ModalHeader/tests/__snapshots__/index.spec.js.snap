@@ -4,11 +4,14 @@ exports[`tests for <ModalHeader /> should match SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ModalHeader
+    ariaLabel={null}
+    ariaLevel={null}
     className=""
     closeBtnProps={null}
     headerLabel=""
     id="test"
     message=""
+    role={null}
     showCloseButton={true}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -28,7 +31,10 @@ ShallowWrapper {
       "children": Array [
         Array [
           <span
+            aria-label={null}
+            aria-level={null}
             className="md-modal__title"
+            role={null}
           >
             
           </span>,
@@ -49,8 +55,11 @@ ShallowWrapper {
         "key": "title-0",
         "nodeType": "host",
         "props": Object {
+          "aria-label": null,
+          "aria-level": null,
           "children": "",
           "className": "md-modal__title",
+          "role": null,
         },
         "ref": null,
         "rendered": "",
@@ -81,7 +90,10 @@ ShallowWrapper {
         "children": Array [
           Array [
             <span
+              aria-label={null}
+              aria-level={null}
               className="md-modal__title"
+              role={null}
             >
               
             </span>,
@@ -102,8 +114,11 @@ ShallowWrapper {
           "key": "title-0",
           "nodeType": "host",
           "props": Object {
+            "aria-label": null,
+            "aria-level": null,
             "children": "",
             "className": "md-modal__title",
+            "role": null,
           },
           "ref": null,
           "rendered": "",

@@ -13,6 +13,7 @@ class Tab extends React.PureComponent {
     const {
       heading,
       active,
+      isType,
       onPress,
       onKeyDown,
       role,
@@ -28,6 +29,7 @@ class Tab extends React.PureComponent {
       'md-tab__item' +
       `${(className && ` ${className}`) || ''}` +
       `${active ? ' active' : ''}` +
+      `${(isType && ` md-type--${isType}`) || ''}` +
       `${disabled ? ' disabled' : ''}`}
         {...(!disabled ? {tabIndex: '-1'} : {})}
         >
@@ -68,6 +70,7 @@ Tab.propTypes = {
   onPress: PropTypes.func,
   /** @prop Tab's anchor role type | 'tab' */
   role: PropTypes.string,
+  isType: PropTypes.string,
 };
 
 Tab.defaultProps = {
@@ -79,6 +82,7 @@ Tab.defaultProps = {
   onKeyDown: null,
   onPress: null,
   role: 'tab',
+  isType: 'pills',
 };
 
 Tab.displayName = 'Tab';

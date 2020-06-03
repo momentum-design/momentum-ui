@@ -31,8 +31,6 @@ class ComponentPage extends React.Component {
               agg
                 || section.variations.core.example
                 || section.variations.react.example
-                || section.variations.angular.example
-                || section.variations.angularjs.example
             ) {
               return true;
             } else return false;

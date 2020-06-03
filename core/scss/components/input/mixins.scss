@@ -45,7 +45,6 @@
   $background-color-hover: null,
   $border-color: null
 ) {
-
   .#{$input__class}:not(.md-select__filter--input) {
     color: $color;
     background-color: $background-color;
@@ -96,7 +95,7 @@
   &.#{$prefix}-disabled {
     .#{$input__class} {
       &__before {
-        @include input-icon($color: $color-disabled)
+        @include input-icon($color: $color-disabled);
       }
     }
   }
@@ -104,14 +103,11 @@
   .#{$input__class} {
     &__after,
     &__before {
-      @include input-icon($color: $color)
+      @include input-icon($color: $color);
     }
 
     &__icon-clear {
-      @include input-clear-color(
-        $color-clear,
-        $color-clear-hover
-      );
+      @include input-clear-color($color-clear, $color-clear-hover);
     }
   }
 
@@ -129,10 +125,7 @@
   }
 }
 
-
-@mixin input-icon(
-  $color: null
-) {
+@mixin input-icon($color: null) {
   @if $color {
     color: $color;
     fill: $color;
@@ -146,7 +139,7 @@
 @mixin input-clear-color(
   $color: $input__clear-icon__color,
   $color-hover: $input__clear-icon__color--hover
-  ) {
+) {
   background-color: transparent;
   color: $color;
   fill: $color;
@@ -156,5 +149,43 @@
     background-color: transparent;
     color: $color-hover;
     fill: $color-hover;
+  }
+}
+
+@mixin container-nesting {
+  .#{$input__class}-container {
+    @include flex($fw: wrap, $jc: normal, $ac: normal, $ai: normal);
+    box-sizing: border-box;
+    margin-bottom: rem-calc(16);
+    position: relative;
+    line-height: $input__line-height;
+
+    &.column,
+    &.columns {
+      padding: 0;
+    }
+
+    &.#{$prefix}-disabled {
+      .#{$input__class}__label,
+      .#{$input__class}__secondary-label {
+        cursor: not-allowed;
+      }
+    }
+
+    &.#{$input__class} {
+      &--nested {
+        &-1 {
+          padding-left: 2rem;
+        }
+
+        &-2 {
+          padding-left: 4rem;
+        }
+
+        &-3 {
+          padding-left: 6rem;
+        }
+      }
+    }
   }
 }

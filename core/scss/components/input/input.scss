@@ -58,42 +58,8 @@
     }
   }
 
-  .#{$input__class}-container {
-    @include flex($fw: wrap, $jc: normal, $ac: normal, $ai: normal);
-    box-sizing: border-box;
-    margin-bottom: rem-calc(16);
-    position: relative;
-    line-height: $input__line-height;
-
-    &.column,
-    &.columns {
-      padding: 0;
-    }
-
-    &.#{$prefix}-disabled {
-      .#{$input__class}__label,
-      .#{$input__class}__secondary-label {
-        cursor: not-allowed;
-      }
-    }
-
-    &.#{$input__class} {
-      &--nested {
-        &-1 {
-          padding-left: 2rem;
-        }
-
-        &-2 {
-          padding-left: 4rem;
-        }
-
-        &-3 {
-          padding-left: 6rem;
-        }
-      }
-    }
-  }
-
+  @include container-nesting;
+  
   .#{$input__class} {
     border: $input__border-width solid;
     border-radius: $input__border-radius;

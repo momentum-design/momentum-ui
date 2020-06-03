@@ -23,7 +23,8 @@
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/spacing';
 @import '../../typography/mixins';
-@import '../../components/input/mixins';
+@import '../input/mixins';
+@import '../help-text/mixins';
 
 @include brand-font-face-regular;
 
@@ -31,39 +32,4 @@
 @import 'mixins';
 @import 'checkbox';
 
-
-.#{$input__class}-container {
-    @include flex($fw: wrap, $jc: normal, $ac: normal, $ai: normal);
-    box-sizing: border-box;
-    line-height: $input__line-height;
-    margin-bottom: rem-calc(16);
-    position: relative;
-  
-    &.column,
-    &.columns {
-      padding: 0;
-    }
-  
-    &.#{$prefix}-disabled {
-      .#{$input__class}__label,
-      .#{$input__class}__secondary-label {
-        cursor: not-allowed;
-      }
-    }
-  
-    &.#{$input__class} {
-      &--nested {
-        &-1 {
-          padding-left: 2rem;
-        }
-  
-        &-2 {
-          padding-left: 4rem;
-        }
-  
-        &-3 {
-          padding-left: 6rem;
-        }
-      }
-    }
-  }
+@include container-nesting;

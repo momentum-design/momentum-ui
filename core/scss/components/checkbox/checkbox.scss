@@ -104,10 +104,8 @@
       padding-top: 6px;
     }
 
-    .#{$prefix}-input__help-text {
-      @include input__help-text();
-      @include vr-spacing(pl, 2);
-    }
+    @include input__help-text-spacing
+
   }
   // Dark
   .#{$dark-class} {

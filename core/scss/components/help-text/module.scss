@@ -8,43 +8,10 @@
 @import '../input/settings';
 
 @import '../../tools/mixins/spacing';
+@import '../input/mixins';
+@import './mixins';
 
-@mixin input__help-text(
-  $color: $input__font-color--help,
-  $color-dark: $input__font-color--help--dark,
-  $color-contrast: $input__font-color--help--contrast,
-  $color-dark-contrast: $input__font-color--help--dark--contrast
-) {
-  color: $input__font-color--help;
-  font-family: $brand-font-regular;
-  font-size: rem-calc(14);
-  line-height: rem-calc(22);
-  padding-left: rem-calc(16);
-
-  .#{$contrast-class} & {
-    color: $input__font-color--help--contrast;
-  }
-
-  .#{$dark-class} &,
-  .#{$input__class}-container--dark & {
-    color: $input__font-color--help--dark;
-
-    .#{$contrast-class} & {
-      color: $input__font-color--help--dark--contrast;
-    }
-  }
-
-  @include vr-spacing(mb, 0.25);
-
-  span {
-    font-size: inherit;
-  }
-}
-
-.#{$prefix}-input__help-text {
-  @include input__help-text();
-  @include vr-spacing(pl, 2);
-}
+@include input__help-text-spacing
 
 .#{$input__class} {
   &__help-text {

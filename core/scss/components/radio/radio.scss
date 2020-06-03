@@ -84,11 +84,9 @@
       display: flex;
       flex-direction: column;
     }
-
-    .#{$prefix}-input__help-text {
-      @include input__help-text();
-      @include vr-spacing(pl, 2);
-    }
+    
+    @include input__help-text-spacing
+  
   }
 
   .#{$dark-class} {

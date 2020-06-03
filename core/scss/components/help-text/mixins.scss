@@ -1,0 +1,6 @@
+@mixin input__help-text-spacing {
+  .#{$prefix}-input__help-text {
+    @include input__help-text();
+    @include vr-spacing(pl, 2);
+  }
+}

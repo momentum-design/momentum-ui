@@ -39,16 +39,6 @@ describe('Components pages', function() {
         .get('pre')
         .should('have.class', 'language-jsx');
     });
-    it('Clicking Angular should change code examples to Angular', () => {
-      cy.get('#default')
-        .children('.code-block-container')
-        .children('.md-button-group')
-        .children('[aria-label=Angular]')
-        .click()
-        .should('have.class', 'active')
-        .get('pre')
-        .should('have.class', 'language-ts');
-    });
     it('Clicking Show more should expand code example', () => {
       cy.get('#default')
         .children('.code-block-container')
@@ -57,7 +47,7 @@ describe('Components pages', function() {
         .children()
         .should('contain', 'Show less')
         .get('pre')
-        .should('have.class', 'language-ts');
+        .should('have.class', 'language-html');
       cy.get('#default')
         .children('.code-block-container')
         .children('.md-collapse__container')

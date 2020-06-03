@@ -3,6 +3,116 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.6.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.3...@momentum-ui/core@19.6.4) (2020-06-02)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.2...@momentum-ui/core@19.6.3) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.1...@momentum-ui/core@19.6.2) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.0...@momentum-ui/core@19.6.1) (2020-05-22)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.5.0...@momentum-ui/core@19.6.0) (2020-05-21)
+
+
+### Features
+
+* **tokens:** redirect paths, initial setup of token NPM module ([1fdb091](https://github.com/momentum-design/momentum-ui/commit/1fdb09137b6b986d4ebc4077596ac13d7a7fd9cc))
+
+
+
+
+
+# [19.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.19...@momentum-ui/core@19.5.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* **colors:** update color examples and 05 values ([88cec7a](https://github.com/momentum-design/momentum-ui/commit/88cec7aa6e155d778b9c8309c3a982092b2ef091))
+
+
+### Features
+
+* **colors:** updated colors to Momentum 2.0 ([f5393da](https://github.com/momentum-design/momentum-ui/commit/f5393da888fe055024d762c41c3d93e51c6cb8bf))
+
+
+
+
+
+## [19.4.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.18...@momentum-ui/core@19.4.19) (2020-05-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.17...@momentum-ui/core@19.4.18) (2020-05-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.16...@momentum-ui/core@19.4.17) (2020-05-15)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.15...@momentum-ui/core@19.4.16) (2020-05-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.14...@momentum-ui/core@19.4.15) (2020-05-02)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.13...@momentum-ui/core@19.4.14) (2020-04-30)
+
+
+### Bug Fixes
+
+* **lightbox:** fix thumbnail list shrinking in multi page files ([#598](https://github.com/momentum-design/momentum-ui/issues/598)) ([3b67f6d](https://github.com/momentum-design/momentum-ui/commit/3b67f6d107ab46a6903d34b6adcb62d18b5366f1))
+
+
+
+
+
 ## [19.4.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.12...@momentum-ui/core@19.4.13) (2020-04-28)
 
 **Note:** Version bump only for package @momentum-ui/core

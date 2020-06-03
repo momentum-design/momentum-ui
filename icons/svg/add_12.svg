@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
-    <title>common-actions/add_12</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="common-actions/add_12" fill="#000000">
-            <g id="add_12">
-                <path d="M6,0 C9.3137085,0 12,2.6862915 12,6 C12,9.3137085 9.3137085,12 6,12 C2.6862915,12 0,9.3137085 0,6 C0,2.6862915 2.6862915,0 6,0 Z M6,1 C3.23857625,1 1,3.23857625 1,6 C1,8.76142375 3.23857625,11 6,11 C8.76142375,11 11,8.76142375 11,6 C11,3.23857625 8.76142375,1 6,1 Z" id="Combined-Shape" fill-rule="nonzero"></path>
-                <path d="M6,3 C6.27614237,3 6.5,3.22385763 6.5,3.5 L6.5,5.5 L8.5,5.5 C8.77614237,5.5 9,5.72385763 9,6 C9,6.27614237 8.77614237,6.5 8.5,6.5 L6.5,6.5 L6.5,8.5 C6.5,8.77614237 6.27614237,9 6,9 C5.72385763,9 5.5,8.77614237 5.5,8.5 L5.5,6.5 L3.5,6.5 C3.22385763,6.5 3,6.27614237 3,6 C3,5.72385763 3.22385763,5.5 3.5,5.5 L5.5,5.5 L5.5,3.5 C5.5,3.22385763 5.72385763,3 6,3 Z" id="Combined-Shape" fill-rule="nonzero"></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"><g fill-rule="nonzero" fill="#000"><path d="M6 0a6 6 0 110 12A6 6 0 016 0zm0 1a5 5 0 100 10A5 5 0 006 1z"/><path d="M6 3a.5.5 0 01.5.5v2h2a.5.5 0 010 1h-2v2a.5.5 0 01-1 0v-2h-2a.5.5 0 010-1h2v-2A.5.5 0 016 3z"/></g></svg>

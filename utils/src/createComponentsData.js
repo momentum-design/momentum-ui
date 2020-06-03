@@ -57,10 +57,6 @@ const getLibraryName = filePath => {
       return 'core';
     case filePath.includes('react'):
       return 'react';
-    case filePath.includes('angularjs'):
-      return 'angularjs';
-    case filePath.includes('angular'):
-      return 'angular';
     default:
       return null;
   }

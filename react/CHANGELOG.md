@@ -3,6 +3,117 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.11.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.2...@momentum-ui/react@23.11.3) (2020-06-02)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.11.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.1...@momentum-ui/react@23.11.2) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.11.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.0...@momentum-ui/react@23.11.1) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.10.0...@momentum-ui/react@23.11.0) (2020-05-22)
+
+
+### Features
+
+* **eventoverlay:** add event path find for shadow elements ([#611](https://github.com/momentum-design/momentum-ui/issues/611)) ([e5af7e1](https://github.com/momentum-design/momentum-ui/commit/e5af7e1fcf86de066264e97255374d7f2314e854))
+
+
+
+
+
+# [23.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.9.0...@momentum-ui/react@23.10.0) (2020-05-21)
+
+
+### Features
+
+* **tokens:** redirect paths, initial setup of token NPM module ([1fdb091](https://github.com/momentum-design/momentum-ui/commit/1fdb09137b6b986d4ebc4077596ac13d7a7fd9cc))
+
+
+
+
+
+# [23.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.5...@momentum-ui/react@23.9.0) (2020-05-20)
+
+
+### Features
+
+* **colors:** updated colors to Momentum 2.0 ([f5393da](https://github.com/momentum-design/momentum-ui/commit/f5393da888fe055024d762c41c3d93e51c6cb8bf))
+
+
+
+
+
+## [23.8.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.4...@momentum-ui/react@23.8.5) (2020-05-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.3...@momentum-ui/react@23.8.4) (2020-05-16)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.2...@momentum-ui/react@23.8.3) (2020-05-15)
+
+
+### Bug Fixes
+
+* **select:** multiselect options stay selected ([eb0b528](https://github.com/momentum-design/momentum-ui/commit/eb0b5284be6e73eecb8461132a6966d300ca73b1))
+
+
+
+
+
+## [23.8.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.1...@momentum-ui/react@23.8.2) (2020-05-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.0...@momentum-ui/react@23.8.1) (2020-05-02)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.1...@momentum-ui/react@23.8.0) (2020-04-30)
+
+
+### Features
+
+* **modal:** modal header accessibility ([#596](https://github.com/momentum-design/momentum-ui/issues/596)) ([dfe6723](https://github.com/momentum-design/momentum-ui/commit/dfe6723e2d0567142f12ac9b37c29f0dd24b44bf))
+
+
+
+
+
 ## [23.7.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.0...@momentum-ui/react@23.7.1) (2020-04-28)
 
 **Note:** Version bump only for package @momentum-ui/react

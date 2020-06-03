@@ -32,6 +32,25 @@ jobs:
           name: Lint all Libraries
           command: yarn lint:all
 
+  build_tokens:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build tokens library
+          command: yarn build:tokens
+      - store_artifacts:
+          path: ~/repo/tokens/dist/
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo/tokens/dist/
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+
   test_icons:
     <<: *image_defaults
     steps:
@@ -57,35 +76,6 @@ jobs:
           path: ~/repo/core/cypress/
       - store_artifacts:
           path: ~/repo/core/dist/
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
-
-  test_angularjs:
-    <<: *image_defaults
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: yarn bootstrap
-      - run:
-          name: Test angularjs library with Percy.io snapshots
-          command: yarn ci:test:angularjs:percy
-      - store_artifacts:
-          path: ~/repo/angularjs/cypress/
-      - store_artifacts:
-          path: ~/repo/angularjs/dist/
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
-
-  test_angular:
-    <<: *image_defaults
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Test angular library
-          command: yarn ci:test:angular
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -143,6 +133,9 @@ jobs:
           command: yarn lint:all
       - run: yarn build:react
       - run:
+          name: Build tokens library
+          command: yarn build:tokens
+      - run:
           name: Test icons library
           command: yarn ci:test:icons
       - run:
@@ -151,9 +144,6 @@ jobs:
       - run:
           name: Test react library
           command: yarn ci:test:react
-      - run:
-          name: Test angular library
-          command: yarn ci:test:angular
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -188,31 +178,24 @@ workflows:
       - lint:
           requires:
             - checkout_install
+      - build_tokens:
+          requires:
+            - lint
       - test_react:
           requires:
-            - lint
+            - build_tokens
       - test_core_percy:
           requires:
-            - lint
-      - test_angular:
-          requires:
-            - lint
-      - test_angularjs:
-          requires:
-            - lint
+            - build_tokens
       - test_www:
           requires:
-            - lint
+            - build_tokens
       - test_icons:
           requires:
             - lint
       - percy_finalize_all:
           requires:
-            - test_icons
-            - test_core_percy
             - test_react
-            - test_angular
-            - test_angularjs
 
   daily_release:
     triggers:
@@ -224,4 +207,3 @@ workflows:
                 - master
     jobs:
       - lint_test_release
-

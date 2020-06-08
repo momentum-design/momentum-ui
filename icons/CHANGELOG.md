@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.35.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.34.0...@momentum-ui/icons@7.35.0) (2020-06-07)
+
+
+### Features
+
+* **icons:** add horizontal-line_12 ([6806049](https://github.com/momentum-design/momentum-ui/commit/6806049155ffcfeac29b100f834d04f7b224c11c))
+* **icons:** add horizontal-line_16 ([05fa6ce](https://github.com/momentum-design/momentum-ui/commit/05fa6cea6f0bc146e308f5a3f09ac08a99cd8610))
+* **icons:** add horizontal-line_24 ([b4379a9](https://github.com/momentum-design/momentum-ui/commit/b4379a9c20a75764dc1163511038393a1c20bcf5))
+* **icons:** add remote-desktop-control_10 ([9079ef0](https://github.com/momentum-design/momentum-ui/commit/9079ef0b31d408f536870a72e8e6da1b33150b8b))
+* **icons:** add text-bold_24 ([3206631](https://github.com/momentum-design/momentum-ui/commit/3206631436e50909f0fe81844b63763c04277033))
+* **icons:** add text-italic_24 ([b1a0df9](https://github.com/momentum-design/momentum-ui/commit/b1a0df90240d515f7947dc7a5e4abac2831f1ead))
+* **icons:** add text-list-bulleted_24 ([38b6680](https://github.com/momentum-design/momentum-ui/commit/38b66801a468ff0fd0ce26b25639460067ba2e4e))
+* **icons:** add text-underline_24 ([b1e217a](https://github.com/momentum-design/momentum-ui/commit/b1e217ae1daa0a872e6ea9f2d64820026ae92b27))
+
+
+
+
+
+# [7.34.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.33.1...@momentum-ui/icons@7.34.0) (2020-06-02)
+
+
+### Features
+
+* **icons:** add invited-user_16 ([f551714](https://github.com/momentum-design/momentum-ui/commit/f551714ae9ae6db0592ae92aaf9061393d124ed5))
+* **icons:** add invited-user_32 ([6fb8aa3](https://github.com/momentum-design/momentum-ui/commit/6fb8aa398a18c4afe96d569cf513fe5c89b82350))
+* **icons:** add invited-user_56 ([be8ab61](https://github.com/momentum-design/momentum-ui/commit/be8ab61f87d2705a1631f09545fa677858716c45))
+* **icons:** add join-audio_20 ([53f4785](https://github.com/momentum-design/momentum-ui/commit/53f4785d78fb3d7db9b92c76cbb37986e36aa8e7))
+* **icons:** add mirror_16 ([3d3e06b](https://github.com/momentum-design/momentum-ui/commit/3d3e06bddf204029753266ae1db43252c49fbfe2))
+* **icons:** add sort-down_16 ([d7b5f4d](https://github.com/momentum-design/momentum-ui/commit/d7b5f4dcd9a34ba19b22fce5e89ebfa839c63e48))
+* **icons:** add start-chat_24 ([13247e1](https://github.com/momentum-design/momentum-ui/commit/13247e1c57b8a6e5c03214edd7b6f11a2ce882cf))
+* **icons:** add team-new_24 ([0dfc21f](https://github.com/momentum-design/momentum-ui/commit/0dfc21f31fb551806aa804fd94885be7f4a3ce43))
+* **icons:** add video-effect_16 ([8882334](https://github.com/momentum-design/momentum-ui/commit/88823340acd5a6bc698a619e79fbea9602464d0a))
+
+
+
+
+
+## [7.33.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.33.0...@momentum-ui/icons@7.33.1) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+# [7.33.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.32.2...@momentum-ui/icons@7.33.0) (2020-05-27)
+
+
+### Features
+
+* **icons:** add contact-group_20 ([9a7d1ee](https://github.com/momentum-design/momentum-ui/commit/9a7d1ee8ac40f9f3e2c47a4114774f85a46c1be9))
+* **icons:** add end-remote-desktop-control_10 ([c689ba1](https://github.com/momentum-design/momentum-ui/commit/c689ba10953ed9f2ecaf2e8bdad1652993c3530e))
+* **icons:** add font-family_12 ([9fb251a](https://github.com/momentum-design/momentum-ui/commit/9fb251afecc8b203a72718f6ac29a1efb3539aeb))
+* **icons:** add font-family_16 ([c3d764d](https://github.com/momentum-design/momentum-ui/commit/c3d764d342c873ea7eacdf494de8fb3ea43a240b))
+* **icons:** add text-code-inline_12 ([815f6c5](https://github.com/momentum-design/momentum-ui/commit/815f6c5057dfc059ecff533a6028ea755a9b383d))
+* **icons:** add text-code-inline_16 ([64f4a99](https://github.com/momentum-design/momentum-ui/commit/64f4a9986654d07f4a21c4579b50857f4459ec45))
+* **icons:** add text-table_12 ([26ecec2](https://github.com/momentum-design/momentum-ui/commit/26ecec2f00406b62b34816b381cf8d331908214b))
+
+
+
+
+
 ## [7.32.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.32.1...@momentum-ui/icons@7.32.2) (2020-05-21)
 
 **Note:** Version bump only for package @momentum-ui/icons

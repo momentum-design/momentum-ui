@@ -297,6 +297,94 @@
           font-size: rem-calc(14);
         }
       }
+
+      &-light {
+        @include list-item-color(
+          $background-color: $md-gray-05,
+          $color: $md-gray-70,
+          $active-color: $md-gray-100,
+          $hover-bgrd-color: $md-gray-10,
+          $active-bgrd-color: $md-gray-10,
+          $hover-header-color: $md-gray-100,
+          $hover-subheader-color: $md-gray-100,
+          $header-color: $md-gray-70,
+          $subheader-color: $md-gray-70,
+          $focus-color: $md-gray-10
+        );
+
+        .md-icon {
+          color: $md-gray-70;
+        }
+
+        &.#{$list-item__class}--space-filter-summary {
+          [class*='__header'] {
+            color: $md-gray-70;
+          }
+        }
+
+        &.#{$list-item__class}--space-search,
+        &.#{$list-item__class}--space-filter,
+        &.#{$list-item__class}--space-flag,
+        &.#{$list-item__class}--space-filter-search {
+          > [class$='__center'] {
+            > [class*='__header'] {
+              > [class$='-secondary'] {
+                color: $md-gray-70;
+              }
+            }
+          }
+
+          [class$='__result-container'] {
+            [class$='__attachment'] {
+              [class$='__attachment--top'] {
+                [class$='-left'] {
+                  color: $md-gray-70;
+                }
+              }
+            }
+          }
+
+          [class*='__result'] {
+            color: $md-gray-70;
+          }
+        }
+
+        &.#{$list-item__class}--space-filter:not(.md-list-item--unread),
+        &.#{$list-item__class}--space-filter-search:not(.md-list-item--unread),
+        &.#{$list-item__class}--space-flag:not(.md-list-item--unread) {
+          > [class$='__center'] {
+            [class$='__header'],
+            [class$='__header--overview'] {
+              color: $md-gray-70;
+            }
+          }
+        }
+
+        [class$='__header--overview'] {
+          color: $md-gray-70;
+        }
+
+        &.#{$list-item__class}--unread {
+          .#{$list-item__class}__header {
+            color: $md-gray-100;
+          }
+        }
+
+        &.#{$list-item__class}--space-meeting {
+          [class$='--attendees'] {
+            color: $md-gray-70;
+            fill: $md-gray-70;
+          }
+
+          .#{$button__class} {
+            color: $md-gray-05;
+            background-color: $md-green-60;
+            &:hover {
+              background-color: $md-green-70;
+            }
+          }
+        }
+      }
     }
   }
 }

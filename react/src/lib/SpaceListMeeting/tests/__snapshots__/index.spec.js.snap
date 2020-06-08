@@ -17,6 +17,7 @@ ShallowWrapper {
     isMessagingOnlyShare={false}
     meetingType=""
     subheader=""
+    theme=""
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.5...@momentum-ui/core@19.7.0) (2020-06-09)
+
+
+### Features
+
+* **space-list:** light mode theme for space list ([#606](https://github.com/momentum-design/momentum-ui/issues/606)) ([03336cd](https://github.com/momentum-design/momentum-ui/commit/03336cd7b3ce2049b88888899b87e20743af1e81))
+
+
+
+
+
 ## [19.6.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.4...@momentum-ui/core@19.6.5) (2020-06-07)
 
 **Note:** Version bump only for package @momentum-ui/core

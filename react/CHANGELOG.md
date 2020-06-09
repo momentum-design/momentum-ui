@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.4...@momentum-ui/react@23.12.0) (2020-06-09)
+
+
+### Features
+
+* **space-list:** light mode theme for space list ([#606](https://github.com/momentum-design/momentum-ui/issues/606)) ([03336cd](https://github.com/momentum-design/momentum-ui/commit/03336cd7b3ce2049b88888899b87e20743af1e81))
+
+
+
+
+
 ## [23.11.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.3...@momentum-ui/react@23.11.4) (2020-06-07)
 
 **Note:** Version bump only for package @momentum-ui/react

@@ -1,14 +1,14 @@
 $button-group__class: '#{$prefix}-button-group';
 
-$button-group__font-size: rem-calc(12);
+$button-group__font-size: rem-calc(14);
 $button-group__border-size: rem-calc(1);
 $button-group__border: $button-group__border-size solid $md-gray-20;
 $button-group__color: $md-black-100;
 $button-group__background: transparent;
 $button-group__line-height: rem-calc(16);
 $button-group__padding: rem-calc(8) rem-calc(18);
-$button-group-active__color: $md-white-100;
-$button-group-active__background: $black-48;
+$button-group-active__color: $md-gray-100;
+$button-group-active__background: $md-blue-10;
 $button-group-disabled__color: $md-gray-50;
 $button-group-hover__background: $black-04;
 $button-group__border-radius-pill: rem-calc(25);

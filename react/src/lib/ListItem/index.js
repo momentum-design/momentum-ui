@@ -70,17 +70,119 @@ class ListItem extends React.Component {
     parentOnSelect && parentOnSelect(e, { value, label, eventKey });
   }
 
-  handleKeyDown = (e, eventKey) => {
-    const { disabled, onKeyDown, parentKeyDown, value, label } = this.props;
+  changeTabIndex = (tabbableChildren, index) => {
+    for (let i = 0; i < tabbableChildren.length; i++) {
+      if (tabbableChildren[i].tabIndex === (index === 0 ? -1 : 0)) {
+        tabbableChildren[i].tabIndex = index;
+      }
+    }
+  }
 
-    if(disabled) {
+  handleKeyDown = (e, eventKey) => {
+    const { 
+      disabled, 
+      onKeyDown, 
+      parentKeyDown, 
+      value, 
+      label, 
+      focusLockTabbableChildren, 
+      focusLockTabbableChildrenProps,
+    } = this.props;
+
+    if (disabled) {
       e.preventDefault();
       e.stopPropagation();
+    }
+
+    const {tabbableChildrenQuery} = focusLockTabbableChildrenProps;
+    
+    if (focusLockTabbableChildren && e.target) {
+      const currListItem = e.target.closest('.md-list-item');
+
+      if  (currListItem) {
+        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
+        if (tabbableChildren.length) {
+          if (e.keyCode === 9 && !e.shiftKey) { // TAB only
+            // only allow focus of tabbable children if TAB on the current listitem
+            if (e.target.classList.contains('md-list-item')) {
+              this.changeTabIndex(tabbableChildren, 0);
+            }
+          } else if (e.keyCode === 9 && e.shiftKey) { // SHIFT + TAB
+            // If we are on one of the tabbable children
+            if (e.target === tabbableChildren[0]) {
+              e.preventDefault();
+              e.stopPropagation();
+              // focus on the tabbable children's associated lisitem
+              e.target.closest('.md-list-item').focus();
+              // If we are on a listitem, SHIFT + TAB exits the list
+              // so we change tabindex of children to -1
+            } else if (e.target.classList.contains('md-list-item')) {
+              this.changeTabIndex(tabbableChildren, -1);
+            }
+          } else if (e.keyCode === 38 || e.keyCode == 40) {
+            // UP/DOWN guarantees change of listitem, so we change tabindex of children to -1
+            this.changeTabIndex(tabbableChildren, -1);
+          }
+        }
+      }
     }
 
     e.persist();
     onKeyDown && onKeyDown(e);
     parentKeyDown && parentKeyDown(e, { value, label, eventKey });
+  }
+
+  handleBlur = (e) => {
+    const { 
+      onBlur, 
+      focusLockTabbableChildren, 
+      focusLockTabbableChildrenProps,
+    } = this.props;
+
+    const {
+      tabbableChildrenQuery, 
+      portalNodeQuery,
+      tabbableChildrenHasPopover,
+    } = focusLockTabbableChildrenProps;
+
+    // For when you click or navigate away from the current listitem
+    // Cleans up tabindex="0" before you navigate away
+    if (focusLockTabbableChildren) {
+      if (e.target && e.relatedTarget) {
+        const isInThisList = e.relatedTarget.closest(portalNodeQuery); // The elt getting focus is in the current List if not undefined
+        const listItemNode = ReactDOM.findDOMNode(this);
+        const tabbableChildren = listItemNode.querySelectorAll(tabbableChildrenQuery);
+        if (tabbableChildren.length) {
+          if (isInThisList) {
+            const relatedTargetListItem = e.relatedTarget.closest('.md-list-item'); // The new focus is a ListItem if not undefined
+            const targetListItem = e.target.closest('.md-list-item'); // The current focus is a ListItem if not undefined
+            if (tabbableChildrenHasPopover && focusLockTabbableChildrenProps.tabbableChildSpawnedPopoverQuery) { // If the tabbable children in this ListItem has Popovers
+              const {tabbableChildSpawnedPopoverQuery} = focusLockTabbableChildrenProps;
+              const targetIsSpawnedPopover = e.target.closest(tabbableChildSpawnedPopoverQuery); // The current focus is a EventOverlay if not undefined
+              const relatedTargetIsSpawnedPopover = e.relatedTarget.closest(tabbableChildSpawnedPopoverQuery); // The new focus is a EventOverlay if not undefined
+              // from this ListItem or a EventOverlay spawned by one of the tabbable children in this ListItem
+              if (targetListItem === listItemNode || targetIsSpawnedPopover) {
+                // If the new focus is not the same as this ListItem or not a spawned EventOverlay, we left the current ListItem
+                // Make tabindex="-1"
+                if (!relatedTargetIsSpawnedPopover && relatedTargetListItem !== listItemNode) {
+                  this.changeTabIndex(tabbableChildren, -1);
+                }
+              }
+            } else { // If the tabbable children in this ListItem has no Popovers
+              // If the new focus is not the same as this ListItem or the current focus is not the same as this ListItem, we left the current ListItem
+              // Make tabindex="-1"
+              if (targetListItem !== listItemNode && relatedTargetListItem !== listItemNode) {
+                this.changeTabIndex(tabbableChildren, -1);
+              }
+            }
+          } else {
+            this.changeTabIndex(tabbableChildren, -1);
+          }
+        }
+      }
+    }
+
+    onBlur && onBlur(e);
   }
 
   verifyStructure() {
@@ -134,9 +236,12 @@ class ListItem extends React.Component {
     const keyboardNavKey = makeKeyboardKey(keyboardKey || title || label);
 
     const otherProps = omit({...props}, [
+      'focusLockTabbableChildren',
+      'focusLockTabbableChildrenProps',
       'focusOnLoad',
       'id',
       'itemIndex',
+      'onBlur',
       'onClick',
       'onKeyDown',
       'parentKeyDown',
@@ -166,6 +271,7 @@ class ListItem extends React.Component {
       ...!isReadOnly && {
         onClick: e => this.handleClick(e, cxtProps.uniqueKey),
         onKeyDown: e => this.handleKeyDown(e, cxtProps.uniqueKey),
+        onBlur: e => this.handleBlur(e),
         tabIndex: (!disabled && cxtProps.focus) ? 0 : -1,
       },
       'data-md-event-key': cxtProps.uniqueKey,
@@ -236,6 +342,18 @@ ListItem.propTypes = {
   eventKey: PropTypes.string,
   /** @prop Specifies if ListItem should automatically get focus | false */
   focus: PropTypes.bool,
+  /** @prop Locks focus to cycle between all tabbable children  | false */
+  focusLockTabbableChildren: PropTypes.bool,
+  focusLockTabbableChildrenProps: PropTypes.shape({
+    /** @prop Query for focusLockTabbableChildren | '' */
+    tabbableChildrenQuery: PropTypes.string.isRequired, 
+    /** @prop Indicates whether this ListItem has tabbable children that spawn Popovers | false */
+    tabbableChildrenHasPopover: PropTypes.bool.isRequired,
+    /** @prop Only for when using tabbableChildrenHasPopover. Need to checkout the EventOverlay for blur purposes | '' */
+    portalNodeQuery: PropTypes.string.isRequired,
+    /** @prop Used for tabbableChildrenHasPopover to find the DOM element of Popovers */
+    tabbableChildSpawnedPopoverQuery: PropTypes.string,
+  }),
   /** @prop Specifies if ListItem should automatically get focus when page loads | false */
   focusOnLoad: PropTypes.bool,
   /** @prop Sets ListItem id | null */
@@ -250,6 +368,8 @@ ListItem.propTypes = {
   label: PropTypes.string,
   /** @prop external link associated input | '' */
   link: PropTypes.string,
+  /** @prop Callback function invoked by user changing focus from current ListItem ListItem | null */
+  onBlur: PropTypes.func,
   /** @prop Callback function invoked by user tapping on ListItem | null */
   onClick: PropTypes.func,
   /** @prop Callback function invoked by user pressing on a key | null */
@@ -286,6 +406,12 @@ ListItem.defaultProps = {
   disabled: false,
   eventKey: '',
   focus: false,
+  focusLockTabbableChildren: false,
+  focusLockTabbableChildrenProps: {
+    tabbableChildrenQuery: '',
+    tabbableChildrenHasPopover: false,
+    portalNodeQuery: '',
+  },
   focusOnLoad: false,
   id: null,
   itemIndex: null,
@@ -293,6 +419,7 @@ ListItem.defaultProps = {
   keyboardKey: '',
   label: '',
   link: '',
+  onBlur: null,
   onClick: null,
   onKeyDown: null,
   parentKeyDown: null,

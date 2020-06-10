@@ -1,17 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import Media from 'react-media';
 import { connect } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { Badge, InputSearch, Spinner } from '@momentum-ui/react';
-import { fetchAllComponentData, filterComponentsData } from './actions';
 import ComponentItem from '../../components/ComponentItem';
 import OverviewTab from '../../components/OverviewTab';
-import PageHeader from '../../momentum-ui/PageHeader';
-import Media from 'react-media';
 import componentListCore from '../../data/component-list-core.json';
 import componentListReact from '../../data/component-list-react.json';
-import componentListAngular from '../../data/component-list-angular.json';
-import componentListVue from '../../data/component-list-vue.json';
+import PageHeader from '../../momentum-ui/PageHeader';
+import { fetchAllComponentData, filterComponentsData } from './actions';
 
 class ComponentOverviewPage extends React.Component {
   componentDidMount() {
@@ -42,7 +40,7 @@ class ComponentOverviewPage extends React.Component {
 
     const renderComponentItems = () => {
       const { components, keyword } = this.props;
-  
+
       return components.children.reduce((agg, itm, idx) => {
         const name = itm.displayName.toLowerCase();
         const reg = new RegExp(keyword);

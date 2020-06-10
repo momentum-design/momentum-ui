@@ -5,10 +5,7 @@ const fs = require('fs-extra');
 const argv = require('yargs').argv;
 
 const { library } = argv;
-const packageJSON =
-  library === 'angular'
-    ? require(path.resolve(__dirname, `../${library}/dist/@momentum-ui/angular/package.json`))
-    : require(path.resolve(__dirname, `../${library}/package.json`));
+const packageJSON = require(path.resolve(__dirname, `../${library}/package.json`));
 const config = require(path.resolve(__dirname, `../${library}/tools/config`));
 const objectsList = config.CDN_OBJECTS;
 const libraryDir = path.resolve(__dirname, `../${library}`);

@@ -10,7 +10,7 @@ then
   exit 0
 else
 
-  lerna version --no-git-tag-version --yes --conventional-prerelease=vue,charts,web-components
+  lerna version --no-git-tag-version --yes --conventional-prerelease=charts
 
   echo "Publish changed packages"
 
@@ -20,15 +20,8 @@ else
     cd $directory
     echo $directory
 
-    if [[ $directory == *"angular/src/lib" ]]; then
-      cd ../../
-      yarn prepublishOnly
-      cd ./dist/\@momentum-ui/angular
-      npx publish
-    else
-      yarn prepublishOnly
-      npx publish
-    fi
+    yarn prepublishOnly
+    npx publish
   done
 
   commitMessage=""
@@ -39,10 +32,6 @@ else
   do
     directory="$(echo $i | cut -d':' -f1)"
     cd $directory
-
-    if [[ $directory == *"angular/src/lib" ]]; then
-      cd ../../dist/\@momentum-ui/angular
-    fi
 
     tagPackage="$(echo $i | cut -d':' -f2)"
     tagVersion=$(cat package.json \
@@ -81,9 +70,7 @@ else
   do
     directory="$(echo $i | cut -d':' -f1)"
     cd $directory
-    if [[ $directory == *"angular/src/lib" ]]; then
-      cd ../../
-    fi
+
     yarn ci:publishCDN
   done
 

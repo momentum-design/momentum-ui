@@ -86,13 +86,15 @@ class ListItem extends React.Component {
       value, 
       label, 
       focusLockTabbableChildren, 
-      tabbableChildrenQuery 
+      focusLockTabbableChildrenProps,
     } = this.props;
 
     if (disabled) {
       e.preventDefault();
       e.stopPropagation();
     }
+
+    const {tabbableChildrenQuery} = focusLockTabbableChildrenProps;
     
     if (focusLockTabbableChildren && e.target) {
       const currListItem = e.target.closest('.md-list-item');
@@ -134,24 +136,28 @@ class ListItem extends React.Component {
     const { 
       onBlur, 
       focusLockTabbableChildren, 
-      tabbableChildrenQuery, 
-      popoverPortalNodeQuery,
-      tabbableChildrenHasPopover,
-      tabbableChildSpawnedPopoverQuery
+      focusLockTabbableChildrenProps,
     } = this.props;
+
+    const {
+      tabbableChildrenQuery, 
+      portalNodeQuery,
+      tabbableChildrenHasPopover,
+    } = focusLockTabbableChildrenProps;
 
     // For when you click or navigate away from the current listitem
     // Cleans up tabindex="0" before you navigate away
     if (focusLockTabbableChildren) {
       if (e.target && e.relatedTarget) {
-        const isInThisList = e.relatedTarget.closest(popoverPortalNodeQuery); // The elt getting focus is in the current List if not undefined
+        const isInThisList = e.relatedTarget.closest(portalNodeQuery); // The elt getting focus is in the current List if not undefined
         const listItemNode = ReactDOM.findDOMNode(this);
         const tabbableChildren = listItemNode.querySelectorAll(tabbableChildrenQuery);
         if (tabbableChildren.length) {
           if (isInThisList) {
             const relatedTargetListItem = e.relatedTarget.closest('.md-list-item'); // The new focus is a ListItem if not undefined
             const targetListItem = e.target.closest('.md-list-item'); // The current focus is a ListItem if not undefined
-            if (tabbableChildrenHasPopover) { // If the tabbable children in this ListItem has Popovers
+            if (tabbableChildrenHasPopover && focusLockTabbableChildrenProps.tabbableChildSpawnedPopoverQuery) { // If the tabbable children in this ListItem has Popovers
+              const {tabbableChildSpawnedPopoverQuery} = focusLockTabbableChildrenProps;
               const targetIsSpawnedPopover = e.target.closest(tabbableChildSpawnedPopoverQuery); // The current focus is a EventOverlay if not undefined
               const relatedTargetIsSpawnedPopover = e.relatedTarget.closest(tabbableChildSpawnedPopoverQuery); // The new focus is a EventOverlay if not undefined
               // from this ListItem or a EventOverlay spawned by one of the tabbable children in this ListItem
@@ -231,18 +237,19 @@ class ListItem extends React.Component {
 
     const otherProps = omit({...props}, [
       'focusLockTabbableChildren',
+      'focusLockTabbableChildrenProps',
       'focusOnLoad',
       'id',
       'itemIndex',
-      'tabbableChildSpawnedPopoverQuery',
+      //'tabbableChildSpawnedPopoverQuery',
       'onBlur',
       'onClick',
       'onKeyDown',
       'parentKeyDown',
       'parentOnSelect',
-      'popoverPortalNodeQuery',
-      'tabbableChildrenQuery',
-      'tabbableChildrenHasPopover',
+      //'portalNodeQuery',
+      //'tabbableChildrenQuery',
+      //'tabbableChildrenHasPopover',
       'value',
     ]);
 
@@ -341,6 +348,12 @@ ListItem.propTypes = {
   focus: PropTypes.bool,
   /** @prop Locks focus to cycle between all tabbable children  | false */
   focusLockTabbableChildren: PropTypes.bool,
+  focusLockTabbableChildrenProps: PropTypes.shape({
+    tabbableChildrenQuery: PropTypes.string.isRequired,
+    tabbableChildrenHasPopover: PropTypes.bool.isRequired,
+    portalNodeQuery: PropTypes.string.isRequired,
+    tabbableChildSpawnedPopoverQuery: PropTypes.string,
+  }),
   /** @prop Specifies if ListItem should automatically get focus when page loads | false */
   focusOnLoad: PropTypes.bool,
   /** @prop Sets ListItem id | null */
@@ -356,9 +369,9 @@ ListItem.propTypes = {
   /** @prop external link associated input | '' */
   link: PropTypes.string,
   /** @prop Indicates whether this ListItem has tabbable children that spawn Popovers | false */
-  tabbableChildrenHasPopover: PropTypes.bool,
+  //tabbableChildrenHasPopover: PropTypes.bool,
   /** @prop Used for tabbableChildrenHasPopover to find the DOM element of Popovers | '' */
-  tabbableChildSpawnedPopoverQuery: PropTypes.string,
+  //tabbableChildSpawnedPopoverQuery: PropTypes.string,
   /** @prop Callback function invoked by user changing focus from current ListItem ListItem | null */
   onBlur: PropTypes.func,
   /** @prop Callback function invoked by user tapping on ListItem | null */
@@ -370,7 +383,7 @@ ListItem.propTypes = {
   // Internal Context Use Only
   parentOnSelect: PropTypes.func,
   /** @prop Only for when using tabbableChildrenHasPopover. Need to checkout the EventOverlay for blur purposes | '' */
-  popoverPortalNodeQuery: PropTypes.string,
+  //portalNodeQuery: PropTypes.string,
   /** @prop ListItem ref name | 'navLink' */
   refName: PropTypes.string,
   /** @prop Aria role | 'listitem' */
@@ -378,7 +391,7 @@ ListItem.propTypes = {
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
   /** @prop Query for focusLockTabbableChildren | '' */
-  tabbableChildrenQuery: PropTypes.string,
+  //tabbableChildrenQuery: PropTypes.string,
   /** @prop ListItem Title | '' */
   title: PropTypes.string,
   /** @prop ListItem size | '' */
@@ -402,6 +415,11 @@ ListItem.defaultProps = {
   eventKey: '',
   focus: false,
   focusLockTabbableChildren: false,
+  focusLockTabbableChildrenProps: {
+    tabbableChildrenQuery: '',
+    tabbableChildrenHasPopover: false,
+    portalNodeQuery: '',
+  },
   focusOnLoad: false,
   id: null,
   itemIndex: null,
@@ -409,18 +427,18 @@ ListItem.defaultProps = {
   keyboardKey: '',
   label: '',
   link: '',
-  tabbableChildrenHasPopover: false,
-  tabbableChildSpawnedPopoverQuery: '',
+  //tabbableChildrenHasPopover: false,
+  //tabbableChildSpawnedPopoverQuery: '',
   onBlur: null,
   onClick: null,
   onKeyDown: null,
   parentKeyDown: null,
   parentOnSelect: null,
-  popoverPortalNodeQuery: '',
+  //portalNodeQuery: '',
   refName: 'navLink',
   role: 'listitem',
   separator: false,
-  tabbableChildrenQuery: '',
+  //tabbableChildrenQuery: '',
   title: '',
   type: '',
   value: '',

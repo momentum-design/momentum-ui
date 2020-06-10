@@ -241,15 +241,11 @@ class ListItem extends React.Component {
       'focusOnLoad',
       'id',
       'itemIndex',
-      //'tabbableChildSpawnedPopoverQuery',
       'onBlur',
       'onClick',
       'onKeyDown',
       'parentKeyDown',
       'parentOnSelect',
-      //'portalNodeQuery',
-      //'tabbableChildrenQuery',
-      //'tabbableChildrenHasPopover',
       'value',
     ]);
 
@@ -349,9 +345,13 @@ ListItem.propTypes = {
   /** @prop Locks focus to cycle between all tabbable children  | false */
   focusLockTabbableChildren: PropTypes.bool,
   focusLockTabbableChildrenProps: PropTypes.shape({
-    tabbableChildrenQuery: PropTypes.string.isRequired,
+    /** @prop Query for focusLockTabbableChildren | '' */
+    tabbableChildrenQuery: PropTypes.string.isRequired, 
+    /** @prop Indicates whether this ListItem has tabbable children that spawn Popovers | false */
     tabbableChildrenHasPopover: PropTypes.bool.isRequired,
+    /** @prop Only for when using tabbableChildrenHasPopover. Need to checkout the EventOverlay for blur purposes | '' */
     portalNodeQuery: PropTypes.string.isRequired,
+    /** @prop Used for tabbableChildrenHasPopover to find the DOM element of Popovers */
     tabbableChildSpawnedPopoverQuery: PropTypes.string,
   }),
   /** @prop Specifies if ListItem should automatically get focus when page loads | false */
@@ -368,10 +368,6 @@ ListItem.propTypes = {
   label: PropTypes.string,
   /** @prop external link associated input | '' */
   link: PropTypes.string,
-  /** @prop Indicates whether this ListItem has tabbable children that spawn Popovers | false */
-  //tabbableChildrenHasPopover: PropTypes.bool,
-  /** @prop Used for tabbableChildrenHasPopover to find the DOM element of Popovers | '' */
-  //tabbableChildSpawnedPopoverQuery: PropTypes.string,
   /** @prop Callback function invoked by user changing focus from current ListItem ListItem | null */
   onBlur: PropTypes.func,
   /** @prop Callback function invoked by user tapping on ListItem | null */
@@ -382,16 +378,12 @@ ListItem.propTypes = {
   parentKeyDown: PropTypes.func,
   // Internal Context Use Only
   parentOnSelect: PropTypes.func,
-  /** @prop Only for when using tabbableChildrenHasPopover. Need to checkout the EventOverlay for blur purposes | '' */
-  //portalNodeQuery: PropTypes.string,
   /** @prop ListItem ref name | 'navLink' */
   refName: PropTypes.string,
   /** @prop Aria role | 'listitem' */
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
-  /** @prop Query for focusLockTabbableChildren | '' */
-  //tabbableChildrenQuery: PropTypes.string,
   /** @prop ListItem Title | '' */
   title: PropTypes.string,
   /** @prop ListItem size | '' */
@@ -427,18 +419,14 @@ ListItem.defaultProps = {
   keyboardKey: '',
   label: '',
   link: '',
-  //tabbableChildrenHasPopover: false,
-  //tabbableChildSpawnedPopoverQuery: '',
   onBlur: null,
   onClick: null,
   onKeyDown: null,
   parentKeyDown: null,
   parentOnSelect: null,
-  //portalNodeQuery: '',
   refName: 'navLink',
   role: 'listitem',
   separator: false,
-  //tabbableChildrenQuery: '',
   title: '',
   type: '',
   value: '',

@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.12.0...@momentum-ui/react@23.13.0) (2020-06-11)
+
+
+### Bug Fixes
+
+* **listitem:** accessibility within listitem ([2e5bcb7](https://github.com/momentum-design/momentum-ui/commit/2e5bcb7366a71fb3bb860a70df1449aa5116fa55))
+* **listitem:** accessibility within listitem ([c8e663e](https://github.com/momentum-design/momentum-ui/commit/c8e663e0079a03769392e030b029a2964a72718c))
+* **listitem:** accessible children with popover ([4806faf](https://github.com/momentum-design/momentum-ui/commit/4806faf8e0b076efb7c9c41a282f86a7c38991a7))
+* **listitem:** accessible children with popover ([e2317de](https://github.com/momentum-design/momentum-ui/commit/e2317ded7065d1eda31ec49bc60f405eb9990220))
+* **listitem:** tabbable children accessibility ([3f1b072](https://github.com/momentum-design/momentum-ui/commit/3f1b072a8fe1fb93abb4438221fd21296ae8fddc))
+* **listitem:** tabbable children accessibility ([c14b610](https://github.com/momentum-design/momentum-ui/commit/c14b61078b10408835caf0db9d16f9d7f5d1eb64))
+
+
+### Features
+
+* **listitem:** children accessibility ([c77d480](https://github.com/momentum-design/momentum-ui/commit/c77d48021d7a0811c0b1fecf3069988ec2f3b122))
+* **listitem:** children accessibility ([9625497](https://github.com/momentum-design/momentum-ui/commit/9625497697a49e1c5c806ba8b134379b6a7a4498))
+* **listitem:** children accessibility ([d89ae4e](https://github.com/momentum-design/momentum-ui/commit/d89ae4e5977cb11ff0895682c7577f95006e894b))
+* **listitem:** focus on tabbable children only when listitem is focused ([6cd6e89](https://github.com/momentum-design/momentum-ui/commit/6cd6e8941ecaab1d0dc547eba065284a539031a8))
+* **listitem:** handle tabbable children accessibility ([8c74c69](https://github.com/momentum-design/momentum-ui/commit/8c74c6938e72fdcde6576c8f00d26de6e2c550ce))
+* **listitem:** only allow tabbable children when listitem is focused ([1098f36](https://github.com/momentum-design/momentum-ui/commit/1098f3680fbf44963f54431e3761f2c8e8c7ae6d))
+* **listitem:** only allow tabbable children when listitem is focused ([6fe14d7](https://github.com/momentum-design/momentum-ui/commit/6fe14d7d7eae66add38bb1da836a0714fe74a7a6))
+* **listitem:** only allow tabbable children when listitem is focused ([7df80b2](https://github.com/momentum-design/momentum-ui/commit/7df80b27f9683a2d7aae11dc5e28ca1c0b6cd326))
+* **listitem:** only allow tabbable children when listitem is focused ([7a63702](https://github.com/momentum-design/momentum-ui/commit/7a63702a8d97d5fe82db978540602a8762d0f1ff))
+
+
+
+
+
 # [23.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.4...@momentum-ui/react@23.12.0) (2020-06-09)
 
 

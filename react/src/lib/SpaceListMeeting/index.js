@@ -103,9 +103,11 @@ class SpaceListMeeting extends React.PureComponent {
               content={getPopoverContent}
               direction="bottom-center"
               targetOffset={{ vertical: 3 }}
+              isDynamic
+              includeFocusOnHover={false}
               {...eventOverlayProps}
             >
-              <span role="button" tabIndex={0} className="md-list-item--space-meeting--attendees">
+              <span role="button" tabIndex={-1} className="md-list-item--space-meeting--attendees">
                 {isMessagingOnlyShare ? null : attendees.length}
                 {isMessagingOnlyShare ? <Icon name="share-screen_12" /> : <Icon name="people_12" />}
               </span>

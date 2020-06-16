@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.37.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.36.0...@momentum-ui/icons@7.37.0) (2020-06-13)
+
+
+### Features
+
+* **icons:** add ask-for-help_12 ([5ad79f4](https://github.com/momentum-design/momentum-ui/commit/5ad79f448bccd54b9efa5c149d7e3949de6b3a02))
+* **icons:** add ask-for-help_16 ([5a897d8](https://github.com/momentum-design/momentum-ui/commit/5a897d83d1fbe32aa6ba2a9b9c7dba2f307c2459))
+* **icons:** add horizontal-line_12 ([5131543](https://github.com/momentum-design/momentum-ui/commit/513154361cbbe47e8ea9601168a88ee65f58ad1f))
+* **icons:** add horizontal-line_16 ([654a04f](https://github.com/momentum-design/momentum-ui/commit/654a04fbce2b68588c1854183e8cf7a38641116c))
+* **icons:** add horizontal-line_24 ([e316311](https://github.com/momentum-design/momentum-ui/commit/e316311eb27f922a980f3cbe07d7132dfa37d919))
+* **icons:** add join-audio_16 ([561a5bb](https://github.com/momentum-design/momentum-ui/commit/561a5bba077f18de1b4b91a3561bbdb533e0dde9))
+* **icons:** add text-code-block_12 ([80d501a](https://github.com/momentum-design/momentum-ui/commit/80d501ab5a16f5dfee15676a152f38f4cd7f8d07))
+* **icons:** add text-code-block_16 ([97897c7](https://github.com/momentum-design/momentum-ui/commit/97897c7b56160484834cc7e3ee0ce7cdc051d09b))
+* **icons:** add text-code-block_24 ([3cbee90](https://github.com/momentum-design/momentum-ui/commit/3cbee90244adb91aee6fe8ba83b30498ac40c924))
+* **icons:** add text-list-numbered_24 ([0580645](https://github.com/momentum-design/momentum-ui/commit/05806458b8af2557a68064d802ba8697b7740159))
+* **icons:** add text-underline_24 ([a914432](https://github.com/momentum-design/momentum-ui/commit/a914432e10112dad2b319ab9927cef0f06d74ee4))
+
+
+
+
+
 # [7.36.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.35.0...@momentum-ui/icons@7.36.0) (2020-06-09)
 
 

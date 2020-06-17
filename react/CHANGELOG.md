@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.13.1...@momentum-ui/react@23.14.0) (2020-06-17)
+
+
+### Features
+
+* **popover:** accessible hover popoover ([#607](https://github.com/momentum-design/momentum-ui/issues/607)) ([48207bc](https://github.com/momentum-design/momentum-ui/commit/48207bcb2fb2309d78c24d60cab90d93631515cf))
+
+
+
+
+
 ## [23.13.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.13.0...@momentum-ui/react@23.13.1) (2020-06-13)
 
 **Note:** Version bump only for package @momentum-ui/react

@@ -1034,8 +1034,8 @@ EventOverlay.propTypes = {
   maxHeight: PropTypes.number,
   /** @prop Sets the max width of the EventOverlay | null */
   maxWidth: PropTypes.number,
-  /** @prop Node/element where overlay should be appended using ReactDOM portal | null */
-  portalNode: PropTypes.oneOfType([PropTypes.node, PropTypes.instanceOf(Element)]),
+  /** @prop Node/ReactElement where overlay should be appended using ReactDOM portal | null */
+  portalNode: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   /** @prop Set the id of the scrollParent | null */
   scrollParentID: PropTypes.string,
   /** @prop Determines if focus should be locked to overlay | false */

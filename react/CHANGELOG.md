@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.14.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.14.0...@momentum-ui/react@23.14.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* **EventOverLay:** Change global Element to React Element to check ([#615](https://github.com/momentum-design/momentum-ui/issues/615)) ([ee95558](https://github.com/momentum-design/momentum-ui/commit/ee95558edc66a247fd5c445247df2b52de4cccd0))
+
+
+
+
+
 # [23.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.13.1...@momentum-ui/react@23.14.0) (2020-06-17)
 
 

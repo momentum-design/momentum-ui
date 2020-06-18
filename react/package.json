@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/react",
-  "version": "23.14.0",
+  "version": "23.14.1",
   "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -78,8 +78,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^19.7.3",
-    "@momentum-ui/icons": "^7.37.0",
+    "@momentum-ui/core": "^19.7.4",
+    "@momentum-ui/icons": "^7.38.0",
     "@momentum-ui/utils": "^6.2.1",
     "@restart/context": "^2.1.4",
     "dom-helpers": "^3.4.0",

@@ -367,16 +367,18 @@ class EventOverlay extends React.Component {
   handleKeyDown = e => {
     if (!this.props.isOpen) return;
     if (e.keyCode === 27) return this.handleClickAway(e);
-    const eventTarget = eventPath(e)[0];
-    const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
-
-    return (
-      this.container &&
-      anchorNode &&
-      !anchorNode.contains(eventTarget) &&
-      !ReactDOM.findDOMNode(this.container).contains(eventTarget) &&
-      this.handleClickAway(e)
-    );
+    if (!this.props.disableCloseOnEnterKey) {
+      const eventTarget = eventPath(e)[0];
+      const anchorNode = ReactDOM.findDOMNode(this.props.anchorNode);
+      
+      return (
+        this.container &&
+        anchorNode &&
+        !anchorNode.contains(eventTarget) &&
+        !ReactDOM.findDOMNode(this.container).contains(eventTarget) &&
+        this.handleClickAway(e)
+      );
+    }
   };
 
   isVisible = () => {
@@ -918,6 +920,7 @@ class EventOverlay extends React.Component {
       'close',
       'closeOnClick',
       'direction',
+      'disableCloseOnEnterKey',
       'isDynamic',
       'isContained',
       'scrollParentID',
@@ -970,6 +973,7 @@ EventOverlay.defaultProps = {
   className: '',
   close: null,
   direction: 'bottom-left',
+  disableCloseOnEnterKey: false,
   focusLockProps: null,
   isContained: '',
   isDynamic: false,
@@ -1022,6 +1026,8 @@ EventOverlay.propTypes = {
     'right-top',
     'right-bottom',
   ]),
+  /** @prop Prevent closing on ENTER or SPACE keydown event | false */
+  disableCloseOnEnterKey: PropTypes.bool,
   /** @prop Props to be passed to focus lock component | null */
   focusLockProps: PropTypes.object,
   /** @prop Determines if the overlay is contained in bounding ancestor | '' */

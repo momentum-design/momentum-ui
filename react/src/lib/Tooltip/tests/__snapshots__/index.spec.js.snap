@@ -28,10 +28,12 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "autoFocusOnFirstElt": false,
       "children": <div>
         Hi
       </div>,
       "className": "md-tooltip",
+      "closeOnFocusLeavesContent": false,
       "content": <span
         className="md-tooltip__text"
       >
@@ -69,10 +71,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "autoFocusOnFirstElt": false,
         "children": <div>
           Hi
         </div>,
         "className": "md-tooltip",
+        "closeOnFocusLeavesContent": false,
         "content": <span
           className="md-tooltip__text"
         >

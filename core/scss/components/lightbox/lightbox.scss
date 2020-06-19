@@ -128,6 +128,7 @@
           overflow-y: auto;
           text-align: center;
           background-color: $lightbox-list__background;
+          flex: 0 0 auto;
 
           > .#{$prefix}-lightbox__thumbnail-wrapper {
             padding: 10px 0;

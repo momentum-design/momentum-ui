@@ -58,7 +58,8 @@ class Icon extends React.PureComponent {
         return color;
       }
 
-      return getColorValue(color);
+      const value = getColorValue(color);
+      return value;
     };
 
     const getNameClass = () => {

@@ -14,9 +14,4 @@ export const changelogTypes = [
     displayName: 'React',
     path: 'react',
   },
-  {
-    name: 'momentum-ui-angular',
-    displayName: 'Angular',
-    path: 'angular',
-  },
 ];

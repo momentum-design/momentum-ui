@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.11...@momentum-ui/charts@1.0.0-beta.12) (2020-05-21)
+
+
+### Features
+
+* **tokens:** redirect paths, initial setup of token NPM module ([1fdb091](https://github.com/momentum-design/momentum-ui/commit/1fdb09137b6b986d4ebc4077596ac13d7a7fd9cc))
+
+
+
+
+
 # [1.0.0-beta.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.10...@momentum-ui/charts@1.0.0-beta.11) (2020-01-16)
 
 

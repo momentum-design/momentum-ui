@@ -329,8 +329,6 @@ class Popover extends React.Component {
                 this.handleHide(e);
               },
               onKeyDown: !includeFocusOnHover ? this.handleKeyDownEventOverlay : undefined})}
-            {...(popoverTrigger === 'Click' && {
-              onKeyDown: this.handleKeyDownEventOverlay})}
             {...(popoverTrigger === 'Focus' && { allowClickAway: false })}
             {...otherProps}
           >

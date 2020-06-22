@@ -69,6 +69,21 @@
           $active-bgrd-color: $list-item__background--dark,
           $header-color: $list-item-header__color--dark
         );
+
+        &-light {
+          @include list-item-color(
+            $background-color: $md-gray-05,
+            $color: $md-gray-70,
+            $active-color: $md-gray-100,
+            $hover-bgrd-color: $md-gray-10,
+            $active-bgrd-color: $md-gray-10,
+            $hover-header-color: $md-gray-100,
+            $hover-subheader-color: $md-gray-100,
+            $header-color: $md-gray-70,
+            $subheader-color: $md-gray-70,
+            $focus-color: $md-gray-10
+          );
+        }
       }
 
       @include list-item--dark(

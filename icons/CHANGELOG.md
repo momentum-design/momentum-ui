@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.38.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.37.0...@momentum-ui/icons@7.38.0) (2020-06-18)
+
+
+### Features
+
+* **icons:** add condition_16 ([6e1f3c9](https://github.com/momentum-design/momentum-ui/commit/6e1f3c9f9d45265e4ecb19adc74c570e666e498e))
+* **icons:** add parse_16 ([d721337](https://github.com/momentum-design/momentum-ui/commit/d721337c6c501f12fbe6c1b4292d2d5200c03fc8))
+* **icons:** add parse_20 ([f8252d7](https://github.com/momentum-design/momentum-ui/commit/f8252d7c59f172cb675241ed55cc92cb75227099))
+* **icons:** add Queue_contact ([7e4fac9](https://github.com/momentum-design/momentum-ui/commit/7e4fac97d96e2fa950e787204f2562c2372a8101))
+
+
+
+
+
 # [7.37.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.36.0...@momentum-ui/icons@7.37.0) (2020-06-13)
 
 

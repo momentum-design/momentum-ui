@@ -22,6 +22,7 @@ ShallowWrapper {
     resultRight={null}
     searchTerm=""
     subheader=""
+    theme=""
     title=""
     type=""
   />,

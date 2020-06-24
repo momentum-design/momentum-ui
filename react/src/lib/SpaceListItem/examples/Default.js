@@ -10,7 +10,7 @@ export default class ListItemDefault extends React.PureComponent {
     return(
       <div className="medium-4 columns">
         <List style={{backgroundColor: 'black'}}>
-          <SpaceListItem isOverview header='Overview Item' />
+          <SpaceListItem isOverview header='Overview Item'/>
           <SpaceListItem header='Header Only'/>
           <SpaceListItem header='Bold Unread' isBold isUnread/>
           <SpaceListItem header='Bold Mentioned' isBold isMentioned/>

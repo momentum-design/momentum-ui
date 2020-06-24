@@ -1,0 +1,50 @@
+{
+  "name": "@momentum-ui/tokens",
+  "version": "1.1.0",
+  "description": "The Cisco Momentum UI Tokens library allows developers and designers to collaborate on the creation and usage of style guidelines and elements.",
+  "homepage": "http://momentum.design/styles/tokens",
+  "keywords": [
+    "Cisco",
+    "Webex",
+    "Cisco Spark",
+    "Spark UI",
+    "Momentum UI",
+    "design tokens",
+    "color tokens"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn build:lib",
+    "build:lib": "node tools/tokens-build.js",
+    "ci:postpublish": "node ../tools/postpublish.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "copy:legacyColors": "cpy src/legacyColors.json dist",
+    "pushToS3": "node ../tools/pushToS3.js --library=tokens",
+    "lint": "echo \"Success: lint\" && exit 0",
+    "prepublishOnly": "run-p copy:legacyColors build:lib",
+    "start": "yarn build:lib",
+    "test": "yarn build:lib"
+  },
+  "author": "Cisco Systems, Inc.",
+  "contributors": [
+    "Kevin Hyde <kehyde@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/momentum-design/momentum-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/momentum-design/momentum-ui/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "cpy-cli": "3.1.1",
+    "fast-glob": "^2.2.6",
+    "fs-extra": "^5.0.0",
+    "jsonfile": "^5.0.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -42,7 +42,7 @@ class Select extends React.Component {
     e.preventDefault();
     const { selected, selectedIndex } = this.state;
     const { isMulti } = this.props;
-    const { value, label, eventKey } = opts;
+    const { value, label, eventKey, keyboardKey } = opts;
     const isActive = find(selected, {value, label});
 
     !isMulti && this.setState({ isOpen: false });
@@ -54,7 +54,7 @@ class Select extends React.Component {
         selected: filter(selected, item =>
           !isEqual(item, {value, label})
         ),
-        selectedIndex: selectedIndex.filter(i => i !== eventKey)
+        selectedIndex: selectedIndex.filter(i => i !== keyboardKey)
       });
     } else if (!isActive && !isMulti) {
       return this.setState({
@@ -64,7 +64,7 @@ class Select extends React.Component {
     } else {
       return this.setState({
         selected: [...selected, {value, label}],
-        selectedIndex: [...selectedIndex, eventKey]
+        selectedIndex: [...selectedIndex, keyboardKey]
       });
     }
   }
@@ -228,4 +228,4 @@ Select.defaultProps = {
 
 Select.displayName = 'Select';
 
-export default Select;
+export default Select;  

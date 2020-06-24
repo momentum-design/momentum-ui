@@ -32,6 +32,7 @@ class SpaceListMeeting extends React.PureComponent {
       isBold,
       meetingType,
       subheader,
+      theme,
       title,
       ...props
     } = this.props;
@@ -103,9 +104,10 @@ class SpaceListMeeting extends React.PureComponent {
               direction="bottom-center"
               targetOffset={{ vertical: 3 }}
               isDynamic
+              includeFocusOnHover={false}
               {...eventOverlayProps}
             >
-              <span role="button" tabIndex={0} className="md-list-item--space-meeting--attendees">
+              <span role="button" tabIndex={-1} className="md-list-item--space-meeting--attendees">
                 {isMessagingOnlyShare ? null : attendees.length}
                 {isMessagingOnlyShare ? <Icon name="share-screen_12" /> : <Icon name="people_12" />}
               </span>
@@ -128,6 +130,7 @@ class SpaceListMeeting extends React.PureComponent {
         className={
           'md-list-item--space-meeting' +
           `${(isBold && ` md-list-item--unread`) || ''}` +
+          `${(theme && ` md-list-item--space-${theme}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -175,6 +178,8 @@ SpaceListMeeting.propTypes = {
   meetingType: PropTypes.oneOf(['', 'group', 'number', 'device']),
   /** @prop SpaceListMeeting sub header node | '' */
   subheader: PropTypes.node,
+  /** @prop SpaceListMeeting color theme */
+  theme: PropTypes.string,
   /** @prop SpaceListMeeting title | '' */
   title: PropTypes.string,
 };
@@ -192,6 +197,7 @@ SpaceListMeeting.defaultProps = {
   eventOverlayProps: null,
   meetingType: '',
   subheader: '',
+  theme: '',
   title: '',
 };
 

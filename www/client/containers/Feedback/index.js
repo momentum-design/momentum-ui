@@ -375,8 +375,6 @@ class Feedback extends React.PureComponent {
                   <SelectOption label="Core (HTML/CSS)" value="core" />
                   <SelectOption label="Icons" value="icons" />
                   <SelectOption label="React" value="react" />
-                  <SelectOption label="Angular" value="angular" />
-                  <SelectOption label="AngularJS (1.X)" value="angularjs" />
                 </Select>
                 {/** Version Section */}
                 <Label

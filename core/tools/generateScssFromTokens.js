@@ -1,6 +1,6 @@
 const generateFileFromTemplate = require('@momentum-ui/utils/src/generateFileFromTemplate');
 const path = require('path');
-const colorData = require('../tokens/colors.json');
+const colorData = require('@momentum-ui/tokens/dist/colors.json');
 colorData.prefix = 'md';
 
 const generateColorsFromTokens = async () => {

@@ -93,36 +93,6 @@ class ListItem extends React.Component {
       e.preventDefault();
       e.stopPropagation();
     }
-    
-    if (focusLockTabbableChildren && e.target) {
-      const currListItem = e.target.closest('.md-list-item');
-
-      if  (currListItem) {
-        const tabbableChildren = currListItem.querySelectorAll(tabbableChildrenQuery);
-        if (tabbableChildren.length) {
-          if (e.keyCode === 9 && !e.shiftKey) { // TAB only
-            // only allow focus of tabbable children if TAB on the current listitem
-            if (e.target.classList.contains('md-list-item')) {
-              for (let i = 0; i < tabbableChildren.length; i++) {
-                if (tabbableChildren[i].tabIndex === -1) {
-                  tabbableChildren[i].tabIndex = 0;
-                }
-              }
-            } else if (e.target === tabbableChildren[tabbableChildren.length - 1]) {
-              e.preventDefault();
-              e.stopPropagation();
-              // cycle focus between tabbable children (last tabbable child wil' cycle back to first tabbable child)
-              tabbableChildren[0].focus();
-            }
-          } else if (e.keyCode === 9 && e.shiftKey) { // SHIFT + TAB
-            e.preventDefault();
-            e.stopPropagation();
-            // focus on the tabbable children's associated lisitem
-            e.target.closest('.md-list-item').focus();
-          }
-        }
-      }
-    }
 
     const {tabbableChildrenQuery} = focusLockTabbableChildrenProps;
     
@@ -251,7 +221,6 @@ class ListItem extends React.Component {
       disabled,
       eventKey,
       focus,
-      focusLockTabbableChildren,
       isReadOnly,
       keyboardKey,
       label,
@@ -259,7 +228,6 @@ class ListItem extends React.Component {
       refName,
       role,
       separator,
-      tabbableChildrenQuery,
       title,
       type,
       ...props
@@ -416,8 +384,6 @@ ListItem.propTypes = {
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
-  /** @prop Query for focusLockTabbableChildren | '' */
-  tabbableChildrenQuery: PropTypes.string,
   /** @prop ListItem Title | '' */
   title: PropTypes.string,
   /** @prop ListItem size | '' */
@@ -461,7 +427,6 @@ ListItem.defaultProps = {
   refName: 'navLink',
   role: 'listitem',
   separator: false,
-  tabbableChildrenQuery: '',
   title: '',
   type: '',
   value: '',

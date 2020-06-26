@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/utils",
-  "version": "6.2.1",
+  "version": "6.2.2",
   "description": "Momentum UI Utility functions.",
   "license": "MIT",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@gfx/zopfli": "^1.0.11",
-    "@momentum-ui/tokens": "^1.1.0",
+    "@momentum-ui/tokens": "^1.2.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "fast-glob": "^2.2.6",
     "fs-extra": "^5.0.0",

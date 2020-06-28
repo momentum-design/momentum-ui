@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.39.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.38.1...@momentum-ui/icons@7.39.0) (2020-06-28)
+
+
+### Features
+
+* **icons:** add ask-for-help_20 ([45ab9cd](https://github.com/momentum-design/momentum-ui/commit/45ab9cdc360336963c36f7e321b95c9248896336))
+* **icons:** add contact-group_16 ([267a132](https://github.com/momentum-design/momentum-ui/commit/267a132ac6649c928d769494d5517c5e396cba88))
+* **icons:** add device-in-room-end_16 ([e1d04e2](https://github.com/momentum-design/momentum-ui/commit/e1d04e29244c0b9dd12f9e7e06fe9f986e0ed0a2))
+* **icons:** add encryption_16 ([931ca6f](https://github.com/momentum-design/momentum-ui/commit/931ca6f54d0af874c974aef125450a24c984f25a))
+* **icons:** add queue-contact_20 ([fc2e9ff](https://github.com/momentum-design/momentum-ui/commit/fc2e9ffcd521b92673065ecaa4531ce40f05a5ca))
+
+
+
+
+
 ## [7.38.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.38.0...@momentum-ui/icons@7.38.1) (2020-06-26)
 
 **Note:** Version bump only for package @momentum-ui/icons

@@ -50,6 +50,7 @@ ShallowWrapper {
             id={null}
             itemRole="listitem"
             navSectionTitle="Overview"
+            navigationDirection="both"
             onSelect={null}
             role="list"
             shouldFocusActive={false}
@@ -89,6 +90,7 @@ ShallowWrapper {
             id={null}
             itemRole="listitem"
             navSectionTitle="Overview"
+            navigationDirection="both"
             onSelect={null}
             role="list"
             shouldFocusActive={false}
@@ -129,6 +131,7 @@ ShallowWrapper {
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
+              navigationDirection="both"
               onSelect={null}
               role="list"
               shouldFocusActive={false}
@@ -167,6 +170,7 @@ ShallowWrapper {
               "id": null,
               "itemRole": "listitem",
               "navSectionTitle": "Overview",
+              "navigationDirection": "both",
               "onSelect": null,
               "role": "list",
               "shouldFocusActive": false,
@@ -238,6 +242,7 @@ ShallowWrapper {
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
+              navigationDirection="both"
               onSelect={null}
               role="list"
               shouldFocusActive={false}
@@ -277,6 +282,7 @@ ShallowWrapper {
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
+              navigationDirection="both"
               onSelect={null}
               role="list"
               shouldFocusActive={false}
@@ -317,6 +323,7 @@ ShallowWrapper {
                 id={null}
                 itemRole="listitem"
                 navSectionTitle="Overview"
+                navigationDirection="both"
                 onSelect={null}
                 role="list"
                 shouldFocusActive={false}
@@ -355,6 +362,7 @@ ShallowWrapper {
                 "id": null,
                 "itemRole": "listitem",
                 "navSectionTitle": "Overview",
+                "navigationDirection": "both",
                 "onSelect": null,
                 "role": "list",
                 "shouldFocusActive": false,

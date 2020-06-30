@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/tokens",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "The Cisco Momentum UI Tokens library allows developers and designers to collaborate on the creation and usage of style guidelines and elements.",
   "homepage": "http://momentum.design/styles/tokens",
   "keywords": [

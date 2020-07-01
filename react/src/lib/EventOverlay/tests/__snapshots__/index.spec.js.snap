@@ -1,3 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for <EventOverlay /> should match text SnapShot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <EventOverlay

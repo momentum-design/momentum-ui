@@ -94,7 +94,7 @@ const button = {
     text: {
         primary: {
             lightUi: colors.gray['05'].hex,
-            darkUi: colors.gray['05'].hex,  
+            darkUi: colors.gray['05'].hex,
             outline: {
                 lightUi: colors.blue[70].hex,
                 darkUi: colors.blue[40].hex,  
@@ -102,19 +102,23 @@ const button = {
         },
         secondary: {
             lightUi: colors.gray[100].hex,
-            darkUi: colors.gray[100].hex,  
+            darkUi: colors.gray['05'].hex,
             outline: {
                 lightUi: colors.blue[70].hex,
                 darkUi: colors.blue[40].hex,  
             },
         },
         green: {
+            lightUi: colors.gray['05'].hex,
+            darkUi: colors.gray['05'].hex,
             outline: {
                 lightUi: colors.green[70].hex,
                 darkUi: colors.green[40].hex,  
             },
         },
         red: {
+            lightUi: colors.gray['05'].hex,
+            darkUi: colors.gray['05'].hex,
             outline: {
                 lightUi: colors.red[70].hex,
                 darkUi: colors.red[40].hex,  

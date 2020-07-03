@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.40.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.39.1...@momentum-ui/icons@7.40.0) (2020-07-03)
+
+
+### Features
+
+* **icons:** add device-connection_14 ([1fc0326](https://github.com/momentum-design/momentum-ui/commit/1fc0326d217d4dbb99fb5bc4e7e2e19154e014a8))
+* **icons:** add recurring_12 ([3dc9c7a](https://github.com/momentum-design/momentum-ui/commit/3dc9c7a7fbd1a8fe87b496c3be8a10d93f27f893))
+* **icons:** add remote-desktop-control_12 ([97641b7](https://github.com/momentum-design/momentum-ui/commit/97641b7a8da16dbb2cbb792702d6785f4513bbc0))
+* **icons:** add tablet_12 ([c405ced](https://github.com/momentum-design/momentum-ui/commit/c405cedec5e46f64b22f3b5d219114bd487588d8))
+
+
+
+
+
 ## [7.39.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.39.0...@momentum-ui/icons@7.39.1) (2020-07-01)
 
 **Note:** Version bump only for package @momentum-ui/icons

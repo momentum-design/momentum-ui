@@ -1,6 +1,10 @@
 {
   "name": "momentum-design",
+<<<<<<< HEAD
   "version": "125.0.0",
+=======
+  "version": "127.0.0",
+>>>>>>> b2bcd43d86bc5837b6703d0ab1eb9e3eb43de581
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -48,9 +52,15 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@momentum-ui/core": "^18.5.2",
+<<<<<<< HEAD
     "@momentum-ui/react": "^23.15.1",
     "@momentum-ui/tokens": "^1.2.0",
     "@momentum-ui/utils": "^6.2.2",
+=======
+    "@momentum-ui/react": "^23.15.3",
+    "@momentum-ui/tokens": "^1.2.1",
+    "@momentum-ui/utils": "^6.2.3",
+>>>>>>> b2bcd43d86bc5837b6703d0ab1eb9e3eb43de581
     "ash-motion": "^1.0.1",
     "connected-react-router": "^5.0.1",
     "dom-helpers": "^3.4.0",

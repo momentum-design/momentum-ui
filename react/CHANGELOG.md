@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## [23.15.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.2...@momentum-ui/react@23.15.3) (2020-07-01)
+
+
+### Bug Fixes
+
+* **modal:** clear hide timeout onclose ([#623](https://github.com/momentum-design/momentum-ui/issues/623)) ([808453d](https://github.com/momentum-design/momentum-ui/commit/808453d05f615fbcb1acdd2225c8e3a429319818))
+
+
+
+
+
+## [23.15.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.1...@momentum-ui/react@23.15.2) (2020-06-28)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+>>>>>>> b2bcd43d86bc5837b6703d0ab1eb9e3eb43de581
 ## [23.15.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.0...@momentum-ui/react@23.15.1) (2020-06-26)
 
 **Note:** Version bump only for package @momentum-ui/react

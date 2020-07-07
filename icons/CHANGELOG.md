@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.41.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.40.0...@momentum-ui/icons@7.41.0) (2020-07-07)
+
+
+### Features
+
+* **icons:** add device-connection_14 ([91bc312](https://github.com/momentum-design/momentum-ui/commit/91bc312790e9ee80d13aad19f03336872322f697))
+* **icons:** add device-connection-active_14 ([9efb2a8](https://github.com/momentum-design/momentum-ui/commit/9efb2a886cfdacf0938a7b32cbd00cf090218dcd))
+
+
+
+
+
 # [7.40.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.39.1...@momentum-ui/icons@7.40.0) (2020-07-03)
 
 

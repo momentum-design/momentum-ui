@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.42.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.41.0...@momentum-ui/icons@7.42.0) (2020-07-08)
+
+
+### Features
+
+* **icons:** add team-new_24 ([78ea2d2](https://github.com/momentum-design/momentum-ui/commit/78ea2d2f8e5a636798bf9251753486b7f579849a))
+
+
+
+
+
 # [7.41.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.40.0...@momentum-ui/icons@7.41.0) (2020-07-07)
 
 

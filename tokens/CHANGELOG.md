@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.3.0...@momentum-ui/tokens@1.4.0) (2020-07-08)
+
+
+### Features
+
+* **tokens:** new badge tokens for light/dark mode ([dc93cc5](https://github.com/momentum-design/momentum-ui/commit/dc93cc58855fc8c4d191ccc68b0c1b161c5da729))
+
+
+
+
+
 # [1.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.2.1...@momentum-ui/tokens@1.3.0) (2020-07-07)
 
 

@@ -50,6 +50,6 @@ PRs are welcome! See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## License
 
-&copy;2013-2019 Cisco Systems, Inc. and/or its affiliates. All Rights Reserved.
+&copy;2013-2020 Cisco Systems, Inc. and/or its affiliates. All Rights Reserved.
 
 See [LICENSE](LICENSE) for details.

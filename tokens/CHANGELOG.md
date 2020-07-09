@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.4.0...@momentum-ui/tokens@1.4.1) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
 # [1.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.3.0...@momentum-ui/tokens@1.4.0) (2020-07-08)
 
 

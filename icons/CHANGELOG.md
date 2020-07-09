@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.42.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.42.0...@momentum-ui/icons@7.42.1) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
 # [7.42.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.41.0...@momentum-ui/icons@7.42.0) (2020-07-08)
 
 

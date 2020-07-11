@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.43.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.42.1...@momentum-ui/icons@7.43.0) (2020-07-11)
+
+
+### Features
+
+* **icons:** add assign-host_16 ([56a4c9f](https://github.com/momentum-design/momentum-ui/commit/56a4c9f6290002d2aac9a06765ae6e40121958c3))
+* **icons:** add assign-privilege_12 ([2a5521c](https://github.com/momentum-design/momentum-ui/commit/2a5521c1d7e15597532e2500783a36fde06de069))
+* **icons:** add import_12 ([d247ddd](https://github.com/momentum-design/momentum-ui/commit/d247ddd05cbc1b9f18d8e41064e35580e59fa212))
+* **icons:** add join-audio_24 ([3117bda](https://github.com/momentum-design/momentum-ui/commit/3117bda63d6597632949a4c8c901a509139e1bad))
+* **icons:** add moderator_16 ([100d921](https://github.com/momentum-design/momentum-ui/commit/100d9219d79d251892bf9a67330736aa43a9e838))
+* **icons:** add proximity-video_12 ([e5359e7](https://github.com/momentum-design/momentum-ui/commit/e5359e71d183786696df22f67300d92216e5ffc9))
+* **icons:** add proximity-video_14 ([a9858d2](https://github.com/momentum-design/momentum-ui/commit/a9858d2bc16925344b6e47681eabf24c08578708))
+* **icons:** add proximity-video_16 ([b85d72e](https://github.com/momentum-design/momentum-ui/commit/b85d72e69d7512d3939864d25a96c4d0d2f9bb5e))
+* **icons:** add proximity-video_20 ([fc7e52a](https://github.com/momentum-design/momentum-ui/commit/fc7e52aae51d79436e796ecc90462184c0ae97de))
+* **icons:** add proximity-video_24 ([114e8a2](https://github.com/momentum-design/momentum-ui/commit/114e8a284cb8a0c319e5970df62811b230005a79))
+* **icons:** add proximity-video_26 ([626f648](https://github.com/momentum-design/momentum-ui/commit/626f648a1058cec8eeb1bd1e7113b64e4144cc23))
+
+
+
+
+
 ## [7.42.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.42.0...@momentum-ui/icons@7.42.1) (2020-07-09)
 
 

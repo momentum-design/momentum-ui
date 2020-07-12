@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.15.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.7...@momentum-ui/react@23.15.8) (2020-07-11)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.6...@momentum-ui/react@23.15.7) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+## [23.15.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.5...@momentum-ui/react@23.15.6) (2020-07-08)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.4...@momentum-ui/react@23.15.5) (2020-07-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.3...@momentum-ui/react@23.15.4) (2020-07-03)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.15.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.2...@momentum-ui/react@23.15.3) (2020-07-01)
 
 

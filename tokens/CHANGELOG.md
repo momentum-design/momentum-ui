@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.4.0...@momentum-ui/tokens@1.4.1) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+# [1.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.3.0...@momentum-ui/tokens@1.4.0) (2020-07-08)
+
+
+### Features
+
+* **tokens:** new badge tokens for light/dark mode ([dc93cc5](https://github.com/momentum-design/momentum-ui/commit/dc93cc58855fc8c4d191ccc68b0c1b161c5da729))
+
+
+
+
+
+# [1.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.2.1...@momentum-ui/tokens@1.3.0) (2020-07-07)
+
+
+### Features
+
+* **tokens:** adding token variable names to token js object ([666cd6a](https://github.com/momentum-design/momentum-ui/commit/666cd6acdd475e2259df3cc35c1414395d3cb514))
+
+
+
+
+
 ## [1.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.2.0...@momentum-ui/tokens@1.2.1) (2020-07-01)
 
 

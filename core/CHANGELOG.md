@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.8.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.6...@momentum-ui/core@19.8.7) (2020-07-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.5...@momentum-ui/core@19.8.6) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+## [19.8.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.4...@momentum-ui/core@19.8.5) (2020-07-08)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.3...@momentum-ui/core@19.8.4) (2020-07-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.2...@momentum-ui/core@19.8.3) (2020-07-03)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.8.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.1...@momentum-ui/core@19.8.2) (2020-07-01)
 
 **Note:** Version bump only for package @momentum-ui/core

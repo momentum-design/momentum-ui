@@ -2,7 +2,6 @@ const generateTokenJSON = require("./generateTokens");
 
 const border = require("../src/core/border");
 const button = require("../src/core/button");
-const badge = require("../src/core/badge");
 const colors = require("../src/core/colors");
 const font = require("../src/core/font");
 const lineHeight = require("../src/core/lineHeight");
@@ -14,7 +13,6 @@ const zIndex = require("../src/core/zIndex");
   try {
     await generateTokenJSON('border', border);
     await generateTokenJSON('button', button);
-    await generateTokenJSON('badge', badge);
     await generateTokenJSON('colors', colors);
     await generateTokenJSON('font', font);
     await generateTokenJSON('lineHeight', lineHeight);

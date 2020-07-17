@@ -27,10 +27,16 @@ class Modal extends React.Component {
       && this.setAnimationState(true);
   }
 
+  componentWillUnmount() {
+    this.hideTimerId && clearTimeout(this.hideTimerId);
+    this.hideTimerId = null;
+  }
+
   closeModal = e => {
     this.setAnimationState();
 
-    return setTimeout(() => {
+    this.hideTimerId && clearTimeout(this.hideTimerId);
+    this.hideTimerId = setTimeout(() => {
       this.props.onHide(e);
     }, 300);
   }

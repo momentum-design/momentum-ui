@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.44.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.44.0...@momentum-ui/icons@7.44.1) (2020-07-16)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+# [7.44.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.43.0...@momentum-ui/icons@7.44.0) (2020-07-14)
+
+
+### Features
+
+* **icons:** add event_16 ([9f67a30](https://github.com/momentum-design/momentum-ui/commit/9f67a303cdfaed982e7383aec587eaa5fbeb516d))
+* **icons:** add flow_16 ([998f380](https://github.com/momentum-design/momentum-ui/commit/998f380028fefea1b3c75dbfda8c98420537dc22))
+
+
+
+
+
 # [7.43.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.42.1...@momentum-ui/icons@7.43.0) (2020-07-11)
 
 

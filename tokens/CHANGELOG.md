@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.4.1...@momentum-ui/tokens@1.5.0) (2020-07-16)
+
+
+### Features
+
+* **tokens:** modify naming conventions of button color tokens ([f7cfead](https://github.com/momentum-design/momentum-ui/commit/f7cfead12503b86639d3d2186b18686b21791400))
+
+
+
+
+
 ## [1.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.4.0...@momentum-ui/tokens@1.4.1) (2020-07-09)
 
 

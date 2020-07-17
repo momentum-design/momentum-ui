@@ -152,7 +152,17 @@ describe('tests for <ListItemMeeting />', () => {
     );
 
     container.find('.md-list-item').simulate('click');
+    expect(container.find('.md-event-overlay').length).toEqual(1);
     expect(container.find('.test').length).toEqual(1);
+  });
+
+  it('should not render popoverContent if there is no popoverContent!', () => {
+    const container = mount(
+      <ListItemMeeting {...props} />
+    );
+
+    container.find('.md-list-item').simulate('click');
+    expect(container.find('.md-event-overlay').length).toEqual(0);
   });
 
   describe('tests for time/isALlDay prop', () => {

@@ -1,0 +1,165 @@
+@import './styles.scss';
+
+$site-white: $md-white;
+$site-black: #171B1F !default;
+$site-green: #BCF7BF !default;
+$site-blue: #2BBDFB !default;
+$site-gold: $md-gold-20;
+$site-lime: $md-lime-20;
+$site-pink: $md-pink-20;
+$site-slate: $md-slate-10;
+
+@import '../components2020/AppHeader/AppHeader.scss';
+@import '../components2020/AppFooter/AppFooter.scss';
+@import '../components2020/FeedBack/FeedBack.scss';
+@import '../containers2020/Home/home.scss';
+@import '../containers2020/System/system.scss';
+@import '../containers2020/Components/components.scss';
+@import '../containers2020/Icons/icons.scss';
+@import '../containers2020/Color/color.scss';
+
+.clear::after {
+  content: "";
+  display: block;
+  height: 0px;
+  width:0px;
+  visibility: hidden;
+  clear: both;
+  zoom:1;
+}
+
+.site-banner-normal {
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 800px;
+  overflow: hidden;
+
+  .site-banner-normal-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 385px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 96px;
+    position: relative;
+    text-align: center;
+    color: $md-black;
+
+    span {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      left: 0px;
+      top: -46px;
+      display: block;
+      line-height: 46px;
+      font-size: 18px;
+      color: $md-black;
+    }
+  }
+
+  .site-banner-share {
+    text-align: center;
+    margin-top: 84px;
+
+    .md-button{
+      width: 140px;
+
+      .md-button__children {
+        vertical-align: top;
+        display: inline-block;
+      }
+    }
+
+    .md-button::before{
+      content: '';
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 13px;
+      height: 22px;
+      background-size: contain !important;
+    }
+
+    .site-banner-share_github{
+      margin-left: 27px;
+    }
+
+    .site-banner-share_figma::before {
+      width: 15px;
+      background: url(../assets/2020/banner-figma.svg);
+    }
+
+    .site-banner-share_github::before {
+      width: 22px;
+      background: url(../assets/2020/banner-github.svg);
+    }
+  }
+}
+
+.fix-margin::before{
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0px;
+}
+
+.flex-con-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.flex-con-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.flex-margin {
+  margin-left: 30px;
+}
+
+.site-con{
+  width: 100%;
+}
+
+.site-bg-black {
+  background-color: $site-black;
+}
+
+.site-bg-slate {
+  background-color: $site-slate;
+}
+
+.site-bg-gold {
+  background-color: $site-gold;
+}
+
+.site-warp{
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.site-subtitle {
+  width: 100%;
+
+  h1{
+    font-size: 48px;
+    color: $md-black;
+  }
+
+  p{
+    font-size: 18px;
+    color: $md-gray-70;
+  }
+
+}
+
+@media only screen and (max-width: 1280px) {
+  .site-warp{
+    width: 1080px;
+    margin: 0 auto;
+  }
+}

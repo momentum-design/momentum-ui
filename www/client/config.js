@@ -1,7 +1,7 @@
 const API_URL = process.env.NODE_ENV === 'production'
   ? 'https://api.momentum-ui.com'
-  : 'http://127.0.0.1:3300';
-  // : 'http://collab-ui-server-stage.us-west-2.elasticbeanstalk.com';
+  // : 'http://127.0.0.1:3300';
+  : 'http://collab-ui-server-stage.us-west-2.elasticbeanstalk.com';
 
 const DOWNLOADS_URL = 'https://downloads.momentum-ui.com';
 

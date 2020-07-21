@@ -1,0 +1,17 @@
+.site-feedback {
+  background-color: $md-gray-10;
+  margin-top: 80px;
+  padding: 73px 0 80px 0;
+  text-align: center;
+  h1 {
+    width: 100%;
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    font-size: 24px;
+    color: $md-black;
+  }
+  button {
+    margin-top: 40px;
+  }
+}

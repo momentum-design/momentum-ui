@@ -1,0 +1,24 @@
+.site-banner-system {
+  background: url(../assets/2020/banner-system.svg) no-repeat center right;
+  background-size: contain;
+  height: 1200px;
+  overflow: hidden;
+
+  p {
+    font-weight: 350;
+    font-size: 36px;
+    line-height: 49px;
+    color: $md-white;
+    text-align: center;
+    margin-top: 255px;
+  }
+
+  .site-banner-system-title {
+    font-weight: bold;
+    font-size: 96px;
+    line-height: 131px;
+    text-align: center;
+    margin-top: 335px;
+  }
+
+}

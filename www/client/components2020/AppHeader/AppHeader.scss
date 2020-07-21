@@ -1,0 +1,40 @@
+$site-header-height:48px;
+
+.site-header-con {
+  width: 100%;
+  position: absolute;
+  top: 31px;
+  left: 0px;
+  height: $site-header-height;
+}
+
+.site-header{
+  display: relative;
+  line-height: $site-header-height;
+  background: transparent;
+  .site-logo {
+    fill: $md-black;
+    float: left;
+    margin-left: 5px;
+  }
+
+  a{
+    color: $md-black;
+    float: right;
+    height: $site-header-height;
+    line-height: $site-header-height;
+    text-align: center;
+    margin-right:23px;
+    display: block;
+    font-size: 15px;
+  }
+}
+
+.site-header-white{
+  .site-logo {
+    fill: white
+  }
+  a {
+    color: white;
+  }
+}

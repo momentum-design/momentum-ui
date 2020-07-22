@@ -3,6 +3,125 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.11...@momentum-ui/react@23.16.0) (2020-07-19)
+
+
+### Features
+
+* **event-overlay:** prevent ENTER/SPACE from closing popover ([#626](https://github.com/momentum-design/momentum-ui/issues/626)) ([58e3889](https://github.com/momentum-design/momentum-ui/commit/58e3889fde5aa6d092f472ea8e71b74bab46e4a4))
+
+
+
+
+
+## [23.15.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.10...@momentum-ui/react@23.15.11) (2020-07-18)
+
+
+### Bug Fixes
+
+* don't show popover content if it's null ([#631](https://github.com/momentum-design/momentum-ui/issues/631)) ([9238203](https://github.com/momentum-design/momentum-ui/commit/9238203d1797e2a1d150de149e4a17aeec63948b))
+
+
+
+
+
+## [23.15.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.9...@momentum-ui/react@23.15.10) (2020-07-16)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.8...@momentum-ui/react@23.15.9) (2020-07-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.7...@momentum-ui/react@23.15.8) (2020-07-11)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.6...@momentum-ui/react@23.15.7) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+## [23.15.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.5...@momentum-ui/react@23.15.6) (2020-07-08)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.4...@momentum-ui/react@23.15.5) (2020-07-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.3...@momentum-ui/react@23.15.4) (2020-07-03)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.2...@momentum-ui/react@23.15.3) (2020-07-01)
+
+
+### Bug Fixes
+
+* **modal:** clear hide timeout onclose ([#623](https://github.com/momentum-design/momentum-ui/issues/623)) ([808453d](https://github.com/momentum-design/momentum-ui/commit/808453d05f615fbcb1acdd2225c8e3a429319818))
+
+
+
+
+
+## [23.15.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.1...@momentum-ui/react@23.15.2) (2020-06-28)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.0...@momentum-ui/react@23.15.1) (2020-06-26)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.14.1...@momentum-ui/react@23.15.0) (2020-06-25)
+
+
+### Features
+
+* **list:** specify navigation direction ([ef8ebd5](https://github.com/momentum-design/momentum-ui/commit/ef8ebd5a56f7af86b6481f518be7ec2831a9ddcc))
+
+
+
+
+
 ## [23.14.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.14.0...@momentum-ui/react@23.14.1) (2020-06-18)
 
 

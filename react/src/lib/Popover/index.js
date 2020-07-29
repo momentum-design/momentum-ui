@@ -77,8 +77,11 @@ class Popover extends React.Component {
 
   handleClose = e => {
     const { onClose } = this.props;
-
-    this.setState({ isOpen: false }, onClose && onClose(e));
+    const {keyCode} = e;
+    //allow to copy text on popover
+    if (!(keyCode === 17 || keyCode === 91 || keyCode === 67)) {
+      this.setState({ isOpen: false }, onClose && onClose(e));
+    }
   };
 
   handleHide = e => {

@@ -21,7 +21,11 @@ class Popover extends React.Component {
     const { isOpen } = this.state;
     const { autoFocusOnFirstElt } = this.props;
 
-    if (autoFocusOnFirstElt && isOpen && !prevState.isOpen && this.overlay) {
+    if (autoFocusOnFirstElt
+        && isOpen
+        && !prevState.isOpen
+        && this.overlay
+    ) {
       const eventOverlay = ReactDOM.findDOMNode(this.overlay);
 
       if (eventOverlay) {
@@ -277,7 +281,10 @@ class Popover extends React.Component {
 
           triggerProps.onFocus = includeFocusOnHover ? this.handleFocus : undefined;
           triggerProps.onBlur = includeFocusOnHover ? this.handleBlur : undefined;
-          triggerProps.onKeyDown = includeFocusOnHover ? undefined : this.handleKeyDownTrigger;
+          if(!includeFocusOnHover) {
+            triggerProps.onKeyDown = this.handleKeyDownTrigger;
+          }
+
           break;
 
         case 'Click':

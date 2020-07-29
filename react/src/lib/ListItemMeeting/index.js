@@ -162,7 +162,7 @@ class ListItemMeeting extends React.PureComponent {
       <ListItemSection key='child-2' position='right'>
         {childrenRight}
       </ListItemSection>,
-      isOpen && (
+      isOpen && !!popoverContent && (
         <EventOverlay
           key='child-3'
           direction='right-center'

@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-    <title>contact_card_22</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
-        <g id="contact_card_22" stroke="#000000">
-            <g transform="translate(0.000000, 2.000000)">
-                <path d="M18.5,17.5 L3.5,17.5 C1.84,17.5 0.5,16.16 0.5,14.5 L0.5,3.5 C0.5,1.84 1.84,0.5 3.5,0.5 L18.5,0.5 C20.16,0.5 21.5,1.84 21.5,3.5 L21.5,14.5 C21.5,16.16 20.16,17.5 18.5,17.5 Z" id="Path"></path>
-                <circle id="Oval" stroke-linecap="round" cx="7" cy="7.5" r="2"></circle>
-                <path d="M8.57,9.5 L5.43,9.5 C4.63,9.5 3.95,10.05 3.82,10.79 L3.5,12.5 L10.5,12.5 L10.18,10.79 C10.05,10.05 9.37,9.5 8.57,9.5 Z" id="Path" stroke-linecap="round"></path>
-                <line x1="13.48" y1="12.5" x2="18.48" y2="12.5" id="Path" stroke-linecap="round"></line>
-                <line x1="12.5" y1="9" x2="18.5" y2="9" id="Path" stroke-linecap="round"></line>
-                <line x1="11.5" y1="5.5" x2="18.5" y2="5.5" id="Path" stroke-linecap="round"></line>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="22" height="22" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 2)" stroke="#000" fill="none" fill-rule="evenodd" stroke-linejoin="round"><path d="M18.5 17.5h-15c-1.66 0-3-1.34-3-3v-11c0-1.66 1.34-3 3-3h15c1.66 0 3 1.34 3 3v11c0 1.66-1.34 3-3 3z"/><circle stroke-linecap="round" cx="7" cy="7.5" r="2"/><path d="M8.57 9.5H5.43c-.8 0-1.48.55-1.61 1.29L3.5 12.5h7l-.32-1.71c-.13-.74-.81-1.29-1.61-1.29zM13.48 12.5h5M12.5 9h6M11.5 5.5h7" stroke-linecap="round"/></g></svg>

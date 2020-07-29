@@ -77,7 +77,7 @@ ListItemHeader.propTypes = {
   /** @prop ListItem title | '' */
   title: PropTypes.string,
   /** @prop ListItemHeader type variation | '' */
-  type: PropTypes.oneOf(['', 'space']),
+  type: PropTypes.oneOf(['', 'space', 'space-light']),
 };
 
 ListItemHeader.defaultProps = {

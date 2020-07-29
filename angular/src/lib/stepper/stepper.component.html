@@ -1,9 +1,0 @@
-<div class="md-stepper md-stepper-container">
-  <div *ngFor="let step of steps; let i = index" [style.width.%]="70/(steps.length)" (click)="onClick(i)">
-    <i class="md-stepper-bubble" (click)="onClick(i)" [ngClass]="getClasses(i, step)" [id]="'step' + i"></i>
-    <p (click)="onClick(i)" class="md-step-title" [ngClass]="{'md-step-title-disabled': step.disabled}"> {{ step.title}}</p>
-    <svg class="md-stepper-svg" *ngIf="i">
-      <line [id]="'line' + i" class="md-stepper-line" [ngClass]="{'md-stepper-line-disabled':  step.disabled}"/>
-    </svg>
-  </div>
-</div>

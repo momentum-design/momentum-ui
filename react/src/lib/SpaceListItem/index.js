@@ -35,6 +35,7 @@ class SpaceListItem extends React.PureComponent {
       resultRight,
       searchTerm,
       subheader,
+      theme,
       title,
       type,
       ...props
@@ -204,6 +205,7 @@ class SpaceListItem extends React.PureComponent {
         className={
           `${(isBold && ` md-list-item--unread`) || ''}` +
           `${(type && ` md-list-item--space-${type}`) || ''}` +
+          `${(theme && ` md-list-item--space-${theme}`) || ''}` +
           `${(className && ` ${className}`) || ''}`
         }
         id={id}
@@ -254,6 +256,8 @@ SpaceListItem.propTypes = {
   searchTerm: PropTypes.string,
   /** @prop SpaceListItem subheader node | ''s */
   subheader: PropTypes.node,
+  /** @prop SpaceListItem theme | '' */
+  theme: PropTypes.string,
   /** @prop SpaceListItem title | '' */
   title: PropTypes.string,
   /** @prop SpaceListItem type | '' */
@@ -286,6 +290,7 @@ SpaceListItem.defaultProps = {
   searchTerm: '',
   subheader: '',
   title: '',
+  theme: '',
   type: ''
 };
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.45.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.44.1...@momentum-ui/icons@7.45.0) (2020-07-18)
+
+
+### Features
+
+* **icons:** add adjust_20 ([d1ffd84](https://github.com/momentum-design/momentum-ui/commit/d1ffd84de4932276dd3753241b41b39d8f308de0))
+* **icons:** add call-forward-settings_14 ([c5ab0b7](https://github.com/momentum-design/momentum-ui/commit/c5ab0b75a27c73913361b058cb0a2729ea2c4901))
+* **icons:** add email-active_12 ([e1bbfaf](https://github.com/momentum-design/momentum-ui/commit/e1bbfaf319575787a922635b13970bcb0dcb8028))
+* **icons:** add email-active_16 ([f8e1383](https://github.com/momentum-design/momentum-ui/commit/f8e13835d3de80aacc66f3650070a1a68a3b9c3b))
+* **icons:** add encryption_20 ([81d310a](https://github.com/momentum-design/momentum-ui/commit/81d310a5699cf2b55c4622b0cf2ca6674116e975))
+* **icons:** add house_20 ([446e30c](https://github.com/momentum-design/momentum-ui/commit/446e30cb0dd93c0cb3835f9c31284e823930c204))
+* **icons:** add messenger_12 ([922c3eb](https://github.com/momentum-design/momentum-ui/commit/922c3ebd8eb82fd54589a25d1360aa60fc03b59f))
+* **icons:** add messenger_16 ([e40caeb](https://github.com/momentum-design/momentum-ui/commit/e40caeb209424f7d93e3f4ac26fa53a31d65499e))
+* **icons:** add other-number_20 ([3f45ed8](https://github.com/momentum-design/momentum-ui/commit/3f45ed8939de2c753e525b4637cf391d2d75ad2d))
+* **icons:** add recurring-off_12 ([ab1c48c](https://github.com/momentum-design/momentum-ui/commit/ab1c48c8582248f4c4040dac558fb0d3c01feb1b))
+* **icons:** add SMS_12 ([e9df2eb](https://github.com/momentum-design/momentum-ui/commit/e9df2ebbd84a7c78a9650e5202831821dbf3f51b))
+* **icons:** add text-highlight_12 ([75931ab](https://github.com/momentum-design/momentum-ui/commit/75931abc5f44629d05f43e598238a241f8412073))
+* **icons:** add text-highlight_16 ([9b7ae90](https://github.com/momentum-design/momentum-ui/commit/9b7ae90279d2d613fd5d2a1b19ff893671f5a471))
+* **icons:** add whatsApp_12 ([da2a2cf](https://github.com/momentum-design/momentum-ui/commit/da2a2cf1914ed9ca6d61bd85c33c9ddf89cba588))
+
+
+
+
+
 ## [7.44.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.44.0...@momentum-ui/icons@7.44.1) (2020-07-16)
 
 **Note:** Version bump only for package @momentum-ui/icons

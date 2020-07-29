@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.11...@momentum-ui/react@23.16.0) (2020-07-19)
+
+
+### Features
+
+* **event-overlay:** prevent ENTER/SPACE from closing popover ([#626](https://github.com/momentum-design/momentum-ui/issues/626)) ([58e3889](https://github.com/momentum-design/momentum-ui/commit/58e3889fde5aa6d092f472ea8e71b74bab46e4a4))
+
+
+
+
+
+## [23.15.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.10...@momentum-ui/react@23.15.11) (2020-07-18)
+
+
+### Bug Fixes
+
+* don't show popover content if it's null ([#631](https://github.com/momentum-design/momentum-ui/issues/631)) ([9238203](https://github.com/momentum-design/momentum-ui/commit/9238203d1797e2a1d150de149e4a17aeec63948b))
+
+
+
+
+
 ## [23.15.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.9...@momentum-ui/react@23.15.10) (2020-07-16)
 
 **Note:** Version bump only for package @momentum-ui/react

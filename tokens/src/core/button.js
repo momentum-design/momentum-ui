@@ -1,135 +1,180 @@
 const colors = require("./colors");
 
 const button = {
-    primary: {
-        lightUi: colors.blue[60].hex,
-        darkUi: colors.blue[60].hex,
-        hover: {
-            lightUi: colors.blue[70].hex,
-            darkUi: colors.blue[70].hex,
-        },
-        pressed: {
-            lightUi: colors.blue[80].hex,
-            darkUi: colors.blue[80].hex,  
-        },
-        outline: {
-            lightUi: colors.blue[70].hex,
-            darkUi: colors.blue[40].hex,
-        },
+  prefix: "md",
+  component: "button",
+  primary: {
+    "bg-color": {
+      light: colors.blue[60].name,
+      dark: colors.blue[60].name
     },
-    secondary: {
-        lightUi: colors.gray[20].hex,
-        darkUi: colors.gray[60].hex,
-        hover: {
-            lightUi: colors.gray[30].hex,
-            darkUi: colors.gray[70].hex,
-        },
-        pressed: {
-            lightUi: colors.gray[40].hex,
-            darkUi: colors.gray[80].hex,  
-        },
-        outline: {
-            lightUi: colors.gray[70].hex,
-            darkUi: colors.gray[40].hex,
-        },
+    "text-color": {
+      light: colors.gray["05"].name,
+      dark: colors.gray["05"].name
     },
-    green: {
-        lightUi: colors.green[60].hex,
-        darkUi: colors.green[60].hex,
-        hover: {
-            lightUi: colors.green[70].hex,
-            darkUi: colors.green[70].hex,
-        },
-        pressed: {
-            lightUi: colors.green[80].hex,
-            darkUi: colors.green[80].hex,  
-        },
-        outline: {
-            lightUi: colors.green[70].hex,
-            darkUi: colors.green[40].hex,
-        },
+    hover: {
+      "bg-color": {
+        light: colors.blue[70].name,
+        dark: colors.blue[70].name
+      }
     },
-    white: {
-        lightUi: colors.white.default.hex,
-        hover: {
-            lightUi: colors.gray['05'].hex,
-        },
-        pressed: {
-            lightUi: colors.gray[10].hex,
-        },
+    pressed: {
+      "bg-color": {
+        light: colors.blue[80].name,
+        dark: colors.blue[80].name
+      }
     },
-    darkGray: {
-        darkUi: colors.gray[80].hex,
-        hover: {
-            darkUi: colors.gray[90].hex,
-        },
-        pressed: {
-            darkUi: colors.gray[95].hex,  
-        },
+    outline: {
+      color: {
+        light: colors.blue[70].name,
+        dark: colors.blue[40].name
+      },
+      "text-color": {
+        light: colors.blue[70].name,
+        dark: colors.blue[40].name
+      }
+    }
+  },
+  secondary: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[60].name
     },
-    red: {
-        lightUi: colors.red[60].hex,
-        darkUi: colors.red[60].hex,
-        hover: {
-            lightUi: colors.red[70].hex,
-            darkUi: colors.red[70].hex,
-        },
-        pressed: {
-            lightUi: colors.red[80].hex,
-            darkUi: colors.red[80].hex,  
-        },
-        outline: {
-            lightUi: colors.red[70].hex,
-            darkUi: colors.red[40].hex,
-        },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name
     },
-    disabled: {
-        lightUi: colors.gray[20].hex,
-        darkUi: colors.gray[90].hex,
+    hover: {
+      "bg-color": {
+        light: colors.gray[30].name,
+        dark: colors.gray[70].name
+      }
     },
-    focusRing: {
-        lightUi: colors.blue[60].hex,
-        darkUi: colors.blue[40].hex,
+    pressed: {
+      "bg-color": {
+        light: colors.gray[40].name,
+        dark: colors.gray[80].name
+      }
     },
-    text: {
-        primary: {
-            lightUi: colors.gray['05'].hex,
-            darkUi: colors.gray['05'].hex,
-            outline: {
-                lightUi: colors.blue[70].hex,
-                darkUi: colors.blue[40].hex,  
-            },
-        },
-        secondary: {
-            lightUi: colors.gray[100].hex,
-            darkUi: colors.gray['05'].hex,
-            outline: {
-                lightUi: colors.blue[70].hex,
-                darkUi: colors.blue[40].hex,  
-            },
-        },
-        green: {
-            lightUi: colors.gray['05'].hex,
-            darkUi: colors.gray['05'].hex,
-            outline: {
-                lightUi: colors.green[70].hex,
-                darkUi: colors.green[40].hex,  
-            },
-        },
-        red: {
-            lightUi: colors.gray['05'].hex,
-            darkUi: colors.gray['05'].hex,
-            outline: {
-                lightUi: colors.red[70].hex,
-                darkUi: colors.red[40].hex,  
-            },
-        },
-        disabled: {
-            lightUi: colors.gray[40].hex,
-            darkUi: colors.gray[70].hex,
-        },
+    outline: {
+      color: {
+        light: colors.gray[70].name,
+        dark: colors.gray[40].name
+      },
+      "text-color": {
+        light: colors.blue[70].name,
+        dark: colors.blue[40].name
+      }
+    }
+  },
+  green: {
+    "bg-color": {
+      light: colors.green[60].name,
+      dark: colors.green[60].name
     },
+    hover: {
+      "bg-color": {
+        light: colors.green[70].name,
+        dark: colors.green[70].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.green[80].name,
+        dark: colors.green[80].name
+      }
+    },
+    outline: {
+      color: {
+        light: colors.green[70].name,
+        dark: colors.green[40].name
+      },
+      "text-color": {
+        light: colors.green[70].name,
+        dark: colors.green[40].name
+      }
+    }
+  },
+  white: {
+    "bg-color": {
+      light: colors.white.default.name,
+      dark: colors.white.default.name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[10].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[20].name
+      }
+    }
+  },
+  gray: {
+    "bg-color": {
+      light: colors.gray[60].name,
+      dark: colors.gray[80].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[70].name,
+        dark: colors.gray[70].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[80].name,
+        dark: colors.gray[60].name
+      }
+    }
+  },
+  red: {
+    "bg-color": {
+      light: colors.red[60].name,
+      dark: colors.red[60].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.red[70].name,
+        dark: colors.red[70].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.red[80].name,
+        dark: colors.red[80].name
+      }
+    },
+    outline: {
+      color: {
+        light: colors.red[70].name,
+        dark: colors.red[40].name
+      },
+      "text-color": {
+        light: colors.red[70].name,
+        dark: colors.red[40].name
+      }
+    }
+  },
+  disabled: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[90].name
+    },
+    "text-color": {
+      light: colors.gray[40].name,
+      dark: colors.gray[70].name
+    }
+  },
+  "focus-ring": {
+    color: {
+      light: colors.blue[60].name,
+      dark: colors.blue[40].name
+    }
+  }
 };
-  
-  module.exports = button;
-  
+
+module.exports = button;

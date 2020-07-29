@@ -12,6 +12,7 @@ ShallowWrapper {
     className=""
     close={null}
     direction="bottom-left"
+    disableCloseOnEnterOrSpaceKey={false}
     focusLockProps={null}
     isContained=""
     isDynamic={false}

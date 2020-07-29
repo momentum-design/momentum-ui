@@ -5,25 +5,25 @@
 //------------------------------------------------------
 
 {{#each this}}
-{{#with lightUi}}
-$md-button-{{@key}}-lightUi: {{this}} !default;
+{{#with light}}
+${{../../prefix}}-{{../../component}}-{{@key}}-light: {{this}} !default;
 {{/with}}
-{{#with darkUi}}
-$md-button-{{@key}}-darkUi: {{this}} !default;
-{{/with}}
-{{#each this}}
-{{#with lightUi}}
-$md-button-{{@../key}}-{{@key}}-lightUi: {{this}} !default;
-{{/with}}
-{{#with darkUi}}
-$md-button-{{@../key}}-{{@key}}-darkUi: {{this}} !default;
+{{#with dark}}
+${{../../prefix}}-{{../../component}}-{{@key}}-dark: {{this}} !default;
 {{/with}}
 {{#each this}}
-{{#with lightUi}}
-$md-button-{{@../../key}}-{{@../key}}-{{@key}}-lightUi: {{this}} !default;
+{{#with light}}
+${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-light: {{this}} !default;
 {{/with}}
-{{#with darkUi}}
-$md-button-{{@../../key}}-{{@../key}}-{{@key}}-darkUi: {{this}} !default;
+{{#with dark}}
+${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-dark: {{this}} !default;
+{{/with}}
+{{#each this}}
+{{#with light}}
+${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-light: {{this}} !default;
+{{/with}}
+{{#with dark}}
+${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-dark: {{this}} !default;
 {{/with}}
 {{/each}}
 {{/each}}

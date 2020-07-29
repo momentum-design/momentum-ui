@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.6...@momentum-ui/utils@6.2.7) (2020-07-16)
+
+**Note:** Version bump only for package @momentum-ui/utils
+
+
+
+
+
+## [6.2.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.5...@momentum-ui/utils@6.2.6) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+## [6.2.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.4...@momentum-ui/utils@6.2.5) (2020-07-08)
+
+**Note:** Version bump only for package @momentum-ui/utils
+
+
+
+
+
+## [6.2.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.3...@momentum-ui/utils@6.2.4) (2020-07-07)
+
+**Note:** Version bump only for package @momentum-ui/utils
+
+
+
+
+
 ## [6.2.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.2...@momentum-ui/utils@6.2.3) (2020-07-01)
 
 **Note:** Version bump only for package @momentum-ui/utils

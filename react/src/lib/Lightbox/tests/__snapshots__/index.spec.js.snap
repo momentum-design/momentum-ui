@@ -25,9 +25,9 @@ ShallowWrapper {
         },
       ]
     }
-    tooltipStyle={
+    popoverProps={
       Object {
-        "direction": "bottom-left",
+        "direction": "bottom-right",
         "isContained": true,
       }
     }
@@ -92,7 +92,7 @@ ShallowWrapper {
               className=""
               popoverProps={
                 Object {
-                  "direction": "bottom-left",
+                  "direction": "bottom-right",
                   "isContained": true,
                 }
               }
@@ -355,7 +355,7 @@ ShallowWrapper {
                 className=""
                 popoverProps={
                   Object {
-                    "direction": "bottom-left",
+                    "direction": "bottom-right",
                     "isContained": true,
                   }
                 }
@@ -495,7 +495,7 @@ ShallowWrapper {
                 className=""
                 popoverProps={
                   Object {
-                    "direction": "bottom-left",
+                    "direction": "bottom-right",
                     "isContained": true,
                   }
                 }
@@ -564,7 +564,7 @@ ShallowWrapper {
                 </div>,
                 "className": "",
                 "popoverProps": Object {
-                  "direction": "bottom-left",
+                  "direction": "bottom-right",
                   "isContained": true,
                 },
                 "tooltip": "Exit",
@@ -1783,7 +1783,7 @@ ShallowWrapper {
                 className=""
                 popoverProps={
                   Object {
-                    "direction": "bottom-left",
+                    "direction": "bottom-right",
                     "isContained": true,
                   }
                 }
@@ -2046,7 +2046,7 @@ ShallowWrapper {
                   className=""
                   popoverProps={
                     Object {
-                      "direction": "bottom-left",
+                      "direction": "bottom-right",
                       "isContained": true,
                     }
                   }
@@ -2186,7 +2186,7 @@ ShallowWrapper {
                   className=""
                   popoverProps={
                     Object {
-                      "direction": "bottom-left",
+                      "direction": "bottom-right",
                       "isContained": true,
                     }
                   }
@@ -2255,7 +2255,7 @@ ShallowWrapper {
                   </div>,
                   "className": "",
                   "popoverProps": Object {
-                    "direction": "bottom-left",
+                    "direction": "bottom-right",
                     "isContained": true,
                   },
                   "tooltip": "Exit",

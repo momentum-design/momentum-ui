@@ -138,7 +138,7 @@ class Lightbox extends React.Component {
   }
 
   render() {
-    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated, tooltipStyle } = this.props;
+    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated, popoverProps } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
@@ -482,7 +482,7 @@ class Lightbox extends React.Component {
             </div>
           </div>
           <div className="md-lightbox__header-item--right">
-            <Tooltip popoverProps={tooltipStyle} tooltip={tooltips.exit}>
+            <Tooltip popoverProps={popoverProps} tooltip={tooltips.exit}>
               <div className="md-lightbox__control"
                 onClick={this.handleClose}
                 role="button"
@@ -557,7 +557,7 @@ Lightbox.propTypes = {
   /** @prop Array of Lightbox pages */
   pages: PropTypes.array.isRequired,
   /** @prop tooltip style */
-  tooltipStyle: PropTypes.object,
+  popoverProps: PropTypes.object,
   /** @prop Collection of predefined tootips for various Lightbox actions | { download: 'Download', etc } */
   tooltips: PropTypes.shape({
     download: PropTypes.string,
@@ -583,7 +583,7 @@ Lightbox.defaultProps = {
   onChange: null,
   onClose: null,
   onDownload: null,
-  tooltipStyle:{
+  popoverProps:{
     isContained:true,
     direction: 'bottom-left'
   },

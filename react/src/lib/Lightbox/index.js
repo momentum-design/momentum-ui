@@ -585,7 +585,7 @@ Lightbox.defaultProps = {
   onDownload: null,
   popoverProps:{
     isContained:true,
-    direction: 'bottom-left'
+    direction: 'bottom-right'
   },
   tooltips: {
     download: 'Download',

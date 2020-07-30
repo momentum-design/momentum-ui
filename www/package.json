@@ -1,6 +1,6 @@
 {
   "name": "momentum-design",
-  "version": "136.0.0",
+  "version": "137.0.0",
   "description": "Client and server for momentum.design",
   "private": true,
   "repository": {
@@ -48,7 +48,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "@momentum-ui/core": "^18.5.2",
-    "@momentum-ui/react": "^23.16.0",
+    "@momentum-ui/react": "^23.17.0",
     "@momentum-ui/tokens": "^1.5.0",
     "@momentum-ui/utils": "^6.2.7",
     "ash-motion": "^1.0.1",

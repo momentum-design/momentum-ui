@@ -556,7 +556,7 @@ Lightbox.propTypes = {
   onDownload: PropTypes.func,
   /** @prop Array of Lightbox pages */
   pages: PropTypes.array.isRequired,
-  /** @prop tooltip style */
+  /** @prop tooltip style | {isContained:true, direction: 'bottom-right'} */
   popoverProps: PropTypes.object,
   /** @prop Collection of predefined tootips for various Lightbox actions | { download: 'Download', etc } */
   tooltips: PropTypes.shape({

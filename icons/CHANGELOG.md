@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.46.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.45.0...@momentum-ui/icons@7.46.0) (2020-07-30)
+
+
+### Features
+
+* **icons:** add twitter_12 ([9d5ffa8](https://github.com/momentum-design/momentum-ui/commit/9d5ffa8d7736b73ef31633d76dba1def624e1842))
+* **icons:** add twitter_16 ([d3cf393](https://github.com/momentum-design/momentum-ui/commit/d3cf3937fe06b56820f4dbe97cfd6d498c31c51c))
+* **icons:** add video-layout-single_12 ([8ada1db](https://github.com/momentum-design/momentum-ui/commit/8ada1db9baa24fd3a6da037f040cd497049d05da))
+
+
+
+
+
 # [7.45.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.44.1...@momentum-ui/icons@7.45.0) (2020-07-18)
 
 

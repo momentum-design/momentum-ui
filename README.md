@@ -43,6 +43,20 @@ Setting up your development environment:
 1. Run `yarn bootstrap` from the root of the repo.
 1. Run `yarn start:all` to start the playground app for all libraries or `yarn start:<library>` to only start the library the you are working in.
 
+NOTE: Install watchman with `brew install watchman` if you are having the following or similar error after an initial `yarn start`:
+
+``` bash
+2017-09-05 00:44 node[68587] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-22)
+    2017-09-05 00:44 node[68587] (FSEvents.framework) FSEventStreamStart: register_with_server: ERROR: f2d_register_rpc() => (null) (-22)
+    events.js:160
+          throw er; // Unhandled 'error' event
+          ^
+
+    Error: Error watching file for changes: EMFILE
+        at exports._errnoException (util.js:1022:11)
+        at FSEvent.FSWatcher._handle.onchange (fs.js:1406:11)
+```
+
 
 ## Contributing
 

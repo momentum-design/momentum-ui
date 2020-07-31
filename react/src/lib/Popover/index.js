@@ -20,10 +20,10 @@ class Popover extends React.Component {
     // focus on the first button in the EventOverlay
     const { isOpen } = this.state;
     const { autoFocusOnFirstElt } = this.props;
-    
+
     if (autoFocusOnFirstElt
-        && isOpen 
-        && !prevState.isOpen 
+        && isOpen
+        && !prevState.isOpen
         && this.overlay
     ) {
       const eventOverlay = ReactDOM.findDOMNode(this.overlay);
@@ -38,6 +38,7 @@ class Popover extends React.Component {
   componentWillUnmount() {
     this.hideTimerId && clearTimeout(this.hideTimerId);
     this.showTimerId && clearTimeout(this.showTimerId);
+    this.delayCheckHoverTimerId && clearTimeout(this.delayCheckHoverTimerId);
   }
 
   delayedHide = e => {
@@ -80,13 +81,16 @@ class Popover extends React.Component {
 
   handleClose = e => {
     const { onClose } = this.props;
-
-    this.setState({ isOpen: false }, onClose && onClose(e));
+    const {keyCode} = e;
+    //allow to copy text on popover
+    if (!(keyCode === 17 || keyCode === 91 || keyCode === 67)) {
+      this.setState({ isOpen: false }, onClose && onClose(e));
+    }
   };
 
   handleHide = e => {
     this.setState({ isHovering: false }, () => this.delayedHide(e));
-  }
+  };
 
   handleMouseEnter = e => {
     const { children } = this.props;
@@ -100,7 +104,10 @@ class Popover extends React.Component {
     const delay = popoverTrigger === 'MouseEnter' ? hoverDelay : 0;
     e.persist();
 
-    this.setState({ isHovering: false }, () => setTimeout(() => this.delayedHide(e), delay));
+    this.setState({ isHovering: false }, () => {
+      this.delayCheckHoverTimerId && clearTimeout(this.delayCheckHoverTimerId);
+      this.delayCheckHoverTimerId = setTimeout(() => this.delayedHide(e), delay);
+    });
   };
 
   handleMouseLeave = e => {
@@ -159,12 +166,9 @@ class Popover extends React.Component {
         e.preventDefault();
         e.stopPropagation();
         e.persist();
-        
+
         // Open Popover
-        this.setState(
-          { isHovering: true },
-          () => this.delayedShow(e)
-        );
+        this.setState({ isHovering: true }, () => this.delayedShow(e));
         break;
       case 27: // ESC
         e.persist();
@@ -179,7 +183,7 @@ class Popover extends React.Component {
         }
         break;
     }
-  }
+  };
 
   handleKeyDownEventOverlay = e => {
     if (this.state.isOpen && this.overlay && this.anchorRef) {
@@ -190,13 +194,16 @@ class Popover extends React.Component {
       switch (e.which) {
         case 9:
           if (tabbableElements.length) {
-            if (this.props.closeOnFocusLeavesContent) { // if closeOnFocusLeavesContent = true
-              if (e.shiftKey) { // SHIFT + TAB
+            if (this.props.closeOnFocusLeavesContent) {
+              // if closeOnFocusLeavesContent = true
+              if (e.shiftKey) {
+                // SHIFT + TAB
                 // If first interactable element in EventOverlay, hide the popover
                 if (document.activeElement === tabbableElements[0]) {
                   this.handleHide(e);
                 }
-              } else { // TAB
+              } else {
+                // TAB
                 // If last interactable element in EventOverlay, hide the popover
                 if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
                   e.preventDefault();
@@ -205,16 +212,19 @@ class Popover extends React.Component {
                   trigger.focus();
                 }
               }
-            } else {  // if closeOnFocusLeavesContent = false
+            } else {
+              // if closeOnFocusLeavesContent = false
               // Intent is for TAB and SHIFT+TAB to trap the user inside the dialog (AKA popover)
-              if (e.shiftKey) { // SHIFT + TAB
+              if (e.shiftKey) {
+                // SHIFT + TAB
                 // If first interactable element in EventOverlay, go to the last interatable element
                 if (document.activeElement === tabbableElements[0]) {
                   e.preventDefault();
                   e.stopPropagation();
                   tabbableElements[tabbableElements.length - 1].focus();
                 }
-              } else { // TAB
+              } else {
+                // TAB
                 // If last interactable element in EventOverlay, go to the first interatable element
                 if (document.activeElement === tabbableElements[tabbableElements.length - 1]) {
                   e.preventDefault();
@@ -232,7 +242,7 @@ class Popover extends React.Component {
           break;
       }
     }
-  }
+  };
 
   render() {
     const { isOpen } = this.state;
@@ -271,7 +281,10 @@ class Popover extends React.Component {
 
           triggerProps.onFocus = includeFocusOnHover ? this.handleFocus : undefined;
           triggerProps.onBlur = includeFocusOnHover ? this.handleBlur : undefined;
-          triggerProps.onKeyDown = includeFocusOnHover ? undefined : this.handleKeyDownTrigger;
+          if(!includeFocusOnHover) {
+            triggerProps.onKeyDown = this.handleKeyDownTrigger;
+          }
+
           break;
 
         case 'Click':
@@ -307,7 +320,6 @@ class Popover extends React.Component {
 
     const anchorWithTriggers = () => children && React.cloneElement(children, getTriggers());
 
-
     return (
       <React.Fragment>
         {anchorWithTriggers()}
@@ -328,7 +340,8 @@ class Popover extends React.Component {
                 e.persist();
                 this.handleHide(e);
               },
-              onKeyDown: !includeFocusOnHover ? this.handleKeyDownEventOverlay : undefined})}
+              onKeyDown: !includeFocusOnHover ? this.handleKeyDownEventOverlay : undefined,
+            })}
             {...(popoverTrigger === 'Focus' && { allowClickAway: false })}
             {...otherProps}
           >

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.17.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.16.0...@momentum-ui/react@23.17.0) (2020-07-30)
+
+
+### Bug Fixes
+
+* **button:** add string as allowable proptype to ariaPressed ([b9ebb10](https://github.com/momentum-design/momentum-ui/commit/b9ebb10e96fb5ccc51c5f24298e5ba77a51061ac))
+* **list:** allow ariaConfig to be a boolean ([90d6b2b](https://github.com/momentum-design/momentum-ui/commit/90d6b2bcbea88647855adf7026688d78b725f417))
+* **popover:** clear popover delayCheckHover timeout ([#622](https://github.com/momentum-design/momentum-ui/issues/622)) ([7811cfd](https://github.com/momentum-design/momentum-ui/commit/7811cfd37ae04b52df619793ac95634334251974))
+* **popover:** remove universal overwrite of anchor onKeyDown ([5f4afe1](https://github.com/momentum-design/momentum-ui/commit/5f4afe126039e4c2005eb050fefecddb3f983743))
+
+
+### Features
+
+* **popover:** fix copy paste from contact card bug ([#629](https://github.com/momentum-design/momentum-ui/issues/629)) ([a5b9234](https://github.com/momentum-design/momentum-ui/commit/a5b9234e681189c7e07ca0af5b88d2dbedbb64cb))
+
+
+
+
+
 # [23.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.11...@momentum-ui/react@23.16.0) (2020-07-19)
 
 

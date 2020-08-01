@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.47.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.46.0...@momentum-ui/icons@7.47.0) (2020-08-01)
+
+
+### Features
+
+* **icons:** add call-pickup_12 ([1b807fb](https://github.com/momentum-design/momentum-ui/commit/1b807fb7a2b4dfeff70bc597f4019f4660e8aed5))
+* **icons:** add call-pickup_24 ([5d93af3](https://github.com/momentum-design/momentum-ui/commit/5d93af3e2844d7a2a780dea35226785c3e05dabf))
+* **icons:** add encryption_20 ([8b96cb8](https://github.com/momentum-design/momentum-ui/commit/8b96cb82c81d91d4b64c8cbc1a68c55ee894ec9c))
+
+
+
+
+
 # [7.46.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.45.0...@momentum-ui/icons@7.46.0) (2020-07-30)
 
 

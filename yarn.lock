@@ -2168,6 +2168,24 @@
   dependencies:
     "@momentum-ui/icons" "^7.5.0"
 
+"@momentum-ui/react@^23.17.1":
+  version "23.17.1"
+  resolved "http://engci-maven.cisco.com/artifactory/api/npm/cctg-npm-npm/@momentum-ui/react/-/react-23.17.1.tgz#90376bb281e9ea4adb47b28ecf6d57d9a8337dda"
+  integrity sha1-kDdrsoHp6krbR7KOz21X2agzfdo=
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@momentum-ui/core" "^19.9.4"
+    "@momentum-ui/icons" "^7.47.0"
+    "@momentum-ui/utils" "^6.2.7"
+    "@restart/context" "^2.1.4"
+    dom-helpers "^3.4.0"
+    lodash "^4.17.11"
+    moment "^2.24.0"
+    object-assign "4.1.1"
+    react-aria-modal "^2.11.1"
+    react-focus-lock "^1.19.1"
+    react-uid "^2.2.0"
+
 "@momentum-ui/webfonts-generator@^2.0.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@momentum-ui/webfonts-generator/-/webfonts-generator-2.2.0.tgz#45b350c22211f72d3ebd6f7b25a68e7e95699dcb"

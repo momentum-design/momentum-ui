@@ -138,7 +138,7 @@ class Lightbox extends React.Component {
   }
 
   render() {
-    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated } = this.props;
+    const { pages, index, width, height, tooltips, downloading, info, name, applicationId, imgClassName, isImageRotated, popoverProps } = this.props;
     const { zoom, viewportDimensions } = this.state;
     const currentPage = pages[index];
     const showColumn = pages.length > 1;
@@ -482,7 +482,7 @@ class Lightbox extends React.Component {
             </div>
           </div>
           <div className="md-lightbox__header-item--right">
-            <Tooltip popoverProps={{ isContained: true }} tooltip={tooltips.exit} direction="bottom-right">
+            <Tooltip popoverProps={popoverProps} tooltip={tooltips.exit}>
               <div className="md-lightbox__control"
                 onClick={this.handleClose}
                 role="button"
@@ -556,6 +556,8 @@ Lightbox.propTypes = {
   onDownload: PropTypes.func,
   /** @prop Array of Lightbox pages */
   pages: PropTypes.array.isRequired,
+  /** @prop tooltip style | {isContained:true, direction: 'bottom-right'} */
+  popoverProps: PropTypes.object,
   /** @prop Collection of predefined tootips for various Lightbox actions | { download: 'Download', etc } */
   tooltips: PropTypes.shape({
     download: PropTypes.string,
@@ -581,6 +583,10 @@ Lightbox.defaultProps = {
   onChange: null,
   onClose: null,
   onDownload: null,
+  popoverProps:{
+    isContained:true,
+    direction: 'bottom-right'
+  },
   tooltips: {
     download: 'Download',
     downloading: 'Downloading...',

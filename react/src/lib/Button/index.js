@@ -220,7 +220,7 @@ Button.propTypes = {
   /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
   /** @prop Boolean value for aria-pressed (toggle button accessibility) | null */
-  ariaPressed: PropTypes.bool,
+  ariaPressed: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
   /** @prop Children Nodes to Render inside Button | null */
   children: PropTypes.node,
   /** @prop Sets circle css styling | false */

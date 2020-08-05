@@ -25,6 +25,12 @@ ShallowWrapper {
         },
       ]
     }
+    popoverProps={
+      Object {
+        "direction": "bottom-right",
+        "isContained": true,
+      }
+    }
     tooltips={
       Object {
         "download": "Download",
@@ -84,9 +90,9 @@ ShallowWrapper {
           >
             <Tooltip
               className=""
-              direction="bottom-right"
               popoverProps={
                 Object {
+                  "direction": "bottom-right",
                   "isContained": true,
                 }
               }
@@ -347,9 +353,9 @@ ShallowWrapper {
             >
               <Tooltip
                 className=""
-                direction="bottom-right"
                 popoverProps={
                   Object {
+                    "direction": "bottom-right",
                     "isContained": true,
                   }
                 }
@@ -487,9 +493,9 @@ ShallowWrapper {
             "props": Object {
               "children": <Tooltip
                 className=""
-                direction="bottom-right"
                 popoverProps={
                   Object {
+                    "direction": "bottom-right",
                     "isContained": true,
                   }
                 }
@@ -557,8 +563,8 @@ ShallowWrapper {
                   />
                 </div>,
                 "className": "",
-                "direction": "bottom-right",
                 "popoverProps": Object {
+                  "direction": "bottom-right",
                   "isContained": true,
                 },
                 "tooltip": "Exit",
@@ -1775,9 +1781,9 @@ ShallowWrapper {
             >
               <Tooltip
                 className=""
-                direction="bottom-right"
                 popoverProps={
                   Object {
+                    "direction": "bottom-right",
                     "isContained": true,
                   }
                 }
@@ -2038,9 +2044,9 @@ ShallowWrapper {
               >
                 <Tooltip
                   className=""
-                  direction="bottom-right"
                   popoverProps={
                     Object {
+                      "direction": "bottom-right",
                       "isContained": true,
                     }
                   }
@@ -2178,9 +2184,9 @@ ShallowWrapper {
               "props": Object {
                 "children": <Tooltip
                   className=""
-                  direction="bottom-right"
                   popoverProps={
                     Object {
+                      "direction": "bottom-right",
                       "isContained": true,
                     }
                   }
@@ -2248,8 +2254,8 @@ ShallowWrapper {
                     />
                   </div>,
                   "className": "",
-                  "direction": "bottom-right",
                   "popoverProps": Object {
+                    "direction": "bottom-right",
                     "isContained": true,
                   },
                   "tooltip": "Exit",

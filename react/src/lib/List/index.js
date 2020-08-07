@@ -249,7 +249,7 @@ class List extends React.Component {
     return;
 
     this.setFocus(items, index);
-  
+
     // Don't do anything if onSelect Event Handler is present
     if (onSelect) {
       return onSelect(e, {
@@ -426,7 +426,10 @@ List.propTypes = {
     PropTypes.number
   ]),
   /** @prop Optional parameter for accessibility configuration | null */
-  ariaConfig: PropTypes.object,
+  ariaConfig: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
   /** @prop Children nodes to render inside List | null */
   children: PropTypes.node,
   /** @prop Optional css class string | '' */
@@ -447,7 +450,7 @@ List.propTypes = {
   navigationDirection: PropTypes.oneOf(['vertical', 'horizontal', 'both']),
   /** @prop Callback function invoked by user selecting an interactive item within List | null */
   onSelect: PropTypes.func,
-  /** @prop Disables the stopPropagation() & preventDefault() for ArrowKey Events | false */  
+  /** @prop Disables the stopPropagation() & preventDefault() for ArrowKey Events | false */
   shouldPropagateKeyDown: PropTypes.bool,
   /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
   role: PropTypes.string,

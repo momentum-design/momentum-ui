@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.48.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.47.0...@momentum-ui/icons@7.48.0) (2020-08-08)
+
+
+### Features
+
+* **icons:** add call-forward-settings_16 ([4a8abc2](https://github.com/momentum-design/momentum-ui/commit/4a8abc2aa11f4ead99a47f70bb851d2a24083e40))
+* **icons:** add encryption_20 ([097b373](https://github.com/momentum-design/momentum-ui/commit/097b37365c7a815bc551422f9e66ef97ca7fbb4f))
+* **icons:** add exchange_16 ([cd95fb8](https://github.com/momentum-design/momentum-ui/commit/cd95fb814722edb600eb2aba2b4f87ba15842524))
+
+
+
+
+
 # [7.47.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.46.0...@momentum-ui/icons@7.47.0) (2020-08-01)
 
 

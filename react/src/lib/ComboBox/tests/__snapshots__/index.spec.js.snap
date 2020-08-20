@@ -61,7 +61,7 @@ ShallowWrapper {
         undefined,
       ],
       "className": "md-combo-box",
-      "role": "combobox",
+      "role": "search",
     },
     "ref": null,
     "rendered": Array [
@@ -114,7 +114,7 @@ ShallowWrapper {
           undefined,
         ],
         "className": "md-combo-box",
-        "role": "combobox",
+        "role": "search",
       },
       "ref": null,
       "rendered": Array [

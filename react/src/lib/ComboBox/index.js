@@ -276,7 +276,7 @@ class ComboBox extends React.Component {
           'md-combo-box' +
           `${(className && ` ${className}`) || ''}`
         }
-        role='combobox'
+        role='search'
       >
         {input}
         {dropdownElement}

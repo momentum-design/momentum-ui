@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.49.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.48.0...@momentum-ui/icons@7.49.0) (2020-08-18)
+
+
+### Features
+
+* **icons:** add secure_10 ([567e858](https://github.com/momentum-design/momentum-ui/commit/567e85803ab09f6ac774b15375313765f14dc4f9))
+* **icons:** add secure_8 ([75327c0](https://github.com/momentum-design/momentum-ui/commit/75327c088bad7a15c157872415bd3685b27532ca))
+
+
+
+
+
 # [7.48.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.47.0...@momentum-ui/icons@7.48.0) (2020-08-08)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.50.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.49.0...@momentum-ui/icons@7.50.0) (2020-08-22)
+
+
+### Features
+
+* **icons:** add disconnect-contact_16 ([4895b21](https://github.com/momentum-design/momentum-ui/commit/4895b2162e745e993ac519a9c1fef1c6a42fd51b))
+* **icons:** add mark-as-unread_12 ([07e7967](https://github.com/momentum-design/momentum-ui/commit/07e79670db2952ff5acc805973adfc4580a76cfe))
+* **icons:** add mark-as-unread_20 ([e910ffc](https://github.com/momentum-design/momentum-ui/commit/e910ffc2eeaf3c3071c357e491f38d081fb107a9))
+* **icons:** add moderator_56 ([e4e885b](https://github.com/momentum-design/momentum-ui/commit/e4e885b6fa5d4dec675c7d05740a4fceb40b7a8f))
+* **icons:** add moderator_80 ([e6bdb1e](https://github.com/momentum-design/momentum-ui/commit/e6bdb1e17f69bcf6132910ffffa0dee11037b395))
+* **icons:** add warning-active_12 ([22535a8](https://github.com/momentum-design/momentum-ui/commit/22535a8077aa1516742731cf0ddde7389bc0bdb1))
+
+
+
+
+
 # [7.49.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.48.0...@momentum-ui/icons@7.49.0) (2020-08-18)
 
 

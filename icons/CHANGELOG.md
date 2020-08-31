@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.51.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.50.0...@momentum-ui/icons@7.51.0) (2020-08-31)
+
+
+### Features
+
+* **icons:** add call-settings_14 ([0a1392e](https://github.com/momentum-design/momentum-ui/commit/0a1392e6bbe935d65ad4cd1ab95a0d9493e5c03d))
+
+
+
+
+
 # [7.50.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.49.0...@momentum-ui/icons@7.50.0) (2020-08-22)
 
 

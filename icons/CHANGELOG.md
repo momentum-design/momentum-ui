@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.52.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.51.1...@momentum-ui/icons@7.52.0) (2020-09-08)
+
+
+### Features
+
+* **icons:** add call-pickup_12 ([08eefd3](https://github.com/momentum-design/momentum-ui/commit/08eefd34b0aa7c31bd473108895531081199c547))
+* **icons:** add overflow-left_16 ([a492262](https://github.com/momentum-design/momentum-ui/commit/a492262f30cc8de922326a790927c9137716cd31))
+* **icons:** add overflow-right_16 ([892d8cc](https://github.com/momentum-design/momentum-ui/commit/892d8ccc1e7567a36fdb3dcd081a951551428458))
+* **icons:** add product-demo_16 ([922c9a6](https://github.com/momentum-design/momentum-ui/commit/922c9a67d2c746b878f3432e62f1abd4ea7473f5))
+* **icons:** add Queue-lookup_16 ([ec9ca8d](https://github.com/momentum-design/momentum-ui/commit/ec9ca8dbf5e84001ea74fcdae656aba52b14da0e))
+* **icons:** add unsorted_10 ([5312efc](https://github.com/momentum-design/momentum-ui/commit/5312efc6e938747528dcababfc4b0fd45c0b87cc))
+* **icons:** add unsorted_16 ([aaf15e6](https://github.com/momentum-design/momentum-ui/commit/aaf15e64c139bd7ffc1bdbcd10cbc17561ca66dd))
+* **icons:** add unsorted_24 ([c17ba5b](https://github.com/momentum-design/momentum-ui/commit/c17ba5b6d011b1702dd008a208da6d062a89293d))
+
+
+
+
+
 ## [7.51.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.51.0...@momentum-ui/icons@7.51.1) (2020-09-03)
 
 **Note:** Version bump only for package @momentum-ui/icons

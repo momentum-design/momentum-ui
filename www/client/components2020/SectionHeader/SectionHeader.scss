@@ -1,0 +1,24 @@
+.section-header {
+  margin: 47px 0 72px 0;
+  
+  h1 {
+    color: $md-black;
+    font-family: $brand-font-regular;
+    font-size: 48px;
+    line-height: 125%;
+  }
+
+  p {
+    @include p();
+  }
+
+  &-dark {
+    h1 {
+      color: $md-white;
+    }
+
+    p {
+      color: $md-gray-40;
+    }
+  }
+}

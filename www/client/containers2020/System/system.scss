@@ -5,20 +5,144 @@
   overflow: hidden;
 
   p {
-    font-weight: 350;
-    font-size: 36px;
-    line-height: 49px;
-    color: $md-white;
+    @include p($font-size: 2.25rem, $font-weight: 350, $color: $md-white);
     text-align: center;
     margin-top: 255px;
   }
 
   .site-banner-system-title {
+    font-family: $brand-font-regular;
     font-weight: bold;
     font-size: 96px;
     line-height: 131px;
     text-align: center;
     margin-top: 335px;
+    color: $md-white;
   }
 
+}
+
+p.systems-header-lead {
+  font-size: 24px; 
+}
+
+.system-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 100px;
+
+  &__container {
+    border-bottom: 1px solid $md-cyan-40;
+
+    &-inner {
+      padding-bottom: 72px;
+      padding-right: 42px;
+      max-width: 600px;
+    }
+
+    h5 {
+      @include h5($color: $md-white, $font-size: 2.25rem, $font-weight: $font-weight-bold, $line-height: 75%);
+      margin-bottom: 16px;
+    }
+
+    p {
+      @include p($color: $md-white);
+    }
+  }
+}
+
+.system-values-grid > .system-values-grid__container:nth-of-type(even) .system-values-grid__container-inner {
+  padding-left: 15px;
+}
+
+.system-values-grid > .system-values-grid__container:nth-of-type(odd) .system-values-grid__container-inner {
+  border-right: 1px solid $md-cyan-40;
+}
+
+.system-values-grid > .system-values-grid__container:nth-of-type(n+3) .system-values-grid__container-inner {
+  padding-top: 72px;
+  padding-bottom: 0;
+  margin-bottom: 72px;
+}
+
+.system-attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 60px;
+
+  &__container {
+    position: relative;
+    padding-right: 24px;
+
+    &-slider {
+      position: relative;
+      flex: 2;
+      display: flex;
+      align-items: center;
+      width: 50%;
+
+      &-ball {
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        border-radius: 25px;
+        transform: translateX(-50%);
+      }
+
+      &-bar {
+        height: 1px;
+        background: $md-cyan-40;
+        width: 100%;
+      }
+    }
+
+    &-slider-section {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 27px 0 66px 0;
+      width: 100%;
+    }
+
+    &-slider-left,
+    &-slider-right {
+      flex: 1;
+      font-weight: 500;
+      line-height: 25px;
+    }
+
+    &-slider-left {
+      text-align: right;
+      margin-right: 36px;
+    }
+
+    &-slider-right {
+      text-align: left;
+      margin-left: 36px;
+    }
+
+  }
+
+  h5 {
+    @include h5($font-size: 2.25rem)
+  }
+
+  p {
+    @include p($color: #F7F7F7, $font-weight: 350);
+  }
+}
+
+.system-token-link {
+  a {
+    font-family: 'CiscoSansTT Regular';
+    font-size: 40px;
+    text-decoration: underline;
+    line-height: 30px;
+  }
+
+  & + & {
+    margin-top: 55px;
+  }
 }

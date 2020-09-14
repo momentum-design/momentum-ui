@@ -1,0 +1,19 @@
+.site-banner-con-typography {
+  background: $md-gold-20;
+  .site-banner-normal {
+    background-image: url(../assets/2020/banner-typography.svg);
+  }
+}
+
+.token-display-table-row {
+  margin-top: 132px;
+
+  & > .flex-item + .flex-item {
+    margin-left: 30px;
+  }
+}
+
+.example-img {
+  width: 100%;
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.14));
+}

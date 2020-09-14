@@ -1,4 +1,8 @@
 const text = {
+  fontScale: {
+    enable: 'sp',
+    disable: 'dp',
+  },
   fontSize: {
     xxSmall: `11px`,
     xSmall: `13px`,

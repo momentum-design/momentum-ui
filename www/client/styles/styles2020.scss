@@ -1,4 +1,5 @@
 @import './styles.scss';
+@import './mixins.scss';
 
 $site-white: $md-white;
 $site-black: #171B1F !default;
@@ -11,12 +12,21 @@ $site-slate: $md-slate-10;
 
 @import '../components2020/AppHeader/AppHeader.scss';
 @import '../components2020/AppFooter/AppFooter.scss';
+@import '../components2020/Example/Example.scss';
 @import '../components2020/FeedBack/FeedBack.scss';
+@import '../components2020/SectionHeader/SectionHeader.scss';
+@import '../components2020/SectionTitle/SectionTitle.scss';
+@import '../components2020/TokenDisplayTable/TokenDisplayTable.scss';
+@import '../components2020/TokenNavigation/TokenNavigation.scss';
 @import '../containers2020/Home/home.scss';
 @import '../containers2020/System/system.scss';
 @import '../containers2020/Components/components.scss';
-@import '../containers2020/Icons/icons.scss';
+@import '../containers2020/Elevation/elevation.scss';
+@import '../containers2020/Icons/Icons.scss';
 @import '../containers2020/Color/color.scss';
+@import '../containers2020/Space/space.scss';
+@import '../containers2020/Typography/typography.scss';
+@import '../containers2020/Personality/personality.scss';
 
 .clear::after {
   content: "";
@@ -91,7 +101,7 @@ $site-slate: $md-slate-10;
 
     .site-banner-share_github::before {
       width: 22px;
-      background: url(../assets/2020/banner-github.svg);
+      background: url(../assets/2020/banner-github_w.svg);
     }
   }
 }
@@ -137,9 +147,11 @@ $site-slate: $md-slate-10;
   background-color: $site-gold;
 }
 
-.site-warp{
-  width: 1280px;
+.site-warp,
+.page-body {
+  max-width: 1280px;
   margin: 0 auto;
+  padding-bottom: 80px;
 }
 
 .site-subtitle {
@@ -157,9 +169,13 @@ $site-slate: $md-slate-10;
 
 }
 
+.site-example-image {
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.14));
+}
+
 @media only screen and (max-width: 1280px) {
-  .site-warp{
-    width: 1080px;
-    margin: 0 auto;
+  .site-warp,
+  .page-body {
+    max-width: 1080px;
   }
 }

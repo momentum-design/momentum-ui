@@ -45,6 +45,7 @@ class AppHeader extends Component {
   getBackgroudClass(location) {
     let str = location.pathname.toLowerCase();
     if(str.indexOf('/2020/system')===0
+    || str.indexOf('/2020/personality')===0
     || str.indexOf('/2020/home')===0
     || str === '/2020'
     || str === '/2020/') {
@@ -84,7 +85,7 @@ class AppHeader extends Component {
         <div className={'site-warp site-header clear'+ classN}>
           {logo}
           <NavLink to="/2020" activeClassName={'active'}>Developers</NavLink>
-          <NavLink to="/2020" activeClassName={'active'}>Personality</NavLink>
+          <NavLink to="/2020/personality" activeClassName={'active'}>Personality</NavLink>
           <NavLink to="/2020/icons" activeClassName={'active'}>Icons</NavLink>
           <NavLink to="/2020/components" activeClassName={'active'}>Components</NavLink>
           <NavLink to="/2020/tokens" activeClassName={'active'}>Tokens</NavLink>

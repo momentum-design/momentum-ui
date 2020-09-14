@@ -1,0 +1,31 @@
+.example-container {
+  margin-top: 110px;
+
+  &-banner {
+    background-color: $md-gray-10;
+    height: 588px;
+    overflow: hidden;
+    // display: flex;
+    // justify-content: center;
+    // align-items: start;
+
+    // & > div {
+    //   width: 80%;
+    // }
+
+    &-small {
+      height: 420px;
+    }
+  }
+
+  &-subtitle {
+    margin-top: 17px;
+    font-size: 14px;
+    color: $md-gray-40;
+    line-height: 16px;
+  }
+}
+
+.example-container + .example-container {
+  margin-top: 46px;
+}

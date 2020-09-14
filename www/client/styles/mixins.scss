@@ -1,0 +1,22 @@
+@mixin h4($color: $md-gray-100, $font-weight: $font-weight-normal) {
+  font-family: $brand-font-regular;
+  font-size: 1.25rem;
+  font-weight: $font-weight;
+  line-height: 125%;
+  color: $color;
+}
+
+@mixin h5($color: $md-gray-100, $font-size: 1rem, $font-weight: $font-weight-normal, $line-height: 150%) {
+  font-family: $brand-font-regular;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin p($color: $md-gray-70, $font-size: 1.125rem, $font-weight: $font-weight-normal, $line-height: 150%) {
+  color: $color;
+  font-family: $brand-font-regular;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}

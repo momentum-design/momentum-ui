@@ -9,6 +9,8 @@ import System from '../../containers2020/System';
 import Components2020 from '../../containers2020/Components';
 import Icons from '../../containers2020/Icons';
 import Color from '../../containers2020/Color';
+import Tokens from '../../containers2020/Tokens';
+import Personality from '../../containers2020/Personality';
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -23,8 +25,8 @@ class Routes extends React.Component {
         <Route path='/2020/system' exact component={System} />
         <Route path='/2020/components' exact component={Components2020} />
         <Route path='/2020/icons' exact component={Icons} />
-        <Route path='/2020/tokens' exact component={Color} />
-        <Route path='/2020/color' exact component={Color} />
+        <Route path='/2020/tokens' component={Tokens} />
+        <Route path='/2020/personality' exact component={Personality} />
       </Switch>
     );
   }

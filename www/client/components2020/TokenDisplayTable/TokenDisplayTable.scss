@@ -1,0 +1,44 @@
+.token-display-table {
+  width: 100%;
+  border-spacing: 0;
+
+  &__header-cell {
+    font-size: 16px;
+    line-height: 150%;
+    color: $md-gray-100;
+    font-weight: bold;
+    margin: 16px 0;
+    text-align: left;
+  }
+
+  &__header-cell-dark {
+    color: $md-white;
+  }
+
+
+  &__row {
+    td {
+      font-family: "CiscoSansTT Regular";
+    }
+
+    & > td + td,
+    & > th + th {
+      padding-left: 40px;
+    }
+
+    & > td:last-child,
+    & > th:last-child {
+      padding-right: 40px;
+    }
+  }
+
+  &__row + &__row {
+    & > td{
+      padding-top: 12px;
+    }
+  }
+
+  &__row-dark > td {
+    color: $md-white;
+  }
+}

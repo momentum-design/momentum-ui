@@ -1,0 +1,293 @@
+.site-banner-con-personality {
+  background:#171B1F;
+  .site-banner-normal {
+    background-image: url(../assets/2020/banner-system.svg);
+    background-size: contain;
+
+    p {
+      color: $md-white;
+    }
+  }
+}
+
+.personality-header-copy {
+  .section-header__title h1 {
+    height: calc(100% + 46px);
+    background-image: url(../assets/2020/personality-header-copy.svg);
+    background-size: 330px;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: bottom;
+  }
+}
+
+.personality-header-illustration {
+  .section-header__title h1 {
+    height: calc(100% + 46px);
+    background-image: url(../assets/2020/personality-header-illustration.svg);
+    background-size: 215px;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: bottom;
+  }
+}
+
+.personality-header-motion {
+  .section-header__title h1 {
+    height: 250px;
+    background-image: url(../assets/2020/personality-header-motion.svg);
+    background-size: 250px;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: bottom;
+  }
+}
+
+.personality-example-row-item {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 90%;
+  }
+}
+
+.personality-webex-example {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-start;
+
+  img {
+    margin-top: 25px;
+    width: 70%;
+  }
+}
+
+.personality-story-illustation-example {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.personality-technical-illustration-example {
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  img {
+    width: 88%;
+  }
+}
+
+.personality-attributes-bullet-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 33px;
+  margin: 58px 0;
+
+  .personality-attributes-bullet {
+    display: flex;
+    align-items: center;
+
+    div {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      margin-right: 13px;
+    }
+
+    p {
+      font-family: 'CiscoSansTT Regular';
+      font-size: 36px;
+      line-height: 56px;
+    }
+  }
+}
+
+p.personality-header-lead {
+  font-size: 24px; 
+}
+
+.personality-section-divider {
+  border-width: 2px;
+  border-color: $md-cyan-40;
+  opacity: 0.2;
+}
+
+.personality-description-container {
+  .flex-item {
+    margin-right: 130px;
+
+    h5 {
+      font-family: 'CiscoSansTT Regular';
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 28px;
+      color: $md-white;
+      margin-bottom: 18px;
+    }
+
+    p {
+      font-family: 'CiscoSansTT Regular';
+      font-size: 18px;
+      line-height: 28px;
+      color: $md-white;
+    }
+  }
+}
+
+.personality-writing-tips-container {
+  margin-top: 75px;
+  color: $md-white;
+
+  h3 {
+    font-family: 'CiscoSansTT Regular';
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-family: 'CiscoSansTT Regular';
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 43px;
+  }
+
+  &__buttons {
+    margin: 29px 0 80px 0;
+  }
+}
+
+.personality-writing-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__container {
+    padding: 68px 72px;
+
+    &:nth-of-type(even) {
+      border-left: 1px solid $md-cyan-40;
+    }
+
+    &:nth-of-type(odd) {
+      padding-left: 0;
+    }
+
+    &:nth-of-type(n + 3) {
+      border-top: 1px solid $md-cyan-40;
+    }
+
+    h4 {
+      font-family: 'CiscoSansTT Regular';
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 18px;
+      margin-bottom: 18px;
+      color: $md-white;
+    }
+
+    p {
+      font-family: 'CiscoSansTT Regular';
+      font-size: 18px;
+      font-weight: 350;
+      line-height: 28px;
+      color: $md-white;
+      margin-top: 0;
+    }
+  }
+}
+
+.personality-illustration-tips-container {
+  margin-top: 80px;
+  color: $md-white;
+
+  h3 {
+    font-family: 'CiscoSansTT Regular';
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-bottom: 29px;
+  }
+
+  p {
+    font-family: 'CiscoSansTT Regular';
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 43px;
+  }
+
+  &__example {
+    margin-top: 30px;
+
+    & + & {
+      margin-top: 70px;
+    }
+
+    p {
+      font-family: 'CiscoSansTT Regular';
+      font-size: 24px;
+      line-height: 28px;
+      color: $md-white;
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    margin: 29px 0 80px 0;
+  }
+}
+
+.personality-illustration-tips-example {
+  margin-top: 30px;
+
+  &-item {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.personality-illustration-tips-container__buttons,
+.personality-writing-tips-container__buttons {
+  .md-button__children {
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .md-button::before{
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 13px;
+    height: 22px;
+    background-size: contain !important;
+  }
+
+  .personality-button-share_figma {
+    background-color: transparent;
+    border: 1px solid $md-white;
+    color: $md-white;
+
+    & + .personality-button-share_figma {
+      margin-left: 20px;
+    }
+
+    &::before {
+      width: 15px;
+      background: url(../assets/2020/banner-figma.svg);
+    }
+  }
+}

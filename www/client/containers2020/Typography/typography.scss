@@ -13,7 +13,14 @@
   }
 }
 
-.example-img {
-  width: 100%;
-  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.14));
+h4.font-size-section-title-trailing {
+  @include h4();
+}
+
+.typography-control-hub-example {
+  @include example-image($img-margin: 57px 0 0 0);
+}
+
+.typography-webex-example {
+  @include example-image($img-width: 65%);
 }

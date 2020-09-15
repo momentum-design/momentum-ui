@@ -34,7 +34,6 @@
   padding-right: 40px;
 }
 
-.example-img {
-  width: 100%;
-  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.14));
+.color-example {
+  @include example-image($img-margin: 57px 0 0 0);
 }

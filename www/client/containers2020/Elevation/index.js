@@ -6,6 +6,7 @@ import Example from '../../components2020/Example';
 import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionTitle from '../../components2020/SectionTitle';
 import SectionHeader from '../../components2020/SectionHeader';
+import locale from './locale';
 const elevationTokens = require('@momentum-ui/tokens/src/core/elevation.js');
 
 class Elevation extends React.PureComponent {
@@ -41,7 +42,6 @@ class Elevation extends React.PureComponent {
         let elevationSample;
 
         if (elevationValue.boxShadow) {
-          // const dropShadowValues = elevationValue.boxShadow.split(', ');
           elevationSample = <SampleDropShadowBox dropShadow={dropShadowStr(elevationValue.boxShadow)} />;
 
           boxShadowRow = (
@@ -130,8 +130,8 @@ class Elevation extends React.PureComponent {
         </div>
         <div className='site-warp'>
           <SectionHeader
-            title="Elevation"
-            leadStr="Elevation enables us to create areas of emphasis, priority, and focus throughout our experiences. We use two elevation types: Lower to build a sense of foundation and higher to draw attention to important moments."
+            title={locale.sectionHeaders.elevation.title}
+            leadStr={locale.sectionHeaders.elevation.body}
           />
           <TokenDisplayTable
             className="elevation-token-display-table"
@@ -141,99 +141,81 @@ class Elevation extends React.PureComponent {
             tableRows={elevationTokenTableRows()}
           />
           <div className="flex-con-row elevation-purpose-row">
-            <div className="elevation-purpose-row__card">
-              <h4>Higher elevations</h4>
-              <div className="elevation-purpose-row__card-purpose">Create a focal point that draw focus on particular moments in our experiences like dialogs or pop-overs</div>
-              <div className="elevation-sample-box elevation-sample-box__lg" style={{filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.2)) drop-shadow(0px 1px rgba(0,0,0,0.12))"}}></div>
-              <div className="elevation-purpose-row__card-caption">elevation-4</div>
-            </div>
-            <div className="elevation-purpose-row__card">
-              <h4>Lower elevations</h4>
-              <div className="elevation-purpose-row__card-purpose">Used to ground and create a sense of foundation and connected-ness such as tiles and cards.</div>
-              <div className="elevation-sample-box elevation-sample-box__lg" style={{filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.16)) drop-shadow(0px 1px rgba(0,0,0,0.18))"}}></div>
-              <div className="elevation-purpose-row__card-caption">elevation-1</div>
-            </div>
+            {[locale.elevationPurpose.higherElevation, locale.elevationPurpose.lowerElevation].map(elevation => (
+              <div className="elevation-purpose-row__card">
+                <h4>{elevation.title}</h4>
+                <div className="elevation-purpose-row__card-purpose">{elevation.body}</div>
+                <div className="elevation-sample-box elevation-sample-box__lg" style={{filter: elevation.elevationValue}}></div>
+                <div className="elevation-purpose-row__card-caption">{elevation.elevation}</div>
+              </div>
+            ))}
           </div>
           <Example
             subtitle="Example: Webex for Developers"
           >
-            <img className="example-img" src="/assets/2020/elevation-webex-developers-example.png" />
+            <div className="elevation-webex-example">
+              <img className="site-example-image" src="/assets/2020/elevation-webex-developers-example.png" />
+            </div>
           </Example>
 
           <div className="brightness-mode-container">
-            <SectionTitle label="Day time (light modes)" />
-            <div className="brightness-mode-container__description">Shadows are more perceivable in light modes. This is naturally tied to our physical day time environments</div>
+            <SectionTitle label={locale.brightnessMode.dayTime.title} />
+            <div className="brightness-mode-container__description">{locale.brightnessMode.dayTime.body}</div>
             <div className="flex-con-row brightness-mode-container__example-container">
-              <div className="flex-item brightness-mode-container__example-container-card" style={{backgroundColor: '#F7F7F7'}}>
-                <div>tile-color: white</div>
-                <div className="elevation-multi-card-container">
-                  {Object.entries(elevationTokens).map((elevationToken, idx) => (
-                    <SampleDropShadowBox
-                      key={'white' + idx}
-                      size="md"
-                      dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
-                    />
-                  ))}
+              {[locale.brightnessMode.dayTime.mode1, locale.brightnessMode.dayTime.mode2].map(mode => (
+                <div
+                  className="flex-item brightness-mode-container__example-container-card"
+                  style={{backgroundColor: mode.backgroundColorValue}}
+                >
+                  <div>{mode.tileColorLabel}</div>
+                  <div className="elevation-multi-card-container">
+                    {Object.entries(elevationTokens).map((elevationToken, idx) => (
+                      <SampleDropShadowBox
+                        key={'white' + idx}
+                        size="md"
+                        style={{backgroundColor: mode.tileColorValue}}
+                        dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
+                      />
+                    ))}
+                  </div>
+                  <div>{mode.backgroundColorLabel}</div>
                 </div>
-                <div>background-color:  gray-05</div>
-              </div>
-              <div className="flex-item brightness-mode-container__example-container-card" style={{backgroundColor: '#EDEDED'}}>
-                <div>tile-color: gray-05</div>
-                <div className="elevation-multi-card-container">
-                  {Object.entries(elevationTokens).map((elevationToken, idx) => (
-                    <SampleDropShadowBox
-                      key={'gray-05' + idx}
-                      size="md"
-                      style={{backgroundColor: '#F7F7F7'}}
-                      dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
-                    />
-                  ))}
-                </div>
-                <div>background-color:  gray-10</div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="brightness-mode-container brightness-mode-container">
-            <SectionTitle label="Evening (dark modes)" />
-            <div className="brightness-mode-container__description">Shadows are less perceivable in dark modes. this is naturally tied to our physical night time environments.</div>
+            <SectionTitle label={locale.brightnessMode.evening.title} />
+            <div className="brightness-mode-container__description">{locale.brightnessMode.evening.body}</div>
             <div className="flex-con-row brightness-mode-container__example-container">
-              <div className="flex-item brightness-mode-container__example-container-card brightness-mode-container__example-container-card-dark" style={{backgroundColor: '#1C1C1C'}}>
-                <div>tile-color: gray-90</div>
+            {[locale.brightnessMode.evening.mode1, locale.brightnessMode.evening.mode2].map(mode => (
+              <div
+                className="flex-item brightness-mode-container__example-container-card brightness-mode-container__example-container-card-dark"
+                style={{backgroundColor: mode.backgroundColorValue}}
+              >
+                <div>{mode.tileColorLabel}</div>
                 <div className="elevation-multi-card-container">
                   {Object.entries(elevationTokens).map((elevationToken, idx) => (
                     <SampleDropShadowBox
                       key={'gray-90' + idx}
                       size="md"
-                      style={{backgroundColor: '#292929', border: 'none'}}
+                      style={{backgroundColor: mode.tileColorValue, border: 'none'}}
                       dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
                     />
                   ))}
                 </div>
-                <div>background-color:  gray-95</div>
+                <div>{mode.backgroundColorLabel}</div>
               </div>
-              <div className="flex-item brightness-mode-container__example-container-card brightness-mode-container__example-container-card-dark" style={{backgroundColor: '#121212'}}>
-                <div>tile-color: gray-95</div>
-                <div className="elevation-multi-card-container">
-                  {Object.entries(elevationTokens).map((elevationToken, idx) => (
-                    <SampleDropShadowBox
-                      key={'gray-95' + idx}
-                      size="md"
-                      style={{backgroundColor: '#1C1C1C', border: 'none'}}
-                      dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
-                    />
-                  ))}
-                </div>
-                <div>background-color:  gray-100</div>
-              </div>
+            ))}
             </div>
           </div>
 
           <Example
-            innerPadding="57px 0 0 0"
             subtitle="Example: Control Hub"
           >
-            <img className="example-img" src="/assets/2020/elevation-control-hub-example.png" />
+            <div className="elevation-control-hub-example">
+              <img className="site-example-image" src="/assets/2020/elevation-control-hub-example.png" />
+            </div>
           </Example>
           <TokenNavigation
             leftNav={{label: "Typography", url: "/2020/tokens/typography"}}

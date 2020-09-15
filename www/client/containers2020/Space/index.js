@@ -6,15 +6,12 @@ import Example from '../../components2020/Example';
 import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
 import SectionTitle from '../../components2020/SectionTitle';
+import locale from './locale';
 const spaceTokens = require('@momentum-ui/tokens/src/core/space.js');
 
 class Space extends React.PureComponent {
 
   render() {
-    const stackDescriptionText = "Stack spacing adds a margin to the bottom of elements. The stack space arranges components in a vertical rhythm.";
-    const inlineDescriptionText = "Inline spacing proportions create consistent right margins to elements. The inline space arranges components in a horizontal row.";
-    const insetDescriptionText = "Inset spacing adds equal padding to all four sides of an element.";
-
     // Takes a string like xxSmall and returns xx-small
     const xDashSize = (inputStr) => {
       const startWithX = new RegExp('x+');
@@ -22,7 +19,7 @@ class Space extends React.PureComponent {
       return inputStr.replace(startWithX, xMatch + "-").toLowerCase();
     }
 
-    // Accepts a type string ("space", "inline", "inste", ...)
+    // Accepts a type string ("space", "inline", "inset", ...)
     const spaceTokenTableRows = (type, descriptionText) => {
       let tableRows = [];
 
@@ -38,7 +35,7 @@ class Space extends React.PureComponent {
         );
 
         const descriptionTextContainer = index === 0
-          ? <h5 style={{height: '0'}}>{ descriptionText }</h5>
+          ? <h5 className="space-token-description-text">{ descriptionText }</h5>
           : null;
 
         tableRows.push([
@@ -72,8 +69,8 @@ class Space extends React.PureComponent {
         </div>
         <div className='site-warp'>
           <SectionHeader
-            title="Space"
-            leadStr="Spacing helps us design experiences that scale with consistency, rhythm, and focus. We use increments of four to define all dimensions, padding, and margins for both block and inline elements."
+            title={locale.sectionHeaders.space.title}
+            leadStr={locale.sectionHeaders.space.body}
           />
           <div className="flex-con-row space-token-row">
             <div className="flex-item">
@@ -81,7 +78,7 @@ class Space extends React.PureComponent {
                 key="space-stack"
                 sectionTitleLabel="Stack"
                 tableHeaders={["Description", "Token", "Value"]}
-                tableRows={spaceTokenTableRows("stack", stackDescriptionText)}
+                tableRows={spaceTokenTableRows("stack", locale.tokenTables.stack.description)}
               />
             </div>
             <div className="flex-item">
@@ -98,7 +95,7 @@ class Space extends React.PureComponent {
                 key="space-inline"
                 sectionTitleLabel="Inline"
                 tableHeaders={["Description", "Token", "Value"]}
-                tableRows={spaceTokenTableRows("inline", inlineDescriptionText)}
+                tableRows={spaceTokenTableRows("inline", locale.tokenTables.inline.description)}
               />
             </div>
             <div className="flex-item">
@@ -115,7 +112,7 @@ class Space extends React.PureComponent {
                 key="space-inset"
                 sectionTitleLabel="Inset"
                 tableHeaders={["Description", "Token", "Value"]}
-                tableRows={spaceTokenTableRows("inset", insetDescriptionText)}
+                tableRows={spaceTokenTableRows("inset", locale.tokenTables.inset.description)}
               />
             </div>
             <div className="flex-item">
@@ -131,7 +128,7 @@ class Space extends React.PureComponent {
               <SectionTitle
                 label="Exceptions"
               />
-              <p className="space-exception-text">There are always exceptions to the rule. For example, when the text or icon are vertically centered inside a component, the top and bottom padding can be any size.</p>
+              <h5 className="space-token-description-text space-exception-text">{locale.tokenTables.exception.description}</h5>
             </div>
             <div className="flex-item">
               <Example className="custom-side-example">

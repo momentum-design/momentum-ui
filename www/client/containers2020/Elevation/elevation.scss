@@ -79,11 +79,7 @@
     }
 
     & h4 {
-      font-family: 'CiscoSansTT Regular';
-      font-size: 20px;
-      line-height: 1.25;
-      font-weight: bold;
-      color: $md-gray-100;
+      @include h4($font-weight: $font-weight-bold);
       margin-bottom: 12px;
     }
 
@@ -136,4 +132,12 @@
       margin-top: 56px;
     }
   }
+}
+
+.elevation-webex-example {
+  @include example-image();
+}
+
+.elevation-control-hub-example {
+  @include example-image($img-margin: 40px 0 0 0);
 }

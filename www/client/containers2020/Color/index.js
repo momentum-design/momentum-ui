@@ -5,6 +5,7 @@ import TokenDisplayTable from '../../components2020/TokenDisplayTable';
 import Example from '../../components2020/Example';
 import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
+import locale from './locale';
 const buttonTokens = require('@momentum-ui/tokens/src/core/buttonTokens.js');
 
 class Color extends React.PureComponent {
@@ -78,8 +79,8 @@ class Color extends React.PureComponent {
         </div>
         <div className='site-warp'>
           <SectionHeader
-            title="Semantic Color"
-            leadStr="Our color tokens are a foundational part of our design system. We use color to visually communicate information, functions, and personality in our experiences."
+            title={locale.sectionHeaders.semanticColor.title}
+            leadStr={locale.sectionHeaders.semanticColor.body}
           />
           <div className="flex-con-row">
             <div className="flex-item display-table-card-container">
@@ -111,10 +112,11 @@ class Color extends React.PureComponent {
             </div>
           </div>
           <Example
-            innerPadding="57px 0 0 0"
             subtitle="Example: Control Hub"
           >
-            <img className="example-img" src="/assets/2020/color-control-hub-example.png" />
+            <div className="color-example">
+              <img className="site-example-image" src="/assets/2020/color-control-hub-example.png" />
+            </div>
           </Example>
           <TokenNavigation
             leftNav={{label: "Space", url: '/2020/tokens/space'}}

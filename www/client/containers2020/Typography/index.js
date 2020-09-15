@@ -5,6 +5,7 @@ import TokenDisplayTable from '../../components2020/TokenDisplayTable';
 import Example from '../../components2020/Example';
 import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
+import locale from './locale';
 const textTokens = require('@momentum-ui/tokens/src/core/font.js');
 const lineHeightTokens = require('@momentum-ui/tokens/src/core/lineHeight.js');
 
@@ -123,17 +124,6 @@ class Typography extends React.PureComponent {
       return tableRows;
     } 
 
-    const subTitle = (
-      <div className='flex-con-row site-subtitle site-subtitle-color'>
-        <div className='flex-item'>
-          <h1>Typography</h1>
-        </div>
-        <div className='flex-item flex-margin'>
-          <p>Our typography is the physical representation of our brand's voice. We use type to establish visual hierarchy through style, weight, and color to support deliberate communications.</p>
-        </div>
-      </div>
-    );
-
     return (
       <div className="site-con">
         <div className="site-con site-banner-con-typography">
@@ -155,15 +145,15 @@ class Typography extends React.PureComponent {
         </div>
         <div className='site-warp'>
           <SectionHeader
-            title="Typography"
-            leadStr="Our typography is the physical representation of our brand's voice. We use type to establish visual hierarchy through style, weight, and color to support deliberate communications."
+            title={locale.sectionHeaders.typography.title}
+            leadStr={locale.sectionHeaders.typography.body}
           />
           <TokenDisplayTable
             key="font-sizes"
             sectionTitleLabel="Font Size (web)"
             sectionTitleTrailing={
               <div>
-                <h4>Design Token for Web and End-point</h4>
+                <h4 className="font-size-section-title-trailing">Design Token for Web and End-point</h4>
               </div>
             }
             tableHeaders={["Sample", "Token", "Property", "Value (pt)", "Typeface"]}
@@ -196,15 +186,18 @@ class Typography extends React.PureComponent {
             </div>
           </div>
           <Example
-            innerPadding="57px 0 0 0"
             subtitle="Example: Control Hub"
           >
-            <img className="example-img" src="/assets/2020/typography-control-hub-example.png" />
+            <div className="typography-control-hub-example">
+              <img className="site-example-image" src="/assets/2020/typography-control-hub-example.png" />
+            </div>
           </Example>
           <Example
             subtitle="Example: Webex.com"
           >
-            <img className="example-img" src="/assets/2020/typography-webex-example.png" />
+            <div className="typography-webex-example">
+              <img className="site-example-image" src="/assets/2020/typography-webex-example.png" />
+            </div>
           </Example>
           <TokenNavigation
             leftNav={{label: "Colors", url: '/2020/tokens/color'}}

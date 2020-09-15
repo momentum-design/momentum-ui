@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.5.0...@momentum-ui/tokens@1.6.0) (2020-09-03)
+
+
+### Features
+
+* **tokens:** git tracking json token files in data ([cd727a1](https://github.com/momentum-design/momentum-ui/commit/cd727a112417da5ce2678a5a0deaf9d7da66fa73))
+
+
+
+
+
 # [1.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.4.1...@momentum-ui/tokens@1.5.0) (2020-07-16)
 
 

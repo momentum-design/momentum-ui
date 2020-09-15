@@ -10,14 +10,20 @@ const generateTokenJSON = async (
     const aJSON = JSON.stringify(tokenFile);
 
     /** Create JSON file within dist */
-    const dir = './dist';
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
+    const distDir = './dist';
+    const dataDir = './data';
+    if (!fs.existsSync(distDir)) {
+      fs.mkdirSync(distDir);
+    }
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir);
     }
 
     const writeFile = util.promisify(fs.writeFile);
     await writeFile(path.join("dist", `${tokenName}.json`), aJSON);
-    console.log(`${tokenName}.json written!`);
+    console.log(`dist/${tokenName}.json written!`);
+    await writeFile(path.join("data", `${tokenName}.json`), aJSON);
+    console.log(`data/${tokenName}.json written!`);
   } catch (e) {
     throw new Error(console.error("Failed to generate tokens\n", e));
   }

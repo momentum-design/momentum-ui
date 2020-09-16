@@ -13,9 +13,9 @@ class Typography extends React.PureComponent {
 
   render() {
     const SampleTextBlock = ({fontSize}) => (
-      <div className="sample-text-block" style={{fontSize: fontSize}}>
+      <p className="sample-text-block" style={{fontSize: fontSize}}>
         A long time ago in a galaxy far, far away....
-      </div>
+      </p>
     );
 
     // Takes a string like xxSmall and returns xx-small
@@ -36,7 +36,7 @@ class Typography extends React.PureComponent {
         const fontSizeValue = fontSize[1];
         const fontSizeSampleText = <SampleTextBlock fontSize={fontSizeValue} />;
         const fontSizeTokenName = (
-          <Badge color="pastel">
+          <Badge className="token-table-badge" color="pastel">
             {tokenProperty + "_" + fontSizeType}
           </Badge>
         );
@@ -62,7 +62,7 @@ class Typography extends React.PureComponent {
         const fontWeightType = fontWeight[0];
         const fontWeightValue = fontWeight[1];
         const fontWeightTokenName = (
-          <Badge color="pastel">
+          <Badge className="token-table-badge" color="pastel">
             {tokenProperty + "_" + fontWeightType}
           </Badge>
         );
@@ -85,7 +85,7 @@ class Typography extends React.PureComponent {
         const lineHeightType = lineHeight[0];
         const lineHeightValue = (lineHeight[1] * 100) + "%";
         const lineHeightTokenName = (
-          <Badge color="pastel">
+          <Badge className="token-table-badge" color="pastel">
             {tokenProperty + "_" + lineHeightType}
           </Badge>
         );
@@ -109,7 +109,7 @@ class Typography extends React.PureComponent {
         const fontScaleValue = "--";
         const fontScaleProperty = fontScale[1]
         const fontScaleTokenName = (
-          <Badge color="pastel">
+          <Badge className="token-table-badge" color="pastel">
             {tokenProperty + "_" + fontScaleType}
           </Badge>
         );

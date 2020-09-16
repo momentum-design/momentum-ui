@@ -28,7 +28,7 @@ class Color extends React.PureComponent {
           const tokenLabel = (
             <Badge
               key={tokenLabelString}
-              className={darkTheme ? "dark-theme-badge" : ""}
+              className={"token-table-badge" + (darkTheme ? " dark-theme-badge" : "")}
               color={darkTheme ? "" : "pastel"}
             >
               <div>{tokenLabelString}</div>
@@ -38,7 +38,7 @@ class Color extends React.PureComponent {
           const coreToken = (
             <Badge
               key={tokenLabelString + buttonCoreToken}
-              className={darkTheme ? "dark-theme-badge" : ""}
+              className={"token-table-badge" + (darkTheme ? " dark-theme-badge" : "")}
               color={darkTheme ? "" : "pastel"}
             >
               <div>{buttonCoreToken}</div>

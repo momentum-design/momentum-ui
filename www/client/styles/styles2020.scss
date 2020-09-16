@@ -173,6 +173,10 @@ $site-slate: $md-slate-10;
   filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.14));
 }
 
+.token-table-badge {
+  @include h5();
+}
+
 @media only screen and (max-width: 1280px) {
   .site-warp,
   .page-body {

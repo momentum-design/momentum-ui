@@ -29,7 +29,7 @@ class Space extends React.PureComponent {
         const spaceSizeType = xDashSize(space[0]);
         const spaceSizeValue = space[1];
         const spaceSizeTokenName = (
-          <Badge color="pastel">
+          <Badge className="token-table-badge" color="pastel">
             {tokenProperty + "_" + spaceSizeType}
           </Badge>
         );

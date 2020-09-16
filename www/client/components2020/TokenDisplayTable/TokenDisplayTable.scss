@@ -3,10 +3,7 @@
   border-spacing: 0;
 
   &__header-cell {
-    font-size: 16px;
-    line-height: 150%;
-    color: $md-gray-100;
-    font-weight: bold;
+    @include h5($font-weight: $font-weight-bold);
     margin: 16px 0;
     text-align: left;
   }
@@ -18,7 +15,7 @@
 
   &__row {
     td {
-      font-family: "CiscoSansTT Regular";
+      @include h5();
     }
 
     & > td + td,

@@ -26,43 +26,45 @@ p.systems-header-lead {
   font-size: 24px; 
 }
 
+.system-section-divider {
+  border-color: rgba(34,199,214,0.2);
+  border-width: 2px;
+  margin-bottom: 100px;
+}
+
 .system-values-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 100px;
+  margin-bottom: 75px;
 
   &__container {
-    border-bottom: 1px solid $md-cyan-40;
-
     &-inner {
-      padding-bottom: 72px;
-      padding-right: 42px;
-      max-width: 600px;
+      margin-right: 60px;
+      padding: 68px 0;
+    }
+
+    &:nth-of-type(odd) &-inner {
+      border-right: 1px solid rgba(34,199,214,0.4);
+      padding-right: 43px;
+    }
+
+    &:nth-of-type(even) {
+      padding-left: 15px;
+    }
+
+    &:nth-of-type(n+3) {
+      border-top: 1px solid rgba(34,199,214,0.4);
     }
 
     h5 {
-      @include h5($color: $md-white, $font-size: 2.25rem, $font-weight: $font-weight-bold, $line-height: 75%);
-      margin-bottom: 16px;
+      @include h5($color: $md-white, $font-size: 2.25rem, $font-weight: $font-weight-bold, $line-height: 100%);
+      margin-bottom: 28px;
     }
 
     p {
       @include p($color: $md-white);
     }
   }
-}
-
-.system-values-grid > .system-values-grid__container:nth-of-type(even) .system-values-grid__container-inner {
-  padding-left: 15px;
-}
-
-.system-values-grid > .system-values-grid__container:nth-of-type(odd) .system-values-grid__container-inner {
-  border-right: 1px solid $md-cyan-40;
-}
-
-.system-values-grid > .system-values-grid__container:nth-of-type(n+3) .system-values-grid__container-inner {
-  padding-top: 72px;
-  padding-bottom: 0;
-  margin-bottom: 72px;
 }
 
 .system-attributes-grid {
@@ -92,7 +94,7 @@ p.systems-header-lead {
 
       &-bar {
         height: 1px;
-        background: $md-cyan-40;
+        background: rgba(34,199,214,0.4);
         width: 100%;
       }
     }
@@ -136,10 +138,10 @@ p.systems-header-lead {
 
 .system-token-link {
   a {
-    font-family: 'CiscoSansTT Regular';
-    font-size: 40px;
+    font-family: $brand-font-regular;
+    font-size: 2.5rem;
     text-decoration: underline;
-    line-height: 30px;
+    line-height: 75%;
   }
 
   & + & {

@@ -31,7 +31,7 @@ class Elevation extends React.PureComponent {
         const elevationType = elevation[0];
         const elevationValue = elevation[1];
         const elevationTokenName = (
-          <Badge color="pastel">
+          <Badge className="token-table-badge" color="pastel">
             {tokenBaseName + "-" + elevationType}
           </Badge>
         );

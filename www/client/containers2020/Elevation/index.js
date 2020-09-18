@@ -113,18 +113,22 @@ class Elevation extends React.PureComponent {
       <div className="site-con">
         <div className="site-con site-banner-con-elevation">
           <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Elevation<span>Tokens</span></p>
+            <p className='site-banner-normal-title'>Elevation</p>
             <div className='site-banner-share'>
-              <Button
-                ariaLabel='Figma'
-                className='md-button--dark-gray site-banner-share_figma'
-                size={52}
-              >Figma</Button>
-              <Button
-                ariaLabel='IGithub'
-                className='md-button--dark-gray site-banner-share_github'
-                size={52}
-              >Github</Button>
+            <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789">
+                <Button
+                  ariaLabel='Figma'
+                  className='md-button--dark-gray site-banner-share_figma'
+                  size={52}
+                >Figma</Button>
+              </a>
+              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789">
+                <Button
+                  ariaLabel='IGithub'
+                  className='md-button--dark-gray site-banner-share_github'
+                  size={52}
+                >Github</Button>
+              </a>
             </div>
           </div>
         </div>
@@ -133,14 +137,16 @@ class Elevation extends React.PureComponent {
             title={locale.sectionHeaders.elevation.title}
             leadStr={locale.sectionHeaders.elevation.body}
           />
-          <TokenDisplayTable
-            className="elevation-token-display-table"
-            key="elevation"
-            sectionTitleLabel=""
-            tableHeaders={["Samples", "Token", "Property", "Value"]}
-            tableRows={elevationTokenTableRows()}
-          />
-          <div className="flex-con-row elevation-purpose-row">
+          <div className="elevation-token-display-table-container">
+            <TokenDisplayTable
+              className="elevation-token-display-table"
+              key="elevation"
+              sectionTitleLabel=""
+              tableHeaders={["Samples", "Token", "Property", "Value"]}
+              tableRows={elevationTokenTableRows()}
+            />
+          </div>
+          <div className="site-responsive-row elevation-purpose-row">
             {[locale.elevationPurpose.higherElevation, locale.elevationPurpose.lowerElevation].map(elevation => (
               <div className="elevation-purpose-row__card">
                 <h4>{elevation.title}</h4>
@@ -161,10 +167,10 @@ class Elevation extends React.PureComponent {
           <div className="brightness-mode-container">
             <SectionTitle label={locale.brightnessMode.dayTime.title} />
             <div className="brightness-mode-container__description">{locale.brightnessMode.dayTime.body}</div>
-            <div className="flex-con-row brightness-mode-container__example-container">
+            <div className="site-responsive-row brightness-mode-container__example-container">
               {[locale.brightnessMode.dayTime.mode1, locale.brightnessMode.dayTime.mode2].map(mode => (
                 <div
-                  className="flex-item brightness-mode-container__example-container-card"
+                  className="brightness-mode-container__example-container-card"
                   style={{backgroundColor: mode.backgroundColorValue}}
                 >
                   <div>{mode.tileColorLabel}</div>
@@ -187,10 +193,10 @@ class Elevation extends React.PureComponent {
           <div className="brightness-mode-container brightness-mode-container">
             <SectionTitle label={locale.brightnessMode.evening.title} />
             <div className="brightness-mode-container__description">{locale.brightnessMode.evening.body}</div>
-            <div className="flex-con-row brightness-mode-container__example-container">
+            <div className="site-responsive-row brightness-mode-container__example-container">
             {[locale.brightnessMode.evening.mode1, locale.brightnessMode.evening.mode2].map(mode => (
               <div
-                className="flex-item brightness-mode-container__example-container-card brightness-mode-container__example-container-card-dark"
+                className="brightness-mode-container__example-container-card brightness-mode-container__example-container-card-dark"
                 style={{backgroundColor: mode.backgroundColorValue}}
               >
                 <div>{mode.tileColorLabel}</div>

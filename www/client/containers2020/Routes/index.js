@@ -6,7 +6,7 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 import fetchRoutes from './actions';
 import Home from '../../containers2020/Home';
 import System from '../../containers2020/System';
-import Components2020 from '../../containers2020/Components';
+import Components2020 from '../ComponentOverview';
 import Icons from '../../containers2020/Icons';
 import Color from '../../containers2020/Color';
 import Tokens from '../../containers2020/Tokens';

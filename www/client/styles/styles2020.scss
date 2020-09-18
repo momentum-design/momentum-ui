@@ -9,6 +9,7 @@ $site-gold: $md-gold-20;
 $site-lime: $md-lime-20;
 $site-pink: $md-pink-20;
 $site-slate: $md-slate-10;
+$site-column-max: 1000px;
 
 @import '../components2020/AppHeader/AppHeader.scss';
 @import '../components2020/AppFooter/AppFooter.scss';
@@ -20,7 +21,7 @@ $site-slate: $md-slate-10;
 @import '../components2020/TokenNavigation/TokenNavigation.scss';
 @import '../containers2020/Home/home.scss';
 @import '../containers2020/System/system.scss';
-@import '../containers2020/Components/components.scss';
+@import '../containers2020/ComponentOverview/ComponentOverview.scss';
 @import '../containers2020/Elevation/elevation.scss';
 @import '../containers2020/Icons/Icons.scss';
 @import '../containers2020/Color/color.scss';
@@ -169,6 +170,15 @@ $site-slate: $md-slate-10;
 
 }
 
+.site-responsive-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include site-column-breakpoint {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .site-example-image {
   filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.14));
 }
@@ -181,5 +191,7 @@ $site-slate: $md-slate-10;
   .site-warp,
   .page-body {
     max-width: 1080px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }

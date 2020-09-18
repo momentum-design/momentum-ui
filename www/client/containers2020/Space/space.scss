@@ -6,12 +6,11 @@
 }
 
 .space-token-row {
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
   & + .space-token-row {
     margin-top: 78px;
-  }
-
-  & > .flex-item + .flex-item {
-    margin-left: 40px;
   }
 }
 
@@ -22,6 +21,7 @@
 
   & > .example-container-banner {
     height: 100%;
+    padding: 32px 0;
   }
 }
 
@@ -30,8 +30,9 @@ h5.space-token-description-text {
   height: 0;
 }
 
-.space-exception-text {
+h5.space-exception-text {
   margin-top: 12px;
+  height: auto;
 }
 
 .spacing-example {

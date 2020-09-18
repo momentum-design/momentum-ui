@@ -21,7 +21,7 @@ class System extends React.PureComponent {
                 <p className="systems-header-lead">{locale.sectionHeaders.values.body}</p>
               )}
             />
-            <div className="system-values-grid">
+            <div className="system-values-grid site-responsive-row">
               {locale.values.map((value, idx) => (
                 <div key={'value-container' + idx} className="system-values-grid__container">
                   <div className="system-values-grid__container-inner">
@@ -39,7 +39,7 @@ class System extends React.PureComponent {
                 <p className="systems-header-lead">{locale.sectionHeaders.attributes.body}</p>
               )}
             />
-            <div className="system-attributes-grid">
+            <div className="system-attributes-grid site-responsive-row">
               {locale.attributes.map((attribute, idx) => (
                 <div key={'attribute-container' + idx} className="system-attributes-grid__container">
                   <h5 style={{color: attribute.colors.title}}>{attribute.title}</h5>
@@ -71,9 +71,9 @@ class System extends React.PureComponent {
                 <p className="systems-header-lead">{locale.sectionHeaders.buildingBlocks.body}</p>
               )}
             />
-            <div className="flex-con-row">
-              <div className="flex-item"></div>
-              <div className="flex-item flex-margin">
+            <div className="site-responsive-row">
+              <div></div>
+              <div>
                 <p className="system-token-link"><a style={{color: '#E5F8FF'}} href="/2020/tokens/color">Color</a></p>
                 <p className="system-token-link"><a style={{color: '#F5EAA2'}} href="/2020/tokens/typography">Typography</a></p>
                 <p className="system-token-link"><a style={{color: '#DDF2AE'}} href="/2020/tokens/elevation">Elevation</a></p>

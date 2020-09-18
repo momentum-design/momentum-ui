@@ -26,6 +26,14 @@
   }
 }
 
+.elevation-token-display-table-container {
+
+  @include site-column-breakpoint {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
 .elevation-token-display-table {
   .token-display-table .token-display-table__row > td {
     vertical-align: top;
@@ -41,6 +49,7 @@
 
 .elevation-value-table {
   border-spacing: 0;
+  white-space: nowrap;
 
   & td + td {
     padding-left: 32px;
@@ -72,11 +81,9 @@
   justify-content: center;
 
   &__card {
-    width: 500px;
-
-    & + & {
-      margin-left: 123px;
-    }
+    max-width: 500px;
+    margin: 0 auto;
+    grid-row-gap: 30px;
 
     & h4 {
       @include h4($font-weight: $font-weight-bold);

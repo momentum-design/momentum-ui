@@ -1,5 +1,10 @@
 .section-header {
   margin: 47px 0 72px 0;
+  grid-column-gap: 30px;
+
+  @include site-column-breakpoint {
+    grid-row-gap: 30px;
+  }
   
   h1 {
     color: $md-black;

@@ -3,6 +3,11 @@
   align-items: center;
   margin: 80px 46px 0 46px;
 
+  @include site-column-breakpoint {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   &_divider {
     height: 124px;
     background: $md-gray-100;
@@ -26,6 +31,10 @@
       font-weight: 500;
       line-height: 1.25;
       color: $md-gray-100;
+
+      @include site-column-breakpoint {
+        font-size: 36px;
+      }
     }
   }
 

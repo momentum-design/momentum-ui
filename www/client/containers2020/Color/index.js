@@ -62,18 +62,22 @@ class Color extends React.PureComponent {
       <div className="site-con">
         <div className="site-con site-banner-con-color">
           <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Color<span>Tokens</span></p>
+            <p className='site-banner-normal-title'>Color</p>
             <div className='site-banner-share'>
-              <Button
-                ariaLabel='Figma'
-                className='md-button--dark-gray site-banner-share_figma'
-                size={52}
-              >Figma</Button>
-              <Button
-                ariaLabel='IGithub'
-                className='md-button--dark-gray site-banner-share_github'
-                size={52}
-              >Github</Button>
+              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749">
+                <Button
+                  ariaLabel='Figma'
+                  className='md-button--dark-gray site-banner-share_figma'
+                  size={52}
+                >Figma</Button>
+              </a>
+              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749">
+                <Button
+                  ariaLabel='IGithub'
+                  className='md-button--dark-gray site-banner-share_github'
+                  size={52}
+                >Github</Button>
+              </a>
             </div>
           </div>
         </div>
@@ -82,8 +86,8 @@ class Color extends React.PureComponent {
             title={locale.sectionHeaders.semanticColor.title}
             leadStr={locale.sectionHeaders.semanticColor.body}
           />
-          <div className="flex-con-row">
-            <div className="flex-item display-table-card-container">
+          <div className="site-responsive-row">
+            <div className="display-table-card-container">
               <TokenDisplayTable
                 key="button-colors-light"
                 sectionTitleLabel="Buttons"
@@ -96,7 +100,7 @@ class Color extends React.PureComponent {
                 tableRows={buttonTokenTableRows()}
               />
             </div>
-            <div className="flex-item display-table-card-container-dark">
+            <div className="display-table-card-container-dark">
               <TokenDisplayTable
                 key="button-colors-dark"
                 darkTheme

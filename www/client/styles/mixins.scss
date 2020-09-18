@@ -41,3 +41,9 @@
     width: $img-width;
   }
 }
+
+@mixin site-column-breakpoint {
+  @media (max-width: #{$site-column-max}) {
+    @content;
+  }
+}

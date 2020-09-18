@@ -10,16 +10,6 @@
   }
 }
 
-.personality-header-copy,
-.personality-header-illustration,
-.personality-header-motion {
-  .section-header__title h1 {
-    background-repeat: no-repeat;
-    background-position-x: 80%;
-    background-position-y: bottom;
-  }
-}
-
 .personality-header-copy {
   .section-header__title h1 {
     height: calc(100% + 46px);
@@ -41,6 +31,31 @@
     height: 250px;
     background-image: url(../assets/2020/personality-header-motion.svg);
     background-size: 250px;
+  }
+}
+
+.personality-header-copy,
+.personality-header-illustration,
+.personality-header-motion {
+  .section-header__title h1 {
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: bottom;
+
+    @include site-column-breakpoint {
+      background: none;
+      height: auto;
+    }
+  }
+}
+
+.personality-example-row {
+  margin-top: 75px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
+  .example-container {
+    margin-top: 0;
   }
 }
 
@@ -71,6 +86,11 @@
   grid-row-gap: 33px;
   margin: 58px 0;
 
+  @include site-column-breakpoint {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 15px;
+  }
+
   .personality-attributes-bullet {
     display: flex;
     align-items: center;
@@ -100,8 +120,15 @@ p.personality-header-lead {
 }
 
 .personality-description-container {
-  .flex-item {
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
+  div {
     margin-right: 130px;
+
+    @include site-column-breakpoint {
+      margin-right: 0;
+    }
 
     h5 {
       @include h5($color: $md-white, $font-size: 2.25rem, $font-weight: $font-weight-bold, $line-height: 75%);
@@ -133,14 +160,16 @@ p.personality-header-lead {
 }
 
 .personality-writing-tips-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
 
   &__container {
     padding: 68px 72px;
 
     &:nth-of-type(even) {
       border-left: 1px solid rgba(34,199,214,0.4);
+
+      @include site-column-breakpoint {
+        border: none;
+      }
     }
 
     &:nth-of-type(odd) {
@@ -149,6 +178,15 @@ p.personality-header-lead {
 
     &:nth-of-type(n + 3) {
       border-top: 1px solid rgba(34,199,214,0.4);
+
+      @include site-column-breakpoint {
+        border: none;
+      }
+    }
+
+    @include site-column-breakpoint {
+      margin-top: 30px;
+      padding: 0;
     }
 
     h4 {
@@ -203,6 +241,10 @@ p.personality-header-lead {
     height: 100%;
     justify-content: center;
     align-items: center;
+    
+    img {
+      max-width: 80%;
+    }
   }
 }
 
@@ -227,13 +269,13 @@ p.personality-header-lead {
     border: 1px solid $md-white;
     color: $md-white;
 
-    & + .icon-button-share {
-      margin-left: 20px;
-    }
-
     &::before {
       width: 15px;
       background: url('../assets/2020/banner-figma.svg');
     }
+  }
+
+  a + a {
+    margin-left: 20px;
   }
 }

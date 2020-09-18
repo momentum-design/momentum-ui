@@ -84,7 +84,6 @@ class AppHeader extends Component {
       <div className={'site-con site-header-con'}>
         <div className={'site-warp site-header clear'+ classN}>
           {logo}
-          <NavLink to="/2020" activeClassName={'active'}>Developers</NavLink>
           <NavLink to="/2020/personality" activeClassName={'active'}>Personality</NavLink>
           <NavLink to="/2020/icons" activeClassName={'active'}>Icons</NavLink>
           <NavLink to="/2020/components" activeClassName={'active'}>Components</NavLink>

@@ -5,13 +5,6 @@
     background-color: $md-gray-10;
     height: 588px;
     overflow: hidden;
-    // display: flex;
-    // justify-content: center;
-    // align-items: start;
-
-    // & > div {
-    //   width: 80%;
-    // }
 
     &-small {
       height: 420px;
@@ -28,4 +21,8 @@
 
 .example-container + .example-container {
   margin-top: 46px;
+
+  @include site-column-breakpoint {
+    margin-top: 30px;
+  }
 }

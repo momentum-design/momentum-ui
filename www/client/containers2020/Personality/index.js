@@ -51,33 +51,29 @@ class Personality extends React.PureComponent {
                 <p className="systems-header-lead">{locale.sectionHeaders.copy.body}</p>
               )}
             />
-            <div className="flex-con-row personality-description-container">
+            <div className="site-responsive-row personality-description-container">
               {locale.copyStructures.map((copyStructure, idx) => (
-                <div className={"flex-item" + (idx > 0 ? " flex-margin" : "")}>
+                <div>
                   <h5>{copyStructure.title}</h5>
                   <p>{copyStructure.body}</p>
                 </div>
               ))}
             </div>
-            <div className="flex-con-row">
-                <div className="flex-item">
-                  <Example
-                    subtitle="Example: Webex Teams - Onboarding (Attributes applified: Uplifting, Confident, Inclusive)"
-                  >
-                    <div className="personality-example-row-item">
-                      <img className="site-example-image" src="/assets/2020/personality-webex-error-example.png" />
-                    </div>
-                  </Example>
+            <div className="site-responsive-row personality-example-row">
+              <Example
+                subtitle="Example: Webex Teams - Onboarding (Attributes applified: Uplifting, Confident, Inclusive)"
+              >
+                <div className="personality-example-row-item">
+                  <img className="site-example-image" src="/assets/2020/personality-webex-error-example.png" />
                 </div>
-                <div className="flex-item flex-margin">
-                  <Example
-                    subtitle="Example: Webex Meetings - Error message (Attributes applified: Focused, Familiar, Inclusive)"
-                  >
-                    <div className="personality-example-row-item">
-                      <img className="site-example-image" src="/assets/2020/personality-webex-error-example.png" />
-                    </div>
-                  </Example>
+              </Example>
+              <Example
+                subtitle="Example: Webex Meetings - Error message (Attributes applified: Focused, Familiar, Inclusive)"
+              >
+                <div className="personality-example-row-item">
+                  <img className="site-example-image" src="/assets/2020/personality-webex-error-example.png" />
                 </div>
+              </Example>
             </div>
             <Example
               subtitle="Example: Webex.com"
@@ -88,7 +84,7 @@ class Personality extends React.PureComponent {
             </Example>
             <div className="personality-writing-tips-container">
               <h3>Writing tips</h3>
-              <div className="personality-writing-tips-grid">
+              <div className="site-responsive-row personality-writing-tips-grid">
                 {locale.writingTips.map((writingTip, idx) => (
                   <div key={'tip-container' + idx} className="personality-writing-tips-grid__container">
                     <div className="personality-writing-tips-grid__container-inner">
@@ -100,21 +96,27 @@ class Personality extends React.PureComponent {
               </div>
               <p>Learn all about writing for Webex</p>
               <div className="personality-writing-tips-container__buttons">
-                <Button
-                  ariaLabel='Writing Tips'
-                  className='md-button--dark-gray icon-button-share'
-                  size={52}
-                >UX Writing guidelines</Button>
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray icon-button-share'
-                  size={52}
-                >Voice and tone</Button>
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray icon-button-share'
-                  size={52}
-                >Tips and tricks</Button>
+                <a href="https://www.figma.com/file/RGYvKGEgxKqisb4X2CIIHz/Guidelines-Writing?node-id=594%3A481">
+                  <Button
+                    ariaLabel='Writing Tips'
+                    className='md-button--dark-gray icon-button-share'
+                    size={52}
+                  >UX Writing guidelines</Button>
+                </a>
+                <a href="https://www.figma.com/file/RGYvKGEgxKqisb4X2CIIHz/Guidelines-Writing?node-id=225%3A437">
+                  <Button
+                    ariaLabel='IGithub'
+                    className='md-button--dark-gray icon-button-share'
+                    size={52}
+                  >Voice and tone</Button>
+                </a>
+                <a href="https://www.figma.com/file/RGYvKGEgxKqisb4X2CIIHz/Guidelines-Writing?node-id=669%3A0">
+                  <Button
+                    ariaLabel='IGithub'
+                    className='md-button--dark-gray icon-button-share'
+                    size={52}
+                  >Tips and tricks</Button>
+                </a>
               </div>
             </div>
 
@@ -128,33 +130,29 @@ class Personality extends React.PureComponent {
                 <p className="systems-header-lead">{locale.sectionHeaders.illustration.body}</p>
               )}
             />
-            <div className="flex-con-row personality-description-container">
+            <div className="site-responsive-row personality-description-container">
               {locale.illustrationStyles.map((illustrationStyle, idx) => (
-                <div className={"flex-item" + (idx > 0 ? " flex-margin" : "")}>
+                <div>
                   <h5>{illustrationStyle.title}</h5>
                   <p>{illustrationStyle.body}</p>
                 </div>
               ))}
             </div>
-            <div className="flex-con-row">
-              <div className="flex-item">
-                <Example
-                  subtitle="Example: Webex Teams - Onboarding"
-                >
-                  <div className="personality-story-illustation-example">
-                    <img src="/assets/2020/personality-webex-teams-onboarding-example.png" />
-                  </div>
-                </Example>
-              </div>
-              <div className="flex-item flex-margin">
-                <Example
-                  subtitle="Example: Webex.com"
-                >
-                  <div className="personality-technical-illustration-example">
-                    <img className="site-example-image" src="/assets/2020/personality-webex-technical-illustration-example.png" />
-                  </div>
-                </Example>
-              </div>
+            <div className="site-responsive-row personality-example-row">
+              <Example
+                subtitle="Example: Webex Teams - Onboarding"
+              >
+                <div className="personality-story-illustation-example">
+                  <img src="/assets/2020/personality-webex-teams-onboarding-example.png" />
+                </div>
+              </Example>
+              <Example
+                subtitle="Example: Webex.com"
+              >
+                <div className="personality-technical-illustration-example">
+                  <img className="site-example-image" src="/assets/2020/personality-webex-technical-illustration-example.png" />
+                </div>
+              </Example>
             </div>
             <div className="personality-illustration-tips-container">
               <h3>Illustration tips</h3>
@@ -171,16 +169,20 @@ class Personality extends React.PureComponent {
               ))}
               <p>Learn all about illustration</p>
               <div className="personality-illustration-tips-container__buttons">
-                <Button
-                  ariaLabel='Writing Tips'
-                  className='md-button--dark-gray icon-button-share'
-                  size={52}
-                >Illustration guidelines</Button>
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray icon-button-share'
-                  size={52}
-                >Tips and tricks</Button>
+                <a href="https://www.figma.com/file/MIIVDcYhRJ7qCVTsZFRnYb/Guidelines-Illustration?node-id=1206%3A744">
+                  <Button
+                    ariaLabel='Writing Tips'
+                    className='md-button--dark-gray icon-button-share'
+                    size={52}
+                  >Illustration guidelines</Button>
+                </a>
+                <a href="https://www.figma.com/file/MIIVDcYhRJ7qCVTsZFRnYb/Guidelines-Illustration?node-id=224%3A356">
+                  <Button
+                    ariaLabel='IGithub'
+                    className='md-button--dark-gray icon-button-share'
+                    size={52}
+                  >Tips and tricks</Button>
+                </a>
               </div>
             </div>
             

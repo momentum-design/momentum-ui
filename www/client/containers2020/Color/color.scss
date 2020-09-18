@@ -15,7 +15,7 @@
   border-radius: 4px;
 }
 
-.dark-theme-badge {
+span.dark-theme-badge {
   background: $md-gray-90;
   color: $md-gray-40;
 }
@@ -23,6 +23,11 @@
 .display-table-card-container,
 .display-table-card-container-dark {
   padding: 30px;
+  width: 100%;
+
+  @include site-column-breakpoint {
+    overflow: scroll;
+  }
 }
 
 .display-table-card-container-dark {
@@ -32,6 +37,10 @@
 .display-table-card-container:first-child {
   padding-left: 0;
   padding-right: 40px;
+
+  @include site-column-breakpoint {
+    padding: 30px;
+  }
 }
 
 .color-example {

@@ -33,27 +33,48 @@ p.systems-header-lead {
 }
 
 .system-values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   margin-bottom: 75px;
+
+  @include site-column-breakpoint {
+    grid-row-gap: 30px;
+  }
 
   &__container {
     &-inner {
       margin-right: 60px;
       padding: 68px 0;
+
+      @include site-column-breakpoint {
+        padding: 0;
+        margin: 0;
+      }
     }
 
     &:nth-of-type(odd) &-inner {
       border-right: 1px solid rgba(34,199,214,0.4);
       padding-right: 43px;
+
+      @include site-column-breakpoint {
+        border: none;
+        padding: 0;
+        margin: 0;
+      }
     }
 
     &:nth-of-type(even) {
       padding-left: 15px;
+
+      @include site-column-breakpoint {
+        padding: 0;
+      }
     }
 
     &:nth-of-type(n+3) {
       border-top: 1px solid rgba(34,199,214,0.4);
+
+      @include site-column-breakpoint {
+        border: none;
+      }
     }
 
     h5 {

@@ -5,6 +5,12 @@
   }
 }
 
+.typography-font-size-table,
+.token-display-table-row {
+  width: 100%;
+  overflow: scroll;
+}
+
 .token-display-table-row {
   margin-top: 132px;
 
@@ -16,6 +22,7 @@
 p.sample-text-block {
   font-family: $brand-font-regular;
   line-height: 125%;
+  white-space: nowrap;
 }
 
 h4.font-size-section-title-trailing {

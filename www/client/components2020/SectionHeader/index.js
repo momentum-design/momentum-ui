@@ -12,11 +12,11 @@ class SectionHeader extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className={'flex-con-row section-header' + (darkTheme ? ' section-header-dark' : '') + (className ? ' ' + className : '')}>
-        <div className='flex-item section-header__title'>
+      <div className={'site-responsive-row section-header' + (darkTheme ? ' section-header-dark' : '') + (className ? ' ' + className : '')}>
+        <div className='section-header__title'>
           <h1>{title}</h1>
         </div>
-        <div className='flex-item flex-margin section-header__lead'>
+        <div className='section-header__lead'>
           {leadStr && (
             <p>{leadStr}</p>
           )}

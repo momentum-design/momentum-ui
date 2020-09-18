@@ -128,18 +128,22 @@ class Typography extends React.PureComponent {
       <div className="site-con">
         <div className="site-con site-banner-con-typography">
           <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Typography<span>Tokens</span></p>
+            <p className='site-banner-normal-title'>Typography</p>
             <div className='site-banner-share'>
-              <Button
-                ariaLabel='Figma'
-                className='md-button--dark-gray site-banner-share_figma'
-                size={52}
-              >Figma</Button>
-              <Button
-                ariaLabel='IGithub'
-                className='md-button--dark-gray site-banner-share_github'
-                size={52}
-              >Github</Button>
+              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344">
+                <Button
+                  ariaLabel='Figma'
+                  className='md-button--dark-gray site-banner-share_figma'
+                  size={52}
+                >Figma</Button>
+              </a>
+              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344">
+                <Button
+                  ariaLabel='IGithub'
+                  className='md-button--dark-gray site-banner-share_github'
+                  size={52}
+                >Github</Button>
+              </a>
             </div>
           </div>
         </div>
@@ -148,17 +152,19 @@ class Typography extends React.PureComponent {
             title={locale.sectionHeaders.typography.title}
             leadStr={locale.sectionHeaders.typography.body}
           />
-          <TokenDisplayTable
-            key="font-sizes"
-            sectionTitleLabel="Font Size (web)"
-            sectionTitleTrailing={
-              <div>
-                <h4 className="font-size-section-title-trailing">Design Token for Web and End-point</h4>
-              </div>
-            }
-            tableHeaders={["Sample", "Token", "Property", "Value (pt)", "Typeface"]}
-            tableRows={fontSizeTokenTableRows()}
-          />
+          <div className="typography-font-size-table">
+            <TokenDisplayTable
+              key="font-sizes"
+              sectionTitleLabel="Font Size (web)"
+              sectionTitleTrailing={
+                <div>
+                  <h4 className="font-size-section-title-trailing">Design Token for Web and End-point</h4>
+                </div>
+              }
+              tableHeaders={["Sample", "Token", "Property", "Value (pt)", "Typeface"]}
+              tableRows={fontSizeTokenTableRows()}
+            />
+          </div>
           <div className="flex-con-row token-display-table-row">
             <div className="flex-item">
               <TokenDisplayTable

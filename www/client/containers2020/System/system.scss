@@ -22,6 +22,19 @@
 
 }
 
+.system-values-section-header {
+  margin-top: 0;
+  margin-bottom: 110px;
+}
+
+.system-attributes-section-header {
+  margin: 110px 0;
+}
+
+.system-blocks-section-header {
+  margin-top: 110px;
+}
+
 p.systems-header-lead {
   font-size: 24px; 
 }
@@ -29,7 +42,12 @@ p.systems-header-lead {
 .system-section-divider {
   border-color: rgba(34,199,214,0.2);
   border-width: 2px;
-  margin-bottom: 100px;
+  margin: 80px 0;
+}
+
+.system-token-links {
+  grid-column-gap: 30px;
+  margin-bottom: 110px;
 }
 
 .system-values-grid {
@@ -42,7 +60,7 @@ p.systems-header-lead {
   &__container {
     &-inner {
       margin-right: 60px;
-      padding: 68px 0;
+      padding: 80px 0;
 
       @include site-column-breakpoint {
         padding: 0;
@@ -92,11 +110,15 @@ p.systems-header-lead {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 30px;
-  grid-row-gap: 60px;
+  grid-row-gap: 80px;
 
   &__container {
     position: relative;
     padding-right: 24px;
+
+    @include site-column-breakpoint {
+      padding: 0;
+    }
 
     &-slider {
       position: relative;
@@ -125,7 +147,7 @@ p.systems-header-lead {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 27px 0 66px 0;
+      margin: 28px 0 50px 0;
       width: 100%;
     }
 

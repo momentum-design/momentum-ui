@@ -7,6 +7,7 @@ import { InputSearch } from '@momentum-ui/react';
 import IconsList from './IconsList';
 import fetchIcons from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
+import PageHero from '../../components2020/PageHero';
 
 class IconsContainer extends React.Component {
   state = {
@@ -61,23 +62,14 @@ class IconsContainer extends React.Component {
 
     return (
       <div className="site-con">
-        <div className="site-con site-banner-con-icons">
-          <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Icons</p>
-            <div className='site-banner-share'>
-              <Button
-                ariaLabel='Figma'
-                className='md-button--dark-gray site-banner-share_figma'
-                size={52}
-              >Figma</Button>
-              <Button
-                ariaLabel='IGithub'
-                className='md-button--dark-gray site-banner-share_github'
-                size={52}
-              >Github</Button>
-            </div>
-          </div>
-        </div>
+        <PageHero
+          backgroundColor='#F2F4FF'
+          backgroundImage='/assets/2020/banner-icons.svg'
+          backgroundSize='450px'
+          figmaURL='https://www.figma.com/file/jwIr6nD0hC7r1K87LaYkJn/Momentum-icons?node-id=0%3A1'
+          githubURL='https://github.com/momentum-design/momentum-ui/tree/master/icons'
+          heroTitle='Icons'
+        />
         <div className="site-warp">
           <SectionHeader
             title="Icons"

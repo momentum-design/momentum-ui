@@ -15,6 +15,7 @@ class System extends React.PureComponent {
           </div>
           <div className="page-body">
             <SectionHeader
+              className="system-values-section-header"
               darkTheme
               title={locale.sectionHeaders.values.title}
               leadElm={(
@@ -33,6 +34,7 @@ class System extends React.PureComponent {
             </div>
             <hr className="system-section-divider" />
             <SectionHeader
+              className="system-attributes-section-header"
               darkTheme
               title={locale.sectionHeaders.attributes.title}
               leadElm={(
@@ -62,16 +64,17 @@ class System extends React.PureComponent {
               ))}
             </div>
             <div>
-              <img src="/assets/2020/system-animation.png" />
+              <img src="/assets/2020/system-block-animation.gif" />
             </div>
             <SectionHeader
+              className="system-blocks-section-header"
               darkTheme
               title={locale.sectionHeaders.buildingBlocks.title}
               leadElm={(
                 <p className="systems-header-lead">{locale.sectionHeaders.buildingBlocks.body}</p>
               )}
             />
-            <div className="site-responsive-row">
+            <div className="site-responsive-row system-token-links">
               <div></div>
               <div>
                 <p className="system-token-link"><a style={{color: '#E5F8FF'}} href="/2020/tokens/color">Color</a></p>

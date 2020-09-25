@@ -15,6 +15,7 @@ $site-column-max: 1000px;
 @import '../components2020/AppFooter/AppFooter.scss';
 @import '../components2020/Example/Example.scss';
 @import '../components2020/FeedBack/FeedBack.scss';
+@import '../components2020/PageHero/PageHero.scss';
 @import '../components2020/SectionHeader/SectionHeader.scss';
 @import '../components2020/SectionTitle/SectionTitle.scss';
 @import '../components2020/TokenDisplayTable/TokenDisplayTable.scss';
@@ -29,6 +30,16 @@ $site-column-max: 1000px;
 @import '../containers2020/Typography/typography.scss';
 @import '../containers2020/Personality/personality.scss';
 
+// html, body {
+//   height: 100%;
+//   width: 100%;
+// }
+
+// .md--sites {
+//   height: 100%;
+//   width: 100%;
+// }
+
 .clear::after {
   content: "";
   display: block;
@@ -37,74 +48,6 @@ $site-column-max: 1000px;
   visibility: hidden;
   clear: both;
   zoom:1;
-}
-
-.site-banner-normal {
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 800px;
-  overflow: hidden;
-
-  .site-banner-normal-title {
-    width: 100%;
-    text-align: center;
-    margin-top: 385px;
-    height: 120px;
-    line-height: 120px;
-    font-size: 96px;
-    position: relative;
-    text-align: center;
-    color: $md-black;
-
-    span {
-      width: 100%;
-      text-align: center;
-      position: absolute;
-      left: 0px;
-      top: -46px;
-      display: block;
-      line-height: 46px;
-      font-size: 18px;
-      color: $md-black;
-    }
-  }
-
-  .site-banner-share {
-    text-align: center;
-    margin-top: 84px;
-
-    .md-button{
-      width: 140px;
-
-      .md-button__children {
-        vertical-align: top;
-        display: inline-block;
-      }
-    }
-
-    .md-button::before{
-      content: '';
-      display: inline-block;
-      vertical-align: top;
-      margin-right: 13px;
-      height: 22px;
-      background-size: contain !important;
-    }
-
-    .site-banner-share_github{
-      margin-left: 27px;
-    }
-
-    .site-banner-share_figma::before {
-      width: 15px;
-      background: url(../assets/2020/banner-figma.svg);
-    }
-
-    .site-banner-share_github::before {
-      width: 22px;
-      background: url(../assets/2020/banner-github_w.svg);
-    }
-  }
 }
 
 .fix-margin::before{
@@ -172,10 +115,10 @@ $site-column-max: 1000px;
 
 .site-responsive-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   @include site-column-breakpoint {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 

@@ -12,13 +12,16 @@ $site-header-height:48px;
   display: relative;
   line-height: $site-header-height;
   background: transparent;
-  .site-logo {
-    fill: $md-black;
+  a.site-logo {
     float: left;
-    margin-left: 5px;
+
+    svg {
+      fill: $md-black;
+      margin-left: 5px;
+    }
   }
 
-  a{
+  a {
     color: $md-black;
     float: right;
     height: $site-header-height;
@@ -31,10 +34,10 @@ $site-header-height:48px;
 }
 
 .site-header-white{
-  .site-logo {
-    fill: white
+  a.site-logo svg {
+    fill: $md-white;
   }
   a {
-    color: white;
+    color: $md-white;
   }
 }

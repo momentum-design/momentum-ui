@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button } from '@momentum-ui/react';
 import { Badge } from '@momentum-ui/react';
 import TokenDisplayTable from '../../components2020/TokenDisplayTable';
 import Example from '../../components2020/Example';
 import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
-const buttonTokens = require('@momentum-ui/tokens/src/core/buttonTokens.js');
+import PageHero from '../../components2020/PageHero';
+const semanticColor = require('@momentum-ui/tokens/src/core/semanticColor.js');
+const colors = require("@momentum-ui/tokens/src/core/colors.js");
 
 class Color extends React.PureComponent {
 
@@ -15,105 +16,122 @@ class Color extends React.PureComponent {
       <div className="sample-color-block" style={{background: hexColorString}}></div>
     );
 
-    const buttonTokenTableRows = (darkTheme) => {
-      let tableRows = [];
-      Object.entries(buttonTokens).forEach(token => {
-        const tokenValues = darkTheme ? token[1].dark : token[1].light;
-        const baseTokenName = token[1].baseTokenName;
+    const tokenNameUpdate = (base, suffix) => {
+      const toIgnore = ["bg-color", "color"];
 
-        Object.entries(tokenValues).forEach(tokenValue => {
-          const buttonTokenType = tokenValue[0] === "normal" ? "" : `-${tokenValue[0]}`;
-          const buttonCoreToken = tokenValue[1].name.split("$md-")[1];
-          const tokenLabelString = baseTokenName + buttonTokenType + (darkTheme ? "-darkUi" : "-lightUi");
-          const tokenLabel = (
-            <Badge
-              key={tokenLabelString}
-              className={"token-table-badge" + (darkTheme ? " dark-theme-badge" : "")}
-              color={darkTheme ? "" : "pastel"}
-            >
-              <div>{tokenLabelString}</div>
-            </Badge>
-          );
-          const colorSample = <ColorBlock hexColorString={tokenValue[1].hex} />;
-          const coreToken = (
-            <Badge
-              key={tokenLabelString + buttonCoreToken}
-              className={"token-table-badge" + (darkTheme ? " dark-theme-badge" : "")}
-              color={darkTheme ? "" : "pastel"}
-            >
-              <div>{buttonCoreToken}</div>
-            </Badge>
-          );
-          const tokenHex = <div>{tokenValue[1].hex.split("#")[1]}</div>;
-  
-          tableRows.push([
-            colorSample,
-            tokenLabel,
-            coreToken,
-            tokenHex
-          ]);
-        })
+      if (toIgnore.includes(suffix)) {
+        return base;
+      } else if (suffix === "text-color") {
+        return base + "-" + "text";
+      }
+
+      return base + "-" + suffix;
+    }
+
+    const createAndPushTableRows = (darkTheme, value, tokenName, lightTableRows, darkTableRows) => {
+      const coreTokenSplit = value.split("-");
+      const colorObject = colors[coreTokenSplit[1]];
+      const hexValue = coreTokenSplit[2] ? colorObject[coreTokenSplit[2]].hex : colorObject.default.hex;
+      const colorSample = <ColorBlock hexColorString={hexValue} />;
+      const tokenLabelString = tokenName + "Ui";
+      const tokenLabel = (
+        <Badge
+          key={tokenLabelString}
+          className={"token-table-badge" + (darkTheme ? " dark-theme-badge" : "")}
+          color={darkTheme ? "" : "pastel"}
+        >
+          <div>{tokenLabelString}</div>
+        </Badge>
+      );
+      const coreTokenLabelString = coreTokenSplit[1] + (coreTokenSplit[2] ? "-" + coreTokenSplit[2] : '');
+      const coreTokenLabel = (
+        <Badge
+          key={tokenLabelString + coreTokenLabelString}
+          className={"token-table-badge" + (darkTheme ? " dark-theme-badge" : "")}
+          color={darkTheme ? "" : "pastel"}
+        >
+          <div>{coreTokenLabelString}</div>
+        </Badge>
+      );
+      const tokenHex = <div>{hexValue.split("#")[1]}</div>
+      const newRow = [colorSample, tokenLabel, coreTokenLabel, tokenHex];
+      if (darkTheme) {
+        darkTableRows.push(newRow);
+      } else {
+        lightTableRows.push(newRow);
+      }
+    }
+
+    const recursiveTableRowsHelper = (componentObj, baseTokenName) => {
+      let lightTableRows = [];
+      let darkTableRows = [];
+      Object.entries(componentObj).forEach(comp => {
+        let tokenName = tokenNameUpdate(baseTokenName, comp[0]);
+        let value = comp[1];
+
+        if (typeof value === "string") {
+          const darkTheme = comp[0] === 'dark';
+          createAndPushTableRows(darkTheme, value, tokenName, lightTableRows, darkTableRows);
+        } else {
+          const [newLightTableRows, newDarkTableRows] = recursiveTableRowsHelper(value, tokenName)
+          lightTableRows = lightTableRows.concat(newLightTableRows);
+          darkTableRows = darkTableRows.concat(newDarkTableRows);
+        }
       });
 
-      return tableRows;
+      return [lightTableRows, darkTableRows];
+    }
+
+    const semanticColorTokenTableRows = (component) => {
+      let lightTableRows = [];
+      let darkTableRows = [];
+      const baseTokenName = semanticColor[component].component;
+      Object.entries(semanticColor[component]).forEach((token, index) => {
+        if (index >= 2) {
+          const tokenValues = token[1];
+          const baseComponentName = baseTokenName + '-' + token[0];
+          const [newLightTableRows, newDarkTableRows] = recursiveTableRowsHelper(tokenValues, baseComponentName);
+          lightTableRows = lightTableRows.concat(newLightTableRows);
+          darkTableRows = darkTableRows.concat(newDarkTableRows);
+        }
+      });
+
+      return [lightTableRows, darkTableRows];
     }
 
     return (
       <div className="site-con">
-        <div className="site-con site-banner-con-color">
-          <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Color</p>
-            <div className='site-banner-share'>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749">
-                <Button
-                  ariaLabel='Figma'
-                  className='md-button--dark-gray site-banner-share_figma'
-                  size={52}
-                >Figma</Button>
-              </a>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749">
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray site-banner-share_github'
-                  size={52}
-                >Github</Button>
-              </a>
-            </div>
-          </div>
-        </div>
+        <PageHero
+          backgroundColor='#E5F8FF'
+          backgroundImage='/assets/2020/banner-color.svg'
+          figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/button.json'
+          heroTitle='Color'
+        />
         <div className='site-warp'>
           <SectionHeader
             title={locale.sectionHeaders.semanticColor.title}
             leadStr={locale.sectionHeaders.semanticColor.body}
           />
           <div className="site-responsive-row">
-            <div className="display-table-card-container">
-              <TokenDisplayTable
-                key="button-colors-light"
-                sectionTitleLabel="Buttons"
-                sectionTitleTrailing={
-                  <Badge color="green-pastel" rounded>
-                    <div className="section-title__trailing-badge">Stable</div>
-                  </Badge>
-                }
-                tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
-                tableRows={buttonTokenTableRows()}
-              />
-            </div>
-            <div className="display-table-card-container-dark">
-              <TokenDisplayTable
-                key="button-colors-dark"
-                darkTheme
-                sectionTitleLabel="Buttons"
-                sectionTitleTrailing={
-                  <Badge color="green-pastel" rounded>
-                    <div className="section-title__trailing-badge">Stable</div>
-                  </Badge>
-                }
-                tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
-                tableRows={buttonTokenTableRows(true)}
-              />
-            </div>
+            {semanticColorTokenTableRows('buttons').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"button-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Buttons"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
           </div>
           <Example
             subtitle="Example: Control Hub"
@@ -122,6 +140,153 @@ class Color extends React.PureComponent {
               <img className="site-example-image" src="/assets/2020/color-control-hub-example.png" />
             </div>
           </Example>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('inputs').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"input-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Inputs"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('textColor').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"text-color-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Text-color"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('backgrounds').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"backgrounds-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Backgrounds"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('presence').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"presence-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Presence"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('alerts').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"alerts-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Alerts"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('avatars').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"avatars-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Avatars"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
+          <Example
+            subtitle="Example: Webex.com"
+          >
+            <div className="color-example">
+              <img className="site-example-image" src="/assets/2020/color-webex-example.png" />
+            </div>
+          </Example>
+          <div className="site-responsive-row">
+            {semanticColorTokenTableRows('separator').map((tableRows, idx) => (
+              <div
+                className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
+                key={"separator-colors-" + idx}
+              >
+                <TokenDisplayTable
+                  darkTheme={idx > 0}
+                  sectionTitleLabel="Seperator"
+                  sectionTitleTrailing={
+                    <Badge color="green-pastel" rounded>
+                      <div className="section-title__trailing-badge">Stable</div>
+                    </Badge>
+                  }
+                  tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
+                  tableRows={tableRows}
+                />
+              </div>
+            ))}
+          </div>
           <TokenNavigation
             leftNav={{label: "Space", url: '/2020/tokens/space'}}
             rightNav={{label: "Typography", url: "/2020/tokens/typography"}}

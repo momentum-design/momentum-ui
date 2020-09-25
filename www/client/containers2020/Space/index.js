@@ -7,6 +7,7 @@ import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
 import SectionTitle from '../../components2020/SectionTitle';
 import locale from './locale';
+import PageHero from '../../components2020/PageHero';
 const spaceTokens = require('@momentum-ui/tokens/src/core/space.js');
 
 class Space extends React.PureComponent {
@@ -50,27 +51,14 @@ class Space extends React.PureComponent {
 
     return (
       <div className="site-con">
-        <div className="site-con site-banner-con-space">
-          <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Space</p>
-            <div className='site-banner-share'>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=2647%3A661">
-                <Button
-                  ariaLabel='Figma'
-                  className='md-button--dark-gray site-banner-share_figma'
-                  size={52}
-                >Figma</Button>
-              </a>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=2647%3A661">
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray site-banner-share_github'
-                  size={52}
-                >Github</Button>
-              </a>
-            </div>
-          </div>
-        </div>
+        <PageHero
+          backgroundColor='#FFE0E7'
+          backgroundImage='/assets/2020/banner-space.svg'
+          backgroundSize='450px'
+          figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=2647%3A661'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/space.json'
+          heroTitle='Space'
+        />
         <div className='site-warp'>
           <SectionHeader
             title={locale.sectionHeaders.space.title}

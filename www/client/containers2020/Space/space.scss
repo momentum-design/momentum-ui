@@ -1,16 +1,9 @@
-.site-banner-con-space {
-  background: $md-pink-20;
-  .site-banner-normal {
-    background-image: url(../assets/2020/banner-space.svg);
-  }
-}
-
 .space-token-row {
   grid-column-gap: 30px;
   grid-row-gap: 30px;
 
   & + .space-token-row {
-    margin-top: 78px;
+    margin-top: 80px;
   }
 }
 

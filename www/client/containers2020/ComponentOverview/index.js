@@ -6,6 +6,7 @@ import { InputSearch, Spinner } from '@momentum-ui/react';
 import ComponentItem from '../../components/ComponentItem';
 import { fetchAllComponentData, filterComponentsData } from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
+import PageHero from '../../components2020/PageHero';
 
 class ComponentOverviewPage extends React.Component {
   componentDidMount() {
@@ -59,23 +60,14 @@ class ComponentOverviewPage extends React.Component {
 
     return (
       <div className="site-con">
-        <div className="site-con site-banner-components">
-          <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Components</p>
-            <div className='site-banner-share'>
-              <Button
-                ariaLabel='Figma'
-                className='md-button--dark-gray site-banner-share_figma'
-                size={52}
-              >Figma</Button>
-              <Button
-                ariaLabel='IGithub'
-                className='md-button--dark-gray site-banner-share_github'
-                size={52}
-              >Github</Button>
-            </div>
-          </div>
-        </div>
+        <PageHero
+          backgroundColor='#BCF7BF'
+          backgroundImage='/assets/2020/banner-components.svg'
+          backgroundSize='700px'
+          figmaURL='https://www.figma.com/file/FKFSq0HQpjp8wYHnQDBRum/Web?node-id=0%3A1'
+          githubURL='https://github.com/momentum-design/momentum-ui/tree/master/react/src/lib'
+          heroTitle='Components'
+        />
         <div className='site-warp'>
           <SectionHeader
             title="Components"

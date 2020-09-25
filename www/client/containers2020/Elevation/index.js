@@ -7,6 +7,7 @@ import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionTitle from '../../components2020/SectionTitle';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
+import PageHero from '../../components2020/PageHero';
 const elevationTokens = require('@momentum-ui/tokens/src/core/elevation.js');
 
 class Elevation extends React.PureComponent {
@@ -111,27 +112,14 @@ class Elevation extends React.PureComponent {
 
     return (
       <div className="site-con">
-        <div className="site-con site-banner-con-elevation">
-          <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Elevation</p>
-            <div className='site-banner-share'>
-            <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789">
-                <Button
-                  ariaLabel='Figma'
-                  className='md-button--dark-gray site-banner-share_figma'
-                  size={52}
-                >Figma</Button>
-              </a>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789">
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray site-banner-share_github'
-                  size={52}
-                >Github</Button>
-              </a>
-            </div>
-          </div>
-        </div>
+        <PageHero
+          backgroundColor='#DDF2AE'
+          backgroundImage='/assets/2020/banner-elevation.svg'
+          backgroundSize='600px'
+          figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/elevation.json'
+          heroTitle='Elevation'
+        />
         <div className='site-warp'>
           <SectionHeader
             title={locale.sectionHeaders.elevation.title}

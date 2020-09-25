@@ -6,6 +6,7 @@ import Example from '../../components2020/Example';
 import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
+import PageHero from '../../components2020/PageHero';
 const textTokens = require('@momentum-ui/tokens/src/core/font.js');
 const lineHeightTokens = require('@momentum-ui/tokens/src/core/lineHeight.js');
 
@@ -126,27 +127,14 @@ class Typography extends React.PureComponent {
 
     return (
       <div className="site-con">
-        <div className="site-con site-banner-con-typography">
-          <div className='site-warp fix-margin site-banner-normal'>
-            <p className='site-banner-normal-title'>Typography</p>
-            <div className='site-banner-share'>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344">
-                <Button
-                  ariaLabel='Figma'
-                  className='md-button--dark-gray site-banner-share_figma'
-                  size={52}
-                >Figma</Button>
-              </a>
-              <a href="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344">
-                <Button
-                  ariaLabel='IGithub'
-                  className='md-button--dark-gray site-banner-share_github'
-                  size={52}
-                >Github</Button>
-              </a>
-            </div>
-          </div>
-        </div>
+        <PageHero
+          backgroundColor='#F5EAA2'
+          backgroundImage='/assets/2020/banner-typography.svg'
+          backgroundSize='600px'
+          figmaURL="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344"
+          githubURL="https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/font.json"
+          heroTitle='Typography'
+        />
         <div className='site-warp'>
           <SectionHeader
             title={locale.sectionHeaders.typography.title}
@@ -158,7 +146,7 @@ class Typography extends React.PureComponent {
               sectionTitleLabel="Font Size (web)"
               sectionTitleTrailing={
                 <div>
-                  <h4 className="font-size-section-title-trailing">Design Token for Web and End-point</h4>
+                  <h4 className="font-size-section-title-trailing">Design Token for Web</h4>
                 </div>
               }
               tableHeaders={["Sample", "Token", "Property", "Value (pt)", "Typeface"]}

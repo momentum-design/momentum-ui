@@ -3,6 +3,7 @@ import { Button } from '@momentum-ui/react';
 import SectionHeader from '../../components2020/SectionHeader';
 import Example from '../../components2020/Example';
 import locale from './locale';
+import PageHero from '../../components2020/PageHero';
 
 class Personality extends React.PureComponent {
 
@@ -29,11 +30,12 @@ class Personality extends React.PureComponent {
     return (
       <div className="site-con">
         <div className="site-con site-bg-black">
-          <div className="site-con site-banner-con-personality">
-            <div className='site-warp fix-margin site-banner-normal'>
-              <p className='site-banner-normal-title'>Personality</p>
-            </div>
-          </div>
+          <PageHero
+            backgroundImage='/assets/2020/banner-system.svg'
+            backgroundSize='600px'
+            className='personality-page-hero'
+            heroTitle='Personality'
+          />
           <div className="page-body">
             <SectionHeader
               darkTheme

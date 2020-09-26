@@ -122,11 +122,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Buttons"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -149,11 +144,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Inputs"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -169,11 +159,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Text-color"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -189,11 +174,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Backgrounds"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -209,11 +189,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Presence"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -229,11 +204,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Alerts"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -249,11 +219,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Avatars"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />
@@ -276,11 +241,6 @@ class Color extends React.PureComponent {
                 <TokenDisplayTable
                   darkTheme={idx > 0}
                   sectionTitleLabel="Seperator"
-                  sectionTitleTrailing={
-                    <Badge color="green-pastel" rounded>
-                      <div className="section-title__trailing-badge">Stable</div>
-                    </Badge>
-                  }
                   tableHeaders={["Sample", "Token", "coreToken", "HEX"]}
                   tableRows={tableRows}
                 />

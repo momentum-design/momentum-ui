@@ -1,9 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
-    <title>sources-and-media/file-excel-active_72</title>
-    <desc>Created with Sketch.</desc>
-    <g id="sources-and-media/file-excel-active_72" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M43.909,1.74 L62.257,20.006 C62.736,20.483 63,21.118 63,21.794 L63,64.5 C63,68.084 60.084,71 56.5,71 L15.5,71 C11.916,71 9,68.084 9,64.5 L9,7.5 C9,3.916 11.916,1 15.5,1 L42.117,1 C42.793,1 43.43,1.263 43.909,1.74 Z M43.1906,32.96 L44.7266,32.96 L36.8866,44.096 L45.0146,56 L43.3826,56 L36.0226,45.12 L28.5986,56 L26.9986,56 L35.1906,44.032 L27.6386,32.96 L29.2706,32.96 L36.1186,43.008 L43.1906,32.96 Z" id="Shape" fill="#171B1F"></path>
-    </g>
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M43.909 1.74L62.257 20.006C62.736 20.483 63 21.118 63 21.794V64.5C63 68.084 60.084 71 56.5 71H15.5C11.916 71 9 68.084 9 64.5V7.5C9 3.916 11.916 1 15.5 1H42.117C42.793 1 43.43 1.263 43.909 1.74ZM43.1906 32.96H44.7266L36.8866 44.096L45.0146 56H43.3826L36.0226 45.12L28.5986 56H26.9986L35.1906 44.032L27.6386 32.96H29.2706L36.1186 43.008L43.1906 32.96Z" fill="#121212"/>
 </svg>

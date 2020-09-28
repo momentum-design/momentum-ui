@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.54.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.53.0...@momentum-ui/icons@7.54.0) (2020-09-26)
+
+
+### Features
+
+* **icons:** add call-voicemail_14 ([8c2c51b](https://github.com/momentum-design/momentum-ui/commit/8c2c51badac2578f8ce2f7a126f2b78ca0d7d637))
+* **icons:** add company_12 ([39a0042](https://github.com/momentum-design/momentum-ui/commit/39a00421cd063d99b2412beb15b07bf9b4d6d284))
+* **icons:** add dialpad_14 ([3dd9abf](https://github.com/momentum-design/momentum-ui/commit/3dd9abfca0c843a2e64cd8fb9793d15ed8245c21))
+* **icons:** add gif_12 ([d319f5d](https://github.com/momentum-design/momentum-ui/commit/d319f5d3cad29cb0d731784145b600dda9127a47))
+* **icons:** add incoming-call-active_12 ([c105197](https://github.com/momentum-design/momentum-ui/commit/c105197160bf68cff98d21292c1ac34db3a0b086))
+* **icons:** add incoming-call-active_16 ([6e62d07](https://github.com/momentum-design/momentum-ui/commit/6e62d0721a285f4c0d6f0d9c897acb3f2b76732f))
+* **icons:** add layout-side-by-side-vertical_12 ([84afccd](https://github.com/momentum-design/momentum-ui/commit/84afccd38ad27c7fc7f9c4f2f11a41f50816abd4))
+* **icons:** add meet-end_16 ([cb08978](https://github.com/momentum-design/momentum-ui/commit/cb089785daad10da60c4b9677bbeaf714b04c0b1))
+* **icons:** add outgoing-call-active_12 ([fb367bd](https://github.com/momentum-design/momentum-ui/commit/fb367bd0bd82fe226d078546e9c3daa2699c5805))
+* **icons:** add outgoing-call-active_16 ([dfc3b24](https://github.com/momentum-design/momentum-ui/commit/dfc3b2417f32d9dc4a47e61971eb1b1e12868000))
+* **icons:** add panel-control-dragger_16 ([43b6577](https://github.com/momentum-design/momentum-ui/commit/43b6577945db83fb839336a41efc8a04f81952d3))
+* **icons:** add parked_16 ([c4b4486](https://github.com/momentum-design/momentum-ui/commit/c4b4486a44d041cba6d65e545c9830211e83dbd3))
+* **icons:** add parked_20 ([2ca9fa0](https://github.com/momentum-design/momentum-ui/commit/2ca9fa0e0e975d25c2005ed40e81a4d0a0593937))
+* **icons:** add parked_24 ([c3e89a0](https://github.com/momentum-design/momentum-ui/commit/c3e89a001a9cf9c0de470d54bc7a8fb3434bd587))
+* **icons:** add participant-blocked_12 ([b79ec4b](https://github.com/momentum-design/momentum-ui/commit/b79ec4b936d687be70b906686628d2871e9cd77a))
+* **icons:** add pull-call_14 ([71e198b](https://github.com/momentum-design/momentum-ui/commit/71e198b14c7bcb9b57c22e31a7b86d2607b5dbaa))
+* **icons:** add queue_14 ([ab914bd](https://github.com/momentum-design/momentum-ui/commit/ab914bd47b70cd7306a8f4704adae072971b8b6e))
+* **icons:** add queue-contact_14 ([375ba65](https://github.com/momentum-design/momentum-ui/commit/375ba65f7f431e01cb8ba0b8d9c06432d0299551))
+* **icons:** add retrieve-call_14 ([d155167](https://github.com/momentum-design/momentum-ui/commit/d15516700373a5e51c128e1bf9e010b8dd970693))
+* **icons:** add retrieve-call_16 ([e9d091d](https://github.com/momentum-design/momentum-ui/commit/e9d091ddaa85988d1af5ea1ed78b0c1887b1cd4b))
+
+
+
+
+
 # [7.53.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.52.0...@momentum-ui/icons@7.53.0) (2020-09-15)
 
 

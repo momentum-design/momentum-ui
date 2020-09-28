@@ -1,0 +1,31 @@
+.typography-font-size-table,
+.token-display-table-row {
+  width: 100%;
+  overflow: scroll;
+}
+
+.token-display-table-row {
+  margin-top: 132px;
+
+  & > .flex-item + .flex-item {
+    margin-left: 30px;
+  }
+}
+
+p.sample-text-block {
+  font-family: $brand-font-regular;
+  line-height: 125%;
+  white-space: nowrap;
+}
+
+h4.font-size-section-title-trailing {
+  @include h4();
+}
+
+.typography-control-hub-example {
+  @include example-image($img-margin: 57px 0 0 0);
+}
+
+.typography-webex-example {
+  @include example-image($img-width: 65%);
+}

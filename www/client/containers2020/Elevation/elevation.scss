@@ -1,0 +1,139 @@
+.elevation-sample-box {
+  background: $md-white;
+  border: 1px solid $md-gray-10;
+  border-radius: 4px;
+
+  &__sq {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__md {
+    width: 224px;
+    height: 80px;
+  }
+
+  &__lg {
+    width: 500px;
+    height: 260px;
+  }
+}
+
+.elevation-token-display-table-container {
+
+  @include site-column-breakpoint {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
+.elevation-token-display-table {
+  .token-display-table .token-display-table__row > td {
+    vertical-align: top;
+    padding-bottom: 40px;
+    border-bottom: 1px solid $md-gray-10;
+  }
+
+  .token-display-table .token-display-table__row:last-child > td {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.elevation-value-table {
+  border-spacing: 0;
+  white-space: nowrap;
+
+  & td + td {
+    padding-left: 32px;
+  }
+
+  &_row-type {
+    color: $md-gray-70;
+    font-weight: 500;
+  }
+
+  & td.elevation-value-table_row-coords {
+    padding-left: 16px;
+  }
+
+  & td.elevation-value-table_row-title {
+    color: $md-gray-40;
+    padding-left: 8px;
+  }
+
+  & .box-shadow-value-container {
+    width: 0;
+    white-space: nowrap;
+    padding-top: 16px;
+  }
+}
+
+.elevation-purpose-row {
+  margin-top: 80px;
+  justify-content: center;
+
+  &__card {
+    max-width: 500px;
+    margin: 0 auto;
+    grid-row-gap: 30px;
+
+    & h4 {
+      @include h4($font-weight: $font-weight-bold);
+      margin-bottom: 12px;
+    }
+
+    &-purpose {
+      margin-bottom: 45px;
+    }
+
+    &-caption {
+      color: $md-gray-60;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
+
+.brightness-mode-container {
+  margin: 80px 0;
+
+  &__description {
+    font-size: 14px;
+    margin-top: 20px;
+    max-width: 500px;
+  }
+
+  &__example-container {
+    display: flex;
+    margin-top: 45px;
+  }
+
+  &__example-container-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 32px 32px 32px;
+
+    &-dark {
+      color: $md-gray-60;
+    }
+  }
+
+  & .elevation-multi-card-container {
+    margin: 100px 0;
+
+    & div + div {
+      margin-top: 56px;
+    }
+  }
+}
+
+.elevation-webex-example {
+  @include example-image();
+}
+
+.elevation-control-hub-example {
+  @include example-image($img-margin: 40px 0 0 0);
+}

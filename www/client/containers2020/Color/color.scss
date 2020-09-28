@@ -1,0 +1,37 @@
+.site-subtitle-color {
+  margin: 100px 0 80px 0;
+}
+
+.sample-color-block {
+  width: 58px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+span.dark-theme-badge {
+  background: $md-gray-90;
+  color: $md-gray-40;
+}
+
+.display-table-card-container,
+.display-table-card-container-dark {
+  padding: 30px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.display-table-card-container-dark {
+  background-color: $md-gray-100;
+}
+
+.display-table-card-container:first-child {
+  padding-left: 0;
+
+  @include site-column-breakpoint {
+    padding: 30px;
+  }
+}
+
+.color-example {
+  @include example-image($img-margin: 57px 0 0 0);
+}

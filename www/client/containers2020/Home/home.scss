@@ -1,0 +1,173 @@
+.site-banner-home {
+  background: url(../assets/2020/banner-home.svg) no-repeat right 87px;
+  height: 800px;
+
+  >h1 {
+    margin: 206px 0 0 105px;
+    line-height: 62px;
+    font-size: 52px;
+    color: $md-white;
+    max-width: 520px;
+  }
+
+  p {
+    margin: 33px 0 0 105px;
+    line-height: 28px;
+    font-size: 18px;
+    color: $md-white;
+    max-width: 520px;
+  }
+
+  .site-banner-home-button {
+    margin: 72px 0 0 105px;
+  }
+}
+
+.site-subtitle-home {
+  margin:100px 0 0 12px;
+}
+
+.site-home-subcon {
+  margin-top: 30px;
+
+  .site-home-subcon-item {
+    height: 625px;
+
+    p {
+      color: $md-black;
+      font-size: 24px;
+      margin: 500px 0 0 37px;
+    }
+
+    .arrow {
+      display: block;
+      margin: 40px 0 0 37px;
+      width: 28px;
+      height: 15px;
+      background: url(../assets/2020/arrow-right.svg) no-repeat;
+      background-size: contain;
+    }
+
+  }
+
+  .site-home-color {
+    background: $site-blue url(../assets/2020/banner-color.svg) no-repeat center 150px;
+    background-size: 252px 168px;
+  }
+
+  .site-home-typography {
+    background: $site-gold url(../assets/2020/banner-typography.svg) no-repeat center 155px;
+    background-size: 286px 170px;
+  }
+
+  .site-home-elevation {
+    background: $site-green url(../assets/2020/banner-elevation.svg) no-repeat center 158px;
+    background-size: 408px 283px;
+  }
+
+  .site-home-space {
+    background: $site-pink url(../assets/2020/banner-space.svg) no-repeat center 116px;
+    background-size: 276px 278px;
+  }
+
+}
+
+.site-home-sub-banner {
+  >h1 {
+    font-size: 48px;
+    color: $md-black;
+  }
+  >p{
+    margin-top: 36px;
+    font-size: 18px;
+    color: $md-black;
+    line-height: 28px;
+  }
+  .site-home-sub-button {
+    margin-top:42px;
+    background-color: transparent;
+    border: 1px solid #BBBBBB;
+  }
+}
+
+.site-home-icon {
+  margin-top: 110px;
+  height: 642px;
+  h1 {
+    margin-top: 147px;
+  }
+  .site-home-sub-banner-bg {
+    height: 642px;
+    background: url(../assets/2020/banner-icons.svg) no-repeat center;
+    background-size: 448px 422px;
+  }
+}
+
+.site-home-personality {
+  background-color: #FCF4E1;
+  height: 616px;
+  h1 {
+    margin-top: 138px;
+  }
+  .site-home-sub-banner-bg {
+    height: 616px;
+    background: url(../assets/2020/banner-personality.svg) no-repeat left center;
+    background-size: 490px 396px;
+  }
+}
+
+.site-home-banner3-title {
+  color: $site-black;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 56px;
+  height: 44px;
+  margin: 100px 0 50px 0;
+  width: 100%;
+  text-align: center;
+}
+.site-home-banner3 {
+  text-align: center;
+  h1 {
+    display: block;
+    margin-top: 184px;
+    font-size: 36px;
+    height: 58px;
+    line-height: 56px;
+    width:100%;
+    text-align: center;
+    color: $site-black;
+  }
+
+  p {
+    line-height: 28px;
+    font-size: 18px;
+    width:100%;
+    text-align: center;
+    color: $site-black;
+  }
+
+  button {
+    margin: 40px auto 80px auto;
+    background: $md-white;
+    border: none;
+  }
+}
+
+.site-home-github {
+  background: $md-cobalt-20 url(../assets/2020/banner-github.svg) no-repeat center 51px;
+}
+
+.site-home-cisco {
+  background: $md-mint-20 url(../assets/2020/banner-developers.svg) no-repeat center 54px;;
+}
+
+.site-home-figma {
+  background: #F2F4F5 url(../assets/2020/banner-figma.svg) no-repeat center 51px;;
+}
+
+@media only screen and (max-width: 1280px) {
+  .site-banner-home {
+    background-size: 80%;
+  }
+}

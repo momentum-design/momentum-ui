@@ -1,0 +1,51 @@
+.site-footer {
+  padding: 84px 0 44px 0;
+  .flex-item  {
+    a {
+      text-decoration: none;
+      color: $md-black;
+      font-size: 16px;
+      line-height: 32px;
+      width: 100%;
+      display: block;
+    }
+
+    .site-footer-title{
+      font-size: 20px;
+      color:$md-gray-100;
+      line-height: 48px;
+      height: 48px;
+      display: block;
+      border-bottom: 1px solid $md-black;
+      margin: 36px 0 13px 0;
+      font-weight: bold;
+    }
+    .site-footer-title:first-child {
+      margin-top: 0px;
+    }
+  }
+
+  .site-flex-item {
+    flex: 3;
+    position: relative;
+    margin-top: 48px;
+
+    p, a{
+      color:#B4B6B8;
+      font-size: 13px;
+      line-height: 32px;
+    }
+
+    a {
+      margin-left: 20px;
+    }
+
+    .site-friend-link{
+      position: absolute;
+      text-align: right;
+      right: 0px;
+      top: 0px;
+    }
+  }
+
+}

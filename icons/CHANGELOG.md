@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.55.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.54.0...@momentum-ui/icons@7.55.0) (2020-09-29)
+
+
+### Features
+
+* **icons:** add file-excel-active_12 ([4111987](https://github.com/momentum-design/momentum-ui/commit/41119877265acc02ba536b46ed4d0d16663d107c))
+* **icons:** add file-excel-active_16 ([133633d](https://github.com/momentum-design/momentum-ui/commit/133633dfadf36153a825537d68f8e29fc88a93a6))
+* **icons:** add file-excel-active_20 ([d9b4a4a](https://github.com/momentum-design/momentum-ui/commit/d9b4a4aea054cfb8e3c56709e829ce0740db0f6d))
+* **icons:** add file-excel-active_24 ([a68b056](https://github.com/momentum-design/momentum-ui/commit/a68b0562c5da511b24bf90b1f90960fc027ab581))
+* **icons:** add file-excel-active_24 ([d512c59](https://github.com/momentum-design/momentum-ui/commit/d512c59011a4e3a9670d8d0c8491ddb1418f51a5))
+* **icons:** add file-excel-active_28 ([7f5412c](https://github.com/momentum-design/momentum-ui/commit/7f5412c707885429d1b1edb0ad779605c8be262c))
+* **icons:** add file-excel-active_28 ([ee173ca](https://github.com/momentum-design/momentum-ui/commit/ee173caf152d13a842223583a397f32e205afcd0))
+* **icons:** add file-excel-active_32 ([cff4e0f](https://github.com/momentum-design/momentum-ui/commit/cff4e0f13e9d3d3f412355552c90c9141201d642))
+* **icons:** add file-excel-active_36 ([418f75f](https://github.com/momentum-design/momentum-ui/commit/418f75f1e38f03ca59cc1b7fcf90a6fe87f4245b))
+* **icons:** add file-excel-active_40 ([2d84529](https://github.com/momentum-design/momentum-ui/commit/2d84529c1a0da8a4a11fbd274f6b49f744669b3c))
+* **icons:** add file-excel-active_44 ([6db8c69](https://github.com/momentum-design/momentum-ui/commit/6db8c694a52ddaadabd6224c52876ea1f6bce605))
+* **icons:** add file-excel-active_72 ([3f98f26](https://github.com/momentum-design/momentum-ui/commit/3f98f26a46a20ec0dfd469ac78429d465786a826))
+
+
+
+
+
 # [7.54.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.53.0...@momentum-ui/icons@7.54.0) (2020-09-26)
 
 

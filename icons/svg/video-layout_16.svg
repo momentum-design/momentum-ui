@@ -1,9 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
-    <title>format/video-layout_16</title>
-    <desc>Created with Sketch.</desc>
-    <g id="format/video-layout_16" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M14,2 L2,2 C0.895,2 0,2.895 0,4 L0,12 C0,13.105 0.895,14 2,14 L14,14 C15.105,14 16,13.105 16,12 L16,4 C16,2.895 15.105,2 14,2 L14,2 Z M15,12 C15,12.551 14.551,13 14,13 L11,13 L11,10 L15,10 L15,12 Z M6,13 L10,13 L10,10 L6,10 L6,13 Z M2,13 C1.449,13 1,12.551 1,12 L1,10 L5,10 L5,13 L2,13 Z M15,9 L1,9 L1,4 C1,3.449 1.449,3 2,3 L14,3 C14.551,3 15,3.449 15,4 L15,9 Z" id="fill" fill="#171B1F"></path>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 9H1V4C1 3.449 1.449 3 2 3H14C14.551 3 15 3.449 15 4V9ZM15 12C15 12.551 14.551 13 14 13H11V10H15V12ZM6 13H10V10H6V13ZM2 13C1.449 13 1 12.551 1 12V10H5V13H2ZM14 2H2C0.895 2 0 2.895 0 4V12C0 13.105 0.895 14 2 14H14C15.105 14 16 13.105 16 12V4C16 2.895 15.105 2 14 2V2Z" fill="#121212"/>
 </svg>

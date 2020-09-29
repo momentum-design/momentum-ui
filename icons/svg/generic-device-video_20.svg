@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>hardware/generic-device-video_20</title>
-    <g id="Icons-Webex" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="hardware/generic-device-video_20" fill="#000000">
-            <g id="generic-video-device_20" transform="translate(0.000000, 1.000000)">
-                <path d="M17.5,0 L2.5,0 C1.125,0 0,1.125 0,2.5 L0,15.5 C0,16.875 1.125,18 2.5,18 L17.5,18 C18.875,18 20,16.875 20,15.5 L20,2.5 C20,1.125 18.875,0 17.5,0 Z M17.5,1 L2.5,1 C1.673,1 1,1.673 1,2.5 L1,12 L19,12 L19,2.5 C19,1.673 18.327,1 17.5,1 Z M2.5,17 L17.5,17 C18.327,17 19,16.327 19,15.5 L19,13 L1,13 L1,15.5 C1,16.327 1.673,17 2.5,17 Z M9.5,2 C9.22386,2 9,2.22386 9,2.5 C9,2.77614 9.22386,3 9.5,3 L10.5,3 C10.7761,3 11,2.77614 11,2.5 C11,2.22386 10.7761,2 10.5,2 L9.5,2 Z" id="Shape"></path>
-            </g>
-        </g>
-    </g>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 1H2.5C1.125 1 0 2.125 0 3.5V16.5C0 17.875 1.125 19 2.5 19H17.5C18.875 19 20 17.875 20 16.5V3.5C20 2.125 18.875 1 17.5 1ZM17.5 2H2.5C1.673 2 1 2.673 1 3.5V13H19V3.5C19 2.673 18.327 2 17.5 2ZM2.5 18H17.5C18.327 18 19 17.327 19 16.5V14H1V16.5C1 17.327 1.673 18 2.5 18ZM9.5 3C9.22386 3 9 3.22386 9 3.5C9 3.77614 9.22386 4 9.5 4H10.5C10.7761 4 11 3.77614 11 3.5C11 3.22386 10.7761 3 10.5 3H9.5Z" fill="#121212"/>
 </svg>

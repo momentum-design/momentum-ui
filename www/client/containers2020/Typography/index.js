@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@momentum-ui/react';
 import { Badge } from '@momentum-ui/react';
 import TokenDisplayTable from '../../components2020/TokenDisplayTable';
 import Example from '../../components2020/Example';
@@ -7,6 +6,12 @@ import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
 import PageHero from '../../components2020/PageHero';
+
+// Import page images
+import typographyBanner from '../../assets/2020/banner-typography.svg';
+import controlHubExample from '../../assets/2020/typography-control-hub-example.png';
+import webexExample from '../../assets/2020/typography-webex-example.png';
+
 const textTokens = require('@momentum-ui/tokens/src/core/font.js');
 const lineHeightTokens = require('@momentum-ui/tokens/src/core/lineHeight.js');
 
@@ -129,7 +134,7 @@ class Typography extends React.PureComponent {
       <div className="site-con">
         <PageHero
           backgroundColor='#F5EAA2'
-          backgroundImage='/assets/2020/banner-typography.svg'
+          backgroundImage={typographyBanner}
           backgroundSize='600px'
           figmaURL="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344"
           githubURL="https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/font.json"
@@ -183,14 +188,14 @@ class Typography extends React.PureComponent {
             subtitle="Example: Control Hub"
           >
             <div className="typography-control-hub-example">
-              <img className="site-example-image" src="/assets/2020/typography-control-hub-example.png" />
+              <img className="site-example-image" src={controlHubExample} />
             </div>
           </Example>
           <Example
             subtitle="Example: Webex.com"
           >
             <div className="typography-webex-example">
-              <img className="site-example-image" src="/assets/2020/typography-webex-example.png" />
+              <img className="site-example-image" src={webexExample} />
             </div>
           </Example>
           <TokenNavigation

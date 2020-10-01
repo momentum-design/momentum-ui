@@ -5,6 +5,13 @@ import Example from '../../components2020/Example';
 import locale from './locale';
 import PageHero from '../../components2020/PageHero';
 
+// Import page images
+import personalityBanner from '../../assets/2020/banner-system.svg';
+import webexErrorExample from '../../assets/2020/personality-webex-error-example.png';
+import webexExample from '../../assets/2020/personality-webex-example.png';
+import webexOnboardingExample from '../../assets/2020/personality-webex-teams-onboarding-example.png';
+import webexTechnicalExample from '../../assets/2020/personality-webex-technical-illustration-example.png';
+
 class Personality extends React.PureComponent {
 
   render() {
@@ -31,7 +38,7 @@ class Personality extends React.PureComponent {
       <div className="site-con">
         <div className="site-con site-bg-black">
           <PageHero
-            backgroundImage='/assets/2020/banner-system.svg'
+            backgroundImage={personalityBanner}
             backgroundSize='600px'
             className='personality-page-hero'
             heroTitle='Personality'
@@ -66,14 +73,14 @@ class Personality extends React.PureComponent {
                 subtitle="Example: Webex Teams - Onboarding (Attributes applified: Uplifting, Confident, Inclusive)"
               >
                 <div className="personality-example-row-item">
-                  <img className="site-example-image" src="/assets/2020/personality-webex-error-example.png" />
+                  <img className="site-example-image" src={webexErrorExample} />
                 </div>
               </Example>
               <Example
                 subtitle="Example: Webex Meetings - Error message (Attributes applified: Focused, Familiar, Inclusive)"
               >
                 <div className="personality-example-row-item">
-                  <img className="site-example-image" src="/assets/2020/personality-webex-error-example.png" />
+                  <img className="site-example-image" src={webexErrorExample} />
                 </div>
               </Example>
             </div>
@@ -81,7 +88,7 @@ class Personality extends React.PureComponent {
               subtitle="Example: Webex.com"
             >
               <div className="personality-webex-example">
-                <img className="site-example-image" src="/assets/2020/personality-webex-example.png" />
+                <img className="site-example-image" src={webexExample} />
               </div>
             </Example>
             <div className="personality-writing-tips-container">
@@ -145,14 +152,14 @@ class Personality extends React.PureComponent {
                 subtitle="Example: Webex Teams - Onboarding"
               >
                 <div className="personality-story-illustation-example">
-                  <img src="/assets/2020/personality-webex-teams-onboarding-example.png" />
+                  <img src={webexOnboardingExample} />
                 </div>
               </Example>
               <Example
                 subtitle="Example: Webex.com"
               >
                 <div className="personality-technical-illustration-example">
-                  <img className="site-example-image" src="/assets/2020/personality-webex-technical-illustration-example.png" />
+                  <img className="site-example-image" src={webexTechnicalExample} />
                 </div>
               </Example>
             </div>

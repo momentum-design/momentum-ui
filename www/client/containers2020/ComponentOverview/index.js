@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from '@momentum-ui/react';
 import { connect } from 'react-redux';
 import { InputSearch, Spinner } from '@momentum-ui/react';
 import ComponentItem from '../../components/ComponentItem';
 import { fetchAllComponentData, filterComponentsData } from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
+
+// Import page images
+import componentBanner from '../../assets/2020/banner-components.svg';
 
 class ComponentOverviewPage extends React.Component {
   componentDidMount() {
@@ -62,7 +64,7 @@ class ComponentOverviewPage extends React.Component {
       <div className="site-con">
         <PageHero
           backgroundColor='#BCF7BF'
-          backgroundImage='/assets/2020/banner-components.svg'
+          backgroundImage={componentBanner}
           backgroundSize='700px'
           figmaURL='https://www.figma.com/file/FKFSq0HQpjp8wYHnQDBRum/Web?node-id=0%3A1'
           githubURL='https://github.com/momentum-design/momentum-ui/tree/master/react/src/lib'

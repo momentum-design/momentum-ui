@@ -1,4 +1,7 @@
 import React from 'react';
+import focalPointExample from '../../assets/2020/personality-illustrations-focal-point-example.png';
+import universalReferenceExample from '../../assets/2020/personality-illustrations-universal-reference-example.png';
+import transparencyExample from '../../assets/2020/personality-illustrations-transparency-example.png';
 
 const locale = {
   header: {
@@ -84,15 +87,15 @@ const locale = {
   illustrationTips: [
     {
       title: "Always have a clear focal point or subject in illustration",
-      exampleImageSrc: "/assets/2020/personality-illustrations-focal-point-example.png",
+      exampleImageSrc: focalPointExample,
     },
     {
       title: "Use universal references to appeal to different cultures",
-      exampleImageSrc: "/assets/2020/personality-illustrations-universal-reference-example.png",
+      exampleImageSrc: universalReferenceExample,
     },
     {
       title: "Use transparency to create texture and focus, so your illustration works for dark and light mode",
-      exampleImageSrc: "/assets/2020/personality-illustrations-transparency-example.png",
+      exampleImageSrc: transparencyExample,
     },
   ],
   illustrationStyles: [

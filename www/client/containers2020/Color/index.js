@@ -6,6 +6,12 @@ import TokenNavigation from '../../components2020/TokenNavigation';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
 import PageHero from '../../components2020/PageHero';
+
+// Import page images
+import colorBanner from '../../assets/2020/banner-color.svg';
+import controlHubExample from '../../assets/2020/color-control-hub-example.png';
+import webexExample from '../../assets/2020/color-webex-example.png';
+
 const semanticColor = require('@momentum-ui/tokens/src/core/semanticColor.js');
 const colors = require("@momentum-ui/tokens/src/core/colors.js");
 
@@ -103,9 +109,9 @@ class Color extends React.PureComponent {
       <div className="site-con">
         <PageHero
           backgroundColor='#E5F8FF'
-          backgroundImage='/assets/2020/banner-color.svg'
+          backgroundImage={colorBanner}
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749'
-          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/button.json'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/semanticColor.json'
           heroTitle='Color'
         />
         <div className='site-warp'>
@@ -132,7 +138,7 @@ class Color extends React.PureComponent {
             subtitle="Example: Control Hub"
           >
             <div className="color-example">
-              <img className="site-example-image" src="/assets/2020/color-control-hub-example.png" />
+              <img className="site-example-image" src={controlHubExample} />
             </div>
           </Example>
           <div className="site-responsive-row">
@@ -229,7 +235,7 @@ class Color extends React.PureComponent {
             subtitle="Example: Webex.com"
           >
             <div className="color-example">
-              <img className="site-example-image" src="/assets/2020/color-webex-example.png" />
+              <img className="site-example-image" src={webexExample} />
             </div>
           </Example>
           <div className="site-responsive-row">

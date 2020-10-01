@@ -1,47 +1,20 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import {
+  ListItem,
+  Topbar,
+  TopbarMobile,
+  TopbarNav,
+  TopbarRight,
+} from '@momentum-ui/react';
+import SideNav from '../../containers2020/SideNav';
+import getUser from '../../services/user/actions';
 
 class AppHeader extends Component {
-  state = {
-    hideNav: true,
-    expandSearch: false,
-    keyword: null,
-  };
-
-  componentDidMount() {
-    this.setSearchButton(this.props.path);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.path !== this.props.path) {
-      this.setSearchButton(this.props.path);
-    }
-  }
-
-  searchPath = '/search';
-
-  setSearchButton = path => {
-    this.setState({
-      expandSearch: path === this.searchPath,
-    });
-  };
-
-  handleSearchExpand = () => {
-    this.setState({
-      expandSearch: true,
-    });
-  };
-
-  handleSearchInput = e => {
-    this.setState({
-      keyword: e.target.value.trim(),
-    });
-  };
-
   getBackgroudClass(location) {
     let str = location.pathname.toLowerCase();
     if(str.indexOf('/2020/system')===0
@@ -56,7 +29,7 @@ class AppHeader extends Component {
   }
 
   getLogo() {
-    return (<a className="site-logo" href="/2020"><svg width="111" height="33" viewBox="0 0 111 33"  xmlns="http://www.w3.org/2000/svg">
+    return (<a className="site-logo" href="/2020"><svg width="134" height="40" viewBox="0 0 111 33"  xmlns="http://www.w3.org/2000/svg">
     <path d="M22.3787 10.648V0H0V22.352H10.6607V33H21.8501C28.0175 33 33.0394 27.984 33.0394 21.824C33.0394 15.84 28.3038 10.934 22.3787 10.648ZM11.1894 10.428L1.82818 1.056H20.5726L11.1894 10.428ZM21.3215 1.826V10.648H12.4669L21.3215 1.826ZM11.718 11.704H21.2994V21.274H11.718V11.704ZM1.05726 21.296V1.826L10.6387 11.396V21.296H1.05726ZM21.8501 31.944H11.718V22.374H22.3787V11.726C27.7091 12.012 31.9602 16.434 31.9602 21.824C31.9822 27.39 27.4227 31.944 21.8501 31.944Z" />
     <path d="M43.9644 12.9144V6.1604H44.9996L45.1318 6.9524C45.6164 6.2264 46.3653 5.9624 47.1142 5.9624C48.0172 5.9624 48.7221 6.3364 49.0965 7.0184C49.6252 6.2044 50.4842 5.9624 51.2992 5.9624C52.6868 5.9624 53.5899 6.7764 53.5899 8.4044V12.9364H52.3344V8.4924C52.3344 7.4584 51.8939 7.0404 51.0128 7.0404C49.9996 7.0404 49.3829 7.8764 49.3829 8.8004V12.9144H48.1274V8.4924C48.1274 7.4584 47.6648 7.0404 46.8058 7.0404C45.9027 7.0404 45.1758 7.8104 45.1758 8.7784V12.9364H43.9644V12.9144Z" />
     <path d="M58.3036 5.9624C60.1538 5.9624 61.6296 7.1064 61.6296 9.5484C61.6296 11.9244 60.1979 13.1344 58.2816 13.1344C56.3873 13.1344 54.9556 11.9024 54.9556 9.5484C54.9776 7.1064 56.4754 5.9624 58.3036 5.9624ZM58.3256 12.1004C59.515 12.1004 60.352 11.2204 60.352 9.5484C60.352 7.8324 59.471 6.9964 58.3256 6.9964C57.1803 6.9964 56.2772 7.8764 56.2772 9.5484C56.2772 11.2204 57.1582 12.1004 58.3256 12.1004Z" />
@@ -77,18 +50,85 @@ class AppHeader extends Component {
 
   render() {
     const { location } = this.props;
-    let classN = this.getBackgroudClass(location),
-      logo = this.getLogo();;
+    const logo = this.getLogo();
+    const additionalClassName = this.getBackgroudClass(location);
+    const navItems = (
+      <Fragment>
+        <ListItem
+          customRefProp="innerRef"
+          customAnchorNode={
+            <NavLink to="/2020/system" activeClassName={'current-active-dark'}>
+              System
+            </NavLink>
+          }
+          data-cy="topbar-system"
+        />
+        <ListItem
+          customRefProp="innerRef"
+          customAnchorNode={
+            <NavLink to="/2020/tokens" activeClassName={'current-active'}>
+              Tokens
+            </NavLink>
+          }
+          data-cy="topbar-tokens"
+        />
+        <ListItem
+          customRefProp="innerRef"
+          customAnchorNode={
+            <NavLink to="/2020/components" activeClassName={'current-active'}>
+              Components
+            </NavLink>
+          }
+          data-cy="topbar-components"
+        />
+        <ListItem
+          customRefProp="innerRef"
+          customAnchorNode={
+            <NavLink to="/2020/icons" activeClassName={'current-active'}>
+              Icons
+            </NavLink>
+          }
+          data-cy="topbar-icons"
+        />
+        <ListItem
+          customRefProp="innerRef"
+          customAnchorNode={
+            <NavLink to="/2020/personality" activeClassName={'current-active-dark'}>
+              Personality
+            </NavLink>
+          }
+          data-cy="topbar-personality"
+        />
+      </Fragment>
+    );
+
+    const mobileBrandNode = (
+      <div className="md-top-bar__brand">
+        <div className="md-brand__logo">{logo}</div>
+      </div>
+    );
 
     return (
-      <div className={'site-con site-header-con'}>
-        <div className={'site-warp site-header clear'+ classN}>
-          {logo}
-          <NavLink to="/2020/personality" activeClassName={'active'}>Personality</NavLink>
-          <NavLink to="/2020/icons" activeClassName={'active'}>Icons</NavLink>
-          <NavLink to="/2020/components" activeClassName={'active'}>Components</NavLink>
-          <NavLink to="/2020/tokens" activeClassName={'active'}>Tokens</NavLink>
-          <NavLink to="/2020/system" activeClassName={'active'}>System</NavLink>
+      <div className='site-con'>
+        <div className={'site-header-con' + additionalClassName}>
+          <Topbar
+            className="site-header-con site-header-top-bar"
+            color="light"
+            image={logo}
+            brandAnchorElement={<NavLink to="/2020" />}
+            fixed
+          >
+            <TopbarNav
+              className="site-header-top-bar-nav"
+            >
+              {navItems}
+            </TopbarNav>
+            <TopbarRight>
+            </TopbarRight>
+            <TopbarMobile shouldCloseOnClick={false} brandNode={mobileBrandNode}>
+              <SideNav logo={logo} isFixed={false} hideBrand className="docs-mobile-nav" />
+            </TopbarMobile>
+          </Topbar>
         </div>
       </div>
     );
@@ -96,20 +136,23 @@ class AppHeader extends Component {
 }
 
 AppHeader.propTypes = {
-  location: PropTypes.object,
+  getUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  location: PropTypes.object.isRequired,
   path: PropTypes.string,
-  // photo: PropTypes.string,
   search: PropTypes.object,
 };
 
 AppHeader.defaultProps = {
+  isAuthenticated: false,
   path: '',
-  // photo: null,
   search: null,
 };
 
 function mapStateToProps(state) {
   return {
+    isAuthenticated: state.user.isAuthenticated,
+    photo: state.user.photo,
     path: state.router.location.pathname,
     search: _.chain(state.router.location.search)
       .replace('?', '')
@@ -124,5 +167,9 @@ AppHeader.displayName = 'AppHeader2020';
 export default withRouter(
   connect(
     mapStateToProps,
+    {
+      getUser,
+    }
   )(AppHeader)
 );
+

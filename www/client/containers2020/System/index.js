@@ -2,6 +2,9 @@ import React from 'react';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
 
+// Import page images
+import blockGif from '../../assets/2020/system-block-animation.gif';
+
 class System extends React.PureComponent {
 
   render() {
@@ -64,7 +67,7 @@ class System extends React.PureComponent {
               ))}
             </div>
             <div>
-              <img src="/assets/2020/system-block-animation.gif" />
+              <img src={blockGif} />
             </div>
             <SectionHeader
               className="system-blocks-section-header"

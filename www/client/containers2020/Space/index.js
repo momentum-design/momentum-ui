@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@momentum-ui/react';
 import { Badge } from '@momentum-ui/react';
 import TokenDisplayTable from '../../components2020/TokenDisplayTable';
 import Example from '../../components2020/Example';
@@ -8,6 +7,15 @@ import SectionHeader from '../../components2020/SectionHeader';
 import SectionTitle from '../../components2020/SectionTitle';
 import locale from './locale';
 import PageHero from '../../components2020/PageHero';
+
+// Import page images
+import spaceBanner from '../../assets/2020/banner-space.svg';
+import stackExample from '../../assets/2020/space-stack-example.png';
+import inlineExample from '../../assets/2020/space-inline-example.png';
+import insetExample from '../../assets/2020/space-inset-example.png';
+import exceptionExample from '../../assets/2020/space-exception-example.png';
+import webexTeamsExample from '../../assets/2020/space-webex-teams-example.png';
+
 const spaceTokens = require('@momentum-ui/tokens/src/core/space.js');
 
 class Space extends React.PureComponent {
@@ -53,7 +61,7 @@ class Space extends React.PureComponent {
       <div className="site-con">
         <PageHero
           backgroundColor='#FFE0E7'
-          backgroundImage='/assets/2020/banner-space.svg'
+          backgroundImage={spaceBanner}
           backgroundSize='450px'
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=2647%3A661'
           githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/space.json'
@@ -73,7 +81,7 @@ class Space extends React.PureComponent {
             />
             <Example className="custom-side-example">
               <div className="spacing-example">
-                <img src="/assets/2020/space-stack-example.png" />
+                <img src={stackExample} />
               </div>
             </Example>
           </div>
@@ -86,7 +94,7 @@ class Space extends React.PureComponent {
             />
             <Example className="custom-side-example">
               <div className="spacing-example">
-                <img src="/assets/2020/space-inline-example.png" />
+                <img src={inlineExample} />
               </div>
             </Example>
           </div>
@@ -99,7 +107,7 @@ class Space extends React.PureComponent {
             />
             <Example className="custom-side-example">
               <div className="spacing-inset-example">
-                <img className="site-example-image" src="/assets/2020/space-inset-example.png" />
+                <img className="site-example-image" src={insetExample} />
               </div>
             </Example>
           </div>
@@ -112,7 +120,7 @@ class Space extends React.PureComponent {
             </div>
             <Example className="custom-side-example">
               <div className="spacing-exception-example">
-                <img src="/assets/2020/space-exception-example.png" />
+                <img src={exceptionExample} />
               </div>
             </Example>
           </div>
@@ -120,7 +128,7 @@ class Space extends React.PureComponent {
             subtitle="Example: Control Hub"
           >
             <div className="spacing-control-hub-example">
-              <img className="site-example-image" src="/assets/2020/space-webex-teams-example.png" />
+              <img className="site-example-image" src={webexTeamsExample} />
             </div>
           </Example>
           <TokenNavigation 

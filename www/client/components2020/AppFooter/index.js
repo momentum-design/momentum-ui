@@ -42,13 +42,13 @@ class AppFooter extends Component {
         </div>
         <div className={'site-warp flex-con-row'}>
           <div className={'flex-item'}></div>
-          <div className={'site-flex-item'}>
-            <p>© 2020 Cisco and/or its affiliates. All rights reserved.</p>
-            <p className='site-friend-link'>
+          <div className={'footer-bottom-text'}>
+            <div>© 2020 Cisco and/or its affiliates. All rights reserved.</div>
+            <div className='site-friend-link'>
               <a>Support & Feedback</a>
               <a>Privacy Policy</a>
               <a>Cookie Policy</a>
-            </p>
+            </div>
           </div>
         </div>
       </div>

@@ -1,13 +1,15 @@
 import reduce from 'lodash/reduce';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from '@momentum-ui/react';
 import { connect } from 'react-redux';
 import { InputSearch } from '@momentum-ui/react';
 import IconsList from './IconsList';
 import fetchIcons from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
+
+// Import page images
+import iconBanner from '../../assets/2020/banner-icons.svg';
 
 class IconsContainer extends React.Component {
   state = {
@@ -64,7 +66,7 @@ class IconsContainer extends React.Component {
       <div className="site-con">
         <PageHero
           backgroundColor='#F2F4FF'
-          backgroundImage='/assets/2020/banner-icons.svg'
+          backgroundImage={iconBanner}
           backgroundSize='450px'
           figmaURL='https://www.figma.com/file/jwIr6nD0hC7r1K87LaYkJn/Momentum-icons?node-id=0%3A1'
           githubURL='https://github.com/momentum-design/momentum-ui/tree/master/icons'

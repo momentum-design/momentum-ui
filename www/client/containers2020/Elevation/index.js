@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@momentum-ui/react';
 import { Badge } from '@momentum-ui/react';
 import TokenDisplayTable from '../../components2020/TokenDisplayTable';
 import Example from '../../components2020/Example';
@@ -8,6 +7,12 @@ import SectionTitle from '../../components2020/SectionTitle';
 import SectionHeader from '../../components2020/SectionHeader';
 import locale from './locale';
 import PageHero from '../../components2020/PageHero';
+
+// Import page images
+import elevationBanner from '../../assets/2020/banner-elevation.svg';
+import webexDevelopersExample from '../../assets/2020/elevation-webex-developers-example.png';
+import controlHubExample from '../../assets/2020/elevation-control-hub-example.png';
+
 const elevationTokens = require('@momentum-ui/tokens/src/core/elevation.js');
 
 class Elevation extends React.PureComponent {
@@ -114,7 +119,7 @@ class Elevation extends React.PureComponent {
       <div className="site-con">
         <PageHero
           backgroundColor='#DDF2AE'
-          backgroundImage='/assets/2020/banner-elevation.svg'
+          backgroundImage={elevationBanner}
           backgroundSize='600px'
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789'
           githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/elevation.json'
@@ -148,7 +153,7 @@ class Elevation extends React.PureComponent {
             subtitle="Example: Webex for Developers"
           >
             <div className="elevation-webex-example">
-              <img className="site-example-image" src="/assets/2020/elevation-webex-developers-example.png" />
+              <img className="site-example-image" src={webexDevelopersExample} />
             </div>
           </Example>
 
@@ -208,7 +213,7 @@ class Elevation extends React.PureComponent {
             subtitle="Example: Control Hub"
           >
             <div className="elevation-control-hub-example">
-              <img className="site-example-image" src="/assets/2020/elevation-control-hub-example.png" />
+              <img className="site-example-image" src={controlHubExample} />
             </div>
           </Example>
           <TokenNavigation

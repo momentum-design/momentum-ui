@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.56.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.55.0...@momentum-ui/icons@7.56.0) (2020-10-01)
+
+
+### Features
+
+* **icons:** add contact-group_20 ([c6a9f32](https://github.com/momentum-design/momentum-ui/commit/c6a9f32a684072a1c7b5e67e9ec8469e6ff00c5e))
+* **icons:** add disconnect-contact_16 ([5b744d1](https://github.com/momentum-design/momentum-ui/commit/5b744d130fbacef743a657127aefcae008c14712))
+* **icons:** add file-excel-active_72 ([8b979fe](https://github.com/momentum-design/momentum-ui/commit/8b979fe0f7c9ec4f412c69cbd5298cef4a5c4907))
+* **icons:** add generic-device-video_12 ([8cbfbbe](https://github.com/momentum-design/momentum-ui/commit/8cbfbbe5d82f16581d3fa935fabfe05a756ad130))
+* **icons:** add generic-device-video_14 ([1566ff4](https://github.com/momentum-design/momentum-ui/commit/1566ff4ff07cdebff583e065b480e72f06451e64))
+* **icons:** add generic-device-video_16 ([ec28b52](https://github.com/momentum-design/momentum-ui/commit/ec28b52430973c6ab472639d21e2164ed97c97eb))
+* **icons:** add generic-device-video_20 ([ee0a09c](https://github.com/momentum-design/momentum-ui/commit/ee0a09c6f430b1701e3e8ee66584351167036c79))
+* **icons:** add meet-end_16 ([b808a64](https://github.com/momentum-design/momentum-ui/commit/b808a64a78ab527a2a58fa71ce7d86511de39e5a))
+* **icons:** add product-demo_16 ([9dff0ad](https://github.com/momentum-design/momentum-ui/commit/9dff0ad4fde2e02c51a5a43125e4138875fb8af3))
+* **icons:** add Queue-lookup_16 ([a065712](https://github.com/momentum-design/momentum-ui/commit/a0657123956ab18c2ad580985cee6f6f6f7bccb5))
+* **icons:** add subscript_16 ([a765787](https://github.com/momentum-design/momentum-ui/commit/a7657870a12080209afa9054f2bfc79e20e07dda))
+* **icons:** add superscript_16 ([feac0bf](https://github.com/momentum-design/momentum-ui/commit/feac0bf359babefc0f93c642b765f14ea09d589b))
+* **icons:** add telepresence-ix5000_16 ([0a45253](https://github.com/momentum-design/momentum-ui/commit/0a45253e86f015abf34eb72fe2ad1b66d2063785))
+* **icons:** add telepresence-ix5000_20 ([5bf88fe](https://github.com/momentum-design/momentum-ui/commit/5bf88fedd39764a4958ede730c097a07a475495d))
+* **icons:** add text-table_16 ([5edb4c1](https://github.com/momentum-design/momentum-ui/commit/5edb4c1dc7761cfccf9e759d7bf9e1e06847770c))
+* **icons:** add video-layout_16 ([b9e5932](https://github.com/momentum-design/momentum-ui/commit/b9e59326ea4204538648055eacaa66fdfafb93a9))
+* **icons:** add webex-community_20 ([62feb73](https://github.com/momentum-design/momentum-ui/commit/62feb73b990c29303e796feb4139b4abda4f5278))
+
+
+
+
+
 # [7.55.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.54.0...@momentum-ui/icons@7.55.0) (2020-09-29)
 
 

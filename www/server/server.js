@@ -8,10 +8,12 @@ import config from './config';
 const app = express();
 const port = config.PORT;
 
+
 mongoose
   .connect(config.MONGODB_URI)
   .then(() => console.info('connection succesful')) // eslint-disable-line no-console
   .catch(err => console.error(err)); // eslint-disable-line no-console
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

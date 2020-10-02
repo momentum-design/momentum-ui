@@ -1,0 +1,45 @@
+.space-token-row {
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
+  & + .space-token-row {
+    margin-top: 80px;
+  }
+}
+
+.custom-side-example {
+  height: 100%;
+  min-height: 190px;
+  margin: 0;
+
+  & > .example-container-banner {
+    height: 100%;
+    padding: 32px 0;
+  }
+}
+
+h5.space-token-description-text {
+  @include h5();
+  height: 0;
+}
+
+h5.space-exception-text {
+  margin-top: 12px;
+  height: auto;
+}
+
+.spacing-example {
+  @include example-image($align-items: center, $img-width: 90%);
+}
+
+.spacing-inset-example {
+  @include example-image($align-items: center, $img-width: calc(200% / 3));
+}
+
+.spacing-exception-example {
+  @include example-image($align-items: center, $img-width: 85%);
+}
+
+.spacing-control-hub-example {
+  @include example-image($img-width: 90%, $img-margin: 57px 0 0 0);
+}

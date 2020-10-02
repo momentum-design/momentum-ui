@@ -1,0 +1,29 @@
+.section-header {
+  margin: 80px 0;
+  grid-column-gap: 30px;
+
+  @include site-column-breakpoint {
+    grid-row-gap: 30px;
+  }
+  
+  h1 {
+    color: $md-black;
+    font-family: $brand-font-regular;
+    font-size: 48px;
+    line-height: 125%;
+  }
+
+  p {
+    @include p();
+  }
+
+  &-dark {
+    h1 {
+      color: $md-white;
+    }
+
+    p {
+      color: $md-gray-40;
+    }
+  }
+}

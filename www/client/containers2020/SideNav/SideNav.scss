@@ -1,0 +1,16 @@
+.docs-side-nav,
+.docs-mobile-nav {
+  box-shadow: -1px solid $black-08;
+  grid-area: sidebar;
+  z-index: $zindex-top-bar-fixed + 1;
+}
+
+.docs-mobile-nav {
+  background: $md-white-100;
+  width: 100%;
+  max-width: 100%;
+}
+
+.md-list-separator {
+  background: $md-white-100 !important;
+}

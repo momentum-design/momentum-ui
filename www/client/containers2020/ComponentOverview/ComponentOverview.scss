@@ -1,0 +1,49 @@
+.docs-component-overview {
+  padding: rem-calc(24) rem-calc(30);
+
+  &__spinner {
+    text-align: center;
+    padding: rem-calc(100);
+  }
+
+  &__top {
+    height: rem-calc(72);
+
+    .md-input-container {
+      width: rem-calc(272);
+    }
+  }
+
+  &__component-list {
+    margin-left: rem-calc(-20);
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 0 rem-calc(20) rem-calc(20);
+    }
+  }
+  
+  &__table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    table-layout: fixed;
+    tr {
+      border-bottom: 1px solid #e6e8e8;
+    }
+
+    th, td {
+      padding: rem-calc(16) rem-calc(20);
+    }
+
+    th {
+      border-bottom: 1px solid #b4b6b8;
+    }
+  }
+}
+
+.md-tab__content {
+  margin-top: rem-calc(50);
+  border: none;
+}

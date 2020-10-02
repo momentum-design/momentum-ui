@@ -1,7 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>file-excel-active_16</title>
-    <g id="file-excel-active_16" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M9.086,0 C9.351,0 9.605,0.105 9.793,0.293 L13.707,4.207 C13.895,4.395 14,4.648 14,4.914 L14,14 C14,15.105 13.105,16 12,16 L4,16 C2.895,16 2,15.105 2,14 L2,2 C2,0.895 2.895,0 4,0 L9.086,0 Z M6.04011,5.08 L4.72011,5.08 L7.38211,8.908 L4.52211,13 L5.78711,13 L8.00911,9.799 L10.13211,13 L11.47411,13 L8.62511,8.875 L11.38611,5.08 L10.11011,5.08 L8.05311,8.028 L6.04011,5.08 Z" id="Shape" fill="#171B1F" fill-rule="nonzero"></path>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.793 0.293L13.707 4.207C13.895 4.395 14 4.648 14 4.914V14C14 15.105 13.105 16 12 16H4C2.895 16 2 15.105 2 14V2C2 0.895 2.895 0 4 0H9.086C9.351 0 9.605 0.105 9.793 0.293ZM10.1101 5.08H11.3861L8.62511 8.875L11.4741 13H10.1321L8.00911 9.799L5.78711 13H4.52211L7.38211 8.908L4.72011 5.08H6.04011L8.05311 8.028L10.1101 5.08Z" fill="#121212"/>
 </svg>

@@ -1,0 +1,470 @@
+.docs-icons {
+  $item-margin-left: 20px;
+
+  @function item-width($nav-width, $total) {
+    @return calc((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total});
+  }
+  @function icon-size($nav-width, $total) {
+    @return calc(((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total}) * 0.8);
+  }
+  @function icon-font-size($nav-width, $total) {
+    @return calc(((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total}) * 0.32);
+  }
+
+  &__viewer {
+    position: relative;
+    background-color: $md-gray-30;
+    margin-bottom: 2rem;
+    height: 0;
+    width: 100%;
+    display: none;
+    &--arrow {
+      position: absolute;
+      margin-top: -12px;
+      margin-left: -10px;
+      border-right: 10px solid transparent;
+      border-bottom: 14px solid $md-gray-30;
+      border-left: 10px solid transparent;
+      width: 22px;
+    }
+    &--close {
+      @include flex($jc: flex-end);
+      margin: 1rem 2rem 0 0;
+    }
+    &--feedback {
+      @include flex($jc: flex-end);
+      margin: 0.5rem 2rem 1rem;
+    }
+    &--body {
+      max-height: 412px;
+      overflow: scroll;
+    }
+  }
+  &__top-2020 {
+    @include flex($fw: wrap, $jc: space-between);
+    height: rem-calc(100);
+    margin: 0;
+    .md-input-container {
+      width: rem-calc(368);
+      margin: 0;
+    }
+  }
+  &__list {
+    @include flex($fw: wrap, $jc: flex-start, $ai: flex-start);
+    &-item {
+      @include button-base;
+      @include flex($fd: column);
+      margin-bottom: rem-calc(20);
+      margin-left: $item-margin-left;
+      cursor: pointer;
+      border-radius: 0;
+      &--icon {
+        @extend %icon;
+        @include flex;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        background-color: $black-8;
+        border-radius: 0.25rem;
+        &:before {
+          width: inherit;
+        }
+      }
+      &--name {
+        font-size: rem-calc(16);
+      }
+      @media #{$small-only} {
+        width: item-width(0px, 2);
+        &--icon {
+          width: icon-size(0px, 2);
+          height: icon-size(0px, 2);
+          &:before {
+            font-size: icon-font-size(0px, 2);
+          }
+        }
+      }
+      @media #{$medium-only} {
+        width: item-width(0px, 4);
+        &--icon {
+          width: icon-size(0px, 4);
+          height: icon-size(0px, 4);
+          &:before {
+            font-size: icon-font-size(0px, 4);
+          }
+        }
+      }
+      @media #{$large-only} {
+        width: item-width($side-nav-width, 6);
+        &--icon {
+          width: icon-size($side-nav-width, 6);
+          height: icon-size($side-nav-width, 6);
+          &:before {
+            font-size: icon-font-size($side-nav-width, 6);
+          }
+        }
+      }
+      @media #{$xlarge-only} {
+        width: item-width($side-nav-width, 8);
+        &--icon {
+          width: icon-size($side-nav-width, 8);
+          height: icon-size($side-nav-width, 8);
+          &:before {
+            font-size: icon-font-size($side-nav-width, 8);
+          }
+        }
+      }
+      @media #{$xxlarge-up} {
+        width: item-width($side-nav-width, 10);
+        &--icon {
+          width: icon-size($side-nav-width, 10);
+          height: icon-size($side-nav-width, 10);
+          &:before {
+            font-size: icon-font-size($side-nav-width, 10);
+          }
+        }
+      }
+    }
+  }
+
+  &__header {
+    text-align: center;
+    font-size: rem-calc(26);
+    padding-bottom: rem-calc(20);
+  }
+  &__content {
+    @include flex($fd: row, $ai: flex-start, $ac: flex-start);
+    padding: 0 2rem;
+    @media #{$small-only} {
+      flex-flow: column;
+      justify-content: flex-start;
+    }
+    &--icon {
+      @extend %icon;
+      @include flex;
+      width: rem-calc(272);
+      height: rem-calc(272);
+      background-color: $md-white-100;
+      margin-bottom: rem-calc(22);
+      &:before {
+        padding: rem-calc(20);
+      }
+      &[class*='icon--w'] {
+        background-color: $black-40;
+      }
+      @media #{$small-up} {
+        width: rem-calc(100);
+        height: rem-calc(100);
+      }
+      @media #{$medium-up} {
+        width: rem-calc(100);
+        height: rem-calc(100);
+      }
+      @media #{$large-up} {
+        width: rem-calc(200);
+        height: rem-calc(200);
+      }
+      @media #{$xlarge-up} {
+        width: rem-calc(272);
+        height: rem-calc(272);
+      }
+    }
+    &--info {
+      &:not(:first-child) {
+        margin-left: rem-calc(32);
+        padding-left: rem-calc(20);
+        border-left: 2px solid $black-4;
+      }
+      &__section {
+        h2 {
+          color: $md-black-100;
+          font-size: rem-calc(16);
+          margin-bottom: rem-calc(4);
+        }
+        margin-bottom: rem-calc(22);
+      }
+      @media #{$small-only} {
+        margin-left: rem-calc(32);
+        padding-left: rem-calc(20);
+        &:not(:first-child) {
+          border-left: none;
+        }
+      }
+    }
+    .download-item {
+      code {
+        padding-left: 0;
+      }
+      p {
+        color: $md-gray-50;
+        font-size: rem-calc(12);
+        line-height: 1;
+      }
+      margin-bottom: rem-calc(16);
+    }
+    @media #{$medium-up} {
+      flex-direction: row;
+    }
+  }
+}
+
+.icon {
+  &__swatch {
+    display: inline-block;
+    width: rem-calc(28);
+    height: rem-calc(28);
+    border: 2px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 1px $black-08;
+    margin-right: 8px;
+    &.selected {
+      border: 2px solid $md-theme-50;
+    }
+    &--default {
+      background-color: $md-black-100;
+      &:hover {
+        background-color: $md-black-100;
+      }
+    }
+    &--w {
+      background-color: $md-white-100;
+      &:hover {
+        background-color: $md-white-100;
+      }
+    }
+    &--w60 {
+      background-color: $white-60;
+      &:hover {
+        background-color: $white-60;
+      }
+    }
+    &--d20 {
+      background-color: $black-20;
+      &:hover {
+        background-color: $black-20;
+      }
+    }
+    &--d40 {
+      background-color: $black-40;
+      &:hover {
+        background-color: $black-40;
+      }
+    }
+    &--d60 {
+      background-color: $black-60;
+      &:hover {
+        background-color: $black-60;
+      }
+    }
+    &--d80 {
+      background-color: $black-80;
+      &:hover {
+        background-color: $black-80;
+      }
+    }
+    &--a1 {
+      background-color: $md-purple-50;
+      &:hover {
+        background-color: $md-purple-50;
+      }
+    }
+    &--a2 {
+      background-color: $md-purple-70;
+      &:hover {
+        background-color: $md-purple-70;
+      }
+    }
+    &--a3 {
+      background-color: $md-purple-20;
+      &:hover {
+        background-color: $md-purple-20;
+      }
+    }
+    &--b1 {
+      background-color: $md-theme-50 ;
+      &:hover {
+        background-color: $md-theme-50 ;
+      }
+    }
+    &--b2 {
+      background-color: $md-theme-70 ;
+      &:hover {
+        background-color: $md-theme-70 ;
+      }
+    }
+    &--b3 {
+      background-color: $md-theme-20 ;
+      &:hover {
+        background-color: $md-theme-20 ;
+      }
+    }
+    &--g1 {
+      background-color: $md-green-50;
+      &:hover {
+        background-color: $md-green-50;
+      }
+    }
+    &--g2 {
+      background-color: $md-green-70;
+      &:hover {
+        background-color: $md-green-70;
+      }
+    }
+    &--g3 {
+      background-color: $md-green-20;
+      &:hover {
+        background-color: $md-green-20;
+      }
+    }
+    &--m1 {
+      background-color: $md-mint-50;
+      &:hover {
+        background-color: $md-mint-50;
+      }
+    }
+    &--m2 {
+      background-color: $md-mint-60;
+      &:hover {
+        background-color: $md-mint-60;
+      }
+    }
+    &--m3 {
+      background-color: $md-mint-20;
+      &:hover {
+        background-color: $md-mint-20;
+      }
+    }
+    &--o1 {
+      background-color: $md-orange-50;
+      &:hover {
+        background-color: $md-orange-50;
+      }
+    }
+    &--o2 {
+      background-color: $md-orange-70;
+      &:hover {
+        background-color: $md-orange-70;
+      }
+    }
+    &--o3 {
+      background-color: $md-orange-20;
+      &:hover {
+        background-color: $md-orange-20;
+      }
+    }
+    &--r1 {
+      background-color: $md-red-50 ;
+      &:hover {
+        background-color: $md-red-50 ;
+      }
+    }
+    &--r2 {
+      background-color: $md-red-70 ;
+      &:hover {
+        background-color: $md-red-70 ;
+      }
+    }
+    &--r3 {
+      background-color: $md-red-20 ;
+      &:hover {
+        background-color: $md-red-20 ;
+      }
+    }
+    &--y1 {
+      background-color: $md-yellow-50;
+      &:hover {
+        background-color: $md-yellow-50;
+      }
+    }
+    &--y2 {
+      background-color: $md-yellow-70;
+      &:hover {
+        background-color: $md-yellow-70;
+      }
+    }
+    &--y3 {
+      background-color: $md-yellow-20;
+      &:hover {
+        background-color: $md-yellow-20;
+      }
+    }
+  }
+  &--w {
+    color: $md-white-100;
+  }
+  &--w60 {
+    color: $white-60;
+  }
+  &--d20 {
+    color: $black-20;
+  }
+  &--d40 {
+    color: $black-40;
+  }
+  &--d60 {
+    color: $black-60;
+  }
+  &--d80 {
+    color: $black-80;
+  }
+  &--a1 {
+    color: $md-purple-50;
+  }
+  &--a2 {
+    color: $md-purple-70;
+  }
+  &--a3 {
+    color: $md-purple-20;
+  }
+  &--b1 {
+    color: $md-theme-50 ;
+  }
+  &--b2 {
+    color: $md-theme-70 ;
+  }
+  &--b3 {
+    color: $md-theme-20 ;
+  }
+  &--g1 {
+    color: $md-green-50;
+  }
+  &--g2 {
+    color: $md-green-70;
+  }
+  &--g3 {
+    color: $md-green-20;
+  }
+  &--m1 {
+    color: $md-mint-50;
+  }
+  &--m2 {
+    color: $md-mint-60;
+  }
+  &--m3 {
+    color: $md-mint-20;
+  }
+  &--o1 {
+    color: $md-orange-50;
+  }
+  &--o2 {
+    color: $md-orange-70;
+  }
+  &--o3 {
+    color: $md-orange-20;
+  }
+  &--r1 {
+    color: $md-red-50 ;
+  }
+  &--r2 {
+    color: $md-red-70 ;
+  }
+  &--r3 {
+    color: $md-red-20 ;
+  }
+  &--y1 {
+    color: $md-yellow-50;
+  }
+  &--y2 {
+    color: $md-yellow-70;
+  }
+  &--y3 {
+    color: $md-yellow-20;
+  }
+}

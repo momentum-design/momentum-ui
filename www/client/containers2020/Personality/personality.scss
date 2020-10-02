@@ -1,0 +1,287 @@
+.personality-page-hero {
+  p.site-banner-normal-title {
+    color: $md-white;
+  }
+}
+
+.site-banner-con-personality {
+  background:#171B1F;
+  .site-banner-normal {
+    background-image: url(../assets/2020/banner-system.svg);
+    background-size: contain;
+
+    p {
+      color: $md-white;
+    }
+  }
+}
+
+.personality-header-copy {
+  .section-header__title h1 {
+    height: calc(100% + 46px);
+    background-image: url(../assets/2020/personality-header-copy.svg);
+    background-size: 330px;
+  }
+}
+
+.personality-header-illustration {
+  .section-header__title h1 {
+    height: calc(100% + 46px);
+    background-image: url(../assets/2020/personality-header-illustration.svg);
+    background-size: 215px;
+  }
+}
+
+.personality-header-motion {
+  .section-header__title h1 {
+    height: 250px;
+    background-image: url(../assets/2020/personality-header-motion.svg);
+    background-size: 250px;
+  }
+}
+
+.personality-header-copy,
+.personality-header-illustration,
+.personality-header-motion {
+  .section-header__title h1 {
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: bottom;
+
+    @include site-column-breakpoint {
+      background: none;
+      height: auto;
+    }
+  }
+}
+
+.personality-example-row {
+  margin-top: 75px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
+  .example-container {
+    margin: 0;
+  }
+}
+
+.personality-example-row-item {
+  @include example-image($align-items: center, $img-width: 90%);
+}
+
+.personality-webex-example {
+  @include example-image($img-width: 70%, $img-margin: 25px 0 0 0);
+}
+
+.personality-story-illustation-example {
+  @include example-image($align-items: center, $img-width: 100%);
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.personality-technical-illustration-example {
+  @include example-image($img-width: 88%, $justify-content: flex-start);
+}
+
+.personality-attributes-bullet-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 33px;
+  margin: 80px 0;
+
+  @include site-column-breakpoint {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 15px;
+  }
+
+  .personality-attributes-bullet {
+    display: flex;
+    align-items: center;
+
+    div {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      margin-right: 13px;
+    }
+
+    p {
+      font-family: $brand-font-regular;
+      font-size: 36px;
+      line-height: 56px;
+    }
+  }
+}
+
+p.personality-header-lead {
+  font-size: 24px; 
+}
+
+.personality-section-divider {
+  border-width: 2px;
+  border-color: rgba(34,199,214,0.2);
+}
+
+.personality-description-container {
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
+  div {
+    margin-right: 130px;
+
+    @include site-column-breakpoint {
+      margin-right: 0;
+    }
+
+    h5 {
+      @include h5($color: $md-white, $font-size: 2.25rem, $font-weight: $font-weight-bold, $line-height: 75%);
+      margin-bottom: 18px;
+    }
+
+    p {
+      @include p($color: $md-white);
+    }
+  }
+}
+
+.personality-writing-tips-container {
+  margin-top: 75px;
+
+  h3 {
+    @include h3($color: $md-white, $font-weight: $font-weight-bold, $line-height: 75%);
+    margin-bottom: 20px;
+  }
+
+  p {
+    @include p($color: $md-white);
+    margin-top: 43px;
+  }
+
+  &__buttons {
+    margin: 29px 0 80px 0;
+  }
+}
+
+.personality-writing-tips-grid {
+
+  &__container {
+    padding: 68px 72px;
+
+    &:nth-of-type(even) {
+      border-left: 1px solid rgba(34,199,214,0.4);
+
+      @include site-column-breakpoint {
+        border: none;
+      }
+    }
+
+    &:nth-of-type(odd) {
+      padding-left: 0;
+    }
+
+    &:nth-of-type(n + 3) {
+      border-top: 1px solid rgba(34,199,214,0.4);
+
+      @include site-column-breakpoint {
+        border: none;
+      }
+    }
+
+    @include site-column-breakpoint {
+      margin-top: 30px;
+      padding: 0;
+    }
+
+    h4 {
+      @include h4($color: $md-white, $font-size: 1.5rem, $font-weight: $font-weight-bold, $line-height: 75%);
+      margin-bottom: 18px;
+    }
+
+    p {
+      @include p($color: $md-white, $font-weight: 350);
+      margin-top: 0;
+    }
+  }
+}
+
+.personality-illustration-tips-container {
+  margin-top: 80px;
+  color: $md-white;
+
+  h3 {
+    @include h3($color: $md-white, $font-weight: $font-weight-bold, $line-height: 75%);
+    margin-bottom: 29px;
+  }
+
+  p {
+    @include p($color: $md-white);
+    margin-top: 43px;
+  }
+
+  &__example {
+    margin-top: 30px;
+
+    & + & {
+      margin-top: 70px;
+    }
+
+    p {
+      @include p($color: $md-white, $font-size: 1.5rem, $line-height: 116%);
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    margin: 29px 0 80px 0;
+  }
+}
+
+.personality-illustration-tips-example {
+  margin-top: 30px;
+
+  &-item {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      max-width: 80%;
+    }
+  }
+}
+
+.personality-illustration-tips-container__buttons,
+.personality-writing-tips-container__buttons {
+  .md-button__children {
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .md-button::before{
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 13px;
+    height: 22px;
+    background-size: contain !important;
+  }
+
+  .icon-button-share {
+    background-color: transparent;
+    border: 1px solid $md-white;
+    color: $md-white;
+
+    &::before {
+      width: 15px;
+      background: url('../assets/2020/banner-figma.svg');
+    }
+  }
+
+  a + a {
+    margin-left: 20px;
+  }
+}

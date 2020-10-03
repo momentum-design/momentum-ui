@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.57.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.56.0...@momentum-ui/icons@7.57.0) (2020-10-03)
+
+
+### Features
+
+* **icons:** add file-excel-active_12 ([2b4c536](https://github.com/momentum-design/momentum-ui/commit/2b4c536ebc32956045e98a27f804f48f1f587189))
+* **icons:** add file-excel-active_16 ([7dfe343](https://github.com/momentum-design/momentum-ui/commit/7dfe343046fa6670044a016947bde9a1bc4c8f90))
+* **icons:** add file-excel-active_20 ([8432a41](https://github.com/momentum-design/momentum-ui/commit/8432a4176eed4abdce5711e2d16b0020a567c9f6))
+* **icons:** add file-excel-active_24 ([da1f2b5](https://github.com/momentum-design/momentum-ui/commit/da1f2b5fd52a1c8348ef9b56ab8d0fc944df8f23))
+* **icons:** add file-excel-active_28 ([9fd20dd](https://github.com/momentum-design/momentum-ui/commit/9fd20dd250fccebd666c94612cb46211038ba642))
+* **icons:** add file-excel-active_32 ([37c13f0](https://github.com/momentum-design/momentum-ui/commit/37c13f0d527a00da86730e6660863ec40e3e8b5c))
+* **icons:** add file-excel-active_36 ([7a6b495](https://github.com/momentum-design/momentum-ui/commit/7a6b4954b09db91fed76488cfd0711623f332fb1))
+* **icons:** add file-excel-active_40 ([d540704](https://github.com/momentum-design/momentum-ui/commit/d54070473df47ea508aa21efd597f491694ec1d7))
+* **icons:** add file-excel-active_44 ([9fb6150](https://github.com/momentum-design/momentum-ui/commit/9fb6150018fd9a0187b55edc53399a8607b52b92))
+
+
+
+
+
 # [7.56.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.55.0...@momentum-ui/icons@7.56.0) (2020-10-01)
 
 

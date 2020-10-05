@@ -1,5 +1,9 @@
-.docs-component-overview {
-  padding: rem-calc(24) rem-calc(30);
+.component-section-header-link {
+  text-decoration: underline;
+  color: $md-gray-70;
+}
+
+.site-component-overview {
 
   &__spinner {
     text-align: center;
@@ -15,30 +19,13 @@
   }
 
   &__component-list {
-    margin-left: rem-calc(-20);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+    grid-column-gap: 1px;
+    grid-row-gap: 40px;
 
-    li {
-      display: inline-block;
+    div {
       vertical-align: top;
-      margin: 0 0 rem-calc(20) rem-calc(20);
-    }
-  }
-  
-  &__table {
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-    table-layout: fixed;
-    tr {
-      border-bottom: 1px solid #e6e8e8;
-    }
-
-    th, td {
-      padding: rem-calc(16) rem-calc(20);
-    }
-
-    th {
-      border-bottom: 1px solid #b4b6b8;
     }
   }
 }

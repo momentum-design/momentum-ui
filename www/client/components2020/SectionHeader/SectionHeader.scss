@@ -13,7 +13,7 @@
     line-height: 125%;
   }
 
-  p {
+  p, &__lead {
     @include p();
   }
 

@@ -1,0 +1,31 @@
+.site-component-item {
+  @include flex($fd: column, $ai: center);
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+
+  &--link{
+    display: block;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  &--thumbnail {
+    background-color: $md-gray-10;
+    width: 100%;
+    height: 280px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px 4px 0 0;
+  }
+
+  &--info {
+    @include flex($fd: column);
+    margin: rem-calc(20);
+
+    & > &__title {
+      @include h4($font-weight: $font-weight-bold);
+      color: $md-black-100;
+    }
+  }
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@momentum-ui/react';
+import SectionHeader from '../../components2020/SectionHeader';
+import locale from './locale';
 
 class HomePage extends React.PureComponent {
 
@@ -17,40 +19,37 @@ class HomePage extends React.PureComponent {
 
   render() {
 
-    const subTitle = (
-      <div className='flex-con-row site-subtitle site-subtitle-home'>
-        <div className='flex-item'>
-          <h1>Tokens</h1>
-        </div>
-        <div className='flex-item flex-margin'>
-          <p>Design tokens are the core visual properties of the design system that define our experiences' style. Tokens include color values, typography, sizing units (pixels, rems, etc.), and spacing.</p>
-        </div>
-      </div>
-    );
-
     const squares1 = (
-      <div className='flex-con-row site-home-subcon'>
-        <div className='flex-item site-home-subcon-item site-home-color'>
-          <p>Color</p>
-          <a className='arrow'></a>
-        </div>
-        <div className='flex-item site-home-subcon-item site-home-typography flex-margin'>
-          <p>Typography</p>
-          <a className='arrow'></a>
-        </div>
+      <div className='site-responsive-row site-home-subcon'>
+        <a href="/2020/tokens/color">
+          <div className='site-home-subcon-item site-home-color'>
+            <p>Color</p>
+            <div className='arrow'></div>
+          </div>
+        </a>
+        <a href="/2020/tokens/typography">
+          <div className='site-home-subcon-item site-home-typography'>
+            <p>Typography</p>
+            <div className='arrow'></div>
+          </div>
+        </a>
       </div>
     );
 
     const squares2 = (
-      <div className='flex-con-row site-home-subcon'>
-        <div className='flex-item site-home-subcon-item site-home-elevation'>
-          <p>Elevation</p>
-          <a class='arrow'></a>
-        </div>
-        <div className='flex-item site-home-subcon-item site-home-space flex-margin'>
-          <p>Space</p>
-          <a className='arrow'></a>
-        </div>
+      <div className='site-responsive-row site-home-subcon'>
+        <a href="/2020/tokens/elevation">
+          <div className='site-home-subcon-item site-home-elevation'>
+            <p>Elevation</p>
+            <div class='arrow'></div>
+          </div>
+        </a>
+        <a href="/2020/tokens/space">
+          <div className='site-home-subcon-item site-home-space'>
+            <p>Space</p>
+            <div className='arrow'></div>
+          </div>
+        </a>
       </div>
     );
 
@@ -129,17 +128,22 @@ of the ways our personality comes to life in:<strong>Copy, Illustration, and Mot
       <div className="site-con">
         <div className="site-con site-bg-black">
           <div className='site-warp fix-margin site-banner-home'>
-            <h1>Momentum Design System</h1>
-            <p>Momentum is how Webex designs the future of work. This design system exists to create a shared design language and set of building blocks for all Webex products.</p>
-            <Button
-              ariaLabel='Learn about the system'
-              className="site-banner-home-button md-button--blue"
-              size={52}
-            >Learn about the system</Button>
+            <h1>{locale.header.title}</h1>
+            <p>{locale.header.body}</p>
+            <a href="/2020/system">
+              <Button
+                ariaLabel='Learn about the system'
+                className="site-banner-home-button md-button--blue"
+                size={52}
+              >Learn about the system</Button>
+            </a>
           </div>
         </div>
         <div className='site-warp'>
-          {subTitle}
+          <SectionHeader
+            title={locale.sectionHeaders.tokens.title}
+            leadStr={locale.sectionHeaders.tokens.body}
+          />
           {squares1}
           {squares2}
         </div>

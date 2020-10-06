@@ -1,14 +1,18 @@
 .site-header-con {
-  max-width: 1280px;
+  max-width: $site-desktop-max;
   margin: 0 auto;
 }
 
 .site-header-top-bar {
   background-color: transparent;
   margin-top: 31px;
-  padding: 0;
+  padding: 0 32px;
   position: absolute;
   top: 0;
+
+  @include site-column-breakpoint {
+    padding: 0;
+  }
 
   & .md-top-bar__container {
     height: auto;

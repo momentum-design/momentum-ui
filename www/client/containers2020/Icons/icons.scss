@@ -1,4 +1,4 @@
-.docs-icons {
+.site-icons {
   $item-margin-left: 20px;
 
   @function item-width($nav-width, $total) {
@@ -41,7 +41,7 @@
     }
   }
   &__top-2020 {
-    @include flex($fw: wrap, $jc: space-between);
+    @include flex($fw: wrap, $jc: flex-start);
     height: rem-calc(100);
     margin: 0;
     .md-input-container {

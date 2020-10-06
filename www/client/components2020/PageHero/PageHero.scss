@@ -8,6 +8,10 @@
   flex-direction: column;
   justify-content: space-evenly;
 
+  @include site-column-breakpoint {
+    height: 450px;
+  }
+
   & > div {
     flex: 1;
   }
@@ -17,11 +21,15 @@
     width: 100%;
     text-align: center;
     line-height: 125%;
-    font-size: 72px;
+    font-size: 4.5rem;
     font-weight: $font-weight-bold;
     position: relative;
     text-align: center;
     color: $md-black;
+
+    @include site-column-breakpoint {
+      font-size: 3rem;
+    }
 
     &-container {
       height: 100%;

@@ -6,6 +6,12 @@ import Space from '../../containers2020/Space';
 import Typography from '../../containers2020/Typography';
 import { Route, withRouter, Switch } from 'react-router-dom';
 
+// Import page images
+import colorTokenImage from '../../assets/2020/banner-color.svg';
+import typographyTokenImage from '../../assets/2020/banner-typography.svg';
+import elevationTokenImage from '../../assets/2020/banner-elevation.svg';
+import spaceTokenImage from '../../assets/2020/banner-space.svg';
+
 class Tokens extends React.Component {
 
   render() {
@@ -37,37 +43,51 @@ class TokensLanding extends React.PureComponent {
       </div>
     );
 
-    const squares1 = (
-      <div className='flex-con-row site-home-subcon'>
-        <div className='flex-item site-home-subcon-item site-home-color'>
-          <p>Color</p>
-          <a className='arrow' href='/2020/tokens/color'></a>
-        </div>
-        <div className='flex-item site-home-subcon-item site-home-typography flex-margin'>
-          <p>Typography</p>
-          <a className='arrow' href='/2020/tokens/typography'></a>
-        </div>
-      </div>
-    );
-
-    const squares2 = (
-      <div className='flex-con-row site-home-subcon'>
-        <div className='flex-item site-home-subcon-item site-home-elevation'>
-          <p>Elevation</p>
-          <a className='arrow' href='/2020/tokens/elevation'></a>
-        </div>
-        <div className='flex-item site-home-subcon-item site-home-space flex-margin'>
-          <p>Space</p>
-          <a className='arrow' href='/2020/tokens/space'></a>
-        </div>
+    const tokenSquares = (
+      <div className='site-responsive-row site-home-subcon'>
+        <a href="/2020/tokens/color">
+          <div className='site-home-subcon-item site-home-color'>
+            <div className="site-home-subcon-item__image">
+              <img src={colorTokenImage} /> 
+            </div>
+            <p>Color</p>
+            <div className='arrow'></div>
+          </div>
+        </a>
+        <a href="/2020/tokens/typography">
+          <div className='site-home-subcon-item site-home-typography'>
+            <div className="site-home-subcon-item__image">
+              <img src={typographyTokenImage} />
+            </div>
+            <p>Typography</p>
+            <div className='arrow'></div>
+          </div>
+        </a>
+        <a href="/2020/tokens/elevation">
+          <div className='site-home-subcon-item site-home-elevation'>
+            <div className="site-home-subcon-item__image">
+              <img src={elevationTokenImage} />
+            </div>
+            <p>Elevation</p>
+            <div class='arrow'></div>
+          </div>
+        </a>
+        <a href="/2020/tokens/space">
+          <div className='site-home-subcon-item site-home-space'>
+            <div className="site-home-subcon-item__image">
+              <img src={spaceTokenImage} />
+            </div>
+            <p>Space</p>
+            <div className='arrow'></div>
+          </div>
+        </a>
       </div>
     );
 
     return (
       <div className='site-con'>
         <div className='site-warp' style={{marginTop: '100px'}}>
-          {squares1}
-          {squares2}
+          {tokenSquares}
         </div>
       </div>
     )

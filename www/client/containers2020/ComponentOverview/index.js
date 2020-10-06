@@ -62,7 +62,7 @@ class ComponentOverviewPage extends React.Component {
     };
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#BCF7BF'
           backgroundImage={componentBanner}

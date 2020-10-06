@@ -116,7 +116,7 @@ class Elevation extends React.PureComponent {
     }
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#DDF2AE'
           backgroundImage={elevationBanner}
@@ -125,7 +125,7 @@ class Elevation extends React.PureComponent {
           githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/elevation.json'
           heroTitle='Elevation'
         />
-        <div className='site-warp'>
+        <div className='site-warp scrollable-body-wrapper'>
           <SectionHeader
             title={locale.sectionHeaders.elevation.title}
             leadStr={locale.sectionHeaders.elevation.body}

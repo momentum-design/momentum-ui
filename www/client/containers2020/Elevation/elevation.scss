@@ -9,13 +9,15 @@
   }
 
   &__md {
-    width: 224px;
+    max-width: 224px;
     height: 80px;
+    width: 100%;
   }
 
   &__lg {
-    width: 500px;
+    max-width: 500px;
     height: 260px;
+    width: 100%;
   }
 }
 
@@ -23,7 +25,6 @@
 
   @include site-column-breakpoint {
     width: 100%;
-    overflow: scroll;
   }
 }
 
@@ -72,6 +73,7 @@
 .elevation-purpose-row {
   margin-top: 80px;
   justify-content: center;
+  grid-row-gap: 30px;
 
   &__card {
     max-width: 500px;
@@ -123,6 +125,11 @@
 
   & .elevation-multi-card-container {
     margin: 100px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     & div + div {
       margin-top: 56px;

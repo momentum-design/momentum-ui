@@ -4,20 +4,35 @@
   height: 1200px;
   overflow: hidden;
 
+  @include site-column-breakpoint {
+    height: auto;
+    padding-bottom: 110px;
+  }
+
   p {
     @include p($font-size: 2.25rem, $font-weight: 350, $color: $md-white);
     text-align: center;
     margin-top: 255px;
+
+    @include site-column-breakpoint {
+      font-size: 1.5rem;
+      margin-top: 80px;
+    }
   }
 
   .site-banner-system-title {
     font-family: $brand-font-regular;
     font-weight: bold;
     font-size: 96px;
-    line-height: 131px;
+    line-height: 130%;
     text-align: center;
     margin-top: 335px;
     color: $md-white;
+
+    @include site-column-breakpoint {
+      font-size: 48px;
+      margin-top: 110px;
+    }
   }
 
 }

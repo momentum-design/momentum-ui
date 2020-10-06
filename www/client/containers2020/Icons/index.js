@@ -63,7 +63,7 @@ class IconsContainer extends React.Component {
     const { loading, error } = this.props;
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#F2F4FF'
           backgroundImage={iconBanner}
@@ -76,8 +76,8 @@ class IconsContainer extends React.Component {
           <SectionHeader
             title="Icons"
           />
-          <div className="docs-icons">
-            <div className="docs-icons__top-2020">
+          <div className="site-icons">
+            <div className="site-icons__top-2020">
               <InputSearch
                 onChange={this.handleSearchChange}
                 disabled={loading || error}

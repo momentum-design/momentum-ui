@@ -1,9 +1,11 @@
 .site-banner-home {
-  background: url(../assets/2020/banner-home.svg) no-repeat right 87px;
-  height: 800px;
+  display: flex;
+  height: 700px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 
-  >h1 {
-    margin: 206px 0 0 105px;
+  > h1 {
     line-height: 62px;
     font-size: 52px;
     color: $md-white;
@@ -11,15 +13,20 @@
   }
 
   p {
-    margin: 33px 0 0 105px;
+    margin: 33px 0 0 0;
     line-height: 28px;
     font-size: 18px;
     color: $md-white;
     max-width: 520px;
   }
 
+  &-image {
+    background: url(../assets/2020/banner-system.svg) no-repeat center center;
+    background-size: contain;
+  }
+
   .site-banner-home-button {
-    margin: 72px 0 0 105px;
+    margin: 72px 0 0 0;
   }
 }
 
@@ -28,20 +35,32 @@
 }
 
 .site-home-subcon {
-  margin-top: 30px;
+  position: relative;
+  grid-column-gap: 30px;
+  grid-row-gap: 22px;
+  padding-bottom: 0;
+  margin-bottom: 110px;
 
   .site-home-subcon-item {
-    height: 625px;
+    display: flex;
+    flex-direction: column;
+    height: 440px;
+    padding: 40px 35px;
+
+    &__image {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+    }
 
     p {
-      color: $md-black;
-      font-size: 24px;
-      margin: 500px 0 0 37px;
+      @include p($color: $md-black, $font-size: 1.5rem);
     }
 
     .arrow {
       display: block;
-      margin: 40px 0 0 37px;
+      margin: 12px 0 0 0;
       width: 28px;
       height: 15px;
       background: url(../assets/2020/arrow-right.svg) no-repeat;
@@ -51,33 +70,46 @@
   }
 
   .site-home-color {
-    background: $site-blue url(../assets/2020/banner-color.svg) no-repeat center 150px;
-    background-size: 252px 168px;
+    background: $site-blue;
+
+    img {
+      width: 60%;
+    }
   }
 
   .site-home-typography {
-    background: $site-gold url(../assets/2020/banner-typography.svg) no-repeat center 155px;
-    background-size: 286px 170px;
+    background: $site-gold;
+    
+    img {
+      width: 60%;
+    }
   }
 
   .site-home-elevation {
-    background: $site-green url(../assets/2020/banner-elevation.svg) no-repeat center 158px;
-    background-size: 408px 283px;
+    background: $site-green;
+    
+    img {
+      width: 70%;
+    }
   }
 
   .site-home-space {
-    background: $site-pink url(../assets/2020/banner-space.svg) no-repeat center 116px;
-    background-size: 276px 278px;
+    background: $site-pink;
+    
+    img {
+      width: 50%;
+    }
   }
 
 }
 
 .site-home-sub-banner {
-  >h1 {
+  & > h1 {
+    font-family: $brand-font-regular;
     font-size: 48px;
     color: $md-black;
   }
-  >p{
+  & > p{
     margin-top: 36px;
     font-size: 18px;
     color: $md-black;
@@ -92,12 +124,27 @@
 
 .site-home-icon {
   margin-top: 110px;
-  height: 642px;
-  h1 {
-    margin-top: 147px;
+
+  .site-responsive-row {
+    grid-column-gap: 30px;
   }
+
+  .site-home-sub-banner {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 0 110px 0;
+
+    h1 {
+      font-size: 3rem;
+      font-family: $brand-font-regular;
+      line-height: (56 / 48);
+    }
+  }
+  
   .site-home-sub-banner-bg {
-    height: 642px;
+    height: 100%;
     background: url(../assets/2020/banner-icons.svg) no-repeat center;
     background-size: 448px 422px;
   }
@@ -105,12 +152,27 @@
 
 .site-home-personality {
   background-color: #FCF4E1;
-  height: 616px;
-  h1 {
-    margin-top: 138px;
+
+  .site-responsive-row {
+    grid-column-gap: 30px;
   }
+
+  .site-home-sub-banner {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 110px 0;
+
+    h1 {
+      font-size: 3rem;
+      font-family: $brand-font-regular;
+      line-height: (56 / 48);
+    }
+  }
+
   .site-home-sub-banner-bg {
-    height: 616px;
+    height: 100%;
     background: url(../assets/2020/banner-personality.svg) no-repeat left center;
     background-size: 490px 396px;
   }
@@ -121,18 +183,17 @@
   font-weight: 500;
   font-size: 48px;
   line-height: 56px;
-  height: 44px;
-  margin: 100px 0 50px 0;
+  margin: 110px 0 50px 0;
   width: 100%;
   text-align: center;
 }
+
 .site-home-banner3 {
   text-align: center;
   h1 {
     display: block;
     margin-top: 184px;
     font-size: 36px;
-    height: 58px;
     line-height: 56px;
     width:100%;
     text-align: center;
@@ -152,6 +213,12 @@
     background: $md-white;
     border: none;
   }
+}
+
+.home-developers-guide {
+  grid-template-columns: 30px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
 }
 
 .site-home-github {

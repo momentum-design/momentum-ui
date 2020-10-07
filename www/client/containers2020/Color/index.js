@@ -106,7 +106,7 @@ class Color extends React.PureComponent {
     }
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#E5F8FF'
           backgroundImage={colorBanner}
@@ -114,7 +114,7 @@ class Color extends React.PureComponent {
           githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/semanticColor.json'
           heroTitle='Color'
         />
-        <div className='site-warp'>
+        <div className='site-warp scrollable-body-wrapper'>
           <SectionHeader
             title={locale.sectionHeaders.semanticColor.title}
             leadStr={locale.sectionHeaders.semanticColor.body}
@@ -155,8 +155,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('textColor').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -170,8 +168,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('backgrounds').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -185,8 +181,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('presence').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -200,8 +194,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('alerts').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -215,8 +207,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('avatars').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}

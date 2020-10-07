@@ -11,7 +11,7 @@ class System extends React.PureComponent {
 
     return (
       <div className="site-con">
-        <div className="site-con site-bg-black">
+        <div className="site-con site-bg-black page-body-buffer">
           <div className='site-warp fix-margin site-banner-system'>
             <h1 className='site-banner-system-title'>Momentum<br/>Design System</h1>
             <p>{locale.header.body}</p>

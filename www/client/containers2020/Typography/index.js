@@ -131,7 +131,7 @@ class Typography extends React.PureComponent {
     } 
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#F5EAA2'
           backgroundImage={typographyBanner}
@@ -140,7 +140,7 @@ class Typography extends React.PureComponent {
           githubURL="https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/font.json"
           heroTitle='Typography'
         />
-        <div className='site-warp'>
+        <div className='site-warp scrollable-body-wrapper'>
           <SectionHeader
             title={locale.sectionHeaders.typography.title}
             leadStr={locale.sectionHeaders.typography.body}

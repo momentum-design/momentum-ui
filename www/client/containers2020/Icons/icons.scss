@@ -1,4 +1,4 @@
-.docs-icons {
+.site-icons {
   $item-margin-left: 20px;
 
   @function item-width($nav-width, $total) {
@@ -12,6 +12,7 @@
   }
 
   &__viewer {
+    grid-column: 1 / -1;
     position: relative;
     background-color: $md-gray-30;
     margin-bottom: 2rem;
@@ -41,21 +42,37 @@
     }
   }
   &__top-2020 {
-    @include flex($fw: wrap, $jc: space-between);
-    height: rem-calc(100);
-    margin: 0;
+    @include flex($fw: wrap, $jc: flex-start);
+    margin: 0 0 rem-calc(32) 0;
     .md-input-container {
       width: rem-calc(368);
       margin: 0;
     }
   }
   &__list {
-    @include flex($fw: wrap, $jc: flex-start, $ai: flex-start);
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+
+    @media #{$small-only} {
+      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 2), 1fr));
+    }
+    @media #{$medium-only} {
+      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 4), 1fr));
+    }
+    @media #{$large-only} {
+      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 6), 1fr));
+    }
+    @media #{$xlarge-only} {
+      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 8), 1fr));
+    }
+    @media #{$xxlarge-up} {
+      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 10), 1fr));
+    }
+
     &-item {
       @include button-base;
-      @include flex($fd: column);
-      margin-bottom: rem-calc(20);
-      margin-left: $item-margin-left;
+      @include flex($fd: column, $ai: stretch);
       cursor: pointer;
       border-radius: 0;
       &--icon {
@@ -73,9 +90,9 @@
         font-size: rem-calc(16);
       }
       @media #{$small-only} {
-        width: item-width(0px, 2);
+        width: 100%;
         &--icon {
-          width: icon-size(0px, 2);
+          width: 100%;
           height: icon-size(0px, 2);
           &:before {
             font-size: icon-font-size(0px, 2);
@@ -83,9 +100,9 @@
         }
       }
       @media #{$medium-only} {
-        width: item-width(0px, 4);
+        width: 100%;
         &--icon {
-          width: icon-size(0px, 4);
+          width: 100%;
           height: icon-size(0px, 4);
           &:before {
             font-size: icon-font-size(0px, 4);
@@ -93,9 +110,9 @@
         }
       }
       @media #{$large-only} {
-        width: item-width($side-nav-width, 6);
+        width: 100%;
         &--icon {
-          width: icon-size($side-nav-width, 6);
+          width: 100%;
           height: icon-size($side-nav-width, 6);
           &:before {
             font-size: icon-font-size($side-nav-width, 6);
@@ -103,9 +120,9 @@
         }
       }
       @media #{$xlarge-only} {
-        width: item-width($side-nav-width, 8);
+        width: 100%;
         &--icon {
-          width: icon-size($side-nav-width, 8);
+          width: 100%;
           height: icon-size($side-nav-width, 8);
           &:before {
             font-size: icon-font-size($side-nav-width, 8);
@@ -113,15 +130,34 @@
         }
       }
       @media #{$xxlarge-up} {
-        width: item-width($side-nav-width, 10);
+        width: 100%;
         &--icon {
-          width: icon-size($side-nav-width, 10);
+          width: 100%;
           height: icon-size($side-nav-width, 10);
           &:before {
             font-size: icon-font-size($side-nav-width, 10);
           }
         }
       }
+    }
+  }
+
+  &__load-more {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+    img {
+      width: 27px;
+      height: 6px;
+    }
+
+    p {
+      @include p($color: #535759);
+      margin-top: 17px;
     }
   }
 

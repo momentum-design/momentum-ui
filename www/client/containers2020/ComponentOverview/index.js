@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { InputSearch, Spinner } from '@momentum-ui/react';
-import ComponentItem from '../../components/ComponentItem';
+import ComponentItem from '../../components2020/ComponentItem';
 import { fetchAllComponentData, filterComponentsData } from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
+import locale from './locale';
 
 // Import page images
 import componentBanner from '../../assets/2020/banner-components.svg';
@@ -46,7 +47,7 @@ class ComponentOverviewPage extends React.Component {
         if (keyword == '' || reg.test(name)) {
           return [
             ...agg,
-            <li
+            <div
               key={idx}
             >
               <ComponentItem
@@ -54,14 +55,14 @@ class ComponentOverviewPage extends React.Component {
                 thumbnail={itm.thumbnailImage}
                 title={itm.displayName}
               />
-            </li>
+            </div>
           ];
         } else return agg;
       }, []);
     };
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#BCF7BF'
           backgroundImage={componentBanner}
@@ -72,21 +73,19 @@ class ComponentOverviewPage extends React.Component {
         />
         <div className='site-warp'>
           <SectionHeader
-            title="Components"
-            leadStr="Our components library helps designers and developers build consistent, accessible, and universal experiences. Using our components frees you up to focus on solving collaboration challenges without having to reinvent element after element.
-
-            The components below are a selection of our most used elements from across the Webex system. Find your platform’s full library in Figma."
+            title={locale.sectionHeaders.components.title}
+            leadElm={locale.sectionHeaders.components.body}
           />
 
-          <div className="docs-component-overview">
+          <div className="site-component-overview">
             {loading ? (
-              <div className="docs-component-overview__spinner">
+              <div className="site-component-overview__spinner">
                 <Spinner />
               </div>
             ) : (
               <React.Fragment>
                 {/* Uncomment for the filter bar */}
-                {/* <div className="docs-component-overview__top">
+                {/* <div className="site-component-overview__top">
                   <InputSearch
                     clear
                     name="filterSearchInput"
@@ -96,9 +95,9 @@ class ComponentOverviewPage extends React.Component {
                     value={keyword}
                   />
                 </div> */}
-                <ul className="docs-component-overview__component-list">
+                <div className="site-component-overview__component-list">
                   {renderComponentItems()}
-                </ul>
+                </div>
               </React.Fragment>
             )}
           </div>

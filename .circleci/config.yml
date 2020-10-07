@@ -180,6 +180,9 @@ jobs:
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run:
+          name: Build website
+          command: yarn build:www
+      - run:
           name: Publish website
           command: yarn publish:www
 

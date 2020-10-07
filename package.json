@@ -17,6 +17,7 @@
     "build:tokens": "cd ./tokens && yarn build:lib",
     "build:utils": "cd ./utils && yarn build:lib",
     "build:data": "rimraf ./data && node ./tools/generateComponentsData.js",
+    "build:www": "cd ./www && yarn build",
     "serve:core": "cd ./core && yarn open:dist",
     "ci:publish": "yarn release",
     "ci:test": "run-s ci:test:icons ci:test:core ci:test:react ci:test:charts",

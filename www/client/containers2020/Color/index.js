@@ -155,8 +155,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('textColor').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -170,8 +168,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('backgrounds').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -185,8 +181,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('presence').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -200,8 +194,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('alerts').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}
@@ -215,8 +207,6 @@ class Color extends React.PureComponent {
                 />
               </div>
             ))}
-          </div>
-          <div className="site-responsive-row">
             {semanticColorTokenTableRows('avatars').map((tableRows, idx) => (
               <div
                 className={"display-table-card-container" + (idx > 0 ? '-dark' : '')}

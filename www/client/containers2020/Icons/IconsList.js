@@ -80,7 +80,7 @@ class IconsList extends React.Component {
   };
 
   render() {
-    const { iconsList, loading } = this.props;
+    const { iconsList, loading, numIcons } = this.props;
     const {
       arrowPosition0,
       arrowPosition1,
@@ -117,6 +117,7 @@ class IconsList extends React.Component {
                   className="md-button--none site-icons__list-item"
                   key={idx}
                   onClick={() => this.openViewer(idx, modifiedIcon)}
+                  style={{display: idx >= numIcons ? 'none' : ''}}
                 >
                   <div className={`site-icons__list-item--icon icon-${icon.name}_${modifiedIcon.defaultSize} icon-${icon.name}`} />
                   <div className="site-icons__list-item--name">{icon.name}</div>
@@ -143,6 +144,7 @@ class IconsList extends React.Component {
 IconsList.propTypes = {
   iconsList: PropTypes.array,
   loading: PropTypes.bool,
+  numIcons: PropTypes.number.isRequired,
 };
 
 IconsList.defaultProps = {

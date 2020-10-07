@@ -9,11 +9,13 @@ import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
 
 // Import page images
+import ellipsis from '../../assets/2020/ellipsis.svg';
 import iconBanner from '../../assets/2020/banner-icons.svg';
 
 class IconsContainer extends React.Component {
   state = {
     icons: this.props.icons,
+    pageNum: 1,
   };
 
   componentDidMount() {
@@ -56,11 +58,18 @@ class IconsContainer extends React.Component {
 
   handleSearchChange = event => {
     this.filterIcons(event.target.value);
+    this.setState({ pageNum: 1 });
   };
 
+  increasePage = () => {
+    this.setState({ pageNum: this.state.pageNum + 1 });
+  }
+
   render() {
-    const { icons } = this.state;
+    const { icons, pageNum } = this.state;
     const { loading, error } = this.props;
+    const numIconsPerPage = 18;
+    const numIcons = pageNum * numIconsPerPage;
 
     return (
       <div className="site-con page-body-buffer">
@@ -83,16 +92,22 @@ class IconsContainer extends React.Component {
                 disabled={loading || error}
                 placeholder="Search"
                 shape="pill"
-                type="pill"
+                type="text"
               />
             </div>
             {error ? (
               error
             ) : (
               <React.Fragment>
-                <IconsList iconsList={icons} loading={loading} />
+                <IconsList iconsList={icons} loading={loading} numIcons={numIcons} />
               </React.Fragment>
             )}
+            {numIcons < icons.length && 
+              <div className="site-icons__load-more" onClick={this.increasePage}>
+                <img src={ellipsis} />
+                <p>Load more</p>
+              </div>
+            }
           </div>
         </div>
       </div>

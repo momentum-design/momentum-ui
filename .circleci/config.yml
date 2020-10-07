@@ -170,6 +170,19 @@ jobs:
           name: Publish website
           command: yarn publish:www
 
+  publish-www:
+    <<: *image_defaults
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
+      - run: yarn bootstrap
+      - run: npm rebuild node-sass
+      - run:
+          name: Publish website
+          command: yarn publish:www
+
 workflows:
   version: 2
   lint_test:

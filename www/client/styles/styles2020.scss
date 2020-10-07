@@ -104,7 +104,7 @@ $site-desktop-max: 1400px;
 }
 
 .scrollable-body-wrapper {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .page-body-buffer {
@@ -128,7 +128,7 @@ $site-desktop-max: 1400px;
 
 .site-responsive-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
 
   @include site-column-breakpoint {
     grid-template-columns: repeat(1, 1fr);

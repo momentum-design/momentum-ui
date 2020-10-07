@@ -170,7 +170,7 @@ jobs:
           name: Publish website
           command: yarn publish:www
 
-  publish-www:
+  publish_www:
     <<: *image_defaults
     steps:
       - checkout

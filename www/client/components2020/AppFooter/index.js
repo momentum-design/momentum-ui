@@ -25,19 +25,18 @@ class AppFooter extends Component {
             { logo }
           </div>
           <div className={'flex-item flex-margin'}>
-            <a className={'site-footer-title'}>Tokens</a>
-            <a>Color</a>
-            <a>Typography</a>
-            <a>Elevation</a>
-            <a>Space</a>
+            <a className={'site-footer-title'} href="/2020/tokens">Tokens</a>
+            <a href="/2020/tokens/color">Color</a>
+            <a href="/2020/tokens/typography">Typography</a>
+            <a href="/2020/tokens/elevation">Elevation</a>
+            <a href="/2020/tokens/space">Space</a>
           </div>
           <div className={'flex-item flex-margin'}>
-            <a className={'site-footer-title'}>Components</a>
-            <a className={'site-footer-title'}>Icons</a>
+            <a className={'site-footer-title'} href="/2020/components">Components</a>
+            <a className={'site-footer-title'} href="/2020/icons">Icons</a>
           </div>
           <div className={'flex-item flex-margin'}>
-            <a className={'site-footer-title'}>Personality</a>
-            <a className={'site-footer-title'}>Help for Developers</a>
+            <a className={'site-footer-title'} href="/2020/personality">Personality</a>
           </div>
         </div>
         <div className={'site-warp flex-con-row'}>
@@ -45,9 +44,9 @@ class AppFooter extends Component {
           <div className={'footer-bottom-text'}>
             <div>© 2020 Cisco and/or its affiliates. All rights reserved.</div>
             <div className='site-friend-link'>
-              <a>Support & Feedback</a>
-              <a>Privacy Policy</a>
-              <a>Cookie Policy</a>
+              <a href="/feedback">Support & Feedback</a>
+              <a href="https://www.cisco.com/c/en/us/about/legal/privacy.html">Privacy Policy</a>
+              <a href="https://www.cisco.com/c/en/us/about/legal/privacy.html#cookies">Cookie Policy</a>
             </div>
           </div>
         </div>

@@ -4,15 +4,17 @@
 $site-white: $md-white;
 $site-black: #171B1F !default;
 $site-green: #BCF7BF !default;
-$site-blue: #2BBDFB !default;
+$site-blue: $md-cobalt-10 !default;
 $site-gold: $md-gold-20;
 $site-lime: $md-lime-20;
 $site-pink: $md-pink-20;
 $site-slate: $md-slate-10;
 $site-column-max: 1000px;
+$site-desktop-max: 1400px;
 
 @import '../components2020/AppHeader/AppHeader.scss';
 @import '../components2020/AppFooter/AppFooter.scss';
+@import '../components2020/ComponentItem/ComponentItem.scss';
 @import '../components2020/Example/Example.scss';
 @import '../components2020/FeedBack/FeedBack.scss';
 @import '../components2020/PageHero/PageHero.scss';
@@ -22,12 +24,14 @@ $site-column-max: 1000px;
 @import '../components2020/TokenNavigation/TokenNavigation.scss';
 @import '../containers2020/Home/home.scss';
 @import '../containers2020/System/system.scss';
+@import '../containers2020/Icons/icons.scss';
 @import '../containers2020/ComponentOverview/ComponentOverview.scss';
 @import '../containers2020/Elevation/elevation.scss';
 @import '../containers2020/Color/color.scss';
 @import '../containers2020/Space/space.scss';
 @import '../containers2020/Typography/typography.scss';
 @import '../containers2020/Personality/personality.scss';
+@import '../containers2020/Tokens/tokens.scss';
 
 // html, body {
 //   height: 100%;
@@ -92,20 +96,30 @@ $site-column-max: 1000px;
 
 .site-warp,
 .page-body {
-  max-width: 1280px;
+  width: 100%;
+  max-width: $site-desktop-max;
   margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.scrollable-body-wrapper {
+  overflow: auto;
+}
+
+.page-body-buffer {
   padding-bottom: 80px;
 }
 
 .site-subtitle {
   width: 100%;
 
-  h1{
+  h1 {
     font-size: 48px;
     color: $md-black;
   }
 
-  p{
+  p {
     font-size: 18px;
     color: $md-gray-70;
   }
@@ -114,10 +128,10 @@ $site-column-max: 1000px;
 
 .site-responsive-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
 
   @include site-column-breakpoint {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -127,13 +141,4 @@ $site-column-max: 1000px;
 
 .token-table-badge {
   @include h5();
-}
-
-@media only screen and (max-width: 1280px) {
-  .site-warp,
-  .page-body {
-    max-width: 1080px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
 }

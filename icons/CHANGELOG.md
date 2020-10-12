@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.58.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.57.0...@momentum-ui/icons@7.58.0) (2020-10-10)
+
+
+### Features
+
+* **icons:** add Queue-contact_20 ([2aa67df](https://github.com/momentum-design/momentum-ui/commit/2aa67dff83df6f803afd7e6e0b095c8c26d31606))
+
+
+
+
+
 # [7.57.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.56.0...@momentum-ui/icons@7.57.0) (2020-10-03)
 
 

@@ -76,13 +76,13 @@ class IconViewer extends React.Component {
       availableColors,
     } = this.state;
     const iconName = currentIcon && currentIcon.name;
-    const iconClasses = `docs-icons__content--icon ${selectedIconClass} icon--${selectedColor} icon-${iconName}`;
+    const iconClasses = `site-icons__content--icon ${selectedIconClass} icon--${selectedColor} icon-${iconName}`;
     const downloadLinkBase = `${config.ICONS_DOWNLOADS_URL}/${selectedIconName}/${selectedIconName}`;
 
     return (
-      <div className="docs-icons__viewer" ref={this.rootNode} >
-        <div className="docs-icons__viewer--arrow" style={{ left:`${arrowPosition}px` }} />
-        <div className="docs-icons__viewer--close">
+      <div className="site-icons__viewer" ref={this.rootNode} >
+        <div className="site-icons__viewer--arrow" style={{ left:`${arrowPosition}px` }} />
+        <div className="site-icons__viewer--close">
           <Button
             ariaLabel='Close'
             circle
@@ -93,15 +93,15 @@ class IconViewer extends React.Component {
             <Icon name='icon-cancel_16' />
           </Button>
         </div>
-        <div className="docs-icons__viewer--body">
-          <div className="docs-icons__header row">{iconName}</div>
-          <div className="docs-icons__content row">
-            <div className="docs-icons__content--info">
+        <div className="site-icons__viewer--body">
+          <div className="site-icons__header row">{iconName}</div>
+          <div className="site-icons__content row">
+            <div className="site-icons__content--info">
               <div className={iconClasses} />
             </div>
-            <div className="docs-icons__content--info">
+            <div className="site-icons__content--info">
               {availableSizes && (
-                <div className="docs-icons__content--info__section">
+                <div className="site-icons__content--info__section">
                   <h2>Available Sizes</h2>
                   <IconProperties
                     values={availableSizes}
@@ -111,7 +111,7 @@ class IconViewer extends React.Component {
                 </div>
               )}
               {availableColors && (
-                <div className="docs-icons__content--info__section docs-icons__content--info__section-colors">
+                <div className="site-icons__content--info__section site-icons__content--info__section-colors">
                   <h2>Available Colors</h2>
                   <IconProperties
                     type="color"
@@ -121,7 +121,7 @@ class IconViewer extends React.Component {
                   />
                 </div>
               )}
-              <div className="docs-icons__content--info__section">
+              <div className="site-icons__content--info__section">
                 <h2>Font Classes and Variables</h2>
                 <IconDownload
                   header={selectedIconClass}
@@ -133,8 +133,8 @@ class IconViewer extends React.Component {
                 />
               </div>
             </div>
-            <div className="docs-icons__content--info">
-              <div className="docs-icons__content--info__section">
+            <div className="site-icons__content--info">
+              <div className="site-icons__content--info__section">
                 <h2>Downloads</h2>
                 <IconDownload
                   link={`${downloadLinkBase}_png-svg.zip`}
@@ -170,7 +170,7 @@ class IconViewer extends React.Component {
               </div>
             </div>
           </div>
-          <div className="docs-icons__viewer--feedback">
+          <div className="site-icons__viewer--feedback">
             <Link to="/feedback">
               Submit feedback
             </Link>

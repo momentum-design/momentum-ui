@@ -36,7 +36,7 @@ class Personality extends React.PureComponent {
 
     return (
       <div className="site-con">
-        <div className="site-con site-bg-black">
+        <div className="site-con site-bg-black page-body-buffer">
           <PageHero
             backgroundImage={personalityBanner}
             backgroundSize='600px'

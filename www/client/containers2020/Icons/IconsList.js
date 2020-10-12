@@ -41,7 +41,7 @@ class IconsList extends React.Component {
 
   _reset = () => {
     this.IconHelper.reset(
-      this.refIconList.current.querySelectorAll('.docs-icons__list-item')
+      this.refIconList.current.querySelectorAll('.site-icons__list-item')
     );
     this.IconHelper.sel(-1);
   }
@@ -80,7 +80,7 @@ class IconsList extends React.Component {
   };
 
   render() {
-    const { iconsList, loading } = this.props;
+    const { iconsList, loading, numIcons } = this.props;
     const {
       arrowPosition0,
       arrowPosition1,
@@ -89,18 +89,18 @@ class IconsList extends React.Component {
     } = this.state;
 
     return (
-      <div className="docs-icons__list" ref={this.refIconList}>
+      <div className="site-icons__list" ref={this.refIconList}>
         {loading
           ? [...Array(20)].map((ele, idx) => {
               return (
                 <div
-                  className="docs-icons__list-item"
+                  className="site-icons__list-item"
                   key={`${loading}-${idx}`}
                 >
-                  <div className="docs-icons__list-item--icon">
+                  <div className="site-icons__list-item--icon">
                     <Spinner size={20} />
                   </div>
-                  <div className="docs-icons__list-item--name">
+                  <div className="site-icons__list-item--name">
                     {'...Loading'}
                   </div>
                 </div>
@@ -114,12 +114,13 @@ class IconsList extends React.Component {
 
               return (
                 <button
-                  className="md-button--none docs-icons__list-item"
+                  className="md-button--none site-icons__list-item"
                   key={idx}
                   onClick={() => this.openViewer(idx, modifiedIcon)}
+                  style={{display: idx >= numIcons ? 'none' : ''}}
                 >
-                  <div className={`docs-icons__list-item--icon icon-${icon.name}_${modifiedIcon.defaultSize} icon-${icon.name}`} />
-                  <div className="docs-icons__list-item--name">{icon.name}</div>
+                  <div className={`site-icons__list-item--icon icon-${icon.name}_${modifiedIcon.defaultSize} icon-${icon.name}`} />
+                  <div className="site-icons__list-item--name">{icon.name}</div>
                 </button>
               );
             })}
@@ -143,6 +144,7 @@ class IconsList extends React.Component {
 IconsList.propTypes = {
   iconsList: PropTypes.array,
   loading: PropTypes.bool,
+  numIcons: PropTypes.number.isRequired,
 };
 
 IconsList.defaultProps = {

@@ -58,7 +58,7 @@ class Space extends React.PureComponent {
     }
 
     return (
-      <div className="site-con">
+      <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#FFE0E7'
           backgroundImage={spaceBanner}
@@ -67,7 +67,7 @@ class Space extends React.PureComponent {
           githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/space.json'
           heroTitle='Space'
         />
-        <div className='site-warp'>
+        <div className='site-warp scrollable-body-wrapper'>
           <SectionHeader
             title={locale.sectionHeaders.space.title}
             leadStr={locale.sectionHeaders.space.body}

@@ -17,14 +17,18 @@ span.dark-theme-badge {
 .display-table-card-container-dark {
   padding: 30px;
   width: 100%;
-  overflow: scroll;
+  
+  @include site-column-breakpoint {
+    margin-left: -32px;
+    width: calc(100% + 32px);
+  }
 }
 
 .display-table-card-container-dark {
   background-color: $md-gray-100;
 }
 
-.display-table-card-container:first-child {
+.display-table-card-container:nth-child(odd) {
   padding-left: 0;
 
   @include site-column-breakpoint {

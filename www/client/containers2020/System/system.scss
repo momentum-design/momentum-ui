@@ -1,18 +1,24 @@
 .site-banner-system {
-  background: url(../assets/2020/banner-system.svg) no-repeat center right;
+  background: url(../assets/2020/banner-system.png) no-repeat center right;
+  background-origin: content-box;
+  background-position: center;
   background-size: contain;
-  height: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 110px;
   overflow: hidden;
 
   @include site-column-breakpoint {
     height: auto;
-    padding-bottom: 110px;
+    padding-top: 0;
   }
 
   p {
     @include p($font-size: 2.25rem, $font-weight: 350, $color: $md-white);
     text-align: center;
-    margin-top: 255px;
+    margin: 255px 0 50px 0;
+    max-width: 900px;
 
     @include site-column-breakpoint {
       font-size: 1.5rem;
@@ -26,7 +32,7 @@
     font-size: 96px;
     line-height: 130%;
     text-align: center;
-    margin-top: 335px;
+    margin-top: 255px;
     color: $md-white;
 
     @include site-column-breakpoint {
@@ -38,7 +44,7 @@
 }
 
 .system-values-section-header {
-  margin-top: 0;
+  margin-top: 60px;
   margin-bottom: 110px;
 }
 
@@ -47,7 +53,7 @@
 }
 
 .system-blocks-section-header {
-  margin-top: 110px;
+  margin-top: 0;
 }
 
 p.systems-header-lead {

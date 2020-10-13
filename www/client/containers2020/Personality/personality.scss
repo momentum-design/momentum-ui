@@ -4,16 +4,8 @@
   }
 }
 
-.site-banner-con-personality {
-  background:#171B1F;
-  .site-banner-normal {
-    background-image: url(../assets/2020/banner-system.svg);
-    background-size: contain;
-
-    p {
-      color: $md-white;
-    }
-  }
+.personality-section-header {
+  margin-top: 0;
 }
 
 .personality-header-copy {
@@ -90,7 +82,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 30px;
   grid-row-gap: 33px;
-  margin: 80px 0;
+  margin: 55px 0;
 
   @include site-column-breakpoint {
     grid-template-columns: repeat(1, 1fr);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@momentum-ui/react';
 import SectionHeader from '../../components2020/SectionHeader';
+import TokenSquares from '../../components2020/TokenSquares';
 import locale from './locale';
 
 // Import page images
@@ -25,47 +26,6 @@ class HomePage extends React.PureComponent {
 
   render() {
 
-    const tokenSquares = (
-      <div className='site-responsive-row site-home-subcon'>
-        <a href="/2020/tokens/color">
-          <div className='site-home-subcon-item site-home-color'>
-            <div className="site-home-subcon-item__image">
-              <img src={colorTokenImage} /> 
-            </div>
-            <p>Color</p>
-            <div className='arrow'></div>
-          </div>
-        </a>
-        <a href="/2020/tokens/typography">
-          <div className='site-home-subcon-item site-home-typography'>
-            <div className="site-home-subcon-item__image">
-              <img src={typographyTokenImage} />
-            </div>
-            <p>Typography</p>
-            <div className='arrow'></div>
-          </div>
-        </a>
-        <a href="/2020/tokens/elevation">
-          <div className='site-home-subcon-item site-home-elevation'>
-            <div className="site-home-subcon-item__image">
-              <img src={elevationTokenImage} />
-            </div>
-            <p>Elevation</p>
-            <div class='arrow'></div>
-          </div>
-        </a>
-        <a href="/2020/tokens/space">
-          <div className='site-home-subcon-item site-home-space'>
-            <div className="site-home-subcon-item__image">
-              <img src={spaceTokenImage} />
-            </div>
-            <p>Space</p>
-            <div className='arrow'></div>
-          </div>
-        </a>
-      </div>
-    );
-
     const square_icon = (
       <div className="site-con site-bg-slate site-home-icon">
         <div className='site-warp site-responsive-row'>
@@ -75,7 +35,7 @@ class HomePage extends React.PureComponent {
             <NavLink to="/2020/icons">
               <Button
                 ariaLabel='Icon library'
-                className='site-home-sub-button'
+                className='site-home-sub-button site-home-sub-button-icon'
                 size={52}
               >Icon library</Button>
             </NavLink>
@@ -97,7 +57,7 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
             <NavLink to="/2020/personality">
               <Button
                 ariaLabel='Show me personality'
-                className='site-home-sub-button'
+                className='site-home-sub-button site-home-sub-button-personality'
                 size={52}
               >Show me personality</Button>
             </NavLink>
@@ -114,7 +74,7 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
           <a href="https://github.com/momentum-design">
             <Button
               ariaLabel='Browse repos'
-              className="md-button--white"
+              className="site-home-sub-button-github"
               size={52}
             >Browse repos</Button>
           </a>
@@ -125,7 +85,7 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
           <a href="https://developer.webex.com/">
             <Button
               ariaLabel='Start building'
-              className="md-button--white"
+              className="site-home-sub-button-developers"
               size={52}
             >Start building</Button>
           </a>
@@ -140,7 +100,7 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
         <a href="https://www.figma.com/file/WHcIjwJZRBzxWAx4TSDhQHBT/Momentum.design?node-id=2337%3A14517">
           <Button
             ariaLabel='Open Figma'
-            className="md-button--blue"
+            className="site-home-sub-button-figma"
             size={52}
           >Open Figma</Button>
         </a>
@@ -170,7 +130,7 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
             title={locale.sectionHeaders.tokens.title}
             leadStr={locale.sectionHeaders.tokens.body}
           />
-          {tokenSquares}
+          <TokenSquares />
         </div>
         {square_icon}
         {square_personality}

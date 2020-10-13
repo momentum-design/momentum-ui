@@ -6,7 +6,7 @@ import locale from './locale';
 import PageHero from '../../components2020/PageHero';
 
 // Import page images
-import personalityBanner from '../../assets/2020/banner-system.svg';
+import personalityBanner from '../../assets/2020/banner-system.png';
 import webexErrorExample from '../../assets/2020/personality-webex-error-example.png';
 import webexExample from '../../assets/2020/personality-webex-example.png';
 import webexOnboardingExample from '../../assets/2020/personality-webex-teams-onboarding-example.png';
@@ -39,12 +39,13 @@ class Personality extends React.PureComponent {
         <div className="site-con site-bg-black page-body-buffer">
           <PageHero
             backgroundImage={personalityBanner}
-            backgroundSize='600px'
+            backgroundSize='contain'
             className='personality-page-hero'
             heroTitle='Personality'
           />
           <div className="page-body">
             <SectionHeader
+              className="personality-section-header"
               darkTheme
               title={locale.sectionHeaders.personalityMatters.title}
               leadElm={personalityMattersLead}

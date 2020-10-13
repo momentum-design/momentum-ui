@@ -13,6 +13,7 @@ import {
 } from '@momentum-ui/react';
 import SideNav from '../../containers2020/SideNav';
 import getUser from '../../services/user/actions';
+import locale from './locale';
 
 class AppHeader extends Component {
   getBackgroudClass(location) {
@@ -26,6 +27,17 @@ class AppHeader extends Component {
     } else {
       return '';
     }
+  }
+
+  getNavItemClass(location) {
+    let str = location.pathname.toLowerCase();
+    if (str.indexOf('/2020/components') === 0) return 'site-nav-green-hover';
+    if (str.indexOf('/2020/icons') === 0) return 'site-nav-slate-hover';
+    if (str.indexOf('/2020/tokens/color') === 0) return 'site-nav-cobalt-hover';
+    if (str.indexOf('/2020/tokens/elevation') === 0) return 'site-nav-lime-hover';
+    if (str.indexOf('/2020/tokens/typography') === 0) return 'site-nav-gold-hover';
+    if (str.indexOf('/2020/tokens/space') === 0) return 'site-nav-pink-hover';
+    return '';
   }
 
   getLogo() {
@@ -52,53 +64,27 @@ class AppHeader extends Component {
     const { location } = this.props;
     const logo = this.getLogo();
     const additionalClassName = this.getBackgroudClass(location);
+    const navItemClass = this.getNavItemClass(location);
     const navItems = (
       <Fragment>
-        <ListItem
-          customRefProp="innerRef"
-          customAnchorNode={
-            <NavLink to="/2020/system" activeClassName={'current-active-dark'}>
-              System
-            </NavLink>
-          }
-          data-cy="topbar-system"
-        />
-        <ListItem
-          customRefProp="innerRef"
-          customAnchorNode={
-            <NavLink to="/2020/tokens" activeClassName={'current-active'}>
-              Tokens
-            </NavLink>
-          }
-          data-cy="topbar-tokens"
-        />
-        <ListItem
-          customRefProp="innerRef"
-          customAnchorNode={
-            <NavLink to="/2020/components" activeClassName={'current-active'}>
-              Components
-            </NavLink>
-          }
-          data-cy="topbar-components"
-        />
-        <ListItem
-          customRefProp="innerRef"
-          customAnchorNode={
-            <NavLink to="/2020/icons" activeClassName={'current-active'}>
-              Icons
-            </NavLink>
-          }
-          data-cy="topbar-icons"
-        />
-        <ListItem
-          customRefProp="innerRef"
-          customAnchorNode={
-            <NavLink to="/2020/personality" activeClassName={'current-active-dark'}>
-              Personality
-            </NavLink>
-          }
-          data-cy="topbar-personality"
-        />
+
+        {locale.navItems.map((navItem, idx) => (
+          <ListItem
+          className={navItemClass}
+            customRefProp="innerRef"
+            customAnchorNode={
+              <NavLink
+                activeClassName={navItem.activeClassName}
+                to={"/2020" + navItem.urlRoute}
+                exact
+              >
+                {navItem.title}
+              </NavLink>
+            }
+            data-cy={"topbar-" + navItem.title.toLowerCase()}
+            key={navItem.title + idx}
+          />
+        ))}
       </Fragment>
     );
 

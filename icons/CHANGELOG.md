@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.60.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.59.0...@momentum-ui/icons@7.60.0) (2020-10-17)
+
+
+### Features
+
+* **icons:** add integrations_16 ([6485572](https://github.com/momentum-design/momentum-ui/commit/6485572887a4a84f06486b4eeff9dca6315a7780))
+* **icons:** add integrations_24 ([997b0bc](https://github.com/momentum-design/momentum-ui/commit/997b0bc31dc4cce31490ecb07ef850a12b9117e1))
+* **icons:** add tabs_16 ([b35f89c](https://github.com/momentum-design/momentum-ui/commit/b35f89ce03a2ab8a4bd715f354f3651f46ebd1b1))
+* **icons:** add tabs_24 ([cf83cf1](https://github.com/momentum-design/momentum-ui/commit/cf83cf19cc8f76997620ffbab7ae691b69227202))
+* **icons:** add webex-desk-camera_20 ([a91042b](https://github.com/momentum-design/momentum-ui/commit/a91042b99b4a059bf7521e17a4d96bdaa11721ad))
+
+
+
+
+
 # [7.59.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.58.0...@momentum-ui/icons@7.59.0) (2020-10-13)
 
 

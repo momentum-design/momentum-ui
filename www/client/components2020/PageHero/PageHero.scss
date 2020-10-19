@@ -10,6 +10,7 @@
 
   @include site-column-breakpoint {
     height: 450px;
+    background-size: 80% !important;
   }
 
   & > div {

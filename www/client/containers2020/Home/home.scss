@@ -5,6 +5,11 @@
   justify-content: center;
   align-items: flex-start;
 
+  @include site-column-breakpoint {
+    height: auto;
+    padding: 110px 0 80px 0;
+  }
+
   > h1 {
     font-family: $brand-font-regular;
     font-size: rem-calc(52);
@@ -19,6 +24,10 @@
     font-family: $brand-font-light;
     margin: 50px 0 80px 0;
     max-width: 520px;
+
+    @include site-column-breakpoint {
+      margin: 60px 0;
+    }
   }
 
   &-image {
@@ -93,6 +102,10 @@
 .site-home-icon {
   margin-top: 110px;
 
+  @include site-column-breakpoint {
+    margin-top: 80px;
+  }
+
   .site-responsive-row {
     grid-column-gap: 30px;
   }
@@ -159,6 +172,7 @@ h1.site-home-banner3-title {
 
 .site-home-banner3 {
   text-align: center;
+  padding: 16px;
   h1 {
     display: block;
     margin-top: 184px;
@@ -177,6 +191,10 @@ h1.site-home-banner3-title {
     width:100%;
     text-align: center;
     color: $site-black;
+
+    @include site-column-breakpoint {
+      margin-bottom: 60px;
+    }
   }
 
   button {

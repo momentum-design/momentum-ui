@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.site-header-white .md-top-bar__mobile-menu-button i {
+  color: white;
+}
+
 .site-header-top-bar {
   background-color: transparent;
   margin-top: 31px;
@@ -108,7 +112,7 @@
   }
 }
 
-.site-header-white{
+.site-header-white {
   a.site-logo svg {
     fill: $md-white;
   }

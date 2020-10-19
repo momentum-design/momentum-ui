@@ -21,8 +21,8 @@
   &__component-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
-    grid-column-gap: 1px;
-    grid-row-gap: 40px;
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
 
     div {
       vertical-align: top;

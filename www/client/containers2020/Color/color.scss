@@ -38,4 +38,15 @@ span.dark-theme-badge {
 
 .color-example {
   @include example-image($img-margin: 57px 0 0 0);
+
+  @include site-column-breakpoint {
+    max-height: 400px;
+  }
+
+  img {
+    @include site-column-breakpoint {
+      margin: 16px 0 0 0;
+      width: 90%;
+    }
+  }
 }

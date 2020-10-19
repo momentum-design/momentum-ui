@@ -8,8 +8,15 @@ import PageHero from '../../components2020/PageHero';
 // Import page images
 import personalityBanner from '../../assets/2020/banner-system.png';
 import webexErrorExample from '../../assets/2020/personality-webex-error-example.png';
+import webexGlobalHeaderExample from '../../assets/2020/personality-webex-global-header-example.png';
 import webexExample from '../../assets/2020/personality-webex-example.png';
+import webexOnboardingDesktop from '../../assets/2020/personality-webex-onboarding-desktop.png';
+import webexOnboardingMobile from '../../assets/2020/personality-webex-onboarding-mobile.png';
 import webexOnboardingExample from '../../assets/2020/personality-webex-teams-onboarding-example.png';
+import statesLoadingExample1 from '../../assets/2020/personality-states-loading-1.png';
+import statesLoadingExample2 from '../../assets/2020/personality-states-loading-2.png';
+import voiceStatusExample1 from '../../assets/2020/personality-voice-status-1.png';
+import voiceStatusExample2 from '../../assets/2020/personality-voice-status-2.png';
 import webexTechnicalExample from '../../assets/2020/personality-webex-technical-illustration-example.png';
 
 class Personality extends React.PureComponent {
@@ -71,14 +78,14 @@ class Personality extends React.PureComponent {
             </div>
             <div className="site-responsive-row personality-example-row">
               <Example
-                subtitle="Example: Webex Teams - Onboarding (Attributes applified: Uplifting, Confident, Inclusive)"
+                subtitle="Example: Webex app - Global Header announcement"
               >
                 <div className="personality-example-row-item">
-                  <img className="site-example-image" src={webexErrorExample} />
+                  <img className="site-example-image" src={webexGlobalHeaderExample} />
                 </div>
               </Example>
               <Example
-                subtitle="Example: Webex Meetings - Error message (Attributes applified: Focused, Familiar, Inclusive)"
+                subtitle="Example: Webex Meetings - Error"
               >
                 <div className="personality-example-row-item">
                   <img className="site-example-image" src={webexErrorExample} />
@@ -86,10 +93,15 @@ class Personality extends React.PureComponent {
               </Example>
             </div>
             <Example
-              subtitle="Example: Webex.com"
+              subtitle="Example: Webex app - Onboarding"
             >
-              <div className="personality-webex-example">
-                <img className="site-example-image" src={webexExample} />
+              <div className="site-responsive-row personality-webex-onboarding-example-container">
+                <div className="personality-webex-onboarding-example">
+                  <img className="site-example-image" src={webexOnboardingDesktop} />
+                </div>
+                <div className="personality-webex-onboarding-example">
+                  <img className="site-example-image" src={webexOnboardingMobile} />
+                </div>
               </div>
             </Example>
             <div className="personality-writing-tips-container">
@@ -150,17 +162,23 @@ class Personality extends React.PureComponent {
             </div>
             <div className="site-responsive-row personality-example-row">
               <Example
-                subtitle="Example: Webex Teams - Onboarding"
+                subtitle="Example: Webex.com, empty states, and loading"
               >
                 <div className="personality-story-illustation-example">
-                  <img src={webexOnboardingExample} />
+                  <img className="site-example-image" src={statesLoadingExample1} />
+                  <img className="site-example-image" src={statesLoadingExample2} />
                 </div>
               </Example>
               <Example
-                subtitle="Example: Webex.com"
+                subtitle="Example: Webex voice assistant, and status indicators"
               >
                 <div className="personality-technical-illustration-example">
-                  <img className="site-example-image" src={webexTechnicalExample} />
+                  <div>
+                    <img className="site-example-image" src={voiceStatusExample1} />
+                  </div>
+                  <div>
+                    <img className="site-example-image" src={voiceStatusExample2} />
+                  </div>
                 </div>
               </Example>
             </div>

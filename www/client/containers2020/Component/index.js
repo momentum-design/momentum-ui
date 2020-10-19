@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchComponentData } from './actions';
 import { withRouter } from 'react-router-dom';
 import ComponentPage from './ComponentPage';
+import Icon from '@momentum-ui/react/lib/Icon';
 
 class ComponentContainer extends React.Component {
   componentDidMount() {
@@ -39,7 +40,7 @@ class ComponentContainer extends React.Component {
       <>
       {
         this.props.componentNotFound
-          && <div>bye</div>
+          && <div className="site-warp component-does-not-exist"><Icon name="warning_72" /> This component does not exist</div>
           || <ComponentPage {...this.props} />
       }
       </>

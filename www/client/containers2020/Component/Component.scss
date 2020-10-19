@@ -1,3 +1,17 @@
+.component-does-not-exist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  font-family: $brand-font-regular;
+  font-size: 32px;
+
+  i {
+    margin-bottom: 32px;
+  }
+}
+
 .component-page {
 
   &-area .docs-content__column {

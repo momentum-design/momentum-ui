@@ -35,7 +35,7 @@ class TokenSquares extends React.PureComponent {
               <img src={elevationTokenImage} />
             </div>
             <p>Elevation</p>
-            <div class='arrow'></div>
+            <div className='arrow'></div>
           </div>
         </a>
         <a href="/2020/tokens/space">

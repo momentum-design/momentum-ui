@@ -1,0 +1,154 @@
+.component-does-not-exist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  font-family: $brand-font-regular;
+  font-size: 32px;
+
+  i {
+    margin-bottom: 32px;
+  }
+}
+
+.component-page {
+
+  &-area .docs-content__column {
+    padding: 3rem 0;
+  }
+
+  &-grid-tab {
+    & > a.md-button:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &-all-components-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1rem;
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+
+
+.docs-section {
+  margin-bottom: rem-calc(64);
+  &__title {
+    margin-bottom: rem-calc(12);
+  }
+  &__body {
+    margin-bottom: rem-calc(28);
+    p,
+    span,
+    ul,
+    li {
+      font-family: $brand-font-light;
+      font-size: rem-calc(16);
+      line-height: rem-calc(24);
+      color: $md-gray-90;
+    }
+  }
+  &__image,
+  &__image-tabs,
+  &__table {
+    margin-bottom: rem-calc(28);
+  }
+}
+
+.docs-sub-section {
+  &:not(:last-of-type) {
+    margin-bottom: rem-calc(24);
+  }
+  &__title {
+    margin-bottom: rem-calc(12);
+  }
+  &__body {
+    margin-bottom: rem-calc(28);
+    p,
+    span,
+    ul,
+    li {
+      font-family: $brand-font-light;
+      font-size: rem-calc(16);
+      line-height: rem-calc(24);
+      color: $md-gray-90;
+    }
+  }
+}
+
+.#{$button-group__class}--blue {
+  grid-area: tabs;
+}
+
+.#{$button-group__class}--blue {
+  > .#{$button__class} {
+    @include flex;
+    height: 48px;
+    padding: 12px 0;
+    font-size: rem-calc(14);
+    line-height: rem-calc(24);
+    border: none;
+    @include button-color($bg: transparent, $bg-active: transparent, $bg-hover: transparent, $color: $md-gray-70, $color-active: $md-theme-70 , $color-hover: $md-theme-70 );
+    
+    &:not(:first-child) {
+      margin-left: 24px;
+      border-radius: 0;
+    } // &:last-child,
+    // &:not(:first-child) {
+    //   border-radius: 0;
+    //   margin: 0 12px;
+    // }
+    &:focus {
+      box-shadow: none;
+    }
+    &.active {
+      // color: $md-theme-70 ;
+      // $bg: transparent;
+      // box-shadow: 0 4px 4px -5px $md-theme-70 ;
+      &:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0; // border-bottom: 4px solid $md-theme-70 ;
+        height: 4px;
+        background: $md-theme-70 ;
+        content: '';
+      }
+    }
+  }
+}
+
+// TODO(pojeter): move this to the core when table designs are finalized
+.md-table {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-size: rem-calc(14);
+  line-height: rem-calc(24);
+
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+    &-head,
+    &-cell {
+      flex: 1 1 0%;
+      padding: rem-calc(8);
+    }
+
+  &-head {
+    background-color: $md-gray-10;
+  }
+
+  &-cell {
+    border-bottom: 1px solid $md-gray-20;
+  }
+}

@@ -5,6 +5,7 @@ import routesReducer from '../containers/Routes/reducer';
 import changelogReducer from '../containers/Changelog/reducer';
 import componentOverviewReducer from '../containers/ComponentOverview/reducer';
 import componentsReducer from '../containers/Component/reducer';
+import componentsReducer2020 from '../containers2020/Component/reducer';
 import feedbackReducer from '../containers/Feedback/reducer';
 import iconsReducer from '../containers/Icons/reducer';
 import searchResultsReducer from '../containers/SearchResults/reducer';
@@ -14,6 +15,7 @@ const createRootReducer = history => combineReducers({
   changelogReducer,
   componentOverviewReducer,
   componentsReducer,
+  componentsReducer2020,
   feedbackReducer,
   iconsReducer,
   pageReducer,

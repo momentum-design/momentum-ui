@@ -35,10 +35,18 @@ class Color extends React.PureComponent {
     }
 
     const createAndPushTableRows = (darkTheme, value, tokenName, lightTableRows, darkTableRows) => {
-      const coreTokenSplit = value.split("-");
-      const colorObject = colors[coreTokenSplit[1]];
-      const hexValue = coreTokenSplit[2] ? colorObject[coreTokenSplit[2]].hex : colorObject.default.hex;
-      const colorSample = <ColorBlock hexColorString={hexValue} />;
+      let coreTokenSplit = value;
+      let coreTokenLabelString = value;
+      let colorObject;
+      let hexValue;
+      let colorSample;
+      if (value !== 'none') {
+        coreTokenSplit = value.split("-");
+        colorObject = colors[coreTokenSplit[1]];
+        hexValue = coreTokenSplit[2] ? colorObject[coreTokenSplit[2]].hex : colorObject.default.hex;
+        colorSample = <ColorBlock hexColorString={hexValue} />;
+        coreTokenLabelString = coreTokenSplit[1] + (coreTokenSplit[2] ? "-" + coreTokenSplit[2] : '');
+      }
       const tokenLabelString = tokenName + "Ui";
       const tokenLabel = (
         <Badge
@@ -49,7 +57,6 @@ class Color extends React.PureComponent {
           <div>{tokenLabelString}</div>
         </Badge>
       );
-      const coreTokenLabelString = coreTokenSplit[1] + (coreTokenSplit[2] ? "-" + coreTokenSplit[2] : '');
       const coreTokenLabel = (
         <Badge
           key={tokenLabelString + coreTokenLabelString}
@@ -59,7 +66,7 @@ class Color extends React.PureComponent {
           <div>{coreTokenLabelString}</div>
         </Badge>
       );
-      const tokenHex = <div>{hexValue.split("#")[1]}</div>
+      const tokenHex = <div>{hexValue ? hexValue.split("#")[1] : '-'}</div>
       const newRow = [colorSample, tokenLabel, coreTokenLabel, tokenHex];
       if (darkTheme) {
         darkTableRows.push(newRow);

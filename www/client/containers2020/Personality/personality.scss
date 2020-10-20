@@ -4,19 +4,20 @@
   }
 }
 
-.site-banner-con-personality {
-  background:#171B1F;
-  .site-banner-normal {
-    background-image: url(../assets/2020/banner-system.svg);
-    background-size: contain;
-
-    p {
-      color: $md-white;
-    }
+.personality-section-header {
+  margin-top: 0;
+  
+  @include site-column-breakpoint {
+    margin-bottom: 80px;
   }
 }
 
 .personality-header-copy {
+  @include site-column-breakpoint {
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+
   .section-header__title h1 {
     height: calc(100% + 46px);
     background-image: url(../assets/2020/personality-header-copy.svg);
@@ -25,6 +26,11 @@
 }
 
 .personality-header-illustration {
+  @include site-column-breakpoint {
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+
   .section-header__title h1 {
     height: calc(100% + 46px);
     background-image: url(../assets/2020/personality-header-illustration.svg);
@@ -58,7 +64,7 @@
 .personality-example-row {
   margin-top: 75px;
   grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-row-gap: 60px;
 
   .example-container {
     margin: 0;
@@ -67,22 +73,64 @@
 
 .personality-example-row-item {
   @include example-image($align-items: center, $img-width: 90%);
+  padding: 16px;
 }
 
-.personality-webex-example {
-  @include example-image($img-width: 70%, $img-margin: 25px 0 0 0);
+.personality-webex-onboarding-example {
+  @include example-image($align-items: center, $img-width: auto);
+
+  &-container {
+    height: 100%;
+    grid-row-gap: 30px;
+    padding: 16px;
+  }
+
+  img {
+    max-height: 67%;
+
+    @include site-column-breakpoint {
+      max-height: none;
+      width: 100%;
+    }
+  }
 }
 
 .personality-story-illustation-example {
-  @include example-image($align-items: center, $img-width: 100%);
+  @include example-image($align-items: center);
+  padding: 16px;
+  flex-direction: column;
 
   img {
     object-fit: cover;
+    max-width: 90%;
+    width: auto;
+  }
+  img + img {
+    margin-top: 12px;
   }
 }
 
 .personality-technical-illustration-example {
-  @include example-image($img-width: 88%, $justify-content: flex-start);
+  @include example-image($justify-content: center, $align-items: center, $img-width: auto);
+  flex-direction: column;
+  padding: 16px;
+
+  div {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    min-height: 130px;
+    width: 100%;
+
+    &:first-child {
+      align-items: flex-start;
+    }
+  }
+
+  img {
+    max-width: 95%;
+  }
 }
 
 .personality-attributes-bullet-list {
@@ -127,7 +175,7 @@ p.personality-header-lead {
 
 .personality-description-container {
   grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-row-gap: 80px;
 
   div {
     margin-right: 130px;
@@ -148,11 +196,11 @@ p.personality-header-lead {
 }
 
 .personality-writing-tips-container {
-  margin-top: 75px;
+  margin-top: 80px;
 
   h3 {
     @include h3($color: $md-white, $font-weight: $font-weight-bold, $line-height: 75%);
-    margin-bottom: 20px;
+    margin-bottom: 60px;
   }
 
   p {
@@ -172,6 +220,7 @@ p.personality-header-lead {
 }
 
 .personality-writing-tips-grid {
+  grid-row-gap: 60px;
 
   &__container {
     padding: 68px 72px;
@@ -231,7 +280,7 @@ p.personality-header-lead {
     margin-top: 30px;
 
     & + & {
-      margin-top: 70px;
+      margin-top: 80px;
     }
 
     p {

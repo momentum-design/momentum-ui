@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.site-header-white .md-top-bar__mobile-menu-button i {
+  color: white;
+}
+
 .site-header-top-bar {
   background-color: transparent;
   margin-top: 31px;
@@ -23,7 +27,14 @@
       justify-content: flex-end;
 
       & > .md-list > a.md-list-item {
+        border-radius: 4px;
+        color: $md-gray-100;
         height: 2rem;
+        padding: 0 rem-calc(8);
+
+        & + a.md-list-item {
+          margin-left: rem-calc(24);
+        }
 
         &.current-active {
           background-color: $md-black;
@@ -34,7 +45,42 @@
         &.current-active-dark {
           background-color: $md-white;
           border-radius: 4px;
-          color: $md-black;
+          color: $md-black !important;
+        }
+
+        &:hover {
+          background-color: $md-gray-80;
+          color: $md-white !important;
+        }
+
+        &.site-nav-cobalt-hover:hover {
+          background-color: $md-cobalt-60;
+          color: $md-white;
+        }
+
+        &.site-nav-gold-hover:hover {
+          background-color: $md-gold-70;
+          color: $md-white;
+        }
+
+        &.site-nav-green-hover:hover {
+          background-color: $md-green-60;
+          color: $md-white;
+        }
+
+        &.site-nav-lime-hover:hover {
+          background-color: $md-lime-70;
+          color: $md-white;
+        }
+
+        &.site-nav-pink-hover:hover {
+          background-color: $md-pink-70;
+          color: $md-white;
+        }
+
+        &.site-nav-slate-hover:hover {
+          background-color: $md-slate-60;
+          color: $md-white;
         }
       }
     }
@@ -66,14 +112,14 @@
   }
 }
 
-.site-header-white{
+.site-header-white {
   a.site-logo svg {
     fill: $md-white;
   }
 
-  & .site-header-top-bar-nav {
-    & .md-list > a.md-list-item,
-    & .md-list > a.md-list-item.active {
+  & .site-header-top-bar .site-header-top-bar-nav {
+    & > .md-list > a.md-list-item,
+    & > .md-list > a.md-list-item.active {
       color: $md-white;
     }
   }

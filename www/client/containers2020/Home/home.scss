@@ -5,102 +5,39 @@
   justify-content: center;
   align-items: flex-start;
 
+  @include site-column-breakpoint {
+    height: auto;
+    padding: 110px 0 80px 0;
+  }
+
   > h1 {
-    line-height: 62px;
-    font-size: 52px;
+    font-family: $brand-font-regular;
+    font-size: rem-calc(52);
+    font-weight: $font-weight-bold;
+    line-height: rem-calc(62);
     color: $md-white;
     max-width: 520px;
   }
 
   p {
-    margin: 33px 0 0 0;
-    line-height: 28px;
-    font-size: 18px;
-    color: $md-white;
+    @include p($color: $md-white);
+    font-family: $brand-font-light;
+    margin: 50px 0 80px 0;
     max-width: 520px;
+
+    @include site-column-breakpoint {
+      margin: 60px 0;
+    }
   }
 
   &-image {
-    background: url(../assets/2020/banner-system.svg) no-repeat center center;
-    background-size: contain;
-  }
-
-  .site-banner-home-button {
-    margin: 72px 0 0 0;
+    background: url(../assets/2020/banner-system.png) no-repeat left center;
+    background-size: 80%;
   }
 }
 
 .site-subtitle-home {
   margin:100px 0 0 12px;
-}
-
-.site-home-subcon {
-  position: relative;
-  grid-column-gap: 30px;
-  grid-row-gap: 22px;
-  padding-bottom: 0;
-  margin-bottom: 110px;
-
-  .site-home-subcon-item {
-    display: flex;
-    flex-direction: column;
-    height: 440px;
-    padding: 40px 35px;
-
-    &__image {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      height: 100%;
-    }
-
-    p {
-      @include p($color: $md-black, $font-size: 1.5rem);
-    }
-
-    .arrow {
-      display: block;
-      margin: 12px 0 0 0;
-      width: 28px;
-      height: 15px;
-      background: url(../assets/2020/arrow-right.svg) no-repeat;
-      background-size: contain;
-    }
-
-  }
-
-  .site-home-color {
-    background: $site-blue;
-
-    img {
-      width: 60%;
-    }
-  }
-
-  .site-home-typography {
-    background: $site-gold;
-    
-    img {
-      width: 60%;
-    }
-  }
-
-  .site-home-elevation {
-    background: $site-green;
-    
-    img {
-      width: 70%;
-    }
-  }
-
-  .site-home-space {
-    background: $site-pink;
-    
-    img {
-      width: 50%;
-    }
-  }
-
 }
 
 .site-home-sub-banner {
@@ -110,20 +47,64 @@
     color: $md-black;
   }
   & > p{
-    margin-top: 36px;
+    margin: 36px 0 42px 0;
     font-size: 18px;
     color: $md-black;
     line-height: 28px;
+    max-width: 411px;
   }
+
   .site-home-sub-button {
-    margin-top:42px;
     background-color: transparent;
     border: 1px solid #BBBBBB;
+  
+    &-icon {
+      border: 2px solid $md-slate-70;
+      color: $md-slate-80;
+  
+      &:hover {
+        background: $md-slate-60;
+        border-color: $md-slate-60;
+        color: $md-white;
+      }
+    }
+  
+    &-personality {
+      border: 2px solid $md-yellow-70;
+      color: $md-yellow-80;
+  
+      &:hover {
+        background: $md-yellow-30;
+        border-color: $md-yellow-30;
+        color: #171B1F;
+      }
+    }
+  }
+}
+
+.site-home-sub-button {
+  background-color: transparent;
+  border: 1px solid #BBBBBB;
+
+  &-figma {
+    background: $md-blue-60;
+    border: 2px solid $md-blue-60;
+    color: $md-white;
+
+    &:hover {
+      background: transparent;
+      border-color: $md-blue-60;
+      color: $md-blue-60;
+    }
   }
 }
 
 .site-home-icon {
   margin-top: 110px;
+
+  @include site-column-breakpoint {
+    margin-top: 80px;
+  }
 
   .site-responsive-row {
     grid-column-gap: 30px;
@@ -178,8 +159,9 @@
   }
 }
 
-.site-home-banner3-title {
+h1.site-home-banner3-title {
   color: $site-black;
+  font-family: $brand-font-regular;
   font-weight: 500;
   font-size: 48px;
   line-height: 56px;
@@ -190,10 +172,12 @@
 
 .site-home-banner3 {
   text-align: center;
+  padding: 16px;
   h1 {
     display: block;
     margin-top: 184px;
     font-size: 36px;
+    font-family: $brand-font-regular;
     line-height: 56px;
     width:100%;
     text-align: center;
@@ -203,15 +187,56 @@
   p {
     line-height: 28px;
     font-size: 18px;
+    margin-bottom: 40px;
     width:100%;
     text-align: center;
     color: $site-black;
+
+    @include site-column-breakpoint {
+      margin-bottom: 60px;
+    }
   }
 
   button {
-    margin: 40px auto 80px auto;
-    background: $md-white;
-    border: none;
+    margin-bottom: 80px;
+  }
+
+  .site-home-sub-button {
+    &-github {
+      background: $md-white;
+      border: 2px solid $md-white;
+      color: #171B1F;
+  
+      &:hover {
+        background: $md-cobalt-60;
+        border-color: $md-cobalt-60;
+        color: $md-white;
+      }
+    }
+  
+    &-developers {
+      background: $md-white;
+      border: 2px solid $md-white;
+      color: #171B1F;
+  
+      &:hover {
+        background: $md-mint-60;
+        border-color: $md-mint-60;
+        color: $md-white;
+      }
+    }
+
+    &-figma {
+      background: $md-blue-60;
+      border: 2px solid $md-blue-60;
+      color: $md-white;
+  
+      &:hover {
+        background: transparent;
+        border-color: $md-blue-60;
+        color: $md-blue-60;
+      }
+    }
   }
 }
 

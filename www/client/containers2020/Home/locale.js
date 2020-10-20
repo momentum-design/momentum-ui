@@ -2,7 +2,7 @@ import React from 'react';
 
 const locale = {
   header: {
-    title: "Momentum Design System",
+    title: <>Momentum<br/>Design System</>,
     body: "Momentum is how Webex designs the future of work. This design system exists to create a shared design language and set of building blocks for all Webex products.",
   },
   sectionHeaders: {

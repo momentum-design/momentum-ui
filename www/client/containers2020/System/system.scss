@@ -1,18 +1,25 @@
 .site-banner-system {
-  background: url(../assets/2020/banner-system.svg) no-repeat center right;
+  background: url(../assets/2020/banner-system.png) no-repeat center right;
+  background-origin: content-box;
+  background-position: center;
   background-size: contain;
-  height: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 85px;
+  padding-bottom: 80px;
   overflow: hidden;
 
   @include site-column-breakpoint {
     height: auto;
-    padding-bottom: 110px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   p {
     @include p($font-size: 2.25rem, $font-weight: 350, $color: $md-white);
     text-align: center;
-    margin-top: 255px;
+    margin: 130px 0 0 0;
 
     @include site-column-breakpoint {
       font-size: 1.5rem;
@@ -26,7 +33,7 @@
     font-size: 96px;
     line-height: 130%;
     text-align: center;
-    margin-top: 335px;
+    margin-top: 193px;
     color: $md-white;
 
     @include site-column-breakpoint {
@@ -38,16 +45,28 @@
 }
 
 .system-values-section-header {
-  margin-top: 0;
+  margin-top: 60px;
   margin-bottom: 110px;
+
+  @include site-column-breakpoint {
+    margin-top: 100px;
+  }
 }
 
 .system-attributes-section-header {
   margin: 110px 0;
+
+  @include site-column-breakpoint {
+    margin: 100px 0;
+  }
 }
 
 .system-blocks-section-header {
-  margin-top: 110px;
+  margin-top: 0;
+
+  @include site-column-breakpoint {
+    margin-top: 80px;
+  }
 }
 
 p.systems-header-lead {
@@ -62,14 +81,14 @@ p.systems-header-lead {
 
 .system-token-links {
   grid-column-gap: 30px;
-  margin-bottom: 110px;
+  margin-bottom: 20px;
 }
 
 .system-values-grid {
   margin-bottom: 75px;
 
   @include site-column-breakpoint {
-    grid-row-gap: 30px;
+    grid-row-gap: 80px;
   }
 
   &__container {
@@ -113,6 +132,10 @@ p.systems-header-lead {
     h5 {
       @include h5($color: $md-white, $font-size: 2.25rem, $font-weight: $font-weight-bold, $line-height: 100%);
       margin-bottom: 28px;
+
+      @include site-column-breakpoint {
+        margin-bottom: 60px;
+      }
     }
 
     p {
@@ -125,7 +148,7 @@ p.systems-header-lead {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 30px;
-  grid-row-gap: 80px;
+  grid-row-gap: 100px;
 
   &__container {
     position: relative;
@@ -164,6 +187,10 @@ p.systems-header-lead {
       align-items: center;
       margin: 28px 0 50px 0;
       width: 100%;
+
+      @include site-column-breakpoint {
+        margin: 60px 0;
+      }
     }
 
     &-slider-left,
@@ -194,12 +221,70 @@ p.systems-header-lead {
   }
 }
 
+.system-animation-banner {
+  @include site-column-breakpoint {
+    display: none;
+  }
+}
+
 .system-token-link {
   a {
     font-family: $brand-font-regular;
     font-size: 2.5rem;
-    text-decoration: underline;
     line-height: 75%;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 100%;
+      bottom: -5px;
+      height: 4px;
+      transition-property: width;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out;
+    }
+
+    &:hover:after,
+    &:focus:after,
+    &:active:after {
+      left: 0;
+      right: auto;
+      width: 0;
+    }
+  }
+
+  &-color a {
+    color: $site-blue;
+
+    &:after {
+      background: $site-blue;
+    }
+  }
+
+  &-typography a {
+    color: $site-gold;
+
+    &:after {
+      background: $site-gold;
+    }
+  }
+
+  &-elevation a {
+    color: $site-lime;
+
+    &:after {
+      background: $site-lime;
+    }
+  }
+
+  &-space a {
+    color: $site-pink;
+
+    &:after {
+      background: $site-pink;
+    }
   }
 
   & + & {

@@ -108,6 +108,11 @@
       .md-top-bar__brand a.site-logo svg {
         fill: $md-black;
       }
+
+      .md-list-separator {
+        background-color: $md-white;
+        color: $md-white;
+      }
     }
   }
 }

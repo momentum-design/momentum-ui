@@ -74,8 +74,7 @@ class ComponentOverviewPage extends React.Component {
               </div>
             ) : (
               <React.Fragment>
-                {/* Uncomment for the filter bar */}
-                {/* <div className="site-component-overview__top">
+                <div className="site-component-overview__top">
                   <InputSearch
                     clear
                     name="filterSearchInput"
@@ -83,8 +82,9 @@ class ComponentOverviewPage extends React.Component {
                     shape="pill"
                     onChange={this.handleSearchInput}
                     value={keyword}
+                    placeholder="Search"
                   />
-                </div> */}
+                </div>
                 <div className="site-component-overview__component-list">
                   {renderComponentItems()}
                 </div>

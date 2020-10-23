@@ -55,19 +55,19 @@
     grid-row-gap: 20px;
 
     @media #{$small-only} {
-      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 2), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(item-width(0px, 2), 1fr));
     }
     @media #{$medium-only} {
-      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 4), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(item-width(0px, 4), 1fr));
     }
     @media #{$large-only} {
-      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 6), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(item-width(0px, 6), 1fr));
     }
     @media #{$xlarge-only} {
-      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 8), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(item-width(0px, 8), 1fr));
     }
     @media #{$xxlarge-up} {
-      grid-template-columns: repeat(auto-fit, minmax(item-width(0px, 10), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(item-width(0px, 10), 1fr));
     }
 
     &-item {

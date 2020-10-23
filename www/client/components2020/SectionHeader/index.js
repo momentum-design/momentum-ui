@@ -11,17 +11,21 @@ class SectionHeader extends React.PureComponent {
       leadElm
     } = this.props;
 
+    const leadContainer = (
+      <div className='section-header__lead'>
+        {leadStr && (
+          <p>{leadStr}</p>
+        )}
+        {leadElm && leadElm}
+      </div>
+    );
+
     return (
       <div className={'site-responsive-row section-header' + (darkTheme ? ' section-header-dark' : '') + (className ? ' ' + className : '')}>
         <div className='section-header__title'>
           <h1>{title}</h1>
         </div>
-        <div className='section-header__lead'>
-          {leadStr && (
-            <p>{leadStr}</p>
-          )}
-          {leadElm && leadElm}
-        </div>
+        {(leadElm || leadStr) && leadContainer}
       </div>
     );
   }

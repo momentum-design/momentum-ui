@@ -1,3 +1,15 @@
+.personality-page-container {
+  background-image: url("../assets/2020/banner-system.png");
+  background-repeat: no-repeat;
+  background-size: 678px;
+  background-position-x: center;
+  background-position-y: 85px;
+
+  @include site-column-breakpoint {
+    background-size: 80%;
+  }
+}
+
 .personality-page-hero {
   p.site-banner-normal-title {
     color: $md-white;

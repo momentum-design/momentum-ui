@@ -41,14 +41,12 @@ class SideNavContainer extends React.PureComponent {
                   to='/2020/system'
                 />
               }
-              icon="tools_20"
               key='system'
               keyboardKey='System'
               onClick={onClick}
               title='System'
             />
             <SidebarNavItem
-              icon="apps_20"
               key='tokens'
               keyboardKey='Tokens'
               title='Tokens'
@@ -109,7 +107,6 @@ class SideNavContainer extends React.PureComponent {
                   to='/2020/components'
                 />
               }
-              icon="accessories_20"
               key='components'
               keyboardKey='Components'
               onClick={onClick}
@@ -122,7 +119,6 @@ class SideNavContainer extends React.PureComponent {
                   to='/2020/icons'
                 />
               }
-              icon="emoticons_20"
               key='icons'
               keyboardKey='Icons'
               onClick={onClick}
@@ -135,7 +131,6 @@ class SideNavContainer extends React.PureComponent {
                   to='/2020/personality'
                 />
               }
-              icon="meet_20"
               key='personality'
               keyboardKey='Personality'
               onClick={onClick}

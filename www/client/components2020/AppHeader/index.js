@@ -112,7 +112,7 @@ class AppHeader extends Component {
             <TopbarRight>
             </TopbarRight>
             <TopbarMobile shouldCloseOnClick={false} brandNode={mobileBrandNode}>
-              <SideNav logo={logo} isFixed={false} hideBrand className="docs-mobile-nav" />
+              <SideNav logo={logo} isFixed={false} hideBrand className="site-mobile-nav" />
             </TopbarMobile>
           </Topbar>
         </div>

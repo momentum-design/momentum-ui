@@ -9,15 +9,12 @@ import PageHero from '../../components2020/PageHero';
 import personalityBanner from '../../assets/2020/banner-system.png';
 import webexErrorExample from '../../assets/2020/personality-webex-error-example.png';
 import webexGlobalHeaderExample from '../../assets/2020/personality-webex-global-header-example.png';
-import webexExample from '../../assets/2020/personality-webex-example.png';
 import webexOnboardingDesktop from '../../assets/2020/personality-webex-onboarding-desktop.png';
 import webexOnboardingMobile from '../../assets/2020/personality-webex-onboarding-mobile.png';
-import webexOnboardingExample from '../../assets/2020/personality-webex-teams-onboarding-example.png';
 import statesLoadingExample1 from '../../assets/2020/personality-states-loading-1.png';
 import statesLoadingExample2 from '../../assets/2020/personality-states-loading-2.png';
 import voiceStatusExample1 from '../../assets/2020/personality-voice-status-1.png';
 import voiceStatusExample2 from '../../assets/2020/personality-voice-status-2.png';
-import webexTechnicalExample from '../../assets/2020/personality-webex-technical-illustration-example.png';
 
 class Personality extends React.PureComponent {
 
@@ -43,10 +40,8 @@ class Personality extends React.PureComponent {
 
     return (
       <div className="site-con">
-        <div className="site-con site-bg-black page-body-buffer">
+        <div className="site-con site-bg-black page-body-buffer personality-page-container">
           <PageHero
-            backgroundImage={personalityBanner}
-            backgroundSize='contain'
             className='personality-page-hero'
             heroTitle='Personality'
           />

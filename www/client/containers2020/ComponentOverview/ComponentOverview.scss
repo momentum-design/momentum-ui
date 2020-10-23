@@ -20,7 +20,7 @@
 
   &__component-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
     grid-column-gap: 12px;
     grid-row-gap: 12px;
 

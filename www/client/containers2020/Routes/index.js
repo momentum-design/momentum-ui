@@ -10,6 +10,7 @@ import Components from '../ComponentOverview';
 import Icons from '../../containers2020/Icons';
 import Tokens from '../../containers2020/Tokens';
 import Personality from '../../containers2020/Personality';
+import Feedback from '../../containers2020/Feedback';
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class Routes extends React.Component {
         <Route path='/2020/icons' exact component={Icons} />
         <Route path='/2020/tokens' component={Tokens} />
         <Route path='/2020/personality' exact component={Personality} />
+        <Route path='/2020/feedback' exact component={Feedback} />
       </Switch>
     );
   }

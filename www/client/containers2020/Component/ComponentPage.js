@@ -62,10 +62,12 @@ class ComponentPage extends React.Component {
       </div>
     );
 
+    const properComponentLoaded = match.params.component === component.name;
+
     return (
       <Media query="(min-width: 1025px)">
         {isDesktop => {
-          return !component && match.params.component === component.name
+          return !component && properComponentLoaded
             ? (
               <div className="site-warp">
                 {allComponentsNavLink}
@@ -75,11 +77,17 @@ class ComponentPage extends React.Component {
             : (
               <div className="site-warp">
                 {allComponentsNavLink}
-                <SectionHeader
-                  title={component.displayName}
-                  leadStr={component.description}
-                />
-                <GridTab matchUrl={match.url} component={component} hasCodeExamples={hasCodeExamples} isMobile={!isDesktop}/>
+                {properComponentLoaded
+                  &&
+                    <>
+                      <SectionHeader
+                        title={component.displayName}
+                        leadStr={component.description}
+                      />
+                      <GridTab matchUrl={match.url} component={component} hasCodeExamples={hasCodeExamples} isMobile={!isDesktop}/>
+                    </>
+                  || <div className="component-page-spinner-container"><Spinner /></div>
+                }
 
                 <div className='docs-content-area component-page-area'>
                   {loading

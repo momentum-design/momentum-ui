@@ -8,6 +8,7 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 import TokenSquares from '../../components2020/TokenSquares';
 import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
+import NotFound from '../../components2020/NotFound';
 
 class Tokens extends React.Component {
 
@@ -20,7 +21,7 @@ class Tokens extends React.Component {
         <Route path='/2020/tokens/elevation' exact component={Elevation} />
         <Route path='/2020/tokens/space' exact component={Space} />
         <Route path='/2020/tokens/typography' exact component={Typography} />
-        <Route path='/2020/tokens/*' exact component={Icons} />
+        <Route component={NotFound} />
       </Switch>
     );
   }

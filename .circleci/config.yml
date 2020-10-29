@@ -100,7 +100,7 @@ jobs:
     <<: *image_defaults
     steps:
       - attach_workspace:
-          at: ~/web-components
+          at: ~/web-components/
       - run: yarn
       - run:
           name: Build web components library

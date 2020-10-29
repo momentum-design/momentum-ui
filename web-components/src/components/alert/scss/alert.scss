@@ -1,0 +1,80 @@
+/** @component alert */
+
+:host(md-alert) {
+  display: flex;
+  flex: 1 1 100%;
+
+  .md-alert {
+    @include flex($jc: space-between, $ai: flex-start);
+    @include border-radius($alert__border-radius);
+    background-color: var(--alert-default-bg-color, $lm-alert-default-bg-color-light);
+    border: 1px solid $black-12;
+    box-shadow: 0 8px 16px 0 $black-08;
+    flex: 1 1 100%;
+    margin-bottom: rem-calc(8);
+    max-height: rem-calc(308);
+    max-width: $alert__width;
+    min-height: rem-calc(78);
+    padding: rem-calc(12);
+
+    &__icon {
+      md-icon::part(icon) {
+        font-size: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
+        line-height: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-basis: 0;
+      flex-direction: column;
+      flex-grow: 2;
+      max-width: $alert__content_width;
+      padding-left: rem-calc(12);
+      padding-right: rem-calc(2);
+    }
+
+    &__title {
+      @include text-dots;
+      color: var(--alert-title-text-color, $lm-alert-title-text-color-light);
+      font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
+      line-height: rem-calc(24);
+      width: calc(100%);
+    }
+
+    &__message {
+      @include line-dots(2);
+      color: var(--alert-default-text-color, $lm-alert-default-text-color-light);
+      font-family: $brand-font-light;
+      font-size: $alert__font-size;
+      line-height: 1.35;
+      width: calc(100%);
+    }
+
+    &__title,
+    &__message {
+      word-wrap: break-word;
+    }
+
+    &__button {
+      margin-left: rem-calc(4);
+
+      md-button::part(button) {
+        align-items: center;
+        background-color: var(--alert-close-bg-color, $lm-alert-close-bg-color-light);
+        border-radius: 50%;
+        display: inline-flex;
+        height: var(--alert-close-size, $lm-alert-close-size-light);
+        justify-content: center;
+        width: var(--alert-close-size, $lm-alert-close-size-light);
+      }
+    }
+
+    &.md-alert__inline {
+      border: 0;
+      box-shadow: none;
+      margin-bottom: 0;
+    }
+  }
+}
+

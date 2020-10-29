@@ -100,17 +100,17 @@ jobs:
     <<: *image_defaults
     steps:
       - attach_workspace:
-          at: ~/web-components/
-      - run: yarn
+          at: ~/
+      - run: yarn bootstrap
       - run:
           name: Build web components library
-          command: yarn dist
+          command: yarn build:wc
       - run:
           name: Unit Test web components library
-          command: yarn test:ci
+          command: yarn ci:test:wc
       - run:
           name: Build Storybook
-          command: yarn storybook:dist
+          command: yarn storybook:wc
       - run:
           name: Clear Git changed files
           command: git checkout -- .

@@ -1,0 +1,82 @@
+/** @component badge */
+
+@mixin badge-base() {
+  align-items: center;
+  display: inline-flex;
+  font-family: $badge__font-family;
+  font-weight: $badge__font-weight;
+  height: rem-calc(32);
+  justify-content: flex-start;
+  line-height: $badge__font-line-height;
+  margin-bottom: auto;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+  
+@mixin badge-size($padding: $badge__padding, $text-size: $badge__font-size) {
+  @if $padding {
+    padding: $padding;
+  }
+  
+  @if $text-size {
+    font-size: $text-size;
+  }
+}
+  
+@mixin badge-style(
+  $bg: var(--badge-default-bg-color, $lm-badge-default-bg-color-light),
+  $radius: false,
+  $color: var(--badge-default-text-color, $lm-badge-default-text-color-light)
+) {
+  @if $bg {
+    background-color: $bg;
+  
+    @if $color {
+      color: $color;
+    }
+  }
+  
+  @if $radius==true {
+    @include radius($badge__radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
+}
+  
+@mixin badge-outline-style(
+  $bc: $badge--blue__background-color,
+  $radius: false,
+  $bg: transparent
+) {
+  @if $bc {
+    color: $bc;
+    border: 2px solid $bc;
+  }
+  
+  background-color: $bg;
+}
+  
+@mixin badge(
+  $padding: $badge__padding,
+  $text-size: $badge__font-size,
+  $bg: $badge--blue__background-color,
+  $radius: false
+) {
+  @include badge-base;
+  @include badge-size($padding, $text-size);
+  @include badge-style($bg, $radius);
+}
+  
+@mixin badge-variant($color) {
+  background-color: $color;
+  
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%);
+    }
+  }
+}

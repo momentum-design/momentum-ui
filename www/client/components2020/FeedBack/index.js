@@ -20,7 +20,7 @@ class Feedback extends Component {
       <div className={'site-con site-feedback'}>
         <div className={'site-warp'}>
           <h1>Didn’t find what you’re looking for? Let us know!</h1>
-          <NavLink to="/feedback">
+          <NavLink to="/2020/feedback">
             <Button
               ariaLabel='Send feedback'
               className="md-button--blue"

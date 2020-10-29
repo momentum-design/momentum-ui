@@ -3,6 +3,11 @@
   width: 100%;
   border: 1px solid rgba(0,0,0,0.15);
   border-radius: 4px;
+  transition: 300ms;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.16), 0px 1px rgba(0,0,0,0.16);
+  }
 
   &--link{
     display: block;

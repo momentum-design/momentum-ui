@@ -1,0 +1,66 @@
+/** @component progress */
+
+@include exports("md-progress-bar") {
+  .progressbar-label {
+    text-align: left;
+  }
+
+  .progressbar-progress {
+    float: right;
+  }
+
+  .progressbar-label,
+  .progressbar-progress {
+    color: $md-black-100;
+    font-family: $font-family-sans-serif;
+    font-size: rem-calc(11);
+  }
+
+  .progress {
+    @include progress-container;
+
+    .meter {
+      @include progress-meter;
+    }
+
+    &--indeterminate .meter {
+      animation: indeterminateAnimation 1s infinite linear;
+      transform-origin: 0% 50%;
+      width: 100%;
+    }
+
+    @keyframes indeterminateAnimation {
+      0% {
+        transform: translateX(0) scaleX(0);
+      }
+
+      40% {
+        transform: translateX(0) scaleX(0.4);
+      }
+
+      100% {
+        transform: translateX(100%) scaleX(0.5);
+      }
+    }
+
+    &.secondary .meter {
+      @include progress-meter($bg: $progress-meter-secondary-color);
+    }
+
+    &.success .meter {
+      @include progress-meter($bg: $progress-meter-success-color);
+    }
+
+    &.danger .meter {
+      @include progress-meter($bg: $progress-meter-alert-color);
+    }
+
+    &.warning .meter {
+      @include progress-meter($bg: $progress-meter-warning-color);
+    }
+
+    &.info .meter {
+      @include progress-meter($bg: $progress-meter-info-color);
+    }
+  }
+}

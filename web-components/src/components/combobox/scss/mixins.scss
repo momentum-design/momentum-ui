@@ -1,0 +1,9 @@
+@mixin text-dots {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin arrow-transition {
+  transition: all 0.15s linear;
+}

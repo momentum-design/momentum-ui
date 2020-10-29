@@ -1,0 +1,15 @@
+/** @component icon */
+
+@include exports("md-icon") {
+  .md-icon {
+    align-items: center;
+    display: inline-flex;
+    fill: inherit;
+    line-height: inherit;
+
+    .md--dark & {
+      fill: $md-white-100;
+    }
+  }
+
+}

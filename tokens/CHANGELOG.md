@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.6.1...@momentum-ui/tokens@1.6.2) (2020-10-20)
+
+**Note:** Version bump only for package @momentum-ui/tokens
+
+
+
+
+
 ## [1.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.6.0...@momentum-ui/tokens@1.6.1) (2020-09-29)
 
 **Note:** Version bump only for package @momentum-ui/tokens

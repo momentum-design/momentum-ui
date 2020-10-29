@@ -1,0 +1,8 @@
+@mixin alert-banner-color($background-color, $text-color) {
+  background-color: $background-color;
+  color: $text-color;
+
+  md-icon {
+    color: $text-color;
+  }
+}

@@ -1,0 +1,34 @@
+@mixin spinner-style(
+  $border: $spinner__bg-color,
+  $border-progress-left: $spinner__color,
+  $border-progress: transparent
+) {
+  border: 1px solid $border;
+
+  &::after {
+    border-bottom: 1px solid $border-progress;
+    border-left: 1px solid $border-progress-left;
+    border-right: 1px solid $border-progress;
+    border-top: 1px solid $border-progress;
+  }
+}
+
+@mixin spinner-progress-color($border, $progress) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px $border;
+
+  .md-spinner-progress__circle
+  .md-spinner-progress__mask
+  .md-spinner-progress__fill {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px $progress;
+  }
+
+  .md-spinner-progress__inset-circle {
+    background-color: transparent;
+
+    .md-spinner-progress__percentage {
+      color: $progress;
+    }
+  }
+}

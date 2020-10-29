@@ -1,0 +1,17 @@
+:host([alignment="vertical"]) div {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+:host([alignment="vertical"]) div ::slotted(md-checkbox:not(:last-child)) {
+  margin-bottom: calc(#{$checkbox__main-indent} * 6);
+}
+
+:host([alignment="horizontal"]) div {
+  display: flex;
+  flex-direction: row;
+}
+
+:host([alignment="horizontal"]) div ::slotted(md-checkbox:not(:last-child)) {
+  margin-right: calc(#{$checkbox__main-indent} * 10);
+}

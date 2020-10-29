@@ -1,0 +1,32 @@
+:host {
+  --combobox-input-clear-bg: var(--combobox-group-button-bg-color, $lm-combobox-group-button-bg-color-light);
+
+}
+$combobox-radius: rem-calc(16);
+$combobox-border: 1px solid var(--combobox-border-color, $lm-combobox-border-color-light);
+$combobox-group-radius: var(--combobox-group-radius, $lm-combobox-group-radius-light);
+$combobox-disabled-opacity: 0.3;
+$combobox-main-indent: rem-calc(4);
+$combobox-min-height: rem-calc(32);
+
+$combobox-focus-shadow: var(--combobox-group-focus-shadow, $lm-combobox-group-focus-shadow-light);
+$combobox-focus-border: var(--combobox-group-focus-border, $lm-combobox-group-focus-border-light);
+
+$combobox-search-icon-height: rem-calc(28);
+$combobox-dropdown-radius: rem-calc(8);
+$combobox-dropdown-shadow: 0 4px 8px $black-16, 0 0 1px $black-16;
+
+$combobox-input-padding: 0 rem-calc(12);
+
+$combobox-option-padding: rem-calc(7) rem-calc(12) rem-calc(8);
+$combobox-select-size: rem-calc(20);
+$combobox-select-icon-size: rem-calc(18);
+$combobox-select-icon-top: rem-calc(3);
+$combobox-select-icon-left: rem-calc(2);
+$combobox-select-margin: rem-calc(16);
+
+$combobox-selected-radius: rem-calc(14);
+$combobox-selected-height: rem-calc(24);
+$combobox-selected-item-border: 1px solid var(--combobox-selected-border-color, $lm-combobox-selected-border-color-light);
+
+

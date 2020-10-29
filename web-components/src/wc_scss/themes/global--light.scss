@@ -1,0 +1,56 @@
+@import "@/wc_scss/colors/settings.scss";
+
+@mixin global-vars {
+  --sandbox-bg-color: #{$md-gray-20};
+  --sandbox-secondary-bg-color: #e5e5e5;
+  --main-bg-color: #{$md-white};
+
+  --md-default-focus-outline-color: #{$md-blue-60};
+  
+  --md-primary-bg-color: #{$md-white};
+  --md-secondary-bg-color: #{$md-gray-05};
+  --md-secondary-white-bg-color: #{$md-white};
+  --md-tertiary-bg-color: #{$md-gray-10};
+  --md-tertiary-white-bg-color: #{$md-white};
+  --md-quaternary-bg-color: #{$md-gray-20};
+
+  --md-primary-success-bg-color: #{$md-green-10};
+  --md-primary-success-text-color: #{$md-green-70};
+
+  --md-primary-text-color: #{$md-gray-100};
+  --md-secondary-text-color: #{$md-gray-70};
+  --md-disabled-text-color: #{$md-gray-40};
+  --md-highlight-text-color: #{$md-theme-20};
+  --md-hyperlink-text-color: #{$md-theme-70};
+  --md-hyperlink-hover-text-color: #{$md-theme-90};
+  --md-hyperlink-focus-text-color: #{$md-theme-70};
+
+  --md-focus-border-color: #{$md-blue-70};
+
+  --md-primary-seperator-color: #{$md-gray-30};
+  --md-secondary-seperator-color: #{$md-gray-40};
+
+  --md-alert-error-bg-color: #{$md-red-10};
+  --md-alert-error-text-color: #{$md-red-70};
+  --md-alert-warning-bg-color: #{$md-yellow-10};
+  --md-alert-warning-text-color: #{$md-yellow-70};
+  --md-alert-success-bg-color: #{$md-green-10};
+  --md-alert-success-text-color: #{$md-green-70};
+  --md-alert-info-bg-color: #{$md-blue-10};
+  --md-alert-info-text-color: #{$md-blue-70};
+
+  --md-presence-active-bg-color: #{$md-green-50};
+  --md-presence-do-not-disturb-bg-color: #{$md-red-60};
+  --md-presence-away-bg-color: #{$md-gray-30};
+  --md-presence-busy-bg-color: #{$md-yellow-40};
+
+  --md-email-composer-bg-color: #{$md-white-100};
+  --md-email-composer-thread-bar-color: #{$md-violet-70};
+  --md-email-composer-ccChip-bg-color: #{$md-gray-05};
+
+  --md-auto-wrapup-bg-color: #{$md-blue-05};
+  --md-menu-overlay-border-color: #{$md-gray-20};
+
+  --md-dynamic-layout-button-border-color: #{$md-gray-10};
+  --md-dynamic-layout-button-inverted-border-color: #{$md-gray-70};
+}

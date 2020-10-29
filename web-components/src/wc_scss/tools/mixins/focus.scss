@@ -1,0 +1,35 @@
+@import "@/wc_scss/settings/focus";
+
+@mixin button-focus-styles() {
+  box-shadow: none;
+  outline: none;
+}
+
+@mixin focus-styles($border-color: transparent) {
+  @if $border-color {
+    border-color: $border-color;
+  } @else {
+    box-shadow: 0 0 4px 2px rgba($focus-color, 0.75);
+  }
+
+  outline: none;
+}
+
+@mixin tab-focus($dark: false) {
+  outline: none;
+
+  @if $dark==false {
+    box-shadow: 0 0 0 $focus__size $focus__color;
+  } @else {
+    box-shadow: 0 0 0 $focus__size $focus__color--dark;
+  }
+}
+
+@mixin remove-focus() {
+  box-shadow: none;
+  outline: 0;
+}
+
+@mixin focus-boxshadow($borderWidth, $borderColor) {
+  box-shadow: 0 0 0 $borderWidth $borderColor;
+}

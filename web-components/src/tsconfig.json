@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "esnext",
+    "moduleResolution": "node",
+
+    "strict": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+
+    "declaration": true,
+    "declarationDir": "../dist/types",
+    
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"],
+      "@css/*": ["./assets/styles/*"],
+      "@img/*": ["./assets/images/*"]
+    }
+  },
+  "include": ["**/*.ts"]
+}

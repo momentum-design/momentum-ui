@@ -1,0 +1,27 @@
+/** @component link */
+
+@include exports("md-link") {
+  .md-link {
+    @include link-color();
+    border-radius: rem-calc(4);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: $link__font-size;
+    line-height: $link__line-height;
+    width: fit-content;
+    
+    &:focus {
+      outline: none;
+    }
+
+    &.disabled {
+      pointer-events: none;
+    }
+
+    &--inline {
+      font-size: $link-inline__font-size;
+      line-height: $link-inline__line-height;
+      text-decoration: underline;
+    }
+  }
+}

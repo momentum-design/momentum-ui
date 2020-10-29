@@ -1,0 +1,8 @@
+@mixin list-item() {
+  @include flex($jc: flex-start, $ac: center,  $ai: center);
+
+  .md-input-container {
+    margin-bottom: 0;
+  }
+}
+

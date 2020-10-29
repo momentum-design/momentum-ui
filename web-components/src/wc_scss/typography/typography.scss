@@ -1,0 +1,319 @@
+/** @component typography */
+
+@include exports("type-bem") {
+
+  @include align-classes;
+
+  @include brand-font-family-ciscoFont;
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  pre,
+  form,
+  p,
+  blockquote,
+  th,
+  td {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: $anchor-font-color;
+    line-height: inherit;
+    text-decoration: $anchor-text-decoration;
+
+    &:hover,
+    &:focus {
+      color: $anchor-font-color-hover;
+
+      @if $anchor-text-decoration-hover !=$anchor-text-decoration {
+        text-decoration: $anchor-text-decoration-hover;
+      }
+    }
+
+    &:focus {
+      @include focus-styles;
+    }
+
+    img {
+      border: none;
+    }
+  }
+
+  p {
+    font-family: $paragraph-font-family;
+    font-size: $paragraph-font-size;
+    font-weight: $paragraph-font-weight;
+    margin-bottom: $paragraph-margin-bottom;
+    text-rendering: $paragraph-text-rendering;
+
+    & > code {
+      // fix inline code block line-height
+      line-height: 1em;
+    }
+
+    &.lead {
+      //@include lead;
+      font-size: $lead-font-size;
+    }
+
+    & aside {
+      font-size: $paragraph-aside-font-size;
+      font-style: $paragraph-aside-font-style;
+      line-height: $paragraph-aside-line-height;
+    }
+  }
+
+  .subheader {
+    @include subheader;
+  }
+
+  hr {
+    border: $hr-border-style $hr-border-color;
+    border-width: $hr-border-width 0 0;
+    clear: both;
+    height: 0;
+    margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
+  }
+
+  em,
+  i {
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  strong,
+  b {
+    font-weight: $font-weight-bold;
+    line-height: inherit;
+  }
+
+  small {
+    font-size: $small-font-size;
+    line-height: inherit;
+  }
+
+  // .body-small {
+  //   @extend %body-small;
+  // }
+
+  // .body-smallest {
+  //   @extend %body-smallest;
+  // }
+
+  code {
+    background-color: $code-background-color;
+    border-color: $code-border-color;
+    border-style: $code-border-style;
+    border-width: $code-border-size;
+    color: $code-color;
+    font-family: $code-font-family;
+    font-weight: $code-font-weight;
+    padding: $code-padding;
+  }
+
+  ul,
+  ol,
+  dl {
+    font-family: $list-font-family;
+    font-size: $list-font-size;
+    line-height: $list-line-height;
+    list-style-position: $list-style-position;
+    margin-bottom: $list-margin-bottom;
+  }
+
+  ul {
+    &.no-bullet {
+      list-style: none;
+
+      li {
+        ul,
+        ol {
+          list-style: none;
+          margin-bottom: 0;
+          margin-#{$default-float}: $list-nested-margin;
+        }
+      }
+      margin-#{$default-float}: $list-side-margin-no-bullet;
+    }
+
+    li {
+      ul,
+      ol {
+        margin-bottom: 0;
+        margin-#{$default-float}: $list-nested-margin;
+      }
+    }
+
+    &.square,
+    &.circle,
+    &.disc {
+      li ul {
+        list-style: inherit;
+      }
+    }
+
+    &.square {
+      list-style-type: square;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.circle {
+      list-style-type: circle;
+      margin-#{$default-float}: $list-side-margin;
+    }
+
+    &.disc {
+      list-style-type: disc;
+      margin-#{$default-float}: $list-side-margin;
+    }
+    margin-#{$default-float}: $list-side-margin;
+  }
+
+  ol {
+    li {
+      ul,
+      ol {
+        margin-bottom: 0;
+        margin-#{$default-float}: $list-nested-margin;
+      }
+    }
+    margin-#{$default-float}: $list-ordered-side-margin;
+  }
+
+  dl {
+    dt {
+      font-weight: $definition-list-header-weight;
+      margin-bottom: $definition-list-header-margin-bottom;
+    }
+
+    dd {
+      margin-bottom: $definition-list-margin-bottom;
+    }
+  }
+
+  abbr,
+  acronym {
+    color: $body-font-color;
+    cursor: $cursor-help-value;
+    font-size: 90%;
+    text-transform: uppercase;
+  }
+
+  abbr {
+    text-transform: none;
+
+    &[title] {
+      border-bottom: $acronym-underline;
+    }
+  }
+
+  blockquote {
+    margin: 0 0 $paragraph-margin-bottom;
+    padding: $blockquote-padding;
+
+    cite {
+      color: $blockquote-cite-font-color;
+      display: block;
+      font-size: $blockquote-cite-font-size;
+
+      &::before {
+        content: "\2014 \0020";
+      }
+
+      a,
+      a:visited {
+        color: $blockquote-cite-link-color;
+      }
+    }
+    border-#{$default-float}: $blockquote-border;
+  }
+
+  blockquote,
+  blockquote p {
+    color: $blockquote-font-color;
+    line-height: $paragraph-line-height;
+  }
+
+  .debug-grid {
+    &::after {
+
+      @include show-baseline(rgba(255, 0, 0, 0.1667));
+      content: "";
+      display: inline-block;
+      height: 100%;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 9998;
+    }
+
+    &::before {
+      pointer-events: none;
+      z-index: 9999;
+    }
+  }
+
+  footer,
+  nav {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    span {
+      letter-spacing: normal;
+    }
+  }
+
+  .lead {
+    font-family: $brand-font-regular;
+  }
+
+  @each $variation in map-keys($fontVariations) {
+    $fontFamily: "" !default;
+
+    @if map-has-key($fontVariations, $variation) {
+      $fontFamily: map-get($fontVariations, $variation);
+    }
+
+    .md-#{$variation} {
+      font-family: $fontFamily !important;
+    }
+  }
+
+  @each $fontColorClass in map-keys($fontColors) {
+    $fontColor: "" !default;
+
+    @if map-has-key($fontColors, $fontColorClass) {
+      $fontColor: map-get($fontColors, $fontColorClass);
+    }
+
+    .md-font-color--#{$fontColorClass} {
+      color: $fontColor !important;
+    }
+  }
+}

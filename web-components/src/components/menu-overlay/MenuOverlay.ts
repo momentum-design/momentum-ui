@@ -6,6 +6,7 @@
  *
  */
 
+import { Key } from "@/constants";
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
@@ -265,7 +266,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
       return;
     }
 
-    if (event.key === "Escape") {
+    if (event.code === Key.Escape) {
       event.preventDefault();
       if (this.isOpen) {
         this.isOpen = false;
@@ -275,8 +276,8 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
 
   handleTriggerKeyDown = (event: KeyboardEvent) => {
     switch (event.code) {
-      case "Space":
-      case "Enter":
+      case Key.Space:
+      case Key.Enter:
         {
           event.preventDefault();
           this.toggleOverlay();

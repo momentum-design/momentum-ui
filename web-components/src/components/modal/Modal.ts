@@ -8,6 +8,7 @@
 
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import { Key } from "@/constants";
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
@@ -79,7 +80,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
   }
 
   handleCloseOutside = (event: KeyboardEvent) => {
-    if (event.code === "Escape") {
+    if (event.code === Key.Escape) {
       event.preventDefault();
       if (this.show && !this.noExitOnEsc) {
         this.modalFadeOut();
@@ -88,7 +89,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
   };
 
   handleKeyDown(event: KeyboardEvent) {
-    if (event.code === "Enter" || event.code === "Space") {
+    if (event.code === Key.Enter || event.code === Key.Space) {
       if (this.show) {
         this.modalFadeOut();
       }

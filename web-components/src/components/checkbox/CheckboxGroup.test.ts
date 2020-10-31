@@ -1,6 +1,7 @@
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import { CheckboxGroup } from "@/components/checkbox/CheckboxGroup";
+import { Key } from "@/constants";
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 
@@ -24,15 +25,15 @@ describe("Checkbox component", () => {
       });
 
     expect(element.selected).toEqual(0);
-    element.dispatchEvent(createEvent("ArrowDown"));
+    element.dispatchEvent(createEvent(Key.ArrowDown));
     expect(element.selected).toEqual(1);
-    element.dispatchEvent(createEvent("ArrowDown"));
+    element.dispatchEvent(createEvent(Key.ArrowDown));
     expect(element.selected).toEqual(2);
-    element.dispatchEvent(createEvent("ArrowDown"));
+    element.dispatchEvent(createEvent(Key.ArrowDown));
     expect(element.selected).toEqual(0);
-    element.dispatchEvent(createEvent("ArrowUp"));
+    element.dispatchEvent(createEvent(Key.ArrowUp));
     expect(element.selected).toEqual(2);
-    element.dispatchEvent(createEvent("ArrowUp"));
+    element.dispatchEvent(createEvent(Key.ArrowUp));
     expect(element.selected).toEqual(1);
     element.dispatchEvent(createEvent("KeyA"));
     expect(element.selected).toEqual(1);

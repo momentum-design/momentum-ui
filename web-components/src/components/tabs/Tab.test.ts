@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import { uuid } from "@/utils/helpers";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
@@ -57,13 +58,13 @@ describe("Tab", () => {
     expect(click.id).toBe(id);
 
     const keyboardEvent = new KeyboardEvent("keydown", {
-      code: "Enter"
+      code: Key.Enter
     });
     setTimeout(() => el.handleKeyDown(keyboardEvent));
 
     const { detail: keydown } = await oneEvent(el, "tab-keydown");
     expect(keydown).toBeDefined();
     expect(keydown.id).toBe(id);
-    expect(keydown.key).toBe("Enter");
+    expect(keydown.key).toBe(Key.Enter);
   });
 });

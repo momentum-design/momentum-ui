@@ -3,6 +3,8 @@ import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } f
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 
+const dropdownValue: string[] = [];
+
 export const comboBoxTemplate = html`
   <h3>Default</h3>
   <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]}></md-combobox>
@@ -108,5 +110,9 @@ export const comboBoxTemplate = html`
         </div>
       `
     )}
+  </md-combobox>
+  <h3>Slot Complex Custom Object Content</h3>
+  <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content>
+    {dropdownValue.map((item, index) => dropdownOptionTemplate(item, index))}
   </md-combobox>
 `;

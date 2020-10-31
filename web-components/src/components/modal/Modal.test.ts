@@ -1,5 +1,6 @@
 import "@/components/modal/Modal";
 import { Modal } from "@/components/modal/Modal";
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 
 Object.defineProperties(Element.prototype, {
@@ -61,7 +62,7 @@ describe("Modal Component", () => {
     element.show = true;
     element.showCloseButton = true;
     await elementUpdated(element);
-    const enter = new KeyboardEvent("keydown", { code: "Enter" });
+    const enter = new KeyboardEvent("keydown", { code: Key.Enter });
     const enterButton = () => element.shadowRoot!.querySelector(".md-close.md-modal__close")!.dispatchEvent(enter);
     setTimeout(enterButton);
     const enterEvent = await oneEvent(element, "close-modal");
@@ -71,7 +72,7 @@ describe("Modal Component", () => {
     element.showCloseButton = true;
     await elementUpdated(element);
 
-    const space = new KeyboardEvent("keydown", { code: "Space" });
+    const space = new KeyboardEvent("keydown", { code: Key.Space });
     const spaceButton = () => element.shadowRoot!.querySelector(".md-close.md-modal__close")!.dispatchEvent(space);
     setTimeout(spaceButton);
     const spaceEvent = await oneEvent(element, "close-modal");
@@ -139,7 +140,7 @@ describe("Modal Component", () => {
     element.show = true;
     element.backdropClickExit = true;
     await elementUpdated(element);
-    const escapePressEvent = new KeyboardEvent("keydown", { code: "Escape" });
+    const escapePressEvent = new KeyboardEvent("keydown", { code: Key.Escape });
     element.handleCloseOutside(escapePressEvent);
     jest.runAllTimers();
     expect(element.show).toBeFalsy();
@@ -151,7 +152,7 @@ describe("Modal Component", () => {
     element.backdropClickExit = true;
     element.noExitOnEsc = true;
     await elementUpdated(element);
-    const escapePressEvent = new KeyboardEvent("keydown", { code: "Escape" });
+    const escapePressEvent = new KeyboardEvent("keydown", { code: Key.Escape });
     element.handleCloseOutside(escapePressEvent);
     expect(element.show).toBeTruthy();
   });
@@ -172,7 +173,7 @@ describe("Modal Component", () => {
     element.show = true;
     await elementUpdated(element);
 
-    const enter = new KeyboardEvent("keydown", { code: "Escape" });
+    const enter = new KeyboardEvent("keydown", { code: Key.Escape });
     element.handleCloseOutside(enter);
     jest.runAllTimers();
     expect(element.show).toBeFalsy();

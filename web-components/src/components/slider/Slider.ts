@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
@@ -6,19 +7,6 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
 import styles from "./scss/module.scss";
-
-enum Key {
-  End = "End",
-  Home = "Home",
-  Enter = "Enter",
-  Tab = "Tab",
-  ArrowDown = "ArrowDown",
-  ArrowLeft = "ArrowLeft",
-  ArrowRight = "ArrowRight",
-  ArrowUp = "ArrowUp",
-  Delete = "Delete",
-  Space = "Space"
-}
 
 @customElement("md-slider")
 export class Slider extends FocusMixin(LitElement) {

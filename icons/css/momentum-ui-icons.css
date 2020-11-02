@@ -1,6 +1,6 @@
 @font-face {
   font-family: "momentum-ui-icons";
-  src: url("../fonts/momentum-ui-icons.woff2?fa45e1f7e998e4ae19e03a85cb76a388") format("woff2"), url("../fonts/momentum-ui-icons.woff?cd845727c60d929886d47b20539e9c2b") format("woff");
+  src: url("../fonts/momentum-ui-icons.woff2?54a81635785ae79fcdd41ce2e43a4616") format("woff2"), url("../fonts/momentum-ui-icons.woff?27c7fec555077849ed7ad0d9022e3ab4") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +24,7 @@
 }
 
 .icon-lg {
-  font-size: 1.333333333em;
+  font-size: 1.33333333em;
   line-height: 0.75em;
   vertical-align: -15%;
 }

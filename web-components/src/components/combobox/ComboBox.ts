@@ -636,6 +636,7 @@ export class ComboBox extends FocusMixin(LitElement) {
         {
           this.setFocusOnHost(true);
           if (this.expanded) {
+            event.stopPropagation();
             this.setVisualListbox(false);
           } else {
             this.setInputValue();

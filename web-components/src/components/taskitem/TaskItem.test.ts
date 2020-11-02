@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./TaskItem";
 import { TaskItem } from "./TaskItem";
@@ -179,7 +180,7 @@ describe("TaskItem", () => {
       false
     );
     const mockKeydown = jest.spyOn(element, "handleKeyDown");
-    element.handleKeyDown(new KeyboardEvent("Enter"));
+    element.handleKeyDown(new KeyboardEvent(Key.Enter));
     await elementUpdated(element);
 
     expect(mockKeydown).toHaveBeenCalled();

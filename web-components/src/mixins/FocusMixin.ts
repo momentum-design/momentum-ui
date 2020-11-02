@@ -29,7 +29,7 @@
  * }
  * */
 
-import { LitElement, PropertyValues } from "lit-element";
+import { LitElement, property, PropertyValues } from "lit-element";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -40,6 +40,8 @@ export abstract class FocusClass extends LitElement {
   protected handleFocusIn?(event: Event): void;
   protected handleFocusOut?(event: Event): void;
   protected getDeepActiveElement?(): Element;
+  protected manageAutoFocus?(element?: Element): void;
+  protected getActiveElement?(): Element | null;
 }
 
 export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & AnyConstructor<FocusClass> => {
@@ -47,6 +49,8 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     return base as ReturnType<() => T & AnyConstructor<FocusClass>>;
   }
   class Focus extends base {
+    @property({ type: Boolean, reflect: true }) autofocus = false;
+
     protected setFocus(force: boolean) {
       this.toggleAttribute("focus-visible", force);
     }
@@ -79,10 +83,24 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
       );
     }
 
+    protected manageAutoFocus(element: HTMLElement = this) {
+      element.focus();
+    }
+
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       this.addEventListener("focus", this.handleFocusIn);
       this.addEventListener("blur", this.handleFocusOut);
+
+      if (this.autofocus && !this.hasAttribute("disabled")) {
+        requestAnimationFrame(() => {
+          this.manageAutoFocus();
+        });
+      }
+    }
+
+    protected getActiveElement() {
+      return (this.getRootNode() as Document).activeElement;
     }
 
     protected getDeepActiveElement() {

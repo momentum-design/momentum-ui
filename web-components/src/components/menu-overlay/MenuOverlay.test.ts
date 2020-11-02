@@ -1,14 +1,7 @@
 import "@/components/button/Button";
 import "@/components/menu-overlay/MenuOverlay";
-import {
-  defineCE,
-  elementUpdated,
-  fixture,
-  fixtureCleanup,
-  fixtureSync,
-  nextFrame,
-  oneEvent
-} from "@open-wc/testing-helpers";
+import { Key } from "@/constants";
+import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
 import { MenuOverlay, MenuOverlayElement, OverlaySizes } from "./MenuOverlay";
 
@@ -107,7 +100,7 @@ describe("MenuOverlay", () => {
 
     triggerElement.dispatchEvent(
       new KeyboardEvent("keydown", {
-        code: "Enter"
+        code: Key.Enter
       })
     );
 
@@ -116,7 +109,7 @@ describe("MenuOverlay", () => {
 
     triggerElement.dispatchEvent(
       new KeyboardEvent("keydown", {
-        code: "Space"
+        code: Key.Space
       })
     );
 
@@ -280,8 +273,7 @@ describe("MenuOverlay", () => {
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Space",
-        code: "Space"
+        code: Key.Space
       })
     );
 
@@ -289,8 +281,7 @@ describe("MenuOverlay", () => {
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Escape",
-        code: "Escape"
+        code: Key.Escape
       })
     );
 
@@ -311,8 +302,7 @@ describe("MenuOverlay", () => {
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Space",
-        code: "Space"
+        code: Key.Space
       })
     );
 
@@ -320,8 +310,7 @@ describe("MenuOverlay", () => {
 
     document.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Escape",
-        code: "Escape"
+        code: Key.Escape
       })
     );
 
@@ -359,8 +348,7 @@ describe("MenuOverlay", () => {
 
     document.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Space",
-        code: "Space"
+        code: Key.Space
       })
     );
 

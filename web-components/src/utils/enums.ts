@@ -23,6 +23,7 @@ export const alertTypes = ["error", "info", "success", "warn", "default"];
 export const iconTypes = ["", "white"];
 export const modalSizes = ["default", "full", "large", "small", "dialog"];
 export const messageType = ["", "warning", "success", "error"];
+export const numInputTypes = ["integer", "decimal"];
 export const badgeColor = ["default", "blue", "red", "yellow", "green", "mint"];
 export const badgePastel = ["pastel", "blue-pastel", "red", "yellow-pastel", "green-pastel", "mint-pastel"];
 export const BarFormat = ["none", "fraction", "percentage"];

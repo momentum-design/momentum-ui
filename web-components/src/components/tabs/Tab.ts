@@ -41,12 +41,15 @@ export class Tab extends FocusMixin(LitElement) {
   get selected() {
     return this._selected;
   }
+
   set selected(value: boolean) {
     const oldValue = this._selected;
     this._selected = value;
     this.setAttribute("aria-selected", `${value}`);
     this.requestUpdate("selected", oldValue);
   }
+
+  @property({ type: Boolean, reflect: true }) viewportHidden = false;
 
   static get styles() {
     return [reset, styles];

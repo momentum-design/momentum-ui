@@ -22,6 +22,7 @@
       }
  * }
  */
+import { Key } from "@/constants";
 import { internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 import { FocusClass, FocusMixin } from "./FocusMixin";
@@ -233,7 +234,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     handleKeydownFocusTrap(event: KeyboardEvent) {
-      if (event.code !== "Tab" || (event.shiftKey && event.code !== "Tab")) {
+      if (event.code !== Key.Tab || (event.shiftKey && event.code !== Key.Tab)) {
         return;
       }
 

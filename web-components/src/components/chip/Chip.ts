@@ -6,6 +6,7 @@
  *
  */
 
+import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
@@ -130,12 +131,12 @@ export class Chip extends LitElement {
     );
   }
 
-  protected handleKeydown(e: KeyboardEvent) {
-    switch (e.code) {
-      case "Space":
-      case "Enter":
+  protected handleKeydown(event: KeyboardEvent) {
+    switch (event.code) {
+      case Key.Space:
+      case Key.Enter:
         this.handleSelect();
-        this.handleClick((e as unknown) as MouseEvent);
+        this.handleClick((event as unknown) as MouseEvent);
         break;
 
       default:

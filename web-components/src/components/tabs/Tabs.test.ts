@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
@@ -6,7 +7,7 @@ import { Tab } from "./Tab";
 import "./TabPanel";
 import { TabPanel } from "./TabPanel";
 import "./Tabs";
-import { Tabs } from "./Tabs";
+import { MORE_MENU_TAB_COPY_ID_PREFIX, Tabs } from "./Tabs";
 
 interface MyWindow extends Window {
   ResizeObserver: typeof ResizeObserver;
@@ -35,28 +36,33 @@ describe("Tabs", () => {
   let panels: TabPanel[];
 
   beforeEach(async () => {
-    tabs = await fixture<Tabs>(html`
-      <md-tabs>
-        <md-tab slot="tab" disabled>
-          <span>Contact History</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Contact History"</span>
-        </md-tab-panel>
-        <md-tab slot="tab">
-          <span>Cisco WxM</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "WxM"</span>
-        </md-tab-panel>
-        <md-tab slot="tab">
-          <span>Cisco Widgets</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Cisco Widgets"</span>
-        </md-tab-panel>
-      </md-tabs>
+    const root = await fixture<HTMLDivElement>(html`
+      <div style="width: 300px;max-width: 300px;">
+        <md-tabs>
+          <md-tab slot="tab" disabled>
+            <span>Contact History</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <span>Content for "Contact History"</span>
+          </md-tab-panel>
+          <md-tab slot="tab">
+            <span>Cisco WxM</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <span>Content for "WxM"</span>
+          </md-tab-panel>
+          <md-tab slot="tab">
+            <span>Cisco Widgets</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <span>Content for "Cisco Widgets"</span>
+          </md-tab-panel>
+        </md-tabs>
+      </div>
     `);
+
+    tabs = root.querySelector("md-tabs") as Tabs;
+
     panels = Array.from(tabs.querySelectorAll("md-tab-panel")) as TabPanel[];
   });
 
@@ -88,8 +94,8 @@ describe("Tabs", () => {
   });
 
   test("should setup panels and tabs", () => {
-    expect(tabs.tabSlot).toBeDefined();
-    expect(tabs.panelSlot).toBeDefined();
+    expect(tabs.tabSlotElement).toBeDefined();
+    expect(tabs.panelSlotElement).toBeDefined();
   });
 
   test("should send warning when panels and tabs count not equal", async () => {
@@ -140,13 +146,13 @@ describe("Tabs", () => {
         code
       });
 
-    tabs.slotted[2].dispatchEvent(createKeyboardEvent("Home"));
+    tabs.slotted[2].dispatchEvent(createKeyboardEvent(Key.Home));
     await elementUpdated(tabs);
 
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
     expect(tabs.selected).toBe(0);
 
-    tabs.slotted[1].dispatchEvent(createKeyboardEvent("End"));
+    tabs.slotted[1].dispatchEvent(createKeyboardEvent(Key.End));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(2);
@@ -156,7 +162,7 @@ describe("Tabs", () => {
     tabs.selected = 0;
     await elementUpdated(tabs);
 
-    tabs.slotted[1].dispatchEvent(createKeyboardEvent("ArrowLeft"));
+    tabs.slotted[1].dispatchEvent(createKeyboardEvent(Key.ArrowLeft));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(2);
@@ -165,7 +171,7 @@ describe("Tabs", () => {
     tabs.selected = 2;
     await elementUpdated(tabs);
 
-    tabs.slotted[2].dispatchEvent(createKeyboardEvent("ArrowLeft"));
+    tabs.slotted[2].dispatchEvent(createKeyboardEvent(Key.ArrowLeft));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(1);
@@ -174,7 +180,7 @@ describe("Tabs", () => {
     tabs.selected = tabs.slotted.length - 1;
     await elementUpdated(tabs);
 
-    tabs.slotted[2].dispatchEvent(createKeyboardEvent("ArrowRight"));
+    tabs.slotted[2].dispatchEvent(createKeyboardEvent(Key.ArrowRight));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(0);
@@ -183,7 +189,7 @@ describe("Tabs", () => {
     tabs.selected = 0;
     await elementUpdated(tabs);
 
-    tabs.slotted[1].dispatchEvent(createKeyboardEvent("ArrowRight"));
+    tabs.slotted[1].dispatchEvent(createKeyboardEvent(Key.ArrowRight));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(1);
@@ -192,14 +198,14 @@ describe("Tabs", () => {
     tabs.selected = 1;
     await elementUpdated(tabs);
 
-    tabs.slotted[0].dispatchEvent(createKeyboardEvent("ArrowLeft"));
-    tabs.slotted[0].dispatchEvent(createKeyboardEvent("Enter"));
+    tabs.slotted[0].dispatchEvent(createKeyboardEvent(Key.ArrowLeft));
+    tabs.slotted[0].dispatchEvent(createKeyboardEvent(Key.Enter));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(0);
     expect(panels[0].hasAttribute("hidden")).toBeTruthy();
 
-    tabs.slotted[2].dispatchEvent(createKeyboardEvent("Space"));
+    tabs.slotted[2].dispatchEvent(createKeyboardEvent(Key.Space));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(2);
@@ -255,7 +261,7 @@ describe("Tabs", () => {
 
   test("should not reset active tab if it set again", async () => {
     const keyDownEvent = new KeyboardEvent("keydown", {
-      code: "Enter"
+      code: Key.Enter
     });
     tabs.selected = 2;
     await elementUpdated(tabs);
@@ -265,5 +271,62 @@ describe("Tabs", () => {
 
     expect(toggleSpy).not.toBeCalledTimes(2);
     toggleSpy.mockRestore();
+  });
+
+  test("should have tabs hashes", () => {
+    expect(Object.keys(tabs["tabsHash"]).length).toBe(tabs.slotted.length);
+    expect(Object.keys(tabs["tabsIdxHash"]).length).toBe(tabs.slotted.length);
+  });
+
+  test("should render more button", () => {
+    expect(tabs.moreTabMenuElement).toBeDefined();
+  });
+
+  test("should convert ids", () => {
+    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(0);
+    expect(
+      tabs["getNormalizedTabId"](`${MORE_MENU_TAB_COPY_ID_PREFIX}TEST`).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)
+    ).toBe(-1);
+  });
+
+  test("should call manageOverflow on link panels and tabs", async () => {
+    const mockManageOverflow = jest.fn();
+    tabs["manageOverflow"] = mockManageOverflow;
+    await tabs["linkPanelsAndTabs"]();
+    expect(mockManageOverflow).toBeCalled();
+  });
+
+  test("should manage overflow", async () => {
+    const tabsCount = tabs.slotted.filter(el => el.tagName === "md-tab").length;
+
+    tabs["tabs"] = tabs["tabs"].map(t => ({
+      offsetWidth: 160
+    })) as Tab[];
+
+    tabs["manageOverflow"]();
+
+    expect(tabs["tabsViewportDataList"].length).toBe(tabsCount);
+  });
+
+  test("should be able make tab focus", () => {
+    const firstTab = tabs.slotted[0] as Tab;
+    expect(firstTab.getAttribute("focus-visible")).toBeNull();
+    tabs["makeTabCopyFocus"](firstTab);
+    expect(firstTab.getAttribute("focus-visible")).toBe("");
+  });
+
+  test("should check is more menu selected", () => {
+    tabs["tabsFilteredAsHiddenList"] = [
+      { selected: false, id: "1" },
+      { selected: true, id: "2" }
+    ] as Tab[];
+    tabs["updateIsMoreTabMenuSelected"]();
+    expect(tabs["isMoreTabMenuSelected"]).toBeTruthy();
+  });
+
+  test("should update hidden id for positive tab index", () => {
+    const t = { id: "TEST" } as Tab;
+    tabs["updateHiddenIdPositiveTabIndex"](t);
+    expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });
 });

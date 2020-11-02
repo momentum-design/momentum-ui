@@ -1,5 +1,6 @@
 import "@/components/checkbox/Checkbox";
 import { Checkbox } from "@/components/checkbox/Checkbox";
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 
 describe("Checkbox component", () => {
@@ -84,7 +85,7 @@ describe("Checkbox component", () => {
 
     expect(element.checked).toBeFalsy();
 
-    element.dispatchEvent(createEvent("Space"));
+    element.dispatchEvent(createEvent(Key.Space));
     await elementUpdated(element);
 
     expect(element.checked).toBeTruthy();
@@ -93,7 +94,7 @@ describe("Checkbox component", () => {
     element.checked = false;
     await elementUpdated(element);
 
-    element.dispatchEvent(createEvent("Space"));
+    element.dispatchEvent(createEvent(Key.Space));
     await elementUpdated(element);
 
     expect(element.checked).toBeFalsy();
@@ -111,7 +112,7 @@ describe("Checkbox component", () => {
 
   test("should dispatch change event if change checked state using keyboard", async () => {
     const event = new KeyboardEvent("mousedown", {
-      code: "Space"
+      code: Key.Space
     });
     element.dispatchEvent(event);
 

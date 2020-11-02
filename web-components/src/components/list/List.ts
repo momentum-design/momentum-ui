@@ -7,21 +7,11 @@
  */
 
 import { ListItem } from "@/components/list/ListItem";
+import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import styles from "./scss/module.scss";
-
-enum Key {
-  End = "End",
-  Home = "Home",
-  Enter = "Enter",
-  ArrowDown = "ArrowDown",
-  ArrowLeft = "ArrowLeft",
-  ArrowRight = "ArrowRight",
-  ArrowUp = "ArrowUp",
-  Space = "Space"
-}
 
 @customElement("md-list")
 export class List extends RovingTabIndexMixin(LitElement) {

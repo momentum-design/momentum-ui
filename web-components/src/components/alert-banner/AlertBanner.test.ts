@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { LitElement } from "lit-element";
 import "./AlertBanner";
@@ -67,7 +68,7 @@ describe("Alert Banner component", () => {
     expect(component.closable).toBeTruthy();
 
     const closeBtn = component.shadowRoot?.querySelector("md-button");
-    closeBtn!.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", code: "Enter" }));
+    closeBtn!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
 
     await elementUpdated(component);
     expect(component.show).toBeFalsy();
@@ -75,7 +76,7 @@ describe("Alert Banner component", () => {
 
   test("should hide when Space keydown", async () => {
     const component = await fixtureFactory("info", "my message", true, true);
-    component.handleKeyDown(new KeyboardEvent("keydown", { key: "Space", code: "Space" }));
+    component.handleKeyDown(new KeyboardEvent("keydown", { code: Key.Space }));
 
     await elementUpdated(component);
     expect(component.show).toBeFalsy();

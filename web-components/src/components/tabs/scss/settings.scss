@@ -3,22 +3,17 @@
   --tab-active-border: 2px solid var(--tabs-default-active-border, $lm-tabs-default-active-border-light);
   --tab-focus-border: 2px solid var(--tabs-default-focus-border, $lm-tabs-default-focus-border-light);
   --tab-hover-border: 2px solid var(--tabs-default-hover, $lm-tabs-default-hover-light);
-  --tab-arrow-right-bg: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.53) 24%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 100%);
-  --tab-arrow-left-bg: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 58%, rgba(255, 255, 255, 0.55) 77%, rgba(255, 255, 255, 0.02) 99%, rgba(255, 255, 255, 0) 100%);
-  --tab-arrow-right-dark-bg: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 100%);
-  --tab-arrow-left-dark-bg: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0) 100%);
 }
 
 $tab-border: rem-calc(2) solid transparent;
 $tab-focus-border-radius: rem-calc(4);
 $tab-base-indent: rem-calc(2);
 $tab-height: rem-calc(48);
-$tab-overflow-arrows-width: rem-calc(35);
 $tab-span-height: rem-calc(27);
 $tab-none-bg: transparent;
 $tab-font-size: $font-size-base;
 $tab-button-padding: 0.3rem 1.2rem;
 $tab-slot-padding: 0 rem-calc(4);
-$tab-arrows-top-padding: rem-calc(4);
 $tab-focus-border: var(--tabs-default-focus-border, $lm-tabs-default-focus-border-light);
-$tab-focus-bg: var(---tabs-default-bg-color, $lm-tabs-default-bg-color-light); 
+$tab-focus-bg: var(--tabs-default-bg-color, $lm-tabs-default-bg-color-light);
+$tab-more-list-bg: var(--tabs-default-bg-color, $lm-tabs-default-bg-color-light);

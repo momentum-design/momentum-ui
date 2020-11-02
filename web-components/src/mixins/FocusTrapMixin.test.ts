@@ -1,4 +1,13 @@
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
+import {
+  defineCE,
+  elementUpdated,
+  fixture,
+  fixtureCleanup,
+  fixtureSync,
+  nextFrame,
+  oneEvent
+} from "@open-wc/testing-helpers";
+import { Key } from "@/constants";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
 
@@ -34,8 +43,6 @@ Object.defineProperties(HTMLElement.prototype, {
 });
 
 describe("FocusTrap Mixin", () => {
-  afterEach(fixtureCleanup);
-
   @customElement("focusable-child")
   class FocusableChild extends LitElement {
     @property({ type: Boolean }) isHidden = false;
@@ -70,6 +77,16 @@ describe("FocusTrap Mixin", () => {
     }
   }
 
+  afterEach(fixtureCleanup);
+  let el: FocusableElement;
+  beforeEach(async () => {
+    el = await fixture<FocusableElement>(
+      html`
+        <focusable-element></focusable-element>
+      `
+    );
+  });
+
   @customElement("focus-trap")
   class FocusTrap extends FocusTrapMixin(FocusTrapMixin(LitElement)) {
     @query(".deactivate") disable!: HTMLButtonElement;
@@ -86,17 +103,11 @@ describe("FocusTrap Mixin", () => {
 
   test("should applying to component", async () => {
     const tag = defineCE(class extends FocusTrapMixin(FocusTrap) {});
-    const el = await fixture<FocusTrap>(`<${tag}></${tag}>`);
-    expect(el).toBeDefined();
+    const element = await fixture<FocusTrap>(`<${tag}></${tag}>`);
+    expect(element).toBeDefined();
   });
 
   test("should traverse all nested shadow roots, slots and html elements", async () => {
-    const el = await fixture<FocusableElement>(
-      html`
-        <focusable-element></focusable-element>
-      `
-    );
-
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
 
     focusTrap.activeFocusTrap = true;
@@ -147,11 +158,6 @@ describe("FocusTrap Mixin", () => {
   });
 
   test("should handle internal event listeners", async () => {
-    const el = await fixture<FocusableElement>(
-      html`
-        <focusable-element></focusable-element>
-      `
-    );
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
 
     focusTrap["activateFocusTrap"]!();
@@ -164,70 +170,63 @@ describe("FocusTrap Mixin", () => {
     await elementUpdated(focusTrap);
 
     const keyEvent = new KeyboardEvent("keydown", {
-      code: "Tab"
+      code: Key.Tab
     });
     const shiftKeyEvent = new KeyboardEvent("keydown", {
-      code: "Tab",
+      code: Key.Tab,
       shiftKey: true
     });
 
     const arrowEvent = new KeyboardEvent("keydown", {
-      code: "ArrowDown"
+      code: Key.ArrowDown
     });
 
     focusTrap.dispatchEvent(keyEvent);
-    focusTrap.dispatchEvent(new CustomEvent("focusin", { composed: true, bubbles: true }));
-    focusTrap.focus();
 
-    requestAnimationFrame(() => {
-      expect(focusTrap.focusTrapIndex).toEqual(0);
-      expect(document.activeElement).toEqual(focusTrap["focusableElements"]![0]);
-    });
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap.focusTrapIndex).toEqual(0);
+    expect(focusTrap["getDeepActiveElement"]!()).toEqual(focusTrap["focusableElements"]![0]);
 
     focusTrap.focusTrapIndex = 0;
     await elementUpdated(focusTrap);
 
     focusTrap.dispatchEvent(shiftKeyEvent);
-    focusTrap.dispatchEvent(new CustomEvent("focusin", { composed: true, bubbles: true }));
-    focusTrap.focus();
 
-    requestAnimationFrame(() => {
-      expect(focusTrap.focusTrapIndex).toEqual(9);
-      expect(document.activeElement).toEqual(focusTrap["focusableElements"]![9]);
-    });
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap.focusTrapIndex).toEqual(9);
+    expect(focusTrap["getDeepActiveElement"]!()).toEqual(focusTrap["focusableElements"]![9]);
 
     focusTrap.focusTrapIndex = 9;
     await elementUpdated(focusTrap);
 
     focusTrap.dispatchEvent(arrowEvent);
-    focusTrap.dispatchEvent(new CustomEvent("focusin", { composed: true, bubbles: true }));
-    focusTrap.focus();
 
-    requestAnimationFrame(() => {
-      expect(focusTrap.focusTrapIndex).toEqual(9);
-      expect(document.activeElement).toEqual(focusTrap["focusableElements"]![9]);
-    });
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap.focusTrapIndex).toEqual(9);
+    expect(focusTrap["getDeepActiveElement"]!()).toEqual(focusTrap["focusableElements"]![9]);
 
     focusTrap.focusTrapIndex = 9;
+
     await elementUpdated(focusTrap);
+
     const clickEvent = new MouseEvent("click");
 
     document.dispatchEvent(clickEvent);
-    focusTrap.dispatchEvent(new CustomEvent("focusout", { composed: true, bubbles: true }));
     focusTrap.blur();
 
-    requestAnimationFrame(() => {
-      expect(focusTrap.focusTrapIndex).toEqual(0);
-      expect(document.activeElement).toEqual(focusTrap["focusableElements"]![0]);
-    });
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap.focusTrapIndex).toEqual(null);
   });
 
   test("should deactivate focus trap is property is provided", async () => {
-    const el = await fixture<FocusableElement>(
-      html`
-        <focusable-element></focusable-element>
-      `
-    );
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
 
     focusTrap["activateFocusTrap"]!();
@@ -247,7 +246,7 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap.activeFocusTrap).toBeFalsy();
 
     const keyEvent = new KeyboardEvent("keydown", {
-      code: "Tab"
+      code: Key.Tab
     });
     focusTrap.dispatchEvent(keyEvent);
     expect(focusTrap.activeFocusTrap).toBeFalsy();

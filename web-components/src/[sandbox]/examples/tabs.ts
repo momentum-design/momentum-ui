@@ -5,7 +5,7 @@ import "@/components/tabs/Tabs";
 import { html } from "lit-element";
 
 export const tabsTemplate = html`
-  <div style="max-width: 700px;">
+  <div style="max-width: 600px;">
     <md-tabs selected="4">
       <md-tab slot="tab" disabled>
         <md-icon name="recents_16"></md-icon>

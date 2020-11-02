@@ -123,7 +123,7 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-tabs">
+          <div class="container" aria-label="md-tabs" style="overflow-x: hidden;">
             <h2>md-tabs</h2>
             <sass-stats component="tabs">
               ${tabsTemplate}

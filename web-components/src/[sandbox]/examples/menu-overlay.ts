@@ -368,7 +368,7 @@ export const menuOverlayTemplate = html`
   <md-menu-overlay show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
       <div style="margin:1.25rem; width: 100%">
-      <md-tooltip strategy="absolute" message="tooltip within overlay">
+      <md-tooltip message="tooltip within overlay">
         <span>Tooltip Trigger Text</span>
         </md-tooltip>
       </div>

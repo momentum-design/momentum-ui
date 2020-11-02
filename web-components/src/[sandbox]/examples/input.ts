@@ -34,7 +34,7 @@ export const inputTemplate = html`
   <section id="pill-shape" class="section">
     <div class="row">
       <div class="column">
-        <md-input label="Normal" containerSize="small-12" shape="pill" clear></md-input>
+        <md-input label="Normal" containerSize="small-12" shape="pill" clear autofocus></md-input>
       </div>
     </div>
     <div class="row">
@@ -46,6 +46,7 @@ export const inputTemplate = html`
           placeholder="Enter Text"
           shape="pill"
           searchable
+          autofocus
         ></md-input>
       </div>
       <div class="column">

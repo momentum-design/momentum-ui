@@ -1,5 +1,6 @@
 import "@/components/slider/Slider";
 import { Slider } from "@/components/slider/Slider";
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 
@@ -47,22 +48,22 @@ describe("Slider Component", () => {
         code
       });
 
-    element.dispatchEvent(createEvent("ArrowLeft"));
+    element.dispatchEvent(createEvent(Key.ArrowLeft));
     await elementUpdated(element);
 
     expect(element.now).toEqual(0);
 
-    element.dispatchEvent(createEvent("ArrowLeft"));
+    element.dispatchEvent(createEvent(Key.ArrowLeft));
     await elementUpdated(element);
 
     expect(element.now).toEqual(0);
 
-    element.dispatchEvent(createEvent("ArrowRight"));
+    element.dispatchEvent(createEvent(Key.ArrowRight));
     await elementUpdated(element);
 
     expect(element.now).toEqual(1);
 
-    element.dispatchEvent(createEvent("ArrowUp"));
+    element.dispatchEvent(createEvent(Key.ArrowUp));
     await elementUpdated(element);
 
     expect(element.now).toEqual(2);
@@ -71,17 +72,17 @@ describe("Slider Component", () => {
 
     await elementUpdated(element);
 
-    element.dispatchEvent(createEvent("ArrowUp"));
+    element.dispatchEvent(createEvent(Key.ArrowUp));
     await elementUpdated(element);
 
     expect(element.now).toEqual(100);
 
-    element.dispatchEvent(createEvent("Home"));
+    element.dispatchEvent(createEvent(Key.Home));
     await elementUpdated(element);
 
     expect(element.now).toEqual(0);
 
-    element.dispatchEvent(createEvent("End"));
+    element.dispatchEvent(createEvent(Key.End));
     await elementUpdated(element);
 
     expect(element.now).toEqual(100);

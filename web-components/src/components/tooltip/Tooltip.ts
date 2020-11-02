@@ -11,7 +11,7 @@ import reset from "@/wc_scss/reset.scss";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
-import { createPopper, defaultModifiers, Instance } from "@popperjs/core/lib/popper-lite";
+import { createPopper, defaultModifiers, Instance, State } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
@@ -46,13 +46,30 @@ export class Tooltip extends FocusMixin(LitElement) {
   @property({ type: String }) message = "";
   @property({ type: String }) placement: Tooltip.Placement = "auto";
   @property({ type: Boolean }) disabled = false;
-  @property({ type: String }) strategy: Tooltip.Strategy = "fixed";
 
   @query(".md-tooltip__container") tooltip?: HTMLDivElement;
   @query(".md-tooltip__trigger") trigger?: HTMLDivElement;
   @query(".md-tooltip__arrow") arrow!: HTMLDivElement;
 
   private popperInstance: Instance | null = null;
+  private parentLevelsUp = 0;
+
+  withinOverlayCheck = (element: HTMLElement | null): Promise<Partial<State>> | undefined => {
+    const menuOverlayTag = "MD-MENU-OVERLAY";
+    const themeTag = "MD-THEME";
+    const maxLevelsUp = 10;
+
+    if (!element || !element.parentElement) return;
+    const currentTagName = element.parentElement.tagName;
+    if (currentTagName === menuOverlayTag) {
+      return this.popperInstance?.setOptions({ strategy: "absolute" });
+    } else if (this.parentLevelsUp > maxLevelsUp || currentTagName === themeTag) {
+      return;
+    } else {
+      this.parentLevelsUp++;
+      return this.withinOverlayCheck(element.parentElement);
+    }
+  };
 
   protected handleFocusIn(event: Event) {
     if (super.handleFocusIn) {
@@ -79,7 +96,7 @@ export class Tooltip extends FocusMixin(LitElement) {
     const { trigger, tooltip } = this;
     this.popperInstance = createPopper(trigger!, tooltip!, {
       placement: this.placement,
-      strategy: this.strategy,
+      strategy: "fixed",
       modifiers: [
         ...defaultModifiers,
         flip,
@@ -105,6 +122,7 @@ export class Tooltip extends FocusMixin(LitElement) {
     if (this.tooltip) {
       this.tooltip.toggleAttribute("data-show", true);
       this.create();
+      this.withinOverlayCheck(this);
     }
   }
 

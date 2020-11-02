@@ -1,5 +1,6 @@
+import { numInputTypes } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import { Input } from "../input/Input";
 import "./EditableTextfield";
@@ -81,8 +82,29 @@ export const Message = () => {
   const message = select("message", messageOptions, defaultValue);
 
   return html`
-    <md-editable-field .messageArr=${[{ ...messages[message] } as Input.Message]}>
+    <md-editable-field .message=${{ ...messages[message] }}>
       ${message} Status
+    </md-editable-field>
+  `;
+};
+export const ValidationInputType = () => {
+  const inputTypes = numInputTypes;
+  const defaultValue = "text";
+  const inputType = select("Input Type", inputTypes, defaultValue);
+
+  return html`
+    <md-editable-field .message=${errorMessageArr} numberType=${inputType}>
+      12345
+    </md-editable-field>
+  `;
+};
+export const ValidationPattern = () => {
+  const defaultRegex = "^([+-]?[1-9]\\d*|0)$";
+  const regexString = text("Regex String", defaultRegex);
+
+  return html`
+    <md-editable-field .message=${errorMessageArr} pattern=${regexString}>
+      Test Regex Match . . .
     </md-editable-field>
   `;
 };

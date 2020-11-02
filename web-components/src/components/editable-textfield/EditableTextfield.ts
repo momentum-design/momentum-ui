@@ -196,7 +196,7 @@ export class EditableTextfield extends LitElement {
   messagesTemplate() {
     return this.alert
       ? html`
-          <div class="md-editable-textfield__messages" style="display: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+          <div class="md-editable-textfield__messages" style="display: ${this.hideMessage ? "none" : "block"}">
             <md-help-text id="alert-message" role="alert" aria-live="assertive" .messageType=${this.message?.type}>
               ${this.message?.message}
             </md-help-text>

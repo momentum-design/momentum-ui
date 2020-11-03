@@ -66,12 +66,12 @@ const radio = {
     },
     focus: {
       "border-color": {
-        light: "transparent",
-        dark: "transparent"
+        light: colors.theme[70].name,
+        dark: colors.theme[70].name
       },
       "shadow-color": {
-        light: "0 0 4px 2px $md-blue-50",
-        dark: "0 0 4px 2px $md-blue-50"
+        light: "0 0 4px 2px transparent",
+        dark: "0 0 4px 2px transparent"
       }
     }
   }

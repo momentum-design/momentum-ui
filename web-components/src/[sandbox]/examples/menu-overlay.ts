@@ -1,9 +1,14 @@
 import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
 import "@/components/input/Input";
 import "@/components/list/List";
 import "@/components/list/ListItem";
 import "@/components/menu-overlay/MenuOverlay";
+import "@/components/radio/Radio";
+import "@/components/radio/RadioGroup";
+import "@/components/tabs/TabPanel";
+import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
 import { html } from "lit-element";
 
@@ -320,48 +325,66 @@ export const menuOverlayTemplate = html`
     </md-menu-overlay>
   </div>
   </div>
-  
-  <h3 class="sandbox-header" style="margin: .5rem 1rem">isOpen</h3>
-  <md-menu-overlay is-open show-arrow>
-    <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">isOpen</md-button>
-    <div style="margin:1.25rem; width: 100%">
-      <md-checkbox>Option one"</md-checkbox>
-      <md-checkbox checked>Option two</md-checkbox>
-    </div>
-  </md-menu-overlay>
+
   
   <h3 class="sandbox-header" style="margin: .5rem 1rem">with list (focus)</h3>
   <md-menu-overlay show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Open List</md-button>
-    <md-list label="md list">
-      <md-list-item slot="list-item" title="Item 1" id="Item_1-b" label="Item 1" type="large">
-        <p>First list item</p>
-      </md-list-item>
-      <md-list-item slot="list-item" title="Item 2" id="Item_2-b" label="Item 2" type="large">
-        <p>Second list item</p>
-      </md-list-item>
-      <md-list-item slot="list-item" title="Item 3" id="Item_3-b" label="Item 3" type="large">
-        <p>Third list item</p>
-      </md-list-item>
-      <md-list-item slot="list-item" title="Item 4" id="Item_4-b" label="Item 4" type="large">
-        <p>Fourth list item</p>
-      </md-list-item>
+    <md-list label="Transuranium elements" activated="3">
+      <md-list-item slot="list-item">Neptunium</md-list-item>
+      <md-list-item slot="list-item">Plutonium</md-list-item>
+      <md-list-item slot="list-item">Americium</md-list-item>
+      <md-list-item slot="list-item">Curium</md-list-item>
+      <md-list-item slot="list-item">Berkelium</md-list-item>
+      <md-list-item slot="list-item">Californium</md-list-item>
     </md-list>
   </md-menu-overlay>
   
   <h3 class="sandbox-header" style="margin: .5rem 1rem">Without focusable content</h3>
-  <md-menu-overlay is-open show-arrow>
+  <md-menu-overlay show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="red">Click</md-button>
     <div style="margin:1.25rem; width: 100%">
       <span>Text</span>
     </div>
   </md-menu-overlay>
-  <h3 class="sandbox-header" style="margin: .5rem 1rem">With focusable content</h3>
+  <h3 class="sandbox-header" style="margin: .5rem 1rem">Open focusable content</h3>
   <md-menu-overlay is-open show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
     <div style="margin:1.25rem; width: 100%">
-      <md-checkbox>Option one"</md-checkbox>
+      <md-tabs>
+        <md-tab slot="tab">
+          <span>Contact History</span>
+          <md-icon name="recents_16"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+          <button type="button">Contact History</button>
+          <div style="margin-top:10px">
+            <md-radiogroup checked="0">
+              <md-radio slot="radio" value="Option 1">Option 1</md-radio>
+              <md-radio slot="radio" value="Option 2">Option 2</md-radio>
+              <md-radio slot="radio" value="Option 3">Option 3</md-radio>
+              <md-radio slot="radio" value="Option 4">Option 4</md-radio>
+            </md-radiogroup>
+          </div>
+        </md-tab-panel>
+        <md-tab slot="tab">
+          <span>Cisco WxM</span>
+          <md-icon name="apps_16"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+          <button type="button">Cisco WxM</button>
+        </md-tab-panel>
+      </md-tabs>
     </div>
+  </md-menu-overlay>
+
+  <h3 class="sandbox-header" style="margin: .5rem 1rem">Empty</h3>
+  <md-menu-overlay show-arrow>
+    <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
+      <div style="margin:1.25rem; width: 100%">
+      </div>
   </md-menu-overlay>
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">With Tooltip Inside</h3>
@@ -371,6 +394,19 @@ export const menuOverlayTemplate = html`
       <md-tooltip message="tooltip within overlay">
         <span>Tooltip Trigger Text</span>
         </md-tooltip>
+      </div>
+
+  </md-menu-overlay>
+
+  <h3 class="sandbox-header" style="margin: .5rem 1rem">With Autofocused Content Inside</h3>
+  <md-menu-overlay show-arrow>
+    <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
+      <div style="margin:1.25rem; width: 100%">
+          <md-checkboxgroup group-label="group_process" alignment="horizontal">
+            <md-checkbox slot="checkbox">Option one"</md-checkbox>
+            <md-checkbox slot="checkbox" checked>Option two</md-checkbox>
+          </md-checkboxgroup>
+          <md-input autofocus placeholder="Enter Text" shape="pill"></md-input>
       </div>
 
   </md-menu-overlay>

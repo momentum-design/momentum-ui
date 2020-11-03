@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import {
   defineCE,
   elementUpdated,
@@ -7,7 +8,6 @@ import {
   nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
-import { Key } from "@/constants";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
 
@@ -41,6 +41,8 @@ Object.defineProperties(HTMLElement.prototype, {
     value: jest.fn().mockReturnValue(10)
   }
 });
+
+document.hasFocus = jest.fn().mockImplementation(() => true);
 
 describe("FocusTrap Mixin", () => {
   @customElement("focusable-child")
@@ -112,6 +114,10 @@ describe("FocusTrap Mixin", () => {
 
     focusTrap.activeFocusTrap = true;
     focusTrap["activateFocusTrap"]!();
+    await elementUpdated(focusTrap);
+
+    focusTrap["activateFocusTrap"]!();
+    focusTrap["setFocusableElements"]!();
 
     await elementUpdated(focusTrap);
 
@@ -161,6 +167,7 @@ describe("FocusTrap Mixin", () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
 
     focusTrap["activateFocusTrap"]!();
+    focusTrap["setFocusableElements"]!();
 
     await elementUpdated(focusTrap);
 
@@ -230,6 +237,7 @@ describe("FocusTrap Mixin", () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap")!;
 
     focusTrap["activateFocusTrap"]!();
+    focusTrap["setFocusableElements"]!();
 
     await elementUpdated(focusTrap);
 
@@ -237,23 +245,78 @@ describe("FocusTrap Mixin", () => {
     focusTrap.enable.dispatchEvent(event);
 
     await elementUpdated(focusTrap);
-
     expect(focusTrap.activeFocusTrap).toBeTruthy();
 
     focusTrap.disable.dispatchEvent(event);
     await elementUpdated(focusTrap);
 
     expect(focusTrap.activeFocusTrap).toBeFalsy();
+    expect(focusTrap.focusTrapIndex).toBeNull();
 
     const keyEvent = new KeyboardEvent("keydown", {
       code: Key.Tab
     });
     focusTrap.dispatchEvent(keyEvent);
+
+    await elementUpdated(focusTrap);
+
     expect(focusTrap.activeFocusTrap).toBeFalsy();
-    expect(focusTrap.focusTrapIndex).toEqual(-1);
 
     focusTrap.enable.dispatchEvent(event);
 
+    await elementUpdated(focusTrap);
+
     expect(focusTrap.activeFocusTrap).toBeTruthy();
+  });
+
+  test("should focus custom element", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+
+    focusableChild!.tabIndex = 0;
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+
+    await elementUpdated(focusTrap!);
+
+    const keyEvent = new KeyboardEvent("keydown", {
+      code: Key.Tab
+    });
+
+    const event = new MouseEvent("click");
+    focusTrap!.enable.dispatchEvent(event);
+
+    await elementUpdated(focusTrap!);
+
+    focusTrap!.dispatchEvent(keyEvent);
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!.dispatchEvent(keyEvent);
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!.dispatchEvent(keyEvent);
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!.dispatchEvent(keyEvent);
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!.dispatchEvent(keyEvent);
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!.dispatchEvent(keyEvent);
+
+    await nextFrame();
+    await elementUpdated(el);
+    expect(focusTrap!["getDeepActiveElement"]!()).toEqual(focusableChild);
   });
 });

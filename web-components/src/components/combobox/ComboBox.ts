@@ -825,6 +825,7 @@ export class ComboBox extends FocusMixin(LitElement) {
                 id=${this.getOptionId(option)}
                 role="option"
                 class="md-combobox-option ${classMap(this.listItemOptionMap)}"
+                aria-label=${this.getOptionValue(option)}
                 aria-selected=${this.getAriaState(optionIndex)}
                 tabindex="-1"
                 @click=${this.handleListClick}

@@ -351,7 +351,7 @@ export const menuOverlayTemplate = html`
   <md-menu-overlay is-open show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
     <div style="margin:1.25rem; width: 100%">
-      <md-tabs>
+      <md-tabs justified>
         <md-tab slot="tab">
           <span>Contact History</span>
           <md-icon name="recents_16"></md-icon>

@@ -1,0 +1,70 @@
+.md-floating {
+  background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-light);
+  border-radius: var(--floating-modal-main-radius, $lm-floating-modal-main-radius-light);
+  box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
+  cursor: move;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  // transition: height 1s ease, width 1s ease, top 1s ease, left 1s ease; // this is not what i meant
+  z-index: 1040;
+
+  &.fixed {
+    position: fixed;
+  }
+
+  .resizer {
+    height: $floating-resize-size;
+    position: absolute;
+    width: $floating-resize-size;
+
+    &.top-left {
+      cursor: nwse-resize; /*resizer cursor*/
+      left: -$floating-resize-indent;
+      top: -$floating-resize-indent;
+    }
+
+    &.top-right {
+      cursor: nesw-resize;
+      right: -$floating-resize-indent;
+      top: -$floating-resize-indent;
+    }
+
+    &.bottom-left {
+      bottom: -$floating-resize-indent;
+      cursor: nesw-resize;
+      left: -$floating-resize-indent;
+    }
+
+    &.bottom-right {
+      bottom: -$floating-resize-indent;
+      cursor: nwse-resize;
+      right: -$floating-resize-indent;
+    }
+  }
+
+  .md-floating__header {
+    align-items: center;
+    border-bottom: $floating-header-border;
+    color: var(--floating-modal-main-text-color, $lm-floating-modal-main-text-color-light);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-height: $floating-header-max-height;
+    padding: $floating-header-padding;
+
+    &-text {
+      flex: 2 1 auto;
+      font-family: $brand-font-bold;
+      font-size: $font-size-large;
+      line-height: $font-size-large;
+      text-align: left;
+    }
+  }
+
+  .md-floating__body {
+    overflow: auto;
+    padding: $floating-body-padding;
+  }
+}

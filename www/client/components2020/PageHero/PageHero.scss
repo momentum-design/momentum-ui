@@ -10,6 +10,7 @@
 
   @include site-column-breakpoint {
     height: 450px;
+    background-size: 80% !important;
   }
 
   & > div {
@@ -51,6 +52,13 @@
 
     .md-button{
       width: 140px;
+      background: $md-black;
+      color: $md-white;
+
+      &:hover {
+        background: $md-white;
+        color: $md-black;
+      }
 
       .md-button__children {
         vertical-align: top;
@@ -67,7 +75,7 @@
       background-size: contain !important;
     }
 
-    .site-banner-share_github{
+    .site-banner-share_github {
       margin-left: 27px;
     }
 
@@ -79,6 +87,11 @@
     .site-banner-share_github::before {
       width: 22px;
       background: url(../assets/2020/banner-github_w.svg);
+    }
+
+    .site-banner-share_github:hover::before {
+      width: 22px;
+      background: url(../assets/2020/banner-github.svg);
     }
   }
 }

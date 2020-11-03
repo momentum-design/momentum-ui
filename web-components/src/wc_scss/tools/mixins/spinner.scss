@@ -1,0 +1,38 @@
+@mixin spinner-size($width: 1em, $height: 1em) {
+  height: $height;
+  width: $width;
+
+  &::after {
+    height: calc(#{$height});
+    width: calc(#{$width});
+  }
+}
+
+@mixin spinner-style($border: $md-gray-40, $border-progress-left: $md-theme-50, $border-progress: transparent) {
+  border: 1px solid $border;
+
+  &::after {
+    border-bottom: 1px solid $border-progress;
+    border-left: 1px solid $border-progress-left;
+    border-right: 1px solid $border-progress;
+    border-top: 1px solid $border-progress;
+  }
+}
+
+@mixin spinner-progress-color($border: $md-gray-40, $progress: $md-black-100) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px $border;
+
+  .md-spinner-progress__circle .md-spinner-progress__mask .md-spinner-progress__fill {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px $progress;
+  }
+
+  .md-spinner-progress__inset-circle {
+    background-color: transparent;
+
+    .md-spinner-progress__percentage {
+      color: $progress;
+    }
+  }
+}

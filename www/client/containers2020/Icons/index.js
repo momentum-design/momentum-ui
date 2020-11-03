@@ -84,6 +84,7 @@ class IconsContainer extends React.Component {
         <div className="site-warp">
           <SectionHeader
             title="Icons"
+            leadStr="Momentum icons are simple and consistent across platforms. They follow our attributes of focused, familiar, and inclusive in metaphor and design. Our icons act as visual support to help people move through the experience more effectively."
           />
           <div className="site-icons">
             <div className="site-icons__top-2020">

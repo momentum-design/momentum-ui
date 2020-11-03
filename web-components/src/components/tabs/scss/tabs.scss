@@ -1,0 +1,151 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  font-size: $tab-font-size;
+  height: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.md-tab__list {
+  border-bottom: var(--tab-list-border);
+  display: inline-flex;
+  height: $tab-height;
+  min-height: $tab-height;
+  padding-left: $tab-base-indent;
+  padding-top: $tab-base-indent;
+  text-align: center;
+  width: 100%;
+
+  &.md-tab__justified {
+    display: flex;
+    justify-content: space-between;
+    padding-right: $tab-base-indent;
+  }
+
+  .md-menu-overlay__more {
+    height: 100%;
+    max-width: 10rem;
+
+    &--grow {
+      flex-grow: 1;
+    }
+  }
+
+  .md-menu-overlay__more_tab {
+    height: 100%;
+
+    &--hidden {
+      pointer-events: none;
+      visibility: hidden;
+      z-index: -1;
+    }
+  }
+
+  .md-menu-overlay__more_list {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+
+    md-tab {
+      &::part(tab) {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.md-tab__content {
+  height: 100%;
+  overflow: hidden auto;
+  padding: $tab-base-indent;
+}
+
+.md-tab__list ::slotted([slot="tab"]) {
+  display: inline-block;
+}
+
+.md-tab__list.md-tab__justified ::slotted([slot="tab"]) {
+  display: inline-block;
+  width: 100%;
+}
+
+.md-tab__list ::slotted([slot="tab"][selected]),
+  // More tab list
+.md-tab__list md-tab[selected] {
+  color: var(--tabs-default-active, $lm-tabs-default-active-light);
+}
+
+.md-tab__list ::slotted([slot="tab"][disabled]),
+  // More tab list
+.md-tab__list md-tab[disabled] {
+  color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light);
+}
+
+.md-tab__list ::slotted([slot="tab"]:focus),
+  // More tab list
+.md-tab__list md-tab:focus {
+  box-shadow: none;
+}
+
+.md-tab__content ::slotted([slot="panel"]) {
+  display: none;
+  padding-top: calc($tab-base-indent * 5);
+  visibility: hidden;
+}
+
+.md-tab__content ::slotted([slot="panel"][selected]) {
+  display: block;
+  visibility: visible;
+}
+
+
+.md-tab__content ::slotted([slot="panel"][selected][focus-visible]:focus-visible) {
+  outline: var(--tab-focus-border);
+  outline-offset: calc(#{$tab-border} * -2);
+  outline-style: solid;
+}
+
+.md-tab__content ::slotted([slot="panel"][selected][focus-visible]:not(:focus-visible)) {
+  outline: none;
+  outline-offset: none;
+  outline-style: none;
+}
+
+.md-tab__content {
+  display: block;
+  flex: 1 1 auto;
+}
+
+// Vertical Direction
+
+:host-context([direction="vertical"]) {
+  flex-direction: row;
+}
+
+:host-context([direction="vertical"]) .md-tab__list {
+  border-right: var(--tab-list-border);
+  display: inline-flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  width: auto;
+}
+
+:host-context([direction="vertical"]) .md-tab__list ::slotted([slot="tab"]) {
+  border-left: $tab-border;
+  display: block;
+  height: auto;
+  text-align: left;
+}
+
+:host-context([direction="vertical"]) .md-tab__list ::slotted([slot="tab"][selected]) {
+  border-left: var(--tab-active-border);
+  color: var(--tabs-default-active, $lm-tabs-default-active-light);
+}
+
+:host-context([direction="vertical"]) .md-tab__content ::slotted([slot="panel"]) {
+  padding-left: calc($tab-base-indent * 5);
+}

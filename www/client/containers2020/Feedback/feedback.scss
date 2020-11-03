@@ -1,0 +1,76 @@
+.site-content-feedback {
+  border: none;
+
+  .site-responsive-row {
+    grid-column-gap: 80px;
+  }
+
+  .md-panel__form {
+    label {
+      @include p();
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    &--required:after {
+      margin-left: rem-calc(4);
+      color: $md-red-50 ;
+      content: '*';
+    }
+
+    &--buttons {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+      @include site-column-breakpoint {
+        justify-content: flex-start;
+      }
+
+      &-attach-document {
+        margin-right: auto;
+
+        @include site-column-breakpoint {
+          margin-right: 8px;
+        }
+      }
+
+      button {
+        @include site-column-breakpoint {
+          margin-top: 8px;
+        }
+      }
+    }
+    
+    &--select {
+      .md-select__label {
+        width: 100%;
+      }
+    }
+    &--textarea {
+      width: 100%;
+      height: rem-calc(100);
+      resize: vertical;
+    }
+    &--files {
+      margin-bottom: rem-calc(12);
+    }
+  }
+  &__done {
+    padding: 72px 0 100px 0;
+    text-align: center;
+    &--image {
+      margin: 0 auto;
+      height: rem-calc(100);
+      width: rem-calc(104);
+      background: url(../assets/feedback-done.svg) no-repeat center;
+    }
+    &--h3 {
+      margin-top: rem-calc(32);
+      margin-bottom: rem-calc(8);
+    }
+    &--button {
+      margin-top: rem-calc(48);
+    }
+  }
+}

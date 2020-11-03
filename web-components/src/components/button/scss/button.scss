@@ -1,0 +1,629 @@
+/** @component button */
+
+@include exports("md-button") {
+  [class|="md-button__container"] {
+    @include flex($display: inline-flex, $fd: column);
+
+    width: $button-container__width;
+
+    &[class$="--small"] {
+      width: $button-container--small__width;
+    }
+  }
+
+  // Default styles applied outside of media query
+  :host .md-button {
+    @include button-base;
+    @include button-size($height: rem-calc(36), $padding: $button__padding--36, $radius: $button__radius--36);
+    @include button-color($focus: true);
+    @include single-transition(background-color, $button__transition-speed, ease);
+
+    // default button - secondary styling
+    background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
+
+    box-sizing: border-box;
+    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+
+    &:hover {
+      background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
+
+    &:active {
+      background-color: var(--button-secondary-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
+
+    &:disabled {
+      background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+      color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    }
+
+    &::after {
+      border-radius: calc(#{$button__radius--36} + #{$button-focus-gap-ring});
+      content: "";
+      display: block;
+      height: calc(100% + (#{$button-focus-gap-ring} * 2));
+      left: 0;
+      margin: -$button-focus-gap-ring;
+      position: absolute;
+      top: 0;
+      width: calc(100% + (#{$button-focus-gap-ring} * 2));
+    }
+    
+    &:focus::after {
+      box-shadow: 0 0 0 $focus-ring-size var(--button-focus-ring-color, $lm-button-focus-ring-color-light);
+    }
+
+    + .md-button__label {
+      color: var(--md-primary-text-color, $md-gray-100);
+      display: block;
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+    }
+
+    &--left {
+      text-align: left;
+      text-indent: rem-calc(12);
+    }
+
+    &--right {
+      padding-right: rem-calc(12);
+      text-align: right;
+    }
+
+    &--outline {
+      box-shadow: $button--default__border;
+    }
+
+    // Remove default button element styling
+    &--none {
+      @include button-color(
+        $color: inherit,
+        $bg: transparent,
+        $bg-hover: transparent,
+        $bg-active: transparent,
+        $color-disabled: $button__link-color--disabled
+      );
+      @include button-size($radius: 0, $padding: 0, $height: auto);
+      box-shadow: none;
+
+      min-width: 0;
+    }
+
+    &--size-none {
+      @include button-size($radius: 0, $padding: 0, $height: auto);
+
+      min-width: 0;
+    }
+
+    &--28 {
+      @include button-size(
+        $height: rem-calc(28),
+        $padding: $button__padding--28,
+        $radius: $button__radius--28,
+        $font-size: $button__font-size--28,
+        $line-height: $button__line-height--28
+      );
+    }
+
+    &--32 {
+      @include button-size(
+        $height: rem-calc(32),
+        $padding: $button__padding--32,
+        $radius: $button__radius--32,
+        $font-size: $button__font-size--32,
+        $line-height: $button__line-height--32
+      );
+    }
+
+    &--36 {
+      @include button-size(
+        $height: rem-calc(36),
+        $padding: $button__padding--36,
+        $font-size: $button__font-size--36,
+      );
+    }
+
+    &--40 {
+      @include button-size(
+        $height: rem-calc(40),
+        $padding: $button__padding--40,
+        $line-height: $button__line-height--40,
+        $radius: $button__radius--40
+      );
+    }
+
+    &--52 {
+      @include button-size(
+        $height: rem-calc(52),
+        $padding: $button__padding--52,
+        $radius: $button__radius--52
+      );
+    }
+
+    &--circle {
+      @include radius($button__radius--round);
+      @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+
+      padding: 0;
+
+      &::after {
+        border-radius: $button__radius--round;
+      }
+
+      &[class*="--none"] {
+        @include button-color(
+          $color: inherit,
+          $bg: transparent,
+          $bg-hover: transparent,
+          $bg-active: transparent,
+          $color-disabled: $button__link-color--disabled
+        );
+        @include button-circle-size($size: auto);
+      }
+
+      &[class*="--size-none"] {
+        @include button-circle-size($size: auto);
+      }
+
+      &[class*="--20"] {
+        @include button-circle-size($size: $button__size--20, $font-size: $button__font-size--20);
+      }
+
+      &[class*="--28"] {
+        @include button-circle-size($size: $button__size--28, $font-size: $button__font-size--28);
+      }
+
+      &[class*="--32"] {
+        @include button-circle-size($size: $button__size--32, $font-size: $button__font-size--32);
+      }
+
+      &[class*="--36"] {
+        @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+      }
+
+      &[class*="--40"] {
+        @include button-circle-size($size: $button__size--40, $font-size: $button__font-size--40);
+      }
+
+      &[class*="--44"] {
+        @include button-circle-size($size: $button__size--44, $font-size: $button__font-size--44);
+      }
+
+      &[class*="--52"] {
+        @include button-circle-size($size: $button__size--52, $font-size: $button__font-size--52);
+      }
+
+      &[class*="--56"] {
+        @include button-circle-size($size: $button__size--56, $font-size: $button__font-size--56);
+      }
+
+      &[class*="--68"] {
+        @include button-circle-size($size: $button__size--68, $font-size: $button__font-size--68);
+      }
+
+      &[class*="--72"] {
+        @include button-circle-size($size: $button__size--72, $font-size: $button__font-size--72);
+      }
+
+      &[class*="--84"] {
+        @include button-circle-size($size: $button__size--84, $font-size: $button__font-size--84);
+      }
+
+      &.icon {
+        font-family: $icon-font-name;
+      }
+    }
+
+    .md-loading {
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+
+    &--blue {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--blue__background-color,
+        $bg-hover: $button--blue__background-color--hover,
+        $bg-active: $button--blue__background-color--active
+      );
+    }
+
+    &--red {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--red__background-color,
+        $bg-hover: $button--red__background-color--hover,
+        $bg-active: $button--red__background-color--active
+      );
+    }
+
+    &--green {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--green__background-color,
+        $bg-hover: $button--green__background-color--hover,
+        $bg-active: $button--green__background-color--active
+      );
+    }
+
+    &--orange {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--orange__background-color,
+        $bg-hover: $button--orange__background-color--hover,
+        $bg-active: $button--orange__background-color--active
+      );
+    }
+
+    &--yellow {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--yellow__background-color,
+        $bg-hover: $button--yellow__background-color--hover,
+        $bg-active: $button--yellow__background-color--active
+      );
+    }
+
+    &--mint {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--mint__background-color,
+        $bg-hover: $button--mint__background-color--hover,
+        $bg-active: $button--mint__background-color--active
+      );
+    }
+
+    &--purple {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--purple__background-color,
+        $bg-hover: $button--purple__background-color--hover,
+        $bg-active: $button--purple__background-color--active
+      );
+    }
+
+    &--pink {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--pink__background-color,
+        $bg-hover: $button--pink__background-color--hover,
+        $bg-active: $button--pink__background-color--active
+      );
+    }
+
+    &--cyan {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--cyan__background-color,
+        $bg-hover: $button--cyan__background-color--hover,
+        $bg-active: $button--cyan__background-color--active
+      );
+    }
+
+    &--white {
+      @include button-color(
+        $color: $md-black-100,
+        $bg: $button--white__background-color,
+        $bg-hover: $button--white__background-color--hover,
+        $bg-active: $button--white__background-color--active,
+        $focus: true
+      );
+    }
+
+    &--white.md-button--outline {
+      @include button-color(
+        $color: $md-gray-70,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--white__border,
+        $bg-hover: $button--white__background-color--hover,
+        $bg-active: $button--white__background-color--active,
+        $focus: true
+      );
+    }
+
+    &--dark-gray {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--dark-gray__background-color,
+        $bg-hover: $button--dark-gray__background-color--hover,
+        $bg-active: $button--dark-gray__background-color--active
+      );
+    }
+
+    &--duck-egg {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--duck-egg__background-color,
+        $bg-hover: $button--duck-egg__background-color--hover,
+        $bg-active: $button--duck-egg__background-color--active
+      );
+    }
+
+    &--violet {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: $button--violet__background-color,
+        $bg-hover: $button--violet__background-color--hover,
+        $bg-active: $button--violet__background-color--active
+      );
+    }
+
+    &--link {
+      @include button-color(
+        $color: $button__font-color--alt,
+        $bg: transparent,
+        $bg-hover: $button__background-color--hover,
+        $bg-active: $button__background-color--active
+      );
+
+      color: $anchor-font-color;
+    }
+
+    &--color-none {
+      @include button-color(
+        $color: inherit,
+        $bg: transparent,
+        $bg-hover: transparent,
+        $bg-active: transparent,
+        $color-disabled: $button__link-color--disabled
+      );
+    }
+
+    &[class*="md-button--icon"] {
+      .#{$icon__class} {
+        fill: inherit;
+      }
+    }
+
+    &.md-button--icon {
+      @include button-color(
+        $color: inherit,
+        $bg: transparent,
+        $bg-hover: transparent,
+        $bg-active: transparent,
+        $color-disabled: $button__link-color--disabled
+      );
+      @include button-color-fill(
+        $fill: $md-gray-70,
+        $fill-hover: $md-theme-60,
+        $fill-active: $md-theme-70,
+        $fill-disabled: $button__link-color--disabled
+      );
+      @include button-size($radius: 0, $padding: 0, $height: auto);
+
+      min-width: 0;
+
+      &.md-button--icon-white {
+        @include button-color-fill(
+          $fill: $icon--white__fill,
+          $fill-hover: $icon--white__fill--hover,
+          $fill-active: $icon--white__fill--active,
+          $fill-disabled: $icon--white__fill--disabled
+        );
+      }
+    }
+
+    &.md-button--onlyicon {
+      &:disabled {
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+
+// --------------------------------------------------------------
+// LUMOS ADDED STYLES -- MUST REVIEW THE ABOVE TO AVOID OVERRIDES
+// --------------------------------------------------------------
+
+:host([type="reset"]) {
+  appearance: none !important;
+}
+
+:host([type="submit"]) {
+  appearance: none !important;
+}
+
+:host([variant="primary"]) .md-button {
+  background-color: var(--button-primary-bg-color, $lm-button-primary-bg-color-light);
+  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+
+  &:hover {
+    background-color: var(--button-primary-hover-bg-color, $lm-button-primary-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-primary-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="secondary"]) .md-button {
+  background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+
+  &:hover {
+    background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
+    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-secondary-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
+    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="red"]) .md-button {
+  background-color: var(--button-red-bg-color, $lm-button-red-bg-color-light);
+  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+
+  &:hover {
+    background-color: var(--button-red-hover-bg-color, $lm-button-red-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-red-pressed-bg-color, $lm-button-red-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="green"]) .md-button {
+  background-color: var(--button-green-bg-color, $lm-button-green-bg-color-light);
+  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+
+  &:hover {
+    background-color: var(--button-green-hover-bg-color, $lm-button-green-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-green-pressed-bg-color, $lm-button-green-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="available"]) .md-button {
+  background-color: var(--button-available-bg-color, $lm-button-available-bg-color-light);
+
+  &:hover {
+    background-color: var(--button-available-hover-bg-color, $lm-button-available-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-available-pressed-bg-color, $lm-button-available-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="unavailable"]) .md-button {
+  background-color: var(--button-unavailable-bg-color, $lm-button-unavailable-bg-color-light);
+
+  &:hover {
+    background-color: var(--button-unavailable-hover-bg-color, $lm-button-unavailable-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-unavailable-pressed-bg-color, $lm-button-unavailable-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="idle"]) .md-button {
+  background-color: var(--button-idle-bg-color, $lm-button-idle-bg-color-light);
+
+  &:hover {
+    background-color: var(--button-idle-hover-bg-color, $lm-button-idle-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-idle-pressed-bg-color, $lm-button-idle-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="white"]) .md-button {
+  background-color: var(--button-white-bg-color, $lm-button-white-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+
+  &:hover {
+    background-color: var(--button-white-hover-bg-color, $lm-button-white-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-white-pressed-bg-color, $lm-button-white-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+
+  &--outline {
+    box-shadow: 0 0 0 1px var(--button-white-outline-color, $lm-button-white-outline-color-light);
+    color: var(--button-white-outline-text-color, $lm-button-white-outline-text-color-light);
+  }
+}
+
+:host([variant="inverted-white"]) .md-button {
+  background-color: var(--button-inverted-white-bg-color, $lm-button-inverted-white-bg-color-light);
+  color: var(--button-inverted-white-text-color, $lm-button-inverted-white-text-color-light);
+
+  &:hover {
+    background-color: var(--button-inverted-white-hover-bg-color, $lm-button-inverted-white-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-inverted-white-pressed-bg-color, $lm-button-inverted-white-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+
+  &--outline {
+    box-shadow: 0 0 0 1px var(--button-inverted-white-outline-color, $lm-button-inverted-white-outline-color-light);
+    color: var(--button-inverted-white-outline-text-color, $lm-button-inverted-white-outline-text-color-light);
+  }
+}
+
+::slotted(*) {
+  display: flex;
+}
+
+::slotted([slot="text"]) {
+  align-self: end;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+::slotted(*:not(:first-child)) {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+::slotted(md-icon) {
+  line-height: normal;
+}
+
+md-spinner {
+  display: flex;
+}
+
+md-spinner + ::slotted(*) {
+  margin-left: 0.5rem;
+}

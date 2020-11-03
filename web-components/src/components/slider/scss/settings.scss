@@ -1,0 +1,9 @@
+$slider__indent: rem-calc(20);
+$slider__height: rem-calc(20);
+$slider__border-radius: rem-calc(4);
+$slider-bar__height: rem-calc(2);
+$slider-bar__border-radius: rem-calc(2);
+$slider-pointer__size: rem-calc(20);
+$slider-pointer__box-shadow: 0 2px 4px $black-16;
+$slider__focus-shadow: 0 0 0 2px var(--slider-background-focus-selection, $md-slider-background-focus-selection-light), $slider-pointer__box-shadow;
+$slider-label__size: $font-size-base;

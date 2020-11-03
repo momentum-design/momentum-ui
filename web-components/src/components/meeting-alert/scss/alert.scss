@@ -1,0 +1,244 @@
+/** @component alert */
+
+@include exports("md-alert") {
+  .md-alert__container {
+    position: fixed;
+    z-index: 9999;
+
+    &--top-left {
+      left: 1em;
+      top: 1em;
+    }
+
+    &--top-center {
+      left: 50%;
+      top: 1em;
+      transform: translate(-50%);
+    }
+
+    &--top-right {
+      right: 1em;
+      top: 1em;
+    }
+
+    &--bottom-left {
+      bottom: 1em;
+      left: 1em;
+    }
+
+    &--bottom-center {
+      bottom: 1em;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    &--bottom-right {
+      bottom: 1em;
+      right: 1em;
+    }
+
+    &--call {
+
+      @include flex;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .md-alert {
+    @include flex($jc: space-between, $ac: space-between);
+    @include border-radius($alert__border-radius);
+    background-color: $md-white-100;
+    border: 1px solid $black-12;
+    box-shadow: 0 8px 16px 0 $black-08;
+    justify-content: space-between;
+    margin-bottom: rem-calc(8);
+    max-height: rem-calc(308);
+    min-height: rem-calc(78);
+    padding: $alert__padding $alert__padding-right $alert__padding
+      $alert__padding-left;
+
+    width: $alert__width;
+
+    &__icon {
+      font-family: $icon-font-name;
+      font-size: $alert__icon-font-size;
+      line-height: 0;
+
+      &::before {
+
+        @include icon-info_24;
+        color: $alert__font-color--info;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-basis: 0%;
+      flex-direction: column;
+      flex-grow: 2;
+      padding-left: rem-calc(16);
+      padding-right: rem-calc(2);
+    }
+
+    &__title {
+      color: $alert__font-color--info;
+      font-size: $alert__font-size--title;
+      line-height: rem-calc(24);
+    }
+
+    &__status,
+    &__message {
+      font-family: $brand-font-light;
+      font-size: $alert__font-size;
+      line-height: rem-calc(18);
+    }
+
+    &__status {
+      color: $alert__font-color--status;
+    }
+
+    &__message {
+      color: $alert__font-color;
+    }
+
+    &__title,
+    &__message {
+      max-width: 10rem;
+      word-wrap: break-word;
+    }
+
+    &__button {
+      margin-left: rem-calc(8);
+    }
+
+    &.md-alert--success {
+      .md-alert__icon {
+        &::before {
+
+          @include icon-check-circle_24;
+          color: $alert__font-color--success;
+        }
+      }
+
+      .md-alert__title {
+        color: $alert__font-color--success;
+      }
+    }
+
+    &.md-alert--warning {
+      .md-alert__icon {
+        &::before {
+
+          @include icon-warning_24;
+          color: $alert__font-color--warning;
+        }
+      }
+
+      .md-alert__title {
+        color: $alert__font-color--warning;
+      }
+    }
+
+    &.md-alert--error {
+      .md-alert__icon {
+        &::before {
+
+          @include icon-warning_24;
+          color: $alert__font-color--error;
+        }
+      }
+
+      .md-alert__title {
+        color: $alert__font-color--error;
+      }
+    }
+
+    &.md-alert--meeting {
+      .md-alert__content {
+        width: 10rem;
+      }
+
+      .md-alert__content--wide {
+        width: 13rem;
+      }
+
+      .md-alert__title,
+      .md-alert__message {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .md-alert__title {
+        color: $alert__font-color--title;
+      }
+    }
+
+    &.md-alert--call {
+      @include flex($fd: column);
+      margin-right: rem-calc(15);
+      max-height: rem-calc(500);
+      min-height: rem-calc(282);
+      padding: $alert__padding-top--call $alert__padding--call
+        $alert__padding-bottom--call $alert__padding--call;
+
+      width: rem-calc(278);
+
+      .md-alert__title {
+        color: $alert__font-color--title;
+        font-size: rem-calc(14);
+        font-weight: bold;
+        line-height: rem-calc(22);
+        padding-bottom: rem-calc(24);
+      }
+
+      .md-alert__caller {
+        @include flex($fd: column);
+
+        &-title {
+          font-size: rem-calc(16);
+          font-weight: bold;
+          line-height: rem-calc(24);
+          padding-top: rem-calc(8);
+        }
+
+        &-subtitle {
+          font-size: rem-calc(14);
+          line-height: rem-calc(22);
+        }
+      }
+
+      .md-alert--call--buttons {
+        padding-top: rem-calc(24);
+
+        .md-icon {
+          fill: $md-white-100;
+        }
+      }
+
+      .md-list {
+        padding-top: rem-calc(12);
+
+        .md-list-item {
+          background-color: $black-04;
+
+          &:hover {
+            background-color: $black-04;
+          }
+
+          &:last-child {
+            @include border-bottom-radius(8px);
+          }
+
+          &-header {
+
+            @include border-top-radius(8px);
+            border-bottom: 1px solid $black-08;
+          }
+        }
+      }
+    }
+  }
+}

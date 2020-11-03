@@ -1,0 +1,7 @@
+@mixin message-color($color-message) {
+  color: $color-message;
+  
+  &::before {
+    color: $color-message;
+  }
+}

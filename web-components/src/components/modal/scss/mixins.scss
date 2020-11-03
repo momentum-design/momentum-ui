@@ -1,0 +1,117 @@
+@mixin modal-base(
+  $height: $modal__height--full-screen,
+  $width: $modal__width--full-screen
+) {
+  color: var(--md-primary-text-color, $md-gray-100);
+  display: block;
+  height: $height;
+  left: 0;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  visibility: visible;
+  width: $width;
+
+  .md-modal__title {
+    color: var(--md-primary-text-color, $md-gray-60);
+  }
+}
+
+@mixin modal-size(
+  $border-width: false,
+  $height: auto,
+  $max-height: none,
+  $min-height: 0,
+  $radius: false,
+  $top-offset: false,
+  $width: $modal__width--full-screen
+) {
+  width: $width;
+
+  @if $top-offset {
+    top: $top-offset;
+    max-height: calc(100vh - (#{$top-offset} * 2));
+  } @else {
+    top: auto;
+    max-height: $max-height;
+  }
+
+  .md-modal__content {
+    @if $min-height !=0 {
+      min-height: $min-height;
+    } @else {
+      height: $height;
+      min-height: $min-height;
+    }
+
+    @if $radius==true {
+      @include radius($modal__radius);
+    } @else if $radius {
+      @include radius($radius);
+    }
+
+    @if $top-offset {
+      max-height: calc(100vh - (#{$top-offset} * 2));
+    } @else {
+      max-height: $max-height;
+    }
+
+    @if $border-width !=false {
+      border-style: solid;
+      border-width: $border-width;
+    } @else {
+      border: none;
+    }
+  }
+}
+
+@mixin modal-header-size(
+  $line-height: $modal-header__line-height,
+  $font-size: $modal-header__font-size,
+  $font-family: $brand-font-bold
+) {
+  @include flex($fd: column);
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  width: 100%;
+
+  @content;
+}
+
+@mixin modal-close-button(
+  $size: auto,
+  $top-offset: auto,
+  $right-offset: auto,
+  $font-size: inherit
+) {
+  height: $size;
+  right: $right-offset;
+  top: $top-offset;
+  width: $size;
+
+  &::before {
+    font-size: $font-size;
+  }
+}
+
+@mixin modal-color($bg: false, $box-shadow: false) {
+  @if $bg {
+    background-color: $bg;
+  }
+
+  @if $box-shadow {
+    box-shadow: $box-shadow;
+  }
+}
+
+@mixin modal-flex-container() {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  max-height: inherit;
+  min-height: inherit;
+  padding: $modal__padding;
+  width: 100%;
+}

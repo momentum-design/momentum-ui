@@ -1,32 +1,54 @@
 .site-footer {
   padding: 84px 0 44px 0;
 
+  @include site-column-breakpoint {
+    padding-top: 48px;
+  }
+
   & .flex-con-row {
     flex-wrap: wrap;
+
+    @include site-column-breakpoint {
+      flex-direction: column;
+    }
+
+    & .flex-margin {
+      @include site-column-breakpoint {
+        margin-left: 0;
+      }
+    }
   }
 
   .flex-item  {
     a {
       text-decoration: none;
       color: $md-black;
-      font-size: 16px;
-      line-height: 32px;
+      font-size: 24px;
+      line-height: 49.5px;
       width: 100%;
       display: block;
     }
 
     .site-footer-title{
-      font-size: 20px;
+      font-size: 28px;
       color:$md-gray-100;
-      line-height: 48px;
-      height: 48px;
+      line-height: 35px;
       display: block;
       border-bottom: 1px solid $md-black;
-      margin: 36px 0 13px 0;
+      margin: 35px 0 13px 0;
       font-weight: bold;
+      padding-bottom: 4px;
     }
     .site-footer-title:first-child {
       margin-top: 0px;
+
+      @include site-column-breakpoint {
+        margin-top: 35px;
+      }
+    }
+
+    a:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -37,6 +59,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    div {
+      text-align: center;
+
+      @include site-column-breakpoint {
+        width: 100%;
+        margin-top: 11px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
 
     div, a{
       color:#B4B6B8;

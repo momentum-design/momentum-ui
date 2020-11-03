@@ -6,7 +6,7 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import reset from "../../wc_scss/reset.scss";
 import { styleMap } from "lit-html/directives/style-map";
 import { customElement, html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";

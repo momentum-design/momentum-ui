@@ -1,18 +1,18 @@
-@import "@/wc_scss/tools/functions/core.scss";
+@import "../../../wc_scss/tools/functions/core.scss";
 
 // Settings
-@import "@/wc_scss/colors/settings-base.scss";
-@import "@/wc_scss/colors/settings-transparencies.scss";
-@import "@/wc_scss/settings/rem.scss";
-@import "@/wc_scss/settings/core.scss";
-@import "@/wc_scss/typography/settings.scss";
+@import "../../../wc_scss/colors/settings-base.scss";
+@import "../../../wc_scss/colors/settings-transparencies.scss";
+@import "../../../wc_scss/settings/rem.scss";
+@import "../../../wc_scss/settings/core.scss";
+@import "../../../wc_scss/typography/settings.scss";
 
 // Tools
-@import "@/wc_scss/tools/mixins/core";
-@import "@/wc_scss/tools/mixins/flex";
-@import "@/wc_scss/tools/mixins/focus";
-@import "@/wc_scss/settings/button-settings.scss";
-@import "@/wc_scss/tools/mixins/button";
+@import "../../../wc_scss/tools/mixins/core";
+@import "../../../wc_scss/tools/mixins/flex";
+@import "../../../wc_scss/tools/mixins/focus";
+@import "../../../wc_scss/settings/button-settings.scss";
+@import "../../../wc_scss/tools/mixins/button";
 
 @include exports("md-button") {
   [class|="md-button__container"] {

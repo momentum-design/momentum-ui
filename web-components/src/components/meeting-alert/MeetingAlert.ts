@@ -6,8 +6,8 @@
  *
  */
 
-import { Key } from "@/constants";
-import reset from "@/wc_scss/reset.scss";
+import { Key } from "../../constants";
+import reset from "../../wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import "../avatar/Avatar";

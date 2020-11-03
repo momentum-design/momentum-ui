@@ -6,8 +6,8 @@
  *
  */
 
-import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
+import { FocusMixin } from "../../mixins";
+import reset from "../../wc_scss/reset.scss";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";

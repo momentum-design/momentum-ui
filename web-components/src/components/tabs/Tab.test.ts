@@ -1,5 +1,5 @@
-import { Key } from "@/constants";
-import { uuid } from "@/utils/helpers";
+import { Key } from "../../constants";
+import { uuid } from "../../utils/helpers";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
 import "./Tab";

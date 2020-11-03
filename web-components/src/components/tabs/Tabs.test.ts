@@ -1,5 +1,5 @@
-import { Key } from "@/constants";
-import { ResizeObserver } from "@/mixins/ResizeMixin";
+import { Key } from "../../constants";
+import { ResizeObserver } from "../../mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
 import "./Tab";

@@ -6,7 +6,7 @@
  *
  */
 
-import { Key } from "@/constants";
+import { Key } from "../../constants";
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";

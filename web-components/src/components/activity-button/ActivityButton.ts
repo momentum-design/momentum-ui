@@ -6,7 +6,7 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import reset from "../../wc_scss/reset.scss";
 import { CSSResultArray, customElement, html, LitElement, property } from "lit-element";
 import "../button/Button";
 import "../icon/Icon";

@@ -6,12 +6,12 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
-import { Key } from "@/constants";
-import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
-import { uuid } from "@/utils/helpers";
-import reset from "@/wc_scss/reset.scss";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
+import { Key } from "../../constants";
+import { ResizeMixin, RovingTabIndexMixin } from "../../mixins";
+import { uuid } from "../../utils/helpers";
+import reset from "../../wc_scss/reset.scss";
 import {
   customElement,
   html,

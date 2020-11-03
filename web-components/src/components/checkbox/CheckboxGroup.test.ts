@@ -1,7 +1,7 @@
-import "@/components/checkbox/Checkbox";
-import "@/components/checkbox/CheckboxGroup";
-import { CheckboxGroup } from "@/components/checkbox/CheckboxGroup";
-import { Key } from "@/constants";
+import "./Checkbox";
+import "./CheckboxGroup";
+import { CheckboxGroup } from "./CheckboxGroup";
+import { Key } from "../../constants";
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 

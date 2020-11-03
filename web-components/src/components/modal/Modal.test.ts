@@ -1,6 +1,6 @@
-import "@/components/modal/Modal";
-import { Modal } from "@/components/modal/Modal";
-import { Key } from "@/constants";
+import "./Modal";
+import { Modal } from "./Modal";
+import { Key } from "../../constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 
 Object.defineProperties(Element.prototype, {

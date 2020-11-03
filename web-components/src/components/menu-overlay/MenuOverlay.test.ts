@@ -1,7 +1,15 @@
 import "@/components/button/Button";
 import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import {
+  defineCE,
+  elementUpdated,
+  fixture,
+  fixtureCleanup,
+  fixtureSync,
+  nextFrame,
+  oneEvent
+} from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
 import { MenuOverlay, MenuOverlayElement, OverlaySizes } from "./MenuOverlay";
 
@@ -319,7 +327,7 @@ describe("MenuOverlay", () => {
     expect(document.activeElement).toEqual(button);
   });
 
-  test("should focus on trigger when clicked outside to close modal", async () => {
+  test("shouldn't focus on trigger when clicked outside to close modal", async () => {
     jest.useFakeTimers();
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
 
@@ -337,7 +345,7 @@ describe("MenuOverlay", () => {
 
     await nextFrame();
     expect(element.isOpen).toBeFalsy();
-    expect(document.activeElement).toEqual(button);
+    expect(document.activeElement).not.toEqual(button);
   });
 
   test("shouldn't focus on trigger when press any button except escape to close modal", async () => {

@@ -113,7 +113,9 @@ export class Checkbox extends FocusMixin(LitElement) {
     super.firstUpdated(changedProperties);
 
     this.setAttribute("role", "checkbox");
-    this.setAttribute("aria-label", this.label);
+    if (this.label) {
+      this.setAttribute("aria-label", this.label);
+    }
   }
 
   connectedCallback() {

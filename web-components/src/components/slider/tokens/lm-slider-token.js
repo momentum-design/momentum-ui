@@ -5,7 +5,7 @@ const colors = require("@momentum-ui/tokens/dist/colors.json");
 const slider = {
   prefix: "lm",
   component: "slider",
-  "bg-color": {
+  background: {
     selection: {
       light: colors.blue[50].name,
       red: {
@@ -47,6 +47,9 @@ const slider = {
         light: colors.gray[40].name,
         dark: colors.gray[40].name
       },
+    },
+    label: {
+      light: colors.gray[70].name
     }
   }
 };

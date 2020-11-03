@@ -83,8 +83,6 @@ describe("Tabs", () => {
     );
     const el = fixtureSync<Tabs>(`<${tag}></${tag}>`);
     const firstUpdatedEvent = await oneEvent(el, "first-updated");
-    expect(el.hasAttribute("role")).toBeTruthy();
-    expect(el.getAttribute("role")).toBe("tablist");
     expect(firstUpdatedEvent).toBeDefined();
 
     el.parentElement!.removeChild(el);

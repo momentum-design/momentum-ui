@@ -95,5 +95,6 @@ describe("Focus Mixin", () => {
     input!.focus();
 
     expect(element["getDeepActiveElement"]!()).toEqual(input);
+    expect(element["isElementFocused"]!(input!)).toBeFalsy();
   });
 });

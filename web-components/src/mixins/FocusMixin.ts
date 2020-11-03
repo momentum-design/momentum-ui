@@ -40,6 +40,7 @@ export abstract class FocusClass extends LitElement {
   protected handleFocusIn?(event: Event): void;
   protected handleFocusOut?(event: Event): void;
   protected getDeepActiveElement?(): Element;
+  protected isElementFocused?(element: HTMLElement): boolean;
   protected manageAutoFocus?(element?: Element): void;
   protected getActiveElement?(): Element | null;
 }
@@ -109,6 +110,10 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
         host = host.shadowRoot.activeElement;
       }
       return host;
+    }
+
+    protected isElementFocused(element: HTMLElement) {
+      return this.getDeepActiveElement() !== element;
     }
   }
 

@@ -12,14 +12,18 @@ import styles from "./scss/module.scss";
 export class Slider extends FocusMixin(LitElement) {
   private _disabled = false;
   private _now = 0;
-  @property({ type: Number }) min = 0;
-  @property({ type: Number }) max = 100;
-  @property({ type: Number })
+  @property({ type: Number, reflect: true }) min = 0;
+  @property({ type: Number, reflect: true }) max = 100;
+  @property({ type: Number, reflect: true })
   get now() {
     return this._now;
   }
   set now(value: number) {
     const oldNow = this._now;
+    if (value < this.min || value > this.max) {
+      console.warn("Please select correct value");
+      return;
+    }
     this._now = Math.round(value);
     this.requestUpdate("now", oldNow);
   }
@@ -92,9 +96,8 @@ export class Slider extends FocusMixin(LitElement) {
     const tickCount = Math.round((max - min) / step);
     const ticks = new Array(tickCount + 1)
       .fill(0, 0, tickCount + 1)
-      .map((_, index) => index * step)
+      .map((_, index) => min + index * step)
       .filter(tick => tick >= min && tick <= max);
-
     return html`
       <div class="md-slider__hashlabel">
         ${repeat(

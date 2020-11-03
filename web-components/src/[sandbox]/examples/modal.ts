@@ -49,6 +49,7 @@ export class ModalTemplateSandbox extends LitElement {
         hideFooter
         hideHeader
         backdropClickExit
+        showCloseButton
         noExitOnEsc
         @close-modal="${this.closeModal}"
       >
@@ -102,10 +103,11 @@ export class ModalTemplateSandbox extends LitElement {
 
       <md-modal
         htmlId="modal-2"
-        .show=${this.isDialogOpen}
+        ?show=${this.isDialogOpen}
         headerLabel="Test Dialog Header"
         size="dialog"
         closeBtnName="Ok"
+        showCloseButton
         @close-modal="${this.closeDialog}"
       >
         <input type="text" placeholder="Type Text" />
@@ -115,7 +117,7 @@ export class ModalTemplateSandbox extends LitElement {
         </p>
       </md-modal>
 
-      <md-modal .show=${this.isComplexModalOpen} closeBtnName="Submit This" @close-modal="${this.closeComplexModal}">
+      <md-modal ?show=${this.isComplexModalOpen} closeBtnName="Submit This" @close-modal="${this.closeComplexModal}">
         <md-tabs>
           <md-tab slot="tab">
             <span>Contact History</span>

@@ -9,6 +9,7 @@
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 @customElement("md-radio")
@@ -52,7 +53,10 @@ export class Radio extends FocusMixin(LitElement) {
     super.firstUpdated(changedProperties);
 
     this.setAttribute("role", "radio");
-    this.setAttribute("aria-label", this.label);
+
+    if (this.label) {
+      this.setAttribute("aria-label", this.label);
+    }
   }
 
   static get styles() {
@@ -65,7 +69,7 @@ export class Radio extends FocusMixin(LitElement) {
         <input
           class="radio-input"
           type="radio"
-          aria-label="${this.ariaLabel}"
+          aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
           .value=${this.value}
           ?checked=${this.checked}
           ?autofocus=${this.autofocus}

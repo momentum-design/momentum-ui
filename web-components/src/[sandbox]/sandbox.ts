@@ -10,6 +10,7 @@ import {
   alertTemplate,
   avatarTemplate,
   badgeTemplate,
+  breadcrumbsTemplate,
   buttonTemplate,
   checkboxTemplate,
   chipTemplate,
@@ -300,6 +301,12 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="md-floating-dialog">
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-breadcrumbs">
+            <h2>md-breadcrumbs</h2>
+            <sass-stats component="breadcrumbs">
+              ${breadcrumbsTemplate}
             </sass-stats>
           </div>
         </elix-list-explorer>

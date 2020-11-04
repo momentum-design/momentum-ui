@@ -3,6 +3,7 @@ export { alertTemplate } from "./alert";
 export { alertBannerTemplate } from "./alert-banner";
 export { avatarTemplate } from "./avatar";
 export { badgeTemplate } from "./badge";
+export { breadcrumbsTemplate } from "./breadcrumbs";
 export { buttonTemplate } from "./button";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";

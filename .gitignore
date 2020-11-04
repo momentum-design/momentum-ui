@@ -106,8 +106,8 @@ packages
 **/yarn-*
 **/webpack-stats.json
 **/bundles
-**/*.d.ts
 **/*.js.map
+react/*.d.ts
 react/types
 /data/
 angular/yarn.lock

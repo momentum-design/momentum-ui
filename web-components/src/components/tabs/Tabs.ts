@@ -503,7 +503,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       <div
         part="tabs-list"
         class="md-tab__list ${classMap({
-          "md-tab__justified": false //this.justified && !this.isMoreTabMenuVisible
+          "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
         })}"
         role="tablist"
       >

@@ -1,5 +1,5 @@
-import "@/components/list/List";
-import "@/components/list/ListItem";
+import "./List";
+import "./ListItem";
 import { withA11y } from "@storybook/addon-a11y";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";

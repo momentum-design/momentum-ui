@@ -1,4 +1,4 @@
-import "@/components/toggle-switch/ToggleSwitch";
+import "./ToggleSwitch";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";

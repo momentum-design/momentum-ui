@@ -1,7 +1,7 @@
-import "@/components/list/List";
-import { List } from "@/components/list/List";
-import "@/components/list/ListItem";
-import { ListItem } from "@/components/list/ListItem";
+import "./List";
+import { List } from "./List";
+import "./ListItem";
+import { ListItem } from "./ListItem";
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";

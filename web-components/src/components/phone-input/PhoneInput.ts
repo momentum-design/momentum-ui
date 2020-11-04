@@ -1,6 +1,6 @@
-import "@/components/combobox/ComboBox";
-import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
+import "../combobox/ComboBox";
+import "../input/Input";
+import { Input } from "../input/Input";
 import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";

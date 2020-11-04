@@ -1,4 +1,4 @@
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Chip";

@@ -1,5 +1,5 @@
-import "@/components/button/Button";
-import { Button } from "@/components/button/Button";
+import "./Button";
+import { Button } from "./Button";
 import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires

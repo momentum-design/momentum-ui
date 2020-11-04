@@ -1,6 +1,6 @@
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/theme/Theme";
+import "./Button";
+import "../icon/Icon";
+import "../theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";

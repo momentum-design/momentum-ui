@@ -1,0 +1,42 @@
+.md-phone-input__container {
+  --combo-box-contaier-width: 100px;
+  display: flex;
+  position: relative;
+
+  md-combobox {
+    width: var(--combo-box-contaier-width);
+  }
+
+  md-combobox::part(combobox) {
+    position: initial;
+  }
+
+  md-combobox::part(group) {
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+    border-top-right-radius: 0;
+  }
+
+  md-combobox::part(combobox-options) {
+    top: 2.5rem;
+  }
+
+  md-combobox::part(label) {
+    width: 100%;
+  }
+
+  md-input::part(input) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  md-input::part(message) {
+    margin-left: calc(var(--combo-box-contaier-width) * -1);
+    width: calc(100% + var(--combo-box-contaier-width));
+  }
+
+  .md-phone-input__option {
+    display: flex;
+    justify-content: space-between;
+  }
+}

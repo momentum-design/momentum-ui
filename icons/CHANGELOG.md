@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.61.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.61.0...@momentum-ui/icons@7.61.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* **icons:** update to trigger publish ([9004df5](https://github.com/momentum-design/momentum-ui/commit/9004df580a8c65b5dedea1f245ae400a543f8599))
+
+
+
+
+
+# [7.61.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.60.2...@momentum-ui/icons@7.61.0) (2020-11-02)
+
+
+### Features
+
+* **icons:** add new icons ([9a8e5a9](https://github.com/momentum-design/momentum-ui/commit/9a8e5a92af383651a619ab5e2a3d19cf224e7cc8))
+
+
+
+
+
 ## [7.60.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.60.1...@momentum-ui/icons@7.60.2) (2020-10-24)
 
 **Note:** Version bump only for package @momentum-ui/icons

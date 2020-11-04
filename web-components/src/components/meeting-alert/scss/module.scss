@@ -1,0 +1,20 @@
+@import "@/wc_scss/tools/functions/core";
+@import "@/wc_scss/tools/mixins/core";
+
+@import "~@momentum-ui/icons/scss/mixins";
+
+// Settings
+@import "@/wc_scss/colors/settings-base.scss";
+@import "@/wc_scss/colors/settings-transparencies.scss";
+@import "@/wc_scss/settings/core.scss";
+@import "@/wc_scss/typography/settings.scss";
+@import "@/wc_scss/icon/settings";
+
+// Tools
+@import "@/wc_scss/tools/mixins/border-radius";
+@import "@/wc_scss/tools/mixins/flex";
+
+// Alert Specific
+@import "settings";
+@import "mixins";
+@import "alert";

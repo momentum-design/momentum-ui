@@ -1,0 +1,52 @@
+//--------------------------------------------------------
+// TODO(pajeter): custom colors need to be revisited
+// Do NOT add any more transparent colors without review
+//--------------------------------------------------------
+
+$black-80: rgba($md-black-100, 0.8) !default;
+$black-76: rgba($md-black-100, 0.76) !default;
+$black-68: rgba($md-black-100, 0.68) !default;
+$black-60: rgba($md-black-100, 0.6) !default;
+$black-48: rgba($md-black-100, 0.48) !default;
+$black-40: rgba($md-black-100, 0.4) !default;
+$black-32: rgba($md-black-100, 0.32) !default;
+$black-24: rgba($md-black-100, 0.24) !default;
+$black-20: rgba($md-black-100, 0.2) !default;
+$black-16: rgba($md-black-100, 0.16) !default;
+$black-12: rgba($md-black-100, 0.12) !default;
+$black-08: rgba($md-black-100, 0.08) !default;
+$black-06: rgba($md-black-100, 0.06) !default;
+$black-04: rgba($md-black-100, 0.04) !default;
+$black-8: $black-08;
+$black-6: $black-06;
+$black-4: $black-04;
+
+$white-92: rgba($md-white-100, 0.92) !default;
+$white-84: rgba($md-white-100, 0.84) !default;
+$white-80: rgba($md-white-100, 0.8) !default;
+$white-70: rgba($md-white-100, 0.7) !default;
+$white-64: rgba($md-white-100, 0.64) !default;
+$white-60: rgba($md-white-100, 0.6) !default;
+$white-32: rgba($md-white-100, 0.32) !default;
+$white-48: rgba($md-white-100, 0.48) !default;
+$white-40: rgba($md-white-100, 0.4) !default;
+$white-24: rgba($md-white-100, 0.24) !default;
+$white-20: rgba($md-white-100, 0.2) !default;
+$white-16: rgba($md-white-100, 0.16) !default;
+$white-12: rgba($md-white-100, 0.12) !default;
+$white-08: rgba($md-white-100, 0.08) !default;
+$white-8: $white-08;
+
+$gray-1-40: rgba($md-gray-50, 0.4) !default;
+$gray-5-88: rgba($md-gray-30, 0.88) !default;
+$gray-6-40: rgba($md-gray-20, 0.4) !default;
+$gray-55: $md-gray-20;
+
+$yellow-light-12: rgba($md-yellow-20, 0.12) !default;
+$yellow-light-24: rgba($md-yellow-20, 0.24) !default;
+
+$green-light-12: rgba($md-green-20, 0.12) !default;
+$green-light-24: rgba($md-green-20, 0.24) !default;
+
+$red-light-12: rgba($md-red-20, 0.12) !default;
+$red-light-24: rgba($md-red-20, 0.24) !default;

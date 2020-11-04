@@ -1,0 +1,1066 @@
+import "@/components/combobox/ComboBox";
+import { ComboBox } from "@/components/combobox/ComboBox";
+import "@/components/icon/Icon";
+import { Key } from "@/constants";
+import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { repeat } from "lit-html/directives/repeat";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
+const lmComboBoxTokens = require("@/components/combobox/tokens/lm-combobox-tokens.js");
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
+const mdComboBoxTokens = require("@/components/combobox/tokens/md-combobox-tokens.js");
+
+describe("Combobox Component", () => {
+  afterEach(fixtureCleanup);
+
+  describe("Token", () => {
+    test("Lumos", async () => {
+      expect(lmComboBoxTokens).not.toBeNull();
+    });
+    test("Momentum", async () => {
+      expect(mdComboBoxTokens).not.toBeNull();
+    });
+  });
+
+  describe("Interaction", () => {
+    let el: ComboBox;
+
+    beforeEach(async () => {
+      el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+    });
+    test("should set class if combobox with multi attribute", async () => {
+      expect(el.group!.classList.contains("md-combobox-multiselect")).toBeTruthy();
+    });
+    test("should open/close dropdown if arrow icon clicked", async () => {
+      const button = el.shadowRoot!.querySelector("button[class='md-combobox-button arrow-down']");
+      const event = new MouseEvent("click");
+      button!.dispatchEvent(event);
+      await el.updateComplete;
+      expect(el.expanded).toBeTruthy();
+      button!.dispatchEvent(event);
+      await el.updateComplete;
+      expect(el.expanded).toBeFalsy();
+    });
+
+    test("should set correct handle focusin", async () => {
+      el.dispatchEvent(new FocusEvent("focusin"));
+      el.focus();
+      expect(document.activeElement).toEqual(el);
+    });
+
+    test("should set correct handle focusout", async () => {
+      el.dispatchEvent(new FocusEvent("focusout"));
+      el.blur();
+
+      expect(document.activeElement).not.toEqual(el);
+    });
+
+    test("should dispatch events", async () => {
+      const eventIn = new Event("focusin");
+      const eventOut = new Event("focusOut");
+
+      setTimeout(() => el["handleFocusIn"](eventIn));
+      const focusIn = await oneEvent(el, "combobox-focus-in");
+      expect(focusIn).toBeDefined();
+
+      setTimeout(() => el["handleFocusOut"](eventOut));
+      const focusOut = await oneEvent(el, "combobox-focus-out");
+      expect(focusOut).toBeDefined();
+
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keydown", {
+          code
+        });
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
+      await nextFrame();
+      el.input!.dispatchEvent(createEvent(Key.Enter));
+      const { detail: detailOne } = await oneEvent(el, "change-selected");
+      expect(detailOne).toBeDefined();
+      expect(detailOne).toEqual(
+        expect.objectContaining({
+          value: "Afghanistan",
+          selected: ["Afghanistan"]
+        })
+      );
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
+      await nextFrame();
+      el.input!.dispatchEvent(createEvent(Key.Enter));
+      const { detail: detailTwo } = await oneEvent(el, "change-selected");
+      expect(detailTwo).toBeDefined();
+      expect(detailTwo).toEqual(
+        expect.objectContaining({
+          value: "Aland Islands",
+          selected: ["Afghanistan", "Aland Islands"]
+        })
+      );
+    });
+
+    test("should dispatch input event", async () => {
+      jest.useRealTimers();
+
+      el.input!.value = "a";
+      el["inputValue"] = "a";
+      el.input!.dispatchEvent(new Event("input"));
+
+      const { detail } = await oneEvent(el, "combobox-input");
+
+      expect(detail).toBeDefined();
+      expect(detail).toEqual(expect.objectContaining({ value: "a" }));
+      jest.clearAllTimers();
+    });
+
+    test("should render selected options with multi attribute", async () => {
+      expect(el.selectedOptions.length).toEqual(0);
+      expect(el.selected!.length).toEqual(0);
+
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+
+      await elementUpdated(el);
+
+      expect(el.selectedOptions.length).toEqual(2);
+      expect(el.selected!.length).toEqual(2);
+    });
+
+    test("shouldn't render selected options without multi attribute", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      expect(el.selectedOptions.length).toEqual(0);
+      expect(el.selected!.length).toEqual(0);
+
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+
+      await elementUpdated(el);
+
+      expect(el.selectedOptions.length).toEqual(2);
+      expect(el.selected!.length).toEqual(0);
+    });
+
+    test("should render slotted content", async () => {
+      const el = await fixture<ComboBox>(html`
+        <md-combobox with-custom-content is-multi>
+          <div slot="one" aria-label="Facebook" display-value="Facebook">
+            <span>Facebook</span>
+            <md-icon name="icon-facebook_16"></md-icon>
+          </div>
+          <div slot="two" aria-label="Twitter" display-value="Twitter">
+            <span class="company-value">Twitter</span>
+            <md-icon name="icon-twitter_16"></md-icon>
+          </div>
+          <div slot="three" aria-label="Wikipedia" display-value="Wikipedia">
+            <span class="company-value">Wikipedia</span>
+            <md-icon name="icon-wikipedia_16"></md-icon>
+          </div>
+          <div slot="four" aria-label="Google" display-value="Google">
+            <span class="company-value">Google</span>
+            <md-icon name="icon-google_16"></md-icon>
+          </div>
+        </md-combobox>
+      `);
+      expect(el.isCustomContent).toBeTruthy();
+      expect(el["customContent"].length).toEqual(4);
+    });
+
+    test("should render complex slotted content", async () => {
+      const el = await fixture<ComboBox>(html`
+        <md-combobox with-custom-content is-multi>
+          ${repeat(
+            comboBoxComplexObjectOption,
+            country => country.countryNameEn,
+            (country: { countryNameEn: string; countryCallingCode: string }, index) => html`
+              <div
+                slot=${index}
+                display-value=${country.countryNameEn}
+                aria-label="+${country.countryCallingCode}${country.countryNameEn}"
+              >
+                <span>${country.countryNameEn}</span>
+                <span>+${country.countryCallingCode}</span>
+              </div>
+            `
+          )}
+        </md-combobox>
+      `);
+      expect(el.isCustomContent).toBeTruthy();
+      expect(el["customContent"].length).toEqual(10);
+
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keydown", {
+          code
+        });
+
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
+      await nextFrame();
+      el.input!.dispatchEvent(createEvent(Key.Enter));
+
+      expect(el.input!.value).toEqual("Andorra");
+
+      const event = new Event("input");
+      el.input!.value = "4";
+      el.input!.dispatchEvent(event);
+
+      await elementUpdated(el);
+      expect(el.filteredOptions.length).toEqual(5);
+    });
+
+    test("should render async slotted content", async () => {
+      const el = await fixture<ComboBox>(html`
+        <md-combobox with-custom-content is-multi .customOptions=${[]}></md-combobox>
+      `);
+
+      el.expanded = true;
+      await elementUpdated(el);
+
+      jest.setTimeout(1000);
+
+      const slottedContent = comboBoxComplexObjectOption
+        .map((country: { countryNameEn: string; countryCallingCode: string }, index) => {
+          return ` <div
+        slot=${index}
+        display-value=${country.countryNameEn}
+        aria-label="+${country.countryCallingCode}${country.countryNameEn}"
+      >
+        <span>${country.countryNameEn}</span>
+        <span>+${country.countryCallingCode}</span>
+      </div>`;
+        })
+        .join("");
+
+      const resizeSpy = jest.spyOn(el, "resizeListbox" as never);
+
+      el.innerHTML = `${slottedContent}`;
+      el.customOptions = comboBoxComplexObjectOption as never[];
+
+      await elementUpdated(el);
+
+      expect(el.options.length).toEqual(10);
+      expect(resizeSpy).toHaveBeenCalled();
+
+      resizeSpy.mockRestore();
+    });
+  });
+
+  describe("Combobox", () => {
+    test("should set correct aria attributes", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
+        `
+      );
+
+      el.expanded = true;
+      await elementUpdated(el);
+      expect(el.input!.getAttribute("aria-expanded")).toEqual("true");
+      expect(el.button!.getAttribute("aria-expanded")).toEqual("true");
+      expect(el.button!.getAttribute("aria-label")).toEqual("Country");
+    });
+
+    test("should open/close dropdown if clicked", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      const event = new MouseEvent("click");
+      el.input!.dispatchEvent(event);
+      el.input!.focus();
+
+      expect(el.expanded).toBeTruthy();
+      expect(document.activeElement).toEqual(el);
+
+      document.dispatchEvent(event);
+      el.input!.blur();
+
+      expect(el.expanded).toBeFalsy();
+      expect(document.activeElement).not.toEqual(el);
+    });
+
+    test("should set placeholder if property exist", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} placeholder="Placeholder Input"></md-combobox>
+        `
+      );
+
+      expect(el.placeholder).toEqual("Placeholder Input");
+    });
+
+    test("should apply disabled attribute", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
+        `
+      );
+      expect(el.disabled).toBeTruthy();
+    });
+
+    test("should set input value in handler", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
+        `
+      );
+      const event = new Event("input");
+      el.input!.value = "combobox";
+      el.input!.dispatchEvent(event);
+
+      expect(el["inputValue"]).toEqual("combobox");
+    });
+
+    test("should handle keyUp event", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keyup", {
+          code
+        });
+
+      const backspace = createEvent(Key.Backspace);
+      el.input!.dispatchEvent(backspace);
+
+      const mock = jest.fn();
+
+      el.listBox!.style.maxHeight = mock();
+
+      expect(el.expanded).toBeTruthy();
+      expect(mock).toBeCalled();
+
+      el.expanded = false;
+
+      await elementUpdated(el);
+
+      mock.mockReset();
+      const escape = createEvent(Key.Escape);
+      el.input!.dispatchEvent(escape);
+
+      expect(el.expanded).toBeFalsy();
+      expect(mock).not.toBeCalled();
+    });
+
+    test("should handle keyDown event", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keydown", {
+          code
+        });
+
+      const listLen = el.lists!.length;
+
+      const backspace = createEvent(Key.Backspace);
+      el.input!.dispatchEvent(backspace);
+
+      await elementUpdated(el);
+
+      expect(el.focusedIndex).toEqual(-1);
+
+      el.expanded = true;
+      el.focusedIndex = 0;
+      await elementUpdated(el);
+
+      const enter = createEvent(Key.Enter);
+      el.input!.dispatchEvent(enter);
+
+      await nextFrame();
+
+      expect(el.expanded).toBeFalsy();
+      expect(el.selectedOptions.length).toEqual(1);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
+      expect(el.input!.value).toEqual("Afghanistan");
+
+      el.expanded = false;
+      el.focusedIndex = 0;
+      await elementUpdated(el);
+
+      const arrowDown = createEvent(Key.ArrowDown);
+      el.input!.dispatchEvent(arrowDown);
+
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(1);
+      expect(el.lists![1].hasAttribute("focused")).toBeTruthy();
+
+      el.expanded = false;
+      el.focusedIndex = listLen - 1;
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(arrowDown);
+
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(0);
+      expect(el.lists![0].hasAttribute("focused")).toBeTruthy();
+
+      el.expanded = false;
+      el.focusedIndex = -1;
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(arrowDown);
+
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(0);
+      expect(el.lists![0].hasAttribute("focused")).toBeTruthy();
+
+      el.expanded = false;
+      el.focusedIndex = 0;
+      await elementUpdated(el);
+
+      const arrowUp = createEvent(Key.ArrowUp);
+      el.input!.dispatchEvent(arrowUp);
+
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(listLen - 1);
+      expect(el.lists![listLen - 1].hasAttribute("focused")).toBeTruthy();
+
+      el.expanded = false;
+      el.focusedIndex = listLen - 1;
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(arrowUp);
+
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(listLen - 2);
+      expect(el.lists![listLen - 2].hasAttribute("focused")).toBeTruthy();
+
+      el.expanded = false;
+      el.focusedIndex = 0;
+      el.input!.value = "combobox";
+      el.selectedOptions.push("Afghanistan");
+      const escape = createEvent(Key.Escape);
+
+      el.input!.dispatchEvent(escape);
+
+      expect(el.input!.value).toEqual("");
+      expect(el.focusedIndex).toEqual(-1);
+      expect(el.selectedOptions.length).toEqual(0);
+
+      el.expanded = true;
+      el.focusedIndex = 0;
+      el.input!.value = "combobox";
+      el.selectedOptions.push("Afghanistan");
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(escape);
+      expect(el.expanded).toBeFalsy();
+      expect(el.input!.value).toEqual("combobox");
+      expect(el.focusedIndex).toEqual(0);
+      expect(el.selectedOptions.length).toEqual(1);
+
+      const home = createEvent(Key.Home);
+
+      const selectionMock = jest.fn();
+      el.input!.setSelectionRange = selectionMock;
+      el.input!.dispatchEvent(home);
+
+      expect(selectionMock).toHaveBeenCalled();
+
+      const end = createEvent(Key.End);
+      el.input!.dispatchEvent(end);
+
+      expect(selectionMock).toHaveBeenCalledTimes(2);
+
+      el.expanded = true;
+      el.selectedOptions = [];
+      el.focusedIndex = 0;
+      await elementUpdated(el);
+
+      const space = createEvent(Key.Space);
+      el.input!.dispatchEvent(space);
+
+      await elementUpdated(el);
+
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
+
+      const key = createEvent("KeyZ");
+      el.input!.dispatchEvent(key);
+      expect(el.focusedIndex).toEqual(0);
+    });
+    test("should remove all selected option if clear icon clicked", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+      const event = new MouseEvent("click");
+
+      setTimeout(() => el.handleRemoveAll(event));
+      const customEvent = await oneEvent(el, "remove-all-selected");
+      expect(customEvent).toBeDefined();
+      expect(el.selectedOptions.length).toEqual(0);
+    });
+
+    test("should remove option if option icon clicked", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+      await elementUpdated(el);
+
+      const clearOptionIcon = el.shadowRoot!.querySelector("md-icon[name='cancel_8']");
+
+      clearOptionIcon!.dispatchEvent(new MouseEvent("click"));
+
+      expect(el.selectedOptions.length).toEqual(1);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Aland Islands"]));
+    });
+
+    test("should render correct multi icon name", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+
+      expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
+        "icon-arrow-down_16"
+      );
+
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+      await elementUpdated(el);
+      expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
+        "clear-active_12"
+      );
+    });
+    test("should render correct icon name", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+
+      expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
+        "icon-arrow-down_16"
+      );
+
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+      await elementUpdated(el);
+      expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
+        "icon-arrow-down_16"
+      );
+    });
+
+    test("should set correct icon for different combobox state", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      const event = new InputEvent("input", {
+        data: "a"
+      });
+      el.input!.value = "a";
+      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).toBeNull();
+      el.input!.dispatchEvent(event);
+
+      await elementUpdated(el);
+
+      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
+
+      const backspace = new KeyboardEvent("keydown", {
+        code: Key.Backspace
+      });
+      el.input!.dispatchEvent(backspace);
+      await elementUpdated(el);
+      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
+    });
+    test("should set correct icon for different combobox state in multi mode", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+      const arrowDown = new KeyboardEvent("keydown", {
+        code: Key.ArrowDown
+      });
+      el.input!.value = "Afghanistan";
+
+      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).toBeNull();
+      el.input!.dispatchEvent(arrowDown);
+
+      await elementUpdated(el);
+
+      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
+    });
+  });
+
+  describe("Combobox Multi Selected", () => {
+    let el: ComboBox;
+    afterEach(fixtureCleanup);
+
+    beforeEach(async () => {
+      el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+    });
+    test("should add selected options", async () => {
+      const event = new MouseEvent("click");
+      el.lists![0].dispatchEvent(event);
+      el.lists![1].dispatchEvent(event);
+
+      await elementUpdated(el);
+
+      expect(el.selected!.length).toEqual(2);
+    });
+    test("should clear selected option by click", async () => {
+      const event = new MouseEvent("click");
+      el.lists![0].dispatchEvent(event);
+      el.lists![1].dispatchEvent(event);
+
+      el.expanded = true;
+      await elementUpdated(el);
+
+      expect(el.selected!.length).toEqual(2);
+      expect(el.selectedOptions.length).toEqual(2);
+
+      const firstListIcon = el.selected![0].querySelector("md-icon[name='cancel_8']");
+      const secondListIcon = el.selected![1].querySelector("md-icon[name='cancel_8']");
+
+      firstListIcon!.dispatchEvent(event);
+      secondListIcon!.dispatchEvent(event);
+
+      await elementUpdated(el);
+
+      expect(el.selected!.length).toEqual(0);
+      expect(el.selectedOptions.length).toEqual(0);
+    });
+    test("should clear selected option by unchecked", async () => {
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keydown", {
+          code
+        });
+
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
+      await nextFrame();
+      el.input!.dispatchEvent(createEvent(Key.Space));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
+      await nextFrame();
+      el.input!.dispatchEvent(createEvent(Key.Space));
+      await elementUpdated(el);
+
+      expect(el.selected!.length).toEqual(2);
+      expect(el.selectedOptions.length).toEqual(2);
+
+      el.input!.dispatchEvent(createEvent(Key.Space));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowUp));
+      await nextFrame();
+      el.input!.dispatchEvent(createEvent(Key.Space));
+      await elementUpdated(el);
+
+      expect(el.selected!.length).toEqual(0);
+      expect(el.selectedOptions.length).toEqual(0);
+    });
+    test("should add/remove selected attribute option when arrow and shift clicked", async () => {
+      el.selectedOptions = [
+        comboBoxOptions[0],
+        comboBoxOptions[1],
+        comboBoxOptions[2],
+        comboBoxOptions[3],
+        comboBoxOptions[4],
+        comboBoxOptions[5]
+      ];
+
+      await elementUpdated(el);
+      const createEvent = (code: string, shiftKey: boolean) =>
+        new KeyboardEvent("keyup", {
+          code,
+          shiftKey
+        });
+
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft, true));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft, true));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft, true));
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(createEvent(Key.Backspace, true));
+      await elementUpdated(el);
+
+      expect(el.selected!.length).toEqual(3);
+      expect(el.selectedOptions.length).toEqual(3);
+    });
+    test("should add/remove selected attribute option when arrow clicked", async () => {
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
+
+      await elementUpdated(el);
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keyup", {
+          code
+        });
+
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
+      await elementUpdated(el);
+      expect(el.selected![1].hasAttribute("selected")).toBeTruthy();
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
+      await elementUpdated(el);
+      expect(el.selected![1].hasAttribute("selected")).toBeFalsy();
+      expect(el.selected![0].hasAttribute("selected")).toBeTruthy();
+
+      el.input!.dispatchEvent(createEvent(Key.Backspace));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.Backspace));
+      await elementUpdated(el);
+
+      expect(el.selectedOptions.length).toEqual(0);
+      expect(el.selected!.length).toEqual(0);
+    });
+
+    test("should unselect all if default button was pressed", async () => {
+      el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1], comboBoxOptions[2], comboBoxOptions[4]];
+      await elementUpdated(el);
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keyup", {
+          code
+        });
+
+      const selectedAttribute = {
+        get count() {
+          return [...el.selected!].filter(selected => selected.hasAttribute("selected"));
+        }
+      };
+
+      expect(el.selectedOptions.length).toEqual(4);
+      expect(el.selected!.length).toEqual(4);
+      expect(selectedAttribute.count.length).toEqual(0);
+
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
+      await elementUpdated(el);
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
+      await elementUpdated(el);
+
+      expect(selectedAttribute.count.length).toEqual(1);
+
+      el.input!.dispatchEvent(createEvent("KeyA"));
+      await elementUpdated(el);
+      expect(selectedAttribute.count.length).toEqual(0);
+    });
+  });
+
+  describe("Listbox", () => {
+    test("should set correct aria label attribute", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
+        `
+      );
+      expect(el.listBox!.getAttribute("aria-label")).toEqual("Country");
+    });
+
+    test("should set correct styles", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      expect(el.expanded).toBeFalsy();
+      expect(el.listBox!.style.display).toEqual("none");
+
+      el.expanded = true;
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.listBox!.style.zIndex).toEqual("1");
+    });
+
+    test("should correct render options depends on input value", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      el["inputValue"] = "f";
+      await elementUpdated(el);
+      expect(el.lists!.length).toEqual(1);
+
+      el["inputValue"] = "fa";
+      await elementUpdated(el);
+      expect(el.filteredOptions.length).toEqual(0);
+      expect(el.shadowRoot!.querySelector(".no-result")).not.toBeNull();
+    });
+
+    test("should set correct id to each option in dom", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
+        `
+      );
+
+      const optionsCheckbox = el.shadowRoot!.querySelectorAll(".select-option");
+
+      const matcherId = [...el.lists!].map(option => option.getAttribute("id"));
+      const matcherChecked = [...el.lists!].every(option => option.hasAttribute("aria-checked"));
+
+      expect(matcherId).toEqual(expect.arrayContaining(comboBoxObjectOptions.map(option => option.id)));
+      expect(optionsCheckbox.length).toEqual(29);
+      expect(matcherChecked).toBeTruthy();
+    });
+  });
+
+  describe("Option", () => {
+    test("should dispatch event when option clicked", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+
+      const event = new MouseEvent("click");
+
+      setTimeout(() => el.handleListClick(event));
+      const customEvent = await oneEvent(el, "selected-changed");
+
+      expect(customEvent).toBeDefined();
+      expect(el.expanded).toBeFalsy();
+    });
+    test("should dispatch event when option clicked (multi)", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+        `
+      );
+
+      const event = new MouseEvent("click");
+
+      setTimeout(() => el.handleListClick(event));
+      const customEvent = await oneEvent(el, "selected-changed");
+
+      await elementUpdated(el);
+
+      expect(customEvent).toBeDefined();
+      expect(el.expanded).toBeTruthy();
+    });
+
+    test("should toggle aria tags", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
+        `
+      );
+
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+      expect(el.expanded).toBeTruthy();
+
+      await nextFrame();
+
+      expect(el.focusedIndex).toEqual(0);
+      //expect(el.lists![0].getAttribute("aria-selected")).toEqual("true");
+
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Space }));
+
+      expect(el.selectedOptions.length).toEqual(1);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining([{ country: "Afghanistan", id: "0" }]));
+      expect(el.input!.value.length).toEqual(0);
+
+      await elementUpdated(el);
+
+      expect(el.lists![0].getAttribute("aria-checked")).toEqual("true");
+
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+      await nextFrame();
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Space }));
+      await elementUpdated(el);
+
+      expect(el.selectedOptions.length).toEqual(2);
+      expect(el.selectedOptions).toEqual(
+        expect.arrayContaining([
+          { country: "Afghanistan", id: "0" },
+          { country: "Aland Islands", id: "1" }
+        ])
+      );
+    });
+    test("should handle selected option without multi attribute", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
+      await nextFrame();
+
+      expect(el.selectedOptions.length).toEqual(1);
+
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
+      await nextFrame();
+
+      expect(el.selectedOptions.length).toEqual(1);
+    });
+
+    test("should change selected option", async () => {
+      const el = await fixture<ComboBox>(
+        html`
+          <md-combobox .options=${comboBoxOptions}></md-combobox>
+        `
+      );
+      el.expanded = true;
+      el.lists![0].dispatchEvent(new MouseEvent("click"));
+
+      await elementUpdated(el);
+
+      expect(el.focusedIndex).toEqual(0);
+      expect(el.selectedOptions.length).toEqual(1);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
+    });
+  });
+
+  test("should set initial value", async () => {
+    const el = await fixture<ComboBox>(
+      html`
+        <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[0]]}></md-combobox>
+      `
+    );
+
+    expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[0]]));
+    expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
+  });
+  test("should set initial value for multi", async () => {
+    const el = await fixture<ComboBox>(
+      html`
+        <md-combobox
+          .options=${comboBoxOptions}
+          .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
+          is-multi
+        ></md-combobox>
+      `
+    );
+
+    expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[1], comboBoxOptions[2]]));
+    expect(el.selected!.length).toEqual(2);
+    expect(el.selectedOptions).toEqual(expect.arrayContaining(["Aland Islands", "Albania"]));
+  });
+
+  test("should set initial value for option object", async () => {
+    const el = await fixture<ComboBox>(
+      html`
+        <md-combobox
+          .options=${comboBoxObjectOptions}
+          .value=${[comboBoxObjectOptions[4], comboBoxObjectOptions[5], { country: "Andorra", id: "17" }]}
+          is-multi
+          option-id="id"
+          option-value="country"
+        ></md-combobox>
+      `
+    );
+
+    expect(el.value).toEqual(expect.arrayContaining([comboBoxObjectOptions[4], comboBoxObjectOptions[5]]));
+    expect(el.selected!.length).toEqual(2);
+    expect(el.optionId).toEqual("id");
+    expect(el.optionValue).toEqual("country");
+    expect(el.selectedOptions).toEqual(
+      expect.arrayContaining([
+        { country: "American Samoa", id: "4" },
+        { country: "Andorra", id: "5" }
+      ])
+    );
+  });
+
+  test("should render no options list if empty options provided", async () => {
+    const el = await fixture<ComboBox>(
+      html`
+        <md-combobox .options=${[]}></md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
+
+    el.inputValue = "One";
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
+    expect(el.shadowRoot!.querySelectorAll(".no-result")!.length).toEqual(1);
+
+    el.inputValue = "On";
+    await elementUpdated(el);
+
+    expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
+    expect(el.shadowRoot!.querySelectorAll(".no-result")!.length).toEqual(1);
+  });
+
+  test("should set custom value for default options", async () => {
+    const el = await fixture<ComboBox>(
+      html`
+        <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[1]]} allow-custom-value></md-combobox>
+      `
+    );
+    const enter = new KeyboardEvent("keydown", { code: Key.Enter });
+
+    el.inputValue = "One";
+
+    await elementUpdated(el);
+    el.input!.dispatchEvent(enter);
+    await nextFrame();
+
+    expect(el.filteredOptions.includes("One")).toBeTruthy();
+    expect(el.filteredOptions.length).toEqual(12);
+
+    el.inputValue = comboBoxOptions[2];
+    await elementUpdated(el);
+    el.input!.dispatchEvent(enter);
+    await nextFrame();
+
+    expect(el.filteredOptions.includes("Albania")).toBeTruthy();
+    expect(el.filteredOptions.length).toEqual(1);
+  });
+
+  test("should not set custom value for object options", async () => {
+    const el = await fixture<ComboBox>(
+      html`
+        <md-combobox
+          .options=${comboBoxObjectOptions}
+          .value=${[comboBoxObjectOptions[4]]}
+          option-id="id"
+          option-value="country"
+          is-multi
+          allow-custom-value
+        ></md-combobox>
+      `
+    );
+    const enter = new KeyboardEvent("keydown", { code: Key.Enter });
+
+    el.inputValue = "One";
+
+    await elementUpdated(el);
+    el.input!.dispatchEvent(enter);
+    await nextFrame();
+
+    expect(el.filteredOptions.includes("One")).not.toBeTruthy();
+    expect(el.filteredOptions.length).toEqual(29);
+  });
+});

@@ -1,0 +1,86 @@
+:host {
+  box-sizing: border-box;
+}
+
+:host(:focus) {
+  box-shadow: none !important;
+  outline: none;
+}
+
+:host([selected]) button {
+  border-bottom: var(--tab-active-border);
+  color: var(--tabs-default-active, $lm-tabs-default-active-light);
+}
+
+:host([focus-visible]) {
+  background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
+
+  button {
+    border: var(--tab-focus-border) !important;
+    box-shadow: var(--tabs-default-focus-shadow, $lm-tabs-default-focus-shadow-light) !important;
+  }
+}
+
+:host([focus-visible][selected]) {
+  background: transparent;
+}
+
+:host([viewporthidden]) {
+  display: inline-block;
+  pointer-events: none;
+  position: absolute;
+  right: -100%;
+  visibility: hidden;
+  width: auto !important;
+  z-index: -1;
+}
+
+button {
+  background: $tab-none-bg;
+  border: $tab-border;
+  border-radius: $tab-focus-border-radius;
+  color: var(--tabs-default-text-color, $lm-tabs-default-text-color-light);
+  display: block;
+  height: 100%;
+  padding: $tab-button-padding;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+
+  &:disabled {
+    background: $tab-none-bg;
+    color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light);
+    cursor: not-allowed;
+    filter: invert(100%);
+
+    @media screen and (-ms-high-contrast: active) {
+      filter: brightness(1) contrast(1) saturate(1.5);
+    }
+  }
+
+  ::slotted(span) {
+    @include tab-button-span;
+  }
+
+  span {
+    @include tab-button-span;
+    padding: $tab-slot-padding;
+  }
+
+  &:hover {
+    background-color: var(--tabs-default-hover, $lm-tabs-default-hover-light);
+  }
+
+  &:active {
+    background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
+    outline: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+

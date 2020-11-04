@@ -1,0 +1,164 @@
+:host {
+  width: 100%;  
+}
+
+.md-taskitem {
+  @include task-flex-container;
+  border-radius: $taskitem-border-radius;
+  color: var(--md-secondary-text-color);
+  cursor: $taskitem-main-curcor;
+  margin-bottom: $taskitem-base-unit;
+  min-height: $taskitem-min-height;
+  padding: $taskitem-main-padding;
+  position: relative;
+  width: auto;
+  z-index: 0;
+
+  &.selected {
+    background-color: $taskitem-selected-bg;
+    box-shadow: $taskitem-selected-shadow;
+
+    .md-taskitem__content {
+      &_title,
+      &_queue,
+      &_chat {
+        color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+      }
+    }
+  }
+
+  &:hover {
+    background-color: var(--taskitem-hover-bg-color, $lm-taskitem-hover-bg-color-light);
+
+    .md-taskitem__content {
+      &_title,
+      &_queue,
+      &_chat {
+        color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+      }
+    }
+  }
+
+  &:active {
+    background-color: var(--taskitem-pressed-bg-color, $lm-taskitem-pressed-bg-color-light);
+
+    .md-taskitem__content {
+      &_title,
+      &_queue,
+      &_chat {
+        color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
+      }
+    }
+  }
+
+  &:focus {
+    background: var(--taskitem-focus-bg-color, $lm-taskitem-focus-bg-color-light);
+    box-shadow: none;
+    outline: none;
+
+    &::after {
+      @include taskitem-focus-boxshadow;
+    }
+  }
+
+  &::after {
+    @include task-after-focus;
+    border-radius: $taskitem-border-radius;
+    margin: -$taskitem-main-indent;
+  }
+}
+
+.md-taskitem__mediatype {
+  margin-right: $taskitem-mediatype-margin;
+  position: relative;
+  width: $taskitem-mediatype-width;
+
+  .md-taskitem__status {
+    @include taskitem-status;
+    background: var(--taskitem-status-bg-color, $lm-taskitem-status-bg-color-light);
+    border-radius: $taskitem-border-circle;
+    bottom: -$taskitem-base-unit;
+    color: var(--taskitem-status-text-color, $lm-taskitem-status-text-color-light);
+    height: $taskitem-main-size;
+    right: -$taskitem-base-unit;
+    width: $taskitem-main-size;
+
+    md-icon {
+      height: $taskitem-status-height;
+    }
+
+    md-icon::part(icon) {
+      line-height: $taskitem-status-height;
+      vertical-align: top;
+    }
+
+    &.hold {
+      background: var(--taskitem-status-pause-bg-color, $lm-taskitem-status-pause-bg-color-light);
+    }
+  }
+}
+
+.md-taskitem__content {
+  @include taskitem-content;
+  width: calc(100% - calc(#{$taskitem-mediatype-width} + #{$taskitem-additional-width}));
+
+  &_title {
+    @include text-dots;
+    color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
+    font-family: $taskitem-title-font;
+    font-size: $taskitem-title-font-size;
+    line-height: $taskitem-title-height;
+    margin-bottom: $taskitem-main-margin;
+    width: calc(100%); //don't delete, it need for text overflow
+  }
+
+  &_inner {
+    display: flex;
+    flex: 0 1 auto;
+    width: 100%;
+  }
+
+  &_queue {
+    @include text-dots;
+    font-size: $taskitem-queue-font-size;
+    line-height: $taskitem-base-height;
+    width: 100%;
+  }
+
+  &_chat {
+    color: var(--taskitem-chat-text-color, $lm-taskitem-chat-text-color-light);
+    display: flex;
+    font-size: $taskitem-queue-font-size;
+    line-height: $taskitem-base-height;
+    margin-top: $taskitem-main-margin;
+    position: relative;
+    width: 100%;
+
+    .new-chat_massages {
+      @include text-dots;
+      padding-right: $taskitem-chat-padding;
+      width: calc(100% - $taskitem-main-margin);
+    }
+  }
+}
+
+.md-taskitem__addition {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-left: $taskitem-mediatype-margin;
+  text-align: right;
+  width: $taskitem-additional-width;
+
+  .new-chat-quantity {
+    background: var(--taskitem-chat-quantity-bg-color, $lm-taskitem-chat-quantity-bg-color-light);
+    border-radius: 9px;
+    color: var(--taskitem-chat-quantity-text-color, $lm-taskitem-chat-quantity-text-color-light);
+    display: inline-block;
+    font-size: $taskitem-newchat-font-size;
+    line-height: $taskitem-base-height;
+    min-width: 18px;
+    padding: $taskitem-newchat-padding;
+    text-align: center;
+  }
+}

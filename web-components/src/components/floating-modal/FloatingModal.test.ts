@@ -1,5 +1,5 @@
-import "@/components/floating-modal/FloatingModal";
-import { FloatingModal } from "@/components/floating-modal/FloatingModal";
+import "./FloatingModal";
+import { FloatingModal } from "./FloatingModal";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame } from "@open-wc/testing-helpers";
 
 describe("Modal Component", () => {

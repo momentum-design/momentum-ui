@@ -1,5 +1,5 @@
-import "@/components/radio/Radio";
-import "@/components/radio/RadioGroup";
+import "./Radio";
+import "./RadioGroup";
 import { withA11y } from "@storybook/addon-a11y";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";

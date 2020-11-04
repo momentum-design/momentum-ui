@@ -1,6 +1,6 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
-import { alertTypes } from "../../utils/enums";
+import { alertTypes } from "@/utils/enums";
 import "./Alert";
 
 export default {

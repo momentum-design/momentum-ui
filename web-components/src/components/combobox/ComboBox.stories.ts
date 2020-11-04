@@ -1,5 +1,5 @@
-import "@/components/combobox/ComboBox";
-import "@/components/icon/Icon";
+import "./ComboBox";
+import "../icon/Icon";
 import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";

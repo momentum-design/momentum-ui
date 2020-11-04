@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/input/Input";
-import { Input, Message } from "@/components/input/Input";
+import "../input/Input";
+import { Input, Message } from "../input/Input";
 import { numInputTypes } from "@/utils/enums";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";

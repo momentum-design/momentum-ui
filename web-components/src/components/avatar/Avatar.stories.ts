@@ -1,6 +1,6 @@
-import "@/components/avatar/Avatar";
-import { AvatarType } from "@/components/avatar/Avatar";
-import "@/components/avatar/CompositeAvatar";
+import "./Avatar";
+import { AvatarType } from "./Avatar";
+import "./CompositeAvatar";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";

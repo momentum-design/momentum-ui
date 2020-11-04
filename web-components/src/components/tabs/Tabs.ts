@@ -479,7 +479,6 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
 
-    this.setAttribute("role", "tablist");
     this.setupTabsEvents();
   }
 

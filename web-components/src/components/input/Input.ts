@@ -6,8 +6,8 @@
  *
  */
 
-import { FocusMixin } from "@/mixins/FocusMixin";
 import { Key } from "@/constants";
+import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
 import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";

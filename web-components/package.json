@@ -119,7 +119,8 @@
   "dependencies": {
     "@popperjs/core": "^2.4.4",
     "country-codes-list": "^1.6.8",
+    "dompurify": "^2.2.0",
     "libphonenumber-js": "^1.7.57",
-    "dompurify": "^2.2.0"
+    "moment": "^2.29.1"
   }
 }

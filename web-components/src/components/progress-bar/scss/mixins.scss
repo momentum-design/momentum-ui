@@ -2,6 +2,7 @@
   background-color: $progress-bg;
   height: $progress-bar-height;
   margin-bottom: $progress-bar-margin-bottom;
+  overflow: hidden;
   padding: $progress-bar-pad;
 }
 

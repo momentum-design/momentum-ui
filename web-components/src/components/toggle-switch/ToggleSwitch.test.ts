@@ -1,5 +1,5 @@
-import "@/components/toggle-switch/ToggleSwitch";
-import { ToggleSwitch } from "@/components/toggle-switch/ToggleSwitch";
+import "./ToggleSwitch";
+import { ToggleSwitch } from "./ToggleSwitch";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 

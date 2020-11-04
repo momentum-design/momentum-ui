@@ -6,7 +6,7 @@
     "url": "https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
-    "bootstrap": "yarn build:tokens && lerna bootstrap && lerna link",
+    "bootstrap": "yarn build:tokens && lerna bootstrap && lerna link && cd ./web-components && yarn",
     "bootstrap:clean": "run-s clean bootstrap",
     "build": "yarn build:all",
     "build:all": "run-s build:icons build:core build:react build:charts",
@@ -14,6 +14,7 @@
     "build:charts": "cd ./charts && yarn build:lib",
     "build:icons": "cd ./icons && yarn build:lib",
     "build:react": "cd ./react && yarn build:lib",
+    "build:wc": "cd ./web-components && yarn dist",
     "build:tokens": "cd ./tokens && yarn build:lib",
     "build:utils": "cd ./utils && yarn build:lib",
     "build:data": "rimraf ./data && node ./tools/generateComponentsData.js",
@@ -25,6 +26,7 @@
     "ci:test:core:percy": "cd ./core && yarn test:percy",
     "ci:test:icons": "cd ./icons && yarn test",
     "ci:test:react": "cd ./react && yarn test:CI",
+    "ci:test:wc": "cd ./web-components && yarn test:ci",
     "ci:test:tokens": "cd ./tokens && yarn test",
     "ci:test:react:percy": "cd ./react && yarn test:percy",
     "ci:test:percy": "run-s ci:test:icons ci:test:core:percy ci:test:react",
@@ -42,6 +44,7 @@
     "lint:tokens": "cd ./tokens && yarn lint",
     "publish:www": "node ./tools/publishWebsite.js",
     "release": "./tools/release.sh",
+    "storybook:wc": "cd ./web-components && yarn storybook:dist",
     "start:all": "run-p start:core start:react",
     "start:core": "cd ./core && yarn start",
     "start:react": "cd ./react && yarn start",

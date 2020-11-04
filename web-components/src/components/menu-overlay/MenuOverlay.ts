@@ -14,7 +14,7 @@ import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
-import { FocusTrapMixin } from "../../mixins/FocusTrapMixin";
+import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
@@ -153,15 +153,22 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (changedProperties.has("isOpen")) {
       if (this.isOpen) {
         this.activateFocusTrap!();
+      } else {
+        this.deactivateFocusTrap!();
+      }
+    }
+  }
+
+  protected updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("isOpen")) {
+      if (this.isOpen) {
         this.dispatchMenuOpen();
-        this.focusInsideOverlay();
         if (this.triggerElement) {
           this.triggerElement.setAttribute("aria-expanded", "true");
         }
       } else {
-        this.deactivateFocusTrap!();
         this.dispatchMenuClose();
-        this.focusOnTrigger();
         if (this.triggerElement) {
           this.triggerElement.removeAttribute("aria-expanded");
         }
@@ -169,7 +176,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     }
   }
 
-  dispatchMenuOpen() {
+  private dispatchMenuOpen() {
     this.dispatchEvent(
       new CustomEvent("menu-overlay-open", {
         composed: true,
@@ -178,7 +185,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     );
   }
 
-  dispatchMenuClose() {
+  private dispatchMenuClose() {
     this.dispatchEvent(
       new CustomEvent("menu-overlay-close", {
         composed: true,
@@ -198,6 +205,15 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
   private create() {
     if (this.triggerElement) {
       this.popperInstance = createPopper(this.triggerElement, this.overlayContainer, {
+        onFirstUpdate: async () => {
+          // We need to find all focusable elements, after Popper finish its positioning calculation
+          if (this.isOpen) {
+            this.setFocusableElements!();
+            await this.updateComplete;
+
+            this.focusInsideOverlay();
+          }
+        },
         placement: this.placement,
         modifiers: [
           ...defaultModifiers,
@@ -252,7 +268,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     }
   }
 
-  handleOutsideKeydown = (event: KeyboardEvent) => {
+  handleOutsideKeydown = async (event: KeyboardEvent) => {
     let insideMenuKeyDown = false;
     const path = event.composedPath();
     if (path.length) {
@@ -270,17 +286,25 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
       event.preventDefault();
       if (this.isOpen) {
         this.isOpen = false;
+
+        await this.updateComplete;
+        this.focusOnTrigger();
       }
     }
   };
 
-  handleTriggerKeyDown = (event: KeyboardEvent) => {
+  handleTriggerKeyDown = async (event: KeyboardEvent) => {
     switch (event.code) {
       case Key.Space:
       case Key.Enter:
         {
           event.preventDefault();
           this.toggleOverlay();
+
+          if (!this.isOpen) {
+            await this.updateComplete;
+            this.focusOnTrigger();
+          }
         }
         break;
       default: {
@@ -289,7 +313,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     }
   };
 
-  focusOnTrigger() {
+  private focusOnTrigger() {
     requestAnimationFrame(() => {
       if (this.focusableElements && this.focusableElements.length) {
         this.focusableElements[0].focus();
@@ -297,16 +321,14 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     });
   }
 
-  focusInsideOverlay() {
-    requestAnimationFrame(() => {
-      if (this.focusableElements) {
-        if (this.focusableElements.length > 1) {
-          this.focusableElements[1].focus();
-        } else if (this.focusableElements.length) {
-          this.focusableElements[0].focus();
-        }
+  private focusInsideOverlay() {
+    if (this.focusableElements) {
+      if (this.focusableElements.length > 1) {
+        this.focusTrapIndex = 1;
+      } else if (this.focusableElements.length) {
+        this.focusTrapIndex = 0;
       }
-    });
+    }
   }
 
   handleOutsideClick = (event: MouseEvent) => {

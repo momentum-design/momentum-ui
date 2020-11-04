@@ -1,5 +1,5 @@
-import "@/components/loading/Loading";
-import { Loading } from "@/components/loading/Loading";
+import "./Loading";
+import { Loading } from "./Loading";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 
 describe("Loading", () => {

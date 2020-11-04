@@ -96,6 +96,25 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
+  test_web_components:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      # - run:
+      #     name: Unit Test web components library
+      #     command: yarn ci:test:wc
+      - run:
+          name: Build Storybook
+          command: yarn storybook:wc
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   percy_finalize_all:
     working_directory: ~/repo
     docker:
@@ -198,6 +217,9 @@ workflows:
           requires:
             - lint
       - test_react:
+          requires:
+            - build_tokens
+      - test_web_components:
           requires:
             - build_tokens
       - test_core_percy:

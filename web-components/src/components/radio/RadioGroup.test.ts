@@ -1,7 +1,7 @@
-import "@/components/radio/Radio";
-import { Radio } from "@/components/radio/Radio";
-import "@/components/radio/RadioGroup";
-import { RadioGroup } from "@/components/radio/RadioGroup";
+import "./Radio";
+import { Radio } from "./Radio";
+import "./RadioGroup";
+import { RadioGroup } from "./RadioGroup";
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";

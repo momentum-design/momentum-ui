@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
+import "../button/Button";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
@@ -35,6 +35,9 @@ export class Modal extends FocusTrapMixin(LitElement) {
   @property({ type: String }) headerMessage = "";
   @property({ type: String }) htmlId = "";
   @property({ type: String }) ariaLabel = "";
+  @property({ type: String }) ariaLabelClose = "Close Modal";
+  @property({ type: String }) ariaLabelCancel = "Cancel Modal";
+  @property({ type: String }) ariaLabelSubmit = "Submit Modal";
   @property({ type: String }) ariaDescription = "";
   @property({ type: Boolean }) showCloseButton = false;
   @property({ type: Boolean }) backdropClickExit = false;
@@ -73,38 +76,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
     }
   }
 
-  private focusOnTrigger() {
-    if (this.focusableElements && this.focusableElements.length) {
-      this.focusableElements[0].focus();
-    }
-  }
-
-  handleCloseOutside = (event: KeyboardEvent) => {
-    if (event.code === Key.Escape) {
-      event.preventDefault();
-      if (this.show && !this.noExitOnEsc) {
-        this.modalFadeOut();
-      }
-    }
-  };
-
-  handleKeyDown(event: KeyboardEvent) {
-    if (event.code === Key.Enter || event.code === Key.Space) {
-      if (this.show) {
-        this.modalFadeOut();
-      }
-    }
-  }
-
-  private closeModal() {
-    if (this.show) {
-      this.show = false;
-    }
-
-    if (this.animating) {
-      this.animating = false;
-    }
-
+  private notifyModalClose() {
     this.dispatchEvent(
       new CustomEvent("close-modal", {
         composed: true,
@@ -113,15 +85,49 @@ export class Modal extends FocusTrapMixin(LitElement) {
     );
   }
 
+  private focusInsideModal() {
+    if (this.focusableElements && this.focusableElements.length) {
+      this.focusTrapIndex = 0;
+    }
+  }
+
+  handleCloseOutside = (event: KeyboardEvent) => {
+    if (event.code === Key.Escape) {
+      event.preventDefault();
+      if (this.show && !this.noExitOnEsc) {
+        this.show = false;
+        this.notifyModalClose();
+      }
+    }
+  };
+
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.code === Key.Enter || event.code === Key.Space) {
+      if (this.show) {
+        this.show = true;
+      }
+    }
+  }
+
+  private closeModal = () => {
+    if (this.show) {
+      this.show = false;
+    }
+
+    if (this.animating) {
+      this.animating = false;
+    }
+  };
+
   private transitionPromise(element: HTMLElement) {
     return new Promise(resolve => {
       const onModalTransitionEnd = () => {
         element.removeEventListener("transitionend", onModalTransitionEnd);
 
         this.activateFocusTrap!();
+        this.setFocusableElements!();
 
         requestAnimationFrame(() => {
-          this.focusOnTrigger();
           resolve();
         });
       };
@@ -147,6 +153,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
   private async modalFadeIn() {
     if (this.backDrop) {
       await this.transitionPromise(this.backDrop);
+      this.focusInsideModal();
     }
   }
 
@@ -162,7 +169,8 @@ export class Modal extends FocusTrapMixin(LitElement) {
 
   handleCloseBackdrop() {
     if (this.backdropClickExit) {
-      this.modalFadeOut();
+      this.show = false;
+      this.notifyModalClose();
     }
   }
 
@@ -175,12 +183,18 @@ export class Modal extends FocusTrapMixin(LitElement) {
               class="md-close md-modal__close"
               @click="${this.modalFadeOut}"
               @keydown="${this.handleKeyDown}"
+              aria-label=${this.ariaLabelClose}
             >
               <md-icon name="cancel_14"></md-icon>
             </md-button>
           `
         : nothing}
     `;
+  }
+
+  private handleFooterClick() {
+    this.show = false;
+    this.notifyModalClose();
   }
 
   private headerTemplate() {
@@ -213,14 +227,14 @@ export class Modal extends FocusTrapMixin(LitElement) {
         `
       : html`
           <div part="modal-footer" class="md-modal__footer">
-            <md-button ariaLabel="Cancel Modal" @click="${this.modalFadeOut}" @keydown="${this.handleKeyDown}">
+            <md-button aria-label=${this.ariaLabelCancel} @click="${this.handleFooterClick}" @keydown="${this.handleKeyDown}">
               <span>Cancel</span>
             </md-button>
             <md-button
               type="submit"
               variant="primary"
-              ariaLabel="Submit Modal"
-              @click="${this.modalFadeOut}"
+              aria-label=${this.ariaLabelSubmit}
+              @click="${this.handleFooterClick}"
               @keydown="${this.handleKeyDown}"
             >
               <span>${this.closeBtnName}</span>

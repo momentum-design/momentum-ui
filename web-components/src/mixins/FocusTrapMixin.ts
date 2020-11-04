@@ -33,7 +33,6 @@ export abstract class FocusTrapClass extends LitElement {
   protected activateFocusTrap?(): void;
   protected focusableElements?: HTMLElement[];
   protected setFocusableElements?(): void;
-  handleKeyDownFocusTrap?(event: KeyboardEvent): void;
 }
 export interface FocusTrapInterface {
   focusTrapIndex: number;
@@ -49,36 +48,37 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
-    @property({ type: Boolean, reflect: true, attribute: "prevent-scroll" }) preventScroll = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
+    @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
+    @property({ type: Boolean, reflect: true, attribute: "prevent-scroll" }) preventScroll = false;
 
-    private _focusTrapIndex = -1;
-    @property({ type: Number, reflect: true, attribute: "focus-trap-index" })
-    get focusTrapIndex() {
-      return this._focusTrapIndex;
-    }
-    set focusTrapIndex(newIndex: number) {
-      const prevIndex = this._focusTrapIndex;
-      this._focusTrapIndex = newIndex;
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("focusTrapIndex")) {
+        const prevIndex = changedProperties.get("focusTrapIndex") as number;
+        const prevElement = this.focusableElements[prevIndex];
 
-      const prevElement = this.focusableElements[prevIndex];
+        if (prevElement) {
+          prevElement.blur();
+          prevElement.toggleAttribute("focus-visible", false);
+        }
 
-      if (prevElement) {
-        prevElement.blur();
-        prevElement.toggleAttribute("focus-visible", false);
+        const newElement = this.focusableElements[this.focusTrapIndex];
+        if (newElement) {
+          this.tryFocus(newElement);
+        }
       }
-
-      const newElement = this.focusableElements[newIndex];
-
-      if (newElement) {
-        this.tryFocus(newElement);
-      }
-      this.requestUpdate("focusTrapIndex", prevIndex);
     }
 
     private tryFocus(focusableElement: HTMLElement) {
-      requestAnimationFrame(() => {
-        if (this.getDeepActiveElement!() !== focusableElement) {
+      requestAnimationFrame(async () => {
+        if (this.isElementFocused!(focusableElement)) {
+          focusableElement.focus({ preventScroll: this.preventScroll });
+        }
+        if (typeof (focusableElement as LitElement).updateComplete !== "undefined") {
+          await (focusableElement as LitElement).updateComplete;
+        }
+        if (document.hasFocus() && this.isElementFocused!(focusableElement)) {
           focusableElement.focus({ preventScroll: this.preventScroll });
         }
       });
@@ -253,7 +253,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     protected activateFocusTrap() {
       this.activeFocusTrap = true;
-      this.setFocusableElements();
     }
 
     protected deactivateFocusTrap() {

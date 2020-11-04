@@ -1,4 +1,4 @@
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./MeetingAlert";
 import { MeetingAlert } from "./MeetingAlert";

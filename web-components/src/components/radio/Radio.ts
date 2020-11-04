@@ -6,7 +6,7 @@
  *
  */
 
-import { FocusMixin } from "../../mixins";
+import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";

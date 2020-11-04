@@ -9,7 +9,7 @@
 import activityButtonStyles from "../activity-button/scss/module.scss";
 import "../loading/Loading";
 import "../spinner/Spinner";
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";

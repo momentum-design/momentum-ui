@@ -10,11 +10,11 @@
 
 // @import "./vars/lm-chip-settings";
 
-@import "../../badge/scss/vars/md-badge-settings.scss";
-@import "../../badge/scss/vars/lm-badge-settings.scss";
-@import "../../badge/scss/settings";
-@import "../../badge/scss/mixins";
-@import "../../modal/scss/mixins";
+@import ".@/components/badge/scss/vars/md-badge-settings.scss";
+@import ".@/components/badge/scss/vars/lm-badge-settings.scss";
+@import ".@/components/badge/scss/settings";
+@import ".@/components/badge/scss/mixins";
+@import ".@/components/modal/scss/mixins";
 
 @import "./settings";
 @import "./mixins";

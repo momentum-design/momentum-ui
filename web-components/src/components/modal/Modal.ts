@@ -8,8 +8,8 @@
 
 import "../button/Button";
 import "../icon/Icon";
-import { Key } from "../../constants";
-import { FocusTrapMixin } from "../../mixins";
+import { Key } from "@/constants";
+import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";

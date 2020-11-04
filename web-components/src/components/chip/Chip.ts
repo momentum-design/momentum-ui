@@ -6,7 +6,7 @@
  *
  */
 
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";

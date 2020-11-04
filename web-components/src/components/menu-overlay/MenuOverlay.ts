@@ -6,7 +6,7 @@
  *
  */
 
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
@@ -14,7 +14,7 @@ import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
-import { FocusTrapMixin } from "../../mixins/FocusTrapMixin";
+import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {

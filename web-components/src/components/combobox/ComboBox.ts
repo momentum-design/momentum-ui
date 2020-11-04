@@ -7,9 +7,9 @@
  */
 
 import "../icon/Icon";
-import { Key } from "../../constants";
-import { FocusMixin } from "../../mixins";
-import { debounce, findHighlight } from "../../utils/helpers";
+import { Key } from "@/constants";
+import { FocusMixin } from "@/mixins";
+import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { nothing } from "lit-html";

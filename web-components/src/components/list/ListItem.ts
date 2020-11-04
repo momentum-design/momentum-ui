@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { FocusMixin } from "../../mixins";
+import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";

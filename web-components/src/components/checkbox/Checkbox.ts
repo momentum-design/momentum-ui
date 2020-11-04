@@ -6,8 +6,8 @@
  *
  */
 
-import { Key } from "../../constants";
-import { FocusMixin } from "../../mixins";
+import { Key } from "@/constants";
+import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import styles from "./scss/module.scss";

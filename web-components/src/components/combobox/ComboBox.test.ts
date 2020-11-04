@@ -1,8 +1,8 @@
 import "./ComboBox";
 import { ComboBox } from "./ComboBox";
 import "../icon/Icon";
-import { Key } from "../../constants";
-import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "../../[sandbox]/sandbox.mock";
+import { Key } from "@/constants";
+import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 

@@ -1,4 +1,4 @@
-import { numInputTypes } from "../../utils/enums";
+import { numInputTypes } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";

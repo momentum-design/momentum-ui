@@ -1,6 +1,6 @@
 import "./Checkbox";
 import { Checkbox } from "./Checkbox";
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 
 describe("Checkbox component", () => {

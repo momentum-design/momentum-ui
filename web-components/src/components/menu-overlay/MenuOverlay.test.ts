@@ -1,6 +1,6 @@
 import "../button/Button";
 import "./MenuOverlay";
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import {
   defineCE,
   elementUpdated,
@@ -16,7 +16,7 @@ import { MenuOverlay, MenuOverlayElement, OverlaySizes } from "./MenuOverlay";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
-jest.mock("../../utils/helpers", () => {
+jest.mock("@/utils/helpers", () => {
   return {
     debounce: jest.fn().mockImplementation(cb => cb)
   };

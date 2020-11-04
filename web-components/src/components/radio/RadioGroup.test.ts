@@ -2,7 +2,7 @@ import "./Radio";
 import { Radio } from "./Radio";
 import "./RadioGroup";
 import { RadioGroup } from "./RadioGroup";
-import { Key } from "../../constants";
+import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
 

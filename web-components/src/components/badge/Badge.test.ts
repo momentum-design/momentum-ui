@@ -1,4 +1,4 @@
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Badge";
 import { Badge } from "./Badge";

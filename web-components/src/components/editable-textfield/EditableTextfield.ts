@@ -10,7 +10,7 @@ import "../input/Input";
 import { Input, Message } from "../input/Input";
 import { numInputTypes } from "../../utils/enums";
 import { ValidationRegex } from "../../utils/validations";
-import reset from "../../wc_scss/reset.scss";
+import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
 import { CSSResultArray, customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";

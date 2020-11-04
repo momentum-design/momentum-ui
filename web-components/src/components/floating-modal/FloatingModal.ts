@@ -1,5 +1,5 @@
 import { throttle } from "../../utils/helpers";
-import reset from "../../wc_scss/reset.scss";
+import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { styleMap } from "lit-html/directives/style-map";
 import "../button/Button";

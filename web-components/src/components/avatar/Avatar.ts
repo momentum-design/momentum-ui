@@ -8,7 +8,7 @@
 
 import "../icon/Icon";
 import "../loading/Loading";
-import reset from "../../wc_scss/reset.scss";
+import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";

@@ -1,5 +1,5 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "./../icon/Icon";
+import "@/components/icon/Icon";
 import "./Tooltip";
 import { Tooltip } from "./Tooltip";
 

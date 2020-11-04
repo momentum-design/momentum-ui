@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { debounce, findHighlight } from "@/utils/helpers";
@@ -825,6 +825,7 @@ export class ComboBox extends FocusMixin(LitElement) {
                 id=${this.getOptionId(option)}
                 role="option"
                 class="md-combobox-option ${classMap(this.listItemOptionMap)}"
+                aria-label=${this.getOptionValue(option)}
                 aria-selected=${this.getAriaState(optionIndex)}
                 tabindex="-1"
                 @click=${this.handleListClick}

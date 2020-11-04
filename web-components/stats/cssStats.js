@@ -1,3 +1,4 @@
+const path = require("path");
 const cssstats = require("cssstats");
 const writeFileSyncRecursive = require('./writeFileSyncRecursive')
 
@@ -10,7 +11,7 @@ module.exports = function analyzeCSS(module, data) {
       propertyResets: true
     });
 
-    writeFileSyncRecursive("stats/json/" + module + ".json", JSON.stringify(stats, null, 2));
+    writeFileSyncRecursive(path.resolve(__dirname, "json/" + module + ".json"), JSON.stringify(stats, null, 2));
   } catch(err) {
     console.log(`${module} not analyzed: `, err);
   }

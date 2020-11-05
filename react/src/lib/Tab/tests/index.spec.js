@@ -36,7 +36,7 @@ describe('tests for <Tab />', () => {
   it('should handle onClick event', () => {
     let count = 0;
     const countUp = () => count++;
-    const container = shallow(<Tab heading="test" onPress={countUp} />);
+    const container = mount(<Tab heading="test" onPress={countUp} />);
 
     container.find('a').simulate('click');
     expect(count).toEqual(1);

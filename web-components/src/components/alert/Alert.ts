@@ -89,10 +89,10 @@ export class Alert extends LitElement {
                 ${this.renderIconTemplate()}
               </div>
               <div part="content" class="md-alert__content">
-                <div class="md-alert__title">
+                <div aria-label=${this.title} class="md-alert__title">
                   ${this.title}
                 </div>
-                <div class="md-alert__message">
+                <div aria-label=${this.message} class="md-alert__message">
                   ${this.message}
                   <slot name="alert-body"></slot>
                 </div>

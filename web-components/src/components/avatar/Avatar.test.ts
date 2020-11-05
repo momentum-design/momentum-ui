@@ -1,5 +1,5 @@
-import "@/components/avatar/Avatar";
-import { Avatar } from "@/components/avatar/Avatar";
+import "./Avatar";
+import { Avatar } from "./Avatar";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 

@@ -1,4 +1,4 @@
-import "@/components/slider/Slider";
+import "./Slider";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
 import { select, text, number, withKnobs } from "@storybook/addon-knobs";

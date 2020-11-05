@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/badge/Badge";
-import "@/components/icon/Icon";
+import "../badge/Badge";
+import "../icon/Icon";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
@@ -152,10 +152,10 @@ export class TaskItem extends LitElement {
     return this.quantity > 0
       ? this.quantity > 99
         ? html`
-            <span class="new-chat-quantity">99+</span>
+            <span aria-label=${this.quantity} class="new-chat-quantity">99+</span>
           `
         : html`
-            <span class="new-chat-quantity">${this.quantity}</span>
+            <span aria-label=${this.quantity} class="new-chat-quantity">${this.quantity}</span>
           `
       : nothing;
   }
@@ -178,16 +178,16 @@ export class TaskItem extends LitElement {
           ${this.renderTaskType()}
           ${this.status
             ? html`
-                <span class=${`md-taskitem__status ` + `${this.status}`}>
+                <span aria-label=${this.status} class=${`md-taskitem__status ` + `${this.status}`}>
                   ${this.renderStatus()}
                 </span>
               `
             : nothing}
         </div>
         <div class="md-taskitem__content" part="task-item-content">
-          <span class="md-taskitem__content_title">${this.title}</span>
+          <span aria-label=${this.title} class="md-taskitem__content_title">${this.title}</span>
           <div class="md-taskitem__content_inner">
-            <span class="md-taskitem__content_queue">
+            <span aria-label=${this.queue} class="md-taskitem__content_queue">
               ${this.queue.length > 0
                 ? this.queue
                 : html`

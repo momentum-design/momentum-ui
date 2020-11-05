@@ -1,15 +1,15 @@
-import "@/components/combobox/ComboBox";
-import { ComboBox } from "@/components/combobox/ComboBox";
-import "@/components/icon/Icon";
+import "./ComboBox";
+import { ComboBox } from "./ComboBox";
+import "../icon/Icon";
 import { Key } from "@/constants";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const lmComboBoxTokens = require("@/components/combobox/tokens/lm-combobox-tokens.js");
+const lmComboBoxTokens = require("./tokens/lm-combobox-tokens.js");
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const mdComboBoxTokens = require("@/components/combobox/tokens/md-combobox-tokens.js");
+const mdComboBoxTokens = require("./tokens/md-combobox-tokens.js");
 
 describe("Combobox Component", () => {
   afterEach(fixtureCleanup);

@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
 import { uuid } from "@/utils/helpers";
@@ -22,6 +22,7 @@ import {
   query,
   queryAll
 } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
@@ -508,7 +509,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
         role="tablist"
       >
         <slot name="tab"></slot>
-        <md-menu-overlay
+        ${this.isMoreTabMenuVisible ? html`<md-menu-overlay
           custom-width="${MORE_MENU_WIDTH}"
           class="md-menu-overlay__more ${classMap({
             "md-menu-overlay__more--grow": this.isMoreTabMenuGrow
@@ -551,7 +552,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
               }
             )}
           </div>
-        </md-menu-overlay>
+        </md-menu-overlay>` : nothing}
       </div>
       <div part="tabs-content" class="md-tab__content">
         <slot name="panel"></slot>

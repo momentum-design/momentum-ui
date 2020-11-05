@@ -1,7 +1,7 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "@/components/spinner/Spinner";
+import "./Spinner";
 
 export default {
   title: "Spinner",

@@ -27,12 +27,18 @@
 
 :host([viewporthidden]) {
   display: inline-block;
+  height: auto !important;
   pointer-events: none;
   position: absolute;
-  right: -100%;
+  right: 0;
+  top: 0;
   visibility: hidden;
   width: auto !important;
   z-index: -1;
+}
+
+:host([measuringrealwidth]) {
+  width: auto !important;
 }
 
 button {
@@ -42,6 +48,7 @@ button {
   color: var(--tabs-default-text-color, $lm-tabs-default-text-color-light);
   display: block;
   height: 100%;
+  min-height: $tab-overflow-button-height;
   padding: $tab-button-padding;
   position: relative;
   text-align: center;
@@ -82,5 +89,3 @@ button {
     outline: none;
   }
 }
-
-

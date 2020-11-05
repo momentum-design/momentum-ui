@@ -1,5 +1,5 @@
-import "@/components/button/Button";
-import "@/components/menu-overlay/MenuOverlay";
+import "../button/Button";
+import "./MenuOverlay";
 import { Key } from "@/constants";
 import {
   defineCE,

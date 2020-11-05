@@ -8,7 +8,8 @@ export namespace DatePickerWeek {}
 @customElement("md-datepicker-week")
 export class DatePickerWeek extends LitElement {
   @property() day: DateTime | undefined = undefined; // provided from upper component scope
-
+  @property() month: DateTime | undefined = undefined; // provided from upper component scope
+  @property({ type: Boolean }) selected = false; // not sure, seems moment related?
   // "otherprops" need to send to datepicker-day: { selected, focus, day, month }
 
   renderDays = () => {

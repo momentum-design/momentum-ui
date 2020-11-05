@@ -1,13 +1,39 @@
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
-import { customElement, html, LitElement } from "lit-element";
+import { addWeeks, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth } from "@/utils/dateUtils";
+import { customElement, html, LitElement, property } from "lit-element";
+import { DateTime } from "luxon";
 
 export namespace DatePickerMonth {}
 
 @customElement("md-datepicker-month")
 export class DatePickerMonth extends LitElement {
+  @property({ attribute: false }) day: DateTime | undefined = undefined; // provided from upper component scope
+
+  renderWeeks = () => {
+    // const { day, ...otherProps } = this.props;
+
+    let currentWeekStart = getStartOfWeek(getStartOfMonth(this.day));
+
+    const weeks = [];
+    const month = getMonth(this.day);
+
+    do {
+      weeks.push(
+        html`
+          <md-datepicker-week day=${currentWeekStart} month=${month}></md-datepicker-week>
+        `
+      );
+      currentWeekStart = addWeeks(currentWeekStart.clone(), 1);
+    } while (isSameMonth(currentWeekStart, this.day));
+
+    return weeks;
+  };
+
   render() {
     return html`
-      <md-datepicker-week></md-datepicker-week>
+      <div class="md-datepicker__month">
+        ${this.renderWeeks()}
+      </div>
     `;
   }
 }

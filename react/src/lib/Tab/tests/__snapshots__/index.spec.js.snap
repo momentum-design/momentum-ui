@@ -13,6 +13,7 @@ ShallowWrapper {
     myKey={0}
     onKeyDown={null}
     onPress={null}
+    preventFocus={false}
     role="tab"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -31,8 +32,8 @@ ShallowWrapper {
     "props": Object {
       "children": <a
         aria-current={false}
-        href="javascript:void(0)"
-        onClick={null}
+        href="#"
+        onClick={[Function]}
         onKeyDown={null}
         role="tab"
         tabIndex={-1}
@@ -50,8 +51,8 @@ ShallowWrapper {
       "props": Object {
         "aria-current": false,
         "children": "test",
-        "href": "javascript:void(0)",
-        "onClick": null,
+        "href": "#",
+        "onClick": [Function],
         "onKeyDown": null,
         "role": "tab",
         "tabIndex": -1,
@@ -70,8 +71,8 @@ ShallowWrapper {
       "props": Object {
         "children": <a
           aria-current={false}
-          href="javascript:void(0)"
-          onClick={null}
+          href="#"
+          onClick={[Function]}
           onKeyDown={null}
           role="tab"
           tabIndex={-1}
@@ -89,8 +90,8 @@ ShallowWrapper {
         "props": Object {
           "aria-current": false,
           "children": "test",
-          "href": "javascript:void(0)",
-          "onClick": null,
+          "href": "#",
+          "onClick": [Function],
           "onKeyDown": null,
           "role": "tab",
           "tabIndex": -1,

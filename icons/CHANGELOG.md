@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.62.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.61.1...@momentum-ui/icons@7.62.0) (2020-11-05)
+
+
+### Features
+
+* **icons:** add trending_10 ([4943456](https://github.com/momentum-design/momentum-ui/commit/49434564105e466f3486bd60848bca44e8e953b4))
+
+
+
+
+
 ## [7.61.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.61.0...@momentum-ui/icons@7.61.1) (2020-11-02)
 
 

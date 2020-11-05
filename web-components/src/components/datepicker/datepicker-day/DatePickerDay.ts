@@ -1,17 +1,17 @@
 import "@/components/button/Button";
 import { getDate, getMonth, isSameDay, now } from "@/utils/dateUtils";
 import { customElement, html, LitElement, property } from "lit-element";
-import { Moment } from "moment";
+import DateTime from "luxon/src/datetime.js";
 
 export namespace DatePickerDay {}
 
 @customElement("md-datepicker-day")
 export class DatePickerDay extends LitElement {
-  @property() day: Moment | undefined = undefined; // meant to be a moment instance reflecting a day
-  @property() month: Moment | undefined = undefined; // meant to be a moment instance reflecting a month
-  @property() selected: undefined; // not sure, seems moment related?
+  @property() day: DateTime | undefined = now(); // meant to be a DateTime instance reflecting a day
+  @property() month: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a month
+  @property({ type: Boolean }) selected = false; // not sure, seems moment related?
   //   @property() focus = false; replace this, otherwise it expects dom native focus()
-  @property() handleDayClick: Function | undefined = undefined; // a passed function from the main picker context
+  @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // a passed function from the main picker context
   @property({ type: Boolean }) disabled = false;
 
   handleClick(e: MouseEvent) {
@@ -33,7 +33,7 @@ export class DatePickerDay extends LitElement {
         circle
         size=${28}
         ?disabled=${this.disabled}
-        className=${"md-datepicker__day" +
+        class=${"md-datepicker__day" +
           `${(isSelected && ` md-datepicker__day--selected`) || ""}` +
           `${(hasFocus && ` md-datepicker__day--focus`) || ""}` +
           `${(isToday && ` md-datepicker__day--today`) || ""}` +

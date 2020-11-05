@@ -1,14 +1,14 @@
-import moment from "moment";
+import { DateTime } from "luxon";
 
 export function newDateWithOffset(utcOffset) {
-  return moment()
+  return DateTime()
     .utc()
     .utcOffset(utcOffset);
 }
 
-export function now(maybeFixedUtcOffset?) {
+export function now(maybeFixedUtcOffset?): DateTime {
   if (maybeFixedUtcOffset == null) {
-    return moment();
+    return new DateTime();
   }
   return newDateWithOffset(maybeFixedUtcOffset);
 }
@@ -84,8 +84,8 @@ export function isSameMonth(date1, date2) {
 
 export function isDayDisabled(day, { minDate, maxDate, filterDate } = {}) {
   return (
-    (minDate && day.isBefore(moment(minDate), "day")) ||
-    (maxDate && day.isAfter(moment(maxDate), "day")) ||
+    (minDate && day.isBefore(DateTime(minDate), "day")) ||
+    (maxDate && day.isAfter(DateTime(maxDate), "day")) ||
     (filterDate && filterDate(day.clone())) ||
     false
   );
@@ -93,10 +93,10 @@ export function isDayDisabled(day, { minDate, maxDate, filterDate } = {}) {
 
 export function shouldPrevMonthDisable(day, minDate) {
   const firstDayOfCurrMonth = day.clone().startOf("month");
-  return minDate && !moment(minDate).isBefore(firstDayOfCurrMonth);
+  return minDate && !DateTime(minDate).isBefore(firstDayOfCurrMonth);
 }
 
 export function shouldNextMonthDisable(day, maxDate) {
   const lastDayOfCurrMonth = day.clone().endOf("month");
-  return maxDate && !moment(maxDate).isAfter(lastDayOfCurrMonth);
+  return maxDate && !DateTime(maxDate).isAfter(lastDayOfCurrMonth);
 }

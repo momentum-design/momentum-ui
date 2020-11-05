@@ -53,7 +53,7 @@ export class Breadcrumbs extends LitElement {
   render() {
     return html`
       <nav aria-label="${ifDefined(this.label ? this.label : undefined)}" class="md-breadcrumbs">
-        <ul @click=${this.handleClick}>
+        <ul @click=${(event: MouseEvent) => this.handleClick(event)}>
           ${repeat(
             this.navCrumbs,
             (navCrumb: NavCrumb) => navCrumb.link,

@@ -37,6 +37,10 @@
   z-index: -1;
 }
 
+:host([measuringrealwidth]) {
+  width: auto !important;
+}
+
 button {
   background: $tab-none-bg;
   border: $tab-border;

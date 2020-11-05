@@ -103,6 +103,13 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+          <div class="container" aria-label="md-menu-overlay">
+            <h2>md-menu-overlay</h2>
+            <sass-stats component="menu-overlay">
+              ${menuOverlayTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-phone-input">
             <sass-stats component="phone-input">
               ${phoneInputTemplate}
@@ -123,7 +130,7 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-tabs">
+          <div class="container" aria-label="md-tabs" style="overflow-x: hidden;">
             <h2>md-tabs</h2>
             <sass-stats component="tabs">
               ${tabsTemplate}
@@ -253,13 +260,6 @@ export class Sandbox extends LitElement {
             <h2>md-badge</h2>
             <sass-stats component="badge">
               ${badgeTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-menu-overlay">
-            <h2>md-menu-overlay</h2>
-            <sass-stats component="menu-overlay">
-              ${menuOverlayTemplate}
             </sass-stats>
           </div>
 

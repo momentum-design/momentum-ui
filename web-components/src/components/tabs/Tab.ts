@@ -9,6 +9,7 @@
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export type TabClickEvent = { id: string };
@@ -41,12 +42,15 @@ export class Tab extends FocusMixin(LitElement) {
   get selected() {
     return this._selected;
   }
+
   set selected(value: boolean) {
     const oldValue = this._selected;
     this._selected = value;
     this.setAttribute("aria-selected", `${value}`);
     this.requestUpdate("selected", oldValue);
   }
+
+  @property({ type: Boolean, reflect: true }) viewportHidden = false;
 
   static get styles() {
     return [reset, styles];
@@ -105,6 +109,9 @@ export class Tab extends FocusMixin(LitElement) {
     super.firstUpdated(changedProperties);
 
     this.setAttribute("role", "tab");
+    if (this.label) {
+      this.setAttribute("aria-label", this.label);
+    }
     this.setupEvents();
   }
 
@@ -116,7 +123,7 @@ export class Tab extends FocusMixin(LitElement) {
         role="tab"
         aria-hidden="true"
         aria-selected="false"
-        aria-label=${this.label}
+        aria-label=${ifDefined(this.label)}
         tabindex="-1"
         part="tab"
       >

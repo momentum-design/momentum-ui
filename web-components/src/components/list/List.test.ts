@@ -1,7 +1,8 @@
-import "@/components/list/List";
-import { List } from "@/components/list/List";
-import "@/components/list/ListItem";
-import { ListItem } from "@/components/list/ListItem";
+import "./List";
+import { List } from "./List";
+import "./ListItem";
+import { ListItem } from "./ListItem";
+import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
 
@@ -102,7 +103,7 @@ describe("List", () => {
 
   test("should set focus on first list item if selected is not provided", async () => {
     expect(element.selected).toEqual(0);
-    element.dispatchEvent(keyEvent("Tab"));
+    element.dispatchEvent(keyEvent(Key.Tab));
     expect(document.activeElement).toEqual(listItems[0]);
     expect(element.selected).toEqual(0);
   });
@@ -127,69 +128,69 @@ describe("List", () => {
     element.dispatchEvent(keyEvent("KeyA"));
     await elementUpdated(element);
     expect(element.activated).toEqual(0);
-    element.dispatchEvent(keyEvent("Space"));
+    element.dispatchEvent(keyEvent(Key.Space));
     await elementUpdated(element);
     expect(listItems[0].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowDown"));
+    element.dispatchEvent(keyEvent(Key.ArrowDown));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Enter"));
+    element.dispatchEvent(keyEvent(Key.Enter));
     await elementUpdated(element);
     expect(element.activated).toEqual(1);
     expect(listItems[0].selected).toBeFalsy();
     expect(listItems[1].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowRight"));
+    element.dispatchEvent(keyEvent(Key.ArrowRight));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Enter"));
+    element.dispatchEvent(keyEvent(Key.Enter));
     await elementUpdated(element);
     expect(element.activated).toEqual(2);
     expect(listItems[1].selected).toBeFalsy();
     expect(listItems[2].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowDown"));
+    element.dispatchEvent(keyEvent(Key.ArrowDown));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Enter"));
+    element.dispatchEvent(keyEvent(Key.Enter));
     await elementUpdated(element);
     expect(element.activated).toEqual(3);
     expect(listItems[2].selected).toBeFalsy();
     expect(listItems[3].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowDown"));
+    element.dispatchEvent(keyEvent(Key.ArrowDown));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Space"));
+    element.dispatchEvent(keyEvent(Key.Space));
     await elementUpdated(element);
     expect(element.activated).toEqual(0);
     expect(listItems[3].selected).toBeFalsy();
     expect(listItems[0].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowUp"));
+    element.dispatchEvent(keyEvent(Key.ArrowUp));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Space"));
+    element.dispatchEvent(keyEvent(Key.Space));
     await elementUpdated(element);
     expect(element.activated).toEqual(3);
     expect(listItems[0].selected).toBeFalsy();
     expect(listItems[3].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowLeft"));
+    element.dispatchEvent(keyEvent(Key.ArrowLeft));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Space"));
+    element.dispatchEvent(keyEvent(Key.Space));
     await elementUpdated(element);
     expect(element.activated).toEqual(2);
     expect(listItems[3].selected).toBeFalsy();
     expect(listItems[2].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("Home"));
+    element.dispatchEvent(keyEvent(Key.Home));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Space"));
+    element.dispatchEvent(keyEvent(Key.Space));
     await elementUpdated(element);
     expect(element.activated).toEqual(0);
     expect(listItems[3].selected).toBeFalsy();
     expect(listItems[0].selected).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("End"));
+    element.dispatchEvent(keyEvent(Key.End));
     await elementUpdated(element);
-    element.dispatchEvent(keyEvent("Enter"));
+    element.dispatchEvent(keyEvent(Key.Enter));
     await elementUpdated(element);
     expect(element.activated).toEqual(3);
     expect(listItems[0].selected).toBeFalsy();

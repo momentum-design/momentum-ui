@@ -6,11 +6,12 @@
  *
  */
 
+import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { CSSResultArray, customElement, html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
-import "./../button/Button";
-import "./../icon/Icon";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 @customElement("md-alert-banner")
@@ -31,8 +32,9 @@ export class AlertBanner extends LitElement {
     this.requestUpdate("show");
   }
 
-  handleKeyDown(e: KeyboardEvent) {
-    if (e.code === "Enter" || e.code === "Space") {
+  handleKeyDown(event: KeyboardEvent) {
+    const { code } = event;
+    if (code === Key.Enter || code === Key.Space) {
       this.onHide();
     }
   }

@@ -1,14 +1,15 @@
-import "@/components/combobox/ComboBox";
-import { ComboBox } from "@/components/combobox/ComboBox";
-import "@/components/icon/Icon";
+import "./ComboBox";
+import { ComboBox } from "./ComboBox";
+import "../icon/Icon";
+import { Key } from "@/constants";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const lmComboBoxTokens = require("@/components/combobox/tokens/lm-combobox-tokens.js");
+const lmComboBoxTokens = require("./tokens/lm-combobox-tokens.js");
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const mdComboBoxTokens = require("@/components/combobox/tokens/md-combobox-tokens.js");
+const mdComboBoxTokens = require("./tokens/md-combobox-tokens.js");
 
 describe("Combobox Component", () => {
   afterEach(fixtureCleanup);
@@ -75,9 +76,9 @@ describe("Combobox Component", () => {
         new KeyboardEvent("keydown", {
           code
         });
-      el.input!.dispatchEvent(createEvent("ArrowDown"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
       await nextFrame();
-      el.input!.dispatchEvent(createEvent("Enter"));
+      el.input!.dispatchEvent(createEvent(Key.Enter));
       const { detail: detailOne } = await oneEvent(el, "change-selected");
       expect(detailOne).toBeDefined();
       expect(detailOne).toEqual(
@@ -87,9 +88,9 @@ describe("Combobox Component", () => {
         })
       );
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowDown"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
       await nextFrame();
-      el.input!.dispatchEvent(createEvent("Enter"));
+      el.input!.dispatchEvent(createEvent(Key.Enter));
       const { detail: detailTwo } = await oneEvent(el, "change-selected");
       expect(detailTwo).toBeDefined();
       expect(detailTwo).toEqual(
@@ -195,9 +196,9 @@ describe("Combobox Component", () => {
           code
         });
 
-      el.input!.dispatchEvent(createEvent("ArrowDown"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
       await nextFrame();
-      el.input!.dispatchEvent(createEvent("Enter"));
+      el.input!.dispatchEvent(createEvent(Key.Enter));
 
       expect(el.input!.value).toEqual("Andorra");
 
@@ -324,7 +325,7 @@ describe("Combobox Component", () => {
           code
         });
 
-      const backspace = createEvent("Backspace");
+      const backspace = createEvent(Key.Backspace);
       el.input!.dispatchEvent(backspace);
 
       const mock = jest.fn();
@@ -339,7 +340,7 @@ describe("Combobox Component", () => {
       await elementUpdated(el);
 
       mock.mockReset();
-      const escape = createEvent("Escape");
+      const escape = createEvent(Key.Escape);
       el.input!.dispatchEvent(escape);
 
       expect(el.expanded).toBeFalsy();
@@ -359,7 +360,7 @@ describe("Combobox Component", () => {
 
       const listLen = el.lists!.length;
 
-      const backspace = createEvent("Backspace");
+      const backspace = createEvent(Key.Backspace);
       el.input!.dispatchEvent(backspace);
 
       await elementUpdated(el);
@@ -370,7 +371,7 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       await elementUpdated(el);
 
-      const enter = createEvent("Enter");
+      const enter = createEvent(Key.Enter);
       el.input!.dispatchEvent(enter);
 
       await nextFrame();
@@ -384,7 +385,7 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       await elementUpdated(el);
 
-      const arrowDown = createEvent("ArrowDown");
+      const arrowDown = createEvent(Key.ArrowDown);
       el.input!.dispatchEvent(arrowDown);
 
       await nextFrame();
@@ -421,7 +422,7 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       await elementUpdated(el);
 
-      const arrowUp = createEvent("ArrowUp");
+      const arrowUp = createEvent(Key.ArrowUp);
       el.input!.dispatchEvent(arrowUp);
 
       await nextFrame();
@@ -446,7 +447,7 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       el.input!.value = "combobox";
       el.selectedOptions.push("Afghanistan");
-      const escape = createEvent("Escape");
+      const escape = createEvent(Key.Escape);
 
       el.input!.dispatchEvent(escape);
 
@@ -466,7 +467,7 @@ describe("Combobox Component", () => {
       expect(el.focusedIndex).toEqual(0);
       expect(el.selectedOptions.length).toEqual(1);
 
-      const home = createEvent("Home");
+      const home = createEvent(Key.Home);
 
       const selectionMock = jest.fn();
       el.input!.setSelectionRange = selectionMock;
@@ -474,7 +475,7 @@ describe("Combobox Component", () => {
 
       expect(selectionMock).toHaveBeenCalled();
 
-      const end = createEvent("End");
+      const end = createEvent(Key.End);
       el.input!.dispatchEvent(end);
 
       expect(selectionMock).toHaveBeenCalledTimes(2);
@@ -484,7 +485,7 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       await elementUpdated(el);
 
-      const space = createEvent("Space");
+      const space = createEvent(Key.Space);
       el.input!.dispatchEvent(space);
 
       await elementUpdated(el);
@@ -583,7 +584,7 @@ describe("Combobox Component", () => {
       expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
 
       const backspace = new KeyboardEvent("keydown", {
-        code: "Backspace"
+        code: Key.Backspace
       });
       el.input!.dispatchEvent(backspace);
       await elementUpdated(el);
@@ -597,7 +598,7 @@ describe("Combobox Component", () => {
         `
       );
       const arrowDown = new KeyboardEvent("keydown", {
-        code: "ArrowDown"
+        code: Key.ArrowDown
       });
       el.input!.value = "Afghanistan";
 
@@ -660,23 +661,23 @@ describe("Combobox Component", () => {
           code
         });
 
-      el.input!.dispatchEvent(createEvent("ArrowDown"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
       await nextFrame();
-      el.input!.dispatchEvent(createEvent("Space"));
+      el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowDown"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowDown));
       await nextFrame();
-      el.input!.dispatchEvent(createEvent("Space"));
+      el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
 
       expect(el.selected!.length).toEqual(2);
       expect(el.selectedOptions.length).toEqual(2);
 
-      el.input!.dispatchEvent(createEvent("Space"));
+      el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowUp"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowUp));
       await nextFrame();
-      el.input!.dispatchEvent(createEvent("Space"));
+      el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
 
       expect(el.selected!.length).toEqual(0);
@@ -699,14 +700,14 @@ describe("Combobox Component", () => {
           shiftKey
         });
 
-      el.input!.dispatchEvent(createEvent("ArrowLeft", true));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft, true));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowLeft", true));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft, true));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowLeft", true));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft, true));
       await elementUpdated(el);
 
-      el.input!.dispatchEvent(createEvent("Backspace", true));
+      el.input!.dispatchEvent(createEvent(Key.Backspace, true));
       await elementUpdated(el);
 
       expect(el.selected!.length).toEqual(3);
@@ -721,17 +722,17 @@ describe("Combobox Component", () => {
           code
         });
 
-      el.input!.dispatchEvent(createEvent("ArrowLeft"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
       await elementUpdated(el);
       expect(el.selected![1].hasAttribute("selected")).toBeTruthy();
-      el.input!.dispatchEvent(createEvent("ArrowLeft"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
       await elementUpdated(el);
       expect(el.selected![1].hasAttribute("selected")).toBeFalsy();
       expect(el.selected![0].hasAttribute("selected")).toBeTruthy();
 
-      el.input!.dispatchEvent(createEvent("Backspace"));
+      el.input!.dispatchEvent(createEvent(Key.Backspace));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("Backspace"));
+      el.input!.dispatchEvent(createEvent(Key.Backspace));
       await elementUpdated(el);
 
       expect(el.selectedOptions.length).toEqual(0);
@@ -756,11 +757,11 @@ describe("Combobox Component", () => {
       expect(el.selected!.length).toEqual(4);
       expect(selectedAttribute.count.length).toEqual(0);
 
-      el.input!.dispatchEvent(createEvent("ArrowLeft"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowLeft"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
       await elementUpdated(el);
-      el.input!.dispatchEvent(createEvent("ArrowLeft"));
+      el.input!.dispatchEvent(createEvent(Key.ArrowLeft));
       await elementUpdated(el);
 
       expect(selectedAttribute.count.length).toEqual(1);
@@ -871,7 +872,7 @@ describe("Combobox Component", () => {
         `
       );
 
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown" }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       expect(el.expanded).toBeTruthy();
 
       await nextFrame();
@@ -879,7 +880,7 @@ describe("Combobox Component", () => {
       expect(el.focusedIndex).toEqual(0);
       //expect(el.lists![0].getAttribute("aria-selected")).toEqual("true");
 
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "Space" }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Space }));
 
       expect(el.selectedOptions.length).toEqual(1);
       expect(el.selectedOptions).toEqual(expect.arrayContaining([{ country: "Afghanistan", id: "0" }]));
@@ -889,9 +890,9 @@ describe("Combobox Component", () => {
 
       expect(el.lists![0].getAttribute("aria-checked")).toEqual("true");
 
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown" }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       await nextFrame();
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "Space" }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Space }));
       await elementUpdated(el);
 
       expect(el.selectedOptions.length).toEqual(2);
@@ -909,14 +910,14 @@ describe("Combobox Component", () => {
         `
       );
 
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown" }));
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "Enter" }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
       await nextFrame();
 
       expect(el.selectedOptions.length).toEqual(1);
 
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "ArrowDown" }));
-      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: "Enter" }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+      el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
       await nextFrame();
 
       expect(el.selectedOptions.length).toEqual(1);
@@ -999,6 +1000,17 @@ describe("Combobox Component", () => {
     el.expanded = true;
     await elementUpdated(el);
     expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
+
+    el.inputValue = "One";
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
+    expect(el.shadowRoot!.querySelectorAll(".no-result")!.length).toEqual(1);
+
+    el.inputValue = "On";
+    await elementUpdated(el);
+
+    expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
+    expect(el.shadowRoot!.querySelectorAll(".no-result")!.length).toEqual(1);
   });
 
   test("should set custom value for default options", async () => {
@@ -1007,7 +1019,7 @@ describe("Combobox Component", () => {
         <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[1]]} allow-custom-value></md-combobox>
       `
     );
-    const enter = new KeyboardEvent("keydown", { code: "Enter" });
+    const enter = new KeyboardEvent("keydown", { code: Key.Enter });
 
     el.inputValue = "One";
 
@@ -1040,7 +1052,7 @@ describe("Combobox Component", () => {
         ></md-combobox>
       `
     );
-    const enter = new KeyboardEvent("keydown", { code: "Enter" });
+    const enter = new KeyboardEvent("keydown", { code: Key.Enter });
 
     el.inputValue = "One";
 

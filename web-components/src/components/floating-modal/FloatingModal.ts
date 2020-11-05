@@ -30,7 +30,6 @@ export class FloatingModal extends LitElement {
     this.addEventListener("mousemove", this.onCornerMove as EventListener);
     this.addEventListener("mouseout", this.onCornerRelease);
     this.requestUpdate("show");
-    this.focus();
   }
 
   area() {
@@ -168,19 +167,11 @@ export class FloatingModal extends LitElement {
   }
 
   resizeBtn() {
-    if (this.fullScreen) {
-      return html`
-        <md-button color="color-none" class="md-floating__resized" circle @click="${() => this.onResize()}">
-          <md-icon name="minimize_16"></md-icon>
-        </md-button>
-      `;
-    } else {
-      return html`
-        <md-button color="color-none" class="md-floating__resize" circle @click="${() => this.onResize()}">
-          <md-icon name="maximize_16"></md-icon>
-        </md-button>
-      `;
-    }
+    return html`
+      <md-button color="color-none" class="md-floating__resize" circle @click="${() => this.onResize()}">
+        <md-icon name=${this.fullScreen ? "minimize_16" : "maximize_16"}></md-icon>
+      </md-button>
+    `;
   }
 
   static get styles() {
@@ -203,7 +194,7 @@ export class FloatingModal extends LitElement {
             <div
               class="${`md-floating ` + `${this.fixfull ? "fixed" : ""}`}"
               role="dialog"
-              aria-label="${this.arialabel}"
+              aria-label=${this.arialabel}
               aria-modal="true"
               style=${styleMap(this.resizeStyleMap)}
               @mousedown=${(event: MouseEvent) => this.onWindowPress(event)}

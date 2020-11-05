@@ -6,19 +6,15 @@
  *
  */
 
-import activityButtonStyles from "@/components/activity-button/scss/module.scss";
-import "@/components/loading/Loading";
-import "@/components/spinner/Spinner";
+import activityButtonStyles from "../activity-button/scss/module.scss";
+import "../loading/Loading";
+import "../spinner/Spinner";
+import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
-
-enum ButtonKeyCode {
-  Enter = "Enter",
-  Space = "Space"
-}
 
 export const buttonSize = [
   "20",
@@ -187,7 +183,8 @@ export class Button extends LitElement {
     if (this.disabled) {
       return;
     }
-    if (event.key === ButtonKeyCode.Enter || event.key === ButtonKeyCode.Space) {
+    const { code } = event;
+    if (code === Key.Enter || code === Key.Space) {
       this.dispatchEvent(
         new CustomEvent("button-keydown", {
           composed: true,

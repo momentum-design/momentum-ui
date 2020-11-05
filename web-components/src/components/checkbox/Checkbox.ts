@@ -6,23 +6,11 @@
  *
  */
 
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import styles from "./scss/module.scss";
-
-enum Key {
-  End = "End",
-  Home = "Home",
-  Enter = "Enter",
-  Tab = "Tab",
-  ArrowDown = "ArrowDown",
-  ArrowLeft = "ArrowLeft",
-  ArrowRight = "ArrowRight",
-  ArrowUp = "ArrowUp",
-  Delete = "Delete",
-  Space = "Space"
-}
 
 @customElement("md-checkbox")
 export class Checkbox extends FocusMixin(LitElement) {
@@ -125,7 +113,9 @@ export class Checkbox extends FocusMixin(LitElement) {
     super.firstUpdated(changedProperties);
 
     this.setAttribute("role", "checkbox");
-    this.setAttribute("aria-label", this.label);
+    if (this.label) {
+      this.setAttribute("aria-label", this.label);
+    }
   }
 
   connectedCallback() {

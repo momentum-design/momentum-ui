@@ -1,5 +1,6 @@
-import "@/components/button/Button";
-import "@/components/menu-overlay/MenuOverlay";
+import "../button/Button";
+import "./MenuOverlay";
+import { Key } from "@/constants";
 import {
   defineCE,
   elementUpdated,
@@ -107,7 +108,7 @@ describe("MenuOverlay", () => {
 
     triggerElement.dispatchEvent(
       new KeyboardEvent("keydown", {
-        code: "Enter"
+        code: Key.Enter
       })
     );
 
@@ -116,7 +117,7 @@ describe("MenuOverlay", () => {
 
     triggerElement.dispatchEvent(
       new KeyboardEvent("keydown", {
-        code: "Space"
+        code: Key.Space
       })
     );
 
@@ -280,8 +281,7 @@ describe("MenuOverlay", () => {
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Space",
-        code: "Space"
+        code: Key.Space
       })
     );
 
@@ -289,8 +289,7 @@ describe("MenuOverlay", () => {
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Escape",
-        code: "Escape"
+        code: Key.Escape
       })
     );
 
@@ -311,8 +310,7 @@ describe("MenuOverlay", () => {
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Space",
-        code: "Space"
+        code: Key.Space
       })
     );
 
@@ -320,8 +318,7 @@ describe("MenuOverlay", () => {
 
     document.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Escape",
-        code: "Escape"
+        code: Key.Escape
       })
     );
 
@@ -330,7 +327,7 @@ describe("MenuOverlay", () => {
     expect(document.activeElement).toEqual(button);
   });
 
-  test("should focus on trigger when clicked outside to close modal", async () => {
+  test("shouldn't focus on trigger when clicked outside to close modal", async () => {
     jest.useFakeTimers();
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
 
@@ -348,7 +345,7 @@ describe("MenuOverlay", () => {
 
     await nextFrame();
     expect(element.isOpen).toBeFalsy();
-    expect(document.activeElement).toEqual(button);
+    expect(document.activeElement).not.toEqual(button);
   });
 
   test("shouldn't focus on trigger when press any button except escape to close modal", async () => {
@@ -359,8 +356,7 @@ describe("MenuOverlay", () => {
 
     document.dispatchEvent(
       new KeyboardEvent("keydown", {
-        key: "Space",
-        code: "Space"
+        code: Key.Space
       })
     );
 

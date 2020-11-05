@@ -1,3 +1,4 @@
+import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./MeetingAlert";
 import { MeetingAlert } from "./MeetingAlert";
@@ -89,8 +90,7 @@ describe("MeetingAlert", () => {
       // TODO: Fix KeyDown event tests that fire on md-button elements, and test for expect(spyClick).toHaveBeenCalledTimes(2);
       // snoozeElement?.dispatchEvent(
       //   new KeyboardEvent("keydown", {
-      //     code: "13",
-      //     key: "Enter"
+      //     code: Key.Enter
       //   })
       // );
       expect(spyClick).toHaveBeenCalledTimes(1);
@@ -119,20 +119,17 @@ describe("MeetingAlert", () => {
         const meetingAlert = element.shadowRoot!.querySelector("div");
         meetingAlert!.dispatchEvent(
           new KeyboardEvent("keydown", {
-            code: "13",
-            key: "Enter"
+            code: Key.Enter
           })
         );
         meetingAlert!.dispatchEvent(
           new KeyboardEvent("keydown", {
-            code: "32",
-            key: "Space"
+            code: Key.Space
           })
         );
         meetingAlert!.dispatchEvent(
           new KeyboardEvent("keydown", {
-            code: "27",
-            key: "Escape"
+            code: Key.Escape
           })
         );
         expect(spyKeyDown).toHaveBeenCalledTimes(3);
@@ -154,8 +151,7 @@ describe("MeetingAlert", () => {
         const meetingAlert = await element.shadowRoot!.querySelector("div");
         meetingAlert!.dispatchEvent(
           new KeyboardEvent("keydown", {
-            code: "27",
-            key: "Escape"
+            code: Key.Escape
           })
         );
         expect(spyKeyDown).toHaveBeenCalledTimes(1);
@@ -179,14 +175,12 @@ describe("MeetingAlert", () => {
       //   const closeButton = await element.shadowRoot!.querySelector("md-button[ariaLabel='close']");
       //   closeButton!.dispatchEvent(
       //     new KeyboardEvent("keydown", {
-      //       code: "13",
-      //       key: "Enter"
+      //       code: Key.Enter
       //     })
       //   );
       //   closeButton!.dispatchEvent(
       //     new KeyboardEvent("keydown", {
-      //       code: "32",
-      //       key: "Space"
+      //       code: Key.Space,
       //     })
       //   );
       //   expect(spyKeyDown).toHaveBeenCalledTimes(2);

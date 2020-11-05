@@ -6,6 +6,8 @@
  *
  */
 
+import { Key } from "@/constants";
+import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
 import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
@@ -131,7 +133,7 @@ export class Message {
 }
 
 @customElement("md-input")
-export class Input extends LitElement {
+export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) label = "";
   @property({ type: String }) htmlId = "";
   @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
@@ -264,7 +266,7 @@ export class Input extends LitElement {
   handleClear(event: MouseEvent | KeyboardEvent) {
     if (event.type === "keydown") {
       const { code } = event as KeyboardEvent;
-      if (code !== "Space" && code !== "Enter") {
+      if (code !== Key.Space && code !== Key.Enter) {
         return;
       }
     }

@@ -6,7 +6,8 @@
  *
  */
 
-import "@/components/icon/Icon";
+import "../icon/Icon";
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
@@ -437,10 +438,10 @@ export class ComboBox extends FocusMixin(LitElement) {
 
   handleInputKeyUp(event: KeyboardEvent) {
     switch (event.code) {
-      case "Escape": {
+      case Key.Escape: {
         return;
       }
-      case "Backspace":
+      case Key.Backspace:
         {
           this.setFocusOnHost(true);
           this.setVisualListbox(true);
@@ -448,7 +449,7 @@ export class ComboBox extends FocusMixin(LitElement) {
           this.removeMultiTag();
         }
         break;
-      case "ArrowLeft":
+      case Key.ArrowLeft:
         {
           if (this.isMulti) {
             if (event.shiftKey) {
@@ -567,13 +568,13 @@ export class ComboBox extends FocusMixin(LitElement) {
 
   handleInputKeyDown(event: KeyboardEvent) {
     switch (event.code) {
-      case "Backspace":
+      case Key.Backspace:
         {
           this.focusedIndex = -1;
         }
         break;
-      case "Tab":
-      case "Enter":
+      case Key.Tab:
+      case Key.Enter:
         {
           this.setFocusOnHost(true);
           this.setVisualListbox(false);
@@ -593,7 +594,7 @@ export class ComboBox extends FocusMixin(LitElement) {
           });
         }
         break;
-      case "ArrowDown":
+      case Key.ArrowDown:
         {
           this.setFocusOnHost(false);
           if (!this.expanded) {
@@ -612,7 +613,7 @@ export class ComboBox extends FocusMixin(LitElement) {
           });
         }
         break;
-      case "ArrowUp":
+      case Key.ArrowUp:
         {
           this.setFocusOnHost(false);
           if (!this.expanded) {
@@ -631,10 +632,11 @@ export class ComboBox extends FocusMixin(LitElement) {
           });
         }
         break;
-      case "Escape":
+      case Key.Escape:
         {
           this.setFocusOnHost(true);
           if (this.expanded) {
+            event.stopPropagation();
             this.setVisualListbox(false);
           } else {
             this.setInputValue();
@@ -643,18 +645,18 @@ export class ComboBox extends FocusMixin(LitElement) {
           }
         }
         break;
-      case "Home":
+      case Key.Home:
         {
           this.setInputSelectionRange(0, 0);
         }
         break;
-      case "End":
+      case Key.End:
         {
           const { length } = this.inputValue;
           this.setInputSelectionRange(length, length);
         }
         break;
-      case "Space": {
+      case Key.Space: {
         if (this.isMulti) {
           event.preventDefault();
           const option = this.getFocusedItem(this.focusedIndex);
@@ -824,6 +826,7 @@ export class ComboBox extends FocusMixin(LitElement) {
                 id=${this.getOptionId(option)}
                 role="option"
                 class="md-combobox-option ${classMap(this.listItemOptionMap)}"
+                aria-label=${this.getOptionValue(option)}
                 aria-selected=${this.getAriaState(optionIndex)}
                 tabindex="-1"
                 @click=${this.handleListClick}
@@ -854,7 +857,7 @@ export class ComboBox extends FocusMixin(LitElement) {
               </li>
             `
           )}
-          ${this.filteredOptions.length === 0 && this.inputValue && !this.allowCustomValue
+          ${this.options.length && this.filteredOptions.length === 0 && this.inputValue && !this.allowCustomValue
             ? html`
                 <li class="no-result" role="option" aria-selected="false" tabindex="-1">
                   ${this.resultsTextLocalization.trim()}

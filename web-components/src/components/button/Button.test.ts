@@ -1,5 +1,6 @@
-import "@/components/button/Button";
-import { Button } from "@/components/button/Button";
+import "./Button";
+import { Button } from "./Button";
+import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
 const lmButtonTokens = require("./tokens/lm-button-tokens.js");
@@ -150,20 +151,17 @@ describe("Button", () => {
       expect(spyClick).toHaveBeenCalledTimes(2);
       tagElement!.dispatchEvent(
         new KeyboardEvent("keydown", {
-          code: "13",
-          key: "Enter"
+          code: Key.Enter
         })
       );
       tagElement!.dispatchEvent(
         new KeyboardEvent("keydown", {
-          code: "32",
-          key: "Space"
+          code: Key.Space
         })
       );
       tagElement!.dispatchEvent(
         new KeyboardEvent("keydown", {
-          code: "27",
-          key: "Escape"
+          code: Key.Escape
         })
       );
       expect(spyKeyDown).toHaveBeenCalledTimes(3);
@@ -208,7 +206,7 @@ describe("Button", () => {
       const spyKeyDown = jest.spyOn(el, "handleKeyDown");
       const spyClick = jest.spyOn(el, "handleClick");
       const mouseEvent = new MouseEvent("click");
-      const keyEvent = new KeyboardEvent("keydown", { code: "Space" });
+      const keyEvent = new KeyboardEvent("keydown", { code: Key.Space });
       el.shadowRoot?.querySelector("button")?.dispatchEvent(mouseEvent);
       expect(spyClick).toHaveBeenCalled();
       expect(clickFunc).not.toHaveBeenCalled();
@@ -221,8 +219,7 @@ describe("Button", () => {
   test("should handle keydown event", async () => {
     const element = await fixture<Button>(`<md-button label="Button Component"></md-button>`);
     const evt = new KeyboardEvent("keydown", {
-      code: "13",
-      key: "Enter"
+      code: Key.Enter
     });
     setTimeout(() => element.handleKeyDown(evt));
     const { detail } = await oneEvent(element, "button-keydown");

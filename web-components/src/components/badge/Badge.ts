@@ -78,7 +78,7 @@ export class Badge extends LitElement {
 
     return html`
       ${this.getStyles()}
-      <span part="badge" class="md-badge ${classMap(classNamesInfo)}" aria-label="${this.ariaLabel}">
+      <span part="badge" class="md-badge ${classMap(classNamesInfo)}" aria-label=${this.ariaLabel}>
         ${this.split ? splitContent() : nothing}
         <slot></slot>
       </span>

@@ -46,16 +46,6 @@ export const tooltipTemplate = html`
           <md-button>Tooltip Slot Content</md-button>
         </md-tooltip>
       </div>
-      <div class="row md-padding__vertical">
-        <md-tooltip message="Tooltip Tooltip Tooltip v Tooltip v Tooltip" strategy="absolute">
-          <md-button>Absolute Strategy</md-button>
-        </md-tooltip>
-      </div>
-      <div class="row md-padding__vertical">
-        <md-tooltip message="small" strategy="absolute">
-          <md-button>Absolute Strategy small</md-button>
-        </md-tooltip>
-      </div>
     </div>
   </div>
 `;

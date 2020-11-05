@@ -6,18 +6,24 @@
  *
  */
 
+import "../input/Input";
+import { Input, Message } from "../input/Input";
+import { numInputTypes } from "@/utils/enums";
+import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
 import { CSSResultArray, customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "../input/Input";
-import { Input, Message } from "../input/Input";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;
 export namespace EditableTextfield {
   export type Alignment = typeof alignment[number];
+  export type InputType = typeof numInputTypes[number];
 }
+
 @customElement("md-editable-field")
 export class EditableTextfield extends LitElement {
   @property({ type: String }) alignment: EditableTextfield.Alignment = "left";
@@ -25,8 +31,14 @@ export class EditableTextfield extends LitElement {
   @property({ type: Boolean }) isEditing = false;
   @property({ type: String, attribute: "max-lines", reflect: true }) maxLines = "";
   @property({ type: String, reflect: true }) content = "Click to edit text";
-  @property({ type: Object }) message: Input.Message | undefined = undefined;
+  @property({ type: Object }) message: Input.Message | undefined = {
+    type: "error",
+    message: `That is not a valid input.`
+  };
+  @property({ type: Boolean, reflect: true }) alert = false;
   @property({ type: Boolean }) hideMessage = false;
+  @property({ type: String }) pattern = "";
+  @property({ type: String }) type: EditableTextfield.InputType[number] | null = null;
 
   private readonly messageController: Message = new Message();
 
@@ -34,9 +46,6 @@ export class EditableTextfield extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.innerText) {
-      this.content = this.innerText.trim();
-    }
     this.addEventListener("focus", this.handleFocus);
   }
 
@@ -47,8 +56,10 @@ export class EditableTextfield extends LitElement {
 
   protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    if (this.editableField) {
-      this.editableField.innerText = dompurify.sanitize(this.content);
+    if (this.innerText && this.innerText.length > 0) {
+      this.content = this.innerText.trim();
+    } else {
+      this.innerText = dompurify.sanitize(this.content);
     }
   }
 
@@ -60,6 +71,41 @@ export class EditableTextfield extends LitElement {
       }
     }
   }
+
+  reportValidity = () => {
+    this.dispatchEvent(
+      new Event("invalid", {
+        bubbles: false,
+        cancelable: true,
+        composed: true
+      })
+    );
+  };
+
+  checkValidity = (input: string): boolean => {
+    let result = true;
+    const regexTester = (regex: RegExp): void => {
+      if (input.match(regex) === null) {
+        result = false;
+      }
+    };
+    if (this.pattern) {
+      const regex = new RegExp(this.pattern);
+      regexTester(regex);
+    } else if (input && this.type) {
+      switch (this.type) {
+        case "integer":
+          regexTester(new RegExp(ValidationRegex.integerString));
+          break;
+        case "decimal":
+          regexTester(new RegExp(ValidationRegex.decimalString));
+          break;
+        default:
+          break;
+      }
+    }
+    return result;
+  };
 
   handleFocus = () => {
     if (this.disabled) {
@@ -91,15 +137,49 @@ export class EditableTextfield extends LitElement {
     }
   }
 
-  handleBlur = () => {
-    if (this.editableField) {
-      this.editableField.innerText = dompurify.sanitize(this.content);
+  handleKeydown = (e: KeyboardEvent) => {
+    const flaggedKeys = ["Tab", "Meta", "Shift", "Delete", "Backspace", "Arrow"];
+    const { key, code } = e;
+    if (flaggedKeys.some(s => code.includes(s))) {
+      return;
     }
+    const currentString = this.editableField?.innerText.trim() + key;
+    if (this.type) {
+      if (isNaN(Number(currentString))) {
+        e.preventDefault();
+      } else if (this.type === "integer" && !Number.isInteger(Number(currentString))) {
+        e.preventDefault();
+      } else {
+        return;
+      }
+    }
+  };
+
+  handleBlur = () => {
     this.isEditing = false;
     if (this.maxLines.length > 0) {
       this.editableField && this.editableField.scrollTo(0, 0);
     }
+    this.content = this.editableField?.innerText.trim() || "";
+    this.alert = false;
+    this.handleValidation();
   };
+
+  handleValidation() {
+    if (this.type || this.pattern) {
+      const valid = this.checkValidity && this.checkValidity(this.content);
+      if (!valid) {
+        this.reportValidity();
+        this.showAlert();
+      }
+    } else {
+      return;
+    }
+  }
+
+  showAlert(): void {
+    this.alert = true;
+  }
 
   static get styles(): CSSResultArray {
     return [reset, styles];
@@ -114,33 +194,38 @@ export class EditableTextfield extends LitElement {
   }
 
   messagesTemplate() {
-    return html`
-      <div class="md-editable-textfield__messages" style="display: ${this.hideMessage ? "none" : "block"}">
-        <md-help-text id="alert-message" role="alert" aria-live="assertive" .messageType=${this.message?.type}>
-          ${this.message?.message}
-        </md-help-text>
-      </div>
-    `;
+    return this.alert
+      ? html`
+          <div class="md-editable-textfield__messages" style="display: ${this.hideMessage ? "none" : "block"}">
+            <md-help-text id="alert-message" role="alert" aria-live="assertive" .messageType=${this.message?.type}>
+              ${this.message?.message}
+            </md-help-text>
+          </div>
+        `
+      : nothing;
   }
 
   render() {
     const classes = {
       [`md-editable-textfield--${this.alignment}`]: this.alignment,
       "md-editable-textfield--disabled": this.disabled,
-      [`md-editable-textfield--${this.message?.type}`]: !!this.message?.type,
+      [`md-editable-textfield--${this.message?.type}`]: this.alert && !!this.message,
       "md-editable-textfield--textoverflow": this.maxLines.length > 0 && !this.isEditing
     };
 
     return html`
       <div
         class="md-editable-textfield ${classMap(classes)}"
-        tabindex="0"
+        tabindex=${this.disabled ? "-1" : "0"}
         ?contenteditable=${this.isEditing}
         @click=${this.handleFocus}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
-        aria-invalid=${this.message ? "true" : "false"}
-        aria-errormessage="alert-message"
+        @keydown=${(e: KeyboardEvent) => {
+          this.handleKeydown(e);
+        }}
+        aria-invalid=${this.alert ? "true" : "false"}
+        aria-errormessage=${ifDefined(this.message?.message)}
       >
         ${dompurify.sanitize(this.content)}
       </div>

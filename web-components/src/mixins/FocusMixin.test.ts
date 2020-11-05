@@ -1,5 +1,5 @@
-import { defineCE, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, PropertyValues } from "lit-element";
+import { defineCE, fixture, fixtureCleanup, fixtureSync, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { AnyConstructor, FocusMixin } from "./FocusMixin";
 
 describe("Focus Mixin", () => {
@@ -7,9 +7,12 @@ describe("Focus Mixin", () => {
 
   @customElement("custom-element")
   class CustomElement extends LitElement {
+    @property({ type: Boolean, reflect: true }) autofocus = false;
+
     render() {
       return html`
         <slot name="input"></slot>
+        <input type="text" ?autofocus=${this.autofocus} />
       `;
     }
   }
@@ -49,5 +52,49 @@ describe("Focus Mixin", () => {
     el.dispatchEvent(new Event("blur"));
     el.blur();
     expect(el.hasAttribute("focus-visible")).toBeFalsy();
+  });
+
+  test("should autofocus component with appropriate property", async () => {
+    @customElement("focusable-child")
+    class FocusableChild extends FocusMixin(LitElement) {
+      @property({ type: Boolean, reflect: true }) autofocus = true;
+
+      protected async firstUpdated(changedProperties: PropertyValues) {
+        super.firstUpdated(changedProperties);
+        this.setAttribute("tabindex", "0");
+      }
+
+      render() {
+        return html`
+          <input type="text" ?autofocus=${this.autofocus} />
+        `;
+      }
+    }
+
+    const element = await fixture<FocusableChild>(`<focusable-child></focusable-child>`);
+
+    await nextFrame();
+
+    expect(document.activeElement).toEqual(element);
+    expect(element["getActiveElement"]!()).toEqual(element);
+  });
+
+  test("should find active deep element", async () => {
+    @customElement("deep-focusable-child")
+    class DeepFocusableChild extends FocusMixin(LitElement) {
+      render() {
+        return html`
+          <input type="text" />
+        `;
+      }
+    }
+
+    const element = await fixture<DeepFocusableChild>(`<deep-focusable-child></deep-focusable-child>`);
+    const input = element.shadowRoot!.querySelector("input");
+
+    input!.focus();
+
+    expect(element["getDeepActiveElement"]!()).toEqual(input);
+    expect(element["isElementFocused"]!(input!)).toBeFalsy();
   });
 });

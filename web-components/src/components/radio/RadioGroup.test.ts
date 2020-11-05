@@ -1,7 +1,8 @@
-import "@/components/radio/Radio";
-import { Radio } from "@/components/radio/Radio";
-import "@/components/radio/RadioGroup";
-import { RadioGroup } from "@/components/radio/RadioGroup";
+import "./Radio";
+import { Radio } from "./Radio";
+import "./RadioGroup";
+import { RadioGroup } from "./RadioGroup";
+import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
 
@@ -102,10 +103,10 @@ describe("RadioGroup", () => {
   test("should set focus on first radio if checked is not provided", async () => {
     expect(element.checked).toEqual(-1);
 
-    element.dispatchEvent(keyEvent("Tab"));
+    element.dispatchEvent(keyEvent(Key.Tab));
     expect(document.activeElement).toEqual(radioButtons[0]);
 
-    element.dispatchEvent(keyEvent("Space"));
+    element.dispatchEvent(keyEvent(Key.Space));
     await elementUpdated(element);
     expect(element.selected).toEqual(0);
     expect(radioButtons[0].checked).toBeTruthy();
@@ -120,37 +121,37 @@ describe("RadioGroup", () => {
     expect(element.selected).toEqual(0);
     expect(radioButtons[0].checked).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowDown"));
+    element.dispatchEvent(keyEvent(Key.ArrowDown));
     await elementUpdated(element);
     expect(element.selected).toEqual(1);
     expect(radioButtons[0].checked).toBeFalsy();
     expect(radioButtons[1].checked).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowRight"));
+    element.dispatchEvent(keyEvent(Key.ArrowRight));
     await elementUpdated(element);
     expect(element.selected).toEqual(2);
     expect(radioButtons[1].checked).toBeFalsy();
     expect(radioButtons[2].checked).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowRight"));
+    element.dispatchEvent(keyEvent(Key.ArrowRight));
     await elementUpdated(element);
     expect(element.selected).toEqual(3);
     expect(radioButtons[2].checked).toBeFalsy();
     expect(radioButtons[3].checked).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowRight"));
+    element.dispatchEvent(keyEvent(Key.ArrowRight));
     await elementUpdated(element);
     expect(element.selected).toEqual(0);
     expect(radioButtons[3].checked).toBeFalsy();
     expect(radioButtons[0].checked).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowUp"));
+    element.dispatchEvent(keyEvent(Key.ArrowUp));
     await elementUpdated(element);
     expect(element.selected).toEqual(3);
     expect(radioButtons[0].checked).toBeFalsy();
     expect(radioButtons[3].checked).toBeTruthy();
 
-    element.dispatchEvent(keyEvent("ArrowLeft"));
+    element.dispatchEvent(keyEvent(Key.ArrowLeft));
     await elementUpdated(element);
     expect(element.selected).toEqual(2);
     expect(radioButtons[3].checked).toBeFalsy();

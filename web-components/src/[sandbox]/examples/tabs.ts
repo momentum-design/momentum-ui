@@ -5,16 +5,16 @@ import "@/components/tabs/Tabs";
 import { html } from "lit-element";
 
 export const tabsTemplate = html`
-  <div style="max-width: 700px;">
-    <md-tabs selected="4">
-      <md-tab slot="tab" disabled>
+  <div style="max-width: 600px;">
+    <md-tabs selected="0" justified>
+      <md-tab slot="tab" label="History">
         <md-icon name="recents_16"></md-icon>
         <span>Contact History</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "Contact History"</span>
       </md-tab-panel>
-      <md-tab slot="tab" disabled>
+      <md-tab slot="tab" label="WxM">
         <md-icon name="apps_16"></md-icon>
         <span>Cisco WxM</span>
       </md-tab>

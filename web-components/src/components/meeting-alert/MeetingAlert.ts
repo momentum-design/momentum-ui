@@ -6,6 +6,7 @@
  *
  */
 
+import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
@@ -63,10 +64,10 @@ export class MeetingAlert extends LitElement {
   };
 
   handleKeyDown = (e: KeyboardEvent): void => {
-    if (e.code === "Escape" || e.key === "Escape") {
+    if (e.code === Key.Escape) {
       this.handleClose(e);
     }
-    if (e.code === "Enter" || e.key === "Enter" || e.code === "Space" || e.key === " ") {
+    if (e.code === Key.Enter || e.code === Key.Space) {
       const target = e.target as Element;
       switch (target.attributes.getNamedItem("aria-label")!.value) {
         case "close":

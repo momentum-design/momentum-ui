@@ -14,6 +14,7 @@ import {
   checkboxTemplate,
   chipTemplate,
   comboBoxTemplate,
+  datePickerTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -120,6 +121,13 @@ export class Sandbox extends LitElement {
             <h2>md-task-item</h2>
             <sass-stats component="taskitem">
               ${taskItemTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-task-item">
+            <h2>md-datepicker</h2>
+            <sass-stats component="datepicker">
+              ${datePickerTemplate}
             </sass-stats>
           </div>
 

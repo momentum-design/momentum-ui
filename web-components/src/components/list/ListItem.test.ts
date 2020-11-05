@@ -1,5 +1,5 @@
-import "@/components/list/ListItem";
-import { ListItem } from "@/components/list/ListItem";
+import "./ListItem";
+import { ListItem } from "./ListItem";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { PropertyValues } from "lit-element";
 

@@ -3,7 +3,7 @@
 @mixin global-vars {
   --sandbox-bg-color: #{$md-gray-80};
   --sandbox-secondary-bg-color: #{$md-gray-100};
-  --main-bg-color: #{$md-gray-80};
+  --main-bg-color: #{$md-gray-100};
 
   --md-default-focus-outline-color: #{$md-blue-40};
 
@@ -47,6 +47,8 @@
   --md-email-composer-bg-color: #{$md-gray-95};
   --md-email-composer-thread-bar-color: #{$md-violet-40};
   --md-email-composer-ccChip-bg-color: #{$md-gray-90};
+
+  --md-interaction-history-bg-color: #{$md-gray-95};
 
   --md-auto-wrapup-bg-color: #{$md-blue-90};
   --md-menu-overlay-border-color: #{$md-gray-80};

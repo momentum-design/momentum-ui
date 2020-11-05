@@ -6,7 +6,7 @@ import { html } from "lit-element";
 
 export const tabsTemplate = html`
   <div style="max-width: 600px;">
-    <md-tabs selected="0">
+    <md-tabs selected="0" justified>
       <md-tab slot="tab" label="History">
         <md-icon name="recents_16"></md-icon>
         <span>Contact History</span>

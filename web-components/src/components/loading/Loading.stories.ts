@@ -1,4 +1,4 @@
-import "@/components/loading/Loading";
+import "./Loading";
 import { withA11y } from "@storybook/addon-a11y";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";

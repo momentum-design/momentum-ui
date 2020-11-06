@@ -1,7 +1,7 @@
-import "@/components/button/Button";
-import "@/components/checkbox/Checkbox";
-import "@/components/input/Input";
-import "@/components/theme/Theme";
+import "../button/Button";
+import "../checkbox/Checkbox";
+import "../input/Input";
+import "../theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";

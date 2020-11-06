@@ -27,15 +27,24 @@
     height: 100%;
     max-width: 10rem;
 
-    &--grow {
+    &.md-menu-overlay__more--grow {
       flex-grow: 1;
+    }
+
+    &.md-menu-overlay__more--hidden {
+      flex-grow: initial;
+      pointer-events: none;
+      visibility: hidden;
+      width: 0 !important;
+      z-index: -1;
     }
   }
 
   .md-menu-overlay__more_tab {
     height: 100%;
+    min-height: $tab-overflow-button-height;
 
-    &--hidden {
+    &.md-menu-overlay__more_tab--hidden {
       pointer-events: none;
       visibility: hidden;
       z-index: -1;
@@ -47,6 +56,8 @@
     flex-direction: column;
     height: auto;
     max-width: 100%;
+    padding-bottom: calc(#{$tab-base-indent} * 2);
+    padding-right: calc(#{$tab-base-indent} * 2);
     width: 100%;
 
     md-tab {
@@ -100,7 +111,6 @@
   display: block;
   visibility: visible;
 }
-
 
 .md-tab__content ::slotted([slot="panel"][selected][focus-visible]:focus-visible) {
   outline: var(--tab-focus-border);

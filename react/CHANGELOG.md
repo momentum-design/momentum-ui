@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.20...@momentum-ui/react@23.18.0) (2020-11-06)
+
+
+### Features
+
+* **react:** add option to not automatically scroll Tab(s) into view ([552669c](https://github.com/momentum-design/momentum-ui/commit/552669c7961084755605f4fdcd61446b0822ca30))
+
+
+
+
+
+## [23.17.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.19...@momentum-ui/react@23.17.20) (2020-11-05)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.17.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.18...@momentum-ui/react@23.17.19) (2020-11-02)
 
 **Note:** Version bump only for package @momentum-ui/react

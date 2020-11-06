@@ -4,7 +4,7 @@ import {
   addMonths,
   getLocaleData,
   getStartOfWeek,
-  getWeekdayMinInLocale,
+  getWeekdayNameInLocale,
   localizeDate,
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
@@ -106,7 +106,7 @@ export class DatePickerCalendar extends LitElement {
       [0, 1, 2, 3, 4, 5, 6].map(offset => {
         const day = addDays(localizeDate(startOfWeek, this.locale), offset);
         const localeData = getLocaleData(day);
-        const weekDayName = getWeekdayMinInLocale(localeData, day);
+        const weekDayName = getWeekdayNameInLocale(localeData, day);
         return html`
           <div key="{offset}" class="md-datepicker__day--name">
             ${weekDayName}

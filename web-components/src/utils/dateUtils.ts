@@ -1,102 +1,96 @@
 import { DateTime } from "luxon";
 
-export function newDateWithOffset(utcOffset) {
-  return DateTime()
-    .utc()
-    .utcOffset(utcOffset);
+export interface DayFilters {
+  minDate: DateTime;
+  maxDate: DateTime;
+  filterDate: Function;
 }
 
-export function now(maybeFixedUtcOffset?): DateTime {
-  if (maybeFixedUtcOffset == null) {
-    return new DateTime();
-  }
-  return newDateWithOffset(maybeFixedUtcOffset);
+// export function newDateWithOffset(utcOffset) {
+//   // intended for use of now() with offset, currently non-existant in practice
+//   return DateTime.utc();
+// }
+
+export function now(): DateTime {
+  return new DateTime();
 }
 
-export function getStartOfWeek(date) {
+export function getStartOfWeek(date: DateTime) {
   return date.startOf("week");
 }
 
-export function getStartOfMonth(date) {
+export function getStartOfMonth(date: DateTime) {
   return date.startOf("month");
 }
 
 // Returns day of month
-export function getDate(date) {
-  return date.get("date");
+export function getDate(date: DateTime) {
+  return date.get("day");
 }
 
-export function getMonth(date) {
+export function getMonth(date: DateTime) {
   return date.get("month");
 }
 
-export function addDays(date, amount) {
-  return date.add(amount, "days");
+export function addDays(date: DateTime, amount: number): DateTime {
+  return date.plus({ days: amount });
 }
 
-export function addWeeks(date, amount) {
-  return date.add(amount, "weeks");
+export function addWeeks(date: DateTime, amount: number): DateTime {
+  return date.plus({ weeks: amount });
 }
 
-export function addMonths(date, amount) {
-  return date.add(amount, "months");
+export function addMonths(date: DateTime, amount: number): DateTime {
+  return date.plus({ months: amount });
 }
 
-export function subtractDays(date, amount) {
-  return date.subtract(amount, "days");
+export function subtractDays(date: DateTime, amount: number): DateTime {
+  return date.plus({ days: 0 - amount });
 }
 
-export function subtractWeeks(date, amount) {
-  return date.subtract(amount, "weeks");
+export function subtractWeeks(date: DateTime, amount: number): DateTime {
+  return date.plus({ weeks: 0 - amount });
 }
 
-export function subtractMonths(date, amount) {
-  return date.subtract(amount, "months");
+export function subtractMonths(date: DateTime, amount: number): DateTime {
+  return date.plus({ weeks: 0 - amount });
 }
 
-export function getLocaleData(date) {
-  return date.localeData();
+export function getLocaleData(date: DateTime): string {
+  return date.locale;
 }
 
-export function getWeekdayMinInLocale(locale, date) {
-  return locale.weekdaysMin(date).substr(0, 1);
+export function getWeekdayNameInLocale(locale: string, date: DateTime): string {
+  return date.setLocale(locale).weekdayShort.substr(0, 1);
 }
 
-export function localizeDate(date, locale = moment.locale()) {
-  return date.clone().locale(locale);
+export function localizeDate(date: DateTime, locale: string): DateTime {
+  return date.setLocale(locale);
 }
 
-export function isSameDay(moment1, moment2) {
-  if (moment1 && moment2) {
-    return moment1.isSame(moment2, "day");
-  } else {
-    return !moment1 && !moment2;
-  }
+export function isSameDay(date1: DateTime, date2: DateTime): boolean {
+  return date1 === date2;
 }
 
-export function isSameMonth(date1, date2) {
-  if (date1 && date2) {
-    return date1.isSame(date2, "month");
-  } else {
-    return !date1 && !date2;
-  }
+export function isSameMonth(date1: DateTime, date2: DateTime): boolean {
+  return date1 === date2;
 }
 
-export function isDayDisabled(day, { minDate, maxDate, filterDate } = {}) {
+export function isDayDisabled(day: DateTime, params: DayFilters): boolean {
   return (
-    (minDate && day.isBefore(DateTime(minDate), "day")) ||
-    (maxDate && day.isAfter(DateTime(maxDate), "day")) ||
-    (filterDate && filterDate(day.clone())) ||
+    (params.minDate && day < params.minDate) ||
+    (params.maxDate && day > params.maxDate) ||
+    (params.filterDate && params.filterDate(day)) ||
     false
   );
 }
 
-export function shouldPrevMonthDisable(day, minDate) {
-  const firstDayOfCurrMonth = day.clone().startOf("month");
-  return minDate && !DateTime(minDate).isBefore(firstDayOfCurrMonth);
+export function shouldPrevMonthDisable(day: DateTime, minDate: DateTime): boolean {
+  const firstDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: 1 });
+  return minDate && minDate >= firstDayOfCurrMonth;
 }
 
-export function shouldNextMonthDisable(day, maxDate) {
-  const lastDayOfCurrMonth = day.clone().endOf("month");
-  return maxDate && !DateTime(maxDate).isAfter(lastDayOfCurrMonth);
+export function shouldNextMonthDisable(day: DateTime, maxDate: DateTime) {
+  const lastDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: day.daysInMonth });
+  return maxDate && maxDate <= lastDayOfCurrMonth;
 }

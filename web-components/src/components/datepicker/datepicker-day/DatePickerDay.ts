@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import { getDate, getMonth, isSameDay, now } from "@/utils/dateUtils";
+import "@types/luxon/index";
 import { customElement, html, LitElement, property } from "lit-element";
-import DateTime from "luxon/src/datetime.js";
 
 export namespace DatePickerDay {}
 

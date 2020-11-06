@@ -124,7 +124,7 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-task-item">
+          <div class="container" aria-label="md-datepicker">
             <h2>md-datepicker</h2>
             <sass-stats component="datepicker">
               ${datePickerTemplate}

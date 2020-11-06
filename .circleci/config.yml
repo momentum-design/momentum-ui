@@ -234,6 +234,7 @@ workflows:
       - percy_finalize_all:
           requires:
             - test_react
+            - test_web_components
 
   daily_release:
     triggers:

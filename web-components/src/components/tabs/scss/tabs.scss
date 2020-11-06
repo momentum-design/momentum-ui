@@ -27,8 +27,16 @@
     height: 100%;
     max-width: 10rem;
 
-    &--grow {
+    &.md-menu-overlay__more--grow {
       flex-grow: 1;
+    }
+
+    &.md-menu-overlay__more--hidden {
+      flex-grow: initial;
+      pointer-events: none;
+      visibility: hidden;
+      width: 0 !important;
+      z-index: -1;
     }
   }
 
@@ -36,7 +44,7 @@
     height: 100%;
     min-height: $tab-overflow-button-height;
 
-    &--hidden {
+    &.md-menu-overlay__more_tab--hidden {
       pointer-events: none;
       visibility: hidden;
       z-index: -1;

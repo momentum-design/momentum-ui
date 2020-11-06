@@ -22,7 +22,6 @@ import {
   query,
   queryAll
 } from "lit-element";
-import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
@@ -89,6 +88,18 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     return [reset, styles];
   }
 
+  // This operation may affect render performance when using frequently. Use careful!
+  private measureTabsOffsetWidth() {
+    return !this.justified
+      ? this.tabs.map((tab, idx) => tab.offsetWidth)
+      : this.tabs.map((tab, idx) => {
+          tab.setAttribute("measuringrealwidth", "");
+          const offsetWidth = tab.offsetWidth;
+          tab.removeAttribute("measuringrealwidth");
+          return offsetWidth;
+        });
+  }
+
   private async manageOverflow() {
     if (this.tabsListElement && this.tabs.length > 1) {
       const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
@@ -107,7 +118,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
         tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
       }
 
-      const tabsOffsetsWidths = this.tabs.map((tab, idx) => tab.offsetWidth);
+      const tabsOffsetsWidths = this.measureTabsOffsetWidth();
 
       // All tabs total offsetsWidth
       const tabsTotalOffsetWidth = this.tabs.reduce((acc, tab, idx) => {
@@ -504,15 +515,17 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       <div
         part="tabs-list"
         class="md-tab__list ${classMap({
-          "md-tab__justified": this.justified
+          "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
         })}"
         role="tablist"
       >
         <slot name="tab"></slot>
-        ${this.isMoreTabMenuVisible ? html`<md-menu-overlay
+
+        <md-menu-overlay
           custom-width="${MORE_MENU_WIDTH}"
           class="md-menu-overlay__more ${classMap({
-            "md-menu-overlay__more--grow": this.isMoreTabMenuGrow
+            "md-menu-overlay__more--grow": this.isMoreTabMenuGrow,
+            "md-menu-overlay__more--hidden": this.isMoreTabMenuGrow && !this.isMoreTabMenuVisible
           })}"
           @menu-overlay-open="${() => {
             this.isMoreTabMenuOpen = true;
@@ -552,7 +565,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
               }
             )}
           </div>
-        </md-menu-overlay>` : nothing}
+        </md-menu-overlay>
       </div>
       <div part="tabs-content" class="md-tab__content">
         <slot name="panel"></slot>

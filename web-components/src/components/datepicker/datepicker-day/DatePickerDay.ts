@@ -1,15 +1,23 @@
 import "@/components/button/Button";
 import { DayFilters, getDate, getMonth, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
-import "@types/luxon/index";
-import { DateTime } from "@types/luxon/index";
 import { customElement, html, LitElement, property } from "lit-element";
+import { DateTime } from "luxon/index";
 
-export namespace DatePickerDay {}
+export namespace DatePickerDay {
+  export type Attributes = {
+    day?: DateTime;
+    month?: number;
+    selected?: DateTime;
+    focused?: DateTime;
+    filterParams?: DayFilters;
+    handleDayClick?: Function;
+  };
+}
 
 @customElement("md-datepicker-day")
 export class DatePickerDay extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // meant to be a DateTime instance reflecting a day
-  @property({ attribute: false }) month: number = now().month; // meant to be a DateTime instance reflecting a month
+  @property({ attribute: false }) month: number | undefined = now().month; // meant to be a DateTime instance reflecting a month
   @property({ attribute: false }) selected: DateTime = now(); // passed in current selection, a DateTime instance
   @property({ attribute: false }) focused: DateTime = now(); // passed in current selection, a DateTime instance
   @property({ attribute: false }) filterParams: DayFilters | null = null; // passed in current selection, a DateTime instance

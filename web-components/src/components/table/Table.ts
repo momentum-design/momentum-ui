@@ -1,29 +1,33 @@
-
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
-import { parse } from "path";
+import { customElement, html, LitElement, property, query } from "lit-element";
+import Papa from "papaparse";
 //import { classMap } from "lit-html/directives/class-map.js";
 //import styles from "./scss/module.scss";
 
 @customElement("md-table")
 export class Table extends LitElement {
-  @property({ type: String }) src = "./table.csv";
+  @property({ type: String }) src = '"id", "Product Name", "Quantity", "Price", "Date Purchased" \n "0", "Cappuccino", "8", "5", "Wed Feb 26 2020 00:00:00 GMT+0200 (Eastern European Standard Time)"';
 
+  @query(".md-table") table: HTMLDivElement | undefined;
 
-  tableOutput() {
-    const lines = parse //this.src.split("\n");
-    let output = [];
-    console.log(lines);
-
-    for (var i = 0; i < lines.length; i++) {
-      //output.push("<tr><td>" + lines[i].slice(0, -1).split(",").join("</td><td>") + "</td></tr>");
-      //output = "<table>" + output.join("") + "</table>";
-    }
+  csvData: any[] = [];
+  headerRow: any[] = [];
+  config = {
+    quoteChar: '"',
+    escapeChar: '"',
+    header: true,
+    preview: 0,
+    comments: false,
+    step: undefined,
+    complete: undefined,
+    download: false
   }
+
+  results = Papa.parse(this.src, this.config);
 
   connectedCallback() {
     super.connectedCallback();
-    this.tableOutput();
+    console.log(this.results);
   }
 
   static get styles() {
@@ -32,9 +36,19 @@ export class Table extends LitElement {
 
   render() {
     return html`
-      <table class="md-table">
-        Test md-table
-      </table>
+      <div class="md-table">
+         <table id="csv-table">
+          <thead>
+            <tr id="csv-table__header">
+              ${this.results.meta.fields!.map((i: any) => html`<th>${i}</th>`)}
+              <!-- <th>No data Loaded</th>   -->
+            </tr>
+          </thead>
+          <tbody id="csv-table__body">
+          </tbody>
+        </table>
+        
+      </div>
     `;
   }
 }

@@ -1,12 +1,30 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
+import { parse } from "path";
 //import { classMap } from "lit-html/directives/class-map.js";
 //import styles from "./scss/module.scss";
 
 @customElement("md-table")
 export class Table extends LitElement {
-  @property({ type: String }) size = "";
+  @property({ type: String }) src = "./table.csv";
+
+
+  tableOutput() {
+    const lines = parse //this.src.split("\n");
+    let output = [];
+    console.log(lines);
+
+    for (var i = 0; i < lines.length; i++) {
+      //output.push("<tr><td>" + lines[i].slice(0, -1).split(",").join("</td><td>") + "</td></tr>");
+      //output = "<table>" + output.join("") + "</table>";
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.tableOutput();
+  }
 
   static get styles() {
     return [reset];
@@ -14,9 +32,9 @@ export class Table extends LitElement {
 
   render() {
     return html`
-      <div class="md-table">
+      <table class="md-table">
         Test md-table
-      </div>
+      </table>
     `;
   }
 }

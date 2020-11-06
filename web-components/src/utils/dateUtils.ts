@@ -1,9 +1,9 @@
 import { DateTime } from "luxon";
 
 export interface DayFilters {
-  minDate: DateTime;
-  maxDate: DateTime;
-  filterDate: Function;
+  minDate: DateTime | null;
+  maxDate: DateTime | null;
+  filterDate: Function | null;
 }
 
 // export function newDateWithOffset(utcOffset) {

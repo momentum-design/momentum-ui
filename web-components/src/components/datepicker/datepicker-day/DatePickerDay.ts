@@ -24,6 +24,17 @@ export class DatePickerDay extends LitElement {
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // a passed function from the main picker context
   @property({ type: Boolean }) disabled = false;
 
+  // constructor(props) {
+  //   super(props);
+  //   this.dayButton = React.createRef();
+  // }
+
+  // componentDidUpdate = () => {
+  //   const { day, focus } = this.props;
+
+  //   isSameDay(day, focus) && this.dayButton.current.button.focus();
+  // }
+
   handleClick(e: MouseEvent) {
     const { handleDayClick, day } = this;
     handleDayClick && handleDayClick(e, day);
@@ -46,6 +57,7 @@ export class DatePickerDay extends LitElement {
     const hasFocus = isSameDay(day, focused);
 
     return html`
+      <h1>FART</h1>
       <md-button
         circle
         size=${28}
@@ -60,9 +72,7 @@ export class DatePickerDay extends LitElement {
         aria-selected=${isSelected}
         tab-index=${-1}
       >
-        <div aria-hidden="true">
-          ${getDate(day)}
-        </div>
+        ${getDate(day)}
       </md-button>
     `;
   }

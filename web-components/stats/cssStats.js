@@ -9,9 +9,8 @@ module.exports = function analyzeCSS(module, data) {
       repeatedSelectors: true,
       propertyResets: true
     });
-
-    writeFileSyncRecursive("stats/json/" + module + ".json", JSON.stringify(stats, null, 2));
-  } catch(err) {
-    console.log(`${module} not analyzed: `, err);
+    writeFileSyncRecursive(`stats/json/${module}.json`, JSON.stringify(stats, null, 2), "utf-8");
+  } catch (err) {
+    console.log(`"${module}" not analyzed: `, err);
   }
 };

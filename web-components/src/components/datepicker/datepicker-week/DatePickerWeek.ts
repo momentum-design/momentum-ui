@@ -8,17 +8,17 @@ export namespace DatePickerWeek {}
 @customElement("md-datepicker-week")
 export class DatePickerWeek extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
-  @property({ type: Number }) month: number = now().month; // provided from upper component scope
-  @property({ type: Boolean }) selected = false; // not sure, seems moment related?
+  @property({ type: Number }) month: number | undefined = undefined; // provided from upper component scope
+  @property({ type: Boolean }) selected = false;
   // "otherprops" need to send to datepicker-day: { selected, focus, day, month }
 
   renderDays = () => {
-    const startOfWeek = getStartOfWeek(this.day);
+    const startOfWeek = this.day && getStartOfWeek(this.day);
 
     const days = [0, 1, 2, 3, 4, 5, 6].map(offset => {
       const offsetDay = addDays(startOfWeek, offset);
       return html`
-        <md-datepicker-day .day=${offsetDay}> </md-datepicker-day>
+        <md-datepicker-day .day=${offsetDay}></md-datepicker-day>
       `;
     });
 

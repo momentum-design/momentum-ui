@@ -24,6 +24,9 @@ export class DatePickerMonth extends LitElement {
         `
       );
       currentWeekStart = addWeeks(currentWeekStart, 1);
+      console.log(month);
+      console.log(weeks);
+      console.log(currentWeekStart);
     } while (isSameMonth(currentWeekStart, this.day));
 
     return weeks;

@@ -73,7 +73,7 @@ export function isSameDay(date1: DateTime, date2: DateTime): boolean {
 }
 
 export function isSameMonth(date1: DateTime, date2: DateTime): boolean {
-  return date1 === date2;
+  return date1.month === date2.month;
 }
 
 export function isDayDisabled(day: DateTime, params: DayFilters): boolean {

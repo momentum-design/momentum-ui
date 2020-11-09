@@ -22,14 +22,12 @@ export class DatePickerDay extends LitElement {
   @property({ type: Boolean }) selected = false; // passed in current selection, a DateTime instance
   @property({ type: Boolean }) disabled = false;
   @property({ attribute: false }) day: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a day
-  @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // a passed function from the main picker context
+  @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
   @property({ attribute: false }) month: number | undefined = undefined; // meant to be a DateTime instance reflecting a month
-  @property({ attribute: false }) filterParams: DayFilters | null = null; // passed in current selection, a DateTime instance
+  @property({ attribute: false }) filterParams: DayFilters | null = null; // REFACTOR: Why pass all the way here? Can it be set above and applied to attribute?
 
-  @internalProperty() protected isOutsideMonth = false;
-  @internalProperty() protected isSelected: boolean | undefined = undefined;
-  @internalProperty() protected isToday = false;
-  @internalProperty() protected hasFocus: boolean | undefined = undefined;
+  @internalProperty() protected isOutsideMonth = false; // not sure applicability yet
+  @internalProperty() protected isToday = false; // not sure of applicability yet
 
   // componentDidUpdate = () => {    /// FROM REACT . . . intentions unclear, keep until further use cases come up. kh 11/9/20
   //   const { day, focus } = this.props;
@@ -72,8 +70,8 @@ export class DatePickerDay extends LitElement {
         class="md-datepicker__day ${classMap(dayClassMap)}"
         @click=${this.handleClick}
         aria-label=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
-        aria-selected=${ifDefined(this.isSelected)}
-        tab-index=${-1}
+        aria-selected=${ifDefined(this.selected)}
+        tab-index=${0}
       >
         ${this.day && getDate(this.day)}
       </md-button>

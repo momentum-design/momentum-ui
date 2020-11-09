@@ -12,7 +12,7 @@ export interface DayFilters {
 // }
 
 export function now(): DateTime {
-  return new DateTime();
+  return DateTime.local();
 }
 
 export function getStartOfWeek(date: DateTime) {

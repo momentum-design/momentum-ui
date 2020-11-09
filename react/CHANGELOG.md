@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.18.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.0...@momentum-ui/react@23.18.1) (2020-11-08)
+
+
+### Bug Fixes
+
+* **avatar:** bot avatar not showing with onClick bug ([#649](https://github.com/momentum-design/momentum-ui/issues/649)) ([84ace6b](https://github.com/momentum-design/momentum-ui/commit/84ace6b769032988841ef9f91d295c24e6cb0af1))
+
+
+
+
+
 # [23.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.20...@momentum-ui/react@23.18.0) (2020-11-06)
 
 

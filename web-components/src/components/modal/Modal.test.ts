@@ -60,8 +60,6 @@ describe("Modal Component", () => {
     jest.runAllTimers();
 
     expect(document.activeElement).toEqual(input);
-    expect(element.show).toBeTruthy();
-    jest.clearAllTimers();
   });
 
   test("should dispatch event when modal closed", async () => {

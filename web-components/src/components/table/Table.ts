@@ -1,21 +1,24 @@
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import Papa from "papaparse";
-//import { classMap } from "lit-html/directives/class-map.js";
-//import styles from "./scss/module.scss";
+import { classMap } from "lit-html/directives/class-map.js";
+import styles from "./scss/module.scss";
 
 @customElement("md-table")
 export class Table extends LitElement {
-  @property({ type: String }) src = '"id", "Product Name", "Quantity", "Price", "Date Purchased" \n "0", "Cappuccino", "8", "5", "Wed Feb 26 2020 00:00:00 GMT+0200 (Eastern European Standard Time)"';
+  @property({ type: String }) tabledata = "";
+  @property({ type: Boolean }) zebra = false;
+  @property({ type: Boolean }) clean = false;
 
-  @query(".md-table") table: HTMLDivElement | undefined;
+  //@query(".md-table__body") tableRow!: HTMLTableElement;
 
-  csvData: any[] = [];
-  headerRow: any[] = [];
+  csvData: any;
+  headerRow: any;
+  results: any;
   config = {
     quoteChar: '"',
     escapeChar: '"',
-    header: true,
+    header: false,
     preview: 0,
     comments: false,
     step: undefined,
@@ -23,28 +26,36 @@ export class Table extends LitElement {
     download: false
   }
 
-  results = Papa.parse(this.src, this.config);
-
   connectedCallback() {
     super.connectedCallback();
-    console.log(this.results);
+    this.results = Papa.parse(this.tabledata, this.config);
+    this.headerRow = this.results.data[0];
+    this.csvData = this.results.data.slice(1, this.results.data.length);
   }
 
   static get styles() {
-    return [reset];
+    return [reset, styles];
+  }
+
+  get tableClassMap() {
+    return {
+      "md-table--clean": this.clean,
+      "md-table--stripped": this.zebra
+    };
   }
 
   render() {
     return html`
-      <div class="md-table">
-         <table id="csv-table">
-          <thead>
-            <tr id="csv-table__header">
-              ${this.results.meta.fields!.map((i: any) => html`<th>${i}</th>`)}
+      <div class="md-table-container">
+         <table class="md-table ${classMap(this.tableClassMap)}">
+          <thead class="md-table__header">
+            <tr>
+              ${this.headerRow.map((i: any) => html`<th>${i}</th>`)}
               <!-- <th>No data Loaded</th>   -->
             </tr>
           </thead>
-          <tbody id="csv-table__body">
+          <tbody class="md-table__body">
+            ${this.csvData.map((row: any) => html`<tr>${row.map((item: any) => html`<td>${item}</td>`)}</tr>`)}
           </tbody>
         </table>
         

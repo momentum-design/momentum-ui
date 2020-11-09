@@ -164,6 +164,7 @@ class Avatar extends React.Component {
         className={
           'md-avatar' +
           `${(onClick && ` md-avatar--clickable`) || ''}` +
+          `${(onClick && type === 'bot' && ` md-avatar--clickable-bot`) || ''}` +
           `${(type && ` md-avatar--${type}`) || ''}` +
           `${(size && ` md-avatar--${size}`) || ''}` +
           `${(theme && ` md-avatar--${theme}`) || ''}` +

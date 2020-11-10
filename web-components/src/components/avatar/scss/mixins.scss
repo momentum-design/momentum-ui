@@ -1,0 +1,33 @@
+@mixin avatar-size($size: $avatar__size, $font-size: $avatar__font-size) {
+  font-size: ($size * $avatar__font-factor);
+  height: $size;
+  line-height: ($size * $avatar__line-height-factor);
+  width: $size;
+}
+
+@mixin avatar-contents-base() {
+  @include flex();
+
+  @include border-radius($global-rounded);
+  height: 100%;
+  width: 100%;
+}
+
+@mixin avatar-overlay-style(
+  $icon-color: $md-white-100,
+  $overlay-background: $black-40
+) {
+  @include avatar-contents-base();
+  background: $overlay-background;
+  color: $md-white-100;
+  font-family: $icon-font-name;
+  left: 0;
+
+  position: absolute;
+  top: 0;
+}
+
+@mixin composite-avatar-size($size: $composite-avatar--medium__size) {
+  height: $size;
+  width: $size;
+}

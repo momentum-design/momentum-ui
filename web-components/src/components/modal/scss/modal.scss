@@ -1,0 +1,424 @@
+/** @component modal */
+
+
+.md-modal {
+  @include modal-base;
+  @include modal-size($radius: true);
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &__header {
+
+    @include modal-header-size;
+    flex-shrink: 0;
+    padding-bottom: $modal-main__padding;
+    padding-left: calc(#{$modal-main__padding} / 2);
+    padding-right: calc(#{$modal-main__padding} / 2);
+    
+    .md-modal__title {
+      overflow: hidden;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .md-modal__message {
+      @include modal-header-size(
+        $font-family: $brand-font-regular,
+        $font-size: rem-calc(14),
+        $line-height: rem-calc(24)
+      ) {
+        color: var(--modal-main-text-color, $lm-modal-main-text-color-light);
+        flex-flow: row wrap;
+        text-align: center;
+      }
+    }
+
+    .md-modal__close {
+
+      @include flex;
+
+      border: 0;
+      position: absolute;
+    }
+  }
+
+  &__content {
+
+    @include modal-color($bg: $modal__background, $box-shadow: $modal-dialog__box-shadow);
+    border: $modal-dialog__border;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__flex-container {
+    @include modal-flex-container;
+  }
+
+  &__body {
+    align-items: stretch; // IE fix
+    align-self: stretch;
+    background: var(--modal-main-bg-color, $lm-modal-main-bg-color-light);
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-left: calc(#{$modal-main__padding} / 2);
+    padding-right: calc(#{$modal-main__padding} / 2);
+
+    &--padding {
+      padding: $modal__padding--body;
+    }
+  }
+
+  &__footer {
+
+    @include flex($jc: flex-end);
+    flex-shrink: 0;
+    padding-left: calc(#{$modal-main__padding} / 2);
+    padding-right: calc(#{$modal-main__padding} / 2);
+    padding-top: $modal-main__padding;
+    width: 100%;
+
+    md-button:not(:first-of-type) {
+      margin-left: rem-calc(12);
+    }
+
+    ::slotted(md-button) {
+      margin-left: rem-calc(12);
+    }
+  }
+
+  &.md-modal--full {
+    @include modal-size(
+      $width: $modal__width--full-screen,
+      $height: $modal__height--full-screen,
+      $radius: 0
+    );
+
+    .md-modal__header {
+      @include modal-header-size(
+        $font-size: $modal-header__font-size--full-screen,
+        $line-height: $modal-header__line-height--full-screen,
+        $font-family: $brand-font-regular
+      );
+
+      .md-modal__message {
+        font-size: rem-calc(20);
+        line-height: rem-calc(32);
+        padding-top: rem-calc(20);
+      }
+
+      .md-modal__close {
+        @include modal-close-button(
+          $size: rem-calc(20),
+          $font-size: rem-calc(20),
+          $top-offset: rem-calc(24),
+          $right-offset: rem-calc(24)
+        );
+      }
+    }
+
+    .md-modal__footer {
+      padding-bottom: $modal__padding--full-screen;
+      padding-top: $modal__padding--full-screen;
+    }
+  }
+
+  &.md-modal--large {
+    @include modal-size(
+      $top-offset: $modal__top--large,
+      $width: $modal__width--large,
+      $min-height: $modal__height--large,
+      $radius: true
+    );
+
+    .md-modal__header {
+      @include modal-header-size(
+        $font-size: $modal-header__font-size--large,
+        $line-height: $modal-header__line-height--large,
+        $font-family: $brand-font-regular
+      );
+
+      .md-modal__message {
+        font-size: rem-calc(16);
+        line-height: rem-calc(24);
+        text-align: left;
+      }
+
+      .md-modal__close {
+        @include modal-close-button(
+          $size: rem-calc(16),
+          $font-size: rem-calc(16),
+          $top-offset: rem-calc(16),
+          $right-offset: rem-calc(16)
+        );
+      }
+    }
+
+    @media #{$medium-only} {
+      @include modal-size(
+        $top-offset: $modal__top--tablet-medium,
+        $width: $modal__width--medium,
+        $min-height: $modal__height--medium
+      );
+
+      .md-modal__header {
+        @include modal-header-size;
+
+        .md-modal__message {
+          font-size: rem-calc(14);
+          line-height: rem-calc(24);
+          text-align: center;
+        }
+
+        .md-modal__close {
+          @include modal-close-button(
+            $size: rem-calc(14),
+            $font-size: rem-calc(14),
+            $top-offset: rem-calc(12),
+            $right-offset: rem-calc(12)
+          );
+        }
+      }
+    }
+
+    @media #{$v-medium-down} {
+      .md-modal__content {
+        min-height: auto;
+      }
+    }
+  }
+
+  &.md-modal--medium,
+  &.md-modal--default {
+    @include modal-size(
+      $top-offset: $modal__top--medium,
+      $width: $modal__width--medium,
+      $min-height: $modal__height--medium
+    );
+
+    .md-modal__close {
+      @include modal-close-button(
+        $size: rem-calc(14),
+        $font-size: rem-calc(14),
+        $top-offset: rem-calc(12),
+        $right-offset: rem-calc(12)
+      );
+    }
+
+    @media #{$medium-only} {
+      @include modal-size(
+        $top-offset: $modal__top--tablet-medium,
+        $width: $modal__width--medium,
+        $min-height: $modal__height--medium
+      );
+    }
+
+    @media #{$v-medium-down} {
+      .md-modal__content {
+        min-height: auto;
+      }
+    }
+  }
+
+  &.md-modal--small {
+    @include modal-size(
+      $top-offset: $modal__top--small,
+      $width: $modal__width--small,
+      $min-height: $modal__height--small
+    );
+
+    .md-modal__close {
+      @include modal-close-button(
+        $size: rem-calc(14),
+        $font-size: rem-calc(14),
+        $top-offset: rem-calc(12),
+        $right-offset: rem-calc(12)
+      );
+    }
+
+    // Media Query for Tablet
+    @media #{$medium-only} {
+      @include modal-size(
+        $top-offset: $modal__top--tablet-small,
+        $width: $modal__width--small,
+        $min-height: $modal__height--small
+      );
+    }
+  }
+
+  &.md-modal--dialog {
+    @include modal-size(
+      $width: $modal__width--small,
+      $radius: true,
+      $top-offset: $modal-dialog__top,
+    );
+
+    .md-modal__close {
+      @include modal-close-button(
+        $size: rem-calc(14),
+        $font-size: rem-calc(14),
+        $top-offset: rem-calc(12),
+        $right-offset: rem-calc(12)
+      );
+    }
+
+    .md-modal__content {
+      flex-direction: row;
+
+      .md-modal__header {
+        align-items: flex-start;
+        padding: $modal-header__padding--dialog;
+      }
+
+      .md-modal__title {
+        font-family: $brand-font-bold;
+        font-size: $font-size-large;
+        line-height: rem-calc(24);
+      }
+
+      .md-modal__body {
+        margin-bottom: rem-calc(24);
+        text-align: left;
+
+        > * {
+          font-family: $brand-font-regular;
+          font-size: $font-size-base;
+          line-height: rem-calc(22);
+        }
+      }
+
+      .md-modal__footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0;
+      }
+    }
+  }
+
+  &.md-modal--small,
+  &.md-modal--medium,
+  &.md-modal--large,
+  &.md-modal--full,
+  &.md-modal--default,
+  &.md-modal--dialog {
+    &.md-modal--dialog {
+      @media #{$small-only} {
+        .md-modal__flex-container {
+          min-height: calc(100vh - (#{$modal-dialog__padding} * 2));
+        }
+      }
+    }
+    //Media Query for Mobile
+    @media #{$small-only} {
+      @include modal-size($radius: 0, $height: 100vh);
+
+      .md-modal__flex-container {
+        min-height: 100vh;
+      }
+
+      .md-modal__header {
+        @include modal-header-size(
+          $font-size: $modal-header__font-size--mobile
+        );
+
+        .md-modal__message {
+          font-size: rem-calc(14);
+          line-height: rem-calc(24);
+          padding-top: rem-calc(12);
+        }
+
+        .md-modal__close {
+          @include modal-close-button(
+            $size: rem-calc(14),
+            $font-size: rem-calc(14),
+            $top-offset: rem-calc(12),
+            $right-offset: rem-calc(12)
+          );
+        }
+      }
+
+      .md-modal__footer {
+
+        @include flex;
+        padding: $modal__padding;
+        text-align: center;
+
+        md-button:not(:first-of-type) {
+          margin-left: rem-calc(16);
+        }
+      }
+    }
+  }
+}
+
+.md-modal__backdrop {
+  background: $modal-overlay-background;
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1040;
+
+  .md-modal_overlay {
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+/** @component close */
+
+.md-close {
+  color: $close__font-color;
+  float: right;
+  font-size: ($font-size-base * 1.5);
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 0 1px 0 $md-white-100;
+
+  &:hover,
+  &:focus {
+    color: $close__font-color--focus;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+
+.md-close {
+  @include easing-transition(all, 150ms, ease);
+  background: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: normal;
+  min-width: initial;
+  padding: 0;
+
+  &::before {
+    font-family: $icon-font-name;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    color: $close__font-color--hover;
+  }
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+
+  &.in {
+    opacity: 1;
+  }
+}

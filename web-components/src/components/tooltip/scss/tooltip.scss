@@ -1,0 +1,150 @@
+/** @component tooltip */
+
+@include exports("md-tooltip") {
+  .md-tooltip {
+    display: inline-flex;
+    position: relative;
+
+    &.md-tooltip--disabled {
+      .md-tooltip__container {
+        display: none;
+      }
+    }
+
+    &__content {
+      display: inline-block;
+    }
+
+    &__container {
+      animation-duration: 0.15s;
+      animation-name: tooltip-fade;
+      background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
+      border: 1px solid $tooltip-border-color;
+      border-radius: $tooltip__radius;
+      box-shadow: $tooltip-box-shadow;
+      color: var(--tooltip-font-color, $lm-tooltip-font-color-light);
+      display: none;
+      font-size: $tooltip__font-size;
+      line-height: $tooltip__line-height;
+      max-width: $tooltip__max-width;
+      min-width: $tooltip__min-width;
+      padding: $tooltip__padding;
+      position: relative;
+      text-align: center;
+      width: max-content;
+      word-break: break-word;
+      z-index: -1;
+
+      .md-tooltip__arrow,
+      .md-tooltip__arrow::before {
+        height: $tooltip-arrow__size;
+        position: absolute;
+        width: $tooltip-arrow__size;
+        z-index: -1;
+      }
+
+      .md-tooltip__arrow::before {
+        background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
+        border: 1px solid var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
+        box-shadow: inset 0 0 0 1px $tooltip-border-color;
+        content: "";
+        pointer-events: none;
+        transform: rotate(45deg);
+        z-index: 1;
+      }
+
+      &[data-show] {
+        display: block;
+        z-index: 9999;
+      }
+
+      &[data-popper-placement^="top"] > .md-tooltip__arrow {
+        bottom: -7px;
+
+        &::before {
+          border-radius: 0 0 $tooltip__radius 0;
+          clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
+          left: 0;
+        }
+      }
+
+      &[data-popper-placement^="bottom"] > .md-tooltip__arrow {
+        top: -8px;
+
+        &::before {
+          border-radius: $tooltip__radius 0 0 0;
+          clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+          left: 0;
+        }
+      }
+
+      &[data-popper-placement^="left"] > .md-tooltip__arrow {
+        right: 1px;
+
+        &::before {
+          border-radius: 0 $tooltip__radius 0 0;
+          clip-path: polygon(0% 0%, 100% 100%, 100% 0%);
+        }
+      }
+
+      &[data-popper-placement^="right"] > .md-tooltip__arrow {
+        left: -15px;
+
+        &::before {
+          border-radius: 0 0 0 $tooltip__radius;
+          clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+        }
+      }
+    }
+
+    @keyframes tooltip-fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes tooltip-slide-bottom {
+      from {
+        top: 100%;
+      }
+
+      to {
+        top: calc(100% + 0.7rem);
+      }
+    }
+
+    @keyframes tooltip-slide-top {
+      from {
+        bottom: 100%;
+      }
+
+      to {
+        bottom: calc(100% + 0.7rem);
+      }
+    }
+
+    @keyframes tooltip-slide-left {
+      from {
+        right: 100%;
+      }
+
+      to {
+        right: calc(100% + 0.7rem);
+      }
+    }
+
+    @keyframes tooltip-slide-right {
+      from {
+        left: 100%;
+      }
+
+      to {
+        left: calc(100% + 0.7rem);
+      }
+    }
+  }
+}

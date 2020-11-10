@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "orta.vscode-jest",
+    "runem.lit-plugin",
+    "ionutvmi.path-autocomplete",
+    "esbenp.prettier-vscode",
+    "mrmlnc.vscode-scss",
+    "stylelint.vscode-stylelint",
+    "sonarsource.sonarlint-vscode"
+  ]
+}

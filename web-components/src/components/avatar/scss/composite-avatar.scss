@@ -1,0 +1,89 @@
+/** @component avatar */
+
+.md-composite-avatar {
+  display: inline-block;
+  position: relative;
+
+  ::slotted(md-avatar:nth-child(1)) {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  ::slotted(md-avatar:nth-child(2)) {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  &.md-composite-avatar {
+    &--small,
+    &--28 {
+      @include avatar-size($composite-avatar--small__size);
+
+      .md-avatar {
+        @include avatar-size(
+          $composite-avatar--small__avatar-size,
+          $composite-avatar--small__avatar-font-size
+        );
+      }
+    }
+
+    &--medium,
+    &--40 {
+      @include avatar-size($composite-avatar--medium__size);
+
+      .md-avatar {
+        @include avatar-size(
+          $composite-avatar--medium__avatar-size,
+          $composite-avatar--medium__avatar-font-size
+        );
+      }
+    }
+
+    &--56 {
+      @include avatar-size($composite-avatar--56__size);
+
+      .md-avatar {
+        @include avatar-size(
+          $composite-avatar--56__avatar-size,
+          $composite-avatar--56__avatar-font-size
+        );
+      }
+    }
+
+    &--72 {
+      @include avatar-size($composite-avatar--72__size);
+
+      .md-avatar {
+        @include avatar-size(
+          $composite-avatar--72__avatar-size,
+          $composite-avatar--72__avatar-font-size
+        );
+      }
+    }
+
+    &--84 {
+      @include avatar-size($composite-avatar--84__size);
+
+      .md-avatar {
+        @include avatar-size(
+          $composite-avatar--84__avatar-size,
+          $composite-avatar--84__avatar-font-size
+        );
+      }
+    }
+
+    &--large,
+    &--135 {
+      @include composite-avatar-size($composite-avatar--large__size);
+
+      .md-avatar {
+        @include avatar-size(
+          $composite-avatar--large__avatar-size,
+          $composite-avatar--large__avatar-font-size
+        );
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+$arrow-size: rem-calc(16);
+$arrow-offset: rem-calc(2) - $arrow-size;
+
+:host {
+  --vw-padding: 16px;
+}

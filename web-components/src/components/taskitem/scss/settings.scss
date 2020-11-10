@@ -1,0 +1,41 @@
+$taskitem-border-radius: rem-calc(8);
+$taskitem-border-circle: 50%;
+$taskitem-main-indent: rem-calc(2);
+$taskitem-base-unit: $base-unit; // 4px = 0.25rem
+$taskitem-main-size: rem-calc(20);
+$taskitem-main-curcor: $cursor-pointer-value;
+$taskitem-base-height: rem-calc(14);
+$taskitem-status-height: rem-calc(12);
+$taskitem-mediatype-width: rem-calc(42);
+
+$taskitem-max-width: rem-calc(500);
+$taskitem-min-width: rem-calc(270);
+$taskitem-min-height: rem-calc(80);
+$taskitem-main-padding: rem-calc(12);
+$taskitem-main-margin: rem-calc(8);
+$taskitem-focus-margin: -$taskitem-main-indent;
+$taskitem-focus-boxshadow: 0 0 0 rem-calc(2) var(--taskitem-focus-border-color, $lm-taskitem-focus-border-color-light);
+
+$taskitem-mediatype-margin: rem-calc(8);
+$taskitem-content-min-width: rem-cacl(120);
+
+$taskitem-title-height: rem-calc(19);
+$taskitem-title-font: $brand-font-bold;
+$taskitem-title-font-size: $font-size-large;
+
+$taskitem-queue-font: $brand-font-regular;
+$taskitem-queue-font-size: $font-size-small;
+$taskitem-selected-shadow: rem-calc(0 2 4) $black-16;
+$taskitem-selected-bg: var(--taskitem-pressed-bg-color, $lm-taskitem-pressed-bg-color-light);
+
+$taskitem-additional-width: rem-calc(100);
+$taskitem-chat-padding: rem-calc(40);
+$taskitem-newchat-font-size: ceil($font-size-base * 0.71);
+$taskitem-newchat-right: -20%;
+$taskitem-newchat-margin: rem-calc(20);
+$taskitem-newchat-padding: rem-calc(2 4); 
+
+
+
+
+

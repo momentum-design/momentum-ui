@@ -17,6 +17,7 @@ ShallowWrapper {
       myKey={0}
       onKeyDown={null}
       onPress={null}
+      preventFocus={false}
       role="tab"
     />
   </TabList>,
@@ -45,6 +46,7 @@ ShallowWrapper {
           myKey={0}
           onKeyDown={[Function]}
           onPress={[Function]}
+          preventFocus={false}
           refName="navLink"
           role="tab"
         />,
@@ -68,6 +70,7 @@ ShallowWrapper {
           "myKey": 0,
           "onKeyDown": [Function],
           "onPress": [Function],
+          "preventFocus": false,
           "refName": "navLink",
           "role": "tab",
         },
@@ -95,6 +98,7 @@ ShallowWrapper {
             myKey={0}
             onKeyDown={[Function]}
             onPress={[Function]}
+            preventFocus={false}
             refName="navLink"
             role="tab"
           />,
@@ -118,6 +122,7 @@ ShallowWrapper {
             "myKey": 0,
             "onKeyDown": [Function],
             "onPress": [Function],
+            "preventFocus": false,
             "refName": "navLink",
             "role": "tab",
           },

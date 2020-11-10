@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Media from 'react-media';
 import { connect } from 'react-redux';
 import {
+  Alert,
   AlertContainer,
   Button,
   Icon,
@@ -23,6 +23,7 @@ import {
 } from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
+import locale from './locale';
 
 // Import page images
 import contactBanner from '../../assets/2020/banner-contact.svg';
@@ -265,9 +266,9 @@ class Feedback extends React.PureComponent {
 
     const renderDoneView = () => {
       return (
-        <div className="docs-content-area docs-content-feedback__done">
-          <div className="docs-content-feedback__done--image" />
-          <h3 className="docs-content-feedback__done--h3">
+        <div className="docs-content-area site-content-feedback__done site-warp">
+          <div className="site-content-feedback__done--image" />
+          <h3 className="site-content-feedback__done--h3">
             Thank you for your feedback!
           </h3>
           <div>
@@ -275,7 +276,7 @@ class Feedback extends React.PureComponent {
           </div>
           <Button
             color="gray"
-            className="docs-content-feedback__done--button"
+            className="site-content-feedback__done--button"
             onClick={() => this.handleFormReset()}
           >
             Submit more feedback
@@ -284,222 +285,255 @@ class Feedback extends React.PureComponent {
       );
     };
 
+    const renderErrorView = () => {
+      return (
+        <div className="docs-content-area site-content-feedback__error site-warp">
+          <div className="site-content-feedback__error--image" />
+          <h3 className="site-content-feedback__error--h3">
+            Oops!
+          </h3>
+          <div>
+            There was an error submitting your feedback.
+          </div>
+          <Button
+            color="gray"
+            className="site-content-feedback__error--button"
+            onClick={() => this.handleFormReset()}
+          >
+            Try again
+          </Button>
+        </div>
+      );
+    };
+
     const renderFormView = () => (
+      <div className="site-warp">
+        <SectionHeader
+          title={locale.sectionHeaders.feedback.title}
+        />
+        <div className="docs-content-area site-content-feedback">
+          <form
+            className="md-panel__form"
+            name="feedback"
+            onReset={() => this.handleFormReset(true)}
+          >
+            <div className="site-responsive-row">
+              <div>
+                {/** Email Section */}
+                <Label
+                  className="md-panel__title md-panel__form--required"
+                  htmlFor="email"
+                  label="Your email for follow-up"
+                />
+                <Input
+                  disabled={formDisabled}
+                  errorArr={
+                    formTouched && !emailValid && formErrors.email
+                      ? [{ error: formErrors.email, type: 'error' }]
+                      : []
+                  }
+                  htmlId="email"
+                  name="email"
+                  onChange={e => this.handleEmailInput(e)}
+                  onDoneEditing={this.handleBlur}
+                  onFocus={this.handleFocus}
+                  placeholder="Email Address"
+                  type="text"
+                  value={email}
+                />
+                {/** Category Section */}
+                <Label
+                  className="md-panel__title md-panel__form--required"
+                  htmlFor="type"
+                  label="Is this a design issue or a code issue?"
+                />
+                <Select
+                  className="md-panel__form--select"
+                  defaultValue="Select"
+                  disabled={formDisabled}
+                  name="category"
+                  onSelect={e => this.handleUpdateForm(e, 'category', true)}
+                  ref={this.refSelectCategory}
+                >
+                  <SelectOption label="Design" value="design" />
+                  <SelectOption label="Code" value="code" />
+                </Select>
+              </div>
+              <div>
+                {/** Type Section */}
+                <Label
+                  className="md-panel__title md-panel__form--required"
+                  htmlFor="type"
+                  label="Type of issue/request"
+                />
+                <Select
+                  className="md-panel__form--select"
+                  defaultValue="Select"
+                  disabled={formDisabled}
+                  name="type"
+                  onSelect={e => this.handleUpdateForm(e, 'type', true)}
+                  ref={this.refSelectType}
+                >
+                  <SelectOption label="New Pattern or Component" value="new" />
+                  <SelectOption label="New Feature or Improvement" value="improvement" />
+                  <SelectOption label="Bug/Issue" value="bug" />
+                </Select>
+
+                {category === 'code' && (
+                  <React.Fragment>
+                    {/** Library Section */}
+                    <Label
+                      className="md-panel__title"
+                      htmlFor="library"
+                      label="Which library?"
+                    />
+                    <Select
+                      className="md-panel__form--select"
+                      defaultValue="Select"
+                      disabled={formDisabled}
+                      name="library"
+                      onSelect={e => this.handleUpdateForm(e, 'library', true)}
+                    >
+                      <SelectOption label="Core (HTML/CSS)" value="core" />
+                      <SelectOption label="Icons" value="icons" />
+                      <SelectOption label="React" value="react" />
+                    </Select>
+                    {/** Version Section */}
+                    <Label
+                      className="md-panel__title"
+                      htmlFor="version"
+                      label="What version?"
+                    />
+                    <Input
+                      disabled={formDisabled}
+                      htmlId="version"
+                      name="version"
+                      onChange={e => this.handleUpdateForm(e, 'version')}
+                      placeholder="None"
+                      type="text"
+                      value={version}
+                    />
+                    {/** Browser Section */}
+                    <Label
+                      className="md-panel__title"
+                      htmlFor="browser"
+                      label="What browser/OS?"
+                    />
+                    <Input
+                      disabled={formDisabled}
+                      htmlId="browser"
+                      name="browser"
+                      onChange={e => this.handleUpdateForm(e, 'browser')}
+                      placeholder="None"
+                      type="text"
+                      value={browser}
+                    />
+                  </React.Fragment>
+                )}
+                {/** Description Section */}
+                <Label
+                  className="md-panel__title"
+                  htmlFor="description"
+                  label="Description"
+                />
+                <textarea
+                  className="md-input-container md-input md-panel__form--textarea"
+                  disabled={formDisabled}
+                  id="description"
+                  name="description"
+                  onChange={e => this.handleUpdateForm(e, 'description')}
+                  placeholder="Describe the issue"
+                  rows="5"
+                  type="text"
+                  value={description}
+                />
+                {/** Files Section */}
+                <input
+                  accept="image/*, video/*, application/pdf, text/plain"
+                  id="file"
+                  multiple
+                  name="file"
+                  onChange={this.handleFileUploadAdd}
+                  ref={this.refFileInput}
+                  style={{ display: 'none' }}
+                  type='file'
+                />
+
+                {files.length > 0 && (
+                  <React.Fragment>
+                    <List className="md-panel__form--files">
+                      {this.renderFileListItems()}
+                    </List>
+                    <Link onClick={this.browseFiles}>
+                      <Icon name='icon-plus_16' />
+                      &nbsp;
+                      Add another file
+                    </Link>
+                  </React.Fragment>
+                )}
+                {/** CTA Section */}
+                <div className="md-panel__form--buttons">
+
+                    {files.length === 0 && (
+                      <Button
+                        className="md-panel__form--buttons-attach-document"
+                        color="gray"
+                        disabled={formDisabled}
+                        onClick={this.browseFiles}
+                      >
+                        Attach a file
+                      </Button>
+                    )}
+                  <Button
+                    type="reset"
+                    color="gray"
+                    disabled={formDisabled}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    disabled={!formValid || formDisabled}
+                    onClick={this.handleSubmit}
+                    type="submit"
+                  >
+                    {isLoading ? <Spinner /> : 'Submit'}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        {/* {isError && (
+          <AlertContainer>
+            <Alert
+              closable
+              message="There was an error"
+              show="isError"
+            />
+          </AlertContainer>
+        )} */}
+      </div>
+    );
+
+    return (
       <div className="site-con page-body-buffer">
         <PageHero
           backgroundColor='#E6F8FF'
           backgroundImage={contactBanner}
           heroTitle='Contact Us'
         />
-        <div className="site-warp">
-          <SectionHeader
-            title="Send Feedback"
-          />
-          <div className="docs-content-area site-content-feedback">
-            <form
-              className="md-panel__form"
-              name="feedback"
-              onReset={() => this.handleFormReset(true)}
-            >
-              <div className="site-responsive-row">
-                <div>
-                  {/** Email Section */}
-                  <Label
-                    className="md-panel__title md-panel__form--required"
-                    htmlFor="email"
-                    label="Your email for follow-up"
-                  />
-                  <Input
-                    disabled={formDisabled}
-                    errorArr={
-                      formTouched && !emailValid && formErrors.email
-                        ? [{ error: formErrors.email, type: 'error' }]
-                        : []
-                    }
-                    htmlId="email"
-                    name="email"
-                    onChange={e => this.handleEmailInput(e)}
-                    onDoneEditing={this.handleBlur}
-                    onFocus={this.handleFocus}
-                    placeholder="Email Address"
-                    type="text"
-                    value={email}
-                  />
-                  {/** Category Section */}
-                  <Label
-                    className="md-panel__title md-panel__form--required"
-                    htmlFor="type"
-                    label="Is this a design issue or a code issue?"
-                  />
-                  <Select
-                    className="md-panel__form--select"
-                    defaultValue="Select"
-                    disabled={formDisabled}
-                    name="category"
-                    onSelect={e => this.handleUpdateForm(e, 'category', true)}
-                    ref={this.refSelectCategory}
-                  >
-                    <SelectOption label="Design" value="design" />
-                    <SelectOption label="Code" value="code" />
-                  </Select>
-                </div>
-                <div>
-                  {/** Type Section */}
-                  <Label
-                    className="md-panel__title md-panel__form--required"
-                    htmlFor="type"
-                    label="Type of issue/request"
-                  />
-                  <Select
-                    className="md-panel__form--select"
-                    defaultValue="Select"
-                    disabled={formDisabled}
-                    name="type"
-                    onSelect={e => this.handleUpdateForm(e, 'type', true)}
-                    ref={this.refSelectType}
-                  >
-                    <SelectOption label="New Pattern or Component" value="new" />
-                    <SelectOption label="New Feature or Improvement" value="improvement" />
-                    <SelectOption label="Bug/Issue" value="bug" />
-                  </Select>
-
-                  {category === 'code' && (
-                    <React.Fragment>
-                      {/** Library Section */}
-                      <Label
-                        className="md-panel__title"
-                        htmlFor="library"
-                        label="Which library?"
-                      />
-                      <Select
-                        className="md-panel__form--select"
-                        defaultValue="Select"
-                        disabled={formDisabled}
-                        name="library"
-                        onSelect={e => this.handleUpdateForm(e, 'library', true)}
-                      >
-                        <SelectOption label="Core (HTML/CSS)" value="core" />
-                        <SelectOption label="Icons" value="icons" />
-                        <SelectOption label="React" value="react" />
-                      </Select>
-                      {/** Version Section */}
-                      <Label
-                        className="md-panel__title"
-                        htmlFor="version"
-                        label="What version?"
-                      />
-                      <Input
-                        disabled={formDisabled}
-                        htmlId="version"
-                        name="version"
-                        onChange={e => this.handleUpdateForm(e, 'version')}
-                        placeholder="None"
-                        type="text"
-                        value={version}
-                      />
-                      {/** Browser Section */}
-                      <Label
-                        className="md-panel__title"
-                        htmlFor="browser"
-                        label="What browser/OS?"
-                      />
-                      <Input
-                        disabled={formDisabled}
-                        htmlId="browser"
-                        name="browser"
-                        onChange={e => this.handleUpdateForm(e, 'browser')}
-                        placeholder="None"
-                        type="text"
-                        value={browser}
-                      />
-                    </React.Fragment>
-                  )}
-                  {/** Description Section */}
-                  <Label
-                    className="md-panel__title"
-                    htmlFor="description"
-                    label="Description"
-                  />
-                  <textarea
-                    className="md-input-container md-input md-panel__form--textarea"
-                    disabled={formDisabled}
-                    id="description"
-                    name="description"
-                    onChange={e => this.handleUpdateForm(e, 'description')}
-                    placeholder="Describe the issue"
-                    rows="5"
-                    type="text"
-                    value={description}
-                  />
-                  {/** Files Section */}
-                  <input
-                    accept="image/*, video/*, application/pdf, text/plain"
-                    id="file"
-                    multiple
-                    name="file"
-                    onChange={this.handleFileUploadAdd}
-                    ref={this.refFileInput}
-                    style={{ display: 'none' }}
-                    type='file'
-                  />
-
-                  {files.length > 0 && (
-                    <React.Fragment>
-                      <List className="md-panel__form--files">
-                        {this.renderFileListItems()}
-                      </List>
-                      <Link onClick={this.browseFiles}>
-                        <Icon name='icon-plus_16' />
-                        &nbsp;
-                        Add another file
-                      </Link>
-                    </React.Fragment>
-                  )}
-                  {/** CTA Section */}
-                  <div className="md-panel__form--buttons">
-
-                      {files.length === 0 && (
-                        <Button
-                          className="md-panel__form--buttons-attach-document"
-                          color="gray"
-                          disabled={formDisabled}
-                          onClick={this.browseFiles}
-                        >
-                          Attach a file
-                        </Button>
-                      )}
-                    <Button
-                      type="reset"
-                      color="gray"
-                      disabled={formDisabled}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      disabled={!formValid || formDisabled}
-                      onClick={this.handleSubmit}
-                      type="submit"
-                    >
-                      {isLoading ? <Spinner /> : 'Submit'}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          {isError && (
-            <AlertContainer orderNewest={false} />
-          )}
-        </div>
+        {
+          isSuccess && renderDoneView()
+            || !isError && renderFormView()
+            || isError && renderErrorView()
+        }
       </div>
-    );
-
-    return isSuccess ? renderDoneView() : renderFormView();
+    )
   }
 }
 
 const mapStateToProps = state => ({
-  ...state.feedbackReducer
+  ...state.feedbackReducer2020
 });
 
 const mapDispatchToProps = {

@@ -1,0 +1,295 @@
+
+.md-avatar {
+
+  @include avatar-size;
+  border-radius: 100%;
+  display: inline-flex;
+  font-family: $brand-font-regular;
+  position: relative;
+  text-transform: uppercase;
+  user-select: none;
+
+  > .md-avatar__failure-badge::after {
+
+    @include flex;
+    @include border-radius($global-rounded);
+    background-color: $avatar-failure-badge__background;
+    bottom: $avatar-badge__spacing;
+    color: $avatar-failure-badge__color;
+    content: $icon-priority_12;
+    font-family: $icon-font-name;
+    font-size: $avatar-failure-badge__size;
+    height: $avatar-failure-badge__size;
+    position: absolute;
+    right: $avatar-badge__spacing;
+    width: $avatar-failure-badge__size;
+    z-index: $zindex-close;
+  }
+
+  > .md-avatar__notification-badge::after {
+    @include border-radius($global-rounded);
+
+    @include flex;
+    background-color: $avatar-notification-badge__color;
+    content: "\00a0";
+    height: $avatar-notification-badge__size;
+    position: absolute;
+    right: $avatar-badge__spacing;
+    top: $avatar-badge__spacing;
+    width: $avatar-notification-badge__size;
+    z-index: $zindex-close;
+  }
+
+  &.md-avatar--dark {
+    &.md-avatar--active::after {
+      box-shadow: $avatar--active__shadow--dark;
+    }
+  }
+
+  &.md-avatar--typing {
+    > .md-loading {
+      @include avatar-overlay-style;
+    }
+  }
+
+  &.md-avatar--bot::after {
+    background-color: $avatar-bot__background;
+    border-radius: $avatar-bot__border-radius;
+    bottom: 0;
+    color: $avatar-bot__color;
+    content: "Bot";
+    font-size: $avatar-bot__font-size;
+    left: 0;
+    line-height: $avatar-bot__line-height;
+    padding: $avatar-bot__padding;
+    position: absolute;
+    text-transform: none;
+  }
+
+  .md-avatar__img {
+    @include avatar-contents-base;
+
+    background-color: $avatar-img__background;
+  }
+
+  .md-avatar__letter {
+    @include avatar-contents-base;
+    background-color: $avatar-letter__background;
+    color: $avatar-letter__color;
+
+    md-loading {
+      align-items: center;
+      background: $black-40;
+      border-radius: 100%;
+      bottom: 0;
+      color: $md-white-100;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .md-avatar__self {
+    @include avatar-contents-base;
+
+    background-color: $avatar-self__background;
+    border: $avatar-self__border;
+    color: $avatar-self__color;
+  }
+
+  .md-avatar__icon {
+    @include avatar-contents-base;
+    background-color: $avatar-icon__background;
+
+    color: $avatar-icon__color;
+    fill: currentColor;
+
+    &--overview {
+      @include border-radius($global-rounded);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px $white-16;
+
+      color: $md-white-100;
+    }
+  }
+
+  .md-avatar__icon,
+  .md-avatar__letter {
+    &.md-avatar--blue {
+      background-color: var(--avatar-blue-bg-color, $lm-avatar-blue-bg-color-light);
+    }
+
+    &.md-avatar--mint {
+      background-color: var(--avatar-mint-bg-color, $lm-avatar-mint-bg-color-light);
+    }
+
+    &.md-avatar--darkmint {
+      background-color: var(--avatar-darkmint-bg-color, $lm-avatar-darkmint-bg-color-light);
+    }
+
+    &.md-avatar--green {
+      background-color: var(--avatar-green-bg-color, $lm-avatar-green-text-color-light);
+    }
+
+    &.md-avatar--yellow {
+      background-color: var(--avatar-yellow-bg-color, $lm-avatar-yellow-bg-color-light);
+    }
+
+    &.md-avatar--red {
+      background-color: var(--avatar-red-bg-color, $lm-avatar-red-bg-color-light);
+    }
+
+    &.md-avatar--orange {
+      background-color: var(--avatar-orange-bg-color, $lm-avatar-orange-bg-color-light);
+    }
+
+    &.md-avatar--purple {
+      background-color: var(--avatar-purple-bg-color, $lm-avatar-purple-bg-color-light);
+    }
+
+    &.md-avatar--violet {
+      background-color: var(--avatar-violet-bg-color, $lm-avatar-violet-bg-color-light);
+    }
+
+    &.md-avatar--cyan {
+      background-color: var(--avatar-cyan-bg-color, $lm-avatar-cyan-bg-color-light);
+    }
+
+    &.md-avatar--cobalt {
+      background-color: var(--avatar-cobalt-bg-color, $lm-avatar-cobalt-bg-color-light);
+    }
+
+    &.md-avatar--pink {
+      background-color: var(--avatar-pink-bg-color, $lm-avatar-pink-bg-color-light);
+    }
+
+    &.md-avatar--slate {
+      background-color: var(--avatar-slate-bg-color, $lm-avatar-slate-bg-color-light);
+    }
+
+    &.md-avatar--gold {
+      background-color: var(--avatar-gold-bg-color, $lm-avatar-gold-bg-color-light);
+    }
+
+    &.md-avatar--lime {
+      background-color: var(--avatar-lime-bg-color, $lm-avatar-lime-bg-color-light);
+    }
+  }
+
+  .md-avatar__img--hidden {
+    display: none;
+  }
+
+  &.md-avatar--clickable::after {
+    @include avatar-contents-base;
+    content: "";
+
+    position: absolute;
+  }
+
+  &.md-avatar--clickable {
+    &:hover::after {
+      @include avatar-overlay-style($md-white-100, $black_08);
+    }
+
+    &:active::after {
+      @include avatar-overlay-style($md-white-100, $black_16);
+    }
+  }
+
+  &.md-avatar--active::after {
+    @include avatar-contents-base;
+    box-shadow: $avatar--active__shadow;
+    content: "";
+    left: 0;
+
+    position: absolute;
+  }
+
+  &.md-avatar--inactive {
+    opacity: $avatar--inactive__opacity;
+  }
+
+  @each $size-class, $dnd-size, $pto-size, $call-size, $meet-size,
+    $present-size, $dimension in $avatar-sizes {
+    $size: $size-class;
+
+    @if $dimension {
+      $size: $dimension;
+    }
+
+    &.md-avatar--#{$size-class} {
+      @include avatar-size(rem-calc($size));
+
+      &.md-avatar--ooo::after {
+        @include avatar-overlay-style;
+        content: $pto-size;
+
+        font-size: rem-calc($size/2);
+      }
+
+      &.md-avatar--dnd::after {
+        @include avatar-overlay-style;
+        content: $dnd-size;
+
+        font-size: rem-calc($size/2);
+      }
+
+      &.md-avatar--call::after {
+        @include avatar-overlay-style;
+        content: $call-size;
+
+        font-size: rem-calc($size/2);
+      }
+
+      &.md-avatar--meeting::after {
+        @include avatar-overlay-style;
+        content: $meet-size;
+
+        font-size: rem-calc($size/2);
+      }
+
+      &.md-avatar--presenting::after {
+        @include avatar-overlay-style;
+        content: $present-size;
+
+        font-size: rem-calc($size/2);
+      }
+
+      &.md-avatar--self {
+        md-icon {
+          height: rem-calc($size);
+        }
+
+        md-icon::part(icon) {
+          line-height: rem-calc($size);
+        }
+      }
+    }
+  }
+}
+
+
+:host {
+  display: inline-block;
+  line-height: 0rem;
+  vertical-align: middle;
+}
+
+::slotted(*) {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+::slotted(img) {
+  border-style: none;
+  display: inline-block;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  vertical-align: middle;
+}

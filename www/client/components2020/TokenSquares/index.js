@@ -4,7 +4,7 @@ import React from 'react';
 import colorTokenImage from '../../assets/2020/banner-color.svg';
 import typographyTokenImage from '../../assets/2020/banner-typography.svg';
 import elevationTokenImage from '../../assets/2020/banner-elevation.svg';
-import spaceTokenImage from '../../assets/2020/banner-space.svg';
+import spaceTokenImage from '../../assets/2020/token-space.svg';
 
 class TokenSquares extends React.PureComponent {
 

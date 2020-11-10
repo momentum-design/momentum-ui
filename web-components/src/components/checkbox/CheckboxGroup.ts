@@ -1,0 +1,88 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import { Key } from "@/constants";
+import { RovingTabIndexMixin } from "@/mixins";
+import reset from "@/wc_scss/reset.scss";
+import { customElement, html, LitElement, property, query } from "lit-element";
+import styles from "./scss/module.scss";
+
+@customElement("md-checkboxgroup")
+export class CheckboxGroup extends RovingTabIndexMixin(LitElement) {
+  @property({ type: String, attribute: "group-label" }) label = "group";
+  @property({ type: String, reflect: true }) alignment: "horizontal" | "vertical" = "vertical";
+
+  @query("slot[name='checkbox']") checkboxSlot?: HTMLSlotElement;
+
+  static get styles() {
+    return [reset, styles];
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("keydown", this.handleKeyDown);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener("keydown", this.handleKeyDown);
+  }
+
+  private switchCheckboxOnArrowPress(startIndex: number, increment = 1) {
+    const newIndex = super.getAvailableSelectedIndex!(startIndex, increment);
+    if (newIndex !== -1) {
+      this.selected = newIndex;
+    }
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    const { code } = event;
+    switch (code) {
+      case Key.ArrowUp:
+      case Key.ArrowLeft:
+        {
+          if (this.selected === 0) {
+            this.switchCheckboxOnArrowPress(this.slotted.length - 1, -1);
+          } else {
+            this.switchCheckboxOnArrowPress(this.selected - 1, -1);
+          }
+        }
+        break;
+      case Key.ArrowDown:
+      case Key.ArrowRight:
+        {
+          if (this.selected === this.slotted.length - 1) {
+            this.switchCheckboxOnArrowPress(0);
+          } else {
+            this.switchCheckboxOnArrowPress(this.selected + 1);
+          }
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  get slotElement() {
+    return this.checkboxSlot;
+  }
+
+  render() {
+    return html`
+      <div role="group" aria-labelledby="id-group-label">
+        <slot name="checkbox"></slot>
+      </div>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "md-checkboxgroup": CheckboxGroup;
+  }
+}

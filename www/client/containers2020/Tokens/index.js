@@ -34,7 +34,7 @@ class TokensLanding extends React.PureComponent {
     return (
       <div className='site-con'>
         <PageHero
-          backgroundColor='linear-gradient(0.25turn, #E6F8FF, #f5eaa2, #ddf2ae, #ffe0e7)'
+          backgroundColor='#EDEDED'
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=421%3A531'
           githubURL='https://github.com/momentum-design/momentum-ui/tree/master/tokens'
           heroTitle='Tokens'

@@ -42,6 +42,7 @@ class Personality extends React.PureComponent {
       <div className="site-con">
         <div className="site-con site-bg-black page-body-buffer personality-page-container">
           <PageHero
+            backgroundColor='transparent'
             className='personality-page-hero'
             heroTitle='Personality'
           />

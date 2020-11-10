@@ -53,7 +53,7 @@ export function subtractWeeks(date: DateTime, amount: number): DateTime {
 }
 
 export function subtractMonths(date: DateTime, amount: number): DateTime {
-  return date.plus({ weeks: 0 - amount });
+  return date.plus({ months: 0 - amount });
 }
 
 export function getLocaleData(date: DateTime): string {

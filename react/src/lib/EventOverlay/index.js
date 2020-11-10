@@ -408,7 +408,7 @@ class EventOverlay extends React.Component {
     document.removeEventListener('click', this.handleCloseOnClick, false);
     document.removeEventListener('keydown', this.handleKeyDown, false);
 
-    window.removeEventListener('resize', this.handleResize, true);
+    window.removeEventListener('resize', this.handleResize, false);
     document.removeEventListener('scroll', this.handleScroll, false);
 
     scrollParent && scrollParent.removeEventListener('scroll', this.handleScroll, false);

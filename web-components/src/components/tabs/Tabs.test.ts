@@ -115,7 +115,7 @@ describe("Tabs", () => {
     }
 
     await elementUpdated(tabs);
-    expect(consoleSpy).toHaveBeenCalledWith("The tabs or panels count should't equal zero.");
+    expect(consoleSpy).toHaveBeenCalledWith("The tabs or panels count should't be equal zero.");
 
     consoleSpy.mockRestore();
   });

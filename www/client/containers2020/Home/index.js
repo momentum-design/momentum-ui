@@ -1,43 +1,30 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Button } from '@momentum-ui/react';
 import SectionHeader from '../../components2020/SectionHeader';
 import TokenSquares from '../../components2020/TokenSquares';
 import locale from './locale';
 
-// Import page images
-import colorTokenImage from '../../assets/2020/banner-color.svg';
-import typographyTokenImage from '../../assets/2020/banner-typography.svg';
-import elevationTokenImage from '../../assets/2020/banner-elevation.svg';
-import spaceTokenImage from '../../assets/2020/banner-space.svg';
+import gitHubBanner from '../../assets/2020/banner-github.svg';
+import developerBanner from '../../assets/2020/banner-developers.svg';
+import figmaBanner from '../../assets/2020/banner-figma.svg';
+import AppHeader2020 from '../../components2020/AppHeader';
 
 class HomePage extends React.PureComponent {
-
-  state = {
-    mainImage: '',
-    description: '',
-    displayName: '',
-    homeSections: [],
-  }
-
-  componentDidMount = () => {
-
-  }
-
   render() {
 
     const square_icon = (
       <div className="site-con site-bg-slate site-home-icon">
         <div className='site-warp site-responsive-row'>
           <div className='site-home-sub-banner'>
-            <h1>Icons</h1>
-            <p>Momentum icons are simple and consistent across platforms. They follow our attributes of focused, familiar, and inclusive in metaphor and design. Our icons act as visual support to help people move through the experience more effectively.</p>
+            <h1>{locale.squareContainers.icons.title}</h1>
+            <p>{locale.squareContainers.icons.body}</p>
             <NavLink to="/2020/icons">
               <Button
                 ariaLabel='Icon library'
                 className='site-home-sub-button site-home-sub-button-icon'
                 size={52}
-              >Icon library</Button>
+              >{locale.squareContainers.icons.button}</Button>
             </NavLink>
           </div>
           <div className='site-home-sub-banner-bg'></div>
@@ -50,16 +37,14 @@ class HomePage extends React.PureComponent {
         <div className='site-warp site-responsive-row'>
           <div className='site-home-sub-banner-bg'></div>
           <div className='site-home-sub-banner'>
-            <h1>Personality</h1>
-            <p>Our personality is a fundamental piece
-            of our experiences. It ensures our products feel genuinely Webex and show users who we are and what our products stand for. See some
-of the ways our personality comes to life in: <strong>Copy, Illustration, and Motion</strong></p>
+            <h1>{locale.squareContainers.personality.title}</h1>
+            <p>{locale.squareContainers.personality.body}</p>
             <NavLink to="/2020/personality">
               <Button
                 ariaLabel='Show me personality'
                 className='site-home-sub-button site-home-sub-button-personality'
                 size={52}
-              >Show me personality</Button>
+              >{locale.squareContainers.personality.button}</Button>
             </NavLink>
           </div>
         </div>
@@ -69,25 +54,27 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
     const square_developers = (
       <div className='site-responsive-row home-developers-guide'>
         <div className='site-home-banner3 site-home-github'>
-          <h1>Github</h1>
-          <p>Browse our latest repos and release notes.</p>
+          <img src={gitHubBanner} />
+          <h1>{locale.squareContainers.github.title}</h1>
+          <p>{locale.squareContainers.github.body}</p>
           <a href="https://github.com/momentum-design">
             <Button
               ariaLabel='Browse repos'
               className="site-home-sub-button-github"
               size={52}
-            >Browse repos</Button>
+            >{locale.squareContainers.github.button}</Button>
           </a>
         </div>
         <div className='site-home-banner3 site-home-cisco'>
-          <h1>Cisco Webex for developers</h1>
-          <p>Start building apps right on the Webex platform.</p>
+          <img src={developerBanner} />
+          <h1>{locale.squareContainers.webexDevs.title}</h1>
+          <p>{locale.squareContainers.webexDevs.body}</p>
           <a href="https://developer.webex.com/">
             <Button
               ariaLabel='Start building'
               className="site-home-sub-button-developers"
               size={52}
-            >Start building</Button>
+            >{locale.squareContainers.webexDevs.button}</Button>
           </a>
         </div>
       </div>
@@ -95,14 +82,15 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
 
     const square_designers = (
       <div className='site-home-banner3 site-home-figma fix-margin'>
-        <h1>Figma</h1>
-        <p>Figma is where we store and distribute all our guidelines, components, and tokens.</p>
+        <img src={figmaBanner} />
+        <h1>{locale.squareContainers.figma.title}</h1>
+        <p>{locale.squareContainers.figma.body}</p>
         <a href="https://www.figma.com/file/WHcIjwJZRBzxWAx4TSDhQHBT/Momentum.design?node-id=2337%3A14517">
           <Button
             ariaLabel='Open Figma'
             className="site-home-sub-button-figma"
             size={52}
-          >Open Figma</Button>
+          >{locale.squareContainers.figma.button}</Button>
         </a>
       </div>
     );
@@ -116,10 +104,10 @@ of the ways our personality comes to life in: <strong>Copy, Illustration, and Mo
               <p>{locale.header.body}</p>
               <NavLink to="/2020/system">
                 <Button
-                    ariaLabel='Learn about the system'
-                    className="site-banner-home-button md-button--blue"
-                    size={52}
-                  >Learn about the system</Button>
+                  ariaLabel='Learn about the system'
+                  className="site-banner-home-button md-button--blue"
+                  size={52}
+                >Learn about the system</Button>
               </NavLink>
             </div>
             <div className="site-banner-home-image"></div>

@@ -1,13 +1,16 @@
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
-import { Avatar } from "@/components/avatar/Avatar";
+import "@/components/avatar/Avatar";
+import { nothing } from "lit-html";
 
-customElement("md-chat-message");
+
+@customElement("md-chat-message")
 export class ChatMessage extends LitElement {
   @property({ type: String }) title = "";
   @property({ type: String }) src = "";
   @property({ type: String }) time = "";
+  @property({ type: Boolean }) self = false;
   static get styles() {
     return [reset, styles];
   }
@@ -15,22 +18,28 @@ export class ChatMessage extends LitElement {
   render() {
     return html`
       <div class="md-chat-message">
-        <md-avatar title=${this.title} src=${this.src}></md-avatar>
-        <div class="md-chat-message__content">
-          <div class="md-chat-message__title">
-            ${this.title}
+        <md-avatar
+          type="${this.self ? "self" : ""}"
+          title=${this.self ? "self" : this.title}
+          src=${this.self ? "" : this.src}
+        ></md-avatar>
+
+        <div class="md-chat-message_content">
+          <div class="md-chat-message_heading">
+            <div class="md-chat-message_title">
+              <span>${this.self ? "You" : this.title}</span>
+            </div>
+            <div class="md-chat-message_time">
+              ${this.time}
+            </div>
           </div>
-          <div class="md-chat-message__time">
-            ${this.time}
-          </div>
-          <div class="md-chat-message__text">
+          <div class="md-chat-message_text">
             <slot name="message"></slot>
           </div>
         </div>
       </div>
     `;
   }
-
 }
 
 declare global {

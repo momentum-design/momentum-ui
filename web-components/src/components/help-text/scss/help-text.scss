@@ -2,15 +2,15 @@
   font-size: $help-text__font-size;
 
   &.md-success {
-    @include message-color(var(--md-alert-success-text-color, $md-green-70));
+    @include message-format(var(--md-alert-success-text-color, $md-green-70));
   }
 
   &.md-error {
-    @include message-color(var(--md-alert-error-text-color, $md-red-70));
+    @include message-format(var(--md-alert-error-text-color, $md-red-70));
   }
 
   &.md-warning {
-    @include message-color(var(--md-alert-warning-text-color, $md-yellow-70));
+    @include message-format(var(--md-alert-warning-text-color, $md-yellow-70));
   }
 }
 

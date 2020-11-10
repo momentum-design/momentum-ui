@@ -1,5 +1,5 @@
 import "@/components/button/Button";
-import { DayFilters, getDate, now } from "@/utils/dateUtils";
+import { DayFilters, getDate, isDayDisabled, now } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -13,10 +13,10 @@ export class DatePickerDay extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ attribute: false }) day: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a day
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
-  @property({ attribute: false }) month: number | undefined = undefined; // meant to be a DateTime instance reflecting a month
-  @property({ attribute: false }) filterParams: DayFilters | null = null; // REFACTOR: Why pass all the way here? Can it be set above and applied to attribute?
+  @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
 
-  @internalProperty() protected isOutsideMonth = false; // not sure applicability yet
+  @internalProperty() protected isOutsideMonth = false; //  neeeded for changing styles of prev/next month dates: "--outside-month"
   @internalProperty() protected isToday = false; // not sure of applicability yet
 
   // componentDidUpdate = () => {    /// FROM REACT . . . intentions unclear, keep until further use cases come up. kh 11/9/20
@@ -30,9 +30,9 @@ export class DatePickerDay extends LitElement {
     if (this.day === undefined) {
       this.day = now();
     }
-    if (this.day.day === now().day) {
-      this.isToday = true;
-    }
+    this.isToday = this.day.day === now().day;
+    this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
+    this.selected = this.datePickerProps && this.datePickerProps.selected.day === this.day.day ? true : false;
   }
 
   handleClick = (e: MouseEvent) => {

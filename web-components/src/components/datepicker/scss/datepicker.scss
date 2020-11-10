@@ -36,8 +36,13 @@
       background: #cecece;
     }
 
-    &--selected {
+    &--today {
       color: orange;
+    }
+
+    &--selected {
+      background: #000;
+      color: white;
     }
 
     &--focus {

@@ -1,5 +1,5 @@
 import "@/components/datepicker/datepicker-day/DatePickerDay";
-import { addDays, getStartOfWeek, now } from "@/utils/dateUtils";
+import { addDays, DayFilters, getStartOfWeek, now } from "@/utils/dateUtils";
 import { customElement, html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 
@@ -8,9 +8,14 @@ export namespace DatePickerWeek {}
 @customElement("md-datepicker-week")
 export class DatePickerWeek extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
-  @property({ type: Number }) month: number | undefined = undefined; // provided from upper component scope
-  @property({ type: Boolean }) selected = false;
+  @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
+
   // "otherprops" need to send to datepicker-day: { selected, focus, day, month }
+  // selected flags if it is currently selected
+  // focused flags if it is currently focused
+  // day helps determine . . . what? the provided date?
+  // Month is neeeded for changing styles of prev/next month dates: "--outside-month"
 
   renderDays = () => {
     const startOfWeek = this.day && getStartOfWeek(this.day);
@@ -18,7 +23,11 @@ export class DatePickerWeek extends LitElement {
     const days = [0, 1, 2, 3, 4, 5, 6].map(offset => {
       const offsetDay = addDays(startOfWeek, offset);
       return html`
-        <md-datepicker-day .day=${offsetDay}></md-datepicker-day>
+        <md-datepicker-day
+          .day=${offsetDay}
+          .filterParams=${this.filterParams}
+          .datePickerProps=${this.datePickerProps}
+        ></md-datepicker-day>
       `;
     });
 

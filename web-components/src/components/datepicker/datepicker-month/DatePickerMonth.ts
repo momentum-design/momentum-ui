@@ -1,5 +1,5 @@
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
-import { addWeeks, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
+import { addWeeks, DayFilters, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
 import { customElement, html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 
@@ -8,6 +8,8 @@ export namespace DatePickerMonth {}
 @customElement("md-datepicker-month")
 export class DatePickerMonth extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
+  @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
 
   renderWeeks = () => {
     let currentWeekStart = getStartOfWeek(getStartOfMonth(this.day));
@@ -18,7 +20,11 @@ export class DatePickerMonth extends LitElement {
     do {
       weeks.push(
         html`
-          <md-datepicker-week .day=${currentWeekStart} month=${month}></md-datepicker-week>
+          <md-datepicker-week
+            .day=${currentWeekStart}
+            .filterParams=${this.filterParams}
+            .datePickerProps=${this.datePickerProps}
+          ></md-datepicker-week>
         `
       );
       currentWeekStart = addWeeks(currentWeekStart, 1);

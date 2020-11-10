@@ -27,9 +27,11 @@ export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) nextArialLabel = undefined;
   @property({ attribute: false }) previousArialLabel = undefined;
   @property({ attribute: false }) date: DateTime = now();
-  @property({ attribute: false }) focused: DateTime = now();
-  @property({ attribute: false }) minDate: DateTime | undefined = undefined;
-  @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
+  @property({ attribute: false }) focused: DateTime | undefined = undefined;
+  @property({ attribute: false }) selected: DateTime | undefined = now().plus({ days: 2 });
+  @property({ attribute: false }) minDate: DateTime | undefined = now().minus({ days: 10 });
+  @property({ attribute: false }) maxDate: DateTime | undefined = now().plus({ days: 10 });
+  @property({ attribute: false }) filterDate: Function | null = null;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
 
   updated(changedProperties: PropertyValues) {
@@ -75,7 +77,6 @@ export class DatePickerCalendar extends LitElement {
   };
 
   renderPreviousMonthButton = () => {
-    const { minDate } = this;
     const allPrevDaysDisabled = this.minDate && shouldPrevMonthDisable(this.date, this.minDate);
     return html`
       <md-button
@@ -85,7 +86,7 @@ export class DatePickerCalendar extends LitElement {
             : this.previousArialLabel
         )}
         ?disabled=${allPrevDaysDisabled}
-        onClick=${this.decreaseMonth}
+        @click=${!allPrevDaysDisabled && this.decreaseMonth}
         tabindex="-1"
         hasRemoveStyle
       >
@@ -94,7 +95,6 @@ export class DatePickerCalendar extends LitElement {
     `;
   };
   renderNextMonthButton = () => {
-    const { maxDate } = this;
     const allNextDaysDisabled = this.maxDate && shouldNextMonthDisable(this.date, this.maxDate);
     return html`
       <md-button
@@ -102,7 +102,7 @@ export class DatePickerCalendar extends LitElement {
           !this.nextArialLabel ? `next month, ${addMonths(this.date, 1).toFormat("MMMM")}` : this.nextArialLabel
         )}
         ?disabled=${allNextDaysDisabled}
-        onClick=${this.increaseMonth}
+        @click=${!allNextDaysDisabled && this.increaseMonth}
         tabindex="-1"
         hasRemoveStyle
         ><md-icon name="arrow-right_16"></md-icon>
@@ -141,7 +141,11 @@ export class DatePickerCalendar extends LitElement {
             ${this.header()}
           </div>
         </div>
-        <md-datepicker-month .day=${this.date}></md-datepicker-month>
+        <md-datepicker-month
+          .day=${this.date}
+          .filterParams=${{ minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate }}
+          .datePickerProps=${{ selected: this.selected, focused: this.focused }}
+        ></md-datepicker-month>
       </div>
     `;
   };

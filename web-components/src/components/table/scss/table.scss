@@ -13,6 +13,28 @@
       font-weight: bold;
       color: #545454;
       padding-left: 12px;
+
+      a {
+        color: #545454;
+        &.sortedAbc {
+          &:after {
+            display: inline-block;
+            content: $icon-arrow-filled-down_10;
+            font-family: $icon-font-name;
+            padding-left: 5px;
+            vertical-align: bottom;
+          }
+        }
+        &.sortedZ {
+          &:after {
+            display: inline-block;
+            content: $icon-arrow-filled-up_10;
+            font-family: $icon-font-name;
+            padding-left: 5px;
+            vertical-align: bottom;
+          }
+        }
+      }
     }
   }
 

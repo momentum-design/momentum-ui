@@ -124,6 +124,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (this.triggerElement) {
       this.triggerElement.removeEventListener("click", this.handleTriggerClick);
       this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
+      this.triggerElement = null;
     }
   }
 
@@ -324,9 +325,9 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
   private focusInsideOverlay() {
     if (this.focusableElements) {
       if (this.focusableElements.length > 1) {
-        this.focusTrapIndex = 1;
+        this.setFocusableElement!(1);
       } else if (this.focusableElements.length) {
-        this.focusTrapIndex = 0;
+        this.setFocusableElement!();
       }
     }
   }

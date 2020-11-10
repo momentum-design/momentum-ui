@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.18.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.1...@momentum-ui/react@23.18.2) (2020-11-10)
+
+
+### Bug Fixes
+
+* **EventOverlay:** change removal of resize event handler to correctly remove the event ([#650](https://github.com/momentum-design/momentum-ui/issues/650)) ([35d51e0](https://github.com/momentum-design/momentum-ui/commit/35d51e061500d1dd75be1b5b0c26fef16b869925))
+
+
+
+
+
 ## [23.18.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.0...@momentum-ui/react@23.18.1) (2020-11-08)
 
 

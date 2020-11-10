@@ -54,7 +54,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab>;
 
   @internalProperty() private isMoreTabMenuVisible = false;
-  @internalProperty() private isMoreTabMenuGrow = false;
+  @internalProperty() private isMoreTabMenuMeasured = false;
   @internalProperty() private isMoreTabMenuOpen = false;
   @internalProperty() private isMoreTabMenuSelected = false;
   @internalProperty() private moreTabMenuOffsetWidth = 0;
@@ -101,7 +101,8 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   private async manageOverflow() {
-    if (this.tabsListElement && this.tabs.length > 1) {
+    const tabsCount = this.tabs.length;
+    if (this.tabsListElement && tabsCount > 1) {
       const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
 
       // Awaiting tabs updates
@@ -127,6 +128,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       }, 0);
 
       if (tabsTotalOffsetWidth) {
+        // more
         await this.setupMoreTab();
 
         let isTabsFitInViewport = true;
@@ -144,7 +146,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
 
           const isTabInViewportHidden = isTabsFitInViewport
             ? false
-            : tabsOffsetWidthSum + (idx < this.tabs.length - 1 ? this.moreTabMenuOffsetWidth : 0) >
+            : tabsOffsetWidthSum + (idx < tabsCount - 1 ? this.moreTabMenuOffsetWidth : 0) >
               tabsListViewportOffsetWidth;
 
           newTabsViewportList.push({
@@ -200,7 +202,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     const { tabs, panels } = this;
 
     if (tabs.length === 0 || panels.length === 0) {
-      console.warn(`The tabs or panels count should't equal zero.`);
+      console.warn(`The tabs or panels count should't be equal zero.`);
       return;
     }
 
@@ -474,11 +476,11 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   private async setupMoreTab() {
-    if (this.moreTabMenuElement && !this.isMoreTabMenuGrow) {
+    if (this.moreTabMenuElement && !this.isMoreTabMenuMeasured) {
       await this.moreTabMenuElement.updateComplete;
       if (this.moreTabMenuElement.offsetWidth) {
         this.moreTabMenuOffsetWidth = this.moreTabMenuElement.offsetWidth;
-        this.isMoreTabMenuGrow = true;
+        this.isMoreTabMenuMeasured = true;
       }
     }
   }
@@ -524,8 +526,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
         <md-menu-overlay
           custom-width="${MORE_MENU_WIDTH}"
           class="md-menu-overlay__more ${classMap({
-            "md-menu-overlay__more--grow": this.isMoreTabMenuGrow,
-            "md-menu-overlay__more--hidden": this.isMoreTabMenuGrow && !this.isMoreTabMenuVisible
+            "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
           })}"
           @menu-overlay-open="${() => {
             this.isMoreTabMenuOpen = true;

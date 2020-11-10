@@ -21,19 +21,26 @@
     width: 100%;
 
     &-label {
-      font-size: 18px;
-      line-height: 1.5;
-      color: $md-gray-70;
+      @include p();
+
+      @include site-column-breakpoint {
+        font-size: 14px;
+      }
     }
 
     &-link {
-      font-size: 48px;
-      font-weight: 500;
-      line-height: 1.25;
-      color: $md-gray-100;
+      @include h4($font-size: 3rem);
 
       @include site-column-breakpoint {
-        font-size: 36px;
+        font-family: $brand-font-medium;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      
+      i {
+        @include site-column-breakpoint {
+          display: none;
+        }
       }
     }
   }
@@ -43,6 +50,10 @@
 
     &-label {
       margin-left: 64px;
+
+      @include site-column-breakpoint {
+        margin: 0;
+      }
     }
 
     &-link i {
@@ -55,6 +66,10 @@
 
     &-label {
       margin-right: 64px;
+
+      @include site-column-breakpoint {
+        margin: 0;
+      }
     }
 
     &-link i {

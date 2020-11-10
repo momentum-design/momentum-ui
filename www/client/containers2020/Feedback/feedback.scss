@@ -57,13 +57,24 @@
     }
   }
   &__done {
-    padding: 72px 0 100px 0;
+    &--image {
+      background: url(../assets/feedback-done.svg) no-repeat center;
+    }
+  }
+  &__error {
+    &--image {
+      background: url(../assets/2020/tech-error.svg) no-repeat center;
+      background-size: contain;
+    }
+  }
+  &__done,
+  &__error  {
+    padding: 72px 0 0 0;
     text-align: center;
     &--image {
       margin: 0 auto;
       height: rem-calc(100);
       width: rem-calc(104);
-      background: url(../assets/feedback-done.svg) no-repeat center;
     }
     &--h3 {
       margin-top: rem-calc(32);

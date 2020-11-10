@@ -125,6 +125,12 @@ export class ModalTemplateSandbox extends LitElement {
           </md-tab>
           <md-tab-panel slot="panel">
             <span>Content for "Contact History"</span>
+            <md-radiogroup checked="0">
+              <md-radio slot="radio" value="Option 1">Option 1</md-radio>
+              <md-radio slot="radio" value="Option 2">Option 2</md-radio>
+              <md-radio slot="radio" value="Option 3">Option 3</md-radio>
+              <md-radio slot="radio" value="Option 4">Option 4</md-radio>
+            </md-radiogroup>
             <button type="button">Contact History</button>
           </md-tab-panel>
           <md-tab slot="tab">

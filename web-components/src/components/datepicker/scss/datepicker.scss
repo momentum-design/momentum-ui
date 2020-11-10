@@ -1,0 +1,48 @@
+
+
+.md-datepicker {
+  &__month-container {
+    border-radius: 4px;
+    height: 272px;
+    padding: 16px;
+    width: 248px;
+  }
+  
+  &__navigation--current-month {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__day--names {
+    display: flex;
+  }
+
+  &__day {
+    border-radius: 100%;
+    display: inline-block;
+    height: 28px;
+    width: 28px;
+
+    &[disabled] {
+      background-color: none;
+    }
+
+    &:hover {
+      background: #cecece;
+    }
+
+    &--selected {
+      color: orange;
+    }
+
+    &--focus {
+      background: orange;
+    }
+    
+  }
+}

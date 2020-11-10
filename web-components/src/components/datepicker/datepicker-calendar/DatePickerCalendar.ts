@@ -11,44 +11,43 @@ import {
   shouldPrevMonthDisable,
   subtractMonths
 } from "@/utils/dateUtils";
-import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues, TemplateResult } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import "../../icon/Icon";
+import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {}
 
 @customElement("md-datepicker-calendar")
 export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) locale = "en";
-  @property({ attribute: false }) monthFormat = "MMMM YYYY";
+  @property({ attribute: false }) monthFormat = "MMMM yyyy";
   @property({ attribute: false }) monthNavFocus = "prev";
   @property({ attribute: false }) nextArialLabel = undefined;
   @property({ attribute: false }) previousArialLabel = undefined;
   @property({ attribute: false }) date: DateTime = now();
+  @property({ attribute: false }) focused: DateTime = now();
   @property({ attribute: false }) minDate: DateTime | undefined = undefined;
   @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
 
-  // Convert lifecycles:
-  // componentDidMount () {
-  //   const { focus, selected } = this.props;
-  //   this.setDate(focus || selected || now());
-  // }
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
 
-  // componentDidUpdate (prevProps) {
-  //   const { focus, monthNavFocus } = prevProps;
-  //   if (
-  //     focus &&
-  //     !isSameDay(this.props.focus, focus)
-  //   ) {
-  //     this.setDate(focus);
-  //   }
-  //   if (monthNavFocus !== this.props.monthNavFocus) {
-  //     this.props.monthNavFocus === 'prev' && this.prevMonthRef.button.focus();
-  //     this.props.monthNavFocus === 'next' && this.nextMonthRef.button.focus();
-  //   }
-  // }
+    // REFACTOR:  if the focused date changes, update the set date to the focused date
+    // REACT VERSION:
+    // const { focused, monthNavFocus } = changedProperties;
+    // if (focus && !isSameDay(this.focused, focus)) {
+    //   this.setDate(focus);
+    // }
+
+    // REFACTOR: Not clear, seems to set focus to the month nazv buttons based upon a property
+    // if (monthNavFocus !== this.monthNavFocus) {
+    //   this.monthNavFocus === "prev" && this.prevMonthRef.button.focus();
+    //   this.monthNavFocus === "next" && this.nextMonthRef.button.focus();
+    // }
+  }
 
   setDate = (date: DateTime, cb: Function) => {
     this.date = date;
@@ -142,10 +141,14 @@ export class DatePickerCalendar extends LitElement {
             ${this.header()}
           </div>
         </div>
-        <md-datepicker-month .day=${this.date} .otherProps=${this.date}></md-datepicker-month>
+        <md-datepicker-month .day=${this.date}></md-datepicker-month>
       </div>
     `;
   };
+
+  static get styles() {
+    return styles;
+  }
 
   render() {
     return html`

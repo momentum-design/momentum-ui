@@ -1,88 +1,76 @@
-// import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-// import { DatePickerDay } from "./DatePickerDay";
+import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import "./DatePickerDay";
+import { DatePickerDay } from "./DatePickerDay";
 
-// describe("DatePickerDay Component", async () => {
-//   const fixtureFactory = async (properties?: DatePickerDay.Attributes): Promise<DatePickerDay> => {
-//     const { ...props } = properties;
-//     const element: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//       //   .day=${props.day !== undefined ? props.day : null}
-//       //   .month=${props.month}
-//       //   .selected=${props.selected}
-//       //   .focused=${props.focused}
-//       //   .filterParams=${props.filterParams}
-//       //   .handleDayClick=${props.handleDayClick}
-//     );
+describe("DatePickerDay Component", () => {
+  afterEach(() => {
+    fixtureCleanup();
+  });
+  test("should apply a modifier, when the date does not belong to current month", async () => {
+    const el: DatePickerDay = await fixture(
+      html`
+        <md-datepicker-day></md-datepicker-day>
+      `
+    );
+    expect(el).not.toBeNull;
+  });
+  test("should apply selected attribute class modifier", async () => {
+    const el: DatePickerDay = await fixture(
+      html`
+        <md-datepicker-day selected></md-datepicker-day>
+      `
+    );
+    expect(el.selected).toBeTruthy;
+  });
+  test("should apply disabled attribute class modifier", async () => {
+    const el: DatePickerDay = await fixture(
+      html`
+        <md-datepicker-day disabled></md-datepicker-day>
+      `
+    );
+    expect(el.disabled).toBeTruthy;
+    expect(el.shadowRoot?.querySelector("md-button")?.classList.contains("--disabled")).toBeTruthy;
+  });
+  test("should apply focused attribute class modifier", async () => {
+    const el: DatePickerDay = await fixture(
+      html`
+        <md-datepicker-day focused></md-datepicker-day>
+      `
+    );
+    expect(el.focused).toBeTruthy;
+  });
+  test("should apply a modifier when the date is today`s date", async () => {
+    const el: DatePickerDay = await fixture(
+      html`
+        <md-datepicker-day></md-datepicker-day>
+      `
+    );
 
-//     props.day ? (element.day = props.day) : null;
-//     props.month ? (element.month = props.month) : null;
-//     return element;
-//   };
+    expect(el.shadowRoot?.querySelector("md-button")?.classList.contains("--today")).not.toBeNull;
+  });
 
-//   afterEach(() => {
-//     fixtureCleanup();
-//   });
-//   test("should match selected day SnapShot", async () => {
-//     const el = await fixtureFactory({});
-//     expect(el).not.toBeNull;
-//   });
-//   test("should apply a modifier, when the date does not belong to current month", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     debugger;
-//     expect(el).not.toBeNull;
-//   });
-//   test("should apply a modifier when the date is selected", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     expect(el).not.toBeNull;
-//   });
-//   test("should apply a modifier when the date is today`s date", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     expect(el).not.toBeNull;
-//   });
-//   test("should apply a modifier when the date is in focus", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     expect(el).not.toBeNull;
-//   });
-//   test("when Day the disabled, should set disabled prop on button", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     expect(el).not.toBeNull;
-//   });
-//   test("onclick of Day should call the callback in context", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     expect(el).not.toBeNull;
-//   });
-//   test("on press of enter/space key on Day, should call the callback in context", async () => {
-//     const el: DatePickerDay = await fixture(
-//       html`
-//         <md-datepicker-day></md-datepicker-day>
-//       `
-//     );
-//     expect(el).not.toBeNull;
-//   });
-// });
+  test("onclick of Day should handle action", async () => {
+    const el = await fixture<DatePickerDay>(
+      html`
+        <md-datepicker-day></md-datepicker-day>
+      `
+    );
+    const userEvent = jest.spyOn(el, "handleClick");
+    const event = new MouseEvent("click");
+    el.dispatchEvent(event);
+    await el.updateComplete;
+    expect(userEvent).toHaveBeenCalled;
+  });
+  test("onkeydown of Day should handle action", async () => {
+    const el: DatePickerDay = await fixture(
+      html`
+        <md-datepicker-day></md-datepicker-day>
+      `
+    );
+    const userEvent = jest.spyOn(el, "handleKey");
+    const event = new KeyboardEvent("keydown", { code: "Space" });
+    el.dispatchEvent(event);
+    await el.updateComplete;
+    expect(userEvent).toHaveBeenCalled;
+  });
+});

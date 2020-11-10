@@ -4,23 +4,13 @@ import { customElement, html, internalProperty, LitElement, property } from "lit
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon/index";
-
-export namespace DatePickerDay {
-  export type Attributes = {
-    day?: DateTime;
-    month?: number;
-    selected?: DateTime;
-    focused?: DateTime;
-    filterParams?: DayFilters;
-    handleDayClick?: Function;
-  };
-}
+import styles from "../scss/module.scss";
 
 @customElement("md-datepicker-day")
 export class DatePickerDay extends LitElement {
-  @property({ type: Boolean }) focused = false; // passed in current selection, a DateTime instance
-  @property({ type: Boolean }) selected = false; // passed in current selection, a DateTime instance
-  @property({ type: Boolean }) disabled = false;
+  @property({ type: Boolean, reflect: true }) focused = false; // passed in current selection, a DateTime instance
+  @property({ type: Boolean, reflect: true }) selected = false; // passed in current selection, a DateTime instance
+  @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ attribute: false }) day: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a day
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
   @property({ attribute: false }) month: number | undefined = undefined; // meant to be a DateTime instance reflecting a month
@@ -40,18 +30,40 @@ export class DatePickerDay extends LitElement {
     if (this.day === undefined) {
       this.day = now();
     }
+    if (this.day.day === now().day) {
+      this.isToday = true;
+    }
   }
 
-  handleClick(e: MouseEvent) {
+  handleClick = (e: MouseEvent) => {
     const { handleDayClick, day } = this;
     handleDayClick && handleDayClick(e, day);
 
     this.dispatchEvent(
       new CustomEvent("day-select", {
         bubbles: true,
-        composed: true
+        composed: true,
+        detail: {
+          sourceEvent: e
+        }
       })
     );
+  };
+
+  handleKey = (e: KeyboardEvent) => {
+    this.dispatchEvent(
+      new CustomEvent("day-key-event", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          sourceEvent: e
+        }
+      })
+    );
+  };
+
+  static get styles() {
+    return styles;
   }
 
   render() {
@@ -66,9 +78,11 @@ export class DatePickerDay extends LitElement {
       <md-button
         circle
         size=${28}
+        color=${"color-none"}
         ?disabled=${this.disabled}
         class="md-datepicker__day ${classMap(dayClassMap)}"
-        @click=${this.handleClick}
+        @click=${(e: MouseEvent) => this.handleClick(e)}
+        @keydown=${(e: KeyboardEvent) => this.handleKey(e)}
         aria-label=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
         aria-selected=${ifDefined(this.selected)}
         tab-index=${0}

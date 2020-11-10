@@ -10,8 +10,6 @@ export class DatePickerMonth extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
 
   renderWeeks = () => {
-    // const { day, ...otherProps } = this.props;
-
     let currentWeekStart = getStartOfWeek(getStartOfMonth(this.day));
 
     const weeks = [];
@@ -24,9 +22,6 @@ export class DatePickerMonth extends LitElement {
         `
       );
       currentWeekStart = addWeeks(currentWeekStart, 1);
-      console.log(month);
-      console.log(weeks);
-      console.log(currentWeekStart);
     } while (isSameMonth(currentWeekStart, this.day));
 
     return weeks;

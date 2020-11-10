@@ -1,0 +1,136 @@
+// Remove after fixing checkbox/radio button
+@mixin input__help-text(
+  $color: $input__font-color--help,
+) {
+  @include vr-spacing(mb, 0.25);
+  color: $input__font-color--help;
+  font-family: $brand-font-regular;
+  font-size: rem-calc(14);
+  line-height: rem-calc(22);
+  padding-left: rem-calc(16);
+
+  span {
+    font-size: inherit;
+  }
+}
+
+@mixin input-color(
+  $color: null,
+  $color-clear: null,
+  $color-clear-hover: null,
+  $color-disabled: null,
+  $color-help: null,
+  $color-message: null,
+  $color-placeholder: null,
+  $color-read-only: null,
+  $background-color: null,
+  $background-color-disabled: null,
+  $background-color-hover: null,
+  $background-color-active: null,
+  $border-color: null,
+  $border-color-active: null,
+  $focus-border-color: null
+) {
+  .md-input {
+    background-color: $background-color;
+    color: $color;
+
+    &::placeholder {
+      color: $color-placeholder;
+      opacity: 1;
+    }
+
+    &:hover,
+    &.md-hover {
+      background-color: $background-color-hover;
+
+      &:active {
+        background-color: $background-color-active;
+        border-color: $border-color-active;
+      }
+    }
+
+    &:disabled,
+    &.md-disabled {
+      background-color: $background-color-disabled;
+      border-color: $input__border-color--read-only;
+      color: $color-disabled;
+
+      &::placeholder {
+        color: $color-disabled;
+      }
+
+      &:hover {
+        background-color: $background-color-disabled;
+      }
+    }
+
+    &[readonly],
+    &.md-readonly {
+      background-color: $background-color-disabled;
+      border-color: $input__border-color--read-only;
+      color: $color-read-only;
+
+      &:hover {
+        background-color: $background-color-disabled;
+      }
+    }
+
+    @if $border-color {
+      border-color: $border-color;
+    } @else {
+      border: none;
+    }
+
+    &__after,
+    &__before {
+      @include input-icon($color: $color);
+    }
+
+    &__icon-clear {
+      @include input-clear-color($color-clear, $color-clear-hover);
+      display: flex;
+    }
+  }
+
+  &.md-disabled {
+    .md-input {
+      &__before {
+        @include input-icon($color: $color-disabled);
+      }
+    }
+  }
+
+  .md-input__messages {
+    display: block;
+  }
+
+  .md-input__help-text,
+  .md-input__secondary-label {
+    color: $color-help;
+  }
+}
+
+@mixin input-icon($color: null) {
+  @if $color {
+    color: $color;
+    fill: $color;
+
+    .md-spinner {
+      @include spinner-style($border-progress-left: $color);
+    }
+  }
+}
+
+@mixin input-clear-color($color: $input__clear-icon__color, $color-hover: $input__clear-icon__color--hover) {
+  background-color: transparent;
+  color: $color;
+  fill: $color;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: $color-hover;
+    fill: $color-hover;
+  }
+}

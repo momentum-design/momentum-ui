@@ -5,16 +5,29 @@
 
 .site-component-overview {
 
+  &__section-header {
+    .section-header__lead,
+    .section-header__title {
+      padding-right: 40px;
+
+      @include site-column-breakpoint {
+        padding-right: 0;
+      }
+    }
+  }
+
   &__spinner {
     text-align: center;
     padding: rem-calc(100);
   }
 
   &__top {
-    height: rem-calc(72);
+    @include flex($ai: center, $jc: flex-start);
+    margin: 0 0 2rem 0;
 
     .md-input-container {
-      width: rem-calc(272);
+      width: rem-calc(368);
+      margin: 0;
     }
   }
 

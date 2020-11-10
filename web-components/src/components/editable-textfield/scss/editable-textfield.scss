@@ -1,0 +1,108 @@
+/** @component editable-textfield */
+
+:focus {
+  outline: none;
+}
+
+@include exports("md-editable-textfield") {
+  .md-editable-textfield {
+    align-items: center;
+    border-radius: $field-border-radius;
+    display: flex;
+    line-height: $field-line-height;
+    min-height: 2rem;
+    overflow-y: auto;
+    padding: $field-padding;
+
+    &:hover {
+      background-color: var(--editable-textfield-default-hover-bg-color, $md-gray-10);
+    }
+
+    &:active {
+      background-color: var(--editable-textfield-default-pressed-bg-color, $md-gray-20);
+    }
+
+    &:focus {
+      @include focus-boxshadow(rem-calc(1), var(--md-default-focus-outline-color, $md-blue-60));
+    }
+
+    &--left {
+      .md-input {
+        text-align: left;
+      }
+    }
+
+    &--center {
+      .md-input {
+        text-align: center;
+      }
+    }
+
+    &--center ::slotted(*) {
+      text-align: center;
+    }
+
+    &--right {
+      .md-input {
+        text-align: right;
+      }
+    }
+
+    &--right ::slotted(*) {
+      text-align: right;
+    }
+
+    &--disabled {
+      background-color: transparent;
+      color: var(--md-primary-text-color, $md-gray-100);
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      &:focus {
+        @include remove-focus;
+      }
+    }
+
+    &--error {
+      background-color: var(--md-alert-error-bg-color, $md-red-10);
+      border: 1px solid var(--editable-textfield-error-border-color, $md-red-70);
+      color: var(--md-alert-error-text-color, $md-red-70);
+
+      &:focus {
+        @include remove-focus;
+      }
+    }
+
+    &--warning {
+      background-color: var(--md-alert-warning-bg-color, $md-yellow-10);
+      border: 1px solid var(--editable-textfield-warning-border-color, $md-yellow-50);
+      color: var(--md-alert-warning-text-color, $md-yellow-70);
+
+      &:focus {
+        @include remove-focus;
+      }
+    }
+
+    &--success {
+      background-color: var(--md-alert-success-bg-color, $md-green-10);
+      border: 1px solid var(--editable-textfield-success-border-color, $md-green-50);
+      color: var(--md-alert-success-text-color, $md-green-70);
+
+      &:focus {
+        @include remove-focus;
+      }
+    }
+
+    &--textoverflow {
+      display: box;
+      overflow-y: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .md-editable-textfield__messages {
+    padding: $field-message-padding;
+  }
+}

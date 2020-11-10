@@ -1,0 +1,120 @@
+/** @component badge */
+
+@include exports("md-badge") {
+  .md-badge {
+    @include badge-base;
+    @include badge-size;
+    @include badge-style($radius: $badge--round__radius);
+
+    &--small {
+      @include badge-size($padding: rem-calc(3 12));
+      height: rem-calc(24);
+      min-width: auto;
+    }
+
+    &--compact,
+    &--split {
+      @include badge-size($padding: rem-calc(4 16 4 4), $text-size: rem-calc(12));
+    }
+
+    &--circle {
+      @include badge-size($padding: rem-calc(12 12), $text-size: rem-calc(12));
+      height: rem-calc(40);
+      justify-content: center;
+      min-width: auto;
+      width: rem-calc(40);
+
+      ::slotted(md-icon) {
+        margin: 0;
+      }
+    }
+
+    &--outline {
+      @include badge-outline-style(var(--badge-outline-color, $lm-badge-outline-color-light), false, transparent);
+      border: 1px solid;
+      min-width: auto;
+    }
+
+    &--blue {
+      @include badge-style(var(--badge-blue-bg-color, $lm-badge-blue-bg-color-light), false, var(--badge-blue-text-color, $lm-badge-blue-text-color-light));
+    }
+
+    &--mint {
+      @include badge-style(var(--badge-mint-bg-color, $lm-badge-mint-bg-color-light), false, var(--badge-mint-text-color, $lm-badge-mint-text-color-light));
+    }
+
+    &--darkmint {
+      @include badge-style(var(--badge-darkmint-bg-color, $lm-badge-darkmint-bg-color-light), false, var(--badge-darkmint-text-color, $lm-badge-darkmint-text-color-light));
+    }
+
+    &--green {
+      @include badge-style(var(--badge-green-bg-color, $lm-badge-green-bg-color-light), false, var(--badge-green-text-color, $lm-badge-green-text-color-light));
+    }
+
+    &--yellow {
+      @include badge-style(var(--badge-yellow-bg-color, $lm-badge-yellow-bg-color-light), false, var(--badge-yellow-text-color, $lm-badge-yellow-text-color-light));
+    }
+
+    &--red {
+      @include badge-style(var(--badge-red-bg-color), false, var(--badge-red-text-color, $lm-badge-red-text-color-light));
+    }
+
+    &--darkred {
+      @include badge-style(var(--badge-darkred-bg-color, $lm-badge-darkmint-bg-color-light), false, var(--badge-darkred-text-color, $lm-badge-darkred-text-color-light));
+    }
+
+    &--orange {
+      @include badge-style(var(--badge-orange-bg-color, $lm-badge-orange-bg-color-light), false, var(--badge-orange-text-color, $lm-badge-orange-text-color-light));
+    }
+
+    &--purple {
+      @include badge-style(var(--badge-purple-bg-color, $lm-badge-purple-bg-color-light), false, var(--badge-purple-text-color, $lm-badge-purple-text-color-light));
+    }
+
+    &--violet {
+      @include badge-style(var(--badge-violet-bg-color, $lm-badge-violet-bg-color-light), false, var(--badge-violet-text-color, $lm-badge-violet-text-color-light));
+    }
+
+    &--cyan {
+      @include badge-style(var(--badge-cyan-bg-color, $lm-badge-cyan-bg-color-light), false, var(--badge-cyan-text-color, $lm-badge-cyan-text-color-light));
+    }
+
+    &--hold {
+      @include badge-style(var(--badge-hold-bg-color, $lm-badge-hold-bg-color-light), false, var(--badge-hold-text-color, $lm-badge-hold-text-color-light));
+    }
+  }
+}
+
+.md-badge--small.md-badge--circle {
+  height: rem-calc(24);
+  width: rem-calc(24);
+}
+
+.badge-counter {
+  font-weight: bold;
+  margin-left: rem-calc(8);
+}
+
+::slotted(md-icon) {
+  height: rem-calc(16);
+  margin-right: rem-calc(8);
+  width: rem-calc(16);
+}
+
+::slotted(md-badge) {
+  height: rem-calc(16);
+  margin-right: rem-calc(8);
+  width: rem-calc(16);
+}
+
+::slotted(span) {
+  align-items: center;
+  display: inline-flex;
+  height: rem-calc(16);
+  justify-content: center;
+}
+
+.split-separator {
+  margin: rem-calc(0 8);
+  opacity: 0.4;
+}

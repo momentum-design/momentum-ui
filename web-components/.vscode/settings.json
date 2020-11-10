@@ -1,0 +1,29 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": true
+  },
+
+  "css.validate": false,
+  "scss.validate": false,
+
+  "lit-plugin.strict": true,
+  "lit-plugin.rules.no-unknown-event": "warning",
+
+  "jest.autoEnable": false,
+
+  "path-autocomplete.extensionOnImport": true,
+  "path-autocomplete.pathMappings": {
+    "@": "${folder}/src",
+    "@img": "${folder}/src/assets/images",
+    "@css": "${folder}/src/assets/styles"
+  },
+
+  "sonarlint.connectedMode.project": {
+    "connectionId": "cisco",
+    "projectKey": "Momentum-UI-Web-Components"
+  }
+}

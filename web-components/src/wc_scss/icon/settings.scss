@@ -1,0 +1,12 @@
+$icon__class: #{$prefix}-icon;
+
+// White button colors
+$icon--white__fill: $md-white-100 !default;
+$icon--white__fill--hover: $white-92 !default;
+$icon--white__fill--active: $white-84 !default;
+$icon--white__fill--disabled: $white-20 !default;
+
+$icon--white__fill--contrast: $md-black-100 !default;
+$icon--white__fill--hover--contrast: $md-black-100 !default;
+$icon--white__fill--active--contrast: $md-black-100 !default;
+$icon--white__fill--disabled--contrast: $white-20 !default;

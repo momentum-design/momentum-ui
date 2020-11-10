@@ -1,0 +1,93 @@
+@mixin toggle-switch-vars (
+  $background-color: var(--toggle-switch-bg-color, $lm-toggle-switch-bg-color-light),
+  $background-color--hover:  var(--toggle-switch-bg-color--hover, $lm-toggle-switch-bg-color--hover-light),
+  $background-color--checked: var( --toggle-switch-bg-color--checked, $lm-toggle-switch-bg-color--checked-light),
+  $background-color--checked-hover: var(--toggle-switch-bg-color--checked-hover, $lm-toggle-switch-bg-color--checked-hover-light),
+  $background-color--disabled: var(--toggle-switch-bg-color--disabled, $lm-toggle-switch-bg-color--disabled-light),
+  $background-color--disabled-checked: var(--toggle-switch-bg-color--disabled--checked, $lm-toggle-switch-bg-color--disabled--checked-light),
+  $background-color-slider: var(--toggle-switch-slider-color, $lm-toggle-switch-slider-color-light),
+  $background-color-slider-disabled:  var(--toggle-switch-slider-color-disabled, $lm-toggle-switch-slider-color-disabled-light),
+  $background-color-slider-disabled--checked:  var(  --toggle-switch-slider-color-disabled--checked, $lm-toggle-switch-slider-color-disabled--checked-light),
+  $border-focus: var( --toggle-switch-focus, $lm-toggle-switch-focus-light)
+) {
+  .md-toggle-switch__input {
+    + .md-toggle-switch__label {
+      .md-toggle-switch__label__container {
+        background-color: $background-color;
+        &::after {
+          background-color: $background-color-slider;
+        }
+      }
+
+      &:hover {
+        .md-toggle-switch__label__container {
+          background-color: $background-color--hover;
+        }
+      }
+    }
+
+    &:focus,
+    &.focus {
+      + .md-toggle-switch__label {
+        .md-toggle-switch__label__container {
+          outline: 2px solid var(--md-focus-border-color, $md-blue-70);
+        }
+      }
+    }
+
+    // Checked
+    &.checked,
+    &:checked {
+      + .md-toggle-switch__label {
+         .md-toggle-switch__label__container {
+          background-color: $background-color--checked;
+        }
+
+        &:hover {
+          .md-toggle-switch__label__container {
+            background-color: $background-color--checked-hover;
+          }
+        }
+      }
+    }
+
+    // Disabled Settings
+
+    &:disabled,
+    &.disabled {
+      + .md-toggle-switch__label {
+        .md-toggle-switch__label__container {
+          background-color: $background-color--disabled;
+          &::after {
+            background-color: $background-color-slider-disabled;
+          }
+        }
+        &:hover {
+          .md-toggle-switch__label__container {
+            background-color: $background-color--disabled;
+          }
+        }
+      }
+
+      //--> Disabled--Checked/Indeterminate
+
+      &.checked,
+      &:checked {
+        + .md-toggle-switch__label {
+            .md-toggle-switch__label__container {
+              background-color: $background-color--disabled-checked;
+              &::after {
+                background-color: $background-color-slider-disabled--checked;
+              }
+            }
+
+          &:hover {
+            .md-toggle-switch__label__container {
+              background-color: $background-color--disabled-checked;
+            }
+          }
+        }
+      }
+    }
+  }
+}

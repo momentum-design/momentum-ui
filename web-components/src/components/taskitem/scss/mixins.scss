@@ -1,0 +1,42 @@
+
+@mixin text-dots {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin task-flex-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: stretch;
+}
+@mixin task-after-focus {
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+@mixin taskitem-status {
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-around;
+  position: absolute;
+}
+@mixin taskitem-content {
+  align-content: stretch;
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  justify-content: center;
+}
+@mixin taskitem-focus-boxshadow {
+  box-shadow: $taskitem-focus-boxshadow;
+}

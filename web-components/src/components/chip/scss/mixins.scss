@@ -1,0 +1,53 @@
+@mixin chip-base() {
+  @include radius($radius: $chip-radius);
+  align-items: center;
+  background-color: var(--md-secondary-bg-color, $md-gray-05);
+  color: var(--md-primary-text-color, $md-gray-100);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: $badge__font-family;
+  font-weight: $badge__font-weight;
+  height: $chip-height;
+  justify-content: space-between;
+  line-height: rem-calc(16);
+  margin-bottom: auto;
+  max-width: $chip-max-width;
+  overflow: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  width: auto;
+}
+
+@mixin color-chip(
+  $bg: var(--badge-default-bg-color, $lm-badge-default-bg-color-light),
+  $radius: false,
+  $color: var(--badge-default-text-color, $lm-badge-default-text-color-light),
+  $hover-bg-color: var(--badge-default-bg-color, $lm-badge-default-bg-color-light),
+  $hover-color: var(--badge-default-text-color, $lm-badge-default-text-color-light)
+) {
+  @if $bg {
+    background-color: $bg;
+
+    @if $color {
+      color: $color;
+    }
+  }
+
+  @if $radius==true {
+    @include radius($badge__radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
+
+  &:hover {
+    background-color: $hover-bg-color;
+    color: $hover-color;
+  }
+
+  &:active {
+    background-color: $hover-bg-color;
+    color: $hover-color;
+  }
+}

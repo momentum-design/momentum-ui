@@ -1,0 +1,385 @@
+/** @component input */
+
+@include exports("md-input") {
+  @include brand-font-face-regular;
+  // normalize
+  [class*="md"] {
+    button,
+    input,
+    textarea,
+    select,
+    *,
+    *::before,
+    *::after {
+      @include box-sizing(inherit);
+      font-size: var(--rem-base);
+    }
+
+    button,
+    input {
+      overflow: visible;
+    }
+
+    textarea {
+      line-height: 1.2rem;
+      max-height: 2.25rem;
+      max-width: 100%;
+      overflow: auto;
+      padding-bottom: rem-calc(6);
+      padding-top: rem-calc(6);
+      resize: none;
+    }
+
+    textarea[rows] {
+      height: auto;
+    }
+
+    [type="submit"] {
+      appearance: none;
+    }
+
+    input[type="file"] {
+      margin: 0 0 $form-spacing 0;
+      width: 100%;
+    }
+
+    [type="number"] {
+      appearance: textfield;
+    }
+
+    [type="number"]::-webkit-inner-spin-button,
+    [type="number"]::-webkit-outer-spin-button {
+      height: auto;
+    }
+
+    [type="search"]::-webkit-search-cancel-button,
+    [type="search"]::-webkit-search-decoration {
+      appearance: none;
+    }
+
+    ::input-placeholder {
+      color: inherit;
+      opacity: 0.6;
+    }
+
+    ::-webkit-file-upload-button {
+      appearance: button; /* 1 */
+      font: inherit; /* 2 */
+    }
+  }
+
+  .md-input-container {
+    @include flex($fd: column, $fw: wrap,  $jc: normal, $ac: normal, $ai: normal);
+
+    @include input-color(
+      $background-color: var(--input-default-bg-color, $md-white-100),
+      $background-color-disabled: var(--input-default-read-only-bg-color, $md-gray-10),
+      $background-color-hover: var(--input-default-hover-bg-color, $md-gray-30),
+      $background-color-active: var(--input-default-pressed-bg-color, $md-gray-30),
+      $border-color: var(--input-default-border-color, $md-gray-30),
+      $border-color-active: var(--input-default-pressed-border-color, $md-gray-30),
+      $focus-border-color: var(--input-default-focus-border-color, $md-blue-60),
+      $color: var(--input-default-text-color, $md-gray-70),
+      $color-clear: var(--md-secondary-text-color, $md-gray-70),
+      $color-clear-hover: $input__clear-icon__color--hover,
+      $color-disabled: var(--input-disabled-text-color, $md-gray-40),
+      $color-help: $input__font-color--help,
+      $color-placeholder: $input__font-color--placeholder,
+      $color-read-only: var(--md-primary-text-color, $md-gray-100)
+    );
+    box-sizing: border-box;
+    line-height: 0;
+    margin-bottom: rem-calc(16);
+    position: relative;
+    width: 100%;
+
+    &.md-multi {
+      display: inline-flex;
+      flex: 1 1 100%;
+      margin-bottom: 0;
+    }
+
+    .md-input.md-input--multi {
+      background-color: var(--input-default-bg-color, $md-white-100);
+      border-color: var(--input-default-border-color, $md-gray-30);
+      box-shadow: transparent;
+
+      &:hover {
+        background-color: var(--input-default-hover-bg-color, $md-gray-30);
+      }
+    }
+
+    .md-input__before {
+      &.md-input__content {
+        width: auto;
+      }
+    }
+
+    &.column,
+    &.columns {
+      padding: 0;
+    }
+
+    // Error
+    &.md-error {
+      @include input-color(
+        $background-color: var(--input-error-bg-color, $md-red-10),
+        $background-color-hover: var(--input-error-hover-bg-color, $md-red-20),
+        $border-color: var(--input-error-hover-border-color, $md-red-50),
+        $background-color-active: var(--input-error-pressed-bg-color, $md-red-30),
+        $color-message: var(--input-error-message-text-color, $md-red-70)
+      );
+
+      &:focus {
+        @include focus-styles($border-color: var(--input-error-focus-border-color, $md-red-50));
+
+        transition: border ease-in 0.15s;
+      }
+
+      .md-input {
+        &__message {
+          color: var(--input-error-message-text-color, $md-red-70);
+
+          &::before {
+            @include icon-clear_16;
+          }
+        }
+      }
+    }
+
+    // Warning
+    &.md-warning {
+      @include input-color(
+        $background-color: var(--md-alert-warning-bg-color, $input__background--warning),
+        $background-color-hover: var(--md-alert-warning-bg-color, $input__background--warning),
+        $border-color: var(--input-warning-border-color, $input__border-color--warning),
+        $color-message: var(--md-alert-warning-text-color, $input__message__font-color--warning)
+      );
+
+      .md-input {
+        &__message {
+          &::before {
+            @include icon-warning_16;
+          }
+        }
+      }
+    }
+
+    // Success
+    &.md-success {
+      @include input-color(
+        $background-color: var(--md-alert-success-bg-color, $input__background--success--hover),
+        $background-color-hover: var(--md-alert-success-bg-color, $input__background--success--hover),
+        $border-color: var(--input-success-border-color, $input__border-color--success),
+        $color-message: var(--md-success-text-color , $input__message__font-color--success)
+      );
+
+      .md-input {
+        &__message {
+          &::before {
+            @include icon-check-circle_16;
+          }
+        }
+      }
+    }
+
+    // Filled
+    &.md-input--filled {
+      @include input-color(
+        $background-color: var(--input-filled-bg-color, $input__background--filled),
+        $background-color-disabled: var(--input-filled-disabled-bg-color, $input__background--filled),
+        $background-color-hover: var(--input-filled-hover-bg-color, $input__background--filled--hover)
+      );
+    }
+  }
+
+  .md-input {
+    border: $input__border-width solid;
+    border-radius: $input__border-radius;
+    font-family: $input__font-family;
+    font-size: 1rem;
+    height: $input__height;
+    padding: $input__padding;
+    transition: box-shadow ease-out 0.15s;
+    width: 100%;
+
+    &--nested {
+      &-1 {
+        padding-left: 2rem;
+      }
+
+      &-2 {
+        padding-left: 4rem;
+      }
+
+      &-3 {
+        padding-left: 6rem;
+      }
+    }
+
+    // fix to remove the very annoying "X" added to all input fields in IE > 9.
+    // http://msdn.microsoft.com/en-us/library/windows/apps/hh465740.aspx
+    &::-ms-clear,
+    &::-ms-reveal {
+      height: 0;
+      width: 0;
+    }
+
+    &:focus,
+    &.md-focus {
+      @include focus-styles($border-color: $md-blue-60);
+
+      transition: border ease-in 0.15s;
+    }
+
+    &[readonly],
+    &.md-readonly {
+      cursor: default;
+    }
+
+    &:disabled,
+    &.md-disabled {
+      cursor: not-allowed;
+    }
+
+    // Elements
+    &__after {
+      left: auto;
+      right: 0;
+    }
+
+    &__before {
+      left: 0;
+      right: auto;
+    }
+
+    &__after,
+    &__before {
+      @include flex;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: $input__padding-side--icon;
+
+      md-icon::part(icon) {
+        display: flex;
+      }
+    }
+
+    &__help-text,
+    &__label,
+    &__messages {
+      font-family: $brand-font-regular;
+      width: 100%;
+    }
+
+    &__label {
+      margin-bottom: rem-calc(8);
+    }
+
+    &__messages {
+      display: none;
+      font-size: $input__message__font-size;
+      line-height: $input__message__line-height;
+      padding-left: rem-calc(16);
+      padding-top: rem-calc(8);
+    }
+
+    &__message {
+      display: inline-flex;
+      line-height: $input__message__line-height;
+      width: 100%;
+
+      md-icon {
+        margin-right: 0.5em;
+      }
+
+      &--error {
+        color: var(--input-error-mesage-text-color, $md-red-50);
+        font-size: $input__message__font-size;
+        line-height: $input__message__line-height;
+        padding-left: 1rem;
+        position: relative;
+        top: -0.5rem;
+
+        &::before {
+          @include icon-clear_16;
+        }
+      }
+
+      &::before {
+        float: left;
+        font-family: $icon-font-name;
+        font-size: $input__message__icon__font-size;
+        margin-right: rem-calc(8);
+      }
+    }
+
+    &__wrapper {
+      box-sizing: border-box;
+      display: block;
+      flex-grow: 1;
+      height: auto;
+      padding: 0;
+      position: relative;
+    }
+
+    // Modifiers
+    &--after {
+      padding-right: $input__padding-side--icon;
+    }
+
+    &--before {
+      padding-left: $input__padding-side--icon;
+    }
+
+    &--pill {
+      border-radius: 18px;
+    }
+
+    // MUST REMAIN BELOW --PILL TO OVERWRITE RADIUS
+    &--multiline {
+      min-height: rem-calc(69);
+      padding-right: rem-calc(44);
+    }
+
+    &__icon-clear {
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  
+}
+
+.md-input[type="search"] {
+  width: 100%;
+
+  &.md-input--milti {
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgb(222, 222, 222);
+    }
+  }
+}
+
+:host .md-input__label {
+  width: 100%;
+}
+
+::slotted(*) {
+  display: flex;
+}
+
+.md-spinner-container {
+  align-items: center;
+  display: flex;
+  line-height: 1;
+}
+
+.md-input__message {
+  md-icon {
+    margin-right: 0.5em;
+  }
+}

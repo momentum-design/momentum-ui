@@ -1,0 +1,52 @@
+/** @component alert-banner */
+
+@include exports("md-alert-banner") {
+  .md-alert-banner {
+    padding: $alert-banner__padding;
+    position: relative;
+    text-align: center;
+
+    &.md-alert-banner {
+      &--default {
+        @include alert-banner-color(
+          var(--alert-banner-default-bg-color, $alert-banner-info__background),
+          var(--alert-banner-default-text-color, $alert-banner-info__color)
+        );
+      }
+
+      &--warning {
+        @include alert-banner-color(
+          var(--alert-banner-warning-bg-color, $alert-banner-warning__background),
+          var(--alert-banner-warning-text-color, $alert-banner-warning__color)
+        );
+      }
+
+      &--error {
+        @include alert-banner-color(
+          var(--alert-banner-error-bg-color, $alert-banner-error__background),
+          var(--alert-banner-error-text-color, $alert-banner-error__color)
+        );
+      }
+    }
+
+    &__text {
+      font-size: $alert-banner__font-size;
+      padding: $alert-banner-text__padding;
+      text-align: center;
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+
+    &__close {
+      cursor: pointer;
+      height: $alert-banner-close__size;
+      position: absolute;
+      right: $alert-banner-close__size;
+      top: $alert-banner-close__top-space;
+      width: $alert-banner-close__size;
+    }
+  }
+}

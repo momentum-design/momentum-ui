@@ -9,7 +9,7 @@
  * (https://hiddedevries.nl/en/blog/2017-01-29-using-javascript-to-trap-focus-in-an-element). To enable/disable focus-trap mixin, component need to call
  * ativateFocusTrap/deactivateFocusTrap methods accordingly.
  * Example:
- * 
+ *
  * @customElements("focus-trap")
  * class FocusTrap extends FocusTrapMixin(LitElement) {
  *  protected deactivateFocusTrap() { <---- You override this with corresponding name in component directly.
@@ -28,16 +28,19 @@ import { DedupeMixin, wasApplied } from "./DedupeMixin";
 import { FocusClass, FocusMixin } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
+
 export abstract class FocusTrapClass extends LitElement {
   protected deactivateFocusTrap?(): void;
   protected activateFocusTrap?(): void;
   protected focusableElements?: HTMLElement[];
   protected setFocusableElements?(): void;
+  protected setFocusableElement?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
 }
 export interface FocusTrapInterface {
-  focusTrapIndex: number;
   activeFocusTrap: boolean;
   preventClickOutside: boolean;
+  preventScroll: boolean;
+  focusTrapIndex: number;
 }
 export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapClass>>(
   base: T
@@ -220,6 +223,29 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         } else {
           this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
         }
+      }
+    }
+
+    private hasAutofocus(element: HTMLElement) {
+      return element.hasAttribute("autofocus");
+    }
+
+    protected setFocusableElement(prefferableElement: HTMLElement | number = 0, ignoreAutoFocus = false) {
+      let focusableIndex = -1;
+      if (this.focusableElements.length && !ignoreAutoFocus) {
+        focusableIndex = this.focusableElements.findIndex(this.hasAutofocus);
+      }
+
+      if (this.focusableElements.length && focusableIndex === -1) {
+        if (typeof prefferableElement === "object") {
+          focusableIndex = this.findElement(prefferableElement);
+        } else if (typeof prefferableElement === "number") {
+          focusableIndex = prefferableElement;
+        }
+      }
+
+      if (this.focusableElements[focusableIndex]) {
+        this.focusTrapIndex = focusableIndex;
       }
     }
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.63.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.62.0...@momentum-ui/icons@7.63.0) (2020-11-10)
+
+
+### Features
+
+* **icons:** add lower-hand_12 ([6013c64](https://github.com/momentum-design/momentum-ui/commit/6013c64aed937a2f912ceeb874e57d0c8d0f1f1d))
+* **icons:** add lower-hand_16 ([09e5c30](https://github.com/momentum-design/momentum-ui/commit/09e5c30773e0b1a8d1a3bc57b0e2bebcfd0557af))
+* **icons:** add microphone-hard-muted_20 ([1c859d1](https://github.com/momentum-design/momentum-ui/commit/1c859d1a19c9f7d02a79c637478640f8d246f34d))
+* **icons:** add microphone-hard-muted_40 ([f9c2d4d](https://github.com/momentum-design/momentum-ui/commit/f9c2d4d8f351d197c646e98f6ce63bcfc9ebc8d1))
+* **icons:** add music-mode_16 ([9bd98e3](https://github.com/momentum-design/momentum-ui/commit/9bd98e3ad874295ee967358bc984884c96efe23a))
+* **icons:** add new icons ([0223c6e](https://github.com/momentum-design/momentum-ui/commit/0223c6e3458aa5fd64cf38b48892ee053e3e0bd4))
+* **icons:** add warning-active_16 ([be4578e](https://github.com/momentum-design/momentum-ui/commit/be4578e8288b0f468963819048d6538fe4b74e9b))
+
+
+
+
+
 # [7.62.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.61.1...@momentum-ui/icons@7.62.0) (2020-11-05)
 
 

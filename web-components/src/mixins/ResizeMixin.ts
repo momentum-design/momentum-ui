@@ -67,14 +67,19 @@ export const ResizeMixin = <T extends AnyConstructor<ResizeClass>>(base: T): T &
   }
   class Resize extends base {
     protected static _resizeObserver?: ResizeObserver;
+    protected static _animationFrameID?: number;
 
     private _initResizeObserver() {
       const observer = Resize._resizeObserver;
       if (observer == null) {
         Resize._resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-          entries.forEach(entry => {
-            const { target, contentRect } = entry;
-            (target as Resize).handleResize(contentRect as DOMRect);
+          Resize._animationFrameID = requestAnimationFrame(() => {
+            if (Array.isArray(entries) && entries.length) {
+              entries.forEach(entry => {
+                const { target, contentRect } = entry;
+                (target as Resize).handleResize(contentRect as DOMRect);
+              });
+            }
           });
         });
       }
@@ -119,9 +124,14 @@ export const ResizeMixin = <T extends AnyConstructor<ResizeClass>>(base: T): T &
     disconnectedCallback() {
       super.disconnectedCallback();
       const observer = Resize._resizeObserver;
+      const timerId = Resize._animationFrameID;
 
       if (observer) {
         observer.unobserve(this);
+      }
+
+      if (timerId) {
+        cancelAnimationFrame(timerId);
       }
     }
   }

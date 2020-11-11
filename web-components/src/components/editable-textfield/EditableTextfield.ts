@@ -6,8 +6,6 @@
  *
  */
 
-import "../input/Input";
-import { Input, Message } from "../input/Input";
 import { numInputTypes } from "@/utils/enums";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
@@ -16,6 +14,8 @@ import { CSSResultArray, customElement, html, LitElement, property, PropertyValu
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
+import "../input/Input";
+import { Input, Message } from "../input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;
@@ -143,6 +143,11 @@ export class EditableTextfield extends LitElement {
     if (flaggedKeys.some(s => code.includes(s))) {
       return;
     }
+
+    if (this.type === "integer" && key.includes(".")) {
+      e.preventDefault();
+    }
+
     const currentString = this.editableField?.innerText.trim() + key;
     if (this.type) {
       if (isNaN(Number(currentString))) {
@@ -218,7 +223,6 @@ export class EditableTextfield extends LitElement {
         class="md-editable-textfield ${classMap(classes)}"
         tabindex=${this.disabled ? "-1" : "0"}
         ?contenteditable=${this.isEditing}
-        @click=${this.handleFocus}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
         @keydown=${(e: KeyboardEvent) => {

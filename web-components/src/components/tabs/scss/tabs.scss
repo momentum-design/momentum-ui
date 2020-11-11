@@ -25,14 +25,10 @@
 
   .md-menu-overlay__more {
     height: 100%;
-    max-width: 10rem;
-
-    &.md-menu-overlay__more--grow {
-      flex-grow: 1;
-    }
+    width: auto;
+    margin-left: auto;
 
     &.md-menu-overlay__more--hidden {
-      flex-grow: initial;
       pointer-events: none;
       visibility: hidden;
       width: 0 !important;

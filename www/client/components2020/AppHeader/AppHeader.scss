@@ -3,6 +3,11 @@
   margin: 0 auto;
 }
 
+.site-header-con-wrapper {
+  // position: fixed;
+  z-index: 1000;
+}
+
 .site-header-white .md-top-bar__mobile-menu-button i {
   color: white;
 }
@@ -15,12 +20,17 @@
   top: 0;
 
   @include site-column-breakpoint {
+    margin-top: 0;
     padding: 0;
   }
 
   & .md-top-bar__container {
     height: auto;
     padding: 0;
+
+    .md-top-bar__mobile-menu-button {
+      padding-top: 2rem;
+    }
 
     & .site-header-top-bar-nav {
       background-color: transparent;
@@ -91,7 +101,8 @@
       padding: 0;
 
       @include site-column-breakpoint {
-        padding: 1rem 2rem;
+        padding: 2rem;
+        padding-bottom: 0;
       }
 
       & .md-brand {
@@ -105,7 +116,7 @@
     }
 
     .md-top-bar__mobile {
-      .md-top-bar__brand a.site-logo svg {
+      .md-top-bar__brand span.site-logo svg {
         fill: $md-black;
       }
 
@@ -113,12 +124,16 @@
         background-color: $md-white;
         color: $md-white;
       }
+
+      .md-tb-mobile__close {
+        top: 2rem;
+      }
     }
   }
 }
 
 .site-header-white {
-  a.site-logo svg {
+  span.site-logo svg {
     fill: $md-white;
   }
 

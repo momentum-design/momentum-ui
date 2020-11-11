@@ -1,5 +1,6 @@
 .md-floating {
   background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-light);
+  border: $floating-main-border;
   border-radius: var(--floating-modal-main-radius, $lm-floating-modal-main-radius-light);
   box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
   cursor: move;

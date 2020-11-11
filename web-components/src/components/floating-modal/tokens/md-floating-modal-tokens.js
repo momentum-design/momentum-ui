@@ -26,6 +26,12 @@ const floatingModal = {
       light: "0 4px 8px rgba(0, 0, 0, 0.20), 0 0 1px rgba(0, 0, 0, 0.20)",
       dark: "0 4px 8px rgba(256, 256, 256, 0.20), 0 0 1px rgba(256, 256, 256, 0.20)"
     }
+  },
+  outer: {
+    "border-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[80].name
+    }
   }
 };
 

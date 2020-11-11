@@ -194,7 +194,7 @@ export class FloatingModal extends LitElement {
             <div
               class="${`md-floating ` + `${this.fixfull ? "fixed" : ""}`}"
               role="dialog"
-              aria-label="${this.arialabel}"
+              aria-label=${this.arialabel}
               aria-modal="true"
               style=${styleMap(this.resizeStyleMap)}
               @mousedown=${(event: MouseEvent) => this.onWindowPress(event)}

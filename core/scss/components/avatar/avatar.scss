@@ -113,7 +113,20 @@
       @include avatar-contents-base;
 
       position: absolute;
-      content: '';
+     
+    }
+
+    &.#{$avatar__class}--clickable-bot:after {
+      background-color: $avatar-bot__background;
+      content: 'Bot';
+      height: 30%;
+      width: 60%;
+      margin-left: -.14em;
+      margin-bottom: -.30em;
+      font-size: 0.571em;
+      padding: .3em 1.2em 1.2em 1.2em;
+      border-radius: .45em;
+      align-items: end;
     }
 
     &.#{$avatar__class}--clickable {
@@ -126,6 +139,21 @@
       }
     }
 
+    &.#{$avatar__class}--clickable-bot {
+      &:hover::after {
+        background-color: $avatar-bot__background;
+        content: 'Bot';
+        height: 30%;
+        width: 60%;
+        margin-top: auto;
+        margin-left: -.14em;
+        margin-bottom: -.24em;
+        font-size: 0.571em;
+        padding: .55em 1.2em .75em 1.2em;
+        border-radius: .45em;
+      }
+    }
+
     &.#{$avatar__class}--active:after {
       @include avatar-contents-base;
 
@@ -133,6 +161,7 @@
       left: 0;
       content: '';
       box-shadow: $avatar--active__shadow;
+      background-color: transparent;
     }
 
     &.#{$avatar__class}--inactive {

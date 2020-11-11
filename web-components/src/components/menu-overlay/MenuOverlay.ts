@@ -14,7 +14,7 @@ import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
-import { FocusTrapMixin } from "../../mixins/FocusTrapMixin";
+import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
@@ -124,6 +124,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (this.triggerElement) {
       this.triggerElement.removeEventListener("click", this.handleTriggerClick);
       this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
+      this.triggerElement = null;
     }
   }
 
@@ -324,9 +325,9 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
   private focusInsideOverlay() {
     if (this.focusableElements) {
       if (this.focusableElements.length > 1) {
-        this.focusTrapIndex = 1;
+        this.setFocusableElement!(1);
       } else if (this.focusableElements.length) {
-        this.focusTrapIndex = 0;
+        this.setFocusableElement!();
       }
     }
   }

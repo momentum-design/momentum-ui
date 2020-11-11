@@ -7,6 +7,7 @@ import IconsList from './IconsList';
 import fetchIcons from './actions';
 import SectionHeader from '../../components2020/SectionHeader';
 import PageHero from '../../components2020/PageHero';
+import locale from './locale';
 
 // Import page images
 import ellipsis from '../../assets/2020/ellipsis.svg';
@@ -83,8 +84,8 @@ class IconsContainer extends React.Component {
         />
         <div className="site-warp">
           <SectionHeader
-            title="Icons"
-            leadStr="Momentum icons are simple and consistent across platforms. They follow our attributes of focused, familiar, and inclusive in metaphor and design. Our icons act as visual support to help people move through the experience more effectively."
+            title={locale.sectionHeaders.icons.title}
+            leadStr={locale.sectionHeaders.icons.body}
           />
           <div className="site-icons">
             <div className="site-icons__top-2020">

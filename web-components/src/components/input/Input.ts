@@ -15,10 +15,10 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
-import "../help-text/HelpText";
-import "../icon/Icon";
-import "../label/Label";
-import "../spinner/Spinner";
+import "@/components/help-text/HelpText";
+import "@/components/icon/Icon";
+import "@/components/label/Label";
+import "@/components/spinner/Spinner";
 import styles from "./scss/module.scss";
 
 export const containerSize = [
@@ -455,7 +455,7 @@ export class Input extends FocusMixin(LitElement) {
               this.messages,
               message =>
                 html`
-                  <md-help-text .message=${message} .messageType=${this.messageType}></md-help-text>
+                  <md-help-text .message=${message} .messageType=${this.messageType as Input.MessageType}></md-help-text>
                 `
             )}
           </div>

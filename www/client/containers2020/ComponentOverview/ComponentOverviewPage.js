@@ -63,7 +63,8 @@ class ComponentOverviewPage extends React.Component {
       <div className="site-con page-body-buffer">
         <div className='site-warp'>
           <SectionHeader
-            title={locale.sectionHeaders.components.title}
+            className="site-component-overview__section-header"
+            titleElm={locale.sectionHeaders.components.title}
             leadElm={locale.sectionHeaders.components.body}
           />
 

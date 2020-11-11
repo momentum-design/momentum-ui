@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "files": [
+    "/web-components/webpack.config.ts",
+    "/web-components/webpack.config.dev.server.ts"
+  ]
+}

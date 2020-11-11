@@ -38,7 +38,7 @@ class App extends React.Component {
       return (<ScrollToTop>
         <AppHeader2020 location = {location} />
         <Routes2020 />
-        <Feedback2020 />
+        {/* <Feedback2020 /> */}
         <AppFooter2020 />
       </ScrollToTop>);
     }

@@ -1,6 +1,10 @@
 .site-footer {
   padding: 84px 0 44px 0;
 
+  &.site-con {
+    background: $md-gray-10;
+  }
+
   @include site-column-breakpoint {
     padding-top: 48px;
   }

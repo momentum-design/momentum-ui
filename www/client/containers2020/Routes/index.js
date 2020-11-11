@@ -28,7 +28,7 @@ class Routes extends React.Component {
         <Route path='/2020/icons' exact component={Icons} />
         <Route path='/2020/tokens' component={Tokens} />
         <Route path='/2020/personality' exact component={Personality} />
-        <Route path='/2020/feedback' exact component={Feedback} />
+        {/* <Route path='/2020/feedback' exact component={Feedback} /> */}
         <Route component={NotFound} />
       </Switch>
     );

@@ -1,93 +1,59 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   ActivityButton,
   Button,
   Icon,
   Input,
-  Radio,
-  RadioGroup,
   Select,
   SelectOption,
 } from '@momentum-ui/react';
-import Bounce from './Bounce';
 
-class NotFoundPage extends React.Component {
-  constructor(props){
-    super(props);
-    this.elementContainer = React.createRef();
-  }
-
-  render() {
-    return (
-      <div className='site-con page-body-buffer' ref={this.elementContainer}>
-        <div className="site-warp site-not-found-header">
-          <h1>Oops!</h1>
-          <p>The page you are looking for can’t be found.</p>
+const NotFoundPage = () => {
+  return (
+    <div className='site-con page-body-buffer'>
+      <div className="site-warp site-not-found-header">
+        <h1>Page not found</h1>
+      </div>
+      <div className="site-warp site-not-found-body">
+        <div className="site-not-found-body__element-container">
+          <div className="site-not-found-element-radio">
+            <p>We can’t find</p>
+            <div></div>
+          </div>
+          <NavLink to="/2020">
+            <Button className="site-not-found-element-button--blue" color="blue">THE PAGE</Button>
+          </NavLink>
+          <Input
+            className="site-not-found-element-input"
+            placeholder="you're looking for"
+            shape="pill"
+            type="text"
+          />
         </div>
-        <div className="site-warp site-not-found-body">
-          <Bounce className="site-not-found-element-activity--meetings" parentContainer={this.elementContainer}>
-            <ActivityButton type="meetings" />
-          </Bounce>
-          <Bounce className="site-not-found-element-activity--camera" parentContainer={this.elementContainer}>
-            <ActivityButton type="camera" />
-          </Bounce>
-          <Bounce className="site-not-found-element-radio" parentContainer={this.elementContainer}>
-            <RadioGroup values={["does not exist"]}>
-              <Radio
-                value="Sorry"
-                label="Sorry"
-                htmlId="exampleCheckbox1"
-                onChange={() => {}}
-              />
-              <Radio
-                value="the page"
-                label="the page"
-                htmlId="exampleCheckbox2"
-                onChange={() => {}}
-              />
-              <Radio
-                value="you are looking for"
-                label="you are looking for"
-                htmlId="exampleCheckbox3"
-                onChange={() => {}}
-              />
-              <Radio
-                value="does not exist"
-                label="does not exist"
-                htmlId="exampleCheckbox4"
-                onChange={() => {}}
-              />
-            </RadioGroup>
-          </Bounce>
-          <Bounce className="site-not-found-element-input" parentContainer={this.elementContainer}>
-            <Input
-              placeholder="you're looking for"
-              shape="pill"
-              type="text"
-            />
-          </Bounce>
-          <Bounce className="site-not-found-element-select" parentContainer={this.elementContainer}>
-            <Select
-              defaultValue="Select Menu"
-            >
-              <SelectOption label="Sorry"/>
-              <SelectOption label="the page"/>
-              <SelectOption label="you are looking for"/>
-              <SelectOption label="does not exist"/>
-            </Select>
-          </Bounce>
-          <Bounce className="site-not-found-element-button--blue" parentContainer={this.elementContainer}>
-            <Button color="blue">Try again</Button>
-          </Bounce>
-          <Bounce className="site-not-found-element-button--gray" parentContainer={this.elementContainer}>
-            <Button color="dark-gray">Button</Button>
-          </Bounce>
-
-          {/* <Icon className="site-not-found-element-icon" name="view-list-circle_100" /> */}
+        <div className="site-not-found-body__element-container">
+          <div className="site-not-found-element-icon__container">
+            <Icon className="site-not-found-element-icon" name="view-list-circle_100" />
+          </div>
+        </div>
+        <div className="site-not-found-body__element-container">
+          <Select
+            className="site-not-found-element-select"
+            defaultValue="To fix this, try..."
+          >
+            <SelectOption label="Checking that your search or url is correct"/>
+            <SelectOption label="Asking a Momentum team member what’s up"/>
+            <SelectOption label="Building it yourself (with our libraries) "/>
+          </Select>
+          <ActivityButton className="site-not-found-element-activity--meetings" type="meetings" />
+          <NavLink to="/2020">
+            <Button className="site-not-found-element-button--gray" color="dark-gray">The homepage</Button>
+          </NavLink>
+          <ActivityButton className="site-not-found-element-activity--camera" type="camera" />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default NotFoundPage;

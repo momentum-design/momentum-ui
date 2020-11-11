@@ -47,7 +47,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^18.5.2",
+    "@momentum-ui/core": "^19.9.26",
     "@momentum-ui/react": "^23.18.2",
     "@momentum-ui/tokens": "^1.6.2",
     "@momentum-ui/utils": "^6.2.10",

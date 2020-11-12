@@ -2,8 +2,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import "@/components/avatar/Avatar";
-import { nothing } from "lit-html";
-
+import { ifDefined } from "lit-html/directives/if-defined";
 
 @customElement("md-chat-message")
 export class ChatMessage extends LitElement {
@@ -19,9 +18,9 @@ export class ChatMessage extends LitElement {
     return html`
       <div class="md-chat-message">
         <md-avatar
-          type="${this.self ? "self" : ""}"
+          type=${ifDefined(this.self ? "self" : undefined)}
           title=${this.self ? "self" : this.title}
-          src=${this.self ? "" : this.src}
+          src=${ifDefined(this.self ? undefined : this.src)}
         ></md-avatar>
 
         <div class="md-chat-message_content">

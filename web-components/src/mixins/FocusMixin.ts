@@ -34,6 +34,7 @@ import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...input: any[]) => A;
+export type FocusEventDetail = { sourceEvent: Event };
 
 export abstract class FocusClass extends LitElement {
   protected setFocus?(force: boolean): void;
@@ -60,12 +61,16 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
       if (super.handleFocusIn) {
         super.handleFocusIn(event);
       }
+
       this.setFocus(true);
 
       this.dispatchEvent(
-        new CustomEvent("focus-visible", {
+        new CustomEvent<FocusEventDetail>("focus-visible", {
           composed: true,
-          bubbles: true
+          bubbles: true,
+          detail: {
+            sourceEvent: event
+          }
         })
       );
     }
@@ -77,9 +82,12 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
       this.setFocus(false);
 
       this.dispatchEvent(
-        new CustomEvent("focus-not-visible", {
+        new CustomEvent<FocusEventDetail>("focus-not-visible", {
           composed: true,
-          bubbles: true
+          bubbles: true,
+          detail: {
+            sourceEvent: event
+          }
         })
       );
     }

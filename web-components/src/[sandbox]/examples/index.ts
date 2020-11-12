@@ -4,6 +4,7 @@ export { alertBannerTemplate } from "./alert-banner";
 export { avatarTemplate } from "./avatar";
 export { badgeTemplate } from "./badge";
 export { buttonTemplate } from "./button";
+export { breadcrumbsTemplate } from "./breadcrumbs";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
 export { comboBoxTemplate } from "./combobox";

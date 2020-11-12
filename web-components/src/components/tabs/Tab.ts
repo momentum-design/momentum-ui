@@ -13,7 +13,14 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export type TabClickEvent = { id: string };
-export type TabKeyDownEvent = { id: string; key: string };
+export type TabKeyDownEvent = {
+  id: string;
+  key: string;
+  ctrlKey: boolean;
+  shiftKey: boolean;
+  altKey: boolean;
+  srcEvent: KeyboardEvent;
+};
 
 @customElement("md-tab")
 export class Tab extends FocusMixin(LitElement) {
@@ -83,7 +90,11 @@ export class Tab extends FocusMixin(LitElement) {
         new CustomEvent<TabKeyDownEvent>("tab-keydown", {
           detail: {
             id: this.id,
-            key: event.code
+            key: event.code,
+            ctrlKey: event.ctrlKey,
+            shiftKey: event.shiftKey,
+            altKey: event.altKey,
+            srcEvent: event
           },
           bubbles: true,
           composed: true

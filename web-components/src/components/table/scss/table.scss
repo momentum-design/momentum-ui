@@ -7,20 +7,20 @@
  */
 
 .md-table {
-  width: 100%;
+  border: $table-main-border;
   border-collapse: collapse;
-  border: 1px solid #ededed;
+  width: 100%;
 
   .md-table__header {
     tr {
       background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
     }
     th {
-      text-align: left;
+      color: var(--table-text-color, $lm-table-text-color-light);
       font-size: $font-size-small;
       font-weight: bold;
-      color: #545454;
-      padding-left: 12px;
+      padding-left: calc(#{$table-main-indent} * 3);
+      text-align: left;
 
       a {
         color: #545454;
@@ -29,7 +29,7 @@
             display: inline-block;
             content: $icon-arrow-filled-down_10;
             font-family: $icon-font-name;
-            padding-left: 5px;
+            padding-left: $table-main-indent;
             vertical-align: bottom;
           }
         }
@@ -38,7 +38,7 @@
             display: inline-block;
             content: $icon-arrow-filled-up_10;
             font-family: $icon-font-name;
-            padding-left: 5px;
+            padding-left: $table-main-indent;
             vertical-align: bottom;
           }
         }
@@ -49,16 +49,16 @@
   .md-table__body {
     td {
       font-size: $font-size-base;
-      padding-left: 12px;
+      padding-left: calc(#{$table-main-indent} * 3);
     }
   }
 
   tr {
-    height: 42px;
+    height: $table-row-height;
 
     td {
-      border-bottom: 1px solid #ededed;
-      border-right: 1px solid #ededed;
+      border-bottom: $table-main-border;
+      border-right: $table-main-border;
     }
 
     &:hover {

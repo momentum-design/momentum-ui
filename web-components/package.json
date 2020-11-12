@@ -15,7 +15,7 @@
     "dist:watch": "npm run check && webpack --config-name=distDevWatch",
     "check": "check-peer-dependencies --yarn",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
-    "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private",
+    "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private && cd publish && npm publish",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot",

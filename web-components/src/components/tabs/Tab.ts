@@ -46,6 +46,11 @@ export class Tab extends FocusMixin(LitElement) {
   set selected(value: boolean) {
     const oldValue = this._selected;
     this._selected = value;
+
+    if (value) {
+      this.notifySelectedTab();
+    }
+
     this.setAttribute("aria-selected", `${value}`);
     this.requestUpdate("selected", oldValue);
   }
@@ -85,6 +90,15 @@ export class Tab extends FocusMixin(LitElement) {
         })
       );
     }
+  }
+
+  private notifySelectedTab() {
+    this.dispatchEvent(
+      new CustomEvent("focus-visible", {
+        composed: true,
+        bubbles: true,
+      })
+    );
   }
 
   protected update(changedProperties: PropertyValues) {

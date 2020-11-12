@@ -12,6 +12,7 @@ import {
   badgeTemplate,
   buttonTemplate,
   breadcrumbsTemplate,
+  chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
   comboBoxTemplate,
@@ -307,6 +308,12 @@ export class Sandbox extends LitElement {
             <h2>md-breadcrumbs</h2>
             <sass-stats component="breadcrumbs">
               ${breadcrumbsTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-chat-message">
+            <h2>md-chat-message</h2>
+            <sass-stats component="chat-message">
+              ${chatMessageTemplate}
             </sass-stats>
           </div>
         </elix-list-explorer>

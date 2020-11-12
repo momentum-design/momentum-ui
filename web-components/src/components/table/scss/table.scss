@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 .md-table {
   width: 100%;
   border-collapse: collapse;
@@ -5,11 +13,11 @@
 
   .md-table__header {
     tr {
-      background-color: #ededed;
+      background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
     }
     th {
       text-align: left;
-      font-size: 12px;
+      font-size: $font-size-small;
       font-weight: bold;
       color: #545454;
       padding-left: 12px;
@@ -40,7 +48,7 @@
 
   .md-table__body {
     td {
-      font-size: 14px;
+      font-size: $font-size-base;
       padding-left: 12px;
     }
   }
@@ -54,14 +62,18 @@
     }
 
     &:hover {
-      background-color: #ededed;
+      background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
     }
   }
 
   &--stripped {
     .md-table__body {
       tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: var(--table-stripped-bg-color, $lm-table-stripped-bg-color-light);
+
+        &:hover {
+          background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+        }
       }
     }
   }

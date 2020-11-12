@@ -112,14 +112,14 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener("click", this.handleOutsideClick);
-    document.addEventListener("keydown", this.handleOutsideKeydown);
+    document.addEventListener("click", this.handleOutsideOverlayClick);
+    document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener("click", this.handleOutsideClick);
-    document.removeEventListener("keydown", this.handleOutsideKeydown);
+    document.removeEventListener("click", this.handleOutsideOverlayClick);
+    document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
 
     if (this.triggerElement) {
       this.triggerElement.removeEventListener("click", this.handleTriggerClick);
@@ -269,7 +269,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     }
   }
 
-  handleOutsideKeydown = async (event: KeyboardEvent) => {
+  handleOutsideOverlayKeydown = async (event: KeyboardEvent) => {
     let insideMenuKeyDown = false;
     const path = event.composedPath();
     if (path.length) {
@@ -332,7 +332,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     }
   }
 
-  handleOutsideClick = (event: MouseEvent) => {
+  handleOutsideOverlayClick = (event: MouseEvent) => {
     let insideMenuClick = false;
     const path = event.composedPath();
     if (path.length) {

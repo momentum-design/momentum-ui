@@ -1,4 +1,5 @@
 $floating-header-border: 1px solid var(--floating-modal-main-border-color, $lm-floating-modal-main-border-color-light);
+$floating-main-border: 1px solid var(--floating-modal-outer-border-color, $lm-floating-modal-outer-border-color-light);
 $floating-resize-size: rem-calc(30);
 $floating-resize-indent: rem-calc(15);
 $floating-header-padding: rem-calc(8) rem-calc(8) rem-calc(8) rem-calc(12);

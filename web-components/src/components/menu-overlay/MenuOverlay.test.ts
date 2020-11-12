@@ -180,10 +180,10 @@ describe("MenuOverlay", () => {
 
   test("should execute handleOutsideClick", async () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
-    const mockhandleOutsideClick = jest.spyOn(element, "handleOutsideClick");
+    const mockhandleOutsideClick = jest.spyOn(element, "handleOutsideOverlayClick");
     const event = new MouseEvent("click");
 
-    element.handleOutsideClick(event);
+    element.handleOutsideOverlayClick(event);
     await elementUpdated(element);
 
     expect(mockhandleOutsideClick).toHaveBeenCalled();
@@ -196,7 +196,7 @@ describe("MenuOverlay", () => {
     const event = new MouseEvent("click");
     await nextFrame();
 
-    element.handleOutsideClick(event);
+    element.handleOutsideOverlayClick(event);
     await elementUpdated(element);
     expect(element.arrow).not.toBeNull();
   });

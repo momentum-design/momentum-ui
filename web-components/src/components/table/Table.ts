@@ -19,6 +19,7 @@ export class Table extends LitElement {
   @property({ type: Boolean }) zebra = false;
   @property({ type: Boolean }) clean = false;
   @property({ type: Boolean }) sorting = false;
+  @property({ type: String }) nodata = "No data Loaded";
 
   @internalProperty() private sort = { columnName: "", sortting: false };
   @internalProperty() private sortedABC = false;
@@ -121,7 +122,7 @@ export class Table extends LitElement {
                 ${this.csvData.map((row: any) => html`<tr>${row.map((item: any) => html`<td>${item}</td>`)}</tr>`)}
               </tbody>
             </table>`
-          : html`<p>No data Loaded</p>`}
+          : html`<p>${this.nodata}</p>`}
       </div>
     `;
   }

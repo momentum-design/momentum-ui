@@ -2,7 +2,7 @@ import { Key } from "@/constants";
 import { uuid } from "@/utils/helpers";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
-import "./Tab";
+import "@/components/tabs/Tab";
 import { Tab } from "./Tab";
 
 describe("Tab", () => {
@@ -66,5 +66,23 @@ describe("Tab", () => {
     expect(keydown).toBeDefined();
     expect(keydown.id).toBe(id);
     expect(keydown.key).toBe(Key.Enter);
+  });
+
+  test("should dispatch event when selected", async() => {
+    const el = await fixture<Tab>(`<md-tab></md-tab>`);
+    const spySelected = jest.spyOn(el, "notifySelectedTab" as never);
+
+    el.selected = true;
+    await elementUpdated(el);
+
+    expect(spySelected).toHaveBeenCalled();
+    spySelected.mockRestore();
+  });
+
+  test("should set label property if it defined", async() => {
+    const el = await fixture<Tab>(`<md-tab label="Tab Label"></md-tab>`);
+
+    expect(el.hasAttribute("aria-label")).toBeTruthy();
+    expect(el.getAttribute("aria-label")).toEqual("Tab Label");
   });
 });

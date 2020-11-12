@@ -1,6 +1,5 @@
 /** @component modal */
 
-
 .md-modal {
   @include modal-base;
   @include modal-size($radius: true);
@@ -10,13 +9,12 @@
   }
 
   &__header {
-
     @include modal-header-size;
     flex-shrink: 0;
     padding-bottom: $modal-main__padding;
     padding-left: calc(#{$modal-main__padding} / 2);
     padding-right: calc(#{$modal-main__padding} / 2);
-    
+
     .md-modal__title {
       overflow: hidden;
       text-align: center;
@@ -38,7 +36,6 @@
     }
 
     .md-modal__close {
-
       @include flex;
 
       border: 0;
@@ -47,7 +44,6 @@
   }
 
   &__content {
-
     @include modal-color($bg: $modal__background, $box-shadow: $modal-dialog__box-shadow);
     border: $modal-dialog__border;
     display: flex;
@@ -77,7 +73,6 @@
   }
 
   &__footer {
-
     @include flex($jc: flex-end);
     flex-shrink: 0;
     padding-left: calc(#{$modal-main__padding} / 2);
@@ -95,11 +90,7 @@
   }
 
   &.md-modal--full {
-    @include modal-size(
-      $width: $modal__width--full-screen,
-      $height: $modal__height--full-screen,
-      $radius: 0
-    );
+    @include modal-size($width: $modal__width--full-screen, $height: $modal__height--full-screen, $radius: 0);
 
     .md-modal__header {
       @include modal-header-size(
@@ -254,11 +245,7 @@
   }
 
   &.md-modal--dialog {
-    @include modal-size(
-      $width: $modal__width--small,
-      $radius: true,
-      $top-offset: $modal-dialog__top,
-    );
+    @include modal-size($width: $modal__width--small, $radius: true, $top-offset: $modal-dialog__top);
 
     .md-modal__close {
       @include modal-close-button(
@@ -324,9 +311,7 @@
       }
 
       .md-modal__header {
-        @include modal-header-size(
-          $font-size: $modal-header__font-size--mobile
-        );
+        @include modal-header-size($font-size: $modal-header__font-size--mobile);
 
         .md-modal__message {
           font-size: rem-calc(14);
@@ -345,10 +330,8 @@
       }
 
       .md-modal__footer {
-
-        @include flex;
         padding: $modal__padding;
-        text-align: center;
+        padding-right: rem-calc(24);
 
         md-button:not(:first-of-type) {
           margin-left: rem-calc(16);
@@ -393,7 +376,6 @@
     text-decoration: none;
   }
 }
-
 
 .md-close {
   @include easing-transition(all, 150ms, ease);

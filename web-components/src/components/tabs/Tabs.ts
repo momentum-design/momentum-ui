@@ -332,7 +332,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   handleTabKeydown(event: CustomEvent<TabKeyDownEvent>) {
-    const { key, id } = event.detail;
+    const { id, key, ctrlKey, shiftKey, altKey, srcEvent } = event.detail;
 
     const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -364,6 +364,20 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     };
 
     switch (key) {
+      case Key.Tab: {
+        if (isMoreTriggerTab) {
+          // Support Shift + Tab from More to last visible tab
+          if (!this.isMoreTabMenuOpen && shiftKey) {
+            srcEvent.preventDefault();
+            this.changeSelectedTabIdx(lastVisibleTabIdx);
+          }
+        } else if (isVisibleTab) {
+          //
+        } else if (isHiddenTab) {
+          //
+        }
+        break;
+      }
       case Key.End: {
         if (isMoreTriggerTab) {
           //

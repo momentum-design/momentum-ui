@@ -55,6 +55,7 @@
     &--disabled {
       background-color: transparent;
       color: var(--md-primary-text-color, $md-gray-100);
+      cursor: default;
 
       &:hover {
         background-color: transparent;

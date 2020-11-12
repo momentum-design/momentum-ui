@@ -1,6 +1,6 @@
 import { defineCE, fixture, fixtureCleanup, fixtureSync, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
-import { AnyConstructor, FocusMixin } from "./FocusMixin";
+import { AnyConstructor, FocusClass, FocusMixin } from "./FocusMixin";
 
 describe("Focus Mixin", () => {
   afterEach(fixtureCleanup);
@@ -16,7 +16,6 @@ describe("Focus Mixin", () => {
       `;
     }
   }
-
   test("should applying to component", async () => {
     const tag = defineCE(class extends FocusMixin(FocusMixin(CustomElement)) {});
     const el = await fixture<CustomElement>(`<${tag}></${tag}>`);
@@ -96,5 +95,26 @@ describe("Focus Mixin", () => {
 
     expect(element["getDeepActiveElement"]!()).toEqual(input);
     expect(element["isElementFocused"]!(input!)).toBeFalsy();
+  });
+
+  test("should dispatch event in focus/blur case", async () => {
+    const tag = defineCE(class extends FocusMixin(CustomElement) {});
+    const el = await fixture<CustomElement>(`<${tag}></${tag}>`);
+
+    const focusEvent = new Event("focus");
+    setTimeout(() => (el as FocusClass)["handleFocusIn"]!(focusEvent));
+
+    const { detail: focusDetail } = await oneEvent(el, "focus-visible");
+
+    expect(focusDetail).toBeDefined();
+    expect(focusDetail.sourceEvent).toEqual(focusEvent);
+
+    const blurEvent = new Event("blur");
+    setTimeout(() => (el as FocusClass)["handleFocusOut"]!(blurEvent));
+
+    const { detail: blurDetail } = await oneEvent(el, "focus-not-visible");
+
+    expect(blurDetail).toBeDefined();
+    expect(blurDetail.sourceEvent).toEqual(blurEvent);
   });
 });

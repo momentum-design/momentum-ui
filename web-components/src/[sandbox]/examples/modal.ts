@@ -2,6 +2,7 @@ import "@/components/button/Button";
 import "@/components/modal/Modal";
 import "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
+import {  comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/tabs/Tabs";
 import { customElement, html, LitElement, property } from "lit-element";
 
@@ -10,6 +11,7 @@ export class ModalTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isModalOpen = false;
   @property({ type: Boolean }) isComplexModalOpen = false;
   @property({ type: Boolean }) isDialogOpen = false;
+  @property({ type: Boolean }) isComplexTabsModal = false;
 
   private openModal() {
     this.isModalOpen = true;
@@ -35,11 +37,20 @@ export class ModalTemplateSandbox extends LitElement {
     this.isDialogOpen = false;
   }
 
+  private openComplexTabsModal() {
+    this.isComplexTabsModal = true;
+  }
+
+  private closeComplexTabsModal() {
+    this.isComplexTabsModal = false;
+  }
+
   render() {
     return html`
       <md-button @click=${this.openModal}>Open Modal</md-button>
       <md-button @click=${this.openDialog}>Open Dialog</md-button>
       <md-button @click=${this.openComplexModal}>Open Complex Modal</md-button>
+      <md-button @click=${this.openComplexTabsModal}>Open Complex Tabs Modal</md-button>
       <md-modal
         htmlId="modal-1"
         ?show=${this.isModalOpen}
@@ -125,6 +136,12 @@ export class ModalTemplateSandbox extends LitElement {
           </md-tab>
           <md-tab-panel slot="panel">
             <span>Content for "Contact History"</span>
+            <md-radiogroup checked="0">
+              <md-radio slot="radio" value="Option 1">Option 1</md-radio>
+              <md-radio slot="radio" value="Option 2">Option 2</md-radio>
+              <md-radio slot="radio" value="Option 3">Option 3</md-radio>
+              <md-radio slot="radio" value="Option 4">Option 4</md-radio>
+            </md-radiogroup>
             <button type="button">Contact History</button>
           </md-tab-panel>
           <md-tab slot="tab">
@@ -136,6 +153,50 @@ export class ModalTemplateSandbox extends LitElement {
             <button type="button">Cisco WxM</button>
           </md-tab-panel>
         </md-tabs>
+      </md-modal>
+
+      <md-modal
+        ?show=${this.isComplexTabsModal}
+        size="small"
+        hideFooter
+        hideHeader
+        @close-modal="${this.closeComplexTabsModal}"
+      >
+        <div slot="header">
+          <h3 class="sl-form-label">Station Login</h3>
+        </div>
+        <md-tabs justified>
+          <md-tab slot="tab" label="Dial Number">
+            <span>Dial Number</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <div class="phone-fromat">
+              <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
+                <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
+                <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
+              </md-radiogroup>
+            </div>
+
+            <md-input type="tel" id="dn" placeholder="Dial Number" shape="pill" autofocus></md-input>
+          </md-tab-panel>
+          <md-tab slot="tab" label="Extension">
+            <span>Extension</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <div class="extension-format">
+              <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
+            </div>
+            <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
+          </md-tab-panel>
+        </md-tabs>
+        <div class="sl-footer" slot="footer">
+          <md-button class="footer-btn" aria-label="Cancel" @click="${this.closeComplexTabsModal}">
+            Cancel
+          </md-button>
+          <md-button class="footer-btn" variant="primary" aria-label="Submit" @click="${this.closeComplexTabsModal}">
+            Submit
+          </md-button>
+        </div>
       </md-modal>
     `;
   }

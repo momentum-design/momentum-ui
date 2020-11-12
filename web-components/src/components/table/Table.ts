@@ -21,11 +21,8 @@ export class Table extends LitElement {
   @property({ type: Boolean }) sorting = false;
 
   @internalProperty() private sort = { columnName: "", sortting: false };
-  @internalProperty() private sorted = false;
   @internalProperty() private sortedABC = false;
-
-
-  //@query(".md-table__body") tableRow!: HTMLTableElement;
+  @internalProperty() private sortedZyx = false;
 
   csvData: any;
   headerRow: any;
@@ -55,19 +52,18 @@ export class Table extends LitElement {
     this.results = Papa.parse(this.tabledata, this.config);
     this.headerRow = this.results.data[0];
     this.csvData = this.results.data.slice(1, this.results.data.length);
+    console.log(this.csvData);
   }
 
   sortTab(ev: Event, key: any) {
     const elCell = ev.target as HTMLTableElement;
     const sortArr = Array.from(this.csvData); 
     const index = this.headerRow.indexOf(key);
-    this.sorted = true;
 
     function compare(a: any, b: any) {
       const bandA = a[index].toUpperCase();
       const bandB = b[index].toUpperCase();
 
-      console.log(bandA);
       let comparison = 0;
       if (bandA > bandB) {
         comparison = 1;
@@ -81,20 +77,22 @@ export class Table extends LitElement {
       sortArr.sort(compare);
       this.sort.sortting = true;
       this.sortedABC = true;
-      elCell.setAttribute("class", "sortedAbc");
+      this.sortedZyx = false;
+      elCell.classList.remove("sortedZyx");
+      elCell.classList.add("sortedAbc");
     } else {
       sortArr.reverse();
       this.sort.sortting = false;
       this.sortedABC = false;
-      elCell.removeAttribute("class");
-      elCell.setAttribute("class", "sortedZ");
+      this.sortedZyx = true;
+      elCell.classList.remove("sortedAbc");
+      elCell.classList.add("sortedZyx");
     }
 
     this.sort.columnName = key;
 
     this.csvData = sortArr;
     this.requestUpdate("csvData");
-    console.log(elCell);
   }
 
   static get styles() {
@@ -112,7 +110,7 @@ export class Table extends LitElement {
   render() {
     return html`
       <div class="md-table-container">
-        ${this.csvData.length !== 0
+        ${this.csvData.length != 0
           ? html`<table class="md-table ${classMap(this.tableClassMap)}">
               <thead class="md-table__header">
                 <tr>

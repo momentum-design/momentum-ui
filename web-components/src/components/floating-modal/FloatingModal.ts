@@ -193,6 +193,7 @@ export class FloatingModal extends LitElement {
         ? html`
             <div
               class="${`md-floating ` + `${this.fixfull ? "fixed" : ""}`}"
+              part="floating"
               role="dialog"
               aria-label=${this.arialabel}
               aria-modal="true"

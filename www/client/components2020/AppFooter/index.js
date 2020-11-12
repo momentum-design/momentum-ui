@@ -44,7 +44,7 @@ class AppFooter extends Component {
           <div className={'footer-bottom-text'}>
             <div>© 2020 Cisco and/or its affiliates. All rights reserved.</div>
             <div className='site-friend-link'>
-              <a href="/2020/feedback">Support & Feedback</a>
+              {/* <a href="/2020/feedback">Support & Feedback</a> */}
               <a href="https://www.cisco.com/c/en/us/about/legal/privacy.html">Privacy Policy</a>
               <a href="https://www.cisco.com/c/en/us/about/legal/privacy.html#cookies">Cookie Policy</a>
             </div>

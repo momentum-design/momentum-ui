@@ -325,9 +325,9 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
   private focusInsideOverlay() {
     if (this.focusableElements) {
       if (this.focusableElements.length > 1) {
-        this.setFocusableElement!(1);
+        this.setInitialFocus!(1);
       } else if (this.focusableElements.length) {
-        this.setFocusableElement!();
+        this.setInitialFocus!();
       }
     }
   }

@@ -20,10 +20,10 @@ export class Table extends LitElement {
   @property({ type: Boolean }) clean = false;
   @property({ type: Boolean }) sorting = false;
   @property({ type: String }) nodata = "No data Loaded";
+  @property({ type: Boolean }) stickheader = false;
 
   @internalProperty() private sort = { columnName: "", sortting: false };
-  @internalProperty() private sortedABC = false;
-  @internalProperty() private sortedZyx = false;
+
 
   csvData: any;
   headerRow: any;
@@ -39,21 +39,11 @@ export class Table extends LitElement {
     download: false
   }
 
-  configSort = {
-    quoteChar: '"',
-    escapeChar: '"',
-    header: true,
-    preview: 0,
-    step: undefined,
-    complete: undefined
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.results = Papa.parse(this.tabledata, this.config);
     this.headerRow = this.results.data[0];
     this.csvData = this.results.data.slice(1, this.results.data.length);
-    console.log(this.csvData);
   }
 
   sortTab(ev: Event, key: any) {
@@ -61,31 +51,29 @@ export class Table extends LitElement {
     const sortArr = Array.from(this.csvData); 
     const index = this.headerRow.indexOf(key);
 
-    function compare(a: any, b: any) {
-      const bandA = a[index].toUpperCase();
-      const bandB = b[index].toUpperCase();
+    console.log(sortArr);
 
-      let comparison = 0;
+    function compare(a: any, b: any) {
+      const bandA = a[index].toLowerCase();
+      const bandB = b[index].toLowerCase();
       if (bandA > bandB) {
-        comparison = 1;
+        return 1;
       } else if (bandA < bandB) {
-        comparison = -1;
+        return -1;
+      } else {
+        return 0;
       }
-      return comparison;
+
     }
 
     if (key !== this.sort.columnName || this.sort.sortting !== true) {
       sortArr.sort(compare);
       this.sort.sortting = true;
-      this.sortedABC = true;
-      this.sortedZyx = false;
       elCell.classList.remove("sortedZyx");
       elCell.classList.add("sortedAbc");
     } else {
       sortArr.reverse();
       this.sort.sortting = false;
-      this.sortedABC = false;
-      this.sortedZyx = true;
       elCell.classList.remove("sortedAbc");
       elCell.classList.add("sortedZyx");
     }
@@ -110,16 +98,16 @@ export class Table extends LitElement {
 
   render() {
     return html`
-      <div class="md-table-container">
+      <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly": nothing}`}>
         ${this.csvData.length != 0
-          ? html`<table class="md-table ${classMap(this.tableClassMap)}">
-              <thead class="md-table__header">
-                <tr>
-                  ${this.headerRow.map((i: any) => html`<th>${this.sorting ? html`<a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>` : html`${i}`}</th>`)}
+          ? html`<table class="md-table ${classMap(this.tableClassMap)}" tabindex="0" role="table">
+              <thead class="md-table__header" role="rowgroup" tabindex="0">
+                <tr role="row">
+                  ${this.headerRow.map((i: any) => html`<th role="columnheader">${this.sorting ? html`<a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>` : html`${i}`}</th>`)}
                 </tr>
               </thead>
-              <tbody class="md-table__body">
-                ${this.csvData.map((row: any) => html`<tr>${row.map((item: any) => html`<td>${item}</td>`)}</tr>`)}
+              <tbody class="md-table__body" role="rowgroup">
+                ${this.csvData.map((row: any) => html`<tr tabindex="0" role="row">${row.map((item: any) => html`<td role="cell">${item}</td>`)}</tr>`)}
               </tbody>
             </table>`
           : html`<p>${this.nodata}</p>`}

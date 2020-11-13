@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import { DayFilters, getDate, isDayDisabled, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon/index";
@@ -15,7 +15,14 @@ export class DatePickerDay extends LitElement {
   @property({ attribute: false }) day: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a day
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({
+    attribute: false,
+    hasChanged: (newVal, oldVal) => {
+      console.log(oldVal, newVal);
+      return newVal !== oldVal;
+    }
+  })
+  datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
 
   @internalProperty() protected isOutsideMonth = false; //  neeeded for changing styles of prev/next month dates: "--outside-month"
   @internalProperty() protected isToday = false; // not sure of applicability yet
@@ -36,6 +43,11 @@ export class DatePickerDay extends LitElement {
     this.selected = this.datePickerProps && this.datePickerProps.selected.day === this.day.day ? true : false;
   }
 
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    this.selected = this.datePickerProps && this.datePickerProps.selected.day === this.day?.day ? true : false;
+  }
+
   handleClick = (e: MouseEvent) => {
     const { handleDayClick, day } = this;
     handleDayClick && handleDayClick(e, day);
@@ -45,6 +57,7 @@ export class DatePickerDay extends LitElement {
         bubbles: true,
         composed: true,
         detail: {
+          date: this.day,
           sourceEvent: e
         }
       })

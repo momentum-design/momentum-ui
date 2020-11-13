@@ -1,7 +1,7 @@
 import "@/components/datepicker/datepicker-day/DatePickerDay";
 import { addDays, DayFilters, getStartOfWeek, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 export namespace DatePickerWeek {}
@@ -17,6 +17,10 @@ export class DatePickerWeek extends LitElement {
   // focused flags if it is currently focused
   // day helps determine . . . what? the provided date?
   // Month is neeeded for changing styles of prev/next month dates: "--outside-month"
+
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+  }
 
   renderDays = () => {
     const startOfWeek = this.day && getStartOfWeek(this.day);

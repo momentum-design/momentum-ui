@@ -335,7 +335,7 @@ describe("FocusTrap Mixin", () => {
     await nextFrame();
     await elementUpdated(el);
 
-    focusTrap!["setFocusableElement"]!();
+    focusTrap!["setInitialFocus"]!();
     await nextFrame();
     await elementUpdated(el);
 
@@ -349,6 +349,7 @@ describe("FocusTrap Mixin", () => {
 
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
+    focusTrap!["initialFocusComplete"] = true;
 
     await elementUpdated(focusTrap!);
 
@@ -368,6 +369,7 @@ describe("FocusTrap Mixin", () => {
 
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
+    focusTrap!["initialFocusComplete"] = true;
 
     await nextFrame();
     await elementUpdated(el);

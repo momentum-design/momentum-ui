@@ -1,13 +1,42 @@
-
-
 .md-datepicker {
-  &__month-container {
+  &__calendar {
+    border: 1px solid #dedede;
     border-radius: 4px;
     height: 272px;
-    padding: 16px;
     width: 248px;
   }
   
+  &__month-container {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    height: 272px;
+    justify-content: space-between;
+    padding: 4px 10px 12px;
+    width: 248px;
+  }
+
+  &__navigation--buttons {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    line-height: normal;
+    width: 44px;
+    
+
+    md-button[disabled]::part(button) {
+      background: none;
+    }
+  }
+
+  &__month {
+    width: auto;
+  }
+
+  &__week {
+    height: 34px;
+  }
+
   &__navigation--current-month {
     font-size: 16px;
     font-weight: 700;
@@ -16,6 +45,7 @@
   &__navigation {
     display: flex;
     justify-content: space-between;
+    padding: 0 6px;
   }
 
   &__day--names {
@@ -28,19 +58,31 @@
     height: 28px;
     width: 28px;
 
-    &[disabled] {
-      background-color: none;
+    &--names {
+      color: #545454;
+      display: flex;
+      font-size: 10px;
+      justify-content: space-around;
+      line-height: 14px;
+      margin: 12px 0 8px;
     }
 
-    &:hover {
-      background: #cecece;
+    &::part(button) {
+      &:hover {
+        background: #cecece;
+      }
     }
 
-    &--today {
+    &[disabled]::part(button) {
+      background: none;
+    }
+
+    &--today::part(button) {
       color: orange;
+      font-weight: 700;
     }
 
-    &--selected {
+    &--selected::part(button) {
       background: #000;
       color: white;
     }
@@ -48,6 +90,10 @@
     &--focus {
       background: orange;
     }
-    
   }
+}
+
+.md-datepicker__day--today.md-datepicker__day--selected::part(button) {
+  background: orange;
+  color: white;
 }

@@ -1,7 +1,9 @@
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import { addWeeks, DayFilters, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
+import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
+import styles from "../scss/module.scss";
 
 export namespace DatePickerMonth {}
 
@@ -32,6 +34,10 @@ export class DatePickerMonth extends LitElement {
 
     return weeks;
   };
+
+  static get styles() {
+    return [reset, styles];
+  }
 
   render() {
     return html`

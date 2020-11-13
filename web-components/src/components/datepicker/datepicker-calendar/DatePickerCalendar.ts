@@ -11,6 +11,7 @@ import {
   shouldPrevMonthDisable,
   subtractMonths
 } from "@/utils/dateUtils";
+import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues, TemplateResult } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
@@ -151,12 +152,12 @@ export class DatePickerCalendar extends LitElement {
   };
 
   static get styles() {
-    return styles;
+    return [reset, styles];
   }
 
   render() {
     return html`
-      <div>
+      <div class="md-datepicker__calendar">
         ${this.date && this.renderMonth()}
       </div>
     `;

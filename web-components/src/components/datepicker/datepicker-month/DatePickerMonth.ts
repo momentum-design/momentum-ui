@@ -27,6 +27,7 @@ export class DatePickerMonth extends LitElement {
       weeks.push(
         html`
           <md-datepicker-week
+            .month=${month}
             .day=${currentWeekStart}
             .filterParams=${this.filterParams}
             .datePickerProps=${this.datePickerProps}

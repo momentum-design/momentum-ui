@@ -31,7 +31,7 @@ export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) focused: DateTime | undefined = undefined;
   @property({ attribute: false }) selected: DateTime | undefined = undefined;
   @property({ attribute: false }) minDate: DateTime | undefined = now().minus({ days: 10 });
-  @property({ attribute: false }) maxDate: DateTime | undefined = now().plus({ days: 10 });
+  @property({ attribute: false }) maxDate: DateTime | undefined = now().plus({ days: 40 });
   @property({ attribute: false }) filterDate: Function | null = null;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
 

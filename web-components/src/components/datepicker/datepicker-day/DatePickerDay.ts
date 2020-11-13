@@ -13,16 +13,10 @@ export class DatePickerDay extends LitElement {
   @property({ type: Boolean, reflect: true }) selected = false; // passed in current selection, a DateTime instance
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ attribute: false }) day: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a day
+  @property({ attribute: false }) month: number | undefined = undefined; // provided from upper component scope
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({
-    attribute: false,
-    hasChanged: (newVal, oldVal) => {
-      console.log(oldVal, newVal);
-      return newVal !== oldVal;
-    }
-  })
-  datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
 
   @internalProperty() protected isOutsideMonth = false; //  neeeded for changing styles of prev/next month dates: "--outside-month"
   @internalProperty() protected isToday = false; // not sure of applicability yet
@@ -39,6 +33,7 @@ export class DatePickerDay extends LitElement {
       this.day = now();
     }
     this.isToday = this.day.day === now().day;
+    this.isOutsideMonth = this.day.month !== this.month;
     this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
     this.selected = this.datePickerProps && this.datePickerProps.selected.day === this.day.day ? true : false;
   }
@@ -95,7 +90,9 @@ export class DatePickerDay extends LitElement {
         color=${"color-none"}
         ?disabled=${this.disabled}
         class="md-datepicker__day ${classMap(dayClassMap)}"
-        @click=${(e: MouseEvent) => this.handleClick(e)}
+        @click=${(e: MouseEvent) => {
+          !this.disabled && this.handleClick(e);
+        }}
         @keydown=${(e: KeyboardEvent) => this.handleKey(e)}
         aria-label=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
         aria-selected=${ifDefined(this.selected)}

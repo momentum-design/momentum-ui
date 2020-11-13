@@ -121,7 +121,9 @@ export class ComboBox extends FocusMixin(LitElement) {
 
   protected handleFocusIn(event: Event) {
     if (!this.disabled) {
-      this.input!.focus();
+      requestAnimationFrame(() => {
+        this.input!.focus();
+      });
       super.handleFocusIn && super.handleFocusIn(event);
     }
     this.dispatchEvent(

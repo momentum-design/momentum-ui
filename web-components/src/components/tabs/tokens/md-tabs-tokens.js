@@ -27,12 +27,8 @@ const tabs = {
       dark: colors.gray[90].name
     },
     "focus-border": {
-      light: "transparent",
-      dark: "transparent"
-    },
-    "focus-shadow": {
-      light: "0 0 4px 2px $md-blue-50",
-      dark: "0 0 4px 2px $md-blue-50"
+      light: colors.blue[60].name,
+      dark: colors.blue[40].name
     },
     "hover-border": {
       light: colors.gray[20].name,

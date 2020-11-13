@@ -50,7 +50,7 @@ export class ListItem extends FocusMixin(LitElement) {
 
   render() {
     return html`
-      <li class="md-list-item" part="list-item" aria-hidden="true">
+      <li class="md-list-item" part="list-item">
         <slot></slot>
       </li>
     `;

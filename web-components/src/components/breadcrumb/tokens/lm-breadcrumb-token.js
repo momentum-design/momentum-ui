@@ -3,9 +3,9 @@
 
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
-const breadcrumbs = {
-  prefix: "md",
-  component: "breadcrumbs",
+const breadcrumb = {
+  prefix: "lm",
+  component: "breadcrumb",
   color: {
     light: colors.blue[50].name,
     dark: colors.blue[40].name,
@@ -20,4 +20,4 @@ const breadcrumbs = {
   }
 };
 
-module.exports = breadcrumbs;
+module.exports = breadcrumb;

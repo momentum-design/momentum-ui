@@ -9,8 +9,8 @@ type NavCrumb = {
   label: string;
 };
 
-@customElement("md-breadcrumbs")
-export class Breadcrumbs extends LitElement {
+@customElement("md-breadcrumb")
+export class Breadcrumb extends LitElement {
   @property({ type: String }) label = "";
   @property({ type: Array, attribute: "nav-crumbs", reflect: true }) navCrumbs: NavCrumb[] = [];
 
@@ -52,7 +52,7 @@ export class Breadcrumbs extends LitElement {
 
   render() {
     return html`
-      <nav aria-label="${ifDefined(this.label ? this.label : undefined)}" class="md-breadcrumbs">
+      <nav aria-label="${ifDefined(this.label ? this.label : undefined)}" class="md-breadcrumb">
         <ul @click=${(event: MouseEvent) => this.handleClick(event)}>
           ${repeat(
             this.navCrumbs,
@@ -73,6 +73,6 @@ export class Breadcrumbs extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-breadcrumbs": Breadcrumbs;
+    "md-breadcrumb": Breadcrumb;
   }
 }

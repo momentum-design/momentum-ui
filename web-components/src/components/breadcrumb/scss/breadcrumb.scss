@@ -3,8 +3,8 @@
   outline: none !important;
 }
 
-:host(md-breadcrumbs) {
-  .md-breadcrumbs {
+:host(md-breadcrumb) {
+  .md-breadcrumb {
     ul {
       @include flex($jc: flex-start);
       @include nav-list();
@@ -13,25 +13,25 @@
     li {
       display: flex;
       text-transform: capitalize;
-      font-size: $breadcrumbs-font-size;
+      font-size: $breadcrumb-font-size;
 
       &:not(:first-child) {
 
         &::before {
           display: flex;
-          margin: $breadcrumbs-side-padding ;
-          color: $breadcrumbs-slash-color;
+          margin: $breadcrumb-side-padding ;
+          color: $breadcrumb-slash-color;
           content: "/";
         }
       }
     }
     a{
-      color: $breadcrumbs-color;
+      color: $breadcrumb-color;
 
       &[aria-current="page"] {
         pointer-events: none;
         cursor: default;
-        color: $breadcrumbs-color-current;
+        color: $breadcrumb-color-current;
       }
     }
   }

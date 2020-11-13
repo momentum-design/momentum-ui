@@ -196,7 +196,7 @@ export const comboBoxComplexObjectOption = [
     flag: "🇦🇸"
   }
 ];
-export const breadCrumbs = [
+export const breadCrumb = [
   {
     link: "/one",
     label: "One"

@@ -1,20 +1,20 @@
-import "@/components/breadcrumbs/Breadcrumbs";
+import "@/components/breadcrumb/Breadcrumb";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
 import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
-  title: "Breadcrumbs",
-  component: "md-breadcrumbs",
+  title: "Breadcrumb",
+  component: "md-breadcrumb",
   decorators: [withKnobs, withA11y],
   parameters: {
     a11y: {
-      element: "md-breadcrumbs"
+      element: "md-breadcrumb"
     }
   }
 };
 
-const breadCrumbs = [
+const breadCrumb = [
   {
     link: "/one",
     label: "One"
@@ -34,5 +34,5 @@ const breadCrumbs = [
 ];
 
 export const Default = () => html`
-  <md-breadcrumbs .navCrumbs="${breadCrumbs}"></md-breadcrumbs>
+  <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
 `;

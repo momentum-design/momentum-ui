@@ -11,6 +11,7 @@ import {
   avatarTemplate,
   badgeTemplate,
   buttonTemplate,
+  chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
   comboBoxTemplate,
@@ -307,6 +308,12 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="md-floating-dialog">
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-chat-message">
+            <h2>md-chat-message</h2>
+            <sass-stats component="chat-message">
+              ${chatMessageTemplate}
             </sass-stats>
           </div>
         </elix-list-explorer>

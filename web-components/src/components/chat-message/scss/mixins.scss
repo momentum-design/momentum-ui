@@ -1,0 +1,6 @@
+@mixin text-dots() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100%);
+}

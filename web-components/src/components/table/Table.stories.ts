@@ -25,6 +25,7 @@ export default {
 
 export const Table = () => {
   const data = text("data", "id, Product Name, Quantity, Price, Date Purchased \n 2, Espresso Truffle, 6, 1.75, Sat Aug 22 2020 \n 1, Caffe Espresso, 3, 3, Tue Nov 24 2020 \n 0, Cappuccino, 8, 5, Wed Feb 26 2020 \n 4, Espresso Truffle, 6, 1.75, Sat Aug 22 2020 \n 5, Peppermint Mocha Twist, 1, 4, Fri May 01 2020 \n 6, White Chocolate Mocha, 11, 3.6, Sat Feb 15 2020 \n 7, Caffe Espresso, 2, 3, Mon Oct 26 2020 \n 8, Peppermint Mocha Twist, 3, 4, Sat Aug 22 2020 \n 9, Caffe Espresso, 10, 3, Fri Oct 16 2020 \n 10, Black Tea, 5, 2.25, Mon Feb 03 2020");
+  const label = text("aria-label", "Table");
   const stickheader = boolean("stickheader", false);
   const zebra = boolean("zebra", false);
   const clean = boolean("clean", false);
@@ -38,7 +39,7 @@ export const Table = () => {
      <pre>"id, Product Name, Quantity, Price, Date Purchased \\n 2, Espresso Truffle, 6, 1.75, Sat Aug 22 2020 \\n 1, Caffe Espresso, 3, 3, Tue Nov 24 2020 \\n 0, Cappuccino, 8, 5, Wed Feb 26 2020 \\n 4, Espresso Truffle, 6, 1.75, Sat Aug 22 2020 \\n 5, Peppermint Mocha Twist, 1, 4, Fri May 01 2020 \\n 6, White Chocolate Mocha, 11, 3.6, Sat Feb 15 2020 \\n 7, Caffe Espresso, 2, 3, Mon Oct 26 2020 \\n 8, Peppermint Mocha Twist, 3, 4, Sat Aug 22 2020 \\n 9, Caffe Espresso, 10, 3, Fri Oct 16 2020 \\n 10, Black Tea, 5, 2.25, Mon Feb 03 2020"</pre></br>
   </p>
   <div style="height: 400px;">
-    <md-table .zebra=${zebra} tabledata="${data}" .stickheader="${stickheader}" .clean="${clean}" .sorting="${sorting}"></md-table>
+    <md-table .zebra=${zebra} label="${label}" tabledata="${data}" .stickheader="${stickheader}" .clean="${clean}" .sorting="${sorting}"></md-table>
   </div>
   `;
 };

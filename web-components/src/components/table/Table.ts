@@ -21,6 +21,7 @@ export class Table extends LitElement {
   @property({ type: Boolean }) sorting = false;
   @property({ type: String }) nodata = "No data Loaded";
   @property({ type: Boolean }) stickheader = false;
+  @property({ type: String }) label = "Table";
 
   @internalProperty() private sort = { columnName: "", sortting: false };
 
@@ -100,7 +101,7 @@ export class Table extends LitElement {
     return html`
       <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly": nothing}`}>
         ${this.csvData.length != 0
-          ? html`<table class="md-table ${classMap(this.tableClassMap)}" tabindex="0" role="table">
+          ? html`<table class="md-table ${classMap(this.tableClassMap)}" tabindex="0" role="table" aria-label="${this.label}">
               <thead class="md-table__header" role="rowgroup" tabindex="0">
                 <tr role="row">
                   ${this.headerRow.map((i: any) => html`<th role="columnheader">${this.sorting ? html`<a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>` : html`${i}`}</th>`)}

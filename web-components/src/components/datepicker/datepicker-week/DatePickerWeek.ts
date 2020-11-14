@@ -1,5 +1,5 @@
 import "@/components/datepicker/datepicker-day/DatePickerDay";
-import { addDays, addMonths, DayFilters, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
+import { addDays, DayFilters, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { DateTime } from "luxon";
@@ -8,8 +8,8 @@ export namespace DatePickerWeek {}
 
 @customElement("md-datepicker-week")
 export class DatePickerWeek extends LitElement {
-  @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
-  @property({ attribute: false }) month: number = now().month; // provided from upper component scope
+  @property({ attribute: false }) startOfWeekDay: DateTime = now(); // provided from upper component scope
+  @property({ attribute: false }) viewAnchorMonth: number = now().month; // provided from upper component scope
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
   @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
 
@@ -24,17 +24,11 @@ export class DatePickerWeek extends LitElement {
   }
 
   renderDays = () => {
-    const startOfWeek = this.day && getStartOfWeek(this.day);
-    const month = this.month;
     const days = [0, 1, 2, 3, 4, 5, 6].map(offset => {
-      let offsetDay = addDays(startOfWeek, offset);
-      if (!isSameMonth(startOfWeek, offsetDay)) {
-        offsetDay = addMonths(offsetDay, 1);
-      }
-      console.log(month);
+      const offsetDay = addDays(this.startOfWeekDay, offset);
       return html`
         <md-datepicker-day
-          .month=${month}
+          .viewAnchorMonth=${this.viewAnchorMonth}
           .day=${offsetDay}
           .filterParams=${this.filterParams}
           .datePickerProps=${this.datePickerProps}

@@ -12,8 +12,8 @@ export class DatePickerDay extends LitElement {
   @property({ type: Boolean, reflect: true }) focused = false; // passed in current selection, a DateTime instance
   @property({ type: Boolean, reflect: true }) selected = false; // passed in current selection, a DateTime instance
   @property({ type: Boolean, reflect: true }) disabled = false;
-  @property({ attribute: false }) day: DateTime | undefined = undefined; // meant to be a DateTime instance reflecting a day
-  @property({ attribute: false }) month: number | undefined = undefined; // provided from upper component scope
+  @property({ attribute: false }) day: DateTime = now(); // meant to be a DateTime instance reflecting a day
+  @property({ attribute: false }) viewAnchorMonth: number | undefined = undefined; // provided from upper component scope
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
   @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
@@ -29,18 +29,16 @@ export class DatePickerDay extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.day === undefined) {
-      this.day = now();
-    }
     this.isToday = this.day.day === now().day;
-    this.isOutsideMonth = this.day.month !== this.month;
     this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
-    this.selected = this.datePickerProps && this.datePickerProps.selected.day === this.day.day ? true : false;
+    this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
+    this.selected = this.datePickerProps?.selected && this.datePickerProps.selected.day === this.day.day ? true : false;
   }
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    this.selected = this.datePickerProps && this.datePickerProps.selected.day === this.day?.day ? true : false;
+    this.selected = this.datePickerProps?.selected && this.datePickerProps.selected === this.day ? true : false;
+    this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
   }
 
   handleClick = (e: MouseEvent) => {

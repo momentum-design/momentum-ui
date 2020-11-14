@@ -93,6 +93,11 @@
     &--focus {
       background: orange;
     }
+    
+    &--outside-month {
+      color: var(--md-disabled-text-color, inherit);
+    }
+
   }
 }
 

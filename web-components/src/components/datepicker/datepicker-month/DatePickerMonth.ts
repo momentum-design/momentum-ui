@@ -18,24 +18,24 @@ export class DatePickerMonth extends LitElement {
   }
 
   renderWeeks = () => {
-    let currentWeekStart = getStartOfWeek(getStartOfMonth(this.day));
+    let startOfWeekDay = getStartOfWeek(getStartOfMonth(this.day));
 
     const weeks = [];
-    const month = getMonth(this.day);
+    const viewAnchorMonth = getMonth(this.day);
 
     do {
       weeks.push(
         html`
           <md-datepicker-week
-            .month=${month}
-            .day=${currentWeekStart}
+            .viewAnchorMonth=${viewAnchorMonth}
+            .startOfWeekDay=${startOfWeekDay}
             .filterParams=${this.filterParams}
             .datePickerProps=${this.datePickerProps}
           ></md-datepicker-week>
         `
       );
-      currentWeekStart = addWeeks(currentWeekStart, 1);
-    } while (isSameMonth(currentWeekStart, this.day));
+      startOfWeekDay = addWeeks(startOfWeekDay, 1);
+    } while (isSameMonth(startOfWeekDay, this.day));
 
     return weeks;
   };

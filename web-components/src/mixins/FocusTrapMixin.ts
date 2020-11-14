@@ -33,8 +33,9 @@ export abstract class FocusTrapClass extends LitElement {
   protected deactivateFocusTrap?(): void;
   protected activateFocusTrap?(): void;
   protected focusableElements?: HTMLElement[];
+  protected initialFocusComplete?: boolean;
   protected setFocusableElements?(): void;
-  protected setFocusableElement?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
+  protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
 }
 export interface FocusTrapInterface {
   activeFocusTrap: boolean;
@@ -50,6 +51,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   }
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
+    @internalProperty() protected initialFocusComplete = false;
+
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
@@ -83,6 +86,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         }
         if (document.hasFocus() && this.isElementFocused!(focusableElement)) {
           focusableElement.focus({ preventScroll: this.preventScroll });
+        }
+
+        if (!this.initialFocusComplete) {
+          this.initialFocusComplete = true;
         }
       });
     }
@@ -233,8 +240,11 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return element.hasAttribute("autofocus");
     }
 
-    protected setFocusableElement(prefferableElement: HTMLElement | number = 0, ignoreAutoFocus = false) {
+    protected setInitialFocus(prefferableElement: HTMLElement | number = 0, ignoreAutoFocus = false) {
       let focusableIndex = -1;
+
+      this.initialFocusComplete = false;
+
       if (this.focusableElements.length && !ignoreAutoFocus) {
         focusableIndex = this.focusableElements.findIndex(this.hasAutofocus);
       }
@@ -297,13 +307,13 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         insideTrapClick = !!path.find(node => node === this);
         if (!insideTrapClick && !this.preventClickOutside && this.activeFocusTrap) {
           this.deactivateFocusTrap();
-        } else if (insideTrapClick && this.activeFocusTrap) {
-          this.handleClickInsideModal(event);
+        } else if (insideTrapClick && this.activeFocusTrap && this.initialFocusComplete) {
+          this.handleClickInsideTrap(event);
         }
       }
     };
 
-    private handleClickInsideModal(event: MouseEvent) {
+    private handleClickInsideTrap(event: MouseEvent) {
       const path = event.composedPath();
       const pathIndex
       = path.findIndex(element => this.findElement(element as HTMLElement) !== -1);

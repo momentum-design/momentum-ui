@@ -69,7 +69,7 @@ export function localizeDate(date: DateTime, locale: string): DateTime {
 }
 
 export function isSameDay(date1: DateTime, date2: DateTime): boolean {
-  return date1 === date2;
+  return date1.day === date2.day && date1.month === date2.month && date1.year === date2.year;
 }
 
 export function isSameMonth(date1: DateTime, date2: DateTime): boolean {

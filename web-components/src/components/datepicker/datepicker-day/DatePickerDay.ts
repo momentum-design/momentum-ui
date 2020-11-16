@@ -1,5 +1,5 @@
 import "@/components/button/Button";
-import { DayFilters, getDate, isDayDisabled, now } from "@/utils/dateUtils";
+import { DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
@@ -29,7 +29,7 @@ export class DatePickerDay extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.isToday = this.day.day === now().day;
+    this.isToday = isSameDay(this.day, now());
     this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
     this.selected = this.datePickerProps?.selected && this.datePickerProps.selected.day === this.day.day ? true : false;
@@ -39,6 +39,7 @@ export class DatePickerDay extends LitElement {
     super.updated(changedProperties);
     this.selected = this.datePickerProps?.selected && this.datePickerProps.selected === this.day ? true : false;
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
+    this.isToday = isSameDay(this.day, now());
   }
 
   handleClick = (e: MouseEvent) => {

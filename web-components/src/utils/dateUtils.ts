@@ -6,8 +6,8 @@ export interface DayFilters {
   filterDate: Function | undefined;
 }
 export interface DatePickerProps {
-  selected: DateTime | undefined;
-  focused: DateTime | undefined;
+  selected: DateTime;
+  focused: DateTime;
 }
 
 // export function newDateWithOffset(utcOffset) {

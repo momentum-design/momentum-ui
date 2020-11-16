@@ -36,15 +36,15 @@ export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) monthNavFocus = "prev";
   @property({ attribute: false }) nextArialLabel = undefined;
   @property({ attribute: false }) previousArialLabel = undefined;
-  @property({ attribute: false }) focused: DateTime | undefined = undefined;
-  @property({ attribute: false }) selected: DateTime | undefined = undefined;
+  @property({ attribute: false }) focused: DateTime = now().plus({ days: 2 });
+  @property({ attribute: false }) selected: DateTime = now();
   @property({ attribute: false }) minDate: DateTime | undefined = undefined;
   @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
   @property({ attribute: false }) filterDate: Function | null = null;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
 
   @internalProperty() viewAnchorDate: DateTime = now();
-  @internalProperty() datePickerProps: DatePickerProps = { selected: undefined, focused: undefined };
+  @internalProperty() datePickerProps: DatePickerProps | undefined = undefined;
 
   connectedCallback() {
     super.connectedCallback();

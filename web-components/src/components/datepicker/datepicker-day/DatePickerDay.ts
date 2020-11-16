@@ -1,5 +1,5 @@
 import "@/components/button/Button";
-import { DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
+import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
@@ -16,7 +16,7 @@ export class DatePickerDay extends LitElement {
   @property({ attribute: false }) viewAnchorMonth: number | undefined = undefined; // provided from upper component scope
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
 
   @internalProperty() protected isOutsideMonth = false; //  neeeded for changing styles of prev/next month dates: "--outside-month"
   @internalProperty() protected isToday = false; // not sure of applicability yet
@@ -29,17 +29,19 @@ export class DatePickerDay extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.isToday = isSameDay(this.day, now());
     this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
-    this.selected = this.selected = isSameDay(this.datePickerProps?.selected, this.day);
+    this.isToday = isSameDay(this.day, now());
+    this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
+    this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
   }
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    this.selected = isSameDay(this.datePickerProps?.selected, this.day);
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
     this.isToday = isSameDay(this.day, now());
+    this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
+    this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
   }
 
   handleClick = (e: MouseEvent) => {

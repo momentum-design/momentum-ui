@@ -37,7 +37,7 @@ const getColor = (name, value) => {
 };
 
 const getColorObjectFromTokens = colorName => {
-  colorData = colorName.split('-');
+  const colorData = colorName.split('-');
   return getColor(colorData[0], colorData[1]);
 };
 

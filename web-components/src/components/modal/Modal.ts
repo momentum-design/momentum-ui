@@ -87,7 +87,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
 
   private focusInsideModal() {
     if (this.focusableElements && this.focusableElements.length) {
-      this.setFocusableElement!();
+      this.setInitialFocus!();
     }
   }
 

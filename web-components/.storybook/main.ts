@@ -15,7 +15,14 @@ const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
 module.exports = {
   stories: ["../src/components/**/*.stories.ts"],
 
-  addons: ["@storybook/addon-knobs/register", "@storybook/addon-a11y/register", "@storybook/addon-docs"],
+  addons: [
+    "@storybook/addon-knobs/register",
+    "@storybook/addon-a11y/register",
+    "@storybook/addon-docs",
+    "@storybook/addon-actions",
+    "@storybook/addon-backgrounds",
+    "@storybook/addon-cssresources"
+  ],
 
   webpackFinal: async (config: any) => {
 

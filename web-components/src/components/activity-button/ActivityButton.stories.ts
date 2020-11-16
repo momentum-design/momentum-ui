@@ -15,44 +15,17 @@ export default {
   }
 };
 
-export const Default = () =>
-  html`
-    <md-activity-button .type=${"chat"}></md-activity-button>
-  `;
-
-export const Size = () => {
-  const label = "Size";
+export const Default = () => {
+  const label = text("Title", "");
+  const labelSize = "Size";
   const defaultValue = 68;
-  const size = select(label, activityButtonSize, defaultValue);
+  const size = select(labelSize, activityButtonSize, defaultValue);
+  const labelType = "Type";
+  const defaultTypeValue = "meetings";
+  const type = select(labelType, activityButtonType, defaultTypeValue);
+  const disabled = boolean("Disabled", false);
 
   return html`
-    <md-activity-button .type=${"chat"} .size=${size}></md-activity-button>
+    <md-activity-button .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
   `;
-};
-
-export const Type = () => {
-  const label = "Type";
-  const defaultValue = "meetings";
-  const type = select(label, activityButtonType, defaultValue);
-
-  return html`
-    <md-activity-button .type=${type}></md-activity-button>
-  `;
-};
-
-export const Disabled = () => {
-  const label = "Disabled";
-  const defaultValue = true;
-  const disabled = boolean(label, defaultValue);
-
-  return html`
-    <md-activity-button .type=${"chat"} ?disabled=${disabled}></md-activity-button>
-  `;
-};
-
-export const Label = () => {
-  const label = text("Title", "Webex Teams");
-  return html`
-    <md-activity-button .type=${"chat"} .label=${label}> </md-activity-button>
-  `;
-};
+}

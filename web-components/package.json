@@ -118,8 +118,12 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.4.4",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-backgrounds": "^6.0.28",
+    "@storybook/addon-cssresources": "^6.0.28",
+    "@storybook/theming": "^6.0.28",
     "country-codes-list": "^1.6.8",
-    "libphonenumber-js": "^1.7.57",
-    "dompurify": "^2.2.0"
+    "dompurify": "^2.2.0",
+    "libphonenumber-js": "^1.7.57"
   }
 }

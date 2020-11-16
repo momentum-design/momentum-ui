@@ -26,6 +26,7 @@ import {
   meetingAlertTemplate,
   menuOverlayTemplate,
   modalTemplate,
+  paginationTemplate,
   phoneInputTemplate,
   progressBarTemplate,
   radioGroupTemplate,
@@ -307,6 +308,12 @@ export class Sandbox extends LitElement {
             <h2>md-chat-message</h2>
             <sass-stats component="chat-message">
               ${chatMessageTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-pagination">
+            <h2>md-pagination</h2>
+            <sass-stats component="pagination">
+              ${paginationTemplate}
             </sass-stats>
           </div>
         </elix-list-explorer>

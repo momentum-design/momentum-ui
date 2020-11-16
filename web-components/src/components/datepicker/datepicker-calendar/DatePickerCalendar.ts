@@ -2,6 +2,7 @@ import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import {
   addDays,
   addMonths,
+  DatePickerProps,
   getLocaleData,
   getStartOfWeek,
   getWeekdayNameInLocale,
@@ -43,10 +44,12 @@ export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
 
   @internalProperty() viewAnchorDate: DateTime = now();
+  @internalProperty() datePickerProps: DatePickerProps = { selected: undefined, focused: undefined };
 
   connectedCallback() {
     super.connectedCallback();
     this.viewAnchorDate = this.focused || this.selected || now();
+    this.datePickerProps = { selected: this.selected, focused: this.focused };
   }
 
   updated(changedProperties: PropertyValues) {
@@ -70,9 +73,8 @@ export class DatePickerCalendar extends LitElement {
   }
 
   handleDaySelect = (e: CustomEvent) => {
-    console.table([e.detail.date.month, e.detail.date.day]);
     this.selected = e.detail.date;
-    this.requestUpdate();
+    this.datePickerProps = { selected: this.selected, focused: this.focused };
   };
 
   setDate = (date: DateTime, cb?: Function) => {
@@ -171,7 +173,7 @@ export class DatePickerCalendar extends LitElement {
           @day-select=${(e: CustomEvent) => this.handleDaySelect(e)}
           .day=${this.viewAnchorDate}
           .filterParams=${{ minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate }}
-          .datePickerProps=${{ selected: this.selected, focused: this.focused }}
+          .datePickerProps=${this.datePickerProps}
         ></md-datepicker-month>
       </div>
     `;

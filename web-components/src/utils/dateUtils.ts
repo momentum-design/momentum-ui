@@ -5,6 +5,10 @@ export interface DayFilters {
   maxDate: DateTime | undefined;
   filterDate: Function | undefined;
 }
+export interface DatePickerProps {
+  selected: DateTime | undefined;
+  focused: DateTime | undefined;
+}
 
 // export function newDateWithOffset(utcOffset) {
 //   // intended for use of now() with offset, currently non-existant in practice

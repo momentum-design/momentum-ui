@@ -65,7 +65,7 @@
   }
 
   md-menu-overlay::part(overlay) {
-    top: -13px;
+    top: -$tab-menu-manual-offset;
   }
 }
 

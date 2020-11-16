@@ -21,12 +21,6 @@ export class DatePickerDay extends LitElement {
   @internalProperty() protected isOutsideMonth = false; //  neeeded for changing styles of prev/next month dates: "--outside-month"
   @internalProperty() protected isToday = false; // not sure of applicability yet
 
-  // componentDidUpdate = () => {    /// FROM REACT . . . intentions unclear, keep until further use cases come up. kh 11/9/20
-  //   const { day, focus } = this.props;
-
-  //   isSameDay(day, focus) && this.dayButton.current.button.focus();
-  // }
-
   connectedCallback() {
     super.connectedCallback();
     this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;

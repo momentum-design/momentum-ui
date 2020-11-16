@@ -1,5 +1,5 @@
 import "@/components/datepicker/datepicker-day/DatePickerDay";
-import { addDays, DayFilters, now } from "@/utils/dateUtils";
+import { addDays, DatePickerProps, DayFilters, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { DateTime } from "luxon";
@@ -11,7 +11,7 @@ export class DatePickerWeek extends LitElement {
   @property({ attribute: false }) startOfWeekDay: DateTime = now(); // provided from upper component scope
   @property({ attribute: false }) viewAnchorMonth: number = now().month; // provided from upper component scope
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
 
   // "otherprops" need to send to datepicker-day: { selected, focus, day, month }
   // selected flags if it is currently selected

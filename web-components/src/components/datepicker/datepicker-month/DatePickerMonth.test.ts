@@ -6,10 +6,10 @@ describe("DatePickerMonth Component", () => {
   afterEach(() => {
     fixtureCleanup();
   });
-  test("should apply a modifier, when the date does not belong to current month", async () => {
+  test("should render", async () => {
     const el: DatePickerMonth = await fixture(
       html`
-        <md-datepicker-day></md-datepicker-day>
+        <md-datepicker-month></md-datepicker-month>
       `
     );
     expect(el).not.toBeNull;

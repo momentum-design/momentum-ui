@@ -65,6 +65,10 @@ button {
     @media screen and (-ms-high-contrast: active) {
       filter: brightness(1) contrast(1) saturate(1.5);
     }
+
+    &:hover {
+      background: none;
+    }
   }
 
   ::slotted(span) {

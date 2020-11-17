@@ -3,15 +3,30 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import "./ActivityButton";
 import { activityButtonSize, activityButtonType } from "./ActivityButton";
+import { withCssResources } from '@storybook/addon-cssresources';
 
 export default {
   title: "Activity Button",
   component: "md-activity-button",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs, withA11y, withCssResources],
   parameters: {
     a11y: {
       element: "md-activity-button"
-    }
+    },
+    cssresources: [
+      {
+        id: `lighttheme`,
+        code: `<style>body { background-color: white; }</style>`,
+        picked: false,
+        hideCode: false, // Defaults to false, this enables you to hide the code snippet and only displays the style selector
+      },
+      {
+        id: `darktheme`,
+        code: `<style>body { background-color: black; }</style>`,
+        picked: false,
+        hideCode: false, // Defaults to false, this enables you to hide the code snippet and only displays the style selector
+      }
+    ],
   }
 };
 

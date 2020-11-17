@@ -1,6 +1,5 @@
 import { addParameters, configure, setCustomElements } from "@storybook/web-components";
 import customElements from './custom-elements.json';
-import { withCssResources } from '@storybook/addon-cssresources';
 
 /** 
  * Custom element file generated automatically by execute this command
@@ -13,9 +12,7 @@ addParameters({
   docs: {
     inlineStories: false,
   },
-  theme: {
 
-  }
 });
 
 const req = require.context("../src/components/", true, /\.src\.(ts|mdx)$/);
@@ -31,19 +28,4 @@ if (module.hot) {
   });
 }
 
-export const parameters = {
-  backgrounds: {
-    default: 'light',
-    values: [
-      { 
-          name: 'light', 
-          value: '#00aced'
-      },
-      { 
-          name: 'dark', 
-          value: '#3b5998' 
-      },
-    ],
-  }
-};
 

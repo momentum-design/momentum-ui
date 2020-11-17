@@ -31,10 +31,10 @@ export const tooltipPlacement = [
 
 export const tooltipStrategy = ["fixed", "absolute"] as const;
 export type TooltipEvent = {
-  sourceEvent: Event;
   placement: Tooltip.Placement;
   reference: HTMLElement;
   popper: HTMLElement;
+  slotContent?: Element[] | undefined | null;
 };
 
 export namespace Tooltip {
@@ -49,6 +49,8 @@ export class Tooltip extends FocusMixin(LitElement) {
 
   @query(".md-tooltip__popper") popper!: HTMLDivElement;
   @query(".md-tooltip__reference") reference!: HTMLDivElement;
+
+  private slotContent: Element[] | null = null;
 
   protected handleFocusIn(event: Event) {
     if (super.handleFocusIn) {
@@ -70,10 +72,10 @@ export class Tooltip extends FocusMixin(LitElement) {
         bubbles: true,
         composed: true,
         detail: {
-          sourceEvent: event,
           placement: this.placement,
           reference: this.reference,
-          popper: this.popper
+          popper: this.popper,
+          ...(!this.message && { slotContent: this.slotContent })
         }
       })
     );
@@ -85,13 +87,22 @@ export class Tooltip extends FocusMixin(LitElement) {
         bubbles: true,
         composed: true,
         detail: {
-          sourceEvent: event,
           placement: this.placement,
           reference: this.reference,
           popper: this.popper
         }
       })
     );
+  }
+
+  handleSlotContentChange(event: Event) {
+    const slot = event.target as HTMLSlotElement;
+    if (slot) {
+      const slotContent = slot.assignedElements({ flatten: true });
+      if (slotContent.length) {
+        this.slotContent = slotContent;
+      }
+    }
   }
 
   render() {
@@ -102,7 +113,7 @@ export class Tooltip extends FocusMixin(LitElement) {
             ${this.message
               ? this.message
               : html`
-                  <slot name="tooltip-content"></slot>
+                  <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
                 `}
           </div>
           <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>

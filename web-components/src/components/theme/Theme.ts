@@ -11,6 +11,7 @@ import { Tooltip, TooltipEvent } from "@/components/tooltip/Tooltip";
 import { lumosDark, lumosLight, momentumDark, momentumLight } from "./index";
 import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
+import styles from "@/components/tooltip/scss/module.scss";
 
 declare global {
   interface Window {
@@ -45,8 +46,8 @@ export class Theme extends LitElement {
 
   @internalProperty() private activeTheme = momentumLight;
 
-  @query("[popper-virtual-popper]") virtualPopper!: HTMLDivElement;
-  @query("[popper-virtual-reference]") virtualReference!: HTMLDivElement;
+  @query("[virtual-global-popper]") virtualWrapper!: HTMLDivElement;
+  @query("[virtual-global-reference]") virtualReference!: HTMLDivElement;
 
   private placement: Tooltip.Placement = "bottom";
   private popperInstance: Instance | null = null;
@@ -81,9 +82,9 @@ export class Theme extends LitElement {
     }
   }
 
-  private removeChildFromvirtualPopper() {
-    while (this.virtualPopper.firstElementChild) {
-      this.virtualPopper.firstElementChild.remove();
+  private removeChildFromVirtualPopper() {
+    while (this.virtualWrapper.firstElementChild) {
+      this.virtualWrapper.firstElementChild.remove();
     }
   }
 
@@ -110,7 +111,7 @@ export class Theme extends LitElement {
     style.right = `${right}px`;
     style.width = `${width}px`;
     style.height = `${height}px`;
-    style.zIndex = "1000";
+    style.zIndex = "-1";
   }
 
   private setVirtualReferencePosition(trigger: HTMLElement) {
@@ -119,16 +120,26 @@ export class Theme extends LitElement {
     this.setStyleToVirtualReference(triggerRect);
   }
 
-  private initVirtualElements(popper: HTMLElement, reference: HTMLElement) {
+  private initVirtualElements(popper: HTMLElement, reference: HTMLElement, slotContent: Element[] | null | undefined) {
     const popperClone = popper.cloneNode(true) as HTMLDivElement;
 
-    if (this.virtualPopper.hasChildNodes()) {
-      this.removeChildFromvirtualPopper();
+    if (this.virtualWrapper.hasChildNodes()) {
+      this.removeChildFromVirtualPopper();
     }
 
-    this.virtualPopper.append(popperClone);
+    this.virtualWrapper.append(popperClone);
+
+    if (slotContent) {
+      this.setVirtualSlotContent(slotContent);
+    }
 
     this.setVirtualReferencePosition(reference);
+  }
+
+  private setVirtualSlotContent(slotContent: Element[]) {
+    if (this.virtualTooltipContent) {
+      slotContent.forEach(element => this.virtualTooltipContent!.append(element));
+    }
   }
 
   protected updated(changedProperties: PropertyValues) {
@@ -138,19 +149,18 @@ export class Theme extends LitElement {
   }
 
   handleVirtualTooltipCreate(event: CustomEvent<TooltipEvent>) {
-    const { popper, placement, reference } = event.detail;
+    event.stopPropagation();
+
+    const { popper, placement, reference, slotContent } = event.detail;
 
     this.placement = placement;
-    this.initVirtualElements(popper, reference);
-
-    reference.setAttribute("style", "pointer-events:none");
+    this.initVirtualElements(popper, reference, slotContent);
+    this.showVirtualTooltip();
   }
 
   handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
-    const { reference } = event.detail;
-
-    this.setInitStyleToVirtualReference();
-    reference.removeAttribute("style");
+    event.stopPropagation();
+    this.hideVirtualTooltip();
   }
 
   private destroyPopperInstance() {
@@ -161,31 +171,61 @@ export class Theme extends LitElement {
   }
 
   private createPopperInstance(placement: Tooltip.Placement) {
-    this.popperInstance = createPopper(this.virtualReference, this.virtualPopper, {
-      placement,
-      modifiers: [
-        ...defaultModifiers,
-        flip,
-        offset,
-        arrow,
-        {
-          name: "offset",
-          options: {
-            offset: [0, 8]
-          }
-        }
-      ]
-    });
+    if (this.virtualPopper) {
+      this.popperInstance = createPopper(this.virtualReference, this.virtualPopper, {
+        placement,
+        modifiers: [
+          ...defaultModifiers,
+          flip,
+          offset,
+          arrow,
+          {
+            name: "offset",
+            options: {
+              offset: [8, 8]
+            }
+          },
+          ...(this.virtualArrow
+            ? [
+                {
+                  name: "arrow",
+                  options: {
+                    element: this.virtualArrow,
+                    padding: 5
+                  }
+                }
+              ]
+            : [])
+        ]
+      });
+    }
+  }
+
+  private get virtualPopper() {
+    return this.shadowRoot!.querySelector(".md-tooltip__popper") as HTMLElement;
+  }
+
+  private get virtualArrow() {
+    return this.shadowRoot!.querySelector(".md-tooltip__arrow") as HTMLElement;
+  }
+
+  private get virtualTooltipContent() {
+    return this.shadowRoot!.querySelector(".md-tooltip__content");
   }
 
   private showVirtualTooltip() {
-    this.virtualPopper.toggleAttribute("data-show", true);
-    this.createPopperInstance(this.placement);
+    if (this.virtualPopper) {
+      this.virtualPopper.toggleAttribute("data-show", true);
+      this.createPopperInstance(this.placement);
+    }
   }
 
   private hideVirtualTooltip() {
-    this.virtualPopper.toggleAttribute("data-show", false);
-    this.destroyPopperInstance();
+    if (this.virtualPopper) {
+      this.virtualPopper.toggleAttribute("data-show", false);
+      this.destroyPopperInstance();
+      this.setInitStyleToVirtualReference();
+    }
   }
 
   private setupEvents() {
@@ -206,12 +246,13 @@ export class Theme extends LitElement {
   render() {
     return html`
       <div class="theme-wrapper">
+        <style>
+          ${styles}
+        </style>
         <slot></slot>
-        <div class="md-tooltip" popper-virtual-popper></div>
+        <div class="md-tooltip" virtual-global-popper></div>
         <div
-          popper-virtual-reference
-          @mouseenter=${this.showVirtualTooltip}
-          @mouseleave=${this.hideVirtualTooltip}
+          virtual-global-reference
           aria-describedby="tooltip"
         ></div>
       </div>

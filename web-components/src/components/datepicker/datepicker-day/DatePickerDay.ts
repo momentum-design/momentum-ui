@@ -31,7 +31,7 @@ export class DatePickerDay extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
-    console.log(this.datePickerProps?.selected);
+    console.log("day updated");
     super.updated(changedProperties);
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
     this.isToday = isSameDay(this.day, now());

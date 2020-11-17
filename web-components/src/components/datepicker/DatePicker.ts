@@ -1,15 +1,6 @@
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
-import {
-  addDays,
-  addWeeks,
-  DatePickerProps,
-  DayFilters,
-  isDayDisabled,
-  now,
-  subtractDays,
-  subtractWeeks
-} from "@/utils/dateUtils";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import "../input/Input";
 import "../menu-overlay/MenuOverlay";
@@ -31,15 +22,10 @@ export class DatePicker extends LitElement {
   @property({ attribute: false }) onMonthChange: Function | undefined = undefined;
   @property({ attribute: false }) onSelect: Function | undefined = undefined;
 
-  @internalProperty() datePickerProps: DatePickerProps | undefined = undefined;
-  @internalProperty() filterParams: DayFilters | null = null;
-
   @query("md-menu-overlay") menuOverlay!: MenuOverlay;
 
   connectedCallback() {
     super.connectedCallback();
-    this.datePickerProps = { selected: this.selectedDate, focused: this.focusedDate };
-    this.filterParams = { minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate };
   }
 
   // componentDidMount() {
@@ -69,9 +55,11 @@ export class DatePicker extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
+    console.log("top updated");
   }
   update(changedProperties: PropertyValues) {
     super.update(changedProperties);
+    console.log("top update");
   }
 
   setOpen = (open: boolean): void => {
@@ -83,7 +71,6 @@ export class DatePicker extends LitElement {
     const event = e.detail.sourceEvent;
     this.setPreSelection(date, event);
     this.setSelected(date, event);
-    console.log(this.selectedDate?.day);
     this.shouldCloseOnSelect && this.setOpen(false);
   };
 
@@ -189,8 +176,8 @@ export class DatePicker extends LitElement {
         <md-datepicker-calendar
           @day-select=${(e: CustomEvent) => this.handleSelect(e)}
           @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${this.datePickerProps}
-          .filterParams=${this.filterParams}
+          .datePickerProps=${{ selected: this.selectedDate, focused: this.focusedDate }}
+          .filterParams=${{ minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate }}
         ></md-datepicker-calendar>
       </md-menu-overlay>
     `;

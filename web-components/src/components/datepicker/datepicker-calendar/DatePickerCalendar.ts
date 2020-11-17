@@ -50,6 +50,7 @@ export class DatePickerCalendar extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
+    console.log("cal updated");
     // this.datePickerProps = { selected: this.selected, focused: this.focused };
     // REFACTOR:  if the focused date changes, update the set date to the focused date
     // REACT VERSION:
@@ -67,6 +68,7 @@ export class DatePickerCalendar extends LitElement {
 
   update(changedProperties: PropertyValues) {
     super.update(changedProperties);
+    console.log("cal update");
   }
 
   // handleDaySelect = (e: CustomEvent) => {

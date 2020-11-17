@@ -9,6 +9,7 @@
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export const tooltipPlacement = [
@@ -46,6 +47,7 @@ export namespace Tooltip {
 export class Tooltip extends FocusMixin(LitElement) {
   @property({ type: String }) message = "";
   @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   @query(".md-tooltip__popper") popper!: HTMLDivElement;
   @query(".md-tooltip__reference") reference!: HTMLDivElement;
@@ -56,43 +58,47 @@ export class Tooltip extends FocusMixin(LitElement) {
     if (super.handleFocusIn) {
       super.handleFocusIn(event);
     }
-    this.notifyTooltipCreate(event);
+    this.notifyTooltipCreate();
   }
 
   protected handleFocusOut(event: Event) {
     if (super.handleFocusOut) {
       super.handleFocusOut(event);
     }
-    this.notifyTooltipDestroy(event);
+    this.notifyTooltipDestroy();
   }
 
-  notifyTooltipCreate(event: Event) {
-    this.dispatchEvent(
-      new CustomEvent<TooltipEvent>("tooltip-create", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          placement: this.placement,
-          reference: this.reference,
-          popper: this.popper,
-          ...(!this.message && { slotContent: this.slotContent })
-        }
-      })
-    );
+  notifyTooltipCreate() {
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-create", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper,
+            ...(!this.message && { slotContent: this.slotContent })
+          }
+        })
+      );
+    }
   }
 
-  notifyTooltipDestroy(event: Event) {
-    this.dispatchEvent(
-      new CustomEvent<TooltipEvent>("tooltip-destroy", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          placement: this.placement,
-          reference: this.reference,
-          popper: this.popper
-        }
-      })
-    );
+  notifyTooltipDestroy() {
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-destroy", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper
+          }
+        })
+      );
+    }
   }
 
   handleSlotContentChange(event: Event) {
@@ -105,23 +111,31 @@ export class Tooltip extends FocusMixin(LitElement) {
     }
   }
 
+  private get tooltipClassMap() {
+    return {
+      "md-tooltip--disabled": this.disabled
+    };
+  }
+
   render() {
     return html`
-      <div class="md-tooltip">
+      <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
         <div class="md-tooltip__popper" role="tooltip">
           <div class="md-tooltip__content">
-            ${this.message
-              ? this.message
-              : html`
-                  <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
-                `}
+            ${
+              this.message
+                ? this.message
+                : html`
+                    <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
+                  `
+            }
           </div>
           <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
         </div>
         <div
           class="md-tooltip__reference"
-          @mouseenter=${this.notifyTooltipCreate}
-          @mouseleave=${this.notifyTooltipDestroy}
+          @mouseenter=${() => this.notifyTooltipCreate()}
+          @mouseleave=${() => this.notifyTooltipDestroy()}
           aria-describedby="tooltip"
         >
           <slot></slot>

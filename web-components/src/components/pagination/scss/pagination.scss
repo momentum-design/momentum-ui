@@ -1,0 +1,11 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-pagination) {
+
+  .md-pagination {
+    display: flex;
+  }
+}

@@ -452,7 +452,7 @@ List.propTypes = {
   onSelect: PropTypes.func,
   /** @prop Disables the stopPropagation() & preventDefault() for ArrowKey Events | false */
   shouldPropagateKeyDown: PropTypes.bool,
-  /** @prop Sets the ARIA role for the Nav, in the context of a TabContainer | 'list' */
+  /** @prop Sets the ARIA role for the PaginationItem, in the context of a TabContainer | 'list' */
   role: PropTypes.string,
   /** @prop Invokes dom focus method on mount | true */
   shouldFocusInitial: PropTypes.bool,

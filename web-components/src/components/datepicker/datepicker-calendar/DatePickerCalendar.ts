@@ -36,7 +36,7 @@ export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) monthNavFocus = "prev";
   @property({ attribute: false }) nextArialLabel = undefined;
   @property({ attribute: false }) previousArialLabel = undefined;
-  @property({ attribute: false }) focused: DateTime = now().plus({ days: 2 });
+  @property({ attribute: false }) focused: DateTime = now();
   @property({ attribute: false }) selected: DateTime = now();
   @property({ attribute: false }) minDate: DateTime | undefined = undefined;
   @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
@@ -54,6 +54,7 @@ export class DatePickerCalendar extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
+    this.datePickerProps = { selected: this.selected, focused: this.focused };
     // REFACTOR:  if the focused date changes, update the set date to the focused date
     // REACT VERSION:
     // const { focused, monthNavFocus } = changedProperties;
@@ -72,10 +73,10 @@ export class DatePickerCalendar extends LitElement {
     super.update(changedProperties);
   }
 
-  handleDaySelect = (e: CustomEvent) => {
-    this.selected = e.detail.date;
-    this.datePickerProps = { selected: this.selected, focused: this.focused };
-  };
+  // handleDaySelect = (e: CustomEvent) => {
+  //   this.selected = e.detail.date;
+  //   this.datePickerProps = { selected: this.selected, focused: this.focused };
+  // };
 
   setDate = (date: DateTime, cb?: Function) => {
     this.viewAnchorDate = date;
@@ -170,7 +171,6 @@ export class DatePickerCalendar extends LitElement {
           </div>
         </div>
         <md-datepicker-month
-          @day-select=${(e: CustomEvent) => this.handleDaySelect(e)}
           .day=${this.viewAnchorDate}
           .filterParams=${{ minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate }}
           .datePickerProps=${this.datePickerProps}

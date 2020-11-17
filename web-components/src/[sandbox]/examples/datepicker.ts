@@ -4,9 +4,12 @@ import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import "@/index";
 import { html } from "lit-element";
+import "../../components/datepicker/DatePicker";
 
 export const datePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>
+  <h3>datepicker</h3>
+  <md-datepicker></md-datepicker>
   <h3>calendar</h3>
   <md-datepicker-calendar></md-datepicker-calendar>
   <h3>month</h3>

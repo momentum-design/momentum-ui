@@ -15,7 +15,7 @@ export { Button } from "./components/button/Button";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { Chip } from "./components/chip/Chip";
 export { ComboBox } from "./components/combobox/ComboBox";
-export { DatePicker } from "./components/DatePicker/DatePicker";
+export { DatePicker } from "./components/datepicker/DatePicker";
 export { DatePickerCalendar } from "./components/datepicker/datepicker-calendar/DatePickerCalendar";
 export { DatePickerDay } from "./components/datepicker/datepicker-day/DatePickerDay";
 export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePickerMonth";

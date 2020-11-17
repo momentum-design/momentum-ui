@@ -1,4 +1,3 @@
-import { now } from "@/utils/dateUtils";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./DatePickerCalendar";
 import { DatePickerCalendar } from "./DatePickerCalendar";
@@ -15,24 +14,24 @@ describe("DatePickerCalendar Component", () => {
     );
     expect(el).not.toBeNull;
   });
-  test("should handle date selection update", async () => {
-    const firstDate = now();
-    const secondDate = now().plus({ days: 2 });
-    const el: DatePickerCalendar = await fixture(
-      html`
-        <md-datepicker-calendar .selected=${firstDate}></md-datepicker-calendar>
-      `
-    );
-    const event = new CustomEvent("day-select", {
-      detail: {
-        date: secondDate
-      }
-    });
-    const selectFunc = jest.spyOn(el, "handleDaySelect");
-    el.handleDaySelect(event);
-    expect(selectFunc).toHaveBeenCalled();
-    expect(el.selected).toEqual(secondDate);
-  });
+  // test("should handle date selection update", async () => {
+  //   const firstDate = now();
+  //   const secondDate = now().plus({ days: 2 });
+  //   const el: DatePickerCalendar = await fixture(
+  //     html`
+  //       <md-datepicker-calendar .selected=${firstDate}></md-datepicker-calendar>
+  //     `
+  //   );
+  //   const event = new CustomEvent("day-select", {
+  //     detail: {
+  //       date: secondDate
+  //     }
+  //   });
+  //   const selectFunc = jest.spyOn(el, "handleDaySelect");
+  //   el.handleDaySelect(event);
+  //   expect(selectFunc).toHaveBeenCalled();
+  //   expect(el.selected).toEqual(secondDate);
+  // });
   test("should update view anchor date when changing months", async () => {
     const el: DatePickerCalendar = await fixture(
       html`

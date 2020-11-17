@@ -11,7 +11,7 @@ type NavCrumb = {
 
 @customElement("md-breadcrumb")
 export class Breadcrumb extends LitElement {
-  @property({ type: String }) label = "";
+  @property({ type: String, attribute: "aria-label" }) label = "Breadcrumb";
   @property({ type: Array, attribute: "nav-crumbs", reflect: true }) navCrumbs: NavCrumb[] = [];
 
   @queryAll("a[href]") anchors?: HTMLAnchorElement[];

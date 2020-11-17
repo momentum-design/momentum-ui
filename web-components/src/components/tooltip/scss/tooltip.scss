@@ -6,7 +6,7 @@
     position: relative;
 
     &.md-tooltip--disabled {
-      .md-tooltip__container {
+      .md-tooltip__popper {
         display: none;
       }
     }
@@ -15,7 +15,7 @@
       display: inline-block;
     }
 
-    &__container {
+    &__popper {
       animation-duration: 0.15s;
       animation-name: tooltip-fade;
       background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);

@@ -26,17 +26,15 @@ describe("Theme", () => {
   });
 
   test("should update when attribute is changed", async () => {
-    const element = await fixture<Theme>(`<md-theme lumos darkTheme></md-theme>`);
+    const element = await fixture<Theme>(`<md-theme darkTheme></md-theme>`);
 
     const changeSpy = jest.spyOn(Theme.prototype, "applyStyle" as never);
-    const updatedSpy = jest.spyOn(Theme.prototype, "updated" as never);
+
+    element.lumos = true;
 
     await elementUpdated(element);
-
-    expect(updatedSpy).toHaveBeenCalled();
     expect(changeSpy).toHaveBeenCalled();
 
     changeSpy.mockRestore();
-    updatedSpy.mockRestore();
   });
 });

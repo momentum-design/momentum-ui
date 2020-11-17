@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon/index";
@@ -21,6 +21,8 @@ export class DatePickerDay extends LitElement {
   @internalProperty() protected isOutsideMonth = false;
   @internalProperty() protected isToday = false;
 
+  @query("button") button!: HTMLButtonElement;
+
   connectedCallback() {
     super.connectedCallback();
     this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
@@ -37,6 +39,7 @@ export class DatePickerDay extends LitElement {
     this.isToday = isSameDay(this.day, now());
     this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
     this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
+    this.focused && this.focus();
   }
 
   handleClick = (e: MouseEvent) => {
@@ -61,6 +64,7 @@ export class DatePickerDay extends LitElement {
         bubbles: true,
         composed: true,
         detail: {
+          date: this.day,
           sourceEvent: e
         }
       })
@@ -92,7 +96,7 @@ export class DatePickerDay extends LitElement {
         @keydown=${(e: KeyboardEvent) => this.handleKey(e)}
         aria-label=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
         aria-selected=${ifDefined(this.selected)}
-        tab-index=${0}
+        tab-index=${this.focused ? "0" : "-1"}
       >
         ${this.day && getDate(this.day)}
       </md-button>

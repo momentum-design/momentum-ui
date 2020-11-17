@@ -320,7 +320,9 @@ export const menuOverlayTemplate = html`
       <md-button slot="menu-trigger" variant="primary">right-end</md-button>
       <div style="margin:1.25rem; width: 100%">
         <md-checkbox>Option one"</md-checkbox>
-        <md-checkbox checked>Option two</md-checkbox>
+        <md-tooltip message="tooltip within checkbox" placement="bottom">
+          <md-checkbox checked>Option two</md-checkbox>
+        </md-tooltip>
       </div>
     </md-menu-overlay>
   </div>
@@ -392,7 +394,7 @@ export const menuOverlayTemplate = html`
   <md-menu-overlay show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
       <div style="margin:1.25rem; width: 100%">
-      <md-tooltip message="tooltip within overlay">
+      <md-tooltip message="tooltip within overlay" placement="top">
         <span>Tooltip Trigger Text</span>
         </md-tooltip>
       </div>

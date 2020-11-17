@@ -1,5 +1,14 @@
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
-import { addWeeks, DayFilters, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
+import {
+  addWeeks,
+  DatePickerProps,
+  DayFilters,
+  getMonth,
+  getStartOfMonth,
+  getStartOfWeek,
+  isSameMonth,
+  now
+} from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { DateTime } from "luxon";
@@ -11,7 +20,7 @@ export namespace DatePickerMonth {}
 export class DatePickerMonth extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
   @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: Record<string, any> | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);

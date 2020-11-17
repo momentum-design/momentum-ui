@@ -1,6 +1,15 @@
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import {
+  addDays,
+  addWeeks,
+  DatePickerProps,
+  DayFilters,
+  isDayDisabled,
+  now,
+  subtractDays,
+  subtractWeeks
+} from "@/utils/dateUtils";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import "../input/Input";
 import "../menu-overlay/MenuOverlay";
@@ -10,19 +19,28 @@ export namespace DatePicker {}
 
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
-  @property({ type: Boolean }) shouldCloseOnSelect = true;
+  @property({ type: Boolean }) shouldCloseOnSelect = false;
   @property({ attribute: false }) locale: string = now().locale;
   @property({ attribute: false }) monthFormat = undefined;
   @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
   @property({ attribute: false }) minDate: DateTime | undefined = undefined;
-  @property({ attribute: false }) selectedDate: DateTime | undefined = undefined;
+  @property({ attribute: false }) selectedDate: DateTime = now();
   @property({ attribute: false }) focusedDate: DateTime = now();
   @property({ attribute: false }) filterDate: Function | undefined = undefined;
   @property({ attribute: false }) onChange: Function | undefined = undefined;
   @property({ attribute: false }) onMonthChange: Function | undefined = undefined;
   @property({ attribute: false }) onSelect: Function | undefined = undefined;
 
+  @internalProperty() datePickerProps: DatePickerProps | undefined = undefined;
+  @internalProperty() filterParams: DayFilters | null = null;
+
   @query("md-menu-overlay") menuOverlay!: MenuOverlay;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.datePickerProps = { selected: this.selectedDate, focused: this.focusedDate };
+    this.filterParams = { minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate };
+  }
 
   // componentDidMount() {
   //   const selectedDate = moment(this.props.selectedDate);
@@ -49,6 +67,13 @@ export class DatePicker extends LitElement {
   //   }
   // }
 
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+  }
+  update(changedProperties: PropertyValues) {
+    super.update(changedProperties);
+  }
+
   setOpen = (open: boolean): void => {
     this.menuOverlay.isOpen = open;
   };
@@ -58,6 +83,7 @@ export class DatePicker extends LitElement {
     const event = e.detail.sourceEvent;
     this.setPreSelection(date, event);
     this.setSelected(date, event);
+    console.log(this.selectedDate?.day);
     this.shouldCloseOnSelect && this.setOpen(false);
   };
 
@@ -163,8 +189,8 @@ export class DatePicker extends LitElement {
         <md-datepicker-calendar
           @day-select=${(e: CustomEvent) => this.handleSelect(e)}
           @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .focused=${this.focusedDate}
-          .selected=${this.selectedDate}
+          .datePickerProps=${this.datePickerProps}
+          .filterParams=${this.filterParams}
         ></md-datepicker-calendar>
       </md-menu-overlay>
     `;

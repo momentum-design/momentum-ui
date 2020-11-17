@@ -1,8 +1,10 @@
 import "@/components/datepicker/datepicker-month/DatePickerMonth";
+import "@/components/icon/Icon";
 import {
   addDays,
   addMonths,
   DatePickerProps,
+  DayFilters,
   getLocaleData,
   getStartOfWeek,
   getWeekdayNameInLocale,
@@ -24,7 +26,6 @@ import {
 } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
-import "../../icon/Icon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {}
@@ -36,25 +37,20 @@ export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) monthNavFocus = "prev";
   @property({ attribute: false }) nextArialLabel = undefined;
   @property({ attribute: false }) previousArialLabel = undefined;
-  @property({ attribute: false }) focused: DateTime = now();
-  @property({ attribute: false }) selected: DateTime = now();
-  @property({ attribute: false }) minDate: DateTime | undefined = undefined;
-  @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
-  @property({ attribute: false }) filterDate: Function | null = null;
+  @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
   @internalProperty() viewAnchorDate: DateTime = now();
-  @internalProperty() datePickerProps: DatePickerProps | undefined = undefined;
 
   connectedCallback() {
     super.connectedCallback();
-    this.viewAnchorDate = this.focused || this.selected || now();
-    this.datePickerProps = { selected: this.selected, focused: this.focused };
+    this.viewAnchorDate = this.datePickerProps?.focused || this.datePickerProps?.selected || now();
   }
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    this.datePickerProps = { selected: this.selected, focused: this.focused };
+    // this.datePickerProps = { selected: this.selected, focused: this.focused };
     // REFACTOR:  if the focused date changes, update the set date to the focused date
     // REACT VERSION:
     // const { focused, monthNavFocus } = changedProperties;
@@ -104,7 +100,8 @@ export class DatePickerCalendar extends LitElement {
   };
 
   renderPreviousMonthButton = () => {
-    const allPrevDaysDisabled = this.minDate && shouldPrevMonthDisable(this.viewAnchorDate, this.minDate);
+    const allPrevDaysDisabled =
+      this.filterParams?.minDate && shouldPrevMonthDisable(this.viewAnchorDate, this.filterParams?.minDate);
     return html`
       <md-button
         aria-label=${ifDefined(
@@ -122,7 +119,8 @@ export class DatePickerCalendar extends LitElement {
     `;
   };
   renderNextMonthButton = () => {
-    const allNextDaysDisabled = this.maxDate && shouldNextMonthDisable(this.viewAnchorDate, this.maxDate);
+    const allNextDaysDisabled =
+      this.filterParams?.maxDate && shouldNextMonthDisable(this.viewAnchorDate, this.filterParams?.maxDate);
     return html`
       <md-button
         aria-label=${ifDefined(
@@ -172,7 +170,7 @@ export class DatePickerCalendar extends LitElement {
         </div>
         <md-datepicker-month
           .day=${this.viewAnchorDate}
-          .filterParams=${{ minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate }}
+          .filterParams=${this.filterParams}
           .datePickerProps=${this.datePickerProps}
         ></md-datepicker-month>
       </div>

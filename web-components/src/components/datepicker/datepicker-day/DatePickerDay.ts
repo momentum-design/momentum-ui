@@ -9,17 +9,17 @@ import styles from "../scss/module.scss";
 
 @customElement("md-datepicker-day")
 export class DatePickerDay extends LitElement {
-  @property({ type: Boolean, reflect: true }) focused = false; // passed in current selection, a DateTime instance
-  @property({ type: Boolean, reflect: true }) selected = false; // passed in current selection, a DateTime instance
+  @property({ type: Boolean, reflect: true }) focused = false;
+  @property({ type: Boolean, reflect: true }) selected = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
-  @property({ attribute: false }) day: DateTime = now(); // meant to be a DateTime instance reflecting a day
-  @property({ attribute: false }) viewAnchorMonth: number | undefined = undefined; // provided from upper component scope
+  @property({ attribute: false }) day: DateTime = now();
+  @property({ attribute: false }) viewAnchorMonth: number | undefined = undefined;
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
-  @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) filterParams: DayFilters | null = null;
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
-  @internalProperty() protected isOutsideMonth = false; //  neeeded for changing styles of prev/next month dates: "--outside-month"
-  @internalProperty() protected isToday = false; // not sure of applicability yet
+  @internalProperty() protected isOutsideMonth = false;
+  @internalProperty() protected isToday = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -31,6 +31,7 @@ export class DatePickerDay extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
+    console.log(this.datePickerProps?.selected);
     super.updated(changedProperties);
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
     this.isToday = isSameDay(this.day, now());

@@ -52,8 +52,6 @@ export class Table extends LitElement {
     const sortArr = Array.from(this.csvData); 
     const index = this.headerRow.indexOf(key);
 
-    console.log(sortArr);
-
     function compare(a: any, b: any) {
       const bandA = a[index].toLowerCase();
       const bandB = b[index].toLowerCase();

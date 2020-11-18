@@ -13,8 +13,14 @@ const table = {
   },
   hover: {
     "bg-color": {
-      light: colors.blue[10].name,
-      dark: colors.blue[80].name
+      light: colors.blue[20].name,
+      dark: colors.blue[90].name
+    }
+  },
+  pressed: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[90].name
     }
   },
   "border-color": {
@@ -23,7 +29,7 @@ const table = {
   },
   "text-color": {
     light: colors.gray[80].name,
-    dark: colors.gray[20].name
+    dark: colors.gray[40].name
   },
   stripped: {
     "bg-color": {

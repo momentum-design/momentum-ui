@@ -10,6 +10,7 @@ import {
   alertTemplate,
   avatarTemplate,
   badgeTemplate,
+  breadcrumbTemplate,
   buttonTemplate,
   chatMessageTemplate,
   checkboxTemplate,
@@ -32,6 +33,7 @@ import {
   radioGroupTemplate,
   sliderTemplate,
   spinnerTemplate,
+  tableTemplate,
   tabsTemplate,
   taskItemTemplate,
   toggleSwitchTemplate,
@@ -111,6 +113,13 @@ export class Sandbox extends LitElement {
               ${datePickerTemplate}
             </sass-stats>
           </div>
+          <div class="container" aria-label="md-table">
+            <h2>md-table</h2>
+            <sass-stats component="table">
+              ${tableTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-menu-overlay">
             <h2>md-menu-overlay</h2>
             <sass-stats component="menu-overlay">
@@ -308,6 +317,12 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="md-floating-dialog">
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-breadcrumb">
+            <h2>md-breadcrumb</h2>
+            <sass-stats component="breadcrumb">
+              ${breadcrumbTemplate}
             </sass-stats>
           </div>
           <div class="container" aria-label="md-chat-message">

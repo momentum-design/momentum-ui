@@ -38,6 +38,7 @@ export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";
 export { Spinner } from "./components/spinner/Spinner";
 export { Tab } from "./components/tabs/Tab";
+export { Table } from "./components/table/Table";
 export { TabPanel } from "./components/tabs/TabPanel";
 export { Tabs } from "./components/tabs/Tabs";
 export { TaskItem } from "./components/taskitem/TaskItem";

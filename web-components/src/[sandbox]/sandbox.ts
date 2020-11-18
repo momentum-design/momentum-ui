@@ -11,6 +11,7 @@ import {
   avatarTemplate,
   badgeTemplate,
   buttonTemplate,
+  breadcrumbTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
@@ -309,6 +310,12 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="md-floating-dialog">
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-breadcrumb">
+            <h2>md-breadcrumb</h2>
+            <sass-stats component="breadcrumb">
+              ${breadcrumbTemplate}
             </sass-stats>
           </div>
           <div class="container" aria-label="md-chat-message">

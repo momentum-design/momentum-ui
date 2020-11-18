@@ -1,6 +1,6 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "./Link";
 import {linkTag } from "./Link";
 
@@ -27,7 +27,7 @@ export const Default = () => {
 export const HTMLTag = () => {
   const tag = select("HTML Tag", linkTag, "a");
   return html`
-   
+
     <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme}>
       <md-link href="http://google.com" .tag=${tag} >Link</md-link>
     </md-theme>

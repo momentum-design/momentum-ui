@@ -1,6 +1,6 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "../input/Input";
 import "./Label";
 

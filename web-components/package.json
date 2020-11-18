@@ -125,5 +125,5 @@
     "country-codes-list": "^1.6.8",
     "dompurify": "^2.2.0",
     "libphonenumber-js": "^1.7.57"
-  }
+   }
 }

@@ -29,7 +29,7 @@ module.exports = {
     config.resolve.extensions = mergeUnique(config.resolve.extensions, commonDev.resolve?.extensions);
     config.resolve.alias = commonDev.resolve?.alias;
     config.module.rules = mergeUnique(config.module.rules, commonDev.module?.rules);
-    config.plugins = mergeUnique(config.plugins, commonDev.plugins)
+    config.plugins = mergeUnique(config.plugins, commonDev.plugins);
 
     return config;
   }

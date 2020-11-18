@@ -1,4 +1,5 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
 import { html } from "lit-html";
 import { alertTypes } from "@/utils/enums";
 import "./Alert";
@@ -19,7 +20,7 @@ export const Default = () => {
 
   return html`
     <div>
-      <md-alert title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show}></md-alert>
+      <md-alert onClick="${action('alert-close')}" title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show}></md-alert>
     </div>
   `;
 };

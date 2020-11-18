@@ -2,9 +2,9 @@ import { numInputTypes } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
-import { Input } from "../input/Input";
-import "./EditableTextfield";
-import { alignment } from "./EditableTextfield";
+import { Input } from "@/components/input/Input";
+import "@/components/editable-textfield/EditableTextfield";
+import { alignment } from "@/components/editable-textfield/EditableTextfield";
 
 export default {
   title: "EditableTextfield",
@@ -30,15 +30,12 @@ const warningMessageArr: Input.Message = {
   type: "warning"
 };
 
-type map = { [key: string]: any };
+type EditableMap = { [key: string]: any };
 
-const messages: map = {
-  // eslint-disable-next-line prettier/prettier
-  "success": successMessageArr,
-  // eslint-disable-next-line prettier/prettier
-  "error": errorMessageArr,
-  // eslint-disable-next-line prettier/prettier
-  "warning": warningMessageArr
+const messages: EditableMap = {
+  success: successMessageArr,
+  error: errorMessageArr,
+  warning: warningMessageArr
 };
 
 export const Default = () => {

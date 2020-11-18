@@ -1,22 +1,7 @@
-import "../icon/Icon";
+import "@/components/icon/Icon";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "./Badge";
-import { Badge } from "./Badge";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const lmBadgeTokens = require("./tokens/lm-badge-tokens.js");
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const mdbadgeTokens = require("./tokens/md-badge-tokens.js");
-
-describe("Badge Tokens", () => {
-  test("Lumos Token Import should not be null", async () => {
-    // const tokens = lmBadgeTokens;
-    expect(lmBadgeTokens).not.toBeNull();
-  });
-  test("Lumos Token Import should not be null", async () => {
-    // const tokens = mdbadgeTokens;
-    expect(mdbadgeTokens).not.toBeNull();
-  });
-});
+import "@/components/badge/Badge";
+import { Badge } from "@/components/badge/Badge";
 
 describe("Badge component", () => {
   afterEach(() => {

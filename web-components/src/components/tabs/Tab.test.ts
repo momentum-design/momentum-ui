@@ -1,5 +1,5 @@
 import { Key } from "@/constants";
-import { uuid } from "@/utils/helpers";
+import { nanoid } from "nanoid";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
 import "@/components/tabs/Tab";
@@ -43,7 +43,7 @@ describe("Tab", () => {
   });
 
   test("should dispatch events to parent component", async () => {
-    const id = uuid();
+    const id = nanoid();
     const el = await fixture<Tab>(
       html`
         <md-tab id=${id}></md-tab>

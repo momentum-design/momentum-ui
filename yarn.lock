@@ -2161,13 +2161,6 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@momentum-ui/core@^18.5.2":
-  version "18.5.2"
-  resolved "https://registry.yarnpkg.com/@momentum-ui/core/-/core-18.5.2.tgz#8fb980655f4fa3ba7ed4d65f08894e76e2b26f1f"
-  integrity sha512-fo3eC5EgWUPmHomkH3Du0utiO8s4okSsJL/OmHO88m7EGkVIDMi/PGB//y3PmW9xEwe6jLsTdnE55OD/mdWl6g==
-  dependencies:
-    "@momentum-ui/icons" "^7.5.0"
-
 "@momentum-ui/webfonts-generator@^2.0.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@momentum-ui/webfonts-generator/-/webfonts-generator-2.2.0.tgz#45b350c22211f72d3ebd6f7b25a68e7e95699dcb"

@@ -196,3 +196,21 @@ export const comboBoxComplexObjectOption = [
     flag: "🇦🇸"
   }
 ];
+export const breadCrumb = [
+  {
+    link: "/one",
+    label: "One"
+  },
+  {
+    link: "/two",
+    label: "Two"
+  },
+  {
+    link: "/three",
+    label: "Three"
+  },
+  {
+    link: "/four",
+    label: "Four"
+  }
+];

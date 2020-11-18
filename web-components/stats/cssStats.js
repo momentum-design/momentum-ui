@@ -1,3 +1,4 @@
+const path = require("path");
 const cssstats = require("cssstats");
 const writeFileSyncRecursive = require('./writeFileSyncRecursive')
 

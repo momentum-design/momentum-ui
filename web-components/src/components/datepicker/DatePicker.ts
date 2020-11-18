@@ -28,31 +28,6 @@ export class DatePicker extends LitElement {
     super.connectedCallback();
   }
 
-  // componentDidMount() {
-  //   const selectedDate = moment(this.props.selectedDate);
-  //   const isValid =
-  //     selectedDate.isValid()
-  //     && !isDayDisabled(selectedDate, this.props);
-
-  //   isValid && this.setPreSelection(selectedDate);
-  //   isValid && this.setSelected(selectedDate);
-  // }
-
-  // componentDidUpdate (prevProps) {
-  //   const selectedDate = moment(this.props.selectedDate);
-  //   const prevSelectedDate = moment(prevProps.selectedDate);
-  //   const isValid =
-  //     selectedDate.isValid()
-  //     && !isDayDisabled(selectedDate, this.props);
-  //   if(
-  //     isValid
-  //     && !isSameDay(prevSelectedDate, selectedDate)
-  //   ) {
-  //     this.setSelected(selectedDate);
-  //     this.setPreSelection(selectedDate);
-  //   }
-  // }
-
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     console.log("top updated");
@@ -86,16 +61,6 @@ export class DatePicker extends LitElement {
     this.onChange && this.onChange(event, date);
   };
 
-  setMonthNavFocus = () => {
-    // Objective: override tab from going over buttons and jump back to the month nav area, and know what was the previous selected arrow
-    // const { monthNavFocus } = this.state;
-    // if (monthNavFocus === "prev") {
-    //   this.setState({ monthNavFocus: "next" });
-    // } else {
-    //   this.setState({ monthNavFocus: "prev" });
-    // }
-  };
-
   handleInputClick = () => {
     this.setOpen(true);
   };
@@ -104,16 +69,8 @@ export class DatePicker extends LitElement {
     const event = e.detail.sourceEvent;
     let flag = false;
     const copy = this.focusedDate;
-    // const datePickerDayHasFocus = document.activeElement.className.includes('md-datepicker__day--focus');
-    const tabOverride = (tabEvent: KeyboardEvent) => {
-      this.setMonthNavFocus();
-      tabEvent.preventDefault();
-    };
 
     switch (!event.shiftKey && event.which) {
-      case 9: // Tab
-        tabOverride(event);
-        break;
       case 32: // Space
       case 13: // Enter
         this.handleSelect(e);
@@ -140,15 +97,6 @@ export class DatePicker extends LitElement {
       case 40: // bottom
         this.setPreSelection(addWeeks(copy, 1), event);
         flag = true;
-        break;
-
-      default:
-        break;
-    }
-
-    switch (event.shiftKey && event.which) {
-      case 9: // Tab
-        tabOverride(event);
         break;
 
       default:

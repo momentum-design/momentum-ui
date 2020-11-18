@@ -33,6 +33,7 @@ import {
   sliderTemplate,
   spinnerTemplate,
   tabsTemplate,
+  tableTemplate,
   taskItemTemplate,
   toggleSwitchTemplate,
   tooltipTemplate
@@ -105,6 +106,13 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+          <div class="container" aria-label="md-table">
+            <h2>md-table</h2>
+            <sass-stats component="table">
+              ${tableTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-menu-overlay">
             <h2>md-menu-overlay</h2>
             <sass-stats component="menu-overlay">

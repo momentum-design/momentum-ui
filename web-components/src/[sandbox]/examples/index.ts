@@ -25,6 +25,7 @@ export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";
 export { spinnerTemplate } from "./spinner";
 export { tabsTemplate } from "./tabs";
+export { tableTemplate } from "./table";
 export { taskItemTemplate } from "./task-item";
 export { toggleSwitchTemplate } from "./toggle-switch";
 export { tooltipTemplate } from "./tooltip";

@@ -1,12 +1,11 @@
 .md-datepicker {
   &__month-container {
-    border-radius: 4px;
     display: flex;
     flex-direction: column;
-    height: 272px;
+    height: $calendar-height;
     justify-content: space-between;
-    padding: 4px 10px 12px;
-    width: 248px;
+    padding: $calendar-padding;
+    width: $calendar-width;
   }
 
   &__navigation--buttons {
@@ -15,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     line-height: normal;
-    width: 44px;
+    width: $month-nav-button-width;
     
 
     md-button[disabled]::part(button) {
@@ -29,18 +28,18 @@
   }
 
   &__week {
-    height: 34px;
+    height: $week-height;
   }
 
   &__navigation--current-month {
-    font-size: 16px;
+    font-size: rem-calc(16);
     font-weight: 700;
   }
 
   &__navigation {
     display: flex;
     justify-content: space-between;
-    padding: 0 6px;
+    padding: $calendar-heading-padding;
   }
 
   &__day--names {
@@ -50,21 +49,21 @@
   &__day {
     border-radius: 100%;
     display: inline-block;
-    height: 28px;
-    width: 28px;
+    height: $day-button-height;
+    width: $day-button-height;
 
     &--names {
-      color: #545454;
+      color: var(--md-secondary-text-color, $md-gray-70);
       display: flex;
-      font-size: 10px;
+      font-size: $day-name-font-size;
       justify-content: space-around;
-      line-height: 14px;
-      margin: 12px 0 8px;
+      line-height: $day-name-line-height;
+      margin: $day-name-margin;
     }
 
     &::part(button) {
       &:hover {
-        background: #cecece;
+        background: var(--datepicker-default-hover-bg-color, $md-gray-70);
       }
     }
 
@@ -74,12 +73,12 @@
     }
 
     &--today::part(button) {
-      color: orange;
+      color: $md-orange-50;
       font-weight: 700;
     }
 
     &--focus::part(button) {
-      background: orange;
+      background: $md-orange-50;
     }
 
     &--selected::part(button) {
@@ -95,6 +94,6 @@
 }
 
 .md-datepicker__day--today.md-datepicker__day--selected::part(button) {
-  background: orange;
-  color: white;
+  background: $md-orange-50;
+  color: var(--datepicker-selected-today-text-color, $md-gray-100);
 }

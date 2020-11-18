@@ -10,7 +10,7 @@ export namespace DatePicker {}
 
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
-  @property({ type: Boolean }) shouldCloseOnSelect = false;
+  @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ attribute: false }) locale: string = now().locale;
   @property({ attribute: false }) monthFormat = undefined;
   @property({ attribute: false }) maxDate: DateTime | undefined = undefined;
@@ -112,7 +112,7 @@ export class DatePicker extends LitElement {
   render() {
     return html`
       <md-menu-overlay custom-width="248px">
-        <md-button slot="menu-trigger">Trigger</md-button>
+        <md-input slot="menu-trigger" placeholder=${this.selectedDate.toLocaleString()}></md-input>
         <md-datepicker-calendar
           @day-select=${(e: CustomEvent) => this.handleSelect(e)}
           @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}

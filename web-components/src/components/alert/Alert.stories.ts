@@ -1,12 +1,18 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-html";
 import { alertTypes } from "@/utils/enums";
 import "./Alert";
 
 export default {
   title: "Alert",
-  decorators: [withKnobs]
+  component: "md-alert",
+  decorators: [withKnobs, withA11y],
+  parameters: {
+    a11y: {
+      element: "md-alert"
+    }
+  }
 };
 
 export const Default = () => {
@@ -20,7 +26,7 @@ export const Default = () => {
 
   return html`
     <div>
-      <md-alert onClick="${action('alert-close')}" title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show}></md-alert>
+      <md-alert title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show}></md-alert>
     </div>
   `;
 };

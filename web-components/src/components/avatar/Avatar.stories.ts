@@ -16,12 +16,7 @@ export default {
   }
 };
 
-export const Default = () => html`
-  <md-avatar title="Anthony Russell" alt="Avatar"></md-avatar>
-`;
-
-export const Type = () => {
-  const avatarType = {
+const avatarType = {
     Active: "active",
     Bot: "bot",
     Call: "call",
@@ -35,27 +30,16 @@ export const Type = () => {
     Typing: "typing",
     None: ""
   };
+
+export const Default = () => {
   const type = select("Type", avatarType, "active");
-  return html`
-    <md-avatar title="Anthony Russell" alt="Avatar" .type=${type as AvatarType}></md-avatar>
-  `;
-};
-
-export const Title = () => {
   const title = text("Title", "Rachell Harris");
+  const url = text("src", "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600");
   return html`
-    <md-avatar title="Anthony Russell" alt="Avatar" .title=${title}></md-avatar>
+    <md-avatar .title=${title} alt="Avatar" .type=${type as AvatarType} .src="${url}"></md-avatar>
   `;
 };
 
-export const Source = () =>
-  html`
-    <md-avatar
-      title="Anthony Russell"
-      src=${"https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"}
-      alt="Avatar"
-    ></md-avatar>
-  `;
 
 export const Color = () => {
   const options = {

@@ -21,7 +21,7 @@ export class DatePickerDay extends LitElement {
   @internalProperty() protected isOutsideMonth = false;
   @internalProperty() protected isToday = false;
 
-  @query("button") button!: HTMLButtonElement;
+  @query("md-button") button!: HTMLButtonElement;
 
   connectedCallback() {
     super.connectedCallback();
@@ -33,13 +33,12 @@ export class DatePickerDay extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
-    console.log("day updated");
     super.updated(changedProperties);
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
     this.isToday = isSameDay(this.day, now());
     this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
     this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
-    this.focused && this.focus();
+    this.focused && this.button && this.button.shadowRoot?.querySelector("button")?.focus();
   }
 
   handleClick = (e: MouseEvent) => {

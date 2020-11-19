@@ -50,31 +50,11 @@ export class DatePickerCalendar extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    console.log("cal updated");
-    // this.datePickerProps = { selected: this.selected, focused: this.focused };
-    // REFACTOR:  if the focused date changes, update the set date to the focused date
-    // REACT VERSION:
-    // const { focused, monthNavFocus } = changedProperties;
-    // if (this.focused && !isSameDay(this.focused, this.viewAnchorDate)) {
-    //   this.setDate(this.focused);
-    // }
-
-    // REFACTOR: Not clear, seems to set focus to the month nav buttons based upon a property
-    // if (monthNavFocus !== this.monthNavFocus) {
-    //   this.monthNavFocus === "prev" && this.prevMonthRef.button.focus();
-    //   this.monthNavFocus === "next" && this.nextMonthRef.button.focus();
-    // }
   }
 
   update(changedProperties: PropertyValues) {
     super.update(changedProperties);
-    console.log("cal update");
   }
-
-  // handleDaySelect = (e: CustomEvent) => {
-  //   this.selected = e.detail.date;
-  //   this.datePickerProps = { selected: this.selected, focused: this.focused };
-  // };
 
   setDate = (date: DateTime, cb?: Function) => {
     this.viewAnchorDate = date;

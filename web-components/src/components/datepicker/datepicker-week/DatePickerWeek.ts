@@ -8,16 +8,10 @@ export namespace DatePickerWeek {}
 
 @customElement("md-datepicker-week")
 export class DatePickerWeek extends LitElement {
-  @property({ attribute: false }) startOfWeekDay: DateTime = now(); // provided from upper component scope
-  @property({ attribute: false }) viewAnchorMonth: number = now().month; // provided from upper component scope
-  @property({ attribute: false }) filterParams: DayFilters | null = null; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
-
-  // "otherprops" need to send to datepicker-day: { selected, focus, day, month }
-  // selected flags if it is currently selected
-  // focused flags if it is currently focused
-  // day helps determine . . . what? the provided date?
-  // Month is neeeded for changing styles of prev/next month dates: "--outside-month"
+  @property({ attribute: false }) startOfWeekDay: DateTime = now();
+  @property({ attribute: false }) viewAnchorMonth: number = now().month;
+  @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);

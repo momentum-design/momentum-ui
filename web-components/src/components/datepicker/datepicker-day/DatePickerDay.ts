@@ -15,7 +15,7 @@ export class DatePickerDay extends LitElement {
   @property({ attribute: false }) day: DateTime = now();
   @property({ attribute: false }) viewAnchorMonth: number | undefined = undefined;
   @property({ attribute: false }) handleDayClick: Function | undefined = undefined; // REFACTOR: Why pass all the way here? Just listen for custom even at Top level
-  @property({ attribute: false }) filterParams: DayFilters | null = null;
+  @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
   @internalProperty() protected isOutsideMonth = false;

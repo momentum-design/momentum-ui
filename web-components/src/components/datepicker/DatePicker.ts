@@ -61,40 +61,37 @@ export class DatePicker extends LitElement {
     this.onChange && this.onChange(event, date);
   };
 
-  handleInputClick = () => {
-    this.setOpen(true);
-  };
-
   handleKeyDown = (e: CustomEvent) => {
     const event = e.detail.sourceEvent;
+    console.log(event);
     let flag = false;
     const copy = this.focusedDate;
 
-    switch (!event.shiftKey && event.which) {
-      case 32: // Space
-      case 13: // Enter
+    switch (!event.shiftKey && event.code) {
+      case "Space":
+      case "Enter":
         this.handleSelect(e);
         flag = true;
         break;
 
-      case 27: // escape
+      case "Escape":
         this.setOpen(false);
         break;
-      case 38: // up
+      case "ArrowUp":
         this.setPreSelection(subtractWeeks(copy, 1), event);
         flag = true;
         break;
-      case 37: // left
+      case "ArrowLeft":
         this.setPreSelection(subtractDays(copy, 1), event);
         flag = true;
         break;
 
-      case 39: // right
+      case "ArrowRight":
         this.setPreSelection(addDays(copy, 1), event);
         flag = true;
         break;
 
-      case 40: // bottom
+      case "ArrowDown":
         this.setPreSelection(addWeeks(copy, 1), event);
         flag = true;
         break;

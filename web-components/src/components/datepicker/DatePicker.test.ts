@@ -1,7 +1,17 @@
 import { now } from "@/utils/dateUtils";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { DateTime } from "luxon";
 import "./DatePicker";
 import { DatePicker } from "./DatePicker";
+
+const keyNavEvent = (key: KeyboardEvent["code"], date: DateTime): CustomEvent => {
+  return new CustomEvent("day-key-event", {
+    detail: {
+      date: date,
+      sourceEvent: new KeyboardEvent("keydown", { code: key })
+    }
+  });
+};
 
 describe("DatePicker Component", () => {
   afterEach(() => {

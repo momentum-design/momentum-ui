@@ -1,8 +1,8 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { number, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "@/components/badge/Badge";
-import "@/components/taskitem/TaskItem";
+import "./TaskItem";
 
 export default {
   title: "TaskItem",

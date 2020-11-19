@@ -1,4 +1,4 @@
-import "@/components/combobox/ComboBox";
+import "./ComboBox";
 import "@/components/icon/Icon";
 import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { withA11y } from "@storybook/addon-a11y";

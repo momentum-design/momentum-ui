@@ -2,7 +2,7 @@ import { Key } from "@/constants";
 import { nanoid } from "nanoid";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
-import "@/components/tabs/Tab";
+import "./Tab";
 import { Tab } from "./Tab";
 
 describe("Tab", () => {

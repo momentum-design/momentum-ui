@@ -227,7 +227,11 @@ export class Modal extends FocusTrapMixin(LitElement) {
         `
       : html`
           <div part="modal-footer" class="md-modal__footer">
-            <md-button aria-label=${this.ariaLabelCancel} @click="${this.handleFooterClick}" @keydown="${this.handleKeyDown}">
+            <md-button
+              aria-label=${this.ariaLabelCancel}
+              @click="${this.handleFooterClick}"
+              @keydown="${this.handleKeyDown}"
+            >
               <span>Cancel</span>
             </md-button>
             <md-button

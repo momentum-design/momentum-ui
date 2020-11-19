@@ -1,7 +1,7 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { Input } from "@/components/input/Input";
-import "@/components/editable-textfield/EditableTextfield";
-import { EditableTextfield } from "@/components/editable-textfield/EditableTextfield";
+import "./EditableTextfield";
+import { EditableTextfield } from "./EditableTextfield";
 
 const validInputs = {
   text: "text",

@@ -1,7 +1,7 @@
 import "@/components/icon/Icon";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "@/components/badge/Badge";
-import { Badge } from "@/components/badge/Badge";
+import "./Badge";
+import { Badge } from "./Badge";
 
 describe("Badge component", () => {
   afterEach(() => {

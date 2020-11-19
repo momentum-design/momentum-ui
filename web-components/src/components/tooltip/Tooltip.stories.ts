@@ -1,9 +1,9 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "@/components/button/Button";
-import "@/components/tooltip/Tooltip";
-import { tooltipPlacement } from "@/components/tooltip/Tooltip";
+import "./Tooltip";
+import { tooltipPlacement } from "./Tooltip";
 
 export default {
   title: "Tooltip",

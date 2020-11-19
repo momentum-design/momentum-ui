@@ -1,10 +1,10 @@
-import "@/components/button/Button";
+import "./Button";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant } from "@/components/button/Button";
+import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button";
 
 export default {
   title: "Button",

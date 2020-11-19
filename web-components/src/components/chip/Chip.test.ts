@@ -1,8 +1,8 @@
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "@/components/chip/Chip";
-import { Chip } from "@/components/chip/Chip";
+import "./Chip";
+import { Chip } from "./Chip";
 
 const fixtureFactory = async (): Promise<Chip> => {
   return await fixture(html`

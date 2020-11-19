@@ -1,17 +1,9 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "@/components/icon/Icon";
-import "@/components/input/Input";
-import {
-  containerSize,
-  iconNames,
-  iconPosition,
-  inputShape,
-  inputSize,
-  inputType,
-  nestedLevel
-} from "@/components/input/Input";
+import "./Input";
+import { containerSize, iconNames, iconPosition, inputShape, inputSize, inputType, nestedLevel } from "./Input";
 
 export default {
   title: "Input",

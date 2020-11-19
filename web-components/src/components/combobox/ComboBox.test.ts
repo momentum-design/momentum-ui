@@ -1,5 +1,5 @@
-import "@/components/combobox/ComboBox";
-import { ComboBox } from "@/components/combobox/ComboBox";
+import "./ComboBox";
+import { ComboBox } from "./ComboBox";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";

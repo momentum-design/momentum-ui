@@ -1,6 +1,6 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import { badgeColor } from "@/utils/enums";
 import "@/components/icon/Icon";
 import "./Badge";

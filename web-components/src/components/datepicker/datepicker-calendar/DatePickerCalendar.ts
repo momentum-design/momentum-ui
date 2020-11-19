@@ -15,15 +15,7 @@ import {
   subtractMonths
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import {
-  customElement,
-  html,
-  internalProperty,
-  LitElement,
-  property,
-
-  TemplateResult
-} from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, TemplateResult } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";

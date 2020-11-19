@@ -30,11 +30,9 @@ export class DatePicker extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    console.log("top updated");
   }
   update(changedProperties: PropertyValues) {
     super.update(changedProperties);
-    console.log("top update");
   }
 
   setOpen = (open: boolean): void => {

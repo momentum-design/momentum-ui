@@ -24,7 +24,6 @@ export class DatePickerMonth extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    console.log("month updated");
   }
 
   renderWeeks = () => {

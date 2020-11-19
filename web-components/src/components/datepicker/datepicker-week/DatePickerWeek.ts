@@ -15,7 +15,6 @@ export class DatePickerWeek extends LitElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    console.log("week updated");
   }
 
   renderDays = () => {

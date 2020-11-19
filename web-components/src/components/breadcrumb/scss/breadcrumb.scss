@@ -1,0 +1,39 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-breadcrumb) {
+  .md-breadcrumb {
+    ul {
+      @include flex($jc: flex-start);
+      @include nav-list();
+    }
+
+    li {
+      display: flex;
+      text-transform: capitalize;
+      font-size: $breadcrumb-font-size;
+
+      &:not(:first-child) {
+
+        &::before {
+          display: flex;
+          margin: $breadcrumb-side-padding ;
+          color: $breadcrumb-slash-color;
+          content: "/";
+        }
+      }
+    }
+    a{
+      color: $breadcrumb-color;
+
+      &[aria-current="page"] {
+        pointer-events: none;
+        cursor: default;
+        color: $breadcrumb-color-current;
+      }
+    }
+  }
+
+}

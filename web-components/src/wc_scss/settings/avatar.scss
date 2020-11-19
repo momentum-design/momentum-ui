@@ -146,12 +146,8 @@ $avatar--active__shadow: inset 0 0 0 rem-calc(1) $md-green-50,
 $avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $md-green-50,
   inset 0 0 0 rem-calc(2) $black-24;
 
-$avatar-letter__color: $black-80; 
-// Example of previous, SASS-variable set declaration.
-// New declaration using CSS Vars and a fallback value below:
-// $avatar-letter__color: var(--md-secondary-text-color, $black-80);
+$avatar-letter__color: $black-80;
 $avatar-letter__background: $gray-5-88;
-// $avatar-letter__background: var(--main-bg-color, $gray-5-88);
 
 $avatar-icon__color: $black-80;
 $avatar-icon__background: $gray-5-88;

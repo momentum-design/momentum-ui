@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.9.26](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.25...@momentum-ui/core@19.9.26) (2020-11-10)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.25](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.24...@momentum-ui/core@19.9.25) (2020-11-08)
+
+
+### Bug Fixes
+
+* **avatar:** bot avatar not showing with onClick bug ([#649](https://github.com/momentum-design/momentum-ui/issues/649)) ([84ace6b](https://github.com/momentum-design/momentum-ui/commit/84ace6b769032988841ef9f91d295c24e6cb0af1))
+
+
+
+
+
+## [19.9.24](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.23...@momentum-ui/core@19.9.24) (2020-11-06)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.23](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.22...@momentum-ui/core@19.9.23) (2020-11-05)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.9.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.21...@momentum-ui/core@19.9.22) (2020-11-02)
 
 **Note:** Version bump only for package @momentum-ui/core

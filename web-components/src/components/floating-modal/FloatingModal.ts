@@ -36,7 +36,7 @@ export class FloatingModal extends LitElement {
     return this.width * this.height;
   }
 
-  onWindowPress(event: MouseEvent) {
+  onWindowPress(event: MouseEvent) { 
     this.draggingWindow = true;
     this.px = event.clientX;
     this.py = event.clientY;
@@ -193,8 +193,9 @@ export class FloatingModal extends LitElement {
         ? html`
             <div
               class="${`md-floating ` + `${this.fixfull ? "fixed" : ""}`}"
+              part="floating"
               role="dialog"
-              aria-label="${this.arialabel}"
+              aria-label=${this.arialabel}
               aria-modal="true"
               style=${styleMap(this.resizeStyleMap)}
               @mousedown=${(event: MouseEvent) => this.onWindowPress(event)}

@@ -9,7 +9,7 @@ $site-gold: $md-gold-20;
 $site-lime: $md-lime-20;
 $site-pink: $md-pink-20;
 $site-slate: $md-slate-10;
-$site-column-max: 1000px;
+$site-column-max: 1024px;
 $site-desktop-max: 1400px;
 
 @import '../components2020/AppHeader/AppHeader.scss';
@@ -17,6 +17,7 @@ $site-desktop-max: 1400px;
 @import '../components2020/ComponentItem/ComponentItem.scss';
 @import '../components2020/Example/Example.scss';
 @import '../components2020/FeedBack/FeedBack.scss';
+@import '../components2020/NotFound/NotFound.scss';
 @import '../components2020/PageHero/PageHero.scss';
 @import '../components2020/SectionHeader/SectionHeader.scss';
 @import '../components2020/SectionTitle/SectionTitle.scss';
@@ -94,7 +95,8 @@ $site-desktop-max: 1400px;
   margin-left: 30px;
 }
 
-.site-con{
+.site-con {
+  background-color: $md-white;
   width: 100%;
 }
 

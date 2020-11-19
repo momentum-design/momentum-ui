@@ -11,6 +11,8 @@ import {
   avatarTemplate,
   badgeTemplate,
   buttonTemplate,
+  breadcrumbTemplate,
+  chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
   comboBoxTemplate,
@@ -31,6 +33,7 @@ import {
   sliderTemplate,
   spinnerTemplate,
   tabsTemplate,
+  tableTemplate,
   taskItemTemplate,
   toggleSwitchTemplate,
   tooltipTemplate
@@ -103,6 +106,13 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+          <div class="container" aria-label="md-table">
+            <h2>md-table</h2>
+            <sass-stats component="table">
+              ${tableTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-menu-overlay">
             <h2>md-menu-overlay</h2>
             <sass-stats component="menu-overlay">
@@ -130,7 +140,7 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-tabs" style="overflow-x: hidden;">
+          <div class="container" aria-label="md-tabs">
             <h2>md-tabs</h2>
             <sass-stats component="tabs">
               ${tabsTemplate}
@@ -300,6 +310,18 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="md-floating-dialog">
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-breadcrumb">
+            <h2>md-breadcrumb</h2>
+            <sass-stats component="breadcrumb">
+              ${breadcrumbTemplate}
+            </sass-stats>
+          </div>
+          <div class="container" aria-label="md-chat-message">
+            <h2>md-chat-message</h2>
+            <sass-stats component="chat-message">
+              ${chatMessageTemplate}
             </sass-stats>
           </div>
         </elix-list-explorer>

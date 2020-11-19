@@ -47,6 +47,10 @@
         transition: background 350ms;
         width: $toggle-switch__width;
 
+        @media screen and (-ms-high-contrast: active) {
+          filter: brightness(1) contrast(1) saturate(1.5);
+        }
+
         &::after {
           border-radius: 100%;
           bottom: 2px;
@@ -74,7 +78,7 @@
       }
 
     }
-    
+
     &--smaller {
       .md-toggle-switch__label__container {
         height: $toggle-switch__height--smaller;

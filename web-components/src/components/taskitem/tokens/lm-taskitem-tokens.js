@@ -11,7 +11,7 @@ const task_item = {
   },
   "hover-bg-color": {
     light: colors.white[100].name,
-    dark: colors.gray[95].name
+    dark: colors.gray[90].name
   },
   "pressed-bg-color": {
     light: colors.white[100].name,

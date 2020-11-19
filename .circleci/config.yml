@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/included:3.4.1
+      - image: cypress/included:4.6.0
         environment:
           TERM: xterm
 
@@ -92,6 +92,25 @@ jobs:
       - run:
           name: Visual regression test react library with Percy.io snapshots
           command: yarn ci:test:react:percy
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  test_web_components:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      # - run:
+      #     name: Unit Test web components library
+      #     command: yarn ci:test:wc
+      - run:
+          name: Build Storybook
+          command: yarn storybook:wc
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -198,6 +217,9 @@ workflows:
           requires:
             - lint
       - test_react:
+          requires:
+            - build_tokens
+      - test_web_components:
           requires:
             - build_tokens
       - test_core_percy:

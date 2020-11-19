@@ -13,7 +13,7 @@
 // Component Specific
 @import "./settings";
 @import "./mixins";
-@import "../../checkbox/scss/module.scss";
-@import "../../radio/scss/module.scss";
+@import "@/components/checkbox/scss/module.scss";
+@import "@/components/radio/scss/module.scss";
 @import "./label";
 

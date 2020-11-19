@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
 import { uuid } from "@/utils/helpers";
@@ -54,7 +54,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab>;
 
   @internalProperty() private isMoreTabMenuVisible = false;
-  @internalProperty() private isMoreTabMenuGrow = false;
+  @internalProperty() private isMoreTabMenuMeasured = false;
   @internalProperty() private isMoreTabMenuOpen = false;
   @internalProperty() private isMoreTabMenuSelected = false;
   @internalProperty() private moreTabMenuOffsetWidth = 0;
@@ -88,8 +88,21 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     return [reset, styles];
   }
 
+  // This operation may affect render performance when using frequently. Use careful!
+  private measureTabsOffsetWidth() {
+    return !this.justified
+      ? this.tabs.map((tab, idx) => tab.offsetWidth)
+      : this.tabs.map((tab, idx) => {
+          tab.setAttribute("measuringrealwidth", "");
+          const offsetWidth = tab.offsetWidth;
+          tab.removeAttribute("measuringrealwidth");
+          return offsetWidth;
+        });
+  }
+
   private async manageOverflow() {
-    if (this.tabsListElement && this.tabs.length > 1) {
+    const tabsCount = this.tabs.length;
+    if (this.tabsListElement && tabsCount > 1) {
       const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
 
       // Awaiting tabs updates
@@ -106,7 +119,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
         tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
       }
 
-      const tabsOffsetsWidths = this.tabs.map((tab, idx) => tab.offsetWidth);
+      const tabsOffsetsWidths = this.measureTabsOffsetWidth();
 
       // All tabs total offsetsWidth
       const tabsTotalOffsetWidth = this.tabs.reduce((acc, tab, idx) => {
@@ -115,6 +128,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       }, 0);
 
       if (tabsTotalOffsetWidth) {
+        // more
         await this.setupMoreTab();
 
         let isTabsFitInViewport = true;
@@ -132,7 +146,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
 
           const isTabInViewportHidden = isTabsFitInViewport
             ? false
-            : tabsOffsetWidthSum + (idx < this.tabs.length - 1 ? this.moreTabMenuOffsetWidth : 0) >
+            : tabsOffsetWidthSum + (idx < tabsCount - 1 ? this.moreTabMenuOffsetWidth : 0) >
               tabsListViewportOffsetWidth;
 
           newTabsViewportList.push({
@@ -188,7 +202,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     const { tabs, panels } = this;
 
     if (tabs.length === 0 || panels.length === 0) {
-      console.warn(`The tabs or panels count should't equal zero.`);
+      console.warn(`The tabs or panels count should't be equal zero.`);
       return;
     }
 
@@ -318,7 +332,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   handleTabKeydown(event: CustomEvent<TabKeyDownEvent>) {
-    const { key, id } = event.detail;
+    const { id, key, ctrlKey, shiftKey, altKey, srcEvent } = event.detail;
 
     const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -350,6 +364,20 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     };
 
     switch (key) {
+      case Key.Tab: {
+        if (isMoreTriggerTab) {
+          // Support Shift + Tab from More to last visible tab
+          if (!this.isMoreTabMenuOpen && shiftKey) {
+            srcEvent.preventDefault();
+            this.changeSelectedTabIdx(lastVisibleTabIdx);
+          }
+        } else if (isVisibleTab) {
+          //
+        } else if (isHiddenTab) {
+          //
+        }
+        break;
+      }
       case Key.End: {
         if (isMoreTriggerTab) {
           //
@@ -462,11 +490,11 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   private async setupMoreTab() {
-    if (this.moreTabMenuElement && !this.isMoreTabMenuGrow) {
+    if (this.moreTabMenuElement && !this.isMoreTabMenuMeasured) {
       await this.moreTabMenuElement.updateComplete;
       if (this.moreTabMenuElement.offsetWidth) {
         this.moreTabMenuOffsetWidth = this.moreTabMenuElement.offsetWidth;
-        this.isMoreTabMenuGrow = true;
+        this.isMoreTabMenuMeasured = true;
       }
     }
   }
@@ -503,15 +531,16 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       <div
         part="tabs-list"
         class="md-tab__list ${classMap({
-          "md-tab__justified": false //this.justified && !this.isMoreTabMenuVisible
+          "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
         })}"
         role="tablist"
       >
         <slot name="tab"></slot>
+
         <md-menu-overlay
           custom-width="${MORE_MENU_WIDTH}"
           class="md-menu-overlay__more ${classMap({
-            "md-menu-overlay__more--grow": this.isMoreTabMenuGrow
+            "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
           })}"
           @menu-overlay-open="${() => {
             this.isMoreTabMenuOpen = true;

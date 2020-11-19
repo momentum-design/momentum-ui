@@ -7,9 +7,17 @@ class SectionHeader extends React.PureComponent {
       className,
       darkTheme,
       title,
+      titleElm,
       leadStr,
       leadElm
     } = this.props;
+
+    const titleContainer = (
+      <div className='section-header__title'>
+        {title && <h1>{title}</h1>}
+        {titleElm && titleElm}
+      </div>
+    )
 
     const leadContainer = (
       <div className='section-header__lead'>
@@ -22,9 +30,7 @@ class SectionHeader extends React.PureComponent {
 
     return (
       <div className={'site-responsive-row section-header' + (darkTheme ? ' section-header-dark' : '') + (className ? ' ' + className : '')}>
-        <div className='section-header__title'>
-          <h1>{title}</h1>
-        </div>
+        {(title || titleElm) && titleContainer}
         {(leadElm || leadStr) && leadContainer}
       </div>
     );
@@ -35,6 +41,7 @@ SectionHeader.defaultProps = {
   className: '',
   darkTheme: false,
   title: '',
+  titleElm: null,
   leadElm: null,
   leadStr: '',
 };
@@ -46,6 +53,8 @@ SectionHeader.propTypes = {
   darkTheme: PropTypes.bool,
   /** @prop Title to show | '' */
   title: PropTypes.string,
+  /** @prop Title element to show | '' */
+  titleElm: PropTypes.element,
   /** @prop Lead text to show | '' */
   leadStr: PropTypes.string,
   /** @prop Lead text to show | '' */

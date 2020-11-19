@@ -8,11 +8,11 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import "../button/Button";
 import "../icon/Icon";
 import styles from "./scss/module.scss";
-import { nothing } from "lit-html";
 
 @customElement("md-alert")
 export class Alert extends LitElement {
@@ -89,10 +89,10 @@ export class Alert extends LitElement {
                 ${this.renderIconTemplate()}
               </div>
               <div part="content" class="md-alert__content">
-                <div class="md-alert__title">
+                <div aria-label=${this.title} class="md-alert__title" role="heading">
                   ${this.title}
                 </div>
-                <div class="md-alert__message">
+                <div aria-label=${this.message} class="md-alert__message" role="text">
                   ${this.message}
                   <slot name="alert-body"></slot>
                 </div>

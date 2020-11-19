@@ -1,5 +1,5 @@
-import "@/components/modal/Modal";
-import { Modal } from "@/components/modal/Modal";
+import "./Modal";
+import { Modal } from "./Modal";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 
@@ -60,7 +60,6 @@ describe("Modal Component", () => {
     jest.runAllTimers();
 
     expect(document.activeElement).toEqual(input);
-    expect(element.show).toBeTruthy();
     jest.clearAllTimers();
   });
 

@@ -17,8 +17,6 @@ class RouteContainer extends React.Component {
       ...props
     } = this.props;
 
-    console.log(match);
-
     const getComponent = () => {
       return <Home child={child} match={match} {...props} />;
     };

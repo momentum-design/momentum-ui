@@ -7,6 +7,10 @@
 
   outline: none;
   box-shadow: 0 0 4px 2px rgba($focus-color, 0.75);
+
+  &:not(:focus-visible) {
+    box-shadow: none;
+  }
 }
 
 @mixin tab-focus($dark: false) {

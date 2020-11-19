@@ -1,7 +1,7 @@
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import "@/components/spinner/Spinner";
+import "./Spinner";
 import { html } from "lit-element";
-import { Spinner } from "@/components/spinner/Spinner";
+import { Spinner } from "./Spinner";
 
 describe("Spinner component", () => {
   afterEach(fixtureCleanup);

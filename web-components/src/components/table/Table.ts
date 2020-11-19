@@ -31,7 +31,7 @@ export class Table extends LitElement {
   results: any;
   config = {
     quoteChar: '"',
-    escapeChar: '"',
+    escapeChar: '""',
     header: false,
     preview: 0,
     comments: false,

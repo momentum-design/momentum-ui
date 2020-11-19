@@ -36,7 +36,7 @@ export class FloatingModal extends LitElement {
     return this.width * this.height;
   }
 
-  onWindowPress(event: MouseEvent) {
+  onWindowPress(event: MouseEvent) { 
     this.draggingWindow = true;
     this.px = event.clientX;
     this.py = event.clientY;

@@ -1,5 +1,5 @@
 import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./ChatMessage";
 
@@ -17,18 +17,10 @@ export default {
 export const Default = () => {
   const title = text("title", "John Doe");
   const message = text("message", "I have issue with my silencer");
+  const selfMode = boolean("Self", false);
 
   return html`
-    <md-chat-message title=${title} time="11:27AM">
-      <p slot="message">${message}</p>
-    </md-chat-message>
-  `;
-};
-
-export const Self = () => {
-  const message = text("message", "Sure. I will help with that.");
-  return html`
-    <md-chat-message self time="11:27AM">
+    <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
       <p slot="message">${message}</p>
     </md-chat-message>
   `;

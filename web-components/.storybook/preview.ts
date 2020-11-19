@@ -1,6 +1,7 @@
 import { addDecorator, addParameters, configure, setCustomElements } from "@storybook/web-components";
 import customElements from './custom-elements.json';
 import { withA11y } from "@storybook/addon-a11y";
+import { lumosDark, lumosLight, momentumDark, momentumLight } from "../src/components/theme/index";
 
 /** 
  * Custom element file generated automatically by execute this command

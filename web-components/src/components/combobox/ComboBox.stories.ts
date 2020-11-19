@@ -16,33 +16,22 @@ export default {
   }
 };
 
-export const Placeholder = () => {
-  const placeholder = text("placeholder", "Add Country");
-
-  return html`
-    <md-combobox .options=${comboBoxOptions} placeholder=${placeholder}></md-combobox>
-  `;
-};
-
-export const Disabled = () => {
-  const disabled = boolean("Disabled", true);
-
-  return html`
-    <md-combobox .options=${comboBoxOptions} ?disabled=${disabled}></md-combobox>
-  `;
-};
-
 export const Default = () => {
-  return html`
-    <md-combobox .options=${comboBoxOptions}></md-combobox>
-  `;
+  const placeholder = text("placeholder", "Add Country");
+  const disabled = boolean("Disabled", false);
+  const init = boolean("InitialValue", false);
+
+  if (init) {
+    return html`
+      <md-combobox .options=${comboBoxOptions} ?disabled=${disabled} .value=${[comboBoxOptions[3]]}></md-combobox>
+    `;
+  } else {
+    return html`
+      <md-combobox .options=${comboBoxOptions} placeholder=${placeholder} ?disabled=${disabled}></md-combobox>`;
+  }
+
 };
 
-export const InitialValue = () => {
-  return html`
-    <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[3]]}></md-combobox>
-  `;
-};
 
 export const CustomValue = () => {
   return html`

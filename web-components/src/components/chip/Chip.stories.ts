@@ -1,7 +1,7 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
-import { badgeColor, BarType, iconSamples } from "@/utils/enums";
+import { badgeColor, BarType, iconSamples, iconColorSample } from "@/utils/enums";
 import "../icon/Icon";
 import "./Chip";
 
@@ -16,58 +16,19 @@ export default {
   }
 };
 
+
 export const Default = () => {
-  return html`
-    <md-chip value="default-chip@cisco.com"></md-chip>
-  `;
-};
-
-export const Color = () => {
-  const label = "Color";
-  const defaultColor = "blue";
-  const color = select(label, badgeColor, defaultColor);
-  return html`
-    <md-chip color=${color} value="color-chip@cisco.com"> </md-chip>
-  `;
-};
-
-export const colorOverride = () => {
-  const bgLabel = "BG Color Overrides";
-  const textLabel = "Text Color Override";
-  const defaultBgColor = "blue";
-  const defaultTestColor = "white";
-  const bgColor = text(bgLabel, defaultBgColor);
-  const textColor = text(textLabel, defaultTestColor);
-  return html`
-    <md-chip bgColor=${bgColor} textColor=${textColor} value="bg-color-chip@cisco.com"> </md-chip>
-  `;
-};
-
-export const Size = () => {
-  const heightLabel = "Height Override";
-  const defaultheight = "40px";
-  const height = text(heightLabel, defaultheight);
+  const color = select("Color", badgeColor, "blue");
+  const bgColor = text("BG Color Overrides", "blue");
+  const textColor = text("Text Color Override", "white");
+  const height = text("Height Override", "");
   const valueText = text("value text", "replace this with long string");
-  return html`
-    <md-chip height=${height} value="${valueText}"> </md-chip>
-  `;
-};
+  const small = boolean("Small", false);
+  const disabled = boolean("Disabled", false);
+  const readonly = boolean("readonly", false);
 
-export const Small = () => {
-  const label = "small";
-  const defaultValue = true;
-  const small = boolean(label, defaultValue);
   return html`
-    <md-chip .small=${small} value="small-chip@cisco.com"> </md-chip>
-  `;
-};
-
-export const Disabled = () => {
-  const label = "disabled";
-  const defaultValue = true;
-  const disabled = boolean(label, defaultValue);
-  return html`
-    <md-chip .disabled=${disabled} icon="icon-file-pdf_16" value="small-chip@cisco.com"> </md-chip>
+    <md-chip .color=${color} .bgColor=${bgColor} .textColor=${textColor} .small=${small} .height=${height} .value="${valueText}" .disabled=${disabled} ?readonly=${readonly}></md-chip>
   `;
 };
 
@@ -100,24 +61,9 @@ export const SlottedContent = () => {
   `;
 };
 export const Icon = () => {
-  const defaultValue = "icon-alert_16";
-  const defaultColorValue = "md-blue-70";
-  const icon = select("icon", iconSamples, defaultValue);
-  const color = text("icon color", defaultColorValue);
+  const icon = select("icon", iconSamples, "");
+  const color = select("icon color", iconColorSample, "");
   return html`
     <md-chip value="example-chip@cisco.com" icon="${icon}" iconColor="${color}"> </md-chip>
-  `;
-};
-
-export const Readonly = () => {
-  const readonly = boolean("readonly", true);
-  return html`
-    <md-chip value="disabled-chip@cisco.com" ?readonly=${readonly}> </md-chip>
-  `;
-};
-export const OverflowingText = () => {
-  const wickedLongText = text("text value", "some really long kind of text string");
-  return html`
-    <md-chip value="${wickedLongText}"> </md-chip>
   `;
 };

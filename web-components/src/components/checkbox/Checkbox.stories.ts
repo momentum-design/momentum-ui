@@ -1,7 +1,7 @@
 import "./Checkbox";
 import "./CheckboxGroup";
 import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
@@ -16,48 +16,19 @@ export default {
 };
 
 export const Default = () => {
-  return html`
-    <md-checkbox>Developing</md-checkbox>
-  `;
-};
+  const check = boolean("Checked state", false);
+  const disable = boolean("Disabled State", false);
+  const indeter = boolean("Indeterminate State", false);
+  const group = boolean("Checkbox group", false);
 
-export const Checked = () => {
   return html`
-    <md-checkbox checked>Linting</md-checkbox>
-  `;
-};
-
-export const Disabled = () => {
-  return html`
-    <md-checkbox disabled>Linting</md-checkbox>
-  `;
-};
-
-export const Indeterminate = () => {
-  return html`
-    <md-checkbox indeterminate>Linting</md-checkbox>
-  `;
-};
-
-export const DisabledChecked = () => {
-  return html`
-    <md-checkbox disabled checked>Linting</md-checkbox>
-  `;
-};
-
-export const DisabledIndeterminate = () => {
-  return html`
-    <md-checkbox disabled indeterminate>Checkbox</md-checkbox>
-  `;
-};
-
-export const Group = () => {
-  return html`
-    <md-checkboxgroup group-label="group_process">
-      <md-checkbox slot="checkbox" checked>Developing</md-checkbox>
-      <md-checkbox slot="checkbox" disabled>Linting</md-checkbox>
+    ${group ?
+    html`<md-checkboxgroup group-label="group_process">
+      <md-checkbox slot="checkbox" .checked=${check}>Developing</md-checkbox>
+      <md-checkbox slot="checkbox" .disabled=${disable}>Linting</md-checkbox>
       <md-checkbox slot="checkbox">Testing</md-checkbox>
-      <md-checkbox slot="checkbox" indeterminate>Building</md-checkbox>
-    </md-checkboxgroup>
+      <md-checkbox slot="checkbox" .indeterminate=${indeter}>Building</md-checkbox>
+    </md-checkboxgroup>` :
+    html`<md-checkbox .checked=${check} .disabled=${disable} .indeterminate=${indeter}>Developing</md-checkbox>`}
   `;
 };

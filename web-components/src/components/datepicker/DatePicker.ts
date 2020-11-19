@@ -1,6 +1,6 @@
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, LitElement, property, query } from "lit-element";
 import { DateTime } from "luxon";
 import "../input/Input";
 import "../menu-overlay/MenuOverlay";
@@ -23,17 +23,6 @@ export class DatePicker extends LitElement {
   @property({ attribute: false }) onSelect: Function | undefined = undefined;
 
   @query("md-menu-overlay") menuOverlay!: MenuOverlay;
-
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-  }
-  update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
-  }
 
   setOpen = (open: boolean): void => {
     this.menuOverlay.isOpen = open;
@@ -61,7 +50,6 @@ export class DatePicker extends LitElement {
 
   handleKeyDown = (e: CustomEvent) => {
     const event = e.detail.sourceEvent;
-    console.log(event);
     let flag = false;
     const copy = this.focusedDate;
 

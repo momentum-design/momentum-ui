@@ -1,7 +1,7 @@
 import "@/components/datepicker/datepicker-day/DatePickerDay";
 import { addDays, DatePickerProps, DayFilters, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 export namespace DatePickerWeek {}
@@ -12,10 +12,6 @@ export class DatePickerWeek extends LitElement {
   @property({ attribute: false }) viewAnchorMonth: number = now().month;
   @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
-
-  updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-  }
 
   renderDays = () => {
     const days = [0, 1, 2, 3, 4, 5, 6].map(offset => {

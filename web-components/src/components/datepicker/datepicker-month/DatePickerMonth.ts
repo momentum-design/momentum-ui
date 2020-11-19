@@ -10,7 +10,7 @@ import {
   now
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
@@ -21,10 +21,6 @@ export class DatePickerMonth extends LitElement {
   @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
   @property({ attribute: false }) filterParams: DayFilters | undefined = undefined; // Needed at the day level to set styles correctly
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
-
-  updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-  }
 
   renderWeeks = () => {
     let startOfWeekDay = getStartOfWeek(getStartOfMonth(this.day));

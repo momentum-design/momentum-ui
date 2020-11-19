@@ -21,7 +21,7 @@ import {
   internalProperty,
   LitElement,
   property,
-  PropertyValues,
+
   TemplateResult
 } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -46,14 +46,6 @@ export class DatePickerCalendar extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.viewAnchorDate = this.datePickerProps?.focused || this.datePickerProps?.selected || now();
-  }
-
-  updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-  }
-
-  update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
   }
 
   setDate = (date: DateTime, cb?: Function) => {

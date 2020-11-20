@@ -55,6 +55,7 @@ ShallowWrapper {
           hideDefaultTooltip={false}
           icon={null}
           id="testid"
+          initials={null}
           isDecrypting={false}
           isOverview={false}
           onClick={null}
@@ -161,6 +162,7 @@ ShallowWrapper {
           "hideDefaultTooltip": false,
           "icon": null,
           "id": "testid",
+          "initials": null,
           "isDecrypting": false,
           "isOverview": false,
           "onClick": null,
@@ -454,6 +456,7 @@ ShallowWrapper {
             hideDefaultTooltip={false}
             icon={null}
             id="testid"
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -560,6 +563,7 @@ ShallowWrapper {
             "hideDefaultTooltip": false,
             "icon": null,
             "id": "testid",
+            "initials": null,
             "isDecrypting": false,
             "isOverview": false,
             "onClick": null,

@@ -67,11 +67,7 @@ export class ModalTemplateSandbox extends LitElement {
         <div slot="header">
           <span>Test Slot Header</span>
         </div>
-        <p>
-          This pattern may seem inefficient, since the same style sheet is reproduced in a each instance of an element.
-          However, the browser can deduplicate multiple instances of the same style sheet, so the cost of parsing the
-          style sheet is only paid once.
-        </p>
+        
         <p>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
           literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
@@ -81,16 +77,19 @@ export class ModalTemplateSandbox extends LitElement {
           Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
           Renaissance.
         </p>
+        <md-combobox disabled .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]}></md-combobox>
         <p>
           The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The
           standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32
           and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
           accompanied by English versions from the 1914 translation by H. Rackham.
         </p>
+        <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]}></md-combobox>
         <p>
-          This pattern may seem inefficient, since the same style sheet is reproduced in a each instance of an element.
-          However, the browser can deduplicate multiple instances of the same style sheet, so the cost of parsing the
-          style sheet is only paid once.
+          The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The
+          standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32
+          and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
+          accompanied by English versions from the 1914 translation by H. Rackham.
         </p>
         <p>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
@@ -100,12 +99,6 @@ export class ModalTemplateSandbox extends LitElement {
           Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
           Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
           Renaissance.
-        </p>
-        <p>
-          The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The
-          standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32
-          and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
-          accompanied by English versions from the 1914 translation by H. Rackham.
         </p>
 
         <md-button slot="footer" type="reset">Reset</md-button>

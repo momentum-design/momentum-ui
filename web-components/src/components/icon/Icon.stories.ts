@@ -1,7 +1,7 @@
 import iconNames from "@momentum-ui/icons/data/iconNames.json";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "./Icon";
 import { iconSize, iconType } from "./Icon";
 

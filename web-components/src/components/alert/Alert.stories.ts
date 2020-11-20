@@ -1,5 +1,5 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import { alertTypes } from "@/utils/enums";
 import "./Alert";
 

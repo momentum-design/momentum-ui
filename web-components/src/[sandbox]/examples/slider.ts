@@ -1,5 +1,5 @@
 import "@/components/slider/Slider";
-import { html } from "lit-html";
+import { html } from "lit-element";
 
 export const sliderTemplate = html`
   <div class="container">

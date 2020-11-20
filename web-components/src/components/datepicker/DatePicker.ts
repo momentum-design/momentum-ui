@@ -5,6 +5,7 @@ import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
 import { DateTime } from "luxon";
+import { nothing } from "lit-html";
 
 export namespace DatePicker {}
 
@@ -13,6 +14,7 @@ export class DatePicker extends LitElement {
   @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
+  @property({ type: Boolean }) includeTime = false;
 
   @internalProperty() monthFormat = undefined;
   @internalProperty() locale: string = now().locale;
@@ -102,15 +104,26 @@ export class DatePicker extends LitElement {
   };
 
   render() {
+    const renderTimePicker = () => {
+      return html`
+      <div class="included-timepicker-wrapper">
+        <md-timepicker></md-timepicker>
+      </div>
+      `;
+    };
+
     return html`
       <md-menu-overlay custom-width="248px">
         <md-input slot="menu-trigger" placeholder=${this.selectedDate.toLocaleString()}></md-input>
-        <md-datepicker-calendar
-          @day-select=${(e: CustomEvent) => this.handleSelect(e)}
-          @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${{ selected: this.selectedDate, focused: this.focusedDate }}
-          .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
-        ></md-datepicker-calendar>
+        <div class="date-overlay-content">
+          <md-datepicker-calendar
+            @day-select=${(e: CustomEvent) => this.handleSelect(e)}
+            @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
+            .datePickerProps=${{ selected: this.selectedDate, focused: this.focusedDate }}
+            .filterParams=${{ minDate: this.minDate, maxDate: this.maxDate, filterDate: this.filterDate }}
+          ></md-datepicker-calendar>
+          ${this.includeTime ? renderTimePicker() : nothing}
+        </div>
       </md-menu-overlay>
     `;
   }

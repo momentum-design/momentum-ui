@@ -17,6 +17,7 @@ import {
   chipTemplate,
   comboBoxTemplate,
   datePickerTemplate,
+  timePickerTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -113,6 +114,14 @@ export class Sandbox extends LitElement {
               ${datePickerTemplate}
             </sass-stats>
           </div>
+
+          <div class="container" aria-label="md-timepicker">
+            <h2>md-timepicker</h2>
+            <sass-stats component="timepicker">
+              ${timePickerTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-table">
             <h2>md-table</h2>
             <sass-stats component="table">

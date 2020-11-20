@@ -161,6 +161,8 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) ariaDescribedBy = "";
   @property({ type: Array }) messageArr: Input.Message[] = [];
   @property({ type: Boolean, reflect: true }) autofocus = false;
+  @property({ type: Number , reflect: true }) min = 0;
+  @property({ type: Number, reflect: true }) max = 0;
 
   @query(".md-input") input!: HTMLInputElement;
 
@@ -370,6 +372,8 @@ export class Input extends FocusMixin(LitElement) {
             id=${this.htmlId}
             placeholder=${this.placeholder}
             ?readonly=${this.readOnly}
+            min=${this.min}
+            max=${this.max}
           />
         `;
   }

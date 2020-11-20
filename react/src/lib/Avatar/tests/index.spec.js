@@ -38,9 +38,29 @@ describe('tests for <Avatar />', () => {
     expect(container.find('.md-avatar__letter').text()).toEqual('TN');
   });
 
-  it('should display title for user', () => {
-    const container = mount(<Avatar src="test.png" title="Test Name" />);
-    expect(container.find('.md-avatar__letter').text()).toEqual('TN');
+  it('should display title for user - FirstName', () => {
+    const container = mount(<Avatar src="test.png" title="Fred" />);
+    expect(container.find('.md-avatar__letter').text()).toEqual('F');
+  });
+
+  it('should display title for user - FirstName LastName', () => {
+    const container = mount(<Avatar src="test.png" title="Frank Little" />);
+    expect(container.find('.md-avatar__letter').text()).toEqual('FL');
+  });
+
+  it('should display title for user - FirstName MiddleName LastName', () => {
+    const container = mount(<Avatar src="test.png" title="Francis Michael Lincoln" />);
+    expect(container.find('.md-avatar__letter').text()).toEqual('FL');
+  });
+
+  it('should display blank title for user with blank title', () => {
+    const container = mount(<Avatar src="test.png" title="                  " />);
+    expect(container.find('.md-avatar__letter').text()).toEqual('');
+  });
+
+  it('should override title for user when initials props present', () => {
+    const container = mount(<Avatar initials="WX" src="test.png" title="Francis Michael Lincoln" />);
+    expect(container.find('.md-avatar__letter').text()).toEqual('WX');
   });
 
   it('should display title for group', () => {

@@ -1,7 +1,7 @@
 import { numInputTypes } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import { Input } from "../input/Input";
 import "./EditableTextfield";
 import { alignment } from "./EditableTextfield";

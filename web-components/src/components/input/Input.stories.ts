@@ -1,6 +1,6 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "../icon/Icon";
 import "./Input";
 import { containerSize, iconNames, iconPosition, inputShape, inputSize, inputType, nestedLevel } from "./Input";

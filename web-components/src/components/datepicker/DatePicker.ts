@@ -14,6 +14,7 @@ export class DatePicker extends LitElement {
   @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
+  @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: Boolean }) includeTime = false;
 
   @internalProperty() monthFormat = undefined;
@@ -49,7 +50,11 @@ export class DatePicker extends LitElement {
 
   setSelected = (date: DateTime, event: Event): void => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-    !isDayDisabled(date, filters) ? (this.selectedDate = date) : null;
+    if (!isDayDisabled(date, filters)) {
+      const dateString = `${date.year}-${date.month}-${date.day}`;
+      this.selectedDate = date;
+      this.value = dateString;
+    }
     this.onSelect && this.onSelect(event, date);
   };
 

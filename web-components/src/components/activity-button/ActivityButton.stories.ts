@@ -2,7 +2,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import "./ActivityButton";
-import "@/components/theme/Theme";
+import "../theme/Theme";
 import { activityButtonSize, activityButtonType } from "./ActivityButton";
 
 export default {
@@ -14,28 +14,33 @@ export default {
       description: 'overwritten description',
       table: {
         type: { 
-            summary: 'something short', 
+            summary: 'string', 
             detail: 'something really really long' 
         },
-      },
-      control: {
-        type: null,
-      },
+      }
     },
+    buttonToIconSizeMapping: { table: { disable: true } },
+    formatClass: { table: { disable: true } },
   },
   parameters: {
     a11y: {
       element: "md-activity-button"
     },
     docs: { 
-        description: { 
-            component: 'some component description' 
-        } 
+      description: { 
+        component: 'some component description' 
+      },
+      argTypes: {
+        buttonToIconSizeMapping: { table: { disable: true } },
+        formatClass: { table: { disable: true } },
+      },
     },
+    actions: { argTypesRegex: '^on.*' },
   }
 };
 
-export const Default = () => {
+export const DefaultActivityButton = () => {
+  const darkTheme = boolean("darkMode", false);
   const label = text("Title", "");
   const labelSize = "Size";
   const defaultValue = 68;
@@ -46,6 +51,8 @@ export const Default = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
+  <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
     <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
+  </md-theme>
   `;
 }

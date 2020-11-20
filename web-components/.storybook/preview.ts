@@ -2,6 +2,7 @@ import { addDecorator, addParameters, configure, setCustomElements } from "@stor
 import customElements from './custom-elements.json';
 import { withA11y } from "@storybook/addon-a11y";
 import { lumosDark, lumosLight, momentumDark, momentumLight } from "../src/components/theme/index";
+import { Theme } from "../src/components/theme/Theme";
 
 /** 
  * Custom element file generated automatically by execute this command
@@ -16,6 +17,7 @@ addParameters({
   docs: {
     inlineStories: false,
   },
+  controls: { expanded: true },
   a11y: {
     config: {},
     options: {
@@ -40,13 +42,13 @@ if (module.hot) {
 
 export const globalTypes = {
   theme: {
-    name: 'Theme',
+    name: Theme,
     description: 'Global theme for components',
-    defaultValue: 'light',
+    defaultValue: momentumLight,
     toolbar: {
       icon: 'circlehollow',
       // array of plain string values or MenuItem shape (see below)
-      items: ['light', 'dark'],
+      items: [lumosDark, lumosLight, momentumDark, momentumLight],
     },
   },
 };

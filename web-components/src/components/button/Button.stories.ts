@@ -4,6 +4,7 @@ import "../theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { action } from '@storybook/addon-actions';
 import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button";
 
 export default {
@@ -30,7 +31,7 @@ export const Default = () => {
 
   return html`
     <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
-      <md-button .variant=${variant} ariaLabel="Button Storybook" .color=${color} .disabled=${disabled} .circle=${circle} .loading=${loading} .size=${size} .tag=${tag} .type=${type}>
+      <md-button @button-click=${(action('ditail'))} .variant=${variant} ariaLabel="Button Storybook" .color=${color} .disabled=${disabled} .circle=${circle} .loading=${loading} .size=${size} .tag=${tag} .type=${type}>
         ${circle ? html`<md-icon slot="icon" name="icon-search_12"></md-icon>` : html`<span slot="text">Button</span>` }
       </md-button>
     </md-theme>

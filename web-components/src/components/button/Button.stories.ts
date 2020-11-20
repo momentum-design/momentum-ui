@@ -11,6 +11,16 @@ export default {
   title: "Button",
   component: "md-button",
   decorators: [withKnobs, withA11y],
+  argTypes: {
+    renderWidth: { table: { disable: true } },
+    renderMaxWidth: { table: { disable: true } },
+    buttonClassMap: { table: { disable: true } },
+    iconTemplate: { table: { disable: true } },
+    textTemplate: { table: { disable: true } },
+    slottedText: { table: { disable: true } },
+    getStyles: { table: { disable: true } },
+    keyboardKey: { table: { disable: true } }
+  },
   parameters: {
     a11y: {
       element: "md-button"

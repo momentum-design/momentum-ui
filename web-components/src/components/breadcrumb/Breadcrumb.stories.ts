@@ -1,7 +1,8 @@
 import "@/components/breadcrumb/Breadcrumb";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
+import "../theme/Theme";
 
 export default {
   title: "Breadcrumb",
@@ -33,6 +34,14 @@ const breadCrumb = [
   }
 ];
 
-export const Default = () => html`
-  <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
-`;
+export const Default = () => {
+  const darkTheme = boolean("darkMode", false);
+  
+  return html`
+    <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme}>
+      <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
+    </md-theme>
+  `;
+}
+  
+  

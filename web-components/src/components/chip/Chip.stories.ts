@@ -4,6 +4,7 @@ import { html } from "lit-html";
 import { badgeColor, BarType, iconSamples, iconColorSample } from "@/utils/enums";
 import "../icon/Icon";
 import "./Chip";
+import "../theme/Theme";
 
 export default {
   title: "Chip",
@@ -18,6 +19,7 @@ export default {
 
 
 export const Default = () => {
+  const darkTheme = boolean("darkMode", false);
   const color = select("Color", badgeColor, "blue");
   const bgColor = text("BG Color Overrides", "blue");
   const textColor = text("Text Color Override", "white");
@@ -28,7 +30,9 @@ export const Default = () => {
   const readonly = boolean("readonly", false);
 
   return html`
-    <md-chip .color=${color} .bgColor=${bgColor} .textColor=${textColor} .small=${small} .height=${height} .value="${valueText}" .disabled=${disabled} ?readonly=${readonly}></md-chip>
+    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+      <md-chip .color=${color} .bgColor=${bgColor} .textColor=${textColor} .small=${small} .height=${height} .value="${valueText}" .disabled=${disabled} ?readonly=${readonly}></md-chip>
+    </md-theme>
   `;
 };
 

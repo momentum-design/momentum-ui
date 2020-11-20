@@ -30,12 +30,7 @@ export default {
       description: { 
         component: 'some component description' 
       },
-      argTypes: {
-        buttonToIconSizeMapping: { table: { disable: true } },
-        formatClass: { table: { disable: true } },
-      },
-    },
-    actions: { argTypesRegex: '^on.*' },
+    }
   }
 };
 
@@ -51,7 +46,7 @@ export const DefaultActivityButton = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
-  <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme}>
     <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
   </md-theme>
   `;

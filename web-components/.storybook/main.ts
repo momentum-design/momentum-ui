@@ -22,7 +22,7 @@ module.exports = {
     '@storybook/addon-backgrounds',
     '@storybook/addon-controls',
     '@storybook/addon-actions',
-    '@storybook/addon-viewport',
+    '@storybook/addon-viewport'
   ],
 
   webpackFinal: async (config: any) => {

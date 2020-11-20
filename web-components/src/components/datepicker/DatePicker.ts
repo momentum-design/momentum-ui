@@ -1,27 +1,27 @@
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
+import "@/components/input/Input";
+import "@/components/menu-overlay/MenuOverlay";
+import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
 import { DateTime } from "luxon";
-import "../input/Input";
-import "../menu-overlay/MenuOverlay";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay";
 
 export namespace DatePicker {}
 
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
   @property({ type: Boolean }) shouldCloseOnSelect = true;
-  @property({ attribute: false }) locale: string = now().locale;
-  @property({ attribute: false }) monthFormat = undefined;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
-  @property({ attribute: false }) selectedDate: DateTime = now();
-  @property({ attribute: false }) focusedDate: DateTime = now();
-  @property({ attribute: false }) filterDate: Function | undefined = undefined;
-  @property({ attribute: false }) onChange: Function | undefined = undefined;
-  @property({ attribute: false }) onMonthChange: Function | undefined = undefined;
-  @property({ attribute: false }) onSelect: Function | undefined = undefined;
 
+  @internalProperty() monthFormat = undefined;
+  @internalProperty() locale: string = now().locale;
+  @internalProperty() focusedDate: DateTime = now();
+  @internalProperty() filterDate: Function | undefined = undefined;
+  @internalProperty() onChange: Function | undefined = undefined;
+  @internalProperty() selectedDate: DateTime = now();
+  @internalProperty() onMonthChange: Function | undefined = undefined;
+  @internalProperty() onSelect: Function | undefined = undefined;
   @internalProperty() maxDateData: DateTime | undefined = undefined;
   @internalProperty() minDateData: DateTime | undefined = undefined;
 

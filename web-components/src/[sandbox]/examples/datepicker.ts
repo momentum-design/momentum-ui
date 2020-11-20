@@ -1,10 +1,10 @@
+import "@/components/datepicker/DatePicker";
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/datepicker/datepicker-day/DatePickerDay";
 import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import "@/index";
 import { html } from "lit-element";
-import "../../components/datepicker/DatePicker";
 
 export const datePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>

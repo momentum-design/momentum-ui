@@ -4,7 +4,7 @@ import "../input/Input";
 import "../theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "./MenuOverlay";
 import { menuOverlayPlacement, menuOverlaySize } from "./MenuOverlay";
 

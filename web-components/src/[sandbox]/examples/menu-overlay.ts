@@ -328,7 +328,6 @@ export const menuOverlayTemplate = html`
   </div>
   </div>
 
-
   <h3 class="sandbox-header" style="margin: .5rem 1rem">with list (focus)</h3>
   <md-menu-overlay show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Open List</md-button>
@@ -349,6 +348,7 @@ export const menuOverlayTemplate = html`
       <span>Text</span>
     </div>
   </md-menu-overlay>
+
   <h3 class="sandbox-header" style="margin: .5rem 1rem">Open focusable content</h3>
   <md-menu-overlay is-open show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
@@ -398,7 +398,6 @@ export const menuOverlayTemplate = html`
         <span>Tooltip Trigger Text</span>
         </md-tooltip>
       </div>
-
   </md-menu-overlay>
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">With Autofocused Content Inside</h3>
@@ -411,7 +410,6 @@ export const menuOverlayTemplate = html`
           </md-checkboxgroup>
           <md-input autofocus placeholder="Enter Text" shape="pill"></md-input>
       </div>
-
   </md-menu-overlay>
   </div>
 `;

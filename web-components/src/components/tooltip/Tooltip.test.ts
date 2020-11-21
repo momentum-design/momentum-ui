@@ -1,10 +1,10 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "@/components/icon/Icon";
-import "@/components/tooltip/Tooltip";
+import "./Tooltip";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { Theme } from "@/components/theme/Theme";
-import { Tooltip } from "@/components/tooltip/Tooltip";
+import { Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
   let theme: Theme;

@@ -2,21 +2,6 @@ import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helper
 import { querySelectorAllDeep, querySelectorDeep } from "query-selector-shadow-dom";
 import "./Input";
 import { Input } from "./Input";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const lmBadgeTokens = require("./tokens/lm-input-tokens.js");
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const mdbadgeTokens = require("./tokens/md-input-tokens.js");
-
-describe("Input Tokens", () => {
-  test("Lumos Token Import should not be null", async () => {
-    // const tokens = lmBadgeTokens;
-    expect(lmBadgeTokens).not.toBeNull();
-  });
-  test("Lumos Token Import should not be null", async () => {
-    // const tokens = mdbadgeTokens;
-    expect(mdbadgeTokens).not.toBeNull();
-  });
-});
 
 describe("Input Component", () => {
   afterEach(() => {

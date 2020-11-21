@@ -46,7 +46,7 @@ export namespace Theme {
  * To make possible to position such element correctly, we need
  * move creating popper instance in parent container that guarantee
  * will not contain overflow property with hidden value;
-*/
+ */
 
 @customElement("md-theme")
 export class Theme extends LitElement {
@@ -260,10 +260,7 @@ export class Theme extends LitElement {
         </style>
         <slot></slot>
         <div class="md-tooltip" virtual-global-popper></div>
-        <div
-          virtual-global-reference
-          aria-describedby="tooltip"
-        ></div>
+        <div virtual-global-reference aria-describedby="tooltip"></div>
       </div>
     `;
   }

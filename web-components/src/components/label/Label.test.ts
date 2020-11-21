@@ -2,18 +2,6 @@ import { fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import "./Label";
 import { Label } from "./Label";
 
-const lmLabelTokens = require("./tokens/lm-label-tokens.js");
-const mdLabelTokens = require("./tokens/md-label-tokens.js");
-
-describe("Tooltip Tokens", () => {
-  test("Lumos Token Import should not be null", () => {
-    expect(lmLabelTokens).not.toBeNull();
-  });
-  test("Lumos Token Import should not be null", () => {
-    expect(mdLabelTokens).not.toBeNull();
-  });
-});
-
 describe("Label", () => {
   afterEach(fixtureCleanup);
   test("should render one Label", async () => {

@@ -1,7 +1,7 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
-import "../button/Button";
+import { html } from "lit-element";
+import "@/components/button/Button";
 import "./Tooltip";
 import { tooltipPlacement } from "./Tooltip";
 

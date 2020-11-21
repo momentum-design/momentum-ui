@@ -137,55 +137,13 @@ export class Sandbox extends LitElement {
             <h2>md-task-item</h2>
             <sass-stats component="taskitem">
               ${taskItemTemplate}
-            </sass-stats>
+             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-combo-box">
-            <h2>md-combobox</h2>
-            <sass-stats component="combobox">
-              ${comboBoxTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-tabs">
-            <h2>md-tabs</h2>
-            <sass-stats component="tabs">
-              ${tabsTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-editable-field">
-            <h2>md-editable-field</h2>
-            <sass-stats component="editable-textfield">
-              ${editableField}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-toggle-switch">
-            <h2>md-toggle-switch</h2>
-            <sass-stats component="toggle-switch">
-              ${toggleSwitchTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-tooltip">
-            <h2>md-tooltip</h2>
-            <sass-stats component="tooltip">
-              ${tooltipTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-progress-bar">
-            <h2>md-progress-bar</h2>
-            <sass-stats component="progress-bar">
-              ${progressBarTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-list">
-            <h2>md-list</h2>
-            <sass-stats component="list">
-              ${listTemplate}
+          <div class="container" aria-label="md-activity-button">
+            <h2>md-activity-button</h2>
+            <sass-stats component="activity-button">
+              ${activityButtonTemplate}
             </sass-stats>
           </div>
 
@@ -196,10 +154,87 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-alert">
+            <h2>md-alert</h2>
+            <sass-stats component="alert">
+              ${alertTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-avatar">
+            <h2>md-avatar</h2>
+            <sass-stats component="avatar">
+              ${avatarTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-badge">
+            <h2>md-badge</h2>
+            <sass-stats component="badge">
+              ${badgeTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-breadcrumb">
+            <h2>md-breadcrumb</h2>
+            <sass-stats component="breadcrumb">
+              ${breadcrumbTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-button">
+            <h2>md-button</h2>
+            <sass-stats component="button">
+              ${buttonTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-chat-message">
+            <h2>md-chat-message</h2>
+            <sass-stats component="chat-message">
+              ${chatMessageTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-checkbox">
+            <h2>md-checkbox</h2>
+            <sass-stats component="checkbox">
+              ${checkboxTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-chip">
             <h2>md-chip</h2>
             <sass-stats component="chip">
               ${chipTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-combo-box">
+            <h2>md-combobox</h2>
+            <sass-stats component="combobox">
+              ${comboBoxTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-editable-field">
+            <h2>md-editable-field</h2>
+            <sass-stats component="editable-textfield">
+              ${editableField}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-floating-dialog">
+            <h2>md-floating-dialog</h2>
+            <sass-stats component="floating-modal">
+              ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-icon">
+            <h2>md-icon</h2>
+            <sass-stats component="icon">
+              ${iconTemplate}
             </sass-stats>
           </div>
 
@@ -217,45 +252,17 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-spinner">
-            <h2>md-spinner</h2>
-            <sass-stats component="spinner">
-              ${spinnerTemplate}
+          <div class="container" aria-label="md-link">
+            <h2>md-link</h2>
+            <sass-stats component="link">
+              ${linkTemplate}
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-modal">
-            <h2>md-modal</h2>
-            <sass-stats component="modal">
-              ${modalTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-icon">
-            <h2>md-icon</h2>
-            <sass-stats component="icon">
-              ${iconTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-avatar">
-            <h2>md-avatar</h2>
-            <sass-stats component="avatar">
-              ${avatarTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-button">
-            <h2>md-button</h2>
-            <sass-stats component="button">
-              ${buttonTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-activity-button">
-            <h2>md-activity-button</h2>
-            <sass-stats component="activity-button">
-              ${activityButtonTemplate}
+          <div class="container" aria-label="md-list">
+            <h2>md-list</h2>
+            <sass-stats component="list">
+              ${listTemplate}
             </sass-stats>
           </div>
 
@@ -273,31 +280,31 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-badge">
-            <h2>md-badge</h2>
-            <sass-stats component="badge">
-              ${badgeTemplate}
+          <div class="container" aria-label="md-menu-overlay">
+            <h2>md-menu-overlay</h2>
+            <sass-stats component="menu-overlay">
+              ${menuOverlayTemplate}
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-link">
-            <h2>md-link</h2>
-            <sass-stats component="link">
-              ${linkTemplate}
+          <div class="container" aria-label="md-modal">
+            <h2>md-modal</h2>
+            <sass-stats component="modal">
+              ${modalTemplate}
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-alert">
-            <h2>md-alert</h2>
-            <sass-stats component="alert">
-              ${alertTemplate}
+          <div class="container" aria-label="md-phone-input">
+            <h2>md-phone-input</h2>
+            <sass-stats component="phone-input">
+              ${phoneInputTemplate}
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-checkbox">
-            <h2>md-checkbox</h2>
-            <sass-stats component="checkbox">
-              ${checkboxTemplate}
+          <div class="container" aria-label="md-progress-bar">
+            <h2>md-progress-bar</h2>
+            <sass-stats component="progress-bar">
+              ${progressBarTemplate}
             </sass-stats>
           </div>
 
@@ -309,26 +316,51 @@ export class Sandbox extends LitElement {
           </div>
 
           <div class="container" aria-label="md-slider">
+            <h2>md-slider</h2>
             <sass-stats component="slider">
               ${sliderTemplate}
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-floating-dialog">
-            <sass-stats component="floating-modal">
-              ${floatingModalTemplate}
+          <div class="container" aria-label="md-spinner">
+            <h2>md-spinner</h2>
+            <sass-stats component="spinner">
+              ${spinnerTemplate}
             </sass-stats>
           </div>
-          <div class="container" aria-label="md-breadcrumb">
-            <h2>md-breadcrumb</h2>
-            <sass-stats component="breadcrumb">
-              ${breadcrumbTemplate}
+
+          <div class="container" aria-label="md-table">
+            <h2>md-table</h2>
+            <sass-stats component="table">
+              ${tableTemplate}
             </sass-stats>
           </div>
-          <div class="container" aria-label="md-chat-message">
-            <h2>md-chat-message</h2>
-            <sass-stats component="chat-message">
-              ${chatMessageTemplate}
+
+          <div class="container" aria-label="md-tabs">
+            <h2>md-tabs</h2>
+            <sass-stats component="tabs">
+              ${tabsTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-task-item">
+            <h2>md-task-item</h2>
+            <sass-stats component="taskitem">
+              ${taskItemTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-toggle-switch">
+            <h2>md-toggle-switch</h2>
+            <sass-stats component="toggle-switch">
+              ${toggleSwitchTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-tooltip">
+            <h2>md-tooltip</h2>
+            <sass-stats component="tooltip">
+              ${tooltipTemplate}
             </sass-stats>
           </div>
         </elix-list-explorer>

@@ -10,7 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "../icon/Icon";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 @customElement("md-badge")
 export class Badge extends LitElement {

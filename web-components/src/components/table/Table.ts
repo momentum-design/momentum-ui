@@ -25,7 +25,6 @@ export class Table extends LitElement {
 
   @internalProperty() private sort = { columnName: "", sortting: false };
 
-
   csvData: any;
   headerRow: any;
   results: any;
@@ -38,7 +37,7 @@ export class Table extends LitElement {
     step: undefined,
     complete: undefined,
     download: false
-  }
+  };
 
   connectedCallback() {
     super.connectedCallback();
@@ -49,7 +48,7 @@ export class Table extends LitElement {
 
   sortTab(ev: Event, key: any) {
     const elCell = ev.target as HTMLTableElement;
-    const sortArr = Array.from(this.csvData); 
+    const sortArr = Array.from(this.csvData);
     const index = this.headerRow.indexOf(key);
 
     function compare(a: any, b: any) {
@@ -62,7 +61,6 @@ export class Table extends LitElement {
       } else {
         return 0;
       }
-
     }
 
     if (key !== this.sort.columnName || this.sort.sortting !== true) {
@@ -97,19 +95,53 @@ export class Table extends LitElement {
 
   render() {
     return html`
-      <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly": nothing}`}>
+      <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly" : nothing}`}>
         ${this.csvData.length != 0
-          ? html`<table class="md-table ${classMap(this.tableClassMap)}" tabindex="0" role="table" aria-label="${this.label}">
-              <thead class="md-table__header" role="rowgroup" tabindex="0">
-                <tr role="row">
-                  ${this.headerRow.map((i: any) => html`<th role="columnheader">${this.sorting ? html`<a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>` : html`${i}`}</th>`)}
-                </tr>
-              </thead>
-              <tbody class="md-table__body" role="rowgroup">
-                ${this.csvData.map((row: any) => html`<tr tabindex="0" role="row">${row.map((item: any) => html`<td role="cell">${item}</td>`)}</tr>`)}
-              </tbody>
-            </table>`
-          : html`<p>${this.nodata}</p>`}
+          ? html`
+              <table
+                class="md-table ${classMap(this.tableClassMap)}"
+                tabindex="0"
+                role="table"
+                aria-label="${this.label}"
+              >
+                <thead class="md-table__header" role="rowgroup" tabindex="0">
+                  <tr role="row">
+                    ${this.headerRow.map(
+                      (i: any) =>
+                        html`
+                          <th role="columnheader">
+                            ${this.sorting
+                              ? html`
+                                  <a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>
+                                `
+                              : html`
+                                  ${i}
+                                `}
+                          </th>
+                        `
+                    )}
+                  </tr>
+                </thead>
+                <tbody class="md-table__body" role="rowgroup">
+                  ${this.csvData.map(
+                    (row: any) =>
+                      html`
+                        <tr tabindex="0" role="row">
+                          ${row.map(
+                            (item: any) =>
+                              html`
+                                <td role="cell">${item}</td>
+                              `
+                          )}
+                        </tr>
+                      `
+                  )}
+                </tbody>
+              </table>
+            `
+          : html`
+              <p>${this.nodata}</p>
+            `}
       </div>
     `;
   }

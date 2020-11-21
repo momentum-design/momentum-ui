@@ -1,5 +1,5 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import { Input } from "../input/Input";
+import { Input } from "@/components/input/Input";
 import "./EditableTextfield";
 import { EditableTextfield } from "./EditableTextfield";
 

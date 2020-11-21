@@ -2,7 +2,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { badgeColor, BarType, iconSamples } from "@/utils/enums";
-import "../icon/Icon";
+import "@/components/icon/Icon";
 import "./Chip";
 
 export default {

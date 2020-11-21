@@ -122,13 +122,11 @@ export class Tooltip extends FocusMixin(LitElement) {
       <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
         <div class="md-tooltip__popper" role="tooltip">
           <div class="md-tooltip__content">
-            ${
-              this.message
-                ? this.message
-                : html`
-                    <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
-                  `
-            }
+            ${this.message
+              ? this.message
+              : html`
+                  <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
+                `}
           </div>
           <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
         </div>

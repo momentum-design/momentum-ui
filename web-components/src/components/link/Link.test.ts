@@ -2,20 +2,6 @@ import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Link";
 import { Link } from "./Link";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const lmLinkTokens = require("./tokens/lm-link-tokens.js");
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const mdLInkTokens = require("./tokens/md-link-tokens.js");
-
-describe("Link Tokens", () => {
-  test("Lumos Token Import should not be null", async () => {
-    expect(lmLinkTokens).not.toBeNull();
-  });
-  test("Lumos Token Import should not be null", async () => {
-    expect(mdLInkTokens).not.toBeNull();
-  });
-});
-
 describe("Link component", () => {
   afterEach(() => {
     fixtureCleanup();

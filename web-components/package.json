@@ -115,14 +115,12 @@
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   },
-  "husky": {
-    "hooks": {}
-  },
   "dependencies": {
     "@popperjs/core": "^2.4.4",
     "country-codes-list": "^1.6.8",
     "dompurify": "^2.2.0",
     "libphonenumber-js": "^1.7.57",
+    "nanoid": "^3.1.16",
     "papaparse": "^5.3.0"
   }
 }

@@ -7,7 +7,9 @@ import { html } from "lit-element";
 
 describe("Checkbox component", () => {
   let element: CheckboxGroup;
+
   afterEach(fixtureCleanup);
+
   beforeEach(async () => {
     element = await fixture<CheckboxGroup>(html`
       <md-checkboxgroup group-label="group_process">

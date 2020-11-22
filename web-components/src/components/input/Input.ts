@@ -459,7 +459,10 @@ export class Input extends FocusMixin(LitElement) {
               this.messages,
               message =>
                 html`
-                  <md-help-text .message=${message} .messageType=${this.messageType as Input.MessageType}></md-help-text>
+                  <md-help-text
+                    .message=${message}
+                    .messageType=${this.messageType as Input.MessageType}
+                  ></md-help-text>
                 `
             )}
           </div>

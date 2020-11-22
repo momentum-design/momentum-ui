@@ -1,7 +1,8 @@
 import "./Loading";
 import { withA11y } from "@storybook/addon-a11y";
 import { select, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
+import { LoadingSize } from "./Loading";
 
 export default {
   title: "Loading",
@@ -13,8 +14,6 @@ export default {
     }
   }
 };
-
-type LoadingSize = "small" | "middle" | "large" | "";
 
 export const Default = () => {
   return html`

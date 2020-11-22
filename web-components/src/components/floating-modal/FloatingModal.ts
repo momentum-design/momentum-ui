@@ -2,8 +2,8 @@ import { throttle } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { styleMap } from "lit-html/directives/style-map";
-import "../button/Button";
-import "../icon/Icon";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 @customElement("md-floating-modal")

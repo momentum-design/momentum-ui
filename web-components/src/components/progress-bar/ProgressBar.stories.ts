@@ -1,6 +1,6 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import { BarFormat, BarType } from "@/utils/enums";
 import "./ProgressBar";
 

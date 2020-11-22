@@ -10,8 +10,8 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "../button/Button";
-import "../icon/Icon";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 @customElement("md-alert")

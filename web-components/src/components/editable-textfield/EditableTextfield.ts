@@ -14,8 +14,8 @@ import { CSSResultArray, customElement, html, LitElement, property, PropertyValu
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import "../input/Input";
-import { Input, Message } from "../input/Input";
+import "@/components/input/Input";
+import { Input, Message } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;

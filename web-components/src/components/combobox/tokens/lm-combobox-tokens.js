@@ -38,7 +38,7 @@ const combobox = {
   disabled: {
     "bg-color": {
       light: colors.gray[10].name,
-      dark: colors.gray[90].name
+      dark: colors.gray[80].name
     }
   },
   dropdown: {

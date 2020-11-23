@@ -4,7 +4,9 @@ import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 
 describe("Loading", () => {
   let element: Loading;
+
   afterEach(fixtureCleanup);
+
   beforeEach(async () => {
     element = await fixture<Loading>(
       html`

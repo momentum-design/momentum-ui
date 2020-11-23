@@ -107,7 +107,7 @@ export class Tab extends FocusMixin(LitElement) {
     this.dispatchEvent(
       new CustomEvent("focus-visible", {
         composed: true,
-        bubbles: true,
+        bubbles: true
       })
     );
   }

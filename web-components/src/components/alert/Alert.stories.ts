@@ -3,8 +3,8 @@ import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-html";
 import { alertTypes } from "@/utils/enums";
 import { action } from '@storybook/addon-actions';
-import "./Alert";
-import "../theme/Theme";
+import "@/components/alert/Alert";
+import "@/components/theme/Theme";
 
 export default {
   title: "Alert",

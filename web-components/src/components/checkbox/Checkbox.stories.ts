@@ -1,6 +1,6 @@
-import "./Checkbox";
-import "./CheckboxGroup";
-import "../theme/Theme";
+import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -27,7 +27,7 @@ export const Default = () => {
   return html`
     ${group ?
     html`
-      <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="checkbox-group" ?darkTheme=${darkTheme}>
         <md-checkboxgroup group-label="group_process">
           <md-checkbox slot="checkbox" .checked=${check}>Developing</md-checkbox>
           <md-checkbox slot="checkbox" .disabled=${disable}>Linting</md-checkbox>
@@ -36,7 +36,7 @@ export const Default = () => {
         </md-checkboxgroup>
       </md-theme>` :
     html`
-      <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="checkbox" ?darkTheme=${darkTheme}>
         <md-checkbox label="${label}" .checked=${check} .disabled=${disable} .indeterminate=${indeter}>Developing</md-checkbox>
       </md-theme>
     `}

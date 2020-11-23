@@ -2,8 +2,8 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/icon/Icon";
-import "./Input";
-import { containerSize, iconNames, iconPosition, inputShape, inputSize, inputType, nestedLevel } from "./Input";
+import "@/components/input/Input";
+import { containerSize, iconNames, iconPosition, inputShape, inputSize, inputType, nestedLevel } from "@/components/input/Input";
 
 export default {
   title: "Input",
@@ -17,111 +17,38 @@ export default {
 };
 
 export const Default = () => {
-  return html`
-    <md-input label="Default"></md-input>
-  `;
-};
-export const Placeholder = () => {
   const placeholder = text("Enter Text", "Enter Text");
-  return html`
-    <md-input label="Placeholder" .placeholder=${placeholder}></md-input>
-  `;
-};
-export const Value = () => {
+  const label = text("Label", "Label");
   const value = text("Value Text", "Value Text");
+  const size = select("Container Size", containerSize, "small-12");
+  const disabled = boolean("Input Disabled", false);
+  const readOnly = boolean("Read Only", false);
+  const shape = select("Shape Pill", inputShape, "pill");
+  const multiline = boolean("Input Multiline", false);
+  const searchable = boolean("Searchable", false);
+  const clear = boolean("Input Clear", false);
+
   return html`
-    <md-input label="Placeholder" placeholder="Enter Text" .value=${value}></md-input>
-  `;
-};
-export const ContainerSize = () => {
-  const defaultValue = "small-12";
-  const size = select("Container Size", containerSize, defaultValue);
-  return html`
-    <md-input label="Container Size" .containerSize="${size}"></md-input>
-  `;
-};
-export const InputSize = () => {
-  const defaultValue = "small-12";
-  const size = select("Input Size", inputSize, defaultValue);
-  return html`
-    <md-input label="Input Size" .containerSize="${size}"></md-input>
+    <md-input 
+      .label=${label} 
+      .placeholder=${placeholder} 
+      .value=${value} 
+      .containerSize="${size}" 
+      .disabled=${disabled}
+      .shape=${shape}
+      ?readOnly=${readOnly}
+      ?multiline=${multiline}
+      .searchable=${searchable}
+      ?clear=${clear}>
+    </md-input>
   `;
 };
 
-export const Label = () => {
-  const label = text("Label", "Label");
-  return html`
-    <md-input .label=${label}> </md-input>
-  `;
-};
 
 export const Type = () => {
-  const defaultValue = "text";
-  const type = select("Input Type", inputType, defaultValue);
+  const type = select("Input Type", inputType, "text");
   return html`
     <md-input label="Input Type" .type=${type}></md-input>
-  `;
-};
-
-export const Disabled = () => {
-  const defaultValue = true;
-  const disabled = boolean("Input Disabled", defaultValue);
-  return html`
-    <md-input label="Input Disabled" value="Disabled Text Value" .disabled=${disabled}></md-input>
-  `;
-};
-export const Shape = () => {
-  const defaultValue = "pill";
-  const shape = select("Shape Pill", inputShape, defaultValue);
-  return html`
-    <md-input label="Shape" .shape=${shape}> </md-input>
-  `;
-};
-export const ReadOnly = () => {
-  const defaultValue = true;
-  const readOnly = boolean("Read Only", defaultValue);
-  const disabled = boolean("Read Only Disabled", defaultValue);
-  return html`
-    <md-input
-      label="Readonly"
-      containerSize="small-12"
-      value="Readonly Text"
-      ?readOnly=${readOnly}
-      ?disabled="${disabled}"
-    ></md-input>
-  `;
-};
-
-export const Multiline = () => {
-  const defaultValue = true;
-  const multiline = boolean("Input Multiline", defaultValue);
-  return html`
-    <md-input label="Multiline" ?multiline=${multiline}></md-input>
-  `;
-};
-
-export const Clear = () => {
-  const defaultValue = true;
-  const clear = boolean("Input Clear", defaultValue);
-  return html`
-    <md-input label="Clear" containerSize="small-12" value="Clear Text" ?clear=${clear}></md-input>
-  `;
-};
-
-export const Search = () => {
-  const defaultValue = true;
-  const clear = boolean("Search Clear", defaultValue);
-  return html`
-    <md-input
-      label="Search"
-      htmlId="inputSearch"
-      searchable
-      containerSize="small-12"
-      inputSize="small-12"
-      placeholder="Enter Text"
-      value="Clear Text"
-      ?clear=${clear}
-    ></md-input>
   `;
 };
 

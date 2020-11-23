@@ -1,6 +1,6 @@
-import "./Avatar";
-import { AvatarType } from "./Avatar";
-import "./CompositeAvatar";
+import "@/components/avatar/Avatar";
+import { AvatarType } from "@/components/avatar/Avatar";
+import "@/components/avatar/CompositeAvatar";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -65,7 +65,7 @@ export const Default = () => {
 
   if (composite) {
     return html`
-      <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
         <md-composite-avatar .size=${sizeComos}>
           <md-avatar title="Anthony Russell" type="dnd" has-notification alt="Avatar"></md-avatar>
           <md-avatar type="typing" title="Alyson Hoagland Pace" alt="Avatar"></md-avatar>
@@ -74,7 +74,7 @@ export const Default = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
         <md-avatar .title=${title} alt="Avatar" .type=${type as AvatarType} .src="${customUrl ? `${url}` : ""}" .color=${preDefinedColor} .size=${size} ?has-notification=${hasNotification}>
           ${customImage ? html`<img
           width="100"

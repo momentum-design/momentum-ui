@@ -2,9 +2,9 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import { badgeColor, BarType, iconSamples, iconColorSample } from "@/utils/enums";
-import "../icon/Icon";
-import "./Chip";
-import "../theme/Theme";
+import "@/components/icon/Icon";
+import "@/components/chip/Chip";
+import "@/components/theme/Theme";
 
 export default {
   title: "Chip",
@@ -28,46 +28,46 @@ export const Default = () => {
   const small = boolean("Small", false);
   const disabled = boolean("Disabled", false);
   const readonly = boolean("readonly", false);
+  const isLoad = boolean("If Loading", false);
+  const slot = boolean("Slotted Content", false);
+  const iconSet = boolean("Add Icon", false);
 
-  return html`
-    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
-      <md-chip .color=${color} .bgColor=${bgColor} .textColor=${textColor} .small=${small} .height=${height} .value="${valueText}" .disabled=${disabled} ?readonly=${readonly}></md-chip>
-    </md-theme>
-  `;
-};
+  if (isLoad) {
+    const options = {range: true, min: 0, max: 100, step: 1};
+    const type = select("load type", BarType, "indeterminate");
+    const value = number("loading", 75, options);
 
-export const Loading = () => {
-  const label = "loading";
-  const defaultValue = 75;
-  const options = {
-    range: true,
-    min: 0,
-    max: 100,
-    step: 1
-  };
-  const defaultType = "indeterminate";
-  const type = select("load type", BarType, defaultType);
-  const value = number(label, defaultValue, options);
-  return type === "indeterminate"
-    ? html`
-        <md-chip value="example-chip@cisco.com" indeterminateProgress> </md-chip>
-      `
-    : html`
-        <md-chip value="example-chip@cisco.com" determinateProgress="${value}"> </md-chip>
-      `;
-};
-export const SlottedContent = () => {
-  return html`
-    <md-chip value="example-chip@cisco.com">
-      <md-icon name="icon-alert_16" slot="custom-left-content"></md-icon>
-      <md-icon name="icon-alarm_16" slot="custom-right-content"></md-icon>
-    </md-chip>
-  `;
-};
-export const Icon = () => {
-  const icon = select("icon", iconSamples, "");
-  const color = select("icon color", iconColorSample, "");
-  return html`
-    <md-chip value="example-chip@cisco.com" icon="${icon}" iconColor="${color}"> </md-chip>
-  `;
+    return type === "indeterminate"
+      ? html`
+        <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme}>
+          <md-chip value="example-chip@cisco.com" indeterminateProgress> </md-chip>
+        </md-theme>`
+      : html`
+        <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme}>
+          <md-chip value="example-chip@cisco.com" determinateProgress="${value}"> </md-chip>
+        </md-theme>`;
+  } else if (slot) {
+    return html`
+    <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme}>
+      <md-chip value="example-chip@cisco.com">
+        <md-icon name="icon-alert_16" slot="custom-left-content"></md-icon>
+        <md-icon name="icon-alarm_16" slot="custom-right-content"></md-icon>
+      </md-chip>
+    <md-theme>
+    `;
+  } else if (iconSet) {
+    const icon = select("icon", iconSamples, "");
+    const colorIcon = select("icon color", iconColorSample, "");
+
+    return html`
+    <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme}>
+      <md-chip value="example-chip@cisco.com" icon="${icon}" iconColor="${colorIcon}"> </md-chip>
+    </md-theme>`;
+  } else {
+    return html`
+      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme}>
+        <md-chip .color=${color} .bgColor=${bgColor} .textColor=${textColor} .small=${small} .height=${height} .value="${valueText}" .disabled=${disabled} ?readonly=${readonly}></md-chip>
+      </md-theme>
+    `;
+  }
 };

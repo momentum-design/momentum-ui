@@ -1,8 +1,8 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "./ChatMessage";
-import "../theme/Theme";
+import "@/components/chat-message/ChatMessage";
+import "@/components/theme/Theme";
 
 export default {
   title: "ChatMessage",
@@ -22,7 +22,7 @@ export const Default = () => {
   const selfMode = boolean("Self", false);
 
   return html`
-  <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme}>
     <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
       <p slot="message">${message}</p>
     </md-chat-message>

@@ -2,9 +2,9 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import { action } from '@storybook/addon-actions';
-import "../icon/Icon";
-import "./AlertBanner";
-import "../theme/Theme";
+import "@/components/icon/Icon";
+import "@/components/alert-banner/AlertBanner";
+import "@/components/theme/Theme";
 
 export default {
   title: "AlertBanner",

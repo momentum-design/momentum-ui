@@ -1,9 +1,8 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "./ActivityButton";
-import "../theme/Theme";
-import { activityButtonSize, activityButtonType } from "./ActivityButton";
+import "@/components/activity-button/ActivityButton";
+import { activityButtonSize, activityButtonType } from "@/components/activity-button/ActivityButton";
 
 export default {
   title: "Activity Button",

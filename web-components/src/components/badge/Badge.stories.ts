@@ -3,8 +3,8 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { badgeColor } from "@/utils/enums";
 import "@/components/icon/Icon";
-import "./Badge";
-import "../theme/Theme";
+import "@/components/badge/Badge";
+import "@/components/theme/Theme";
 
 export default {
   title: "Badge",
@@ -36,7 +36,7 @@ export const Default = () => {
   const icon = boolean("With icon", false)
 
   return html`
-  <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme}>
     <md-badge .color=${color} .bgColor=${bgColor} .small=${small} .textColor=${textColor} .height=${height} .width=${width} .circle=${circle}>
       ${icon ? html`<md-icon name="chat-active_16"></md-icon>` : html`Badge ${color}`}
     </md-badge>

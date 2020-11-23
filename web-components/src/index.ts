@@ -17,6 +17,7 @@ export { Chip } from "./components/chip/Chip";
 export { ComboBox } from "./components/combobox/ComboBox";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
+export { HelpText } from "./components/help-text/HelpText";
 export { Icon } from "./components/icon/Icon";
 export { Input } from "./components/input/Input";
 export { Label } from "./components/label/Label";

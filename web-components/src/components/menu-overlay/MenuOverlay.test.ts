@@ -1,4 +1,4 @@
-import "../button/Button";
+import "@/components/button/Button";
 import "./MenuOverlay";
 import { Key } from "@/constants";
 import {
@@ -10,11 +10,8 @@ import {
   nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
-import { html, LitElement, PropertyValues } from "lit-element";
+import { html, PropertyValues } from "lit-element";
 import { MenuOverlay, MenuOverlayElement, OverlaySizes } from "./MenuOverlay";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
 jest.mock("@/utils/helpers", () => {
   return {

@@ -1,7 +1,7 @@
 import "./Slider";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { select, text, number, withKnobs } from "@storybook/addon-knobs";
+import { number, withKnobs } from "@storybook/addon-knobs";
 
 export default {
   title: "Slider",
@@ -36,7 +36,7 @@ export const Steps = () => {
 
 export const NoPointer = () => {
   const now = number("now", 44);
-  
+
   return html`
     <md-slider no-pointer .now=${now}></md-slider>
   `;

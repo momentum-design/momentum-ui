@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.65.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.64.0...@momentum-ui/icons@7.65.0) (2020-11-21)
+
+
+### Features
+
+* **icons:** add lock_10 ([3e88412](https://github.com/momentum-design/momentum-ui/commit/3e884126e849d2954a664495239ff63548130315))
+* **icons:** add lock_12 ([54f832f](https://github.com/momentum-design/momentum-ui/commit/54f832fa78ea1bbeb528979d1f66967231b58304))
+* **icons:** add lock_8 ([151f5db](https://github.com/momentum-design/momentum-ui/commit/151f5dbce1e3aedfb7d746b33998d08f467454cd))
+* **icons:** add stacked-bar-100-chart_16 ([1cafb67](https://github.com/momentum-design/momentum-ui/commit/1cafb67824ed8a7e67d6a60d0d03feb34e3107f5))
+* **icons:** add stacked-bar-chart_16 ([1d966c5](https://github.com/momentum-design/momentum-ui/commit/1d966c5e145e9586b431b2db1bdd27948a8db135))
+
+
+
+
+
 # [7.64.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.63.0...@momentum-ui/icons@7.64.0) (2020-11-20)
 
 

@@ -5,8 +5,10 @@ import { html } from "lit-element";
 import { Avatar } from "@/components/avatar/Avatar";
 
 describe("Chat Message Component", () => {
-  afterEach(fixtureCleanup);
   let element: ChatMessage;
+
+  afterEach(fixtureCleanup);
+
   beforeEach(async () => {
     element = await fixture<ChatMessage>(
       html`

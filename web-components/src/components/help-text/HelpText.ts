@@ -9,7 +9,7 @@
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
-import { Input } from "../input/Input";
+import { Input } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 @customElement("md-help-text")

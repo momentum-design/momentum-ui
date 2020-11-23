@@ -23,6 +23,10 @@
         background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
         position: sticky;
         top: 0;
+
+        &:hover {
+          background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+        }
       }
     }
   }
@@ -39,14 +43,24 @@
     }
 
     th {
+      border-bottom: $table-main-border;
+      border-right: $table-main-border;
       color: var(--table-text-color, $lm-table-text-color-light);
       font-size: $font-size-small;
       font-weight: bold;
       padding-left: calc(#{$table-main-indent} * 3);
       text-align: left;
 
+      &:hover {
+        background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+      }
+
+      &:active {
+        background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
+      }
+
       a {
-        color: #545454;
+        color: var(--table-text-color, $lm-table-text-color-light);
 
         &.sortedAbc {
           &:after {
@@ -71,6 +85,18 @@
   }
 
   .md-table__body {
+    tr {
+      height: $table-row-height;
+
+      &:hover {
+        background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+      }
+
+      &:active {
+        background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
+      }
+    }
+
     td {
       font-size: $font-size-base;
       padding-left: calc(#{$table-main-indent} * 3);
@@ -83,10 +109,7 @@
     td {
       border-bottom: $table-main-border;
       border-right: $table-main-border;
-    }
-
-    &:hover {
-      background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+      vertical-align: top;
     }
   }
 

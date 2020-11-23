@@ -11,9 +11,9 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "../icon/Icon";
-import "../progress-bar/ProgressBar";
-import "../tooltip/Tooltip";
+import "@/components/icon/Icon";
+import "@/components/progress-bar/ProgressBar";
+import "@/components/tooltip/Tooltip";
 import styles from "./scss/module.scss";
 
 export namespace Chip {

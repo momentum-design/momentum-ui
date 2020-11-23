@@ -3,20 +3,6 @@ import { ToggleSwitch } from "./ToggleSwitch";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const lmToggleTokens = require("./tokens/lm-toggle-tokens.js");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const mdToggleTokens = require("./tokens/md-toggle-tokens.js");
-
-describe("Toggle Tokens", () => {
-  test("Lumos Token Import should not be null", async () => {
-    expect(lmToggleTokens).not.toBeNull();
-  });
-  test("Lumos Token Import should not be null", async () => {
-    expect(mdToggleTokens).not.toBeNull();
-  });
-});
-
 describe("Toggle Switch Component", () => {
   let element: ToggleSwitch;
 

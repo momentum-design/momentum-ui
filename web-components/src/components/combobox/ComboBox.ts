@@ -6,7 +6,7 @@
  *
  */
 
-import "../icon/Icon";
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { debounce, findHighlight } from "@/utils/helpers";

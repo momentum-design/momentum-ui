@@ -11,11 +11,6 @@ export interface DatePickerProps {
   weekStart: string;
 }
 
-// export function newDateWithOffset(utcOffset) {
-//   // intended for use of now() with offset, currently non-existant in practice
-//   return DateTime.utc();
-// }
-
 export function now(): DateTime {
   return DateTime.local();
 }
@@ -87,8 +82,8 @@ export function isSameMonth(date1: DateTime, date2: DateTime): boolean {
 
 export function isDayDisabled(day: DateTime, params: DayFilters): boolean {
   return (
-    (params.minDate && day < params.minDate) ||
-    (params.maxDate && day > params.maxDate) ||
+    (params.minDate?.day && day.day < params.minDate?.day) ||
+    (params.maxDate?.day && day.day > params.maxDate?.day) ||
     (params.filterDate && params.filterDate(day)) ||
     false
   );

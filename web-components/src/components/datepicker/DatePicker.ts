@@ -54,7 +54,16 @@ export class DatePicker extends LitElement {
       this.selectedDate = date;
       this.value = dateString;
     }
-    // CustonEvent expose payload
+    this.dispatchEvent(
+      new CustomEvent("date-selection-change", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          sourceEvent: event,
+          data: date
+        }
+      })
+    );
   };
 
   setPreSelection = (date: DateTime, event: KeyboardEvent) => {

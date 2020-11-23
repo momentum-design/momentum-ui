@@ -1,4 +1,4 @@
-import "@/components/breadcrumb/Breadcrumb";
+import "./Breadcrumb";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
 import { boolean, withKnobs } from "@storybook/addon-knobs";

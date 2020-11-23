@@ -2,7 +2,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./Link";
-import {linkTag } from "./Link";
+import { linkTag } from "./Link";
 
 export default {
   title: "Link",
@@ -27,12 +27,10 @@ export const Default = () => {
 export const HTMLTag = () => {
   const tag = select("HTML Tag", linkTag, "a");
   return html`
-
     <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme}>
-      <md-link href="http://google.com" .tag=${tag} >Link</md-link>
+      <md-link href="http://google.com" .tag=${tag}>Link</md-link>
     </md-theme>
   `;
-
 };
 export const Href = () => {
   const href = text("href", "http://google.com");
@@ -49,7 +47,7 @@ export const Disabled = () => {
 
   return html`
     <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme}>
-     <md-link ?disabled=${disabled}>Link</md-link>
+      <md-link ?disabled=${disabled}>Link</md-link>
     </md-theme>
   `;
 };
@@ -58,9 +56,7 @@ export const Inline = () => {
 
   return html`
     <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme}>
-     <md-link ?inline=${inline}>Link</md-link>
+      <md-link ?inline=${inline}>Link</md-link>
     </md-theme>
   `;
 };
-
-

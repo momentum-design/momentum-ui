@@ -1,7 +1,4 @@
-@mixin modal-base(
-  $height: $modal__height--full-screen,
-  $width: $modal__width--full-screen
-) {
+@mixin modal-base($height: $modal__height--full-screen, $width: $modal__width--full-screen) {
   color: var(--md-primary-text-color, $md-gray-100);
   display: block;
   height: $height;
@@ -29,11 +26,11 @@
   width: $width;
 
   @if $top-offset {
-    top: $top-offset;
     max-height: calc(100vh - (#{$top-offset} * 2));
+    top: $top-offset;
   } @else {
-    top: auto;
     max-height: $max-height;
+    top: auto;
   }
 
   .md-modal__content {
@@ -59,8 +56,6 @@
     @if $border-width !=false {
       border-style: solid;
       border-width: $border-width;
-    } @else {
-      border: none;
     }
   }
 }
@@ -80,12 +75,7 @@
   @content;
 }
 
-@mixin modal-close-button(
-  $size: auto,
-  $top-offset: auto,
-  $right-offset: auto,
-  $font-size: inherit
-) {
+@mixin modal-close-button($size: auto, $top-offset: auto, $right-offset: auto, $font-size: inherit) {
   height: $size;
   right: $right-offset;
   top: $top-offset;

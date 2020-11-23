@@ -1,3 +1,9 @@
+:host() {
+  .group {
+    background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
+  }
+}
+
 :host(:focus) {
   box-shadow: none !important;
   outline: none !important;
@@ -39,6 +45,7 @@
 .md-combobox {
   .group {
     align-items: start;
+    background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
     border: $combobox-border;
     border-radius: $combobox-group-radius;
     display: flex;
@@ -99,11 +106,11 @@
 
 ul {
   background-color: var(--combobox-dropdown-bg-color, $lm-combobox-dropdown-bg-color-light);
+  border: $combobox-border;
   border-radius: $combobox-dropdown-radius;
   box-shadow: $combobox-dropdown-shadow;
-  font-size: $font-size-base;
-  border: $combobox-border;
   box-sizing: border-box;
+  font-size: $font-size-base;
   left: 0;
   list-style: none;
   margin: 0;

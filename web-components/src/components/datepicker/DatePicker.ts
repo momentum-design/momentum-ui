@@ -7,13 +7,14 @@ import { customElement, html, internalProperty, LitElement, property, PropertyVa
 import { DateTime } from "luxon";
 
 export namespace DatePicker {}
+export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
   @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
-  @property({ type: String }) weekStart = "Sun";
+  @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
 
   @internalProperty() locale: string = now().locale;
   @internalProperty() selectedDate: DateTime = now();
@@ -112,7 +113,7 @@ export class DatePicker extends LitElement {
         <md-datepicker-calendar
           @day-select=${(e: CustomEvent) => this.handleSelect(e)}
           @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${{ selected: this.selectedDate, focused: this.focusedDate }}
+          .datePickerProps=${{ selected: this.selectedDate, focused: this.focusedDate, weekStart: this.weekStart }}
           .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
         ></md-datepicker-calendar>
       </md-menu-overlay>

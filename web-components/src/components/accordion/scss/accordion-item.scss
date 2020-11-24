@@ -40,13 +40,16 @@
 
 }
 
+:host(md-accordion-item[expanded]) {
+  .md-accordion-panel {
+    display: block;
+  }
+}
+
 :host(md-accordion-item[focus-visible]) {
   .md-accordion-expander {
     box-shadow: 0 0 0 rem-calc(2) $accordion-border_focus;
     color: $accordion-active;
-  }
-  .md-accordion-panel {
-    display: block;
   }
 }
 

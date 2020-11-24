@@ -35,7 +35,7 @@ export const FloatingModal = () => {
   const darkTheme = boolean("darkMode", false);
   const show = boolean("show", false);
   const heading = text("headerLabel", "Test header text");
-  const width = number("Width", "400");
+  const width = number("Width", 400);
   const height = number("Height", 200);
   const fixfull = boolean("fixfull", false);
 

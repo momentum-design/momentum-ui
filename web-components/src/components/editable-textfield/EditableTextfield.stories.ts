@@ -55,7 +55,7 @@ export const Default = () => {
   const fieldAlignment = select("Alignment", alignment, "left");
   const disabledSetting = boolean("disabled", false);
   const messageStatus = boolean("Add message Status", false);
-  const inputType = boolean("Input Type", false);
+  const inputDiff = boolean("Input Type", false);
   const inputValid = boolean("Validation Pattern", false);
 
 
@@ -70,24 +70,23 @@ export const Default = () => {
       </md-editable-field>
     </md-theme>
     `;
-  } else if (inputType) {
+  } else if (inputDiff) {
     const inputTypes = numInputTypes;
     const inputType = select("Input Type", inputTypes, "text");
 
     return html`
     <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field .message=${errorMessageArr} numberType=${inputType} pattern=${regexString}>
+      <md-editable-field .message=${errorMessageArr} numberType=${inputType}>
         12345
       </md-editable-field>
     </md-theme>
     `;
   } else if (inputValid) {
-    const defaultRegex = "^([+-]?[1-9]\\d*|0)$";
-    const regexString = text("Regex String", defaultRegex);
+    const regexString = text("Regex String", "^([+-]?[1-9]\\d*|0)$");
 
     return html`
     <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field .message=${errorMessageArr} pattern=${regexString}>
+      <md-editable-field .message=${errorMessageArr} .pattern=${regexString}>
         Test Regex Match . . .
       </md-editable-field>
     </md-theme>
@@ -95,7 +94,7 @@ export const Default = () => {
   } else {
     return html`
     <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field ?disabled=${disabledSetting} alignment=${fieldAlignment} content="Text from Content Attribute">
+      <md-editable-field ?disabled=${disabledSetting} .alignment=${fieldAlignment} content="Text from Content Attribute">
         Test editable text in slot
       </md-editable-field>
     <md-theme>

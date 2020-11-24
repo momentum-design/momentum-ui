@@ -1,5 +1,59 @@
-@include exports("md-accordion-item") {
-  .test {
-    margin: 0;
+:host(md-accordion-item) {
+
+  .md-accordion {
+
+    &-item:hover {
+      .md-accordion-header {
+        background: $accordion_hover;
+        border-radius: $accordion-btn-border-radius;
+      }
+    }
+
+    &-header {
+      @include flex($jc: space-between, $ai: stretch);
+    }
+
+    &-expander {
+      @include button-reset;
+      padding: $accordion-base-indent;
+      @include flex($jc: flex-start, $ai: stretch);
+      flex: 0 1 100%;
+      border-radius: $accordion-btn-border-radius;
+
+      md-icon {
+        display: flex;
+        margin: 0 0 0 auto;
+      }
+
+      &-label {
+        @include text-dots;
+        display: flex;
+        flex: 0 1 auto;
+      }
+    }
+
+    &-panel {
+      display: none;
+      padding: $accordion-base-indent;
+    }
   }
+
+}
+
+:host(md-accordion-item[focus-visible]) {
+  .md-accordion-expander {
+    box-shadow: 0 0 0 rem-calc(2) $accordion-border_focus;
+    color: $accordion-active;
+  }
+  .md-accordion-panel {
+    display: block;
+  }
+}
+
+:host(md-accordion-item[disabled]) {
+  .md-accordion-expander {
+    color: $accordion-disabled;
+    cursor: not-allowed;
+  }
+
 }

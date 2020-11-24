@@ -116,35 +116,35 @@ export class AccordionItem extends FocusMixin(LitElement) {
 
   render() {
     return html`
-      <div role="heading" aria-level=${this.level}>
-        <div class="md-accordion-heading">
+      <div class="md-accordion-item">
+        <div role="heading" aria-level=${this.level} class="md-accordion-header">
           <button
             type="button"
             aria-expanded=${this.expanded}
-            class="md-accordion-header"
+            class="md-accordion-expander"
             aria-label=${ifDefined(this.label || undefined)}
             aria-controls="section-${this.uniqueId}"
             aria-disabled=${this.disabled}
             ?disabled=${this.disabled}
             id="accordion-${this.uniqueId}"
-            part="accordion-header"
+            part="accordion-button"
             tabindex=${ifDefined(this.disabled ? -1 : undefined)}
             @click=${this.handleClick}
             @keydown=${this.handleKeyDown}
           >
-            ${this.label}
-            <md-icon name=${this.expanded ? "icon-arrow-up_18" : "icon-arrow-down_18"}></md-icon>
+            <span class="md-accordion-expander-label">${this.label}</span>
+            <md-icon name=${this.expanded ? "icon-arrow-up_12" : "icon-arrow-down_12"}></md-icon>
           </button>
         </div>
-      </div>
-      <div
-        role="region"
-        id="section-${this.uniqueId}"
-        aria-labelledby="accordion-${this.uniqueId}"
-        class="md-accordion-panel"
-        part="accordion-panel"
-      >
-        <slot></slot>
+        <div
+          role="region"
+          id="section-${this.uniqueId}"
+          aria-labelledby="accordion-${this.uniqueId}"
+          class="md-accordion-panel"
+          part="accordion-panel"
+        >
+          <slot></slot>
+        </div>
       </div>
     `;
   }

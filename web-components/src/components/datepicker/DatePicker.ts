@@ -112,6 +112,7 @@ export class DatePicker extends LitElement {
     const renderTimePicker = () => {
       return html`
       <div class="included-timepicker-wrapper">
+        <hr class="date-time-divider">
         <md-timepicker></md-timepicker>
       </div>
       `;

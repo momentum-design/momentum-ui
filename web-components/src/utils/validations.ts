@@ -13,8 +13,9 @@ export const ValidationRegex = {
   dateString: "^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\\d|3[01])[/](19|20)\\d{2}$",
   timeString:
     "(^(([0-1]?\\d)|(2[0-3]))(:|.|)?[0-5][0-9]$)|(^((0?[1-9])|(1[0-2]))(:|.|)([0-5][0-9])( ||,)([aA]|[pP])[mM]$)|(^([aA]|[pP])[mM]( |,|)((0?[1-9])|(1[0-2]))(|:|.)([0-5][0-9])$)",
-  hourString: "^([1-9]|1[012])$",
-  minuteSecondString: "^([0-5]?[0-9]|60)$",
+  hourString: "^([1-9]|1[012]|0[1-9])$",
+  twentyFourHourString: "^([1-9]|0[1-9]|1[0-9]|2[0-4])$",
+  minuteSecondString: "^(?:[0-5][0-9]|[0-9])$",
   amPmString: "([AaPp][Mm])",
   booleanString: "^(?:tru|fals)e$"
 };

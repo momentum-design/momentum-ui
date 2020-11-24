@@ -12,3 +12,10 @@ export enum Key {
   Space = "Space",
   Tab = "Tab"
 }
+
+export enum TIME_UNIT {
+  HOUR = "hour",
+  MINUTE = "minute",
+  SECOND = "second",
+  AM_PM = "am_pm"
+}

@@ -6,4 +6,7 @@ export const timePickerTemplate = html`
   <h2 class="sandbox-header">md-timepicker</h2>
   <h3>timepicker</h3>
   <md-timepicker></md-timepicker>
+
+  <h3>timepicker 24-hour format</h3>
+  <md-timepicker twentyFourHourFormat></md-timepicker>
 `;

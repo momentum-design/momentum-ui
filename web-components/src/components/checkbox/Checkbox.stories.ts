@@ -16,7 +16,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const Checkbox = () => {
   const darkTheme = boolean("darkMode", false);
   const check = boolean("Checked state", false);
   const label = text("Label", "Developing")

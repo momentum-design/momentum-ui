@@ -18,7 +18,7 @@ export default {
 };
 
 
-export const Default = () => {
+export const Chip = () => {
   const darkTheme = boolean("darkMode", false);
   const color = select("Color", badgeColor, "blue");
   const bgColor = text("BG Color Overrides", "blue");

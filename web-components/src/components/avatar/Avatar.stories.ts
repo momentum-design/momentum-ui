@@ -1,6 +1,7 @@
 import "@/components/avatar/Avatar";
 import { AvatarType } from "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -48,7 +49,7 @@ const options = {
   Pink: "pink"
 };
 
-export const Default = () => {
+export const Avatar = () => {
   const darkTheme = boolean("darkMode", false);
   const type = select("Type", avatarType, "active");
   const title = text("Title", "Rachell Harris");

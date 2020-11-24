@@ -2,6 +2,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/activity-button/ActivityButton";
+import "@/components/theme/Theme";
 import { activityButtonSize, activityButtonType } from "@/components/activity-button/ActivityButton";
 
 export default {
@@ -33,7 +34,7 @@ export default {
   }
 };
 
-export const DefaultActivityButton = () => {
+export const ActivityButton = () => {
   const darkTheme = boolean("darkMode", false);
   const label = text("Title", "");
   const labelSize = "Size";

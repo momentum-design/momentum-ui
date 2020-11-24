@@ -4,10 +4,11 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { Input } from "@/components/input/Input";
 import "@/components/editable-textfield/EditableTextfield";
+import "@/components/theme/Theme";
 import { alignment } from "@/components/editable-textfield/EditableTextfield";
 
 export default {
-  title: "EditableTextfield",
+  title: "Editable Textfield",
   component: "md-editable-field",
   decorators: [withKnobs, withA11y],
   argTypes: {
@@ -50,7 +51,7 @@ const messages: EditableMap = {
   warning: warningMessageArr
 };
 
-export const Default = () => {
+export const EditableTextfield = () => {
   const darkTheme = boolean("darkMode", false);
   const fieldAlignment = select("Alignment", alignment, "left");
   const disabledSetting = boolean("disabled", false);

@@ -3,6 +3,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/icon/Icon";
+import "@/components/theme/Theme";
 import { iconSize, iconType } from "@/components/icon/Icon";
 import { action } from '@storybook/addon-actions';
 
@@ -28,7 +29,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const Icon = () => {
   const darkTheme = boolean("darkMode", false);
   const name = select("Name", iconNames, "arrow-up_16");
   const color = text("Color", "red");

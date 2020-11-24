@@ -34,7 +34,7 @@ const breadCrumb = [
   }
 ];
 
-export const Default = () => {
+export const Breadcrumb = () => {
   const darkTheme = boolean("darkMode", false);
   
   return html`

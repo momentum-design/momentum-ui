@@ -1,12 +1,13 @@
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
+import "@/components/theme/Theme";
 import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "ComboBox",
+  title: "Combobox",
   component: "md-combobox",
   decorators: [withKnobs, withA11y],
   parameters: {
@@ -16,7 +17,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const Combobox = () => {
   const darkTheme = boolean("darkMode", false);
   const placeholder = text("placeholder", "Add Country");
   const disabled = boolean("Disabled", false);

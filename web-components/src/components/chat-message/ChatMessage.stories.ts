@@ -5,7 +5,7 @@ import "@/components/chat-message/ChatMessage";
 import "@/components/theme/Theme";
 
 export default {
-  title: "ChatMessage",
+  title: "Chat Message",
   component: "md-chat-message",
   decorators: [withKnobs, withA11y],
   parameters: {
@@ -15,7 +15,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const ChatMessage = () => {
   const darkTheme = boolean("darkMode", false);
   const title = text("title", "John Doe");
   const message = text("message", "I have issue with my silencer");

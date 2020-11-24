@@ -22,7 +22,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const Alert = () => {
   const darkTheme = boolean("darkMode", false);
   const show = boolean("Show", true);
   const title = text("Title", "Alert");

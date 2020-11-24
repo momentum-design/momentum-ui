@@ -28,7 +28,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const Button = () => {
   const darkTheme = boolean("darkMode", false);
   const variant = select("Variant", buttonVariant, "secondary");
   const color = select("Color", buttonColor, "");

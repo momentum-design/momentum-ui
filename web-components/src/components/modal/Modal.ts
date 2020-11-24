@@ -163,7 +163,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
     this.deactivateFocusTrap!();
 
     setTimeout(() => {
-      this.closeModal();
+      this.notifyModalClose();
     }, fadeDuration);
   }
 

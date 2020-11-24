@@ -7,7 +7,7 @@ import "@/components/alert-banner/AlertBanner";
 import "@/components/theme/Theme";
 
 export default {
-  title: "AlertBanner",
+  title: "Alert Banner",
   component: "md-alert-banner",
   decorators: [withKnobs, withA11y],
   parameters: {
@@ -22,7 +22,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const AlertBanner = () => {
   const darkTheme = boolean("darkMode", false);
   const type = select("type", ["default", "warning", "error"], "default");
   const closable = boolean("closable", false);

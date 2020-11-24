@@ -1,11 +1,12 @@
 import "@/components/floating-modal/FloatingModal";
 import { withA11y } from "@storybook/addon-a11y";
+import "@/components/theme/Theme";
 import { boolean, text, withKnobs, number } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "FloatingModal",
+  title: "Floating Modal",
   component: "md-floating-modal",
   decorators: [withKnobs, withA11y],
   argTypes: {

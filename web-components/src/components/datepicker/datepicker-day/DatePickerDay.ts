@@ -94,6 +94,7 @@ export class DatePickerDay extends LitElement {
         }}
         @keydown=${(e: KeyboardEvent) => this.handleKey(e)}
         aria-label=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
+        title=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
         aria-selected=${ifDefined(this.selected)}
         tab-index=${this.focused ? "0" : "-1"}
       >

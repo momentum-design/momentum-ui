@@ -8,19 +8,19 @@ export interface DayFilters {
 export interface DatePickerProps {
   selected: DateTime;
   focused: DateTime;
+  weekStart: string;
 }
-
-// export function newDateWithOffset(utcOffset) {
-//   // intended for use of now() with offset, currently non-existant in practice
-//   return DateTime.utc();
-// }
 
 export function now(): DateTime {
   return DateTime.local();
 }
 
-export function getStartOfWeek(date: DateTime) {
-  return date.startOf("week");
+export function getStartOfWeek(date: DateTime, startDay?: string) {
+  if (startDay === "Monday") {
+    return date.startOf("week");
+  } else {
+    return date.startOf("week").minus({ days: 1 });
+  }
 }
 
 export function getStartOfMonth(date: DateTime) {
@@ -82,8 +82,8 @@ export function isSameMonth(date1: DateTime, date2: DateTime): boolean {
 
 export function isDayDisabled(day: DateTime, params: DayFilters): boolean {
   return (
-    (params.minDate && day < params.minDate) ||
-    (params.maxDate && day > params.maxDate) ||
+    (params.minDate?.day && day.day < params.minDate?.day) ||
+    (params.maxDate?.day && day.day > params.maxDate?.day) ||
     (params.filterDate && params.filterDate(day)) ||
     false
   );

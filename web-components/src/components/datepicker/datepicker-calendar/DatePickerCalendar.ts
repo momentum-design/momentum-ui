@@ -104,7 +104,7 @@ export class DatePickerCalendar extends LitElement {
   };
 
   header = () => {
-    const startOfWeek = getStartOfWeek(this.viewAnchorDate);
+    const startOfWeek = getStartOfWeek(this.viewAnchorDate, this.datePickerProps?.weekStart);
     const dayNames: TemplateResult[] = [];
     return dayNames.concat(
       [0, 1, 2, 3, 4, 5, 6].map(offset => {

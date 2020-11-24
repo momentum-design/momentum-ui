@@ -12,6 +12,8 @@ export const datePickerTemplate = html`
   <md-datepicker></md-datepicker>
   <h3>datepicker with min / max filters</h3>
   <md-datepicker minDate="2020-11-15" maxDate="2020-11-27"></md-datepicker>
+  <h3>datepicker with Monday start week start</h3>
+  <md-datepicker weekStart="Monday"></md-datepicker>
   <h3>date time picker</h3>
   <md-datepicker includeTime></md-datepicker>
 `;

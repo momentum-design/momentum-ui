@@ -23,7 +23,7 @@ export class DatePickerMonth extends LitElement {
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
 
   renderWeeks = () => {
-    let startOfWeekDay = getStartOfWeek(getStartOfMonth(this.day));
+    let startOfWeekDay = getStartOfWeek(getStartOfMonth(this.day), this.datePickerProps?.weekStart);
 
     const weeks = [];
     const viewAnchorMonth = getMonth(this.day);

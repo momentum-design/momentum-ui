@@ -7,5 +7,75 @@
 
   .md-pagination {
     display: flex;
+    position: relative;
+    padding: 0;
+
+    &.has-dots{
+      padding-bottom: $pagination-dots-indent;
+    }
+
+    &-list {
+      @include list-style();
+      @include flex;
+      width: 100%;
+      flex: 0 0 auto;
+
+      li {
+        display: flex;
+        color: $md-gray-100;
+      }
+    }
+    &-nav {
+      background: none;
+      border: 0;
+      color: $md-gray-90;
+      cursor: pointer;
+      padding: 0;
+      @include flex;
+      flex: 1 0 $pagination-arrow-size;
+
+      &[aria-label="previous"] {
+        text-align: left;
+
+      }
+      &[aria-label="next"] {
+        text-align: left;
+      }
+      
+      &:hover,
+      &.active {
+        color: $md-black-100;
+      }
+
+      &:disabled {
+        color: $md-gray-30;
+        cursor: default;
+
+      }
+    }
+
+    &-dots {
+      @include list-style();
+      @include flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      li {
+        display: flex;
+        width: $pagination-dots-size;
+        height: $pagination-dots-size;
+        border-radius: 50%;
+        margin: $pagination-dots-margin;
+        background: $md-gray-30;
+        overflow: hidden;
+        text-indent: -9999px;
+        &.active {
+          background: $md-gray-30;
+        }
+      }
+    }
   }
+
 }

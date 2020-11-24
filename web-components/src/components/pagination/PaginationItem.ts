@@ -5,8 +5,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 
 @customElement("md-nav")
 export class PaginationItem extends LitElement {
-  @property({ type: String, attribute: "aria-label" }) label = "";
-  @property({ type: Number }) page = 1;
+  @property({ type: Number }) pageNum = 1;
 
   static get styles() {
     return [reset, styles];
@@ -14,11 +13,8 @@ export class PaginationItem extends LitElement {
 
   render() {
     return html`
-      <div
-        class="md-pagination-item"
-        aria-label=${ifDefined(this.label.length ? this.label : undefined)}
-        >
-          ${this.page}
+      <div class="md-pagination-item">
+        ${this.pageNum}
       </div>
     `;
   }

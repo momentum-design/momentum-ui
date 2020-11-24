@@ -45,8 +45,7 @@ export class AccordionItem extends FocusMixin(LitElement) {
   }
   set level(value: number) {
     const oldValue = this.level;
-
-    if (value < 1 && value > 6) {
+    if (value < 1 || value > 6) {
       console.warn("Please set appropriate section heading level");
       this._level = 3;
     } else {

@@ -34,6 +34,7 @@ export class AccordionItem extends FocusMixin(LitElement) {
     this._expanded = value;
 
     if (value) {
+      this.notifyAccordionFocus();
       this.notifyExpandedHeader();
     }
     this.requestUpdate("expanded", oldValue);
@@ -57,6 +58,18 @@ export class AccordionItem extends FocusMixin(LitElement) {
   @query(".accordion-header") header!: HTMLButtonElement;
 
   private notifyExpandedHeader() {
+    this.dispatchEvent(
+      new CustomEvent("accordion-item-expanded", {
+        composed: true,
+        bubbles: true,
+        detail: {
+          id: this.uniqueId
+        }
+      })
+    );
+  }
+
+  private notifyAccordionFocus() {
     this.dispatchEvent(
       new CustomEvent("focus-visible", {
         composed: true,
@@ -105,29 +118,32 @@ export class AccordionItem extends FocusMixin(LitElement) {
   render() {
     return html`
       <div role="heading" aria-level=${this.level}>
-        <button
-          type="button"
-          aria-expanded=${this.expanded}
-          class="accordion-header"
-          aria-label=${ifDefined(this.label || undefined)}
-          aria-controls="section-${this.uniqueId}"
-          aria-disabled=${this.disabled}
-          ?disabled=${this.disabled}
-          id="accordion-${this.uniqueId}"
-          part="accordion-header"
-          tabindex=${ifDefined(this.disabled ? -1 : undefined)}
-          @click=${this.handleClick}
-          @keydown=${this.handleKeyDown}
-        >
-          ${this.label}
-          <md-icon name=${this.expanded ? "icon-arrow-up_18" : "icon-arrow-down_18"}></md-icon>
-        </button>
+        <div class="md-accordion-heading">
+          <slot name="accordion-header"></slot>
+          <button
+            type="button"
+            aria-expanded=${this.expanded}
+            class="md-accordion-header"
+            aria-label=${ifDefined(this.label || undefined)}
+            aria-controls="section-${this.uniqueId}"
+            aria-disabled=${this.disabled}
+            ?disabled=${this.disabled}
+            id="accordion-${this.uniqueId}"
+            part="accordion-header"
+            tabindex=${ifDefined(this.disabled ? -1 : undefined)}
+            @click=${this.handleClick}
+            @keydown=${this.handleKeyDown}
+          >
+            ${this.label}
+            <md-icon name=${this.expanded ? "icon-arrow-up_18" : "icon-arrow-down_18"}></md-icon>
+          </button>
+        </div>
       </div>
       <div
         role="region"
         id="section-${this.uniqueId}"
         aria-labelledby="accordion-${this.uniqueId}"
-        class="accordion-panel"
+        class="md-accordion-panel"
         part="accordion-panel"
       >
         <slot></slot>

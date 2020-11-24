@@ -7,6 +7,7 @@ import "@/components/input/Input";
 import { ValidationRegex } from "@/utils/validations.ts";
 import { Input } from "@/components/input/Input";
 import { TIME_UNIT } from "@/constants";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export const timeUnits = [
   TIME_UNIT.HOUR,
@@ -14,6 +15,31 @@ export const timeUnits = [
   TIME_UNIT.SECOND,
   TIME_UNIT.AM_PM,
 ] as const;
+
+const timeUnitProps = (isTwentyFourHour: boolean) => {
+  return {
+    [TIME_UNIT.HOUR]: {
+      type: "number" as Input.Type,
+      min: 1,
+      max: isTwentyFourHour ? 24 : 12
+    },
+    [TIME_UNIT.MINUTE]: {
+      type: "number" as Input.Type,
+      min: 1,
+      max: 59
+    },
+    [TIME_UNIT.SECOND]: {
+      type: "number" as Input.Type,
+      min: 1,
+      max: 59
+    },
+    [TIME_UNIT.AM_PM]: {
+      type: "text" as Input.Type,
+      min: undefined,
+      max: undefined
+    }
+  }
+}
 
 export namespace TimePicker {
   export type TimeUnit = typeof timeUnits[number];
@@ -156,58 +182,35 @@ export class TimePicker extends LitElement {
     return isValid ? "" : "error";
   }
 
+  generateTimeBox = (unit: TimePicker.TimeUnit) => {
+    const unitProperties = timeUnitProps(this.twentyFourHourFormat)[unit];
+
+    return html`
+      <md-input
+        class="${`time-input-box ${unit}`}"
+        value="${this.timeValue[unit]}"
+        type="${unitProperties.type}"
+        min=${ifDefined(unitProperties.min)}
+        max=${ifDefined(unitProperties.max)}
+        @input-change="${(e: CustomEvent) => this.handleTimeChange(e, unit)}"
+        @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"
+        @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, unit)}"
+        .messageArr=${[{ message: "", type: this.messageType(this.timeValidity[unit]) } as Input.Message]}
+        aria-invalid="${!this.timeValidity[unit]}"
+      ></md-input>
+    `;
+  }
+
   render() {
     return html`
     <div class="md-timepicker">
-        <!-- <h2>Time: ${this.getTimeString()}</h2> -->
-        <md-input
-          class="time-input-box hour"
-          value="${this.timeValue.hour}"
-          type="number"
-          min="1"
-          max="${this.twentyFourHourFormat ? 24 : 12}"
-          @input-change="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.HOUR)}"
-          @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, TIME_UNIT.HOUR)}"
-          @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, TIME_UNIT.HOUR)}"
-          .messageArr=${[{ message: "", type: this.messageType(this.timeValidity.hour) } as Input.Message]}
-          aria-invalid="${!this.timeValidity.hour}"
-        ></md-input>
+        <h2>Time: ${this.getTimeString()}</h2>
+        ${this.generateTimeBox(TIME_UNIT.HOUR)}
         <span class="colon-separator">:</span>
-        <md-input
-          class="time-input-box minute"
-          value="${this.timeValue.minute}"
-          type="number"
-          min="1"
-          max="59"
-          @input-change="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.MINUTE)}"
-          @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, TIME_UNIT.MINUTE)}"
-          @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, TIME_UNIT.MINUTE)}"
-          .messageArr=${[{ message: "", type: this.messageType(this.timeValidity.minute) } as Input.Message]}
-          aria-invalid="${!this.timeValidity.minute}"
-        ></md-input>
+        ${this.generateTimeBox(TIME_UNIT.MINUTE)}
         <span class="colon-separator">:</span>
-        <md-input
-          class="time-input-box second"
-          value="${this.timeValue.second}"
-          type="number"
-          min="1"
-          max="59"
-          @input-change="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.SECOND)}"
-          @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, TIME_UNIT.SECOND)}"
-          @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, TIME_UNIT.SECOND)}"
-          .messageArr=${[{ message: "", type: this.messageType(this.timeValidity.second) } as Input.Message]}
-          aria-invalid="${!this.timeValidity.second}"
-        ></md-input>
-        <md-input
-          class="time-input-box am-pm"
-          value="${this.timeValue.am_pm}"
-          type="text"
-          @input-change="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"
-          @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, TIME_UNIT.AM_PM)}"
-          @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, TIME_UNIT.AM_PM)}"
-          .messageArr=${[{ message: "", type: this.messageType(this.timeValidity.am_pm) } as Input.Message]}
-          aria-invalid="${!this.timeValidity.am_pm}"
-        ></md-input>
+        ${this.generateTimeBox(TIME_UNIT.SECOND)}
+        ${this.generateTimeBox(TIME_UNIT.AM_PM)}
       </div>
     `;
   }

@@ -119,7 +119,6 @@ export class AccordionItem extends FocusMixin(LitElement) {
     return html`
       <div role="heading" aria-level=${this.level}>
         <div class="md-accordion-heading">
-          <slot name="accordion-header"></slot>
           <button
             type="button"
             aria-expanded=${this.expanded}

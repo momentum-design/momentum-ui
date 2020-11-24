@@ -74,6 +74,28 @@ export class Accordion extends SlottedMixin(LitElement) {
     }
   }
 
+  private handleAccordionItemFocus = () => {
+    this.toggleAttribute("focusable", true);
+  };
+
+  private handleAccordionItemBlur = () => {
+    this.toggleAttribute("focusable", false);
+  };
+
+  private setupFocusAccordionItems() {
+    this.slotted.forEach(header => {
+      header.addEventListener("focus", this.handleAccordionItemFocus);
+      header.addEventListener("blur", this.handleAccordionItemBlur);
+    });
+  }
+
+  private removeFocusAccordionItems() {
+    this.slotted.forEach(header => {
+      header.removeEventListener("focus", this.handleAccordionItemFocus);
+      header.removeEventListener("blur", this.handleAccordionItemBlur);
+    });
+  }
+
   handleKeyDown(event: CustomEvent<AccordionEvent>) {
     const { srcEvent } = event.detail;
     const { code } = srcEvent as KeyboardEvent;
@@ -124,6 +146,7 @@ export class Accordion extends SlottedMixin(LitElement) {
     super.updated(changedProperties);
     if (changedProperties.has("slotted")) {
       this.setupExpandedAccordionItems();
+      this.setupFocusAccordionItems();
     }
   }
 
@@ -137,6 +160,7 @@ export class Accordion extends SlottedMixin(LitElement) {
     super.disconnectedCallback();
     this.removeEventListener("accordion-item-keydown", this.handleKeyDown as EventListener);
     this.removeEventListener("accordion-item-click", this.handleClick as EventListener);
+    this.removeFocusAccordionItems();
   }
 
   static get styles() {

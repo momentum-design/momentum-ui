@@ -8,6 +8,7 @@ import { ValidationRegex } from "@/utils/validations.ts";
 import { Input } from "@/components/input/Input";
 import { TIME_UNIT } from "@/constants";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { nothing } from "lit-html";
 
 export const timeUnits = [
   TIME_UNIT.HOUR,
@@ -63,6 +64,8 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: true
   }
 
+  @internalProperty () private time = "";
+
   checkValidity = (input: string, unit: TimePicker.TimeUnit): boolean => {
     let result = true;
     const regexTester = (regex: RegExp): void => {
@@ -100,6 +103,23 @@ export class TimePicker extends LitElement {
     this.timeValue[unit] = event?.detail?.value;
     this.requestUpdate();
 
+    if (unit !== TIME_UNIT.AM_PM && this.timeValue[unit].length === 2) {
+      event.preventDefault();
+      const currentNode = event?.target as Node;
+      const allInputs = this.shadowRoot?.querySelectorAll('md-input');
+
+      if (allInputs) {
+        const currentIndex = Array.prototype.findIndex.call(allInputs, el => currentNode?.isEqualNode(el));
+        const targetIndex = (currentIndex + 1) % allInputs.length;
+        allInputs[targetIndex].shadowRoot?.querySelector('input')?.focus();
+      }
+    } else if (this.timeValue[unit].length === 2) {
+      this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
+      this.formatTimeUnit(this.timeValue[unit], unit);
+      this.requestUpdate();
+      // submit time after validation
+    }
+
     event.stopPropagation();
     this.dispatchEvent(
       new CustomEvent(`${unit}-change`, {
@@ -115,7 +135,7 @@ export class TimePicker extends LitElement {
   }
 
   handleTimeKeyDown(event: CustomEvent, unit: TimePicker.TimeUnit) {
-    console.log('[log][timePicker]: handleTimeKeyDown', unit, event.detail.srcEvent.key);
+    console.log('[log][timePicker]: handleTimeKeyDown', unit, event?.detail?.srcEvent?.key);
     this.timeValidity[unit] = true;
     this.requestUpdate();
 
@@ -168,13 +188,12 @@ export class TimePicker extends LitElement {
 
   getTimeString = () => {
     // DateTime.fromSQL('2017-05-15 09:12:34.342')
-    let timeString = "";
-      const hr = this.timeValue.hour || "00";
-      const min = this.timeValue.minute || "00";
-      const sec = this.timeValue.second || "00";
-      const amPm = this.timeValue.am_pm || "AM";
-  
-      timeString = hr + ":" + min + ":" + sec + " " + amPm;
+    const hr = this.timeValue.hour || "00";
+    const min = this.timeValue.minute || "00";
+    const sec = this.timeValue.second || "00";
+    const amPm = this.timeValue.am_pm || "AM";
+
+    const timeString = hr + ":" + min + ":" + sec + " " + amPm;
     return timeString;
   }
 
@@ -184,6 +203,7 @@ export class TimePicker extends LitElement {
 
   generateTimeBox = (unit: TimePicker.TimeUnit) => {
     const unitProperties = timeUnitProps(this.twentyFourHourFormat)[unit];
+    console.log('[log] timeValidity', unit, 'ariaInvalid', !this.timeValidity[unit]);
 
     return html`
       <md-input
@@ -196,21 +216,25 @@ export class TimePicker extends LitElement {
         @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"
         @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, unit)}"
         .messageArr=${[{ message: "", type: this.messageType(this.timeValidity[unit]) } as Input.Message]}
-        aria-invalid="${!this.timeValidity[unit]}"
+        ariaLabel="${unit}-input"
+        ariaInvalid="${!this.timeValidity[unit]}"
       ></md-input>
     `;
   }
 
+
   render() {
     return html`
     <div class="md-timepicker">
-        <h2>Time: ${this.getTimeString()}</h2>
-        ${this.generateTimeBox(TIME_UNIT.HOUR)}
-        <span class="colon-separator">:</span>
-        ${this.generateTimeBox(TIME_UNIT.MINUTE)}
-        <span class="colon-separator">:</span>
-        ${this.generateTimeBox(TIME_UNIT.SECOND)}
-        ${this.generateTimeBox(TIME_UNIT.AM_PM)}
+        <!-- <h2>Time: ${this.getTimeString()}</h2> -->
+        <div class="time-inputs-wrapper">
+          ${this.generateTimeBox(TIME_UNIT.HOUR)}
+          <span class="colon-separator">:</span>
+          ${this.generateTimeBox(TIME_UNIT.MINUTE)}
+          <span class="colon-separator">:</span>
+          ${this.generateTimeBox(TIME_UNIT.SECOND)}
+          ${this.twentyFourHourFormat ? nothing : this.generateTimeBox(TIME_UNIT.AM_PM)}
+        </div>
       </div>
     `;
   }

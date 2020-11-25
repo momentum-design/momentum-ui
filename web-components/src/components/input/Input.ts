@@ -6,7 +6,7 @@
  *
  */
 
-import { Key } from "@/constants";
+import { Key, ARIA_INVALID } from "@/constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
@@ -102,6 +102,7 @@ export const inputShape = ["none", "pill"];
 export const iconNames = iconNamesList;
 export const iconPosition = ["before", "after"];
 export const nestedLevel = [0, 1, 2, 3];
+export const ariaInvalid = ["grammar", "false", "spelling", "true"];
 export namespace Input {
   export type Type = "text" | "number" | "password" | "email" | "tel" | "checkbox";
   export type MessageType = "error" | "success" | "warning";
@@ -113,6 +114,7 @@ export namespace Input {
   export type InputSize = typeof inputSize[number];
   export type InputType = typeof inputSize;
   export type shape = typeof inputShape;
+  export type ariaInvalid = typeof ariaInvalid[number];
 }
 
 export class Message {
@@ -139,6 +141,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
   @property({ type: String }) placeholder = "";
   @property({ type: String }) ariaLabel = "";
+  @property({ type: String }) ariaInvalid: Input.ariaInvalid = "false";
   @property({ type: String }) clearAriaLabel = "";
   @property({ type: String }) id = "";
   @property({ type: String }) helpText = "";
@@ -346,6 +349,7 @@ export class Input extends FocusMixin(LitElement) {
             ?required=${this.required}
             ?autofocus=${this.autofocus}
             aria-label=${this.ariaLabel}
+            aria-invalid=${this.ariaInvalid}
             ?disabled=${this.disabled}
             id=${this.htmlId}
             placeholder=${this.placeholder}
@@ -368,6 +372,7 @@ export class Input extends FocusMixin(LitElement) {
             .value=${this.value}
             aria-describedby=${this.ariaDescribedBy}
             aria-label=${this.ariaLabel}
+            aria-invalid=${this.ariaInvalid}
             ?disabled=${this.disabled}
             id=${this.htmlId}
             placeholder=${this.placeholder}

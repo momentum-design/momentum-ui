@@ -19,10 +19,20 @@
     text-align: center;
   }
 
+  md-input::part(message) {
+    display: none;
+  }
+
   .colon-separator {
     color: var(--md-secondary-text-color, $md-gray-70);
     font-size: 20px;
     line-height: 125%;
     margin: 0 $colon-side-margin;
   }
+}
+
+:host([twentyFourHourFormat]) .md-timepicker {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 }

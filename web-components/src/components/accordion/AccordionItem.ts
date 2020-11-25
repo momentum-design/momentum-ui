@@ -54,7 +54,7 @@ export class AccordionItem extends FocusMixin(LitElement) {
     this.requestUpdate("level", oldValue);
   }
 
-  @query(".accordion-header") header!: HTMLButtonElement;
+  @query(".md-accordion-expander") header!: HTMLButtonElement;
 
   private notifyExpandedHeader() {
     this.dispatchEvent(
@@ -123,10 +123,10 @@ export class AccordionItem extends FocusMixin(LitElement) {
             aria-expanded=${this.expanded}
             class="md-accordion-expander"
             aria-label=${ifDefined(this.label || undefined)}
-            aria-controls="section-${this.uniqueId}"
+            aria-controls="panel-${this.uniqueId}"
             aria-disabled=${this.disabled}
             ?disabled=${this.disabled}
-            id="accordion-${this.uniqueId}"
+            id="header-${this.uniqueId}"
             part="accordion-button"
             tabindex=${ifDefined(this.disabled ? -1 : undefined)}
             @click=${this.handleClick}
@@ -138,8 +138,8 @@ export class AccordionItem extends FocusMixin(LitElement) {
         </div>
         <div
           role="region"
-          id="section-${this.uniqueId}"
-          aria-labelledby="accordion-${this.uniqueId}"
+          id="panel-${this.uniqueId}"
+          aria-labelledby="header-${this.uniqueId}"
           class="md-accordion-panel"
           part="accordion-panel"
         >

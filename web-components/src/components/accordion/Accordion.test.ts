@@ -1,26 +1,28 @@
-import { aTimeout, elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, nextFrame } from "@open-wc/testing-helpers";
 import { Accordion } from "./Accordion";
 import "./Accordion";
 import "./AccordionItem";
 import { AccordionItem } from "./AccordionItem";
+import "@/components/input/Input";
 
-describe("AccordionItem", () => {
+describe("Accordion", () => {
   let accordion: Accordion;
   let accordionItems: AccordionItem[];
 
   beforeEach(async () => {
     accordion = await fixture(html`
       <md-accordion>
-        <md-accordion-item slot="accordion-item" label="Header №1">
+        <md-accordion-item slot="accordion-item" label="Header №1" expanded>
           <div>Panel №1</div>
+          <md-input type="text"></md-input>
         </md-accordion-item>
-        <md-accordion-item slot="accordion-item" label="Header №2">
+        <md-accordion-item slot="accordion-item" label="Header №2" disabled>
           <div>Panel №2</div>
         </md-accordion-item>
         <md-accordion-item slot="accordion-item" label="Header №3">
           <div>Panel №3</div>
         </md-accordion-item>
-        <md-accordion-item slot="accordion-item" label="Header №4" disabled>
+        <md-accordion-item slot="accordion-item" label="Header №4" expanded>
           <div>Panel №4</div>
         </md-accordion-item>
         <md-accordion-item slot="accordion-item" label="Header №5">
@@ -32,100 +34,113 @@ describe("AccordionItem", () => {
   });
   afterEach(fixtureCleanup);
 
-  test("should correct render label", async () => {
-    expect(accordionItems[0].label).toEqual("Header №1");
-    expect(accordionItems[0].shadowRoot!.querySelector(".md-accordion-header")!.getAttribute("aria-label")).toEqual(
-      "Header №1"
-    );
-    expect(accordionItems[4].label).toEqual("Header №5");
-    expect(accordionItems[4].shadowRoot!.querySelector(".md-accordion-header")!.getAttribute("aria-label")).toEqual(
-      "Header №5"
-    );
+  test("should correct navigate between items using keyboard", async () => {
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
 
-    accordionItems[0].label = "";
-    await elementUpdated(accordionItems[0]);
-    expect(accordionItems[0].shadowRoot!.querySelector(".md-accordion-header")!.hasAttribute("aria-label")).toBeFalsy();
-  });
+    const arrowDown = createEvent("ArrowDown");
+    const arrowUp = createEvent("ArrowUp");
+    const home = createEvent("Home");
+    const end = createEvent("End");
+    const enter = createEvent("Enter");
+    const space = createEvent("Space");
+    const keyA = createEvent("KeyA");
 
-  test("should correct set expanded", async () => {
-    accordionItems[2].expanded = true;
-    await elementUpdated(accordionItems[2]);
-    expect(accordionItems[2].expanded).toBeTruthy();
-    expect(accordionItems[2].shadowRoot!.querySelector(".md-accordion-header")!.getAttribute("aria-expanded")).toEqual(
-      "true"
-    );
-  });
-
-  test("should correct set disabled", async () => {
-    const button = accordionItems[2].shadowRoot!.querySelector(".md-accordion-header") as HTMLButtonElement;
-    expect(button.hasAttribute("tabindex")).toBeFalsy();
-    accordionItems[2].disabled = true;
-    await elementUpdated(accordionItems[2]);
-    expect(accordionItems[2].disabled).toBeTruthy();
-    expect(button.getAttribute("aria-disabled")).toEqual("true");
-    expect(button.disabled).toEqual(true);
-    expect(button.getAttribute("tabindex")).toEqual("-1");
-  });
-
-  test("should dispatch events when item become expanded", async () => {
-    accordionItems[2].expanded = true;
-    setTimeout(() => accordionItems[2]["notifyExpandedHeader"]());
-    const { detail } = await oneEvent(accordionItems[2], "accordion-item-expanded");
-    expect(detail).toBeDefined();
-    expect(detail.id).toEqual(accordionItems[2]["uniqueId"]);
-
-    setTimeout(() => accordionItems[2]["notifyAccordionFocus"]());
-    const event = await oneEvent(accordionItems[2], "focus-visible");
-    expect(event).toBeDefined();
-  });
-
-  test("should correct set level", async () => {
-    const warnSpy = jest.spyOn(console, "warn");
-    const warnMessage = "Please set appropriate section heading level";
-
-    accordionItems[0].level = 0;
     await elementUpdated(accordionItems[0]);
 
-    expect(warnSpy).toHaveBeenCalledWith(warnMessage);
-    expect(accordionItems[0].level).toEqual(3);
-    expect(accordionItems[0].shadowRoot!.querySelector("div[role='heading']")!.getAttribute("aria-level")).toEqual("3");
+    accordionItems[0].header.dispatchEvent(arrowDown);
+    await nextFrame();
 
-    accordionItems[0].level = 7;
-    await elementUpdated(accordionItems[0]);
+    expect(document.activeElement).toEqual(accordionItems[0]);
 
-    expect(warnSpy).toHaveBeenCalledWith(warnMessage);
-    expect(accordionItems[0].level).toEqual(3);
-    expect(accordionItems[0].shadowRoot!.querySelector("div[role='heading']")!.getAttribute("aria-level")).toEqual("3");
+    accordionItems[0].header.dispatchEvent(arrowDown);
+    await nextFrame();
 
-    accordionItems[0].level = 4;
-    await elementUpdated(accordionItems[0]);
+    expect(document.activeElement).toEqual(accordionItems[2]);
 
-    expect(warnSpy).toHaveBeenCalledTimes(2);
-    expect(accordionItems[0].level).toEqual(4);
-    expect(accordionItems[0].shadowRoot!.querySelector("div[role='heading']")!.getAttribute("aria-level")).toEqual("4");
+    accordionItems[0].header.dispatchEvent(arrowDown);
+    await nextFrame();
 
-    warnSpy.mockRestore();
+    accordionItems[0].header.dispatchEvent(arrowDown);
+    await nextFrame();
+
+    accordionItems[0].header.dispatchEvent(arrowDown);
+    await nextFrame();
+
+    expect(document.activeElement).toEqual(accordionItems[0]);
+
+    accordionItems[0].header.dispatchEvent(arrowUp);
+    await nextFrame();
+
+    accordionItems[0].header.dispatchEvent(arrowUp);
+    await nextFrame();
+
+    accordionItems[0].header.dispatchEvent(arrowUp);
+    await nextFrame();
+
+    expect(document.activeElement).toEqual(accordionItems[2]);
+
+    accordionItems[4].header.dispatchEvent(home);
+    await nextFrame();
+
+    expect(document.activeElement).toEqual(accordionItems[0]);
+
+    accordionItems[0].header.dispatchEvent(end);
+    await nextFrame();
+
+    expect(document.activeElement).toEqual(accordionItems[4]);
+
+    accordionItems[4].header.dispatchEvent(enter);
+    await nextFrame();
+
+    expect(accordionItems[4].expanded).toBeTruthy();
+    expect(document.activeElement).toEqual(accordionItems[4]);
+
+    accordionItems[4].header.dispatchEvent(arrowUp);
+    await nextFrame();
+
+    accordionItems[3].header.dispatchEvent(space);
+    await nextFrame();
+
+    expect(accordionItems[4].expanded).toBeFalsy();
+    expect(accordionItems[3].expanded).toBeTruthy();
+    expect(document.activeElement).toEqual(accordionItems[3]);
+
+    accordionItems[3].header.dispatchEvent(keyA);
+    expect(document.activeElement).toEqual(accordionItems[3]);
   });
 
-  test("should handle click event", async () => {
-    const clickEvent = new MouseEvent("click");
-    setTimeout(() => accordionItems[1].handleClick(clickEvent));
+  test("should correct select accordion item by click", async () => {
+    accordionItems[1].header.click();
+    await nextFrame();
 
-    const { detail } = await oneEvent(accordionItems[1], "accordion-item-click");
+    expect(accordionItems[1].expanded).toBeFalsy();
 
-    expect(detail).toBeDefined();
-    expect(detail.srcEvent).toEqual(clickEvent);
-  });
+    accordionItems[3].header.click();
+    await nextFrame();
 
-  test("should handle keydown event", async () => {
-    const keydownEvent = new KeyboardEvent("keydown", {
-      code: "Enter"
-    });
-    setTimeout(() => accordionItems[1].handleKeyDown(keydownEvent));
+    expect(accordionItems[3].expanded).toBeTruthy();
 
-    const { detail } = await oneEvent(accordionItems[1], "accordion-item-keydown");
+    accordionItems[4].header.click();
+    await nextFrame();
 
-    expect(detail).toBeDefined();
-    expect(detail.srcEvent).toEqual(keydownEvent);
+    expect(accordionItems[3].expanded).toBeFalsy();
+    expect(accordionItems[4].expanded).toBeTruthy();
+
+    accordion.multiple = true;
+    await elementUpdated(accordion);
+
+    accordionItems[0].header.click();
+    await nextFrame();
+
+    expect(accordionItems[0].expanded).toBeTruthy();
+    expect(accordionItems[4].expanded).toBeTruthy();
+
+    accordionItems[0].header.click();
+    await nextFrame();
+
+    expect(accordionItems[0].expanded).toBeFalsy();
   });
 });

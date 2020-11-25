@@ -9,4 +9,7 @@ export const timePickerTemplate = html`
 
   <h3>timepicker 24-hour format</h3>
   <md-timepicker twentyFourHourFormat></md-timepicker>
+
+  <h3>timepicker editableHourOnly</h3>
+  <md-timepicker editableHourOnly></md-timepicker>
 `;

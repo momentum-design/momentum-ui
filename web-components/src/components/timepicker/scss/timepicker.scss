@@ -2,7 +2,9 @@
 
 .md-timepicker {
   border-top: 1px solid var(--md-primary-seperator-color);
-  padding: 1rem 0 1rem 1rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 
   .time-input-box {
     display: inline-block;
@@ -19,7 +21,23 @@
 
   .amPm-combo-box::part(group) {
     padding: 0;
+    padding-left: 4px;
   }
+
+  .amPm-combo-box::part(label) {
+    padding: 0 7px;
+    width: 100%;
+  }
+
+  .amPm-combo-box::part(combobox-option) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .amPm-combo-box::part(combobox-options) {
+    max-height: 80px;
+  }
+
 
   md-input::part(input) {
     padding: 0;
@@ -36,10 +54,4 @@
     line-height: 125%;
     margin: 0 $colon-side-margin;
   }
-}
-
-:host([twentyFourHourFormat]) .md-timepicker {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
 }

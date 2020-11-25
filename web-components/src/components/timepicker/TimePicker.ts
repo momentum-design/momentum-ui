@@ -17,6 +17,13 @@ export const timeUnits = [
   TIME_UNIT.AM_PM,
 ] as const;
 
+const timePlaceholders = {
+  [TIME_UNIT.HOUR]: "HH",
+  [TIME_UNIT.MINUTE]: "MM",
+  [TIME_UNIT.SECOND]: "SS",
+  [TIME_UNIT.AM_PM]: "AM"
+}
+
 const timeUnitProps = (isTwentyFourHour: boolean) => {
   return {
     [TIME_UNIT.HOUR]: {
@@ -49,12 +56,13 @@ export namespace TimePicker {
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
   @property({ type: Boolean }) twentyFourHourFormat = false;
+  @property({ type: Boolean }) editableHourOnly = false;
 
   @internalProperty() private timeValue = {
-    [TIME_UNIT.HOUR]: "",
-    [TIME_UNIT.MINUTE]: "",
-    [TIME_UNIT.SECOND]: "",
-    [TIME_UNIT.AM_PM]: ""
+    [TIME_UNIT.HOUR]: "12",
+    [TIME_UNIT.MINUTE]: "00",
+    [TIME_UNIT.SECOND]: "00",
+    [TIME_UNIT.AM_PM]: "AM"
   }
 
   @internalProperty() private timeValidity = {
@@ -106,7 +114,7 @@ export class TimePicker extends LitElement {
     if (unit !== TIME_UNIT.AM_PM && this.timeValue[unit].length === 2) {
       event.preventDefault();
       const currentNode = event?.target as Node;
-      const allInputs = this.shadowRoot?.querySelectorAll('md-input');
+      const allInputs = this.shadowRoot?.querySelectorAll('md-input, md-combobox');
 
       if (allInputs) {
         const currentIndex = Array.prototype.findIndex.call(allInputs, el => currentNode?.isEqualNode(el));
@@ -205,12 +213,14 @@ export class TimePicker extends LitElement {
     const unitProperties = timeUnitProps(this.twentyFourHourFormat)[unit];
 
     return html`
+      ${unit === TIME_UNIT.MINUTE ? html`<span class="colon-separator">:</span>` : nothing}
       <md-input
         class="${`time-input-box ${unit}`}"
         value="${this.timeValue[unit]}"
         type="${unitProperties.type}"
         min=${ifDefined(unitProperties.min)}
         max=${ifDefined(unitProperties.max)}
+        placeholder="${timePlaceholders[unit]}"
         @input-change="${(e: CustomEvent) => this.handleTimeChange(e, unit)}"
         @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"
         @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, unit)}"
@@ -224,7 +234,7 @@ export class TimePicker extends LitElement {
   generateAmPmComboBox = () => {
     const options = ['AM', "PM"];
     return html `
-      <md-combobox class="amPm-combo-box" .options=${options} .value=${[options[0]]}></md-combobox>
+      <md-combobox class="amPm-combo-box" .options=${options} .value=${[options[0]]} withoutIcons></md-combobox>
     `;
   }
 
@@ -235,10 +245,7 @@ export class TimePicker extends LitElement {
         <!-- <h2>Time: ${this.getTimeString()}</h2> -->
         <div class="time-inputs-wrapper">
           ${this.generateTimeBox(TIME_UNIT.HOUR)}
-          <span class="colon-separator">:</span>
-          ${this.generateTimeBox(TIME_UNIT.MINUTE)}
-          <span class="colon-separator">:</span>
-          ${this.generateTimeBox(TIME_UNIT.SECOND)}
+          ${this.editableHourOnly ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}
           ${this.twentyFourHourFormat ? nothing : this.generateAmPmComboBox()}
         </div>
       </div>

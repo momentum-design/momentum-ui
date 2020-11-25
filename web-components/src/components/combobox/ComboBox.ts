@@ -37,6 +37,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean, reflect: true }) ordered = false;
   @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true }) withoutIcons = false;
   @property({ type: Array }) selectedOptions: (string | OptionMember)[] = [];
   @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
   @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";
@@ -811,7 +812,7 @@ export class ComboBox extends FocusMixin(LitElement) {
               @keydown=${this.handleInputKeyDown}
             />
           </div>
-          ${this.shouldChangeButton() ? this.clearButtonTemplate() : this.arrowButtonTemplate()}
+          ${this.withoutIcons ? nothing : this.shouldChangeButton() ? this.clearButtonTemplate() : this.arrowButtonTemplate()}
         </div>
         <ul
           id="md-combobox-listbox"
@@ -826,6 +827,7 @@ export class ComboBox extends FocusMixin(LitElement) {
             (option, optionIndex) => html`
               <li
                 id=${this.getOptionId(option)}
+                part="combobox-option"
                 role="option"
                 class="md-combobox-option ${classMap(this.listItemOptionMap)}"
                 aria-label=${this.getOptionValue(option)}

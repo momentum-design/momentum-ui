@@ -2,7 +2,7 @@ import "./Accordion";
 import "./AccordionItem";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 
 export default {
   title: "Accordion",
@@ -55,14 +55,22 @@ export const Expanded = () => {
 };
 
 export const Multiple = () => {
-  const multiple = boolean("multiple", true);
   return html`
-    <md-accordion ?multiple=${multiple}>
-      <md-accordion-item slot="accordion-item" label="Header №1">
+    <md-accordion multiple>
+      <md-accordion-item slot="accordion-item" label="Header №1" expanded>
         <div>Panel №1</div>
       </md-accordion-item>
       <md-accordion-item slot="accordion-item" label="Header №2">
         <div>Panel №2</div>
+      </md-accordion-item>
+      <md-accordion-item slot="accordion-item" label="Header №3" expanded>
+        <div>Panel №3</div>
+      </md-accordion-item>
+      <md-accordion-item slot="accordion-item" label="Header №4" disabled>
+        <div>Panel №4</div>
+      </md-accordion-item>
+      <md-accordion-item slot="accordion-item" label="Header №5">
+        <div>Panel №5</div>
       </md-accordion-item>
     </md-accordion>
   `;

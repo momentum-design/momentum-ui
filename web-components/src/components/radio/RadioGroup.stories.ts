@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/theme/Theme";
@@ -24,7 +32,7 @@ export const Radio = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
-    <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="radio" ?darkTheme=${darkTheme}>
       <md-radiogroup group-label="group_process" .alignment=${alignment} .checked="${check}">
         <md-radio slot="radio" value="developing">Developing</md-radio>
         <md-radio slot="radio" value="linting" .disabled=${disabled}>Linting</md-radio>

@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { numInputTypes } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
@@ -95,7 +103,7 @@ export const EditableTextfield = () => {
   } else {
     return html`
     <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field ?disabled=${disabledSetting} .alignment=${fieldAlignment} content="Text from Content Attribute">
+      <md-editable-field maxLines="2" ?disabled=${disabledSetting} .alignment=${fieldAlignment} content="Text from Content Attribute">
         Test editable text in slot
       </md-editable-field>
     <md-theme>

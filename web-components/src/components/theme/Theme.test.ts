@@ -1,5 +1,5 @@
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { Theme } from "@/components/theme/Theme";
+import { Theme } from "./Theme";
 
 describe("Theme", () => {
   afterEach(fixtureCleanup);

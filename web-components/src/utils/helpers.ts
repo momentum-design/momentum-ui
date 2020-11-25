@@ -118,11 +118,6 @@ export function debounce<T>(func: Function, wait: number, immediate?: boolean) {
   };
 }
 
-export const uuid = () =>
-  Math.random()
-    .toString(36)
-    .substr(2, 10);
-
 export const throttle = (fn: (...args: any[]) => unknown, delay = 1000 / 60) => {
   let lastTimeoutRef: number | undefined = undefined;
   let last = Date.now();

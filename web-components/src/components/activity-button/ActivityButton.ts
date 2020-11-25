@@ -8,8 +8,8 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { CSSResultArray, customElement, html, LitElement, property } from "lit-element";
-import "../button/Button";
-import "../icon/Icon";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 export const activityButtonSize = ["56", "68", "84", 56, 68, 84] as const;

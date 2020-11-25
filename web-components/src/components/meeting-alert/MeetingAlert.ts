@@ -10,10 +10,10 @@ import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
-import "../avatar/Avatar";
-import "../button/Button";
-import "../icon/Icon";
-import { templateHTML } from "./CompositeAvatar";
+import "@/components/avatar/Avatar";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
+import { templateHTML } from "@/components/meeting-alert/CompositeAvatar";
 import styles from "./scss/module.scss";
 
 @customElement("md-meeting-alert")

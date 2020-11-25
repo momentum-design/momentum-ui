@@ -1,7 +1,5 @@
 :host(md-accordion-item) {
-
   .md-accordion {
-
     &-item:hover {
       .md-accordion-header {
         background: $accordion_hover;
@@ -15,10 +13,10 @@
 
     &-expander {
       @include button-reset;
-      padding: $accordion-base-indent;
       @include flex($jc: flex-start, $ai: stretch);
-      flex: 0 1 100%;
       border-radius: $accordion-btn-border-radius;
+      flex: 0 1 100%;
+      padding: $accordion-base-indent;
 
       md-icon {
         display: flex;
@@ -37,7 +35,6 @@
       padding: $accordion-base-indent;
     }
   }
-
 }
 
 :host(md-accordion-item[expanded]) {
@@ -58,5 +55,4 @@
     color: $accordion-disabled;
     cursor: not-allowed;
   }
-
 }

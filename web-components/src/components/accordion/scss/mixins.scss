@@ -7,11 +7,10 @@
 }
 
 @mixin button-reset {
-  border: 0;
-  padding: 0;
-  margin: 0;
   background: none;
-  outline: none;
+  border: 0;
   cursor: pointer;
+  margin: 0;
+  outline: none;
+  padding: 0;
 }
-

@@ -60,7 +60,7 @@ export const Input = () => {
   const label = text("Label", "Label");
   const value = text("Value Text", "Value Text");
   const size = select("Container Size", containerSize, "small-12");
-  const messageValue = select("Message Type", messageArr, "");
+  const messageValue = select("Message Type", messageArr, messageArr[1]);
   const disabled = boolean("Input Disabled", false);
   const readOnly = boolean("Read Only", false);
   const shape = select("Shape Pill", inputShape, "pill");

@@ -33,7 +33,7 @@ export const MenuOverlay = () => {
   const isOpen = boolean("isOpen", false);
   const disabled = boolean("Disabled", false)
   const placement = select("placement", menuOverlayPlacement, "bottom");
-  const showArrow = boolean("Show Arrow")
+  const showArrow = boolean("Show Arrow", false)
   const size = select("size", menuOverlaySize, "large");
   const maxHeight = text("max height", "");
   const customWidth = text("custom width", "");

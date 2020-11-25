@@ -86,7 +86,7 @@ export class AccordionItem extends FocusMixin(LitElement) {
     return [reset, styles];
   }
 
-  handleClick(event: MouseEvent) {
+  handleMouseDown(event: MouseEvent) {
     if (!this.disabled) {
       this.dispatchEvent(
         new CustomEvent<AccordionEvent>("accordion-item-click", {
@@ -129,7 +129,7 @@ export class AccordionItem extends FocusMixin(LitElement) {
             id="header-${this.uniqueId}"
             part="accordion-button"
             tabindex=${ifDefined(this.disabled ? -1 : undefined)}
-            @mousedown=${this.handleClick}
+            @mousedown=${this.handleMouseDown}
             @keydown=${this.handleKeyDown}
           >
             <span class="md-accordion-expander-label">${this.label}</span>

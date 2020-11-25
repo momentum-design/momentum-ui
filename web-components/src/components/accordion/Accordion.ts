@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { FocusMixin, SlottedMixin } from "@/mixins";
+import { SlottedMixin } from "@/mixins";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
@@ -13,7 +13,7 @@ import styles from "./scss/module.scss";
 import { AccordionItem, AccordionEvent } from "./AccordionItem";
 
 @customElement("md-accordion")
-export class Accordion extends FocusMixin(SlottedMixin(LitElement)) {
+export class Accordion extends SlottedMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) multiple = false;
 
   @query('slot[name="accordion-item"]') accordionItemSlotElement!: HTMLSlotElement;
@@ -101,8 +101,6 @@ export class Accordion extends FocusMixin(SlottedMixin(LitElement)) {
   handleKeyDown(event: CustomEvent<AccordionEvent>) {
     const { srcEvent } = event.detail;
     const { code } = srcEvent as KeyboardEvent;
-
-    event.preventDefault();
 
     switch (code) {
       case Key.Space:

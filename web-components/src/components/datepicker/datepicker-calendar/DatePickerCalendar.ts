@@ -16,7 +16,6 @@ import {
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, TemplateResult } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
@@ -26,9 +25,6 @@ export namespace DatePickerCalendar {}
 export class DatePickerCalendar extends LitElement {
   @property({ attribute: false }) locale = "en";
   @property({ attribute: false }) monthFormat = "MMMM yyyy";
-  @property({ attribute: false }) monthNavFocus = "prev";
-  @property({ attribute: false }) nextArialLabel = undefined;
-  @property({ attribute: false }) previousArialLabel = undefined;
   @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
@@ -59,7 +55,7 @@ export class DatePickerCalendar extends LitElement {
 
   renderMonthName = () => {
     return html`
-      <div class="md-datepicker__navigation--current-month">
+      <div class="md-datepicker__navigation--current-month" aria-live="polite">
         ${localizeDate(this.viewAnchorDate, this.locale).toFormat(this.monthFormat)}
       </div>
     `;
@@ -70,11 +66,9 @@ export class DatePickerCalendar extends LitElement {
       this.filterParams?.minDate && shouldPrevMonthDisable(this.viewAnchorDate, this.filterParams?.minDate);
     return html`
       <md-button
-        aria-label=${ifDefined(
-          !this.previousArialLabel
-            ? `previous month, ${subtractMonths(this.viewAnchorDate, 1).toFormat("MMMM")}`
-            : this.previousArialLabel
-        )}
+        aria-controls="Datepicker-Calendar"
+        aria-label=${`previous month`}
+        title=${`previous month`}
         ?disabled=${allPrevDaysDisabled}
         @click=${!allPrevDaysDisabled && this.decreaseMonth}
         tabindex="-1"
@@ -89,11 +83,9 @@ export class DatePickerCalendar extends LitElement {
       this.filterParams?.maxDate && shouldNextMonthDisable(this.viewAnchorDate, this.filterParams?.maxDate);
     return html`
       <md-button
-        aria-label=${ifDefined(
-          !this.nextArialLabel
-            ? `next month, ${addMonths(this.viewAnchorDate, 1).toFormat("MMMM")}`
-            : this.nextArialLabel
-        )}
+        aria-controls="Datepicker-Calendar"
+        aria-label=${`next month`}
+        title=${`next month`}
         ?disabled=${allNextDaysDisabled}
         @click=${!allNextDaysDisabled && this.increaseMonth}
         tabindex="-1"
@@ -149,7 +141,7 @@ export class DatePickerCalendar extends LitElement {
 
   render() {
     return html`
-      <div class="md-datepicker__calendar">
+      <div class="md-datepicker__calendar" id="Datepicker-Calendar">
         ${this.viewAnchorDate && this.renderMonth()}
       </div>
     `;

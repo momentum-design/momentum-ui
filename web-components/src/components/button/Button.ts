@@ -14,8 +14,6 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "../loading/Loading";
-import "../spinner/Spinner";
 import styles from "./scss/module.scss";
 
 export const buttonSize = [

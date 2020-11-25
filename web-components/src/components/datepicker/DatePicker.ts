@@ -117,6 +117,12 @@ export class DatePicker extends LitElement {
     }
   };
 
+  chosenDateLabel = () => {
+    return this.selectedDate
+      ? `, Selected date is ${this.selectedDate.weekdayLong} ${this.selectedDate.monthLong} ${this.selectedDate.day}, ${this.selectedDate.year}`
+      : null;
+  };
+
   render() {
     const renderTimePicker = () => {
       return html`
@@ -128,7 +134,11 @@ export class DatePicker extends LitElement {
 
     return html`
       <md-menu-overlay custom-width="248px">
-        <md-input slot="menu-trigger" placeholder=${this.selectedDate.toLocaleString()}></md-input>
+        <md-input
+          slot="menu-trigger"
+          placeholder=${this.selectedDate.toLocaleString()}
+          aria-label=${`Choose Date` + this.chosenDateLabel()}
+        ></md-input>
         <div class="date-overlay-content">
           <md-datepicker-calendar
             @day-select=${(e: CustomEvent) => this.handleSelect(e)}

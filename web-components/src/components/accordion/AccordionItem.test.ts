@@ -107,13 +107,13 @@ describe("AccordionItem", () => {
   });
 
   test("should handle click event", async () => {
-    const clickEvent = new MouseEvent("click");
-    setTimeout(() => accordionItems[1].handleClick(clickEvent));
+    const mouseDown = new MouseEvent("mousedown");
+    setTimeout(() => accordionItems[1].handleMouseDown(mouseDown));
 
     const { detail } = await oneEvent(accordionItems[1], "accordion-item-click");
 
     expect(detail).toBeDefined();
-    expect(detail.srcEvent).toEqual(clickEvent);
+    expect(detail.srcEvent).toEqual(mouseDown);
   });
 
   test("should handle keydown event", async () => {

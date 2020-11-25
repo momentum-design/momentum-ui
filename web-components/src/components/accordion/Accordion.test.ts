@@ -113,17 +113,18 @@ describe("Accordion", () => {
   });
 
   test("should correct select accordion item by click", async () => {
-    accordionItems[1].header.click();
+    const mouseDown = new MouseEvent("mousedown");
+    accordionItems[1].header.dispatchEvent(mouseDown);
     await nextFrame();
 
     expect(accordionItems[1].expanded).toBeFalsy();
 
-    accordionItems[3].header.click();
+    accordionItems[3].header.dispatchEvent(mouseDown);
     await nextFrame();
 
     expect(accordionItems[3].expanded).toBeTruthy();
 
-    accordionItems[4].header.click();
+    accordionItems[4].header.dispatchEvent(mouseDown);
     await nextFrame();
 
     expect(accordionItems[3].expanded).toBeFalsy();
@@ -132,13 +133,13 @@ describe("Accordion", () => {
     accordion.multiple = true;
     await elementUpdated(accordion);
 
-    accordionItems[0].header.click();
+    accordionItems[0].header.dispatchEvent(mouseDown);
     await nextFrame();
 
     expect(accordionItems[0].expanded).toBeTruthy();
     expect(accordionItems[4].expanded).toBeTruthy();
 
-    accordionItems[0].header.click();
+    accordionItems[0].header.dispatchEvent(mouseDown);
     await nextFrame();
 
     expect(accordionItems[0].expanded).toBeFalsy();

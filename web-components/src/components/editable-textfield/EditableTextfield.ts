@@ -220,6 +220,7 @@ export class EditableTextfield extends LitElement {
 
     return html`
       <div
+        style="${this.overflowStyles}"
         class="md-editable-textfield ${classMap(classes)}"
         tabindex=${this.disabled ? "-1" : "0"}
         ?contenteditable=${this.isEditing}

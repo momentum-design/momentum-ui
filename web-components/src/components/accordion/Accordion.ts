@@ -57,8 +57,10 @@ export class Accordion extends FocusMixin(SlottedMixin(LitElement)) {
           anotherAccordionItem.expanded = false;
         }
       });
+      accordionItem.expanded = true;
+    } else {
+      accordionItem.expanded = !accordionItem.expanded;
     }
-    accordionItem.expanded = !accordionItem.expanded;
   }
 
   private setupExpandedAccordionItems() {

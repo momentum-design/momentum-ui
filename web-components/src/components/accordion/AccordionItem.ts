@@ -101,6 +101,7 @@ export class AccordionItem extends FocusMixin(LitElement) {
   }
 
   handleKeyDown(event: KeyboardEvent) {
+    event.preventDefault();
     if (!this.disabled) {
       this.dispatchEvent(
         new CustomEvent<AccordionEvent>("accordion-item-keydown", {

@@ -2,8 +2,6 @@ import "@/components/phone-input/PhoneInput";
 import { html } from "lit-element";
 
 export const phoneInputTemplate = html`
-  <h2>md-phone-input</h2>
-
   <div>
     <div class="row">
       <md-phone-input

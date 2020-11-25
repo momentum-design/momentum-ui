@@ -1,3 +1,8 @@
+:host() {
+  .group {
+    background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
+  }
+}
 
 :host(:focus) {
   box-shadow: none !important;
@@ -29,43 +34,44 @@
   .md-combobox-button {
     &.arrow-down {
       transform: rotate(180deg);
-    } 
+    }
   }
 }
 
 .md-combobox-list {
   position: relative;
 }
-  
+
 .md-combobox {
   .group {
     align-items: start;
+    background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
     border: $combobox-border;
     border-radius: $combobox-group-radius;
     display: flex;
     min-height: $combobox-min-height;
     padding: $combobox-input-padding;
-  
+
     md-icon {
       color: var(--md-primary-text-color, $md-gray-05);
       cursor: pointer;
       height: $combobox-search-icon-height;
       padding-top: calc(#{$combobox-main-indent} / 2);
     }
-  
+
     &:hover {
       background: var(--combobox-hover-bg-color, $lm-combobox-hover-bg-color-light);
     }
-  
+
     &:active {
       background: var(--combobox-pressed-bg-color, $lm-combobox-pressed-bg-color-light);
     }
-  
+
     &.multiselect {
       &:hover {
         background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
       }
-  
+
       &:active {
         background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
       }
@@ -78,7 +84,7 @@
     }
   }
 }
-  
+
 .md-combobox-button {
   @include arrow-transition;
   background: transparent;
@@ -97,12 +103,14 @@
     color: var(--combobox-dropdown-item-icon-color, $lm-combobox-dropdown-item-icon-color-light);
   }
 }
-  
+
 ul {
   background-color: var(--combobox-dropdown-bg-color, $lm-combobox-dropdown-bg-color-light);
+  border: $combobox-border;
   border-radius: $combobox-dropdown-radius;
   box-shadow: $combobox-dropdown-shadow;
   box-sizing: border-box;
+  font-size: $font-size-base;
   left: 0;
   list-style: none;
   margin: 0;
@@ -183,7 +191,8 @@ ul {
   &[aria-checked="true"] {
     .select-option {
       background: var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
-      border: 1px solid var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
+      border: 1px solid
+        var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
 
       md-icon {
         color: var(--combobox-dropdown-item-checked-icon-color, $lm-combobox-dropdown-item-checked-icon-color-light);
@@ -195,10 +204,6 @@ ul {
   &[focused] {
     background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
   }
-}
-
-.md-combobox-listbox {
-  font-size: $font-size-base;
 }
 
 .md-combobox__multiwrap {

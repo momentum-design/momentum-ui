@@ -6,8 +6,8 @@ const combobox = {
   prefix: "md",
   component: "combobox",
   "bg-color": {
-    light: colors.white[60].name,
-    dark: colors.gray[90].name
+    light: colors.white[100].name,
+    dark: colors.gray[100].name
   },
   "border-color": {
     light: colors.gray[30].name,

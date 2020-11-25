@@ -1,5 +1,5 @@
 import { array, boolean, button, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
+import { html } from "lit-element";
 import "./MeetingAlert";
 
 export default {

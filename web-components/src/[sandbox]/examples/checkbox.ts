@@ -3,7 +3,6 @@ import "@/components/checkbox/CheckboxGroup";
 import { html } from "lit-element";
 
 export const checkboxTemplate = html`
-  <h2>md-checkbox</h2>
   <h3>Default</h3>
   <md-checkbox>Option Item</md-checkbox>
   <h3>Disabled</h3>

@@ -21,5 +21,3 @@ export const Default = () => html`
 export const Size = () => html`
   <md-spinner size="20"></md-spinner>
 `;
-
-

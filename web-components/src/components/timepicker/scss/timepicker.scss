@@ -8,10 +8,17 @@
     display: inline-block;
     height: $time-box-height;
     width: $time-box-width;
+  }
 
-    &.am-pm {
-      margin-left: 4px;
-    }
+  .amPm-combo-box {
+    display: inline-block;
+    height: $time-box-height;
+    margin-left: 4px;
+    width: $time-box-width;
+  }
+
+  .amPm-combo-box::part(group) {
+    padding: 0;
   }
 
   md-input::part(input) {

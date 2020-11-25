@@ -203,7 +203,6 @@ export class TimePicker extends LitElement {
 
   generateTimeBox = (unit: TimePicker.TimeUnit) => {
     const unitProperties = timeUnitProps(this.twentyFourHourFormat)[unit];
-    console.log('[log] timeValidity', unit, 'ariaInvalid', !this.timeValidity[unit]);
 
     return html`
       <md-input
@@ -222,6 +221,13 @@ export class TimePicker extends LitElement {
     `;
   }
 
+  generateAmPmComboBox = () => {
+    const options = ['AM', "PM"];
+    return html `
+      <md-combobox class="amPm-combo-box" .options=${options} .value=${[options[0]]}></md-combobox>
+    `;
+  }
+
 
   render() {
     return html`
@@ -233,7 +239,7 @@ export class TimePicker extends LitElement {
           ${this.generateTimeBox(TIME_UNIT.MINUTE)}
           <span class="colon-separator">:</span>
           ${this.generateTimeBox(TIME_UNIT.SECOND)}
-          ${this.twentyFourHourFormat ? nothing : this.generateTimeBox(TIME_UNIT.AM_PM)}
+          ${this.twentyFourHourFormat ? nothing : this.generateAmPmComboBox()}
         </div>
       </div>
     `;

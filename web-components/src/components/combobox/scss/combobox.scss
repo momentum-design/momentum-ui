@@ -59,6 +59,8 @@
       padding-top: calc(#{$combobox-main-indent} / 2);
     }
 
+    
+
     &:hover {
       background: var(--combobox-hover-bg-color, $lm-combobox-hover-bg-color-light);
     }
@@ -76,6 +78,10 @@
         background: var(--combobox-bg-color, $lm-combobox-bg-color-light);
       }
     }
+  }
+
+  .md-combobox-button[disabled] md-icon {
+    color: var(--md-disabled-text-color, $md-gray-40);
   }
 
   &--pill {

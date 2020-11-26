@@ -25,6 +25,7 @@
 
       &-label {
         @include text-dots;
+        color: var(--md-secondary-text-color);
         display: flex;
         flex: 0 1 auto;
       }

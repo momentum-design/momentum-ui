@@ -3,9 +3,8 @@ $accordion-base-indent: rem-calc(8);
 $accordion-border-radius: rem-calc(4);
 $accordion-btn-border-radius: rem-calc(3);
 
-$accordion-color: var(--accordion-color, $md-accordion-color-light);
-$accordion-border_focus: var(--accordion-border-focus, $md-accordion-border-focus-light);
+$accordion-border_focus: var(--md-default-focus-outline-color);
 $accordion-bg_focus: var(--accordion-bg-focus, $md-accordion-bg-focus-light);
 $accordion_hover: var(--accordion-hover, $md-accordion-hover-light);
-$accordion-disabled: var(--accordion-disabled, $md-accordion-disabled-light);
+$accordion-disabled: var(--md-disabled-text-color);
 $accordion-active: var(--accordion-active, $md-accordion-active-light);

@@ -1,12 +1,7 @@
 :host(md-accordion-item) {
-  .md-accordion {
-    &-item:hover {
-      .md-accordion-header {
-        background: $accordion_hover;
-        border-radius: $accordion-btn-border-radius;
-      }
-    }
+  display: block;
 
+  .md-accordion {
     &-header {
       @include flex($jc: space-between, $ai: stretch);
     }
@@ -48,6 +43,15 @@
   .md-accordion-expander {
     box-shadow: 0 0 0 rem-calc(2) $accordion-border_focus;
     color: $accordion-active;
+  }
+}
+
+:host(md-accordion-item) {
+  .md-accordion-item:hover {
+    .md-accordion-header {
+      background: $accordion_hover;
+      border-radius: $accordion-btn-border-radius;
+    }
   }
 }
 

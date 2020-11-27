@@ -56,6 +56,7 @@
     "@storybook/addon-docs": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@storybook/web-components": "^6.0.28",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/dompurify": "^2.0.4",

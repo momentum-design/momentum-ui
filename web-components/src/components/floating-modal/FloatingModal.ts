@@ -177,7 +177,13 @@ export class FloatingModal extends LitElement {
             >
               <div class="md-floating__header">
                 <div class="md-floating__header-text">
-                  <slot name="header"></slot>
+                  ${this.heading
+                    ? html`
+                        ${this.heading}
+                      `
+                    : html`
+                        <slot name="header"></slot>
+                      `}
                 </div>
                 <md-button
                   color="color-none"

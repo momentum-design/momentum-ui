@@ -1,15 +1,13 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import styles from "./scss/module.scss";
 import "./PaginationItem";
 import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { nothing } from "lit-html";
 
 export type direction = "previous" | "next";
-export const paginationItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-export type layout = "normal" | "simple";
+type paginationItems = {};
 
 @customElement("md-pagination")
 export class Pagination extends LitElement {
@@ -19,8 +17,8 @@ export class Pagination extends LitElement {
   @property({ type: Number, attribute: "current-page" }) currentPage = 1;
   @property({ type: Boolean, attribute: "arrows" }) isArrows = false;
   @property({ type: Boolean, attribute: "dots" }) isDots = false;
-  @property({ type: Array, attribute: "pagination-items", reflect: true }) paginationItems = [];
-  @property({ type: String }) layout = "normal";
+  @property({ type: Array, attribute: "items", reflect: true }) items: paginationItems[] = [];
+  @property({ type: Boolean, attribute: "simple" }) isSimple = false;
 
   static get styles() {
     return [reset, styles];
@@ -30,6 +28,12 @@ export class Pagination extends LitElement {
     return {
       "has-arrows": this.isArrows,
       "has-dots": this.isDots
+    };
+  }
+
+  get paginationItemClassMap() {
+    return {
+      current: this.currentPage
     };
   }
 
@@ -51,7 +55,7 @@ export class Pagination extends LitElement {
     return html`
       <ol class="md-pagination-dots">
         ${repeat(
-          paginationItems,
+          this.items,
           paginationItems => html`
             <li>${paginationItems}</li>
           `
@@ -59,24 +63,61 @@ export class Pagination extends LitElement {
       </ol>
     `;
   }
+  private _current = false;
+  get current() {
+    return this._current;
+  }
+
+  set current(value: boolean) {
+    const oldValue = this._current;
+    this._current = value;
+
+    if (value) {
+      this.notifyCurrentItem();
+    }
+
+    this.setAttribute("aria-selected", `${value}`);
+    this.requestUpdate("selected", oldValue);
+  }
+
+  private notifyCurrentItem() {
+    this.dispatchEvent(
+      new CustomEvent("focus-visible", {
+        composed: true,
+        bubbles: true
+      })
+    );
+  }
 
   render() {
     return html`
       <nav class="md-pagination ${classMap(this.paginationClassMap)}" role="navigation" part="pagination">
         ${this.isArrows ? this.buttonTemplate("previous") : nothing}
-        ${this.paginationItems
-          ? html`
-              <ul class="md-pagination-list">
-                ${repeat(
-                  paginationItems,
-                  paginationItems => html`
-                    <li>${paginationItems}</li>
-                  `
-                )}
-              </ul>
-            `
-          : nothing}
-        ${this.isArrows ? this.buttonTemplate("next") : nothing} ${this.isDots ? this.dotsTemplate() : nothing}
+        <div class="md-pagination-container">
+          ${!this.isSimple && this.items
+            ? html`
+                <ul class="md-pagination-list">
+                  ${repeat(
+                    this.items,
+                    paginationItems => html`
+                      <li class="${classMap(this.paginationItemClassMap)}" aria-label=${this.currentPage}>
+                        <a href="#">${paginationItems}</a>
+                      </li>
+                    `
+                  )}
+                </ul>
+              `
+            : html`
+                <div class="md-pagination-simple">
+                  <span class="md-pagination-current-items">1-5</span>
+                  <span class="md-pagination-total-pages">
+                    of ${this.total}
+                  </span>
+                </div>
+              `}
+          ${this.isDots ? this.dotsTemplate() : nothing}
+        </div>
+        ${this.isArrows ? this.buttonTemplate("next") : nothing}
       </nav>
     `;
   }

@@ -1,0 +1,61 @@
+.md-coachmark {
+  display: inline-flex;
+  position: relative;
+
+  &__popper {
+    display: none;
+    min-width: 170px;
+    padding: rem-calc(12);
+    position: absolute;
+    width: auto;
+    z-index: 9999;
+
+    &--default {
+      background: var(--badge-default-bg-color, $lm-badge-default-bg-color-light);
+      color: var(--badge-default-text-color, $lm-badge-default-text-color-light);
+    }
+
+    &--right {
+      animation: coach-fade 1s, coach-slide-right 0.5s ease;
+      left: calc(100% + 1rem);
+      top: 50%;
+      transform: translateY(-50%);
+
+      .md-coachmark__arrow {
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid var(--badge-default-bg-color, $lm-badge-default-bg-color-light);
+        border-top: 10px solid transparent;
+        height: 0;
+        left: -10px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+      }
+    }
+  }
+
+  &--active {
+    .md-coachmark__popper {
+      display: block;
+    }
+  }
+}
+
+@keyframes coach-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes coach-slide-right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: calc(100% + 3rem);
+  }
+}

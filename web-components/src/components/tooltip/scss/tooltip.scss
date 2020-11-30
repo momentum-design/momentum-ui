@@ -33,7 +33,7 @@
       text-align: center;
       width: max-content;
       word-break: break-word;
-      z-index: -1;
+      z-index: 9999;
 
       .md-tooltip__arrow,
       .md-tooltip__arrow::before {

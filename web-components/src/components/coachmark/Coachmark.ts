@@ -7,9 +7,11 @@
  */
 
 import { FocusMixin } from "@/mixins";
+import { nothing } from "lit-html";
 import reset from "@/wc_scss/reset.scss";
+import styles from "./scss/module.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
-//import { classMap } from "lit-html/directives/class-map";
+import { classMap } from "lit-html/directives/class-map";
 
 export type coachmarkPlacement = "auto" | "left" | "right" | "top" | "bottom";
 
@@ -17,11 +19,13 @@ export type coachmarkPlacement = "auto" | "left" | "right" | "top" | "bottom";
 export class Coachmark extends FocusMixin(LitElement) {
   @property({ type: String }) message = "";
   @property({ type: String }) placement: coachmarkPlacement = "auto";
+  @property({ type: Boolean }) show = false;
+  @property({ type: String }) color = "default";
 
   @query(".md-coachmark__popper") popper!: HTMLDivElement;
   @query(".md-coachmark__reference") reference!: HTMLDivElement;
 
-  //private slotContent: Element[] | null = null;
+  private slotContent: Element[] | null = null;
 
   protected handleFocusIn(event: Event) {
     if (super.handleFocusIn) {
@@ -50,25 +54,32 @@ export class Coachmark extends FocusMixin(LitElement) {
     );
   }
 
-  // handleSlotContentChange(event: Event) {
-  //   const slot = event.target as HTMLSlotElement;
-  //   if (slot) {
-  //     const slotContent = slot.assignedElements({ flatten: true });
-  //     if (slotContent.length) {
-  //       this.slotContent = slotContent;
-  //     }
-  //   }
-  // }
+  handleSlotChange(event: Event) {
+    const slot = event.target as HTMLSlotElement;
+    if (slot) {
+      const slotContent = slot.assignedElements({ flatten: true });
+      if (slotContent.length) {
+        this.slotContent = slotContent;
+      }
+    }
+  }
+
+  get coachClassMap() {
+    return {
+      [`md-coachmark__popper--${this.placement}`]: this.placement,
+      [`md-coachmark__popper--${this.color}`]: this.color
+    };
+  }
 
   render() {
     return html`
-      <div class="md-coachmark">
-        <div class="md-coachmark__popper">
+      <div class="md-coachmark ${this.show ? 'md-coachmark--active' : ''}">
+        <div class="md-coachmark__popper ${classMap(this.coachClassMap)}">
           <div class="md-coachmark__content">
             ${this.message
               ? this.message
               : html`
-                  <slot name="coachmark-content"></slot>
+                  <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
                 `}
           </div>
           <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
@@ -85,7 +96,7 @@ export class Coachmark extends FocusMixin(LitElement) {
   }
 
   static get styles() {
-    return [reset];
+    return [reset, styles];
   }
 }
 

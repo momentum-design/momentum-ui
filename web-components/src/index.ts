@@ -15,6 +15,7 @@ export { Button } from "./components/button/Button";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { Chip } from "./components/chip/Chip";
 export { ComboBox } from "./components/combobox/ComboBox";
+import { Coachmark } from "./components/coachmark/Coachmark";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { Icon } from "./components/icon/Icon";

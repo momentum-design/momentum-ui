@@ -9,6 +9,7 @@ export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
 export { comboBoxTemplate } from "./combobox";
+export { coachTemplate } from "./coachmark";
 export { editableField } from "./editable-field";
 export { floatingModalTemplate } from "./floating";
 export { iconTemplate } from "./icon";

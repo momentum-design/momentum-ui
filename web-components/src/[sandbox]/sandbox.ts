@@ -16,6 +16,7 @@ import {
   checkboxTemplate,
   chipTemplate,
   comboBoxTemplate,
+  coachTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -180,6 +181,13 @@ export class Sandbox extends LitElement {
             <h2>md-combobox</h2>
             <sass-stats component="combobox">
               ${comboBoxTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-coachmark">
+            <h2>md-coachmark</h2>
+            <sass-stats component="coachmark">
+              ${coachTemplate}
             </sass-stats>
           </div>
 

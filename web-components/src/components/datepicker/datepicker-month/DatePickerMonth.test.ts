@@ -12,6 +12,6 @@ describe("DatePickerMonth Component", () => {
         <md-datepicker-month></md-datepicker-month>
       `
     );
-    expect(el).not.toBeNull;
+    expect(el).not.toBeNull();
   });
 });

@@ -57,7 +57,7 @@ export class DatePickerDay extends LitElement {
     );
   };
 
-  handleKey = (e: KeyboardEvent) => {
+  handleKeyDown = (e: KeyboardEvent) => {
     this.dispatchEvent(
       new CustomEvent("day-key-event", {
         bubbles: true,
@@ -92,8 +92,8 @@ export class DatePickerDay extends LitElement {
         @click=${(e: MouseEvent) => {
           !this.disabled && this.handleClick(e);
         }}
-        @keydown=${(e: KeyboardEvent) => this.handleKey(e)}
-        aria-label=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
+        @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+        ariaLabel=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
         title=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
         aria-selected=${ifDefined(this.selected)}
         tab-index=${this.focused ? "0" : "-1"}

@@ -12,7 +12,7 @@ describe("DatePickerDay Component", () => {
         <md-datepicker-day></md-datepicker-day>
       `
     );
-    expect(el).not.toBeNull;
+    expect(el).not.toBeNull();
   });
   test("should apply selected attribute class modifier", async () => {
     const el: DatePickerDay = await fixture(
@@ -46,7 +46,7 @@ describe("DatePickerDay Component", () => {
       `
     );
 
-    expect(el.shadowRoot?.querySelector("md-button")?.classList.contains("--today")).not.toBeNull;
+    expect(el.shadowRoot?.querySelector("md-button")?.classList.contains("--today")).not.toBeNull();
   });
 
   test("onclick of Day should handle action", async () => {
@@ -67,7 +67,7 @@ describe("DatePickerDay Component", () => {
         <md-datepicker-day></md-datepicker-day>
       `
     );
-    const userEvent = jest.spyOn(el, "handleKey");
+    const userEvent = jest.spyOn(el, "handleKeyDown");
     const event = new KeyboardEvent("keydown", { code: "Space" });
     el.dispatchEvent(event);
     await el.updateComplete;

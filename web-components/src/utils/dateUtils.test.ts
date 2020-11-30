@@ -1,26 +1,26 @@
 import { DateTime } from "luxon";
 import "./dateUtils";
 import {
-    addDays,
-    addMonths,
-    addWeeks,
-    DayFilters,
-    getDate,
-    getLocaleData,
-    getMonth,
-    getStartOfMonth,
-    getStartOfWeek,
-    getWeekdayNameInLocale,
-    isDayDisabled,
-    isSameDay,
-    isSameMonth,
-    localizeDate,
-    now,
-    shouldNextMonthDisable,
-    shouldPrevMonthDisable,
-    subtractDays,
-    subtractMonths,
-    subtractWeeks
+  addDays,
+  addMonths,
+  addWeeks,
+  DayFilters,
+  getDate,
+  getLocaleData,
+  getMonth,
+  getStartOfMonth,
+  getStartOfWeek,
+  getWeekdayNameInLocale,
+  isDayDisabled,
+  isSameDay,
+  isSameMonth,
+  localizeDate,
+  now,
+  shouldNextMonthDisable,
+  shouldPrevMonthDisable,
+  subtractDays,
+  subtractMonths,
+  subtractWeeks
 } from "./dateUtils";
 
 describe("DateTime Module", () => {
@@ -31,8 +31,10 @@ describe("DateTime Module", () => {
 
   test("getStartOfWeek function returns correctly", async () => {
     const newDate = now();
-    const utilFuncReturn = getStartOfWeek(newDate);
-    expect(utilFuncReturn).toEqual(newDate.startOf("week"));
+    const defaultFuncReturn = getStartOfWeek(newDate);
+    expect(defaultFuncReturn).toEqual(newDate.startOf("week").minus({ days: 1 }));
+    const modifiedFuncReturn = getStartOfWeek(newDate, "Monday");
+    expect(modifiedFuncReturn).toEqual(newDate.startOf("week"));
   });
   test("getStartOfMonth function returns correctly", async () => {
     const newDate = now();
@@ -50,7 +52,7 @@ describe("DateTime Module", () => {
     expect(utilFuncReturn).toEqual(newMonth.get("month"));
   });
   test("addDays function returns revised date", async () => {
-    const date = now();
+    const date = DateTime.fromSQL("2020-10-10");
     const utilFuncReturn = addDays(date, 1);
     expect(utilFuncReturn.day).toEqual(date.day + 1);
   });

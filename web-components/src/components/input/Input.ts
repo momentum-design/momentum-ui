@@ -6,7 +6,7 @@
  *
  */
 
-import { Key, ARIA_INVALID } from "@/constants";
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
@@ -102,7 +102,8 @@ export const inputShape = ["none", "pill"];
 export const iconNames = iconNamesList;
 export const iconPosition = ["before", "after"];
 export const nestedLevel = [0, 1, 2, 3];
-export const ariaInvalid = ["grammar", "false", "spelling", "true"];
+export const ariaInvalidType = ["grammar", "false", "spelling", "true"];
+
 export namespace Input {
   export type Type = "text" | "number" | "password" | "email" | "tel" | "checkbox";
   export type MessageType = "error" | "success" | "warning";
@@ -114,7 +115,7 @@ export namespace Input {
   export type InputSize = typeof inputSize[number];
   export type InputType = typeof inputSize;
   export type shape = typeof inputShape;
-  export type ariaInvalid = typeof ariaInvalid[number];
+  export type AriaInvalidType = typeof ariaInvalidType[number];
 }
 
 export class Message {
@@ -141,7 +142,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
   @property({ type: String }) placeholder = "";
   @property({ type: String }) ariaLabel = "";
-  @property({ type: String }) ariaInvalid: Input.ariaInvalid = "false";
+  @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
   @property({ type: String }) clearAriaLabel = "";
   @property({ type: String }) id = "";
   @property({ type: String }) helpText = "";
@@ -159,6 +160,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: Boolean }) readOnly = false;
   @property({ type: Boolean }) disabled = false;
   @property({ type: Boolean }) isLoading = false;
+  @property({ type: Boolean }) compact = false;
   @property({ type: Boolean }) multi = false;
   @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
   @property({ type: String }) ariaDescribedBy = "";
@@ -350,6 +352,7 @@ export class Input extends FocusMixin(LitElement) {
             ?autofocus=${this.autofocus}
             aria-label=${this.ariaLabel}
             aria-invalid=${this.ariaInvalid}
+            aria-errormessage="default message"
             ?disabled=${this.disabled}
             id=${this.htmlId}
             placeholder=${this.placeholder}
@@ -425,7 +428,7 @@ export class Input extends FocusMixin(LitElement) {
           </md-button>
         </div>
       `;
-    } else {
+    } else if (!this.compact) {
       return html`
         <div class="md-input__after">
           <slot name="input-section-right"></slot>

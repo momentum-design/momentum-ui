@@ -3,9 +3,11 @@ import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import { nothing } from "lit-html";
+import styles from "./scss/module.scss";
 
 export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -123,6 +125,10 @@ export class DatePicker extends LitElement {
       : null;
   };
 
+  static get styles() {
+    return [reset, styles];
+  }
+
   render() {
     const renderTimePicker = () => {
       return html`
@@ -147,6 +153,9 @@ export class DatePicker extends LitElement {
             .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
           ></md-datepicker-calendar>
           ${this.includeTime ? renderTimePicker() : nothing}
+          <div class="action-buttons">
+          <md-button variant="secondary">Cancel</md-button>
+          <md-button variant="primary" class="date-time-apply">Apply</md-button>
         </div>
       </md-menu-overlay>
     `;

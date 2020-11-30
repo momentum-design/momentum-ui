@@ -1,12 +1,10 @@
-// import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { customElement, html, LitElement, property, internalProperty } from "lit-element";
-import { DateTime } from "luxon";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import "@/components/input/Input";
 import { ValidationRegex } from "@/utils/validations.ts";
 import { Input } from "@/components/input/Input";
-import { TIME_UNIT } from "@/constants";
+import { TIME_UNIT, Key } from "@/constants";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
 
@@ -29,16 +27,16 @@ const timeUnitProps = (isTwentyFourHour: boolean) => {
     [TIME_UNIT.HOUR]: {
       type: "number" as Input.Type,
       min: 1,
-      max: isTwentyFourHour ? 24 : 12
+      max: isTwentyFourHour ? 23 : 12
     },
     [TIME_UNIT.MINUTE]: {
       type: "number" as Input.Type,
-      min: 1,
+      min: 0,
       max: 59
     },
     [TIME_UNIT.SECOND]: {
       type: "number" as Input.Type,
-      min: 1,
+      min: 0,
       max: 59
     },
     [TIME_UNIT.AM_PM]: {
@@ -72,6 +70,8 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: true
   }
 
+  @internalProperty() private tabNext = false;
+
   @internalProperty () private time = "";
 
   checkValidity = (input: string, unit: TimePicker.TimeUnit): boolean => {
@@ -102,16 +102,20 @@ export class TimePicker extends LitElement {
       default:
         break;
     }
-    console.log('[log][timePicker]: checkValidity', input, unit, result);
-    return result;
+     return result;
   };
 
   handleTimeChange(event: CustomEvent, unit: TimePicker.TimeUnit) {
-    console.log('[log][timePicker]: handleTimeChange', unit, event.detail.value);
     this.timeValue[unit] = event?.detail?.value;
     this.requestUpdate();
 
-    if (unit !== TIME_UNIT.AM_PM && this.timeValue[unit].length === 2) {
+    if(this.timeValue[unit].length === 1) {
+      this.timeValue[unit] = '0' + this.timeValue[unit];
+    } else if(this.timeValue[unit][0] === '0') {
+      this.timeValue[unit] = this.timeValue[unit].substring(1);
+    }
+
+    if (this.tabNext && unit !== TIME_UNIT.AM_PM && this.timeValue[unit].length === 2 && this.timeValue[unit][0] !== '0') {
       event.preventDefault();
       const currentNode = event?.target as Node;
       const allInputs = this.shadowRoot?.querySelectorAll('md-input, md-combobox');
@@ -119,13 +123,14 @@ export class TimePicker extends LitElement {
       if (allInputs) {
         const currentIndex = Array.prototype.findIndex.call(allInputs, el => currentNode?.isEqualNode(el));
         const targetIndex = (currentIndex + 1) % allInputs.length;
-        allInputs[targetIndex].shadowRoot?.querySelector('input')?.focus();
+
+        if (currentIndex !== allInputs.length -1) {
+          const targetInput = allInputs[targetIndex].shadowRoot?.querySelector('input');
+          console.log(targetInput);
+          targetInput?.focus();
+          targetInput?.select();
+        }
       }
-    } else if (this.timeValue[unit].length === 2) {
-      this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
-      this.formatTimeUnit(this.timeValue[unit], unit);
-      this.requestUpdate();
-      // submit time after validation
     }
 
     event.stopPropagation();
@@ -143,7 +148,15 @@ export class TimePicker extends LitElement {
   }
 
   handleTimeKeyDown(event: CustomEvent, unit: TimePicker.TimeUnit) {
-    console.log('[log][timePicker]: handleTimeKeyDown', unit, event?.detail?.srcEvent?.key);
+    const { key } = event?.detail?.srcEvent;
+
+    if(key === Key.ArrowDown || key === Key.ArrowUp) {
+      this.tabNext = false;
+
+    } else {
+      this.tabNext = true;
+    }
+
     this.timeValidity[unit] = true;
     this.requestUpdate();
 
@@ -161,7 +174,6 @@ export class TimePicker extends LitElement {
   }
 
   handleTimeBlur(event: CustomEvent, unit: TimePicker.TimeUnit) {
-    console.log('[log][timePicker]: handleTimeBlur', unit, this.timeValue[unit], this.timeValidity[unit]);
     this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
     this.formatTimeUnit(this.timeValue[unit], unit);
     this.requestUpdate();
@@ -215,6 +227,7 @@ export class TimePicker extends LitElement {
     return html`
       ${unit === TIME_UNIT.MINUTE ? html`<span class="colon-separator">:</span>` : nothing}
       <md-input
+        compact
         class="${`time-input-box ${unit}`}"
         value="${this.timeValue[unit]}"
         type="${unitProperties.type}"
@@ -242,7 +255,7 @@ export class TimePicker extends LitElement {
   render() {
     return html`
     <div class="md-timepicker">
-        <!-- <h2>Time: ${this.getTimeString()}</h2> -->
+        <!-- <p>Time: ${this.getTimeString()}</p> -->
         <div class="time-inputs-wrapper">
           ${this.generateTimeBox(TIME_UNIT.HOUR)}
           ${this.editableHourOnly ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}

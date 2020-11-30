@@ -1,10 +1,8 @@
 
 
 .md-timepicker {
-  border-top: 1px solid var(--md-primary-seperator-color);
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
+  padding-right: 48px;
+  width: fit-content;
 
   .time-input-box {
     display: inline-block;
@@ -15,7 +13,8 @@
   .amPm-combo-box {
     display: inline-block;
     height: $time-box-height;
-    margin-left: 4px;
+    margin-left: 8px;
+    position: absolute;
     width: $time-box-width;
   }
 
@@ -54,4 +53,8 @@
     line-height: 125%;
     margin: 0 $colon-side-margin;
   }
+}
+
+:host([twentyFourHourFormat]) .md-timepicker {
+  padding-right: 0;
 }

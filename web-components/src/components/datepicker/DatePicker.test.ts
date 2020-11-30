@@ -23,7 +23,7 @@ describe("DatePicker Component", () => {
         <md-datepicker></md-datepicker>
       `
     );
-    expect(el).not.toBeNull;
+    expect(el).not.toBeNull();
   });
   test("should handle date selection update", async () => {
     const firstDate = now();

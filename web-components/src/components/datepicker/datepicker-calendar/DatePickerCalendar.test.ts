@@ -12,7 +12,7 @@ describe("DatePickerCalendar Component", () => {
         <md-datepicker-calendar></md-datepicker-calendar>
       `
     );
-    expect(el).not.toBeNull;
+    expect(el).not.toBeNull();
   });
   // test("should handle date selection update", async () => {
   //   const firstDate = now();

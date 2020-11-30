@@ -17,7 +17,7 @@
     
 
     md-button[disabled]::part(button) {
-      background: none;
+      background-color: none;
       color: var(--md-disabled-text-color, inherit);
     }
   }

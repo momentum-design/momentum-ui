@@ -12,6 +12,6 @@ describe("DatePickerWeek Component", () => {
         <md-datepicker-week></md-datepicker-week>
       `
     );
-    expect(el).not.toBeNull;
+    expect(el).not.toBeNull();
   });
 });

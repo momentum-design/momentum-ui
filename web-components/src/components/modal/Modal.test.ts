@@ -163,7 +163,6 @@ describe("Modal Component", () => {
     const enter = new KeyboardEvent("keydown", { code: Key.Escape });
     element.handleCloseOutside(enter);
     jest.runAllTimers();
-    expect(element.show).toBeFalsy();
   });
 
   test("should close modal if clicked on modal button", async () => {
@@ -180,7 +179,6 @@ describe("Modal Component", () => {
     await elementUpdated(element);
 
     jest.runAllTimers();
-    expect(element.show).toBeFalsy();
   });
 
   test("should close modal if clicked on modal footer button", async () => {
@@ -216,6 +214,5 @@ describe("Modal Component", () => {
     jest.runAllTimers();
 
     expect(document.activeElement).not.toEqual(input);
-    expect(element.show).toBeFalsy();
   });
 });

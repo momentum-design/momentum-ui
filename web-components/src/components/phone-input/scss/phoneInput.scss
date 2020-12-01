@@ -17,6 +17,16 @@
     border-top-right-radius: 0;
   }
 
+  md-combobox::part(multiwrap) {
+    overflow-x: hidden;
+  }
+
+  md-combobox::part(multiwrap-input) {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   md-combobox::part(combobox-options) {
     top: 2.5rem;
   }
@@ -28,18 +38,19 @@
   md-input::part(input) {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    padding-right: $input__padding-side--icon;
   }
-  
+
   md-input::part(message) {
     margin-left: calc(var(--combo-box-contaier-width) * -1);
     width: calc(100% + var(--combo-box-contaier-width));
   }
-  
+
   .md-phone-input__option {
     display: flex;
     justify-content: space-between;
   }
-  
+
   md-input[disabled]::part(input) {
     background: var(--phone-input-disabled-bg-color);
     border: 1px solid var(--phone-input-default-border-color);
@@ -50,3 +61,4 @@
     }
   }
 }
+

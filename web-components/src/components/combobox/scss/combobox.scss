@@ -11,9 +11,8 @@
 
 :host([focus-visible]) {
   .group {
-    border: $combobox-focus-border;
     border-color: var(--combobox-focus-border-color, $lm-combobox-focus-border-color-light);
-    box-shadow: $combobox-focus-shadow;
+    box-shadow: none;
   }
 }
 
@@ -59,7 +58,7 @@
       padding-top: calc(#{$combobox-main-indent} / 2);
     }
 
-    
+
 
     &:hover {
       background: var(--combobox-hover-bg-color, $lm-combobox-hover-bg-color-light);

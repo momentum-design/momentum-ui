@@ -2,7 +2,6 @@
 
 @include exports("md-tooltip") {
   .md-tooltip {
-    display: inline-flex;
     position: relative;
 
     &.md-tooltip--disabled {

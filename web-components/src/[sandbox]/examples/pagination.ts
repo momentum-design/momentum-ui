@@ -1,5 +1,4 @@
 import "@/components/pagination/Pagination";
-import "@/components/pagination/PaginationItem";
 import { html } from "lit-element";
 import { paginationItems } from "@/[sandbox]/sandbox.mock";
 

@@ -1,10 +1,10 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues, queryAll } from "lit-element";
 import styles from "./scss/module.scss";
-import "./PaginationItem";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { nothing } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export type direction = "previous" | "next";
 type paginationItems = {};
@@ -12,13 +12,14 @@ type paginationItems = {};
 @customElement("md-pagination")
 export class Pagination extends LitElement {
   @property({ type: String }) direction: direction = "previous";
-  @property({ type: Number }) total = 10;
   @property({ type: Number, attribute: "page-size" }) pageSize = 5;
   @property({ type: Number, attribute: "current-page" }) currentPage = 1;
   @property({ type: Boolean, attribute: "arrows" }) isArrows = false;
   @property({ type: Boolean, attribute: "dots" }) isDots = false;
   @property({ type: Array, attribute: "items", reflect: true }) items: paginationItems[] = [];
   @property({ type: Boolean, attribute: "simple" }) isSimple = false;
+
+  @queryAll("a[href]") pages?: HTMLAnchorElement[];
 
   static get styles() {
     return [reset, styles];
@@ -89,6 +90,17 @@ export class Pagination extends LitElement {
     );
   }
 
+  handleClick(event: MouseEvent) {
+    const pagination = event.target as HTMLAnchorElement;
+
+    if (this.items && this.items.length) {
+      const paginationIndex = Array.from(this.items).indexOf(pagination);
+      if (paginationIndex !== -1) {
+        this.notifyCurrentItem();
+      }
+    }
+  }
+
   render() {
     return html`
       <nav class="md-pagination ${classMap(this.paginationClassMap)}" role="navigation" part="pagination">
@@ -100,8 +112,8 @@ export class Pagination extends LitElement {
                   ${repeat(
                     this.items,
                     paginationItems => html`
-                      <li class="${classMap(this.paginationItemClassMap)}" aria-label=${this.currentPage}>
-                        <a href="#">${paginationItems}</a>
+                      <li>
+                        <a @click=${(event: MouseEvent) => this.handleClick(event)}>${paginationItems}</a>
                       </li>
                     `
                   )}
@@ -111,7 +123,7 @@ export class Pagination extends LitElement {
                 <div class="md-pagination-simple">
                   <span class="md-pagination-current-items">1-5</span>
                   <span class="md-pagination-total-pages">
-                    of ${this.total}
+                    of ${this.items.length}
                   </span>
                 </div>
               `}

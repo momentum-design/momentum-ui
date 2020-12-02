@@ -11,8 +11,8 @@
     z-index: 9999;
 
     &--default {
-      background: var(--badge-default-bg-color, $lm-badge-default-bg-color-light);
-      color: var(--badge-default-text-color, $lm-badge-default-text-color-light);
+      background: var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
+      color: var(-coachmark-default-text-color, $lm-coachmark-default-text-color-light);
     }
 
     &--right {
@@ -23,7 +23,7 @@
 
       .md-coachmark__arrow {
         border-bottom: 10px solid transparent;
-        border-right: 10px solid var(--badge-default-bg-color, $lm-badge-default-bg-color-light);
+        border-right: 10px solid var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
         border-top: 10px solid transparent;
         height: 0;
         left: -10px;

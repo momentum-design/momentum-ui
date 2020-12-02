@@ -71,7 +71,6 @@ export class TimePicker extends LitElement {
   }
 
   @internalProperty() private tabNext = false;
-
   @internalProperty () private time = "";
 
   checkValidity = (input: string, unit: TimePicker.TimeUnit): boolean => {
@@ -124,9 +123,8 @@ export class TimePicker extends LitElement {
         const currentIndex = Array.prototype.findIndex.call(allInputs, el => currentNode?.isEqualNode(el));
         const targetIndex = (currentIndex + 1) % allInputs.length;
 
-        if (currentIndex !== allInputs.length -1) {
+        if (currentIndex < allInputs.length -1) {
           const targetInput = allInputs[targetIndex].shadowRoot?.querySelector('input');
-          console.log(targetInput);
           targetInput?.focus();
           targetInput?.select();
         }
@@ -180,12 +178,12 @@ export class TimePicker extends LitElement {
 
     event.stopPropagation();
     this.dispatchEvent(
-      new CustomEvent(`${unit}-blur`, {
+      new CustomEvent(`time-update`, {
         bubbles: true,
         composed: true,
         detail: {
           srcEvent: event,
-          value: `${this.timeValue[unit]}`,
+          time: this.time,
           isValid: this.timeValidity[unit]
         }
       })
@@ -244,10 +242,17 @@ export class TimePicker extends LitElement {
     `;
   }
 
+
   generateAmPmComboBox = () => {
     const options = ['AM', "PM"];
     return html `
-      <md-combobox class="amPm-combo-box" .options=${options} .value=${[options[0]]} withoutIcons></md-combobox>
+      <md-combobox
+        class="amPm-combo-box"
+        .options=${options}
+        .value=${[options[0]]}
+        withoutIcons
+        @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"
+      ></md-combobox>
     `;
   }
 

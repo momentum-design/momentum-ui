@@ -96,20 +96,3 @@
   background: $md-orange-50;
   color: var(--datepicker-selected-today-text-color, $md-gray-100);
 }
-
-.included-timepicker-wrapper {
-  border-top: 1px solid var(--md-primary-seperator-color);
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  padding: 0 1rem 1rem;
-
-  .date-time-apply {
-    padding-left: 8px;
-  }
-}

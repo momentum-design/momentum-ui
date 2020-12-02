@@ -12,6 +12,8 @@ import ScrollToTop from './momentum-ui/ScrollToTop';
 import AppHeader2020 from './components2020/AppHeader';
 import AppFooter2020 from './components2020/AppFooter';
 
+const ARCHIVED_SITE = "?archive";
+
 class App extends React.Component {
   componentDidMount() {
     const {
@@ -20,15 +22,15 @@ class App extends React.Component {
     } = this.props;
 
     history.block(tx => {
-      if (search === "?archive") {
-        tx.search = "?archive";
+      if (search === ARCHIVED_SITE) {
+        tx.search = ARCHIVED_SITE;
       }
     });
   }
 
   render() {
     const { location, search } = this.props;
-    const showArchive = search === "?archive";
+    const showArchive = search === ARCHIVED_SITE;
 
     return showArchive
       ? (

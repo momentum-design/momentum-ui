@@ -22,9 +22,9 @@ class Components extends React.Component {
         />
         <div className="site-con">
           <Switch>
-            <Route path='/2020/components' exact component={ComponentOverviewPage} />
+            <Route path='/components' exact component={ComponentOverviewPage} />
             <Route
-              path='/2020/components/:component'
+              path='/components/:component'
               render={({ match }) => <Component match={match} />}
             />
           </Switch>

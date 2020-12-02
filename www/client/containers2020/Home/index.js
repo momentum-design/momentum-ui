@@ -19,7 +19,7 @@ class HomePage extends React.PureComponent {
           <div className='site-home-sub-banner'>
             <h1>{locale.squareContainers.icons.title}</h1>
             <p>{locale.squareContainers.icons.body}</p>
-            <NavLink to="/2020/icons">
+            <NavLink to="/icons">
               <Button
                 ariaLabel='Icon library'
                 className='site-home-sub-button site-home-sub-button-icon'
@@ -39,7 +39,7 @@ class HomePage extends React.PureComponent {
           <div className='site-home-sub-banner'>
             <h1>{locale.squareContainers.personality.title}</h1>
             <p>{locale.squareContainers.personality.body}</p>
-            <NavLink to="/2020/personality">
+            <NavLink to="/personality">
               <Button
                 ariaLabel='Show me personality'
                 className='site-home-sub-button site-home-sub-button-personality'
@@ -102,7 +102,7 @@ class HomePage extends React.PureComponent {
             <div className='fix-margin site-banner-home'>
               <h1>{locale.header.title}</h1>
               <p>{locale.header.body}</p>
-              <NavLink to="/2020/system">
+              <NavLink to="/system">
                 <Button
                   ariaLabel='Learn about the system'
                   className="site-banner-home-button md-button--blue"

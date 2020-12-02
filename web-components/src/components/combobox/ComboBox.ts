@@ -789,7 +789,7 @@ export class ComboBox extends FocusMixin(LitElement) {
       <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
         <div part="group" class="group ${classMap(this.listItemOptionMap)}">
           ${this.searchable ? this.searchIconTemplate() : nothing}
-          <div class="md-combobox__multiwrap">
+          <div class="md-combobox__multiwrap" part="multiwrap">
             ${this.isMulti
               ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
               : nothing}
@@ -799,6 +799,7 @@ export class ComboBox extends FocusMixin(LitElement) {
               type="text"
               role="combobox"
               aria-autocomplete="both"
+              part="multiwrap-input"
               aria-expanded=${this.expanded}
               placeholder=${this.placeholder}
               aria-controls="md-combobox-listbox"

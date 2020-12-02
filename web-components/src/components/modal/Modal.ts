@@ -109,16 +109,6 @@ export class Modal extends FocusTrapMixin(LitElement) {
     }
   }
 
-  private closeModal = () => {
-    if (this.show) {
-      this.show = false;
-    }
-
-    if (this.animating) {
-      this.animating = false;
-    }
-  };
-
   private transitionPromise(element: HTMLElement) {
     return new Promise(resolve => {
       const onModalTransitionEnd = () => {
@@ -163,7 +153,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
     this.deactivateFocusTrap!();
 
     setTimeout(() => {
-      this.closeModal();
+      this.notifyModalClose();
     }, fadeDuration);
   }
 

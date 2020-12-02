@@ -16,7 +16,8 @@ export namespace PhoneInput {
   }
 
   export type Attributes = {
-    placeholder: string;
+    codePlaceholder: string;
+    numberPlaceholder: string;
     countryCallingCode: string;
     pill: boolean;
     value: string;
@@ -26,9 +27,11 @@ export namespace PhoneInput {
 
 @customElement("md-phone-input")
 export class PhoneInput extends LitElement {
-  @property({ type: String }) placeholder = "+1";
+  @property({ type: String }) codePlaceholder = "+1";
+  @property({ type: String }) numberPlaceholder = "Enter Phone Number";
   @property({ type: String, attribute: "country-calling-code" }) countryCallingCode = "";
   @property({ type: Boolean }) pill = false;
+  @property({ type: Boolean }) disabled = false;
   @property({ type: String }) value = "";
   @property({ type: String }) errorMessage = "";
 
@@ -129,8 +132,9 @@ export class PhoneInput extends LitElement {
     return html`
       <div class="md-phone-input__container">
         <md-combobox
+          ?disabled=${this.disabled}
           shape="${this.pill ? "pill" : "none"}"
-          placeholder="${this.placeholder}"
+          placeholder="${this.codePlaceholder}"
           .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
           @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
           with-custom-content
@@ -142,6 +146,8 @@ export class PhoneInput extends LitElement {
           )}
         </md-combobox>
         <md-input
+          ?disabled=${this.disabled}
+          placeholder=${this.numberPlaceholder}
           @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
           @input-blur="${(e: Event) => this.handleBlur(e)}"
           @input-keydown="${(e: Event) => this.handleKeydown(e)}"

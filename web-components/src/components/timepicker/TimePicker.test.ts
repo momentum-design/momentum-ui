@@ -41,6 +41,54 @@ describe("TimePicker Component", () => {
     expect(element).not.toBeNull();
   });
 
+  test("should render time specificity: hour", async () => {
+    const element: TimePicker = await fixture<TimePicker>(
+      html`
+        <md-timepicker timeSpecificity="hour"></md-timepicker>
+      `
+    );
+
+    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
+    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
+    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input;
+
+    expect(hourInput).toBeDefined();
+    expect(minuteInput).toBeNull();
+    expect(secondInput).toBeNull();
+  });
+
+  test("should render time specificity: minute", async () => {
+    const element: TimePicker = await fixture<TimePicker>(
+      html`
+        <md-timepicker timeSpecificity="minute"></md-timepicker>
+      `
+    );
+
+    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
+    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
+    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input;
+
+    expect(hourInput).toBeDefined();
+    expect(minuteInput).toBeDefined();
+    expect(secondInput).toBeNull();
+  });
+
+  test("should render time specificity: second", async () => {
+    const element: TimePicker = await fixture<TimePicker>(
+      html`
+        <md-timepicker timeSpecificity="second"></md-timepicker>
+      `
+    );
+
+    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
+    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
+    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input;
+
+    expect(hourInput).toBeDefined();
+    expect(minuteInput).toBeDefined();
+    expect(secondInput).toBeDefined();
+  });
+
   test("should just focus after two digits are entered", async () => {
     const element: TimePicker = await fixture<TimePicker>(
       html`

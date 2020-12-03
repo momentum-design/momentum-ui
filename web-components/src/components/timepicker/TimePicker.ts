@@ -7,7 +7,6 @@ import { Input } from "@/components/input/Input";
 import { TIME_UNIT, Key } from "@/constants";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
-import { debug } from "webpack";
 
 export const timeUnits = [
   TIME_UNIT.HOUR,
@@ -74,7 +73,6 @@ export class TimePicker extends LitElement {
   }
 
   parseDefaultTime = () => {
-    debugger;
     const times = this.defaultTime.split(":");
     this.timeValue[TIME_UNIT.HOUR] = times.shift() || "12";
     this.timeValue[TIME_UNIT.MINUTE] = times.shift() || "00";
@@ -291,8 +289,8 @@ export class TimePicker extends LitElement {
         <!-- <p>Time: ${this.getTimeString()}</p> -->
         <div class="time-inputs-wrapper">
           ${this.generateTimeBox(TIME_UNIT.HOUR)}
-          ${this.editableHourOnly ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}
-          ${this.editableHourOnly ? nothing : this.generateTimeBox(TIME_UNIT.SECOND)}
+          ${this.timeSpecificity === TIME_UNIT.HOUR ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}
+          ${this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.HOUR ? nothing : this.generateTimeBox(TIME_UNIT.SECOND)}
           ${this.twentyFourHourFormat ? nothing : this.generateAmPmComboBox()}
         </div>
       </div>

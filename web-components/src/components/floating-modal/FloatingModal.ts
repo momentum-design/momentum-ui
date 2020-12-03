@@ -79,21 +79,14 @@ export class FloatingModal extends LitElement {
             listeners: {
               move: this.resizeMoveListener
             },
-            modifiers: [
-              this.aspectRatio
-                ? interact.modifiers.aspectRatio({
+            modifiers: this.aspectRatio
+              ? [
+                  interact.modifiers.aspectRatio({
                     ratio: "preserve",
-                    equalDelta: true,
-                    modifiers: [
-                      interact.modifiers.restrictSize({
-                        min: { width: this.container.clientWidth, height: this.container.clientHeight }
-                      })
-                    ]
+                    equalDelta: true
                   })
-                : interact.modifiers.restrictSize({
-                    min: { width: this.container.clientWidth, height: this.container.clientHeight }
-                  })
-            ]
+                ]
+              : undefined
           })
           .draggable({
             autoScroll: true,

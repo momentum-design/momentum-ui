@@ -62,7 +62,7 @@ describe("DateTime Module", () => {
     expect(utilFuncReturn.weekNumber).toEqual(date.weekNumber + 1);
   });
   test("addMonths function returns revised date", async () => {
-    const date = now();
+    const date = DateTime.fromSQL("2020-10-10");
     const utilFuncReturn = addMonths(date, 1);
     expect(utilFuncReturn.month).toEqual(date.month + 1);
   });

@@ -17,6 +17,7 @@ import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export type modalType = "default" | "full" | "large" | "small" | "dialog";
+export const modalType = ["default", "full", "large", "small", "dialog"];
 
 const fadeDuration = 150;
 const minisculeLatency = 13;

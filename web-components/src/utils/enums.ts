@@ -46,6 +46,17 @@ export const comboBoxOptions = [
   "Malta"
 ];
 
+export const iconColorSample = [
+  "md-blue-70",
+  "md-green-60",
+  "md-yellow-70",
+  "md-red-60",
+  "md-blue-90",
+  "md-gray-80",
+  "md-orange-50",
+  "md-gold-70"
+]
+
 export const iconSamples = [
   "3d-object_16",
   "accessibility_16",

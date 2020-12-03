@@ -10,7 +10,7 @@ export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
 export { comboBoxTemplate } from "./combobox";
 export { editableField } from "./editable-field";
-export { floatingModalTemplate } from "./floating";
+export { floatingModalTemplate } from "./floating-modal";
 export { iconTemplate } from "./icon";
 export { inputTemplate } from "./input";
 export { labelTemplate } from "./label";

@@ -46,6 +46,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@interactjs/types": "^1.10.0",
     "@momentum-ui/core": "^19.9.12",
     "@momentum-ui/icons": "^7.54.0",
     "@momentum-ui/tokens": "^1.5.0",
@@ -118,6 +119,10 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@interactjs/actions": "^1.10.0",
+    "@interactjs/auto-start": "^1.10.0",
+    "@interactjs/interact": "^1.10.0",
+    "@interactjs/modifiers": "^1.10.0",
     "@popperjs/core": "^2.4.4",
     "@storybook/theming": "^6.0.28",
     "country-codes-list": "^1.6.8",

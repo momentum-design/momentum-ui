@@ -7,7 +7,7 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
@@ -44,6 +44,7 @@ export class Table extends LitElement {
     this.results = Papa.parse(this.tabledata, this.config);
     this.headerRow = this.results.data[0];
     this.csvData = this.results.data.slice(1, this.results.data.length);
+    this.requestUpdate("tabledata");
   }
 
   sortTab(ev: Event, key: any) {
@@ -79,6 +80,15 @@ export class Table extends LitElement {
 
     this.csvData = sortArr;
     this.requestUpdate("csvData");
+  }
+
+  protected update(changedProperties: PropertyValues) {
+    super.update(changedProperties);
+    if (changedProperties.has("tabledata")) {
+      this.results = Papa.parse(this.tabledata, this.config);
+      this.headerRow = this.results.data[0];
+      this.csvData = this.results.data.slice(1, this.results.data.length);
+    }
   }
 
   static get styles() {

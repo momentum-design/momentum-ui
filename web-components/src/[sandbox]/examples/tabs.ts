@@ -65,23 +65,24 @@ export const tabsTemplate = html`
       </md-tab-panel>
     </md-tabs>
     <br />
-    <md-tabs>
-      <md-tab slot="tab">
-        <md-icon name="recents_16"></md-icon>
-        <span>Contact History</span>
-      </md-tab>
-      <md-tab-panel slot="panel">
-        <span>Content for "Contact History"</span>
-      </md-tab-panel>
-      <md-tab slot="tab">
-        <md-icon name="apps_16"></md-icon>
-        <span>Cisco WxM</span>
-      </md-tab>
-      <md-tab-panel slot="panel">
-        <span>Content for "WxM"</span>
-      </md-tab-panel>
-    </md-tabs>
-
+    <div style="height: 150px;">
+      <md-tabs >
+        <md-tab slot="tab">
+          <md-icon name="recents_16"></md-icon>
+          <span>Contact History</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab">
+          <md-icon name="apps_16"></md-icon>
+          <span>Cisco WxM</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+      </md-tabs>
+    </div>
     <div style="max-width: 400px;">
       <h3>md-tabs justified</h3>
       <md-tabs justified>

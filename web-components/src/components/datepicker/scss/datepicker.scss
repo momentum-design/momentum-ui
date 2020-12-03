@@ -33,6 +33,7 @@
   &__navigation--current-month {
     font-size: rem-calc(16);
     font-weight: 700;
+    text-transform: capitalize;
   }
 
   &__navigation {
@@ -58,6 +59,7 @@
       justify-content: space-around;
       line-height: $day-name-line-height;
       margin: $day-name-margin;
+      text-transform: capitalize;
     }
 
     &::part(button) {

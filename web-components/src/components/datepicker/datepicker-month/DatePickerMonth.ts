@@ -18,9 +18,9 @@ export namespace DatePickerMonth {}
 
 @customElement("md-datepicker-month")
 export class DatePickerMonth extends LitElement {
-  @property({ attribute: false }) day: DateTime = now(); // provided from upper component scope
-  @property({ attribute: false }) filterParams: DayFilters | undefined = undefined; // Needed at the day level to set styles correctly
-  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined; // Needed at the day level to set styles correctly
+  @property({ attribute: false }) day: DateTime = now();
+  @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
+  @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
   renderWeeks = () => {
     let startOfWeekDay = getStartOfWeek(getStartOfMonth(this.day), this.datePickerProps?.weekStart);

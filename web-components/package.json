@@ -18,7 +18,7 @@
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private && cd publish && npm publish",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "test:ci": "jest --coverage --updateSnapshot",
+    "test:ci": "jest --coverage --updateSnapshot --maxWorkers=4",
     "storybook:resource": "npx web-component-analyzer src/components/**/*.ts --outFile .storybook/custom-elements.json",
     "storybook:dist": "npm run storybook:resource && build-storybook -c .storybook -o .out",
     "storybook:local": "npx http-server .out",

@@ -105,9 +105,9 @@ jobs:
       - run:
           name: Build web components library
           command: yarn build:wc
-      # - run:
-      #     name: Unit Test web components library
-      #     command: yarn ci:test:wc
+      - run:
+          name: Unit Test web components library
+          command: yarn ci:test:wc
       - run:
           name: Build Storybook
           command: yarn storybook:wc

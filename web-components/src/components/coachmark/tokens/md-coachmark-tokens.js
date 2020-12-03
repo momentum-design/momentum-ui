@@ -115,16 +115,6 @@ const coachmark = {
       dark: colors.cyan[20].name
     }
   },
-  hold: {
-    "bg-color": {
-      light: colors.yellow[10].name,
-      dark: colors.yellow[80].name
-    },
-    "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
-    }
-  },
   outline: {
     color: {
       light: colors.gray[50].name,

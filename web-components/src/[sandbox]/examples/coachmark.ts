@@ -6,6 +6,9 @@ import { customElement, html, LitElement, property } from "lit-element";
 @customElement("coach-template-sandbox")
 export class CoachTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
+  @property({ type: Boolean }) isOpenSecond = false;
+  @property({ type: Boolean }) isOpenThird = false;
+  @property({ type: Boolean }) isOpenFourth = false;
 
   private openCoach() {
     this.isOpen = true;
@@ -13,16 +16,68 @@ export class CoachTemplateSandbox extends LitElement {
 
   private closeCoach() {
     this.isOpen = false;
+    this.isOpenSecond = true;
+  }
+
+  private closeCoachSecond() {
+    this.isOpenSecond = false;
+    this.isOpenThird = true;
+  }
+
+  private closeCoachThird() {
+    this.isOpenThird = false;
+    this.isOpenFourth = true;
+  }
+
+  private closeCoachFourth() {
+    this.isOpenFourth = false;
   }
 
   render() {
     return html`
-      <md-coachmark ?show=${this.isOpen} placement="right">
+      <md-coachmark ?show=${this.isOpen} placement="right" color="violet">
         <div slot="coachmark-content">
           <span>Coachmark  test content</span>
-          <md-button slot="coachmark-content" @click=${this.closeCoach}>Coachmark close</md-button>
+          <md-button slot="coachmark-content" @click=${this.closeCoach}>Coachmark next</md-button>
         </div>
         <md-button @click=${this.openCoach}>Coachmark Default</md-button>
+      </md-coachmark>
+
+      <md-coachmark ?show=${this.isOpenSecond} placement="top" color="blue">
+        <div slot="coachmark-content">
+          <span>Coachmark second test content</span>
+          <md-button slot="coachmark-content" @click=${this.closeCoachSecond}>Coachmark next</md-button>
+        </div>
+        <md-activity-button .type=${"chat"} label="Chat"></md-activity-button>
+      </md-coachmark>
+
+      <md-coachmark ?show=${this.isOpenThird} placement="left" color="green">
+        <div slot="coachmark-content">
+          <span>Coachmark third test content</span>
+          <md-button slot="coachmark-content" @click=${this.closeCoachThird}>Coachmark close</md-button>
+        </div>
+        <md-badge color="mint">
+          <md-icon name="share-c-native-adr_12" size="16"></md-icon>
+          Social
+          <span class="counter" style="margin:0 1rem">${"3"}</span>
+        </md-badge>
+      </md-coachmark>
+
+      <md-coachmark ?show=${this.isOpenFourth} placement="bottom" color="purple">
+        <div slot="coachmark-content">
+          <span>Coachmark fourth test content</span>
+          <md-button slot="coachmark-content" @click=${this.closeCoachFourth}>Coachmark close</md-button>
+        </div>
+        <md-task-item
+          mediaType="telephony"
+          status="conference"
+          title="Mihael Varificantare for test text overflow"
+          queue="IRV_quelle_1167676776767676asdadadas"
+          lastmessage="I can ask one more question"
+          quantity="0"
+        >
+          <div>01:08:00</div>
+        </md-task-item>
       </md-coachmark>
     `;
   }

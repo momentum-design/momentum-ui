@@ -82,8 +82,8 @@ export function isSameMonth(date1: DateTime, date2: DateTime): boolean {
 
 export function isDayDisabled(day: DateTime, params: DayFilters): boolean {
   return (
-    (params.minDate?.day && day.day < params.minDate?.day) ||
-    (params.maxDate?.day && day.day > params.maxDate?.day) ||
+    (params.minDate?.startOf("day") && day.startOf("day") < params.minDate?.startOf("day")) ||
+    (params.maxDate?.startOf("day") && day.startOf("day") > params.maxDate?.startOf("day")) ||
     (params.filterDate && params.filterDate(day)) ||
     false
   );

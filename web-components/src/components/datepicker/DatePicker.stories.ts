@@ -1,6 +1,6 @@
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
-import { text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./DatePicker";
 
@@ -15,13 +15,8 @@ export default {
   }
 };
 
-export const Default = () => {
-  return html`
-    <md-datepicker></md-datepicker>
-  `;
-};
-
-export const Filters = () => {
+export const DatePicker = () => {
+  const darkTheme = boolean("darkMode", false);
   const minDate = text(
     "minimum date",
     now()
@@ -34,8 +29,9 @@ export const Filters = () => {
       .plus({ day: 5 })
       .toSQLDate()
   );
-
   return html`
-    <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
+    <md-theme ?darkTheme=${darkTheme}>
+      <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
+    </md-theme>
   `;
 };

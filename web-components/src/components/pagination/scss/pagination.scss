@@ -1,0 +1,101 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-pagination) {
+
+  .md-pagination {
+    display: flex;
+    position: relative;
+    padding: 0;
+    color: var(--pagination-nav-color, $md-pagination-nav-color-light);
+    font-size: $pagination-font-size;
+
+    &-container {
+      @include flex($fd: column);
+      flex: 0 1 100%;
+    }
+
+    &-list {
+      @include list-style();
+      @include flex();
+
+      li {
+        margin: $pagination-indent;
+      }
+      a {
+        display: block;
+        padding: $pagination-item-indent;
+        border-radius: $pagination-border-radius;
+        color: var(--pagination-color, $md-pagination-color-light);
+
+        &:hover {
+          background: var(--pagination-bg-hover, $md-pagination-bg-hover-light);
+        }
+
+        &:focus {
+          box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
+        }
+      }
+
+      .current {
+        a {
+          color: var(--pagination-color-current, $md-pagination-color-current-light);
+        }
+      }
+
+    }
+
+    &-nav {
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+      @include flex;
+      flex: 0 0 $pagination-arrow-size;
+      outline: none;
+      border-radius: $pagination-border-radius;
+      &[aria-label="previous"] {
+        text-align: left;
+      }
+      &[aria-label="next"] {
+        text-align: left;
+      }
+
+      &:hover {
+        color: var(--pagination-nav-hover, $md-pagination-nav-hover-light);
+      }
+
+      &:disabled {
+        color: var(--pagination-nav-disabled, $md-pagination-nav-disabled-light);
+        cursor: default;
+      }
+
+      &:focus {
+        box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
+      }
+    }
+
+    &-dots {
+      @include list-style();
+      @include flex;
+
+      li {
+        width: $pagination-dots-size;
+        height: $pagination-dots-size;
+        border-radius: 50%;
+        margin: $pagination-dots-margin;
+        background: var(--pagination-dots-color, $md-pagination-dots-color-light);
+        @include text-overflow();
+        cursor: pointer;
+
+        &.current,
+        &:hover {
+          background: var(--pagination-dots-color-current, $md-pagination-dots-color-current-light);
+        }
+      }
+    }
+  }
+
+}

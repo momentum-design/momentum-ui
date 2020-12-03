@@ -6,17 +6,16 @@
  *
  */
 
-import { FocusMixin } from "@/mixins";
-import { nothing } from "lit-html";
+import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { customElement, html, LitElement, property, query, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 
 export type coachmarkPlacement = "auto" | "left" | "right" | "top" | "bottom";
 
 @customElement("md-coachmark")
-export class Coachmark extends FocusMixin(LitElement) {
+export class Coachmark extends FocusTrapMixin(LitElement) {
   @property({ type: String }) message = "";
   @property({ type: String }) placement: coachmarkPlacement = "auto";
   @property({ type: Boolean }) show = false;
@@ -27,17 +26,8 @@ export class Coachmark extends FocusMixin(LitElement) {
 
   private slotContent: Element[] | null = null;
 
-  protected handleFocusIn(event: Event) {
-    if (super.handleFocusIn) {
-      super.handleFocusIn(event);
-    }
-    this.notifyCoachCreate();
-  }
-
-  protected handleFocusOut(event: Event) {
-    if (super.handleFocusOut) {
-      super.handleFocusOut(event);
-    }
+  connectedCallback() {
+    super.connectedCallback();
   }
 
   notifyCoachCreate() {
@@ -64,18 +54,35 @@ export class Coachmark extends FocusMixin(LitElement) {
     }
   }
 
+  protected update(changedProperties: PropertyValues) {
+    super.update(changedProperties);
+    if (changedProperties.has("show")) {
+      if (this.show) {
+        this.activateFocusTrap!();
+      } else {
+        this.deactivateFocusTrap!();
+      }
+    }
+  }
+
+  get coachWrapClassMap() {
+    return {
+      "md-coachmark--active": !!this.show
+    };
+  }
+
   get coachClassMap() {
     return {
-      [`md-coachmark__popper--${this.placement}`]: this.placement,
-      [`md-coachmark__popper--${this.color}`]: this.color
+      [`md-coachmark__popper--${this.placement}`]: !!this.placement,
+      [`md-coachmark__popper--${this.color}`]: !!this.color
     };
   }
 
   render() {
     return html`
-      <div class="md-coachmark ${this.show ? 'md-coachmark--active' : ''}">
-        <div class="md-coachmark__popper ${classMap(this.coachClassMap)}">
-          <div class="md-coachmark__content">
+      <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
+        <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
+          <div class="md-coachmark__content" >
             ${this.message
               ? this.message
               : html`

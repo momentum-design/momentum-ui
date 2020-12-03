@@ -1,9 +1,9 @@
-import { fixture, fixtureCleanup, html, elementUpdated, oneEvent } from "@open-wc/testing-helpers";
+import { fixture, fixtureCleanup, html, elementUpdated } from "@open-wc/testing-helpers";
 import "./TimePicker";
-import { TimePicker } from "./TimePicker";
-import { Input } from "../input/Input";
 import { Key } from "@/constants";
-import { ComboBox } from "../combobox/ComboBox";
+import { TimePicker } from "@/components/timepicker/TimePicker";
+import { Input } from "@/components/input/Input";
+import { ComboBox } from "@/components/combobox/ComboBox";
 
 describe("TimePicker Component", () => {
   afterEach(() => {

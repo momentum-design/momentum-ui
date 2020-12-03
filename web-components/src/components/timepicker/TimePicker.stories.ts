@@ -1,9 +1,9 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { withKnobs, boolean, text, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "./TimePicker";
-import { timeSpecificity } from "./TimePicker";
+import { timeSpecificity } from "@/components/timepicker/TimePicker";
 import { TIME_UNIT } from "@/constants";
+import "./TimePicker";
 
 export default {
   title: "Time Picker",

@@ -12,4 +12,7 @@ export const timePickerTemplate = html`
 
   <h3>timepicker editableHourOnly</h3>
   <md-timepicker editableHourOnly></md-timepicker>
+
+  <h3>timepicker defaultTime</h3>
+  <md-timepicker defaultTime="02:16:00 PM"></md-timepicker>
 `;

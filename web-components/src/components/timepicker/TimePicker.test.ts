@@ -1,7 +1,9 @@
-import { fixture, fixtureCleanup, html, elementUpdated } from "@open-wc/testing-helpers";
+import { fixture, fixtureCleanup, html, elementUpdated, oneEvent } from "@open-wc/testing-helpers";
 import "./TimePicker";
 import { TimePicker } from "./TimePicker";
 import { Input } from "../input/Input";
+import { Key } from "@/constants";
+import { ComboBox } from "../combobox/ComboBox";
 
 describe("TimePicker Component", () => {
   afterEach(() => {
@@ -27,11 +29,10 @@ describe("TimePicker Component", () => {
     const input = hourInput?.shadowRoot?.querySelector('input') as HTMLInputElement;
     expect(input?.type).toEqual('number');
     expect(input?.min).toEqual("1");
-    expect(input?.max).toEqual("24");
+    expect(input?.max).toEqual("23");
 
     const text = "12";
     hourInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: text }}));
-    // hourInput!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Digit5 }));
     await elementUpdated(element);
 
     const val = hourInput?.value;
@@ -47,18 +48,90 @@ describe("TimePicker Component", () => {
       `
     );
 
+
+    const timeChangeSpy = jest.spyOn(element, "handleTimeChange");
     const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
     const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
 
-    hourInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: "1" }}));
-    await elementUpdated(element);
     expect(minuteInput.hasAttribute('focus-visible')).toBeFalsy();
 
-    hourInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: "12" }}));
+    const keyDownEvent: CustomEvent = new CustomEvent("input-keydown", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: {
+          key: Key.Digit1
+        }
+      }
+    })
+    hourInput?.dispatchEvent(keyDownEvent);
     await elementUpdated(element);
-    expect(minuteInput.hasAttribute('focus-visible')).toBeTruthy();
 
-    const val = hourInput?.value;
-    expect(val).toEqual("12");
+    const event: CustomEvent = new CustomEvent("input-change", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        value: "12"
+      }
+    });
+    hourInput?.dispatchEvent(event);
+    await elementUpdated(element);
+
+    expect(timeChangeSpy).toHaveBeenCalled();
+    expect(hourInput.value).toEqual("12");
+    expect(minuteInput.hasAttribute('focus-visible')).toBeTruthy();
+  });
+
+  test("should render invalid input with aria-invalid onBlur when time value is invalid", async () => {
+    const element: TimePicker = await fixture<TimePicker>(
+      html`
+        <md-timepicker></md-timepicker>
+      `
+    );
+
+    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
+    const input = minuteInput?.shadowRoot?.querySelector('input') as HTMLInputElement;
+    expect(input?.type).toEqual('number');
+    expect(input?.min).toEqual("0");
+    expect(input?.max).toEqual("59");
+
+    const invalidMinuteText = "70";
+    minuteInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: invalidMinuteText }}));
+    await elementUpdated(element);
+
+    const blurEvent: CustomEvent = new CustomEvent("input-blur", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: 'genericEvent'
+      }
+    });
+    minuteInput?.dispatchEvent(blurEvent);
+    await elementUpdated(element);
+
+    expect(minuteInput?.value).toEqual(invalidMinuteText);
+    expect(minuteInput.ariaInvalid).toBeTruthy();
+    expect(minuteInput.value).toEqual(invalidMinuteText);
+    expect(minuteInput.messageArr).toEqual([{"message": "", "type": "error"}]);
+  });
+
+  test("should render the passed in default time correctly", async () => {
+    const element: TimePicker = await fixture<TimePicker>(
+      html`
+        <md-timepicker defaultTime="02:16:30 PM"></md-timepicker>
+      `
+    );
+
+    await elementUpdated(element);
+    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
+    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
+    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input;
+    const amPmComboBox = element.shadowRoot?.querySelector('.amPm-combo-box') as ComboBox;
+
+    await elementUpdated(element);
+    expect(hourInput.value).toEqual('02');
+    expect(minuteInput.value).toEqual('16');
+    expect(secondInput.value).toEqual('30');
+    expect(amPmComboBox.value).toEqual('PM');
   });
 });

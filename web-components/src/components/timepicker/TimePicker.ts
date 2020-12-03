@@ -1,4 +1,4 @@
-import { customElement, html, LitElement, property, internalProperty } from "lit-element";
+import { customElement, html, LitElement, property, internalProperty, PropertyValues } from "lit-element";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import "@/components/input/Input";
@@ -7,6 +7,7 @@ import { Input } from "@/components/input/Input";
 import { TIME_UNIT, Key } from "@/constants";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
+import { debug } from "webpack";
 
 export const timeUnits = [
   TIME_UNIT.HOUR,
@@ -14,6 +15,12 @@ export const timeUnits = [
   TIME_UNIT.SECOND,
   TIME_UNIT.AM_PM,
 ] as const;
+
+export const timeSpecificity = [
+  TIME_UNIT.HOUR,
+  TIME_UNIT.MINUTE,
+  TIME_UNIT.SECOND
+]
 
 const timePlaceholders = {
   [TIME_UNIT.HOUR]: "HH",
@@ -49,18 +56,32 @@ const timeUnitProps = (isTwentyFourHour: boolean) => {
 
 export namespace TimePicker {
   export type TimeUnit = typeof timeUnits[number];
+  export type TimeSpecificity = typeof timeSpecificity[number];
 }
 
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
   @property({ type: Boolean }) twentyFourHourFormat = false;
   @property({ type: Boolean }) editableHourOnly = false;
+  @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
+  @property({ type: String }) defaultTime = "12:00:00 AM";
 
   @internalProperty() private timeValue = {
     [TIME_UNIT.HOUR]: "12",
     [TIME_UNIT.MINUTE]: "00",
     [TIME_UNIT.SECOND]: "00",
     [TIME_UNIT.AM_PM]: "AM"
+  }
+
+  parseDefaultTime = () => {
+    debugger;
+    const times = this.defaultTime.split(":");
+    this.timeValue[TIME_UNIT.HOUR] = times.shift() || "12";
+    this.timeValue[TIME_UNIT.MINUTE] = times.shift() || "00";
+
+    const remainder = times.shift()?.split(" ");
+    this.timeValue[TIME_UNIT.SECOND] = remainder?.shift() || "00";
+    this.timeValue[TIME_UNIT.AM_PM] = remainder?.shift() || "AM";
   }
 
   @internalProperty() private timeValidity = {
@@ -72,6 +93,14 @@ export class TimePicker extends LitElement {
 
   @internalProperty() private tabNext = false;
   @internalProperty () private time = "";
+
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+
+    if (changedProperties.has("defaultTime")) {
+      this.parseDefaultTime();
+    }
+  }
 
   checkValidity = (input: string, unit: TimePicker.TimeUnit): boolean => {
     let result = true;
@@ -205,8 +234,7 @@ export class TimePicker extends LitElement {
   }
 
   getTimeString = () => {
-    // DateTime.fromSQL('2017-05-15 09:12:34.342')
-    const hr = this.timeValue.hour || "00";
+    const hr = this.timeValue.hour || "12";
     const min = this.timeValue.minute || "00";
     const sec = this.timeValue.second || "00";
     const amPm = this.timeValue.am_pm || "AM";
@@ -223,7 +251,7 @@ export class TimePicker extends LitElement {
     const unitProperties = timeUnitProps(this.twentyFourHourFormat)[unit];
 
     return html`
-      ${unit === TIME_UNIT.MINUTE ? html`<span class="colon-separator">:</span>` : nothing}
+      ${unit === TIME_UNIT.MINUTE || unit === TIME_UNIT.SECOND ? html`<span class="colon-separator">:</span>` : nothing}
       <md-input
         compact
         class="${`time-input-box ${unit}`}"
@@ -264,6 +292,7 @@ export class TimePicker extends LitElement {
         <div class="time-inputs-wrapper">
           ${this.generateTimeBox(TIME_UNIT.HOUR)}
           ${this.editableHourOnly ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}
+          ${this.editableHourOnly ? nothing : this.generateTimeBox(TIME_UNIT.SECOND)}
           ${this.twentyFourHourFormat ? nothing : this.generateAmPmComboBox()}
         </div>
       </div>

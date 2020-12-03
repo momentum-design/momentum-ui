@@ -44,25 +44,6 @@ describe("Modal Component", () => {
   });
   afterEach(fixtureCleanup);
 
-  test("should set first focusable element if modal open", async () => {
-    jest.useFakeTimers();
-
-    element.show = true;
-    await elementUpdated(element);
-
-    element.backDrop.dispatchEvent(new Event("transitionend"));
-    await nextFrame();
-    await nextFrame();
-    await elementUpdated(element);
-
-    const input = element.querySelector("input");
-
-    jest.runAllTimers();
-
-    expect(document.activeElement).toEqual(input);
-    jest.clearAllTimers();
-  });
-
   test("should dispatch event when modal closed", async () => {
     jest.useRealTimers();
     element.show = true;
@@ -142,6 +123,20 @@ describe("Modal Component", () => {
     expect(element.show).toBeTruthy();
   });
 
+  test("should close modal when enter key is pressed", async () => {
+    jest.useFakeTimers();
+
+    await elementUpdated(element);
+
+    const mockEnterClick = jest.spyOn(element, "handleKeyDown");
+    element.handleKeyDown(new KeyboardEvent("Enter"));
+    await elementUpdated(element);
+
+    expect(mockEnterClick).toHaveBeenCalled();
+
+    mockEnterClick.mockRestore();
+  });
+
   test("should close modal if backdrop button clicked", async () => {
     jest.useFakeTimers();
     element.show = true;
@@ -153,34 +148,6 @@ describe("Modal Component", () => {
     jest.runAllTimers();
     expect(element.show).toBeFalsy();
     jest.clearAllTimers();
-  });
-
-  test("should close modal if clicked outside", async () => {
-    jest.useFakeTimers();
-    element.show = true;
-    await elementUpdated(element);
-
-    const enter = new KeyboardEvent("keydown", { code: Key.Escape });
-    element.handleCloseOutside(enter);
-    jest.runAllTimers();
-    expect(element.show).toBeFalsy();
-  });
-
-  test("should close modal if clicked on modal button", async () => {
-    jest.useFakeTimers();
-    element.show = true;
-    element.showCloseButton = true;
-    await elementUpdated(element);
-
-    const space = new KeyboardEvent("keydown", { code: Key.Space });
-    const closeButton = element.shadowRoot!.querySelector(".md-modal__close");
-
-    closeButton!.dispatchEvent(space);
-
-    await elementUpdated(element);
-
-    jest.runAllTimers();
-    expect(element.show).toBeFalsy();
   });
 
   test("should close modal if clicked on modal footer button", async () => {
@@ -200,22 +167,4 @@ describe("Modal Component", () => {
     expect(element.show).toBeFalsy();
   });
 
-  test("should close modal if transition cancel", async () => {
-    jest.useFakeTimers();
-
-    element.show = true;
-    await elementUpdated(element);
-
-    element.backDrop.dispatchEvent(new Event("transitioncancel"));
-    await nextFrame();
-    await nextFrame();
-    await elementUpdated(element);
-
-    const input = element.querySelector("input");
-
-    jest.runAllTimers();
-
-    expect(document.activeElement).not.toEqual(input);
-    expect(element.show).toBeFalsy();
-  });
 });

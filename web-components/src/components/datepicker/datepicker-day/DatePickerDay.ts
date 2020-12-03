@@ -25,7 +25,7 @@ export class DatePickerDay extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.disabled = this.filterParams && isDayDisabled(this.day, this.filterParams) ? true : false;
+    this.disabled = (this.filterParams && isDayDisabled(this.day, this.filterParams)) || false;
     this.isOutsideMonth = this.day.month !== this.viewAnchorMonth;
     this.isToday = isSameDay(this.day, now());
     this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;

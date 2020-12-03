@@ -1,12 +1,26 @@
-import "./Slider";
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import "@/components/slider/Slider";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
+import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
-import { number, withKnobs } from "@storybook/addon-knobs";
+import { number, boolean, withKnobs } from "@storybook/addon-knobs";
 
 export default {
   title: "Slider",
   component: "md-slider",
   decorators: [withKnobs, withA11y],
+  argTypes: {
+    sliderSelectionStyleMap: { table: { disable: true } },
+    sliderPointerStyleMap: { table: { disable: true } }
+  },
   parameters: {
     a11y: {
       element: "md-slider"
@@ -14,30 +28,18 @@ export default {
   }
 };
 
-export const Default = () => html`
-  <md-slider></md-slider>
-`;
-
-export const Disabled = () => {
-  return html`
-    <md-slider disabled></md-slider>
-  `;
-};
-
-export const Steps = () => {
+export const Slider = () => {
+  const darkTheme = boolean("darkMode", false);
+  const disabled = boolean("Disabled", false);
   const step = number("step", 1);
   const min = number("min", 0);
   const max = number("max", 10);
   const now = number("now", 4);
-  return html`
-    <md-slider .min=${min} .max=${max} .step=${step} .now=${now}></md-slider>
-  `;
-};
-
-export const NoPointer = () => {
-  const now = number("now", 44);
+  const nopointer = boolean("No Pointer", false);
 
   return html`
-    <md-slider no-pointer .now=${now}></md-slider>
+    <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme}>
+      <md-slider @slider-change=${(action('change'))} .disabled=${disabled} .min=${min} .max=${max} .step=${step} .now=${now} ?no-pointer=${nopointer}></md-slider>
+    </md-theme>
   `;
 };

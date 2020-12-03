@@ -3,49 +3,17 @@
   border: $floating-main-border;
   border-radius: var(--floating-modal-main-radius, $lm-floating-modal-main-radius-light);
   box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
-  cursor: move;
   display: flex;
   flex-direction: column;
   max-height: 100%;
   max-width: 100%;
   position: absolute;
-  top: 10%;
-  left: 30%;
-  //transition: height 1s ease, width 1s ease, top 1s ease, left 1s ease; // this is not what i meant
+  touch-action: none;
+  user-select: none;
   z-index: 1040;
 
   &.fixed {
     position: fixed;
-  }
-
-  .resizer {
-    height: $floating-resize-size;
-    position: absolute;
-    width: $floating-resize-size;
-
-    &.top-left {
-      cursor: nwse-resize; /*resizer cursor*/
-      left: -$floating-resize-indent;
-      top: -$floating-resize-indent;
-    }
-
-    &.top-right {
-      cursor: nesw-resize;
-      right: -$floating-resize-indent;
-      top: -$floating-resize-indent;
-    }
-
-    &.bottom-left {
-      bottom: -$floating-resize-indent;
-      cursor: nesw-resize;
-      left: -$floating-resize-indent;
-    }
-
-    &.bottom-right {
-      bottom: -$floating-resize-indent;
-      cursor: nwse-resize;
-      right: -$floating-resize-indent;
-    }
   }
 
   .md-floating__header {

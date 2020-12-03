@@ -8,7 +8,7 @@
 }
 
 .md-tab__list {
-  border-bottom: var(--tab-list-border);
+  border-bottom: $tab-list-border;
   display: inline-flex;
   height: $tab-height;
   min-height: $tab-height;
@@ -25,8 +25,8 @@
 
   .md-menu-overlay__more {
     height: 100%;
-    width: auto;
     margin-left: auto;
+    width: auto;
 
     &.md-menu-overlay__more--hidden {
       pointer-events: none;
@@ -113,7 +113,7 @@
 }
 
 .md-tab__content ::slotted([slot="panel"][selected][focus-visible]:focus-visible) {
-  outline: var(--tab-focus-border);
+  outline: $tab-main-focus-border;
   outline-offset: calc(#{$tab-border} * -2);
   outline-style: solid;
 }
@@ -135,8 +135,12 @@
   flex-direction: row;
 }
 
+:host([direction="vertical"]) md-tab::part(tab) {
+  border-bottom: none;
+}
+
 :host-context([direction="vertical"]) .md-tab__list {
-  border-right: var(--tab-list-border);
+  border-right: $tab-list-border;
   display: inline-flex;
   flex-direction: column;
   height: 100%;
@@ -152,7 +156,7 @@
 }
 
 :host-context([direction="vertical"]) .md-tab__list ::slotted([slot="tab"][selected]) {
-  border-left: var(--tab-active-border);
+  border-left: $tab-active-border;
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 

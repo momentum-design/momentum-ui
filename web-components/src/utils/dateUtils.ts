@@ -6,6 +6,7 @@ export interface DayFilters {
   filterDate: Function | undefined;
 }
 export interface DatePickerProps {
+  locale: string | undefined;
   selected: DateTime;
   focused: DateTime;
   weekStart: string;

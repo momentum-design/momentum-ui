@@ -10,9 +10,8 @@ export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
-export { timePickerTemplate } from "./timepicker";
 export { editableField } from "./editable-field";
-export { floatingModalTemplate } from "./floating";
+export { floatingModalTemplate } from "./floating-modal";
 export { iconTemplate } from "./icon";
 export { inputTemplate } from "./input";
 export { labelTemplate } from "./label";
@@ -30,6 +29,7 @@ export { spinnerTemplate } from "./spinner";
 export { tabsTemplate } from "./tabs";
 export { tableTemplate } from "./table";
 export { taskItemTemplate } from "./task-item";
+export { timePickerTemplate } from "./timepicker";
 export { toggleSwitchTemplate } from "./toggle-switch";
 export { tooltipTemplate } from "./tooltip";
 // eslint-disable-next-line prettier/prettier

@@ -22,6 +22,7 @@ export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePi
 export { DatePickerWeek } from "./components/datepicker/datepicker-week/DatePickerWeek";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
+export { HelpText } from "./components/help-text/HelpText";
 export { Icon } from "./components/icon/Icon";
 export { Input } from "./components/input/Input";
 export { Label } from "./components/label/Label";

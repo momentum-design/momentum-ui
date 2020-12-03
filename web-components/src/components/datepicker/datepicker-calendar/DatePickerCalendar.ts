@@ -34,6 +34,7 @@ export class DatePickerCalendar extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.viewAnchorDate = this.datePickerProps?.focused || this.datePickerProps?.selected || now();
+    this.locale = this.datePickerProps?.locale || "en";
   }
 
   setDate = (date: DateTime, cb?: Function) => {

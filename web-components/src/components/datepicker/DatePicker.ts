@@ -15,8 +15,8 @@ export class DatePicker extends LitElement {
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+  @property({ type: String }) locale: string | undefined = undefined;
 
-  @internalProperty() locale: string = now().locale;
   @internalProperty() selectedDate: DateTime = now();
   @internalProperty() focusedDate: DateTime = now();
   @internalProperty() filterDate: Function | undefined = undefined;
@@ -132,7 +132,12 @@ export class DatePicker extends LitElement {
         <md-datepicker-calendar
           @day-select=${(e: CustomEvent) => this.handleSelect(e)}
           @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${{ selected: this.selectedDate, focused: this.focusedDate, weekStart: this.weekStart }}
+          .datePickerProps=${{
+            locale: this.locale,
+            selected: this.selectedDate,
+            focused: this.focusedDate,
+            weekStart: this.weekStart
+          }}
           .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
         ></md-datepicker-calendar>
       </md-menu-overlay>

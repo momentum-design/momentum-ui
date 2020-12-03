@@ -17,7 +17,6 @@ import {
   chipTemplate,
   comboBoxTemplate,
   datePickerTemplate,
-  timePickerTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -37,6 +36,7 @@ import {
   tableTemplate,
   tabsTemplate,
   taskItemTemplate,
+  timePickerTemplate,
   toggleSwitchTemplate,
   tooltipTemplate
 } from "./examples";
@@ -240,8 +240,8 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-floating-dialog">
-            <h2>md-floating-dialog</h2>
+          <div class="container" aria-label="md-floating-modal">
+            <h2>md-floating-modal</h2>
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
             </sass-stats>

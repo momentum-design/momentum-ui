@@ -1,7 +1,16 @@
-import "./Checkbox";
-import "./CheckboxGroup";
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+ import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
@@ -15,49 +24,29 @@ export default {
   }
 };
 
-export const Default = () => {
-  return html`
-    <md-checkbox>Developing</md-checkbox>
-  `;
-};
+export const Checkbox = () => {
+  const darkTheme = boolean("darkMode", false);
+  const check = boolean("Checked state", false);
+  const label = text("Label", "Developing")
+  const disable = boolean("Disabled State", false);
+  const indeter = boolean("Indeterminate State", false);
+  const group = boolean("Checkbox group", false);
 
-export const Checked = () => {
   return html`
-    <md-checkbox checked>Linting</md-checkbox>
-  `;
-};
-
-export const Disabled = () => {
-  return html`
-    <md-checkbox disabled>Linting</md-checkbox>
-  `;
-};
-
-export const Indeterminate = () => {
-  return html`
-    <md-checkbox indeterminate>Linting</md-checkbox>
-  `;
-};
-
-export const DisabledChecked = () => {
-  return html`
-    <md-checkbox disabled checked>Linting</md-checkbox>
-  `;
-};
-
-export const DisabledIndeterminate = () => {
-  return html`
-    <md-checkbox disabled indeterminate>Checkbox</md-checkbox>
-  `;
-};
-
-export const Group = () => {
-  return html`
-    <md-checkboxgroup group-label="group_process">
-      <md-checkbox slot="checkbox" checked>Developing</md-checkbox>
-      <md-checkbox slot="checkbox" disabled>Linting</md-checkbox>
-      <md-checkbox slot="checkbox">Testing</md-checkbox>
-      <md-checkbox slot="checkbox" indeterminate>Building</md-checkbox>
-    </md-checkboxgroup>
+    ${group ?
+    html`
+      <md-theme class="theme-toggle" id="checkbox-group" ?darkTheme=${darkTheme}>
+        <md-checkboxgroup group-label="group_process">
+          <md-checkbox slot="checkbox" .checked=${check}>Developing</md-checkbox>
+          <md-checkbox slot="checkbox" .disabled=${disable}>Linting</md-checkbox>
+          <md-checkbox slot="checkbox">Testing</md-checkbox>
+          <md-checkbox slot="checkbox" .indeterminate=${indeter}>Building</md-checkbox>
+        </md-checkboxgroup>
+      </md-theme>` :
+    html`
+      <md-theme class="theme-toggle" id="checkbox" ?darkTheme=${darkTheme}>
+        <md-checkbox label="${label}" .checked=${check} .disabled=${disable} .indeterminate=${indeter}>Developing</md-checkbox>
+      </md-theme>
+    `}
   `;
 };

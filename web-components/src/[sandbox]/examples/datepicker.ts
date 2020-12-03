@@ -18,7 +18,7 @@ const maxDate = now()
 export const datePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>
   <h3>datepicker</h3>
-  <md-datepicker></md-datepicker>
+  <md-datepicker locale="ru"></md-datepicker>
   <h3>datepicker with min / max filters</h3>
   <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
   <h3>datepicker with Monday start week start</h3>

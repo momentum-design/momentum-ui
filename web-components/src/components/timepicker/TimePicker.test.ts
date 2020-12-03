@@ -162,24 +162,4 @@ describe("TimePicker Component", () => {
     expect(minuteInput.value).toEqual(invalidMinuteText);
     expect(minuteInput.messageArr).toEqual([{"message": "", "type": "error"}]);
   });
-
-  test("should render the passed in default time correctly", async () => {
-    const element: TimePicker = await fixture<TimePicker>(
-      html`
-        <md-timepicker defaultTime="02:16:30 PM"></md-timepicker>
-      `
-    );
-
-    await elementUpdated(element);
-    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
-    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input;
-    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input;
-    const amPmComboBox = element.shadowRoot?.querySelector('.amPm-combo-box') as ComboBox;
-
-    await elementUpdated(element);
-    expect(hourInput.value).toEqual('02');
-    expect(minuteInput.value).toEqual('16');
-    expect(secondInput.value).toEqual('30');
-    expect(amPmComboBox.value).toEqual('PM');
-  });
 });

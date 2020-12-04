@@ -14,6 +14,7 @@ import styles from "./scss/module.scss";
 export type LinkTag = "a" | "div" | "span";
 export const linkTag = ["a", "div", "span"];
 export type LinkColor = "" | "blue" | "red" | "green" | "yellow" | "orange";
+export const LinkColor = ["", "blue", "red", "green", "yellow", "orange"];
 
 @customElement("md-link")
 export class Link extends LitElement {
@@ -82,6 +83,7 @@ export class Link extends LitElement {
     `;
   }
 }
+
 declare global {
   interface HTMLElementTagNameMap {
     "md-link": Link;

@@ -8,6 +8,7 @@ export { breadcrumbTemplate } from "./breadcrumb";
 export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
+export { colorTableTemplate } from "./colorTable";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
 export { editableField } from "./editable-field";

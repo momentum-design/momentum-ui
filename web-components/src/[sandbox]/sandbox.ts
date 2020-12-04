@@ -15,6 +15,7 @@ import {
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
+  colorTableTemplate,
   comboBoxTemplate,
   datePickerTemplate,
   editableField,
@@ -207,6 +208,13 @@ export class Sandbox extends LitElement {
             <h2>md-chip</h2>
             <sass-stats component="chip">
               ${chipTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-colors">
+            <h2>md-colors</h2>
+            <sass-stats component="table">
+              ${colorTableTemplate}
             </sass-stats>
           </div>
 

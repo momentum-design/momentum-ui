@@ -1,0 +1,22 @@
+export const colorTableData = `
+{{#each this}}
+{{#with light}}
+--{{../prefix}}-{{../component}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+{{/with}}
+{{#each this}}
+{{#with light}}
+--{{../../prefix}}-{{../../component}}-{{@key}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+{{/with}}
+{{#each this}}
+{{#with light}}
+--{{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+{{/with}}
+{{#each this}}
+{{#with light}}
+--{{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+{{/with}}
+{{/each}}
+{{/each}}
+{{/each}}
+{{/each}}
+`;

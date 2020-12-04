@@ -273,10 +273,10 @@ export class TimePicker extends LitElement {
     const options = ['AM', "PM"];
     return html `
       <md-combobox
+        compact
         class="amPm-combo-box"
         .options=${options}
         .value=${[options[0]]}
-        withoutIcons
         @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"
       ></md-combobox>
     `;

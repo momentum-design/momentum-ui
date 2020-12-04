@@ -3,6 +3,7 @@
   position: relative;
 
   &__popper {
+    border-radius: $coachmark-main-raduis;
     display: none;
     min-width: $coachmark-min-width;
     padding: $coachmark-main-padding;

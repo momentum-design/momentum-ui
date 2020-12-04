@@ -8,24 +8,22 @@ const data = 'Group, Action, Shortcut Key \n Active Task List, Switch between ta
 export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
 
-  private open() {
+  private openFloatingModal() {
     this.isOpen = true;
-    this.requestUpdate("isOpen");
   }
 
-  private close() {
+  private closeFloatingModal() {
     this.isOpen = false;
-    this.requestUpdate("isOpen");
   }
 
   render() {
     return html`
-      <md-button @button-click=${() => this.open()}>Open Floating Modal</md-button>
+      <md-button @button-click=${() => this.openFloatingModal()}>Open Floating Modal</md-button>
 
       <md-floating-modal
         heading="Keyboard Shortcuts"
         ?show=${this.isOpen}
-        @close-floating=${() => this.close()}
+        @floating-modal-close=${() => this.closeFloatingModal()}
       >
         <md-table tabledata="${data}" sorting></md-table>
       </md-floating-modal>

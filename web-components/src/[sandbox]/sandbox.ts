@@ -10,12 +10,13 @@ import {
   alertTemplate,
   avatarTemplate,
   badgeTemplate,
-  buttonTemplate,
   breadcrumbTemplate,
+  buttonTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
   comboBoxTemplate,
+  datePickerTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -33,8 +34,8 @@ import {
   radioGroupTemplate,
   sliderTemplate,
   spinnerTemplate,
-  tabsTemplate,
   tableTemplate,
+  tabsTemplate,
   taskItemTemplate,
   toggleSwitchTemplate,
   tooltipTemplate
@@ -107,12 +108,39 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-          <div class="container" aria-label="md-pagination">
-            <h2>md-pagination</h2>
-            <sass-stats component="pagination">
-              ${paginationTemplate}
+          <div class="container" aria-label="md-datepicker">
+            <h2>md-datepicker</h2>
+            <sass-stats component="datepicker">
+              ${datePickerTemplate}
             </sass-stats>
           </div>
+          <div class="container" aria-label="md-table">
+            <h2>md-table</h2>
+            <sass-stats component="table">
+              ${tableTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-menu-overlay">
+            <h2>md-menu-overlay</h2>
+            <sass-stats component="menu-overlay">
+              ${menuOverlayTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-phone-input">
+            <sass-stats component="phone-input">
+              ${phoneInputTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-task-item">
+            <h2>md-task-item</h2>
+            <sass-stats component="taskitem">
+              ${taskItemTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-activity-button">
             <h2>md-activity-button</h2>
             <sass-stats component="activity-button">
@@ -190,6 +218,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-datepicker">
+            <h2>md-datepicker</h2>
+            <sass-stats component="datepicker">
+              ${datePickerTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-editable-field">
             <h2>md-editable-field</h2>
             <sass-stats component="editable-textfield">
@@ -197,8 +232,8 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-floating-dialog">
-            <h2>md-floating-dialog</h2>
+          <div class="container" aria-label="md-floating-modal">
+            <h2>md-floating-modal</h2>
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
             </sass-stats>

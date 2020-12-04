@@ -70,7 +70,7 @@ export class ActivityButton extends LitElement {
   render() {
     return html`
       <md-button
-        ariaLabel=${this.ariaLabel}
+        aria-label=${this.ariaLabel}
         circle
         .activityType=${this.type}
         ?containerLarge=${this.size === "84"}

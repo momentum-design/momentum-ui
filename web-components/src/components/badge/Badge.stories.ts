@@ -1,14 +1,30 @@
-import { withA11y } from "@storybook/addon-a11y";
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { badgeColor } from "@/utils/enums";
 import "@/components/icon/Icon";
-import "./Badge";
+import "@/components/badge/Badge";
+import "@/components/theme/Theme";
 
 export default {
   title: "Badge",
   component: "md-badge",
   decorators: [withKnobs, withA11y],
+  argTypes: {
+    renderBgColor: { table: { disable: true } },
+    renderTextColor: { table: { disable: true } },
+    renderHeight: { table: { disable: true } },
+    renderWidth: { table: { disable: true } },
+    getStyles: { table: { disable: true } }
+  },
   parameters: {
     a11y: {
       element: "md-badge"
@@ -16,64 +32,22 @@ export default {
   }
 };
 
-export const Default = () => {
-  return html`
-    <md-badge>Default</md-badge>
-  `;
-};
+export const Badge = () => {
+  const darkTheme = boolean("darkMode", false);
+  const color = select("Color", badgeColor, "blue");
+  const bgColor = text("BG Color Overrides", "blue");
+  const textColor = text("Text Color Override", "white");
+  const height = text("Height Override", "");
+  const width = text("Width Override", "");
+  const circle = boolean("Circle", false);
+  const small = boolean("Small", false);
+  const icon = boolean("With icon", false)
 
-export const Color = () => {
-  const label = "Color";
-  const defaultColor = "blue";
-  const color = select(label, badgeColor, defaultColor);
   return html`
-    <md-badge color=${color}>
-      Badge ${color}
+  <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme}>
+    <md-badge .color=${color} .bgColor=${bgColor} .small=${small} .textColor=${textColor} .height=${height} .width=${width} .circle=${circle}>
+      ${icon ? html`<md-icon name="chat-active_16"></md-icon>` : html`Badge ${color}`}
     </md-badge>
-  `;
-};
-
-export const bgColor = () => {
-  const bgLabel = "BG Color Overrides";
-  const textLabel = "Text Color Override";
-  const defaultBgColor = "blue";
-  const defaultTestColor = "white";
-  const bgColor = text(bgLabel, defaultBgColor);
-  const textColor = text(textLabel, defaultTestColor);
-  return html`
-    <md-badge bgColor=${bgColor} textColor=${textColor}>
-      Custom Badge
-    </md-badge>
-  `;
-};
-
-export const Size = () => {
-  const heightLabel = "Height Override";
-  const widthLabel = "Width Override";
-  const defaultheight = "40px";
-  const defaultwidth = "40px";
-  const height = text(heightLabel, defaultheight);
-  const width = text(widthLabel, defaultwidth);
-  return html`
-    <md-badge height=${height} width=${width}>
-      Custom Badge
-    </md-badge>
-  `;
-};
-
-export const Circle = () => {
-  return html`
-    <md-badge circle>
-      <md-icon name="chat-active_16"></md-icon>
-    </md-badge>
-  `;
-};
-
-export const Small = () => {
-  const label = "small";
-  const defaultValue = true;
-  const small = boolean(label, defaultValue);
-  return html`
-    <md-badge .small=${small}> <md-icon name="chat-active_16"></md-icon> Chat </md-badge>
+  </md-theme>
   `;
 };

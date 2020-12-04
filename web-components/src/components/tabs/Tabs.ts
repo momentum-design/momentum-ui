@@ -45,6 +45,7 @@ export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
 export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @property({ type: Boolean }) justified = false;
   @property({ type: String }) overlowLabel = "More";
+  @property({ type: String }) direction = "horizontal"
 
   @query('slot[name="tab"]') tabSlotElement?: HTMLSlotElement;
   @query('slot[name="panel"]') panelSlotElement?: HTMLSlotElement;

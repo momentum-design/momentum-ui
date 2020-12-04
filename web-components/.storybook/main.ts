@@ -1,4 +1,5 @@
-import { commonDev } from "../webpack.config";
+import { commonDev } from '../webpack.config';
+import * as webpack from "webpack";
 
 /**
  * merge two arrays into one and remove the duplicates
@@ -15,15 +16,56 @@ const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
 module.exports = {
   stories: ["../src/components/**/*.stories.ts"],
 
-  addons: ["@storybook/addon-knobs/register", "@storybook/addon-a11y/register", "@storybook/addon-docs"],
+  addons: [
+    "@storybook/addon-knobs/register",
+    "@storybook/addon-a11y/register",
+    "@storybook/addon-docs",
+    "@storybook/addon-backgrounds",
+    "@storybook/addon-controls",
+    "@storybook/addon-actions",
+    "@storybook/addon-viewport"
+  ],
 
-  webpackFinal: async (config: any) => {
+  webpackFinal: async (storybookConfig: webpack.Configuration, { configType }: { configType : "DEVELOPMENT" | "PRODUCTION" }) => {
 
-    config.resolve.extensions = mergeUnique(config.resolve.extensions, commonDev.resolve?.extensions);
-    config.resolve.alias = commonDev.resolve?.alias;
-    config.module.rules = mergeUnique(config.module.rules, commonDev.module?.rules);
-    config.plugins = mergeUnique(config.plugins, commonDev.plugins)
+    console.log("Storybook build mode: ", configType);
+    
+    // RESOLVE
+    {
+      storybookConfig.resolve = storybookConfig.resolve || {};
 
-    return config;
+      // EXTENSIONS
+      {
+        storybookConfig.resolve.extensions = mergeUnique(storybookConfig.resolve?.extensions || [], commonDev.resolve?.extensions || []);
+      }
+
+      // ALIAS
+      {
+        storybookConfig.resolve.alias = commonDev.resolve?.alias;
+      }
+    }
+
+    // MODULE
+    {
+      storybookConfig.module = storybookConfig.module || { rules: [] };
+
+      // RULES
+      {
+        storybookConfig.module.rules = mergeUnique(storybookConfig.module.rules, commonDev.module?.rules || []);
+      }
+    }
+
+    // PLUGINS
+    {
+
+      // Storybook production has it's own tuned HtmlWebpackPlugin
+      const omitPluginNames = (configType === "DEVELOPMENT") ? [] : ["HtmlWebpackPlugin"];
+
+      const plugins = (commonDev.plugins || []).filter(p => omitPluginNames.indexOf(p.constructor.name) === -1);
+
+      storybookConfig.plugins = mergeUnique(storybookConfig.plugins || [], plugins);
+    }
+
+    return storybookConfig;
   }
 }

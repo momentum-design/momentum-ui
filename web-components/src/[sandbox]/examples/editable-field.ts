@@ -56,7 +56,7 @@ export class EditableFieldTemplateSandbox extends LitElement {
     return html`
       <p>Get new text that was changed in editable field - ${this.textChanged}</p>
       <h3>With composed text</h3>
-      <md-editable-field>
+      <md-editable-field max-lines="2">
         Test text in slot
       </md-editable-field>
       <h3>Disabled</h3>

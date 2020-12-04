@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot --maxWorkers=4",
     "storybook:resource": "npx web-component-analyzer src/components/**/*.ts --outFile .storybook/custom-elements.json",
-    "storybook:dist": "build-storybook -c .storybook -o .out",
+    "storybook:dist": "npm run storybook:resource && build-storybook -c .storybook -o .out",
     "storybook:local": "npx http-server .out",
     "storybook": "npm run storybook:resource && start-storybook -p 1234",
     "deploy-storybook": "storybook-to-ghpages",

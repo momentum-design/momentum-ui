@@ -232,10 +232,10 @@ export class TimePicker extends LitElement {
   }
 
   getTimeString = () => {
-    const hr = this.timeValue.hour || "12";
-    const min = this.timeValue.minute || "00";
-    const sec = this.timeValue.second || "00";
-    const amPm = this.timeValue.am_pm || "AM";
+    const hr = this.timeValue[TIME_UNIT.HOUR] || "12";
+    const min = this.timeValue[TIME_UNIT.MINUTE] || "00";
+    const sec = this.timeValue[TIME_UNIT.SECOND] || "00";
+    const amPm = this.timeValue[TIME_UNIT.AM_PM] || "AM";
 
     const timeString = hr + ":" + min + ":" + sec + " " + amPm;
     return timeString;
@@ -286,7 +286,6 @@ export class TimePicker extends LitElement {
   render() {
     return html`
     <div class="md-timepicker">
-        <!-- <p>Time: ${this.getTimeString()}</p> -->
         <div class="time-inputs-wrapper">
           ${this.generateTimeBox(TIME_UNIT.HOUR)}
           ${this.timeSpecificity === TIME_UNIT.HOUR ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}

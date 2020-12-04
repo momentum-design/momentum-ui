@@ -18,13 +18,13 @@
     width: $time-box-width;
   }
 
-  .amPm-combo-box::part(combobox) {
-    top: $am-pm-combobox-top-adjustment;
-  }
-
   .amPm-combo-box::part(group) {
     padding: 0;
-    padding-left: $am-pm-combobox-group-left-padding;
+  }
+
+  .amPm-combo-box::part(multiwrap-input) {
+    text-align: center;
+    width: 100%;
   }
 
   .amPm-combo-box::part(label) {
@@ -54,6 +54,7 @@
   .colon-separator {
     color: var(--md-secondary-text-color, $md-gray-70);
     font-size: $colon-separator-font-size;
+    line-height: 125%;
     margin: 0 $colon-side-margin;
   }
 }

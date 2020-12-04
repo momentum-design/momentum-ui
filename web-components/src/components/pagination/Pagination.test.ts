@@ -1,6 +1,5 @@
 import "./Pagination";
 import { Pagination } from "./Pagination";
-import { paginationItems } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 
@@ -12,7 +11,7 @@ describe("Pagination component", () => {
   beforeEach(async () => {
     element = await fixture<Pagination>(
       html`
-        <md-pagination .items="${paginationItems}"></md-pagination>
+        <md-pagination page="1" total="101" limit="10" size="2"></md-pagination>
       `
     );
   });

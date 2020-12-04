@@ -35,26 +35,24 @@ export class CoachTemplateSandbox extends LitElement {
 
   render() {
     return html`
-      <md-coachmark ?show=${this.isOpen} placement="right" color="violet">
+      <md-coachmark ?show=${this.isOpen} placement="right" color="violet" @coach-action=${this.closeCoach}>
         <div slot="coachmark-content">
           <span>Coachmark  test content</span>
-          <md-button slot="coachmark-content" @click=${this.closeCoach}>Coachmark next</md-button>
         </div>
-        <md-button @click=${this.openCoach}>Coachmark Default</md-button>
+        <md-button @button-click=${this.openCoach}>Coachmark Default</md-button>
       </md-coachmark>
 
-      <md-coachmark ?show=${this.isOpenSecond} placement="top" color="blue">
+      <md-coachmark ?show=${this.isOpenSecond} placement="top" color="blue" @coach-action=${this.closeCoachSecond}>
         <div slot="coachmark-content">
           <span>Coachmark second test content</span>
-          <md-button slot="coachmark-content" @click=${this.closeCoachSecond}>Coachmark next</md-button>
         </div>
         <md-activity-button .type=${"chat"} label="Chat"></md-activity-button>
       </md-coachmark>
 
-      <md-coachmark ?show=${this.isOpenThird} placement="left" color="green">
+      <md-coachmark ?show=${this.isOpenThird} placement="left" color="green" hidebutton>
         <div slot="coachmark-content">
           <span>Coachmark third test content</span>
-          <md-button slot="coachmark-content" @click=${this.closeCoachThird}>Coachmark close</md-button>
+          <md-button slot="coachmark-action" @button-click=${this.closeCoachThird}>Slot button next</md-button>
         </div>
         <md-badge color="mint">
           <md-icon name="share-c-native-adr_12" size="16"></md-icon>
@@ -63,10 +61,10 @@ export class CoachTemplateSandbox extends LitElement {
         </md-badge>
       </md-coachmark>
 
-      <md-coachmark ?show=${this.isOpenFourth} placement="bottom" color="purple">
+      <md-coachmark ?show=${this.isOpenFourth} placement="bottom" color="purple" hidebutton>
         <div slot="coachmark-content">
           <span>Coachmark fourth test content</span>
-          <md-button slot="coachmark-content" @click=${this.closeCoachFourth}>Coachmark close</md-button>
+          <md-button slot="coachmark-action" @click=${this.closeCoachFourth}>Slot button close</md-button>
         </div>
         <md-task-item
           mediaType="telephony"

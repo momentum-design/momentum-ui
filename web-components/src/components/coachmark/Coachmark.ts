@@ -11,12 +11,15 @@ import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { customElement, html, LitElement, property, query, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
+import "@/components/button/Button";
 
 export type coachmarkPlacement = "auto" | "left" | "right" | "top" | "bottom";
 
 @customElement("md-coachmark")
 export class Coachmark extends FocusTrapMixin(LitElement) {
   @property({ type: String }) message = "";
+  @property({ type: String }) actionname = "Next"
+  @property({ type: Boolean }) hidebutton = false;
   @property({ type: String }) placement: coachmarkPlacement = "auto";
   @property({ type: Boolean }) show = false;
   @property({ type: String }) color = "default";
@@ -44,6 +47,18 @@ export class Coachmark extends FocusTrapMixin(LitElement) {
     );
   }
 
+  coachAction() {
+    this.dispatchEvent(
+      new CustomEvent("coach-action", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          popper: this.popper
+        }
+      })
+    );
+  }
+
   handleSlotChange(event: Event) {
     const slot = event.target as HTMLSlotElement;
     if (slot) {
@@ -58,9 +73,10 @@ export class Coachmark extends FocusTrapMixin(LitElement) {
     super.update(changedProperties);
     if (changedProperties.has("show")) {
       if (this.show) {
-        this.activateFocusTrap!();
-      } else {
-        this.deactivateFocusTrap!();
+        this.setFocusableElements!();
+        if (this.focusableElements && this.focusableElements.length) {
+          this.focusableElements[0].focus();
+        }
       }
     }
   }
@@ -88,6 +104,11 @@ export class Coachmark extends FocusTrapMixin(LitElement) {
               : html`
                   <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
                 `}
+            <div class="md-coachmark__action">
+              ${this.hidebutton 
+                ? html`<slot name="coachmark-action"></slot>` 
+                : html`<md-button @button-click=${this.coachAction}>${this.actionname}</md-button>`}
+            </div>
           </div>
           <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
         </div>

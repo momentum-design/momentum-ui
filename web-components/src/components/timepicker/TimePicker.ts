@@ -61,9 +61,8 @@ export namespace TimePicker {
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
   @property({ type: Boolean }) twentyFourHourFormat = false;
-  @property({ type: Boolean }) editableHourOnly = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) defaultTime = "12:00:00 AM";
+  @property({ type: String, reflect: true }) selectedTime = "12:00:00 AM";
 
   @internalProperty() private timeValue = {
     [TIME_UNIT.HOUR]: "12",
@@ -72,8 +71,8 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: "AM"
   }
 
-  parseDefaultTime = () => {
-    const times = this.defaultTime.split(":");
+  parseSelectedTime = () => {
+    const times = this.selectedTime.split(":");
     this.timeValue[TIME_UNIT.HOUR] = times.shift() || "12";
     this.timeValue[TIME_UNIT.MINUTE] = times.shift() || "00";
 
@@ -95,8 +94,8 @@ export class TimePicker extends LitElement {
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (changedProperties.has("defaultTime")) {
-      this.parseDefaultTime();
+    if (changedProperties.has("selectedTime")) {
+      this.parseSelectedTime();
     }
   }
 
@@ -131,6 +130,22 @@ export class TimePicker extends LitElement {
      return result;
   };
 
+  updateTime = (unit: TIME_UNIT) => {
+    if (this.timeValidity[unit]) {
+      this.selectedTime = this.getTimeString();
+    }
+
+    this.dispatchEvent(
+      new CustomEvent(`selected-time-change`, {
+        bubbles: true,
+        composed: true,
+        detail: {
+          time: this.selectedTime
+        }
+      })
+    );
+  }
+
   handleTimeChange(event: CustomEvent, unit: TimePicker.TimeUnit) {
     this.timeValue[unit] = event?.detail?.value;
     this.requestUpdate();
@@ -156,6 +171,8 @@ export class TimePicker extends LitElement {
           targetInput?.select();
         }
       }
+    } else if (unit === TIME_UNIT.AM_PM) {
+      this.updateTime(unit);
     }
 
     event.stopPropagation();
@@ -201,16 +218,17 @@ export class TimePicker extends LitElement {
   handleTimeBlur(event: CustomEvent, unit: TimePicker.TimeUnit) {
     this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
     this.formatTimeUnit(this.timeValue[unit], unit);
+    this.updateTime(unit);
     this.requestUpdate();
 
     event.stopPropagation();
     this.dispatchEvent(
-      new CustomEvent(`time-update`, {
+      new CustomEvent(`${unit}-blur`, {
         bubbles: true,
         composed: true,
         detail: {
           srcEvent: event,
-          time: this.time,
+          time: this.selectedTime,
           isValid: this.timeValidity[unit]
         }
       })
@@ -232,10 +250,10 @@ export class TimePicker extends LitElement {
   }
 
   getTimeString = () => {
-    const hr = this.timeValue[TIME_UNIT.HOUR] || "12";
-    const min = this.timeValue[TIME_UNIT.MINUTE] || "00";
-    const sec = this.timeValue[TIME_UNIT.SECOND] || "00";
-    const amPm = this.timeValue[TIME_UNIT.AM_PM] || "AM";
+    const hr = this.timeValidity[TIME_UNIT.HOUR] ? this.timeValue[TIME_UNIT.HOUR] || "12" : "12";
+    const min = this.timeValidity[TIME_UNIT.MINUTE] ? this.timeValue[TIME_UNIT.MINUTE] || "00" : "00";
+    const sec = this.timeValidity[TIME_UNIT.SECOND] ? this.timeValue[TIME_UNIT.SECOND] || "00" : "00";
+    const amPm = this.timeValidity[TIME_UNIT.AM_PM] ? this.timeValue[TIME_UNIT.AM_PM] || "AM": "AM";
 
     const timeString = hr + ":" + min + ":" + sec + " " + amPm;
     return timeString;
@@ -268,7 +286,6 @@ export class TimePicker extends LitElement {
     `;
   }
 
-
   generateAmPmComboBox = () => {
     const options = ['AM', "PM"];
     return html `
@@ -281,7 +298,6 @@ export class TimePicker extends LitElement {
       ></md-combobox>
     `;
   }
-
 
   render() {
     return html`

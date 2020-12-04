@@ -3,7 +3,6 @@ import "./TimePicker";
 import { Key } from "@/constants";
 import { TimePicker } from "@/components/timepicker/TimePicker";
 import { Input } from "@/components/input/Input";
-import { ComboBox } from "@/components/combobox/ComboBox";
 
 describe("TimePicker Component", () => {
   afterEach(() => {

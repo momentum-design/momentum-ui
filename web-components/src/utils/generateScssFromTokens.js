@@ -43,6 +43,13 @@ const generateColorsFromTokens = async () => {
     colorData,
     path.resolve(__dirname, "../templates/colors.hbs")
   );
+  // CSS Momentum Color Variables
+  await _generateFileFromTemplate(
+    path.resolve(__dirname, "../wc_scss/colors/vars/"),
+    "css-color-variables.scss",
+    colorData,
+    path.resolve(__dirname, "../templates/css-color-variables.hbs")
+  );
 };
 
 const generateSemanticColorsFromTokens = async () => {
@@ -177,6 +184,10 @@ const generateThemeStylesheets = () => {
 
       themeStyleFiles[
         `${designTheme}${lightDarkTheme}`
+      ] += `@import "@/wc_scss/colors/vars/css-color-variables.scss";\n`;
+
+      themeStyleFiles[
+        `${designTheme}${lightDarkTheme}`
       ] += `@import "@/wc_scss/colors/vars/semantic-color-settings.scss";\n`;
 
       themeStyleFiles[
@@ -203,6 +214,7 @@ const generateThemeStylesheets = () => {
 
   for (const themeStyleName of themeStyles) {
     themeStyleFiles[themeStyleName] += `\n:root,\n:host {\n`;
+    themeStyleFiles[themeStyleName] += `@include css-color-variables\n`;
     themeStyleFiles[themeStyleName] += `  @include global-vars;\n`;
     themeStyleFiles[themeStyleName] += `  @include global-theme-specfic-vars;\n`;
     themeStyleFiles[themeStyleName] += `  @include semantic-color-vars;\n`;

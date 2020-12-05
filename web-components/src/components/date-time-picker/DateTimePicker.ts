@@ -5,10 +5,12 @@ import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtra
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
+import reset from "@/wc_scss/reset.scss";
+import styles from "./scss/module.scss";
 
 export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
-@customElement("md-datepicker")
+@customElement("md-date-time-picker")
 export class DateTimePicker extends LitElement {
   @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ type: String }) maxDate: string | undefined = undefined;
@@ -121,13 +123,18 @@ export class DateTimePicker extends LitElement {
       : null;
   };
 
+  static get styles() {
+    return [reset, styles];
+  }
+
   render() {
     return html`
-      <md-datepicker minDate=${ifDefined(this.minDate)} maxDate=${ifDefined(this.maxDate)}>
-        <div slot="time-picker" class="included-timepicker-wrapper">
-          <md-timepicker></md-timepicker>
-        </div>
-      </md-datepicker>
+        <md-datepicker minDate=${ifDefined(this.minDate)} maxDate=${ifDefined(this.maxDate)}>
+          <div slot="time-picker" class="included-timepicker-wrapper">
+            <md-timepicker></md-timepicker>
+          </div>
+        </md-datepicker>
+      </div>
     `;
   }
 }

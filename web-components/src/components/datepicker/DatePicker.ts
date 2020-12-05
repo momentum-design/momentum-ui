@@ -129,6 +129,7 @@ export class DatePicker extends LitElement {
           placeholder=${this.selectedDate.toLocaleString()}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
         ></md-input>
+        <div class="date-overlay-content">
         <md-datepicker-calendar
           @day-select=${(e: CustomEvent) => this.handleSelect(e)}
           @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
@@ -141,6 +142,7 @@ export class DatePicker extends LitElement {
           .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
         ></md-datepicker-calendar>
         <slot name="time-picker"></slot>
+        </div>
       </md-menu-overlay>
     `;
   }

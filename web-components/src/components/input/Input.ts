@@ -6,7 +6,7 @@
  *
  */
 
-import { Key } from "@/constants";
+import { Key, ARIA_INVALID } from "@/constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
@@ -351,7 +351,7 @@ export class Input extends FocusMixin(LitElement) {
             ?required=${this.required}
             ?autofocus=${this.autofocus}
             aria-label=${this.ariaLabel}
-            aria-invalid=${this.ariaInvalid}
+            aria-invalid=${this.ariaInvalid as ARIA_INVALID}
             aria-errormessage="default message"
             ?disabled=${this.disabled}
             id=${this.htmlId}
@@ -375,7 +375,7 @@ export class Input extends FocusMixin(LitElement) {
             .value=${this.value}
             aria-describedby=${this.ariaDescribedBy}
             aria-label=${this.ariaLabel}
-            aria-invalid=${this.ariaInvalid}
+            aria-invalid=${this.ariaInvalid as ARIA_INVALID}
             ?disabled=${this.disabled}
             id=${this.htmlId}
             placeholder=${this.placeholder}

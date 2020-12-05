@@ -30,7 +30,7 @@ export enum TIME_UNIT {
 }
 
 export enum ARIA_INVALID {
-  GRAMMER = 'grammer',
+  GRAMMAR = 'grammar',
   FALSE = "false",
   SPELLING = "spelling",
   TRUE = "true"

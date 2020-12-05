@@ -50,6 +50,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) autofocus = false;
   @property({ type: String, attribute: "no-results-i18n" }) resultsTextLocalization = "No Results";
   @property({ type: String, attribute: "no-options-i18n" }) optionsTextLocalization = "No Options";
+  @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
 
   @property({ type: Number, attribute: false })
   get focusedIndex() {
@@ -723,7 +724,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   }
 
   get filteredOptions() {
-    return this.filterOptions(this.inputValue);
+    return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue);
   }
 
   get comboBoxTemplateClassMap() {
@@ -822,7 +823,7 @@ export class ComboBox extends FocusMixin(LitElement) {
           style=${styleMap({ display: this.expanded ? "block" : "none", "z-index": "1" })}
         >
           ${repeat(
-            this.filterOptions(this.inputValue),
+            this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
             (option: string | OptionMember) => this.getOptionId(option),
             (option, optionIndex) => html`
               <li
@@ -847,7 +848,10 @@ export class ComboBox extends FocusMixin(LitElement) {
                     ? html`
                         <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
                       `
-                    : findHighlight(this.getOptionValue(option), this.inputValue).map(({ text, matching }) =>
+                    : findHighlight(
+                        this.getOptionValue(option),
+                        this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                      ).map(({ text, matching }) =>
                         matching
                           ? html`
                               <span class="highlight-text">${text}</span>

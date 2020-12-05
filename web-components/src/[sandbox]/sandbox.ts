@@ -107,39 +107,6 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-          <div class="container" aria-label="md-datepicker">
-            <h2>md-datepicker</h2>
-            <sass-stats component="datepicker">
-              ${datePickerTemplate}
-            </sass-stats>
-          </div>
-          <div class="container" aria-label="md-table">
-            <h2>md-table</h2>
-            <sass-stats component="table">
-              ${tableTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-menu-overlay">
-            <h2>md-menu-overlay</h2>
-            <sass-stats component="menu-overlay">
-              ${menuOverlayTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-phone-input">
-            <sass-stats component="phone-input">
-              ${phoneInputTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-task-item">
-            <h2>md-task-item</h2>
-            <sass-stats component="taskitem">
-              ${taskItemTemplate}
-            </sass-stats>
-          </div>
-
           <div class="container" aria-label="md-activity-button">
             <h2>md-activity-button</h2>
             <sass-stats component="activity-button">

@@ -27,7 +27,7 @@ describe("TimePicker Component", () => {
     const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;
     const input = hourInput?.shadowRoot?.querySelector('input') as HTMLInputElement;
     expect(input?.type).toEqual('number');
-    expect(input?.min).toEqual("1");
+    expect(input?.min).toEqual("0");
     expect(input?.max).toEqual("23");
 
     const text = "12";

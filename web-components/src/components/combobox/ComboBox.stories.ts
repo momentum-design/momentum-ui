@@ -29,6 +29,7 @@ export const Combobox = () => {
   const darkTheme = boolean("darkMode", false);
   const placeholder = text("placeholder", "Add Country");
   const disabled = boolean("Disabled", false);
+  const trimSpace = boolean("Trim white space", false);
   const init = boolean("InitialValue", false);
   const customValue = boolean("Cuatom Value", false);
   const multi = boolean("Multi", false);
@@ -41,7 +42,7 @@ export const Combobox = () => {
   if (init) {
     return html`
     <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
-      <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} ?disabled=${disabled} .value=${[comboBoxOptions[3]]}></md-combobox>
+      <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} ?disabled=${disabled} ?search-trim-space=${trimSpace} .value=${[comboBoxOptions[3]]}></md-combobox>
     </md-theme>
     `;
   } else if (multi) {
@@ -75,6 +76,7 @@ export const Combobox = () => {
         option-value="country"
         is-multi=${multi}
         .value=${[comboBoxObjectOptions[4]]}
+        ?search-trim-space=${trimSpace}
       ></md-combobox>
     </md-theme>
     `;
@@ -125,7 +127,7 @@ export const Combobox = () => {
   } else {
     return html`
     <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
-      <md-combobox .options=${comboBoxOptions} placeholder=${placeholder} ?disabled=${disabled}></md-combobox>
+      <md-combobox .options=${comboBoxOptions} placeholder=${placeholder} ?disabled=${disabled} ?search-trim-space=${trimSpace}></md-combobox>
     </md-theme>`;
   }
 

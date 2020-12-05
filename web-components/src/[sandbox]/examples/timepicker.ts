@@ -19,6 +19,6 @@ export const timePickerTemplate = html`
   <h3>timepicker timeSpecificity: second</h3>
   <md-timepicker timeSpecificity="second"></md-timepicker>
 
-  <h3>timepicker selectedTime default</h3>
-  <md-timepicker selectedTime="02:16:00 PM"></md-timepicker>
+  <h3>timepicker default value</h3>
+  <md-timepicker value="02:16:00 PM"></md-timepicker>
 `;

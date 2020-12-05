@@ -18,10 +18,10 @@ export default {
 
 export const Default = () => {
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
-  const selectedTime = text("selectedTime", "12:00:00 AM");
+  const value = text("value", "12:00:00 AM");
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);
 
   return html`
-    <md-timepicker ?twentyfourhourformat=${twentyFourHourFormat} selectedTime=${selectedTime} timeSpecificity=${theTimeSpecificity}></md-timepicker>
+    <md-timepicker ?twentyfourhourformat=${twentyFourHourFormat} value=${value} timeSpecificity=${theTimeSpecificity}></md-timepicker>
   `;
 };

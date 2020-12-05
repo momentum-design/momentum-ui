@@ -62,7 +62,7 @@ export namespace TimePicker {
 export class TimePicker extends LitElement {
   @property({ type: Boolean }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String, reflect: true }) selectedTime = "12:00:00 AM";
+  @property({ type: String, reflect: true }) value = "12:00:00 AM";
 
   @internalProperty() private timeValue = {
     [TIME_UNIT.HOUR]: "12",
@@ -71,8 +71,8 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: "AM"
   }
 
-  parseSelectedTime = () => {
-    const times = this.selectedTime.split(":");
+  parseTimeValue = () => {
+    const times = this.value.split(":");
     this.timeValue[TIME_UNIT.HOUR] = times.shift() || "12";
     this.timeValue[TIME_UNIT.MINUTE] = times.shift() || "00";
 
@@ -94,8 +94,8 @@ export class TimePicker extends LitElement {
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (changedProperties.has("selectedTime")) {
-      this.parseSelectedTime();
+    if (changedProperties.has("value")) {
+      this.parseTimeValue();
     }
   }
 
@@ -132,7 +132,7 @@ export class TimePicker extends LitElement {
 
   updateTime = (unit: TIME_UNIT) => {
     if (this.timeValidity[unit]) {
-      this.selectedTime = this.getTimeString();
+      this.value = this.getTimeString();
     }
 
     this.dispatchEvent(
@@ -140,7 +140,7 @@ export class TimePicker extends LitElement {
         bubbles: true,
         composed: true,
         detail: {
-          time: this.selectedTime
+          time: this.value
         }
       })
     );
@@ -228,7 +228,7 @@ export class TimePicker extends LitElement {
         composed: true,
         detail: {
           srcEvent: event,
-          time: this.selectedTime,
+          time: this.value,
           isValid: this.timeValidity[unit]
         }
       })

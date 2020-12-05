@@ -32,7 +32,7 @@ const timeUnitProps = (isTwentyFourHour: boolean) => {
   return {
     [TIME_UNIT.HOUR]: {
       type: "number" as Input.Type,
-      min: 1,
+      min: isTwentyFourHour ? 0 : 1,
       max: isTwentyFourHour ? 23 : 12
     },
     [TIME_UNIT.MINUTE]: {

@@ -1,15 +1,15 @@
-import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
+import { ifDefined } from "lit-html/directives/if-defined";
 
-export namespace DatePicker {}
+export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-datepicker")
-export class DatePicker extends LitElement {
+export class DateTimePicker extends LitElement {
   @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
@@ -123,31 +123,17 @@ export class DatePicker extends LitElement {
 
   render() {
     return html`
-      <md-menu-overlay custom-width="248px">
-        <md-input
-          slot="menu-trigger"
-          placeholder=${this.selectedDate.toLocaleString()}
-          aria-label=${`Choose Date` + this.chosenDateLabel()}
-        ></md-input>
-        <md-datepicker-calendar
-          @day-select=${(e: CustomEvent) => this.handleSelect(e)}
-          @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${{
-            locale: this.locale,
-            selected: this.selectedDate,
-            focused: this.focusedDate,
-            weekStart: this.weekStart
-          }}
-          .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
-        ></md-datepicker-calendar>
-        <slot name="time-picker"></slot>
-      </md-menu-overlay>
+      <md-datepicker minDate=${ifDefined(this.minDate)} maxDate=${ifDefined(this.maxDate)}>
+        <div slot="time-picker" class="included-timepicker-wrapper">
+          <md-timepicker></md-timepicker>
+        </div>
+      </md-datepicker>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-datepicker": DatePicker;
+    "md-date-time-picker": DateTimePicker;
   }
 }

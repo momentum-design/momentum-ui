@@ -26,6 +26,7 @@ export default {
 
 export const Link = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const href = text("href", "http://google.com");
   const tag = select("HTML Tag", linkTag, "");
   const disabled = boolean("Disabled", false);
@@ -34,7 +35,7 @@ export const Link = () => {
   const color = select("Link color", LinkColor, "blue")
 
   return html`
-    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-link 
         .href=${href} 
         .tag=${tag} 

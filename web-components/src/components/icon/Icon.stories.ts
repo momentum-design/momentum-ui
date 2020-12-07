@@ -39,6 +39,7 @@ export default {
 
 export const Icon = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const name = select("Name", iconNames, "arrow-up_16");
   const color = text("Color", "red");
   const title = text("Title", "");
@@ -48,7 +49,7 @@ export const Icon = () => {
   const sizeOverrided = boolean("Size Override", false);
 
   return html`
-    <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-icon 
         .name=${`icon-${name}`} 
         .title=${title} 

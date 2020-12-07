@@ -37,6 +37,7 @@ export default {
 
 export const Tabs = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const disabled = boolean("disabled", false);
   const justified = boolean("Justified", false);
   const options = { vertical: "vertical", horizontal: "horizontal"};
@@ -45,7 +46,7 @@ export const Tabs = () => {
 
   if (more) {
     return html`
-      <md-theme  class="theme-toggle" id="tabs" ?darkTheme=${darkTheme}>
+      <md-theme  class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <div style="max-width: 600px;">
           <md-tabs @selected-changed=${(action('changed'))} selected="0" justified>
             <md-tab slot="tab" label="History">
@@ -110,7 +111,7 @@ export const Tabs = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <div style="height: 300px;">
           <md-tabs @selected-changed=${(action('changed'))} direction="${alignment}" .justified=${justified}>
             <md-tab slot="tab">

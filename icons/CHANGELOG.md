@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.66.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.65.0...@momentum-ui/icons@7.66.0) (2020-12-07)
+
+
+### Features
+
+* **icons:** add area-chart_16 ([3448924](https://github.com/momentum-design/momentum-ui/commit/3448924acf6d5cc981fce748001dfe9dfc93f761))
+* **icons:** add camera-swap_12 ([5f9ab30](https://github.com/momentum-design/momentum-ui/commit/5f9ab304f0f781ae02e6191387fc7f458b75aa4d))
+* **icons:** add encryption_14 ([29c9792](https://github.com/momentum-design/momentum-ui/commit/29c9792bea91f74b2e562c6d6e1f78054cbb68a5))
+* **icons:** add encryption_16 ([2dc09da](https://github.com/momentum-design/momentum-ui/commit/2dc09da6a709d75cd3304ea2486113dac9f4f0da))
+* **icons:** add end-to-end encryption_16 ([dfe77f1](https://github.com/momentum-design/momentum-ui/commit/dfe77f1e19b51aa8803fffbfe55a446fb2253436))
+* **icons:** add end-to-end-encryption_14 ([c003d9a](https://github.com/momentum-design/momentum-ui/commit/c003d9a88652494a9d2abf1609ed6f445a51df69))
+* **icons:** add end-to-end-encryption_16 ([7f8c6fe](https://github.com/momentum-design/momentum-ui/commit/7f8c6fecb88f28b74112e33be85638fb64a458a7))
+* **icons:** add microphone-on_24 ([89c7c1b](https://github.com/momentum-design/momentum-ui/commit/89c7c1b10bebce8dd3f031fa22e06381432c326f))
+* **icons:** add remote-desktop-control _24 ([d79091f](https://github.com/momentum-design/momentum-ui/commit/d79091fb0d89f67763d1e9428b754ee9442f6849))
+* **icons:** add remote-desktop-control_24 ([d8836f8](https://github.com/momentum-design/momentum-ui/commit/d8836f8a1993156f5526c2cab4ec5c630ec1d8b0))
+* **icons:** add remote-desktop-control_24 ([10189a9](https://github.com/momentum-design/momentum-ui/commit/10189a957b0107efaebd4810311aff0ca16dd59d))
+* **icons:** add scheduler-unavailable_14 ([898d428](https://github.com/momentum-design/momentum-ui/commit/898d4288d385f401ad96e9ee226afed423f504b1))
+* **icons:** add stacked-area-100-chart_16 ([e6c680c](https://github.com/momentum-design/momentum-ui/commit/e6c680ce344fefa21f0f0f12960c4021622dc2f3))
+* **icons:** add stacked-area-chart_16 ([fb5aae4](https://github.com/momentum-design/momentum-ui/commit/fb5aae403cd75591c5985d8ff4111688bf28231e))
+* **icons:** remove icons with spaces in the name ([773d936](https://github.com/momentum-design/momentum-ui/commit/773d936375c6404dac6190aee14dce847e1b08c5))
+
+
+
+
+
 # [7.65.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.64.0...@momentum-ui/icons@7.65.0) (2020-11-21)
 
 

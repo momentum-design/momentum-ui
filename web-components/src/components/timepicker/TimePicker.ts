@@ -136,11 +136,12 @@ export class TimePicker extends LitElement {
     }
 
     this.dispatchEvent(
-      new CustomEvent(`selected-time-change`, {
+      new CustomEvent(`time-selection-change`, {
         bubbles: true,
         composed: true,
         detail: {
-          time: this.value
+          time: this.value,
+          timeValues: this.timeValue
         }
       })
     );
@@ -255,7 +256,7 @@ export class TimePicker extends LitElement {
     const sec = this.timeValidity[TIME_UNIT.SECOND] ? this.timeValue[TIME_UNIT.SECOND] || "00" : "00";
     const amPm = this.timeValidity[TIME_UNIT.AM_PM] ? this.timeValue[TIME_UNIT.AM_PM] || "AM": "AM";
 
-    const timeString = hr + ":" + min + ":" + sec + " " + amPm;
+    let timeString = `${hr}:${min}:${sec}${this.twentyFourHourFormat ? "" : ` ${amPm}`}`
     return timeString;
   }
 

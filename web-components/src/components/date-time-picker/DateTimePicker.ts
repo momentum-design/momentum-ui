@@ -1,22 +1,24 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { now } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
+import { DatePicker } from "../datepicker/DatePicker";
+import { TimePicker } from "../timepicker/TimePicker";
+import { TIME_UNIT } from "@/constants";
 
 export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-date-time-picker")
+
 export class DateTimePicker extends LitElement {
-  @property({ type: Boolean }) shouldCloseOnSelect = true;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
-  @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+  // @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
   @property({ type: String }) locale: string | undefined = undefined;
 
   @internalProperty() selectedDate: DateTime = now();
@@ -25,103 +27,68 @@ export class DateTimePicker extends LitElement {
   @internalProperty() maxDateData: DateTime | undefined = undefined;
   @internalProperty() minDateData: DateTime | undefined = undefined;
 
-  @query("md-menu-overlay") menuOverlay!: MenuOverlay;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
-    this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+  @internalProperty() fullDateTime: DateTime | null = null;
+  @internalProperty() dateData: DateTime | null = null;
+  @internalProperty() private timeValues = {
+    [TIME_UNIT.HOUR]: "12",
+    [TIME_UNIT.MINUTE]: "00",
+    [TIME_UNIT.SECOND]: "00",
+    [TIME_UNIT.AM_PM]: "AM"
   }
 
-  update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
+  @internalProperty() timeStringValue = "";
+  @internalProperty() dateStringValue = "";
+
+  @query("md-datepicker") datePicker!: DatePicker;
+  @query("md-timepicker") timePicker!: TimePicker;
+
+  handleDateChange = (event: any) => {
+    const dateData = event?.detail?.data as DateTime;
+    console.log('[log][dateTime]: handleDateChange', dateData.toSQLDate());
+
+    this.dateData = dateData;
+    this.dateStringValue = dateData.toSQLDate();
   }
 
-  setOpen = (open: boolean) => {
-    this.menuOverlay.isOpen = open;
-  };
+  handleTimeChange = (event: any) => {
+    console.log('[log][dateTime]: handleTimeChange', event?.detail?.time, event?.detail?.timeValues);
+    this.timeStringValue = event?.detail?.time;
+    this.timeValues = event?.detail?.timeValues;
+    this.requestUpdate();
+  }
 
-  handleSelect = (e: CustomEvent) => {
-    const date = e.detail.date;
-    const event = e.detail.sourceEvent;
-    this.setPreSelection(date, event);
-    this.setSelected(date, event);
-    this.shouldCloseOnSelect && this.setOpen(false);
-  };
+  protected async firstUpdated(changedProperties: PropertyValues) {
+    super.firstUpdated(changedProperties);
+    await new Promise(resolve => setTimeout(resolve, 0));
 
-  setSelected = (date: DateTime, event: Event) => {
-    const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-    if (!isDayDisabled(date, filters)) {
-      const dateString = `${date.year}-${date.month}-${date.day}`;
-      this.selectedDate = date;
-      this.value = dateString;
+    if (this.datePicker) {
+      this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
     }
-    this.dispatchEvent(
-      new CustomEvent("date-selection-change", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          sourceEvent: event,
-          data: date
-        }
-      })
-    );
-  };
-
-  setPreSelection = (date: DateTime, event: KeyboardEvent) => {
-    const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-    !isDayDisabled(date, filters) ? (this.focusedDate = date) : null;
-  };
-
-  handleKeyDown = (e: CustomEvent) => {
-    const event = e.detail.sourceEvent;
-    let flag = false;
-    const copy = this.focusedDate;
-
-    switch (!event.shiftKey && event.code) {
-      case "Space":
-      case "Enter":
-        this.handleSelect(e);
-        flag = true;
-        break;
-
-      case "Escape":
-        this.setOpen(false);
-        break;
-      case "ArrowUp":
-        this.setPreSelection(subtractWeeks(copy, 1), event);
-        flag = true;
-        break;
-      case "ArrowLeft":
-        this.setPreSelection(subtractDays(copy, 1), event);
-        flag = true;
-        break;
-
-      case "ArrowRight":
-        this.setPreSelection(addDays(copy, 1), event);
-        flag = true;
-        break;
-
-      case "ArrowDown":
-        this.setPreSelection(addWeeks(copy, 1), event);
-        flag = true;
-        break;
-
-      default:
-        break;
+    if (this.timePicker) {
+      this.timePicker.addEventListener("time-selection-change", this.handleTimeChange);
     }
+  }
 
-    if (flag) {
-      event.stopPropagation();
-      event.preventDefault();
+  protected updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+
+    if (this.dateStringValue && this.timeStringValue && (changedProperties.has('timeStringValue') || changedProperties.has('dateStringValue'))) {
+      this.value = `${this.dateStringValue} ${this.timeStringValue}`;
+      this.fullDateTime = DateTime.fromSQL(this.value);
+      console.log('[log][dateTime]: fullDateTime', this.value, this.fullDateTime);
+
+      this.dispatchEvent(
+        new CustomEvent(`date-time-change`, {
+          bubbles: true,
+          composed: true,
+          detail: {
+            dateTimeString: this.value,
+            dateTime: this.fullDateTime
+          }
+        })
+      );
     }
-  };
-
-  chosenDateLabel = () => {
-    return this.selectedDate
-      ? `, Selected date is ${this.selectedDate.weekdayLong} ${this.selectedDate.monthLong} ${this.selectedDate.day}, ${this.selectedDate.year}`
-      : null;
-  };
+  }
 
   static get styles() {
     return [reset, styles];

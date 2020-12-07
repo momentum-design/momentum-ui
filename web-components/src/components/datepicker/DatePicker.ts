@@ -3,14 +3,14 @@ import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
 import { DateTime } from "luxon";
 
 export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
-  @property({ type: Boolean }) shouldCloseOnSelect = true;
+  @property({ type: Boolean }) shouldCloseOnSelect = false;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
@@ -29,10 +29,6 @@ export class DatePicker extends LitElement {
     super.connectedCallback();
     this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
     this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
-  }
-
-  update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
   }
 
   setOpen = (open: boolean) => {

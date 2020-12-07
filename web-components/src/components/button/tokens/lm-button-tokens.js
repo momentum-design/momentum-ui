@@ -49,7 +49,7 @@ const button = {
     hover: {
       "bg-color": {
         light: colors.gray[30].name,
-        dark: colors.gray[95].name
+        dark: colors.gray[90].name
       }
     },
     pressed: {

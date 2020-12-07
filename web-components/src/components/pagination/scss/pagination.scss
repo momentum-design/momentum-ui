@@ -10,7 +10,6 @@
     position: relative;
     padding: 0;
     color: var(--pagination-nav-color, $md-pagination-nav-color-light);
-    font-size: $pagination-font-size;
 
     &-container {
       @include flex($fd: column);
@@ -20,31 +19,35 @@
     &-list {
       @include list-style();
       @include flex();
+      font-size: $pagination-font-size;
+      line-height: $pagination-line-height;
 
       li {
+        @include flex();
         margin: $pagination-indent;
-      }
-      a {
-        display: block;
-        padding: $pagination-item-indent;
         border-radius: $pagination-border-radius;
         color: var(--pagination-color, $md-pagination-color-light);
+        cursor: pointer;
+        min-width: $pagination-size;
+        height: $pagination-size;
+        padding: $pagination-item-indent;
 
         &:hover {
+          color: var(--pagination-color-current, $md-pagination-color-current-light);
           background: var(--pagination-bg-hover, $md-pagination-bg-hover-light);
         }
 
         &:focus {
           box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
         }
-      }
 
-      .current {
-        a {
+        &[aria-current="page"] {
+          pointer-events: none;
+          cursor: default;
           color: var(--pagination-color-current, $md-pagination-color-current-light);
+          background: var(--pagination-bg-current, $md-pagination-bg-current-light);
         }
       }
-
     }
 
     &-nav {
@@ -55,13 +58,8 @@
       @include flex;
       flex: 0 0 $pagination-arrow-size;
       outline: none;
-      border-radius: $pagination-border-radius;
-      &[aria-label="previous"] {
-        text-align: left;
-      }
-      &[aria-label="next"] {
-        text-align: left;
-      }
+      border-radius: $pagination-nav-border-radius;
+      color: var(--pagination-nav-color, $md-pagination-nav-color-light);
 
       &:hover {
         color: var(--pagination-nav-hover, $md-pagination-nav-hover-light);
@@ -98,4 +96,9 @@
     }
   }
 
+
+}
+
+:host([focus-visible]) {
+  box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
 }

@@ -1,7 +1,7 @@
 import "./Pagination";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs, number } from "@storybook/addon-knobs";
 
 export default {
   title: "Pagination",
@@ -14,18 +14,29 @@ export default {
   }
 };
 
-export const paginationItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export const Default = () => {
+  return html`
+    <md-pagination page="1" total="101" limit="10" size="5"></md-pagination>
+  `;
+};
 
-export const Default = () => html`
-  <md-pagination .items=${paginationItems}></md-pagination>
-`;
-export const Simple = () => html`
-  <md-pagination simple .items=${paginationItems}></md-pagination>
-`;
+export const Limit = () => {
+  const limit = number("Limit", 10);
+  return html`
+    <md-pagination page="1" total="101" .limit=${limit} size="5"></md-pagination>
+  `;
+};
 
-export const Arrows = () => html`
-  <md-pagination arrows .items=${paginationItems}></md-pagination>
-`;
-export const Dots = () => html`
-  <md-pagination dots .items=${paginationItems}></md-pagination>
-`;
+export const Total = () => {
+  const total = number("Total", 101);
+  return html`
+    <md-pagination .total=${total} page="1" limit="10" size="5"></md-pagination>
+  `;
+};
+
+export const Size = () => {
+  const size = number("Size", 5);
+  return html`
+    <md-pagination page="1" total="101" limit="10" .size=${size}></md-pagination>
+  `;
+};

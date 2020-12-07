@@ -4,6 +4,7 @@ import styles from "./scss/module.scss";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { nothing } from "lit-html";
 
 @customElement("md-pagination")
 export class Pagination extends LitElement {
@@ -27,7 +28,7 @@ export class Pagination extends LitElement {
     return this._limit;
   }
   set limit(newLimit: number) {
-    let oldLimit = this._limit;
+    const oldLimit = this._limit;
     this._limit = newLimit;
     this.requestUpdate("limit", oldLimit);
     this.computePageCount(this.page, this._limit, this.total);
@@ -38,7 +39,7 @@ export class Pagination extends LitElement {
     return this._page;
   }
   set page(newPage: number) {
-    let oldPage = this._page;
+    const oldPage = this._page;
     this._page = newPage;
     this.requestUpdate("page", oldPage);
     this.notifyPageChange(oldPage, newPage);
@@ -50,6 +51,7 @@ export class Pagination extends LitElement {
   @property({ type: String, attribute: "on-before-i18n" }) beforeLocalization = "On Before";
   @property({ type: String, attribute: "on-next-i18n" }) nextLocalization = "On Next";
   @property({ type: String, attribute: "on-end-i18n" }) endLocalization = "On End";
+  @property({ type: Boolean, attribute: "dots" }) dots = false;
 
   @internalProperty() private hasBefore = false;
   @internalProperty() private hasNext = false;
@@ -62,8 +64,7 @@ export class Pagination extends LitElement {
 
   get paginationClassMap() {
     return {
-      // "has-arrows": this.arrows,
-      // "has-dots": this.dots
+      "has-dots": this.dots
     };
   }
 
@@ -187,10 +188,10 @@ export class Pagination extends LitElement {
           <ul class="md-pagination-list">
             ${repeat(
               this.items,
-              (item: number) => html`
+              (i: number) => i,
+              (item: number, index: number) => html`
                 <li
                   @click=${() => this.handleChange(item)}
-                  ?disabled=${this.isPageCurrent(item, this.page)}
                   aria-current=${ifDefined(this.isPageCurrent(item, this.page) ? "page" : undefined)}
                 >
                   ${item}

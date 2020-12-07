@@ -32,6 +32,7 @@ export default {
 
 export const Alert = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos theme", false);
   const show = boolean("Show", true);
   const title = text("Title", "Alert");
   const message = text("Message", "Who is awesome? You are!");
@@ -40,7 +41,7 @@ export const Alert = () => {
   const inline = boolean("Inline", false);
 
   return html`
-    <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-alert @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show} .inline=${inline}></md-alert>
     </md-theme>
   `;

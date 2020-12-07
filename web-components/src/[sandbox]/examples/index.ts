@@ -30,6 +30,7 @@ export { spinnerTemplate } from "./spinner";
 export { tabsTemplate } from "./tabs";
 export { tableTemplate } from "./table";
 export { taskItemTemplate } from "./task-item";
+export { timePickerTemplate } from "./timepicker";
 export { toggleSwitchTemplate } from "./toggle-switch";
 export { tooltipTemplate } from "./tooltip";
 // eslint-disable-next-line prettier/prettier

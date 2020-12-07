@@ -94,6 +94,10 @@ export class Coachmark extends FocusTrapMixin(LitElement) {
     };
   }
 
+  static get styles() {
+    return [reset, styles];
+  }
+
   render() {
     return html`
       <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
@@ -121,10 +125,6 @@ export class Coachmark extends FocusTrapMixin(LitElement) {
         </div>
       </div>
     `;
-  }
-
-  static get styles() {
-    return [reset, styles];
   }
 }
 

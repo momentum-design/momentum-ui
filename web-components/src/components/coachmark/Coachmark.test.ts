@@ -37,7 +37,7 @@ describe("Coachmark component", () => {
     const component = await fixtureFactory();
 
     const mockClick = jest.spyOn(component, "coachAction");
-    component.coachAction(new CustomEvent("click"));
+    component.coachAction();
     await elementUpdated(component);
 
     expect(mockClick).toHaveBeenCalled();
@@ -49,7 +49,7 @@ describe("Coachmark component", () => {
     const component = await fixtureFactory();
 
     const mockCreate = jest.spyOn(component, "notifyCoachCreate");
-    component.notifyCoachCreate(new CustomEvent("click"));
+    component.notifyCoachCreate();
     await elementUpdated(component);
 
     expect(mockCreate).toHaveBeenCalled();

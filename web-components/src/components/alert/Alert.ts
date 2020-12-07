@@ -101,7 +101,7 @@ export class Alert extends LitElement {
                 ? html`
                     <div class="md-alert__button">
                       <md-button hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
-                        <md-icon name="icon-cancel_16"></md-icon>
+                        <md-icon slot="icon" name="icon-cancel_16"></md-icon>
                       </md-button>
                     </div>
                   `

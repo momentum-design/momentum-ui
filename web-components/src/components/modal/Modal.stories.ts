@@ -43,6 +43,7 @@ const content = html`
 
 export const Modal = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const show = boolean("show", false);
   const headerLabel = text("headerLabel", "Test header text");
   const headerMessage = text("message", "Test message in header");
@@ -54,7 +55,7 @@ export const Modal = () => {
   const hideHeader = boolean("hideHeader", false);
 
   return html`
-    <md-theme class="theme-toggle" id="modal" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="modal" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-modal
         .size="${size}"
         .show=${show}

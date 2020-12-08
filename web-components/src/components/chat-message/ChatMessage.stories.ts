@@ -24,13 +24,14 @@ export default {
 };
 
 export const ChatMessage = () => {
-  const darkTheme = boolean("darkMode", false);
+  const darkTheme = boolean("Dark Theme", false);
+  const lumos = boolean("Lumos Theme", false);
   const title = text("title", "John Doe");
   const message = text("message", "I have issue with my silencer");
   const selfMode = boolean("Self", false);
 
   return html`
-  <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
       <p slot="message">${message}</p>
     </md-chat-message>

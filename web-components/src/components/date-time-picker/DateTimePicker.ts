@@ -21,6 +21,8 @@ export class DateTimePicker extends LitElement {
   // @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
   @property({ type: String }) locale: string | undefined = undefined;
 
+  @property({ type: Boolean }) twentyFourHourFormat = true;
+
   @internalProperty() selectedDate: DateTime = now();
   @internalProperty() focusedDate: DateTime = now();
   @internalProperty() filterDate: Function | undefined = undefined;
@@ -83,7 +85,8 @@ export class DateTimePicker extends LitElement {
           composed: true,
           detail: {
             dateTimeString: this.value,
-            dateTime: this.fullDateTime
+            dateTime: this.fullDateTime,
+            twentyFourHourFormat: this.twentyFourHourFormat
           }
         })
       );
@@ -98,7 +101,7 @@ export class DateTimePicker extends LitElement {
     return html`
         <md-datepicker minDate=${ifDefined(this.minDate)} maxDate=${ifDefined(this.maxDate)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
-            <md-timepicker></md-timepicker>
+            <md-timepicker ?twentyfourhourformat=${this.twentyFourHourFormat}></md-timepicker>
           </div>
         </md-datepicker>
       </div>

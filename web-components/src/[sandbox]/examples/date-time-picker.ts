@@ -14,5 +14,5 @@ const maxDate = now()
 export const dateTimePickerTemplate = html`
   <h2 class="sandbox-header">md-date-time-picker</h2>
   <h3>date-time-picker</h3>
-  <md-date-time-picker locale="ru"></md-date-time-picker>
+  <md-date-time-picker></md-date-time-picker>
 `;

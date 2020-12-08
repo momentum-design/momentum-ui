@@ -1,12 +1,14 @@
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
+import { nothing } from "lit-html";
 import styles from "./scss/module.scss";
 
 @customElement("md-pagination")
 export class Pagination extends LitElement {
   private _currentPage = 1;
 
-  @property({ type: Boolean, attribute: "has-dots" }) hasDots = false;
+  @property({ type: Boolean, attribute: "dots" }) hasDots = false;
+  @property({ type: Boolean, attribute: "only-dots" }) onlyDots = false;
   @property({ type: Number, reflect: true, attribute: "total-page" }) totalPage = 0;
   @property({ type: Number, reflect: true, attribute: "visible-page" }) visiblePage = 3;
   @property({ type: Number, reflect: true, attribute: "current-page" })
@@ -82,8 +84,8 @@ export class Pagination extends LitElement {
     };
   }
 
-  private computePageList() {
-    if (this.totalPage > this.visiblePage) {
+  private computePageList(shouldCompute: boolean) {
+    if (this.totalPage > this.visiblePage && shouldCompute) {
       const [previous, current, next] = [this.currentPage - 1, this.currentPage, this.currentPage + 1];
       let newPageList: (string | number)[] = [];
 
@@ -109,16 +111,26 @@ export class Pagination extends LitElement {
     return [...Array(this.totalPage)].map((_, index) => 1 + index);
   }
 
-  private pagesTemplate() {
-    return this.computePageList().map(page =>
+  private pagesTemplate(shouldCompute: boolean) {
+    return this.computePageList(shouldCompute).map(page =>
       page === "..."
         ? html`
-            <li><span>${page}</span></li>
+            <li class="page-ellipsis">${page}</li>
           `
         : html`
             <li @click=${() => this.computeCurrent(page as number)} aria-current=${page === this.currentPage}>
               ${page}
             </li>
+          `
+    );
+  }
+
+  private dotsTemplate(shouldCompute: boolean) {
+    return this.computePageList(shouldCompute).map(page =>
+      page === "..."
+        ? nothing
+        : html`
+            <li @click=${() => this.computeCurrent(page as number)} aria-current=${page === this.currentPage}></li>
           `
     );
   }
@@ -145,9 +157,24 @@ export class Pagination extends LitElement {
           <md-icon name="icon-arrow-left_16"></md-icon>
         </button>
         <div class="md-pagination-container">
-          <ul class="md-pagination-list">
-            ${this.pagesTemplate()}
-          </ul>
+          ${this.onlyDots
+            ? html`
+                <ul class="md-pagination-dots">
+                  ${this.dotsTemplate(false)}
+                </ul>
+              `
+            : html`
+                <ul class="md-pagination-list">
+                  ${this.pagesTemplate(true)}
+                </ul>
+              `}
+          ${this.hasDots && !this.onlyDots
+            ? html`
+                <ul class="md-pagination-dots">
+                  ${this.dotsTemplate(true)}
+                </ul>
+              `
+            : nothing}
         </div>
         <button
           class="md-pagination-nav"

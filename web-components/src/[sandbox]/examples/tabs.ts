@@ -81,6 +81,20 @@ export const tabsTemplate = html`
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
+        <md-tab slot="tab">
+          <md-icon name="alarm_16"></md-icon>
+          <span>Cisco Answer</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Answer"</span>
+        </md-tab-panel>
+        <md-tab slot="tab">
+          <md-icon name="camera-photo_16"></md-icon>
+          <span>Cisco Turbo</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Turbo"</span>
+        </md-tab-panel>
       </md-tabs>
     </div>
     <div style="max-width: 400px;">

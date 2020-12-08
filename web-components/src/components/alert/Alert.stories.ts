@@ -32,7 +32,7 @@ export default {
 
 export const Alert = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
+  const lumos = boolean("Lumos theme", false);
   const show = boolean("Show", true);
   const title = text("Title", "Alert");
   const message = text("Message", "Who is awesome? You are!");

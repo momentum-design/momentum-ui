@@ -37,12 +37,13 @@ const options = {
 
 export const List = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const disabled = boolean("Disabled", false);
   const selected = text("Preselected", "2");
   const alignment = select("Orientation", options, "vertical");
 
   return html`
-    <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-list @list-item-change=${action('change')} label="Transuranium elements" activated="${selected}" .alignment=${alignment}>
         <md-list-item slot="list-item">Neptunium</md-list-item>
         <md-list-item slot="list-item" ?disabled=${disabled}>Plutonium</md-list-item>

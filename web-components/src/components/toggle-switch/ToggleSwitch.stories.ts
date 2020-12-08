@@ -29,12 +29,13 @@ export default {
 
 export const ToggleSwitch = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const checked = boolean("Checked", false);
   const disabled = boolean("Disabled", false);
   const smaller = boolean("Smaller", false);
 
   return html`
-  <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <md-toggle-switch htmlId="toggleSwitch" ?checked=${checked} ?disabled=${disabled} .smaller=${smaller}> Label Toggle Switch </md-toggle-switch>
   </md-theme>
   `;

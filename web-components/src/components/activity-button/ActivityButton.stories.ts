@@ -44,6 +44,7 @@ export default {
 
 export const ActivityButton = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const label = text("Title", "");
   const labelSize = "Size";
   const defaultValue = 68;
@@ -54,7 +55,7 @@ export const ActivityButton = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
-  <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
   </md-theme>
   `;

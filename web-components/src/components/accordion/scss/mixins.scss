@@ -1,0 +1,16 @@
+@mixin text-dots {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100%);
+}
+
+@mixin button-reset {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}

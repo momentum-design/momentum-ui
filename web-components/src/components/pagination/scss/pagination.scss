@@ -21,7 +21,7 @@
       font-size: $pagination-font-size;
       line-height: $pagination-line-height;
 
-      li {
+      li:not(.page-ellipsis) {
         @include flex();
         border-radius: $pagination-border-radius;
         color: var(--pagination-color, $md-pagination-color-light);
@@ -87,7 +87,7 @@
         margin: $pagination-dots-margin;
         width: $pagination-dots-size;
 
-        &[aria-current="page"],
+        &[aria-current="true"],
         &:hover {
           background: var(--pagination-dots-color-current, $md-pagination-dots-color-current-light);
         }

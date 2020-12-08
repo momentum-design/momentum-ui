@@ -6,11 +6,11 @@
  *
  */
 
-import "../icon/Icon";
-import "../menu-overlay/MenuOverlay";
+import "@/components/icon/Icon";
+import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
-import { uuid } from "@/utils/helpers";
+import { nanoid } from "nanoid";
 import reset from "@/wc_scss/reset.scss";
 import {
   customElement,
@@ -45,6 +45,7 @@ export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
 export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @property({ type: Boolean }) justified = false;
   @property({ type: String }) overlowLabel = "More";
+  @property({ type: String }) direction = "horizontal"
 
   @query('slot[name="tab"]') tabSlotElement?: HTMLSlotElement;
   @query('slot[name="panel"]') panelSlotElement?: HTMLSlotElement;
@@ -211,7 +212,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     }
 
     tabs.forEach((tab, index) => {
-      const id = uuid();
+      const id = nanoid();
 
       tab.setAttribute("id", id);
       tab.setAttribute("aria-controls", id);

@@ -14,8 +14,8 @@ import { CSSResultArray, customElement, html, LitElement, property, PropertyValu
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import "../input/Input";
-import { Input, Message } from "../input/Input";
+import "@/components/input/Input";
+import { Input, Message } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;
@@ -220,6 +220,7 @@ export class EditableTextfield extends LitElement {
 
     return html`
       <div
+        style="${this.overflowStyles}"
         class="md-editable-textfield ${classMap(classes)}"
         tabindex=${this.disabled ? "-1" : "0"}
         ?contenteditable=${this.isEditing}

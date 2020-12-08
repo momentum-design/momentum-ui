@@ -5,9 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
-import "../icon/Icon";
-import "../loading/Loading";
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";

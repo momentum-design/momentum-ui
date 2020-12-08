@@ -8,10 +8,6 @@
 
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import arrow from "@popperjs/core/lib/modifiers/arrow";
-import flip from "@popperjs/core/lib/modifiers/flip";
-import offset from "@popperjs/core/lib/modifiers/offset";
-import { createPopper, defaultModifiers, Instance, State } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
@@ -35,6 +31,12 @@ export const tooltipPlacement = [
 ] as const;
 
 export const tooltipStrategy = ["fixed", "absolute"] as const;
+export type TooltipEvent = {
+  placement: Tooltip.Placement;
+  reference: HTMLElement;
+  popper: HTMLElement;
+  slotContent?: Element[] | undefined | null;
+};
 
 export namespace Tooltip {
   export type Placement = typeof tooltipPlacement[number];
@@ -44,120 +46,94 @@ export namespace Tooltip {
 @customElement("md-tooltip")
 export class Tooltip extends FocusMixin(LitElement) {
   @property({ type: String }) message = "";
-  @property({ type: String }) placement: Tooltip.Placement = "auto";
-  @property({ type: Boolean }) disabled = false;
+  @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
-  @query(".md-tooltip__container") tooltip?: HTMLDivElement;
-  @query(".md-tooltip__trigger") trigger?: HTMLDivElement;
-  @query(".md-tooltip__arrow") arrow!: HTMLDivElement;
+  @query(".md-tooltip__popper") popper!: HTMLDivElement;
+  @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
-  private popperInstance: Instance | null = null;
-  private parentLevelsUp = 0;
-
-  withinOverlayCheck = (element: HTMLElement | null): Promise<Partial<State>> | undefined => {
-    const menuOverlayTag = "MD-MENU-OVERLAY";
-    const themeTag = "MD-THEME";
-    const maxLevelsUp = 10;
-
-    if (!element || !element.parentElement) return;
-    const currentTagName = element.parentElement.tagName;
-    if (currentTagName === menuOverlayTag) {
-      return this.popperInstance?.setOptions({ strategy: "absolute" });
-    } else if (this.parentLevelsUp > maxLevelsUp || currentTagName === themeTag) {
-      return;
-    } else {
-      this.parentLevelsUp++;
-      return this.withinOverlayCheck(element.parentElement);
-    }
-  };
+  private slotContent: Element[] | null = null;
 
   protected handleFocusIn(event: Event) {
     if (super.handleFocusIn) {
       super.handleFocusIn(event);
     }
-    this.showTooltip();
+    this.notifyTooltipCreate();
   }
 
   protected handleFocusOut(event: Event) {
     if (super.handleFocusOut) {
       super.handleFocusOut(event);
     }
-    this.hideTooltip();
+    this.notifyTooltipDestroy();
   }
 
-  private destroy() {
-    if (this.popperInstance) {
-      this.popperInstance.destroy();
-      this.popperInstance = null;
-    }
-  }
-
-  private create() {
-    const { trigger, tooltip } = this;
-    this.popperInstance = createPopper(trigger!, tooltip!, {
-      placement: this.placement,
-      strategy: "fixed",
-      modifiers: [
-        ...defaultModifiers,
-        flip,
-        offset,
-        arrow,
-        {
-          name: "arrow",
-          options: {
-            element: this.arrow
+  notifyTooltipCreate() {
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-create", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper,
+            ...(!this.message && { slotContent: this.slotContent })
           }
-        },
-        {
-          name: "offset",
-          options: {
-            offset: [0, 8]
+        })
+      );
+    }
+  }
+
+  notifyTooltipDestroy() {
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-destroy", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper
           }
-        }
-      ]
-    });
-  }
-
-  showTooltip() {
-    if (this.tooltip) {
-      this.tooltip.toggleAttribute("data-show", true);
-      this.create();
-      this.withinOverlayCheck(this);
+        })
+      );
     }
   }
 
-  hideTooltip() {
-    if (this.tooltip) {
-      this.tooltip.toggleAttribute("data-show", false);
-      this.destroy();
+  handleSlotContentChange(event: Event) {
+    const slot = event.target as HTMLSlotElement;
+    if (slot) {
+      const slotContent = slot.assignedElements({ flatten: true });
+      if (slotContent.length) {
+        this.slotContent = slotContent;
+      }
     }
   }
 
-  get tooltipClassMap() {
+  private get tooltipClassMap() {
     return {
       "md-tooltip--disabled": this.disabled
     };
   }
 
-  content = () => {
-    return html`
-      <slot name="tooltip-content"></slot>
-    `;
-  };
-
   render() {
     return html`
       <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
-        <div class="md-tooltip__container" role="tooltip">
+        <div class="md-tooltip__popper" role="tooltip">
           <div class="md-tooltip__content">
-            ${this.message || this.content()}
+            ${this.message
+              ? this.message
+              : html`
+                  <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
+                `}
           </div>
           <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
         </div>
         <div
-          class="md-tooltip__trigger"
-          @mouseenter=${this.showTooltip}
-          @mouseleave=${this.hideTooltip}
+          class="md-tooltip__reference"
+          @mouseenter=${() => this.notifyTooltipCreate()}
+          @mouseleave=${() => this.notifyTooltipDestroy()}
           aria-describedby="tooltip"
         >
           <slot></slot>

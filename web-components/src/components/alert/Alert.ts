@@ -10,8 +10,8 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "../button/Button";
-import "../icon/Icon";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 @customElement("md-alert")
@@ -101,7 +101,7 @@ export class Alert extends LitElement {
                 ? html`
                     <div class="md-alert__button">
                       <md-button hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
-                        <md-icon name="icon-cancel_16"></md-icon>
+                        <md-icon slot="icon" name="icon-cancel_16"></md-icon>
                       </md-button>
                     </div>
                   `

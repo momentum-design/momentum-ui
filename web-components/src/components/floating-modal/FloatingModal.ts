@@ -1,190 +1,159 @@
-import { throttle } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
-import { styleMap } from "lit-html/directives/style-map";
-import "../button/Button";
-import "../icon/Icon";
+import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
+import "@interactjs/auto-start";
+import "@interactjs/actions/drag";
+import "@interactjs/modifiers";
+import "@interactjs/actions/resize";
+import * as Interact from "@interactjs/types";
+import interact from "@interactjs/interact/index";
+import { styleMap } from "lit-html/directives/style-map";
 
 @customElement("md-floating-modal")
 export class FloatingModal extends LitElement {
   @property({ type: String }) heading = "";
-  @property({ type: Boolean }) fullScreen = false;
-  @property({ type: Boolean }) show = false;
-  @property({ type: String }) arialabel = "";
-  @property({ type: Boolean }) fixfull = false;
-  @property({ type: Number }) x = 300;
-  @property({ type: Number }) y = 100;
-  @property({ type: Number }) width = 600;
-  @property({ type: Number }) height = 300;
+  @property({ type: String }) label = "";
+  @property({ type: Boolean, reflect: true }) show = false;
+  @property({ type: Boolean, reflect: true, attribute: "aspect-ratio" }) aspectRatio = false;
+  @property({ type: Boolean, reflect: true, attribute: "fixed-strategy" }) fixed = false;
+  @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
 
-  @internalProperty() private resizer: any;
-  @internalProperty() private px = 0;
-  @internalProperty() private py = 0;
-  @internalProperty() private minArea = 20000;
-  @internalProperty() public draggingCorner = false;
-  @internalProperty() public draggingWindow = false;
+  @query(".md-floating") container?: HTMLDivElement;
+  @query(".md-floating__body") body!: HTMLDivElement;
+  @query(".md-floating__header") header!: HTMLDivElement;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener("mousemove", this.onCornerMove as EventListener);
-    this.addEventListener("mouseout", this.onCornerRelease);
-    this.requestUpdate("show");
+  private containerRect: DOMRect | null = null;
+
+  get floatingClassMap() {
+    return {
+      fixed: this.fixed
+    };
   }
 
-  area() {
-    return this.width * this.height;
-  }
-
-  onWindowPress(event: MouseEvent) {
-    this.draggingWindow = true;
-    this.px = event.clientX;
-    this.py = event.clientY;
-  }
-
-  onWindowDrag(event: MouseEvent) {
-    if (!this.draggingWindow) {
-      return;
-    }
-    const offsetX = event.clientX - this.px;
-    const offsetY = event.clientY - this.py;
-
-    this.x += offsetX;
-    this.y += offsetY;
-    this.px = event.clientX;
-    this.py = event.clientY;
-  }
-
-  onCornerRelease(event: MouseEvent) {
-    this.draggingWindow = false;
-    this.draggingCorner = false;
-    event.preventDefault();
-  }
-
-  onResize() {
-    this.fullScreen = !this.fullScreen;
-  }
-
-  topLeftResize(offsetX: number, offsetY: number) {
-    this.x += offsetX;
-    this.y += offsetY;
-    this.width -= offsetX;
-    this.height -= offsetY;
-  }
-
-  topRightResize(offsetX: number, offsetY: number) {
-    this.y += offsetY;
-    this.width += offsetX;
-    this.height -= offsetY;
-  }
-
-  bottomLeftResize(offsetX: number, offsetY: number) {
-    this.x += offsetX;
-    this.width -= offsetX;
-    this.height += offsetY;
-  }
-
-  bottomRightResize(offsetX: number, offsetY: number) {
-    this.width += offsetX;
-    this.height += offsetY;
-  }
-
-  onCornerClick = throttle((event: MouseEvent, func: Function) => {
-    this.draggingCorner = true;
-    this.draggingWindow = false;
-    this.px = event.clientX;
-    this.py = event.clientY;
-    this.resizer = func;
-
-    event.preventDefault();
-    event.stopPropagation();
-  });
-
-  onCornerMove = throttle((event: MouseEvent) => {
-    if (!this.draggingCorner) {
-      return;
-    }
-    const offsetX = event.clientX - this.px;
-    const offsetY = event.clientY - this.py;
-
-    const lastX = this.x;
-    const lastY = this.y;
-    const pWidth = this.width;
-    const pHeight = this.height;
-
-    this.resizer.call(this, offsetX, offsetY);
-
-    if (this.area() < this.minArea) {
-      this.x = lastX;
-      this.y = lastY;
-      this.width = pWidth;
-      this.height = pHeight;
-    }
-
-    this.px = event.clientX;
-    this.py = event.clientY;
-
-    event.preventDefault();
-  });
-
-  close() {
-    if (this.show) {
-      this.show = false;
-      this.requestUpdate("show");
-    }
-    this.dispatchEvent(
-      new CustomEvent("close-floating", {
-        composed: true,
-        bubbles: true
-      })
-    );
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener("mousemove", this.onCornerMove as EventListener);
-    this.removeEventListener("mouseout", this.onCornerRelease);
-  }
-
-  headerTemplate() {
-    return html`
-      ${this.heading
-        ? html`
-            ${this.heading}
-          `
-        : html`
-            <slot name="header"></slot>
-          `}
-    `;
-  }
-
-  topCloseBtn() {
-    return html`
-      <md-button color="color-none" class="md-floating__close" circle @click=${() => this.close()}>
-        <md-icon name="cancel_16"></md-icon>
-      </md-button>
-    `;
-  }
-
-  resizeBtn() {
-    return html`
-      <md-button color="color-none" class="md-floating__resize" circle @click="${() => this.onResize()}">
-        <md-icon name=${this.fullScreen ? "minimize_16" : "maximize_16"}></md-icon>
-      </md-button>
-    `;
+  get containerStyleMap() {
+    const { top, left, bottom, right, width, height } = this.containerRect!;
+    return {
+      width: `${this.full ? `100%` : `${width}px`}`,
+      height: `${this.full ? `100%` : `${height}px`}`,
+      top: `${this.full ? `0px` : `${top}px`}`,
+      left: `${this.full ? `0px` : `${left}px`}`,
+      bottom: `${this.full ? `0px` : `${bottom}px`}`,
+      right: `${this.full ? `0px` : `${right}px`}`
+    };
   }
 
   static get styles() {
     return [reset, styles];
   }
 
-  get resizeStyleMap() {
-    return {
-      width: `${this.fullScreen ? `100%` : `${this.width}px`}`,
-      height: `${this.fullScreen ? `100%` : `${this.height}px`}`,
-      top: `${this.fullScreen ? `0px` : `${this.y}px`}`,
-      left: `${this.fullScreen ? `0px` : `${this.x}px`}`
-    };
+  protected updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("show")) {
+      if (this.container && this.show) {
+        this.setInteractInstance();
+        this.setContainerRect();
+      } else {
+        this.destroyInteractInstance();
+      }
+    }
+  }
+
+  private setContainerRect() {
+    requestAnimationFrame(async () => {
+      await this.updateComplete;
+      this.containerRect = this.container!.getBoundingClientRect();
+    });
+  }
+
+  private setInteractInstance() {
+    requestAnimationFrame(() => {
+      if (this.container) {
+        interact(this.container)
+          .resizable({
+            edges: { left: true, right: true, bottom: true, top: true },
+            listeners: {
+              move: this.resizeMoveListener
+            },
+            modifiers: this.aspectRatio
+              ? [
+                  interact.modifiers.aspectRatio({
+                    ratio: "preserve",
+                    equalDelta: true
+                  })
+                ]
+              : undefined
+          })
+          .draggable({
+            autoScroll: true,
+            allowFrom: this.header,
+            ignoreFrom: this.body,
+            onmove: this.dragMoveListener
+          });
+      }
+    });
+  }
+
+  handleClose(event: MouseEvent) {
+    this.show = false;
+    this.full = false;
+    this.dispatchEvent(
+      new CustomEvent("floating-modal-close", {
+        composed: true,
+        bubbles: true,
+        detail: {
+          srcEvent: event
+        }
+      })
+    );
+  }
+
+  handleToggleExpandCollapse() {
+    this.full = !this.full;
+  }
+
+  private resizeMoveListener = (event: Interact.ResizeEvent) => {
+    const { target } = event;
+    let x = parseFloat(target.getAttribute("data-x") as string) || 0;
+    let y = parseFloat(target.getAttribute("data-y") as string) || 0;
+
+    target.style.width = `${event.rect.width}px`;
+    target.style.height = `${event.rect.height}px`;
+
+    x += event.deltaRect!.left;
+    y += event.deltaRect!.top;
+
+    this.setTargetPosition(target, x, y);
+  };
+
+  private dragMoveListener = (event: Interact.InteractEvent) => {
+    const { target, dx, dy } = event;
+    const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx;
+    const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy;
+
+    this.setTargetPosition(target, x, y);
+  };
+
+  private setTargetPosition(target: Interact.Element, x: number, y: number) {
+    target.style.transform = `translate(${x}px, ${y}px)`;
+    target.setAttribute("data-x", `${x}`);
+    target.setAttribute("data-y", `${y}`);
+  }
+
+  private destroyInteractInstance() {
+    if (this.container && interact.isSet(this.container)) {
+      interact(this.container).unset();
+      this.containerRect = null;
+    }
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.destroyInteractInstance();
   }
 
   render() {
@@ -192,47 +161,41 @@ export class FloatingModal extends LitElement {
       ${this.show
         ? html`
             <div
-              class="${`md-floating ` + `${this.fixfull ? "fixed" : ""}`}"
+              class="md-floating ${classMap(this.floatingClassMap)}"
               part="floating"
               role="dialog"
-              aria-label=${this.arialabel}
+              aria-label=${ifDefined(this.label || undefined)}
               aria-modal="true"
-              style=${styleMap(this.resizeStyleMap)}
-              @mousedown=${(event: MouseEvent) => this.onWindowPress(event)}
-              @mousemove=${(event: MouseEvent) => this.onWindowDrag(event)}
-              @mouseup=${(event: MouseEvent) => this.onCornerRelease(event)}
+              style=${ifDefined(this.containerRect ? styleMap(this.containerStyleMap) : undefined)}
             >
-              <div
-                class="resizer top-left"
-                @mousedown=${(e: MouseEvent) => this.onCornerClick(e, this.topLeftResize)}
-                @mouseup=${(e: MouseEvent) => this.onCornerRelease(e)}
-              ></div>
-              <div
-                class="resizer top-right"
-                @mousedown=${(e: MouseEvent) => this.onCornerClick(e, this.topRightResize)}
-                @mouseup=${(e: MouseEvent) => this.onCornerRelease(e)}
-              ></div>
-              <div
-                class="resizer bottom-left"
-                @mousedown=${(e: MouseEvent) => this.onCornerClick(e, this.bottomLeftResize)}
-                @mouseup=${(e: MouseEvent) => this.onCornerRelease(e)}
-              ></div>
-              <div
-                class="resizer bottom-right"
-                @mousedown=${(e: MouseEvent) => this.onCornerClick(e, this.bottomRightResize)}
-                @mouseup=${(e: MouseEvent) => this.onCornerRelease(e)}
-              ></div>
-
               <div class="md-floating__header">
-                <div class="md-floating__header-text">${this.headerTemplate()}</div>
-                ${this.resizeBtn()} ${this.topCloseBtn()}
+                <div class="md-floating__header-text">
+                  ${this.heading
+                    ? html`
+                        ${this.heading}
+                      `
+                    : html`
+                        <slot name="header"></slot>
+                      `}
+                </div>
+                <md-button
+                  color="color-none"
+                  class="md-floating__resize"
+                  circle
+                  @click=${this.handleToggleExpandCollapse}
+                >
+                  <md-icon name=${this.full ? "minimize_16" : "maximize_16"}></md-icon>
+                </md-button>
+                <md-button color="color-none" class="md-floating__close" circle @click=${this.handleClose}>
+                  <md-icon name="cancel_16"></md-icon>
+                </md-button>
               </div>
               <div class="md-floating__body">
                 <slot></slot>
               </div>
             </div>
           `
-        : null}
+        : nothing}
     `;
   }
 }

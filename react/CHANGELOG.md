@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.19.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.1...@momentum-ui/react@23.19.2) (2020-12-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.19.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.0...@momentum-ui/react@23.19.1) (2020-11-21)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.19.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.2...@momentum-ui/react@23.19.0) (2020-11-20)
+
+
+### Features
+
+* **avatar:** add initials props ([#659](https://github.com/momentum-design/momentum-ui/issues/659)) ([3ea642c](https://github.com/momentum-design/momentum-ui/commit/3ea642c2e89ee16edebfaef58b152d8e2fe9f0fa))
+
+
+
+
+
 ## [23.18.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.1...@momentum-ui/react@23.18.2) (2020-11-10)
 
 

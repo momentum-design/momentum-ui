@@ -55,15 +55,15 @@ export class EditableFieldTemplateSandbox extends LitElement {
   render() {
     return html`
       <p>Get new text that was changed in editable field - ${this.textChanged}</p>
-      <h4>With composed text</h4>
-      <md-editable-field>
+      <h3>With composed text</h3>
+      <md-editable-field max-lines="2">
         Test text in slot
       </md-editable-field>
-      <h4>Disabled</h4>
+      <h3>Disabled</h3>
       <md-editable-field content="disabled for editing but readable" disabled></md-editable-field>
-      <h4>With no composed text and default placeholder</h4>
+      <h3>With no composed text and default placeholder</h3>
       <md-editable-field></md-editable-field>
-      <h4>With content passed in attribute</h4>
+      <h3>With content passed in attribute</h3>
       <md-editable-field content="attribute text"></md-editable-field>
       <hr />
       <md-editable-field alert .message=${{ ...successMessageArr }}>
@@ -77,26 +77,26 @@ export class EditableFieldTemplateSandbox extends LitElement {
       <md-editable-field alert .message=${{ ...warningMessageArr }}>
         Warning Status
       </md-editable-field>
-      
-      <h4>Errors and Warnings but no message</h4>
+
+      <h3>Errors and Warnings but no message</h3>
       <md-editable-field content="warning message" hideMessage alert .message=${{ ...warningMessageArr }}>
         Warning Status
       </md-editable-field>
       <md-editable-field content="error message" hideMessage alert .message=${{ ...errorMessageArr }}>
         Error Status
       </md-editable-field>
-      <h4>Validation Types</h4>
-      <h5>integer</h5>
+      <h3>Validation Types</h3>
+      <h4>integer</h4>
       <md-editable-field type="integer">
         123
       </md-editable-field>
-      <h5>decimal</h5>
+      <h4>decimal</h4>
       <md-editable-field type="decimal">
         123.321
       </md-editable-field>
-      <h5>date pattern set</h5>
+      <h4>date pattern set</h4>
       <md-editable-field pattern=^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\\d|3[01])[/](19|20)\\d{2}$> 12/12/2020 </md-editable-field>
-        <h5>time pattern w/ hideMessage set</h5>
+        <h4>time pattern w/ hideMessage set</h4>
         <md-editable-field hideMessage pattern=${ValidationRegex.timeString}>
           12:30PM
         </md-editable-field>

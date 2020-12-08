@@ -28,10 +28,11 @@ export default {
 
 export const Spinner = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const size = number("Size", 20);
 
   return html`
-    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-spinner .size="${size}"></md-spinner>
     </md-theme>
   `;

@@ -4,12 +4,11 @@
 }
 
 :host(md-pagination) {
-
   .md-pagination {
-    display: flex;
-    position: relative;
-    padding: 0;
     color: var(--pagination-nav-color, $md-pagination-nav-color-light);
+    display: flex;
+    padding: 0;
+    position: relative;
 
     &-container {
       @include flex($fd: column);
@@ -24,42 +23,42 @@
 
       li {
         @include flex();
-        margin: $pagination-indent;
         border-radius: $pagination-border-radius;
         color: var(--pagination-color, $md-pagination-color-light);
         cursor: pointer;
-        min-width: $pagination-size;
         height: $pagination-size;
+        margin: $pagination-indent;
+        min-width: $pagination-size;
         padding: $pagination-item-indent;
 
         &:hover {
-          color: var(--pagination-color-current, $md-pagination-color-current-light);
           background: var(--pagination-bg-hover, $md-pagination-bg-hover-light);
+          color: var(--pagination-color-current, $md-pagination-color-current-light);
         }
 
         &:focus {
           box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
         }
 
-        &[aria-current="page"] {
-          pointer-events: none;
-          cursor: default;
-          color: var(--pagination-color-current, $md-pagination-color-current-light);
+        &[aria-current="true"] {
           background: var(--pagination-bg-current, $md-pagination-bg-current-light);
+          color: var(--pagination-color-current, $md-pagination-color-current-light);
+          cursor: default;
+          pointer-events: none;
         }
       }
     }
 
     &-nav {
+      @include flex;
       background: none;
       border: 0;
-      cursor: pointer;
-      padding: 0;
-      @include flex;
-      flex: 0 0 $pagination-arrow-size;
-      outline: none;
       border-radius: $pagination-nav-border-radius;
       color: var(--pagination-nav-color, $md-pagination-nav-color-light);
+      cursor: pointer;
+      flex: 0 0 $pagination-arrow-size;
+      outline: none;
+      padding: 0;
 
       &:hover {
         color: var(--pagination-nav-hover, $md-pagination-nav-hover-light);
@@ -80,13 +79,13 @@
       @include flex;
 
       li {
-        width: $pagination-dots-size;
-        height: $pagination-dots-size;
-        border-radius: 50%;
-        margin: $pagination-dots-margin;
-        background: var(--pagination-dots-color, $md-pagination-dots-color-light);
         @include text-overflow();
+        background: var(--pagination-dots-color, $md-pagination-dots-color-light);
+        border-radius: 50%;
         cursor: pointer;
+        height: $pagination-dots-size;
+        margin: $pagination-dots-margin;
+        width: $pagination-dots-size;
 
         &.current,
         &:hover {
@@ -95,8 +94,6 @@
       }
     }
   }
-
-
 }
 
 :host([focus-visible]) {

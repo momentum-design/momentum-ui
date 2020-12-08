@@ -8,7 +8,8 @@ export class Pagination extends LitElement {
   private _currentPage = 1;
 
   @property({ type: Boolean, attribute: "dots" }) hasDots = false;
-  @property({ type: Boolean, attribute: "only-dots" }) onlyDots = false;
+  @property({ type: Boolean, reflect: true, attribute: "only-dots" }) onlyDots = false;
+  @property({ type: Boolean, reflect: true, attribute: "no-navigation" }) noNavigation = false;
   @property({ type: Number, reflect: true, attribute: "total-page" }) totalPage = 0;
   @property({ type: Number, reflect: true, attribute: "visible-page" }) visiblePage = 3;
   @property({ type: Number, reflect: true, attribute: "current-page" })
@@ -22,11 +23,6 @@ export class Pagination extends LitElement {
     this.notifyPageChange(oldPage, newPage);
     this.requestUpdate("currentPage", oldPage);
   }
-
-  @property({ type: String, attribute: "on-begin-i18n" }) beginLocalization = "On Begin";
-  @property({ type: String, attribute: "on-before-i18n" }) beforeLocalization = "On Before";
-  @property({ type: String, attribute: "on-next-i18n" }) nextLocalization = "On Next";
-  @property({ type: String, attribute: "on-end-i18n" }) endLocalization = "On End";
 
   static get styles() {
     return [reset, styles];
@@ -138,24 +134,28 @@ export class Pagination extends LitElement {
   render() {
     return html`
       <nav class="md-pagination" role="navigation" part="pagination">
-        <button
-          class="md-pagination-nav"
-          aria-label=${this.beginLocalization}
-          ?disabled=${this.hasPreviousPage}
-          aria-disabled=${this.hasPreviousPage}
-          @click=${this.computeFirst}
-        >
-          <md-icon name="icon-overflow-left_16"></md-icon>
-        </button>
-        <button
-          class="md-pagination-nav"
-          aria-label=${this.beforeLocalization}
-          ?disabled=${this.hasPreviousPage}
-          aria-disabled=${this.hasPreviousPage}
-          @click=${() => this.computePrevious(this.currentPage - 1)}
-        >
-          <md-icon name="icon-arrow-left_16"></md-icon>
-        </button>
+        ${this.noNavigation
+          ? nothing
+          : html`
+              <button
+                class="md-pagination-nav"
+                aria-label="First Page"
+                ?disabled=${this.hasPreviousPage}
+                aria-disabled=${this.hasPreviousPage}
+                @click=${this.computeFirst}
+              >
+                <md-icon name="icon-overflow-left_16"></md-icon>
+              </button>
+              <button
+                class="md-pagination-nav"
+                aria-label="Next Page"
+                ?disabled=${this.hasPreviousPage}
+                aria-disabled=${this.hasPreviousPage}
+                @click=${() => this.computePrevious(this.currentPage - 1)}
+              ></button>
+                <md-icon name="icon-arrow-left_16"></md-icon>
+              </button>
+            `}
         <div class="md-pagination-container">
           ${this.onlyDots
             ? html`
@@ -176,24 +176,28 @@ export class Pagination extends LitElement {
               `
             : nothing}
         </div>
-        <button
-          class="md-pagination-nav"
-          aria-label=${this.nextLocalization}
-          ?disabled=${this.hasNextPage}
-          aria-disabled=${this.hasNextPage}
-          @click=${() => this.computeNext(this.currentPage + 1)}
-        >
-          <md-icon name="icon-arrow-right_16"></md-icon>
-        </button>
-        <button
-          class="md-pagination-nav"
-          aria-label=${this.endLocalization}
-          ?disabled=${this.hasNextPage}
-          aria-disabled=${this.hasNextPage}
-          @click=${this.computeLast}
-        >
-          <md-icon name="icon-overflow-right_16"></md-icon>
-        </button>
+        ${this.noNavigation
+          ? nothing
+          : html`
+              <button
+                class="md-pagination-nav"
+                aria-label="Previous Page"
+                ?disabled=${this.hasNextPage}
+                aria-disabled=${this.hasNextPage}
+                @click=${() => this.computeNext(this.currentPage + 1)}
+              >
+                <md-icon name="icon-arrow-right_16"></md-icon>
+              </button>
+              <button
+                class="md-pagination-nav"
+                aria-label="Last Page"
+                ?disabled=${this.hasNextPage}
+                aria-disabled=${this.hasNextPage}
+                @click=${this.computeLast}
+              >
+                <md-icon name="icon-overflow-right_16"></md-icon>
+              </button>
+            `}
       </nav>
     `;
   }

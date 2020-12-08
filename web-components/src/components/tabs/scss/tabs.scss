@@ -29,6 +29,7 @@
     width: auto;
 
     &.md-menu-overlay__more--hidden {
+      display: none;
       pointer-events: none;
       visibility: hidden;
       width: 0 !important;
@@ -44,6 +45,11 @@
       pointer-events: none;
       visibility: hidden;
       z-index: -1;
+
+      &::part(tab) {
+        padding: 0;
+        border: none;
+      }
     }
   }
 

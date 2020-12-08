@@ -1,113 +1,60 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
-import { classMap } from "lit-html/directives/class-map";
-import { repeat } from "lit-html/directives/repeat";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
 
 @customElement("md-pagination")
 export class Pagination extends LitElement {
-  private _total = 5;
-  private _limit = 1;
-  private _page = 1;
+  private _currentPage = 1;
 
-  @property({ type: Number, reflect: true })
-  get total() {
-    return this._total;
-  }
-  set total(newTotal: number) {
-    let oldTotal = this._total;
-    this._total = newTotal;
-    this.requestUpdate("total", oldTotal);
-    this.computePageCount(this.page, this.limit, this._total);
+  @property({ type: Number, reflect: true, attribute: "total-page" }) totalPage = 0;
+  @property({ type: Number, reflect: true, attribute: "visible-page" }) visiblePage = 3;
+  @property({ type: Number, reflect: true, attribute: "current-page" })
+  get currentPage() {
+    return this._currentPage;
   }
 
-  @property({ type: Number, reflect: true })
-  get limit() {
-    return this._limit;
-  }
-  set limit(newLimit: number) {
-    const oldLimit = this._limit;
-    this._limit = newLimit;
-    this.requestUpdate("limit", oldLimit);
-    this.computePageCount(this.page, this._limit, this.total);
-  }
-
-  @property({ type: Number, reflect: true })
-  get page() {
-    return this._page;
-  }
-  set page(newPage: number) {
-    const oldPage = this._page;
-    this._page = newPage;
-    this.requestUpdate("page", oldPage);
+  set currentPage(newPage: number) {
+    const oldPage = this._currentPage;
+    this._currentPage = newPage;
     this.notifyPageChange(oldPage, newPage);
-    this.computePageCount(this._page, this.limit, this.total);
+    this.requestUpdate("currentPage", oldPage);
   }
 
-  @property({ type: Number, reflect: true }) size = 1;
   @property({ type: String, attribute: "on-begin-i18n" }) beginLocalization = "On Begin";
   @property({ type: String, attribute: "on-before-i18n" }) beforeLocalization = "On Before";
   @property({ type: String, attribute: "on-next-i18n" }) nextLocalization = "On Next";
   @property({ type: String, attribute: "on-end-i18n" }) endLocalization = "On End";
-  @property({ type: Boolean, attribute: "dots" }) dots = false;
-
-  @internalProperty() private hasBefore = false;
-  @internalProperty() private hasNext = false;
-  @internalProperty() private pages = 1;
-  @internalProperty() private items: number[] = [];
 
   static get styles() {
     return [reset, styles];
   }
 
-  get paginationClassMap() {
-    return {
-      "has-dots": this.dots
-    };
-  }
-
-  private computeBefore(page: number) {
-    return page <= 1;
-  }
-
-  private computeNext(page: number, pages: number) {
-    return page >= pages;
-  }
-
-  private handleBegin() {
-    this.page = 1;
-  }
-
-  private handleBefore() {
-    this.page = this.page > 0 ? this.page - 1 : 1;
-  }
-
-  private handleNext() {
-    this.page = this.page < this.pages ? this.page + 1 : this.pages;
-  }
-
-  private handleEnd() {
-    this.page = this.pages;
-  }
-
-  private firstIndex(page: number, size: number) {
-    let index = page - size;
-    if (index < 1) {
-      return 1;
-    } else {
-      return index;
+  private computePrevious(page: number) {
+    if (page !== 1 && page !== this.currentPage) {
+      this.currentPage -= 1;
     }
   }
 
-  private lastIndex(page: number, size: number) {
-    let index = page + size;
-    if (index > this.pages) {
-      return this.pages;
-    } else {
-      return index;
+  private computeNext(page: number) {
+    if (page <= this.totalPage && page !== this.currentPage) {
+      this.currentPage += 1;
     }
+  }
+
+  private computeFirst() {
+    if (this.currentPage >= 1) {
+      this.currentPage = 1;
+    }
+  }
+
+  private computeLast() {
+    if (this.currentPage >= 1) {
+      this.currentPage = this.totalPage;
+    }
+  }
+
+  private computeCurrent(page: number) {
+    this.currentPage = page;
   }
 
   private notifyPageChange(oldPage: number, newPage: number) {
@@ -120,101 +67,96 @@ export class Pagination extends LitElement {
     );
   }
 
-  private computePageCount(page: number, limit: number, total: number) {
-    if (limit && total) {
-      this.pages = Math.ceil(total / limit);
-    }
+  get hasPreviousPage() {
+    return this.currentPage <= 1;
+  }
 
-    if (page && limit && total) {
-      let items = [];
-      let firstIndex = this.firstIndex(page, this.size);
-      let lastIndex = this.lastIndex(page, this.size);
+  get hasNextPage() {
+    return this.currentPage >= this.totalPage;
+  }
 
-      for (let num = firstIndex; num <= lastIndex; num++) {
-        items.push(num);
+  private computePageList() {
+    if (this.totalPage > this.visiblePage) {
+      const [previous, current, next] = [this.currentPage - 1, this.currentPage, this.currentPage + 1];
+      let newPageList: (string | number)[] = [];
+
+      if (current <= this.visiblePage - 1) {
+        newPageList = [...Array(this.visiblePage)].map((_, index) => 1 + index);
+        newPageList.push("...");
+        newPageList.push(this.totalPage);
+        return newPageList;
       }
-      this.items = items;
+
+      if (this.totalPage - current <= this.visiblePage - 2) {
+        newPageList = [];
+        newPageList.push(1);
+        newPageList.push("...");
+        const newPageListRemain = [...Array(this.visiblePage)].map(
+          (_, index) => this.totalPage - this.visiblePage + 1 + index
+        );
+        return newPageList.concat(newPageListRemain);
+      }
+
+      return [1, "...", previous, current, next, "...", this.totalPage];
     }
+    return [...Array(this.totalPage)].map((_, index) => 1 + index);
   }
 
-  private isPageCurrent(item: number, page: number) {
-    return item === page;
-  }
-
-  handleChange(item: number) {
-    this.page = item;
-  }
-
-  private computeNavigation(page: number, pages: number) {
-    this.hasBefore = this.computeBefore(page);
-    this.hasNext = this.computeNext(page, pages);
-  }
-
-  protected firstUpdated(changedProperties: PropertyValues) {
-    super.firstUpdated(changedProperties);
-    this.computePageCount(this.page, this.limit, this.total);
-    this.computeNavigation(this.page, this.pages);
-  }
-
-  protected update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
-    if (changedProperties.has("page") || changedProperties.has("pages")) {
-      this.computeNavigation(this.page, this.pages);
-    }
+  private pagesTemplate() {
+    return this.computePageList().map(page =>
+      page === "..."
+        ? html`
+            <li><span>${page}</span></li>
+          `
+        : html`
+            <li @click=${() => this.computeCurrent(page as number)} aria-current=${page === this.currentPage}>
+              ${page}
+            </li>
+          `
+    );
   }
 
   render() {
     return html`
-      <nav class="md-pagination ${classMap(this.paginationClassMap)}" role="navigation" part="pagination">
+      <nav class="md-pagination" role="navigation" part="pagination">
         <button
           class="md-pagination-nav"
           aria-label=${this.beginLocalization}
-          ?disabled=${this.hasBefore}
-          aria-disabled=${this.hasBefore}
-          @click=${this.handleBegin}
+          ?disabled=${this.hasPreviousPage}
+          aria-disabled=${this.hasPreviousPage}
+          @click=${this.computeFirst}
         >
           <md-icon name="icon-overflow-left_16"></md-icon>
         </button>
         <button
           class="md-pagination-nav"
           aria-label=${this.beforeLocalization}
-          ?disabled=${this.hasBefore}
-          aria-disabled=${this.hasBefore}
-          @click=${this.handleBefore}
+          ?disabled=${this.hasPreviousPage}
+          aria-disabled=${this.hasPreviousPage}
+          @click=${() => this.computePrevious(this.currentPage - 1)}
         >
           <md-icon name="icon-arrow-left_16"></md-icon>
         </button>
         <div class="md-pagination-container">
           <ul class="md-pagination-list">
-            ${repeat(
-              this.items,
-              (i: number) => i,
-              (item: number, index: number) => html`
-                <li
-                  @click=${() => this.handleChange(item)}
-                  aria-current=${ifDefined(this.isPageCurrent(item, this.page) ? "page" : undefined)}
-                >
-                  ${item}
-                </li>
-              `
-            )}
+            ${this.pagesTemplate()}
           </ul>
         </div>
         <button
           class="md-pagination-nav"
           aria-label=${this.nextLocalization}
-          ?disabled=${this.hasNext}
-          aria-disabled=${this.hasNext}
-          @click=${this.handleNext}
+          ?disabled=${this.hasNextPage}
+          aria-disabled=${this.hasNextPage}
+          @click=${() => this.computeNext(this.currentPage + 1)}
         >
           <md-icon name="icon-arrow-right_16"></md-icon>
         </button>
         <button
           class="md-pagination-nav"
           aria-label=${this.endLocalization}
-          ?disabled=${this.hasNext}
-          aria-disabled=${this.hasNext}
-          @click=${this.handleEnd}
+          ?disabled=${this.hasNextPage}
+          aria-disabled=${this.hasNextPage}
+          @click=${this.computeLast}
         >
           <md-icon name="icon-overflow-right_16"></md-icon>
         </button>

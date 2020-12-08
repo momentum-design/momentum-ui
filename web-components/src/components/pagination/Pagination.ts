@@ -6,6 +6,7 @@ import styles from "./scss/module.scss";
 export class Pagination extends LitElement {
   private _currentPage = 1;
 
+  @property({ type: Boolean, attribute: "has-dots" }) hasDots = false;
   @property({ type: Number, reflect: true, attribute: "total-page" }) totalPage = 0;
   @property({ type: Number, reflect: true, attribute: "visible-page" }) visiblePage = 3;
   @property({ type: Number, reflect: true, attribute: "current-page" })
@@ -73,6 +74,12 @@ export class Pagination extends LitElement {
 
   get hasNextPage() {
     return this.currentPage >= this.totalPage;
+  }
+
+  get paginationClassMap() {
+    return {
+      "has-dots": this.hasDots
+    };
   }
 
   private computePageList() {

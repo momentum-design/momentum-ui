@@ -17,7 +17,7 @@ export class Pagination extends LitElement {
     return this._total;
   }
   set total(newTotal: number) {
-    let oldTotal = this._total;
+    const oldTotal = this._total;
     this._total = newTotal;
     this.requestUpdate("total", oldTotal);
     this.computePageCount(this.page, this.limit, this._total);
@@ -51,7 +51,7 @@ export class Pagination extends LitElement {
   @property({ type: String, attribute: "on-before-i18n" }) beforeLocalization = "On Before";
   @property({ type: String, attribute: "on-next-i18n" }) nextLocalization = "On Next";
   @property({ type: String, attribute: "on-end-i18n" }) endLocalization = "On End";
-  @property({ type: Boolean, attribute: "dots" }) dots = false;
+  @property({ type: Boolean, attribute: "dots" }) hasDots = false;
 
   @internalProperty() private hasBefore = false;
   @internalProperty() private hasNext = false;
@@ -64,7 +64,7 @@ export class Pagination extends LitElement {
 
   get paginationClassMap() {
     return {
-      "has-dots": this.dots
+      "has-dots": this.hasDots
     };
   }
 
@@ -93,7 +93,7 @@ export class Pagination extends LitElement {
   }
 
   private firstIndex(page: number, size: number) {
-    let index = page - size;
+    const index = page - size;
     if (index < 1) {
       return 1;
     } else {
@@ -102,7 +102,7 @@ export class Pagination extends LitElement {
   }
 
   private lastIndex(page: number, size: number) {
-    let index = page + size;
+    const index = page + size;
     if (index > this.pages) {
       return this.pages;
     } else {
@@ -126,9 +126,9 @@ export class Pagination extends LitElement {
     }
 
     if (page && limit && total) {
-      let items = [];
-      let firstIndex = this.firstIndex(page, this.size);
-      let lastIndex = this.lastIndex(page, this.size);
+      const items = [];
+      const firstIndex = this.firstIndex(page, this.size);
+      const lastIndex = this.lastIndex(page, this.size);
 
       for (let num = firstIndex; num <= lastIndex; num++) {
         items.push(num);
@@ -199,6 +199,21 @@ export class Pagination extends LitElement {
               `
             )}
           </ul>
+          ${this.hasDots
+            ? html`
+                <ul class="md-pagination-dots">
+                  ${repeat(
+                    this.items,
+                    (item: number) => html`
+                      <li
+                        @click=${() => this.handleChange(item)}
+                        aria-current=${ifDefined(this.isPageCurrent(item, this.page) ? "page" : undefined)}
+                      ></li>
+                    `
+                  )}
+                </ul>
+              `
+            : nothing}
         </div>
         <button
           class="md-pagination-nav"

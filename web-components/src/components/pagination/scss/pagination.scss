@@ -88,7 +88,7 @@
         @include text-overflow();
         cursor: pointer;
 
-        &.current,
+        &[aria-current="page"],
         &:hover {
           background: var(--pagination-dots-color-current, $md-pagination-dots-color-current-light);
         }

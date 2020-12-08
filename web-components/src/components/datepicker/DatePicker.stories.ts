@@ -17,6 +17,7 @@ export default {
 
 export const DatePicker = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const minDate = text(
     "minimum date",
     now()
@@ -30,7 +31,7 @@ export const DatePicker = () => {
       .toSQLDate()
   );
   return html`
-    <md-theme ?darkTheme=${darkTheme}>
+    <md-theme ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
     </md-theme>
   `;

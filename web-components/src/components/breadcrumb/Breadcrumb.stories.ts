@@ -44,9 +44,10 @@ const breadCrumb = [
 
 export const Breadcrumb = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   
   return html`
-    <md-theme class="theme-toggle" id="breadcrumb" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="breadcrumb" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
     </md-theme>
   `;

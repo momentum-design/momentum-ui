@@ -17,11 +17,15 @@ export default {
 };
 
 export const Default = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
   const value = text("value", "12:00:00 AM");
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);
 
   return html`
-    <md-timepicker ?twentyfourhourformat=${twentyFourHourFormat} value=${value} timeSpecificity=${theTimeSpecificity}></md-timepicker>
+    <md-theme class="theme-toggle" id="timepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-timepicker ?twentyfourhourformat=${twentyFourHourFormat} value=${value} timeSpecificity=${theTimeSpecificity}></md-timepicker>
+    </md-theme>
   `;
 };

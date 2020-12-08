@@ -32,11 +32,12 @@ export default {
 
 export const Tooltip = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const message = text("message", "Test tooltip");
   const placement = select("placement", tooltipPlacement, "right");
 
   return html`
-    <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-tooltip message=${message} placement=${placement} @tooltip-create=${(action('show'))} @tooltip-destroy=${(action('hide'))}>
         <md-button>Test Button</md-button>
       </md-tooltip>

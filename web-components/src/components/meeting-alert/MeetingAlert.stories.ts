@@ -43,6 +43,7 @@ const defaultValue = [
 
 export const MeetingAlert = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const show = boolean("Show", true);
   const closeAriaLabel = text("Close Aria Label", "Webex Teams aria label");
   const remindAriaLabel = text("Remind Aria Label", "Webex Teams Remind");
@@ -58,7 +59,7 @@ export const MeetingAlert = () => {
     const attendees = array("Attendees", defaultValue);
 
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-meeting-alert
           show
           .attendees=${attendees}
@@ -72,7 +73,7 @@ export const MeetingAlert = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-meeting-alert
           .show=${show}
           .closeAriaLabel=${closeAriaLabel}

@@ -91,7 +91,7 @@ export class TimePicker extends LitElement {
   @internalProperty() private tabNext = false;
   @internalProperty () private time = "";
 
-  updated(changedProperties: PropertyValues) {
+  firstUpdated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
     if (changedProperties.has("value")) {

@@ -12,7 +12,7 @@ import ScrollToTop from './momentum-ui/ScrollToTop';
 import AppHeader2020 from './components2020/AppHeader';
 import AppFooter2020 from './components2020/AppFooter';
 
-const ARCHIVED_SITE = "?archive";
+const ARCHIVE_PARAM = "ver";
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,41 +22,46 @@ class App extends React.Component {
     } = this.props;
 
     history.block(tx => {
-      if (search === ARCHIVED_SITE) {
-        tx.search = ARCHIVED_SITE;
+      if (search !== "") {
+        tx.search = search;
       }
     });
   }
 
   render() {
     const { location, search } = this.props;
-    const showArchive = search === ARCHIVED_SITE;
+    const searchParams = new URLSearchParams(search);
+    const siteVersion = parseInt(searchParams.get(ARCHIVE_PARAM));
 
-    return showArchive
-      ? (
-        <ScrollToTop>
-          <div
-            className={
-              `docs-main` +
-              `${location === '/' ? ' docs-main--home' : ''}`
-            }>
-            <Header />
-            <Media
-              query="(min-width: 1025px)"
-              render={() => <SideNav className="docs-side-nav"/>}
-            />
-            <Routes />
-            <AppFooter />
-          </div>
-        </ScrollToTop>
-      )
-      : (
+    switch(siteVersion) {
+      case 2019:
+        return (
+          <ScrollToTop>
+            <div
+              className={
+                `docs-main` +
+                `${location === '/' ? ' docs-main--home' : ''}`
+              }>
+              <Header />
+              <Media
+                query="(min-width: 1025px)"
+                render={() => <SideNav className="docs-side-nav"/>}
+              />
+              <Routes />
+              <AppFooter />
+            </div>
+          </ScrollToTop>
+        );
+
+      default:
+        return (
           <ScrollToTop>
             <AppHeader2020 location = {location} />
             <Routes2020 />
             <AppFooter2020 />
           </ScrollToTop>
-      );
+        );
+    }
 
   }
 }

@@ -64,11 +64,19 @@ export class TimePicker extends LitElement {
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
   @property({ type: String, reflect: true }) value = "12:00:00 AM";
 
+  @internalProperty() private tabNext = false;
   @internalProperty() private timeValue = {
     [TIME_UNIT.HOUR]: "12",
     [TIME_UNIT.MINUTE]: "00",
     [TIME_UNIT.SECOND]: "00",
     [TIME_UNIT.AM_PM]: "AM"
+  }
+
+  @internalProperty() private timeValidity = {
+    [TIME_UNIT.HOUR]: true,
+    [TIME_UNIT.MINUTE]: true,
+    [TIME_UNIT.SECOND]: true,
+    [TIME_UNIT.AM_PM]: true
   }
 
   parseTimeValue = () => {
@@ -80,16 +88,6 @@ export class TimePicker extends LitElement {
     this.timeValue[TIME_UNIT.SECOND] = remainder?.shift() || "00";
     this.timeValue[TIME_UNIT.AM_PM] = remainder?.shift() || "AM";
   }
-
-  @internalProperty() private timeValidity = {
-    [TIME_UNIT.HOUR]: true,
-    [TIME_UNIT.MINUTE]: true,
-    [TIME_UNIT.SECOND]: true,
-    [TIME_UNIT.AM_PM]: true
-  }
-
-  @internalProperty() private tabNext = false;
-  @internalProperty () private time = "";
 
   firstUpdated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
@@ -157,7 +155,8 @@ export class TimePicker extends LitElement {
       this.timeValue[unit] = this.timeValue[unit].substring(1);
     }
 
-    if (this.tabNext && unit !== TIME_UNIT.AM_PM && this.timeValue[unit].length === 2 && this.timeValue[unit][0] !== '0') {
+    const unitValue = this.timeValue[unit];
+    if (this.tabNext && unit !== TIME_UNIT.AM_PM && unitValue.length === 2 && unitValue[0] !== '0') {
       event.preventDefault();
       const currentNode = event?.target as Node;
       const allInputs = this.shadowRoot?.querySelectorAll('md-input, md-combobox');
@@ -167,7 +166,7 @@ export class TimePicker extends LitElement {
         const targetIndex = (currentIndex + 1) % allInputs.length;
 
         if (currentIndex < allInputs.length -1) {
-          const targetInput = allInputs[targetIndex].shadowRoot?.querySelector('input');
+          const targetInput = allInputs[targetIndex].shadowRoot?.querySelector('input') as HTMLInputElement;
           targetInput?.focus();
           targetInput?.select();
         }
@@ -272,10 +271,12 @@ export class TimePicker extends LitElement {
       <md-input
         compact
         class="${`time-input-box ${unit}`}"
+        id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
         value="${this.timeValue[unit]}"
         type="${unitProperties.type}"
         min=${ifDefined(unitProperties.min)}
         max=${ifDefined(unitProperties.max)}
+        maxLength=${2}
         placeholder="${timePlaceholders[unit]}"
         @input-change="${(e: CustomEvent) => this.handleTimeChange(e, unit)}"
         @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"

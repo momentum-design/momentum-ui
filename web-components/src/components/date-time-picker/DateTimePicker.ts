@@ -1,6 +1,5 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
-import { now } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -17,26 +16,18 @@ export const weekStartDays = ["Sunday", "Monday"];
 export class DateTimePicker extends LitElement {
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
-  @property({ type: String, reflect: true }) value: string | undefined = undefined;
-  // @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+  @property({ type: String }) dateValue: string | undefined = undefined;
+  @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
   @property({ type: String }) locale: string | undefined = undefined;
 
-  @property({ type: Boolean }) twentyFourHourFormat = true;
+  @property({ type: Boolean }) twentyFourHourFormat = false;
+  @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
+  @property({ type: String }) timeValue = "12:00:00 AM";
 
-  @internalProperty() selectedDate: DateTime = now();
-  @internalProperty() focusedDate: DateTime = now();
-  @internalProperty() filterDate: Function | undefined = undefined;
-  @internalProperty() maxDateData: DateTime | undefined = undefined;
-  @internalProperty() minDateData: DateTime | undefined = undefined;
+  @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
   @internalProperty() fullDateTime: DateTime | null = null;
   @internalProperty() dateData: DateTime | null = null;
-  @internalProperty() private timeValues = {
-    [TIME_UNIT.HOUR]: "12",
-    [TIME_UNIT.MINUTE]: "00",
-    [TIME_UNIT.SECOND]: "00",
-    [TIME_UNIT.AM_PM]: "AM"
-  }
 
   @internalProperty() timeStringValue = "";
   @internalProperty() dateStringValue = "";
@@ -45,18 +36,12 @@ export class DateTimePicker extends LitElement {
   @query("md-timepicker") timePicker!: TimePicker;
 
   handleDateChange = (event: any) => {
-    const dateData = event?.detail?.data as DateTime;
-    console.log('[log][dateTime]: handleDateChange', dateData.toSQLDate());
-
-    this.dateData = dateData;
-    this.dateStringValue = dateData.toSQLDate();
+    this.dateData = event?.detail?.data as DateTime;
+    this.dateStringValue = this.dateData?.toSQLDate();
   }
 
   handleTimeChange = (event: any) => {
-    console.log('[log][dateTime]: handleTimeChange', event?.detail?.time, event?.detail?.timeValues);
     this.timeStringValue = event?.detail?.time;
-    this.timeValues = event?.detail?.timeValues;
-    this.requestUpdate();
   }
 
   protected async firstUpdated(changedProperties: PropertyValues) {
@@ -99,9 +84,17 @@ export class DateTimePicker extends LitElement {
 
   render() {
     return html`
-        <md-datepicker minDate=${ifDefined(this.minDate)} maxDate=${ifDefined(this.maxDate)}>
+        <md-datepicker
+          minDate=${ifDefined(this.minDate)}
+          maxDate=${ifDefined(this.maxDate)}
+          value=${ifDefined(this.dateValue)}
+          weekStart=${this.weekStart}
+          locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
-            <md-timepicker ?twentyfourhourformat=${this.twentyFourHourFormat}></md-timepicker>
+            <md-timepicker
+              ?twentyfourhourformat=${this.twentyFourHourFormat}
+              timeSpecificity=${this.timeSpecificity}
+              value=${this.timeValue}></md-timepicker>
           </div>
         </md-datepicker>
       </div>

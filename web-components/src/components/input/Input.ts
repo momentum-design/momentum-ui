@@ -20,6 +20,7 @@ import "@/components/icon/Icon";
 import "@/components/label/Label";
 import "@/components/spinner/Spinner";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export const containerSize = [
   "small-1",
@@ -166,8 +167,9 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) ariaDescribedBy = "";
   @property({ type: Array }) messageArr: Input.Message[] = [];
   @property({ type: Boolean, reflect: true }) autofocus = false;
-  @property({ type: Number , reflect: true }) min = 0;
-  @property({ type: Number, reflect: true }) max = 0;
+  @property({ type: Number , reflect: true }) min: number | undefined = undefined;
+  @property({ type: Number, reflect: true }) max: number | undefined = undefined;
+  @property({ type: Number }) maxLength: number | undefined = undefined;
 
   @query(".md-input") input!: HTMLInputElement;
 
@@ -380,8 +382,9 @@ export class Input extends FocusMixin(LitElement) {
             id=${this.htmlId}
             placeholder=${this.placeholder}
             ?readonly=${this.readOnly}
-            min=${this.min}
-            max=${this.max}
+            min=${ifDefined(this.min)}
+            max=${ifDefined(this.max)}
+            maxlength=${ifDefined(this.maxLength)}
           />
         `;
   }

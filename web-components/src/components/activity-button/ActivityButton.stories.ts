@@ -34,6 +34,12 @@ export default {
     a11y: {
       element: "md-activity-button"
     },
+    // backgrounds: {
+    //   values: [
+    //     { name: 'Light', value: '#fff', default: true },
+    //     { name: 'Dark', value: '#000'},
+    //   ],
+    // },
     docs: { 
       description: { 
         component: 'some component description' 
@@ -55,8 +61,8 @@ export const ActivityButton = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
-  <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
-  </md-theme>
+    <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
+    </md-theme>
   `;
 }

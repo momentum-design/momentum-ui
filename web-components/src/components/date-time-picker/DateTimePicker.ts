@@ -20,6 +20,7 @@ export class DateTimePicker extends LitElement {
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
   @property({ type: String }) locale: string | undefined = undefined;
 
+  @property({ type: Boolean }) twoDigitAutoTab = false;
   @property({ type: Boolean }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
   @property({ type: String }) timeValue = "12:00:00 AM";
@@ -92,6 +93,7 @@ export class DateTimePicker extends LitElement {
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
             <md-timepicker
+              ?twoDigitAutoTab=${this.twoDigitAutoTab}
               ?twentyfourhourformat=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
               value=${this.timeValue}></md-timepicker>

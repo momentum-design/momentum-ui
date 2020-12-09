@@ -60,6 +60,7 @@ export namespace TimePicker {
 
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
+  @property({ type: Boolean }) twoDigitAutoTab = false;
   @property({ type: Boolean }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
   @property({ type: String, reflect: true }) value = "12:00:00 AM";
@@ -156,7 +157,7 @@ export class TimePicker extends LitElement {
     }
 
     const unitValue = this.timeValue[unit];
-    if (this.tabNext && unit !== TIME_UNIT.AM_PM && unitValue.length === 2 && unitValue[0] !== '0') {
+    if (this.twoDigitAutoTab && this.tabNext && unit !== TIME_UNIT.AM_PM && unitValue.length === 2 && unitValue[0] !== '0') {
       event.preventDefault();
       const currentNode = event?.target as Node;
       const allInputs = this.shadowRoot?.querySelectorAll('md-input, md-combobox');
@@ -270,6 +271,7 @@ export class TimePicker extends LitElement {
       ${unit === TIME_UNIT.MINUTE || unit === TIME_UNIT.SECOND ? html`<span class="colon-separator">:</span>` : nothing}
       <md-input
         compact
+        selectWhenInFocus
         class="${`time-input-box ${unit}`}"
         id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
         value="${this.timeValue[unit]}"
@@ -293,6 +295,7 @@ export class TimePicker extends LitElement {
     return html `
       <md-combobox
         compact
+        selectWhenInFocus
         class="amPm-combo-box"
         .options=${options}
         .value=${[options[0]]}

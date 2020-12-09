@@ -163,6 +163,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: Boolean }) isLoading = false;
   @property({ type: Boolean }) compact = false;
   @property({ type: Boolean }) multi = false;
+  @property({ type: Boolean }) selectWhenInFocus = false;
   @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
   @property({ type: String }) ariaDescribedBy = "";
   @property({ type: Array }) messageArr: Input.Message[] = [];
@@ -218,6 +219,11 @@ export class Input extends FocusMixin(LitElement) {
   handleFocus(event: FocusEvent) {
     if (!this.disabled) {
       this.isEditing = true;
+
+      if (this.selectWhenInFocus) {
+        this.select();
+      }
+
       this.dispatchEvent(
         new CustomEvent("input-focus", {
           bubbles: true,

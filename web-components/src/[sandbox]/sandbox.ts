@@ -38,7 +38,8 @@ import {
   taskItemTemplate,
   timePickerTemplate,
   toggleSwitchTemplate,
-  tooltipTemplate
+  tooltipTemplate,
+  accordionTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -108,6 +109,12 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+          <div class="container" aria-label="md-accordion">
+            <h2>md-accordion</h2>
+            <sass-stats component="accordion">
+              ${accordionTemplate}
+            </sass-stats>
+          </div>
 
           <div class="container" aria-label="md-activity-button">
             <h2>md-activity-button</h2>

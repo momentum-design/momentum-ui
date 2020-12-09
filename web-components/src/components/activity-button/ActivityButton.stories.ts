@@ -61,8 +61,8 @@ export const ActivityButton = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
-    <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
-    </md-theme>
+  <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-activity-button ariaLabel="${label}" .label="${label}" .type="${type}" .size="${size}" ?disabled="${disabled}"></md-activity-button>
+  </md-theme>
   `;
 }

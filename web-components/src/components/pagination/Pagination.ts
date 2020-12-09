@@ -152,7 +152,7 @@ export class Pagination extends LitElement {
                 ?disabled=${this.hasPreviousPage}
                 aria-disabled=${this.hasPreviousPage}
                 @click=${() => this.computePrevious(this.currentPage - 1)}
-              ></button>
+              >
                 <md-icon name="icon-arrow-left_16"></md-icon>
               </button>
             `}

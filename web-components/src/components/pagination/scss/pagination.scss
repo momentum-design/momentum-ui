@@ -20,11 +20,11 @@
       @include flex();
       font-size: $pagination-font-size;
       line-height: $pagination-line-height;
+      color: var(--pagination-color, $md-pagination-color-light);
 
       li:not(.page-ellipsis) {
         @include flex();
         border-radius: $pagination-border-radius;
-        color: var(--pagination-color, $md-pagination-color-light);
         cursor: pointer;
         height: $pagination-size;
         margin: $pagination-indent;

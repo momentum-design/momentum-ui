@@ -61,6 +61,7 @@ const messages: EditableMap = {
 
 export const EditableTextfield = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const fieldAlignment = select("Alignment", alignment, "left");
   const disabledSetting = boolean("disabled", false);
   const messageStatus = boolean("Add message Status", false);
@@ -73,7 +74,7 @@ export const EditableTextfield = () => {
     const message = select("message", messageOptions, "error");
 
     return html`
-    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-editable-field .message=${{ ...messages[message] }}>
         ${message} Status
       </md-editable-field>

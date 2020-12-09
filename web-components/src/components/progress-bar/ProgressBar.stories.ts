@@ -26,6 +26,7 @@ export default {
 
 export const ProgressBar = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const label = text("Label", "Test Progress Bar");
   const color = text("color", "blue");
   const dynamic = boolean("dynamic", false);
@@ -34,7 +35,7 @@ export const ProgressBar = () => {
   const value = number("Value", 25);
 
   return html`
-    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-progress-bar
         .value=${value}
         .type=${type}

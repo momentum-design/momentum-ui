@@ -34,9 +34,10 @@ export default {
 
 export const Badge = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const color = select("Color", badgeColor, "blue");
-  const bgColor = text("BG Color Overrides", "blue");
-  const textColor = text("Text Color Override", "white");
+  const bgColor = text("BG Color Overrides", "");
+  const textColor = text("Text Color Override", "");
   const height = text("Height Override", "");
   const width = text("Width Override", "");
   const circle = boolean("Circle", false);
@@ -44,7 +45,7 @@ export const Badge = () => {
   const icon = boolean("With icon", false)
 
   return html`
-  <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme}>
+  <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <md-badge .color=${color} .bgColor=${bgColor} .small=${small} .textColor=${textColor} .height=${height} .width=${width} .circle=${circle}>
       ${icon ? html`<md-icon name="chat-active_16"></md-icon>` : html`Badge ${color}`}
     </md-badge>

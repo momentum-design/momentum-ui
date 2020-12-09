@@ -74,12 +74,6 @@ export class Pagination extends LitElement {
     return this.currentPage >= this.totalPage;
   }
 
-  get paginationClassMap() {
-    return {
-      "has-dots": this.hasDots
-    };
-  }
-
   private computePageList(shouldCompute: boolean) {
     if (this.totalPage > this.visiblePage && shouldCompute) {
       const [previous, current, next] = [this.currentPage - 1, this.currentPage, this.currentPage + 1];

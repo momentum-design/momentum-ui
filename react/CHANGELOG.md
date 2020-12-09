@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.20.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.2...@momentum-ui/react@23.20.0) (2020-12-09)
+
+
+### Bug Fixes
+
+* **tooltip:** convert tooltip prop type from string to object ([#722](https://github.com/momentum-design/momentum-ui/issues/722)) ([7ced608](https://github.com/momentum-design/momentum-ui/commit/7ced608a5b38bbb796591b228af0561220937a67))
+
+
+### Features
+
+* **listitem:** allows optional change of role ([#723](https://github.com/momentum-design/momentum-ui/issues/723)) ([7ce1dc9](https://github.com/momentum-design/momentum-ui/commit/7ce1dc98babd5f6367e3fac90934fad81928c75e))
+
+
+
+
+
+## [23.19.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.1...@momentum-ui/react@23.19.2) (2020-12-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.19.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.0...@momentum-ui/react@23.19.1) (2020-11-21)
 
 **Note:** Version bump only for package @momentum-ui/react

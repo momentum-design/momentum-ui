@@ -1,3 +1,4 @@
+export { accordionTemplate } from "./accordion";
 export { activityButtonTemplate } from "./activity-button";
 export { alertTemplate } from "./alert";
 export { alertBannerTemplate } from "./alert-banner";

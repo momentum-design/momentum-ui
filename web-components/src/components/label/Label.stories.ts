@@ -36,13 +36,14 @@ export default {
 
 export const Label = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const label = text("Label", "Label");
   const withInput = boolean("With Input", false);
   const secondaryLabel = text("Secondary Label", "");
 
   if (withInput) {
     return html`
-    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="label" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-input @label-click=${action('click')} .label=${label} placeholder="placeholder text" .secondaryLabel=${secondaryLabel}> </md-input>
     </md-theme>
     `;

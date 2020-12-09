@@ -335,11 +335,76 @@ describe("FocusTrap Mixin", () => {
     await nextFrame();
     await elementUpdated(el);
 
-    focusTrap!["setFocusableElement"]!();
+    focusTrap!["setInitialFocus"]!();
     await nextFrame();
     await elementUpdated(el);
 
     const input = mdInput!.shadowRoot!.querySelector("input");
+
+    expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
+  });
+
+  test("should change focus trap index on click", async() => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+    focusTrap!["initialFocusComplete"] = true;
+
+    await elementUpdated(focusTrap!);
+
+    const button = focusTrap!.querySelector<HTMLButtonElement>("div button");
+
+    await elementUpdated(focusTrap!);
+    button!.click();
+
+    await nextFrame();
+    expect(focusTrap!.focusTrapIndex).toEqual(4);
+    expect(focusTrap!["getDeepActiveElement"]!()).toEqual(button);
+  });
+
+  test("should change focus trap index if focus-visible event was dispatched", async() => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+    focusTrap!["initialFocusComplete"] = true;
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    const mdInput = focusableChild!.shadowRoot!.querySelector("md-input");
+    const input = mdInput!.shadowRoot!.querySelector("input");
+
+    input!.click();
+
+    await nextFrame();
+    expect(focusTrap!.focusTrapIndex).toEqual(6);
+    expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
+  });
+
+  test("szhould change focus trap index if new focusable element was clicked", async() => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+    const mdInput = focusableChild!.shadowRoot!.querySelector("md-input");
+    const input = mdInput!.shadowRoot!.querySelector("input");
+
+
+    mdInput!.tabIndex = -1;
+    input!.tabIndex = -1;
+
+    await elementUpdated(el);
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    input!.focus();
+    await nextFrame();
+    await elementUpdated(el);
 
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
   });

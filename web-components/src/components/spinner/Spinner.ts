@@ -13,16 +13,16 @@ import styles from "./scss/module.scss";
 
 @customElement("md-spinner")
 export class Spinner extends LitElement {
-  @property({ type: Number, reflect: true}) size = 56;
+  @property({ type: Number, reflect: true }) size = 56;
   static get styles() {
     return [reset, styles];
   }
-  
+
   get spinnerStyleMap() {
     return {
       width: `${this.size}px`,
       height: `${this.size}px`
-    }
+    };
   }
 
   render() {

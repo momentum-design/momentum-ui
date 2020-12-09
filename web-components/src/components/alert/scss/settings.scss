@@ -9,6 +9,7 @@ $alert__border-radius: rem-calc(5);
 $alert__font-size: rem-calc(14) !default;
 $alert__font-size--title: rem-calc(16) !default;
 $alert__icon-font-size: rem-calc(44) !default;
+$alert__close-icon-color: var(--alert-close-text-color, $lm-alert-close-text-color-light);
 
 $alert__background-color: $md-white-100 !default;
 $alert__background-color--info: $md-theme-50 !default;

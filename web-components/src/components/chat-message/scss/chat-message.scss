@@ -1,0 +1,43 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-chat-message) {
+  .md-chat-message {
+    color: $chat-message-color;
+    display: flex;
+    font-size: $chat-message-font-size;
+    line-height: $chat-message-line-height;
+    margin: $chat-message-indent 0;
+
+    &_content {
+      display: flex;
+      flex-direction: column;
+      padding-left: $chat-message-indent;
+    }
+
+    &_heading {
+      color: $chat-message_heading-color;
+      display: flex;
+      flex: 0 1 auto;
+      font-size: $chat-message_heading-font-size;
+      line-height: $chat-message_heading-line-height;
+      margin-bottom: calc(#{$chat-message-indent} * 0.5);
+    }
+
+    &_title {
+      @include flex();
+      flex: 0 1 auto;
+      
+      span {
+        @include text-dots;
+        display: block;
+      }
+    }
+
+    &_time {
+      margin-left: calc(#{$chat-message-indent} * 1.5);
+    }
+  }
+}

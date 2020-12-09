@@ -25,7 +25,7 @@
 import { Key } from "@/constants";
 import { internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
-import { FocusClass, FocusMixin } from "./FocusMixin";
+import { FocusClass, FocusEventDetail, FocusMixin } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
@@ -33,8 +33,9 @@ export abstract class FocusTrapClass extends LitElement {
   protected deactivateFocusTrap?(): void;
   protected activateFocusTrap?(): void;
   protected focusableElements?: HTMLElement[];
+  protected initialFocusComplete?: boolean;
   protected setFocusableElements?(): void;
-  protected setFocusableElement?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
+  protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
 }
 export interface FocusTrapInterface {
   activeFocusTrap: boolean;
@@ -50,6 +51,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   }
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
+    @internalProperty() protected initialFocusComplete = false;
+
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
@@ -83,6 +86,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         }
         if (document.hasFocus() && this.isElementFocused!(focusableElement)) {
           focusableElement.focus({ preventScroll: this.preventScroll });
+        }
+
+        if (!this.initialFocusComplete) {
+          this.initialFocusComplete = true;
         }
       });
     }
@@ -201,7 +208,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     private isEqualFocusNode(activeElement: HTMLElement, element: HTMLElement) {
-      return element.isEqualNode(activeElement) && element == activeElement;
+      if (activeElement.nodeType >= 0) {
+        return element.isEqualNode(activeElement) && element == activeElement;
+      }
+      return false;
     }
 
     private findElement(activeElement: HTMLElement) {
@@ -230,8 +240,11 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return element.hasAttribute("autofocus");
     }
 
-    protected setFocusableElement(prefferableElement: HTMLElement | number = 0, ignoreAutoFocus = false) {
+    protected setInitialFocus(prefferableElement: HTMLElement | number = 0, ignoreAutoFocus = false) {
       let focusableIndex = -1;
+
+      this.initialFocusComplete = false;
+
       if (this.focusableElements.length && !ignoreAutoFocus) {
         focusableIndex = this.focusableElements.findIndex(this.hasAutofocus);
       }
@@ -287,57 +300,66 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeAttribute("focus-trap-index");
     }
 
-    handleOutsideClick = (event: MouseEvent) => {
+    handleOutsideTrapClick = (event: MouseEvent) => {
       let insideTrapClick = false;
       const path = event.composedPath();
       if (path.length) {
         insideTrapClick = !!path.find(node => node === this);
         if (!insideTrapClick && !this.preventClickOutside && this.activeFocusTrap) {
           this.deactivateFocusTrap();
+        } else if (insideTrapClick && this.activeFocusTrap && this.initialFocusComplete) {
+          this.handleClickInsideTrap(event);
         }
       }
     };
 
-    private isValidFocusTarget(element: HTMLElement, index: number) {
-      return index === -1 && element !== this;
+    private handleClickInsideTrap(event: MouseEvent) {
+      const path = event.composedPath();
+      const pathIndex
+      = path.findIndex(element => this.findElement(element as HTMLElement) !== -1);
+      if (pathIndex !== -1) {
+        const focusableElement = path[pathIndex] as HTMLElement;
+        const focusableIndex = this.findElement(focusableElement);
+
+        if (focusableIndex !== -1) {
+          this.focusTrapIndex = focusableIndex
+        }
+      }
     }
 
-    private addFocusVisibleElement(element: HTMLElement, index: number) {
-      requestAnimationFrame(async () => {
-        await (element as LitElement).updateComplete;
+    private manageNewElement(newElement: HTMLElement) {
+      requestAnimationFrame(() => {
         this.setFocusableElements();
+        const focusableIndex = this.findElement(newElement);
 
-        const focusableElement = this.focusableElements[index];
-        if (focusableElement) {
-          focusableElement.focus();
+        if (focusableIndex !== -1) {
+          this.focusTrapIndex = focusableIndex;
         }
       });
     }
 
-    handleFocusVisible(event: Event) {
-      const composedTarget = event.composedPath()[0] as HTMLElement;
-      const focusVisibleElement = composedTarget.getRootNode() as HTMLElement;
-      if (focusVisibleElement) {
-        const elementIndex = this.findElement(focusVisibleElement);
-        const isNewElement = this.isValidFocusTarget(focusVisibleElement, elementIndex);
-        if (isNewElement) {
-          this.addFocusVisibleElement(focusVisibleElement, elementIndex);
-        }
+    handleFocusVisible(event: CustomEvent<FocusEventDetail>) {
+      const originalEvent = event.detail ? event.detail.sourceEvent : event;
+      const focusableElement = originalEvent.composedPath()[0];
+      let focusableIndex = event.detail? this.findElement(focusableElement as HTMLElement) : -1;
+
+      if (focusableIndex === -1 && focusableElement !== this) {
+        this.manageNewElement(focusableElement as HTMLElement);
       }
     }
 
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
-      this.addEventListener("focus-visible", this.handleFocusVisible);
-      document.addEventListener("click", this.handleOutsideClick);
+      this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      document.addEventListener("click", this.handleOutsideTrapClick);
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
       this.removeEventListener("keydown", this.handleKeydownFocusTrap);
-      this.removeEventListener("focus-visible", this.handleFocusVisible);
-      document.removeEventListener("click", this.handleOutsideClick);
+      this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      document.removeEventListener("click", this.handleOutsideTrapClick);
     }
   }
 

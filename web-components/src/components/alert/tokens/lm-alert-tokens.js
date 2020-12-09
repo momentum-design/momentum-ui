@@ -41,6 +41,10 @@ const alert = {
     size: {
       light: "1rem",
       dark: "1rem"
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name
     }
   }
 };

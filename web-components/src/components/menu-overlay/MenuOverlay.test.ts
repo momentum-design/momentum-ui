@@ -1,4 +1,4 @@
-import "../button/Button";
+import "@/components/button/Button";
 import "./MenuOverlay";
 import { Key } from "@/constants";
 import {
@@ -10,11 +10,8 @@ import {
   nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
-import { html, LitElement, PropertyValues } from "lit-element";
+import { html, PropertyValues } from "lit-element";
 import { MenuOverlay, MenuOverlayElement, OverlaySizes } from "./MenuOverlay";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
 jest.mock("@/utils/helpers", () => {
   return {
@@ -180,10 +177,10 @@ describe("MenuOverlay", () => {
 
   test("should execute handleOutsideClick", async () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
-    const mockhandleOutsideClick = jest.spyOn(element, "handleOutsideClick");
+    const mockhandleOutsideClick = jest.spyOn(element, "handleOutsideOverlayClick");
     const event = new MouseEvent("click");
 
-    element.handleOutsideClick(event);
+    element.handleOutsideOverlayClick(event);
     await elementUpdated(element);
 
     expect(mockhandleOutsideClick).toHaveBeenCalled();
@@ -196,7 +193,7 @@ describe("MenuOverlay", () => {
     const event = new MouseEvent("click");
     await nextFrame();
 
-    element.handleOutsideClick(event);
+    element.handleOutsideOverlayClick(event);
     await elementUpdated(element);
     expect(element.arrow).not.toBeNull();
   });

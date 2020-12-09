@@ -6,7 +6,7 @@
  *
  */
 
-import "../icon/Icon";
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { debounce, findHighlight } from "@/utils/helpers";
@@ -37,6 +37,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean, reflect: true }) ordered = false;
   @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true }) compact = false;
   @property({ type: Array }) selectedOptions: (string | OptionMember)[] = [];
   @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
   @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";
@@ -50,6 +51,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) autofocus = false;
   @property({ type: String, attribute: "no-results-i18n" }) resultsTextLocalization = "No Results";
   @property({ type: String, attribute: "no-options-i18n" }) optionsTextLocalization = "No Options";
+  @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
 
   @property({ type: Number, attribute: false })
   get focusedIndex() {
@@ -121,7 +123,9 @@ export class ComboBox extends FocusMixin(LitElement) {
 
   protected handleFocusIn(event: Event) {
     if (!this.disabled) {
-      this.input!.focus();
+      requestAnimationFrame(() => {
+        this.input!.focus();
+      });
       super.handleFocusIn && super.handleFocusIn(event);
     }
     this.dispatchEvent(
@@ -721,7 +725,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   }
 
   get filteredOptions() {
-    return this.filterOptions(this.inputValue);
+    return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue);
   }
 
   get comboBoxTemplateClassMap() {
@@ -787,7 +791,7 @@ export class ComboBox extends FocusMixin(LitElement) {
       <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
         <div part="group" class="group ${classMap(this.listItemOptionMap)}">
           ${this.searchable ? this.searchIconTemplate() : nothing}
-          <div class="md-combobox__multiwrap">
+          <div class="md-combobox__multiwrap" part="multiwrap">
             ${this.isMulti
               ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
               : nothing}
@@ -797,6 +801,7 @@ export class ComboBox extends FocusMixin(LitElement) {
               type="text"
               role="combobox"
               aria-autocomplete="both"
+              part="multiwrap-input"
               aria-expanded=${this.expanded}
               placeholder=${this.placeholder}
               aria-controls="md-combobox-listbox"
@@ -809,7 +814,7 @@ export class ComboBox extends FocusMixin(LitElement) {
               @keydown=${this.handleInputKeyDown}
             />
           </div>
-          ${this.shouldChangeButton() ? this.clearButtonTemplate() : this.arrowButtonTemplate()}
+          ${this.compact ? nothing : this.shouldChangeButton() ? this.clearButtonTemplate() : this.arrowButtonTemplate()}
         </div>
         <ul
           id="md-combobox-listbox"
@@ -819,11 +824,12 @@ export class ComboBox extends FocusMixin(LitElement) {
           style=${styleMap({ display: this.expanded ? "block" : "none", "z-index": "1" })}
         >
           ${repeat(
-            this.filterOptions(this.inputValue),
+            this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
             (option: string | OptionMember) => this.getOptionId(option),
             (option, optionIndex) => html`
               <li
                 id=${this.getOptionId(option)}
+                part="combobox-option"
                 role="option"
                 class="md-combobox-option ${classMap(this.listItemOptionMap)}"
                 aria-label=${this.getOptionValue(option)}
@@ -844,7 +850,10 @@ export class ComboBox extends FocusMixin(LitElement) {
                     ? html`
                         <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
                       `
-                    : findHighlight(this.getOptionValue(option), this.inputValue).map(({ text, matching }) =>
+                    : findHighlight(
+                        this.getOptionValue(option),
+                        this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                      ).map(({ text, matching }) =>
                         matching
                           ? html`
                               <span class="highlight-text">${text}</span>

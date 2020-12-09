@@ -110,7 +110,26 @@ jobs:
           command: yarn ci:test:wc
       - run:
           name: Build Storybook
-          command: yarn storybook:wc
+          command: yarn storybook:wc-dist
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  storybook_web_components:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Build Storybook
+          command: yarn storybook:wc-dist
+      - run:
+          name: Deploy Storybook
+          command: yarn storybook:wc-deploy
       - run:
           name: Visual regression test react library with Percy.io snapshots
           command: yarn ci:test:wc:percy
@@ -257,6 +276,17 @@ workflows:
           requires:
             - test_react
             - test_web_components
+
+  daily_storybook_deploy:
+    triggers:
+      - schedule:
+          cron: "30 5 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - storybook_web_components
 
   daily_release:
     triggers:

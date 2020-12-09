@@ -6,9 +6,7 @@
 
 @include exports("md-editable-textfield") {
   .md-editable-textfield {
-    align-items: center;
     border-radius: $field-border-radius;
-    display: flex;
     line-height: $field-line-height;
     min-height: 2rem;
     overflow-y: auto;
@@ -55,6 +53,7 @@
     &--disabled {
       background-color: transparent;
       color: var(--md-primary-text-color, $md-gray-100);
+      cursor: default;
 
       &:hover {
         background-color: transparent;

@@ -6,8 +6,8 @@
  *
  */
 
-import "../button/Button";
-import "../icon/Icon";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
@@ -17,6 +17,7 @@ import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export type modalType = "default" | "full" | "large" | "small" | "dialog";
+export const modalType = ["default", "full", "large", "small", "dialog"];
 
 const fadeDuration = 150;
 const minisculeLatency = 13;
@@ -87,7 +88,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
 
   private focusInsideModal() {
     if (this.focusableElements && this.focusableElements.length) {
-      this.setFocusableElement!();
+      this.setInitialFocus!();
     }
   }
 
@@ -108,16 +109,6 @@ export class Modal extends FocusTrapMixin(LitElement) {
       }
     }
   }
-
-  private closeModal = () => {
-    if (this.show) {
-      this.show = false;
-    }
-
-    if (this.animating) {
-      this.animating = false;
-    }
-  };
 
   private transitionPromise(element: HTMLElement) {
     return new Promise(resolve => {
@@ -163,7 +154,7 @@ export class Modal extends FocusTrapMixin(LitElement) {
     this.deactivateFocusTrap!();
 
     setTimeout(() => {
-      this.closeModal();
+      this.notifyModalClose();
     }, fadeDuration);
   }
 
@@ -227,7 +218,11 @@ export class Modal extends FocusTrapMixin(LitElement) {
         `
       : html`
           <div part="modal-footer" class="md-modal__footer">
-            <md-button aria-label=${this.ariaLabelCancel} @click="${this.handleFooterClick}" @keydown="${this.handleKeyDown}">
+            <md-button
+              aria-label=${this.ariaLabelCancel}
+              @click="${this.handleFooterClick}"
+              @keydown="${this.handleKeyDown}"
+            >
               <span>Cancel</span>
             </md-button>
             <md-button

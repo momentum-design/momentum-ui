@@ -8,11 +8,11 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import "../button/Button";
-import "../icon/Icon";
-import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
+import styles from "./scss/module.scss";
 
 @customElement("md-alert")
 export class Alert extends LitElement {
@@ -89,10 +89,10 @@ export class Alert extends LitElement {
                 ${this.renderIconTemplate()}
               </div>
               <div part="content" class="md-alert__content">
-                <div aria-label=${this.title} class="md-alert__title">
+                <div aria-label=${this.title} class="md-alert__title" role="heading">
                   ${this.title}
                 </div>
-                <div aria-label=${this.message} class="md-alert__message">
+                <div aria-label=${this.message} class="md-alert__message" role="text">
                   ${this.message}
                   <slot name="alert-body"></slot>
                 </div>
@@ -101,7 +101,7 @@ export class Alert extends LitElement {
                 ? html`
                     <div class="md-alert__button">
                       <md-button hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
-                        <md-icon name="icon-cancel_16"></md-icon>
+                        <md-icon slot="icon" name="icon-cancel_16"></md-icon>
                       </md-button>
                     </div>
                   `

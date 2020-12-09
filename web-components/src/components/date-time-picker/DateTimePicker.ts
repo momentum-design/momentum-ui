@@ -18,7 +18,7 @@ export class DateTimePicker extends LitElement {
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String }) dateValue: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
-  @property({ type: String }) locale: string | undefined = undefined;
+  @property({ type: String }) locale = "en-US";
 
   @property({ type: Boolean }) twoDigitAutoTab = false;
   @property({ type: Boolean }) twentyFourHourFormat = false;
@@ -96,7 +96,9 @@ export class DateTimePicker extends LitElement {
               ?twoDigitAutoTab=${this.twoDigitAutoTab}
               ?twentyfourhourformat=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
-              value=${this.timeValue}></md-timepicker>
+              value=${this.timeValue}
+              locale=${ifDefined(this.locale)}>
+            </md-timepicker>
           </div>
         </md-datepicker>
       </div>

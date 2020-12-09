@@ -88,7 +88,7 @@ describe("TimePicker Component", () => {
     expect(secondInput).toBeDefined();
   });
 
-  test("should just focus after two digits are entered when twoDigitAutoTab is true", async () => {
+  test("should focus on next input after two digits are entered when twoDigitAutoTab is true", async () => {
     const element: TimePicker = await fixture<TimePicker>(
       html`
         <md-timepicker twentyFourHourFormat twoDigitAutoTab></md-timepicker>

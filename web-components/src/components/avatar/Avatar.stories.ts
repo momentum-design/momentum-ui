@@ -59,6 +59,7 @@ const options = {
 
 export const Avatar = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const type = select("Type", avatarType, "active");
   const title = text("Title", "Rachell Harris");
   const preDefinedColor = select("PreDefined Color", options, "mint");
@@ -74,7 +75,7 @@ export const Avatar = () => {
 
   if (composite) {
     return html`
-      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-composite-avatar .size=${sizeComos}>
           <md-avatar title="Anthony Russell" type="dnd" has-notification alt="Avatar"></md-avatar>
           <md-avatar type="typing" title="Alyson Hoagland Pace" alt="Avatar"></md-avatar>

@@ -1,8 +1,6 @@
 import { addDecorator, addParameters, configure, setCustomElements } from "@storybook/web-components";
 import customElements from './custom-elements.json';
 import { withA11y } from "@storybook/addon-a11y";
-import { lumosDark, lumosLight, momentumDark, momentumLight } from "../src/components/theme/index";
-import { Theme } from "../src/components/theme/Theme";
 
 /** 
  * Custom element file generated automatically by execute this command
@@ -40,17 +38,5 @@ if (module.hot) {
   });
 }
 
-export const globalTypes = {
-  theme: {
-    name: Theme,
-    description: 'Global theme for components',
-    defaultValue: momentumLight,
-    toolbar: {
-      icon: 'circlehollow',
-      // array of plain string values or MenuItem shape (see below)
-      items: [lumosDark, lumosLight, momentumDark, momentumLight],
-    },
-  },
-};
 
 

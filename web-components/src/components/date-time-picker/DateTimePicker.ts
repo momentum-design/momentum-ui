@@ -20,8 +20,8 @@ export class DateTimePicker extends LitElement {
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
   @property({ type: String }) locale = "en-US";
 
-  @property({ type: Boolean }) twoDigitAutoTab = false;
-  @property({ type: Boolean }) twentyFourHourFormat = false;
+  @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
+  @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
   @property({ type: String }) timeValue = "12:00:00 AM";
 

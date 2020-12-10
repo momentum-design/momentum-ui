@@ -38,7 +38,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) ordered = false;
   @property({ type: Boolean, reflect: true }) expanded = false;
   @property({ type: Boolean, reflect: true }) compact = false;
-  @property({ type: Boolean }) selectWhenInFocus = false;
+  @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
   @property({ type: Array }) selectedOptions: (string | OptionMember)[] = [];
   @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
   @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";

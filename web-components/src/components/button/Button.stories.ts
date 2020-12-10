@@ -57,3 +57,12 @@ export const Button = () => {
   `;
 };
 
+Button.parameters = {
+  backgrounds: {
+    values: [
+      { name: 'Light', value: '#fff' },
+      { name: 'Dark', value: '#000' },
+    ],
+  },
+};
+

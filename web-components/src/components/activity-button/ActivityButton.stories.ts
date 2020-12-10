@@ -34,6 +34,12 @@ export default {
     a11y: {
       element: "md-activity-button"
     },
+    // backgrounds: {
+    //   values: [
+    //     { name: 'Light', value: '#fff', default: true },
+    //     { name: 'Dark', value: '#000'},
+    //   ],
+    // },
     docs: { 
       description: { 
         component: 'some component description' 

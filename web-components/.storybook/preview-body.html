@@ -1,9 +1,26 @@
 <style>
-    body {
-      margin: 1rem;
-    }
-</style>
+  body {padding: 0 !important;}
 
-<div id="custom-root">
-  
-</div>
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  #root-inner {
+    height: 100%;
+    width: 100%;
+  }
+
+  md-theme.theme-toggle {
+    background: #fff;
+    height: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  md-theme.theme-toggle[darktheme] {
+    background: #000;
+    color: #F7F7F7
+  }
+</style>

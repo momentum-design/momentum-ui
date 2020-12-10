@@ -8,7 +8,7 @@
 
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
@@ -48,6 +48,7 @@ export class Tooltip extends FocusMixin(LitElement) {
   @property({ type: String }) message = "";
   @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
   @property({ type: Boolean, reflect: true }) disabled = false;
+  @property({ type: Boolean, reflect: true }) opened = false;
 
   @query(".md-tooltip__popper") popper!: HTMLDivElement;
   @query(".md-tooltip__reference") reference!: HTMLDivElement;
@@ -107,6 +108,17 @@ export class Tooltip extends FocusMixin(LitElement) {
       const slotContent = slot.assignedElements({ flatten: true });
       if (slotContent.length) {
         this.slotContent = slotContent;
+      }
+    }
+  }
+
+  protected updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("opened")) {
+      if (this.opened) {
+        this.notifyTooltipCreate();
+      } else {
+        this.notifyTooltipDestroy();
       }
     }
   }

@@ -12,12 +12,14 @@ export class Card extends LitElement {
 
   render() {
     return html`
-      <div class="md-card-container">
+      <div class="md-card" part="card">
         <div class="md-card-header">
           <slot name="header">
             <md-avatar alt="avatar" label="avatar" title="Avatar Title"></md-avatar>
-            <div class="md-card-header-title"></div>
-            <div class="md-card-header-subtitle"></div>
+            <div class="md-card-header-title">
+              <h3>Title</h3>
+              <h5>Subtitle</h5>
+            </div>
             <div class="md-card-header-actions">
               <md-menu-overlay>
                 <md-icon name="icon-more-adr_16" slot="menu-trigger"></md-icon>
@@ -36,10 +38,8 @@ export class Card extends LitElement {
         </div>
         <div class="md-card-footer">
           <slot name="footer">
-            <div class="md-card-footer-container">
-              <md-link color="blue">Link Text</md-link>
-              <md-button variant="primary">Button</md-button>
-            </div>
+            <md-link color="blue">Link Text</md-link>
+            <md-button variant="primary">Button</md-button>
           </slot>
         </div>
       </div>

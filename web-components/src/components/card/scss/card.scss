@@ -1,5 +1,38 @@
-.md-card-container {
-  touch-action: none;
-  user-select: none;
-  width: 300px;
+:host(md-card) {
+
+  .md-card {
+    width: 100%;
+    max-width: $md-card-width;
+    position: relative;
+    @include flex($fd: column, $jc: flex-start, $ai: stertch);
+    color: $md-card-color;
+    background: $md-card-bg;
+    border: $md-card-border;
+    border-radius: $md-card-border-radius;
+    box-shadow: $md-card-box-shadow;
+
+    &-header {
+      @include flex($jc: space-between);
+      flex: 1 0 100%;
+      padding: $md-card-indent calc(#{$md-card-indent} * 2);
+
+      &-title {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100%;
+        margin: 0 $md-card-indent;
+        h3 {
+          color: $md-card-title-color;
+        }
+      }
+    }
+
+    &-content {
+    }
+
+    &-footer {
+      padding: $md-card-indent calc(#{$md-card-indent} * 2);
+
+    }
+  }
 }

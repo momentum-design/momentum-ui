@@ -1,0 +1,8 @@
+$md-card-width: rem-calc(424);
+$md-card-color: var(--card-color, $md-card-color-light);
+$md-card-title-color: var(--card-color-title, $md-card-color-title-light);
+$md-card-bg: var(--card-bg, $md-card-bg-light);
+$md-card-border: var(--card-border, $md-card-border-light);
+$md-card-border-radius: rem-calc(8);
+$md-card-box-shadow: rem-calc(0 2 4) $black-16, rem-calc(0 0 1) $black-16;
+$md-card-indent: rem-calc(8);

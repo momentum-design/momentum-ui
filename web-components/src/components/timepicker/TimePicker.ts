@@ -123,8 +123,8 @@ export class TimePicker extends LitElement {
      return result;
   };
 
-    to24Hour = (amPm: string, hour: string) => {
-      if (this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
+    to12HourFormat = (amPm: string, hour: string) => {
+      if (!this.twentyFourHourFormat && this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
         let hourValue = Number(hour);
         if (amPm === 'PM') {
           hourValue = 12 + (hourValue % 12);
@@ -147,13 +147,13 @@ export class TimePicker extends LitElement {
         this.timeObject = this.timeObject?.set({ [unit]: this.timeValue[unit] });
       } else {
         this.timeObject = this.timeObject?.set({
-          hour: this.to24Hour(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
+          hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
         });
       }
 
       if (this.isEntireTimeValid()) {
         this.timeObject = this.timeObject?.set({
-          hour: this.to24Hour(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
+          hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
         });
 
         this.value = this.timeObject.toFormat("tt");

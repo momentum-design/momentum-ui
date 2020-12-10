@@ -10,7 +10,7 @@ export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
-  @property({ type: Boolean }) shouldCloseOnSelect = false;
+  @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;

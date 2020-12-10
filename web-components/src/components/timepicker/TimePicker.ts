@@ -62,8 +62,8 @@ export namespace TimePicker {
 
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
-  @property({ type: Boolean }) twoDigitAutoTab = false;
-  @property({ type: Boolean }) twentyFourHourFormat = false;
+  @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
+  @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
   @property({ type: String }) locale = "en-US";
   @property({ type: String, reflect: true }) value = "12:00:00 AM";

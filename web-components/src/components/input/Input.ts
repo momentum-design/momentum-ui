@@ -163,7 +163,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: Boolean }) isLoading = false;
   @property({ type: Boolean }) compact = false;
   @property({ type: Boolean }) multi = false;
-  @property({ type: Boolean }) selectWhenInFocus = false;
+  @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
   @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
   @property({ type: String }) ariaDescribedBy = "";
   @property({ type: Array }) messageArr: Input.Message[] = [];

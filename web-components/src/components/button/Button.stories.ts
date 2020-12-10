@@ -38,6 +38,7 @@ export default {
 
 export const Button = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const variant = select("Variant", buttonVariant, "secondary");
   const color = select("Color", buttonColor, "");
   const disabled = boolean("Disabled Mode", false);
@@ -48,11 +49,20 @@ export const Button = () => {
   const type = select("type", buttonType, "button");
 
   return html`
-    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-button @button-click=${(action('ditail'))} .variant=${variant} ariaLabel="Button Storybook" .color=${color} .disabled=${disabled} .circle=${circle} .loading=${loading} .size=${size} .tag=${tag} .type=${type}>
         ${circle ? html`<md-icon slot="icon" name="icon-search_12"></md-icon>` : html`<span slot="text">Button</span>` }
       </md-button>
     </md-theme>
   `;
+};
+
+Button.parameters = {
+  backgrounds: {
+    values: [
+      { name: 'Light', value: '#fff' },
+      { name: 'Dark', value: '#000' },
+    ],
+  },
 };
 

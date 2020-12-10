@@ -1,15 +1,14 @@
 :host(md-card) {
-
   .md-card {
-    width: 100%;
-    max-width: $md-card-width;
-    position: relative;
     @include flex($fd: column, $jc: flex-start, $ai: stertch);
-    color: $md-card-color;
     background: $md-card-bg;
     border: $md-card-border;
     border-radius: $md-card-border-radius;
     box-shadow: $md-card-box-shadow;
+    color: $md-card-color;
+    max-width: $md-card-width;
+    position: relative;
+    width: 100%;
 
     &-header {
       @include flex($jc: space-between);
@@ -18,9 +17,10 @@
 
       &-title {
         display: flex;
-        flex-direction: column;
         flex: 1 1 100%;
+        flex-direction: column;
         margin: 0 $md-card-indent;
+
         h3 {
           color: $md-card-title-color;
         }

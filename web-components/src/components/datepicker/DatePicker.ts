@@ -3,7 +3,7 @@ import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 
 export namespace DatePicker {}
@@ -31,6 +31,20 @@ export class DatePicker extends LitElement {
     this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
   }
 
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("value")) {
+      this.value ? (this.selectedDate = DateTime.fromSQL(this.value)) : null;
+    }
+    if (changedProperties.has("locale")) {
+      this.render();
+    }
+    if (changedProperties.has("minDate") || changedProperties.has("maxDate")) {
+      this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
+      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+    }
+  }
+
   setOpen = (open: boolean) => {
     this.menuOverlay.isOpen = open;
   };
@@ -46,7 +60,7 @@ export class DatePicker extends LitElement {
   setSelected = (date: DateTime, event: Event) => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
     if (!isDayDisabled(date, filters)) {
-      const dateString = `${date.year}-${date.month}-${date.day}`;
+      const dateString = date.toSQLDate();
       this.selectedDate = date;
       this.value = dateString;
     }
@@ -126,18 +140,18 @@ export class DatePicker extends LitElement {
           aria-label=${`Choose Date` + this.chosenDateLabel()}
         ></md-input>
         <div class="date-overlay-content">
-        <md-datepicker-calendar
-          @day-select=${(e: CustomEvent) => this.handleSelect(e)}
-          @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${{
-            locale: this.locale,
-            selected: this.selectedDate,
-            focused: this.focusedDate,
-            weekStart: this.weekStart
-          }}
-          .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
-        ></md-datepicker-calendar>
-        <slot name="time-picker"></slot>
+          <md-datepicker-calendar
+            @day-select=${(e: CustomEvent) => this.handleSelect(e)}
+            @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
+            .datePickerProps=${{
+              locale: this.locale,
+              selected: this.selectedDate,
+              focused: this.focusedDate,
+              weekStart: this.weekStart
+            }}
+            .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
+          ></md-datepicker-calendar>
+          <slot name="time-picker"></slot>
         </div>
       </md-menu-overlay>
     `;

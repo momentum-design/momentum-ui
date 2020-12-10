@@ -15,7 +15,15 @@ import {
   subtractMonths
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, TemplateResult } from "lit-element";
+import {
+  customElement,
+  html,
+  internalProperty,
+  LitElement,
+  property,
+  PropertyValues,
+  TemplateResult
+} from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
@@ -23,18 +31,29 @@ export namespace DatePickerCalendar {}
 
 @customElement("md-datepicker-calendar")
 export class DatePickerCalendar extends LitElement {
-  @property({ attribute: false }) locale = "en";
   @property({ attribute: false }) monthFormat = "MMMM yyyy";
   @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
   @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
   @internalProperty() viewAnchorDate: DateTime = now();
+  @internalProperty() localeMonth: string | undefined = undefined;
 
   connectedCallback() {
     super.connectedCallback();
     this.viewAnchorDate = this.datePickerProps?.focused || this.datePickerProps?.selected || now();
-    this.locale = this.datePickerProps?.locale || "en";
+    this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
+      this.monthFormat
+    );
+  }
+
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("datePickerProps")) {
+      this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
+        this.monthFormat
+      );
+    }
   }
 
   setDate = (date: DateTime, cb?: Function) => {
@@ -57,7 +76,7 @@ export class DatePickerCalendar extends LitElement {
   renderMonthName = () => {
     return html`
       <div class="md-datepicker__navigation--current-month" aria-live="polite">
-        ${localizeDate(this.viewAnchorDate, this.locale).toFormat(this.monthFormat)}
+        ${this.localeMonth}
       </div>
     `;
   };
@@ -101,7 +120,7 @@ export class DatePickerCalendar extends LitElement {
     const dayNames: TemplateResult[] = [];
     return dayNames.concat(
       [0, 1, 2, 3, 4, 5, 6].map(offset => {
-        const day = addDays(localizeDate(startOfWeek, this.locale), offset);
+        const day = addDays(localizeDate(startOfWeek, this.datePickerProps?.locale || "en"), offset);
         const localeData = getLocaleData(day);
         const weekDayName = getWeekdayNameInLocale(localeData, day);
         return html`

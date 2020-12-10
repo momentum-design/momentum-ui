@@ -1,19 +1,18 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { DateTime } from "luxon";
-import { ifDefined } from "lit-html/directives/if-defined";
-import reset from "@/wc_scss/reset.scss";
-import styles from "./scss/module.scss";
-import { DatePicker } from "../datepicker/DatePicker";
-import { TimePicker } from "../timepicker/TimePicker";
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
+import reset from "@/wc_scss/reset.scss";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { DateTime } from "luxon";
+import { DatePicker } from "../datepicker/DatePicker";
+import { TimePicker } from "../timepicker/TimePicker";
+import styles from "./scss/module.scss";
 
 export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-date-time-picker")
-
 export class DateTimePicker extends LitElement {
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
@@ -42,17 +41,17 @@ export class DateTimePicker extends LitElement {
   handleDateChange = (event: any) => {
     this.selectedDateObject = event?.detail?.data as DateTime;
     this.dateStringValue = this.selectedDateObject?.toSQLDate();
-  }
+  };
 
   handleTimeChange = (event: any) => {
     this.selectedTimeObject = event?.detail?.data as DateTime;
     this.timeStringValue = this.selectedTimeObject?.toSQLTime();
-  }
+  };
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
     this.dateStringValue = this.selectedDateObject?.toSQLDate();
-    this.selectedTimeObject = DateTime.fromFormat(this.timeValue, 'tt', { locale: this.locale });
+    this.selectedTimeObject = DateTime.fromFormat(this.timeValue, "tt", { locale: this.locale });
     this.timeStringValue = this.selectedTimeObject.toSQLTime();
 
     await new Promise(resolve => setTimeout(resolve, 0));
@@ -68,10 +67,14 @@ export class DateTimePicker extends LitElement {
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (this.dateStringValue && this.timeStringValue && (changedProperties.has('timeStringValue') || changedProperties.has('dateStringValue'))) {
+    if (
+      this.dateStringValue &&
+      this.timeStringValue &&
+      (changedProperties.has("timeStringValue") || changedProperties.has("dateStringValue"))
+    ) {
       this.value = `${this.dateStringValue} ${this.timeStringValue}`;
       this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
-      console.log('[log][dateTime]: fullDateTime', this.value, this.fullDateTime);
+      console.log("[log][dateTime]: fullDateTime", this.value, this.fullDateTime);
 
       this.dispatchEvent(
         new CustomEvent(`date-time-change`, {

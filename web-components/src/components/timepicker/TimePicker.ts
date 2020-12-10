@@ -68,7 +68,7 @@ export class TimePicker extends LitElement {
   @property({ type: String }) locale = "en-US";
   @property({ type: String, reflect: true }) value = "12:00:00 AM";
 
-  @internalProperty() private dateTimeObject: DateTime | undefined = undefined;
+  @internalProperty() private timeObject: DateTime = now();
   @internalProperty() private tabNext = false;
   @internalProperty() private timeValue = {
     [TIME_UNIT.HOUR]: "12",
@@ -84,28 +84,11 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: true
   }
 
-  parseTimeValue = () => {
-    const times = this.value.split(":");
-    this.timeValue[TIME_UNIT.HOUR] = times.shift() || "12";
-    this.timeValue[TIME_UNIT.MINUTE] = times.shift() || "00";
+  protected firstUpdated(changedProperties: PropertyValues) {
+    super.firstUpdated(changedProperties);
 
-    const remainder = times.shift()?.split(" ");
-    this.timeValue[TIME_UNIT.SECOND] = remainder?.shift() || "00";
-    this.timeValue[TIME_UNIT.AM_PM] = remainder?.shift() || "AM";
-  }
-
-  firstUpdated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-
-    if (changedProperties.has("value")) {
-      this.parseTimeValue();
-      let today = now();
-
-      this.dateTimeObject = today.set({
-        hour: Number(this.timeValue[TIME_UNIT.HOUR]),
-        minute: Number(this.timeValue[TIME_UNIT.MINUTE]),
-        second: Number(this.timeValue[TIME_UNIT.SECOND]),
-        millisecond: 0});
+    if (changedProperties.has('value')) {
+      this.timeObject = DateTime.fromFormat(this.value, "tt", { locale: this.locale });
     }
   }
 
@@ -140,35 +123,57 @@ export class TimePicker extends LitElement {
      return result;
   };
 
-  updateTime = (unit: TIME_UNIT) => {
-    if (this.timeValidity[unit]) {
-      this.value = this.getTimeString();
+    to24Hour = (amPm: string, hour: string) => {
+      if (this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
+        let hourValue = Number(hour);
+        if (amPm === 'PM') {
+          hourValue = 12 + (hourValue % 12);
+        } else {
+          hourValue = (hourValue % 12)
+        }
+        return hourValue;
+      }
+  }
 
+  isEntireTimeValid = () => {
+    return Object.values(this.timeValidity).every((timeUnitValidity) => timeUnitValidity);
+  }
+
+  updateTime = (unit: TIME_UNIT) => {
+    this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
+
+    if (this.timeObject && this.timeValidity[unit]) {
       if (unit !== TIME_UNIT.AM_PM) {
-        this.dateTimeObject = this.dateTimeObject?.set({ [unit]: this.timeValue[unit] });
+        this.timeObject = this.timeObject?.set({ [unit]: this.timeValue[unit] });
       } else {
-        const twentyFourHour = this.convertToTwentyFourHour(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR]);
-        this.dateTimeObject = this.dateTimeObject?.set({ hour: Number(twentyFourHour) });
+        this.timeObject = this.timeObject?.set({
+          hour: this.to24Hour(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
+        });
       }
 
-      this.dispatchEvent(
-        new CustomEvent(`time-selection-change`, {
-          bubbles: true,
-          composed: true,
-          detail: {
-            time: this.value,
-            timeObject: this.dateTimeObject,
-            timeValues: this.timeValue
-          }
-        })
-      );
+      if (this.isEntireTimeValid()) {
+        this.timeObject = this.timeObject?.set({
+          hour: this.to24Hour(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
+        });
+
+        this.value = this.timeObject.toFormat("tt");
+        this.dispatchEvent(
+          new CustomEvent(`time-selection-change`, {
+            bubbles: true,
+            composed: true,
+            detail: {
+              time: this.value,
+              data: this.timeObject
+            }
+          })
+        );
+      }
     }
   }
 
   handleTimeChange(event: CustomEvent, unit: TimePicker.TimeUnit) {
     this.timeValue[unit] = event?.detail?.value;
     this.requestUpdate();
-
     this.formatTimeUnit(this.timeValue[unit], unit);
 
     const unitValue = this.timeValue[unit];
@@ -231,8 +236,6 @@ export class TimePicker extends LitElement {
   }
 
   handleTimeBlur(event: CustomEvent, unit: TimePicker.TimeUnit) {
-    this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
-
     if(this.timeValue[unit] === '0') {
       this.timeValue[unit] = '00';
     }
@@ -272,31 +275,6 @@ export class TimePicker extends LitElement {
       }
     }
     this.requestUpdate();
-  }
-
-  convertToTwentyFourHour = (amPm: string, hour: string) => {
-    if (amPm === 'PM') {
-      hour = (12 + (Number(hour) % 12)).toString();
-    } else {
-      hour = (Number(hour) % 12).toString();
-    }
-
-    if (hour.length === 1) {
-      hour = `0${hour}`;
-    }
-    return hour;
-  }
-
-  getTimeString = () => {
-    let hr = this.timeValidity[TIME_UNIT.HOUR] ? this.timeValue[TIME_UNIT.HOUR] || "12" : "12";
-    const min = this.timeValidity[TIME_UNIT.MINUTE] ? this.timeValue[TIME_UNIT.MINUTE] || "00" : "00";
-    const sec = this.timeValidity[TIME_UNIT.SECOND] ? this.timeValue[TIME_UNIT.SECOND] || "00" : "00";
-    const amPm = this.timeValidity[TIME_UNIT.AM_PM] ? this.timeValue[TIME_UNIT.AM_PM] || "AM": "AM";
-
-    hr = this.convertToTwentyFourHour(amPm, hr);
-
-    let timeString = `${hr}:${min}:${sec}`;
-    return timeString;
   }
 
   messageType = (isValid: boolean) => {

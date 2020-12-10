@@ -28,9 +28,10 @@ export class DateTimePicker extends LitElement {
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
-  @internalProperty() selectedDate: DateTime = now();
   @internalProperty() fullDateTime: DateTime | null = null;
-  @internalProperty() dateData: DateTime | null = null;
+
+  @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
+  @internalProperty() selectedDateObject: DateTime = now();
 
   @internalProperty() timeStringValue = "";
   @internalProperty() dateStringValue = "";
@@ -39,18 +40,21 @@ export class DateTimePicker extends LitElement {
   @query("md-timepicker") timePicker!: TimePicker;
 
   handleDateChange = (event: any) => {
-    this.dateData = event?.detail?.data as DateTime;
-    this.dateStringValue = this.dateData?.toSQLDate();
+    this.selectedDateObject = event?.detail?.data as DateTime;
+    this.dateStringValue = this.selectedDateObject?.toSQLDate();
   }
 
   handleTimeChange = (event: any) => {
-    this.timeStringValue = event?.detail?.time;
+    this.selectedTimeObject = event?.detail?.data as DateTime;
+    this.timeStringValue = this.selectedTimeObject?.toSQLTime();
   }
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    this.dateStringValue = this.selectedDate?.toSQLDate();
-    this.timeStringValue = this.timeValue;
+    this.dateStringValue = this.selectedDateObject?.toSQLDate();
+    this.selectedTimeObject = DateTime.fromFormat(this.timeValue, 'tt', { locale: this.locale });
+    this.timeStringValue = this.selectedTimeObject.toSQLTime();
+
     await new Promise(resolve => setTimeout(resolve, 0));
 
     if (this.datePicker) {
@@ -64,9 +68,9 @@ export class DateTimePicker extends LitElement {
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (this.dateStringValue && this.timeStringValue && (changedProperties.has('timeStringValue') || changedProperties.has('dateStringValue') || changedProperties.has('value'))) {
+    if (this.dateStringValue && this.timeStringValue && (changedProperties.has('timeStringValue') || changedProperties.has('dateStringValue'))) {
       this.value = `${this.dateStringValue} ${this.timeStringValue}`;
-      this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale });
+      this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
       console.log('[log][dateTime]: fullDateTime', this.value, this.fullDateTime);
 
       this.dispatchEvent(
@@ -76,6 +80,7 @@ export class DateTimePicker extends LitElement {
           detail: {
             dateTimeString: this.value,
             dateTime: this.fullDateTime,
+            locale: this.locale,
             twentyFourHourFormat: this.twentyFourHourFormat
           }
         })

@@ -35,7 +35,7 @@ export class CoachTemplateSandbox extends LitElement {
 
   render() {
     return html`
-      <md-coachmark ?show=${this.isOpen} placement="right" color="violet" @coach-action=${this.closeCoach}>
+      <md-coachmark ?show=${this.isOpen} placement="auto" color="violet" @coach-action=${this.closeCoach}>
         <div slot="coachmark-content">
           <span>Coachmark  test content</span>
         </div>

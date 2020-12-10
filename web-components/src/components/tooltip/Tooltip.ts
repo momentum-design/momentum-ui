@@ -69,36 +69,44 @@ export class Tooltip extends FocusMixin(LitElement) {
     this.notifyTooltipDestroy();
   }
 
+  private openTooltip() {
+    this.dispatchEvent(
+      new CustomEvent<TooltipEvent>("tooltip-create", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          placement: this.placement,
+          reference: this.reference,
+          popper: this.popper,
+          ...(!this.message && { slotContent: this.slotContent })
+        }
+      })
+    );
+  }
+
+  private closeTooltip() {
+    this.dispatchEvent(
+      new CustomEvent<TooltipEvent>("tooltip-destroy", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          placement: this.placement,
+          reference: this.reference,
+          popper: this.popper
+        }
+      })
+    );
+  }
+
   notifyTooltipCreate() {
     if (!this.disabled) {
-      this.dispatchEvent(
-        new CustomEvent<TooltipEvent>("tooltip-create", {
-          bubbles: true,
-          composed: true,
-          detail: {
-            placement: this.placement,
-            reference: this.reference,
-            popper: this.popper,
-            ...(!this.message && { slotContent: this.slotContent })
-          }
-        })
-      );
+      this.opened = true;
     }
   }
 
   notifyTooltipDestroy() {
     if (!this.disabled) {
-      this.dispatchEvent(
-        new CustomEvent<TooltipEvent>("tooltip-destroy", {
-          bubbles: true,
-          composed: true,
-          detail: {
-            placement: this.placement,
-            reference: this.reference,
-            popper: this.popper
-          }
-        })
-      );
+      this.opened = false;
     }
   }
 
@@ -116,9 +124,9 @@ export class Tooltip extends FocusMixin(LitElement) {
     super.updated(changedProperties);
     if (changedProperties.has("opened")) {
       if (this.opened) {
-        this.notifyTooltipCreate();
+        this.openTooltip();
       } else {
-        this.notifyTooltipDestroy();
+        this.closeTooltip();
       }
     }
   }

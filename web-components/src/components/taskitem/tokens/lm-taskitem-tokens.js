@@ -53,12 +53,12 @@ const task_item = {
       dark: colors.gray[40].name
     },
     "quantity-bg-color": {
-      light: colors.cobalt[20].name,
-      dark: colors.cobalt[80].name
+      light: colors.cobalt[30].name,
+      dark: colors.cobalt[70].name
     },
     "quantity-text-color": {
-      light: colors.cobalt[60].name,
-      dark: colors.cobalt[50].name
+      light: colors.cobalt[80].name,
+      dark: colors.cobalt[20].name
     }
   }
 };

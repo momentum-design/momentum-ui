@@ -27,6 +27,7 @@ export default {
 
 export const Combobox = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const placeholder = text("placeholder", "Add Country");
   const disabled = boolean("Disabled", false);
   const trimSpace = boolean("Trim white space", false);
@@ -41,34 +42,34 @@ export const Combobox = () => {
 
   if (init) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} ?disabled=${disabled} ?search-trim-space=${trimSpace} .value=${[comboBoxOptions[3]]}></md-combobox>
     </md-theme>
     `;
   } else if (multi) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} is-multi></md-combobox>
     </md-theme>`;
   } else if (customValue) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}> 
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}> 
       <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} is-multi=${multi} allow-custom-value></md-combobox>
     </md-theme>`;
   } else if (multiInit) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} is-multi .value=${[comboBoxOptions[3], comboBoxOptions[5]]}></md-combobox>
     </md-theme>
   `;
   } else if (object) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox placeholder=${placeholder} .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi=${multi}></md-combobox>
     </md-theme>`;
   } else if (objectInit) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox
         placeholder=${placeholder}
         .options=${comboBoxObjectOptions}
@@ -82,7 +83,7 @@ export const Combobox = () => {
     `;
   } else if (customContent) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox with-custom-content is-multi=${multi}>
         <div slot="one" aria-label="Facebook" display-value="Facebook">
           <span>Facebook</span>
@@ -104,7 +105,7 @@ export const Combobox = () => {
     </md-theme>`;
   } else if (customContentInit) {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox with-custom-content is-multi .value=${[{ id: "Wikipedia", value: "Wikipedia" }]}>
         <div slot="one" aria-label="Facebook" display-value="Facebook">
           <span>Facebook</span>
@@ -126,7 +127,7 @@ export const Combobox = () => {
   </md-theme>`;
   } else {
     return html`
-    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-combobox .options=${comboBoxOptions} placeholder=${placeholder} ?disabled=${disabled} ?search-trim-space=${trimSpace}></md-combobox>
     </md-theme>`;
   }

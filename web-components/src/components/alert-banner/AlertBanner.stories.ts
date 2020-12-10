@@ -32,12 +32,13 @@ export default {
 
 export const AlertBanner = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const type = select("type", ["default", "warning", "error"], "default");
   const closable = boolean("closable", false);
   const textContent = text("alert message", "Test Alert Message");
 
   return html`
-    <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-alert-banner @alertBanner-hide=${(action('dispatchEvent'))} show type="${type}" ?closable=${closable} message="${textContent}">
         ${textContent ? `${textContent}` : `Text with slotted tag element`}
       </md-alert-banner>

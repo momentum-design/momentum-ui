@@ -30,6 +30,7 @@ export default {
 
 export const Slider = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const disabled = boolean("Disabled", false);
   const step = number("step", 1);
   const min = number("min", 0);
@@ -38,7 +39,7 @@ export const Slider = () => {
   const nopointer = boolean("No Pointer", false);
 
   return html`
-    <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-slider @slider-change=${(action('change'))} .disabled=${disabled} .min=${min} .max=${max} .step=${step} .now=${now} ?no-pointer=${nopointer}></md-slider>
     </md-theme>
   `;

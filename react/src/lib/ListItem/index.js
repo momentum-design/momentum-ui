@@ -228,6 +228,7 @@ class ListItem extends React.Component {
       refName,
       role,
       separator,
+      specifyRoleWithoutList,
       title,
       type,
       ...props
@@ -309,7 +310,7 @@ class ListItem extends React.Component {
               contextProps.type = type || (listContext && listContext.type);
               contextProps.focus = focus || (listContext && listContext.focus === contextProps.uniqueKey);
               contextProps.active = active || (listContext && listContext.active === contextProps.uniqueKey);
-              contextProps.role = (listContext && listContext.role) || role;
+              contextProps.role = specifyRoleWithoutList ? role : (listContext && listContext.role) || role;
               contextProps.ariaConfig = listContext && listContext.ariaConfig;
 
               return (
@@ -384,6 +385,9 @@ ListItem.propTypes = {
   role: PropTypes.string,
   /** @prop Prop that controls whether to show separator or not | false */
   separator: PropTypes.bool,
+  /** @prop Prop that enables assigning role per listitem instead of the default provided by List context */
+  /** Allows Lists to have listitem with different roles */
+  specifyRoleWithoutList: PropTypes.bool,
   /** @prop ListItem Title | '' */
   title: PropTypes.string,
   /** @prop ListItem size | '' */
@@ -427,6 +431,7 @@ ListItem.defaultProps = {
   refName: 'navLink',
   role: 'listitem',
   separator: false,
+  specifyRoleWithoutList: false,
   title: '',
   type: '',
   value: '',

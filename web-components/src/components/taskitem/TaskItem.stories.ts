@@ -35,6 +35,7 @@ export default {
 
 export const TaskItem = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const title = text("Task Title", "Mihael Varificantare");
   const quantity = number("New Chat Quantity", 12);
   const mediaType = text("type", "voice");
@@ -44,7 +45,7 @@ export const TaskItem = () => {
   const time = text("Timer", "00:00");
 
   return html`
-    <md-theme class="theme-toggle" id="taskitem" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="taskitem" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-task-item
         mediaType="${mediaType}"
         status="${status}"

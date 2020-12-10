@@ -8,6 +8,7 @@ import styles from "./scss/module.scss";
 import { DatePicker } from "../datepicker/DatePicker";
 import { TimePicker } from "../timepicker/TimePicker";
 import { TIME_UNIT } from "@/constants";
+import { now } from "@/utils/dateUtils";
 
 export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -27,6 +28,7 @@ export class DateTimePicker extends LitElement {
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
+  @internalProperty() selectedDate: DateTime = now();
   @internalProperty() fullDateTime: DateTime | null = null;
   @internalProperty() dateData: DateTime | null = null;
 
@@ -47,6 +49,8 @@ export class DateTimePicker extends LitElement {
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
+    this.dateStringValue = this.selectedDate?.toSQLDate();
+    this.timeStringValue = this.timeValue;
     await new Promise(resolve => setTimeout(resolve, 0));
 
     if (this.datePicker) {
@@ -60,9 +64,9 @@ export class DateTimePicker extends LitElement {
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (this.dateStringValue && this.timeStringValue && (changedProperties.has('timeStringValue') || changedProperties.has('dateStringValue'))) {
+    if (this.dateStringValue && this.timeStringValue && (changedProperties.has('timeStringValue') || changedProperties.has('dateStringValue') || changedProperties.has('value'))) {
       this.value = `${this.dateStringValue} ${this.timeStringValue}`;
-      this.fullDateTime = DateTime.fromSQL(this.value);
+      this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale });
       console.log('[log][dateTime]: fullDateTime', this.value, this.fullDateTime);
 
       this.dispatchEvent(

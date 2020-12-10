@@ -137,6 +137,7 @@ export class Pagination extends LitElement {
                 ?disabled=${this.hasPreviousPage}
                 aria-disabled=${this.hasPreviousPage}
                 @click=${this.computeFirst}
+                part="pagination-first"
               >
                 <md-icon name="icon-overflow-left_16"></md-icon>
               </button>
@@ -146,6 +147,7 @@ export class Pagination extends LitElement {
                 ?disabled=${this.hasPreviousPage}
                 aria-disabled=${this.hasPreviousPage}
                 @click=${() => this.computePrevious(this.currentPage - 1)}
+                part="pagination-prev"
               >
                 <md-icon name="icon-arrow-left_16"></md-icon>
               </button>
@@ -153,18 +155,18 @@ export class Pagination extends LitElement {
         <div class="md-pagination-container">
           ${this.onlyDots
             ? html`
-                <ul class="md-pagination-dots">
+                <ul class="md-pagination-dots" part="pagination-only-dots">
                   ${this.dotsTemplate(false)}
                 </ul>
               `
             : html`
-                <ul class="md-pagination-list">
+                <ul class="md-pagination-list" part=pagination-list">
                   ${this.pagesTemplate(true)}
                 </ul>
               `}
           ${this.hasDots && !this.onlyDots
             ? html`
-                <ul class="md-pagination-dots">
+                <ul class="md-pagination-dots" part="pagination-dots">
                   ${this.dotsTemplate(true)}
                 </ul>
               `
@@ -179,6 +181,7 @@ export class Pagination extends LitElement {
                 ?disabled=${this.hasNextPage}
                 aria-disabled=${this.hasNextPage}
                 @click=${() => this.computeNext(this.currentPage + 1)}
+                part="pagination-next"
               >
                 <md-icon name="icon-arrow-right_16"></md-icon>
               </button>
@@ -188,6 +191,7 @@ export class Pagination extends LitElement {
                 ?disabled=${this.hasNextPage}
                 aria-disabled=${this.hasNextPage}
                 @click=${this.computeLast}
+                part="pagination-last"
               >
                 <md-icon name="icon-overflow-right_16"></md-icon>
               </button>

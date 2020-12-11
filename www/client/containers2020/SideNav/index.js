@@ -38,7 +38,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/system'
+                  to='/system'
                 />
               }
               key='system'
@@ -50,7 +50,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/tokens'
+                  to='/tokens'
                 />
               }
               key='tokens'
@@ -63,7 +63,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/tokens/color'
+                  to='/tokens/color'
                 />
               }
               key='color'
@@ -76,7 +76,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/tokens/typography'
+                  to='/tokens/typography'
                 />
               }
               key='typography'
@@ -89,7 +89,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/tokens/elevation'
+                  to='/tokens/elevation'
                 />
               }
               key='elevation'
@@ -102,7 +102,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/tokens/space'
+                  to='/tokens/space'
                 />
               }
               key='space'
@@ -114,7 +114,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/components'
+                  to='/components'
                 />
               }
               key='components'
@@ -126,7 +126,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/icons'
+                  to='/icons'
                 />
               }
               key='icons'
@@ -138,7 +138,7 @@ class SideNavContainer extends React.PureComponent {
               customAnchorNode={
                 <NavLink
                   activeClassName='active'
-                  to='/2020/personality'
+                  to='/personality'
                 />
               }
               key='personality'

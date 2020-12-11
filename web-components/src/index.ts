@@ -31,6 +31,7 @@ export { List } from "./components/list/List";
 export { ListItem } from "./components/list/ListItem";
 export { Loading } from "./components/loading/Loading";
 export { MeetingAlert } from "./components/meeting-alert/MeetingAlert";
+export { MenuItem } from "./components/menu-item/MenuItem";
 export { MenuOverlay } from "./components/menu-overlay/MenuOverlay";
 export { Modal } from "./components/modal/Modal";
 export { PhoneInput } from "./components/phone-input/PhoneInput";

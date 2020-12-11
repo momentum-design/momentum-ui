@@ -16,11 +16,11 @@ class Tokens extends React.Component {
 
     return (
       <Switch>
-        <Route path='/2020/tokens' exact component={TokensLanding} />
-        <Route path='/2020/tokens/color' exact component={Color} />
-        <Route path='/2020/tokens/elevation' exact component={Elevation} />
-        <Route path='/2020/tokens/space' exact component={Space} />
-        <Route path='/2020/tokens/typography' exact component={Typography} />
+        <Route path='/tokens' exact component={TokensLanding} />
+        <Route path='/tokens/color' exact component={Color} />
+        <Route path='/tokens/elevation' exact component={Elevation} />
+        <Route path='/tokens/space' exact component={Space} />
+        <Route path='/tokens/typography' exact component={Typography} />
         <Route component={NotFound} />
       </Switch>
     );

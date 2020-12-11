@@ -132,8 +132,8 @@ class Space extends React.PureComponent {
             </div>
           </Example>
           <TokenNavigation 
-            rightNav={{label: "Colors", url: '/2020/tokens/color'}}
-            leftNav={{label: "Elevation", url: "/2020/tokens/elevation"}}
+            rightNav={{label: "Colors", url: '/tokens/color'}}
+            leftNav={{label: "Elevation", url: "/tokens/elevation"}}
           />
         </div>
       </div>

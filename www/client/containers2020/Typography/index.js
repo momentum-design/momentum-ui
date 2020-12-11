@@ -199,8 +199,8 @@ class Typography extends React.PureComponent {
             </div>
           </Example>
           <TokenNavigation
-            leftNav={{label: "Colors", url: '/2020/tokens/color'}}
-            rightNav={{label: "Elevation", url: "/2020/tokens/elevation"}}
+            leftNav={{label: "Colors", url: '/tokens/color'}}
+            rightNav={{label: "Elevation", url: "/tokens/elevation"}}
           />
         </div>
       </div>

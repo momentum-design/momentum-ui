@@ -11,7 +11,7 @@ class TokenSquares extends React.PureComponent {
   render() {
     return (
       <div className='site-responsive-row token-squares-container'>
-        <a href="/2020/tokens/color">
+        <a href="/tokens/color">
           <div className='token-squares-container__item token-squares-container__item-color'>
             <div className="token-squares-container__item-image">
               <img src={colorTokenImage} /> 
@@ -20,7 +20,7 @@ class TokenSquares extends React.PureComponent {
             <div className='arrow'></div>
           </div>
         </a>
-        <a href="/2020/tokens/typography">
+        <a href="/tokens/typography">
           <div className='token-squares-container__item token-squares-container__item-typography'>
             <div className="token-squares-container__item-image">
               <img src={typographyTokenImage} />
@@ -29,7 +29,7 @@ class TokenSquares extends React.PureComponent {
             <div className='arrow'></div>
           </div>
         </a>
-        <a href="/2020/tokens/elevation">
+        <a href="/tokens/elevation">
           <div className='token-squares-container__item token-squares-container__item-elevation'>
             <div className="token-squares-container__item-image">
               <img src={elevationTokenImage} />
@@ -38,7 +38,7 @@ class TokenSquares extends React.PureComponent {
             <div className='arrow'></div>
           </div>
         </a>
-        <a href="/2020/tokens/space">
+        <a href="/tokens/space">
           <div className='token-squares-container__item token-squares-container__item-space'>
             <div className="token-squares-container__item-image">
               <img src={spaceTokenImage} />

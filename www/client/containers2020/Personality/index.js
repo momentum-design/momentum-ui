@@ -66,7 +66,7 @@ class Personality extends React.PureComponent {
             />
             <div className="site-responsive-row personality-description-container">
               {locale.copyStructures.map((copyStructure, idx) => (
-                <div>
+                <div key={"copy-structure" + idx}>
                   <h5>{copyStructure.title}</h5>
                   <p>{copyStructure.body}</p>
                 </div>
@@ -104,7 +104,7 @@ class Personality extends React.PureComponent {
               <h3>Writing tips</h3>
               <div className="site-responsive-row personality-writing-tips-grid">
                 {locale.writingTips.map((writingTip, idx) => (
-                  <div key={'tip-container' + idx} className="personality-writing-tips-grid__container">
+                  <div key={'writing-tip' + idx} className="personality-writing-tips-grid__container">
                     <div className="personality-writing-tips-grid__container-inner">
                       {writingTip.title && <h4>{writingTip.title}</h4> }
                       <p>{writingTip.body}</p>
@@ -150,7 +150,7 @@ class Personality extends React.PureComponent {
             />
             <div className="site-responsive-row personality-description-container">
               {locale.illustrationStyles.map((illustrationStyle, idx) => (
-                <div>
+                <div key={"illustration-style" + idx}>
                   <h5>{illustrationStyle.title}</h5>
                   <p>{illustrationStyle.body}</p>
                 </div>
@@ -180,8 +180,8 @@ class Personality extends React.PureComponent {
             </div>
             <div className="personality-illustration-tips-container">
               <h3>Illustration tips</h3>
-              {locale.illustrationTips.map(illustrationTip => (
-                <div className="personality-illustration-tips-container__example">
+              {locale.illustrationTips.map((illustrationTip, idx) => (
+                <div key={"illustration-tip" + idx} className="personality-illustration-tips-container__example">
                   <p>{illustrationTip.title}</p>
                   <Example className="personality-illustration-tips-example" smallBlockSize>
                     <div className="personality-illustration-tips-example-item">

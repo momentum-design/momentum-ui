@@ -56,7 +56,7 @@ class ComponentContainer extends React.Component {
               size={52}
             >Built with us</Button>
           </a>
-          <NavLink to="/2020/components">
+          <NavLink to="/components">
             <Button
               ariaLabel='components'
               className="md-button--blue"

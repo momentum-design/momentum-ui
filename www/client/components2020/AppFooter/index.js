@@ -25,18 +25,19 @@ class AppFooter extends Component {
             { logo }
           </div>
           <div className={'flex-item flex-margin'}>
-            <a className={'site-footer-title'} href="/2020/tokens">Tokens</a>
-            <a href="/2020/tokens/color">Color</a>
-            <a href="/2020/tokens/typography">Typography</a>
-            <a href="/2020/tokens/elevation">Elevation</a>
-            <a href="/2020/tokens/space">Space</a>
+            <a className={'site-footer-title'} href="/tokens">Tokens</a>
+            <a href="/tokens/color">Color</a>
+            <a href="/tokens/typography">Typography</a>
+            <a href="/tokens/elevation">Elevation</a>
+            <a href="/tokens/space">Space</a>
           </div>
           <div className={'flex-item flex-margin'}>
-            <a className={'site-footer-title'} href="/2020/components">Components</a>
-            <a className={'site-footer-title'} href="/2020/icons">Icons</a>
+            <a className={'site-footer-title'} href="/components">Components</a>
+            <a className={'site-footer-title'} href="/icons">Icons</a>
           </div>
           <div className={'flex-item flex-margin'}>
-            <a className={'site-footer-title'} href="/2020/personality">Personality</a>
+            <a className={'site-footer-title'} href="/personality">Personality</a>
+            <a className={'site-footer-title'} href="/system">System</a>
           </div>
         </div>
         <div className={'site-warp flex-con-row'}>
@@ -44,7 +45,6 @@ class AppFooter extends Component {
           <div className={'footer-bottom-text'}>
             <div>© 2020 Cisco and/or its affiliates. All rights reserved.</div>
             <div className='site-friend-link'>
-              {/* <a href="/2020/feedback">Support & Feedback</a> */}
               <a href="https://www.cisco.com/c/en/us/about/legal/privacy.html">Privacy Policy</a>
               <a href="https://www.cisco.com/c/en/us/about/legal/privacy.html#cookies">Cookie Policy</a>
             </div>

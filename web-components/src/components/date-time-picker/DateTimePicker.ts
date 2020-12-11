@@ -105,8 +105,8 @@ export class DateTimePicker extends LitElement {
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
             <md-timepicker
-              ?twoDigitAutoTab=${this.twoDigitAutoTab}
-              ?twentyfourhourformat=${this.twentyFourHourFormat}
+              ?two-digit-auto-tab=${this.twoDigitAutoTab}
+              ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
               value=${this.timeValue}
               locale=${ifDefined(this.locale)}>

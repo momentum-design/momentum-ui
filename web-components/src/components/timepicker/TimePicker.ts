@@ -87,7 +87,7 @@ export class TimePicker extends LitElement {
   protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
 
-    if (changedProperties.has('value')) {
+    if (this.value && this.locale && (changedProperties.has('value') || changedProperties.has('locale'))) {
       this.timeObject = DateTime.fromFormat(this.value, "tt", { locale: this.locale });
     }
   }
@@ -123,23 +123,23 @@ export class TimePicker extends LitElement {
      return result;
   };
 
-    to12HourFormat = (amPm: string, hour: string) => {
-      if (!this.twentyFourHourFormat && this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
-        let hourValue = Number(hour);
-        if (amPm === 'PM') {
-          hourValue = 12 + (hourValue % 12);
-        } else {
-          hourValue = (hourValue % 12)
-        }
-        return hourValue;
+  to12HourFormat = (amPm: string, hour: string) => {
+    if (!this.twentyFourHourFormat && this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
+      let hourValue = Number(hour);
+      if (amPm === 'PM') {
+        hourValue = 12 + (hourValue % 12);
+      } else {
+        hourValue = (hourValue % 12)
       }
+      return hourValue;
+    }
   }
 
   isEntireTimeValid = () => {
     return Object.values(this.timeValidity).every((timeUnitValidity) => timeUnitValidity);
   }
 
-  updateTime = (unit: TIME_UNIT) => {
+  updateTimeUnit = (unit: TIME_UNIT) => {
     this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
 
     if (this.timeObject && this.timeValidity[unit]) {
@@ -156,7 +156,7 @@ export class TimePicker extends LitElement {
           hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
         });
 
-        this.value = this.timeObject.toFormat("tt");
+        this.value = this.twentyFourHourFormat ? this.timeObject.toFormat("TT") : this.timeObject.toFormat("tt");
         this.dispatchEvent(
           new CustomEvent(`time-selection-change`, {
             bubbles: true,
@@ -174,7 +174,7 @@ export class TimePicker extends LitElement {
   handleTimeChange(event: CustomEvent, unit: TimePicker.TimeUnit) {
     this.timeValue[unit] = event?.detail?.value;
     this.requestUpdate();
-    this.formatTimeUnit(this.timeValue[unit], unit);
+    this.formatTimeUnit(unit);
 
     const unitValue = this.timeValue[unit];
     if (this.twoDigitAutoTab && this.tabNext && ((unit !== TIME_UNIT.AM_PM && unitValue.length === 2 && unitValue[0] !== '0') || unitValue === '00')) {
@@ -192,7 +192,7 @@ export class TimePicker extends LitElement {
         }
       }
     } else if (unit === TIME_UNIT.AM_PM) {
-      this.updateTime(unit);
+      this.updateTimeUnit(unit);
     }
 
     event.stopPropagation();
@@ -240,7 +240,7 @@ export class TimePicker extends LitElement {
       this.timeValue[unit] = '00';
     }
 
-    this.updateTime(unit);
+    this.updateTimeUnit(unit);
     this.requestUpdate();
 
     event.stopPropagation();
@@ -261,7 +261,7 @@ export class TimePicker extends LitElement {
     return [reset, styles];
   }
 
-  formatTimeUnit = (timeValue: string, unit: TimePicker.TimeUnit, onBlur: boolean = false) => {
+  formatTimeUnit = (unit: TimePicker.TimeUnit) => {
     if(this.timeValue[unit].length === 1) {
       if (this.timeValue[unit] !== '0') {
         this.timeValue[unit] = '0' + this.timeValue[unit];
@@ -288,7 +288,7 @@ export class TimePicker extends LitElement {
       ${unit === TIME_UNIT.MINUTE || unit === TIME_UNIT.SECOND ? html`<span class="colon-separator">:</span>` : nothing}
       <md-input
         compact
-        selectWhenInFocus
+        select-when-in-focus
         class="${`time-input-box ${unit}`}"
         id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
         value="${this.timeValue[unit]}"
@@ -312,7 +312,7 @@ export class TimePicker extends LitElement {
     return html `
       <md-combobox
         compact
-        selectWhenInFocus
+        select-when-in-focus
         class="amPm-combo-box"
         .options=${options}
         .value=${[options[0]]}

@@ -37,7 +37,14 @@ export const DatePicker = () => {
   );
   return html`
     <md-theme class="theme-toggle" id="datepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-datepicker ?shouldcloseonselect=${shouldCloseOnSelect} value=${value} weekStart=${weekStart} locale=${locale} minDate=${minDate} maxDate=${maxDate}></md-datepicker>
+      <md-datepicker
+        ?should-close-on-select=${shouldCloseOnSelect}
+        value=${value}
+        weekStart=${weekStart}
+        locale=${locale}
+        minDate=${minDate}
+        maxDate=${maxDate}>
+      </md-datepicker>
     </md-theme>
   `;
 };

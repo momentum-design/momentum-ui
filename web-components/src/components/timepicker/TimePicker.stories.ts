@@ -28,8 +28,8 @@ export const TimePicker = () => {
   return html`
     <md-theme class="theme-toggle" id="timepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-timepicker
-        ?twoDigitAutoTab=${twoDigitAutoTab}
-        ?twentyfourhourformat=${twentyFourHourFormat}
+        ?two-digit-auto-tab=${twoDigitAutoTab}
+        ?twenty-four-hour-format=${twentyFourHourFormat}
         timeSpecificity=${theTimeSpecificity}
         value=${value}
         locale=${locale}>

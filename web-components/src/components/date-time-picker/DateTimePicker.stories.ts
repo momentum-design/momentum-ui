@@ -58,8 +58,8 @@ export const DateTimePicker = () => {
         maxDate=${maxDate}
         locale=${locale}
         weekStart=${weekStart}
-        ?twoDigitAutoTab=${twoDigitAutoTab}
-        ?twentyfourhourformat=${twentyFourHourFormat}
+        ?two-digit-auto-tab=${twoDigitAutoTab}
+        ?twenty-four-hour-format=${twentyFourHourFormat}
         timeSpecificity=${theTimeSpecificity}>
       </md-date-time-picker>
     </md-theme>

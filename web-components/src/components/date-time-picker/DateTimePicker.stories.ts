@@ -30,7 +30,7 @@ export const DateTimePicker = () => {
   const value = text(
     "value",
     now().set({
-      hour: 12,
+      hour: 0,
       minute: 0,
       second: 0,
       millisecond: 0

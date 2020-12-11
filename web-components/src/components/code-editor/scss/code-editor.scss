@@ -1,0 +1,23 @@
+:host(md-code-editor) {
+  .md-code-editor {
+    width: 100%;
+    max-width: $md-code-editor-width;
+    min-height: $md-code-editor-height;
+    border-radius: $md-code-editor-border-radius;
+    color: $md-code-editor-color;
+    background: $md-code-editor-bg;
+    overflow: hidden;
+
+    &-header {
+      padding: $md-code-editor-indent;
+      display: flex;
+      background: $md-code-editor-header-bg;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-file-input {
+      display: none;
+    }
+  }
+}

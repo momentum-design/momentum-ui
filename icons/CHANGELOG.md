@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.68.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.67.0...@momentum-ui/icons@7.68.0) (2020-12-11)
+
+
+### Features
+
+* **icons:** add video-layout-stack_12 ([9ab2267](https://github.com/momentum-design/momentum-ui/commit/9ab22678309e2eb5b20e4ccf51306d79782a0516))
+
+
+
+
+
 # [7.67.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.66.0...@momentum-ui/icons@7.67.0) (2020-12-10)
 
 

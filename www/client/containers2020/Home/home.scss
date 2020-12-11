@@ -132,7 +132,10 @@
 }
 
 .site-home-personality {
-  background-color: #FCF4E1;
+
+  &.site-con {
+    background-color: #FCF4E1;
+  }
 
   .site-responsive-row {
     grid-column-gap: 30px;

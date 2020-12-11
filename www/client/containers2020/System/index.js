@@ -80,10 +80,10 @@ class System extends React.PureComponent {
             <div className="site-responsive-row system-token-links">
               <div></div>
               <div>
-                <p className="system-token-link system-token-link-color"><a href="/2020/tokens/color">Color</a></p>
-                <p className="system-token-link system-token-link-typography"><a href="/2020/tokens/typography">Typography</a></p>
-                <p className="system-token-link system-token-link-elevation"><a href="/2020/tokens/elevation">Elevation</a></p>
-                <p className="system-token-link system-token-link-space"><a href="/2020/tokens/space">Space</a></p>
+                <p className="system-token-link system-token-link-color"><a href="/tokens/color">Color</a></p>
+                <p className="system-token-link system-token-link-typography"><a href="/tokens/typography">Typography</a></p>
+                <p className="system-token-link system-token-link-elevation"><a href="/tokens/elevation">Elevation</a></p>
+                <p className="system-token-link system-token-link-space"><a href="/tokens/space">Space</a></p>
               </div>
             </div>
           </div>

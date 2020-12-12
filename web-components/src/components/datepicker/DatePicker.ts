@@ -10,12 +10,12 @@ export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
 @customElement("md-datepicker")
 export class DatePicker extends LitElement {
-  @property({ type: Boolean }) shouldCloseOnSelect = true;
+  @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
-  @property({ type: String }) locale: string | undefined = undefined;
+  @property({ type: String }) locale = "en-US";
 
   @internalProperty() selectedDate: DateTime = now();
   @internalProperty() focusedDate: DateTime = now();
@@ -31,8 +31,18 @@ export class DatePicker extends LitElement {
     this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
   }
 
-  update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("value")) {
+      this.value ? (this.selectedDate = DateTime.fromSQL(this.value)) : null;
+    }
+    if (changedProperties.has("locale")) {
+      this.render();
+    }
+    if (changedProperties.has("minDate") || changedProperties.has("maxDate")) {
+      this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
+      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+    }
   }
 
   setOpen = (open: boolean) => {
@@ -50,7 +60,7 @@ export class DatePicker extends LitElement {
   setSelected = (date: DateTime, event: Event) => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
     if (!isDayDisabled(date, filters)) {
-      const dateString = `${date.year}-${date.month}-${date.day}`;
+      const dateString = date.toSQLDate();
       this.selectedDate = date;
       this.value = dateString;
     }
@@ -129,17 +139,20 @@ export class DatePicker extends LitElement {
           placeholder=${this.selectedDate.toLocaleString()}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
         ></md-input>
-        <md-datepicker-calendar
-          @day-select=${(e: CustomEvent) => this.handleSelect(e)}
-          @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
-          .datePickerProps=${{
-            locale: this.locale,
-            selected: this.selectedDate,
-            focused: this.focusedDate,
-            weekStart: this.weekStart
-          }}
-          .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
-        ></md-datepicker-calendar>
+        <div class="date-overlay-content">
+          <md-datepicker-calendar
+            @day-select=${(e: CustomEvent) => this.handleSelect(e)}
+            @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
+            .datePickerProps=${{
+              locale: this.locale,
+              selected: this.selectedDate,
+              focused: this.focusedDate,
+              weekStart: this.weekStart
+            }}
+            .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
+          ></md-datepicker-calendar>
+          <slot name="time-picker"></slot>
+        </div>
       </md-menu-overlay>
     `;
   }

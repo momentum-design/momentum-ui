@@ -26,6 +26,7 @@ export { DatePickerCalendar } from "./components/datepicker/datepicker-calendar/
 export { DatePickerDay } from "./components/datepicker/datepicker-day/DatePickerDay";
 export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePickerMonth";
 export { DatePickerWeek } from "./components/datepicker/datepicker-week/DatePickerWeek";
+export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { HelpText } from "./components/help-text/HelpText";
@@ -55,4 +56,3 @@ export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
 // eslint-disable-next-line prettier/prettier
-

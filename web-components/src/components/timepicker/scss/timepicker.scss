@@ -24,6 +24,7 @@
 
   .amPm-combo-box::part(multiwrap-input) {
     text-align: center;
+    text-transform: uppercase;
     width: 100%;
   }
 
@@ -59,6 +60,6 @@
   }
 }
 
-:host([twentyFourHourFormat]) .md-timepicker {
+:host([twenty-four-hour-format]) .md-timepicker {
   padding-right: 0;
 }

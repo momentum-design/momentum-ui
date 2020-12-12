@@ -90,6 +90,10 @@ export class DateTimePicker extends LitElement {
       this.timeValue = this.value.split(" ")[1];
       this.updateDateTime();
     }
+
+    if (this.value && changedProperties.has('locale')) {
+      this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
+    }
   }
 
   static get styles() {
@@ -102,6 +106,7 @@ export class DateTimePicker extends LitElement {
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.dateValue)}
+          placeholder=${ifDefined(this.fullDateTime?.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS))}
           weekStart=${this.weekStart}
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">

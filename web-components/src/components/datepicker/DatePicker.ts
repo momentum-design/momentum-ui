@@ -15,6 +15,7 @@ export class DatePicker extends LitElement {
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+  @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
 
   @internalProperty() selectedDate: DateTime = now();
@@ -34,7 +35,7 @@ export class DatePicker extends LitElement {
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (changedProperties.has("value")) {
-      this.value ? (this.selectedDate = DateTime.fromSQL(this.value)) : null;
+      this.value ? (this.selectedDate = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true })) : null;
     }
     if (changedProperties.has("locale")) {
       this.render();
@@ -132,11 +133,13 @@ export class DatePicker extends LitElement {
   };
 
   render() {
+    const placeholder = this.placeholder || this.selectedDate.toLocaleString({ locale: this.locale });
+
     return html`
       <md-menu-overlay custom-width="248px">
         <md-input
           slot="menu-trigger"
-          placeholder=${this.selectedDate.toLocaleString()}
+          placeholder=${placeholder}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
         ></md-input>
         <div class="date-overlay-content">

@@ -21,7 +21,6 @@ export const TimePicker = () => {
   const twoDigitAutoTab = boolean("twoDigitAutoTab", false);
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);
-  const locale = text("locale", "en-US");
   const value = text("value", "00:00:00");
 
   return html`
@@ -30,8 +29,7 @@ export const TimePicker = () => {
         ?two-digit-auto-tab=${twoDigitAutoTab}
         ?twenty-four-hour-format=${twentyFourHourFormat}
         timeSpecificity=${theTimeSpecificity}
-        value=${value}
-        locale=${locale}>
+        value=${value}>
       </md-timepicker>
     </md-theme>
   `;

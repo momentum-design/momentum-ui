@@ -65,7 +65,6 @@ export class TimePicker extends LitElement {
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
   @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) locale = "en-US";
   @property({ type: String, reflect: true }) value = "00:00:00";
 
   @internalProperty() private timeObject: DateTime = now();

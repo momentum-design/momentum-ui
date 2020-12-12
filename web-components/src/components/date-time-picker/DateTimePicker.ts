@@ -16,43 +16,39 @@ export const weekStartDays = ["Sunday", "Monday"];
 export class DateTimePicker extends LitElement {
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
-  @property({ type: String }) dateValue: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
-  @property({ type: String }) locale = "en-US";
+  @property({ type: String }) dateValue: string | undefined = undefined;
 
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
   @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) timeValue = "12:00:00 AM";
+  @property({ type: String }) timeValue = "00:00:00";
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
+  @property({ type: String }) locale = "en-US";
 
   @internalProperty() fullDateTime: DateTime | null = null;
-
   @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
   @internalProperty() selectedDateObject: DateTime = now();
-
-  @internalProperty() timeStringValue = "";
-  @internalProperty() dateStringValue = "";
 
   @query("md-datepicker") datePicker!: DatePicker;
   @query("md-timepicker") timePicker!: TimePicker;
 
   handleDateChange = (event: any) => {
     this.selectedDateObject = event?.detail?.data as DateTime;
-    this.dateStringValue = this.selectedDateObject?.toSQLDate();
+    this.dateValue = this.selectedDateObject?.toSQLDate();
   };
 
   handleTimeChange = (event: any) => {
     this.selectedTimeObject = event?.detail?.data as DateTime;
-    this.timeStringValue = this.selectedTimeObject?.toSQLTime();
+    this.timeValue = this.selectedTimeObject?.toSQLTime();
   };
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    this.dateStringValue = this.selectedDateObject?.toSQLDate();
-    this.selectedTimeObject = DateTime.fromFormat(this.timeValue, "tt", { locale: this.locale });
-    this.timeStringValue = this.selectedTimeObject.toSQLTime();
+    this.dateValue = this.selectedDateObject?.toSQLDate();
+    this.selectedTimeObject = DateTime.fromSQL(this.timeValue);
+    this.timeValue = this.selectedTimeObject.toSQLTime();
 
     await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -64,30 +60,35 @@ export class DateTimePicker extends LitElement {
     }
   }
 
+  updateDateTime = () => {
+    this.value = `${this.dateValue} ${this.timeValue}`;
+    this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
+
+    this.dispatchEvent(
+      new CustomEvent(`date-time-change`, {
+        bubbles: true,
+        composed: true,
+        detail: {
+          dateTimeString: this.value,
+          dateTime: this.fullDateTime,
+          locale: this.locale,
+          twentyFourHourFormat: this.twentyFourHourFormat
+        }
+      })
+    );
+  }
+
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (
-      this.dateStringValue &&
-      this.timeStringValue &&
-      (changedProperties.has("timeStringValue") || changedProperties.has("dateStringValue"))
-    ) {
-      this.value = `${this.dateStringValue} ${this.timeStringValue}`;
-      this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
-      console.log("[log][dateTime]: fullDateTime", this.value, this.fullDateTime);
+    if (this.dateValue && this.timeValue && (changedProperties.has("timeValue") || changedProperties.has("dateValue"))) {
+      this.updateDateTime();
+    }
 
-      this.dispatchEvent(
-        new CustomEvent(`date-time-change`, {
-          bubbles: true,
-          composed: true,
-          detail: {
-            dateTimeString: this.value,
-            dateTime: this.fullDateTime,
-            locale: this.locale,
-            twentyFourHourFormat: this.twentyFourHourFormat
-          }
-        })
-      );
+    if (this.value && changedProperties.has("value")) {
+      this.dateValue = this.value.split(" ")[0];
+      this.timeValue = this.value.split(" ")[1];
+      this.updateDateTime();
     }
   }
 

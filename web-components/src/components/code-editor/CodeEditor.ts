@@ -1,16 +1,116 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import {
+  customElement,
+  html,
+  LitElement,
+  query,
+  property,
+  PropertyValues,
+  internalProperty,
+  queryAssignedNodes
+} from "lit-element";
 import styles from "./scss/module.scss";
+import hljs from "highlight.js/lib/core";
 import "@/components/button/Button";
-
-export const fileTypes = ["*/js"];
+import { ifDefined } from "lit-html/directives/if-defined";
+import { nothing } from "lit-html";
 
 @customElement("md-code-editor")
 export class CodeEditor extends LitElement {
-  @property({ type: Object }) acceptTypes = "";
+  @property({ type: String, attribute: "accept-language" }) acceptLanguage = "javascript";
+
+  @query("input[type='file']") input!: HTMLInputElement;
+  @query(".md-code-editor-code-block") codeBlock!: HTMLPreElement;
+
+  @internalProperty() private acceptTypes = "";
+  @internalProperty() private fileName = "";
+
+  @queryAssignedNodes() slotNodes!: Node[];
 
   static get styles() {
     return [reset, styles];
+  }
+
+  triggerFileLoad(event: MouseEvent) {
+    event.preventDefault();
+
+    this.input.click();
+  }
+
+  handleSlotChange() {
+    const [textarea] = this.slotNodes.filter(node => (node as Element).tagName === "TEXTAREA");
+    this.highlightBlock(textarea);
+  }
+
+  async handleFile(event: Event) {
+    event.preventDefault();
+
+    const fileList = this.input.files;
+    if (fileList && fileList.length !== 0)
+      for (const file of fileList) {
+        let fileTextContent = "";
+
+        this.fileName = file.name;
+
+        try {
+          fileTextContent = (await this.readFile(file)) as string;
+        } catch (e) {
+          fileTextContent = "";
+        } finally {
+          if (fileTextContent.length) {
+            this.highlightBlock(fileTextContent);
+          }
+        }
+      }
+  }
+
+  private highlightBlock(text: string) {
+    this.codeBlock.innerText = text;
+    hljs.highlightBlock(this.codeBlock);
+  }
+
+  private readFile(file: File) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = res => {
+        resolve(res.target!.result);
+      };
+      reader.onerror = err => reject(err);
+      reader.readAsText(file);
+    });
+  }
+
+  private async importLanguage(language: string) {
+    try {
+      const { default: importLanguage } = await import(`highlight.js/lib/languages/${language}`);
+      hljs.registerLanguage(`${language}`, importLanguage);
+      this.setAcceptTypes();
+    } catch {
+      console.warn("Please set correct language name");
+    }
+  }
+
+  private getAllAcceptTypes() {
+    const listLanguages = hljs.listLanguages();
+    if (listLanguages.length) {
+      return listLanguages
+        .map((language: string) => hljs.getLanguage(`${language}`).aliases)
+        .map((aliases: string[]) => aliases.map((alias: string) => `.${alias}`))
+        .join(",");
+    }
+    return "";
+  }
+
+  private setAcceptTypes() {
+    this.acceptTypes = this.getAllAcceptTypes();
+  }
+
+  protected updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("acceptLanguage")) {
+      this.importLanguage(this.acceptLanguage);
+    }
   }
 
   render() {
@@ -18,26 +118,31 @@ export class CodeEditor extends LitElement {
       <div class="md-code-editor">
         <div class="md-code-editor-header">
           <div class="md-code-editor-file">
-            <label for="file-input" onclick="this.nextElementSibling.click()">
-              <md-button variant="primary">
-                Get
-              </md-button>
+            <label for="file-input">
+              <md-button variant="primary" @click=${this.triggerFileLoad}></md-button>
+              ${this.fileName.length ? this.fileName : nothing}
             </label>
-            <input type="file" class="md-code-editor-file-input" accept=${this.acceptTypes} />
+            <input
+              type="file"
+              id="file-input"
+              name="file-input"
+              accept=${ifDefined(this.acceptTypes || undefined)}
+              @change=${this.handleFile}
+            />
           </div>
           <div class="md-code-editor-copy">
             <span class="md-code-editor-copy-btn">
-              cURL
               <md-icon name="icon-copy_14"></md-icon>
             </span>
           </div>
         </div>
         <div class="md-code-editor-content">
-          <pre>
-            <code>
+          <pre class="md-code-editor-code-block">
+            <code class=${this.acceptLanguage}>
 
             </code>
           </pre>
+          <slot @slotchange=${this.handleSlotChange}> </slot>
         </div>
       </div>
     `;

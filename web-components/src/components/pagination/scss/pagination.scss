@@ -37,7 +37,7 @@
         }
 
         &:focus {
-          box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
+          box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
         }
 
         &[aria-current="true"] {
@@ -70,7 +70,7 @@
       }
 
       &:focus {
-        box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
+        box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
       }
     }
 
@@ -97,5 +97,5 @@
 }
 
 :host([focus-visible]) {
-  box-shadow: $pagination-nav-focus var(--pagination-nav-focus, $md-pagination-nav-focus-light);
+  box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
 }

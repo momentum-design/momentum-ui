@@ -14,35 +14,24 @@ export default {
   }
 };
 
-export const Default = () => {
-  return html`
-    <md-pagination total-page="20" current-page="10" visible-page="3"></md-pagination>
-  `;
-};
-
-export const Limit = () => {
+export const Pagination = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const visiblePage = number("Limit", 10);
-  return html`
-    <md-pagination total-page="20" current-page="10" .visible-page=${visiblePage}></md-pagination>
-  `;
-};
-
-export const withDots = () => {
   const dots = boolean("Add Dots", true);
-  return html`
-    <md-pagination total-page="20" current-page="10" visible-page="3" ?dots=${dots}></md-pagination>
-  `;
-};
+  const navigation = boolean("No Navigation", false);
+  const onlyDots = boolean("Only Dots", false);
 
-export const Navigation = () => {
-  const navigation = boolean("No Navigation", true);
   return html`
-    <md-pagination total-page="20" current-page="10" ?no-navigation=${navigation}></md-pagination>
-  `;
-};
-export const onlyDots = () => {
-  const onlyDots = boolean("Only Dots", true);
-  return html`
-    <md-pagination total-page="20" current-page="10" ?only-dots=${onlyDots}></md-pagination>
+    <md-theme class="theme-toggle" id="pagination" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-pagination
+        total-page="20"
+        current-page="10"
+        .visible-page=${visiblePage}
+        ?dots=${dots}
+        ?no-navigation=${navigation}
+        ?only-dots=${onlyDots}
+      ></md-pagination>
+    </md-theme>
   `;
 };

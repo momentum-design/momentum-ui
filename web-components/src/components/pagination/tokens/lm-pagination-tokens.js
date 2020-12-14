@@ -27,11 +27,6 @@ const pagination = {
       light: colors.gray[90].name,
       dark: colors.gray[40].name
     },
-    focus: {
-      light: colors.blue[60].name,
-      dark: colors.blue[40].name
-    },
-    dark: colors.gray[40].name,
     hover: {
       light: colors.gray[100].name,
       dark: colors.gray[60].name

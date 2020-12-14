@@ -29,7 +29,7 @@
           font-size: $font-size-small;
           line-height: 1;
           min-width: 0;
-          height: $md-code-editor-btn-height;
+          height: $md-code-editor-btn-size;
           margin-right: $md-code-editor-indent;
 
           &:after {
@@ -37,33 +37,38 @@
           }
         }
       }
-    }
 
-    input[type="file"] {
-      display: none;
+      input[type="file"] {
+        display: none;
+      }
     }
 
     &-copy {
-      @include flex($ai: center);
+      @include flex();
+      line-height: 1;
 
-      md-button {
+      &-text {
+        margin-right: $md-code-editor-indent;
+      }
+
+      &-btn {
+        &::part(button) {
+          background: none;
+          color: $md-code-editor-copy-color;
+        }
+
         &[disabled] {
           opacity: 0.5;
           cursor: not-allowed;
         }
       }
-      md-icon {
-        color: $md-code-editor-icon;
-        //margin-left: $md-code-editor-indent;
-      }
-
-
     }
+
   }
 
   .hljs-comment,
   .hljs-quote {
-    color: #d4d0ab;
+    color: $md-yellow-10;
   }
 
   /* Red */
@@ -75,7 +80,8 @@
   .hljs-selector-class,
   .hljs-regexp,
   .hljs-deletion {
-    color: #ffa07a;
+    color: $md-orange-40;
+
   }
 
   /* Orange */
@@ -87,12 +93,12 @@
   .hljs-params,
   .hljs-meta,
   .hljs-link {
-    color: #f5ab35;
+    color: $md-yellow-40;
   }
 
   /* Yellow */
   .hljs-attribute {
-    color: #ffd700;
+    color: $md-gold-30;
   }
 
   /* Green */
@@ -100,24 +106,24 @@
   .hljs-symbol,
   .hljs-bullet,
   .hljs-addition {
-    color: #abe338;
+    color: $md-lime-40;
   }
 
   /* Blue */
   .hljs-title,
   .hljs-section {
-    color: #00e0e0;
+    color: $md-cyan-40;
   }
 
   /* Purple */
   .hljs-keyword,
   .hljs-selector-tag {
-    color: #dcc6e0;
+    color: $md-violet-20;
   }
 
   .hljs {
-    background: #2b2b2b;
-    color: #f8f8f2;
+    background: transparent;
+    color: $md-gray-20;
     display: block;
     overflow-x: auto;
     padding: 0.5em;

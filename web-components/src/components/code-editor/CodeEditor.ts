@@ -43,6 +43,7 @@ export class CodeEditor extends LitElement {
   }
 
   handleSlotChange() {
+    this.copied = false;
     if (this.slotNodes && this.slotNodes.length) {
       const codeBlock = this.slotNodes.find(node => (node as Element).tagName === "CODE");
       if (codeBlock) {
@@ -58,6 +59,7 @@ export class CodeEditor extends LitElement {
     event.preventDefault();
 
     this.disableCopyButton = true;
+    this.copied = false;
 
     const fileList = this.input.files;
     if (fileList && fileList.length !== 0)
@@ -72,7 +74,6 @@ export class CodeEditor extends LitElement {
         } finally {
           if (fileTextContent.length) {
             this.highlightBlock(fileTextContent);
-            this.disableCopyButton = false;
           }
         }
       }
@@ -86,30 +87,14 @@ export class CodeEditor extends LitElement {
   }
 
   private copyText() {
-    let succeeded;
-
     try {
-      succeeded = document.execCommand("copy");
+      document.execCommand("copy");
       this.copied = true;
     } catch (err) {
-      succeeded = false;
+      console.warn("Copy text failed");
       this.copied = false;
     } finally {
       this.clearSelection();
-      this.unCopyText();
-    }
-    this.handleResult(succeeded);
-  }
-
-  private unCopyText() {
-    setTimeout(() => {
-      this.copied = false;
-    }, 1500);
-  }
-
-  private handleResult(succeeded: boolean) {
-    if (!succeeded) {
-      console.warn("Can't copy text");
     }
   }
 
@@ -141,6 +126,7 @@ export class CodeEditor extends LitElement {
   private highlightBlock(text: string) {
     this.codeBlock.innerText = text;
     hljs.highlightBlock(this.codeBlock);
+    this.disableCopyButton = false;
   }
 
   private readFile(file: File) {
@@ -207,19 +193,27 @@ export class CodeEditor extends LitElement {
             />
           </div>
           <div class="md-code-editor-copy">
-            ${this.copied ? this.copiedLocalization.trim() : this.copyLocalization.trim()}
-            <md-button circle ?disabled=${this.disableCopyButton} @click=${this.copyClipboard}>
+            <span class="md-code-editor-copy-text"
+              >${this.copied ? this.copiedLocalization.trim() : this.copyLocalization.trim()}</span
+            >
+            <md-button
+              circle
+              size="20"
+              ?disabled=${this.disableCopyButton}
+              @click=${this.copyClipboard}
+              class="md-code-editor-copy-btn"
+            >
               <md-icon slot="icon" name="icon-copy_16"></md-icon>
             </md-button>
           </div>
         </div>
         <div class="md-code-editor-content">
           <pre class="md-code-editor-code-block">
-          <slot name="code-block" @slotchange=${this.handleSlotChange}>
-            <code class=${this.acceptLanguage}>
+            <slot name="code-block" @slotchange=${this.handleSlotChange}>
+              <code class=${this.acceptLanguage}>
 
-            </code>
-          </slot>
+              </code>
+            </slot>
           </pre>
         </div>
       </div>

@@ -18,17 +18,19 @@ import { nothing } from "lit-html";
 @customElement("md-code-editor")
 export class CodeEditor extends LitElement {
   @property({ type: String, attribute: "accept-language" }) acceptLanguage = "javascript";
+  @property({ type: String }) getLocalization = "Get";
+  @property({ type: String }) copyLocalization = "Copy";
+  @property({ type: String }) copiedLocalization = "Copied";
 
   @query("input[type='file']") input!: HTMLInputElement;
   @query(".md-code-editor-code-block") codeBlock!: HTMLPreElement;
 
-  @internalProperty() private hasContent = true;
+  @internalProperty() private disableCopyButton = true;
   @internalProperty() private acceptTypes = "";
   @internalProperty() private fileName = "";
+  @internalProperty() private copied = false;
 
   @queryAssignedNodes("code-block") slotNodes!: Node[];
-  @property({ type: String }) getLocalization = "Get";
-  @property({ type: String }) copyLocalization = "Copy";
 
   static get styles() {
     return [reset, styles];
@@ -55,12 +57,12 @@ export class CodeEditor extends LitElement {
   async handleFile(event: Event) {
     event.preventDefault();
 
-    this.hasContent = true;
+    this.disableCopyButton = true;
+
     const fileList = this.input.files;
     if (fileList && fileList.length !== 0)
       for (const file of fileList) {
         let fileTextContent = "";
-
         this.fileName = file.name;
 
         try {
@@ -70,15 +72,17 @@ export class CodeEditor extends LitElement {
         } finally {
           if (fileTextContent.length) {
             this.highlightBlock(fileTextContent);
-            this.hasContent = false;
+            this.disableCopyButton = false;
           }
         }
       }
   }
 
   copyClipboard() {
-    this.clearSelection();
-    this.selectTarget(this.codeBlock);
+    if (!this.disableCopyButton) {
+      this.clearSelection();
+      this.selectTarget(this.codeBlock);
+    }
   }
 
   private copyText() {
@@ -86,12 +90,21 @@ export class CodeEditor extends LitElement {
 
     try {
       succeeded = document.execCommand("copy");
+      this.copied = true;
     } catch (err) {
       succeeded = false;
+      this.copied = false;
     } finally {
       this.clearSelection();
+      this.unCopyText();
     }
     this.handleResult(succeeded);
+  }
+
+  private unCopyText() {
+    setTimeout(() => {
+      this.copied = false;
+    }, 1500);
   }
 
   private handleResult(succeeded: boolean) {
@@ -194,12 +207,10 @@ export class CodeEditor extends LitElement {
             />
           </div>
           <div class="md-code-editor-copy">
-            ${this.copyLocalization.trim()}
-            <md-tooltip message=${this.hasContent ? "Copied" : "Click to copy"} opened>
-              <md-button circle ?disabled=${this.hasContent} @click=${this.copyClipboard}>
-                <md-icon slot="icon" name="icon-copy_16"></md-icon>
-              </md-button>
-            </md-tooltip>
+            ${this.copied ? this.copiedLocalization.trim() : this.copyLocalization.trim()}
+            <md-button circle ?disabled=${this.disableCopyButton} @click=${this.copyClipboard}>
+              <md-icon slot="icon" name="icon-copy_16"></md-icon>
+            </md-button>
           </div>
         </div>
         <div class="md-code-editor-content">

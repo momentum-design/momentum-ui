@@ -135,6 +135,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (this.trigger) {
       this.triggerElement = this.trigger[0];
       this.triggerElement.addEventListener("click", this.handleTriggerClick);
+      this.triggerElement.addEventListener("menu-item-click", this.handleTriggerClick);
       this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
       this.triggerElement.setAttribute("aria-haspopup", "true");
     }

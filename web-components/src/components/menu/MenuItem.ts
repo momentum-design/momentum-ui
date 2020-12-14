@@ -7,8 +7,9 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 @customElement("md-menu-item")
@@ -37,6 +38,32 @@ export class MenuItem extends LitElement {
     return [reset, styles];
   }
 
+  protected firstUpdated(changedProperties: PropertyValues) {
+    super.firstUpdated(changedProperties);
+
+    if (this.label) {
+      this.setAttribute("aria-label", this.label);
+    }
+  }
+
+  protected update(changedProperties: PropertyValues) {
+    super.update(changedProperties);
+    if (changedProperties.has("disabled")) {
+      this.selected = false;
+      this.setAttribute("aria-disabled", `${this.disabled}`);
+    }
+  }
+
+  handleClick() {
+    this.selected = true;
+    this.dispatchEvent(
+      new CustomEvent("menu-item-click", {
+        bubbles: true,
+        composed: true
+      })
+    );
+  }
+
   get menuItemClassMap() {
     return {
       [`md-menu-item--inline`]: this.inline,
@@ -45,22 +72,19 @@ export class MenuItem extends LitElement {
     };
   }
 
-  handleClick(event: MouseEvent) {
-    this.dispatchEvent(
-      new CustomEvent("menu-item-click", {
-        bubbles: true,
-        composed: true
-      })
-    );
-    this.selected = true;
-    console.log("menu-item click");
-  }
-
   render() {
     
     return html`
-      <li role="menuitem" class="md-menu-item ${classMap(this.menuItemClassMap)}" tabindex=${this.tabIndex} @click=${(e: MouseEvent) => this.handleClick(e)}>
-        <a href="${this.href}">
+      <li
+        role="menuitem"
+        class="md-menu-item ${classMap(this.menuItemClassMap)}" 
+        ?disabled=${this.disabled}
+        tabindex="-1" 
+        aria-hidden="true"
+        aria-selected="false"
+        aria-label=${ifDefined(this.label)}
+        @click=${() => this.handleClick()}>
+        <a href="${ifDefined(this.href || undefined)}">
           <slot></slot>
         </a>
       </li>

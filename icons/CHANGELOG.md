@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.68.0...@momentum-ui/icons@8.0.0) (2020-12-12)
+
+
+### Features
+
+* **icons:** add activities_12 ([f2a121a](https://github.com/momentum-design/momentum-ui/commit/f2a121a2b38b8461f1387044aafebb6788b39c80))
+* **icons:** add activities_16 ([08311a8](https://github.com/momentum-design/momentum-ui/commit/08311a894233cfa01ace7b76eff04dc210753977))
+* **icons:** remove deprecated icons ([55d7d1c](https://github.com/momentum-design/momentum-ui/commit/55d7d1c306a5e7fc101f9dd5d4caa41e3f032e11))
+
+
+### BREAKING CHANGES
+
+* **icons:** Remove icons
+- call-pickup_16
+- call-pickup_18
+- call-pickup_20
+- call-pickup_24
+- hunt-group_fowarded
+- encryption_14
+- capture-rewind_12
+- capture-rewind_16
+- activities_14
+- activities_18
+- activities_20
+- activities_24
+- activities_28
+- microphone-hardmuted_20
+- microphone-hardmuted_24
+- microphone-hardmuted_28
+- microphone-hardmuted_40
+[skip ci]
+
+
+
+
+
 # [7.68.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.67.0...@momentum-ui/icons@7.68.0) (2020-12-11)
 
 

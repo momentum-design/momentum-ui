@@ -8,7 +8,7 @@ export const timePickerTemplate = html`
   <md-timepicker></md-timepicker>
 
   <h3>timepicker 24-hour format</h3>
-  <md-timepicker twentyFourHourFormat></md-timepicker>
+  <md-timepicker twenty-four-hour-format></md-timepicker>
 
   <h3>timepicker timeSpecificity: hour</h3>
   <md-timepicker timeSpecificity="hour"></md-timepicker>
@@ -20,5 +20,5 @@ export const timePickerTemplate = html`
   <md-timepicker timeSpecificity="second"></md-timepicker>
 
   <h3>timepicker default value</h3>
-  <md-timepicker value="02:16:00 PM"></md-timepicker>
+  <md-timepicker value="02:16:00"></md-timepicker>
 `;

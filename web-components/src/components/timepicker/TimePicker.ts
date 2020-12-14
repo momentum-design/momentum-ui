@@ -1,4 +1,4 @@
-import { customElement, html, LitElement, property, internalProperty, PropertyValues } from "lit-element";
+import { customElement, html, LitElement, property, internalProperty, PropertyValues, query } from "lit-element";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import "@/components/input/Input";
@@ -7,6 +7,8 @@ import { Input } from "@/components/input/Input";
 import { TIME_UNIT, Key } from "@/constants";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
+import { DateTime } from "luxon";
+import { now } from "@/utils/dateUtils";
 
 export const timeUnits = [
   TIME_UNIT.HOUR,
@@ -60,25 +62,18 @@ export namespace TimePicker {
 
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
-  @property({ type: Boolean }) twentyFourHourFormat = false;
+  @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
+  @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String, reflect: true }) value = "12:00:00 AM";
+  @property({ type: String, reflect: true }) value = "00:00:00";
 
+  @internalProperty() private timeObject: DateTime = now();
+  @internalProperty() private tabNext = false;
   @internalProperty() private timeValue = {
     [TIME_UNIT.HOUR]: "12",
     [TIME_UNIT.MINUTE]: "00",
     [TIME_UNIT.SECOND]: "00",
     [TIME_UNIT.AM_PM]: "AM"
-  }
-
-  parseTimeValue = () => {
-    const times = this.value.split(":");
-    this.timeValue[TIME_UNIT.HOUR] = times.shift() || "12";
-    this.timeValue[TIME_UNIT.MINUTE] = times.shift() || "00";
-
-    const remainder = times.shift()?.split(" ");
-    this.timeValue[TIME_UNIT.SECOND] = remainder?.shift() || "00";
-    this.timeValue[TIME_UNIT.AM_PM] = remainder?.shift() || "AM";
   }
 
   @internalProperty() private timeValidity = {
@@ -88,18 +83,60 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: true
   }
 
-  @internalProperty() private tabNext = false;
-  @internalProperty () private time = "";
-
-  updated(changedProperties: PropertyValues) {
+  protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (changedProperties.has("value")) {
-      this.parseTimeValue();
+    if (this.value && (changedProperties.has('value'))) {
+      this.timeObject = DateTime.fromSQL(this.value);
+      this.value = this.timeObject.toSQLTime();
+      this.updateTimeValues();
     }
   }
 
-  checkValidity = (input: string, unit: TimePicker.TimeUnit): boolean => {
+  addLeadingZeros = (value: string | undefined) => {
+    if (value) {
+      if (value.length === 0) {
+        return "00";
+      } else if (value.length === 1) {
+        return `0${value}`;
+      }
+    }
+    return value;
+  }
+
+  formatAndValidate = (timeUnitString: string | undefined, unit: TIME_UNIT) => {
+    if (timeUnitString) {
+      this.updateValidity(timeUnitString, unit);
+      if (this.timeValidity[unit]) {
+        return this.addLeadingZeros(timeUnitString)
+      }
+    }
+    return undefined;
+  }
+
+  updateTimeValues = () => {
+    let stringDate;
+    if (this.twentyFourHourFormat) {
+      stringDate = this.timeObject.toFormat('HH:mm:ss');
+    } else {
+      stringDate = this.timeObject.toFormat('tt');
+    }
+
+    const [ times, amPmValue ] = stringDate.split(" ");
+    const splitTimes = times.split(":");
+
+    timeSpecificity.forEach((unit: TIME_UNIT) => {
+      const formattedValue = this.formatAndValidate(splitTimes.shift(), unit);
+      if (formattedValue) {
+        if (unit === TIME_UNIT.HOUR) {
+          this.timeValue[TIME_UNIT.AM_PM] = amPmValue;
+        }
+        this.timeValue[unit] = formattedValue;
+      }
+    });
+  }
+
+  updateValidity = (input: string, unit: TimePicker.TimeUnit) => {
     let result = true;
     const regexTester = (regex: RegExp): void => {
       if (input.match(regex) === null) {
@@ -127,36 +164,66 @@ export class TimePicker extends LitElement {
       default:
         break;
     }
-     return result;
+
+    this.timeValidity[unit] = result;
   };
 
-  updateTime = (unit: TIME_UNIT) => {
-    if (this.timeValidity[unit]) {
-      this.value = this.getTimeString();
+  to12HourFormat = (amPm: string, hour: string) => {
+    if (!this.twentyFourHourFormat && this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
+      let hourValue = Number(hour);
+      if (amPm === 'PM') {
+        hourValue = 12 + (hourValue % 12);
+      } else {
+        hourValue = (hourValue % 12)
+      }
+      return hourValue;
     }
+  }
 
-    this.dispatchEvent(
-      new CustomEvent(`selected-time-change`, {
-        bubbles: true,
-        composed: true,
-        detail: {
-          time: this.value
-        }
-      })
-    );
+  isEntireTimeValid = () => {
+    return Object.values(this.timeValidity).every((timeUnitValidity) => timeUnitValidity);
+  }
+
+  updateTimeUnit = (unit: TIME_UNIT) => {
+    this.updateValidity(this.timeValue[unit], unit);
+
+    if (this.timeObject && this.timeValidity[unit]) {
+      if (unit !== TIME_UNIT.AM_PM) {
+        this.timeObject = this.timeObject?.set({ [unit]: this.timeValue[unit] });
+      } else {
+        this.timeObject = this.timeObject?.set({
+          hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
+        });
+      }
+
+      if (this.isEntireTimeValid()) {
+        this.timeObject = this.timeObject?.set({
+          hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
+        });
+
+        this.value = this.timeObject.toSQLTime() || this.value;
+
+        this.dispatchEvent(
+          new CustomEvent(`time-selection-change`, {
+            bubbles: true,
+            composed: true,
+            detail: {
+              time: this.value,
+              data: this.timeObject
+            }
+          })
+        );
+      }
+    }
   }
 
   handleTimeChange(event: CustomEvent, unit: TimePicker.TimeUnit) {
     this.timeValue[unit] = event?.detail?.value;
     this.requestUpdate();
+    this.formatTimeUnit(unit);
 
-    if(this.timeValue[unit].length === 1) {
-      this.timeValue[unit] = '0' + this.timeValue[unit];
-    } else if(this.timeValue[unit][0] === '0') {
-      this.timeValue[unit] = this.timeValue[unit].substring(1);
-    }
-
-    if (this.tabNext && unit !== TIME_UNIT.AM_PM && this.timeValue[unit].length === 2 && this.timeValue[unit][0] !== '0') {
+    const unitValue = this.timeValue[unit];
+    if (this.twoDigitAutoTab && this.tabNext && ((unit !== TIME_UNIT.AM_PM && unitValue.length === 2 && unitValue[0] !== '0') || unitValue === '00')) {
       event.preventDefault();
       const currentNode = event?.target as Node;
       const allInputs = this.shadowRoot?.querySelectorAll('md-input, md-combobox');
@@ -166,13 +233,12 @@ export class TimePicker extends LitElement {
         const targetIndex = (currentIndex + 1) % allInputs.length;
 
         if (currentIndex < allInputs.length -1) {
-          const targetInput = allInputs[targetIndex].shadowRoot?.querySelector('input');
+          const targetInput = allInputs[targetIndex].shadowRoot?.querySelector('input') as HTMLInputElement;
           targetInput?.focus();
-          targetInput?.select();
         }
       }
     } else if (unit === TIME_UNIT.AM_PM) {
-      this.updateTime(unit);
+      this.updateTimeUnit(unit);
     }
 
     event.stopPropagation();
@@ -216,9 +282,11 @@ export class TimePicker extends LitElement {
   }
 
   handleTimeBlur(event: CustomEvent, unit: TimePicker.TimeUnit) {
-    this.timeValidity[unit] = this.timeValue[unit] ? this.checkValidity(this.timeValue[unit], unit) : true;
-    this.formatTimeUnit(this.timeValue[unit], unit);
-    this.updateTime(unit);
+    if(this.timeValue[unit] === '0') {
+      this.timeValue[unit] = '00';
+    }
+
+    this.updateTimeUnit(unit);
     this.requestUpdate();
 
     event.stopPropagation();
@@ -239,24 +307,20 @@ export class TimePicker extends LitElement {
     return [reset, styles];
   }
 
-  formatTimeUnit = (timeValue: string, unit: TimePicker.TimeUnit) => {
-    if (unit === TIME_UNIT.AM_PM) {
-      this.timeValue[unit] = this.timeValue[unit].toUpperCase();
-    } else if (timeValue.length === 1) {
-      this.timeValue[unit] = "0" + timeValue;
-    } else {
-      this.timeValue[unit] = timeValue;
+  formatTimeUnit = (unit: TimePicker.TimeUnit) => {
+    if(this.timeValue[unit].length === 1) {
+      if (this.timeValue[unit] !== '0') {
+        this.timeValue[unit] = '0' + this.timeValue[unit];
+      }
+    } else if(this.timeValue[unit].length > 2 && this.timeValue[unit][0] === '0') {
+      const newValue = this.timeValue[unit].substring(1);
+      const regexNoPreZeros = RegExp(ValidationRegex.noPrecedingZerosString);
+      const noPrecedingZeros = regexNoPreZeros.test(newValue);
+      if (noPrecedingZeros) {
+        this.timeValue[unit] = newValue;
+      }
     }
-  }
-
-  getTimeString = () => {
-    const hr = this.timeValidity[TIME_UNIT.HOUR] ? this.timeValue[TIME_UNIT.HOUR] || "12" : "12";
-    const min = this.timeValidity[TIME_UNIT.MINUTE] ? this.timeValue[TIME_UNIT.MINUTE] || "00" : "00";
-    const sec = this.timeValidity[TIME_UNIT.SECOND] ? this.timeValue[TIME_UNIT.SECOND] || "00" : "00";
-    const amPm = this.timeValidity[TIME_UNIT.AM_PM] ? this.timeValue[TIME_UNIT.AM_PM] || "AM": "AM";
-
-    const timeString = hr + ":" + min + ":" + sec + " " + amPm;
-    return timeString;
+    this.requestUpdate();
   }
 
   messageType = (isValid: boolean) => {
@@ -270,11 +334,14 @@ export class TimePicker extends LitElement {
       ${unit === TIME_UNIT.MINUTE || unit === TIME_UNIT.SECOND ? html`<span class="colon-separator">:</span>` : nothing}
       <md-input
         compact
+        select-when-in-focus
         class="${`time-input-box ${unit}`}"
+        id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
         value="${this.timeValue[unit]}"
         type="${unitProperties.type}"
         min=${ifDefined(unitProperties.min)}
         max=${ifDefined(unitProperties.max)}
+        maxLength=${2}
         placeholder="${timePlaceholders[unit]}"
         @input-change="${(e: CustomEvent) => this.handleTimeChange(e, unit)}"
         @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"
@@ -291,9 +358,11 @@ export class TimePicker extends LitElement {
     return html `
       <md-combobox
         compact
+        select-when-in-focus
         class="amPm-combo-box"
         .options=${options}
         .value=${[options[0]]}
+        .inputValue=${this.timeValue[TIME_UNIT.AM_PM]}
         @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"
       ></md-combobox>
     `;

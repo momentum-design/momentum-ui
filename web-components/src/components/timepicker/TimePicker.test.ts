@@ -20,7 +20,7 @@ describe("TimePicker Component", () => {
   test("should render 24 hour", async () => {
     const element: TimePicker = await fixture<TimePicker>(
       html`
-        <md-timepicker twentyFourHourFormat></md-timepicker>
+        <md-timepicker twenty-four-hour-format></md-timepicker>
       `
     );
 
@@ -88,13 +88,12 @@ describe("TimePicker Component", () => {
     expect(secondInput).toBeDefined();
   });
 
-  test("should just focus after two digits are entered", async () => {
+  test("should focus on next input after two digits are entered when twoDigitAutoTab is true", async () => {
     const element: TimePicker = await fixture<TimePicker>(
       html`
-        <md-timepicker twentyFourHourFormat></md-timepicker>
+        <md-timepicker twenty-four-hour-format two-digit-auto-tab></md-timepicker>
       `
     );
-
 
     const timeChangeSpy = jest.spyOn(element, "handleTimeChange");
     const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input;

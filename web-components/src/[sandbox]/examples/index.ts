@@ -11,6 +11,7 @@ export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
+export { dateTimePickerTemplate } from "./date-time-picker";
 export { editableField } from "./editable-field";
 export { floatingModalTemplate } from "./floating-modal";
 export { iconTemplate } from "./icon";

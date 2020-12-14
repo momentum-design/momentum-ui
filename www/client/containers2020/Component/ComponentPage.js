@@ -58,7 +58,7 @@ class ComponentPage extends React.Component {
     const allComponentsNavLink = (
       <div className="component-page-all-components-nav">
         <Icon name="icon-arrow-left_16"/>
-        <NavLink to="/2020/components">All Components</NavLink>
+        <NavLink to="/components">All Components</NavLink>
       </div>
     );
 

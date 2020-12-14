@@ -25,7 +25,7 @@ export class CodeEditor extends LitElement {
   @internalProperty() private acceptTypes = "";
   @internalProperty() private fileName = "";
 
-  @queryAssignedNodes() slotNodes!: Node[];
+  @queryAssignedNodes("code-block") slotNodes!: Node[];
 
   static get styles() {
     return [reset, styles];
@@ -38,8 +38,15 @@ export class CodeEditor extends LitElement {
   }
 
   handleSlotChange() {
-    const [textarea] = this.slotNodes.filter(node => (node as Element).tagName === "TEXTAREA");
-    this.highlightBlock(textarea);
+    if (this.slotNodes && this.slotNodes.length) {
+      const codeBlock = this.slotNodes.find(node => (node as Element).tagName === "CODE");
+      if (codeBlock) {
+        const codeBlockText = codeBlock.textContent;
+        if (codeBlockText) {
+          this.highlightBlock(codeBlockText);
+        }
+      }
+    }
   }
 
   async handleFile(event: Event) {
@@ -62,6 +69,55 @@ export class CodeEditor extends LitElement {
           }
         }
       }
+  }
+
+  copyClipboard() {
+    this.clearSelection();
+    this.selectTarget(this.codeBlock);
+  }
+
+  private copyText() {
+    let succeeded;
+
+    try {
+      succeeded = document.execCommand("copy");
+    } catch (err) {
+      succeeded = false;
+    } finally {
+      this.clearSelection();
+    }
+    this.handleResult(succeeded);
+  }
+
+  private handleResult(succeeded: boolean) {
+    if (!succeeded) {
+      console.warn("Can't copy text");
+    }
+  }
+
+  private select(element: HTMLElement) {
+    const selection = window.getSelection();
+    const range = document.createRange();
+
+    range.selectNodeContents(element);
+
+    if (selection) {
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  }
+
+  private selectTarget(target: HTMLElement) {
+    this.select(target);
+    this.copyText();
+  }
+
+  private clearSelection() {
+    const selection = window.getSelection();
+    if (selection) {
+      selection.empty();
+      selection.collapse(this.codeBlock, 0);
+    }
   }
 
   private highlightBlock(text: string) {
@@ -132,17 +188,18 @@ export class CodeEditor extends LitElement {
           </div>
           <div class="md-code-editor-copy">
             <span class="md-code-editor-copy-btn">
-              <md-icon name="icon-copy_14"></md-icon>
+              <md-icon name="icon-copy_14" @click=${this.copyClipboard}></md-icon>
             </span>
           </div>
         </div>
         <div class="md-code-editor-content">
           <pre class="md-code-editor-code-block">
+          <slot name="code-block" @slotchange=${this.handleSlotChange}>
             <code class=${this.acceptLanguage}>
 
             </code>
+          </slot>
           </pre>
-          <slot @slotchange=${this.handleSlotChange}> </slot>
         </div>
       </div>
     `;

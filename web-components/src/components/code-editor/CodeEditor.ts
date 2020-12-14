@@ -171,7 +171,7 @@ export class CodeEditor extends LitElement {
 
   render() {
     return html`
-      <div class="md-code-editor">
+      <div class="md-code-editor" part="code-editor">
         <div class="md-code-editor-header">
           <div class="md-code-editor-file">
             <label for="file-input">

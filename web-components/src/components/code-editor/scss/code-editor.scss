@@ -11,13 +11,38 @@
     &-header {
       align-items: center;
       background: $md-code-editor-header-bg;
-      display: flex;
-      justify-content: space-between;
       padding: $md-code-editor-indent;
+      @include flex($jc: space-between);
+      background: $md-code-editor-header-bg;
+      font-size: $font-size-base;
+    }
+
+    &-file {
+      @include flex;
+
+      &-btn {
+        border: 0;
+        background: $md-code-editor-btn-bg;
+        color: $md-code-editor-btn-color;
+        text-transform: uppercase;
+        border-radius: $md-code-editor-border-radius;
+        padding: $md-code-editor-btn-indent;
+        font-size: $font-size-small;
+        line-height: 1;
+      }
     }
 
     input[type="file"] {
       display: none;
+    }
+
+    &-copy {
+      @include flex($ai: center);
+
+      md-icon {
+        color: $md-code-editor-icon;
+        margin-left: $md-code-editor-icon-indent;
+      }
     }
   }
 

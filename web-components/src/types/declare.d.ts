@@ -20,3 +20,5 @@ declare interface Attendee {
   src?: string;
   alt?: string;
 }
+
+declare module "highlight.js/lib/core";

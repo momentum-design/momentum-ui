@@ -3,8 +3,8 @@
     background: $md-code-editor-bg;
     border-radius: $md-code-editor-border-radius;
     color: $md-code-editor-color;
-    max-width: $md-code-editor-width;
     min-height: $md-code-editor-height;
+    //min-width: $md-code-editor-width;
     overflow: hidden;
     width: 100%;
 
@@ -15,20 +15,27 @@
       @include flex($jc: space-between);
       background: $md-code-editor-header-bg;
       font-size: $font-size-base;
+      flex: 0 0 auto;
     }
 
     &-file {
       @include flex;
 
       &-btn {
-        border: 0;
-        background: $md-code-editor-btn-bg;
-        color: $md-code-editor-btn-color;
-        text-transform: uppercase;
-        border-radius: $md-code-editor-border-radius;
-        padding: $md-code-editor-btn-indent;
-        font-size: $font-size-small;
-        line-height: 1;
+        &::part(button) {
+          text-transform: uppercase;
+          border-radius: $md-code-editor-border-radius;
+          padding: $md-code-editor-btn-indent;
+          font-size: $font-size-small;
+          line-height: 1;
+          min-width: 0;
+          height: $md-code-editor-btn-height;
+          margin-right: $md-code-editor-indent;
+
+          &:after {
+            border-radius: $md-code-editor-border-radius;
+          }
+        }
       }
     }
 
@@ -39,10 +46,18 @@
     &-copy {
       @include flex($ai: center);
 
+      md-button {
+        &[disabled] {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
       md-icon {
         color: $md-code-editor-icon;
-        margin-left: $md-code-editor-icon-indent;
+        //margin-left: $md-code-editor-indent;
       }
+
+
     }
   }
 

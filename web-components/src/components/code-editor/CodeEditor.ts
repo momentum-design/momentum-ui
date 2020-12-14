@@ -12,9 +12,9 @@ import {
 import styles from "./scss/module.scss";
 import hljs from "highlight.js/lib/core";
 import "@/components/button/Button";
+
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
-
 @customElement("md-code-editor")
 export class CodeEditor extends LitElement {
   @property({ type: String, attribute: "accept-language" }) acceptLanguage = "javascript";
@@ -22,10 +22,13 @@ export class CodeEditor extends LitElement {
   @query("input[type='file']") input!: HTMLInputElement;
   @query(".md-code-editor-code-block") codeBlock!: HTMLPreElement;
 
+  @internalProperty() private hasContent = true;
   @internalProperty() private acceptTypes = "";
   @internalProperty() private fileName = "";
 
   @queryAssignedNodes("code-block") slotNodes!: Node[];
+  @property({ type: String }) getLocalization = "Get";
+  @property({ type: String }) copyLocalization = "Copy";
 
   static get styles() {
     return [reset, styles];
@@ -52,6 +55,7 @@ export class CodeEditor extends LitElement {
   async handleFile(event: Event) {
     event.preventDefault();
 
+    this.hasContent = true;
     const fileList = this.input.files;
     if (fileList && fileList.length !== 0)
       for (const file of fileList) {
@@ -66,6 +70,7 @@ export class CodeEditor extends LitElement {
         } finally {
           if (fileTextContent.length) {
             this.highlightBlock(fileTextContent);
+            this.hasContent = false;
           }
         }
       }
@@ -175,7 +180,9 @@ export class CodeEditor extends LitElement {
         <div class="md-code-editor-header">
           <div class="md-code-editor-file">
             <label for="file-input">
-              <md-button variant="primary" @click=${this.triggerFileLoad}></md-button>
+              <md-button color="blue" class="md-code-editor-file-btn" @click=${this.triggerFileLoad}>
+                ${this.getLocalization.trim()}
+              </md-button>
               ${this.fileName.length ? this.fileName : nothing}
             </label>
             <input
@@ -187,9 +194,12 @@ export class CodeEditor extends LitElement {
             />
           </div>
           <div class="md-code-editor-copy">
-            <span class="md-code-editor-copy-btn">
-              <md-icon name="icon-copy_14" @click=${this.copyClipboard}></md-icon>
-            </span>
+            ${this.copyLocalization.trim()}
+            <md-tooltip message=${this.hasContent ? "Copied" : "Click to copy"} opened>
+              <md-button circle ?disabled=${this.hasContent} @click=${this.copyClipboard}>
+                <md-icon slot="icon" name="icon-copy_16"></md-icon>
+              </md-button>
+            </md-tooltip>
           </div>
         </div>
         <div class="md-code-editor-content">

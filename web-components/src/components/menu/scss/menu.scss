@@ -1,0 +1,35 @@
+// :host([direction="horizontal"]) .md-menu-list ::slotted(*) {
+//   display: inline-flex;
+//   text-align: left;
+// }
+
+// :host([direction="vertical"]) .md-menu-list ::slotted(*) {
+//   display: block;
+//   height: auto;
+//   text-align: left;
+// }
+
+.md-menu {
+  padding: 0;
+  margin: 0;
+
+  &--horizontal {
+    .md-menu-list {
+      ::slotted(*) {
+        display: inline-flex;
+      }
+    }
+  }
+
+  &--vertical {
+    .md-menu-list {
+      ::slotted(*) {
+        display: flex;
+      }
+    }
+  }
+
+  .md-menu-list {
+    margin: 0;
+  }
+}

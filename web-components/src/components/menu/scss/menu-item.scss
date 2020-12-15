@@ -1,7 +1,25 @@
 .md-menu-item {
   list-style: none;
 
-  &--inline {
-    display: inline-flex;
+  a {
+    color: var(--md-secondary-text-color);
+    display: flex;
+    padding: 6px 12px;
+  }
+
+  ::slotted(*) {
+    padding: 0 3px;
+  }
+
+  &:hover {
+    a {
+      color: var(--md-hyperlink-text-color);
+    }
+  }
+
+  &:active {
+    a {
+      color: var(--md-hyperlink-hover-text-color);
+    }
   }
 }

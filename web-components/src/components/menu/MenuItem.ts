@@ -12,26 +12,55 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
+export type MenuItemEvent = { id: string };
+export type MenuItemKeyDownEvent = {
+  id: string;
+  key: string;
+  ctrlKey: boolean;
+  shiftKey: boolean;
+  altKey: boolean;
+  srcEvent: KeyboardEvent;
+};
+
 @customElement("md-menu-item")
 export class MenuItem extends LitElement {
-  @property({ type: Boolean }) disabled = false;
-  @property({ type: Boolean }) inline = false;
   @property({ type: String }) href = "";
   @property({ type: String }) label = "";
-  @property({ type: Boolean }) selected = false;
+  @property({ type: Number, reflect: true }) tabIndex = -1;
 
-  private _tabIndex = 0;
-  @property({ type: Number, attribute: "tab-index", reflect: true })
-  get tabIndex() {
-    if (this.disabled) {
-      return -1;
-    }
-    return this._tabIndex;
+  private _disabled = false;
+  @property({ type: Boolean, reflect: true })
+  get disabled() {
+    return this._disabled;
   }
-  set tabIndex(newValue: number) {
-    const oldValue = this._tabIndex;
-    this._tabIndex = newValue;
-    this.requestUpdate("tabIndex", oldValue);
+  set disabled(value: boolean) {
+    const oldValue = this._disabled;
+    this._disabled = value;
+    this.setAttribute("aria-disabled", `${value}`);
+    if (value) {
+      this.tabIndex = -1;
+    } else {
+      this.tabIndex = 0;
+    }
+    this.requestUpdate("disabled", oldValue);
+  }
+
+  private _selected = false;
+  @property({ type: Boolean, reflect: true })
+  get selected() {
+    return this._selected;
+  }
+
+  set selected(value: boolean) {
+    const oldValue = this._selected;
+    this._selected = value;
+
+    if (value) {
+      this.notifySelectedItem();
+    }
+
+    this.setAttribute("aria-selected", `${value}`);
+    this.requestUpdate("selected", oldValue);
   }
 
   static get styles() {
@@ -54,19 +83,59 @@ export class MenuItem extends LitElement {
     }
   }
 
-  handleClick() {
-    this.selected = true;
+  handleClick(event: MouseEvent) {
+    event.preventDefault();
+
+    if (this.id) {
+      this.dispatchEvent(
+        new CustomEvent<MenuItemEvent>("menu-item-click", {
+          detail: {
+            id: this.id
+          },
+          bubbles: true,
+          composed: true
+        })
+      );
+    } else {
+      this.dispatchEvent(
+        new CustomEvent("item-menu-click", {
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    if (this.id) {
+      this.dispatchEvent(
+        new CustomEvent<MenuItemKeyDownEvent>("menu-item-keydown", {
+          detail: {
+            id: this.id,
+            key: event.code,
+            ctrlKey: event.ctrlKey,
+            shiftKey: event.shiftKey,
+            altKey: event.altKey,
+            srcEvent: event
+          },
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
+  }
+
+  private notifySelectedItem() {
     this.dispatchEvent(
-      new CustomEvent("menu-item-click", {
-        bubbles: true,
-        composed: true
+      new CustomEvent("focus-visible", {
+        composed: true,
+        bubbles: true
       })
     );
   }
 
   get menuItemClassMap() {
     return {
-      [`md-menu-item--inline`]: this.inline,
       [`md-menu-item--selected`]: this.selected,
       disabled: this.disabled
     };
@@ -77,13 +146,14 @@ export class MenuItem extends LitElement {
     return html`
       <li
         role="menuitem"
+        part="menu-item"
         class="md-menu-item ${classMap(this.menuItemClassMap)}" 
         ?disabled=${this.disabled}
         tabindex="-1" 
         aria-hidden="true"
         aria-selected="false"
         aria-label=${ifDefined(this.label)}
-        @click=${() => this.handleClick()}>
+        @click=${(event: MouseEvent) => this.handleClick(event)}>
         <a href="${ifDefined(this.href || undefined)}">
           <slot></slot>
         </a>

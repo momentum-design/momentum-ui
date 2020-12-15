@@ -315,6 +315,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
 
       if (newIndex !== -1) {
         this.updateSelectedTab(newIndex);
+        console.log(newIndex);
       }
 
       // Setting up focus for tab copy (hidden menu)

@@ -15,6 +15,7 @@ import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import { MenuItemEvent } from "@/components/menu/MenuItem";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
@@ -125,7 +126,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
       this.triggerElement.removeEventListener("click", this.handleTriggerClick);
       this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
       this.triggerElement = null;
-    }
+    } 
   }
 
   protected async firstUpdated(changedProperties: PropertyValues) {
@@ -135,7 +136,6 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (this.trigger) {
       this.triggerElement = this.trigger[0];
       this.triggerElement.addEventListener("click", this.handleTriggerClick);
-      this.triggerElement.addEventListener("menu-item-click", this.handleTriggerClick);
       this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
       this.triggerElement.setAttribute("aria-haspopup", "true");
     }
@@ -155,8 +155,10 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (changedProperties.has("isOpen")) {
       if (this.isOpen) {
         this.activateFocusTrap!();
+        document.addEventListener("item-menu-click", this.handleTriggerClick);
       } else {
         this.deactivateFocusTrap!();
+        document.removeEventListener("item-menu-click", this.handleTriggerClick);
       }
     }
   }
@@ -166,6 +168,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (changedProperties.has("isOpen")) {
       if (this.isOpen) {
         this.dispatchMenuOpen();
+
         if (this.triggerElement) {
           this.triggerElement.setAttribute("aria-expanded", "true");
         }

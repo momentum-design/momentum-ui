@@ -65,7 +65,7 @@ export class TimePicker extends LitElement {
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
   @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String, reflect: true }) value = "00:00:00";
+  @property({ type: String, reflect: true }) value = "00:00:00.000-08:00"; // ISO FORMAT
 
   @internalProperty() private timeObject: DateTime = now();
   @internalProperty() private tabNext = false;
@@ -87,8 +87,8 @@ export class TimePicker extends LitElement {
     super.updated(changedProperties);
 
     if (this.value && (changedProperties.has('value'))) {
-      this.timeObject = DateTime.fromSQL(this.value);
-      this.value = this.timeObject.toSQLTime();
+      this.timeObject = DateTime.fromISO(this.value);
+      this.value = this.timeObject.toISOTime();
       this.updateTimeValues();
     }
   }
@@ -119,7 +119,7 @@ export class TimePicker extends LitElement {
     if (this.twentyFourHourFormat) {
       stringDate = this.timeObject.toFormat('HH:mm:ss');
     } else {
-      stringDate = this.timeObject.toFormat('tt');
+      stringDate = this.timeObject.toFormat('hh:mm:ss a');
     }
 
     const [ times, amPmValue ] = stringDate.split(" ");
@@ -201,7 +201,7 @@ export class TimePicker extends LitElement {
           hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
         });
 
-        this.value = this.timeObject.toSQLTime() || this.value;
+        this.value = this.timeObject.toISOTime() || this.value;
 
         this.dispatchEvent(
           new CustomEvent(`time-selection-change`, {

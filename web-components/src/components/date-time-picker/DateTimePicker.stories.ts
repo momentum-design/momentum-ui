@@ -34,20 +34,20 @@ export const DateTimePicker = () => {
       minute: 0,
       second: 0,
       millisecond: 0
-    }).toSQL()
+    }).toISO()
   );
 
   const minDate = text(
     "minimum date",
     now()
       .minus({ day: 5 })
-      .toSQLDate()
+      .toISODate()
   );
   const maxDate = text(
     "maximum date",
     now()
       .plus({ day: 30 })
-      .toSQLDate()
+      .toISODate()
   );
 
   return html`

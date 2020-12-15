@@ -33,6 +33,6 @@ describe("DateTimePicker Component", () => {
       millisecond: 0
     });
 
-    expect(defaultToday.toSQL()).toContain(el.value);
+    expect(defaultToday.toISO()).toContain(el.value);
   });
 });

@@ -28,21 +28,21 @@ export class DatePicker extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
-    this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+    this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
+    this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
   }
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (changedProperties.has("value")) {
-      this.value ? (this.selectedDate = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true })) : null;
+      this.value ? (this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale })) : null;
     }
     if (changedProperties.has("locale")) {
       this.render();
     }
     if (changedProperties.has("minDate") || changedProperties.has("maxDate")) {
-      this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
-      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+      this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
+      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
     }
   }
 
@@ -61,7 +61,7 @@ export class DatePicker extends LitElement {
   setSelected = (date: DateTime, event: Event) => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
     if (!isDayDisabled(date, filters)) {
-      const dateString = date.toSQLDate();
+      const dateString = date.toISODate();
       this.selectedDate = date;
       this.value = dateString;
     }

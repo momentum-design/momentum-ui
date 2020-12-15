@@ -6,20 +6,27 @@
  *
  */
 
+export { Accordion } from "./components/accordion/Accordion";
+export { AccordionItem } from "./components/accordion/AccordionItem";
 export { ActivityButton } from "./components/activity-button/ActivityButton";
-export { AlertBanner } from "./components/alert-banner/AlertBanner";
 export { Alert } from "./components/alert/Alert";
+export { AlertBanner } from "./components/alert-banner/AlertBanner";
 export { Avatar } from "./components/avatar/Avatar";
 export { Badge } from "./components/badge/Badge";
+export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { Button } from "./components/button/Button";
+export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
+export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";
 export { Chip } from "./components/chip/Chip";
 export { ComboBox } from "./components/combobox/ComboBox";
+export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { DatePicker } from "./components/datepicker/DatePicker";
 export { DatePickerCalendar } from "./components/datepicker/datepicker-calendar/DatePickerCalendar";
 export { DatePickerDay } from "./components/datepicker/datepicker-day/DatePickerDay";
 export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePickerMonth";
 export { DatePickerWeek } from "./components/datepicker/datepicker-week/DatePickerWeek";
+export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { HelpText } from "./components/help-text/HelpText";
@@ -37,14 +44,15 @@ export { PhoneInput } from "./components/phone-input/PhoneInput";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";
 export { RadioGroup } from "./components/radio/RadioGroup";
+export { Slider } from "./components/slider/Slider";
 export { Spinner } from "./components/spinner/Spinner";
-export { Tab } from "./components/tabs/Tab";
 export { Table } from "./components/table/Table";
+export { Tab } from "./components/tabs/Tab";
 export { TabPanel } from "./components/tabs/TabPanel";
 export { Tabs } from "./components/tabs/Tabs";
 export { TaskItem } from "./components/taskitem/TaskItem";
 export { Theme } from "./components/theme/Theme";
+export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
 // eslint-disable-next-line prettier/prettier
-

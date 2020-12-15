@@ -1,0 +1,7 @@
+.included-timepicker-wrapper {
+  border-top: 1px solid var(--md-primary-seperator-color);
+  display: flex;
+  justify-content: center;
+  padding: $time-picker-vertical-padding 0;
+  white-space: nowrap;
+}

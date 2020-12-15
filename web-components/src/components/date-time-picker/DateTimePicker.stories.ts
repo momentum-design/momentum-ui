@@ -43,6 +43,7 @@ export const DateTimePicker = () => {
       .minus({ day: 5 })
       .toISODate()
   );
+
   const maxDate = text(
     "maximum date",
     now()

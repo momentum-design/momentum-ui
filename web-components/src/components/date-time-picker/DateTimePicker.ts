@@ -61,8 +61,8 @@ export class DateTimePicker extends LitElement {
   }
 
   updateDateTime = () => {
-    this.value = `${this.dateValue} ${this.timeValue}`;
-    this.fullDateTime = DateTime.fromISO(this.value);
+    this.value = `${this.dateValue}T${this.timeValue}`;
+    this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
 
     this.dispatchEvent(
       new CustomEvent(`date-time-change`, {
@@ -86,13 +86,13 @@ export class DateTimePicker extends LitElement {
     }
 
     if (this.value && changedProperties.has("value")) {
-      this.dateValue = this.value.split(" ")[0];
-      this.timeValue = this.value.split(" ")[1];
+      this.dateValue = this.value.split("T")[0];
+      this.timeValue = this.value.split("T")[1];
       this.updateDateTime();
     }
 
     if (this.value && changedProperties.has('locale')) {
-      this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
+      this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
     }
   }
 

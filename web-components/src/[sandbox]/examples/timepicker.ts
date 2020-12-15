@@ -7,6 +7,9 @@ export const timePickerTemplate = html`
   <h3>timepicker</h3>
   <md-timepicker></md-timepicker>
 
+  <h3>timepicker ru locale</h3>
+  <md-timepicker locale="ru"></md-timepicker>
+
   <h3>timepicker 24-hour format</h3>
   <md-timepicker twenty-four-hour-format></md-timepicker>
 

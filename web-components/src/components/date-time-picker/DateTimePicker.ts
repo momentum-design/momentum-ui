@@ -114,6 +114,7 @@ export class DateTimePicker extends LitElement {
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
+              locale=${this.locale}
               value=${this.timeValue}>
             </md-timepicker>
           </div>

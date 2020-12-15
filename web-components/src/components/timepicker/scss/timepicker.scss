@@ -4,6 +4,10 @@
   padding-right: $am-pm-combobox-width;
   width: fit-content;
 
+  &.twenty-four-hour-format {
+    padding-right: 0;
+  }
+
   .time-input-box {
     display: inline-block;
     height: $time-box-height;
@@ -42,7 +46,6 @@
     max-height: $am-pm-combobox-dropdown-max-height;
   }
 
-
   md-input::part(input) {
     padding: 0;
     text-align: center;
@@ -58,8 +61,4 @@
     line-height: 125%;
     margin: 0 $colon-side-margin;
   }
-}
-
-:host([twenty-four-hour-format]) .md-timepicker {
-  padding-right: 0;
 }

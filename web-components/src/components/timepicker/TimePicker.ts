@@ -1,4 +1,4 @@
-import { customElement, html, LitElement, property, internalProperty, PropertyValues, query } from "lit-element";
+import { customElement, html, LitElement, property, internalProperty, PropertyValues } from "lit-element";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import "@/components/input/Input";
@@ -9,6 +9,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
 import { DateTime } from "luxon";
 import { now } from "@/utils/dateUtils";
+import { classMap } from "lit-html/directives/class-map";
 
 export const timeUnits = [
   TIME_UNIT.HOUR,
@@ -63,10 +64,13 @@ export namespace TimePicker {
 @customElement("md-timepicker")
 export class TimePicker extends LitElement {
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
-  @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
+  @property({ type: Boolean, attribute: "twenty-four-hour-format", reflect: true }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
+  @property({ type: String }) locale = "en-US";
   @property({ type: String, reflect: true }) value = "00:00:00.000-08:00"; // ISO FORMAT
 
+  @internalProperty() private localeTwentyFourFormat = false;
+  @internalProperty() private finalTwentyFourFormat = false;
   @internalProperty() private timeObject: DateTime = now();
   @internalProperty() private tabNext = false;
   @internalProperty() private timeValue = {
@@ -83,11 +87,19 @@ export class TimePicker extends LitElement {
     [TIME_UNIT.AM_PM]: true
   }
 
+  get timePickerClassMap() {
+    return {
+      "twenty-four-hour-format": this.finalTwentyFourFormat
+    };
+  }
+
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (this.value && (changedProperties.has('value'))) {
-      this.timeObject = DateTime.fromISO(this.value);
+    if (this.value && (changedProperties.has('value') || changedProperties.has('locale') || changedProperties.has('twentyFourHourFormat'))) {
+      this.timeObject = DateTime.fromISO(this.value, { locale: this.locale });
+      const localeTimeFormat = this.getLocaleTimeFormat(this.timeObject);
+      this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
       this.value = this.timeObject.toISOTime();
       this.updateTimeValues();
     }
@@ -114,12 +126,20 @@ export class TimePicker extends LitElement {
     return undefined;
   }
 
+  getLocaleTimeFormat = (aTimeObject: DateTime) => {
+    const stringDate = aTimeObject.toFormat('tt');
+    const [ times, amPmValue ] = stringDate.split(" ");
+
+    const localeTwentyFourFormat = !amPmValue;
+    return localeTwentyFourFormat;
+  }
+
   updateTimeValues = () => {
     let stringDate;
-    if (this.twentyFourHourFormat) {
+    if (this.finalTwentyFourFormat) {
       stringDate = this.timeObject.toFormat('HH:mm:ss');
     } else {
-      stringDate = this.timeObject.toFormat('hh:mm:ss a');
+      stringDate = this.timeObject.toFormat('tt');
     }
 
     const [ times, amPmValue ] = stringDate.split(" ");
@@ -128,7 +148,7 @@ export class TimePicker extends LitElement {
     timeSpecificity.forEach((unit: TIME_UNIT) => {
       const formattedValue = this.formatAndValidate(splitTimes.shift(), unit);
       if (formattedValue) {
-        if (unit === TIME_UNIT.HOUR) {
+        if (unit === TIME_UNIT.HOUR && amPmValue) {
           this.timeValue[TIME_UNIT.AM_PM] = amPmValue;
         }
         this.timeValue[unit] = formattedValue;
@@ -146,7 +166,7 @@ export class TimePicker extends LitElement {
 
     switch(unit) {
       case TIME_UNIT.HOUR:
-        if (this.twentyFourHourFormat) {
+        if (this.finalTwentyFourFormat) {
           regexTester(new RegExp(ValidationRegex.twentyFourHourString));
         } else {
           regexTester(new RegExp(ValidationRegex.hourString));
@@ -169,7 +189,7 @@ export class TimePicker extends LitElement {
   };
 
   to12HourFormat = (amPm: string, hour: string) => {
-    if (!this.twentyFourHourFormat && this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
+    if (!this.finalTwentyFourFormat && this.timeValidity[TIME_UNIT.HOUR] && this.timeValidity[TIME_UNIT.AM_PM]) {
       let hourValue = Number(hour);
       if (amPm === 'PM') {
         hourValue = 12 + (hourValue % 12);
@@ -328,7 +348,7 @@ export class TimePicker extends LitElement {
   }
 
   generateTimeBox = (unit: TimePicker.TimeUnit) => {
-    const unitProperties = timeUnitProps(this.twentyFourHourFormat)[unit];
+    const unitProperties = timeUnitProps(this.finalTwentyFourFormat)[unit];
 
     return html`
       ${unit === TIME_UNIT.MINUTE || unit === TIME_UNIT.SECOND ? html`<span class="colon-separator">:</span>` : nothing}
@@ -370,12 +390,12 @@ export class TimePicker extends LitElement {
 
   render() {
     return html`
-    <div class="md-timepicker">
+    <div class="md-timepicker ${classMap(this.timePickerClassMap)}">
         <div class="time-inputs-wrapper">
           ${this.generateTimeBox(TIME_UNIT.HOUR)}
           ${this.timeSpecificity === TIME_UNIT.HOUR ? nothing : this.generateTimeBox(TIME_UNIT.MINUTE)}
           ${this.timeSpecificity === TIME_UNIT.MINUTE || this.timeSpecificity === TIME_UNIT.HOUR ? nothing : this.generateTimeBox(TIME_UNIT.SECOND)}
-          ${this.twentyFourHourFormat ? nothing : this.generateAmPmComboBox()}
+          ${this.finalTwentyFourFormat ? nothing : this.generateAmPmComboBox()}
         </div>
       </div>
     `;

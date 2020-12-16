@@ -1,5 +1,6 @@
 .md-menu-item {
   list-style: none;
+  padding: rem-calc(2);
 
   a {
     color: var(--menu-default, $lm-menu-default-light);

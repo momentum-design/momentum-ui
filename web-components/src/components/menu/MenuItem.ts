@@ -89,25 +89,16 @@ export class MenuItem extends LitElement {
 
   handleClick(event: MouseEvent) {
     event.preventDefault();
+    this.dispatchEvent(
+      new CustomEvent<MenuItemEvent>("menu-item-click", {
+        detail: {
+          id: this.id
+        },
+        bubbles: true,
+        composed: true
+      })
+    );
 
-    if (this.id) {
-      this.dispatchEvent(
-        new CustomEvent<MenuItemEvent>("menu-item-click", {
-          detail: {
-            id: this.id
-          },
-          bubbles: true,
-          composed: true
-        })
-      );
-    // } else {
-    //   this.dispatchEvent(
-    //     new CustomEvent("item-menu-click", {
-    //       bubbles: true,
-    //       composed: true
-    //     })
-    //   );
-    }
   }
 
   handleKeyDown(event: KeyboardEvent) {

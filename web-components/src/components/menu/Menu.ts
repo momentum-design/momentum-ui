@@ -107,17 +107,12 @@ export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
         bubbles: true
       })
     );
-    console.log(newSelectedIndex);
 
     this.changeSelectedItemIdx(newSelectedIndex);
   }
 
   private changeSelectedItemIdx(newSelectedItemIdx: number) {
     this.selected = newSelectedItemIdx;
-  }
-
-  private switchItemOnArrowPress(newIndex: number) {
-    this.selected = newIndex;
   }
 
   handleItemClick(event: CustomEvent<MenuItemEvent>) {
@@ -138,23 +133,23 @@ export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
     const { key, id } = event.detail;
     switch (key) {
       case Key.End:
-        this.switchItemOnArrowPress(this.slotted.length - 1);
+        this.changeSelectedItemIdx(this.items.length - 1);
         break;
       case Key.Home:
-        this.switchItemOnArrowPress(0);
+        this.changeSelectedItemIdx(0);
         break;
       case Key.ArrowLeft:
         if (this.selected === 0) {
-          this.switchItemOnArrowPress(this.slotted.length - 1);
+          this.changeSelectedItemIdx(this.items.length - 1);
         } else {
-          this.switchItemOnArrowPress(this.selected - 1);
+          this.changeSelectedItemIdx(this.selected - 1);
         }
         break;
       case Key.ArrowRight:
-        if (this.selected === this.slotted.length - 1) {
-          this.switchItemOnArrowPress(0);
+        if (this.selected === this.items.length - 1) {
+          this.changeSelectedItemIdx(0);
         } else {
-          this.switchItemOnArrowPress(this.selected + 1);
+          this.changeSelectedItemIdx(this.selected + 1);
         }
         break;
       case Key.Enter:

@@ -19,7 +19,6 @@ export const DatePicker = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const shouldCloseOnSelect = boolean("shouldCloseOnSelect", false);
-  const value = text('value', "");
   const weekStart = select("weekStart", weekStartDays, "");
   const locale = text('locale', 'en-US');
 
@@ -27,14 +26,22 @@ export const DatePicker = () => {
     "minimum date",
     now()
       .minus({ day: 5 })
-      .toSQLDate()
+      .toISODate()
   );
+
   const maxDate = text(
     "maximum date",
     now()
       .plus({ day: 30 })
-      .toSQLDate()
+      .toISODate()
   );
+
+  const value = text(
+    "value",
+    now()
+      .toISODate()
+  );
+
   return html`
     <md-theme class="theme-toggle" id="datepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-datepicker

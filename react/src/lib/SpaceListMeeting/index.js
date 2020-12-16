@@ -22,6 +22,7 @@ class SpaceListMeeting extends React.PureComponent {
   render() {
     const {
       attendees,
+      buttonAriaLabel,
       buttonLabel,
       childrenLeft,
       childrenRight,
@@ -116,7 +117,7 @@ class SpaceListMeeting extends React.PureComponent {
         {buttonLabel && (
           <Button
             color={isMessagingOnlyShare ? 'blue' : 'green'}
-            ariaLabel={buttonLabel}
+            ariaLabel={buttonAriaLabel ? buttonAriaLabel : buttonLabel}
             children={buttonLabel}
             onClick={this.handleButtonClick}
             size={28}
@@ -154,6 +155,8 @@ SpaceListMeeting.propTypes = {
       node: PropTypes.element,
     })
   ),
+  /** @prop Aria label string for button | buttonLabel */
+  buttonAriaLabel: PropTypes.string,
   /** @prop Label string for button | '' */
   buttonLabel: PropTypes.string,
   /** @prop Callback function invoked when user clicks on button | null */
@@ -186,6 +189,7 @@ SpaceListMeeting.propTypes = {
 
 SpaceListMeeting.defaultProps = {
   attendees: [],
+  buttonAriaLabel: null,
   buttonLabel: '',
   buttonOnClick: null,
   childrenLeft: null,

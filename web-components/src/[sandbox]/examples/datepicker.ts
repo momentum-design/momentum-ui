@@ -9,11 +9,11 @@ import { html } from "lit-element";
 
 const minDate = now()
   .minus({ day: 5 })
-  .toSQLDate();
+  .toISODate();
 
 const maxDate = now()
   .plus({ day: 5 })
-  .toSQLDate();
+  .toISODate();
 
 export const datePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>

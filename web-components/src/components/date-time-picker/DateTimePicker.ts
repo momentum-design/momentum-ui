@@ -22,7 +22,7 @@ export class DateTimePicker extends LitElement {
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
   @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) timeValue = "00:00:00";
+  @property({ type: String }) timeValue = "00:00:00.000-08:00"; // ISO FORMAT
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
@@ -36,19 +36,19 @@ export class DateTimePicker extends LitElement {
 
   handleDateChange = (event: any) => {
     this.selectedDateObject = event?.detail?.data as DateTime;
-    this.dateValue = this.selectedDateObject?.toSQLDate();
+    this.dateValue = this.selectedDateObject?.toISODate();
   };
 
   handleTimeChange = (event: any) => {
     this.selectedTimeObject = event?.detail?.data as DateTime;
-    this.timeValue = this.selectedTimeObject?.toSQLTime();
+    this.timeValue = this.selectedTimeObject?.toISOTime();
   };
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    this.dateValue = this.selectedDateObject?.toSQLDate();
-    this.selectedTimeObject = DateTime.fromSQL(this.timeValue);
-    this.timeValue = this.selectedTimeObject.toSQLTime();
+    this.dateValue = this.selectedDateObject?.toISODate();
+    this.selectedTimeObject = DateTime.fromISO(this.timeValue);
+    this.timeValue = this.selectedTimeObject.toISOTime();
 
     await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -61,8 +61,8 @@ export class DateTimePicker extends LitElement {
   }
 
   updateDateTime = () => {
-    this.value = `${this.dateValue} ${this.timeValue}`;
-    this.fullDateTime = DateTime.fromSQL(this.value, { locale: this.locale, setZone: true });
+    this.value = `${this.dateValue}T${this.timeValue}`;
+    this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
 
     this.dispatchEvent(
       new CustomEvent(`date-time-change`, {
@@ -86,9 +86,13 @@ export class DateTimePicker extends LitElement {
     }
 
     if (this.value && changedProperties.has("value")) {
-      this.dateValue = this.value.split(" ")[0];
-      this.timeValue = this.value.split(" ")[1];
+      this.dateValue = this.value.split("T")[0];
+      this.timeValue = this.value.split("T")[1];
       this.updateDateTime();
+    }
+
+    if (this.value && changedProperties.has('locale')) {
+      this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
     }
   }
 
@@ -102,6 +106,7 @@ export class DateTimePicker extends LitElement {
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.dateValue)}
+          placeholder=${ifDefined(this.fullDateTime?.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS))}
           weekStart=${this.weekStart}
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
@@ -109,6 +114,7 @@ export class DateTimePicker extends LitElement {
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
+              locale=${this.locale}
               value=${this.timeValue}>
             </md-timepicker>
           </div>

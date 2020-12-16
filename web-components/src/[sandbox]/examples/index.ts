@@ -9,6 +9,7 @@ export { breadcrumbTemplate } from "./breadcrumb";
 export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
+export { coachTemplate } from "./coachmark";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
 export { dateTimePickerTemplate } from "./date-time-picker";

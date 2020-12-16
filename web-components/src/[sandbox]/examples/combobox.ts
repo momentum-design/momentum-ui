@@ -117,4 +117,6 @@ export const comboBoxTemplate = html`
   <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content>
     {dropdownValue.map((item, index) => dropdownOptionTemplate(item, index))}
   </md-combobox>
+  <h3>no-clear-icon attribute</h3>
+  <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]} no-clear-icon></md-combobox>
 `;

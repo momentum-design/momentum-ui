@@ -14,6 +14,7 @@ export class Slider extends FocusMixin(LitElement) {
   private _now = 0;
   @property({ type: Number, reflect: true }) min = 0;
   @property({ type: Number, reflect: true }) max = 100;
+  @property({ type: Boolean, attribute: "hide-value" }) hideValue = false;
   @property({ type: Number, reflect: true })
   get now() {
     return this._now;
@@ -69,12 +70,14 @@ export class Slider extends FocusMixin(LitElement) {
   }
 
   private moveSliderTo(value: number) {
-    if (value > this.max) {
-      this.now = this.max;
-    } else if (value < this.min) {
-      this.now = this.min;
-    } else {
-      this.now = value;
+    if (!this.disabled) {
+      if (value > this.max) {
+        this.now = this.max;
+      } else if (value < this.min) {
+        this.now = this.min;
+      } else {
+        this.now = value;
+      }
     }
   }
 
@@ -109,6 +112,14 @@ export class Slider extends FocusMixin(LitElement) {
           `
         )}
       </div>
+    `;
+  }
+
+  private displayValueTemplate() {
+    return html`
+      <span class="md-slider__value">
+        ${this.now}
+      </span>
     `;
   }
 
@@ -216,7 +227,7 @@ export class Slider extends FocusMixin(LitElement) {
 
   protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    this.setAttribute("tabindex", "0");
+    this.setAttribute("tabindex", this.disabled ? "-1" : "0");
   }
 
   connectedCallback() {
@@ -247,9 +258,7 @@ export class Slider extends FocusMixin(LitElement) {
           style=${styleMap(this.sliderPointerStyleMap)}
         ></span>
         ${this.step ? this.ticksTemplate() : nothing}
-        <span class="md-slider__value">
-          ${this.now}
-        </span>
+        ${this.hideValue ? nothing : this.displayValueTemplate()}
       </div>
     `;
   }

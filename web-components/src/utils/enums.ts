@@ -28,6 +28,7 @@ export const badgeColor = ["default", "blue", "red", "yellow", "green", "mint"];
 export const badgePastel = ["pastel", "blue-pastel", "red", "yellow-pastel", "green-pastel", "mint-pastel"];
 export const BarFormat = ["none", "fraction", "percentage"];
 export const BarType = ["determinate", "indeterminate"];
+export const coachPlacement = ["auto", "left", "right", "top", "bottom"]
 
 export const TooltipDirection = ["top", "left", "right", "bottom"];
 export const TooltipDisplay = ["mouseEnter", "click", "focus"];

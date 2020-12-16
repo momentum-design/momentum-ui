@@ -7,7 +7,7 @@ module.exports = {
   ],
   rules: {
     "string-quotes": "double",
-    "max-nesting-depth": 3,
+    "max-nesting-depth": 5,
     "selector-class-pattern": null,
     "scss/at-import-partial-extension-blacklist": null,
     "declaration-property-value-blacklist": {

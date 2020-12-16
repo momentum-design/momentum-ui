@@ -8,6 +8,7 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
@@ -16,9 +17,6 @@ export type MenuItemEvent = { id: string };
 export type MenuItemKeyDownEvent = {
   id: string;
   key: string;
-  ctrlKey: boolean;
-  shiftKey: boolean;
-  altKey: boolean;
   srcEvent: KeyboardEvent;
 };
 
@@ -67,12 +65,18 @@ export class MenuItem extends LitElement {
     return [reset, styles];
   }
 
+  private setupEvents() {
+    this.addEventListener("mousedown", this.handleClick);
+    this.addEventListener("keydown", this.handleKeyDown);
+  }
+
   protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
 
     if (this.label) {
       this.setAttribute("aria-label", this.label);
     }
+    this.setupEvents();
   }
 
   protected update(changedProperties: PropertyValues) {
@@ -96,33 +100,29 @@ export class MenuItem extends LitElement {
           composed: true
         })
       );
-    } else {
-      this.dispatchEvent(
-        new CustomEvent("item-menu-click", {
-          bubbles: true,
-          composed: true
-        })
-      );
+    // } else {
+    //   this.dispatchEvent(
+    //     new CustomEvent("item-menu-click", {
+    //       bubbles: true,
+    //       composed: true
+    //     })
+    //   );
     }
   }
 
   handleKeyDown(event: KeyboardEvent) {
-    if (this.id) {
-      this.dispatchEvent(
-        new CustomEvent<MenuItemKeyDownEvent>("menu-item-keydown", {
-          detail: {
-            id: this.id,
-            key: event.code,
-            ctrlKey: event.ctrlKey,
-            shiftKey: event.shiftKey,
-            altKey: event.altKey,
-            srcEvent: event
-          },
-          bubbles: true,
-          composed: true
-        })
-      );
-    }
+    this.dispatchEvent(
+      new CustomEvent<MenuItemKeyDownEvent>("menu-item-keydown", {
+        detail: {
+          id: this.id,
+          key: event.code,
+          srcEvent: event
+        },
+        bubbles: true,
+        composed: true
+      })
+    );
+    console.log(event.code)
   }
 
   private notifySelectedItem() {
@@ -152,8 +152,7 @@ export class MenuItem extends LitElement {
         tabindex="-1" 
         aria-hidden="true"
         aria-selected="false"
-        aria-label=${ifDefined(this.label)}
-        @click=${(event: MouseEvent) => this.handleClick(event)}>
+        aria-label=${ifDefined(this.label)}>
         <a href="${ifDefined(this.href || undefined)}">
           <slot></slot>
         </a>

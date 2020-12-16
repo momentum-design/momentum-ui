@@ -2,7 +2,7 @@
   list-style: none;
 
   a {
-    color: var(--md-secondary-text-color);
+    color: var(--menu-default, $lm-menu-default-light);
     display: flex;
     padding: 6px 12px;
   }
@@ -11,15 +11,29 @@
     padding: 0 3px;
   }
 
+  &--selected {
+    a {
+      background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
+    }
+  }
+
   &:hover {
     a {
-      color: var(--md-hyperlink-text-color);
+      background: var(--menu-hover-bg, $lm-menu-hover-bg-light);
     }
   }
 
   &:active {
     a {
-      color: var(--md-hyperlink-hover-text-color);
+      background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    a {
+      background: transparent;
+      color: var(--menu-disabled, $lm-menu-disabled-light);
     }
   }
 }

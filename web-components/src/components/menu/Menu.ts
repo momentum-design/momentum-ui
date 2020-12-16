@@ -7,9 +7,11 @@
  */
 
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
-import { MenuItem, MenuItemEvent } from "./MenuItem";
+import { MenuItem, MenuItemEvent, MenuItemKeyDownEvent } from "./MenuItem";
+import { Key } from "@/constants";
 import { nanoid } from "nanoid";
 import { SlottedMixin } from "@/mixins/SlottedMixin";
+import { RovingTabIndexMixin } from "@/mixins/RovingTabIndexMixin";
 import { classMap } from "lit-html/directives/class-map";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
@@ -18,7 +20,7 @@ type ItemId = Element["id"];
 export const MORE_MENU_ITEM_COPY_ID_PREFIX = "more-menu-item-";
 
 @customElement("md-menu")
-export class Menu extends SlottedMixin(LitElement) {
+export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
   @property({ type: Boolean }) justified = false;
   @property({ type: String }) direction = "horizontal"
   
@@ -28,8 +30,8 @@ export class Menu extends SlottedMixin(LitElement) {
   private items: MenuItem[] = [];
   private itemsHash: Record<ItemId, MenuItem> = {};
   private itemsIdxHash: Record<ItemId, number> = {};
-  selected: number | undefined;
-  private getNormalizedTItemId(id: ItemId) {
+
+  private getNormalizedItemId(id: ItemId) {
     return id.replace(MORE_MENU_ITEM_COPY_ID_PREFIX, "");
   }
 
@@ -40,10 +42,6 @@ export class Menu extends SlottedMixin(LitElement) {
   get slotItem() {
     return this.menuSlotElement;
   }
-
-  // protected filterSlotted() {
-  //   return this.menuSlotElement!.assignedElements({flatten: true}) as HTMLElement[];
-  // }
 
   private async linkMenuItems() {
     const { items } = this;
@@ -69,8 +67,19 @@ export class Menu extends SlottedMixin(LitElement) {
 
   private setupMenuItems() {
     if (this.menuSlotElement) {
-      this.items = this.menuSlotElement.assignedElements({ flatten: true }) as MenuItem[];
-      
+      const children = this.menuSlotElement.assignedElements({ flatten: true })
+      this.getChildrenFromTree({ children }, this.items);
+      console.log(this.items);
+    }
+  }
+
+  private getChildrenFromTree(elem: {children: Element[]}, menuItems: MenuItem[]) {
+    for (var i = 0; i < elem.children.length; i++) {
+      var child = elem.children[i];
+      if (child instanceof MenuItem) {
+        menuItems.push(child);
+      }
+      this.getChildrenFromTree(child as any, menuItems); // RECURSION
     }
   }
 
@@ -107,10 +116,14 @@ export class Menu extends SlottedMixin(LitElement) {
     this.selected = newSelectedItemIdx;
   }
 
+  private switchItemOnArrowPress(newIndex: number) {
+    this.selected = newIndex;
+  }
+
   handleItemClick(event: CustomEvent<MenuItemEvent>) {
     const { id } = event.detail;
    
-    const menuItem = this.itemsHash[this.getNormalizedTItemId(id)];
+    const menuItem = this.itemsHash[this.getNormalizedItemId(id)];
 
     if (menuItem && !menuItem.disabled) {
       const newIndex = this.itemsIdxHash[menuItem.id];
@@ -121,9 +134,44 @@ export class Menu extends SlottedMixin(LitElement) {
     }
   }
 
+  handleItemKeydown(event: CustomEvent<MenuItemKeyDownEvent>) {
+    const { key, id } = event.detail;
+    switch (key) {
+      case Key.End:
+        this.switchItemOnArrowPress(this.slotted.length - 1);
+        break;
+      case Key.Home:
+        this.switchItemOnArrowPress(0);
+        break;
+      case Key.ArrowLeft:
+        if (this.selected === 0) {
+          this.switchItemOnArrowPress(this.slotted.length - 1);
+        } else {
+          this.switchItemOnArrowPress(this.selected - 1);
+        }
+        break;
+      case Key.ArrowRight:
+        if (this.selected === this.slotted.length - 1) {
+          this.switchItemOnArrowPress(0);
+        } else {
+          this.switchItemOnArrowPress(this.selected + 1);
+        }
+        break;
+      case Key.Enter:
+      case Key.Space:
+        // eslint-disable-next-line no-case-declarations
+        const tabIndex = this.slotted.findIndex(element => element.id === id && !(element as MenuItem).disabled);
+        if (tabIndex !== -1) {
+          this.updateSelectedItem(tabIndex);
+        }
+        break;
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("menu-item-click", this.handleItemClick as EventListener);
+    this.addEventListener("menu-item-keydown", this.handleItemKeydown as EventListener);
   }
 
   protected async updated(changedProperties: PropertyValues) {
@@ -144,11 +192,11 @@ export class Menu extends SlottedMixin(LitElement) {
   render() {
     
     return html`
-      <menu class="md-menu ${classMap(this.menuClassMap)}">
+      <nav class="md-menu ${classMap(this.menuClassMap)}">
         <ul class="md-menu-list">
           <slot></slot>
         </ul>
-      </menu>
+      </nav>
     `;
   }
 }

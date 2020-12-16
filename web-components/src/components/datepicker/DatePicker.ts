@@ -15,6 +15,7 @@ export class DatePicker extends LitElement {
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+  @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
 
   @internalProperty() selectedDate: DateTime = now();
@@ -27,21 +28,21 @@ export class DatePicker extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
-    this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+    this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
+    this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
   }
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (changedProperties.has("value")) {
-      this.value ? (this.selectedDate = DateTime.fromSQL(this.value)) : null;
+      this.value ? (this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale })) : null;
     }
     if (changedProperties.has("locale")) {
       this.render();
     }
     if (changedProperties.has("minDate") || changedProperties.has("maxDate")) {
-      this.minDate !== undefined ? (this.minDateData = DateTime.fromSQL(this.minDate)) : null;
-      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromSQL(this.maxDate)) : null;
+      this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
+      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
     }
   }
 
@@ -60,7 +61,7 @@ export class DatePicker extends LitElement {
   setSelected = (date: DateTime, event: Event) => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
     if (!isDayDisabled(date, filters)) {
-      const dateString = date.toSQLDate();
+      const dateString = date.toISODate();
       this.selectedDate = date;
       this.value = dateString;
     }
@@ -132,11 +133,13 @@ export class DatePicker extends LitElement {
   };
 
   render() {
+    const placeholder = this.placeholder || this.selectedDate.toLocaleString({ locale: this.locale });
+
     return html`
       <md-menu-overlay custom-width="248px">
         <md-input
           slot="menu-trigger"
-          placeholder=${this.selectedDate.toLocaleString()}
+          placeholder=${placeholder}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
         ></md-input>
         <div class="date-overlay-content">

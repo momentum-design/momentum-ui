@@ -4,7 +4,6 @@
     border-radius: $md-code-editor-border-radius;
     color: $md-code-editor-color;
     min-height: $md-code-editor-height;
-    //min-width: $md-code-editor-width;
     overflow: hidden;
     width: 100%;
 
@@ -13,7 +12,6 @@
       background: $md-code-editor-header-bg;
       padding: $md-code-editor-indent;
       @include flex($jc: space-between);
-      background: $md-code-editor-header-bg;
       font-size: $font-size-base;
       flex: 0 0 auto;
     }
@@ -63,7 +61,6 @@
         }
       }
     }
-
   }
 
   .hljs-comment,
@@ -81,7 +78,6 @@
   .hljs-regexp,
   .hljs-deletion {
     color: $md-orange-40;
-
   }
 
   /* Orange */

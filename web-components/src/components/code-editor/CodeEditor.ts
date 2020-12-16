@@ -38,7 +38,6 @@ export class CodeEditor extends LitElement {
 
   triggerFileLoad(event: MouseEvent) {
     event.preventDefault();
-
     this.input.click();
   }
 
@@ -189,7 +188,7 @@ export class CodeEditor extends LitElement {
               id="file-input"
               name="file-input"
               accept=${ifDefined(this.acceptTypes || undefined)}
-              @change=${this.handleFile}
+              @change=${(event: Event) => this.handleFile(event)}
             />
           </div>
           <div class="md-code-editor-copy">

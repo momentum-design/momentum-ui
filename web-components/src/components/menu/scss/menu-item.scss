@@ -34,7 +34,7 @@
     pointer-events: none;
     a {
       background: transparent;
-      color: var(--menu-disabled, $lm-menu-disabled-light);
+      color: var(--md-disabled-text-color);
     }
   }
 }

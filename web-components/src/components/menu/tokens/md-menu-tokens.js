@@ -17,10 +17,6 @@ const menu = {
   pressed: {
     light: colors.blue[80].name,
     dark: colors.blue[10].name
-  },
-  disabled: {
-    light: colors.gray[40].name,
-    dark: colors.gray[70].name
   }
 };
 

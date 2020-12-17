@@ -21,10 +21,6 @@ const menu = {
       light: colors.blue[20].name,
       dark: colors.blue[70].name
     }
-  },
-  disabled: {
-    light: colors.gray[40].name,
-    dark: colors.gray[70].name
   }
 };
 

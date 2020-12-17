@@ -7,16 +7,20 @@ const menu = {
   prefix: "md",
   component: "menu",
   default: {
-    light: colors.gray[90].name,
+    light: colors.gray[100].name,
     dark: colors.gray[20].name
   },
   hover: {
-    light: colors.blue[70].name,
-    dark: colors.blue[20].name
+    "bg": {
+      light: colors.blue[20].name,
+      dark: colors.blue[80].name
+    }
   },
   pressed: {
-    light: colors.blue[80].name,
-    dark: colors.blue[10].name
+    "bg": {
+      light: colors.blue[30].name,
+      dark: colors.blue[70].name
+    }
   }
 };
 

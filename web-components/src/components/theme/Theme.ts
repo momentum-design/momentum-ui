@@ -257,6 +257,9 @@ export class Theme extends LitElement {
       <div class="theme-wrapper">
         <style>
           ${styles}
+          .theme-wrapper {
+            width: 100%;
+          }
         </style>
         <slot></slot>
         <div class="md-tooltip" virtual-global-popper></div>

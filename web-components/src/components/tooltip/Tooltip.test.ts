@@ -49,6 +49,7 @@ describe("Tooltip", () => {
     const { detail: tooltipCreate } = await oneEvent(tooltip, "tooltip-create");
 
     expect(tooltipCreate).toBeDefined();
+    expect(tooltip.opened).toBeTruthy();
     expect(tooltipCreate.reference).toEqual(tooltip.reference);
 
     setTimeout(() => tooltip.notifyTooltipDestroy());
@@ -56,6 +57,7 @@ describe("Tooltip", () => {
     const { detail: tooltipDestroy } = await oneEvent(tooltip, "tooltip-destroy");
 
     expect(tooltipDestroy).toBeDefined();
+    expect(tooltip.opened).toBeFalsy();
     expect(tooltipDestroy.reference).toEqual(tooltip.reference);
   });
 

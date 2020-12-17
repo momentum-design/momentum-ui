@@ -38,6 +38,8 @@ export class ComboBox extends FocusMixin(LitElement) {
   @property({ type: Boolean, reflect: true }) ordered = false;
   @property({ type: Boolean, reflect: true }) expanded = false;
   @property({ type: Boolean, reflect: true }) compact = false;
+  @property({ type: Boolean, attribute: "no-clear-icon" }) noClearIcon = false;
+  @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
   @property({ type: Array }) selectedOptions: (string | OptionMember)[] = [];
   @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
   @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";
@@ -126,6 +128,10 @@ export class ComboBox extends FocusMixin(LitElement) {
       requestAnimationFrame(() => {
         this.input!.focus();
       });
+
+      if (this.selectWhenInFocus) {
+        this.input!.select();
+      }
       super.handleFocusIn && super.handleFocusIn(event);
     }
     this.dispatchEvent(
@@ -538,7 +544,7 @@ export class ComboBox extends FocusMixin(LitElement) {
   }
 
   private shouldChangeButton() {
-    return (this.input && this.input.value.length > 0) || (this.isMulti && this.selectedOptions.length);
+    return (this.input && this.input.value.length > 0 && !this.noClearIcon) || (this.isMulti && this.selectedOptions.length);
   }
 
   private setCustomValue() {

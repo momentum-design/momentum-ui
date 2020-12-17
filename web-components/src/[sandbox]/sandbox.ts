@@ -15,8 +15,10 @@ import {
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
+  coachTemplate,
   comboBoxTemplate,
   datePickerTemplate,
+  dateTimePickerTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -194,6 +196,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-coachmark">
+            <h2>md-coachmark</h2>
+            <sass-stats component="coachmark">
+              ${coachTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-combo-box">
             <h2>md-combobox</h2>
             <sass-stats component="combobox">
@@ -205,6 +214,13 @@ export class Sandbox extends LitElement {
             <h2>md-datepicker</h2>
             <sass-stats component="datepicker">
               ${datePickerTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-date-time-picker">
+            <h2>md-date-time-picker</h2>
+            <sass-stats component="date-time-picker">
+              ${dateTimePickerTemplate}
             </sass-stats>
           </div>
 

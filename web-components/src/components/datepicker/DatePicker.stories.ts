@@ -1,8 +1,8 @@
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "./DatePicker";
+import { weekStartDays } from "@/components/datepicker/DatePicker";
 
 export default {
   title: "Date Picker",
@@ -18,21 +18,40 @@ export default {
 export const DatePicker = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const shouldCloseOnSelect = boolean("shouldCloseOnSelect", false);
+  const weekStart = select("weekStart", weekStartDays, "");
+  const locale = text('locale', 'en-US');
+
   const minDate = text(
     "minimum date",
     now()
       .minus({ day: 5 })
-      .toSQLDate()
+      .toISODate()
   );
+
   const maxDate = text(
     "maximum date",
     now()
-      .plus({ day: 5 })
-      .toSQLDate()
+      .plus({ day: 30 })
+      .toISODate()
   );
+
+  const value = text(
+    "value",
+    now()
+      .toISODate()
+  );
+
   return html`
-    <md-theme ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
+    <md-theme class="theme-toggle" id="datepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-datepicker
+        ?should-close-on-select=${shouldCloseOnSelect}
+        value=${value}
+        weekStart=${weekStart}
+        locale=${locale}
+        minDate=${minDate}
+        maxDate=${maxDate}>
+      </md-datepicker>
     </md-theme>
   `;
 };

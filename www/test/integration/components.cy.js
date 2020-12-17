@@ -4,7 +4,7 @@ describe('Components pages', function() {
       cy.visit(`${Cypress.env('BASE_URL')}/components`)
         .get('#filterSearchInput')
         .type('avatar');
-      cy.get('.docs-component-item--info__title')
+      cy.get('.site-component-item--info__title')
         .contains('Avatars')
         .click()
         .url()

@@ -21,7 +21,7 @@ const NotFoundPage = () => {
             <p>We can’t find</p>
             <div></div>
           </div>
-          <NavLink to="/2020">
+          <NavLink to="/">
             <Button className="site-not-found-element-button--blue" color="blue">THE PAGE</Button>
           </NavLink>
           <Input
@@ -46,7 +46,7 @@ const NotFoundPage = () => {
             <SelectOption label="Building it yourself (with our libraries) "/>
           </Select>
           <ActivityButton className="site-not-found-element-activity--meetings" type="meetings" />
-          <NavLink to="/2020">
+          <NavLink to="/">
             <Button className="site-not-found-element-button--gray" color="dark-gray">The homepage</Button>
           </NavLink>
           <ActivityButton className="site-not-found-element-activity--camera" type="camera" />

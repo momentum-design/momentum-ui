@@ -140,8 +140,8 @@ class Elevation extends React.PureComponent {
             />
           </div>
           <div className="site-responsive-row elevation-purpose-row">
-            {[locale.elevationPurpose.higherElevation, locale.elevationPurpose.lowerElevation].map(elevation => (
-              <div className="elevation-purpose-row__card">
+            {[locale.elevationPurpose.higherElevation, locale.elevationPurpose.lowerElevation].map((elevation, idx) => (
+              <div className="elevation-purpose-row__card" key={"elevation-purpose" + idx}>
                 <h4>{elevation.title}</h4>
                 <div className="elevation-purpose-row__card-purpose">{elevation.body}</div>
                 <div className="elevation-sample-box elevation-sample-box__lg" style={{filter: elevation.elevationValue}}></div>
@@ -161,16 +161,17 @@ class Elevation extends React.PureComponent {
             <SectionTitle label={locale.brightnessMode.dayTime.title} />
             <div className="brightness-mode-container__description">{locale.brightnessMode.dayTime.body}</div>
             <div className="site-responsive-row brightness-mode-container__example-container">
-              {[locale.brightnessMode.dayTime.mode1, locale.brightnessMode.dayTime.mode2].map(mode => (
+              {[locale.brightnessMode.dayTime.mode1, locale.brightnessMode.dayTime.mode2].map((mode, idx) => (
                 <div
                   className="brightness-mode-container__example-container-card"
+                  key={"brightness-mode" + idx}
                   style={{backgroundColor: mode.backgroundColorValue}}
                 >
                   <div>{mode.tileColorLabel}</div>
                   <div className="elevation-multi-card-container">
                     {Object.entries(elevationTokens).map((elevationToken, idx) => (
                       <SampleDropShadowBox
-                        key={'white' + idx}
+                        key={mode.tileColorLabel + idx}
                         size="md"
                         style={{backgroundColor: mode.tileColorValue}}
                         dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
@@ -187,16 +188,17 @@ class Elevation extends React.PureComponent {
             <SectionTitle label={locale.brightnessMode.evening.title} />
             <div className="brightness-mode-container__description">{locale.brightnessMode.evening.body}</div>
             <div className="site-responsive-row brightness-mode-container__example-container">
-            {[locale.brightnessMode.evening.mode1, locale.brightnessMode.evening.mode2].map(mode => (
+            {[locale.brightnessMode.evening.mode1, locale.brightnessMode.evening.mode2].map((mode, idx) => (
               <div
                 className="brightness-mode-container__example-container-card brightness-mode-container__example-container-card-dark"
+                key={"brightness-mode-2" + idx}
                 style={{backgroundColor: mode.backgroundColorValue}}
               >
                 <div>{mode.tileColorLabel}</div>
                 <div className="elevation-multi-card-container">
                   {Object.entries(elevationTokens).map((elevationToken, idx) => (
                     <SampleDropShadowBox
-                      key={'gray-90' + idx}
+                      key={mode.tileColorLabel + idx}
                       size="md"
                       style={{backgroundColor: mode.tileColorValue, border: 'none'}}
                       dropShadow={elevationToken[1].boxShadow ? dropShadowStr(elevationToken[1].boxShadow) : null}
@@ -217,8 +219,8 @@ class Elevation extends React.PureComponent {
             </div>
           </Example>
           <TokenNavigation
-            leftNav={{label: "Typography", url: "/2020/tokens/typography"}}
-            rightNav={{label: "Space", url: '/2020/tokens/space'}}
+            leftNav={{label: "Typography", url: "/tokens/typography"}}
+            rightNav={{label: "Space", url: '/tokens/space'}}
           />
         </div>
       </div>

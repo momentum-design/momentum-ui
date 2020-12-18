@@ -5,11 +5,11 @@
   a {
     color: var(--menu-default, $lm-menu-default-light);
     display: flex;
-    padding: 6px 12px;
+    padding: $menu-item-main-padding;
   }
 
   ::slotted(*) {
-    padding: 0 3px;
+    padding: 0 rem-calc(3);
   }
 
   &--selected {

@@ -69,7 +69,6 @@ export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
     if (this.menuSlotElement) {
       const children = this.menuSlotElement.assignedElements({ flatten: true })
       this.getChildrenFromTree({ children }, this.items);
-      console.log(this.items);
     }
   }
 
@@ -175,6 +174,12 @@ export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
       this.setupMenuItems();
       this.linkMenuItems();
     }
+  }
+
+  disconnectedCallback() {
+    super.connectedCallback();
+    this.removeEventListener("menu-item-click", this.handleItemClick as EventListener);
+    this.removeEventListener("menu-item-keydown", this.handleItemKeydown as EventListener);
   }
 
   get menuClassMap() {

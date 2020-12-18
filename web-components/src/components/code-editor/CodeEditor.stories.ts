@@ -1,7 +1,7 @@
 import "./CodeEditor";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {
   title: "Code Editor",
@@ -15,7 +15,8 @@ export default {
 };
 
 export const CodeEditor = () => {
+  const acceptLanguage = text("acceptLanguage", "");
   return html`
-    <md-code-editor></md-code-editor>
+    <md-code-editor .acceptLanguage=${acceptLanguage}></md-code-editor>
   `;
 };

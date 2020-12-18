@@ -13,6 +13,7 @@
     "dist": "npm run check && webpack --config-name=distProd",
     "dist:dev": "npm run check && webpack --config-name=distDev",
     "dist:watch": "npm run check && webpack --config-name=distDevWatch",
+    "dist:split": "webpack --config-name=distProdSplit",
     "check": "check-peer-dependencies --yarn",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private && cd publish && npm publish",

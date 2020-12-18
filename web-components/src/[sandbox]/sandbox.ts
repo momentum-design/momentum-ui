@@ -31,6 +31,7 @@ import {
   menuItemTemplate,
   menuOverlayTemplate,
   modalTemplate,
+  paginationTemplate,
   phoneInputTemplate,
   progressBarTemplate,
   radioGroupTemplate,
@@ -298,6 +299,13 @@ export class Sandbox extends LitElement {
             <h2>md-modal</h2>
             <sass-stats component="modal">
               ${modalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-pagination">
+            <h2>md-pagination</h2>
+            <sass-stats component="pagination">
+              ${paginationTemplate}
             </sass-stats>
           </div>
 

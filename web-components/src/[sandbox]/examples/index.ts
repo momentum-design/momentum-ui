@@ -25,6 +25,7 @@ export { meetingAlertTemplate } from "./meeting-alert";
 export { menuItemTemplate } from "./menu-item";
 export { menuOverlayTemplate } from "./menu-overlay";
 export { modalTemplate } from "./modal";
+export { paginationTemplate } from "./pagination";
 export { phoneInputTemplate } from "./phone-input";
 export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";

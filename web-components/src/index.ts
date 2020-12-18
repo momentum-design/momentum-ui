@@ -43,6 +43,7 @@ export { Menu } from "./components/menu/Menu";
 export { MenuItem } from "./components/menu/MenuItem";
 export { MenuOverlay } from "./components/menu-overlay/MenuOverlay";
 export { Modal } from "./components/modal/Modal";
+export { Pagination } from "./components/pagination/Pagination";
 export { PhoneInput } from "./components/phone-input/PhoneInput";
 export { ProgressBar } from "./components/progress-bar/ProgressBar";
 export { Radio } from "./components/radio/Radio";

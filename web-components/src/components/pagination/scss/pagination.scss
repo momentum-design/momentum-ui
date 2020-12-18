@@ -1,0 +1,101 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-pagination) {
+  .md-pagination {
+    color: var(--pagination-nav-color, $md-pagination-nav-color-light);
+    display: flex;
+    padding: 0;
+    position: relative;
+
+    &-container {
+      @include flex($fd: column);
+      flex: 0 1 100%;
+    }
+
+    &-list {
+      @include list-style();
+      @include flex();
+      font-size: $pagination-font-size;
+      line-height: $pagination-line-height;
+      color: var(--pagination-color, $md-pagination-color-light);
+
+      li:not(.page-ellipsis) {
+        @include flex();
+        border-radius: $pagination-border-radius;
+        cursor: pointer;
+        height: $pagination-size;
+        margin: $pagination-indent;
+        min-width: $pagination-size;
+        padding: $pagination-item-indent;
+
+        &:hover {
+          background: var(--pagination-bg-hover, $md-pagination-bg-hover-light);
+          color: var(--pagination-color-current, $md-pagination-color-current-light);
+        }
+
+        &:focus {
+          box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
+        }
+
+        &[aria-current="true"] {
+          background: var(--pagination-bg-current, $md-pagination-bg-current-light);
+          color: var(--pagination-color-current, $md-pagination-color-current-light);
+          cursor: default;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &-nav {
+      @include flex;
+      background: none;
+      border: 0;
+      border-radius: $pagination-nav-border-radius;
+      color: var(--pagination-nav-color, $md-pagination-nav-color-light);
+      cursor: pointer;
+      flex: 0 0 $pagination-arrow-size;
+      outline: none;
+      padding: 0;
+
+      &:hover {
+        color: var(--pagination-nav-hover, $md-pagination-nav-hover-light);
+      }
+
+      &:disabled {
+        color: var(--pagination-nav-disabled, $md-pagination-nav-disabled-light);
+        cursor: default;
+      }
+
+      &:focus {
+        box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
+      }
+    }
+
+    &-dots {
+      @include list-style();
+      @include flex;
+
+      li {
+        @include text-overflow();
+        background: var(--pagination-dots-color, $md-pagination-dots-color-light);
+        border-radius: 50%;
+        cursor: pointer;
+        height: $pagination-dots-size;
+        margin: $pagination-dots-margin;
+        width: $pagination-dots-size;
+
+        &[aria-current="true"],
+        &:hover {
+          background: var(--pagination-dots-color-current, $md-pagination-dots-color-current-light);
+        }
+      }
+    }
+  }
+}
+
+:host([focus-visible]) {
+  box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
+}

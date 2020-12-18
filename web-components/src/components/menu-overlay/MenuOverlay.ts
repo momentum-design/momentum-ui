@@ -154,8 +154,10 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (changedProperties.has("isOpen")) {
       if (this.isOpen) {
         this.activateFocusTrap!();
+        document.addEventListener("tab-click", this.handleTriggerClick);
       } else {
         this.deactivateFocusTrap!();
+        document.removeEventListener("tab-click", this.handleTriggerClick)
       }
     }
   }

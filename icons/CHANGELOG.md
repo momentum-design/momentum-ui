@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.0.0...@momentum-ui/icons@8.1.0) (2020-12-18)
+
+
+### Features
+
+* **icons:** add calendar-day_12 ([31d741f](https://github.com/momentum-design/momentum-ui/commit/31d741fb9f554634b5eff1cb569b0e79563ac24a))
+* **icons:** add condition_16 ([2ebccfd](https://github.com/momentum-design/momentum-ui/commit/2ebccfd7de642088b2e4d1c0faab9e3379c4df01))
+* **icons:** add lower-hand_12 ([0393b72](https://github.com/momentum-design/momentum-ui/commit/0393b72764b840011dbfab5d3b2bf6e94ed35a87))
+* **icons:** add lower-hand_20 ([1ab98fb](https://github.com/momentum-design/momentum-ui/commit/1ab98fbdca4d00d85be90ee4f6986be0c0f1a624))
+
+
+
+
+
 # [8.0.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@7.68.0...@momentum-ui/icons@8.0.0) (2020-12-12)
 
 

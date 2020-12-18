@@ -30,6 +30,7 @@ import {
   meetingAlertTemplate,
   menuOverlayTemplate,
   modalTemplate,
+  paginationTemplate,
   phoneInputTemplate,
   progressBarTemplate,
   radioGroupTemplate,
@@ -111,6 +112,7 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
@@ -290,6 +292,13 @@ export class Sandbox extends LitElement {
             <h2>md-modal</h2>
             <sass-stats component="modal">
               ${modalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-pagination">
+            <h2>md-pagination</h2>
+            <sass-stats component="pagination">
+              ${paginationTemplate}
             </sass-stats>
           </div>
 

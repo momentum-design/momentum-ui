@@ -28,6 +28,7 @@ export class FloatingModal extends LitElement {
   @query(".md-floating__header") header!: HTMLDivElement;
 
   private containerRect: DOMRect | null = null;
+  private containerTransform = "";
 
   get floatingClassMap() {
     return {
@@ -36,15 +37,20 @@ export class FloatingModal extends LitElement {
   }
 
   get containerStyleMap() {
-    const { top, left, bottom, right, width, height } = this.containerRect!;
-    return {
-      width: `${this.full ? `100%` : `${width}px`}`,
-      height: `${this.full ? `100%` : `${height}px`}`,
-      top: `${this.full ? `0px` : `${top}px`}`,
-      left: `${this.full ? `0px` : `${left}px`}`,
-      bottom: `${this.full ? `0px` : `${bottom}px`}`,
-      right: `${this.full ? `0px` : `${right}px`}`
-    };
+    if (this.containerRect) {
+      const { top, left, bottom, right, width, height } = this.containerRect;
+      return {
+        width: `${this.full ? `100%` : `${width}px`}`,
+        height: `${this.full ? `100%` : `${height}px`}`,
+        top: `${this.full ? `0px` : `${top}px`}`,
+        left: `${this.full ? `0px` : `${left}px`}`,
+        bottom: `${this.full ? `0px` : `${bottom}px`}`,
+        right: `${this.full ? `0px` : `${right}px`}`,
+        ...(this.full && { transform: "none" }),
+        ...(!this.full && { inset: "0px", transform: this.containerTransform })
+      };
+    }
+    return {};
   }
 
   static get styles() {
@@ -55,18 +61,33 @@ export class FloatingModal extends LitElement {
     super.updated(changedProperties);
     if (changedProperties.has("show")) {
       if (this.container && this.show) {
-        this.setInteractInstance();
         this.setContainerRect();
+        this.setInteractInstance();
       } else {
+        this.cleanContainerStyles();
         this.destroyInteractInstance();
       }
     }
+  }
+
+  private cleanContainerStyles() {
+    this.containerTransform = "";
+  }
+
+  private getContainerTransform() {
+    const dataX = this.container!.getAttribute("data-x");
+    const dataY = this.container!.getAttribute("data-y");
+    if (dataX && dataY) {
+      return `translate(${dataX}px, ${dataY}px)`;
+    }
+    return this.container!.style.transform;
   }
 
   private setContainerRect() {
     requestAnimationFrame(async () => {
       await this.updateComplete;
       this.containerRect = this.container!.getBoundingClientRect();
+      this.containerTransform = this.getContainerTransform();
     });
   }
 
@@ -83,7 +104,8 @@ export class FloatingModal extends LitElement {
               ? [
                   interact.modifiers.aspectRatio({
                     ratio: "preserve",
-                    equalDelta: true
+                    equalDelta: true,
+                    modifiers: [interact.modifiers.restrictSize({ max: "parent" })]
                   })
                 ]
               : undefined
@@ -92,7 +114,8 @@ export class FloatingModal extends LitElement {
             autoScroll: true,
             allowFrom: this.header,
             ignoreFrom: this.body,
-            onmove: this.dragMoveListener
+            onmove: this.dragMoveListener,
+            onend: this.dragEndListener
           });
       }
     });
@@ -136,6 +159,10 @@ export class FloatingModal extends LitElement {
     const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy;
 
     this.setTargetPosition(target, x, y);
+  };
+
+  private dragEndListener = () => {
+    this.setContainerRect();
   };
 
   private setTargetPosition(target: Interact.Element, x: number, y: number) {

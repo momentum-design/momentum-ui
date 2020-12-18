@@ -12,7 +12,7 @@ import { html } from "lit-element";
 
 
 export const menuItemTemplate = html`
-  <md-menu justified>
+  <md-menu>
     <md-menu-item >
       <md-icon name="recents_16"></md-icon>
       <span>Contact History</span>
@@ -42,4 +42,5 @@ export const menuItemTemplate = html`
       <span>Cisco Answer</span>
     </md-menu-item>
   </md-menu>
+
 `;

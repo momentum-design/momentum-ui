@@ -13,21 +13,15 @@
   }
 
   &--selected {
-    a {
-      background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
-    }
+    background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
   }
 
   &:hover {
-    a {
-      background: var(--menu-hover-bg, $lm-menu-hover-bg-light);
-    }
+    background: var(--menu-hover-bg, $lm-menu-hover-bg-light);
   }
 
   &:active {
-    a {
-      background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
-    }
+    background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
   }
 
   &.disabled {

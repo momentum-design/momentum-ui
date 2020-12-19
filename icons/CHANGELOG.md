@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.1.0...@momentum-ui/icons@8.2.0) (2020-12-19)
+
+
+### Bug Fixes
+
+* **icons:** update lower-hand_12 ([342eb3d](https://github.com/momentum-design/momentum-ui/commit/342eb3dce303b220788c5ec48ff62e633de992b4))
+
+
+### Features
+
+* **icons:** add camera-on_24 ([38d0e36](https://github.com/momentum-design/momentum-ui/commit/38d0e369b5c254f95522912f25543a8e74fe666c))
+* **icons:** add scheduler-not-working-hours_14 ([809eb8d](https://github.com/momentum-design/momentum-ui/commit/809eb8d87c4728d7e1ad86fe7b9833601b8a0fcf))
+* **icons:** add scheduler-unknown_14 ([caebc35](https://github.com/momentum-design/momentum-ui/commit/caebc35ce0094731f42e2c8db34f8060e55e03bd))
+
+
+
+
+
 # [8.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.0.0...@momentum-ui/icons@8.1.0) (2020-12-18)
 
 

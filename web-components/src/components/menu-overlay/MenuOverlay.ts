@@ -15,6 +15,7 @@ import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import { MenuItemEvent } from "@/components/menu/MenuItem";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
@@ -125,7 +126,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
       this.triggerElement.removeEventListener("click", this.handleTriggerClick);
       this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
       this.triggerElement = null;
-    }
+    } 
   }
 
   protected async firstUpdated(changedProperties: PropertyValues) {
@@ -154,10 +155,12 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (changedProperties.has("isOpen")) {
       if (this.isOpen) {
         this.activateFocusTrap!();
-        document.addEventListener("tab-click", this.handleTriggerClick);
+        document.addEventListener("menu-item-click", this.handleTriggerClick);
+        document.addEventListener("menu-item-keydown", this.handleKeyDown as EventListener);
       } else {
         this.deactivateFocusTrap!();
-        document.removeEventListener("tab-click", this.handleTriggerClick)
+        document.removeEventListener("menu-item-click", this.handleTriggerClick);
+        document.removeEventListener("menu-item-keydown", this.handleKeyDown as EventListener);
       }
     }
   }
@@ -167,6 +170,7 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
     if (changedProperties.has("isOpen")) {
       if (this.isOpen) {
         this.dispatchMenuOpen();
+
         if (this.triggerElement) {
           this.triggerElement.setAttribute("aria-expanded", "true");
         }
@@ -313,6 +317,14 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
       default: {
         break;
       }
+    }
+  };
+
+  handleKeyDown(e: KeyboardEvent) {
+    console.log(e);
+    if (e.code === Key.Space || e.code === Key.Enter) {
+      console.log(e.key);
+      this.toggleOverlay();
     }
   };
 

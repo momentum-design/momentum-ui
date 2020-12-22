@@ -39,6 +39,8 @@ export { List } from "./components/list/List";
 export { ListItem } from "./components/list/ListItem";
 export { Loading } from "./components/loading/Loading";
 export { MeetingAlert } from "./components/meeting-alert/MeetingAlert";
+export { Menu } from "./components/menu/Menu";
+export { MenuItem } from "./components/menu/MenuItem";
 export { MenuOverlay } from "./components/menu-overlay/MenuOverlay";
 export { Modal } from "./components/modal/Modal";
 export { Pagination } from "./components/pagination/Pagination";

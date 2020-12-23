@@ -14,6 +14,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const buttonSize = [
@@ -283,7 +284,7 @@ export class Button extends LitElement {
           tabindex=${this.tabIndex}
           aria-pressed=${this.ariaPressed}
           aria-label=${this.ariaLabel}
-          aria-labelledby=${this.ariaLabelledBy}
+          aria-labelledby=${ifDefined(this.ariaLabelledBy)}
           aria-expanded=${this.ariaExpanded}
           aria-haspopup=${this.ariaHaspopup}
           type=${this.type}

@@ -230,7 +230,6 @@ export class EditableTextfield extends LitElement {
           this.handleKeydown(e);
         }}
         aria-invalid=${this.alert ? "true" : "false"}
-        aria-errormessage=${ifDefined(this.message?.message)}
       >
         ${dompurify.sanitize(this.content)}
       </div>

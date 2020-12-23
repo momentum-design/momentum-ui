@@ -17,7 +17,7 @@ import "@/components/tooltip/Tooltip";
 import styles from "./scss/module.scss";
 
 export namespace Chip {
-  export type Role = "listitem" | "option";
+  export type Role = "group" | "option";
 }
 
 @customElement("md-chip")
@@ -28,7 +28,7 @@ export class Chip extends LitElement {
   @property({ type: String }) height = "";
   @property({ type: String }) icon = "";
   @property({ type: String }) iconColor = "";
-  @property({ type: String }) role: Chip.Role = "listitem";
+  @property({ type: String }) role: Chip.Role = "group";
   @property({ type: String, reflect: true }) id = "";
   @property({ type: Boolean }) small = false;
   @property({ type: Boolean }) readonly = false;
@@ -211,9 +211,7 @@ export class Chip extends LitElement {
       <md-tooltip ?disabled=${!this.textOverflow} message="${this.value}">
         <span
           tabindex="0"
-          class="md-chip${classMap(classNamesInfo)}"
-          aria-selected=${this.selected}
-          aria-readonly=${this.readonly}
+          class="md-chip ${classMap(classNamesInfo)}"
           role=${this.role}
           @click=${(e: MouseEvent) => {
             this.handleClick(e);

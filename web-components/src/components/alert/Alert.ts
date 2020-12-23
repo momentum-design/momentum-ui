@@ -89,10 +89,10 @@ export class Alert extends LitElement {
                 ${this.renderIconTemplate()}
               </div>
               <div part="content" class="md-alert__content">
-                <div aria-label=${this.title} class="md-alert__title" role="heading">
+                <div aria-label=${this.title} class="md-alert__title" role="heading" aria-level="1">
                   ${this.title}
                 </div>
-                <div aria-label=${this.message} class="md-alert__message" role="text">
+                <div aria-label=${this.message} class="md-alert__message" role="textbox">
                   ${this.message}
                   <slot name="alert-body"></slot>
                 </div>
@@ -100,7 +100,7 @@ export class Alert extends LitElement {
               ${this.closable
                 ? html`
                     <div class="md-alert__button">
-                      <md-button hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
+                      <md-button arialabel="Close" title="close" hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
                         <md-icon slot="icon" name="icon-cancel_16"></md-icon>
                       </md-button>
                     </div>

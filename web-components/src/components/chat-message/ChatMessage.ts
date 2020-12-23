@@ -20,6 +20,7 @@ export class ChatMessage extends LitElement {
         <md-avatar
           type=${ifDefined(this.self ? "self" : undefined)}
           title=${this.self ? "self" : this.title}
+          label="Avatar"
           src=${ifDefined(this.self ? undefined : this.src)}
         ></md-avatar>
 

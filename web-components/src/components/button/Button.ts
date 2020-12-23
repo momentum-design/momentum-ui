@@ -282,7 +282,7 @@ export class Button extends LitElement {
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           tabindex=${this.tabIndex}
-          aria-pressed=${this.ariaPressed}
+          
           aria-label=${this.ariaLabel}
           aria-labelledby=${ifDefined(this.ariaLabelledBy)}
           aria-expanded=${this.ariaExpanded}

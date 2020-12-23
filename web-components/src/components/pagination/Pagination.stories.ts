@@ -18,7 +18,7 @@ export const Pagination = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const visiblePage = number("Limit", 10);
-  const dots = boolean("Add Dots", true);
+  const dots = boolean("Add Dots", false);
   const navigation = boolean("No Navigation", false);
   const onlyDots = boolean("Only Dots", false);
 

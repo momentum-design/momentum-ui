@@ -13,6 +13,6 @@ const data = 'Group, Action, Shortcut Key \n Active Task List, Switch between ta
 
 export const tableTemplate = html`
   <div style="height: 400px;">
-    <md-table tabledata="${data}" sorting></md-table>
+    <md-table tabledata="${data}" sorting clean></md-table>
   </div>
 `;

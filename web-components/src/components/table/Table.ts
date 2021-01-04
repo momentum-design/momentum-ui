@@ -7,11 +7,17 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
+
+export const formatType = ["number"] as const;
+
+export namespace Table {
+  export type Format = typeof formatType[number];
+}
 
 @customElement("md-table")
 export class Table extends LitElement {
@@ -22,10 +28,12 @@ export class Table extends LitElement {
   @property({ type: String }) nodata = "No data Loaded";
   @property({ type: Boolean }) stickheader = false;
   @property({ type: String }) label = "Table";
+  @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
+  @property({ type: String }) format: Table.Format | undefined = undefined;
 
   @internalProperty() private sort = { columnName: "", sortting: false };
+  @internalProperty() csvData: any = undefined;
 
-  csvData: any;
   headerRow: any;
   results: any;
   config = {
@@ -98,6 +106,7 @@ export class Table extends LitElement {
   get tableClassMap() {
     return {
       "md-table--clean": this.clean,
+      "md-table--no-borders": this.noBorders,
       "md-table--stripped": this.zebra,
       "md-table--sorting": this.sorting
     };
@@ -138,11 +147,12 @@ export class Table extends LitElement {
                       html`
                         <tr tabindex="0" role="row">
                           ${row.map(
-                            (item: any) =>
-                              html`
-                                <td role="cell">${item}</td>
+                            (item: any, index: number) => {
+                              const formattedItem = (this.format === 'number' && index !== 0) ?  Number(item).toLocaleString() : item;
+                              return html`
+                                <td part="cell" role="cell">${formattedItem}</td>
                               `
-                          )}
+                            })}
                         </tr>
                       `
                   )}

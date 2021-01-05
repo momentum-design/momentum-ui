@@ -139,9 +139,9 @@ const dev = merge(commonDev, {
 // ----------
 
 const commonDist = merge(common, {
-  // entry: {
-  //   index: "./src/index.ts"
-  // },
+  entry: {
+    index: "./src/index.ts"
+  },
   output: {
     path: pDist,
     filename: "[name].js",
@@ -204,13 +204,20 @@ const distProd = merge(commonDist, {
   }
 });
 
-const distProdSplit = merge(distDev, {
+const distProdSplit = merge(distProd, {
   name: "distProdSplit",
-  devtool: false,
+  output: {
+    path: path.resolve("dist/components"),
+    filename: "[name].js",
+    chunkFilename: "vendor/[id].js",
+    libraryTarget: "umd"
+  },
   optimization: {
-    minimize: false,
     splitChunks: {
-      chunks: 'all'
+      chunks: "all",
+      maxInitialRequests: Infinity,
+      maxAsyncRequests: Infinity,
+      minSize: 0
     }
   },
   entry: {
@@ -265,5 +272,7 @@ const distProdSplit = merge(distDev, {
     Tooltip: "./src/components/tooltip/Tooltip"
   }
 });
+
+delete (distProdSplit as any).entry.index;
 
 export default [dev, distDev, distDevWatch, distProd, distProdSplit];

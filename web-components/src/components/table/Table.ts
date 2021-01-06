@@ -143,16 +143,16 @@ export class Table extends LitElement {
                 </thead>
                 <tbody class="md-table__body" role="rowgroup">
                   ${this.csvData.map(
-                    (row: any) =>
+                    (row: any, rowIndex: number) =>
                       html`
-                        <tr tabindex="0" role="row">
-                          ${row.map(
-                            (item: any, index: number) => {
-                              const formattedItem = (this.format === 'number' && index !== 0) ?  Number(item).toLocaleString() : item;
-                              return html`
-                                <td part="cell" role="cell">${formattedItem}</td>
-                              `
-                            })}
+                        <tr tabindex="0" role="row" part=${rowIndex === 0 ? "first-row" : "row"}>
+                          ${row.map((item: any, itemIndex: number) => {
+                            const formattedItem =
+                              this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
+                            return html`
+                              <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">${formattedItem}</td>
+                            `;
+                          })}
                         </tr>
                       `
                   )}

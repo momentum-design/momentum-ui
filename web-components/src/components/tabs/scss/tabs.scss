@@ -141,10 +141,6 @@
   flex-direction: row;
 }
 
-:host([direction="vertical"]) md-tab::part(tab) {
-  border-bottom: none;
-}
-
 :host-context([direction="vertical"]) .md-tab__list {
   border-right: $tab-list-border;
   display: inline-flex;
@@ -162,7 +158,6 @@
 }
 
 :host-context([direction="vertical"]) .md-tab__list ::slotted([slot="tab"][selected]) {
-  border-left: $tab-active-border;
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 

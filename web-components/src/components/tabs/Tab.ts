@@ -61,6 +61,7 @@ export class Tab extends FocusMixin(LitElement) {
     this.setAttribute("aria-selected", `${value}`);
     this.requestUpdate("selected", oldValue);
   }
+  @property({ type: Boolean, reflect: true }) vertical = false;
 
   @property({ type: Boolean, reflect: true }) viewportHidden = false;
 

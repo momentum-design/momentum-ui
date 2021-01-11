@@ -13,7 +13,7 @@ import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
 
-export const formatType = ["number"] as const;
+export const formatType = ["number", "default"] as const;
 
 export namespace Table {
   export type Format = typeof formatType[number];
@@ -29,7 +29,7 @@ export class Table extends LitElement {
   @property({ type: Boolean }) stickheader = false;
   @property({ type: String }) label = "Table";
   @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
-  @property({ type: String }) format: Table.Format | undefined = undefined;
+  @property({ type: String }) format: Table.Format = "default";
 
   @internalProperty() private sort = { columnName: "", sortting: false };
   @internalProperty() csvData: any = undefined;

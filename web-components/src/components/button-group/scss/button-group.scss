@@ -1,0 +1,58 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-button-group) {
+  display: flex;
+  .md-button-group {
+    @include flex($display: inline-flex, $ac:flex-start, $jc:flex-start);
+    background: $md-gray-20;
+    padding: $button-group-indent;
+    border-radius: $button-group-border-radius;
+    font-size: $font-size-small;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $md-gray-30;
+    }
+
+    &:active {
+      background: $md-gray-40;
+    }
+
+    ::slotted(button) {
+      border: 0;
+      outline: none;
+      padding: $button-group-btn-padding;
+      height: $button-group-btn-height;
+      background: none;
+      color: $md-gray-70;
+      border-radius: $button-group-border-radius;
+      @include flex;
+      cursor: pointer;
+      margin: 0 $button-group-indent;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    ::slotted(button[selected]) {
+      background: $md-white-100;
+      box-shadow: $button-group-btn-shadow;
+      color: $md-black-100;
+    }
+  }
+}
+
+:host([focus-visible]:not([disabled])) {
+  @include focus-boxshadow(rem-calc(1), var(--md-default-focus-outline-color, $md-blue-70));
+}
+
+:host(md-button-group[disabled]) {
+  pointer-events: none;
+  opacity: 0.3;
+}
+

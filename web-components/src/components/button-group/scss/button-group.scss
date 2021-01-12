@@ -7,18 +7,18 @@
   display: flex;
   .md-button-group {
     @include flex($display: inline-flex, $ac:flex-start, $jc:flex-start);
-    background: $md-gray-20;
+    background: var(--button-group-bg-color, $lm-button-group-bg-color-light);
     padding: $button-group-indent;
     border-radius: $button-group-border-radius;
     font-size: $font-size-small;
     transition: background 0.2s ease;
 
     &:hover {
-      background: $md-gray-30;
+      background: var(--button-group-bg-color-hover, $lm-button-group-bg-color-hover-light);
     }
 
     &:active {
-      background: $md-gray-40;
+      background: var(--button-group-bg-color-pressed, $lm-button-group-bg-color-pressed-light);
     }
 
     ::slotted(button) {
@@ -27,7 +27,7 @@
       padding: $button-group-btn-padding;
       height: $button-group-btn-height;
       background: none;
-      color: $md-gray-70;
+      color: var(--button-group-color, $lm-button-group-color-light);
       border-radius: $button-group-border-radius;
       @include flex;
       cursor: pointer;
@@ -40,19 +40,21 @@
       }
     }
     ::slotted(button[selected]) {
-      background: $md-white-100;
+      background: var(--button-group-bg-color-active, $lm-button-group-bg-color-active-light);
       box-shadow: $button-group-btn-shadow;
-      color: $md-black-100;
+      color: var(--button-group-color-active, $lm-button-group-color-active-light);
     }
   }
 }
 
 :host([focus-visible]:not([disabled])) {
-  @include focus-boxshadow(rem-calc(1), var(--md-default-focus-outline-color, $md-blue-70));
+ .md-button-group {
+   @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+ }
 }
 
 :host(md-button-group[disabled]) {
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 

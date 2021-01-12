@@ -27,7 +27,7 @@ export const buttonGroupTemplate = html`
   </div>
   <div class="column">
     <h3>Text Label - 2 options</h3>
-    <md-button-group >
+    <md-button-group>
       <button slot="button" type="button">Option A</button>
       <button slot="button" type="button">Option B</button>
     </md-button-group>

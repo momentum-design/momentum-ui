@@ -17,8 +17,25 @@ type CustomHTMLButtonElement = HTMLButtonElement & { selected: boolean };
 @customElement("md-button-group")
 export class ButtonGroup extends SlottedMixin(FocusMixin(LitElement)) {
   @property({ type: Number, reflect: true }) active = 0;
-
+  @property({ type: Number, reflect: true }) tabIndex = 0;
   @query("slot[name='button']") buttonSlot?: HTMLSlotElement;
+
+  private _disabled = false;
+  @property({ type: Boolean, reflect: true })
+  get disabled() {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    const oldValue = this._disabled;
+    this._disabled = value;
+    this.setAttribute("aria-disabled", `${value}`);
+    if (value) {
+      this.tabIndex = -1;
+    } else {
+      this.tabIndex = 0;
+    }
+    this.requestUpdate("disabled", oldValue);
+  }
 
   get slotElement() {
     return this.buttonSlot;
@@ -34,9 +51,14 @@ export class ButtonGroup extends SlottedMixin(FocusMixin(LitElement)) {
     this.setAttribute("role", "group");
   }
 
+  private setButtonTabIndex() {
+    this.slotted.forEach(button => ((button as CustomHTMLButtonElement).tabIndex = -1));
+  }
+
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (changedProperties.has("slotted")) {
+      this.setButtonTabIndex();
       this.setFirstActive();
     }
   }
@@ -105,12 +127,33 @@ export class ButtonGroup extends SlottedMixin(FocusMixin(LitElement)) {
   }
 
   private switchBtnOnArrowPress(startIndex: number, increment = 1) {
-    // const newIndex = super.getAvailableSelectedIndex!(startIndex, increment);
-    // if (newIndex !== -1) {
-    //   this.selected = newIndex;
-    //   this.setSelected(newIndex);
-    //   this.notifySelectedChange();
-    // }
+    const newIndex = this.getAvailableSelectedIndex!(startIndex, increment);
+    if (newIndex !== -1) {
+      this.active = newIndex;
+      this.setSelected(newIndex);
+      this.notifySelectedChange();
+    }
+  }
+
+  private getAvailableSelectedIndex(index: number, increment = 1) {
+    const slottedLength = this.slotted.length;
+
+    for (let i = 0, j = index; i < slottedLength; i += 1, j += increment) {
+      if (j < 0) {
+        j = slottedLength - 1;
+      } else if (j >= slottedLength) {
+        j = 0;
+      }
+      const slotted = this.slotted[j];
+      if (this.isFocusable(slotted)) {
+        return j;
+      }
+    }
+    return -1;
+  }
+
+  private isFocusable(slottedItem: Element) {
+    return !slottedItem.hasAttribute("disabled") && !slottedItem.hasAttribute("hidden");
   }
 
   handleClick(event: MouseEvent) {
@@ -136,7 +179,6 @@ export class ButtonGroup extends SlottedMixin(FocusMixin(LitElement)) {
           }
         }
         break;
-      case Key.ArrowUp:
       case Key.ArrowLeft:
         {
           if (this.active === 0) {
@@ -146,7 +188,6 @@ export class ButtonGroup extends SlottedMixin(FocusMixin(LitElement)) {
           }
         }
         break;
-      case Key.ArrowDown:
       case Key.ArrowRight:
         {
           if (this.active === this.slotted.length - 1) {

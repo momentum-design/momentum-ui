@@ -112,7 +112,6 @@ export class MenuItem extends LitElement {
         composed: true
       })
     );
-    console.log(event.code)
   }
 
   private notifySelectedItem() {

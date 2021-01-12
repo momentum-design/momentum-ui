@@ -138,6 +138,7 @@ export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
         this.changeSelectedItemIdx(0);
         break;
       case Key.ArrowLeft:
+      case Key.ArrowUp:  
         if (this.selected === 0) {
           this.changeSelectedItemIdx(this.items.length - 1);
         } else {
@@ -145,6 +146,7 @@ export class Menu extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
         }
         break;
       case Key.ArrowRight:
+      case Key.ArrowDown:
         if (this.selected === this.items.length - 1) {
           this.changeSelectedItemIdx(0);
         } else {

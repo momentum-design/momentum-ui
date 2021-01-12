@@ -128,8 +128,18 @@
   &--clean {
     tr {
       td {
-        border-right: none;
+        border-right: unset;
       }
+    }
+  }
+
+  &--no-borders {
+    border: unset;
+
+    .md-table__header th,
+    tr td {
+      border-bottom: unset;
+      border-right: unset;
     }
   }
 }

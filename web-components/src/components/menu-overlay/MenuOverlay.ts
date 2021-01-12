@@ -287,11 +287,10 @@ export class MenuOverlay extends FocusTrapMixin(LitElement) {
       return;
     }
 
-    if (event.code === Key.Escape) {
+    if (event.code === Key.Escape || event.code === Key.Enter) {
       event.preventDefault();
       if (this.isOpen) {
         this.isOpen = false;
-
         await this.updateComplete;
         this.focusOnTrigger();
       }

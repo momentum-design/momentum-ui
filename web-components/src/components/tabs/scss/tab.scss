@@ -12,6 +12,15 @@
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 
+:host([vertical]) button {
+  text-align: left !important;
+}
+
+:host([selected][vertical]) button {
+  border-bottom: $tab-border;
+  border-left: $tab-active-border;
+}
+
 :host([focus-visible]) {
   background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
 

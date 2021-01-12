@@ -30,6 +30,7 @@ import {
   meetingAlertTemplate,
   menuOverlayTemplate,
   modalTemplate,
+  paginationTemplate,
   phoneInputTemplate,
   progressBarTemplate,
   radioGroupTemplate,
@@ -43,6 +44,7 @@ import {
   tooltipTemplate,
   accordionTemplate,
   codeEditorTemplate
+  cardTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -112,6 +114,7 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+
           <div class="container" aria-label="md-code-editor">
             <h2>md-code-editor</h2>
             <sass-stats component="code-editor">
@@ -172,6 +175,13 @@ export class Sandbox extends LitElement {
             <h2>md-button</h2>
             <sass-stats component="button">
               ${buttonTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-card">
+            <h2>md-card</h2>
+            <sass-stats component="card">
+              ${cardTemplate}
             </sass-stats>
           </div>
 
@@ -298,6 +308,13 @@ export class Sandbox extends LitElement {
             <h2>md-modal</h2>
             <sass-stats component="modal">
               ${modalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-pagination">
+            <h2>md-pagination</h2>
+            <sass-stats component="pagination">
+              ${paginationTemplate}
             </sass-stats>
           </div>
 

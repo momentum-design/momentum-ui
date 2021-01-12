@@ -7,11 +7,17 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
+
+export const formatType = ["number", "default"] as const;
+
+export namespace Table {
+  export type Format = typeof formatType[number];
+}
 
 @customElement("md-table")
 export class Table extends LitElement {
@@ -22,10 +28,12 @@ export class Table extends LitElement {
   @property({ type: String }) nodata = "No data Loaded";
   @property({ type: Boolean }) stickheader = false;
   @property({ type: String }) label = "Table";
+  @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
+  @property({ type: String }) format: Table.Format = "default";
 
   @internalProperty() private sort = { columnName: "", sortting: false };
+  @internalProperty() csvData: any = undefined;
 
-  csvData: any;
   headerRow: any;
   results: any;
   config = {
@@ -98,6 +106,7 @@ export class Table extends LitElement {
   get tableClassMap() {
     return {
       "md-table--clean": this.clean,
+      "md-table--no-borders": this.noBorders,
       "md-table--stripped": this.zebra,
       "md-table--sorting": this.sorting
     };
@@ -134,15 +143,16 @@ export class Table extends LitElement {
                 </thead>
                 <tbody class="md-table__body" role="rowgroup">
                   ${this.csvData.map(
-                    (row: any) =>
+                    (row: any, rowIndex: number) =>
                       html`
-                        <tr tabindex="0" role="row">
-                          ${row.map(
-                            (item: any) =>
-                              html`
-                                <td role="cell">${item}</td>
-                              `
-                          )}
+                        <tr tabindex="0" role="row" part=${rowIndex === 0 ? "first-row" : "row"}>
+                          ${row.map((item: any, itemIndex: number) => {
+                            const formattedItem =
+                              this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
+                            return html`
+                              <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">${formattedItem}</td>
+                            `;
+                          })}
                         </tr>
                       `
                   )}

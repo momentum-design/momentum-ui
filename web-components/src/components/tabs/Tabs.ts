@@ -28,6 +28,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TabKeyDownEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 
 type TabViewportData = {
   isTabInViewportHidden: boolean;
@@ -51,6 +52,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @query('slot[name="panel"]') panelSlotElement?: HTMLSlotElement;
   @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
   @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab;
+  @query("md-menu-overlay") menuOverlayElement?: MenuOverlay;
 
   @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab>;
 
@@ -338,6 +340,12 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     this.updateIsMoreTabMenuSelected();
   }
 
+  handleOverlayClose() {
+    if (this.menuOverlayElement) {
+      this.menuOverlayElement.isOpen = false;
+    }
+  }
+
   handleTabKeydown(event: CustomEvent<TabKeyDownEvent>) {
     const { id, key, ctrlKey, shiftKey, altKey, srcEvent } = event.detail;
 
@@ -577,15 +585,18 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
               tab => tab.id,
               tab => {
                 return html`
-                  <md-tab
-                    .disabled="${tab.disabled}"
-                    .selected="${tab.selected}"
-                    id="${this.getCopyTabId(tab)}"
-                    aria-controls="${tab.id}"
-                    tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                  >
-                    ${unsafeHTML(tab.innerHTML)}
-                  </md-tab>
+
+                    <md-tab
+                      .disabled="${tab.disabled}"
+                      .selected="${tab.selected}"
+                      id="${this.getCopyTabId(tab)}"
+                      aria-controls="${tab.id}"
+                      @click=${this.handleOverlayClose}
+                      tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                    >
+                      ${unsafeHTML(tab.innerHTML)}
+                    </md-tab>
+
                 `;
               }
             )}

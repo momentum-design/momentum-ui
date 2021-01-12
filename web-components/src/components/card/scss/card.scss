@@ -1,0 +1,38 @@
+:host(md-card) {
+  .md-card {
+    @include flex($fd: column, $jc: flex-start, $ai: stertch);
+    background: $md-card-bg;
+    border: $md-card-border;
+    border-radius: $md-card-border-radius;
+    box-shadow: $md-card-box-shadow;
+    color: $md-card-color;
+    max-width: $md-card-width;
+    position: relative;
+    width: 100%;
+
+    &-header {
+      @include flex($jc: space-between);
+      flex: 1 0 100%;
+      padding: $md-card-indent calc(#{$md-card-indent} * 2);
+
+      &-title {
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: column;
+        margin: 0 $md-card-indent;
+
+        h3 {
+          color: $md-card-title-color;
+        }
+      }
+    }
+
+    &-content {
+    }
+
+    &-footer {
+      padding: $md-card-indent calc(#{$md-card-indent} * 2);
+
+    }
+  }
+}

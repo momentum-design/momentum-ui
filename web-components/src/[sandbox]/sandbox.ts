@@ -42,7 +42,8 @@ import {
   timePickerTemplate,
   toggleSwitchTemplate,
   tooltipTemplate,
-  accordionTemplate
+  accordionTemplate,
+  cardTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -166,6 +167,13 @@ export class Sandbox extends LitElement {
             <h2>md-button</h2>
             <sass-stats component="button">
               ${buttonTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-card">
+            <h2>md-card</h2>
+            <sass-stats component="card">
+              ${cardTemplate}
             </sass-stats>
           </div>
 

@@ -21,6 +21,7 @@ export class Alert extends LitElement {
   @property({ type: Boolean }) show = false;
   @property({ type: Boolean }) internalClose = true;
   @property({ type: String }) title = "";
+  @property({ type: String }) btnlabel = "Close";
   @property({ type: String }) type = "default";
   @property({ type: Boolean }) inline = false;
 
@@ -100,7 +101,7 @@ export class Alert extends LitElement {
               ${this.closable
                 ? html`
                     <div class="md-alert__button">
-                      <md-button arialabel="Close" title="close" hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
+                      <md-button arialabel="${this.btnlabel}" title="${this.btnlabel}" hasRemoveStyle color="color-none" circle @click="${() => this.close()}">
                         <md-icon slot="icon" name="icon-cancel_16"></md-icon>
                       </md-button>
                     </div>

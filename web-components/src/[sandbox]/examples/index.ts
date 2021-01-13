@@ -23,6 +23,7 @@ export { linkTemplate } from "./link";
 export { listTemplate } from "./list";
 export { loadingTemplate } from "./loading";
 export { meetingAlertTemplate } from "./meeting-alert";
+export { menuItemTemplate } from "./menu-item";
 export { menuOverlayTemplate } from "./menu-overlay";
 export { modalTemplate } from "./modal";
 export { paginationTemplate } from "./pagination";

@@ -28,6 +28,7 @@ import {
   listTemplate,
   loadingTemplate,
   meetingAlertTemplate,
+  menuItemTemplate,
   menuOverlayTemplate,
   modalTemplate,
   paginationTemplate,
@@ -42,7 +43,8 @@ import {
   timePickerTemplate,
   toggleSwitchTemplate,
   tooltipTemplate,
-  accordionTemplate
+  accordionTemplate,
+  cardTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -169,6 +171,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-card">
+            <h2>md-card</h2>
+            <sass-stats component="card">
+              ${cardTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-chat-message">
             <h2>md-chat-message</h2>
             <sass-stats component="chat-message">
@@ -278,6 +287,13 @@ export class Sandbox extends LitElement {
             <h2>md-meeting-alert</h2>
             <sass-stats component="meeting-alert">
               ${meetingAlertTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-menu">
+            <h2>md-menu and md-menu-item</h2>
+            <sass-stats component="menu">
+              ${menuItemTemplate}
             </sass-stats>
           </div>
 

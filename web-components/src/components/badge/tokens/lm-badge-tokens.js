@@ -18,11 +18,45 @@ const badge = {
   blue: {
     "bg-color": {
       light: colors.cobalt[20].name,
-      dark: colors.cobalt[80].name
+      dark: colors.cobalt[70].name
     },
     "text-color": {
       light: colors.cobalt[70].name,
       dark: colors.cobalt[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.cobalt[30].name,
+        dark: colors.cobalt[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.cobalt[40].name,
+        dark: colors.cobalt[50].name
+      }
+    }
+  },
+  gray: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[70].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[30].name,
+        dark: colors.gray[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.gray[30].name,
+        dark: colors.gray[50].name
+      }
     }
   },
   green: {
@@ -33,6 +67,50 @@ const badge = {
     "text-color": {
       light: colors.green[70].name,
       dark: colors.green[20].name
+    }
+  },
+  lime: {
+    "bg-color": {
+      light: colors.lime[20].name,
+      dark: colors.lime[70].name
+    },
+    "text-color": {
+      light: colors.lime[70].name,
+      dark: colors.lime[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.lime[30].name,
+        dark: colors.lime[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.lime[40].name,
+        dark: colors.lime[50].name
+      }
+    }
+  },
+  pink: {
+    "bg-color": {
+      light: colors.pink[20].name,
+      dark: colors.pink[70].name
+    },
+    "text-color": {
+      light: colors.pink[70].name,
+      dark: colors.pink[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.pink[30].name,
+        dark: colors.pink[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.pink[40].name,
+        dark: colors.pink[50].name
+      }
     }
   },
   purple: {
@@ -48,21 +126,45 @@ const badge = {
   violet: {
     "bg-color": {
       light: colors.violet[20].name,
-      dark: colors.violet[80].name
+      dark: colors.violet[70].name
     },
     "text-color": {
       light: colors.violet[70].name,
       dark: colors.violet[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.violet[30].name,
+        dark: colors.violet[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.violet[40].name,
+        dark: colors.violet[50].name
+      }
     }
   },
   mint: {
     "bg-color": {
       light: colors.mint[20].name,
-      dark: colors.mint[80].name
+      dark: colors.mint[70].name
     },
     "text-color": {
       light: colors.mint[70].name,
       dark: colors.mint[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.mint[30].name,
+        dark: colors.mint[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.mint[40].name,
+        dark: colors.mint[50].name
+      }
     }
   },
   darkmint: {
@@ -83,6 +185,28 @@ const badge = {
     "text-color": {
       light: colors.yellow[70].name,
       dark: colors.yellow[20].name
+    }
+  },
+  gold: {
+    "bg-color": {
+      light: colors.gold[20].name,
+      dark: colors.gold[70].name
+    },
+    "text-color": {
+      light: colors.gold[70].name,
+      dark: colors.gold[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gold[30].name,
+        dark: colors.gold[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.gold[40].name,
+        dark: colors.gold[50].name
+      }
     }
   },
   red: {
@@ -108,11 +232,23 @@ const badge = {
   orange: {
     "bg-color": {
       light: colors.orange[20].name,
-      dark: colors.orange[80].name
+      dark: colors.orange[70].name
     },
     "text-color": {
       light: colors.orange[70].name,
       dark: colors.orange[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.orange[30].name,
+        dark: colors.orange[60].name
+      }
+    },
+    active: {
+      "bg-color": {
+        light: colors.orange[40].name,
+        dark: colors.orange[50].name
+      }
     }
   },
   cyan: {

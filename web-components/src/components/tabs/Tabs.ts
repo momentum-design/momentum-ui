@@ -28,6 +28,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TabKeyDownEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 
 type TabViewportData = {
   isTabInViewportHidden: boolean;
@@ -51,6 +52,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @query('slot[name="panel"]') panelSlotElement?: HTMLSlotElement;
   @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
   @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab;
+  @query("md-menu-overlay") menuOverlayElement?: MenuOverlay;
 
   @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab>;
 
@@ -91,7 +93,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
 
   // This operation may affect render performance when using frequently. Use careful!
   private measureTabsOffsetWidth() {
-    return !this.justified
+    return !this.justified && this.direction !== "vertical"
       ? this.tabs.map((tab, idx) => tab.offsetWidth)
       : this.tabs.map((tab, idx) => {
           tab.setAttribute("measuringrealwidth", "");
@@ -102,92 +104,94 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   private async manageOverflow() {
-    const tabsCount = this.tabs.length;
-    if (this.tabsListElement && tabsCount > 1) {
-      const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
+    if (this.direction !== "vertical") { 
+      const tabsCount = this.tabs.length;
+      if (this.tabsListElement && tabsCount > 1) {
+        const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
 
-      // Awaiting tabs updates
-      {
-        const tabUpdatesCompletesPromises = this.tabs
-          .map(tab => {
-            if (typeof tab.updateComplete !== "undefined") {
-              return tab.updateComplete;
-            }
-            return null;
-          })
-          .filter(promise => promise !== null);
+        // Awaiting tabs updates
+        {
+          const tabUpdatesCompletesPromises = this.tabs
+            .map(tab => {
+              if (typeof tab.updateComplete !== "undefined") {
+                return tab.updateComplete;
+              }
+              return null;
+            })
+            .filter(promise => promise !== null);
 
-        tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
-      }
-
-      const tabsOffsetsWidths = this.measureTabsOffsetWidth();
-
-      // All tabs total offsetsWidth
-      const tabsTotalOffsetWidth = this.tabs.reduce((acc, tab, idx) => {
-        acc += tabsOffsetsWidths[idx];
-        return acc;
-      }, 0);
-
-      if (tabsTotalOffsetWidth) {
-        // more
-        await this.setupMoreTab();
-
-        let isTabsFitInViewport = true;
-        if (tabsListViewportOffsetWidth < tabsTotalOffsetWidth) {
-          // console.log("Applied More button");
-          isTabsFitInViewport = false;
-        } else {
-          // console.log("Removed More button");
+          tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
         }
 
-        const newTabsViewportList: TabsViewportDataList = [];
-        let tabsOffsetWidthSum = 0;
-        this.tabs.forEach((tab, idx) => {
-          tabsOffsetWidthSum += tabsOffsetsWidths[idx];
+        const tabsOffsetsWidths = this.measureTabsOffsetWidth();
 
-          const isTabInViewportHidden = isTabsFitInViewport
-            ? false
-            : tabsOffsetWidthSum + (idx < tabsCount - 1 ? this.moreTabMenuOffsetWidth : 0) >
-              tabsListViewportOffsetWidth;
+        // All tabs total offsetsWidth
+        const tabsTotalOffsetWidth = this.tabs.reduce((acc, tab, idx) => {
+          acc += tabsOffsetsWidths[idx];
+          return acc;
+        }, 0);
 
-          newTabsViewportList.push({
-            isTabInViewportHidden: isTabInViewportHidden,
-            tabOffsetWidth: tabsOffsetsWidths[idx]
+        if (tabsTotalOffsetWidth) {
+          // more
+          await this.setupMoreTab();
+
+          let isTabsFitInViewport = true;
+          if (tabsListViewportOffsetWidth < tabsTotalOffsetWidth) {
+            // console.log("Applied More button");
+            isTabsFitInViewport = false;
+          } else {
+            // console.log("Removed More button");
+          }
+
+          const newTabsViewportList: TabsViewportDataList = [];
+          let tabsOffsetWidthSum = 0;
+          this.tabs.forEach((tab, idx) => {
+            tabsOffsetWidthSum += tabsOffsetsWidths[idx];
+
+            const isTabInViewportHidden = isTabsFitInViewport
+              ? false
+              : tabsOffsetWidthSum + (idx < tabsCount - 1 ? this.moreTabMenuOffsetWidth : 0) >
+                tabsListViewportOffsetWidth;
+
+            newTabsViewportList.push({
+              isTabInViewportHidden: isTabInViewportHidden,
+              tabOffsetWidth: tabsOffsetsWidths[idx]
+            });
           });
-        });
 
-        this.tabsViewportDataList = newTabsViewportList;
+          this.tabsViewportDataList = newTabsViewportList;
 
-        // Make real tabs viewportHidden update
-        this.tabsViewportDataList.forEach((tvd, idx) => (this.tabs[idx].viewportHidden = tvd.isTabInViewportHidden));
+          // Make real tabs viewportHidden update
+          this.tabsViewportDataList.forEach((tvd, idx) => (this.tabs[idx].viewportHidden = tvd.isTabInViewportHidden));
 
-        // Make more button hidden update
-        this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find(tvd => tvd.isTabInViewportHidden);
+          // Make more button hidden update
+          this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find(tvd => tvd.isTabInViewportHidden);
 
-        // Only tabs going visible
-        this.tabsFilteredAsVisibleList = this.tabs.filter(
-          (t, idx) => !this.tabsViewportDataList[idx].isTabInViewportHidden
-        );
-        this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
-          acc[tab.id] = idx;
-          return acc;
-        }, {} as Record<TabId, number>);
+          // Only tabs going visible
+          this.tabsFilteredAsVisibleList = this.tabs.filter(
+            (t, idx) => !this.tabsViewportDataList[idx].isTabInViewportHidden
+          );
+          this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
+            acc[tab.id] = idx;
+            return acc;
+          }, {} as Record<TabId, number>);
 
-        // Only tabs going hidden
-        this.tabsFilteredAsHiddenList = this.tabs.filter(
-          (t, idx) => this.tabsViewportDataList[idx].isTabInViewportHidden
-        );
-        this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
-          acc[tab.id] = idx;
-          return acc;
-        }, {} as Record<TabId, number>);
+          // Only tabs going hidden
+          this.tabsFilteredAsHiddenList = this.tabs.filter(
+            (t, idx) => this.tabsViewportDataList[idx].isTabInViewportHidden
+          );
+          this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
+            acc[tab.id] = idx;
+            return acc;
+          }, {} as Record<TabId, number>);
+        }
       }
+
+      this.updateIsMoreTabMenuSelected();
+
+      const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find(t => !t.disabled);
+      this.updateHiddenIdPositiveTabIndex(firstNotDisabledHiddenTab);
     }
-
-    this.updateIsMoreTabMenuSelected();
-
-    const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find(t => !t.disabled);
-    this.updateHiddenIdPositiveTabIndex(firstNotDisabledHiddenTab);
   }
 
   private updateIsMoreTabMenuSelected() {
@@ -217,6 +221,10 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       tab.setAttribute("id", id);
       tab.setAttribute("aria-controls", id);
       tab.selected = this.selected === index;
+
+      if (this.direction === "vertical") {
+        tab.vertical = true;
+      }
 
       const panel = panels[index];
 
@@ -330,6 +338,12 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     this.selected = newSelectedTabIdx;
 
     this.updateIsMoreTabMenuSelected();
+  }
+
+  handleOverlayClose() {
+    if (this.menuOverlayElement) {
+      this.menuOverlayElement.isOpen = false;
+    }
   }
 
   handleTabKeydown(event: CustomEvent<TabKeyDownEvent>) {
@@ -491,13 +505,16 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   }
 
   private async setupMoreTab() {
-    if (this.moreTabMenuElement && !this.isMoreTabMenuMeasured) {
-      await this.moreTabMenuElement.updateComplete;
-      if (this.moreTabMenuElement.offsetWidth) {
-        this.moreTabMenuOffsetWidth = this.moreTabMenuElement.offsetWidth;
-        this.isMoreTabMenuMeasured = true;
+    if (this.direction !== "vertical") {
+      if (this.moreTabMenuElement && !this.isMoreTabMenuMeasured) {
+        await this.moreTabMenuElement.updateComplete;
+        if (this.moreTabMenuElement.offsetWidth) {
+          this.moreTabMenuOffsetWidth = this.moreTabMenuElement.offsetWidth;
+          this.isMoreTabMenuMeasured = true;
+        }
       }
     }
+    
   }
 
   disconnectedCallback() {
@@ -568,15 +585,18 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
               tab => tab.id,
               tab => {
                 return html`
-                  <md-tab
-                    .disabled="${tab.disabled}"
-                    .selected="${tab.selected}"
-                    id="${this.getCopyTabId(tab)}"
-                    aria-controls="${tab.id}"
-                    tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                  >
-                    ${unsafeHTML(tab.innerHTML)}
-                  </md-tab>
+
+                    <md-tab
+                      .disabled="${tab.disabled}"
+                      .selected="${tab.selected}"
+                      id="${this.getCopyTabId(tab)}"
+                      aria-controls="${tab.id}"
+                      @click=${this.handleOverlayClose}
+                      tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                    >
+                      ${unsafeHTML(tab.innerHTML)}
+                    </md-tab>
+
                 `;
               }
             )}

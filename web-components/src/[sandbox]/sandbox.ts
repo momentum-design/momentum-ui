@@ -28,6 +28,7 @@ import {
   listTemplate,
   loadingTemplate,
   meetingAlertTemplate,
+  menuItemTemplate,
   menuOverlayTemplate,
   modalTemplate,
   paginationTemplate,
@@ -286,6 +287,13 @@ export class Sandbox extends LitElement {
             <h2>md-meeting-alert</h2>
             <sass-stats component="meeting-alert">
               ${meetingAlertTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-menu">
+            <h2>md-menu and md-menu-item</h2>
+            <sass-stats component="menu">
+              ${menuItemTemplate}
             </sass-stats>
           </div>
 

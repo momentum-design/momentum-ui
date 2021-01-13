@@ -16,6 +16,7 @@ export { Badge } from "./components/badge/Badge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { Button } from "./components/button/Button";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
+export { Card } from "./components/card/Card";
 export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";

@@ -7,10 +7,12 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/table/Table";
 import "@/components/theme/Theme";
+import { formatType } from "@/components/table/Table";
+
 
 export default {
   title: "Table",
@@ -47,6 +49,8 @@ export const Table = () => {
   const zebra = boolean("zebra", false);
   const clean = boolean("clean", false);
   const sorting = boolean("sorting", false);
+  const noBorders = boolean("noBorders", false);
+  const format = select("format", formatType, "number");
 
   return html`
   <!-- <p>"Data" for create table should have this format:</br>
@@ -57,7 +61,15 @@ export const Table = () => {
   </p> -->
   <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <div style="height: 400px;">
-      <md-table .zebra=${zebra} .label="${label}" .tabledata="${tabledata}" .stickheader="${stickheader}" .clean="${clean}" .sorting="${sorting}"></md-table>
+      <md-table
+        .zebra=${zebra}
+        .label="${label}"
+        .tabledata="${tabledata}"
+        .stickheader="${stickheader}"
+        .clean="${clean}"
+        .sorting="${sorting}"
+        no-borders="${noBorders}"
+        .format=${format}></md-table>
     </div>
   </md-theme>
   

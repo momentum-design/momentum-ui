@@ -12,7 +12,6 @@ import "@interactjs/modifiers";
 import "@interactjs/actions/resize";
 import * as Interact from "@interactjs/types";
 import interact from "@interactjs/interact/index";
-import { styleMap } from "lit-html/directives/style-map";
 
 @customElement("md-floating-modal")
 export class FloatingModal extends LitElement {
@@ -34,23 +33,6 @@ export class FloatingModal extends LitElement {
     return {
       fixed: this.fixed
     };
-  }
-
-  get containerStyleMap() {
-    if (this.containerRect) {
-      const { top, left, bottom, right, width, height } = this.containerRect;
-      return {
-        width: `${this.full ? `100%` : `${width}px`}`,
-        height: `${this.full ? `100%` : `${height}px`}`,
-        top: `${this.full ? `0px` : `${top}px`}`,
-        left: `${this.full ? `0px` : `${left}px`}`,
-        bottom: `${this.full ? `0px` : `${bottom}px`}`,
-        right: `${this.full ? `0px` : `${right}px`}`,
-        ...(this.full && { transform: "none" }),
-        ...(!this.full && { inset: "0px", transform: this.containerTransform })
-      };
-    }
-    return {};
   }
 
   static get styles() {
@@ -98,6 +80,7 @@ export class FloatingModal extends LitElement {
           .resizable({
             edges: { left: true, right: true, bottom: true, top: true },
             listeners: {
+              end: this.resizeEndListener,
               move: this.resizeMoveListener
             },
             modifiers: this.aspectRatio
@@ -114,8 +97,10 @@ export class FloatingModal extends LitElement {
             autoScroll: true,
             allowFrom: this.header,
             ignoreFrom: this.body,
-            onmove: this.dragMoveListener,
-            onend: this.dragEndListener
+            listeners: {
+              move: this.dragMoveListener,
+              end: this.dragEndListener
+            }
           });
       }
     });
@@ -144,13 +129,17 @@ export class FloatingModal extends LitElement {
     let x = parseFloat(target.getAttribute("data-x") as string) || 0;
     let y = parseFloat(target.getAttribute("data-y") as string) || 0;
 
-    target.style.width = `${event.rect.width}px`;
-    target.style.height = `${event.rect.height}px`;
+    target.style.setProperty("width", `${event.rect.width}px`, "important");
+    target.style.setProperty("height", `${event.rect.height}px`, "important");
 
     x += event.deltaRect!.left;
     y += event.deltaRect!.top;
 
     this.setTargetPosition(target, x, y);
+  };
+
+  private resizeEndListener = () => {
+    this.setContainerRect();
   };
 
   private dragMoveListener = (event: Interact.InteractEvent) => {
@@ -193,7 +182,18 @@ export class FloatingModal extends LitElement {
               role="dialog"
               aria-label=${ifDefined(this.label || undefined)}
               aria-modal="true"
-              style=${ifDefined(this.containerRect ? styleMap(this.containerStyleMap) : undefined)}
+              style=${ifDefined(
+                this.containerRect
+                  ? `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
+                 height: ${this.full ? "100% !important" : `${this.containerRect.height}px !important`};
+                 top: ${this.full ? "0 !important" : `${this.containerRect.top}px !important`};
+                 left: ${this.full ? "0 !important" : `${this.containerRect.left}px !important`};
+                 bottom: ${this.full ? "0 !important" : `${this.containerRect.bottom}px !important`};
+                 right: ${this.full ? "0 !important" : `${this.containerRect.right}px !important`};
+                ${this.full ? "transform: none !important" : ""};
+                ${!this.full ? `inset: 0px !important; transform: ${this.containerTransform} !important` : ""};`
+                  : undefined
+              )}
             >
               <div class="md-floating__header">
                 <div class="md-floating__header-text">

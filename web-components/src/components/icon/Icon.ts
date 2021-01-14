@@ -80,7 +80,7 @@ export class Icon extends LitElement {
       case "name-error":
         console.warn(
           `[@momentum-ui/web-component] Icon: Icon ${data} does not exist in the design system.` +
-            ` Visit https://momentum.design/styles/icons/library for a list of available icons or to request a new icon.`
+            ` Visit https://momentum.design/icons for a list of available icons or to request a new icon.`
         );
         break;
     }

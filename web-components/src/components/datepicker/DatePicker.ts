@@ -49,6 +49,17 @@ export class DatePicker extends LitElement {
     if (event?.detail?.value) {
       this.value = event?.detail?.value;
     }
+
+    this.dispatchEvent(
+      new CustomEvent("date-input-change", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          sourceEvent: event,
+          value: this.value
+        }
+      })
+    );
   }
 
   updated(changedProperties: PropertyValues) {
@@ -164,7 +175,7 @@ export class DatePicker extends LitElement {
         <md-input
           class="date-input"
           slot="menu-trigger"
-          placeholder=${ifDefined(this.placeholder)}
+          placeholder=${ifDefined(placeholder)}
           value=${ifDefined(this.value)}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
           auxiliaryContentPosition="before"

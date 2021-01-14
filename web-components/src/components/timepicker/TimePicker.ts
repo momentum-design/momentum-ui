@@ -67,7 +67,7 @@ export class TimePicker extends LitElement {
   @property({ type: Boolean, attribute: "twenty-four-hour-format", reflect: true }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
   @property({ type: String }) locale = "en-US";
-  @property({ type: String, reflect: true }) value = "00:00:00.000-08:00"; // ISO FORMAT
+  @property({ type: String, reflect: true }) value = "00:00:00-08:00"; // ISO FORMAT
 
   @internalProperty() private finalTwentyFourFormat = false;
   @internalProperty() private timeObject: DateTime = now();
@@ -99,7 +99,7 @@ export class TimePicker extends LitElement {
       this.timeObject = DateTime.fromISO(this.value, { locale: this.locale });
       const localeTimeFormat = this.getLocaleTimeFormat(this.timeObject);
       this.finalTwentyFourFormat = this.twentyFourHourFormat || localeTimeFormat;
-      this.value = this.timeObject.toISOTime();
+      this.value = this.timeObject.toISOTime({ suppressMilliseconds: true });
       this.updateTimeValues();
     }
   }
@@ -220,7 +220,7 @@ export class TimePicker extends LitElement {
           hour: this.to12HourFormat(this.timeValue[TIME_UNIT.AM_PM], this.timeValue[TIME_UNIT.HOUR])
         });
 
-        this.value = this.timeObject.toISOTime() || this.value;
+        this.value = this.timeObject.toISOTime({ suppressMilliseconds: true }) || this.value;
 
         this.dispatchEvent(
           new CustomEvent(`time-selection-change`, {

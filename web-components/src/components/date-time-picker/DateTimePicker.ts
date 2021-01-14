@@ -9,6 +9,7 @@ import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
+import { Input } from "@/components/input/Input";
 
 export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -22,7 +23,7 @@ export class DateTimePicker extends LitElement {
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
   @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) timeValue = "00:00:00.000-08:00"; // ISO FORMAT
+  @property({ type: String }) timeValue = "00:00:00-08:00"; // ISO FORMAT
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
@@ -41,7 +42,7 @@ export class DateTimePicker extends LitElement {
 
   handleTimeChange = (event: any) => {
     this.selectedTimeObject = event?.detail?.data as DateTime;
-    this.timeValue = this.selectedTimeObject?.toISOTime();
+    this.timeValue = this.selectedTimeObject?.toISOTime({ suppressMilliseconds: true });
   };
 
   protected async firstUpdated(changedProperties: PropertyValues) {
@@ -50,16 +51,23 @@ export class DateTimePicker extends LitElement {
       this.dateValue = this.selectedDateObject?.toISODate();
     }
     this.selectedTimeObject = DateTime.fromISO(this.timeValue);
-    this.timeValue = this.selectedTimeObject.toISOTime();
+    this.timeValue = this.selectedTimeObject.toISOTime({ suppressMilliseconds: true });
     this.updateDateTime();
 
     await new Promise(resolve => setTimeout(resolve, 0));
 
     if (this.datePicker) {
       this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
+      this.datePicker.addEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
     }
     if (this.timePicker) {
       this.timePicker.addEventListener("time-selection-change", this.handleTimeChange);
+    }
+  }
+
+  handleDateTimeInputChange = (event: CustomEvent) => {
+    if (event?.detail?.value) {
+      this.value = event?.detail?.value;
     }
   }
 
@@ -108,8 +116,8 @@ export class DateTimePicker extends LitElement {
         <md-datepicker
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
-          value=${ifDefined(this.dateValue)}
-          placeholder=${ifDefined(this.fullDateTime?.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS))}
+          value=${ifDefined(this.value)}
+          placeholder=${ifDefined(this.fullDateTime?.toISO({ suppressMilliseconds: true }))}
           weekStart=${this.weekStart}
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">

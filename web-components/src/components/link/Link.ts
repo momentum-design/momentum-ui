@@ -72,6 +72,7 @@ export class Link extends LitElement {
               href=${this.href}
               tabindex=${this.tabIndex}
               role="link"
+              part="link"
             >
               <slot></slot>
             </a>

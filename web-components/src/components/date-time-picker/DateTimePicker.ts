@@ -46,9 +46,12 @@ export class DateTimePicker extends LitElement {
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    this.dateValue = this.selectedDateObject?.toISODate();
+    if (!this.dateValue) {
+      this.dateValue = this.selectedDateObject?.toISODate();
+    }
     this.selectedTimeObject = DateTime.fromISO(this.timeValue);
     this.timeValue = this.selectedTimeObject.toISOTime();
+    this.updateDateTime();
 
     await new Promise(resolve => setTimeout(resolve, 0));
 

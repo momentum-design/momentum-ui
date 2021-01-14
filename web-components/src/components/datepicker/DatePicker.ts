@@ -5,6 +5,7 @@ import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -28,21 +29,42 @@ export class DatePicker extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
-    this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
+    if (this.minDate) {
+      this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
+    }
+    if (this.maxDate) {
+      this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale });
+    }
+  }
+
+  async firstUpdated(changedProperties: PropertyValues) {
+    super.firstUpdated(changedProperties);
+
+    if (!this.value) {
+      this.value = this.selectedDate?.toISODate();
+    }
+  }
+
+  handleDateInputChange = (event: CustomEvent) => {
+    if (event?.detail?.value) {
+      this.value = event?.detail?.value;
+    }
   }
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    if (changedProperties.has("value")) {
-      this.value ? (this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale })) : null;
+    if (this.value && changedProperties.has("value")) {
+      this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale });
+      this.setPreSelection(this.selectedDate);
     }
     if (changedProperties.has("locale")) {
       this.render();
     }
-    if (changedProperties.has("minDate") || changedProperties.has("maxDate")) {
-      this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
-      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
+    if ((this.minDate && changedProperties.has("minDate"))) {
+      this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
+    }
+    if (this.maxDate && changedProperties.has("maxDate")) {
+      this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale });
     }
   }
 
@@ -53,7 +75,7 @@ export class DatePicker extends LitElement {
   handleSelect = (e: CustomEvent) => {
     const date = e.detail.date;
     const event = e.detail.sourceEvent;
-    this.setPreSelection(date, event);
+    this.setPreSelection(date);
     this.setSelected(date, event);
     this.shouldCloseOnSelect && this.setOpen(false);
   };
@@ -77,9 +99,11 @@ export class DatePicker extends LitElement {
     );
   };
 
-  setPreSelection = (date: DateTime, event: KeyboardEvent) => {
+  setPreSelection = (date: DateTime) => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-    !isDayDisabled(date, filters) ? (this.focusedDate = date) : null;
+    if (!isDayDisabled(date, filters)) {
+      this.focusedDate = date;
+    }
   };
 
   handleKeyDown = (e: CustomEvent) => {
@@ -98,21 +122,21 @@ export class DatePicker extends LitElement {
         this.setOpen(false);
         break;
       case "ArrowUp":
-        this.setPreSelection(subtractWeeks(copy, 1), event);
+        this.setPreSelection(subtractWeeks(copy, 1));
         flag = true;
         break;
       case "ArrowLeft":
-        this.setPreSelection(subtractDays(copy, 1), event);
+        this.setPreSelection(subtractDays(copy, 1));
         flag = true;
         break;
 
       case "ArrowRight":
-        this.setPreSelection(addDays(copy, 1), event);
+        this.setPreSelection(addDays(copy, 1));
         flag = true;
         break;
 
       case "ArrowDown":
-        this.setPreSelection(addWeeks(copy, 1), event);
+        this.setPreSelection(addWeeks(copy, 1));
         flag = true;
         break;
 
@@ -133,15 +157,21 @@ export class DatePicker extends LitElement {
   };
 
   render() {
-    const placeholder = this.placeholder || this.selectedDate.toLocaleString({ locale: this.locale });
+    const placeholder = this.placeholder || this.selectedDate?.toISODate();
 
     return html`
       <md-menu-overlay custom-width="248px">
         <md-input
+          class="date-input"
           slot="menu-trigger"
-          placeholder=${placeholder}
+          placeholder=${ifDefined(this.placeholder)}
+          value=${ifDefined(this.value)}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
-        ></md-input>
+          auxiliaryContentPosition="before"
+          @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+        >
+          <md-icon slot="input-section" name="calendar-month_16"></md-icon>
+        </md-input>
         <div class="date-overlay-content">
           <md-datepicker-calendar
             @day-select=${(e: CustomEvent) => this.handleSelect(e)}

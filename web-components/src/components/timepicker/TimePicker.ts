@@ -69,7 +69,6 @@ export class TimePicker extends LitElement {
   @property({ type: String }) locale = "en-US";
   @property({ type: String, reflect: true }) value = "00:00:00.000-08:00"; // ISO FORMAT
 
-  @internalProperty() private localeTwentyFourFormat = false;
   @internalProperty() private finalTwentyFourFormat = false;
   @internalProperty() private timeObject: DateTime = now();
   @internalProperty() private tabNext = false;

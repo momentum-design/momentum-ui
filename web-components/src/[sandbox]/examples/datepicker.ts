@@ -23,4 +23,6 @@ export const datePickerTemplate = html`
   <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
   <h3>datepicker with Monday start week start</h3>
   <md-datepicker weekStart="Monday"></md-datepicker>
+  <h3>datepicker with initial value</h3>
+  <md-datepicker weekStart="Monday" value="2021-01-31"></md-datepicker>
 `;

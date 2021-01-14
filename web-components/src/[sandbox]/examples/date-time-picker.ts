@@ -19,4 +19,6 @@ export const dateTimePickerTemplate = html`
   <md-date-time-picker locale="ru"></md-date-time-picker>
   <h3>date-time-picker with minDate & maxDate</h3>
   <md-date-time-picker minDate=${minDate} maxDate=${maxDate}></md-date-time-picker>
+  <h3>date-time-picker with dateValue & timeValue</h3>
+  <md-date-time-picker dateValue="2021-01-31" timeValue="08:20:00.000-08:00"></md-date-time-picker>
 `;

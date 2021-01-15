@@ -1,5 +1,5 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
@@ -26,7 +26,8 @@ export class FloatingModal extends LitElement {
   @query(".md-floating__body") body!: HTMLDivElement;
   @query(".md-floating__header") header!: HTMLDivElement;
 
-  private containerRect: DOMRect | null = null;
+  @internalProperty() private containerRect: DOMRect | null = null;
+
   private containerTransform = "";
 
   get floatingClassMap() {
@@ -109,6 +110,7 @@ export class FloatingModal extends LitElement {
   handleClose(event: MouseEvent) {
     this.show = false;
     this.full = false;
+
     this.dispatchEvent(
       new CustomEvent("floating-modal-close", {
         composed: true,
@@ -163,7 +165,6 @@ export class FloatingModal extends LitElement {
   private destroyInteractInstance() {
     if (this.container && interact.isSet(this.container)) {
       interact(this.container).unset();
-      this.containerRect = null;
     }
   }
 
@@ -186,12 +187,12 @@ export class FloatingModal extends LitElement {
                 this.containerRect
                   ? `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
                  height: ${this.full ? "100% !important" : `${this.containerRect.height}px !important`};
-                 top: ${this.full ? "0 !important" : `${this.containerRect.top}px !important`};
-                 left: ${this.full ? "0 !important" : `${this.containerRect.left}px !important`};
-                 bottom: ${this.full ? "0 !important" : `${this.containerRect.bottom}px !important`};
-                 right: ${this.full ? "0 !important" : `${this.containerRect.right}px !important`};
+                 top: ${this.full ? "0 !important" : ""};
+                 left: ${this.full ? "0 !important" : ""};
+                 bottom: ${this.full ? "0 !important" : ""};
+                 right: ${this.full ? "0 !important" : ""};
                 ${this.full ? "transform: none !important" : ""};
-                ${!this.full ? `inset: 0px !important; transform: ${this.containerTransform} !important` : ""};`
+                ${!this.full ? `transform: ${this.containerTransform} !important` : ""};`
                   : undefined
               )}
             >

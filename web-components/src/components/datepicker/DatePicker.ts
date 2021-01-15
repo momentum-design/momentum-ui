@@ -44,7 +44,7 @@ export class DatePicker extends LitElement {
     super.firstUpdated(changedProperties);
 
     if (!this.value) {
-      this.value = this.selectedDate?.toISODate();
+      this.value = this.includesTime ? this.selectedDate?.toISO({ suppressMilliseconds: true }) : this.selectedDate?.toISODate();
     }
   }
 
@@ -97,7 +97,7 @@ export class DatePicker extends LitElement {
   setSelected = (date: DateTime, event: Event) => {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
     if (!isDayDisabled(date, filters)) {
-      const dateString = date.toISODate();
+      const dateString = this.includesTime ? date.toISO({ suppressMilliseconds: true }) : date.toISODate();
       this.selectedDate = date;
       this.value = dateString;
     }
@@ -171,7 +171,7 @@ export class DatePicker extends LitElement {
   };
 
   isValueValid = () => {
-    const regexString = this.includesTime ? ValidationRegex.ISODateTimeString: ValidationRegex.ISODateString;
+    const regexString = this.includesTime ? ValidationRegex.ISOString: ValidationRegex.ISODateString;
     const regex = RegExp(regexString);
     const isValid = !this.value || regex.test(this.value);
     return isValid ? "" : "error";

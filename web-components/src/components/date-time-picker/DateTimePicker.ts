@@ -76,7 +76,7 @@ export class DateTimePicker extends LitElement {
     }
   }
 
-  updateDateTime = (dateTime?: string) => {
+  updateDateTime = () => {
     if (this.dateValue) {
       if (this.timeValue) {
         this.value = `${this.dateValue}T${this.timeValue}`;

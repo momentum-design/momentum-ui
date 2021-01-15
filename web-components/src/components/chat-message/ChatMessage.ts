@@ -9,6 +9,7 @@ export class ChatMessage extends LitElement {
   @property({ type: String }) title = "";
   @property({ type: String }) src = "";
   @property({ type: String }) time = "";
+  @property({ type: String }) label = "Avatar";
   @property({ type: Boolean }) self = false;
   static get styles() {
     return [reset, styles];
@@ -20,6 +21,7 @@ export class ChatMessage extends LitElement {
         <md-avatar
           type=${ifDefined(this.self ? "self" : undefined)}
           title=${this.self ? "self" : this.title}
+          label="${this.label}"
           src=${ifDefined(this.self ? undefined : this.src)}
         ></md-avatar>
 

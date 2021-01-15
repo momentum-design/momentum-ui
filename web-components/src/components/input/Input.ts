@@ -142,7 +142,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) htmlId = "";
   @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
   @property({ type: String }) placeholder = "";
-  @property({ type: String }) ariaLabel = "";
+  @property({ type: String }) ariaLabel = "input";
   @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
   @property({ type: String }) clearAriaLabel = "";
   @property({ type: String }) id = "";

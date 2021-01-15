@@ -35,7 +35,6 @@ describe("List", () => {
     expect(element.getAttribute("role")).toEqual("list");
 
     expect(element.getAttribute("aria-label")).toEqual("Transuranium elements");
-    expect(element.getAttribute("aria-orientation")).toEqual("vertical");
     expect(element.getAttribute("alignment")).toEqual("vertical");
 
     element.alignment = "horizontal";

@@ -27,7 +27,7 @@
 }
 
 :host(:active:not([disabled])),
-:host([aria-selected="true"]:not([disabled])) {
+:host([selected]:not([disabled])) {
   .md-list-item {
     background-color: var(--list-active-background, $md-list-active-background-light);
   }

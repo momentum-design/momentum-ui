@@ -26,7 +26,6 @@ export class List extends RovingTabIndexMixin(LitElement) {
     super.firstUpdated(changedProperties);
 
     this.setAttribute("aria-label", this.label);
-    this.setAttribute("aria-orientation", this.alignment);
   }
 
   private notifySelectedChange() {

@@ -173,7 +173,10 @@ export class DatePicker extends LitElement {
   isValueValid = () => {
     const regexString = this.includesTime ? ValidationRegex.ISOString: ValidationRegex.ISODateString;
     const regex = RegExp(regexString);
-    const isValid = !this.value || regex.test(this.value);
+
+    const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
+    const isValid = this.value && regex.test(this.value) && !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
+
     return isValid ? "" : "error";
   }
 

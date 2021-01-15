@@ -33,14 +33,13 @@ export class ListItem extends FocusMixin(LitElement) {
   }
 
   private _selected = false;
-  @property({ type: Boolean, attribute: false })
+  @property({ type: Boolean, reflect: true })
   get selected() {
     return this._selected;
   }
   set selected(value: boolean) {
     const oldValue = this._selected;
     this._selected = value;
-    this.setAttribute("aria-selected", `${value}`);
     this.requestUpdate("selected", oldValue);
   }
 

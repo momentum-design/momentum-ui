@@ -9,7 +9,6 @@ import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
-import { Input } from "@/components/input/Input";
 
 export namespace DateTimePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -18,17 +17,17 @@ export class DateTimePicker extends LitElement {
   @property({ type: String }) maxDate: string | undefined = undefined;
   @property({ type: String }) minDate: string | undefined = undefined;
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
-  @property({ type: String }) dateValue: string | undefined = undefined;
+  @property({ type: String, attribute: "date-value" }) dateValue: string | undefined = undefined;
 
   @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
   @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
   @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) timeValue = "00:00:00-08:00"; // ISO FORMAT
+  @property({ type: String, attribute: "time-value" }) timeValue = "00:00:00-08:00"; // ISO FORMAT
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
 
-  @internalProperty() fullDateTime: DateTime | null = null;
+  @internalProperty() fullDateTime: DateTime | undefined = undefined;
   @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
   @internalProperty() selectedDateObject: DateTime = now();
 
@@ -47,12 +46,18 @@ export class DateTimePicker extends LitElement {
 
   protected async firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
-    if (!this.dateValue) {
+
+    if (this.value && changedProperties.has("value")) {
+      this.dateValue = this.value.split("T")[0];
+      this.timeValue = this.value.split("T")[1];
+      this.updateDateTime();
+    } else if (!this.dateValue) {
       this.dateValue = this.selectedDateObject?.toISODate();
+
+      this.selectedTimeObject = DateTime.fromISO(this.timeValue);
+      this.timeValue = this.selectedTimeObject.toISOTime({ suppressMilliseconds: true });
+      this.updateDateTime();
     }
-    this.selectedTimeObject = DateTime.fromISO(this.timeValue);
-    this.timeValue = this.selectedTimeObject.toISOTime({ suppressMilliseconds: true });
-    this.updateDateTime();
 
     await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -71,22 +76,29 @@ export class DateTimePicker extends LitElement {
     }
   }
 
-  updateDateTime = () => {
-    this.value = `${this.dateValue}T${this.timeValue}`;
-    this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
+  updateDateTime = (dateTime?: string) => {
+    if (this.dateValue) {
+      if (this.timeValue) {
+        this.value = `${this.dateValue}T${this.timeValue}`;
+      } else {
+        this.value = this.dateValue;
+      }
 
-    this.dispatchEvent(
-      new CustomEvent(`date-time-change`, {
-        bubbles: true,
-        composed: true,
-        detail: {
-          dateTimeString: this.value,
-          dateTime: this.fullDateTime,
-          locale: this.locale,
-          twentyFourHourFormat: this.twentyFourHourFormat
-        }
-      })
-    );
+      this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
+      this.dispatchEvent(
+        new CustomEvent(`date-time-change`, {
+          bubbles: true,
+          composed: true,
+          detail: {
+            dateTimeString: this.value,
+            dateTime: this.fullDateTime,
+            locale: this.locale,
+            twentyFourHourFormat: this.twentyFourHourFormat
+          }
+        })
+      );
+
+    }
   }
 
   protected updated(changedProperties: PropertyValues) {
@@ -114,11 +126,12 @@ export class DateTimePicker extends LitElement {
   render() {
     return html`
         <md-datepicker
+          includes-time
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}
-          placeholder=${ifDefined(this.fullDateTime?.toISO({ suppressMilliseconds: true }))}
           weekStart=${this.weekStart}
+          placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
             <md-timepicker

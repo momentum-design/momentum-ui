@@ -3,9 +3,11 @@ import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { ValidationRegex } from "@/utils/validations";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { Input } from "@/components/input/Input";
 
 export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -18,6 +20,7 @@ export class DatePicker extends LitElement {
   @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
   @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
+  @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
 
   @internalProperty() selectedDate: DateTime = now();
   @internalProperty() focusedDate: DateTime = now();
@@ -164,22 +167,29 @@ export class DatePicker extends LitElement {
   chosenDateLabel = () => {
     return this.selectedDate
       ? `, Selected date is ${this.selectedDate.weekdayLong} ${this.selectedDate.monthLong} ${this.selectedDate.day}, ${this.selectedDate.year}`
-      : null;
+      : undefined;
   };
 
-  render() {
-    const placeholder = this.placeholder || this.selectedDate?.toISODate();
+  isValueValid = () => {
+    const regexString = this.includesTime ? ValidationRegex.ISODateTimeString: ValidationRegex.ISODateString;
+    const regex = RegExp(regexString);
+    const isValid = !this.value || regex.test(this.value);
+    return isValid ? "" : "error";
+  }
 
+  render() {
     return html`
       <md-menu-overlay custom-width="248px">
         <md-input
           class="date-input"
           slot="menu-trigger"
-          placeholder=${ifDefined(placeholder)}
+          placeholder=${this.includesTime ? ifDefined(this.placeholder) : "YYYY-MM-DD"}
           value=${ifDefined(this.value)}
           aria-label=${`Choose Date` + this.chosenDateLabel()}
           auxiliaryContentPosition="before"
           @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+          hide-message
+          .messageArr=${[{ message: "", type: this.isValueValid() } as Input.Message]}
         >
           <md-icon slot="input-section" name="calendar-month_16"></md-icon>
         </md-input>

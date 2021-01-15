@@ -124,7 +124,7 @@ export class MeetingAlert extends LitElement {
         return templateHTML(attendees);
       } else {
         return html`
-          <md-avatar title=${title} src=${src} tabindex="-1"></md-avatar>
+          <md-avatar title=${title} label="avatar" src=${src} tabindex="-1"></md-avatar>
         `;
       }
     };
@@ -163,7 +163,6 @@ export class MeetingAlert extends LitElement {
                           this.handleSnooze(e);
                         }}
                         .size=${40}
-                        role=${role}
                       >
                         <md-icon name="icon-alarm_16"></md-icon>
                       </md-button>
@@ -173,13 +172,12 @@ export class MeetingAlert extends LitElement {
               <slot name="custom-action">
                 <md-button
                   class="md-alert__button"
-                  aria-label=${closeAriaLabel}
+                  ariaLabel=${closeAriaLabel}
                   circle
                   @click=${(e: Event) => {
                     this.handleClose(e);
                   }}
                   .size=${40}
-                  role=${role}
                 >
                   <md-icon name="icon-cancel_16"></md-icon>
                 </md-button>

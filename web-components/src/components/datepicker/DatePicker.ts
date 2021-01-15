@@ -177,7 +177,7 @@ export class DatePicker extends LitElement {
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
     const isValid = this.value && regex.test(this.value) && !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
 
-    return isValid ? "" : "error";
+    return isValid;
   }
 
   render() {
@@ -192,7 +192,7 @@ export class DatePicker extends LitElement {
           auxiliaryContentPosition="before"
           @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
           hide-message
-          .messageArr=${[{ message: "", type: this.isValueValid() } as Input.Message]}
+          .messageArr=${[{ message: "", type: this.isValueValid()  ? "" : "error" } as Input.Message]}
         >
           <md-icon slot="input-section" name="calendar-month_16"></md-icon>
         </md-input>

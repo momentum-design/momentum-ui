@@ -6,12 +6,12 @@
  *
  */
 
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import styles from "@/components/tooltip/scss/module.scss";
 import { Tooltip, TooltipEvent } from "@/components/tooltip/Tooltip";
-import { lumosDark, lumosLight, momentumDark, momentumLight } from "./index";
 import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
-import styles from "@/components/tooltip/scss/module.scss";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { lumosDark, lumosLight, momentumDark, momentumLight } from "./index";
 
 declare global {
   interface Window {
@@ -153,6 +153,18 @@ export class Theme extends LitElement {
 
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
+    if (changedProperties.has("lumos") || changedProperties.has("darkTheme")) {
+      this.dispatchEvent(
+        new CustomEvent("theme-changed", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            darkTheme: this.darkTheme,
+            lumos: this.lumos
+          }
+        })
+      );
+    }
     this.activeTheme = this.setTheme();
     this.applyStyle();
   }
@@ -257,6 +269,9 @@ export class Theme extends LitElement {
       <div class="theme-wrapper">
         <style>
           ${styles}
+          .theme-wrapper {
+            width: 100%;
+          }
         </style>
         <slot></slot>
         <div class="md-tooltip" virtual-global-popper></div>

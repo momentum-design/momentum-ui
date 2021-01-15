@@ -50,13 +50,12 @@ export class DateTimePicker extends LitElement {
     if (this.value && changedProperties.has("value")) {
       this.dateValue = this.value.split("T")[0];
       this.timeValue = this.value.split("T")[1];
-      this.updateDateTime();
+      this.combineDateAndTimeValues();
     } else if (!this.dateValue) {
       this.dateValue = this.selectedDateObject?.toISODate();
-
       this.selectedTimeObject = DateTime.fromISO(this.timeValue);
       this.timeValue = this.selectedTimeObject.toISOTime({ suppressMilliseconds: true });
-      this.updateDateTime();
+      this.combineDateAndTimeValues();
     }
 
     await new Promise(resolve => setTimeout(resolve, 0));
@@ -76,14 +75,8 @@ export class DateTimePicker extends LitElement {
     }
   }
 
-  updateDateTime = () => {
-    if (this.dateValue) {
-      if (this.timeValue) {
-        this.value = `${this.dateValue}T${this.timeValue}`;
-      } else {
-        this.value = this.dateValue;
-      }
-
+  updateDateTimeObject = () => {
+    if (this.value) {
       this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
       this.dispatchEvent(
         new CustomEvent(`date-time-change`, {
@@ -97,7 +90,18 @@ export class DateTimePicker extends LitElement {
           }
         })
       );
+    }
+  }
 
+  combineDateAndTimeValues = () => {
+    if (this.dateValue) {
+      if (this.timeValue) {
+        this.value = `${this.dateValue}T${this.timeValue}`;
+      } else {
+        this.value = this.dateValue;
+      }
+
+      this.updateDateTimeObject();
     }
   }
 
@@ -105,13 +109,13 @@ export class DateTimePicker extends LitElement {
     super.updated(changedProperties);
 
     if (this.dateValue && this.timeValue && (changedProperties.has("timeValue") || changedProperties.has("dateValue"))) {
-      this.updateDateTime();
+      this.combineDateAndTimeValues();
     }
 
     if (this.value && changedProperties.has("value")) {
       this.dateValue = this.value.split("T")[0];
       this.timeValue = this.value.split("T")[1];
-      this.updateDateTime();
+      this.updateDateTimeObject();
     }
 
     if (this.value && changedProperties.has('locale')) {

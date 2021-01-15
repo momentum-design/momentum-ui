@@ -56,6 +56,7 @@ export class Chip extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.truncStringPortion(this.value);
+    this.setAttribute("role", this.role);
   }
 
   updated(changedProperties: PropertyValues) {
@@ -212,7 +213,8 @@ export class Chip extends LitElement {
         <span
           tabindex="0"
           class="md-chip ${classMap(classNamesInfo)}"
-          role=${this.role}
+          aria-selected=${this.selected}
+          aria-readonly=${this.readonly}
           @click=${(e: MouseEvent) => {
             this.handleClick(e);
           }}

@@ -7,24 +7,35 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 //import { classMap } from "lit-html/directives/class-map";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
+import { nanoid } from "nanoid";
+import { classMap } from "lit-html/directives/class-map";
 
 @customElement("md-favorite")
 export class Favorite extends LitElement {
-  @property({ type: Boolean }) elect = false;
   @property({ type: Boolean }) active = false;
   @property({ type: Boolean }) disabled = false;
+  @property({ type: String }) id = "";
+
+  @internalProperty() private customId = "";
+
+  connectedCallback() {
+    super.connectedCallback();
+    const id = nanoid();
+
+    this.customId = id;
+  }
 
   static get styles() {
     return [reset, styles];
   }
 
   getIconName() {
-    switch (this.elect) {
+    switch (this.active) {
       case true:
         return "favorite-active_16";
       default:
@@ -32,27 +43,41 @@ export class Favorite extends LitElement {
     }
   }
 
-  handleFavorite(event: MouseEvent) {
+  handleFavorite(event: CustomEvent) {
     if (this.disabled) {
       return;
     } else {
-      this.elect = !this.elect;
+      this.active = !this.active;
       this.dispatchEvent(
-        new CustomEvent("favorite-elect", {
-          composed: true,
-          bubbles: true,
-          detail: {
-            elect: this.elect
-          }
+        new CustomEvent<{id: string, active: boolean}>("favorite-elect", {
+        detail: {
+            active: this.active,
+            id: this.id || this.customId
+        },
+        bubbles: true,
+        composed: true
         })
       )
+      console.log(event);
     }
+  }
+
+  get favoriteClassMap() {
+    return {
+      "md-favorite--active": this.active,
+      "md-favorite--disabled": this.disabled
+    };
   }
 
   render() {
     return html`
-      <div class="md-favorite" @click=${(e: MouseEvent) => this.handleFavorite(e)}>
-        <md-icon name="${this.getIconName()}" color="${this.elect ? "yellow" : nothing}"></md-icon>
+      <div
+        id="${this.id ? this.id : this.customId}" 
+        ?disabled=${this.disabled} 
+        tabindex=${this.disabled ? -1 : 0}
+        class="md-favorite ${classMap(this.favoriteClassMap)}"
+        @click=${(e: CustomEvent) => this.handleFavorite(e)}>
+        <md-icon name="${this.getIconName()}" color="${this.active ? "yellow" : nothing}"></md-icon>
       </div>
     `;
   }

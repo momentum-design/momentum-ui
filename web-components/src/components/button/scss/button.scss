@@ -96,24 +96,6 @@
       min-width: 0;
     }
 
-    &--favorite {
-      @include button-size($radius: rem-calc(4), $padding: rem-calc(3), $height: auto);
-      line-height: rem-calc(13);
-      min-width: 0;
-
-      &:hover {
-        background-color: var(--button-favorite-hover-bg-color, $lm-button-favorite-hover-bg-color-light);
-      }
-
-      &:active {
-        background-color: var(--button-favorite-pressed-bg-color, $lm-button-favorite-pressed-bg-color-light);
-      }
-
-      &[disabled] {
-        background-color: transparent;
-      }
-    }
-
     &--28 {
       @include button-size(
         $height: rem-calc(28),

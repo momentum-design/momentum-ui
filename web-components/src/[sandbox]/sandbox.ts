@@ -5,7 +5,6 @@ import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
-  activityButtonTemplate,
   alertBannerTemplate,
   alertTemplate,
   avatarTemplate,
@@ -120,13 +119,6 @@ export class Sandbox extends LitElement {
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
               ${accordionTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-activity-button">
-            <h2>md-activity-button</h2>
-            <sass-stats component="activity-button">
-              ${activityButtonTemplate}
             </sass-stats>
           </div>
 

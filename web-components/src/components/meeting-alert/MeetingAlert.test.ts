@@ -96,17 +96,6 @@ describe("MeetingAlert", () => {
       expect(spyClick).toHaveBeenCalledTimes(1);
     });
 
-    test("Should trigger a passed Close function", async () => {
-      const element: MeetingAlert = await fixture(
-        html`
-          <md-meeting-alert show .onClose=${mockEvent}> </md-meeting-alert>
-        `
-      );
-      const spyClick = jest.spyOn(element, "handleClose");
-      const closeElement = await element.shadowRoot!.querySelector("md-button[aria-label='close']");
-      closeElement!.dispatchEvent(new MouseEvent("click"));
-      expect(spyClick).toHaveBeenCalledTimes(1);
-    });
 
     describe("Should handle KeyDown events", () => {
       test("Should trigger a passed Keydown event", async () => {

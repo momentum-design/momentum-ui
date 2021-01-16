@@ -85,7 +85,7 @@ export const Avatar = () => {
   } else {
     return html`
       <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
-        <md-avatar .title=${title} alt="Avatar" .type=${type as AvatarType} .src="${customUrl ? `${url}` : ""}" .color=${preDefinedColor} .size=${size} ?has-notification=${hasNotification}>
+        <md-avatar .title=${title} alt="Avatar" label="Avatar" .type=${type as AvatarType} .src="${customUrl ? `${url}` : ""}" .color=${preDefinedColor} .size=${size} ?has-notification=${hasNotification}>
           ${customImage ? html`<img
           width="100"
           height="100"

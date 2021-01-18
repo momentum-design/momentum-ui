@@ -25,7 +25,7 @@ export type TabKeyDownEvent = {
 @customElement("md-tab")
 export class Tab extends FocusMixin(LitElement) {
   @property({ type: Number, reflect: true }) tabIndex = -1;
-  @property({ type: String }) label = "";
+  @property({ type: String }) label = "tab";
 
   private _disabled = false;
   @property({ type: Boolean, reflect: true })
@@ -61,6 +61,7 @@ export class Tab extends FocusMixin(LitElement) {
     this.setAttribute("aria-selected", `${value}`);
     this.requestUpdate("selected", oldValue);
   }
+  @property({ type: Boolean, reflect: true }) vertical = false;
 
   @property({ type: Boolean, reflect: true }) viewportHidden = false;
 
@@ -134,9 +135,6 @@ export class Tab extends FocusMixin(LitElement) {
     super.firstUpdated(changedProperties);
 
     this.setAttribute("role", "tab");
-    if (this.label) {
-      this.setAttribute("aria-label", this.label);
-    }
     this.setupEvents();
   }
 
@@ -145,7 +143,6 @@ export class Tab extends FocusMixin(LitElement) {
       <button
         type="button"
         ?disabled=${this.disabled}
-        role="tab"
         aria-hidden="true"
         aria-selected="false"
         aria-label=${ifDefined(this.label)}

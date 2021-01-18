@@ -15,6 +15,7 @@ import styles from "./scss/module.scss";
 @customElement("md-toggle-switch")
 export class ToggleSwitch extends FocusMixin(LitElement) {
   @property({ type: String }) htmlId = "";
+  @property({ type: String }) label = "toggle";
   @property({ type: Boolean }) checked = false;
   @property({ type: Boolean }) disabled = false;
   @property({ type: Boolean }) small = false;
@@ -43,6 +44,7 @@ export class ToggleSwitch extends FocusMixin(LitElement) {
         <input
           type="checkbox"
           class="md-toggle-switch__input"
+          aria-label="${this.label}"
           .id=${this.htmlId}
           ?checked=${this.checked}
           ?disabled=${this.disabled}

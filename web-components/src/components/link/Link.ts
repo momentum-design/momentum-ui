@@ -53,13 +53,13 @@ export class Link extends LitElement {
       switch (this.tag) {
         case "div":
           return html`
-            <div class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex} role="link">
+            <div class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex} role="link" part="link">
               <slot></slot>
             </div>
           `;
         case "span":
           return html`
-            <span class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex} role="link">
+            <span class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex} role="link" part="link">
               <slot></slot>
             </span>
           `;
@@ -72,6 +72,7 @@ export class Link extends LitElement {
               href=${this.href}
               tabindex=${this.tabIndex}
               role="link"
+              part="link"
             >
               <slot></slot>
             </a>

@@ -147,6 +147,10 @@ export class Theme extends LitElement {
 
   private setVirtualSlotContent(slotContent: Element[]) {
     if (this.virtualTooltipContent) {
+      while (this.virtualTooltipContent.firstElementChild) {
+        this.virtualTooltipContent.firstElementChild.remove();
+      }
+
       slotContent.forEach(element => this.virtualTooltipContent!.append(element));
     }
   }
@@ -182,6 +186,29 @@ export class Theme extends LitElement {
   handleVirtualTooltipDestroy(event: CustomEvent<TooltipEvent>) {
     event.stopPropagation();
     this.hideVirtualTooltip();
+  }
+
+  handleVirtualTooltipChangeMessage(event: CustomEvent<TooltipEvent>) {
+    const { popper } = event.detail;
+
+    const content = popper.querySelector(".md-tooltip__content");
+    const virtualContent = this.virtualWrapper.querySelector(".md-tooltip__content");
+
+    if (content && virtualContent) {
+      const message = content.textContent;
+      const virtualMessage = virtualContent.textContent;
+      if (message && virtualMessage) {
+        virtualContent.textContent = message;
+      }
+    }
+  }
+
+  handleVirtualTooltipSlotChange(event: CustomEvent<TooltipEvent>) {
+    const { slotContent } = event.detail;
+
+    if (slotContent) {
+      this.setVirtualSlotContent(slotContent);
+    }
   }
 
   private destroyPopperInstance() {
@@ -252,6 +279,8 @@ export class Theme extends LitElement {
   private setupEvents() {
     this.addEventListener("tooltip-create", this.handleVirtualTooltipCreate as EventListener);
     this.addEventListener("tooltip-destroy", this.handleVirtualTooltipDestroy as EventListener);
+    this.addEventListener("tooltip-message", this.handleVirtualTooltipChangeMessage as EventListener);
+    this.addEventListener("tooltip-slot", this.handleVirtualTooltipSlotChange as EventListener);
   }
 
   protected async firstUpdated(changedProperties: PropertyValues) {
@@ -268,7 +297,9 @@ export class Theme extends LitElement {
     return html`
       <div class="theme-wrapper">
         <style>
-          ${styles}
+          ${styles} .theme-wrapper {
+            width: 100%;
+          }
         </style>
         <slot></slot>
         <div class="md-tooltip" virtual-global-popper></div>

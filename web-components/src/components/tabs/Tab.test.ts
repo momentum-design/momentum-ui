@@ -78,11 +78,4 @@ describe("Tab", () => {
     expect(spySelected).toHaveBeenCalled();
     spySelected.mockRestore();
   });
-
-  test("should set label property if it defined", async() => {
-    const el = await fixture<Tab>(`<md-tab label="Tab Label"></md-tab>`);
-
-    expect(el.hasAttribute("aria-label")).toBeTruthy();
-    expect(el.getAttribute("aria-label")).toEqual("Tab Label");
-  });
 });

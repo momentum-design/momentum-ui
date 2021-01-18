@@ -18,6 +18,7 @@ import {
   comboBoxTemplate,
   datePickerTemplate,
   dateTimePickerTemplate,
+  draggableTemplate,
   editableField,
   floatingModalTemplate,
   iconTemplate,
@@ -113,6 +114,13 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+
+          <div class="container" aria-label="md-draggable-item">
+            <h2>md-draggable-item</h2>
+            <sass-stats component="draggable-item">
+              ${draggableTemplate}
+            </sass-stats>
+          </div>
 
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>

@@ -13,6 +13,7 @@ export { coachTemplate } from "./coachmark";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
 export { dateTimePickerTemplate } from "./date-time-picker";
+export { draggableTemplate } from "./draggable-item";
 export { editableField } from "./editable-field";
 export { floatingModalTemplate } from "./floating-modal";
 export { iconTemplate } from "./icon";

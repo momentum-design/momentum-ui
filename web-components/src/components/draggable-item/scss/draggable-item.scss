@@ -1,0 +1,15 @@
+.draggable {
+  border: 1px solid #ccc;
+  cursor: move;
+  margin-bottom: 1rem;
+  min-height: 24px;
+  min-width: 100px;
+  padding: 1rem;
+  user-select: none;
+}
+
+.placeholder {
+  background-color: #edf2f7;
+  border: 2px dashed #cbd5e0;
+  margin-bottom: 1rem;
+}

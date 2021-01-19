@@ -1,7 +1,7 @@
 import "./CodeEditor";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { text, object, withKnobs } from '@storybook/addon-knobs';
 
 export default {
   title: "Code Editor",
@@ -15,8 +15,18 @@ export default {
 };
 
 export const CodeEditor = () => {
-  const acceptLanguage = text("acceptLanguage", "");
+  const url = text("Url", "v1/contactCenter/agents/statistics");
+  const method = text("Method", "post");
+  const code = object(
+    "Code",
+    'module.exports = { presets: [["@babel/preset-env", { targets: { node: "current" } }]] };'
+  );
   return html`
-    <md-code-editor .acceptLanguage=${acceptLanguage}></md-code-editor>
+    <md-code-editor>
+      <span slot="method">${method}</span>
+      <span slot="code-url">${url}</span>
+      <code class="javascript" slot="code-block">
+        ${code}
+    </md-code-editor>
   `;
 };

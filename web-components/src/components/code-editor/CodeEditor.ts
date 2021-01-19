@@ -5,44 +5,41 @@ import {
   LitElement,
   query,
   property,
-  PropertyValues,
   internalProperty,
-  queryAssignedNodes
+  queryAssignedNodes,
+  PropertyValues
 } from "lit-element";
 import styles from "./scss/module.scss";
 import hljs from "highlight.js/lib/core";
 import "@/components/button/Button";
+import "@/components/badge/Badge";
 
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
+export type Method = "get" | "post";
+
 @customElement("md-code-editor")
 export class CodeEditor extends LitElement {
-  @property({ type: String, attribute: "accept-language" }) acceptLanguage = "javascript";
-  @property({ type: String }) getLocalization = "Get";
-  @property({ type: String }) copyLocalization = "Copy";
+  @property({ type: String }) copyLocalization = "cURL";
   @property({ type: String }) copiedLocalization = "Copied";
+  @property({ type: String }) method: Method = "get";
+  @property({ type: String, attribute: "accept-language" }) acceptLanguage = "javascript";
+  @property({ type: String }) url = "javascript";
 
   @query("input[type='file']") input!: HTMLInputElement;
   @query(".md-code-editor-code-block") codeBlock!: HTMLPreElement;
+  @query(".md-code-editor-url") codeUrl!: HTMLSpanElement;
 
   @internalProperty() private disableCopyButton = true;
   @internalProperty() private acceptTypes = "";
-  @internalProperty() private fileName = "";
   @internalProperty() private copied = false;
 
   @queryAssignedNodes("code-block") slotNodes!: Node[];
+  @queryAssignedNodes("code-url") slotUrl!: Node[];
 
   static get styles() {
     return [reset, styles];
   }
 
-  triggerFileLoad(event: MouseEvent) {
-    event.preventDefault();
-    this.input.click();
-  }
-
   handleSlotChange() {
-    this.copied = false;
     if (this.slotNodes && this.slotNodes.length) {
       const codeBlock = this.slotNodes.find(node => (node as Element).tagName === "CODE");
       if (codeBlock) {
@@ -54,34 +51,35 @@ export class CodeEditor extends LitElement {
     }
   }
 
-  async handleFile(event: Event) {
-    event.preventDefault();
-
-    this.disableCopyButton = true;
+  handleUrlSlotChange() {
     this.copied = false;
-
-    const fileList = this.input.files;
-    if (fileList && fileList.length !== 0)
-      for (const file of fileList) {
-        let fileTextContent = "";
-        this.fileName = file.name;
-
-        try {
-          fileTextContent = (await this.readFile(file)) as string;
-        } catch (e) {
-          fileTextContent = "";
-        } finally {
-          if (fileTextContent.length) {
-            this.highlightBlock(fileTextContent);
-          }
+    if (this.slotUrl && this.slotUrl.length) {
+      const codeUrl = this.slotUrl.find(node => node as HTMLSpanElement);
+      if (codeUrl) {
+        const codeUrlText = codeUrl.textContent;
+        if (codeUrlText) {
+          this.copyUrl(codeUrlText);
         }
       }
+    }
+  }
+
+  private highlightBlock(text?: string) {
+    if (text) {
+      this.codeBlock.innerText = text;
+    }
+    hljs.highlightBlock(this.codeBlock);
+  }
+
+  private copyUrl(copyUrl: string) {
+    this.codeUrl.innerText = copyUrl;
+    this.disableCopyButton = false;
   }
 
   copyClipboard() {
     if (!this.disableCopyButton) {
-      this.clearSelection();
-      this.selectTarget(this.codeBlock);
+      this.codeUrl.innerText;
+      this.selectTarget(this.codeUrl);
     }
   }
 
@@ -92,8 +90,6 @@ export class CodeEditor extends LitElement {
     } catch (err) {
       console.warn("Copy text failed");
       this.copied = false;
-    } finally {
-      this.clearSelection();
     }
   }
 
@@ -112,32 +108,6 @@ export class CodeEditor extends LitElement {
   private selectTarget(target: HTMLElement) {
     this.select(target);
     this.copyText();
-  }
-
-  private clearSelection() {
-    const selection = window.getSelection();
-    if (selection) {
-      selection.empty();
-      selection.collapse(this.codeBlock, 0);
-    }
-  }
-
-  private highlightBlock(text: string) {
-    this.codeBlock.innerText = text;
-    hljs.highlightBlock(this.codeBlock);
-    this.disableCopyButton = false;
-  }
-
-  private readFile(file: File) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-
-      reader.onload = res => {
-        resolve(res.target!.result);
-      };
-      reader.onerror = err => reject(err);
-      reader.readAsText(file);
-    });
   }
 
   private async importLanguage(language: string) {
@@ -170,31 +140,25 @@ export class CodeEditor extends LitElement {
     if (changedProperties.has("acceptLanguage")) {
       this.importLanguage(this.acceptLanguage);
     }
+    if (changedProperties.has("acceptTypes")) {
+      this.highlightBlock();
+    }
   }
 
   render() {
     return html`
       <div class="md-code-editor" part="code-editor">
         <div class="md-code-editor-header">
-          <div class="md-code-editor-file">
-            <label for="file-input">
-              <md-button color="blue" class="md-code-editor-file-btn" @click=${this.triggerFileLoad}>
-                ${this.getLocalization.trim()}
-              </md-button>
-              ${this.fileName.length ? this.fileName : nothing}
-            </label>
-            <input
-              type="file"
-              id="file-input"
-              name="file-input"
-              accept=${ifDefined(this.acceptTypes || undefined)}
-              @change=${(event: Event) => this.handleFile(event)}
-            />
+          <div class="md-code-editor-name">
+            <md-badge color="blue">
+              <slot name="method" method=${this.method}></slot>
+            </md-badge>
+            <span class="md-code-editor-url">
+              <slot name="code-url" @slotchange=${this.handleUrlSlotChange}>${this.url}</slot>
+            </span>
           </div>
           <div class="md-code-editor-copy">
-            <span class="md-code-editor-copy-text"
-              >${this.copied ? this.copiedLocalization.trim() : this.copyLocalization.trim()}</span
-            >
+            <span>${this.copied ? this.copiedLocalization.trim() : this.copyLocalization.trim()}</span>
             <md-button
               circle
               size="20"
@@ -210,7 +174,6 @@ export class CodeEditor extends LitElement {
           <pre class="md-code-editor-code-block">
             <slot name="code-block" @slotchange=${this.handleSlotChange}>
               <code class=${this.acceptLanguage}>
-
               </code>
             </slot>
           </pre>

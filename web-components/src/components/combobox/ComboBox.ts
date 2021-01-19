@@ -802,11 +802,11 @@ export class ComboBox extends FocusMixin(LitElement) {
               ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
               : nothing}
             <input
-              aria-hidden="true"
               class="md-combobox-listbox"
               type="text"
               role="combobox"
               aria-autocomplete="both"
+              aria-label="input"
               part="multiwrap-input"
               aria-expanded=${this.expanded}
               placeholder=${this.placeholder}

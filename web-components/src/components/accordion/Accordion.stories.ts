@@ -1,5 +1,6 @@
 import "./Accordion";
 import "./AccordionItem";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
@@ -15,63 +16,26 @@ export default {
   }
 };
 
-export const Default = () => html`
-  <md-accordion>
-    <md-accordion-item slot="accordion-item" label="Header №1">
-      <div>Panel №1</div>
-    </md-accordion-item>
-    <md-accordion-item slot="accordion-item" label="Header №2">
-      <div>Panel №2</div>
-    </md-accordion-item>
-  </md-accordion>
-`;
+export const Accordion = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const disabled = boolean("disabled", false);
+  const expanded = boolean("expanded", false);
+  const multiple = boolean("multiple", false);
 
-export const Disabled = () => {
-  const disabled = boolean("disabled", true);
   return html`
-    <md-accordion>
-      <md-accordion-item slot="accordion-item" label="Header №1">
+  <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-accordion ?multiple=${multiple}>
+      <md-accordion-item slot="accordion-item" label="Header №1" ?expanded=${expanded}>
         <div>Panel №1</div>
       </md-accordion-item>
       <md-accordion-item slot="accordion-item" label="Header №2" ?disabled=${disabled}>
         <div>Panel №2</div>
       </md-accordion-item>
-    </md-accordion>
-  `;
-};
-
-export const Expanded = () => {
-  const expanded = boolean("expanded", true);
-  return html`
-    <md-accordion>
-      <md-accordion-item slot="accordion-item" label="Header №1" ?expanded=${expanded}>
-        <div>Panel №1</div>
-      </md-accordion-item>
-      <md-accordion-item slot="accordion-item" label="Header №2">
-        <div>Panel №2</div>
-      </md-accordion-item>
-    </md-accordion>
-  `;
-};
-
-export const Multiple = () => {
-  return html`
-    <md-accordion multiple>
-      <md-accordion-item slot="accordion-item" label="Header №1" expanded>
-        <div>Panel №1</div>
-      </md-accordion-item>
-      <md-accordion-item slot="accordion-item" label="Header №2">
-        <div>Panel №2</div>
-      </md-accordion-item>
-      <md-accordion-item slot="accordion-item" label="Header №3" expanded>
+      <md-accordion-item slot="accordion-item" label="Header №3">
         <div>Panel №3</div>
       </md-accordion-item>
-      <md-accordion-item slot="accordion-item" label="Header №4" disabled>
-        <div>Panel №4</div>
-      </md-accordion-item>
-      <md-accordion-item slot="accordion-item" label="Header №5">
-        <div>Panel №5</div>
-      </md-accordion-item>
     </md-accordion>
+  </md-theme>
   `;
 };

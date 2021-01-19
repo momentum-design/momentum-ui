@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.3.0...@momentum-ui/icons@8.4.0) (2021-01-16)
+
+
+### Features
+
+* **icons:** add rotate-content_12 ([1c021e2](https://github.com/momentum-design/momentum-ui/commit/1c021e2dc543f29bfbb889cf9a4041ce6890fc28))
+
+
+
+
+
 # [8.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.2.0...@momentum-ui/icons@8.3.0) (2020-12-22)
 
 

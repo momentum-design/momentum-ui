@@ -23,10 +23,10 @@ export namespace PhoneInput {
     value: string;
     errorMessage: string;
   };
-}
+
 
 @customElement("md-phone-input")
-export class PhoneInput extends LitElement {
+export class ELEMENT extends LitElement {
   @property({ type: String }) codePlaceholder = "+1";
   @property({ type: String }) numberPlaceholder = "Enter Phone Number";
   @property({ type: String, attribute: "country-calling-code" }) countryCallingCode = "";
@@ -168,8 +168,10 @@ export class PhoneInput extends LitElement {
     `;
   }
 }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
-    "md-phone-input": PhoneInput;
+    "md-phone-input": PhoneInput.ELEMENT;
   }
 }

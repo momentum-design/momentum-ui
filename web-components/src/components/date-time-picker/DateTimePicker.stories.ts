@@ -2,7 +2,7 @@ import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { weekStartDays } from "@/components/datepicker/DatePicker";
+import { DatePicker } from "@/components/datepicker/DatePicker";
 import { timeSpecificity } from "@/components/timepicker/TimePicker";
 import { TIME_UNIT } from "@/constants";
 import "@/components/date-time-picker/DateTimePicker";
@@ -21,7 +21,7 @@ export default {
 export const DateTimePicker = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
-  const weekStart = select("weekStart", weekStartDays, "");
+  const weekStart = select("weekStart", DatePicker.weekStartDays, "");
   const twoDigitAutoTab = boolean("twoDigitAutoTab", false);
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);

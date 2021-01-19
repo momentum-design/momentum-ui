@@ -14,10 +14,10 @@ import { customElement, html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
-export namespace DatePickerMonth {}
+export namespace DatePickerMonth {
 
 @customElement("md-datepicker-month")
-export class DatePickerMonth extends LitElement {
+export class ELEMENT extends LitElement {
   @property({ attribute: false }) day: DateTime = now();
   @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
   @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
@@ -57,9 +57,10 @@ export class DatePickerMonth extends LitElement {
     `;
   }
 }
+}
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-datepicker-month": DatePickerMonth;
+    "md-datepicker-month": DatePickerMonth.ELEMENT;
   }
 }

@@ -2,7 +2,7 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import "./ProgressBar";
 import { ProgressBar } from "./ProgressBar";
 
-const fixtureFactory = async (): Promise<ProgressBar> => {
+const fixtureFactory = async (): Promise<ProgressBar.ELEMENT> => {
   return await fixture(
     html`
       <md-progress-bar label="test list" value="55"></md-progress-bar>
@@ -19,7 +19,7 @@ describe("ProgressBar", () => {
   });
 
   test("should display correct Progress Bar color", async () => {
-    const element: ProgressBar = await fixtureFactory();
+    const element: ProgressBar.ELEMENT = await fixtureFactory();
     element.color = "red";
     await elementUpdated(element);
 
@@ -28,7 +28,7 @@ describe("ProgressBar", () => {
   });
 
   test("shouldn't display any displayFormat", async () => {
-    const element: ProgressBar = await fixtureFactory();
+    const element: ProgressBar.ELEMENT = await fixtureFactory();
     element.displayFormat = "none";
     await elementUpdated(element);
 
@@ -37,7 +37,7 @@ describe("ProgressBar", () => {
   });
 
   test("should display correct displayFormat as fraction", async () => {
-    const element: ProgressBar = await fixture(
+    const element: ProgressBar.ELEMENT = await fixture(
       html`
         <md-progress-bar label="test list" value="55" type="determinate"></md-progress-bar>
       `
@@ -50,7 +50,7 @@ describe("ProgressBar", () => {
   });
 
   test("should display correct displayFormat", async () => {
-    const element: ProgressBar = await fixture(
+    const element: ProgressBar.ELEMENT = await fixture(
       html`
         <md-progress-bar label="test list" type="determinate"></md-progress-bar>
       `

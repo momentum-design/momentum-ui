@@ -50,7 +50,7 @@ describe("Floating Modal Component", () => {
     await nextFrame();
     await elementUpdated(element);
 
-    const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button;
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");
     button!.click();
 
@@ -77,7 +77,7 @@ describe("Floating Modal Component", () => {
     await nextFrame();
     await elementUpdated(element);
 
-    const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button;
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");
     button!.click();
 

@@ -52,7 +52,7 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
   @query('slot[name="panel"]') panelSlotElement?: HTMLSlotElement;
   @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
   @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab;
-  @query("md-menu-overlay") menuOverlayElement?: MenuOverlay;
+  @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
 
   @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab>;
 

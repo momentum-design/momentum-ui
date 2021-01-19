@@ -7,7 +7,7 @@ describe("DatePickerWeek Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePickerWeek = await fixture(
+    const el: DatePickerWeek.ELEMENT = await fixture(
       html`
         <md-datepicker-week></md-datepicker-week>
       `

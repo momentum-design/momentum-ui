@@ -97,6 +97,25 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
   };
 }
 
+const pluginCleanUpTypes = new RemovePlugin({
+  after: {
+    log: false,
+    include: ["./dist/types/[sandbox]"],
+    test: [
+      {
+        folder: "./dist/types",
+        method: p => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
+        recursive: true
+      },
+      {
+        folder: "./dist/types",
+        method: p => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
+        recursive: true
+      }
+    ]
+  }
+}) as any;
+
 // DEV
 // ----------
 
@@ -105,6 +124,7 @@ export const commonDev = merge(common, {
   mode: "development",
   devtool: "source-map",
   entry: "./src/[sandbox]/test.ts",
+  // entry: "./src/[sandbox]/sandbox.ts",
   output: {
     path: pBuild
   },
@@ -147,8 +167,9 @@ const commonDist = merge(common, {
     filename: "[name].js",
     libraryTarget: "umd"
   },
-  externals: [nodeExternals({ modulesFromFile: true })],
+  externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
       { from: `${pMomentum}/core/images`, to: "assets/images" },
@@ -160,25 +181,7 @@ const commonDist = merge(common, {
       { from: `${pSrc}/**/*.json`, to: "css", flatten: true }
       // if you want 'momentum-ui.min.css' to work we must copy to second location
     ]),
-    new CleanWebpackPlugin(),
-    new RemovePlugin({
-      after: {
-        log: false,
-        include: ["./dist/types/[sandbox]"],
-        test: [
-          {
-            folder: "./dist/types",
-            method: p => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
-            recursive: true
-          },
-          {
-            folder: "./dist/types",
-            method: p => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
-            recursive: true
-          }
-        ]
-      }
-    }) as any
+    pluginCleanUpTypes
   ]
 });
 
@@ -204,13 +207,67 @@ const distProd = merge(commonDist, {
   }
 });
 
-const distProdSplit = merge(distProd, {
+const distProdSplit = merge(common, {
   name: "distProdSplit",
+  // mode: "production",
+  mode: "development",
   output: {
-    path: path.resolve("dist/components"),
+    path: path.resolve(`${pDist}/comp`),
+    publicPath: "/",
     filename: "[name].js",
     chunkFilename: "vendor/[id].js",
     libraryTarget: "umd"
+  },
+  entry: {
+    // Accordion: "./src/components/accordion/Accordion",
+    // AccordionItem: "./src/components/accordion/AccordionItem",
+    // ActivityButton: "./src/components/activity-button/ActivityButton",
+    // Alert: "./src/components/alert/Alert",
+    // AlertBanner: "./src/components/alert-banner/AlertBanner",
+    // Avatar: "./src/components/avatar/Avatar",
+    // Badge: "./src/components/badge/Badge",
+    // Breadcrumb: "./src/components/breadcrumb/Breadcrumb",
+    "md-button": "./src/components/button/Button",
+    // ChatMessage: "./src/components/chat-message/ChatMessage",
+    // Checkbox: "./src/components/checkbox/Checkbox",
+    // CheckboxGroup: "./src/components/checkbox/CheckboxGroup",
+    // Chip: "./src/components/chip/Chip",
+    // ComboBox: "./src/components/combobox/ComboBox",
+    // CompositeAvatar: "./src/components/avatar/CompositeAvatar",
+    // DatePicker: "./src/components/datepicker/DatePicker",
+    // DatePickerCalendar: "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
+    // DatePickerDay: "./src/components/datepicker/datepicker-day/DatePickerDay",
+    // DatePickerMonth: "./src/components/datepicker/datepicker-month/DatePickerMonth",
+    // DatePickerWeek: "./src/components/datepicker/datepicker-week/DatePickerWeek",
+    // DateTimePicker: "./src/components/date-time-picker/DateTimePicker",
+    // EditableTextfield: "./src/components/editable-textfield/EditableTextfield",
+    // FloatingModal: "./src/components/floating-modal/FloatingModal",
+    // HelpText: "./src/components/help-text/HelpText",
+    "md-icon": "./src/components/icon/Icon"
+    // Input: "./src/components/input/Input",
+    // Label: "./src/components/label/Label",
+    // Link: "./src/components/link/Link",
+    // List: "./src/components/list/List",
+    // ListItem: "./src/components/list/ListItem",
+    // Loading: "./src/components/loading/Loading",
+    // MeetingAlert: "./src/components/meeting-alert/MeetingAlert",
+    // MenuOverlay: "./src/components/menu-overlay/MenuOverlay",
+    // Modal: "./src/components/modal/Modal",
+    // PhoneInput: "./src/components/phone-input/PhoneInput",
+    // ProgressBar: "./src/components/progress-bar/ProgressBar",
+    // Radio: "./src/components/radio/Radio",
+    // RadioGroup: "./src/components/radio/RadioGroup",
+    // Slider: "./src/components/slider/Slider",
+    // Spinner: "./src/components/spinner/Spinner",
+    // Table: "./src/components/table/Table",
+    // Tab: "./src/components/tabs/Tab",
+    // TabPanel: "./src/components/tabs/TabPanel",
+    // Tabs: "./src/components/tabs/Tabs",
+    // TaskItem: "./src/components/taskitem/TaskItem",
+    // Theme: "./src/components/theme/Theme",
+    // TimePicker: "./src/components/timepicker/TimePicker",
+    // ToggleSwitch: "./src/components/toggle-switch/ToggleSwitch",
+    // Tooltip: "./src/components/tooltip/Tooltip"
   },
   optimization: {
     splitChunks: {
@@ -220,59 +277,11 @@ const distProdSplit = merge(distProd, {
       minSize: 0
     }
   },
-  entry: {
-    Accordion: "./src/components/accordion/Accordion",
-    AccordionItem: "./src/components/accordion/AccordionItem",
-    ActivityButton: "./src/components/activity-button/ActivityButton",
-    Alert: "./src/components/alert/Alert",
-    AlertBanner: "./src/components/alert-banner/AlertBanner",
-    Avatar: "./src/components/avatar/Avatar",
-    Badge: "./src/components/badge/Badge",
-    Breadcrumb: "./src/components/breadcrumb/Breadcrumb",
-    Button: "./src/components/button/Button",
-    ChatMessage: "./src/components/chat-message/ChatMessage",
-    Checkbox: "./src/components/checkbox/Checkbox",
-    CheckboxGroup: "./src/components/checkbox/CheckboxGroup",
-    Chip: "./src/components/chip/Chip",
-    ComboBox: "./src/components/combobox/ComboBox",
-    CompositeAvatar: "./src/components/avatar/CompositeAvatar",
-    DatePicker: "./src/components/datepicker/DatePicker",
-    DatePickerCalendar: "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
-    DatePickerDay: "./src/components/datepicker/datepicker-day/DatePickerDay",
-    DatePickerMonth: "./src/components/datepicker/datepicker-month/DatePickerMonth",
-    DatePickerWeek: "./src/components/datepicker/datepicker-week/DatePickerWeek",
-    DateTimePicker: "./src/components/date-time-picker/DateTimePicker",
-    EditableTextfield: "./src/components/editable-textfield/EditableTextfield",
-    FloatingModal: "./src/components/floating-modal/FloatingModal",
-    HelpText: "./src/components/help-text/HelpText",
-    Icon: "./src/components/icon/Icon",
-    Input: "./src/components/input/Input",
-    Label: "./src/components/label/Label",
-    Link: "./src/components/link/Link",
-    List: "./src/components/list/List",
-    ListItem: "./src/components/list/ListItem",
-    Loading: "./src/components/loading/Loading",
-    MeetingAlert: "./src/components/meeting-alert/MeetingAlert",
-    MenuOverlay: "./src/components/menu-overlay/MenuOverlay",
-    Modal: "./src/components/modal/Modal",
-    PhoneInput: "./src/components/phone-input/PhoneInput",
-    ProgressBar: "./src/components/progress-bar/ProgressBar",
-    Radio: "./src/components/radio/Radio",
-    RadioGroup: "./src/components/radio/RadioGroup",
-    Slider: "./src/components/slider/Slider",
-    Spinner: "./src/components/spinner/Spinner",
-    Table: "./src/components/table/Table",
-    Tab: "./src/components/tabs/Tab",
-    TabPanel: "./src/components/tabs/TabPanel",
-    Tabs: "./src/components/tabs/Tabs",
-    TaskItem: "./src/components/taskitem/TaskItem",
-    Theme: "./src/components/theme/Theme",
-    TimePicker: "./src/components/timepicker/TimePicker",
-    ToggleSwitch: "./src/components/toggle-switch/ToggleSwitch",
-    Tooltip: "./src/components/tooltip/Tooltip"
-  }
+  externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
+  module: {
+    rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })]
+  },
+  plugins: [new CleanWebpackPlugin(), pluginCleanUpTypes]
 });
-
-delete (distProdSplit as any).entry.index;
 
 export default [dev, distDev, distDevWatch, distProd, distProdSplit];

@@ -10,98 +10,103 @@ import { DatePicker } from "../datepicker/DatePicker";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
 
-export namespace DateTimePicker {}
-export const weekStartDays = ["Sunday", "Monday"];
-@customElement("md-date-time-picker")
-export class DateTimePicker extends LitElement {
-  @property({ type: String }) maxDate: string | undefined = undefined;
-  @property({ type: String }) minDate: string | undefined = undefined;
-  @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
-  @property({ type: String }) dateValue: string | undefined = undefined;
+export namespace DateTimePicker {
+  export const weekStartDays = ["Sunday", "Monday"];
 
-  @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
-  @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
-  @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
-  @property({ type: String }) timeValue = "00:00:00.000-08:00"; // ISO FORMAT
+  @customElement("md-date-time-picker")
+  export class ELEMENT extends LitElement {
+    @property({ type: String }) maxDate: string | undefined = undefined;
+    @property({ type: String }) minDate: string | undefined = undefined;
+    @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+    @property({ type: String }) dateValue: string | undefined = undefined;
 
-  @property({ type: String, reflect: true }) value: string | undefined = undefined;
-  @property({ type: String }) locale = "en-US";
+    @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
+    @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
+    @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
+    @property({ type: String }) timeValue = "00:00:00.000-08:00"; // ISO FORMAT
 
-  @internalProperty() fullDateTime: DateTime | null = null;
-  @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
-  @internalProperty() selectedDateObject: DateTime = now();
+    @property({ type: String, reflect: true }) value: string | undefined = undefined;
+    @property({ type: String }) locale = "en-US";
 
-  @query("md-datepicker") datePicker!: DatePicker;
-  @query("md-timepicker") timePicker!: TimePicker;
+    @internalProperty() fullDateTime: DateTime | null = null;
+    @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
+    @internalProperty() selectedDateObject: DateTime = now();
 
-  handleDateChange = (event: any) => {
-    this.selectedDateObject = event?.detail?.data as DateTime;
-    this.dateValue = this.selectedDateObject?.toISODate();
-  };
+    @query("md-datepicker") datePicker!: DatePicker.ELEMENT;
+    @query("md-timepicker") timePicker!: TimePicker.ELEMENT;
 
-  handleTimeChange = (event: any) => {
-    this.selectedTimeObject = event?.detail?.data as DateTime;
-    this.timeValue = this.selectedTimeObject?.toISOTime();
-  };
+    handleDateChange = (event: any) => {
+      this.selectedDateObject = event?.detail?.data as DateTime;
+      this.dateValue = this.selectedDateObject?.toISODate();
+    };
 
-  protected async firstUpdated(changedProperties: PropertyValues) {
-    super.firstUpdated(changedProperties);
-    this.dateValue = this.selectedDateObject?.toISODate();
-    this.selectedTimeObject = DateTime.fromISO(this.timeValue);
-    this.timeValue = this.selectedTimeObject.toISOTime();
+    handleTimeChange = (event: any) => {
+      this.selectedTimeObject = event?.detail?.data as DateTime;
+      this.timeValue = this.selectedTimeObject?.toISOTime();
+    };
 
-    await new Promise(resolve => setTimeout(resolve, 0));
+    protected async firstUpdated(changedProperties: PropertyValues) {
+      super.firstUpdated(changedProperties);
+      this.dateValue = this.selectedDateObject?.toISODate();
+      this.selectedTimeObject = DateTime.fromISO(this.timeValue);
+      this.timeValue = this.selectedTimeObject.toISOTime();
 
-    if (this.datePicker) {
-      this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
-    }
-    if (this.timePicker) {
-      this.timePicker.addEventListener("time-selection-change", this.handleTimeChange);
-    }
-  }
+      await new Promise(resolve => setTimeout(resolve, 0));
 
-  updateDateTime = () => {
-    this.value = `${this.dateValue}T${this.timeValue}`;
-    this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
-
-    this.dispatchEvent(
-      new CustomEvent(`date-time-change`, {
-        bubbles: true,
-        composed: true,
-        detail: {
-          dateTimeString: this.value,
-          dateTime: this.fullDateTime,
-          locale: this.locale,
-          twentyFourHourFormat: this.twentyFourHourFormat
-        }
-      })
-    );
-  }
-
-  protected updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-
-    if (this.dateValue && this.timeValue && (changedProperties.has("timeValue") || changedProperties.has("dateValue"))) {
-      this.updateDateTime();
+      if (this.datePicker) {
+        this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
+      }
+      if (this.timePicker) {
+        this.timePicker.addEventListener("time-selection-change", this.handleTimeChange);
+      }
     }
 
-    if (this.value && changedProperties.has("value")) {
-      this.dateValue = this.value.split("T")[0];
-      this.timeValue = this.value.split("T")[1];
-      this.updateDateTime();
-    }
-
-    if (this.value && changedProperties.has('locale')) {
+    updateDateTime = () => {
+      this.value = `${this.dateValue}T${this.timeValue}`;
       this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
+
+      this.dispatchEvent(
+        new CustomEvent(`date-time-change`, {
+          bubbles: true,
+          composed: true,
+          detail: {
+            dateTimeString: this.value,
+            dateTime: this.fullDateTime,
+            locale: this.locale,
+            twentyFourHourFormat: this.twentyFourHourFormat
+          }
+        })
+      );
+    };
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+
+      if (
+        this.dateValue &&
+        this.timeValue &&
+        (changedProperties.has("timeValue") || changedProperties.has("dateValue"))
+      ) {
+        this.updateDateTime();
+      }
+
+      if (this.value && changedProperties.has("value")) {
+        this.dateValue = this.value.split("T")[0];
+        this.timeValue = this.value.split("T")[1];
+        this.updateDateTime();
+      }
+
+      if (this.value && changedProperties.has("locale")) {
+        this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
+      }
     }
-  }
 
-  static get styles() {
-    return [reset, styles];
-  }
+    static get styles() {
+      return [reset, styles];
+    }
 
-  render() {
-    return html`
+    render() {
+      return html`
         <md-datepicker
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
@@ -121,11 +126,12 @@ export class DateTimePicker extends LitElement {
         </md-datepicker>
       </div>
     `;
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-date-time-picker": DateTimePicker;
+    "md-date-time-picker": DateTimePicker.ELEMENT;
   }
 }

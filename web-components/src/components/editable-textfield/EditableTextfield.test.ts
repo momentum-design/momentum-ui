@@ -20,7 +20,7 @@ const invalidInputs = {
   time: "10:0PM"
 };
 
-const fixtureFactory = async (fieldAlignment: EditableTextfield.Alignment): Promise<EditableTextfield> => {
+const fixtureFactory = async (fieldAlignment: EditableTextfield.Alignment): Promise<EditableTextfield.ELEMENT> => {
   return await fixture(html`
     <md-editable-field .alignment="${fieldAlignment}">Test text Message</md-editable-field>
   `);
@@ -78,7 +78,7 @@ describe("Editable Textfield component", () => {
 
   test("should update slot element's contenteditable attribute when clicked", async () => {
     const originalText = "test text";
-    const component: EditableTextfield = await fixture(html`
+    const component: EditableTextfield.ELEMENT = await fixture(html`
       <md-editable-field content=${originalText}></md-editable-field>
     `);
 
@@ -91,7 +91,7 @@ describe("Editable Textfield component", () => {
     expect(innerElement?.getAttribute("contenteditable")).toBeTruthy;
   });
   test("should update slot element's contenteditable attribute when field blur()", async () => {
-    const component: EditableTextfield = await fixture(html`
+    const component: EditableTextfield.ELEMENT = await fixture(html`
       <md-editable-field>test text</md-editable-field>
     `);
 
@@ -103,7 +103,7 @@ describe("Editable Textfield component", () => {
   });
 
   test("should render default text", async () => {
-    const element: EditableTextfield = await fixture(
+    const element: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field></md-editable-field>
       `
@@ -111,7 +111,7 @@ describe("Editable Textfield component", () => {
     expect(element.innerText.trim()).toEqual(element.content);
   });
   test("should reset the alert when renewing validation", async () => {
-    const element: EditableTextfield = await fixture(
+    const element: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field></md-editable-field>
       `
@@ -120,7 +120,7 @@ describe("Editable Textfield component", () => {
     expect(element.alert).toBeFalsy;
   });
   test("should trigger validation function on blur", async () => {
-    const element: EditableTextfield = await fixture(
+    const element: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field></md-editable-field>
       `
@@ -130,7 +130,7 @@ describe("Editable Textfield component", () => {
     expect(validationFunc).toHaveBeenCalled;
   });
   test("should trigger checkValidity when inputType is present", async () => {
-    const element: EditableTextfield = await fixture(
+    const element: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field numberType="integer"></md-editable-field>
       `
@@ -140,7 +140,7 @@ describe("Editable Textfield component", () => {
     expect(validationFunc).toHaveBeenCalled;
   });
   test("should trigger checkValidity when pattern is present", async () => {
-    const element: EditableTextfield = await fixture(
+    const element: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
       `
@@ -150,7 +150,7 @@ describe("Editable Textfield component", () => {
     expect(validationFunc).toHaveBeenCalled;
   });
   test("should NOT checkValidity when pattern or inputType are missing", async () => {
-    const element: EditableTextfield = await fixture(
+    const element: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field></md-editable-field>
       `
@@ -161,7 +161,7 @@ describe("Editable Textfield component", () => {
   });
 
   test("should return true if there is no validation error", async () => {
-    const el: EditableTextfield = await fixture(
+    const el: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field></md-editable-field>
       `
@@ -174,7 +174,7 @@ describe("Editable Textfield component", () => {
     expect(el.checkValidity && el.checkValidity(validInputs.decimal)).toBeTruthy;
   });
   test("should check keydown entry for type violation", async () => {
-    const el: EditableTextfield = await fixture(
+    const el: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field numberType="integer">1236</md-editable-field>
       `
@@ -190,7 +190,7 @@ describe("Editable Textfield component", () => {
     expect(event.preventDefault).toHaveBeenCalled;
   });
   test("should return true for valid pattern", async () => {
-    const el: EditableTextfield = await fixture(
+    const el: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
       `
@@ -198,7 +198,7 @@ describe("Editable Textfield component", () => {
     expect(el.checkValidity && el.checkValidity(validInputs.integer)).toBeTruthy;
   });
   test("should return false for invalid pattern", async () => {
-    const el: EditableTextfield = await fixture(
+    const el: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
       `
@@ -206,7 +206,7 @@ describe("Editable Textfield component", () => {
     expect(el.checkValidity && el.checkValidity(invalidInputs.integer)).toBeTruthy;
   });
   test("should return error message if there is a validation error", async () => {
-    const el: EditableTextfield = await fixture(
+    const el: EditableTextfield.ELEMENT = await fixture(
       html`
         <md-editable-field></md-editable-field>
       `
@@ -219,7 +219,7 @@ describe("Editable Textfield component", () => {
   });
 
   test("should render message when provided", async () => {
-    const component: EditableTextfield = await fixture(html`
+    const component: EditableTextfield.ELEMENT = await fixture(html`
       <md-editable-field alert .message=${{ ...errorMessageArr } as Input.Message}>
         <div>Error Status</div>
       </md-editable-field>

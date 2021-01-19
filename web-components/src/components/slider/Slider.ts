@@ -30,7 +30,7 @@ export class Slider extends FocusMixin(LitElement) {
   }
 
   @property({ type: Number }) text = 0;
-  @property({ type: String }) label = "";
+  @property({ type: String }) label = "slider";
   @property({ type: Number, reflect: true }) step = 0;
   @property({ type: Boolean, reflect: true })
   get disabled() {
@@ -254,7 +254,7 @@ export class Slider extends FocusMixin(LitElement) {
           aria-valuemin=${this.min}
           aria-valuemax=${this.max}
           aria-valuenow=${this.now}
-          aria-label=${ifDefined(this.label ? this.label : undefined)}
+          aria-label=${ifDefined(this.label)}
           style=${styleMap(this.sliderPointerStyleMap)}
         ></span>
         ${this.step ? this.ticksTemplate() : nothing}

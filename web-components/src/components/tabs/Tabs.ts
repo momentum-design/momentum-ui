@@ -229,7 +229,6 @@ export class Tabs extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
       const panel = panels[index];
 
       if (panel) {
-        panel.setAttribute("id", id);
         panel.setAttribute("aria-labelledby", id);
         panel.selected = this.selected === index;
         if (tab.disabled) {

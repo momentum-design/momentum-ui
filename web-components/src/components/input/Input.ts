@@ -167,6 +167,7 @@ export class Input extends FocusMixin(LitElement) {
   @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
   @property({ type: String }) ariaDescribedBy = "";
   @property({ type: Array }) messageArr: Input.Message[] = [];
+  @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
   @property({ type: Boolean, reflect: true }) autofocus = false;
   @property({ type: Number , reflect: true }) min: number | undefined = undefined;
   @property({ type: Number, reflect: true }) max: number | undefined = undefined;
@@ -469,7 +470,7 @@ export class Input extends FocusMixin(LitElement) {
   }
 
   messagesTemplate() {
-    return this.messages && !!this.messages.length
+    return !this.hideMessage && this.messages && !!this.messages.length
       ? html`
           <div part="message" class="md-input__messages">
             ${repeat(

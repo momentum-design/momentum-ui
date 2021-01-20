@@ -167,8 +167,6 @@ export namespace RadioGroup {
   }
 }
 
-
-
 declare global {
   interface HTMLElementTagNameMap {
     "md-radiogroup": RadioGroup.ELEMENT;

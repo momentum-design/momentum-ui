@@ -611,8 +611,6 @@ export namespace Tabs {
   }
 }
 
-
-
 declare global {
   interface HTMLElementTagNameMap {
     "md-tabs": Tabs.ELEMENT;

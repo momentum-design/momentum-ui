@@ -69,7 +69,7 @@ export class ButtonGroup extends SlottedMixin(FocusMixin(LitElement)) {
 
   private notifySelectedChange() {
     this.dispatchEvent(
-      new CustomEvent("change", {
+      new CustomEvent("button-group-change", {
         detail: {
           selected: this.selectedBtnValue
         },

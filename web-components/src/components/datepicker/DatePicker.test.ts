@@ -45,7 +45,7 @@ describe("DatePicker Component", () => {
   });
 
   test("should navigate focus with keydown events", async () => {
-    const startDate = DateTime.fromObject({ month: 11, day: 15 });
+    const startDate = now();
     const el: DatePicker = await fixture(
       html`
         <md-datepicker .focusedDate=${startDate}></md-datepicker>

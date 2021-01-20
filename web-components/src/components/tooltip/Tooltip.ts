@@ -98,6 +98,35 @@ export class Tooltip extends FocusMixin(LitElement) {
     );
   }
 
+  private changeMessage() {
+    this.dispatchEvent(
+      new CustomEvent<TooltipEvent>("tooltip-message", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          placement: this.placement,
+          reference: this.reference,
+          popper: this.popper
+        }
+      })
+    );
+  }
+
+  private changeSlotContent(slotContent: Element[]) {
+    this.dispatchEvent(
+      new CustomEvent<TooltipEvent>("tooltip-slot", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          placement: this.placement,
+          reference: this.reference,
+          popper: this.popper,
+          slotContent
+        }
+      })
+    );
+  }
+
   notifyTooltipCreate() {
     if (!this.disabled) {
       this.opened = true;
@@ -115,6 +144,9 @@ export class Tooltip extends FocusMixin(LitElement) {
     if (slot) {
       const slotContent = slot.assignedElements({ flatten: true });
       if (slotContent.length) {
+        if (this.slotContent) {
+          this.changeSlotContent(slotContent);
+        }
         this.slotContent = slotContent;
       }
     }
@@ -128,6 +160,9 @@ export class Tooltip extends FocusMixin(LitElement) {
       } else {
         this.closeTooltip();
       }
+    }
+    if (changedProperties.has("message")) {
+      this.changeMessage();
     }
   }
 

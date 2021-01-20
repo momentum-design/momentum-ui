@@ -22,7 +22,7 @@ export const TimePicker = () => {
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);
   const locale = text("locale", "en-US");
-  const value = text("value", "00:00:00.000-08:00");
+  const value = text("value", "00:00:00-08:00");
 
   return html`
     <md-theme class="theme-toggle" id="timepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>

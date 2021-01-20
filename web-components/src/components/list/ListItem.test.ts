@@ -29,17 +29,6 @@ describe("ListItem", () => {
     expect(element.getAttribute("tabindex")).toEqual("0");
   });
 
-  test("should handle checked attribute", async () => {
-    const element = await fixture<ListItem>(`<md-list-item>Linting</md-list-item>`);
-    element.selected = false;
-    await elementUpdated(element);
-    expect(element.getAttribute("aria-selected")).toEqual("false");
-    element.selected = true;
-    await elementUpdated(element);
-    expect(element.selected).toBeTruthy();
-    expect(element.getAttribute("aria-selected")).toEqual("true");
-  });
-
   test("handle firstUpdated lifecycle hook", async () => {
     const tag = defineCE(
       class extends ListItem {

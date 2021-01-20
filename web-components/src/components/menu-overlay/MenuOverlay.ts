@@ -15,7 +15,6 @@ import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
-import { MenuItemEvent } from "@/components/menu/MenuItem";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {

@@ -17,10 +17,10 @@ Object.defineProperties(Element.prototype, {
 });
 
 describe("Floating Modal Component", () => {
-  let element: FloatingModal;
+  let element: FloatingModal.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<FloatingModal>(
+    element = await fixture<FloatingModal.ELEMENT>(
       html`
         <md-floating-modal></md-floating-modal>
       `

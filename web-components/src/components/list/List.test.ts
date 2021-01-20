@@ -10,15 +10,15 @@ import { html, LitElement, PropertyValues } from "lit-element";
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
 describe("List", () => {
-  let element: List;
-  let listItems: ListItem[];
+  let element: List.ELEMENT;
+  let listItems: ListItem.ELEMENT[];
   const keyEvent = (code: string) =>
     new KeyboardEvent("keydown", {
       code
     });
 
   beforeEach(async () => {
-    element = await fixture<List>(
+    element = await fixture<List.ELEMENT>(
       html`
         <md-list label="Transuranium elements">
           <md-list-item slot="list-item">Neptunium</md-list-item>
@@ -28,7 +28,7 @@ describe("List", () => {
         </md-list>
       `
     );
-    listItems = element.slotted as ListItem[];
+    listItems = element.slotted as ListItem.ELEMENT[];
   });
   afterEach(fixtureCleanup);
   test("should set correct attribute", async () => {
@@ -62,8 +62,8 @@ describe("List", () => {
         }
       };
 
-    const tag = defineCE(class extends mixin(List) {});
-    const firstElement = fixtureSync<List>(`<${tag}></${tag}>`);
+    const tag = defineCE(class extends mixin(List.ELEMENT) {});
+    const firstElement = fixtureSync<List.ELEMENT>(`<${tag}></${tag}>`);
     const firstEvent = await oneEvent(firstElement, "first-updated");
     expect(firstEvent).toBeDefined();
 
@@ -74,7 +74,7 @@ describe("List", () => {
 
     fixtureCleanup();
 
-    const secondElement = document.createElement(`${tag}`) as List;
+    const secondElement = document.createElement(`${tag}`) as List.ELEMENT;
     setTimeout(() => secondElement.connectedCallback());
     const secondEvent = await oneEvent(secondElement, "connected-callback");
     expect(secondEvent).toBeDefined();

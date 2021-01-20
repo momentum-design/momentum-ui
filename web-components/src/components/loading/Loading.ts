@@ -11,35 +11,37 @@ import { customElement, html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
-export type LoadingSize = "small" | "middle" | "large" | "";
+export namespace Loading {
+  export type LoadingSize = "small" | "middle" | "large" | "";
 
-@customElement("md-loading")
-export class Loading extends LitElement {
-  @property({ type: String }) size: LoadingSize = "";
+  @customElement("md-loading")
+  export class ELEMENT extends LitElement {
+    @property({ type: String }) size: LoadingSize = "";
 
-  static get styles() {
-    return [reset, styles];
-  }
+    static get styles() {
+      return [reset, styles];
+    }
 
-  get loadingClassMap() {
-    return {
-      [`md-loading--${this.size}`]: !!this.size
-    };
-  }
+    get loadingClassMap() {
+      return {
+        [`md-loading--${this.size}`]: !!this.size
+      };
+    }
 
-  render() {
-    return html`
-      <div class="md-loading ${classMap(this.loadingClassMap)}">
-        <span class="md-loading__icon"></span>
-        <span class="md-loading__icon"></span>
-        <span class="md-loading__icon"></span>
-      </div>
-    `;
+    render() {
+      return html`
+        <div class="md-loading ${classMap(this.loadingClassMap)}">
+          <span class="md-loading__icon"></span>
+          <span class="md-loading__icon"></span>
+          <span class="md-loading__icon"></span>
+        </div>
+      `;
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-loading": Loading;
+    "md-loading": Loading.ELEMENT;
   }
 }

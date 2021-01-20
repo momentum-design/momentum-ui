@@ -19,6 +19,7 @@ import { Input } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;
+
 export namespace EditableTextfield {
   export type Alignment = typeof alignment[number];
   export type InputType = typeof numInputTypes[number];

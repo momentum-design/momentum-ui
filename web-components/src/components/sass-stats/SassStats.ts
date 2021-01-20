@@ -9,6 +9,7 @@
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import { score } from "wcag-color";
+
 @customElement("sass-stats")
 export class SassStats extends LitElement {
   @property({ type: String }) component = "";
@@ -37,7 +38,7 @@ export class SassStats extends LitElement {
   }
 
   private getContrast(element: Element) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       if (element.shadowRoot) {
         const shadowContent = element.shadowRoot.querySelector("*:not(style)")!;
         const style = getComputedStyle(shadowContent);

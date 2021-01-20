@@ -32,6 +32,7 @@ declare global {
     replaceSync: Function;
   }
 }
+
 export namespace Theme {
   export type Attributes = {
     darkTheme: boolean;

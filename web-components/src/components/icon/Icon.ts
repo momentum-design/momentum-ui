@@ -17,6 +17,7 @@ import styles from "./scss/module.scss";
 
 export const iconSize = ["16", "20", "36", "56", 16, 20, 36, 56] as const;
 export const iconType = ["", "white"] as const;
+
 export namespace Icon {
   export type Size = typeof iconSize[number];
   export type Type = typeof iconType[number];

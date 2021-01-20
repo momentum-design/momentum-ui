@@ -1,7 +1,7 @@
 import "./InputFile";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: "Input File",
@@ -15,7 +15,13 @@ export default {
 };
 
 export const InputFile = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const language = text("Enter Accept Language", "JavaScript");
+
   return html`
-    <md-input-file></md-input-file>
+    <md-theme class="theme-toggle" id="input-file" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-input-file .accept-language=${language}></md-input-file>
+    </md-theme>
   `;
 };

@@ -16,7 +16,6 @@
 }
 
 @mixin secondary-label {
-  align-self: center;
   color: var(--label-secondary, $lm-label-secondary-light);
   display: flex;
   flex-grow: 1;

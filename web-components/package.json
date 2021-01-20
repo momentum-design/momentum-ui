@@ -57,8 +57,7 @@
     "libphonenumber-js": "^1.7.57",
     "luxon": "^1.25.0",
     "nanoid": "^3.1.16",
-    "papaparse": "^5.3.0",
-    "@momentum-ui/web-components-4": "./publish"
+    "papaparse": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

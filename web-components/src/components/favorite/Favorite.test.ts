@@ -4,7 +4,7 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import "./Favorite";
 import { Favorite } from "./Favorite";
 
-const fixtureFactory = async (): Promise<Favorite> => {
+const fixtureFactory = async (): Promise<Favorite.ELEMENT> => {
   return await fixture(html`
     <md-favorite> </md-favorite>
   `);
@@ -25,7 +25,7 @@ describe("Favorite component", () => {
   });
 
   test("should set disabled Favorite", async () => {
-    const element = await fixture<Favorite>(`<md-favorite disabled></md-favorite>`);;
+    const element = await fixture<Favorite.ELEMENT>(`<md-favorite disabled></md-favorite>`);;
 
     expect(element).toBeDefined();
     expect(element.disabled).toBeTruthy;
@@ -33,7 +33,7 @@ describe("Favorite component", () => {
   });
 
   test("should set active Favorite", async () => {
-    const element = await fixture<Favorite>(`<md-favorite active></md-favorite>`);;
+    const element = await fixture<Favorite.ELEMENT>(`<md-favorite active></md-favorite>`);;
 
     expect(element).toBeDefined();
     expect(element.active).toBeTruthy;
@@ -54,5 +54,15 @@ describe("Favorite component", () => {
     mockClick.mockRestore();
   });
 
-  
+  test("should dispatch Keyboard Action", async () => {
+    const element = await fixtureFactory();
+
+    const mockEnterClick = jest.spyOn(element, "handleElectKeyDown");
+    element.handleElectKeyDown(new KeyboardEvent("Enter"));
+    await elementUpdated(element);
+
+    expect(mockEnterClick).toHaveBeenCalled();
+
+    mockEnterClick.mockRestore();
+  });
 });

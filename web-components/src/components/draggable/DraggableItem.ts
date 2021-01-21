@@ -1,7 +1,6 @@
 import { CSSResultArray, customElement, html, internalProperty, LitElement, property, query } from "lit-element";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
-import { DropEvent } from "@interactjs/actions/drop/DropEvent";
 
 @customElement("md-draggable-item")
 export class DraggableItem extends LitElement { 
@@ -39,7 +38,7 @@ export class DraggableItem extends LitElement {
     console.log(event.type)
   }
 
-  drop(event: DropEvent) {
+  drop(event: DragEvent) {
     console.log(event.type)
   }
 
@@ -57,13 +56,11 @@ export class DraggableItem extends LitElement {
         @dragover=${(event: DragEvent) => this.dragOver(event)} 
         @dragleave=${(event: DragEvent) => this.dragLeave(event)}
         @dragend=${(event: DragEvent) => this.dragEnd(event)}
-        @drop=${(ev: DropEvent) => this.drop(ev)}>
+        @drop=${(ev: DragEvent) => this.drop(ev)}>
         <slot></slot>
       </div>
     `;
   }
-
-
 }
 
 declare global {

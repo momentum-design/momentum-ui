@@ -8,8 +8,9 @@
   user-select: none;
 }
 
-.placeholder {
-  background-color: #edf2f7;
-  border: 2px dashed #cbd5e0;
+.md-draggable-wrap {
+  border: 2px dotted grey;
+  display: block;
   margin-bottom: 1rem;
+  min-height: 100px;
 }

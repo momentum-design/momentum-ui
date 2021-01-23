@@ -356,11 +356,15 @@ export class ComboBox extends FocusMixin(LitElement) {
   }
 
   private unCheckedAllOptions() {
-    this.lists!.forEach((list, index) => this.unCheckedOption(index));
+    if (this.isMulti) {
+      this.lists!.forEach((list, index) => this.unCheckedOption(index));
+    }
   }
 
   private unCheckedOption(index: number) {
-    this.lists![index].setAttribute("aria-checked", "false");
+    if (this.isMulti) {
+      this.lists![index].setAttribute("aria-checked", "false");
+    }
   }
 
   private isOptionChecked(option: string | OptionMember) {

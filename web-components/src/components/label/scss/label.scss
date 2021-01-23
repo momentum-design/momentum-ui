@@ -1,8 +1,8 @@
-@include exports("md-label") {
+:host(md-label) {
   .md-label {
     @include form-label;
     display: flex;
-    
+
     &.right {
       @include form-label(right, false);
     }
@@ -12,31 +12,25 @@
     }
 
     small {
-      text-transform: $form-label-small-transform;
+      text-transform: capitalize;
     }
+
+    span {
+      font-size: inherit;
+    }
+  }
+  .md-secondary-label {
+    @include secondary-label;
   }
 }
 
-.md-input__secondary-label {
-  @include secondary-label;
-  span {font-size: $secondary-label__font-size;}
-}
 
-:host(.md-input__secondary-label) {
-  @include secondary-label;
-  width: auto !important;
-}
-
+:host(.md-input__label.disabled),
 :host(.md-input__secondary-label.disabled) {
   label {
     cursor: not-allowed;
   }
 }
 
-:host(.md-input__label.disabled) {
-  label {
-    cursor: not-allowed;
-  }
-}
 
 

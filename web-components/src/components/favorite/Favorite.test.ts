@@ -33,10 +33,10 @@ describe("Favorite component", () => {
   });
 
   test("should set active Favorite", async () => {
-    const element = await fixture<Favorite.ELEMENT>(`<md-favorite active></md-favorite>`);;
+    const element = await fixture<Favorite.ELEMENT>(`<md-favorite checked></md-favorite>`);;
 
     expect(element).toBeDefined();
-    expect(element.active).toBeTruthy;
+    expect(element.checked).toBeTruthy;
 
     const icon = element.shadowRoot?.querySelector("md-icon");
     expect(icon?.getAttribute("name")).toEqual("favorite-active_16");

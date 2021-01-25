@@ -3,7 +3,8 @@ import { customElement, html, LitElement, property } from "lit-element";
 
 @customElement("favorite-template-sandbox")
 export class CoachTemplateSandbox extends LitElement {
-  @property({ type: Boolean }) selected = true;
+  @property({ type: Boolean }) selected = false;
+  @property({ type: String }) value = "";
 
   connectedCallback() {
     super.connectedCallback();
@@ -11,15 +12,22 @@ export class CoachTemplateSandbox extends LitElement {
   }
 
   private countFavorite(e: CustomEvent) {
-    const { active} = e.detail;
+    const { active, value } = e.detail;
 
     this.selected = active;
+    if (active === true) {
+      this.value = value;
+    } else {
+      this.value = "";
+    }
+    
   }
 
   render() {
     return html`
-      <md-favorite></md-favorite>
+      <md-favorite disabled></md-favorite>
       <p>Select: ${this.selected}</p>
+      <p>Value: ${this.value}</p>
     `;
   }
 

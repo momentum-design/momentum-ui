@@ -8,19 +8,20 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElement, html, internalProperty, LitElement, property } from "lit-element";
-//import { classMap } from "lit-html/directives/class-map";
+import { FocusMixin } from "@/mixins";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 import { Key } from "@/constants";
 import { nothing } from "lit-html";
-import { nanoid } from "nanoid";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace Favorite {
   @customElement("md-favorite")
-  export class ELEMENT extends LitElement {
-    @property({ type: Boolean }) active = false;
+  export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean }) disabled = false;
+    @property({ type: Boolean }) checked = false;
+    @property({ type: String }) value = "Select favorite";
     @property({ type: String }) id = "";
     @property({ type: String }) label = "Favorite"
 
@@ -28,9 +29,8 @@ export namespace Favorite {
 
     connectedCallback() {
       super.connectedCallback();
-      const id = nanoid();
-
-      this.customId = id;
+      this.addEventListener("keydown", this.handleElectKeyDown);
+      this.addEventListener("click", this.handleFavorite as EventListener);
     }
 
     static get styles() {
@@ -38,7 +38,7 @@ export namespace Favorite {
     }
 
     getIconName() {
-      switch (this.active) {
+      switch (this.checked) {
         case true:
           return "favorite-active_16";
         default:
@@ -50,46 +50,66 @@ export namespace Favorite {
       if (this.disabled) {
         return;
       } else {
-        this.active = !this.active;
+        this.checked = !this.checked;
         this.dispatchEvent(
-          new CustomEvent<{id: string, active: boolean}>("favorite-elect", {
+          new CustomEvent<{value: string, active: boolean}>("favorite-elect", {
           detail: {
-              active: this.active,
-              id: this.id || this.customId
+              active: this.checked,
+              value: this.value
           },
           bubbles: true,
           composed: true
           })
         )
-        console.log(event);
       }
     }
 
     handleElectKeyDown(event: KeyboardEvent) {
       if (event.code === Key.Enter || event.code === Key.Space) { 
-        this.active = !this.active;
+        this.checked = !this.checked;
+        this.dispatchEvent(
+          new CustomEvent<{value: string, active: boolean}>("favorite-keydown", {
+          detail: {
+              active: this.checked,
+              value: this.value
+          },
+          bubbles: true,
+          composed: true
+          })
+        )
       }
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.removeEventListener("keydown", this.handleElectKeyDown);
+      this.removeEventListener("click", this.handleFavorite as EventListener);
     }
 
     get favoriteClassMap() {
       return {
-        "md-favorite--active": this.active,
+        "md-favorite--active": this.checked,
         "md-favorite--disabled": this.disabled
       };
     }
 
     render() {
       return html`
-        <div
-          id="${this.id ? this.id : this.customId}" 
-          ?disabled=${this.disabled} 
-          tabindex=${this.disabled ? -1 : 0}
-          title="${this.label} ${this.active ? " not selected" : "selected"}"
+        <label
+          for="favorite-checkbox"
           class="md-favorite ${classMap(this.favoriteClassMap)}"
-          @click=${(e: CustomEvent) => this.handleFavorite(e)}
-          @keydown=${(e: KeyboardEvent) => this.handleElectKeyDown(e)}>
-          <md-icon name="${this.getIconName()}" color="${this.active ? "yellow" : nothing}"></md-icon>
-        </div>
+          tabindex="0">
+            <input
+            type="checkbox"
+            aria-label=${ifDefined(this.label.length ? this.label : undefined)}
+            value=${this.value}
+            ?checked=${this.checked}
+            ?disabled=${this.disabled}
+            aria-hidden="true"
+            name="favorite-checkbox"
+            />
+            <md-icon name="${this.getIconName()}" color="${this.checked ? "yellow" : nothing}"></md-icon>
+        </label>
       `;
     }
   }

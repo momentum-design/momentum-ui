@@ -14,6 +14,14 @@
   position: relative;
   width: $favorite-size;
 
+  input {
+    visibility: hidden;
+  }
+
+  md-icon {
+    position: absolute;
+  }
+
   md-icon,
   md-icon::part(icon) {
     line-height: rem-calc(13);
@@ -50,6 +58,11 @@
 
   &--disabled {
     background-color: transparent;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
 
     md-icon::part(icon) {
       color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);

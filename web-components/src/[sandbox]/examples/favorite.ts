@@ -25,7 +25,7 @@ export class CoachTemplateSandbox extends LitElement {
 
   render() {
     return html`
-      <md-favorite disabled></md-favorite>
+      <md-favorite></md-favorite>
       <p>Select: ${this.selected}</p>
       <p>Value: ${this.value}</p>
     `;

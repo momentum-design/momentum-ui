@@ -1,14 +1,11 @@
 :host {
-  display: inline-flex;
+  @include flex($display: inline-flex);
 }
 
 .md-favorite {
-  align-content: center;
-  align-items: center;
+  @include flex($display: inline-flex);
   border-radius: $favorite-border;
-  display: inline-flex;
   height: $favorite-size;
-  justify-content: center;
   padding: calc(#{$favorite-intent} * 1.5);
   padding-top: calc(#{$favorite-intent} * 2.5);
   position: relative;
@@ -24,8 +21,8 @@
 
   md-icon,
   md-icon::part(icon) {
-    line-height: rem-calc(13);
     color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    line-height: rem-calc(13);
   }
 
   &:hover {
@@ -52,8 +49,7 @@
   }
 
   &:focus::after {
-    box-shadow: 0 0 0 $focus-ring-size var(--button-focus-ring-color, $lm-button-focus-ring-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    box-shadow: $focus-boxshadow;
   }
 
   &--disabled {

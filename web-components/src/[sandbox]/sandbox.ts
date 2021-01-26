@@ -200,6 +200,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-code-editor">		
+             <h2>md-code-editor</h2>		
+             <sass-stats component="code-editor">		
+               ${codeEditorTemplate}		
+             </sass-stats>		
+           </div>
+
           <div class="container" aria-label="md-combo-box">
             <h2>md-combobox</h2>
             <sass-stats component="combobox">

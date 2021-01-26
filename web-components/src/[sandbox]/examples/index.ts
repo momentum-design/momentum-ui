@@ -17,6 +17,7 @@ export { editableField } from "./editable-field";
 export { floatingModalTemplate } from "./floating-modal";
 export { iconTemplate } from "./icon";
 export { inputTemplate } from "./input";
+export { inputFileTemplate } from "./input-file";
 export { labelTemplate } from "./label";
 export { linkTemplate } from "./link";
 export { listTemplate } from "./list";

@@ -10,6 +10,7 @@ export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
 export { coachTemplate } from "./coachmark";
+export { codeEditorTemplate } from "./code-editor";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
 export { dateTimePickerTemplate } from "./date-time-picker";

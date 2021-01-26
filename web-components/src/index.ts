@@ -21,6 +21,7 @@ export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";
 export { Chip } from "./components/chip/Chip";
 import { Coachmark } from "./components/coachmark/Coachmark";
+export { CodeEditor } from "./components/code-editor/CodeEditor";
 export { ComboBox } from "./components/combobox/ComboBox";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { DatePicker } from "./components/datepicker/DatePicker";

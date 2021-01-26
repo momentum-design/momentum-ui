@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -65,6 +65,7 @@
     "@storybook/web-components": "^6.0.28",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/dompurify": "^2.0.4",
+    "@types/highlight.js": "^10.1.0",
     "@types/html-webpack-plugin": "^3.2.2",
     "@types/jest": "26.0.10",
     "@types/luxon": "^1.25.0",
@@ -131,6 +132,7 @@
     "@popperjs/core": "^2.4.4",
     "country-codes-list": "^1.6.8",
     "dompurify": "^2.2.0",
+    "highlight.js": "^10.5.0",
     "libphonenumber-js": "^1.7.57",
     "luxon": "^1.25.0",
     "nanoid": "^3.1.16",

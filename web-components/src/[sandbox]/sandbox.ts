@@ -22,6 +22,7 @@ import {
   floatingModalTemplate,
   iconTemplate,
   inputTemplate,
+  inputFileTemplate,
   labelTemplate,
   linkTemplate,
   listTemplate,
@@ -43,7 +44,8 @@ import {
   toggleSwitchTemplate,
   tooltipTemplate,
   accordionTemplate,
-  cardTemplate
+  cardTemplate,
+  codeEditorTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -113,6 +115,13 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+
+          <div class="container" aria-label="md-code-editor">
+            <h2>md-code-editor</h2>
+            <sass-stats component="code-editor">
+              ${codeEditorTemplate}
+            </sass-stats>
+          </div>
 
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
@@ -244,6 +253,13 @@ export class Sandbox extends LitElement {
             <h2>md-input</h2>
             <sass-stats component="input">
               ${inputTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-input-file">
+            <h2>md-input-file</h2>
+            <sass-stats component="input-file">
+              ${inputFileTemplate}
             </sass-stats>
           </div>
 

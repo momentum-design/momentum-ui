@@ -35,6 +35,7 @@ export { FloatingModal } from "./components/floating-modal/FloatingModal";
 export { HelpText } from "./components/help-text/HelpText";
 export { Icon } from "./components/icon/Icon";
 export { Input } from "./components/input/Input";
+export { InputFile } from "./components/input-file/InputFile";
 export { Label } from "./components/label/Label";
 export { Link } from "./components/link/Link";
 export { List } from "./components/list/List";

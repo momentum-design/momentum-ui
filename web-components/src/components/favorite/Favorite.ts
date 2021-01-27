@@ -66,17 +66,7 @@ export namespace Favorite {
 
     handleElectKeyDown(event: KeyboardEvent) {
       if (event.code === Key.Enter || event.code === Key.Space) { 
-        this.checked = !this.checked;
-        this.dispatchEvent(
-          new CustomEvent<{value: string, active: boolean}>("favorite-keydown", {
-          detail: {
-              active: this.checked,
-              value: this.value
-          },
-          bubbles: true,
-          composed: true
-          })
-        )
+        this.handleFavorite;
       }
     }
 

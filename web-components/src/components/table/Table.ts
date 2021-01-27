@@ -12,6 +12,7 @@ import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
+import "./TableCell";
 
 export const formatType = ["number", "default"] as const;
 type Warn = { [key: string]: string };

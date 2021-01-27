@@ -99,18 +99,25 @@
 
     td {
       font-size: $font-size-base;
+      min-width: calc(#{$table-row-height} * 3.2);
       padding-left: calc(#{$table-main-indent} * 3);
       vertical-align: middle;
 
       span {
         @include text-dots;
         min-height: calc(#{$table-main-indent} * 6);
-        //width: calc(100% - #{$table-main-indent});
+        width: calc(100% - #{$table-main-indent});
       }
 
       md-icon {
         padding-left: $table-main-indent;
-        vertical-align: middle;
+        vertical-align: bottom;
+      }
+
+      &:last-child {
+        span {
+          width: auto;
+        }
       }
     }
   }

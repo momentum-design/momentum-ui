@@ -52,7 +52,7 @@ export namespace Favorite {
       } else {
         this.checked = !this.checked;
         this.dispatchEvent(
-          new CustomEvent<{value: string, active: boolean}>("favorite-elect", {
+          new CustomEvent<{value: string, active: boolean}>("favorite-toggle", {
           detail: {
               active: this.checked,
               value: this.value

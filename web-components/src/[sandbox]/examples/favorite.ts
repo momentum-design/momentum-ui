@@ -8,7 +8,7 @@ export class CoachTemplateSandbox extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("favorite-elect", this.countFavorite as EventListener);
+    this.addEventListener("favorite-toggle", this.countFavorite as EventListener);
   }
 
   private countFavorite(e: CustomEvent) {

@@ -100,6 +100,18 @@
     td {
       font-size: $font-size-base;
       padding-left: calc(#{$table-main-indent} * 3);
+      vertical-align: middle;
+
+      span {
+        @include text-dots;
+        min-height: calc(#{$table-main-indent} * 6);
+        //width: calc(100% - #{$table-main-indent});
+      }
+
+      md-icon {
+        padding-left: $table-main-indent;
+        vertical-align: middle;
+      }
     }
   }
 

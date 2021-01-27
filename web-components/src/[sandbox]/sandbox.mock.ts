@@ -12,6 +12,11 @@ export const comboBoxOptions = [
   "Argentina"
 ];
 
+export const tableErrors = [
+  "Ctrl + Alt + C",
+  "Ctrl + Alt + O"
+];
+
 export const comboBoxObjectOptions = [
   { id: "0", country: "Afghanistan" },
   { id: "1", country: "Aland Islands" },

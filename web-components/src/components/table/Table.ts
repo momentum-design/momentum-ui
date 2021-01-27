@@ -7,13 +7,14 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
 
 export const formatType = ["number", "default"] as const;
+type Warn = { [key: string]: string };
 
 export namespace Table {
   export type Format = typeof formatType[number];
@@ -30,9 +31,15 @@ export class Table extends LitElement {
   @property({ type: String }) label = "Table";
   @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
   @property({ type: String }) format: Table.Format = "default";
+  @property({ type: Array }) errors:  (string | Warn)[] = [];
 
   @internalProperty() private sort = { columnName: "", sortting: false };
   @internalProperty() csvData: any = undefined;
+
+  @queryAll('td[role="cell"]') rowCell?: HTMLTableCellElement[];
+  @queryAll('td.error') errorCells?: HTMLElement[];
+
+  private items: [] = [];
 
   headerRow: any;
   results: any;
@@ -53,6 +60,23 @@ export class Table extends LitElement {
     this.headerRow = this.results.data[0];
     this.csvData = this.results.data.slice(1, this.results.data.length);
     this.requestUpdate("tabledata");
+    this.linkCellItems();
+  }
+
+  get cellItem() {
+    return this.rowCell;
+  }
+
+  linkCellItems() {
+    const element = this.rowCell;
+    element?.forEach(item => {
+      this.errors.forEach(i => {
+        if (item.innerText === i) {
+          item.classList.add("error");
+          item.insertAdjacentHTML('beforeend', '<md-icon name="icon-warning_24" color="red"></md-icon>');
+        }
+      })
+    })
   }
 
   sortTab(ev: Event, key: any) {
@@ -96,6 +120,7 @@ export class Table extends LitElement {
       this.results = Papa.parse(this.tabledata, this.config);
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
+      this.linkCellItems();
     }
   }
 
@@ -150,7 +175,9 @@ export class Table extends LitElement {
                             const formattedItem =
                               this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
                             return html`
-                              <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">${formattedItem}</td>
+                              <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">
+                                <span>${formattedItem}</span>
+                              </td>
                             `;
                           })}
                         </tr>

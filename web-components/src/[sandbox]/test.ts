@@ -1,6 +1,9 @@
 import { customElement, html, css, LitElement } from "lit-element";
-//import "@momentum-ui/web-components/dist/comp/md-button";
-// import "@momentum-ui/web-components-4";
+// import "@momentum-ui/web-components-publish/dist/comp/md-button";
+// import "@momentum-ui/web-components-publish/dist/comp/md-icon";
+// import "@momentum-ui/web-components-publish/dist/comp/md-loading";
+// import "@momentum-ui/web-components-publish/dist/comp/md-spinner";
+import "@momentum-ui/web-components-publish";
 
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends LitElement {
@@ -11,10 +14,12 @@ export class Sandbox extends LitElement {
     console.log(this.isRegistered("momentum-ui-web-components-sandbox"));
     console.log(this.isRegistered("md-button"));
     console.log(this.isRegistered("md-icon"));
+    console.log(this.isRegistered("md-loading"));
+    console.log(this.isRegistered("md-spinner"));
   }
 
   isRegistered(name: string) {
-    return document.createElement(name).constructor !== HTMLElement;
+    return window.customElements.get(name) !== undefined;
   }
 
   static get styles() {
@@ -28,7 +33,6 @@ export class Sandbox extends LitElement {
   render() {
     return html`
       <div class="container">
-
         <h3>Button</h3>
         <div>
           <md-button disabled><span slot="text">disabled</span></md-button>
@@ -50,6 +54,13 @@ export class Sandbox extends LitElement {
           <md-icon name="chat_28" class="testClass" color="#008094"></md-icon>
         </div>
 
+        <h3>Loading</h3>
+        <md-loading></md-loading>
+        <md-loading size="middle"></md-loading>
+        <md-loading size="large"></md-loading>
+
+        <h3>Spinner</h3>
+        <md-spinner size="33"></md-spinner>
       </div>
     `;
   }

@@ -97,25 +97,6 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
   };
 }
 
-const pluginCleanUpTypes = new RemovePlugin({
-  after: {
-    log: false,
-    include: ["./dist/types/[sandbox]"],
-    test: [
-      {
-        folder: "./dist/types",
-        method: p => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
-        recursive: true
-      },
-      {
-        folder: "./dist/types",
-        method: p => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
-        recursive: true
-      }
-    ]
-  }
-}) as any;
-
 // DEV
 // ----------
 
@@ -123,8 +104,8 @@ export const commonDev = merge(common, {
   name: "dev",
   mode: "development",
   devtool: "source-map",
-  //entry: "./src/[sandbox]/test.ts",
-  entry: "./src/[sandbox]/sandbox.ts",
+  entry: "./src/[sandbox]/test.ts",
+  // entry: "./src/[sandbox]/sandbox.ts",
   output: {
     path: pBuild
   },
@@ -160,12 +141,77 @@ const dev = merge(commonDev, {
 
 const commonDist = merge(common, {
   entry: {
-    index: "./src/index.ts"
+    index: "./src/index.ts",
+    // "comp/md-accordion": "./src/components/accordion/Accordion",
+    // "comp/md-accordion-item": "./src/components/accordion/AccordionItem",
+    // "comp/md-activity-button": "./src/components/activity-button/ActivityButton",
+    // "comp/md-alert": "./src/components/alert/Alert",
+    // "comp/md-alert-banner": "./src/components/alert-banner/AlertBanner",
+    // "comp/md-avatar": "./src/components/avatar/Avatar",
+    // "comp/md-composite-avatar": "./src/components/avatar/CompositeAvatar",
+    // "comp/md-badge": "./src/components/badge/Badge",
+    // "comp/md-breadcrumb": "./src/components/breadcrumb/Breadcrumb",
+    "comp/md-button": "./src/components/button/Button",
+    // "comp/md-card": "./src/components/card/Card",
+    // "comp/md-chat-message": "./src/components/chat-message/ChatMessage",
+    // "comp/md-checkbox": "./src/components/checkbox/Checkbox",
+    // "comp/md-checkboxgroup": "./src/components/checkbox/CheckboxGroup",
+    // "comp/md-chip": "./src/components/chip/Chip",
+    // "comp/md-coachmark": "./src/components/coachmark/Coachmark",
+    // "comp/md-combobox": "./src/components/combobox/ComboBox",
+    // "comp/md-date-time-picker": "./src/components/date-time-picker/DateTimePicker",
+    // "comp/md-datepicker": "./src/components/datepicker/DatePicker",
+    // "comp/md-datepicker-calendar": "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
+    // "comp/md-datepicker-day": "./src/components/datepicker/datepicker-day/DatePickerDay",
+    // "comp/md-datepicker-month": "./src/components/datepicker/datepicker-month/DatePickerMonth",
+    // "comp/md-datepicker-week": "./src/components/datepicker/datepicker-week/DatePickerWeek",
+    // "comp/md-editable-field": "./src/components/editable-textfield/EditableTextfield",
+    // "comp/md-floating-modal": "./src/components/floating-modal/FloatingModal",
+    // "comp/md-help-text": "./src/components/help-text/HelpText",
+    "comp/md-icon": "./src/components/icon/Icon",
+    // "comp/md-input": "./src/components/input/Input",
+    // "comp/md-label": "./src/components/label/Label",
+    // "comp/md-link": "./src/components/link/Link",
+    // "comp/md-list": "./src/components/list/List",
+    // "comp/md-list-item": "./src/components/list/ListItem",
+    "comp/md-loading": "./src/components/loading/Loading",
+    // "comp/md-meeting-alert": "./src/components/meeting-alert/MeetingAlert",
+    // "comp/md-menu": "./src/components/menu/Menu",
+    // "comp/md-menu-item": "./src/components/menu/MenuItem",
+    // "comp/md-menu-overlay": "./src/components/menu-overlay/MenuOverlay",
+    // "comp/md-modal": "./src/components/modal/Modal",
+    // "comp/md-pagination": "./src/components/pagination/Pagination",
+    // "comp/md-phone-input": "./src/components/phone-input/PhoneInput",
+    // "comp/md-progress-bar": "./src/components/progress-bar/ProgressBar",
+    // "comp/md-radio": "./src/components/radio/Radio",
+    // "comp/md-radiogroup": "./src/components/radio/RadioGroup",
+    // "comp/md-slider": "./src/components/slider/Slider",
+    "comp/md-spinner": "./src/components/spinner/Spinner"
+    // "comp/md-table": "./src/components/table/Table",
+    // "comp/md-tab": "./src/components/tabs/Tab",
+    // "comp/md-tab-panel": "./src/components/tabs/TabPanel",
+    // "comp/md-tabs": "./src/components/tabs/Tabs",
+    // "comp/md-task-item": "./src/components/taskitem/TaskItem",
+    // "comp/md-theme": "./src/components/theme/Theme",
+    // "comp/md-timepicker": "./src/components/timepicker/TimePicker",
+    // "comp/md-toggle-switch": "./src/components/toggle-switch/ToggleSwitch",
+    // "comp/md-tooltip": "./src/components/tooltip/Tooltip"
   },
   output: {
     path: pDist,
+    publicPath: "/",
     filename: "[name].js",
+    chunkFilename: "chunks/[id].js",
     libraryTarget: "umd"
+  },
+  optimization: {
+    // runtimeChunk: "single",
+    splitChunks: {
+      chunks: "all",
+      maxInitialRequests: Infinity,
+      maxAsyncRequests: Infinity,
+      minSize: 0
+    }
   },
   externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
   plugins: [
@@ -181,7 +227,24 @@ const commonDist = merge(common, {
       { from: `${pSrc}/**/*.json`, to: "css", flatten: true }
       // if you want 'momentum-ui.min.css' to work we must copy to second location
     ]),
-    pluginCleanUpTypes
+    new RemovePlugin({
+      after: {
+        log: false,
+        include: ["./dist/types/[sandbox]"],
+        test: [
+          {
+            folder: "./dist/types",
+            method: p => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
+            recursive: true
+          },
+          {
+            folder: "./dist/types",
+            method: p => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
+            recursive: true
+          }
+        ]
+      }
+    }) as any,
   ]
 });
 
@@ -190,7 +253,7 @@ const distDev = merge(commonDist, {
   mode: "development",
   devtool: "source-map",
   module: {
-    rules: [ruleTS({ isDev: false }), ruleCSS({ isDev: false })]
+    rules: [ruleTS({ isDev: true }), ruleCSS({ isDev: true })]
   }
 });
 
@@ -207,85 +270,4 @@ const distProd = merge(commonDist, {
   }
 });
 
-const distProdSplit = merge(common, {
-  name: "distProdSplit",
-  mode: "production",
-  output: {
-    path: path.resolve(`${pDist}/comp`),
-    publicPath: "/",
-    filename: "[name].js",
-    chunkFilename: "vendor/[id].js",
-    libraryTarget: "umd"
-  },
-  entry: {
-    // "md-accordion": "./src/components/accordion/Accordion",
-    // "md-accordion-item": "./src/components/accordion/AccordionItem",
-    // "md-activity-button": "./src/components/activity-button/ActivityButton",
-    // "md-alert": "./src/components/alert/Alert",
-    // "md-alert-banner": "./src/components/alert-banner/AlertBanner",
-    // "md-avatar": "./src/components/avatar/Avatar",
-    // "md-composite-avatar": "./src/components/avatar/CompositeAvatar",
-    // "md-badge": "./src/components/badge/Badge",
-    // "md-breadcrumb": "./src/components/breadcrumb/Breadcrumb",
-    "md-button": "./src/components/button/Button",
-    // "md-card": "./src/components/card/Card",
-    // "md-chat-message": "./src/components/chat-message/ChatMessage",
-    // "md-checkbox": "./src/components/checkbox/Checkbox",
-    // "md-checkboxgroup": "./src/components/checkbox/CheckboxGroup",
-    // "md-chip": "./src/components/chip/Chip",
-    // "md-coachmark": "./src/components/coachmark/Coachmark",
-    // "md-combobox": "./src/components/combobox/ComboBox",
-    // "md-date-time-picker": "./src/components/date-time-picker/DateTimePicker",
-    // "md-datepicker": "./src/components/datepicker/DatePicker",
-    // "md-datepicker-calendar": "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
-    // "md-datepicker-day": "./src/components/datepicker/datepicker-day/DatePickerDay",
-    // "md-datepicker-month": "./src/components/datepicker/datepicker-month/DatePickerMonth",
-    // "md-datepicker-week": "./src/components/datepicker/datepicker-week/DatePickerWeek",
-    // "md-editable-field": "./src/components/editable-textfield/EditableTextfield",
-    // "md-floating-modal": "./src/components/floating-modal/FloatingModal",
-    // "md-help-text": "./src/components/help-text/HelpText",
-    "md-icon": "./src/components/icon/Icon",
-    // "md-input": "./src/components/input/Input",
-    // "md-label": "./src/components/label/Label",
-    // "md-link": "./src/components/link/Link",
-    // "md-list": "./src/components/list/List",
-    // "md-list-item": "./src/components/list/ListItem",
-    // "md-loading": "./src/components/loading/Loading",
-    // "md-meeting-alert": "./src/components/meeting-alert/MeetingAlert",
-    // "md-menu": "./src/components/menu/Menu",
-    // "md-menu-item": "./src/components/menu/MenuItem",
-    // "md-menu-overlay": "./src/components/menu-overlay/MenuOverlay",
-    // "md-modal": "./src/components/modal/Modal",
-    // "md-pagination": "./src/components/pagination/Pagination",
-    // "md-phone-input": "./src/components/phone-input/PhoneInput",
-    // "md-progress-bar": "./src/components/progress-bar/ProgressBar",
-    // "md-radio": "./src/components/radio/Radio",
-    // "md-radiogroup": "./src/components/radio/RadioGroup",
-    // "md-slider": "./src/components/slider/Slider",
-    // "md-spinner": "./src/components/spinner/Spinner",
-    // "md-table": "./src/components/table/Table",
-    // "md-tab": "./src/components/tabs/Tab",
-    // "md-tab-panel": "./src/components/tabs/TabPanel",
-    // "md-tabs": "./src/components/tabs/Tabs",
-    // "md-task-item": "./src/components/taskitem/TaskItem",
-    // "md-theme": "./src/components/theme/Theme",
-    // "md-timepicker": "./src/components/timepicker/TimePicker",
-    // "md-toggle-switch": "./src/components/toggle-switch/ToggleSwitch",
-    // "md-tooltip": "./src/components/tooltip/Tooltip"
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-      maxInitialRequests: Infinity,
-      maxAsyncRequests: Infinity,
-      minSize: 0
-    }
-  },
-  externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
-  module: {
-    rules: [ruleTS({ isDev: false }), ruleCSS({ isDev: false })]
-  },
-  plugins: [new CleanWebpackPlugin(), pluginCleanUpTypes]
-});
-
-export default [dev, distDev, distDevWatch, distProd, distProdSplit];
+export default [dev, distDev, distDevWatch, distProd];

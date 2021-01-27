@@ -1,5 +1,5 @@
 {
-  "name": "@momentum-ui/web-components",
+  "name": "@momentum-ui/web-components-publish",
   "version": "2.0.15",
   "author": "Yana Harris",
   "license": "MIT",
@@ -10,10 +10,9 @@
     "start": "npm run dev",
     "dev": "npm run check && webpack-dev-server --config ./webpack.config.dev.server.ts",
     "dev:build": "npm run check && webpack --config-name=dev",
-    "dist": "npm run check && webpack --config-name=distProd && npm run dist:split",
+    "dist": "npm run check && webpack --config-name=distProd",
     "dist:dev": "npm run check && webpack --config-name=distDev",
     "dist:watch": "npm run check && webpack --config-name=distDevWatch",
-    "dist:split": "webpack --config-name=distProdSplit",
     "check": "check-peer-dependencies --yarn",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private && cd publish && npm publish",
@@ -27,7 +26,6 @@
     "deploy-storybook": "storybook-to-ghpages",
     "storybook:deploy": "npm run deploy-storybook -- --existing-output-dir=.out",
     "snapshot": "npm run storybook:resource && build-storybook && percy-storybook --widths=1280",
-    "postinstall": "npm run build:tokens",
     "clearVars": "node ./src/utils/clearVars.js",
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
     "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js"

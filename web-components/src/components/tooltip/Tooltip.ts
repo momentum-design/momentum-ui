@@ -122,7 +122,12 @@ export class Tooltip extends FocusMixin(LitElement) {
   }
 
   private notifyTooltipRemoved() {
-    document.dispatchEvent(new CustomEvent("tooltip-disconnected"));
+    document.dispatchEvent(
+      new CustomEvent("tooltip-disconnected", {
+        composed: true,
+        bubbles: true
+      })
+    );
   }
 
   disconnectedCallback() {

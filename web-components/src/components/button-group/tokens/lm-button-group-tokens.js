@@ -15,7 +15,7 @@ const buttonGroup = {
   },
   "bg-color": {
     light: colors.gray[20].name,
-    dark: colors.gray[90].name,
+    dark: colors.gray[95].name,
     hover: {
       light: colors.gray[30].name,
       dark: colors.gray[90].name

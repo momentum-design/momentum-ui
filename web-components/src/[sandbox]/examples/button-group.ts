@@ -14,38 +14,38 @@ export const buttonGroupTemplate = html`
   <div class="column">
     <h3>Icon only - 2 options</h3>
     <md-button-group>
-      <button slot="button" aria-label="text-table" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
-      <button slot="button" aria-label="analysis" type="button"><md-icon name="icon-analysis_16"></md-icon></button>
+      <button slot="button" aria-label="text-table" type="button" value="text-table"><md-icon name="icon-text-table_16"></md-icon></button>
+      <button slot="button" aria-label="analysis" type="button" value="analysis"><md-icon name="icon-analysis_16"></md-icon></button>
     </md-button-group>
   </div>
   <div class="column">
     <h3>Icon only - disabled</h3>
     <md-button-group disabled>
-      <button slot="button" aria-label="text-table" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
-      <button slot="button" aria-label="analysis" type="button"><md-icon name="icon-analysis_16"></md-icon></button>
+      <button slot="button" aria-label="text-table" type="button" value="text-table"><md-icon name="icon-text-table_16"></md-icon></button>
+      <button slot="button" aria-label="analysis" type="button" value="analysis"><md-icon name="icon-analysis_16"></md-icon></button>
     </md-button-group>
   </div>
   <div class="column">
     <h3>Icon only - 3 options</h3>
     <md-button-group>
-      <button slot="button" aria-label="pie-chart" type="button"><md-icon name="icon-pie-chart_16"></md-icon></button>
-     <button slot="button" aria-label="text-table" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
-     <button slot="button" aria-label="analysis" type="button"><md-icon name="icon-analysis_16"></md-icon></button>
+      <button slot="button" aria-label="pie-chart" type="button" value="pie-chart"><md-icon name="icon-pie-chart_16"></md-icon></button>
+     <button slot="button" aria-label="text-table" type="button" value="text-table"><md-icon name="icon-text-table_16"></md-icon></button>
+     <button slot="button" aria-label="analysis" type="button" value="analysis"><md-icon name="icon-analysis_16"></md-icon></button>
     </md-button-group>
   </div>
   <div class="column">
     <h3>Text Label - 2 options</h3>
     <md-button-group>
-      <button slot="button" type="button">Option A</button>
-      <button slot="button" type="button">Option B</button>
+      <button slot="button" type="button" value="Option A">Option A</button>
+      <button slot="button" type="button" value="Option B">Option B</button>
     </md-button-group>
   </div>
   <div class="column">
     <h3>Text Label - 3 options</h3>
     <md-button-group>
-      <button slot="button" type="button">Option A</button>
-      <button slot="button" type="button">Option B</button>
-      <button slot="button" type="button">Option C</button>
+      <button slot="button" type="button" value="Option A">Option A</button>
+      <button slot="button" type="button" value="Option B">Option B</button>
+      <button slot="button" type="button" value="Option C">Option C</button>
     </md-button-group>
   </div>
 `;

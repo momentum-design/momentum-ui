@@ -5,7 +5,7 @@
 
 :host(md-button-group) {
   display: flex;
-  
+
   .md-button-group {
     @include flex($display: inline-flex, $ac:flex-start, $jc:flex-start);
     background: var(--button-group-bg-color, $lm-button-group-bg-color-light);
@@ -59,7 +59,7 @@
 
 :host([disabled]) {
   .md-button-group {
-    opacity: 0.4;
+    opacity: 0.5;
     pointer-events: none;
   }
 }

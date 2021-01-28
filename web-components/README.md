@@ -5,7 +5,7 @@
 **`Momentum UI Web Components`** is a resuable, component based, flexible React library available as
 npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
-Checkout the [documentation](https://momentum.design) for documentation and live examples.
+Checkout the [documentation](https://momentum.design) for documentation and live examples at https://momentum-design.github.io/momentum-ui/.
 
 ## Goals
 * **Independent** — pick and use only the components you need.

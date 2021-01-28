@@ -19,6 +19,7 @@ import {
   datePickerTemplate,
   dateTimePickerTemplate,
   editableField,
+  favoriteTemplate,
   floatingModalTemplate,
   iconTemplate,
   inputTemplate,
@@ -232,6 +233,13 @@ export class Sandbox extends LitElement {
             <h2>md-editable-field</h2>
             <sass-stats component="editable-textfield">
               ${editableField}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-favorite">
+            <h2>md-favorite</h2>
+            <sass-stats component="favorite">
+              ${favoriteTemplate}
             </sass-stats>
           </div>
 

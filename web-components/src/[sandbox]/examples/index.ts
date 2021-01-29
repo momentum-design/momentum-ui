@@ -16,6 +16,7 @@ export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
 export { dateTimePickerTemplate } from "./date-time-picker";
 export { editableField } from "./editable-field";
+export { favoriteTemplate } from "./favorite";
 export { floatingModalTemplate } from "./floating-modal";
 export { iconTemplate } from "./icon";
 export { inputTemplate } from "./input";

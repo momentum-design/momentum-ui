@@ -125,9 +125,6 @@ jobs:
           name: Build web components library
           command: yarn build:wc
       - run:
-          name: Build Storybook
-          command: yarn storybook:wc-dist
-      - run:
           name: Deploy Storybook
           command: yarn storybook:wc-deploy
       - run:

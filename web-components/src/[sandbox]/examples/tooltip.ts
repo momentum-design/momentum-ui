@@ -1,7 +1,8 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon.ts";
 import "@/components/tooltip/Tooltip.ts";
-import { customElement, html, LitElement, property } from "lit-element";
+import { Tooltip } from "@/components/tooltip/Tooltip.ts";
+import { css, customElement, html, LitElement, property, query } from "lit-element";
 
 @customElement("tooltip-message-template-sandbox")
 export class TooltipMessageTemplateSandbox extends LitElement {
@@ -60,6 +61,36 @@ export class TooltipTemplateSandbox extends LitElement {
   }
 }
 
+@customElement("tooltip-disconnected-sandbox")
+export class TooltipDisconnectedSandbox extends LitElement {
+  @property({ type: Boolean }) isClicked = false;
+
+  @query(".container") container!: HTMLDivElement;
+  @query("md-tooltip") tooltip!: Tooltip;
+
+  private handleClick() {
+    this.tooltip.remove();
+  }
+
+  static get styles() {
+    return css`
+      md-tooltip {
+        position: absolute;
+      }
+    `;
+  }
+
+  render() {
+    return html`
+      <md-tooltip placement="top" message="You can remove tooltip by clicking button">
+        <md-button type="button" color="mint" size="36" @click=${this.handleClick}>
+          Remove Trigger Button
+        </md-button>
+      </md-tooltip>
+    `;
+  }
+}
+
 export const tooltipTemplate = html`
   <div class="row md-margin__bottom"><h3>md-tooltip</h3></div>
   <div class="row md-padding__vertical">
@@ -106,5 +137,8 @@ export const tooltipTemplate = html`
   </div>
   <div class="row md-padding__vertical">
     <tooltip-slot-template-sandbox></tooltip-slot-template-sandbox>
+  </div>
+  <div class="row md-padding__vertical">
+    <tooltip-disconnected-sandbox></tooltip-disconnected-sandbox>
   </div>
 `;

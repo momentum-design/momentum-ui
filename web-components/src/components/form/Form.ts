@@ -24,7 +24,7 @@ export namespace Form {
     @property({ type: String }) method: Method = "GET";
     @property({ type: String }) target: Target = "_self";
     @property({ type: String }) enctype: Enctype = "application/x-www-form-urlencoded";
-    @property({ type: Boolean, reflect: true }) novalidate = false;
+    @property({ type: Boolean, reflect: true, attribute: "no-validate" }) novalidate = false;
     @property({ type: String, reflect: true, attribute: "accept-charset" }) charset = "UTF-8";
     @property({ type: Boolean, reflect: true, attribute: "is-valid" }) isvalid = false;
 

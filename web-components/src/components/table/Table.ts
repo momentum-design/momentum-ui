@@ -14,7 +14,7 @@ import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
 
 export const formatType = ["number", "default"] as const;
-type Warn = { [key: string]: string };
+type Warn = { [key: number]: string };
 
 export namespace Table {
   export type Format = typeof formatType[number];
@@ -31,7 +31,8 @@ export class Table extends LitElement {
   @property({ type: String }) label = "Table";
   @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
   @property({ type: String }) format: Table.Format = "default";
-  @property({ type: Array }) errors:  (string | Warn)[] = [];
+  @property({ type: Array }) warning: (number | Warn)[] = [];
+  @property({ type: Array }) errors:  (number | Warn)[] = [];
 
   @internalProperty() private sort = { columnName: "", sortting: false };
   @internalProperty() csvData: any = undefined;
@@ -69,11 +70,17 @@ export class Table extends LitElement {
 
   linkCellItems() {
     const element = this.rowCell;
-    element?.forEach(item => {
+    element?.forEach((item, index) => {
+      this.warning.forEach(i => {
+        if ((index + 1) === i) {
+          item.classList.add("warning");
+          item.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+        }
+      })
       this.errors.forEach(i => {
-        if (item.innerText === i) {
+        if ((index + 1) === i) {
           item.classList.add("error");
-          item.insertAdjacentHTML('beforeend', '<md-icon name="icon-warning_24" color="red"></md-icon>');
+          item.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
         }
       })
     })

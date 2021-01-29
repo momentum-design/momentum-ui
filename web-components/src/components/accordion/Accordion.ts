@@ -6,14 +6,15 @@
  *
  */
 import { SlottedMixin } from "@/mixins";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { AccordionItem } from "./AccordionItem";
 
 export namespace Accordion {
-  @customElement("md-accordion")
+  @customElementWithCheck("md-accordion")
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) multiple = false;
 

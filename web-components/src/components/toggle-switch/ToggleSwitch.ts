@@ -8,12 +8,13 @@
 import "@/components/label/Label";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export namespace ToggleSwitch {
-  @customElement("md-toggle-switch")
+  @customElementWithCheck("md-toggle-switch")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) htmlId = "";
     @property({ type: String }) label = "toggle";

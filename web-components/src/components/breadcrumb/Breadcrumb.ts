@@ -1,5 +1,6 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues, queryAll } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, queryAll } from "lit-element";
 import styles from "./scss/module.scss";
 import { repeat } from "lit-html/directives/repeat";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -10,7 +11,7 @@ export namespace Breadcrumb {
     label: string;
   };
 
-  @customElement("md-breadcrumb")
+  @customElementWithCheck("md-breadcrumb")
   export class ELEMENT extends LitElement {
     @property({ type: String, attribute: "aria-label" }) label = "Breadcrumb";
     @property({ type: Array, attribute: "nav-crumbs", reflect: true }) navCrumbs: NavCrumb[] = [];

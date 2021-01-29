@@ -1,12 +1,13 @@
 import "@/components/datepicker/datepicker-day/DatePickerDay";
 import { addDays, DatePickerProps, DayFilters, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerWeek {
-  @customElement("md-datepicker-week")
+  @customElementWithCheck("md-datepicker-week")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) startOfWeekDay: DateTime = now();
     @property({ attribute: false }) viewAnchorMonth: number = now().month;

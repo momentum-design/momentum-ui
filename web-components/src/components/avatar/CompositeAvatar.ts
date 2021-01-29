@@ -7,7 +7,8 @@
 */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { AvatarSize } from "@/components/avatar/Avatar";
 import styles from "./scss/module.scss";
@@ -15,7 +16,7 @@ import styles from "./scss/module.scss";
 export namespace CompositeAvatar {
   export type Size = typeof AvatarSize[number];
 
-  @customElement("md-composite-avatar")
+  @customElementWithCheck("md-composite-avatar")
   export class ELEMENT extends LitElement {
     @property({ type: Number }) size: Size = 0;
 

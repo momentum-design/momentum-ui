@@ -8,7 +8,8 @@
 
 import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import "@/components/icon/Icon";
@@ -19,7 +20,7 @@ import styles from "./scss/module.scss";
 export namespace Chip {
   export type Role = "group" | "option";
 
-  @customElement("md-chip")
+  @customElementWithCheck("md-chip")
   export class ELEMENT extends LitElement {
     @property({ type: String }) color = "";
     @property({ type: String }) bgColor = "";

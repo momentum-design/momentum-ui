@@ -7,7 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
@@ -20,7 +21,7 @@ export namespace MenuItem {
     srcEvent: KeyboardEvent;
   };
 
-  @customElement("md-menu-item")
+  @customElementWithCheck("md-menu-item")
   export class ELEMENT extends LitElement {
     @property({ type: String }) href = "";
     @property({ type: String }) label = "";

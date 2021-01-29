@@ -1,14 +1,15 @@
 import "@/components/button/Button";
 import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon/index";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerDay {
-  @customElement("md-datepicker-day")
+  @customElementWithCheck("md-datepicker-day")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean, reflect: true }) focused = false;
     @property({ type: Boolean, reflect: true }) selected = false;

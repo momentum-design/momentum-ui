@@ -4,7 +4,8 @@ import { Input } from "@/components/input/Input";
 import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { repeat } from "lit-html/directives/repeat.js";
 import styles from "./scss/module.scss";
 
@@ -25,7 +26,7 @@ export namespace PhoneInput {
   };
 
 
-  @customElement("md-phone-input")
+  @customElementWithCheck("md-phone-input")
   export class ELEMENT extends LitElement {
     @property({ type: String }) codePlaceholder = "+1";
     @property({ type: String }) numberPlaceholder = "Enter Phone Number";

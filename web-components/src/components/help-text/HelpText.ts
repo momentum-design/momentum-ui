@@ -7,13 +7,14 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { Input } from "@/components/input/Input";
 import styles from "./scss/module.scss";
 
 export namespace HelpText {
-  @customElement("md-help-text")
+  @customElementWithCheck("md-help-text")
   export class ELEMENT extends LitElement {
     @property({ type: String }) message = "";
     @property({ attribute: false }) messageType: Input.MessageType | undefined = undefined;

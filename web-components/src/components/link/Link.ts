@@ -7,7 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
@@ -18,7 +19,7 @@ export namespace Link {
   export type Tag = typeof linkTag[number];
   export type Color = typeof linkColor[number];
 
-  @customElement("md-link")
+  @customElementWithCheck("md-link")
   export class ELEMENT extends LitElement {
     @property({ type: String, attribute: false }) color: Color = "";
     @property({ type: Boolean }) disabled = false;

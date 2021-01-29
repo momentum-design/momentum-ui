@@ -10,7 +10,8 @@ import { Key, ARIA_INVALID } from "@/constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
-import { customElement, html, internalProperty, LitElement, property, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
@@ -135,7 +136,7 @@ export namespace Input {
     }
   }
 
-  @customElement("md-input")
+  @customElementWithCheck("md-input")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) label = "";
     @property({ type: String }) htmlId = "";

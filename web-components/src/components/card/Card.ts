@@ -1,12 +1,13 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import "@/components/icon/Icon";
 import "@/components/button/Button";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace Card {
-  @customElement("md-card")
+  @customElementWithCheck("md-card")
   export class ELEMENT extends LitElement {
     @property({ type: String }) title = "title";
     @property({ type: String }) subtitle = "";

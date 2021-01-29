@@ -10,7 +10,8 @@ import { numInputTypes } from "@/utils/enums";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
-import { CSSResultArray, customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { CSSResultArray, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -24,7 +25,7 @@ export namespace EditableTextfield {
   export type Alignment = typeof alignment[number];
   export type InputType = typeof numInputTypes[number];
 
-  @customElement("md-editable-field")
+  @customElementWithCheck("md-editable-field")
   export class ELEMENT extends LitElement {
     @property({ type: String }) alignment: EditableTextfield.Alignment = "left";
     @property({ type: Boolean }) disabled = false;

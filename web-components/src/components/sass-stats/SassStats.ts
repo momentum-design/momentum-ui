@@ -7,10 +7,11 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues } from "lit-element";
 import { score } from "wcag-color";
 
-@customElement("sass-stats")
+@customElementWithCheck("sass-stats")
 export class SassStats extends LitElement {
   @property({ type: String }) component = "";
   @property({ type: String }) size = "";

@@ -1,4 +1,5 @@
-import { customElement, html, LitElement, property, internalProperty, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, internalProperty, PropertyValues } from "lit-element";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import "@/components/input/Input";
@@ -51,7 +52,7 @@ export namespace TimePicker {
   export type TimeUnit = typeof timeUnits[number];
   export type TimeSpecificity = typeof timeSpecificity[number];
 
-  @customElement("md-timepicker")
+  @customElementWithCheck("md-timepicker")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
     @property({ type: Boolean, attribute: "twenty-four-hour-format", reflect: true }) twentyFourHourFormat = false;

@@ -7,14 +7,15 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Label {
   export type LabelEventDetail = { htmlFor: string };
 
-  @customElement("md-label")
+  @customElementWithCheck("md-label")
   export class ELEMENT extends LitElement {
     @property({ type: String }) label = "";
     @property({ type: String }) theme = "";

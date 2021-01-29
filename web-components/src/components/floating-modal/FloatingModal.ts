@@ -1,5 +1,6 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
@@ -14,7 +15,7 @@ import * as Interact from "@interactjs/types";
 import interact from "@interactjs/interact/index";
 
 export namespace FloatingModal {
-  @customElement("md-floating-modal")
+  @customElementWithCheck("md-floating-modal")
   export class ELEMENT extends LitElement {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";

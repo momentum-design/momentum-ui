@@ -15,8 +15,8 @@ import {
   subtractMonths
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
-  customElement,
   html,
   internalProperty,
   LitElement,
@@ -28,7 +28,7 @@ import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {
-  @customElement("md-datepicker-calendar")
+  @customElementWithCheck("md-datepicker-calendar")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) monthFormat = "MMMM yyyy";
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;

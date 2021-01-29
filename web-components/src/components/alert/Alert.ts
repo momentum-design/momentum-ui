@@ -7,7 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import "@/components/button/Button";
@@ -15,7 +16,7 @@ import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 export namespace Alert {
-  @customElement("md-alert")
+  @customElementWithCheck("md-alert")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) closable = false;
     @property({ type: String }) message = "";

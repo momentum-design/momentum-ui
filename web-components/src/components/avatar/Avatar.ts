@@ -9,7 +9,8 @@
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -25,7 +26,7 @@ export namespace Avatar {
 
   export type Size = typeof AvatarSize[number];
 
-  @customElement("md-avatar")
+  @customElementWithCheck("md-avatar")
   export class ELEMENT extends LitElement {
     @property({ type: String }) alt = "";
     @property({ type: String }) src = "";

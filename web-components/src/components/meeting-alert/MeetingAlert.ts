@@ -8,7 +8,8 @@
 
 import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, TemplateResult } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import "@/components/avatar/Avatar";
 import "@/components/button/Button";
@@ -21,7 +22,7 @@ export const MeetingAlertRole = ["alert", "alertdialog", "button", "checkbox", "
 export namespace MeetingAlert {
   export type Role = typeof MeetingAlertRole[number];
 
-  @customElement("md-meeting-alert")
+  @customElementWithCheck("md-meeting-alert")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) attendees = [{ title: "Attendee", src: null, alt: "Attendee" }];
     @property({ type: String }) closeAriaLabel = "close";

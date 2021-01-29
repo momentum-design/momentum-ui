@@ -11,7 +11,8 @@ import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
@@ -31,7 +32,7 @@ const minisculeLatency = 13;
 export namespace Modal {
   export type Type = typeof modalType[number];
 
-  @customElement("md-modal")
+  @customElementWithCheck("md-modal")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     @property({ type: Boolean }) show = false;
     @property({ type: String }) headerLabel = "";

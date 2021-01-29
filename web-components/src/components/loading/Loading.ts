@@ -6,15 +6,16 @@
  *
  */
 
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Loading {
   export type LoadingSize = "small" | "middle" | "large" | "";
 
-  @customElement("md-loading")
+  @customElementWithCheck("md-loading")
   export class ELEMENT extends LitElement {
     @property({ type: String }) size: LoadingSize = "";
 

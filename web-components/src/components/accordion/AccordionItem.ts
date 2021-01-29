@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { customElement, html, LitElement, property, query, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, query, PropertyValues } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nanoid } from "nanoid";
 import reset from "@/wc_scss/reset.scss";
@@ -17,7 +18,7 @@ export namespace AccordionItem {
     srcEvent: MouseEvent | KeyboardEvent;
   };
 
-  @customElement("md-accordion-item")
+  @customElementWithCheck("md-accordion-item")
   export class ELEMENT extends FocusMixin(LitElement) {
     private _expanded = false;
     private _level = 3;

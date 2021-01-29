@@ -13,7 +13,8 @@ import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
-import { customElement, html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import styles from "./scss/module.scss";
 
@@ -52,7 +53,7 @@ export namespace MenuOverlay {
   export type Size = typeof menuOverlaySize[number];
   export type Placement = typeof menuOverlayPlacement[number];
 
-  @customElement("md-menu-overlay")
+  @customElementWithCheck("md-menu-overlay")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     private _isOpen = false;
     @property({ type: Boolean, attribute: "is-open", reflect: true })

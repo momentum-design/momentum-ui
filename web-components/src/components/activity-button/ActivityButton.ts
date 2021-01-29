@@ -7,7 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { CSSResultArray, customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { CSSResultArray, html, LitElement, property } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
@@ -28,7 +29,7 @@ export namespace ActivityButton {
   export type Size = typeof activityButtonSize[number];
   export type Type = typeof activityButtonType[number];
 
-  @customElement("md-activity-button")
+  @customElementWithCheck("md-activity-button")
   export class ELEMENT extends LitElement {
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean }) disabled = false;

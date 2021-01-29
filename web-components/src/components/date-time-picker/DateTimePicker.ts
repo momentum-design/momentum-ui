@@ -3,7 +3,8 @@ import "@/components/menu-overlay/MenuOverlay";
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
@@ -13,7 +14,7 @@ import styles from "./scss/module.scss";
 export namespace DateTimePicker {
   export const weekStartDays = ["Sunday", "Monday"];
 
-  @customElement("md-date-time-picker")
+  @customElementWithCheck("md-date-time-picker")
   export class ELEMENT extends LitElement {
     @property({ type: String }) maxDate: string | undefined = undefined;
     @property({ type: String }) minDate: string | undefined = undefined;

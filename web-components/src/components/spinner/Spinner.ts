@@ -8,11 +8,12 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { styleMap } from "lit-html/directives/style-map";
-import { customElement, html, LitElement, property } from "lit-element";
+import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
 export namespace Spinner {
-  @customElement("md-spinner")
+  @customElementWithCheck("md-spinner")
   export class ELEMENT extends LitElement {
     @property({ type: Number, reflect: true }) size = 56;
     static get styles() {

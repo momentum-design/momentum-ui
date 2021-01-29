@@ -10,7 +10,8 @@ import styles from "@/components/tooltip/scss/module.scss";
 import { Tooltip, TooltipEvent } from "@/components/tooltip/Tooltip";
 import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { lumosDark, lumosLight, momentumDark, momentumLight } from "./index";
 
 declare global {
@@ -48,7 +49,7 @@ export namespace Theme {
    * will not contain overflow property with hidden value;
    */
 
-  @customElement("md-theme")
+  @customElementWithCheck("md-theme")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) darkTheme = false;
     @property({ type: Boolean }) lumos = false;

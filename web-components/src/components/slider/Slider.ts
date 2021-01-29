@@ -1,7 +1,8 @@
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
@@ -9,7 +10,7 @@ import { styleMap } from "lit-html/directives/style-map";
 import styles from "./scss/module.scss";
 
 export namespace Slider {
-  @customElement("md-slider")
+  @customElementWithCheck("md-slider")
   export class ELEMENT extends FocusMixin(LitElement) {
     private _disabled = false;
     private _now = 0;

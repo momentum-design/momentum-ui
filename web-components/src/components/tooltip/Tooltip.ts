@@ -8,7 +8,8 @@
 
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
@@ -42,7 +43,7 @@ export namespace Tooltip {
   export type Placement = typeof tooltipPlacement[number];
   export type Strategy = typeof tooltipStrategy[number];
 
-  @customElement("md-tooltip")
+  @customElementWithCheck("md-tooltip")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) message = "";
     @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";

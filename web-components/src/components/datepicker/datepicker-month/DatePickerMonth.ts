@@ -10,13 +10,14 @@ import {
   now
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerMonth {
 
-  @customElement("md-datepicker-month")
+  @customElementWithCheck("md-datepicker-month")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) day: DateTime = now();
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;

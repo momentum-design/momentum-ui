@@ -12,8 +12,8 @@ import { Key } from "@/constants";
 import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
 import { nanoid } from "nanoid";
 import reset from "@/wc_scss/reset.scss";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
-  customElement,
   html,
   internalProperty,
   LitElement,
@@ -43,7 +43,7 @@ export namespace Tabs {
 
   type TabId = Element["id"];
 
-  @customElement("md-tabs")
+  @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     @property({ type: Boolean }) justified = false;
     @property({ type: String }) overlowLabel = "More";

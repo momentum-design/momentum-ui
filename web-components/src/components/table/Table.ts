@@ -7,7 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
@@ -18,7 +19,7 @@ export const formatType = ["number", "default"] as const;
 export namespace Table {
   export type Format = typeof formatType[number];
 
-  @customElement("md-table")
+  @customElementWithCheck("md-table")
   export class ELEMENT extends LitElement {
     @property({ type: String }) tabledata = "";
     @property({ type: Boolean }) zebra = false;

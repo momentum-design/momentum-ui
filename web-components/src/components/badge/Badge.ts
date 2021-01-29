@@ -7,14 +7,15 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 export namespace Badge {
-  @customElement("md-badge")
+  @customElementWithCheck("md-badge")
   export class ELEMENT extends LitElement {
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
     @property({ type: String }) color = "";

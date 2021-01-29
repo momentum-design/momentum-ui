@@ -6,7 +6,8 @@
  *
  */
 
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { MenuItem } from "./MenuItem";
 import { Key } from "@/constants";
 import { nanoid } from "nanoid";
@@ -20,7 +21,7 @@ type ItemId = Element["id"];
 export const MORE_MENU_ITEM_COPY_ID_PREFIX = "more-menu-item-";
 
 export namespace Menu {
-  @customElement("md-menu")
+  @customElementWithCheck("md-menu")
   export class ELEMENT extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
     @property({ type: Boolean }) justified = false;
     @property({ type: String }) direction = "horizontal"

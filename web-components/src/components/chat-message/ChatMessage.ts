@@ -1,11 +1,12 @@
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import "@/components/avatar/Avatar";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace ChatMessage {
-  @customElement("md-chat-message")
+  @customElementWithCheck("md-chat-message")
   export class ELEMENT extends LitElement {
     @property({ type: String }) title = "";
     @property({ type: String }) src = "";

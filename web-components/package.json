@@ -1,5 +1,5 @@
 {
-  "name": "@momentum-ui/web-components-publish",
+  "name": "@momentum-ui/web-components",
   "version": "2.0.15",
   "author": "Yana Harris",
   "license": "MIT",
@@ -26,6 +26,7 @@
     "deploy-storybook": "storybook-to-ghpages",
     "storybook:deploy": "npm run deploy-storybook -- --existing-output-dir=.out",
     "snapshot": "npm run storybook:resource && build-storybook && percy-storybook --widths=1280",
+    "postinstall": "npm run build:tokens",
     "clearVars": "node ./src/utils/clearVars.js",
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
     "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js"

@@ -9,11 +9,12 @@
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import styles from "./scss/module.scss";
 
 export namespace Checkbox {
-  @customElement("md-checkbox")
+  @customElementWithCheck("md-checkbox")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) autofocus = false;
     private _checked = false;

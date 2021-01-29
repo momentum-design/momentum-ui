@@ -9,7 +9,8 @@
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
-import { customElement, html, LitElement, property, query, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, query, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import "@/components/button/Button";
 
@@ -18,7 +19,7 @@ export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"]
 export namespace Coachmark {
   export type Place = typeof coachmarkPlacement[number];
 
-  @customElement("md-coachmark")
+  @customElementWithCheck("md-coachmark")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     @property({ type: String }) message = "";
     @property({ type: String }) actionname = "Next"

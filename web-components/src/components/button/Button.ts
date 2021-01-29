@@ -10,8 +10,9 @@ import activityButtonStyles from "@/components/activity-button/scss/module.scss"
 import "@/components/loading/Loading";
 import "@/components/spinner/Spinner";
 import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -101,7 +102,7 @@ export namespace Button {
   };
   export type Size = typeof buttonSize[number];
 
-  @customElement("md-button")
+  @customElementWithCheck("md-button")
   export class ELEMENT extends LitElement {
     _active = false;
     @property({ type: Boolean, reflect: true })

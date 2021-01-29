@@ -7,7 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
@@ -15,7 +16,7 @@ export namespace ProgressBar {
   export type BarFormat = "none" | "fraction" | "percentage";
   export type BarType = "determinate" | "indeterminate";
 
-  @customElement("md-progress-bar")
+  @customElementWithCheck("md-progress-bar")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) dynamic = false;
 

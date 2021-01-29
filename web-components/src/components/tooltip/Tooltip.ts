@@ -69,59 +69,16 @@ export class Tooltip extends FocusMixin(LitElement) {
     this.notifyTooltipDestroy();
   }
 
-  private openTooltip() {
+  private notifyVirtualTooltip(eventName: string, detailArgs?: Pick<TooltipEvent, "slotContent">) {
     this.dispatchEvent(
-      new CustomEvent<TooltipEvent>("tooltip-create", {
+      new CustomEvent<TooltipEvent>(eventName, {
         bubbles: true,
         composed: true,
         detail: {
           placement: this.placement,
           reference: this.reference,
           popper: this.popper,
-          ...(!this.message && { slotContent: this.slotContent })
-        }
-      })
-    );
-  }
-
-  private closeTooltip() {
-    this.dispatchEvent(
-      new CustomEvent<TooltipEvent>("tooltip-destroy", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          placement: this.placement,
-          reference: this.reference,
-          popper: this.popper
-        }
-      })
-    );
-  }
-
-  private changeMessage() {
-    this.dispatchEvent(
-      new CustomEvent<TooltipEvent>("tooltip-message", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          placement: this.placement,
-          reference: this.reference,
-          popper: this.popper
-        }
-      })
-    );
-  }
-
-  private changeSlotContent(slotContent: Element[]) {
-    this.dispatchEvent(
-      new CustomEvent<TooltipEvent>("tooltip-slot", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          placement: this.placement,
-          reference: this.reference,
-          popper: this.popper,
-          slotContent
+          ...detailArgs
         }
       })
     );
@@ -144,10 +101,8 @@ export class Tooltip extends FocusMixin(LitElement) {
     if (slot) {
       const slotContent = slot.assignedElements({ flatten: true });
       if (slotContent.length) {
-        if (this.slotContent) {
-          this.changeSlotContent(slotContent);
-        }
         this.slotContent = slotContent;
+        this.notifyVirtualTooltip("tooltip-slot", { slotContent });
       }
     }
   }
@@ -156,14 +111,28 @@ export class Tooltip extends FocusMixin(LitElement) {
     super.updated(changedProperties);
     if (changedProperties.has("opened")) {
       if (this.opened) {
-        this.openTooltip();
+        this.notifyVirtualTooltip("tooltip-create", !this.message ? { slotContent: this.slotContent } : {});
       } else {
-        this.closeTooltip();
+        this.notifyVirtualTooltip("tooltip-destroy");
       }
     }
     if (changedProperties.has("message")) {
-      this.changeMessage();
+      this.notifyVirtualTooltip("tooltip-message");
     }
+  }
+
+  private notifyTooltipRemoved() {
+    document.dispatchEvent(
+      new CustomEvent("tooltip-disconnected", {
+        composed: true,
+        bubbles: true
+      })
+    );
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.notifyTooltipRemoved();
   }
 
   private get tooltipClassMap() {

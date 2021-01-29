@@ -1,45 +1,77 @@
-import { CSSResultArray, customElement, html, internalProperty, LitElement, property, query } from "lit-element";
+import { CSSResultArray, customElement, html, LitElement, property, query } from "lit-element";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 
 @customElement("md-draggable-item")
 export class DraggableItem extends LitElement { 
   @property({ type: Boolean }) isDraggingStarted = false;
-  @property({ type: Number }) x = 0;
-  @property({ type: Number }) y = 0;
+
+  private _index = 0;
+  @property({ type: Number, attribute: "index", reflect: true })
+  get index() {
+    return this._index;
+  }
+  set index(newValue: number) {
+    const oldValue = this._index;
+    this._index = newValue;
+    this.requestUpdate("index", oldValue);
+  }
 
   connectedCallback() {
     super.connectedCallback();
   }
 
   dragStart(event: DragEvent) {
-    event.dataTransfer!.setData("text/html", "test");
+    const data = event.target;
+    event.dataTransfer!.setData("text/plain", data as any);
     this.setAttribute("dragging", "");
-    console.log(event.type)
+    this.dispatchEvent(new CustomEvent("drag-start", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        index: this.id
+      }
+    }))
   }
 
   dragOver(event: DragEvent) {
+    event.preventDefault();
     if (this.hasAttribute("dragging")) {
       this.removeAttribute("over");
     } else {
       this.setAttribute("over", "");
+      const overIndex = this.index
+      this.dispatchEvent(new CustomEvent("drag-over", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          index: overIndex
+        }
+      }))
     }
-    console.log(event.type)
   }
 
   dragEnd(event: DragEvent) {
     this.removeAttribute("over");
     this.removeAttribute("dragging");
-    console.log(event.type)
+    event.preventDefault()
+    this.dispatchEvent(new CustomEvent("complete", {
+      bubbles: true,
+      composed: true,
+    }));
   }
 
   dragLeave(event: DragEvent) {
     this.removeAttribute("over");
-    console.log(event.type)
+    // console.log(event.type)
   }
 
   drop(event: DragEvent) {
-    console.log(event.type)
+    this.dispatchEvent(new CustomEvent("drop-item", {
+      bubbles: true,
+      composed: true,
+    }));
+    //console.log(event.type)
   }
 
   static get styles(): CSSResultArray {

@@ -1,51 +1,102 @@
-import { CSSResultArray, customElement, html, internalProperty, LitElement, property, query } from "lit-element";
+import { CSSResultArray, customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { SlottedMixin } from "@/mixins/SlottedMixin";
+import { DraggableItem } from "./DraggableItem";
+import { nanoid } from "nanoid";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
-import { DropEvent } from "@interactjs/actions/drop/DropEvent";
 
 @customElement("md-draggable-wrap")
-export class DraggableWrap extends LitElement { 
+export class DraggableWrap extends SlottedMixin(LitElement) { 
+
+  @query('slot') slotElement?: HTMLSlotElement;
+
+  private items: DraggableItem[] = [];
+  private dragIndexEl: Number | undefined;
+  private currentIndexEl: Number | undefined;
 
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute("dropzone", "move");
+    this.addEventListener("drag-start", this.handleDragLeave as EventListener);
+    this.addEventListener("drag-over", this.handleDragOver as EventListener);
+    this.addEventListener("complete", this.setComplete as EventListener);
+    this.addEventListener("drop-item", this.handleDropHandler as EventListener);
   }
 
-  handleDropHandler(event: DropEvent) {
-    event.preventDefault();
-    //this.appendChild(this.__draggingElement);
-    this.removeAttribute("active");
-    //this.__draggingElement = null;
+  get slotItem() {
+    return this.slotElement;
+  }
+
+  private setupItems() {
+    if (this.slotElement) {
+      const children = this.slotElement.assignedElements({ flatten: true })
+      this.getChildrenFromTree({ children }, this.items);
+    }
+  }
+
+  private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem[]) {
+    for (var i = 0; i < elem.children.length; i++) {
+      var child = elem.children[i];
+      if (child instanceof DraggableItem) {
+        items.push(child);
+      }
+      this.getChildrenFromTree(child as any, items); // RECURSION
+    }
+  }
+
+  private async linkItems() {
+    const { items } = this;
+
+    items.forEach((item, index) => {
+      const id = nanoid();
+
+      item.setAttribute("id", id);
+      item.setAttribute("aria-controls", id);
+      item.setAttribute("index", index as unknown as string)
+      
+    });
+  }
+
+  firstUpdated(changedProperties: PropertyValues) {
+    super.firstUpdated(changedProperties);
+  }
+
+  handleDropHandler(event: CustomEvent) {
     console.log(event);
   }
 
-  handleDragLeave() {
-    this.removeAttribute("active");
+  handleDragOver(ev: CustomEvent) {
+    const { index } = ev.detail;
+    this.currentIndexEl = index;
   }
 
-  handleDragover(event: DragEvent) {
-    event.preventDefault();
-    this.setAttribute("active", "");
-    let found;
+  handleDragLeave(ev: CustomEvent) {
+    const { id } = ev.detail;
+    const itemIdx = this.items.findIndex(i => i.hasAttribute("dragging"));
+    this.dragIndexEl = itemIdx;
+    console.log(this.dragIndexEl);
+  }
 
-    // if (!this.__draggingElement) {
-    //   // find what we're looking for in the composed path that isn't a slot
-    //   found = event.composedPath().find((i) => {
-    //     if (i.nodeType === 1 && i.nodeName !== "SLOT") {
-    //       return i;
-    //     }
-    //   });
+  setComplete(arr: any, old_index: any, new_index: any) {
+    arr = this.items;
+    old_index = this.dragIndexEl!; 
+    new_index = this.currentIndexEl; 
+    if (new_index >= arr.length) {
+      let k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+  }
 
-    //   if (found) {
-    //     // find where we are deep in the change
-    //     const theLowestShadowRoot = found.getRootNode();
-    //     this.__draggingElement = theLowestShadowRoot.querySelector(
-    //       "[dragging]"
-    //     );
-    //   } else {
-    //     this.__draggingElement = document.querySelector("[dragging]");
-    //   }
-    // }
+  protected async updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("slotted")) {
+      this.setupItems();
+      this.linkItems()
+    }
   }
 
   static get styles(): CSSResultArray {
@@ -57,9 +108,7 @@ export class DraggableWrap extends LitElement {
     return html`
       <div 
         class="md-draggable-wrap"
-        @dragleave=${() => this.handleDragLeave()}
-        @dragover=${(ev: DragEvent) => this.handleDragover(ev)}
-        @drop=${(ev: DropEvent) => this.handleDropHandler(ev)}>
+        >
         <slot></slot>
       </div>
     `;

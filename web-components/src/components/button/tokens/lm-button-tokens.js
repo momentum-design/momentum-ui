@@ -267,6 +267,20 @@ const button = {
       dark: colors.gray[70].name
     }
   },
+  favorite: {
+    hover: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[80].name
+      }
+    }
+  },
   "focus-ring": {
     color: {
       light: colors.blue[60].name,

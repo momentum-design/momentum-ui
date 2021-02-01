@@ -315,6 +315,18 @@ export namespace ComboBox {
       requestAnimationFrame(cb);
     }
 
+    private unCheckedAllOptions() {
+      if (this.isMulti) {
+        this.lists!.forEach((list, index) => this.unCheckedOption(index));
+      }
+    }
+
+    private unCheckedOption(index: number) {
+      if (this.isMulti) {
+        this.lists![index].setAttribute("aria-checked", "false");
+      }
+    }
+
     private setFocusOnHost(force: boolean) {
       if (this.setFocus) {
         this.setFocus(force);
@@ -355,14 +367,6 @@ export namespace ComboBox {
 
     private setInputSelectionRange(start: number, end: number) {
       this.input!.setSelectionRange(start, end);
-    }
-
-    private unCheckedAllOptions() {
-      this.lists!.forEach((list, index) => this.unCheckedOption(index));
-    }
-
-    private unCheckedOption(index: number) {
-      this.lists![index].setAttribute("aria-checked", "false");
     }
 
     private isOptionChecked(option: string | OptionMember) {

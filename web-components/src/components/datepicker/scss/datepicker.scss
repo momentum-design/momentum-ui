@@ -90,8 +90,12 @@
     &--outside-month {
       color: var(--md-disabled-text-color, inherit);
     }
-
   }
+}
+
+.md-datepicker__day--today.md-datepicker__day--focus::part(button) {
+  background: $md-orange-50;
+  color: $md-orange-10;
 }
 
 .md-datepicker__day--today.md-datepicker__day--selected::part(button) {

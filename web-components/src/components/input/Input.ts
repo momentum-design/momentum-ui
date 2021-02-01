@@ -136,52 +136,53 @@ export namespace Input {
     }
   }
 
-  @customElementWithCheck("md-input")
-  export class ELEMENT extends FocusMixin(LitElement) {
-    @property({ type: String }) label = "";
-    @property({ type: String }) htmlId = "";
-    @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
-    @property({ type: String }) placeholder = "";
-    @property({ type: String }) ariaLabel = "input";
-    @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
-    @property({ type: String }) clearAriaLabel = "";
-    @property({ type: String }) id = "";
-    @property({ type: String }) helpText = "";
-    @property({ type: String }) inputSize = "";
-    @property({ type: String }) secondaryLabel = "";
-    @property({ type: String }) shape = "";
-    @property({ type: Number }) nestedLevel = 0;
-    @property({ type: String, reflect: true }) value = "";
-    @property({ type: String }) type: Input.Type = "text";
-    @property({ type: Boolean }) searchable = false;
-    @property({ type: Boolean }) clear = false;
-    @property({ type: Boolean }) multiline = false;
-    @property({ type: Boolean }) isFilled = false;
-    @property({ type: Boolean }) required = false;
-    @property({ type: Boolean }) readOnly = false;
-    @property({ type: Boolean }) disabled = false;
-    @property({ type: Boolean }) isLoading = false;
-    @property({ type: Boolean }) compact = false;
-    @property({ type: Boolean }) multi = false;
-    @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
-    @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
-    @property({ type: String }) ariaDescribedBy = "";
-    @property({ type: Array }) messageArr: Input.Message[] = [];
-    @property({ type: Boolean, reflect: true }) autofocus = false;
-    @property({ type: Number, reflect: true }) min: number | undefined = undefined;
-    @property({ type: Number, reflect: true }) max: number | undefined = undefined;
-    @property({ type: Number }) maxLength: number | undefined = undefined;
+@customElementWithCheck("md-input")
+export class ELEMENT extends FocusMixin(LitElement) {
+  @property({ type: String }) label = "";
+  @property({ type: String }) htmlId = "";
+  @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
+  @property({ type: String }) placeholder = "";
+  @property({ type: String }) ariaLabel = "input";
+  @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
+  @property({ type: String }) clearAriaLabel = "";
+  @property({ type: String }) id = "";
+  @property({ type: String }) helpText = "";
+  @property({ type: String }) inputSize = "";
+  @property({ type: String }) secondaryLabel = "";
+  @property({ type: String }) shape = "";
+  @property({ type: Number }) nestedLevel = 0;
+  @property({ type: String, reflect: true }) value = "";
+  @property({ type: String }) type: Input.Type = "text";
+  @property({ type: Boolean }) searchable = false;
+  @property({ type: Boolean }) clear = false;
+  @property({ type: Boolean }) multiline = false;
+  @property({ type: Boolean }) isFilled = false;
+  @property({ type: Boolean }) required = false;
+  @property({ type: Boolean }) readOnly = false;
+  @property({ type: Boolean }) disabled = false;
+  @property({ type: Boolean }) isLoading = false;
+  @property({ type: Boolean }) compact = false;
+  @property({ type: Boolean }) multi = false;
+  @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
+  @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
+  @property({ type: String }) ariaDescribedBy = "";
+  @property({ type: Array }) messageArr: Input.Message[] = [];
+  @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
+  @property({ type: Boolean, reflect: true }) autofocus = false;
+  @property({ type: Number , reflect: true }) min: number | undefined = undefined;
+  @property({ type: Number, reflect: true }) max: number | undefined = undefined;
+  @property({ type: Number }) maxLength: number | undefined = undefined;
 
-    @query(".md-input") input!: HTMLInputElement;
+  @query(".md-input") input!: HTMLInputElement;
 
-    @internalProperty() private isEditing = false;
+  @internalProperty() private isEditing = false;
 
-    private readonly messageController: MessageController = new MessageController();
+  private readonly messageController = new MessageController();
 
-    connectedCallback() {
-      super.connectedCallback();
-      document.addEventListener("click", (event: MouseEvent) => this.handleOutsideClick(event));
-    }
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener("click", (event: MouseEvent) => this.handleOutsideClick(event));
+  }
 
     disconnectedCallback() {
       super.disconnectedCallback();
@@ -463,17 +464,13 @@ export namespace Input {
     helpTextTemplate() {
       return this.helpText
         ? html`
-            <md-help-text
-              class="help-text"
-              .message=${this.helpText}
-              style=${styleMap({ width: "100%" })}
-            ></md-help-text>
+            <md-help-text class="help-text" .message=${this.helpText} style=${styleMap({ width: "100%" })}></md-help-text>
           `
         : nothing;
     }
 
     messagesTemplate() {
-      return this.messages && !!this.messages.length
+      return !this.hideMessage && this.messages && !!this.messages.length
         ? html`
             <div part="message" class="md-input__messages">
               ${repeat(

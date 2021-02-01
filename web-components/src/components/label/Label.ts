@@ -40,7 +40,7 @@ export namespace Label {
         [`md-label--${this.theme}`]: !!this.theme,
         "md-radio__label": this.radioLabel,
         "md-checkbox__label": this.checkboxLabel,
-        "md-input__secondary-label": this.secondaryLabel,
+        "md-secondary-label": this.secondaryLabel,
         active: this.active,
         disabled: this.disabled,
         indeterminate: this.indeterminate

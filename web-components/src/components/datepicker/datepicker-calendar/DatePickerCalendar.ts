@@ -48,7 +48,7 @@ export namespace DatePickerCalendar {
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("datePickerProps")) {
+      if (changedProperties.has("datePickerProps") || changedProperties.has("viewAnchorDate")) {
         this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
           this.monthFormat
         );

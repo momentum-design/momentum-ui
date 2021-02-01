@@ -65,9 +65,9 @@ export class Radio extends FocusMixin(LitElement) {
 
   render() {
     return html`
-      <div class="radio-wrapper">
+      <div class="md-radio-wrapper">
         <input
-          class="radio-input"
+          class="md-radio-input"
           type="radio"
           aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
           .value=${this.value}
@@ -77,7 +77,7 @@ export class Radio extends FocusMixin(LitElement) {
           aria-hidden="true"
           id="radio-label"
         />
-        <label for="radio-label" class="radio-label" part="radio-label"><slot></slot></label>
+        <label for="radio-label" class="md-radio-label" part="radio-label"><slot></slot></label>
       </div>
     `;
   }

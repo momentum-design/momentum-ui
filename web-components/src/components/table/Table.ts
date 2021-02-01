@@ -14,7 +14,7 @@ import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
 
 export const formatType = ["number", "default"] as const;
-type Warn = { [key: number]: string };
+type Warn = { [key: number]: any };
 
 export namespace Table {
   export type Format = typeof formatType[number];
@@ -31,16 +31,13 @@ export class Table extends LitElement {
   @property({ type: String }) label = "Table";
   @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
   @property({ type: String }) format: Table.Format = "default";
-  @property({ type: Array }) warning: (number | Warn)[] = [];
-  @property({ type: Array }) errors:  (number | Warn)[] = [];
+  @property({ type: Array }) warning: (any | Warn)[] = [];
+  @property({ type: Array }) errors:  (any | Warn)[] = [];
 
   @internalProperty() private sort = { columnName: "", sortting: false };
   @internalProperty() csvData: any = undefined;
 
-  @queryAll('td[role="cell"]') rowCell?: HTMLTableCellElement[];
-  @queryAll('td.error') errorCells?: HTMLElement[];
-
-  private items: [] = [];
+  @queryAll('.md-table__body tr[role="row"]') rowTable?: HTMLTableRowElement[];
 
   headerRow: any;
   results: any;
@@ -64,26 +61,37 @@ export class Table extends LitElement {
     this.linkCellItems();
   }
 
-  get cellItem() {
-    return this.rowCell;
+  get rowItem() {
+    return this.rowTable;
   }
 
   linkCellItems() {
-    const element = this.rowCell;
-    element?.forEach((item, index) => {
+    const data = this.rowTable;
+
+    data?.forEach((item, idx) => {
       this.warning.forEach(i => {
-        if ((index + 1) === i) {
-          item.classList.add("warning");
-          item.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+        if ((idx + 1) === i.row) {
+          const cell = item.querySelectorAll('td[role="cell"');
+          cell.forEach((c, id) => {
+            if ((id + 1) === i.cell) {
+              c.classList.add("warning");
+              c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+            }
+          })
         }
-      })
+      });
       this.errors.forEach(i => {
-        if ((index + 1) === i) {
-          item.classList.add("error");
-          item.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
+        if ((idx + 1) === i.row) {
+          const cell = item.querySelectorAll('td[role="cell"');
+          cell.forEach((c, id) => {
+            if ((id + 1) === i.cell) {
+              c.classList.add("error");
+              c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
+            }
+          })
         }
-      })
-    })
+      });
+    });
   }
 
   sortTab(ev: Event, key: any) {

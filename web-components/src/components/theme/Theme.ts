@@ -211,6 +211,10 @@ export class Theme extends LitElement {
     }
   }
 
+  handleTooltipRemoved = () => {
+    this.hideVirtualTooltip();
+  };
+
   private destroyPopperInstance() {
     if (this.popperInstance) {
       this.popperInstance.destroy();
@@ -281,6 +285,22 @@ export class Theme extends LitElement {
     this.addEventListener("tooltip-destroy", this.handleVirtualTooltipDestroy as EventListener);
     this.addEventListener("tooltip-message", this.handleVirtualTooltipChangeMessage as EventListener);
     this.addEventListener("tooltip-slot", this.handleVirtualTooltipSlotChange as EventListener);
+
+    document.addEventListener("tooltip-disconnected", this.handleTooltipRemoved as EventListener, true);
+  }
+
+  private teardownEvents() {
+    this.removeEventListener("tooltip-create", this.handleVirtualTooltipCreate as EventListener);
+    this.removeEventListener("tooltip-destroy", this.handleVirtualTooltipDestroy as EventListener);
+    this.removeEventListener("tooltip-message", this.handleVirtualTooltipChangeMessage as EventListener);
+    this.removeEventListener("tooltip-slot", this.handleVirtualTooltipSlotChange as EventListener);
+
+    document.removeEventListener("tooltip-disconnected", this.handleTooltipRemoved as EventListener, true);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.teardownEvents();
   }
 
   protected async firstUpdated(changedProperties: PropertyValues) {

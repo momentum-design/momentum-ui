@@ -57,7 +57,7 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 
 ## Contribution
 
-Want to contribute? Why not go through [Developer's Guide](./GETTING_STARTED.md) to understand more technical details about the project and contribution guidelines to be adhered.
+Want to contribute? Why not go through [Developer's Guide](./CONTRIBUTING.md) to understand more technical details about the project and contribution guidelines to be adhered.
 
 ## Changelog
 

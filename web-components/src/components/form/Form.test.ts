@@ -13,6 +13,7 @@ describe("Form Component", () => {
         <md-form name="form-name" action="https://someurl.com" method="POST">
           <md-input required></md-input>
           <md-input disabled></md-input>
+          <button type="submit">Click</button>
         </md-form>
       `
     );
@@ -37,10 +38,9 @@ describe("Form Component", () => {
     const mockSubmit = jest.fn();
     HTMLFormElement.prototype.requestSubmit = mockSubmit;
 
-    const input = element.querySelector("md-input[required]");
-    const form = input!.shadowRoot!.querySelector("form");
+    const button = element["submitButton"];
 
-    form!.dispatchEvent(new Event("submit"));
+    button!.dispatchEvent(new MouseEvent("click"));
     elementUpdated(element);
 
     expect(mockSubmit).toHaveBeenCalled();

@@ -96,6 +96,10 @@ export namespace Form {
       }
     };
 
+    handleFormSubmit = (event: Event) => {
+      event.preventDefault();
+    };
+
     private submitForm() {
       const { form } = this;
 
@@ -120,12 +124,24 @@ export namespace Form {
       this.teardownEvents();
     }
 
+    private deleteWrappedForm(element: HTMLFormElement) {
+      element.removeEventListener("submit", this.handleFormSubmit);
+    }
+
     private cleanupWrappedForms() {
+      const { formElement } = this;
+      if (formElement.length) {
+        for (const element of formElement) {
+          this.deleteWrappedForm(element);
+        }
+      }
       this.formElement = [];
     }
 
     private createWrappedForm(element: SubmittableElement) {
       const form = document.createElement("form");
+
+      form.addEventListener("submit", this.handleFormSubmit);
 
       const { parentNode: parent } = element;
 

@@ -1,0 +1,66 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-button-group) {
+  display: flex;
+
+  .md-button-group {
+    @include flex($display: inline-flex, $ac:flex-start, $jc:flex-start);
+    background: var(--button-group-bg-color, $lm-button-group-bg-color-light);
+    border-radius: $button-group-border-radius;
+    font-size: $font-size-small;
+    padding: $button-group-indent;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--button-group-bg-color-hover, $lm-button-group-bg-color-hover-light);
+    }
+
+    &:active {
+      background: var(--button-group-bg-color-pressed, $lm-button-group-bg-color-pressed-light);
+    }
+
+    ::slotted(button) {
+      @include flex;
+      background: none;
+      border: 0;
+      border-radius: $button-group-border-radius;
+      color: var(--button-group-color, $lm-button-group-color-light);
+      cursor: pointer;
+      height: $button-group-btn-height;
+      margin: 0 $button-group-indent;
+      outline: none;
+      padding: $button-group-btn-padding;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    ::slotted([selected]) {
+      background: var(--button-group-bg-color-active, $lm-button-group-bg-color-active-light);
+      box-shadow: $button-group-btn-shadow;
+      color: var(--button-group-color-active, $lm-button-group-color-active-light);
+    }
+  }
+}
+
+:host([focus-visible]:not([disabled])) {
+  .md-button-group {
+    @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+  }
+}
+
+:host([disabled]) {
+  .md-button-group {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+

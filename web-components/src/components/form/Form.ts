@@ -27,6 +27,8 @@ export namespace Form {
     @property({ type: Boolean, reflect: true, attribute: "no-validate" }) novalidate = false;
     @property({ type: String, reflect: true, attribute: "accept-charset" }) charset = "UTF-8";
     @property({ type: Boolean, reflect: true, attribute: "is-valid" }) isvalid = false;
+    @property({ type: String, attribute: "autofill-token" }) token = "on";
+    @property({ type: String, attribute: "autofill-name" }) autofillname = "input-name";
 
     @query(".md-form") protected form!: HTMLFormElement;
 
@@ -104,44 +106,54 @@ export namespace Form {
       }
     }
 
+    private get submitButton() {
+      return (
+        this.querySelector("button[type='submit']") ||
+        this.querySelector("input[type='submit']") ||
+        this.querySelector("md-button[type='submit']")
+      );
+    }
+
     disconnectedCallback() {
       super.disconnectedCallback();
       this.cleanupWrappedForms();
+      this.teardownEvents();
     }
 
     private cleanupWrappedForms() {
-      const { formElement } = this;
-      if (formElement.length) {
-        for (const element of formElement) {
-          this.deleteWrappedForm(element);
-        }
-      }
-
       this.formElement = [];
-    }
-
-    private deleteWrappedForm(element: HTMLFormElement) {
-      element.removeEventListener("submit", this.handleSubmit);
     }
 
     private createWrappedForm(element: SubmittableElement) {
       const form = document.createElement("form");
 
-      form.addEventListener("submit", this.handleSubmit);
-
       const { parentNode: parent } = element;
 
+      element.autocomplete = this.token;
+
       if (!element.id) {
-        element.id = "input-form";
+        element.id = this.autofillname;
       }
       if (!element.name) {
-        element.name = "input-form";
+        element.name = this.autofillname;
       }
       if (parent) {
         this.formElement.push(form);
 
         parent.insertBefore(form, element);
         form.append(element);
+      }
+    }
+
+    private teardownEvents() {
+      if (this.submitButton) {
+        this.submitButton.removeEventListener("click", this.handleSubmit);
+      }
+    }
+
+    private setupEvents() {
+      if (this.submitButton) {
+        this.submitButton.addEventListener("click", this.handleSubmit);
       }
     }
 
@@ -157,6 +169,7 @@ export namespace Form {
 
     protected slottedChanged() {
       this.setupSubmittable();
+      this.setupEvents();
     }
 
     render() {

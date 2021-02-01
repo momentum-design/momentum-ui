@@ -5,7 +5,6 @@
 }
 
 :host(md-checkbox) {
-  border: $checkbox-transparen-border;
   border-radius: $checkbox__border-radius;
   cursor: pointer;
   display: inline-flex;
@@ -20,7 +19,7 @@
   .checkbox-label {
     cursor: pointer;
     display: inline-block;
-    padding-left: calc(#{$checkbox__label-size} * 3);
+    padding-left: $checkbox__label-size;
     padding-right: calc(#{$checkbox__main-indent} / 2);
     position: relative;
     width: 100%;
@@ -33,7 +32,7 @@
       height: $checkbox__size;
       width: $checkbox__size;
     }
-  
+
     &::before,
     &::after {
       content: "";
@@ -46,14 +45,7 @@
 }
 
 :host([focus-visible]:not([disabled])) {
-  border-color: var(--checkbox-focus-border-color, $lm-checkbox-focus-border-color-light);
-  box-sizing: border-box;
-
-  .checkbox-label {
-    &::before {
-      box-shadow: var(--checkbox-focus-shadow-color, $lm-checkbox-focus-shadow-color-light);
-    }
-  }
+  @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
 }
 
 :host(:hover:not([disabled])) {
@@ -64,7 +56,7 @@
     }
   }
 }
-  
+
 
 :host(:active:not([disabled])) {
   .checkbox-label {
@@ -87,7 +79,7 @@
     }
   }
 
-  
+
 }
 
 :host([aria-checked="true"]) {
@@ -100,7 +92,7 @@
       transform: translateY(-65%) translateX(-50%) rotate(45deg);
       width: 0.35em;
     }
-  
+
     &::before {
       background: $checkbox__selected-bg;
       border: $checkbox__selected-border;
@@ -118,7 +110,7 @@
       transform: translateY(-85%) translateX(-50%) rotate(0);
       width: 0.75em;
     }
-  
+
     &::before {
       background: $checkbox__selected-bg;
       border: $checkbox__selected-border;

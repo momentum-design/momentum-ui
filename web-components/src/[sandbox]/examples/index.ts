@@ -5,6 +5,7 @@ export { avatarTemplate } from "./avatar";
 export { badgeTemplate } from "./badge";
 export { breadcrumbTemplate } from "./breadcrumb";
 export { buttonTemplate } from "./button";
+export { buttonGroupTemplate } from "./button-group";
 export { cardTemplate } from "./card";
 export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";

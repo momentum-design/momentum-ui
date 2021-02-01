@@ -138,40 +138,41 @@ export class Message {
 
 @customElement("md-input")
 export class Input extends FocusMixin(LitElement) {
-  @property({ type: String }) label = "";
-  @property({ type: String }) htmlId = "";
-  @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
-  @property({ type: String }) placeholder = "";
-  @property({ type: String }) ariaLabel = "input";
-  @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
-  @property({ type: String }) clearAriaLabel = "";
-  @property({ type: String }) id = "";
-  @property({ type: String }) helpText = "";
-  @property({ type: String }) inputSize = "";
-  @property({ type: String }) secondaryLabel = "";
-  @property({ type: String }) shape = "";
-  @property({ type: Number }) nestedLevel = 0;
-  @property({ type: String, reflect: true }) value = "";
-  @property({ type: String }) type: Input.Type = "text";
-  @property({ type: Boolean }) searchable = false;
-  @property({ type: Boolean }) clear = false;
-  @property({ type: Boolean }) multiline = false;
-  @property({ type: Boolean }) isFilled = false;
-  @property({ type: Boolean }) required = false;
-  @property({ type: Boolean }) readOnly = false;
-  @property({ type: Boolean }) disabled = false;
-  @property({ type: Boolean }) isLoading = false;
-  @property({ type: Boolean }) compact = false;
-  @property({ type: Boolean }) multi = false;
-  @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
-  @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
   @property({ type: String }) ariaDescribedBy = "";
-  @property({ type: Array }) messageArr: Input.Message[] = [];
-  @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
+  @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
+  @property({ type: String }) ariaLabel = "input";
   @property({ type: Boolean, reflect: true }) autofocus = false;
-  @property({ type: Number , reflect: true }) min: number | undefined = undefined;
+  @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
+  @property({ type: Boolean }) clear = false;
+  @property({ type: String }) clearAriaLabel = "";
+  @property({ type: Boolean }) compact = false;
+  @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
+  @property({ type: Boolean }) disabled = false;
+  @property({ type: String }) id = "";
+  @property({ type: String }) inputSize = "";
+  @property({ type: Boolean }) isFilled = false;
+  @property({ type: Boolean }) isLoading = false;
+  @property({ type: String }) label = "";
+  @property({ type: String }) helpText = "";
+  @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
+  @property({ type: String }) htmlId = "";
+  @property({ type: Array }) messageArr: Input.Message[] = [];
+  @property({ type: Number, reflect: true }) min: number | undefined = undefined;
   @property({ type: Number, reflect: true }) max: number | undefined = undefined;
   @property({ type: Number }) maxLength: number | undefined = undefined;
+  @property({ type: Boolean }) multi = false;
+  @property({ type: Boolean }) multiline = false;
+  @property({ type: String, reflect: true }) name = "";
+  @property({ type: Number }) nestedLevel = 0;
+  @property({ type: String }) placeholder = "";
+  @property({ type: Boolean }) readOnly = false;
+  @property({ type: Boolean }) required = false;
+  @property({ type: Boolean }) searchable = false;
+  @property({ type: String }) secondaryLabel = "";
+  @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
+  @property({ type: String }) shape = "";
+  @property({ type: String }) type: Input.Type = "text";
+  @property({ type: String, reflect: true }) value = "";
 
   @query(".md-input") input!: HTMLInputElement;
 
@@ -349,6 +350,7 @@ export class Input extends FocusMixin(LitElement) {
           <textarea
             part="input"
             class="md-input ${classMap(this.inputTemplateClassMap)}"
+            name=${ifDefined(this.name)}
             @blur=${(event: FocusEvent) => this.handleBlur(event)}
             @input=${(event: Event) => this.handleChange(event)}
             @focus=${(event: FocusEvent) => this.handleFocus(event)}
@@ -372,6 +374,7 @@ export class Input extends FocusMixin(LitElement) {
           <input
             part="input"
             class="md-input ${classMap(this.inputTemplateClassMap)}"
+            name=${ifDefined(this.name)}
             @blur=${(event: FocusEvent) => this.handleBlur(event)}
             @input=${(event: Event) => this.handleChange(event)}
             @focus=${(event: FocusEvent) => this.handleFocus(event)}

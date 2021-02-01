@@ -28,6 +28,7 @@ import {
   labelTemplate,
   linkTemplate,
   listTemplate,
+  formTemplate,
   loadingTemplate,
   meetingAlertTemplate,
   menuItemTemplate,
@@ -255,6 +256,13 @@ export class Sandbox extends LitElement {
             <h2>md-floating-modal</h2>
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-form">
+            <h2>md-form</h2>
+            <sass-stats component="form">
+              ${formTemplate}
             </sass-stats>
           </div>
 

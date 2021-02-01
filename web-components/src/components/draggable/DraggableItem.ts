@@ -7,7 +7,7 @@ export class DraggableItem extends LitElement {
   @property({ type: Boolean }) isDraggingStarted = false;
 
   private _index = 0;
-  @property({ type: Number, attribute: "index", reflect: true })
+  @property({ type: Number, reflect: true })
   get index() {
     return this._index;
   }

@@ -62,7 +62,7 @@ export class DraggableWrap extends SlottedMixin(LitElement) {
   }
 
   handleDropHandler(event: CustomEvent) {
-    console.log(event);
+    this.setComplete(this.items, this.dragIndexEl, this.currentIndexEl);
   }
 
   handleDragOver(ev: CustomEvent) {
@@ -78,17 +78,18 @@ export class DraggableWrap extends SlottedMixin(LitElement) {
   }
 
   setComplete(arr: any, old_index: any, new_index: any) {
-    arr = this.items;
-    old_index = this.dragIndexEl!; 
-    new_index = this.currentIndexEl; 
-    if (new_index >= arr.length) {
-      let k = new_index - arr.length + 1;
-      while (k--) {
-        arr.push(undefined);
+    if (new_index === old_index) {
+      return arr;
+    } else {
+      var target = arr[old_index];                         
+      var increment = new_index < old_index ? -1 : 1;
+
+      for(var k = old_index; k !== new_index; k += increment){
+        arr[k] = arr[k + increment];
       }
+      arr[new_index] = target;
+      return arr;
     }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr;
   }
 
   protected async updated(changedProperties: PropertyValues) {
@@ -97,6 +98,10 @@ export class DraggableWrap extends SlottedMixin(LitElement) {
       this.setupItems();
       this.linkItems()
     }
+  }
+
+  protected update(changedProperties: PropertyValues) {
+    super.update(changedProperties);
   }
 
   static get styles(): CSSResultArray {

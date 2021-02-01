@@ -73,7 +73,7 @@ export class Table extends LitElement {
         if ((idx + 1) === i.row) {
           const cell = item.querySelectorAll('td[role="cell"');
           cell.forEach((c, id) => {
-            if ((id + 1) === i.cell) {
+            if ((id + 1) === i.col) {
               c.classList.add("warning");
               c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
             }
@@ -84,7 +84,7 @@ export class Table extends LitElement {
         if ((idx + 1) === i.row) {
           const cell = item.querySelectorAll('td[role="cell"');
           cell.forEach((c, id) => {
-            if ((id + 1) === i.cell) {
+            if ((id + 1) === i.col) {
               c.classList.add("error");
               c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
             }

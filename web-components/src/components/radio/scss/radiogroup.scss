@@ -1,38 +1,14 @@
-
-:host(md-radio) {
-  border: $radio-transparen-border;
-  border-radius: $radio-input-border-radius;
-  cursor: pointer;
-  display: inline-flex;
-  max-width: $radio-horizontal-max-width;
-  outline: none;
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-  }
-
-  &::before {
-    border: $radio-input-border;
-    border-radius: calc(#{$radio-input-border-radius} * 5);
-    box-shadow: inset 0 0 0 $radio-input-selected-size $radio-input-bg, inset 0 0 0 $radio-input-size $radio-input-bg;
-    box-sizing: border-box;
-    height: $radio-input-size;
-    left: rem-calc(2);
-    top: rem-calc(1);
-    width: $radio-input-size;
-  }
+:host(md-radiogroup) {
+  display: flex;
 }
-
-:host div ::slotted(md-radio) {
-  display: inline-block;
+:host(md-radio) {
+  border-radius: $radio-input-border-radius;
+  display: inline !important;
 }
 
 :host([alignment="vertical"]) div {
   display: inline-flex;
   flex-direction: column;
-  max-width: 100%;
 }
 
 :host([alignment="vertical"]) div ::slotted(md-radio) {
@@ -40,7 +16,7 @@
 }
 
 :host([alignment="horizontal"]) div {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
 }
 

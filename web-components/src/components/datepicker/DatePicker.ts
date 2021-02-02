@@ -1,13 +1,13 @@
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
+import { Input } from "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { ValidationRegex } from "@/utils/validations";
 import { customElement, html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { Input } from "@/components/input/Input";
+import { DateTime } from "luxon";
 
 export namespace DatePicker {}
 export const weekStartDays = ["Sunday", "Monday"];
@@ -21,6 +21,7 @@ export class DatePicker extends LitElement {
   @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
   @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
+  @property({ type: Boolean }) disabled = false;
 
   @internalProperty() selectedDate: DateTime = now();
   @internalProperty() focusedDate: DateTime = now();
@@ -44,7 +45,9 @@ export class DatePicker extends LitElement {
     super.firstUpdated(changedProperties);
 
     if (!this.value) {
-      this.value = this.includesTime ? this.selectedDate?.toISO({ suppressMilliseconds: true }) : this.selectedDate?.toISODate();
+      this.value = this.includesTime
+        ? this.selectedDate?.toISO({ suppressMilliseconds: true })
+        : this.selectedDate?.toISODate();
     }
   }
 
@@ -63,7 +66,7 @@ export class DatePicker extends LitElement {
         }
       })
     );
-  }
+  };
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
@@ -74,7 +77,7 @@ export class DatePicker extends LitElement {
     if (changedProperties.has("locale")) {
       this.render();
     }
-    if ((this.minDate && changedProperties.has("minDate"))) {
+    if (this.minDate && changedProperties.has("minDate")) {
       this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
     }
     if (this.maxDate && changedProperties.has("maxDate")) {
@@ -171,18 +174,21 @@ export class DatePicker extends LitElement {
   };
 
   isValueValid = () => {
-    const regexString = this.includesTime ? ValidationRegex.ISOString: ValidationRegex.ISODateString;
+    const regexString = this.includesTime ? ValidationRegex.ISOString : ValidationRegex.ISODateString;
     const regex = RegExp(regexString);
 
     const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-    const isValid = this.value && regex.test(this.value) && !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
+    const isValid =
+      this.value &&
+      regex.test(this.value) &&
+      !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
 
     return isValid;
-  }
+  };
 
   render() {
     return html`
-      <md-menu-overlay custom-width="248px">
+      <md-menu-overlay custom-width="248px" ?disabled=${this.disabled}>
         <md-input
           class="date-input"
           slot="menu-trigger"
@@ -192,7 +198,8 @@ export class DatePicker extends LitElement {
           auxiliaryContentPosition="before"
           @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
           hide-message
-          .messageArr=${[{ message: "", type: this.isValueValid()  ? "" : "error" } as Input.Message]}
+          ?disabled=${this.disabled}
+          .messageArr=${[{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
         >
           <md-icon slot="input-section" name="calendar-month_16"></md-icon>
         </md-input>

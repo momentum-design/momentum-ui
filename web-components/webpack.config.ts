@@ -104,7 +104,8 @@ export const commonDev = merge(common, {
   name: "dev",
   mode: "development",
   devtool: "source-map",
-  entry: "./src/[sandbox]/sandbox.ts",
+  // entry: "./src/[sandbox]/sandbox.ts",
+  entry: "./src/components/table-advanced/sandbox-table.ts",
   output: {
     path: pBuild
   },

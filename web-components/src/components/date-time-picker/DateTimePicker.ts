@@ -26,6 +26,7 @@ export class DateTimePicker extends LitElement {
 
   @property({ type: String, reflect: true }) value: string | undefined = undefined;
   @property({ type: String }) locale = "en-US";
+  @property({ type: Boolean }) disabled = false;
 
   @internalProperty() fullDateTime: DateTime | undefined = undefined;
   @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
@@ -73,7 +74,7 @@ export class DateTimePicker extends LitElement {
     if (event?.detail?.value) {
       this.value = event?.detail?.value;
     }
-  }
+  };
 
   updateDateTimeObject = () => {
     if (this.value) {
@@ -91,7 +92,7 @@ export class DateTimePicker extends LitElement {
         })
       );
     }
-  }
+  };
 
   combineDateAndTimeValues = () => {
     if (this.dateValue) {
@@ -103,12 +104,16 @@ export class DateTimePicker extends LitElement {
 
       this.updateDateTimeObject();
     }
-  }
+  };
 
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
 
-    if (this.dateValue && this.timeValue && (changedProperties.has("timeValue") || changedProperties.has("dateValue"))) {
+    if (
+      this.dateValue &&
+      this.timeValue &&
+      (changedProperties.has("timeValue") || changedProperties.has("dateValue"))
+    ) {
       this.combineDateAndTimeValues();
     }
 
@@ -118,7 +123,7 @@ export class DateTimePicker extends LitElement {
       this.updateDateTimeObject();
     }
 
-    if (this.value && changedProperties.has('locale')) {
+    if (this.value && changedProperties.has("locale")) {
       this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
     }
   }
@@ -131,6 +136,7 @@ export class DateTimePicker extends LitElement {
     return html`
         <md-datepicker
           includes-time
+          ?disabled=${this.disabled}
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}

@@ -121,8 +121,6 @@ export class DateTimePicker extends LitElement {
     if (this.value && changedProperties.has("value")) {
       this.dateValue = this.value.split("T")[0];
       this.timeValue = this.value.split("T")[1];
-      console.log("fart updated");
-
       this.updateDateTimeObject();
     }
 

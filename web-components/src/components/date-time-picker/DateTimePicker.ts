@@ -101,8 +101,6 @@ export class DateTimePicker extends LitElement {
       } else {
         this.value = this.dateValue;
       }
-      console.log("fart combined");
-
       this.updateDateTimeObject();
     }
   };

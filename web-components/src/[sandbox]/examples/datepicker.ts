@@ -25,4 +25,6 @@ export const datePickerTemplate = html`
   <md-datepicker weekStart="Monday"></md-datepicker>
   <h3>datepicker with initial value</h3>
   <md-datepicker weekStart="Monday" value="2021-01-31"></md-datepicker>
+  <h3>disabled datepicker</h3>
+  <md-datepicker weekStart="Monday" value="2021-01-31" disabled></md-datepicker>
 `;

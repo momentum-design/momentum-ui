@@ -101,7 +101,6 @@ export class DateTimePicker extends LitElement {
       } else {
         this.value = this.dateValue;
       }
-
       this.updateDateTimeObject();
     }
   };

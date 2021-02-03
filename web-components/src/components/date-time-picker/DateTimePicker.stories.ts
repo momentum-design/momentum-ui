@@ -37,7 +37,7 @@ export const DateTimePicker = () => {
         second: 0,
         millisecond: 0
       })
-      .toISO()
+      .toISO({ suppressMilliseconds: true })
   );
 
   const minDate = text(

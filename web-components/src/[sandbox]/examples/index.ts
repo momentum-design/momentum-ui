@@ -15,6 +15,7 @@ export { codeEditorTemplate } from "./code-editor";
 export { comboBoxTemplate } from "./combobox";
 export { datePickerTemplate } from "./datepicker";
 export { dateTimePickerTemplate } from "./date-time-picker";
+export { dropdownTemplate } from "./dropdown";
 export { editableField } from "./editable-field";
 export { favoriteTemplate } from "./favorite";
 export { floatingModalTemplate } from "./floating-modal";

@@ -1,34 +1,38 @@
+import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
-import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
+  accordionTemplate,
   alertBannerTemplate,
   alertTemplate,
   avatarTemplate,
   badgeTemplate,
   breadcrumbTemplate,
-  buttonTemplate,
   buttonGroupTemplate,
+  buttonTemplate,
+  cardTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
   coachTemplate,
+  codeEditorTemplate,
   comboBoxTemplate,
   datePickerTemplate,
   dateTimePickerTemplate,
+  dropdownTemplate,
   editableField,
   favoriteTemplate,
   floatingModalTemplate,
+  formTemplate,
   iconTemplate,
-  inputTemplate,
   inputFileTemplate,
+  inputTemplate,
   labelTemplate,
   linkTemplate,
   listTemplate,
-  formTemplate,
   loadingTemplate,
   meetingAlertTemplate,
   menuItemTemplate,
@@ -45,10 +49,7 @@ import {
   taskItemTemplate,
   timePickerTemplate,
   toggleSwitchTemplate,
-  tooltipTemplate,
-  accordionTemplate,
-  cardTemplate,
-  codeEditorTemplate
+  tooltipTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -118,6 +119,12 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+          <div class="container" aria-label="md-dropdown">
+            <h2>md-dropdown</h2>
+            <sass-stats component="dropdown">
+              ${dropdownTemplate}
+            </sass-stats>
+          </div>
 
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
@@ -237,6 +244,13 @@ export class Sandbox extends LitElement {
               ${dateTimePickerTemplate}
             </sass-stats>
           </div>
+
+          <!-- <div class="container" aria-label="md-dropdown">
+            <h2>md-dropdown</h2>
+            <sass-stats component="dropdown">
+              ${dropdownTemplate}
+            </sass-stats>
+          </div> -->
 
           <div class="container" aria-label="md-editable-field">
             <h2>md-editable-field</h2>

@@ -1,0 +1,19 @@
+:host {
+  .md-dropdown {
+    border: 1px solid red;
+    display: flex;
+
+    .md-dropdown-select {
+      display: none;
+    }
+
+    .md-dropdown-label {
+      flex-grow: 1;
+      border: none;
+    }
+
+    .md-dropdown-list {
+      z-index: 1;
+    }
+  }
+}

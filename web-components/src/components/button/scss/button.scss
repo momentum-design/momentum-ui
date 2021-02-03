@@ -50,7 +50,7 @@
       top: 0;
       width: calc(100% + (#{$button-focus-gap-ring} * 2));
     }
-    
+
     &:focus::after {
       box-shadow: 0 0 0 $focus-ring-size var(--button-focus-ring-color, $lm-button-focus-ring-color-light);
     }
@@ -88,13 +88,11 @@
       );
       @include button-size($radius: 0, $padding: 0, $height: auto);
       box-shadow: none;
-
       min-width: 0;
     }
 
     &--size-none {
       @include button-size($radius: 0, $padding: 0, $height: auto);
-
       min-width: 0;
     }
 
@@ -119,11 +117,7 @@
     }
 
     &--36 {
-      @include button-size(
-        $height: rem-calc(36),
-        $padding: $button__padding--36,
-        $font-size: $button__font-size--36,
-      );
+      @include button-size($height: rem-calc(36), $padding: $button__padding--36, $font-size: $button__font-size--36);
     }
 
     &--40 {
@@ -136,11 +130,7 @@
     }
 
     &--52 {
-      @include button-size(
-        $height: rem-calc(52),
-        $padding: $button__padding--52,
-        $radius: $button__radius--52
-      );
+      @include button-size($height: rem-calc(52), $padding: $button__padding--52, $radius: $button__radius--52);
     }
 
     &--circle {

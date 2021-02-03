@@ -68,6 +68,7 @@ export namespace List {
 
     private setActivated(index: number) {
       if (index !== -1) {
+        this.activated = index;
         this.selected = index;
         this.setSelected(index);
       }
@@ -104,7 +105,7 @@ export namespace List {
       const newIndex = this.findListItemIndex(event);
       if (newIndex !== -1) {
         if (!this.isListItemDisabled(newIndex)) {
-          this.activated = newIndex;
+          this.setActivated(newIndex);
           this.notifySelectedChange();
         }
       }
@@ -145,7 +146,7 @@ export namespace List {
         case Key.Space:
           {
             if (!this.isListItemDisabled(this.selected)) {
-              this.activated = this.selected;
+              this.setActivated(this.selected);
               this.notifySelectedChange();
             }
           }

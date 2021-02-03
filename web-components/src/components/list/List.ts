@@ -66,6 +66,7 @@ export class List extends RovingTabIndexMixin(LitElement) {
 
   private setActivated(index: number) {
     if (index !== -1) {
+      this.activated = index;
       this.selected = index;
       this.setSelected(index);
     }
@@ -102,7 +103,7 @@ export class List extends RovingTabIndexMixin(LitElement) {
     const newIndex = this.findListItemIndex(event);
     if (newIndex !== -1) {
       if (!this.isListItemDisabled(newIndex)) {
-        this.activated = newIndex;
+        this.setActivated(newIndex);
         this.notifySelectedChange();
       }
     }
@@ -143,7 +144,7 @@ export class List extends RovingTabIndexMixin(LitElement) {
       case Key.Space:
         {
           if (!this.isListItemDisabled(this.selected)) {
-            this.activated = this.selected;
+            this.setActivated(this.selected);
             this.notifySelectedChange();
           }
         }

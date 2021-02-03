@@ -44,7 +44,7 @@ export namespace DateTimePicker {
 
     handleTimeChange = (event: any) => {
       this.selectedTimeObject = event?.detail?.data as DateTime;
-      this.timeValue = this.selectedTimeObject?.toISOTime({ suppressMilliseconds: true });
+      this.timeValue = this.selectedTimeObject?.startOf('second').toISOTime({ suppressMilliseconds: true });
     };
 
     protected async firstUpdated(changedProperties: PropertyValues) {
@@ -57,7 +57,7 @@ export namespace DateTimePicker {
       } else if (!this.dateValue) {
         this.dateValue = this.selectedDateObject?.toISODate();
         this.selectedTimeObject = DateTime.fromISO(this.timeValue);
-        this.timeValue = this.selectedTimeObject.toISOTime({ suppressMilliseconds: true });
+        this.timeValue = this.selectedTimeObject.startOf('second').toISOTime({ suppressMilliseconds: true });
         this.combineDateAndTimeValues();
       }
 

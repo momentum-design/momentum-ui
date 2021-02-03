@@ -31,6 +31,12 @@ export namespace TableAdvanced {
       colId: string;
       order: SortOrder;
     };
+
+    head?: {
+      caption?: string;
+      summary?: string;
+      isSummaryVisible?: boolean;
+    };
   };
 
   type Col =
@@ -38,10 +44,10 @@ export namespace TableAdvanced {
     {
       id: string;
       title: string;
-      groupRows?: boolean;
-      highlight?: boolean;
       sort?: boolean | SortComparator;
-      filters?: Filter[];
+      filters?: Filter[]; // ???
+      isHeader?: boolean; // highlight
+      isGroupedRows?: boolean;
     };
 
   type SortOrder = "ascending" | "descending";
@@ -95,6 +101,47 @@ export namespace TableAdvanced {
       return html`
         <div class="md-table-advanced">
           ${this.renderTable()}
+          
+
+          <!-- Web Accessibility TABLE -->
+          <!-- https://www.w3.org/WAI/tutorials/tables/ -->
+
+          <table summary="if (head.isSummaryVisible == true) 'head.summary'">
+            <caption>Table caption:<br>
+              <span>Summary</span>
+            </caption>
+
+            <colgroup span="2"></colgroup>
+            <col>
+            <colgroup span="2"></colgroup>
+
+            <tr>
+              <th colspan="2" scope="colgroup">Mars</th>
+              <th rowspan="2"></th>
+              <th colspan="2" scope="colgroup">Venus</th>
+            </tr>
+            <tr>
+              <th scope="col">Produced</th>
+              <th scope="col">Sold</th>
+              <th scope="col">Produced</th>
+              <th scope="col">Sold</th>
+            </tr>
+            <tr>
+              <td>50,000</td>
+              <td>30,000</td>
+              <th scope="row">One</th>
+              <td>100,000</td>
+              <td>80,000</td>
+            </tr>
+            <tr>
+              <td>10,000</td>
+              <td>5,000</td>
+              <th scope="row">Two</th>
+              <td>12,000</td>
+              <td>9,000</td>
+            </tr>
+          </table>
+
         </div>
       `;
     }

@@ -8,13 +8,14 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
 
 export const formatType = ["number", "default"] as const;
+type Warn = { [key: number]: any };
 
 export namespace Table {
   export type Format = typeof formatType[number];
@@ -30,9 +31,13 @@ export namespace Table {
     @property({ type: String }) label = "Table";
     @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
     @property({ type: String }) format: Table.Format = "default";
+    @property({ type: Array }) warning: (any | Warn)[] = [];
+    @property({ type: Array }) errors:  (any | Warn)[] = [];
 
     @internalProperty() private sort = { columnName: "", sortting: false };
     @internalProperty() csvData: any = undefined;
+
+    @queryAll('.md-table__body tr[role="row"]') rowTable?: HTMLTableRowElement[];
 
     headerRow: any;
     results: any;
@@ -53,13 +58,47 @@ export namespace Table {
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
       this.requestUpdate("tabledata");
+      this.linkCellItems();
+    }
+
+    get rowItem() {
+      return this.rowTable;
+    }
+  
+    linkCellItems() {
+      const data = this.rowTable;
+  
+      data?.forEach((item, idx) => {
+        this.warning.forEach(i => {
+          if ((idx + 1) === i.row) {
+            const cell = item.querySelectorAll('td[role="cell"');
+            cell.forEach((c, id) => {
+              if ((id + 1) === i.col) {
+                c.classList.add("warning");
+                c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+              }
+            })
+          }
+        });
+        this.errors.forEach(i => {
+          if ((idx + 1) === i.row) {
+            const cell = item.querySelectorAll('td[role="cell"');
+            cell.forEach((c, id) => {
+              if ((id + 1) === i.col) {
+                c.classList.add("error");
+                c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
+              }
+            })
+          }
+        });
+      });
     }
 
     sortTab(ev: Event, key: any) {
       const elCell = ev.target as HTMLTableElement;
       const sortArr = Array.from(this.csvData);
       const index = this.headerRow.indexOf(key);
-
+  
       function compare(a: any, b: any) {
         const bandA = a[index].toLowerCase();
         const bandB = b[index].toLowerCase();
@@ -71,7 +110,7 @@ export namespace Table {
           return 0;
         }
       }
-
+  
       if (key !== this.sort.columnName || this.sort.sortting !== true) {
         sortArr.sort(compare);
         this.sort.sortting = true;
@@ -83,9 +122,9 @@ export namespace Table {
         elCell.classList.remove("sortedAbc");
         elCell.classList.add("sortedZyx");
       }
-
+  
       this.sort.columnName = key;
-
+  
       this.csvData = sortArr;
       this.requestUpdate("csvData");
     }
@@ -96,6 +135,7 @@ export namespace Table {
         this.results = Papa.parse(this.tabledata, this.config);
         this.headerRow = this.results.data[0];
         this.csvData = this.results.data.slice(1, this.results.data.length);
+        this.linkCellItems();
       }
     }
 
@@ -150,7 +190,9 @@ export namespace Table {
                               const formattedItem =
                                 this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
                               return html`
-                                <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">${formattedItem}</td>
+                                <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">
+                                  <span>${formattedItem}</span>
+                                </td>
                               `;
                             })}
                           </tr>

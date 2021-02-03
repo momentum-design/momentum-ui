@@ -28,6 +28,7 @@ export namespace DateTimePicker {
 
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
     @property({ type: String }) locale = "en-US";
+    @property({ type: Boolean }) disabled = false;
 
     @internalProperty() fullDateTime: DateTime | undefined = undefined;
     @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
@@ -102,7 +103,6 @@ export namespace DateTimePicker {
         } else {
           this.value = this.dateValue;
         }
-
         this.updateDateTimeObject();
       }
     };
@@ -123,6 +123,10 @@ export namespace DateTimePicker {
         this.timeValue = this.value.split("T")[1];
         this.updateDateTimeObject();
       }
+
+      if (this.value && changedProperties.has("locale")) {
+        this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
+      }
     }
 
     static get styles() {
@@ -133,6 +137,7 @@ export namespace DateTimePicker {
       return html`
         <md-datepicker
           includes-time
+          ?disabled=${this.disabled}
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}

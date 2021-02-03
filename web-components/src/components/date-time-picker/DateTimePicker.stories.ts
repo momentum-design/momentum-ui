@@ -1,11 +1,11 @@
-import { now } from "@/utils/dateUtils";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs, select } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import "@/components/date-time-picker/DateTimePicker";
 import { DatePicker } from "@/components/datepicker/DatePicker";
 import { timeSpecificity } from "@/components/timepicker/TimePicker";
 import { TIME_UNIT } from "@/constants";
-import "@/components/date-time-picker/DateTimePicker";
+import { now } from "@/utils/dateUtils";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
 
 export default {
   title: "Date Time Picker",
@@ -26,15 +26,18 @@ export const DateTimePicker = () => {
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);
   const locale = text("locale", "en-US");
+  const disabled = boolean("disabled", false);
 
   const value = text(
     "value",
-    now().set({
-      hour: 0,
-      minute: 0,
-      second: 0,
-      millisecond: 0
-    }).toISO()
+    now()
+      .set({
+        hour: 0,
+        minute: 0,
+        second: 0,
+        millisecond: 0
+      })
+      .toISO()
   );
 
   const minDate = text(
@@ -54,6 +57,7 @@ export const DateTimePicker = () => {
   return html`
     <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-date-time-picker
+        ?disabled=${disabled}
         value=${value}
         minDate=${minDate}
         maxDate=${maxDate}
@@ -61,7 +65,8 @@ export const DateTimePicker = () => {
         weekStart=${weekStart}
         ?two-digit-auto-tab=${twoDigitAutoTab}
         ?twenty-four-hour-format=${twentyFourHourFormat}
-        timeSpecificity=${theTimeSpecificity}>
+        timeSpecificity=${theTimeSpecificity}
+      >
       </md-date-time-picker>
     </md-theme>
   `;

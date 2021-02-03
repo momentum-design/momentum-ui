@@ -1,11 +1,14 @@
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
+import { Input } from "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { ValidationRegex } from "@/utils/validations";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { DateTime } from "luxon";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -19,6 +22,8 @@ export namespace DatePicker {
     @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
     @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
     @property({ type: String }) locale = "en-US";
+    @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
+    @property({ type: Boolean }) disabled = false;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -30,27 +35,57 @@ export namespace DatePicker {
 
     connectedCallback() {
       super.connectedCallback();
-      this.minDate !== undefined ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale })) : null;
-      this.maxDate !== undefined ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale })) : null;
+      if (this.minDate) {
+        this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
+      }
+      if (this.maxDate) {
+        this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale });
+      }
+    }
+
+    async firstUpdated(changedProperties: PropertyValues) {
+      super.firstUpdated(changedProperties);
+
+      if (!this.value) {
+        this.value = this.includesTime
+          ? this.selectedDate?.toISO({ suppressMilliseconds: true })
+          : this.selectedDate?.toISODate();
+      }
     }
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("value")) {
-        this.value ? (this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale })) : null;
+      if (this.value && changedProperties.has("value")) {
+        this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale });
+        this.setPreSelection(this.selectedDate);
       }
       if (changedProperties.has("locale")) {
         this.render();
       }
-      if (changedProperties.has("minDate") || changedProperties.has("maxDate")) {
-        this.minDate !== undefined
-          ? (this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale }))
-          : null;
-        this.maxDate !== undefined
-          ? (this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale }))
-          : null;
+      if (this.minDate && changedProperties.has("minDate")) {
+        this.minDateData = DateTime.fromISO(this.minDate, { locale: this.locale });
+      }
+      if (this.maxDate && changedProperties.has("maxDate")) {
+        this.maxDateData = DateTime.fromISO(this.maxDate, { locale: this.locale });
       }
     }
+
+    handleDateInputChange = (event: CustomEvent) => {
+      if (event?.detail?.value) {
+        this.value = event?.detail?.value;
+      }
+
+      this.dispatchEvent(
+        new CustomEvent("date-input-change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            sourceEvent: event,
+            value: this.value
+          }
+        })
+      );
+    };
 
     setOpen = (open: boolean) => {
       this.menuOverlay.isOpen = open;
@@ -59,7 +94,7 @@ export namespace DatePicker {
     handleSelect = (e: CustomEvent) => {
       const date = e.detail.date;
       const event = e.detail.sourceEvent;
-      this.setPreSelection(date, event);
+      this.setPreSelection(date);
       this.setSelected(date, event);
       this.shouldCloseOnSelect && this.setOpen(false);
     };
@@ -67,7 +102,7 @@ export namespace DatePicker {
     setSelected = (date: DateTime, event: Event) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
-        const dateString = date.toISODate();
+        const dateString = this.includesTime ? date.toISO({ suppressMilliseconds: true }) : date.toISODate();
         this.selectedDate = date;
         this.value = dateString;
       }
@@ -83,9 +118,11 @@ export namespace DatePicker {
       );
     };
 
-    setPreSelection = (date: DateTime, event: KeyboardEvent) => {
+    setPreSelection = (date: DateTime) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
-      !isDayDisabled(date, filters) ? (this.focusedDate = date) : null;
+      if (!isDayDisabled(date, filters)) {
+        this.focusedDate = date;
+      }
     };
 
     handleKeyDown = (e: CustomEvent) => {
@@ -104,21 +141,21 @@ export namespace DatePicker {
           this.setOpen(false);
           break;
         case "ArrowUp":
-          this.setPreSelection(subtractWeeks(copy, 1), event);
+          this.setPreSelection(subtractWeeks(copy, 1));
           flag = true;
           break;
         case "ArrowLeft":
-          this.setPreSelection(subtractDays(copy, 1), event);
+          this.setPreSelection(subtractDays(copy, 1));
           flag = true;
           break;
 
         case "ArrowRight":
-          this.setPreSelection(addDays(copy, 1), event);
+          this.setPreSelection(addDays(copy, 1));
           flag = true;
           break;
 
         case "ArrowDown":
-          this.setPreSelection(addWeeks(copy, 1), event);
+          this.setPreSelection(addWeeks(copy, 1));
           flag = true;
           break;
 
@@ -135,19 +172,39 @@ export namespace DatePicker {
     chosenDateLabel = () => {
       return this.selectedDate
         ? `, Selected date is ${this.selectedDate.weekdayLong} ${this.selectedDate.monthLong} ${this.selectedDate.day}, ${this.selectedDate.year}`
-        : null;
+        : undefined;
+    };
+
+    isValueValid = () => {
+      const regexString = this.includesTime ? ValidationRegex.ISOString : ValidationRegex.ISODateString;
+      const regex = RegExp(regexString);
+
+      const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
+      const isValid =
+        this.value &&
+        regex.test(this.value) &&
+        !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
+
+      return isValid;
     };
 
     render() {
-      const placeholder = this.placeholder || this.selectedDate.toLocaleString({ locale: this.locale });
-
       return html`
-        <md-menu-overlay custom-width="248px">
+        <md-menu-overlay custom-width="248px" ?disabled=${this.disabled}>
           <md-input
+            class="date-input"
             slot="menu-trigger"
-            placeholder=${placeholder}
+            placeholder=${this.includesTime ? ifDefined(this.placeholder) : "YYYY-MM-DD"}
+            value=${ifDefined(this.value)}
             aria-label=${`Choose Date` + this.chosenDateLabel()}
-          ></md-input>
+            auxiliaryContentPosition="before"
+            @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+            hide-message
+            ?disabled=${this.disabled}
+            .messageArr=${[{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
+          >
+            <md-icon slot="input-section" name="calendar-month_16"></md-icon>
+          </md-input>
           <div class="date-overlay-content">
             <md-datepicker-calendar
               @day-select=${(e: CustomEvent) => this.handleSelect(e)}

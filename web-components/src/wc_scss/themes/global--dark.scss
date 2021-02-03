@@ -7,12 +7,29 @@
 
   --md-default-focus-outline-color: #{$md-blue-40};
 
-  --md-primary-bg-color: #{$md-gray-100};
-  --md-secondary-bg-color: #{$md-gray-100};
-  --md-secondary-white-bg-color: #{$md-gray-95};
-  --md-tertiary-bg-color: #{$md-gray-90};
-  --md-tertiary-white-bg-color: #{$md-gray-90};
-  --md-quaternary-bg-color: #{$md-gray-80};
+  // Backgrounds
+  --md-primary-bg-color: #{$md-gray-100}; // good
+  --md-primary-one-bg-color: #{$md-gray-95};
+  --md-primary-two-bg-color: #{$md-gray-90};
+
+  --md-secondary-bg-color: #{$md-gray-95}; // changed used to be $md-gray-100
+  --md-secondary-one-bg-color: #{$md-gray-90};
+  --md-secondary-two-bg-color: #{$md-gray-80};
+
+  --md-tertiary-bg-color: #{$md-gray-90}; // good
+  --md-tertiary-one-bg-color: #{$md-gray-95};
+  --md-tertiary-two-bg-color: #{$md-gray-80};
+  
+  --md-quaternary-bg-color: #{$md-gray-80}; // good
+  --md-quaternary-one-bg-color: #{$md-gray-60};
+  --md-quaternary-two-bg-color: #{$md-gray-90};
+
+  // --md-primary-bg-color: #{$md-gray-100};
+  // --md-secondary-bg-color: #{$md-gray-100};
+  // --md-secondary-white-bg-color: #{$md-gray-95};
+  // --md-tertiary-bg-color: #{$md-gray-90};
+  // --md-tertiary-white-bg-color: #{$md-gray-90};
+  // --md-quaternary-bg-color: #{$md-gray-80};
 
   --md-primary-success-bg-color: #{$md-mint-70};
   --md-primary-success-text-color: #{$md-mint-20};

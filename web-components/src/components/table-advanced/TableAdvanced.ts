@@ -7,16 +7,22 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { nothing } from "lit-html";
+import Papa from "papaparse";
 
 export namespace TableAdvanced {
+  export type Data = string[][];
+
   export type Config = {
     isStickyHeader?: boolean;
     isInfiniteScroll?: boolean;
 
     cols: {
-      define: Col[];
+      define: (Col | ColGroup)[];
+      defineDefault?: Col;
       isResizable?: boolean;
       isDraggable?: boolean;
     };
@@ -35,21 +41,19 @@ export namespace TableAdvanced {
     head?: {
       caption?: string;
       summary?: string;
-      isSummaryVisible?: boolean;
     };
   };
 
-  type Col =
-    // | { parentName: string; children: Col[] }
-    {
-      id: string;
-      title: string;
-      sort?: boolean | SortComparator;
-      filters?: Filter[]; // ???
-      isHeader?: boolean; // highlight
-      isGroupedRows?: boolean;
-    };
+  type Col = {
+    id: string;
+    title: string;
+    sort?: boolean | SortComparator;
+    filters?: Filter[]; // ???
+    isHeader?: boolean; // highlight
+    isCollapsed?: boolean;
+  };
 
+  type ColGroup = { groupName: string; children: Col[] };
   type SortOrder = "ascending" | "descending";
   type SortComparator = (a: string, b: string, order: SortOrder) => number; // -number, 0, number
   type Filter = { name: string; func: () => void; funcValidate?: () => void };
@@ -57,91 +61,181 @@ export namespace TableAdvanced {
   @customElement("md-table-advanced")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) config!: Config;
-    @property({ attribute: false }) data!: string[][];
+    @property({ attribute: false }) data!: Data | string;
+
+    @internalProperty() error = "";
+
+    private COLS: Col[] = [];
+    private DATA: Data = [];
 
     connectedCallback() {
       super.connectedCallback();
+
+      this.config.cols.define.forEach(c => ("children" in c ? this.COLS.push(...c.children) : this.COLS.push(c)));
+      const lenCols = this.COLS.length;
+
+      if (typeof this.data == "string") {
+        const parse = Papa.parse(this.data, {
+          skipEmptyLines: true,
+          transform: x => x.trim()
+        });
+        if (parse.errors) {
+          this.error = "PARSE ERROR:\n" + JSON.stringify(parse.errors, null, 2);
+          return;
+        } else {
+          this.DATA = parse.data as any;
+        }
+      } else {
+        this.DATA = this.data;
+      }
+
+      if (this.DATA.length == 0) {
+        this.error = "DATA ERROR: Data is empty";
+        return;
+      }
+
+      const lenData = this.DATA.reduce((acc, d) => acc + d.length, 0);
+      if (lenData % lenCols != 0) {
+        this.error = "DATA ERROR: Dividing DATA by COLS is not zero";
+        return;
+      }
+
+      this.DATA.forEach((d, i) => {
+        const len = d.length;
+        if (len != lenCols) {
+          this.error = `DATA ERROR: Total number of cols (=${lenCols}) and data[${i}] length (=${len}) mismatch`;
+        }
+      });
+
+      // HACK
+      const dataMul = [];
+      for (let i = 0; i < 20; i++) {
+        dataMul.push(...this.DATA);
+      }
+      this.DATA = dataMul;
     }
 
     static get styles() {
       return [reset, styles];
     }
 
-    renderTable() {
-      return html`
-        <table>
-          <thead>
-            <tr>
-              ${this.config.cols.define.map(
-                col =>
-                  html`
-                    <th>${col.title}</th>
+    renderHead() {
+      const def = this.config.cols.define;
+
+      let groups = nothing;
+      const hasGroup = def.reduce((acc, col) => ("children" in col ? true : acc), false);
+      if (hasGroup) {
+        groups = html`
+          ${def.map(col => {
+            if ("children" in col) {
+              return html`
+                <colgroup span=${col.children.length}></colgroup>
+              `;
+            } else {
+              return html`
+                <col />
+              `;
+            }
+          })}
+          <tr>
+            ${def.map(col => {
+              if ("children" in col) {
+                return html`
+                  <th colspan=${col.children.length} scope="colgroup">${col.groupName}</th>
+                `;
+              } else {
+                return html`
+                  <!-- <th rowspan="2"></th> -->
+                  <th rowspan="2" scope="col">${col.title}</th>
+                `;
+              }
+            })}
+          </tr>
+        `;
+      }
+
+      const ths = html`
+        <tr>
+          ${def.map(col => {
+            if ("children" in col) {
+              return html`
+                ${col.children.map(
+                  c => html`
+                    <th scope="col">${c.title}</th>
                   `
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            ${this.data.map(
-              colDat => html`
-                <tr>
-                  ${colDat.map(
-                    rowData => html`
-                      <td>${rowData}</td>
-                    `
-                  )}
-                </tr>
-              `
-            )}
-          </tbody>
-        </table>
+                )}
+              `;
+            } else {
+              if (hasGroup) {
+                return nothing;
+              } else {
+                return html`
+                <th scope="col">${col.title}</th>
+              `;
+              }
+              
+            }
+          })}
+        </tr>
+      `;
+
+      return html`
+        <thead>
+          ${groups} ${ths}
+        </thead>
       `;
     }
 
+    renderBody() {
+      return html`
+        <tbody>
+          ${this.DATA.map(
+            colDat => html`
+              <tr>
+                ${colDat.map((rowData, i) => {
+                  const col = this.COLS[i];
+                  return col.isHeader
+                    ? html`
+                        <th scope="row">${rowData}</th>
+                      `
+                    : html`
+                        <td>${rowData}</td>
+                      `;
+                })}
+              </tr>
+            `
+          )}
+        </tbody>
+      `;
+    }
+
+    // Accessibility: https://www.w3.org/WAI/tutorials/tables/
+
     render() {
+      if (this.error)
+        return html`
+          <div>${this.error}</div>
+        `;
+
+      const { head } = this.config;
+
       return html`
         <div class="md-table-advanced">
-          ${this.renderTable()}
-          
+          <table summary=${ifDefined(head?.summary)}>
+            ${head?.caption
+              ? html`
+                  <caption>
+                    ${head?.caption}
+                  </caption>
+                `
+              : nothing}
 
-          <!-- Web Accessibility TABLE -->
-          <!-- https://www.w3.org/WAI/tutorials/tables/ -->
+            <!-- HEAD -->
+            ${this.renderHead()}
 
-          <table summary="if (head.isSummaryVisible == true) 'head.summary'">
-            <caption>Table caption:<br>
-              <span>Summary</span>
-            </caption>
-
-            <colgroup span="2"></colgroup>
-            <col>
-            <colgroup span="2"></colgroup>
-
-            <tr>
-              <th colspan="2" scope="colgroup">Mars</th>
-              <th rowspan="2"></th>
-              <th colspan="2" scope="colgroup">Venus</th>
-            </tr>
-            <tr>
-              <th scope="col">Produced</th>
-              <th scope="col">Sold</th>
-              <th scope="col">Produced</th>
-              <th scope="col">Sold</th>
-            </tr>
-            <tr>
-              <td>50,000</td>
-              <td>30,000</td>
-              <th scope="row">One</th>
-              <td>100,000</td>
-              <td>80,000</td>
-            </tr>
-            <tr>
-              <td>10,000</td>
-              <td>5,000</td>
-              <th scope="row">Two</th>
-              <td>12,000</td>
-              <td>9,000</td>
-            </tr>
+            <!-- BODY -->
+            ${this.renderBody()}
           </table>
-
         </div>
       `;
     }

@@ -10,23 +10,23 @@
   width: 100%;
 
   table {
-    border: 1px solid gray;
-    * {
-      border: 1px solid gray;
-    }
-
-    position: relative; /* required for the stickiness */
-
-    // thead tr:first-child th {
-    //   background: white;
-    //   position: sticky;
-    //   top: 0;
+    border: $table-main-border;
+    border-collapse: collapse;
+    position: relative;
+    width: 100%;
+    // * {
+    //   border: 1px solid gray;
     // }
 
-    th {
-      background: white;
+    thead tr th {
       position: sticky;
-      top: 0; /* Don't forget this, required for the stickiness */
+      top: 0;
+      background: #eee;
+    }
+    thead tr:last-child th {
+      position: sticky;
+      top: 31px;
+      background: #eee;
     }
   }
 }

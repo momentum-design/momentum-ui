@@ -14,19 +14,33 @@
     border-collapse: collapse;
     position: relative;
     width: 100%;
-    // * {
-    //   border: 1px solid gray;
-    // }
 
-    thead tr th {
-      position: sticky;
-      top: 0;
-      background: #eee;
+    th {
+      &.sortable {
+        background-color: silver;
+        cursor: pointer;
+
+        &.ascending::after {
+          content: " ▲";
+        }
+
+        &.descending::after {
+          content: " ▼";
+        }
+      }
     }
-    thead tr:last-child th {
-      position: sticky;
-      top: 31px;
-      background: #eee;
+
+    &.sticky-header {
+      thead tr th {
+        position: sticky;
+        top: 0;
+        background: #eee;
+      }
+      thead tr:last-child th {
+        position: sticky;
+        top: 27px;
+        background: #eee;
+      }
     }
   }
 }

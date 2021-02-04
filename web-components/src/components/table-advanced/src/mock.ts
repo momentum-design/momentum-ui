@@ -11,21 +11,27 @@ export namespace TableMock {
     }
   };
 
-  export const DATA: TableAdvanced.Data = [
-    ["data11", "data21", "data31"],
-    ["data12", "data22", "data32"],
-    ["data13", "data23", "data33"]
-  ];
+  export const DATA: TableAdvanced.Data = {
+    list2d: [
+      ["data11", "data21", "data31"],
+      ["data12", "data22", "data32"],
+      ["data13", "data23", "data33"]
+    ]
+  };
 
-  export const CSV = `data11, data21, data31
+  export const CSV: TableAdvanced.Data = {
+    csv: `data11, data21, data31
 data12, data22, data32
-data13, data23, data33`;
+data13, data23, data33`
+  };
 
   export const CSV_AGENTX =
     "Group, Action, Shortcut Key \n Active Task List, Switch between tasks, Ctrl + Alt + T \n Active Task List, Expand and collapse task list, Ctrl + Alt + C \n Agent State, Available for all channels including call chat email and social channel, Ctrl + Alt + R \n Active Agent State List, Idle for all channels, Ctrl + Alt + N \n Application, Switch between popovers, Ctrl + Alt + E \n Application, Maximize and minimize popover view maximize and minimize, Ctrl + Alt + Q \n Call Handling, Open the list of chat templates, Ctrl + Alt + A \n Call Handling, Attach a file to the chat, Ctrl + Alt + S \n Edit CAD Variables, Save edited call variable values, Ctrl + Alt + O \n Edit CAD Variables, Revert edited call variable values, Ctrl + Alt + N \n Email Handling, Send email, Ctrl + Alt + S \n Email Handling, Reply, Ctrl + Alt + O";
 
   export const COMPLEX: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
     config: {
+      isStickyHeader: true,
+
       head: {
         caption: "Caption",
         summary: "sumary text"
@@ -42,7 +48,7 @@ data13, data23, data33`;
             ]
           },
           { id: "col4", title: "col4 head", isHeader: true },
-          { id: "col5", title: "col5" },
+          { id: "col5", title: "col5", sort: "byString" },
           {
             groupName: "group2",
             children: [
@@ -53,10 +59,12 @@ data13, data23, data33`;
         ]
       }
     },
-    data: [
-      ["11", "12", "13", "14", "15", "16", "17"],
-      ["21", "22", "23", "24", "25", "26", "27"],
-      ["31", "32", "33", "34", "35", "36", "37"]
-    ]
+    data: {
+      list2d: [
+        ["11", "12", "13", "14", "15", "16", "17"],
+        ["21", "22", "23", "24", "25", "26", "27"],
+        ["31", "32", "33", "34", "35", "36", "37"]
+      ]
+    }
   };
 }

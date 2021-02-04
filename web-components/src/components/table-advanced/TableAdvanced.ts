@@ -10,12 +10,13 @@ import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { classMap } from "lit-html/directives/class-map";
 import { nothing } from "lit-html";
 import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
 export namespace TableAdvanced {
-  export type Data = string[][];
+  export type Data = { csv: string } | { list: string[] } | { list2d: string[][] };
 
   export type Config = {
     isStickyHeader?: boolean;
@@ -23,7 +24,6 @@ export namespace TableAdvanced {
 
     cols: {
       define: (Col | ColGroup)[];
-      defineDefault?: Col;
       isResizable?: boolean;
       isDraggable?: boolean;
     };
@@ -48,35 +48,51 @@ export namespace TableAdvanced {
   type Col = {
     id: string;
     title: string;
-    sort?: boolean | SortComparator;
+    sort?: "byString" | SortComparator;
     filters?: Filter[]; // ???
     isHeader?: boolean; // highlight
     isCollapsed?: boolean;
   };
 
+  type ColNode = { group?: { name: string; length: number }; sort: SortOrder; col: Col };
   type ColGroup = { groupName: string; children: Col[] };
-  type SortOrder = "ascending" | "descending";
+  type SortOrder = "default" | "ascending" | "descending";
   type SortComparator = (a: string, b: string, order: SortOrder) => number; // -number, 0, number
   type Filter = { name: string; func: () => void; funcValidate?: () => void };
 
   @customElementWithCheck("md-table-advanced")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) config!: Config;
-    @property({ attribute: false }) data!: Data | string;
+    @property({ attribute: false }) data!: Data;
 
     @internalProperty() error = "";
 
-    private COLS: Col[] = [];
-    private DATA: Data = [];
+    private NODES: ColNode[] = [];
+    private DATA: string[][] = [];
 
     connectedCallback() {
       super.connectedCallback();
 
-      this.config.cols.define.forEach(c => ("children" in c ? this.COLS.push(...c.children) : this.COLS.push(c)));
-      const lenCols = this.COLS.length;
+      // nodes
 
-      if (typeof this.data == "string") {
-        const parse = Papa.parse(this.data, {
+      const pushCol = (col: Col, group?: { name: string; length: number }) => {
+        this.NODES.push({ sort: "default", group, col: { ...col } });
+      };
+
+      this.config.cols.define.forEach(col => {
+        if ("children" in col) {
+          col.children.forEach(c => pushCol(c, { name: col.groupName, length: this.children.length }));
+        } else {
+          pushCol(col);
+        }
+      });
+
+      const lenNodes = this.NODES.length;
+
+      // data
+
+      if ("csv" in this.data) {
+        const parse = Papa.parse(this.data.csv, {
           skipEmptyLines: true,
           transform: x => x.trim()
         });
@@ -84,10 +100,17 @@ export namespace TableAdvanced {
           this.error = "PARSE ERROR:\n" + JSON.stringify(parse.errors, null, 2);
           return;
         } else {
-          this.DATA = parse.data as any;
+          this.DATA = parse.data as string[][];
         }
+      } else if ("list2d" in this.data) {
+        this.DATA = this.data.list2d;
       } else {
-        this.DATA = this.data;
+        while (this.data.list.length > lenNodes) {
+          this.DATA.push(this.data.list.splice(0, lenNodes))
+        }
+        if (this.data.list.length != 0) {
+          this.DATA.push(this.data.list);
+        }
       }
 
       if (this.DATA.length == 0) {
@@ -95,18 +118,29 @@ export namespace TableAdvanced {
         return;
       }
 
+      // validate
+
       const lenData = this.DATA.reduce((acc, d) => acc + d.length, 0);
-      if (lenData % lenCols != 0) {
+      if (lenData % lenNodes != 0) {
         this.error = "DATA ERROR: Dividing DATA by COLS is not zero";
         return;
       }
 
       this.DATA.forEach((d, i) => {
         const len = d.length;
-        if (len != lenCols) {
-          this.error = `DATA ERROR: Total number of cols (=${lenCols}) and data[${i}] length (=${len}) mismatch`;
+        if (len != lenNodes) {
+          this.error = `DATA ERROR: Total number of cols (=${lenNodes}) and data[${i}] length (=${len}) mismatch`;
         }
       });
+
+      if (this.config.sort) {
+        const col = this.NODES.find(c => c.col.id == this.config.sort!.colId);
+        if (col) {
+          this.sort(col, this.config.sort.order);
+        } else {
+          console.warn(`Cant find ${this.config.sort!.colId} col - for sorting`);
+        }
+      }
 
       // HACK
       const dataMul = [];
@@ -116,22 +150,29 @@ export namespace TableAdvanced {
       this.DATA = dataMul;
     }
 
-    static get styles() {
-      return [reset, styles];
+    sort(node: ColNode, order?: SortOrder) {
+      if (!node.col.sort) return;
+
+      console.log("SORT", node, order);
     }
 
-    renderHead() {
-      const def = this.config.cols.define;
+    // RENDER
+    // ----------------------------------
 
+    renderHead() {
       let groups = nothing;
-      const hasGroup = def.reduce((acc, col) => ("children" in col ? true : acc), false);
+      let hasGroup = this.NODES.reduce((acc, node) => (acc = node.group ? true : acc), false);
       if (hasGroup) {
+        let gName = "";
         groups = html`
-          ${def.map(col => {
-            if ("children" in col) {
-              return html`
-                <colgroup span=${col.children.length}></colgroup>
-              `;
+          ${this.NODES.map(c => {
+            if (c.group) {
+              if (gName != c.group.name) {
+                gName == c.group.name;
+                return html`
+                  <colgroup span=${c.group.length}></colgroup>
+                `;
+              }
             } else {
               return html`
                 <col />
@@ -139,42 +180,31 @@ export namespace TableAdvanced {
             }
           })}
           <tr>
-            ${def.map(col => {
-              if ("children" in col) {
-                return html`
-                  <th colspan=${col.children.length} scope="colgroup">${col.groupName}</th>
-                `;
+            ${this.NODES.map(node => {
+              if (node.group) {
+                if (gName != node.group.name) {
+                  gName == node.group.name;
+                  return html`
+                    <th colspan=${node.group.length} scope="colgroup">${node.group.name}</th>
+                  `;
+                }
               } else {
-                return html`
-                  <!-- <th rowspan="2"></th> -->
-                  <th rowspan="2" scope="col">${col.title}</th>
-                `;
+                return this.renderNode(node, 2);
               }
             })}
           </tr>
         `;
       }
 
-      const ths = html`
+      const heads = html`
         <tr>
-          ${def.map(col => {
-            if ("children" in col) {
-              return html`
-                ${col.children.map(
-                  c => html`
-                    <th scope="col">${c.title}</th>
-                  `
-                )}
-              `;
-            } else {
-              if (hasGroup) {
-                return nothing;
-              } else {
-                return html`
-                <th scope="col">${col.title}</th>
-              `;
+          ${this.NODES.map(node => {
+            if (hasGroup) {
+              if (node.group) {
+                return this.renderNode(node);
               }
-              
+            } else {
+              return this.renderNode(node);
             }
           })}
         </tr>
@@ -182,8 +212,29 @@ export namespace TableAdvanced {
 
       return html`
         <thead>
-          ${groups} ${ths}
+          ${groups} ${heads}
         </thead>
+      `;
+    }
+
+    renderNode(node: ColNode, rowspan?: number) {
+      let click = () => {};
+      if (node.sort) {
+        if (typeof node.sort == "function") {
+          click = () => this.sort(node);
+        } else {
+          click = () => this.sort(node);
+        }
+      }
+
+      const clazz = classMap({
+        sortable: !!node.col.sort,
+        ascending: node.sort == "ascending",
+        descending: node.sort == "descending"
+      });
+
+      return html`
+        <th rowspan=${ifDefined(rowspan)} scope="col" class=${clazz} @click=${click}>${node.col.title}</th>
       `;
     }
 
@@ -194,8 +245,8 @@ export namespace TableAdvanced {
             colDat => html`
               <tr>
                 ${colDat.map((rowData, i) => {
-                  const col = this.COLS[i];
-                  return col.isHeader
+                  const node = this.NODES[i];
+                  return node.col.isHeader
                     ? html`
                         <th scope="row">${rowData}</th>
                       `
@@ -219,10 +270,13 @@ export namespace TableAdvanced {
         `;
 
       const { head } = this.config;
+      const clazz = classMap({
+        "sticky-header": !!this.config.isStickyHeader
+      });
 
       return html`
         <div class="md-table-advanced">
-          <table summary=${ifDefined(head?.summary)}>
+          <table class=${clazz} summary=${ifDefined(head?.summary)}>
             ${head?.caption
               ? html`
                   <caption>
@@ -240,6 +294,12 @@ export namespace TableAdvanced {
         </div>
       `;
     }
+
+    static get styles() {
+      return [reset, styles];
+    }
+
+    // ---------------------
   }
 }
 

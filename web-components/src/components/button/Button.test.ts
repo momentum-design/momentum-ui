@@ -70,7 +70,7 @@ describe("Button", () => {
   });
 
   test("should have tab-index attribute if defined", async () => {
-    const element = await fixture<Button>(`<md-button tab-index="1"></md-button>`);
+    const element = await fixture<Button.ELEMENT>(`<md-button tab-index="1"></md-button>`);
     expect(element.getAttribute("tab-index")).toEqual("1");
 
     const button = element.shadowRoot!.querySelector("button");
@@ -79,20 +79,20 @@ describe("Button", () => {
   });
 
   test("should have tab-index of -1 if disabled", async () => {
-    const element = await fixture<Button>(`<md-button tab-index="1" disabled></md-button>`);
+    const element = await fixture<Button.ELEMENT>(`<md-button tab-index="1" disabled></md-button>`);
     const button = element.shadowRoot!.querySelector("button");
     expect(button!.getAttribute("tabindex")).toContain("-1");
     expect(element.disabled).toBeTruthy();
   });
   test("should handle disabled state", async () => {
-    const element = await fixture<Button>(`<md-button disabled></md-button>`);
+    const element = await fixture<Button.ELEMENT>(`<md-button disabled></md-button>`);
     expect(element.disabled).toEqual(true);
   });
 
   test("should set width successfulyl", async () => {
     const customWidth = "260px";
     expect.hasAssertions();
-    const element = await fixture<Button>(
+    const element = await fixture<Button.ELEMENT>(
       html`
         <md-button width=${customWidth}></md-button>
       `
@@ -107,7 +107,7 @@ describe("Button", () => {
   test("should set maxWidth successfulyl", async () => {
     const customMaxWidth = "100px";
     expect.hasAssertions();
-    const element = await fixture<Button>(
+    const element = await fixture<Button.ELEMENT>(
       html`
         <md-button maxWidth=${customMaxWidth}></md-button>
       `
@@ -125,7 +125,7 @@ describe("Button", () => {
       jest.restoreAllMocks();
     });
     test(`for ${tag}`, async () => {
-      const element = await fixture<Button>(
+      const element = await fixture<Button.ELEMENT>(
         html`
           <md-button .tag=${tag as Button.Tag}></md-button>
         `
@@ -157,8 +157,8 @@ describe("Button", () => {
   });
 
   test("should handle click event", async () => {
-    jest.spyOn(Button.prototype, "blur");
-    const element = await fixture<Button>(`<md-button label="Button Component"></md-button>`);
+    jest.spyOn(Button.ELEMENT.prototype, "blur");
+    const element = await fixture<Button.ELEMENT>(`<md-button label="Button Component"></md-button>`);
     const evt = new MouseEvent("click");
     setTimeout(() => element.handleClick(evt));
     const { detail } = await oneEvent(element, "button-click");
@@ -170,7 +170,7 @@ describe("Button", () => {
     let count = 0;
     const clickFunction = () => count++;
     test("should apply clickable class when onClick prop is defined", async () => {
-      const el = await fixture<Button>(
+      const el = await fixture<Button.ELEMENT>(
         html`
           <md-button .clickFunction=${clickFunction}></md-button>
         `
@@ -186,7 +186,7 @@ describe("Button", () => {
         return;
       });
 
-      const el = await fixture<Button>(
+      const el = await fixture<Button.ELEMENT>(
         html`
           <md-button title="Test Group" disabled .clickFunction=${clickFunc}></md-button>
         `
@@ -205,7 +205,7 @@ describe("Button", () => {
   });
 
   test("should handle keydown event", async () => {
-    const element = await fixture<Button>(`<md-button label="Button Component"></md-button>`);
+    const element = await fixture<Button.ELEMENT>(`<md-button label="Button Component"></md-button>`);
     const evt = new KeyboardEvent("keydown", {
       code: Key.Enter
     });
@@ -247,7 +247,7 @@ describe("Button", () => {
     });
   });
   test.each(["button", "input", "a"])("should apply correct status for aria-* attrubute", async (tag: string) => {
-    const element = await fixture<Button>(
+    const element = await fixture<Button.ELEMENT>(
       html`
         <md-button
           .tag=${tag as Button.Tag}

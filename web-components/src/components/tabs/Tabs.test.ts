@@ -32,8 +32,8 @@ class MockObserver {
 });
 
 describe("Tabs", () => {
-  let tabs: Tabs;
-  let panels: TabPanel[];
+  let tabs: Tabs.ELEMENT;
+  let panels: TabPanel.ELEMENT[];
 
   beforeEach(async () => {
     const root = await fixture<HTMLDivElement>(html`
@@ -61,16 +61,16 @@ describe("Tabs", () => {
       </div>
     `);
 
-    tabs = root.querySelector("md-tabs") as Tabs;
+    tabs = root.querySelector("md-tabs") as Tabs.ELEMENT;
 
-    panels = Array.from(tabs.querySelectorAll("md-tab-panel")) as TabPanel[];
+    panels = Array.from(tabs.querySelectorAll("md-tab-panel")) as TabPanel.ELEMENT[];
   });
 
   afterEach(fixtureCleanup);
 
   test("should (un)register event listeners", async () => {
     const tag = defineCE(
-      class extends Tabs {
+      class extends Tabs.ELEMENT {
         protected firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
           this.dispatchEvent(new CustomEvent("first-updated"));
@@ -81,7 +81,7 @@ describe("Tabs", () => {
         }
       }
     );
-    const el = fixtureSync<Tabs>(`<${tag}></${tag}>`);
+    const el = fixtureSync<Tabs.ELEMENT>(`<${tag}></${tag}>`);
     const firstUpdatedEvent = await oneEvent(el, "first-updated");
     expect(firstUpdatedEvent).toBeDefined();
 
@@ -134,7 +134,7 @@ describe("Tabs", () => {
   });
 
   test("should add `disabled` attribute to panel when corresponding tab is disabled", () => {
-    const panel = tabs.querySelector("[slot='panel']") as TabPanel;
+    const panel = tabs.querySelector("[slot='panel']") as TabPanel.ELEMENT;
     expect(panel.hasAttribute("disabled"));
   });
 
@@ -236,7 +236,7 @@ describe("Tabs", () => {
   test("should dispatch click event to outside when active tab index change", async () => {
     const clickEvent = new MouseEvent("mousedown");
 
-    setTimeout(() => (tabs.slotted[2] as Tab).handleClick(clickEvent));
+    setTimeout(() => (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent));
 
     const { detail } = await oneEvent(tabs, "selected-changed");
 
@@ -251,7 +251,7 @@ describe("Tabs", () => {
     await elementUpdated(tabs);
 
     const toggleSpy = jest.spyOn(HTMLElement.prototype, "toggleAttribute");
-    (tabs.slotted[2] as Tab).handleClick(clickEvent);
+    (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
 
     expect(toggleSpy).not.toBeCalledTimes(2);
     toggleSpy.mockRestore();
@@ -265,7 +265,7 @@ describe("Tabs", () => {
     await elementUpdated(tabs);
 
     const toggleSpy = jest.spyOn(HTMLElement.prototype, "toggleAttribute");
-    (tabs.slotted[2] as Tab).handleKeyDown(keyDownEvent);
+    (tabs.slotted[2] as Tab.ELEMENT).handleKeyDown(keyDownEvent);
 
     expect(toggleSpy).not.toBeCalledTimes(2);
     toggleSpy.mockRestore();
@@ -281,7 +281,7 @@ describe("Tabs", () => {
   });
 
   test("should convert ids", () => {
-    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(0);
+    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab.ELEMENT).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(0);
     expect(
       tabs["getNormalizedTabId"](`${MORE_MENU_TAB_COPY_ID_PREFIX}TEST`).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)
     ).toBe(-1);
@@ -299,7 +299,7 @@ describe("Tabs", () => {
 
     tabs["tabs"] = tabs["tabs"].map(t => ({
       offsetWidth: 160
-    })) as Tab[];
+    })) as Tab.ELEMENT[];
 
     tabs["manageOverflow"]();
 
@@ -307,7 +307,7 @@ describe("Tabs", () => {
   });
 
   test("should be able make tab focus", () => {
-    const firstTab = tabs.slotted[0] as Tab;
+    const firstTab = tabs.slotted[0] as Tab.ELEMENT;
     expect(firstTab.getAttribute("focus-visible")).toBeNull();
     tabs["makeTabCopyFocus"](firstTab);
     expect(firstTab.getAttribute("focus-visible")).toBe("");
@@ -317,13 +317,13 @@ describe("Tabs", () => {
     tabs["tabsFilteredAsHiddenList"] = [
       { selected: false, id: "1" },
       { selected: true, id: "2" }
-    ] as Tab[];
+    ] as Tab.ELEMENT[];
     tabs["updateIsMoreTabMenuSelected"]();
     expect(tabs["isMoreTabMenuSelected"]).toBeTruthy();
   });
 
   test("should update hidden id for positive tab index", () => {
-    const t = { id: "TEST" } as Tab;
+    const t = { id: "TEST" } as Tab.ELEMENT;
     tabs["updateHiddenIdPositiveTabIndex"](t);
     expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });

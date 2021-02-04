@@ -4,10 +4,10 @@ import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helper
 import { html } from "lit-element";
 
 describe("Toggle Switch Component", () => {
-  let element: ToggleSwitch;
+  let element: ToggleSwitch.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<ToggleSwitch>(
+    element = await fixture<ToggleSwitch.ELEMENT>(
       html`
         <md-toggle-switch></md-toggle-switch>
       `

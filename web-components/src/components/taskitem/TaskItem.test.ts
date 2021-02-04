@@ -11,7 +11,7 @@ const fixtureFactory = async (
   quantity: number,
   lastmessage: string,
   selected: boolean
-): Promise<TaskItem> => {
+): Promise<TaskItem.ELEMENT> => {
   return await fixture(
     html`
       <md-task-item
@@ -33,7 +33,7 @@ describe("TaskItem", () => {
   afterEach(fixtureCleanup);
 
   test("should render TaskItem Component", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "telephony",
       "Mihael Varificantare",
       "quelle_1",
@@ -50,7 +50,7 @@ describe("TaskItem", () => {
   });
 
   test("should render TaskItem Component", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "facebook",
       "Mihael Varificantare",
       "quelle_1",
@@ -64,7 +64,7 @@ describe("TaskItem", () => {
   });
 
   test("should render TaskItem Component", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "whatsApp",
       "Mihael Varificantare",
       "quelle_1",
@@ -78,7 +78,7 @@ describe("TaskItem", () => {
   });
 
   test("should render correct type and status", async () => {
-    const element: TaskItem = await fixtureFactory("chat", "Mihael Varificantare", "quelle_1", "play", 0, "", false);
+    const element: TaskItem.ELEMENT = await fixtureFactory("chat", "Mihael Varificantare", "quelle_1", "play", 0, "", false);
 
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
@@ -87,7 +87,7 @@ describe("TaskItem", () => {
   });
 
   test("should upadte type and status", async () => {
-    const element: TaskItem = await fixtureFactory("email", "Mihael Varificantare", "quelle_1", "hold", 0, "", true);
+    const element: TaskItem.ELEMENT = await fixtureFactory("email", "Mihael Varificantare", "quelle_1", "hold", 0, "", true);
 
     expect(element.selected).toBeTruthy;
     const type = element.shadowRoot?.querySelector("md-icon");
@@ -97,7 +97,7 @@ describe("TaskItem", () => {
   });
 
   test("should upadte type and status", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "sms",
       "Mihael Varificantare",
       "quelle_1",
@@ -114,7 +114,7 @@ describe("TaskItem", () => {
   });
 
   test("should upadte type and status", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
       "quelle_1",
@@ -131,7 +131,7 @@ describe("TaskItem", () => {
   });
 
   test("should upadte type and status", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
       "quelle_1",
@@ -151,7 +151,7 @@ describe("TaskItem", () => {
   });
 
   test("should upadte type and status", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
       "quelle_1",
@@ -170,7 +170,7 @@ describe("TaskItem", () => {
   });
 
   test("should upadte type and status", async () => {
-    const element: TaskItem = await fixtureFactory(
+    const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
       "quelle_1",

@@ -4,7 +4,7 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import "./Chip";
 import { Chip } from "./Chip";
 
-const fixtureFactory = async (): Promise<Chip> => {
+const fixtureFactory = async (): Promise<Chip.ELEMENT> => {
   return await fixture(html`
     <md-chip value="chip text content"></md-chip>
   `);
@@ -17,7 +17,7 @@ describe("Chip component", () => {
 
   // color
   test("should set chip color", async () => {
-    const component: Chip = await fixture(
+    const component: Chip.ELEMENT = await fixture(
       html`
         <md-chip color="blue"></md-chip>
       `
@@ -27,7 +27,7 @@ describe("Chip component", () => {
 
   // small
   test("should set chip to small size", async () => {
-    const component: Chip = await fixture(
+    const component: Chip.ELEMENT = await fixture(
       html`
         <md-chip small></md-chip>
       `
@@ -37,7 +37,7 @@ describe("Chip component", () => {
 
   // custom bgColor chip
   test("should set user bgColor chip", async () => {
-    const component: Chip = await fixture(
+    const component: Chip.ELEMENT = await fixture(
       html`
         <md-chip bgColor="#000"></md-chip>
       `
@@ -46,7 +46,7 @@ describe("Chip component", () => {
   });
   // custom size chip
   test("should set user width", async () => {
-    const component: Chip = await fixture(
+    const component: Chip.ELEMENT = await fixture(
       html`
         <md-chip height="100px"></md-chip>
       `
@@ -55,7 +55,7 @@ describe("Chip component", () => {
   });
   // custom textColor chip
   test("should set user textColor", async () => {
-    const component: Chip = await fixture(
+    const component: Chip.ELEMENT = await fixture(
       html`
         <md-chip textColor="#000"></md-chip>
       `
@@ -64,32 +64,32 @@ describe("Chip component", () => {
   });
 
   test("should truncate long text from value attribute", async () => {
-    const component: Chip = await fixture(html`
+    const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content that is way tooooooo long"></md-chip>
     `);
     expect(component.truncStringPortion).toHaveBeenCalled;
   });
   test("should render determinate progress bar", async () => {
-    const component: Chip = await fixture(html`
+    const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" determinateProgress="50"></md-chip>
     `);
     expect(component.shadowRoot?.querySelector("md-progress-bar")).not.toBeNull;
   });
   test("should render indeterminate progress bar", async () => {
-    const component: Chip = await fixture(html`
+    const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" indeterminateProgress></md-chip>
     `);
     expect(component.shadowRoot?.querySelector("md-progress-bar")).not.toBeNull;
   });
   test("should render an icon when icon attribute is used", async () => {
-    const component: Chip = await fixture(html`
+    const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" icon="icon-alert_16"></md-chip>
     `);
     expect(component.shadowRoot?.querySelector("md-icon")).not.toBeNull;
   });
 
   test("should set disabled state", async () => {
-    const component: Chip = await fixture(html`
+    const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content" disabled icon="icon-alert_16"></md-chip>
     `);
     expect(component.disabled).toBeTruthy();

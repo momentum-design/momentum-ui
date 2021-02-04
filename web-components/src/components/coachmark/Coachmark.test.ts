@@ -4,7 +4,7 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import "./Coachmark";
 import { Coachmark } from "./Coachmark";
 
-const fixtureFactory = async (): Promise<Coachmark> => {
+const fixtureFactory = async (): Promise<Coachmark.ELEMENT> => {
   return await fixture(html`
     <md-coachmark>
       <div slot="coachmark-content">

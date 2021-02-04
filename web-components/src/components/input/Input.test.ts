@@ -15,7 +15,7 @@ describe("Input Component", () => {
   });
 
   test("setting helpText property should render helpText component", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12" helpText="Help Text for Input"></md-input>`
     );
     expect(element.helpText).toMatch("Help Text for Input");
@@ -26,7 +26,7 @@ describe("Input Component", () => {
   });
 
   test("should render nothing if helpText property is not setted", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12"></md-input>`
     );
 
@@ -35,7 +35,7 @@ describe("Input Component", () => {
   });
 
   test("setting label property should render Label component", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12"></md-input>`
     );
 
@@ -47,11 +47,11 @@ describe("Input Component", () => {
   });
 
   test("should handle label click event", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12" secondaryLabel="Secondary Label"></md-input>`
     );
 
-    const spyLabelHandler = jest.spyOn(Input.prototype, "handleLabelClick");
+    const spyLabelHandler = jest.spyOn(Input.ELEMENT.prototype, "handleLabelClick");
     const labelElement = element.shadowRoot!.querySelector("md-label");
     const event = new MouseEvent("click");
     labelElement!.handleClick(event);
@@ -61,11 +61,11 @@ describe("Input Component", () => {
   });
 
   test("should shifts focus away from the input", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12" secondaryLabel="Secondary Label"></md-input>`
     );
 
-    const spyOutsideHandler = jest.spyOn(Input.prototype, "handleOutsideClick");
+    const spyOutsideHandler = jest.spyOn(Input.ELEMENT.prototype, "handleOutsideClick");
 
     const label = element.shadowRoot!.querySelector("md-label");
     const labelElement = label!.shadowRoot!.querySelector("label");
@@ -80,8 +80,8 @@ describe("Input Component", () => {
   });
 
   test("should handle keyDown event", async () => {
-    const element = await fixture<Input>(`<md-input label="Default" containerSize="small-12"></md-input>`);
-    const spyKeyDownHandler = jest.spyOn(Input.prototype, "handleKeyDown");
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyKeyDownHandler = jest.spyOn(Input.ELEMENT.prototype, "handleKeyDown");
 
     const event = new KeyboardEvent("keydown");
 
@@ -96,8 +96,8 @@ describe("Input Component", () => {
   });
 
   test("should handle focus event", async () => {
-    const element = await fixture<Input>(`<md-input label="Default" containerSize="small-12"></md-input>`);
-    const spyFocusHandler = jest.spyOn(Input.prototype, "handleFocus");
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyFocusHandler = jest.spyOn(Input.ELEMENT.prototype, "handleFocus");
 
     const event = new FocusEvent("focus");
 
@@ -112,8 +112,8 @@ describe("Input Component", () => {
   });
 
   test("should handle mouseDown event", async () => {
-    const element = await fixture<Input>(`<md-input label="Default" containerSize="small-12"></md-input>`);
-    const spyMouseDownHandler = jest.spyOn(Input.prototype, "handleMouseDown");
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyMouseDownHandler = jest.spyOn(Input.ELEMENT.prototype, "handleMouseDown");
 
     const event = new MouseEvent("mousedown");
 
@@ -128,7 +128,7 @@ describe("Input Component", () => {
   });
 
   test("should handle input event", async () => {
-    const element = await fixture<Input>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
 
     const mockInputHandler = jest.fn().mockImplementation((event: Event) => {
       event.stopPropagation();
@@ -158,8 +158,8 @@ describe("Input Component", () => {
   });
 
   test("should handle blur event", async () => {
-    const element = await fixture<Input>(`<md-input label="Default" containerSize="small-12"></md-input>`);
-    const spyBlurHandler = jest.spyOn(Input.prototype, "handleBlur");
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyBlurHandler = jest.spyOn(Input.ELEMENT.prototype, "handleBlur");
 
     const event = new FocusEvent("blur");
 
@@ -213,20 +213,20 @@ describe("Input Component", () => {
   // });
 
   test("should render nothing if no label provided", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       ` <md-input value="text" containerSize="small-12" placeholder="Enter Text" clear></md-input>`
     );
     expect(element.shadowRoot!.querySelector("md-label")).toBeNull();
   });
   test("should render search icon if searchable", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       ` <md-input value="text" containerSize="small-12" placeholder="Enter Text" searchable></md-input>`
     );
 
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toMatch(/^search?_\w+/);
   });
   test("should render icon if provided in slot", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       `<md-input label="Aux Content" htmlId="inputLeft" containerSize="small-12" placeholder="Enter Text" auxiliaryContentPosition="before">
         <md-icon name="email-active_16"></md-icon>
       </md-input>`
@@ -236,7 +236,7 @@ describe("Input Component", () => {
   });
 
   test("should render input-section slot on right side", async () => {
-    await fixture<Input>(`
+    await fixture<Input.ELEMENT>(`
       <md-input label="Right Icon" containerSize="small-12" placeholder="Enter Text">
         <md-icon slot="input-section-right" name="accessibility_16"></md-icon>
       </md-input>`);
@@ -248,7 +248,7 @@ describe("Input Component", () => {
   });
 
   test("should not render clear button if input disabled", async () => {
-    const element = await fixture<Input>(
+    const element = await fixture<Input.ELEMENT>(
       ` <md-input label="Clear" value="text" containerSize="small-12" placeholder="Enter Text" clear disabled></md-input>`
     );
 
@@ -263,9 +263,9 @@ describe("Input Component", () => {
       type: "success"
     };
 
-    const messagesSpy = jest.spyOn(Input.prototype, "messages", "get");
+    const messagesSpy = jest.spyOn(Input.ELEMENT.prototype, "messages", "get");
 
-    await fixture<Input>(
+    await fixture<Input.ELEMENT>(
       html`
         <md-input
           label="Warning"
@@ -289,9 +289,9 @@ describe("Input Component", () => {
       type: "error"
     };
 
-    const messagesSpy = jest.spyOn(Input.prototype, "messages", "get");
+    const messagesSpy = jest.spyOn(Input.ELEMENT.prototype, "messages", "get");
 
-    await fixture<Input>(
+    await fixture<Input.ELEMENT>(
       html`
         <md-input
           label="Error"
@@ -310,7 +310,7 @@ describe("Input Component", () => {
   });
 
   test("should render multiline", async () => {
-    const element = await fixture<Input>(`<md-input label="Multiline" containerSize="small-12" multiline></md-input>`);
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Multiline" containerSize="small-12" multiline></md-input>`);
 
     expect(element.multiline).toBeTruthy();
   });

@@ -6,22 +6,22 @@ import { PropertyValues } from "lit-element";
 describe("Radio", () => {
   afterEach(fixtureCleanup);
   test("should set label attribute", async () => {
-    const element = await fixture<Radio>(`<md-radio value="linting">Linting</md-radio>`);
+    const element = await fixture<Radio.ELEMENT>(`<md-radio value="linting">Linting</md-radio>`);
     expect(element.value).toEqual("linting");
   });
   test("should set tabindex attribute", async () => {
-    const element = await fixture<Radio>(`<md-radio>Linting</md-radio>`);
+    const element = await fixture<Radio.ELEMENT>(`<md-radio>Linting</md-radio>`);
     expect(element.getAttribute("tabindex")).toEqual("-1");
   });
   test("should add correct aria attribute", async () => {
-    const element = await fixture<Radio>(`<md-radio disabled>Linting</md-radio>`);
+    const element = await fixture<Radio.ELEMENT>(`<md-radio disabled>Linting</md-radio>`);
     expect(element.disabled).toBeTruthy();
     expect(element.getAttribute("aria-disabled")).toEqual("true");
     expect(element.getAttribute("role")).toEqual("radio");
   });
 
   test("should change tabindex when disabled attribute is set", async () => {
-    const element = await fixture<Radio>(`<md-radio disabled>Linting</md-radio>`);
+    const element = await fixture<Radio.ELEMENT>(`<md-radio disabled>Linting</md-radio>`);
 
     expect(element.tabIndex).toEqual(-1);
     expect(element.getAttribute("tabindex")).toEqual("-1");
@@ -34,7 +34,7 @@ describe("Radio", () => {
   });
 
   test("should handle checked attribute", async () => {
-    const element = await fixture<Radio>(`<md-radio>Linting</md-radio>`);
+    const element = await fixture<Radio.ELEMENT>(`<md-radio>Linting</md-radio>`);
     element.checked = false;
     await elementUpdated(element);
     expect(element.getAttribute("aria-checked")).toEqual("false");
@@ -46,7 +46,7 @@ describe("Radio", () => {
 
   test("handle firstUpdated lifecycle hook", async () => {
     const tag = defineCE(
-      class extends Radio {
+      class extends Radio.ELEMENT {
         protected firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
           this.dispatchEvent(new CustomEvent("first-updated"));

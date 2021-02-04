@@ -7,7 +7,7 @@ describe("DatePickerCalendar Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePickerCalendar = await fixture(
+    const el: DatePickerCalendar.ELEMENT = await fixture(
       html`
         <md-datepicker-calendar></md-datepicker-calendar>
       `
@@ -33,7 +33,7 @@ describe("DatePickerCalendar Component", () => {
   //   expect(el.selected).toEqual(secondDate);
   // });
   test("should update view anchor date when changing months", async () => {
-    const el: DatePickerCalendar = await fixture(
+    const el: DatePickerCalendar.ELEMENT = await fixture(
       html`
         <md-datepicker-calendar></md-datepicker-calendar>
       `

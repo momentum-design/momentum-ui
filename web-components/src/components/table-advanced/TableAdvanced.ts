@@ -7,11 +7,12 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
 import Papa from "papaparse";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
 export namespace TableAdvanced {
   export type Data = string[][];
@@ -58,7 +59,7 @@ export namespace TableAdvanced {
   type SortComparator = (a: string, b: string, order: SortOrder) => number; // -number, 0, number
   type Filter = { name: string; func: () => void; funcValidate?: () => void };
 
-  @customElement("md-table-advanced")
+  @customElementWithCheck("md-table-advanced")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) config!: Config;
     @property({ attribute: false }) data!: Data | string;

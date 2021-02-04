@@ -9,8 +9,8 @@ const fixtureFactory = async (
   message: string,
   closable: boolean,
   show: boolean
-): Promise<AlertBanner> => {
-  return await fixture<AlertBanner>(html`
+): Promise<AlertBanner.ELEMENT> => {
+  return await fixture<AlertBanner.ELEMENT>(html`
     <md-alert-banner type=${type} message=${message} ?closable=${closable} ?show=${show}
       ><p>Test Alert Message</p></md-alert-banner
     >

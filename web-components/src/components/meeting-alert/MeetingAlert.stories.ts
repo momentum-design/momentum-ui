@@ -6,11 +6,12 @@
  *
  */
 
-import { array, boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/meeting-alert/MeetingAlert";
+import { MeetingAlertRole } from "@/components/meeting-alert/MeetingAlert";
 import "@/components/theme/Theme";
 
 export default {
@@ -51,7 +52,7 @@ export const MeetingAlert = () => {
   const src = text("Src", "https://api.adorable.io/avatars/285/abott@adorable.png");
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
-  const role = text("Role", "alert");
+  const role = select ("Role", MeetingAlertRole, "alert");
   const userStyles = text("UserStyles", " ");
   const withAttendees = boolean("With Attendees", false);
 
@@ -62,7 +63,7 @@ export const MeetingAlert = () => {
       <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-meeting-alert
           show
-          .attendees=${attendees}
+          .attendees=${attendees as any}
           status="Queue_Demo7"
           title="Jane Doe"
           src=${MEETING_ALERT_SRC}

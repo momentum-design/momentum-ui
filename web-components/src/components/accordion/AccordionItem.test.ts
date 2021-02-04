@@ -5,8 +5,8 @@ import "./AccordionItem";
 import { AccordionItem } from "./AccordionItem";
 
 describe("AccordionItem", () => {
-  let accordion: Accordion;
-  let accordionItems: AccordionItem[];
+  let accordion: Accordion.ELEMENT;
+  let accordionItems: AccordionItem.ELEMENT[];
 
   beforeEach(async () => {
     accordion = await fixture(html`
@@ -28,7 +28,7 @@ describe("AccordionItem", () => {
         </md-accordion-item>
       </md-accordion>
     `);
-    accordionItems = accordion.slotted as AccordionItem[];
+    accordionItems = accordion.slotted as AccordionItem.ELEMENT[];
   });
   afterEach(fixtureCleanup);
 

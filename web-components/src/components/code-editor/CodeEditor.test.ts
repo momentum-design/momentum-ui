@@ -2,7 +2,8 @@ import "./CodeEditor";
 import { CodeEditor } from "./CodeEditor";
 import { fixture, fixtureCleanup, elementUpdated } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
-import { Button } from "@/components/button/Button";
+import { Button } from "@/index";
+// import { Button } from "@/components/button/Button";
 
 describe("CodeEditor component", () => {
   let element: CodeEditor;
@@ -35,7 +36,7 @@ describe("CodeEditor component", () => {
   test("should copy to clipboard", async () => {
     await elementUpdated(element);
 
-    const mdButton = element.shadowRoot!.querySelector(".md-code-editor-copy-btn") as Button;
+    const mdButton = element.shadowRoot!.querySelector(".md-code-editor-copy-btn") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");
 
     document.execCommand = jest.fn();

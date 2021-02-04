@@ -7,11 +7,11 @@ import { html } from "lit-element";
 describe("Breadcrumb component", () => {
   afterEach(fixtureCleanup);
 
-  let element: Breadcrumb;
+  let element: Breadcrumb.ELEMENT;
   let anchors: HTMLAnchorElement[];
 
   beforeEach(async () => {
-    element = await fixture<Breadcrumb>(
+    element = await fixture<Breadcrumb.ELEMENT>(
       html`
         <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
       `

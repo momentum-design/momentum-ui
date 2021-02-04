@@ -13,7 +13,7 @@ describe("TextHelper component", () => {
   });
 
   test("should create message help text", async () => {
-    const element = await fixture<HelpText>(`<md-help-text message="test message"></md-help-text>`);
+    const element = await fixture<HelpText.ELEMENT>(`<md-help-text message="test message"></md-help-text>`);
     expect(element.message).toMatch("test message");
     expect(element.getAttribute("message")).toMatch("test message");
   });

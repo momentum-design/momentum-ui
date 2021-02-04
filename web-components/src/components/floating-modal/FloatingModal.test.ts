@@ -17,10 +17,10 @@ Object.defineProperties(Element.prototype, {
 });
 
 describe("Floating Modal Component", () => {
-  let element: FloatingModal;
+  let element: FloatingModal.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<FloatingModal>(
+    element = await fixture<FloatingModal.ELEMENT>(
       html`
         <md-floating-modal></md-floating-modal>
       `
@@ -50,7 +50,7 @@ describe("Floating Modal Component", () => {
     await nextFrame();
     await elementUpdated(element);
 
-    const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button;
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");
     button!.click();
 
@@ -77,7 +77,7 @@ describe("Floating Modal Component", () => {
     await nextFrame();
     await elementUpdated(element);
 
-    const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button;
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");
     button!.click();
 

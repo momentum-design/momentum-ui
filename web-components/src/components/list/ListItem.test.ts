@@ -6,18 +6,18 @@ import { PropertyValues } from "lit-element";
 describe("ListItem", () => {
   afterEach(fixtureCleanup);
   test("should set tabindex attribute", async () => {
-    const element = await fixture<ListItem>(`<md-list-item>Neptunium</md-list-item>`);
+    const element = await fixture<ListItem.ELEMENT>(`<md-list-item>Neptunium</md-list-item>`);
     expect(element.getAttribute("tabindex")).toEqual("-1");
   });
   test("should add correct aria attribute", async () => {
-    const element = await fixture<ListItem>(`<md-list-item disabled>Neptunium</md-list-item>`);
+    const element = await fixture<ListItem.ELEMENT>(`<md-list-item disabled>Neptunium</md-list-item>`);
     expect(element.disabled).toBeTruthy();
     expect(element.getAttribute("aria-disabled")).toEqual("true");
     expect(element.getAttribute("role")).toEqual("listitem");
   });
 
   test("should change tabindex when disabled attribute is set", async () => {
-    const element = await fixture<ListItem>(`<md-list-item disabled>Neptunium</md-list-item>`);
+    const element = await fixture<ListItem.ELEMENT>(`<md-list-item disabled>Neptunium</md-list-item>`);
 
     expect(element.tabIndex).toEqual(-1);
     expect(element.getAttribute("tabindex")).toEqual("-1");
@@ -31,7 +31,7 @@ describe("ListItem", () => {
 
   test("handle firstUpdated lifecycle hook", async () => {
     const tag = defineCE(
-      class extends ListItem {
+      class extends ListItem.ELEMENT {
         protected firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
           this.dispatchEvent(new CustomEvent("first-updated"));

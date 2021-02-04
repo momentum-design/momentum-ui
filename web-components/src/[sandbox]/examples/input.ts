@@ -11,7 +11,7 @@ function copyText(event: MouseEvent) {
   const target = event.composedPath()[0] as Element;
   const targetRoot = target.getRootNode() as ShadowRoot;
   const targetHost = targetRoot.host;
-  const input = targetHost.previousSibling as Input;
+  const input = targetHost.previousSibling as Input.ELEMENT;
   input!.select();
 }
 

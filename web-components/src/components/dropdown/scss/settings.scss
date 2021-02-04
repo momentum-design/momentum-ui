@@ -1,0 +1,14 @@
+$dropdown-main-indent: rem-calc(4);
+$dropdown-border: 1px solid var(--combobox-border-color, $lm-dropdown-border-color-light);
+$dropdown-min-height: rem-calc(32);
+
+$dropdown-label-radius: var(--combobox-group-radius, $lm-dropdown-label-radius-light);
+$dropdown-label-padding: 0 rem-calc(12);
+$dropdown-icon-height: rem-calc(28);
+
+$dropdown-list-radius: rem-calc(8);
+$dropdown-list-shadow: 0 4px 8px $black-16, 0 0 1px $black-16;
+
+$dropdown-option-padding: rem-calc(7) rem-calc(12) rem-calc(8);
+$dropdown-option-select-size: rem-calc(20);
+$dropdown-option-select-margin: rem-calc(16);

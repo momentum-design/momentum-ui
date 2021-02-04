@@ -8,5 +8,9 @@
 
 @import "@/wc_scss/typography/settings";
 
+@import "./vars/lm-dropdown-settings";
+
 // Component Specific
+@import "./mixins";
+@import "./settings";
 @import "./dropdown";

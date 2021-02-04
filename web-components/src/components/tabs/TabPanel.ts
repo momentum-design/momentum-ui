@@ -8,32 +8,35 @@
 
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues } from "lit-element";
 import styles from "./scss/module.scss";
 
-@customElement("md-tab-panel")
-export class TabPanel extends FocusMixin(LitElement) {
-  @property({ type: Boolean, reflect: true }) selected = false;
+export namespace TabPanel {
+  @customElementWithCheck("md-tab-panel")
+  export class ELEMENT extends FocusMixin(LitElement) {
+    @property({ type: Boolean, reflect: true }) selected = false;
 
-  static get styles() {
-    return [reset, styles];
-  }
+    static get styles() {
+      return [reset, styles];
+    }
 
-  protected firstUpdated(changedProperties: PropertyValues) {
-    super.firstUpdated(changedProperties);
-    this.setAttribute("role", "tabpanel");
-    this.setAttribute("tabindex", "0");
-  }
+    protected firstUpdated(changedProperties: PropertyValues) {
+      super.firstUpdated(changedProperties);
+      this.setAttribute("role", "tabpanel");
+      this.setAttribute("tabindex", "0");
+    }
 
-  render() {
-    return html`
-      <slot></slot>
-    `;
+    render() {
+      return html`
+        <slot></slot>
+      `;
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-tab-panel": TabPanel;
+    "md-tab-panel": TabPanel.ELEMENT;
   }
 }

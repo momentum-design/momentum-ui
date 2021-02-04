@@ -31,7 +31,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("should render phone input", async () => {
-    const element = await fixture<PhoneInput>(
+    const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
       `
@@ -41,7 +41,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("should render a Pill shape", async () => {
-    const element = await fixture<PhoneInput>(
+    const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input pill></md-phone-input>
       `
@@ -91,7 +91,7 @@ describe("PhoneInput Component", () => {
   //   expect(validator).toHaveBeenCalled();
   // });
   test("should trigger a Country Change", async () => {
-    const element = await fixture<PhoneInput>(
+    const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
       `
@@ -112,7 +112,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("should trigger a Phone Change event", async () => {
-    const element = await fixture<PhoneInput>(
+    const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
       `
@@ -130,7 +130,7 @@ describe("PhoneInput Component", () => {
     expect(phoneChangeSpy).toHaveBeenCalled();
   });
   test("should register a KeyDwon event", async () => {
-    const element = await fixture<PhoneInput>(
+    const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
       `

@@ -9,127 +9,136 @@
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
-import { customElement, html, LitElement, property, query, PropertyValues } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, query, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import "@/components/button/Button";
 
-export type coachmarkPlacement = "auto" | "left" | "right" | "top" | "bottom";
+export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"]
 
-@customElement("md-coachmark")
-export class Coachmark extends FocusTrapMixin(LitElement) {
-  @property({ type: String }) message = "";
-  @property({ type: String }) actionname = "Next"
-  @property({ type: Boolean }) hidebutton = false;
-  @property({ type: String }) placement: coachmarkPlacement = "auto";
-  @property({ type: Boolean }) show = false;
-  @property({ type: String }) color = "default";
+export namespace Coachmark {
+  export type Place = typeof coachmarkPlacement[number];
 
-  @query(".md-coachmark__popper") popper!: HTMLDivElement;
-  @query(".md-coachmark__reference") reference!: HTMLDivElement;
+  @customElementWithCheck("md-coachmark")
+  export class ELEMENT extends FocusTrapMixin(LitElement) {
+    @property({ type: String }) message = "";
+    @property({ type: String }) actionname = "Next"
+    @property({ type: Boolean }) hidebutton = false;
+    @property({ type: String }) placement: Place = "auto";
+    @property({ type: Boolean }) show = false;
+    @property({ type: String }) color = "default";
 
-  private slotContent: Element[] | null = null;
+    @query(".md-coachmark__popper") popper!: HTMLDivElement;
+    @query(".md-coachmark__reference") reference!: HTMLDivElement;
 
-  connectedCallback() {
-    super.connectedCallback();
-  }
+    private slotContent: Element[] | null = null;
 
-  notifyCoachCreate() {
-    this.dispatchEvent(
-      new CustomEvent("coach-create", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          placement: this.placement,
-          reference: this.reference,
-          popper: this.popper
-        }
-      })
-    );
-  }
-
-  coachAction() {
-    this.dispatchEvent(
-      new CustomEvent("coach-action", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          popper: this.popper
-        }
-      })
-    );
-  }
-
-  handleSlotChange(event: Event) {
-    const slot = event.target as HTMLSlotElement;
-    if (slot) {
-      const slotContent = slot.assignedElements({ flatten: true });
-      if (slotContent.length) {
-        this.slotContent = slotContent;
-      }
+    connectedCallback() {
+      super.connectedCallback();
     }
-  }
 
-  protected update(changedProperties: PropertyValues) {
-    super.update(changedProperties);
-    if (changedProperties.has("show")) {
-      if (this.show) {
-        this.setFocusableElements!();
-        if (this.focusableElements && this.focusableElements.length) {
-          this.focusableElements[0].focus();
+    notifyCoachCreate() {
+      this.dispatchEvent(
+        new CustomEvent("coach-create", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper
+          }
+        })
+      );
+    }
+
+    coachAction() {
+      this.dispatchEvent(
+        new CustomEvent("coach-action", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            popper: this.popper
+          }
+        })
+      );
+    }
+
+    handleSlotChange(event: Event) {
+      const slot = event.target as HTMLSlotElement;
+      if (slot) {
+        const slotContent = slot.assignedElements({ flatten: true });
+        if (slotContent.length) {
+          this.slotContent = slotContent;
         }
       }
     }
-  }
 
-  get coachWrapClassMap() {
-    return {
-      "md-coachmark--active": !!this.show
-    };
-  }
+    protected update(changedProperties: PropertyValues) {
+      super.update(changedProperties);
+      if (changedProperties.has("show")) {
+        if (this.show) {
+          this.setFocusableElements!();
+          if (this.focusableElements && this.focusableElements.length) {
+            this.focusableElements[0].focus();
+          }
+        }
+      }
+    }
 
-  get coachClassMap() {
-    return {
-      [`md-coachmark__popper--${this.placement}`]: !!this.placement,
-      [`md-coachmark__popper--${this.color}`]: !!this.color
-    };
-  }
+    get coachWrapClassMap() {
+      return {
+        "md-coachmark--active": !!this.show
+      };
+    }
 
-  static get styles() {
-    return [reset, styles];
-  }
+    get coachClassMap() {
+      return {
+        [`md-coachmark__popper--${this.placement}`]: !!this.placement,
+        [`md-coachmark__popper--${this.color}`]: !!this.color
+      };
+    }
 
-  render() {
-    return html`
-      <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
-        <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
-          <div class="md-coachmark__content" >
-            ${this.message
-              ? this.message
-              : html`
-                  <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
-                `}
-            <div class="md-coachmark__action">
-              ${this.hidebutton 
-                ? html`<slot name="coachmark-action"></slot>` 
-                : html`<md-button @button-click=${this.coachAction}>${this.actionname}</md-button>`}
+    static get styles() {
+      return [reset, styles];
+    }
+
+    render() {
+      return html`
+        <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
+          <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
+            <div class="md-coachmark__content" >
+              ${this.message
+                ? this.message
+                : html`
+                    <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
+                  `}
+              <div class="md-coachmark__action">
+                ${this.hidebutton 
+                  ? html`<slot name="coachmark-action"></slot>` 
+                  : html`<md-button @button-click=${this.coachAction}>${this.actionname}</md-button>`}
+              </div>
             </div>
+            <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
           </div>
-          <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
+          <div
+            class="md-coachmark__reference"
+            @click=${() => this.notifyCoachCreate()}
+            aria-describedby="coachmark"
+          >
+            <slot></slot>
+          </div>
         </div>
-        <div
-          class="md-coachmark__reference"
-          @click=${() => this.notifyCoachCreate()}
-          aria-describedby="coachmark"
-        >
-          <slot></slot>
-        </div>
-      </div>
-    `;
+      `;
+    }
   }
 }
 
+
+
+
+
 declare global {
   interface HTMLElementTagNameMap {
-    "md-coachmark": Coachmark;
+    "md-coachmark": Coachmark.ELEMENT;
   }
 }

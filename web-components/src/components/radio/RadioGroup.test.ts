@@ -10,15 +10,15 @@ import { html, LitElement, PropertyValues } from "lit-element";
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
 describe("RadioGroup", () => {
-  let element: RadioGroup;
-  let radioButtons: Radio[];
+  let element: RadioGroup.ELEMENT;
+  let radioButtons: Radio.ELEMENT[];
   const keyEvent = (code: string) =>
     new KeyboardEvent("keydown", {
       code
     });
 
   beforeEach(async () => {
-    element = await fixture<RadioGroup>(
+    element = await fixture<RadioGroup.ELEMENT>(
       html`
         <md-radiogroup group-label="recommendations">
           <md-radio slot="radio" value="developing">Developing</md-radio>
@@ -28,7 +28,7 @@ describe("RadioGroup", () => {
         </md-radiogroup>
       `
     );
-    radioButtons = element.slotted as Radio[];
+    radioButtons = element.slotted as Radio.ELEMENT[];
   });
   afterEach(fixtureCleanup);
   test("should set correct attribute", async () => {
@@ -62,8 +62,8 @@ describe("RadioGroup", () => {
         }
       };
 
-    const tag = defineCE(class extends mixin(RadioGroup) {});
-    const firstElement = fixtureSync<RadioGroup>(`<${tag}></${tag}>`);
+    const tag = defineCE(class extends mixin(RadioGroup.ELEMENT) {});
+    const firstElement = fixtureSync<RadioGroup.ELEMENT>(`<${tag}></${tag}>`);
     const firstEvent = await oneEvent(firstElement, "first-updated");
     expect(firstEvent).toBeDefined();
 
@@ -74,7 +74,7 @@ describe("RadioGroup", () => {
 
     fixtureCleanup();
 
-    const secondElement = document.createElement(`${tag}`) as RadioGroup;
+    const secondElement = document.createElement(`${tag}`) as RadioGroup.ELEMENT;
     setTimeout(() => secondElement.connectedCallback());
     const secondEvent = await oneEvent(secondElement, "connected-callback");
     expect(secondEvent).toBeDefined();
@@ -159,7 +159,7 @@ describe("RadioGroup", () => {
   });
 
   test("set first checked radio if checked property index provided", async () => {
-    const el = await fixture<RadioGroup>(
+    const el = await fixture<RadioGroup.ELEMENT>(
       html`
         <md-radiogroup group-label="recommendations" checked="2">
           <md-radio slot="radio" value="developing">Developing</md-radio>

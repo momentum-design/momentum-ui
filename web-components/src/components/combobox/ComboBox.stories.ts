@@ -54,7 +54,7 @@ export const Combobox = () => {
   } else if (customValue) {
     return html`
     <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}> 
-      <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} is-multi=${multi} allow-custom-value></md-combobox>
+      <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} .is-multi=${multi} allow-custom-value></md-combobox>
     </md-theme>`;
   } else if (multiInit) {
     return html`
@@ -65,7 +65,7 @@ export const Combobox = () => {
   } else if (object) {
     return html`
     <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-combobox placeholder=${placeholder} .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi=${multi}></md-combobox>
+      <md-combobox placeholder=${placeholder} .options=${comboBoxObjectOptions} option-id="id" option-value="country" .is-multi=${multi}></md-combobox>
     </md-theme>`;
   } else if (objectInit) {
     return html`
@@ -75,7 +75,7 @@ export const Combobox = () => {
         .options=${comboBoxObjectOptions}
         option-id="id"
         option-value="country"
-        is-multi=${multi}
+        .is-multi=${multi}
         .value=${[comboBoxObjectOptions[4]]}
         ?search-trim-space=${trimSpace}
       ></md-combobox>
@@ -84,7 +84,7 @@ export const Combobox = () => {
   } else if (customContent) {
     return html`
     <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-combobox with-custom-content is-multi=${multi}>
+      <md-combobox with-custom-content .is-multi=${multi}>
         <div slot="one" aria-label="Facebook" display-value="Facebook">
           <span>Facebook</span>
           <md-icon name="icon-facebook_16"></md-icon>

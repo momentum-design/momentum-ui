@@ -10,10 +10,10 @@ describe("Combobox Component", () => {
   afterEach(fixtureCleanup);
 
   describe("Interaction", () => {
-    let el: ComboBox;
+    let el: ComboBox.ELEMENT;
 
     beforeEach(async () => {
-      el = await fixture<ComboBox>(
+      el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -114,7 +114,7 @@ describe("Combobox Component", () => {
     });
 
     test("shouldn't render selected options without multi attribute", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -131,7 +131,7 @@ describe("Combobox Component", () => {
     });
 
     test("should render slotted content", async () => {
-      const el = await fixture<ComboBox>(html`
+      const el = await fixture<ComboBox.ELEMENT>(html`
         <md-combobox with-custom-content is-multi>
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
@@ -156,7 +156,7 @@ describe("Combobox Component", () => {
     });
 
     test("should render complex slotted content", async () => {
-      const el = await fixture<ComboBox>(html`
+      const el = await fixture<ComboBox.ELEMENT>(html`
         <md-combobox with-custom-content is-multi>
           ${repeat(
             comboBoxComplexObjectOption,
@@ -197,7 +197,7 @@ describe("Combobox Component", () => {
     });
 
     test("should render async slotted content", async () => {
-      const el = await fixture<ComboBox>(html`
+      const el = await fixture<ComboBox.ELEMENT>(html`
         <md-combobox with-custom-content is-multi .customOptions=${[]}></md-combobox>
       `);
 
@@ -235,7 +235,7 @@ describe("Combobox Component", () => {
 
   describe("Combobox", () => {
     test("should set correct aria attributes", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
         `
@@ -249,7 +249,7 @@ describe("Combobox Component", () => {
     });
 
     test("should open/close dropdown if clicked", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -269,7 +269,7 @@ describe("Combobox Component", () => {
     });
 
     test("should set placeholder if property exist", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} placeholder="Placeholder Input"></md-combobox>
         `
@@ -279,7 +279,7 @@ describe("Combobox Component", () => {
     });
 
     test("should apply disabled attribute", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
         `
@@ -288,7 +288,7 @@ describe("Combobox Component", () => {
     });
 
     test("should set input value in handler", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
         `
@@ -301,7 +301,7 @@ describe("Combobox Component", () => {
     });
 
     test("should handle keyUp event", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -334,7 +334,7 @@ describe("Combobox Component", () => {
     });
 
     test("should handle keyDown event", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -483,7 +483,7 @@ describe("Combobox Component", () => {
       expect(el.focusedIndex).toEqual(0);
     });
     test("should remove all selected option if clear icon clicked", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -499,7 +499,7 @@ describe("Combobox Component", () => {
     });
 
     test("should remove option if option icon clicked", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -516,7 +516,7 @@ describe("Combobox Component", () => {
     });
 
     test("should render correct multi icon name", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -533,7 +533,7 @@ describe("Combobox Component", () => {
       );
     });
     test("should render correct icon name", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -551,7 +551,7 @@ describe("Combobox Component", () => {
     });
 
     test("should set correct icon for different combobox state", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -578,7 +578,7 @@ describe("Combobox Component", () => {
       expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
     });
     test("should set correct icon for different combobox state in multi mode", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -600,11 +600,11 @@ describe("Combobox Component", () => {
   });
 
   describe("Combobox Multi Selected", () => {
-    let el: ComboBox;
+    let el: ComboBox.ELEMENT;
     afterEach(fixtureCleanup);
 
     beforeEach(async () => {
-      el = await fixture<ComboBox>(
+      el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -760,7 +760,7 @@ describe("Combobox Component", () => {
 
   describe("Listbox", () => {
     test("should set correct aria label attribute", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
         `
@@ -769,7 +769,7 @@ describe("Combobox Component", () => {
     });
 
     test("should set correct styles", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -784,7 +784,7 @@ describe("Combobox Component", () => {
     });
 
     test("should correct render options depends on input value", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -800,7 +800,7 @@ describe("Combobox Component", () => {
     });
 
     test("should set correct id to each option in dom", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
         `
@@ -819,7 +819,7 @@ describe("Combobox Component", () => {
 
   describe("Option", () => {
     test("should dispatch event when option clicked", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -834,7 +834,7 @@ describe("Combobox Component", () => {
       expect(el.expanded).toBeFalsy();
     });
     test("should dispatch event when option clicked (multi)", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
         `
@@ -852,7 +852,7 @@ describe("Combobox Component", () => {
     });
 
     test("should toggle aria tags", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
         `
@@ -890,7 +890,7 @@ describe("Combobox Component", () => {
       );
     });
     test("should handle selected option without multi attribute", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -910,7 +910,7 @@ describe("Combobox Component", () => {
     });
 
     test("should change selected option", async () => {
-      const el = await fixture<ComboBox>(
+      const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions}></md-combobox>
         `
@@ -927,7 +927,7 @@ describe("Combobox Component", () => {
   });
 
   test("should set initial value", async () => {
-    const el = await fixture<ComboBox>(
+    const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[0]]}></md-combobox>
       `
@@ -937,7 +937,7 @@ describe("Combobox Component", () => {
     expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
   });
   test("should set initial value for multi", async () => {
-    const el = await fixture<ComboBox>(
+    const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox
           .options=${comboBoxOptions}
@@ -953,7 +953,7 @@ describe("Combobox Component", () => {
   });
 
   test("should set initial value for option object", async () => {
-    const el = await fixture<ComboBox>(
+    const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox
           .options=${comboBoxObjectOptions}
@@ -978,7 +978,7 @@ describe("Combobox Component", () => {
   });
 
   test("should render no options list if empty options provided", async () => {
-    const el = await fixture<ComboBox>(
+    const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox .options=${[]}></md-combobox>
       `
@@ -1000,7 +1000,7 @@ describe("Combobox Component", () => {
   });
 
   test("should set custom value for default options", async () => {
-    const el = await fixture<ComboBox>(
+    const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[1]]} allow-custom-value></md-combobox>
       `
@@ -1026,7 +1026,7 @@ describe("Combobox Component", () => {
   });
 
   test("should not set custom value for object options", async () => {
-    const el = await fixture<ComboBox>(
+    const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox
           .options=${comboBoxObjectOptions}

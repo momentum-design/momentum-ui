@@ -6,12 +6,12 @@ import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 
 describe("Checkbox component", () => {
-  let element: CheckboxGroup;
+  let element: CheckboxGroup.ELEMENT;
 
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<CheckboxGroup>(html`
+    element = await fixture<CheckboxGroup.ELEMENT>(html`
       <md-checkboxgroup group-label="group_process">
         <md-checkbox slot="checkbox">Developing</md-checkbox>
         <md-checkbox slot="checkbox">Linting</md-checkbox>

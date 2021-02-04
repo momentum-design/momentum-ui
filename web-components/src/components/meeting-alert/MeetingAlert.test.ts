@@ -26,7 +26,7 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle role prop", async () => {
-    const el: MeetingAlert = await fixture(
+    const el: MeetingAlert.ELEMENT = await fixture(
       html`
         <md-meeting-alert role="button"></md-meeting-alert>
       `
@@ -35,12 +35,12 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle default role prop", async () => {
-    const el: MeetingAlert = await fixture("<md-meeting-alert></md-meeting-alert>");
+    const el: MeetingAlert.ELEMENT = await fixture("<md-meeting-alert></md-meeting-alert>");
     expect(el.getAttribute("role")).toBeNull();
   });
 
   test("should handle message prop", async () => {
-    const el: MeetingAlert = await fixture(
+    const el: MeetingAlert.ELEMENT = await fixture(
       html`
         <md-meeting-alert message="Test message"></md-meeting-alert>
       `
@@ -49,12 +49,12 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle default message prop", async () => {
-    const el: MeetingAlert = await fixture("<md-meeting-alert></md-meeting-alert>");
+    const el: MeetingAlert.ELEMENT = await fixture("<md-meeting-alert></md-meeting-alert>");
     expect(el.getAttribute("message")).toBeNull();
   });
 
   test("should handle status prop", async () => {
-    const el: MeetingAlert = await fixture(
+    const el: MeetingAlert.ELEMENT = await fixture(
       html`
         <md-meeting-alert status="Test status"></md-meeting-alert>
       `
@@ -63,7 +63,7 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle title prop", async () => {
-    const el: MeetingAlert = await fixture(
+    const el: MeetingAlert.ELEMENT = await fixture(
       html`
         <md-meeting-alert title="Test title"></md-meeting-alert>
       `
@@ -79,7 +79,7 @@ describe("MeetingAlert", () => {
 
     const mockEvent = () => {};
     test("Should trigger a passed Snooze event", async () => {
-      const element: MeetingAlert = await fixture(
+      const element: MeetingAlert.ELEMENT = await fixture(
         html`
           <md-meeting-alert show .onSnooze=${mockEvent}> </md-meeting-alert>
         `
@@ -99,7 +99,7 @@ describe("MeetingAlert", () => {
 
     describe("Should handle KeyDown events", () => {
       test("Should trigger a passed Keydown event", async () => {
-        const element: MeetingAlert = await fixture(
+        const element: MeetingAlert.ELEMENT = await fixture(
           html`
             <md-meeting-alert show .onKeyDown=${mockEvent}> </md-meeting-alert>
           `
@@ -124,7 +124,7 @@ describe("MeetingAlert", () => {
         expect(spyKeyDown).toHaveBeenCalledTimes(3);
       });
       test("Should handleClose when escape key is pressed", async () => {
-        const element: MeetingAlert = await fixture(
+        const element: MeetingAlert.ELEMENT = await fixture(
           html`
             <md-meeting-alert
               show
@@ -176,7 +176,7 @@ describe("MeetingAlert", () => {
       //   expect(spyClose).toHaveBeenCalledTimes(2);
       // });
       test("Should handle custom key event", async () => {
-        const el: MeetingAlert = await fixture(
+        const el: MeetingAlert.ELEMENT = await fixture(
           html`
             <md-meeting-alert title="Test title"></md-meeting-alert>
           `
@@ -188,14 +188,14 @@ describe("MeetingAlert", () => {
 
   describe("Should render correct Avatar", () => {
     test("Should render a single Avatar", async () => {
-      const element: MeetingAlert = await fixture(html`
+      const element: MeetingAlert.ELEMENT = await fixture(html`
         <md-meeting-alert show status="Queue_Demo7" title="Jane Doe"> </md-meeting-alert>
       `);
 
       expect(element.shadowRoot!.querySelectorAll("md-avatar").length).toBe(1);
     });
     test("Should render a Composite Avatar when 2 or more attendees are provided", async () => {
-      const element: MeetingAlert = await fixture(html`
+      const element: MeetingAlert.ELEMENT = await fixture(html`
         <md-meeting-alert
           .attendees=${[
             { title: "J $", src: null, alt: "J $" },

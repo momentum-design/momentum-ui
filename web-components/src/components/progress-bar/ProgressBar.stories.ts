@@ -30,8 +30,8 @@ export const ProgressBar = () => {
   const label = text("Label", "Test Progress Bar");
   const color = text("color", "blue");
   const dynamic = boolean("dynamic", false);
-  const format = select("dispalyFormat", BarFormat, "none");
-  const type = select("Type", BarType, "determinate");
+  const format = select("dispalyFormat", BarFormat, "none") as any;
+  const type = select("Type", BarType, "determinate") as any;
   const value = number("Value", 25);
 
   return html`

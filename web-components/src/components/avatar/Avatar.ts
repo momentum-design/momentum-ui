@@ -8,8 +8,8 @@
 
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -18,8 +18,21 @@ import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
 import styles from "./scss/module.scss";
 
-export const AvatarType = ["active", "bot", "call", "dnd", "group", "inactive", "meeting", "ooo", "presenting", "self", "typing", ""] as const;
-export const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 52, 56, 72, 80, 84]
+export const AvatarType = [
+  "active",
+  "bot",
+  "call",
+  "dnd",
+  "group",
+  "inactive",
+  "meeting",
+  "ooo",
+  "presenting",
+  "self",
+  "typing",
+  ""
+] as const;
+export const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 52, 56, 72, 80, 84];
 
 export namespace Avatar {
   export type Type = typeof AvatarType[number];
@@ -158,7 +171,12 @@ export namespace Avatar {
 
     render() {
       return html`
-        <div class="md-avatar ${classMap(this.avatarClassMap)}" role="img" aria-label=${ifDefined(this.label)}>
+        <div
+          part="avatar"
+          class="md-avatar ${classMap(this.avatarClassMap)}"
+          role="img"
+          aria-label=${ifDefined(this.label)}
+        >
           ${this.type === "self"
             ? html`
                 <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>

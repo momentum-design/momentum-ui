@@ -21,8 +21,8 @@ export namespace TableMock {
 
   export const CSV: TableAdvanced.Data = {
     csv: `data11, data21, data31
-data12, data22, data32
-data13, data23, data33`
+          data12, data22, data32
+          data13, data23, data33`
   };
 
   export const CSV_AGENTX =
@@ -52,7 +52,7 @@ data13, data23, data33`
           {
             groupName: "group2",
             children: [
-              { id: "col6", title: "col6" },
+              { id: "col6", title: "col6", filters: [{ name: "test"}, { name: "test1"}] },
               { id: "col7", title: "col7" }
             ]
           }
@@ -61,7 +61,7 @@ data13, data23, data33`
     },
     data: {
       list2d: [
-        ["11", "12", "13", "14", "15", "16", "17"],
+        ["11", "12 \r 121 \n 122", "13 \n 131 \n 132", "14 \n 141", "15", "16", "17"],
         ["21", "22", "23", "24", "25", "26", "27"],
         ["31", "32", "33", "34", "35", "36", "37"]
       ]

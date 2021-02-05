@@ -58,7 +58,7 @@ export namespace TableAdvanced {
   type ColGroup = { groupName: string; children: Col[] };
   type SortOrder = "default" | "ascending" | "descending";
   type SortComparator = (a: string, b: string, order: SortOrder) => number; // -number, 0, number
-  type Filter = { name: string; func: () => void; funcValidate?: () => void };
+  type Filter = { name: string; func?: () => void; funcValidate?: () => void };
 
   @customElementWithCheck("md-table-advanced")
   export class ELEMENT extends LitElement {
@@ -217,6 +217,8 @@ export namespace TableAdvanced {
       `;
     }
 
+    
+
     renderNode(node: ColNode, rowspan?: number) {
       let click = () => {};
       if (node.sort) {
@@ -229,12 +231,19 @@ export namespace TableAdvanced {
 
       const clazz = classMap({
         sortable: !!node.col.sort,
+        filtered: !!node.col.filters,
         ascending: node.sort == "ascending",
         descending: node.sort == "descending"
       });
 
       return html`
-        <th rowspan=${ifDefined(rowspan)} scope="col" class=${clazz} @click=${click}>${node.col.title}</th>
+        <th rowspan=${ifDefined(rowspan)} scope="col" class=${clazz} @click=${click}>
+          ${node.col.title}
+          ${node.sort === "ascending" ? html`<md-icon name="arrow-filled-up_12"></md-icon>`
+          : node.sort === "descending" ? html`<md-icon name="arrow-filled-down_12"></md-icon>`
+          : nothing }
+          ${node.col.filters ? html`<md-icon name="filter_16"></md-icon>` : nothing}
+        </th>
       `;
     }
 

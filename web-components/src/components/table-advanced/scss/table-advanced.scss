@@ -19,17 +19,11 @@
       border: $table-main-border;
     }
 
-    th {
-      &.sortable {
-        background-color: silver;
-        cursor: pointer;
-
-        &.ascending::after {
-          content: " ▲";
-        }
-
-        &.descending::after {
-          content: " ▼";
+    thead {
+      tr {
+        th.sortable {
+          background-color: silver;
+          cursor: pointer;
         }
       }
     }
@@ -62,6 +56,7 @@
         td {
           height: $table-row-height;
           padding-left: calc(#{$table-main-indent} * 4);
+          word-wrap: break-word;
         }
         th {
           background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);

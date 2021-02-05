@@ -48,7 +48,7 @@ export namespace DatePicker {
 
       if (!this.value) {
         this.value = this.includesTime
-          ? this.selectedDate?.toISO({ suppressMilliseconds: true })
+          ? this.selectedDate?.startOf('second').toISO({ suppressMilliseconds: true })
           : this.selectedDate?.toISODate();
       }
     }
@@ -102,7 +102,7 @@ export namespace DatePicker {
     setSelected = (date: DateTime, event: Event) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
-        const dateString = this.includesTime ? date.toISO({ suppressMilliseconds: true }) : date.toISODate();
+        const dateString = this.includesTime ? date.startOf('second').toISO({ suppressMilliseconds: true }) : date.toISODate();
         this.selectedDate = date;
         this.value = dateString;
       }

@@ -15,6 +15,10 @@
     position: relative;
     width: 100%;
 
+    * {
+      border: $table-main-border;
+    }
+
     th {
       &.sortable {
         background-color: silver;
@@ -31,15 +35,39 @@
     }
 
     &.sticky-header {
-      thead tr th {
-        position: sticky;
-        top: 0;
-        background: #eee;
+      thead {
+        background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+        tr {
+          th {
+            background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+            border: $table-main-border;
+            height: $table-row-height;
+            padding-left: calc(#{$table-main-indent} * 4);
+            position: sticky;
+            text-align: left;
+            top: 0;
+          }
+
+          &:last-child {
+            th {
+              top: $table-row-height;
+            }
+          }
+        }
       }
-      thead tr:last-child th {
-        position: sticky;
-        top: 27px;
-        background: #eee;
+    }
+
+    tbody {
+      tr {
+        td {
+          height: $table-row-height;
+          padding-left: calc(#{$table-main-indent} * 4);
+        }
+        th {
+          background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+          padding-left: calc(#{$table-main-indent} * 4);
+          text-align: left;
+        }
       }
     }
   }

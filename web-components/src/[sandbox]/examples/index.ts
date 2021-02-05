@@ -36,6 +36,7 @@ export { radioGroupTemplate } from "./radio-group";
 export { sliderTemplate } from "./slider";
 export { spinnerTemplate } from "./spinner";
 export { tabsTemplate } from "./tabs";
+export { tableAdvancedTemplate } from "./table-advanced";
 export { tableTemplate } from "./table";
 export { taskItemTemplate } from "./task-item";
 export { timePickerTemplate } from "./timepicker";

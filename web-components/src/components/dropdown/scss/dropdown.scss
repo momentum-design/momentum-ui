@@ -105,6 +105,10 @@
         &:hover {
           background: var(--dropdown-list-item-hover-bg-color, $lm-dropdown-list-item-hover-bg-color-light);
         }
+
+        &[focused] {
+          background: var(--dropdown-list-item-focus-bg-color, $lm-dropdown-list-item-focus-bg-color-light);
+        }
       }
     }
 
@@ -118,6 +122,15 @@
           transform: rotate(180deg);
         }
       }
+    }
+  }
+}
+
+:host([focus-visible]) {
+  .md-dropdown {
+    .md-dropdown-label {
+      border-color: var(--dropdown-focus-border-color, $lm-dropdown-focus-border-color-light);
+      box-shadow: none;
     }
   }
 }

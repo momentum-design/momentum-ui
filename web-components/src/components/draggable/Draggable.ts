@@ -1,8 +1,15 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { customElement, html, LitElement, property, query } from "lit-element";
 import Sortable from "sortablejs";
 import reset from "@/wc_scss/reset.scss";
 import { debounce } from "@/utils/helpers";
-import styles from "./scss/module.scss";
 import { SlottedMixin } from "@/mixins";
 
 export namespace Draggable {
@@ -28,7 +35,7 @@ export namespace Draggable {
     private sortableInstance: Sortable | null = null;
 
     static get styles() {
-      return [reset, styles];
+      return [reset];
     }
 
     get container() {

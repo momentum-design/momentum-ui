@@ -25,7 +25,13 @@ export default {
   parameters: {
     a11y: {
       element: "md-draggable"
+    },
+    docs: { 
+      description: { 
+        component: 'For more information look here: https://sortablejs.github.io/Sortable/' 
+      },
     }
+
   }
 };
 

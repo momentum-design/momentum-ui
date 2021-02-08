@@ -51,10 +51,10 @@ export class DefaultDraggable extends LitElement {
     return [
       reset,
       css`
-      .ghost {
+      .sorting {
         opacity: 0.4;
         border-style: dashed;
-        border-color: slategrey;
+        border-color: #333;
       }
     }`
     ];
@@ -66,7 +66,7 @@ export class DefaultDraggable extends LitElement {
         draggable-items="md-list-item"
         @drag-end=${this.handleDragEnd}
         @drag-move=${this.handleDragMove}
-        ghost-class="ghost"
+        ghost-class="sorting"
       >
         <md-list label="Transuranium elements">
           <md-list-item slot="list-item">Neptunium</md-list-item>

@@ -56,6 +56,9 @@ export class DefaultDraggable extends LitElement {
         border-style: dashed;
         border-color: #333;
       }
+      md-list-item[selected][draggable="true"]::part(list-item) {
+        background: #fff;
+      }
     }`
     ];
   }
@@ -66,7 +69,6 @@ export class DefaultDraggable extends LitElement {
         draggable-items="md-list-item"
         @drag-end=${this.handleDragEnd}
         @drag-move=${this.handleDragMove}
-        ghost-class="sorting"
       >
         <md-list label="Transuranium elements">
           <md-list-item slot="list-item">Neptunium</md-list-item>
@@ -94,11 +96,10 @@ export class SharedDraggable extends LitElement {
       .ghost {
         opacity: 0.4;
         border-style: dashed;
-        border-color: red;
-        background-color: yellow;
+        border-color: #333;
       }
-      md-checkbox[disabled] {
-        background: red;
+      md-checkbox[draggable="true"] {
+        background: #fff;
       }
     }`
     ];
@@ -138,6 +139,7 @@ export class SharedDraggable extends LitElement {
     `;
   }
 }
+
 
 export const draggableTemplate = html`
   <h3>Default</h3>

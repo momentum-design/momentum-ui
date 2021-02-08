@@ -1,5 +1,6 @@
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 import { html } from "lit-element";
 import "@/components/draggable/Draggable";
 import "@/components/list/List";
@@ -37,7 +38,15 @@ export const Draggable = () => {
   if (dragType === "sorting") {
     return html`
       <md-theme class="theme-toggle" id="draggable" ?darkTheme=${dark} ?lumos=${lumos}>
-        <md-draggable draggable-items="md-list-item" ghost-class="sorting" style="padding: 15px;">
+        <md-draggable
+          draggable-items="md-list-item"
+          ghost-class="sorting"
+          style="padding: 15px;"
+          @drag-start=${action("start")}
+          @drag-move=${action("move")}
+          @drag-change=${action("change")}
+          @drag-choose=${action("choose")}
+        >
           <md-list label="Transuranium elements">
             <md-list-item slot="list-item">Neptunium</md-list-item>
             <md-list-item slot="list-item">Plutonium</md-list-item>
@@ -59,6 +68,10 @@ export const Draggable = () => {
             ghost-class="ghost"
             filter="md-checkbox[disabled]"
             handle="md-icon"
+            @drag-start=${action("start")}
+            @drag-move=${action("move")}
+            @drag-change=${action("change")}
+            @drag-choose=${action("choose")}
           >
             <md-checkboxgroup group-label="group_process">
               <md-checkbox slot="checkbox"><md-icon name="icon-drag_16"></md-icon>Left Option1</md-checkbox>

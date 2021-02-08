@@ -134,3 +134,18 @@
     }
   }
 }
+
+:host([disabled]) {
+  .md-dropdown {
+    .md-dropdown-label {
+      &:hover, &:active {
+        background: var(--dropdown-disabled-bg-color, $lm-dropdown-disabled-bg-color-light);
+        pointer-events: none;
+
+        > md-icon {
+          opacity: $dropdown-disabled-opacity;
+        }
+      }
+    }
+  }
+}

@@ -86,12 +86,6 @@
       background: var(--md-quaternary-bg-color, $md-gray-100);
       color: var(--md-primary-text-color, $md-white);
     }
-    
-    &--in-range::part(button) {
-      // background: var(--md-quaternary-bg-color, $md-gray-100);
-      background: black;
-      color: white;
-    }
 
     &--outside-month {
       color: var(--md-disabled-text-color, inherit);

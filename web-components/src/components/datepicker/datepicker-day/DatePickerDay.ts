@@ -1,11 +1,12 @@
 import "@/components/button/Button";
+import { DateRangePicker } from "@/index";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { DateTime } from "luxon/index";
+import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerDay {
@@ -21,6 +22,8 @@ export namespace DatePickerDay {
 
     @internalProperty() protected isOutsideMonth = false;
     @internalProperty() protected isToday = false;
+    @internalProperty() protected parentIsRangePicker = false;
+    @internalProperty() protected dateIsInRange = false;
 
     @query("md-button") button!: HTMLButtonElement;
 
@@ -31,6 +34,7 @@ export namespace DatePickerDay {
       this.isToday = isSameDay(this.day, now());
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
+      this.parentIsRangePicker = this.closestElement("md-date-range-picker") ? true : false;
     }
 
     updated(changedProperties: PropertyValues) {
@@ -41,6 +45,7 @@ export namespace DatePickerDay {
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
       this.focused && this.button && this.button.shadowRoot?.querySelector("button")?.focus();
+      this.parentIsRangePicker && (this.dateIsInRange = this.isDateInRange());
     }
 
     handleClick = (e: MouseEvent) => {
@@ -55,6 +60,24 @@ export namespace DatePickerDay {
         })
       );
     };
+
+    isDateInRange = () => {
+      const rangePicker = (this.closestElement("md-date-range-picker") as unknown) as typeof DateRangePicker;
+      const startDate = DateTime.fromSQL(rangePicker.startDate);
+      const endDate = DateTime.fromSQL(rangePicker.endDate);
+      return this.day >= startDate && this.day <= endDate;
+    };
+
+    closestElement(selector: string, base = this) {
+      function __closestFrom(el: unknown): HTMLElement | null {
+        if (!el || el === document || el === window) return null;
+        // @ts-ignore
+        const found = el.closest(selector);
+        // @ts-ignore
+        return found ? found : __closestFrom(el.getRootNode().host);
+      }
+      return __closestFrom(base);
+    }
 
     handleKeyDown = (e: KeyboardEvent) => {
       this.dispatchEvent(
@@ -78,7 +101,8 @@ export namespace DatePickerDay {
         "md-datepicker__day--selected": this.selected,
         "md-datepicker__day--focus": this.focused,
         "md-datepicker__day--today": this.isToday,
-        "md-datepicker__day--outside-month": this.isOutsideMonth
+        "md-datepicker__day--outside-month": this.isOutsideMonth,
+        "md-datepicker__day--in-range": this.dateIsInRange
       };
 
       return html`

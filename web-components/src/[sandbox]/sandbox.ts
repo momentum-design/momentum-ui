@@ -5,30 +5,34 @@ import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
+  accordionTemplate,
   alertBannerTemplate,
   alertTemplate,
   avatarTemplate,
   badgeTemplate,
   breadcrumbTemplate,
-  buttonTemplate,
   buttonGroupTemplate,
+  buttonTemplate,
+  cardTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
   coachTemplate,
+  codeEditorTemplate,
   comboBoxTemplate,
   datePickerTemplate,
+  dateRangePickerTemplate,
   dateTimePickerTemplate,
   editableField,
   favoriteTemplate,
   floatingModalTemplate,
+  formTemplate,
   iconTemplate,
-  inputTemplate,
   inputFileTemplate,
+  inputTemplate,
   labelTemplate,
   linkTemplate,
   listTemplate,
-  formTemplate,
   loadingTemplate,
   meetingAlertTemplate,
   menuItemTemplate,
@@ -45,10 +49,7 @@ import {
   taskItemTemplate,
   timePickerTemplate,
   toggleSwitchTemplate,
-  tooltipTemplate,
-  accordionTemplate,
-  cardTemplate,
-  codeEditorTemplate
+  tooltipTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -118,7 +119,6 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
@@ -228,6 +228,13 @@ export class Sandbox extends LitElement {
             <h2>md-datepicker</h2>
             <sass-stats component="datepicker">
               ${datePickerTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-date-range-picker">
+            <h2>md-date-range-picker</h2>
+            <sass-stats component="date-range-picker">
+              ${dateRangePickerTemplate}
             </sass-stats>
           </div>
 

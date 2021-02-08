@@ -1,9 +1,11 @@
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { badgeColor, coachPlacement } from "@/utils/enums";
 import "@/components/draggable/Draggable";
+import "@/components/list/List";
+import "@/components/list/ListItem";
+import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
 import "@/components/theme/Theme";
 import { GroupOptions } from "sortablejs";
 
@@ -35,10 +37,7 @@ export const Draggable = () => {
   if (dragType === "sorting") {
     return html`
       <md-theme class="theme-toggle" id="draggable" ?darkTheme=${dark} ?lumos=${lumos}>
-        <md-draggable
-          draggable-items="md-list-item"
-          ghost-class="sorting"
-          style="padding: 15px;">
+        <md-draggable draggable-items="md-list-item" ghost-class="sorting" style="padding: 15px;">
           <md-list label="Transuranium elements">
             <md-list-item slot="list-item">Neptunium</md-list-item>
             <md-list-item slot="list-item">Plutonium</md-list-item>
@@ -82,7 +81,6 @@ export const Draggable = () => {
             </md-checkboxgroup>
           </md-draggable>
         </div>
-        
       </md-theme>
     `;
   }

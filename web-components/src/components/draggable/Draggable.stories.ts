@@ -40,6 +40,7 @@ export const Draggable = () => {
           style="padding: 15px;"
           @drag-start=${(action('start'))}
           @drag-move=${(action('move'))}
+          @drag-end=${(action('end'))}
           @drag-change=${(action('change'))}
           @drag-choose=${(action('choose'))}>
           <md-list label="Transuranium elements">
@@ -58,36 +59,57 @@ export const Draggable = () => {
       <md-theme class="theme-toggle" id="draggable-drag" ?darkTheme=${dark}>
         <div class="shared-draggable-wrapper">
           <md-draggable
-            draggable-items="md-checkbox"
-            .group=${{ name: "checkbox-group", pull: "clone" } as GroupOptions}
-            ghost-class="ghost"
-            filter="md-checkbox[disabled]"
-            handle="md-icon"
-            @drag-start=${(action('start'))}
-            @drag-move=${(action('move'))}
-            @drag-change=${(action('change'))}
-            @drag-choose=${(action('choose'))}
-          >
-            <md-checkboxgroup group-label="group_process">
-              <md-checkbox slot="checkbox"><md-icon name="icon-drag_16"></md-icon>Left Option1</md-checkbox>
-              <md-checkbox slot="checkbox" disabled><md-icon name="icon-drag_16"></md-icon>Left Option2</md-checkbox>
-              <md-checkbox slot="checkbox"><md-icon name="icon-drag_16"></md-icon>Left Option3</md-checkbox>
-              <md-checkbox slot="checkbox"><md-icon name="icon-drag_16"></md-icon>Left Option4</md-checkbox>
-            </md-checkboxgroup>
-          </md-draggable>
-          <md-draggable
-            draggable-items="md-checkbox"
-            .group=${{ name: "checkbox-group", pull: "clone" } as GroupOptions}
-            ghost-class="ghost"
-            filter="md-checkbox[disabled]"
-          >
-            <md-checkboxgroup group-label="group_process">
-              <md-checkbox slot="checkbox">Right Option1</md-checkbox>
-              <md-checkbox slot="checkbox">Right Option2</md-checkbox>
-              <md-checkbox slot="checkbox" disabled>Right Option3</md-checkbox>
-              <md-checkbox slot="checkbox">Right Option4</md-checkbox>
-            </md-checkboxgroup>
-          </md-draggable>
+          draggable-items="md-list-item"
+          .group=${{ name: "md-list", pull: "clone" } as GroupOptions}
+          filter="md-list-item[disabled]"
+        >
+          <md-list label="Transuranium elements">
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Average CSAT Scores
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Average Handle Time
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Total Contacts Handled
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Internal Filter
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Custom Filter
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Test Filter
+            </md-list-item>
+          </md-list>
+        </md-draggable>
+        <md-draggable
+          draggable-items="md-list-item"
+          .group=${{ name: "md-list", pull: "clone" } as GroupOptions}
+          filter="md-list-item[disabled]"
+        >
+          <md-list label="Transuranium elements">
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Internal Filter 1
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Custom Filter 2
+            </md-list-item>
+            <md-list-item slot="list-item">
+              <md-icon name="tag_16"></md-icon>
+              Test Filter 1
+            </md-list-item>
+          </md-list>
+        </md-draggable>
         </div>
         
       </md-theme>

@@ -21,6 +21,7 @@ export namespace Draggable {
     @property({ type: String, attribute: "draggable-items" }) draggableItems = "";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
+    @property({ type: String, attribute: "drag-class" }) dragClass = "";
 
     @query(".md-draggable-container") draggableContainer!: HTMLDivElement;
 
@@ -47,6 +48,7 @@ export namespace Draggable {
         direction: this.direction,
         ghostClass: this.ghostClass,
         chosenClass: this.chosenClass,
+        dragClass: this.dragClass,
         onStart: this.handleOnStart,
         onMove: this.handleOnMove,
         onEnd: this.handleOnEnd,

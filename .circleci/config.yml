@@ -131,6 +131,25 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
+  static_analysis:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Unit Test web components library
+          command: yarn ci:test:wc
+      - run: 
+          name: Upload Codecov report
+          command: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   percy_finalize_all:
     working_directory: ~/repo
     docker:
@@ -247,6 +266,9 @@ workflows:
       - test_icons:
           requires:
             - lint
+      - static_analysis:
+          requires:
+            - build_tokens
       - percy_finalize_all:
           requires:
             - test_react

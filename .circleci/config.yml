@@ -137,6 +137,12 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Unit Test web components library
+          command: yarn ci:test:wc
       - run: 
           name: Upload Codecov report
           command: bash <(curl -s https://codecov.io/bash)

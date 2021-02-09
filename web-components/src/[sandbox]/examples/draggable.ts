@@ -90,90 +90,19 @@ export class DefaultDraggable extends LitElement {
             <span>Add Field Filter</span>
           </div>
         </md-draggable-item>
-        <!-- <md-list label="Transuranium elements">
-          
-          
-          <md-list-item slot="list-item">
-            <div class="md-row">
-              <md-icon class="handle" name="panel-control-dragger_16"></md-icon>
-              <div class="first">Average Handle Time</div>
-              <div class="second">
-                <md-checkbox checked>Team Option</md-checkbox>
-              </div>
-              <div class="third">
-                <md-combobox .options=${comboBoxOptions} placeholder="New options" ></md-combobox>
-              </div>
-              <div class="fourth">
-                <md-icon name="plus-circle_24" size="16"></md-icon>
-                <span>Add Field Filter</span>
-              </div>
-            </div>
-          </md-list-item>
-          <md-list-item slot="list-item">
-            <div class="md-row">
-              <md-icon class="handle" name="panel-control-dragger_16"></md-icon>
-              <div class="first">Agent New Name</div>
-              <div class="second">
-                <md-checkbox checked>Left Option</md-checkbox>
-              </div>
-              <div class="third">
-                <md-combobox .options=${comboBoxOptions} placeholder="Choose options" ></md-combobox>
-              </div>
-              <div class="fourth">
-                <md-icon name="plus-circle_24" size="16"></md-icon>
-                <span>Add Field Filter</span>
-              </div>
-            </div>
-          </md-list-item>
-          <md-list-item slot="list-item">
-            <div class="md-row">
-              <md-icon class="handle" name="panel-control-dragger_16"></md-icon>
-              <div class="first">Agent Name 22</div>
-              <div class="second">
-                <md-checkbox checked>Left Option</md-checkbox>
-              </div>
-              <div class="third">
-                <md-combobox .options=${comboBoxOptions} placeholder="Choose options" ></md-combobox>
-              </div>
-              <div class="fourth">
-                <md-icon name="plus-circle_24" size="16"></md-icon>
-                <span>Add Field Filter</span>
-              </div>
-            </div>
-          </md-list-item>
-          <md-list-item slot="list-item">
-            <div class="md-row">
-              <md-icon class="handle" name="panel-control-dragger_16"></md-icon>
-              <div class="first">Agent Name 333</div>
-              <div class="second">
-                <md-checkbox checked>Left Option</md-checkbox>
-              </div>
-              <div class="third">
-                <md-combobox .options=${comboBoxOptions} placeholder="Choose options" ></md-combobox>
-              </div>
-              <div class="fourth">
-                <md-icon name="plus-circle_24" size="16"></md-icon>
-                <span>Add Field Filter</span>
-              </div>
-            </div>
-          </md-list-item>
-          <md-list-item slot="list-item">
-            <div class="md-row">
-              <md-icon class="handle" name="panel-control-dragger_16"></md-icon>
-              <div class="first">Agent Name 5555</div>
-              <div class="second">
-                <md-checkbox checked>Left Option</md-checkbox>
-              </div>
-              <div class="third">
-                <md-combobox .options=${comboBoxOptions} placeholder="Choose options" ></md-combobox>
-              </div>
-              <div class="fourth">
-                <md-icon name="plus-circle_24" size="16"></md-icon>
-                <span>Add Field Filter</span>
-              </div>
-            </div>
-          </md-list-item>
-        </md-list> -->
+        <md-draggable-item row>
+          <div class="first">Agent New Name</div>
+          <div class="second">
+            <md-checkbox checked>Left Option</md-checkbox>
+          </div>
+          <div class="third">
+            <md-combobox .options=${comboBoxOptions} placeholder="Choose options" ></md-combobox>
+          </div>
+          <div class="fourth">
+            <md-icon name="plus-circle_24" size="16"></md-icon>
+            <span>Add Field Filter</span>
+          </div>
+        </md-draggable-item>
       </md-draggable>
     `;
   }

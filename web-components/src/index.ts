@@ -32,6 +32,7 @@ export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePi
 export { DatePickerWeek } from "./components/datepicker/datepicker-week/DatePickerWeek";
 export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
 export { Draggable } from "./components/draggable//Draggable";
+export { DraggableItem } from "./components/draggable/DraggableItem";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";

@@ -6,8 +6,9 @@
  *
  */
 
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import Sortable from "sortablejs";
+import { DraggableItem } from "./DraggableItem";
 import reset from "@/wc_scss/reset.scss";
 import { debounce } from "@/utils/helpers";
 import { SlottedMixin } from "@/mixins";
@@ -31,7 +32,9 @@ export namespace Draggable {
     @property({ type: String, attribute: "drag-class" }) dragClass = "";
 
     @query(".md-draggable-container") draggableContainer!: HTMLDivElement;
+    @query('slot') slotElement?: HTMLSlotElement;
 
+    private items: DraggableItem.ELEMENT[] = [];
     private sortableInstance: Sortable | null = null;
 
     static get styles() {
@@ -40,6 +43,28 @@ export namespace Draggable {
 
     get container() {
       return this.customPlaceholder ? this.draggableContainer : this.slotted[0];
+    }
+
+    get slotItem() {
+      return this.slotElement;
+    }
+
+    private setupItems() {
+      if (this.slotElement) {
+        const children = this.slotElement.assignedElements({ flatten: true })
+        this.getChildrenFromTree({ children }, this.items);
+        console.log(this.items)
+      }
+    }
+
+    private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem.ELEMENT[]) {
+      for (var i = 0; i < elem.children.length; i++) {
+        var child = elem.children[i];
+        if (child instanceof DraggableItem.ELEMENT) {
+          items.push(child);
+        }
+        this.getChildrenFromTree(child as any, items); // RECURSION
+      }
     }
 
     private generateOptions() {
@@ -70,15 +95,29 @@ export namespace Draggable {
 
     connectedCallback() {
       super.connectedCallback();
+      this.draggableItems ="md-draggable-item"
+    }
 
-      this.ghostClass = "sorting";
+    private async linkItems() {
+      const { items } = this;
+
+      items.forEach(item => {
+
+        if (item.classList.contains("md-draggable-row")) {
+          this.handle = "md-icon";
+        } else {
+          this.group={ name: "md-list", pull: "clone" }
+        }
+        
+      });
     }
 
     private initializeSortable() {
       if (this.sortableInstance) {
         this.cleanupSortable();
       }
-      this.sortableInstance = Sortable.create(this.container, this.generateOptions());
+      const wrap = this;
+      this.sortableInstance = Sortable.create(wrap, this.generateOptions());
     }
 
     private dispatchDragEvent(eventName: string, srcEvent: Sortable.SortableEvent | Sortable.MoveEvent) {
@@ -153,6 +192,14 @@ export namespace Draggable {
     protected slottedChanged() {
       this.initializeSortable();
     }
+
+    protected async updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has("slotted")) {
+      this.setupItems();
+      this.linkItems()
+    }
+  }
 
     render() {
       return html`

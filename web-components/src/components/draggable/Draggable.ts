@@ -6,14 +6,14 @@
  *
  */
 
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { html, LitElement, property, query } from "lit-element";
 import Sortable from "sortablejs";
 import reset from "@/wc_scss/reset.scss";
 import { debounce } from "@/utils/helpers";
-import { SlottedMixin } from "@/mixins";
+import { customElementWithCheck, SlottedMixin } from "@/mixins";
 
 export namespace Draggable {
-  @customElement("md-draggable")
+  @customElementWithCheck("md-draggable")
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 0;
@@ -21,16 +21,15 @@ export namespace Draggable {
     @property({ type: String }) handle = "";
     @property({ type: String }) filter = "";
     @property({ type: String }) easing = "";
-    @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "vertical";
     @property({ type: Object }) group: Sortable.GroupOptions = { name: "group" };
     @property({ type: Boolean, attribute: "custom-placeholder" }) customPlaceholder = false;
-    @property({ type: String, attribute: "draggable-items" }) draggableItems = "";
+    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-row";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
     @property({ type: String, attribute: "drag-class" }) dragClass = "";
 
-    @query(".md-draggable-container") draggableContainer!: HTMLDivElement;
+    @query("slot[name='draggable-row']") draggableSlot!: HTMLSlotElement;
 
     private sortableInstance: Sortable | null = null;
 
@@ -38,14 +37,13 @@ export namespace Draggable {
       return [reset];
     }
 
-    get container() {
-      return this.customPlaceholder ? this.draggableContainer : this.slotted[0];
+    get slotElement() {
+      return this.draggableSlot;
     }
 
     private generateOptions() {
       return {
         group: this.group,
-        disabled: this.disabled,
         animation: this.animation,
         delay: this.delay,
         handle: this.handle,
@@ -68,17 +66,10 @@ export namespace Draggable {
       };
     }
 
-    connectedCallback() {
-      super.connectedCallback();
-
-      this.ghostClass = "sorting";
-    }
-
     private initializeSortable() {
-      if (this.sortableInstance) {
-        this.cleanupSortable();
+      if (!this.sortableInstance) {
+        this.sortableInstance = Sortable.create(this, this.generateOptions());
       }
-      this.sortableInstance = Sortable.create(this.container, this.generateOptions());
     }
 
     private dispatchDragEvent(eventName: string, srcEvent: Sortable.SortableEvent | Sortable.MoveEvent) {
@@ -150,16 +141,21 @@ export namespace Draggable {
       this.cleanupSortable();
     }
 
+    connectedCallback() {
+      super.connectedCallback();
+      this.initializeSortable();
+    }
+
     protected slottedChanged() {
       this.initializeSortable();
     }
 
     render() {
       return html`
-      <div class="md-draggable-container" part="draggable-container">
-        <slot></slot>
-      </div>
-    `;
+        <div class="md-draggable-row" part="draggable-row">
+          <slot name="draggable-row"></slot>
+        </div>
+      `;
     }
   }
 }

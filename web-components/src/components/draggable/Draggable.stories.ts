@@ -11,8 +11,6 @@ import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { html } from "lit-element";
 import "@/components/draggable/Draggable";
-import "@/components/list/List";
-import "@/components/list/ListItem";
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import "@/components/theme/Theme";
@@ -32,7 +30,7 @@ export default {
     },
     docs: {
       description: {
-        component: "For more information look here: https://sortablejs.github.io/Sortable/"
+        component: "For more information please look: https://sortablejs.github.io/Sortable/"
       }
     }
   }
@@ -44,7 +42,7 @@ const options = {
 };
 
 export const Draggable = () => {
-  const dark = boolean("darkMode", false);
+  const dark = boolean("Dark Mode", false);
   const lumos = boolean("Lumos Theme", false);
   const dragType = select("Draggable Type", options, "sorting");
 

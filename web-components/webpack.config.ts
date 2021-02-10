@@ -166,6 +166,7 @@ const commonDist = merge(common, {
     "comp/md-datepicker-month-entry": "./src/components/datepicker/datepicker-month/DatePickerMonth",
     "comp/md-datepicker-week-entry": "./src/components/datepicker/datepicker-week/DatePickerWeek",
     "comp/md-editable-field-entry": "./src/components/editable-textfield/EditableTextfield",
+    "comp/md-favorite": "./src/components/favorite/Favorite",
     "comp/md-floating-modal-entry": "./src/components/floating-modal/FloatingModal",
     "comp/md-help-text-entry": "./src/components/help-text/HelpText",
     "comp/md-icon-entry": "./src/components/icon/Icon",

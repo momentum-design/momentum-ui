@@ -23,7 +23,7 @@ export type DropdownEvents = {
 
 @customElement("md-dropdown")
 export class Dropdown extends FocusMixin(LitElement) {
-  @property({ type: String }) title = "Select...";
+  @property({ type: String, attribute: "title" }) title = "Select...";
   @property({ type: Array }) options: Option[] = [];
   @property({ type: String, attribute: "option-id" }) optionId = "";
   @property({ type: String, attribute: "option-value" }) optionValue = "";
@@ -433,7 +433,13 @@ export class Dropdown extends FocusMixin(LitElement) {
           `
         )}
         </select> -->
-        <label class="md-dropdown-label" ?disabled="${this.disabled}" @click="${() => this.onLabelClick()}">
+        <label
+          class="md-dropdown-label"
+          aria-expanded="${this.expanded}"
+          aria-label="${this.labelTitle}"
+          ?disabled="${this.disabled}"
+          @click="${() => this.onLabelClick()}"
+        >
           <span class="md-dropdown-label--text">${this.labelTitle}</span>
           <span class="md-dropdown-label--icon">
             <md-icon name="icon-arrow-down_16"></md-icon>

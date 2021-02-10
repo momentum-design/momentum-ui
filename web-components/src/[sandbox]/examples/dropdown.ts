@@ -1,9 +1,9 @@
 import { DropdownEvents } from "@/components/dropdown/Dropdown";
 import { html } from "lit-element";
 
-const stringOptions = ["one", "two", "three", "   non-trimmed "];
+export const dropdownStringOptions = ["one", "two", "three", "   non-trimmed "];
 
-const stringLongOptions = [
+export const dropdownStringLongOptions = [
   "01",
   "02",
   "03",
@@ -46,9 +46,9 @@ const stringLongOptions = [
   "40"
 ];
 
-const objectKeyValueOptions = [{ one: "One" }, { two: "Two" }, { three: "Three" }];
+export const dropdownObjectKeyValueOptions = [{ one: "One" }, { two: "Two" }, { three: "Three" }];
 
-const objectOptions = [
+export const dropdownObjectOptions = [
   {
     user_id: "xxx-111",
     user_name: "jd",
@@ -66,19 +66,51 @@ const objectOptions = [
   }
 ];
 
+export const dropdownObjectLongOptions = [
+  { id: "0", country: "Afghanistan" },
+  { id: "1", country: "Aland Islands" },
+  { id: "2", country: "Albania" },
+  { id: "3", country: "Algeria" },
+  { id: "4", country: "American Samoa" },
+  { id: "5", country: "Andorra" },
+  { id: "6", country: "Angola" },
+  { id: "7", country: "Anguilla" },
+  { id: "8", country: "Antarctica" },
+  { id: "9", country: "Antigua and Barbuda" },
+  { id: "10", country: "Argentina" },
+  { id: "11", country: "Australia" },
+  { id: "12", country: "Austrian Empire" },
+  { id: "13", country: "Austria" },
+  { id: "14", country: "Azerbaijan" },
+  { id: "15", country: "Bahrain" },
+  { id: "16", country: "Bangladesh" },
+  { id: "17", country: "Barbados" },
+  { id: "18", country: "Bavaria" },
+  { id: "19", country: "Belarus" },
+  { id: "20", country: "Belgium" },
+  { id: "21", country: "Belize" },
+  { id: "22", country: "Cabo Verde" },
+  { id: "23", country: "Cambodia" },
+  { id: "24", country: "Cameroon" },
+  { id: "25", country: "Canada" },
+  { id: "26", country: "Cayman Islands" },
+  { id: "27", country: "The Central African Republic" },
+  { id: "28", country: "Chad" }
+];
+
 export const dropdownTemplate = html`
   <h3>Strings Options</h3>
   <md-dropdown
-    .options="${stringOptions}"
+    .options="${dropdownStringOptions}"
     @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
   <h3>Strings Options (Disabled)</h3>
-  <md-dropdown .options="${stringOptions}" disabled></md-dropdown>
+  <md-dropdown .options="${dropdownStringOptions}" disabled></md-dropdown>
   <h3>Strings Options (Allow unselected)</h3>
   <md-dropdown
-    .options="${stringOptions}"
+    .options="${dropdownStringOptions}"
     allow-unselected
     @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
       console.log("[Strings Options (Allow unselected)] Selected: ", e.detail);
@@ -86,26 +118,35 @@ export const dropdownTemplate = html`
   ></md-dropdown>
   <h3>Strings Long Options (Preselected)</h3>
   <md-dropdown
-    .options="${stringLongOptions}"
-    .defaultOption="${stringLongOptions[29]}"
+    .options="${dropdownStringLongOptions}"
+    .defaultOption="${dropdownStringLongOptions[29]}"
     @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
       console.log("[Strings Long Options (Preselected)] Selected: ", e.detail);
     }}"
   ></md-dropdown>
   <h3>Single KeyValue Objects Options</h3>
   <md-dropdown
-    .options="${objectKeyValueOptions}"
+    .options="${dropdownObjectKeyValueOptions}"
     @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
       console.log("[Single KeyValue Objects Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
   <h3>Multi KeyValue Objects Options</h3>
   <md-dropdown
-    .options="${objectOptions}"
+    .options="${dropdownObjectOptions}"
     option-id="user_id"
     option-value="full_name"
     @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
       console.log("[Multi KeyValue Objects Options] Selected: ", e.detail);
+    }}"
+  ></md-dropdown>
+  <h3>Multi KeyValue Objects Long Options</h3>
+  <md-dropdown
+    .options="${dropdownObjectLongOptions}"
+    option-id="id"
+    option-value="country"
+    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+      console.log("[Multi KeyValue Objects Long Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
 `;

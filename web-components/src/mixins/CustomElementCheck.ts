@@ -1,8 +1,4 @@
-export const customElementWithCheck = (tagName: string) => (classOrDescriptor: any) =>
-  typeof classOrDescriptor === "function"
-    ? legacyCustomElement(tagName, classOrDescriptor)
-    : standardCustomElement(tagName, classOrDescriptor);
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const legacyCustomElement = (tagName: string, clazz: any) => {
   if (!window.customElements.get(tagName)) {
     window.customElements.define(tagName, clazz);
@@ -22,3 +18,8 @@ const standardCustomElement = (tagName: string, descriptor: any) => {
     }
   };
 };
+
+export const customElementWithCheck = (tagName: string) => (classOrDescriptor: any) =>
+  typeof classOrDescriptor === "function"
+    ? legacyCustomElement(tagName, classOrDescriptor)
+    : standardCustomElement(tagName, classOrDescriptor);

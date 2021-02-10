@@ -26,8 +26,8 @@ export default {
 export const Form = () => {
   const darkTheme = boolean("Dark Mode", false);
   const lumos = boolean("Lumos Theme", false);
-  const novalidate = boolean("Novalidate", false);
-  const isvalid = boolean("Is Valid", false);
+  const novalidate = boolean("Form shouldn't be validated when submitted", false);
+  const isvalid = boolean("Form validation status", false);
 
   return html`
     <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>

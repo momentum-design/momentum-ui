@@ -6,10 +6,11 @@
  *
  */
 
-import { html, LitElement, property, query } from "lit-element";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import Sortable from "sortablejs";
 import { DraggableItem } from "./DraggableItem";
 import reset from "@/wc_scss/reset.scss";
+import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, SlottedMixin } from "@/mixins";
 
@@ -19,33 +20,65 @@ export namespace Draggable {
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 0;
     @property({ type: Boolean }) sort = false;
+    @property({ type: Boolean }) editable = false;
     @property({ type: String }) handle = "";
-    @property({ type: String }) filter = "";
+    @property({ type: String }) filter = "[disabled]";
     @property({ type: String }) easing = "";
     @property({ type: String }) direction: "horizontal" | "vertical" = "vertical";
     @property({ type: Object }) group: Sortable.GroupOptions = { name: "group" };
     @property({ type: Boolean, attribute: "custom-placeholder" }) customPlaceholder = false;
-    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-row";
+    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-item";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
-    @property({ type: String, attribute: "drag-class" }) dragClass = "";
+    @property({ type: String, attribute: "drag-class" }) dragClass = "dragging";
 
-    @query("slot[name='draggable-row']") draggableSlot!: HTMLSlotElement;
+    @query("slot") draggableSlot!: HTMLSlotElement;
 
     private sortableInstance: Sortable | null = null;
+    private items: DraggableItem.ELEMENT[] = [];
 
     static get styles() {
-      return [reset];
+      return [reset, styles];
     }
 
     get slotElement() {
       return this.draggableSlot;
     }
 
+    private setupItems() {
+      if (this.slotElement) {
+        const children = this.slotElement.assignedElements({ flatten: true })
+        this.getChildrenFromTree({ children }, this.items);
+        console.log(this.items)
+      }
+    }
+
+    private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem.ELEMENT[]) {
+      for (var i = 0; i < elem.children.length; i++) {
+        var child = elem.children[i];
+        if (child instanceof DraggableItem.ELEMENT) {
+          items.push(child);
+        }
+        this.getChildrenFromTree(child as any, items); // RECURSION
+      }
+    }
+
+    private async linkItems() {
+      const { items } = this;
+
+      items.forEach(item => {
+
+        if (this.editable) {
+          item.setAttribute("edit", "true");
+        }
+      })
+    }
+
     private generateOptions() {
       return {
         group: this.group,
         animation: this.animation,
+        sort: this.sort,
         delay: this.delay,
         handle: this.handle,
         easing: this.easing,
@@ -137,24 +170,32 @@ export namespace Draggable {
       }
     }
 
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      this.cleanupSortable();
-    }
-
     connectedCallback() {
       super.connectedCallback();
       this.initializeSortable();
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.cleanupSortable();
     }
 
     protected slottedChanged() {
       this.initializeSortable();
     }
 
+    protected async updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("slotted")) {
+        this.setupItems();
+        this.linkItems()
+      }
+    }
+
     render() {
       return html`
-        <div class="md-draggable-row" part="draggable-row">
-          <slot name="draggable-row"></slot>
+        <div class="md-draggable" part="draggable">
+          <slot></slot>
         </div>
       `;
     }

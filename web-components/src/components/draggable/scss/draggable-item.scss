@@ -2,15 +2,40 @@
   display: block;
 }
 
-.md-draggable-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  align-content: flex-start;
-  border: 1px solid rgb(177, 33, 33);
-  cursor: move;
-  min-height: 24px;
-  min-width: 100px;
-  user-select: none;
+.md-draggable- {
+  &row {
+    align-items: center;
+    background-color: var(--md-secondary-white-bg-color);
+    border: $draggable-row-border;
+    display: flex;
+    flex-direction: row;
+    padding: $draggable-padding;
+
+    md-icon {
+      cursor: move;
+      margin-right: $draggable-padding;
+    }
+
+    &:hover {
+      background-color: var(--md-secondary-bg-color);
+    }
+
+    ::slotted(*) {
+      flex: 1 1 auto;
+      margin-right: calc(#{$draggable-padding} * 2);
+      text-align: left;
+    }
+  }
+
+  &item {
+    border-radius: $draggable-item-border-radius;
+    display: flex;
+    padding: calc(#{$draggable-padding} / 2) $draggable-padding;
+
+    &:hover {
+      background-color: var(--md-tertiary-white-bg-color);
+      border: $draggable-focus-border;
+      box-shadow: $draggable-item-shadow;
+    }
+  }
 }

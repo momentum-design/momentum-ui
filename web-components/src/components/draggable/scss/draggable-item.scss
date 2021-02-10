@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.md-draggable-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: flex-start;
+  border: 1px solid rgb(177, 33, 33);
+  cursor: move;
+  min-height: 24px;
+  min-width: 100px;
+  user-select: none;
+}

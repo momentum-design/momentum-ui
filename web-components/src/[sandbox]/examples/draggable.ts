@@ -3,6 +3,7 @@ import "@/components/draggable/DraggableRow";
 import "@/components/checkbox/Checkbox";
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
+import "@/components/draggable/DraggableItem";
 import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { css, customElement, html, LitElement } from "lit-element";
 

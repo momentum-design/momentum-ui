@@ -8,6 +8,7 @@
 
 import { html, LitElement, property, query } from "lit-element";
 import Sortable from "sortablejs";
+import { DraggableItem } from "./DraggableItem";
 import reset from "@/wc_scss/reset.scss";
 import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, SlottedMixin } from "@/mixins";

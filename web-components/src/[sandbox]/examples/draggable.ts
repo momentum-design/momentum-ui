@@ -5,9 +5,10 @@ import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import Sortable, { GroupOptions } from "sortablejs";
 import { comboBoxOptions, draggableMock } from "@/[sandbox]/sandbox.mock";
-import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { css, customElement, html, internalProperty, LitElement, property, queryAll } from "lit-element";
 import { nothing } from "lit-html";
 import { repeat } from "lit-html/directives/repeat";
+import { DraggableItem } from "@/components/draggable/DraggableItem";
 
 @customElement("default-draggable-sandbox")
 export class DefaultDraggable extends LitElement {
@@ -63,6 +64,9 @@ export class DefaultDraggable extends LitElement {
 @customElement("shared-draggable-sandbox")
 export class SharedDraggable extends LitElement {
   @internalProperty() selectedData: any = undefined;
+  @internalProperty() selectedItem: any = undefined;
+
+  @queryAll("#list1 md-draggable-item") dragItem!: DraggableItem.ELEMENT[];
 
   findSelected() {
     let result =  Array.from(draggableMock.filter(item => item.selected));
@@ -75,7 +79,10 @@ export class SharedDraggable extends LitElement {
         srcEvent: { dragged }
       }
     } = event;
-    console.log(event.detail);
+
+    const foundIndex = draggableMock.findIndex(element => element.id === dragged.id)
+    this.selectedItem = draggableMock[foundIndex];
+    this.selectedItem.selected = true;
   }
 
   connectedCallback() {
@@ -98,6 +105,7 @@ export class SharedDraggable extends LitElement {
     return html`
       <div class="shared-draggable-wrapper">
         <md-draggable
+          id="list1"
           .group=${{ name: "draggable", pull: "clone", put: false } as GroupOptions}
           @drag-move=${this.handleDragMove}>
           ${repeat(
@@ -112,7 +120,7 @@ export class SharedDraggable extends LitElement {
                 </md-draggable-item>
                 `
               : html`
-                <md-draggable-item>
+                <md-draggable-item id="${item.id}">
                   <md-icon name="tag_16"></md-icon>
                   <span>${item.label}</span>
                 </md-draggable-item>
@@ -121,7 +129,7 @@ export class SharedDraggable extends LitElement {
             ` // the template for each item
           )}
         </md-draggable>
-        <md-draggable .group=${{ name: "draggable", pull: "clone" } as GroupOptions}>
+        <md-draggable id="list2" .group=${{ name: "draggable", pull: "clone" } as GroupOptions}>
           ${this.selectedData.map((i: any) => html`
               <md-draggable-item id="${i.id}">
                 <md-icon name="tag_16"></md-icon>

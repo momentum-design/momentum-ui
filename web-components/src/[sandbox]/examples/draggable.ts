@@ -3,7 +3,7 @@ import "@/components/draggable/DraggableItem";
 import "@/components/checkbox/Checkbox";
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
-import { GroupOptions } from "sortablejs";
+import Sortable, { GroupOptions } from "sortablejs";
 import { comboBoxOptions, draggableMock } from "@/[sandbox]/sandbox.mock";
 import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
@@ -67,7 +67,15 @@ export class SharedDraggable extends LitElement {
   findSelected() {
     let result =  Array.from(draggableMock.filter(item => item.selected));
     this.selectedData = result;
-    console.log(this.selectedData);
+  }
+
+  handleDragMove(event: CustomEvent<{ srcEvent: Sortable.MoveEvent }>) {
+    const {
+      detail: {
+        srcEvent: { dragged }
+      }
+    } = event;
+    console.log(event.detail);
   }
 
   connectedCallback() {
@@ -90,21 +98,32 @@ export class SharedDraggable extends LitElement {
     return html`
       <div class="shared-draggable-wrapper">
         <md-draggable
-          .group=${{ name: "draggable", pull: "clone", put: false } as GroupOptions}>
+          .group=${{ name: "draggable", pull: "clone", put: false } as GroupOptions}
+          @drag-move=${this.handleDragMove}>
           ${repeat(
             draggableMock, // the array of items
             item => item.id, // the identify function
-              (item, i) => html`
+            (item, i) => html`
+              ${item.selected === true
+              ? html`
+                <md-draggable-item disabled id="${item.id}">
+                  <md-icon name="tag_16"></md-icon>
+                  <span>${item.label}</span>
+                </md-draggable-item>
+                `
+              : html`
                 <md-draggable-item>
                   <md-icon name="tag_16"></md-icon>
                   <span>${item.label}</span>
                 </md-draggable-item>
-              ` // the template for each item
+              `
+              }
+            ` // the template for each item
           )}
         </md-draggable>
         <md-draggable .group=${{ name: "draggable", pull: "clone" } as GroupOptions}>
           ${this.selectedData.map((i: any) => html`
-              <md-draggable-item>
+              <md-draggable-item id="${i.id}">
                 <md-icon name="tag_16"></md-icon>
                 <span>${i.label}</span>
               </md-draggable-item>

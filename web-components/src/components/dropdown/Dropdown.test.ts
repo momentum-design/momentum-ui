@@ -1,4 +1,4 @@
-import { dropdownStringOptions } from "@/[sandbox]/examples/dropdown";
+import { dropdownObjectLongOptions, dropdownStringOptions } from "@/[sandbox]/examples/dropdown";
 import { Dropdown } from "@/components/dropdown/Dropdown";
 import "@/components/dropdown/Dropdown";
 import "@/components/icon/Icon";
@@ -13,11 +13,21 @@ describe("Dropdown Component", () => {
       code
     });
 
+  const createClickEvent = () => new MouseEvent("click");
+
+  const toggleExpandCollapseDropdown = async (dropdown: Dropdown.ELEMENT) => {
+    const label = dropdown.shadowRoot!.querySelector("label");
+    const event = createClickEvent();
+    label!.dispatchEvent(event);
+
+    await dropdown.updateComplete;
+  };
+
   describe("Events", () => {
-    let dropdown: Dropdown;
+    let dropdown: Dropdown.ELEMENT;
 
     beforeEach(async () => {
-      dropdown = await fixture<Dropdown>(
+      dropdown = await fixture<Dropdown.ELEMENT>(
         html`
           <md-dropdown .options="${dropdownStringOptions}"></md-dropdown>
         `
@@ -25,13 +35,12 @@ describe("Dropdown Component", () => {
     });
 
     it("should open/close dropdown if label", async () => {
-      const label = dropdown.shadowRoot!.querySelector("label");
-      const event = new MouseEvent("click");
-      label!.dispatchEvent(event);
-      await dropdown.updateComplete;
+      await toggleExpandCollapseDropdown(dropdown);
+
       expect(dropdown["expanded"]).toBeTruthy();
-      label!.dispatchEvent(event);
-      await dropdown.updateComplete;
+
+      await toggleExpandCollapseDropdown(dropdown);
+
       expect(dropdown["expanded"]).toBeFalsy();
     });
 
@@ -78,21 +87,180 @@ describe("Dropdown Component", () => {
         })
       );
     });
+
+    it("should handle keydown events", async () => {
+      await toggleExpandCollapseDropdown(dropdown);
+
+      expect(dropdown["expanded"]).toBeTruthy();
+
+      expect(dropdown["focusedIndex"]).toBe(0);
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+
+      expect(dropdown["focusedIndex"]).toBe(2);
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowUp));
+
+      expect(dropdown["focusedIndex"]).toBe(1);
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Home));
+
+      expect(dropdown["focusedIndex"]).toBe(0);
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.End));
+
+      expect(dropdown["focusedIndex"]).toBe(dropdownStringOptions.length - 1);
+
+      setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+
+      const { detail } = await oneEvent(dropdown, "dropdown-selected");
+
+      expect(dropdown["expanded"]).toBeFalsy();
+
+      expect(detail).toEqual(
+        expect.objectContaining({
+          option: dropdownStringOptions[dropdownStringOptions.length - 1]
+        })
+      );
+    });
+
+    it("should allow unselected", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(
+        html`
+          <md-dropdown .options="${dropdownStringOptions}" allow-unselected></md-dropdown>
+        `
+      );
+
+      await toggleExpandCollapseDropdown(dropdown);
+      expect(dropdown["expanded"]).toBeTruthy();
+
+      expect(dropdown["selectedKey"]).toBe("");
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+
+      //
+      {
+        setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+
+        const { detail } = await oneEvent(dropdown, "dropdown-selected");
+        expect(dropdown["expanded"]).toBeFalsy();
+
+        expect(detail).toEqual(
+          expect.objectContaining({
+            option: dropdownStringOptions[0]
+          })
+        );
+      }
+
+      await toggleExpandCollapseDropdown(dropdown);
+      expect(dropdown["expanded"]).toBeTruthy();
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.ArrowUp));
+
+      //
+      {
+        setTimeout(() => dropdown.dispatchEvent(createKeyboardEvent(Key.Enter)));
+
+        const { detail } = await oneEvent(dropdown, "dropdown-selected");
+        expect(dropdown["expanded"]).toBeFalsy();
+
+        expect(detail).toEqual(
+          expect.objectContaining({
+            option: ""
+          })
+        );
+      }
+    });
   });
 
   describe("Behavior", () => {
-    it("should set correct aria attributes", async () => {
-      const dropdown = await fixture<Dropdown>(
+    let dropdown: Dropdown.ELEMENT;
+
+    beforeEach(async () => {
+      dropdown = await fixture<Dropdown.ELEMENT>(
         html`
           <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
         `
       );
+    });
+
+    it("should set correct aria attributes", async () => {
+      dropdown["expanded"] = true;
+
+      await elementUpdated(dropdown);
+
+      expect(dropdown.label!.getAttribute("aria-expanded")).toEqual("true");
+      expect(dropdown.label!.getAttribute("aria-label")).toEqual("Test");
+    });
+
+    it("should apply disabled attribute", async () => {
+      dropdown = await fixture<Dropdown.ELEMENT>(
+        html`
+          <md-dropdown .options="${dropdownStringOptions}" disabled></md-dropdown>
+        `
+      );
+      expect(dropdown.disabled).toBeTruthy();
+    });
+
+    it("should render correct icon name", () => {
+      expect(dropdown.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("icon-arrow-down_16");
+    });
+  });
+
+  describe("List", () => {
+    let dropdown: Dropdown.ELEMENT;
+
+    beforeEach(async () => {
+      dropdown = await fixture<Dropdown.ELEMENT>(
+        html`
+          <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+        `
+      );
+    });
+
+    it("should set correct aria label attribute", async () => {
+      expect(dropdown.optionsList!.getAttribute("aria-label")).toEqual("Test");
+    });
+
+    it("should set correct css class", async () => {
+      expect(dropdown["expanded"]).toBeFalsy();
+      expect(dropdown.classList.contains("md-dropdown__expanded")).toBeFalsy();
 
       dropdown["expanded"] = true;
 
       await elementUpdated(dropdown);
-      expect(dropdown.label!.getAttribute("aria-expanded")).toEqual("true");
-      expect(dropdown.label!.getAttribute("aria-label")).toEqual("Test");
+
+      expect(dropdown["expanded"]).toBeTruthy();
+
+      expect(
+        dropdown.shadowRoot!.querySelector(".md-dropdown")!.classList.contains("md-dropdown__expanded")
+      ).toBeTruthy();
+    });
+  });
+
+  describe("Option", () => {
+    let dropdown: Dropdown.ELEMENT;
+
+    beforeEach(async () => {
+      dropdown = await fixture<Dropdown.ELEMENT>(
+        html`
+          <md-dropdown
+            .options="${dropdownObjectLongOptions}"
+            .defaultOption="${dropdownObjectLongOptions[10]}"
+            option-id="id"
+            option-value="country"
+          ></md-dropdown>
+        `
+      );
+    });
+
+    it("should set selectedKey on default option", async () => {
+      await toggleExpandCollapseDropdown(dropdown);
+
+      expect(dropdown["selectedKey"]).toEqual(dropdownObjectLongOptions[10].id);
+      expect(dropdown.optionId).toEqual("id");
+      expect(dropdown.optionValue).toEqual("country");
     });
   });
 });

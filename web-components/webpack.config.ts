@@ -196,7 +196,8 @@ const commonDist = merge(common, {
     "comp/md-theme-entry": "./src/components/theme/Theme",
     "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
     "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
-    "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip"
+    "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
+    "comp/md-form": "./src/components/form/Form"
   },
   output: {
     path: pDist,
@@ -247,7 +248,7 @@ const commonDist = merge(common, {
           }
         ]
       }
-    }) as any,
+    }) as any
   ]
 });
 

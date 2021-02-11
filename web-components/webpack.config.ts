@@ -168,6 +168,7 @@ const commonDist = merge(common, {
     "comp/md-draggable-entry": "./src/components/draggable/Draggable",
     "comp/md-draggable-item-entry": "./src/components/draggable/DraggableItem",
     "comp/md-editable-field-entry": "./src/components/editable-textfield/EditableTextfield",
+    "comp/md-favorite-entry": "./src/components/favorite/Favorite",
     "comp/md-floating-modal-entry": "./src/components/floating-modal/FloatingModal",
     "comp/md-help-text-entry": "./src/components/help-text/HelpText",
     "comp/md-icon-entry": "./src/components/icon/Icon",
@@ -197,7 +198,8 @@ const commonDist = merge(common, {
     "comp/md-theme-entry": "./src/components/theme/Theme",
     "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
     "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
-    "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip"
+    "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
+    "comp/md-form": "./src/components/form/Form"
   },
   output: {
     path: pDist,
@@ -248,7 +250,7 @@ const commonDist = merge(common, {
           }
         ]
       }
-    }) as any,
+    }) as any
   ]
 });
 

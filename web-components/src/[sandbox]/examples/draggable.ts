@@ -103,6 +103,31 @@ export class SharedDraggable extends LitElement {
 
   render() {
     return html`
+      <div class="draggable-row-wrap">
+        <h3>Draggable Row</h3>
+        <md-draggable
+          sort
+          editable
+          handle = "md-icon[name='panel-control-dragger_16']">
+          ${this.selectedData.map((i: any) => html`
+              <md-draggable-item row>
+                <div class="first">${i.label}</div>
+                <div class="second">
+                  <md-checkbox checked>${i.dateFormat}</md-checkbox>
+                </div>
+                <div class="third">
+                  <md-combobox .options=${comboBoxOptions} placeholder="Choose Country"></md-combobox>
+                </div>
+                <div class="fourth">
+                  <md-icon name="plus-circle_24" size="16"></md-icon>
+                </div>
+              </md-draggable-item>
+            `
+          )}
+        </md-draggable> 
+      </div>
+      <br />
+      <h3>Draggable Item</h3>
       <div class="shared-draggable-wrapper">
         <md-draggable
           id="list1"
@@ -144,10 +169,6 @@ export class SharedDraggable extends LitElement {
 }
 
 export const draggableTemplate = html`
-  <h3>Default Row</h3>
-  <default-draggable-sandbox></default-draggable-sandbox>
-  <br />
-  <h3>Default Item</h3>
   <shared-draggable-sandbox></shared-draggable-sandbox>
   <br />
 `;

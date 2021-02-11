@@ -1,5 +1,5 @@
 import "@/components/button/Button";
-import { DateRangePicker } from "@/index";
+import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
@@ -62,9 +62,9 @@ export namespace DatePickerDay {
     };
 
     isDateInRange = () => {
-      const rangePicker = (this.closestElement("md-date-range-picker") as unknown) as typeof DateRangePicker;
-      const startDate = DateTime.fromSQL(rangePicker.startDate);
-      const endDate = DateTime.fromSQL(rangePicker.endDate);
+      const rangePicker = this.closestElement("md-date-range-picker") as DateRangePicker.ELEMENT;
+      const startDate = DateTime.fromSQL(rangePicker.startDate!);
+      const endDate = DateTime.fromSQL(rangePicker.endDate!);
       return this.day >= startDate && this.day <= endDate;
     };
 

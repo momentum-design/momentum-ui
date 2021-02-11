@@ -89,8 +89,15 @@
     
     &--in-range::part(button) {
       // background: var(--md-quaternary-bg-color, $md-gray-100);
-      background: black;
+      // background: black;
       color: white;
+
+      &::after {
+        background: red;
+        border-radius: 0;
+        height: 60%;
+        width: 100%;
+      }
     }
 
     &--outside-month {

@@ -198,6 +198,7 @@ export const comboBoxComplexObjectOption = [
     flag: "🇦🇸"
   }
 ];
+
 export const breadCrumb = [
   {
     link: "/one",
@@ -214,5 +215,43 @@ export const breadCrumb = [
   {
     link: "/four",
     label: "Four"
+  }
+];
+
+export const draggableMock = [
+  {
+    id: "12345",
+    label: "Agent Name",
+    dateFormat: "mmddyy",
+    action: true,
+    selected: true
+  },
+  {
+    id: "12346",
+    label: "Average Handle Time",
+    dateFormat: "mmddyy",
+    action: true,
+    selected: true
+  },
+  {
+    id: "12347",
+    label: "Average CSAT Scores",
+    dateFormat: "mmddyy",
+    action: true,
+    selected: false
+  },
+  {
+    id: "12348",
+    label: "Total Contacts Handled",
+    dateFormat: "mmddyy",
+    action: false,
+    selected: false
+  },
+  {
+    id: "12349",
+    label: "Agent Interval",
+    dateFormat: "mmddyy",
+    action: false,
+    selected: false
   }
 ];

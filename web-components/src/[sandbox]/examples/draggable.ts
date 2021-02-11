@@ -4,8 +4,10 @@ import "@/components/checkbox/Checkbox";
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import { GroupOptions } from "sortablejs";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import { css, customElement, html, LitElement } from "lit-element";
+import { comboBoxOptions, draggableMock } from "@/[sandbox]/sandbox.mock";
+import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { nothing } from "lit-html";
+import { repeat } from "lit-html/directives/repeat";
 
 @customElement("default-draggable-sandbox")
 export class DefaultDraggable extends LitElement {
@@ -58,67 +60,21 @@ export class DefaultDraggable extends LitElement {
   }
 }
 
-@customElement("custom-handle-draggable-sandbox")
-export class CustomHandleDraggable extends LitElement {
-  static get styles() {
-    return [
-      css`
-      md-draggable-item::part(draggable-icon) {
-        display: none;
-      }
-    }`
-    ];
-  }
-
-  render() {
-    return html`
-      <md-draggable handle="md-icon[name='window-vertical-scrub_16']"> 
-        <md-draggable-item row>
-          <md-icon name="window-vertical-scrub_16"></md-icon>
-          <div class="first">Europe Countries</div>
-          <div class="second">
-            <md-checkbox checked>Is country available from list ?</md-checkbox>
-          </div>
-          <div class="third">
-            <md-combobox .options=${comboBoxOptions} placeholder="Choose Country"></md-combobox>
-          </div>
-          <div class="fourth">
-            <md-icon name="plus-circle_24" size="16"></md-icon>
-          </div>
-        </md-draggable-item>
-        <md-draggable-item row>
-          <md-icon name="window-vertical-scrub_16"></md-icon>
-          <div class="first">Asian Countries</div>
-          <div class="second">
-            <md-checkbox checked>Is country available from list ?</md-checkbox>
-          </div>
-          <div class="third">
-            <md-combobox .options=${comboBoxOptions} placeholder="Choose Country"></md-combobox>
-          </div>
-          <div class="fourth">
-            <md-icon name="plus-circle_24" size="16"></md-icon>
-          </div>
-        </md-draggable-item>
-        <md-draggable-item row>
-          <md-icon name="window-vertical-scrub_16"></md-icon>
-          <div class="first">American Countries</div>
-          <div class="second">
-            <md-checkbox checked>Is country available from list ?</md-checkbox>
-          </div>
-          <div class="third">
-            <md-combobox .options=${comboBoxOptions} placeholder="Choose Country"></md-combobox>
-          </div>
-          <div class="fourth">
-            <md-icon name="plus-circle_24" size="16"></md-icon>
-          </div>
-        </md-draggable-item>
-      </md-draggable>
-    `;
-  }
-}
-
 @customElement("shared-draggable-sandbox")
 export class SharedDraggable extends LitElement {
+  @internalProperty() selectedData: any = undefined;
+
+  findSelected() {
+    let result =  Array.from(draggableMock.filter(item => item.selected));
+    this.selectedData = result;
+    console.log(this.selectedData);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.findSelected();
+  }
+
   static get styles() {
     return [
       css`
@@ -133,34 +89,28 @@ export class SharedDraggable extends LitElement {
   render() {
     return html`
       <div class="shared-draggable-wrapper">
-        <md-draggable .group=${{ name: "draggable", pull: "clone" } as GroupOptions}>
-          <md-draggable-item disabled>
-            <md-icon name="tag_16"></md-icon>
-            <span>Average CSAT Scores</span>
-          </md-draggable-item>
-          <md-draggable-item>
-            <md-icon name="tag_16"></md-icon>
-            <span>Average Handle Time</span>
-          </md-draggable-item>
-          <md-draggable-item>
-            <md-icon name="tag_16"></md-icon>
-            <span>Total Contacts Handled</span>
-          </md-draggable-item>
-          <md-draggable-item>
-            <md-icon name="tag_16"></md-icon>
-            <span>Internal Filter</span>
-          </md-draggable-item>
+        <md-draggable
+          .group=${{ name: "draggable", pull: "clone", put: false } as GroupOptions}>
+          ${repeat(
+            draggableMock, // the array of items
+            item => item.id, // the identify function
+              (item, i) => html`
+                <md-draggable-item>
+                  <md-icon name="tag_16"></md-icon>
+                  <span>${item.label}</span>
+                </md-draggable-item>
+              ` // the template for each item
+          )}
         </md-draggable>
         <md-draggable .group=${{ name: "draggable", pull: "clone" } as GroupOptions}>
-          <md-draggable-item>
-            <md-icon name="tag_16"></md-icon>
-            <span>Internal Filter 1</span>
-          </md-draggable-item>
-          <md-draggable-item>
-            <md-icon name="tag_16"></md-icon>
-            <span>Test Filter 1</span>
-          </md-draggable-item>
-        </md-draggable>
+          ${this.selectedData.map((i: any) => html`
+              <md-draggable-item>
+                <md-icon name="tag_16"></md-icon>
+                <span>${i.label}</span>
+              </md-draggable-item>
+            `
+          )}
+        </md-draggable> 
       </div>
     `;
   }
@@ -169,9 +119,6 @@ export class SharedDraggable extends LitElement {
 export const draggableTemplate = html`
   <h3>Default Row</h3>
   <default-draggable-sandbox></default-draggable-sandbox>
-  <br />
-  <h3>Custom Handle for Drag</h3>
-  <custom-handle-draggable-sandbox></custom-handle-draggable-sandbox>
   <br />
   <h3>Default Item</h3>
   <shared-draggable-sandbox></shared-draggable-sandbox>

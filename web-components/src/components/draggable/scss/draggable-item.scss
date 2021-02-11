@@ -12,7 +12,7 @@
     padding: $draggable-padding;
 
     md-icon {
-      cursor: move;
+      cursor: grabbing;
       margin-right: $draggable-padding;
     }
 
@@ -29,6 +29,7 @@
 
   &item {
     border-radius: $draggable-item-border-radius;
+    cursor: grabbing;
     display: flex;
     padding: calc(#{$draggable-padding} / 2) $draggable-padding;
 

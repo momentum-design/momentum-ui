@@ -49,7 +49,6 @@ export namespace Draggable {
       if (this.slotElement) {
         const children = this.slotElement.assignedElements({ flatten: true })
         this.getChildrenFromTree({ children }, this.items);
-        console.log(this.items)
       }
     }
 

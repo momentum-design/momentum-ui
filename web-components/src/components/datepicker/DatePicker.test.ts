@@ -18,7 +18,7 @@ describe("DatePicker Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePicker = await fixture(
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker></md-datepicker>
       `
@@ -28,7 +28,7 @@ describe("DatePicker Component", () => {
   test("should handle date selection update", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.plus({ days: 2 });
-    const el: DatePicker = await fixture(
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker .selectedDate=${firstDate}></md-datepicker>
       `
@@ -46,7 +46,7 @@ describe("DatePicker Component", () => {
 
   test("should navigate focus with keydown events", async () => {
     const startDate = now();
-    const el: DatePicker = await fixture(
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker .focusedDate=${startDate}></md-datepicker>
       `
@@ -71,7 +71,7 @@ describe("DatePicker Component", () => {
   });
   test("should select date with keydown events", async () => {
     const startDate = now();
-    const el: DatePicker = await fixture(
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker .focusedDate=${startDate}></md-datepicker>
       `

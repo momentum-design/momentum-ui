@@ -1,7 +1,8 @@
 import "./Form";
 import "@/components/input/Input";
+import "@/components/button/Button";
 import { Form } from "./Form";
-import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { querySelectorDeep } from "query-selector-shadow-dom";
 
 describe("Form Component", () => {
@@ -31,7 +32,7 @@ describe("Form Component", () => {
     expect(input.parentElement).toBeInstanceOf(HTMLFormElement);
   });
 
-  test("should validate form when is-valid attribute truthy", async () => {
+  test("should validate form when is-valid attribute provided", async () => {
     element.isvalid = true;
     elementUpdated(element);
 
@@ -44,5 +45,15 @@ describe("Form Component", () => {
     elementUpdated(element);
 
     expect(mockSubmit).toHaveBeenCalled();
+  });
+
+  test("should dispatch event in case if form submitted", async () => {
+    element.isvalid = true;
+    elementUpdated(element);
+
+    setTimeout(() => element.handleFormSubmit(new Event("dispatch")));
+    const event = await oneEvent(element, "form-submitted");
+
+    expect(event).toBeDefined();
   });
 });

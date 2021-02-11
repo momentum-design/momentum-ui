@@ -21,6 +21,7 @@ export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";
 export { Chip } from "./components/chip/Chip";
+export { Coachmark } from "./components/coachmark/Coachmark";
 export { CodeEditor } from "./components/code-editor/CodeEditor";
 export { ComboBox } from "./components/combobox/ComboBox";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
@@ -64,4 +65,5 @@ export { Theme } from "./components/theme/Theme";
 export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
+export { Form } from "./components/form/Form";
 // eslint-disable-next-line prettier/prettier

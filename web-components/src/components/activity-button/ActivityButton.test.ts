@@ -36,7 +36,7 @@ describe("ActivityButton", () => {
   });
 
   test("should render large meetings type", async () => {
-    const element = await fixture<ActivityButton>(
+    const element = await fixture<ActivityButton.ELEMENT>(
       `<md-activity-button type="meetings" size="84" label="Chat" disabled></md-activity-button>`
     );
     expect(element.size).toEqual("84");
@@ -47,7 +47,7 @@ describe("ActivityButton", () => {
   });
 
   test("should set default type if attribute value not correct", async () => {
-    const element = await fixture<ActivityButton>(
+    const element = await fixture<ActivityButton.ELEMENT>(
       `<md-activity-button type="meeting" label="Chat"></md-activity-button>`
     );
     expect(element.type).toEqual("chat");

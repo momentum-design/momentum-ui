@@ -7,7 +7,7 @@ describe("Avatar", () => {
   afterEach(fixtureCleanup);
 
   test("should set source property", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" title="Alyson Born" src="https://example.com"></md-avatar>
       `
@@ -16,7 +16,7 @@ describe("Avatar", () => {
   });
 
   test("should set color property", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" title="Alyson Born" color="mint"></md-avatar>
       `
@@ -25,7 +25,7 @@ describe("Avatar", () => {
   });
 
   test("should set size property", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" size="44"></md-avatar>
       `
@@ -34,7 +34,7 @@ describe("Avatar", () => {
   });
 
   test("should set correct pretify title", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" title=" Alyson Born Hoaland "></md-avatar>
       `
@@ -45,7 +45,7 @@ describe("Avatar", () => {
   });
 
   test("should render icon even if title is provided", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" title="Alyson Born Hoaland" color="mint" icon-name="warning_20"></md-avatar>
       `
@@ -57,7 +57,7 @@ describe("Avatar", () => {
   });
 
   test("should render self avatar type if type property provided with self value", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" size="36" title="Alyson Born Hoaland" type="self"></md-avatar>
       `
@@ -78,7 +78,7 @@ describe("Avatar", () => {
   });
 
   test("should render notification bange", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar has-notification type="active" size="72" title="Tom Smith"></md-avatar>
       `
@@ -89,7 +89,7 @@ describe("Avatar", () => {
   });
 
   test("should provide loading status if type is typing", async () => {
-    const element = await fixture<Avatar>(
+    const element = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar type="typing" title="Tom Smith"></md-avatar>
       `

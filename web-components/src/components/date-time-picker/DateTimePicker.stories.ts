@@ -1,5 +1,5 @@
 import "@/components/date-time-picker/DateTimePicker";
-import { weekStartDays } from "@/components/datepicker/DatePicker";
+import { DatePicker } from "@/components/datepicker/DatePicker";
 import { timeSpecificity } from "@/components/timepicker/TimePicker";
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
@@ -21,7 +21,7 @@ export default {
 export const DateTimePicker = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
-  const weekStart = select("weekStart", weekStartDays, "");
+  const weekStart = select("weekStart", DatePicker.weekStartDays, "");
   const twoDigitAutoTab = boolean("twoDigitAutoTab", false);
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
   const theTimeSpecificity = select("timeSpecificity", timeSpecificity, TIME_UNIT.SECOND);
@@ -37,7 +37,7 @@ export const DateTimePicker = () => {
         second: 0,
         millisecond: 0
       })
-      .toISO()
+      .toISO({ suppressMilliseconds: true })
   );
 
   const minDate = text(

@@ -29,10 +29,10 @@ Object.defineProperties(HTMLElement.prototype, {
 });
 
 describe("Modal Component", () => {
-  let element: Modal;
+  let element: Modal.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<Modal>(
+    element = await fixture<Modal.ELEMENT>(
       html`
         <md-modal>
           <input type="text" placeholder="Type Text" />

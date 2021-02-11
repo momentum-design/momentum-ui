@@ -4,10 +4,10 @@ import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 
 describe("Checkbox component", () => {
-  let element: Checkbox;
+  let element: Checkbox.ELEMENT;
   afterEach(fixtureCleanup);
   beforeEach(async () => {
-    element = await fixture<Checkbox>(`<md-checkbox></md-checkbox>`);
+    element = await fixture<Checkbox.ELEMENT>(`<md-checkbox></md-checkbox>`);
   });
   test("should render checkbox", async () => {
     expect(element).not.toBeNull();

@@ -11,7 +11,7 @@ describe("Badge component", () => {
   // color
   test("should set badge color", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge color="blue"></md-badge>
       `
@@ -22,7 +22,7 @@ describe("Badge component", () => {
   // small
   test("should set badge to small size", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge small></md-badge>
       `
@@ -33,7 +33,7 @@ describe("Badge component", () => {
   // outlined
   test("should set badge style to outlined", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge outlined></md-badge>
       `
@@ -44,7 +44,7 @@ describe("Badge component", () => {
   // custom bgColor badge
   test("should set user bgColor badge", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge bgColor="#000"></md-badge>
       `
@@ -54,7 +54,7 @@ describe("Badge component", () => {
   // custom size badge
   test("should set user bgColor badge", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge height="100px" width="100px"></md-badge>
       `
@@ -65,7 +65,7 @@ describe("Badge component", () => {
   // custom textColor badge
   test("should set user textColor", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge textColor="#000"></md-badge>
       `
@@ -75,7 +75,7 @@ describe("Badge component", () => {
   // split badge
   test("should set splitted badge", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge split></md-badge>
       `
@@ -84,7 +84,7 @@ describe("Badge component", () => {
   });
   test("should set splitted badge", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge color="mint" split small>
           <span slot="split-left">
@@ -105,7 +105,7 @@ describe("Badge component", () => {
   // circle
   test("should set circle badge", async () => {
     expect.hasAssertions();
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge circle></md-badge>
       `
@@ -116,7 +116,7 @@ describe("Badge component", () => {
   test("should set aria-label for badge", async () => {
     expect.hasAssertions();
     const ariaLabel = "my aria-label";
-    const component: Badge = await fixture(
+    const component: Badge.ELEMENT = await fixture(
       html`
         <md-badge aria-label=${ariaLabel}></md-badge>
       `

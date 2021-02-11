@@ -7,20 +7,20 @@ import { Theme } from "@/components/theme/Theme";
 import { Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
-  let theme: Theme;
-  let tooltip: Tooltip;
+  let theme: Theme.ELEMENT;
+  let tooltip: Tooltip.ELEMENT;
 
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    theme = await fixture<Theme>(html`
+    theme = await fixture<Theme.ELEMENT>(html`
       <md-theme>
         <md-tooltip message="Tooltip">
           <md-button>Tooltip</md-button>
         </md-tooltip>
       </md-theme>
     `);
-    tooltip = theme.querySelector("md-tooltip") as Tooltip;
+    tooltip = theme.querySelector("md-tooltip") as Tooltip.ELEMENT;
   });
 
   test("should notify md-theme in show/hide case", async () => {

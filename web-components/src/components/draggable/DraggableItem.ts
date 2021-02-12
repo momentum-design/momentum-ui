@@ -45,8 +45,9 @@ export namespace DraggableItem {
           part="draggable-item"
           tabindex="0"
           aria-disabled=${this.disabled}>
-          ${this.edit ? html`<md-icon name="panel-control-dragger_16"></md-icon>` : nothing}
+          ${this.edit && this.row ? html`<md-icon name="panel-control-dragger_16"></md-icon>` : nothing}
           <slot></slot>
+          ${this.row ? html`<slot name="row"></slot>` : nothing}
         </div>
       `;
     }

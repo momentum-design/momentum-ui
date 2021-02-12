@@ -69,7 +69,11 @@ export namespace Draggable {
 
         if (this.editable) {
           item.setAttribute("edit", "true");
+          this.handle = "md-icon[name='panel-control-dragger_16']"
+        } else {
+          item.removeAttribute("edit");
         }
+        
       })
     }
 
@@ -189,11 +193,14 @@ export namespace Draggable {
         this.setupItems();
         this.linkItems()
       }
+      if (changedProperties.has("editable")) {
+        this.linkItems()
+      }
     }
 
     render() {
       return html`
-        <div class="md-draggable" part="draggable">
+        <div class="md-draggable" part="draggable" editable=${this.editable}>
           <slot></slot>
         </div>
       `;

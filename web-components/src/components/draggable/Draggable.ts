@@ -7,8 +7,7 @@
  */
 
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
-import Sortable from "sortablejs";
-import { DraggableItem } from "./DraggableItem";
+import Sortable, { SortableOptions } from "sortablejs";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
@@ -19,23 +18,22 @@ export namespace Draggable {
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 0;
-    @property({ type: Boolean }) sort = false;
-    @property({ type: Boolean }) editable = false;
     @property({ type: String }) handle = "";
-    @property({ type: String }) filter = "[disabled]";
+    @property({ type: String }) filter = "";
     @property({ type: String }) easing = "";
     @property({ type: String }) direction: "horizontal" | "vertical" = "vertical";
     @property({ type: Object }) group: Sortable.GroupOptions = { name: "group" };
-    @property({ type: Boolean, attribute: "custom-placeholder" }) customPlaceholder = false;
     @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-item";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
-    @property({ type: String, attribute: "drag-class" }) dragClass = "dragging";
+    @property({ type: String, attribute: "drag-class" }) dragClass = "";
+    @property({ type: Boolean, reflect: true }) sort = false;
+    @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Boolean, reflect: true }) editable = false;
 
-    @query("slot") draggableSlot!: HTMLSlotElement;
+    @query("slot[name='draggable-item']") draggableSlot!: HTMLSlotElement;
 
     private sortableInstance: Sortable | null = null;
-    private items: DraggableItem.ELEMENT[] = [];
 
     static get styles() {
       return [reset, styles];
@@ -43,38 +41,6 @@ export namespace Draggable {
 
     get slotElement() {
       return this.draggableSlot;
-    }
-
-    private setupItems() {
-      if (this.slotElement) {
-        const children = this.slotElement.assignedElements({ flatten: true })
-        this.getChildrenFromTree({ children }, this.items);
-      }
-    }
-
-    private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem.ELEMENT[]) {
-      for (var i = 0; i < elem.children.length; i++) {
-        var child = elem.children[i];
-        if (child instanceof DraggableItem.ELEMENT) {
-          items.push(child);
-        }
-        this.getChildrenFromTree(child as any, items); // RECURSION
-      }
-    }
-
-    private async linkItems() {
-      const { items } = this;
-
-      items.forEach(item => {
-
-        if (this.editable) {
-          item.setAttribute("edit", "true");
-          this.handle = "md-icon[name='panel-control-dragger_16']"
-        } else {
-          item.removeAttribute("edit");
-        }
-        
-      })
     }
 
     private generateOptions() {
@@ -183,25 +149,29 @@ export namespace Draggable {
       this.cleanupSortable();
     }
 
+    private setSortableOption(changedProperties: PropertyValues) {
+      if (this.sortableInstance) {
+        // for (const [propertyKey, propertyValue] of changedProperties.entries()) {
+        //   if (propertyKey !== "editable") {
+        //     this.sortableInstance.option(propertyKey as SortableOptions, propertyValue);
+        //   }
+        // }
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      this.setSortableOption(changedProperties);
+    }
+
     protected slottedChanged() {
       this.initializeSortable();
     }
 
-    protected async updated(changedProperties: PropertyValues) {
-      super.updated(changedProperties);
-      if (changedProperties.has("slotted")) {
-        this.setupItems();
-        this.linkItems()
-      }
-      if (changedProperties.has("editable")) {
-        this.linkItems()
-      }
-    }
-
     render() {
       return html`
-        <div class="md-draggable" part="draggable" editable=${this.editable}>
-          <slot></slot>
+        <div class="md-draggable" part="draggable" aria-disabled=${this.disabled}>
+          <slot name="draggable-item"></slot>
         </div>
       `;
     }

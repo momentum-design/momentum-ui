@@ -11,6 +11,16 @@ export namespace DraggableItem {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) extended = false;
+    private _edit = false;
+    @property({ type: Boolean, reflect: true })
+    get edit() {
+      return this._edit;
+    }
+    set edit(value: boolean) {
+      const oldValue = this._edit;
+      this._edit = value;
+      this.requestUpdate("edit", oldValue);
+    }
 
     static get styles() {
       return [reset, styles];
@@ -31,11 +41,12 @@ export namespace DraggableItem {
           part="draggable-item"
           aria-disabled=${this.disabled}
         >
-          ${this.extended
+          ${this.extended && this.edit
             ? html`
                 <md-icon name="panel-control-dragger_16"></md-icon>
               `
-            : nothing}
+          : nothing}
+          ${this.extended ? nothing : html`<slot name="item"></slot>`}
           <slot></slot>
           ${this.extended ? html`<slot name="row"></slot>` : nothing}
         </div>

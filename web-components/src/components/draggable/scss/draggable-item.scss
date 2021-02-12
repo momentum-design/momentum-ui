@@ -3,7 +3,7 @@
 }
 
 .md-draggable-item {
-  .default {
+  &.extended {
     align-items: center;
     background-color: var(--md-secondary-white-bg-color);
     border: $draggable-row-border;
@@ -27,7 +27,8 @@
     }
   }
 
-  .extended {
+  &.default {
+    border: $draggable-default-border;
     border-radius: $draggable-item-border-radius;
     cursor: grabbing;
     display: flex;
@@ -46,7 +47,7 @@
 
   &:hover {
     background-color: transparent;
-    border: 0;
+    border: $draggable-default-border;
     box-shadow: none;
   }
 }

@@ -12,6 +12,7 @@ import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, SlottedMixin } from "@/mixins";
+import { DraggableItem } from "./DraggableItem";
 
 export namespace Draggable {
   @customElementWithCheck("md-draggable")
@@ -31,9 +32,10 @@ export namespace Draggable {
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) editable = false;
 
-    @query("slot[name='draggable-item']") draggableSlot!: HTMLSlotElement;
+    @query("slot") draggableSlot!: HTMLSlotElement;
 
     private sortableInstance: Sortable | null = null;
+    private items: DraggableItem.ELEMENT[] = [];
 
     static get styles() {
       return [reset, styles];
@@ -41,6 +43,37 @@ export namespace Draggable {
 
     get slotElement() {
       return this.draggableSlot;
+    }
+
+    private setupItems() {
+      if (this.slotElement) {
+        const children = this.slotElement.assignedElements({ flatten: true })
+        this.getChildrenFromTree({ children }, this.items);
+      }
+    }
+
+    private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem.ELEMENT[]) {
+      for (var i = 0; i < elem.children.length; i++) {
+        var child = elem.children[i];
+        if (child instanceof DraggableItem.ELEMENT) {
+          items.push(child);
+        }
+        this.getChildrenFromTree(child as any, items); // RECURSION
+      }
+    }
+
+    private async linkItems() {
+      const { items } = this;
+
+      items.forEach(item => {
+
+        if (this.editable) {
+          item.setAttribute("edit", "true");
+        } else {
+          item.removeAttribute("edit");
+        }
+        
+      })
     }
 
     private generateOptions() {
@@ -162,6 +195,13 @@ export namespace Draggable {
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       this.setSortableOption(changedProperties);
+      if (changedProperties.has("slotted")) {
+        this.setupItems();
+        this.linkItems()
+      }
+      if (changedProperties.has("editable")) {
+        this.linkItems()
+      }
     }
 
     protected slottedChanged() {
@@ -171,7 +211,7 @@ export namespace Draggable {
     render() {
       return html`
         <div class="md-draggable" part="draggable" aria-disabled=${this.disabled}>
-          <slot name="draggable-item"></slot>
+          <slot></slot>
         </div>
       `;
     }

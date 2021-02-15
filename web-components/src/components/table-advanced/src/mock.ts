@@ -42,17 +42,17 @@ export namespace TableMock {
           {
             groupName: "group1",
             children: [
-              { id: "col1", title: "col1" },
-              { id: "col2", title: "col2" },
+              { id: "col1", title: "col1f", sorter: "byString", filters: "forString" },
+              { id: "col2", title: "col2s" },
               { id: "col3", title: "col3" }
             ]
           },
-          { id: "col4", title: "col4 head", isHeader: true },
-          { id: "col5", title: "col5", sort: "byString" },
+          { id: "col4", title: "col4h", isHeader: true },
+          { id: "col5", title: "col5s", sorter: "byString" },
           {
             groupName: "group2",
             children: [
-              { id: "col6", title: "col6", filters: [{ name: "test"}, { name: "test1"}] },
+              { id: "col6", title: "col6f", filters: "forNumber" },
               { id: "col7", title: "col7" }
             ]
           }
@@ -61,9 +61,9 @@ export namespace TableMock {
     },
     data: {
       list2d: [
-        ["11", "12 \r 121 \n 122", "13 \n 131 \n 132", "14 \n 141", "15", "16", "17"],
-        ["21", "22", "23", "24", "25", "26", "27"],
-        ["31", "32", "33", "34", "35", "36", "37"]
+        ["col11", "12", "13", "14", "15", "16", "17"],
+        ["col21 sub", "22", "23", "24", "25", "26", "27"],
+        ["col31 sub zz", "32", "33", "34", "35", "36", "37"]
       ]
     }
   };

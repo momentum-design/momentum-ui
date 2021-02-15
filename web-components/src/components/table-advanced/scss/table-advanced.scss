@@ -21,9 +21,44 @@
 
     thead {
       tr {
-        th.sortable {
-          background-color: silver;
-          cursor: pointer;
+        th {
+          .filter {
+            visibility: hidden;
+            cursor: pointer;
+            float: right;
+            padding: 0 5px;
+            border: none;
+          }
+
+          .filter-menu {
+            position: absolute;
+            top: 39px;
+            left: 0;
+            background-color: white;
+            padding: 20px;
+            select {
+              width: 172px;
+            }
+            input {
+              margin-top: 5px;
+            }
+          }
+
+          .sort {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+          }
+
+          &:hover {
+            .filter {
+              visibility: visible;
+            }
+          }
         }
       }
     }

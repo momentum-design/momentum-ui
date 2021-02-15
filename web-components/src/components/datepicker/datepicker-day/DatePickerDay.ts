@@ -22,7 +22,7 @@ export namespace DatePickerDay {
 
     @internalProperty() protected isOutsideMonth = false;
     @internalProperty() protected isToday = false;
-    @internalProperty() protected parentIsRangePicker = false;
+    @internalProperty() protected parentIsRangePicker: DateRangePicker.ELEMENT | null = null;
     @internalProperty() protected dateIsInRange = false;
 
     @query("md-button") button!: HTMLButtonElement;
@@ -34,7 +34,7 @@ export namespace DatePickerDay {
       this.isToday = isSameDay(this.day, now());
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
-      this.parentIsRangePicker = this.closestElement("md-date-range-picker") ? true : false;
+      this.parentIsRangePicker = this.closestElement("md-date-range-picker") as DateRangePicker.ELEMENT;
     }
 
     updated(changedProperties: PropertyValues) {
@@ -79,6 +79,15 @@ export namespace DatePickerDay {
       return __closestFrom(base);
     }
 
+    isLeadingRangeEdge() {
+      return (
+        this === this.parentNode?.firstElementChild || this.parentIsRangePicker?.startDate === this.day.toSQLDate()
+      );
+    }
+    isEndingRangeEdge() {
+      return this === this.parentNode?.lastElementChild || this.parentIsRangePicker?.endDate === this.day.toSQLDate();
+    }
+
     handleKeyDown = (e: KeyboardEvent) => {
       this.dispatchEvent(
         new CustomEvent("day-key-event", {
@@ -102,7 +111,9 @@ export namespace DatePickerDay {
         "md-datepicker__day--focus": this.focused,
         "md-datepicker__day--today": this.isToday,
         "md-datepicker__day--outside-month": this.isOutsideMonth,
-        "md-datepicker__day--in-range": this.dateIsInRange
+        "md-datepicker__day--in-range": this.dateIsInRange,
+        "md-datepicker__day--week-first": this.isLeadingRangeEdge(),
+        "md-datepicker__day--week-last": this.isEndingRangeEdge()
       };
 
       return html`

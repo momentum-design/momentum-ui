@@ -89,14 +89,34 @@
     
     &--in-range::part(button) {
       // background: var(--md-quaternary-bg-color, $md-gray-100);
-      // background: black;
       color: white;
+      z-index: 10;
+      
+      &::before {
+        background: #dedede;
+        content: "";
+        display: block;
+        height: 1.75rem;
+        left: -2px;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: 2.25rem;
+        z-index: -1;
+      }
+    }
 
-      &::after {
-        background: red;
-        border-radius: 0;
-        height: 60%;
-        width: 100%;
+    &--week-first::part(button) {
+      &::before {
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
+      }
+    }
+
+    &--week-last::part(button) {
+      &::before {
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
       }
     }
 

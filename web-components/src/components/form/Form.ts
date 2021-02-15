@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { html, LitElement, property, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { SlottedMixin } from "@/mixins";
+import { SlottedMixin, customElementWithCheck } from "@/mixins";
 
 export namespace Form {
   export type Method = "GET" | "POST" | "dialog";
@@ -15,7 +15,7 @@ export namespace Form {
   export type Target = "_self" | "_blank" | "_parent" | "_top";
   export type SubmittableElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-  @customElement("md-form")
+  @customElementWithCheck("md-form")
   export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: String }) rel = "";
     @property({ type: String }) name = "";
@@ -28,6 +28,7 @@ export namespace Form {
     @property({ type: String, reflect: true, attribute: "accept-charset" }) charset = "UTF-8";
     @property({ type: Boolean, reflect: true, attribute: "is-valid" }) isvalid = false;
     @property({ type: String, attribute: "autofill-token" }) token = "on";
+    @property({ type: Boolean, attribute: "allow-redirect" }) allowRedirect = false;
     @property({ type: String, attribute: "autofill-name" }) autofillname = "input-name";
 
     @query(".md-form") protected form!: HTMLFormElement;
@@ -97,7 +98,16 @@ export namespace Form {
     };
 
     handleFormSubmit = (event: Event) => {
-      event.preventDefault();
+      if (!this.allowRedirect) {
+        event.preventDefault();
+      }
+
+      this.dispatchEvent(
+        new CustomEvent("form-submitted", {
+          composed: true,
+          bubbles: true
+        })
+      );
     };
 
     private submitForm() {
@@ -203,6 +213,7 @@ export namespace Form {
           method=${this.method}
           target=${this.target}
           part="form"
+          @submit=${this.handleFormSubmit}
         >
           <slot></slot>
         </form>

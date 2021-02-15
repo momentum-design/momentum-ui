@@ -149,19 +149,22 @@ export namespace Draggable {
       this.cleanupSortable();
     }
 
-    private setSortableOption(changedProperties: PropertyValues) {
-      if (this.sortableInstance) {
-        // for (const [propertyKey, propertyValue] of changedProperties.entries()) {
-        //   if (propertyKey !== "editable") {
-        //     this.sortableInstance.option(propertyKey as SortableOptions, propertyValue);
-        //   }
-        // }
+    private setSortableOption(name: Partial<keyof SortableOptions>, value: SortableOptions[keyof SortableOptions]) {
+      if (this.sortableInstance && Object.prototype.hasOwnProperty.call(this.sortableInstance, name)) {
+        this.sortableInstance.option(name, value);
+      }
+    }
+
+    private updateSortableInstance(changedProperties: PropertyValues) {
+      for (const propertyKey of changedProperties.keys()) {
+        const value = (this as Draggable.ELEMENT)[propertyKey as keyof Draggable.ELEMENT];
+        this.setSortableOption(propertyKey as keyof SortableOptions, value as SortableOptions[keyof SortableOptions]);
       }
     }
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      this.setSortableOption(changedProperties);
+      this.updateSortableInstance(changedProperties);
     }
 
     protected slottedChanged() {

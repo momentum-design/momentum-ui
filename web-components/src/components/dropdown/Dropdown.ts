@@ -1,3 +1,4 @@
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
@@ -14,7 +15,7 @@ export namespace Dropdown {
   type Option = string | OptionMember;
   type RenderOptionMember = { key: string; value: string; option?: Option };
 
-  export type DropdownEvents = {
+  export type EventDetail = {
     "dropdown-focus-in": undefined;
     "dropdown-focus-out": undefined;
     "dropdown-selected": {
@@ -164,7 +165,7 @@ export namespace Dropdown {
       }
 
       this.dispatchEvent(
-        new CustomEvent<DropdownEvents["dropdown-focus-in"]>("dropdown-focus-in", {
+        new CustomEvent<EventDetail["dropdown-focus-in"]>("dropdown-focus-in", {
           composed: true,
           bubbles: true
         })
@@ -175,7 +176,7 @@ export namespace Dropdown {
       super.handleFocusOut && super.handleFocusOut(event);
 
       this.dispatchEvent(
-        new CustomEvent<DropdownEvents["dropdown-focus-out"]>("dropdown-focus-out", {
+        new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,
           bubbles: true
         })
@@ -225,7 +226,7 @@ export namespace Dropdown {
           this.selectedKey = nextSelectedKey;
 
           this.dispatchEvent(
-            new CustomEvent<DropdownEvents["dropdown-selected"]>("dropdown-selected", {
+            new CustomEvent<EventDetail["dropdown-selected"]>("dropdown-selected", {
               composed: true,
               bubbles: true,
               detail: {
@@ -425,15 +426,6 @@ export namespace Dropdown {
             "md-dropdown__expanded": this.expanded
           })}"
         >
-          <!-- <select class="md-dropdown-select" ?disabled="${this.disabled}">
-          ${repeat(
-            this.renderOptions,
-            o => o.key,
-            o => html`
-              <option value="${o.key}" ?selected="${o.key === this.selectedKey}">${o.value}</option>
-            `
-          )}
-        </select> -->
           <label
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"

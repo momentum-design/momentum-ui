@@ -1,4 +1,4 @@
-import { DropdownEvents } from "@/components/dropdown/Dropdown";
+import { Dropdown } from "@/components/dropdown/Dropdown";
 import { html } from "lit-element";
 
 export const dropdownStringOptions = ["one", "two", "three", "   non-trimmed "];
@@ -102,7 +102,7 @@ export const dropdownTemplate = html`
   <h3>Strings Options</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
@@ -112,7 +112,7 @@ export const dropdownTemplate = html`
   <md-dropdown
     .options="${dropdownStringOptions}"
     allow-unselected
-    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options (Allow unselected)] Selected: ", e.detail);
     }}"
   ></md-dropdown>
@@ -120,14 +120,14 @@ export const dropdownTemplate = html`
   <md-dropdown
     .options="${dropdownStringLongOptions}"
     .defaultOption="${dropdownStringLongOptions[29]}"
-    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Long Options (Preselected)] Selected: ", e.detail);
     }}"
   ></md-dropdown>
   <h3>Single KeyValue Objects Options</h3>
   <md-dropdown
     .options="${dropdownObjectKeyValueOptions}"
-    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Single KeyValue Objects Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
@@ -136,7 +136,7 @@ export const dropdownTemplate = html`
     .options="${dropdownObjectOptions}"
     option-id="user_id"
     option-value="full_name"
-    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Multi KeyValue Objects Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
@@ -145,7 +145,7 @@ export const dropdownTemplate = html`
     .options="${dropdownObjectLongOptions}"
     option-id="id"
     option-value="country"
-    @dropdown-selected="${(e: CustomEvent<DropdownEvents["dropdown-selected"]>) => {
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Multi KeyValue Objects Long Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>

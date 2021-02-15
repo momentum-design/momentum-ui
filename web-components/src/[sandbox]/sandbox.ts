@@ -119,13 +119,6 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-          <div class="container" aria-label="md-dropdown">
-            <h2>md-dropdown</h2>
-            <sass-stats component="dropdown">
-              ${dropdownTemplate}
-            </sass-stats>
-          </div>
-
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
@@ -245,12 +238,12 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <!-- <div class="container" aria-label="md-dropdown">
+          <div class="container" aria-label="md-dropdown">
             <h2>md-dropdown</h2>
             <sass-stats component="dropdown">
               ${dropdownTemplate}
             </sass-stats>
-          </div> -->
+          </div>
 
           <div class="container" aria-label="md-editable-field">
             <h2>md-editable-field</h2>

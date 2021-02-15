@@ -14,7 +14,7 @@ import "@/components/menu/MenuItem";
 import "@/components/theme/Theme";
 
 export default {
-  title: "menu",
+  title: "Menu",
   component: "md-menu",
   decorators: [withKnobs, withA11y],
   parameters: {
@@ -26,7 +26,7 @@ export default {
 
 const menuDirection = ["horizontal", "vertical"];
 
-export const Link = () => {
+export const Menu = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const direction = select("Direction", menuDirection, "horizontal");

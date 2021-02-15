@@ -11,7 +11,7 @@ import {
   oneEvent
 } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
-import { MenuOverlay, MenuOverlayElement, OverlaySizes } from "./MenuOverlay";
+import { MenuOverlay, OverlaySizes } from "./MenuOverlay";
 
 jest.mock("@/utils/helpers", () => {
   return {
@@ -47,12 +47,12 @@ Object.defineProperties(HTMLElement.prototype, {
 const fixtureFactory = async (
   isOpen: boolean,
   showArrow: boolean,
-  placement: MenuOverlayElement.Placement,
+  placement: MenuOverlay.Placement,
   customWidth: string,
   maxHeight: string,
-  size: MenuOverlayElement.Size
-): Promise<MenuOverlay> => {
-  return await fixture<MenuOverlay>(html`
+  size: MenuOverlay.Size
+): Promise<MenuOverlay.ELEMENT> => {
+  return await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
       ?is-open=${isOpen}
       ?show-arrow=${showArrow}
@@ -200,7 +200,7 @@ describe("MenuOverlay", () => {
 
   test("should test showArrow property on first render", async () => {
     const tag = defineCE(
-      class extends MenuOverlay {
+      class extends MenuOverlay.ELEMENT {
         constructor() {
           super();
           this.isOpen = true;
@@ -215,12 +215,12 @@ describe("MenuOverlay", () => {
     );
 
     const button = document.createElement("button");
-    Object.defineProperty(MenuOverlay.prototype, "trigger", {
+    Object.defineProperty(MenuOverlay.ELEMENT.prototype, "trigger", {
       get: jest.fn().mockReturnValue([button]),
       set: jest.fn()
     });
 
-    const element = fixtureSync<MenuOverlay>(`<${tag}></${tag}>`);
+    const element = fixtureSync<MenuOverlay.ELEMENT>(`<${tag}></${tag}>`);
     const event = await oneEvent(element, "first-updated");
     expect(event).toBeDefined();
     expect(element.arrow.hasAttribute("data-show")).toBeTruthy();

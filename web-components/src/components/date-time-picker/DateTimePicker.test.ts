@@ -14,7 +14,7 @@ describe("DateTimePicker Component", () => {
   });
 
   test("should render", async () => {
-    const el: DateTimePicker = await fixture(
+    const el: DateTimePicker.ELEMENT = await fixture(
       html`
         <md-date-time-picker></md-date-time-picker>>
       `
@@ -24,7 +24,7 @@ describe("DateTimePicker Component", () => {
   });
 
   test("should render with default date and time", async () => {
-    const el: DateTimePicker = await fixture(
+    const el: DateTimePicker.ELEMENT = await fixture(
       html`
         <md-date-time-picker></md-date-time-picker>>
       `

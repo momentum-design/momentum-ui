@@ -1,10 +1,10 @@
-import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { Key } from "@/constants";
 import "./Menu";
 import { Menu } from "./Menu";
 
-const fixtureFactory = async (): Promise<Menu> => {
-  return await fixture<Menu>(html`
+const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
+  return await fixture<Menu.ELEMENT>(html`
     <md-menu>
       <md-menu-item >
         <md-icon name="recents_16"></md-icon>

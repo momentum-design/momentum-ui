@@ -6,10 +6,10 @@ import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helper
 describe("Pagination component", () => {
   afterEach(fixtureCleanup);
 
-  let element: Pagination;
+  let element: Pagination.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<Pagination>(
+    element = await fixture<Pagination.ELEMENT>(
       html`
         <md-pagination total-page="20" current-page="10" visible-page="3"></md-pagination>
       `

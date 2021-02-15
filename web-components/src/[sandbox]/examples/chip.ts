@@ -5,6 +5,15 @@ import { html } from "lit-element";
 export const chipTemplate = html`
   <h3 class="sandbox-header">Default Chip</h3>
   <md-chip value="developer@cisco.ninja"> </md-chip>
+  <h3 class="sandbox-header">Additional Color Chip</h3>
+  <md-chip value="Gray" color="gray"> </md-chip>
+  <md-chip value="Violet" color="violet"> </md-chip>
+  <md-chip value="Mint" color="mint"> </md-chip>
+  <md-chip value="Gold" color="gold"> </md-chip>
+  <md-chip value="Lime" color="lime"> </md-chip>
+  <md-chip value="Pink" color="pink"> </md-chip>
+  <md-chip value="Orange" color="orange"> </md-chip>
+  <md-chip value="Cobalt" color="cobalt"> </md-chip>
   <h3 class="sandbox-header">Read Only Default Chip</h3>
   <md-chip value="developer@cisco.ninja" readonly> </md-chip>
   <h3 class="sandbox-header">Selected Chip</h3>

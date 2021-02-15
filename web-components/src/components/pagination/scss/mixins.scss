@@ -1,0 +1,11 @@
+@mixin list-style() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin text-overflow() {
+  display: block;
+  overflow: hidden;
+  text-indent: -9999px;
+}

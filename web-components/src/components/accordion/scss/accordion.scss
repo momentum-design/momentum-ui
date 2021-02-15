@@ -1,0 +1,23 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none !important;
+}
+
+:host(md-accordion) {
+  font-size: $accordion-font-size;
+
+  .md-accordion {
+    width: 100%;
+    border-radius: $accordion-border-radius;
+  }
+}
+
+:host(md-accordion[focusable]) {
+  .md-accordion {
+    box-shadow: 0 0 0 rem-calc(2) $accordion-border_focus;
+
+    &-header {
+      background: $accordion-bg_focus;
+    }
+  }
+}

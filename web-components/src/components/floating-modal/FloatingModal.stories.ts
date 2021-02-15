@@ -44,13 +44,14 @@ export default {
 
 export const FloatingModal = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const show = boolean("show", false);
   const full = boolean("full-screen", false);
   const fixed = boolean("fixed-strategy", false)
 
   return html`
 
-    <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <md-floating-modal ?show=${show} ?full-screen=${full} ?fixed-strategy=${fixed}>
       <md-radiogroup group-label="group_process">
         <md-radio slot="radio" value="Option 1">Option 1</md-radio>

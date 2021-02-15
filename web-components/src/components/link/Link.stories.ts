@@ -10,7 +10,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/link/Link";
-import { linkTag, LinkColor } from "@/components/link/Link";
+import { linkTag, linkColor } from "@/components/link/Link";
 import "@/components/theme/Theme";
 
 export default {
@@ -26,18 +26,19 @@ export default {
 
 export const Link = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const href = text("href", "http://google.com");
   const tag = select("HTML Tag", linkTag, "");
   const disabled = boolean("Disabled", false);
   const inline = boolean("Link Inline", false);
   const target = text("Target", "_self");
-  const color = select("Link color", LinkColor, "blue")
+  const color = select("Link color", linkColor, "blue")
 
   return html`
-    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-link 
         .href=${href} 
-        .tag=${tag} 
+        .tag=${tag as any} 
         .target="${target}"
         .color="${color}"
         ?disabled=${disabled} 

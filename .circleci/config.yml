@@ -110,7 +110,42 @@ jobs:
           command: yarn ci:test:wc
       - run:
           name: Build Storybook
-          command: yarn storybook:wc
+          command: yarn storybook:wc-dist
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  storybook_web_components:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Deploy Storybook
+          command: yarn storybook:wc-deploy
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  static_analysis:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Unit Test web components library
+          command: yarn ci:test:wc
+      - run: 
+          name: Upload Codecov report
+          command: bash <(curl -s https://codecov.io/bash)
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -231,9 +266,23 @@ workflows:
       - test_icons:
           requires:
             - lint
+      - static_analysis:
+          requires:
+            - build_tokens
       - percy_finalize_all:
           requires:
             - test_react
+
+  daily_storybook_deploy:
+    triggers:
+      - schedule:
+          cron: "30 5 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - storybook_web_components
 
   daily_release:
     triggers:

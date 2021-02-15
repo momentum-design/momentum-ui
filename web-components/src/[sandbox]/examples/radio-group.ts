@@ -20,14 +20,14 @@ export const radioGroupTemplate = html`
     <md-radio slot="radio" value="Option 3">Option 3</md-radio>
   </md-radiogroup>
   <h3>Pre-Checked Radio</h3>
-  <md-radiogroup group-label="group_process" checked="2">
+  <md-radiogroup group-label="group_process" checked="1">
     <md-radio slot="radio" value="Option 1">Option 1</md-radio>
     <md-radio slot="radio" value="Option 2">Option 2 [Preselected]</md-radio>
     <md-radio slot="radio" value="Option 3">Option 3</md-radio>
     <md-radio slot="radio" value="Option 4">Option 4</md-radio>
   </md-radiogroup>
   <h3>Disabled</h3>
-  <md-radiogroup group-label="group_process" checked="3">
+  <md-radiogroup group-label="group_process" checked="2">
     <md-radio slot="radio" value="Option">Option</md-radio>
     <md-radio slot="radio" value="Disabled" disabled>Disabled</md-radio>
     <md-radio slot="radio" value="Option 2 ">Option 2 [Preselected]</md-radio>

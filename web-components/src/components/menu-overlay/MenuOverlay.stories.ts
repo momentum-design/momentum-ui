@@ -38,6 +38,7 @@ export default {
 
 export const MenuOverlay = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const isOpen = boolean("isOpen", false);
   const disabled = boolean("Disabled", false)
   const placement = select("placement", menuOverlayPlacement, "bottom");
@@ -47,7 +48,7 @@ export const MenuOverlay = () => {
   const customWidth = text("custom width", "");
 
   return html`
-    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme}>
+    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-menu-overlay
         style="margin: 10rem"
         placement=${placement}

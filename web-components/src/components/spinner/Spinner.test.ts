@@ -7,12 +7,12 @@ describe("Spinner component", () => {
   afterEach(fixtureCleanup);
 
   test("should render correctly", async () => {
-    const element = await fixture<Spinner>(`<md-spinner></md-spinner>`);
+    const element = await fixture<Spinner.ELEMENT>(`<md-spinner></md-spinner>`);
     expect(element).toBeDefined();
   });
 
   test("should render size", async () => {
-    const element = await fixture<Spinner>(
+    const element = await fixture<Spinner.ELEMENT>(
       html`
         <md-spinner size="20"></md-spinner>
       `

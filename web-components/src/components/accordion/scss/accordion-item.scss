@@ -1,0 +1,63 @@
+:host(md-accordion-item) {
+  display: block;
+
+  .md-accordion {
+    &-header {
+      @include flex($jc: space-between, $ai: stretch);
+    }
+
+    &-expander {
+      @include button-reset;
+      @include flex($jc: flex-start, $ai: stretch);
+      border-radius: $accordion-btn-border-radius;
+      flex: 0 1 100%;
+      padding: $accordion-base-indent;
+
+      md-icon {
+        display: flex;
+        margin: 0 0 0 auto;
+      }
+
+      &-label {
+        @include text-dots;
+        color: var(--md-secondary-text-color);
+        display: flex;
+        flex: 0 1 auto;
+      }
+    }
+
+    &-panel {
+      display: none;
+      padding: $accordion-base-indent;
+    }
+  }
+}
+
+:host(md-accordion-item[expanded]) {
+  .md-accordion-panel {
+    display: block;
+  }
+}
+
+:host(md-accordion-item[focus-visible]) {
+  .md-accordion-expander {
+    box-shadow: 0 0 0 rem-calc(2) $accordion-border_focus;
+    color: $accordion-active;
+  }
+}
+
+:host(md-accordion-item) {
+  .md-accordion-item:hover {
+    .md-accordion-header {
+      background: $accordion_hover;
+      border-radius: $accordion-btn-border-radius;
+    }
+  }
+}
+
+:host(md-accordion-item[disabled]) {
+  .md-accordion-expander {
+    color: $accordion-disabled;
+    cursor: not-allowed;
+  }
+}

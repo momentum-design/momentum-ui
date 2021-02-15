@@ -49,7 +49,7 @@ const button = {
     hover: {
       "bg-color": {
         light: colors.gray[30].name,
-        dark: colors.gray[95].name
+        dark: colors.gray[90].name
       }
     },
     pressed: {
@@ -265,6 +265,20 @@ const button = {
     "text-color": {
       light: colors.gray[40].name,
       dark: colors.gray[70].name
+    }
+  },
+  favorite: {
+    hover: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[80].name
+      }
     }
   },
   "focus-ring": {

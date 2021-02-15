@@ -1,5 +1,5 @@
 import { now } from "@/utils/dateUtils";
-import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { DateTime } from "luxon";
 import "./DatePicker";
 import { DatePicker } from "./DatePicker";
@@ -18,7 +18,7 @@ describe("DatePicker Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePicker = await fixture(
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker></md-datepicker>
       `
@@ -26,9 +26,9 @@ describe("DatePicker Component", () => {
     expect(el).not.toBeNull();
   });
   test("should handle date selection update", async () => {
-    const firstDate = now();
-    const secondDate = now().plus({ days: 2 });
-    const el: DatePicker = await fixture(
+    const firstDate = DateTime.fromObject({ month: 11, day: 15 });
+    const secondDate = firstDate.plus({ days: 2 });
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker .selectedDate=${firstDate}></md-datepicker>
       `
@@ -45,8 +45,8 @@ describe("DatePicker Component", () => {
   });
 
   test("should navigate focus with keydown events", async () => {
-    const startDate = DateTime.fromObject({ month: 11, day: 15 });
-    const el: DatePicker = await fixture(
+    const startDate = now();
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker .focusedDate=${startDate}></md-datepicker>
       `
@@ -54,24 +54,24 @@ describe("DatePicker Component", () => {
     const selectionFunc = jest.spyOn(el, "handleSelect");
     const navLeft = keyNavEvent("ArrowLeft", startDate);
     el.handleKeyDown(navLeft);
-    await el.updateComplete;
-    expect(el.focusedDate.day).toEqual(startDate.day - 1);
+    await elementUpdated(el);
+    expect(el.focusedDate.ordinal).toEqual(startDate.ordinal - 1);
     const navRight = keyNavEvent("ArrowRight", startDate);
     el.handleKeyDown(navRight);
-    await el.updateComplete;
-    expect(el.focusedDate.day).toEqual(startDate.day);
+    await elementUpdated(el);
+    expect(el.focusedDate.ordinal).toEqual(startDate.ordinal);
     const navUp = keyNavEvent("ArrowUp", startDate);
     el.handleKeyDown(navUp);
-    await el.updateComplete;
-    expect(el.focusedDate.day).toEqual(startDate.day - 7);
+    await elementUpdated(el);
+    expect(el.focusedDate.ordinal).toEqual(startDate.ordinal - 7);
     const navDown = keyNavEvent("ArrowDown", startDate);
     el.handleKeyDown(navDown);
-    await el.updateComplete;
-    expect(el.focusedDate.day).toEqual(startDate.day);
+    await elementUpdated(el);
+    expect(el.focusedDate.ordinal).toEqual(startDate.ordinal);
   });
   test("should select date with keydown events", async () => {
-    const startDate = DateTime.fromObject({ month: 11, day: 15 });
-    const el: DatePicker = await fixture(
+    const startDate = now();
+    const el: DatePicker.ELEMENT = await fixture(
       html`
         <md-datepicker .focusedDate=${startDate}></md-datepicker>
       `

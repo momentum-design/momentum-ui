@@ -16,13 +16,10 @@
 }
 
 @mixin secondary-label {
-  align-self: center;
   color: var(--label-secondary, $lm-label-secondary-light);
   display: flex;
   flex-grow: 1;
   font-size: $secondary-label__font-size;
-  height: 100%;
   line-height: $secondary-label__line-height;
-  padding-left: rem-calc(8);
-  width: auto;
+  padding: $secondary-label__indent;
 }

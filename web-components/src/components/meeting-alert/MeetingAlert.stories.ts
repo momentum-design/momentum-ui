@@ -6,11 +6,12 @@
  *
  */
 
-import { array, boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/meeting-alert/MeetingAlert";
+import { MeetingAlertRole } from "@/components/meeting-alert/MeetingAlert";
 import "@/components/theme/Theme";
 
 export default {
@@ -43,6 +44,7 @@ const defaultValue = [
 
 export const MeetingAlert = () => {
   const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
   const show = boolean("Show", true);
   const closeAriaLabel = text("Close Aria Label", "Webex Teams aria label");
   const remindAriaLabel = text("Remind Aria Label", "Webex Teams Remind");
@@ -50,7 +52,7 @@ export const MeetingAlert = () => {
   const src = text("Src", "https://api.adorable.io/avatars/285/abott@adorable.png");
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
-  const role = text("Role", "alert");
+  const role = select ("Role", MeetingAlertRole, "alert");
   const userStyles = text("UserStyles", " ");
   const withAttendees = boolean("With Attendees", false);
 
@@ -58,10 +60,10 @@ export const MeetingAlert = () => {
     const attendees = array("Attendees", defaultValue);
 
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-meeting-alert
           show
-          .attendees=${attendees}
+          .attendees=${attendees as any}
           status="Queue_Demo7"
           title="Jane Doe"
           src=${MEETING_ALERT_SRC}
@@ -72,7 +74,7 @@ export const MeetingAlert = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-meeting-alert
           .show=${show}
           .closeAriaLabel=${closeAriaLabel}

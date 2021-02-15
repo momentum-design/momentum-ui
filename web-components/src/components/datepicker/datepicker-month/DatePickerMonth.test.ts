@@ -7,7 +7,7 @@ describe("DatePickerMonth Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePickerMonth = await fixture(
+    const el: DatePickerMonth.ELEMENT = await fixture(
       html`
         <md-datepicker-month></md-datepicker-month>
       `

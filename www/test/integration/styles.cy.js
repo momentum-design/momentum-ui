@@ -1,58 +1,40 @@
 describe('Styles pages', function() {
   describe('Test the styles pages', () => {
-    it('Learn more should navigate to Styles Color page', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/styles`)
-        .get('.overview__title')
+    it('Color should navigate to Color tokens page', () => {
+      cy.visit(`${Cypress.env('BASE_URL')}/tokens`)
+        .get('.token-squares-container__item p')
         .contains('Color')
-        .siblings('.overview__link')
+        .parents('.token-squares-container a')
         .click()
         .url()
-        .should('include', 'styles/color');
+        .should('include', 'tokens/color');
     });
-    it('Learn more should navigate to Styles Design Tokens page', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/styles`)
-        .get('.overview__title')
-        .contains('Design Tokens')
-        .siblings('.overview__link')
-        .click()
-        .url()
-        .should('include', 'styles/design-tokens');
-    });
-    it('Learn more should navigate to Styles Icons page', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/styles`)
-        .get('.overview__title')
-        .contains('Icons')
-        .siblings('.overview__link')
-        .click()
-        .url()
-        .should('include', 'styles/icons');
-    });
-    it('Learn more should navigate to Styles Illustrations page', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/styles`)
-        .get('.overview__title')
-        .contains('Illustrations')
-        .siblings('.overview__link')
-        .click()
-        .url()
-        .should('include', 'styles/illustrations');
-    });
-    it('Learn more should navigate to Styles Motion page', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/styles`)
-        .get('.overview__title')
-        .contains('Motion')
-        .siblings('.overview__link')
-        .click()
-        .url()
-        .should('include', 'styles/motion');
-    });
-    it('Learn more should navigate to Styles Typography page', () => {
-      cy.visit(`${Cypress.env('BASE_URL')}/styles`)
-        .get('.overview__title')
+    it('Typography should navigate to Typography tokens page', () => {
+      cy.visit(`${Cypress.env('BASE_URL')}/tokens`)
+        .get('.token-squares-container__item p')
         .contains('Typography')
-        .siblings('.overview__link')
+        .parents('.token-squares-container a')
         .click()
         .url()
-        .should('include', 'styles/typography');
+        .should('include', 'tokens/typography');
+    });
+    it('Elevation should navigate to Elevation tokens page', () => {
+      cy.visit(`${Cypress.env('BASE_URL')}/tokens`)
+        .get('.token-squares-container__item p')
+        .contains('Elevation')
+        .parents('.token-squares-container a')
+        .click()
+        .url()
+        .should('include', 'tokens/elevation');
+    });
+    it('Space should navigate to the Space tokens page', () => {
+      cy.visit(`${Cypress.env('BASE_URL')}/tokens`)
+        .get('.token-squares-container__item p')
+        .contains('Space')
+        .parents('.token-squares-container a')
+        .click()
+        .url()
+        .should('include', 'tokens/space');
     });
   });
 });

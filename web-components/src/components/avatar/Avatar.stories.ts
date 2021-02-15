@@ -6,8 +6,8 @@
  *
  */
 
- import "@/components/avatar/Avatar";
-import { AvatarType } from "@/components/avatar/Avatar";
+import { AvatarType, AvatarSize }  from "@/components/avatar/Avatar";
+import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
@@ -23,21 +23,6 @@ export default {
       element: "md-avatar"
     }
   }
-};
-
-const avatarType = {
-  Active: "active",
-  Bot: "bot",
-  Call: "call",
-  Dnd: "dnd",
-  Group: "group",
-  Inactive: "inactive",
-  Meeting: "meeting",
-  Ooo: "ooo",
-  Presenting: "presenting",
-  Self: "self",
-  Typing: "typing",
-  None: ""
 };
 
 const options = {
@@ -59,11 +44,11 @@ const options = {
 
 export const Avatar = () => {
   const darkTheme = boolean("darkMode", false);
-  const type = select("Type", avatarType, "active");
+  const lumos = boolean("Lumos Theme", false);
+  const type = select("Type", AvatarType, "");
   const title = text("Title", "Rachell Harris");
   const preDefinedColor = select("PreDefined Color", options, "mint");
-  const avatarSize = [18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84] as const;
-  const size = select("Size", avatarSize, 44);
+  const size = select("Size", AvatarSize, 44);
   const customUrl = boolean("Custom Src", false);
   const customImage = boolean("Custom Image", false);
   const url = text("src", "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600");
@@ -74,7 +59,7 @@ export const Avatar = () => {
 
   if (composite) {
     return html`
-      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <md-composite-avatar .size=${sizeComos}>
           <md-avatar title="Anthony Russell" type="dnd" has-notification alt="Avatar"></md-avatar>
           <md-avatar type="typing" title="Alyson Hoagland Pace" alt="Avatar"></md-avatar>
@@ -84,7 +69,7 @@ export const Avatar = () => {
   } else {
     return html`
       <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
-        <md-avatar .title=${title} alt="Avatar" .type=${type as AvatarType} .src="${customUrl ? `${url}` : ""}" .color=${preDefinedColor} .size=${size} ?has-notification=${hasNotification}>
+        <md-avatar .title=${title} alt="Avatar" label="Avatar" .type=${type} .src="${customUrl ? `${url}` : ""}" .color=${preDefinedColor} .size=${size} ?has-notification=${hasNotification}>
           ${customImage ? html`<img
           width="100"
           height="100"

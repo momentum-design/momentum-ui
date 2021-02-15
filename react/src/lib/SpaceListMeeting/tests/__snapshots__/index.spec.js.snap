@@ -5,6 +5,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SpaceListMeeting
     attendees={Array []}
+    buttonAriaLabel={null}
     buttonLabel=""
     buttonOnClick={null}
     childrenLeft={null}

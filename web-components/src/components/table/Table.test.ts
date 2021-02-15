@@ -18,12 +18,12 @@ describe("Table component", () => {
   afterEach(fixtureCleanup);
 
   test("should render correctly", async () => {
-    const element = await fixture<Table>(`<md-table></md-table>`);
+    const element = await fixture<Table.ELEMENT>(`<md-table></md-table>`);
     expect(element).toBeDefined();
   });
 
   test("should render size", async () => {
-    const element = await fixture<Table>(
+    const element = await fixture<Table.ELEMENT>(
       html`
         <md-table clean zebra sorting tableData="${data}"></md-table>
       `
@@ -37,7 +37,7 @@ describe("Table component", () => {
   });
 
   test("should render size", async () => {
-    const element = await fixture<Table>(
+    const element = await fixture<Table.ELEMENT>(
       html`
         <md-table sorting tableData="${data}"></md-table>
       `

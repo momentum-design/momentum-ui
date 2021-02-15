@@ -6,6 +6,7 @@ import { html } from "lit-element";
 
 export const tabsTemplate = html`
   <div style="max-width: 600px;">
+    <h3> Horizontal md-tabs with More button</h3>
     <md-tabs selected="0" justified>
       <md-tab slot="tab" label="History">
         <md-icon name="recents_16"></md-icon>
@@ -65,24 +66,7 @@ export const tabsTemplate = html`
       </md-tab-panel>
     </md-tabs>
     <br />
-    <div style="height: 150px;">
-      <md-tabs >
-        <md-tab slot="tab">
-          <md-icon name="recents_16"></md-icon>
-          <span>Contact History</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Contact History"</span>
-        </md-tab-panel>
-        <md-tab slot="tab">
-          <md-icon name="apps_16"></md-icon>
-          <span>Cisco WxM</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "WxM"</span>
-        </md-tab-panel>
-      </md-tabs>
-    </div>
+    
     <div style="max-width: 400px;">
       <h3>md-tabs justified</h3>
       <md-tabs justified>
@@ -114,5 +98,38 @@ export const tabsTemplate = html`
     </div>
 
     <button id="confirm">Save</button>
+  </div>
+  <div style="height: 500px;">
+  <h3>md-tabs vertical</h3>
+    <md-tabs direction="vertical">
+      <md-tab slot="tab">
+        <md-icon name="recents_16"></md-icon>
+        <span>Contact History</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "Contact History"</span>
+      </md-tab-panel>
+      <md-tab slot="tab">
+        <md-icon name="apps_16"></md-icon>
+        <span>Cisco WxM</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "WxM"</span>
+      </md-tab-panel>
+      <md-tab slot="tab">
+        <md-icon name="alarm_16"></md-icon>
+        <span>Cisco Answer</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "Cisco Answer"</span>
+      </md-tab-panel>
+      <md-tab slot="tab">
+        <md-icon name="camera-photo_16"></md-icon>
+        <span>Cisco Turbo</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "Cisco Turbo"</span>
+      </md-tab-panel>
+    </md-tabs>
   </div>
 `;

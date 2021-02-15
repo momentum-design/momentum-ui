@@ -5,30 +5,37 @@ import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
-  activityButtonTemplate,
   alertBannerTemplate,
   alertTemplate,
   avatarTemplate,
   badgeTemplate,
   breadcrumbTemplate,
   buttonTemplate,
+  buttonGroupTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
+  coachTemplate,
   colorTableTemplate,
   comboBoxTemplate,
   datePickerTemplate,
+  dateTimePickerTemplate,
   editableField,
+  favoriteTemplate,
   floatingModalTemplate,
   iconTemplate,
   inputTemplate,
+  inputFileTemplate,
   labelTemplate,
   linkTemplate,
   listTemplate,
+  formTemplate,
   loadingTemplate,
   meetingAlertTemplate,
+  menuItemTemplate,
   menuOverlayTemplate,
   modalTemplate,
+  paginationTemplate,
   phoneInputTemplate,
   progressBarTemplate,
   radioGroupTemplate,
@@ -37,8 +44,12 @@ import {
   tableTemplate,
   tabsTemplate,
   taskItemTemplate,
+  timePickerTemplate,
   toggleSwitchTemplate,
-  tooltipTemplate
+  tooltipTemplate,
+  accordionTemplate,
+  cardTemplate,
+  codeEditorTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -108,43 +119,11 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-          <div class="container" aria-label="md-datepicker">
-            <h2>md-datepicker</h2>
-            <sass-stats component="datepicker">
-              ${datePickerTemplate}
-            </sass-stats>
-          </div>
-          <div class="container" aria-label="md-table">
-            <h2>md-table</h2>
-            <sass-stats component="table">
-              ${tableTemplate}
-            </sass-stats>
-          </div>
 
-          <div class="container" aria-label="md-menu-overlay">
-            <h2>md-menu-overlay</h2>
-            <sass-stats component="menu-overlay">
-              ${menuOverlayTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-phone-input">
-            <sass-stats component="phone-input">
-              ${phoneInputTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-task-item">
-            <h2>md-task-item</h2>
-            <sass-stats component="taskitem">
-              ${taskItemTemplate}
-            </sass-stats>
-          </div>
-
-          <div class="container" aria-label="md-activity-button">
-            <h2>md-activity-button</h2>
-            <sass-stats component="activity-button">
-              ${activityButtonTemplate}
+          <div class="container" aria-label="md-accordion">
+            <h2>md-accordion</h2>
+            <sass-stats component="accordion">
+              ${accordionTemplate}
             </sass-stats>
           </div>
 
@@ -190,6 +169,20 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-button-group">
+            <h2>md-button-group</h2>
+            <sass-stats component="button-group">
+              ${buttonGroupTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-card">
+            <h2>md-card</h2>
+            <sass-stats component="card">
+              ${cardTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-chat-message">
             <h2>md-chat-message</h2>
             <sass-stats component="chat-message">
@@ -211,10 +204,24 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-coachmark">
+            <h2>md-coachmark</h2>
+            <sass-stats component="coachmark">
+              ${coachTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-colors">
             <h2>md-colors</h2>
             <sass-stats component="table">
               ${colorTableTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-code-editor">
+            <h2>md-code-editor</h2>
+            <sass-stats component="code-editor">
+              ${codeEditorTemplate}
             </sass-stats>
           </div>
 
@@ -232,6 +239,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-date-time-picker">
+            <h2>md-date-time-picker</h2>
+            <sass-stats component="date-time-picker">
+              ${dateTimePickerTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-editable-field">
             <h2>md-editable-field</h2>
             <sass-stats component="editable-textfield">
@@ -239,10 +253,24 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-favorite">
+            <h2>md-favorite</h2>
+            <sass-stats component="favorite">
+              ${favoriteTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-floating-modal">
             <h2>md-floating-modal</h2>
             <sass-stats component="floating-modal">
               ${floatingModalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-form">
+            <h2>md-form</h2>
+            <sass-stats component="form">
+              ${formTemplate}
             </sass-stats>
           </div>
 
@@ -257,6 +285,13 @@ export class Sandbox extends LitElement {
             <h2>md-input</h2>
             <sass-stats component="input">
               ${inputTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-input-file">
+            <h2>md-input-file</h2>
+            <sass-stats component="input-file">
+              ${inputFileTemplate}
             </sass-stats>
           </div>
 
@@ -295,6 +330,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-menu">
+            <h2>md-menu and md-menu-item</h2>
+            <sass-stats component="menu">
+              ${menuItemTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-menu-overlay">
             <h2>md-menu-overlay</h2>
             <sass-stats component="menu-overlay">
@@ -306,6 +348,13 @@ export class Sandbox extends LitElement {
             <h2>md-modal</h2>
             <sass-stats component="modal">
               ${modalTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-pagination">
+            <h2>md-pagination</h2>
+            <sass-stats component="pagination">
+              ${paginationTemplate}
             </sass-stats>
           </div>
 
@@ -362,6 +411,13 @@ export class Sandbox extends LitElement {
             <h2>md-task-item</h2>
             <sass-stats component="taskitem">
               ${taskItemTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-timepicker">
+            <h2>md-timepicker</h2>
+            <sass-stats component="timepicker">
+              ${timePickerTemplate}
             </sass-stats>
           </div>
 

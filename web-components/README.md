@@ -5,35 +5,13 @@
 **`Momentum UI Web Components`** is a resuable, component based, flexible React library available as
 npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
-Checkout the [documentation](https://momentum.design) for documentation and live examples.
+Checkout the [documentation](https://momentum.design) for documentation and live examples at https://momentum-design.github.io/momentum-ui/.
 
 ## Goals
 * **Independent** — pick and use only the components you need.
-<!-- * **Styled** — override styles of components by `className` and `style` properties. -->
 * **Customizable** — properties allow many different config options to suit your app.
 * **Performant** - high performance guaranteed with use of CSS3 Flexbox and non-bloated architecture.
 * **Reliable** — each component is rigorously tested.
-
-## Getting Started
-
-Source of `@momentum-ui/web-component` is available [here](https://sqbu-github.cisco.com/Collaboration/momentum-ui-web-components).
-To use momentum-ui-web-components in your application follow below steps:
-
-### Step 2. Import Momentum UI Web Components in your app
-
-Use ES6 modules to import Momentun UI Web Components into your app in your `index.html ` file:
-
-```html
-<script type="module" src="./node_modules/momentum-ui-web-components/lib/index.js"></script>
-```
-
-And in your component's  `html`:
-
-```html
-<div>
-  <md-button>Click me!<md-button>
-</div>
-```
 
 ### Package manager
 
@@ -79,7 +57,7 @@ And in your component's  `html`:
 
 ## Contribution
 
-Want to contribute? Why not go through [Developer's Guide](./GETTING_STARTED.md) to understand more technical details about the project and contribution guidelines to be adhered.
+Want to contribute? Why not go through [Developer's Guide](./CONTRIBUTING.md) to understand more technical details about the project and contribution guidelines to be adhered.
 
 ## Changelog
 

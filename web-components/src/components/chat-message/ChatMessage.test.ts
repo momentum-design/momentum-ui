@@ -5,12 +5,12 @@ import { html } from "lit-element";
 import { Avatar } from "@/components/avatar/Avatar";
 
 describe("Chat Message Component", () => {
-  let element: ChatMessage;
+  let element: ChatMessage.ELEMENT;
 
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<ChatMessage>(
+    element = await fixture<ChatMessage.ELEMENT>(
       html`
         <md-chat-message
           title="John Doe"
@@ -27,7 +27,7 @@ describe("Chat Message Component", () => {
     await elementUpdated(element);
     expect(element.self).toBeTruthy();
 
-    const avatar = element.shadowRoot!.querySelector<Avatar>("md-avatar");
+    const avatar = element.shadowRoot!.querySelector<Avatar.ELEMENT>("md-avatar");
     expect(avatar!.title).toEqual("self");
 
     element.self = false;
@@ -42,7 +42,7 @@ describe("Chat Message Component", () => {
     await elementUpdated(element);
     expect(element.self).toBeTruthy();
 
-    const avatar = element.shadowRoot!.querySelector<Avatar>("md-avatar");
+    const avatar = element.shadowRoot!.querySelector<Avatar.ELEMENT>("md-avatar");
     expect(avatar?.src).toBeNull();
 
     element.self = false;

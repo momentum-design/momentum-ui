@@ -12,6 +12,7 @@ import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, SlottedMixin } from "@/mixins";
+import { DraggableItem } from "./DraggableItem";
 
 export namespace Draggable {
   @customElementWithCheck("md-draggable")
@@ -34,6 +35,7 @@ export namespace Draggable {
     @query("slot[name='draggable-item']") draggableSlot!: HTMLSlotElement;
 
     private sortableInstance: Sortable | null = null;
+    private items: DraggableItem.ELEMENT[] = [];
 
     static get styles() {
       return [reset, styles];
@@ -41,6 +43,37 @@ export namespace Draggable {
 
     get slotElement() {
       return this.draggableSlot;
+    }
+
+    private setupItems() {
+      if (this.slotElement) {
+        const children = this.slotElement.assignedElements({ flatten: true })
+        this.getChildrenFromTree({ children }, this.items);
+      }
+    }
+
+    private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem.ELEMENT[]) {
+      for (var i = 0; i < elem.children.length; i++) {
+        var child = elem.children[i];
+        if (child instanceof DraggableItem.ELEMENT) {
+          items.push(child);
+        }
+        this.getChildrenFromTree(child as any, items); // RECURSION
+      }
+    }
+
+    private async linkItems() {
+      const { items } = this;
+
+      items.forEach(item => {
+
+        if (this.editable) {
+          item.setAttribute("editable", "true");
+        } else {
+          item.removeAttribute("editable");
+        }
+
+      })
     }
 
     private generateOptions() {
@@ -88,12 +121,12 @@ export namespace Draggable {
       );
     }
 
-    private handleOnChange = (event: Sortable.SortableEvent) => {
+    handleOnChange = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-change", event);
     };
 
-    private handleOnClone = (event: Sortable.SortableEvent) => {
+    handleOnClone = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-clone", event);
     };
@@ -108,7 +141,7 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-remove", event);
     };
 
-    private handleOnAdd = (event: Sortable.SortableEvent) => {
+    handleOnAdd = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-add", event);
     };
@@ -128,7 +161,7 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-move", event);
     }, 100);
 
-    private handleOnStart = (event: Sortable.SortableEvent) => {
+    handleOnStart = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-start", event);
     };
@@ -166,6 +199,13 @@ export namespace Draggable {
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       this.updateSortableInstance(changedProperties);
+      if (changedProperties.has("slotted")) {
+        this.setupItems();
+        this.linkItems()
+      }
+      if (changedProperties.has("editable")) {
+        this.linkItems()
+      }
     }
 
     protected slottedChanged() {

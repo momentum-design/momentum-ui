@@ -3,7 +3,7 @@
 }
 
 .md-draggable-item {
-  .default {
+  &.extended {
     align-items: center;
     background-color: var(--md-secondary-white-bg-color);
     border: $draggable-row-border;
@@ -27,7 +27,8 @@
     }
   }
 
-  .extended {
+  &.default {
+    border: $draggable-default-border;
     border-radius: $draggable-item-border-radius;
     cursor: grabbing;
     display: flex;
@@ -39,14 +40,14 @@
       box-shadow: $draggable-item-shadow;
     }
   }
-}
 
-.md-draggable_disabled {
-  cursor: default;
+  &.disabled {
+    cursor: default;
 
-  &:hover {
-    background-color: transparent;
-    border: 0;
-    box-shadow: none;
+    &:hover {
+      background-color: transparent;
+      border: $draggable-default-border;
+      box-shadow: none;
+    }
   }
 }

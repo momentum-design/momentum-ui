@@ -7,10 +7,12 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, withKnobs, color } from "@storybook/addon-knobs";
+import { boolean, withKnobs, color, text, select } from "@storybook/addon-knobs";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import { html } from "lit-element";
+import { PullResult } from "sortablejs";
 
 export default {
   title: "Draggable",
@@ -22,17 +24,38 @@ export default {
     },
     docs: {
       description: {
-        component: "For more information please look: https://sortablejs.github.io/Sortable/"
+        component: `For more information please look: https://sortablejs.github.io/Sortable/`
       }
     }
   }
 };
 
-export const SortableDraggable = () => {
+export const Draggable = () => {
   const darkTheme = boolean("Dark Mode", false);
-  const lumos = boolean("Lumos Theme", false);
+  const lumosTheme = boolean("Lumos Theme", false);
 
-  const sort = boolean("Allow sorting inside draggable list", false);
+  const leftSort = boolean("Allow sorting inside left draggable list", false, "Left List");
+  const leftDisabled = boolean("Disables the left sortable", false, "Left List");
+  const leftGroupName = text("Left group name", "shared-list", "Left List");
+  const leftPutGroupName = boolean("Allow items to be put into this list", false, "Left List");
+  const leftGroupPull = select(
+    "Left group pull",
+    { clone: "clone", groupNames: [leftGroupName] },
+    "groupNames",
+    "Left List"
+  ) as PullResult;
+
+  const rightSort = boolean("Allow sorting inside right draggable list", false, "Right List");
+  const rightDisabled = boolean("Disables the right sortable", false, "Right List");
+  const rightGroupName = text("Right group name", "shared-list", "Right List");
+  const rightPutGroupName = boolean("Allow items to be put into this list", false, "Right List");
+  const rightGroupPull = select(
+    "Right group pull",
+    { clone: "clone", groupNames: [rightGroupName] },
+    "groupNames",
+    "Right List"
+  ) as PullResult;
+
   const ghostClass = color("Class name for the drop placeholder", "#c8ebfb");
   const chooseClass = color("Class name for the chosen item", "#ddc74e");
 
@@ -56,22 +79,45 @@ export const SortableDraggable = () => {
       .custom-choose {
         background-color: ${chooseClass};
       }
+
+      .draggable-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
     </style>
-    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-draggable
-        ?sort=${sort}
-        ghost-class="custom-ghost"
-        chosen-class="custom-choose"
-        draggable-items="md-draggable-item"
-      >
-        <md-draggable-item slot="draggable-item">Sortable Item1</md-draggable-item>
-        <md-draggable-item slot="draggable-item">Sortable Item2</md-draggable-item>
-        <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
-        <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
-        <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
-        <md-draggable-item slot="draggable-item">Sortable Item6</md-draggable-item>
-        <md-draggable-item slot="draggable-item">Sortable Item7</md-draggable-item>
-      </md-draggable>
+    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} ?lumos=${lumosTheme}>
+      <div class="draggable-wrapper">
+        <md-draggable
+          ?sort=${leftSort}
+          ?disabled=${leftDisabled}
+          .group=${{ name: leftGroupName, pull: leftGroupPull, put: leftPutGroupName }}
+          ghost-class="custom-ghost"
+          chosen-class="custom-choose"
+          draggable-items="md-draggable-item"
+        >
+          <md-draggable-item slot="draggable-item">Sortable Item1</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item2</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
+        </md-draggable>
+
+        <md-draggable
+          ?sort=${rightSort}
+          ?disabled=${rightDisabled}
+          .group=${{ name: rightGroupName, pull: rightGroupPull, put: rightPutGroupName }}
+          ghost-class="custom-ghost"
+          chosen-class="custom-choose"
+          draggable-items="md-draggable-item"
+        >
+          <md-draggable-item slot="draggable-item">Sortable Item6</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item7</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item8</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item9</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item10</md-draggable-item>
+        </md-draggable>
+      </div>
     </md-theme>
   `;
 };

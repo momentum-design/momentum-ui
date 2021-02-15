@@ -22,7 +22,7 @@ export namespace Draggable {
     @property({ type: String }) filter = "";
     @property({ type: String }) easing = "";
     @property({ type: String }) direction: "horizontal" | "vertical" = "vertical";
-    @property({ type: Object }) group: Sortable.GroupOptions = { name: "group" };
+    @property({ type: Object }) group: Sortable.GroupOptions | null = null;
     @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-item";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
@@ -45,7 +45,8 @@ export namespace Draggable {
 
     private generateOptions() {
       return {
-        group: this.group,
+        ...(this.group && { group: this.group }),
+        disabled: this.disabled,
         animation: this.animation,
         sort: this.sort,
         delay: this.delay,
@@ -150,7 +151,7 @@ export namespace Draggable {
     }
 
     private setSortableOption(name: Partial<keyof SortableOptions>, value: SortableOptions[keyof SortableOptions]) {
-      if (this.sortableInstance && Object.prototype.hasOwnProperty.call(this.sortableInstance, name)) {
+      if (this.sortableInstance && this.sortableInstance.option(name) !== undefined) {
         this.sortableInstance.option(name, value);
       }
     }

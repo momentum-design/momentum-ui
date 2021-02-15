@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import { html, LitElement, property } from "lit-element";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins";
@@ -11,6 +19,7 @@ export namespace DraggableItem {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) extended = false;
+    @property({ type: Boolean, reflect: true }) editable = false;
 
     static get styles() {
       return [reset, styles];
@@ -31,7 +40,7 @@ export namespace DraggableItem {
           part="draggable-item"
           aria-disabled=${this.disabled}
         >
-          ${this.extended
+          ${this.extended && this.editable
             ? html`
                 <md-icon name="panel-control-dragger_16"></md-icon>
               `

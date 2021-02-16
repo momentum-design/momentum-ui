@@ -151,12 +151,12 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-choose", event);
     };
 
-    private handleOnEnd = (event: Sortable.SortableEvent) => {
+    handleOnEnd = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-end", event);
     };
 
-    private handleOnMove = debounce((event: Sortable.MoveEvent) => {
+    handleOnMove = debounce((event: Sortable.MoveEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-move", event);
     }, 100);

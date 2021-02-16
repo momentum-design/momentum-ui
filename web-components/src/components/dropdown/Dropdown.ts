@@ -133,7 +133,7 @@ export namespace Dropdown {
     }
 
     async resizeDropdownList() {
-      await new Promise(resolve => {
+      await new Promise<void>(resolve => {
         requestAnimationFrame(() => {
           if (this.optionsListItems) {
             if (this.optionsListItems.length > this.visibleOptions) {

@@ -1,49 +1,49 @@
-
-import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit-element";
 import "./DraggableItem";
+import "@/components/icon/Icon";
 import { DraggableItem } from "./DraggableItem";
 
-const fixtureFactory = async (): Promise<DraggableItem.ELEMENT> => {
-  return await fixture(html`
-    <md-draggable-item>
-      <span>Draggable  test content</span>
-    </md-draggable-item>
-  `);
-};
+describe("Draggable Item Component", () => {
+  let element: DraggableItem.ELEMENT;
+  afterEach(fixtureCleanup);
 
-describe("DraggableItem component", () => {
-  afterEach(() => {
-    fixtureCleanup();
+  beforeEach(async () => {
+    element = await fixture<DraggableItem.ELEMENT>(
+      html`
+        <md-draggable-item></md-draggable-item>
+      `
+    );
   });
 
-  test("should set component", async () => {
-    const component = await fixtureFactory();
+  test("should render with correct class", async () => {
+    expect(element.shadowRoot!.querySelector(".md-draggable-item")!.classList.contains("default")).toBeTruthy();
 
-    expect(component).toBeDefined();
+    element.disabled = true;
+    await elementUpdated(element);
 
-    const el = component.shadowRoot?.querySelector(".md-draggable-item");
-    expect(el?.getAttribute("class")).toEqual("md-draggable-item default");
+    expect(element.shadowRoot!.querySelector(".md-draggable-item")!.classList.contains("disabled")).toBeTruthy();
+
+    element.extended = true;
+    await elementUpdated(element);
+
+    expect(element.shadowRoot!.querySelector(".md-draggable-item")!.classList.contains("default")).toBeFalsy();
+    expect(element.shadowRoot!.querySelector(".md-draggable-item")!.classList.contains("extended")).toBeTruthy();
   });
 
-  test("should set component with extended view", async () => {
-    const component = await fixtureFactory();
-    component.extended = true;
-    await elementUpdated(component);
+  test("should render different html depending on the properties value", async () => {
+    expect(element.shadowRoot!.querySelector("slot[name='extended']")).toBeNull();
+    expect(element.shadowRoot!.querySelector("md-icon[name='panel-control-dragger_16']")).toBeNull();
 
-    const el = component.shadowRoot?.querySelector(".md-draggable-item");
-    expect(el?.getAttribute("class")).toEqual("md-draggable-item extended");
+    element.extended = true;
+    await elementUpdated(element);
+
+    expect(element.shadowRoot!.querySelector("slot[name='extended']")).not.toBeNull();
+    expect(element.shadowRoot!.querySelector("md-icon[name='panel-control-dragger_16']")).toBeNull();
+
+    element.editable = true;
+    await elementUpdated(element);
+
+    expect(element.shadowRoot!.querySelector("md-icon[name='panel-control-dragger_16']")).not.toBeNull();
   });
-
-  test("should set component with extended view", async () => {
-    const component = await fixtureFactory();
-    component.extended = true;
-    component.editable = true;
-    await elementUpdated(component);
-
-    const el = component.shadowRoot?.querySelector(".md-draggable-item");
-    expect(el?.getAttribute("class")).toEqual("md-draggable-item extended");
-    const icon = component.shadowRoot?.querySelector(".md-draggable-item md-icon");
-    expect(icon?.getAttribute("name")).toEqual("panel-control-dragger_16");
-  });
-
 });

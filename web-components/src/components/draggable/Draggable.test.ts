@@ -1,93 +1,121 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { mocked } from "ts-jest/utils";
 import "./Draggable";
+import "./DraggableItem";
 import { Draggable } from "./Draggable";
+import Sortable, { SortableEvent, SortableOptions } from "sortablejs";
 import { DraggableItem } from "./DraggableItem";
-import Sortable, { SortableEvent } from "sortablejs";
 
+jest.mock("sortablejs");
 
+const mockedSortable = mocked(Sortable, true);
 
-const fixtureFactory = async (): Promise<Draggable.ELEMENT> => {
-  return await fixture(html`
-    <md-draggable>
-      <md-draggable-item>Sortable Item1</md-draggable-item>
-      <md-draggable-item>Sortable Item2</md-draggable-item>
-      <md-draggable-item>Sortable Item3</md-draggable-item>
-      <md-draggable-item>Sortable Item4</md-draggable-item>
-    </md-draggable>
-  `);
+const resetMocks = () => {
+  mockedSortable.mockClear();
+  jest.restoreAllMocks();
 };
 
-describe("Draggable component", () => {
+describe("Draggable Component", () => {
+  let element: Draggable.ELEMENT;
 
-  afterEach(() => {
-    fixtureCleanup();
+  afterEach(fixtureCleanup);
+
+  beforeEach(async () => {
+    resetMocks();
+
+    element = await fixture<Draggable.ELEMENT>(
+      html`
+        <md-draggable>
+          <md-draggable-item slot="draggable-item">Sortable Item1</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item2</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
+          <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
+        </md-draggable>
+      `
+    );
   });
 
-  test("should set component", async () => {
-    const component = await fixtureFactory();
-
-    expect(component).toBeDefined();
-
-    const el = component.shadowRoot?.querySelector(".md-draggable");
-    expect(el?.getAttribute("class")).toEqual("md-draggable");
+  test("should create sortable instance with options", async () => {
+    expect(mockedSortable.create.mock.calls).toHaveLength(2);
+    const parameters = mockedSortable.create.mock.calls[0];
+    expect(parameters[0]).toBe(element);
   });
 
-  test("set editable mode for drag", async () => {
-    const component = await fixtureFactory();
-    component.editable = true;
-    await elementUpdated(component);
-
-    expect(component.getAttribute("editable")).toBeTruthy;
-
-    const item = component.shadowRoot?.querySelector("md-draggable-item");
-    expect(item?.getAttribute("edit")).toBeTruthy;
-  });
-
-  test("set editable mode for drag", async () => {
-    const component = await fixtureFactory();
-    component.sort = true;
-    component.editable = true;
-    await elementUpdated(component);
-
-    const item = component.shadowRoot?.querySelector("md-draggable-item") as DraggableItem.ELEMENT;
-
-    const mockDragStart = jest.spyOn(component, "handleOnStart");
-    const mockDragAdd = jest.spyOn(component, "handleOnAdd");
-    const mockDragChange = jest.spyOn(component, "handleOnChange");
-
-    const startEvent: CustomEvent = new CustomEvent("drag-start", {
-      bubbles: true,
-      composed: true,
+  test.each([
+    ["choose", "handleOnChoose"],
+    ["unchoose", "handleOnUnchoose"],
+    ["move", "handleOnMove"],
+    ["end", "handleOnEnd"],
+    ["clone", "handleOnClone"],
+    ["start", "handleOnStart"],
+    ["add", "handleOnAdd"],
+    ["remove", "handleOnRemove"],
+    ["change", "handleOnChange"]
+  ])("emitted `%s` event from sortable", async (event: string, functionName: string) => {
+    const mockSortableEvent = new CustomEvent<SortableEvent>(event, {
       detail: {
-        srcEvent: { item }
-      }
+        from: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
+        clone: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
+        item: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
+        target: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
+        to: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
+        newIndex: (jest.fn().mockReturnValue(0) as unknown) as number,
+        oldIndex: (jest.fn().mockReturnValue(1) as unknown) as number
+      } as SortableEvent
     });
-    const addEvent: CustomEvent = new CustomEvent("drag-add", {
-      bubbles: true,
-      composed: true,
-      detail: {
-        srcEvent: { item }
-      }
-    });
-    const changeEvent: CustomEvent = new CustomEvent("drag-change", {
-      bubbles: true,
-      composed: true,
-      detail: {
-        srcEvent: { item }
-      }
-    });
-   
-    component.handleOnStart(startEvent as unknown as SortableEvent);
-    component.handleOnAdd(addEvent as unknown as SortableEvent);
-    component.handleOnChange(changeEvent as unknown as SortableEvent);
 
-    expect(mockDragStart).toHaveBeenCalled();
-    expect(mockDragAdd).toHaveBeenCalled();
-    expect(mockDragChange).toHaveBeenCalled();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    setTimeout(() => element[functionName](mockSortableEvent));
 
-    mockDragStart.mockRestore();
-    mockDragAdd.mockRestore();
-    mockDragChange.mockRestore();
+    const { detail } = await oneEvent(element, `drag-${event}`);
+
+    expect(detail).toBeDefined();
+    expect(detail.srcEvent).toEqual(mockSortableEvent);
   });
 
+  test("should cleanup sortable instance after disconnected from DOM", async () => {
+    element["sortableInstance"] = (jest.fn().mockReturnValue(({
+      el: element
+    } as unknown) as SortableOptions) as unknown) as Sortable;
+
+    const mockDestroy = jest.fn();
+
+    element["sortableInstance"].destroy = mockDestroy;
+
+    element.parentElement!.removeChild(element);
+    setTimeout(() => element.disconnectedCallback());
+
+    expect(mockDestroy).toHaveBeenCalled();
+  });
+
+  test("should initialize sortable instance after slot `change` event", async () => {
+    const initializeSortableMock = jest.fn();
+    element["slottedChanged"] = initializeSortableMock;
+
+    const draggableItem = await fixture<DraggableItem.ELEMENT>(
+      html`
+        <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
+      `
+    );
+    element.append(draggableItem);
+    await elementUpdated(element);
+
+    expect(initializeSortableMock).toHaveBeenCalled();
+  });
+
+  test("should update sortable options if any related property changed", async () => {
+    element["sortableInstance"] = (jest.fn().mockReturnValue(({
+      el: element
+    } as unknown) as SortableOptions) as unknown) as Sortable;
+
+    const optionMock = jest.fn();
+    element["sortableInstance"].destroy = jest.fn();
+    element["sortableInstance"].option = optionMock.mockImplementation(() => true);
+
+    element.delay = 100;
+    await elementUpdated(element);
+
+    expect(optionMock).toHaveBeenCalled();
+  });
 });

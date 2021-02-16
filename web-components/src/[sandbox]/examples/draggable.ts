@@ -78,7 +78,7 @@ export class DefaultDraggable extends LitElement {
     if (dropContainer.hasAttribute("sort")) {
       item.setAttribute("extended", "true");
     }
-    console.log(item)
+
   }
   
   static get styles() {

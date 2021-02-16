@@ -1,7 +1,10 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./Draggable";
 import { Draggable } from "./Draggable";
+import { DraggableItem } from "./DraggableItem";
 import Sortable, { SortableEvent } from "sortablejs";
+
+
 
 const fixtureFactory = async (): Promise<Draggable.ELEMENT> => {
   return await fixture(html`
@@ -15,7 +18,6 @@ const fixtureFactory = async (): Promise<Draggable.ELEMENT> => {
 };
 
 describe("Draggable component", () => {
-  let draggable: Draggable.ELEMENT;
 
   afterEach(() => {
     fixtureCleanup();
@@ -43,13 +45,49 @@ describe("Draggable component", () => {
 
   test("set editable mode for drag", async () => {
     const component = await fixtureFactory();
+    component.sort = true;
     component.editable = true;
     await elementUpdated(component);
 
-    const mockFn = jest.fn().mockName('handleOnStart');
-    mockFn();
+    const item = component.shadowRoot?.querySelector("md-draggable-item") as DraggableItem.ELEMENT;
 
-    expect(mockFn).toHaveBeenCalled();
+    const mockDragStart = jest.spyOn(component, "handleOnStart");
+    const mockDragAdd = jest.spyOn(component, "handleOnAdd");
+    const mockDragChange = jest.spyOn(component, "handleOnChange");
+
+    const startEvent: CustomEvent = new CustomEvent("drag-start", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: { item }
+      }
+    });
+    const addEvent: CustomEvent = new CustomEvent("drag-add", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: { item }
+      }
+    });
+    const changeEvent: CustomEvent = new CustomEvent("drag-change", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: { item }
+      }
+    });
+   
+    component.handleOnStart(startEvent as unknown as SortableEvent);
+    component.handleOnAdd(addEvent as unknown as SortableEvent);
+    component.handleOnChange(changeEvent as unknown as SortableEvent);
+
+    expect(mockDragStart).toHaveBeenCalled();
+    expect(mockDragAdd).toHaveBeenCalled();
+    expect(mockDragChange).toHaveBeenCalled();
+
+    mockDragStart.mockRestore();
+    mockDragAdd.mockRestore();
+    mockDragChange.mockRestore();
   });
 
 });

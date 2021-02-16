@@ -35,8 +35,13 @@ export namespace TableAdvanced {
           order: SortOrder;
         }
       | {
-          type: "selected";
-          row: string[];
+          type: "select";
+          index: number;
+          data: string[];
+        }
+      | {
+          type: "multi-select";
+          rows: Record<number, string[]>;
         };
   };
 
@@ -54,7 +59,7 @@ export namespace TableAdvanced {
     @internalProperty() private COLS: Col[] = [];
     @internalProperty() private ROWS: string[][] = [];
 
-    private updCols = () => (this.COLS = [...this.COLS]);
+    private updCols = () => this.requestUpdate("COLS");
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
 
@@ -182,6 +187,8 @@ export namespace TableAdvanced {
     sort(col: Col, order?: SortOrder) {
       if (!col.options.sorter) return;
 
+      this.clearSelection();
+
       this.COLS.forEach(c => {
         if (c.options.id == col.options.id) {
           c.sort = order ? order : c.sort == "default" ? "ascending" : c.sort == "ascending" ? "descending" : "default";
@@ -224,6 +231,8 @@ export namespace TableAdvanced {
     filter(col: Col) {
       if (!col.filter) return;
 
+      this.clearSelection();
+
       const input = col.filter.input.trim();
       const filter = col.filter.list[col.filter.selectedIndex];
 
@@ -242,6 +251,46 @@ export namespace TableAdvanced {
           filter: col.filter.list[col.filter.selectedIndex]
         });
       }
+    }
+
+    @internalProperty() private selected: Record<number, string[]> = {};
+
+    selectRow(p: { i: number; row: string[]; shiftKey: boolean; metaKey: boolean }) {
+      const isSelected = this.selected.hasOwnProperty(p.i);
+      if (this.config.rows?.selectable == "multiple") {
+        if (p.metaKey) {
+          if (isSelected) {
+            delete this.selected[p.i];
+          } else {
+            this.selected[p.i] = p.row;
+          }
+          this.requestUpdate("selected");
+        } else if (p.shiftKey) {
+          // TODO - if required
+        } else {
+          this.selected = { [p.i]: p.row };
+        }
+
+        this["md-table-advanced-change"].emit({
+          type: "multi-select",
+          rows: this.selected
+        });
+      } else {
+        if (isSelected) {
+          this.clearSelection();
+        } else {
+          this.selected = { [p.i]: p.row };
+          this["md-table-advanced-change"].emit({
+            type: "select",
+            index: p.i,
+            data: p.row
+          });
+        }
+      }
+    }
+
+    clearSelection() {
+      this.selected = {};
     }
 
     // RENDER
@@ -413,15 +462,23 @@ export namespace TableAdvanced {
         rows = rowsSorted.map(s => rows[s.i]);
       }
 
-      const clazz = classMap({
-        selectable: this.config.rows?.selectable != "none"
-      })
+      const isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
 
       return html`
         <tbody>
-          ${rows.map(
-            row => html`
-              <tr class=${clazz}>
+          ${rows.map((row, i) => {
+            const isSelected = this.selected.hasOwnProperty(i);
+            const clazz = classMap({
+              selected: isSelected,
+              selectable: isSelectable && !isSelected
+            });
+            return html`
+              <tr
+                class=${clazz}
+                @click=${({ shiftKey, metaKey }: MouseEvent) => {
+                  if (isSelectable) this.selectRow({ i, row, shiftKey, metaKey });
+                }}
+              >
                 ${row.map((rowData, i) => {
                   const col = this.COLS[i];
                   return col.options.isHeader
@@ -433,8 +490,8 @@ export namespace TableAdvanced {
                       `;
                 })}
               </tr>
-            `
-          )}
+            `;
+          })}
         </tbody>
       `;
     }

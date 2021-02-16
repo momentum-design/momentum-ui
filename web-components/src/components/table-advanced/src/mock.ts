@@ -37,6 +37,10 @@ export namespace TableMock {
         summary: "sumary text"
       },
 
+      rows: {
+        selectable: "multiple"
+      },
+
       cols: {
         define: [
           {

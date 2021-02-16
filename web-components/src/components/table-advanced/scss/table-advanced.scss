@@ -98,6 +98,20 @@
           padding-left: calc(#{$table-main-indent} * 4);
           text-align: left;
         }
+
+        &.selectable:hover {
+          background-color: silver;
+          th {
+            background-color: silver;
+          }
+        }
+
+        &.selected {
+          background-color: gray;
+          th {
+            background-color: gray;
+          }
+        }
       }
     }
   }

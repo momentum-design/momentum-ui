@@ -131,12 +131,12 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-clone", event);
     };
 
-    private handleOnUnchoose = (event: Sortable.SortableEvent) => {
+    handleOnUnchoose = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-unchoose", event);
     };
 
-    private handleOnRemove = (event: Sortable.SortableEvent) => {
+    handleOnRemove = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-remove", event);
     };
@@ -146,7 +146,7 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-add", event);
     };
 
-    private handleOnChoose = (event: Sortable.SortableEvent) => {
+    handleOnChoose = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-choose", event);
     };

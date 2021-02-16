@@ -55,6 +55,7 @@ describe("Draggable component", () => {
     const mockDragStart = jest.spyOn(component, "handleOnStart");
     const mockDragAdd = jest.spyOn(component, "handleOnAdd");
     const mockDragChange = jest.spyOn(component, "handleOnChange");
+    const mockDragRemove = jest.spyOn(component, "handleOnRemove");
 
     const startEvent: CustomEvent = new CustomEvent("drag-start", {
       bubbles: true,
@@ -77,18 +78,28 @@ describe("Draggable component", () => {
         srcEvent: { item }
       }
     });
+    const removeEvent: CustomEvent = new CustomEvent("drag-remove", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: { item }
+      }
+    });
    
     component.handleOnStart(startEvent as unknown as SortableEvent);
     component.handleOnAdd(addEvent as unknown as SortableEvent);
     component.handleOnChange(changeEvent as unknown as SortableEvent);
+    component.handleOnRemove(removeEvent as unknown as SortableEvent);
 
     expect(mockDragStart).toHaveBeenCalled();
     expect(mockDragAdd).toHaveBeenCalled();
     expect(mockDragChange).toHaveBeenCalled();
+    expect(mockDragRemove).toHaveBeenCalled();
 
     mockDragStart.mockRestore();
     mockDragAdd.mockRestore();
     mockDragChange.mockRestore();
+    mockDragRemove.mockRestore();
   });
 
   test("should dispatch event when move", async () => {
@@ -100,7 +111,9 @@ describe("Draggable component", () => {
     const item = component.shadowRoot?.querySelector("md-draggable-item") as DraggableItem.ELEMENT;
 
     const mockDragStart = jest.spyOn(component, "handleOnStart");
+    const mockDragChoose = jest.spyOn(component, "handleOnChoose");
     const mockDragMove = jest.spyOn(component, "handleOnMove");
+    const mockDragUnchoose = jest.spyOn(component, "handleOnUnchoose");
     const mockDragEnd = jest.spyOn(component, "handleOnEnd");
 
     const startEvent: CustomEvent = new CustomEvent("drag-start", {
@@ -110,7 +123,21 @@ describe("Draggable component", () => {
         srcEvent: { item }
       }
     });
+    const chooseEvent: CustomEvent = new CustomEvent("drag-choose", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: { item }
+      }
+    });
     const moveEvent: CustomEvent = new CustomEvent("drag-move", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: { item }
+      }
+    });
+    const unchooseEvent: CustomEvent = new CustomEvent("drag-unchoose", {
       bubbles: true,
       composed: true,
       detail: {
@@ -126,15 +153,21 @@ describe("Draggable component", () => {
     });
    
     component.handleOnStart(startEvent as unknown as SortableEvent);
+    component.handleOnChoose(chooseEvent as unknown as SortableEvent);
     component.handleOnMove(moveEvent as unknown as SortableEvent);
+    component.handleOnUnchoose(unchooseEvent as unknown as SortableEvent);
     component.handleOnEnd(endEvent as unknown as SortableEvent);
 
     expect(mockDragStart).toHaveBeenCalled();
+    expect(mockDragChoose).toHaveBeenCalled();
     expect(mockDragMove).toHaveBeenCalled();
+    expect(mockDragUnchoose).toHaveBeenCalled();
     expect(mockDragEnd).toHaveBeenCalled();
 
     mockDragStart.mockRestore();
+    mockDragChoose.mockRestore();
     mockDragMove.mockRestore();
+    mockDragUnchoose.mockRestore();
     mockDragEnd.mockRestore();
 
   });

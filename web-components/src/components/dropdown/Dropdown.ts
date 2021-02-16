@@ -1,8 +1,8 @@
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { FocusMixin } from "@/mixins";
+import { customElementWithCheck, FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import { repeat } from "lit-html/directives/repeat.js";
@@ -23,7 +23,7 @@ export namespace Dropdown {
     };
   };
 
-  @customElement("md-dropdown")
+  @customElementWithCheck("md-dropdown")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String, attribute: "title" }) title = "Select...";
     @property({ type: Array }) options: Option[] = [];
@@ -67,7 +67,7 @@ export namespace Dropdown {
       changedProperties.forEach((oldValue, name) => {
         if (name === "defaultOption") {
           if (this.defaultOption) {
-            const { key, value } = this.getOptionKeyValuePair(this.defaultOption);
+            const { key } = this.getOptionKeyValuePair(this.defaultOption);
             this.selectedKey = key;
           }
         }
@@ -300,9 +300,6 @@ export namespace Dropdown {
           }
           break;
         }
-        default: {
-          //
-        }
       }
     };
 
@@ -355,7 +352,7 @@ export namespace Dropdown {
     }
 
     async scrollToIndex(n: number) {
-      await new Promise(resolve => {
+      await new Promise<void>(resolve => {
         requestAnimationFrame(() => {
           if (
             this.optionsListItems &&

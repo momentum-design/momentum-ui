@@ -80,12 +80,16 @@ export namespace DatePickerDay {
     }
 
     isLeadingRangeEdge() {
-      return (
-        this === this.parentNode?.firstElementChild || this.parentIsRangePicker?.startDate === this.day.toSQLDate()
-      );
+      return this === this.parentNode?.firstElementChild;
     }
     isEndingRangeEdge() {
-      return this === this.parentNode?.lastElementChild || this.parentIsRangePicker?.endDate === this.day.toSQLDate();
+      return this === this.parentNode?.lastElementChild;
+    }
+    isStartDate() {
+      return this.parentIsRangePicker?.startDate === this.day.toSQLDate();
+    }
+    isEndDate() {
+      return this.parentIsRangePicker?.endDate === this.day.toSQLDate();
     }
 
     handleKeyDown = (e: KeyboardEvent) => {
@@ -113,7 +117,9 @@ export namespace DatePickerDay {
         "md-datepicker__day--outside-month": this.isOutsideMonth,
         "md-datepicker__day--in-range": this.dateIsInRange,
         "md-datepicker__day--week-first": this.isLeadingRangeEdge(),
-        "md-datepicker__day--week-last": this.isEndingRangeEdge()
+        "md-datepicker__day--week-last": this.isEndingRangeEdge(),
+        "md-datepicker__day--start-date": this.isStartDate(),
+        "md-datepicker__day--end-date": this.isEndDate()
       };
 
       return html`

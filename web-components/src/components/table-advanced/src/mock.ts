@@ -32,11 +32,6 @@ export namespace TableMock {
     config: {
       isStickyHeader: true,
 
-      head: {
-        caption: "Caption",
-        summary: "sumary text"
-      },
-
       rows: {
         selectable: "multiple"
       },

@@ -1,0 +1,56 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
+const colors = require("@momentum-ui/tokens/dist/colors.json");
+
+const tableAdvanced = {
+  prefix: "md",
+  component: "table-advanced",
+  header: {
+    "bg-color": {
+      light: colors.gray["05"].name,
+      dark: colors.gray[95].name
+    }
+  },
+  filter: {
+    hover: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[80].name
+      }
+    }
+  },
+  hover: {
+    "bg-color": {
+      light: colors.blue[20].name,
+      dark: colors.blue[90].name
+    }
+  },
+  pressed: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[90].name
+    }
+  },
+  "border-color": {
+    light: colors.gray[10].name,
+    dark: colors.gray[80].name
+  },
+  "text-color": {
+    light: colors.gray[80].name,
+    dark: colors.gray[40].name
+  },
+  stripped: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[70].name
+    }
+  }
+}
+
+module.exports = tableAdvanced;

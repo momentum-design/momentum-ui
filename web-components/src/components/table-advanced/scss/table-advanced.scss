@@ -10,37 +10,53 @@
   width: 100%;
 
   table {
-    border: $table-main-border;
+    border: $advanced-table-main-border;
     border-collapse: collapse;
     position: relative;
     width: 100%;
 
-    * {
-      border: $table-main-border;
-    }
-
     thead {
       tr {
         th {
+          background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+          border: $advanced-table-main-border;
+          height: $advanced-table-row-height;
+          padding: 0 calc(#{$advanced-table-main-indent} * 4);
+          text-align: left;
+
           .filter {
-            visibility: hidden;
-            cursor: pointer;
+            display: inline-flex;
             float: right;
-            padding: 0 5px;
-            border: none;
+          }
+
+          .filter-icon {
+            cursor: pointer;
+            padding: $advanced-table-main-indent;
+
+            &:hover {
+              background-color: var(
+                --table-advanced-filter-hover-bg-color,
+                $lm-table-advanced-filter-hover-bg-color-light
+              );
+            }
+
+            &:active {
+              background-color: var(
+                --table-advanced-filter-pressed-bg-color,
+                $lm-table-advanced-filter-pressed-bg-color-light
+              );
+            }
           }
 
           .filter-menu {
-            position: absolute;
-            top: 39px;
-            left: 0;
             background-color: white;
-            padding: 20px;
+            padding: calc(#{$advanced-table-main-indent} * 3);
             select {
-              width: 172px;
+              width: 100%;
             }
             input {
-              margin-top: 5px;
+              margin-top: $advanced-table-main-indent;
+              max-width: 100%;
             }
           }
 
@@ -54,32 +70,32 @@
             z-index: -1;
           }
 
-          &:hover {
-            .filter {
-              visibility: visible;
-            }
+          .sort-icon {
+            display: inline-block;
+            height: $advanced-table-sort-icon;
+            padding: $advanced-table-main-indent;
+            width: $advanced-table-sort-icon;
           }
         }
+      }
+
+      md-menu-overlay::part(overlay) {
+        top: -calc(#{$advanced-table-main-indent} * 2.5);
       }
     }
 
     &.sticky-header {
       thead {
-        background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+        background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
         tr {
           th {
-            background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
-            border: $table-main-border;
-            height: $table-row-height;
-            padding-left: calc(#{$table-main-indent} * 4);
             position: sticky;
-            text-align: left;
             top: 0;
           }
 
           &:last-child {
             th {
-              top: $table-row-height;
+              top: $advanced-table-row-height;
             }
           }
         }
@@ -89,16 +105,16 @@
     tbody {
       tr {
         td {
-          height: $table-row-height;
-          padding-left: calc(#{$table-main-indent} * 4);
+          border: $advanced-table-main-border;
+          height: $advanced-table-row-height;
+          padding-left: calc(#{$advanced-table-main-indent} * 4);
           word-wrap: break-word;
         }
         th {
-          background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
-          padding-left: calc(#{$table-main-indent} * 4);
+          background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+          padding: 0 calc(#{$advanced-table-main-indent} * 4);
           text-align: left;
         }
-
         &.selectable:hover {
           background-color: silver;
           th {

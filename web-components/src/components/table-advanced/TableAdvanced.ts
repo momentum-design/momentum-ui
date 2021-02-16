@@ -7,6 +7,8 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
+import "@/components/icon/Icon";
+import "@/components/menu-overlay/MenuOverlay";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -206,26 +208,26 @@ export namespace TableAdvanced {
       });
     }
 
-    private showFilters(col: Col) {
-      if (!col.filter!.menuVisible) {
-        col.filter!.menuVisible = true;
-        this.updCols();
+    // private showFilters(col: Col) {
+    //   if (!col.filter!.menuVisible) {
+    //     col.filter!.menuVisible = true;
+    //     this.updCols();
 
-        const handler = (e: MouseEvent) => {
-          const elem = this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${col.index} .filter-menu`)!;
-          const rect = elem.getBoundingClientRect();
-          const x = e.offsetX - window.scrollX;
-          const y = e.offsetY - window.scrollY;
-          const isOutside = x < rect.left || x > rect.right || y < rect.top || y > rect.bottom;
-          if (isOutside) {
-            document.body.removeEventListener("mousedown", handler);
-            col.filter!.menuVisible = false;
-            this.updCols();
-          }
-        };
-        setTimeout(() => document.body.addEventListener("mousedown", handler), 1);
-      }
-    }
+    //     const handler = (e: MouseEvent) => {
+    //       const elem = this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${col.index} .filter-menu`)!;
+    //       const rect = elem.getBoundingClientRect();
+    //       const x = e.offsetX - window.scrollX;
+    //       const y = e.offsetY - window.scrollY;
+    //       const isOutside = x < rect.left || x > rect.right || y < rect.top || y > rect.bottom;
+    //       if (isOutside) {
+    //         document.body.removeEventListener("mousedown", handler);
+    //         col.filter!.menuVisible = false;
+    //         this.updCols();
+    //       }
+    //     };
+    //     setTimeout(() => document.body.addEventListener("mousedown", handler), 1);
+    //   }
+    // }
 
     @debounce(500)
     filter(col: Col) {
@@ -364,17 +366,20 @@ export namespace TableAdvanced {
           <!-- SORT  -->
           ${col.options.sorter
             ? html`
+                <div class="sort-icon">
+                  ${col.sort == "ascending"
+                    ? html`
+                        <md-icon name="arrow-filled-up_8"></md-icon>
+                      `
+                    : nothing}
+                  ${col.sort == "descending"
+                    ? html`
+                        <md-icon name="arrow-filled-down_8"></md-icon>
+                      `
+                    : nothing}
+                </div>
                 <div class="sort" @click=${() => this.sort(col)}></div>
-                ${col.sort == "ascending"
-                  ? html`
-                      <span>▲</span>
-                    `
-                  : nothing}
-                ${col.sort == "descending"
-                  ? html`
-                      <span>▼</span>
-                    `
-                  : nothing}
+                
               `
             : nothing}
 
@@ -383,45 +388,42 @@ export namespace TableAdvanced {
             ? html`
                 ${col.filter.active
                   ? html`
-                      <span class="filter-active">Y</span>
+                      <md-icon class="filter-active" name="filter-adr_12"></md-icon></span>
                     `
                   : nothing}
 
-                <span class="filter" @mousedown=${(e: MouseEvent) => this.showFilters(col)}>☰</span>
+                <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
+                  <md-icon class="filter-icon" slot="menu-trigger" name="filter_16"></md-icon>
+                  <div class="filter-menu" style="padding:1.25rem; width: 100%;">
+                    <select
+                      name="filter-type"
+                      @change=${(e: any) => {
+                        col.filter!.selectedIndex = e.target.value;
+                        this.updCols();
+                        this.filter(col);
+                      }}
+                    >
+                      ${col.filter.list.map(
+                        (c, i) => html`
+                          <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
+                        `
+                      )}
+                    </select>
 
-                ${col.filter.menuVisible
-                  ? html`
-                      <div class="filter-menu">
-                        <select
-                          name="filter-type"
-                          @change=${(e: any) => {
-                            col.filter!.selectedIndex = e.target.value;
-                            this.updCols();
-                            this.filter(col);
-                          }}
-                        >
-                          ${col.filter.list.map(
-                            (c, i) => html`
-                              <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
-                            `
-                          )}
-                        </select>
-
-                        <input
-                          type="text"
-                          placeholder=${input!.placeholder}
-                          maxlength=${ifDefined(input!.maxlength)}
-                          pattern=${ifDefined(input!.pattern)}
-                          .value=${col.filter.input}
-                          @input=${(e: any) => {
-                            col.filter!.input = e.target.value;
-                            this.updCols();
-                            this.filter(col);
-                          }}
-                        />
-                      </div>
-                    `
-                  : nothing}
+                    <input
+                      type="text"
+                      placeholder=${input!.placeholder}
+                      maxlength=${ifDefined(input!.maxlength)}
+                      pattern=${ifDefined(input!.pattern)}
+                      .value=${col.filter.input}
+                      @input=${(e: any) => {
+                        col.filter!.input = e.target.value;
+                        this.updCols();
+                        this.filter(col);
+                      }}
+                    />
+                  </div>
+                </md-menu-overlay>
               `
             : nothing}
         </th>

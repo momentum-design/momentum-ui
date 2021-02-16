@@ -12,7 +12,6 @@ import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, SlottedMixin } from "@/mixins";
-import { DraggableItem } from "./DraggableItem";
 
 export namespace Draggable {
   @customElementWithCheck("md-draggable")
@@ -28,6 +27,10 @@ export namespace Draggable {
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
     @property({ type: String, attribute: "drag-class" }) dragClass = "";
+    @property({ type: String, attribute: "fallback-class" }) fallbackClass = "";
+    @property({ type: Number, attribute: "swap-threshold" }) swapThreshold = 1;
+    @property({ type: Number, attribute: "touch-start-threshold" }) touchStartThreshold = 0;
+    @property({ type: Boolean, attribute: "force-fallback" }) forceFallback = false;
     @property({ type: Boolean, reflect: true }) sort = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) editable = false;
@@ -35,7 +38,6 @@ export namespace Draggable {
     @query("slot[name='draggable-item']") draggableSlot!: HTMLSlotElement;
 
     private sortableInstance: Sortable | null = null;
-    private items: DraggableItem.ELEMENT[] = [];
 
     static get styles() {
       return [reset, styles];
@@ -43,37 +45,6 @@ export namespace Draggable {
 
     get slotElement() {
       return this.draggableSlot;
-    }
-
-    private setupItems() {
-      if (this.slotElement) {
-        const children = this.slotElement.assignedElements({ flatten: true })
-        this.getChildrenFromTree({ children }, this.items);
-      }
-    }
-
-    private getChildrenFromTree(elem: {children: Element[]}, items: DraggableItem.ELEMENT[]) {
-      for (var i = 0; i < elem.children.length; i++) {
-        var child = elem.children[i];
-        if (child instanceof DraggableItem.ELEMENT) {
-          items.push(child);
-        }
-        this.getChildrenFromTree(child as any, items); // RECURSION
-      }
-    }
-
-    private async linkItems() {
-      const { items } = this;
-
-      items.forEach(item => {
-
-        if (this.editable) {
-          item.setAttribute("editable", "true");
-        } else {
-          item.removeAttribute("editable");
-        }
-
-      })
     }
 
     private generateOptions() {
@@ -86,11 +57,15 @@ export namespace Draggable {
         handle: this.handle,
         easing: this.easing,
         filter: this.filter,
+        swapThreshold: this.swapThreshold,
+        touchStartThreshold: this.touchStartThreshold,
         draggable: this.draggableItems,
         direction: this.direction,
         ghostClass: this.ghostClass,
         chosenClass: this.chosenClass,
         dragClass: this.dragClass,
+        fallbackClass: this.fallbackClass,
+        forceFallback: this.forceFallback,
         onStart: this.handleOnStart,
         onMove: this.handleOnMove,
         onEnd: this.handleOnEnd,
@@ -131,12 +106,12 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-clone", event);
     };
 
-    private handleOnUnchoose = (event: Sortable.SortableEvent) => {
+    handleOnUnchoose = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-unchoose", event);
     };
 
-    private handleOnRemove = (event: Sortable.SortableEvent) => {
+    handleOnRemove = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-remove", event);
     };
@@ -146,17 +121,17 @@ export namespace Draggable {
       this.dispatchDragEvent("drag-add", event);
     };
 
-    private handleOnChoose = (event: Sortable.SortableEvent) => {
+    handleOnChoose = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-choose", event);
     };
 
-    private handleOnEnd = (event: Sortable.SortableEvent) => {
+    handleOnEnd = (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-end", event);
     };
 
-    private handleOnMove = debounce((event: Sortable.MoveEvent) => {
+    handleOnMove = debounce((event: Sortable.MoveEvent) => {
       event.stopPropagation();
       this.dispatchDragEvent("drag-move", event);
     }, 100);
@@ -199,13 +174,6 @@ export namespace Draggable {
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       this.updateSortableInstance(changedProperties);
-      if (changedProperties.has("slotted")) {
-        this.setupItems();
-        this.linkItems()
-      }
-      if (changedProperties.has("editable")) {
-        this.linkItems()
-      }
     }
 
     protected slottedChanged() {

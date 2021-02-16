@@ -46,7 +46,11 @@ export namespace DraggableItem {
               `
             : nothing}
           <slot></slot>
-          ${this.extended ? html`<slot name="extended"></slot>` : nothing}
+          ${this.extended
+            ? html`
+                <slot name="extended"></slot>
+              `
+            : nothing}
         </div>
       `;
     }

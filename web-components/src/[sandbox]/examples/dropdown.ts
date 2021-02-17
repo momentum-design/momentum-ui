@@ -1,7 +1,7 @@
 import { Dropdown } from "@/components/dropdown/Dropdown";
 import { html } from "lit-element";
 
-export const dropdownStringOptions = ["one", "two", "three", "non-trimmed"];
+export const dropdownStringOptions = ["one", "two", "three", "   non-trimmed-with-spaces "];
 
 export const dropdownStringLongOptions = [
   "01",

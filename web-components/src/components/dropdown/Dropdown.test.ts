@@ -185,6 +185,26 @@ describe("Dropdown Component", () => {
       );
     });
 
+    it("should trim non-trimmed", async () => {
+      const duplicatedDropdownStringOptions = [
+        "one",
+        "two",
+        "three",
+        "   non-trimmed-with-spaces ",
+        " non-trimmed-with-spaces   "
+      ];
+
+      dropdown = await fixture<Dropdown.ELEMENT>(
+        html`
+          <md-dropdown .options="${duplicatedDropdownStringOptions}" title="Test"></md-dropdown>
+        `
+      );
+
+      await elementUpdated(dropdown);
+
+      expect(dropdown["renderOptions"].length).toBe(4);
+    });
+
     it("should set correct aria attributes", async () => {
       dropdown["expanded"] = true;
 

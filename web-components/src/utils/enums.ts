@@ -6,32 +6,15 @@
  *
  */
 
-export const activityButtonSizes = ["56", "68", "84", 56, 68, 84];
-export const iconSizes = ["16", "20", "36", "56", 16, 20, 36, 56];
-export const activityButtonTypes = [
-  "chat",
-  "camera",
-  "contact-card",
-  "meetings",
-  "whiteboard",
-  "files",
-  "share-screen",
-  "tasks"
-];
-export const buttonSizes = ["none", "28", "36", "40", "52", 28, 36, 40, 52];
 export const alertTypes = ["error", "info", "success", "warn", "default"];
-export const iconTypes = ["", "white"];
-export const modalSizes = ["default", "full", "large", "small", "dialog"];
 export const messageType = ["", "warning", "success", "error"];
 export const numInputTypes = ["integer", "decimal"];
 export const badgeColor = ["default", "blue", "red", "yellow", "green", "mint"];
-export const badgePastel = ["pastel", "blue-pastel", "red", "yellow-pastel", "green-pastel", "mint-pastel"];
 export const BarFormat = ["none", "fraction", "percentage"];
 export const BarType = ["determinate", "indeterminate"];
-export const coachPlacement = ["auto", "left", "right", "top", "bottom"]
+export const coachPlacement = ["auto", "left", "right", "top", "bottom"];
 
 export const TooltipDirection = ["top", "left", "right", "bottom"];
-export const TooltipDisplay = ["mouseEnter", "click", "focus"];
 
 export const comboBoxOptions = [
   "Algeria",
@@ -56,7 +39,7 @@ export const iconColorSample = [
   "md-gray-80",
   "md-orange-50",
   "md-gold-70"
-]
+];
 
 export const iconSamples = [
   "3d-object_16",

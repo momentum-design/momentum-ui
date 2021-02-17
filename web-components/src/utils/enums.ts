@@ -16,20 +16,6 @@ export const coachPlacement = ["auto", "left", "right", "top", "bottom"];
 
 export const TooltipDirection = ["top", "left", "right", "bottom"];
 
-export const comboBoxOptions = [
-  "Algeria",
-  "American Samoa",
-  "Andorra",
-  "Belarus",
-  "Belgium",
-  "Georgia",
-  "Germany",
-  "Ghana",
-  "Maldives",
-  "Mali",
-  "Malta"
-];
-
 export const iconColorSample = [
   "md-blue-70",
   "md-green-60",

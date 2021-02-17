@@ -12,7 +12,10 @@ export const comboBoxOptions = [
   "Argentina"
 ];
 
-export const tableWarns = [{row: 2, col: 3}, {row: 3, col: 3}];
+export const tableWarns = [
+  { row: 2, col: 3 },
+  { row: 3, col: 3 }
+];
 
 export const comboBoxObjectOptions = [
   { id: "0", country: "Afghanistan" },

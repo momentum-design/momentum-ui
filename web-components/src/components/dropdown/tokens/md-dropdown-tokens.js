@@ -5,16 +5,18 @@ const colors = require("@momentum-ui/tokens/dist/colors.json");
 const dropdown = {
   prefix: "md",
   component: "dropdown",
-  pressed: {
-    "bg-color": {
+  "bg-color": {
+    focus: {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
     }
   },
-  focus: {
-    "border-color": {
-      light: colors.theme[50].name,
-      dark: colors.theme[60].name
+  "border-color": {
+    light: colors.gray[40].name,
+    dark: colors.gray[70].name,
+    focus: {
+      light: colors.gray[50].name,
+      dark: colors.gray[60].name
     }
   },
   list: {
@@ -31,12 +33,6 @@ const dropdown = {
         light: colors.theme[20].name,
         dark: colors.theme[60].name
       }
-    }
-  },
-  label: {
-    radius: {
-      light: "0.25rem",
-      dark: "0.25rem"
     }
   }
 };

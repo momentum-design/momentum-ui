@@ -419,14 +419,15 @@ export namespace Dropdown {
       return this.title;
     }
 
+    get dropDownClassMap() {
+      return {
+        "md-dropdown__expanded": this.expanded
+      };
+    }
+
     render() {
       return html`
-        <div
-          class="${classMap({
-            "md-dropdown": true,
-            "md-dropdown__expanded": this.expanded
-          })}"
-        >
+        <div class="md-dropdown ${classMap(this.dropDownClassMap)}" part="dropdown">
           <label
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"

@@ -9,15 +9,12 @@
     flex-direction: column;
     position: relative;
 
-    .md-dropdown-select {
+    &-select {
       display: none;
     }
 
-    .md-dropdown-label {
-      border: none;
-      display: flex;
-      flex-grow: 1;
-
+    &-label {
+      @include flex;
       background-color: var(--md-primary-bg-color);
       border: $dropdown-border;
       border-radius: $dropdown-label-radius;
@@ -25,12 +22,13 @@
       padding: $dropdown-label-padding;
 
       &--text {
+        @include flex($jc: flex-start);
+        @include text-dots;
         color: var(--md-secondary-text-color);
-        display: block;
-        flex: 1 1 auto;
-        height: $dropdown-min-height;
         line-height: $dropdown-min-height;
         outline: none;
+        width: rem-calc(100%);
+        flex: 1 0 auto;
       }
 
       &--icon {
@@ -59,56 +57,43 @@
       }
 
       &:active {
-        background: var(--dropdown-pressed-bg-color, $lm-dropdown-pressed-bg-color-light);
+        background: var(--dropdown-bg-color-focus, $lm-dropdown-bg-color-focus-light);
       }
     }
 
-    .md-dropdown-list {
+    &-list {
+      @include list-reset;
       display: none;
       background-color: var(--md-primary-bg-color);
-      border: $dropdown-border;
       border-radius: $dropdown-list-radius;
       box-shadow: $dropdown-list-shadow;
-      box-sizing: border-box;
-      font-size: $font-size-base;
       left: 0;
-      list-style: none;
-      margin: 0;
       overflow: auto;
       overflow-x: hidden;
-      padding: 0;
       position: absolute;
       top: calc(100% + #{$dropdown-main-indent});
       width: 100%;
       z-index: 1;
+    }
 
-      .md-dropdown-option {
-        align-items: center;
-        color: var(--md-primary-text-color, $md-gray-05);
-        display: flex;
-        margin: 0;
-        outline: none;
-        padding: $dropdown-option-padding;
-        width: 100%;
+    &-option {
+      @include flex;
+      color: var(--md-primary-text-color, $md-gray-05);
+      padding: $dropdown-option-padding;
 
-        .select-label {
-          @include text-dots;
-          cursor: default;
-          letter-spacing: normal;
-          width: calc(100% - #{$dropdown-option-select-size} - #{$dropdown-option-select-margin});
+      .select-label {
+        @include text-dots;
+        cursor: default;
+        width: calc(100% - #{$dropdown-option-select-margin});
+        display: block;
+      }
 
-          span {
-            margin-right: -$dropdown-main-indent;
-          }
-        }
+      &:hover {
+        background: var(--dropdown-list-item-hover-bg-color, $lm-dropdown-list-item-hover-bg-color-light);
+      }
 
-        &:hover {
-          background: var(--dropdown-list-item-hover-bg-color, $lm-dropdown-list-item-hover-bg-color-light);
-        }
-
-        &[focused] {
-          background: var(--dropdown-list-item-focus-bg-color, $lm-dropdown-list-item-focus-bg-color-light);
-        }
+      &[focused] {
+        background: var(--dropdown-list-item-focus-bg-color, $lm-dropdown-list-item-focus-bg-color-light);
       }
     }
 
@@ -129,7 +114,7 @@
 :host([focus-visible]) {
   .md-dropdown {
     .md-dropdown-label {
-      border-color: var(--dropdown-focus-border-color, $lm-dropdown-focus-border-color-light);
+      @include focus-boxshadow(rem-calc(1), var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light));
       box-shadow: none;
     }
   }

@@ -1,4 +1,5 @@
 import "@/components/combobox/ComboBox";
+import "@/components/icon/Icon";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";

@@ -64,7 +64,7 @@ export const Table = () => {
       <md-table
         .zebra=${zebra}
         .label="${label}"
-        .tabledata="${tabledata}"
+        .tabledata="${data}"
         .stickheader="${stickheader}"
         .clean="${clean}"
         .sorting="${sorting}"

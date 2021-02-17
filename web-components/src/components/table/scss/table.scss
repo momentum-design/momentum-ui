@@ -22,7 +22,8 @@
       th {
         background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
         position: sticky;
-        top: 0;
+        top: -$table-stick-top-indent;
+        z-index: 1;
 
         &:hover {
           background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
@@ -35,7 +36,8 @@
 .md-table {
   border: $table-main-border;
   border-collapse: collapse;
-  width: 100%;
+  min-width: $table-row-height;
+  width: 100% !important;
 
   .md-table__header {
     tr {
@@ -46,7 +48,7 @@
       border-bottom: $table-main-border;
       border-right: $table-main-border;
       color: var(--table-text-color, $lm-table-text-color-light);
-      font-size: $font-size-small;
+      font-size: $font-size-base;
       font-weight: bold;
       padding-left: calc(#{$table-main-indent} * 3);
       text-align: left;
@@ -59,25 +61,12 @@
         background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
       }
 
-      a {
-        color: var(--table-text-color, $lm-table-text-color-light);
+      md-button {
+        padding: $table-main-indent;
 
         &.sortedAbc {
-          &:after {
-            content: $icon-arrow-filled-down_10;
-            display: inline-block;
-            font-family: $icon-font-name;
-            padding-left: $table-main-indent;
-            vertical-align: bottom;
-          }
-        }
-        &.sortedZyx {
-          &:after {
-            content: $icon-arrow-filled-up_10;
-            display: inline-block;
-            font-family: $icon-font-name;
-            padding-left: $table-main-indent;
-            vertical-align: bottom;
+          md-icon {
+            transform: (rotate(-180deg));
           }
         }
       }
@@ -99,14 +88,19 @@
 
     td {
       font-size: $font-size-base;
-      min-width: calc(#{$table-row-height} * 3.2);
+      max-width: 0;
       padding-left: calc(#{$table-main-indent} * 3);
-      vertical-align: middle;
+
+      .inner-cell {
+        display: flex;
+        white-space: nowrap;
+      }
 
       span {
-        @include text-dots;
-        min-height: calc(#{$table-main-indent} * 6);
-        width: calc(100% - #{$table-main-indent});
+        align-self: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
       }
 
       md-icon {
@@ -116,7 +110,7 @@
 
       &:last-child {
         span {
-          width: auto;
+          max-width: calc(#{$table-row-height} * 2.5);
         }
       }
     }
@@ -128,7 +122,6 @@
     td {
       border-bottom: $table-main-border;
       border-right: $table-main-border;
-      vertical-align: top;
     }
   }
 

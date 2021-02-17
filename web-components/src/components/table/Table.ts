@@ -13,16 +13,22 @@ import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 import { nothing } from "lit-html";
+import { repeat } from "lit-html/directives/repeat";
 
 export const formatType = ["number", "default"] as const;
-type Warn = { [key: number]: any };
 
 export namespace Table {
   export type Format = typeof formatType[number];
 
+  type headerCol = {
+    name: string;
+    width: string;
+  };
+
   @customElementWithCheck("md-table")
   export class ELEMENT extends LitElement {
     @property({ type: String }) tabledata = "";
+    @property({ type: Array }) headerdata: headerCol[] = [];
     @property({ type: Boolean }) zebra = false;
     @property({ type: Boolean }) clean = false;
     @property({ type: Boolean }) sorting = false;
@@ -31,13 +37,12 @@ export namespace Table {
     @property({ type: String }) label = "Table";
     @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
     @property({ type: String }) format: Table.Format = "default";
-    @property({ type: Array }) warning: (any | Warn)[] = [];
-    @property({ type: Array }) errors:  (any | Warn)[] = [];
+    @property({ type: String }) warning = "***";
+    @property({ type: String }) errors = "xxx";
+    @property({ type: String }) info = "!!!";
 
     @internalProperty() private sort = { columnName: "", sortting: false };
     @internalProperty() csvData: any = undefined;
-
-    @queryAll('.md-table__body tr[role="row"]') rowTable?: HTMLTableRowElement[];
 
     headerRow: any;
     results: any;
@@ -55,49 +60,15 @@ export namespace Table {
     connectedCallback() {
       super.connectedCallback();
       this.results = Papa.parse(this.tabledata, this.config);
-      this.headerRow = this.results.data[0];
-      this.csvData = this.results.data.slice(1, this.results.data.length);
+      this.headerRow = this.headerdata;
+      this.csvData = this.results.data;
       this.requestUpdate("tabledata");
-      this.linkCellItems();
-    }
-
-    get rowItem() {
-      return this.rowTable;
-    }
-  
-    linkCellItems() {
-      const data = this.rowTable;
-  
-      data?.forEach((item, idx) => {
-        this.warning.forEach(i => {
-          if ((idx + 1) === i.row) {
-            const cell = item.querySelectorAll('td[role="cell"');
-            cell.forEach((c, id) => {
-              if ((id + 1) === i.col) {
-                c.classList.add("warning");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
-              }
-            })
-          }
-        });
-        this.errors.forEach(i => {
-          if ((idx + 1) === i.row) {
-            const cell = item.querySelectorAll('td[role="cell"');
-            cell.forEach((c, id) => {
-              if ((id + 1) === i.col) {
-                c.classList.add("error");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
-              }
-            })
-          }
-        });
-      });
     }
 
     sortTab(ev: Event, key: any) {
       const elCell = ev.target as HTMLTableElement;
       const sortArr = Array.from(this.csvData);
-      const index = this.headerRow.indexOf(key);
+      const index = key;
   
       function compare(a: any, b: any) {
         const bandA = a[index].toLowerCase();
@@ -133,9 +104,8 @@ export namespace Table {
       super.update(changedProperties);
       if (changedProperties.has("tabledata")) {
         this.results = Papa.parse(this.tabledata, this.config);
-        this.headerRow = this.results.data[0];
-        this.csvData = this.results.data.slice(1, this.results.data.length);
-        this.linkCellItems();
+        this.headerRow = this.headerdata;
+        this.csvData = this.results.data;
       }
     }
 
@@ -165,20 +135,23 @@ export namespace Table {
                 >
                   <thead class="md-table__header" role="rowgroup" tabindex="0">
                     <tr role="row">
-                      ${this.headerRow.map(
-                        (i: any) =>
-                          html`
-                            <th role="columnheader">
-                              ${this.sorting
-                                ? html`
-                                    <a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>
-                                  `
-                                : html`
-                                    ${i}
-                                  `}
-                            </th>
-                          `
+                      ${repeat(
+                        this.headerRow,
+                        (item: headerCol) => item.name,
+                        (item: any, i) => html`
+                          <th role="columnheader" width="${item.width}">
+                            ${this.sorting
+                              ? html`
+                                  <span>${item.name}</span>
+                                  <md-button @click=${(e: CustomEvent) => this.sortTab(e, i)} color="color-none" hasRemoveStyle><md-icon slot="icon" name="arrow-filled-down_12"></md-icon></md-button>
+                                `
+                              : html`
+                                  <span>${item.name}</span>
+                                `}
+                          </th>
+                        `
                       )}
+                      
                     </tr>
                   </thead>
                   <tbody class="md-table__body" role="rowgroup">
@@ -191,7 +164,25 @@ export namespace Table {
                                 this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
                               return html`
                                 <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">
-                                  <span>${formattedItem}</span>
+                                  <div class="inner-cell">
+                                    ${formattedItem.includes(this.warning)
+                                      ? html`
+                                        <span class="warning">${formattedItem.replace(this.warning, "")}</span>
+                                        <md-icon name="warning_24" color="yellow"></md-icon>
+                                      `
+                                      : formattedItem.includes(this.errors)
+                                        ? html`
+                                          <span class="warning">${formattedItem.replace(this.errors, "")}</span>
+                                          <md-icon name="error_24" color="red"></md-icon>
+                                        `
+                                      : formattedItem.includes(this.info)
+                                        ? html`
+                                          <span class="warning">${formattedItem.replace(this.info, "")}</span>
+                                          <md-icon name="warning_24" color="blue"></md-icon>
+                                        `  
+                                      : html`<span>${formattedItem}</span>`
+                                    }
+                                  </div>
                                 </td>
                               `;
                             })}

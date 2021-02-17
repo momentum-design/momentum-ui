@@ -18,14 +18,14 @@
       display: flex;
       flex-grow: 1;
 
-      background: var(--combobox-bg-color, $lm-dropdown-bg-color-light);
+      background-color: var(--md-primary-bg-color);
       border: $dropdown-border;
       border-radius: $dropdown-label-radius;
       min-height: $dropdown-min-height;
       padding: $dropdown-label-padding;
 
       &--text {
-        color: var(--combobox-text-color, $lm-dropdown-text-color-light);
+        color: var(--md-secondary-text-color);
         display: block;
         flex: 1 1 auto;
         height: $dropdown-min-height;
@@ -37,8 +37,8 @@
         @include arrow-transition;
         display: inline-block;
 
-        background: transparent;
-        border: 0;
+        background-color: transparent;
+        border: none;
         cursor: pointer;
         height: $dropdown-icon-height;
         margin: 0;
@@ -55,7 +55,7 @@
       }
 
       &:hover {
-        background: var(--dropdown-hover-bg-color, $lm-dropdown-hover-bg-color-light);
+        background-color: var(--md-quaternary-bg-color);
       }
 
       &:active {
@@ -65,7 +65,7 @@
 
     .md-dropdown-list {
       display: none;
-      background-color: var(--dropdown-dropdown-bg-color, $lm-dropdown-bg-color-light);
+      background-color: var(--md-primary-bg-color);
       border: $dropdown-border;
       border-radius: $dropdown-list-radius;
       box-shadow: $dropdown-list-shadow;
@@ -138,10 +138,10 @@
 :host([disabled]) {
   .md-dropdown {
     .md-dropdown-label {
-      background: var(--dropdown-disabled-bg-color, $lm-dropdown-disabled-bg-color-light);
+      background: var(--md-tertiary-bg-color);
 
       &:hover, &:active {
-        background: var(--dropdown-disabled-bg-color, $lm-dropdown-disabled-bg-color-light);
+        background: var(--md-tertiary-bg-color);
         pointer-events: none;
 
         > md-icon {

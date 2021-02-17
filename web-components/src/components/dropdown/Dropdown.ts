@@ -88,12 +88,13 @@ export namespace Dropdown {
           }
         }
         if (name === "expanded") {
-          if (this.expanded) {
-            this.updateListDOM();
-          }
+          this.updateListDOM();
         }
         if (name === "focusedIndex") {
           this.updateListDOM();
+        }
+        if (name === "disabled") {
+          this.setAttribute("tabindex", !this.disabled ? "0" : "-1");
         }
       });
     }
@@ -128,12 +129,15 @@ export namespace Dropdown {
     }
 
     async updateListDOM() {
+      if (!this.expanded) {
+        return;
+      }
       await this.resizeDropdownList();
       await this.scrollToIndex(this.focusedIndex);
     }
 
     async resizeDropdownList() {
-      await new Promise<void>(resolve => {
+      await new Promise<void>(resolve =>
         requestAnimationFrame(() => {
           if (this.optionsListItems) {
             if (this.optionsListItems.length > this.visibleOptions) {
@@ -155,8 +159,8 @@ export namespace Dropdown {
             }
           }
           resolve();
-        });
-      });
+        })
+      );
     }
 
     protected handleFocusIn(event: Event) {

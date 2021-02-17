@@ -1,8 +1,8 @@
 $dropdown-main-indent: rem-calc(4);
-$dropdown-border: 1px solid var(--combobox-border-color, $lm-dropdown-border-color-light);
+$dropdown-border: 1px solid var(--md-secondary-seperator-color);
 $dropdown-min-height: rem-calc(32);
 
-$dropdown-label-radius: var(--combobox-group-radius, $lm-dropdown-label-radius-light);
+$dropdown-label-radius: var(--dropdown-group-radius, $lm-dropdown-label-radius-light);
 $dropdown-label-padding: 0 rem-calc(12);
 $dropdown-icon-height: rem-calc(28);
 

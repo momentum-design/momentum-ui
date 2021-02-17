@@ -6,7 +6,11 @@ const dropdown = {
   prefix: "md",
   component: "dropdown",
   "bg-color": {
-    focus: {
+    hover: {
+      light: colors.gray[10].name,
+      dark: colors.gray[80].name
+    },
+    active: {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
     }
@@ -25,11 +29,11 @@ const dropdown = {
       dark: colors.gray[90].name
     },
     item: {
-      "hover-bg-color": {
+      "bg-color-hover": {
         light: colors.theme[10].name,
         dark: colors.theme[90].name
       },
-      "focus-bg-color": {
+      "bg-color-focus": {
         light: colors.theme[20].name,
         dark: colors.theme[60].name
       }

@@ -53,11 +53,11 @@
       }
 
       &:hover {
-        background-color: var(--md-quaternary-bg-color);
+        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
       }
 
       &:active {
-        background: var(--dropdown-bg-color-focus, $lm-dropdown-bg-color-focus-light);
+        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
       }
     }
 
@@ -89,11 +89,11 @@
       }
 
       &:hover {
-        background: var(--dropdown-list-item-hover-bg-color, $lm-dropdown-list-item-hover-bg-color-light);
+        background-color: var(--dropdown-list-item-bg-color-hover, $lm-dropdown-list-item-bg-color-hover-light);
       }
 
       &[focused] {
-        background: var(--dropdown-list-item-focus-bg-color, $lm-dropdown-list-item-focus-bg-color-light);
+        background-color: var(--dropdown-list-item-bg-color-focus, $lm-dropdown-list-item-bg-color-focus-light);
       }
     }
 
@@ -123,10 +123,10 @@
 :host([disabled]) {
   .md-dropdown {
     .md-dropdown-label {
-      background: var(--md-tertiary-bg-color);
+      background-color: var(--md-tertiary-bg-color);
 
       &:hover, &:active {
-        background: var(--md-tertiary-bg-color);
+        background-color: var(--md-tertiary-bg-color);
         pointer-events: none;
 
         > md-icon {

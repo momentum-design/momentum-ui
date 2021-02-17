@@ -1,5 +1,11 @@
+import {
+  dropdownObjectKeyValueOptions,
+  dropdownObjectLongOptions,
+  dropdownStringLongOptions,
+  dropdownStringOptions
+} from "@/[sandbox]/examples/dropdown";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
@@ -16,10 +22,53 @@ export default {
 export const Dropdown = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const title = text("title", "Select...?");
+  const disabled = boolean("Disabled", false);
 
-  return html`
-    <md-theme class="theme-toggle" id="datepicker" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
-      <md-dropdown></md-dropdown>
-    </md-theme>
-  `;
+  const simple = boolean("Simple strings", false);
+  const simpleLong = boolean("Simple Long strings", false);
+
+  const singleKeyValue = boolean("Single KeyValue objects", false);
+  const multiKeyValue = boolean("Multi KeyValue objects", false);
+
+  if (simple) {
+    return html`
+      <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
+        <md-dropdown .options="${dropdownStringOptions}" .title="${title}" ?disabled="${disabled}"></md-dropdown>
+      </md-theme>
+    `;
+  } else if (simpleLong) {
+    return html`
+      <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
+        <md-dropdown
+          .options="${dropdownStringLongOptions}"
+          .defaultOption="${dropdownStringLongOptions[29]}"
+          .title="${title}"
+          ?disabled="${disabled}"
+        ></md-dropdown>
+      </md-theme>
+    `;
+  } else if (singleKeyValue) {
+    return html`
+      <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
+        <md-dropdown
+          .options="${dropdownObjectKeyValueOptions}"
+          .title="${title}"
+          ?disabled="${disabled}"
+        ></md-dropdown>
+      </md-theme>
+    `;
+  } else if (multiKeyValue) {
+    return html`
+      <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
+        <md-dropdown
+          .options="${dropdownObjectLongOptions}"
+          option-id="id"
+          option-value="country"
+          .title="${title}"
+          ?disabled="${disabled}"
+        ></md-dropdown>
+      </md-theme>
+    `;
+  }
 };

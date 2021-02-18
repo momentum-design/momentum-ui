@@ -304,9 +304,8 @@ export namespace TableAdvanced {
 
       const elem = elems[col.index];
       const elemLeft = elems[col.index - 1];
-
-      const wElem = elems[col.index].offsetWidth;
-      const wElemLeft = elems[col.index - 1].offsetWidth;
+      const elemW = elem.offsetWidth;
+      const elemLeftW = elemLeft.offsetWidth;
 
       const drag = () => {
         const eX = this.eX;
@@ -322,8 +321,8 @@ export namespace TableAdvanced {
           */
 
           const deltaX = posX - orgX;
-          set = wElem - deltaX;
-          setLeft = wElemLeft + deltaX;
+          set = elemW - deltaX;
+          setLeft = elemLeftW + deltaX;
 
           col.width = set + "px";
           colLeft.width = setLeft + "px";

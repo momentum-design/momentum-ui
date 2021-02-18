@@ -8,6 +8,7 @@
 
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, withKnobs, color, text, select } from "@storybook/addon-knobs";
+import mdx from "./Draggable.mdx";
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
@@ -19,12 +20,15 @@ export default {
   component: "md-draggable",
   decorators: [withKnobs, withA11y],
   parameters: {
+    docs: {
+      page: mdx
+    },
     a11y: {
       element: "md-draggable"
     },
-    docs: {
+    parameters: {
       description: {
-        component: `For more information please look: https://sortablejs.github.io/Sortable/`
+        component: "For more information please look: https://sortablejs.github.io/Sortable/"
       }
     }
   }

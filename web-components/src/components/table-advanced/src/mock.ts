@@ -37,6 +37,7 @@ export namespace TableMock {
       },
 
       cols: {
+        isResizable: true,
         define: [
           {
             groupName: "group1",

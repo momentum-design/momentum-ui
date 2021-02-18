@@ -76,6 +76,17 @@
             padding: $advanced-table-main-indent;
             width: $advanced-table-sort-icon;
           }
+
+          .resize {
+            cursor: col-resize;
+            background-color: red;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+          }
         }
       }
 

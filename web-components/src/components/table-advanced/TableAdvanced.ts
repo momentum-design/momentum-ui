@@ -9,7 +9,7 @@
 import reset from "@/wc_scss/reset.scss";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, query } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { classMap } from "lit-html/directives/class-map";
@@ -17,8 +17,10 @@ import { nothing } from "lit-html";
 import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
-import { setTimeout } from "timers";
 import { debounce, Evt, evt } from "./src/helpers";
+
+const IMG = document.createElement("img");
+IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
 export namespace TableAdvanced {
   export type ChangeEvent = {
@@ -64,6 +66,8 @@ export namespace TableAdvanced {
     private updCols = () => this.requestUpdate("COLS");
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
+
+    @query(".container") private elContainer!: HTMLElement;
 
     connectedCallback() {
       super.connectedCallback();
@@ -208,27 +212,6 @@ export namespace TableAdvanced {
       });
     }
 
-    // private showFilters(col: Col) {
-    //   if (!col.filter!.menuVisible) {
-    //     col.filter!.menuVisible = true;
-    //     this.updCols();
-
-    //     const handler = (e: MouseEvent) => {
-    //       const elem = this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${col.index} .filter-menu`)!;
-    //       const rect = elem.getBoundingClientRect();
-    //       const x = e.offsetX - window.scrollX;
-    //       const y = e.offsetY - window.scrollY;
-    //       const isOutside = x < rect.left || x > rect.right || y < rect.top || y > rect.bottom;
-    //       if (isOutside) {
-    //         document.body.removeEventListener("mousedown", handler);
-    //         col.filter!.menuVisible = false;
-    //         this.updCols();
-    //       }
-    //     };
-    //     setTimeout(() => document.body.addEventListener("mousedown", handler), 1);
-    //   }
-    // }
-
     @debounce(500)
     filter(col: Col) {
       if (!col.filter) return;
@@ -295,6 +278,72 @@ export namespace TableAdvanced {
       this.selected = {};
     }
 
+    // RESIZE
+
+    // FIREFOX bug
+    // using dragover for mouse X/Y
+    // https://stackoverflow.com/a/33672982
+    private eX = 0;
+
+    private onResize = (e: DragEvent, col: Col) => {
+      const t = e.target as HTMLDivElement;
+      e.dataTransfer?.setDragImage(IMG, 0, 0);
+
+      const elems = this.COLS.map(c => this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${c.index}`)!);
+      this.COLS.forEach((c, i) => c.width = elems[i].offsetWidth + "px");
+      this.updCols();
+
+      const orgX = e.x;
+      this.eX = e.x;
+
+      let posX = -1;
+      let set = -1;
+      let setLeft = -1;
+
+      const colLeft = this.COLS[col.index - 1];
+
+      const elem = elems[col.index];
+      const elemLeft = elems[col.index - 1];
+
+      const wElem = elems[col.index].offsetWidth;
+      const wElemLeft = elems[col.index - 1].offsetWidth;
+
+      const drag = () => {
+        const eX = this.eX;
+        if (posX != eX && eX != 0) {
+          posX = eX;
+
+          // TODO - With this I can catch wher resize is stopped
+          /*
+          const real = elem.offsetWidth;
+          console.log(set, real);
+          const realLeft = elemLeft.offsetWidth;
+          console.log(setLeft, realLeft);
+          */
+
+          const deltaX = posX - orgX;
+          set = wElem - deltaX;
+          setLeft = wElemLeft + deltaX;
+
+          col.width = set + "px";
+          colLeft.width = setLeft + "px";
+          this.updCols();
+        }
+      };
+
+      const dragOver = (evt: DragEvent) => (this.eX = evt.x);
+
+      const dragEnd = () => {
+        t.removeEventListener("drag", drag);
+        t.removeEventListener("dragend", dragEnd);
+        document.removeEventListener("dragover", dragOver);
+      };
+
+      t.addEventListener("drag", drag);
+      t.addEventListener("dragend", dragEnd);
+      document.addEventListener("dragover", dragOver);
+    };
+
     // RENDER
     // ----------------------------------
 
@@ -324,11 +373,13 @@ export namespace TableAdvanced {
                 if (gName != col.group.name) {
                   gName = col.group.name;
                   return html`
-                    <th colspan=${col.group.length} scope="colgroup">${col.group.name}</th>
+                    <th colspan=${col.group.length} scope="colgroup">
+                      ${col.group.name} ${this.renderResize(col)}
+                    </th>
                   `;
                 }
               } else {
-                return this.renderNode(col, 2);
+                return this.renderCol(col, 2);
               }
             })}
           </tr>
@@ -340,10 +391,10 @@ export namespace TableAdvanced {
           ${this.COLS.map(col => {
             if (hasGroup) {
               if (col.group) {
-                return this.renderNode(col);
+                return this.renderCol(col);
               }
             } else {
-              return this.renderNode(col);
+              return this.renderCol(col);
             }
           })}
         </tr>
@@ -356,11 +407,11 @@ export namespace TableAdvanced {
       `;
     }
 
-    renderNode(col: Col, rowspan?: number) {
+    renderCol(col: Col, rowspan?: number) {
       const input = col.filter?.list[col.filter.selectedIndex]?.input;
 
       return html`
-        <th rowspan=${ifDefined(rowspan)} scope="col" class=${"col-index-" + col.index}>
+        <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width)} scope="col" class=${"col-index-" + col.index}>
           ${col.options.title}
 
           <!-- SORT  -->
@@ -379,7 +430,6 @@ export namespace TableAdvanced {
                     : nothing}
                 </div>
                 <div class="sort" @click=${() => this.sort(col)}></div>
-                
               `
             : nothing}
 
@@ -426,8 +476,23 @@ export namespace TableAdvanced {
                 </md-menu-overlay>
               `
             : nothing}
+
+          <!-- RESIZE  -->
+          ${this.renderResize(col)}
         </th>
       `;
+    }
+
+    renderResize(col: Col) {
+      return this.config.cols.isResizable
+        ? html`
+            ${col.index > 0
+              ? html`
+                  <div class="resize" draggable="true" @dragstart=${(e: DragEvent) => this.onResize(e, col)}></div>
+                `
+              : nothing}
+          `
+        : nothing;
     }
 
     renderBody() {
@@ -506,6 +571,7 @@ export namespace TableAdvanced {
 
       const { head } = this.config;
       const clazz = classMap({
+        container: true,
         "sticky-header": !!this.config.isStickyHeader
       });
 
@@ -542,9 +608,9 @@ export namespace TableAdvanced {
     isInfiniteScroll?: boolean;
 
     cols: {
-      define: (ColOptions | ColGroup)[];
-      isResizable?: boolean;
       isDraggable?: boolean;
+      isResizable?: boolean;
+      define: (ColOptions | ColGroup)[];
     };
 
     rows?: {
@@ -553,6 +619,8 @@ export namespace TableAdvanced {
     };
 
     default?: {
+      // col?: Pick<ColOptions, "filters" | "sorter">;
+
       sort?: {
         colId: string;
         order: SortOrder;
@@ -588,6 +656,7 @@ export namespace TableAdvanced {
   type Col = {
     index: number;
     sort: SortOrder;
+    width?: string;
     group?: { name: string; length: number };
     filter?: { list: Filter.Options[]; selectedIndex: number; input: string; active: boolean; menuVisible: boolean };
     options: ColOptions;

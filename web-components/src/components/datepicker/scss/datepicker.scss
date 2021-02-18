@@ -73,9 +73,15 @@
     }
 
     &--today::part(button) {
-      // color: $md-orange-50;
-      border: 1px solid black;
       font-weight: 700;
+      &::after {
+        border: 1px solid black;
+        height: 1.8rem;
+        width: 1.8rem;
+        position: absolute;
+        top: 4%;
+        left: 7%;
+      }
     }
 
     &--focus::part(button) {
@@ -96,7 +102,6 @@
         content: "";
         display: block;
         height: 1.75rem;
-        margin: 0;
         position: absolute;
         top: 0;
         width: 2.25rem;
@@ -109,11 +114,11 @@
 
         &::before {
           background: radial-gradient(
-            circle at 46% center,
-            rgb(204, 204, 204) 59%,
-            rgba(0, 0, 0, 0) 59%,
-            rgb(204, 204, 204) 59%,
-            rgb(222, 222, 222) 59%
+            circle at 43% center,
+            rgb(204, 204, 204) 60%,
+            rgba(0, 0, 0, 0) 60%,
+            rgb(204, 204, 204) 60%,
+            rgb(222, 222, 222) 60%
           );
         }
 
@@ -126,13 +131,6 @@
             rgba(0, 0, 0, 0) 100%
           );
           content: "";
-          display: block;
-          height: 2rem;
-          left: -5%;
-          margin: 0;
-          position: absolute;
-          top: -8%;
-          width: 2rem;
         }
       }
     }
@@ -157,8 +155,8 @@
 
       &::before {
         background: radial-gradient(
-          circle at 46% center,
-          rgb(0, 0, 0) 58%,
+          circle at 40% center,
+          rgb(0, 0, 0) 59%,
           rgba(0, 0, 0, 0) 50%,
           rgb(222, 222, 222) 50%,
           rgb(222, 222, 222) 50%
@@ -176,13 +174,6 @@
           rgba(0, 0, 0, 0) 100%
         );
         content: "";
-        display: block;
-        height: 2rem;
-        left: -5%;
-        margin: 0;
-        position: absolute;
-        top: -8%;
-        width: 2rem;
       }
     }
 
@@ -211,13 +202,6 @@
           rgba(0, 0, 0, 0) 100%
         );
         content: "";
-        display: block;
-        height: 2rem;
-        left: -5%;
-        margin: 0;
-        position: absolute;
-        top: -8%;
-        width: 2rem;
       }
     }
 
@@ -226,13 +210,3 @@
     }
   }
 }
-
-// .md-datepicker__day--today.md-datepicker__day--focus::part(button) {
-//   background: $md-orange-50;
-//   color: $md-orange-10;
-// }
-
-// .md-datepicker__day--today.md-datepicker__day--selected::part(button) {
-//   background: $md-orange-50;
-//   color: var(--datepicker-selected-today-text-color, $md-gray-100);
-// }

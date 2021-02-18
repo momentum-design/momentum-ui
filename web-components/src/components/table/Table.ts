@@ -8,7 +8,7 @@
 
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import Papa from "papaparse";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
@@ -163,7 +163,7 @@ export namespace Table {
                               const formattedItem =
                                 this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
                               return html`
-                                <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">
+                                <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell" title="${formattedItem}">
                                   <div class="inner-cell">
                                     ${formattedItem.includes(this.warning)
                                       ? html`
@@ -193,7 +193,7 @@ export namespace Table {
                 </table>
               `
             : html`
-                <p>${this.nodata}</p>
+                <p class="empty-data">${this.nodata}</p>
               `}
         </div>
       `;

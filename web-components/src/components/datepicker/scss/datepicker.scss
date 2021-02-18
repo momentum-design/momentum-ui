@@ -73,12 +73,13 @@
     }
 
     &--today::part(button) {
-      color: $md-orange-50;
+      // color: $md-orange-50;
+      border: 1px solid black;
       font-weight: 700;
     }
 
     &--focus::part(button) {
-      background: $md-orange-50;
+      background: #dedede;
     }
 
     &--selected::part(button) {
@@ -95,12 +96,44 @@
         content: "";
         display: block;
         height: 1.75rem;
-        left: -2px;
         margin: 0;
         position: absolute;
         top: 0;
         width: 2.25rem;
         z-index: -1;
+      }
+
+      &:hover,
+      &:focus {
+        color: #000;
+
+        &::before {
+          background: radial-gradient(
+            circle at 46% center,
+            rgb(204, 204, 204) 59%,
+            rgba(0, 0, 0, 0) 59%,
+            rgb(204, 204, 204) 59%,
+            rgb(222, 222, 222) 59%
+          );
+        }
+
+        &::after {
+          background: radial-gradient(
+            circle at 50% center,
+            rgba(0, 0, 0, 0) 50%,
+            #ccc 51%,
+            #ccc 100%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          content: "";
+          display: block;
+          height: 2rem;
+          left: -5%;
+          margin: 0;
+          position: absolute;
+          top: -8%;
+          width: 2rem;
+        }
       }
     }
 
@@ -115,6 +148,7 @@
       &::before {
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
+        width: calc(2rem - 2px);
       }
     }
 
@@ -122,21 +156,25 @@
       color: #fff;
 
       &::before {
-        background: radial-gradient(circle at 50% center,
-        rgb(0, 0, 0) 59%,
-        rgba(0, 0, 0, 0) 59%,
-        rgb(222, 222, 222) 50%,
-        #dedede 100%);
+        background: radial-gradient(
+          circle at 46% center,
+          rgb(0, 0, 0) 58%,
+          rgba(0, 0, 0, 0) 50%,
+          rgb(222, 222, 222) 50%,
+          rgb(222, 222, 222) 50%
+        );
         border-bottom-left-radius: 1rem;
         border-top-left-radius: 1rem;
       }
 
       &::after {
-        background: radial-gradient(circle at 50% center,
-        rgba(0, 0, 0, 0) 50%,
-        rgb(0, 0, 0) 51%,
-        rgb(0, 0, 0) 100%,
-        rgba(0, 0, 0, 0) 100%);
+        background: radial-gradient(
+          circle at 50% center,
+          rgba(0, 0, 0, 0) 50%,
+          rgb(0, 0, 0) 51%,
+          rgb(0, 0, 0) 100%,
+          rgba(0, 0, 0, 0) 100%
+        );
         content: "";
         display: block;
         height: 2rem;
@@ -152,22 +190,26 @@
       color: #fff;
 
       &::before {
-        background: radial-gradient(circle at 50% center,
-        rgb(0, 0, 0) 59%,
-        rgba(0, 0, 0, 0) 59%,
-        rgb(222, 222, 222) 50%,
-        #dedede 100%);
+        background: radial-gradient(
+          circle at 47% center,
+          rgb(0, 0, 0) 58%,
+          rgba(0, 0, 0, 0) 50%,
+          rgb(222, 222, 222) 50%,
+          rgb(222, 222, 222) 50%
+        );
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
-        width: 2rem;
+        width: calc(2rem - 2px);
       }
 
       &::after {
-        background: radial-gradient(circle at 50% center,
-        rgba(0, 0, 0, 0) 50%,
-        rgb(0, 0, 0) 51%,
-        rgb(0, 0, 0) 100%,
-        rgba(0, 0, 0, 0) 100%);
+        background: radial-gradient(
+          circle at 50% center,
+          rgba(0, 0, 0, 0) 50%,
+          rgb(0, 0, 0) 51%,
+          rgb(0, 0, 0) 100%,
+          rgba(0, 0, 0, 0) 100%
+        );
         content: "";
         display: block;
         height: 2rem;
@@ -185,12 +227,12 @@
   }
 }
 
-.md-datepicker__day--today.md-datepicker__day--focus::part(button) {
-  background: $md-orange-50;
-  color: $md-orange-10;
-}
+// .md-datepicker__day--today.md-datepicker__day--focus::part(button) {
+//   background: $md-orange-50;
+//   color: $md-orange-10;
+// }
 
-.md-datepicker__day--today.md-datepicker__day--selected::part(button) {
-  background: $md-orange-50;
-  color: var(--datepicker-selected-today-text-color, $md-gray-100);
-}
+// .md-datepicker__day--today.md-datepicker__day--selected::part(button) {
+//   background: $md-orange-50;
+//   color: var(--datepicker-selected-today-text-color, $md-gray-100);
+// }

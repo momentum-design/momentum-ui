@@ -12,12 +12,6 @@ import { customElement, html, LitElement, property, PropertyValues, query } from
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
 import "@/components/input/Input";
 
-jest.mock("../utils/helpers", () => {
-  return {
-    debounce: jest.fn().mockImplementation(cb => cb)
-  };
-});
-
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
     value: jest.fn().mockReturnValue({
@@ -344,7 +338,7 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
   });
 
-  test("should change focus trap index on click", async() => {
+  test("should change focus trap index on click", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
 
     focusTrap!["activateFocusTrap"]!();
@@ -363,7 +357,7 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(button);
   });
 
-  test("should change focus trap index if focus-visible event was dispatched", async() => {
+  test("should change focus trap index if focus-visible event was dispatched", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
 
@@ -384,12 +378,11 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
   });
 
-  test("szhould change focus trap index if new focusable element was clicked", async() => {
+  test("szhould change focus trap index if new focusable element was clicked", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
     const mdInput = focusableChild!.shadowRoot!.querySelector("md-input");
     const input = mdInput!.shadowRoot!.querySelector("input");
-
 
     mdInput!.tabIndex = -1;
     input!.tabIndex = -1;

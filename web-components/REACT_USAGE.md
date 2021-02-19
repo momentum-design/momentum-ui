@@ -13,6 +13,11 @@ Add the following import
 ```
   import '@momentum-ui/web-components';
 ```
+OR import each individual web component
+```
+  import '@momentum-ui/web-components/dist/comp/md-button';
+  import '@momentum-ui/web-components/dist/comp/md-icon';
+```
 NOTE: You only need to import the web-components module at the top level of your application in order to use web components anywhere throughout.
 
 Test that Web Components work by including one in App.js. Use this test:

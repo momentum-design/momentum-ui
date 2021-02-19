@@ -1,5 +1,6 @@
 import "@/components/form/Form";
 import "@/components/button/Button";
+import "@/components/input/Input";
 import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
 
 @customElement("form-sandbox")

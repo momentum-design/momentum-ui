@@ -7,6 +7,7 @@
  */
 
 import "@/components/button-group/ButtonGroup";
+import "@/components/button/Button";
 import "@/components/icon/Icon.ts";
 import { html } from "lit-element";
 
@@ -14,23 +15,37 @@ export const buttonGroupTemplate = html`
   <div class="column">
     <h3>Icon only - 2 options</h3>
     <md-button-group>
-      <button slot="button" aria-label="text-table" type="button" value="text-table"><md-icon name="icon-text-table_16"></md-icon></button>
-      <button slot="button" aria-label="analysis" type="button" value="analysis"><md-icon name="icon-analysis_16"></md-icon></button>
+      <button slot="button" aria-label="text-table" type="button" value="text-table">
+        <md-icon name="icon-text-table_16"></md-icon>
+      </button>
+      <button slot="button" aria-label="analysis" type="button" value="analysis">
+        <md-icon name="icon-analysis_16"></md-icon>
+      </button>
     </md-button-group>
   </div>
   <div class="column">
     <h3>Icon only - disabled</h3>
     <md-button-group disabled>
-      <button slot="button" aria-label="text-table" type="button" value="text-table"><md-icon name="icon-text-table_16"></md-icon></button>
-      <button slot="button" aria-label="analysis" type="button" value="analysis"><md-icon name="icon-analysis_16"></md-icon></button>
+      <button slot="button" aria-label="text-table" type="button" value="text-table">
+        <md-icon name="icon-text-table_16"></md-icon>
+      </button>
+      <button slot="button" aria-label="analysis" type="button" value="analysis">
+        <md-icon name="icon-analysis_16"></md-icon>
+      </button>
     </md-button-group>
   </div>
   <div class="column">
     <h3>Icon only - 3 options</h3>
     <md-button-group>
-      <button slot="button" aria-label="pie-chart" type="button" value="pie-chart"><md-icon name="icon-pie-chart_16"></md-icon></button>
-     <button slot="button" aria-label="text-table" type="button" value="text-table"><md-icon name="icon-text-table_16"></md-icon></button>
-     <button slot="button" aria-label="analysis" type="button" value="analysis"><md-icon name="icon-analysis_16"></md-icon></button>
+      <button slot="button" aria-label="pie-chart" type="button" value="pie-chart">
+        <md-icon name="icon-pie-chart_16"></md-icon>
+      </button>
+      <button slot="button" aria-label="text-table" type="button" value="text-table">
+        <md-icon name="icon-text-table_16"></md-icon>
+      </button>
+      <button slot="button" aria-label="analysis" type="button" value="analysis">
+        <md-icon name="icon-analysis_16"></md-icon>
+      </button>
     </md-button-group>
   </div>
   <div class="column">

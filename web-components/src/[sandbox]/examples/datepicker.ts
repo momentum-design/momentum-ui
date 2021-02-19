@@ -3,7 +3,6 @@ import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/datepicker/datepicker-day/DatePickerDay";
 import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
-import "@/index";
 import { now } from "@/utils/dateUtils";
 import { html } from "lit-element";
 

@@ -1,4 +1,5 @@
 import "@/components/badge/Badge";
+import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 export const badgeTemplate = html`

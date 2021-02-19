@@ -1,6 +1,9 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/coachmark/Coachmark";
+import "@/components/activity-button/ActivityButton";
+import "@/components/badge/Badge";
+import "@/components/taskitem/TaskItem";
 import { customElement, html, LitElement, property } from "lit-element";
 
 @customElement("coach-template-sandbox")
@@ -37,7 +40,7 @@ export class CoachTemplateSandbox extends LitElement {
     return html`
       <md-coachmark ?show=${this.isOpen} placement="auto" color="violet" @coach-action=${this.closeCoach}>
         <div slot="coachmark-content">
-          <span>Coachmark  test content</span>
+          <span>Coachmark test content</span>
         </div>
         <md-button @button-click=${this.openCoach}>Coachmark Default</md-button>
       </md-coachmark>
@@ -79,7 +82,6 @@ export class CoachTemplateSandbox extends LitElement {
       </md-coachmark>
     `;
   }
-
 }
 
 export const coachTemplate = html`

@@ -8,12 +8,12 @@
 
 import "@/components/menu/Menu";
 import "@/components/menu/MenuItem";
+import "@/components/icon/Icon";
 import { html } from "lit-element";
-
 
 export const menuItemTemplate = html`
   <md-menu>
-    <md-menu-item >
+    <md-menu-item>
       <md-icon name="recents_16"></md-icon>
       <span>Contact History</span>
     </md-menu-item>
@@ -30,5 +30,4 @@ export const menuItemTemplate = html`
       <span>Cisco Answer</span>
     </md-menu-item>
   </md-menu>
-
 `;

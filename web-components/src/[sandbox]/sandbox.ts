@@ -23,6 +23,7 @@ import {
   datePickerTemplate,
   dateTimePickerTemplate,
   dropdownTemplate,
+  draggableTemplate,
   editableField,
   favoriteTemplate,
   floatingModalTemplate,
@@ -242,6 +243,13 @@ export class Sandbox extends LitElement {
             <h2>md-dropdown</h2>
             <sass-stats component="dropdown">
               ${dropdownTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-draggable">
+            <h2>md-draggable</h2>
+            <sass-stats component="draggable">
+              ${draggableTemplate}
             </sass-stats>
           </div>
 

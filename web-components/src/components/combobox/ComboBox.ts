@@ -237,7 +237,8 @@ export namespace ComboBox {
       if (this.optionId && option) {
         return this.selectedOptions.findIndex(
           selectedOption =>
-            selectedOption && (selectedOption as OptionMember)[this.optionId] === (option as OptionMember)[this.optionId]
+            selectedOption &&
+            (selectedOption as OptionMember)[this.optionId] === (option as OptionMember)[this.optionId]
         );
       } else {
         return this.selectedOptions.indexOf(option);
@@ -550,7 +551,10 @@ export namespace ComboBox {
     }
 
     private shouldChangeButton() {
-      return (this.input && this.input.value.length > 0 && !this.noClearIcon) || (this.isMulti && this.selectedOptions.length);
+      return (
+        (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
+        (this.isMulti && this.selectedOptions.length)
+      );
     }
 
     private setCustomValue() {
@@ -826,7 +830,11 @@ export namespace ComboBox {
                 @keydown=${this.handleInputKeyDown}
               />
             </div>
-            ${this.compact ? nothing : this.shouldChangeButton() ? this.clearButtonTemplate() : this.arrowButtonTemplate()}
+            ${this.compact
+              ? nothing
+              : this.shouldChangeButton()
+              ? this.clearButtonTemplate()
+              : this.arrowButtonTemplate()}
           </div>
           <ul
             id="md-combobox-listbox"
@@ -898,10 +906,6 @@ export namespace ComboBox {
     }
   }
 }
-
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

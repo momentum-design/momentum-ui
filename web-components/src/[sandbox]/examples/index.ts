@@ -16,6 +16,8 @@ export { comboBoxTemplate } from "./combobox";
 export { dateRangePickerTemplate } from "./date-range-picker";
 export { dateTimePickerTemplate } from "./date-time-picker";
 export { datePickerTemplate } from "./datepicker";
+export { dropdownTemplate } from "./dropdown";
+export { draggableTemplate } from "./draggable";
 export { editableField } from "./editable-field";
 export { favoriteTemplate } from "./favorite";
 export { floatingModalTemplate } from "./floating-modal";

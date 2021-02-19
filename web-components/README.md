@@ -56,7 +56,7 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 
 ## Usage
 
-Want to use web components within the create-react-app? Navigate to [Usage Instructions](./USAGE.md) for detailed instructions.
+Want to use web components within the create-react-app? Navigate to [React Usage Instructions](./REACT_USAGE.md) for detailed instructions.
 
 ## Contribution
 

@@ -1,5 +1,4 @@
 import "@/components/date-time-picker/DateTimePicker";
-import "@/index";
 import { now } from "@/utils/dateUtils";
 import { html } from "lit-element";
 

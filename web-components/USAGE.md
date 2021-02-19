@@ -13,7 +13,6 @@ Add the following import
 ##### In index.html (`create-react-app/my-app/public/index.html`)
 Add the following two lines:
 ```
-  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui.min.css">
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
 ```
 
@@ -58,18 +57,23 @@ module.exports = function override(config, env) {
     }
 
     const copyWebpackPlugin = new CopyWebpackPlugin({
-      patterns: [
-        { from: `${hoistedModules}/@momentum-ui/core/fonts`, to: `${pPublic}/fonts` },
-        { from: `${hoistedModules}/@momentum-ui/core/images`, to: `${pPublic}/images` },
-        { from: `${hoistedModules}/@momentum-ui/core/css/momentum-ui.min.css`, to: `${pPublic}/css` },
-        { from: `${hoistedModules}/@momentum-ui/core/css/momentum-ui.css`, to: `${pPublic}/css` },
-        { from: `${hoistedModules}/@momentum-ui/core/css/momentum-ui.min.css.map`, to: `${pPublic}/css` },
-        { from: `${hoistedModules}/@momentum-ui/icons/fonts`, to: `${pPublic}/fonts` },
-        { from: `${hoistedModules}/@momentum-ui/icons/fonts`, to: `${pPublic}/icons/fonts` },
-        { from: `${hoistedModules}/@momentum-ui/icons/css/momentum-ui-icons.min.css`, to: `${pPublic}/css` },
-        { from: `${hoistedModules}/@momentum-ui/icons/css/momentum-ui-icons.css`, to: `${pPublic}/css` },
-      ],
-    });
+    patterns: [
+      {
+        from: `${hoistedModules}/@momentum-ui/core/fonts`,
+        to: `${pPublic}/fonts`,
+      },
+
+      {
+        from: `${hoistedModules}/@momentum-ui/icons/fonts`,
+        to: `${pPublic}/fonts`,
+      },
+
+      {
+        from: `${hoistedModules}/@momentum-ui/icons/css/momentum-ui-icons.min.css`,
+        to: `${pPublic}/css`,
+      },
+    ],
+  });
 
     config.plugins.push(copyWebpackPlugin);
     return config;

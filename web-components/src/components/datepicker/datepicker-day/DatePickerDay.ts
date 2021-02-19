@@ -2,6 +2,7 @@ import "@/components/button/Button";
 import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
+import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
@@ -34,7 +35,7 @@ export namespace DatePickerDay {
       this.isToday = isSameDay(this.day, now());
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
-      this.parentIsRangePicker = this.closestElement("md-date-range-picker") as DateRangePicker.ELEMENT;
+      this.parentIsRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
     }
 
     updated(changedProperties: PropertyValues) {
@@ -62,22 +63,11 @@ export namespace DatePickerDay {
     };
 
     isDateInRange = () => {
-      const rangePicker = this.closestElement("md-date-range-picker") as DateRangePicker.ELEMENT;
+      const rangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
       const startDate = DateTime.fromSQL(rangePicker.startDate!);
       const endDate = DateTime.fromSQL(rangePicker.endDate!);
       return this.day >= startDate && this.day <= endDate;
     };
-
-    closestElement(selector: string, base = this) {
-      function __closestFrom(el: unknown): HTMLElement | null {
-        if (!el || el === document || el === window) return null;
-        // @ts-ignore
-        const found = el.closest(selector);
-        // @ts-ignore
-        return found ? found : __closestFrom(el.getRootNode().host);
-      }
-      return __closestFrom(base);
-    }
 
     isLeadingRangeEdge() {
       return this === this.parentNode?.firstElementChild;

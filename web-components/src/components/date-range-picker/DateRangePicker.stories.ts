@@ -1,16 +1,18 @@
+import "@/components/date-range-picker/DateRangePicker";
+import { DatePicker as DP } from "@/components/datepicker/DatePicker";
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { DatePicker as DP } from "@/components/datepicker/DatePicker";
+import "../theme/Theme";
 
 export default {
-  title: "Date Picker",
-  component: "md-datepicker",
+  title: "Date Range Picker",
+  component: "md-date-range-picker",
   decorators: [withKnobs, withA11y],
   parameters: {
     a11y: {
-      element: "md-datepicker"
+      element: "md-date-range-picker"
     }
   }
 };
@@ -38,10 +40,12 @@ export const DatePicker = () => {
   );
 
   const value = text("value", now().toISODate());
+  const startDate = text("value", now().toISODate());
+  const endDate = text("value", now().toISODate());
 
   return html`
     <md-theme class="theme-toggle" id="datepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-datepicker
+      <md-date-range-picker
         ?disabled=${disabled}
         ?should-close-on-select=${shouldCloseOnSelect}
         value=${value}
@@ -49,8 +53,10 @@ export const DatePicker = () => {
         locale=${locale}
         minDate=${minDate}
         maxDate=${maxDate}
+        start-date=${startDate}
+        end-date=${endDate}
       >
-      </md-datepicker>
+      </md-date-range-picker>
     </md-theme>
   `;
 };

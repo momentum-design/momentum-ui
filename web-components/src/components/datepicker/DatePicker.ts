@@ -3,12 +3,14 @@ import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { ValidationRegex } from "@/utils/validations";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { closestElement } from "@/utils/helpers";
+import { ValidationRegex } from "@/utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { DateTime } from "luxon";
+import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -48,7 +50,7 @@ export namespace DatePicker {
 
       if (!this.value) {
         this.value = this.includesTime
-          ? this.selectedDate?.startOf('second').toISO({ suppressMilliseconds: true })
+          ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
           : this.selectedDate?.toISODate();
       }
     }
@@ -102,7 +104,9 @@ export namespace DatePicker {
     setSelected = (date: DateTime, event: Event) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
-        const dateString = this.includesTime ? date.startOf('second').toISO({ suppressMilliseconds: true }) : date.toISODate();
+        const dateString = this.includesTime
+          ? date.startOf("second").toISO({ suppressMilliseconds: true })
+          : date.toISODate();
         this.selectedDate = date;
         this.value = dateString;
       }
@@ -176,7 +180,14 @@ export namespace DatePicker {
     };
 
     isValueValid = () => {
-      const regexString = this.includesTime ? ValidationRegex.ISOString : ValidationRegex.ISODateString;
+      // debugger;
+      const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
+      const regexString =
+        dateRangePicker.startDate && dateRangePicker.endDate
+          ? ValidationRegex.dateRangeString
+          : this.includesTime
+          ? ValidationRegex.ISOString
+          : ValidationRegex.ISODateString;
       const regex = RegExp(regexString);
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };

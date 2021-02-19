@@ -4,18 +4,26 @@
 ##### First, follow the instructions in the link below in order to get the create-react-app running locally.
 https://github.com/facebook/create-react-app
 
+
+### Add Web Component to Project
 ##### In App.js (`create-react-app/my-app/src/App.js`)
 Add the following import
 ```
   import '@momentum-ui/web-components';
 ```
 
-##### In index.html (`create-react-app/my-app/public/index.html`)
-Add the following two lines:
-```
-  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
-```
+Test that Web Components work by including one in App.js. 
 
+```html
+<md-theme>
+  <md-phone-input></md-phone-input>
+</md-theme>
+```
+You must wrap your application with `<md-theme>` element, it provides a set of core style resets and CSS custom variables that provide Theme color tokens, among other things. You can test these by toggling attributes `lumos` and/or `darkTheme` on the `<md-theme>` element.
+
+We recommend `<md-phone-input></md-phone-input>` as an example that has unique styles and colors and Icon usage to test. 
+
+### Include required Dependencies in package.json
 ##### In package.json (`create-react-app/my-app/package.json`)
 Add resolutions & devDependencies, then modify the scripts section to match the following:
   ```
@@ -41,7 +49,10 @@ Add resolutions & devDependencies, then modify the scripts section to match the 
     "eject": "react-scripts eject"
   },
   ```
+NOTE: The changes to scripts commands enable the following WebPack modifications to be run within the Create React App environment.
   
+### Copy Static Assets
+Momentum Web Components use Cisco fonts and Icon fonts that must be served within the project. This WebPack ammendment copies those resources from the related module packages.
 ##### Create config-overrides.js (`create-react-app/my-app/config-overrides.js`)
 Copy the following code below:
 ```
@@ -80,11 +91,19 @@ module.exports = function override(config, env) {
   }
 ```
 
+##### In index.html (`create-react-app/my-app/public/index.html`)
+This `%PUBLIC_URL%` references the public directory that contains all required static assets (fonts, icons).
+https://create-react-app.dev/docs/using-the-public-folder/
+Add the following line:
+```
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
+```
+
 #### Once changes have been made, follow the steps below:
 
 (within `create-react-app/my-app` directory)
 
-1. `yarn`
-2. `yarn build`
-3. `yarn start`
+1. `yarn` installs all dependencies.
+2. `yarn build` copies the required static assets for fonts and icons.
+3. `yarn start` launches project locally.
  

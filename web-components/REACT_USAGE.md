@@ -10,8 +10,13 @@ https://github.com/facebook/create-react-app
 ### Add Web Component to Project
 ##### In App.js (`create-react-app/my-app/src/App.js`)
 Add the following import
-```
+```js
   import '@momentum-ui/web-components';
+```
+OR import each individual web component
+```js
+  import '@momentum-ui/web-components/dist/comp/md-button';
+  import '@momentum-ui/web-components/dist/comp/md-icon';
 ```
 NOTE: You only need to import the web-components module at the top level of your application in order to use web components anywhere throughout.
 
@@ -33,7 +38,7 @@ We recommend `<md-phone-input></md-phone-input>` as an example that has unique s
 ### Include required Dependencies in package.json
 ##### In package.json (`create-react-app/my-app/package.json`)
 Add resolutions & devDependencies, then modify the scripts section to match the following:
-  ```
+  ```json
   "resolutions": {
     "lit-element": "2.3.1",
     "lit-html": "1.2.1"
@@ -62,7 +67,7 @@ NOTE: The changes to scripts commands enable the following WebPack modifications
 Momentum Web Components use Cisco fonts and Icon fonts that must be served within the project. This WebPack ammendment copies those resources from the related module packages.
 ##### Create config-overrides.js (`create-react-app/my-app/config-overrides.js`)
 Copy the following code below:
-```
+```js
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
@@ -107,7 +112,7 @@ module.exports = function override(config, env) {
 This `%PUBLIC_URL%` references the public directory that contains all required static assets (fonts, icons).
 https://create-react-app.dev/docs/using-the-public-folder/
 Add the following line:
-```
+```html
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui.min.css">
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
 ```

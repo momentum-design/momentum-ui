@@ -85,6 +85,11 @@ module.exports = function override(config, env) {
         from: `${hoistedModules}/@momentum-ui/icons/fonts`,
         to: `${pPublic}/fonts`,
       },
+      
+      {
+        from: `${hoistedModules}/@momentum-ui/web-components/dist/assets/styles`,
+        to: `${pPublic}/css`,
+      },
 
       {
         from: `${hoistedModules}/@momentum-ui/icons/css/momentum-ui-icons.min.css`,
@@ -103,6 +108,7 @@ This `%PUBLIC_URL%` references the public directory that contains all required s
 https://create-react-app.dev/docs/using-the-public-folder/
 Add the following line:
 ```
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui.min.css">
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
 ```
 

@@ -67,9 +67,3 @@ describe("DatePicker Component", () => {
     expect(el.sqlDateToSlashes(date)).toEqual(formatted);
   });
 });
-
-// test for:
-// updateValue()
-// dateToSqlTranslate()
-// sqlDateToSlashes()
-// handleDateSelection()

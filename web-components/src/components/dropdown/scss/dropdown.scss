@@ -108,13 +108,19 @@
         }
       }
     }
+
+    &--pill {
+      .md-dropdown-label {
+        border-radius: 18px;
+      }
+    }
   }
 }
 
 :host([focus-visible]) {
   .md-dropdown {
     .md-dropdown-label {
-      @include focus-boxshadow(rem-calc(1), var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light));
+      border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
       box-shadow: none;
     }
   }

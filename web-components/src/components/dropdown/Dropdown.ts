@@ -432,6 +432,7 @@ export namespace Dropdown {
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"
             aria-label="${this.labelTitle}"
+            aria-controls="md-dropdown-list"
             ?disabled="${this.disabled}"
             @click="${() => this.onLabelClick()}"
           >
@@ -440,7 +441,14 @@ export namespace Dropdown {
               <md-icon name="icon-arrow-down_16"></md-icon>
             </span>
           </label>
-          <ul class="md-dropdown-list" aria-label="${this.labelTitle}">
+          <ul
+            id="md-dropdown-list"
+            class="md-dropdown-list"
+            role="listbox"
+            aria-label="${this.labelTitle}"
+            aria-hidden="${!this.expanded}"
+            part="dropdown-options"
+          >
             ${repeat(
               this.renderOptions,
               o => o.key,
@@ -449,6 +457,8 @@ export namespace Dropdown {
                   class="md-dropdown-option"
                   role="option"
                   aria-label="${o.value}"
+                  aria-selected="${idx === this.focusedIndex}"
+                  part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"
                   @click="${() => {
                     this.focusToIndex(idx);
@@ -456,7 +466,7 @@ export namespace Dropdown {
                     this.collapse();
                   }}"
                 >
-                  <span class="select-label">
+                  <span class="select-label" part="label">
                     <span>${o.value}</span>
                   </span>
                 </li>

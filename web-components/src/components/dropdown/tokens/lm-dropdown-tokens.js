@@ -19,8 +19,14 @@ const dropdown = {
     light: colors.gray[30].name,
     dark: colors.gray[80].name,
     focus: {
-      light: colors.gray[30].name,
-      dark: colors.gray[70].name
+      light: colors.theme[70].name,
+      dark: colors.theme[50].name
+    }
+  },
+  label: {
+    radius: {
+      light: "0.25rem",
+      dark: "0.25rem"
     }
   },
   list: {

@@ -102,7 +102,7 @@ describe("DateTime Module", () => {
   test("isSameDay function returns a correct boolean", async () => {
     const date1 = DateTime.fromSQL("2020-10-10");
     setTimeout(() => {
-      () => {};
+      () => ({});
     }, 2200);
     const date2 = DateTime.fromSQL("2020-10-10");
     const date3 = DateTime.fromSQL("2020-10-10").plus({ days: 2 });
@@ -114,7 +114,7 @@ describe("DateTime Module", () => {
   test("isSameMonth function returns a correct boolean", async () => {
     const date1 = DateTime.fromSQL("2020-10-10");
     setTimeout(() => {
-      () => {};
+      () => ({});
     }, 2200);
     const date2 = DateTime.fromSQL("2020-10-10");
     const date3 = DateTime.fromSQL("2020-10-10").plus({ months: 2 });

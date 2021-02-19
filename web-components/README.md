@@ -54,6 +54,9 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 
 * [chai](https://github.com/chaijs/chai) - MIT
 
+## Usage
+
+Want to use web components within the create-react-app? Navigate to [React Usage Instructions](./REACT_USAGE.md) for detailed instructions.
 
 ## Contribution
 

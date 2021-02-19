@@ -1,6 +1,8 @@
-## Usage
+## Usage With React
 
-### Within the Create-react-app
+##### The following walk-through uses create-react-app to quick start a simple usage scenario. Please read through, and adapt for your project's specific needs.
+
+### create-react-app
 ##### First, follow the instructions in the link below in order to get the create-react-app running locally.
 https://github.com/facebook/create-react-app
 
@@ -11,14 +13,18 @@ Add the following import
 ```
   import '@momentum-ui/web-components';
 ```
+NOTE: You only need to import the web-components module at the top level of your application in order to use web components anywhere throughout.
 
-Test that Web Components work by including one in App.js. 
+Test that Web Components work by including one in App.js. Use this test:
 
 ```html
 <md-theme>
-  <md-phone-input></md-phone-input>
+  <md-button variant="green"><md-icon slot="icon" name="play_16"></md-icon><span slot="text">Code On!</span></md-button>
 </md-theme>
 ```
+And you should see:
+
+
 You must wrap your application with `<md-theme>` element, it provides a set of core style resets and CSS custom variables that provide Theme color tokens, among other things. You can test these by toggling attributes `lumos` and/or `darkTheme` on the `<md-theme>` element.
 
 We recommend `<md-phone-input></md-phone-input>` as an example that has unique styles and colors and Icon usage to test. 

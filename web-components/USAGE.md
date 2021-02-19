@@ -24,6 +24,7 @@ Test that Web Components work by including one in App.js. Use this test:
 ```
 And you should see:
 
+![Screen Shot 2021-02-19 at 10 55 55 AM](https://user-images.githubusercontent.com/17099707/108549087-8c0e9880-72a1-11eb-9c71-7d6c6162f9cb.png)
 
 You must wrap your application with `<md-theme>` element, it provides a set of core style resets and CSS custom variables that provide Theme color tokens, among other things. You can test these by toggling attributes `lumos` and/or `darkTheme` on the `<md-theme>` element.
 

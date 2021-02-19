@@ -9,15 +9,17 @@
 import reset from "@/wc_scss/reset.scss";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
-import { html, internalProperty, LitElement, property, query } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { classMap } from "lit-html/directives/class-map";
-import { nothing } from "lit-html";
+import { templateContent } from "lit-html/directives/template-content";
+import { nothing, TemplateResult } from "lit-html";
 import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
 import { debounce, Evt, evt } from "./src/helpers";
+import { TemplateCallback, templateCallback } from "./src/template-callback";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -62,12 +64,11 @@ export namespace TableAdvanced {
 
     @internalProperty() private COLS: Col[] = [];
     @internalProperty() private ROWS: string[][] = [];
+    @internalProperty() private templates: Record<string, CellTemplateProcessed> = {};
 
     private updCols = () => this.requestUpdate("COLS");
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
-
-    @query(".container") private elContainer!: HTMLElement;
 
     connectedCallback() {
       super.connectedCallback();
@@ -188,6 +189,33 @@ export namespace TableAdvanced {
       const rows = [];
       for (let i = 0; i < 20; i++) rows.push(...this.ROWS);
       this.ROWS = rows;
+
+      // TEMPLATES
+      // const templates = this.config.cellTemplates;
+      // const templatesKeys = Object.keys(templates || {});
+      // if (templates && templatesKeys.length) {
+      //   this.ROWS.forEach((r, iRow) => {
+      //     r.forEach((c, iCol) => {
+
+      //       templatesKeys.forEach(k => {
+      //         console.log(`text: ${c}, key: ${k}, idx:${c.indexOf(k)} - [${iRow + "" + iCol}]`);
+
+      //         if (this.templates[iRow + "" + iCol]) {
+      //           console.warn("There can be only 1 template per cell");
+      //         } else {
+      //           const idx = c.indexOf(k);
+      //           if (idx != -1) {
+      //             this.templates[iRow + "" + iCol] = { insertIndex: idx, ...templates[k] };
+      //             this.ROWS[iRow][iCol] = c.replace(k, "");
+      //           }
+      //         }
+      //       });
+
+      //     });
+      //   });
+      // }
+
+      // console.log(this.templates);
     }
 
     sort(col: Col, order?: SortOrder) {
@@ -290,7 +318,7 @@ export namespace TableAdvanced {
       e.dataTransfer?.setDragImage(IMG, 0, 0);
 
       const elems = this.COLS.map(c => this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${c.index}`)!);
-      this.COLS.forEach((c, i) => c.width = elems[i].offsetWidth + "px");
+      this.COLS.forEach((c, i) => (c.width = elems[i].offsetWidth + "px"));
       this.updCols();
 
       const orgX = e.x;
@@ -545,15 +573,44 @@ export namespace TableAdvanced {
                   if (isSelectable) this.selectRow({ i, row, shiftKey, metaKey });
                 }}
               >
-                ${row.map((rowData, i) => {
-                  const col = this.COLS[i];
-                  return col.options.isHeader
-                    ? html`
-                        <th scope="row">${rowData}</th>
-                      `
-                    : html`
-                        <td>${rowData}</td>
-                      `;
+                ${row.map((rowData, j) => {
+                  const col = this.COLS[j];
+                  const t = this.templates[i + "" + j + "тут-был-Рост:)"];
+                  if (t) {
+                    const template = this.shadowRoot!.querySelector<HTMLTemplateElement>(`#${t.templateName}`)!;
+                    const templateResult = t.templateCb
+                      ? html`
+                          ${templateCallback({
+                            template,
+                            value: rowData,
+                            cb: t.templateCb,
+                            iCol: i,
+                            iRow: j
+                          })}
+                        `
+                      : html`
+                          ${templateContent(template)}
+                        `;
+
+                    return t.insertIndex == -1
+                      ? html`
+                          <th scope="row">${templateResult}</th>
+                        `
+                      : html`
+                          <th scope="row">
+                            ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${templateResult}
+                            ${t.insertIndex < rowData.length - 1 ? rowData.substring(t.insertIndex) : nothing}
+                          </th>
+                        `;
+                  } else {
+                    return col.options.isHeader
+                      ? html`
+                          <th scope="row">${rowData}</th>
+                        `
+                      : html`
+                          <td>${rowData}</td>
+                        `;
+                  }
                 })}
               </tr>
             `;
@@ -570,12 +627,12 @@ export namespace TableAdvanced {
 
       const { head } = this.config;
       const clazz = classMap({
-        container: true,
         "sticky-header": !!this.config.isStickyHeader
       });
 
       return html`
         <div class="md-table-advanced">
+          <slot></slot>
           <table class=${clazz} summary=${ifDefined(head?.summary)}>
             ${head?.caption
               ? html`
@@ -600,6 +657,8 @@ export namespace TableAdvanced {
     }
   }
 
+  type ColId = string;
+
   export type Data = { csv: string } | { list: string[] } | { list2d: string[][] };
 
   export type Config = {
@@ -607,9 +666,10 @@ export namespace TableAdvanced {
     isInfiniteScroll?: boolean;
 
     cols: {
+      define: (ColOptions | ColGroup)[];
       isDraggable?: boolean;
       isResizable?: boolean;
-      define: (ColOptions | ColGroup)[];
+      collapseTree?: ColId[];
     };
 
     rows?: {
@@ -617,16 +677,18 @@ export namespace TableAdvanced {
       selectable?: "none" | "single" | "multiple";
     };
 
+    cellTemplates?: Record<string, CellTemplate>;
+
     default?: {
       // col?: Pick<ColOptions, "filters" | "sorter">;
 
       sort?: {
-        colId: string;
+        colId: ColId;
         order: SortOrder;
       };
 
       filter?: {
-        colId: string;
+        colId: ColId;
         input: string;
         selectedIndex: number;
       };
@@ -644,13 +706,15 @@ export namespace TableAdvanced {
     sorter?: "byString" | "byNumber" | SortComparator;
     filters?: "forString" | "forNumber" | Filter.Options[];
     isHeader?: boolean;
-    isCollapsed?: boolean;
   };
 
   type ColGroup = { groupName: string; children: ColOptions[] };
   type SortOrder = "default" | "ascending" | "descending";
   type SortComparator = (a: string, b: string, direction: 1 | -1) => number; // -number, 0, number
   type SortNode = { v: string; i: number };
+
+  type CellTemplate = { templateName: string; templateCb?: TemplateCallback };
+  type CellTemplateProcessed = CellTemplate & { insertIndex: number };
 
   type Col = {
     index: number;

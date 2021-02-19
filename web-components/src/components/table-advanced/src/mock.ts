@@ -33,22 +33,24 @@ export namespace TableMock {
       isStickyHeader: true,
 
       rows: {
+        isDraggable: true,
         selectable: "multiple"
       },
 
       cols: {
+        isDraggable: true,
         isResizable: true,
         define: [
           {
-            groupName: "group1",
+            groupName: "Group 1",
             children: [
-              { id: "col1", title: "col1f", sorter: "byString", filters: "forString" },
-              { id: "col2", title: "col2s" },
-              { id: "col3", title: "col3" }
+              { id: "Col 1", title: "Col1f", sorter: "byString", filters: "forString" },
+              { id: "Col2", title: "Col2s" },
+              { id: "Col3", title: "Col3" }
             ]
           },
-          { id: "col4", title: "col4h", isHeader: true },
-          { id: "col5", title: "col5s", sorter: "byString" },
+          { id: "col4", title: "Col4h", isHeader: true },
+          { id: "col5", title: "Col5s", sorter: "byString" },
           {
             groupName: "group2",
             children: [
@@ -61,7 +63,7 @@ export namespace TableMock {
     },
     data: {
       list2d: [
-        ["col _tmp_ 11", "12", "13", "14", "15", "16", "txt _tmp2_ txt"],
+        ["Active Agent State List", "Idle for all channels", "Ctrl + Alt + N", "11:11", "30.03.2020", "36", "37"],
         ["_tmp_ col21 sub", "22", "23", "24", "25", "26", "27"],
         ["col31 sub _tmp_", "32", "33", "34", "35", "36", "37"]
       ]

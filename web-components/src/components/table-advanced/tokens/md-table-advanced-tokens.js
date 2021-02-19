@@ -27,13 +27,13 @@ const tableAdvanced = {
   },
   hover: {
     "bg-color": {
-      light: colors.blue[20].name,
-      dark: colors.blue[90].name
+      light: colors.gray["05"].name,
+      dark: colors.gray[95].name
     }
   },
-  pressed: {
+  selected: {
     "bg-color": {
-      light: colors.gray[20].name,
+      light: colors.gray[10].name,
       dark: colors.gray[90].name
     }
   },

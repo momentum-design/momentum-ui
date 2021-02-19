@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
 */
+:host {
+  display: block;
+}
 
 .md-table-advanced {
   width: 100%;
@@ -12,6 +15,7 @@
   table {
     border: $advanced-table-main-border;
     border-collapse: collapse;
+    max-width: 100%;
     position: relative;
     width: 100%;
 
@@ -20,6 +24,9 @@
         th {
           background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
           border: $advanced-table-main-border;
+          color: var(--md-secondary-text-color);
+          font-family: $brand-font-regular;
+          font-size: $font-size-base;
           height: $advanced-table-row-height;
           padding: 0 calc(#{$advanced-table-main-indent} * 4);
           text-align: left;
@@ -27,9 +34,11 @@
           .filter {
             display: inline-flex;
             float: right;
+            margin-top: $advanced-table-main-indent;
           }
 
           .filter-icon {
+            color: var(--md-secondary-text-color);
             cursor: pointer;
             padding: $advanced-table-main-indent;
 
@@ -49,7 +58,7 @@
           }
 
           .filter-menu {
-            background-color: white;
+            background-color: var(--md-secondary-white-bg-color);
             padding: calc(#{$advanced-table-main-indent} * 3);
             select {
               width: 100%;
@@ -61,12 +70,12 @@
           }
 
           .sort {
-            cursor: pointer;
-            position: absolute;
-            top: 0;
-            left: 0;
             bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
             right: 0;
+            top: 0;
             z-index: -1;
           }
 
@@ -75,38 +84,45 @@
             height: $advanced-table-sort-icon;
             padding: $advanced-table-main-indent;
             width: $advanced-table-sort-icon;
+
+            md-icon {
+              color: var(--md-secondary-text-color);
+            }
           }
 
           .resize {
+            background-color: var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
             cursor: col-resize;
-            background-color: red;
-            left: 0;
-            top: 0;
-            width: 4px;
             height: 100%;
+            left: 0;
             position: absolute;
+            top: 0;
+            width: $advanced-table-header-sticky-indent;
             z-index: 1;
           }
         }
       }
 
       md-menu-overlay::part(overlay) {
-        top: -calc(#{$advanced-table-main-indent} * 2.5);
+        top: -$advanced-table-overlay-position;
       }
     }
 
     &.sticky-header {
+      height: 100%;
+      overflow: auto;
+
       thead {
         background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
         tr {
           th {
             position: sticky;
-            top: 0;
+            top: -$advanced-table-header-sticky-indent;
           }
 
           &:last-child {
             th {
-              top: $advanced-table-row-height;
+              top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
             }
           }
         }
@@ -117,26 +133,43 @@
       tr {
         td {
           border: $advanced-table-main-border;
+          font-size: $font-size-base;
           height: $advanced-table-row-height;
+          max-width: 0;
           padding-left: calc(#{$advanced-table-main-indent} * 4);
-          word-wrap: break-word;
         }
+
         th {
           background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+          font-size: $font-size-base;
           padding: 0 calc(#{$advanced-table-main-indent} * 4);
           text-align: left;
         }
+
+        .inner-cell {
+          display: flex;
+          white-space: nowrap;
+        }
+
+        span {
+          align-self: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex: 1;
+        }
+
         &.selectable:hover {
-          background-color: silver;
+          background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+
           th {
-            background-color: silver;
+            background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
           }
         }
 
         &.selected {
-          background-color: gray;
+          background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
           th {
-            background-color: gray;
+            background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
           }
         }
       }

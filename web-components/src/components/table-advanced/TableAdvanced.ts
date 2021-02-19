@@ -9,6 +9,7 @@
 import reset from "@/wc_scss/reset.scss";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
+import "@/components/button/Button";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -439,70 +440,74 @@ export namespace TableAdvanced {
 
       return html`
         <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width)} scope="col" class=${"col-index-" + col.index}>
-          ${col.options.title}
 
-          <!-- SORT  -->
-          ${col.options.sorter
-            ? html`
-                <div class="sort-icon">
+           ${col.options.title}
+
+            <!-- SORT  -->
+            ${col.options.sorter
+              ? html`
+                <md-button class="sort-icon" @click=${() => this.sort(col)} color="color-none" size="size-none">
                   ${col.sort == "ascending"
                     ? html`
-                        <md-icon name="arrow-filled-up_8"></md-icon>
+                        <md-icon slot="icon" name="arrow-filled-up_8"></md-icon>
                       `
-                    : nothing}
-                  ${col.sort == "descending"
-                    ? html`
-                        <md-icon name="arrow-filled-down_8"></md-icon>
-                      `
-                    : nothing}
-                </div>
-                <div class="sort" @click=${() => this.sort(col)}></div>
-              `
-            : nothing}
-
-          <!-- FILTER -->
-          ${col.filter
-            ? html`
-                ${col.filter.active
-                  ? html`
-                      <md-icon class="filter-active" name="filter-adr_12"></md-icon></span>
-                    `
-                  : nothing}
-
-                <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
-                  <md-icon class="filter-icon" slot="menu-trigger" name="filter_16"></md-icon>
-                  <div class="filter-menu" style="padding:1.25rem; width: 100%;">
-                    <select
-                      name="filter-type"
-                      @change=${(e: any) => {
-                        col.filter!.selectedIndex = e.target.value;
-                        this.updCols();
-                        this.filter(col);
-                      }}
-                    >
-                      ${col.filter.list.map(
-                        (c, i) => html`
-                          <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
+                    : col.sort == "descending"
+                      ? html`
+                          <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
                         `
-                      )}
-                    </select>
-
-                    <input
-                      type="text"
-                      placeholder=${input!.placeholder}
-                      maxlength=${ifDefined(input!.maxlength)}
-                      pattern=${ifDefined(input!.pattern)}
-                      .value=${col.filter.input}
-                      @input=${(e: any) => {
-                        col.filter!.input = e.target.value;
-                        this.updCols();
-                        this.filter(col);
-                      }}
-                    />
-                  </div>
-                </md-menu-overlay>
+                    : html`
+                        <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
+                      `}
+                </md-button>
               `
             : nothing}
+
+            <!-- FILTER -->
+            ${col.filter
+              ? html`
+                  ${col.filter.active
+                    ? html`
+                        <md-icon class="filter-active" name="filter-adr_12"></md-icon>
+                      `
+                    : nothing}
+
+                  <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
+                    <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
+                      <md-icon  slot="icon" name="filter_16"></md-icon>
+                    </md-button>
+                    <div class="filter-menu" style="padding:1.25rem; width: 100%;">
+                      <select
+                        name="filter-type"
+                        @change=${(e: any) => {
+                          col.filter!.selectedIndex = e.target.value;
+                          this.updCols();
+                          this.filter(col);
+                        }}
+                      >
+                        ${col.filter.list.map(
+                          (c, i) => html`
+                            <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
+                          `
+                        )}
+                      </select>
+
+                      <input
+                        type="text"
+                        placeholder=${input!.placeholder}
+                        maxlength=${ifDefined(input!.maxlength)}
+                        pattern=${ifDefined(input!.pattern)}
+                        .value=${col.filter.input}
+                        @input=${(e: any) => {
+                          col.filter!.input = e.target.value;
+                          this.updCols();
+                          this.filter(col);
+                        }}
+                      />
+                    </div>
+                  </md-menu-overlay>
+                `
+              : nothing}
+
 
           <!-- RESIZE  -->
           ${this.renderResize(col)}
@@ -605,10 +610,10 @@ export namespace TableAdvanced {
                   } else {
                     return col.options.isHeader
                       ? html`
-                          <th scope="row">${rowData}</th>
+                          <th scope="row"><div class="inner-cell"><span>${rowData}</span></div></th>
                         `
                       : html`
-                          <td>${rowData}</td>
+                          <td><div class="inner-cell"><span>${rowData}</span></div></td>
                         `;
                   }
                 })}

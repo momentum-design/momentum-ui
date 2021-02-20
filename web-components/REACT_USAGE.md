@@ -14,7 +14,6 @@ First and foremost, follow the instructions in order to get the create-react-app
 ### Include Required Dependencies in package.json
 ##### In package.json (`create-react-app/my-app/package.json`)
 Add resolutions & devDependencies, then modify the scripts section to match the following: <br>
-<sub><sub>*The changes to scripts commands enable the following Webpack modifications to be run within the Create React App environment. <br> The addition of `jest` as a resolution is important for tests to run*</sub></sub>
   ```json
   "resolutions": {
     "lit-element": "2.3.1",
@@ -39,6 +38,7 @@ Add resolutions & devDependencies, then modify the scripts section to match the 
     "eject": "react-scripts eject"
   },
   ```
+  <sub>*The changes to scripts commands enable the following Webpack modifications to be run within the Create React App environment. <br> The addition of `jest` as a resolution is important for tests to run*</sub>
   
 ### Copy Static Assets & Configure Jest for Testing
 Momentum Web Components use Cisco fonts and Icon fonts that must be served within the project. This Webpack ammendment copies those resources from the installed dependencies (`node_modules`) to the `public` directory. In addition, the jest config override ensures tests run successfully with the addition of web components.
@@ -94,10 +94,8 @@ module.exports = {
   }
 }
 ```
-<sub>*Once you run `yarn build`, you will see this webpack modification generates the following two directories within the `Public` directory*
+<sub>*After you run `yarn build`, this webpack modification will have generated two directories within the `Public` directory: `css` & `fonts`*
 </sub>
-
-![Screen Shot 2021-02-19 at 3 48 12 PM](https://user-images.githubusercontent.com/15151981/108573613-f1767f80-72c9-11eb-83f7-48bed4b72bcf.png)
 
 ### Link Bundled CSS Files in index.html
 ##### In index.html (`create-react-app/my-app/public/index.html`)

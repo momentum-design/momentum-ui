@@ -1,47 +1,25 @@
-## Usage With React
+# Usage With React
 
-##### The following walk-through uses create-react-app to quick start a simple usage scenario. Please read through, and adapt for your project's specific needs.
+The following walk-through uses create-react-app to quick start a simple usage scenario. Please read through, and adapt for your project's specific needs.
 
-### create-react-app
-##### First, follow the instructions in the link below in order to get the create-react-app running locally.
-https://github.com/facebook/create-react-app
+### Create-react-app
+First and foremost, follow the instructions in order to get the create-react-app running locally.
+<https://github.com/facebook/create-react-app>
+1. `git clone https://github.com/facebook/create-react-app.git`
+2. `cd create-react-app`
+3. `yarn create react-app my-app`
+4. `cd my-app`
+5. `yarn start`
 
-
-### Add Web Component to Project
-##### In App.js (`create-react-app/my-app/src/App.js`)
-Add the following import
-```js
-  import '@momentum-ui/web-components';
-```
-OR import each individual web component
-```js
-  import '@momentum-ui/web-components/dist/comp/md-button';
-  import '@momentum-ui/web-components/dist/comp/md-icon';
-```
-NOTE: You only need to import the web-components module at the top level of your application in order to use web components anywhere throughout.
-
-Test that Web Components work by including one in App.js. Use this test:
-
-```html
-<md-theme>
-  <md-button variant="green"><md-icon slot="icon" name="play_16"></md-icon><span slot="text">Code On!</span></md-button>
-</md-theme>
-```
-And you should see:
-
-![Screen Shot 2021-02-19 at 10 55 55 AM](https://user-images.githubusercontent.com/17099707/108549087-8c0e9880-72a1-11eb-9c71-7d6c6162f9cb.png)
-
-You must wrap your application with `<md-theme>` element, it provides a set of core style resets and CSS custom variables that provide Theme color tokens, among other things. You can test these by toggling attributes `lumos` and/or `darkTheme` on the `<md-theme>` element.
-
-We recommend `<md-phone-input></md-phone-input>` as an example that has unique styles and colors and Icon usage to test. 
-
-### Include required Dependencies in package.json
+### Include Required Dependencies in package.json
 ##### In package.json (`create-react-app/my-app/package.json`)
-Add resolutions & devDependencies, then modify the scripts section to match the following:
+Add resolutions & devDependencies, then modify the scripts section to match the following: <br>
+<sub><sub>*The changes to scripts commands enable the following Webpack modifications to be run within the Create React App environment. <br> The addition of `jest` as a resolution is important for tests to run*</sub></sub>
   ```json
   "resolutions": {
     "lit-element": "2.3.1",
-    "lit-html": "1.2.1"
+    "lit-html": "1.2.1",
+    "jest": "26.6.0"
   },
   "devDependencies": {
     "@momentum-ui/core": "^19.9.12",
@@ -61,10 +39,9 @@ Add resolutions & devDependencies, then modify the scripts section to match the 
     "eject": "react-scripts eject"
   },
   ```
-NOTE: The changes to scripts commands enable the following WebPack modifications to be run within the Create React App environment.
   
-### Copy Static Assets
-Momentum Web Components use Cisco fonts and Icon fonts that must be served within the project. This WebPack ammendment copies those resources from the related module packages.
+### Copy Static Assets & Configure Jest for Testing
+Momentum Web Components use Cisco fonts and Icon fonts that must be served within the project. This Webpack ammendment copies those resources from the installed dependencies (`node_modules`) to the `public` directory. In addition, the jest config override ensures tests run successfully with the addition of web components.
 ##### Create config-overrides.js (`create-react-app/my-app/config-overrides.js`)
 Copy the following code below:
 ```js
@@ -74,7 +51,8 @@ const path = require('path');
 const hoistedModules = path.resolve("node_modules");
 const pPublic = path.resolve('public');
 
-module.exports = function override(config, env) {
+module.exports = {
+  webpack: (config, env) => {
     if (!config.plugins) {
       config.plugins = [];
     }
@@ -105,23 +83,62 @@ module.exports = function override(config, env) {
 
     config.plugins.push(copyWebpackPlugin);
     return config;
-  }
-```
+  },
 
+  jest: (config) => {
+    config.transformIgnorePatterns = [
+      '[/\\\\]node_modules[/\\\\](?!lit-element|lit-html).+\\.(js|jsx|ts|tsx)$',
+      '^.+\\.module\\.(css|sass|scss)$'
+    ];
+    return config;
+  }
+}
+```
+<sub>*Once you run `yarn build`, you will see this webpack modification generates the following two directories within the `Public` directory*
+</sub>
+
+![Screen Shot 2021-02-19 at 3 48 12 PM](https://user-images.githubusercontent.com/15151981/108573613-f1767f80-72c9-11eb-83f7-48bed4b72bcf.png)
+
+### Link Bundled CSS Files in index.html
 ##### In index.html (`create-react-app/my-app/public/index.html`)
-This `%PUBLIC_URL%` references the public directory that contains all required static assets (fonts, icons).
-https://create-react-app.dev/docs/using-the-public-folder/
-Add the following line:
+Add the following lines:
 ```html
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui.min.css">
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
 ```
+<sub>This `%PUBLIC_URL%` references the public directory that now contains all required static assets (fonts, icons).</sub> <br>
+<sub><https://create-react-app.dev/docs/using-the-public-folder/></sub>
 
-#### Once changes have been made, follow the steps below:
+### Add a Web Components to your Project
+##### In App.js (`create-react-app/my-app/src/App.js`)
+1. Add the following import:
+```js
+  import '@momentum-ui/web-components';
+```
+OR import each individual web component
+```js
+  import '@momentum-ui/web-components/dist/comp/md-button';
+  import '@momentum-ui/web-components/dist/comp/md-icon';
+```
+<sub>*NOTE: You only need to import the web-components module at the top level of your application in order to use web components anywhere throughout.*
+</sub>
 
+2. Insert the following sample web component for testing purposes:
+```html
+<md-theme>
+  <md-button variant="green"><md-icon slot="icon" name="play_16"></md-icon><span slot="text">Code On!</span></md-button>
+</md-theme>
+```
+<sub>*NOTE: You must wrap your application with the `<md-theme>` element. It provides a set of core style resets and CSS custom variables that provide Theme color tokens, among other things. You can test these by toggling attributes `lumos` and/or `darkTheme` on the `<md-theme>` element.*
+</sub>
+
+##### Now it is time to get your app running locally! <br>
 (within `create-react-app/my-app` directory)
 
 1. `yarn` installs all dependencies.
 2. `yarn build` copies the required static assets for fonts and icons.
 3. `yarn start` launches project locally.
- 
+
+And you should see:
+
+![Screen Shot 2021-02-19 at 10 55 55 AM](https://user-images.githubusercontent.com/17099707/108549087-8c0e9880-72a1-11eb-9c71-7d6c6162f9cb.png)

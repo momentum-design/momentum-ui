@@ -87,8 +87,8 @@ module.exports = {
 
   jest: (config) => {
     config.transformIgnorePatterns = [
-      '[/\\\\]node_modules[/\\\\](?!lit-element|lit-html).+\\.(js|jsx|ts|tsx)$',
-      '^.+\\.module\\.(css|sass|scss)$'
+        "[/\\\\]node_modules/\\\\.+\\.(js|jsx|ts|tsx)$",
+        "^.+\\.module\\.(css|sass|scss)$"
     ];
     return config;
   }
@@ -104,7 +104,7 @@ Add the following lines:
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui.min.css">
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/momentum-ui-icons.min.css">
 ```
-<sub>This `%PUBLIC_URL%` references the public directory that now contains all required static assets (fonts, icons).</sub> <br>
+<sub>*This `%PUBLIC_URL%` references the public directory that now contains all required static assets (fonts, icons).*</sub> <br>
 <sub><https://create-react-app.dev/docs/using-the-public-folder/></sub>
 
 ### Add a Web Components to your Project
@@ -136,6 +136,9 @@ OR import each individual web component
 1. `yarn` installs all dependencies.
 2. `yarn build` copies the required static assets for fonts and icons.
 3. `yarn start` launches project locally.
+
+ps: `yarn test` runs all tests files that have this file name structure: `<file>.test.ts` <br>
+<sub>*Feel free to run that and ensure that runs successfully with the existing sample test.*<sub>
 
 And you should see:
 

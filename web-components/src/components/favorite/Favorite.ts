@@ -7,8 +7,9 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { FocusMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 import { Key } from "@/constants";
@@ -17,7 +18,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace Favorite {
-  @customElement("md-favorite")
+  @customElementWithCheck("md-favorite")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) checked = false;

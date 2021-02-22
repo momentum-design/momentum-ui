@@ -13,12 +13,6 @@ import {
 import { html, PropertyValues } from "lit-element";
 import { MenuOverlay, OverlaySizes } from "./MenuOverlay";
 
-jest.mock("@/utils/helpers", () => {
-  return {
-    debounce: jest.fn().mockImplementation(cb => cb)
-  };
-});
-
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
     value: jest.fn().mockReturnValue({

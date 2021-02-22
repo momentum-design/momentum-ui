@@ -76,7 +76,7 @@
       font-weight: 700;
 
       &::after {
-        border: 1px solid var(--datepicker-range-text-color, #000);
+        border: 1px solid var(--datepicker-range-text-color, $md-gray-100);
         height: 1.8rem;
         left: 7%;
         position: absolute;
@@ -86,7 +86,7 @@
     }
 
     &--focus::part(button) {
-      background: #dedede;
+      background: var(--datepicker-range-hover-bg-color, $md-gray-20);
     }
 
     &--selected::part(button) {
@@ -105,7 +105,7 @@
     // The ::before element has a fine-tuned gradient to fill in the hoop but keep the outside edges matching the range-selected bar.
 
     &--in-range::part(button) {
-      color: var(--datepicker-range-text-color, #000);
+      color: var(--datepicker-range-text-color, $md-gray-100);
       z-index: 10;
 
       &::before {
@@ -121,7 +121,7 @@
 
       &:hover,
       &:focus {
-        color: var(--datepicker-range-text-color, #000);
+        color: var(--datepicker-range-text-color, $md-gray-100);
 
         &::before {
           background: radial-gradient(circle at 43% center,
@@ -158,11 +158,11 @@
     }
 
     &--start-date::part(button) {
-      color: var(--md-secondary-bg-color, #121212);
+      color: var(--md-secondary-bg-color, $md-gray-100);
 
       &::before {
         background: radial-gradient(circle at 40% center,
-        var(--md-primary-text-color, #121212) 59%,
+        var(--md-primary-text-color, $md-gray-100) 59%,
         rgba(0, 0, 0, 0) 50%,
         var(--datepicker-range-bg-color) 50%,
         var(--datepicker-range-bg-color) 50%);
@@ -173,19 +173,19 @@
       &::after {
         background: radial-gradient(circle at 50% center,
         rgba(0, 0, 0, 0) 50%,
-        var(--datepicker-range-edge-bg-color, #121212) 51%,
-        var(--datepicker-range-edge-bg-color, #121212) 100%,
+        var(--datepicker-range-edge-bg-color, $md-gray-100) 51%,
+        var(--datepicker-range-edge-bg-color, $md-gray-100) 100%,
         rgba(0, 0, 0, 0) 100%);
         content: "";
       }
     }
 
     &--end-date::part(button) {
-      color: var(--md-secondary-bg-color, #121212);
+      color: var(--md-secondary-bg-color, $md-gray-100);
 
       &::before {
         background: radial-gradient(circle at 47% center,
-        var(--datepicker-range-edge-bg-color, #121212) 58%,
+        var(--datepicker-range-edge-bg-color, $md-gray-100) 58%,
         rgba(0, 0, 0, 0) 50%,
         var(--datepicker-range-bg-color) 50%,
         var(--datepicker-range-bg-color) 50%);
@@ -197,8 +197,8 @@
       &::after {
         background: radial-gradient(circle at 50% center,
         rgba(0, 0, 0, 0) 50%,
-        var(--datepicker-range-edge-bg-color, #121212) 51%,
-        var(--datepicker-range-edge-bg-color, #121212) 100%,
+        var(--datepicker-range-edge-bg-color, $md-gray-100) 51%,
+        var(--datepicker-range-edge-bg-color, $md-gray-100) 100%,
         rgba(0, 0, 0, 0) 100%);
         content: "";
       }

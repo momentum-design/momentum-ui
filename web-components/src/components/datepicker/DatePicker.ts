@@ -66,6 +66,9 @@ export namespace DatePicker {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (this.value && changedProperties.has("value")) {
+        if (closestElement("md-date-range-picker", this)) {
+          return;
+        }
         this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale });
         this.setPreSelection(this.selectedDate);
       }

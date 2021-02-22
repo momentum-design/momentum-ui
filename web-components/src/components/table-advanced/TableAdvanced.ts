@@ -78,13 +78,14 @@ export namespace TableAdvanced {
 
       let index = 0;
       const pushCol = (col: ColOptions, group?: { name: string; length: number }) => {
-        const filters = col.filters
-          ? col.filters == "forString"
+        const f = col.filters || this.config.default?.col?.filters;
+        const filters = f
+          ? f == "forString"
             ? Filter.optionsString
-            : col.filters == "forNumber"
+            : f == "forNumber"
             ? Filter.optionsNumber
-            : col.filters.length
-            ? col.filters
+            : f.length
+            ? f
             : null
           : null;
 
@@ -93,6 +94,7 @@ export namespace TableAdvanced {
           index: index++,
           group,
           sort: "default",
+          sorter: col.sorter || this.config.default?.col?.sorter,
           filter: filters
             ? {
                 list: filters,
@@ -220,7 +222,7 @@ export namespace TableAdvanced {
     }
 
     sort(col: Col, order?: SortOrder) {
-      if (!col.options.sorter) return;
+      if (!col.sorter) return;
 
       this.clearSelection();
 
@@ -443,7 +445,7 @@ export namespace TableAdvanced {
           ${col.options.title}
 
           <!-- SORT  -->
-          ${col.options.sorter
+          ${col.sorter
             ? html`
                 <md-button class="sort-icon" @click=${() => this.sort(col)} color="color-none" size="size-none">
                   ${col.sort == "ascending"
@@ -547,12 +549,12 @@ export namespace TableAdvanced {
         const dir = sortCol.sort == "ascending" ? 1 : -1;
 
         let rowsSorted: SortNode[] = [];
-        if (sortCol.options.sorter == "byNumber") {
+        if (sortCol.sorter == "byNumber") {
           rowsSorted = map.sort((a, b) => (dir == 1 ? +a.v - +b.v : +b.v - +a.v));
-        } else if (sortCol.options.sorter == "byString") {
+        } else if (sortCol.sorter == "byString") {
           rowsSorted = map.sort((a, b) => (a.v == b.v ? 0 : a.v > b.v ? dir : -dir));
-        } else if (typeof sortCol.options.sorter == "function") {
-          const func = sortCol.options.sorter;
+        } else if (typeof sortCol.sorter == "function") {
+          const func = sortCol.sorter;
           rowsSorted = map.sort((a, b) => func(a.v, b.v, dir));
         }
 
@@ -670,10 +672,10 @@ export namespace TableAdvanced {
     isInfiniteScroll?: boolean;
 
     cols: {
-      define: (ColOptions | ColGroup)[];
+      define: (ColOptions | ColOptionsGroup)[];
       isDraggable?: boolean;
       isResizable?: boolean;
-      collapseTree?: ColId[];
+      collapse?: ColId[];
     };
 
     rows?: {
@@ -684,7 +686,7 @@ export namespace TableAdvanced {
     cellTemplates?: Record<string, CellTemplate>;
 
     default?: {
-      // col?: Pick<ColOptions, "filters" | "sorter">;
+      col?: Pick<ColOptions, "filters" | "sorter">;
 
       sort?: {
         colId: ColId;
@@ -712,7 +714,7 @@ export namespace TableAdvanced {
     isHeader?: boolean;
   };
 
-  type ColGroup = { groupName: string; children: ColOptions[] };
+  type ColOptionsGroup = { groupName: string; children: ColOptions[] };
   type SortOrder = "default" | "ascending" | "descending";
   type SortComparator = (a: string, b: string, direction: 1 | -1) => number; // -number, 0, number
   type SortNode = { v: string; i: number };
@@ -723,6 +725,7 @@ export namespace TableAdvanced {
   type Col = {
     index: number;
     sort: SortOrder;
+    sorter: ColOptions["sorter"];
     width?: string;
     group?: { name: string; length: number };
     filter?: { list: Filter.Options[]; selectedIndex: number; input: string; active: boolean; menuVisible: boolean };

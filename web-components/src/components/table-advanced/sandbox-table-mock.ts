@@ -54,7 +54,7 @@ export namespace TableMock {
           {
             groupName: "group2",
             children: [
-              { id: "col6", title: "col6f", filters: "forNumber" },
+              { id: "col6", title: "col6f" },
               { id: "col7", title: "col7" }
             ]
           }

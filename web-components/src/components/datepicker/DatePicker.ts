@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
@@ -180,10 +188,9 @@ export namespace DatePicker {
     };
 
     isValueValid = () => {
-      // debugger;
       const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
       const regexString =
-        dateRangePicker.startDate && dateRangePicker.endDate
+        dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
           ? ValidationRegex.dateRangeString
           : this.includesTime
           ? ValidationRegex.ISOString

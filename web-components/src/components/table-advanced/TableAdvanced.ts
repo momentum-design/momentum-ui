@@ -61,15 +61,19 @@ export namespace TableAdvanced {
     @property({ attribute: false }) config!: Config;
     @property({ attribute: false }) data!: Data;
 
+    @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
+
     @internalProperty() private error = "";
 
     @internalProperty() private COLS: Col[] = [];
     @internalProperty() private ROWS: string[][] = [];
-    @internalProperty() private templates: Record<string, CellTemplateProcessed> = {};
-
     private updCols = () => this.requestUpdate("COLS");
 
-    @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
+    private templates: Record<string, CellTemplateProcessed> = {};
+    private selected: Record<number, string[]> = {};
+    private expandedRowIdx: Record<number, boolean> = {};
+
+    private isSelectable = false;
 
     connectedCallback() {
       super.connectedCallback();
@@ -95,6 +99,7 @@ export namespace TableAdvanced {
           group,
           sort: "default",
           sorter: col.sorter || this.config.default?.col?.sorter,
+          isCollapsable: this.config.cols.collapse == col.id,
           filter: filters
             ? {
                 list: filters,
@@ -189,8 +194,8 @@ export namespace TableAdvanced {
       }
 
       // HACK
-      const json = JSON.stringify(this.ROWS[2]);
-      for (let i = 0; i < 20; i++) this.ROWS.push(JSON.parse(json));
+      const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
+      for (let i = 0; i < 60; i++) this.ROWS.push([rnd(9), rnd(4), rnd(2), "3", "4", "5", "6"]);
 
       // TEMPLATES
       const templates = this.config.cellTemplates;
@@ -219,6 +224,8 @@ export namespace TableAdvanced {
           });
         });
       }
+
+      this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
     }
 
     sort(col: Col, order?: SortOrder) {
@@ -269,22 +276,20 @@ export namespace TableAdvanced {
       }
     }
 
-    @internalProperty() private selected: Record<number, string[]> = {};
-
-    selectRow(p: { i: number; row: string[]; shiftKey: boolean; metaKey: boolean }) {
-      const isSelected = this.selected.hasOwnProperty(p.i);
+    selectRow(p: { row: Row; shiftKey: boolean; metaKey: boolean }) {
+      const i = p.row.idx;
+      const isSelected = this.selected.hasOwnProperty(i);
       if (this.config.rows?.selectable == "multiple") {
         if (p.metaKey) {
           if (isSelected) {
-            delete this.selected[p.i];
+            delete this.selected[i];
           } else {
-            this.selected[p.i] = p.row;
+            this.selected[i] = p.row.content;
           }
-          this.requestUpdate("selected");
         } else if (p.shiftKey) {
           // TODO - if required
         } else {
-          this.selected = { [p.i]: p.row };
+          this.selected = { [i]: p.row.content };
         }
 
         this["md-table-advanced-change"].emit({
@@ -295,26 +300,37 @@ export namespace TableAdvanced {
         if (isSelected) {
           this.clearSelection();
         } else {
-          this.selected = { [p.i]: p.row };
+          this.selected = { [i]: p.row.content };
           this["md-table-advanced-change"].emit({
             type: "select",
-            index: p.i,
-            data: p.row
+            index: i,
+            data: p.row.content
           });
         }
       }
+
+      this.requestUpdate("selected");
     }
 
     clearSelection() {
       this.selected = {};
+      this.requestUpdate("selected");
+    }
+
+    collapseToggle(e: Event, row: number) {
+      e.stopPropagation();
+      if (this.expandedRowIdx[row]) {
+        delete this.expandedRowIdx[row];
+      } else {
+        this.expandedRowIdx[row] = true;
+      }
+      this.clearSelection();
+      this.requestUpdate();
     }
 
     // RESIZE
 
-    // FIREFOX bug
-    // using dragover for mouse X/Y
-    // https://stackoverflow.com/a/33672982
-    private eX = 0;
+    private eX = 0; // https://stackoverflow.com/a/33672982
 
     private onResize = (e: DragEvent, col: Col) => {
       const t = e.target as HTMLDivElement;
@@ -528,14 +544,16 @@ export namespace TableAdvanced {
     }
 
     renderBody() {
+      let rows: Row[] = this.ROWS.map((content, idx) => ({ content, idx, collapse: "none" }));
+
       // filter
       const len = this.COLS.length;
-      let rows = this.ROWS.filter(row => {
+      rows = rows.filter(row => {
         for (let i = 0; i < len; i++) {
           const col = this.COLS[i];
           if (col.filter?.active) {
             const filter = col.filter.list[col.filter.selectedIndex];
-            const isVisible = filter.predicate(row[i], col.filter.input);
+            const isVisible = filter.predicate(row.content[i], col.filter.input);
             if (!isVisible) return false;
           }
         }
@@ -545,7 +563,7 @@ export namespace TableAdvanced {
       // sort
       const sortCol = this.COLS.find(c => c.sort != "default");
       if (sortCol) {
-        const map = rows.map((r, i) => ({ v: r[sortCol.index], i }));
+        const map = this.ROWS.map((r, i) => ({ v: r[sortCol.index], i }));
         const dir = sortCol.sort == "ascending" ? 1 : -1;
 
         let rowsSorted: SortNode[] = [];
@@ -561,67 +579,118 @@ export namespace TableAdvanced {
         rows = rowsSorted.map(s => rows[s.i]);
       }
 
-      const isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
+      // collapse
+      const collapseCol = this.COLS.find(c => c.isCollapsable);
+      if (collapseCol) {
+        const colIdx = collapseCol.index;
+
+        const groups = rows.reduce((acc, row) => {
+          const key = row.content[colIdx];
+          const group = acc.find(x => x.key == key);
+          if (group) {
+            group.children.push(row);
+          } else {
+            acc.push({ key, root: row, children: [] });
+          }
+          return acc;
+        }, [] as { key: string; root: Row; children: Row[] }[]);
+
+        rows = [];
+        groups.forEach(g => {
+          if (g.children.length == 0) {
+            rows.push(g.root);
+          } else {
+            rows.push(g.root);
+            if (this.expandedRowIdx[g.root.idx]) {
+              g.root.collapse = "expanded";
+              g.children.forEach(c => {
+                c.collapse = "child";
+                rows.push(c);
+              });
+            } else {
+              g.root.collapse = "collapsed";
+            }
+          }
+        });
+      }
 
       return html`
         <tbody>
-          ${rows.map((row, i) => {
-            const isSelected = this.selected.hasOwnProperty(i);
-            const clazz = classMap({
-              selected: isSelected,
-              selectable: isSelectable && !isSelected
-            });
-            return html`
-              <tr
-                class=${clazz}
-                @click=${({ shiftKey, metaKey }: MouseEvent) => {
-                  if (isSelectable) this.selectRow({ i, row, shiftKey, metaKey });
-                }}
-              >
-                ${row.map((rowData, j) => {
-                  const col = this.COLS[j];
-                  let content: TemplateResult | string = rowData;
-
-                  const t = this.templates[i + "" + j];
-                  if (t) {
-                    content = t.templateCb
-                      ? html`
-                          ${templateCallback({
-                            cb: t.templateCb,
-                            template: t.template,
-                            value: rowData,
-                            iCol: i,
-                            iRow: j
-                          })}
-                        `
-                      : html`
-                          ${templateContent(t.template)}
-                        `;
-
-                    if (t.insertIndex != -1) {
-                      content = html`
-                        ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${content}
-                        ${t.insertIndex < rowData.length - 1 ? rowData.substring(t.insertIndex) : nothing}
-                      `;
-                    }
-                  }
-
-                  return col.options.isHeader
-                    ? html`
-                        <th scope="row">
-                          <div class="inner-cell"><span>${content}</span></div>
-                        </th>
-                      `
-                    : html`
-                        <td>
-                          <div class="inner-cell"><span>${content}</span></div>
-                        </td>
-                      `;
-                })}
-              </tr>
-            `;
-          })}
+          ${rows.map(row => this.renderRow(row))}
         </tbody>
+      `;
+    }
+
+    renderRow(row: Row) {
+      const isSelected = this.selected.hasOwnProperty(row.idx);
+      const clazz = classMap({
+        selected: isSelected,
+        selectable: this.isSelectable && !isSelected
+      });
+      return html`
+        <tr
+          class=${clazz}
+          @click=${({ shiftKey, metaKey }: MouseEvent) => {
+            if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });
+          }}
+        >
+          ${row.content.map((rowData, j) => {
+            const col = this.COLS[j];
+            let content: TemplateResult | string = rowData;
+
+            const t = this.templates[row.idx + "" + j];
+            if (t) {
+              content = t.templateCb
+                ? html`
+                    ${templateCallback({
+                      cb: t.templateCb,
+                      template: t.template,
+                      value: rowData,
+                      iCol: row.idx,
+                      iRow: j
+                    })}
+                  `
+                : html`
+                    ${templateContent(t.template)}
+                  `;
+
+              if (t.insertIndex != -1) {
+                content = html`
+                  ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${content}
+                  ${t.insertIndex < rowData.length - 1 ? rowData.substring(t.insertIndex) : nothing}
+                `;
+              }
+            }
+
+            const cell = html`
+              <div class="inner-cell">
+                ${col.isCollapsable
+                  ? html`
+                      ${row.collapse == "expanded" || row.collapse == "collapsed"
+                        ? html`
+                            <button @click=${(e: Event) => this.collapseToggle(e, row.idx)}>
+                              ${row.collapse == "collapsed" ? "expand" : "collapse"}
+                            </button>
+                          `
+                        : nothing}
+                      &nbsp;
+                      <span>${row.collapse == "child" ? nothing : content}</span>
+                    `
+                  : html`
+                      <span>${content}</span>
+                    `}
+              </div>
+            `;
+
+            return col.options.isHeader
+              ? html`
+                  <th scope="row">${cell}</th>
+                `
+              : html`
+                  <td>${cell}</td>
+                `;
+          })}
+        </tr>
       `;
     }
 
@@ -675,7 +744,7 @@ export namespace TableAdvanced {
       define: (ColOptions | ColOptionsGroup)[];
       isDraggable?: boolean;
       isResizable?: boolean;
-      collapse?: ColId[];
+      collapse?: ColId;
     };
 
     rows?: {
@@ -721,6 +790,11 @@ export namespace TableAdvanced {
 
   type CellTemplate = { templateName: string; templateCb?: TemplateCallback; content?: "insert" | "replace" };
   type CellTemplateProcessed = { insertIndex: number; template: HTMLTemplateElement; templateCb?: TemplateCallback };
+  type Row = {
+    content: string[];
+    idx: number;
+    collapse: "none" | "collapsed" | "expanded" | "child";
+  };
 
   type Col = {
     index: number;
@@ -730,6 +804,7 @@ export namespace TableAdvanced {
     group?: { name: string; length: number };
     filter?: { list: Filter.Options[]; selectedIndex: number; input: string; active: boolean; menuVisible: boolean };
     options: ColOptions;
+    isCollapsable: boolean;
   };
 }
 

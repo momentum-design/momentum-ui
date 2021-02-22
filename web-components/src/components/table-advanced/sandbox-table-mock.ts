@@ -40,22 +40,23 @@ export namespace TableMock {
       cols: {
         isDraggable: true,
         isResizable: true,
+        collapse: "c1",
         define: [
           {
             groupName: "Group 1",
             children: [
-              { id: "Col 1", title: "Col1f", sorter: "byString", filters: "forString" },
-              { id: "Col2", title: "Col2s" },
-              { id: "Col3", title: "Col3" }
+              { id: "c1", title: "Col1f", sorter: "byString", filters: "forString" },
+              { id: "c2", title: "Col2s" },
+              { id: "c3", title: "Col3" }
             ]
           },
-          { id: "col4", title: "Col4h", isHeader: true },
-          { id: "col5", title: "Col5s", sorter: "byString" },
+          { id: "c4", title: "Col4h", isHeader: true },
+          { id: "c5", title: "Col5s", sorter: "byString" },
           {
             groupName: "group2",
             children: [
-              { id: "col6", title: "col6f" },
-              { id: "col7", title: "col7" }
+              { id: "c6", title: "col6f" },
+              { id: "c7", title: "col7" }
             ]
           }
         ]
@@ -65,7 +66,7 @@ export namespace TableMock {
       list2d: [
         ["col _tmp_ 11", "12", "13", "14", "15", "str_tmp2_", "txt _tmp2_ txt"],
         ["_tmp_ col21 sub", "22", "23", "24", "25", "26", "27"],
-        ["col31", "32", "33", "34", "35", "36", "37"]
+        ["col31 sub_tmp_", "32", "33", "34", "35", "36", "37"]
       ]
     }
   };

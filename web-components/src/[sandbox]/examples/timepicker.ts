@@ -1,27 +1,26 @@
 import "@/index";
 import { html } from "lit-element";
-import "@/components/timepicker/TimePicker"
+import "@/components/timepicker/TimePicker";
 
 export const timePickerTemplate = html`
-  <h2 class="sandbox-header">md-timepicker</h2>
-  <h3>timepicker</h3>
+  <h3>Default</h3>
   <md-timepicker></md-timepicker>
 
-  <h3>timepicker ru locale</h3>
+  <h3>Locate</h3>
   <md-timepicker locale="ru"></md-timepicker>
 
-  <h3>timepicker 24-hour format</h3>
+  <h3>24-Hour Format</h3>
   <md-timepicker twenty-four-hour-format></md-timepicker>
 
-  <h3>timepicker timeSpecificity: hour</h3>
+  <h3>Time Specificity Hour</h3>
   <md-timepicker timeSpecificity="hour"></md-timepicker>
 
-  <h3>timepicker timeSpecificity: minute</h3>
+  <h3>Time Specificity Minute</h3>
   <md-timepicker timeSpecificity="minute"></md-timepicker>
 
-  <h3>timepicker timeSpecificity: second</h3>
+  <h3>Time Specificity Second</h3>
   <md-timepicker timeSpecificity="second"></md-timepicker>
 
-  <h3>timepicker default value</h3>
+  <h3>Default Value</h3>
   <md-timepicker value="02:16:00.000-08:00"></md-timepicker>
 `;

@@ -1,8 +1,12 @@
 import "@/components/button/Button";
 import "@/components/modal/Modal";
 import "@/components/tabs/Tab";
+import "@/components/combobox/ComboBox";
+import "@/components/radio/Radio";
+import "@/components/form/Form";
+import "@/components/radio/RadioGroup";
 import "@/components/tabs/TabPanel";
-import {  comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/tabs/Tabs";
 import { customElement, html, LitElement, property } from "lit-element";
 
@@ -67,7 +71,7 @@ export class ModalTemplateSandbox extends LitElement {
         <div slot="header">
           <span>Test Slot Header</span>
         </div>
-        
+
         <p>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
           literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
@@ -77,7 +81,12 @@ export class ModalTemplateSandbox extends LitElement {
           Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
           Renaissance.
         </p>
-        <md-combobox disabled .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]}></md-combobox>
+        <md-combobox
+          disabled
+          .options=${comboBoxOptions}
+          placeholder="Placeholder"
+          .value=${[comboBoxOptions[5]]}
+        ></md-combobox>
         <p>
           The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The
           standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32
@@ -158,35 +167,43 @@ export class ModalTemplateSandbox extends LitElement {
         <div slot="header">
           <h3 class="sl-form-label">Station Login</h3>
         </div>
-        <md-tabs justified>
-          <md-tab slot="tab" label="Dial Number">
-            <span>Dial Number</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="phone-fromat">
-              <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
-                <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
-                <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
-              </md-radiogroup>
-            </div>
+        <md-form @form-submitted=${() => console.info("Form Submitted!!!")} is-valid>
+          <md-tabs justified>
+            <md-tab slot="tab" label="Dial Number">
+              <span>Dial Number</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <div class="phone-fromat">
+                <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
+                  <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
+                  <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
+                </md-radiogroup>
+              </div>
 
-            <md-input type="tel" id="dn" placeholder="Dial Number" shape="pill" autofocus></md-input>
-          </md-tab-panel>
-          <md-tab slot="tab" label="Extension">
-            <span>Extension</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="extension-format">
-              <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
-            </div>
-            <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
-          </md-tab-panel>
-        </md-tabs>
+              <md-input type="tel" id="dn" placeholder="Dial Number" shape="pill" autofocus></md-input>
+            </md-tab-panel>
+            <md-tab slot="tab" label="Extension">
+              <span>Extension</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <div class="extension-format">
+                <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
+              </div>
+              <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
+            </md-tab-panel>
+          </md-tabs>
+        </md-form>
         <div class="sl-footer" slot="footer">
           <md-button class="footer-btn" aria-label="Cancel" @click="${this.closeComplexTabsModal}">
             Cancel
           </md-button>
-          <md-button class="footer-btn" variant="primary" aria-label="Submit" @click="${this.closeComplexTabsModal}">
+          <md-button
+            class="footer-btn"
+            variant="primary"
+            aria-label="Submit"
+            type="submit"
+            @click="${this.closeComplexTabsModal}"
+          >
             Submit
           </md-button>
         </div>

@@ -187,36 +187,36 @@ export namespace TableAdvanced {
       }
 
       // HACK
-      const rows = [];
-      for (let i = 0; i < 20; i++) rows.push(...this.ROWS);
-      this.ROWS = rows;
+      const json = JSON.stringify(this.ROWS[2]);
+      for (let i = 0; i < 20; i++) this.ROWS.push(JSON.parse(json));
 
       // TEMPLATES
-      // const templates = this.config.cellTemplates;
-      // const templatesKeys = Object.keys(templates || {});
-      // if (templates && templatesKeys.length) {
-      //   this.ROWS.forEach((r, iRow) => {
-      //     r.forEach((c, iCol) => {
-
-      //       templatesKeys.forEach(k => {
-      //         console.log(`text: ${c}, key: ${k}, idx:${c.indexOf(k)} - [${iRow + "" + iCol}]`);
-
-      //         if (this.templates[iRow + "" + iCol]) {
-      //           console.warn("There can be only 1 template per cell");
-      //         } else {
-      //           const idx = c.indexOf(k);
-      //           if (idx != -1) {
-      //             this.templates[iRow + "" + iCol] = { insertIndex: idx, ...templates[k] };
-      //             this.ROWS[iRow][iCol] = c.replace(k, "");
-      //           }
-      //         }
-      //       });
-
-      //     });
-      //   });
-      // }
-
-      // console.log(this.templates);
+      const templates = this.config.cellTemplates;
+      const templatesKeys = Object.keys(templates || {});
+      if (templates && templatesKeys.length) {
+        this.ROWS.forEach((r, iRow) => {
+          r.forEach((c, iCol) => {
+            for (const k in templates) {
+              const idx = c.indexOf(k);
+              if (idx != -1) {
+                const t = templates[k];
+                const template = this.querySelector<HTMLTemplateElement>(`#${t.templateName}`);
+                if (template == null) {
+                  console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
+                  continue;
+                }
+                this.templates[iRow + "" + iCol] = {
+                  template,
+                  templateCb: t.templateCb,
+                  insertIndex: t.content != "replace" ? idx : -1
+                };
+                this.ROWS[iRow][iCol] = c.replace(k, "");
+                break;
+              }
+            }
+          });
+        });
+      }
     }
 
     sort(col: Col, order?: SortOrder) {
@@ -440,21 +440,20 @@ export namespace TableAdvanced {
 
       return html`
         <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width)} scope="col" class=${"col-index-" + col.index}>
+          ${col.options.title}
 
-           ${col.options.title}
-
-            <!-- SORT  -->
-            ${col.options.sorter
-              ? html`
+          <!-- SORT  -->
+          ${col.options.sorter
+            ? html`
                 <md-button class="sort-icon" @click=${() => this.sort(col)} color="color-none" size="size-none">
                   ${col.sort == "ascending"
                     ? html`
                         <md-icon slot="icon" name="arrow-filled-up_8"></md-icon>
                       `
                     : col.sort == "descending"
-                      ? html`
-                          <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
-                        `
+                    ? html`
+                        <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
+                      `
                     : html`
                         <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
                       `}
@@ -462,52 +461,51 @@ export namespace TableAdvanced {
               `
             : nothing}
 
-            <!-- FILTER -->
-            ${col.filter
-              ? html`
-                  ${col.filter.active
-                    ? html`
-                        <md-icon class="filter-active" name="filter-adr_12"></md-icon>
-                      `
-                    : nothing}
+          <!-- FILTER -->
+          ${col.filter
+            ? html`
+                ${col.filter.active
+                  ? html`
+                      <md-icon class="filter-active" name="filter-adr_12"></md-icon>
+                    `
+                  : nothing}
 
-                  <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
-                    <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
-                      <md-icon  slot="icon" name="filter_16"></md-icon>
-                    </md-button>
-                    <div class="filter-menu" style="padding:1.25rem; width: 100%;">
-                      <select
-                        name="filter-type"
-                        @change=${(e: any) => {
-                          col.filter!.selectedIndex = e.target.value;
-                          this.updCols();
-                          this.filter(col);
-                        }}
-                      >
-                        ${col.filter.list.map(
-                          (c, i) => html`
-                            <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
-                          `
-                        )}
-                      </select>
+                <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
+                  <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
+                    <md-icon slot="icon" name="filter_16"></md-icon>
+                  </md-button>
+                  <div class="filter-menu" style="padding:1.25rem; width: 100%;">
+                    <select
+                      name="filter-type"
+                      @change=${(e: any) => {
+                        col.filter!.selectedIndex = e.target.value;
+                        this.updCols();
+                        this.filter(col);
+                      }}
+                    >
+                      ${col.filter.list.map(
+                        (c, i) => html`
+                          <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
+                        `
+                      )}
+                    </select>
 
-                      <input
-                        type="text"
-                        placeholder=${input!.placeholder}
-                        maxlength=${ifDefined(input!.maxlength)}
-                        pattern=${ifDefined(input!.pattern)}
-                        .value=${col.filter.input}
-                        @input=${(e: any) => {
-                          col.filter!.input = e.target.value;
-                          this.updCols();
-                          this.filter(col);
-                        }}
-                      />
-                    </div>
-                  </md-menu-overlay>
-                `
-              : nothing}
-
+                    <input
+                      type="text"
+                      placeholder=${input!.placeholder}
+                      maxlength=${ifDefined(input!.maxlength)}
+                      pattern=${ifDefined(input!.pattern)}
+                      .value=${col.filter.input}
+                      @input=${(e: any) => {
+                        col.filter!.input = e.target.value;
+                        this.updCols();
+                        this.filter(col);
+                      }}
+                    />
+                  </div>
+                </md-menu-overlay>
+              `
+            : nothing}
 
           <!-- RESIZE  -->
           ${this.renderResize(col)}
@@ -580,42 +578,43 @@ export namespace TableAdvanced {
               >
                 ${row.map((rowData, j) => {
                   const col = this.COLS[j];
-                  const t = this.templates[i + "" + j + "тут-был-Рост:)"];
+                  let content: TemplateResult | string = rowData;
+
+                  const t = this.templates[i + "" + j];
                   if (t) {
-                    const template = this.shadowRoot!.querySelector<HTMLTemplateElement>(`#${t.templateName}`)!;
-                    const templateResult = t.templateCb
+                    content = t.templateCb
                       ? html`
                           ${templateCallback({
-                            template,
-                            value: rowData,
                             cb: t.templateCb,
+                            template: t.template,
+                            value: rowData,
                             iCol: i,
                             iRow: j
                           })}
                         `
                       : html`
-                          ${templateContent(template)}
+                          ${templateContent(t.template)}
                         `;
 
-                    return t.insertIndex == -1
-                      ? html`
-                          <th scope="row">${templateResult}</th>
-                        `
-                      : html`
-                          <th scope="row">
-                            ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${templateResult}
-                            ${t.insertIndex < rowData.length - 1 ? rowData.substring(t.insertIndex) : nothing}
-                          </th>
-                        `;
-                  } else {
-                    return col.options.isHeader
-                      ? html`
-                          <th scope="row"><div class="inner-cell"><span>${rowData}</span></div></th>
-                        `
-                      : html`
-                          <td><div class="inner-cell"><span>${rowData}</span></div></td>
-                        `;
+                    if (t.insertIndex != -1) {
+                      content = html`
+                        ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${content}
+                        ${t.insertIndex < rowData.length - 1 ? rowData.substring(t.insertIndex) : nothing}
+                      `;
+                    }
                   }
+
+                  return col.options.isHeader
+                    ? html`
+                        <th scope="row">
+                          <div class="inner-cell"><span>${content}</span></div>
+                        </th>
+                      `
+                    : html`
+                        <td>
+                          <div class="inner-cell"><span>${content}</span></div>
+                        </td>
+                      `;
                 })}
               </tr>
             `;
@@ -718,8 +717,8 @@ export namespace TableAdvanced {
   type SortComparator = (a: string, b: string, direction: 1 | -1) => number; // -number, 0, number
   type SortNode = { v: string; i: number };
 
-  type CellTemplate = { templateName: string; templateCb?: TemplateCallback };
-  type CellTemplateProcessed = CellTemplate & { insertIndex: number };
+  type CellTemplate = { templateName: string; templateCb?: TemplateCallback; content?: "insert" | "replace" };
+  type CellTemplateProcessed = { insertIndex: number; template: HTMLTemplateElement; templateCb?: TemplateCallback };
 
   type Col = {
     index: number;

@@ -1,4 +1,4 @@
-import { TableAdvanced } from "../TableAdvanced";
+import { TableAdvanced } from "./TableAdvanced";
 
 export namespace TableMock {
   export const CONF: TableAdvanced.Config = {
@@ -63,9 +63,9 @@ export namespace TableMock {
     },
     data: {
       list2d: [
-        ["Active Agent State List", "Idle for all channels", "Ctrl + Alt + N", "11:11", "30.03.2020", "36", "37"],
+        ["col _tmp_ 11", "12", "13", "14", "15", "str_tmp2_", "txt _tmp2_ txt"],
         ["_tmp_ col21 sub", "22", "23", "24", "25", "26", "27"],
-        ["col31 sub _tmp_", "32", "33", "34", "35", "36", "37"]
+        ["col31", "32", "33", "34", "35", "36", "37"]
       ]
     }
   };

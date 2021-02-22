@@ -1,5 +1,5 @@
 import { customElement, html, LitElement } from "lit-element";
-import { TableMock } from "./src/mock";
+import { TableMock } from "./sandbox-table-mock";
 import "./TableAdvanced";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -11,10 +11,14 @@ export class Sandbox extends LitElement {
         templateName: "tmp1"
       },
       "_tmp2_": {
+        content: "replace",
         templateName: "tmp2",
         templateCb: p => {
-          const x = p.fragment.querySelector<HTMLElement>(".sp")!;
-          x.innerText = `WORKZZZ - [${p.iRow},${p.iCol}] - ${p.value}`;
+          const span = p.fragment.querySelector<HTMLElement>(".sp")!;
+          span.innerText = `WORKZZZ - [${p.iRow},${p.iCol}] - ${p.value}`;
+
+          const btn = p.fragment.querySelector<HTMLButtonElement>("button")!;
+          btn.addEventListener("click", e => console.log("EVT"));
         }
       }
     };
@@ -27,7 +31,8 @@ export class Sandbox extends LitElement {
           </template>
 
           <template id="tmp2">
-            <span class="sp">FAILED</span>
+            <span class="sp">FAILED callback</span>
+            <button>BTN</button>
           </template>
         </md-table-advanced>
       </div>

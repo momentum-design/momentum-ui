@@ -21,7 +21,7 @@ export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";
 export { Chip } from "./components/chip/Chip";
-import { Coachmark } from "./components/coachmark/Coachmark";
+export { Coachmark } from "./components/coachmark/Coachmark";
 export { CodeEditor } from "./components/code-editor/CodeEditor";
 export { ComboBox } from "./components/combobox/ComboBox";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
@@ -31,6 +31,9 @@ export { DatePickerDay } from "./components/datepicker/datepicker-day/DatePicker
 export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePickerMonth";
 export { DatePickerWeek } from "./components/datepicker/datepicker-week/DatePickerWeek";
 export { DateTimePicker } from "./components/date-time-picker/DateTimePicker";
+export { Dropdown } from "./components/dropdown/Dropdown";
+export { Draggable } from "./components/draggable/Draggable";
+export { DraggableItem } from "./components/draggable/DraggableItem";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
@@ -64,4 +67,5 @@ export { Theme } from "./components/theme/Theme";
 export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
+export { Form } from "./components/form/Form";
 // eslint-disable-next-line prettier/prettier

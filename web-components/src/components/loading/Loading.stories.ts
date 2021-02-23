@@ -11,7 +11,6 @@ import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { select, boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { LoadingSize } from "@/components/loading/Loading";
 
 export default {
   title: "Loading",
@@ -41,7 +40,7 @@ export const Loading = () => {
 
   return html`
     <md-theme class="theme-toggle" id="loading" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-loading .size=${size as LoadingSize}></md-loading>
+      <md-loading .size=${size as any}></md-loading>
     </md-theme>   
   `;
 };

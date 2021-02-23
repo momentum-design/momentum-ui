@@ -20,7 +20,6 @@ export class CoachTemplateSandbox extends LitElement {
     } else {
       this.value = "";
     }
-    
   }
 
   render() {
@@ -30,10 +29,9 @@ export class CoachTemplateSandbox extends LitElement {
       <p>Value: ${this.value}</p>
     `;
   }
-
 }
 
 export const favoriteTemplate = html`
-  <h3 class="sandbox-header">Default Favorite</h3>  
+  <h3 class="sandbox-header">Default Favorite</h3>
   <favorite-template-sandbox></favorite-template-sandbox>
 `;

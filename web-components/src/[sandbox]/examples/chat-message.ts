@@ -2,6 +2,7 @@ import "@/components/chat-message/ChatMessage";
 import { html } from "lit-element";
 import "@/components/alert/Alert";
 import "@/components/badge/Badge";
+import "@/components/icon/Icon";
 import "@/components/alert-banner/AlertBanner";
 
 export const chatMessageTemplate = html`

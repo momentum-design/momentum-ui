@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.md-draggable-item {
+  &.extended {
+    align-items: center;
+    background-color: var(--md-secondary-white-bg-color);
+    border: $draggable-row-border;
+    display: flex;
+    flex-direction: row;
+    padding: $draggable-padding;
+
+    md-icon {
+      cursor: grab;
+      margin-right: $draggable-padding;
+    }
+
+    &:hover {
+      background-color: var(--md-secondary-bg-color);
+    }
+
+    ::slotted(*) {
+      flex: 1 1 auto;
+      margin-right: calc(#{$draggable-padding} * 2);
+      text-align: left;
+    }
+  }
+
+  &.default {
+    border: $draggable-default-border;
+    border-radius: $draggable-item-border-radius;
+    cursor: grab;
+    display: flex;
+    padding: calc(#{$draggable-padding} / 2) $draggable-padding;
+
+    &:hover {
+      background-color: var(--md-tertiary-white-bg-color);
+      border: $draggable-focus-border;
+      box-shadow: $draggable-item-shadow;
+    }
+  }
+
+  &.disabled {
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+      border: $draggable-default-border;
+      box-shadow: none;
+    }
+  }
+}

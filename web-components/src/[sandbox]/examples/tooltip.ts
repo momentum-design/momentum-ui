@@ -66,7 +66,7 @@ export class TooltipDisconnectedSandbox extends LitElement {
   @property({ type: Boolean }) isClicked = false;
 
   @query(".container") container!: HTMLDivElement;
-  @query("md-tooltip") tooltip!: Tooltip;
+  @query("md-tooltip") tooltip!: Tooltip.ELEMENT;
 
   private handleClick() {
     this.tooltip.remove();

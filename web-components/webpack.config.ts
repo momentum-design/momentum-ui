@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
+import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
 import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
@@ -140,15 +141,88 @@ const dev = merge(commonDev, {
 
 const commonDist = merge(common, {
   entry: {
-    index: "./src/index.ts"
+    "index-entry": "./src/index.ts",
+    "comp/md-accordion-entry": "./src/components/accordion/Accordion",
+    "comp/md-accordion-item-entry": "./src/components/accordion/AccordionItem",
+    "comp/md-activity-button-entry": "./src/components/activity-button/ActivityButton",
+    "comp/md-alert-entry": "./src/components/alert/Alert",
+    "comp/md-alert-banner-entry": "./src/components/alert-banner/AlertBanner",
+    "comp/md-avatar-entry": "./src/components/avatar/Avatar",
+    "comp/md-composite-avatar-entry": "./src/components/avatar/CompositeAvatar",
+    "comp/md-badge-entry": "./src/components/badge/Badge",
+    "comp/md-breadcrumb-entry": "./src/components/breadcrumb/Breadcrumb",
+    "comp/md-button-entry": "./src/components/button/Button",
+    "comp/md-card-entry": "./src/components/card/Card",
+    "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
+    "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",
+    "comp/md-checkboxgroup-entry": "./src/components/checkbox/CheckboxGroup",
+    "comp/md-chip-entry": "./src/components/chip/Chip",
+    "comp/md-coachmark-entry": "./src/components/coachmark/Coachmark",
+    "comp/md-combobox-entry": "./src/components/combobox/ComboBox",
+    "comp/md-date-time-picker-entry": "./src/components/date-time-picker/DateTimePicker",
+    "comp/md-datepicker-entry": "./src/components/datepicker/DatePicker",
+    "comp/md-datepicker-calendar-entry": "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
+    "comp/md-datepicker-day-entry": "./src/components/datepicker/datepicker-day/DatePickerDay",
+    "comp/md-datepicker-month-entry": "./src/components/datepicker/datepicker-month/DatePickerMonth",
+    "comp/md-datepicker-week-entry": "./src/components/datepicker/datepicker-week/DatePickerWeek",
+    "comp/md-dropdown-entry": "./src/components/dropdown/Dropdown",
+    "comp/md-draggable-entry": "./src/components/draggable/Draggable",
+    "comp/md-draggable-item-entry": "./src/components/draggable/DraggableItem",
+    "comp/md-editable-field-entry": "./src/components/editable-textfield/EditableTextfield",
+    "comp/md-favorite-entry": "./src/components/favorite/Favorite",
+    "comp/md-floating-modal-entry": "./src/components/floating-modal/FloatingModal",
+    "comp/md-help-text-entry": "./src/components/help-text/HelpText",
+    "comp/md-icon-entry": "./src/components/icon/Icon",
+    "comp/md-input-entry": "./src/components/input/Input",
+    "comp/md-label-entry": "./src/components/label/Label",
+    "comp/md-link-entry": "./src/components/link/Link",
+    "comp/md-list-entry": "./src/components/list/List",
+    "comp/md-list-item-entry": "./src/components/list/ListItem",
+    "comp/md-loading-entry": "./src/components/loading/Loading",
+    "comp/md-meeting-alert-entry": "./src/components/meeting-alert/MeetingAlert",
+    "comp/md-menu-entry": "./src/components/menu/Menu",
+    "comp/md-menu-item-entry": "./src/components/menu/MenuItem",
+    "comp/md-menu-overlay-entry": "./src/components/menu-overlay/MenuOverlay",
+    "comp/md-modal-entry": "./src/components/modal/Modal",
+    "comp/md-pagination-entry": "./src/components/pagination/Pagination",
+    "comp/md-phone-input-entry": "./src/components/phone-input/PhoneInput",
+    "comp/md-progress-bar-entry": "./src/components/progress-bar/ProgressBar",
+    "comp/md-radio-entry": "./src/components/radio/Radio",
+    "comp/md-radiogroup-entry": "./src/components/radio/RadioGroup",
+    "comp/md-slider-entry": "./src/components/slider/Slider",
+    "comp/md-spinner-entry": "./src/components/spinner/Spinner",
+    "comp/md-table-entry": "./src/components/table/Table",
+    "comp/md-tab-entry": "./src/components/tabs/Tab",
+    "comp/md-tab-panel-entry": "./src/components/tabs/TabPanel",
+    "comp/md-tabs-entry": "./src/components/tabs/Tabs",
+    "comp/md-task-item-entry": "./src/components/taskitem/TaskItem",
+    "comp/md-theme-entry": "./src/components/theme/Theme",
+    "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
+    "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
+    "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
+    "comp/md-form": "./src/components/form/Form"
   },
   output: {
     path: pDist,
+    publicPath: "/",
     filename: "[name].js",
+    chunkFilename: "chunks/[id].js",
     libraryTarget: "umd"
   },
-  externals: [nodeExternals({ modulesFromFile: true })],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      maxInitialRequests: Infinity,
+      maxAsyncRequests: Infinity,
+      minSize: 0
+    }
+  },
+  externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
   plugins: [
+    new CleanWebpackPlugin(),
+    new WebpackLoadChunksPlugin({
+      trimNameEnd: 6
+    }),
     new CopyWebpackPlugin([
       { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
       { from: `${pMomentum}/core/images`, to: "assets/images" },
@@ -160,7 +234,6 @@ const commonDist = merge(common, {
       { from: `${pSrc}/**/*.json`, to: "css", flatten: true }
       // if you want 'momentum-ui.min.css' to work we must copy to second location
     ]),
-    new CleanWebpackPlugin(),
     new RemovePlugin({
       after: {
         log: false,

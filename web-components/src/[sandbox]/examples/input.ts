@@ -1,5 +1,6 @@
 import { Input } from "@/components/input/Input";
 import "@/components/input/Input.ts";
+import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 const messageArr: Input.Message = {
@@ -11,7 +12,7 @@ function copyText(event: MouseEvent) {
   const target = event.composedPath()[0] as Element;
   const targetRoot = target.getRootNode() as ShadowRoot;
   const targetHost = targetRoot.host;
-  const input = targetHost.previousSibling as Input;
+  const input = targetHost.previousSibling as Input.ELEMENT;
   input!.select();
 }
 

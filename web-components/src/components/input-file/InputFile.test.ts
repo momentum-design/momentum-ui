@@ -33,7 +33,7 @@ describe("InputFile component", () => {
   });
 
   test("should trigger input click", async () => {
-    const mdButton = element.shadowRoot!.querySelector(".md-input-file-btn") as Button;
+    const mdButton = element.shadowRoot!.querySelector(".md-input-file-btn") as Button.ELEMENT;
     const button = mdButton.shadowRoot!.querySelector("button");
 
     button!.click();

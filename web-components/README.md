@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/LICENSE) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Cisco-Systems/Momentum-UI-Web-Component)
 
-**`Momentum UI Web Components`** is a resuable, component based, flexible React library available as
+**`Momentum UI Web Components`** is a resuable, component based, flexible Web Component library available as
 npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
 Checkout the [documentation](https://momentum.design) for documentation and live examples at https://momentum-design.github.io/momentum-ui/.
@@ -54,10 +54,13 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 
 * [chai](https://github.com/chaijs/chai) - MIT
 
+## Usage
+
+Want to use web components within the create-react-app? Navigate to [React Usage Instructions](./REACT_USAGE.md) for detailed instructions.
 
 ## Contribution
 
-Want to contribute? Why not go through [Developer's Guide](./GETTING_STARTED.md) to understand more technical details about the project and contribution guidelines to be adhered.
+Want to contribute? Why not go through [Developer's Guide](./CONTRIBUTING.md) to understand more technical details about the project and contribution guidelines to be adhered.
 
 ## Changelog
 

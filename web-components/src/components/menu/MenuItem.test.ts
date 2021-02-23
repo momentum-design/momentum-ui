@@ -10,24 +10,24 @@ describe("MenuItem component", () => {
   });
 
   test("should create component", async () => {
-    const component: MenuItem = await fixture(`<md-menu-item ><span>Test</span></md-menu-item>`);
+    const component: MenuItem.ELEMENT = await fixture(`<md-menu-item ><span>Test</span></md-menu-item>`);
     expect(component).toBeDefined;
   });
 
   test("component should be disabled", async () => {
-    const component: MenuItem = await fixture(`<md-menu-item disabled><span>Test</span></md-menu-item>`);
+    const component: MenuItem.ELEMENT = await fixture(`<md-menu-item disabled><span>Test</span></md-menu-item>`);
     expect(component.disabled).toBeTruthy;
     expect(component.getAttribute("tabindex")).toBe("-1");
   });
 
   test("component should has label", async () => {
-    const component: MenuItem = await fixture(`<md-menu-item label="Test"><span>Test</span></md-menu-item>`);
+    const component: MenuItem.ELEMENT = await fixture(`<md-menu-item label="Test"><span>Test</span></md-menu-item>`);
     expect(component.label).toEqual("Test");
   });
 
   test("should dispatch events to parent component", async () => {
     const id = nanoid();
-    const component = await fixture<MenuItem>(
+    const component = await fixture<MenuItem.ELEMENT>(
       html`
         <md-menu-item id=${id}><span>Test</span></md-menu-item>
       `

@@ -91,13 +91,13 @@
           }
 
           .resize {
-            background-color: var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+            background-color: transparent;
             cursor: col-resize;
             height: 100%;
             left: 0;
             position: absolute;
             top: 0;
-            width: $advanced-table-header-sticky-indent;
+            width: $advanced-table-resize-width;
             z-index: 1;
           }
         }
@@ -149,6 +149,15 @@
         .inner-cell {
           display: flex;
           white-space: nowrap;
+        }
+
+        md-button.row-collapsible::part(button) {
+          border-radius: calc(#{$advanced-table-main-indent} / 2);
+          height: $advanced-table-collapse-btn;
+          margin-right: calc(#{$advanced-table-main-indent} * 2);
+          max-width: $advanced-table-collapse-btn;
+          min-width: $advanced-table-collapse-btn;
+          padding: $advanced-table-main-indent;
         }
 
         span {

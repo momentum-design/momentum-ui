@@ -459,7 +459,6 @@ export namespace TableAdvanced {
       return html`
         <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width)} scope="col" class=${"col-index-" + col.index}>
           ${col.options.title}
-
           <!-- SORT  -->
           ${col.sorter
             ? html`
@@ -478,7 +477,6 @@ export namespace TableAdvanced {
                 </md-button>
               `
             : nothing}
-
           <!-- FILTER -->
           ${col.filter
             ? html`
@@ -487,7 +485,6 @@ export namespace TableAdvanced {
                       <md-icon class="filter-active" name="filter-adr_12"></md-icon>
                     `
                   : nothing}
-
                 <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
                   <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
                     <md-icon slot="icon" name="filter_16"></md-icon>
@@ -507,7 +504,6 @@ export namespace TableAdvanced {
                         `
                       )}
                     </select>
-
                     <input
                       type="text"
                       placeholder=${input!.placeholder}
@@ -524,7 +520,6 @@ export namespace TableAdvanced {
                 </md-menu-overlay>
               `
             : nothing}
-
           <!-- RESIZE  -->
           ${this.renderResize(col)}
         </th>
@@ -637,7 +632,6 @@ export namespace TableAdvanced {
           ${row.content.map((rowData, j) => {
             const col = this.COLS[j];
             let content: TemplateResult | string = rowData;
-
             const t = this.templates[row.idx + "" + j];
             if (t) {
               content = t.templateCb
@@ -653,7 +647,6 @@ export namespace TableAdvanced {
                 : html`
                     ${templateContent(t.template)}
                   `;
-
               if (t.insertIndex != -1) {
                 content = html`
                   ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${content}
@@ -661,16 +654,17 @@ export namespace TableAdvanced {
                 `;
               }
             }
-
             const cell = html`
               <div class="inner-cell">
                 ${col.isCollapsable
                   ? html`
                       ${row.collapse == "expanded" || row.collapse == "collapsed"
                         ? html`
-                            <button @click=${(e: Event) => this.collapseToggle(e, row.idx)}>
-                              ${row.collapse == "collapsed" ? "expand" : "collapse"}
-                            </button>
+                            <md-button class="row-collapsible" size="size-none" @click=${(e: Event) => this.collapseToggle(e, row.idx)} outline color="color-none">
+                              ${row.collapse == "collapsed"
+                                ? html`<md-icon slot="icon" name="plus_12"></md-icon>`
+                                : html`<md-icon slot="icon" name="minus_12"></md-icon>`}
+                            </md-button>
                           `
                         : nothing}
                       &nbsp;
@@ -681,7 +675,6 @@ export namespace TableAdvanced {
                     `}
               </div>
             `;
-
             return col.options.isHeader
               ? html`
                   <th scope="row">${cell}</th>
@@ -716,10 +709,8 @@ export namespace TableAdvanced {
                   </caption>
                 `
               : nothing}
-
             <!-- HEAD -->
             ${this.renderHead()}
-
             <!-- BODY -->
             ${this.renderBody()}
           </table>
@@ -813,3 +804,4 @@ declare global {
     "md-table-advanced": TableAdvanced.ELEMENT;
   }
 }
+

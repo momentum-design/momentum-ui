@@ -90,8 +90,8 @@
     }
 
     &--selected::part(button) {
-      background: var(--md-quaternary-bg-color, $md-gray-100);
-      color: var(--md-primary-text-color, $md-white);
+      background: var(--md-primary-text-color, $md-gray-100);
+      color: var(--md-secondary-bg-color, $md-white);
     }
 
     &--outside-month {

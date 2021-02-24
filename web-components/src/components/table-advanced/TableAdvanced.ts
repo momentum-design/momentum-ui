@@ -10,7 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import "@/components/button/Button";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { classMap } from "lit-html/directives/class-map";
@@ -21,6 +21,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
 import { debounce, Evt, evt } from "./src/helpers";
 import { TemplateCallback, templateCallback } from "./src/template-callback";
+import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -49,6 +50,14 @@ export namespace TableAdvanced {
       | {
           type: "multi-select";
           rows: Record<number, string[]>;
+        }
+      | {
+          type: "expand";
+          row: number;
+        }
+      | {
+          type: "collapse";
+          row: number;
         };
   };
 
@@ -195,7 +204,7 @@ export namespace TableAdvanced {
 
       // HACK
       const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
-      for (let i = 0; i < 60; i++) this.ROWS.push([rnd(9), rnd(4), rnd(2), "3", "4", "5", "6"]);
+      for (let i = 0; i < 6; i++) this.ROWS.push([rnd(200000), rnd(4), rnd(2), "3", "4", "5", "6"]);
 
       // TEMPLATES
       const templates = this.config.cellTemplates;
@@ -228,10 +237,13 @@ export namespace TableAdvanced {
       this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
     }
 
+    // --------------
+
     sort(col: Col, order?: SortOrder) {
       if (!col.sorter) return;
 
       this.clearSelection();
+      this.drops = [];
 
       this.COLS.forEach(c => {
         if (c.options.id == col.options.id) {
@@ -255,6 +267,7 @@ export namespace TableAdvanced {
       if (!col.filter) return;
 
       this.clearSelection();
+      this.drops = [];
 
       const input = col.filter.input.trim();
       const filter = col.filter.list[col.filter.selectedIndex];
@@ -321,8 +334,16 @@ export namespace TableAdvanced {
       e.stopPropagation();
       if (this.expandedRowIdx[row]) {
         delete this.expandedRowIdx[row];
+        this["md-table-advanced-change"].emit({
+          type: "collapse",
+          row
+        });
       } else {
         this.expandedRowIdx[row] = true;
+        this["md-table-advanced-change"].emit({
+          type: "expand",
+          row
+        });
       }
       this.clearSelection();
       this.requestUpdate();
@@ -447,9 +468,7 @@ export namespace TableAdvanced {
       `;
 
       return html`
-        <thead>
-          ${groups} ${heads}
-        </thead>
+        <thead>${groups} ${heads}</thead>
       `;
     }
 
@@ -539,7 +558,13 @@ export namespace TableAdvanced {
     }
 
     renderBody() {
-      let rows: Row[] = this.ROWS.map((content, idx) => ({ content, idx, collapse: "none" }));
+      let rows: Row[] = this.ROWS.map((content, idx) => ({
+        content,
+        idx,
+        idxDrag: idx,
+        collapse: "none",
+        isGhost: false
+      }));
 
       // filter
       const len = this.COLS.length;
@@ -609,18 +634,33 @@ export namespace TableAdvanced {
         });
       }
 
+      // drag drop
+      this.drops.forEach(({0: drag, 1: drop}) => {
+        rows.splice(drop, 0, rows.splice(drag, 1)[0]);
+      });
+
+      // drag realtime
+      rows.forEach((r, i) => (r.idxDrag = i));
+      if (this.drag != -1) {
+        rows[this.drag].isGhost = true;
+        if (this.drop != -1) {
+          rows.splice(this.drop, 0, rows.splice(this.drag, 1)[0]);
+        }
+      }
+
       return html`
         <tbody>
-          ${rows.map(row => this.renderRow(row))}
+          ${rows.map(row => this.renderRow(row, rows.length))}
         </tbody>
       `;
     }
 
-    renderRow(row: Row) {
+    renderRow(row: Row, rowsLen: number) {
       const isSelected = this.selected.hasOwnProperty(row.idx);
       const clazz = classMap({
         selected: isSelected,
-        selectable: this.isSelectable && !isSelected
+        selectable: this.isSelectable && !isSelected,
+        ghost: row.isGhost
       });
       return html`
         <tr
@@ -631,6 +671,8 @@ export namespace TableAdvanced {
         >
           ${row.content.map((rowData, j) => {
             const col = this.COLS[j];
+
+            // content
             let content: TemplateResult | string = rowData;
             const t = this.templates[row.idx + "" + j];
             if (t) {
@@ -654,27 +696,103 @@ export namespace TableAdvanced {
                 `;
               }
             }
+
+            // drag
+            const isDrag = this.config.rows?.isDraggable && row.collapse != "child";
+            const isDragArea = isDrag && this.drag != -1 && this.drag != row.idxDrag;
+            const isDragHandle = isDrag && j == 0;
             const cell = html`
-              <div class="inner-cell">
-                ${col.isCollapsable
+              <div
+                class="cell"
+                draggable="false"
+                @dragstart=${() => (this.drag = row.idxDrag)}
+                @dragend=${() => {
+                  this.drag = -1;
+                  this.drop = -1;
+                  if (this.dragElem) {
+                    this.dragElem.setAttribute("draggable", "false");
+                    this.dragElem = null;
+                  }
+                }}
+                @drop=${(e: DragEvent) => {
+                  e.stopPropagation();
+                  this.onDrop();
+                  return false;
+                }}
+                @dragover=${(e: any) => {
+                  e.preventDefault();
+                  return false;
+                }}
+              >
+                ${isDragArea
                   ? html`
-                      ${row.collapse == "expanded" || row.collapse == "collapsed"
-                        ? html`
-                            <md-button class="row-collapsible" size="size-none" @click=${(e: Event) => this.collapseToggle(e, row.idx)} outline color="color-none">
-                              ${row.collapse == "collapsed"
-                                ? html`<md-icon slot="icon" name="plus_12"></md-icon>`
-                                : html`<md-icon slot="icon" name="minus_12"></md-icon>`}
-                            </md-button>
-                          `
-                        : nothing}
-                      &nbsp;
-                      <span>${row.collapse == "child" ? nothing : content}</span>
+                      <div
+                        class="drag-area top"
+                        @dragenter=${() => {
+                          if (this.drag == 0) {
+                            const i = row.idxDrag - 1;
+                            this.drop = i >= 0 ? i : 0;
+                          } else {
+                            this.drop = row.idxDrag;
+                          }
+                        }}
+                      ></div>
+                      <div
+                        class="drag-area bottom"
+                        @dragenter=${() => {
+                          if (this.drag == 0) {
+                            this.drop = row.idxDrag;
+                          } else {
+                            const i = row.idxDrag + 1;
+                            this.drop = i < rowsLen ? i : rowsLen - 1;
+                          }
+                        }}
+                      ></div>
                     `
-                  : html`
-                      <span>${content}</span>
-                    `}
+                  : nothing}
+                ${isDragHandle
+                  ? html`
+                      <span
+                        class="drag-handle"
+                        @mousedown=${(e: any) => {
+                          this.dragElem = e.target.parentNode as HTMLElement;
+                          this.dragElem.setAttribute("draggable", "true");
+                        }}
+                      ></span>
+                    `
+                  : nothing}
+                <div class="inner-cell">
+                  ${col.isCollapsable
+                    ? html`
+                        ${row.collapse == "expanded" || row.collapse == "collapsed"
+                          ? html`
+                              <md-button
+                                class="row-collapsible"
+                                size="size-none"
+                                @click=${(e: Event) => this.collapseToggle(e, row.idx)}
+                                outline
+                                color="color-none"
+                              >
+                                ${row.collapse == "collapsed"
+                                  ? html`
+                                      <md-icon slot="icon" name="plus_12"></md-icon>
+                                    `
+                                  : html`
+                                      <md-icon slot="icon" name="minus_12"></md-icon>
+                                    `}
+                              </md-button>
+                            `
+                          : nothing}
+                        &nbsp;
+                        <span>${row.collapse == "child" ? nothing : content}</span>
+                      `
+                    : html`
+                        <span>${content}</span>
+                      `}
+                </div>
               </div>
             `;
+
             return col.options.isHeader
               ? html`
                   <th scope="row">${cell}</th>
@@ -685,6 +803,17 @@ export namespace TableAdvanced {
           })}
         </tr>
       `;
+    }
+
+    @internalProperty() private drag = -1;
+    @internalProperty() private drop = -1;
+    @internalProperty() private drops: [number, number][] = [];
+    private dragElem: HTMLElement | null = null;
+
+    private onDrop() {
+      if (this.drag != this.drop) {
+        this.drops.push([this.drag, this.drop]);
+      }
     }
 
     render() {
@@ -784,6 +913,8 @@ export namespace TableAdvanced {
   type Row = {
     content: string[];
     idx: number;
+    idxDrag: number;
+    isGhost: boolean;
     collapse: "none" | "collapsed" | "expanded" | "child";
   };
 
@@ -804,4 +935,3 @@ declare global {
     "md-table-advanced": TableAdvanced.ELEMENT;
   }
 }
-

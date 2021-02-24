@@ -131,7 +131,9 @@
 
     tbody {
       tr {
+        position: relative;
         td {
+          position: relative;
           border: $advanced-table-main-border;
           font-size: $font-size-base;
           height: $advanced-table-row-height;
@@ -140,15 +142,45 @@
         }
 
         th {
+          position: relative;
           background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
           font-size: $font-size-base;
           padding: 0 calc(#{$advanced-table-main-indent} * 4);
           text-align: left;
         }
 
+        // .cell {
+        //   position: relative;
+        // }
+
         .inner-cell {
           display: flex;
           white-space: nowrap;
+        }
+
+        .drag-handle {
+          display: block;
+          float: left;
+          width: 20px;
+          height: 20px;
+          background-color: gray;
+          cursor: grab;
+        }
+
+        .drag-area {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 50%;
+          opacity: 0.5;
+          &.top {
+            top: 0;
+            background-color: red;
+          }
+          &.bottom {
+            bottom: 0;
+            background-color: yellow;
+          }
         }
 
         md-button.row-collapsible::part(button) {
@@ -165,6 +197,10 @@
           overflow: hidden;
           text-overflow: ellipsis;
           flex: 1;
+        }
+
+        &.ghost {
+          opacity: 0.3;
         }
 
         &.selectable:hover {

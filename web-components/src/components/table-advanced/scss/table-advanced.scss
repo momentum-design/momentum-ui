@@ -11,255 +11,239 @@
 
 .md-table-advanced {
   width: 100%;
+}
 
-  table {
+table {
+  border: $advanced-table-main-border;
+  border-collapse: collapse;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+}
+
+thead {
+  th {
+    background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
     border: $advanced-table-main-border;
-    border-collapse: collapse;
-    max-width: 100%;
-    position: relative;
-    width: 100%;
+    color: var(--md-secondary-text-color);
+    font-family: $brand-font-regular;
+    font-size: $font-size-base;
+    height: $advanced-table-row-height;
+    padding: 0 calc(#{$advanced-table-main-indent} * 4);
+    text-align: left;
 
-    thead {
-      tr {
-        th {
-          background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-          border: $advanced-table-main-border;
-          color: var(--md-secondary-text-color);
-          font-family: $brand-font-regular;
-          font-size: $font-size-base;
-          height: $advanced-table-row-height;
-          padding: 0 calc(#{$advanced-table-main-indent} * 4);
-          text-align: left;
-          position: relative;
-
-          .filter {
-            display: inline-flex;
-            float: right;
-            margin-top: $advanced-table-main-indent;
-          }
-
-          .drag-area-col {
-            position: absolute;
-            background-color: black;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            opacity: 0.1;
-            &.over{
-              opacity: 0.2;
-            }
-          }
-
-          .filter-icon {
-            color: var(--md-secondary-text-color);
-            cursor: pointer;
-            padding: $advanced-table-main-indent;
-
-            &:hover {
-              background-color: var(
-                --table-advanced-filter-hover-bg-color,
-                $lm-table-advanced-filter-hover-bg-color-light
-              );
-            }
-
-            &:active {
-              background-color: var(
-                --table-advanced-filter-pressed-bg-color,
-                $lm-table-advanced-filter-pressed-bg-color-light
-              );
-            }
-          }
-
-          .filter-active {
-            display: inline-block;
-            height: $advanced-table-collapse-btn;
-            text-align: center;
-            vertical-align: bottom;
-            width: $advanced-table-collapse-btn;
-
-            &::part(icon) {
-              line-height: $advanced-table-filter-height;
-            }
-          }
-
-          .filter-menu {
-            background-color: var(--md-secondary-white-bg-color);
-            padding: calc(#{$advanced-table-main-indent} * 3);
-            select {
-              width: 100%;
-            }
-            input {
-              margin-top: $advanced-table-main-indent;
-              max-width: 100%;
-            }
-          }
-
-          // .sort {
-          //   bottom: 0;
-          //   cursor: pointer;
-          //   left: 0;
-          //   position: absolute;
-          //   right: 0;
-          //   top: 0;
-          //   z-index: -1;
-          // }
-
-          md-button.sort-icon {
-            &::part(button) {
-              height: $advanced-table-sort-icon;
-              padding: calc(#{$advanced-table-main-indent} / 2);
-              width: $advanced-table-sort-icon;
-            }
-
-            md-icon {
-              color: var(--md-secondary-text-color);
-            }
-          }
-
-          .resize {
-            background-color: transparent;
-            cursor: col-resize;
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: $advanced-table-resize-width;
-            z-index: 1;
-          }
-        }
-      }
-
-      md-menu-overlay::part(overlay) {
-        top: -$advanced-table-overlay-position;
-      }
+    .filter {
+      display: inline-flex;
+      float: right;
+      margin-top: $advanced-table-main-indent;
     }
 
-    &.sticky-header {
+    .resize {
+      background-color: transparent;
+      cursor: col-resize;
       height: 100%;
-      overflow: auto;
+      left: calc(-#{$advanced-table-resize-width} / 2);
+      position: absolute;
+      top: 0;
+      width: $advanced-table-resize-width;
+      z-index: 1;
+    }
+  }
 
-      thead {
-        background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-        tr {
-          th {
-            position: sticky;
-            top: -$advanced-table-header-sticky-indent;
-          }
+  md-menu-overlay::part(overlay) {
+    top: -$advanced-table-overlay-position;
+  }
+}
 
-          &:last-child {
-            th {
-              top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
-            }
-          }
-        }
+.sort-icon {
+  display: inline-block;
+  height: $advanced-table-sort-icon;
+  padding: calc(#{$advanced-table-main-indent} / 2);
+  width: $advanced-table-sort-icon;
+
+  md-icon {
+    color: var(--md-secondary-text-color);
+  }
+}
+
+.filter-icon {
+  color: var(--md-secondary-text-color);
+  cursor: pointer;
+  padding: $advanced-table-main-indent;
+
+  &:hover {
+    background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--table-advanced-filter-pressed-bg-color, $lm-table-advanced-filter-pressed-bg-color-light);
+  }
+}
+
+.filter-active {
+  display: inline-block;
+  height: $advanced-table-collapse-btn;
+  text-align: center;
+  vertical-align: bottom;
+  width: $advanced-table-collapse-btn;
+
+  &::part(icon) {
+    line-height: $advanced-table-filter-height;
+  }
+}
+
+.filter-menu {
+  background-color: var(--md-secondary-white-bg-color);
+  padding: calc(#{$advanced-table-main-indent} * 3);
+  position: relative;
+  z-index: 1;
+
+  select {
+    width: 100%;
+  }
+
+  input {
+    margin-top: $advanced-table-main-indent;
+    max-width: 100%;
+  }
+}
+
+table.sticky-header {
+  height: 100%;
+  overflow: auto;
+
+  thead {
+    background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+
+    th {
+      position: sticky;
+      top: -$advanced-table-header-sticky-indent;
+      z-index: 1;
+    }
+
+    &:last-child {
+      th {
+        top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
       }
     }
 
-    tbody {
-      tr {
+    &:first-child {
+      th {
+        top: -$advanced-table-header-sticky-indent;
+      }
+    }
+  }
+}
+
+tbody {
+  tr {
+    position: relative;
+
+    td {
+      border: $advanced-table-main-border;
+      font-size: $font-size-base;
+      height: $advanced-table-row-height;
+      max-width: 0;
+      padding: calc(#{$advanced-table-main-indent} * 1.5);
+      position: relative;
+    }
+
+    th {
+      background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+      font-size: $font-size-base;
+      padding: 0 calc(#{$advanced-table-main-indent} * 4);
+      position: relative;
+      text-align: left;
+    }
+
+    .inner-cell {
+      display: flex;
+      white-space: nowrap;
+
+      .warn-icon {
+        display: inline-block;
+        margin-left: $advanced-table-main-indent;
+        max-height: $advanced-table-collapse-btn;
         position: relative;
-        td {
-          position: relative;
-          border: $advanced-table-main-border;
-          font-size: $font-size-base;
-          height: $advanced-table-row-height;
-          max-width: 0;
-          padding-left: calc(#{$advanced-table-main-indent} * 4);
-        }
+        vertical-align: middle;
+        z-index: -1;
+      }
 
-        th {
-          position: relative;
-          background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-          font-size: $font-size-base;
-          padding: 0 calc(#{$advanced-table-main-indent} * 4);
-          text-align: left;
-        }
+      md-icon::part(icon) {
+        line-height: $advanced-table-collapse-btn;
+      }
 
-        // .cell {
-        //   position: relative;
-        // }
-
-        .inner-cell {
-          display: flex;
-          white-space: nowrap;
-
-          .warn-icon {
-            display: inline-block;
-            margin-left: $advanced-table-main-indent;
-            max-height: $advanced-table-collapse-btn;
-            position: relative;
-            vertical-align: middle;
-            z-index: -1;
-          }
-
-          md-icon::part(icon) {
-            line-height: $advanced-table-collapse-btn;
-          }
-        }
-
-        .drag-handle {
-          display: block;
-          float: left;
-          width: 20px;
-          height: 20px;
-          background-color: gray;
-          cursor: grab;
-        }
-
-        .drag-area {
-          position: absolute;
-          left: 0;
-          right: 0;
-          height: 50%;
-          opacity: 0.5;
-          &.top {
-            top: 0;
-            background-color: red;
-          }
-          &.bottom {
-            bottom: 0;
-            background-color: yellow;
-          }
-        }
-
-        md-button.row-collapsible::part(button) {
-          border-radius: calc(#{$advanced-table-main-indent} / 2);
-          height: $advanced-table-collapse-btn;
-          margin-right: calc(#{$advanced-table-main-indent} * 2);
-          max-width: $advanced-table-collapse-btn;
-          min-width: $advanced-table-collapse-btn;
-          padding: $advanced-table-main-indent;
-        }
-
-        span {
-          align-self: center;
-          display: inline-block;
-          flex: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          vertical-align: middle;
-        }
-
-        &.ghost {
-          opacity: 0.3;
-        }
-
-        &.selectable:hover {
-          background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
-
-          th {
-            background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
-          }
-        }
-
-        &.selected {
-          background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
-          th {
-            background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
-          }
-        }
+      span {
+        align-self: center;
+        display: inline-block;
+        flex: 1;
+        overflow: hidden;
+        padding: 0 $advanced-table-main-indent;
+        text-overflow: ellipsis;
+        vertical-align: middle;
       }
     }
+
+    .drag-handle {
+      cursor: grab;
+      display: block;
+      float: left;
+      margin-right: calc(#{$advanced-table-main-indent} * 1.5);
+    }
+
+    .drag-area {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 50%;
+      opacity: 0.3;
+      &.top {
+        top: 0;
+        background-color: $md-violet-50;
+      }
+      &.bottom {
+        bottom: 0;
+        background-color: transparent;
+      }
+    }
+
+    &.ghost {
+      opacity: 0.3;
+    }
+
+    &:hover {
+      background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+
+      td,
+      th {
+        background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+      }
+    }
+
+    &:active,
+    &.selected {
+      background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
+
+      td,
+      th {
+        background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
+      }
+    }
+  }
+}
+
+md-button.row-collapsible {
+  height: $advanced-table-collapse-btn;
+  margin-right: calc(#{$advanced-table-main-indent} * 1.5);
+  max-width: $advanced-table-collapse-btn;
+  min-width: $advanced-table-collapse-btn;
+
+  &::part(button) {
+    border-radius: calc(#{$advanced-table-main-indent} / 2);
+    padding: 0 $advanced-table-main-indent;
+  }
+
+  md-icon::part(icon) {
+    line-height: calc(#{$advanced-table-main-indent} * 4);
   }
 }

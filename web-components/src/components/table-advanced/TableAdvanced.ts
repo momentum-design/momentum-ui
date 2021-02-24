@@ -524,6 +524,10 @@ export namespace TableAdvanced {
 
     private renderCol(col: Col, rowspan?: number) {
       const input = col.filter?.list[col.filter.selectedIndex]?.input;
+      const sortClass = classMap({
+        ascending: col.sort == "ascending",
+        descending: col.sort == "descending"
+      });
 
       return html`
         <th
@@ -532,7 +536,6 @@ export namespace TableAdvanced {
           scope="col"
           class=${"col-index-" + col.index}
         >
-          <span>${col.options.title}</span>
 
           <!-- DRAG  -->
           ${this.renderColDrag(col)}
@@ -540,21 +543,18 @@ export namespace TableAdvanced {
           <!-- SORT  -->
           ${col.sorter
             ? html`
-                <md-button class="sort-icon" @click=${() => this.sort(col)} color="color-none" size="size-none">
-                  ${col.sort == "ascending"
-                    ? html`
-                        <md-icon slot="icon" name="arrow-filled-up_8"></md-icon>
-                      `
-                    : col.sort == "descending"
-                    ? html`
-                        <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
-                      `
-                    : html`
-                        <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
-                      `}
-                </md-button>
+                <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
+                ${col.sort == "ascending"
+                  ? html`
+                      <md-icon slot="icon" name="arrow-filled-up_8"></md-icon>
+                    `
+                  : col.sort == "descending"
+                  ? html`
+                      <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
+                    `
+                  : nothing}
               `
-            : nothing}
+            : html`<span>${col.options.title}</span>`}
 
           <!-- FILTER -->
           ${col.filter
@@ -568,7 +568,7 @@ export namespace TableAdvanced {
                   <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
                     <md-icon slot="icon" name="filter_16"></md-icon>
                   </md-button>
-                  <div class="filter-menu" style="padding:1.25rem; width: 100%;">
+                  <div class="filter-menu" style="width: 100%;">
                     <select
                       name="filter-type"
                       @change=${(e: any) => {
@@ -798,9 +798,10 @@ export namespace TableAdvanced {
             const isDrag = this.config.rows?.isDraggable && row.collapse != "child";
             const isDragArea = isDrag && this.dragRow != -1 && this.dragRow != row.idxDrag;
             const isDragHandle = isDrag && j == 0;
+
             const cellRenderResult = html`
-              <div
-                class="cell"
+              <div 
+                class="inner-cell"
                 draggable="false"
                 @dragstart=${() => {
                   if (this.isResizing || this.dragCol != -1) return;
@@ -823,8 +824,7 @@ export namespace TableAdvanced {
                 @dragover=${(e: any) => {
                   e.preventDefault();
                   return false;
-                }}
-              >
+                }}>
                 ${isDragArea
                   ? html`
                       <div
@@ -853,45 +853,43 @@ export namespace TableAdvanced {
                   : nothing}
                 ${isDragHandle
                   ? html`
-                      <span
+                      <md-icon 
                         class="drag-handle"
                         @mousedown=${(e: any) => {
                           if (this.isResizing || this.dragCol != -1) return;
                           this.dragRowElem = e.target.parentNode as HTMLElement;
                           this.dragRowElem.setAttribute("draggable", "true");
                         }}
-                      ></span>
+                        name="panel-control-dragger_16">
+                      </md-icon>
                     `
                   : nothing}
-                <div class="inner-cell">
-                  ${col.isCollapsable
-                    ? html`
-                        ${row.collapse == "expanded" || row.collapse == "collapsed"
-                          ? html`
-                              <md-button
-                                class="row-collapsible"
-                                size="size-none"
-                                @click=${(e: Event) => this.collapseToggle(e, row.idx)}
-                                outline
-                                color="color-none"
-                              >
-                                ${row.collapse == "collapsed"
-                                  ? html`
-                                      <md-icon slot="icon" name="plus_12"></md-icon>
-                                    `
-                                  : html`
-                                      <md-icon slot="icon" name="minus_12"></md-icon>
-                                    `}
-                              </md-button>
-                            `
-                          : nothing}
-                        &nbsp;
-                        <span>${row.collapse == "child" ? nothing : content}</span>
-                      `
-                    : html`
-                        <span>${content}</span>
-                      `}
-                </div>
+                ${col.isCollapsable
+                  ? html`
+                      ${row.collapse == "expanded" || row.collapse == "collapsed"
+                        ? html`
+                            <md-button
+                              class="row-collapsible"
+                              size="size-none"
+                              @click=${(e: Event) => this.collapseToggle(e, row.idx)}
+                              outline
+                              color="color-none"
+                            >
+                              ${row.collapse == "collapsed"
+                                ? html`
+                                    <md-icon slot="icon" name="plus_12"></md-icon>
+                                  `
+                                : html`
+                                    <md-icon slot="icon" name="minus_12"></md-icon>
+                                  `}
+                            </md-button>
+                          `
+                        : nothing}
+                      <span>${row.collapse == "child" ? nothing : content}</span>
+                    `
+                  : html`
+                      <span>${content}</span>
+                    `}
               </div>
             `;
 

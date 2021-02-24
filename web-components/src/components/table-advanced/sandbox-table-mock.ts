@@ -42,23 +42,23 @@ export namespace TableMock {
         isResizable: true,
         collapse: "c1",
         define: [
-          // {
-          //   groupName: "Group 1",
-          //   children: [
+          {
+            groupName: "Group 1",
+            children: [
               { id: "c1", title: "Col1f", sorter: "byString", filters: "forString" },
               { id: "c2", title: "Col2s" },
-              { id: "c3", title: "Col3" },
-          //   ]
-          // },
+              { id: "c3", title: "Col3" }
+            ]
+          },
           { id: "c4", title: "Col4h", isHeader: true },
           { id: "c5", title: "Col5s", sorter: "byString" },
-          // {
-          //   groupName: "group2",
-          //   children: [
+          {
+            groupName: "group2",
+            children: [
               { id: "c6", title: "col6f" },
               { id: "c7", title: "col7" }
-          //   ]
-          // }
+            ]
+          }
         ]
       }
     },

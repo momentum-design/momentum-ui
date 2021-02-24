@@ -60,6 +60,7 @@ thead {
   }
 
   .sortable {
+    cursor: pointer;
     position: relative;
 
     &:before,
@@ -72,7 +73,7 @@ thead {
       top: 50%;
       position: absolute;
       width: 0;
-      opacity: 0.5;
+      opacity: 0.3;
     }
 
     &:before {

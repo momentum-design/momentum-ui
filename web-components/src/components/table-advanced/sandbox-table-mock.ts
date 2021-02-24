@@ -30,16 +30,22 @@ export namespace TableMock {
 
   export const COMPLEX: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
     config: {
-      // isStickyHeader: true,
+      isStickyHeader: true,
 
-      // rows: {
-      //   isDraggable: true,
-      //   selectable: "single"
-      // },
+      rows: {
+        isDraggable: true,
+        selectable: "single"
+      },
+
+      default: {
+        col: {
+          sorter: "byString"
+        }
+      },
 
       cols: {
-        // isDraggable: true,
-        // isResizable: true,
+        isDraggable: true,
+        isResizable: true,
         collapse: "c1",
         define: [
           {

@@ -4,13 +4,10 @@ import { DateTime } from "luxon";
 import "./DateRangePicker";
 import { DateRangePicker } from "./DateRangePicker";
 
-const keyNavEvent = (key: KeyboardEvent["code"], date: DateTime): CustomEvent => {
-  return new CustomEvent("day-key-event", {
-    detail: {
-      date: date,
-      sourceEvent: new KeyboardEvent("keydown", { code: key })
-    }
-  });
+const fixtureFactory = async (): Promise<DateRangePicker.ELEMENT> => {
+  return await fixture(html`
+    <md-date-range-picker></md-date-range-picker>
+  `);
 };
 
 describe("DatePicker Component", () => {
@@ -18,34 +15,9 @@ describe("DatePicker Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DateRangePicker.ELEMENT = await fixture(
-      html`
-        <md-date-range-picker></md-date-range-picker>
-      `
-    );
+    const el: DateRangePicker.ELEMENT = await fixtureFactory();
     expect(el).not.toBeNull();
   });
-  test("should handle date selection update", async () => {
-    const firstDate = DateTime.fromObject({ month: 11, day: 15 });
-    const secondDate = firstDate.plus({ days: 2 });
-    const el: DateRangePicker.ELEMENT = await fixture(
-      html`
-        <md-date-range-picker .selectedDate=${firstDate}></md-date-range-picker>
-      `
-    );
-    const event = new CustomEvent("day-select", {
-      detail: {
-        date: secondDate
-      }
-    });
-    const selectFunc = jest.spyOn(el, "handleDateSelection");
-    const updateFunc = jest.spyOn(el, "updateValue");
-    el.handleSelect(event);
-    expect(selectFunc).toHaveBeenCalled();
-    expect(updateFunc).toHaveBeenCalled();
-    expect(el.selectedDate).toEqual(secondDate);
-  });
-
   test("should return a SQL formatted date string", async () => {
     const el: DateRangePicker.ELEMENT = await fixture(
       html`
@@ -57,13 +29,156 @@ describe("DatePicker Component", () => {
     expect(el.dateToSqlTranslate(date)).toEqual(formatted);
   });
   test("should format a SQL date string with slashes instead of dashes", async () => {
+    const el: DateRangePicker.ELEMENT = await fixtureFactory();
+    const date = "2021-12-12";
+    const formatted = "2021/12/12";
+    expect(el.sqlDateToSlashes(date)).toEqual(formatted);
+  });
+  test("should handle date selection and value update", async () => {
+    const firstDate = DateTime.fromObject({ month: 11, day: 15 });
+    const secondDate = firstDate.plus({ days: 5 });
     const el: DateRangePicker.ELEMENT = await fixture(
       html`
         <md-date-range-picker></md-date-range-picker>
       `
     );
-    const date = "2021-12-12";
-    const formatted = "2021/12/12";
-    expect(el.sqlDateToSlashes(date)).toEqual(formatted);
+    const firstSelect = new CustomEvent("day-select", {
+      detail: {
+        date: firstDate
+      }
+    });
+    const secondSelect = new CustomEvent("day-select", {
+      detail: {
+        date: secondDate
+      }
+    });
+    const initialValue = el.value;
+    const selectFunc = jest.spyOn(el, "handleDateSelection");
+    const updateFunc = jest.spyOn(el, "updateValue");
+    el.handleSelect(firstSelect);
+    expect(selectFunc).toHaveBeenCalled();
+    expect(updateFunc).toHaveBeenCalled();
+    el.handleSelect(secondSelect);
+    expect(selectFunc).toHaveBeenCalled();
+    expect(updateFunc).toHaveBeenCalled();
+    expect(el.value?.length).toBeGreaterThan(initialValue!.length);
+  });
+  test("should correctly assign start/end values if use enters in reverse order", async () => {
+    const firstDate = DateTime.fromObject({ month: 11, day: 15 });
+    const secondDate = firstDate.minus({ days: 5 });
+    const el: DateRangePicker.ELEMENT = await fixtureFactory();
+    const firstSelect = new CustomEvent("day-select", {
+      detail: {
+        date: firstDate
+      }
+    });
+    const secondSelect = new CustomEvent("day-select", {
+      detail: {
+        date: secondDate
+      }
+    });
+    el.handleSelect(firstSelect);
+    el.handleSelect(secondSelect);
+    expect(el.startDate).toEqual(secondDate.toSQLDate());
+    expect(el.endDate).toEqual(firstDate.toSQLDate());
+  });
+  describe("should handle range modification scenarios", () => {
+    const startDate = DateTime.fromObject({ month: 11, day: 15 });
+    const endDate = startDate.plus({ days: 5 });
+
+    test("select date outside of and before existing range", async () => {
+      const el = await fixtureFactory();
+      const firstSelect = new CustomEvent("day-select", {
+        detail: {
+          date: startDate
+        }
+      });
+      const secondSelect = new CustomEvent("day-select", {
+        detail: {
+          date: endDate
+        }
+      });
+      const sqlConvertFunc = jest.spyOn(el, "dateToSqlTranslate");
+      el.handleSelect(firstSelect);
+      el.handleSelect(secondSelect);
+      const additionalSelect = new CustomEvent("day-select", {
+        detail: {
+          date: startDate.minus({ days: 1 })
+        }
+      });
+      el.handleSelect(additionalSelect);
+      const dateObj = DateTime.fromSQL(el.startDate!);
+      expect(dateObj.ordinal).toBeLessThan(startDate.ordinal);
+      expect(sqlConvertFunc).toHaveBeenCalled();
+    });
+    test("select date outside of and after existing range", async () => {
+      const el = await fixtureFactory();
+      const firstSelect = new CustomEvent("day-select", {
+        detail: {
+          date: startDate
+        }
+      });
+      const secondSelect = new CustomEvent("day-select", {
+        detail: {
+          date: endDate
+        }
+      });
+      el.handleSelect(firstSelect);
+      el.handleSelect(secondSelect);
+      const additionalSelect = new CustomEvent("day-select", {
+        detail: {
+          date: endDate.plus({ days: 1 })
+        }
+      });
+      el.handleSelect(additionalSelect);
+      const dateObj = DateTime.fromSQL(el.endDate!);
+      expect(dateObj.ordinal).toBeGreaterThan(endDate.ordinal);
+    });
+    test("select date inside of and closer to start date", async () => {
+      const el = await fixtureFactory();
+      const firstSelect = new CustomEvent("day-select", {
+        detail: {
+          date: startDate
+        }
+      });
+      const secondSelect = new CustomEvent("day-select", {
+        detail: {
+          date: endDate
+        }
+      });
+      el.handleSelect(firstSelect);
+      el.handleSelect(secondSelect);
+      const additionalSelect = new CustomEvent("day-select", {
+        detail: {
+          date: startDate.plus({ days: 2 })
+        }
+      });
+      el.handleSelect(additionalSelect);
+      const dateObj = DateTime.fromSQL(el.startDate!);
+      expect(dateObj.ordinal).toBeGreaterThan(startDate.ordinal);
+    });
+    test("select date inside of and closer to end date", async () => {
+      const el = await fixtureFactory();
+      const firstSelect = new CustomEvent("day-select", {
+        detail: {
+          date: startDate
+        }
+      });
+      const secondSelect = new CustomEvent("day-select", {
+        detail: {
+          date: endDate
+        }
+      });
+      el.handleSelect(firstSelect);
+      el.handleSelect(secondSelect);
+      const additionalSelect = new CustomEvent("day-select", {
+        detail: {
+          date: endDate.minus({ days: 2 })
+        }
+      });
+      el.handleSelect(additionalSelect);
+      const dateObj = DateTime.fromSQL(el.endDate!);
+      expect(dateObj.ordinal).toBeLessThan(endDate.ordinal);
+    });
   });
 });

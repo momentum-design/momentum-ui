@@ -21,46 +21,11 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
 import { debounce, Evt, evt } from "./src/helpers";
 import { TemplateCallback, templateCallback } from "./src/template-callback";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
 export namespace TableAdvanced {
-  export type ChangeEvent = {
-    detail:
-      | {
-          type: "filter-on";
-          filter: Filter.Options;
-          input: string;
-        }
-      | {
-          type: "filter-off";
-          filter: Filter.Options;
-        }
-      | {
-          type: "sort";
-          order: SortOrder;
-        }
-      | {
-          type: "select";
-          index: number;
-          data: string[];
-        }
-      | {
-          type: "multi-select";
-          rows: Record<number, string[]>;
-        }
-      | {
-          type: "expand";
-          row: number;
-        }
-      | {
-          type: "collapse";
-          row: number;
-        };
-  };
-
   /**
    * @element md-table-advanced
    * @fires md-table-advanced-change
@@ -75,14 +40,22 @@ export namespace TableAdvanced {
     @internalProperty() private error = "";
 
     @internalProperty() private COLS: Col[] = [];
-    @internalProperty() private ROWS: string[][] = [];
+    @internalProperty() private ROWS: Cell[][] = [];
     private updCols = () => this.requestUpdate("COLS");
+    private updRows = () => this.requestUpdate("ROWS");
 
-    private templates: Record<string, CellTemplateProcessed> = {};
-    private selected: Record<number, string[]> = {};
-    private expandedRowIdx: Record<number, boolean> = {};
+    @internalProperty() private dragRow = -1;
+    @internalProperty() private dropRow = -1;
+    @internalProperty() private drops: [number, number][] = [];
+    private dragRowElem: HTMLElement | null = null;
 
+    @internalProperty() private dragCol = -1;
+    @internalProperty() private dropCol = -1;
+
+    private isResizing = false;
     private isSelectable = false;
+    private selected: Record<number, boolean> = {};
+    private expandedRowIdx: Record<number, boolean> = {};
 
     connectedCallback() {
       super.connectedCallback();
@@ -142,16 +115,17 @@ export namespace TableAdvanced {
           this.error = "PARSE ERROR:\n" + JSON.stringify(parse.errors, null, 2);
           return;
         } else {
-          this.ROWS = parse.data as string[][];
+          const data = parse.data as string[][];
+          this.ROWS = data.map(x => x.map(text => ({ text })));
         }
       } else if ("list2d" in this.data) {
-        this.ROWS = this.data.list2d;
+        this.ROWS = this.data.list2d.map(x => x.map(text => ({ text })));
       } else {
         while (this.data.list.length > lenNodes) {
-          this.ROWS.push(this.data.list.splice(0, lenNodes));
+          this.ROWS.push(this.data.list.splice(0, lenNodes).map(text => ({ text })));
         }
         if (this.data.list.length != 0) {
-          this.ROWS.push(this.data.list);
+          this.ROWS.push(this.data.list.map(text => ({ text })));
         }
       }
 
@@ -204,16 +178,25 @@ export namespace TableAdvanced {
 
       // HACK
       const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
-      for (let i = 0; i < 6; i++) this.ROWS.push([rnd(2), rnd(4), rnd(2), "3", "4", "5", "6"]);
+      for (let i = 0; i < 6; i++)
+        this.ROWS.push([
+          { text: rnd(2) },
+          { text: "1" },
+          { text: "2" },
+          { text: "3" },
+          { text: "4" },
+          { text: "5" },
+          { text: "6" }
+        ]);
 
       // TEMPLATES
       const templates = this.config.cellTemplates;
       const templatesKeys = Object.keys(templates || {});
       if (templates && templatesKeys.length) {
-        this.ROWS.forEach((r, iRow) => {
-          r.forEach((c, iCol) => {
+        this.ROWS.forEach((row, iRow) => {
+          row.forEach((cell, iCol) => {
             for (const k in templates) {
-              const idx = c.indexOf(k);
+              const idx = cell.text.indexOf(k);
               if (idx != -1) {
                 const t = templates[k];
                 const template = this.querySelector<HTMLTemplateElement>(`#${t.templateName}`);
@@ -221,12 +204,14 @@ export namespace TableAdvanced {
                   console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
                   continue;
                 }
-                this.templates[iRow + "" + iCol] = {
-                  template,
-                  templateCb: t.templateCb,
-                  insertIndex: t.content != "replace" ? idx : -1
+                this.ROWS[iRow][iCol] = {
+                  text: cell.text.replace(k, ""),
+                  template: {
+                    template,
+                    templateCb: t.templateCb,
+                    insertIndex: t.content != "replace" ? idx : -1
+                  }
                 };
-                this.ROWS[iRow][iCol] = c.replace(k, "");
                 break;
               }
             }
@@ -238,6 +223,39 @@ export namespace TableAdvanced {
     }
 
     // --------------
+
+    private onDropRow() {
+      if (this.dragRow != this.dropRow) {
+        this.drops.push([this.dragRow, this.dropRow]);
+      }
+    }
+
+    private onDropCol() {
+      if (this.dragCol != this.dropCol) {
+        const drag = this.COLS[this.dragCol];
+        const drop = this.COLS[this.dropCol];
+        const gDrag = drag.group;
+        const gDrop = drop.group;
+        const iDrag = drag.index;
+        const iDrop = drop.index;
+        drag.group = gDrop;
+        drop.group = gDrag;
+        drag.index = iDrop;
+        drop.index = iDrag;
+        this.COLS[this.dragCol] = drop;
+        this.COLS[this.dropCol] = drag;
+
+        this.ROWS.forEach(row => {
+          const rDrag = row[this.dragCol];
+          const rDrop = row[this.dropCol];
+          row[this.dragCol] = rDrop;
+          row[this.dropCol] = rDrag;
+        });
+
+        this.updCols();
+        this.updRows();
+      }
+    }
 
     sort(col: Col, order?: SortOrder) {
       if (!col.sorter) return;
@@ -297,27 +315,26 @@ export namespace TableAdvanced {
           if (isSelected) {
             delete this.selected[i];
           } else {
-            this.selected[i] = p.row.content;
+            this.selected[i] = true;
           }
         } else if (p.shiftKey) {
           // TODO - if required
         } else {
-          this.selected = { [i]: p.row.content };
+          this.selected = { [i]: true };
         }
 
         this["md-table-advanced-change"].emit({
           type: "multi-select",
-          rows: this.selected
+          rows: Object.keys(this.selected).map(k => +k)
         });
       } else {
         if (isSelected) {
           this.clearSelection();
         } else {
-          this.selected = { [i]: p.row.content };
+          this.selected = { [i]: true };
           this["md-table-advanced-change"].emit({
             type: "select",
-            index: i,
-            data: p.row.content
+            index: i
           });
         }
       }
@@ -325,12 +342,12 @@ export namespace TableAdvanced {
       this.requestUpdate("selected");
     }
 
-    clearSelection() {
+    private clearSelection() {
       this.selected = {};
       this.requestUpdate("selected");
     }
 
-    collapseToggle(e: Event, row: number) {
+    private collapseToggle(e: Event, row: number) {
       e.stopPropagation();
       if (this.expandedRowIdx[row]) {
         delete this.expandedRowIdx[row];
@@ -349,11 +366,14 @@ export namespace TableAdvanced {
       this.requestUpdate();
     }
 
-    // RESIZE
-
     private eX = 0; // https://stackoverflow.com/a/33672982
 
+    // RESIZE
     private onResize = (e: DragEvent, col: Col) => {
+      if (this.dragCol != -1 || this.dragRow != -1) return;
+
+      this.isResizing = true;
+
       const t = e.target as HTMLDivElement;
       e.dataTransfer?.setDragImage(IMG, 0, 0);
 
@@ -401,6 +421,7 @@ export namespace TableAdvanced {
       const dragOver = (evt: DragEvent) => (this.eX = evt.x);
 
       const dragEnd = () => {
+        this.isResizing = false;
         t.removeEventListener("drag", drag);
         t.removeEventListener("dragend", dragEnd);
         document.removeEventListener("dragover", dragOver);
@@ -414,7 +435,36 @@ export namespace TableAdvanced {
     // RENDER
     // ----------------------------------
 
-    renderHead() {
+    render() {
+      if (this.error)
+        return html`
+          <div>${this.error}</div>
+        `;
+
+      const { head } = this.config;
+      const clazz = classMap({
+        "sticky-header": !!this.config.isStickyHeader
+      });
+
+      return html`
+        <div class="md-table-advanced">
+          <slot></slot>
+          <table class=${clazz} summary=${ifDefined(head?.summary)}>
+            ${head?.caption
+              ? html`
+                  <caption>
+                    ${head?.caption}
+                  </caption>
+                `
+              : nothing}
+            ${this.renderHead()}
+            ${this.renderBody()}
+          </table>
+        </div>
+      `;
+    }
+
+    private renderHead() {
       let groups = nothing;
       let hasGroup = this.COLS.reduce((acc, col) => (acc = col.group ? true : acc), false);
       if (hasGroup) {
@@ -474,7 +524,7 @@ export namespace TableAdvanced {
       `;
     }
 
-    renderCol(col: Col, rowspan?: number) {
+    private renderCol(col: Col, rowspan?: number) {
       const input = col.filter?.list[col.filter.selectedIndex]?.input;
 
       return html`
@@ -485,6 +535,43 @@ export namespace TableAdvanced {
           class=${"col-index-" + col.index}
         >
           <span>${col.options.title}</span>
+
+          <!-- DRAG  -->
+          ${this.config.cols.isDraggable
+            ? html`
+                <div
+                  draggable="true"
+                  class=${classMap({
+                    "drag-area-col": true,
+                    over: this.dropCol == col.index && this.dropCol != this.dragCol
+                  })}
+                  @dragstart=${(e: any) => {
+                    if (this.isResizing || this.dragRow != -1) return;
+                    this.dragCol = col.index;
+                    e.dataTransfer.setDragImage(e.target.parentNode, 0, 0);
+                  }}
+                  @dragenter=${() => {
+                    if (this.isResizing || this.dragRow != -1) return;
+                    this.dropCol = col.index;
+                  }}
+                  @drop=${(e: DragEvent) => {
+                    if (this.isResizing || this.dragRow != -1) return;
+                    e.stopPropagation();
+                    this.onDropCol();
+                    return false;
+                  }}
+                  @dragend=${() => {
+                    this.dragCol = -1;
+                    this.dropCol = -1;
+                  }}
+                  @dragover=${(e: any) => {
+                    e.preventDefault();
+                    return false;
+                  }}
+                ></div>
+              `
+            : nothing}
+
           <!-- SORT  -->
           ${col.sorter
             ? html`
@@ -503,6 +590,7 @@ export namespace TableAdvanced {
                 </md-button>
               `
             : nothing}
+
           <!-- FILTER -->
           ${col.filter
             ? html`
@@ -546,13 +634,14 @@ export namespace TableAdvanced {
                 </md-menu-overlay>
               `
             : nothing}
+
           <!-- RESIZE  -->
           ${this.renderResize(col)}
         </th>
       `;
     }
 
-    renderResize(col: Col) {
+    private renderResize(col: Col) {
       return this.config.cols.isResizable
         ? html`
             ${col.index > 0
@@ -564,9 +653,9 @@ export namespace TableAdvanced {
         : nothing;
     }
 
-    renderBody() {
-      let rows: Row[] = this.ROWS.map((content, idx) => ({
-        content,
+    private renderBody() {
+      let rows: Row[] = this.ROWS.map((cells, idx) => ({
+        cells,
         idx,
         idxDrag: idx,
         collapse: "none",
@@ -581,7 +670,7 @@ export namespace TableAdvanced {
           const col = this.COLS[i];
           if (col.filter?.active) {
             const filter = col.filter.list[col.filter.selectedIndex];
-            const isVisible = filter.predicate(row.content[i], col.filter.input);
+            const isVisible = filter.predicate(row.cells[i].text, col.filter.input);
             if (!isVisible) return false;
           }
         }
@@ -591,7 +680,7 @@ export namespace TableAdvanced {
       // sort
       const sortCol = this.COLS.find(c => c.sort != "default");
       if (sortCol) {
-        const map = this.ROWS.map((r, i) => ({ v: r[sortCol.index], i }));
+        const map = this.ROWS.map((r, i) => ({ v: r[sortCol.index].text, i }));
         const dir = sortCol.sort == "ascending" ? 1 : -1;
 
         let rowsSorted: SortNode[] = [];
@@ -613,7 +702,7 @@ export namespace TableAdvanced {
         const colIdx = collapseCol.index;
 
         const groups = rows.reduce((acc, row) => {
-          const key = row.content[colIdx];
+          const key = row.cells[colIdx].text;
           const group = acc.find(x => x.key == key);
           if (group) {
             row.collapse = "child";
@@ -640,10 +729,10 @@ export namespace TableAdvanced {
 
       // drag realtime
       rows.forEach((r, i) => (r.idxDrag = i));
-      if (this.drag != -1) {
-        rows[this.drag].isGhost = true;
-        if (this.drop != -1) {
-          rows.splice(this.drop, 0, rows.splice(this.drag, 1)[0]);
+      if (this.dragRow != -1) {
+        rows[this.dragRow].isGhost = true;
+        if (this.dropRow != -1) {
+          rows.splice(this.dropRow, 0, rows.splice(this.dragRow, 1)[0]);
         }
       }
 
@@ -660,7 +749,7 @@ export namespace TableAdvanced {
       `;
     }
 
-    renderRow(row: Row, rowsLen: number) {
+    private renderRow(row: Row, rowsLen: number) {
       const isSelected = this.selected.hasOwnProperty(row.idx);
       const clazz = classMap({
         selected: isSelected,
@@ -675,19 +764,19 @@ export namespace TableAdvanced {
             if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });
           }}
         >
-          ${row.content.map((rowData, j) => {
+          ${row.cells.map((cell, j) => {
             const col = this.COLS[j];
 
             // content
-            let content: TemplateResult | string = rowData;
-            const t = this.templates[row.idx + "" + j];
+            let content: TemplateResult | string = cell.text;
+            const t = cell.template;
             if (t) {
               content = t.templateCb
                 ? html`
                     ${templateCallback({
                       cb: t.templateCb,
                       template: t.template,
-                      value: rowData,
+                      value: cell.text,
                       iCol: row.idx,
                       iRow: j
                     })}
@@ -697,32 +786,36 @@ export namespace TableAdvanced {
                   `;
               if (t.insertIndex != -1) {
                 content = html`
-                  ${t.insertIndex > 0 ? rowData.substring(0, t.insertIndex) : nothing} ${content}
-                  ${t.insertIndex < rowData.length - 1 ? rowData.substring(t.insertIndex) : nothing}
+                  ${t.insertIndex > 0 ? cell.text.substring(0, t.insertIndex) : nothing} ${content}
+                  ${t.insertIndex < cell.text.length - 1 ? cell.text.substring(t.insertIndex) : nothing}
                 `;
               }
             }
 
             // drag
             const isDrag = this.config.rows?.isDraggable && row.collapse != "child";
-            const isDragArea = isDrag && this.drag != -1 && this.drag != row.idxDrag;
+            const isDragArea = isDrag && this.dragRow != -1 && this.dragRow != row.idxDrag;
             const isDragHandle = isDrag && j == 0;
-            const cell = html`
+            const cellRenderResult = html`
               <div
                 class="cell"
                 draggable="false"
-                @dragstart=${() => (this.drag = row.idxDrag)}
+                @dragstart=${() => {
+                  if (this.isResizing || this.dragCol != -1) return;
+                  this.dragRow = row.idxDrag;
+                }}
                 @dragend=${() => {
-                  this.drag = -1;
-                  this.drop = -1;
-                  if (this.dragElem) {
-                    this.dragElem.setAttribute("draggable", "false");
-                    this.dragElem = null;
+                  this.dragRow = -1;
+                  this.dropRow = -1;
+                  if (this.dragRowElem) {
+                    this.dragRowElem.setAttribute("draggable", "false");
+                    this.dragRowElem = null;
                   }
                 }}
                 @drop=${(e: DragEvent) => {
+                  if (this.isResizing || this.dragCol != -1) return;
                   e.stopPropagation();
-                  this.onDrop();
+                  this.onDropRow();
                   return false;
                 }}
                 @dragover=${(e: any) => {
@@ -735,22 +828,22 @@ export namespace TableAdvanced {
                       <div
                         class="drag-area top"
                         @dragenter=${() => {
-                          if (this.drag == 0) {
+                          if (this.dragRow == 0) {
                             const i = row.idxDrag - 1;
-                            this.drop = i >= 0 ? i : 0;
+                            this.dropRow = i >= 0 ? i : 0;
                           } else {
-                            this.drop = row.idxDrag;
+                            this.dropRow = row.idxDrag;
                           }
                         }}
                       ></div>
                       <div
                         class="drag-area bottom"
                         @dragenter=${() => {
-                          if (this.drag == 0) {
-                            this.drop = row.idxDrag;
+                          if (this.dragRow == 0) {
+                            this.dropRow = row.idxDrag;
                           } else {
                             const i = row.idxDrag + 1;
-                            this.drop = i < rowsLen ? i : rowsLen - 1;
+                            this.dropRow = i < rowsLen ? i : rowsLen - 1;
                           }
                         }}
                       ></div>
@@ -761,8 +854,9 @@ export namespace TableAdvanced {
                       <span
                         class="drag-handle"
                         @mousedown=${(e: any) => {
-                          this.dragElem = e.target.parentNode as HTMLElement;
-                          this.dragElem.setAttribute("draggable", "true");
+                          if (this.isResizing || this.dragCol != -1) return;
+                          this.dragRowElem = e.target.parentNode as HTMLElement;
+                          this.dragRowElem.setAttribute("draggable", "true");
                         }}
                       ></span>
                     `
@@ -801,55 +895,13 @@ export namespace TableAdvanced {
 
             return col.options.isHeader
               ? html`
-                  <th scope="row">${cell}</th>
+                  <th scope="row">${cellRenderResult}</th>
                 `
               : html`
-                  <td>${cell}</td>
+                  <td>${cellRenderResult}</td>
                 `;
           })}
         </tr>
-      `;
-    }
-
-    @internalProperty() private drag = -1;
-    @internalProperty() private drop = -1;
-    @internalProperty() private drops: [number, number][] = [];
-    private dragElem: HTMLElement | null = null;
-
-    private onDrop() {
-      if (this.drag != this.drop) {
-        this.drops.push([this.drag, this.drop]);
-      }
-    }
-
-    render() {
-      if (this.error)
-        return html`
-          <div>${this.error}</div>
-        `;
-
-      const { head } = this.config;
-      const clazz = classMap({
-        "sticky-header": !!this.config.isStickyHeader
-      });
-
-      return html`
-        <div class="md-table-advanced">
-          <slot></slot>
-          <table class=${clazz} summary=${ifDefined(head?.summary)}>
-            ${head?.caption
-              ? html`
-                  <caption>
-                    ${head?.caption}
-                  </caption>
-                `
-              : nothing}
-            <!-- HEAD -->
-            ${this.renderHead()}
-            <!-- BODY -->
-            ${this.renderBody()}
-          </table>
-        </div>
       `;
     }
 
@@ -915,10 +967,11 @@ export namespace TableAdvanced {
   type SortComparator = (a: string, b: string, direction: 1 | -1) => number; // -number, 0, number
   type SortNode = { v: string; i: number };
 
+  type Cell = { text: string; template?: CellTemplateProcessed };
   type CellTemplate = { templateName: string; templateCb?: TemplateCallback; content?: "insert" | "replace" };
   type CellTemplateProcessed = { insertIndex: number; template: HTMLTemplateElement; templateCb?: TemplateCallback };
   type Row = {
-    content: string[];
+    cells: Cell[];
     idx: number;
     idxDrag: number;
     isGhost: boolean;
@@ -935,6 +988,17 @@ export namespace TableAdvanced {
     filter?: { list: Filter.Options[]; selectedIndex: number; input: string; active: boolean; menuVisible: boolean };
     options: ColOptions;
     isCollapsable: boolean;
+  };
+
+  export type ChangeEvent = {
+    detail:
+      | { type: "filter-on"; filter: Filter.Options; input: string }
+      | { type: "filter-off"; filter: Filter.Options }
+      | { type: "sort"; order: SortOrder }
+      | { type: "select"; index: number }
+      | { type: "multi-select"; rows: number[] }
+      | { type: "expand"; row: number }
+      | { type: "collapse"; row: number };
   };
 }
 

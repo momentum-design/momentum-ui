@@ -30,11 +30,25 @@
           height: $advanced-table-row-height;
           padding: 0 calc(#{$advanced-table-main-indent} * 4);
           text-align: left;
+          position: relative;
 
           .filter {
             display: inline-flex;
             float: right;
             margin-top: $advanced-table-main-indent;
+          }
+
+          .drag-area-col {
+            position: absolute;
+            background-color: black;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            opacity: 0;
+            &.over{
+              opacity: 0.1;
+            }
           }
 
           .filter-icon {

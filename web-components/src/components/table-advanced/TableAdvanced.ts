@@ -544,15 +544,6 @@ export namespace TableAdvanced {
           ${col.sorter
             ? html`
                 <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
-                ${col.sort == "ascending"
-                  ? html`
-                      <md-icon slot="icon" name="arrow-filled-up_8"></md-icon>
-                    `
-                  : col.sort == "descending"
-                  ? html`
-                      <md-icon slot="icon" name="arrow-filled-down_8"></md-icon>
-                    `
-                  : nothing}
               `
             : html`<span>${col.options.title}</span>`}
 

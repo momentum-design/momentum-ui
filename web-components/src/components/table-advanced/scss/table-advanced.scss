@@ -32,6 +32,11 @@ thead {
     padding: 0 calc(#{$advanced-table-main-indent} * 4);
     text-align: left;
 
+    & > span {
+      display: inline-block;
+      padding-right: calc(#{$advanced-table-main-indent} * 4);
+    }
+
     .filter {
       display: inline-flex;
       float: right;
@@ -53,16 +58,44 @@ thead {
   md-menu-overlay::part(overlay) {
     top: -$advanced-table-overlay-position;
   }
-}
 
-.sort-icon {
-  display: inline-block;
-  height: $advanced-table-sort-icon;
-  padding: calc(#{$advanced-table-main-indent} / 2);
-  width: $advanced-table-sort-icon;
+  .sortable {
+    position: relative;
 
-  md-icon {
-    color: var(--md-secondary-text-color);
+    &:before,
+    &:after {
+      border: $advanced-table-main-indent solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      right: $advanced-table-main-indent;
+      top: 50%;
+      position: absolute;
+      width: 0;
+      opacity: 0.5;
+    }
+
+    &:before {
+      border-bottom-color: var(--md-secondary-text-color);
+      margin-top: -9px;
+    }
+
+    &:after {
+      border-top-color: var(--md-secondary-text-color);
+      margin-top: 1px;
+    }
+
+    &.ascending {
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    &.descending {
+      &:before {
+        opacity: 1;
+      }
+    }
   }
 }
 

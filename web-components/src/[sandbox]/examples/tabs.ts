@@ -6,7 +6,7 @@ import { html } from "lit-element";
 
 export const tabsTemplate = html`
   <div style="max-width: 600px;">
-    <h3> Horizontal md-tabs with More button</h3>
+    <h3>Horizontal md-tabs with More button</h3>
     <md-tabs selected="0" justified>
       <md-tab slot="tab" label="History">
         <md-icon name="recents_16"></md-icon>
@@ -66,7 +66,7 @@ export const tabsTemplate = html`
       </md-tab-panel>
     </md-tabs>
     <br />
-    
+
     <div style="max-width: 400px;">
       <h3>md-tabs justified</h3>
       <md-tabs justified>
@@ -100,7 +100,7 @@ export const tabsTemplate = html`
     <button id="confirm">Save</button>
   </div>
   <div style="height: 500px;">
-  <h3>md-tabs vertical</h3>
+    <h3>md-tabs vertical</h3>
     <md-tabs direction="vertical">
       <md-tab slot="tab">
         <md-icon name="recents_16"></md-icon>

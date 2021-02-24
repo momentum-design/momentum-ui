@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import "@/components/editable-textfield/EditableTextfield";
+import "@/components/button/Button";
 import { Input } from "@/components/input/Input";
 import { ValidationRegex } from "@/utils/validations.ts";
 import { customElement, html, LitElement, property } from "lit-element";
@@ -17,8 +18,6 @@ const warningMessageArr: Input.Message = {
   message: "This is where the message would be.",
   type: "warning"
 };
-
-
 
 @customElement("editable-field-template-sandbox")
 export class EditableFieldTemplateSandbox extends LitElement {

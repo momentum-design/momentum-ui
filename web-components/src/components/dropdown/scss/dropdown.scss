@@ -1,0 +1,152 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+ 
+:host(:focus) {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+:host {
+  .md-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &-select {
+      display: none;
+    }
+
+    &-label {
+      @include flex;
+      background-color: var(--md-primary-bg-color);
+      border: $dropdown-border;
+      border-radius: $dropdown-label-radius;
+      min-height: $dropdown-min-height;
+      padding: $dropdown-label-padding;
+
+      &--text {
+        @include flex($jc: flex-start);
+        @include text-dots;
+        color: var(--md-secondary-text-color);
+        line-height: $dropdown-min-height;
+        outline: none;
+        width: rem-calc(100%);
+        flex: 1 0 auto;
+      }
+
+      &--icon {
+        @include arrow-transition;
+        display: inline-block;
+
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        height: $dropdown-icon-height;
+        margin: 0;
+        margin-left: calc(#{$dropdown-main-indent} * 3);
+        outline: none;
+        padding: 0;
+        padding-top: calc(#{$dropdown-main-indent} / 2);
+        position: relative;
+        vertical-align: bottom;
+
+        md-icon {
+          color: var(--md-primary-text-color, $md-gray-05);
+        }
+      }
+
+      &:hover {
+        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+      }
+
+      &:active {
+        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+      }
+    }
+
+    &-list {
+      @include list-reset;
+      display: none;
+      background-color: var(--md-primary-bg-color);
+      border-radius: $dropdown-list-radius;
+      box-shadow: $dropdown-list-shadow;
+      left: 0;
+      overflow: auto;
+      overflow-x: hidden;
+      position: absolute;
+      top: calc(100% + #{$dropdown-main-indent});
+      width: 100%;
+      z-index: 1;
+    }
+
+    &-option {
+      @include flex;
+      color: var(--md-primary-text-color, $md-gray-05);
+      padding: $dropdown-option-padding;
+
+      .select-label {
+        @include text-dots;
+        cursor: default;
+        width: calc(100% - #{$dropdown-option-select-margin});
+        display: block;
+      }
+
+      &:hover {
+        background-color: var(--dropdown-list-item-bg-color-hover, $lm-dropdown-list-item-bg-color-hover-light);
+      }
+
+      &[focused] {
+        background-color: var(--dropdown-list-item-bg-color-focus, $lm-dropdown-list-item-bg-color-focus-light);
+      }
+    }
+
+    &__expanded {
+      .md-dropdown-list {
+        display: block;
+      }
+
+      .md-dropdown-label {
+        &--icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &--pill {
+      .md-dropdown-label {
+        border-radius: 18px;
+      }
+    }
+  }
+}
+
+:host([focus-visible]) {
+  .md-dropdown {
+    .md-dropdown-label {
+      border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+      box-shadow: none;
+    }
+  }
+}
+
+:host([disabled]) {
+  .md-dropdown {
+    .md-dropdown-label {
+      background-color: var(--md-tertiary-bg-color);
+
+      &:hover, &:active {
+        background-color: var(--md-tertiary-bg-color);
+        pointer-events: none;
+
+        > md-icon {
+          opacity: $dropdown-disabled-opacity;
+        }
+      }
+    }
+  }
+}

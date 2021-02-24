@@ -19,8 +19,7 @@ import { nothing, TemplateResult } from "lit-html";
 import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
-import { debounce, Evt, evt } from "./src/helpers";
-import { TemplateCallback, templateCallback } from "./src/template-callback";
+import { debounce, Evt, evt, TemplateCallback, templateCallback } from "./src/decorators";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -457,8 +456,7 @@ export namespace TableAdvanced {
                   </caption>
                 `
               : nothing}
-            ${this.renderHead()}
-            ${this.renderBody()}
+            ${this.renderHead()} ${this.renderBody()}
           </table>
         </div>
       `;
@@ -491,7 +489,7 @@ export namespace TableAdvanced {
                   gName = col.group.name;
                   return html`
                     <th colspan=${col.group.length} scope="colgroup">
-                      ${col.group.name} ${this.renderResize(col)}
+                      ${col.group.name} ${this.renderColResize(col)}
                     </th>
                   `;
                 }
@@ -537,40 +535,7 @@ export namespace TableAdvanced {
           <span>${col.options.title}</span>
 
           <!-- DRAG  -->
-          ${this.config.cols.isDraggable
-            ? html`
-                <div
-                  draggable="true"
-                  class=${classMap({
-                    "drag-area-col": true,
-                    over: this.dropCol == col.index && this.dropCol != this.dragCol
-                  })}
-                  @dragstart=${(e: any) => {
-                    if (this.isResizing || this.dragRow != -1) return;
-                    this.dragCol = col.index;
-                    e.dataTransfer.setDragImage(e.target.parentNode, 0, 0);
-                  }}
-                  @dragenter=${() => {
-                    if (this.isResizing || this.dragRow != -1) return;
-                    this.dropCol = col.index;
-                  }}
-                  @drop=${(e: DragEvent) => {
-                    if (this.isResizing || this.dragRow != -1) return;
-                    e.stopPropagation();
-                    this.onDropCol();
-                    return false;
-                  }}
-                  @dragend=${() => {
-                    this.dragCol = -1;
-                    this.dropCol = -1;
-                  }}
-                  @dragover=${(e: any) => {
-                    e.preventDefault();
-                    return false;
-                  }}
-                ></div>
-              `
-            : nothing}
+          ${this.renderColDrag(col)}
 
           <!-- SORT  -->
           ${col.sorter
@@ -636,12 +601,49 @@ export namespace TableAdvanced {
             : nothing}
 
           <!-- RESIZE  -->
-          ${this.renderResize(col)}
+          ${this.renderColResize(col)}
         </th>
       `;
     }
 
-    private renderResize(col: Col) {
+    private renderColDrag(col: Col) {
+      return this.config.cols.isDraggable
+        ? html`
+            <div
+              draggable="true"
+              class=${classMap({
+                "drag-area-col": true,
+                over: this.dropCol == col.index && this.dropCol != this.dragCol
+              })}
+              @dragstart=${(e: any) => {
+                if (this.isResizing || this.dragRow != -1) return;
+                this.dragCol = col.index;
+                e.dataTransfer.setDragImage(e.target.parentNode, 0, 0);
+              }}
+              @dragenter=${() => {
+                if (this.isResizing || this.dragRow != -1) return;
+                this.dropCol = col.index;
+              }}
+              @drop=${(e: DragEvent) => {
+                if (this.isResizing || this.dragRow != -1) return;
+                e.stopPropagation();
+                this.onDropCol();
+                return false;
+              }}
+              @dragend=${() => {
+                this.dragCol = -1;
+                this.dropCol = -1;
+              }}
+              @dragover=${(e: any) => {
+                e.preventDefault();
+                return false;
+              }}
+            ></div>
+          `
+        : nothing;
+    }
+
+    private renderColResize(col: Col) {
       return this.config.cols.isResizable
         ? html`
             ${col.index > 0

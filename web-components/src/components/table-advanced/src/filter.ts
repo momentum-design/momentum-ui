@@ -1,4 +1,3 @@
-
 export namespace Filter {
   export type Options = {
     label: string;
@@ -58,7 +57,7 @@ export namespace Filter {
     greaterThan: {
       label: "Greater than",
       input,
-      predicate:  (x, v) => x > v
+      predicate: (x, v) => x > v
     } as Options,
     greaterThanOrEquals: {
       label: "Greater than or equals",

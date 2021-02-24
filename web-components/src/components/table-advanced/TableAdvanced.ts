@@ -204,7 +204,7 @@ export namespace TableAdvanced {
 
       // HACK
       const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
-      for (let i = 0; i < 6; i++) this.ROWS.push([rnd(200000), rnd(4), rnd(2), "3", "4", "5", "6"]);
+      for (let i = 0; i < 6; i++) this.ROWS.push([rnd(2), rnd(4), rnd(2), "3", "4", "5", "6"]);
 
       // TEMPLATES
       const templates = this.config.cellTemplates;
@@ -468,7 +468,9 @@ export namespace TableAdvanced {
       `;
 
       return html`
-        <thead>${groups} ${heads}</thead>
+        <thead>
+          ${groups} ${heads}
+        </thead>
       `;
     }
 
@@ -476,7 +478,12 @@ export namespace TableAdvanced {
       const input = col.filter?.list[col.filter.selectedIndex]?.input;
 
       return html`
-        <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width ? col.width : col.options.width)} scope="col" class=${"col-index-" + col.index}>
+        <th
+          rowspan=${ifDefined(rowspan)}
+          width=${ifDefined(col.width ? col.width : col.options.width)}
+          scope="col"
+          class=${"col-index-" + col.index}
+        >
           <span>${col.options.title}</span>
           <!-- SORT  -->
           ${col.sorter
@@ -563,7 +570,8 @@ export namespace TableAdvanced {
         idx,
         idxDrag: idx,
         collapse: "none",
-        isGhost: false
+        isGhost: false,
+        children: []
       }));
 
       // filter
@@ -608,6 +616,7 @@ export namespace TableAdvanced {
           const key = row.content[colIdx];
           const group = acc.find(x => x.key == key);
           if (group) {
+            row.collapse = "child";
             group.children.push(row);
           } else {
             acc.push({ key, root: row, children: [] });
@@ -617,25 +626,15 @@ export namespace TableAdvanced {
 
         rows = [];
         groups.forEach(g => {
-          if (g.children.length == 0) {
-            rows.push(g.root);
-          } else {
-            rows.push(g.root);
-            if (this.expandedRowIdx[g.root.idx]) {
-              g.root.collapse = "expanded";
-              g.children.forEach(c => {
-                c.collapse = "child";
-                rows.push(c);
-              });
-            } else {
-              g.root.collapse = "collapsed";
-            }
-          }
+          rows.push(g.root);
+          g.root.collapse =
+            g.children.length == 0 ? "none" : this.expandedRowIdx[g.root.idx] ? "expanded" : "collapsed";
+          g.root.children = g.children;
         });
       }
 
       // drag drop
-      this.drops.forEach(({0: drag, 1: drop}) => {
+      this.drops.forEach(({ 0: drag, 1: drop }) => {
         rows.splice(drop, 0, rows.splice(drag, 1)[0]);
       });
 
@@ -650,7 +649,13 @@ export namespace TableAdvanced {
 
       return html`
         <tbody>
-          ${rows.map(row => this.renderRow(row, rows.length))}
+          ${rows.map(row => {
+            const len = rows.length;
+            const isRenderChild = row.children.length > 0 && row.collapse == "expanded" && !row.isGhost;
+            return html`
+              ${this.renderRow(row, len)} ${isRenderChild ? row.children.map(c => this.renderRow(c, len)) : nothing}
+            `;
+          })}
         </tbody>
       `;
     }
@@ -918,6 +923,7 @@ export namespace TableAdvanced {
     idxDrag: number;
     isGhost: boolean;
     collapse: "none" | "collapsed" | "expanded" | "child";
+    children: Row[];
   };
 
   type Col = {

@@ -70,4 +70,39 @@ export namespace TableMock {
       ]
     }
   };
+
+  export const ShortkeyTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
+    config: {
+      isStickyHeader: true,
+
+      rows: {
+        isDraggable: true,
+        selectable: "multiple"
+      },
+
+      cols: {
+        isResizable: true,
+        define: [
+          { id: "c1", title: "Group", sorter: "byString", width: "30%", filters: "forString" },
+          { id: "c2", title: "Action", sorter: "byString", width: "40%" },
+          { id: "c3", title: "Shortcut Key", width: "30%", filters: "forString" }
+        ]
+      }
+    },
+    data: {
+      list2d: [
+        ["Active Task List", "Switch between tasks", "Ctrl + Alt + T"],
+        ["Active Task List", "Expand and collapse task list", "Ctrl + Alt + C _info_"],
+        ["Agent State", "Available for all channels including call chat email and social channel", "Ctrl + Alt + R"],
+        ["Active Agent State List", "Idle for all channels", "Ctrl + Alt + N"],
+        ["Application", "Switch between popovers", "Ctrl + Alt + E"],
+        ["Application", "Maximize and minimize popover view maximize and minimize", "Ctrl + Alt + Q _warn_"],
+        ["Call Handling", "Open the list of chat templates", "Ctrl + Alt + A"],
+        ["Call Handling", "Attach a file to the chat", "Ctrl + Alt + S _error_"],
+        ["Edit CAD Variables", "Save edited call variable values", "Ctrl + Alt + O"],
+        ["Edit CAD Variables", "Revert edited call variable values", "Ctrl + Alt + N _warn_"],
+        ["Email Handling", "Send email", "Ctrl + Alt + S"]
+      ]
+    }
+  };
 }

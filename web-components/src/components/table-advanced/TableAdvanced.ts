@@ -194,8 +194,8 @@ export namespace TableAdvanced {
       }
 
       // HACK
-      const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
-      for (let i = 0; i < 60; i++) this.ROWS.push([rnd(9), rnd(4), rnd(2), "3", "4", "5", "6"]);
+      // const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
+      // for (let i = 0; i < 60; i++) this.ROWS.push([rnd(9), rnd(4), rnd(2), "3", "4", "5", "6"]);
 
       // TEMPLATES
       const templates = this.config.cellTemplates;
@@ -457,8 +457,8 @@ export namespace TableAdvanced {
       const input = col.filter?.list[col.filter.selectedIndex]?.input;
 
       return html`
-        <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width)} scope="col" class=${"col-index-" + col.index}>
-          ${col.options.title}
+        <th rowspan=${ifDefined(rowspan)} width=${ifDefined(col.width ? col.width : col.options.width)} scope="col" class=${"col-index-" + col.index}>
+          <span>${col.options.title}</span>
           <!-- SORT  -->
           ${col.sorter
             ? html`
@@ -482,7 +482,7 @@ export namespace TableAdvanced {
             ? html`
                 ${col.filter.active
                   ? html`
-                      <md-icon class="filter-active" name="filter-adr_12"></md-icon>
+                      <md-icon class="filter-active" name="filter-adr_14"></md-icon>
                     `
                   : nothing}
                 <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
@@ -622,6 +622,7 @@ export namespace TableAdvanced {
         selected: isSelected,
         selectable: this.isSelectable && !isSelected
       });
+
       return html`
         <tr
           class=${clazz}
@@ -769,6 +770,7 @@ export namespace TableAdvanced {
   type ColOptions = {
     id: string;
     title: string;
+    width?: string;
     sorter?: "byString" | "byNumber" | SortComparator;
     filters?: "forString" | "forNumber" | Filter.Options[];
     isHeader?: boolean;

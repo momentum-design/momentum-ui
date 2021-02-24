@@ -1,38 +1,37 @@
 import "@/components/table-advanced/TableAdvanced";
-import { customElement, html, LitElement } from "lit-element";
+import { customElement, html, internalProperty, LitElement } from "lit-element";
 import { TableMock } from "@/components/table-advanced/sandbox-table-mock";
 
 @customElement("default-table-advanced-sandbox")
 export class DefaultTableAdvanced extends LitElement {
-  render() {
-    const conf = TableMock.COMPLEX.config;
+  @internalProperty() litProp = "$";
 
+  render() {
+    const conf = TableMock.ShortkeyTable.config;
     conf.cellTemplates = {
-      "_tmp_": {
+      "_info_": {
         templateName: "tmp1"
       },
-      "_tmp2_": {
-        content: "replace",
-        templateName: "tmp2",
-        templateCb: p => {
-          const span = p.fragment.querySelector<HTMLElement>(".sp")!;
-          span.innerText = `WORKZZZ - [${p.iRow},${p.iCol}] - ${p.value}`;
-
-          const btn = p.fragment.querySelector<HTMLButtonElement>("button")!;
-          btn.addEventListener("click", e => console.log("EVT"));
-        }
+      "_warn_": {
+        templateName: "tmp2"
+      },
+      "_error_": {
+        templateName: "tmp3"
       }
     };
 
     return html`
-      <md-table-advanced .config=${conf} .data=${TableMock.COMPLEX.data}>
+      <md-table-advanced .config=${conf} .data=${TableMock.ShortkeyTable.data}>
         <template id="tmp1">
-          <span>[ZZZ]</span>
+          <md-icon class="warn-icon" name="warning_20" color="blue"></md-icon>
         </template>
 
         <template id="tmp2">
-          <span class="sp">FAILED callback</span>
-          <button>BTN</button>
+          <md-icon class="warn-icon" name="warning_20" color="yellow"></md-icon>
+        </template>
+
+        <template id="tmp3">
+          <md-icon class="warn-icon" name="error_20" color="red"></md-icon>
         </template>
       </md-table-advanced>
     `;

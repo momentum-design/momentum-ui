@@ -57,6 +57,18 @@
             }
           }
 
+          .filter-active {
+            display: inline-block;
+            height: $advanced-table-collapse-btn;
+            text-align: center;
+            vertical-align: bottom;
+            width: $advanced-table-collapse-btn;
+
+            &::part(icon) {
+              line-height: $advanced-table-filter-height;
+            }
+          }
+
           .filter-menu {
             background-color: var(--md-secondary-white-bg-color);
             padding: calc(#{$advanced-table-main-indent} * 3);
@@ -69,21 +81,22 @@
             }
           }
 
-          .sort {
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: -1;
-          }
+          // .sort {
+          //   bottom: 0;
+          //   cursor: pointer;
+          //   left: 0;
+          //   position: absolute;
+          //   right: 0;
+          //   top: 0;
+          //   z-index: -1;
+          // }
 
-          .sort-icon {
-            display: inline-block;
-            height: $advanced-table-sort-icon;
-            padding: $advanced-table-main-indent;
-            width: $advanced-table-sort-icon;
+          md-button.sort-icon {
+            &::part(button) {
+              height: $advanced-table-sort-icon;
+              padding: calc(#{$advanced-table-main-indent} / 2);
+              width: $advanced-table-sort-icon;
+            }
 
             md-icon {
               color: var(--md-secondary-text-color);
@@ -156,6 +169,19 @@
         .inner-cell {
           display: flex;
           white-space: nowrap;
+
+          .warn-icon {
+            display: inline-block;
+            margin-left: $advanced-table-main-indent;
+            max-height: $advanced-table-collapse-btn;
+            position: relative;
+            vertical-align: middle;
+            z-index: -1;
+          }
+
+          md-icon::part(icon) {
+            line-height: $advanced-table-collapse-btn;
+          }
         }
 
         .drag-handle {
@@ -194,9 +220,11 @@
 
         span {
           align-self: center;
+          display: inline-block;
+          flex: 1;
           overflow: hidden;
           text-overflow: ellipsis;
-          flex: 1;
+          vertical-align: middle;
         }
 
         &.ghost {

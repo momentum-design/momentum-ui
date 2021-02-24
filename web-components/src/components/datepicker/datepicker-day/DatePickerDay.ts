@@ -1,11 +1,21 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import "@/components/button/Button";
-import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
-import reset from "@/wc_scss/reset.scss";
+import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
+import { closestElement } from "@/utils/helpers";
+import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { DateTime } from "luxon/index";
+import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerDay {
@@ -21,6 +31,8 @@ export namespace DatePickerDay {
 
     @internalProperty() protected isOutsideMonth = false;
     @internalProperty() protected isToday = false;
+    @internalProperty() protected parentRangePicker: DateRangePicker.ELEMENT | null = null;
+    @internalProperty() protected dateIsInRange = false;
 
     @query("md-button") button!: HTMLButtonElement;
 
@@ -31,6 +43,7 @@ export namespace DatePickerDay {
       this.isToday = isSameDay(this.day, now());
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
+      this.parentRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
     }
 
     updated(changedProperties: PropertyValues) {
@@ -41,6 +54,7 @@ export namespace DatePickerDay {
       this.selected = (this.datePickerProps && isSameDay(this.datePickerProps.selected, this.day)) || false;
       this.focused = (this.datePickerProps && isSameDay(this.datePickerProps.focused, this.day)) || false;
       this.focused && this.button && this.button.shadowRoot?.querySelector("button")?.focus();
+      this.parentRangePicker && (this.dateIsInRange = this.isDateInRange());
     }
 
     handleClick = (e: MouseEvent) => {
@@ -55,6 +69,35 @@ export namespace DatePickerDay {
         })
       );
     };
+
+    isDateInRange = () => {
+      const rangePicker = this.parentRangePicker;
+      const startDate = rangePicker?.startDate!;
+      const endDate = rangePicker?.endDate!;
+      return this.isPrimarySelection()
+        ? false
+        : (this.day.toSQLDate() > startDate && this.day.toSQLDate() < endDate) ||
+            this.day.toSQLDate() == startDate ||
+            this.day.toSQLDate() == endDate ||
+            false;
+    };
+
+    isPrimarySelection() {
+      return this.parentRangePicker?.startDate && this.parentRangePicker.endDate === undefined;
+    }
+
+    isLeadingRangeEdge() {
+      return this === this.parentNode?.firstElementChild;
+    }
+    isEndingRangeEdge() {
+      return this === this.parentNode?.lastElementChild;
+    }
+    isStartDate() {
+      return this.parentRangePicker?.startDate === this.day.toSQLDate() && !this.isPrimarySelection();
+    }
+    isEndDate() {
+      return this.parentRangePicker?.endDate === this.day.toSQLDate();
+    }
 
     handleKeyDown = (e: KeyboardEvent) => {
       this.dispatchEvent(
@@ -78,7 +121,12 @@ export namespace DatePickerDay {
         "md-datepicker__day--selected": this.selected,
         "md-datepicker__day--focus": this.focused,
         "md-datepicker__day--today": this.isToday,
-        "md-datepicker__day--outside-month": this.isOutsideMonth
+        "md-datepicker__day--outside-month": this.isOutsideMonth,
+        "md-datepicker__day--in-range": this.dateIsInRange,
+        "md-datepicker__day--week-first": this.isLeadingRangeEdge(),
+        "md-datepicker__day--week-last": this.isEndingRangeEdge(),
+        "md-datepicker__day--start-date": this.isStartDate(),
+        "md-datepicker__day--end-date": this.isEndDate()
       };
 
       return html`
@@ -89,7 +137,9 @@ export namespace DatePickerDay {
           ?disabled=${this.disabled}
           class="md-datepicker__day ${classMap(dayClassMap)}"
           @click=${(e: MouseEvent) => {
-            !this.disabled && this.handleClick(e);
+            if (!this.disabled) {
+              this.handleClick(e);
+            }
           }}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           ariaLabel=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}

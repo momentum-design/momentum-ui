@@ -32,9 +32,6 @@ export namespace DateRangePicker {
       this.removeEventListener("date-selection-change", () => {});
     }
 
-    // TO DO : Need to force a re-render on the first date selection so that the DatePickerDay component renders the class md-datepicker__day--start-date and has filled-in black style
-
-    // TODO: Find out why Key nav freezes
     updateValue = () => {
       if (this.startDate && this.endDate) {
         this.value = `${this.sqlDateToSlashes(this.startDate)} - ${this.sqlDateToSlashes(this.endDate)}`;

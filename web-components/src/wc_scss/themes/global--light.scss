@@ -7,12 +7,27 @@
 
   --md-default-focus-outline-color: #{$md-blue-60};
   
+  // New Backgrounds
   --md-primary-bg-color: #{$md-white};
+  --md-primary-one-bg-color: #{$md-white};
+  --md-primary-two-bg-color: #{$md-white};
+
   --md-secondary-bg-color: #{$md-gray-05};
-  --md-secondary-white-bg-color: #{$md-white};
+  --md-secondary-one-bg-color: #{$md-gray-05};
+  --md-secondary-two-bg-color: #{$md-gray-05};
+
   --md-tertiary-bg-color: #{$md-gray-10};
-  --md-tertiary-white-bg-color: #{$md-white};
+  --md-tertiary-one-bg-color: #{$md-gray-10};
+  --md-tertiary-two-bg-color: #{$md-gray-10};
+
   --md-quaternary-bg-color: #{$md-gray-20};
+  --md-quaternary-one-bg-color: #{$md-gray-20};
+  --md-quaternary-two-bg-color: #{$md-gray-20};
+
+  // Old Backgrounds
+  --md-secondary-white-bg-color: #{$md-white};
+  --md-tertiary-white-bg-color: #{$md-white};
+
 
   --md-primary-success-bg-color: #{$md-green-10};
   --md-primary-success-text-color: #{$md-green-70};

@@ -1,7 +1,7 @@
-import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
+import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -21,9 +21,10 @@ import {
   codeEditorTemplate,
   comboBoxTemplate,
   datePickerTemplate,
+  dateRangePickerTemplate,
   dateTimePickerTemplate,
-  dropdownTemplate,
   draggableTemplate,
+  dropdownTemplate,
   editableField,
   favoriteTemplate,
   floatingModalTemplate,
@@ -232,6 +233,13 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-date-range-picker">
+            <h2>md-date-range-picker</h2>
+            <sass-stats component="datepicker">
+              ${dateRangePickerTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-date-time-picker">
             <h2>md-date-time-picker</h2>
             <sass-stats component="date-time-picker">
@@ -276,9 +284,7 @@ export class Sandbox extends LitElement {
 
           <div class="container" aria-label="md-form">
             <h2>md-form</h2>
-            <sass-stats component="form">
-              ${formTemplate}
-            </sass-stats>
+            ${formTemplate}
           </div>
 
           <div class="container" aria-label="md-icon">

@@ -12,6 +12,10 @@ const tableAdvanced = {
     }
   },
   filter: {
+    "bg-color": {
+      light: colors.white[100].name,
+      dark: colors.gray[100].name
+    },
     hover: {
       "bg-color": {
         light: colors.gray[10].name,

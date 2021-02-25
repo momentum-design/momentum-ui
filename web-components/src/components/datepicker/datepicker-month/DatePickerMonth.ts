@@ -1,4 +1,13 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
   addWeeks,
   DatePickerProps,
@@ -10,13 +19,11 @@ import {
   now
 } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
 import styles from "../scss/module.scss";
 
 export namespace DatePickerMonth {
-
   @customElementWithCheck("md-datepicker-month")
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) day: DateTime = now();

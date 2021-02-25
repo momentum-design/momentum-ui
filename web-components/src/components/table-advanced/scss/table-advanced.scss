@@ -83,6 +83,11 @@ thead {
     position: absolute;
     right: $advanced-table-main-indent;
     top: 0;
+    z-index: 1;
+
+    .over {
+      height: 100%;
+    }
   }
 
   .sortable {

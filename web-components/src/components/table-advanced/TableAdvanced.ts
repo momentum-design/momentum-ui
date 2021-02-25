@@ -175,19 +175,6 @@ export namespace TableAdvanced {
         }
       }
 
-      // HACK
-      const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
-      for (let i = 0; i < 6; i++)
-        this.ROWS.push([
-          { text: rnd(2) },
-          { text: "1" },
-          { text: "2" },
-          { text: "3" },
-          { text: "4" },
-          { text: "5" },
-          { text: "6" }
-        ]);
-
       // TEMPLATES
       const templates = this.config.cellTemplates;
       const templatesKeys = Object.keys(templates || {});

@@ -267,11 +267,10 @@ tbody {
       position: absolute;
       left: 0;
       right: 0;
-      height: 100%;
+      height: 50%;
       opacity: 0.3;
 
       &.top {
-        height: $advanced-table-collapse-btn;
         top: 0;
         background-color: $md-violet-50;
       }

@@ -523,63 +523,64 @@ export namespace TableAdvanced {
           scope="col"
           class=${"col-index-" + col.index}
         >
-
           <!-- DRAG  -->
           ${this.renderColDrag(col)}
 
-          <!-- SORT  -->
-          ${col.sorter
-            ? html`
-                <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
-              `
-            : html`<span>${col.options.title}</span>`}
+          <div class="head-inner-cell">
+            <!-- SORT  -->
+            ${col.sorter
+              ? html`
+                  <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
+                `
+              : html`<span>${col.options.title}</span>`}
 
-          <!-- FILTER -->
-          ${col.filter
-            ? html`
-                ${col.filter.active
-                  ? html`
-                      <md-icon class="filter-active" name="filter-adr_14"></md-icon>
-                    `
-                  : nothing}
-                <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
-                  <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
-                    <md-icon slot="icon" name="filter_16"></md-icon>
-                  </md-button>
-                  <div class="filter-menu" style="width: 100%;">
-                    <select
-                      name="filter-type"
-                      @change=${(e: any) => {
-                        col.filter!.selectedIndex = e.target.value;
-                        this.updCols();
-                        this.filter(col);
-                      }}
-                    >
-                      ${col.filter.list.map(
-                        (c, i) => html`
-                          <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
-                        `
-                      )}
-                    </select>
-                    <input
-                      type="text"
-                      placeholder=${input!.placeholder}
-                      maxlength=${ifDefined(input!.maxlength)}
-                      pattern=${ifDefined(input!.pattern)}
-                      .value=${col.filter.input}
-                      @input=${(e: any) => {
-                        col.filter!.input = e.target.value;
-                        this.updCols();
-                        this.filter(col);
-                      }}
-                    />
-                  </div>
-                </md-menu-overlay>
-              `
-            : nothing}
+            <!-- FILTER -->
+            ${col.filter
+              ? html`
+                  ${col.filter.active
+                    ? html`
+                        <md-icon class="filter-active" name="filter-adr_14"></md-icon>
+                      `
+                    : nothing}
+                  <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
+                    <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
+                      <md-icon slot="icon" name="filter_16"></md-icon>
+                    </md-button>
+                    <div class="filter-menu" style="width: 100%;">
+                      <select
+                        name="filter-type"
+                        @change=${(e: any) => {
+                          col.filter!.selectedIndex = e.target.value;
+                          this.updCols();
+                          this.filter(col);
+                        }}
+                      >
+                        ${col.filter.list.map(
+                          (c, i) => html`
+                            <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
+                          `
+                        )}
+                      </select>
+                      <input
+                        type="text"
+                        placeholder=${input!.placeholder}
+                        maxlength=${ifDefined(input!.maxlength)}
+                        pattern=${ifDefined(input!.pattern)}
+                        .value=${col.filter.input}
+                        @input=${(e: any) => {
+                          col.filter!.input = e.target.value;
+                          this.updCols();
+                          this.filter(col);
+                        }}
+                      />
+                    </div>
+                  </md-menu-overlay>
+                `
+              : nothing}
 
-          <!-- RESIZE  -->
-          ${this.renderColResize(col)}
+            <!-- RESIZE  -->
+            ${this.renderColResize(col)}
+          </div>
         </th>
       `;
     }

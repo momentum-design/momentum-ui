@@ -1,6 +1,7 @@
 import "@/components/table-advanced/TableAdvanced";
 import { customElement, html, internalProperty, LitElement } from "lit-element";
 import { TableAdvancedMock } from "./table-advanced-mock";
+import { ShortkeyTable, DefaultAdvancedTable } from "../sandbox.mock";
 
 @customElement("default-table-advanced-sandbox")
 export class DefaultTableAdvanced extends LitElement {
@@ -66,7 +67,7 @@ export class DefaultTableAdvanced extends LitElement {
   // --------
 
   renderShortkeyTable() {
-    const conf = TableAdvancedMock.ShortkeyTable.config;
+    const conf = ShortkeyTable.config;
     conf.cellTemplates = {
       _info_: { templateName: "tmp1" },
       _warn_: { templateName: "tmp2" },
@@ -74,7 +75,7 @@ export class DefaultTableAdvanced extends LitElement {
     };
 
     return html`
-      <md-table-advanced .config=${conf} .data=${TableAdvancedMock.ShortkeyTable.data}>
+      <md-table-advanced .config=${conf} .data=${ShortkeyTable.data}>
         <template id="tmp1">
           <md-icon class="warn-icon" name="warning_20" color="blue"></md-icon>
         </template>
@@ -91,8 +92,26 @@ export class DefaultTableAdvanced extends LitElement {
   }
 }
 
+@customElement("custom-table-advanced-sandbox")
+export class CustomTableAdvanced extends LitElement {
+
+  render() {
+    return html`
+      <md-table-advanced .config=${DefaultAdvancedTable.config} .data=${DefaultAdvancedTable.data}>
+        
+      </md-table-advanced>
+    `;
+  }
+}
+
+
 export const tableAdvancedTemplate = html`
-  <div style="height: 400px; width: 100%;">
-    <default-table-advanced-sandbox></default-table-advanced-sandbox>
+
+  <default-table-advanced-sandbox></default-table-advanced-sandbox>
+
+  <br />
+  <div style="height: 400px; width: 100%; overflow: auto">
+    <h2>Default Advanced Table</h2>
+    <custom-table-advanced-sandbox></custom-table-advanced-sandbox>
   </div>
 `;

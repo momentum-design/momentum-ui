@@ -1,4 +1,6 @@
 $advanced-table-main-border: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+$advanced-table-filter-border: 1px solid
+  var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
 $advanced-table-main-indent: rem-calc(4);
 $advanced-table-row-height: rem-calc(40);
 $advanced-table-sort-icon: rem-calc(16);

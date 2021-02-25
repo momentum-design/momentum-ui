@@ -16,6 +16,10 @@ const tableAdvanced = {
       light: colors.white[100].name,
       dark: colors.gray[100].name
     },
+    "border-color": {
+      light: colors.gray[30].name,
+      dark: colors.gray[80].name
+    },
     hover: {
       "bg-color": {
         light: colors.gray[10].name,
@@ -42,7 +46,7 @@ const tableAdvanced = {
     }
   },
   "border-color": {
-    light: colors.gray[10].name,
+    light: colors.gray[20].name,
     dark: colors.gray[80].name
   },
   "text-color": {

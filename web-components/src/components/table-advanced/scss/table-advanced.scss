@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
 */
+
 :host {
   display: block;
 }
@@ -29,17 +30,13 @@ thead {
     font-family: $brand-font-regular;
     font-size: $font-size-base;
     height: $advanced-table-row-height;
+    max-width: 0;
     padding: 0 calc(#{$advanced-table-main-indent} * 4);
     text-align: left;
 
-    & > span {
-      display: inline-block;
-      padding-right: calc(#{$advanced-table-main-indent} * 4);
-    }
-
     .filter {
       display: inline-flex;
-      float: right;
+      // float: right;
       margin-top: $advanced-table-main-indent;
     }
 
@@ -55,8 +52,27 @@ thead {
     }
   }
 
+  .head-inner-cell {
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+
+    & > span {
+      display: inline-block;
+      min-width: $advanced-table-row-height;
+      overflow: hidden;
+      padding-right: calc(#{$advanced-table-main-indent} * 1.25);
+      text-overflow: ellipsis;
+
+      &.sortable {
+        padding-right: calc(#{$advanced-table-main-indent} * 4);
+      }
+    }
+  }
+
   md-menu-overlay::part(overlay) {
     top: -$advanced-table-overlay-position;
+    white-space: normal;
   }
 
   .sortable {
@@ -127,18 +143,25 @@ thead {
 }
 
 .filter-menu {
-  background-color: var(--md-secondary-white-bg-color);
+  background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
   padding: calc(#{$advanced-table-main-indent} * 3);
   position: relative;
   z-index: 1;
 
   select {
+    background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+    border: $advanced-table-filter-border;
+    color: var(--md-secondary-text-color);
+    min-height: calc(#{$advanced-table-filter-height} * 1.8);
     width: 100%;
   }
 
   input {
-    margin-top: $advanced-table-main-indent;
-    max-width: 100%;
+    background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+    border: $advanced-table-filter-border;
+    color: var(--md-secondary-text-color);
+    margin-top: calc(#{$advanced-table-main-indent} * 2);
+    width: 100%;
   }
 }
 

@@ -32,11 +32,11 @@ thead {
     height: $advanced-table-row-height;
     max-width: 0;
     padding: 0 calc(#{$advanced-table-main-indent} * 4);
+    position: relative;
     text-align: left;
 
     .filter {
       display: inline-flex;
-      // float: right;
       margin-top: $advanced-table-main-indent;
     }
 
@@ -73,6 +73,16 @@ thead {
   md-menu-overlay::part(overlay) {
     top: -$advanced-table-overlay-position;
     white-space: normal;
+  }
+
+  .drag-area-col {
+    cursor: grab;
+    display: block;
+    height: calc(#{$advanced-table-main-indent} * 3);
+    left: $advanced-table-main-indent;
+    position: absolute;
+    right: $advanced-table-main-indent;
+    top: 0;
   }
 
   .sortable {
@@ -252,12 +262,15 @@ tbody {
       position: absolute;
       left: 0;
       right: 0;
-      height: 50%;
+      height: 100%;
       opacity: 0.3;
+
       &.top {
+        height: $advanced-table-collapse-btn;
         top: 0;
         background-color: $md-violet-50;
       }
+
       &.bottom {
         bottom: 0;
         background-color: transparent;

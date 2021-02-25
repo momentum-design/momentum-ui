@@ -106,9 +106,11 @@ export class CustomTableAdvanced extends LitElement {
 
 
 export const tableAdvancedTemplate = html`
-
-  <default-table-advanced-sandbox></default-table-advanced-sandbox>
-
+  <br />  
+  <div style="height: 400px; width: 100%; overflow: auto">
+    <h2>ShortKey Table</h2>
+    <default-table-advanced-sandbox></default-table-advanced-sandbox>
+  </div>
   <br />
   <div style="height: 400px; width: 100%; overflow: auto">
     <h2>Default Advanced Table</h2>

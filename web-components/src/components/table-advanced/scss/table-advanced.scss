@@ -15,7 +15,6 @@
 }
 
 table {
-  border: $advanced-table-main-border;
   border-collapse: collapse;
   max-width: 100%;
   position: relative;
@@ -78,7 +77,7 @@ thead {
   .drag-area-col {
     cursor: grab;
     display: block;
-    height: calc(#{$advanced-table-main-indent} * 3);
+    height: calc(#{$advanced-table-main-indent} * 10);
     left: $advanced-table-main-indent;
     position: absolute;
     right: $advanced-table-main-indent;
@@ -87,12 +86,14 @@ thead {
 
     .over {
       height: 100%;
+      opacity: 0.3;
     }
   }
 
   .sortable {
     cursor: pointer;
     position: relative;
+    z-index: 1;
 
     &:before,
     &:after {
@@ -135,6 +136,8 @@ thead {
   color: var(--md-secondary-text-color);
   cursor: pointer;
   padding: $advanced-table-main-indent;
+  position: relative;
+  z-index: 1;
 
   &:hover {
     background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
@@ -193,15 +196,17 @@ table.sticky-header {
       z-index: 1;
     }
 
-    &:last-child {
-      th {
-        top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
+    tr {
+      &:last-child {
+        th {
+          top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
+        }
       }
-    }
 
-    &:first-child {
-      th {
-        top: -$advanced-table-header-sticky-indent;
+      &:first-child {
+        th {
+          top: -$advanced-table-header-sticky-indent;
+        }
       }
     }
   }
@@ -222,6 +227,7 @@ tbody {
 
     th {
       background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+      border: $advanced-table-main-border;
       font-size: $font-size-base;
       padding: 0 calc(#{$advanced-table-main-indent} * 4);
       position: relative;
@@ -238,7 +244,7 @@ tbody {
         max-height: $advanced-table-collapse-btn;
         position: relative;
         vertical-align: middle;
-        z-index: -1;
+        z-index: 0;
       }
 
       md-icon::part(icon) {
@@ -272,7 +278,7 @@ tbody {
 
       &.top {
         top: 0;
-        background-color: $md-violet-50;
+        //background-color: $md-violet-50;
       }
 
       &.bottom {

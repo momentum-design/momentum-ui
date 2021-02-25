@@ -20,7 +20,7 @@ export namespace TableAdvancedMock {
 
   export const ComplexTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
     config: {
-      isStickyHeader: false,
+      isStickyHeader: true,
 
       rows: {
         isDraggable: true,

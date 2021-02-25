@@ -398,7 +398,7 @@ export const DraggableOptions = [
 
 export const ShortkeyTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
   config: {
-    isStickyHeader: false,
+    isStickyHeader: true,
 
     rows: {
       isDraggable: false,

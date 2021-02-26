@@ -125,6 +125,124 @@ describe('tests for <List />', () => {
     expect(container.state().listContext.focus).toEqual('test-list-3');
   });
 
+  it('should handle keyPress event with <shouldPropagateKeyDown = true> props (Up/Down/Left/Right)', () => {
+    let count = 0;
+    const onKeyDown = () => count++;
+    const container = mount(
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div onKeyDown={onKeyDown}>
+        <List shouldPropagateKeyDown>
+          <ListItem className='firstIndex' label="test" id='test-list-1' />
+          <ListItem className='secondIndex' label="test" id='test-list-2' />
+          <ListItem className='thirdIndex' label="test" id='test-list-3' />
+        </List>
+      </div>
+    );
+
+    container.update();
+    container.update();
+
+    const anchor1 = container.find('.firstIndex').first();
+ 
+    expect(container.children().state().listContext.focus).toEqual('test-list-1');
+    anchor1.simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+    expect(container.children().state().listContext.focus).toEqual('test-list-2');
+    anchor1.simulate('keydown', {keyCode: 39, which: 39, charCode: 39});
+    expect(container.children().state().listContext.focus).toEqual('test-list-2');
+    anchor1.simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    anchor1.simulate('keydown', {keyCode: 37, which: 37, charCode: 37});
+
+    expect(count).toEqual(4);
+  });
+
+  it('should handle keyPress event with <shouldPropagateKeyDown = false> props (Up/Down/Left/Right)', () => {
+    let count = 0;
+    const onKeyDown = () => count++;
+    const container = mount(
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+      <div onKeyDown={onKeyDown}>
+        <List shouldPropagateKeyDown={false}>
+          <ListItem className='firstIndex' label="test" id='test-list-1' />
+          <ListItem className='secondIndex' label="test" id='test-list-2' />
+          <ListItem className='thirdIndex' label="test" id='test-list-3' />
+        </List>
+      </div>
+    );
+
+    container.update();
+    container.update();
+
+    const anchor1 = container.find('.firstIndex').first();
+ 
+    anchor1.simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+    anchor1.simulate('keydown', {keyCode: 39, which: 39, charCode: 39});
+    anchor1.simulate('keydown', {keyCode: 38, which: 38, charCode: 38});
+    anchor1.simulate('keydown', {keyCode: 37, which: 37, charCode: 37});
+
+    expect(count).toEqual(0);
+  });
+
+  it('should handle keyPress event with ariaConfig={disableAriaCurrent : true} ', () => {
+    const ariaConfig = {disableAriaCurrent : true};
+    
+    const container = mount(
+      <List ariaConfig={ariaConfig}>
+        <ListItem className='firstIndex' label="test" id='test-list-1' link='javscript:void(0)' />
+        <ListItem className='secondIndex' label="test" id='test-list-2' link='javscript:void(0)' />
+        <ListItem className='thirdIndex' label="test" id='test-list-3' link='javscript:void(0)' />
+      </List>
+    );
+    container.update();
+    container.update();
+
+    expect(container.find('.md-list-item').at(0).props()['aria-current']).toBeFalsy();
+    expect(container.find('.md-list-item').at(1).props()['aria-current']).toBeFalsy();
+    expect(container.find('.md-list-item').at(2).props()['aria-current']).toBeFalsy();
+    container.find('.firstIndex').first().simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+
+    expect(container.find('.md-list-item').at(0).props()['aria-current']).toBeFalsy();
+    expect(container.find('.md-list-item').at(1).props()['aria-current']).toBeFalsy();
+    expect(container.find('.md-list-item').at(2).props()['aria-current']).toBeFalsy();
+    container.find('.secondIndex').first().simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+
+    expect(container.find('.md-list-item').at(0).props()['aria-current']).toBeFalsy();
+    expect(container.find('.md-list-item').at(1).props()['aria-current']).toBeFalsy();
+    expect(container.find('.md-list-item').at(2).props()['aria-current']).toBeFalsy();
+  });
+
+  it('should handle keyPress event with ariaConfig={disableAriaCurrent : true} and falsy values ', () => {
+    
+    const ariaConfigArray = [undefined, null, false, {disableAriaCurrent : false}];
+    
+    ariaConfigArray.map((ariaConfig) => {
+      const container = mount(
+        <List ariaConfig={ariaConfig}>
+          <ListItem className='firstIndex' label="test" id='test-list-1' link='javscript:void(0)' />
+          <ListItem className='secondIndex' label="test" id='test-list-2' link='javscript:void(0)' />
+          <ListItem className='thirdIndex' label="test" id='test-list-3' link='javscript:void(0)' />
+        </List>
+      );
+
+      container.update();
+      container.update();
+
+      expect(container.find('.md-list-item').at(0).props()['aria-current']).toEqual("true");
+      expect(container.find('.md-list-item').at(1).props()['aria-current']).toBeFalsy();
+      expect(container.find('.md-list-item').at(2).props()['aria-current']).toBeFalsy();
+      container.find('.firstIndex').first().simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+
+      expect(container.find('.md-list-item').at(0).props()['aria-current']).toBeFalsy();
+      expect(container.find('.md-list-item').at(1).props()['aria-current']).toEqual("true");
+      expect(container.find('.md-list-item').at(2).props()['aria-current']).toBeFalsy();
+      container.find('.secondIndex').first().simulate('keydown', {keyCode: 40, which: 40, charCode: 40});
+
+      expect(container.find('.md-list-item').at(0).props()['aria-current']).toBeFalsy();
+      expect(container.find('.md-list-item').at(1).props()['aria-current']).toBeFalsy();
+      expect(container.find('.md-list-item').at(2).props()['aria-current']).toEqual("true");
+
+    });
+  });
+
   it('should handle keyPress event (PageUp/PageDown/Home/End)', () => {
     const container = mount(
       <List>

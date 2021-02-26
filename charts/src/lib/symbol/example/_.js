@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 import { profit2010to2018 } from '../../exampleData';
 
 const example = () => {
@@ -40,7 +40,7 @@ const example = () => {
       y: function(d) {
         return 300 - d.profit;
       },
-      type: MomentumChart.Symbol.type('circle'),
+      type: MomentumCharts.Symbol.type('circle'),
       size: 40
     },
     modify: {

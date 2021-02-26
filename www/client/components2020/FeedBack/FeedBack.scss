@@ -1,0 +1,19 @@
+.site-feedback {
+  padding: 73px 0 80px 0;
+  text-align: center;
+
+  &.site-con {
+    background-color: $md-gray-10;
+  }
+
+  h1 {
+    width: 100%;
+    display: block;
+    line-height: 34px;
+    font-size: 24px;
+    color: $md-black;
+  }
+  button {
+    margin-top: 60px;
+  }
+}

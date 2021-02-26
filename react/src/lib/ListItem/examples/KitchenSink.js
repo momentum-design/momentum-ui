@@ -3,6 +3,7 @@ import {
   ListItemDefault,
   ListItemListItemSections,
   ListItemListItemSeparator,
+  TabbableChildren,
 } from './index';
 
 export default class ListItemKitchenSink extends React.Component {
@@ -12,6 +13,7 @@ export default class ListItemKitchenSink extends React.Component {
         <ListItemDefault />
         <ListItemListItemSections />
         <ListItemListItemSeparator />
+        <TabbableChildren />
       </React.Fragment>
     );
   }

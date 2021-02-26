@@ -1,0 +1,14 @@
+@mixin message-format($color-message) {
+  color: $color-message;
+
+  display: flex;
+  line-height: $help-text__line-height;
+  
+  &::before {
+    color: $color-message;
+  }
+
+  md-icon {
+    margin-right: $help-text__spacing / 2;
+  }
+}

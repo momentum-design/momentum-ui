@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import qsa from 'dom-helpers/query/querySelectorAll';
 import { UIDReset } from 'react-uid';
 import SelectableContext from '../SelectableContext';
@@ -19,6 +19,7 @@ class Menu extends React.Component {
       listContext: {
         active: [],
         focus: null,
+        ariaConfig: this.props.ariaConfig,
       },
       selectContext: {
         parentKeyDown: this.handleKeyDown,
@@ -56,7 +57,7 @@ class Menu extends React.Component {
         if(!prevState.listContext.focus && !focusFirst) {
           return;
         }
-        
+
         this.menuNode
           .querySelector(`[data-md-event-key="${listContext.focus}"]`)
           .focus();
@@ -243,7 +244,7 @@ class Menu extends React.Component {
         break;
 
       case 39: //right
-        element.constructor 
+        element.constructor
         && element.constructor.displayName
         && element.constructor.displayName === 'SubMenu'
         && this.handleSelect(e, opts);
@@ -303,6 +304,7 @@ class Menu extends React.Component {
     } = this.state;
 
     const otherProps = omit({...props}, [
+      'ariaConfig',
       'focusFirst',
       'parentOnSelect'
     ]);
@@ -335,6 +337,8 @@ class Menu extends React.Component {
 Menu.propTypes = {
   /** @prop Text to display for accessibility features | ''  */
   ariaLabel: PropTypes.string,
+  /** @prop Accessibility Configuration Object */
+  ariaConfig: PropTypes.object,
   /** @prop Children nodes to render inside Menu | null */
   children: PropTypes.node,
   /** @prop Optional css class name | '' */
@@ -349,6 +353,7 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   ariaLabel: '',
+  ariaConfig: null,
   children: null,
   className: '',
   focusFirst: true,

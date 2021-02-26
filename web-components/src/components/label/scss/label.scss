@@ -1,0 +1,36 @@
+:host(md-label) {
+  .md-label {
+    @include form-label;
+    display: flex;
+
+    &.right {
+      @include form-label(right, false);
+    }
+
+    &.inline {
+      @include form-label(inline, false);
+    }
+
+    small {
+      text-transform: capitalize;
+    }
+
+    span {
+      font-size: inherit;
+    }
+  }
+  .md-secondary-label {
+    @include secondary-label;
+  }
+}
+
+
+:host(.md-input__label.disabled),
+:host(.md-input__secondary-label.disabled) {
+  label {
+    cursor: not-allowed;
+  }
+}
+
+
+

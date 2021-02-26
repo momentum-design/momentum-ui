@@ -1,0 +1,124 @@
+@mixin link-color(
+  $color: var(--link-default, $lm-link-default-light),
+  $color-hover: var(--link-hover, $lm-link-hover-light),
+  $color-pressed: var(--link-pressed, $lm-link-pressed-light),
+  $color-focus: var(--link-focus, $lm-link-focus-light),
+  $focus-outline: var( --link-focus-outline, $lm-link-focus-outline-light),
+  $color-disabled: var(--link-disabled, $lm-link-disabled-light),
+  $color-inline: var(--link-inline, $lm-link-inline-light),
+  $color-inline-hover: var(--link-inline-hover, $lm-link-inline-hover-light),
+  $color-inline-pressed: var(--link-inline-pressed, $lm-link-inline-pressed-light),
+  $color-inline-focus: var(--link-inline-focus, $lm-link-inline-focus-light),
+  $color-blue: var(--link-blue, $md-link-blue-light),
+  $color-blue-hover: var(--link-blue-hover,$md-link-blue-hover-light),
+  $color-blue-active: var(--link-blue-active,$md-link-blue-active-light),
+  $color-red: var(--link-red, $md-link-red-light),
+  $color-red-hover: var(--link-red-hover, $md-link-red-hover-light),
+  $color-red-active: var(--link-red-active, $md-link-red-active-light),
+  $color-green: var(--link-green, $md-link-green-light),
+  $color-green-hover: var(--link-green-hover, $md-link-green-hover-light),
+  $color-green-active: var(--link-green-active, $md-link-green-active-light),
+  $color-yellow: var(--link-yellow, $md-link-yellow-light),
+  $color-yellow-hover: var(--link-yellow-hover, $md-link-yellow-hover-light),
+  $color-yellow-active: var(--link-yellow-active, $md-link-yellow-active-light),
+  $color-orange: var(--link-orange, $md-link-orange-light),
+  $color-orange-hover: var(--link-orange-hover, $md-link-orange-hover-light),
+  $color-orange-active: var(--link-orange-active, $md-link-orange-active-light)
+) {
+  color: $color;
+
+  &:hover {
+    color: $color-hover;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px $focus-outline;
+    color: $color-focus;
+  }
+
+  &.active {
+    color: $color-pressed;
+  }
+
+  &.disabled,
+  &.md-link--inline.disabled {
+    color: $color-disabled;
+  }
+
+  &.md-link--inline {
+    color: $color-inline;
+
+    &:hover {
+      color: $color-inline-hover;
+    }
+
+    &:focus {
+      color: $color-inline-focus;
+    }
+
+    &.active {
+      color: $color-inline-pressed;
+    }
+  }
+
+  .md-link--blue {
+    color: $color-blue;
+
+    &:hover {
+      color: $color-blue-hover;
+    }
+
+    &.active {
+      color: $color-blue-active;
+    }
+  }
+
+  .md-link--red {
+    color: $color-red;
+
+    &:hover {
+      color: $color-red-hover;
+    }
+
+    &.active {
+      color: $color-red-active;
+    }
+  }
+
+  .md-link--green {
+    color: $color-green;
+
+    &:hover {
+      color: $color-green-hover;
+    }
+
+    &.active {
+      color: $color-green-active;
+    }
+  }
+
+  .md-link--yellow {
+    color: $color-yellow;
+
+    &:hover {
+      color: $color-yellow-hover;
+    }
+
+    &.active {
+      color: $color-yellow-active;
+    }
+  }
+
+  .md-link--orange {
+    color: $color-orange;
+
+    &:hover {
+      color: $color-orange-hover;
+    }
+
+    &.active {
+      color: $color-orange-active;
+    }
+  }
+}
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>hardware/endpoint_64</title>
+    <desc>Created with Sketch.</desc>
+    <g id="hardware/endpoint_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M56,9.5 L8,9.5 C3.582,9.5 0,13.082 0,17.5 L0,47 L0,48 L0,51 C0,55.418 3.582,59 8,59 L56,59 C60.418,59 64,55.418 64,51 L64,48 L64,47 L64,17.5 C64,13.082 60.418,9.5 56,9.5 L56,9.5 Z M1,47 L1,17.5 C1,13.64 4.14,10.5 8,10.5 L56,10.5 C59.859,10.5 63,13.64 63,17.5 L63,47 L1,47 Z M63,51 C63,54.859 59.859,58 56,58 L8,58 C4.14,58 1,54.859 1,51 L1,48 L63,48 L63,51 Z M32,7 C32.552,7 33,6.552 33,6 C33,5.448 32.552,5 32,5 C31.448,5 31,5.448 31,6 C31,6.552 31.448,7 32,7" id="fill" fill="#171B1F"></path>
+    </g>
+</svg>

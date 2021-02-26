@@ -1,0 +1,146 @@
+.site-header-con {
+  max-width: $site-desktop-max;
+  margin: 0 auto;
+}
+
+.site-header-con-wrapper {
+  // position: fixed;
+  z-index: 1000;
+}
+
+.site-header-white .md-top-bar__mobile-menu-button i {
+  color: white;
+}
+
+.site-header-top-bar {
+  background-color: transparent;
+  margin-top: 31px;
+  padding: 0 32px;
+  position: absolute;
+  top: 0;
+
+  @include site-column-breakpoint {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  & .md-top-bar__container {
+    height: auto;
+    padding: 0;
+
+    .md-top-bar__mobile-menu-button {
+      padding-top: 2rem;
+    }
+
+    & .site-header-top-bar-nav {
+      background-color: transparent;
+      justify-content: flex-end;
+
+      & > .md-list > a.md-list-item {
+        border-radius: 4px;
+        color: $md-gray-100;
+        height: 2rem;
+        padding: 0 rem-calc(8);
+
+        & + a.md-list-item {
+          margin-left: rem-calc(24);
+        }
+
+        &.current-active {
+          background-color: $md-black;
+          border-radius: 4px;
+          color: $md-white;
+        }
+
+        &.current-active-dark {
+          background-color: $md-white;
+          border-radius: 4px;
+          color: $md-black !important;
+        }
+
+        &:hover {
+          background-color: $md-gray-80;
+          color: $md-white !important;
+        }
+
+        &.site-nav-cobalt-hover:hover {
+          background-color: $md-cobalt-60;
+          color: $md-white;
+        }
+
+        &.site-nav-gold-hover:hover {
+          background-color: $md-gold-70;
+          color: $md-white;
+        }
+
+        &.site-nav-green-hover:hover {
+          background-color: $md-green-60;
+          color: $md-white;
+        }
+
+        &.site-nav-lime-hover:hover {
+          background-color: $md-lime-70;
+          color: $md-white;
+        }
+
+        &.site-nav-pink-hover:hover {
+          background-color: $md-pink-70;
+          color: $md-white;
+        }
+
+        &.site-nav-slate-hover:hover {
+          background-color: $md-slate-60;
+          color: $md-white;
+        }
+      }
+    }
+
+    & .md-top-bar__brand {
+      height: auto;
+      margin: 0;
+      padding: 0;
+
+      @include site-column-breakpoint {
+        padding: 2rem;
+        padding-bottom: 0;
+      }
+
+      & .md-brand {
+        padding: 0;
+
+        &__logo {
+          font-size: unset;
+          height: 40px;
+        }
+      }
+    }
+
+    .md-top-bar__mobile {
+      .md-top-bar__brand span.site-logo svg {
+        fill: $md-black;
+      }
+
+      .md-list-separator {
+        background-color: $md-white;
+        color: $md-white;
+      }
+
+      .md-tb-mobile__close {
+        top: 2rem;
+      }
+    }
+  }
+}
+
+.site-header-white {
+  span.site-logo svg {
+    fill: $md-white;
+  }
+
+  & .site-header-top-bar .site-header-top-bar-nav {
+    & > .md-list > a.md-list-item,
+    & > .md-list > a.md-list-item.active {
+      color: $md-white;
+    }
+  }
+}

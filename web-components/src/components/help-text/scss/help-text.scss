@@ -1,0 +1,34 @@
+.md-input__message {
+  font-size: $help-text__font-size;
+
+  &.md-success {
+    @include message-format(var(--md-alert-success-text-color, $md-green-70));
+  }
+
+  &.md-error {
+    @include message-format(var(--md-alert-error-text-color, $md-red-70));
+  }
+
+  &.md-warning {
+    @include message-format(var(--md-alert-warning-text-color, $md-yellow-70));
+  }
+}
+
+:host(.help-text),
+:host(.help-text-checkbox),
+:host(.help-text-radio) {
+  align-items: flex-end;
+  color: var(--help-text-default-color, $lm-help-text-default-color-light);
+  display: flex;
+  font-family: $help-text__font-family;
+  font-size: $help-text__font-size;
+  line-height: $help-text__line-height;
+  margin-bottom: rem-calc(4);
+  padding-left: rem-calc(16);
+  padding-top: rem-calc(8);
+}
+
+:host(.help-text-checkbox),
+:host(.help-text-radio) {
+  padding-left: rem-calc(32);
+}

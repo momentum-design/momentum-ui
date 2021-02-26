@@ -1,78 +1,61 @@
-import MomentumChart from '../../index.js';
-
+import MomentumCharts from '../../index.js';
 const example = () => {
-  let board = new MomentumChart.Board('#app', {
+  const scaleX = MomentumCharts.scale('scaleLinear', {
+    domain: [0, 4],
+    range: [100, 700]
+  }).Scale;
+  const scaleY = MomentumCharts.scale('scaleLinear', {
+    domain: [0, 80],
+    range: [350, 50]
+  }).Scale;
+
+  const boardData = {
+    shape: {
+      d1: [10, 25, 55, 65, 40],
+      d2: [15, 30, 35, 55, 60],
+      d3: [10, 20, 25, 45, 40],
+      d4: [5, 10, 15, 25, 30]
+    },
+    legends: ['Cisco Webex Teams', 'Cisco Webex Meetings', 'Cisco Jabber', 'Device']
+  };
+
+  let board = MomentumCharts.board('#app', {
     attr: {
-      width: '1000',
+      width: '800',
       height: '400',
-      viewBox: "0 0 1000 400"
+      viewBox: "0 0 800 400"
     }
   });
 
-  let scaleX = new MomentumChart.Scale('scaleLinear', {
-    range: [200, 800],
-    domain: [2000, 2020]
-  }).Scale;
+  board.data(boardData);
 
-  let scaleX2 = new MomentumChart.Scale('scaleLinear', {
-    range: [0, 1000],
-    domain: [2000, 2020]
-  }).Scale;
-
-  let scaleY = new MomentumChart.Scale('scaleLinear', {
-    range: [350, 50],
-    domain: [0, 400]
-  }).Scale;
-
-  let scaleY2 = new MomentumChart.Scale('scaleLinear', {
-    range: [400, 0],
-    domain: [0, 400]
-  }).Scale;
-
-  var axis = board.axis('axisBottom', {
+  board.axis('x', {
     generator: {
       scale: scaleX,
-      ticks: 5,
-      y: 350
+      y: scaleY.range()[0],
+      tickSize: scaleY.range()[1] - scaleY.range()[0]
     },
-    dataConvert: function() {
-      return {
-        generator: {
-          scale: scaleX2,
-          ticks: 5,
-          y: 350
-        }
-      };
+    modify: {
+      style: {
+        stroke: '#A3A3A3'
+      }
     }
-  }, '');
+  });
 
-  var axis2 = board.axis('axisLeft', {
+  board.axis('y', {
     generator: {
       scale: scaleY,
-      ticks: 5,
-      tickSize: -1000,
-      x: 100
+      x: scaleX.range()[0],
+      tickSize: scaleX.range()[0] - scaleX.range()[1]
     },
-    dataConvert: function(data) {
-      return {
-        generator: {
-          scale: scaleY2,
-          ticks: 5,
-          tickSize: -10,
-          x: 0
-        }
-      };
+    modify: {
+      style: {
+        stroke: '#A3A3A3'
+      }
     }
-  }, './');
-  axis.IsStatic = false;
-  axis2.IsStatic = false;
+  });
+
   board.render();
-
-  setTimeout(function () {
-    board.transition({}, []);
-  }, 1000);
-
-  board.zoom([1, 2]);
 
 };
 

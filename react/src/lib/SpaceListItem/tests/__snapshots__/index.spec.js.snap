@@ -22,6 +22,7 @@ ShallowWrapper {
     resultRight={null}
     searchTerm=""
     subheader=""
+    theme=""
     title=""
     type=""
   />,
@@ -54,6 +55,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -106,6 +108,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -133,6 +136,7 @@ ShallowWrapper {
             "hasNotification": false,
             "hideDefaultTooltip": false,
             "icon": null,
+            "initials": null,
             "isDecrypting": false,
             "isOverview": false,
             "onClick": null,
@@ -214,6 +218,7 @@ ShallowWrapper {
     "type": Object {
       "$$typeof": Symbol(react.forward_ref),
       "defaultProps": undefined,
+      "displayName": "ContextTransform(ListItem)",
       "propTypes": undefined,
       "render": [Function],
     },
@@ -239,6 +244,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              initials={null}
               isDecrypting={false}
               isOverview={false}
               onClick={null}
@@ -291,6 +297,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              initials={null}
               isDecrypting={false}
               isOverview={false}
               onClick={null}
@@ -318,6 +325,7 @@ ShallowWrapper {
               "hasNotification": false,
               "hideDefaultTooltip": false,
               "icon": null,
+              "initials": null,
               "isDecrypting": false,
               "isOverview": false,
               "onClick": null,
@@ -399,6 +407,7 @@ ShallowWrapper {
       "type": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": undefined,
+        "displayName": "ContextTransform(ListItem)",
         "propTypes": undefined,
         "render": [Function],
       },

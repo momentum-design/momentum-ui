@@ -4,6 +4,7 @@
   .#{$phonenumber-input__class} {
     display: inline-flex;
     flex-direction: column;
+    padding: 0;
 
     &__active {
       box-shadow: 0 0 4px 2px $focus-color;

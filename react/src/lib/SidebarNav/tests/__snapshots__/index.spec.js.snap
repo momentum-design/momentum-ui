@@ -36,6 +36,7 @@ ShallowWrapper {
         >
           <List
             active={null}
+            ariaConfig={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
             focus={null}
             focusFirst={true}
@@ -49,11 +50,13 @@ ShallowWrapper {
             id={null}
             itemRole="listitem"
             navSectionTitle="Overview"
+            navigationDirection="both"
             onSelect={null}
             role="list"
             shouldFocusActive={false}
             shouldFocusInitial={true}
             shouldLoop={true}
+            shouldPropagateKeyDown={false}
             tabType="vertical"
             trackActive={true}
             type={null}
@@ -73,6 +76,7 @@ ShallowWrapper {
         >
           <List
             active={null}
+            ariaConfig={null}
             className="md-sidebar-nav__group md-sidebar-nav__group--primary"
             focus={null}
             focusFirst={true}
@@ -86,11 +90,13 @@ ShallowWrapper {
             id={null}
             itemRole="listitem"
             navSectionTitle="Overview"
+            navigationDirection="both"
             onSelect={null}
             role="list"
             shouldFocusActive={false}
             shouldFocusInitial={true}
             shouldLoop={true}
+            shouldPropagateKeyDown={false}
             tabType="vertical"
             trackActive={true}
             type={null}
@@ -111,6 +117,7 @@ ShallowWrapper {
             null,
             <List
               active={null}
+              ariaConfig={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focus={null}
               focusFirst={true}
@@ -124,11 +131,13 @@ ShallowWrapper {
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
+              navigationDirection="both"
               onSelect={null}
               role="list"
               shouldFocusActive={false}
               shouldFocusInitial={true}
               shouldLoop={true}
+              shouldPropagateKeyDown={false}
               tabType="vertical"
               trackActive={true}
               type={null}
@@ -146,6 +155,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "active": null,
+              "ariaConfig": null,
               "children": null,
               "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
               "focus": null,
@@ -160,11 +170,13 @@ ShallowWrapper {
               "id": null,
               "itemRole": "listitem",
               "navSectionTitle": "Overview",
+              "navigationDirection": "both",
               "onSelect": null,
               "role": "list",
               "shouldFocusActive": false,
               "shouldFocusInitial": true,
               "shouldLoop": true,
+              "shouldPropagateKeyDown": false,
               "tabType": "vertical",
               "trackActive": true,
               "type": null,
@@ -216,6 +228,7 @@ ShallowWrapper {
           >
             <List
               active={null}
+              ariaConfig={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focus={null}
               focusFirst={true}
@@ -229,11 +242,13 @@ ShallowWrapper {
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
+              navigationDirection="both"
               onSelect={null}
               role="list"
               shouldFocusActive={false}
               shouldFocusInitial={true}
               shouldLoop={true}
+              shouldPropagateKeyDown={false}
               tabType="vertical"
               trackActive={true}
               type={null}
@@ -253,6 +268,7 @@ ShallowWrapper {
           >
             <List
               active={null}
+              ariaConfig={null}
               className="md-sidebar-nav__group md-sidebar-nav__group--primary"
               focus={null}
               focusFirst={true}
@@ -266,11 +282,13 @@ ShallowWrapper {
               id={null}
               itemRole="listitem"
               navSectionTitle="Overview"
+              navigationDirection="both"
               onSelect={null}
               role="list"
               shouldFocusActive={false}
               shouldFocusInitial={true}
               shouldLoop={true}
+              shouldPropagateKeyDown={false}
               tabType="vertical"
               trackActive={true}
               type={null}
@@ -291,6 +309,7 @@ ShallowWrapper {
               null,
               <List
                 active={null}
+                ariaConfig={null}
                 className="md-sidebar-nav__group md-sidebar-nav__group--primary"
                 focus={null}
                 focusFirst={true}
@@ -304,11 +323,13 @@ ShallowWrapper {
                 id={null}
                 itemRole="listitem"
                 navSectionTitle="Overview"
+                navigationDirection="both"
                 onSelect={null}
                 role="list"
                 shouldFocusActive={false}
                 shouldFocusInitial={true}
                 shouldLoop={true}
+                shouldPropagateKeyDown={false}
                 tabType="vertical"
                 trackActive={true}
                 type={null}
@@ -326,6 +347,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "active": null,
+                "ariaConfig": null,
                 "children": null,
                 "className": "md-sidebar-nav__group md-sidebar-nav__group--primary",
                 "focus": null,
@@ -340,11 +362,13 @@ ShallowWrapper {
                 "id": null,
                 "itemRole": "listitem",
                 "navSectionTitle": "Overview",
+                "navigationDirection": "both",
                 "onSelect": null,
                 "role": "list",
                 "shouldFocusActive": false,
                 "shouldFocusInitial": true,
                 "shouldLoop": true,
+                "shouldPropagateKeyDown": false,
                 "tabType": "vertical",
                 "trackActive": true,
                 "type": null,

@@ -1,0 +1,43 @@
+.md-floating {
+  background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-light);
+  border: $floating-main-border;
+  border-radius: var(--floating-modal-main-radius, $lm-floating-modal-main-radius-light);
+  box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  touch-action: none;
+  user-select: none;
+  z-index: 1040;
+
+  &.fixed {
+    position: fixed;
+  }
+
+  .md-floating__header {
+    align-items: center;
+    border-bottom: $floating-header-border;
+    color: var(--floating-modal-main-text-color, $lm-floating-modal-main-text-color-light);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-height: $floating-header-max-height;
+    padding: $floating-header-padding;
+
+    &-text {
+      flex: 2 1 auto;
+      font-family: $brand-font-bold;
+      font-size: $font-size-large;
+      line-height: $font-size-large;
+      text-align: left;
+    }
+  }
+
+  .md-floating__body {
+    overflow: auto;
+    padding: $floating-body-padding;
+  }
+}

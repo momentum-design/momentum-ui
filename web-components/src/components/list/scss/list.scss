@@ -1,0 +1,26 @@
+
+:host(md-list) {
+  .md-list {
+    @include flex($fd: column, $ai: stretch);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+  }
+}
+
+:host([alignment="horizontal"]) ul {
+  @include flex($fd: row, $jc: stretch);
+}
+
+:host([alignment="horizontal"]) ::slotted(md-list-item) {
+  @include flex($jc: center, $ai: center);
+  flex: 1 1 auto;
+}
+
+:host([alignment="vertical"]) {
+  @include flex($fd: column, $ai: stretch);
+}
+
+

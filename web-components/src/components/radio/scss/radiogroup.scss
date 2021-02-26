@@ -1,0 +1,25 @@
+:host(md-radiogroup) {
+  display: flex;
+}
+:host(md-radio) {
+  border-radius: $radio-input-border-radius;
+  display: inline !important;
+}
+
+:host([alignment="vertical"]) div {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+:host([alignment="vertical"]) div ::slotted(md-radio) {
+  margin-bottom: calc(#{$radio-main-indent} * 3);
+}
+
+:host([alignment="horizontal"]) div {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+:host([alignment="horizontal"]) div ::slotted(md-radio) {
+  margin-right: calc(#{$radio-main-indent} * 8);
+}

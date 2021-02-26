@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/react",
-  "version": "23.0.30",
+  "version": "23.21.5",
   "description": "Cisco Momentum UI framework for ReactJs applications",
   "author": "Cisco Systems, Inc.",
   "contributors": [
@@ -12,7 +12,7 @@
     "url": "https://github.com/momentum-design/momentum-ui/issues"
   },
   "engines": {
-    "node": ">=8",
+    "node": ">=8 && <=14.15.1",
     "npm": ">=5"
   },
   "keywords": [
@@ -78,14 +78,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@momentum-ui/core": "^19.0.11",
-    "@momentum-ui/utils": "^6.0.4",
+    "@momentum-ui/core": "^19.9.39",
+    "@momentum-ui/icons": "^8.5.0",
+    "@momentum-ui/utils": "^6.2.10",
+    "@restart/context": "^2.1.4",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "object-assign": "4.1.1",
     "react-aria-modal": "^2.11.1",
-    "react-context-toolbox": "^2.0.2",
     "react-focus-lock": "^1.19.1",
     "react-uid": "^2.2.0"
   },
@@ -95,6 +96,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/plugin-transform-react-constant-elements": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
@@ -102,6 +104,7 @@
     "@babel/preset-stage-0": "^7.0.0",
     "@cypress/webpack-preprocessor": "^4.1.0",
     "@hot-loader/react-dom": "~16.8.0",
+    "@momentum-ui/tokens": "^1.6.2",
     "@percy/cypress": "^0.2.3",
     "autoprefixer": "^7.2.4",
     "babel-core": "^7.0.0-bridge.0",

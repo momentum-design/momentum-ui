@@ -47,7 +47,7 @@ var database = new MomentumCharts.Database({});
 data.bind('', callback);
 ```
 
-### arguments
+#### arguments
 
 + eventName - The event name you have passed in the instructor. If not set, it will call a default event name.
 
@@ -59,7 +59,7 @@ data.bind('', callback);
 
 Unbind an event when data is updated.
 
-### arguments
+#### arguments
 
 + eventName - The event name you have passed in the instructor. If not set, it will call a default event name.
 
@@ -77,12 +77,8 @@ Emit an event.
 
 + args - The extra arguments you want to pass. The callback function will accept the event as the following format.
 
-``
-{
-  Data: [], 
-  Args: []
-}
-``
+	- Data
+	- Args
 
 + caller - The domain the callback function runs.
 
@@ -100,7 +96,7 @@ Emit all events on a data url.
 
 Get or set the data
 
-### arguments
+#### arguments
 
 + url - the data url. If you only pass a string to val, it will return the data directly.
 

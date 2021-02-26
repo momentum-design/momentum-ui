@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>alerts-and-notifications/check-circle_18</title>
+    <desc>Created with Sketch.</desc>
+    <g id="alerts-and-notifications/check-circle_18" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9,0 C4.038,0 0,4.038 0,9 C0,13.962 4.038,18 9,18 C13.962,18 18,13.962 18,9 C18,4.038 13.962,0 9,0 M9,17 C4.589,17 1,13.411 1,9 C1,4.589 4.589,1 9,1 C13.411,1 17,4.589 17,9 C17,13.411 13.411,17 9,17 M12.6206,6.2393 L7.5126,11.1403 L5.3796,9.0933 C5.1796,8.9033 4.8636,8.9083 4.6726,9.1083 C4.4816,9.3073 4.4876,9.6243 4.6866,9.8153 L7.1666,12.1943 C7.2636,12.2873 7.3886,12.3333 7.5126,12.3333 C7.6376,12.3333 7.7626,12.2873 7.8586,12.1943 L13.3126,6.9613 C13.5126,6.7693 13.5186,6.4533 13.3276,6.2543 C13.1366,6.0543 12.8206,6.0483 12.6206,6.2393" id="fill" fill="#171B1F"></path>
+    </g>
+</svg>

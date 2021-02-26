@@ -3,6 +3,904 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.9.39](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.38...@momentum-ui/core@19.9.39) (2021-02-23)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.38](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.37...@momentum-ui/core@19.9.38) (2021-01-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.37](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.36...@momentum-ui/core@19.9.37) (2020-12-22)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.36](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.35...@momentum-ui/core@19.9.36) (2020-12-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.35](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.34...@momentum-ui/core@19.9.35) (2020-12-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.34](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.33...@momentum-ui/core@19.9.34) (2020-12-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.33](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.32...@momentum-ui/core@19.9.33) (2020-12-12)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.32](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.31...@momentum-ui/core@19.9.32) (2020-12-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.31](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.30...@momentum-ui/core@19.9.31) (2020-12-10)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.30](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.29...@momentum-ui/core@19.9.30) (2020-12-09)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.29](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.28...@momentum-ui/core@19.9.29) (2020-12-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.28](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.27...@momentum-ui/core@19.9.28) (2020-11-21)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.27](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.26...@momentum-ui/core@19.9.27) (2020-11-20)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.26](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.25...@momentum-ui/core@19.9.26) (2020-11-10)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.25](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.24...@momentum-ui/core@19.9.25) (2020-11-08)
+
+
+### Bug Fixes
+
+* **avatar:** bot avatar not showing with onClick bug ([#649](https://github.com/momentum-design/momentum-ui/issues/649)) ([84ace6b](https://github.com/momentum-design/momentum-ui/commit/84ace6b769032988841ef9f91d295c24e6cb0af1))
+
+
+
+
+
+## [19.9.24](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.23...@momentum-ui/core@19.9.24) (2020-11-06)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.23](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.22...@momentum-ui/core@19.9.23) (2020-11-05)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.21...@momentum-ui/core@19.9.22) (2020-11-02)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.21](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.20...@momentum-ui/core@19.9.21) (2020-11-02)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.19...@momentum-ui/core@19.9.20) (2020-10-24)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.18...@momentum-ui/core@19.9.19) (2020-10-20)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.17...@momentum-ui/core@19.9.18) (2020-10-17)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.16...@momentum-ui/core@19.9.17) (2020-10-13)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.15...@momentum-ui/core@19.9.16) (2020-10-10)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.14...@momentum-ui/core@19.9.15) (2020-10-03)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.13...@momentum-ui/core@19.9.14) (2020-10-01)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.12...@momentum-ui/core@19.9.13) (2020-09-29)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.11...@momentum-ui/core@19.9.12) (2020-09-26)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.10...@momentum-ui/core@19.9.11) (2020-09-15)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.9...@momentum-ui/core@19.9.10) (2020-09-08)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.8...@momentum-ui/core@19.9.9) (2020-09-03)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.7...@momentum-ui/core@19.9.8) (2020-08-31)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.6...@momentum-ui/core@19.9.7) (2020-08-22)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.5...@momentum-ui/core@19.9.6) (2020-08-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.4...@momentum-ui/core@19.9.5) (2020-08-08)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.3...@momentum-ui/core@19.9.4) (2020-08-01)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.2...@momentum-ui/core@19.9.3) (2020-07-30)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.1...@momentum-ui/core@19.9.2) (2020-07-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.0...@momentum-ui/core@19.9.1) (2020-07-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.8...@momentum-ui/core@19.9.0) (2020-07-16)
+
+
+### Features
+
+* **tokens:** modify naming conventions of button color tokens ([f7cfead](https://github.com/momentum-design/momentum-ui/commit/f7cfead12503b86639d3d2186b18686b21791400))
+
+
+
+
+
+## [19.8.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.7...@momentum-ui/core@19.8.8) (2020-07-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.6...@momentum-ui/core@19.8.7) (2020-07-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.5...@momentum-ui/core@19.8.6) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+## [19.8.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.4...@momentum-ui/core@19.8.5) (2020-07-08)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.3...@momentum-ui/core@19.8.4) (2020-07-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.2...@momentum-ui/core@19.8.3) (2020-07-03)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.1...@momentum-ui/core@19.8.2) (2020-07-01)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.8.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.8.0...@momentum-ui/core@19.8.1) (2020-06-28)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.7.5...@momentum-ui/core@19.8.0) (2020-06-26)
+
+
+### Features
+
+* **tokens:** new button semantic color tokens and generate scss in core ([21def22](https://github.com/momentum-design/momentum-ui/commit/21def2240e08c050714494b1829af0ee863198ec))
+
+
+
+
+
+## [19.7.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.7.4...@momentum-ui/core@19.7.5) (2020-06-25)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.7.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.7.3...@momentum-ui/core@19.7.4) (2020-06-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.7.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.7.2...@momentum-ui/core@19.7.3) (2020-06-17)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.7.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.7.1...@momentum-ui/core@19.7.2) (2020-06-13)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.7.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.7.0...@momentum-ui/core@19.7.1) (2020-06-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.5...@momentum-ui/core@19.7.0) (2020-06-09)
+
+
+### Features
+
+* **space-list:** light mode theme for space list ([#606](https://github.com/momentum-design/momentum-ui/issues/606)) ([03336cd](https://github.com/momentum-design/momentum-ui/commit/03336cd7b3ce2049b88888899b87e20743af1e81))
+
+
+
+
+
+## [19.6.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.4...@momentum-ui/core@19.6.5) (2020-06-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.3...@momentum-ui/core@19.6.4) (2020-06-02)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.2...@momentum-ui/core@19.6.3) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.1...@momentum-ui/core@19.6.2) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.6.0...@momentum-ui/core@19.6.1) (2020-05-22)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.5.0...@momentum-ui/core@19.6.0) (2020-05-21)
+
+
+### Features
+
+* **tokens:** redirect paths, initial setup of token NPM module ([1fdb091](https://github.com/momentum-design/momentum-ui/commit/1fdb09137b6b986d4ebc4077596ac13d7a7fd9cc))
+
+
+
+
+
+# [19.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.19...@momentum-ui/core@19.5.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* **colors:** update color examples and 05 values ([88cec7a](https://github.com/momentum-design/momentum-ui/commit/88cec7aa6e155d778b9c8309c3a982092b2ef091))
+
+
+### Features
+
+* **colors:** updated colors to Momentum 2.0 ([f5393da](https://github.com/momentum-design/momentum-ui/commit/f5393da888fe055024d762c41c3d93e51c6cb8bf))
+
+
+
+
+
+## [19.4.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.18...@momentum-ui/core@19.4.19) (2020-05-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.17...@momentum-ui/core@19.4.18) (2020-05-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.16...@momentum-ui/core@19.4.17) (2020-05-15)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.15...@momentum-ui/core@19.4.16) (2020-05-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.14...@momentum-ui/core@19.4.15) (2020-05-02)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.13...@momentum-ui/core@19.4.14) (2020-04-30)
+
+
+### Bug Fixes
+
+* **lightbox:** fix thumbnail list shrinking in multi page files ([#598](https://github.com/momentum-design/momentum-ui/issues/598)) ([3b67f6d](https://github.com/momentum-design/momentum-ui/commit/3b67f6d107ab46a6903d34b6adcb62d18b5366f1))
+
+
+
+
+
+## [19.4.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.12...@momentum-ui/core@19.4.13) (2020-04-28)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.11...@momentum-ui/core@19.4.12) (2020-04-25)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.10...@momentum-ui/core@19.4.11) (2020-04-15)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.9...@momentum-ui/core@19.4.10) (2020-04-09)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.8...@momentum-ui/core@19.4.9) (2020-04-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.7...@momentum-ui/core@19.4.8) (2020-04-01)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.6...@momentum-ui/core@19.4.7) (2020-03-27)
+
+
+### Bug Fixes
+
+* **card:** add focus border when card is in focus ([346afd9](https://github.com/momentum-design/momentum-ui/commit/346afd9d3148211da8946f163835b271d4f62ec0))
+
+
+
+
+
+## [19.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.5...@momentum-ui/core@19.4.6) (2020-03-26)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.4...@momentum-ui/core@19.4.5) (2020-03-24)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.3...@momentum-ui/core@19.4.4) (2020-03-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.2...@momentum-ui/core@19.4.3) (2020-03-12)
+
+
+### Bug Fixes
+
+* **core:** Phone number input has extra padding ([d087755](https://github.com/momentum-design/momentum-ui/commit/d087755ba3a5f75301bee840bb8c1fc20a2c9b9d))
+
+
+
+
+
+## [19.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.1...@momentum-ui/core@19.4.2) (2020-03-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.4.0...@momentum-ui/core@19.4.1) (2020-03-10)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.3.0...@momentum-ui/core@19.4.0) (2020-03-07)
+
+
+### Features
+
+* **combo-box:** add error message ([69f9e8e](https://github.com/momentum-design/momentum-ui/commit/69f9e8e484ff8ae85ca0b4dc9a066ffbcc13ad93))
+
+
+
+
+
+# [19.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.4...@momentum-ui/core@19.3.0) (2020-02-18)
+
+
+### Bug Fixes
+
+* **modal:** remove keydown event on close button ([ee8b2fb](https://github.com/momentum-design/momentum-ui/commit/ee8b2fb))
+
+
+### Features
+
+* 🎸 Move scss to core ([a865315](https://github.com/momentum-design/momentum-ui/commit/a865315))
+
+
+
+
+
+## [19.2.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.3...@momentum-ui/core@19.2.4) (2020-01-28)
+
+
+### Bug Fixes
+
+* **select:** allow combo box entry, exclude error/warn filter style ([0b4e753](https://github.com/momentum-design/momentum-ui/commit/0b4e753))
+* **select:** apply error styling to first input ([360be9f](https://github.com/momentum-design/momentum-ui/commit/360be9f))
+
+
+
+
+
+## [19.2.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.2...@momentum-ui/core@19.2.3) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.1...@momentum-ui/core@19.2.2) (2020-01-25)
+
+
+### Bug Fixes
+
+* **top-bar:** make avatar topbar styling more specific ([125da63](https://github.com/momentum-design/momentum-ui/commit/125da63))
+
+
+
+
+
+## [19.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.2.0...@momentum-ui/core@19.2.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **coachmark:** remove arrow filter ([c1f17fd](https://github.com/momentum-design/momentum-ui/commit/c1f17fd))
+
+
+
+
+
+# [19.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.1.0...@momentum-ui/core@19.2.0) (2020-01-24)
+
+
+### Features
+
+* **TopbarNav:** add alignment prop ([fe2577b](https://github.com/momentum-design/momentum-ui/commit/fe2577b))
+
+
+
+
+
+# [19.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.24...@momentum-ui/core@19.1.0) (2020-01-22)
+
+
+### Bug Fixes
+
+* **sidepanel:** header icons should be same size as images ([596bdb4](https://github.com/momentum-design/momentum-ui/commit/596bdb4))
+
+
+### Features
+
+* **sidepanel:** icons within user-img headers should fit container ([f7c3ef3](https://github.com/momentum-design/momentum-ui/commit/f7c3ef3))
+
+
+
+
+
+## [19.0.24](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.23...@momentum-ui/core@19.0.24) (2020-01-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.23](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.22...@momentum-ui/core@19.0.23) (2020-01-15)
+
+
+### Bug Fixes
+
+* **select:** add warn/error class logic ([e2a6ddc](https://github.com/momentum-design/momentum-ui/commit/e2a6ddc))
+
+
+
+
+
+## [19.0.22](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.21...@momentum-ui/core@19.0.22) (2020-01-15)
+
+
+### Bug Fixes
+
+* **select:** revert breaking changes ([23e5252](https://github.com/momentum-design/momentum-ui/commit/23e5252))
+
+
+
+
+
+## [19.0.21](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.20...@momentum-ui/core@19.0.21) (2020-01-15)
+
+
+### Bug Fixes
+
+* **sidebar:** list item should honor active/hover colors ([3dbcc95](https://github.com/momentum-design/momentum-ui/commit/3dbcc95))
+
+
+
+
+
+## [19.0.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.19...@momentum-ui/core@19.0.20) (2020-01-14)
+
+
+### Bug Fixes
+
+* **select:** add warn/error class logic ([e3a2cd5](https://github.com/momentum-design/momentum-ui/commit/e3a2cd5))
+
+
+
+
+
+## [19.0.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.18...@momentum-ui/core@19.0.19) (2020-01-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.17...@momentum-ui/core@19.0.18) (2020-01-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.16...@momentum-ui/core@19.0.17) (2020-01-08)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.15...@momentum-ui/core@19.0.16) (2019-12-21)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.14...@momentum-ui/core@19.0.15) (2019-12-20)
+
+
+### Bug Fixes
+
+* add @momentum-ui/icons to dependencies ([d6f48ea](https://github.com/momentum-design/momentum-ui/commit/d6f48ea))
+
+
+
+
+
+## [19.0.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.13...@momentum-ui/core@19.0.14) (2019-12-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.12...@momentum-ui/core@19.0.13) (2019-12-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.0.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.11...@momentum-ui/core@19.0.12) (2019-12-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.0.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.0.10...@momentum-ui/core@19.0.11) (2019-12-11)
 
 **Note:** Version bump only for package @momentum-ui/core

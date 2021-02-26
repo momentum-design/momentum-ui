@@ -5,17 +5,20 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SpaceListMeeting
     attendees={Array []}
+    buttonAriaLabel={null}
     buttonLabel=""
     buttonOnClick={null}
     childrenLeft={null}
     childrenRight={null}
     className=""
+    eventOverlayProps={null}
     header="header"
     id=""
     isBold={false}
     isMessagingOnlyShare={false}
     meetingType=""
     subheader=""
+    theme=""
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -47,6 +50,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -101,6 +105,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -128,6 +133,7 @@ ShallowWrapper {
             "hasNotification": false,
             "hideDefaultTooltip": false,
             "icon": null,
+            "initials": null,
             "isDecrypting": false,
             "isOverview": false,
             "onClick": null,
@@ -215,6 +221,7 @@ ShallowWrapper {
     "type": Object {
       "$$typeof": Symbol(react.forward_ref),
       "defaultProps": undefined,
+      "displayName": "ContextTransform(ListItem)",
       "propTypes": undefined,
       "render": [Function],
     },
@@ -240,6 +247,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              initials={null}
               isDecrypting={false}
               isOverview={false}
               onClick={null}
@@ -294,6 +302,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              initials={null}
               isDecrypting={false}
               isOverview={false}
               onClick={null}
@@ -321,6 +330,7 @@ ShallowWrapper {
               "hasNotification": false,
               "hideDefaultTooltip": false,
               "icon": null,
+              "initials": null,
               "isDecrypting": false,
               "isOverview": false,
               "onClick": null,
@@ -408,6 +418,7 @@ ShallowWrapper {
       "type": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": undefined,
+        "displayName": "ContextTransform(ListItem)",
         "propTypes": undefined,
         "render": [Function],
       },

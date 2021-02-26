@@ -4,15 +4,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Tab extends React.PureComponent {
-
   componentDidUpdate() {
-    this.props.focus && this.tabLink.focus();
+    this.props.focus && !this.props.preventFocus && this.tabLink.focus();
   }
 
   render() {
     const {
       heading,
       active,
+      isType,
       onPress,
       onKeyDown,
       role,
@@ -28,15 +28,16 @@ class Tab extends React.PureComponent {
       'md-tab__item' +
       `${(className && ` ${className}`) || ''}` +
       `${active ? ' active' : ''}` +
+      `${(isType && ` md-type--${isType}`) || ''}` +
       `${disabled ? ' disabled' : ''}`}
         {...(!disabled ? {tabIndex: '-1'} : {})}
         >
         <a
           ref={ref => (this.tabLink = ref)}
           role={role}
-          href='javascript:void(0)'
           onKeyDown={onKeyDown}
-          onClick={onPress}
+          href="#"
+          onClick={(e) => {e.preventDefault(); onPress(e)}}
           tabIndex={focus ? 0 : -1}
           aria-current={active}
           >
@@ -58,6 +59,8 @@ Tab.propTypes = {
   disabled: PropTypes.bool,
   /** @prop Specifies if Tab should automatically get focus when page loads | false */
   focus: PropTypes.bool,
+  /** @prop Prevent focusing the Tab (which would scroll it into view if not already) when selected | false */
+  preventFocus: PropTypes.bool,
   /** @prop Tab Heading Text */
   heading: PropTypes.string.isRequired,
   /** @prop Currently unused prop myKey | 0 */
@@ -68,6 +71,7 @@ Tab.propTypes = {
   onPress: PropTypes.func,
   /** @prop Tab's anchor role type | 'tab' */
   role: PropTypes.string,
+  isType: PropTypes.string,
 };
 
 Tab.defaultProps = {
@@ -75,10 +79,12 @@ Tab.defaultProps = {
   className: '',
   disabled: false,
   focus: false,
+  preventFocus: false,
   myKey: 0,
   onKeyDown: null,
   onPress: null,
   role: 'tab',
+  isType: 'pills',
 };
 
 Tab.displayName = 'Tab';

@@ -15,8 +15,8 @@
       word-break: break-word;
     }
 
-    .#{$prefix}-event-overlay__arrow {
-      filter: none;
+    .#{$prefix}-event-overlay__arrow::after {
+      display: none;
     }
 
     & > .md-event-overlay__children {

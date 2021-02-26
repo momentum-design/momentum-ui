@@ -1,9 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
-    <title>sources-and-media/file-excel-active_12</title>
-    <desc>Created with Sketch.</desc>
-    <g id="sources-and-media/file-excel-active_12" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M7.582,0.24 L10.759,3.417 C10.915,3.574 11,3.78 11,4 L11,10.5 C11,11.327 10.327,12 9.5,12 L2.5,12 C1.673,12 1,11.327 1,10.5 L1,1.5 C1,0.673 1.673,0 2.5,0 L6,0 L7,0 C7.219,0 7.426,0.085 7.582,0.24 Z M6.5605,6.968 L8.5205,4.24 L7.4085,4.24 L6.0565,6.216 L4.7285,4.24 L3.5125,4.24 L5.4405,7.024 L3.3765,10 L4.5045,10 L5.9605,7.824 L7.3845,10 L8.6245,10 L6.5605,6.968 Z" id="Shape" fill="#171B1F"></path>
-    </g>
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.759 3.417L7.582 0.24C7.426 0.085 7.219 0 7 0H6H2.5C1.673 0 1 0.673 1 1.5V10.5C1 11.327 1.673 12 2.5 12H9.5C10.327 12 11 11.327 11 10.5V4C11 3.78 10.915 3.574 10.759 3.417ZM6.56046 6.96801L8.52046 4.24001H7.40847L6.05647 6.21601L4.72846 4.24001H3.51247L5.44046 7.02401L3.37646 10H4.50446L5.96046 7.82401L7.38447 10H8.62446L6.56046 6.96801Z" fill="#121212"/>
 </svg>

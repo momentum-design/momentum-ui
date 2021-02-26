@@ -12,7 +12,7 @@ Define how to map real data to position value
 ## Example
 
 ```
-let scaleX = new MomentumChart.Scale('scaleLinear', {
+let scaleX = new MomentumCharts.Scale('scaleLinear', {
   range: [0, 1000],
   domain: [2000, 2020]
 });

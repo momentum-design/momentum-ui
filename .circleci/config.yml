@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/included:3.4.1
+      - image: cypress/included:4.6.0
         environment:
           TERM: xterm
 
@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add @percy/agent lerna
-      - run: yarn bootstrap --frozen-lockfile --non-interactive
+      - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run: yarn cypress:verify
       - persist_to_workspace:
@@ -31,6 +31,25 @@ jobs:
       - run:
           name: Lint all Libraries
           command: yarn lint:all
+
+  build_tokens:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Build tokens library
+          command: yarn build:tokens
+      - store_artifacts:
+          path: ~/repo/tokens/dist/
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo/tokens/dist/
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
 
   test_icons:
     <<: *image_defaults
@@ -61,35 +80,6 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
-  test_angularjs:
-    <<: *image_defaults
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: yarn bootstrap
-      - run:
-          name: Test angularjs library with Percy.io snapshots
-          command: yarn ci:test:angularjs:percy
-      - store_artifacts:
-          path: ~/repo/angularjs/cypress/
-      - store_artifacts:
-          path: ~/repo/angularjs/dist/
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
-
-  test_angular:
-    <<: *image_defaults
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Test angular library
-          command: yarn ci:test:angular
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
-
   test_react:
     <<: *image_defaults
     steps:
@@ -102,6 +92,60 @@ jobs:
       - run:
           name: Visual regression test react library with Percy.io snapshots
           command: yarn ci:test:react:percy
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  test_web_components:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Unit Test web components library
+          command: yarn ci:test:wc
+      - run:
+          name: Build Storybook
+          command: yarn storybook:wc-dist
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  storybook_web_components:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Deploy Storybook
+          command: yarn storybook:wc-deploy
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
+  static_analysis:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn bootstrap
+      - run:
+          name: Build web components library
+          command: yarn build:wc
+      - run:
+          name: Unit Test web components library
+          command: yarn ci:test:wc
+      - run: 
+          name: Upload Codecov report
+          command: bash <(curl -s https://codecov.io/bash)
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -143,6 +187,9 @@ jobs:
           command: yarn lint:all
       - run: yarn build:react
       - run:
+          name: Build tokens library
+          command: yarn build:tokens
+      - run:
           name: Test icons library
           command: yarn ci:test:icons
       - run:
@@ -151,9 +198,6 @@ jobs:
       - run:
           name: Test react library
           command: yarn ci:test:react
-      - run:
-          name: Test angular library
-          command: yarn ci:test:angular
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -180,6 +224,22 @@ jobs:
           name: Publish website
           command: yarn publish:www
 
+  publish_www:
+    <<: *image_defaults
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn global add @percy/agent lerna && yarn install --frozen-lockfile --non-interactive
+      - run: yarn bootstrap
+      - run: npm rebuild node-sass
+      - run:
+          name: Build website
+          command: yarn build:www
+      - run:
+          name: Publish website
+          command: yarn publish:www
+
 workflows:
   version: 2
   lint_test:
@@ -188,31 +248,41 @@ workflows:
       - lint:
           requires:
             - checkout_install
+      - build_tokens:
+          requires:
+            - lint
       - test_react:
           requires:
-            - lint
+            - build_tokens
+      - test_web_components:
+          requires:
+            - build_tokens
       - test_core_percy:
           requires:
-            - lint
-      - test_angular:
-          requires:
-            - lint
-      - test_angularjs:
-          requires:
-            - lint
+            - build_tokens
       - test_www:
           requires:
-            - lint
+            - build_tokens
       - test_icons:
           requires:
             - lint
+      - static_analysis:
+          requires:
+            - build_tokens
       - percy_finalize_all:
           requires:
-            - test_icons
-            - test_core_percy
             - test_react
-            - test_angular
-            - test_angularjs
+
+  daily_storybook_deploy:
+    triggers:
+      - schedule:
+          cron: "30 5 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - storybook_web_components
 
   daily_release:
     triggers:
@@ -224,4 +294,3 @@ workflows:
                 - master
     jobs:
       - lint_test_release
-

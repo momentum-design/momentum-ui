@@ -59,6 +59,7 @@ class Avatar extends React.Component {
       hasNotification,
       hideDefaultTooltip,
       icon,
+      initials,
       isDecrypting,
       isOverview,
       onClick,
@@ -75,12 +76,15 @@ class Avatar extends React.Component {
     } = this.state;
 
     const getInitials = () => {
+      if (initials) return initials;
       if (!title.replace(/\s/g, '').length) return '';
       let letters = [];
       const words = title.trim().split(/ +/);
-      const repeatTimes = Math.min(type === 'group' && 1 || 2, words.length);
-      for (let i = 0; i < repeatTimes; i++) {
-        letters.push(String.fromCodePoint(words[i].codePointAt(0)));
+    
+      letters.push(String.fromCodePoint(words[0].codePointAt(0)));
+
+      if(type !== 'group' && words.length > 1) {
+        letters.push(String.fromCodePoint(words[words.length-1].codePointAt(0)));
       }
       return letters.join('');
     };
@@ -164,6 +168,7 @@ class Avatar extends React.Component {
         className={
           'md-avatar' +
           `${(onClick && ` md-avatar--clickable`) || ''}` +
+          `${(onClick && type === 'bot' && ` md-avatar--clickable-bot`) || ''}` +
           `${(type && ` md-avatar--${type}`) || ''}` +
           `${(size && ` md-avatar--${size}`) || ''}` +
           `${(theme && ` md-avatar--${theme}`) || ''}` +
@@ -216,6 +221,8 @@ Avatar.propTypes = {
   hideDefaultTooltip: PropTypes.bool,
   /** @prop Optional icon component for the Avatar | null */
   icon: PropTypes.element,
+  /** @prop Optional string for avatar's initials | null*/
+  initials: PropTypes.string,
   /** @prop Set if Avatar's content is decrypting | false */
   isDecrypting: PropTypes.bool,
   /** @prop Set existance of Avatar's Overview | false */
@@ -244,6 +251,7 @@ Avatar.defaultProps = {
   hasNotification: false,
   hideDefaultTooltip: false,
   icon: null,
+  initials: null,
   isDecrypting: false,
   isOverview: false,
   onClick: null,

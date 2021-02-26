@@ -59,8 +59,8 @@ Tooltip.propTypes = {
   className: PropTypes.string,
    /** @prop Optional object for Popover Component props | {} */
   popoverProps: PropTypes.object,
-  /** @prop Tooltip text | '' */
-  tooltip: PropTypes.string,
+  /** @prop Tooltip text | ''  */
+  tooltip: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   /** @prop Set the action which triggers the Tooltip | 'MouseEnter' */
   tooltipTrigger: PropTypes.oneOf(['MouseEnter', 'Click', 'Focus']),
   /** @prop Set the Tooltip width | null */

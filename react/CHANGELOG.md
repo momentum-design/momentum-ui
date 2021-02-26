@@ -3,6 +3,955 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.21.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.4...@momentum-ui/react@23.21.5) (2021-02-23)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.21.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.3...@momentum-ui/react@23.21.4) (2021-01-16)
+
+
+### Bug Fixes
+
+* **node:** bumped node version to 14.15.1 ([#746](https://github.com/momentum-design/momentum-ui/issues/746)) ([9393d47](https://github.com/momentum-design/momentum-ui/commit/9393d473e7425e3a0b04b629d639897525b5542e))
+
+
+
+
+
+## [23.21.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.2...@momentum-ui/react@23.21.3) (2020-12-22)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.21.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.1...@momentum-ui/react@23.21.2) (2020-12-19)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.21.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.0...@momentum-ui/react@23.21.1) (2020-12-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.20.3...@momentum-ui/react@23.21.0) (2020-12-16)
+
+
+### Features
+
+* **spacelistmeeting:** optional button aria label different from button label ([#724](https://github.com/momentum-design/momentum-ui/issues/724)) ([cdae7a4](https://github.com/momentum-design/momentum-ui/commit/cdae7a4b5b9cc037ef92c589b110dc05230ce76d))
+
+
+
+
+
+## [23.20.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.20.2...@momentum-ui/react@23.20.3) (2020-12-12)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.20.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.20.1...@momentum-ui/react@23.20.2) (2020-12-11)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.20.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.20.0...@momentum-ui/react@23.20.1) (2020-12-10)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.20.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.2...@momentum-ui/react@23.20.0) (2020-12-09)
+
+
+### Bug Fixes
+
+* **tooltip:** convert tooltip prop type from string to object ([#722](https://github.com/momentum-design/momentum-ui/issues/722)) ([7ced608](https://github.com/momentum-design/momentum-ui/commit/7ced608a5b38bbb796591b228af0561220937a67))
+
+
+### Features
+
+* **listitem:** allows optional change of role ([#723](https://github.com/momentum-design/momentum-ui/issues/723)) ([7ce1dc9](https://github.com/momentum-design/momentum-ui/commit/7ce1dc98babd5f6367e3fac90934fad81928c75e))
+
+
+
+
+
+## [23.19.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.1...@momentum-ui/react@23.19.2) (2020-12-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.19.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.19.0...@momentum-ui/react@23.19.1) (2020-11-21)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.19.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.2...@momentum-ui/react@23.19.0) (2020-11-20)
+
+
+### Features
+
+* **avatar:** add initials props ([#659](https://github.com/momentum-design/momentum-ui/issues/659)) ([3ea642c](https://github.com/momentum-design/momentum-ui/commit/3ea642c2e89ee16edebfaef58b152d8e2fe9f0fa))
+
+
+
+
+
+## [23.18.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.1...@momentum-ui/react@23.18.2) (2020-11-10)
+
+
+### Bug Fixes
+
+* **EventOverlay:** change removal of resize event handler to correctly remove the event ([#650](https://github.com/momentum-design/momentum-ui/issues/650)) ([35d51e0](https://github.com/momentum-design/momentum-ui/commit/35d51e061500d1dd75be1b5b0c26fef16b869925))
+
+
+
+
+
+## [23.18.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.18.0...@momentum-ui/react@23.18.1) (2020-11-08)
+
+
+### Bug Fixes
+
+* **avatar:** bot avatar not showing with onClick bug ([#649](https://github.com/momentum-design/momentum-ui/issues/649)) ([84ace6b](https://github.com/momentum-design/momentum-ui/commit/84ace6b769032988841ef9f91d295c24e6cb0af1))
+
+
+
+
+
+# [23.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.20...@momentum-ui/react@23.18.0) (2020-11-06)
+
+
+### Features
+
+* **react:** add option to not automatically scroll Tab(s) into view ([552669c](https://github.com/momentum-design/momentum-ui/commit/552669c7961084755605f4fdcd61446b0822ca30))
+
+
+
+
+
+## [23.17.20](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.19...@momentum-ui/react@23.17.20) (2020-11-05)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.19](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.18...@momentum-ui/react@23.17.19) (2020-11-02)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.18](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.17...@momentum-ui/react@23.17.18) (2020-11-02)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.17](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.16...@momentum-ui/react@23.17.17) (2020-10-24)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.16](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.15...@momentum-ui/react@23.17.16) (2020-10-20)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.14...@momentum-ui/react@23.17.15) (2020-10-17)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.13...@momentum-ui/react@23.17.14) (2020-10-13)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.12...@momentum-ui/react@23.17.13) (2020-10-10)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.11...@momentum-ui/react@23.17.12) (2020-10-03)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.10...@momentum-ui/react@23.17.11) (2020-10-01)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.9...@momentum-ui/react@23.17.10) (2020-09-29)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.8...@momentum-ui/react@23.17.9) (2020-09-26)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.7...@momentum-ui/react@23.17.8) (2020-09-15)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.6...@momentum-ui/react@23.17.7) (2020-09-08)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.5...@momentum-ui/react@23.17.6) (2020-09-03)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.4...@momentum-ui/react@23.17.5) (2020-08-31)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.3...@momentum-ui/react@23.17.4) (2020-08-22)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.2...@momentum-ui/react@23.17.3) (2020-08-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.1...@momentum-ui/react@23.17.2) (2020-08-08)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.17.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.17.0...@momentum-ui/react@23.17.1) (2020-08-01)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.17.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.16.0...@momentum-ui/react@23.17.0) (2020-07-30)
+
+
+### Bug Fixes
+
+* **button:** add string as allowable proptype to ariaPressed ([b9ebb10](https://github.com/momentum-design/momentum-ui/commit/b9ebb10e96fb5ccc51c5f24298e5ba77a51061ac))
+* **list:** allow ariaConfig to be a boolean ([90d6b2b](https://github.com/momentum-design/momentum-ui/commit/90d6b2bcbea88647855adf7026688d78b725f417))
+* **popover:** clear popover delayCheckHover timeout ([#622](https://github.com/momentum-design/momentum-ui/issues/622)) ([7811cfd](https://github.com/momentum-design/momentum-ui/commit/7811cfd37ae04b52df619793ac95634334251974))
+* **popover:** remove universal overwrite of anchor onKeyDown ([5f4afe1](https://github.com/momentum-design/momentum-ui/commit/5f4afe126039e4c2005eb050fefecddb3f983743))
+
+
+### Features
+
+* **popover:** fix copy paste from contact card bug ([#629](https://github.com/momentum-design/momentum-ui/issues/629)) ([a5b9234](https://github.com/momentum-design/momentum-ui/commit/a5b9234e681189c7e07ca0af5b88d2dbedbb64cb))
+
+
+
+
+
+# [23.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.11...@momentum-ui/react@23.16.0) (2020-07-19)
+
+
+### Features
+
+* **event-overlay:** prevent ENTER/SPACE from closing popover ([#626](https://github.com/momentum-design/momentum-ui/issues/626)) ([58e3889](https://github.com/momentum-design/momentum-ui/commit/58e3889fde5aa6d092f472ea8e71b74bab46e4a4))
+
+
+
+
+
+## [23.15.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.10...@momentum-ui/react@23.15.11) (2020-07-18)
+
+
+### Bug Fixes
+
+* don't show popover content if it's null ([#631](https://github.com/momentum-design/momentum-ui/issues/631)) ([9238203](https://github.com/momentum-design/momentum-ui/commit/9238203d1797e2a1d150de149e4a17aeec63948b))
+
+
+
+
+
+## [23.15.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.9...@momentum-ui/react@23.15.10) (2020-07-16)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.8...@momentum-ui/react@23.15.9) (2020-07-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.7...@momentum-ui/react@23.15.8) (2020-07-11)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.6...@momentum-ui/react@23.15.7) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+## [23.15.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.5...@momentum-ui/react@23.15.6) (2020-07-08)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.4...@momentum-ui/react@23.15.5) (2020-07-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.3...@momentum-ui/react@23.15.4) (2020-07-03)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.2...@momentum-ui/react@23.15.3) (2020-07-01)
+
+
+### Bug Fixes
+
+* **modal:** clear hide timeout onclose ([#623](https://github.com/momentum-design/momentum-ui/issues/623)) ([808453d](https://github.com/momentum-design/momentum-ui/commit/808453d05f615fbcb1acdd2225c8e3a429319818))
+
+
+
+
+
+## [23.15.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.1...@momentum-ui/react@23.15.2) (2020-06-28)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.15.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.15.0...@momentum-ui/react@23.15.1) (2020-06-26)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.14.1...@momentum-ui/react@23.15.0) (2020-06-25)
+
+
+### Features
+
+* **list:** specify navigation direction ([ef8ebd5](https://github.com/momentum-design/momentum-ui/commit/ef8ebd5a56f7af86b6481f518be7ec2831a9ddcc))
+
+
+
+
+
+## [23.14.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.14.0...@momentum-ui/react@23.14.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* **EventOverLay:** Change global Element to React Element to check ([#615](https://github.com/momentum-design/momentum-ui/issues/615)) ([ee95558](https://github.com/momentum-design/momentum-ui/commit/ee95558edc66a247fd5c445247df2b52de4cccd0))
+
+
+
+
+
+# [23.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.13.1...@momentum-ui/react@23.14.0) (2020-06-17)
+
+
+### Features
+
+* **popover:** accessible hover popoover ([#607](https://github.com/momentum-design/momentum-ui/issues/607)) ([48207bc](https://github.com/momentum-design/momentum-ui/commit/48207bcb2fb2309d78c24d60cab90d93631515cf))
+
+
+
+
+
+## [23.13.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.13.0...@momentum-ui/react@23.13.1) (2020-06-13)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.12.0...@momentum-ui/react@23.13.0) (2020-06-11)
+
+
+### Bug Fixes
+
+* **listitem:** accessibility within listitem ([2e5bcb7](https://github.com/momentum-design/momentum-ui/commit/2e5bcb7366a71fb3bb860a70df1449aa5116fa55))
+* **listitem:** accessibility within listitem ([c8e663e](https://github.com/momentum-design/momentum-ui/commit/c8e663e0079a03769392e030b029a2964a72718c))
+* **listitem:** accessible children with popover ([4806faf](https://github.com/momentum-design/momentum-ui/commit/4806faf8e0b076efb7c9c41a282f86a7c38991a7))
+* **listitem:** accessible children with popover ([e2317de](https://github.com/momentum-design/momentum-ui/commit/e2317ded7065d1eda31ec49bc60f405eb9990220))
+* **listitem:** tabbable children accessibility ([3f1b072](https://github.com/momentum-design/momentum-ui/commit/3f1b072a8fe1fb93abb4438221fd21296ae8fddc))
+* **listitem:** tabbable children accessibility ([c14b610](https://github.com/momentum-design/momentum-ui/commit/c14b61078b10408835caf0db9d16f9d7f5d1eb64))
+
+
+### Features
+
+* **listitem:** children accessibility ([c77d480](https://github.com/momentum-design/momentum-ui/commit/c77d48021d7a0811c0b1fecf3069988ec2f3b122))
+* **listitem:** children accessibility ([9625497](https://github.com/momentum-design/momentum-ui/commit/9625497697a49e1c5c806ba8b134379b6a7a4498))
+* **listitem:** children accessibility ([d89ae4e](https://github.com/momentum-design/momentum-ui/commit/d89ae4e5977cb11ff0895682c7577f95006e894b))
+* **listitem:** focus on tabbable children only when listitem is focused ([6cd6e89](https://github.com/momentum-design/momentum-ui/commit/6cd6e8941ecaab1d0dc547eba065284a539031a8))
+* **listitem:** handle tabbable children accessibility ([8c74c69](https://github.com/momentum-design/momentum-ui/commit/8c74c6938e72fdcde6576c8f00d26de6e2c550ce))
+* **listitem:** only allow tabbable children when listitem is focused ([1098f36](https://github.com/momentum-design/momentum-ui/commit/1098f3680fbf44963f54431e3761f2c8e8c7ae6d))
+* **listitem:** only allow tabbable children when listitem is focused ([6fe14d7](https://github.com/momentum-design/momentum-ui/commit/6fe14d7d7eae66add38bb1da836a0714fe74a7a6))
+* **listitem:** only allow tabbable children when listitem is focused ([7df80b2](https://github.com/momentum-design/momentum-ui/commit/7df80b27f9683a2d7aae11dc5e28ca1c0b6cd326))
+* **listitem:** only allow tabbable children when listitem is focused ([7a63702](https://github.com/momentum-design/momentum-ui/commit/7a63702a8d97d5fe82db978540602a8762d0f1ff))
+
+
+
+
+
+# [23.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.4...@momentum-ui/react@23.12.0) (2020-06-09)
+
+
+### Features
+
+* **space-list:** light mode theme for space list ([#606](https://github.com/momentum-design/momentum-ui/issues/606)) ([03336cd](https://github.com/momentum-design/momentum-ui/commit/03336cd7b3ce2049b88888899b87e20743af1e81))
+
+
+
+
+
+## [23.11.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.3...@momentum-ui/react@23.11.4) (2020-06-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.11.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.2...@momentum-ui/react@23.11.3) (2020-06-02)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.11.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.1...@momentum-ui/react@23.11.2) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.11.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.11.0...@momentum-ui/react@23.11.1) (2020-05-27)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.10.0...@momentum-ui/react@23.11.0) (2020-05-22)
+
+
+### Features
+
+* **eventoverlay:** add event path find for shadow elements ([#611](https://github.com/momentum-design/momentum-ui/issues/611)) ([e5af7e1](https://github.com/momentum-design/momentum-ui/commit/e5af7e1fcf86de066264e97255374d7f2314e854))
+
+
+
+
+
+# [23.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.9.0...@momentum-ui/react@23.10.0) (2020-05-21)
+
+
+### Features
+
+* **tokens:** redirect paths, initial setup of token NPM module ([1fdb091](https://github.com/momentum-design/momentum-ui/commit/1fdb09137b6b986d4ebc4077596ac13d7a7fd9cc))
+
+
+
+
+
+# [23.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.5...@momentum-ui/react@23.9.0) (2020-05-20)
+
+
+### Features
+
+* **colors:** updated colors to Momentum 2.0 ([f5393da](https://github.com/momentum-design/momentum-ui/commit/f5393da888fe055024d762c41c3d93e51c6cb8bf))
+
+
+
+
+
+## [23.8.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.4...@momentum-ui/react@23.8.5) (2020-05-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.3...@momentum-ui/react@23.8.4) (2020-05-16)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.2...@momentum-ui/react@23.8.3) (2020-05-15)
+
+
+### Bug Fixes
+
+* **select:** multiselect options stay selected ([eb0b528](https://github.com/momentum-design/momentum-ui/commit/eb0b5284be6e73eecb8461132a6966d300ca73b1))
+
+
+
+
+
+## [23.8.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.1...@momentum-ui/react@23.8.2) (2020-05-07)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.8.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.8.0...@momentum-ui/react@23.8.1) (2020-05-02)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.1...@momentum-ui/react@23.8.0) (2020-04-30)
+
+
+### Features
+
+* **modal:** modal header accessibility ([#596](https://github.com/momentum-design/momentum-ui/issues/596)) ([dfe6723](https://github.com/momentum-design/momentum-ui/commit/dfe6723e2d0567142f12ac9b37c29f0dd24b44bf))
+
+
+
+
+
+## [23.7.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.7.0...@momentum-ui/react@23.7.1) (2020-04-28)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.6.1...@momentum-ui/react@23.7.0) (2020-04-25)
+
+
+### Features
+
+* **accessibility:** optionally disable aria-current tag ([#582](https://github.com/momentum-design/momentum-ui/issues/582)) ([0165ab6](https://github.com/momentum-design/momentum-ui/commit/0165ab680e008641cc567863b5db800f77e710b5))
+
+
+
+
+
+## [23.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.6.0...@momentum-ui/react@23.6.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **Lightbox:** update viewport dimensions onMount and display correct % size of image ([d3d892b](https://github.com/momentum-design/momentum-ui/commit/d3d892bda1b406d4510a7917fef1b330a9e7c2ee))
+
+
+
+
+
+# [23.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.5.0...@momentum-ui/react@23.6.0) (2020-04-09)
+
+
+### Features
+
+* **Lightbox:** pass img class name to viewport ([6c390f9](https://github.com/momentum-design/momentum-ui/commit/6c390f9753fd0b113e9798405dc5def76079115e))
+
+
+
+
+
+# [23.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.6...@momentum-ui/react@23.5.0) (2020-04-07)
+
+
+### Features
+
+* **List:** new prop for enabling event propagation ([cb189c4](https://github.com/momentum-design/momentum-ui/commit/cb189c4e5a3bcff21d798164fab321dac0d3e2e2))
+
+
+
+
+
+## [23.4.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.5...@momentum-ui/react@23.4.6) (2020-04-01)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.4.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.4...@momentum-ui/react@23.4.5) (2020-03-27)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.4.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.3...@momentum-ui/react@23.4.4) (2020-03-26)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.4.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.2...@momentum-ui/react@23.4.3) (2020-03-24)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.4.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.1...@momentum-ui/react@23.4.2) (2020-03-19)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.4.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.4.0...@momentum-ui/react@23.4.1) (2020-03-12)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.3.1...@momentum-ui/react@23.4.0) (2020-03-11)
+
+
+### Features
+
+* **Popover:** add prop for removing focus/blur handlers on hover ([486baa1](https://github.com/momentum-design/momentum-ui/commit/486baa1bf72aadbb8d84368c26ff76fdacb4ec3c))
+
+
+
+
+
+## [23.3.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.3.0...@momentum-ui/react@23.3.1) (2020-03-10)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.2.2...@momentum-ui/react@23.3.0) (2020-03-07)
+
+
+### Features
+
+* **SpaceListMeeting:** add eventOverlayProps prop ([a8bd7e8](https://github.com/momentum-design/momentum-ui/commit/a8bd7e886590c424c572d6376e48875a58b03df5))
+
+
+
+
+
+## [23.2.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.2.1...@momentum-ui/react@23.2.2) (2020-02-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.2.0...@momentum-ui/react@23.2.1) (2020-01-28)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.2.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.2...@momentum-ui/react@23.2.0) (2020-01-25)
+
+
+### Features
+
+* **MenuItem:** add listClassName prop ([a1dd631](https://github.com/momentum-design/momentum-ui/commit/a1dd631))
+* **SubMenu:** add eventOverlayProps as a prop ([4416155](https://github.com/momentum-design/momentum-ui/commit/4416155))
+
+
+
+
+
+## [23.1.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.1...@momentum-ui/react@23.1.2) (2020-01-25)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.1.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.1.0...@momentum-ui/react@23.1.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **EventOverlay:** fix absoluteParent logic ([907eee0](https://github.com/momentum-design/momentum-ui/commit/907eee0))
+
+
+
+
+
+# [23.1.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.44...@momentum-ui/react@23.1.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* **Button:** remove Button ariaLabel warning ([4e53873](https://github.com/momentum-design/momentum-ui/commit/4e53873))
+
+
+### Features
+
+* **TopbarNav:** add alignment prop ([fe2577b](https://github.com/momentum-design/momentum-ui/commit/fe2577b))
+
+
+
+
+
+## [23.0.44](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.43...@momentum-ui/react@23.0.44) (2020-01-22)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.43](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.42...@momentum-ui/react@23.0.43) (2020-01-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.42](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.41...@momentum-ui/react@23.0.42) (2020-01-15)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.41](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.40...@momentum-ui/react@23.0.41) (2020-01-15)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.40](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.39...@momentum-ui/react@23.0.40) (2020-01-15)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.39](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.38...@momentum-ui/react@23.0.39) (2020-01-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.38](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.37...@momentum-ui/react@23.0.38) (2020-01-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.37](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.36...@momentum-ui/react@23.0.37) (2020-01-11)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.36](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.35...@momentum-ui/react@23.0.36) (2020-01-08)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.35](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.34...@momentum-ui/react@23.0.35) (2019-12-21)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.34](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.33...@momentum-ui/react@23.0.34) (2019-12-20)
+
+
+### Bug Fixes
+
+* add @momentum-ui/icons to dependencies ([d6f48ea](https://github.com/momentum-design/momentum-ui/commit/d6f48ea))
+
+
+
+
+
+## [23.0.33](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.32...@momentum-ui/react@23.0.33) (2019-12-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.32](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.31...@momentum-ui/react@23.0.32) (2019-12-16)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.0.31](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.30...@momentum-ui/react@23.0.31) (2019-12-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.0.30](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.0.29...@momentum-ui/react@23.0.30) (2019-12-11)
 
 **Note:** Version bump only for package @momentum-ui/react

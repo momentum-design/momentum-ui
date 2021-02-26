@@ -1,0 +1,164 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+*/
+
+.md-table-container {
+  width: 100%;
+
+  &_stickly {
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+
+    .md-table__header {
+      tr {
+        background-color: transparent;
+      }
+
+      th {
+        background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+        position: sticky;
+        top: 0;
+
+        &:hover {
+          background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+        }
+      }
+    }
+  }
+}
+
+.md-table {
+  border: $table-main-border;
+  border-collapse: collapse;
+  width: 100%;
+
+  .md-table__header {
+    tr {
+      background-color: var(--table-header-bg-color, $lm-table-header-bg-color-light);
+    }
+
+    th {
+      border-bottom: $table-main-border;
+      border-right: $table-main-border;
+      color: var(--table-text-color, $lm-table-text-color-light);
+      font-size: $font-size-small;
+      font-weight: bold;
+      padding-left: calc(#{$table-main-indent} * 3);
+      text-align: left;
+
+      &:hover {
+        background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+      }
+
+      &:active {
+        background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
+      }
+
+      a {
+        color: var(--table-text-color, $lm-table-text-color-light);
+
+        &.sortedAbc {
+          &:after {
+            content: $icon-arrow-filled-down_10;
+            display: inline-block;
+            font-family: $icon-font-name;
+            padding-left: $table-main-indent;
+            vertical-align: bottom;
+          }
+        }
+        &.sortedZyx {
+          &:after {
+            content: $icon-arrow-filled-up_10;
+            display: inline-block;
+            font-family: $icon-font-name;
+            padding-left: $table-main-indent;
+            vertical-align: bottom;
+          }
+        }
+      }
+    }
+  }
+
+  .md-table__body {
+    tr {
+      height: $table-row-height;
+
+      &:hover {
+        background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+      }
+
+      &:active {
+        background-color: var(--table-pressed-bg-color, $lm-table-pressed-bg-color-light);
+      }
+    }
+
+    td {
+      font-size: $font-size-base;
+      min-width: calc(#{$table-row-height} * 3.2);
+      padding-left: calc(#{$table-main-indent} * 3);
+      vertical-align: middle;
+
+      span {
+        @include text-dots;
+        min-height: calc(#{$table-main-indent} * 6);
+        width: calc(100% - #{$table-main-indent});
+      }
+
+      md-icon {
+        padding-left: $table-main-indent;
+        vertical-align: bottom;
+      }
+
+      &:last-child {
+        span {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  tr {
+    height: $table-row-height;
+
+    td {
+      border-bottom: $table-main-border;
+      border-right: $table-main-border;
+      vertical-align: top;
+    }
+  }
+
+  &--stripped {
+    .md-table__body {
+      tr:nth-child(even) {
+        background-color: var(--table-stripped-bg-color, $lm-table-stripped-bg-color-light);
+
+        &:hover {
+          background-color: var(--table-hover-bg-color, $lm-table-hover-bg-color-light);
+        }
+      }
+    }
+  }
+
+  &--clean {
+    tr {
+      td {
+        border-right: unset;
+      }
+    }
+  }
+
+  &--no-borders {
+    border: unset;
+
+    .md-table__header th,
+    tr td {
+      border-bottom: unset;
+      border-right: unset;
+    }
+  }
+}

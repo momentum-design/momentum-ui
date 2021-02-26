@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.12...@momentum-ui/charts@1.0.0-beta.13) (2020-07-09)
+
+
+### Bug Fixes
+
+* **tokens:** add config for push to S3 ([add0e64](https://github.com/momentum-design/momentum-ui/commit/add0e6444ed55ba034dabcd3852f5e12f73c5635))
+
+
+
+
+
+# [1.0.0-beta.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.11...@momentum-ui/charts@1.0.0-beta.12) (2020-05-21)
+
+
+### Features
+
+* **tokens:** redirect paths, initial setup of token NPM module ([1fdb091](https://github.com/momentum-design/momentum-ui/commit/1fdb09137b6b986d4ebc4077596ac13d7a7fd9cc))
+
+
+
+
+
+# [1.0.0-beta.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.10...@momentum-ui/charts@1.0.0-beta.11) (2020-01-16)
+
+
+### Features
+
+* **charts:** add plugin management system ([d90384b](https://github.com/momentum-design/momentum-ui/commit/d90384b))
+
+
+
+
+
+# [1.0.0-beta.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.9...@momentum-ui/charts@1.0.0-beta.10) (2020-01-15)
+
+
+### Bug Fixes
+
+* **chart:** fix typo ([c413fb5](https://github.com/momentum-design/momentum-ui/commit/c413fb5))
+
+
+### Features
+
+* **www:** Add chart page ([95cfd4e](https://github.com/momentum-design/momentum-ui/commit/95cfd4e))
+
+
+
+
+
 # [1.0.0-beta.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.8...@momentum-ui/charts@1.0.0-beta.9) (2019-11-20)
 
 

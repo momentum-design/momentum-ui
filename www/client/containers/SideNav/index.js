@@ -35,6 +35,7 @@ class SideNavContainer extends React.PureComponent {
     };
 
     const createNavLinks = routes.map((item, idx) => {
+
       return item.children
         ? (
           <SidebarNavItem

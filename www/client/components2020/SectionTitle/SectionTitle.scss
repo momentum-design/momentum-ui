@@ -1,0 +1,30 @@
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid $md-black;
+  padding-bottom: 12px;
+
+  &-dark {
+    border-bottom: 1px solid $md-white;
+  }
+
+  &__label {
+    @include h4($font-weight: $font-weight-bold);
+
+    &-dark {
+      color: $md-white;
+    }
+  }
+
+  &__trailing {
+    display: flex;
+    align-items: center;
+
+    &-badge {
+      font-family: $brand-font-regular;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+}

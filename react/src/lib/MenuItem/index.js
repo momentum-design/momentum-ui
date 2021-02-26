@@ -4,11 +4,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 import { UIDConsumer } from 'react-uid';
 import { ListItem } from '@momentum-ui/react';
 import ListContext from '../ListContext';
 import SelectableContext from '../SelectableContext';
+import { prefix } from '../utils/index';
 
 class MenuItem extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class MenuItem extends React.Component {
       className,
       isHeader,
       isOpen,
+      itemClassName,
       ...props
     } = this.props;
     const { selectContext } = this.state;
@@ -70,7 +72,7 @@ class MenuItem extends React.Component {
     ]);
 
     return (
-      <UIDConsumer name={id => `md-menu-item-${id}`}>
+      <UIDConsumer name={id => `${prefix}-menu-item-${id}`}>
         {id => (
           <SelectableContext.Provider value={selectContext}>
             <ListContext.Consumer>
@@ -79,26 +81,29 @@ class MenuItem extends React.Component {
                   || listContext
                   && listContext.active
                   && ReactDOM.findDOMNode(this.anchorRef)
-                  && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key']
-                  && ReactDOM.findDOMNode(this.anchorRef).attributes['data-md-event-key'].value
+                  && ReactDOM.findDOMNode(this.anchorRef).attributes[`data-${prefix}-event-key`]
+                  && ReactDOM.findDOMNode(this.anchorRef).attributes[`data-${prefix}-event-key`].value
                   && listContext.active.includes(
                     ReactDOM.findDOMNode(this.anchorRef)
-                    .attributes['data-md-event-key']
+                    .attributes[`data-${prefix}-event-key`]
                     .value
                   );
 
                 return(
                   <div
                     className={
-                      'md-menu-item' +
-                      `${(className && ` ${className}`) || ''}`
+                      `${prefix}-menu-item` +
+                      `${className && ` ${className}` || ''}`
                     }
                     aria-expanded={cxtActive}
                     aria-haspopup={!!children}
                   >
                     <ListItem
                       active={cxtActive}
-                      className={`${(isHeader && `md-menu-item__header`) || ''}`}
+                      className={
+                        `${isHeader && `md-menu-item__header` || ''}` +
+                        `${itemClassName && ` ${itemClassName}` || ''}`
+                      }
                       focusOnLoad
                       isReadOnly={isHeader}
                       id={id}
@@ -106,9 +111,7 @@ class MenuItem extends React.Component {
                       role="menuitem"
                       {...otherProps}
                     >
-                      {
-                        children
-                      }
+                      {children}
                     </ListItem>
                   </div>
                 );
@@ -130,6 +133,8 @@ MenuItem.propTypes = {
   isHeader: PropTypes.bool,
   /** @prop Determines if MenuItem is open | false */
   isOpen: PropTypes.bool,
+  /** @prop Optional list css class name | '' */
+  itemClassName: PropTypes.string,
   /** @prop Set to keep the MenuItem open | false */
   keepMenuOpen: PropTypes.bool,
   /** @prop Callback function invoked when user taps on MenutItem | null */
@@ -145,6 +150,7 @@ MenuItem.defaultProps = {
   className: '',
   isHeader: false,
   isOpen: false,
+  itemClassName: '',
   keepMenuOpen: false,
   onClick: null,
   parentKeyDown: null,

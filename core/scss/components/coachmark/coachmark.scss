@@ -3,27 +3,15 @@
 @include exports('md-coachmark') {
   .md-coachmark {
     &.#{$prefix}-event-overlay {
-      &--top {
-        > .#{$prefix}-event-overlay__arrow {
-          border-top-color: $md-cobalt-70;
-        }
-      }
+      @each $direction in (top, right, bottom, left) {
+        &--#{$direction} {
+          > .#{$prefix}-event-overlay__arrow {
+            border-#{$direction}-color: $md-cobalt-70;
 
-      &--left {
-        > .#{$prefix}-event-overlay__arrow {
-          border-left-color: $md-cobalt-70;
-        }
-      }
-
-      &--right {
-        > .#{$prefix}-event-overlay__arrow {
-          border-right-color: $md-cobalt-70;
-        }
-      }
-
-      &--bottom {
-        > .#{$prefix}-event-overlay__arrow {
-          border-bottom-color: $md-cobalt-70;
+            &::after {
+              display: none;
+            }
+          }
         }
       }
 

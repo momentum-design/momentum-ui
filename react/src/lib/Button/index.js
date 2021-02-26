@@ -7,18 +7,9 @@ import omit from 'lodash/omit';
 import { UIDConsumer } from 'react-uid';
 import ButtonGroupContext from '../ButtonGroupContext';
 import SelectableContext, { makeKeyboardKey } from '../SelectableContext';
-import mapContextToProps from 'react-context-toolbox/mapContextToProps';
+import mapContextToProps from '@restart/context/mapContextToProps';
 
 class Button extends React.Component {
-  componentDidMount() {
-    /* eslint-disable no-console */
-    const { ariaLabel, ariaLabelledBy } = this.props;
-    (!ariaLabel && !ariaLabelledBy)
-      &&
-      console.warn('[@momentum-ui/react] Button: Accessibility could be improved with ariaLabel');
-    /* eslint-enable no-console */
-  }
-
   handleKeyDown = (e, eventKey) => {
     const { onClick, parentOnSelect, parentKeyDown } = this.props;
     if (e.which === 32 || e.which === 13 ||
@@ -43,6 +34,7 @@ class Button extends React.Component {
       active,
       ariaLabel,
       ariaLabelledBy,
+      ariaPressed,
       children,
       circle,
       className,
@@ -194,6 +186,8 @@ class Button extends React.Component {
         ...ariaLabel
           ? { 'aria-label': ariaLabel }
           : { 'aria-labelledby': ariaLabelledBy },
+        'aria-pressed': ariaPressed,
+        ...(ariaPressed && ariaPressed !== '' ? {'aria-pressed': ariaPressed} : {}),
         tabIndex: cxtProps.tabIndex,
         ...tag && tag !== 'button' && {role: 'button'},
         ...otherProps,
@@ -225,6 +219,8 @@ Button.propTypes = {
   ariaLabel: PropTypes.string,
   /** @prop ID to reference for blindness accessibility feature | '' */
   ariaLabelledBy: PropTypes.string,
+  /** @prop Boolean value for aria-pressed (toggle button accessibility) | null */
+  ariaPressed: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
   /** @prop Children Nodes to Render inside Button | null */
   children: PropTypes.node,
   /** @prop Sets circle css styling | false */
@@ -275,6 +271,7 @@ Button.defaultProps = {
   active: false,
   ariaLabel: '',
   ariaLabelledBy: '',
+  ariaPressed: null,
   children: null,
   circle: false,
   className: '',

@@ -1,17 +1,17 @@
 import { JSDOM } from 'jsdom';
-import MomentumChart from '../../index.js';
+import MomentumCharts from '../../index.js';
 
 describe('#Axis Tests', function () {
   let board,
     axis;
   const { document } = (new JSDOM('')).window;
-  let scaleX = new MomentumChart.Scale('scaleLinear', {
+  let scaleX = new MomentumCharts.Scale('scaleLinear', {
     range: [100, 900],
     domain: [2000, 2020]
   }).Scale;
 
   beforeEach(function () {
-    board = new MomentumChart.Board(document.body);
+    board = new MomentumCharts.Board(document.body);
     axis = board.axis('axisBottom', {
       generator: {
         scale: scaleX,

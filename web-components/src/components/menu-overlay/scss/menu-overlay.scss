@@ -1,0 +1,75 @@
+/** @component menu-overlay */
+@include exports("md-menu-overlay") {
+  .md-menu-overlay {
+    box-sizing: border-box;
+    color: var(--md-primary-text-color);
+    position: relative;
+
+    * {
+      box-sizing: inherit;
+    }
+
+    .overlay-content {
+      background-color: var(--md-secondary-white-bg-color);
+      border: 1px solid var(--md-menu-overlay-border-color, --gray-20);
+      border-radius: rem-calc($global-radius * 2);
+      display: flex;
+      justify-content: space-around;
+      max-width: calc(100vw - var(--vw-padding) * 2);
+      overflow-y: auto;
+    }
+
+    .overlay-container {
+      border-radius: rem-calc($global-radius * 2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.14);
+      box-sizing: border-box;
+      display: none;
+      position: absolute;
+      z-index: 1000;
+
+      &[data-show] {
+        display: block;
+      }
+    }
+  }
+
+  .overlay-arrow {
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.16));
+    height: 0;
+    visibility: hidden;
+    width: 0;
+    z-index: -1;
+
+    &[data-show] {
+      visibility: visible;
+    }
+  }
+
+  .overlay-container[data-popper-placement^="top"] > .overlay-arrow {
+    border-left: solid $arrow-size transparent;
+    border-right: solid $arrow-size transparent;
+    border-top: solid $arrow-size var(--md-tertiary-white-bg-color);
+    bottom: $arrow-offset;
+  }
+
+  .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow {
+    border-bottom: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-left: solid $arrow-size transparent;
+    border-right: solid $arrow-size transparent;
+    top: $arrow-offset;
+  }
+
+  .overlay-container[data-popper-placement^="right"] > .overlay-arrow {
+    border-bottom: solid $arrow-size transparent;
+    border-right: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-top: solid $arrow-size transparent;
+    left: $arrow-offset;
+  }
+
+  .overlay-container[data-popper-placement^="left"] > .overlay-arrow {
+    border-bottom: solid $arrow-size transparent;
+    border-left: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-top: solid $arrow-size transparent;
+    right: $arrow-offset;
+  }
+}

@@ -62,7 +62,7 @@ class IconsContainer extends React.Component {
         <div className="docs-icons__top">
           <InputSearch onChange={this.handleSearchChange} disabled={loading || error} type="pill" />
           <a
-            href="https://form.asana.com/?hash=623076c440a25ef0ebac4722ef6ff8cbb162f26c267a33e3d647a09725090333&id=1131408626092815"
+            href="https://www.figma.com/file/DtYtoS2ePDLBt2BS7PE0So/Icon-Proposal-Form?node-id=1848%3A2064"
             className="md-button md-button--gray"
             target="_blank"
           >

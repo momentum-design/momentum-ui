@@ -1,0 +1,34 @@
+.md-menu-item {
+  list-style: none;
+  padding: rem-calc(2);
+
+  a {
+    color: var(--menu-default, $lm-menu-default-light);
+    display: flex;
+    padding: $menu-item-main-padding;
+  }
+
+  ::slotted(*) {
+    padding: 0 rem-calc(3);
+  }
+
+  &--selected {
+    background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
+  }
+
+  &:hover {
+    background: var(--menu-hover-bg, $lm-menu-hover-bg-light);
+  }
+
+  &:active {
+    background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    a {
+      background: transparent;
+      color: var(--md-disabled-text-color);
+    }
+  }
+}

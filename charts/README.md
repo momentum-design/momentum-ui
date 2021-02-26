@@ -65,24 +65,24 @@ You need add [d3.js](https://d3js.org/d3.v5.js) if you use `<script>` tag to lin
 
 In this section, you will create examples step by step. 
 
-+ [Your first Chart](./doc/getStart/yourFirstChart.md)
-+ [Add more charts](./doc/getStart/addMoreCharts.md)
-+ [Use Momentum Colors](./doc/getStart/useMomentumColors.md)
-+ [Axis And Scale](./doc/getStart/axisAndScale.md)
-+ [Make legends](./doc/getStart/makeLegends.md)
-+ [Add animation](./doc/getStart/addAnimation.md)
-+ [Responsive Design](./doc/getStart/responsiveDesign.md)
++ [Your first Chart](./doc/getting_started/your_first_chart.md)
++ [Add more charts](./doc/getting_started/add_more_charts.md)
++ [Use Momentum Colors](./doc/getting_started/use_momentum_colors.md)
++ [Axis And Scale](./doc/getting_started/axis_and_scale.md)
++ [Make legends](./doc/getting_started/make_legends.md)
++ [Add animation](./doc/getting_started/add_animation.md)
++ [Responsive Design](./doc/getting_started/responsive_design.md)
 
 ## Fundamentals
 
 In this section, we will introduce base rule and principle of Momentum Charts. 
 
-+ [Dom Structor](./doc/fundamentals/dataManagement.md)
++ [Dom Structor](./doc/fundamentals/data_management.md)
 + [Modify](./doc/fundamentals/modify.md)
 + [Generator](./doc/fundamentals/generator.md)
-+ [Data Management](./doc/fundamentals/domStructor.md)
-+ [Life Circle](./doc/fundamentals/lifeCircle.md)
-+ [Event Control](./doc/fundamentals/eventControl.md)
++ [Data Management](./doc/fundamentals/dom_structor.md)
++ [Life Circle](./doc/fundamentals/life_circle.md)
++ [Event Control](./doc/fundamentals/event_control.md)
 
 ## Techniques
 
@@ -139,4 +139,4 @@ PRs accepted.
 
 ## License
 
-[© 2014-2019 Cisco and/or its affiliates. All Rights Reserved.](../LICENSE)
+[© 2014-2020 Cisco and/or its affiliates. All Rights Reserved.](../LICENSE)

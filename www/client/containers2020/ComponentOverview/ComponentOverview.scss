@@ -1,0 +1,49 @@
+.component-section-header-link {
+  text-decoration: underline;
+  color: $md-gray-70;
+}
+
+.site-component-overview {
+
+  &__section-header {
+    .section-header__lead,
+    .section-header__title {
+      padding-right: 40px;
+
+      @include site-column-breakpoint {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__spinner {
+    text-align: center;
+    padding: rem-calc(100);
+  }
+
+  &__top {
+    @include flex($ai: center, $jc: flex-start);
+    margin: 0 0 2rem 0;
+
+    .md-input-container {
+      width: rem-calc(368);
+      margin: 0;
+    }
+  }
+
+  &__component-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+
+    div {
+      vertical-align: top;
+    }
+  }
+}
+
+.md-tab__content {
+  margin-top: rem-calc(50);
+  border: none;
+}

@@ -1,0 +1,25 @@
+@mixin form-label($alignment: false, $base-style: true) {
+  @if $base-style {
+    color: var(--label-color, $lm-label-color-light);
+    font-family: $label__font-family;
+    font-size: $label__font-size;
+    line-height: $label__line-height;
+  }
+
+  @if $alignment==right {
+    float: none !important;
+    text-align: right;
+  } @else if $alignment==inline {
+    margin: 0 0 $label__spacing 0;
+    padding: $label__spacing / 2 + rem-calc($input__border-width) 0;
+  }
+}
+
+@mixin secondary-label {
+  color: var(--label-secondary, $lm-label-secondary-light);
+  display: flex;
+  flex-grow: 1;
+  font-size: $secondary-label__font-size;
+  line-height: $secondary-label__line-height;
+  padding: $secondary-label__indent;
+}

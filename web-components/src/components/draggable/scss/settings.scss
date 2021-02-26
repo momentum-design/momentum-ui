@@ -1,0 +1,6 @@
+$draggable-padding: rem-calc(6);
+$draggable-row-border: 1px solid var(--md-menu-overlay-border-color);
+$draggable-item-border-radius: rem-calc(4);
+$draggable-default-border: 2px solid transparent;
+$draggable-focus-border: 2px solid var(--md-default-focus-outline-color);
+$draggable-item-shadow: 0 2px 4px rgba($md-black-100, 0.1), 0 0 1px rgba($md-black-100, 0.18);

@@ -31,6 +31,9 @@
 
     &__nav {
       display: none;
+      align-items: center;
+      justify-content: center;
+      flex: 2 0 auto;
 
       .#{$list-item__class} {
         padding: rem-calc(2) rem-calc(12);
@@ -38,9 +41,10 @@
 
       @media #{$large-up} {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 2 0 auto;
+      }
+
+      &--right {
+        justify-content: flex-end;
       }
     }
 
@@ -75,20 +79,6 @@
         order: 1;
         margin-right: rem-calc(16);
 
-        .#{$top-bar-class}__user {
-          display: flex;
-          align-items: center;
-        }
-
-        .#{$prefix}-avatar {
-          margin-left: $brand-anchor__padding--large;
-        }
-
-        .user-image {
-          width: 100%;
-          height: 100%;
-        }
-
         button,
         a {
           &:focus {
@@ -107,22 +97,38 @@
       }
     }
 
-    .md-avatar {
-      width: $top-bar-avatar__size;
-      height: $top-bar-avatar__size;
-      padding: 0;
-      overflow: hidden;
-      border-radius: 50%;
+    &__user {
+      @media #{$large-up} {
+        display: flex;
+        align-items: center;
 
-      &:focus {
-        @include focus-styles;
+        .#{$prefix}-avatar {
+          margin-left: $brand-anchor__padding--large;
+        }
+
+        .user-image {
+          width: 100%;
+          height: 100%;
+        }
       }
 
-      .user-image {
+      .#{$prefix}-avatar {
         width: $top-bar-avatar__size;
         height: $top-bar-avatar__size;
         padding: 0;
-        cursor: pointer;
+        overflow: hidden;
+        border-radius: 50%;
+
+        &:focus {
+          @include focus-styles;
+        }
+
+        .user-image {
+          width: $top-bar-avatar__size;
+          height: $top-bar-avatar__size;
+          padding: 0;
+          cursor: pointer;
+        }
       }
     }
 
@@ -155,8 +161,11 @@
           display: flex;
           width: auto;
           height: $brand-image__size;
-          margin-right: rem-calc(12);
           font-size: $brand-image__size;
+
+          &--pad {
+            margin-right: rem-calc(12);
+          }
 
           @media #{$medium-only} {
             height: $brand-image__size--medium;

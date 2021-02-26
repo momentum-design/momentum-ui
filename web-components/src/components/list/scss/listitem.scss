@@ -1,0 +1,48 @@
+:host(:focus) {
+  box-shadow: none;
+  outline: none;
+}
+
+:host(md-list-item) {
+  box-sizing: border-box;
+  cursor: pointer;
+
+  .md-list-item {
+    @include list-item;
+    box-sizing: border-box;
+    color: var(--list-text-color, $md-list-text-color-light);
+    flex: 1 1 auto;
+    font-size: $list-item__font-size;
+    line-height: $list-item__line-height;
+    min-height: $list-item__min-height;
+    padding: $list-item__padding;
+    position: relative;
+  }
+}
+
+:host(:hover:not([disabled])) {
+  .md-list-item {
+    background-color: var(--list-hover-background, $md-list-hover-background-light);
+  }
+}
+
+:host(:active:not([disabled])),
+:host([selected]:not([disabled])) {
+  .md-list-item {
+    background-color: var(--list-active-background, $md-list-active-background-light);
+  }
+}
+
+:host([focus-visible]:not([disabled])) {
+  .md-list-item {
+    box-shadow: $list-item__focus-shadow;
+  }
+}
+
+:host(:active[disabled]),
+:host([disabled]) {
+  .md-list-item {
+    color: var(--list-disabled-text-color, $md-list-disabled-text-color-light);
+    pointer-events: none;
+  }
+}

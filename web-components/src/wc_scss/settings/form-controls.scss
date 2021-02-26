@@ -1,0 +1,23 @@
+$form-control__opacity--disabled: 0.4;
+
+$form-control__content: $md-white-100 !default;
+
+$form-control__label: inherit !default;
+$form-control__label--dark: $md-white-100 !default;
+
+$form-control__background-border--focus: $md-black-100 !default;
+$form-control__background-border--focus--dark: $md-white-100 !default;
+
+$form-control__background: $black-16 !default;
+$form-control__background--dark: $white-48 !default;
+$form-control__background--hover: $black-24 !default;
+$form-control__background--hover--dark: $white-64 !default;
+$form-control__background--pressed: $black-32 !default;
+$form-control__background--pressed--dark: $white-80 !default;
+
+$form-control__background--checked: $md-theme-50 !default;
+$form-control__background--checked--dark: $md-theme-70 !default;
+$form-control__background--checked-hover: $md-theme-60 !default;
+$form-control__background--checked-hover--dark: $md-theme-70 !default;
+$form-control__background--checked-pressed: $md-theme-70 !default;
+$form-control__background--checked-pressed--dark: $md-theme-80 !default;

@@ -84,9 +84,14 @@ thead {
     top: 0;
     z-index: 1;
 
-    .over {
-      height: 100%;
-      opacity: 0.3;
+    &.drag {
+      background-color: black;
+      opacity: 0.05;
+    }
+
+    &.over {
+      // height: 100%;
+      opacity: 0.2;
     }
   }
 

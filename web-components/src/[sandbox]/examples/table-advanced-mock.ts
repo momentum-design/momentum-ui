@@ -35,7 +35,7 @@ export namespace TableAdvancedMock {
           {
             groupName: "Group 1",
             children: [
-              { id: "c1", title: "Col1f", sorter: "byString", filters: "forString" },
+              { id: "c1", title: "Col1f", sorter: "byString", filters: "forString", width: "25%" },
               { id: "c2", title: "Col2s" },
               { id: "c3", title: "Col3" }
             ]
@@ -45,8 +45,8 @@ export namespace TableAdvancedMock {
           {
             groupName: "group2",
             children: [
-              { id: "c6", title: "col6f" },
-              { id: "c7", title: "col7" }
+              { id: "c6", title: "col6f", width: "25%" },
+              { id: "c7", title: "col7", width: "25%" }
             ]
           }
         ]

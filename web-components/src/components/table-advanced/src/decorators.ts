@@ -104,15 +104,25 @@ interface PreviousValue {
 
 const previousValues = new WeakMap<NodePart, PreviousValue>();
 
-type TPayload = {
-  iCol: number;
-  iRow: number;
-  value: string;
+
+export type TemplateInfo = {
+  content: string;
+  insertIndex: number;
+  col: number;
+  row: number;
+} 
+
+type TCallback = TemplateInfo & { 
+  fragment: DocumentFragment 
+};
+
+type TPayload = TemplateInfo & {
   template: HTMLTemplateElement;
   cb: TemplateCallback;
 };
 
-export type TemplateCallback = (p: { iCol: number; iRow: number; value: string; fragment: DocumentFragment }) => void;
+export type TemplateCallback = (p: TCallback) => void;
+
 export const templateCallback = directive((p: TPayload) => (part: Part): void => {
   if (!(part instanceof NodePart)) {
     throw new Error("templateCallback can only be used in text bindings");
@@ -127,9 +137,10 @@ export const templateCallback = directive((p: TPayload) => (part: Part): void =>
   const fragment = document.importNode(p.template.content, true);
 
   p.cb({
-    iRow: p.iRow,
-    iCol: p.iCol,
-    value: p.value,
+    content: p.content,
+    row: p.row,
+    col: p.col,
+    insertIndex: p.insertIndex,
     fragment
   });
 

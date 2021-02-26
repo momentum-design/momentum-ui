@@ -19,7 +19,7 @@ import { nothing, TemplateResult } from "lit-html";
 import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
-import { debounce, Evt, evt, TemplateCallback, templateCallback } from "./src/decorators";
+import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -56,8 +56,16 @@ export namespace TableAdvanced {
     private selected: Record<number, boolean> = {};
     private expandedRowIdx: Record<number, boolean> = {};
 
+    private dragover = (e: Event) =>  e.preventDefault();
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      document.removeEventListener("dragover", this.dragover);
+    }
+
     connectedCallback() {
       super.connectedCallback();
+      document.addEventListener("dragover", this.dragover);
 
       // cols
 
@@ -190,12 +198,18 @@ export namespace TableAdvanced {
                   console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
                   continue;
                 }
+
+                let text = cell.text.replace(k, "");
+                if (t.contentCb) {
+                  text = t.contentCb({ col: iCol, row: iRow, content: text, insertIndex: idx });
+                }
+
                 this.ROWS[iRow][iCol] = {
-                  text: cell.text.replace(k, ""),
+                  text,
                   template: {
                     template,
                     templateCb: t.templateCb,
-                    insertIndex: t.content != "replace" ? idx : -1
+                    insertIndex: t.contentUse == "replace" ? -1 : idx
                   }
                 };
                 break;
@@ -213,6 +227,13 @@ export namespace TableAdvanced {
     private onDropRow() {
       if (this.dragRow != this.dropRow) {
         this.drops.push([this.dragRow, this.dropRow]);
+      }
+
+      this.dragRow = -1;
+      this.dropRow = -1;
+      if (this.dragRowElem) {
+        this.dragRowElem.setAttribute("draggable", "false");
+        this.dragRowElem = null;
       }
     }
 
@@ -241,6 +262,9 @@ export namespace TableAdvanced {
         this.updCols();
         this.updRows();
       }
+
+      this.dragCol = -1;
+      this.dropCol = -1;
     }
 
     sort(col: Col, order?: SortOrder) {
@@ -532,7 +556,9 @@ export namespace TableAdvanced {
               ? html`
                   <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
                 `
-              : html`<span>${col.options.title}</span>`}
+              : html`
+                  <span>${col.options.title}</span>
+                `}
 
             <!-- FILTER -->
             ${col.filter
@@ -592,6 +618,7 @@ export namespace TableAdvanced {
               draggable="true"
               class=${classMap({
                 "drag-area-col": true,
+                drag: this.dragCol != -1,
                 over: this.dropCol == col.index && this.dropCol != this.dragCol
               })}
               @dragstart=${(e: any) => {
@@ -603,20 +630,7 @@ export namespace TableAdvanced {
                 if (this.isResizing || this.dragRow != -1) return;
                 this.dropCol = col.index;
               }}
-              @drop=${(e: DragEvent) => {
-                if (this.isResizing || this.dragRow != -1) return;
-                e.stopPropagation();
-                this.onDropCol();
-                return false;
-              }}
-              @dragend=${() => {
-                this.dragCol = -1;
-                this.dropCol = -1;
-              }}
-              @dragover=${(e: any) => {
-                e.preventDefault();
-                return false;
-              }}
+              @dragend=${() => this.onDropCol()}
             ></div>
           `
         : nothing;
@@ -756,10 +770,11 @@ export namespace TableAdvanced {
                 ? html`
                     ${templateCallback({
                       cb: t.templateCb,
+                      insertIndex: t.insertIndex,
                       template: t.template,
-                      value: cell.text,
-                      iCol: row.idx,
-                      iRow: j
+                      content: cell.text,
+                      row: row.idx,
+                      col: j
                     })}
                   `
                 : html`
@@ -779,31 +794,15 @@ export namespace TableAdvanced {
             const isDragHandle = isDrag && j == 0;
 
             const cellRenderResult = html`
-              <div 
+              <div
                 class="inner-cell"
                 draggable="false"
                 @dragstart=${() => {
                   if (this.isResizing || this.dragCol != -1) return;
                   this.dragRow = row.idxDrag;
                 }}
-                @dragend=${() => {
-                  this.dragRow = -1;
-                  this.dropRow = -1;
-                  if (this.dragRowElem) {
-                    this.dragRowElem.setAttribute("draggable", "false");
-                    this.dragRowElem = null;
-                  }
-                }}
-                @drop=${(e: DragEvent) => {
-                  if (this.isResizing || this.dragCol != -1) return;
-                  e.stopPropagation();
-                  this.onDropRow();
-                  return false;
-                }}
-                @dragover=${(e: any) => {
-                  e.preventDefault();
-                  return false;
-                }}>
+                @dragend=${() => this.onDropRow()}
+              >
                 ${isDragArea
                   ? html`
                       <div
@@ -832,14 +831,15 @@ export namespace TableAdvanced {
                   : nothing}
                 ${isDragHandle
                   ? html`
-                      <md-icon 
+                      <md-icon
                         class="drag-handle"
                         @mousedown=${(e: any) => {
                           if (this.isResizing || this.dragCol != -1) return;
                           this.dragRowElem = e.target.parentNode as HTMLElement;
                           this.dragRowElem.setAttribute("draggable", "true");
                         }}
-                        name="panel-control-dragger_16">
+                        name="panel-control-dragger_16"
+                      >
                       </md-icon>
                     `
                   : nothing}
@@ -947,8 +947,14 @@ export namespace TableAdvanced {
   type SortNode = { v: string; i: number };
 
   type Cell = { text: string; template?: CellTemplateProcessed };
-  type CellTemplate = { templateName: string; templateCb?: TemplateCallback; content?: "insert" | "replace" };
+  type CellTemplate = {
+    templateName: string;
+    contentUse?: "insert" | "replace";
+    contentCb?: CellContentCallback;
+    templateCb?: TemplateCallback;
+  };
   type CellTemplateProcessed = { insertIndex: number; template: HTMLTemplateElement; templateCb?: TemplateCallback };
+  type CellContentCallback = (p: TemplateInfo) => string;
   type Row = {
     cells: Cell[];
     idx: number;

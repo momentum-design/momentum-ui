@@ -10,9 +10,9 @@ export class DefaultTableAdvanced extends LitElement {
   render() {
     return html`
       ${this.renderComplexTable()}
-      <br/><br/>
+      <br /><br />
       ${this.renderShortkeyTable()}
-      <br/><br/>
+      <br /><br />
     `;
   }
 
@@ -33,11 +33,14 @@ export class DefaultTableAdvanced extends LitElement {
         templateName: "tmp1"
       },
       _tmp2_: {
-        content: "replace",
+        contentUse: "replace",
         templateName: "tmp2",
+        contentCb: ({ content, insertIndex }) => {
+          return content.substring(0, insertIndex) + " hide " + content.substring(insertIndex);
+        },
         templateCb: p => {
           const span = p.fragment.querySelector<HTMLElement>(".sp")!;
-          span.innerText = `OK - [${p.iRow},${p.iCol}] - ${p.value}`;
+          span.innerText = `${p.content}[${p.row},${p.col}]`;
 
           const btn = p.fragment.querySelector<HTMLButtonElement>("button")!;
           btn.addEventListener("click", () => {
@@ -94,19 +97,15 @@ export class DefaultTableAdvanced extends LitElement {
 
 @customElement("custom-table-advanced-sandbox")
 export class CustomTableAdvanced extends LitElement {
-
   render() {
     return html`
-      <md-table-advanced .config=${DefaultAdvancedTable.config} .data=${DefaultAdvancedTable.data}>
-        
-      </md-table-advanced>
+      <md-table-advanced .config=${DefaultAdvancedTable.config} .data=${DefaultAdvancedTable.data}> </md-table-advanced>
     `;
   }
 }
 
-
 export const tableAdvancedTemplate = html`
-  <br />  
+  <br />
   <div style="height: 400px; width: 100%; overflow: auto">
     <h2>ShortKey Table</h2>
     <default-table-advanced-sandbox></default-table-advanced-sandbox>

@@ -19,7 +19,7 @@ export enum Key {
   Digit6 = "Digit6",
   Digit7 = "Digit7",
   Digit8 = "Digit8",
-  Digit9 = "Digit9",
+  Digit9 = "Digit9"
 }
 
 export enum TIME_UNIT {
@@ -30,7 +30,7 @@ export enum TIME_UNIT {
 }
 
 export enum ARIA_INVALID {
-  GRAMMAR = 'grammar',
+  GRAMMAR = "grammar",
   FALSE = "false",
   SPELLING = "spelling",
   TRUE = "true"

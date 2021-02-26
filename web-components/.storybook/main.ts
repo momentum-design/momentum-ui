@@ -3,9 +3,9 @@ import * as webpack from "webpack";
 
 /**
  * merge two arrays into one and remove the duplicates
- * 
- * @param merger 
- * @param mergee 
+ *
+ * @param merger
+ * @param mergee
  * @returns {Array<any>} merged unique array
  */
 const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
@@ -14,7 +14,10 @@ const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
     merger;
 
 module.exports = {
-  stories: ["../src/components/**/*.stories.ts"],
+  stories: [
+    "../src/components/**/*.stories.ts",
+    "../src/components/**/*.stories.mdx"
+  ],
 
   addons: [
     "@storybook/addon-knobs/register",
@@ -28,7 +31,7 @@ module.exports = {
   webpackFinal: async (storybookConfig: webpack.Configuration, { configType }: { configType : "DEVELOPMENT" | "PRODUCTION" }) => {
 
     console.log("Storybook build mode: ", configType);
-    
+
     // RESOLVE
     {
       storybookConfig.resolve = storybookConfig.resolve || {};

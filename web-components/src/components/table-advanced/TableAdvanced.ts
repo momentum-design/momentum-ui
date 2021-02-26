@@ -267,7 +267,7 @@ export namespace TableAdvanced {
       this.dropCol = -1;
     }
 
-    sort(col: Col, order?: SortOrder) {
+    private sort(col: Col, order?: SortOrder) {
       if (!col.sorter) return;
 
       this.clearSelection();
@@ -291,7 +291,7 @@ export namespace TableAdvanced {
     }
 
     @debounce(500)
-    filter(col: Col) {
+    private filter(col: Col) {
       if (!col.filter) return;
 
       this.clearSelection();
@@ -317,7 +317,7 @@ export namespace TableAdvanced {
       }
     }
 
-    selectRow(p: { row: Row; shiftKey: boolean; metaKey: boolean }) {
+    private selectRow(p: { row: Row; shiftKey: boolean; metaKey: boolean }) {
       const i = p.row.idx;
       const isSelected = this.selected.hasOwnProperty(i);
       if (this.config.rows?.selectable == "multiple") {

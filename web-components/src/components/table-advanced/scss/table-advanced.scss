@@ -85,13 +85,14 @@ thead {
     z-index: 1;
 
     &.drag {
-      background-color: black;
-      opacity: 0.05;
+      border: 2px dashed var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+      opacity: 1;
     }
 
     &.over {
-      // height: 100%;
-      opacity: 0.2;
+      background-color: $md-violet-50;
+      height: 100%;
+      opacity: 0.1;
     }
   }
 
@@ -234,6 +235,7 @@ tbody {
       background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
       border: $advanced-table-main-border;
       font-size: $font-size-base;
+      max-width: 0;
       padding: 0 calc(#{$advanced-table-main-indent} * 4);
       position: relative;
       text-align: left;

@@ -56,7 +56,7 @@ export namespace TableAdvanced {
     private selected: Record<number, boolean> = {};
     private expandedRowIdx: Record<number, boolean> = {};
 
-    private dragover = (e: Event) =>  e.preventDefault();
+    private dragover = (e: Event) => e.preventDefault();
 
     disconnectedCallback() {
       super.disconnectedCallback();
@@ -76,10 +76,10 @@ export namespace TableAdvanced {
           ? f == "forString"
             ? Filter.optionsString
             : f == "forNumber"
-            ? Filter.optionsNumber
-            : f.length
-            ? f
-            : null
+              ? Filter.optionsNumber
+              : f.length
+                ? f
+                : null
           : null;
 
         this.COLS.push({
@@ -91,12 +91,12 @@ export namespace TableAdvanced {
           isCollapsable: this.config.cols.collapse == col.id,
           filter: filters
             ? {
-                list: filters,
-                selectedIndex: 0,
-                input: "",
-                active: false,
-                menuVisible: false
-              }
+              list: filters,
+              selectedIndex: 0,
+              input: "",
+              active: false,
+              menuVisible: false
+            }
             : undefined
         });
       };
@@ -461,12 +461,12 @@ export namespace TableAdvanced {
           <slot></slot>
           <table class=${clazz} summary=${ifDefined(head?.summary)}>
             ${head?.caption
-              ? html`
+          ? html`
                   <caption>
                     ${head?.caption}
                   </caption>
                 `
-              : nothing}
+          : nothing}
             ${this.renderHead()} ${this.renderBody()}
           </table>
         </div>
@@ -480,34 +480,34 @@ export namespace TableAdvanced {
         let gName = "";
         groups = html`
           ${this.COLS.map(c => {
-            if (c.group) {
-              if (gName != c.group.name) {
-                gName = c.group.name;
-                return html`
+          if (c.group) {
+            if (gName != c.group.name) {
+              gName = c.group.name;
+              return html`
                   <colgroup span=${c.group.length}></colgroup>
                 `;
-              }
-            } else {
-              return html`
+            }
+          } else {
+            return html`
                 <col />
               `;
-            }
-          })}
+          }
+        })}
           <tr>
             ${this.COLS.map(col => {
-              if (col.group) {
-                if (gName != col.group.name) {
-                  gName = col.group.name;
-                  return html`
+          if (col.group) {
+            if (gName != col.group.name) {
+              gName = col.group.name;
+              return html`
                     <th colspan=${col.group.length} scope="colgroup">
                       ${col.group.name} ${this.renderColResize(col)}
                     </th>
                   `;
-                }
-              } else {
-                return this.renderCol(col, 2);
-              }
-            })}
+            }
+          } else {
+            return this.renderCol(col, 2);
+          }
+        })}
           </tr>
         `;
       }
@@ -515,14 +515,14 @@ export namespace TableAdvanced {
       const heads = html`
         <tr>
           ${this.COLS.map(col => {
-            if (hasGroup) {
-              if (col.group) {
-                return this.renderCol(col);
-              }
-            } else {
-              return this.renderCol(col);
-            }
-          })}
+        if (hasGroup) {
+          if (col.group) {
+            return this.renderCol(col);
+          }
+        } else {
+          return this.renderCol(col);
+        }
+      })}
         </tr>
       `;
 
@@ -553,21 +553,21 @@ export namespace TableAdvanced {
           <div class="head-inner-cell">
             <!-- SORT  -->
             ${col.sorter
-              ? html`
+          ? html`
                   <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
                 `
-              : html`
+          : html`
                   <span>${col.options.title}</span>
                 `}
 
             <!-- FILTER -->
             ${col.filter
-              ? html`
+          ? html`
                   ${col.filter.active
-                    ? html`
+              ? html`
                         <md-icon class="filter-active" name="filter-adr_14"></md-icon>
                       `
-                    : nothing}
+              : nothing}
                   <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
                     <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
                       <md-icon slot="icon" name="filter_16"></md-icon>
@@ -576,16 +576,16 @@ export namespace TableAdvanced {
                       <select
                         name="filter-type"
                         @change=${(e: any) => {
-                          col.filter!.selectedIndex = e.target.value;
-                          this.updCols();
-                          this.filter(col);
-                        }}
+              col.filter!.selectedIndex = e.target.value;
+              this.updCols();
+              this.filter(col);
+            }}
                       >
                         ${col.filter.list.map(
-                          (c, i) => html`
+              (c, i) => html`
                             <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
                           `
-                        )}
+            )}
                       </select>
                       <input
                         type="text"
@@ -594,15 +594,15 @@ export namespace TableAdvanced {
                         pattern=${ifDefined(input!.pattern)}
                         .value=${col.filter.input}
                         @input=${(e: any) => {
-                          col.filter!.input = e.target.value;
-                          this.updCols();
-                          this.filter(col);
-                        }}
+              col.filter!.input = e.target.value;
+              this.updCols();
+              this.filter(col);
+            }}
                       />
                     </div>
                   </md-menu-overlay>
                 `
-              : nothing}
+          : nothing}
 
             <!-- RESIZE  -->
             ${this.renderColResize(col)}
@@ -617,19 +617,19 @@ export namespace TableAdvanced {
             <div
               draggable="true"
               class=${classMap({
-                "drag-area-col": true,
-                drag: this.dragCol != -1,
-                over: this.dropCol == col.index && this.dropCol != this.dragCol
-              })}
+          "drag-area-col": true,
+          drag: this.dragCol != -1,
+          over: this.dropCol == col.index && this.dropCol != this.dragCol
+        })}
               @dragstart=${(e: any) => {
-                if (this.isResizing || this.dragRow != -1) return;
-                this.dragCol = col.index;
-                e.dataTransfer.setDragImage(e.target.parentNode, 0, 0);
-              }}
+            if (this.isResizing || this.dragRow != -1) return;
+            this.dragCol = col.index;
+            e.dataTransfer.setDragImage(e.target.parentNode, 0, 0);
+          }}
               @dragenter=${() => {
-                if (this.isResizing || this.dragRow != -1) return;
-                this.dropCol = col.index;
-              }}
+            if (this.isResizing || this.dragRow != -1) return;
+            this.dropCol = col.index;
+          }}
               @dragend=${() => this.onDropCol()}
             ></div>
           `
@@ -640,10 +640,10 @@ export namespace TableAdvanced {
       return this.config.cols.isResizable
         ? html`
             ${col.index > 0
-              ? html`
+            ? html`
                   <div class="resize" draggable="true" @dragstart=${(e: DragEvent) => this.onResize(e, col)}></div>
                 `
-              : nothing}
+            : nothing}
           `
         : nothing;
     }
@@ -734,12 +734,12 @@ export namespace TableAdvanced {
       return html`
         <tbody>
           ${rows.map(row => {
-            const len = rows.length;
-            const isRenderChild = row.children.length > 0 && row.collapse == "expanded" && !row.isGhost;
-            return html`
+        const len = rows.length;
+        const isRenderChild = row.children.length > 0 && row.collapse == "expanded" && !row.isGhost;
+        return html`
               ${this.renderRow(row, len)} ${isRenderChild ? row.children.map(c => this.renderRow(c, len)) : nothing}
             `;
-          })}
+      })}
         </tbody>
       `;
     }
@@ -756,97 +756,97 @@ export namespace TableAdvanced {
         <tr
           class=${clazz}
           @click=${({ shiftKey, metaKey }: MouseEvent) => {
-            if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });
-          }}
+          if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });
+        }}
         >
           ${row.cells.map((cell, j) => {
-            const col = this.COLS[j];
+          const col = this.COLS[j];
 
-            // content
-            let content: TemplateResult | string = cell.text;
-            const t = cell.template;
-            if (t) {
-              content = t.templateCb
-                ? html`
+          // content
+          let content: TemplateResult | string = cell.text;
+          const t = cell.template;
+          if (t) {
+            content = t.templateCb
+              ? html`
                     ${templateCallback({
-                      cb: t.templateCb,
-                      insertIndex: t.insertIndex,
-                      template: t.template,
-                      content: cell.text,
-                      row: row.idx,
-                      col: j
-                    })}
+                cb: t.templateCb,
+                insertIndex: t.insertIndex,
+                template: t.template,
+                content: cell.text,
+                row: row.idx,
+                col: j
+              })}
                   `
-                : html`
+              : html`
                     ${templateContent(t.template)}
                   `;
-              if (t.insertIndex != -1) {
-                content = html`
+            if (t.insertIndex != -1) {
+              content = html`
                   ${t.insertIndex > 0 ? cell.text.substring(0, t.insertIndex) : nothing} ${content}
                   ${t.insertIndex < cell.text.length - 1 ? cell.text.substring(t.insertIndex) : nothing}
                 `;
-              }
             }
+          }
 
-            // drag
-            const isDrag = this.config.rows?.isDraggable && row.collapse != "child";
-            const isDragArea = isDrag && this.dragRow != -1 && this.dragRow != row.idxDrag;
-            const isDragHandle = isDrag && j == 0;
+          // drag
+          const isDrag = this.config.rows?.isDraggable && row.collapse != "child";
+          const isDragArea = isDrag && this.dragRow != -1 && this.dragRow != row.idxDrag;
+          const isDragHandle = isDrag && j == 0;
 
-            const cellRenderResult = html`
+          const cellRenderResult = html`
               <div
                 class="inner-cell"
                 draggable="false"
                 @dragstart=${() => {
-                  if (this.isResizing || this.dragCol != -1) return;
-                  this.dragRow = row.idxDrag;
-                }}
+              if (this.isResizing || this.dragCol != -1) return;
+              this.dragRow = row.idxDrag;
+            }}
                 @dragend=${() => this.onDropRow()}
               >
                 ${isDragArea
-                  ? html`
-                      <div
-                        class="drag-area top"
-                        @dragenter=${() => {
-                          if (this.dragRow == 0) {
-                            const i = row.idxDrag - 1;
-                            this.dropRow = i >= 0 ? i : 0;
-                          } else {
-                            this.dropRow = row.idxDrag;
-                          }
-                        }}
-                      ></div>
-                      <div
-                        class="drag-area bottom"
-                        @dragenter=${() => {
-                          if (this.dragRow == 0) {
-                            this.dropRow = row.idxDrag;
-                          } else {
-                            const i = row.idxDrag + 1;
-                            this.dropRow = i < rowsLen ? i : rowsLen - 1;
-                          }
-                        }}
-                      ></div>
+              ? html`
+                    <div
+                      class="drag-area top"
+                      @dragenter=${() => {
+                  if (this.dragRow == 0) {
+                    const i = row.idxDrag - 1;
+                    this.dropRow = i >= 0 ? i : 0;
+                  } else {
+                    this.dropRow = row.idxDrag;
+                  }
+                }}
+                    ></div>
+                    <div
+                      class="drag-area bottom"
+                      @dragenter=${() => {
+                  if (this.dragRow == 0) {
+                    this.dropRow = row.idxDrag;
+                  } else {
+                    const i = row.idxDrag + 1;
+                    this.dropRow = i < rowsLen ? i : rowsLen - 1;
+                  }
+                }}
+                    ></div>
                     `
-                  : nothing}
+              : nothing}
                 ${isDragHandle
-                  ? html`
+              ? html`
                       <md-icon
                         class="drag-handle"
                         @mousedown=${(e: any) => {
-                          if (this.isResizing || this.dragCol != -1) return;
-                          this.dragRowElem = e.target.parentNode as HTMLElement;
-                          this.dragRowElem.setAttribute("draggable", "true");
-                        }}
+                  if (this.isResizing || this.dragCol != -1) return;
+                  this.dragRowElem = e.target.parentNode as HTMLElement;
+                  this.dragRowElem.setAttribute("draggable", "true");
+                }}
                         name="panel-control-dragger_16"
                       >
                       </md-icon>
                     `
-                  : nothing}
+              : nothing}
                 ${col.isCollapsable
-                  ? html`
+              ? html`
                       ${row.collapse == "expanded" || row.collapse == "collapsed"
-                        ? html`
+                  ? html`
                             <md-button
                               class="row-collapsible"
                               size="size-none"
@@ -855,31 +855,31 @@ export namespace TableAdvanced {
                               color="color-none"
                             >
                               ${row.collapse == "collapsed"
-                                ? html`
+                      ? html`
                                     <md-icon slot="icon" name="plus_12"></md-icon>
                                   `
-                                : html`
+                      : html`
                                     <md-icon slot="icon" name="minus_12"></md-icon>
                                   `}
                             </md-button>
                           `
-                        : nothing}
+                  : nothing}
                       <span>${row.collapse == "child" ? nothing : content}</span>
                     `
-                  : html`
+              : html`
                       <span>${content}</span>
                     `}
               </div>
             `;
 
-            return col.options.isHeader
-              ? html`
+          return col.options.isHeader
+            ? html`
                   <th scope="row">${cellRenderResult}</th>
                 `
-              : html`
+            : html`
                   <td>${cellRenderResult}</td>
                 `;
-          })}
+        })}
         </tr>
       `;
     }
@@ -977,13 +977,13 @@ export namespace TableAdvanced {
 
   export type ChangeEvent = {
     detail:
-      | { type: "filter-on"; filter: Filter.Options; input: string }
-      | { type: "filter-off"; filter: Filter.Options }
-      | { type: "sort"; order: SortOrder }
-      | { type: "select"; index: number }
-      | { type: "multi-select"; rows: number[] }
-      | { type: "expand"; row: number }
-      | { type: "collapse"; row: number };
+    | { type: "filter-on"; filter: Filter.Options; input: string }
+    | { type: "filter-off"; filter: Filter.Options }
+    | { type: "sort"; order: SortOrder }
+    | { type: "select"; index: number }
+    | { type: "multi-select"; rows: number[] }
+    | { type: "expand"; row: number }
+    | { type: "collapse"; row: number };
   };
 }
 

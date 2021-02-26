@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.21.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.5...@momentum-ui/react@23.21.6) (2021-02-26)
+
+
+### Bug Fixes
+
+* **tooltip:** tooltip type warning due to incorrect use of oneOf ([#789](https://github.com/momentum-design/momentum-ui/issues/789)) ([12ad408](https://github.com/momentum-design/momentum-ui/commit/12ad4087544dc3d1778f9ac5c97448ea66022164))
+
+
+
+
+
 ## [23.21.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.21.4...@momentum-ui/react@23.21.5) (2021-02-23)
 
 **Note:** Version bump only for package @momentum-ui/react

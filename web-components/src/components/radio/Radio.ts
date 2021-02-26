@@ -7,8 +7,8 @@
  */
 
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
@@ -67,9 +67,9 @@ export namespace Radio {
 
     render() {
       return html`
-        <div class="radio-wrapper">
+        <div class="md-radio-wrapper">
           <input
-            class="radio-input"
+            class="md-radio-input"
             type="radio"
             aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
             .value=${this.value}
@@ -79,7 +79,7 @@ export namespace Radio {
             aria-hidden="true"
             id="radio-label"
           />
-          <label for="radio-label" class="radio-label" part="radio-label"><slot></slot></label>
+          <label for="radio-label" class="md-radio-label" part="radio-label"><slot></slot></label>
         </div>
       `;
     }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.5.0...@momentum-ui/icons@8.6.0) (2021-02-27)
+
+
+### Features
+
+* **icons:** add calendar-month-active_20 ([e984022](https://github.com/momentum-design/momentum-ui/commit/e984022e04bc895c97c97f081ad9c25b7d98dedb))
+
+
+
+
+
 # [8.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.4.0...@momentum-ui/icons@8.5.0) (2021-02-23)
 
 

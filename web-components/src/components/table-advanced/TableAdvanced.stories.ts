@@ -14,11 +14,11 @@ import "@/components/table-advanced/TableAdvanced";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Table Advanced",
+  title: "TableAdvanced",
   component: "md-table-advanced",
   decorators: [withKnobs, withA11y],
   argTypes: {
-    nodata: { table: { disable: true } },
+
   },
   parameters: {
     a11y: {
@@ -38,14 +38,64 @@ const selectOptions = ["none", "single", "multiple"];
 export const Default = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
-  const selectable = select("Select Options", selectOptions, undefined);
   const stickheader = boolean("Sticky Header", false);
   const resize = boolean("Column Resize", false);
   const dragRow = boolean("Row Draggable", false);
   const dragCol = boolean("Column Draggable", false);
-  //const collapse = 
+  const collapse = boolean("Collapse Row", false);
+  const caption = text("Table Caption", "");
+  const sum = text("Table Summary", "");
+  const customize = boolean("Use custom template for replace", false);
+
+
 
   const DefaultAdvancedTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
+    config: {
+      isStickyHeader: stickheader,
+
+      rows: {
+        isDraggable: dragRow,
+        selectable: "single"
+      },
+
+      head: {
+        caption: caption,
+        summary: sum
+      },
+
+      cellTemplates: { "00:52": { templateName: "tmp1" } },
+
+      cols: {
+        isDraggable: dragCol,
+        isResizable: resize,
+        define: [
+          { id: "col-ani", title: "ANI", sorter: "byString" },
+          { id: "col-stage", title: "Abandoment Statge", filters: "forString" },
+          { id: "col-transfer", title: "Transfer", sorter: "byNumber" },
+          { id: "col-wait", title: "Total Wait Time" },
+          { id: "col-back", title: "Call Back Received", filters: "forString" },
+          { id: "col-time", title: "Call Back Time" }
+        ]
+      }
+    },
+    data: {
+      list2d: [
+        ["12345670", "IRV", "0", "00:45", "Yes", "12:34 PM"],
+        ["12345671", "QWT (1-5 min)", "0", "00:20", "No", "Follow-up"],
+        ["12345672", "QWT (5-10 min)", "1", "01:15", "Yes", "09:30 AM"],
+        ["12345673", "QWT > 10 min", "2", "00:35", "No", "11:25 PM"],
+        ["12345674", "QWT > 10 min", "1", "00:15", "Yes", "Follow-up"],
+        ["12345675", "IRV", "2", "00:23", "Yes", "Follow-up"],
+        ["12345676", "QWT (1-5 min)", "0", "00:52", "No", "10:16 AM"],
+        ["12345677", "IRV", "1", "00:25", "Yes", "Follow-up"],
+        ["12345678", "QWT (1-5 min)", "2", "01:05", "No", "03:34 PM"],
+        ["12345679", "QWT (5-10 min)", "2", "00:35", "Yes", "02:12 AM"],
+        ["12345680", "QWT (1-5 min)", "1", "00:41", "No", "Follow-up"]
+      ]
+    }
+  };
+
+  const ColapseData: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
     config: {
       isStickyHeader: stickheader,
 
@@ -76,6 +126,8 @@ export const Default = () => {
         ["12345673", "QWT > 10 min", "2", "00:35", "No", "11:25 PM"],
         ["12345674", "QWT > 10 min", "1", "00:15", "Yes", "Follow-up"],
         ["12345675", "IRV", "2", "00:23", "Yes", "Follow-up"],
+        ["12345675", "IRV", "2", "00:23", "Yes", "Follow-up"],
+        ["12345675", "IRV", "2", "00:23", "Yes", "Follow-up"],
         ["12345676", "QWT (1-5 min)", "0", "00:52", "No", "10:16 AM"],
         ["12345677", "IRV", "1", "00:25", "Yes", "Follow-up"],
         ["12345678", "QWT (1-5 min)", "2", "01:05", "No", "03:34 PM"],
@@ -85,12 +137,55 @@ export const Default = () => {
     }
   };
 
-  return html`
-  <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
-      <md-table-advanced .config=${DefaultAdvancedTable.config} .data=${DefaultAdvancedTable.data}> </md-table-advanced>
-    </div>
-  </md-theme>
-  `;
+  const CONF = DefaultAdvancedTable.config;
+  CONF.cellTemplates = {
+    "00:52": {
+      templateName: "tmp1"
+    }
+  }
+
+  if (customize) {
+    return html`
+      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+        <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
+          <md-table-advanced
+            .style="${collapse ? `display: block;` : `display: none;`}"
+            .config=${ColapseData.config} 
+            .data=${ColapseData.data}> 
+          </md-table-advanced>
+          <md-table-advanced
+            .style="${collapse ? `display: none;` : `display: block;`}"
+            .config=${DefaultAdvancedTable.config} 
+            .data=${DefaultAdvancedTable.data}> 
+
+            <template id="tmp1">
+              <div style="background: yellow">
+                 [OK]
+              </div>
+            </template>
+
+          </md-table-advanced>
+        </div>
+      </md-theme>
+    `;
+  } else {
+    return html`
+      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+        <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
+          <md-table-advanced
+            .style="${collapse ? `display: block;` : `display: none;`}"
+            .config=${ColapseData.config} 
+            .data=${ColapseData.data}> 
+          </md-table-advanced>
+          <md-table-advanced
+            .style="${collapse ? `display: none;` : `display: block;`}"
+            .config=${DefaultAdvancedTable.config} 
+            .data=${DefaultAdvancedTable.data}> 
+
+          </md-table-advanced>
+        </div>
+      </md-theme>
+    `;
+  }
 
 };

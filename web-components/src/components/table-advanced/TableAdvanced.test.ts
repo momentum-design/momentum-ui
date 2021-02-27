@@ -7,7 +7,7 @@
  */
 
 import { TableAdvancedMock } from "@/[sandbox]/examples/table-advanced-mock";
-import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./TableAdvanced";
 import { TableAdvanced } from "./TableAdvanced";
 
@@ -26,7 +26,7 @@ const ELEM = () => {
       contentUse: "replace",
       templateName: "tmp2",
       contentCb: ({ content }) => content,
-      templateCb: () => {}
+      templateCb: () => { }
     }
   };
 
@@ -68,7 +68,7 @@ describe("Table Advanced component", () => {
     elem["sort"](col1, "descending");
     elem["filter"](col1);
 
-    const e = { stopPropagation: () => {} } as any;
+    const e = { stopPropagation: () => { } } as any;
     elem["collapseToggle"](e, 0);
     elem["collapseToggle"](e, 0);
 
@@ -95,4 +95,33 @@ describe("Table Advanced component", () => {
     `);
     expect(elemList).toBeDefined();
   });
+
+  test("should set sticky header", async () => {
+    const elem = await fixture<TableAdvanced.ELEMENT>(html`
+      <md-table-advanced .config=${TableAdvancedMock.SimpleTable.config} .data=${TableAdvancedMock.SimpleTable.dataList2d}>
+      </md-table-advanced>
+    `);
+    expect(elem).toBeDefined();
+
+    const header = elem.shadowRoot?.querySelector("table")
+    expect(header?.getAttribute("class")).toEqual("sticky-header");
+  });
+
+  test("should sort columns", async () => {
+    const SortMock = jest.fn();
+    const elem = await fixture<TableAdvanced.ELEMENT>(html`
+      <md-table-advanced .config=${TableAdvancedMock.SimpleTable.config} .data=${TableAdvancedMock.SimpleTable.dataList2d}>
+      </md-table-advanced>
+    `);
+
+    elem["sort"] = SortMock;
+    await elementUpdated(elem);
+
+    const sortIcon = elem.shadowRoot?.querySelector("thead tr th .sortable") as HTMLElement;
+    expect(sortIcon).toBeDefined();
+    sortIcon?.click();
+
+    expect(SortMock).toHaveBeenCalled();
+  });
+
 });

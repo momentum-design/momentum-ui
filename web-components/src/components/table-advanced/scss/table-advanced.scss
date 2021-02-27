@@ -85,7 +85,7 @@ thead {
     z-index: 1;
 
     &.drag {
-      border: 2px dashed var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+      border: $advanced-table-dragarea-border;
       opacity: 1;
     }
 

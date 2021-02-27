@@ -5,17 +5,20 @@ export namespace TableAdvancedMock {
     config: TableAdvanced.Config;
     dataCsv: TableAdvanced.Data;
     dataList: TableAdvanced.Data;
+    dataList2d: TableAdvanced.Data;
   } = {
     config: {
+      isStickyHeader: true,
+
       cols: {
+        isResizable: true,
         define: [
-          { id: "c1", title: "Col1" },
-          { id: "c2", title: "Col2" },
+          { id: "c1", title: "Col1", sorter: "byString" },
+          { id: "c2", title: "Col2", filters: "forString" },
           { id: "c3", title: "Col3" }
         ]
       }
     },
-
     dataCsv: {
       csv: `data11, data21, data31
       data12, data22, data32
@@ -23,6 +26,13 @@ export namespace TableAdvancedMock {
     },
     dataList: {
       list: ["data11", "data21", "data31", "data12", "data22", "data32", "data13", "data23", "data33"]
+    },
+    dataList2d: {
+      list2d: [
+        ["data11", "data21", "data31"],
+        ["data12", "data22", "data32"],
+        ["data13", "data23", "data33"]
+      ]
     }
   };
 

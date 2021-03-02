@@ -6,8 +6,6 @@
  *
  */
 
-import { TableAdvanced } from "./components/table-advanced/TableAdvanced";
-
 export { Accordion } from "./components/accordion/Accordion";
 export { AccordionItem } from "./components/accordion/AccordionItem";
 export { ActivityButton } from "./components/activity-button/ActivityButton";

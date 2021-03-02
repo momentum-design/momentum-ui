@@ -452,14 +452,14 @@ export namespace TableAdvanced {
         `;
 
       const { head } = this.config;
-      const clazz = classMap({
+      const tableClass = classMap({
         "sticky-header": !!this.config.isStickyHeader
       });
 
       return html`
         <div class="md-table-advanced">
           <slot></slot>
-          <table class=${clazz} summary=${ifDefined(head?.summary)}>
+          <table class=${tableClass} summary=${ifDefined(head?.summary)}>
             ${head?.caption
           ? html`
                   <caption>
@@ -545,6 +545,7 @@ export namespace TableAdvanced {
           rowspan=${ifDefined(rowspan)}
           width=${ifDefined(col.width ? col.width : col.options.width)}
           scope="col"
+          part="head-col"
           class=${"col-index-" + col.index}
         >
           <!-- DRAG  -->
@@ -654,6 +655,7 @@ export namespace TableAdvanced {
         idx,
         idxDrag: idx,
         collapse: "none",
+        first: idx === 0 ? true : false,
         isGhost: false,
         children: []
       }));
@@ -737,8 +739,8 @@ export namespace TableAdvanced {
         const len = rows.length;
         const isRenderChild = row.children.length > 0 && row.collapse == "expanded" && !row.isGhost;
         return html`
-              ${this.renderRow(row, len)} ${isRenderChild ? row.children.map(c => this.renderRow(c, len)) : nothing}
-            `;
+                  ${this.renderRow(row, len)} ${isRenderChild ? row.children.map(c => this.renderRow(c, len)) : nothing}
+                `;
       })}
         </tbody>
       `;
@@ -746,21 +748,25 @@ export namespace TableAdvanced {
 
     private renderRow(row: Row, rowsLen: number) {
       const isSelected = this.selected.hasOwnProperty(row.idx);
-      const clazz = classMap({
+      const rowStyles = classMap({
         selected: isSelected,
         selectable: this.isSelectable && !isSelected,
         ghost: row.isGhost
       });
 
+
+
       return html`
         <tr
-          class=${clazz}
+          class=${rowStyles}
+          part=${row.first ? "first-row" : "row"}
           @click=${({ shiftKey, metaKey }: MouseEvent) => {
           if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });
         }}
         >
           ${row.cells.map((cell, j) => {
           const col = this.COLS[j];
+
 
           // content
           let content: TemplateResult | string = cell.text;
@@ -874,10 +880,10 @@ export namespace TableAdvanced {
 
           return col.options.isHeader
             ? html`
-                  <th scope="row">${cellRenderResult}</th>
+                  <th part="cell-ishead" scope="row">${cellRenderResult}</th>
                 `
             : html`
-                  <td>${cellRenderResult}</td>
+                  <td part=${j === 0 ? "first-cell" : "cell"}>${cellRenderResult}</td>
                 `;
         })}
         </tr>
@@ -960,6 +966,7 @@ export namespace TableAdvanced {
     idx: number;
     idxDrag: number;
     isGhost: boolean;
+    first: boolean;
     collapse: "none" | "collapsed" | "expanded" | "child";
     children: Row[];
   };

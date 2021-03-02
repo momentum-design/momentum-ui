@@ -16,6 +16,7 @@
 
 table {
   border-collapse: collapse;
+  border-spacing: 0;
   max-width: 100%;
   position: relative;
   width: 100%;
@@ -24,7 +25,8 @@ table {
 thead {
   th {
     background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-    border: $advanced-table-main-border;
+    border-bottom: $advanced-table-main-border;
+    border-right: $advanced-table-main-border;
     color: var(--md-secondary-text-color);
     font-family: $brand-font-regular;
     font-size: $font-size-base;
@@ -54,11 +56,13 @@ thead {
   .head-inner-cell {
     display: flex;
     justify-content: space-between;
+    min-width: 30px;
+    overflow: hidden;
     white-space: nowrap;
 
     & > span {
       display: inline-block;
-      min-width: $advanced-table-row-height;
+      //min-width: $advanced-table-row-height;
       overflow: hidden;
       padding-right: calc(#{$advanced-table-main-indent} * 1.25);
       text-overflow: ellipsis;
@@ -136,6 +140,10 @@ thead {
       }
     }
   }
+
+  th:first-child {
+    border-left: $advanced-table-main-border;
+  }
 }
 
 .filter-icon {
@@ -190,6 +198,7 @@ thead {
 }
 
 table.sticky-header {
+  border-collapse: separate;
   height: 100%;
   overflow: auto;
 
@@ -197,21 +206,48 @@ table.sticky-header {
     background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
 
     th {
+      border-bottom: none;
       position: sticky;
       top: -$advanced-table-header-sticky-indent;
       z-index: 1;
+
+      &:before {
+        border-bottom: $advanced-table-main-border;
+        content: " ";
+        left: 0;
+        position: absolute;
+        top: $advanced-table-header-sticky-indent;
+        width: 100%;
+      }
+
+      &:after {
+        border-bottom: $advanced-table-main-border;
+        bottom: 0;
+        content: " ";
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
     }
 
     tr {
       &:last-child {
         th {
           top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
+
+          &:before {
+            top: -$advanced-table-header-sticky-indent;
+          }
         }
       }
 
       &:first-child {
         th {
           top: -$advanced-table-header-sticky-indent;
+
+          &:before {
+            top: $advanced-table-header-sticky-indent;
+          }
         }
       }
     }
@@ -223,7 +259,8 @@ tbody {
     position: relative;
 
     td {
-      border: $advanced-table-main-border;
+      border-bottom: $advanced-table-main-border;
+      border-right: $advanced-table-main-border;
       font-size: $font-size-base;
       height: $advanced-table-row-height;
       max-width: 0;
@@ -233,12 +270,18 @@ tbody {
 
     th {
       background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-      border: $advanced-table-main-border;
+      border-bottom: $advanced-table-main-border;
+      border-right: $advanced-table-main-border;
       font-size: $font-size-base;
       max-width: 0;
       padding: 0 calc(#{$advanced-table-main-indent} * 4);
       position: relative;
       text-align: left;
+    }
+
+    td:first-child,
+    th:first-child {
+      border-left: $advanced-table-main-border;
     }
 
     .inner-cell {
@@ -285,7 +328,6 @@ tbody {
 
       &.top {
         top: 0;
-        //background-color: $md-violet-50;
       }
 
       &.bottom {

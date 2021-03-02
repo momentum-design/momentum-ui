@@ -11,7 +11,6 @@ This will render "classic" HTML `<table>` described in `config` property and fil
 
 ### Config
 
-Data is **[required]** property.  
 Configure columns and additional features here. Number of columns must match parsed data row length.
 
 ```ts
@@ -64,8 +63,7 @@ type Config = {
 
 ### Column Definition
 
-You **need** to define columns of your table.  
-Number of columns must correspond to provided [`Data`](#data).  
+You **need** to define columns of your table. Number of columns must correspond to provided [`Data`](#data).  
 You can define column:
 
 ```ts
@@ -93,7 +91,7 @@ type ColumnGroup = {
 
 ### Custom filters for column
 
-Here is an example how to define your own set of filters to column.
+Here is an example how to define your own set of filters for column.
 
 ```ts
 import { Filter } from "@/components/table-advanced/src/filter";
@@ -121,9 +119,9 @@ const config: TableAdvanced.Config = {
 
 ## Data
 
-Data is **[required]** property.
-
-`string[][]` - outer array is rows inner array is columns. Inner arrays must contain number of elements that is equal to **column** definitions.  
+Data is **required** property and can be provided in form of:  
+  
+`string[][]` - outer array is *rows* inner array is *columns*. Inner arrays must contain number of elements that is equal to **column** definitions.  
 `string[]` - must contain number of elements equal to **rows \* columns**.  
 `string` - in CSV format with number of columns equal to **column** definitions.
 
@@ -134,8 +132,7 @@ Data is **[required]** property.
 
 Templates feature will give you ability to customize any cell of your table with HTML.
 
-First you need to set anchors in your data.  
-In this example they are **_tmp_** and **_tmpCb_**.
+First you need to set anchors in your data. In this example they are **_tmp_** and **_tmpCb_**.
 
 ```ts
 const data = {
@@ -150,7 +147,10 @@ Provide `<templates>` for that anchors.
 
 ```html
 <md-table-advanced .config="${conf}" .data="${data}">
-  <template id="template1">[OK]</template>
+  <template id="template1">
+    <div>template content</div>
+  </template>
+
   <template id="template2">
     <span class="sp"></span>
     <button>btn</button>
@@ -158,7 +158,7 @@ Provide `<templates>` for that anchors.
 </md-table-advanced>
 ```
 
-Configure callbacks
+templates configuration
 
 ```ts
 const conf: TableAdvanced.Config = {
@@ -171,7 +171,7 @@ const conf: TableAdvanced.Config = {
   },
   cellTemplates: {
     _tmp_: { templateName: "template1" },
-    _tmp2_: {
+    _tmpCb_: {
       templateName: "template2",
       // by default template is inserted to anchor position inside cell text
       // with this option cell content will be replaced by template content
@@ -189,7 +189,7 @@ const conf: TableAdvanced.Config = {
 };
 ```
 
-### How filtering and sorting works with templated cell
+### How filtering and sorting works with templates
 
 Say for example your template will look like this:
 
@@ -197,12 +197,12 @@ Say for example your template will look like this:
 <template id="t1"><img src="url"/></template>
 ```
 
-There is no way to sort or filter it properly.  
-So for sorting and filtering we are using cell content(`string`) instead.  
+There is no way to sort or filter it properly. So for sorting and filtering we are using cell content(`string`) instead.
 
 - for example you have `"sample _t1_ text"` cell content. `"sample text"` will be used.
 
 Along with `templateCb` you can use `contentCb`. This will let you customize cell content.
+
 ```ts
 const conf: TableAdvanced.Config = {
   cellTemplates: {

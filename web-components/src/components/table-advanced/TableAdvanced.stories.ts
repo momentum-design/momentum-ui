@@ -8,6 +8,7 @@
 
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs, select, object } from "@storybook/addon-knobs";
+import mdx from "./TableAdvanced.mdx";
 import { html } from "lit-element";
 import { TableAdvanced } from "@/components/table-advanced/TableAdvanced";
 import "@/components/table-advanced/TableAdvanced";
@@ -25,9 +26,7 @@ export default {
       element: "md-table-advanced"
     },
     docs: {
-      description: {
-        component: ''
-      },
+      page: mdx
     }
   }
 };

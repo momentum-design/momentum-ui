@@ -145,7 +145,7 @@ export namespace TableAdvanced {
 
       const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
       if (lenData % lenNodes != 0) {
-        this.error =  this.error = "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
+        this.error = this.error = "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
         return;
       }
 

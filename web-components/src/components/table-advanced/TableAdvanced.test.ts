@@ -42,6 +42,7 @@ const ELEM = () => {
 
 describe("Table Advanced component", () => {
   afterEach(fixtureCleanup);
+
   test("should render correctly", async () => {
     const elem = await ELEM();
     expect(elem).toBeDefined();
@@ -73,7 +74,7 @@ describe("Table Advanced component", () => {
     elem["collapseToggle"](e, 0);
 
     elem["selectRow"]({
-      row: { cells: row1, idx: 0, idxDrag: 0, collapse: "none", isGhost: false, children: [] },
+      row: { cells: row1, idx: 0, first: true, idxDrag: 0, collapse: "none", isGhost: false, children: [] },
       metaKey: false,
       shiftKey: false
     });
@@ -96,32 +97,53 @@ describe("Table Advanced component", () => {
     expect(elemList).toBeDefined();
   });
 
-  test("should set sticky header", async () => {
-    const elem = await fixture<TableAdvanced.ELEMENT>(html`
-      <md-table-advanced .config=${TableAdvancedMock.SimpleTable.config} .data=${TableAdvancedMock.SimpleTable.dataList2d}>
-      </md-table-advanced>
-    `);
-    expect(elem).toBeDefined();
+  test("should set sticky header and part", async () => {
+    const elem = await ELEM();
 
     const header = elem.shadowRoot?.querySelector("table")
     expect(header?.getAttribute("class")).toEqual("sticky-header");
+
+    const row = elem.shadowRoot?.querySelector("table tbody tr");
+    expect(row?.getAttribute("part")).toEqual("first-row");
   });
 
-  test("should sort columns", async () => {
-    const SortMock = jest.fn();
-    const elem = await fixture<TableAdvanced.ELEMENT>(html`
-      <md-table-advanced .config=${TableAdvancedMock.SimpleTable.config} .data=${TableAdvancedMock.SimpleTable.dataList2d}>
-      </md-table-advanced>
-    `);
+  test("should set selected row", async () => {
+    const elem = await ELEM();
+    const row = elem.shadowRoot?.querySelector("table tbody tr") as HTMLElement;
 
-    elem["sort"] = SortMock;
+    row?.click();
+    await elementUpdated(elem);
+    expect(elem["isSelectable"]).toBeTruthy;
+  });
+
+  test("should set selected row", async () => {
+    const elem = await ELEM();
+    const collapseBtn = elem.shadowRoot?.querySelector("table tbody tr td .row-collapsible") as HTMLElement;
+    expect(collapseBtn).toBeUndefined;
+
+    const col1 = elem["COLS"][0];
+    col1.isCollapsable = true;
     await elementUpdated(elem);
 
-    const sortIcon = elem.shadowRoot?.querySelector("thead tr th .sortable") as HTMLElement;
-    expect(sortIcon).toBeDefined();
-    sortIcon?.click();
+    expect(collapseBtn).toBeDefined;
+    const collapseIcon = elem.shadowRoot?.querySelector("table tbody tr td .row-collapsible md-icon") as HTMLElement;
+    expect(collapseIcon?.getAttribute("name")).toEqual("plus_12");
 
-    expect(SortMock).toHaveBeenCalled();
+    collapseIcon.click();
+    await elementUpdated(elem);
+
+  });
+
+  test("should sort by Number", async () => {
+    const elem = await ELEM();
+    const col2 = elem["COLS"][1];
+
+    col2.sorter = "byNumber";
+    await elementUpdated(elem);
+
+    elem["sort"](col2, "ascending");
+    elem["sort"](col2, "descending");
+
   });
 
 });

@@ -145,7 +145,7 @@ export namespace TableAdvanced {
 
       const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
       if (lenData % lenNodes != 0) {
-        this.error = "DATA ERROR: Dividing DATA by COLS is not zero";
+        this.error =  this.error = "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
         return;
       }
 
@@ -328,7 +328,8 @@ export namespace TableAdvanced {
             this.selected[i] = true;
           }
         } else if (p.shiftKey) {
-          // TODO - if required
+          // TODO - if we enable shift key we need to disable "native browser" text selection
+          // and maybe user wants to select and copy more then 1 row content
         } else {
           this.selected = { [i]: true };
         }
@@ -410,7 +411,7 @@ export namespace TableAdvanced {
         if (posX != eX && eX != 0) {
           posX = eX;
 
-          // TODO - With this I can catch wher resize is stopped
+          // TODO - With this I can catch if resize is stopped
           /*
           const real = elem.offsetWidth;
           console.log(set, real);

@@ -47,6 +47,7 @@ import {
   sliderTemplate,
   spinnerTemplate,
   tableTemplate,
+  tableAdvancedTemplate,
   tabsTemplate,
   taskItemTemplate,
   timePickerTemplate,
@@ -121,6 +122,14 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
+
+          <div class="container" aria-label="md-table-advanced">
+            <h2>md-table-advanced</h2>
+            <sass-stats component="table-advanced">
+              ${tableAdvancedTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">

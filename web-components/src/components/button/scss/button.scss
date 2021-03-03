@@ -218,7 +218,21 @@
         $color: $button__font-color--alt,
         $bg: $button--blue__background-color,
         $bg-hover: $button--blue__background-color--hover,
-        $bg-active: $button--blue__background-color--active
+        $bg-active: $button--blue__background-color--active,
+        $focus: true
+      );
+    }
+
+    &--blue.md-button--outline {
+      @include button-color(
+        $color: $button--blue__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--blue__border,
+        $bg-hover: $button--blue__background-color--hover,
+        $bg-active: $button--blue__background-color--active,
+        $focus: true
       );
     }
 
@@ -227,7 +241,21 @@
         $color: $button__font-color--alt,
         $bg: $button--red__background-color,
         $bg-hover: $button--red__background-color--hover,
-        $bg-active: $button--red__background-color--active
+        $bg-active: $button--red__background-color--active,
+        $focus: true
+      );
+    }
+
+    &--red.md-button--outline {
+      @include button-color(
+        $color: $button--red__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--red__border,
+        $bg-hover: $button--red__background-color--hover,
+        $bg-active: $button--red__background-color--active,
+        $focus: true
       );
     }
 
@@ -236,7 +264,21 @@
         $color: $button__font-color--alt,
         $bg: $button--green__background-color,
         $bg-hover: $button--green__background-color--hover,
-        $bg-active: $button--green__background-color--active
+        $bg-active: $button--green__background-color--active,
+        $focus: true
+      );
+    }
+
+    &--green.md-button--outline {
+      @include button-color(
+        $color: $button--green__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--green__border,
+        $bg-hover: $button--green__background-color--hover,
+        $bg-active: $button--green__background-color--active,
+        $focus: true
       );
     }
 
@@ -245,7 +287,21 @@
         $color: $button__font-color--alt,
         $bg: $button--orange__background-color,
         $bg-hover: $button--orange__background-color--hover,
-        $bg-active: $button--orange__background-color--active
+        $bg-active: $button--orange__background-color--active,
+        $focus: true
+      );
+    }
+
+    &--orange.md-button--outline {
+      @include button-color(
+        $color: $button--orange__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--orange__border,
+        $bg-hover: $button--orange__background-color--hover,
+        $bg-active: $button--orange__background-color--active,
+        $focus: true
       );
     }
 
@@ -258,12 +314,38 @@
       );
     }
 
+    &--yellow.md-button--outline {
+      @include button-color(
+        $color: $button--yellow__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--yellow__border,
+        $bg-hover: $button--yellow__background-color--hover,
+        $bg-active: $button--yellow__background-color--active,
+        $focus: true
+      );
+    }
+
     &--mint {
       @include button-color(
         $color: $button__font-color--alt,
         $bg: $button--mint__background-color,
         $bg-hover: $button--mint__background-color--hover,
         $bg-active: $button--mint__background-color--active
+      );
+    }
+
+    &--mint.md-button--outline {
+      @include button-color(
+        $color: $button--mint__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--mint__border,
+        $bg-hover: $button--mint__background-color--hover,
+        $bg-active: $button--mint__background-color--active,
+        $focus: true
       );
     }
 
@@ -276,6 +358,19 @@
       );
     }
 
+    &--purple.md-button--outline {
+      @include button-color(
+        $color: $button--purple__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--purple__border,
+        $bg-hover: $button--purple__background-color--hover,
+        $bg-active: $button--purple__background-color--active,
+        $focus: true
+      );
+    }
+
     &--pink {
       @include button-color(
         $color: $button__font-color--alt,
@@ -285,12 +380,38 @@
       );
     }
 
+    &--pink.md-button--outline {
+      @include button-color(
+        $color: $button--pink__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--pink__border,
+        $bg-hover: $button--pink__background-color--hover,
+        $bg-active: $button--pink__background-color--active,
+        $focus: true
+      );
+    }
+
     &--cyan {
       @include button-color(
         $color: $button__font-color--alt,
         $bg: $button--cyan__background-color,
         $bg-hover: $button--cyan__background-color--hover,
         $bg-active: $button--cyan__background-color--active
+      );
+    }
+
+    &--cyan.md-button--outline {
+      @include button-color(
+        $color: $button--cyan__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--cyan__border,
+        $bg-hover: $button--cyan__background-color--hover,
+        $bg-active: $button--cyan__background-color--active,
+        $focus: true
       );
     }
 
@@ -324,6 +445,19 @@
       );
     }
 
+    &--dark-gray.md-button--outline {
+      @include button-color(
+        $color: $button--dark-gray__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--dark-gray__border,
+        $bg-hover: $button--dark-gray__background-color--hover,
+        $bg-active: $button--dark-gray__background-color--active,
+        $focus: true
+      );
+    }
+
     &--duck-egg {
       @include button-color(
         $color: $button__font-color--alt,
@@ -333,12 +467,38 @@
       );
     }
 
+    &--duck-egg.md-button--outline {
+      @include button-color(
+        $color: $button--duck-egg__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--duck-egg__border,
+        $bg-hover: $button--duck-egg__background-color--hover,
+        $bg-active: $button--duck-egg__background-color--active,
+        $focus: true
+      );
+    }
+
     &--violet {
       @include button-color(
         $color: $button__font-color--alt,
         $bg: $button--violet__background-color,
         $bg-hover: $button--violet__background-color--hover,
         $bg-active: $button--violet__background-color--active
+      );
+    }
+
+    &--violet.md-button--outline {
+      @include button-color(
+        $color: $button--violet__background-color,
+        $color-hover: $button__font-color--alt,
+        $color-active: $button__font-color--alt,
+        $bg: $button--white__background-color,
+        $box-shadow: $button--violet__border,
+        $bg-hover: $button--violet__background-color--hover,
+        $bg-active: $button--violet__background-color--active,
+        $focus: true
       );
     }
 

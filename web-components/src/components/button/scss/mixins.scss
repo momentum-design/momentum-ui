@@ -89,11 +89,7 @@
   }
 }
 
-@mixin button-circle-size(
-  $font-size: false,
-  $line-height: $font-size,
-  $size: false
-) {
+@mixin button-circle-size($font-size: false, $line-height: $font-size, $size: false) {
   @if $size {
     width: $size;
     height: $size;
@@ -158,11 +154,7 @@
   }
 
   @if $disabled {
-    @include button-color-disabled(
-      $color: $color-disabled,
-      $bg: $bg-disabled,
-      $opacity: $opacity
-    );
+    @include button-color-disabled($color: $color-disabled, $bg: $bg-disabled, $opacity: $opacity);
   }
 
   @if $focus {
@@ -182,7 +174,6 @@
   $bg-disabled: transparent,
   $focus: false
 ) {
-
   @include button-color-disabled($color: $fill-disabled, $bg: $bg-disabled);
   color: $fill;
   fill: $fill;
@@ -211,11 +202,7 @@
   }
 }
 
-@mixin button-color-disabled(
-  $color: $button__font-color--disabled,
-  $bg: $button__color--disabled,
-  $opacity: false
-) {
+@mixin button-color-disabled($color: $button__font-color--disabled, $bg: $button__color--disabled, $opacity: false) {
   &.disabled,
   &.md-button--disabled,
   &[disabled] {

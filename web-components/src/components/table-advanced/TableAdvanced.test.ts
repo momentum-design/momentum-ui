@@ -26,7 +26,7 @@ const ELEM = () => {
       contentUse: "replace",
       templateName: "tmp2",
       contentCb: ({ content }) => content,
-      templateCb: () => { }
+      templateCb: () => {}
     }
   };
 
@@ -69,7 +69,7 @@ describe("Table Advanced component", () => {
     elem["sort"](col1, "descending");
     elem["filter"](col1);
 
-    const e = { stopPropagation: () => { } } as any;
+    const e = { stopPropagation: () => {} } as any;
     elem["collapseToggle"](e, 0);
     elem["collapseToggle"](e, 0);
 
@@ -100,7 +100,7 @@ describe("Table Advanced component", () => {
   test("should set sticky header and part", async () => {
     const elem = await ELEM();
 
-    const header = elem.shadowRoot?.querySelector("table")
+    const header = elem.shadowRoot?.querySelector("table");
     expect(header?.getAttribute("class")).toEqual("sticky-header");
 
     const row = elem.shadowRoot?.querySelector("table tbody tr");
@@ -131,7 +131,6 @@ describe("Table Advanced component", () => {
 
     collapseIcon.click();
     await elementUpdated(elem);
-
   });
 
   test("should sort by Number", async () => {
@@ -143,7 +142,5 @@ describe("Table Advanced component", () => {
 
     elem["sort"](col2, "ascending");
     elem["sort"](col2, "descending");
-
   });
-
 });

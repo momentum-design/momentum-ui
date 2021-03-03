@@ -7,7 +7,7 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs, select, object } from "@storybook/addon-knobs";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import mdx from "./TableAdvanced.mdx";
 import { html } from "lit-element";
 import { TableAdvanced } from "@/components/table-advanced/TableAdvanced";
@@ -18,9 +18,6 @@ export default {
   title: "TableAdvanced",
   component: "md-table-advanced",
   decorators: [withKnobs, withA11y],
-  argTypes: {
-
-  },
   parameters: {
     a11y: {
       element: "md-table-advanced"
@@ -30,9 +27,6 @@ export default {
     }
   }
 };
-
-const selectOptions = ["none", "single", "multiple"];
-
 
 export const Default = () => {
   const darkTheme = boolean("darkMode", false);
@@ -45,8 +39,6 @@ export const Default = () => {
   const caption = text("Table Caption", "");
   const sum = text("Table Summary", "");
   const customize = boolean("Use custom template for replace", false);
-
-
 
   const DefaultAdvancedTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
     config: {
@@ -141,7 +133,7 @@ export const Default = () => {
     "00:52": {
       templateName: "tmp1"
     }
-  }
+  };
 
   if (customize) {
     return html`
@@ -149,20 +141,20 @@ export const Default = () => {
         <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
           <md-table-advanced
             .style="${collapse ? `display: block;` : `display: none;`}"
-            .config=${ColapseData.config} 
-            .data=${ColapseData.data}> 
+            .config=${ColapseData.config}
+            .data=${ColapseData.data}
+          >
           </md-table-advanced>
           <md-table-advanced
             .style="${collapse ? `display: none;` : `display: block;`}"
-            .config=${DefaultAdvancedTable.config} 
-            .data=${DefaultAdvancedTable.data}> 
-
+            .config=${DefaultAdvancedTable.config}
+            .data=${DefaultAdvancedTable.data}
+          >
             <template id="tmp1">
               <div style="background: yellow">
-                 [OK]
+                [OK]
               </div>
             </template>
-
           </md-table-advanced>
         </div>
       </md-theme>
@@ -173,18 +165,18 @@ export const Default = () => {
         <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
           <md-table-advanced
             .style="${collapse ? `display: block;` : `display: none;`}"
-            .config=${ColapseData.config} 
-            .data=${ColapseData.data}> 
+            .config=${ColapseData.config}
+            .data=${ColapseData.data}
+          >
           </md-table-advanced>
           <md-table-advanced
             .style="${collapse ? `display: none;` : `display: block;`}"
-            .config=${DefaultAdvancedTable.config} 
-            .data=${DefaultAdvancedTable.data}> 
-
+            .config=${DefaultAdvancedTable.config}
+            .data=${DefaultAdvancedTable.data}
+          >
           </md-table-advanced>
         </div>
       </md-theme>
     `;
   }
-
 };

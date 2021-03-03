@@ -1,0 +1,13 @@
+$advanced-table-main-border: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+$advanced-table-filter-border: 1px solid
+  var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+$advanced-table-dragarea-border: 2px dashed
+  var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+$advanced-table-main-indent: rem-calc(4);
+$advanced-table-row-height: rem-calc(40);
+$advanced-table-sort-icon: rem-calc(16);
+$advanced-table-overlay-position: rem-calc(10);
+$advanced-table-header-sticky-indent: rem-calc(1);
+$advanced-table-resize-width: rem-calc(4);
+$advanced-table-collapse-btn: rem-calc(20);
+$advanced-table-filter-height: rem-calc(14);

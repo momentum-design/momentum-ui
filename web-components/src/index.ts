@@ -61,6 +61,7 @@ export { RadioGroup } from "./components/radio/RadioGroup";
 export { Slider } from "./components/slider/Slider";
 export { Spinner } from "./components/spinner/Spinner";
 export { Table } from "./components/table/Table";
+export { TableAdvanced } from "./components/table-advanced/TableAdvanced";
 export { Tab } from "./components/tabs/Tab";
 export { TabPanel } from "./components/tabs/TabPanel";
 export { Tabs } from "./components/tabs/Tabs";

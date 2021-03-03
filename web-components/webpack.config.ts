@@ -193,6 +193,7 @@ const commonDist = merge(common, {
     "comp/md-slider-entry": "./src/components/slider/Slider",
     "comp/md-spinner-entry": "./src/components/spinner/Spinner",
     "comp/md-table-entry": "./src/components/table/Table",
+    "comp/md-table-advanced-entry": "./src/components/table-advanced/TableAdvanced",
     "comp/md-tab-entry": "./src/components/tabs/Tab",
     "comp/md-tab-panel-entry": "./src/components/tabs/TabPanel",
     "comp/md-tabs-entry": "./src/components/tabs/Tabs",

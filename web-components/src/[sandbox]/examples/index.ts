@@ -39,6 +39,7 @@ export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";
 export { sliderTemplate } from "./slider";
 export { spinnerTemplate } from "./spinner";
+export { tableAdvancedTemplate } from "./table-advanced";
 export { tableTemplate } from "./table";
 export { tabsTemplate } from "./tabs";
 export { taskItemTemplate } from "./task-item";

@@ -7,9 +7,10 @@
  */
 
 import { TableAdvancedMock } from "@/[sandbox]/examples/table-advanced-mock";
-import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./TableAdvanced";
 import { TableAdvanced } from "./TableAdvanced";
+import { Filter } from "./src/filter";
 
 const ELEM = () => {
   const DATA = TableAdvancedMock.ComplexTable.data;
@@ -142,5 +143,43 @@ describe("Table Advanced component", () => {
 
     elem["sort"](col2, "ascending");
     elem["sort"](col2, "descending");
+  });
+
+  test("should emit event after any filter action", async () => {
+    const elem = await ELEM();
+    const colObject = { index: 2, filter: { list: Filter.OPTIONS.equals, input: "inputText" } };
+
+    jest.doMock("./src/decorators", () => {
+      return jest.fn().mockImplementation(fn => fn);
+    });
+
+    setTimeout(() => elem["filter"](colObject as any));
+    const { detail } = await oneEvent(elem, "md-table-advanced-change");
+    expect(detail).toMatchObject({
+      type: "filter-on"
+    });
+    jest.restoreAllMocks();
+  });
+
+  test("should emit event after any sort action", async () => {
+    const elem = await ELEM();
+    const colObject = { index: 2, sorter: "byString", options: { id: "unique-id" } };
+
+    setTimeout(() => elem["sort"](colObject as any, "ascending"));
+    const { detail } = await oneEvent(elem, "md-table-advanced-change");
+    expect(detail).toMatchObject({
+      type: "sort"
+    });
+  });
+
+  test("should emit event after row collapse", async () => {
+    const elem = await ELEM();
+    const event = new Event("click");
+
+    setTimeout(() => elem["collapseToggle"](event, 2));
+    const { detail } = await oneEvent(elem, "md-table-advanced-change");
+    expect(detail).toMatchObject({
+      type: "expand"
+    });
   });
 });

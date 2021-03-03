@@ -54,21 +54,39 @@ thead {
   }
 
   .head-inner-cell {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
     min-width: 30px;
-    overflow: hidden;
-    white-space: nowrap;
 
-    & > span {
+    md-button {
+      min-width: calc(#{$advanced-table-sort-icon} * 2.5);
+      width: 100%;
+    }
+
+    md-button::part(button) {
       display: inline-block;
-      //min-width: $advanced-table-row-height;
+      font-family: $brand-font-regular;
+      font-size: $font-size-base;
+      text-align: left;
+      white-space: nowrap;
+      width: calc(100% - #{$advanced-table-main-indent});
+    }
+
+    md-button::part(button-children) {
+      justify-content: flex-start;
+    }
+
+    span {
+      display: inline-block;
       overflow: hidden;
       padding-right: calc(#{$advanced-table-main-indent} * 1.25);
       text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
 
       &.sortable {
         padding-right: calc(#{$advanced-table-main-indent} * 4);
+        width: auto;
       }
     }
   }

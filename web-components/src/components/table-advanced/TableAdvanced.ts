@@ -10,7 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import "@/components/button/Button";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { classMap } from "lit-html/directives/class-map";
@@ -556,14 +556,16 @@ export namespace TableAdvanced {
             <!-- SORT  -->
             ${col.sorter
           ? html`
-                  <span class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</span>
+                <md-button color="color-none" hasRemoveStyle maxwidth="100%" @click=${() => this.sort(col)}>
+                  <span slot="text" class="sortable ${sortClass}" >${col.options.title}</span>
+                </md-button>
                 `
           : html`
-                  <span>${col.options.title}</span>
-                `}
+                <span>${col.options.title}</span>
+              `}
 
-            <!-- FILTER -->
-            ${col.filter
+                <!-- FILTER -->
+                ${col.filter
           ? html`
                   ${col.filter.active
               ? html`

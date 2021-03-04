@@ -94,8 +94,9 @@ thead {
     text-align: left;
 
     .filter {
-      display: inline-flex;
-      margin-top: $advanced-table-main-indent;
+      display: inline-block;
+      height: auto;
+      margin-top: calc(#{$advanced-table-resize-width} / 2);
     }
 
     .resize {
@@ -113,11 +114,38 @@ thead {
   .head-inner-cell {
     align-items: center;
     display: flex;
-    min-width: 30px;
+    min-width: calc(#{$advanced-table-collapse-btn} * 1.5);
 
     md-button {
       min-width: calc(#{$advanced-table-sort-icon} * 2.5);
       width: 100%;
+    }
+
+    .filter-icon {
+      color: var(--md-secondary-text-color);
+      cursor: pointer;
+      display: inline-block;
+      height: $advansed-table-filter-btn;
+      min-width: $advanced-table-collapse-btn;
+      position: relative;
+      z-index: 1;
+
+      &::part(button) {
+        padding: $advanced-table-main-indent;
+        text-align: center;
+        width: $advansed-table-filter-btn;
+      }
+
+      &:hover {
+        background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
+      }
+
+      &:active {
+        background-color: var(
+          --table-advanced-filter-pressed-bg-color,
+          $lm-table-advanced-filter-pressed-bg-color-light
+        );
+      }
     }
 
     md-button::part(button) {
@@ -151,6 +179,13 @@ thead {
   md-menu-overlay::part(overlay) {
     top: -$advanced-table-overlay-position;
     white-space: normal;
+  }
+
+  @supports (-moz-appearance: none) {
+    md-menu-overlay::part(overlay) {
+      top: -$advanced-table-main-indent;
+      white-space: normal;
+    }
   }
 
   .drag-area-col {
@@ -218,22 +253,6 @@ thead {
 
   th:first-child {
     border-left: $advanced-table-main-border;
-  }
-}
-
-.filter-icon {
-  color: var(--md-secondary-text-color);
-  cursor: pointer;
-  padding: $advanced-table-main-indent;
-  position: relative;
-  z-index: 1;
-
-  &:hover {
-    background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
-  }
-
-  &:active {
-    background-color: var(--table-advanced-filter-pressed-bg-color, $lm-table-advanced-filter-pressed-bg-color-light);
   }
 }
 

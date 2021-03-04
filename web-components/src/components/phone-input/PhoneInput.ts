@@ -1,10 +1,10 @@
 import "@/components/combobox/ComboBox";
 import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import { repeat } from "lit-html/directives/repeat.js";
 import styles from "./scss/module.scss";
@@ -24,7 +24,6 @@ export namespace PhoneInput {
     value: string;
     errorMessage: string;
   };
-
 
   @customElementWithCheck("md-phone-input")
   export class ELEMENT extends LitElement {
@@ -73,6 +72,9 @@ export namespace PhoneInput {
     }
 
     handleCountryChange(event: CustomEvent) {
+      if (!event.detail.id) {
+        return;
+      }
       this.countryCallingCode = event.detail.value.id;
       this.countryCode = event.detail.value.id.split(",")[2];
     }
@@ -110,7 +112,7 @@ export namespace PhoneInput {
     }
 
     handleBlur(event: Event) {
-      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : true;
+      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
       event.stopPropagation();
       this.dispatchEvent(
         new CustomEvent("phoneinput-blur", {

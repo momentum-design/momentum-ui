@@ -53,10 +53,6 @@ export namespace PhoneInput {
       return [reset, styles];
     }
 
-    get locale() {
-      return navigator.language;
-    }
-
     countryCodeOptionTemplate(country: PhoneInput.Country, index: number) {
       return html`
         <div

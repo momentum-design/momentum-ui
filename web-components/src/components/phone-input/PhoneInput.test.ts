@@ -127,6 +127,47 @@ describe("PhoneInput Component", () => {
 
     expect(element.countryCallingCode).toEqual("");
   });
+  test("should emit a custom event on input blur", async () => {
+    const parentElement = await fixture(
+      html`
+        <div class="parent"></div>
+      `
+    );
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input></md-phone-input>
+      `
+    );
+
+    const mockFunc = jest.fn();
+    parentElement.appendChild(element);
+    parentElement.addEventListener("phoneinput-blur", mockFunc);
+
+    const event: Event = new Event("input-blur");
+    element.handleBlur(event);
+
+    expect(mockFunc).toHaveBeenCalled();
+    expect(element.value).toBeFalsy();
+  });
+  test("should verify phone number on input blur", async () => {
+    const parentElement = await fixture(
+      html`
+        <div class="parent"></div>
+      `
+    );
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input value="(773)-777-6002"></md-phone-input>
+      `
+    );
+
+    parentElement.appendChild(element);
+
+    const event: Event = new Event("input-blur");
+    element.handleBlur(event);
+
+    expect(element.value).toBeTruthy();
+  });
 
   test("should trigger a Phone Change event", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(

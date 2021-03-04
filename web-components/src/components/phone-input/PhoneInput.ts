@@ -72,7 +72,7 @@ export namespace PhoneInput {
     }
 
     handleCountryChange(event: CustomEvent) {
-      if (!event.detail.id) {
+      if (!event.detail.value) {
         return;
       }
       this.countryCallingCode = event.detail.value.id;

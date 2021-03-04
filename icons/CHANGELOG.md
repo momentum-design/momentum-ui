@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.7.0...@momentum-ui/icons@8.8.0) (2021-03-04)
+
+
+### Features
+
+* **icons:** add layout-side-by-side-vertical_24 ([f38fa0c](https://github.com/momentum-design/momentum-ui/commit/f38fa0c5ce92044e3fe695a9ba3894ae2ecb386b))
+* **icons:** add side-by-side-active_24 ([a972d33](https://github.com/momentum-design/momentum-ui/commit/a972d33d4f0446a1f532773e01595a79001e4b77))
+* **icons:** add video-layout-equal_28 ([ef7ab7f](https://github.com/momentum-design/momentum-ui/commit/ef7ab7f409bc0e8c5a1e508e500eaed27d38ce14))
+* **icons:** add video-layout-single_28 ([cbd7206](https://github.com/momentum-design/momentum-ui/commit/cbd720618b18a2dfa7580b987f9ff786a5089e50))
+
+
+
+
+
 # [8.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.6.0...@momentum-ui/icons@8.7.0) (2021-03-03)
 
 

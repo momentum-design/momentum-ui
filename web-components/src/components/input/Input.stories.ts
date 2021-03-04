@@ -12,7 +12,7 @@ import { html } from "lit-element";
 import "@/components/icon/Icon";
 import "@/components/input/Input";
 import "@/components/theme/Theme";
-import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "@/components/input/Input";
+import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 import { action } from '@storybook/addon-actions';
 
 export default {

@@ -28,7 +28,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TabKeyDownEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "264px"; // Designed width

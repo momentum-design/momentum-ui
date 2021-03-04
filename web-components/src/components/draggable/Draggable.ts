@@ -7,7 +7,7 @@
  */
 
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
-import Sortable, { SortableOptions } from "sortablejs";
+import Sortable from "sortablejs";
 import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
@@ -158,7 +158,7 @@ export namespace Draggable {
       this.cleanupSortable();
     }
 
-    private setSortableOption(name: Partial<keyof SortableOptions>, value: SortableOptions[keyof SortableOptions]) {
+    private setSortableOption(name: Partial<keyof Sortable.SortableOptions>, value: Sortable.SortableOptions[keyof Sortable.SortableOptions]) {
       if (this.sortableInstance && this.sortableInstance.option(name) !== undefined) {
         this.sortableInstance.option(name, value);
       }
@@ -167,7 +167,7 @@ export namespace Draggable {
     private updateSortableInstance(changedProperties: PropertyValues) {
       for (const propertyKey of changedProperties.keys()) {
         const value = (this as Draggable.ELEMENT)[propertyKey as keyof Draggable.ELEMENT];
-        this.setSortableOption(propertyKey as keyof SortableOptions, value as SortableOptions[keyof SortableOptions]);
+        this.setSortableOption(propertyKey as keyof Sortable.SortableOptions, value as Sortable.SortableOptions[keyof Sortable.SortableOptions]);
       }
     }
 

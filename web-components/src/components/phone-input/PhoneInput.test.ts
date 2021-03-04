@@ -110,6 +110,23 @@ describe("PhoneInput Component", () => {
 
     expect(element.countryCallingCode).toEqual("+1268,AntiguaandBarbuda,AG");
   });
+  test("should not trigger a Country Change if the field is exited without a value", async () => {
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input></md-phone-input>
+      `
+    );
+    const event: CustomEvent = new CustomEvent("change-selected", {
+      composed: true,
+      bubbles: true,
+      detail: {
+        value: undefined
+      }
+    });
+    element.handleCountryChange(event);
+
+    expect(element.countryCallingCode).toEqual("");
+  });
 
   test("should trigger a Phone Change event", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(

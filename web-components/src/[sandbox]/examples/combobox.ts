@@ -23,6 +23,14 @@ export const comboBoxTemplate = html`
     .value=${[comboBoxOptions[5]]}
     allow-custom-value
   ></md-combobox>
+  <h3>Invalid</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    .value=${[comboBoxOptions[5]]}
+    invalid
+    invalid-text-i18n="This is error message"
+  ></md-combobox>
   <h3>Multi Data with Custom Values</h3>
   <md-combobox
     .options=${comboBoxOptions}
@@ -123,7 +131,7 @@ export const comboBoxTemplate = html`
   <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content>
     {dropdownValue.map((item, index) => dropdownOptionTemplate(item, index))}
   </md-combobox>
-  <h3>no-clear-icon attribute</h3>
+  <h3>Without Clear Icon</h3>
   <md-combobox
     .options=${comboBoxOptions}
     placeholder="Placeholder"

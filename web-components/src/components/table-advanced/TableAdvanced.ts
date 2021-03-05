@@ -502,7 +502,10 @@ export namespace TableAdvanced {
                   gName = col.group.name;
                   return html`
                     <th colspan=${col.group.length} scope="colgroup">
-                      ${col.group.name} ${this.renderColResize(col)}
+                      <div class="head-inner-cell">
+                        <span>${col.group.name}</span>
+                        ${this.renderColResize(col)}
+                      </div>
                     </th>
                   `;
                 }
@@ -557,9 +560,7 @@ export namespace TableAdvanced {
             <!-- SORT  -->
             ${col.sorter
               ? html`
-                  <md-button color="color-none" hasRemoveStyle maxwidth="100%" @click=${() => this.sort(col)}>
-                    <span slot="text" class="sortable ${sortClass}">${col.options.title}</span>
-                  </md-button>
+                  <button class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</button>
                 `
               : html`
                   <span>${col.options.title}</span>
@@ -568,44 +569,46 @@ export namespace TableAdvanced {
             <!-- FILTER -->
             ${col.filter
               ? html`
-                  ${col.filter.active
-                    ? html`
-                        <md-icon class="filter-active" name="filter-adr_14"></md-icon>
-                      `
-                    : nothing}
-                  <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
-                    <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
-                      <md-icon slot="icon" name="filter_16"></md-icon>
-                    </md-button>
-                    <div class="filter-menu" style="width: 100%;">
-                      <select
-                        name="filter-type"
-                        @change=${(e: any) => {
-                          col.filter!.selectedIndex = e.target.value;
-                          this.updCols();
-                          this.filter(col);
-                        }}
-                      >
-                        ${col.filter.list.map(
-                          (c, i) => html`
-                            <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
-                          `
-                        )}
-                      </select>
-                      <input
-                        type="text"
-                        placeholder=${input!.placeholder}
-                        maxlength=${ifDefined(input!.maxlength)}
-                        pattern=${ifDefined(input!.pattern)}
-                        .value=${col.filter.input}
-                        @input=${(e: any) => {
-                          col.filter!.input = e.target.value;
-                          this.updCols();
-                          this.filter(col);
-                        }}
-                      />
-                    </div>
-                  </md-menu-overlay>
+                  <div class="filter-wrap">
+                    ${col.filter.active
+                      ? html`
+                          <md-icon class="filter-active" name="filter-adr_14"></md-icon>
+                        `
+                      : nothing}
+                    <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
+                      <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
+                        <md-icon slot="icon" name="filter_16"></md-icon>
+                      </md-button>
+                      <div class="filter-menu" style="width: 100%;">
+                        <select
+                          name="filter-type"
+                          @change=${(e: any) => {
+                            col.filter!.selectedIndex = e.target.value;
+                            this.updCols();
+                            this.filter(col);
+                          }}
+                        >
+                          ${col.filter.list.map(
+                            (c, i) => html`
+                              <option value=${i} ?selected=${col.filter!.selectedIndex == i}>${c.label}</option>
+                            `
+                          )}
+                        </select>
+                        <input
+                          type="text"
+                          placeholder=${input!.placeholder}
+                          maxlength=${ifDefined(input!.maxlength)}
+                          pattern=${ifDefined(input!.pattern)}
+                          .value=${col.filter.input}
+                          @input=${(e: any) => {
+                            col.filter!.input = e.target.value;
+                            this.updCols();
+                            this.filter(col);
+                          }}
+                        />
+                      </div>
+                    </md-menu-overlay>
+                  </div>
                 `
               : nothing}
 

@@ -1049,4 +1049,21 @@ describe("Combobox Component", () => {
     expect(el.filteredOptions.includes("One")).not.toBeTruthy();
     expect(el.filteredOptions.length).toEqual(29);
   });
+
+  test("should correct render invalid state", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox
+          .options=${comboBoxOptions}
+          .value=${[comboBoxOptions[4]]}
+          invalid
+          invalid-text-i18n="Error Message from Combobox"
+        ></md-combobox>
+      `
+    );
+
+    expect(el.invalid).toBeTruthy();
+    expect(el.shadowRoot!.querySelector(".md-combobox-error")).not.toBeNull();
+    expect(el.shadowRoot!.querySelector("md-help-text")!.message).toEqual("Error Message from Combobox");
+  });
 });

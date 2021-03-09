@@ -1,0 +1,411 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+*/
+
+:host {
+  display: block;
+}
+
+.md-table-advanced {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+
+  &.sticky-header {
+    border-collapse: separate;
+    height: 100%;
+    overflow: auto;
+
+    thead {
+      background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+
+      th {
+        border-bottom: 0;
+        position: sticky;
+        top: -$advanced-table-header-sticky-indent;
+        z-index: 1;
+
+        &::before {
+          border-bottom: $advanced-table-main-border;
+          content: " ";
+          left: 0;
+          position: absolute;
+          top: $advanced-table-header-sticky-indent;
+          width: 100%;
+        }
+
+        &::after {
+          border-bottom: $advanced-table-main-border;
+          bottom: 0;
+          content: " ";
+          left: 0;
+          position: absolute;
+          width: 100%;
+        }
+      }
+
+      tr {
+        &:last-child {
+          th {
+            top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
+
+            &::before {
+              top: -$advanced-table-header-sticky-indent;
+            }
+          }
+        }
+
+        &:first-child {
+          th {
+            top: -$advanced-table-header-sticky-indent;
+
+            &::before {
+              top: $advanced-table-header-sticky-indent;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+thead {
+  th {
+    background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+    border-bottom: $advanced-table-main-border;
+    border-right: $advanced-table-main-border;
+    color: var(--md-secondary-text-color);
+    font-family: $brand-font-regular;
+    font-size: $font-size-base;
+    height: $advanced-table-row-height;
+    max-width: 0;
+    padding: 0 calc(#{$advanced-table-main-indent} * 4);
+    position: relative;
+    text-align: left;
+
+    .filter {
+      display: inline-block;
+      height: auto;
+      margin-top: calc(#{$advanced-table-resize-width} / 2);
+    }
+
+    .resize {
+      background-color: transparent;
+      cursor: col-resize;
+      height: 100%;
+      left: calc(-#{$advanced-table-resize-width} / 2);
+      position: absolute;
+      top: 0;
+      width: $advanced-table-resize-width;
+      z-index: 1;
+    }
+  }
+
+  .head-inner-cell {
+    align-items: center;
+    display: flex;
+    min-width: $advanced-table-filter-height;
+    overflow: hidden;
+
+    .filter-wrap {
+      display: inline-flex;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .filter-icon {
+      color: var(--md-secondary-text-color);
+      cursor: pointer;
+      display: inline-block;
+      height: $advansed-table-filter-btn;
+      min-width: $advanced-table-collapse-btn;
+      position: relative;
+      z-index: 1;
+
+      &::part(button) {
+        padding: $advanced-table-main-indent;
+        text-align: center;
+        width: $advansed-table-filter-btn;
+      }
+
+      &:hover {
+        background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
+      }
+
+      &:active {
+        background-color: var(
+          --table-advanced-filter-pressed-bg-color,
+          $lm-table-advanced-filter-pressed-bg-color-light
+        );
+      }
+    }
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      padding-right: calc(#{$advanced-table-main-indent} * 1.25);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .sortable {
+      background: transparent;
+      border: 0;
+      display: inline-block;
+      min-width: calc(#{$advanced-table-sort-icon} * 2.5);
+      overflow: hidden;
+      padding-right: calc(#{$advanced-table-main-indent} * 4);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: auto;
+    }
+  }
+
+  md-menu-overlay::part(overlay) {
+    top: -$advanced-table-overlay-position;
+    white-space: normal;
+  }
+
+  @supports (-moz-appearance: none) {
+    md-menu-overlay::part(overlay) {
+      top: -$advanced-table-main-indent;
+      white-space: normal;
+    }
+  }
+
+  .drag-area-col {
+    cursor: grab;
+    display: block;
+    height: calc(#{$advanced-table-main-indent} * 10);
+    left: $advanced-table-main-indent;
+    position: absolute;
+    right: $advanced-table-main-indent;
+    top: 0;
+    z-index: 1;
+
+    &.drag {
+      border: $advanced-table-dragarea-border;
+      opacity: 1;
+    }
+
+    &.over {
+      background-color: $md-violet-50;
+      height: 100%;
+      opacity: 0.1;
+    }
+  }
+
+  .sortable {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      border: $advanced-table-main-indent solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      opacity: 0.3;
+      position: absolute;
+      right: $advanced-table-main-indent;
+      top: 50%;
+      width: 0;
+    }
+
+    &::before {
+      border-bottom-color: var(--md-secondary-text-color);
+      margin-top: -9px;
+    }
+
+    &::after {
+      border-top-color: var(--md-secondary-text-color);
+      margin-top: 1px;
+    }
+
+    &.ascending {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &.descending {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  th:first-child {
+    border-left: $advanced-table-main-border;
+  }
+}
+
+.filter-active {
+  display: inline-block;
+  height: $advanced-table-collapse-btn;
+  text-align: center;
+  vertical-align: bottom;
+  width: $advanced-table-collapse-btn;
+
+  &::part(icon) {
+    line-height: $advanced-table-filter-height;
+  }
+}
+
+.filter-menu {
+  background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+  padding: calc(#{$advanced-table-main-indent} * 3);
+  position: relative;
+  z-index: 1;
+
+  select {
+    background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+    border: $advanced-table-filter-border;
+    color: var(--md-secondary-text-color);
+    min-height: calc(#{$advanced-table-filter-height} * 1.8);
+    width: 100%;
+  }
+
+  input {
+    background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+    border: $advanced-table-filter-border;
+    color: var(--md-secondary-text-color);
+    margin-top: calc(#{$advanced-table-main-indent} * 2);
+    width: 100%;
+  }
+}
+
+tbody {
+  tr {
+    position: relative;
+
+    td {
+      border-bottom: $advanced-table-main-border;
+      border-right: $advanced-table-main-border;
+      font-size: $font-size-base;
+      height: $advanced-table-row-height;
+      max-width: 0;
+      padding: calc(#{$advanced-table-main-indent} * 1.5);
+      position: relative;
+    }
+
+    th {
+      background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+      border-bottom: $advanced-table-main-border;
+      border-right: $advanced-table-main-border;
+      font-size: $font-size-base;
+      max-width: 0;
+      padding: 0 calc(#{$advanced-table-main-indent} * 4);
+      position: relative;
+      text-align: left;
+    }
+
+    td:first-child,
+    th:first-child {
+      border-left: $advanced-table-main-border;
+    }
+
+    .inner-cell {
+      display: flex;
+      white-space: nowrap;
+
+      .warn-icon {
+        display: inline-block;
+        margin-left: $advanced-table-main-indent;
+        max-height: $advanced-table-collapse-btn;
+        position: relative;
+        vertical-align: middle;
+        z-index: 0;
+      }
+
+      md-icon::part(icon) {
+        line-height: $advanced-table-collapse-btn;
+      }
+
+      span {
+        align-self: center;
+        display: inline-block;
+        flex: 1;
+        overflow: hidden;
+        padding: 0 $advanced-table-main-indent;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+      }
+    }
+
+    .drag-handle {
+      cursor: grab;
+      display: block;
+      float: left;
+      margin-right: calc(#{$advanced-table-main-indent} * 1.5);
+    }
+
+    .drag-area {
+      height: 50%;
+      left: 0;
+      opacity: 0.3;
+      position: absolute;
+      right: 0;
+
+      &.top {
+        top: 0;
+      }
+
+      &.bottom {
+        background-color: transparent;
+        bottom: 0;
+      }
+    }
+
+    &.ghost {
+      opacity: 0.3;
+    }
+
+    &:hover {
+      background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+
+      td,
+      th {
+        background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+      }
+    }
+
+    &:active,
+    &.selected {
+      background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
+
+      td,
+      th {
+        background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
+      }
+    }
+  }
+}
+
+md-button.row-collapsible {
+  height: $advanced-table-collapse-btn;
+  margin-right: calc(#{$advanced-table-main-indent} * 1.5);
+  max-width: $advanced-table-collapse-btn;
+  min-width: $advanced-table-collapse-btn;
+
+  &::part(button) {
+    border-radius: calc(#{$advanced-table-main-indent} / 2);
+    padding: 0 $advanced-table-main-indent;
+  }
+
+  md-icon::part(icon) {
+    line-height: calc(#{$advanced-table-main-indent} * 4);
+  }
+}

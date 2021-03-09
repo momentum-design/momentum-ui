@@ -265,7 +265,7 @@ export namespace Button {
 
     childrenTemplate() {
       return html`
-        <span class="md-button__children">
+        <span part="button-children" class="md-button__children">
           ${this.iconTemplate()} ${this.textTemplate()}
           <slot></slot>
         </span>

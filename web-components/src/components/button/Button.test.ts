@@ -3,74 +3,80 @@ import { Button } from "./Button";
 import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 
-describe("Button", () => {
+describe("Button Component", () => {
   afterEach(fixtureCleanup);
 
   test("should render one Button", async () => {
-    const element = await fixture(`<md-button></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button></md-button>`);
     expect(element).not.toBeNull();
   });
 
   test("should render anchor if passed tag a", async () => {
-    const element = await fixture(`<md-button tag="a"></md-button>`);
+    expect.hasAssertions();
+    const element: Button.ELEMENT = await fixture(html`<md-button tag="a"></md-button>`);
     expect(element.shadowRoot!.querySelectorAll("a").length).toEqual(1);
   });
 
   test("should render input if passed tag input", async () => {
-    const element = await fixture(`<md-button tag="input"></md-button>`);
-    expect(element.shadowRoot!.querySelectorAll("input").length).toEqual(1);
+    expect.hasAssertions();
+    const element: Button.ELEMENT = await fixture(html`<md-button tag="input"><span slot="text">Test</span></md-button>`);
+    const input = element.shadowRoot!.querySelectorAll("input");
+    expect(input).toBeDefined;
   });
 
-  test("should render button by default", async () => {
-    const element = await fixture(`<md-button></md-button>`);
-    expect(element.shadowRoot!.querySelectorAll("button").length).toEqual(1);
+  test("should render max width styles", async () => {
+    const element: Button.ELEMENT = await fixture(html`<md-button maxWidth="50px"><span slot="text">Test</span></md-button>`);
+    expect(element.renderMaxWidth).toEqual("max-width: 50px;");
   });
 
   test("should render Loading component is pass loading props", async () => {
-    const element = await fixture(`<md-button loading></md-button>`);
-    expect(element.shadowRoot!.querySelectorAll("md-spinner").length).toEqual(1);
+    const element: Button.ELEMENT = await fixture(html`<md-button loading></md-button>`);
+    expect(element.loading).toBeTruthy;
+    const spinner = element.shadowRoot!.querySelectorAll(".md-button md-spinner")
+    expect(spinner).toBeDefined;
   });
 
   test("should not render Loading component is loading props absent", async () => {
-    const element = await fixture(`<md-button></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button></md-button>`);
     expect(element.shadowRoot!.querySelectorAll("md-loading").length).toEqual(0);
   });
 
   test("should remove all styles from component if hasRemoveStyle props exist", async () => {
-    const element = await fixture(`<md-button hasRemoveStyle color="blue" size="52"></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button hasRemoveStyle color="blue" size="52"></md-button>`);
     expect(element.shadowRoot!.querySelectorAll(".md-button--blue").length).toEqual(0);
     expect(element.shadowRoot!.querySelectorAll(".md-button--none").length).toEqual(1);
     expect(element.shadowRoot!.querySelectorAll(".md-button--52").length).toEqual(0);
   });
 
   test("should apply correct class for color name", async () => {
-    const element = await fixture(`<md-button color="color-none"></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button color="color-none"></md-button>`);
     expect(element.shadowRoot!.querySelectorAll(".md-button--color-none").length).toEqual(1);
   });
 
   test("should render wrapped button if label passed", async () => {
-    const element = await fixture(`<md-button label="buttonComponent" ariaLabel="buttonComponent"></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button label="buttonComponent" ariaLabel="buttonComponent"></md-button>`);
     expect(element.shadowRoot!.querySelectorAll(".md-button__container--small").length).toEqual(1);
     expect(element.shadowRoot!.querySelectorAll(".md-button__label").length).toEqual(1);
   });
 
   test("should render wrapped button in large container if label and containerLarge passed", async () => {
-    const element = await fixture(`<md-button label="Button Component" containerLarge></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button label="Button Component" containerLarge></md-button>`);
     expect(element.shadowRoot!.querySelectorAll(".md-button__container").length).toEqual(1);
   });
 
   test("should show active class when passed active prop", async () => {
-    const element = await fixture(`<md-button label="Button Component" active></md-button>`);
-    expect(element.shadowRoot!.querySelector(".md-button")!.classList).toContain("active");
+    const element: Button.ELEMENT = await fixture(html`<md-button label="Button Component" active></md-button>`);
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("class")).toContain("md-button md-button--32 active");
   });
 
   test("should show type if passed one", async () => {
-    const element = await fixture(`<md-button type="submit"></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button type="submit"></md-button>`);
     expect(element.getAttribute("type")).toEqual("submit");
   });
 
   test("should have tab-index attribute if defined", async () => {
-    const element = await fixture<Button.ELEMENT>(`<md-button tab-index="1"></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button tab-index="1"></md-button>`);
     expect(element.getAttribute("tab-index")).toEqual("1");
 
     const button = element.shadowRoot!.querySelector("button");
@@ -79,20 +85,21 @@ describe("Button", () => {
   });
 
   test("should have tab-index of -1 if disabled", async () => {
-    const element = await fixture<Button.ELEMENT>(`<md-button tab-index="1" disabled></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button tab-index="1" disabled></md-button>`);
     const button = element.shadowRoot!.querySelector("button");
     expect(button!.getAttribute("tabindex")).toContain("-1");
     expect(element.disabled).toBeTruthy();
   });
+
   test("should handle disabled state", async () => {
-    const element = await fixture<Button.ELEMENT>(`<md-button disabled></md-button>`);
+    const element: Button.ELEMENT = await fixture(html`<md-button disabled></md-button>`);
     expect(element.disabled).toEqual(true);
   });
 
   test("should set width successfulyl", async () => {
     const customWidth = "260px";
     expect.hasAssertions();
-    const element = await fixture<Button.ELEMENT>(
+    const element: Button.ELEMENT = await fixture(
       html`
         <md-button width=${customWidth}></md-button>
       `
@@ -107,7 +114,7 @@ describe("Button", () => {
   test("should set maxWidth successfulyl", async () => {
     const customMaxWidth = "100px";
     expect.hasAssertions();
-    const element = await fixture<Button.ELEMENT>(
+    const element: Button.ELEMENT = await fixture(
       html`
         <md-button maxWidth=${customMaxWidth}></md-button>
       `
@@ -134,21 +141,22 @@ describe("Button", () => {
       const spyClick = jest.spyOn(element, "handleClick");
       const tagElement = element.shadowRoot!.querySelector(`${tag}`);
 
-      tagElement!.dispatchEvent(new MouseEvent("click"));
-      tagElement!.dispatchEvent(new MouseEvent("click"));
+      tagElement!.dispatchEvent(new MouseEvent("button-click"));
+      tagElement!.dispatchEvent(new MouseEvent("button-click"));
       expect(spyClick).toHaveBeenCalledTimes(2);
+
       tagElement!.dispatchEvent(
-        new KeyboardEvent("keydown", {
+        new KeyboardEvent("button-keydown", {
           code: Key.Enter
         })
       );
       tagElement!.dispatchEvent(
-        new KeyboardEvent("keydown", {
+        new KeyboardEvent("button-keydown", {
           code: Key.Space
         })
       );
       tagElement!.dispatchEvent(
-        new KeyboardEvent("keydown", {
+        new KeyboardEvent("button-keydown", {
           code: Key.Escape
         })
       );
@@ -169,6 +177,7 @@ describe("Button", () => {
   describe("should handle property clickFunction", () => {
     let count = 0;
     const clickFunction = () => count++;
+
     test("should apply clickable class when onClick prop is defined", async () => {
       const el = await fixture<Button.ELEMENT>(
         html`
@@ -181,6 +190,7 @@ describe("Button", () => {
       expect(detail.srcEvent.type).toBe("click");
       expect(count).toEqual(1);
     });
+
     test.only("should not invoke passed in function when disabled", async () => {
       const clickFunc = jest.fn(() => {
         return;
@@ -205,14 +215,21 @@ describe("Button", () => {
   });
 
   test("should handle keydown event", async () => {
-    const element = await fixture<Button.ELEMENT>(`<md-button label="Button Component"></md-button>`);
-    const evt = new KeyboardEvent("keydown", {
-      code: Key.Enter
-    });
-    setTimeout(() => element.handleKeyDown(evt));
-    const { detail } = await oneEvent(element, "button-keydown");
-    expect(detail).toBeDefined();
-    expect(detail.srcEvent.type).toBe("keydown");
+    const element = await fixture<Button.ELEMENT>(html`<md-button label="Button Component"></md-button>`);
+    const spyKeyDown = jest.spyOn(element, "handleKeyDown");
+    const button = element.shadowRoot!.querySelector("button");
+    button!.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        code: Key.Enter
+      })
+    );
+    button!.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        code: Key.Space
+      })
+    );
+    expect(spyKeyDown).toHaveBeenCalledTimes(2);
+    spyKeyDown.mockRestore();
   });
 
   describe("test size propetry", () => {

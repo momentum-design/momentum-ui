@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
 import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
@@ -9,6 +8,7 @@ import RemovePlugin from "remove-files-webpack-plugin";
 import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
+import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
 
 const pSrc = path.resolve("src");
 const pStats = path.resolve("stats");
@@ -159,6 +159,7 @@ const commonDist = merge(common, {
     "comp/md-chip-entry": "./src/components/chip/Chip",
     "comp/md-coachmark-entry": "./src/components/coachmark/Coachmark",
     "comp/md-combobox-entry": "./src/components/combobox/ComboBox",
+    "comp/md-date-range-picker-entry": "./src/components/date-range-picker/DateRangePicker",
     "comp/md-date-time-picker-entry": "./src/components/date-time-picker/DateTimePicker",
     "comp/md-datepicker-entry": "./src/components/datepicker/DatePicker",
     "comp/md-datepicker-calendar-entry": "./src/components/datepicker/datepicker-calendar/DatePickerCalendar",
@@ -192,6 +193,7 @@ const commonDist = merge(common, {
     "comp/md-slider-entry": "./src/components/slider/Slider",
     "comp/md-spinner-entry": "./src/components/spinner/Spinner",
     "comp/md-table-entry": "./src/components/table/Table",
+    "comp/md-table-advanced-entry": "./src/components/table-advanced/TableAdvanced",
     "comp/md-tab-entry": "./src/components/tabs/Tab",
     "comp/md-tab-panel-entry": "./src/components/tabs/TabPanel",
     "comp/md-tabs-entry": "./src/components/tabs/Tabs",

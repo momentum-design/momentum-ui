@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.7.0...@momentum-ui/icons@8.8.0) (2021-03-04)
+
+
+### Features
+
+* **icons:** add layout-side-by-side-vertical_24 ([f38fa0c](https://github.com/momentum-design/momentum-ui/commit/f38fa0c5ce92044e3fe695a9ba3894ae2ecb386b))
+* **icons:** add side-by-side-active_24 ([a972d33](https://github.com/momentum-design/momentum-ui/commit/a972d33d4f0446a1f532773e01595a79001e4b77))
+* **icons:** add video-layout-equal_28 ([ef7ab7f](https://github.com/momentum-design/momentum-ui/commit/ef7ab7f409bc0e8c5a1e508e500eaed27d38ce14))
+* **icons:** add video-layout-single_28 ([cbd7206](https://github.com/momentum-design/momentum-ui/commit/cbd720618b18a2dfa7580b987f9ff786a5089e50))
+
+
+
+
+
+# [8.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.6.0...@momentum-ui/icons@8.7.0) (2021-03-03)
+
+
+### Features
+
+* **icons:** add calendar-month-active_24 ([43b5bfc](https://github.com/momentum-design/momentum-ui/commit/43b5bfc371718356ddb874e7f60e8e249d4c5d03))
+* **icons:** add video-layout-equal-filled_24 ([c8e374b](https://github.com/momentum-design/momentum-ui/commit/c8e374bf5707f79bf0860b2d61e1f3bb8124eac6))
+* **icons:** add video-layout-stack-filled_24 ([de235d2](https://github.com/momentum-design/momentum-ui/commit/de235d2f8fddb5f0e7ea60c1d053ad7a2f2ef49b))
+
+
+
+
+
+# [8.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.5.0...@momentum-ui/icons@8.6.0) (2021-02-27)
+
+
+### Features
+
+* **icons:** add calendar-month-active_20 ([e984022](https://github.com/momentum-design/momentum-ui/commit/e984022e04bc895c97c97f081ad9c25b7d98dedb))
+
+
+
+
+
 # [8.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.4.0...@momentum-ui/icons@8.5.0) (2021-02-23)
 
 

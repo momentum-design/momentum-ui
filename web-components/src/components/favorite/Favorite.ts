@@ -24,7 +24,7 @@ export namespace Favorite {
     @property({ type: Boolean }) checked = false;
     @property({ type: String }) value = "Select favorite";
     @property({ type: String }) id = "";
-    @property({ type: String }) label = "Favorite"
+    @property({ type: String }) label = "Favorite";
 
     @internalProperty() private customId = "";
 
@@ -39,11 +39,10 @@ export namespace Favorite {
     }
 
     getIconName() {
-      switch (this.checked) {
-        case true:
-          return "favorite-active_16";
-        default:
-          return "favorite_16";
+      if (this.checked) {
+        return "favorite-active_16";
+      } else {
+        return "favorite_16";
       }
     }
 
@@ -53,20 +52,20 @@ export namespace Favorite {
       } else {
         this.checked = !this.checked;
         this.dispatchEvent(
-          new CustomEvent<{value: string, active: boolean}>("favorite-toggle", {
-          detail: {
+          new CustomEvent<{ value: string; active: boolean }>("favorite-toggle", {
+            detail: {
               active: this.checked,
               value: this.value
-          },
-          bubbles: true,
-          composed: true
+            },
+            bubbles: true,
+            composed: true
           })
-        )
+        );
       }
     }
 
     handleElectKeyDown(event: KeyboardEvent) {
-      if (event.code === Key.Enter || event.code === Key.Space) { 
+      if (event.code === Key.Enter || event.code === Key.Space) {
         this.handleFavorite;
       }
     }
@@ -88,9 +87,11 @@ export namespace Favorite {
       return html`
         <label
           for="favorite-checkbox"
+          id="${this.id}"
           class="md-favorite ${classMap(this.favoriteClassMap)}"
-          tabindex="0">
-            <input
+          tabindex="0"
+        >
+          <input
             type="checkbox"
             aria-label=${ifDefined(this.label.length ? this.label : undefined)}
             value=${this.value}
@@ -98,8 +99,8 @@ export namespace Favorite {
             ?disabled=${this.disabled}
             aria-hidden="true"
             name="favorite-checkbox"
-            />
-            <md-icon name="${this.getIconName()}" color="${this.checked ? "yellow" : nothing}"></md-icon>
+          />
+          <md-icon name="${this.getIconName()}" color="${this.checked ? "yellow" : nothing}"></md-icon>
         </label>
       `;
     }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Copyright (c) Cisco Systems, Inc. and its affiliates.
  *
@@ -6,27 +7,28 @@
  *
  */
 
-import { TableAdvancedMock } from "@/[sandbox]/examples/table-advanced-mock";
+import { ComplexTable, SimpleTable } from "@/[sandbox]/sandbox.mock";
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./TableAdvanced";
 import { TableAdvanced } from "./TableAdvanced";
 import { Filter } from "./src/filter";
 
 const ELEM = () => {
-  const DATA = TableAdvancedMock.ComplexTable.data;
+  const DATA = ComplexTable.data;
   if ("list2d" in DATA) {
     for (let i = 0; i < 100; i++) {
       DATA.list2d.push([Math.random() > 0.5 ? "x" : "y", "2", "3", "4", "5", "6", "7"]);
     }
   }
 
-  const CONF = TableAdvancedMock.ComplexTable.config;
+  const CONF = ComplexTable.config;
   CONF.cellTemplates = {
     _tmp_: { templateName: "tmp1" },
     _tmp2_: {
       contentUse: "replace",
       templateName: "tmp2",
       contentCb: ({ content }) => content,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       templateCb: () => {}
     }
   };
@@ -70,6 +72,7 @@ describe("Table Advanced component", () => {
     elem["sort"](col1, "descending");
     elem["filter"](col1);
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const e = { stopPropagation: () => {} } as any;
     elem["collapseToggle"](e, 0);
     elem["collapseToggle"](e, 0);
@@ -83,17 +86,12 @@ describe("Table Advanced component", () => {
 
   test("data parse", async () => {
     const elemCsv = await fixture<TableAdvanced.ELEMENT>(html`
-      <md-table-advanced .config=${TableAdvancedMock.SimpleTable.config} .data=${TableAdvancedMock.SimpleTable.dataCsv}>
-      </md-table-advanced>
+      <md-table-advanced .config=${SimpleTable.config} .data=${SimpleTable.dataCsv}> </md-table-advanced>
     `);
     expect(elemCsv).toBeDefined();
 
     const elemList = await fixture<TableAdvanced.ELEMENT>(html`
-      <md-table-advanced
-        .config=${TableAdvancedMock.SimpleTable.config}
-        .data=${TableAdvancedMock.SimpleTable.dataList}
-      >
-      </md-table-advanced>
+      <md-table-advanced .config=${SimpleTable.config} .data=${SimpleTable.dataList}> </md-table-advanced>
     `);
     expect(elemList).toBeDefined();
   });

@@ -114,11 +114,13 @@ thead {
   .head-inner-cell {
     align-items: center;
     display: flex;
-    min-width: calc(#{$advanced-table-collapse-btn} * 1.5);
+    min-width: $advanced-table-filter-height;
+    overflow: hidden;
 
-    md-button {
-      min-width: calc(#{$advanced-table-sort-icon} * 2.5);
-      width: 100%;
+    .filter-wrap {
+      display: inline-flex;
+      flex: 1;
+      justify-content: flex-end;
     }
 
     .filter-icon {
@@ -148,19 +150,6 @@ thead {
       }
     }
 
-    md-button::part(button) {
-      display: inline-block;
-      font-family: $brand-font-regular;
-      font-size: $font-size-base;
-      text-align: left;
-      white-space: nowrap;
-      width: calc(100% - #{$advanced-table-main-indent});
-    }
-
-    md-button::part(button-children) {
-      justify-content: flex-start;
-    }
-
     span {
       display: inline-block;
       overflow: hidden;
@@ -168,11 +157,18 @@ thead {
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 100%;
+    }
 
-      &.sortable {
-        padding-right: calc(#{$advanced-table-main-indent} * 4);
-        width: auto;
-      }
+    .sortable {
+      background: transparent;
+      border: 0;
+      display: inline-block;
+      min-width: calc(#{$advanced-table-sort-icon} * 2.5);
+      overflow: hidden;
+      padding-right: calc(#{$advanced-table-main-indent} * 4);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: auto;
     }
   }
 

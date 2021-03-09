@@ -6,6 +6,8 @@
  *
  */
 
+import "@/components/dropdown/Dropdown";
+
 import {
   dropdownObjectKeyValueOptions,
   dropdownObjectLongOptions,
@@ -33,19 +35,12 @@ export const Dropdown = () => {
   const title = text("title", "Select...?");
   const disabled = boolean("Disabled", false);
 
-  const simple = boolean("Simple strings", false);
   const simpleLong = boolean("Simple Long strings", false);
 
   const singleKeyValue = boolean("Single KeyValue objects", false);
   const multiKeyValue = boolean("Multi KeyValue objects", false);
 
-  if (simple) {
-    return html`
-      <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
-        <md-dropdown .options="${dropdownStringOptions}" .title="${title}" ?disabled="${disabled}"></md-dropdown>
-      </md-theme>
-    `;
-  } else if (simpleLong) {
+  if (simpleLong) {
     return html`
       <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
         <md-dropdown
@@ -76,6 +71,12 @@ export const Dropdown = () => {
           .title="${title}"
           ?disabled="${disabled}"
         ></md-dropdown>
+      </md-theme>
+    `;
+  } else {
+    return html`
+      <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" ?lumos="${lumos}">
+        <md-dropdown .options="${dropdownStringOptions}" .title="${title}" ?disabled="${disabled}"></md-dropdown>
       </md-theme>
     `;
   }

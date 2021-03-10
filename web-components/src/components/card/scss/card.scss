@@ -1,4 +1,6 @@
 :host(md-card) {
+  display: inline-block;
+
   .md-card {
     @include flex($fd: column, $jc: flex-start, $ai: stretch);
     background: $md-card-bg;
@@ -36,14 +38,15 @@
         flex-direction: column;
         margin: 0 $md-card-indent;
 
-        h3 {
+        h1 {
           color: $md-card-title-color;
           font-family: $brand-font-medium;
           font-size: $font-size-large;
           line-height: calc(#{$md-card-indent} * 3);
+          margin: 0;
         }
 
-        h5 {
+        h2 {
           color: $md-card-color;
           font-size: $font-size-small;
           line-height: calc(#{$md-card-indent} * 2.25);
@@ -56,6 +59,10 @@
         .md-card-info-icon,
         .md-card-max-icon {
           padding-right: $md-card-indent;
+        }
+
+        md-menu-overlay::part(overlay-content) {
+          max-width: $md-card-menu-width;
         }
       }
     }
@@ -77,6 +84,10 @@
       }
     }
 
+    .md-card-menu-list-items {
+      padding: calc(#{$md-card-indent} * 0.25);
+    }
+
     &-content {
       background: $md-card-content-bg;
       border: $md-card-border;
@@ -86,8 +97,10 @@
       overflow: hidden;
     }
 
-    // &-footer {
-    //   //padding: $md-card-indent calc(#{$md-card-indent} * 2);
-    // }
+    &-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $md-card-indent;
+    }
   }
 }

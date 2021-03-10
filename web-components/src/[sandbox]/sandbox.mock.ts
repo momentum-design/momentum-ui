@@ -223,6 +223,8 @@ export const breadCrumb = [
   }
 ];
 
+export const cardMenuItems = ["Edit", "View", "Duplicate", "Delete"];
+
 export const DraggableOptions = [
   {
     id: "602d03acfe232cf5498f00f4",

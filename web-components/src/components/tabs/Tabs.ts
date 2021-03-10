@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
-import { Key } from "@/constants";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
+import { Key } from "../../constants";
 import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
 import { nanoid } from "nanoid";
 import reset from "@/wc_scss/reset.scss";
@@ -28,7 +28,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TabKeyDownEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "264px"; // Designed width

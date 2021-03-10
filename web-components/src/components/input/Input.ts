@@ -6,7 +6,7 @@
  *
  */
 
-import { Key, ARIA_INVALID } from "@/constants";
+import { Key, ARIA_INVALID } from "../../constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
@@ -16,10 +16,10 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
-import "@/components/help-text/HelpText";
-import "@/components/icon/Icon";
-import "@/components/label/Label";
-import "@/components/spinner/Spinner";
+import "../help-text/HelpText";
+import "../icon/Icon";
+import "../label/Label";
+import "../spinner/Spinner";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 

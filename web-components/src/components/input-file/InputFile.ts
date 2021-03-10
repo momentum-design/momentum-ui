@@ -11,7 +11,7 @@ import {
 } from "lit-element";
 import styles from "./scss/module.scss";
 import hljs from "highlight.js/lib/core";
-import "@/components/button/Button";
+import "../button/Button";
 
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";

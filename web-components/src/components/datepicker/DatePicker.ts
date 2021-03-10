@@ -6,15 +6,15 @@
  *
  */
 
-import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
-import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
-import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
+import "../datepicker/datepicker-calendar/DatePickerCalendar";
+import "../input/Input";
+import { Input } from "../input/Input";
+import "../menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { closestElement } from "@/utils/helpers";
-import { ValidationRegex } from "@/utils/validations";
+import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "../../utils/dateUtils";
+import { closestElement } from "../../utils/helpers";
+import { ValidationRegex } from "../../utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";

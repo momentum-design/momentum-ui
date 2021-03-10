@@ -10,7 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import styles from "./scss/module.scss";
 import { FocusMixin, SlottedMixin } from "@/mixins";
-import { Key } from "@/constants";
+import { Key } from "../../constants";
 
 type CustomHTMLButtonElement = HTMLButtonElement & { selected: boolean };
 

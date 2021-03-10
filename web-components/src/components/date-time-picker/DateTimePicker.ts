@@ -1,7 +1,7 @@
-import "@/components/input/Input";
-import "@/components/menu-overlay/MenuOverlay";
-import { TIME_UNIT } from "@/constants";
-import { now } from "@/utils/dateUtils";
+import "../input/Input";
+import "../menu-overlay/MenuOverlay";
+import { TIME_UNIT } from "../../constants";
+import { now } from "../../utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";

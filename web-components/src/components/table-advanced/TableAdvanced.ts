@@ -7,9 +7,9 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import "@/components/icon/Icon";
-import "@/components/menu-overlay/MenuOverlay";
-import "@/components/button/Button";
+import "../icon/Icon";
+import "../menu-overlay/MenuOverlay";
+import "../button/Button";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";

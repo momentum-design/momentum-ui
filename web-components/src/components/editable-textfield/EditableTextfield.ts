@@ -6,8 +6,8 @@
  *
  */
 
-import { numInputTypes } from "@/utils/enums";
-import { ValidationRegex } from "@/utils/validations";
+import { numInputTypes } from "../../utils/enums";
+import { ValidationRegex } from "../../utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -15,8 +15,8 @@ import { CSSResultArray, html, LitElement, property, PropertyValues, query } fro
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
+import "../input/Input";
+import { Input } from "../input/Input";
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;

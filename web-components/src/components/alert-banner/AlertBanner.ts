@@ -6,13 +6,13 @@
  *
 */
 
-import { Key } from "@/constants";
+import { Key } from "../../constants";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { CSSResultArray, html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
-import "@/components/button/Button";
-import "@/components/icon/Icon";
+import "../button/Button";
+import "../icon/Icon";
 import styles from "./scss/module.scss";
 
 export namespace AlertBanner {

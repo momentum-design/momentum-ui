@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/icon/Icon";
-import { Key } from "@/constants";
+import "../icon/Icon";
+import { Key } from "../../constants";
 import { customElementWithCheck, FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";

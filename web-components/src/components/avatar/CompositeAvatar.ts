@@ -10,7 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
-import { AvatarSize } from "@/components/avatar/Avatar";
+import { AvatarSize } from "../avatar/Avatar";
 import styles from "./scss/module.scss";
 
 export namespace CompositeAvatar {

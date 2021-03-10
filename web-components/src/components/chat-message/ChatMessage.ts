@@ -2,7 +2,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
-import "@/components/avatar/Avatar";
+import "../avatar/Avatar";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace ChatMessage {

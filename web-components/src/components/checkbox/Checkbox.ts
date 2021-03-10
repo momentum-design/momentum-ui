@@ -6,7 +6,7 @@
  *
  */
 
-import { Key } from "@/constants";
+import { Key } from "../../constants";
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

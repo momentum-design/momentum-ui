@@ -46,7 +46,6 @@ export abstract class SlotableClass extends LitElement {
   protected handleSlotted?(): void;
   protected slottedChanged?(): void;
   protected filterSlotted?(): HTMLElement[];
-  readonly slotElement?: HTMLSlotElement | null;
 }
 
 export const SlottedMixin = <T extends AnyConstructor<SlotableClass>>(

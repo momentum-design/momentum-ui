@@ -12,7 +12,7 @@ import styles from "./scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, query, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
-import "@/components/button/Button";
+import "../button/Button";
 
 export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"]
 

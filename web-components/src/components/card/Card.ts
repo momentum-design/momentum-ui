@@ -2,8 +2,8 @@ import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
-import "@/components/icon/Icon";
-import "@/components/button/Button";
+import "../icon/Icon";
+import "../button/Button";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace Card {

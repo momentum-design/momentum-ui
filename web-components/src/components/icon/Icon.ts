@@ -12,7 +12,7 @@ import getColorValue from "@momentum-ui/utils/lib/getColorValue";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
-import "@/components/button/Button";
+import "../button/Button";
 import styles from "./scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 

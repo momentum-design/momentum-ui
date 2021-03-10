@@ -11,8 +11,8 @@ import {
 } from "lit-element";
 import styles from "./scss/module.scss";
 import hljs from "highlight.js/lib/core";
-import "@/components/button/Button";
-import "@/components/badge/Badge";
+import "../button/Button";
+import "../badge/Badge";
 
 export type Method = "get" | "post";
 

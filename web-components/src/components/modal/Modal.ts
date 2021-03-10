@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import { Key } from "@/constants";
+import "../button/Button";
+import "../icon/Icon";
+import { Key } from "../../constants";
 import { FocusTrapMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

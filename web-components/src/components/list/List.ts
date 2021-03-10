@@ -6,8 +6,8 @@
  *
  */
 
-import { ListItem } from "@/components/list/ListItem";
-import { Key } from "@/constants";
+import { ListItem } from "../list/ListItem";
+import { Key } from "../../constants";
 import { RovingTabIndexMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

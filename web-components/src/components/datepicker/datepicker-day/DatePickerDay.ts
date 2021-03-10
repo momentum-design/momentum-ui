@@ -6,11 +6,11 @@
  *
  */
 
-import "@/components/button/Button";
-import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
+import "../../button/Button";
+import { DateRangePicker } from "../../date-range-picker/DateRangePicker";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
-import { closestElement } from "@/utils/helpers";
+import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "../../../utils/dateUtils";
+import { closestElement } from "../../../utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";

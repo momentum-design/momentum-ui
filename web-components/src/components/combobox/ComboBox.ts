@@ -6,10 +6,10 @@
  *
  */
 
-import "@/components/icon/Icon";
-import { Key } from "@/constants";
+import "../icon/Icon";
+import { Key } from "../../constants";
 import { FocusMixin } from "@/mixins";
-import { debounce, findHighlight } from "@/utils/helpers";
+import { debounce, findHighlight } from "../../utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues, query, queryAll } from "lit-element";

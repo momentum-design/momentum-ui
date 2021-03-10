@@ -9,7 +9,7 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { MenuItem } from "./MenuItem";
-import { Key } from "@/constants";
+import { Key } from "../../constants";
 import { nanoid } from "nanoid";
 import { SlottedMixin } from "@/mixins/SlottedMixin";
 import { RovingTabIndexMixin } from "@/mixins/RovingTabIndexMixin";

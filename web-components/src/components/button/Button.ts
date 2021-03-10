@@ -6,10 +6,10 @@
  *
  */
 
-import activityButtonStyles from "@/components/activity-button/scss/module.scss";
-import "@/components/loading/Loading";
-import "@/components/spinner/Spinner";
-import { Key } from "@/constants";
+import activityButtonStyles from "../activity-button/scss/module.scss";
+import "../loading/Loading";
+import "../spinner/Spinner";
+import { Key } from "../../constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, query } from "lit-element";

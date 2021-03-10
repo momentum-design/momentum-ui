@@ -6,8 +6,8 @@
  *
  */
 
-import styles from "@/components/tooltip/scss/module.scss";
-import { Tooltip, TooltipEvent } from "@/components/tooltip/Tooltip";
+import styles from "../tooltip/scss/module.scss";
+import { Tooltip, TooltipEvent } from "../tooltip/Tooltip";
 import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

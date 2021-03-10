@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/datepicker/datepicker-month/DatePickerMonth";
-import "@/components/icon/Icon";
+import "../datepicker-month/DatePickerMonth";
+import "../../icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
   addDays,
@@ -22,7 +22,7 @@ import {
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
   subtractMonths
-} from "@/utils/dateUtils";
+} from "../../../utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, TemplateResult } from "lit-element";
 import { DateTime } from "luxon";

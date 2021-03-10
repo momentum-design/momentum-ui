@@ -6,9 +6,9 @@
  *
  */
 
-import "@/components/datepicker/datepicker-day/DatePickerDay";
+import "../datepicker-day/DatePickerDay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { addDays, DatePickerProps, DayFilters, now } from "@/utils/dateUtils";
+import { addDays, DatePickerProps, DayFilters, now } from "../../../utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";

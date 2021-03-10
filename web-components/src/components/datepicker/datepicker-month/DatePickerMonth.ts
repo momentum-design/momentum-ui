@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/datepicker/datepicker-week/DatePickerWeek";
+import "../datepicker-week/DatePickerWeek";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
   addWeeks,
@@ -17,7 +17,7 @@ import {
   getStartOfWeek,
   isSameMonth,
   now
-} from "@/utils/dateUtils";
+} from "../../../utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";

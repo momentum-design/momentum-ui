@@ -6,8 +6,8 @@
  *
  */
 
-import "@/components/icon/Icon";
-import "@/components/loading/Loading";
+import "../icon/Icon";
+import "../loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property } from "lit-element";

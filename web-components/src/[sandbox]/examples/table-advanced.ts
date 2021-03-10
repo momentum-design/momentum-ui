@@ -65,8 +65,6 @@ export class DefaultTableAdvanced extends LitElement {
     `;
   }
 
-  // --------
-
   renderShortkeyTable() {
     const conf = ShortkeyTable.config;
     conf.cellTemplates = {

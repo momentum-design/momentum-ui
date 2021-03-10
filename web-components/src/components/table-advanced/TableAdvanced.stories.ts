@@ -10,12 +10,12 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import mdx from "./TableAdvanced.mdx";
 import { html } from "lit-element";
-import { TableAdvanced } from "@/components/table-advanced/TableAdvanced";
+import { TableAdvanced as TableAdvancedType } from "@/components/table-advanced/TableAdvanced";
 import "@/components/table-advanced/TableAdvanced";
 import "@/components/theme/Theme";
 
 export default {
-  title: "TableAdvanced",
+  title: "Table Advanced",
   component: "md-table-advanced",
   decorators: [withKnobs, withA11y],
   parameters: {
@@ -28,7 +28,7 @@ export default {
   }
 };
 
-export const Default = () => {
+export const TableAdvanced = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const stickheader = boolean("Sticky Header", false);
@@ -40,7 +40,7 @@ export const Default = () => {
   const sum = text("Table Summary", "");
   const customize = boolean("Use custom template for replace", false);
 
-  const DefaultAdvancedTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
+  const DefaultAdvancedTable: { config: TableAdvancedType.Config; data: TableAdvancedType.Data } = {
     config: {
       isStickyHeader: stickheader,
 
@@ -86,7 +86,7 @@ export const Default = () => {
     }
   };
 
-  const ColapseData: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
+  const ColapseData: { config: TableAdvancedType.Config; data: TableAdvancedType.Data } = {
     config: {
       isStickyHeader: stickheader,
 

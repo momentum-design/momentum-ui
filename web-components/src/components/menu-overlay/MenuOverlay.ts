@@ -154,10 +154,10 @@ export namespace MenuOverlay {
       if (changedProperties.has("isOpen")) {
         if (this.isOpen) {
           this.activateFocusTrap!();
-          document.addEventListener("menu-item-click", this.handleTriggerClick);
+          document.addEventListener("menu-item-click", this.handleTriggerClick as EventListener);
         } else {
           this.deactivateFocusTrap!();
-          document.removeEventListener("menu-item-click", this.handleTriggerClick);
+          document.removeEventListener("menu-item-click", this.handleTriggerClick as EventListener);
         }
       }
     }
@@ -262,7 +262,8 @@ export namespace MenuOverlay {
       }
     }
 
-    private handleTriggerClick = () => {
+    private handleTriggerClick = (event: MouseEvent) => {
+      event.stopPropagation();
       this.toggleOverlay();
     };
 

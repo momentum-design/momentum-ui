@@ -15,6 +15,7 @@ import "@/components/button/Button";
 import "@/components/list/List";
 import "@/components/list/ListItem";
 import "@/components/favorite/Favorite";
+import { Key } from "@/constants";
 import { repeat } from "lit-html/directives/repeat";
 import { classMap } from "lit-html/directives/class-map";
 import { nothing } from "lit-html";
@@ -27,7 +28,7 @@ export namespace Card {
     @property({ type: String }) id = "";
     @property({ type: Boolean }) fullscreen = false;
     @property({ type: String }) info = "";
-    @property({ type: Array }) menuOption: (string | { [key: string]: string })[] = [];
+    @property({ type: Array }) menuOptions: (string | any)[] = [];
 
     @internalProperty() private full = false;
 
@@ -41,19 +42,42 @@ export namespace Card {
       };
     }
 
-    connectedCallback() {
-      super.connectedCallback();
-    }
-
-    handleToggleExpandCollapse() {
+    handleToggleExpandCollapse(event: MouseEvent) {
+      event.stopPropagation();
       this.full = !this.full;
     }
 
+    handleCardClick(event: MouseEvent) {
+      this.dispatchEvent(
+        new CustomEvent<{ id: string }>("card-click", {
+          detail: {
+            id: this.id
+          },
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
+
+    handleCardKeyDown(e: KeyboardEvent) {
+      if (e.code === Key.Enter || e.code === Key.Space) {
+        this.dispatchEvent(
+          new CustomEvent<{ id: string }>("card-keydown", {
+            detail: {
+              id: this.id
+            },
+            bubbles: true,
+            composed: true
+          })
+        );
+      }
+    }
+
     handleCardMenuEvent(event: MouseEvent, label: string) {
-      event.preventDefault();
+      event.stopPropagation();
       const ev = label.toLowerCase();
       this.dispatchEvent(
-        new CustomEvent<{ id: string; type: string }>("card-click", {
+        new CustomEvent<{ id: string; type: string }>("card-menu-click", {
           detail: {
             id: this.id,
             type: ev
@@ -64,9 +88,10 @@ export namespace Card {
       );
     }
 
-    handleCardKeyDownEvent(event: KeyboardEvent, label: string) {
+    handleCardMenuKeyDown(event: KeyboardEvent, label: string) {
+      event.preventDefault();
       this.dispatchEvent(
-        new CustomEvent<{ id: string; type: string }>("card-keydown", {
+        new CustomEvent<{ id: string; type: string }>("card-menu-keydown", {
           detail: {
             id: this.id,
             type: label.toLowerCase()
@@ -79,9 +104,16 @@ export namespace Card {
 
     render() {
       return html`
-        <div class="md-card ${classMap(this.cardClassMap)}" id="${this.id}" part="card">
+        <div
+          class="md-card ${classMap(this.cardClassMap)}"
+          id="${this.id}"
+          part="card"
+          tabindex="0"
+          @click=${(ev: MouseEvent) => this.handleCardClick(ev)}
+          @keydown=${(ev: KeyboardEvent) => this.handleCardKeyDown(ev)}
+        >
           <div class="md-card-header">
-            <slot name="card-header-icon">
+            <slot name="card-header-aside">
               <md-favorite value="${`card-` + this.id}"></md-favorite>
             </slot>
             <div class="md-card-header-title">
@@ -103,7 +135,7 @@ export namespace Card {
               ${this.fullscreen
                 ? html`
                     <md-button
-                      @button-click=${this.handleToggleExpandCollapse}
+                      @click=${(e: MouseEvent) => this.handleToggleExpandCollapse(e)}
                       ariaLabel="Maximaze Card"
                       class="md-card-max-icon"
                       color="color-none"
@@ -113,34 +145,38 @@ export namespace Card {
                     </md-button>
                   `
                 : nothing}
-              <md-menu-overlay class="md-card-menu" placement="bottom-start">
-                <md-button
-                  ariaLabel="Menu"
-                  class="md-card-menu-icon"
-                  color="color-none"
-                  size="size-none"
-                  slot="menu-trigger"
-                >
-                  <md-icon slot="icon" name="more-adr_16"></md-icon>
-                </md-button>
-                <div class="md-card-menu-list-items" style="width: 100%;">
-                  <md-list>
-                    ${repeat(
-                      this.menuOption,
-                      (item, idx) =>
-                        html`
-                          <md-list-item
-                            class="${`menu-item-` + idx}"
-                            slot="list-item"
-                            @click=${(e: MouseEvent) => this.handleCardMenuEvent(e, item as string)}
-                            @keydown=${(e: KeyboardEvent) => this.handleCardKeyDownEvent(e, item as string)}
-                            >${item}</md-list-item
-                          >
-                        `
-                    )}
-                  </md-list>
-                </div>
-              </md-menu-overlay>
+              ${this.menuOptions.length != 0
+                ? html`
+                    <md-menu-overlay class="md-card-menu" placement="bottom-start">
+                      <md-button
+                        ariaLabel="Menu"
+                        class="md-card-menu-icon"
+                        color="color-none"
+                        size="size-none"
+                        slot="menu-trigger"
+                      >
+                        <md-icon slot="icon" name="more-adr_16"></md-icon>
+                      </md-button>
+                      <div class="md-card-menu-list-items" style="width: 100%;">
+                        <md-list>
+                          ${repeat(
+                            this.menuOptions,
+                            (item, idx) =>
+                              html`
+                                <md-list-item
+                                  class="${`menu-item-` + idx}"
+                                  slot="list-item"
+                                  @click=${(e: MouseEvent) => this.handleCardMenuEvent(e, item as string)}
+                                  @keydown=${(e: KeyboardEvent) => this.handleCardMenuKeyDown(e, item as string)}
+                                  >${item}</md-list-item
+                                >
+                              `
+                          )}
+                        </md-list>
+                      </div>
+                    </md-menu-overlay>
+                  `
+                : nothing}
             </div>
           </div>
           <div class="md-card-content">

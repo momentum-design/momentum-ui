@@ -35,7 +35,7 @@ export const Card = () => {
   const title = text("Title", "Team A Report - Q1");
   const subtitle = text("Subtitle", "Updated 2 hours ago");
   const avatar = boolean("Change Favorite Icon in header on slot - 'card-header-icon'", false);
-  const slottitle = boolean("Add custom Title in slot - 'card-header-title'", false);
+  const slotTitle = boolean("Add custom Title in slot - 'card-header-title'", false);
   const info = text("Info", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
   const fullscreen = boolean("FullScreen", false);
 
@@ -47,20 +47,20 @@ export const Card = () => {
         title=${title}
         subtitle=${subtitle}
         ?fullscreen=${fullscreen}
-        @card-click=${(e: MouseEvent) => {
+        @card-menu-click=${(e: MouseEvent) => {
           action("card-click")(e.detail);
         }}
-        @card-keydown=${(e: KeyboardEvent) => {
+        @card-menu-keydown=${(e: KeyboardEvent) => {
           action("card-keydown")(e.detail, e);
         }}
         info=${info}
       >
         ${avatar
           ? html`
-              <md-avatar slot="card-header-icon" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
+              <md-avatar slot="card-header-aside" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
             `
           : nothing}
-        ${slottitle
+        ${slotTitle
           ? html`
               <div slot="card-header-title"><h2>Test slot Title</h2></div>
             `

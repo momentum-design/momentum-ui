@@ -58,25 +58,54 @@ describe("Card component", () => {
     expect(card!.getAttribute("class")).toEqual("md-card full-screen");
   });
 
-  test("should dispatch events on menu item", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
-    const menuIcon = element.shadowRoot?.querySelector("md-button.md-card-menu-icon") as Button.ELEMENT;
-    const btn = menuIcon.shadowRoot!.querySelector("button");
-    btn!.click();
+  test("should render card without menu", async () => {
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", true);
+    const menuIcon = element.shadowRoot?.querySelector(".md-card-menu");
+    element.menuOptions = [];
     await elementUpdated(element);
 
-    const cardMenuItem = element.shadowRoot?.querySelector(".md-card-menu-list-items md-list-item");
-    expect(cardMenuItem).not.toBeDefined;
+    expect(menuIcon).not.toBeDefined;
+
+    element.menuOptions = ["Edit", "Test"];
+    await elementUpdated(element);
+
+    expect(menuIcon).toBeDefined;
+  });
+
+  test("should dispatch events on card click", async () => {
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
+
+    const card = element.shadowRoot?.querySelector(".md-card");
+    expect(card).not.toBeDefined;
     const clickEvent = new MouseEvent("click");
-    const spyClick = jest.spyOn(element, "handleCardMenuEvent");
-    cardMenuItem?.dispatchEvent(clickEvent);
+    const spyClick = jest.spyOn(element, "handleCardClick");
+    card?.dispatchEvent(clickEvent);
     expect(spyClick).toHaveBeenCalled();
     spyClick.mockRestore();
 
-    const spyKeyDown = jest.spyOn(element, "handleCardKeyDownEvent");
+    const spyKeyDown = jest.spyOn(element, "handleCardKeyDown");
     const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
-    cardMenuItem?.dispatchEvent(keyEvent);
+    card?.dispatchEvent(keyEvent);
     expect(spyKeyDown).toHaveBeenCalled();
     spyKeyDown.mockRestore();
+  });
+
+  test("should dispatch events on menu item click", async () => {
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
+
+    const spyMenuClick = jest.spyOn(element, "handleCardMenuEvent");
+    element.handleCardMenuEvent(new MouseEvent("click"), "1234");
+    await elementUpdated(element);
+
+    expect(spyMenuClick).toHaveBeenCalled();
+    spyMenuClick.mockRestore();
+
+    const spyMenuKeyDown = jest.spyOn(element, "handleCardMenuKeyDown");
+    const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
+    element.handleCardMenuKeyDown(keyEvent, "1234");
+    await elementUpdated(element);
+
+    expect(spyMenuKeyDown).toHaveBeenCalled();
+    spyMenuKeyDown.mockRestore();
   });
 });

@@ -38,14 +38,6 @@ export namespace Favorite {
       return [reset, styles];
     }
 
-    getIconName() {
-      if (this.checked) {
-        return "favorite-active_16";
-      } else {
-        return "favorite_16";
-      }
-    }
-
     handleFavorite(event: CustomEvent) {
       if (this.disabled) {
         return;
@@ -66,7 +58,17 @@ export namespace Favorite {
 
     handleElectKeyDown(event: KeyboardEvent) {
       if (event.code === Key.Enter || event.code === Key.Space) {
-        this.handleFavorite;
+        this.checked = !this.checked;
+        this.dispatchEvent(
+          new CustomEvent<{ value: string; active: boolean }>("favorite-keydown", {
+            detail: {
+              active: this.checked,
+              value: this.value
+            },
+            bubbles: true,
+            composed: true
+          })
+        );
       }
     }
 
@@ -100,7 +102,10 @@ export namespace Favorite {
             aria-hidden="true"
             name="favorite-checkbox"
           />
-          <md-icon name="${this.getIconName()}" color="${this.checked ? "yellow" : nothing}"></md-icon>
+          <md-icon
+            name="${this.checked ? "favorite-active_16" : "favorite_16"}"
+            color="${this.checked ? "yellow" : nothing}"
+          ></md-icon>
         </label>
       `;
     }

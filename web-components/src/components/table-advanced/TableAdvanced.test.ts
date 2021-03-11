@@ -6,9 +6,10 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ComplexTable, SimpleTable } from "@/[sandbox]/sandbox.mock";
-import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { defineCE, elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./TableAdvanced";
 import { TableAdvanced } from "./TableAdvanced";
 import { Filter } from "./src/filter";
@@ -179,5 +180,104 @@ describe("Table Advanced component", () => {
     expect(detail).toMatchObject({
       type: "expand"
     });
+  });
+
+  test("should set draggable attribute", async () => {
+    const elem = await ELEM();
+    const dragIcon = elem.shadowRoot!.querySelector("md-icon[class='drag-handle']");
+    const mousedownEvent = new MouseEvent("mousedown");
+
+    dragIcon!.dispatchEvent(mousedownEvent);
+
+    expect(elem["dragRowElem"]!.getAttribute("draggable")).toBeTruthy();
+  });
+
+  test("should emit collapse/expand events", async () => {
+    const elem = await ELEM();
+    const collapseEvent = new Event("input");
+
+    setTimeout(() => elem["collapseToggle"](collapseEvent, 1));
+    const { detail: expandDetail } = await oneEvent(elem, "md-table-advanced-change");
+
+    expect(expandDetail).toBeDefined();
+    expect(expandDetail).toMatchObject({
+      type: "expand",
+      row: 1
+    });
+
+    elem["expandedRowIdx"] = {
+      1: true
+    };
+
+    await elementUpdated(elem);
+
+    setTimeout(() => elem["collapseToggle"](collapseEvent, 1));
+    const { detail: collapseDetail } = await oneEvent(elem, "md-table-advanced-change");
+
+    expect(collapseDetail).toBeDefined();
+    expect(collapseDetail).toMatchObject({
+      type: "collapse",
+      row: 1
+    });
+  });
+
+  test("should emit multi-select/select events", async () => {
+    const elem = await ELEM();
+
+    const row = {
+      cells: [{ text: "x" }, { text: "2" }, { text: "3" }, { text: "4" }, { text: "5" }, { text: "6" }, { text: "7" }],
+      idx: 8,
+      idxDrag: 8,
+      collapse: "child",
+      first: false,
+      isGhost: false,
+      children: []
+    } as any;
+
+    setTimeout(() => elem["selectRow"]({ row, shiftKey: true, metaKey: true }));
+    const { detail: multiSelectDetail } = await oneEvent(elem, "md-table-advanced-change");
+
+    expect(multiSelectDetail).toBeDefined();
+    expect(multiSelectDetail).toMatchObject({
+      type: "multi-select"
+    });
+
+    elem.config.rows!.selectable = "single";
+    elem["selected"] = { 9: false };
+    await elementUpdated(elem);
+
+    setTimeout(() => elem["selectRow"]({ row, shiftKey: true, metaKey: true }));
+    const { detail: selectDetail } = await oneEvent(elem, "md-table-advanced-change");
+
+    expect(selectDetail).toBeDefined();
+    expect(selectDetail).toMatchObject({
+      type: "select"
+    });
+  });
+
+  test("should calling connected/disconnected callbacks", async () => {
+    const tag = defineCE(
+      class extends TableAdvanced.ELEMENT {
+        connectedCallback() {
+          super.connectedCallback();
+          this.dispatchEvent(new CustomEvent("connected-callback"));
+        }
+        disconnectedCallback() {
+          super.disconnectedCallback();
+          this.dispatchEvent(new CustomEvent("disconnected-callback"));
+        }
+      }
+    );
+    const tableAdvanced = document.createElement(`${tag}`) as TableAdvanced.ELEMENT;
+    tableAdvanced.config = ComplexTable.config;
+    tableAdvanced.data = ComplexTable.data;
+    setTimeout(() => tableAdvanced.connectedCallback());
+    const connectedEvent = await oneEvent(tableAdvanced, "connected-callback");
+    expect(connectedEvent).toBeDefined();
+
+    tableAdvanced.remove();
+    setTimeout(() => tableAdvanced.disconnectedCallback());
+    const disconnectedEvent = await oneEvent(tableAdvanced, "disconnected-callback");
+    expect(disconnectedEvent).toBeDefined();
   });
 });

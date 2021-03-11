@@ -143,10 +143,8 @@ thead {
       }
 
       &:active {
-        background-color: var(
-          --table-advanced-filter-pressed-bg-color,
-          $lm-table-advanced-filter-pressed-bg-color-light
-        );
+        background-color: var(--table-advanced-filter-pressed-bg-color,
+        $lm-table-advanced-filter-pressed-bg-color-light);
       }
     }
 

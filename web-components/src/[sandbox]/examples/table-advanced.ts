@@ -1,8 +1,6 @@
 import "@/components/table-advanced/TableAdvanced";
 import { customElement, html, internalProperty, LitElement } from "lit-element";
-import { TableAdvancedMock } from "./table-advanced-mock";
-import { ShortkeyTable, DefaultAdvancedTable } from "../sandbox.mock";
-
+import { ComplexTable, ShortkeyTable } from "@/[sandbox]/sandbox.mock";
 @customElement("default-table-advanced-sandbox")
 export class DefaultTableAdvanced extends LitElement {
   @internalProperty() litProp = "$";
@@ -19,7 +17,7 @@ export class DefaultTableAdvanced extends LitElement {
   renderComplexTable() {
     // data
     const rnd = (max: number) => Math.round(Math.random() * (max - 1) + 1) + "";
-    const DATA = TableAdvancedMock.ComplexTable.data;
+    const DATA = ComplexTable.data;
     if ("list2d" in DATA) {
       for (let i = 0; i < 6; i++) {
         DATA.list2d.push([rnd(2), "2", "3", "4", "5", "6", "7"]);
@@ -27,7 +25,7 @@ export class DefaultTableAdvanced extends LitElement {
     }
 
     // templates
-    const CONF = TableAdvancedMock.ComplexTable.config;
+    const CONF = ComplexTable.config;
     CONF.cellTemplates = {
       _tmp_: {
         templateName: "tmp1"
@@ -67,8 +65,6 @@ export class DefaultTableAdvanced extends LitElement {
     `;
   }
 
-  // --------
-
   renderShortkeyTable() {
     const conf = ShortkeyTable.config;
     conf.cellTemplates = {
@@ -99,7 +95,7 @@ export class DefaultTableAdvanced extends LitElement {
 export class CustomTableAdvanced extends LitElement {
   render() {
     return html`
-      <md-table-advanced .config=${DefaultAdvancedTable.config} .data=${DefaultAdvancedTable.data}> </md-table-advanced>
+      <md-table-advanced .config=${ComplexTable.config} .data=${ComplexTable.data}> </md-table-advanced>
     `;
   }
 }

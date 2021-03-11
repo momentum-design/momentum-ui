@@ -10,21 +10,14 @@ import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
-import { nanoid } from "nanoid";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import {
-  html,
-  internalProperty,
-  LitElement,
-  property,
-  PropertyValues,
-  query,
-  queryAll
-} from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
+import { styleMap } from "lit-html/directives/style-map";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { nanoid } from "nanoid";
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TabKeyDownEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
@@ -47,21 +40,25 @@ export namespace Tabs {
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
     @property({ type: Boolean }) justified = false;
     @property({ type: String }) overlowLabel = "More";
-    @property({ type: String }) direction = "horizontal"
+    @property({ type: String }) direction = "horizontal";
+    @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
-    @query('slot[name="tab"]') tabSlotElement?: HTMLSlotElement;
-    @query('slot[name="panel"]') panelSlotElement?: HTMLSlotElement;
+    @query("slot[name='tab']") tabSlotElement?: HTMLSlotElement;
+    @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
     @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
     @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab.ELEMENT;
     @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
 
+    @query(".md-tab__list[part='tabs-more-list']") tabsMoreListElement?: HTMLDivElement;
     @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab.ELEMENT>;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
     @internalProperty() private isMoreTabMenuOpen = false;
     @internalProperty() private isMoreTabMenuSelected = false;
+    @internalProperty() private isMoreTabMenuScrollable = false;
     @internalProperty() private moreTabMenuOffsetWidth = 0;
+    @internalProperty() private moreTabMenuMaxHeight: string | null = null;
     @internalProperty() private tabsViewportDataList: TabsViewportDataList = [];
     @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
@@ -92,6 +89,19 @@ export namespace Tabs {
       return [reset, styles];
     }
 
+    private async ensureTabsUpdateComplete(tabs: Tab.ELEMENT[]) {
+      const tabUpdatesCompletesPromises = tabs
+        .map(tab => {
+          if (typeof tab.updateComplete !== "undefined") {
+            return tab.updateComplete;
+          }
+          return null;
+        })
+        .filter(promise => promise !== null);
+
+      tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
+    }
+
     // This operation may affect render performance when using frequently. Use careful!
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
@@ -104,25 +114,18 @@ export namespace Tabs {
           });
     }
 
+    private measureHiddenTabsCopiesOffsetHeight() {
+      return this.tabsCopy.map((tab, idx) => tab.offsetHeight);
+    }
+
     private async manageOverflow() {
-      if (this.direction !== "vertical") { 
+      if (this.direction !== "vertical") {
         const tabsCount = this.tabs.length;
         if (this.tabsListElement && tabsCount > 1) {
           const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
 
-          // Awaiting tabs updates
-          {
-            const tabUpdatesCompletesPromises = this.tabs
-              .map(tab => {
-                if (typeof tab.updateComplete !== "undefined") {
-                  return tab.updateComplete;
-                }
-                return null;
-              })
-              .filter(promise => promise !== null);
-
-            tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
-          }
+          // Awaiting all tabs updates
+          await this.ensureTabsUpdateComplete(this.tabs);
 
           const tabsOffsetsWidths = this.measureTabsOffsetWidth();
 
@@ -163,7 +166,9 @@ export namespace Tabs {
             this.tabsViewportDataList = newTabsViewportList;
 
             // Make real tabs viewportHidden update
-            this.tabsViewportDataList.forEach((tvd, idx) => (this.tabs[idx].viewportHidden = tvd.isTabInViewportHidden));
+            this.tabsViewportDataList.forEach(
+              (tvd, idx) => (this.tabs[idx].viewportHidden = tvd.isTabInViewportHidden)
+            );
 
             // Make more button hidden update
             this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find(tvd => tvd.isTabInViewportHidden);
@@ -514,7 +519,6 @@ export namespace Tabs {
           }
         }
       }
-      
     }
 
     disconnectedCallback() {
@@ -542,6 +546,27 @@ export namespace Tabs {
           return acc;
         }, {} as Record<TabId, Tab.ELEMENT>);
       }
+
+      if (changedProperties.has("isMoreTabMenuOpen")) {
+        if (this.isMoreTabMenuVisible) {
+          const oldValue = changedProperties.get("isMoreTabMenuOpen");
+          if (this.isMoreTabMenuOpen && !oldValue) {
+            // Add/Remove more overlay scroll
+            if (this.moreItemsScrollLimit < this.tabsCopy.length) {
+              this.isMoreTabMenuScrollable = true;
+              this.moreTabMenuMaxHeight = `${this.measureHiddenTabsCopiesOffsetHeight()
+                .slice(0, this.moreItemsScrollLimit)
+                .reduce((acc, h) => {
+                  acc += h;
+                  return acc;
+                }, 0)}px`;
+            } else {
+              this.isMoreTabMenuScrollable = false;
+              this.moreTabMenuMaxHeight = null;
+            }
+          }
+        }
+      }
     }
 
     render() {
@@ -560,12 +585,9 @@ export namespace Tabs {
             class="md-menu-overlay__more ${classMap({
               "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
             })}"
-            @menu-overlay-open="${() => {
-              this.isMoreTabMenuOpen = true;
-            }}"
-            @menu-overlay-close="${() => {
-              this.isMoreTabMenuOpen = false;
-            }}"
+            placement="bottom-end"
+            @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
+            @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
           >
             <md-tab
               slot="menu-trigger"
@@ -579,26 +601,34 @@ export namespace Tabs {
               <span>${this.overlowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}"></md-icon>
             </md-tab>
-            <div part="tabs-more-list" class="md-tab__list md-menu-overlay__more_list">
+            <div
+              part="tabs-more-list"
+              class="md-tab__list md-menu-overlay__more_list"
+              style="${styleMap(
+                this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight
+                  ? {
+                      "overflow-y": "auto",
+                      height: this.moreTabMenuMaxHeight,
+                      "max-height": this.moreTabMenuMaxHeight
+                    }
+                  : {}
+              )}"
+            >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
                 tab => tab.id,
-                tab => {
-                  return html`
-
-                      <md-tab
-                        .disabled="${tab.disabled}"
-                        .selected="${tab.selected}"
-                        id="${this.getCopyTabId(tab)}"
-                        aria-controls="${tab.id}"
-                        @click=${this.handleOverlayClose}
-                        tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                      >
-                        ${unsafeHTML(tab.innerHTML)}
-                      </md-tab>
-
-                  `;
-                }
+                tab => html`
+                  <md-tab
+                    .disabled="${tab.disabled}"
+                    .selected="${tab.selected}"
+                    id="${this.getCopyTabId(tab)}"
+                    aria-controls="${tab.id}"
+                    @click="${() => this.handleOverlayClose()}"
+                    tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                  >
+                    ${unsafeHTML(tab.innerHTML)}
+                  </md-tab>
+                `
               )}
             </div>
           </md-menu-overlay>

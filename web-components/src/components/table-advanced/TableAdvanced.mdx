@@ -5,13 +5,13 @@ This will render "classic" HTML `<table>` described in `config` property and fil
 ## Properties
 
 | Name     | Type                | Description                                       |
-| :------- | :------------------ | :------------------------------------------------ |
+| :-------: | :------------------: | :------------------------------------------------:|
 | `config` | [`Config`](#config) | Table columns configuration object **[required]** |
 | `data`   | [`Data`](#data)     | Table rows data **[required]**                    |
 
 ### Config
 
-Data is **[required]** property.  
+Data is **[required]** property.
 Configure columns and additional features here. Number of columns must match parsed data row length.
 
 ```ts
@@ -64,8 +64,8 @@ type Config = {
 
 ### Column Definition
 
-You **need** to define columns of your table.  
-Number of columns must correspond to provided [`Data`](#data).  
+You **need** to define columns of your table.
+Number of columns must correspond to provided [`Data`](#data).
 You can define column:
 
 ```ts
@@ -123,8 +123,8 @@ const config: TableAdvanced.Config = {
 
 Data is **[required]** property.
 
-`string[][]` - outer array is rows inner array is columns. Inner arrays must contain number of elements that is equal to **column** definitions.  
-`string[]` - must contain number of elements equal to **rows \* columns**.  
+`string[][]` - outer array is rows inner array is columns. Inner arrays must contain number of elements that is equal to **column** definitions.
+`string[]` - must contain number of elements equal to **rows \* columns**.
 `string` - in CSV format with number of columns equal to **column** definitions.
 
 - if you have `string[][]` with [3][10] elements you need to define 3 columns and you will get 10 rows
@@ -134,7 +134,7 @@ Data is **[required]** property.
 
 Templates feature will give you ability to customize any cell of your table with HTML.
 
-First you need to set anchors in your data.  
+First you need to set anchors in your data.
 In this example they are **_tmp_** and **_tmpCb_**.
 
 ```ts
@@ -197,8 +197,8 @@ Say for example your template will look like this:
 <template id="t1"><img src="url"/></template>
 ```
 
-There is no way to sort or filter it properly.  
-So for sorting and filtering we are using cell content(`string`) instead.  
+There is no way to sort or filter it properly.
+So for sorting and filtering we are using cell content(`string`) instead.
 
 - for example you have `"sample _t1_ text"` cell content. `"sample text"` will be used.
 

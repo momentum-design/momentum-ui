@@ -37,6 +37,16 @@
   }
 }
 
+:host([invalid]) {
+  .group,
+  .group:hover,
+  .group:active {
+    background: $combobox-invalid-bg-color;
+    border-color: $combobox-invalid-border-color;
+
+  }
+}
+
 .md-combobox-list {
   position: relative;
 }

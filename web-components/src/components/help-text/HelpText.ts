@@ -17,7 +17,7 @@ export namespace HelpText {
   @customElementWithCheck("md-help-text")
   export class ELEMENT extends LitElement {
     @property({ type: String }) message = "";
-    @property({ attribute: false }) messageType: Input.MessageType | undefined = undefined;
+    @property({ type: String }) messageType: Input.MessageType | undefined = undefined;
 
     get inputMessageClassMap() {
       return {
@@ -52,8 +52,6 @@ export namespace HelpText {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

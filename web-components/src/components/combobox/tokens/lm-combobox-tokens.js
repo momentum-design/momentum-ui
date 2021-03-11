@@ -41,6 +41,16 @@ const combobox = {
       dark: colors.gray[90].name
     }
   },
+  invalid: {
+    "bg-color": {
+      light: colors.red[10].name,
+      dark: colors.red[90].name
+    },
+    "border-color": {
+      light: colors.red[50].name,
+      dark: colors.red[50].name
+    }
+  },
   dropdown: {
     "bg-color": {
       light: colors.white[100].name,

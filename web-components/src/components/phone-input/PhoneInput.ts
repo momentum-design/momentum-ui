@@ -131,6 +131,7 @@ export namespace PhoneInput {
       return html`
         <div class="md-phone-input__container">
           <md-combobox
+            part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
             placeholder="${this.codePlaceholder}"
@@ -145,6 +146,7 @@ export namespace PhoneInput {
             )}
           </md-combobox>
           <md-input
+            part="md-input"
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"

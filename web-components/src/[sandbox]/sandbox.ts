@@ -1,7 +1,7 @@
+import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
-import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -46,8 +46,8 @@ import {
   radioGroupTemplate,
   sliderTemplate,
   spinnerTemplate,
-  tableTemplate,
   tableAdvancedTemplate,
+  tableTemplate,
   tabsTemplate,
   taskItemTemplate,
   timePickerTemplate,
@@ -122,14 +122,6 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-
-          <div class="container" aria-label="md-table-advanced">
-            <h2>md-table-advanced</h2>
-            <sass-stats component="table-advanced">
-              ${tableAdvancedTemplate}
-            </sass-stats>
-          </div>
-
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
@@ -415,10 +407,24 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
+          <div class="container" aria-label="md-table-advanced">
+            <h2>md-table-advanced</h2>
+            <sass-stats component="table-advanced">
+              ${tableAdvancedTemplate}
+            </sass-stats>
+          </div>
+
           <div class="container" aria-label="md-table">
             <h2>md-table</h2>
             <sass-stats component="table">
               ${tableTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-table-advanced">
+            <h2>md-table-advanced</h2>
+            <sass-stats component="table-advanced">
+              ${tableAdvancedTemplate}
             </sass-stats>
           </div>
 

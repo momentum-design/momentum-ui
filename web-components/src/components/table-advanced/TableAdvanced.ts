@@ -582,8 +582,8 @@ export namespace TableAdvanced {
                       <div class="filter-menu" style="width: 100%;">
                         <select
                           name="filter-type"
-                          @change=${(e: any) => {
-                            col.filter!.selectedIndex = e.target.value;
+                          @change=${(e: Event) => {
+                            col.filter!.selectedIndex = ((e.target! as HTMLSelectElement).value as unknown) as number;
                             this.updCols();
                             this.filter(col);
                           }}
@@ -600,8 +600,8 @@ export namespace TableAdvanced {
                           maxlength=${ifDefined(input!.maxlength)}
                           pattern=${ifDefined(input!.pattern)}
                           .value=${col.filter.input}
-                          @input=${(e: any) => {
-                            col.filter!.input = e.target.value;
+                          @input=${(e: InputEvent) => {
+                            col.filter!.input = (e.target! as HTMLSelectElement).value;
                             this.updCols();
                             this.filter(col);
                           }}
@@ -624,15 +624,14 @@ export namespace TableAdvanced {
         ? html`
             <div
               draggable="true"
-              class=${classMap({
-                "drag-area-col": true,
+              class="drag-area-col ${classMap({
                 drag: this.dragCol != -1,
                 over: this.dropCol == col.index && this.dropCol != this.dragCol
-              })}
-              @dragstart=${(e: any) => {
+              })}"
+              @dragstart=${(e: DragEvent) => {
                 if (this.isResizing || this.dragRow != -1) return;
                 this.dragCol = col.index;
-                e.dataTransfer.setDragImage(e.target.parentNode, 0, 0);
+                e.dataTransfer!.setDragImage((e.target! as Node).parentNode as Element, 0, 0);
               }}
               @dragenter=${() => {
                 if (this.isResizing || this.dragRow != -1) return;
@@ -843,9 +842,9 @@ export namespace TableAdvanced {
                   ? html`
                       <md-icon
                         class="drag-handle"
-                        @mousedown=${(e: any) => {
+                        @mousedown=${(e: MouseEvent) => {
                           if (this.isResizing || this.dragCol != -1) return;
-                          this.dragRowElem = e.target.parentNode as HTMLElement;
+                          this.dragRowElem = (e.target! as Node).parentNode as HTMLElement;
                           this.dragRowElem.setAttribute("draggable", "true");
                         }}
                         name="panel-control-dragger_16"

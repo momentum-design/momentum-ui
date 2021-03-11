@@ -6,8 +6,9 @@
  *
  */
 
-import "../icon/Icon";
 import { Key } from "../../constants";
+import "@/components/icon/Icon";
+import "@/components/help-text/HelpText";
 import { FocusMixin } from "@/mixins";
 import { debounce, findHighlight } from "../../utils/helpers";
 import reset from "@/wc_scss/reset.scss";
@@ -56,6 +57,8 @@ export namespace ComboBox {
     @property({ type: String, attribute: "no-results-i18n" }) resultsTextLocalization = "No Results";
     @property({ type: String, attribute: "no-options-i18n" }) optionsTextLocalization = "No Options";
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
+    @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
 
     @property({ type: Number, attribute: false })
     get focusedIndex() {
@@ -902,6 +905,13 @@ export namespace ComboBox {
               : nothing}
           </ul>
         </div>
+        ${this.invalid
+          ? html`
+              <div part="message" class="md-combobox-error">
+                <md-help-text .message=${this.invalidText} messageType="error"></md-help-text>
+              </div>
+            `
+          : nothing}
       `;
     }
   }

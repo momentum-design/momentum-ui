@@ -407,13 +407,6 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-table-advanced">
-            <h2>md-table-advanced</h2>
-            <sass-stats component="table-advanced">
-              ${tableAdvancedTemplate}
-            </sass-stats>
-          </div>
-
           <div class="container" aria-label="md-table">
             <h2>md-table</h2>
             <sass-stats component="table">

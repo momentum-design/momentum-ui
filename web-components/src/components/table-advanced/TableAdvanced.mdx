@@ -1,6 +1,8 @@
 # Advanced Table Component
 
-This will render "classic" HTML `<table>` described in `config` property and filled with `data`.
+The **Advance Table** component is intended for presenting tabular data organized in rows and columns.
+Table cells can include text or arbitrary UI components.
+The data contained in a **Advance Table** is managed using `data` property. `config` property define essential configuration to component.
 
 ## Properties
 
@@ -12,24 +14,28 @@ This will render "classic" HTML `<table>` described in `config` property and fil
 ### Config
 
 Data is **[required]** property.
-Configure columns and additional features here. Number of columns must match parsed data row length.
+Configure columns and additional features here. Number of columns must match parsed data row length. All object keys provided with `?` (question mark) is optional and can be skipped.
 
 ```ts
 type Config = {
-  // will make table "fixed" on scroll
+  // Will make table "fixed" on scroll
   isStickyHeader?: boolean;
 
   cols: {
     // REQUIRED - Please see "Column Definition" downstairs
     define: Column[];
+    // Enable native browser drag-and-drop features for table columns.
     isDraggable?: boolean;
+    // Enable native browser resize features for table columns.
     isResizable?: boolean;
-    // column with this ID will be collapsed
+    // Column with this ID will be collapsed
     collapse?: ColId;
   };
 
   rows?: {
+    // Enable native browser drag-and-drop features for table rows.
     isDraggable?: boolean;
+    // Selects cell or ranges of cell, i.e. a rectangular block of cells
     selectable?: "none" | "single" | "multiple";
   };
 
@@ -37,16 +43,16 @@ type Config = {
   cellTemplates?: Record<string, CellTemplate>;
 
   default?: {
-    // set default "filter" and "sorting" fro all columns that has this props undefined
+    // Set default "filter" and "sorting" for all columns that has this props undefined
     col?: ColumnDefaults;
 
-    // column with this ID will be sorted on table creation
+    // Column with this ID will be sorted on table creation (ID must be unique)
     sort?: {
       colId: ColId;
       order: SortOrder;
     };
 
-    // column with this ID will be sorted on table creation
+    // Column with this ID will be sorted on table creation (ID must be unique)
     filter?: {
       colId: ColId;
       input: string;
@@ -54,7 +60,7 @@ type Config = {
     };
   };
 
-  // will add caption and summary to table (accessibility)
+  // Will add caption and summary to table (accessibility)
   head?: {
     caption?: string;
     summary?: string;
@@ -70,14 +76,14 @@ You can define column:
 
 ```ts
 type Column = {
-  // please provide unique ID
+  // Please provide unique ID
   id: string;
   title: string;
   width?: string;
   sorter?: "byString" | "byNumber" | SortComparator;
-  // see "custom filters" downstairs
+  // See "custom filters" downstairs
   filters?: "forString" | "forNumber" | Filter.Options[];
-  // this will make column <th scope="row"> not <td>
+  // This will make column <th scope="row"> not <td>
   isHeader?: boolean;
 };
 ```
@@ -96,7 +102,7 @@ type ColumnGroup = {
 Here is an example how to define your own set of filters to column.
 
 ```ts
-import { Filter } from "@/components/table-advanced/src/filter"; 
+import { Filter } from "@/components/table-advanced/src/filter";
 
 const config: TableAdvanced.Config = {
   cols: {
@@ -132,7 +138,8 @@ Data is **[required]** property.
 
 ## Templates
 
-Templates feature will give you ability to customize any cell of your table with HTML.
+Templates feature will give you ability to customize any cell of your table with HTML. However, the HTML [template](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement) has a [content](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/content) property, which is a read-only [DocumentFragment](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment) containing the DOM subtree which the template represents.
+Note that directly using the value of the content could lead to unexpected behavior, because DocumentFragment is not a valid target for various events, as such it is often preferable to clone or refer to the elements within it.
 
 First you need to set anchors in your data.
 In this example they are **_tmp_** and **_tmpCb_**.
@@ -173,10 +180,10 @@ const conf: TableAdvanced.Config = {
     _tmp_: { templateName: "template1" },
     _tmp2_: {
       templateName: "template2",
-      // by default template is inserted to anchor position inside cell text
-      // with this option cell content will be replaced by template content
+      // By default template is inserted to anchor position inside cell text
+      // With this option cell content will be replaced by template content
       contentUse: "replace",
-      // here you can use vanilla JS to do anything
+      // With this callback, you can apply any changes for template content after it inserted to the DOM
       templateCb: ({ fragment, content, row, col }) => {
         const span = fragment.querySelector<HTMLElement>(".sp")!;
         const button = fragment.querySelector<HTMLButtonElement>("button")!;
@@ -200,7 +207,7 @@ Say for example your template will look like this:
 There is no way to sort or filter it properly.
 So for sorting and filtering we are using cell content(`string`) instead.
 
-- for example you have `"sample _t1_ text"` cell content. `"sample text"` will be used.
+- For example you have `"sample _t1_ text"` cell content. `"sample text"` will be used.
 
 Along with `templateCb` you can use `contentCb`. This will let you customize cell content.
 ```ts

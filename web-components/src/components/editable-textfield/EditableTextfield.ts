@@ -6,7 +6,7 @@
  *
  */
 
-import { numInputTypes } from "@/utils/enums";
+import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
@@ -16,7 +16,7 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;

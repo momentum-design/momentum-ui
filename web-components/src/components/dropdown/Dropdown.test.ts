@@ -7,7 +7,7 @@
  */
 
 import { dropdownObjectLongOptions, dropdownStringOptions } from "@/[sandbox]/examples/dropdown";
-import { Dropdown } from "@/components/dropdown/Dropdown";
+import { Dropdown } from "./Dropdown"; // Keep type import as a relative path
 import "@/components/dropdown/Dropdown";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";

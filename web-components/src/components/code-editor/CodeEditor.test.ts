@@ -3,7 +3,7 @@ import { CodeEditor } from "./CodeEditor";
 import { fixture, fixtureCleanup, elementUpdated } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 import { Button } from "@/index";
-// import { Button } from "@/components/button/Button";
+// import { Button } from "../button/Button"; // Keep type import as a relative path
 
 describe("CodeEditor component", () => {
   let element: CodeEditor;

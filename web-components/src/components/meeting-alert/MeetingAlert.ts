@@ -14,7 +14,7 @@ import { nothing } from "lit-html";
 import "@/components/avatar/Avatar";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import { templateHTML } from "@/components/meeting-alert/CompositeAvatar";
+import { templateHTML } from "./CompositeAvatar"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
 export const MeetingAlertRole = ["alert", "alertdialog", "button", "checkbox", "dialog", "link", "option", "status"] as const;

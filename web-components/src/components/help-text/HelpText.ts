@@ -10,14 +10,14 @@ import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
 export namespace HelpText {
   @customElementWithCheck("md-help-text")
   export class ELEMENT extends LitElement {
     @property({ type: String }) message = "";
-    @property({ attribute: false }) messageType: Input.MessageType | undefined = undefined;
+    @property({ type: String }) messageType: Input.MessageType | undefined = undefined;
 
     get inputMessageClassMap() {
       return {
@@ -52,8 +52,6 @@ export namespace HelpText {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

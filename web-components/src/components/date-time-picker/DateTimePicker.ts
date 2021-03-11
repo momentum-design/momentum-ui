@@ -1,6 +1,6 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
-import { TIME_UNIT } from "@/constants";
+import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

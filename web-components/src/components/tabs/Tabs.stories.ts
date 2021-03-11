@@ -4,16 +4,16 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
-*/
+ */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, select, withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
-import { html } from "lit-element";
 import "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
 
 export default {
   title: "Tabs",
@@ -40,15 +40,21 @@ export const Tabs = () => {
   const lumos = boolean("Lumos Theme", false);
   const disabled = boolean("disabled", false);
   const justified = boolean("Justified", false);
-  const options = { vertical: "vertical", horizontal: "horizontal"};
+  const options = { vertical: "vertical", horizontal: "horizontal" };
   const alignment = select("Orientation", options, "horizontal");
-  const more = boolean("Show Tabs with More Button", false);
+  const more = alignment === "horizontal" ? boolean("Show Tabs with More Button", false) : false;
+  const moreItemsScrollLimit = more ? number("Show Tabs More menu scroll for items limit", 3) : Number.MAX_SAFE_INTEGER;
 
   if (more) {
     return html`
-      <md-theme  class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <div style="max-width: 600px;">
-          <md-tabs @selected-changed=${(action('changed'))} selected="0" justified>
+          <md-tabs
+            @selected-changed=${action("changed")}
+            selected="0"
+            more-items-scroll-limit="${moreItemsScrollLimit}"
+            justified
+          >
             <md-tab slot="tab" label="History">
               <md-icon name="recents_16"></md-icon>
               <span>Contact History</span>
@@ -113,7 +119,7 @@ export const Tabs = () => {
     return html`
       <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <div style="height: 300px;">
-          <md-tabs @selected-changed=${(action('changed'))} direction="${alignment}" .justified=${justified}>
+          <md-tabs @selected-changed=${action("changed")} direction="${alignment}" .justified=${justified}>
             <md-tab slot="tab">
               <md-icon name="recents_16"></md-icon>
               <span>Tab 1</span>

@@ -28,5 +28,7 @@ $combobox-select-margin: rem-calc(16);
 $combobox-selected-radius: rem-calc(14);
 $combobox-selected-height: rem-calc(24);
 $combobox-selected-item-border: 1px solid var(--combobox-selected-border-color, $lm-combobox-selected-border-color-light);
+$combobox-invalid-bg-color: var(--combobox-invalid-bg-color, $lm-combobox-invalid-bg-color-light);
+$combobox-invalid-border-color: var(--combobox-invalid-border-color, $lm-combobox-invalid-border-color-light);
 
 

@@ -398,12 +398,92 @@ export const DraggableOptions = [
   }
 ];
 
+export const SimpleTable: {
+  config: TableAdvanced.Config;
+  dataCsv: TableAdvanced.Data;
+  dataList: TableAdvanced.Data;
+  dataList2d: TableAdvanced.Data;
+} = {
+  config: {
+    isStickyHeader: true,
+
+    cols: {
+      isResizable: true,
+      define: [
+        { id: "c1", title: "Col1", sorter: "byString" },
+        { id: "c2", title: "Col2", filters: "forString" },
+        { id: "c3", title: "Col3" }
+      ]
+    }
+  },
+  dataCsv: {
+    csv: `data11, data21, data31
+    data12, data22, data32
+    data13, data23, data33`
+  },
+  dataList: {
+    list: ["data11", "data21", "data31", "data12", "data22", "data32", "data13", "data23", "data33"]
+  },
+  dataList2d: {
+    list2d: [
+      ["data11", "data21", "data31"],
+      ["data12", "data22", "data32"],
+      ["data13", "data23", "data33"]
+    ]
+  }
+};
+
+export const ComplexTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
+  config: {
+    isStickyHeader: true,
+
+    rows: {
+      isDraggable: true,
+      selectable: "multiple"
+    },
+
+    cols: {
+      isDraggable: true,
+      isResizable: true,
+      collapse: "c1",
+      define: [
+        {
+          groupName: "Group 1",
+          children: [
+            { id: "c1", title: "Col1f", sorter: "byString", filters: "forString", width: "25%" },
+            { id: "c2", title: "Col2s" },
+            { id: "c3", title: "Col3" }
+          ]
+        },
+        { id: "c4", title: "Col4h", isHeader: true },
+        { id: "c5", title: "Col5s", sorter: "byString" },
+        {
+          groupName: "group2",
+          children: [
+            { id: "c6", title: "col6f", width: "25%" },
+            { id: "c7", title: "col7", width: "25%" }
+          ]
+        }
+      ]
+    }
+  },
+  data: {
+    list2d: [
+      ["col _tmp_ 11", "12", "13", "14", "15", "str_tmp2_", "txt _tmp2_ txt"],
+      ["_tmp_ col21 sub", "22", "23", "24", "25", "26", "27"],
+      ["col31 sub_tmp_", "32", "33", "34", "35", "36", "37"]
+    ]
+  }
+};
+
+// ------------------
+
 export const ShortkeyTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
   config: {
     isStickyHeader: true,
 
     rows: {
-      isDraggable: false,
+      isDraggable: true,
       selectable: "multiple"
     },
 
@@ -416,6 +496,7 @@ export const ShortkeyTable: { config: TableAdvanced.Config; data: TableAdvanced.
       ]
     }
   },
+
   data: {
     list2d: [
       ["Active Task List", "Switch between tasks", "Ctrl + Alt + T"],
@@ -429,45 +510,6 @@ export const ShortkeyTable: { config: TableAdvanced.Config; data: TableAdvanced.
       ["Edit CAD Variables", "Save edited call variable values", "Ctrl + Alt + O"],
       ["Edit CAD Variables", "Revert edited call variable values", "Ctrl + Alt + N _warn_"],
       ["Email Handling", "Send email", "Ctrl + Alt + S"]
-    ]
-  }
-};
-
-export const DefaultAdvancedTable: { config: TableAdvanced.Config; data: TableAdvanced.Data } = {
-  config: {
-    isStickyHeader: true,
-
-    rows: {
-      isDraggable: false,
-      selectable: "multiple"
-    },
-
-    cols: {
-      isDraggable: true,
-      isResizable: true,
-      define: [
-        { id: "col-ani", title: "ANI", sorter: "byString" },
-        { id: "col-stage", title: "Abandoment Statge", filters: "forString" },
-        { id: "col-transfer", title: "Transfer" },
-        { id: "col-wait", title: "Total Wait Time" },
-        { id: "col-back", title: "Call Back Received", filters: "forString" },
-        { id: "col-time", title: "Call Back Time" }
-      ]
-    }
-  },
-  data: {
-    list2d: [
-      ["12345670", "IRV", "0", "00:45", "Yes", "12:34 PM"],
-      ["12345671", "QWT (1-5 min)", "0", "00:20", "No", "Follow-up"],
-      ["12345672", "QWT (5-10 min)", "1", "01:15", "Yes", "09:30 AM"],
-      ["12345673", "QWT > 10 min", "2", "00:35", "No", "11:25 PM"],
-      ["12345674", "QWT > 10 min", "1", "00:15", "Yes", "Follow-up"],
-      ["12345675", "IRV", "2", "00:23", "Yes", "Follow-up"],
-      ["12345676", "QWT (1-5 min)", "0", "00:52", "No", "10:16 AM"],
-      ["12345677", "IRV", "1", "00:25", "Yes", "Follow-up"],
-      ["12345678", "QWT (1-5 min)", "2", "01:05", "No", "03:34 PM"],
-      ["12345679", "QWT (5-10 min)", "2", "00:35", "Yes", "02:12 AM"],
-      ["12345680", "QWT (1-5 min)", "1", "00:41", "No", "Follow-up"]
     ]
   }
 };

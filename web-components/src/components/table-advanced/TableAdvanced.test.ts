@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Copyright (c) Cisco Systems, Inc. and its affiliates.
  *
@@ -5,7 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ComplexTable, SimpleTable } from "@/[sandbox]/sandbox.mock";

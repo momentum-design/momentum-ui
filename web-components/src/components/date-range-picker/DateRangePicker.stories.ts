@@ -1,5 +1,5 @@
 import "@/components/date-range-picker/DateRangePicker";
-import { DatePicker as DP } from "@/components/datepicker/DatePicker";
+import { DatePicker as DP } from "../datepicker/DatePicker"; // Keep type import as a relative path
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";

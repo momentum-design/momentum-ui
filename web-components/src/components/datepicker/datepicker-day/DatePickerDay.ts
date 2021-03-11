@@ -7,9 +7,10 @@
  */
 
 import "@/components/button/Button";
-import { DateRangePicker } from "@/components/date-range-picker/DateRangePicker";
+import { DateRangePicker } from "../../date-range-picker/DateRangePicker"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { DatePickerProps, DayFilters, getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
+import { getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
+import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";

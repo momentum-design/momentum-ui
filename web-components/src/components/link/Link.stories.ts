@@ -10,7 +10,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/link/Link";
-import { linkTag, linkColor } from "@/components/link/Link";
+import { linkTag, linkColor } from "./Link"; // Keep type import as a relative path
 import "@/components/theme/Theme";
 
 export default {

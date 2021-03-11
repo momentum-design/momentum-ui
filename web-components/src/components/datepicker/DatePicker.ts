@@ -8,9 +8,9 @@
 
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";

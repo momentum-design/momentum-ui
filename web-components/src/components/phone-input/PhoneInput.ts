@@ -1,6 +1,6 @@
 import "@/components/combobox/ComboBox";
 import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";

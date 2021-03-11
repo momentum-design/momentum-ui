@@ -6,7 +6,7 @@
  *
  */
 
-import { ListItem } from "@/components/list/ListItem";
+import { ListItem } from "./ListItem"; // Keep type import as a relative path
 import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
@@ -173,8 +173,6 @@ export namespace List {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

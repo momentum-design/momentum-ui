@@ -94,7 +94,7 @@ type ColumnGroup = {
 Here is an example how to define your own set of filters for column.
 
 ```ts
-import { Filter } from "@/components/table-advanced/src/filter";
+import { Filter } from "./src/filter"; // Keep type import as a relative path
 
 const config: TableAdvanced.Config = {
   cols: {

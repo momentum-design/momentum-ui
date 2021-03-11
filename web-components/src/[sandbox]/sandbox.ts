@@ -1,7 +1,7 @@
+import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
-import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -46,8 +46,8 @@ import {
   radioGroupTemplate,
   sliderTemplate,
   spinnerTemplate,
-  tableTemplate,
   tableAdvancedTemplate,
+  tableTemplate,
   tabsTemplate,
   taskItemTemplate,
   timePickerTemplate,
@@ -404,6 +404,13 @@ export class Sandbox extends LitElement {
             <h2>md-spinner</h2>
             <sass-stats component="spinner">
               ${spinnerTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-table-advanced">
+            <h2>md-table-advanced</h2>
+            <sass-stats component="table-advanced">
+              ${tableAdvancedTemplate}
             </sass-stats>
           </div>
 

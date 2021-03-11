@@ -14,7 +14,7 @@ The data contained in a **Advance Table** is managed using `data` property. `con
 ### Config
 
 Data is **[required]** property.
-Configure columns and additional features here. Number of columns must match parsed data row length. All object keys provided with `?` (question mark) is optional and can be skipped.
+Configure columns and additional features here. Number of columns must match parsed data row length. All keys provided with `?` (question mark) is optional and can be skipped.
 
 ```ts
 type Config = {
@@ -115,7 +115,7 @@ const config: TableAdvanced.Config = {
           Filter.OPTIONS.notContains,
           {
             label: "Second Char is",
-            input: { placeholder: "Second char", maxlength: 1 },
+            input: { placeholder: "Second Сhar", maxlength: 1 },
             predicate: (content, input) => (content.length > 1 ? content[1] == input : false)
           }
         ]
@@ -127,7 +127,7 @@ const config: TableAdvanced.Config = {
 
 ## Data
 
-Data is **[required]** property.
+Data is **required** property.
 
 `string[][]` - outer array is rows inner array is columns. Inner arrays must contain number of elements that is equal to **column** definitions.
 `string[]` - must contain number of elements equal to **rows \* columns**.

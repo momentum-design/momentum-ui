@@ -11,7 +11,7 @@ import { boolean, text, withKnobs, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/table/Table";
 import "@/components/theme/Theme";
-import { formatType } from "@/components/table/Table";
+import { formatType } from "./Table"; // Keep type import as a relative path
 
 
 export default {

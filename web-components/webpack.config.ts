@@ -120,14 +120,13 @@ export const commonDev = merge(common, {
     new CopyWebpackPlugin([
       { from: `${pMomentum}/core/fonts`, to: "fonts" },
       { from: `${pMomentum}/core/images`, to: "images" },
+      { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
+      { from: `${pMomentum}/icons/fonts`, to: "fonts" },
       { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
       { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
       { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
       { from: `${pCss}/*.css`, to: "css", flatten: true },
-      { from: `${pStats}/**/*.json`, to: "stats", flatten: true },
-      { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
-      // if you want 'momentum-ui.min.css' to work we must copy to second location
-      { from: `${pMomentum}/icons/fonts`, to: "fonts" }
+      { from: `${pStats}/**/*.json`, to: "stats", flatten: true }
     ])
   ]
 });
@@ -202,7 +201,7 @@ const commonDist = merge(common, {
     "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
     "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
     "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
-    "comp/md-form": "./src/components/form/Form"
+    "comp/md-form-entry": "./src/components/form/Form"
   },
   output: {
     path: pDist,
@@ -228,13 +227,12 @@ const commonDist = merge(common, {
     new CopyWebpackPlugin([
       { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
       { from: `${pMomentum}/core/images`, to: "assets/images" },
+      { from: `${pMomentum}/icons/fonts`, to: "assets/fonts" },
+      { from: `${pMomentum}/icons/fonts`, to: "assets/icons/fonts" },
       { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
       { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
       { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
-      { from: `${pMomentum}/icons/fonts`, to: "assets/icons/fonts" },
-      { from: `${pCss}/*.css`, to: "assets/styles", flatten: true },
-      { from: `${pSrc}/**/*.json`, to: "css", flatten: true }
-      // if you want 'momentum-ui.min.css' to work we must copy to second location
+      { from: `${pCss}/*.css`, to: "assets/styles", flatten: true }
     ]),
     new RemovePlugin({
       after: {

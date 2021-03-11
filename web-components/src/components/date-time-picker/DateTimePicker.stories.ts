@@ -1,6 +1,6 @@
 import "@/components/date-time-picker/DateTimePicker";
-import { DatePicker } from "@/components/datepicker/DatePicker";
-import { timeSpecificity } from "@/components/timepicker/TimePicker";
+import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
+import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import as a relative path
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";

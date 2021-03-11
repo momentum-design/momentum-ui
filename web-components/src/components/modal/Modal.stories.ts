@@ -8,7 +8,7 @@
 
 import "@/components/modal/Modal";
 import "@/components/theme/Theme";
-import { modalType } from "@/components/modal/Modal";
+import { modalType } from "./Modal"; // Keep type import as a relative path
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, select, withKnobs } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';

@@ -84,8 +84,6 @@ export namespace CheckboxGroup {
   }
 }
 
-
-
 declare global {
   interface HTMLElementTagNameMap {
     "md-checkboxgroup": CheckboxGroup.ELEMENT;

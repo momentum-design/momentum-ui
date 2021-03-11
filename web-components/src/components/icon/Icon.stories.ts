@@ -12,7 +12,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
-import { iconSize, iconType } from "@/components/icon/Icon";
+import { iconSize, iconType } from "./Icon"; // Keep type import as a relative path
 import { action } from '@storybook/addon-actions';
 
 export default {

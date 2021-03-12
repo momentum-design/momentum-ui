@@ -3,6 +3,13 @@
   display: flex;
   position: relative;
 
+  .test-div {
+    height: 100px;
+    width: 20px;
+    background: url('/images/flags.png') -5220px 0;
+    background-repeat: no-repeat;
+  }
+
   md-combobox {
     width: var(--combo-box-contaier-width);
   }

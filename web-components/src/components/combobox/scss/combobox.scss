@@ -43,7 +43,6 @@
   .group:active {
     background: $combobox-invalid-bg-color;
     border-color: $combobox-invalid-border-color;
-
   }
 }
 
@@ -67,8 +66,6 @@
       height: $combobox-search-icon-height;
       padding-top: calc(#{$combobox-main-indent} / 2);
     }
-
-
 
     &:hover {
       background: var(--combobox-hover-bg-color, $lm-combobox-hover-bg-color-light);
@@ -165,11 +162,13 @@ ul {
   .select-label {
     @include text-dots;
     cursor: default;
+    display: block;
     letter-spacing: normal;
-    width: calc(100% - #{$combobox-select-size} - #{$combobox-select-margin});
+    width: calc(100% - #{$combobox-select-size});
 
     span {
       margin-right: -$combobox-main-indent;
+      white-space: nowrap;
     }
   }
 
@@ -228,7 +227,6 @@ ul {
   flex-wrap: wrap;
   margin-left: 0;
   max-height: calc(#{$combobox-select-size} * 4.5);
-  overflow-y: auto;
 
   .md-combobox-selected-item {
     align-items: center;
@@ -265,12 +263,20 @@ ul {
   }
 
   input {
+    @include text-dots;
     background: transparent;
     border: 0;
     color: var(--combobox-text-color, $lm-combobox-text-color-light);
+    display: inline-block;
     flex: 1 1 auto;
     height: $combobox-min-height;
     outline: none;
+  }
+
+  ::-webkit-input-placeholder {
+    @include text-dots;
+    display: inline-block;
+    width: calc(100%);
   }
 
   .remove-item {

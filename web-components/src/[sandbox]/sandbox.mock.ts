@@ -10,7 +10,7 @@ export const comboBoxOptions = [
   "Angola",
   "Anguilla",
   "Antarctica",
-  "Antigua and Barbuda",
+  "Antigua and Barbuda Antigua and Barbuda Antigua and Barbuda",
   "Argentina"
 ];
 

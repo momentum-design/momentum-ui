@@ -130,7 +130,7 @@ export namespace PhoneInput {
     render() {
       return html`
         <div class="md-phone-input__container">
-          <div class="test-div"><
+          <div part="testDiv" class="test-div"></div>
           <md-combobox
             part="combobox"
             ?disabled=${this.disabled}

@@ -6,23 +6,10 @@ import { Button } from "@/components/button/Button";
 import { cardMenuItems } from "@/[sandbox]/sandbox.mock";
 import { Key } from "@/constants";
 
-const fixtureFactory = async (
-  id: string,
-  title: string,
-  subtitle: string,
-  info: string,
-  fullscreen: boolean
-): Promise<Card.ELEMENT> => {
+const fixtureFactory = async (id: string, title: string, subtitle: string, info: string): Promise<Card.ELEMENT> => {
   return await fixture(
     html`
-      <md-card
-        .menuOption=${cardMenuItems}
-        id=${id}
-        title=${title}
-        subtitle=${subtitle}
-        info=${info}
-        .fullscreen=${fullscreen}
-      >
+      <md-card .menuOption=${cardMenuItems} id=${id} title=${title} subtitle=${subtitle} info=${info}>
         <div slot="content">
           <img
             src="https://media.istockphoto.com/vectors/dashboard-ui-modern-presentation-with-data-graphs-and-hud-diagrams-vector-id1159848977"
@@ -42,24 +29,12 @@ describe("Card component", () => {
   });
 
   test("should render correctly", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
     expect(element).not.toBeNull();
   });
 
-  test("should render correctly full screen", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", true);
-    const fullIcon = element.shadowRoot?.querySelector("md-button.md-card-max-icon") as Button.ELEMENT;
-    const btn = fullIcon.shadowRoot!.querySelector("button");
-    btn!.click();
-
-    await elementUpdated(element);
-
-    const card = element.shadowRoot?.querySelector("div.md-card");
-    expect(card!.getAttribute("class")).toEqual("md-card full-screen");
-  });
-
   test("should render card without menu", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", true);
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
     const menuIcon = element.shadowRoot?.querySelector(".md-card-menu");
     element.menuOptions = [];
     await elementUpdated(element);
@@ -73,7 +48,7 @@ describe("Card component", () => {
   });
 
   test("should dispatch events on card click", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
 
     const card = element.shadowRoot?.querySelector(".md-card");
     expect(card).not.toBeDefined;
@@ -91,7 +66,7 @@ describe("Card component", () => {
   });
 
   test("should dispatch events on menu item click", async () => {
-    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info", false);
+    const element: Card.ELEMENT = await fixtureFactory("1234567", "Test title", "Test subtitle", "Test Info");
 
     const spyMenuClick = jest.spyOn(element, "handleCardMenuEvent");
     element.handleCardMenuEvent(new MouseEvent("click"), "1234");

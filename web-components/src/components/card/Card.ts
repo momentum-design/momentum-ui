@@ -7,17 +7,16 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { customElementWithCheck } from "../../mixins/CustomElementCheck";
+import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
-import "@/components/icon/Icon";
-import "@/components/button/Button";
-import "@/components/list/List";
-import "@/components/list/ListItem";
-import "@/components/favorite/Favorite";
-import { Key } from "@/constants";
+import "../icon/Icon";
+import "../button/Button";
+import "../list/List";
+import "../list/ListItem";
+import "../favorite/Favorite";
+import { Key } from "../../constants";
 import { repeat } from "lit-html/directives/repeat";
-import { classMap } from "lit-html/directives/class-map";
 import { nothing } from "lit-html";
 
 export namespace Card {
@@ -26,25 +25,13 @@ export namespace Card {
     @property({ type: String }) title = "title";
     @property({ type: String }) subtitle = "";
     @property({ type: String }) id = "";
-    @property({ type: Boolean }) fullscreen = false;
     @property({ type: String }) info = "";
+    @property({ type: String, attribute: "info-aria-label" }) infoAriaLabel = "Card Info";
+    @property({ type: String, attribute: "menu-aria-label" }) menuAriaLabel = "Card Menu";
     @property({ type: Array }) menuOptions: (string | any)[] = [];
-
-    @internalProperty() private full = false;
 
     static get styles() {
       return [reset, styles];
-    }
-
-    get cardClassMap() {
-      return {
-        "full-screen": this.full
-      };
-    }
-
-    handleToggleExpandCollapse(event: MouseEvent) {
-      event.stopPropagation();
-      this.full = !this.full;
     }
 
     handleCardClick(event: MouseEvent) {
@@ -105,7 +92,7 @@ export namespace Card {
     render() {
       return html`
         <div
-          class="md-card ${classMap(this.cardClassMap)}"
+          class="md-card"
           id="${this.id}"
           part="card"
           tabindex="0"
@@ -126,30 +113,22 @@ export namespace Card {
               ${this.info
                 ? html`
                     <md-tooltip message="${this.info}" placement="bottom">
-                      <md-button ariaLabel="Card Info" class="md-card-info-icon" color="color-none" size="size-none">
+                      <md-button
+                        ariaLabel="${this.infoAriaLabel}"
+                        class="md-card-info-icon"
+                        color="color-none"
+                        size="size-none"
+                      >
                         <md-icon slot="icon" name="info_16"></md-icon>
                       </md-button>
                     </md-tooltip>
                   `
                 : nothing}
-              ${this.fullscreen
-                ? html`
-                    <md-button
-                      @click=${(e: MouseEvent) => this.handleToggleExpandCollapse(e)}
-                      ariaLabel="Maximaze Card"
-                      class="md-card-max-icon"
-                      color="color-none"
-                      size="size-none"
-                    >
-                      <md-icon slot="icon" name=${this.full ? "minimize_16" : "maximize_16"}></md-icon>
-                    </md-button>
-                  `
-                : nothing}
-              ${this.menuOptions.length != 0
+              ${this.menuOptions.length
                 ? html`
                     <md-menu-overlay class="md-card-menu" placement="bottom-start">
                       <md-button
-                        ariaLabel="Menu"
+                        ariaLabel="${this.menuAriaLabel}"
                         class="md-card-menu-icon"
                         color="color-none"
                         size="size-none"

@@ -37,16 +37,14 @@ export const Card = () => {
   const avatar = boolean("Change Favorite Icon in header on slot - 'card-header-icon'", false);
   const slotTitle = boolean("Add custom Title in slot - 'card-header-title'", false);
   const info = text("Info", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-  const fullscreen = boolean("FullScreen", false);
 
   return html`
     <md-theme class="theme-toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-card
-        .menuOption=${menu}
+        .menuOptions=${menu}
         id=${id}
         title=${title}
         subtitle=${subtitle}
-        ?fullscreen=${fullscreen}
         @card-menu-click=${(e: MouseEvent) => {
           action("card-click")(e.detail);
         }}

@@ -3,7 +3,7 @@
   display: flex;
   position: relative;
 
-  md-combobox {
+  md-combobox.flag__usa {
     &::part(multiwrap) {
       &:before {
           content: '';

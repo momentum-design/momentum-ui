@@ -10,12 +10,12 @@ import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "../../mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
-import "../icon/Icon";
-import "../button/Button";
-import "../list/List";
-import "../list/ListItem";
-import "../favorite/Favorite";
-import { Key } from "../../constants";
+import "@/components/icon/Icon";
+import "@/components/button/Button";
+import "@/components/list/List";
+import "@/components/list/ListItem";
+import "@/components/favorite/Favorite";
+import { Key } from "../../constants"; // Keep type import as a relative path
 import { repeat } from "lit-html/directives/repeat";
 import { nothing } from "lit-html";
 

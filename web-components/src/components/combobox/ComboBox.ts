@@ -826,6 +826,7 @@ export namespace ComboBox {
                 aria-controls="md-combobox-listbox"
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
+                title=${ifDefined(this.selectedOptions.length > 0 ? this.selectedOptions[0] : this.placeholder)}
                 .value=${this.inputValue}
                 @click=${this.toggleVisualListBox}
                 @input=${this.handleInput}

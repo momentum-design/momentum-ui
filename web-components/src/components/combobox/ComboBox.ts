@@ -852,6 +852,7 @@ export namespace ComboBox {
               (option, optionIndex) => html`
                 <li
                   id=${this.getOptionId(option)}
+                  title="${this.getOptionValue(option)}"
                   part="combobox-option"
                   role="option"
                   class="md-combobox-option ${classMap(this.listItemOptionMap)}"

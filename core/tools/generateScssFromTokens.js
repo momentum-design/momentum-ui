@@ -1,7 +1,9 @@
 const generateFileFromTemplate = require('@momentum-ui/utils/src/generateFileFromTemplate');
+const generateFileFromThemeToken = require('@momentum-ui/utils/src/generateFileFromThemeToken');
 const path = require('path');
 const colorData = require('@momentum-ui/tokens/dist/colors.json');
 const buttonColorData = require('@momentum-ui/tokens/dist/button.json');
+const semanticColorData = require('@momentum-ui/tokens/dist/semanticColor.json');
 colorData.prefix = 'md';
 
 const generateColorsFromTokens = async () => {
@@ -25,6 +27,16 @@ const generateColorsFromTokens = async () => {
     buttonColorData,
     path.resolve(__dirname, '../templates/buton-colors-settings.hbs')
   );
+
+  // Semantic Color Tokens
+  await Promise.all(Object.keys(semanticColorData).map(
+    async (key) => generateFileFromThemeToken(
+      path.resolve(__dirname, `../scss/colors/${semanticColorData[key].component}/`),
+      'theme-base.scss',
+      semanticColorData[key],
+      '@momentum-ui/tokens/dist/semanticColor.json'
+    )
+  ));
 };
 
 generateColorsFromTokens();

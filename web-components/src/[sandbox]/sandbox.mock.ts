@@ -10,7 +10,7 @@ export const comboBoxOptions = [
   "Angola",
   "Anguilla",
   "Antarctica",
-  "Antigua and Barbuda",
+  "Antigua and Barbuda Antigua and Barbuda Antigua and Barbuda",
   "Argentina"
 ];
 
@@ -222,6 +222,8 @@ export const breadCrumb = [
     label: "Four"
   }
 ];
+
+export const cardMenuItems = ["Edit", "View", "Duplicate", "Delete"];
 
 export const DraggableOptions = [
   {

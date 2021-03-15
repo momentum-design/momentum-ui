@@ -7,7 +7,7 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "../../mixins/CustomElementCheck";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 import "@/components/icon/Icon";

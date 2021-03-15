@@ -8,7 +8,11 @@ const dropdownValue: string[] = [];
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
-  <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]}></md-combobox>
+  <md-combobox
+    style="width: 220px; display: inline-block;"
+    .options=${comboBoxOptions}
+    placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+  ></md-combobox>
   <h3>Default with trim space</h3>
   <md-combobox
     .options=${comboBoxOptions}

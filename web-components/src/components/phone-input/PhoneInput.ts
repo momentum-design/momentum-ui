@@ -37,6 +37,7 @@ export namespace PhoneInput {
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
 
+    @internalProperty() private countryComboValue: String = "";
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
@@ -54,15 +55,14 @@ export namespace PhoneInput {
     attributeChangedCallback(name: string, oldval: any, newval: any) {
       super.attributeChangedCallback(name, oldval, newval);
       if(name.toLowerCase() === 'codePlaceholder'.toLowerCase()) {
-        this.flagClass = newval === '+1' ? 'flag_usa' : '';
+        this.flagClass = newval === '+1' ? 'flag__usa' : '';
       }
     }
 
     updated(changedProperties:any) {
       changedProperties.forEach((oldValue:any, propName:any) => {
-        console.log({propName, x: this});
         if(propName === 'countryCallingCode'){
-          this.flagClass = this.countryCode === 'US' ? 'flag_usa' : '';
+          this.flagClass = this.countryCode === 'US' && (this.countryCallingCode.startsWith('+1') || (this.countryCallingCode === '' && this.codePlaceholder == '+1')) ? 'flag__usa' : '';
         }
       });
     }
@@ -87,6 +87,7 @@ export namespace PhoneInput {
 
     handleCountryChange(event: CustomEvent) {
       this.flagClass = this.codePlaceholder === '+1' ? 'flag__usa' : '';
+      this.countryComboValue = event.detail.value;
       if (!event.detail.value || !event.detail.value.id) {
         return;
       }
@@ -147,6 +148,10 @@ export namespace PhoneInput {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
     }
 
+    handleCountryFocusOut({detail}:any){
+      this.flagClass = (detail.value === '' && this.codePlaceholder === '+1') || (detail.value === '+1' && this.countryCode === 'US' && this.countryCallingCode.startsWith('+1')) ? 'flag__usa' : ''
+    }
+
     render() {
       return html`
         <div class="md-phone-input__container">
@@ -159,7 +164,7 @@ export namespace PhoneInput {
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
-            @combobox-input="${() => this.flagClass = this.countryCallingCode === '+1' && this.countryCode === 'US' ? 'flag_usa' : ''}"
+            @combobox-input="${this.handleCountryFocusOut}"
             with-custom-content
           >
             ${repeat(

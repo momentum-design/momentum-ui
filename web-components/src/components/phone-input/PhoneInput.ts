@@ -28,7 +28,7 @@ export namespace PhoneInput {
 
   @customElementWithCheck("md-phone-input")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) codePlaceholder = "+1";
+    @property({ type: String, reflect: true }) codePlaceholder = "+1";
     @property({ type: String }) flagClass = "flag__usa";
     @property({ type: String }) numberPlaceholder = "Enter Phone Number";
     @property({ type: String, attribute: "country-calling-code" }) countryCallingCode = "";
@@ -51,6 +51,22 @@ export namespace PhoneInput {
       });
     }
 
+    attributeChangedCallback(name: string, oldval: any, newval: any) {
+      super.attributeChangedCallback(name, oldval, newval);
+      if(name.toLowerCase() === 'codePlaceholder'.toLowerCase()) {
+        this.flagClass = newval === '+1' ? 'flag_usa' : '';
+      }
+    }
+
+    updated(changedProperties:any) {
+      changedProperties.forEach((oldValue:any, propName:any) => {
+        console.log({propName, x: this});
+        if(propName === 'countryCallingCode'){
+          this.flagClass = this.countryCode === 'US' ? 'flag_usa' : '';
+        }
+      });
+    }
+
     static get styles() {
       return [reset, styles];
     }
@@ -70,17 +86,13 @@ export namespace PhoneInput {
     }
 
     handleCountryChange(event: CustomEvent) {
-      if (!event.detail.value) {
-        this.flagClass = 'flag__usa';
+      this.flagClass = this.codePlaceholder === '+1' ? 'flag__usa' : '';
+      if (!event.detail.value || !event.detail.value.id) {
         return;
       }
       this.countryCallingCode = event.detail.value.id;
       this.countryCode = event.detail.value.id.split(",")[2];
-      if(this.countryCode === "US"){
-        this.flagClass = 'flag__usa';
-      } else {
-        this.flagClass = '';
-      }
+      this.flagClass = this.countryCode === "US" ? 'flag__usa' : '';
     }
 
     handlePhoneChange(event: CustomEvent) {
@@ -147,6 +159,7 @@ export namespace PhoneInput {
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            @combobox-input="${() => this.flagClass = this.countryCallingCode === '+1' && this.countryCode === 'US' ? 'flag_usa' : ''}"
             with-custom-content
           >
             ${repeat(

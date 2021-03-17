@@ -286,6 +286,7 @@ export namespace Input {
         if (code !== Key.Space && code !== Key.Enter) {
           return;
         }
+        event.preventDefault();
       }
       this.input.focus();
       this.handleChange(event);

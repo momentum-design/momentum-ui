@@ -19,6 +19,7 @@ import {
   chipTemplate,
   coachTemplate,
   codeEditorTemplate,
+  colorTableTemplate,
   comboBoxTemplate,
   datePickerTemplate,
   dateRangePickerTemplate,
@@ -210,6 +211,13 @@ export class Sandbox extends LitElement {
             <h2>md-coachmark</h2>
             <sass-stats component="coachmark">
               ${coachTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-colors">
+            <h2>md-colors</h2>
+            <sass-stats component="table">
+              ${colorTableTemplate}
             </sass-stats>
           </div>
 

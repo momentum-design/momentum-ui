@@ -11,6 +11,7 @@
 const path = require("path");
 const handlebars = require("handlebars");
 const colorData = require("@momentum-ui/tokens/dist/colors.json");
+const semanticColorData = require("@momentum-ui/tokens/dist/semanticColor.json");
 const tokenFileData = require("../tokens/vars/tokenFiles.js");
 const tokenImports = require("../tokens/tokenImports.js");
 const fse = require("fs-extra");
@@ -42,7 +43,38 @@ const generateColorsFromTokens = async () => {
     colorData,
     path.resolve(__dirname, "../templates/colors.hbs")
   );
+  // CSS Momentum Color Variables
+  await _generateFileFromTemplate(
+    path.resolve(__dirname, "../wc_scss/colors/vars/"),
+    "css-color-variables.scss",
+    colorData,
+    path.resolve(__dirname, "../templates/css-color-variables.hbs")
+  );
 };
+
+const generateSemanticColorsFromTokens = async () => {
+  await _generateFileFromTemplate(
+    path.resolve(__dirname, "../wc_scss/colors/vars/"),
+    "semantic-color-settings.scss",
+    semanticColorData,
+    path.resolve(__dirname, "../templates/semantic-color-settings.hbs")
+  );
+
+  // Dark & Light CSS Semantic Color Variables
+  await _generateFileFromTemplate(
+    path.resolve(__dirname, "../wc_scss/colors/vars/"),
+    `semantic-colors--light.scss`,
+    semanticColorData,
+    path.resolve(__dirname, "../templates/semantic-color-light.hbs")
+  );
+
+  await _generateFileFromTemplate(
+    path.resolve(__dirname, "../wc_scss/colors/vars/"),
+    `semantic-colors--dark.scss`,
+    semanticColorData,
+    path.resolve(__dirname, "../templates/semantic-color-dark.hbs")
+  );
+}
 
 const _getDeepestKeys = obj => {
   let keys = [];
@@ -149,6 +181,19 @@ const generateThemeStylesheets = () => {
   for (const lightDarkTheme of lightDarkThemes) {
     for (const designTheme of designThemes) {
       const lowercaseLightDarkTheme = _lowercaseFirstLetter(lightDarkTheme);
+
+      themeStyleFiles[
+        `${designTheme}${lightDarkTheme}`
+      ] += `@import "@/wc_scss/colors/vars/css-color-variables.scss";\n`;
+
+      themeStyleFiles[
+        `${designTheme}${lightDarkTheme}`
+      ] += `@import "@/wc_scss/colors/vars/semantic-color-settings.scss";\n`;
+
+      themeStyleFiles[
+        `${designTheme}${lightDarkTheme}`
+      ] += `@import "@/wc_scss/colors/vars/semantic-colors--${lowercaseLightDarkTheme}.scss";\n`;
+
       themeStyleFiles[
         `${designTheme}${lightDarkTheme}`
       ] += `@import "@/wc_scss/themes/global--${lowercaseLightDarkTheme}.scss";\n`;
@@ -169,8 +214,10 @@ const generateThemeStylesheets = () => {
 
   for (const themeStyleName of themeStyles) {
     themeStyleFiles[themeStyleName] += `\n:root,\n:host {\n`;
+    themeStyleFiles[themeStyleName] += `@include css-color-variables\n`;
     themeStyleFiles[themeStyleName] += `  @include global-vars;\n`;
     themeStyleFiles[themeStyleName] += `  @include global-theme-specfic-vars;\n`;
+    themeStyleFiles[themeStyleName] += `  @include semantic-color-vars;\n`;
     for (const componentName of componentsWithTokens) {
       themeStyleFiles[themeStyleName] += `  @include ${componentName}-vars;\n`;
     }
@@ -198,4 +245,5 @@ const generateComponentScssFromTokens = async () => {
 };
 
 generateColorsFromTokens();
+generateSemanticColorsFromTokens();
 generateComponentScssFromTokens();

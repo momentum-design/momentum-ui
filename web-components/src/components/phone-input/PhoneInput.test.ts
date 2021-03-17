@@ -205,4 +205,47 @@ describe("PhoneInput Component", () => {
     phoneInput?.dispatchEvent(event);
     expect(keyDownSpy).toHaveBeenCalled();
   });
+
+  test("should show the US flag when default country code is +1", async () => {
+    const element = await fixture(
+      html`
+        <md-phone-input codePlaceholder="+1"></md-phone-input>
+      `
+    );
+
+    expect(element.shadowRoot?.querySelector('md-combobox')?.classList).toContain("flag__usa");
+  });
+
+  test("should not show the US flag when default country code is not +1", async () => {
+    const element = await fixture(
+      html`
+        <md-phone-input codePlaceholder="+7"></md-phone-input>
+      `
+    );
+
+    expect(element.shadowRoot?.querySelector('md-combobox')?.classList).not.toContain("flag__usa");
+  });
+
+  test("should show the US flag when united states is selected from a list", async () => {
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input></md-phone-input>
+      `
+    );
+
+    const event: CustomEvent = new CustomEvent("change-selected", {
+      composed: true,
+      bubbles: true,
+      detail: {
+        value: {
+          id: "+1,United States of America,US",
+          value: "+1"
+        }
+      }
+    });
+    element.handleCountryChange(event);
+
+    expect(element.shadowRoot?.querySelector('md-combobox')?.classList).toContain("flag__usa");
+  });
+
 });

@@ -37,7 +37,6 @@ export namespace PhoneInput {
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
 
-    @internalProperty() private countryComboValue: String = "";
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
@@ -87,7 +86,6 @@ export namespace PhoneInput {
 
     handleCountryChange(event: CustomEvent) {
       this.flagClass = this.codePlaceholder === '+1' ? 'flag__usa' : '';
-      this.countryComboValue = event.detail.value;
       if (!event.detail.value || !event.detail.value.id) {
         return;
       }

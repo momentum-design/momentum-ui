@@ -20,8 +20,8 @@ Please follow these guidelines to help decide appropriate  scenarios for publish
 
 ##To publish a new release
 1. Merge changes that share the same version semantic (i.e. two bug fix PRs)
-2. Increment the related version numeral (best practice use `npm version [patch|minor|major]`
-3. If not already authorized, run `yarn npm:auth`
-4. `yarn npm:publish`
+2. Increment the related version numeral inside Web Component folder (best practice use `npm version [patch|minor|major]`
+3. If not already authorized, run `yarn npm:auth` (This will allow publish internally on Artifactory as well as on npmjs)
+4. `yarn npm:publish` (This command will publish on Artifactory as well as on npmjs)
 
 If a combination of semantic scenarios are ready for merge at the same time, merge and release all Patch change PRs first, then Minor change PRs.

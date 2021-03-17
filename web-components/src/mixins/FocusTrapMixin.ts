@@ -315,14 +315,13 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private handleClickInsideTrap(event: MouseEvent) {
       const path = event.composedPath();
-      const pathIndex
-      = path.findIndex(element => this.findElement(element as HTMLElement) !== -1);
+      const pathIndex = path.findIndex(element => this.findElement(element as HTMLElement) !== -1);
       if (pathIndex !== -1) {
         const focusableElement = path[pathIndex] as HTMLElement;
         const focusableIndex = this.findElement(focusableElement);
 
         if (focusableIndex !== -1) {
-          this.focusTrapIndex = focusableIndex
+          this.focusTrapIndex = focusableIndex;
         }
       }
     }
@@ -341,7 +340,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     handleFocusVisible(event: CustomEvent<FocusEventDetail>) {
       const originalEvent = event.detail ? event.detail.sourceEvent : event;
       const focusableElement = originalEvent.composedPath()[0];
-      let focusableIndex = event.detail? this.findElement(focusableElement as HTMLElement) : -1;
+      const focusableIndex = event.detail ? this.findElement(focusableElement as HTMLElement) : -1;
 
       if (focusableIndex === -1 && focusableElement !== this) {
         this.manageNewElement(focusableElement as HTMLElement);

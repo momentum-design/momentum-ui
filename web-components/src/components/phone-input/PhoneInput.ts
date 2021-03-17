@@ -23,11 +23,13 @@ export namespace PhoneInput {
     pill: boolean;
     value: string;
     errorMessage: string;
+    flagClass: string;
   };
 
   @customElementWithCheck("md-phone-input")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) codePlaceholder = "+1";
+    @property({ type: String, reflect: true }) codePlaceholder = "+1";
+    @property({ type: String }) flagClass = "flag__usa";
     @property({ type: String }) numberPlaceholder = "Enter Phone Number";
     @property({ type: String, attribute: "country-calling-code" }) countryCallingCode = "";
     @property({ type: Boolean }) pill = false;
@@ -46,6 +48,21 @@ export namespace PhoneInput {
         name: "{countryNameEn}",
         value: "{countryCallingCode}",
         code: "{countryCode}"
+      });
+    }
+
+    attributeChangedCallback(name: string, oldval: any, newval: any) {
+      super.attributeChangedCallback(name, oldval, newval);
+      if(name.toLowerCase() === 'codePlaceholder'.toLowerCase()) {
+        this.flagClass = newval === '+1' ? 'flag__usa' : '';
+      }
+    }
+
+    updated(changedProperties:any) {
+      changedProperties.forEach((oldValue:any, propName:any) => {
+        if(propName === 'countryCallingCode'){
+          this.flagClass = this.countryCode === 'US' && (this.countryCallingCode.startsWith('+1') || (this.countryCallingCode === '' && this.codePlaceholder == '+1')) ? 'flag__usa' : '';
+        }
       });
     }
 
@@ -68,11 +85,13 @@ export namespace PhoneInput {
     }
 
     handleCountryChange(event: CustomEvent) {
-      if (!event.detail.value) {
+      this.flagClass = this.codePlaceholder === '+1' ? 'flag__usa' : '';
+      if (!event.detail.value || !event.detail.value.id) {
         return;
       }
       this.countryCallingCode = event.detail.value.id;
       this.countryCode = event.detail.value.id.split(",")[2];
+      this.flagClass = this.countryCode === "US" ? 'flag__usa' : '';
     }
 
     handlePhoneChange(event: CustomEvent) {
@@ -127,16 +146,23 @@ export namespace PhoneInput {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
     }
 
+    handleCountryFocusOut({detail}:any){
+      this.flagClass = (detail.value === '' && this.codePlaceholder === '+1') || (detail.value === '+1' && this.countryCode === 'US' && this.countryCallingCode.startsWith('+1')) ? 'flag__usa' : ''
+    }
+
     render() {
       return html`
         <div class="md-phone-input__container">
+          <div part="testDiv" class="test-div"></div>
           <md-combobox
+            class="${this.flagClass}"
             part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            @combobox-input="${this.handleCountryFocusOut}"
             with-custom-content
           >
             ${repeat(

@@ -3,6 +3,21 @@
   display: flex;
   position: relative;
 
+  md-combobox.flag__usa {
+    &::part(multiwrap) {
+      &:before {
+          content: '';
+          height: 10px;
+          width: 20px;
+          background: url('/images/flags.png') -5220px 0;
+          background-repeat: no-repeat;
+        }
+      }
+      &::part(multiwrap-input) {
+        flex: 1;
+      }
+  }
+
   md-combobox {
     width: var(--combo-box-contaier-width);
   }

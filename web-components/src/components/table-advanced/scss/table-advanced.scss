@@ -115,9 +115,9 @@ thead {
     align-items: center;
     display: flex;
     min-width: $advanced-table-filter-height;
-    overflow: hidden;
 
     .filter-wrap {
+      align-items: center;
       display: inline-flex;
       flex: 1;
       justify-content: flex-end;
@@ -127,7 +127,7 @@ thead {
       color: var(--md-secondary-text-color);
       cursor: pointer;
       display: inline-block;
-      height: $advansed-table-filter-btn;
+      height: $advanced-table-filter-btn;
       min-width: $advanced-table-collapse-btn;
       position: relative;
       z-index: 1;
@@ -135,7 +135,7 @@ thead {
       &::part(button) {
         padding: $advanced-table-main-indent;
         text-align: center;
-        width: $advansed-table-filter-btn;
+        width: $advanced-table-filter-btn;
       }
 
       &:hover {
@@ -143,8 +143,10 @@ thead {
       }
 
       &:active {
-        background-color: var(--table-advanced-filter-pressed-bg-color,
-        $lm-table-advanced-filter-pressed-bg-color-light);
+        background-color: var(
+          --table-advanced-filter-pressed-bg-color,
+          $lm-table-advanced-filter-pressed-bg-color-light
+        );
       }
     }
 
@@ -160,6 +162,7 @@ thead {
     .sortable {
       background: transparent;
       border: 0;
+      color: var(--md-secondary-text-color);
       display: inline-block;
       min-width: calc(#{$advanced-table-sort-icon} * 2.5);
       overflow: hidden;

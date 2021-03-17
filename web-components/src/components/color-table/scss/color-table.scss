@@ -6,6 +6,10 @@
   width: 20px;
 }
 
+.code-block {
+  color: var(--md-secondary-text-color, $md-gray-95);
+}
+
 .color-table::part(mdblue10) {
   background-color: $md-blue-10;
 }

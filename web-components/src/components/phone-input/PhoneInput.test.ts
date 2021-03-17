@@ -1,4 +1,4 @@
-import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { fixture, fixtureCleanup, html, waitUntil } from "@open-wc/testing-helpers";
 import countryCodesList, { customArray } from "country-codes-list";
 import "libphonenumber-js";
 import "./PhoneInput";
@@ -246,6 +246,31 @@ describe("PhoneInput Component", () => {
     element.handleCountryChange(event);
 
     expect(element.shadowRoot?.querySelector('md-combobox')?.classList).toContain("flag__usa");
+  });
+
+  test("should NOT show the US flag when united states is selected from a list", async () => {
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input></md-phone-input>
+      `
+    );
+    const classList = element.shadowRoot?.querySelector('md-combobox')?.classList;
+
+    const event: CustomEvent = new CustomEvent("change-selected", {
+      composed: true,
+      bubbles: true,
+      detail: {
+        value: {
+          id: "+1268,AntiguaandBarbuda,AG",
+          value: "+1268"
+        }
+      }
+    }); 
+    element.handleCountryChange(event);
+
+    await waitUntil(() => !classList?.contains('flag__usa'), 'Class "flag__usa" never disappeared');
+
+    expect(classList).not.toContain("flag__usa");
   });
 
 });

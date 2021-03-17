@@ -68,7 +68,6 @@ export namespace TableAdvanced {
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("dragover", this.dragover);
-      this.addEventListener("keydown", this.handleKeyDown);
       // cols
 
       let index = 0;
@@ -223,12 +222,6 @@ export namespace TableAdvanced {
       }
 
       this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
-    }
-
-    handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Tab") {
-        this.activateFocusTrap!();
-      }
     }
 
     // --------------

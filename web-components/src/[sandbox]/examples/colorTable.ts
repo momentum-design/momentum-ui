@@ -6,15 +6,9 @@
  *
  */
 
-import "@/components/table/Table";
+import "@/components/color-table/ColorTable";
 import { html } from "lit-element";
-import { colorTableData } from "@/wc_scss/colors/vars/color-table-data-string";
-
-const colorTableHeader = 'Theme Color Token Name, Light Mode, Dark Mode';
-const finalColorTableData = colorTableHeader + colorTableData;
 
 export const colorTableTemplate = html`
-  <div style="height: 400px;">
-    <md-table tabledata="${finalColorTableData}"></md-table>
-  </div>
+  <color-table></color-table>
 `;

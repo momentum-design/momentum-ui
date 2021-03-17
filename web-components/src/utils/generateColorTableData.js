@@ -10,19 +10,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const handlebars = require("handlebars");
-// const colorData = require("@momentum-ui/tokens/dist/colors.json");
 const semanticColorData = require("@momentum-ui/tokens/dist/semanticColor.json");
-// const tokenFileData = require("../tokens/vars/tokenFiles.js");
-// const tokenImports = require("../tokens/tokenImports.js");
 const fse = require("fs-extra");
 const fsPath = require("fs-path");
 
-// const createdStyleSheets = [];
-// const componentsWithTokens = [];
-
 const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   const source = await fse.readFile(template, "utf8");
-  const compile = handlebars.compile(source);
+
+  var hbs = handlebars.create();
+  hbs.registerHelper('nodash', (value) => {
+    return value.replace(/-/g, "");
+  });
+
+  const compile = hbs.compile(source);
   const finalFile = path.join(dest, fileName);
   await fsPath.writeFile(finalFile, compile(data), err => {
     if (err) throw err;
@@ -30,7 +30,6 @@ const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   });
 };
 
-// NEW
 const generateColorTableData = async () => {
   await _generateFileFromTemplate(
     path.resolve(__dirname, "../wc_scss/colors/vars/"),

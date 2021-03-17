@@ -1,19 +1,19 @@
 export const colorTableData = `
 {{#each this}}
 {{#with light}}
---{{../prefix}}-{{../component}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+--{{../prefix}}-{{../component}}, {{this}} _{{nodash this}}_, {{/with}}{{#with dark}}{{this}} _{{nodash this}}_
 {{/with}}
 {{#each this}}
 {{#with light}}
---{{../../prefix}}-{{../../component}}-{{@key}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+--{{../../prefix}}-{{../../component}}-{{@key}}, {{this}} _{{nodash this}}_, {{/with}}{{#with dark}}{{this}} _{{nodash this}}_
 {{/with}}
 {{#each this}}
 {{#with light}}
---{{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+--{{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}, {{this}} _{{nodash this}}_, {{/with}}{{#with dark}}{{this}} _{{nodash this}}_
 {{/with}}
 {{#each this}}
 {{#with light}}
---{{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}, {{this}}, {{/with}}{{#with dark}}{{this}}
+--{{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}, {{this}} _{{nodash this}}_, {{/with}}{{#with dark}}{{this}} _{{nodash this}}_
 {{/with}}
 {{/each}}
 {{/each}}

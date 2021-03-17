@@ -408,7 +408,7 @@ export const menuOverlayTemplate = html`
             <md-checkbox slot="checkbox">Option one"</md-checkbox>
             <md-checkbox slot="checkbox" checked>Option two</md-checkbox>
           </md-checkboxgroup>
-          <md-input autofocus placeholder="Enter Text" shape="pill"></md-input>
+          <md-input autofocus placeholder="Enter Text" shape="pill" clear></md-input>
       </div>
   </md-menu-overlay>
   </div>

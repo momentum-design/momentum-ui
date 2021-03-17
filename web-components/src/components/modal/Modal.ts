@@ -291,8 +291,6 @@ export namespace Modal {
   }
 }
 
-
-
 declare global {
   interface HTMLElementTagNameMap {
     "md-modal": Modal.ELEMENT;

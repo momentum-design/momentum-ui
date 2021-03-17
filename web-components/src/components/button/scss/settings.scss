@@ -207,10 +207,14 @@ $button--white__background-color--active: $md-gray-30 !default;
 $button--white__border: 0 0 0 1px $md-gray-30 !default;
 
 // Dark Gray button colors
-$button--dark-gray__background-color: $md-gray-90 !default;
+$button--dark-gray__background-color: var(
+  --button-inverted-white-hover-bg-color,
+  $lm-button-inverted-white-hover-bg-color-light
+) !default;
 $button--dark-gray__background-color--hover: $md-gray-80 !default;
-$button--dark-gray__background-color--active: $md-gray-90 !default;
-$button--dark-gray__border: 0 0 0 1px $md-gray-90 !default;
+$button--dark-gray__background-color--active: $md-gray-70 !default;
+$button--dark-gray__border: 0 0 0 1px
+  var(--button-inverted-white-hover-bg-color, $lm-button-inverted-white-hover-bg-color-light) !default;
 
 // Duck Egg button colors
 $button--duck-egg__background-color: $md-gray-50 !default;

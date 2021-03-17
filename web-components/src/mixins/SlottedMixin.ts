@@ -15,7 +15,7 @@
  * @customElements("custom-element")
  * class CustomElement extends SlottedMixin(LitElement) {
  *  @query('slot[name="custom"]') tabSlot?: HTMLSlotElement;
- *  get slotElement() { <--- You need to override this getter in parent component class to return specific slot (default ot named) from your component’s render root.
+ *  get slotElement() { <--- You need to override this getter in parent component class to return specific slot (default or named) from your component’s render root.
       return this.tabSlot;
     }
     protected filterSlotted() { <--- You need to override this method in parent component class to return filtered elements from slotted. (See tab implementation for example)
@@ -46,7 +46,6 @@ export abstract class SlotableClass extends LitElement {
   protected handleSlotted?(): void;
   protected slottedChanged?(): void;
   protected filterSlotted?(): HTMLElement[];
-  readonly slotElement?: HTMLSlotElement | null;
 }
 
 export const SlottedMixin = <T extends AnyConstructor<SlotableClass>>(

@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.7.0...@momentum-ui/icons@8.8.0) (2021-03-04)
+
+
+### Features
+
+* **icons:** add layout-side-by-side-vertical_24 ([f38fa0c](https://github.com/momentum-design/momentum-ui/commit/f38fa0c5ce92044e3fe695a9ba3894ae2ecb386b))
+* **icons:** add side-by-side-active_24 ([a972d33](https://github.com/momentum-design/momentum-ui/commit/a972d33d4f0446a1f532773e01595a79001e4b77))
+* **icons:** add video-layout-equal_28 ([ef7ab7f](https://github.com/momentum-design/momentum-ui/commit/ef7ab7f409bc0e8c5a1e508e500eaed27d38ce14))
+* **icons:** add video-layout-single_28 ([cbd7206](https://github.com/momentum-design/momentum-ui/commit/cbd720618b18a2dfa7580b987f9ff786a5089e50))
+
+
+
+
+
+# [8.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.6.0...@momentum-ui/icons@8.7.0) (2021-03-03)
+
+
+### Features
+
+* **icons:** add calendar-month-active_24 ([43b5bfc](https://github.com/momentum-design/momentum-ui/commit/43b5bfc371718356ddb874e7f60e8e249d4c5d03))
+* **icons:** add video-layout-equal-filled_24 ([c8e374b](https://github.com/momentum-design/momentum-ui/commit/c8e374bf5707f79bf0860b2d61e1f3bb8124eac6))
+* **icons:** add video-layout-stack-filled_24 ([de235d2](https://github.com/momentum-design/momentum-ui/commit/de235d2f8fddb5f0e7ea60c1d053ad7a2f2ef49b))
+
+
+
+
+
+# [8.6.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.5.0...@momentum-ui/icons@8.6.0) (2021-02-27)
+
+
+### Features
+
+* **icons:** add calendar-month-active_20 ([e984022](https://github.com/momentum-design/momentum-ui/commit/e984022e04bc895c97c97f081ad9c25b7d98dedb))
+
+
+
+
+
+# [8.5.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.4.0...@momentum-ui/icons@8.5.0) (2021-02-23)
+
+
+### Bug Fixes
+
+* **icons:** remove uppercase same name icon ([#768](https://github.com/momentum-design/momentum-ui/issues/768)) ([1a4f022](https://github.com/momentum-design/momentum-ui/commit/1a4f02272bfa1d4b288265d8185e7eb4346c585b))
+
+
+### Features
+
+* **icons:** add analysis_12 ([b2980e0](https://github.com/momentum-design/momentum-ui/commit/b2980e0836329fc958f1fef8df73dc85e1e70bd5))
+* **icons:** add calendar-day_12 ([5165e77](https://github.com/momentum-design/momentum-ui/commit/5165e776e83dcf07e9504a1bb35ab55f139484e9))
+* **icons:** add call-forward-settings_16 ([4b5bf62](https://github.com/momentum-design/momentum-ui/commit/4b5bf62428d8df59a62e9935919ae3c7d2717177))
+* **icons:** add call-pickup_12 ([4025688](https://github.com/momentum-design/momentum-ui/commit/4025688b450f162167977e3e826e4c59dd83b3d0))
+* **icons:** add contact-card_20 ([7146b06](https://github.com/momentum-design/momentum-ui/commit/7146b06dda65fceccd7ea18222d1dc7f5462383a))
+* **icons:** add lower-hand_16 ([144258d](https://github.com/momentum-design/momentum-ui/commit/144258de33abd50252d95f292d8324fe66d79f62))
+* **icons:** add lower-hand_20 ([19ba769](https://github.com/momentum-design/momentum-ui/commit/19ba7699ee6abf61fc93782ce2909eab0af7d0fe))
+* **icons:** add music-mode_12 ([b025510](https://github.com/momentum-design/momentum-ui/commit/b025510f5fbe77fab943107c28dfa25b524d5862))
+* **icons:** add presentation_20 ([187cfce](https://github.com/momentum-design/momentum-ui/commit/187cfce15eff36be95151aa26129ddaccc656d25))
+* **icons:** add queue-contact_20 ([69cca99](https://github.com/momentum-design/momentum-ui/commit/69cca99f630bf5b9eba550fff3d1c827b1700243))
+* **icons:** add remote-desktop-control _24 ([997148e](https://github.com/momentum-design/momentum-ui/commit/997148e07cdc43abfe53e46c0e216122ec5f3eab))
+* **icons:** add remote-desktop-control_10 ([31a2725](https://github.com/momentum-design/momentum-ui/commit/31a27257c5041a738a1078b3647bf28f97f4a043))
+* **icons:** add remote-desktop-control_12 ([f4ec1ce](https://github.com/momentum-design/momentum-ui/commit/f4ec1cef68c950423ab5662d355925a65ce81ade))
+* **icons:** add remote-desktop-control_14 ([7de01c0](https://github.com/momentum-design/momentum-ui/commit/7de01c0a423a859de9c9449631cab553c98b1aaf))
+* **icons:** add remote-desktop-control_16 ([42e8ff1](https://github.com/momentum-design/momentum-ui/commit/42e8ff1b52fcc37642da748c72324b475cedaf96))
+* **icons:** add settings_12 ([5ef25c2](https://github.com/momentum-design/momentum-ui/commit/5ef25c259d8f1e4c0135ba6b5e2aaf0fd4fdd3e0))
+* **icons:** add video-layout_12 ([63bf3d3](https://github.com/momentum-design/momentum-ui/commit/63bf3d37eca09d4f4c34e4778dd83dcd378daa79))
+* **icons:** add video-layout_16 ([c251822](https://github.com/momentum-design/momentum-ui/commit/c2518220cdb670239c705cae4f4dbf1ce4481fac))
+* **icons:** add video-layout-stack_12 ([e4ae554](https://github.com/momentum-design/momentum-ui/commit/e4ae554d4a7ed69e710e3e753c9cb043cbb3af10))
+* **icons:** add warning_12 ([3b5a9c6](https://github.com/momentum-design/momentum-ui/commit/3b5a9c66f0f9aee7ce67c7c940c9b931fdb6fec7))
+* **icons:** add warning_16 ([7c319e5](https://github.com/momentum-design/momentum-ui/commit/7c319e5720446c75ae17efcba6d80d46c0879d18))
+* **icons:** add warning-active_16 ([f698c7e](https://github.com/momentum-design/momentum-ui/commit/f698c7e44fd43f19051735dd440486760e9091af))
+
+
+
+
+
 # [8.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.3.0...@momentum-ui/icons@8.4.0) (2021-01-16)
 
 

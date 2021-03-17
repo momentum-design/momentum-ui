@@ -11,7 +11,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/meeting-alert/MeetingAlert";
-import { MeetingAlertRole } from "@/components/meeting-alert/MeetingAlert";
+import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
 import "@/components/theme/Theme";
 
 export default {

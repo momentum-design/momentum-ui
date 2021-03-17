@@ -13,4 +13,5 @@ export { FocusTrapMixin } from "./FocusTrapMixin";
 export { ResizeMixin } from "./ResizeMixin";
 export { RovingTabIndexMixin } from "./RovingTabIndexMixin";
 export { SlottedMixin } from "./SlottedMixin";
+export { customElementWithCheck } from "./CustomElementCheck";
 

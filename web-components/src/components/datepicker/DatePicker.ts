@@ -1,14 +1,24 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "@/components/menu-overlay/MenuOverlay";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
-import { ValidationRegex } from "@/utils/validations";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { closestElement } from "@/utils/helpers";
+import { ValidationRegex } from "@/utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { DateTime } from "luxon";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { DateTime } from "luxon";
+import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -48,7 +58,7 @@ export namespace DatePicker {
 
       if (!this.value) {
         this.value = this.includesTime
-          ? this.selectedDate?.startOf('second').toISO({ suppressMilliseconds: true })
+          ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
           : this.selectedDate?.toISODate();
       }
     }
@@ -56,6 +66,9 @@ export namespace DatePicker {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (this.value && changedProperties.has("value")) {
+        if (closestElement("md-date-range-picker", this)) {
+          return;
+        }
         this.selectedDate = DateTime.fromISO(this.value, { locale: this.locale });
         this.setPreSelection(this.selectedDate);
       }
@@ -102,7 +115,9 @@ export namespace DatePicker {
     setSelected = (date: DateTime, event: Event) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
-        const dateString = this.includesTime ? date.startOf('second').toISO({ suppressMilliseconds: true }) : date.toISODate();
+        const dateString = this.includesTime
+          ? date.startOf("second").toISO({ suppressMilliseconds: true })
+          : date.toISODate();
         this.selectedDate = date;
         this.value = dateString;
       }
@@ -176,7 +191,13 @@ export namespace DatePicker {
     };
 
     isValueValid = () => {
-      const regexString = this.includesTime ? ValidationRegex.ISOString : ValidationRegex.ISODateString;
+      const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
+      const regexString =
+        dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
+          ? ValidationRegex.dateRangeString
+          : this.includesTime
+          ? ValidationRegex.ISOString
+          : ValidationRegex.ISODateString;
       const regex = RegExp(regexString);
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };

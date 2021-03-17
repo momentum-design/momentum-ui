@@ -1,5 +1,4 @@
 import "@/components/button/Button";
-import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Favorite";
 import { Favorite } from "./Favorite";
@@ -25,15 +24,14 @@ describe("Favorite component", () => {
   });
 
   test("should set disabled Favorite", async () => {
-    const element = await fixture<Favorite.ELEMENT>(`<md-favorite disabled></md-favorite>`);;
+    const element = await fixture<Favorite.ELEMENT>(`<md-favorite disabled></md-favorite>`);
 
     expect(element).toBeDefined();
     expect(element.disabled).toBeTruthy;
-
   });
 
   test("should set active Favorite", async () => {
-    const element = await fixture<Favorite.ELEMENT>(`<md-favorite checked></md-favorite>`);;
+    const element = await fixture<Favorite.ELEMENT>(`<md-favorite checked></md-favorite>`);
 
     expect(element).toBeDefined();
     expect(element.checked).toBeTruthy;

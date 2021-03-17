@@ -6,14 +6,14 @@
  *
  */
 
-import { numInputTypes } from "@/utils/enums";
+import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { Input } from "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import "@/components/editable-textfield/EditableTextfield";
 import "@/components/theme/Theme";
-import { alignment } from "@/components/editable-textfield/EditableTextfield";
+import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
 
 export default {
   title: "Editable Textfield",

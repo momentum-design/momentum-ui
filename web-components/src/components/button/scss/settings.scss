@@ -96,91 +96,109 @@ $button__background-color--active--dark--contrast: $white-84 !default;
 $button--blue__background-color: $md-theme-50 !default;
 $button--blue__background-color--hover: $md-theme-60 !default;
 $button--blue__background-color--active: $md-theme-70 !default;
+$button--blue__border: 0 0 0 1px $md-theme-50 !default;
 
 // Blue button contrast colors
 $button--blue__background-color--contrast: $md-theme-60 !default;
 $button--blue__background-color--hover--contrast: $md-theme-70 !default;
 $button--blue__background-color--active--contrast: $md-theme-80 !default;
+$button--blue__border--contrast: 0 0 0 1px $md-theme-60 !default;
 
 // Red button colors
 $button--red__background-color: $md-red-50 !default;
 $button--red__background-color--hover: $md-red-60 !default;
 $button--red__background-color--active: $md-red-70 !default;
+$button--red__border: 0 0 0 1px $md-red-50 !default;
 
 // Red button contrast colors
 $button--red__background-color--contrast: $md-red-60 !default;
 $button--red__background-color--hover--contrast: $md-red-70 !default;
 $button--red__background-color--active--contrast: $md-red-80 !default;
+$button--red__border--contrast: 0 0 0 1px $md-red-60 !default;
 
 // Green button colors
 $button--green__background-color: $md-green-50 !default;
 $button--green__background-color--hover: $md-green-60 !default;
 $button--green__background-color--active: $md-green-70 !default;
+$button--green__border: 0 0 0 1px $md-green-50 !default;
 
 // Green button contrast colors
 $button--green__background-color--contrast: $md-green-60 !default;
 $button--green__background-color--hover--contrast: $md-green-70 !default;
 $button--green__background-color--active--contrast: $md-green-80 !default;
+$button--green__border--contrast: 0 0 0 1px $md-green-60 !default;
 
 // Orange button colors
 $button--orange__background-color: $md-orange-50 !default;
 $button--orange__background-color--hover: $md-orange-60 !default;
 $button--orange__background-color--active: $md-orange-70 !default;
+$button--orange__border: 0 0 0 1px $md-orange-50 !default;
 
 // Orange button contrast colors
 $button--orange__background-color--contrast: $md-orange-60 !default;
 $button--orange__background-color--hover--contrast: $md-orange-70 !default;
 $button--orange__background-color--active--contrast: $md-orange-80 !default;
+$button--orange__border--contrast: 0 0 0 1px $md-orange-60 !default;
 
 // Yellow button colors
 $button--yellow__background-color: $md-yellow-50 !default;
 $button--yellow__background-color--hover: $md-yellow-60 !default;
 $button--yellow__background-color--active: $md-yellow-70 !default;
+$button--yellow__border: 0 0 0 1px $md-yellow-50 !default;
 
 // Yellow button contrast colors
 $button--yellow__background-color--contrast: $md-yellow-60 !default;
 $button--yellow__background-color--hover--contrast: $md-yellow-70 !default;
 $button--yellow__background-color--active--contrast: $md-yellow-80 !default;
+$button--yellow__border--contrast: 0 0 0 1px $md-orange-60 !default;
 
 // Mint button colors
 $button--mint__background-color: $md-mint-50 !default;
 $button--mint__background-color--hover: $md-mint-60 !default;
 $button--mint__background-color--active: $md-mint-70 !default;
+$button--mint__border: 0 0 0 1px $md-mint-50 !default;
 
 // Mint button contrast colors
 $button--mint__background-color--contrast: $md-mint-60 !default;
 $button--mint__background-color--hover--contrast: $md-mint-70 !default;
 $button--mint__background-color--active--contrast: $md-mint-80 !default;
+$button--mint__border--contrast: 0 0 0 1px $md-orange-60 !default;
 
 // Purple button colors
 $button--purple__background-color: $md-purple-50 !default;
 $button--purple__background-color--hover: $md-purple-60 !default;
 $button--purple__background-color--active: $md-purple-70 !default;
+$button--purple__border: 0 0 0 1px $md-purple-50 !default;
 
 // Purple button contrast colors
 $button--purple__background-color--contrast: $md-purple-60 !default;
 $button--purple__background-color--hover--contrast: $md-purple-70 !default;
 $button--purple__background-color--active--contrast: $md-purple-80 !default;
+$button--purple__border--contrast: 0 0 0 1px $md-purple-60 !default;
 
 // Pink button colors
 $button--pink__background-color: $md-pink-50 !default;
 $button--pink__background-color--hover: $md-pink-60 !default;
 $button--pink__background-color--active: $md-pink-70 !default;
+$button--pink__border: 0 0 0 1px $md-pink-50 !default;
 
 // Pink button contrast colors
 $button--pink__background-color--contrast: $md-pink-60 !default;
 $button--pink__background-color--hover--contrast: $md-pink-70 !default;
 $button--pink__background-color--active--contrast: $md-pink-80 !default;
+$button--pink__border--contrast: 0 0 0 1px $md-pink-60 !default;
 
 // Cyan button colors
 $button--cyan__background-color: $md-cyan-50 !default;
 $button--cyan__background-color--hover: $md-cyan-60 !default;
 $button--cyan__background-color--active: $md-cyan-70 !default;
+$button--cyan__border: 0 0 0 1px $md-cyan-50 !default;
 
 // Cyan button contrast colors
 $button--cyan__background-color--contrast: $md-cyan-60 !default;
 $button--cyan__background-color--hover--contrast: $md-cyan-70 !default;
 $button--cyan__background-color--active--contrast: $md-cyan-80 !default;
+$button--cyan__border--contrast: 0 0 0 1px $md-cyan-60 !default;
 
 // White button colors
 $button--white__background-color: $md-white-100 !default;
@@ -192,16 +210,19 @@ $button--white__border: 0 0 0 1px $md-gray-30 !default;
 $button--dark-gray__background-color: $md-gray-90 !default;
 $button--dark-gray__background-color--hover: $md-gray-80 !default;
 $button--dark-gray__background-color--active: $md-gray-90 !default;
+$button--dark-gray__border: 0 0 0 1px $md-gray-90 !default;
 
 // Duck Egg button colors
 $button--duck-egg__background-color: $md-gray-50 !default;
 $button--duck-egg__background-color--hover: $md-gray-60 !default;
 $button--duck-egg__background-color--active: $md-gray-70 !default;
+$button--duck-egg__border: 0 0 0 1px $md-gray-50 !default;
 
 // Violet button colors
 $button--violet__background-color: $md-violet-50 !default;
 $button--violet__background-color--hover: $md-violet-60 !default;
 $button--violet__background-color--active: $md-violet-70 !default;
+$button--violet__border: 0 0 0 1px $md-violet-50 !default;
 
 // Button Container Settings
 $button-container__width: 116px;

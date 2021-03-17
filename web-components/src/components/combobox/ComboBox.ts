@@ -7,6 +7,7 @@
  */
 
 import "@/components/icon/Icon";
+import "@/components/help-text/HelpText";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { debounce, findHighlight } from "@/utils/helpers";
@@ -56,6 +57,8 @@ export namespace ComboBox {
     @property({ type: String, attribute: "no-results-i18n" }) resultsTextLocalization = "No Results";
     @property({ type: String, attribute: "no-options-i18n" }) optionsTextLocalization = "No Options";
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
+    @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
 
     @property({ type: Number, attribute: false })
     get focusedIndex() {
@@ -237,7 +240,8 @@ export namespace ComboBox {
       if (this.optionId && option) {
         return this.selectedOptions.findIndex(
           selectedOption =>
-            selectedOption && (selectedOption as OptionMember)[this.optionId] === (option as OptionMember)[this.optionId]
+            selectedOption &&
+            (selectedOption as OptionMember)[this.optionId] === (option as OptionMember)[this.optionId]
         );
       } else {
         return this.selectedOptions.indexOf(option);
@@ -550,7 +554,10 @@ export namespace ComboBox {
     }
 
     private shouldChangeButton() {
-      return (this.input && this.input.value.length > 0 && !this.noClearIcon) || (this.isMulti && this.selectedOptions.length);
+      return (
+        (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
+        (this.isMulti && this.selectedOptions.length)
+      );
     }
 
     private setCustomValue() {
@@ -819,6 +826,7 @@ export namespace ComboBox {
                 aria-controls="md-combobox-listbox"
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
+                title=${ifDefined(this.selectedOptions.length > 0 ? this.selectedOptions[0] : this.placeholder)}
                 .value=${this.inputValue}
                 @click=${this.toggleVisualListBox}
                 @input=${this.handleInput}
@@ -826,7 +834,11 @@ export namespace ComboBox {
                 @keydown=${this.handleInputKeyDown}
               />
             </div>
-            ${this.compact ? nothing : this.shouldChangeButton() ? this.clearButtonTemplate() : this.arrowButtonTemplate()}
+            ${this.compact
+              ? nothing
+              : this.shouldChangeButton()
+              ? this.clearButtonTemplate()
+              : this.arrowButtonTemplate()}
           </div>
           <ul
             id="md-combobox-listbox"
@@ -841,6 +853,7 @@ export namespace ComboBox {
               (option, optionIndex) => html`
                 <li
                   id=${this.getOptionId(option)}
+                  title="${this.getOptionValue(option)}"
                   part="combobox-option"
                   role="option"
                   class="md-combobox-option ${classMap(this.listItemOptionMap)}"
@@ -894,14 +907,17 @@ export namespace ComboBox {
               : nothing}
           </ul>
         </div>
+        ${this.invalid
+          ? html`
+              <div part="message" class="md-combobox-error">
+                <md-help-text .message=${this.invalidText} messageType="error"></md-help-text>
+              </div>
+            `
+          : nothing}
       `;
     }
   }
 }
-
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -7,8 +7,9 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { FocusMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 import { Key } from "@/constants";
@@ -17,13 +18,13 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace Favorite {
-  @customElement("md-favorite")
+  @customElementWithCheck("md-favorite")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) checked = false;
     @property({ type: String }) value = "Select favorite";
     @property({ type: String }) id = "";
-    @property({ type: String }) label = "Favorite"
+    @property({ type: String }) label = "Favorite";
 
     @internalProperty() private customId = "";
 
@@ -37,36 +38,37 @@ export namespace Favorite {
       return [reset, styles];
     }
 
-    getIconName() {
-      switch (this.checked) {
-        case true:
-          return "favorite-active_16";
-        default:
-          return "favorite_16";
-      }
-    }
-
     handleFavorite(event: CustomEvent) {
       if (this.disabled) {
         return;
       } else {
         this.checked = !this.checked;
         this.dispatchEvent(
-          new CustomEvent<{value: string, active: boolean}>("favorite-toggle", {
-          detail: {
+          new CustomEvent<{ value: string; active: boolean }>("favorite-toggle", {
+            detail: {
               active: this.checked,
               value: this.value
-          },
-          bubbles: true,
-          composed: true
+            },
+            bubbles: true,
+            composed: true
           })
-        )
+        );
       }
     }
 
     handleElectKeyDown(event: KeyboardEvent) {
-      if (event.code === Key.Enter || event.code === Key.Space) { 
-        this.handleFavorite;
+      if (event.code === Key.Enter || event.code === Key.Space) {
+        this.checked = !this.checked;
+        this.dispatchEvent(
+          new CustomEvent<{ value: string; active: boolean }>("favorite-keydown", {
+            detail: {
+              active: this.checked,
+              value: this.value
+            },
+            bubbles: true,
+            composed: true
+          })
+        );
       }
     }
 
@@ -87,9 +89,11 @@ export namespace Favorite {
       return html`
         <label
           for="favorite-checkbox"
+          id="${this.id}"
           class="md-favorite ${classMap(this.favoriteClassMap)}"
-          tabindex="0">
-            <input
+          tabindex="0"
+        >
+          <input
             type="checkbox"
             aria-label=${ifDefined(this.label.length ? this.label : undefined)}
             value=${this.value}
@@ -97,8 +101,11 @@ export namespace Favorite {
             ?disabled=${this.disabled}
             aria-hidden="true"
             name="favorite-checkbox"
-            />
-            <md-icon name="${this.getIconName()}" color="${this.checked ? "yellow" : nothing}"></md-icon>
+          />
+          <md-icon
+            name="${this.checked ? "favorite-active_16" : "favorite_16"}"
+            color="${this.checked ? "yellow" : nothing}"
+          ></md-icon>
         </label>
       `;
     }

@@ -15,7 +15,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/menu-overlay/MenuOverlay";
-import { menuOverlayPlacement, menuOverlaySize } from "@/components/menu-overlay/MenuOverlay";
+import { menuOverlayPlacement, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
   title: "Menu Overlay",

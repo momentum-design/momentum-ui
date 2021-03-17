@@ -4,8 +4,9 @@ import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import "@/components/input/Input";
 import { ValidationRegex } from "@/utils/validations.ts";
-import { Input } from "@/components/input/Input";
-import { TIME_UNIT, Key } from "@/constants";
+import { Input } from "../input/Input"; // Keep type import as a relative path
+import { Key } from "@/constants";
+import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
 import { DateTime } from "luxon";

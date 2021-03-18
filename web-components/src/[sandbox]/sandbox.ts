@@ -214,13 +214,6 @@ export class Sandbox extends LitElement {
             </sass-stats>
           </div>
 
-          <div class="container" aria-label="md-colors">
-            <h2>md-colors</h2>
-            <sass-stats component="table">
-              ${colorTableTemplate}
-            </sass-stats>
-          </div>
-
           <div class="container" aria-label="md-code-editor">
             <h2>md-code-editor</h2>
             <sass-stats component="code-editor">
@@ -462,6 +455,11 @@ export class Sandbox extends LitElement {
             <sass-stats component="tooltip">
               ${tooltipTemplate}
             </sass-stats>
+          </div>
+
+          <div class="container" aria-label="internal/colors">
+            <h2>Colors</h2>
+              ${colorTableTemplate}
           </div>
         </elix-list-explorer>
       </md-theme>

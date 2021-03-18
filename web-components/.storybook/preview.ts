@@ -23,20 +23,9 @@ addParameters({
       restoreScroll: true,
     },
   },
+  options: {
+    storySort: {
+      order: ['Internal References']
+    }
+  }
 });
-
-const req = require.context("../src/components/", true, /\.src\.(ts|mdx)$/);
-
-configure(req, module);
-
-if (module.hot) {
-  module.hot.accept(req.id, () => {
-    const currentLocationHref = window.location.href;
-
-    window.history.pushState(null, "", currentLocationHref);
-    window.location.reload();
-  });
-}
-
-
-

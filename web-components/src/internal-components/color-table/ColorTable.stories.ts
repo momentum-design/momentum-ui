@@ -10,10 +10,10 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/theme/Theme";
-import "@/components/color-table/ColorTable";
+import "@/internal-components/color-table/ColorTable";
 
 export default {
-  title: "ColorTable",
+  title: "Internal References/Color Table",
   component: "color-table",
   decorators: [withKnobs, withA11y],
   argTypes: {

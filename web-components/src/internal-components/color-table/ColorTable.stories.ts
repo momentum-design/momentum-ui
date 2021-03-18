@@ -16,13 +16,6 @@ export default {
   title: "Internal References/Color Table",
   component: "color-table",
   decorators: [withKnobs, withA11y],
-  argTypes: {
-    renderBgColor: { table: { disable: true } },
-    renderTextColor: { table: { disable: true } },
-    renderHeight: { table: { disable: true } },
-    renderWidth: { table: { disable: true } },
-    getStyles: { table: { disable: true } }
-  },
   parameters: {
     a11y: {
       element: "color-table"
@@ -35,7 +28,7 @@ export const ColorTable = () => {
   const lumos = boolean("Lumos Theme", false);
 
   return html`
-  <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+  <md-theme class="theme-toggle" id="color-table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
     <color-table></color-table>
   </md-theme>
   `;

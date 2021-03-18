@@ -13,7 +13,7 @@ import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Toggle Switch",
+  title: "Components/Toggle Switch",
   component: "md-toggle-switch",
   decorators: [withKnobs, withA11y],
   argTypes: {

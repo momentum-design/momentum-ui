@@ -15,7 +15,7 @@ import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a rela
 import "@/components/theme/Theme";
 
 export default {
-  title: "Meeting Alert",
+  title: "Components/Meeting Alert",
   component: "md-meeting-alert",
   decorators: [withKnobs, withA11y],
   argTypes: {

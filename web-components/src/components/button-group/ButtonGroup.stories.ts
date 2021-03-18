@@ -13,7 +13,7 @@ import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Button Group",
+  title: "Components/Button Group",
   component: "md-button-group",
   decorators: [withKnobs, withA11y],
   parameters: {

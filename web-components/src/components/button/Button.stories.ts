@@ -16,7 +16,7 @@ import { action } from '@storybook/addon-actions';
 import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path
 
 export default {
-  title: "Button",
+  title: "Components/Button",
   component: "md-button",
   decorators: [withKnobs, withA11y],
   argTypes: {

@@ -16,7 +16,7 @@ import { tooltipPlacement } from "./Tooltip"; // Keep type import as a relative 
 import "@/components/theme/Theme";
 
 export default {
-  title: "Tooltip",
+  title: "Components/Tooltip",
   component: "md-tooltip",
   decorators: [withKnobs, withA11y],
   argTypes: {

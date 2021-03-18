@@ -15,7 +15,7 @@ import "@/components/taskitem/TaskItem";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Task Item",
+  title: "Components/Task Item",
   component: "md-task-item",
   decorators: [withKnobs, withA11y],
   argTypes: {

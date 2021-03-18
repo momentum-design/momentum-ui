@@ -15,7 +15,7 @@ import "@/components/badge/Badge";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Badge",
+  title: "Components/Badge",
   component: "md-badge",
   decorators: [withKnobs, withA11y],
   argTypes: {

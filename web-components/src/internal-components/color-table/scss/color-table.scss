@@ -1,0 +1,739 @@
+.color-table::part(color-box) {
+  border: 1px solid $md-gray-95;
+  display: block;
+  float: right;
+  height: 20px;
+  width: 20px;
+}
+
+.code-block {
+  color: var(--md-secondary-text-color, $md-gray-95);
+}
+
+.color-table::part(mdblue10) {
+  background-color: $md-blue-10;
+}
+
+.color-table::part(mdblue20) {
+  background-color: $md-blue-20;
+}
+
+.color-table::part(mdblue30) {
+  background-color: $md-blue-30;
+}
+
+.color-table::part(mdblue40) {
+  background-color: $md-blue-40;
+}
+
+.color-table::part(mdblue50) {
+  background-color: $md-blue-50;
+}
+
+.color-table::part(mdblue60) {
+  background-color: $md-blue-60;
+}
+
+.color-table::part(mdblue70) {
+  background-color: $md-blue-70;
+}
+
+.color-table::part(mdblue80) {
+  background-color: $md-blue-80;
+}
+
+.color-table::part(mdblue90) {
+  background-color: $md-blue-90;
+}
+
+.color-table::part(mdblue95) {
+  background-color: $md-blue-95;
+}
+
+.color-table::part(mdblue05) {
+  background-color: $md-blue-05;
+}
+
+.color-table::part(mdred10) {
+  background-color: $md-red-10;
+}
+
+.color-table::part(mdred20) {
+  background-color: $md-red-20;
+}
+
+.color-table::part(mdred30) {
+  background-color: $md-red-30;
+}
+
+.color-table::part(mdred40) {
+  background-color: $md-red-40;
+}
+
+.color-table::part(mdred50) {
+  background-color: $md-red-50;
+}
+
+.color-table::part(mdred60) {
+  background-color: $md-red-60;
+}
+
+.color-table::part(mdred70) {
+  background-color: $md-red-70;
+}
+
+.color-table::part(mdred80) {
+  background-color: $md-red-80;
+}
+
+.color-table::part(mdred90) {
+  background-color: $md-red-90;
+}
+
+.color-table::part(mdred95) {
+  background-color: $md-red-95;
+}
+
+.color-table::part(mdred05) {
+  background-color: $md-red-05;
+}
+
+.color-table::part(mdyellow10) {
+  background-color: $md-yellow-10;
+}
+
+.color-table::part(mdyellow20) {
+  background-color: $md-yellow-20;
+}
+
+.color-table::part(mdyellow30) {
+  background-color: $md-yellow-30;
+}
+
+.color-table::part(mdyellow40) {
+  background-color: $md-yellow-40;
+}
+
+.color-table::part(mdyellow50) {
+  background-color: $md-yellow-50;
+}
+
+.color-table::part(mdyellow60) {
+  background-color: $md-yellow-60;
+}
+
+.color-table::part(mdyellow70) {
+  background-color: $md-yellow-70;
+}
+
+.color-table::part(mdyellow80) {
+  background-color: $md-yellow-80;
+}
+
+.color-table::part(mdyellow90) {
+  background-color: $md-yellow-90;
+}
+
+.color-table::part(mdyellow95) {
+  background-color: $md-yellow-95;
+}
+
+.color-table::part(mdyellow05) {
+  background-color: $md-yellow-05;
+}
+
+.color-table::part(mdgreen10) {
+  background-color: $md-green-10;
+}
+
+.color-table::part(mdgreen20) {
+  background-color: $md-green-20;
+}
+
+.color-table::part(mdgreen30) {
+  background-color: $md-green-30;
+}
+
+.color-table::part(mdgreen40) {
+  background-color: $md-green-40;
+}
+
+.color-table::part(mdgreen50) {
+  background-color: $md-green-50;
+}
+
+.color-table::part(mdgreen60) {
+  background-color: $md-green-60;
+}
+
+.color-table::part(mdgreen70) {
+  background-color: $md-green-70;
+}
+
+.color-table::part(mdgreen80) {
+  background-color: $md-green-80;
+}
+
+.color-table::part(mdgreen90) {
+  background-color: $md-green-90;
+}
+
+.color-table::part(mdgreen95) {
+  background-color: $md-green-95;
+}
+
+.color-table::part(mdgreen05) {
+  background-color: $md-green-05;
+}
+
+.color-table::part(mdgray10) {
+  background-color: $md-gray-10;
+}
+
+.color-table::part(mdgray20) {
+  background-color: $md-gray-20;
+}
+
+.color-table::part(mdgray30) {
+  background-color: $md-gray-30;
+}
+
+.color-table::part(mdgray40) {
+  background-color: $md-gray-40;
+}
+
+.color-table::part(mdgray50) {
+  background-color: $md-gray-50;
+}
+
+.color-table::part(mdgray60) {
+  background-color: $md-gray-60;
+}
+
+.color-table::part(mdgray70) {
+  background-color: $md-gray-70;
+}
+
+.color-table::part(mdgray80) {
+  background-color: $md-gray-80;
+}
+
+.color-table::part(mdgray90) {
+  background-color: $md-gray-90;
+}
+
+.color-table::part(mdgray95) {
+  background-color: $md-gray-95;
+}
+
+.color-table::part(mdgray100) {
+  background-color: $md-gray-100;
+}
+
+.color-table::part(mdgray05) {
+  background-color: $md-gray-05;
+}
+
+.color-table::part(mdwhite60) {
+  background-color: $md-white-60;
+}
+
+.color-table::part(mdwhite100) {
+  background-color: $md-white-100;
+}
+
+.color-table::part(mdwhite) {
+  background-color: $md-white;
+}
+
+.color-table::part(mdblack100) {
+  background-color: $md-black-100;
+}
+
+.color-table::part(mdblack) {
+  background-color: $md-black;
+}
+
+.color-table::part(mdorange10) {
+  background-color: $md-orange-10;
+}
+
+.color-table::part(mdorange20) {
+  background-color: $md-orange-20;
+}
+
+.color-table::part(mdorange30) {
+  background-color: $md-orange-30;
+}
+
+.color-table::part(mdorange40) {
+  background-color: $md-orange-40;
+}
+
+.color-table::part(mdorange50) {
+  background-color: $md-orange-50;
+}
+
+.color-table::part(mdorange60) {
+  background-color: $md-orange-60;
+}
+
+.color-table::part(mdorange70) {
+  background-color: $md-orange-70;
+}
+
+.color-table::part(mdorange80) {
+  background-color: $md-orange-80;
+}
+
+.color-table::part(mdorange90) {
+  background-color: $md-orange-90;
+}
+
+.color-table::part(mdorange100) {
+  background-color: $md-orange-100;
+}
+
+.color-table::part(mdgold10) {
+  background-color: $md-gold-10;
+}
+
+.color-table::part(mdgold20) {
+  background-color: $md-gold-20;
+}
+
+.color-table::part(mdgold30) {
+  background-color: $md-gold-30;
+}
+
+.color-table::part(mdgold40) {
+  background-color: $md-gold-40;
+}
+
+.color-table::part(mdgold50) {
+  background-color: $md-gold-50;
+}
+
+.color-table::part(mdgold60) {
+  background-color: $md-gold-60;
+}
+
+.color-table::part(mdgold70) {
+  background-color: $md-gold-70;
+}
+
+.color-table::part(mdgold80) {
+  background-color: $md-gold-80;
+}
+
+.color-table::part(mdgold90) {
+  background-color: $md-gold-90;
+}
+
+.color-table::part(mdgold100) {
+  background-color: $md-gold-100;
+}
+
+.color-table::part(mdolive10) {
+  background-color: $md-olive-10;
+}
+
+.color-table::part(mdolive20) {
+  background-color: $md-olive-20;
+}
+
+.color-table::part(mdolive30) {
+  background-color: $md-olive-30;
+}
+
+.color-table::part(mdolive40) {
+  background-color: $md-olive-40;
+}
+
+.color-table::part(mdolive50) {
+  background-color: $md-olive-50;
+}
+
+.color-table::part(mdolive60) {
+  background-color: $md-olive-60;
+}
+
+.color-table::part(mdolive70) {
+  background-color: $md-olive-70;
+}
+
+.color-table::part(mdolive80) {
+  background-color: $md-olive-80;
+}
+
+.color-table::part(mdolive90) {
+  background-color: $md-olive-90;
+}
+
+.color-table::part(mdolive100) {
+  background-color: $md-olive-100;
+}
+
+.color-table::part(mdlime10) {
+  background-color: $md-lime-10;
+}
+
+.color-table::part(mdlime20) {
+  background-color: $md-lime-20;
+}
+
+.color-table::part(mdlime30) {
+  background-color: $md-lime-30;
+}
+
+.color-table::part(mdlime40) {
+  background-color: $md-lime-40;
+}
+
+.color-table::part(mdlime50) {
+  background-color: $md-lime-50;
+}
+
+.color-table::part(mdlime60) {
+  background-color: $md-lime-60;
+}
+
+.color-table::part(mdlime70) {
+  background-color: $md-lime-70;
+}
+
+.color-table::part(mdlime80) {
+  background-color: $md-lime-80;
+}
+
+.color-table::part(mdlime90) {
+  background-color: $md-lime-90;
+}
+
+.color-table::part(mdlime100) {
+  background-color: $md-lime-100;
+}
+
+.color-table::part(mdmint10) {
+  background-color: $md-mint-10;
+}
+
+.color-table::part(mdmint20) {
+  background-color: $md-mint-20;
+}
+
+.color-table::part(mdmint30) {
+  background-color: $md-mint-30;
+}
+
+.color-table::part(mdmint40) {
+  background-color: $md-mint-40;
+}
+
+.color-table::part(mdmint50) {
+  background-color: $md-mint-50;
+}
+
+.color-table::part(mdmint60) {
+  background-color: $md-mint-60;
+}
+
+.color-table::part(mdmint70) {
+  background-color: $md-mint-70;
+}
+
+.color-table::part(mdmint80) {
+  background-color: $md-mint-80;
+}
+
+.color-table::part(mdmint90) {
+  background-color: $md-mint-90;
+}
+
+.color-table::part(mdmint100) {
+  background-color: $md-mint-100;
+}
+
+.color-table::part(mdcyan10) {
+  background-color: $md-cyan-10;
+}
+
+.color-table::part(mdcyan20) {
+  background-color: $md-cyan-20;
+}
+
+.color-table::part(mdcyan30) {
+  background-color: $md-cyan-30;
+}
+
+.color-table::part(mdcyan40) {
+  background-color: $md-cyan-40;
+}
+
+.color-table::part(mdcyan50) {
+  background-color: $md-cyan-50;
+}
+
+.color-table::part(mdcyan60) {
+  background-color: $md-cyan-60;
+}
+
+.color-table::part(mdcyan70) {
+  background-color: $md-cyan-70;
+}
+
+.color-table::part(mdcyan80) {
+  background-color: $md-cyan-80;
+}
+
+.color-table::part(mdcyan90) {
+  background-color: $md-cyan-90;
+}
+
+.color-table::part(mdcyan100) {
+  background-color: $md-cyan-100;
+}
+
+.color-table::part(mdcobalt10) {
+  background-color: $md-cobalt-10;
+}
+
+.color-table::part(mdcobalt20) {
+  background-color: $md-cobalt-20;
+}
+
+.color-table::part(mdcobalt30) {
+  background-color: $md-cobalt-30;
+}
+
+.color-table::part(mdcobalt40) {
+  background-color: $md-cobalt-40;
+}
+
+.color-table::part(mdcobalt50) {
+  background-color: $md-cobalt-50;
+}
+
+.color-table::part(mdcobalt60) {
+  background-color: $md-cobalt-60;
+}
+
+.color-table::part(mdcobalt70) {
+  background-color: $md-cobalt-70;
+}
+
+.color-table::part(mdcobalt80) {
+  background-color: $md-cobalt-80;
+}
+
+.color-table::part(mdcobalt90) {
+  background-color: $md-cobalt-90;
+}
+
+.color-table::part(mdcobalt100) {
+  background-color: $md-cobalt-100;
+}
+
+.color-table::part(mdslate10) {
+  background-color: $md-slate-10;
+}
+
+.color-table::part(mdslate20) {
+  background-color: $md-slate-20;
+}
+
+.color-table::part(mdslate30) {
+  background-color: $md-slate-30;
+}
+
+.color-table::part(mdslate40) {
+  background-color: $md-slate-40;
+}
+
+.color-table::part(mdslate50) {
+  background-color: $md-slate-50;
+}
+
+.color-table::part(mdslate60) {
+  background-color: $md-slate-60;
+}
+
+.color-table::part(mdslate70) {
+  background-color: $md-slate-70;
+}
+
+.color-table::part(mdslate80) {
+  background-color: $md-slate-80;
+}
+
+.color-table::part(mdslate90) {
+  background-color: $md-slate-90;
+}
+
+.color-table::part(mdslate100) {
+  background-color: $md-slate-100;
+}
+
+.color-table::part(mdviolet10) {
+  background-color: $md-violet-10;
+}
+
+.color-table::part(mdviolet20) {
+  background-color: $md-violet-20;
+}
+
+.color-table::part(mdviolet30) {
+  background-color: $md-violet-30;
+}
+
+.color-table::part(mdviolet40) {
+  background-color: $md-violet-40;
+}
+
+.color-table::part(mdviolet50) {
+  background-color: $md-violet-50;
+}
+
+.color-table::part(mdviolet60) {
+  background-color: $md-violet-60;
+}
+
+.color-table::part(mdviolet70) {
+  background-color: $md-violet-70;
+}
+
+.color-table::part(mdviolet80) {
+  background-color: $md-violet-80;
+}
+
+.color-table::part(mdviolet90) {
+  background-color: $md-violet-90;
+}
+
+.color-table::part(mdviolet100) {
+  background-color: $md-violet-100;
+}
+
+.color-table::part(mdpurple10) {
+  background-color: $md-purple-10;
+}
+
+.color-table::part(mdpurple20) {
+  background-color: $md-purple-20;
+}
+
+.color-table::part(mdpurple30) {
+  background-color: $md-purple-30;
+}
+
+.color-table::part(mdpurple40) {
+  background-color: $md-purple-40;
+}
+
+.color-table::part(mdpurple50) {
+  background-color: $md-purple-50;
+}
+
+.color-table::part(mdpurple60) {
+  background-color: $md-purple-60;
+}
+
+.color-table::part(mdpurple70) {
+  background-color: $md-purple-70;
+}
+
+.color-table::part(mdpurple80) {
+  background-color: $md-purple-80;
+}
+
+.color-table::part(mdpurple90) {
+  background-color: $md-purple-90;
+}
+
+.color-table::part(mdpurple100) {
+  background-color: $md-purple-100;
+}
+
+.color-table::part(mdpink10) {
+  background-color: $md-pink-10;
+}
+
+.color-table::part(mdpink20) {
+  background-color: $md-pink-20;
+}
+
+.color-table::part(mdpink30) {
+  background-color: $md-pink-30;
+}
+
+.color-table::part(mdpink40) {
+  background-color: $md-pink-40;
+}
+
+.color-table::part(mdpink50) {
+  background-color: $md-pink-50;
+}
+
+.color-table::part(mdpink60) {
+  background-color: $md-pink-60;
+}
+
+.color-table::part(mdpink70) {
+  background-color: $md-pink-70;
+}
+
+.color-table::part(mdpink80) {
+  background-color: $md-pink-80;
+}
+
+.color-table::part(mdpink90) {
+  background-color: $md-pink-90;
+}
+
+.color-table::part(mdpink100) {
+  background-color: $md-pink-100;
+}
+
+.color-table::part(mdtheme10) {
+  background-color: $md-theme-10;
+}
+
+.color-table::part(mdtheme20) {
+  background-color: $md-theme-20;
+}
+
+.color-table::part(mdtheme30) {
+  background-color: $md-theme-30;
+}
+
+.color-table::part(mdtheme40) {
+  background-color: $md-theme-40;
+}
+
+.color-table::part(mdtheme50) {
+  background-color: $md-theme-50;
+}
+
+.color-table::part(mdtheme60) {
+  background-color: $md-theme-60;
+}
+
+.color-table::part(mdtheme70) {
+  background-color: $md-theme-70;
+}
+
+.color-table::part(mdtheme80) {
+  background-color: $md-theme-80;
+}
+
+.color-table::part(mdtheme90) {
+  background-color: $md-theme-90;
+}
+
+.color-table::part(mdtheme95) {
+  background-color: $md-theme-95;
+}
+
+.color-table::part(mdtheme05) {
+  background-color: $md-theme-05;
+}

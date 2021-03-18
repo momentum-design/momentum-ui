@@ -38,7 +38,13 @@ export namespace TaskItem {
         case "outbound telephony":
           return html`
             <md-badge color="green" circle>
-              <md-icon name="icon-outgoing-call-active_16"></md-icon>
+              <md-icon name="outgoing-call-active_16"></md-icon>
+            </md-badge>
+          `;
+        case "inbound telephony":
+          return html`
+            <md-badge color="green" circle>
+              <md-icon name="incoming-call-active_16"></md-icon>
             </md-badge>
           `;
         case "chat":
@@ -59,7 +65,7 @@ export namespace TaskItem {
               <md-icon name="sms_16" color="white"></md-icon>
             </md-badge>
           `;
-        case "facebook":
+        case "messenger":
           return html`
             <md-badge bgColor="#0078FF" circle>
               <md-icon name="messenger_16" color="white"></md-icon>
@@ -214,8 +220,6 @@ export namespace TaskItem {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

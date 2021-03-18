@@ -4,7 +4,7 @@ import { html } from "lit-element";
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: "Input File",
+  title: "Components/Input File",
   component: "md-input-file",
   decorators: [withKnobs, withA11y],
   parameters: {

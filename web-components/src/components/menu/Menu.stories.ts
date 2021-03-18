@@ -14,7 +14,7 @@ import "@/components/menu/MenuItem";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Menu",
+  title: "Components/Menu",
   component: "md-menu",
   decorators: [withKnobs, withA11y],
   parameters: {

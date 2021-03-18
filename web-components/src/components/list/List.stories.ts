@@ -15,7 +15,7 @@ import { html } from "lit-element";
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "List",
+  title: "Components/List",
   component: "md-list",
   decorators: [withKnobs, withA11y],
   argTypes: {

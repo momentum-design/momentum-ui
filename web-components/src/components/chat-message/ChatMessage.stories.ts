@@ -13,7 +13,7 @@ import "@/components/chat-message/ChatMessage";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Chat Message",
+  title: "Components/Chat Message",
   component: "md-chat-message",
   decorators: [withKnobs, withA11y],
   parameters: {

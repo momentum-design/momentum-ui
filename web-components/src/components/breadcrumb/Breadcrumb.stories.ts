@@ -13,7 +13,7 @@ import { boolean, withKnobs } from "@storybook/addon-knobs";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Breadcrumb",
+  title: "Components/Breadcrumb",
   component: "md-breadcrumb",
   decorators: [withKnobs, withA11y],
   parameters: {

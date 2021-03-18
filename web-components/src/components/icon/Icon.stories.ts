@@ -16,7 +16,7 @@ import { iconSize, iconType } from "./Icon"; // Keep type import as a relative p
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "Icon",
+  title: "Components/Icon",
   component: "md-icon",
   decorators: [withKnobs, withA11y],
   argTypes: {

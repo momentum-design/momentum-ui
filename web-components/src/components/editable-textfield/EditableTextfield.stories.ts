@@ -16,7 +16,7 @@ import "@/components/theme/Theme";
 import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
 
 export default {
-  title: "Editable Textfield",
+  title: "Components/Editable Textfield",
   component: "md-editable-field",
   decorators: [withKnobs, withA11y],
   argTypes: {

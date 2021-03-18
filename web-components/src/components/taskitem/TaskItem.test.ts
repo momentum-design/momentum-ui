@@ -78,7 +78,15 @@ describe("TaskItem", () => {
   });
 
   test("should render correct type and status", async () => {
-    const element: TaskItem.ELEMENT = await fixtureFactory("chat", "Mihael Varificantare", "quelle_1", "play", 0, "", false);
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "chat",
+      "Mihael Varificantare",
+      "quelle_1",
+      "play",
+      0,
+      "",
+      false
+    );
 
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
@@ -86,8 +94,46 @@ describe("TaskItem", () => {
     expect(status?.getAttribute("name")).toEqual("play_12");
   });
 
-  test("should upadte type and status", async () => {
-    const element: TaskItem.ELEMENT = await fixtureFactory("email", "Mihael Varificantare", "quelle_1", "hold", 0, "", true);
+  test("should render correct outbound type ", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "outbound telephony",
+      "Mihael Varificantare",
+      "quelle_1",
+      "play",
+      0,
+      "",
+      false
+    );
+
+    const type = element.shadowRoot?.querySelector("md-icon");
+    expect(type?.getAttribute("name")).toEqual("outgoing-call-active_16");
+  });
+
+  test("should render correct inbound type ", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "inbound telephony",
+      "Mihael Varificantare",
+      "quelle_1",
+      "play",
+      0,
+      "",
+      false
+    );
+
+    const type = element.shadowRoot?.querySelector("md-icon");
+    expect(type?.getAttribute("name")).toEqual("incoming-call-active_16");
+  });
+
+  test("should update type and status", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "email",
+      "Mihael Varificantare",
+      "quelle_1",
+      "hold",
+      0,
+      "",
+      true
+    );
 
     expect(element.selected).toBeTruthy;
     const type = element.shadowRoot?.querySelector("md-icon");
@@ -96,7 +142,7 @@ describe("TaskItem", () => {
     expect(status?.getAttribute("name")).toEqual("pause_12");
   });
 
-  test("should upadte type and status", async () => {
+  test("should update type and status", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "sms",
       "Mihael Varificantare",
@@ -113,7 +159,7 @@ describe("TaskItem", () => {
     expect(status?.getAttribute("name")).toEqual("meet_12");
   });
 
-  test("should upadte type and status", async () => {
+  test("should update type and status", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
@@ -128,6 +174,36 @@ describe("TaskItem", () => {
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
     expect(type?.getAttribute("name")).toEqual("task-type");
     expect(status?.getAttribute("name")).toEqual("assign-privilege_12");
+  });
+
+  test("should update campaign status", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "quelle_1",
+      "campaign",
+      0,
+      "",
+      false
+    );
+    expect(element).not.toBeNull();
+    const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
+    expect(status?.getAttribute("name")).toEqual("announcement_12");
+  });
+
+  test("should update courtesy_callback status", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "quelle_1",
+      "courtesy_callback",
+      0,
+      "",
+      false
+    );
+    expect(element).not.toBeNull();
+    const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
+    expect(status?.getAttribute("name")).toEqual("call-log_12");
   });
 
   test("should upadte type and status", async () => {
@@ -148,6 +224,36 @@ describe("TaskItem", () => {
     expect(status?.getAttribute("name")).toEqual("task-status");
     expect(quantity).toBeUndefined;
     expect(chat).toBeUndefined;
+  });
+
+  test("should upadte type and status", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "quelle_1",
+      "call",
+      101,
+      "Test message",
+      false
+    );
+    expect(element).not.toBeNull();
+    const quantity = element.shadowRoot?.querySelector(".new-chat-quantity span");
+    expect(quantity).toBeUndefined;
+  });
+
+  test("should render slot quele", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "",
+      "call",
+      0,
+      "Test message",
+      false
+    );
+    expect(element).not.toBeNull();
+    const quelle = element.shadowRoot?.querySelector(".md-taskitem__content_queue slot[name='queue']");
+    expect(quelle).toBeUndefined;
   });
 
   test("should upadte type and status", async () => {

@@ -15,7 +15,7 @@ import "@/components/alert-banner/AlertBanner";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Alert Banner",
+  title: "Components/Alert Banner",
   component: "md-alert-banner",
   decorators: [withKnobs, withA11y],
   parameters: {

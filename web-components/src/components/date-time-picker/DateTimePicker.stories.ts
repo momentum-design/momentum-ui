@@ -8,7 +8,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Date Time Picker",
+  title: "Components/Date Time Picker",
   component: "md-date-time-picker",
   decorators: [withKnobs, withA11y],
   parameters: {

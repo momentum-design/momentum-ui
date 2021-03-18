@@ -1,4 +1,4 @@
-import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { querySelectorAllDeep, querySelectorDeep } from "query-selector-shadow-dom";
 import "./Input";
 import { Input } from "./Input";
@@ -180,38 +180,6 @@ describe("Input Component", () => {
     expect(spyBlurHandler).toHaveBeenCalled();
   });
 
-  // test("should handle clear event", async () => {
-  //   const element = await fixture<Input>(
-  //     ` <md-input label="Clear" value="text" containerSize="small-12" placeholder="Enter Text" clear></md-input>`
-  //   );
-
-  //   const spyButtonHandler = jest.spyOn(Input.prototype, "handleClear");
-  //   const buttonElement = querySelectorDeep("button");
-  //   const event = new MouseEvent("click");
-
-  //   const value = jest.fn().mockReturnValue({ value: element.value });
-  //   Object.defineProperty(event, "target", { value: { value } });
-
-  //   const customEvent = new CustomEvent("button-click", {
-  //     bubbles: true,
-  //     composed: true,
-  //     detail: {
-  //       srcEvent: event
-  //     }
-  //   });
-
-  //   buttonElement.dispatchEvent(event);
-
-  //   expect(spyButtonHandler).toHaveBeenCalled();
-
-  //   setTimeout(() => element.handleClear(customEvent));
-
-  //   const { detail } = await oneEvent(element, "input-change");
-
-  //   expect(detail).toBeDefined();
-  //   expect(element.shadowRoot!.activeElement).toEqual(element.input);
-  // });
-
   test("should render nothing if no label provided", async () => {
     const element = await fixture<Input.ELEMENT>(
       ` <md-input value="text" containerSize="small-12" placeholder="Enter Text" clear></md-input>`
@@ -226,7 +194,7 @@ describe("Input Component", () => {
     expect(element.shadowRoot!.querySelector("md-icon")!.name).toMatch(/^search?_\w+/);
   });
   test("should render icon if provided in slot", async () => {
-    const element = await fixture<Input.ELEMENT>(
+    await fixture<Input.ELEMENT>(
       `<md-input label="Aux Content" htmlId="inputLeft" containerSize="small-12" placeholder="Enter Text" auxiliaryContentPosition="before">
         <md-icon name="email-active_16"></md-icon>
       </md-input>`
@@ -310,8 +278,58 @@ describe("Input Component", () => {
   });
 
   test("should render multiline", async () => {
-    const element = await fixture<Input.ELEMENT>(`<md-input label="Multiline" containerSize="small-12" multiline></md-input>`);
+    const element = await fixture<Input.ELEMENT>(
+      `<md-input label="Multiline" containerSize="small-12" multiline></md-input>`
+    );
 
     expect(element.multiline).toBeTruthy();
+  });
+
+  test("should dispatch change event", async () => {
+    const element = await fixture<Input.ELEMENT>(`<md-input name="Default Input" label="Change Input"></md-input>`);
+
+    element.value = "inputText";
+
+    await elementUpdated(element);
+
+    const event = new InputEvent("change");
+
+    Object.defineProperty(event, "target", {
+      get: () => element,
+      enumerable: true,
+      configurable: true
+    });
+
+    setTimeout(() => element.handleChange(event));
+    const { detail } = await oneEvent(element, "input-change");
+    expect(detail).toBeDefined();
+    expect(detail).toMatchObject({
+      srcEvent: event,
+      value: "inputText"
+    });
+  });
+
+  test("should dispatch change event with clear state", async () => {
+    const element = await fixture<Input.ELEMENT>(
+      `<md-input name="Default Input" label="Change Input" clear></md-input>`
+    );
+
+    element.value = "inputText";
+
+    await elementUpdated(element);
+
+    const event = new KeyboardEvent("keydown", {
+      code: "Space"
+    });
+
+    Object.defineProperty(event, "target", {
+      get: () => element,
+      enumerable: true,
+      configurable: true
+    });
+
+    setTimeout(() => element.handleClear(event));
+    const { detail } = await oneEvent(element, "input-change");
+    expect(detail).toBeDefined();
   });
 });

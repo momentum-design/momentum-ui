@@ -501,7 +501,7 @@ export namespace TableAdvanced {
                 if (gName != col.group.name) {
                   gName = col.group.name;
                   return html`
-                    <th colspan=${col.group.length} scope="colgroup">
+                    <th colspan=${col.group.length} scope="colgroup" title="${col.group.name}">
                       <div class="head-inner-cell">
                         <span>${col.group.name}</span>
                         ${this.renderColResize(col)}
@@ -551,6 +551,7 @@ export namespace TableAdvanced {
           width=${ifDefined(col.width ? col.width : col.options.width)}
           scope="col"
           part="head-col"
+          title="${col.options.title}"
           class=${"col-index-" + col.index}
         >
           <!-- DRAG  -->
@@ -706,6 +707,7 @@ export namespace TableAdvanced {
 
         const groups = rows.reduce((acc, row) => {
           const key = row.cells[colIdx].text;
+          //console.log(row.cells);
           const group = acc.find(x => x.key == key);
           if (group) {
             row.collapse = "child";
@@ -883,10 +885,10 @@ export namespace TableAdvanced {
 
             return col.options.isHeader
               ? html`
-                  <th part="cell-ishead" scope="row">${cellRenderResult}</th>
+                  <th part="cell-ishead" scope="row" title="${cell.text}">${cellRenderResult}</th>
                 `
               : html`
-                  <td part=${j === 0 ? "first-cell" : "cell"}>${cellRenderResult}</td>
+                  <td part=${j === 0 ? "first-cell" : "cell"} title="${cell.text}">${cellRenderResult}</td>
                 `;
           })}
         </tr>

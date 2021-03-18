@@ -14,7 +14,7 @@ import { html } from "lit-element";
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "Favorite",
+  title: "Components/Favorite",
   component: "md-favorite",
   decorators: [withKnobs, withA11y],
   argTypes: {

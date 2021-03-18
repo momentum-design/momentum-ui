@@ -15,7 +15,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Avatar",
+  title: "Components/Avatar",
   component: "md-avatar",
   decorators: [withKnobs, withA11y],
   parameters: {

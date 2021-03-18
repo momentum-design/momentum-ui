@@ -7,7 +7,7 @@ import { html } from "lit-element";
 import "../theme/Theme";
 
 export default {
-  title: "Date Range Picker",
+  title: "Components/Date Range Picker",
   component: "md-date-range-picker",
   decorators: [withKnobs, withA11y],
   parameters: {
@@ -17,7 +17,7 @@ export default {
   }
 };
 
-export const DatePicker = () => {
+export const DateRangePicker = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const shouldCloseOnSelect = boolean("shouldCloseOnSelect", false);

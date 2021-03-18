@@ -19,7 +19,7 @@ import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Dropdown",
+  title: "Components/Dropdown",
   component: "md-dropdown",
   decorators: [withKnobs, withA11y],
   parameters: {

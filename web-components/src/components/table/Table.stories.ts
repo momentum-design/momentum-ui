@@ -15,7 +15,7 @@ import { formatType } from "./Table"; // Keep type import as a relative path
 
 
 export default {
-  title: "Table",
+  title: "Components/Table",
   component: "md-table",
   decorators: [withKnobs, withA11y],
   argTypes: {

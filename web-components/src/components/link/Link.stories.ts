@@ -14,7 +14,7 @@ import { linkTag, linkColor } from "./Link"; // Keep type import as a relative p
 import "@/components/theme/Theme";
 
 export default {
-  title: "Link",
+  title: "Components/Link",
   component: "md-link",
   decorators: [withKnobs, withA11y],
   parameters: {

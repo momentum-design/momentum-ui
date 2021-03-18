@@ -16,7 +16,7 @@ import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Tabs",
+  title: "Components/Tabs",
   component: "md-tabs",
   decorators: [withKnobs, withA11y],
   argTypes: {

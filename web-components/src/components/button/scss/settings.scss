@@ -93,10 +93,11 @@ $button__background-color--hover--dark--contrast: $white-92 !default;
 $button__background-color--active--dark--contrast: $white-84 !default;
 
 // Blue button colors
+$button--blue__outline-color: var(--button-primary-outline-color, $lm-button-primary-outline-color-light) !default;
 $button--blue__background-color: $md-theme-50 !default;
 $button--blue__background-color--hover: $md-theme-60 !default;
 $button--blue__background-color--active: $md-theme-70 !default;
-$button--blue__border: 0 0 0 1px $md-theme-50 !default;
+$button--blue__border: 0 0 0 1px $button--blue__outline-color !default;
 
 // Blue button contrast colors
 $button--blue__background-color--contrast: $md-theme-60 !default;

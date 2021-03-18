@@ -100,7 +100,7 @@ const button = {
   white: {
     "bg-color": {
       light: colors.white.default.name,
-      dark: colors.gray[80].name
+      dark: colors.white.default.name
     },
     hover: {
       "bg-color": {

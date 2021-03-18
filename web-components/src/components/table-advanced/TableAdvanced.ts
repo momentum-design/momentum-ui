@@ -707,7 +707,6 @@ export namespace TableAdvanced {
 
         const groups = rows.reduce((acc, row) => {
           const key = row.cells[colIdx].text;
-          //console.log(row.cells);
           const group = acc.find(x => x.key == key);
           if (group) {
             row.collapse = "child";

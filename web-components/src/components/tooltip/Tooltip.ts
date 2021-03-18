@@ -8,11 +8,8 @@
 
 import { FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import arrow from "@popperjs/core/lib/modifiers/arrow";
-import flip from "@popperjs/core/lib/modifiers/flip";
-import offset from "@popperjs/core/lib/modifiers/offset";
-import { createPopper, defaultModifiers, Instance, State } from "@popperjs/core/lib/popper-lite";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
@@ -35,144 +32,179 @@ export const tooltipPlacement = [
 ] as const;
 
 export const tooltipStrategy = ["fixed", "absolute"] as const;
+export type TooltipEvent = {
+  placement: Tooltip.Placement;
+  reference: HTMLElement;
+  popper: HTMLElement;
+  slotContent?: Element[] | undefined | null;
+};
 
 export namespace Tooltip {
   export type Placement = typeof tooltipPlacement[number];
   export type Strategy = typeof tooltipStrategy[number];
-}
 
-@customElement("md-tooltip")
-export class Tooltip extends FocusMixin(LitElement) {
-  @property({ type: String }) message = "";
-  @property({ type: String }) placement: Tooltip.Placement = "auto";
-  @property({ type: Boolean }) disabled = false;
+  @customElementWithCheck("md-tooltip")
+  export class ELEMENT extends FocusMixin(LitElement) {
+    @property({ type: String }) message = "";
+    @property({ type: String, reflect: true }) placement: Tooltip.Placement = "auto";
+    @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Boolean, reflect: true }) opened = false;
 
-  @query(".md-tooltip__container") tooltip?: HTMLDivElement;
-  @query(".md-tooltip__trigger") trigger?: HTMLDivElement;
-  @query(".md-tooltip__arrow") arrow!: HTMLDivElement;
+    @query(".md-tooltip__popper") popper!: HTMLDivElement;
+    @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
-  private popperInstance: Instance | null = null;
-  private parentLevelsUp = 0;
+    private slotContent: Element[] | null = null;
 
-  withinOverlayCheck = (element: HTMLElement | null): Promise<Partial<State>> | undefined => {
-    const menuOverlayTag = "MD-MENU-OVERLAY";
-    const themeTag = "MD-THEME";
-    const maxLevelsUp = 10;
-
-    if (!element || !element.parentElement) return;
-    const currentTagName = element.parentElement.tagName;
-    if (currentTagName === menuOverlayTag) {
-      return this.popperInstance?.setOptions({ strategy: "absolute" });
-    } else if (this.parentLevelsUp > maxLevelsUp || currentTagName === themeTag) {
-      return;
-    } else {
-      this.parentLevelsUp++;
-      return this.withinOverlayCheck(element.parentElement);
+    protected handleFocusIn(event: Event) {
+      if (super.handleFocusIn) {
+        super.handleFocusIn(event);
+      }
+      this.notifyTooltipCreate();
     }
-  };
 
-  protected handleFocusIn(event: Event) {
-    if (super.handleFocusIn) {
-      super.handleFocusIn(event);
+    protected handleFocusOut(event: Event) {
+      if (super.handleFocusOut) {
+        super.handleFocusOut(event);
+      }
+      this.notifyTooltipDestroy();
     }
-    this.showTooltip();
-  }
 
-  protected handleFocusOut(event: Event) {
-    if (super.handleFocusOut) {
-      super.handleFocusOut(event);
-    }
-    this.hideTooltip();
-  }
-
-  private destroy() {
-    if (this.popperInstance) {
-      this.popperInstance.destroy();
-      this.popperInstance = null;
-    }
-  }
-
-  private create() {
-    const { trigger, tooltip } = this;
-    this.popperInstance = createPopper(trigger!, tooltip!, {
-      placement: this.placement,
-      strategy: "fixed",
-      modifiers: [
-        ...defaultModifiers,
-        flip,
-        offset,
-        arrow,
-        {
-          name: "arrow",
-          options: {
-            element: this.arrow
+    private openTooltip() {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-create", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper,
+            ...(!this.message && { slotContent: this.slotContent })
           }
-        },
-        {
-          name: "offset",
-          options: {
-            offset: [0, 8]
+        })
+      );
+    }
+
+    private closeTooltip() {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-destroy", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper
           }
+        })
+      );
+    }
+
+    private changeMessage() {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-message", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper
+          }
+        })
+      );
+    }
+
+    private changeSlotContent(slotContent: Element[]) {
+      this.dispatchEvent(
+        new CustomEvent<TooltipEvent>("tooltip-slot", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: this.placement,
+            reference: this.reference,
+            popper: this.popper,
+            slotContent
+          }
+        })
+      );
+    }
+
+    notifyTooltipCreate() {
+      if (!this.disabled) {
+        this.opened = true;
+      }
+    }
+
+    notifyTooltipDestroy() {
+      if (!this.disabled) {
+        this.opened = false;
+      }
+    }
+
+    handleSlotContentChange(event: Event) {
+      const slot = event.target as HTMLSlotElement;
+      if (slot) {
+        const slotContent = slot.assignedElements({ flatten: true });
+        if (slotContent.length) {
+          if (this.slotContent) {
+            this.changeSlotContent(slotContent);
+          }
+          this.slotContent = slotContent;
         }
-      ]
-    });
-  }
-
-  showTooltip() {
-    if (this.tooltip) {
-      this.tooltip.toggleAttribute("data-show", true);
-      this.create();
-      this.withinOverlayCheck(this);
+      }
     }
-  }
 
-  hideTooltip() {
-    if (this.tooltip) {
-      this.tooltip.toggleAttribute("data-show", false);
-      this.destroy();
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("opened")) {
+        if (this.opened) {
+          this.openTooltip();
+        } else {
+          this.closeTooltip();
+        }
+      }
+      if (changedProperties.has("message")) {
+        this.changeMessage();
+      }
     }
-  }
 
-  get tooltipClassMap() {
-    return {
-      "md-tooltip--disabled": this.disabled
-    };
-  }
+    private get tooltipClassMap() {
+      return {
+        "md-tooltip--disabled": this.disabled
+      };
+    }
 
-  content = () => {
-    return html`
-      <slot name="tooltip-content"></slot>
-    `;
-  };
-
-  render() {
-    return html`
-      <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
-        <div class="md-tooltip__container" role="tooltip">
-          <div class="md-tooltip__content">
-            ${this.message || this.content()}
+    render() {
+      return html`
+        <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
+          <div class="md-tooltip__popper" role="tooltip">
+            <div class="md-tooltip__content">
+              ${this.message
+                ? this.message
+                : html`
+                    <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
+                  `}
+            </div>
+            <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
           </div>
-          <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
+          <div
+            class="md-tooltip__reference"
+            @mouseenter=${() => this.notifyTooltipCreate()}
+            @mouseleave=${() => this.notifyTooltipDestroy()}
+            aria-describedby="tooltip"
+          >
+            <slot></slot>
+          </div>
         </div>
-        <div
-          class="md-tooltip__trigger"
-          @mouseenter=${this.showTooltip}
-          @mouseleave=${this.hideTooltip}
-          aria-describedby="tooltip"
-        >
-          <slot></slot>
-        </div>
-      </div>
-    `;
-  }
+      `;
+    }
 
-  static get styles() {
-    return [reset, styles];
+    static get styles() {
+      return [reset, styles];
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-tooltip": Tooltip;
+    "md-tooltip": Tooltip.ELEMENT;
   }
 }

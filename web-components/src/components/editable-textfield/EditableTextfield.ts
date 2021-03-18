@@ -6,240 +6,248 @@
  *
  */
 
-import { numInputTypes } from "@/utils/enums";
+import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
-import { CSSResultArray, customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { CSSResultArray, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import "../input/Input";
-import { Input, Message } from "../input/Input";
+import "@/components/input/Input";
+import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
 export const alignment = ["left", "right", "center"] as const;
+
 export namespace EditableTextfield {
   export type Alignment = typeof alignment[number];
   export type InputType = typeof numInputTypes[number];
-}
 
-@customElement("md-editable-field")
-export class EditableTextfield extends LitElement {
-  @property({ type: String }) alignment: EditableTextfield.Alignment = "left";
-  @property({ type: Boolean }) disabled = false;
-  @property({ type: Boolean }) isEditing = false;
-  @property({ type: String, attribute: "max-lines", reflect: true }) maxLines = "";
-  @property({ type: String, reflect: true }) content = "Click to edit text";
-  @property({ type: Object }) message: Input.Message | undefined = {
-    type: "error",
-    message: `That is not a valid input.`
-  };
-  @property({ type: Boolean, reflect: true }) alert = false;
-  @property({ type: Boolean }) hideMessage = false;
-  @property({ type: String }) pattern = "";
-  @property({ type: String }) type: EditableTextfield.InputType[number] | null = null;
+  @customElementWithCheck("md-editable-field")
+  export class ELEMENT extends LitElement {
+    @property({ type: String }) alignment: EditableTextfield.Alignment = "left";
+    @property({ type: Boolean }) disabled = false;
+    @property({ type: Boolean }) isEditing = false;
+    @property({ type: String, attribute: "max-lines", reflect: true }) maxLines = "";
+    @property({ type: String, reflect: true }) content = "Click to edit text";
+    @property({ type: Object }) message: Input.Message | undefined = {
+      type: "error",
+      message: `That is not a valid input.`
+    };
+    @property({ type: Boolean, reflect: true }) alert = false;
+    @property({ type: Boolean }) hideMessage = false;
+    @property({ type: String }) pattern = "";
+    @property({ type: String }) type: EditableTextfield.InputType[number] | null = null;
 
-  private readonly messageController: Message = new Message();
+    private readonly messageController: Input.MessageController = new Input.MessageController();
 
-  @query(".md-editable-textfield") editableField: HTMLElement | undefined;
+    @query(".md-editable-textfield") editableField: HTMLElement | undefined;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener("focus", this.handleFocus);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener("focus", this.handleFocus);
-  }
-
-  protected firstUpdated(changedProperties: PropertyValues) {
-    super.firstUpdated(changedProperties);
-    if (this.innerText && this.innerText.length > 0) {
-      this.content = this.innerText.trim();
-    } else {
-      this.innerText = dompurify.sanitize(this.content);
+    connectedCallback() {
+      super.connectedCallback();
+      this.addEventListener("focus", this.handleFocus);
     }
-  }
 
-  protected updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-    if (changedProperties.has("content")) {
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.removeEventListener("focus", this.handleFocus);
+    }
+
+    protected firstUpdated(changedProperties: PropertyValues) {
+      super.firstUpdated(changedProperties);
+      if (this.innerText && this.innerText.length > 0) {
+        this.content = this.innerText.trim();
+      } else {
+        this.innerText = dompurify.sanitize(this.content);
+      }
+    }
+
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      if (changedProperties.has("content")) {
+        if (this.editableField) {
+          this.editableField.innerText = dompurify.sanitize(this.content);
+        }
+      }
+    }
+
+    reportValidity = () => {
+      this.dispatchEvent(
+        new Event("invalid", {
+          bubbles: false,
+          cancelable: true,
+          composed: true
+        })
+      );
+    };
+
+    checkValidity = (input: string): boolean => {
+      let result = true;
+      const regexTester = (regex: RegExp): void => {
+        if (input.match(regex) === null) {
+          result = false;
+        }
+      };
+      if (this.pattern) {
+        const regex = new RegExp(this.pattern);
+        regexTester(regex);
+      } else if (input && this.type) {
+        switch (this.type) {
+          case "integer":
+            regexTester(new RegExp(ValidationRegex.integerString));
+            break;
+          case "decimal":
+            regexTester(new RegExp(ValidationRegex.decimalString));
+            break;
+          default:
+            break;
+        }
+      }
+      return result;
+    };
+
+    handleFocus = () => {
+      if (this.disabled) {
+        return;
+      } else {
+        this.isEditing = true;
+        this.setRange();
+      }
+    };
+
+    setRange() {
       if (this.editableField) {
-        this.editableField.innerText = dompurify.sanitize(this.content);
+        const range = document.createRange();
+        const sel = window.getSelection();
+        const position = this.editableField.childNodes[0].nodeValue?.length;
+        range.setStart(this.editableField.childNodes[0], position ? position : 0);
+        range.collapse(true);
+
+        if (sel && sel.toString().length === 0) {
+          sel.removeAllRanges();
+          sel.addRange(range);
+        } else {
+          return;
+        }
+
+        if (this.maxLines.length > 0) {
+          this.editableField.scrollTop = this.editableField.scrollHeight;
+        }
       }
     }
-  }
 
-  reportValidity = () => {
-    this.dispatchEvent(
-      new Event("invalid", {
-        bubbles: false,
-        cancelable: true,
-        composed: true
-      })
-    );
-  };
-
-  checkValidity = (input: string): boolean => {
-    let result = true;
-    const regexTester = (regex: RegExp): void => {
-      if (input.match(regex) === null) {
-        result = false;
-      }
-    };
-    if (this.pattern) {
-      const regex = new RegExp(this.pattern);
-      regexTester(regex);
-    } else if (input && this.type) {
-      switch (this.type) {
-        case "integer":
-          regexTester(new RegExp(ValidationRegex.integerString));
-          break;
-        case "decimal":
-          regexTester(new RegExp(ValidationRegex.decimalString));
-          break;
-        default:
-          break;
-      }
-    }
-    return result;
-  };
-
-  handleFocus = () => {
-    if (this.disabled) {
-      return;
-    } else {
-      this.isEditing = true;
-      this.setRange();
-    }
-  };
-
-  setRange() {
-    if (this.editableField) {
-      const range = document.createRange();
-      const sel = window.getSelection();
-      const position = this.editableField.childNodes[0].nodeValue?.length;
-      range.setStart(this.editableField.childNodes[0], position ? position : 0);
-      range.collapse(true);
-
-      if (sel && sel.toString().length === 0) {
-        sel.removeAllRanges();
-        sel.addRange(range);
-      } else {
+    handleKeydown = (e: KeyboardEvent) => {
+      const flaggedKeys = ["Tab", "Meta", "Shift", "Delete", "Backspace", "Arrow"];
+      const { key, code } = e;
+      if (flaggedKeys.some(s => code.includes(s))) {
         return;
       }
 
+      if (this.type === "integer" && key.includes(".")) {
+        e.preventDefault();
+      }
+
+      const currentString = this.editableField?.innerText.trim() + key;
+      if (this.type) {
+        if (isNaN(Number(currentString))) {
+          e.preventDefault();
+        } else if (this.type === "integer" && !Number.isInteger(Number(currentString))) {
+          e.preventDefault();
+        } else {
+          return;
+        }
+      }
+    };
+
+    handleBlur = () => {
+      this.isEditing = false;
       if (this.maxLines.length > 0) {
-        this.editableField.scrollTop = this.editableField.scrollHeight;
+        this.editableField && this.editableField.scrollTo(0, 0);
       }
-    }
-  }
+      this.content = this.editableField?.innerText.trim() || "";
+      this.alert = false;
+      this.handleValidation();
+    };
 
-  handleKeydown = (e: KeyboardEvent) => {
-    const flaggedKeys = ["Tab", "Meta", "Shift", "Delete", "Backspace", "Arrow"];
-    const { key, code } = e;
-    if (flaggedKeys.some(s => code.includes(s))) {
-      return;
-    }
-
-    if (this.type === "integer" && key.includes(".")) {
-      e.preventDefault();
-    }
-
-    const currentString = this.editableField?.innerText.trim() + key;
-    if (this.type) {
-      if (isNaN(Number(currentString))) {
-        e.preventDefault();
-      } else if (this.type === "integer" && !Number.isInteger(Number(currentString))) {
-        e.preventDefault();
+    handleValidation() {
+      if (this.type || this.pattern) {
+        const valid = this.checkValidity && this.checkValidity(this.content);
+        if (!valid) {
+          this.reportValidity();
+          this.showAlert();
+        }
       } else {
         return;
       }
     }
-  };
 
-  handleBlur = () => {
-    this.isEditing = false;
-    if (this.maxLines.length > 0) {
-      this.editableField && this.editableField.scrollTo(0, 0);
+    showAlert(): void {
+      this.alert = true;
     }
-    this.content = this.editableField?.innerText.trim() || "";
-    this.alert = false;
-    this.handleValidation();
-  };
 
-  handleValidation() {
-    if (this.type || this.pattern) {
-      const valid = this.checkValidity && this.checkValidity(this.content);
-      if (!valid) {
-        this.reportValidity();
-        this.showAlert();
-      }
-    } else {
-      return;
+    static get styles(): CSSResultArray {
+      return [reset, styles];
     }
-  }
 
-  showAlert(): void {
-    this.alert = true;
-  }
+    get overflowStyles() {
+      return (
+        this.maxLines.length &&
+        this.maxLines.length > 0 &&
+        `max-height: ${2 * parseInt(this.maxLines)}rem; -webkit-line-clamp: ${this.maxLines}; word-break: break-all;`
+      );
+    }
 
-  static get styles(): CSSResultArray {
-    return [reset, styles];
-  }
+    messagesTemplate() {
+      return this.alert
+        ? html`
+            <div class="md-editable-textfield__messages" style="display: ${this.hideMessage ? "none" : "block"}">
+              <md-help-text
+                id="alert-message"
+                role="alert"
+                aria-live="assertive"
+                .messageType=${this.message?.type}
+                aria-errormessage=${ifDefined(this.message?.message)}
+              >
+                ${this.message?.message}
+              </md-help-text>
+            </div>
+          `
+        : nothing;
+    }
 
-  get overflowStyles() {
-    return (
-      this.maxLines.length &&
-      this.maxLines.length > 0 &&
-      `max-height: ${2 * parseInt(this.maxLines)}rem; -webkit-line-clamp: ${this.maxLines}; word-break: break-all;`
-    );
-  }
+    render() {
+      const classes = {
+        [`md-editable-textfield--${this.alignment}`]: this.alignment,
+        "md-editable-textfield--disabled": this.disabled,
+        [`md-editable-textfield--${this.message?.type}`]: this.alert && !!this.message,
+        "md-editable-textfield--textoverflow": this.maxLines.length > 0 && !this.isEditing
+      };
 
-  messagesTemplate() {
-    return this.alert
-      ? html`
-          <div class="md-editable-textfield__messages" style="display: ${this.hideMessage ? "none" : "block"}">
-            <md-help-text id="alert-message" role="alert" aria-live="assertive" .messageType=${this.message?.type}>
-              ${this.message?.message}
-            </md-help-text>
-          </div>
-        `
-      : nothing;
-  }
-
-  render() {
-    const classes = {
-      [`md-editable-textfield--${this.alignment}`]: this.alignment,
-      "md-editable-textfield--disabled": this.disabled,
-      [`md-editable-textfield--${this.message?.type}`]: this.alert && !!this.message,
-      "md-editable-textfield--textoverflow": this.maxLines.length > 0 && !this.isEditing
-    };
-
-    return html`
-      <div
-        class="md-editable-textfield ${classMap(classes)}"
-        tabindex=${this.disabled ? "-1" : "0"}
-        ?contenteditable=${this.isEditing}
-        @focus=${this.handleFocus}
-        @blur=${this.handleBlur}
-        @keydown=${(e: KeyboardEvent) => {
-          this.handleKeydown(e);
-        }}
-        aria-invalid=${this.alert ? "true" : "false"}
-        aria-errormessage=${ifDefined(this.message?.message)}
-      >
-        ${dompurify.sanitize(this.content)}
-      </div>
-      ${this.messagesTemplate()}
-    `;
+      return html`
+        <div
+          style="${this.overflowStyles}"
+          class="md-editable-textfield ${classMap(classes)}"
+          tabindex=${this.disabled ? "-1" : "0"}
+          ?contenteditable=${this.isEditing}
+          @focus=${this.handleFocus}
+          @blur=${this.handleBlur}
+          @keydown=${(e: KeyboardEvent) => {
+            this.handleKeydown(e);
+          }}
+          aria-invalid=${this.alert ? "true" : "false"}
+        >
+          ${dompurify.sanitize(this.content)}
+        </div>
+        ${this.messagesTemplate()}
+      `;
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-editable-field": EditableTextfield;
+    "md-editable-field": EditableTextfield.ELEMENT;
   }
 }

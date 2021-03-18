@@ -7,7 +7,7 @@ const combobox = {
   component: "combobox",
   "bg-color": {
     light: colors.white[100].name,
-    dark: colors.gray[80].name
+    dark: colors.gray[100].name
   },
   "border-color": {
     light: colors.gray[40].name,
@@ -39,6 +39,16 @@ const combobox = {
     "bg-color": {
       light: colors.gray[10].name,
       dark: colors.gray[90].name
+    }
+  },
+  invalid: {
+    "bg-color": {
+      light: colors.red[10].name,
+      dark: colors.red[90].name
+    },
+    "border-color": {
+      light: colors.red[50].name,
+      dark: colors.red[50].name
     }
   },
   dropdown: {

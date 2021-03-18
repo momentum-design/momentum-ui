@@ -1,4 +1,5 @@
 import "@/components/badge/Badge";
+import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 export const badgeTemplate = html`
@@ -22,6 +23,32 @@ export const badgeTemplate = html`
   </md-badge>
   <md-badge color="cyan">
     Cyan
+  </md-badge>
+
+  <h4 class="sandbox-header">Additional Badges</h4>
+  <md-badge color="gray">
+    Gray
+  </md-badge>
+  <md-badge color="violet">
+    Violet
+  </md-badge>
+  <md-badge color="mint">
+    Mint
+  </md-badge>
+  <md-badge color="gold">
+    Gold
+  </md-badge>
+  <md-badge color="lime">
+    Lime
+  </md-badge>
+  <md-badge color="pink">
+    Pink
+  </md-badge>
+  <md-badge color="orange">
+    Orange
+  </md-badge>
+  <md-badge color="cobalt">
+    Cobalt
   </md-badge>
 
   <h3 class="sandbox-header">Lumos Badges</h3>

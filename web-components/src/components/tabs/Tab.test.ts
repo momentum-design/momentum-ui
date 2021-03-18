@@ -1,8 +1,8 @@
 import { Key } from "@/constants";
-import { uuid } from "@/utils/helpers";
+import { nanoid } from "nanoid";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
-import "@/components/tabs/Tab";
+import "./Tab";
 import { Tab } from "./Tab";
 
 describe("Tab", () => {
@@ -10,7 +10,7 @@ describe("Tab", () => {
 
   test("should (un)register event listeners", async () => {
     const tag = defineCE(
-      class extends Tab {
+      class extends Tab.ELEMENT {
         protected firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
           this.dispatchEvent(new CustomEvent("first-updated"));
@@ -18,14 +18,14 @@ describe("Tab", () => {
       }
     );
 
-    const el = fixtureSync<Tab>(`<${tag}></${tag}>`);
+    const el = fixtureSync<Tab.ELEMENT>(`<${tag}></${tag}>`);
     const firstUpdatedEvent = await oneEvent(el, "first-updated");
     expect(el.hasAttribute("role")).toBeTruthy();
     expect(firstUpdatedEvent).toBeDefined();
   });
 
   test("should reflect `disabled` attribute", async () => {
-    const el = await fixture<Tab>(`<md-tab></md-tab>`);
+    const el = await fixture<Tab.ELEMENT>(`<md-tab></md-tab>`);
 
     el.disabled = true;
     await elementUpdated(el);
@@ -43,8 +43,8 @@ describe("Tab", () => {
   });
 
   test("should dispatch events to parent component", async () => {
-    const id = uuid();
-    const el = await fixture<Tab>(
+    const id = nanoid();
+    const el = await fixture<Tab.ELEMENT>(
       html`
         <md-tab id=${id}></md-tab>
       `
@@ -69,7 +69,7 @@ describe("Tab", () => {
   });
 
   test("should dispatch event when selected", async() => {
-    const el = await fixture<Tab>(`<md-tab></md-tab>`);
+    const el = await fixture<Tab.ELEMENT>(`<md-tab></md-tab>`);
     const spySelected = jest.spyOn(el, "notifySelectedTab" as never);
 
     el.selected = true;
@@ -77,12 +77,5 @@ describe("Tab", () => {
 
     expect(spySelected).toHaveBeenCalled();
     spySelected.mockRestore();
-  });
-
-  test("should set label property if it defined", async() => {
-    const el = await fixture<Tab>(`<md-tab label="Tab Label"></md-tab>`);
-
-    expect(el.hasAttribute("aria-label")).toBeTruthy();
-    expect(el.getAttribute("aria-label")).toEqual("Tab Label");
   });
 });

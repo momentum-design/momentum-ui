@@ -6,14 +6,16 @@
  *
  */
 
-import activityButtonStyles from "../activity-button/scss/module.scss";
-import "../loading/Loading";
-import "../spinner/Spinner";
+import activityButtonStyles from "@/components/activity-button/scss/module.scss";
+import "@/components/loading/Loading";
+import "@/components/spinner/Spinner";
 import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import { html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const buttonSize = [
@@ -99,94 +101,110 @@ export namespace Button {
     value: string;
   };
   export type Size = typeof buttonSize[number];
-}
 
-@customElement("md-button")
-export class Button extends LitElement {
-  _active = false;
-  @property({ type: Boolean, reflect: true })
-  get active() {
-    return this._active;
-  }
-  set active(value) {
-    const oldValue = this._active;
-    this._active = value;
-    this.requestUpdate("active", oldValue);
-  }
-
-  private _tabIndex = 0;
-  @property({ type: Number, attribute: "tab-index", reflect: true })
-  get tabIndex() {
-    if (this.disabled) {
-      return -1;
+  @customElementWithCheck("md-button")
+  export class ELEMENT extends LitElement {
+    _active = false;
+    @property({ type: Boolean, reflect: true })
+    get active() {
+      return this._active;
     }
-    return this._tabIndex;
-  }
-  set tabIndex(newValue: number) {
-    const oldValue = this._tabIndex;
-    this._tabIndex = newValue;
-    this.requestUpdate("tabIndex", oldValue);
-  }
-
-  @property({ type: String }) ariaLabel = "";
-  @property({ type: String }) ariaLabelledBy = "";
-  @property({ type: Boolean }) ariaExpanded = false;
-  @property({ type: Boolean }) ariaHaspopup = false;
-  @property({ type: Boolean }) ariaPressed = false;
-  @property({ type: Boolean }) circle = false;
-  @property({ type: String }) color: Button.color = "";
-  @property({ type: Boolean }) containerLarge = false;
-  @property({ type: Boolean }) disabled = false;
-  @property({ type: String }) href = "";
-  @property({ type: String }) id = "";
-  @property({ type: String }) value = "";
-  @property({ type: String }) keyboardKey = "";
-  @property({ type: String }) label = "";
-  @property({ type: Boolean }) loading = false;
-  @property({ type: Boolean }) outline = false;
-  @property({ type: Boolean }) hasRemoveStyle = false;
-  @property({ type: String }) size: Button.Size = "32";
-  @property({ type: String }) tag: Button.Tag = "button";
-  @property({ type: String }) type: Button.Type = "button";
-  @property({ type: String }) role: Button.Role = "button";
-  @property({ type: String }) variant: Button.variant = "secondary";
-  @property({ type: String }) width = "";
-  @property({ type: String }) maxWidth = "";
-  @property({ type: String }) activityType = "";
-  @property({ type: Boolean }) iconActive = false;
-  @property({ attribute: false }) clickFunction: Function | null = null;
-
-  @query(".md-button") button!: HTMLButtonElement;
-
-  renderWidth = () => {
-    return this.width ? `width: ${this.width};` : nothing;
-  };
-
-  renderMaxWidth = () => {
-    return this.maxWidth ? `max-width: ${this.maxWidth};` : nothing;
-  };
-
-  getStyles = () => {
-    if (this.width || this.maxWidth) {
-      return html`
-        <style>
-          :host .md-button--${this.size} {
-            ${this.renderWidth()};
-            ${this.renderMaxWidth()};
-          }
-        </style>
-      `;
+    set active(value) {
+      const oldValue = this._active;
+      this._active = value;
+      this.requestUpdate("active", oldValue);
     }
-  };
 
-  handleKeyDown(event: KeyboardEvent) {
-    if (this.disabled) {
-      return;
+    private _tabIndex = 0;
+    @property({ type: Number, attribute: "tab-index", reflect: true })
+    get tabIndex() {
+      if (this.disabled) {
+        return -1;
+      }
+      return this._tabIndex;
     }
-    const { code } = event;
-    if (code === Key.Enter || code === Key.Space) {
+    set tabIndex(newValue: number) {
+      const oldValue = this._tabIndex;
+      this._tabIndex = newValue;
+      this.requestUpdate("tabIndex", oldValue);
+    }
+
+    @property({ type: String }) ariaLabel = "";
+    @property({ type: String }) ariaLabelledBy = "";
+    @property({ type: Boolean }) ariaExpanded = false;
+    @property({ type: Boolean }) ariaHaspopup = false;
+    @property({ type: Boolean }) ariaPressed = false;
+    @property({ type: Boolean }) circle = false;
+    @property({ type: String }) color: Button.color = "";
+    @property({ type: Boolean }) containerLarge = false;
+    @property({ type: Boolean }) disabled = false;
+    @property({ type: String }) href = "";
+    @property({ type: String }) id = "";
+    @property({ type: String }) value = "";
+    @property({ type: String }) keyboardKey = "";
+    @property({ type: String }) label = "";
+    @property({ type: Boolean }) loading = false;
+    @property({ type: Boolean }) outline = false;
+    @property({ type: Boolean }) hasRemoveStyle = false;
+    @property({ type: String }) size: Button.Size = "32";
+    @property({ type: String }) tag: Button.Tag = "button";
+    @property({ type: String }) type: Button.Type = "button";
+    @property({ type: String }) role: Button.Role = "button";
+    @property({ type: String }) variant: Button.variant = "secondary";
+    @property({ type: String }) width = "";
+    @property({ type: String }) maxWidth = "";
+    @property({ type: String }) activityType = "";
+    @property({ type: Boolean }) iconActive = false;
+    @property({ attribute: false }) clickFunction: Function | null = null;
+
+    @query(".md-button") button!: HTMLButtonElement;
+
+    renderWidth = () => {
+      return this.width ? `width: ${this.width};` : nothing;
+    };
+
+    renderMaxWidth = () => {
+      return this.maxWidth ? `max-width: ${this.maxWidth};` : nothing;
+    };
+
+    getStyles = () => {
+      if (this.width || this.maxWidth) {
+        return html`
+          <style>
+            :host .md-button--${this.size} {
+              ${this.renderWidth()};
+              ${this.renderMaxWidth()};
+            }
+          </style>
+        `;
+      }
+    };
+
+    handleKeyDown(event: KeyboardEvent) {
+      if (this.disabled) {
+        return;
+      }
+      const { code } = event;
+      if (code === Key.Enter || code === Key.Space) {
+        this.dispatchEvent(
+          new CustomEvent("button-keydown", {
+            composed: true,
+            bubbles: true,
+            detail: {
+              srcEvent: event
+            }
+          })
+        );
+      }
+    }
+
+    handleClick(event: MouseEvent) {
+      if (this.disabled) {
+        return;
+      }
+      this.clickFunction && this.clickFunction();
       this.dispatchEvent(
-        new CustomEvent("button-keydown", {
+        new CustomEvent("button-click", {
           composed: true,
           bubbles: true,
           detail: {
@@ -195,166 +213,149 @@ export class Button extends LitElement {
         })
       );
     }
-  }
 
-  handleClick(event: MouseEvent) {
-    if (this.disabled) {
-      return;
+    static get styles() {
+      return [reset, styles, activityButtonStyles];
     }
-    this.clickFunction && this.clickFunction();
-    this.dispatchEvent(
-      new CustomEvent("button-click", {
-        composed: true,
-        bubbles: true,
-        detail: {
-          srcEvent: event
-        }
-      })
-    );
-  }
 
-  static get styles() {
-    return [reset, styles, activityButtonStyles];
-  }
+    get buttonClassMap() {
+      return {
+        "md-button--circle": this.circle,
+        "md-button--none": this.hasRemoveStyle,
+        "md-button--outline": this.outline,
+        active: this.active && !this.disabled,
+        [`md-button--${this.size}`]: !this.hasRemoveStyle,
+        [`md-button--${this.color}`]: !this.hasRemoveStyle && !!this.color,
+        [`md-activity__${this.activityType}`]: !!this.activityType,
+        "md-activity": !!this.activityType,
+        "md-button--icon": this.iconActive,
+        "md-button--onlyicon": this.hasIcon && !this.slottedText
+      };
+    }
 
-  get buttonClassMap() {
-    return {
-      "md-button--circle": this.circle,
-      "md-button--none": this.hasRemoveStyle,
-      "md-button--outline": this.outline,
-      active: this.active && !this.disabled,
-      [`md-button--${this.size}`]: !this.hasRemoveStyle,
-      [`md-button--${this.color}`]: !this.hasRemoveStyle && !!this.color,
-      [`md-activity__${this.activityType}`]: !!this.activityType,
-      "md-activity": !!this.activityType,
-      "md-button--icon": this.iconActive,
-      "md-button--onlyicon": this.hasIcon && !this.slottedText
+    get slottedText() {
+      return this.querySelector("[slot=text]")?.textContent;
+    }
+
+    get hasIcon() {
+      return this.querySelector("[slot=icon]") !== null || this.loading;
+    }
+
+    iconTemplate = () => {
+      if (this.loading) {
+        return html`
+          <md-spinner size="16"></md-spinner>
+        `;
+      } else {
+        return html`
+          <slot name="icon"></slot>
+        `;
+      }
     };
-  }
 
-  get slottedText() {
-    return this.querySelector("[slot=text]")?.textContent;
-  }
+    textTemplate = () => {
+      if (this.circle && this.hasIcon) {
+        return nothing;
+      } else {
+        return html`
+          <slot name="text"></slot>
+        `;
+      }
+    };
 
-  get hasIcon() {
-    return this.querySelector("[slot=icon]") !== null || this.loading;
-  }
-
-  iconTemplate = () => {
-    if (this.loading) {
+    childrenTemplate() {
       return html`
-        <md-spinner size="16"></md-spinner>
-      `;
-    } else {
-      return html`
-        <slot name="icon"></slot>
+        <span part="button-children" class="md-button__children">
+          ${this.iconTemplate()} ${this.textTemplate()}
+          <slot></slot>
+        </span>
       `;
     }
-  };
 
-  textTemplate = () => {
-    if (this.circle && this.hasIcon) {
+    buttonTemplate(tag: Button.Tag) {
+      if (tag === "button") {
+        return html`
+          <button
+            part="button"
+            id=${this.id}
+            class="md-button ${classMap(this.buttonClassMap)}"
+            @click=${(e: MouseEvent) => this.handleClick(e)}
+            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            tabindex=${this.tabIndex}
+            aria-label=${this.ariaLabel}
+            aria-labelledby=${ifDefined(this.ariaLabelledBy)}
+            aria-expanded=${this.ariaExpanded}
+            aria-haspopup=${this.ariaHaspopup}
+            type=${this.type}
+            role=${this.role}
+            ?disabled=${this.disabled || this.loading}
+          >
+            ${this.childrenTemplate()}
+          </button>
+        `;
+      } else if (tag === "input") {
+        return html`
+          <input
+            part="button"
+            id=${this.id}
+            class="md-button ${classMap(this.buttonClassMap)}"
+            @click=${(e: MouseEvent) => this.handleClick(e)}
+            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            role=${this.role}
+            tabindex=${this.tabIndex}
+            aria-pressed=${this.ariaPressed}
+            aria-label=${this.ariaLabel}
+            aria-labelledby=${this.ariaLabelledBy}
+            type=${this.type}
+            alt=${this.label}
+            value=${this.value}
+            ?disabled=${this.disabled || this.loading}
+          />
+        `;
+      } else if (tag === "a") {
+        return html`
+          <a
+            part="button"
+            id=${this.id}
+            class="md-button ${classMap(this.buttonClassMap)}"
+            @click=${(e: MouseEvent) => this.handleClick(e)}
+            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            role=${this.role}
+            tabindex=${this.tabIndex}
+            aria-pressed=${this.ariaPressed}
+            aria-label=${this.ariaLabel}
+            aria-labelledby=${this.ariaLabelledBy}
+            href=${this.href}
+          >
+            ${this.childrenTemplate()}
+          </a>
+        `;
+      }
       return nothing;
-    } else {
-      return html`
-        <slot name="text"></slot>
-      `;
     }
-  };
 
-  childrenTemplate() {
-    return html`
-      <span class="md-button__children">
-        ${this.iconTemplate()} ${this.textTemplate()}
-        <slot></slot>
-      </span>
-    `;
-  }
-
-  buttonTemplate(tag: Button.Tag) {
-    if (tag === "button") {
+    render() {
       return html`
-        <button
-          part="button"
-          id=${this.id}
-          class="md-button ${classMap(this.buttonClassMap)}"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
-          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-          tabindex=${this.tabIndex}
-          aria-pressed=${this.ariaPressed}
-          aria-label=${this.ariaLabel}
-          aria-labelledby=${this.ariaLabelledBy}
-          aria-expanded=${this.ariaExpanded}
-          aria-haspopup=${this.ariaHaspopup}
-          type=${this.type}
-          role=${this.role}
-          ?disabled=${this.disabled || this.loading}
-        >
-          ${this.childrenTemplate()}
-        </button>
-      `;
-    } else if (tag === "input") {
-      return html`
-        <input
-          part="button"
-          id=${this.id}
-          class="md-button ${classMap(this.buttonClassMap)}"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
-          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-          role=${this.role}
-          tabindex=${this.tabIndex}
-          aria-pressed=${this.ariaPressed}
-          aria-label=${this.ariaLabel}
-          aria-labelledby=${this.ariaLabelledBy}
-          type=${this.type}
-          alt=${this.label}
-          value=${this.value}
-          ?disabled=${this.disabled || this.loading}
-        />
-      `;
-    } else if (tag === "a") {
-      return html`
-        <a
-          part="button"
-          id=${this.id}
-          class="md-button ${classMap(this.buttonClassMap)}"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
-          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-          role=${this.role}
-          tabindex=${this.tabIndex}
-          aria-pressed=${this.ariaPressed}
-          aria-label=${this.ariaLabel}
-          aria-labelledby=${this.ariaLabelledBy}
-          href=${this.href}
-        >
-          ${this.childrenTemplate()}
-        </a>
-      `;
-    }
-    return nothing;
-  }
-
-  render() {
-    return html`
-      ${this.getStyles()}
-      ${this.label
-        ? html`
-            <div part="button-container" class=${`md-button__container${this.containerLarge ? "" : "--small"}`}>
-              ${this.buttonTemplate(this.tag)}
-              <div part="button-label" class="md-button__label">
-                ${this.label}
+        ${this.getStyles()}
+        ${this.label
+          ? html`
+              <div part="button-container" class=${`md-button__container${this.containerLarge ? "" : "--small"}`}>
+                ${this.buttonTemplate(this.tag)}
+                <div part="button-label" class="md-button__label">
+                  ${this.label}
+                </div>
               </div>
-            </div>
-          `
-        : html`
-            ${this.buttonTemplate(this.tag)}
-          `}
-    `;
+            `
+          : html`
+              ${this.buttonTemplate(this.tag)}
+            `}
+      `;
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "md-button": Button;
+    "md-button": Button.ELEMENT;
   }
 }

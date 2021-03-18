@@ -251,8 +251,8 @@ class Color extends React.PureComponent {
             ))}
           </div>
           <TokenNavigation
-            leftNav={{label: "Space", url: '/2020/tokens/space'}}
-            rightNav={{label: "Typography", url: "/2020/tokens/typography"}}
+            leftNav={{label: "Space", url: '/tokens/space'}}
+            rightNav={{label: "Typography", url: "/tokens/typography"}}
           />
         </div>
       </div>

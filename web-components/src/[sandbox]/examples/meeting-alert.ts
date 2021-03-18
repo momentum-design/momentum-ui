@@ -1,5 +1,6 @@
 import "@/components//meeting-alert/MeetingAlert";
 import "@/components/button/Button";
+import "@/components/icon/Icon";
 import svgWhatsapp from "@img/whatsapp.svg";
 import { html } from "lit-element";
 import { querySelectorDeep } from "query-selector-shadow-dom";

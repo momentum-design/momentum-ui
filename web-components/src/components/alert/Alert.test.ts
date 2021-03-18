@@ -17,7 +17,7 @@ describe("Alert", () => {
   });
 
   test("should create Alert element with all default props", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert></md-alert>
     `);
 
@@ -32,7 +32,7 @@ describe("Alert", () => {
     const myMessage = "This is my message";
     const myTitle = "My Title";
 
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert .message=${myMessage} .title=${myTitle} show></md-alert>
     `);
 
@@ -44,7 +44,7 @@ describe("Alert", () => {
   });
 
   test("should render visible Alert component with default html class names", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert show></md-alert>
     `);
 
@@ -53,7 +53,7 @@ describe("Alert", () => {
   });
 
   test("should render Alert with icon reflecting default type", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert show></md-alert>
     `);
 
@@ -65,7 +65,7 @@ describe("Alert", () => {
   });
 
   test("should render success Alert", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert type="success" show></md-alert>
     `);
 
@@ -78,7 +78,7 @@ describe("Alert", () => {
   });
 
   test("should render info Alert", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert type="info" show></md-alert>
     `);
 
@@ -91,7 +91,7 @@ describe("Alert", () => {
   });
 
   test("should render error Alert", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert type="error" show></md-alert>
     `);
 
@@ -104,7 +104,7 @@ describe("Alert", () => {
   });
 
   test("should render warning Alert", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert type="warning" show></md-alert>
     `);
 
@@ -117,7 +117,7 @@ describe("Alert", () => {
   });
 
   test("should render close button & icon when closable prop is true", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert show closable></md-alert>
     `);
 
@@ -129,7 +129,7 @@ describe("Alert", () => {
   });
 
   test("should handle Click event", async () => {
-    const element = await fixture<Alert>(html`
+    const element = await fixture<Alert.ELEMENT>(html`
       <md-alert show closable></md-alert>
     `);
 

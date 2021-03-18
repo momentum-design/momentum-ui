@@ -114,8 +114,28 @@ export const buttonTemplate = html`
     <md-button variant="red"><span slot="text">red</span></md-button>
     <md-button variant="green"><span slot="text">green</span></md-button>
     <md-button variant="white"><span slot="text">White</span></md-button>
-    <md-button variant="white" outline><span slot="text">White Outline</span></md-button>
   </div>
+
+  <h3 class="sandbox-header" style="margin: .5rem 1rem">Outline Color Schema</h3>
+  <div class="row" style="display: flex; margin: .5rem 0">
+    <md-button color="blue" outline><span slot="text">Blue Outline</span></md-button>
+    <md-button color="dark-gray" outline><span slot="text">Dark Gray Outline</span></md-button>
+    <md-button color="red" outline><span slot="text">Red Outline</span></md-button>
+    <md-button color="green" outline><span slot="text">Green Outline</span></md-button>
+    <md-button color="white" outline><span slot="text">White Outline</span></md-button>
+    <md-button color="orange" outline><span slot="text">Orange Outline</span></md-button>
+    <md-button color="mint" outline><span slot="text">Mint Outline</span></md-button>
+  </div>
+   <div class="row" style="display: flex; margin: .5rem 0">
+    <md-button color="yellow" outline><span slot="text">Yellow Outline</span></md-button>
+    <md-button color="duck-egg" outline><span slot="text">Duck Egg Outline</span></md-button>
+    <md-button color="purple" outline><span slot="text">Purple Outline</span></md-button>
+    <md-button color="violet" outline><span slot="text">Violet Outline</span></md-button>
+    <md-button color="pink" outline><span slot="text">Pink Outline</span></md-button>
+    <md-button color="cyan" outline><span slot="text">Cyan Outline</span></md-button>
+
+  </div>
+  <br/>
 
   <div class="row" style="display: flex; margin: .5rem 0">
     <h3 class="sandbox-header" style="margin: .5rem 1rem">Different Tags</h3>

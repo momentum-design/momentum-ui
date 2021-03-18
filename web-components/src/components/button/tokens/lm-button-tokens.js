@@ -40,7 +40,7 @@ const button = {
   secondary: {
     "bg-color": {
       light: colors.gray[20].name,
-      dark: colors.gray[60].name
+      dark: colors.gray[80].name
     },
     "text-color": {
       light: colors.gray[100].name,
@@ -49,13 +49,13 @@ const button = {
     hover: {
       "bg-color": {
         light: colors.gray[30].name,
-        dark: colors.gray[70].name
+        dark: colors.gray[90].name
       }
     },
     pressed: {
       "bg-color": {
         light: colors.gray[40].name,
-        dark: colors.gray[80].name
+        dark: colors.gray[100].name
       }
     },
     outline: {
@@ -100,7 +100,7 @@ const button = {
   white: {
     "bg-color": {
       light: colors.white.default.name,
-      dark: colors.gray[80].name
+      dark: colors.white.default.name
     },
     hover: {
       "bg-color": {
@@ -265,6 +265,20 @@ const button = {
     "text-color": {
       light: colors.gray[40].name,
       dark: colors.gray[70].name
+    }
+  },
+  favorite: {
+    hover: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[80].name
+      }
     }
   },
   "focus-ring": {

@@ -3,10 +3,12 @@ import { Loading } from "./Loading";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 
 describe("Loading", () => {
-  let element: Loading;
+  let element: Loading.ELEMENT;
+
   afterEach(fixtureCleanup);
+
   beforeEach(async () => {
-    element = await fixture<Loading>(
+    element = await fixture<Loading.ELEMENT>(
       html`
         <md-loading></md-loading>
       `

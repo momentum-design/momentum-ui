@@ -43,6 +43,18 @@
       width: 100%;
     }
 
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+      moz-appearance: textfield;
+    }
+
     [type="number"] {
       appearance: textfield;
     }
@@ -203,6 +215,10 @@
     transition: box-shadow ease-out 0.15s;
     width: 100%;
 
+    &.md-dirty {
+      padding-right: rem-calc(35);
+    }
+
     &--nested {
       &-1 {
         padding-left: 2rem;
@@ -348,8 +364,6 @@
       cursor: pointer;
     }
   }
-
-  
 }
 
 .md-input[type="search"] {

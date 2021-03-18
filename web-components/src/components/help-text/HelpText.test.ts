@@ -1,20 +1,39 @@
-import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit-element";
 import "./HelpText";
 import { HelpText } from "./HelpText";
 
 describe("TextHelper component", () => {
-  afterEach(() => {
-    fixtureCleanup();
+  let element: HelpText.ELEMENT;
+  beforeEach(async () => {
+    element = await fixture<HelpText.ELEMENT>(
+      html`
+        <md-help-text></md-help-text>
+      `
+    );
   });
 
-  test("should render one help text", async () => {
-    const element = await fixture(`<md-help-text></md-help-text>`);
+  afterEach(fixtureCleanup);
+
+  test("should render one help text", () => {
     expect(element).not.toBeNull();
   });
 
   test("should create message help text", async () => {
-    const element = await fixture<HelpText>(`<md-help-text message="test message"></md-help-text>`);
-    expect(element.message).toMatch("test message");
-    expect(element.getAttribute("message")).toMatch("test message");
+    element.message = "Test Message";
+    await elementUpdated(element);
+    expect(element.message).toMatch("Test Message");
+  });
+
+  test("should render correct icon type depend on message type", async () => {
+    element.messageType = "error";
+    await elementUpdated(element);
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("error_12");
+    element.messageType = "success";
+    await elementUpdated(element);
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("check_12");
+    element.messageType = "warning";
+    await elementUpdated(element);
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("warning_12");
   });
 });

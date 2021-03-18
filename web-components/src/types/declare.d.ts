@@ -20,3 +20,10 @@ declare interface Attendee {
   src?: string;
   alt?: string;
 }
+
+declare module "highlight.js/lib/core";
+
+declare module "*.mdx" {
+  let MDXComponent: (props: any) => JSX.Element;
+  export default MDXComponent;
+}

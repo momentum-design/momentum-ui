@@ -1,85 +1,84 @@
-import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "@/components/icon/Icon";
 import "./Tooltip";
+import "@/components/icon/Icon";
+import "@/components/theme/Theme";
+import { Theme } from "@/components/theme/Theme";
 import { Tooltip } from "./Tooltip";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const lmTooltipTokens = require("./tokens/lm-tooltip-tokens.js");
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires
-const mdTooltipTokens = require("./tokens/md-tooltip-tokens.js");
-
-describe("Tooltip Tokens", () => {
-  test("Lumos Token Import should not be null", () => {
-    expect(lmTooltipTokens).not.toBeNull();
-  });
-  test("Lumos Token Import should not be null", () => {
-    expect(mdTooltipTokens).not.toBeNull();
-  });
-});
-
-const fixtureFactory = async (tooltip: string, disabled: boolean): Promise<Tooltip> => {
-  return await fixture(
-    html`
-      <md-tooltip message=${tooltip} ?disabled=${disabled}>
-        <md-icon name="apps_24"></md-icon>
-      </md-tooltip>
-    `
-  );
-};
-
 describe("Tooltip", () => {
+  let theme: Theme.ELEMENT;
+  let tooltip: Tooltip.ELEMENT;
+
   afterEach(fixtureCleanup);
 
-  test("should render Tooltip Component", async () => {
-    expect(true).toBeTruthy();
-  });
-
-  test("should show/hide Tooltip Component", async () => {
-    const element: Tooltip = await fixtureFactory("Test text", false);
-    element.showTooltip();
-    await elementUpdated(element);
-
-    expect(element.getAttribute("data-show")).toBeTruthy;
-
-    element.hideTooltip();
-    await elementUpdated(element);
-    expect(element.getAttribute("data-show")).toBeFalsy;
-  });
-
-  test("should show/hide Tooltip Component if trigger is focus", async () => {
-    const element: Tooltip = await fixtureFactory("Test text", false);
-    element.hideTooltip();
-    await elementUpdated(element);
-    expect(element.getAttribute("data-show")).toBeTruthy;
-    await elementUpdated(element);
-    expect(element.getAttribute("data-show")).toBeFalsy;
-  });
-
-  test("should disable Tooltip Component even if trigger is focus", async () => {
-    const element: Tooltip = await fixtureFactory("Test text", true);
-    element.showTooltip();
-    await elementUpdated(element);
-
-    const tooltipElm = element?.shadowRoot?.querySelector(".md-tooltip");
-    expect(tooltipElm?.getAttribute("class")).toMatch("md-tooltip md-tooltip--disabled");
-  });
-
-  test("should render content within named slot", async () => {
-    const element: Tooltip = await fixture(
-      html`
-        <md-tooltip>
-          <md-icon slot="tooltip-content" name="apps_24"></md-icon>
-          <md-button>Hover me</md-button>
+  beforeEach(async () => {
+    theme = await fixture<Theme.ELEMENT>(html`
+      <md-theme>
+        <md-tooltip message="Tooltip">
+          <md-button>Tooltip</md-button>
         </md-tooltip>
-      `
-    );
-    expect(element).not.toBeNull();
-    element.showTooltip();
-    await elementUpdated(element);
+      </md-theme>
+    `);
+    tooltip = theme.querySelector("md-tooltip") as Tooltip.ELEMENT;
+  });
 
-    const namedSlotContent = element.renderRoot.querySelector('slot[name="tooltip-content"]') as HTMLSlotElement;
-    expect(namedSlotContent).not.toBeNull();
-    const slotElement = namedSlotContent.assignedElements()[0] as HTMLElement;
-    expect(slotElement).not.toBeNull();
+  test("should notify md-theme in show/hide case", async () => {
+    const createNotifySpy = jest.spyOn(tooltip, "notifyTooltipCreate");
+    const destroyNotifySpy = jest.spyOn(tooltip, "notifyTooltipDestroy");
+
+    const mouseEnterEvent = new MouseEvent("mouseenter");
+    const mouseLeaveEvent = new MouseEvent("mouseleave");
+    tooltip.reference.dispatchEvent(mouseEnterEvent);
+
+    await elementUpdated(theme);
+    expect(createNotifySpy).toHaveBeenCalled();
+
+    tooltip.reference.dispatchEvent(mouseLeaveEvent);
+
+    await elementUpdated(theme);
+    expect(createNotifySpy).toHaveBeenCalled();
+
+    createNotifySpy.mockRestore();
+    destroyNotifySpy.mockRestore();
+  });
+
+  test("should dispach event after show/hide case", async () => {
+    setTimeout(() => tooltip.notifyTooltipCreate());
+
+    const { detail: tooltipCreate } = await oneEvent(tooltip, "tooltip-create");
+
+    expect(tooltipCreate).toBeDefined();
+    expect(tooltip.opened).toBeTruthy();
+    expect(tooltipCreate.reference).toEqual(tooltip.reference);
+
+    setTimeout(() => tooltip.notifyTooltipDestroy());
+
+    const { detail: tooltipDestroy } = await oneEvent(tooltip, "tooltip-destroy");
+
+    expect(tooltipDestroy).toBeDefined();
+    expect(tooltip.opened).toBeFalsy();
+    expect(tooltipDestroy.reference).toEqual(tooltip.reference);
+  });
+
+  test("should handle with slot content changes", async () => {
+    const div = document.createElement("div");
+    div.slot = "tooltip-content";
+    div.textContent = "Slot Content";
+
+    tooltip.message = "";
+    tooltip.append(div);
+
+    await elementUpdated(tooltip);
+
+    expect(tooltip["slotContent"]).toEqual([div]);
+  });
+
+  test("should handle disabled state", async () => {
+    tooltip.disabled = true;
+
+    await elementUpdated(tooltip);
+    expect(tooltip.disabled).toBeTruthy();
+    expect(tooltip.shadowRoot!.querySelector(".md-tooltip--disabled")).not.toBeNull();
   });
 });

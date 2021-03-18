@@ -1,7 +1,16 @@
-import "./Radio";
-import "./RadioGroup";
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import "@/components/radio/Radio";
+import "@/components/radio/RadioGroup";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { select, withKnobs } from "@storybook/addon-knobs";
+import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
@@ -15,53 +24,22 @@ export default {
   }
 };
 
-export const Default = () => {
-  return html`
-    <md-radiogroup group-label="group_process">
-      <md-radio slot="radio" value="developing">Developing</md-radio>
-      <md-radio slot="radio" value="linting">Linting</md-radio>
-      <md-radio slot="radio" value="testing">Testing</md-radio>
-      <md-radio slot="radio" value="building">Building</md-radio>
-    </md-radiogroup>
-  `;
-};
-
-export const Alignment = () => {
-  const options = {
-    Vertical: "vertical",
-    Horizontal: "horizontal"
-  };
-
+export const Radio = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const options = { Vertical: "vertical", Horizontal: "horizontal"};
   const alignment = select("Orientation", options, "horizontal");
+  const check = number("Precheck", 1);
+  const disabled = boolean("Disabled", false);
 
   return html`
-    <md-radiogroup group-label="group_process" .alignment=${alignment as "horizontal" | "vertical"}>
-      <md-radio slot="radio" value="developing">Developing</md-radio>
-      <md-radio slot="radio" value="linting">Linting</md-radio>
-      <md-radio slot="radio" value="testing">Testing</md-radio>
-      <md-radio slot="radio" value="building">Building</md-radio>
-    </md-radiogroup>
-  `;
-};
-
-export const PreChecked = () => {
-  return html`
-    <md-radiogroup group-label="group_process" checked="1">
-      <md-radio slot="radio" value="developing">Developing</md-radio>
-      <md-radio slot="radio" value="linting">Linting</md-radio>
-      <md-radio slot="radio" value="testing">Testing</md-radio>
-      <md-radio slot="radio" value="building">Building</md-radio>
-    </md-radiogroup>
-  `;
-};
-
-export const Disabled = () => {
-  return html`
-    <md-radiogroup group-label="group_process" checked="1">
-      <md-radio slot="radio" value="developing">Developing</md-radio>
-      <md-radio slot="radio" value="linting" disabled>Linting</md-radio>
-      <md-radio slot="radio" value="testing" disabled>Testing</md-radio>
-      <md-radio slot="radio" value="building">Building</md-radio>
-    </md-radiogroup>
+    <md-theme class="theme-toggle" id="radio" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-radiogroup group-label="group_process" .alignment=${alignment as any} .checked="${check}">
+        <md-radio slot="radio" value="developing">Developing</md-radio>
+        <md-radio slot="radio" value="linting" .disabled=${disabled}>Linting</md-radio>
+        <md-radio slot="radio" value="testing">Testing</md-radio>
+        <md-radio slot="radio" value="building" .disabled=${disabled}>Building</md-radio>
+      </md-radiogroup>
+    </md-theme>
   `;
 };

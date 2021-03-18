@@ -5,10 +5,12 @@ import { elementUpdated, fixture, fixtureCleanup, nextFrame, oneEvent } from "@o
 import { html } from "lit-element";
 
 describe("Slider Component", () => {
+  let element: Slider.ELEMENT;
+
   afterEach(fixtureCleanup);
-  let element: Slider;
+
   beforeEach(async () => {
-    element = await fixture<Slider>(
+    element = await fixture<Slider.ELEMENT>(
       html`
         <md-slider></md-slider>
       `

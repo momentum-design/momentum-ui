@@ -1,4 +1,5 @@
 import "@/components/combobox/ComboBox";
+import "@/components/icon/Icon";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
@@ -7,13 +8,32 @@ const dropdownValue: string[] = [];
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
-  <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" .value=${[comboBoxOptions[5]]}></md-combobox>
+  <md-combobox
+    style="width: 220px; display: inline-block;"
+    .options=${comboBoxOptions}
+    placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+  ></md-combobox>
+  <h3>Default with trim space</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    .value=${[comboBoxOptions[5]]}
+    search-trim-space
+  ></md-combobox>
   <h3>Default with Custom Values</h3>
   <md-combobox
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     .value=${[comboBoxOptions[5]]}
     allow-custom-value
+  ></md-combobox>
+  <h3>Invalid</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    .value=${[comboBoxOptions[5]]}
+    invalid
+    invalid-text-i18n="This is error message"
   ></md-combobox>
   <h3>Multi Data with Custom Values</h3>
   <md-combobox
@@ -115,4 +135,11 @@ export const comboBoxTemplate = html`
   <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content>
     {dropdownValue.map((item, index) => dropdownOptionTemplate(item, index))}
   </md-combobox>
+  <h3>Without Clear Icon</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    .value=${[comboBoxOptions[5]]}
+    no-clear-icon
+  ></md-combobox>
 `;

@@ -1,0 +1,114 @@
+:host(md-card) {
+  display: inline-block;
+
+  .md-card {
+    @include flex($fd: column, $jc: flex-start, $ai: stretch);
+    background: $md-card-bg;
+    border: $md-card-border;
+    border-radius: $md-card-border-radius;
+    box-shadow: $md-card-box-shadow;
+    color: $md-card-color;
+    cursor: pointer;
+    max-width: $md-card-width;
+    padding: calc(#{$md-card-indent} * 2);
+    position: relative;
+    width: 100%;
+
+    &-header {
+      @include flex($jc: space-between, $ac: flex-start, $ai: flex-start);
+      flex: 1 0 100%;
+      margin-bottom: $md-card-indent;
+
+      md-favorite {
+        padding-top: calc(#{$md-card-indent} * 0.5);
+      }
+
+      &-title {
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: column;
+        margin: 0 $md-card-indent;
+
+        h1 {
+          color: $md-card-title-color;
+          font-family: $brand-font-medium;
+          font-size: $font-size-large;
+          line-height: calc(#{$md-card-indent} * 3);
+          margin: 0;
+        }
+
+        h2 {
+          color: $md-card-color;
+          font-size: $font-size-small;
+          line-height: calc(#{$md-card-indent} * 2.25);
+        }
+      }
+
+      &-actions {
+        align-self: stretch;
+        display: inline-flex;
+        position: relative;
+        z-index: 1;
+
+        .md-card-info-icon,
+        .md-card-max-icon {
+          padding-right: $md-card-indent;
+        }
+
+        md-menu-overlay::part(overlay-content) {
+          max-width: $md-card-menu-width;
+        }
+      }
+    }
+
+    .md-card-menu-icon {
+      border-radius: calc(#{$md-card-border-radius} / 2);
+      display: inline-flex;
+
+      &::part(button) {
+        padding: calc(#{$md-card-indent} * 0.25);
+      }
+
+      &:hover {
+        background-color: var(--md-tertiary-bg-color);
+      }
+
+      &:active {
+        background-color: var(--md-quaternary-bg-color);
+      }
+    }
+
+    .md-card-menu-list-items {
+      padding: calc(#{$md-card-indent} * 0.25);
+    }
+
+    &-content {
+      background: $md-card-content-bg;
+      border: $md-card-border;
+      border-radius: calc(#{$md-card-border-radius} / 2);
+      height: $md-card-content-min-height;
+      margin-bottom: calc(#{$md-card-indent} * 2);
+      overflow: hidden;
+    }
+
+    &.full-screen {
+      display: inline-block;
+      height: 100% !important;
+      left: 0;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .md-card-content {
+        height: auto;
+      }
+    }
+
+    &-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $md-card-indent;
+    }
+  }
+}

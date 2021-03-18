@@ -118,11 +118,6 @@ export function debounce<T>(func: Function, wait: number, immediate?: boolean) {
   };
 }
 
-export const uuid = () =>
-  Math.random()
-    .toString(36)
-    .substr(2, 10);
-
 export const throttle = (fn: (...args: any[]) => unknown, delay = 1000 / 60) => {
   let lastTimeoutRef: number | undefined = undefined;
   let last = Date.now();
@@ -142,3 +137,14 @@ export const throttle = (fn: (...args: any[]) => unknown, delay = 1000 / 60) => 
 
   return (...args: any[]) => next(...args);
 };
+
+export function closestElement(selector: string, base: HTMLElement) {
+  function __closestFrom(el: unknown): HTMLElement | null {
+    if (!el || el === document || el === window) return null;
+    // @ts-ignore
+    const found = el.closest(selector);
+    // @ts-ignore
+    return found ? found : __closestFrom(el.getRootNode().host);
+  }
+  return __closestFrom(base);
+}

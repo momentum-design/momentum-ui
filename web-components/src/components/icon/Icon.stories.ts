@@ -1,13 +1,35 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
 import iconNames from "@momentum-ui/icons/data/iconNames.json";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
-import "./Icon";
-import { iconSize, iconType } from "./Icon";
+import { html } from "lit-element";
+import "@/components/icon/Icon";
+import "@/components/theme/Theme";
+import { iconSize, iconType } from "./Icon"; // Keep type import as a relative path
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: "Icon",
+  component: "md-icon",
   decorators: [withKnobs, withA11y],
+  argTypes: {
+    iconClassMap: { table: { disable: true } },
+    iconStyleMap: { table: { disable: true } },
+    iconFontSize: { table: { disable: true } },
+    iconColor: { table: { disable: true } },
+    iconName: { table: { disable: true } },
+    consoleHandler: { table: { disable: true } },
+    buttonClassMap: { table: { disable: true } },
+    isComboBoxIcon: { table: { disable: true } },
+    isActive: { table: { disable: true } }
+  },
   parameters: {
     a11y: {
       element: "md-icon"
@@ -15,77 +37,30 @@ export default {
   }
 };
 
-export const Default = () =>
-  html`
-    <md-icon name="icon-arrow-up_16"></md-icon>
-  `;
-
-export const Color = () => {
-  const label = "Color";
-  const defaultValue = "red";
-  const color = text(label, defaultValue);
-
-  return html`
-    <md-icon name="icon-arrow-up_16" .color=${color}></md-icon>
-  `;
-};
-export const IconStyle = () => {
-  const label = "Icon Style";
-  const defaultValue = "";
-  const iconStyle = text(label, defaultValue);
+export const Icon = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const name = select("Name", iconNames, "arrow-up_16");
+  const color = text("Color", "red");
+  const title = text("Title", "");
+  const type = select("Type", iconType, "");
+  const iconStyle = text("Icon Style", "");
+  const size = select("Size", iconSize, "16");
+  const sizeOverrided = boolean("Size Override", false);
 
   return html`
-    <md-icon name="icon-arrow-up_16" .iconStyle=${iconStyle}></md-icon>
-  `;
-};
-export const Size = () => {
-  const label = "Size";
-  const defaultValue = "16";
-  const size = select(label, iconSize, defaultValue);
-  return html`
-    <md-icon name="icon-arrow-up_16" size=${size}></md-icon>
-  `;
-};
-export const SizeOverride = () => {
-  const label = "Size Override";
-  const defaultValue = false;
-  const sizeOverrided = boolean(label, defaultValue);
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-icon 
+        .name=${`icon-${name}`} 
+        .title=${title} 
+        .color=${color} 
+        .iconStyle=${iconStyle} 
+        .type=${type} 
+        .size=${size} 
+        .sizeOverrided=${sizeOverrided}
+        @icon-click=${(action('dispatchEvent'))}>
+      </md-icon>
+    </md-theme>
+  `; 
+}
 
-  if (sizeOverrided) {
-    return html`
-      <md-icon name="icon-arrow-up_16" sizeOverrided></md-icon>
-    `;
-  } else {
-    return html`
-      <md-icon name="icon-arrow-up_16"></md-icon>
-    `;
-  }
-};
-
-export const Title = () => {
-  const label = "Title";
-  const defaultValue = "";
-  const title = text(label, defaultValue);
-
-  return html`
-    <md-icon name="icon-arrow-up_16" .title=${title}></md-icon>
-  `;
-};
-
-export const Type = () => {
-  const label = "Type";
-  const defaultValue = "";
-  const type = select(label, iconType, defaultValue);
-  return html`
-    <md-icon name="icon-arrow-up_16" .type=${type}></md-icon>
-  `;
-};
-export const Name = () => {
-  const label = "Name";
-  const defaultValue = "asterisk_10";
-  const name = select(label, iconNames, defaultValue);
-
-  return html`
-    <md-icon .name=${`icon-${name}`}></md-icon>
-  `;
-};

@@ -22,7 +22,10 @@ class SpaceListMeeting extends React.PureComponent {
   render() {
     const {
       attendees,
+      buttonAriaLabel,
+      buttonClassName,
       buttonLabel,
+      buttonTabIndex,
       childrenLeft,
       childrenRight,
       className,
@@ -116,10 +119,12 @@ class SpaceListMeeting extends React.PureComponent {
         {buttonLabel && (
           <Button
             color={isMessagingOnlyShare ? 'blue' : 'green'}
-            ariaLabel={buttonLabel}
+            ariaLabel={buttonAriaLabel ? buttonAriaLabel : buttonLabel}
             children={buttonLabel}
+            className={buttonClassName}
             onClick={this.handleButtonClick}
             size={28}
+            tabIndex={buttonTabIndex}
           />
         )}
       </ListItemSection>,
@@ -154,10 +159,16 @@ SpaceListMeeting.propTypes = {
       node: PropTypes.element,
     })
   ),
+  /** @prop Aria label string for button | buttonLabel */
+  buttonAriaLabel: PropTypes.string,
+  /** @prop Optionsl HTML Class string for button | '' */
+  buttonClassName: PropTypes.string,
   /** @prop Label string for button | '' */
   buttonLabel: PropTypes.string,
   /** @prop Callback function invoked when user clicks on button | null */
   buttonOnClick: PropTypes.func,
+  /** @prop Tab index for button | '0' */
+  buttonTabIndex: PropTypes.string,
   /** @prop Children nodes to render for left section | null */
   childrenLeft: PropTypes.node,
   /** @prop Children nodes to render for right section | null */
@@ -186,8 +197,11 @@ SpaceListMeeting.propTypes = {
 
 SpaceListMeeting.defaultProps = {
   attendees: [],
+  buttonAriaLabel: null,
+  buttonClassName: '',
   buttonLabel: '',
   buttonOnClick: null,
+  buttonTabIndex: '0',
   childrenLeft: null,
   childrenRight: null,
   className: '',

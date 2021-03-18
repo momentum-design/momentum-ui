@@ -3,6 +3,150 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.9.44](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.43...@momentum-ui/core@19.9.44) (2021-03-17)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.43](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.42...@momentum-ui/core@19.9.43) (2021-03-04)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.42](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.41...@momentum-ui/core@19.9.42) (2021-03-03)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.41](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.40...@momentum-ui/core@19.9.41) (2021-02-27)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.40](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.39...@momentum-ui/core@19.9.40) (2021-02-26)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.39](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.38...@momentum-ui/core@19.9.39) (2021-02-23)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.38](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.37...@momentum-ui/core@19.9.38) (2021-01-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.37](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.36...@momentum-ui/core@19.9.37) (2020-12-22)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.36](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.35...@momentum-ui/core@19.9.36) (2020-12-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.35](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.34...@momentum-ui/core@19.9.35) (2020-12-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.34](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.33...@momentum-ui/core@19.9.34) (2020-12-16)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.33](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.32...@momentum-ui/core@19.9.33) (2020-12-12)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.32](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.31...@momentum-ui/core@19.9.32) (2020-12-11)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.31](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.30...@momentum-ui/core@19.9.31) (2020-12-10)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.30](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.29...@momentum-ui/core@19.9.30) (2020-12-09)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.29](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.28...@momentum-ui/core@19.9.29) (2020-12-07)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.28](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.27...@momentum-ui/core@19.9.28) (2020-11-21)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.9.27](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.26...@momentum-ui/core@19.9.27) (2020-11-20)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.9.26](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.25...@momentum-ui/core@19.9.26) (2020-11-10)
 
 **Note:** Version bump only for package @momentum-ui/core

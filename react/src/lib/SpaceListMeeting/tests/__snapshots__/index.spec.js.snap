@@ -5,8 +5,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SpaceListMeeting
     attendees={Array []}
+    buttonAriaLabel={null}
+    buttonClassName=""
     buttonLabel=""
     buttonOnClick={null}
+    buttonTabIndex="0"
     childrenLeft={null}
     childrenRight={null}
     className=""
@@ -49,6 +52,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -103,6 +107,7 @@ ShallowWrapper {
             hasNotification={false}
             hideDefaultTooltip={false}
             icon={null}
+            initials={null}
             isDecrypting={false}
             isOverview={false}
             onClick={null}
@@ -130,6 +135,7 @@ ShallowWrapper {
             "hasNotification": false,
             "hideDefaultTooltip": false,
             "icon": null,
+            "initials": null,
             "isDecrypting": false,
             "isOverview": false,
             "onClick": null,
@@ -243,6 +249,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              initials={null}
               isDecrypting={false}
               isOverview={false}
               onClick={null}
@@ -297,6 +304,7 @@ ShallowWrapper {
               hasNotification={false}
               hideDefaultTooltip={false}
               icon={null}
+              initials={null}
               isDecrypting={false}
               isOverview={false}
               onClick={null}
@@ -324,6 +332,7 @@ ShallowWrapper {
               "hasNotification": false,
               "hideDefaultTooltip": false,
               "icon": null,
+              "initials": null,
               "isDecrypting": false,
               "isOverview": false,
               "onClick": null,

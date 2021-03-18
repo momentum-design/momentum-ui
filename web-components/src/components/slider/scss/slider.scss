@@ -55,6 +55,10 @@
         height: 100%;
         position: absolute;
         width: 100%;
+
+        @media screen and (-ms-high-contrast: active) {
+          filter: brightness(1) contrast(1) saturate(1.5);
+        }
       }
     }
 
@@ -102,12 +106,8 @@
 }
 
 :host([focus-visible]:not([disabled])) {
-  .md-slider__pointer {
-    box-shadow: $slider__focus-shadow;
-
-    &::after {
-      background-color: var(--slider-background-focus-pointer, $md-slider-background-focus-pointer-light);
-    }
+  .md-slider__pointer::after {
+    box-shadow: $slider-pointer__box-shadow--focus;
   }
 }
 

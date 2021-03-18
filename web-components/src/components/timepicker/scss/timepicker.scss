@@ -1,0 +1,64 @@
+
+
+.md-timepicker {
+  padding-right: $am-pm-combobox-width;
+  width: fit-content;
+
+  &.twenty-four-hour-format {
+    padding-right: 0;
+  }
+
+  .time-input-box {
+    display: inline-block;
+    height: $time-box-height;
+    width: $time-box-width;
+  }
+
+  .amPm-combo-box {
+    display: inline-block;
+    height: $time-box-height;
+    margin-left: $am-pm-combobox-left-margin;
+    position: absolute;
+    width: $time-box-width;
+  }
+
+  .amPm-combo-box::part(group) {
+    padding: 0;
+  }
+
+  .amPm-combo-box::part(multiwrap-input) {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .amPm-combo-box::part(label) {
+    padding: 0 $am-pm-combobox-side-padding;
+    width: 100%;
+  }
+
+  .amPm-combo-box::part(combobox-option) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .amPm-combo-box::part(combobox-options) {
+    max-height: $am-pm-combobox-dropdown-max-height;
+  }
+
+  md-input::part(input) {
+    padding: 0;
+    text-align: center;
+  }
+
+  md-input::part(message) {
+    display: none;
+  }
+
+  .colon-separator {
+    color: var(--md-secondary-text-color, $md-gray-70);
+    font-size: $colon-separator-font-size;
+    line-height: 125%;
+    margin: 0 $colon-side-margin;
+  }
+}

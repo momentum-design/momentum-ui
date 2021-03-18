@@ -21,14 +21,14 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route path='/2020' exact component={Home} />
-        <Route path='/2020/home' exact component={Home} />
-        <Route path='/2020/system' exact component={System} />
-        <Route path='/2020/components' component={Components} />
-        <Route path='/2020/icons' exact component={Icons} />
-        <Route path='/2020/tokens' component={Tokens} />
-        <Route path='/2020/personality' exact component={Personality} />
-        {/* <Route path='/2020/feedback' exact component={Feedback} /> */}
+        <Route path='/' exact component={Home} />
+        <Route path='/home' exact component={Home} />
+        <Route path='/system' exact component={System} />
+        <Route path='/components' component={Components} />
+        <Route path='/icons' exact component={Icons} />
+        <Route path='/tokens' component={Tokens} />
+        <Route path='/personality' exact component={Personality} />
+        {/* <Route path='/feedback' exact component={Feedback} /> */}
         <Route component={NotFound} />
       </Switch>
     );

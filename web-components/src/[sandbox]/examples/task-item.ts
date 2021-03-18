@@ -16,8 +16,18 @@ export const taskItemTemplate = html`
       <div>01:08:00</div>
     </md-task-item>
     <md-task-item
-      mediaType="telephony"
+      mediaType="outbound telephony"
       status="hold"
+      title="Mihael Varificantare"
+      queue="IRV_quelle_11"
+      lastmessage=" "
+      quantity="123"
+    >
+      <div>01:08:00</div>
+    </md-task-item>
+    <md-task-item
+      mediaType="inbound telephony"
+      status="transfered"
       title="Mihael Varificantare"
       queue="IRV_quelle_11"
       lastmessage=" "
@@ -35,6 +45,9 @@ export const taskItemTemplate = html`
       <div>Ringing</div>
     </md-task-item>
     <md-task-item mediaType="whatsApp" title="Mihael Varificantare" queue="IRV_quelle_11">
+      <div>01:10:25</div>
+    </md-task-item>
+    <md-task-item mediaType="chat" title="Mihael Varificantare" queue="IRV_quelle_11">
       <div>01:10:25</div>
     </md-task-item>
     <md-task-item

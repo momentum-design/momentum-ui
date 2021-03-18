@@ -65,7 +65,7 @@ export namespace TaskItem {
               <md-icon name="sms_16" color="white"></md-icon>
             </md-badge>
           `;
-        case "messenger":
+        case "facebook":
           return html`
             <md-badge bgColor="#0078FF" circle>
               <md-icon name="messenger_16" color="white"></md-icon>
@@ -90,42 +90,34 @@ export namespace TaskItem {
           return html`
             <md-icon name="headset_12"></md-icon>
           `;
-          break;
         case "play":
           return html`
             <md-icon name="play_12"></md-icon>
           `;
-          break;
         case "hold":
           return html`
             <md-icon name="pause_12"></md-icon>
           `;
-          break;
         case "conference":
           return html`
             <md-icon name="meet_12"></md-icon>
           `;
-          break;
         case "transfered":
           return html`
             <md-icon name="assign-privilege_12"></md-icon>
           `;
-          break;
         case "courtesy_callback":
           return html`
             <md-icon name="call-log_12"></md-icon>
           `;
-          break;
         case "campaign":
           return html`
             <md-icon name="announcement_12"></md-icon>
           `;
-          break;
         default:
           return html`
             <slot name="task-status"></slot>
           `;
-          break;
       }
     };
 

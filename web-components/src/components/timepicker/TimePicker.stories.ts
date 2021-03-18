@@ -5,7 +5,7 @@ import { timeSpecificity } from "./TimePicker"; // Keep type import as a relativ
 import { TIME_UNIT } from "@/constants";
 
 export default {
-  title: "Time Picker",
+  title: "Components/Time Picker",
   component: "md-timepicker",
   decorators: [withKnobs, withA11y],
   parameters: {

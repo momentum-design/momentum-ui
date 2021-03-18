@@ -14,7 +14,7 @@ import "@/components/progress-bar/ProgressBar";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Progress Bar",
+  title: "Components/Progress Bar",
   component: "md-progress-bar",
   decorators: [withKnobs, withA11y],
   parameters: {

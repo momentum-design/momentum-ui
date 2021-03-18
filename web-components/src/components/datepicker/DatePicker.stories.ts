@@ -5,7 +5,7 @@ import { html } from "lit-element";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
 
 export default {
-  title: "Date Picker",
+  title: "Components/Date Picker",
   component: "md-datepicker",
   decorators: [withKnobs, withA11y],
   parameters: {

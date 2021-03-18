@@ -18,7 +18,7 @@ import "@/components/menu-overlay/MenuOverlay";
 import { menuOverlayPlacement, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
-  title: "Menu Overlay",
+  title: "Components/Menu Overlay",
   component: "md-menu-overlay",
   decorators: [withKnobs, withA11y],
   argTypes: {

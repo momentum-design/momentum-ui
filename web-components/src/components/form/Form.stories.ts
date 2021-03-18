@@ -14,7 +14,7 @@ import { action } from "@storybook/addon-actions";
 import { html } from "lit-element";
 
 export default {
-  title: "Form",
+  title: "Components/Form",
   component: "md-form",
   decorators: [withKnobs, withA11y],
   parameters: {

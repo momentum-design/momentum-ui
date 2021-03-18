@@ -25,7 +25,8 @@ addParameters({
   },
   options: {
     storySort: {
-      order: ['Internal References']
+      order: ['Components', 'Internal References'],
+      method: 'alphabetical'
     }
   }
 });

@@ -17,7 +17,7 @@ import { GroupOptions } from "sortablejs";
 import { SelectTypeKnobValue } from "@storybook/addon-knobs/dist/components/types";
 
 export default {
-  title: "Draggable",
+  title: "Components/Draggable",
   component: "md-draggable",
   decorators: [withKnobs, withA11y],
   parameters: {

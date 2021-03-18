@@ -14,7 +14,7 @@ import { html } from "lit-element";
 import { number, boolean, withKnobs } from "@storybook/addon-knobs";
 
 export default {
-  title: "Slider",
+  title: "Components/Slider",
   component: "md-slider",
   decorators: [withKnobs, withA11y],
   argTypes: {

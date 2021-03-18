@@ -13,7 +13,7 @@ import { select, boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
-  title: "Loading",
+  title: "Components/Loading",
   component: "md-loading",
   decorators: [withKnobs, withA11y],
   argTypes: {

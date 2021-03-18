@@ -15,7 +15,7 @@ import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 
 export default {
-  title: "Modal",
+  title: "Components/Modal",
   component: "md-modal",
   decorators: [withKnobs, withA11y],
   argTypes: {

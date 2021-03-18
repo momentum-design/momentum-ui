@@ -7,33 +7,29 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { number, boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "@/components/spinner/Spinner";
 import "@/components/theme/Theme";
+import "@/internal-components/color-table/ColorTable";
 
 export default {
-  title: "Components/Spinner",
-  component: "md-spinner",
+  title: "Internal References/Color Table",
+  component: "color-table",
   decorators: [withKnobs, withA11y],
-  argTypes: {
-    spinnerStyleMap: { table: { disable: true } }
-  },
   parameters: {
     a11y: {
-      element: "md-spinner"
+      element: "color-table"
     }
   }
 };
 
-export const Spinner = () => {
+export const ColorTable = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
-  const size = number("Size", 20);
 
   return html`
-    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-spinner .size="${size}"></md-spinner>
-    </md-theme>
+  <md-theme class="theme-toggle" id="color-table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <color-table></color-table>
+  </md-theme>
   `;
-}
+};

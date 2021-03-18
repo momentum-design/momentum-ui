@@ -10,6 +10,7 @@ export { cardTemplate } from "./card";
 export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";
+export { colorTableTemplate } from "./colorTable";
 export { coachTemplate } from "./coachmark";
 export { codeEditorTemplate } from "./code-editor";
 export { comboBoxTemplate } from "./combobox";

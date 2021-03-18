@@ -19,6 +19,7 @@ import {
   chipTemplate,
   coachTemplate,
   codeEditorTemplate,
+  colorTableTemplate,
   comboBoxTemplate,
   datePickerTemplate,
   dateRangePickerTemplate,
@@ -454,6 +455,11 @@ export class Sandbox extends LitElement {
             <sass-stats component="tooltip">
               ${tooltipTemplate}
             </sass-stats>
+          </div>
+
+          <div class="container" aria-label="internal/colors">
+            <h2>Colors</h2>
+              ${colorTableTemplate}
           </div>
         </elix-list-explorer>
       </md-theme>

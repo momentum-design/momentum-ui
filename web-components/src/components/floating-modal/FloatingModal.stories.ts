@@ -16,7 +16,7 @@ import { html } from "lit-element";
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "Floating Modal",
+  title: "Components/Floating Modal",
   component: "md-floating-modal",
   decorators: [withKnobs, withA11y],
   argTypes: {

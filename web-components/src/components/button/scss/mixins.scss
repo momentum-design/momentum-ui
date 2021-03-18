@@ -126,6 +126,11 @@
   border-color: transparent;
   color: $color;
 
+  &:focus {
+    background-color: $bg-hover;
+    color: $color-hover;
+  }
+
   &:hover {
     background-color: $bg-hover;
     color: $color-hover;

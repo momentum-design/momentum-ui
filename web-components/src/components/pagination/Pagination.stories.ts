@@ -4,7 +4,7 @@ import { html } from "lit-element";
 import { withKnobs, number, boolean } from "@storybook/addon-knobs";
 
 export default {
-  title: "Pagination",
+  title: "Components/Pagination",
   component: "md-pagination",
   decorators: [withKnobs, withA11y],
   parameters: {

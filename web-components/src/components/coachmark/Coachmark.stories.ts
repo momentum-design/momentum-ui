@@ -7,7 +7,7 @@ import "@/components/coachmark/Coachmark";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Coachmark",
+  title: "Components/Coachmark",
   component: "md-coachmark",
   decorators: [withKnobs, withA11y],
   argTypes: {

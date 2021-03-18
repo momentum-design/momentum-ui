@@ -15,7 +15,7 @@ import "@/components/theme/Theme";
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "Label",
+  title: "Components/Label",
   component: "md-label",
   decorators: [withKnobs, withA11y],
   argTypes: {

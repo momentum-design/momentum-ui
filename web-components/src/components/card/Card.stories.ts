@@ -15,7 +15,7 @@ import { nothing } from "lit-html";
 import { action } from "@storybook/addon-actions";
 
 export default {
-  title: "Card",
+  title: "Components/Card",
   component: "md-card",
   decorators: [withKnobs, withA11y],
   parameters: {

@@ -16,7 +16,7 @@ import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLe
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "Input",
+  title: "Components/Input",
   component: "md-input",
   decorators: [withKnobs, withA11y],
   argTypes: {

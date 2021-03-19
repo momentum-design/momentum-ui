@@ -6,7 +6,7 @@ import { html } from "lit-element";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 
 export default {
-  title: "Accordion",
+  title: "Components/Accordion",
   component: "md-accordion",
   decorators: [withKnobs, withA11y],
   parameters: {

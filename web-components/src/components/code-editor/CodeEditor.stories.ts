@@ -4,7 +4,7 @@ import { html } from "lit-element";
 import { text, object, withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: "Code Editor",
+  title: "Components/Code Editor",
   component: "md-code-editor",
   decorators: [withKnobs, withA11y],
   parameters: {

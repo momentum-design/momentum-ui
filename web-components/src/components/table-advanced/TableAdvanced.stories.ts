@@ -15,7 +15,7 @@ import "@/components/table-advanced/TableAdvanced";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Table Advanced",
+  title: "Components/Table Advanced",
   component: "md-table-advanced",
   decorators: [withKnobs, withA11y],
   parameters: {

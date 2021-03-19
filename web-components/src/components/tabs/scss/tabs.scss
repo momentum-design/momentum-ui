@@ -41,7 +41,11 @@
     height: 100%;
     min-height: $tab-overflow-button-height;
 
-    &.md-menu-overlay__more_tab--hidden {
+    &.md-menu-overlay__more_tab--measuring {
+      opacity: 0;
+    }
+
+    &.md-menu-overlay__more_tab--hidden:not(.md-menu-overlay__more_tab--measuring) {
       pointer-events: none;
       visibility: hidden;
       z-index: -1;

@@ -6,10 +6,10 @@
     "url": "https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
-    "bootstrap": "yarn build:tokens && lerna bootstrap && lerna link && cd ./web-components && yarn",
+    "bootstrap": "yarn build:all && lerna bootstrap && lerna link && cd ./web-components && yarn",
     "bootstrap:clean": "run-s clean bootstrap",
     "build": "yarn build:all",
-    "build:all": "run-s build:icons build:core build:react build:charts",
+    "build:all": "run-s build:icons build:core build:utils build:tokens build:react build:web-components build:charts",
     "build:core": "cd ./core && yarn build:lib",
     "build:charts": "cd ./charts && yarn build:lib",
     "build:icons": "cd ./icons && yarn build:lib",
@@ -19,6 +19,7 @@
     "build:utils": "cd ./utils && yarn build:lib",
     "build:data": "rimraf ./data && node ./tools/generateComponentsData.js",
     "build:www": "cd ./www && yarn build",
+    "build:web-components": "cd ./web-components && yarn && yarn dist",
     "serve:core": "cd ./core && yarn open:dist",
     "ci:publish": "yarn release",
     "ci:test": "run-s ci:test:icons ci:test:core ci:test:react ci:test:charts",

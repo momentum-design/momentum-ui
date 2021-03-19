@@ -773,7 +773,7 @@ export namespace TableAdvanced {
             const col = this.COLS[j];
 
             // content
-            let content: TemplateResult | string = cell.text;
+            let content: TemplateResult | string | unknown = cell.text;
             const t = cell.template;
             if (t) {
               content = t.templateCb

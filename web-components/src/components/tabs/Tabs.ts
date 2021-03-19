@@ -512,11 +512,13 @@ export namespace Tabs {
     private async setupMoreTab() {
       if (this.direction !== "vertical") {
         if (this.moreTabMenuElement && !this.isMoreTabMenuMeasured) {
+          this.moreTabMenuElement.classList.add("md-menu-overlay__more_tab--measuring");
           await this.moreTabMenuElement.updateComplete;
           if (this.moreTabMenuElement.offsetWidth) {
             this.moreTabMenuOffsetWidth = this.moreTabMenuElement.offsetWidth;
             this.isMoreTabMenuMeasured = true;
           }
+          this.moreTabMenuElement.classList.remove("md-menu-overlay__more_tab--measuring");
         }
       }
     }

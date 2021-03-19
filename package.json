@@ -87,6 +87,7 @@
       "./react",
       "./tokens",
       "./utils",
+      "./web-components",
       "./www"
     ],
     "nohoist": [

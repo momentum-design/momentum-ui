@@ -9,7 +9,7 @@
     "bootstrap": "yarn build:all && lerna bootstrap && lerna link && cd ./web-components && yarn",
     "bootstrap:clean": "run-s clean bootstrap",
     "build": "yarn build:all",
-    "build:all": "run-s build:icons build:core build:utils build:tokens build:react build:web-components build:charts",
+    "build:all": "yarn build:icons && yarn build:core && yarn build:utils && yarn build:tokens && yarn build:react && yarn build:web-components && yarn build:charts",
     "build:core": "cd ./core && yarn build:lib",
     "build:charts": "cd ./charts && yarn build:lib",
     "build:icons": "cd ./icons && yarn build:lib",

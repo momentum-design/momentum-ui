@@ -5,7 +5,7 @@ import { html } from "lit-element";
 import "../theme/Theme";
 
 export default {
-  title: "Phone Input",
+  title: "Components/Phone Input",
   component: "md-phone-input",
   decorators: [withKnobs, withA11y],
   parameters: {

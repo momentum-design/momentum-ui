@@ -166,5 +166,4 @@ describe("Modal Component", () => {
     jest.runAllTimers();
     expect(element.show).toBeFalsy();
   });
-
 });

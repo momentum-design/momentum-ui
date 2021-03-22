@@ -13,7 +13,7 @@ import "@/components/spinner/Spinner";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Spinner",
+  title: "Components/Spinner",
   component: "md-spinner",
   decorators: [withKnobs, withA11y],
   argTypes: {

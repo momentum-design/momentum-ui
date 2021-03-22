@@ -38,7 +38,13 @@ export namespace TaskItem {
         case "outbound telephony":
           return html`
             <md-badge color="green" circle>
-              <md-icon name="icon-outgoing-call-active_16"></md-icon>
+              <md-icon name="outgoing-call-active_16"></md-icon>
+            </md-badge>
+          `;
+        case "inbound telephony":
+          return html`
+            <md-badge color="green" circle>
+              <md-icon name="incoming-call-active_16"></md-icon>
             </md-badge>
           `;
         case "chat":
@@ -84,42 +90,34 @@ export namespace TaskItem {
           return html`
             <md-icon name="headset_12"></md-icon>
           `;
-          break;
         case "play":
           return html`
             <md-icon name="play_12"></md-icon>
           `;
-          break;
         case "hold":
           return html`
             <md-icon name="pause_12"></md-icon>
           `;
-          break;
         case "conference":
           return html`
             <md-icon name="meet_12"></md-icon>
           `;
-          break;
         case "transfered":
           return html`
             <md-icon name="assign-privilege_12"></md-icon>
           `;
-          break;
         case "courtesy_callback":
           return html`
             <md-icon name="call-log_12"></md-icon>
           `;
-          break;
         case "campaign":
           return html`
             <md-icon name="announcement_12"></md-icon>
           `;
-          break;
         default:
           return html`
             <slot name="task-status"></slot>
           `;
-          break;
       }
     };
 
@@ -214,8 +212,6 @@ export namespace TaskItem {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

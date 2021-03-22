@@ -15,7 +15,7 @@ import "@/components/chip/Chip";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Chip",
+  title: "Components/Chip",
   component: "md-chip",
   decorators: [withKnobs, withA11y],
   parameters: {

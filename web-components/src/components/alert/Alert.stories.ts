@@ -15,7 +15,7 @@ import "@/components/alert/Alert";
 import "@/components/theme/Theme";
 
 export default {
-  title: "Alert",
+  title: "Components/Alert",
   component: "md-alert",
   decorators: [withKnobs, withA11y],
   argTypes: {

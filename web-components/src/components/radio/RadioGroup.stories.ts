@@ -14,7 +14,7 @@ import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs
 import { html } from "lit-element";
 
 export default {
-  title: "Radio",
+  title: "Components/Radio",
   component: "md-radio",
   decorators: [withKnobs, withA11y],
   parameters: {

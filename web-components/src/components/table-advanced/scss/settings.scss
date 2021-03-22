@@ -3,6 +3,7 @@ $advanced-table-filter-border: 1px solid
   var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
 $advanced-table-dragarea-border: 2px dashed
   var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+$advanced-table-focus-border: 2px solid var(--md-focus-border-color);
 $advanced-table-main-indent: rem-calc(4);
 $advanced-table-row-height: rem-calc(40);
 $advanced-table-sort-icon: rem-calc(16);
@@ -12,3 +13,4 @@ $advanced-table-resize-width: rem-calc(4);
 $advanced-table-collapse-btn: rem-calc(20);
 $advanced-table-filter-btn: rem-calc(24);
 $advanced-table-filter-height: rem-calc(14);
+$advanced-table-row-focus: 0 0 0 rem-calc(2);

@@ -16,62 +16,68 @@
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
   max-width: 100%;
   position: relative;
   width: 100%;
 
   &.sticky-header {
-    border-collapse: separate;
+    border-spacing: 0;
     height: 100%;
-    overflow: auto;
 
     thead {
       background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
 
       th {
         border-bottom: 0;
+        border-top: 0;
         position: sticky;
-        top: -$advanced-table-header-sticky-indent;
+        top: 0;
         z-index: 1;
 
         &::before {
-          border-bottom: $advanced-table-main-border;
-          content: " ";
-          left: 0;
-          position: absolute;
-          top: $advanced-table-header-sticky-indent;
-          width: 100%;
-        }
-
-        &::after {
-          border-bottom: $advanced-table-main-border;
+          border-top: $advanced-table-main-border;
           bottom: 0;
           content: " ";
           left: 0;
           position: absolute;
+          top: 0;
           width: 100%;
         }
       }
 
-      tr {
-        &:last-child {
-          th {
-            top: calc(#{$advanced-table-row-height} - #{$advanced-table-header-sticky-indent} * 2);
+      tr:last-child th {
+        top: $advanced-table-row-height;
 
-            &::before {
-              top: -$advanced-table-header-sticky-indent;
-            }
-          }
+        &::before {
+          border-bottom: $advanced-table-main-border;
+          border-top: $advanced-table-main-border;
         }
+      }
 
-        &:first-child {
-          th {
-            top: -$advanced-table-header-sticky-indent;
+      tr:first-child th {
+        height: calc(#{$advanced-table-row-height} + #{$advanced-table-header-sticky-indent} * 2);
+        top: 0;
 
-            &::before {
-              top: $advanced-table-header-sticky-indent;
-            }
+        &::before {
+          border-bottom: $advanced-table-main-border;
+          border-top: $advanced-table-main-border;
+        }
+      }
+
+      tr:focus {
+        outline: none;
+
+        th {
+          &:first-child {
+            border-left: $advanced-table-focus-border;
+          }
+          &:last-child {
+            border-right: $advanced-table-focus-border;
+          }
+
+          &::before {
+            border-bottom: $advanced-table-focus-border;
+            border-top: $advanced-table-focus-border;
           }
         }
       }
@@ -82,8 +88,7 @@ table {
 thead {
   th {
     background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-    border-bottom: $advanced-table-main-border;
-    border-right: $advanced-table-main-border;
+    border: $advanced-table-main-border;
     color: var(--md-secondary-text-color);
     font-family: $brand-font-regular;
     font-size: $font-size-base;
@@ -247,10 +252,6 @@ thead {
       }
     }
   }
-
-  th:first-child {
-    border-left: $advanced-table-main-border;
-  }
 }
 
 .filter-active {
@@ -293,8 +294,7 @@ tbody {
     position: relative;
 
     td {
-      border-bottom: $advanced-table-main-border;
-      border-right: $advanced-table-main-border;
+      border: $advanced-table-main-border;
       font-size: $font-size-base;
       height: $advanced-table-row-height;
       max-width: 0;
@@ -304,18 +304,12 @@ tbody {
 
     th {
       background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-      border-bottom: $advanced-table-main-border;
-      border-right: $advanced-table-main-border;
+      border: $advanced-table-main-border;
       font-size: $font-size-base;
       max-width: 0;
       padding: 0 calc(#{$advanced-table-main-indent} * 4);
       position: relative;
       text-align: left;
-    }
-
-    td:first-child,
-    th:first-child {
-      border-left: $advanced-table-main-border;
     }
 
     .inner-cell {

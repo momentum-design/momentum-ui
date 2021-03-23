@@ -174,6 +174,7 @@ const commonDist = merge(common, {
     "comp/md-help-text-entry": "./src/components/help-text/HelpText",
     "comp/md-icon-entry": "./src/components/icon/Icon",
     "comp/md-input-entry": "./src/components/input/Input",
+    "comp/md-input-file": "./src/components/input-file/InputFile",
     "comp/md-label-entry": "./src/components/label/Label",
     "comp/md-link-entry": "./src/components/link/Link",
     "comp/md-list-entry": "./src/components/list/List",

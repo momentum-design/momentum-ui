@@ -1,16 +1,16 @@
+import { Button } from "@/components/button/Button";
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit-element";
 import "./InputFile";
 import { InputFile } from "./InputFile";
-import { fixture, fixtureCleanup, elementUpdated } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
-import { Button } from "@/components/button/Button";
 
 describe("InputFile component", () => {
-  let element: InputFile;
+  let element: InputFile.ELEMENT;
 
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<InputFile>(
+    element = await fixture<InputFile.ELEMENT>(
       html`
         <md-input-file></md-input-file>
       `
@@ -40,5 +40,4 @@ describe("InputFile component", () => {
     element.input.dispatchEvent(new Event("change"));
     await elementUpdated(element);
   });
-
 });

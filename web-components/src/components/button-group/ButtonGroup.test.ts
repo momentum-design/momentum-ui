@@ -6,17 +6,17 @@
  *
  */
 
-import "./ButtonGroup";
-import { ButtonGroup } from "./ButtonGroup";
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
+import "./ButtonGroup";
+import { ButtonGroup } from "./ButtonGroup";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
 
 describe("ButtonGroup", () => {
-  let element: ButtonGroup;
+  let element: ButtonGroup.ELEMENT;
 
   let buttons: HTMLButtonElement[];
 
@@ -26,7 +26,7 @@ describe("ButtonGroup", () => {
     });
 
   beforeEach(async () => {
-    element = await fixture<ButtonGroup>(
+    element = await fixture<ButtonGroup.ELEMENT>(
       html`
         <md-button-group>
           <button slot="button" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
@@ -64,7 +64,6 @@ describe("ButtonGroup", () => {
     expect(element.getAttribute("tabindex")).toEqual("0");
   });
 
-
   test("should correct handle lifecycle callbacks", async () => {
     const mixin = (superclass: AnyConstructor) =>
       class extends superclass {
@@ -84,8 +83,8 @@ describe("ButtonGroup", () => {
         }
       };
 
-    const tag = defineCE(class extends mixin(ButtonGroup) {});
-    const firstElement = fixtureSync<ButtonGroup>(`<${tag}></${tag}>`);
+    const tag = defineCE(class extends mixin(ButtonGroup.ELEMENT) {});
+    const firstElement = fixtureSync<ButtonGroup.ELEMENT>(`<${tag}></${tag}>`);
     const firstEvent = await oneEvent(firstElement, "first-updated");
     expect(firstEvent).toBeDefined();
 
@@ -96,7 +95,7 @@ describe("ButtonGroup", () => {
 
     fixtureCleanup();
 
-    const secondElement = document.createElement(`${tag}`) as ButtonGroup;
+    const secondElement = document.createElement(`${tag}`) as ButtonGroup.ELEMENT;
     setTimeout(() => secondElement.connectedCallback());
     const secondEvent = await oneEvent(secondElement, "connected-callback");
     expect(secondEvent).toBeDefined();

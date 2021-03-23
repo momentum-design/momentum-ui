@@ -57,6 +57,7 @@
       $alert__padding-left;
     margin-bottom: rem-calc(8);
     background-color: $md-white-100;
+    background-color: var(--md-alert-background-theme, $md-white-100);
     border: 1px solid $black-12;
     box-shadow: 0 8px 16px 0 $black-08;
 
@@ -67,6 +68,7 @@
 
       &:before {
         color: $alert__font-color--info;
+        color: var(--md-alert-text-theme, $alert__font-color--info);
 
         @include icon-info_24;
       }
@@ -85,6 +87,7 @@
       font-size: $alert__font-size--title;
       line-height: rem-calc(24);
       color: $alert__font-color--info;
+      color: var(--md-alert-text-theme, $alert__font-color--info);
     }
 
     &__status,
@@ -96,10 +99,12 @@
 
     &__status {
       color: $alert__font-color--status;
+      color: var(--md-textColor-primary, $alert__font-color--status);
     }
 
     &__message {
       color: $alert__font-color;
+      color: var(--md-textColor-primary, $alert__font-color);
     }
 
     &__title,
@@ -113,9 +118,12 @@
     }
 
     &.#{$alert__class}--success {
+      background-color: var(--md-alert-background-success, transparent);
+
       .#{$alert__class}__icon {
         &:before {
           color: $alert__font-color--success;
+          color: var(--md-alert-text-success, $alert__font-color--success);
 
           @include icon-check-circle_24;
         }
@@ -123,13 +131,17 @@
 
       .#{$alert__class}__title {
         color: $alert__font-color--success;
+        color: var(--md-alert-text-success, $alert__font-color--success);
       }
     }
 
     &.#{$alert__class}--warning {
+      background-color: var(--md-alert-background-warning, transparent);
+
       .#{$alert__class}__icon {
         &:before {
           color: $alert__font-color--warning;
+          color: var(--md-alert-text-warning, $alert__font-color--warning);
 
           @include icon-warning_24;
         }
@@ -137,13 +149,17 @@
 
       .#{$alert__class}__title {
         color: $alert__font-color--warning;
+        color: var(--md-alert-text-warning, $alert__font-color--warning);
       }
     }
 
     &.#{$alert__class}--error {
+      background-color: var(--md-alert-background-error, transparent);
+
       .#{$alert__class}__icon {
         &:before {
           color: $alert__font-color--error;
+          color: var(--md-alert-text-error, $alert__font-color--error);
 
           @include icon-warning_24;
         }
@@ -151,6 +167,7 @@
 
       .#{$alert__class}__title {
         color: $alert__font-color--error;
+        color: var(--md-alert-text-error, $alert__font-color--error);
       }
     }
 
@@ -172,6 +189,7 @@
 
       .#{$alert__class}__title {
         color: $alert__font-color--title;
+        color: var(--md-alert-text-theme, $alert__font-color--title);
       }
     }
 
@@ -191,6 +209,7 @@
         font-weight: bold;
         line-height: rem-calc(22);
         color: $alert__font-color--title;
+        color: var(--md-alert-text-theme, $alert__font-color--title);
       }
 
       .#{$alert__class}__caller {

@@ -1,17 +1,17 @@
+import { Button } from "@/index";
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit-element";
 import "./CodeEditor";
 import { CodeEditor } from "./CodeEditor";
-import { fixture, fixtureCleanup, elementUpdated } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
-import { Button } from "@/index";
 // import { Button } from "../button/Button"; // Keep type import as a relative path
 
 describe("CodeEditor component", () => {
-  let element: CodeEditor;
+  let element: CodeEditor.ELEMENT;
 
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<CodeEditor>(
+    element = await fixture<CodeEditor.ELEMENT>(
       html`
         <md-code-editor>
           <span slot="method">post</span>

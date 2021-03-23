@@ -10,7 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import "@/components/button/Button";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, query, queryAll } from "lit-element";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { classMap } from "lit-html/directives/class-map";
@@ -19,6 +19,7 @@ import { nothing, TemplateResult } from "lit-html";
 import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { Filter } from "./src/filter";
+import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
 
 const IMG = document.createElement("img");
@@ -30,7 +31,7 @@ export namespace TableAdvanced {
    * @fires md-table-advanced-change
    */
   @customElementWithCheck("md-table-advanced")
-  export class ELEMENT extends LitElement {
+  export class ELEMENT extends FocusTrapMixin(LitElement) {
     @property({ attribute: false }) config!: Config;
     @property({ attribute: false }) data!: Data;
 
@@ -58,6 +59,7 @@ export namespace TableAdvanced {
 
     private dragover = (e: Event) => e.preventDefault();
 
+    @queryAll("tr[tabindex]") tableRaws?: HTMLTableRowElement[];
     disconnectedCallback() {
       super.disconnectedCallback();
       document.removeEventListener("dragover", this.dragover);
@@ -66,7 +68,6 @@ export namespace TableAdvanced {
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("dragover", this.dragover);
-
       // cols
 
       let index = 0;
@@ -495,7 +496,7 @@ export namespace TableAdvanced {
               `;
             }
           })}
-          <tr>
+          <tr tabindex="0">
             ${this.COLS.map(col => {
               if (col.group) {
                 if (gName != col.group.name) {
@@ -518,7 +519,7 @@ export namespace TableAdvanced {
       }
 
       const heads = html`
-        <tr>
+        <tr tabindex="0">
           ${this.COLS.map(col => {
             if (hasGroup) {
               if (col.group) {
@@ -764,6 +765,7 @@ export namespace TableAdvanced {
       return html`
         <tr
           class=${rowStyles}
+          tabindex="0"
           part=${row.first ? "first-row" : "row"}
           @click=${({ shiftKey, metaKey }: MouseEvent) => {
             if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });

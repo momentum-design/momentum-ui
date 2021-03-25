@@ -75,6 +75,10 @@
 
     &--outline {
       box-shadow: $button--default__border;
+
+      &:hover {
+        box-shadow: none !important;
+      }
     }
 
     // Remove default button element styling
@@ -699,6 +703,10 @@
   &--outline {
     box-shadow: 0 0 0 1px var(--button-white-outline-color, $lm-button-white-outline-color-light);
     color: var(--button-white-outline-text-color, $lm-button-white-outline-text-color-light);
+
+    &:hover {
+      box-shadow: none !important;
+    }
   }
 }
 

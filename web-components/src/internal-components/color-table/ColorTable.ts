@@ -20,7 +20,7 @@ export class ColorTableSandbox extends LitElement {
     // convert string to 2d array
     const colorTableRowData = colorTableData.split("\n");
 
-    let colorTable2DArray: any = [];
+    const colorTable2DArray: any = [];
     for (let i = 1; i < colorTableRowData.length - 1; i++) {
       colorTable2DArray[i] = colorTableRowData[i].split(",");
     }

@@ -2,13 +2,16 @@ import "@/components/button/Button";
 import "@/components/modal/Modal";
 import "@/components/tabs/Tab";
 import "@/components/combobox/ComboBox";
+import "@/components/input/Input";
 import "@/components/radio/Radio";
 import "@/components/form/Form";
 import "@/components/radio/RadioGroup";
 import "@/components/tabs/TabPanel";
 import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/tabs/Tabs";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property, query } from "lit-element";
+import { Input } from "@/components/input/Input";
+import { debounce } from "@/utils/helpers";
 
 @customElement("modal-template-sandbox")
 export class ModalTemplateSandbox extends LitElement {
@@ -16,6 +19,8 @@ export class ModalTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isComplexModalOpen = false;
   @property({ type: Boolean }) isDialogOpen = false;
   @property({ type: Boolean }) isComplexTabsModal = false;
+
+  @query(".dial-number") dialInput!: Input.ELEMENT;
 
   private openModal() {
     this.isModalOpen = true;
@@ -48,6 +53,18 @@ export class ModalTemplateSandbox extends LitElement {
   private closeComplexTabsModal() {
     this.isComplexTabsModal = false;
   }
+
+  private handleInputChange = debounce(() => {
+    if (this.dialInput) {
+      const shadowInput = this.dialInput.shadowRoot!.querySelector("input");
+      shadowInput!.dispatchEvent(
+        new CustomEvent("focus-visible", {
+          composed: true,
+          bubbles: true
+        })
+      );
+    }
+  }, 150);
 
   render() {
     return html`
@@ -180,7 +197,16 @@ export class ModalTemplateSandbox extends LitElement {
                 </md-radiogroup>
               </div>
 
-              <md-input type="tel" id="dn" placeholder="Dial Number" shape="pill" autofocus></md-input>
+              <md-input
+                type="tel"
+                id="dn"
+                class="dial-number"
+                placeholder="Dial Number"
+                shape="pill"
+                autofocus
+                clear
+                @input-change=${this.handleInputChange}
+              ></md-input>
             </md-tab-panel>
             <md-tab slot="tab" label="Extension">
               <span>Extension</span>

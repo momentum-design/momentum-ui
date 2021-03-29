@@ -21,6 +21,18 @@
       $radius: $button__radius--36
     );
     @include button-color($focus: true);
+
+    @include button-color(
+      $bg: var(--md-button-secondary-bg-color, $button__background-color),
+      $bg-active: var(--md-button-secondary-pressed-bg-color, $button__background-color--active),
+      $bg-disabled: var(--md-button-disabled-bg-color, $button__color--disabled),
+      $bg-hover: var(--md-button-secondary-hover-bg-color, $button__background-color--hover),
+      $border-focus: var(--md-button-focus-ring-color, $button__border-color--focus),
+      $color: var(--md-button-secondary-text-color, $button__font-color),
+      $color-disabled: var(--md-button-disabled-text-color, $button__font-color--disabled),
+      $focus: true
+    );
+
     @include single-transition(
       background-color,
       $button__transition-speed,
@@ -253,6 +265,15 @@
           $bg-active: $button--blue__background-color--active
         );
 
+        @include button-color(
+          $bg: var(--md-button-primary-bg-color, $button--blue__background-color),
+          $bg-active: var(--md-button-primary-pressed-bg-color, $button--blue__background-color--active),
+          $bg-disabled: var(--md-button-disabled-bg-color, $button__color--disabled),
+          $bg-hover: var(--md-button-primary-hover-bg-color, $button--blue__background-color--hover),
+          $color: var(--md-button-primary-text-color, $button__font-color--alt),
+          $color-disabled: var(--md-button-disabled-text-color, $button__font-color--disabled)
+        );
+
         .#{$dark-class} & {
           @include button-color-disabled(
             $button__font-color--disabled--dark,
@@ -279,6 +300,17 @@
           $bg-hover: $button--blue__background-color--hover,
           $bg-active: $button--blue__background-color--active
         );
+
+        @include button-color(
+          $bg: var(--md-background-primary, $button--white__background-color),
+          $bg-active: var(--md-button-primary-pressed-bg-color, $button--blue__background-color--active),
+          $bg-disabled: var(--md-button-disabled-bg-color, $button__color--disabled),
+          $bg-hover: var(--md-button-primary-hover-bg-color, $button--blue__background-color--hover),
+          $border: 1px solid var(--md-button-primary-outline-color, $button--blue__background-color),
+          $color: var(--md-button-primary-outline-text-color, $button--blue__background-color),
+          $color-disabled: var(--md-button-disabled-text-color, $button__font-color--disabled),
+          $color-hover: var(--md-button-primary-text-color, $button__font-color--alt),
+        );
       }
 
       &--red {
@@ -287,6 +319,15 @@
           $bg: $button--red__background-color,
           $bg-hover: $button--red__background-color--hover,
           $bg-active: $button--red__background-color--active
+        );
+
+        @include button-color(
+          $bg: var(--md-button-cancel-bg-color, $button--red__background-color),
+          $bg-active: var(--md-button-cancel-pressed-bg-color, $button--red__background-color--active),
+          $bg-disabled: var(--md-button-disabled-bg-color, $button__color--disabled),
+          $bg-hover: var(--md-button-cancel-hover-bg-color, $button--red__background-color--hover),
+          $color: var(--md-button-cancel-text-color, $button__font-color--alt),
+          $color-disabled: var(--md-button-disabled-text-color, $button__font-color--disabled)
         );
 
         .#{$dark-class} & {
@@ -312,6 +353,15 @@
           $bg: $button--green__background-color,
           $bg-hover: $button--green__background-color--hover,
           $bg-active: $button--green__background-color--active
+        );
+
+        @include button-color(
+          $bg: var(--md-button-join-bg-color, $button--green__background-color),
+          $bg-active: var(--md-button-join-pressed-bg-color, $button--green__background-color--active),
+          $bg-disabled: var(--md-button-disabled-bg-color, $button__color--disabled),
+          $bg-hover: var(--md-button-join-hover-bg-color, $button--green__background-color--hover),
+          $color: var(--md-button-join-text-color, $button__font-color--alt),
+          $color-disabled: var(--md-button-disabled-text-color, $button__font-color--disabled)
         );
 
         .#{$dark-class} & {

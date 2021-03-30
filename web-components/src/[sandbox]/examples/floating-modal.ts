@@ -31,12 +31,6 @@ export class FloatingTemplateSandbox extends LitElement {
 
   render() {
     return html`
-      <style>
-        md-floating-modal::part(floating) {
-          min-height: 400px;
-          min-width: 600px;
-        }
-      </style>
       <md-button @button-click=${() => this.openFloatingModal()}>Open Floating Modal</md-button>
 
       <md-floating-modal

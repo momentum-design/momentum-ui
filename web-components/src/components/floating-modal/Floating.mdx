@@ -1,0 +1,24 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import {FloatingModal} from "./FloatingModal.ts"
+
+# Floating Modal
+
+Floating Modal provides a movable and scalable modal for more dynamic UI.
+
+### Attributes
+- `heading` : String - Text content for the modal header
+- `label` : String - text content for the `aria-label` attribute for A11y
+- `aspect-ratio` : Boolean - Preserves width/height ratio of modal on resize
+- `fixed-strategy` : Boolean - Allows user to enable `fixed` position style for the modal element.
+- `full-screen` : Boolean - Toggles full screen modal mode
+
+### Styling
+The wrapping container of the modal can be reached via CSS by using the `::part()` selector. For example, in your application's stylesheet you can say:
+```CSS
+md-floating-modal::part(floating) {
+    min-height: 400px;
+    min-width: 600px
+} 
+```
+
+<Props of={"md-floating-modal"} />

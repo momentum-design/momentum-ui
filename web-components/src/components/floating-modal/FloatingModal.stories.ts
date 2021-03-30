@@ -48,11 +48,13 @@ export const FloatingModal = () => {
   const show = boolean("show", false);
   const full = boolean("full-screen", false);
   const fixed = boolean("fixed-strategy", false)
+  const minWidth = text("min-Width", "");
+  const minHeight = text("min-Height", "");
 
   return html`
 
     <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-floating-modal ?show=${show} ?full-screen=${full} ?fixed-strategy=${fixed}>
+    <md-floating-modal ?show=${show} ?full-screen=${full} ?fixed-strategy=${fixed} .minWidth=${minWidth} .minHeight=${minHeight}>
       <md-radiogroup group-label="group_process">
         <md-radio slot="radio" value="Option 1">Option 1</md-radio>
         <md-radio slot="radio" value="Option 2">Option 2</md-radio>

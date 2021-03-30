@@ -23,6 +23,8 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true, attribute: "aspect-ratio" }) aspectRatio = false;
     @property({ type: Boolean, reflect: true, attribute: "fixed-strategy" }) fixed = false;
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
+    @property({ type: String }) minWidth = "";
+    @property({ type: String }) minHeight = "";
 
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;
@@ -135,6 +137,8 @@ export namespace FloatingModal {
 
       target.style.setProperty("width", `${event.rect.width}px`, "important");
       target.style.setProperty("height", `${event.rect.height}px`, "important");
+      target.style.setProperty("min-width", `${this.minWidth}`, "important");
+      target.style.setProperty("min-height", `${this.minHeight}`, "important");
 
       x += event.deltaRect!.left;
       y += event.deltaRect!.top;

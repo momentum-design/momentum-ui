@@ -36,6 +36,8 @@ export class FloatingTemplateSandbox extends LitElement {
       <md-floating-modal
         class="float-modal"
         heading="Keyboard Shortcuts"
+        .minHeight=${"400px"}
+        .minWidth=${"400px"}
         ?show=${this.isOpen}
         @floating-modal-close=${() => this.closeFloatingModal()}
       >

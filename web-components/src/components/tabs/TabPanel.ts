@@ -24,6 +24,7 @@ export namespace TabPanel {
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       this.setAttribute("role", "tabpanel");
+      this.setAttribute("tabindex", "0");
     }
 
     render() {

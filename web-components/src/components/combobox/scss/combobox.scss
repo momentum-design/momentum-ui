@@ -64,7 +64,7 @@
       color: var(--md-primary-text-color, $md-gray-05);
       cursor: pointer;
       height: $combobox-search-icon-height;
-      padding-top: calc(#{$combobox-main-indent} / 2);
+      padding: calc(#{$combobox-main-indent} / 2);
     }
 
     &:hover {

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.45...@momentum-ui/core@19.10.0) (2021-03-23)
+
+
+### Features
+
+* **core/alert:** add base alert theming ([#823](https://github.com/momentum-design/momentum-ui/issues/823)) ([eb7112e](https://github.com/momentum-design/momentum-ui/commit/eb7112e15562a870d05f0c5d10ddc9498976a67d))
+
+
+
+
+
+## [19.9.45](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.44...@momentum-ui/core@19.9.45) (2021-03-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.9.44](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.43...@momentum-ui/core@19.9.44) (2021-03-17)
 
 **Note:** Version bump only for package @momentum-ui/core

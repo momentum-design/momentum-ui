@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.11...@momentum-ui/utils@6.2.12) (2021-03-19)
+
+
+### Bug Fixes
+
+* **utils:** define colorData variable ([#692](https://github.com/momentum-design/momentum-ui/issues/692)) ([8b4f820](https://github.com/momentum-design/momentum-ui/commit/8b4f8201545726a38bec9a6870c5cb44f6773de1))
+
+
+
+
+
 ## [6.2.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.10...@momentum-ui/utils@6.2.11) (2021-03-17)
 
 **Note:** Version bump only for package @momentum-ui/utils

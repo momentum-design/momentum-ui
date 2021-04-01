@@ -62,6 +62,14 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
+### Modify tsconfig.json
+##### In tsconfig.json (`my-app/tsconfig.json`)
+Set esModuleInterop to true under compilerOptions
+```json
+  "compilerOptions": {
+    "esModuleInterop": true,
+```
+
 ### Add a Web Components to your Project
 1. Add the following import:
 ##### In app.component.ts (`my-app/src/app/app.component.ts`)

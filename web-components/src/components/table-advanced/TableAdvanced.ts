@@ -6,21 +6,21 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
-import "@/components/button/Button";
-import { html, internalProperty, LitElement, property, query, queryAll } from "lit-element";
-import styles from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { classMap } from "lit-html/directives/class-map";
-import { templateContent } from "lit-html/directives/template-content";
-import { nothing, TemplateResult } from "lit-html";
-import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { Filter } from "./src/filter";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, queryAll } from "lit-element";
+import { nothing, TemplateResult } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { templateContent } from "lit-html/directives/template-content";
+import Papa from "papaparse";
+import styles from "./scss/module.scss";
 import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
+import { Filter } from "./src/filter";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -775,7 +775,7 @@ export namespace TableAdvanced {
             const col = this.COLS[j];
 
             // content
-            let content: TemplateResult | string = cell.text;
+            let content: TemplateResult | string | unknown = cell.text;
             const t = cell.template;
             if (t) {
               content = t.templateCb

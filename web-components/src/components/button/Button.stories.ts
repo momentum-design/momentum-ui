@@ -6,14 +6,16 @@
  *
  */
 
- import "@/components/button/Button";
+import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { action } from '@storybook/addon-actions';
-import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path
+import { action } from "@storybook/addon-actions";
+import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant, buttonRoles } from "./Button"; // Keep type import as a relative path
+import mdx from "./Button.mdx";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export default {
   title: "Components/Button",
@@ -32,6 +34,12 @@ export default {
   parameters: {
     a11y: {
       element: "md-button"
+    },
+    docs: {
+      page: mdx,
+      description: {
+        component: "Button Documentation"
+      }
     }
   }
 };
@@ -47,11 +55,51 @@ export const Button = () => {
   const size = select("Size", buttonSize, 32);
   const tag = select("Tag", buttonTag, "button");
   const type = select("type", buttonType, "button");
+  const ariaLabel = text("AriaLabel", "Button Storybook");
+  const ariaLabelledBy = text("AriaLabelledBy", "");
+  const ariaExpanded = boolean("AriaExpanded", false);
+  const ariaHaspopup = boolean("AriaHaspopup", false);
+  const ariaPressed = boolean("AriaPressed", false);
+  const containerLarge = boolean("Container Large", false);
+  const href = text("href", "");
+  const label = text("label", "");
+  const value = text("value", "");
+  const outline = boolean("outline", false);
+  const hasRemoveStyle = boolean("hasRemoveStyle", false);
+  const role = select("role", buttonRoles, "button");
 
   return html`
     <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-button @button-click=${(action('ditail'))} .variant=${variant} ariaLabel="Button Storybook" .color=${color} .disabled=${disabled} .circle=${circle} .loading=${loading} .size=${size} .tag=${tag} .type=${type}>
-        ${circle ? html`<md-icon slot="icon" name="icon-search_12"></md-icon>` : html`<span slot="text">Button</span>` }
+      <md-button
+        @button-click=${action("ditail")}
+        variant=${variant}
+        .color=${color}
+        .disabled=${disabled}
+        .circle=${circle}
+        .loading=${loading}
+        .size=${size}
+        .tag=${tag}
+        .type=${type}
+        .ariaLabel=${ariaLabel}
+        .ariaLabelledBy=${ariaLabelledBy}
+        .ariaExpanded=${ariaExpanded}
+        .ariaHaspopup=${ariaHaspopup}
+        .ariaPressed=${ariaPressed}
+        .containerLarge=${containerLarge}
+        .href=${href}
+        .label=${label}
+        .value=${value}
+        .outline=${outline}
+        .hasRemoveStyle=${hasRemoveStyle}
+        role=${role}
+      >
+        ${circle
+          ? html`
+              <md-icon slot="icon" name="icon-search_12"></md-icon>
+            `
+          : html`
+              <span slot="text">Button</span>
+            `}
       </md-button>
     </md-theme>
   `;
@@ -60,9 +108,8 @@ export const Button = () => {
 Button.parameters = {
   backgrounds: {
     values: [
-      { name: 'Light', value: '#fff' },
-      { name: 'Dark', value: '#000' },
-    ],
-  },
+      { name: "Light", value: "#fff" },
+      { name: "Dark", value: "#000" }
+    ]
+  }
 };
-

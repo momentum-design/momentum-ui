@@ -39,8 +39,8 @@
     "lit-html": "1.2.1"
   },
   "peerDependencies": {
-    "@momentum-ui/core": "^19.9.12",
-    "@momentum-ui/icons": "^7.54.0",
+    "@momentum-ui/core": "^19.9.44",
+    "@momentum-ui/icons": "^8.8.1",
     "@momentum-ui/tokens": "^1.5.0",
     "@momentum-ui/utils": "^6.2.7",
     "lit-element": "2.3.1",
@@ -65,8 +65,8 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@interactjs/types": "1.10.3",
-    "@momentum-ui/core": "^19.9.12",
-    "@momentum-ui/icons": "^7.54.0",
+    "@momentum-ui/core": "^19.9.44",
+    "@momentum-ui/icons": "^8.8.1",
     "@momentum-ui/tokens": "^1.5.0",
     "@momentum-ui/utils": "^6.2.7",
     "@open-wc/testing-helpers": "1.8.9",

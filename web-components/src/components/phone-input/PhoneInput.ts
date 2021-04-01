@@ -5,7 +5,8 @@ import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { css, html, internalProperty, LitElement, property, query } from "lit-element";
+import { nothing } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
@@ -33,6 +34,7 @@ export namespace PhoneInput {
     @property({ type: String }) flagClass = "flag__usa";
     @property({ type: String }) numberPlaceholder = "Enter Phone Number";
     @property({ type: String, attribute: "country-calling-code" }) countryCallingCode = "";
+    @property({ type: Boolean, attribute: "show-flags" }) showFlags = false;
     @property({ type: Boolean }) pill = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) value = "";
@@ -43,6 +45,8 @@ export namespace PhoneInput {
     @internalProperty() private formattedValue = "";
     @internalProperty() private isValid = true;
 
+    @query("md-combobox") combobox!: HTMLElement;
+
     connectedCallback() {
       super.connectedCallback();
       this.codeList = customArray({
@@ -52,28 +56,47 @@ export namespace PhoneInput {
       });
     }
 
-    attributeChangedCallback(name: string, oldval: any, newval: any) {
-      super.attributeChangedCallback(name, oldval, newval);
-      if (name.toLowerCase() === "codePlaceholder".toLowerCase()) {
-        this.flagClass = newval === "+1" ? "flag__usa" : "";
-      }
-    }
+    // attributeChangedCallback(name: string, oldval: any, newval: any) {
+    //   super.attributeChangedCallback(name, oldval, newval);
+    //   if (name.toLowerCase() === "codePlaceholder".toLowerCase()) {
+    //     this.flagClass = newval === "+1" ? "flag__usa" : "";
+    //   }
+    // }
 
-    updated(changedProperties: any) {
-      changedProperties.forEach((oldValue: any, propName: any) => {
-        if (propName === "countryCallingCode") {
-          this.flagClass =
-            this.countryCode === "US" &&
-            (this.countryCallingCode.startsWith("+1") ||
-              (this.countryCallingCode === "" && this.codePlaceholder == "+1"))
-              ? "flag__usa"
-              : "";
-        }
-      });
-    }
+    // updated(changedProperties: any) {
+    //   changedProperties.forEach((oldValue: any, propName: any) => {
+    //     if (propName === "countryCallingCode") {
+    //       this.flagClass =
+    //         this.countryCode === "US" &&
+    //         (this.countryCallingCode.startsWith("+1") ||
+    //           (this.countryCallingCode === "" && this.codePlaceholder == "+1"))
+    //           ? "flag__usa"
+    //           : "";
+    //     }
+    //   });
+    // }
 
     static get styles() {
       return [reset, styles];
+    }
+
+    getCountryFlag(code: string) {
+      console.log(code)
+      return html`
+        <img src="${findFlagUrlByIso2Code(code)}" style="max-height:.5rem;" />
+      `;
+    }
+
+    getFlagStyles(code: string) {
+      return css`
+        ::host(.md-combobox__multiwrap) {
+          background: url(${findFlagUrlByIso2Code(code)});
+          background-repeat: no-repeat;
+          content: "";
+          height: 10px;
+          width: 20px;
+        }
+      `;
     }
 
     countryCodeOptionTemplate(country: PhoneInput.Country, index: number) {
@@ -84,7 +107,7 @@ export namespace PhoneInput {
           slot=${index}
           aria-label="+${country.value}, ${country.name}, ${country.code}"
         >
-          <img src="${findFlagUrlByIso2Code(country.code)}" style="max-height:.5rem;" />
+          ${this.showFlags ? this.getCountryFlag(country.code) : nothing}
           <span>${country.name}</span>
           <span>+${country.value}</span>
         </div>
@@ -92,13 +115,13 @@ export namespace PhoneInput {
     }
 
     handleCountryChange(event: CustomEvent) {
-      this.flagClass = this.codePlaceholder === "+1" ? "flag__usa" : "";
+      // this.flagClass = this.codePlaceholder === "+1" ? "flag__usa" : "";
       if (!event.detail.value || !event.detail.value.id) {
         return;
       }
       this.countryCallingCode = event.detail.value.id;
       this.countryCode = event.detail.value.id.split(",")[2];
-      this.flagClass = this.countryCode === "US" ? "flag__usa" : "";
+      // this.flagClass = this.countryCode === "US" ? "flag__usa" : "";
     }
 
     handlePhoneChange(event: CustomEvent) {
@@ -154,6 +177,10 @@ export namespace PhoneInput {
     }
 
     handleCountryFocusOut({ detail }: any) {
+      // debugger;
+      const test = this.combobox!.shadowRoot!.querySelector(".group");
+      console.log(test);
+      console.log(this.countryCode);
       this.flagClass =
         (detail.value === "" && this.codePlaceholder === "+1") ||
         (detail.value === "+1" && this.countryCode === "US" && this.countryCallingCode.startsWith("+1"))
@@ -164,9 +191,7 @@ export namespace PhoneInput {
     render() {
       return html`
         <div class="md-phone-input__container">
-          <div part="testDiv" class="test-div"></div>
           <md-combobox
-            class="${this.flagClass}"
             part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
@@ -176,6 +201,11 @@ export namespace PhoneInput {
             @combobox-input="${this.handleCountryFocusOut}"
             with-custom-content
           >
+            ${this.showFlags 
+            ? html`<span slot="aux-content">${this.getCountryFlag("US")}</span>`  
+            : nothing
+            }
+          
             ${repeat(
               this.codeList,
               (country: PhoneInput.Country) => country.name,

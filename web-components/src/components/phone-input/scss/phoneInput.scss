@@ -5,17 +5,18 @@
 
   md-combobox.flag__usa {
     &::part(multiwrap) {
-      &:before {
-          content: '';
-          height: 10px;
-          width: 20px;
-          background: url('/images/flags.png') -5220px 0;
-          background-repeat: no-repeat;
-        }
+      &::before {
+        background: url("/images/flags.png") -5220px 0;
+        background-repeat: no-repeat;
+        content: "";
+        height: 10px;
+        width: 20px;
       }
-      &::part(multiwrap-input) {
-        flex: 1;
-      }
+    }
+
+    &::part(multiwrap-input) {
+      flex: 1;
+    }
   }
 
   md-combobox {
@@ -37,9 +38,9 @@
   }
 
   md-combobox::part(multiwrap-input) {
-    width: 100%;
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
   }
 
   md-combobox::part(combobox-options) {

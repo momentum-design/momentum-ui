@@ -224,7 +224,6 @@ ul {
   align-items: center;
   display: inline-flex;
   flex: 1 1 auto;
-  flex-wrap: wrap;
   margin-left: 0;
   max-height: calc(#{$combobox-select-size} * 4.5);
 
@@ -273,7 +272,7 @@ ul {
     outline: none;
   }
 
-  ::-webkit-input-placeholder {
+  ::input-placeholder {
     @include text-dots;
     display: inline-block;
     width: calc(100%);

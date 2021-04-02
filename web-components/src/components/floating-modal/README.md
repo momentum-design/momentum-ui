@@ -21,5 +21,16 @@ md-floating-modal::part(floating) {
 ### Slots
 #### Unnamed Slots
 The Unnamed `<slot>` will render any content you pass between the `<md-floating-modal></md-floating-modal>` tags.
+```html
+<md-floating-modal> 
+    <div>My modal's content!</div> 
+</md-floating-modal>
+```
+
 #### Named Slots
-`<slot name="header"></slot>` will render header text if provided in the component's `header` attribute.
+Floating Modal exposes a 'header' slot for composable header content.
+```html
+<md-floating-modal>
+    <h3 slot=“header”>My Header</h3>
+</md-floating-modal>
+```

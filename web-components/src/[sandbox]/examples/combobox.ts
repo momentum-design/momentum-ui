@@ -9,6 +9,7 @@ const testCustomValue = [
   { name: "blah", value: "123", __typename: "typename" },
   { name: "test", value: "456", __typename: "typename" }
 ];
+const testValue = ["test", "test1", "test2"];
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
@@ -18,12 +19,7 @@ export const comboBoxTemplate = html`
     placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
   ></md-combobox>
   <h3>Default with trim space</h3>
-  <md-combobox
-    .options=${comboBoxOptions}
-    placeholder="Placeholder"
-    .value=${[comboBoxOptions[5]]}
-    search-trim-space
-  ></md-combobox>
+  <md-combobox .options=${testValue} .value=${[testValue[0]]}></md-combobox>
   <h3>Default with Custom Values</h3>
   <md-combobox
     .options=${comboBoxOptions}
@@ -119,7 +115,7 @@ export const comboBoxTemplate = html`
     </div>
   </md-combobox>
   <h3>Slot Complex Object Content Multi</h3>
-  <md-combobox with-custom-content>
+  <md-combobox with-custom-content is-multi>
     ${repeat(
       testCustomValue,
       item => item.name,

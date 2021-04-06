@@ -19,7 +19,12 @@ export const comboBoxTemplate = html`
     placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
   ></md-combobox>
   <h3>Default with trim space</h3>
-  <md-combobox .options=${testValue} .value=${[testValue[0]]}></md-combobox>
+  <md-combobox
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    .value=${[comboBoxOptions[5]]}
+    search-trim-space
+  ></md-combobox>
   <h3>Default with Custom Values</h3>
   <md-combobox
     .options=${comboBoxOptions}
@@ -115,7 +120,7 @@ export const comboBoxTemplate = html`
     </div>
   </md-combobox>
   <h3>Slot Complex Object Content Multi</h3>
-  <md-combobox with-custom-content is-multi>
+  <md-combobox with-custom-content>
     ${repeat(
       testCustomValue,
       item => item.name,

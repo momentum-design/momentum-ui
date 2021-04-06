@@ -1,7 +1,7 @@
-import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
+import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -459,7 +459,7 @@ export class Sandbox extends LitElement {
 
           <div class="container" aria-label="internal/colors">
             <h2>Colors</h2>
-              ${colorTableTemplate}
+            ${colorTableTemplate}
           </div>
         </elix-list-explorer>
       </md-theme>

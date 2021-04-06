@@ -9,7 +9,6 @@ const testCustomValue = [
   { name: "blah", value: "123", __typename: "typename" },
   { name: "test", value: "456", __typename: "typename" }
 ];
-const testValue = ["test", "test1", "test2"];
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>

@@ -245,7 +245,7 @@ describe("Combobox Component", () => {
       await elementUpdated(el);
       expect(el.input!.getAttribute("aria-expanded")).toEqual("true");
       expect(el.button!.getAttribute("aria-expanded")).toEqual("true");
-      expect(el.button!.getAttribute("aria-label")).toEqual("Country");
+      expect(el.button!.getAttribute("aria-label")).toEqual("Arrow Down");
     });
 
     test("should open/close dropdown if clicked", async () => {

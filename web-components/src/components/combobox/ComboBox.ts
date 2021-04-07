@@ -59,6 +59,7 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
+    @property({ type: String }) ariaLabel = "";
 
     @property({ type: Number, attribute: false })
     get focusedIndex() {
@@ -774,7 +775,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button clear"
-          aria-label=${this.label}
+          aria-label="Clear button"
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
@@ -793,21 +794,21 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button arrow-down"
-          aria-label=${this.label}
+          aria-label="Arrow Down"
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
-          <span><md-icon name="icon-arrow-down_16"></md-icon> </span>
+          <span><md-icon tabindex="0" name="icon-arrow-down_16"></md-icon> </span>
         </button>
       `;
     }
 
     render() {
       return html`
-        <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
+        <div part="combobox" aria-label=${this.ariaLabel} class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">
             ${this.searchable ? this.searchIconTemplate() : nothing}
             <div class="md-combobox__multiwrap" part="multiwrap">
@@ -819,7 +820,7 @@ export namespace ComboBox {
                 type="text"
                 role="combobox"
                 aria-autocomplete="both"
-                aria-label="input"
+                aria-label="Combobox Input"
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
                 placeholder=${this.placeholder}

@@ -56,7 +56,7 @@ export namespace AlertBanner {
             <md-button
               class="md-alert-banner__close"
               hasRemoveStyle
-              ariaLabel="Close"
+              ariaLabel="Close Banner"
               @click="${this.onHide}"
               @keydown="${this.handleKeyDown}"
             >

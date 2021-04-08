@@ -29,7 +29,6 @@
   --md-secondary-white-bg-color: #{$md-white}; // use --md-primary-one-bg-color
   --md-tertiary-white-bg-color: #{$md-white}; // use --md-primary-two-bg-color
 
-
   --md-primary-success-bg-color: #{$md-green-10};
   --md-primary-success-text-color: #{$md-green-70};
 
@@ -71,4 +70,7 @@
 
   --md-dynamic-layout-button-border-color: #{$md-gray-10};
   --md-dynamic-layout-button-inverted-border-color: #{$md-gray-70};
+
+  --md-nav-tab-hover-bg-color: #{$md-gray-10};
+  --md-nav-tab-active-bg-color: #{$md-gray-20};
 }

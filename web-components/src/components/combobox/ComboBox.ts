@@ -59,7 +59,7 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
-    @property({ type: String }) ariaLabel = "";
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
 
     @property({ type: Number, attribute: false })
     get focusedIndex() {

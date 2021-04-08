@@ -607,10 +607,10 @@ class EventOverlay extends React.Component {
           ) {
             targetNode.style.bottom = `${documentScrollTop + windowBottom - documentBottom}px`;
           }
-          if (elementDims.right > documentRight || this.elementWidth > documentRight) {
+          if (elementDims.right >= documentRight || this.elementWidth > documentRight) {
             targetNode.style.right = '0px';
             if (this.elementWidth < documentRight) {
-              targetNode.style.left = `${documentRight - this.elementWidth}px`;
+              targetNode.style.left = 'revert';
             }
           }
           if (elementDims.left < 0) {
@@ -690,11 +690,7 @@ class EventOverlay extends React.Component {
             arrowWidth + offsetWidth + elementDims.width + anchorPosition.left >
             anchorPosition.left
           ) {
-            targetNode.style.left = `${arrowWidth}px`;
-            targetNode.style.right = `${documentRight -
-              anchorPosition.left +
-              arrowWidth +
-              offsetWidth}px`;
+            targetNode.style.left = `${anchorPosition.left - elementDims.width - offsetWidth}px`;
           }
           if (getAvailableTopSpace(documentScrollTop) < 0) {
             targetNode.style.top = `${-documentScrollTop}px`;

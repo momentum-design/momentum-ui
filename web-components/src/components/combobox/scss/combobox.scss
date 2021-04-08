@@ -44,6 +44,10 @@
     background: $combobox-invalid-bg-color;
     border-color: $combobox-invalid-border-color;
   }
+
+  .md-combobox-error {
+    padding: $combobox-error-padding;
+  }
 }
 
 .md-combobox-list {
@@ -66,9 +70,12 @@
       height: $combobox-search-icon-height;
       padding: calc(#{$combobox-main-indent} / 2);
 
-      &:focus { 
-        @include remove-focus; 
-        @include focus-boxshadow(rem-calc(2), var(--md-focus-border-color, $lm-combobox-dropdown-item-focus-bg-color-light));        
+      &:focus {
+        @include remove-focus;
+        @include focus-boxshadow(
+          rem-calc(2),
+          var(--md-focus-border-color, $lm-combobox-dropdown-item-focus-bg-color-light)
+        );
       }
     }
 

@@ -690,7 +690,15 @@ class EventOverlay extends React.Component {
             arrowWidth + offsetWidth + elementDims.width + anchorPosition.left >
             anchorPosition.left
           ) {
-            targetNode.style.left = `${anchorPosition.left - elementDims.width - offsetWidth}px`;
+            if (anchorPosition.left  - offsetWidth - elementDims.width > arrowWidth) {
+              targetNode.style.left = 'revert';
+            } else {
+              targetNode.style.left = `${arrowWidth}px`;
+            }
+            targetNode.style.right = `${documentRight -
+              anchorPosition.left +
+              arrowWidth +
+              offsetWidth}px`;
           }
           if (getAvailableTopSpace(documentScrollTop) < 0) {
             targetNode.style.top = `${-documentScrollTop}px`;

@@ -5,6 +5,10 @@ import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 
 const dropdownValue: string[] = [];
+const testCustomValue = [
+  { name: "blah", value: "123", __typename: "typename" },
+  { name: "test", value: "456", __typename: "typename" }
+];
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
@@ -115,18 +119,14 @@ export const comboBoxTemplate = html`
     </div>
   </md-combobox>
   <h3>Slot Complex Object Content Multi</h3>
-  <md-combobox with-custom-content is-multi>
+  <md-combobox with-custom-content>
     ${repeat(
-      comboBoxComplexObjectOption,
-      country => country.countryNameEn,
-      (country: { countryNameEn: string; countryCallingCode: string }, index) => html`
-        <div
-          slot=${index}
-          display-value=${country.countryNameEn}
-          aria-label="+${country.countryCallingCode}${country.countryNameEn}"
-        >
-          <span>${country.countryNameEn}</span>
-          <span>+${country.countryCallingCode}</span>
+      testCustomValue,
+      item => item.name,
+      (item: { name: string; value: string }, index) => html`
+        <div slot=${index} display-value=${item.name} aria-label="+${item.value}${item.name}">
+          <span>${item.name}</span>
+          <span>${item.value}</span>
         </div>
       `
     )}

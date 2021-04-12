@@ -782,7 +782,7 @@ export namespace ComboBox {
           @click=${this.handleRemoveAll}
         >
           <span>
-            <md-icon name="clear-active_12" style=${styleMap({ color: "var(--combobox-input-clear-bg)" })}></md-icon
+            <md-icon name="clear-active_12" tabindex="0" style=${styleMap({ color: "var(--combobox-input-clear-bg)" })}></md-icon
           ></span>
         </button>
       `;

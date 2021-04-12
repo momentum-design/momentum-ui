@@ -208,8 +208,9 @@ const commonDist = merge(common, {
     path: pDist,
     publicPath: "/",
     filename: "[name].js",
-    chunkFilename: "chunks/[id].js",
-    libraryTarget: "umd"
+    chunkFilename: "chunks/md-[id].js",
+    libraryTarget: "umd",
+    jsonpFunction: "momentum-web-components-[id]"
   },
   optimization: {
     splitChunks: {

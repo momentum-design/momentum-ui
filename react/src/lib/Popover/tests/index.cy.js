@@ -59,7 +59,7 @@ describe('@momentum-ui/react', () => {
   });
 
   forEach([true, false], (isContained) => {
-    forEach(['top', 'bottom', 'left', 'right'], (direction) => {
+    forEach(['top-center', 'bottom-center', 'left-center', 'right-center'], (direction) => {
       it(`snapshot of direction: ${direction}, isContained: ${isContained} popover`, () => {
         cy.get(`#direction_${direction}_${isContained}`)
           .focus()

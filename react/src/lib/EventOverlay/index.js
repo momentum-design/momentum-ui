@@ -472,7 +472,7 @@ class EventOverlay extends React.Component {
     const documentScrollTop = document.documentElement.scrollTop;
     const documentBottom = document.documentElement.scrollHeight;
     const windowBottom = window.pageXOffset + window.innerHeight;
-    const documentRight = document.documentElement.offsetWidth;
+    const documentRight = Math.max(document.documentElement.offsetWidth, document.documentElement.clientWidth);
     const arrowHeight = (arrowDims && arrowDims.height) || 0;
     const arrowWidth = (arrowDims && arrowDims.width) || 0;
     const offsetHeight = targetOffset.vertical || 0;
@@ -610,7 +610,7 @@ class EventOverlay extends React.Component {
           if (elementDims.right >= documentRight || this.elementWidth > documentRight) {
             targetNode.style.right = '0px';
             if (this.elementWidth < documentRight) {
-              targetNode.style.left = 'revert';
+              targetNode.style.left = 'inherit';
             }
           }
           if (elementDims.left < 0) {
@@ -686,19 +686,14 @@ class EventOverlay extends React.Component {
         break;
       case 'left':
         if (!scrollParentDims.left && !transformParentDims) {
-          if (
-            arrowWidth + offsetWidth + elementDims.width + anchorPosition.left >
-            anchorPosition.left
-          ) {
-            if (anchorPosition.left  - offsetWidth - elementDims.width > arrowWidth) {
-              targetNode.style.left = 'revert';
-            } else {
-              targetNode.style.left = `${arrowWidth}px`;
-            }
-            targetNode.style.right = `${documentRight -
-              anchorPosition.left +
-              arrowWidth +
-              offsetWidth}px`;
+          targetNode.style.right = `${documentRight -
+            anchorPosition.left +
+            arrowWidth +
+            offsetWidth}px`;
+          if ( elementDims.left - arrowWidth < 0 ) {
+            targetNode.style.left = `${arrowWidth}px`;
+          } else {
+            targetNode.style.left = 'inherit';
           }
           if (getAvailableTopSpace(documentScrollTop) < 0) {
             targetNode.style.top = `${-documentScrollTop}px`;

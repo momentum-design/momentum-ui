@@ -60,13 +60,13 @@ describe('@momentum-ui/react', () => {
 
   forEach([true, false], (isContained) => {
     forEach(['top', 'bottom', 'left', 'right'], (direction) => {
-      it('snapshot of direction popover', () => {
+      it(`snapshot of direction: ${direction}, isContained: ${isContained} popover`, () => {
         cy.get(`#direction_${direction}_${isContained}`)
-            .focus()
-            .get(`.${prefix}-event-overlay`)
-            .should('exist')
-            .percySnapshot()
-            .end();
+          .focus()
+          .get(`.${prefix}-event-overlay`)
+          .should('exist')
+          .percySnapshot()
+          .end();
       });
     });
   });

@@ -116,7 +116,7 @@
   cursor: pointer;
   height: $combobox-min-height;
   margin: 0;
-  margin-left: calc(#{$combobox-main-indent} * 3);
+  margin-left: calc(#{$combobox-main-indent} * 2);
   outline: none;
   padding: 0;
   padding-top: calc(#{$combobox-main-indent} / 2);

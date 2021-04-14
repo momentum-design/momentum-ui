@@ -59,7 +59,9 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
-    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "Combobox Input";
+    @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
+    @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
 
     @property({ type: Number, attribute: false })
     get focusedIndex() {
@@ -775,7 +777,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button clear"
-          aria-label="Clear button"
+          aria-label=${this.clearAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
@@ -794,7 +796,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button arrow-down"
-          aria-label="Arrow Down"
+          aria-label=${this.arrowAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
@@ -820,7 +822,7 @@ export namespace ComboBox {
                 type="text"
                 role="combobox"
                 aria-autocomplete="both"
-                aria-label="Combobox Input"
+                aria-label=${this.ariaLabel}
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
                 placeholder=${this.placeholder}

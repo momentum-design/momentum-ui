@@ -1,4 +1,4 @@
-import { fixture, fixtureCleanup, html, waitUntil } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import countryCodesList, { customArray } from "country-codes-list";
 import "libphonenumber-js";
 import "./PhoneInput";
@@ -187,7 +187,7 @@ describe("PhoneInput Component", () => {
     phoneInput?.dispatchEvent(event);
     expect(phoneChangeSpy).toHaveBeenCalled();
   });
-  test("should register a KeyDwon event", async () => {
+  test("should register a KeyDown event", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
@@ -206,33 +206,33 @@ describe("PhoneInput Component", () => {
     expect(keyDownSpy).toHaveBeenCalled();
   });
 
-  test("should show the US flag when default country code is +1", async () => {
-    const element = await fixture(
-      html`
-        <md-phone-input codePlaceholder="+1"></md-phone-input>
-      `
-    );
+  // test("should show the US flag when default country code is +1", async () => {
+  //   const element = await fixture(
+  //     html`
+  //       <md-phone-input codePlaceholder="+1"></md-phone-input>
+  //     `
+  //   );
 
-    expect(element.shadowRoot?.querySelector('md-combobox')?.classList).toContain("flag__usa");
-  });
+  //   expect(element.shadowRoot?.querySelector("md-combobox")?.classList).toContain("flag__usa");
+  // });
 
-  test("should not show the US flag when default country code is not +1", async () => {
-    const element = await fixture(
-      html`
-        <md-phone-input codePlaceholder="+7"></md-phone-input>
-      `
-    );
+  // test("should not show the US flag when default country code is not +1", async () => {
+  //   const element = await fixture(
+  //     html`
+  //       <md-phone-input codePlaceholder="+7"></md-phone-input>
+  //     `
+  //   );
 
-    expect(element.shadowRoot?.querySelector('md-combobox')?.classList).not.toContain("flag__usa");
-  });
+  //   expect(element.shadowRoot?.querySelector("md-combobox")?.classList).not.toContain("flag__usa");
+  // });
 
-  test("should show the US flag when united states is selected from a list", async () => {
+  test("Should render a flag image when show-flags is true", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
-        <md-phone-input></md-phone-input>
+        <md-phone-input show-flags></md-phone-input>
       `
     );
-
+    const getFlagOperation = jest.spyOn(element, "getCountryFlag");
     const event: CustomEvent = new CustomEvent("change-selected", {
       composed: true,
       bubbles: true,
@@ -244,33 +244,34 @@ describe("PhoneInput Component", () => {
       }
     });
     element.handleCountryChange(event);
-
-    expect(element.shadowRoot?.querySelector('md-combobox')?.classList).toContain("flag__usa");
+    await elementUpdated(element);
+    const flag = element.shadowRoot?.querySelector("span.flag-box");
+    expect(getFlagOperation).toHaveBeenCalled();
+    expect(flag?.querySelector("img")).not.toBeNull();
   });
 
-  test("should NOT show the US flag when united states is selected from a list", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
-    const classList = element.shadowRoot?.querySelector('md-combobox')?.classList;
+  // test("should NOT show the US flag when united states is selected from a list", async () => {
+  //   const element = await fixture<PhoneInput.ELEMENT>(
+  //     html`
+  //       <md-phone-input></md-phone-input>
+  //     `
+  //   );
+  //   const classList = element.shadowRoot?.querySelector("md-combobox")?.classList;
 
-    const event: CustomEvent = new CustomEvent("change-selected", {
-      composed: true,
-      bubbles: true,
-      detail: {
-        value: {
-          id: "+1268,AntiguaandBarbuda,AG",
-          value: "+1268"
-        }
-      }
-    }); 
-    element.handleCountryChange(event);
+  //   const event: CustomEvent = new CustomEvent("change-selected", {
+  //     composed: true,
+  //     bubbles: true,
+  //     detail: {
+  //       value: {
+  //         id: "+1268,AntiguaandBarbuda,AG",
+  //         value: "+1268"
+  //       }
+  //     }
+  //   });
+  //   element.handleCountryChange(event);
 
-    await waitUntil(() => !classList?.contains('flag__usa'), 'Class "flag__usa" never disappeared');
+  //   await waitUntil(() => !classList?.contains("flag__usa"), 'Class "flag__usa" never disappeared');
 
-    expect(classList).not.toContain("flag__usa");
-  });
-
+  //   expect(classList).not.toContain("flag__usa");
+  // });
 });

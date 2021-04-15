@@ -58,7 +58,9 @@ export namespace PhoneInput {
     getCountryFlag(code: string) {
       console.log(code);
       return html`
-        <img src="${findFlagUrlByIso2Code(code)}" style="max-height:.7rem;" />
+        <span class="flag-svg-wrapper">
+          <img src="${findFlagUrlByIso2Code(code)}" />
+        </span>
       `;
     }
 
@@ -147,20 +149,9 @@ export namespace PhoneInput {
       return html`
         <style>
           .md-phone-input__container md-combobox {
-            width: 90px;
+            width: 5.625rem;
           }
-          .flag-box {
-            position: relative;
-            height: 34px;
-            width: 36px;
-            border: 1px solid grey;
-            border-right: none;
-            border-top-left-radius: 0.25rem;
-            border-bottom-left-radius: 0.25rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
+
           md-combobox::part(group) {
             border-left-style: none;
             border-bottom-left-radius: 0;

@@ -3,19 +3,30 @@
   display: flex;
   position: relative;
 
-  md-combobox.flag__usa {
-    &::part(multiwrap) {
-      &::before {
-        background: url("/images/flags.png") -5220px 0;
-        background-repeat: no-repeat;
-        content: "";
-        height: 10px;
-        width: 20px;
-      }
-    }
+  span.flag-box {
+    align-items: center;
+    border: 1px solid var(--input-default-border-color, #ccc);
+    border-bottom-left-radius: 0.25rem;
+    border-right: none;
+    border-top-left-radius: 0.25rem;
+    display: flex;
+    height: rem-calc(34);
+    justify-content: center;
+    position: relative;
+    width: rem-calc(36);
 
-    &::part(multiwrap-input) {
-      flex: 1;
+    .flag-svg-wrapper {
+      justify-content: center;
+    }
+  }
+
+  .flag-svg-wrapper {
+    align-items: center;
+    display: flex;
+    width: 2rem;
+
+    img {
+      max-height: 0.7rem;
     }
   }
 
@@ -63,8 +74,13 @@
   }
 
   .md-phone-input__option {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+
+    :nth-child(3) {
+      margin-left: 1rem;
+    }
   }
 
   md-input[disabled]::part(input) {
@@ -77,4 +93,3 @@
     }
   }
 }
-

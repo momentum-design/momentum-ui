@@ -118,7 +118,7 @@
     }
 
     &.#{$alert__class}--success {
-      background-color: var(--md-alert-background-success, transparent);
+      background-color: var(--md-alert-background-success, $md-white-100);
 
       .#{$alert__class}__icon {
         &:before {
@@ -136,7 +136,7 @@
     }
 
     &.#{$alert__class}--warning {
-      background-color: var(--md-alert-background-warning, transparent);
+      background-color: var(--md-alert-background-warning, $md-white-100);
 
       .#{$alert__class}__icon {
         &:before {
@@ -154,7 +154,7 @@
     }
 
     &.#{$alert__class}--error {
-      background-color: var(--md-alert-background-error, transparent);
+      background-color: var(--md-alert-background-error, $md-white-100);
 
       .#{$alert__class}__icon {
         &:before {

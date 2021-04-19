@@ -392,7 +392,8 @@ export namespace Tabs {
               this.changeSelectedTabIdx(lastVisibleTabIdx);
             }
           } else if (isVisibleTab) {
-            //
+            const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
+            this.changeSelectedTabIdx(oldSelectedIndex);
           } else if (isHiddenTab) {
             //
           }

@@ -782,7 +782,11 @@ export namespace ComboBox {
           @click=${this.handleRemoveAll}
         >
           <span>
-            <md-icon name="clear-active_12" tabindex="0" style=${styleMap({ color: "var(--combobox-input-clear-bg)" })}></md-icon
+            <md-icon
+              name="clear-active_12"
+              tabindex="0"
+              style=${styleMap({ color: "var(--combobox-input-clear-bg)" })}
+            ></md-icon
           ></span>
         </button>
       `;
@@ -814,7 +818,6 @@ export namespace ComboBox {
               ${this.isMulti
                 ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
                 : nothing}
-              <slot name="aux-content"></slot>
               <input
                 class="md-combobox-listbox"
                 type="text"

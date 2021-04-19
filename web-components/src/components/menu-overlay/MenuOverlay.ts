@@ -286,7 +286,7 @@ export namespace MenuOverlay {
         return;
       }
 
-      if (event.code === Key.Escape || event.code === Key.Enter) {
+      if (event.code === Key.Escape) {
         event.preventDefault();
         if (this.isOpen) {
           this.isOpen = false;

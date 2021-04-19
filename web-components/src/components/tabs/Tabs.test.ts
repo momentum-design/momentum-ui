@@ -327,4 +327,14 @@ describe("Tabs", () => {
     tabs["updateHiddenIdPositiveTabIndex"](t);
     expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });
+
+  test("should handle keydown event and focused appropriate tabPanel upon Tab Press", async () => {
+    const createKeyboardEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+    tabs.slotted[0].dispatchEvent(createKeyboardEvent(Key.Tab));
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+    expect(panels[0].getAttribute("tabindex")).toBe("0");
+  });
 });

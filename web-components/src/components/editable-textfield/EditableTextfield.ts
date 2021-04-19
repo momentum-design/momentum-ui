@@ -40,6 +40,8 @@ export namespace EditableTextfield {
     @property({ type: Boolean }) hideMessage = false;
     @property({ type: String }) pattern = "";
     @property({ type: String }) type: EditableTextfield.InputType[number] | null = null;
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "editable field";
+    @property({ type: String, attribute: "aria-described-by" }) ariaDescribedBy = "";
 
     private readonly messageController: Input.MessageController = new Input.MessageController();
 
@@ -229,6 +231,7 @@ export namespace EditableTextfield {
         <div
           style="${this.overflowStyles}"
           class="md-editable-textfield ${classMap(classes)}"
+          role="textbox"
           tabindex=${this.disabled ? "-1" : "0"}
           ?contenteditable=${this.isEditing}
           @focus=${this.handleFocus}
@@ -237,6 +240,8 @@ export namespace EditableTextfield {
             this.handleKeydown(e);
           }}
           aria-invalid=${this.alert ? "true" : "false"}
+          aria-label=${this.ariaLabel}
+          aria-describedby=${this.ariaDescribedBy}
         >
           ${dompurify.sanitize(this.content)}
         </div>

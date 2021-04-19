@@ -22,6 +22,7 @@ export namespace AlertBanner {
     @property({ type: String }) message = "";
     @property({ type: Boolean }) closable = false;
     @property({ type: Boolean }) show = false;
+    @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Banner";
 
     connectedCallback() {
       super.connectedCallback();
@@ -56,7 +57,7 @@ export namespace AlertBanner {
             <md-button
               class="md-alert-banner__close"
               hasRemoveStyle
-              ariaLabel="Close"
+              ariaLabel=${this.closeAriaLabel}
               @click="${this.onHide}"
               @keydown="${this.handleKeyDown}"
             >

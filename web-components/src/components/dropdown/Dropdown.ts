@@ -443,6 +443,7 @@ export namespace Dropdown {
             aria-controls="md-dropdown-list"
             ?disabled="${this.disabled}"
             @click="${() => this.onLabelClick()}"
+            part="dropdown-header"
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>
             <span class="md-dropdown-label--icon">

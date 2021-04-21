@@ -32,6 +32,6 @@
   padding-top: 1rem;
 }
 
-#pills-dropdown md-dropdown::part(dropdown-header) {
+.pills-dropdown md-dropdown::part(dropdown-header) {
   border-radius: 30px;
 }

@@ -149,13 +149,13 @@ export const dropdownTemplate = html`
       console.log("[Multi KeyValue Objects Long Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
-<div id="pills-dropdown">
-  <h3> Pill shaped dropdown</h3>
-  <md-dropdown
-    .options="${dropdownStringOptions}"
-    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
-      console.log("[Strings Options] Selected: ", e.detail);
-    }}"
-  ></md-dropdown>
+  <div class="pills-dropdown">
+    <h3>Pill shaped dropdown</h3>
+    <md-dropdown
+      .options="${dropdownStringOptions}"
+      @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+        console.log("[Strings Options] Selected: ", e.detail);
+      }}"
+    ></md-dropdown>
   </div>
 `;

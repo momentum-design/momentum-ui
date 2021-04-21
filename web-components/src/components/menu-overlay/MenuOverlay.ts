@@ -7,15 +7,15 @@
  */
 
 import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
-import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
@@ -263,7 +263,6 @@ export namespace MenuOverlay {
     }
 
     private handleTriggerClick = (event: MouseEvent) => {
-      event.stopPropagation();
       this.toggleOverlay();
     };
 

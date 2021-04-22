@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.22.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.3...@momentum-ui/react@23.22.4) (2021-04-22)
+
+
+### Bug Fixes
+
+* **tooltips:** fix tooltips for lightbox ([#849](https://github.com/momentum-design/momentum-ui/issues/849)) ([2392dac](https://github.com/momentum-design/momentum-ui/commit/2392dac530cbcff4d1d14dc9fc9a46f863299759))
+
+
+
+
+
+## [23.22.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.2...@momentum-ui/react@23.22.3) (2021-04-21)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.22.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.1...@momentum-ui/react@23.22.2) (2021-03-23)
 
 **Note:** Version bump only for package @momentum-ui/react

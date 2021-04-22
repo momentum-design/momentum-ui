@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.10.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.10.1...@momentum-ui/core@19.10.2) (2021-04-22)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.10.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.10.0...@momentum-ui/core@19.10.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* **core/alert:** transparent backgrounds ([#856](https://github.com/momentum-design/momentum-ui/issues/856)) ([8bd3ca6](https://github.com/momentum-design/momentum-ui/commit/8bd3ca6092462c4cc378d2050ccef3f819a02bd9))
+
+
+
+
+
 # [19.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.9.45...@momentum-ui/core@19.10.0) (2021-03-23)
 
 

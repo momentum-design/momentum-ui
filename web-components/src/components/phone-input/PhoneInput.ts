@@ -56,7 +56,6 @@ export namespace PhoneInput {
     }
 
     getCountryFlag(code: string) {
-      console.log(code);
       return html`
         <span class="flag-svg-wrapper">
           <img src="${findFlagUrlByIso2Code(code)}" />
@@ -139,12 +138,6 @@ export namespace PhoneInput {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
     }
 
-    handleCountryFocusOut({ detail }: any) {
-      const test = this.combobox!.shadowRoot!.querySelector(".group");
-      console.log(test);
-      console.log(this.countryCode);
-    }
-
     getModStyle() {
       return html`
         <style>
@@ -182,7 +175,6 @@ export namespace PhoneInput {
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
-            @combobox-input="${this.handleCountryFocusOut}"
             with-custom-content
           >
             ${repeat(

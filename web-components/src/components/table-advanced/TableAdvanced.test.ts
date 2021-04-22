@@ -8,7 +8,7 @@
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ComplexTable, SimpleTable } from "@/[sandbox]/sandbox.mock";
+import { ComplexTable, SimpleTable, ShortkeyTable } from "@/[sandbox]/sandbox.mock";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./TableAdvanced";
 import { TableAdvanced } from "./TableAdvanced";
@@ -83,6 +83,22 @@ describe("Table Advanced component", () => {
       metaKey: false,
       shiftKey: false
     });
+  });
+
+  test("should show error on column/row mismatch", async() => {
+    const badData = {...ShortkeyTable.data, list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"]]};
+    const elemWithBadData = await fixture<TableAdvanced.ELEMENT>(html`
+    <md-table-advanced .config=${ShortkeyTable.config} .data=${badData}> </md-table-advanced>
+  `);
+    expect(elemWithBadData["error"]).toContain("Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.");
+
+    const badData2 = {...ShortkeyTable.data, list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"], 
+    ["Active Task List", "Switch between tasks"]]};
+
+    const elem = await fixture<TableAdvanced.ELEMENT>(html`
+    <md-table-advanced .config=${ShortkeyTable.config} .data=${badData2}> </md-table-advanced>
+  `);
+    expect(elem["error"]).toContain("DATA ERROR: Total number of cols");
   });
 
   test("data parse", async () => {

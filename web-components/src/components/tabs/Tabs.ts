@@ -595,6 +595,8 @@ export namespace Tabs {
             <md-tab
               slot="menu-trigger"
               id="${MORE_MENU_TAB_TRIGGER_ID}"
+              aria-label="${this.overlowLabel}"
+              aria-haspopup="true"
               tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
               .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
               class="md-menu-overlay__more_tab ${classMap({
@@ -625,6 +627,7 @@ export namespace Tabs {
                     .disabled="${tab.disabled}"
                     .selected="${tab.selected}"
                     id="${this.getCopyTabId(tab)}"
+                    aria-label=${tab.ariaLabel}
                     aria-controls="${tab.id}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"

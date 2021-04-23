@@ -13,11 +13,10 @@ import "@interactjs/modifiers";
 import "@interactjs/actions/resize";
 import * as Interact from "@interactjs/types";
 import interact from "@interactjs/interact/index";
-import { FocusTrapMixin } from "@/mixins";
 
 export namespace FloatingModal {
   @customElementWithCheck("md-floating-modal")
-  export class ELEMENT extends FocusTrapMixin(LitElement) {
+  export class ELEMENT extends LitElement {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
@@ -51,20 +50,10 @@ export namespace FloatingModal {
         if (this.container && this.show) {
           this.setContainerRect();
           this.setInteractInstance();
-          this.activateFocusTrap!();
-          this.setFocusableElements!();
-          this.focusInsideModal();
         } else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
-          this.deactivateFocusTrap!();
         }
-      }
-    }
-
-    private focusInsideModal() {
-      if (this.focusableElements && this.focusableElements.length) {
-        this.setInitialFocus!();
       }
     }
 

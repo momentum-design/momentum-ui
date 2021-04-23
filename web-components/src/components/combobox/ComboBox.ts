@@ -6,13 +6,13 @@
  *
  */
 
-import "@/components/icon/Icon";
 import "@/components/help-text/HelpText";
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -810,7 +810,11 @@ export namespace ComboBox {
 
     render() {
       return html`
-        <div part="combobox" aria-label=${this.ariaLabel} class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
+        <div
+          part="combobox"
+          aria-label=${this.ariaLabel}
+          class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}"
+        >
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">
             ${this.searchable ? this.searchIconTemplate() : nothing}
             <div class="md-combobox__multiwrap" part="multiwrap">

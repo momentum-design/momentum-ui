@@ -100,6 +100,7 @@
     "check-peer-dependencies": "2.0.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
+    "country-flags-svg": "^1.1.0",
     "css-loader": "^3.4.2",
     "cssstats": "^3.4.1",
     "elix": "^12.1.4",

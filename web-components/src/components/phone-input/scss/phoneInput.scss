@@ -3,6 +3,33 @@
   display: flex;
   position: relative;
 
+  span.flag-box {
+    align-items: center;
+    border: 1px solid var(--input-default-border-color, #ccc);
+    border-bottom-left-radius: 0.25rem;
+    border-right: none;
+    border-top-left-radius: 0.25rem;
+    display: flex;
+    height: rem-calc(34);
+    justify-content: center;
+    position: relative;
+    width: rem-calc(36);
+
+    .flag-svg-wrapper {
+      justify-content: center;
+    }
+  }
+
+  .flag-svg-wrapper {
+    align-items: center;
+    display: flex;
+    width: 2rem;
+
+    img {
+      max-height: 0.7rem;
+    }
+  }
+
   md-combobox {
     width: var(--combo-box-contaier-width);
   }
@@ -22,9 +49,9 @@
   }
 
   md-combobox::part(multiwrap-input) {
-    width: 100%;
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
   }
 
   md-combobox::part(combobox-options) {
@@ -47,8 +74,13 @@
   }
 
   .md-phone-input__option {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+
+    :nth-child(3) {
+      margin-left: 1rem;
+    }
   }
 
   md-input[disabled]::part(input) {
@@ -61,4 +93,3 @@
     }
   }
 }
-

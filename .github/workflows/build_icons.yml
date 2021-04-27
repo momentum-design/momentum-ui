@@ -26,12 +26,12 @@ jobs:
     
     - name: Find changed icon SVGs
       run: |
-        echo 'ADDED_FILES<<EOF' >> $GITHUB_ENV
-        git diff --diff-filter=A --name-only origin/$GITHUB_BASE_REF | grep "icons/svg"
-        echo 'EOF' >> $GITHUB_ENV
-        echo 'MODIFIED_FILES<<EOF' >> $GITHUB_ENV
-        git diff --diff-filter=M --name-only origin/$GITHUB_BASE_REF | grep "icons/svg"
-        echo 'EOF' >> $GITHUB_ENV
+        echo 'ADDED_FILES=' >> $GITHUB_ENV
+        git diff --diff-filter=A --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" "," | sed -E 's/($",")$//' >> $GITHUB_ENV
+        echo 'MODIFIED_FILES=' >> $GITHUB_ENV
+        git diff --diff-filter=M --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" "," | sed -E 's/($",")$//' >> $GITHUB_ENV
+        echo 'DELETED_FILES=' >> $GITHUB_ENV
+        git diff --diff-filter=D --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" "," | sed -E 's/($",")$//' >> $GITHUB_ENV
         
     - name: List changed icons
       run: |

@@ -36,15 +36,15 @@ jobs:
         DELETED_FILES=`git diff --diff-filter=D --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
         
         any_changes=false
-        for file in "$ADDED_FILES"; do
+        for file in $ADDED_FILES; do
           echo "$file added"
           any_changes=true
         done
-        for file in "$MODIFIED_FILES"; do
+        for file in $MODIFIED_FILES; do
           echo "$file modified"
           any_changes=true
         done
-        for file in "$MODIFIED_FILES"; do
+        for file in $MODIFIED_FILES; do
           echo "$file deleted"
           any_changes=true
         done

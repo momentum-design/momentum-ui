@@ -25,5 +25,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd icons
-    - run: npm ci
+    - run: npm install
     - run: node tools/icons-build.js

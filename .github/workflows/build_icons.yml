@@ -23,40 +23,40 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    
-    - name: Find changed icon SVGs
-      run: |
-        echo 'ADDED_FILES=' >> $GITHUB_ENV
-        git diff --diff-filter=A --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" "," | sed -E 's/($",")$//' >> $GITHUB_ENV
-        echo 'MODIFIED_FILES=' >> $GITHUB_ENV
-        git diff --diff-filter=M --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" "," | sed -E 's/($",")$//' >> $GITHUB_ENV
-        echo 'DELETED_FILES=' >> $GITHUB_ENV
-        git diff --diff-filter=D --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" "," | sed -E 's/($",")$//' >> $GITHUB_ENV
-        
-    - name: List changed icons
-      run: |
-        for file in "$ADDED_FILES"; do
-          echo "$file added"
-        done
-        for file in "$MODIFIED_FILES"; do
-          echo "$file modified"
-        done
         
     - name: Use Node.js ${{ matrix.node-version }}
-      if: contains(steps.changed_files.outputs.modified_files, 'icons/svg/')
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        
-    - name: Rebuild font files if files have changed
-      if: contains(steps.changed_files.outputs.modified_files, 'icons/svg/')
+    
+    - name: Find changed icon SVGs
       run: |
-       cd icons
-       npm install
-       node tools/icons-build.js
-       git add -u .
-       git config user.email "icons@example.com"
-       git config user.name "Icon build bot"
-       git commit -m "Rebuilt font files"
-       git push
+        ADDED_FILES=`git diff --diff-filter=A --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
+        MODIFIED_FILES=`git diff --diff-filter=M --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
+        DELETED_FILES=`git diff --diff-filter=D --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
+        
+        any_changes=false
+        for file in "$ADDED_FILES"; do
+          echo "$file added"
+          any_changes=true
+        done
+        for file in "$MODIFIED_FILES"; do
+          echo "$file modified"
+          any_changes=true
+        done
+        for file in "$MODIFIED_FILES"; do
+          echo "$file deleted"
+          any_changes=true
+        done
+        
+        if $any_changes ; then
+          cd icons
+          npm install
+          node tools/icons-build.js
+          git add -u .
+          git config user.email "icons@example.com"
+          git config user.name "Icon build bot"
+          git commit -m "Rebuilt font files"
+          git push
+        fi
        

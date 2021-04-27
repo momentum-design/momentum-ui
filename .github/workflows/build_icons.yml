@@ -3,10 +3,10 @@
 name: Build icon font files
 
 on:
-  workflow_dispatch
-#  pull_request:
-#    types: [ opened, edited ]
-#    branches: [ master ]
+  #workflow_dispatch
+  pull_request:
+    types: [ opened, edited ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -19,11 +19,42 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out files
+      uses: actions/checkout@v2
+    
+    - name: Find changed icon SVGs
+      run: |
+        echo 'ADDED_FILES<<EOF' >> $GITHUB_ENV
+        git diff --diff-filter=A --name-only $GITHUB_BASE_REF | grep "icons/svg"
+        echo 'EOF' >> $GITHUB_ENV
+        echo 'MODIFIED_FILES<<EOF' >> $GITHUB_ENV
+        git diff --diff-filter=M --name-only $GITHUB_BASE_REF | grep "icons/svg"
+        echo 'EOF' >> $GITHUB_ENV
+        
+    - name: List changed icons
+      run: |
+        for file in "$ADDED_FILES"; do
+          echo "$file added"
+        done
+        for file in "$MODIFIED_FILES"; do
+          echo "$file modified"
+        done
+        
     - name: Use Node.js ${{ matrix.node-version }}
+      if: contains(steps.changed_files.outputs.modified_files, 'icons/svg/')
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd icons
-    - run: npm install
-    - run: node tools/icons-build.js
+        
+    - name: Rebuild font files if files have changed
+      if: contains(steps.changed_files.outputs.modified_files, 'icons/svg/')
+      run: |
+       cd icons
+       npm install
+       node tools/icons-build.js
+       git add -u .
+       git config user.email "icons@example.com"
+       git config user.name "Icon build bot"
+       git commit -m "Rebuilt font files"
+       git push
+       

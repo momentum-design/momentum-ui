@@ -185,7 +185,8 @@
   &:focus,
   &.focus {
     .#{$dark-class} & {
-      @include focus-styles($focus-visible-only: false, $inset: true);
+      @include focus-styles($focus-visible-only: false);
+      z-index: 1;
     }
   }
 
@@ -397,7 +398,8 @@
   @if $includeFocus {
     &:focus,
     &.focus {
-      @include focus-styles($focus-visible-only: false, $inset: true);
+      @include focus-styles($focus-visible-only: false);
+      z-index:1;
     }
   }
 

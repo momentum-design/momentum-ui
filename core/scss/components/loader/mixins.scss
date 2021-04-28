@@ -10,16 +10,24 @@
 
 @mixin spinner-style(
   $border: $md-gray-40,
+  $border-css-var: null,
   $border-progress-left: $md-theme-50,
-  $border-progress: transparent
+  $border-progress-left-css-var: null,
+  $border-progress: transparent,
+  $border-progress-css-var: null
 ) {
   border: 1px solid $border;
+  border: 1px solid var($border-css-var, $border);
 
   &:after {
     border-top: 1px solid $border-progress;
+    border-top: 1px solid var($border-progress-css-var, $border-progress);
     border-right: 1px solid $border-progress;
+    border-right: 1px solid var($border-progress-css-var, $border-progress);
     border-bottom: 1px solid $border-progress;
+    border-bottom: 1px solid var($border-progress-css-var, $border-progress);
     border-left: 1px solid $border-progress-left;
+    border-left: 1px solid var($border-progress-left-css-var, $border-progress-left);
   }
 }
 

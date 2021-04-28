@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.8.3...@momentum-ui/icons@8.9.0) (2021-04-28)
+
+
+### Features
+
+* **icons:** add 1-to-1-zoom_16 ([9703d45](https://github.com/momentum-design/momentum-ui/commit/9703d45eab581c1ab285091797898784e44a898c))
+
+
+
+
+
 ## [8.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.8.2...@momentum-ui/icons@8.8.3) (2021-04-24)
 
 **Note:** Version bump only for package @momentum-ui/icons

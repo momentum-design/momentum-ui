@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.22.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.6...@momentum-ui/react@23.22.7) (2021-04-29)
+
+
+### Bug Fixes
+
+* **popover:** temporarily disable intermittent popover test case ([#871](https://github.com/momentum-design/momentum-ui/issues/871)) ([9923efb](https://github.com/momentum-design/momentum-ui/commit/9923efb4f529e1a6a942fcbcbdb6eae28d15c09d))
+
+
+
+
+
 ## [23.22.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.5...@momentum-ui/react@23.22.6) (2021-04-28)
 
 **Note:** Version bump only for package @momentum-ui/react

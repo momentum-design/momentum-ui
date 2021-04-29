@@ -1,0 +1,60 @@
+# This workflow will automatically generate font files when new icons are uploaded
+
+name: Build icon font files
+
+on:
+  workflow_dispatch
+  #pull_request:
+  #  types: [ opened, reopened, edited ]
+  #  branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - name: Check out files
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Find changed icon SVGs
+      run: |
+        ADDED_FILES=`git diff --diff-filter=A --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
+        MODIFIED_FILES=`git diff --diff-filter=M --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
+        DELETED_FILES=`git diff --diff-filter=D --name-only origin/$GITHUB_BASE_REF | grep "icons/svg" | tr "\n" " " | sed -E 's/($ )$//'`
+        
+        any_changes=false
+        for file in $ADDED_FILES; do
+          echo "$file added"
+          any_changes=true
+        done
+        for file in $MODIFIED_FILES; do
+          echo "$file modified"
+          any_changes=true
+        done
+        for file in $MODIFIED_FILES; do
+          echo "$file deleted"
+          any_changes=true
+        done
+        
+        if $any_changes ; then
+          cd icons
+          npm install
+          node tools/icons-build.js
+          git add -u .
+          git config user.email "icons@example.com"
+          git config user.name "Icon build bot"
+          git commit -m "Rebuilt font files"
+          git push -u origin HEAD:$GITHUB_HEAD_REF
+        fi

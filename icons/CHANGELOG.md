@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.10.0...@momentum-ui/icons@8.11.0) (2021-05-01)
+
+
+### Features
+
+* **icon:** add more-circle_20 ([#874](https://github.com/momentum-design/momentum-ui/issues/874)) ([0582931](https://github.com/momentum-design/momentum-ui/commit/0582931881386e95e3ced92ff401f6d0d00f88b5))
+
+
+
+
+
 # [8.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.9.0...@momentum-ui/icons@8.10.0) (2021-04-29)
 
 

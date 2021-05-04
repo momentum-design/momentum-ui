@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.10.0...@momentum-ui/icons@8.11.0) (2021-05-01)
+
+
+### Features
+
+* **icon:** add more-circle_20 ([#874](https://github.com/momentum-design/momentum-ui/issues/874)) ([0582931](https://github.com/momentum-design/momentum-ui/commit/0582931881386e95e3ced92ff401f6d0d00f88b5))
+
+
+
+
+
+# [8.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.9.0...@momentum-ui/icons@8.10.0) (2021-04-29)
+
+
+### Bug Fixes
+
+* **icons:** rename one-to-one-zoom_16.svg ([8cc42da](https://github.com/momentum-design/momentum-ui/commit/8cc42da33bbbb4cebafaad48142d2e7d75084557))
+
+
+### Features
+
+* **icon:** add new icons ([#870](https://github.com/momentum-design/momentum-ui/issues/870)) ([e5f26e9](https://github.com/momentum-design/momentum-ui/commit/e5f26e989c565411ec6dabcc982a163664b7e615))
+
+
+
+
+
 # [8.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.8.3...@momentum-ui/icons@8.9.0) (2021-04-28)
 
 

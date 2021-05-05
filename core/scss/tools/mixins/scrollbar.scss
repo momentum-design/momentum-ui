@@ -1,22 +1,31 @@
 /// Mixin to customize scrollbars
-/// @param {Border} $border - Scrollbar border
+/// @param {Border} $border-color - Scrollbar border color
 /// @param {Border-Radius} $border-radius - Scrollbar Radius
-/// @param {Box-Shadow} $box-shadow - Scrollbar Box-Shadow
-/// @param {Color} $foreground - Scrollbar's color
-/// @param {Color} $hover-background - Scrollbar's Hover Background
-/// @param {Color} $background [mix($foreground-color, white, 50%)] - Scrollbar's color
-/// @param {Length} $width - Vertical scrollbar's width
 /// @param {Length} $height - Horizontal scrollbar's height
+/// @param {Color} $foreground - Scrollbar's color
+/// @param {Color} $foreground-css-var -  CSS variable color for Scrollbar's color
+/// @param {Length} $width - Vertical scrollbar's width
+/// @param {Color} $background [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @param {Box-Shadow} $box-shadow - Scrollbar Box-Shadow
+/// @param {Color} $border-color-css-var - CSS variable color for border color
+/// @param {Color} $background-css-var - CSS variable color for background
+/// @param {Color} $hover-background-css-var - CSS variable for Scrollbar's Hover Background
+/// @param {Color} $hover-background - Scrollbar's Hover Background
+
 
 @mixin scrollbar(
-  $border,
+  $border-color,
   $border-radius,
   $height,
   $foreground,
+  $foreground-css-var,
   $width,
   $background: mix($foreground, white, 50%),
   $box-shadow: none,
-  $hover-background: $background
+  $border-color-css-var: null,
+  $background-css-var: null,
+  $hover-background-css-var: null,
+  $hover-background: $background,
 ) {
   // For Google Chrome
   &::-webkit-scrollbar {
@@ -26,16 +35,20 @@
 
   &::-webkit-scrollbar-thumb {
     background: $foreground;
-    border: $border;
+    background: var($foreground-css-var);
+    border: 4px solid $border-color;
+    border: 4px solid var($border-color-css-var, $border-color);
     border-radius: $border-radius;
 
     &:hover {
       background: $hover-background;
+      background: var($hover-background-css-var, $hover-background);
     }
   }
 
   &::-webkit-scrollbar-track {
     background: $background;
+    background: var($background-css-var, $background);
     box-shadow: $box-shadow;
   }
 }

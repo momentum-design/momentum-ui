@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.11.0...@momentum-ui/icons@8.12.0) (2021-05-05)
+
+
+### Features
+
+* **icon:** add new icons ([#873](https://github.com/momentum-design/momentum-ui/issues/873)) ([6c144b0](https://github.com/momentum-design/momentum-ui/commit/6c144b01f3398851e3daabf71bbee904eba494ab))
+* **icon:** add new icons ([#875](https://github.com/momentum-design/momentum-ui/issues/875)) ([22b19d5](https://github.com/momentum-design/momentum-ui/commit/22b19d594fb09c2c4e6b054b23191b38016ff73b))
+
+
+
+
+
 # [8.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.10.0...@momentum-ui/icons@8.11.0) (2021-05-01)
 
 

@@ -21,6 +21,7 @@ export const PhoneInput = () => {
 
   const pill = boolean("pill", false);
   const disabled = boolean("disabled", false);
+  const showFlags = boolean("showFlags", false);
 
   const codePlaceholder = text("codePlaceholder", "+1");
   const numberPlaceholder = text("numberPlaceholder", "Enter Phone Number");
@@ -33,6 +34,7 @@ export const PhoneInput = () => {
       <md-phone-input
         ?pill=${pill}
         ?disabled=${disabled}
+        ?show-flags=${showFlags}
         value=${value}
         codePlaceholder=${codePlaceholder}
         numberPlaceholder=${numberPlaceholder}

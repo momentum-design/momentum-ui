@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.11.0...@momentum-ui/icons@8.12.0) (2021-05-05)
+
+
+### Features
+
+* **icon:** add new icons ([#873](https://github.com/momentum-design/momentum-ui/issues/873)) ([6c144b0](https://github.com/momentum-design/momentum-ui/commit/6c144b01f3398851e3daabf71bbee904eba494ab))
+* **icon:** add new icons ([#875](https://github.com/momentum-design/momentum-ui/issues/875)) ([22b19d5](https://github.com/momentum-design/momentum-ui/commit/22b19d594fb09c2c4e6b054b23191b38016ff73b))
+
+
+
+
+
+# [8.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.10.0...@momentum-ui/icons@8.11.0) (2021-05-01)
+
+
+### Features
+
+* **icon:** add more-circle_20 ([#874](https://github.com/momentum-design/momentum-ui/issues/874)) ([0582931](https://github.com/momentum-design/momentum-ui/commit/0582931881386e95e3ced92ff401f6d0d00f88b5))
+
+
+
+
+
+# [8.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.9.0...@momentum-ui/icons@8.10.0) (2021-04-29)
+
+
+### Bug Fixes
+
+* **icons:** rename one-to-one-zoom_16.svg ([8cc42da](https://github.com/momentum-design/momentum-ui/commit/8cc42da33bbbb4cebafaad48142d2e7d75084557))
+
+
+### Features
+
+* **icon:** add new icons ([#870](https://github.com/momentum-design/momentum-ui/issues/870)) ([e5f26e9](https://github.com/momentum-design/momentum-ui/commit/e5f26e989c565411ec6dabcc982a163664b7e615))
+
+
+
+
+
+# [8.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.8.3...@momentum-ui/icons@8.9.0) (2021-04-28)
+
+
+### Features
+
+* **icons:** add 1-to-1-zoom_16 ([9703d45](https://github.com/momentum-design/momentum-ui/commit/9703d45eab581c1ab285091797898784e44a898c))
+
+
+
+
+
+## [8.8.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.8.2...@momentum-ui/icons@8.8.3) (2021-04-24)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
 ## [8.8.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.8.1...@momentum-ui/icons@8.8.2) (2021-03-19)
 
 **Note:** Version bump only for package @momentum-ui/icons

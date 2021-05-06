@@ -1,4 +1,5 @@
 import { prefix } from '../../utils/index';
+import { forEach } from 'lodash';
 
 describe('@momentum-ui/react', () => {
   before(() => {
@@ -57,13 +58,21 @@ describe('@momentum-ui/react', () => {
       .end();
   });
 
-  it('snapshot of direction popover', () => {
-    cy.get('#direction')
-        .focus()
-        .get(`.${prefix}-event-overlay`)
-        .should('exist')
-        .percySnapshot()
-        .end();
+  forEach([false], (isContained) => {
+    forEach(['top-center', 'bottom-center', 'left-center', 'right-center'], (direction) => {
+      it(`snapshot of direction: ${direction}, isContained: ${isContained} popover`, () => {
+        if (direction === 'top-center' && isContained) {
+          // Temporarily comment out this case as it intermittently fails
+          return;
+        }
+        cy.get(`#direction_${direction}_${isContained}`)
+          .focus()
+          .get(`.${prefix}-event-overlay`)
+          .should('exist')
+          .percySnapshot()
+          .end();
+      });
+    });
   });
 
   it('snapshot of offset popover', () => {

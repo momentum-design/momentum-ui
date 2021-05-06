@@ -332,7 +332,7 @@ class Lightbox extends React.Component {
 
 
     const leftArrowControl = (
-      <Tooltip tooltip={tooltips.previous} direction="right-center">
+      <Tooltip tooltip={tooltips.previous} popoverProps={{direction: "right-center", isContained: true}}>
         <div
           className="md-lightbox__page-control md-lightbox__page-control-icon md-lightbox__page-controls--left"
           role="button"
@@ -347,7 +347,7 @@ class Lightbox extends React.Component {
     );
 
     const rightArrowControl = (
-      <Tooltip tooltip={tooltips.next} direction="left-center">
+      <Tooltip tooltip={tooltips.next} popoverProps={{direction: "left-center", isContained: true}}>
         <div
           className="md-lightbox__page-control md-lightbox__page-control-icon md-lightbox__page-controls--right"
           role="button"

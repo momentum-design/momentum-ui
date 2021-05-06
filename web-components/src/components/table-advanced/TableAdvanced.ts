@@ -12,8 +12,9 @@ import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, queryAll } from "lit-element";
 import { nothing, TemplateResult } from "lit-html";
+import "@/components/button/Button";
+import { html, internalProperty, LitElement, property, queryAll, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { templateContent } from "lit-html/directives/template-content";
@@ -68,8 +69,17 @@ export namespace TableAdvanced {
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("dragover", this.dragover);
-      // cols
+      this.populateTable();
+    }
 
+    protected update(changedProperties: PropertyValues) {
+      super.update(changedProperties);
+      if (changedProperties.has("data")) {
+         this.updateDataInTable();
+      }
+    }
+
+    private populateColumns() {
       let index = 0;
       const pushCol = (col: ColOptions, group?: { name: string; length: number }) => {
         const f = col.filters || this.config.default?.col?.filters;
@@ -109,7 +119,10 @@ export namespace TableAdvanced {
           pushCol(col);
         }
       });
+      this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
+    };
 
+    private populateData() {
       const lenNodes = this.COLS.length;
 
       // data
@@ -141,23 +154,67 @@ export namespace TableAdvanced {
         this.error = "DATA ERROR: Data is empty";
         return;
       }
+    }
 
-      // validate
+    private validateData() {
+      const lenNodes = this.COLS.length;
+       // validate
 
-      const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
-      if (lenData % lenNodes != 0) {
-        this.error = this.error =
-          "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
-        return;
-      }
+       const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
+       if (lenData % lenNodes != 0) {
+         this.error = this.error =
+           "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
+         return;
+       }
 
-      this.ROWS.forEach((d, i) => {
-        const len = d.length;
-        if (len != lenNodes) {
-          this.error = `DATA ERROR: Total number of cols (=${lenNodes}) and data[${i}] length (=${len}) mismatch`;
-        }
-      });
+       this.ROWS.forEach((d, i) => {
+         const len = d.length;
+         if (len != lenNodes) {
+           this.error = `DATA ERROR: Total number of cols (=${lenNodes}) and data[${i}] length (=${len}) mismatch`;
+         }
+       });
+    }
 
+    private populateTemplate() {
+       // TEMPLATES
+       const templates = this.config.cellTemplates;
+       const templatesKeys = Object.keys(templates || {});
+       if (templates && templatesKeys.length) {
+         this.ROWS.forEach((row, iRow) => {
+           row.forEach((cell, iCol) => {
+             for (const k in templates) {
+               const idx = cell.text.indexOf(k);
+               if (idx != -1) {
+                 const t = templates[k];
+                 const template = this.querySelector<HTMLTemplateElement>(`#${t.templateName}`);
+                 if (template == null) {
+                   console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
+                   continue;
+                 }
+
+                 let text = cell.text.replace(k, "");
+                 if (t.contentCb) {
+                   text = t.contentCb({ col: iCol, row: iRow, content: text, insertIndex: idx });
+                 }
+
+                 this.ROWS[iRow][iCol] = {
+                   text,
+                   template: {
+                     template,
+                     templateCb: t.templateCb,
+                     insertIndex: t.contentUse == "replace" ? -1 : idx
+                   }
+                 };
+                 break;
+               }
+             }
+           });
+         });
+       }
+
+    }
+
+    private setDefaultFilterAndSort() {
       const s = this.config.default?.sort;
       if (s) {
         const col = this.COLS.find(c => c.options.id == s.colId);
@@ -184,44 +241,21 @@ export namespace TableAdvanced {
           console.warn(`Cant find ${f.colId} col - for filtering`);
         }
       }
+    }
 
-      // TEMPLATES
-      const templates = this.config.cellTemplates;
-      const templatesKeys = Object.keys(templates || {});
-      if (templates && templatesKeys.length) {
-        this.ROWS.forEach((row, iRow) => {
-          row.forEach((cell, iCol) => {
-            for (const k in templates) {
-              const idx = cell.text.indexOf(k);
-              if (idx != -1) {
-                const t = templates[k];
-                const template = this.querySelector<HTMLTemplateElement>(`#${t.templateName}`);
-                if (template == null) {
-                  console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
-                  continue;
-                }
+    private populateTable(){
+      this.populateColumns();
+      this.populateData();
+      this.validateData();
+      this.setDefaultFilterAndSort();
+      this.populateTemplate();
 
-                let text = cell.text.replace(k, "");
-                if (t.contentCb) {
-                  text = t.contentCb({ col: iCol, row: iRow, content: text, insertIndex: idx });
-                }
+    }
 
-                this.ROWS[iRow][iCol] = {
-                  text,
-                  template: {
-                    template,
-                    templateCb: t.templateCb,
-                    insertIndex: t.contentUse == "replace" ? -1 : idx
-                  }
-                };
-                break;
-              }
-            }
-          });
-        });
-      }
-
-      this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
+    private updateDataInTable() {
+      this.populateData();
+      this.validateData();
+      this.populateTemplate();
     }
 
     // --------------

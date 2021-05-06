@@ -33,62 +33,86 @@
 
 @mixin input-color(
   $color: null,
+  $color-css-var: null,
   $color-clear: null,
+  $color-clear-css-var: null,
   $color-clear-hover: null,
+  $color-clear-hover-css-var: null,
   $color-disabled: null,
+  $color-disabled-css-var: null,
   $color-help: null,
+  $color-help-css-var: null,
   $color-message: null,
+  $color-message-css-var: null,
   $color-placeholder: null,
+  $color-placeholder-css-var: null,
   $color-read-only: null,
+  $color-read-only-css-var: null,
   $background-color: null,
+  $background-color-css-var: null,
   $background-color-disabled: null,
+  $background-color-disabled-css-var: null,
   $background-color-hover: null,
-  $border-color: null
+  $background-color-hover-css-var: null,
+  $border-color: null,
+  $border-color-css-var: null
 ) {
 
   .#{$input__class}:not(.md-select__filter--input) {
     color: $color;
+    color: var($color-css-var, $color);
     background-color: $background-color;
+    background-color: var($background-color-css-var, $background-color);
 
     @if $border-color {
       border-color: $border-color;
+      border-color: var($border-color-css-var, $border-color);
     } @else {
       border: none;
     }
 
     &::placeholder {
       color: $color-placeholder;
+      color: var($color-placeholder-css-var, $color-placeholder);
       opacity: 1;
     }
 
     &:hover,
     &.#{$prefix}-hover {
       background-color: $background-color-hover;
+      background-color: var($background-color-hover-css-var, $background-color-hover);
     }
 
     &:disabled,
     &.#{$prefix}-disabled {
       color: $color-disabled;
+      color: var($color-disabled-css-var, $color-disabled);
       background-color: $background-color-disabled;
+      background-color: var($background-color-disabled-css-var, $background-color-disabled);
       border-color: $input__border-color--read-only;
 
       &::placeholder {
         color: $color-disabled;
+        color: var($color-disabled-css-var, $color-disabled);
       }
 
       &:hover {
         background-color: $background-color-disabled;
+        background-color: var($background-color-disabled-css-var, $background-color-disabled);
       }
     }
 
     &[readonly],
     &.#{$prefix}-readonly {
       color: $color-read-only;
+      color: var($color-read-only-css-var, $color-read-only);
       background-color: $background-color-disabled;
+      background-color: var($background-color-disabled-css-var, $background-color-disabled);
       border-color: $input__border-color--read-only;
 
       &:hover {
         background-color: $background-color-disabled;
+        background-color: var($background-color-disabled-css-var, $background-color-disabled);
       }
     }
   }
@@ -104,13 +128,18 @@
   .#{$input__class} {
     &__after,
     &__before {
-      @include input-icon($color: $color)
+      @include input-icon(
+        $color: $color,
+        $color-css-var: $color-css-var
+      )
     }
 
     &__icon-clear {
       @include input-clear-color(
         $color-clear,
-        $color-clear-hover
+        $color-clear-css-var,
+        $color-clear-hover,
+        $color-clear-hover-css-var,
       );
     }
   }
@@ -131,30 +160,42 @@
 
 
 @mixin input-icon(
-  $color: null
+  $color: null,
+  $color-css-var: null
 ) {
   @if $color {
     color: $color;
+    color: var($color-css-var, $color);
     fill: $color;
+    fill: var($color-css-var, $color);
 
     .#{$spinner__class} {
-      @include spinner-style($border-progress-left: $color);
+      @include spinner-style(
+        $border-progress-left: $color,
+        $border-progress-left-css-var: $color-css-var
+      );
     }
   }
 }
 
 @mixin input-clear-color(
   $color: $input__clear-icon__color,
-  $color-hover: $input__clear-icon__color--hover
+  $color-css-var: null,
+  $color-hover: $input__clear-icon__color--hover,
+  $color-hover-css-var: null
   ) {
   background-color: transparent;
   color: $color;
+  color: var($color-css-var, $color);
   fill: $color;
+  fill: var($color-css-var, $color);
 
   &:hover,
   &:focus {
     background-color: transparent;
     color: $color-hover;
+    color: var($color-hover-css-var, $color-hover);
     fill: $color-hover;
+    fill: var($color-hover-css-var, $color-hover);
   }
 }

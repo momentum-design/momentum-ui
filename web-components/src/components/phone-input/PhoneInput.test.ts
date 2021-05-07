@@ -1,4 +1,4 @@
-import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import countryCodesList, { customArray } from "country-codes-list";
 import "libphonenumber-js";
 import "./PhoneInput";
@@ -50,46 +50,6 @@ describe("PhoneInput Component", () => {
     expect(element.shadowRoot!.querySelector("md-combobox")?.shape).toEqual("pill");
     expect(element.shadowRoot!.querySelector("md-input")?.shape).toEqual("pill");
   });
-  // test("should render an error message", async () => {
-  //   const element = await fixture<PhoneInput>(
-  //     html`
-  //       <md-phone-input errorMessage="Error"></md-phone-input>
-  //     `
-  //   );
-  //   const isValidNumberForRegion = jest.mock("libphonenumber-js", jest.fn().mockReturnValue(false));
-  //   const inputElement = element.shadowRoot!.querySelector("md-input");
-  //   inputElement?.dispatchEvent(new FocusEvent("blur"));
-  //   expect(inputElement?.messageArr.length).toBeGreaterThan(0);
-  // });
-  // test("should assign a country calling code to value prop of ComboBox", async () => {
-  //   const element = await fixture<PhoneInput>(
-  //     html`
-  //       <md-phone-input country-calling-code="US"></md-phone-input>
-  //     `
-  //   );
-  //   const comboBoxElement = element.shadowRoot?.querySelector("md-combobox");
-  //   expect(comboBoxElement!.value).toEqual(["US"]);
-  // });
-  // test("should validate the phone choice input", async () => {
-  //   const element = await fixture<PhoneInput>(
-  //     html`
-  //       <md-phone-input></md-phone-input>
-  //     `
-  //   );
-  //   const event = new CustomEvent("change-selected", {
-  //     composed: true,
-  //     bubbles: true,
-  //     detail: {
-  //       value: {
-  //         id: "+1268,AntiguaandBarbuda,AG",
-  //         value: "+1268"
-  //       }
-  //     }
-  //   });
-  //   element.handlePhoneChange(event);
-  //   const validator = jest.spyOn(element, "validateInput");
-  //   expect(validator).toHaveBeenCalled();
-  // });
   test("should trigger a Country Change", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
@@ -110,6 +70,7 @@ describe("PhoneInput Component", () => {
 
     expect(element.countryCallingCode).toEqual("+1268,AntiguaandBarbuda,AG");
   });
+
   test("should not trigger a Country Change if the field is exited without a value", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
@@ -187,7 +148,7 @@ describe("PhoneInput Component", () => {
     phoneInput?.dispatchEvent(event);
     expect(phoneChangeSpy).toHaveBeenCalled();
   });
-  test("should register a KeyDwon event", async () => {
+  test("should register a KeyDown event", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
@@ -204,5 +165,29 @@ describe("PhoneInput Component", () => {
     });
     phoneInput?.dispatchEvent(event);
     expect(keyDownSpy).toHaveBeenCalled();
+  });
+
+  test("Should render a flag image when show-flags is true", async () => {
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input show-flags></md-phone-input>
+      `
+    );
+    const getFlagOperation = jest.spyOn(element, "getCountryFlag");
+    const event: CustomEvent = new CustomEvent("change-selected", {
+      composed: true,
+      bubbles: true,
+      detail: {
+        value: {
+          id: "+1,United States of America,US",
+          value: "+1"
+        }
+      }
+    });
+    element.handleCountryChange(event);
+    await elementUpdated(element);
+    const flag = element.shadowRoot?.querySelector("span.flag-box");
+    expect(getFlagOperation).toHaveBeenCalled();
+    expect(flag?.querySelector("img")).not.toBeNull();
   });
 });

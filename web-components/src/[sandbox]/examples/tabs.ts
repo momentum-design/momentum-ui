@@ -27,56 +27,56 @@ export const tabsTemplate = html`
     <h3>Horizontal md-tabs with More button</h3>
     <div>
       <md-tabs selected="0" justified>
-        <md-tab slot="tab" label="History">
+        <md-tab aria-label="Contact History" slot="tab" label="History">
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" label="WxM">
+        <md-tab aria-label="Cisco WXM" slot="tab" label="WxM">
           <md-icon name="apps_16"></md-icon>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab aria-label="Cisco Answer" slot="tab">
           <md-icon name="alarm_16"></md-icon>
           <span>Cisco Answer</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Answer"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab aria-label="Cisco Admins" slot="tab">
           <md-icon name="admin_16"></md-icon>
           <span>Cisco Admins</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Admins"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab aria-label="Cisco Widgets" slot="tab">
           <md-icon name="alert_16"></md-icon>
           <span>Cisco Widgets</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Widgets"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab aria-label="Cisco News"  slot="tab">
           <md-icon name="browser_16"></md-icon>
           <span>Cisco News</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco News"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab aria-label="Cisco Weather"  slot="tab">
           <md-icon name="month_16"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Weather"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab aria-label="Cisco Turbo" slot="tab">
           <md-icon name="camera-photo_16"></md-icon>
           <span>Cisco Turbo</span>
         </md-tab>

@@ -9,10 +9,11 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
+
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, queryAll } from "lit-element";
+import { html, internalProperty, LitElement, property, queryAll, PropertyValues } from "lit-element";
 import { nothing, TemplateResult } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -68,8 +69,17 @@ export namespace TableAdvanced {
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("dragover", this.dragover);
-      // cols
+      this.populateTable();
+    }
 
+    protected update(changedProperties: PropertyValues) {
+      super.update(changedProperties);
+      if (changedProperties.has("data")) {
+        this.updateDataInTable();
+      }
+    }
+
+    private populateColumns() {
       let index = 0;
       const pushCol = (col: ColOptions, group?: { name: string; length: number }) => {
         const f = col.filters || this.config.default?.col?.filters;
@@ -109,7 +119,10 @@ export namespace TableAdvanced {
           pushCol(col);
         }
       });
+      this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
+    }
 
+    private populateData() {
       const lenNodes = this.COLS.length;
 
       // data
@@ -141,7 +154,10 @@ export namespace TableAdvanced {
         this.error = "DATA ERROR: Data is empty";
         return;
       }
+    }
 
+    private validateData() {
+      const lenNodes = this.COLS.length;
       // validate
 
       const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
@@ -157,34 +173,9 @@ export namespace TableAdvanced {
           this.error = `DATA ERROR: Total number of cols (=${lenNodes}) and data[${i}] length (=${len}) mismatch`;
         }
       });
+    }
 
-      const s = this.config.default?.sort;
-      if (s) {
-        const col = this.COLS.find(c => c.options.id == s.colId);
-        if (col) {
-          this.sort(col, s.order);
-        } else {
-          console.warn(`Cant find ${s.colId} col - for sorting`);
-        }
-      }
-
-      const f = this.config.default?.filter;
-      if (f) {
-        const col = this.COLS.find(c => c.options.id == f.colId);
-        if (col) {
-          if (col.filter) {
-            col.filter.selectedIndex = f.selectedIndex;
-            col.filter.input = f.input;
-            this.updCols();
-            this.filter(col);
-          } else {
-            console.warn(`Cant find filters on ${f.colId} col`);
-          }
-        } else {
-          console.warn(`Cant find ${f.colId} col - for filtering`);
-        }
-      }
-
+    private populateTemplate() {
       // TEMPLATES
       const templates = this.config.cellTemplates;
       const templatesKeys = Object.keys(templates || {});
@@ -220,8 +211,49 @@ export namespace TableAdvanced {
           });
         });
       }
+    }
 
-      this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
+    private setDefaultFilterAndSort() {
+      const s = this.config.default?.sort;
+      if (s) {
+        const col = this.COLS.find(c => c.options.id == s.colId);
+        if (col) {
+          this.sort(col, s.order);
+        } else {
+          console.warn(`Cant find ${s.colId} col - for sorting`);
+        }
+      }
+
+      const f = this.config.default?.filter;
+      if (f) {
+        const col = this.COLS.find(c => c.options.id == f.colId);
+        if (col) {
+          if (col.filter) {
+            col.filter.selectedIndex = f.selectedIndex;
+            col.filter.input = f.input;
+            this.updCols();
+            this.filter(col);
+          } else {
+            console.warn(`Cant find filters on ${f.colId} col`);
+          }
+        } else {
+          console.warn(`Cant find ${f.colId} col - for filtering`);
+        }
+      }
+    }
+
+    private populateTable() {
+      this.populateColumns();
+      this.populateData();
+      this.validateData();
+      this.setDefaultFilterAndSort();
+      this.populateTemplate();
+    }
+
+    private updateDataInTable() {
+      this.populateData();
+      this.validateData();
+      this.populateTemplate();
     }
 
     // --------------

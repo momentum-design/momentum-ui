@@ -5,9 +5,9 @@
   border-radius: 50%;
 
   @include spinner-style(
-    $spinner--gray__border-color,
-    $spinner-progress--black__border-color,
-    transparent
+    $border: $spinner--gray__border-color,
+    $border-progress-left: $spinner-progress--black__border-color,
+    $border-progress: transparent
   );
   @include spinner-size($spinner__width, $spinner__height);
 
@@ -85,17 +85,17 @@
 
   &--blue {
     @include spinner-style(
-      $spinner--blue__border-color,
-      $spinner-progress--blue__border-color,
-      transparent
+      $border: $spinner--blue__border-color,
+      $border-progress-left: $spinner-progress--blue__border-color,
+      $border-progress: transparent
     );
   }
 
   .#{$dark-class} & {
     @include spinner-style(
-      $spinner--gray__border-color,
-      $spinner-progress--white__border-color,
-      transparent
+      $border: $spinner--gray__border-color,
+      $border-progress-left: $spinner-progress--white__border-color,
+      $border-progress: transparent
     );
   }
 

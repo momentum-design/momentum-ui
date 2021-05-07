@@ -27,8 +27,8 @@ export namespace Tab {
   @customElementWithCheck("md-tab")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Number, reflect: true }) tabIndex = -1;
-    @property({ type: String }) label = "tab";
-
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
+    
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
     get disabled() {
@@ -144,10 +144,11 @@ export namespace Tab {
       return html`
         <button
           type="button"
+          role="button"
           ?disabled=${this.disabled}
           aria-hidden="true"
           aria-selected="false"
-          aria-label=${ifDefined(this.label)}
+          aria-label=${ifDefined(this.ariaLabel)}
           tabindex="-1"
           part="tab"
         >

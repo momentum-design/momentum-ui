@@ -1,6 +1,5 @@
 :host {
   --combobox-input-clear-bg: var(--combobox-group-button-bg-color, $lm-combobox-group-button-bg-color-light);
-
 }
 $combobox-radius: rem-calc(16);
 $combobox-border: 1px solid var(--combobox-border-color, $lm-combobox-border-color-light);
@@ -17,6 +16,7 @@ $combobox-dropdown-radius: rem-calc(8);
 $combobox-dropdown-shadow: 0 4px 8px $black-16, 0 0 1px $black-16;
 
 $combobox-input-padding: 0 rem-calc(12);
+$combobox-error-padding: rem-calc(3) 0 0 rem-calc(12);
 
 $combobox-option-padding: rem-calc(7) rem-calc(12) rem-calc(8);
 $combobox-select-size: rem-calc(20);
@@ -27,8 +27,7 @@ $combobox-select-margin: rem-calc(16);
 
 $combobox-selected-radius: rem-calc(14);
 $combobox-selected-height: rem-calc(24);
-$combobox-selected-item-border: 1px solid var(--combobox-selected-border-color, $lm-combobox-selected-border-color-light);
+$combobox-selected-item-border: 1px solid
+  var(--combobox-selected-border-color, $lm-combobox-selected-border-color-light);
 $combobox-invalid-bg-color: var(--combobox-invalid-bg-color, $lm-combobox-invalid-bg-color-light);
 $combobox-invalid-border-color: var(--combobox-invalid-border-color, $lm-combobox-invalid-border-color-light);
-
-

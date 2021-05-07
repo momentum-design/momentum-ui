@@ -371,7 +371,7 @@ export namespace TimePicker {
           @input-keydown="${(e: CustomEvent) => this.handleTimeKeyDown(e, unit)}"
           @input-blur="${(e: CustomEvent) => this.handleTimeBlur(e, unit)}"
           .messageArr=${[{ message: "", type: this.messageType(this.timeValidity[unit]) } as Input.Message]}
-          ariaLabel="${unit}-input"
+          .ariaLabel="${unit}-input"
           ariaInvalid="${!this.timeValidity[unit]}"
         ></md-input>
       `;
@@ -387,6 +387,7 @@ export namespace TimePicker {
           .options=${options}
           .value=${[options[0]]}
           .inputValue=${this.timeValue[TIME_UNIT.AM_PM]}
+          .ariaLabel=${this.timeValue[TIME_UNIT.AM_PM]}
           @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"
         ></md-combobox>
       `;

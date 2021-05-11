@@ -105,83 +105,126 @@
 
 @mixin button-color(
   $bg: $button__background-color,
+  $bg-css-var: null,
   $bg-active: $button__background-color--active,
+  $bg-active-css-var: null,
   $bg-disabled: $button__color--disabled,
+  $bg-disabled-css-var: null,
   $bg-hover: $button__background-color--hover,
+  $bg-hover-css-var: null,
   $border: false,
+  $border-color: null,
+  $border-color-css-var: null,
   $border-hover: false,
+  $border-hover-css-var: null,
   $border-active: false,
+  $border-active-css-var: null,
   $border-focus: $button__border-color--focus,
+  $border-focus-css-var: null,
   $box-shadow: false,
+  $box-shadow-css-var: null,
   $color: $button__font-color,
+  $color-css-var: null,
   $color-active: $color,
+  $color-active-css-var: null,
   $color-disabled: $button__font-color--disabled,
+  $color-disabled-css-var: null,
   $color-hover: $color,
+  $color-hover-css-var: null,
   $disabled: true,
   $focus: false,
   $opacity: false,
-  $outline: false
+  $opacity-css-var: null,
+  $outline: false,
+  $outline-css-var: null
 ) {
   color: $color;
+  color: var($color-css-var, $color);
   background-color: $bg;
+  background-color: var($bg-css-var, $bg);
   border-color: transparent;
 
   @if $border {
     border: $border;
+    border-color: var($border-color-css-var, $border-color);
   }
 
   @if $box-shadow {
     box-shadow: $box-shadow;
+    box-shadow: var($box-shadow-css-var, $box-shadow);
   }
 
   @if $disabled {
     @include button-color-disabled(
       $color: $color-disabled,
+      $color-css-var: $color-disabled-css-var,
       $bg: $bg-disabled,
-      $opacity: $opacity
+      $bg-css-var: $bg-disabled-css-var,
+      $opacity: $opacity,
+      $opacity-css-var: $opacity-css-var
     );
   }
 
   @if $focus {
-    @include button-color-focus($border-focus);
+    @include button-color-focus(
+      $color: $border-focus,
+      $color-css-var: $color-css-var
+    );
   }
 
   @if $outline {
     outline: $outline;
+    outline: var($outline-css-var, $outline);
   }
 
   &:hover {
     color: $color-hover;
+    color: var($color-hover-css-var, $color-hover);
     background-color: $bg-hover;
+    background-color: var($bg-hover-css-var, $bg-hover);
 
     @if $border-hover {
       border: $border-hover;
+      border: var($border-hover-css-var, $border-hover);
     }
   }
 
   &:active,
   &.active {
     color: $color-active;
+    color: var($color-active-css-var, $color-active);
     background-color: $bg-active;
+    background-color: var($bg-active-css-var, $bg-active);
 
     @if $border-active {
       border: $border-active;
+      border: var($border-active-css-var, $border-active);
     }
   }
 }
 
 @mixin button-color-fill(
   $fill: $button__font-color,
+  $fill-css-var: null,
   $fill-hover: $fill,
+  $fill-hover-css-var: null,
   $fill-active: $color,
+  $fill-active-css-var: null,
   $fill-disabled: $button__font-color--disabled,
+  $fill-disabled-css-var: null,
   $bg-disabled: transparent,
+  $bg-disabled-css-var: null,
   $focus: false
 ) {
   fill: $fill;
   color: $fill;
 
-  @include button-color-disabled($color: $fill-disabled, $bg: $bg-disabled);
+  @include button-color-disabled(
+    $color: $fill-disabled,
+    $color-css-var: $fill-disabled-css-var,
+    $bg: $bg-disabled,
+    $bg-css-var: $bg-disabled
+  );
 
   @if $focus {
     @include button-color-focus;
@@ -200,7 +243,10 @@
   }
 }
 
-@mixin button-color-focus($color: $button__border-color--focus) {
+@mixin button-color-focus(
+  $color: $button__border-color--focus,
+  $color-css-var: null
+) {
   &:focus,
   &.focus-state {
     @include focus-styles;
@@ -209,8 +255,11 @@
 
 @mixin button-color-disabled(
   $color: $button__font-color--disabled,
+  $color-css-var: null,
   $bg: $button__color--disabled,
-  $opacity: false
+  $bg-css-var: null,
+  $opacity: false,
+  $opacity-css-var: null
 ) {
   &.disabled,
   &.md-button--disabled,
@@ -219,15 +268,21 @@
       opacity: $opacity;
     } @else {
       color: $color;
+      color: var($color-css-var, $color);
       fill: $color;
+      fill: var($color-css-var, $color);
       background-color: $bg;
+      background-color: var($bg-css-var, $bg);
     }
 
     &:hover,
     &:focus {
       color: $color;
+      color: var($color-css-var, $color);
       fill: $color;
+      fill: var($color-css-var, $color);
       background-color: $bg;
+      background-color: var($bg-css-var, $bg);
     }
   }
 }

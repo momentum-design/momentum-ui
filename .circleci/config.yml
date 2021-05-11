@@ -32,6 +32,11 @@ jobs:
           name: Lint all Libraries
           command: yarn lint:all
 
+  extract_npm_token:
+    <<: *image_defaults
+    steps:
+      - run: echo $NPM_TOKEN
+
   build_tokens:
     <<: *image_defaults
     steps:
@@ -143,7 +148,7 @@ jobs:
       - run:
           name: Unit Test web components library
           command: yarn ci:test:wc
-      - run: 
+      - run:
           name: Upload Codecov report
           command: bash <(curl -s https://codecov.io/bash)
       - run:

@@ -15,20 +15,24 @@
 }
 
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   max-width: 100%;
   position: relative;
   width: 100%;
 
   &.sticky-header {
-    border-spacing: 0;
+   
     height: 100%;
 
     thead {
-      background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+      th:first-child {
+        border-left: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      }
 
       th {
-        border-bottom: 0;
+        background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+        border-left: 0;
         border-top: 0;
         position: sticky;
         top: 0;
@@ -86,17 +90,23 @@ table {
 }
 
 thead {
+  th:first-child {
+    border-left: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+  }
+
   th {
     background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
     border: $advanced-table-main-border;
+    border-left: 0;
     color: var(--md-secondary-text-color);
     font-family: $brand-font-regular;
     font-size: $font-size-base;
     height: $advanced-table-row-height;
     max-width: 0;
-    padding: 0 calc(#{$advanced-table-main-indent} * 4);
+    padding: 0 calc(0.375rem);
     position: relative;
     text-align: left;
+   
 
     .filter {
       display: inline-block;
@@ -293,8 +303,13 @@ tbody {
   tr {
     position: relative;
 
+    td:first-child {
+      border-left: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+    }
+
     td {
-      border: $advanced-table-main-border;
+      border-bottom: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      border-right: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
       font-size: $font-size-base;
       height: $advanced-table-row-height;
       max-width: 0;
@@ -302,9 +317,14 @@ tbody {
       position: relative;
     }
 
+    th:first-child {
+      border-top: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+    }
+
     th {
       background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-      border: $advanced-table-main-border;
+      border-bottom: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      border-right: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
       font-size: $font-size-base;
       max-width: 0;
       padding: 0 calc(#{$advanced-table-main-indent} * 4);

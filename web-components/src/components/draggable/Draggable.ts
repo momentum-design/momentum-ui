@@ -23,7 +23,7 @@ export namespace Draggable {
     @property({ type: String }) easing = "";
     @property({ type: String }) direction: "horizontal" | "vertical" = "vertical";
     @property({ type: Object }) group: Sortable.GroupOptions | null = null;
-    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-item";
+    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-tab";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
     @property({ type: String, attribute: "drag-class" }) dragClass = "";
@@ -158,7 +158,10 @@ export namespace Draggable {
       this.cleanupSortable();
     }
 
-    private setSortableOption(name: Partial<keyof Sortable.SortableOptions>, value: Sortable.SortableOptions[keyof Sortable.SortableOptions]) {
+    private setSortableOption(
+      name: Partial<keyof Sortable.SortableOptions>,
+      value: Sortable.SortableOptions[keyof Sortable.SortableOptions]
+    ) {
       if (this.sortableInstance && this.sortableInstance.option(name) !== undefined) {
         this.sortableInstance.option(name, value);
       }
@@ -167,7 +170,10 @@ export namespace Draggable {
     private updateSortableInstance(changedProperties: PropertyValues) {
       for (const propertyKey of changedProperties.keys()) {
         const value = (this as Draggable.ELEMENT)[propertyKey as keyof Draggable.ELEMENT];
-        this.setSortableOption(propertyKey as keyof Sortable.SortableOptions, value as Sortable.SortableOptions[keyof Sortable.SortableOptions]);
+        this.setSortableOption(
+          propertyKey as keyof Sortable.SortableOptions,
+          value as Sortable.SortableOptions[keyof Sortable.SortableOptions]
+        );
       }
     }
 

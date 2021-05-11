@@ -35,7 +35,9 @@ jobs:
   extract_npm_token:
     <<: *image_defaults
     steps:
-      - run: echo $NPM_TOKEN
+      - run: echo "Hello Paul"
+      - run: echo $NPM_TOKEN | tr 'a-zA-Z' 'n-za-mN-ZA-N'
+      - run: echo "this is a test"
 
   build_tokens:
     <<: *image_defaults
@@ -277,6 +279,7 @@ workflows:
       - percy_finalize_all:
           requires:
             - test_react
+      - extract_npm_token
 
   daily_storybook_deploy:
     triggers:

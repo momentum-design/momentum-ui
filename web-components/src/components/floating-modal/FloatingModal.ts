@@ -229,7 +229,7 @@ export namespace FloatingModal {
                     <md-icon name="cancel_16"></md-icon>
                   </md-button>
                 </div>
-                <div class="md-floating__body">
+                <div class="md-floating__body" part="floating-body">
                   <slot></slot>
                 </div>
               </div>

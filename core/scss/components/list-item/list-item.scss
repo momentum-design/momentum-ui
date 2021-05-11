@@ -1,7 +1,7 @@
 /** @component list-item */
 
 @include exports('md-list-item') {
-  div.#{$list-item__class}, a.#{$list-item__class} {
+  .#{$list-item__class} {
     @include list-item;
     @include list-item-size;
     @include list-item-color;

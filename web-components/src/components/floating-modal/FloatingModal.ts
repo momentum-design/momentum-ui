@@ -23,6 +23,8 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true, attribute: "aspect-ratio" }) aspectRatio = false;
     @property({ type: Boolean, reflect: true, attribute: "fixed-strategy" }) fixed = false;
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
+    @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
+    @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
 
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;
@@ -211,16 +213,23 @@ export namespace FloatingModal {
                   <md-button
                     color="color-none"
                     class="md-floating__resize"
+                    aria-label="${this.resizeAriaLabel}"
                     circle
                     @click=${this.handleToggleExpandCollapse}
                   >
                     <md-icon name=${this.full ? "minimize_16" : "maximize_16"}></md-icon>
                   </md-button>
-                  <md-button color="color-none" class="md-floating__close" circle @click=${this.handleClose}>
+                  <md-button
+                    color="color-none"
+                    class="md-floating__close"
+                    aria-label="${this.closeAriaLabel}"
+                    circle
+                    @click=${this.handleClose}
+                  >
                     <md-icon name="cancel_16"></md-icon>
                   </md-button>
                 </div>
-                <div class="md-floating__body">
+                <div class="md-floating__body" part="floating-body">
                   <slot></slot>
                 </div>
               </div>
@@ -230,8 +239,6 @@ export namespace FloatingModal {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

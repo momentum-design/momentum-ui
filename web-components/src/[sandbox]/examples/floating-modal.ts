@@ -21,10 +21,10 @@ export class FloatingTemplateSandbox extends LitElement {
     return css`
       .float-modal::part(floating) {
         overflow: hidden;
-        height: 700px;
+        height: 500px;
         width: 800px;
-        left: 100px;
-        top: 50px;
+        right:0;
+        bottom:0;
       }
     `;
   }
@@ -39,7 +39,7 @@ export class FloatingTemplateSandbox extends LitElement {
         ?show=${this.isOpen}
         @floating-modal-close=${() => this.closeFloatingModal()}
       >
-        <md-table tabledata="${data}" sorting></md-table>
+        <div class="youtube"><iframe style="height:100%" src="https://youtube.com" > <iframe></div>
       </md-floating-modal>
     `;
   }

@@ -31,6 +31,7 @@ export namespace FloatingModal {
     @query(".md-floating__header") header!: HTMLDivElement;
 
     @internalProperty() private containerRect: DOMRect | null = null;
+    @internalProperty() private minimize: Boolean | false = false;
 
     private containerTransform = "";
 
@@ -73,7 +74,20 @@ export namespace FloatingModal {
     private setContainerRect() {
       requestAnimationFrame(async () => {
         await this.updateComplete;
-        this.containerRect = this.container!.getBoundingClientRect();
+        if(this.minimize) {
+          let oldHeight = this.containerRect?.height;
+          let oldWidth = this.containerRect?.width;
+          this.containerRect = this.container!.getBoundingClientRect();
+          if(oldWidth) {
+            this.containerRect.width = oldWidth;
+          }
+          if(oldHeight) {
+            this.containerRect.height = oldHeight;
+          }
+
+        } else {
+          this.containerRect = this.container!.getBoundingClientRect();
+        }
         this.containerTransform = this.getContainerTransform();
       });
     }
@@ -97,8 +111,7 @@ export namespace FloatingModal {
                     })
                   ]
                 : undefined
-            })
-            .draggable({
+            }).draggable({
               autoScroll: true,
               allowFrom: this.header,
               ignoreFrom: this.body,
@@ -124,6 +137,11 @@ export namespace FloatingModal {
           }
         })
       );
+    }
+
+    handleMinimize(event: MouseEvent) {
+      this.minimize = !this.minimize;
+      this.requestUpdate();
     }
 
     handleToggleExpandCollapse() {
@@ -188,6 +206,12 @@ export namespace FloatingModal {
                 aria-label=${ifDefined(this.label || undefined)}
                 aria-modal="true"
                 style=${ifDefined(
+                  this.minimize ? `
+                  height: 3rem !important;
+                  width: 254.9996795654297px !important;
+                  background: #545454;
+                  color: #F7F7F7;
+                  transform: ${this.containerTransform} !important` : 
                   this.containerRect
                     ? `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
                   height: ${this.full ? "100% !important" : `${this.containerRect.height}px !important`};
@@ -196,12 +220,12 @@ export namespace FloatingModal {
                   bottom: ${this.full ? "0 !important" : ""};
                   right: ${this.full ? "0 !important" : ""};
                   ${this.full ? "transform: none !important" : ""};
-                  ${!this.full ? `transform: ${this.containerTransform} !important` : ""};`
+                  ${!this.full? `transform: ${this.containerTransform} !important` : ""};`
                     : undefined
                 )}
               >
-                <div class="md-floating__header">
-                  <div class="md-floating__header-text">
+                <div class="md-floating__header ${this.minimize ? 'md-floating__header-minimize' : ""}">
+                  <div class="md-floating__header-text" @click=${this.handleMinimize}>
                     ${this.heading
                       ? html`
                           ${this.heading}
@@ -212,13 +236,25 @@ export namespace FloatingModal {
                   </div>
                   <md-button
                     color="color-none"
+                    class="md-floating__close"
+                    aria-label="${this.closeAriaLabel}"
+                    circle
+                    @click=${this.handleMinimize}
+                  >
+                  <md-icon name="${!this.minimize ? "minus_16" : "maximize_16"}"></md-icon>
+                  </md-button>
+
+                  ${!this.minimize ? html` <md-button
+                    color="color-none"
                     class="md-floating__resize"
                     aria-label="${this.resizeAriaLabel}"
                     circle
                     @click=${this.handleToggleExpandCollapse}
                   >
                     <md-icon name=${this.full ? "minimize_16" : "maximize_16"}></md-icon>
-                  </md-button>
+                  </md-button>` : ''}
+
+                 
                   <md-button
                     color="color-none"
                     class="md-floating__close"
@@ -229,7 +265,7 @@ export namespace FloatingModal {
                     <md-icon name="cancel_16"></md-icon>
                   </md-button>
                 </div>
-                <div class="md-floating__body">
+                <div class="md-floating__body ${this.minimize ? "md-floating-body-minimize" : ""}">
                   <slot></slot>
                 </div>
               </div>

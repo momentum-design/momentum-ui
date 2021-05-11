@@ -39,5 +39,19 @@
   .md-floating__body {
     overflow: auto;
     padding: $floating-body-padding;
+    height: calc(100% - 3rem);
+  }
+
+  .md-floating-body-minimize {
+    visibility: hidden;
+    display: block;
+    height: 0;
+  }
+
+  .md-floating__header-minimize {
+    color: #F7F7F7;
+    font-size: 16px;
+    line-height: 24px;
+
   }
 }

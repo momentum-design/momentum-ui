@@ -119,7 +119,7 @@ export namespace AccordionItem {
     render() {
       return html`
         <div class="md-accordion-item">
-          <div role="heading" aria-level=${this.level} class="md-accordion-header">
+          <div role="heading" aria-level=${this.level} class="md-accordion-header" part="accordion-header">
             <button
               type="button"
               aria-expanded=${this.expanded}

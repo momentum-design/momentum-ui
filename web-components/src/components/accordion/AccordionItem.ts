@@ -34,10 +34,11 @@ export namespace AccordionItem {
     set expanded(value: boolean) {
       const oldValue = this._expanded;
       this._expanded = value;
-
       if (value) {
         this.notifyAccordionFocus();
         this.notifyExpandedHeader();
+      } else {
+        this.notifyCollapsedHeader();
       }
       this.requestUpdate("expanded", oldValue);
     }
@@ -61,6 +62,18 @@ export namespace AccordionItem {
     private notifyExpandedHeader() {
       this.dispatchEvent(
         new CustomEvent("accordion-item-expanded", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            id: this.uniqueId
+          }
+        })
+      );
+    }
+
+    private notifyCollapsedHeader() {
+      this.dispatchEvent(
+        new CustomEvent("accordion-item-collapsed", {
           composed: true,
           bubbles: true,
           detail: {

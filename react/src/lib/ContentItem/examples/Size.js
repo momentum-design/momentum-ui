@@ -61,7 +61,7 @@ export default class ContentItemSizes extends React.PureComponent {
 
         <ContentItem
           aspect="sixteenNine"
-          content="http://panoramicvisions.com/images/banner-img11.jpg"
+          content="http://www.emertatmassage.com/wp-content/uploads/2014/06/img-16.jpg"
           subtitle="Barbara German, 4 days"
           type="file"
           title="16:9"

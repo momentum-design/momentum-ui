@@ -1,5 +1,6 @@
 const { camelCase } = require("lodash");
 const handlebars = require("handlebars");
+const { exec } = require("child_process");
 const { generateFonts } = require("@momentum-ui/webfonts-generator");
 
 const {
@@ -12,7 +13,8 @@ const { calcHash } = require("./icons-utils");
 
 const FONT_NAME = "momentum-ui-icons";
 const DEST = "fonts";
-const ICONS_SRC = "svg/*.svg";
+const ICONS_DIR = "svg/";
+const ICONS_SRC = ICONS_DIR+"*.svg";
 const DEFAULT_TEMPLATE_OPTIONS = {
   baseSelector: ".icon",
   classPrefix: "icon-"
@@ -20,7 +22,13 @@ const DEFAULT_TEMPLATE_OPTIONS = {
 
 (async function() {
   try {
-    const result = await generateFonts(FONT_NAME, ICONS_SRC, DEST);
+    let timestamp = 0;
+    exec("git log -1 --format=%ct " + ICONS_DIR, (error, stdout, stderr) => {
+      if (!error) {
+        timestamp = stdout;
+      }
+    });
+    const result = await generateFonts(FONT_NAME, ICONS_SRC, DEST, { ts: timestamp });
 
     // Useful helpers for handlebars
     handlebars.registerHelper("removeDashes", (selector, spacer) =>

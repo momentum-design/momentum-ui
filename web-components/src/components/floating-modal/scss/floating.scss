@@ -16,6 +16,13 @@
     position: fixed;
   }
 
+  &.md-floating-minimize {
+    background: #545454;
+    color: #F7F7F7;
+    height: 3rem !important;
+    width: 254.9996795654297px !important;
+  }
+
   .md-floating__header {
     align-items: center;
     border-bottom: $floating-header-border;
@@ -52,6 +59,7 @@
     color: #F7F7F7;
     font-size: 16px;
     line-height: 24px;
-
   }
+
+  
 }

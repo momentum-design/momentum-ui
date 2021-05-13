@@ -23,8 +23,8 @@ export class FloatingTemplateSandbox extends LitElement {
         overflow: hidden;
         height: 500px;
         width: 800px;
-        right:0;
-        bottom:0;
+        /* right:0;
+        bottom:0; */
       }
     `;
   }
@@ -37,6 +37,7 @@ export class FloatingTemplateSandbox extends LitElement {
         class="float-modal"
         heading="Keyboard Shortcuts"
         ?show=${this.isOpen}
+        fixed-strategy
         @floating-modal-close=${() => this.closeFloatingModal()}
       >
         <div class="youtube"><iframe style="height:100%" src="https://youtube.com" > <iframe></div>

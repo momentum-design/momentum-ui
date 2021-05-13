@@ -32,8 +32,10 @@ export namespace FloatingModal {
 
     @internalProperty() private containerRect: DOMRect | null = null;
     @internalProperty() private minimize: Boolean | false = false;
+    @internalProperty() private dragOccured: Boolean | false = false;
 
     private containerTransform = "";
+    private minimizeTransform: string= "";
 
     get floatingClassMap() {
       return {
@@ -88,6 +90,7 @@ export namespace FloatingModal {
         } else {
           this.containerRect = this.container!.getBoundingClientRect();
         }
+       
         this.containerTransform = this.getContainerTransform();
       });
     }
@@ -140,8 +143,22 @@ export namespace FloatingModal {
     }
 
     handleMinimize(event: MouseEvent) {
-      this.minimize = !this.minimize;
-      this.requestUpdate();
+      if(!this.dragOccured) {
+        this.minimize = !this.minimize;
+        if(this.minimize) {
+          const dataX = this.container!.getAttribute("data-x");
+          const dataY = this.container!.getAttribute("data-y");
+          console.log(this.container!.style);
+          if(this.containerRect?.width) {
+            const minimizeX = this.containerRect.width - 255 + (dataX ? parseInt(dataX) : 0);
+            const minimizeY = this.containerRect.height - 48 + (dataY ? parseInt(dataY) : 0);
+            this.minimizeTransform = `translate(${minimizeX}px, ${minimizeY}px)`
+          }
+          
+        }
+        this.requestUpdate();
+      }
+      this.dragOccured = false;
     }
 
     handleToggleExpandCollapse() {
@@ -175,6 +192,7 @@ export namespace FloatingModal {
     };
 
     private dragEndListener = () => {
+      this.dragOccured = true;
       this.setContainerRect();
     };
 
@@ -200,18 +218,14 @@ export namespace FloatingModal {
         ${this.show
           ? html`
               <div
-                class="md-floating ${classMap(this.floatingClassMap)}"
+                class="md-floating ${this.fixed ? "fixed" : ''} ${this.minimize ? "md-floating-minimize" : ''}"
                 part="floating"
                 role="dialog"
                 aria-label=${ifDefined(this.label || undefined)}
                 aria-modal="true"
                 style=${ifDefined(
                   this.minimize ? `
-                  height: 3rem !important;
-                  width: 254.9996795654297px !important;
-                  background: #545454;
-                  color: #F7F7F7;
-                  transform: ${this.containerTransform} !important` : 
+                  transform: ${this.minimizeTransform} !important` : 
                   this.containerRect
                     ? `width: ${this.full ? "100% !important" : `${this.containerRect.width}px !important`};
                   height: ${this.full ? "100% !important" : `${this.containerRect.height}px !important`};

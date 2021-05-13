@@ -4,9 +4,25 @@ import "@/components/input/Input";
 import { html } from "lit-element";
 
 export const accordionTemplate = html`
+  <style>
+    .test-class {
+      background-color: aliceblue;
+      flex-direction: column;
+      text-align: left;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+    md-accordion-item.part-demo::part(accordion-header) {
+      background-color: #c7c7c7;
+    }
+  </style>
   <h3>Default</h3>
-  <md-accordion>
-    <md-accordion-item slot="accordion-item" label="Header №1" expanded>
+  <md-accordion class="part-demo">
+    <md-accordion-item slot="accordion-item" label="Header №1" expanded class="part-demo">
+      <div slot="header-content" class="test-class">
+        <h4>Slotted Header Content</h4>
+        <p>lorem ipsum ploppum bootum flossy noop</p>
+      </div>
       <div>Panel №1</div>
     </md-accordion-item>
     <md-accordion-item slot="accordion-item" label="Header №2">

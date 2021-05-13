@@ -9,7 +9,7 @@
       position: fixed;
       z-index: $zindex-top-bar-fixed - 4;
       display: flex;
-      background: $md-white-100;
+      background: var(--md-background-primary, $md-white-100);
       border-radius: $event-overlay__border-radius;
       box-shadow: $event-overlay__border, $event-overlay__shadow;
 

@@ -26,24 +26,13 @@ export type TabKeyDownEvent = {
 export namespace DraggableTab {
   @customElementWithCheck("md-draggable-tab")
   export class ELEMENT extends FocusMixin(LitElement) {
-    // @property({ type: Boolean, reflect: true }) disabled = false;
-    // @property({ type: Boolean, reflect: true }) extended = false;
-    // @property({ type: Boolean, reflect: true }) editable = false;
-
     static get styles() {
       return [reset, styles];
     }
 
-    // get draggableItemClassMap() {
-    //   return {
-    //     extended: this.extended,
-    //     default: !this.extended,
-    //     disabled: this.disabled
-    //   };
-    // }
-
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
+    @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -79,13 +68,24 @@ export namespace DraggableTab {
       this.setAttribute("aria-selected", `${value}`);
       this.requestUpdate("selected", oldValue);
     }
+
+    private _closable = false;
+    @property({ type: Boolean, reflect: true })
+    get closable() {
+      return this._closable;
+    }
+    set closable(value: boolean) {
+      const oldValue = this._closable;
+      this._closable = value;
+      this.requestUpdate("closable", oldValue);
+    }
+
     @property({ type: Boolean, reflect: true }) vertical = false;
 
     @property({ type: Boolean, reflect: true }) viewportHidden = false;
 
     handleClick(event: MouseEvent) {
       event.preventDefault();
-      console.log("Clicked");
       if (this.id) {
         this.dispatchEvent(
           new CustomEvent<TabClickEvent>("tab-click", {
@@ -100,6 +100,7 @@ export namespace DraggableTab {
     }
 
     handleKeyDown(event: KeyboardEvent) {
+      console.log("Keydown", this.id)
       if (this.id) {
         this.dispatchEvent(
           new CustomEvent<TabKeyDownEvent>("tab-keydown", {
@@ -110,6 +111,41 @@ export namespace DraggableTab {
               shiftKey: event.shiftKey,
               altKey: event.altKey,
               srcEvent: event
+            },
+            bubbles: true,
+            composed: true
+          })
+        );
+      }
+    }
+
+    handleActionClick(event: MouseEvent) {
+      event.preventDefault();
+      if (this.disabled === true) return;
+      console.log("Action Button Clicked", this.closable);
+      if (this.closable) {
+        this.handleCrossClick();
+      } else if (this.id) {
+        this.dispatchEvent(
+          new CustomEvent<TabClickEvent>("tab-action-button-click", {
+            detail: {
+              id: this.id
+            },
+            bubbles: true,
+            composed: true
+          })
+        );
+      }
+    }
+
+    handleCrossClick() {
+      // event.preventDefault();
+      console.log("Cross Clicked");
+      if (this.id) {
+        this.dispatchEvent(
+          new CustomEvent<TabClickEvent>("tab-cross-click", {
+            detail: {
+              id: this.id
             },
             bubbles: true,
             composed: true
@@ -135,11 +171,6 @@ export namespace DraggableTab {
       }
     }
 
-    // private setupEvents() {
-    //   this.addEventListener("mousedown", this.handleClick);
-    //   this.addEventListener("keydown", this.handleKeyDown);
-    // }
-
     connectedCallback() {
       super.connectedCallback();
       this.setAttribute("aria-selected", "false");
@@ -147,27 +178,45 @@ export namespace DraggableTab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-
+      this.setupEvents();
       this.setAttribute("role", "tab");
+    }
+
+    private setupEvents() {
+      this.addEventListener("keydown", this.handleKeyDown);
     }
 
     render() {
       return html`
-        <button
-          class="md-draggable-tab"
-          type="button"
-          role="button"
-          ?disabled=${this.disabled}
-          aria-hidden="true"
-          aria-selected="false"
-          aria-label=${ifDefined(this.ariaLabel)}
-          tabindex="-1"
-          part="draggable-item"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
-          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-        >
-          <slot></slot>
-        </button>
+        <div style="display: flex;">
+          <button
+            class="md-draggable-tab"
+            type="button"
+            role="button"
+            ?disabled=${this.disabled}
+            aria-hidden="true"
+            aria-selected="false"
+            aria-label=${ifDefined(this.ariaLabel)}
+            tabindex="-1"
+            part="draggable-item"
+            @click=${(e: MouseEvent) => this.handleClick(e)}
+            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          >
+            <slot></slot>
+          </button>
+          ${this.isCrossVisible
+            ? html`
+                <div
+                  ?disabled=${this.disabled}
+                  slot="tabAction"
+                  style="display: flex;"
+                  @click=${(e: MouseEvent) => this.handleActionClick(e)}
+                >
+                  <slot name="tabAction"></slot>
+                </div>
+              `
+            : ""}
+        </div>
       `;
     }
   }

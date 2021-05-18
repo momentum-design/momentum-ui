@@ -12,7 +12,7 @@ import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
 import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
-import { DraggableTab, TabClickEvent } from "./DraggableTab";
+import { DraggableTab, TabClickEvent, TabKeyDownEvent } from "./DraggableTab";
 import { DraggableTabPanel } from "./DraggableTabPanel";
 import { nanoid } from "nanoid";
 import { classMap } from "lit-html/directives/class-map";
@@ -23,6 +23,7 @@ import { styleMap } from "lit-html/directives/style-map";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import { threadId } from "worker_threads";
+import { Key } from "@/constants";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "264px"; // Designed width
@@ -39,25 +40,8 @@ export namespace DraggableTabs {
   @customElementWithCheck("md-draggable-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-
-    @property({ type: Number }) delay = 0;
-    @property({ type: Number }) animation = 100;
-    @property({ type: String }) handle = "";
-    @property({ type: String }) filter = "";
-    @property({ type: String }) easing = "";
-    @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
-    // @property({ type: Object }) group: Sortable.GroupOptions | null = null;
-    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-tab";
-    @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
-    @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
-    @property({ type: String, attribute: "drag-class" }) dragClass = "";
-    @property({ type: String, attribute: "fallback-class" }) fallbackClass = "";
-    @property({ type: Number, attribute: "swap-threshold" }) swapThreshold = 1;
-    @property({ type: Number, attribute: "touch-start-threshold" }) touchStartThreshold = 0;
-    @property({ type: Boolean, attribute: "force-fallback" }) forceFallback = false;
-    @property({ type: Boolean, reflect: true }) sort = false;
-    @property({ type: Boolean, reflect: true }) disabled = false;
-    @property({ type: Boolean, reflect: true }) editable = false;
+    @property({ type: String }) overlowLabel = "More";
+    @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -65,11 +49,12 @@ export namespace DraggableTabs {
     @query(".md-menu-overlay__more_tab") moreTabMenuElement?: DraggableTab.ELEMENT;
     @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
 
-    @query(".md-tab__list[part='tabs-more-list']") tabsMoreListElement?: HTMLDivElement;
+    @query(".md-tab__list[part='hidden-tabs-list']") tabsMoreListElement?: HTMLDivElement;
     @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<DraggableTab.ELEMENT>;
 
-    @property({ type: String }) overlowLabel = "More";
-    @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
+    @query("#visible-tabs-list") visibleTabsContainerElement?: HTMLElement;
+    @query("#hidden-tabs-list") hiddenTabsContainerElement?: HTMLElement;
+
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
     @internalProperty() private isMoreTabMenuOpen = false;
@@ -81,9 +66,30 @@ export namespace DraggableTabs {
     @internalProperty() private tabsFilteredAsVisibleList: DraggableTab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: DraggableTab.ELEMENT[] = [];
 
-    private sortableInstance: Sortable | null = null;
-    private firstSortableInstance: Sortable | null = null;
-    private secondSortableInstance: Sortable | null = null;
+    @property({ type: Number }) delay = 0;
+    @property({ type: Number }) animation = 100;
+    @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
+    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-tab";
+    @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
+    @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
+    @property({ type: Boolean, reflect: true }) sort = false;
+    @property({ type: Boolean, reflect: true }) disabled = false;
+    
+    private generateOptions() {
+      return {
+        group: "shared",
+        disabled: this.disabled,
+        animation: 100,
+        delay: 0,
+        draggable: this.draggableItems,
+        direction: this.direction,
+        ghostClass: this.ghostClass,
+        chosenClass: this.chosenClass,
+        onEnd: this.handleOnEnd,
+        onUpdate: this.handleOnUpdate,
+        onRemove: this.handleOnRemove
+      };
+    }
 
     private tabs: DraggableTab.ELEMENT[] = [];
     private panels: DraggableTabPanel.ELEMENT[] = [];
@@ -98,22 +104,25 @@ export namespace DraggableTabs {
     private tabsVisibleIdxHash: Record<TabId, number> = {};
     private tabsHiddenIdxHash: Record<TabId, number> = {};
     private tabHiddenIdPositiveTabIndex?: TabId;
+    private tabVisibleIdPositiveTabIndex?: TabId;
+
+    private visibleTabsSortableInstance: Sortable | null = null;
+    private hiddenTabsSortableInstance: Sortable | null = null;
+
+    private getCopyTabId(tab: DraggableTab.ELEMENT) {
+      if (tab.id.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
+        return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
+      } else {
+        return tab.id;
+      }
+    }
+
+    private getNormalizedTabId(id: TabId) {
+      return id.replace(MORE_MENU_TAB_COPY_ID_PREFIX, "");
+    }
 
     static get styles() {
       return [reset, styles];
-    }
-
-    get slotElement() {
-      return this.tabSlotElement;
-    }
-
-    protected filterSlotted() {
-      return this.tabSlotElement!.assignedElements() as HTMLElement[];
-    }
-
-    protected async handleResize(contentRect: DOMRect) {
-      super.handleResize && super.handleResize(contentRect);
-      await this.manageOverflow();
     }
 
     private async ensureTabsUpdateComplete(tabs: DraggableTab.ELEMENT[]) {
@@ -147,7 +156,12 @@ export namespace DraggableTabs {
 
     private async manageOverflow() {
       if (this.direction !== "vertical") {
-        const tabsCount = this.tabs.length;
+        let tabList;
+        if (this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0)
+          tabList = [...this.tabs];
+        else tabList = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+
+        const tabsCount = tabList.length;
         if (this.tabsListElement && tabsCount > 1) {
           const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
 
@@ -157,7 +171,7 @@ export namespace DraggableTabs {
           const tabsOffsetsWidths = this.measureTabsOffsetWidth();
 
           // All tabs total offsetsWidth
-          const tabsTotalOffsetWidth = this.tabs.reduce((acc, tab, idx) => {
+          const tabsTotalOffsetWidth = tabList.reduce((acc, tab, idx) => {
             acc += tabsOffsetsWidths[idx];
             return acc;
           }, 0);
@@ -176,7 +190,7 @@ export namespace DraggableTabs {
 
             const newTabsViewportList: TabsViewportDataList = [];
             let tabsOffsetWidthSum = 0;
-            this.tabs.forEach((tab, idx) => {
+            tabList.forEach((tab, idx) => {
               tabsOffsetWidthSum += tabsOffsetsWidths[idx];
 
               const isTabInViewportHidden = isTabsFitInViewport
@@ -201,7 +215,7 @@ export namespace DraggableTabs {
             this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find(tvd => tvd.isTabInViewportHidden);
 
             // Only tabs going visible
-            this.tabsFilteredAsVisibleList = this.tabs.filter(
+            this.tabsFilteredAsVisibleList = tabList.filter(
               (t, idx) => !this.tabsViewportDataList[idx].isTabInViewportHidden
             );
             this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
@@ -210,7 +224,7 @@ export namespace DraggableTabs {
             }, {} as Record<TabId, number>);
 
             // Only tabs going hidden
-            this.tabsFilteredAsHiddenList = this.tabs.filter(
+            this.tabsFilteredAsHiddenList = tabList.filter(
               (t, idx) => this.tabsViewportDataList[idx].isTabInViewportHidden
             );
             this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
@@ -224,6 +238,9 @@ export namespace DraggableTabs {
 
         const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find(t => !t.disabled);
         this.updateHiddenIdPositiveTabIndex(firstNotDisabledHiddenTab);
+
+        const firstNotDisabledVisibleTab = this.tabsFilteredAsVisibleList.find(t => !t.disabled);
+        this.updateVisibleIdPositiveTabIndex(firstNotDisabledVisibleTab);
       }
     }
 
@@ -236,35 +253,192 @@ export namespace DraggableTabs {
       this.tabHiddenIdPositiveTabIndex = hiddenTab ? hiddenTab.id : undefined;
     }
 
-    private generateOptions() {
-      return {
-        group: "shared",
-        disabled: this.disabled,
-        animation: this.animation,
-        sort: this.sort,
-        delay: this.delay,
-        handle: this.handle,
-        easing: this.easing,
-        filter: this.filter,
-        swapThreshold: this.swapThreshold,
-        touchStartThreshold: this.touchStartThreshold,
-        draggable: this.draggableItems,
-        direction: this.direction,
-        ghostClass: this.ghostClass,
-        chosenClass: this.chosenClass,
-        dragClass: this.dragClass,
-        fallbackClass: this.fallbackClass,
-        forceFallback: this.forceFallback
-      };
+    private updateVisibleIdPositiveTabIndex(visibleTab?: DraggableTab.ELEMENT) {
+      this.tabVisibleIdPositiveTabIndex = visibleTab ? visibleTab.id : undefined;
     }
 
-    private getCopyTabId(tab: DraggableTab.ELEMENT) {
-      return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
+    private async linkPanelsAndTabs() {
+      const { tabs, panels } = this;
+
+      if (tabs.length === 0 || panels.length === 0) {
+        console.warn(`The tabs or panels count should't be equal zero.`);
+        return;
+      }
+
+      if (tabs.length !== panels.length) {
+        console.warn(`The amount of tabs (${tabs.length}) doesn't match the amount of panels (${panels.length}).`);
+      }
+      console.log("LUFFY", tabs);
+
+      tabs.forEach((tab, index) => {
+        const id = nanoid();
+        tab.setAttribute("id", id);
+        tab.setAttribute("aria-controls", id);
+        tab.selected = this.selected === index;
+
+        const panel = panels[index];
+
+        if (panel) {
+          panel.setAttribute("id", id);
+          panel.setAttribute("aria-labelledby", id);
+          if (this.selected === index) {
+            panel.toggleAttribute("selected", true);
+          }
+          // panel.selected = this.selected === index;
+          if (tab.disabled) {
+            panel.hidden = true;
+          }
+        } else {
+          tab.disabled = true;
+        }
+      });
+
+      console.log("LUFFY2", tabs, panels);
+
+      this.tabsHash = this.tabs.reduce((acc, tab) => {
+        acc[tab.id] = tab;
+        return acc;
+      }, {} as Record<TabId, DraggableTab.ELEMENT>);
+
+      this.tabsIdxHash = this.tabs.reduce((acc, tab, idx) => {
+        acc[tab.id] = idx;
+        return acc;
+      }, {} as Record<TabId, number>);
     }
 
-    private getNormalizedTabId(id: TabId) {
-      return id.replace(MORE_MENU_TAB_COPY_ID_PREFIX, "");
+    get slotElement() {
+      return this.tabSlotElement;
     }
+
+    protected filterSlotted() {
+      return this.tabSlotElement!.assignedElements() as HTMLElement[];
+    }
+
+    protected async handleResize(contentRect: DOMRect) {
+      super.handleResize && super.handleResize(contentRect);
+      await this.manageOverflow();
+    }
+
+    private dispatchDragEvent(eventName: string, srcEvent: Sortable.SortableEvent | Sortable.MoveEvent) {
+      this.dispatchEvent(
+        new CustomEvent<{ srcEvent: Sortable.SortableEvent | Sortable.MoveEvent }>(eventName, {
+          composed: true,
+          bubbles: true,
+          detail: {
+            srcEvent
+          }
+        })
+      );
+    }
+
+    handleOnUpdate = (event: Sortable.SortableEvent) => {
+      event.stopPropagation();
+      console.log("OnUpdate", event)
+      this.dispatchDragEvent("drag-remove", event);
+    };
+
+    handleOnRemove = (event: Sortable.SortableEvent) => {
+      event.stopPropagation();
+      console.log("OnRemove", event)
+      this.dispatchDragEvent("drag-remove", event);
+    };
+
+    handleOnEnd = async (event: Sortable.SortableEvent) => {
+      event.stopPropagation();
+      const oldIndex = event.oldIndex;
+      const newIndex = event.newIndex;
+
+      const visibleTabElements = [...this.tabsFilteredAsVisibleList];
+      const hiddenTabElements = [...this.tabsFilteredAsHiddenList];
+
+      visibleTabElements.forEach((element: any) => {
+        console.log(element.childNodes[3].innerHTML, element.id);
+      });
+
+      console.log("Before Swap", this.tabsFilteredAsVisibleList);
+      console.log(oldIndex, newIndex, event.item.id, this.visibleTabsContainerElement?.childElementCount);
+      if (
+        event.to === this.visibleTabsContainerElement &&
+        event.from === this.hiddenTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        this.visibleTabsContainerElement.querySelector("#" + event.item.id)?.remove();
+        const draggedElement = hiddenTabElements[oldIndex];
+        const autoMoveElement = visibleTabElements.slice(-1)[0];
+        console.log(oldIndex, newIndex, draggedElement.innerHTML, autoMoveElement.innerHTML);
+        hiddenTabElements.splice(oldIndex, 1);
+        hiddenTabElements.splice(0, 0, autoMoveElement);
+        const newDraggedIndex = newIndex === this.tabsFilteredAsVisibleList.length ? newIndex - 1 : newIndex;
+
+        visibleTabElements.splice(newDraggedIndex, 0, draggedElement);
+        visibleTabElements.pop();
+
+        this.tabsFilteredAsVisibleList = visibleTabElements;
+        this.tabsFilteredAsHiddenList = hiddenTabElements;
+      } else if (
+        event.from === this.visibleTabsContainerElement &&
+        event.to === this.hiddenTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        console.log(oldIndex, newIndex, event.item.id, this.visibleTabsContainerElement.childElementCount);
+        this.hiddenTabsContainerElement.querySelector("#" + event.item.id)?.remove();
+        const draggedElement = visibleTabElements[oldIndex];
+        const autoMoveElement = hiddenTabElements.slice(-1)[0];
+        const newDraggedIndex = newIndex === this.tabsFilteredAsHiddenList.length ? newIndex - 1 : newIndex;
+        hiddenTabElements.splice(newDraggedIndex, 0, draggedElement);
+        hiddenTabElements.pop();
+
+        console.log(event.item.id);
+        const newVisible = visibleTabElements.filter((element: any) => {
+          console.log(element.id)
+          return element.id !== this.getNormalizedTabId(event.item.id)
+        });
+        console.log("ZORO", newVisible)
+        newVisible.push(autoMoveElement);
+        console.log("ZORO", newVisible)
+        console.log(this.visibleTabsContainerElement.childElementCount)
+        // visibleTabElements.push(autoMoveElement);
+        // visibleTabElements.splice(oldIndex, 1);
+        this.tabsFilteredAsVisibleList = [...newVisible];
+        this.tabsFilteredAsHiddenList = [...hiddenTabElements];
+      } else if (
+        event.from === this.visibleTabsContainerElement &&
+        event.to === this.visibleTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        console.log(oldIndex, newIndex, this.visibleTabsContainerElement);
+
+        const draggedElement = visibleTabElements[oldIndex];
+        // visibleTabElements[oldIndex] = visibleTabElements[newIndex];
+        // visibleTabElements[newIndex] = draggedElement;
+
+        visibleTabElements.splice(oldIndex, 1)
+        visibleTabElements.splice(newIndex, 0, draggedElement);
+        this.tabsFilteredAsVisibleList = visibleTabElements;
+      } else if (
+        event.from === this.hiddenTabsContainerElement &&
+        event.to === this.hiddenTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        const draggedElement = hiddenTabElements[oldIndex];
+        hiddenTabElements.splice(oldIndex, 1);
+        hiddenTabElements.splice(newIndex, 0, draggedElement);
+        this.tabsFilteredAsHiddenList = hiddenTabElements;
+      }
+
+      visibleTabElements.forEach((element: any) => {
+        console.log(element.childNodes[3].innerHTML, element.id);
+      });
+
+      console.log(oldIndex, newIndex, event.item.id, this.visibleTabsContainerElement?.childElementCount);
+      this.handleNewSelectedTab(event.item.id);
+      this.requestUpdate();
+      this.dispatchDragEvent("drag-end", event);
+    };
 
     private makeTabCopyFocus(tabCopy: DraggableTab.ELEMENT) {
       if (tabCopy) {
@@ -274,9 +448,26 @@ export namespace DraggableTabs {
 
     handleTabClick(event: CustomEvent<TabClickEvent>) {
       const { id } = event.detail;
+      this.handleNewSelectedTab(id);
+      // const tab = this.tabsHash[this.getNormalizedTabId(id)];
+      // if (tab && !tab.disabled) {
+      //   const newIndex = this.tabsIdxHash[tab.id];
 
+      //   if (newIndex !== -1) {
+      //     this.updateSelectedTab(newIndex);
+      //   }
+
+      //   // Setting up focus for tab copy (hidden menu)
+      //   {
+      //     const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
+      //     tabCopy && this.makeTabCopyFocus(tabCopy);
+      //     this.updateHiddenIdPositiveTabIndex(tab);
+      //   }
+      // }
+    }
+
+    handleNewSelectedTab(id: string) {
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
-      console.log("Clicked", tab, id);
       if (tab && !tab.disabled) {
         const newIndex = this.tabsIdxHash[tab.id];
 
@@ -293,15 +484,63 @@ export namespace DraggableTabs {
       }
     }
 
+    handleTabCrossClick(event: CustomEvent<TabClickEvent>) {
+      const { id } = event.detail;
+
+      const tab = this.tabsHash[this.getNormalizedTabId(id)];
+      console.log("Before Crosss", this.tabsFilteredAsVisibleList, tab);
+
+      if (tab && !tab.disabled) {
+        const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
+          element => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
+        );
+        // const visibleTabElements = [...this.tabsFilteredAsVisibleList];
+
+        this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: any) => {
+          return this.getNormalizedTabId(element.id) !== this.getNormalizedTabId(id)
+        })
+
+        this.visibleTabsContainerElement?.querySelector("#" + id)?.remove()
+        // remove?.remove();
+        // this.visibleTabsContainerElement?.querySelector("#" + id)?.remove();
+        // visibleTabElements.splice(crossTabIndex, 1);
+        if (this.tabsFilteredAsHiddenList.length !== 0) {
+          this.tabsFilteredAsVisibleList.push(this.tabsFilteredAsHiddenList[0]);
+          this.tabsFilteredAsHiddenList.splice(0, 1);
+        }
+        if (this.tabsFilteredAsHiddenList.length === 0) {
+          this.isMoreTabMenuVisible = false;
+          this.isMoreTabMenuMeasured = false;
+        }
+
+        // this.tabsFilteredAsVisibleList = visibleTabElements;
+
+        let newActivePanelIndex = crossTabIndex;
+        if (crossTabIndex === this.tabsFilteredAsVisibleList.length) newActivePanelIndex = crossTabIndex - 1;
+
+        console.log(this.tabsFilteredAsVisibleList[newActivePanelIndex].id)
+
+        const newSelectedIndex = this.tabs.findIndex(
+          element => element.id === this.tabsFilteredAsVisibleList[newActivePanelIndex].id
+        );
+        // console.log("newSelectedTab", newSelectedIndex)
+        this.changeSelectedTabIdx(crossTabIndex)
+        this.updateSelectedTab(newSelectedIndex);
+        console.log("After Crosss", this.tabsFilteredAsVisibleList);
+        console.log("CrossTabIndex", crossTabIndex, this.panels);
+        this.requestUpdate();
+      }
+    }
+
     private updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
-      console.log(this.slotted, this.tabs);
+      // console.log(this.slotted, this.tabs);
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-
+      // console.log(oldSelectedIndex, newSelectedIndex);
       if (oldSelectedIndex === newSelectedIndex) {
         return;
       }
-      console.log(oldSelectedIndex, newSelectedIndex);
+
       if (tabs && panels) {
         Array.from(Array(this.slotted.length).keys()).forEach(index => {
           const tab = tabs[index];
@@ -348,7 +587,9 @@ export namespace DraggableTabs {
     }
 
     private changeSelectedTabIdx(newSelectedTabIdx: number) {
+      console.log(this.selected)
       this.selected = newSelectedTabIdx;
+      // this.tabsFilteredAsVisibleList[newSelectedTabIdx].selected = true
       this.updateIsMoreTabMenuSelected();
     }
 
@@ -358,62 +599,157 @@ export namespace DraggableTabs {
       }
     }
 
+    handleTabKeydown(event: CustomEvent<TabKeyDownEvent>) {
+      const { id, key, ctrlKey, shiftKey, altKey, srcEvent } = event.detail;
+
+      const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
+
+      const tab =
+        !isMoreTriggerTab || !this.isMoreTabMenuVisible
+          ? this.tabsHash[this.getNormalizedTabId(id)]
+          : this.moreTabMenuElement;
+
+      const isVisibleTab = this.isMoreTabMenuVisible ? tab && this.tabsVisibleIdxHash[tab.id] > -1 : true;
+      const isHiddenTab = this.isMoreTabMenuVisible ? tab && this.tabsHiddenIdxHash[tab.id] > -1 : false;
+
+      const firstVisibleTabIdx = 0;
+      const lastVisibleTabIdx = this.isMoreTabMenuVisible
+        ? this.tabsFilteredAsVisibleList.length - 1
+        : this.tabs.length - 1;
+
+      const firstHiddenTabIdx = this.isMoreTabMenuVisible ? this.tabsFilteredAsVisibleList.length : -1;
+      const lastHiddenTabIdx = this.isMoreTabMenuVisible
+        ? this.tabsFilteredAsVisibleList.length + this.tabsFilteredAsHiddenList.length - 1
+        : -1;
+
+      const makeNextCopyTabFocusByHiddenIdx = (hiddenListIdx: number) => {
+        const nextTab = this.tabsFilteredAsHiddenList[hiddenListIdx];
+        if (nextTab) {
+          const nextCopyTab = this.tabsCopyHash[this.getCopyTabId(nextTab)];
+          nextCopyTab && this.makeTabCopyFocus(nextCopyTab);
+          !nextTab.disabled && this.updateHiddenIdPositiveTabIndex(nextTab);
+        }
+      };
+
+      switch (key) {
+        case Key.Tab: {
+          if (isMoreTriggerTab) {
+            // Support Shift + Tab from More to last visible tab
+            if (!this.isMoreTabMenuOpen && shiftKey) {
+              srcEvent.preventDefault();
+              this.changeSelectedTabIdx(lastVisibleTabIdx);
+            }
+          } else if (isVisibleTab) {
+            const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
+            this.changeSelectedTabIdx(oldSelectedIndex);
+          } else if (isHiddenTab) {
+            //
+          }
+          break;
+        }
+        case Key.End: {
+          if (isMoreTriggerTab) {
+            //
+          } else if (isVisibleTab) {
+            this.changeSelectedTabIdx(lastVisibleTabIdx);
+          } else if (isHiddenTab) {
+            this.changeSelectedTabIdx(lastHiddenTabIdx);
+            makeNextCopyTabFocusByHiddenIdx(this.tabsFilteredAsHiddenList.length - 1);
+          }
+          break;
+        }
+        case Key.Home: {
+          if (isMoreTriggerTab) {
+            this.changeSelectedTabIdx(firstVisibleTabIdx);
+          } else if (isVisibleTab) {
+            this.changeSelectedTabIdx(firstVisibleTabIdx);
+          } else if (isHiddenTab) {
+            this.changeSelectedTabIdx(firstHiddenTabIdx);
+            makeNextCopyTabFocusByHiddenIdx(0);
+          }
+          break;
+        }
+        case Key.ArrowLeft: {
+          if (isMoreTriggerTab) {
+            //
+          } else if (isVisibleTab) {
+            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+          } else if (isHiddenTab) {
+            //
+          }
+          break;
+        }
+        case Key.ArrowRight: {
+          if (isMoreTriggerTab) {
+            //
+          } else if (isVisibleTab) {
+            console.log('Arrow Right')
+            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
+          } else if (isHiddenTab) {
+            //
+          }
+          break;
+        }
+        case Key.ArrowUp: {
+          if (isMoreTriggerTab) {
+            //
+          } else if (isVisibleTab) {
+            //
+          } else if (isHiddenTab) {
+            const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
+            this.changeSelectedTabIdx(idx);
+            makeNextCopyTabFocusByHiddenIdx(idx - this.tabsFilteredAsVisibleList.length);
+          }
+          break;
+        }
+        case Key.ArrowDown: {
+          if (isMoreTriggerTab) {
+            //
+          } else if (isVisibleTab) {
+            //
+          } else if (isHiddenTab) {
+            const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;
+            this.changeSelectedTabIdx(idx);
+            makeNextCopyTabFocusByHiddenIdx(idx - this.tabsFilteredAsVisibleList.length);
+          }
+          break;
+        }
+        case Key.Enter:
+        case Key.Space: {
+          if (isMoreTriggerTab) {
+            const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter(t => !t.disabled);
+            const t =
+              tabsFilteredAsHiddenNonDisabledList.find(t => t.selected) || tabsFilteredAsHiddenNonDisabledList.length
+                ? tabsFilteredAsHiddenNonDisabledList[0]
+                : undefined;
+            this.updateHiddenIdPositiveTabIndex(t);
+            if (t) {
+              const idx = this.tabsIdxHash[this.getNormalizedTabId(t.id)];
+              if (idx !== -1) {
+                this.updateSelectedTab(idx);
+              }
+            }
+          } else if (tab && !tab.disabled) {
+            const idx = this.tabsIdxHash[this.getNormalizedTabId(tab.id)];
+            if (idx !== -1) {
+              this.updateSelectedTab(idx);
+            }
+          }
+          break;
+        }
+      }
+    }
+
     private setupTabsEvents() {
       this.addEventListener("tab-click", this.handleTabClick as EventListener);
+      this.addEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
+      this.addEventListener("tab-keydown", this.handleTabKeydown as EventListener);
     }
 
     private teardownTabsEvents() {
       this.removeEventListener("tab-click", this.handleTabClick as EventListener);
-    }
-
-    private async linkPanelsAndTabs() {
-      const { tabs, panels } = this;
-
-      if (tabs.length === 0 || panels.length === 0) {
-        console.warn(`The tabs or panels count should't be equal zero.`);
-        return;
-      }
-
-      if (tabs.length !== panels.length) {
-        console.warn(`The amount of tabs (${tabs.length}) doesn't match the amount of panels (${panels.length}).`);
-      }
-      console.log("LUFFY", this.selected, panels);
-
-      tabs.forEach((tab, index) => {
-        const id = nanoid();
-
-        tab.setAttribute("id", id);
-        tab.setAttribute("aria-controls", id);
-        tab.selected = this.selected === index;
-
-        const panel = panels[index];
-
-        if (panel) {
-          panel.setAttribute("id", id);
-          panel.setAttribute("aria-labelledby", id);
-          if (this.selected === index) {
-            panel.toggleAttribute("selected", true);
-          }
-          // panel.selected = this.selected === index;
-          if (tab.disabled) {
-            panel.hidden = true;
-          }
-        } else {
-          tab.disabled = true;
-        }
-      });
-
-      console.log("LUFFY2", tabs, panels);
-
-      this.tabsHash = this.tabs.reduce((acc, tab) => {
-        acc[tab.id] = tab;
-        return acc;
-      }, {} as Record<TabId, DraggableTab.ELEMENT>);
-
-      this.tabsIdxHash = this.tabs.reduce((acc, tab, idx) => {
-        acc[tab.id] = idx;
-        return acc;
-      }, {} as Record<TabId, number>);
+      this.removeEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
+      this.removeEventListener("tab-keydown", this.handleTabKeydown as EventListener);
     }
 
     private setupPanelsAndTabs() {
@@ -439,6 +775,22 @@ export namespace DraggableTabs {
       }
     }
 
+    private initializeSortable() {
+      if (this.visibleTabsContainerElement && this.hiddenTabsContainerElement) {
+        this.visibleTabsSortableInstance = Sortable.create(this.visibleTabsContainerElement, this.generateOptions());
+        this.hiddenTabsSortableInstance = Sortable.create(this.hiddenTabsContainerElement, this.generateOptions());
+      }
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.teardownTabsEvents();
+    }
+
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       this.setupTabsEvents();
@@ -446,56 +798,35 @@ export namespace DraggableTabs {
       this.linkPanelsAndTabs();
     }
 
-    @query("#firstTabs") firstTabElement?: HTMLElement;
-    @query("#secondTabs") secondTabElement?: HTMLElement;
-
-    private initializeSortable() {
-      if (this.firstTabElement && this.secondTabElement) {
-        // this.sortableInstance = Sortable.create(this, this.generateOptions());
-        // console.log("HEllo", this, this.firstTabElement, this.tabsListElement)
-        Sortable.create(this.firstTabElement, this.generateOptions());
-        Sortable.create(this.secondTabElement, this.generateOptions());
-      }
-      // Sortable.create(this.secondTabElement, { group: 'shared', draggable: this.draggableItems, });
-    }
-
-    // private cleanupSortable() {
-    //   if (this.sortableInstance) {
-    //     this.sortableInstance.destroy();
-    //     this.sortableInstance = null;
-    //   }
-    // }
-    // private cleanupSortable() {
-    //   if (this.firstSortableInstance && this.secondSortableInstance) {
-    //     this.firstSortableInstance.destroy();
-    //     this.firstSortableInstance = null;
-    //     this.secondSortableInstance.destroy();
-    //     this.secondSortableInstance = null;
-    //   }
-    // }
-
-    connectedCallback() {
-      super.connectedCallback();
-      // this.initializeSortable();
-    }
-
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      // this.cleanupSortable();
-      this.teardownTabsEvents();
-    }
-
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      this.initializeSortable();
-      console.log("NAMI", this.tabsFilteredAsVisibleList, this.tabsFilteredAsHiddenList);
-      // this.updateSortableInstance(changedProperties);
+      if (!this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
+        this.initializeSortable();
+      }
       if (changedProperties.has("tabsFilteredAsHiddenList")) {
         this.tabsCopy = Array.from(this.tabsCopyHiddenListElements?.values() || []);
         this.tabsCopyHash = this.tabsCopy.reduce((acc, tab) => {
           acc[tab.id] = tab;
           return acc;
         }, {} as Record<TabId, DraggableTab.ELEMENT>);
+      }
+
+      // if (changedProperties.has("visibleTabsContainerElement") || changedProperties.has("hiddenTabsContainerElement")) {
+        console.log("Visible", this.visibleTabsContainerElement)
+        const temp =this.visibleTabsContainerElement?.cloneNode(true)
+        console.log("Visible Cloned", temp)
+        console.log("Hidden", this.hiddenTabsContainerElement)
+      // }
+
+      if (changedProperties.has("tabsFilteredAsVisibleList") || changedProperties.has("tabsFilteredAsHiddenList")) {
+        this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
+          acc[tab.id] = idx;
+          return acc;
+        }, {} as Record<TabId, number>);
+        this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
+          acc[tab.id] = idx;
+          return acc;
+        }, {} as Record<TabId, number>);
       }
 
       if (changedProperties.has("isMoreTabMenuOpen")) {
@@ -520,54 +851,32 @@ export namespace DraggableTabs {
       }
     }
 
-    protected slottedChanged() {
-      this.initializeSortable();
-    }
-
-    // private setSortableOption(
-    //   name: Partial<keyof Sortable.SortableOptions>,
-    //   value: Sortable.SortableOptions[keyof Sortable.SortableOptions]
-    // ) {
-    //   if (this.sortableInstance && this.sortableInstance.option(name) !== undefined) {
-    //     this.sortableInstance.option(name, value);
-    //   }
-    // }
-
-    // private updateSortableInstance(changedProperties: PropertyValues) {
-    //   for (const propertyKey of changedProperties.keys()) {
-    //     const value = (this.firstTabElement as any);
-    //     this.setSortableOption(
-    //       propertyKey as keyof Sortable.SortableOptions,
-    //       value as Sortable.SortableOptions[keyof Sortable.SortableOptions]
-    //     );
-    //   }
-    // }
-
     render() {
       return html`
         <div
-          role="tablist"
           part="tabs-list"
           class="md-tab__list ${classMap({
-            "md-tab__justified": this.justified
+            "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
           })}"
           aria-disabled=${this.disabled}
+          role="tablist"
         >
           <slot name="tab" style="visibility: hidden;display: block;width: 0;"></slot>
-          <div id="firstTabs" part="first-tabs" style="display: flex;flex-direction: row;width: 100%">
+          <div id="visible-tabs-list" style="display: flex;flex-direction: row;width: 100%">
             ${repeat(
               this.tabsFilteredAsVisibleList,
               tab => tab.id,
               tab => html`
                 <md-draggable-tab
                   slot="draggable-item"
+                  .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
                   .selected="${tab.selected}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
                   aria-controls="${tab.id}"
-                  @click="${() => this.handleOverlayClose()}"
-                  tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                  .isCrossVisible=${true}
+                  tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-draggable-tab>
@@ -578,7 +887,7 @@ export namespace DraggableTabs {
           <md-menu-overlay
             custom-width="${MORE_MENU_WIDTH}"
             class="md-menu-overlay__more ${classMap({
-              "md-menu-overlay__more--hidden": false
+              "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
             })}"
             placement="bottom-end"
             @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
@@ -592,13 +901,26 @@ export namespace DraggableTabs {
               tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
               .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
               class="md-menu-overlay__more_tab ${classMap({
-                "md-menu-overlay__more_tab--hidden": false
+                "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
             >
               <span>${this.overlowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}"></md-icon>
             </md-draggable-tab>
-            <div id="secondTabs" part="second-tabs">
+            <div
+              id="hidden-tabs-list"
+              part="hidden-tabs-list"
+              class="md-tab__list md-menu-overlay__more_list"
+              style="${styleMap(
+                this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight
+                  ? {
+                      "overflow-y": "auto",
+                      height: this.moreTabMenuMaxHeight,
+                      "max-height": this.moreTabMenuMaxHeight
+                    }
+                  : {}
+              )}"
+            >
               <!-- <md-draggable sort> -->
               ${repeat(
                 this.tabsFilteredAsHiddenList,

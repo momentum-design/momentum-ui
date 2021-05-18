@@ -74,6 +74,7 @@ export namespace DraggableTabs {
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
     @property({ type: Boolean, reflect: true }) sort = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
+    internalSwitch: boolean;
     
     private generateOptions() {
       return {
@@ -351,12 +352,6 @@ export namespace DraggableTabs {
       const visibleTabElements = [...this.tabsFilteredAsVisibleList];
       const hiddenTabElements = [...this.tabsFilteredAsHiddenList];
 
-      visibleTabElements.forEach((element: any) => {
-        console.log(element.childNodes[3].innerHTML, element.id);
-      });
-
-      console.log("Before Swap", this.tabsFilteredAsVisibleList);
-      console.log(oldIndex, newIndex, event.item.id, this.visibleTabsContainerElement?.childElementCount);
       if (
         event.to === this.visibleTabsContainerElement &&
         event.from === this.hiddenTabsContainerElement &&
@@ -366,7 +361,6 @@ export namespace DraggableTabs {
         this.visibleTabsContainerElement.querySelector("#" + event.item.id)?.remove();
         const draggedElement = hiddenTabElements[oldIndex];
         const autoMoveElement = visibleTabElements.slice(-1)[0];
-        console.log(oldIndex, newIndex, draggedElement.innerHTML, autoMoveElement.innerHTML);
         hiddenTabElements.splice(oldIndex, 1);
         hiddenTabElements.splice(0, 0, autoMoveElement);
         const newDraggedIndex = newIndex === this.tabsFilteredAsVisibleList.length ? newIndex - 1 : newIndex;
@@ -382,7 +376,6 @@ export namespace DraggableTabs {
         oldIndex !== undefined &&
         newIndex !== undefined
       ) {
-        console.log(oldIndex, newIndex, event.item.id, this.visibleTabsContainerElement.childElementCount);
         this.hiddenTabsContainerElement.querySelector("#" + event.item.id)?.remove();
         const draggedElement = visibleTabElements[oldIndex];
         const autoMoveElement = hiddenTabElements.slice(-1)[0];
@@ -390,17 +383,10 @@ export namespace DraggableTabs {
         hiddenTabElements.splice(newDraggedIndex, 0, draggedElement);
         hiddenTabElements.pop();
 
-        console.log(event.item.id);
         const newVisible = visibleTabElements.filter((element: any) => {
-          console.log(element.id)
           return element.id !== this.getNormalizedTabId(event.item.id)
         });
-        console.log("ZORO", newVisible)
         newVisible.push(autoMoveElement);
-        console.log("ZORO", newVisible)
-        console.log(this.visibleTabsContainerElement.childElementCount)
-        // visibleTabElements.push(autoMoveElement);
-        // visibleTabElements.splice(oldIndex, 1);
         this.tabsFilteredAsVisibleList = [...newVisible];
         this.tabsFilteredAsHiddenList = [...hiddenTabElements];
       } else if (
@@ -409,15 +395,13 @@ export namespace DraggableTabs {
         oldIndex !== undefined &&
         newIndex !== undefined
       ) {
-        console.log(oldIndex, newIndex, this.visibleTabsContainerElement);
-
         const draggedElement = visibleTabElements[oldIndex];
-        // visibleTabElements[oldIndex] = visibleTabElements[newIndex];
-        // visibleTabElements[newIndex] = draggedElement;
-
         visibleTabElements.splice(oldIndex, 1)
         visibleTabElements.splice(newIndex, 0, draggedElement);
         this.tabsFilteredAsVisibleList = visibleTabElements;
+        if(newIndex === this.tabsFilteredAsVisibleList.length-1) {
+          this.visibleTabsContainerElement.children[this.visibleTabsContainerElement.children.length-1].remove();
+          }
       } else if (
         event.from === this.hiddenTabsContainerElement &&
         event.to === this.hiddenTabsContainerElement &&
@@ -428,13 +412,10 @@ export namespace DraggableTabs {
         hiddenTabElements.splice(oldIndex, 1);
         hiddenTabElements.splice(newIndex, 0, draggedElement);
         this.tabsFilteredAsHiddenList = hiddenTabElements;
+        if(newIndex === this.tabsFilteredAsHiddenList.length-1) {
+          this.hiddenTabsContainerElement.children[this.hiddenTabsContainerElement.children.length-1].remove();
+          }
       }
-
-      visibleTabElements.forEach((element: any) => {
-        console.log(element.childNodes[3].innerHTML, element.id);
-      });
-
-      console.log(oldIndex, newIndex, event.item.id, this.visibleTabsContainerElement?.childElementCount);
       this.handleNewSelectedTab(event.item.id);
       this.requestUpdate();
       this.dispatchDragEvent("drag-end", event);
@@ -449,21 +430,6 @@ export namespace DraggableTabs {
     handleTabClick(event: CustomEvent<TabClickEvent>) {
       const { id } = event.detail;
       this.handleNewSelectedTab(id);
-      // const tab = this.tabsHash[this.getNormalizedTabId(id)];
-      // if (tab && !tab.disabled) {
-      //   const newIndex = this.tabsIdxHash[tab.id];
-
-      //   if (newIndex !== -1) {
-      //     this.updateSelectedTab(newIndex);
-      //   }
-
-      //   // Setting up focus for tab copy (hidden menu)
-      //   {
-      //     const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-      //     tabCopy && this.makeTabCopyFocus(tabCopy);
-      //     this.updateHiddenIdPositiveTabIndex(tab);
-      //   }
-      // }
     }
 
     handleNewSelectedTab(id: string) {
@@ -488,22 +454,16 @@ export namespace DraggableTabs {
       const { id } = event.detail;
 
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
-      console.log("Before Crosss", this.tabsFilteredAsVisibleList, tab);
-
+      
       if (tab && !tab.disabled) {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
           element => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
         );
-        // const visibleTabElements = [...this.tabsFilteredAsVisibleList];
-
         this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: any) => {
           return this.getNormalizedTabId(element.id) !== this.getNormalizedTabId(id)
         })
 
         this.visibleTabsContainerElement?.querySelector("#" + id)?.remove()
-        // remove?.remove();
-        // this.visibleTabsContainerElement?.querySelector("#" + id)?.remove();
-        // visibleTabElements.splice(crossTabIndex, 1);
         if (this.tabsFilteredAsHiddenList.length !== 0) {
           this.tabsFilteredAsVisibleList.push(this.tabsFilteredAsHiddenList[0]);
           this.tabsFilteredAsHiddenList.splice(0, 1);
@@ -512,31 +472,21 @@ export namespace DraggableTabs {
           this.isMoreTabMenuVisible = false;
           this.isMoreTabMenuMeasured = false;
         }
-
-        // this.tabsFilteredAsVisibleList = visibleTabElements;
-
         let newActivePanelIndex = crossTabIndex;
         if (crossTabIndex === this.tabsFilteredAsVisibleList.length) newActivePanelIndex = crossTabIndex - 1;
-
-        console.log(this.tabsFilteredAsVisibleList[newActivePanelIndex].id)
 
         const newSelectedIndex = this.tabs.findIndex(
           element => element.id === this.tabsFilteredAsVisibleList[newActivePanelIndex].id
         );
-        // console.log("newSelectedTab", newSelectedIndex)
         this.changeSelectedTabIdx(crossTabIndex)
         this.updateSelectedTab(newSelectedIndex);
-        console.log("After Crosss", this.tabsFilteredAsVisibleList);
-        console.log("CrossTabIndex", crossTabIndex, this.panels);
         this.requestUpdate();
       }
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
-      // console.log(this.slotted, this.tabs);
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-      // console.log(oldSelectedIndex, newSelectedIndex);
       if (oldSelectedIndex === newSelectedIndex) {
         return;
       }
@@ -587,7 +537,6 @@ export namespace DraggableTabs {
     }
 
     private changeSelectedTabIdx(newSelectedTabIdx: number) {
-      console.log(this.selected)
       this.selected = newSelectedTabIdx;
       // this.tabsFilteredAsVisibleList[newSelectedTabIdx].selected = true
       this.updateIsMoreTabMenuSelected();
@@ -811,13 +760,6 @@ export namespace DraggableTabs {
         }, {} as Record<TabId, DraggableTab.ELEMENT>);
       }
 
-      // if (changedProperties.has("visibleTabsContainerElement") || changedProperties.has("hiddenTabsContainerElement")) {
-        console.log("Visible", this.visibleTabsContainerElement)
-        const temp =this.visibleTabsContainerElement?.cloneNode(true)
-        console.log("Visible Cloned", temp)
-        console.log("Hidden", this.hiddenTabsContainerElement)
-      // }
-
       if (changedProperties.has("tabsFilteredAsVisibleList") || changedProperties.has("tabsFilteredAsHiddenList")) {
         this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
           acc[tab.id] = idx;
@@ -865,7 +807,7 @@ export namespace DraggableTabs {
           <div id="visible-tabs-list" style="display: flex;flex-direction: row;width: 100%">
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              tab => tab.id,
+              tab => nanoid(),
               tab => html`
                 <md-draggable-tab
                   slot="draggable-item"
@@ -924,7 +866,7 @@ export namespace DraggableTabs {
               <!-- <md-draggable sort> -->
               ${repeat(
                 this.tabsFilteredAsHiddenList,
-                tab => tab.id,
+                tab => nanoid(),
                 tab => html`
                   <md-draggable-tab
                     slot="draggable-item"

@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.14.0...@momentum-ui/icons@8.15.0) (2021-05-19)
+
+
+### Features
+
+* **icon:** add new icons ([#905](https://github.com/momentum-design/momentum-ui/issues/905)) ([13be5ce](https://github.com/momentum-design/momentum-ui/commit/13be5ce008185493dad3c5791ba7e1eff3c1fcaf))
+* **icon:** add new icons ([#906](https://github.com/momentum-design/momentum-ui/issues/906)) ([291566e](https://github.com/momentum-design/momentum-ui/commit/291566e7b477d85414c24d7feff079912ba29f12))
+* **icon:** add pin-active_10 ([#903](https://github.com/momentum-design/momentum-ui/issues/903)) ([853dd8d](https://github.com/momentum-design/momentum-ui/commit/853dd8dc3b8c945777eb6ea9ffbb481f0450b155))
+
+
+
+
+
+# [8.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.13.0...@momentum-ui/icons@8.14.0) (2021-05-18)
+
+
+### Features
+
+* **icons:** add people insight icons ([#902](https://github.com/momentum-design/momentum-ui/issues/902)) ([be8679a](https://github.com/momentum-design/momentum-ui/commit/be8679a58dbf3c3fb05faf33d438bb3b856870cb))
+
+
+
+
+
+# [8.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.12.1...@momentum-ui/icons@8.13.0) (2021-05-14)
+
+
+### Features
+
+* **icon:** add new icons ([#897](https://github.com/momentum-design/momentum-ui/issues/897)) ([19dd1bd](https://github.com/momentum-design/momentum-ui/commit/19dd1bd2443c021507e52a80e9def9462c483ade))
+
+
+
+
+
+## [8.12.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.12.0...@momentum-ui/icons@8.12.1) (2021-05-13)
+
+
+### Bug Fixes
+
+* **icon-build:** ensure that rebuilds of icons produce the same output ([#885](https://github.com/momentum-design/momentum-ui/issues/885)) ([c333ac5](https://github.com/momentum-design/momentum-ui/commit/c333ac504c741a493b196f8eddacb3f3320c8075))
+
+
+
+
+
 # [8.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.11.0...@momentum-ui/icons@8.12.0) (2021-05-05)
 
 

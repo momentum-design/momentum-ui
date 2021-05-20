@@ -99,26 +99,6 @@ export namespace DraggableTab {
       }
     }
 
-    handleKeyDown(event: KeyboardEvent) {
-      console.log("Keydown", this.id)
-      if (this.id) {
-        this.dispatchEvent(
-          new CustomEvent<TabKeyDownEvent>("tab-keydown", {
-            detail: {
-              id: this.id,
-              key: event.code,
-              ctrlKey: event.ctrlKey,
-              shiftKey: event.shiftKey,
-              altKey: event.altKey,
-              srcEvent: event
-            },
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-
     handleActionClick(event: MouseEvent) {
       event.preventDefault();
       if (this.disabled === true) return;
@@ -139,7 +119,6 @@ export namespace DraggableTab {
     }
 
     handleCrossClick() {
-      // event.preventDefault();
       console.log("Cross Clicked");
       if (this.id) {
         this.dispatchEvent(
@@ -178,12 +157,7 @@ export namespace DraggableTab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      this.setupEvents();
       this.setAttribute("role", "tab");
-    }
-
-    private setupEvents() {
-      this.addEventListener("keydown", this.handleKeyDown);
     }
 
     render() {

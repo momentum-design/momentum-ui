@@ -23,6 +23,7 @@
         font-size: rem-calc(14);
         line-height: rem-calc(22);
         color: $md-gray-70;
+        color: var(--md-textColor-secondary, $md-gray-70);
 
         @include flex($fd: column, $ai: flex-start);
 

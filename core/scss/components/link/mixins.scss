@@ -1,22 +1,31 @@
 @mixin link-color(
   $color: inherit,
+  $color-css-var: inherit,
   $color-hover: inherit,
-  $color-active: inherit
+  $color-hover-css-var: inherit,
+  $color-active: inherit,
+  $color-active-css-var: inherit
 ) {
   color: $color;
+  color: var($color-css-var, $color);
   fill: $color;
+  fill: var($color-css-var, $color);
 
   &:hover,
   &.hover,
   &.hover-state {
     color: $color-hover;
+    color: var($color-hover-css-var, $color-hover);
     fill: $color-hover;
+    fill: var($color-hover-css-var, $color-hover);
   }
 
   &:active,
   &.active-state,
   &.active {
     color: $color-active;
+    color: var($color-active-css-var, $color-active);
     fill: $color-active;
+    fill: var($color-active-css-var, $color-active);
   }
 }

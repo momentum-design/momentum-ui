@@ -373,8 +373,6 @@
   {
     color: $hover-color;
     color: var($hover-color-css-var, $hover-color);
-    background-color: $hover-bgrd-color;
-    background-color: var($hover-bgrd-color-css-var, $hover-bgrd-color);
 
     .#{$list-item__class} {
       &__header {

@@ -28,7 +28,7 @@ const DEFAULT_TEMPLATE_OPTIONS = {
         timestamp = stdout;
       }
     });
-    const result = await generateFonts(FONT_NAME, ICONS_SRC, DEST, { ts: timestamp });
+    const result = await generateFonts(FONT_NAME, ICONS_SRC, DEST, { ts: timestamp, fontHeight: 1000 });
 
     // Useful helpers for handlebars
     handlebars.registerHelper("removeDashes", (selector, spacer) =>

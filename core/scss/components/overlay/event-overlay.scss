@@ -10,7 +10,7 @@
       z-index: $zindex-top-bar-fixed - 4;
       display: flex;
       background: $md-white-100;
-      background: var(--md-background-secondary, $md-white-100);
+      background: var(--md-background-primary, $md-white-100);
       border-radius: $event-overlay__border-radius;
       border: 1px solid $event-overlay__border-color;
       border: 1px solid var(--md-separator-primary, $event-overlay__border-color);

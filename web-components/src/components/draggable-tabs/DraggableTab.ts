@@ -99,27 +99,9 @@ export namespace DraggableTab {
       }
     }
 
-    handleActionClick(event: MouseEvent) {
+    handleCrossClick(event: MouseEvent) {
       event.preventDefault();
       if (this.disabled === true) return;
-      console.log("Action Button Clicked", this.closable);
-      if (this.closable) {
-        this.handleCrossClick();
-      } else if (this.id) {
-        this.dispatchEvent(
-          new CustomEvent<TabClickEvent>("tab-action-button-click", {
-            detail: {
-              id: this.id
-            },
-            bubbles: true,
-            composed: true
-          })
-        );
-      }
-    }
-
-    handleCrossClick() {
-      console.log("Cross Clicked");
       if (this.id) {
         this.dispatchEvent(
           new CustomEvent<TabClickEvent>("tab-cross-click", {
@@ -162,35 +144,33 @@ export namespace DraggableTab {
 
     render() {
       return html`
-        <div style="display: flex;">
-          <button
-            class="md-draggable-tab"
-            type="button"
-            role="button"
-            ?disabled=${this.disabled}
-            aria-hidden="true"
-            aria-selected="false"
-            aria-label=${ifDefined(this.ariaLabel)}
-            tabindex="-1"
-            part="draggable-item"
-            @click=${(e: MouseEvent) => this.handleClick(e)}
-            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-          >
-            <slot></slot>
-          </button>
-          ${this.isCrossVisible
+        <button
+          class="md-draggable-tab"
+          type="button"
+          role="button"
+          style="display: flex;"
+          ?disabled=${this.disabled}
+          aria-hidden="true"
+          aria-selected="false"
+          aria-label=${ifDefined(this.ariaLabel)}
+          tabindex="-1"
+          part="draggable-item"
+          @click=${(e: MouseEvent) => this.handleClick(e)}
+        >
+          <slot style="display: block;"></slot>
+          ${this.isCrossVisible && this.closable
             ? html`
                 <div
                   ?disabled=${this.disabled}
                   slot="tabAction"
-                  style="display: flex;"
-                  @click=${(e: MouseEvent) => this.handleActionClick(e)}
+                  style="display: flex;padding-left: 8px;"
+                  @click=${(e: MouseEvent) => this.handleCrossClick(e)}
                 >
-                  <slot name="tabAction"></slot>
+                  <md-icon slot="tabAction" style="display: inherit;" name="cancel_14"></md-icon>
                 </div>
               `
             : ""}
-        </div>
+        </button>
       `;
     }
   }

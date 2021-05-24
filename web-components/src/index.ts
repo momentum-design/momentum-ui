@@ -34,6 +34,9 @@ export { DatePickerMonth } from "./components/datepicker/datepicker-month/DatePi
 export { DatePickerWeek } from "./components/datepicker/datepicker-week/DatePickerWeek";
 export { Draggable } from "./components/draggable/Draggable";
 export { DraggableItem } from "./components/draggable/DraggableItem";
+export { DraggableTabs } from "./components/draggable-tabs/DraggableTabs";
+export { DraggableTab } from "./components/draggable-tabs/DraggableTab";
+export { DraggableTabPanel } from "./components/draggable-tabs/DraggableTabPanel";
 export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";

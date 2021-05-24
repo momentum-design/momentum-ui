@@ -20,13 +20,22 @@ li {
   padding: 10px 15px;
 }
 
-.custom-ghost {
-  background-color: #c8ebfb;
+.visible-tabs-slot { 
+  display: block;
+  visibility: hidden;  
+  width: 0;
 }
 
-.custom-drag {
-  border: 1px dashed #c8ecff;
-  cursor: grabbing;
+.visible-tabs-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.visible-tabs-container-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .md-tab__list {

@@ -18,6 +18,7 @@ export { dateRangePickerTemplate } from "./date-range-picker";
 export { dateTimePickerTemplate } from "./date-time-picker";
 export { datePickerTemplate } from "./datepicker";
 export { draggableTemplate } from "./draggable";
+export { draggableTabsTemplate } from "./draggable-tabs";
 export { dropdownTemplate } from "./dropdown";
 export { editableField } from "./editable-field";
 export { favoriteTemplate } from "./favorite";

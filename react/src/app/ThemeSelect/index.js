@@ -35,7 +35,7 @@ const ThemeSelect = () => {
       {Object.keys(themes.dark).map((key) => {
         return (<div key={key} style={{padding: '1rem'}}>
           <div style={{float: 'left', clear: 'both', paddingRight: '1rem', paddingBottom: '1rem'}}>{key}</div>
-          <div style={{backgroundColor: `var(${key})`, float: 'left', width: '2rem', height: '2rem'}} />
+          <div style={{border: '1px solid var(--md-textColor-primary)', backgroundColor: `var(${key})`, float: 'left', width: '10rem', height: '2rem', borderRadius: '0.5rem'}} />
         </div>);
       })}
     </div>);
@@ -55,7 +55,7 @@ const ThemeSelect = () => {
           headerLabel='Theme Colors'
           showCloseButton
         />
-        <ModalBody>
+        <ModalBody style={{backgroundColor: "var(--md-background-primary)", color: 'var(--md-textColor-primary)'}}>
           {colors()}
         </ModalBody>
       </Modal>

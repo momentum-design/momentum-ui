@@ -6,12 +6,12 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 export namespace Badge {
@@ -28,6 +28,7 @@ export namespace Badge {
     @property({ type: Boolean }) circle = false;
     @property({ type: Boolean }) small = false;
     @property({ type: Boolean }) split = false;
+    @property({ type: Boolean }) disabled = false;
 
     renderBgColor = () => {
       return this.bgColor ? `background-color: ${this.bgColor};` : nothing;
@@ -68,7 +69,8 @@ export namespace Badge {
         "md-badge--compact": this.compact,
         "md-badge--small": this.small,
         "md-badge--outline": this.outlined,
-        [`md-badge--${this.color}`]: this.color
+        "md-badge--disabled": this.disabled,
+        [`md-badge--${this.color}`]: !this.disabled && this.color
       };
 
       const splitContent = () => {

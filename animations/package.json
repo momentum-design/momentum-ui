@@ -9,7 +9,7 @@
     "ci:publishCDN": "yarn pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=animations",
     "prepublishOnly": "echo \"Success: prepublishOnly\" && exit 0",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

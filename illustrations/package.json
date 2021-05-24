@@ -5,6 +5,10 @@
   "homepage": "http://momentum.design/illustrations",
   "main": "index.js",
   "scripts": {
+    "ci:postpublish": "node ../tools/postpublish.js",
+    "ci:publishCDN": "yarn pushToS3",
+    "pushToS3": "node ../tools/pushToS3.js --library=illustrations",
+    "prepublishOnly": "echo \"Success: prepublishOnly\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

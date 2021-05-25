@@ -6,22 +6,22 @@
  *
  */
 
+import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import Sortable from "sortablejs";
+import reset from "@/wc_scss/reset.scss";
+import styles from "./scss/module.scss";
+import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
+import { Tab, TabClickEvent } from "./Tab";
+import { TabPanel } from "./TabPanel";
+import { nanoid } from "nanoid";
+import { classMap } from "lit-html/directives/class-map";
+import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { repeat } from "lit-html/directives/repeat";
+import { styleMap } from "lit-html/directives/style-map";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
-import { ResizeMixin, RovingTabIndexMixin } from "@/mixins";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
-import styles from "./scss/module.scss";
-import { Tab, TabClickEvent, TabKeyDownEvent } from "./Tab";
-import { TabPanel } from "./TabPanel";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "264px"; // Designed width
@@ -35,22 +35,24 @@ export namespace Tabs {
   type TabsViewportDataList = TabViewportData[];
 
   type TabId = Element["id"];
-
   @customElementWithCheck("md-tabs")
-  export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(LitElement)) {
+  export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
     @property({ type: String }) overlowLabel = "More";
-    @property({ type: String }) direction = "horizontal";
+    @property({ type: Boolean }) draggable = false;
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
-    @query("slot[name='tab']") tabSlotElement?: HTMLSlotElement;
+    @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
     @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
     @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab.ELEMENT;
     @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
 
-    @query(".md-tab__list[part='tabs-more-list']") tabsMoreListElement?: HTMLDivElement;
+    @query(".md-tab__list[part='hidden-tabs-list']") tabsMoreListElement?: HTMLDivElement;
     @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab.ELEMENT>;
+
+    @query("#visible-tabs-list") visibleTabsContainerElement?: HTMLElement;
+    @query("#hidden-tabs-list") hiddenTabsContainerElement?: HTMLElement;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -62,6 +64,29 @@ export namespace Tabs {
     @internalProperty() private tabsViewportDataList: TabsViewportDataList = [];
     @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
+
+    @property({ type: Number }) delay = 0;
+    @property({ type: Number }) animation = 100;
+    @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
+    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-tab";
+    @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
+    @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
+    @property({ type: Boolean, reflect: true }) sort = false;
+    @property({ type: Boolean, reflect: true }) disabled = false;
+
+    private generateOptions() {
+      return {
+        group: "shared",
+        disabled: this.disabled,
+        animation: 100,
+        delay: 0,
+        draggable: this.draggableItems,
+        direction: this.direction,
+        ghostClass: this.ghostClass,
+        chosenClass: this.chosenClass,
+        onEnd: this.handleOnEnd
+      };
+    }
 
     private tabs: Tab.ELEMENT[] = [];
     private panels: TabPanel.ELEMENT[] = [];
@@ -77,8 +102,15 @@ export namespace Tabs {
     private tabsHiddenIdxHash: Record<TabId, number> = {};
     private tabHiddenIdPositiveTabIndex?: TabId;
 
+    private visibleTabsSortableInstance: Sortable | null = null;
+    private hiddenTabsSortableInstance: Sortable | null = null;
+
     private getCopyTabId(tab: Tab.ELEMENT) {
-      return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
+      if (tab.id.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
+        return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
+      } else {
+        return tab.id;
+      }
     }
 
     private getNormalizedTabId(id: TabId) {
@@ -120,7 +152,12 @@ export namespace Tabs {
 
     private async manageOverflow() {
       if (this.direction !== "vertical") {
-        const tabsCount = this.tabs.length;
+        let tabList;
+        if (this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0)
+          tabList = [...this.tabs];
+        else tabList = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+
+        const tabsCount = tabList.length;
         if (this.tabsListElement && tabsCount > 1) {
           const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
 
@@ -130,7 +167,7 @@ export namespace Tabs {
           const tabsOffsetsWidths = this.measureTabsOffsetWidth();
 
           // All tabs total offsetsWidth
-          const tabsTotalOffsetWidth = this.tabs.reduce((acc, tab, idx) => {
+          const tabsTotalOffsetWidth = tabList.reduce((acc, tab, idx) => {
             acc += tabsOffsetsWidths[idx];
             return acc;
           }, 0);
@@ -149,7 +186,7 @@ export namespace Tabs {
 
             const newTabsViewportList: TabsViewportDataList = [];
             let tabsOffsetWidthSum = 0;
-            this.tabs.forEach((tab, idx) => {
+            tabList.forEach((tab, idx) => {
               tabsOffsetWidthSum += tabsOffsetsWidths[idx];
 
               const isTabInViewportHidden = isTabsFitInViewport
@@ -174,7 +211,7 @@ export namespace Tabs {
             this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find(tvd => tvd.isTabInViewportHidden);
 
             // Only tabs going visible
-            this.tabsFilteredAsVisibleList = this.tabs.filter(
+            this.tabsFilteredAsVisibleList = tabList.filter(
               (t, idx) => !this.tabsViewportDataList[idx].isTabInViewportHidden
             );
             this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
@@ -183,7 +220,7 @@ export namespace Tabs {
             }, {} as Record<TabId, number>);
 
             // Only tabs going hidden
-            this.tabsFilteredAsHiddenList = this.tabs.filter(
+            this.tabsFilteredAsHiddenList = tabList.filter(
               (t, idx) => this.tabsViewportDataList[idx].isTabInViewportHidden
             );
             this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
@@ -223,7 +260,6 @@ export namespace Tabs {
 
       tabs.forEach((tab, index) => {
         const id = nanoid();
-
         tab.setAttribute("id", id);
         tab.setAttribute("aria-controls", id);
         tab.selected = this.selected === index;
@@ -235,15 +271,25 @@ export namespace Tabs {
         const panel = panels[index];
 
         if (panel) {
+          panel.setAttribute("id", id);
           panel.setAttribute("aria-labelledby", id);
           panel.selected = this.selected === index;
           if (tab.disabled) {
             panel.hidden = true;
+            panel.selected = false;
           }
         } else {
           tab.disabled = true;
         }
       });
+
+      let selectedIndex = this.selected;
+      while (selectedIndex < tabs.length && tabs[selectedIndex].disabled) {
+        selectedIndex++;
+      }
+      selectedIndex = selectedIndex === tabs.length ? -1 : selectedIndex;
+      tabs[selectedIndex].selected = true;
+      panels[selectedIndex].selected = true;
 
       this.tabsHash = this.tabs.reduce((acc, tab) => {
         acc[tab.id] = tab;
@@ -254,8 +300,6 @@ export namespace Tabs {
         acc[tab.id] = idx;
         return acc;
       }, {} as Record<TabId, number>);
-
-      await this.manageOverflow();
     }
 
     get slotItem() {
@@ -263,7 +307,7 @@ export namespace Tabs {
     }
 
     protected filterSlotted() {
-      return this.tabSlotElement!.assignedElements() as HTMLElement[];
+      return this.tabSlotElement.assignedElements() as HTMLElement[];
     }
 
     protected async handleResize(contentRect: DOMRect) {
@@ -271,14 +315,175 @@ export namespace Tabs {
       await this.manageOverflow();
     }
 
+    private dispatchDragEvent(eventName: string, srcEvent: Sortable.SortableEvent | Sortable.MoveEvent) {
+      this.dispatchEvent(
+        new CustomEvent<{ srcEvent: Sortable.SortableEvent | Sortable.MoveEvent }>(eventName, {
+          composed: true,
+          bubbles: true,
+          detail: {
+            srcEvent
+          }
+        })
+      );
+    }
+
+    handleOnEnd = async (event: Sortable.SortableEvent) => {
+      event.stopPropagation();
+      const oldIndex = event.oldIndex;
+      const newIndex = event.newIndex;
+
+      const visibleTabElements = [...this.tabsFilteredAsVisibleList];
+      const hiddenTabElements = [...this.tabsFilteredAsHiddenList];
+
+      if (
+        event.to === this.visibleTabsContainerElement &&
+        event.from === this.hiddenTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        this.visibleTabsContainerElement.querySelector("#" + event.item.id)?.remove();
+        const draggedElement = hiddenTabElements[oldIndex];
+        const autoMoveElement = visibleTabElements.slice(-1)[0];
+        hiddenTabElements.splice(oldIndex, 1);
+        hiddenTabElements.splice(0, 0, autoMoveElement);
+        const newDraggedIndex = newIndex === this.tabsFilteredAsVisibleList.length ? newIndex - 1 : newIndex;
+
+        visibleTabElements.splice(newDraggedIndex, 0, draggedElement);
+        visibleTabElements.pop();
+
+        this.tabsFilteredAsVisibleList = visibleTabElements;
+        this.tabsFilteredAsHiddenList = hiddenTabElements;
+      } else if (
+        event.from === this.visibleTabsContainerElement &&
+        event.to === this.hiddenTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        this.hiddenTabsContainerElement.querySelector("#" + event.item.id)?.remove();
+        const draggedElement = visibleTabElements[oldIndex];
+        const autoMoveElement = hiddenTabElements.slice(-1)[0];
+        const newDraggedIndex = newIndex === this.tabsFilteredAsHiddenList.length ? newIndex - 1 : newIndex;
+        hiddenTabElements.splice(newDraggedIndex, 0, draggedElement);
+        hiddenTabElements.pop();
+
+        const newVisible = visibleTabElements.filter((element: any) => {
+          return element.id !== this.getNormalizedTabId(event.item.id);
+        });
+        newVisible.push(autoMoveElement);
+        this.tabsFilteredAsVisibleList = [...newVisible];
+        this.tabsFilteredAsHiddenList = [...hiddenTabElements];
+      } else if (
+        event.from === this.visibleTabsContainerElement &&
+        event.to === this.visibleTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        const draggedElement = visibleTabElements[oldIndex];
+        visibleTabElements.splice(oldIndex, 1);
+        visibleTabElements.splice(newIndex, 0, draggedElement);
+        this.tabsFilteredAsVisibleList = visibleTabElements;
+        if (newIndex === this.tabsFilteredAsVisibleList.length - 1) {
+          this.visibleTabsContainerElement.children[this.visibleTabsContainerElement.children.length - 1].remove();
+        }
+      } else if (
+        event.from === this.hiddenTabsContainerElement &&
+        event.to === this.hiddenTabsContainerElement &&
+        oldIndex !== undefined &&
+        newIndex !== undefined
+      ) {
+        const draggedElement = hiddenTabElements[oldIndex];
+        hiddenTabElements.splice(oldIndex, 1);
+        hiddenTabElements.splice(newIndex, 0, draggedElement);
+        this.tabsFilteredAsHiddenList = hiddenTabElements;
+        if (newIndex === this.tabsFilteredAsHiddenList.length - 1) {
+          this.hiddenTabsContainerElement.children[this.hiddenTabsContainerElement.children.length - 1].remove();
+        }
+      }
+      this.handleNewSelectedTab(event.item.id);
+      this.dispatchDragEvent("drag-end", event);
+    };
+
+    private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
+      if (tabCopy) {
+        tabCopy.focus();
+      }
+    }
+
+    handleTabClick(event: CustomEvent<TabClickEvent>) {
+      const { id } = event.detail;
+      this.handleNewSelectedTab(id);
+    }
+
+    handleNewSelectedTab(id: string) {
+      const tab = this.tabsHash[this.getNormalizedTabId(id)];
+      if (tab && !tab.disabled) {
+        const newIndex = this.tabsIdxHash[tab.id];
+        if (newIndex !== -1) {
+          this.updateSelectedTab(newIndex);
+        }
+
+        // Setting up focus for tab copy (hidden menu)
+        {
+          const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
+          tabCopy && this.makeTabCopyFocus(tabCopy);
+          this.updateHiddenIdPositiveTabIndex(tab);
+        }
+      }
+    }
+
+    handleTabCrossClick(event: CustomEvent<TabClickEvent>) {
+      const { id } = event.detail;
+
+      const tab = this.tabsHash[this.getNormalizedTabId(id)];
+
+      if (tab && !tab.disabled) {
+        const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
+          element => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
+        );
+        this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: any) => {
+          return this.getNormalizedTabId(element.id) !== this.getNormalizedTabId(id);
+        });
+
+        this.visibleTabsContainerElement?.querySelector("#" + id)?.remove();
+        if (this.tabsFilteredAsHiddenList.length !== 0) {
+          this.tabsFilteredAsVisibleList.push(this.tabsFilteredAsHiddenList[0]);
+          this.tabsFilteredAsHiddenList.splice(0, 1);
+        }
+        if (this.tabsFilteredAsHiddenList.length === 0) {
+          this.isMoreTabMenuVisible = false;
+          this.isMoreTabMenuMeasured = false;
+        }
+
+        let selectedTabPanelIndex = crossTabIndex;
+        while (
+          selectedTabPanelIndex < this.tabsFilteredAsVisibleList.length &&
+          this.tabsFilteredAsVisibleList[selectedTabPanelIndex].disabled
+        ) {
+          selectedTabPanelIndex++;
+        }
+        if (
+          this.tabsFilteredAsVisibleList[selectedTabPanelIndex] === undefined ||
+          crossTabIndex === this.tabsFilteredAsVisibleList.length
+        ) {
+          selectedTabPanelIndex = crossTabIndex - 1;
+          while (selectedTabPanelIndex >= 0 && this.tabsFilteredAsVisibleList[selectedTabPanelIndex].disabled) {
+            selectedTabPanelIndex--;
+          }
+        }
+        selectedTabPanelIndex = selectedTabPanelIndex === -1 ? 0 : selectedTabPanelIndex;
+
+        const newSelectedIndex = this.tabs.findIndex(
+          element => element.id === this.tabsFilteredAsVisibleList[selectedTabPanelIndex].id
+        );
+        this.changeSelectedTabIdx(crossTabIndex);
+        this.updateSelectedTab(newSelectedIndex);
+        this.requestUpdate();
+      }
+    }
+
     private updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
-
-      const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
-
-      if (oldSelectedIndex === newSelectedIndex) {
-        return;
-      }
+      const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
 
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
@@ -286,7 +491,6 @@ export namespace Tabs {
           tab && tab.toggleAttribute("selected");
           const panel = panels[index];
           panel && panel.toggleAttribute("selected");
-
           if (tab) {
             const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
             if (tabCopy) {
@@ -309,39 +513,24 @@ export namespace Tabs {
         })
       );
 
-      this.changeSelectedTabIdx(newSelectedIndex);
-    }
-
-    private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
-      if (tabCopy) {
-        tabCopy.focus();
-      }
-    }
-
-    handleTabClick(event: CustomEvent<TabClickEvent>) {
-      const { id } = event.detail;
-
-      const tab = this.tabsHash[this.getNormalizedTabId(id)];
-
-      if (tab && !tab.disabled) {
-        const newIndex = this.tabsIdxHash[tab.id];
-
-        if (newIndex !== -1) {
-          this.updateSelectedTab(newIndex);
-        }
-
-        // Setting up focus for tab copy (hidden menu)
-        {
-          const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-          tabCopy && this.makeTabCopyFocus(tabCopy);
-          this.updateHiddenIdPositiveTabIndex(tab);
-        }
-      }
+      const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+      const newSelectedTabIdx = currentTabsConfiguration.findIndex(element => element.id === tabs[newSelectedIndex].id);
+      this.changeSelectedTabIdx(newSelectedTabIdx);
     }
 
     private changeSelectedTabIdx(newSelectedTabIdx: number) {
+      this.requestUpdate();
       this.selected = newSelectedTabIdx;
-
+      this.updateComplete.then(() => {
+        if (newSelectedTabIdx < this.tabsFilteredAsVisibleList.length) {
+          (this.visibleTabsContainerElement?.children[this.selected] as HTMLElement).focus();
+        } else {
+          const hiddenTabIdx = this.selected - this.tabsFilteredAsVisibleList.length;
+          (this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement).focus();
+          const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
+          !newHiddenTab.disabled && this.updateHiddenIdPositiveTabIndex(newHiddenTab);
+        }
+      });
       this.updateIsMoreTabMenuSelected();
     }
 
@@ -351,8 +540,9 @@ export namespace Tabs {
       }
     }
 
-    handleTabKeydown(event: CustomEvent<TabKeyDownEvent>) {
-      const { id, key, ctrlKey, shiftKey, altKey, srcEvent } = event.detail;
+    handleTabKeydown(event: any) {
+      const id = this.getNormalizedTabId(event.path[0].id);
+      const { key, ctrlKey, shiftKey, altKey } = event;
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -363,32 +553,21 @@ export namespace Tabs {
 
       const isVisibleTab = this.isMoreTabMenuVisible ? tab && this.tabsVisibleIdxHash[tab.id] > -1 : true;
       const isHiddenTab = this.isMoreTabMenuVisible ? tab && this.tabsHiddenIdxHash[tab.id] > -1 : false;
-
       const firstVisibleTabIdx = 0;
       const lastVisibleTabIdx = this.isMoreTabMenuVisible
         ? this.tabsFilteredAsVisibleList.length - 1
         : this.tabs.length - 1;
-
       const firstHiddenTabIdx = this.isMoreTabMenuVisible ? this.tabsFilteredAsVisibleList.length : -1;
       const lastHiddenTabIdx = this.isMoreTabMenuVisible
         ? this.tabsFilteredAsVisibleList.length + this.tabsFilteredAsHiddenList.length - 1
         : -1;
-
-      const makeNextCopyTabFocusByHiddenIdx = (hiddenListIdx: number) => {
-        const nextTab = this.tabsFilteredAsHiddenList[hiddenListIdx];
-        if (nextTab) {
-          const nextCopyTab = this.tabsCopyHash[this.getCopyTabId(nextTab)];
-          nextCopyTab && this.makeTabCopyFocus(nextCopyTab);
-          !nextTab.disabled && this.updateHiddenIdPositiveTabIndex(nextTab);
-        }
-      };
 
       switch (key) {
         case Key.Tab: {
           if (isMoreTriggerTab) {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {
-              srcEvent.preventDefault();
+              event.preventDefault();
               this.changeSelectedTabIdx(lastVisibleTabIdx);
             }
           } else if (isVisibleTab) {
@@ -406,7 +585,6 @@ export namespace Tabs {
             this.changeSelectedTabIdx(lastVisibleTabIdx);
           } else if (isHiddenTab) {
             this.changeSelectedTabIdx(lastHiddenTabIdx);
-            makeNextCopyTabFocusByHiddenIdx(this.tabsFilteredAsHiddenList.length - 1);
           }
           break;
         }
@@ -417,7 +595,6 @@ export namespace Tabs {
             this.changeSelectedTabIdx(firstVisibleTabIdx);
           } else if (isHiddenTab) {
             this.changeSelectedTabIdx(firstHiddenTabIdx);
-            makeNextCopyTabFocusByHiddenIdx(0);
           }
           break;
         }
@@ -449,7 +626,6 @@ export namespace Tabs {
           } else if (isHiddenTab) {
             const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
             this.changeSelectedTabIdx(idx);
-            makeNextCopyTabFocusByHiddenIdx(idx - this.tabsFilteredAsVisibleList.length);
           }
           break;
         }
@@ -461,7 +637,6 @@ export namespace Tabs {
           } else if (isHiddenTab) {
             const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;
             this.changeSelectedTabIdx(idx);
-            makeNextCopyTabFocusByHiddenIdx(idx - this.tabsFilteredAsVisibleList.length);
           }
           break;
         }
@@ -493,12 +668,14 @@ export namespace Tabs {
 
     private setupTabsEvents() {
       this.addEventListener("tab-click", this.handleTabClick as EventListener);
-      this.addEventListener("tab-keydown", this.handleTabKeydown as EventListener);
+      this.addEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
+      this.addEventListener("keydown", this.handleTabKeydown as EventListener);
     }
 
     private teardownTabsEvents() {
       this.removeEventListener("tab-click", this.handleTabClick as EventListener);
-      this.removeEventListener("tab-keydown", this.handleTabKeydown as EventListener);
+      this.removeEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
+      this.removeEventListener("keydown", this.handleTabKeydown as EventListener);
     }
 
     private setupPanelsAndTabs() {
@@ -524,6 +701,18 @@ export namespace Tabs {
       }
     }
 
+    private initializeSortable() {
+      if (this.visibleTabsContainerElement && this.hiddenTabsContainerElement) {
+        this.visibleTabsSortableInstance = Sortable.create(this.visibleTabsContainerElement, this.generateOptions());
+        this.hiddenTabsSortableInstance = Sortable.create(this.hiddenTabsContainerElement, this.generateOptions());
+      }
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+      this.setupTabsEvents();
+    }
+
     disconnectedCallback() {
       super.disconnectedCallback();
       this.teardownTabsEvents();
@@ -531,15 +720,14 @@ export namespace Tabs {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-
-      this.setupTabsEvents();
+      this.setupPanelsAndTabs();
+      this.linkPanelsAndTabs();
     }
 
-    protected async updated(changedProperties: PropertyValues) {
+    protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("slotted")) {
-        this.setupPanelsAndTabs();
-        this.linkPanelsAndTabs();
+      if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
+        this.initializeSortable();
       }
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {
@@ -548,6 +736,17 @@ export namespace Tabs {
           acc[tab.id] = tab;
           return acc;
         }, {} as Record<TabId, Tab.ELEMENT>);
+      }
+
+      if (changedProperties.has("tabsFilteredAsVisibleList") || changedProperties.has("tabsFilteredAsHiddenList")) {
+        this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
+          acc[tab.id] = idx;
+          return acc;
+        }, {} as Record<TabId, number>);
+        this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
+          acc[tab.id] = idx;
+          return acc;
+        }, {} as Record<TabId, number>);
       }
 
       if (changedProperties.has("isMoreTabMenuOpen")) {
@@ -579,9 +778,37 @@ export namespace Tabs {
           class="md-tab__list ${classMap({
             "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
           })}"
+          aria-disabled=${this.disabled}
           role="tablist"
         >
-          <slot name="tab"></slot>
+          <slot
+            name="tab"
+            class="${classMap({
+              "visible-tabs-slot": this.direction === "horizontal"
+            })}"
+          ></slot>
+          <div id="visible-tabs-list" class="visible-tabs-container">
+            ${repeat(
+              this.tabsFilteredAsVisibleList,
+              tab => nanoid(),
+              tab => html`
+                <md-tab
+                  slot="draggable-item"
+                  .closable="${tab.closable}"
+                  .disabled="${tab.disabled}"
+                  .selected="${tab.selected}"
+                  id="${this.getCopyTabId(tab)}"
+                  aria-label=${tab.ariaLabel}
+                  aria-controls="${tab.id}"
+                  .isCrossVisible=${true}
+                  ?focus-visible=${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? true : false}
+                  tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                >
+                  ${unsafeHTML(tab.innerHTML)}
+                </md-tab>
+              `
+            )}
+          </div>
 
           <md-menu-overlay
             custom-width="${MORE_MENU_WIDTH}"
@@ -607,7 +834,8 @@ export namespace Tabs {
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}"></md-icon>
             </md-tab>
             <div
-              part="tabs-more-list"
+              id="hidden-tabs-list"
+              part="hidden-tabs-list"
               class="md-tab__list md-menu-overlay__more_list"
               style="${styleMap(
                 this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight
@@ -621,15 +849,21 @@ export namespace Tabs {
             >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
-                tab => tab.id,
+                tab => nanoid(),
                 tab => html`
                   <md-tab
+                    slot="draggable-item"
                     .disabled="${tab.disabled}"
                     .selected="${tab.selected}"
                     id="${this.getCopyTabId(tab)}"
                     aria-label=${tab.ariaLabel}
                     aria-controls="${tab.id}"
                     @click="${() => this.handleOverlayClose()}"
+                    ?focus-visible=${this.tabsFilteredAsHiddenList[
+                      this.selected - this.tabsFilteredAsVisibleList.length
+                    ]?.id === tab.id
+                      ? true
+                      : false}
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                   >
                     ${unsafeHTML(tab.innerHTML)}

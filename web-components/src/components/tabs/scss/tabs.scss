@@ -7,6 +7,24 @@
   position: relative;
 }
 
+.visible-tabs-slot {
+  display: block;
+  visibility: hidden;
+  width: 0;
+}
+
+.visible-tabs-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.visible-tabs-container-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .md-tab__list {
   border-bottom: $tab-list-border;
   display: inline-flex;
@@ -95,7 +113,7 @@
 }
 
 .md-tab__list ::slotted([slot="tab"][selected]),
-  // More tab list
+// More tab list
 .md-tab__list md-tab[selected] {
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
@@ -106,7 +124,7 @@
 }
 
 .md-tab__list ::slotted([slot="tab"]:focus),
-  // More tab list
+// More tab list
 .md-tab__list md-tab:focus {
   box-shadow: none;
 }

@@ -23,7 +23,7 @@ export namespace Draggable {
     @property({ type: String }) easing = "";
     @property({ type: String }) direction: "horizontal" | "vertical" = "vertical";
     @property({ type: Object }) group: Sortable.GroupOptions | null = null;
-    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-tab";
+    @property({ type: String, attribute: "draggable-items" }) draggableItems = "md-draggable-item";
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
     @property({ type: String, attribute: "drag-class" }) dragClass = "";

@@ -28,7 +28,8 @@ export namespace Tab {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
-    
+    @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
+
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
     get disabled() {
@@ -63,6 +64,18 @@ export namespace Tab {
       this.setAttribute("aria-selected", `${value}`);
       this.requestUpdate("selected", oldValue);
     }
+
+    private _closable = false;
+    @property({ type: Boolean, reflect: true })
+    get closable() {
+      return this._closable;
+    }
+    set closable(value: boolean) {
+      const oldValue = this._closable;
+      this._closable = value;
+      this.requestUpdate("closable", oldValue);
+    }
+
     @property({ type: Boolean, reflect: true }) vertical = false;
 
     @property({ type: Boolean, reflect: true }) viewportHidden = false;
@@ -73,7 +86,6 @@ export namespace Tab {
 
     handleClick(event: MouseEvent) {
       event.preventDefault();
-
       if (this.id) {
         this.dispatchEvent(
           new CustomEvent<TabClickEvent>("tab-click", {
@@ -87,17 +99,14 @@ export namespace Tab {
       }
     }
 
-    handleKeyDown(event: KeyboardEvent) {
+    handleCrossClick(event: MouseEvent) {
+      event.preventDefault();
+      if (this.disabled === true) return;
       if (this.id) {
         this.dispatchEvent(
-          new CustomEvent<TabKeyDownEvent>("tab-keydown", {
+          new CustomEvent<TabClickEvent>("tab-cross-click", {
             detail: {
-              id: this.id,
-              key: event.code,
-              ctrlKey: event.ctrlKey,
-              shiftKey: event.shiftKey,
-              altKey: event.altKey,
-              srcEvent: event
+              id: this.id
             },
             bubbles: true,
             composed: true
@@ -123,11 +132,6 @@ export namespace Tab {
       }
     }
 
-    private setupEvents() {
-      this.addEventListener("mousedown", this.handleClick);
-      this.addEventListener("keydown", this.handleKeyDown);
-    }
-
     connectedCallback() {
       super.connectedCallback();
       this.setAttribute("aria-selected", "false");
@@ -135,14 +139,13 @@ export namespace Tab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-
       this.setAttribute("role", "tab");
-      this.setupEvents();
     }
 
     render() {
       return html`
         <button
+          class="md-tab"
           type="button"
           role="button"
           ?disabled=${this.disabled}
@@ -150,9 +153,21 @@ export namespace Tab {
           aria-selected="false"
           aria-label=${ifDefined(this.ariaLabel)}
           tabindex="-1"
-          part="tab"
+          part="draggable-item"
+          @click=${(e: MouseEvent) => this.handleClick(e)}
         >
-          <slot></slot>
+          <slot class="tab-slot"></slot>
+          ${this.isCrossVisible && this.closable
+            ? html`
+                <div
+                  ?disabled=${this.disabled}
+                  class="tab-action-button"
+                  @click=${(e: MouseEvent) => this.handleCrossClick(e)}
+                >
+                  <md-icon name="cancel_14"></md-icon>
+                </div>
+              `
+            : ""}
         </button>
       `;
     }

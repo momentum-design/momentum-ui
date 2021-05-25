@@ -321,8 +321,10 @@
     &.#{$input__class}--filled {
       @include input-color(
         $background-color: $input__background--filled,
+        $background-color-css-var: --md-background-tertiary,
         $background-color-disabled: $input__background--filled,
-        $background-color-hover: $input__background--filled--hover
+        $background-color-hover: $input__background--filled--hover,
+        $background-color-hover-css-var: --md-background-quaternary,
       );
     }
 

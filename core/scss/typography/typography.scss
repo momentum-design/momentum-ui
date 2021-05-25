@@ -235,6 +235,8 @@
     padding: $blockquote-padding;
     margin: 0 0 $paragraph-margin-bottom;
     border-#{$default-float}: $blockquote-border;
+    border-color: $blockquote-border-color;
+    border-color: var(--md-separator-primary, $blockquote-border-color);
 
     cite {
       display: block;

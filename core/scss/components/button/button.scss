@@ -611,13 +611,15 @@
         $bg: transparent,
         $bg-hover: transparent,
         $bg-active: transparent,
-        $color-disabled: $button__link-color--disabled
+        $color-disabled: $button__link-color--disabled,
+        $color-disabled-css-var: --md-button-disabled-text-color,
       );
       @include button-color-fill(
         $fill: $md-gray-70,
         $fill-hover: $md-theme-60,
         $fill-active: $md-theme-70,
-        $fill-disabled: $button__link-color--disabled
+        $fill-disabled: $button__link-color--disabled,
+        $fill-disabled-css-var: --md-button-disabled-text-color,
       );
       @include button-size($radius: 0, $padding: 0, $height: auto);
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ButtonIcon,
   IconColor,
   IconDefault,
   IconWhite,
@@ -12,6 +13,7 @@ export default class IconKitchenSink extends React.Component {
         <IconColor />
         <IconDefault />
         <IconWhite />
+        <ButtonIcon />
       </React.Fragment>
     );
   }

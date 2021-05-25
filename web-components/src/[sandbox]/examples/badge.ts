@@ -90,6 +90,12 @@ export const badgeTemplate = html`
     <span class="counter" style="margin:0 1rem">${"3"}</span>
   </md-badge>
 
+  <md-badge color="mint" disabled>
+    <md-icon name="share-c-native-adr_12" size="16"></md-icon>
+    Disabled
+    <span class="counter" style="margin:0 1rem">${"3"}</span>
+  </md-badge>
+
   <h4 class="sandbox-header">Small Badges</h4>
 
   <md-badge color="mint" small>

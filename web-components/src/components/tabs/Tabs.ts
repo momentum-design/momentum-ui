@@ -541,7 +541,8 @@ export namespace Tabs {
     }
 
     handleTabKeydown(event: any) {
-      const id = this.getNormalizedTabId(event.path[0].id);
+      const elementId = event.path ? event.path[0].id : event.originalTarget.id
+      const id = this.getNormalizedTabId(elementId);
       const { key, ctrlKey, shiftKey, altKey } = event;
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;

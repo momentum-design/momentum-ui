@@ -87,7 +87,7 @@ export const tabsTemplate = html`
     <br />
     <div style="max-width: 400px;">
       <h3>md-tabs justified</h3>
-      <md-tabs justified>
+      <md-tabs draggable justified>
         <md-tab slot="tab">
           <span>All</span>
         </md-tab>

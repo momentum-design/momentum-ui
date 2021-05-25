@@ -35,12 +35,6 @@
   text-align: center;
   width: 100%;
 
-  &.md-tab__justified {
-    display: flex;
-    justify-content: space-between;
-    padding-right: $tab-base-indent;
-  }
-
   .md-menu-overlay__more {
     height: 100%;
     margin-left: auto;
@@ -107,9 +101,16 @@
   display: inline-block;
 }
 
-.md-tab__list.md-tab__justified ::slotted([slot="tab"]) {
-  display: inline-block;
-  width: 100%;
+.visible-tabs-container.md-tab__justified {
+  display: flex;
+  justify-content: space-between;
+  padding-right: $tab-base-indent;
+
+  md-tab {
+    display: inline-block;
+    width: 100%;
+  }
+
 }
 
 .md-tab__list ::slotted([slot="tab"][selected]),

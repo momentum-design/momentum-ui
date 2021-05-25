@@ -145,7 +145,6 @@ export namespace Tab {
     render() {
       return html`
         <button
-          class="md-tab"
           type="button"
           role="button"
           ?disabled=${this.disabled}

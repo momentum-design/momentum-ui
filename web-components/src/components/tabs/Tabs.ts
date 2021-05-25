@@ -541,7 +541,7 @@ export namespace Tabs {
     }
 
     handleTabKeydown(event: any) {
-      const elementId = event.path ? event.path[0].id : event.originalTarget.id
+      const elementId = event.path ? event.path[0].id : event.originalTarget.id;
       const id = this.getNormalizedTabId(elementId);
       const { key, ctrlKey, shiftKey, altKey } = event;
 
@@ -788,7 +788,12 @@ export namespace Tabs {
               "visible-tabs-slot": this.direction === "horizontal"
             })}"
           ></slot>
-          <div id="visible-tabs-list" class="visible-tabs-container">
+          <div
+            id="visible-tabs-list"
+            class="visible-tabs-container ${classMap({
+              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
+            })}"
+          >
             ${repeat(
               this.tabsFilteredAsVisibleList,
               tab => nanoid(),

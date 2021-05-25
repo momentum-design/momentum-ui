@@ -13,9 +13,11 @@ const draggableItemStyle = css`
     display: block;
     text-align: center;
   }
+
   .custom-ghost {
     background-color: #c8ebfb;
   }
+
   .custom-drag {
     border: 5px dashed #ddc74e;
     cursor: grabbing;

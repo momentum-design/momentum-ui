@@ -32,6 +32,7 @@
             $line-height: rem-calc(24)
           ) {
             color: $modal-message__color;
+            color: var(--md-textColor-secondary, $modal-message__color);
             text-align: center;
             flex-flow: row wrap;
           }
@@ -50,7 +51,12 @@
         display: flex;
         flex-direction: column;
 
-        @include modal-color($bg: $modal__background);
+        @include modal-color(
+          $color: $modal__color,
+          $color-css-var: --md-textColor-primary,
+          $bg: $modal__background,
+          $bg-css-var: --md-background-primary
+        );
       }
 
       &__flex-container {
@@ -62,7 +68,6 @@
         margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        background: $md-white-100;
         flex-direction: column;
         flex: 1 1 auto;
         align-self: stretch;
@@ -272,7 +277,6 @@
           font-family: $brand-font-bold;
           font-size: 16px;
           line-height: 24px;
-          color: $md-black-100;
         }
 
         .#{$modal__class}__body {
@@ -285,6 +289,7 @@
             font-size: 14px;
             line-height: 22px;
             color: $md-gray-70;
+            color: var(--md-textColor-secondary, $md-gray-70);
           }
         }
 

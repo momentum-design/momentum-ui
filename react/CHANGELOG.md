@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.23.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.14...@momentum-ui/react@23.23.0) (2021-05-25)
+
+
+### Features
+
+* **react/themeselect:** select theme for kitchen sink ([#910](https://github.com/momentum-design/momentum-ui/issues/910)) ([240d1e4](https://github.com/momentum-design/momentum-ui/commit/240d1e456951eed3e95a59771e946f86d2063734))
+
+
+
+
+
+## [23.22.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.13...@momentum-ui/react@23.22.14) (2021-05-19)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.22.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.12...@momentum-ui/react@23.22.13) (2021-05-18)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.22.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.11...@momentum-ui/react@23.22.12) (2021-05-14)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.22.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.10...@momentum-ui/react@23.22.11) (2021-05-13)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.22.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.9...@momentum-ui/react@23.22.10) (2021-05-12)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.22.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.8...@momentum-ui/react@23.22.9) (2021-05-05)
 
 **Note:** Version bump only for package @momentum-ui/react

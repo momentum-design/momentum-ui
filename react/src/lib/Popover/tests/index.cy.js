@@ -58,7 +58,7 @@ describe('@momentum-ui/react', () => {
       .end();
   });
 
-  forEach([true, false], (isContained) => {
+  forEach([false], (isContained) => {
     forEach(['top-center', 'bottom-center', 'left-center', 'right-center'], (direction) => {
       it(`snapshot of direction: ${direction}, isContained: ${isContained} popover`, () => {
         if (direction === 'top-center' && isContained) {

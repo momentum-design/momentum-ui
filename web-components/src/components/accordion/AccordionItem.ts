@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, query, PropertyValues } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nanoid } from "nanoid";
-import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
-import { FocusMixin } from "@/mixins";
 
 export namespace AccordionItem {
   export type AccordionEvent = {
@@ -34,10 +34,11 @@ export namespace AccordionItem {
     set expanded(value: boolean) {
       const oldValue = this._expanded;
       this._expanded = value;
-
       if (value) {
         this.notifyAccordionFocus();
         this.notifyExpandedHeader();
+      } else {
+        this.notifyCollapsedHeader();
       }
       this.requestUpdate("expanded", oldValue);
     }
@@ -61,6 +62,18 @@ export namespace AccordionItem {
     private notifyExpandedHeader() {
       this.dispatchEvent(
         new CustomEvent("accordion-item-expanded", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            id: this.uniqueId
+          }
+        })
+      );
+    }
+
+    private notifyCollapsedHeader() {
+      this.dispatchEvent(
+        new CustomEvent("accordion-item-collapsed", {
           composed: true,
           bubbles: true,
           detail: {
@@ -119,7 +132,7 @@ export namespace AccordionItem {
     render() {
       return html`
         <div class="md-accordion-item">
-          <div role="heading" aria-level=${this.level} class="md-accordion-header">
+          <div role="heading" aria-level=${this.level} class="md-accordion-header" part="accordion-header">
             <button
               type="button"
               aria-expanded=${this.expanded}
@@ -134,7 +147,9 @@ export namespace AccordionItem {
               @mousedown=${this.handleMouseDown}
               @keydown=${this.handleKeyDown}
             >
-              <span class="md-accordion-expander-label">${this.label}</span>
+              <slot name="header-content">
+                <span class="md-accordion-expander-label">${this.label}</span>
+              </slot>
               <md-icon name=${this.expanded ? "icon-arrow-up_12" : "icon-arrow-down_12"}></md-icon>
             </button>
           </div>

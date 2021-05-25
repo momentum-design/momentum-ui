@@ -280,6 +280,16 @@ const badge = {
       light: colors.gray[50].name,
       dark: colors.gray["05"].name
     }
+  },
+  disabled: {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[90].name
+    },
+    "text-color": {
+      light: colors.gray[40].name,
+      dark: colors.gray[70].name
+    }
   }
 };
 

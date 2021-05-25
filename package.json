@@ -84,6 +84,8 @@
       "./core",
       "./charts",
       "./icons",
+      "./illustrations",
+      "./animations",
       "./react",
       "./tokens",
       "./utils",

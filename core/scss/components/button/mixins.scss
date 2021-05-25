@@ -217,7 +217,9 @@
   $focus: false
 ) {
   fill: $fill;
+  fill: var($fill-css-var, $fill);
   color: $fill;
+  color: var($fill-css-var, $fill);
 
   @include button-color-disabled(
     $color: $fill-disabled,
@@ -227,19 +229,26 @@
   );
 
   @if $focus {
-    @include button-color-focus;
+    @include button-color-focus(
+      $color: $border-focus,
+      $color-css-var: $color-css-var
+    )
   }
 
   &:hover,
   &.hover-state {
     fill: $fill-hover;
+    fill: var($fill-hover-css-var, $fill-hover);
     color: $fill-hover;
+    color: var($fill-hover-css-var, $fill-hover);
   }
 
   &:active,
   &.active-state {
     fill: $fill-active;
+    fill: var($fill-active-css-var, $fill-active);
     color: $fill-active;
+    color: var($fill-active-css-var, $fill-active);
   }
 }
 

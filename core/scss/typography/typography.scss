@@ -35,11 +35,13 @@
   a {
     line-height: inherit;
     color: $anchor-font-color;
+    color: var(--md-textColor-hyperlink-color, $anchor-font-color);
     text-decoration: $anchor-text-decoration;
 
     &:hover,
     &:focus {
       color: $anchor-font-color-hover;
+      color: var(--md-textColor-hyperlink-hover, $anchor-font-color-hover);
 
       @if $anchor-text-decoration-hover !=$anchor-text-decoration {
         text-decoration: $anchor-text-decoration-hover;

@@ -50,7 +50,8 @@
       @include list-item-color(
         $hover-bgrd-color: $list-item__background,
         $active-bgrd-color: $list-item__background,
-        $header-color: $list-item-header__color
+        $header-color: $list-item-header__color,
+        $header-color-css-var: --md-textColor-primary,
       );
 
       margin: $list-item-header__margin;

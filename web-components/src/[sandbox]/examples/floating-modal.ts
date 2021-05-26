@@ -10,8 +10,8 @@ const data =
 export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
   @property({ type: Boolean }) isMin = false;
-  @property({type: Object}) location = JSON.parse(localStorage.getItem('location') || JSON.stringify({x:0, y:0}))
-
+  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x:0, y:0};
+  @property({type: Object}) minLocation = localStorage.getItem('min-location') !== null? JSON.parse(localStorage.getItem('min-location') || "") : {x:0, y:0};
   private openFloatingModal() {
     this.isOpen = true;
   }
@@ -24,6 +24,12 @@ export class FloatingTemplateSandbox extends LitElement {
     console.log('location', event);
     this.location = event.detail.transform;
     localStorage.setItem('location', JSON.stringify(event.detail.transform));
+  }
+
+  private saveMinLocation(event: any) {
+    console.log('min-location', event);
+    this.minLocation = event.detail.transform;
+    localStorage.setItem('min-location', JSON.stringify(event.detail.transform));
   }
 
   private setFocus() {
@@ -61,8 +67,9 @@ export class FloatingTemplateSandbox extends LitElement {
       <md-floating-modal
         class="float-modal"
         ?show=${this.isOpen}
-        .location=${this.location}
+        minimizable
         @floating-modal-close=${() => this.closeFloatingModal()}
+        @floating-modal-minimize-location=${this.saveMinLocation}
         @floating-modal-location=${this.saveLocation}
       >
        <div slot="header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>

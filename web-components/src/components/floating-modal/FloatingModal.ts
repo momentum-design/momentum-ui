@@ -28,7 +28,17 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
-    @property({type: Object}) location = {x: 0, y: 0};
+    @property({type: Object}) location: {
+      x: any;
+      y: any;
+    } | undefined;
+    @property({type: Object}) minlocation: {
+      x: any;
+      y: any;
+    } | undefined;
+    @property({ type: Boolean, reflect: true }) minimizable = false;
+    
+
 
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;
@@ -41,7 +51,7 @@ export namespace FloatingModal {
     @internalProperty() private dragOccured: boolean | false = false;
     @internalProperty() private minimizeLocation: String = '';
 
-    private containerTransform =`translate(${this.location.x}px, ${this.location.y}px)`;
+    private containerTransform = this.location ? `translate(${this.location.x}px, ${this.location.y}px)`: '';
     private minimizeTransform: string= "";
 
     private onlyFirst = true;
@@ -68,7 +78,7 @@ export namespace FloatingModal {
           this.destroyInteractInstance();
         }
       }
-      this.slottedChildren();
+      this.minimizable && this.slottedChildren();
     }
 
     private cleanContainerStyles() {
@@ -151,19 +161,21 @@ export namespace FloatingModal {
     }
 
     handleMinimize(event: MouseEvent) {
-      if(!this.dragOccured) {
-      this.minimize = !this.minimize;
-      this.dispatchEvent(
-          new CustomEvent("floating-modal-minimize", {
-              composed: true,
-              bubbles: true,
-              detail: {
-              srcEvent: event
-              }
-          })
-        );
-        }
-        this.dragOccured =false;
+      if(this.minimizable) {
+        if(!this.dragOccured) {
+          this.minimize = !this.minimize;
+          this.dispatchEvent(
+              new CustomEvent("floating-modal-minimize", {
+                  composed: true,
+                  bubbles: true,
+                  detail: {
+                  srcEvent: event
+                  }
+              })
+            );
+            }
+            this.dragOccured =false;
+      }
     }
 
     handleToggleExpandCollapse() {
@@ -199,8 +211,8 @@ export namespace FloatingModal {
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.onlyFirst ? Number(this.location.x) : 0);
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.onlyFirst ? Number(this.location.y) : 0);
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.onlyFirst && this.location ? Number(this.location?.x) : 0);
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.onlyFirst  && this.location ? Number(this.location?.y) : 0);
       this.onlyFirst = false;
 
       this.setTargetPosition(target, x, y);
@@ -252,7 +264,7 @@ export namespace FloatingModal {
                   bottom: ${this.full ? "0 !important" : ""};
                   right: ${this.full ? "0 !important" : ""};
                   ${this.full ? "transform: none !important" : ""};
-                  ${!this.full? `transform: ${`translate(${this.location.x}px, ${this.location.y}px)`} !important` : ""};`
+                  ${!this.full? `transform: ${this.location? `translate(${this.location.x}px, ${this.location.y}px)` : this.containerTransform} !important` : ""};`
                     : undefined
                 )}
               >
@@ -266,15 +278,16 @@ export namespace FloatingModal {
                           <slot name="header"></slot>
                         `}
                   </div>
-                  <md-button
-                    color="color-none"
-                    class="md-floating__close"
-                    aria-label="${this.closeAriaLabel}"
-                    circle
-                    @click=${this.handleMinimize}
-                  >
-                  <md-icon name="${!this.minimize ? "minus_16" : "maximize_16"}"></md-icon>
-                  </md-button>
+                  ${this.minimizable ? html `
+                    <md-button
+                      color="color-none"
+                      class="md-floating__close"
+                      aria-label="${this.closeAriaLabel}"
+                      circle
+                      @click=${this.handleMinimize}
+                    >
+                    <md-icon name="minus_16"></md-icon>
+                  </md-button>` : nothing}
 
                   ${!this.minimize ? html` <md-button
                     color="color-none"
@@ -301,17 +314,19 @@ export namespace FloatingModal {
                   <slot></slot>
                 </div>
               </div>
-              <div class="md-floating-min-parent" part="floatingg">
-                <md-floating-modal-minimized
-                    class="float-modal-min"
-                    part="floating-minimized"
-                    .minimize=${this.minimize}
-                    @floating-modal-minimize=${(event: MouseEvent) => this.handleMinimize(event)}
-                    @floating-modal-close=${this.handleClose}
-                    ?show=${this.show}
-                    >
-                </md-floating-modal-minimized>
-              </div>
+              ${this.minimizable ? html`
+                <div class="md-floating-min-parent" part="floatingg">
+                  <md-floating-modal-minimized
+                      class="float-modal-min"
+                      part="floating-minimized"
+                      .minimize=${this.minimize}
+                      .location=${this.minlocation}
+                      @floating-modal-minimize=${(event: MouseEvent) => this.handleMinimize(event)}
+                      @floating-modal-close=${this.handleClose}
+                      ?show=${this.show}
+                      >
+                  </md-floating-modal-minimized>
+              </div>` : nothing}
              
             `
           : nothing}

@@ -13,6 +13,7 @@ import "@interactjs/modifiers";
 import "@interactjs/actions/resize";
 import * as Interact from "@interactjs/types";
 import interact from "@interactjs/interact/index";
+import { throttle, debounce } from "@/utils/helpers";
 
 export namespace FloatingMinimizedModal {
   @customElementWithCheck("md-floating-modal-minimized")
@@ -27,6 +28,10 @@ export namespace FloatingMinimizedModal {
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: Boolean, reflect: true }) minimize = false;
     @property({ type: String, attribute: "container-transform" }) containerTransform = "";
+    @property({type: Object}) location: {
+      x: any;
+      y: any;
+    } | undefined;
 
     @query(".md-floating-min") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;
@@ -36,6 +41,8 @@ export namespace FloatingMinimizedModal {
     @internalProperty() private dragOccured: Boolean | false = false;
 
     private minimizeTransform: string= "";
+
+    private onlyFirst = true;
 
     get floatingClassMap() {
       return {
@@ -51,6 +58,7 @@ export namespace FloatingMinimizedModal {
       super.updated(changedProperties);
       if (changedProperties.has("show")) {
         if (this.container && this.show) {
+          this.onlyFirst = true;
           this.setContainerRect();
           this.setInteractInstance();
         } else {
@@ -68,6 +76,14 @@ export namespace FloatingMinimizedModal {
       const dataX = this.container!.getAttribute("data-x");
       const dataY = this.container!.getAttribute("data-y");
       if (dataX && dataY) {
+        this.dispatchEvent(
+          new CustomEvent("floating-modal-minimize-location", {
+              composed: true,
+              bubbles: true,
+              detail: {
+              transform: {x: dataX, y: dataY}
+              }
+        }));
         return `translate(${dataX}px, ${dataY}px)`;
       }
       return this.container!.style.transform;
@@ -80,15 +96,6 @@ export namespace FloatingMinimizedModal {
         this.containerRect = this.container!.getBoundingClientRect();
        
         this.containerTransform = this.getContainerTransform();
-        this.dispatchEvent(
-            new CustomEvent("floating-modal-minimize-position", {
-              composed: true,
-              bubbles: true,
-              detail: {
-                srcEvent: this.containerTransform
-              }
-            })
-          );
       });
     }
 
@@ -112,6 +119,8 @@ export namespace FloatingMinimizedModal {
             });
         }
       });
+
+      window.addEventListener('resize', debounce(() => this.setInteractInstance(), 250));
     }
 
     handleClose(event: MouseEvent) {
@@ -151,8 +160,9 @@ export namespace FloatingMinimizedModal {
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx;
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy;
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.onlyFirst && this.location ? Number(this.location?.x) : 0);
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.onlyFirst  && this.location ? Number(this.location?.y) : 0);
+      this.onlyFirst = false;
 
       this.setTargetPosition(target, x, y);
     };
@@ -189,11 +199,7 @@ export namespace FloatingMinimizedModal {
                 part="floating-minimized"
                 aria-label=${ifDefined(this.label || undefined)}
                 aria-modal="true"
-                style=${ifDefined(
-                  this.containerTransform
-                    ? `
-                  ${this.containerTransform !== '' ? `transform: ${this.containerTransform} !important` : ""};`
-                    : undefined
+                style=${ifDefined(this.location ?`transform: ${`translate(${this.location.x}px, ${this.location.y}px)`} !important` : `transform: ${this.containerTransform} !important`)};
                 )}
               >
                 <div class="md-floating__header ${this.minimize ? 'md-floating__header-minimize' : ""}">

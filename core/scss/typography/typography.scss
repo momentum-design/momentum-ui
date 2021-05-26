@@ -46,10 +46,6 @@
       }
     }
 
-    &:focus {
-      @include focus-styles;
-    }
-
     img {
       border: none;
     }

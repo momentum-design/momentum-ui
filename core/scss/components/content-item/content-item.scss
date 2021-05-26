@@ -39,7 +39,7 @@
       height: 230px;
       margin-bottom: 8px;
       background-color: $md-gray-10;
-      background-color: var(--md-background-secondary, $md-gray-10);
+      background-color: var(--md-background-tertiary, $md-gray-10);
       border-radius: 4px;
       box-shadow: 0 0 0 1px $black-20;
 
@@ -53,13 +53,13 @@
       height: 196px;
       margin-bottom: 8px;
       background-color: $md-gray-10;
-      background-color: var(--md-background-secondary, $md-gray-10);
+      background-color: var(--md-background-tertiary, $md-gray-10);
       border-radius: 4px;
     }
 
     &--failed {
       background-color: $md-gray-10;
-      background-color: var(--md-background-secondary, $md-gray-10);
+      background-color: var(--md-background-tertiary, $md-gray-10);
       box-shadow: 0 0 0 1px $black-20;
 
       &-warning {

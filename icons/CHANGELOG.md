@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.15.0...@momentum-ui/icons@8.16.0) (2021-05-26)
+
+
+### Bug Fixes
+
+* **icons:** resize icons when generating font file to render better ([#908](https://github.com/momentum-design/momentum-ui/issues/908)) ([af1503a](https://github.com/momentum-design/momentum-ui/commit/af1503a7a1371dd6f2e217fc127a830fd24fc3e9))
+
+
+### Features
+
+* **icon:** add new icons ([#914](https://github.com/momentum-design/momentum-ui/issues/914)) ([08c285a](https://github.com/momentum-design/momentum-ui/commit/08c285a6ccabf6428ab0483294271e4375296a5d))
+
+
+
+
+
 # [8.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.14.0...@momentum-ui/icons@8.15.0) (2021-05-19)
 
 

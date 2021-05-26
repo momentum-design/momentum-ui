@@ -608,6 +608,7 @@
     &.#{$button__class}--icon {
       @include button-color(
         $color: inherit,
+        $color-css-var: --md-textColor-secondary,
         $bg: transparent,
         $bg-hover: transparent,
         $bg-active: transparent,
@@ -616,10 +617,13 @@
       );
       @include button-color-fill(
         $fill: $md-gray-70,
+        $fill-css-var: --md-textColor-secondary,
         $fill-hover: $md-theme-60,
+        $fill-hover-css-var: --md-button-primary-bg-color,
         $fill-active: $md-theme-70,
+        $fill-active-css-var: --md-button-primary-hover-bg-color,
         $fill-disabled: $button__link-color--disabled,
-        $fill-disabled-css-var: --md-button-disabled-text-color,
+        $fill-disabled-css-var: --md-textColor-disabled
       );
       @include button-size($radius: 0, $padding: 0, $height: auto);
 

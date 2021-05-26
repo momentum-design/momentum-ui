@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.13.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.13.0...@momentum-ui/core@19.13.1) (2021-05-26)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.4...@momentum-ui/core@19.13.0) (2021-05-25)
+
+
+### Features
+
+* **core/list/space-list/popover:** theming changes ([#882](https://github.com/momentum-design/momentum-ui/issues/882)) ([205e039](https://github.com/momentum-design/momentum-ui/commit/205e039e9336fc9193c42985ce4c4c5878cce399))
+* **core/panel:** add theming ([#911](https://github.com/momentum-design/momentum-ui/issues/911)) ([e7055c7](https://github.com/momentum-design/momentum-ui/commit/e7055c70df255447b889a0360376d9cd0164af12))
+
+
+
+
+
 ## [19.12.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.3...@momentum-ui/core@19.12.4) (2021-05-19)
 
 **Note:** Version bump only for package @momentum-ui/core

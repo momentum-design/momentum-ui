@@ -35,6 +35,8 @@
       min-width: auto;
     }
 
+
+
     &--gray {
       @include badge-style(
         var(--badge-gray-bg-color, $lm-badge-gray-bg-color-light),
@@ -162,6 +164,18 @@
         false,
         var(--badge-hold-text-color, $lm-badge-hold-text-color-light)
       );
+    }
+
+    &--disabled {
+      @include badge-style(
+        var(--md-quaternary-two-bg-color, $lm-badge-disabled-bg-color-light),
+        false,
+        var(--md-disabled-text-color, $lm-badge-disabled-text-color-light)
+      );
+
+      ::slotted(md-icon) {
+        color: var(--md-disabled-text-color, $lm-badge-disabled-text-color-light);
+      }
     }
   }
 }

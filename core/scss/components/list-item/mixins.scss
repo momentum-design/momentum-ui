@@ -185,7 +185,8 @@
   &:focus,
   &.focus {
     .#{$dark-class} & {
-      @include focus-styles;
+      @include focus-styles($focus-visible-only: false);
+      z-index: 1;
     }
   }
 
@@ -373,8 +374,6 @@
   {
     color: $hover-color;
     color: var($hover-color-css-var, $hover-color);
-    background-color: $hover-bgrd-color;
-    background-color: var($hover-bgrd-color-css-var,$hover-bgrd-color);
 
     .#{$list-item__class} {
       &__header {
@@ -440,7 +439,8 @@
   @if $includeFocus {
     &:focus,
     &.focus {
-      @include focus-styles;
+      @include focus-styles($focus-visible-only: false);
+      z-index:1;
     }
   }
 

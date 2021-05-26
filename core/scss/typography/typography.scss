@@ -85,7 +85,9 @@
     height: 0;
     margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
     clear: both;
-    border: $hr-border-style $hr-border-color;
+    border: $hr-border-style;
+    border-color: $hr-border-color;
+    border-color: var(--md-separator-primary, $hr-border-color);
     border-width: $hr-border-width 0 0;
   }
 

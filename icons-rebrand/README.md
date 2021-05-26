@@ -28,33 +28,33 @@ Momentum UI Icons is a full suite of the pictographic icons for easy scalable ve
 
 Install and manage the Spark UI Toolkit's icons using NPM. You may use `yarn` or `npm`. By default, yarn/npm installs packages to node_modules/.
 
-`yarn add @momentum-ui/icons`
+`yarn add @momentum-ui/icons-rebrand`
 
 or
 
-`npm install @momentum-ui/icons --save`
+`npm install @momentum-ui/icons-rebrand --save`
 
 ## Usage
 
 
 ### CSS
 
-1. Copy the "@momentum-ui/icons/fonts" directory to the "fonts" directory for your site.
-2. Copy the "@momentum-ui/icons/css/momentum-ui-icons.min.css" to your styles/css directory.
-3. In the `<head>` of your HTML reference the location of your momentum-ui-icons.min.css.
+1. Copy the "@momentum-ui/icons-rebrand/fonts" directory to the "fonts" directory for your site.
+2. Copy the "@momentum-ui/icons-rebrand/css/momentum-ui-icons-rebrand.min.css" to your styles/css directory.
+3. In the `<head>` of your HTML reference the location of your momentum-ui-icons-rebrand.min.css.
 
-  `<link rel="stylesheet" href="path/to/momentum-ui-icons/css/momentum-ui-icons.min.css">`
+  `<link rel="stylesheet" href="path/to/momentum-ui-icons/css/momentum-ui-icons-rebrand.min.css">`
 
 
 ### Scss
-1. Copy the "@momentum-ui/icons/fonts" directory to the "fonts" directory for your site.
+1. Copy the "@momentum-ui/icons-rebrand/fonts" directory to the "fonts" directory for your site.
 2. Add an "$icon-font-path" variable to your variables.scss file.
 
 `$icon-font-path: 'path/to/fonts/directory';`
 
-3. Import "@momentum-ui/icons/scss/momentum-ui-icons.scss" into your main entry Scss file AFTER the variables.
+3. Import "@momentum-ui/icons-rebrand/scss/momentum-ui-icons-rebrand.scss" into your main entry Scss file AFTER the variables.
 
-`@import '@momentum-ui/icons/scss/momentum-ui-icons.scss';`
+`@import '@momentum-ui/icons-rebrand/scss/momentum-ui-icons-rebrand.scss';`
 
 4. Compile your Scss using your static compiler or bundler
 
@@ -66,10 +66,6 @@ or
 You can place Momentum UI Icons just about anywhere using the CSS Prefix `icon-` and the icon's name. Momentum UI Icons is designed to be used with inline elements (we like the `<i>` tag for brevity, but using a `<span>` is more semantically correct).
 
 `<i class="icon icon-camera_16"></i>`
-
-### Icon Sizes
-
-All of the Momentum UI Icons are suffixed with their size. i.e. `icon-camera_16` The CSS will automatically size the icons according to this size.
 
 ### Fixed Width Icons
 

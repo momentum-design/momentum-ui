@@ -1,5 +1,6 @@
 import "@/components/button/Button";
 import "@/components/floating-modal/FloatingModal";
+import '@/components/floating-modal/FloatingMinimizedModal';
 import { css, customElement, html, LitElement, property } from "lit-element";
 
 const data =
@@ -8,6 +9,8 @@ const data =
 @customElement("floating-template-sandbox")
 export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
+  @property({ type: Boolean }) isMin = false;
+  @property({type: Object}) location = JSON.parse(localStorage.getItem('location') || JSON.stringify({x:0, y:0}))
 
   private openFloatingModal() {
     this.isOpen = true;
@@ -16,6 +19,16 @@ export class FloatingTemplateSandbox extends LitElement {
   private closeFloatingModal() {
     this.isOpen = false;
   }
+  
+  private saveLocation(event: any) {
+    console.log('location', event);
+    this.location = event.detail.transform;
+    localStorage.setItem('location', JSON.stringify(event.detail.transform));
+  }
+
+  private setFocus() {
+    document.getElementsByName("youtube")[0].focus();
+  }
 
   static get styles() {
     return css`
@@ -23,25 +36,43 @@ export class FloatingTemplateSandbox extends LitElement {
         overflow: hidden;
         height: 500px;
         width: 800px;
-        /* right:0;
-        bottom:0; */
       }
+      
+      .float-modal::part(floatingg){
+        right: 0;
+        bottom: 0;
+      }
+
+      .flexi  {
+        display: flex;
+        width: 100px;
+        margin-top: 4px;
+      }
+    .space {
+      margin-right:10px;
+    }
     `;
   }
 
   render() {
     return html`
       <md-button @button-click=${() => this.openFloatingModal()}>Open Floating Modal</md-button>
-
+     
       <md-floating-modal
         class="float-modal"
-        heading="Keyboard Shortcuts"
         ?show=${this.isOpen}
-        fixed-strategy
+        .location=${this.location}
         @floating-modal-close=${() => this.closeFloatingModal()}
+        @floating-modal-location=${this.saveLocation}
       >
-        <div class="youtube"><iframe style="height:100%" src="https://youtube.com" > <iframe></div>
+       <div slot="header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>
+       <div slot="minimized-header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>
+       <iframe id="youtube" style="height:100%; width:100%" src="https://youtube.com" onload="${this.setFocus}" >
+        <iframe>
       </md-floating-modal>
+     
+    
+     
     `;
   }
 }

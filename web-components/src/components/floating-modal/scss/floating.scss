@@ -16,11 +16,11 @@
     position: fixed;
   }
 
-  &.md-floating-minimize {
-    background: #545454;
-    color: #F7F7F7;
-    height: 3rem !important;
-    width: 254.9996795654297px !important;
+  &.hide {
+    visibility: hidden;
+    display: block;
+    width: 0;
+    height: 0;
   }
 
   .md-floating__header {
@@ -36,7 +36,76 @@
 
     &-text {
       flex: 2 1 auto;
-      font-family: $brand-font-bold;
+      font-family: $body-font-family;
+      font-size: $font-size-large;
+      line-height: $font-size-large;
+      text-align: left;
+    }
+  }
+
+  .md-floating__body {
+    overflow: auto;
+    padding: $floating-body-padding;
+    height: calc(100% - 3rem);
+  }
+
+  
+}
+
+.min-min {
+  background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-alternate-light);
+  border: $floating-main-border;
+  border-radius: 8px;
+  box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  touch-action: none;
+  user-select: none;
+  z-index: 1040;
+}
+
+.md-floating-min {
+  background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-alternate-light);
+  border: $floating-main-border;
+  border-radius: 8px;
+  box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  touch-action: none;
+  user-select: none;
+  z-index: 1040;
+
+  &.hide {
+    visibility: hidden;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  &.md-floating-minimize {
+    background: var(--floating-modal-main-bg-color-alternate, $lm-floating-modal-main-bg-color-alternate-light);
+    width: 100%;
+  }
+
+  .md-floating__header {
+    align-items: center;
+    border-bottom: $floating-header-border;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-height: $floating-header-max-height;
+    padding: $floating-header-padding;
+
+    &-text {
+      flex: 2 1 auto;
+      font-family: $body-font-family;
       font-size: $font-size-large;
       line-height: $font-size-large;
       text-align: left;
@@ -56,10 +125,27 @@
   }
 
   .md-floating__header-minimize {
-    color: #F7F7F7;
+    color: var(--floating-modal-main-text-color-alternate, $lm-floating-modal-main-text-color-alternate-light);
     font-size: 16px;
     line-height: 24px;
   }
 
-  
+
+
+}
+
+.flexi {
+  display: flex;
+  width: 100px;
+  margin-top: 4px;
+}
+.space {
+  margin-right: 10px;
+}
+
+
+.md-floating-min-parent {
+  position: absolute;
+  height: 3rem !important;
+  width: 223px !important;
 }

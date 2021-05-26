@@ -16,11 +16,11 @@
   "main": "scss/momentum-ui-icons.scss",
   "scripts": {
     "build": "yarn build:lib",
-    "build:lib": "node tools/icons-build.js",
+    "build:lib": "node ../tools/icons/icons-build.js momentum-ui-icons",
     "ci:postpublish": "node ../tools/postpublish.js",
     "ci:publishCDN": "run-s replaceFontURLs pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=icons",
-    "replaceFontURLs": "node ./tools/replaceURLs.js",
+    "replaceFontURLs": "node ../tools/icons/replaceURLs.js",
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",

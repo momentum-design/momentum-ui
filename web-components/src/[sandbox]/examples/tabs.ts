@@ -5,9 +5,10 @@ import "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
-
+import { customElement, internalProperty, LitElement } from "lit-element";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
+import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -21,61 +22,179 @@ const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].
   `
 );
 
-export const tabsTemplate = html`
-  <div style="max-width: 600px;">
-    <h3>Horizontal md-tabs with More button</h3>
-    <div>
-    <md-tabs selected="0" justified draggable>
-        <md-tab slot="tab" closable label="History">
+@customElement("default-tabs-sandbox")
+export class TabsTemplateSandbox extends LitElement {
+  @internalProperty() private tabs: any = {};
+  defaultTabsOrder = ["WxM", "History", "Answer", "Admins", "Widgets", "News", "Weather", "Turbo"];
+
+  private handleTabClick(event: any) {
+    console.log(event);
+    const draggableTabsOrder = event.detail.tabsOrder;
+    localStorage.setItem("tabsOrder", draggableTabsOrder);
+  }
+
+  private setupTabsEvents() {
+    this.addEventListener("selected-changed", this.handleTabClick as EventListener);
+  }
+
+  private setUpTabs() {
+    this.tabs = {
+      History: `
+        <md-tab slot="tab" name="History" closable label="History">
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable label="WxM">
+      `,
+      WxM: `
+        <md-tab slot="tab" name="WxM" closable label="WxM">
           <md-icon name="apps_16"></md-icon>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable>
+      `,
+      Answer: `
+        <md-tab slot="tab" name="Answer" closable>
           <md-icon name="alarm_16"></md-icon>
           <span>Cisco Answer</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Answer"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable>
+      `,
+      Admins: `
+        <md-tab slot="tab" name="Admins" closable>
           <md-icon name="admin_16"></md-icon>
           <span>Cisco Admins</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Admins"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable>
+      `,
+      Widgets: `
+        <md-tab slot="tab" name="Widgets" closable>
           <md-icon name="alert_16"></md-icon>
           <span>Cisco Widgets</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Widgets"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable>
+      `,
+      News: `
+        <md-tab slot="tab" name="News" closable>
           <md-icon name="browser_16"></md-icon>
           <span>Cisco News</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco News"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable>
+      `,
+      Weather: `
+        <md-tab slot="tab" name="Weather" closable>
           <md-icon name="month_16"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Weather"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable>
+      `,
+      Turbo: `
+        <md-tab slot="tab" name="Turbo" closable>
+          <md-icon name="camera-photo_16"></md-icon>
+          <span>Cisco Turbo</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Turbo"</span>
+        </md-tab-panel>
+      `
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setupTabsEvents();
+    this.setUpTabs();
+    const draggableTabsOrder: any = localStorage.getItem("tabsOrder");
+    if (draggableTabsOrder) this.defaultTabsOrder = draggableTabsOrder.split(",");
+  }
+
+  render() {
+    return html`
+      <div style="max-width: 600px;">
+        <h3>Retainable Draggable Horizontal md-tabs with More button</h3>
+        <div>
+          <md-tabs selected="0" justified>
+            ${this.defaultTabsOrder.map((tabElement: string) => {
+              return unsafeHTML(this.tabs[tabElement]);
+            })}
+          </md-tabs>
+        </div>
+        <br />
+      </div>
+    `;
+  }
+}
+
+export const tabsTemplate = html`
+  <default-tabs-sandbox></default-tabs-sandbox>
+  <div style="max-width: 600px;">
+    <h3>Horizontal md-tabs with More button</h3>
+    <div>
+      <md-tabs selected="0" justified draggable>
+        <md-tab slot="tab" name="History" closable label="History">
+          <md-icon name="recents_16"></md-icon>
+          <span>Contact History</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="WxM" closable label="WxM">
+          <md-icon name="apps_16"></md-icon>
+          <span>Cisco WxM</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Answer" closable>
+          <md-icon name="alarm_16"></md-icon>
+          <span>Cisco Answer</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Answer"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Admins" closable>
+          <md-icon name="admin_16"></md-icon>
+          <span>Cisco Admins</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Admins"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Widgets" closable>
+          <md-icon name="alert_16"></md-icon>
+          <span>Cisco Widgets</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Widgets"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="News" closable>
+          <md-icon name="browser_16"></md-icon>
+          <span>Cisco News</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco News"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Weather" closable>
+          <md-icon name="month_16"></md-icon>
+          <span>Cisco Weather</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Weather"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Turbo" closable>
           <md-icon name="camera-photo_16"></md-icon>
           <span>Cisco Turbo</span>
         </md-tab>
@@ -88,25 +207,25 @@ export const tabsTemplate = html`
     <div style="max-width: 400px;">
       <h3>md-tabs justified</h3>
       <md-tabs draggable justified>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="History">
           <span>All</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="History">
           <md-icon name="apps_16"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="History">
           <md-icon name="browser_16"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Third Tab"</span>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="History">
           <md-icon name="alert_16"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -140,28 +259,28 @@ export const tabsTemplate = html`
   <div style="height: 500px;">
     <h3>md-tabs vertical</h3>
     <md-tabs direction="vertical">
-      <md-tab slot="tab">
+      <md-tab slot="tab" name="History">
         <md-icon name="recents_16"></md-icon>
         <span>Contact History</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "Contact History"</span>
       </md-tab-panel>
-      <md-tab slot="tab">
+      <md-tab slot="tab" name="History">
         <md-icon name="apps_16"></md-icon>
         <span>Cisco WxM</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "WxM"</span>
       </md-tab-panel>
-      <md-tab slot="tab">
+      <md-tab slot="tab" name="History">
         <md-icon name="alarm_16"></md-icon>
         <span>Cisco Answer</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "Cisco Answer"</span>
       </md-tab-panel>
-      <md-tab slot="tab">
+      <md-tab slot="tab" name="History">
         <md-icon name="camera-photo_16"></md-icon>
         <span>Cisco Turbo</span>
       </md-tab>

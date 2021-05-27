@@ -76,6 +76,17 @@ export namespace Tab {
       this.requestUpdate("closable", oldValue);
     }
 
+    private _name = "";
+    @property({ type: String })
+    get name() {
+      return this._name;
+    }
+    set name(value: string) {
+      const oldValue = this._name;
+      this._name = value;
+      this.requestUpdate("name", oldValue);
+    }
+
     @property({ type: Boolean, reflect: true }) vertical = false;
 
     @property({ type: Boolean, reflect: true }) viewportHidden = false;
@@ -152,7 +163,7 @@ export namespace Tab {
           aria-selected="false"
           aria-label=${ifDefined(this.ariaLabel)}
           tabindex="-1"
-          part="draggable-item"
+          part="tab"
           @click=${(e: MouseEvent) => this.handleClick(e)}
         >
           <slot class="tab-slot"></slot>

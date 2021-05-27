@@ -48,11 +48,11 @@ export namespace Tabs {
     @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab.ELEMENT;
     @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
 
-    @query(".md-tab__list[part='hidden-tabs-list']") tabsMoreListElement?: HTMLDivElement;
+    @query(".md-tab__list[part='tabs-more-list']") tabsMoreListElement?: HTMLDivElement;
     @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab.ELEMENT>;
 
     @query("#visible-tabs-list") visibleTabsContainerElement?: HTMLElement;
-    @query("#hidden-tabs-list") hiddenTabsContainerElement?: HTMLElement;
+    @query("#tabs-more-list") hiddenTabsContainerElement?: HTMLElement;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -287,7 +287,7 @@ export namespace Tabs {
       while (selectedIndex < tabs.length && tabs[selectedIndex].disabled) {
         selectedIndex++;
       }
-      selectedIndex = selectedIndex === tabs.length ? -1 : selectedIndex;
+      selectedIndex = selectedIndex === tabs.length ? 0 : selectedIndex;
       tabs[selectedIndex].selected = true;
       panels[selectedIndex].selected = true;
 
@@ -400,7 +400,6 @@ export namespace Tabs {
         }
       }
       this.handleNewSelectedTab(event.item.id);
-      this.dispatchDragEvent("drag-end", event);
     };
 
     private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
@@ -503,19 +502,33 @@ export namespace Tabs {
         });
       }
 
+      this.dispatchSelectedChangedEvent(newSelectedIndex);
+
+      const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+      const newSelectedTabIdx = currentTabsConfiguration.findIndex(element => element.id === tabs[newSelectedIndex].id);
+      this.changeSelectedTabIdx(newSelectedTabIdx);
+    }
+
+    private dispatchSelectedChangedEvent(newSelectedIndex: number) {
+      const currentTabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+      const newSelectedTabId = this.tabs[newSelectedIndex].id;
+      const newIndex = currentTabsOrder.findIndex(element => element.id === newSelectedTabId);
+      
+      const newTabArrangement : string[] = []
+      currentTabsOrder.forEach((tabElement) => {
+        newTabArrangement.push(tabElement.name)
+      })
+
       this.dispatchEvent(
         new CustomEvent("selected-changed", {
           detail: {
-            value: newSelectedIndex
+            value: newIndex,
+            tabsOrder: newTabArrangement
           },
           composed: true,
           bubbles: true
         })
       );
-
-      const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-      const newSelectedTabIdx = currentTabsConfiguration.findIndex(element => element.id === tabs[newSelectedIndex].id);
-      this.changeSelectedTabIdx(newSelectedTabIdx);
     }
 
     private changeSelectedTabIdx(newSelectedTabIdx: number) {
@@ -540,9 +553,30 @@ export namespace Tabs {
       }
     }
 
+    dispatchKeydownEvent(event: KeyboardEvent, tabId: string) {
+      if (tabId) {
+        this.dispatchEvent(
+          new CustomEvent("tab-keydown", {
+            detail: {
+              id: tabId,
+              key: event.code,
+              ctrlKey: event.ctrlKey,
+              shiftKey: event.shiftKey,
+              altKey: event.altKey,
+              srcEvent: event
+            },
+            bubbles: true,
+            composed: true
+          })
+        );
+      }
+    }
+
     handleTabKeydown(event: any) {
       const elementId = event.path ? event.path[0].id : event.originalTarget.id;
       const id = this.getNormalizedTabId(elementId);
+      this.dispatchKeydownEvent(event, id);
+
       const { key, ctrlKey, shiftKey, altKey } = event;
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
@@ -572,6 +606,7 @@ export namespace Tabs {
               this.changeSelectedTabIdx(lastVisibleTabIdx);
             }
           } else if (isVisibleTab) {
+            console.log("HEllo", this.selected)
             const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
             this.changeSelectedTabIdx(oldSelectedIndex);
           } else if (isHiddenTab) {
@@ -799,7 +834,6 @@ export namespace Tabs {
               tab => nanoid(),
               tab => html`
                 <md-tab
-                  slot="draggable-item"
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
                   .selected="${tab.selected}"
@@ -840,8 +874,8 @@ export namespace Tabs {
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}"></md-icon>
             </md-tab>
             <div
-              id="hidden-tabs-list"
-              part="hidden-tabs-list"
+              id="tabs-more-list"
+              part="tabs-more-list"
               class="md-tab__list md-menu-overlay__more_list"
               style="${styleMap(
                 this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight

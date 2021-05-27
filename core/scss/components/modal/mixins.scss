@@ -18,7 +18,7 @@
 }
 
 @mixin modal-size(
-  $border-width: false,
+  $border-width: 1px,
   $height: auto,
   $max-height: none,
   $min-height: 0,
@@ -110,7 +110,8 @@
     $color-css-var: --md-textColor-primary,
     $bg: false,
     $bg-css-var: --md-background-primary,
-    $border-color: false,
+    $border-color: $md-white-100,
+    $border-color-css-var: --md-separator-primary,
     $box-shadow: false
   ) {
 
@@ -122,8 +123,9 @@
     background-color: var($bg-css-var, $bg);
   }
 
-  @if $border-color !=false {
+  @if $border-color-css-var !=false {
     border-color: $border-color;
+    border-color: var($border-color-css-var, $border-color);
   }
 
   @if $box-shadow {

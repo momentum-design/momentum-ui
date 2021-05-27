@@ -55,7 +55,8 @@
           $color: $modal__color,
           $color-css-var: --md-textColor-primary,
           $bg: $modal__background,
-          $bg-css-var: --md-background-primary
+          $bg-css-var: --md-background-primary,
+          $border-color-css-var: --md-separator-primary
         );
       }
 
@@ -282,7 +283,6 @@
         .#{$modal__class}__body {
           margin-bottom: rem-calc(24);
           text-align: left;
-          background: $md-white-100;
 
           > * {
             font-family: $brand-font-regular;

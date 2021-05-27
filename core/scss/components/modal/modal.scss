@@ -93,6 +93,7 @@
 
     &.#{$modal__class}--full {
       @include modal-size(
+        $border-width: 0,
         $width: $modal__width--full-screen,
         $height: $modal__height--full-screen,
         $radius: 0

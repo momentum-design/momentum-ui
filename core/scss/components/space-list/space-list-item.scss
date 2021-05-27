@@ -395,7 +395,7 @@
         &.#{$list-item__class}--unread {
           .#{$list-item__class}__header {
             color: $md-gray-100;
-            color: var(--md-textColor-primary, $md-gray-70);
+            color: var(--md-textColor-primary, $md-gray-100);
           }
         }
 

@@ -33,29 +33,29 @@
 
 @mixin input-color(
   $color: null,
-  $color-css-var: null,
+  $color-css-var: --null,
   $color-clear: null,
-  $color-clear-css-var: null,
+  $color-clear-css-var: --null,
   $color-clear-hover: null,
-  $color-clear-hover-css-var: null,
+  $color-clear-hover-css-var: --null,
   $color-disabled: null,
-  $color-disabled-css-var: null,
+  $color-disabled-css-var: --null,
   $color-help: null,
-  $color-help-css-var: null,
+  $color-help-css-var: --null,
   $color-message: null,
-  $color-message-css-var: null,
+  $color-message-css-var: --null,
   $color-placeholder: null,
-  $color-placeholder-css-var: null,
+  $color-placeholder-css-var: --null,
   $color-read-only: null,
-  $color-read-only-css-var: null,
+  $color-read-only-css-var: --null,
   $background-color: null,
-  $background-color-css-var: null,
+  $background-color-css-var: --null,
   $background-color-disabled: null,
-  $background-color-disabled-css-var: null,
+  $background-color-disabled-css-var: --null,
   $background-color-hover: null,
-  $background-color-hover-css-var: null,
+  $background-color-hover-css-var: --null,
   $border-color: null,
-  $border-color-css-var: null
+  $border-color-css-var: --null
 ) {
 
   .#{$input__class}:not(.md-select__filter--input) {
@@ -161,7 +161,7 @@
 
 @mixin input-icon(
   $color: null,
-  $color-css-var: null
+  $color-css-var: --null
 ) {
   @if $color {
     color: $color;
@@ -180,9 +180,9 @@
 
 @mixin input-clear-color(
   $color: $input__clear-icon__color,
-  $color-css-var: null,
+  $color-css-var: --null,
   $color-hover: $input__clear-icon__color--hover,
-  $color-hover-css-var: null
+  $color-hover-css-var: --null
   ) {
   background-color: transparent;
   color: $color;

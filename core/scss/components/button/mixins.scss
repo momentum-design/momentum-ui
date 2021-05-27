@@ -105,38 +105,38 @@
 
 @mixin button-color(
   $bg: $button__background-color,
-  $bg-css-var: null,
+  $bg-css-var: --null,
   $bg-active: $button__background-color--active,
-  $bg-active-css-var: null,
+  $bg-active-css-var: --null,
   $bg-disabled: $button__color--disabled,
-  $bg-disabled-css-var: null,
+  $bg-disabled-css-var: --null,
   $bg-hover: $button__background-color--hover,
-  $bg-hover-css-var: null,
+  $bg-hover-css-var: --null,
   $border: false,
   $border-color: null,
-  $border-color-css-var: null,
+  $border-color-css-var: --null,
   $border-hover: false,
-  $border-hover-css-var: null,
+  $border-hover-css-var: --null,
   $border-active: false,
-  $border-active-css-var: null,
+  $border-active-css-var: --null,
   $border-focus: $button__border-color--focus,
-  $border-focus-css-var: null,
+  $border-focus-css-var: --null,
   $box-shadow: false,
-  $box-shadow-css-var: null,
+  $box-shadow-css-var: --null,
   $color: $button__font-color,
-  $color-css-var: null,
+  $color-css-var: --null,
   $color-active: $color,
-  $color-active-css-var: null,
+  $color-active-css-var: --null,
   $color-disabled: $button__font-color--disabled,
-  $color-disabled-css-var: null,
+  $color-disabled-css-var: --null,
   $color-hover: $color,
-  $color-hover-css-var: null,
+  $color-hover-css-var: --null,
   $disabled: true,
   $focus: false,
   $opacity: false,
-  $opacity-css-var: null,
+  $opacity-css-var: --null,
   $outline: false,
-  $outline-css-var: null
+  $outline-css-var: --null
 ) {
   color: $color;
   color: var($color-css-var, $color);
@@ -205,15 +205,15 @@
 
 @mixin button-color-fill(
   $fill: $button__font-color,
-  $fill-css-var: null,
+  $fill-css-var: --null,
   $fill-hover: $fill,
-  $fill-hover-css-var: null,
+  $fill-hover-css-var: --null,
   $fill-active: $color,
-  $fill-active-css-var: null,
+  $fill-active-css-var: --null,
   $fill-disabled: $button__font-color--disabled,
-  $fill-disabled-css-var: null,
+  $fill-disabled-css-var: --null,
   $bg-disabled: transparent,
-  $bg-disabled-css-var: null,
+  $bg-disabled-css-var: --null,
   $focus: false
 ) {
   fill: $fill;
@@ -254,7 +254,7 @@
 
 @mixin button-color-focus(
   $color: $button__border-color--focus,
-  $color-css-var: null
+  $color-css-var: --null
 ) {
   &:focus,
   &.focus-state {
@@ -264,11 +264,11 @@
 
 @mixin button-color-disabled(
   $color: $button__font-color--disabled,
-  $color-css-var: null,
+  $color-css-var: --null,
   $bg: $button__color--disabled,
-  $bg-css-var: null,
+  $bg-css-var: --null,
   $opacity: false,
-  $opacity-css-var: null
+  $opacity-css-var: --null
 ) {
   &.disabled,
   &.md-button--disabled,

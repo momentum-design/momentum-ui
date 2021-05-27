@@ -10,11 +10,11 @@
 
 @mixin spinner-style(
   $border: $md-gray-40,
-  $border-css-var: null,
+  $border-css-var: --null,
   $border-progress-left: $md-theme-50,
-  $border-progress-left-css-var: null,
+  $border-progress-left-css-var: --null,
   $border-progress: transparent,
-  $border-progress-css-var: null
+  $border-progress-css-var: --null
 ) {
   border: 1px solid;
   border-color: $border;

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.6.2...@momentum-ui/tokens@1.7.0) (2021-05-27)
+
+
+### Features
+
+* **colors:** add icon colors for light/dark mode ([#907](https://github.com/momentum-design/momentum-ui/issues/907)) ([702e58a](https://github.com/momentum-design/momentum-ui/commit/702e58a60f601be8f70d03d7a9a0d82985009fd2))
+
+
+
+
+
 ## [1.6.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/tokens@1.6.1...@momentum-ui/tokens@1.6.2) (2020-10-20)
 
 **Note:** Version bump only for package @momentum-ui/tokens

@@ -146,6 +146,7 @@
 
   @if $border {
     border: $border;
+    border-color: $border-color;
     border-color: var($border-color-css-var, $border-color);
   }
 

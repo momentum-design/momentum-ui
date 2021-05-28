@@ -1,0 +1,27 @@
+@import 'mixins';
+
+@include exports('spark-icons-list') {
+  .#{$icon-css-prefix} {
+    &-ul {
+      padding-left: 0;
+      margin-left: $icon-li-width;
+      list-style-type: none;
+
+      > li {
+        position: relative;
+      }
+    }
+
+    &-li {
+      position: absolute;
+      left: -$icon-li-width;
+      width: $icon-li-width;
+      top: (2em / 16);
+      text-align: center;
+
+      &.#{$icon-css-prefix}-lg {
+        left: -$icon-li-width + (4em / 16);
+      }
+    }
+  }
+}

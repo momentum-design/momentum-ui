@@ -63,6 +63,18 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
+  test_icons_rebrand:
+    <<: *image_defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Test icons-rebrand library
+          command: yarn ci:test:icons-rebrand
+      - run:
+          name: Clear Git changed files
+          command: git checkout -- .
+
   test_core_percy:
     <<: *image_defaults
     steps:
@@ -143,7 +155,7 @@ jobs:
       - run:
           name: Unit Test web components library
           command: yarn ci:test:wc
-      - run: 
+      - run:
           name: Upload Codecov report
           command: bash <(curl -s https://codecov.io/bash)
       - run:
@@ -192,6 +204,9 @@ jobs:
       - run:
           name: Test icons library
           command: yarn ci:test:icons
+      - run:
+          name: Test icons-rebrand library
+          command: yarn ci:test:icons-rebrand
       - run:
           name: Test core library
           command: yarn ci:test:core
@@ -264,6 +279,9 @@ workflows:
           requires:
             - build_tokens
       - test_icons:
+          requires:
+            - lint
+      - test_icons_rebrand:
           requires:
             - lint
       - static_analysis:

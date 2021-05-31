@@ -2,6 +2,7 @@ import "./FloatingModal";
 import { FloatingModal } from "./FloatingModal";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { Button } from "@/components/button/Button";
+import interact from "@interactjs/interact/index";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -84,5 +85,35 @@ describe("Floating Modal Component", () => {
     await elementUpdated(element);
     expect(element.show).toBeTruthy();
     expect(element.full).toBeTruthy();
+  });
+
+  test("should show minimize option", async () => {
+    element.show = true;
+    element.minimizable = true;
+    await nextFrame();
+    await elementUpdated(element);
+
+    const mdButton = element.shadowRoot!.querySelector(".md-floating__minimize") as Button.ELEMENT;
+    const button = mdButton.shadowRoot!.querySelector("button");
+    button!.click();
+
+    await elementUpdated(element);
+    expect(element.show).toBeTruthy();
+    expect(element.minimizable).toBeTruthy();
+  });
+
+  test("should resize", async () => {
+    element.show = true;
+    await nextFrame();
+    await elementUpdated(element);
+
+   // Change the viewport to 500px.
+   global.innerWidth = 500;
+
+   // Trigger the window resize event.
+   global.dispatchEvent(new Event('resize'));
+
+    await elementUpdated(element);
+    expect(element.show).toBeTruthy();
   });
 });

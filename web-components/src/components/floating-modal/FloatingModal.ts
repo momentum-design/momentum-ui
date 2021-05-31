@@ -29,6 +29,7 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
+    @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
     @property({type: Object}) location: {
       x: number;
       y: number;
@@ -54,18 +55,9 @@ export namespace FloatingModal {
 
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
-    get slotItem() {
-      return this.headerSlot;
-    }
     private containerTransform = this.location ? `translate(${this.location.x}px, ${this.location.y}px)`: '';
 
     private applyInitialPosition = true;
-
-    get floatingClassMap() {
-      return {
-        fixed: this.fixed
-      };
-    }
 
     static get styles() {
       return [reset, styles];
@@ -242,16 +234,12 @@ export namespace FloatingModal {
       this.destroyInteractInstance();
     }
 
-    setTransform(event: any) {
-      this.minimizeLocation = event.detail.srcEvent;
-      console.log('got the event', event);
-    }
 
     render() {
+      
       return html`
         ${this.show
           ? html`
-              <slot name="header"></slot>
               <div
                 class="md-floating ${this.fixed ? "fixed" : ''} ${this.minimize ? "hide" : ''}"
                 part="floating"
@@ -279,13 +267,14 @@ export namespace FloatingModal {
                         `
                       : html` 
                           ${!this.minimize && this.headerSlot}
+                          <slot name="header"></slot>
                         `}
                   </div>
                   ${this.minimizable ? html `
                     <md-button
                       color="color-none"
-                      class="md-floating__close"
-                      aria-label="${this.closeAriaLabel}"
+                      class="md-floating__minimize"
+                      aria-label="${this.minimizeAriaLabel}"
                       circle
                       @click=${this.handleMinimize}
                     >

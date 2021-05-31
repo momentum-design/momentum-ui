@@ -10,7 +10,7 @@ const data =
 export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
   @property({ type: Boolean }) isMin = false;
-  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x:0, y:0};
+  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x:689, y:173};
   @property({type: Object}) minLocation = localStorage.getItem('min-location') !== null? JSON.parse(localStorage.getItem('min-location') || "") : {x:0, y:0};
   private openFloatingModal() {
     this.isOpen = true;
@@ -51,8 +51,6 @@ export class FloatingTemplateSandbox extends LitElement {
         overflow: hidden;
         height: 500px;
         width: 800px;
-        right: 0%;
-        bottom: 0%;
       }
       
       .float-modal::part(minimize-floating){
@@ -65,9 +63,9 @@ export class FloatingTemplateSandbox extends LitElement {
         width: 100px;
         margin-top: 4px;
       }
-    .space {
-      margin-right:10px;
-    }
+      .space {
+        margin-right:10px;
+      }
     `;
   }
 

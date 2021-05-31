@@ -16,10 +16,11 @@ import interact from "@interactjs/interact/index";
 import './FloatingMinimizedModal';
 import { number } from "@storybook/addon-knobs";
 import { transcode } from "buffer";
+import { SlottedMixin } from "@/mixins";
 
 export namespace FloatingModal {
   @customElementWithCheck("md-floating-modal")
-  export class ELEMENT extends LitElement {
+  export class ELEMENT extends SlottedMixin(LitElement) {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
@@ -29,12 +30,12 @@ export namespace FloatingModal {
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({type: Object}) location: {
-      x: any;
-      y: any;
+      x: number;
+      y: number;
     } | undefined;
     @property({type: Object}) minlocation: {
-      x: any;
-      y: any;
+      x: number;
+      y: number;
     } | undefined;
     @property({ type: Boolean, reflect: true }) minimizable = false;
     
@@ -51,10 +52,12 @@ export namespace FloatingModal {
     @internalProperty() private dragOccured: boolean | false = false;
     @internalProperty() private minimizeLocation: String = '';
 
-    private containerTransform = this.location ? `translate(${this.location.x}px, ${this.location.y}px)`: '';
-    private minimizeTransform: string= "";
+    @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
-    private onlyFirst = true;
+    
+    private containerTransform = this.location ? `translate(${this.location.x}px, ${this.location.y}px)`: '';
+
+    private applyInitialPosition = true;
 
     get floatingClassMap() {
       return {
@@ -70,15 +73,21 @@ export namespace FloatingModal {
       super.updated(changedProperties);
       if (changedProperties.has("show")) {
         if (this.container && this.show) {
-          this.onlyFirst = true;
+          this.applyInitialPosition = true;
           this.setContainerRect();
           this.setInteractInstance();
+          this.minimizable && this.slottedChildren();
         } else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
         }
       }
-      this.minimizable && this.slottedChildren();
+      if (this.container &&changedProperties.has("location") && changedProperties.size === 1) {
+        if(Number(this.container?.getAttribute("data-x")) !== this.location?.x  || Number(this.container?.getAttribute("data-y")) !==this.location?.y) {
+         this.setTargetPosition(this.container,  Number(this.location?.x), Number(this.location?.y));
+        }
+      } 
+     
     }
 
     private cleanContainerStyles() {
@@ -98,7 +107,7 @@ export namespace FloatingModal {
               }
           })
         );
-        return `translate(${dataX}px, ${dataY}px)`;
+        return `translate(${dataX}px, ${dataY}px)`;;
       }
       return this.container!.style.transform;
     }
@@ -182,13 +191,16 @@ export namespace FloatingModal {
       this.full = !this.full;
     }
 
+    /**
+     * Add the same slot as in parent into minimized header
+     */
     slottedChildren() {
-      const slot: HTMLSlotElement | undefined | null = this.container?.parentNode?.querySelector('slot[name="header"]');
-      let slotCopy : HTMLSlotElement | undefined | null = slot;
-      let t = slotCopy?.assignedNodes({flatten: true})[0].cloneNode(true);
-      if(this.minimizedHeader.children[0].children.length === 0 && t) {
-        console.log('minimized', this.minimizedHeader.children[0]?.appendChild(t));
-      }
+      // console.log('headerslot', this.headerSlot.assignedElements());
+      // const slot: HTMLSlotElement | undefined | null = this.container?.parentNode?.querySelector('slot[name="header"]');
+      // const slotHeaderNode = slot?.assignedNodes({flatten: true})[0].cloneNode(true);
+      // if(this.minimizedHeader?.children[0]?.children.length === 0 && slotHeaderNode) {
+      //   this.minimizedHeader.children[0]?.appendChild(slotHeaderNode);
+      // }
     }
 
     private resizeMoveListener = (event: Interact.ResizeEvent) => {
@@ -211,9 +223,9 @@ export namespace FloatingModal {
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.onlyFirst && this.location ? Number(this.location?.x) : 0);
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.onlyFirst  && this.location ? Number(this.location?.y) : 0);
-      this.onlyFirst = false;
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.applyInitialPosition && this.location ? Number(this.location?.x) : 0);
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.applyInitialPosition  && this.location ? Number(this.location?.y) : 0);
+      this.applyInitialPosition = false;
 
       this.setTargetPosition(target, x, y);
     };
@@ -275,7 +287,8 @@ export namespace FloatingModal {
                           ${this.heading}
                         `
                       : html`
-                          <slot name="header"></slot>
+                          ${!this.minimize && html`<slot name="header"></slot>`}
+                         
                         `}
                   </div>
                   ${this.minimizable ? html `
@@ -315,16 +328,18 @@ export namespace FloatingModal {
                 </div>
               </div>
               ${this.minimizable ? html`
-                <div class="md-floating-min-parent" part="floatingg">
+                <div class="md-floating-min-parent" part="minimize-floating">
                   <md-floating-modal-minimized
                       class="float-modal-min"
                       part="floating-minimized"
+                      heading=${this.heading}
                       .minimize=${this.minimize}
                       .location=${this.minlocation}
                       @floating-modal-minimize=${(event: MouseEvent) => this.handleMinimize(event)}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}
                       >
+                      ${this.minimize && this.headerSlot}
                   </md-floating-modal-minimized>
               </div>` : nothing}
              

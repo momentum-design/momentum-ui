@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import "@/components/floating-modal/FloatingModal";
-import '@/components/floating-modal/FloatingMinimizedModal';
 import { css, customElement, html, LitElement, property } from "lit-element";
+import { debounce } from "@/utils/helpers";
 
 const data =
   "Group, Action, Shortcut Key \n Active Task List, Switch between tasks, Ctrl + Alt + T \n Active Task List, Expand and collapse task list, Ctrl + Alt + C \n Agent State, Available for all channels including call chat email and social channel, Ctrl + Alt + R \n Active Agent State List, Idle for all channels, Ctrl + Alt + N \n Application, Switch between popovers, Ctrl + Alt + E \n Application, Maximize and minimize popover view maximize and minimize, Ctrl + Alt + Q \n Call Handling, Open the list of chat templates, Ctrl + Alt + A \n Call Handling, Attach a file to the chat, Ctrl + Alt + S \n Edit CAD Variables, Save edited call variable values, Ctrl + Alt + O \n Edit CAD Variables, Revert edited call variable values, Ctrl + Alt + N \n Email Handling, Send email, Ctrl + Alt + S \n Email Handling, Reply, Ctrl + Alt + O";
@@ -16,6 +16,15 @@ export class FloatingTemplateSandbox extends LitElement {
     this.isOpen = true;
   }
 
+  private resetLocation() {
+    this.minLocation = {x: 0, y:0};
+    localStorage.removeItem('min-location');
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('resize', debounce(() => this.resetLocation(), 250));
+  }
   private closeFloatingModal() {
     this.isOpen = false;
   }
@@ -42,9 +51,11 @@ export class FloatingTemplateSandbox extends LitElement {
         overflow: hidden;
         height: 500px;
         width: 800px;
+        right: 0%;
+        bottom: 0%;
       }
       
-      .float-modal::part(floatingg){
+      .float-modal::part(minimize-floating){
         right: 0;
         bottom: 0;
       }
@@ -68,12 +79,13 @@ export class FloatingTemplateSandbox extends LitElement {
         class="float-modal"
         ?show=${this.isOpen}
         minimizable
+        .location=${this.location}
+        .minlocation=${this.minLocation}
         @floating-modal-close=${() => this.closeFloatingModal()}
         @floating-modal-minimize-location=${this.saveMinLocation}
         @floating-modal-location=${this.saveLocation}
       >
        <div slot="header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>
-       <div slot="minimized-header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>
        <iframe id="youtube" style="height:100%; width:100%" src="https://youtube.com" onload="${this.setFocus}" >
         <iframe>
       </md-floating-modal>

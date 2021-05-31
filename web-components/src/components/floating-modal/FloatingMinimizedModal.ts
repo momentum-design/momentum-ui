@@ -13,7 +13,7 @@ import "@interactjs/modifiers";
 import "@interactjs/actions/resize";
 import * as Interact from "@interactjs/types";
 import interact from "@interactjs/interact/index";
-import { throttle, debounce } from "@/utils/helpers";
+import { debounce } from "@/utils/helpers";
 
 export namespace FloatingMinimizedModal {
   @customElementWithCheck("md-floating-modal-minimized")
@@ -21,50 +21,50 @@ export namespace FloatingMinimizedModal {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
-    @property({ type: Boolean, reflect: true, attribute: "aspect-ratio" }) aspectRatio = false;
-    @property({ type: Boolean, reflect: true, attribute: "fixed-strategy" }) fixed = false;
-    @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
-    @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: Boolean, reflect: true }) minimize = false;
-    @property({ type: String, attribute: "container-transform" }) containerTransform = "";
+    
     @property({type: Object}) location: {
-      x: any;
-      y: any;
+      x: number;
+      y: number;
     } | undefined;
 
     @query(".md-floating-min") container?: HTMLDivElement;
-    @query(".md-floating__body") body!: HTMLDivElement;
     @query(".md-floating__header") header!: HTMLDivElement;
 
     @internalProperty() private containerRect: DOMRect | null = null;
+    // To distinguish between click and drag  
     @internalProperty() private dragOccured: Boolean | false = false;
+    @internalProperty() private containerTransform: String = "";
 
-    private minimizeTransform: string= "";
-
-    private onlyFirst = true;
-
-    get floatingClassMap() {
-      return {
-        fixed: this.fixed
-      };
-    }
+    private applyInitialPosition = true;
 
     static get styles() {
       return [reset, styles];
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+      window.addEventListener('resize', debounce(() => this.setInteractInstance(), 250));
     }
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("show")) {
         if (this.container && this.show) {
-          this.onlyFirst = true;
+          this.applyInitialPosition = true;
           this.setContainerRect();
           this.setInteractInstance();
-        } else {
+        } 
+         else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
         }
+      }
+      if (this.container &&changedProperties.has("location") && changedProperties.size === 1) {
+       if(Number(this.container?.getAttribute("data-x")) !== this.location?.x  || Number(this.container?.getAttribute("data-y")) !==this.location?.y) {
+        this.setTargetPosition(this.container,  Number(this.location?.x), Number(this.location?.y));
+        } 
       }
     }
 
@@ -106,7 +106,6 @@ export namespace FloatingMinimizedModal {
             .draggable({
               autoScroll: true,
               allowFrom: this.header,
-              ignoreFrom: this.body,
               listeners: {
                 move: this.dragMoveListener,
                 end: this.dragEndListener
@@ -119,13 +118,11 @@ export namespace FloatingMinimizedModal {
             });
         }
       });
-
-      window.addEventListener('resize', debounce(() => this.setInteractInstance(), 250));
+   
     }
 
     handleClose(event: MouseEvent) {
       this.show = false;
-      this.full = false;
 
       this.dispatchEvent(
         new CustomEvent("floating-modal-close", {
@@ -154,15 +151,13 @@ export namespace FloatingMinimizedModal {
     }
 
 
-    handleToggleExpandCollapse() {
-      this.full = !this.full;
-    }
-
     private dragMoveListener = (event: Interact.InteractEvent) => {
+     
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.onlyFirst && this.location ? Number(this.location?.x) : 0);
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.onlyFirst  && this.location ? Number(this.location?.y) : 0);
-      this.onlyFirst = false;
+     
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.applyInitialPosition && this.location ? Number(this.location?.x) : 0);
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.applyInitialPosition  && this.location ? Number(this.location?.y) : 0);
+      this.applyInitialPosition = false;
 
       this.setTargetPosition(target, x, y);
     };
@@ -187,6 +182,7 @@ export namespace FloatingMinimizedModal {
     disconnectedCallback() {
       super.disconnectedCallback();
       this.destroyInteractInstance();
+      window.removeEventListener('resize', debounce(() => this.setInteractInstance(), 250));
     }
 
     render() {
@@ -209,7 +205,7 @@ export namespace FloatingMinimizedModal {
                           ${this.heading}
                         `
                       : html`
-                          <slot name="header"></slot>
+                          <slot></slot>
                         `}
                   </div>
                   <md-button
@@ -222,7 +218,6 @@ export namespace FloatingMinimizedModal {
                     <md-icon name="cancel_16"></md-icon>
                   </md-button>
                 </div>
-              </div>
             `
           : nothing}
       `;

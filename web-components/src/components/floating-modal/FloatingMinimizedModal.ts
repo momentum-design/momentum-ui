@@ -189,8 +189,7 @@ export namespace FloatingMinimizedModal {
       return html`
         ${this.show
           ? html`     
-              <div
-                class="md-floating-min ${!this.minimize ? 'hide' : ''} md-floating-minimize"   
+              <div class="md-floating-min ${!this.minimize ? 'hide' : ''} md-floating-minimize"   
                 role="dialog"
                 part="floating-minimized"
                 aria-label=${ifDefined(this.label || undefined)}
@@ -218,6 +217,7 @@ export namespace FloatingMinimizedModal {
                     <md-icon name="cancel_16"></md-icon>
                   </md-button>
                 </div>
+              </div>
             `
           : nothing}
       `;

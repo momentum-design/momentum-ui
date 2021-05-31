@@ -54,7 +54,9 @@ export namespace FloatingModal {
 
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
-    
+    get slotItem() {
+      return this.headerSlot;
+    }
     private containerTransform = this.location ? `translate(${this.location.x}px, ${this.location.y}px)`: '';
 
     private applyInitialPosition = true;
@@ -76,7 +78,6 @@ export namespace FloatingModal {
           this.applyInitialPosition = true;
           this.setContainerRect();
           this.setInteractInstance();
-          this.minimizable && this.slottedChildren();
         } else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
@@ -191,17 +192,6 @@ export namespace FloatingModal {
       this.full = !this.full;
     }
 
-    /**
-     * Add the same slot as in parent into minimized header
-     */
-    slottedChildren() {
-      // console.log('headerslot', this.headerSlot.assignedElements());
-      // const slot: HTMLSlotElement | undefined | null = this.container?.parentNode?.querySelector('slot[name="header"]');
-      // const slotHeaderNode = slot?.assignedNodes({flatten: true})[0].cloneNode(true);
-      // if(this.minimizedHeader?.children[0]?.children.length === 0 && slotHeaderNode) {
-      //   this.minimizedHeader.children[0]?.appendChild(slotHeaderNode);
-      // }
-    }
 
     private resizeMoveListener = (event: Interact.ResizeEvent) => {
       const { target } = event;
@@ -261,6 +251,7 @@ export namespace FloatingModal {
       return html`
         ${this.show
           ? html`
+              <slot name="header"></slot>
               <div
                 class="md-floating ${this.fixed ? "fixed" : ''} ${this.minimize ? "hide" : ''}"
                 part="floating"
@@ -286,9 +277,8 @@ export namespace FloatingModal {
                       ? html`
                           ${this.heading}
                         `
-                      : html`
-                          ${!this.minimize && html`<slot name="header"></slot>`}
-                         
+                      : html` 
+                          ${!this.minimize && this.headerSlot}
                         `}
                   </div>
                   ${this.minimizable ? html `

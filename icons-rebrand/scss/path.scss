@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixins';
+
+@include exports('momentum-ui-icons-path') {
+
+  @font-face {
+    font-family: $icon-font-name;
+    src: url("#{$icon-font-path}/momentum-ui-icons-rebrand.woff2?4bdaaadc62f32386556759a4b85b4456") format("woff2"),
+      url("#{$icon-font-path}/momentum-ui-icons-rebrand.woff?7b0970561eee961afe33550dc4b6cd56") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+}

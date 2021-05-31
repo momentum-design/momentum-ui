@@ -22,8 +22,11 @@
     &--blue {
       @include link-color(
         $color: $md-theme-50,
+        $color-css-var: --md-textColor-hyperlink-color,
         $color-hover: $md-theme-60,
-        $color-active: $md-theme-70
+        $color-hover-css-var: --md-textColor-hyperlink-hover,
+        $color-active: $md-theme-70,
+        $color-active-css-var: --md-textColor-hyperlink-focus
       );
     }
 

@@ -46,7 +46,7 @@ describe("Tab", () => {
       const id = nanoid();
       const el = await fixture<Tab.ELEMENT>(
         html`
-          <md-tab id=${id}></md-tab>
+          <md-tab id=${id} name="test-tab"></md-tab>
         `
       );
 

@@ -106,7 +106,7 @@ export namespace Tabs {
     private hiddenTabsSortableInstance: Sortable | null = null;
 
     private getCopyTabId(tab: Tab.ELEMENT) {
-      if (tab.id.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
+      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
         return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
       } else {
         return tab.id;
@@ -513,11 +513,11 @@ export namespace Tabs {
       const currentTabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
       const newIndex = currentTabsOrder.findIndex(element => element.id === newSelectedTabId);
-      
-      const newTabArrangement : string[] = []
-      currentTabsOrder.forEach((tabElement) => {
-        newTabArrangement.push(tabElement.name)
-      })
+
+      const newTabArrangement: string[] = [];
+      currentTabsOrder.forEach(tabElement => {
+        newTabArrangement.push(tabElement.name);
+      });
 
       this.dispatchEvent(
         new CustomEvent("selected-changed", {
@@ -536,12 +536,12 @@ export namespace Tabs {
       this.selected = newSelectedTabIdx;
       this.updateComplete.then(() => {
         if (newSelectedTabIdx < this.tabsFilteredAsVisibleList.length) {
-          (this.visibleTabsContainerElement?.children[this.selected] as HTMLElement).focus();
+          (this.visibleTabsContainerElement?.children[this.selected] as HTMLElement)?.focus();
         } else {
           const hiddenTabIdx = this.selected - this.tabsFilteredAsVisibleList.length;
-          (this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement).focus();
+          (this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement)?.focus();
           const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
-          !newHiddenTab.disabled && this.updateHiddenIdPositiveTabIndex(newHiddenTab);
+          !newHiddenTab?.disabled && this.updateHiddenIdPositiveTabIndex(newHiddenTab);
         }
       });
       this.updateIsMoreTabMenuSelected();
@@ -606,7 +606,6 @@ export namespace Tabs {
               this.changeSelectedTabIdx(lastVisibleTabIdx);
             }
           } else if (isVisibleTab) {
-            console.log("HEllo", this.selected)
             const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
             this.changeSelectedTabIdx(oldSelectedIndex);
           } else if (isHiddenTab) {
@@ -762,8 +761,25 @@ export namespace Tabs {
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
+      
+      // if(changedProperties.has("slotted")){
+      //   console.log("Luffy_Updated_SLOtted", changedProperties)
+      //   this.tabs=[]
+      //   this.panels=[]
+      //   this.tabsFilteredAsVisibleList=[]
+      //   this.tabsFilteredAsHiddenList=[]
+      //   this.isMoreTabMenuVisible=false
+      //   this.setupPanelsAndTabs();
+      //   this.linkPanelsAndTabs();        
+      //   this.initializeSortable();
+      //   this.requestUpdate();
+      //   this.manageOverflow()        
+      //   this.requestUpdate();
+      // }
+
       if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
         this.initializeSortable();
+        this.manageOverflow(); //added for test purposes being called anyways 
       }
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {

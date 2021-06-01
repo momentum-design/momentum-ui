@@ -55,7 +55,7 @@ const ThemeSelect = () => {
           headerLabel='Theme Colors'
           showCloseButton
         />
-        <ModalBody style={{backgroundColor: "var(--md-background-primary)", color: 'var(--md-textColor-primary)'}}>
+        <ModalBody>
           {colors()}
         </ModalBody>
       </Modal>

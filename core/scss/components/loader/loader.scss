@@ -10,6 +10,7 @@
 
     @include spinner-style(
       $border: $spinner--gray__border-color,
+      $border-css-var: --md-separator-secondary,
       $border-progress-left: $spinner-progress--black__border-color,
       $border-progress: transparent
     );

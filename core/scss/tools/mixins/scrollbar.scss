@@ -22,9 +22,9 @@
   $width,
   $background: mix($foreground, white, 50%),
   $box-shadow: none,
-  $border-color-css-var: null,
-  $background-css-var: null,
-  $hover-background-css-var: null,
+  $border-color-css-var: --null,
+  $background-css-var: --null,
+  $hover-background-css-var: --null,
   $hover-background: $background,
 ) {
   // For Google Chrome

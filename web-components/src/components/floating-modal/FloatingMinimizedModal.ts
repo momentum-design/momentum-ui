@@ -61,7 +61,7 @@ export namespace FloatingMinimizedModal {
           this.destroyInteractInstance();
         }
       }
-      if (this.container &&changedProperties.has("location") && changedProperties.size === 1) {
+      if (this.container && changedProperties.has("location") && !changedProperties.has("show")) {
        if(Number(this.container?.getAttribute("data-x")) !== this.location?.x  || Number(this.container?.getAttribute("data-y")) !==this.location?.y) {
         this.setTargetPosition(this.container,  Number(this.location?.x), Number(this.location?.y));
         } 

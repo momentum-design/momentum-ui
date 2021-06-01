@@ -1,18 +1,18 @@
 @mixin checkbox-color(
   $border-color: null,
-  $border-color-css-var: null,
+  $border-color-css-var: --null,
   $background-color: null,
-  $background-color-css-var: null,
+  $background-color-css-var: --null,
   $background-color--disabled: null,
-  $background-color--disabled-css-var: null,
+  $background-color--disabled-css-var: --null,
   $background-color--hover: null,
-  $background-color--hover-css-var: null,
+  $background-color--hover-css-var: --null,
   $background-color--checked: null,
-  $background-color--checked-css-var: null,
+  $background-color--checked-css-var: --null,
   $background-color--checked-hover: null,
-  $background-color--checked-hover-css-var: null,
+  $background-color--checked-hover-css-var: --null,
   $label-color: null,
-  $label-color-css-var: null,
+  $label-color-css-var: --null,
 ) {
   .#{$checkbox__class}__input {
     // Base Checkbox - Not Checked

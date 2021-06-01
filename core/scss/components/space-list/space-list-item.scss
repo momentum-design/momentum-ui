@@ -56,7 +56,7 @@
       );
       @include list-item-color(
         $background-color: $list-item--space__background,
-        $background-color-css-var: null,
+        $background-color-css-var: --null,
         $color: $list-item--space__color,
         $color-css-var: --md-space__background-primary,
         $hover-bgrd-color: $list-item--space__background--hover,
@@ -290,13 +290,13 @@
           .#{$list-item__class} {
             @include list-item-color(
               $background-color: $list-item__background,
-              $background-color-css-var: null,
+              $background-color-css-var: --null,
               $focus-color: transparent,
-              $focus-color-css-var: null,
+              $focus-color-css-var: --null,
               $hover-bgrd-color: $list-item__background,
-              $hover-bgrd-color-css-var: null,
+              $hover-bgrd-color-css-var: --null,
               $active-bgrd-color: $list-item__background,
-              $active-bgrd-color-css-var: null,
+              $active-bgrd-color-css-var: --null,
             );
           }
         }

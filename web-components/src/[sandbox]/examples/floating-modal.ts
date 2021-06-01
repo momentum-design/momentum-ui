@@ -10,7 +10,7 @@ const data =
 export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
   @property({ type: Boolean }) isMin = false;
-  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x:689, y:173};
+  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x: 681.18, y: 150};
   @property({type: Object}) minLocation = localStorage.getItem('min-location') !== null? JSON.parse(localStorage.getItem('min-location') || "") : {x:0, y:0};
   private openFloatingModal() {
     this.isOpen = true;
@@ -23,7 +23,6 @@ export class FloatingTemplateSandbox extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('resize', debounce(() => this.resetLocation(), 250));
   }
   private closeFloatingModal() {
     this.isOpen = false;
@@ -76,9 +75,9 @@ export class FloatingTemplateSandbox extends LitElement {
       <md-floating-modal
         class="float-modal"
         ?show=${this.isOpen}
-        minimizable
         .location=${this.location}
         .minlocation=${this.minLocation}
+        minimizable
         @floating-modal-close=${() => this.closeFloatingModal()}
         @floating-modal-minimize-location=${this.saveMinLocation}
         @floating-modal-location=${this.saveLocation}

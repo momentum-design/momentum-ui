@@ -613,7 +613,7 @@
         $bg-hover: transparent,
         $bg-active: transparent,
         $color-disabled: $button__link-color--disabled,
-        $color-disabled-css-var: --md-textColor-disabled
+        $color-disabled-css-var: --md-button-disabled-text-color,
       );
       @include button-color-fill(
         $fill: $md-gray-70,

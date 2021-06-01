@@ -1,0 +1,961 @@
+@import '../mixins';
+@import 'placeholder-mapping';
+
+@include exports('spark-icons-symphony') {
+  /**************************
+  Symphony icon mapping
+  DO NOT USE
+**************************/
+  .icon-ac-power:before {
+    @include icon-power-ac_16;
+  }
+  .icon-account:before {
+    @include icon-adjust_16;
+  }
+  .icon-acessibility:before {
+    @include icon-accessibility_16;
+  }
+  .icon-active-speaker-cross:before {
+    @include icon-active-speaker-muted_16;
+  }
+  .icon-active-speaker:before {
+    @include icon-active-speaker_16;
+  }
+  .icon-activities:before {
+    @include icon-activities_16;
+  }
+  .icon-add-contact:before {
+    @include icon-participant-add_20;
+  }
+  .icon-add-contain:before {
+    @include icon-add_16;
+  }
+  .icon-add-outline:before {
+    @include icon-add_16;
+  }
+  .icon-add-users:before {
+    @include icon-participant-add_20;
+  }
+  .icon-add:before {
+    @include icon-plus_16;
+  }
+  .icon-admin:before {
+    @include icon-admin_16;
+  }
+  .icon-alarm:before {
+    @include icon-alarm_16;
+  }
+  .icon-analysis-active:before {
+    @include icon-analysis_16;
+  }
+  .icon-analysis:before {
+    @include icon-analysis_16;
+  }
+  .icon-annotation:before {
+    @include icon-annotation_16;
+  }
+  .icon-application:before {
+    @include icon-application_16;
+  }
+  .icon-applications:before {
+    @include icon-applications_16;
+  }
+  .icon-arrow-back:before {
+    @include icon-arrow-left_16;
+  }
+  .icon-arrow-down:before {
+    @include icon-arrow-down_16;
+  }
+  .icon-arrow-left-tail:before {
+    @include icon-back_16;
+  }
+  .icon-arrow-next:before {
+    @include icon-arrow-right_16;
+  }
+  .icon-arrow-right-tail:before {
+    @include icon-next_16;
+  }
+  .icon-arrow-up:before {
+    @include icon-arrow-up_16;
+  }
+  .icon-at:before {
+    @include icon-mention_16;
+  }
+  .icon-attachment:before {
+    @include icon-attachment_16;
+  }
+  .icon-audio-broadcast:before {
+    @include icon-audio-broadcast_16;
+  }
+  .icon-audio-min:before {
+    @include icon-speaker-off_16;
+  }
+  .icon-audio-plus:before {
+    @include icon-speaker_16;
+  }
+  .icon-audio:before {
+    @include icon-speaker_16;
+  }
+  .icon-aux-camera:before {
+    @include icon-camera-aux_16;
+  }
+  .icon-back:before {
+    @include icon-back_16;
+  }
+  .icon-bars:before {
+    @include icon-analysis_16;
+  }
+  .icon-bell-cross:before {
+    @include icon-alert-muted_16;
+  }
+  .icon-bell:before {
+    @include icon-alert_16;
+  }
+  .icon-blocked:before {
+    @include icon-blocked_16;
+  }
+  .icon-bookmark:before {
+    @include icon-bookmark_16;
+  }
+  .icon-bot-four:before {
+    @include icon-bot_36;
+  }
+  .icon-bot-five:before {
+    @include icon-bot_36;
+  }
+  .icon-bot-six:before {
+    @include icon-bot_36;
+  }
+  .icon-brightness:before {
+    @include icon-brightness_16;
+  }
+  .icon-broadcast-message:before {
+    @include icon-broadcast-message_16;
+  }
+  .icon-browser:before {
+    @include icon-browser_16;
+  }
+  .icon-cal:before {
+    @include icon-calendar-month_16;
+  }
+  .icon-call-forwarding:before {
+    @include icon-call-forward_16;
+  }
+  .icon-call-handling:before {
+    @include icon-call-handling_16;
+  }
+  .icon-calls:before {
+    @include icon-handset_16;
+  }
+  .icon-camera:before {
+    @include icon-camera-photo_16;
+  }
+  .icon-certified:before {
+    @include icon-certified_16;
+  }
+  .icon-chat:before {
+    @include icon-chat_16;
+  }
+  .icon-chats:before {
+    @include icon-chat-group_16;
+  }
+  .icon-check-mark-success:before {
+    @include icon-check-circle_24;
+  }
+  .icon-check:before {
+    @include icon-check_16;
+  }
+  .icon-checkbox:before {
+    @include icon-check_16;
+  }
+  .icon-chevron-down:before {
+    @include icon-arrow-down_16;
+  }
+  .icon-chevron-left:before {
+    @include icon-arrow-left_16;
+  }
+  .icon-chevron-right:before {
+    @include icon-arrow-right_16;
+  }
+  .icon-chevron-up:before {
+    @include icon-arrow-up_16;
+  }
+  .icon-circle-arrow-down:before {
+    @include icon-arrow-circle-down_16;
+  }
+  .icon-circle-arrows-circular:before {
+    @include icon-refresh_16;
+  }
+  .icon-circle-arrows-cross:before {
+    @include icon-pto_16;
+  }
+  .icon-circle-calendar:before {
+    @include icon-calendar-month_16;
+  }
+  .icon-circle-call:before {
+    @include icon-handset_16;
+  }
+  .icon-circle-check-mark-success:before {
+    @include icon-check-circle_24;
+  }
+  .icon-circle-check:before {
+    @include icon-check-circle_24;
+  }
+  .icon-circle-clock-hands:before {
+    @include icon-recents_16;
+  }
+  .icon-circle-clock:before {
+    @include icon-recents_16;
+  }
+  .icon-circle-comp-negative:before {
+    @include icon-error_16;
+  }
+  .icon-circle-computer-blank:before {
+    @include icon-laptop_16;
+  }
+  .icon-circle-contact-centre:before {
+    @include icon-headset_16;
+  }
+  .icon-circle-data:before {
+    @include icon-server_16;
+  }
+  .icon-circle-download:before {
+    @include icon-download_16;
+  }
+  .icon-circle-email:before {
+    @include icon-email-read_16;
+  }
+  .icon-circle-flag:before {
+    @include icon-flag-circle_16;
+  }
+  .icon-circle-globe:before {
+    @include icon-language_16;
+  }
+  .icon-circle-group:before {
+    @include icon-chat-group_16;
+  }
+  .icon-circle-hg-circular:before {
+    @include icon-recurring_16;
+  }
+  .icon-circle-links:before {
+    @include icon-link_16;
+  }
+  .icon-circle-location:before {
+    @include icon-location_16;
+  }
+  .icon-circle-lock:before {
+    @include icon-secure_16;
+  }
+  .icon-circle-message:before {
+    @include icon-chat_16;
+  }
+  .icon-circle-more:before {
+    @include icon-more-circle_16;
+  }
+  .icon-circle-question:before {
+    @include icon-help-circle_16;
+  }
+  .icon-circle-star:before {
+    @include icon-favorite_16;
+  }
+  .icon-circle-telepresence:before {
+    @include icon-endpoint_16;
+  }
+  .icon-circle-unlock:before {
+    @include icon-unsecure_16;
+  }
+  .icon-circle-upload:before {
+    @include icon-upload_16;
+  }
+  .icon-circle-user:before {
+    @include icon-people-circle_16;
+  }
+  .icon-circle-webex:before {
+    @include icon-webex_16;
+  }
+  .icon-circle-world:before {
+    @include icon-headset_16;
+  }
+  .icon-circle:before {
+    @include icon-unread-badge_16;
+  }
+  .icon-cisco-logo:before {
+    @include icon-cisco-logo;
+  }
+  .icon-clipboard:before {
+    @include icon-notepad_16;
+  }
+  .icon-clock:before {
+    @include icon-recents_16;
+  }
+  .icon-close-keyboard:before {
+    @include icon-keyboard-close_16;
+  }
+  .icon-close:before {
+    @include icon-cancel_16;
+  }
+  .icon-cloud-active:before {
+    @include icon-cloud_16;
+  }
+  .icon-cloud:before {
+    @include icon-cloud_16;
+  }
+  .icon-cog:before {
+    @include icon-settings_16;
+  }
+  .icon-company-active:before {
+    @include icon-company_32;
+  }
+  .icon-computer:before {
+    @include icon-computer_16;
+  }
+  .icon-conference:before {
+    @include icon-team_16;
+  }
+  .icon-contact-card:before {
+    @include icon-contact-card_16;
+  }
+  .icon-contact:before {
+    @include icon-people_16;
+  }
+  .icon-content-share:before {
+    @include icon-export_16;
+  }
+  .icon-convo:before {
+    @include icon-chat-group_16;
+  }
+  .icon-create-page:before {
+    @include icon-document-create_16;
+  }
+  .icon-data-usage:before {
+    @include icon-data-usage_16;
+  }
+  .icon-data:before {
+    @include icon-server_16;
+  }
+  .icon-delete:before {
+    @include icon-backspace_16;
+  }
+  .icon-desk-phone:before {
+    @include icon-deskphone_16;
+  }
+  .icon-devices:before {
+    @include icon-endpoint_16;
+  }
+  .icon-diagnostics:before {
+    @include icon-diagnostics_32;
+  }
+  .icon-diagnostics-active:before {
+    @include icon-diagnostics_32;
+  }
+  .icon-dial:before {
+    @include icon-dialpad_16;
+  }
+  .icon-directory:before {
+    @include icon-directory_24;
+  }
+  .icon-display:before {
+    @include icon-display_16;
+  }
+  .icon-do-not-disturb:before {
+    @include icon-blocked_16;
+  }
+  .icon-document:before {
+    @include icon-document_16;
+  }
+  .icon-download:before {
+    @include icon-download_16;
+  }
+  .icon-edit:before {
+    @include icon-edit_16;
+  }
+  .icon-email:before {
+    @include icon-email_16;
+  }
+  .icon-emoticons:before {
+    @include icon-emoticons_16;
+  }
+  .icon-end-call:before {
+    @include icon-cancel_16;
+  }
+  .icon-endpoint-active:before {
+    @include icon-endpoint_32;
+  }
+  .icon-endpoint:before {
+    @include icon-endpoint_16;
+  }
+  .icon-eraser:before {
+    @include icon-eraser_16;
+  }
+  .icon-error:before {
+    @include icon-error_16;
+  }
+  .icon-ethernet:before {
+    @include icon-ethernet_16;
+  }
+  .icon-exernal-calendar:before {
+    @include icon-calendar-external_16;
+  }
+  .icon-exit-contain:before {
+    @include icon-clear-active_16;
+  }
+  .icon-exit-outline:before {
+    @include icon-clear_16;
+  }
+  .icon-exit:before {
+    @include icon-cancel_16;
+  }
+  .icon-export:before {
+    @include icon-export_16;
+  }
+  .icon-extension-mobility:before {
+    @include icon-extension-mobility_16;
+  }
+  .icon-fbw:before {
+    @include icon-fbw_16;
+  }
+  .icon-feedback:before {
+    @include icon-feedback_16;
+  }
+  .icon-filter:before {
+    @include icon-filter-circle_20;
+  }
+  .icon-flagged:before {
+    @include icon-flag_16;
+  }
+  .icon-folder:before {
+    @include icon-files_16;
+  }
+  .icon-forced-sign-in:before {
+    @include icon-sign-in-forced_16;
+  }
+  .icon-fullscreen:before {
+    @include icon-fullscreen_16;
+  }
+  .icon-grid-large:before {
+    @include icon-view-thumbnail_16;
+  }
+  .icon-grid-list:before {
+    @include icon-view-list_16;
+  }
+  .icon-hamburger-menu:before {
+    @include icon-list-menu_16;
+  }
+  .icon-headset-cross:before {
+    @include icon-headset-muted_16;
+  }
+  .icon-headset:before {
+    @include icon-headset_16;
+  }
+  .icon-help-outline:before {
+    @include icon-help-circle_16;
+  }
+  .icon-help:before {
+    @include icon-help-circle_16;
+  }
+  .icon-home-active:before {
+    @include icon-house_16;
+  }
+  .icon-home:before {
+    @include icon-house_16;
+  }
+  .icon-hunt-group:before {
+    @include icon-hunt-group_16;
+  }
+  .icon-image-contain:before {
+    @include icon-hunt-group_16;
+  }
+  .icon-image:before {
+    @include icon-file-image_24;
+  }
+  .icon-import:before {
+    @include icon-import_16;
+  }
+  .icon-incoming-call:before {
+    @include icon-call-incoming_16;
+  }
+  .icon-indeterminate:before {
+    @include icon-minus_16;
+  }
+  .icon-info-outline:before {
+    @include icon-info_16;
+  }
+  .icon-info:before {
+    @include icon-info_16;
+  }
+  .icon-information:before {
+    @include icon-info_16;
+  }
+  .icon-instant-meeting:before {
+    @include icon-webex-instant-meeting_16;
+  }
+  .icon-invite:before {
+    @include icon-email-invite_16;
+  }
+  .icon-keyboard:before {
+    @include icon-keyboard_16;
+  }
+  .icon-language:before {
+    @include icon-language_16;
+  }
+  .icon-laser-pointer:before {
+    @include icon-laser-pointer_16;
+  }
+  .icon-layout:before {
+    @include icon-layout-side-by-side-vertical_16;
+  }
+  .icon-leave-meeting:before {
+    @include icon-exit-room_16;
+  }
+  .icon-left-arrow:before {
+    @include icon-arrow-left_16;
+  }
+  .icon-lightbulb:before {
+    @include icon-room-lights_16;
+  }
+  .icon-like:before {
+    @include icon-like_16;
+  }
+  .icon-line-out-left:before {
+    @include icon-speaker-line-out-left_16;
+  }
+  .icon-line-out-right:before {
+    @include icon-speaker-line-out-right_16;
+  }
+  .icon-link:before {
+    @include icon-link_16;
+  }
+  .icon-list-menu:before {
+    @include icon-list-menu_16;
+  }
+  .icon-list-view:before {
+    @include icon-view-list_16;
+  }
+  .icon-location-active:before {
+    @include icon-location_28;
+  }
+  .icon-location:before {
+    @include icon-location_28;
+  }
+  .icon-lock:before {
+    @include icon-secure_16;
+  }
+  .icon-locked-speaker:before {
+    @include icon-active-speaker-locked_24;
+  }
+  .icon-maximize:before {
+    @include icon-maximize_16;
+  }
+  .icon-meet-me:before {
+    @include icon-enter-room_16;
+  }
+  .icon-meeting-room:before {
+    @include icon-team_16;
+  }
+  .icon-message:before {
+    @include icon-chat_16;
+  }
+  .icon-mic-in:before {
+    @include icon-audio-input_16;
+  }
+  .icon-microphone:before {
+    @include icon-microphone_16;
+  }
+  .icon-minimize:before {
+    @include icon-minimize_16;
+  }
+  .icon-minus:before {
+    @include icon-minus_16;
+  }
+  .icon-mobile-phone:before {
+    @include icon-phone-ios_16;
+  }
+  .icon-month:before {
+    @include icon-calendar-month_16;
+  }
+  .icon-more:before {
+    @include icon-more_16;
+  }
+  .icon-move-page:before {
+    @include icon-document-move_16;
+  }
+  .icon-music:before {
+    @include icon-adjust-audio_24;
+  }
+  .icon-mute:before {
+    @include icon-microphone-muted_16;
+  }
+  .icon-no-signal:before {
+    @include icon-signal-0_16;
+  }
+  .icon-notes:before {
+    @include icon-notes_16;
+  }
+  .icon-outgoing-call:before {
+    @include icon-call-outgoing_16;
+  }
+  .icon-paired-audio:before {
+    @include icon-paired-handset_24;
+  }
+  .icon-paired-call:before {
+    @include icon-paired-camera_24;
+  }
+  .icon-pause:before {
+    @include icon-pause_16;
+  }
+  .icon-pc:before {
+    @include icon-laptop_16;
+  }
+  .icon-pencil:before {
+    @include icon-edit_16;
+  }
+  .icon-people-active:before {
+    @include icon-people_28;
+  }
+  .icon-persistent-chat:before {
+    @include icon-chat-group_16;
+  }
+  .icon-phone-cross:before {
+    @include icon-handset-muted_16;
+  }
+  .icon-phone:before {
+    @include icon-handset_16;
+  }
+  .icon-picture-in-picture:before {
+    @include icon-picture-in-picture_16;
+  }
+  .icon-pin:before {
+    @include icon-pin_16;
+  }
+  .icon-plan-review:before {
+    @include icon-view-feed-multiple_16;
+  }
+  .icon-play:before {
+    @include icon-play_16;
+  }
+  .icon-plugin:before {
+    @include icon-accessories_16;
+  }
+  .icon-plus-circle:before {
+    @include icon-add_16;
+  }
+  .icon-plus:before {
+    @include icon-plus_16;
+  }
+  .icon-presentation:before {
+    @include icon-presentation_16;
+  }
+  .icon-print:before {
+    @include icon-print_16;
+  }
+  .icon-priority:before {
+    @include icon-priority_16;
+  }
+  .icon-privacy:before {
+    @include icon-private_16;
+  }
+  .icon-private:before {
+    @include icon-private-circle_16;
+  }
+  .icon-proximity-not-connected:before {
+    @include icon-proximity-muted_16;
+  }
+  .icon-proximity:before {
+    @include icon-proximity_16;
+  }
+  .icon-quality:before {
+    @include icon-quality_24;
+  }
+  .icon-question-circle:before {
+    @include icon-help-circle_16;
+  }
+  .icon-read-email:before {
+    @include icon-email-read_16;
+  }
+  .icon-recents:before {
+    @include icon-recents_16;
+  }
+  .icon-record:before {
+    @include icon-record_16;
+  }
+  .icon-redial:before {
+    @include icon-redial_16;
+  }
+  .icon-refresh:before {
+    @include icon-refresh_16;
+  }
+  .icon-remove-contact:before {
+    @include icon-participant-remove_20;
+  }
+  .icon-remove-outline:before {
+    @include icon-remove_16;
+  }
+  .icon-remove:before {
+    @include icon-remove_16;
+  }
+  .icon-report:before {
+    @include icon-file-text_24;
+  }
+  .icon-reset:before {
+    @include icon-reset_24;
+  }
+  .icon-right-arrow-closed-outline:before {
+    @include icon-arrow-circle-right_16;
+  }
+  .icon-right-arrow-contain:before {
+    @include icon-arrow-circle-right_16;
+  }
+  .icon-right-arrow-contained:before {
+    @include icon-play_16;
+  }
+  .icon-right-arrow-outline:before {
+    @include icon-arrow-circle-right_16;
+  }
+  .icon-right-arrow:before {
+    @include icon-arrow-right_16;
+  }
+  .icon-ringer-settings:before {
+    @include icon-adjust-audio_24;
+  }
+  .icon-running-application:before {
+    @include icon-running-application_24;
+  }
+  .icon-save:before {
+    @include icon-save_16;
+  }
+  .icon-schedule-add:before {
+    @include icon-calendar-add_16;
+  }
+  .icon-screen-capture-square:before {
+    @include icon-screenshot_16;
+  }
+  .icon-screen-capture:before {
+    @include icon-screenshot_16;
+  }
+  .icon-search:before {
+    @include icon-search_16;
+  }
+  .icon-self-view-alt:before {
+    @include icon-selfview_16;
+  }
+  .icon-self-view:before {
+    @include icon-selfview_16;
+  }
+  .icon-send-email:before {
+    @include icon-send_16;
+  }
+  .icon-send:before {
+    @include icon-send_16;
+  }
+  .icon-settings-active:before {
+    @include icon-settings_32;
+  }
+  .icon-settings:before {
+    @include icon-settings_16;
+  }
+  .icon-setup-assistant:before {
+    @include icon-setup-assistant_16;
+  }
+  .icon-share-content:before {
+    @include icon-document-share_16;
+  }
+  .icon-share:before {
+    @include icon-share_16;
+  }
+  .icon-sign-in:before {
+    @include icon-sign-in_16;
+  }
+  .icon-sign-out:before {
+    @include icon-sign-out_16;
+  }
+  .icon-signal-1:before {
+    @include icon-signal-25_16;
+  }
+  .icon-signal-2:before {
+    @include icon-signal-50_16;
+  }
+  .icon-signal-3:before {
+    @include icon-signal-75_16;
+  }
+  .icon-signal-4:before {
+    @include icon-signal-100_16;
+  }
+  .icon-skip-bw:before {
+    @include icon-skip-bw_16;
+  }
+  .icon-skip-fw:before {
+    @include icon-skip-fw_16;
+  }
+  .icon-sliders:before {
+    @include icon-adjust_16;
+  }
+  .icon-sort:before {
+    @include icon-picker_18;
+  }
+  .icon-sound:before {
+    @include icon-audio-broadcast_16;
+  }
+  .icon-space:before {
+    @include icon-space_16;
+  }
+  .icon-spark:before {
+    @include icon-spark_16;
+  }
+  .icon-speaker-cross:before {
+    @include icon-speaker-muted_16;
+  }
+  .icon-speaker:before {
+    @include icon-speaker-off_16;
+  }
+  .icon-star:before {
+    @include icon-favorite_16;
+  }
+  .icon-stop:before {
+    @include icon-stop_16;
+  }
+  .icon-storage:before {
+    @include icon-server_16;
+  }
+  .icon-subscribe:before {
+    @include icon-subscribe_16;
+  }
+  .icon-support:before {
+    @include icon-diagnostics_32;
+  }
+  .icon-swap-camera:before {
+    @include icon-camera-photo-swap_16;
+  }
+  .icon-swap-video-camera:before {
+    @include icon-camera-swap_16;
+  }
+  .icon-tables:before {
+    @include icon-picker_18;
+  }
+  .icon-tablet:before {
+    @include icon-tablet_24;
+  }
+  .icon-team-collapsed-view:before {
+    @include icon-video-layout_16;
+  }
+  .icon-text-format:before {
+    @include icon-text-format_16;
+  }
+  .icon-text:before {
+    @include icon-transcript_16;
+  }
+  .icon-three-dots:before {
+    @include icon-more_16;
+  }
+  .icon-thumbnail-view:before {
+    @include icon-view-thumbnail_16;
+  }
+  .icon-time:before {
+    @include icon-recents_16;
+  }
+  .icon-tools-active:before {
+    @include icon-tools_32;
+  }
+  .icon-tools:before {
+    @include icon-tools_32;
+  }
+  .icon-touch:before {
+    @include icon-touch_16;
+  }
+  .icon-transcript:before {
+    @include icon-transcript_16;
+  }
+  .icon-trash:before {
+    @include icon-delete_16;
+  }
+  .icon-unlock:before {
+    @include icon-unsecure_16;
+  }
+  .icon-upload-contain:before {
+    @include icon-upload_16;
+  }
+  .icon-upload:before {
+    @include icon-upload_16;
+  }
+  .icon-usb:before {
+    @include icon-usb_16;
+  }
+  .icon-user-chat:before {
+    @include icon-chat_16;
+  }
+  .icon-user:before {
+    @include icon-people_16;
+  }
+  .icon-video-cross:before {
+    @include icon-camera-muted_16;
+  }
+  .icon-video-group:before {
+    @include icon-camera-group_16;
+  }
+  .icon-video-layout:before {
+    @include icon-video-layout_16;
+  }
+  .icon-video-settings:before {
+    @include icon-adjust-video_24;
+  }
+  .icon-video:before {
+    @include icon-camera_16;
+  }
+  .icon-view-feed-dual:before {
+    @include icon-view-feed-panel_16;
+  }
+  .icon-view-feed-multi:before {
+    @include icon-view-feed-multiple_16;
+  }
+  .icon-view-feed-single:before {
+    @include icon-view-feed-single_16;
+  }
+  .icon-view-side-by-side:before {
+    @include icon-layout-side-by-side-horizonal_16;
+  }
+  .icon-view-stacked:before {
+    @include icon-layout-stacked_16;
+  }
+  .icon-voicemail:before {
+    @include icon-voicemail_16;
+  }
+  .icon-volume-cross:before {
+    @include icon-speaker-muted_16;
+  }
+  .icon-wallpaper:before {
+    @include icon-wallpaper_16;
+  }
+  .icon-warning:before {
+    @include icon-warning_16;
+  }
+  .icon-web-sharing:before {
+    @include icon-web-sharing_24;
+  }
+  .icon-webex:before {
+    @include icon-webex_16;
+  }
+  .icon-webhook:before {
+    @include icon-webex_16;
+  }
+  .icon-week:before {
+    @include icon-calendar-week_16;
+  }
+  .icon-whiteboard:before {
+    @include icon-spark-board_16;
+  }
+  .icon-wifi:before {
+    @include icon-wifi_16;
+  }
+  .icon-zip:before {
+    @include icon-file-zip_24;
+  }
+  .icon-zoom-in:before {
+    @include icon-zoom-in_16;
+  }
+  .icon-zoom-out:before {
+    @include icon-zoom-out_16;
+  }
+  /****************************
+  End Symphony icon mapping
+  DO NOT USE classes above
+****************************/
+}

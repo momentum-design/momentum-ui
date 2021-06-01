@@ -1,0 +1,34 @@
+@import 'mixins';
+
+@include exports('spark-icons-stacked') {
+  .#{$icon-css-prefix} {
+    &-stack {
+      position: relative;
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      vertical-align: middle;
+    }
+
+    &-stack-1x,
+    &-stack-2x {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    &-stack-1x {
+      line-height: inherit;
+    }
+
+    &-stack-2x {
+      font-size: 2em;
+    }
+
+    &-inverse {
+      color: $icon-inverse-color;
+    }
+  }
+}

@@ -70,7 +70,8 @@
 
           @include button-color(
             $box-shadow: 0 2px 4px 0 $black-4,
-            $border: 1px solid $black-12,
+            $border: 1px solid,
+            $border-color: $black-12,
             $color: $button-group__color,
             $color-hover: $button-group__color,
             $color-disabled: $button-group-disabled__color,

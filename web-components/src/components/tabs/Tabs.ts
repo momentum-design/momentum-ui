@@ -315,18 +315,6 @@ export namespace Tabs {
       await this.manageOverflow();
     }
 
-    private dispatchDragEvent(eventName: string, srcEvent: Sortable.SortableEvent | Sortable.MoveEvent) {
-      this.dispatchEvent(
-        new CustomEvent<{ srcEvent: Sortable.SortableEvent | Sortable.MoveEvent }>(eventName, {
-          composed: true,
-          bubbles: true,
-          detail: {
-            srcEvent
-          }
-        })
-      );
-    }
-
     handleOnEnd = async (event: Sortable.SortableEvent) => {
       event.stopPropagation();
       const oldIndex = event.oldIndex;
@@ -383,7 +371,7 @@ export namespace Tabs {
         visibleTabElements.splice(newIndex, 0, draggedElement);
         this.tabsFilteredAsVisibleList = visibleTabElements;
         if (newIndex === this.tabsFilteredAsVisibleList.length - 1) {
-          this.visibleTabsContainerElement.children[this.visibleTabsContainerElement.children.length - 1].remove();
+          this.visibleTabsContainerElement.children[this.visibleTabsContainerElement.children.length - 1]?.remove();
         }
       } else if (
         event.from === this.hiddenTabsContainerElement &&
@@ -396,7 +384,7 @@ export namespace Tabs {
         hiddenTabElements.splice(newIndex, 0, draggedElement);
         this.tabsFilteredAsHiddenList = hiddenTabElements;
         if (newIndex === this.tabsFilteredAsHiddenList.length - 1) {
-          this.hiddenTabsContainerElement.children[this.hiddenTabsContainerElement.children.length - 1].remove();
+          this.hiddenTabsContainerElement.children[this.hiddenTabsContainerElement.children.length - 1]?.remove();
         }
       }
       this.handleNewSelectedTab(event.item.id);
@@ -456,7 +444,7 @@ export namespace Tabs {
         let selectedTabPanelIndex = crossTabIndex;
         while (
           selectedTabPanelIndex < this.tabsFilteredAsVisibleList.length &&
-          this.tabsFilteredAsVisibleList[selectedTabPanelIndex].disabled
+          this.tabsFilteredAsVisibleList[selectedTabPanelIndex]?.disabled
         ) {
           selectedTabPanelIndex++;
         }
@@ -576,8 +564,8 @@ export namespace Tabs {
       const elementId = event.path ? event.path[0].id : event.originalTarget.id;
       const id = this.getNormalizedTabId(elementId);
       this.dispatchKeydownEvent(event, id);
-
-      const { key, ctrlKey, shiftKey, altKey } = event;
+      const key = event.code;
+      const { ctrlKey, shiftKey, altKey } = event;
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -761,25 +749,23 @@ export namespace Tabs {
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      
-      // if(changedProperties.has("slotted")){
-      //   console.log("Luffy_Updated_SLOtted", changedProperties)
-      //   this.tabs=[]
-      //   this.panels=[]
-      //   this.tabsFilteredAsVisibleList=[]
-      //   this.tabsFilteredAsHiddenList=[]
-      //   this.isMoreTabMenuVisible=false
-      //   this.setupPanelsAndTabs();
-      //   this.linkPanelsAndTabs();        
-      //   this.initializeSortable();
-      //   this.requestUpdate();
-      //   this.manageOverflow()        
-      //   this.requestUpdate();
-      // }
+
+      if (changedProperties.has("slotted")) {
+        this.tabs = [];
+        this.panels = [];
+        this.tabsFilteredAsVisibleList = [];
+        this.tabsFilteredAsHiddenList = [];
+        this.isMoreTabMenuVisible = false;
+        this.setupPanelsAndTabs();
+        this.linkPanelsAndTabs();
+        this.initializeSortable();
+        this.requestUpdate();
+        this.manageOverflow();
+        this.requestUpdate();
+      }
 
       if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
         this.initializeSortable();
-        this.manageOverflow(); //added for test purposes being called anyways 
       }
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {

@@ -172,16 +172,25 @@
   }
 
   .#{$input__class}__messages {
-    color: $color-message;
+    @if $color-message {
+      color: $color-message;
+      color: var($color-message-css-var, $color-message);
+    }
 
     &:before {
-      color: $color-message;
+      @if $color-message {
+        color: $color-message;
+        color: var($color-message-css-var, $color-message);
+      }
     }
   }
 
   .#{$input__class}__help-text,
   .#{$input__class}__secondary-label {
-    color: $color-help;
+    @if $color-help {
+      color: $color-help;
+      color: var($color-help-css-var, $color-help);
+    }
   }
 }
 

@@ -69,28 +69,6 @@ export namespace Tab {
       this.requestUpdate("selected", oldValue);
     }
 
-    // private _closable: "auto" | "custom" | "" = "";
-    // @property({ type: String, reflect: true })
-    // get closable() {
-    //   return this._closable;
-    // }
-    // set closable(value: "auto" | "custom" | "") {
-    //   const oldValue = this._closable;
-    //   this._closable = value;
-    //   this.requestUpdate("closable", oldValue);
-    // }
-
-    // private _name = "";
-    // @property({ type: String })
-    // get name() {
-    //   return this._name;
-    // }
-    // set name(value: string) {
-    //   const oldValue = this._name;
-    //   this._name = value;
-    //   this.requestUpdate("name", oldValue);
-    // }
-
     @property({ type: Boolean, reflect: true }) vertical = false;
 
     @property({ type: Boolean, reflect: true }) viewportHidden = false;

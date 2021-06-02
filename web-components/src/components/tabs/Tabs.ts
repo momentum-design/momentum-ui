@@ -46,18 +46,11 @@ export namespace Tabs {
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
-    @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
-    @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
-    @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
-    @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab.ELEMENT;
-    @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
-
-    @query(".md-tab__list[part='tabs-more-list']") tabsMoreListElement?: HTMLDivElement;
-    @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab.ELEMENT>;
-
-    @query("#visible-tabs-list") visibleTabsContainerElement?: HTMLElement;
-    @query("#tabs-more-list") hiddenTabsContainerElement?: HTMLElement;
-
+    @property({ type: Number }) delay = 0;
+    @property({ type: Number }) animation = 100;
+    @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
+    @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
+    
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
     @internalProperty() private isMoreTabMenuOpen = false;
@@ -70,21 +63,24 @@ export namespace Tabs {
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
     @internalProperty() private noTabsVisible = false;
 
-    @property({ type: Number }) delay = 0;
-    @property({ type: Number }) animation = 100;
-    @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
-    @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
-    @property({ type: Boolean, reflect: true }) sort = false;
-    @property({ type: Boolean, reflect: true }) disabled = false;
-    @internalProperty() draggableItems = "md-tab";
+    @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
+    @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
+    @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
+    @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab.ELEMENT;
+    @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
+
+    @query(".md-tab__list[part='tabs-more-list']") tabsMoreListElement?: HTMLDivElement;
+    @queryAll(".md-menu-overlay__more_list md-tab") tabsCopyHiddenListElements?: NodeListOf<Tab.ELEMENT>;
+
+    @query("#visible-tabs-list") visibleTabsContainerElement?: HTMLElement;
+    @query("#tabs-more-list") hiddenTabsContainerElement?: HTMLElement;
 
     private generateOptions() {
       return {
         group: "shared",
-        disabled: this.disabled,
         animation: 100,
         delay: 0,
-        draggable: this.draggableItems,
+        draggable: "md-tab",
         direction: this.direction,
         ghostClass: this.ghostClass,
         chosenClass: this.chosenClass,
@@ -506,10 +502,12 @@ export namespace Tabs {
         });
       }
 
-      if(newSelectedIndex >= 0) {
+      if (newSelectedIndex >= 0) {
         this.dispatchSelectedChangedEvent(newSelectedIndex);
         const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-        const newSelectedTabIdx = currentTabsConfiguration.findIndex(element => element.id === tabs[newSelectedIndex].id);
+        const newSelectedTabIdx = currentTabsConfiguration.findIndex(
+          element => element.id === tabs[newSelectedIndex].id
+        );
         this.changeSelectedTabIdx(newSelectedTabIdx);
       }
     }
@@ -841,7 +839,6 @@ export namespace Tabs {
             "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
             "no-tabs-visible": this.noTabsVisible
           })}"
-          aria-disabled=${this.disabled}
           role="tablist"
         >
           <slot

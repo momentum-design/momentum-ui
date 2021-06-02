@@ -165,7 +165,7 @@ describe("Tabs", () => {
         id: tabs.slotted[0].id
       },
       oldIndex: 0,
-      newIndex: 0,
+      newIndex: 1,
       to: tabs["hiddenTabsContainerElement"],
       from: tabs["visibleTabsContainerElement"],
       stopPropagation: () => {}

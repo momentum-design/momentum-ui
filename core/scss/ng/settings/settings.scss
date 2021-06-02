@@ -8101,7 +8101,8 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
 $blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width})
   1rem !default;
-$blockquote-border: $blockquote-border-width solid $md-gray-50 !default;
+$blockquote-border: $blockquote-border-width solid !default;
+$blockquote-border-color: $md-gray-50 !default;
 
 $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: inherit !default;
@@ -8938,6 +8939,7 @@ $close__class: '#{$prefix}-close';
 $close__font-color: $black-60 !default;
 $close__font-color--hover: $md-theme-70 !default;
 $close__font-color--focus: $md-theme-80 !default;
+$close__font-color--active: $md-theme-80;
 
 $collapse-button__width: rem-calc(16);
 $collapse-button__height: rem-calc(96);
@@ -9253,6 +9255,7 @@ $modal-overlay__background: rgba($md-black-100, 0.45) !default;
 
 // We use these to control the style of the modal itself.
 $modal__background: $md-white-100 !default;
+$modal__color: $md-black-100;
 $modal-message__color: $md-gray-70;
 
 // Modal Padding

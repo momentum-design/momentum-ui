@@ -72,12 +72,21 @@
             $box-shadow: 0 2px 4px 0 $black-4,
             $border: 1px solid,
             $border-color: $black-12,
+            $border-color-css-var: --md-separator-primary,
             $color: $button-group__color,
+            $color-css-var: --md-textColor-primary,
             $color-hover: $button-group__color,
+            $color-hover-css-var: --md-textColor-primary,
+            $color-active: $button-group__color,
+            $color-active-css-var: --md-textColor-primary,
             $color-disabled: $button-group-disabled__color,
+            $color-disabled-css-var: --md-textColor-disabled,
             $bg: $button-group__background,
+            $bg-css-var: --md-background-primary,
             $bg-disabled: $button-group__background,
-            $bg-hover: $md-theme-10
+            $bg-disabled-css-var: --md-background-quaternary,
+            $bg-hover: $md-theme-10,
+            $bg-active: $md-theme-20,
           );
 
           &:focus {

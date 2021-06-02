@@ -319,25 +319,13 @@ export namespace Tabs {
     }
 
     private getDragDirection(event: Sortable.SortableEvent) {
-      if (
-        event.from === this.visibleTabsContainerElement &&
-        event.to === this.hiddenTabsContainerElement
-      ) {
+      if (event.from === this.visibleTabsContainerElement && event.to === this.hiddenTabsContainerElement) {
         return VISIBLE_TO_HIDDEN;
-      } else if (
-        event.from === this.visibleTabsContainerElement &&
-        event.to === this.visibleTabsContainerElement 
-      ) {
+      } else if (event.from === this.visibleTabsContainerElement && event.to === this.visibleTabsContainerElement) {
         return VISIBLE_TO_VISIBLE;
-      } else if (
-        event.from === this.hiddenTabsContainerElement &&
-        event.to === this.visibleTabsContainerElement
-      ) {
+      } else if (event.from === this.hiddenTabsContainerElement && event.to === this.visibleTabsContainerElement) {
         return HIDDEN_TO_VISIBLE;
-      } else if (
-        event.from === this.hiddenTabsContainerElement &&
-        event.to === this.hiddenTabsContainerElement
-      ) {
+      } else if (event.from === this.hiddenTabsContainerElement && event.to === this.hiddenTabsContainerElement) {
         return HIDDEN_TO_HIDDEN;
       }
     }
@@ -462,7 +450,7 @@ export namespace Tabs {
           this.isMoreTabMenuMeasured = false;
         }
 
-        this.handleUpdatedSeletedTabAfterCross(crossTabIndex)
+        this.handleUpdatedSeletedTabAfterCross(crossTabIndex);
       }
     }
 
@@ -791,7 +779,7 @@ export namespace Tabs {
       super.updated(changedProperties);
 
       if (changedProperties.has("slotted")) {
-        this.initializeTabs()
+        this.initializeTabs();
       }
 
       if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
@@ -859,7 +847,7 @@ export namespace Tabs {
             id="visible-tabs-list"
             class="visible-tabs-container ${classMap({
               "visible-tabs-container-vertical": this.direction === "vertical",
-              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible              
+              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
             })}"
           >
             ${repeat(

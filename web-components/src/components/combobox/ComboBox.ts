@@ -203,7 +203,7 @@ export namespace ComboBox {
           const customValue = content.getAttribute("aria-label");
           const displayCustomValue = content.getAttribute("display-value");
           if (customValue && displayCustomValue) {
-            return { [this.optionId]: customValue.replace(/\s/g, ""), [this.optionValue]: displayCustomValue };
+            return { [this.optionId]: customValue, [this.optionValue]: displayCustomValue };
           }
         }) as OptionMember[];
       }
@@ -852,7 +852,14 @@ export namespace ComboBox {
             part="combobox-options"
             role="listbox"
             aria-label=${this.label}
-            style=${styleMap({ display: this.expanded ? "block" : "none", "z-index": "1" })}
+            style=${styleMap({
+              display: this.expanded
+                ? this.options.length && this.filteredOptions.length === 0 && this.inputValue && this.allowCustomValue
+                  ? "none"
+                  : "block"
+                : "none",
+              "z-index": "1"
+            })}
           >
             ${repeat(
               this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),

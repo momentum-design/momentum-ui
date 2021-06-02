@@ -2,6 +2,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import "@/components/tabs/Tab";
+import { TabClickEvent, TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
@@ -25,7 +26,10 @@ const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].
 @customElement("default-tabs-sandbox")
 export class TabsTemplateSandbox extends LitElement {
   @internalProperty() private tabs: any = {};
+  @internalProperty() private isModalOpen = false;
   defaultTabsOrder = ["WxM", "History", "Answer", "Admins", "Widgets", "News", "Weather", "Turbo"];
+  @internalProperty() private currentTabsOrder = this.defaultTabsOrder;
+  closeTabName = "";
 
   private handleTabClick(event: any) {
     console.log(event);
@@ -33,14 +37,28 @@ export class TabsTemplateSandbox extends LitElement {
     localStorage.setItem("tabsOrder", draggableTabsOrder);
   }
 
+  private handleTabCustomClose(event: CustomEvent<TabCloseClickEvent>) {
+    console.log(event);
+    this.closeTabName = event.detail.name;
+    this.isModalOpen = true;
+  }
+
+  private closeTab() {
+    this.currentTabsOrder = this.currentTabsOrder.filter((tabName: any) => {
+      return tabName !== this.closeTabName;
+    });
+    this.isModalOpen = false;
+  }
+
   private setupTabsEvents() {
     this.addEventListener("selected-changed", this.handleTabClick as EventListener);
+    this.addEventListener("tab-close-click", this.handleTabCustomClose as EventListener);
   }
 
   private setUpTabs() {
     this.tabs = {
       History: `
-        <md-tab slot="tab" name="History" closable label="History">
+        <md-tab slot="tab" name="History" closable="custom" label="History">
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>
         </md-tab>
@@ -49,7 +67,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       WxM: `
-        <md-tab slot="tab" name="WxM" closable label="WxM">
+        <md-tab slot="tab" name="WxM" closable="custom" label="WxM">
           <md-icon name="apps_16"></md-icon>
           <span>Cisco WxM</span>
         </md-tab>
@@ -58,7 +76,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       Answer: `
-        <md-tab slot="tab" name="Answer" closable>
+        <md-tab slot="tab" name="Answer">
           <md-icon name="alarm_16"></md-icon>
           <span>Cisco Answer</span>
         </md-tab>
@@ -67,7 +85,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       Admins: `
-        <md-tab slot="tab" name="Admins" closable>
+        <md-tab slot="tab" name="Admins" closable="auto">
           <md-icon name="admin_16"></md-icon>
           <span>Cisco Admins</span>
         </md-tab>
@@ -76,7 +94,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       Widgets: `
-        <md-tab slot="tab" name="Widgets" closable>
+        <md-tab slot="tab" name="Widgets" closable="auto">
           <md-icon name="alert_16"></md-icon>
           <span>Cisco Widgets</span>
         </md-tab>
@@ -85,7 +103,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       News: `
-        <md-tab slot="tab" name="News" closable>
+        <md-tab slot="tab" name="News" closable="auto">
           <md-icon name="browser_16"></md-icon>
           <span>Cisco News</span>
         </md-tab>
@@ -94,7 +112,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       Weather: `
-        <md-tab slot="tab" name="Weather" closable>
+        <md-tab slot="tab" name="Weather" closable="auto">
           <md-icon name="month_16"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
@@ -103,7 +121,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       Turbo: `
-        <md-tab slot="tab" name="Turbo" closable>
+        <md-tab slot="tab" name="Turbo" closable="auto">
           <md-icon name="camera-photo_16"></md-icon>
           <span>Cisco Turbo</span>
         </md-tab>
@@ -119,21 +137,30 @@ export class TabsTemplateSandbox extends LitElement {
     this.setupTabsEvents();
     this.setUpTabs();
     const draggableTabsOrder: any = localStorage.getItem("tabsOrder");
-    if (draggableTabsOrder) this.defaultTabsOrder = draggableTabsOrder.split(",");
+    if (draggableTabsOrder) this.currentTabsOrder = draggableTabsOrder.split(",");
   }
 
   render() {
     return html`
-      <div style="max-width: 600px;">
-        <h3>Retainable Draggable Horizontal md-tabs with More button</h3>
+      <div style="max-width: 600px; padding-top: 16px;">
+        <h3 style="margin: 0;">Retainable Horizontal md-tabs with More button</h3>
+        <p style="margin: 0; padding-bottom: 8px;">Stores tabOrder in Local Storage and also has custom close action</p>
         <div>
           <md-tabs selected="0" justified>
-            ${this.defaultTabsOrder.map((tabElement: string) => {
+            ${this.currentTabsOrder.map((tabElement: string) => {
               return unsafeHTML(this.tabs[tabElement]);
             })}
           </md-tabs>
         </div>
         <br />
+        <md-modal htmlId="modal-1" ?show=${this.isModalOpen} size="dialog" hideFooter hideHeader noExitOnEsc>
+          <div slot="header">
+            <span>Close Tab Confirmation</span>
+          </div>
+          <p>Are you sure you want to close the Tab?</p>
+          <md-button slot="footer" @click="${() => (this.isModalOpen = false)}">Cancel</md-button>
+          <md-button slot="footer" @click="${this.closeTab}" type="submit">Confirm</md-button>
+        </md-modal>
       </div>
     `;
   }
@@ -142,64 +169,91 @@ export class TabsTemplateSandbox extends LitElement {
 export const tabsTemplate = html`
   <default-tabs-sandbox></default-tabs-sandbox>
   <div style="max-width: 600px;">
-    <h3>Horizontal md-tabs with More button</h3>
+    <h3>Draggable horizontal md-tabs with More button</h3>
     <div>
-      <md-tabs selected="0" justified draggable>
-        <md-tab slot="tab" name="History" closable label="History">
+      <md-tabs selected="2" draggable>
+        <md-tab disabled slot="tab" name="History" closable="auto" label="History">
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="WxM" closable label="WxM">
+        <md-tab slot="tab" name="WxM" closable="auto" label="WxM">
           <md-icon name="apps_16"></md-icon>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="Answer" closable>
+        <md-tab slot="tab" name="Answer" closable="auto">
           <md-icon name="alarm_16"></md-icon>
           <span>Cisco Answer</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Answer"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="Admins" closable>
+        <md-tab slot="tab" name="Admins" closable="auto">
           <md-icon name="admin_16"></md-icon>
           <span>Cisco Admins</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Admins"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="Widgets" closable>
+        <md-tab slot="tab" name="Widgets" closable="auto">
           <md-icon name="alert_16"></md-icon>
           <span>Cisco Widgets</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Widgets"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="News" closable>
+        <md-tab slot="tab" name="News" closable="auto">
           <md-icon name="browser_16"></md-icon>
           <span>Cisco News</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco News"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="Weather" closable>
+        <md-tab slot="tab" name="Weather" closable="auto">
           <md-icon name="month_16"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Weather"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="Turbo" closable>
+        <md-tab slot="tab" name="Turbo" closable="auto">
           <md-icon name="camera-photo_16"></md-icon>
           <span>Cisco Turbo</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Turbo"</span>
+        </md-tab-panel>
+      </md-tabs>
+    </div>
+    <br />
+    <h3>md-tabs draggable tabs without closable property</h3>
+    <div>
+      <md-tabs selected="2" justified draggable>
+        <md-tab slot="tab" name="History" label="History">
+          <md-icon name="recents_16"></md-icon>
+          <span>Contact History</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="WxM" label="WxM">
+          <md-icon name="apps_16"></md-icon>
+          <span>Cisco WxM</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Answer">
+          <md-icon name="alarm_16"></md-icon>
+          <span>Cisco Answer</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Answer"</span>
         </md-tab-panel>
       </md-tabs>
     </div>

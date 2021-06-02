@@ -1,13 +1,6 @@
 import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
-import {
-  defineCE,
-  elementUpdated,
-  fixture,
-  fixtureCleanup,
-  fixtureSync,
-  oneEvent
-} from "@open-wc/testing-helpers";
+import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
 import Sortable from "sortablejs";
 import "./Tab";
@@ -54,7 +47,7 @@ describe("Tabs", () => {
           <md-tab-panel slot="panel">
             <span>Content for "Contact History"</span>
           </md-tab-panel>
-          <md-tab name="WxM" closable slot="tab">
+          <md-tab name="WxM" closable="auto" slot="tab">
             <span>Cisco WxM</span>
           </md-tab>
           <md-tab-panel slot="panel">
@@ -184,7 +177,7 @@ describe("Tabs", () => {
     currentID = tabs["tabsFilteredAsHiddenList"][0].id;
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
-        id: tabs.slotted[0].id
+        id: tabs.slotted[2].id
       },
       oldIndex: 0,
       newIndex: 0,
@@ -199,7 +192,7 @@ describe("Tabs", () => {
     currentID = tabs["tabsFilteredAsHiddenList"][0].id;
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
-        id: tabs.slotted[0].id
+        id: tabs.slotted[2].id
       },
       oldIndex: 0,
       newIndex: 0,
@@ -292,41 +285,40 @@ describe("Tabs", () => {
     await elementUpdated(tabs);
   });
 
-  	
   test("should handle click event and select appropriate tab", async () => {
     tab.forEach((t: Tab.ELEMENT) => {
-        tabs["tabsFilteredAsVisibleList"].push(t);
-      });	
-    const clickEvent = new MouseEvent("mousedown");	
-    tabs.selected = 1;	
-    await elementUpdated(tabs);	
+      tabs["tabsFilteredAsVisibleList"].push(t);
+    });
+    const clickEvent = new MouseEvent("mousedown");
+    tabs.selected = 1;
+    await elementUpdated(tabs);
 
     (tabs.slotted[0] as Tab.ELEMENT).handleClick(clickEvent);
-    await elementUpdated(tabs);	
+    await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(1);
 
     (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
-    
-    await elementUpdated(tabs);	
+
+    await elementUpdated(tabs);
     expect(tabs.selected).toBe(2);
-    
+
     (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
-    
-    await elementUpdated(tabs);	
-    expect(tabs.selected).toBe(2);	
+
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(2);
   });
 
-  test("should dispatch click event to outside when active tab index change", async () => {	
+  test("should dispatch click event to outside when active tab index change", async () => {
     tab.forEach((t: Tab.ELEMENT) => {
-        tabs["tabsFilteredAsVisibleList"].push(t);
-      });	
-    const clickEvent = new MouseEvent("mousedown");	
-    setTimeout(() => (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent));	
-    const { detail } = await oneEvent(tabs, "selected-changed");	
-    expect(tabs.selected).toBe(2);	
-    expect(detail).toBeDefined();	
-    expect(detail.value).toEqual(2);	
+      tabs["tabsFilteredAsVisibleList"].push(t);
+    });
+    const clickEvent = new MouseEvent("mousedown");
+    setTimeout(() => (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent));
+    const { detail } = await oneEvent(tabs, "selected-changed");
+    expect(tabs.selected).toBe(2);
+    expect(detail).toBeDefined();
+    expect(detail.value).toEqual(2);
   });
 
   test("should close selected tab upon cross click", async () => {
@@ -334,7 +326,7 @@ describe("Tabs", () => {
       tabs["tabsFilteredAsVisibleList"].push(t);
     });
     const clickEvent = new MouseEvent("mousedown");
-    
+
     (tabs.slotted[1] as Tab.ELEMENT).handleCrossClick(clickEvent);
     expect(tabs["tabsFilteredAsVisibleList"].length).toEqual(2);
   });

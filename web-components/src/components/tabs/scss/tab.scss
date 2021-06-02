@@ -35,7 +35,6 @@
 }
 
 :host([viewporthidden]) {
-  // display: inline-block;
   display: none;
   height: auto !important;
   pointer-events: none;
@@ -68,7 +67,7 @@
   }
 }
 
-:host([closable]) button {
+.closable {
   display: flex;
   justify-content: space-between;
 }

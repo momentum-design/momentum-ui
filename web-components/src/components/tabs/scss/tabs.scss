@@ -157,6 +157,10 @@
   flex: 1 1 auto;
 }
 
+.no-tabs-visible {
+  display: none !important;
+}
+
 // Vertical Direction
 
 :host-context([direction="vertical"]) {

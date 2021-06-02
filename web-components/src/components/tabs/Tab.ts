@@ -12,8 +12,10 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
+import { classMap } from "lit-html/directives/class-map";
 
 export type TabClickEvent = { id: string };
+export type TabCloseClickEvent = { id: string; name: string };
 export type TabKeyDownEvent = {
   id: string;
   key: string;
@@ -28,6 +30,8 @@ export namespace Tab {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
+    @property({ type: String, attribute: "closable"}) closable: "auto" | "custom" | "" = "";
+    @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
 
     private _disabled = false;
@@ -65,27 +69,27 @@ export namespace Tab {
       this.requestUpdate("selected", oldValue);
     }
 
-    private _closable = false;
-    @property({ type: Boolean, reflect: true })
-    get closable() {
-      return this._closable;
-    }
-    set closable(value: boolean) {
-      const oldValue = this._closable;
-      this._closable = value;
-      this.requestUpdate("closable", oldValue);
-    }
+    // private _closable: "auto" | "custom" | "" = "";
+    // @property({ type: String, reflect: true })
+    // get closable() {
+    //   return this._closable;
+    // }
+    // set closable(value: "auto" | "custom" | "") {
+    //   const oldValue = this._closable;
+    //   this._closable = value;
+    //   this.requestUpdate("closable", oldValue);
+    // }
 
-    private _name = "";
-    @property({ type: String })
-    get name() {
-      return this._name;
-    }
-    set name(value: string) {
-      const oldValue = this._name;
-      this._name = value;
-      this.requestUpdate("name", oldValue);
-    }
+    // private _name = "";
+    // @property({ type: String })
+    // get name() {
+    //   return this._name;
+    // }
+    // set name(value: string) {
+    //   const oldValue = this._name;
+    //   this._name = value;
+    //   this.requestUpdate("name", oldValue);
+    // }
 
     @property({ type: Boolean, reflect: true }) vertical = false;
 
@@ -114,6 +118,7 @@ export namespace Tab {
       event.preventDefault();
       if (this.disabled === true) return;
       if (this.id) {
+        if(this.closable === "auto"){
         this.dispatchEvent(
           new CustomEvent<TabClickEvent>("tab-cross-click", {
             detail: {
@@ -123,6 +128,19 @@ export namespace Tab {
             composed: true
           })
         );
+        }
+        else if (this.closable === "custom") {
+          this.dispatchEvent(
+            new CustomEvent<TabCloseClickEvent>("tab-close-click", {
+              detail: {
+                id: this.id,
+                name: this.name
+              },
+              bubbles: true,
+              composed: true
+            })
+          );
+        }
       }
     }
 
@@ -164,6 +182,9 @@ export namespace Tab {
           aria-label=${ifDefined(this.ariaLabel)}
           tabindex="-1"
           part="tab"
+          class="${classMap({
+            closable: this.closable !== ""
+          })}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
         >
           <slot class="tab-slot"></slot>

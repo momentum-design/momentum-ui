@@ -68,6 +68,7 @@ export namespace Tabs {
     @internalProperty() private tabsViewportDataList: TabsViewportDataList = [];
     @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
+    @internalProperty() private noTabsVisible = false;
 
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
@@ -431,8 +432,7 @@ export namespace Tabs {
       const { id } = event.detail;
 
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
-
-      if (tab && !tab.disabled) {
+      if (tab && !tab.disabled && tab.closable === "auto") {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
           element => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
         );
@@ -471,13 +471,16 @@ export namespace Tabs {
           selectedTabPanelIndex--;
         }
       }
-      selectedTabPanelIndex = selectedTabPanelIndex === -1 ? 0 : selectedTabPanelIndex;
-
-      const newSelectedIndex = this.tabs.findIndex(
-        element => element.id === this.tabsFilteredAsVisibleList[selectedTabPanelIndex].id
-      );
-      this.changeSelectedTabIdx(crossTabIndex);
-      this.updateSelectedTab(newSelectedIndex);
+      if (selectedTabPanelIndex !== -1) {
+        const newSelectedIndex = this.tabs.findIndex(
+          element => element.id === this.tabsFilteredAsVisibleList[selectedTabPanelIndex].id
+        );
+        this.updateSelectedTab(newSelectedIndex);
+      } else {
+        this.updateSelectedTab(selectedTabPanelIndex);
+      }
+      this.noTabsVisible =
+        this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0 ? true : false;
       this.requestUpdate();
     }
 
@@ -503,11 +506,12 @@ export namespace Tabs {
         });
       }
 
-      this.dispatchSelectedChangedEvent(newSelectedIndex);
-
-      const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-      const newSelectedTabIdx = currentTabsConfiguration.findIndex(element => element.id === tabs[newSelectedIndex].id);
-      this.changeSelectedTabIdx(newSelectedTabIdx);
+      if(newSelectedIndex >= 0) {
+        this.dispatchSelectedChangedEvent(newSelectedIndex);
+        const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        const newSelectedTabIdx = currentTabsConfiguration.findIndex(element => element.id === tabs[newSelectedIndex].id);
+        this.changeSelectedTabIdx(newSelectedTabIdx);
+      }
     }
 
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
@@ -754,7 +758,9 @@ export namespace Tabs {
       this.isMoreTabMenuVisible = false;
       this.setupPanelsAndTabs();
       this.linkPanelsAndTabs();
-      this.initializeSortable();
+      if (this.draggable) {
+        this.initializeSortable();
+      }
       this.manageOverflow();
       this.requestUpdate();
     }
@@ -832,7 +838,8 @@ export namespace Tabs {
         <div
           part="tabs-list"
           class="md-tab__list ${classMap({
-            "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
+            "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+            "no-tabs-visible": this.noTabsVisible
           })}"
           aria-disabled=${this.disabled}
           role="tablist"
@@ -858,6 +865,7 @@ export namespace Tabs {
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
                   .selected="${tab.selected}"
+                  name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
                   aria-controls="${tab.id}"
@@ -916,6 +924,7 @@ export namespace Tabs {
                     slot="draggable-item"
                     .disabled="${tab.disabled}"
                     .selected="${tab.selected}"
+                    name="${tab.name}"
                     id="${this.getCopyTabId(tab)}"
                     aria-label=${tab.ariaLabel}
                     aria-controls="${tab.id}"
@@ -934,7 +943,12 @@ export namespace Tabs {
             </div>
           </md-menu-overlay>
         </div>
-        <div part="tabs-content" class="md-tab__content">
+        <div
+          part="tabs-content"
+          class="md-tab__content ${classMap({
+            "no-tabs-visible": this.noTabsVisible
+          })}"
+        >
           <slot name="panel"></slot>
         </div>
       `;

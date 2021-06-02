@@ -6,13 +6,12 @@ import {
   fixture,
   fixtureCleanup,
   fixtureSync,
-  nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
 import Sortable from "sortablejs";
 import "./Tab";
-import { Tab, TabClickEvent } from "./Tab";
+import { Tab } from "./Tab";
 import "./TabPanel";
 import { TabPanel } from "./TabPanel";
 import "./Tabs";
@@ -46,22 +45,22 @@ describe("Tabs", () => {
   let panels: TabPanel.ELEMENT[];
 
   beforeEach(async () => {
-    const root = await fixture<any>(html`
+    const root = await fixture<HTMLDivElement>(html`
       <div style="width: 300px;max-width: 300px;">
-        <md-tabs selected="0">
-          <md-tab slot="tab" disabled>
+        <md-tabs draggable>
+          <md-tab name="History" slot="tab" disabled>
             <span>Contact History</span>
           </md-tab>
           <md-tab-panel slot="panel">
             <span>Content for "Contact History"</span>
           </md-tab-panel>
-          <md-tab slot="tab">
+          <md-tab name="WxM" closable slot="tab">
             <span>Cisco WxM</span>
           </md-tab>
           <md-tab-panel slot="panel">
             <span>Content for "WxM"</span>
           </md-tab-panel>
-          <md-tab slot="tab">
+          <md-tab name="Widgets" slot="tab">
             <span>Cisco Widgets</span>
           </md-tab>
           <md-tab-panel slot="panel">
@@ -153,7 +152,7 @@ describe("Tabs", () => {
     tabs["tabsFilteredAsHiddenList"] = [tab[2]];
 
     let currentID = tabs["tabsFilteredAsVisibleList"][0].id;
-    tabs["handleOnEnd"]({
+    (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
       },
@@ -168,7 +167,7 @@ describe("Tabs", () => {
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
 
     currentID = tabs["tabsFilteredAsVisibleList"][0].id;
-    tabs["handleOnEnd"]({
+    (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
       },
@@ -183,7 +182,7 @@ describe("Tabs", () => {
     expect(tabs["tabsFilteredAsHiddenList"][0].id).toEqual(currentID);
 
     currentID = tabs["tabsFilteredAsHiddenList"][0].id;
-    tabs["handleOnEnd"]({
+    (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
       },
@@ -198,7 +197,7 @@ describe("Tabs", () => {
     expect(tabs["tabsFilteredAsVisibleList"][0].id).toEqual(currentID);
 
     currentID = tabs["tabsFilteredAsHiddenList"][0].id;
-    tabs["handleOnEnd"]({
+    (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
       },
@@ -225,13 +224,13 @@ describe("Tabs", () => {
       };
     };
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[0].id, Key.Home));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);
 
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
     expect(tabs.selected).toBe(0);
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[1].id, Key.End));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.End));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(2);
@@ -241,7 +240,7 @@ describe("Tabs", () => {
     tabs.selected = 0;
     await elementUpdated(tabs);
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[1].id, Key.ArrowLeft));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowLeft));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(2);
@@ -250,7 +249,7 @@ describe("Tabs", () => {
     tabs.selected = 2;
     await elementUpdated(tabs);
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[2].id, Key.ArrowLeft));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.ArrowLeft));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(1);
@@ -259,7 +258,7 @@ describe("Tabs", () => {
     tabs.selected = tabs.slotted.length - 1;
     await elementUpdated(tabs);
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[2].id, Key.ArrowRight));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(0);
@@ -268,7 +267,7 @@ describe("Tabs", () => {
     tabs.selected = 0;
     await elementUpdated(tabs);
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[1].id, Key.ArrowRight));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(1);
@@ -277,32 +276,66 @@ describe("Tabs", () => {
     tabs.selected = 1;
     await elementUpdated(tabs);
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[0].id, Key.ArrowLeft));
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.ArrowLeft));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(0);
     expect(panels[0].hasAttribute("hidden")).toBeTruthy();
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[2].id, Key.Space));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.Space));
     await elementUpdated(tabs);
     expect(panels[2].hasAttribute("hidden")).toBeFalsy();
 
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
-    tabs["handleTabKeydown"](createKeyboardEvent(tabs.slotted[0].id, Key.Tab));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Tab));
     await elementUpdated(tabs);
   });
 
-  test("should cross the selected Tab", async () => {
+  	
+  test("should handle click event and select appropriate tab", async () => {
+    tab.forEach((t: Tab.ELEMENT) => {
+        tabs["tabsFilteredAsVisibleList"].push(t);
+      });	
+    const clickEvent = new MouseEvent("mousedown");	
+    tabs.selected = 1;	
+    await elementUpdated(tabs);	
+
+    (tabs.slotted[0] as Tab.ELEMENT).handleClick(clickEvent);
+    await elementUpdated(tabs);	
+
+    expect(tabs.selected).toBe(1);
+
+    (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
+    
+    await elementUpdated(tabs);	
+    expect(tabs.selected).toBe(2);
+    
+    (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent);
+    
+    await elementUpdated(tabs);	
+    expect(tabs.selected).toBe(2);	
+  });
+
+  test("should dispatch click event to outside when active tab index change", async () => {	
+    tab.forEach((t: Tab.ELEMENT) => {
+        tabs["tabsFilteredAsVisibleList"].push(t);
+      });	
+    const clickEvent = new MouseEvent("mousedown");	
+    setTimeout(() => (tabs.slotted[2] as Tab.ELEMENT).handleClick(clickEvent));	
+    const { detail } = await oneEvent(tabs, "selected-changed");	
+    expect(tabs.selected).toBe(2);	
+    expect(detail).toBeDefined();	
+    expect(detail.value).toEqual(2);	
+  });
+
+  test("should close selected tab upon cross click", async () => {
     tab.forEach((t: Tab.ELEMENT) => {
       tabs["tabsFilteredAsVisibleList"].push(t);
     });
-    tabs["handleTabCrossClick"]({
-      detail: {
-        id: tabs.slotted[1].id
-      }
-    } as CustomEvent<TabClickEvent>);
-
+    const clickEvent = new MouseEvent("mousedown");
+    
+    (tabs.slotted[1] as Tab.ELEMENT).handleCrossClick(clickEvent);
     expect(tabs["tabsFilteredAsVisibleList"].length).toEqual(2);
   });
 

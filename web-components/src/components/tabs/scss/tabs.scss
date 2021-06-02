@@ -9,8 +9,9 @@
 
 .visible-tabs-slot {
   display: block;
+  height: 0;
   visibility: hidden;
-  width: 0;
+  width: 0;  
 }
 
 .visible-tabs-container {
@@ -20,9 +21,7 @@
 }
 
 .visible-tabs-container-vertical {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: column !important;
 }
 
 .md-tab__list {

@@ -20,7 +20,7 @@
     "ci:postpublish": "node ../tools/postpublish.js",
     "ci:publishCDN": "run-s replaceFontURLs pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=icons",
-    "replaceFontURLs": "node ../tools/icons/replaceURLs.js",
+    "replaceFontURLs": "node ../tools/icons/replaceURLs.js icons",
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",

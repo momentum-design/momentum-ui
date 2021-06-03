@@ -73,9 +73,17 @@ export namespace FloatingMinimizedModal {
      
     }
 
+    private getInitialPosition = () => {
+      if(this.applyInitialPosition && this.minPosition) {
+        return {initialX: Number(this.minPosition?.x), initialY:  Number(this.minPosition?.y)};
+      }
+      return {initialX: 0, initialY: 0};
+    }
+
     private isNewPositionNotSame() {
       if(this.container) {
-        return Number(this.container?.getAttribute("data-x")) !== this.minPosition?.x  || Number(this.container?.getAttribute("data-y")) !==this.minPosition?.y;
+        return Number(this.container?.getAttribute("data-x")) !== this.minPosition?.x  ||
+          Number(this.container?.getAttribute("data-y")) !==this.minPosition?.y;
       }
     }
 
@@ -180,8 +188,9 @@ export namespace FloatingMinimizedModal {
 
     private getTransformValues(event: Interact.InteractEvent) {
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.applyInitialPosition && this.minPosition ? Number(this.minPosition?.x) : 0);
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.applyInitialPosition  && this.minPosition ? Number(this.minPosition?.y) : 0);
+      const {initialX, initialY} = this.getInitialPosition();
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + initialX;
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + initialY;
       return {x , y};
     }
 

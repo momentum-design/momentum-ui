@@ -27,6 +27,7 @@ export namespace FloatingModal {
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
+    @property({ type: Boolean, reflect: true }) private minimize = false;
     @property({type: Object}) position: {
       x: number;
       y: number;
@@ -38,18 +39,13 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true }) minimizable = false;
     @property({type: Object}) containerRect: DOMRect | null = null;
 
+    @internalProperty() private dragOccured: boolean | false = false;
+
 
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;
     @query(".md-floating__header") header!: HTMLDivElement;
-
     @query(".md-floating-min-parent") minimizedHeader! : HTMLDivElement;
-
-
-    
-    @internalProperty() private dragOccured: boolean | false = false;
-    @internalProperty() private minimize: boolean | false= false;
-
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
     private containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
@@ -80,13 +76,14 @@ export namespace FloatingModal {
 
     private isNewPositionNotSame() {
       if(this.container) {
-        return Number(this.container?.getAttribute("data-x")) !== this.position?.x  || Number(this.container?.getAttribute("data-y")) !==this.position?.y;
+        return Number(this.container?.getAttribute("data-x")) !== this.position?.x ||
+           Number(this.container?.getAttribute("data-y")) !==this.position?.y;
       }
     }
 
     private setInitialTargetPosition() {
         if(this.container && this.isNewPositionNotSame()) {
-          this.setTargetPosition(this.container,  Number(this.position?.x), Number(this.position?.y));
+          this.setTargetPosition(this.container, Number(this.position?.x), Number(this.position?.y));
         } 
     }
 
@@ -207,9 +204,9 @@ export namespace FloatingModal {
       let y = (parseFloat(target.getAttribute("data-y") as string) || 0);
       target.style.setProperty("width", `${event.rect.width}px`, "important");
       target.style.setProperty("height", `${event.rect.height}px`, "important");
-
-      x += event.deltaRect!.left + (this.applyInitialPosition && this.position ? Number(this.position?.x) : 0);
-      y += event.deltaRect!.top + (this.applyInitialPosition && this.position ? Number(this.position?.y) : 0);
+      const {initialX, initialY} = this.getInitialPosition();
+      x += event.deltaRect!.left + initialX;
+      y += event.deltaRect!.top + initialY;
 
       this.setTargetPosition(target, x, y);
       this.applyInitialPosition = false;
@@ -217,12 +214,20 @@ export namespace FloatingModal {
 
     private resizeEndListener = () => {
       this.setContainerRect();
-    };
+    }
+
+    private getInitialPosition = () => {
+      if(this.applyInitialPosition && this.position) {
+        return {initialX: Number(this.position?.x), initialY:  Number(this.position?.y)};
+      }
+      return {initialX: 0, initialY: 0};
+    }
 
     private getTransformValues(event: Interact.InteractEvent) {
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.applyInitialPosition && this.position ? Number(this.position?.x) : 0);
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.applyInitialPosition  && this.position ? Number(this.position?.y) : 0);
+      const {initialX, initialY} = this.getInitialPosition();
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + initialX;
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + initialY;
       return {x , y};
     }
 
@@ -312,7 +317,6 @@ export namespace FloatingModal {
                     <md-icon name=${this.full ? "minimize_16" : "maximize_16"}></md-icon>
                   </md-button>` : ''}
 
-                 
                   <md-button
                     color="color-none"
                     class="md-floating__close"

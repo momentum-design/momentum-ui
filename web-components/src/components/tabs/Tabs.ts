@@ -78,7 +78,7 @@ export namespace Tabs {
     private generateOptions() {
       return {
         group: "shared",
-        animation: 100,
+        animation: 150,
         delay: 0,
         draggable: "md-tab",
         direction: this.direction,

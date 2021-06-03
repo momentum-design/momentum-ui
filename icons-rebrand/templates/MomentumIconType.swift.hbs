@@ -26,4 +26,19 @@ import Foundation
             return ""
         }
     }
+
+    public var filename: String {
+        switch self {
+        case ._invalid: return ""
+        {{#each glyphsData}}
+        case .{{camelCase name}}: return "{{name}}"
+        {{/each}}
+
+        default:
+            // We need a default case to prevent the Xcode11 error: "the compiler is unable to check that this switch is exhaustive in reasonable time"
+            assertionFailure("Unknown icon type: \(self)")
+            return ""
+        }
+        }
+    }
 }

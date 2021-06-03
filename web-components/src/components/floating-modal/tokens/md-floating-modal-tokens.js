@@ -24,7 +24,7 @@ const floatingModal = {
     },
     "box-shadow": {
       light: "0 4px 8px rgba(0, 0, 0, 0.20), 0 0 1px rgba(0, 0, 0, 0.20)",
-      dark: "0 4px 8px rgba(256, 256, 256, 0.20), 0 0 1px rgba(256, 256, 256, 0.20)"
+      dark: "0 4px 8px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.20)"
     },
     "bg-color-alternate": {
       light: colors.gray[70].name,

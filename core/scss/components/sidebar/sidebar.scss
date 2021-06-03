@@ -113,14 +113,22 @@
 
                 @include list-item-color(
                   $active-bgrd-color: $md-gray-30,
+                  $active-bgrd-color-css-var: --md-button-secondary-hover-bg-color,
                   $active-color: $md-black-100,
+                  $active-color-css-var: --md-textColor-primary,
                   $background-color: transparent,
+                  $background-color-css-var: --null,
                   $color: $md-black-100,
+                  $color-css-var: --md-textColor-primary,
                   $focus-color: $md-black-100,
+                  $focus-color-css-var: --md-textColor-primary,
                   $header-color: $md-black-100,
+                  $header-color-css-var: --md-textColor-primary,
                   $hover-bgrd-color: $md-gray-20,
+                  $hover-bgrd-color-css-var: --md-background-quaternary,
                   $includeFocus: false,
-                  $subheader-color: $md-black-100
+                  $subheader-color: $md-black-100,
+                  $subheader-color-css-var: --md-textColor-primary,
                 );
               }
 
@@ -128,14 +136,22 @@
                 .#{$list-item__class} {
                   @include list-item-color(
                     $active-bgrd-color: $md-gray-30,
+                    $active-bgrd-color-css-var: --md-button-secondary-hover-bg-color,
                     $active-color: $md-black-100,
+                    $active-color-css-var: --md-textColor-primary,
                     $background-color: transparent,
+                    $background-color-css-var: --null,
                     $color: $md-gray-70,
+                    $color-css-var: --md-textColor-secondary,
                     $focus-color: $md-gray-70,
+                    $focus-color-css-var: --md-textColor-secondary,
                     $hover-bgrd-color: $md-gray-20,
+                    $hover-bgrd-color-css-var: --md-background-quaternary,
                     $includeFocus: false,
                     $section-left-color: $md-gray-70,
-                    $section-right-color: $md-gray-70
+                    $section-left-color-css-var: --md-textColor-secondary,
+                    $section-right-color: $md-gray-70,
+                    $section-right-color-css-var: --md-textColor-secondary,
                   );
                 }
               }
@@ -160,14 +176,22 @@
 
                   @include list-item-color(
                     $active-bgrd-color: $md-gray-30,
+                    $active-bgrd-color-css-var: --md-button-secondary-hover-bg-color,
                     $active-color: $md-black-100,
+                    $active-color-css-var: --md-textColor-primary,
                     $background-color: transparent,
+                    $background-color-css-var: --null,
                     $color: $md-black-100,
+                    $color-css-var: --md-textColor-primary,
                     $focus-color: $md-black-100,
+                    $focus-color-css-var: --md-textColor-primary,
                     $hover-bgrd-color: $md-gray-20,
+                    $hover-bgrd-color-css-var: --md-background-quaternary,
                     $includeFocus: false,
                     $section-left-color: $md-gray-90,
-                    $section-right-color: $md-gray-90
+                    $section-left-color-css-var: --md-textColor-primary,
+                    $section-right-color: $md-gray-90,
+                    $section-right-color-css-var: --md-textColor-primary,
                   );
                 }
               }
@@ -267,16 +291,24 @@
 
             @include list-item-color(
               $active-bgrd-color: transparent,
+              $active-bgrd-color-css-var: --null,
               $active-color: $md-theme-80,
               $active-section-right-color: $black-60,
+              $active-section-right-color-css-var: --md-textColor-secondary,
               $background-color: transparent,
+              $background-color-css-var: --null,
               $color: $md-black-100,
+              $color-css-var: --md-textColor-primary,
               $header-color: $md-black-100,
+              $header-color-css-var: --md-textColor-primary,
               $hover-color: $md-theme-70,
               $hover-bgrd-color: transparent,
+              $hover-bgrd-color-css-var: --null,
               $includeFocus: false,
               $section-right-color: $black-60,
-              $subheader-color: $md-black-100
+              $section-right-color-css-var: --md-textColor-secondary,
+              $subheader-color: $md-black-100,
+              $subheader-color-css-var: --md-textColor-primary,
             );
           }
 
@@ -289,16 +321,24 @@
 
               @include list-item-color(
                 $active-bgrd-color: transparent,
+                $active-bgrd-color-css-var: --null,
                 $active-color: $md-theme-80,
                 $active-section-right-color: $black-60,
+                $active-section-right-color-css-var: --md-textColor-secondary,
                 $background-color: transparent,
+                $background-color-css-var: --null,
                 $color: $md-gray-70,
+                $color-css-var: --md-textColor-secondary,
                 $header-color: $md-gray-70,
+                $header-color-css-var: --md-textColor-secondary,
                 $hover-color: $md-theme-70,
                 $hover-bgrd-color: transparent,
+                $hover-bgrd-color-css-var: --null,
                 $includeFocus: false,
                 $section-right-color: $black-60,
-                $subheader-color: $md-gray-70
+                $section-right-color-css-var: --md-textColor-secondary,
+                $subheader-color: $md-gray-70,
+                $subheader-color-css-var: --md-textColor-secondary,
               );
             }
 
@@ -312,16 +352,24 @@
 
                 @include list-item-color(
                   $active-bgrd-color: transparent,
+                  $active-bgrd-color-css-var: --null,
                   $active-color: $md-theme-80,
                   $active-section-right-color: $black-60,
+                  $active-section-right-color-css-var: --md-textColor-secondary,
                   $background-color: transparent,
+                  $background-color-css-var: --null,
                   $color: $md-gray-90,
+                  $color-css-var: --md-textColor-primary,
                   $header-color: $md-gray-90,
+                  $header-color-css-var: --md-textColor-primary,
                   $hover-color: $md-theme-70,
                   $hover-bgrd-color: transparent,
+                  $hover-bgrd-color-css-var: --null,
                   $includeFocus: false,
                   $section-right-color: $black-60,
-                  $subheader-color: $md-gray-90
+                  $section-right-color-css-var: --md-textColor-secondary,
+                  $subheader-color: $md-gray-90,
+                  $subheader-color-css-var: --md-textColor-primary,
                 );
 
                 &:before {

@@ -56,12 +56,19 @@
       );
       @include list-item-color(
         $background-color: $list-item--space__background,
+        $background-color-css-var: --null,
         $color: $list-item--space__color,
+        $color-css-var: --md-space__background-primary,
         $hover-bgrd-color: $list-item--space__background--hover,
+        $hover-bgrd-color-css-var: --md-background-tertiary,
         $active-bgrd-color: $list-item--space__background--pressed,
+        $active-bgrd-color-css-var: --md-background-quaternary,
         $header-color: $list-item--space__color--header,
+        $header-color-css-var: --md-background-secondary,
         $subheader-color: $list-item--space__color--header,
-        $focus-color: $list-item__color--dark
+        $subheader-color-css-var: --md-background-secondary,
+        $focus-color: $list-item__color--dark,
+        $focus-color-css-var: --md-background-primary,
       );
       @include list-item--contrast(
         $color--contrast: $list-item__color--dark--contrast,
@@ -283,9 +290,13 @@
           .#{$list-item__class} {
             @include list-item-color(
               $background-color: $list-item__background,
+              $background-color-css-var: --null,
               $focus-color: transparent,
+              $focus-color-css-var: --null,
               $hover-bgrd-color: $list-item__background,
-              $active-bgrd-color: $list-item__background
+              $hover-bgrd-color-css-var: --null,
+              $active-bgrd-color: $list-item__background,
+              $active-bgrd-color-css-var: --null,
             );
           }
         }
@@ -301,24 +312,36 @@
       &-light {
         @include list-item-color(
           $background-color: $md-gray-05,
+          $background-color-css-var:--md-background-secondary,
           $color: $md-gray-70,
+          $color-css-var: --md-textColor-secondary,
           $active-color: $md-gray-100,
+          $active-color-css-var: --md-textColor-primary,
           $hover-bgrd-color: $md-gray-10,
+          $hover-bgrd-color-css-var: --md-background-tertiary,
           $active-bgrd-color: $md-gray-10,
+          $active-bgrd-color-css-var:--md-background-tertiary,
           $hover-header-color: $md-gray-100,
+          $hover-header-color-css-var: --md-textColor-primary,
           $hover-subheader-color: $md-gray-100,
+          $hover-subheader-color-css-var: --md-textColor-primary,
           $header-color: $md-gray-70,
+          $header-color-css-var: --md-textColor-secondary,
           $subheader-color: $md-gray-70,
-          $focus-color: $md-gray-10
+          $subheader-color-css-var: --md-textColor-secondary,
+          $focus-color: $md-gray-10,
+          $focus-color-css-var: --md-background-tertiary,
         );
 
         .md-icon {
           color: $md-gray-70;
+          color: var(--md-textColor-secondary, $md-gray-70);
         }
 
         &.#{$list-item__class}--space-filter-summary {
           [class*='__header'] {
             color: $md-gray-70;
+            color: var(--md-textColor-secondary, $md-gray-70);
           }
         }
 
@@ -330,6 +353,7 @@
             > [class*='__header'] {
               > [class$='-secondary'] {
                 color: $md-gray-70;
+                color: var(--md-textColor-secondary, $md-gray-70);
               }
             }
           }
@@ -339,6 +363,7 @@
               [class$='__attachment--top'] {
                 [class$='-left'] {
                   color: $md-gray-70;
+                  color: var(--md-textColor-secondary, $md-gray-70);
                 }
               }
             }
@@ -346,6 +371,7 @@
 
           [class*='__result'] {
             color: $md-gray-70;
+            color: var(--md-textColor-secondary, $md-gray-70);
           }
         }
 
@@ -356,31 +382,39 @@
             [class$='__header'],
             [class$='__header--overview'] {
               color: $md-gray-70;
+              color: var(--md-textColor-secondary, $md-gray-70);
             }
           }
         }
 
         [class$='__header--overview'] {
           color: $md-gray-70;
+          color: var(--md-textColor-secondary, $md-gray-70);
         }
 
         &.#{$list-item__class}--unread {
           .#{$list-item__class}__header {
             color: $md-gray-100;
+            color: var(--md-textColor-primary, $md-gray-100);
           }
         }
 
         &.#{$list-item__class}--space-meeting {
           [class$='--attendees'] {
             color: $md-gray-70;
+            color: var(--md-textColor-primary, $md-gray-70);
             fill: $md-gray-70;
+            fill: var(--md-textColor-primary, $md-gray-70);
           }
 
           .#{$button__class} {
             color: $md-gray-05;
+            color: var(--md-button-primary-text-color, $md-gray-05);
             background-color: $md-green-60;
+            background-color: var(--md-button-join-bg-color, $md-green-60);
             &:hover {
               background-color: $md-green-70;
+              background-color: var(--md-button-join-hover-bg-color, $md-green-70);
             }
           }
         }

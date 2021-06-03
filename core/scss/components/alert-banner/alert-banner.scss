@@ -41,6 +41,7 @@
       width: 16px;
       height: 16px;
       color: $md-black-100;
+      color: var(--md-textColor-secondary, $md-black-100);
       cursor: pointer;
     }
   }

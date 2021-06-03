@@ -23,6 +23,29 @@
     width: 0;
   }
 
+  &.md-floating-minimize {
+    background: var(--floating-modal-main-bg-color-alternate, $lm-floating-modal-main-bg-color-alternate-light);
+    width: 100%;
+  }
+
+  &.md-floating-minimize:focus {
+    outline: none;
+  }
+
+  &.md-floating-minimize:focus div::after {
+    border-radius: 10px;
+    box-shadow: 0 0 0 $focus-ring-size #005e7d;
+    content: "";
+    height: calc(100% + 4px);
+    left: 0;
+    margin: -2px;
+    outline: none;
+    position: absolute;
+    top: 0;
+    width: calc(100% + 4px); 
+  }
+
+
   .md-floating__header {
     align-items: center;
     border-bottom: $floating-header-border;
@@ -50,67 +73,6 @@
     padding: $floating-body-padding;
   }
 
-  
-}
-
-.md-floating-min {
-  background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-alternate-light);
-  border: $floating-main-border;
-  border-radius: 8px;
-  box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-  max-width: 100%;
-  position: absolute;
-  touch-action: none;
-  user-select: none;
-  z-index: 1040;
-
-  &.hide {
-    display: block;
-    height: 0;
-    visibility: hidden;
-    width: 0; 
-  }
-
-  &.md-floating-minimize {
-    background: var(--floating-modal-main-bg-color-alternate, $lm-floating-modal-main-bg-color-alternate-light);
-    width: 100%;
-  }
-
-  &.md-floating-minimize:focus {
-    border-radius: 8px;
-    box-shadow: 0 0 6px rgba(7, 193, 245, 0.8);
-    outline: none;
-  }
-
-
-  .md-floating__header {
-    align-items: center;
-    border-bottom: $floating-header-border;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    max-height: $floating-header-max-height;
-    padding: $floating-header-padding;
-
-    &-text {
-      flex: 2 1 auto;
-      font-family: $body-font-family;
-      font-size: $font-size-large;
-      line-height: $font-size-large;
-      text-align: left;
-    }
-  }
-
-  .md-floating__body {
-    height: calc(100% - 3rem);
-    overflow: auto;
-    padding: $floating-body-padding;  
-  }
-
   .md-floating-body-minimize {
     display: block;
     height: 0;
@@ -126,7 +88,9 @@
 }
 
 .md-floating-min-parent {
+  bottom: 0;
   height: 3rem !important;
   position: absolute;
+  right: 0;
   width: 223px !important;
 }

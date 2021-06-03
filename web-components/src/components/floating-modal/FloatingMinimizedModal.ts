@@ -30,7 +30,7 @@ export namespace FloatingMinimizedModal {
       y: number;
     } | undefined;
 
-    @query(".md-floating-min") container?: HTMLDivElement;
+    @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__header") header!: HTMLDivElement;
 
     // To distinguish between click and drag  
@@ -229,7 +229,7 @@ export namespace FloatingMinimizedModal {
       return html`
         ${this.show
           ? html`     
-              <div class="md-floating-min ${!this.minimize ? 'hide' : ''} md-floating-minimize"
+              <div class="md-floating ${!this.minimize ? 'hide' : ''} md-floating-minimize"
                 @click=${this.handleMinimize}
                 @keydown="${this.handleKeyDown}"
                 role="dialog"

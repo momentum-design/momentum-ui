@@ -8,6 +8,7 @@ import {
 } from '@momentum-ui/react';
 import { snakeCase } from '../../../lib/utils';
 import KitchenSinkComponents from '../../ComponentList';
+import ThemeSelect from '../../ThemeSelect';
 
 export default class KitchenSink extends React.PureComponent {
   render() {
@@ -18,6 +19,7 @@ export default class KitchenSink extends React.PureComponent {
         withIcons={false}
       >
         <SidebarBody>
+          <ThemeSelect/>
           <SidebarNav>
             <SidebarNavItem
               customAnchorNode={<NavLink activeClassName='md-active-nav' to={`/playground`} />}

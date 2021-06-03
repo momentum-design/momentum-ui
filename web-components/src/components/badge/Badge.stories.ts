@@ -6,13 +6,13 @@
  *
  */
 
- import { withA11y } from "@storybook/addon-a11y";
+import "@/components/badge/Badge";
+import "@/components/icon/Icon";
+import "@/components/theme/Theme";
+import { badgeColor } from "@/utils/enums";
+import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { badgeColor } from "@/utils/enums";
-import "@/components/icon/Icon";
-import "@/components/badge/Badge";
-import "@/components/theme/Theme";
 
 export default {
   title: "Components/Badge",
@@ -42,13 +42,29 @@ export const Badge = () => {
   const width = text("Width Override", "");
   const circle = boolean("Circle", false);
   const small = boolean("Small", false);
-  const icon = boolean("With icon", false)
+  const icon = boolean("With icon", false);
+  const disabled = boolean("Disabled", false);
 
   return html`
-  <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-badge .color=${color} .bgColor=${bgColor} .small=${small} .textColor=${textColor} .height=${height} .width=${width} .circle=${circle}>
-      ${icon ? html`<md-icon name="chat-active_16"></md-icon>` : html`Badge ${color}`}
-    </md-badge>
-  </md-theme>
+    <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-badge
+        .color=${color}
+        .bgColor=${bgColor}
+        .small=${small}
+        .textColor=${textColor}
+        .height=${height}
+        .width=${width}
+        .circle=${circle}
+        ?disabled=${disabled}
+      >
+        ${icon
+          ? html`
+              <md-icon name="chat-active_16"></md-icon>
+            `
+          : html`
+              Badge ${color}
+            `}
+      </md-badge>
+    </md-theme>
   `;
 };

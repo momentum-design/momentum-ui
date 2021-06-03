@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.13.3...@momentum-ui/core@19.14.0) (2021-06-02)
+
+
+### Features
+
+* **button-group/chip/content-item:** add theming refactoring ([#920](https://github.com/momentum-design/momentum-ui/issues/920)) ([d7b825d](https://github.com/momentum-design/momentum-ui/commit/d7b825d663ed86a0e8351abf7f1fa2ed40755207))
+* **select:** add theming changes ([#925](https://github.com/momentum-design/momentum-ui/issues/925)) ([e958bfc](https://github.com/momentum-design/momentum-ui/commit/e958bfc8ce4fcbad17e72521d37df14af99137fe))
+* **theming:** input label theming ([#923](https://github.com/momentum-design/momentum-ui/issues/923)) ([a87e185](https://github.com/momentum-design/momentum-ui/commit/a87e18578ef8d1434a440059390078bb7cea902b))
+* **theming:** modal theming ([#917](https://github.com/momentum-design/momentum-ui/issues/917)) ([4a70ea5](https://github.com/momentum-design/momentum-ui/commit/4a70ea5f1802e9baf2d99f73ef29d622a890b995))
+
+
+
+
+
+## [19.13.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.13.2...@momentum-ui/core@19.13.3) (2021-05-29)
+
+
+### Bug Fixes
+
+* **spinner:** add new fix ([#924](https://github.com/momentum-design/momentum-ui/issues/924)) ([40b97db](https://github.com/momentum-design/momentum-ui/commit/40b97dbd58ff416194faf99d59058de28267d1ce))
+
+
+
+
+
+## [19.13.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.13.1...@momentum-ui/core@19.13.2) (2021-05-27)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.13.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.13.0...@momentum-ui/core@19.13.1) (2021-05-26)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.13.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.4...@momentum-ui/core@19.13.0) (2021-05-25)
+
+
+### Features
+
+* **core/list/space-list/popover:** theming changes ([#882](https://github.com/momentum-design/momentum-ui/issues/882)) ([205e039](https://github.com/momentum-design/momentum-ui/commit/205e039e9336fc9193c42985ce4c4c5878cce399))
+* **core/panel:** add theming ([#911](https://github.com/momentum-design/momentum-ui/issues/911)) ([e7055c7](https://github.com/momentum-design/momentum-ui/commit/e7055c70df255447b889a0360376d9cd0164af12))
+
+
+
+
+
+## [19.12.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.3...@momentum-ui/core@19.12.4) (2021-05-19)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.12.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.2...@momentum-ui/core@19.12.3) (2021-05-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.12.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.1...@momentum-ui/core@19.12.2) (2021-05-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.12.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.12.0...@momentum-ui/core@19.12.1) (2021-05-13)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+# [19.12.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.11.2...@momentum-ui/core@19.12.0) (2021-05-12)
+
+
+### Features
+
+* **core/button:** add base theming ([#876](https://github.com/momentum-design/momentum-ui/issues/876)) ([145e982](https://github.com/momentum-design/momentum-ui/commit/145e9826b31fe6d811350d0bac7639d8ffc6ee6f))
+
+
+
+
+
 ## [19.11.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.11.1...@momentum-ui/core@19.11.2) (2021-05-05)
 
 **Note:** Version bump only for package @momentum-ui/core

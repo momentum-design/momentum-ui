@@ -26,9 +26,17 @@
       width: 100%;
       @include button-color(
         $color: $select__color,
+        $color-css-var: --md-button-secondary-text-color,
+        $color-hover: $select__color,
+        $color-hover-css-var: --md-button-secondary-text-color,
+        $color-active: $select__color,
+        $color-active-css-var: --md-button-secondary-text-color,
         $bg: $select--input__background-color,
+        $bg-css-var: --md-button-secondary-bg-color,
         $bg-hover: $select--input__background-color--hover,
-        $bg-active: $select--input__background-color
+        $bg-hover-css-var: --md-button-secondary-hover-bg-color,
+        $bg-active: $select--input__background-color,
+        $bg-active-css-var: --md-button-secondary-pressed-bg-color,
       );
       @include button-size($radius: $input__border-radius);
       text-align: left;
@@ -57,9 +65,11 @@
           > i,
           > .#{$icon__class} {
             color: $select__icon--disabled;
+            color: var(--md-textColor-disabled, $select__icon--disabled);
 
             path {
               fill: $select__icon--disabled;
+              fill: var(--md-textColor-disabled, $select__icon--disabled);
             }
 
             .#{$dark-class} & {
@@ -87,9 +97,11 @@
         > i,
         > .#{$icon__class} {
           color: $input__font-color;
+          color: var(--md-button-secondary-text-color, $input__font-color);
 
           path {
             fill: $input__font-color;
+            fill: var(--md-button-secondary-text-color, $input__font-color);
           }
 
           .#{$dark-class} & {
@@ -103,6 +115,8 @@
       }
     }
     .#{$prefix}-event-overlay__children {
+      background: $md-white-100;
+      background: var(--md-background-secondary, $md-white-100);
       max-height: $dropdown-height;
       overflow: auto;
       border: $select--children__border;

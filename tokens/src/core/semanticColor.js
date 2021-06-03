@@ -355,6 +355,15 @@ const separator = {
   }
 };
 
+const icons = {
+  prefix: "md",
+  component: "icon",
+  primary: {
+    light: colors.black.name,
+    dark: colors.white.name
+  }
+};
+
 const semanticColor = {
   buttons: button,
   inputs: input,
@@ -363,7 +372,8 @@ const semanticColor = {
   presence: presence,
   alerts: alerts,
   avatars: avatars,
-  separator: separator
+  separator: separator,
+  icons: icons
 };
 
 module.exports = semanticColor;

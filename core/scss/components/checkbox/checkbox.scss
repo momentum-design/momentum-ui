@@ -12,12 +12,19 @@
   .#{$checkbox__class} {
     @include checkbox-color(
       $border-color: $input__border-color,
+      $border-color-css-var: --md-input-outline-color,
       $background-color: $input__background,
+      $background-color-css-var: --md-input-background-color,
       $background-color--disabled: $form-control__background,
+      $background-color--disabled-css-var: --md-input-outline-color,
       $background-color--hover: $input__background--hover,
+      $background-color--hover-css-var: --md-input-background-hover,
       $background-color--checked: $form-control__background--checked,
+      $background-color--checked-css-var: --md-input-background-theme-color,
       $background-color--checked-hover: $form-control__background--checked-hover,
-      $label-color: $form-control__label
+      $background-color--checked-hover-css-var: --md-input-background-theme-hover,
+      $label-color: $form-control__label,
+      $label-color-css-var: --md-input-text-primary
     );
 
     .#{$checkbox__class}__input {

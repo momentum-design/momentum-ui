@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import { Key } from "@/constants";
 import { SlottedMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
-import { Key } from "@/constants";
 import reset from "@/wc_scss/reset.scss";
-import styles from "./scss/module.scss";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AccordionItem } from "./AccordionItem";
+import styles from "./scss/module.scss";
 
 export namespace Accordion {
   @customElementWithCheck("md-accordion")
@@ -138,7 +138,9 @@ export namespace Accordion {
 
     handleClick(event: CustomEvent<AccordionItem.AccordionEvent>) {
       const { target } = event;
-      const accordionItem = this.slotted.find(item => (item as AccordionItem.ELEMENT).isSameNode(target as HTMLElement));
+      const accordionItem = this.slotted.find(item =>
+        (item as AccordionItem.ELEMENT).isSameNode(target as HTMLElement)
+      );
       if (accordionItem) {
         this.setActiveAccordionItem(accordionItem as AccordionItem.ELEMENT);
       }

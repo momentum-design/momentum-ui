@@ -50,7 +50,8 @@
       @include list-item-color(
         $hover-bgrd-color: $list-item__background,
         $active-bgrd-color: $list-item__background,
-        $header-color: $list-item-header__color
+        $header-color: $list-item-header__color,
+        $header-color-css-var: --md-textColor-primary,
       );
 
       margin: $list-item-header__margin;
@@ -73,15 +74,25 @@
         &-light {
           @include list-item-color(
             $background-color: $md-gray-05,
+            $background-color-css-var: --md-background-secondary,
             $color: $md-gray-70,
+            $color-css-var: --md-textColor-secondary,
             $active-color: $md-gray-100,
+            $active-color-css-var: --md-textColor-primary,
             $hover-bgrd-color: $md-gray-10,
-            $active-bgrd-color: $md-gray-10,
+            $hover-bgrd-color-css-var: --md-background-tertiary,
+            $active-bgrd-color:$md-gray-10,
+            $active-bgrd-color-css-var: --md-background-tertiary,
             $hover-header-color: $md-gray-100,
+            $hover-header-color-css-var: --md-textColor-primary,
             $hover-subheader-color: $md-gray-100,
+            $hover-subheader-color-css-var: --md-textColor-primary,
             $header-color: $md-gray-70,
+            $header-color-css-var: --md-textColor-secondary,
             $subheader-color: $md-gray-70,
-            $focus-color: $md-gray-10
+            $subheader-color-css-var: --md-textColor-secondary,
+            $focus-color:$md-gray-10,
+            $focus-color-css-var: --md-background-tertiary,
           );
         }
       }

@@ -2161,10 +2161,10 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@momentum-ui/webfonts-generator@^2.0.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@momentum-ui/webfonts-generator/-/webfonts-generator-2.2.0.tgz#45b350c22211f72d3ebd6f7b25a68e7e95699dcb"
-  integrity sha512-dZ7XKTnq5/OnZpIkd3KMQx1Ddk8brZdgEd5ONBIL2R9JUnSld/zCfBIoy4TADRRQ0P+f4heGOgw/49Nud5BPZA==
+"@momentum-ui/webfonts-generator@^2.3.0":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@momentum-ui/webfonts-generator/-/webfonts-generator-2.3.2.tgz#db95bd21145181abaf46c13a1e815540d35c6e6f"
+  integrity sha512-fvEvafF9IyhHamcJG4+7BP5obXqgQmg9c9ohZ4Bj9DRfYbQSoLs+AuBAeFYsrokNir+IFqmbD0Oke3SXdb2xMQ==
   dependencies:
     glob "^7.1.3"
     prettier "^1.16.4"

@@ -7,7 +7,7 @@ const link = {
   prefix: "md",
   component: "link",
   default: {
-    light: colors.blue["60"].name,
+    light: colors.blue["70"].name,
     dark: colors.blue["40"].name
   },
   hover: {

@@ -1,0 +1,949 @@
+@import '../placeholders';
+@import '../mixins';
+
+// Symphony icon mapping
+%icon-ac-power {
+  @include icon-power-ac_16;
+}
+%icon-account {
+  @include icon-adjust_16;
+}
+%icon-acessibility {
+  @include icon-accessibility_16;
+}
+%icon-active-speaker-cross {
+  @include icon-active-speaker-muted_16;
+}
+%icon-active-speaker {
+  @include icon-active-speaker_16;
+}
+%icon-activities {
+  @include icon-activities_16;
+}
+%icon-add-contact {
+  @include icon-participant-add_20;
+}
+%icon-add-contain {
+  @include icon-add_16;
+}
+%icon-add-outline {
+  @include icon-add_16;
+}
+%icon-add-users {
+  @include icon-participant-add_20;
+}
+%icon-add {
+  @include icon-plus_16;
+}
+%icon-admin {
+  @include icon-admin_16;
+}
+%icon-alarm {
+  @include icon-alarm_16;
+}
+%icon-analysis-active {
+  @include icon-analysis_16;
+}
+%icon-analysis {
+  @include icon-analysis_16;
+}
+%icon-annotation {
+  @include icon-annotation_16;
+}
+%icon-application {
+  @include icon-application_16;
+}
+%icon-applications {
+  @include icon-applications_16;
+}
+%icon-arrow-back {
+  @include icon-arrow-left_16;
+}
+%icon-arrow-down {
+  @include icon-arrow-down_16;
+}
+%icon-arrow-left-tail {
+  @include icon-back_16;
+}
+%icon-arrow-next {
+  @include icon-arrow-right_16;
+}
+%icon-arrow-right-tail {
+  @include icon-next_16;
+}
+%icon-arrow-up {
+  @include icon-arrow-up_16;
+}
+%icon-at {
+  @include icon-mention_16;
+}
+%icon-attachment {
+  @include icon-attachment_16;
+}
+%icon-audio-broadcast {
+  @include icon-audio-broadcast_16;
+}
+%icon-audio-min {
+  @include icon-speaker-off_16;
+}
+%icon-audio-plus {
+  @include icon-speaker_16;
+}
+%icon-audio {
+  @include icon-speaker_16;
+}
+%icon-aux-camera {
+  @include icon-camera-aux_16;
+}
+%icon-back {
+  @include icon-back_16;
+}
+%icon-bars {
+  @include icon-analysis_16;
+}
+%icon-bell-cross {
+  @include icon-alert-muted_16;
+}
+%icon-bell {
+  @include icon-alert_16;
+}
+%icon-blocked {
+  @include icon-blocked_16;
+}
+%icon-bookmark {
+  @include icon-bookmark_16;
+}
+%icon-bot-four {
+  @include icon-bot_36;
+}
+%icon-bot-five {
+  @include icon-bot_36;
+}
+%icon-bot-six {
+  @include icon-bot_36;
+}
+%icon-brightness {
+  @include icon-brightness_16;
+}
+%icon-broadcast-message {
+  @include icon-broadcast-message_16;
+}
+%icon-browser {
+  @include icon-browser_16;
+}
+%icon-cal {
+  @include icon-calendar-month_16;
+}
+%icon-call-forwarding {
+  @include icon-call-forward_16;
+}
+%icon-call-handling {
+  @include icon-call-handling_16;
+}
+%icon-calls {
+  @include icon-handset_16;
+}
+%icon-camera {
+  @include icon-camera-photo_16;
+}
+%icon-certified {
+  @include icon-certified_16;
+}
+%icon-chat {
+  @include icon-chat_16;
+}
+%icon-chats {
+  @include icon-chat-group_16;
+}
+%icon-check-mark-success {
+  @include icon-check-circle_24;
+}
+%icon-check {
+  @include icon-check_16;
+}
+%icon-checkbox {
+  @include icon-check_16;
+}
+%icon-chevron-down {
+  @include icon-arrow-down_16;
+}
+%icon-chevron-left {
+  @include icon-arrow-left_16;
+}
+%icon-chevron-right {
+  @include icon-arrow-right_16;
+}
+%icon-chevron-up {
+  @include icon-arrow-up_16;
+}
+%icon-circle-arrow-down {
+  @include icon-arrow-circle-down_16;
+}
+%icon-circle-arrows-circular {
+  @include icon-refresh_16;
+}
+%icon-circle-arrows-cross {
+  @include icon-pto_16;
+}
+%icon-circle-calendar {
+  @include icon-calendar-month_16;
+}
+%icon-circle-call {
+  @include icon-handset_16;
+}
+%icon-circle-check-mark-success {
+  @include icon-check-circle_24;
+}
+%icon-circle-check {
+  @include icon-check-circle_24;
+}
+%icon-circle-clock-hands {
+  @include icon-recents_16;
+}
+%icon-circle-clock {
+  @include icon-recents_16;
+}
+%icon-circle-comp-negative {
+  @include icon-error_16;
+}
+%icon-circle-computer-blank {
+  @include icon-laptop_16;
+}
+%icon-circle-contact-centre {
+  @include icon-headset_16;
+}
+%icon-circle-data {
+  @include icon-server_16;
+}
+%icon-circle-download {
+  @include icon-download_16;
+}
+%icon-circle-email {
+  @include icon-email-read_16;
+}
+%icon-circle-flag {
+  @include icon-flag-circle_16;
+}
+%icon-circle-globe {
+  @include icon-language_16;
+}
+%icon-circle-group {
+  @include icon-chat-group_16;
+}
+%icon-circle-hg-circular {
+  @include icon-recurring_16;
+}
+%icon-circle-links {
+  @include icon-link_16;
+}
+%icon-circle-location {
+  @include icon-location_16;
+}
+%icon-circle-lock {
+  @include icon-secure_16;
+}
+%icon-circle-message {
+  @include icon-chat_16;
+}
+%icon-circle-more {
+  @include icon-more-circle_16;
+}
+%icon-circle-question {
+  @include icon-help-circle_16;
+}
+%icon-circle-star {
+  @include icon-favorite_16;
+}
+%icon-circle-telepresence {
+  @include icon-endpoint_16;
+}
+%icon-circle-unlock {
+  @include icon-unsecure_16;
+}
+%icon-circle-upload {
+  @include icon-upload_16;
+}
+%icon-circle-user {
+  @include icon-people-circle_16;
+}
+%icon-circle-webex {
+  @include icon-webex_16;
+}
+%icon-circle-world {
+  @include icon-headset_16;
+}
+%icon-circle {
+  @include icon-unread-badge_16;
+}
+%icon-cisco-logo {
+  @include icon-cisco-logo;
+}
+%icon-clipboard {
+  @include icon-notepad_16;
+}
+%icon-clock {
+  @include icon-recents_16;
+}
+%icon-close-keyboard {
+  @include icon-keyboard-close_16;
+}
+%icon-close {
+  @include icon-cancel_16;
+}
+%icon-cloud-active {
+  @include icon-cloud_16;
+}
+%icon-cloud {
+  @include icon-cloud_16;
+}
+%icon-cog {
+  @include icon-settings_16;
+}
+%icon-company-active {
+  @include icon-company_32;
+}
+%icon-computer {
+  @include icon-computer_16;
+}
+%icon-conference {
+  @include icon-team_16;
+}
+%icon-contact-card {
+  @include icon-contact-card_16;
+}
+%icon-contact {
+  @include icon-people_16;
+}
+%icon-content-share {
+  @include icon-export_16;
+}
+%icon-convo {
+  @include icon-chat-group_16;
+}
+%icon-create-page {
+  @include icon-document-create_16;
+}
+%icon-data-usage {
+  @include icon-data-usage_16;
+}
+%icon-data {
+  @include icon-server_16;
+}
+%icon-delete {
+  @include icon-backspace_16;
+}
+%icon-desk-phone {
+  @include icon-deskphone_16;
+}
+%icon-devices {
+  @include icon-endpoint_16;
+}
+%icon-diagnostics {
+  @include icon-diagnostics_32;
+}
+%icon-dial {
+  @include icon-dialpad_16;
+}
+%icon-directory {
+  @include icon-directory_24;
+}
+%icon-display {
+  @include icon-display_16;
+}
+%icon-do-not-disturb {
+  @include icon-blocked_16;
+}
+%icon-document {
+  @include icon-document_16;
+}
+%icon-download {
+  @include icon-download_16;
+}
+%icon-edit {
+  @include icon-edit_16;
+}
+%icon-email {
+  @include icon-email_16;
+}
+%icon-emoticons {
+  @include icon-emoticons_16;
+}
+%icon-end-call {
+  @include icon-cancel_16;
+}
+%icon-endpoint-active {
+  @include icon-endpoint_32;
+}
+%icon-endpoint {
+  @include icon-endpoint_16;
+}
+%icon-eraser {
+  @include icon-eraser_16;
+}
+%icon-error {
+  @include icon-error_16;
+}
+%icon-ethernet {
+  @include icon-ethernet_16;
+}
+%icon-exernal-calendar {
+  @include icon-calendar-external_16;
+}
+%icon-exit-contain {
+  @include icon-clear-active_16;
+}
+%icon-exit-outline {
+  @include icon-clear_16;
+}
+%icon-exit {
+  @include icon-cancel_16;
+}
+%icon-export {
+  @include icon-export_16;
+}
+%icon-extension-mobility {
+  @include icon-extension-mobility_16;
+}
+%icon-fbw {
+  @include icon-fbw_16;
+}
+%icon-feedback {
+  @include icon-feedback_16;
+}
+%icon-filter {
+  @include icon-filter-circle_20;
+}
+%icon-flagged {
+  @include icon-flag_16;
+}
+%icon-folder {
+  @include icon-files_16;
+}
+%icon-forced-sign-in {
+  @include icon-sign-in-forced_16;
+}
+%icon-fullscreen {
+  @include icon-fullscreen_16;
+}
+%icon-grid-large {
+  @include icon-view-thumbnail_16;
+}
+%icon-grid-list {
+  @include icon-view-list_16;
+}
+%icon-hamburger-menu {
+  @include icon-list-menu_16;
+}
+%icon-headset-cross {
+  @include icon-headset-muted_16;
+}
+%icon-headset {
+  @include icon-headset_16;
+}
+%icon-help-outline {
+  @include icon-help-circle_16;
+}
+%icon-help {
+  @include icon-help-circle_16;
+}
+%icon-home-active {
+  @include icon-house_16;
+}
+%icon-home {
+  @include icon-house_16;
+}
+%icon-hunt-group {
+  @include icon-hunt-group_16;
+}
+%icon-image-contain {
+  @include icon-hunt-group_16;
+}
+%icon-image {
+  @include icon-file-image_24;
+}
+%icon-import {
+  @include icon-import_16;
+}
+%icon-incoming-call {
+  @include icon-call-incoming_16;
+}
+%icon-indeterminate {
+  @include icon-minus_16;
+}
+%icon-info-outline {
+  @include icon-info_16;
+}
+%icon-info {
+  @include icon-info_16;
+}
+%icon-information {
+  @include icon-info_16;
+}
+%icon-instant-meeting {
+  @include icon-webex-instant-meeting_16;
+}
+%icon-invite {
+  @include icon-email-invite_16;
+}
+%icon-keyboard {
+  @include icon-keyboard_16;
+}
+%icon-language {
+  @include icon-language_16;
+}
+%icon-laser-pointer {
+  @include icon-laser-pointer_16;
+}
+%icon-layout {
+  @include icon-layout-side-by-side-vertical_16;
+}
+%icon-leave-meeting {
+  @include icon-exit-room_16;
+}
+%icon-left-arrow {
+  @include icon-arrow-left_16;
+}
+%icon-lightbulb {
+  @include icon-room-lights_16;
+}
+%icon-like {
+  @include icon-like_16;
+}
+%icon-line-out-left {
+  @include icon-speaker-line-out-left_16;
+}
+%icon-line-out-right {
+  @include icon-speaker-line-out-right_16;
+}
+%icon-link {
+  @include icon-link_16;
+}
+%icon-list-menu {
+  @include icon-list-menu_16;
+}
+%icon-list-view {
+  @include icon-view-list_16;
+}
+%icon-location-active {
+  @include icon-location_28;
+}
+%icon-location {
+  @include icon-location_28;
+}
+%icon-lock {
+  @include icon-secure_16;
+}
+%icon-locked-speaker {
+  @include icon-active-speaker-locked_24;
+}
+%icon-maximize {
+  @include icon-maximize_16;
+}
+%icon-meet-me {
+  @include icon-enter-room_16;
+}
+%icon-meeting-room {
+  @include icon-team_16;
+}
+%icon-message {
+  @include icon-chat_16;
+}
+%icon-mic-in {
+  @include icon-audio-input_16;
+}
+%icon-microphone {
+  @include icon-microphone_16;
+}
+%icon-minimize {
+  @include icon-minimize_16;
+}
+%icon-minus {
+  @include icon-minus_16;
+}
+%icon-mobile-phone {
+  @include icon-phone-ios_16;
+}
+%icon-month {
+  @include icon-calendar-month_16;
+}
+%icon-more {
+  @include icon-more_16;
+}
+%icon-move-page {
+  @include icon-document-move_16;
+}
+%icon-music {
+  @include icon-adjust-audio_24;
+}
+%icon-mute {
+  @include icon-microphone-muted_16;
+}
+%icon-no-signal {
+  @include icon-signal-0_16;
+}
+%icon-notes {
+  @include icon-notes_16;
+}
+%icon-outgoing-call {
+  @include icon-call-outgoing_16;
+}
+%icon-paired-audio {
+  @include icon-paired-handset_24;
+}
+%icon-paired-call {
+  @include icon-paired-camera_24;
+}
+%icon-pause {
+  @include icon-pause_16;
+}
+%icon-pc {
+  @include icon-laptop_16;
+}
+%icon-pencil {
+  @include icon-edit_16;
+}
+%icon-people-active {
+  @include icon-people_28;
+}
+%icon-persistent-chat {
+  @include icon-chat-group_16;
+}
+%icon-phone-cross {
+  @include icon-handset-muted_16;
+}
+%icon-phone {
+  @include icon-handset_16;
+}
+%icon-picture-in-picture {
+  @include icon-picture-in-picture_16;
+}
+%icon-pin {
+  @include icon-pin_16;
+}
+%icon-plan-review {
+  @include icon-view-feed-multiple_16;
+}
+%icon-play {
+  @include icon-play_16;
+}
+%icon-plugin {
+  @include icon-accessories_16;
+}
+%icon-plus-circle {
+  @include icon-add_16;
+}
+%icon-plus {
+  @include icon-plus_16;
+}
+%icon-presentation {
+  @include icon-presentation_16;
+}
+%icon-print {
+  @include icon-print_16;
+}
+%icon-priority {
+  @include icon-priority_16;
+}
+%icon-privacy {
+  @include icon-private_16;
+}
+%icon-private {
+  @include icon-private-circle_16;
+}
+%icon-proximity-not-connected {
+  @include icon-proximity-muted_16;
+}
+%icon-proximity {
+  @include icon-proximity_16;
+}
+%icon-quality {
+  @include icon-quality_24;
+}
+%icon-question-circle {
+  @include icon-help-circle_16;
+}
+%icon-read-email {
+  @include icon-email-read_16;
+}
+%icon-recents {
+  @include icon-recents_16;
+}
+%icon-record {
+  @include icon-record_16;
+}
+%icon-redial {
+  @include icon-redial_16;
+}
+%icon-refresh {
+  @include icon-refresh_16;
+}
+%icon-remove-contact {
+  @include icon-participant-remove_20;
+}
+%icon-remove-outline {
+  @include icon-remove_16;
+}
+%icon-remove {
+  @include icon-remove_16;
+}
+%icon-report {
+  @include icon-file-text_24;
+}
+%icon-reset {
+  @include icon-reset_24;
+}
+%icon-right-arrow-closed-outline {
+  @include icon-arrow-circle-right_16;
+}
+%icon-right-arrow-contain {
+  @include icon-arrow-circle-right_16;
+}
+%icon-right-arrow-contained {
+  @include icon-play_16;
+}
+%icon-right-arrow-outline {
+  @include icon-arrow-circle-right_16;
+}
+%icon-right-arrow {
+  @include icon-arrow-right_16;
+}
+%icon-ringer-settings {
+  @include icon-adjust-audio_24;
+}
+%icon-running-application {
+  @include icon-running-application_24;
+}
+%icon-save {
+  @include icon-save_16;
+}
+%icon-schedule-add {
+  @include icon-calendar-add_16;
+}
+%icon-screen-capture-square {
+  @include icon-screenshot_16;
+}
+%icon-screen-capture {
+  @include icon-screenshot_16;
+}
+%icon-search {
+  @include icon-search_16;
+}
+%icon-self-view-alt {
+  @include icon-selfview_16;
+}
+%icon-self-view {
+  @include icon-selfview_16;
+}
+%icon-send-email {
+  @include icon-send_16;
+}
+%icon-send {
+  @include icon-send_16;
+}
+%icon-settings-active {
+  @include icon-settings_32;
+}
+%icon-settings {
+  @include icon-settings_16;
+}
+%icon-setup-assistant {
+  @include icon-setup-assistant_16;
+}
+%icon-share-content {
+  @include icon-document-share_16;
+}
+%icon-share {
+  @include icon-share_16;
+}
+%icon-sign-in {
+  @include icon-sign-in_16;
+}
+%icon-sign-out {
+  @include icon-sign-out_16;
+}
+%icon-signal-1 {
+  @include icon-signal-25_16;
+}
+%icon-signal-2 {
+  @include icon-signal-50_16;
+}
+%icon-signal-3 {
+  @include icon-signal-75_16;
+}
+%icon-signal-4 {
+  @include icon-signal-100_16;
+}
+%icon-skip-bw {
+  @include icon-skip-bw_16;
+}
+%icon-skip-fw {
+  @include icon-skip-fw_16;
+}
+%icon-sliders {
+  @include icon-adjust_16;
+}
+%icon-sort {
+  @include icon-picker_18;
+}
+%icon-sound {
+  @include icon-audio-broadcast_16;
+}
+%icon-space {
+  @include icon-space_16;
+}
+%icon-spark {
+  @include icon-spark_16;
+}
+%icon-speaker-cross {
+  @include icon-speaker-muted_16;
+}
+%icon-speaker {
+  @include icon-speaker-off_16;
+}
+%icon-star {
+  @include icon-favorite_16;
+}
+%icon-stop {
+  @include icon-stop_16;
+}
+%icon-storage {
+  @include icon-server_16;
+}
+%icon-subscribe {
+  @include icon-subscribe_16;
+}
+%icon-support {
+  @include icon-diagnostics_32;
+}
+%icon-swap-camera {
+  @include icon-camera-photo-swap_16;
+}
+%icon-swap-video-camera {
+  @include icon-camera-swap_16;
+}
+%icon-tables {
+  @include icon-picker_18;
+}
+%icon-tablet {
+  @include icon-tablet_24;
+}
+%icon-team-collapsed-view {
+  @include icon-video-layout_16;
+}
+%icon-text-format {
+  @include icon-text-format_16;
+}
+%icon-text {
+  @include icon-transcript_16;
+}
+%icon-three-dots {
+  @include icon-more_16;
+}
+%icon-thumbnail-view {
+  @include icon-view-thumbnail_16;
+}
+%icon-time {
+  @include icon-recents_16;
+}
+%icon-tools-active {
+  @include icon-tools_32;
+}
+%icon-tools {
+  @include icon-tools_32;
+}
+%icon-touch {
+  @include icon-touch_16;
+}
+%icon-transcript {
+  @include icon-transcript_16;
+}
+%icon-trash {
+  @include icon-delete_16;
+}
+%icon-unlock {
+  @include icon-unsecure_16;
+}
+%icon-upload-contain {
+  @include icon-upload_16;
+}
+%icon-upload {
+  @include icon-upload_16;
+}
+%icon-usb {
+  @include icon-usb_16;
+}
+%icon-user-chat {
+  @include icon-chat_16;
+}
+%icon-user {
+  @include icon-people_16;
+}
+%icon-video-cross {
+  @include icon-camera-muted_16;
+}
+%icon-video-group {
+  @include icon-camera-group_16;
+}
+%icon-video-layout {
+  @include icon-video-layout_16;
+}
+%icon-video-settings {
+  @include icon-adjust-video_24;
+}
+%icon-video {
+  @include icon-camera_16;
+}
+%icon-view-feed-dual {
+  @include icon-view-feed-panel_16;
+}
+%icon-view-feed-multi {
+  @include icon-view-feed-multiple_16;
+}
+%icon-view-feed-single {
+  @include icon-view-feed-single_16;
+}
+%icon-view-side-by-side {
+  @include icon-layout-side-by-side-horizonal_16;
+}
+%icon-view-stacked {
+  @include icon-layout-stacked_16;
+}
+%icon-voicemail {
+  @include icon-voicemail_16;
+}
+%icon-volume-cross {
+  @include icon-speaker-muted_16;
+}
+%icon-wallpaper {
+  @include icon-wallpaper_16;
+}
+%icon-warning {
+  @include icon-warning_16;
+}
+%icon-web-sharing {
+  @include icon-web-sharing_24;
+}
+%icon-webex {
+  @include icon-webex_16;
+}
+%icon-webhook {
+  @include icon-webex_16;
+}
+%icon-week {
+  @include icon-calendar-week_16;
+}
+%icon-whiteboard {
+  @include icon-spark-board_16;
+}
+%icon-wifi {
+  @include icon-wifi_16;
+}
+%icon-zip {
+  @include icon-file-zip_24;
+}
+%icon-zoom-in {
+  @include icon-zoom-in_16;
+}
+%icon-zoom-out {
+  @include icon-zoom-out_16;
+}

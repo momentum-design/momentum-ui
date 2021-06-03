@@ -12,6 +12,7 @@ export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isMin = false;
   @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x: 681.18, y: 150};
   @property({type: Object}) minLocation = localStorage.getItem('min-location') !== null? JSON.parse(localStorage.getItem('min-location') || "") : {x:0, y:0};
+  @property({type: Object}) containerRect = localStorage.getItem('resize') !== null? JSON.parse(localStorage.getItem('resize') || "") : null;
   private openFloatingModal() {
     this.isOpen = true;
   }
@@ -26,6 +27,12 @@ export class FloatingTemplateSandbox extends LitElement {
   }
   private closeFloatingModal() {
     this.isOpen = false;
+  }
+
+  private resize(event: any) {
+    console.log('resize' , event.detail.size);
+    this.containerRect = event.detail.size;
+    localStorage.setItem('resize', JSON.stringify(event.detail.size));
   }
   
   private saveLocation(event: any) {
@@ -75,12 +82,14 @@ export class FloatingTemplateSandbox extends LitElement {
       <md-floating-modal
         class="float-modal"
         ?show=${this.isOpen}
-        .location=${this.location}
-        .minlocation=${this.minLocation}
+        .position=${this.location}
+        .minPosition=${this.minLocation}
+        .containerRect=${this.containerRect}
         minimizable
         @floating-modal-close=${() => this.closeFloatingModal()}
         @floating-modal-minimize-location=${this.saveMinLocation}
         @floating-modal-location=${this.saveLocation}
+        @floating-modal-resize=${this.resize}
       >
        <div slot="header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>
        <iframe id="youtube" style="height:100%; width:100%" src="https://youtube.com" onload="${this.setFocus}" >

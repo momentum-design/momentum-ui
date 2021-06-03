@@ -6,7 +6,6 @@ import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
 import "@interactjs/auto-start";
 import "@interactjs/actions/drag";
 import "@interactjs/modifiers";
@@ -14,13 +13,11 @@ import "@interactjs/actions/resize";
 import * as Interact from "@interactjs/types";
 import interact from "@interactjs/interact/index";
 import './FloatingMinimizedModal';
-import { number } from "@storybook/addon-knobs";
-import { transcode } from "buffer";
-import { SlottedMixin } from "@/mixins";
+import { SlottedMixin, FocusMixin } from "@/mixins";
 
 export namespace FloatingModal {
   @customElementWithCheck("md-floating-modal")
-  export class ELEMENT extends SlottedMixin(LitElement) {
+  export class ELEMENT extends FocusMixin(SlottedMixin(LitElement)) {
     @property({ type: String }) heading = "";
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) show = false;
@@ -30,16 +27,16 @@ export namespace FloatingModal {
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
-    @property({type: Object}) location: {
+    @property({type: Object}) position: {
       x: number;
       y: number;
     } | undefined;
-    @property({type: Object}) minlocation: {
+    @property({type: Object}) minPosition: {
       x: number;
       y: number;
     } | undefined;
     @property({ type: Boolean, reflect: true }) minimizable = false;
-    
+    @property({type: Object}) containerRect: DOMRect | null = null;
 
 
     @query(".md-floating") container?: HTMLDivElement;
@@ -48,14 +45,14 @@ export namespace FloatingModal {
 
     @query(".md-floating-min-parent") minimizedHeader! : HTMLDivElement;
 
-    @internalProperty() private containerRect: DOMRect | null = null;
-    @internalProperty() private minimize: boolean | false = false;
+
+    
     @internalProperty() private dragOccured: boolean | false = false;
-    @internalProperty() private minimizeLocation: String = '';
+    @internalProperty() private minimize: boolean | false= false;
 
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
-    private containerTransform = this.location ? `translate(${this.location.x}px, ${this.location.y}px)`: '';
+    private containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
 
     private applyInitialPosition = true;
 
@@ -75,12 +72,22 @@ export namespace FloatingModal {
           this.destroyInteractInstance();
         }
       }
-      if (this.container &&changedProperties.has("location") && !changedProperties.has("show")) {
-        if(Number(this.container?.getAttribute("data-x")) !== this.location?.x  || Number(this.container?.getAttribute("data-y")) !==this.location?.y) {
-         this.setTargetPosition(this.container,  Number(this.location?.x), Number(this.location?.y));
-        }
+      if (this.container && changedProperties.has("position") && !changedProperties.has("show")) {
+        this.setInitialTargetPosition();
       } 
      
+    }
+
+    private isNewPositionNotSame() {
+      if(this.container) {
+        return Number(this.container?.getAttribute("data-x")) !== this.position?.x  || Number(this.container?.getAttribute("data-y")) !==this.position?.y;
+      }
+    }
+
+    private setInitialTargetPosition() {
+        if(this.container && this.isNewPositionNotSame()) {
+          this.setTargetPosition(this.container,  Number(this.position?.x), Number(this.position?.y));
+        } 
     }
 
     private cleanContainerStyles() {
@@ -110,6 +117,15 @@ export namespace FloatingModal {
         await this.updateComplete;
       
         this.containerRect = this.container!.getBoundingClientRect();
+        this.dispatchEvent(
+          new CustomEvent("floating-modal-resize", {
+            composed: true,
+            bubbles: true,
+            detail: {
+              size: this.containerRect
+            }
+          })
+        );
        
         this.containerTransform = this.getContainerTransform();
       });
@@ -162,7 +178,7 @@ export namespace FloatingModal {
       );
     }
 
-    handleMinimize(event: MouseEvent) {
+    handleMinimize(event: Event) {
       if(this.minimizable) {
         if(!this.dragOccured) {
           this.minimize = !this.minimize;
@@ -187,29 +203,34 @@ export namespace FloatingModal {
 
     private resizeMoveListener = (event: Interact.ResizeEvent) => {
       const { target } = event;
-      let x = parseFloat(target.getAttribute("data-x") as string) || 0;
-      let y = parseFloat(target.getAttribute("data-y") as string) || 0;
-
+      let x = (parseFloat(target.getAttribute("data-x") as string) || 0);
+      let y = (parseFloat(target.getAttribute("data-y") as string) || 0);
       target.style.setProperty("width", `${event.rect.width}px`, "important");
       target.style.setProperty("height", `${event.rect.height}px`, "important");
 
-      x += event.deltaRect!.left;
-      y += event.deltaRect!.top;
+      x += event.deltaRect!.left + (this.applyInitialPosition && this.position ? Number(this.position?.x) : 0);
+      y += event.deltaRect!.top + (this.applyInitialPosition && this.position ? Number(this.position?.y) : 0);
 
       this.setTargetPosition(target, x, y);
+      this.applyInitialPosition = false;
     };
 
     private resizeEndListener = () => {
       this.setContainerRect();
     };
 
-    private dragMoveListener = (event: Interact.InteractEvent) => {
+    private getTransformValues(event: Interact.InteractEvent) {
       const { target, dx, dy } = event;
-      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.applyInitialPosition && this.location ? Number(this.location?.x) : 0);
-      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.applyInitialPosition  && this.location ? Number(this.location?.y) : 0);
-      this.applyInitialPosition = false;
+      const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + (this.applyInitialPosition && this.position ? Number(this.position?.x) : 0);
+      const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + (this.applyInitialPosition  && this.position ? Number(this.position?.y) : 0);
+      return {x , y};
+    }
 
+    private dragMoveListener = (event: Interact.InteractEvent) => {
+      const { target } = event;
+      const {x, y} = this.getTransformValues(event);
       this.setTargetPosition(target, x, y);
+      this.applyInitialPosition = false;
     };
 
     private dragEndListener = () => {
@@ -255,7 +276,7 @@ export namespace FloatingModal {
                   bottom: ${this.full ? "0 !important" : ""};
                   right: ${this.full ? "0 !important" : ""};
                   ${this.full ? "transform: none !important" : ""};
-                  ${!this.full? `transform: ${this.location? `translate(${this.location.x}px, ${this.location.y}px)` : this.containerTransform} !important` : ""};`
+                  ${!this.full? `transform: ${this.position? `translate(${this.position.x}px, ${this.position.y}px)` : this.containerTransform} !important` : ""};`
                     : undefined
                 )}
               >
@@ -307,14 +328,14 @@ export namespace FloatingModal {
                 </div>
               </div>
               ${this.minimizable ? html`
-                <div class="md-floating-min-parent" part="minimize-floating">
+                <div class="md-floating-min-parent" part="minimize-floating" tabindex="-1">
                   <md-floating-modal-minimized
                       class="float-modal-min"
                       part="floating-minimized"
                       heading=${this.heading}
                       .minimize=${this.minimize}
-                      .location=${this.minlocation}
-                      @floating-modal-minimize=${(event: MouseEvent) => this.handleMinimize(event)}
+                      .minPosition=${this.minPosition}
+                      @floating-modal-minimize=${(event: Event) => this.handleMinimize(event)}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}
                       >

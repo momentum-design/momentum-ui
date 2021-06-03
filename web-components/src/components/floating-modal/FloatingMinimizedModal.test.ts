@@ -31,7 +31,7 @@ describe("Floating Modal Component", () => {
   test("should show modal and set initial location", async () => {
     element.show = true;
     element.minimize = true;
-    element.location = {x: 0, y: 12};
+    element.minPosition = {x: 0, y: 12};
     await nextFrame();
     await elementUpdated(element);
 

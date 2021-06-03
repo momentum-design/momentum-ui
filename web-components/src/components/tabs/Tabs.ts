@@ -42,7 +42,7 @@ export namespace Tabs {
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
     @property({ type: String }) overlowLabel = "More";
-    @property({ type: Boolean }) draggable = false;
+    @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
@@ -259,7 +259,7 @@ export namespace Tabs {
       }
 
       tabs.forEach((tab, index) => {
-        const id = nanoid();
+        const id = "tab_" + nanoid(); 
         tab.setAttribute("id", id);
         tab.setAttribute("aria-controls", id);
         tab.selected = this.selected === index;
@@ -426,7 +426,6 @@ export namespace Tabs {
 
     handleTabCrossClick(event: CustomEvent<TabClickEvent>) {
       const { id } = event.detail;
-
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
       if (tab && !tab.disabled && tab.closable === "auto") {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
@@ -660,9 +659,11 @@ export namespace Tabs {
         case Key.ArrowUp: {
           if (isMoreTriggerTab) {
             //
-          } else if (isVisibleTab) {
-            //
+          } else if (isVisibleTab && this.direction === "vertical") {
+            event.preventDefault();
+            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
           } else if (isHiddenTab) {
+            event.preventDefault();
             const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
             this.changeSelectedTabIdx(idx);
           }
@@ -671,9 +672,11 @@ export namespace Tabs {
         case Key.ArrowDown: {
           if (isMoreTriggerTab) {
             //
-          } else if (isVisibleTab) {
-            //
+          } else if (isVisibleTab && this.direction === "vertical") {
+            event.preventDefault();
+            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
           } else if (isHiddenTab) {
+            event.preventDefault();
             const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;
             this.changeSelectedTabIdx(idx);
           }
@@ -849,7 +852,6 @@ export namespace Tabs {
           <div
             id="visible-tabs-list"
             class="visible-tabs-container ${classMap({
-              "visible-tabs-container-vertical": this.direction === "vertical",
               "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
             })}"
           >

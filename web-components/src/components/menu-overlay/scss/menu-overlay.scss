@@ -14,7 +14,6 @@
       border: 1px solid var(--md-menu-overlay-border-color, --gray-20);
       border-radius: rem-calc($global-radius * 2);
       display: flex;
-      flex-direction: column;
       justify-content: space-around;
       max-width: calc(100vw - var(--vw-padding) * 2);
       overflow-y: auto;

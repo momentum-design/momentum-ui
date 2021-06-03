@@ -611,8 +611,7 @@ export namespace Tabs {
               this.changeSelectedTabIdx(lastVisibleTabIdx);
             }
           } else if (isVisibleTab) {
-            const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
-            this.changeSelectedTabIdx(oldSelectedIndex);
+            //
           } else if (isHiddenTab) {
             //
           }
@@ -867,7 +866,6 @@ export namespace Tabs {
                   aria-label=${tab.ariaLabel}
                   aria-controls="${tab.id}"
                   .isCrossVisible=${true}
-                  ?focus-visible=${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? true : false}
                   tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
                 >
                   ${unsafeHTML(tab.innerHTML)}
@@ -926,11 +924,6 @@ export namespace Tabs {
                     aria-label=${tab.ariaLabel}
                     aria-controls="${tab.id}"
                     @click="${() => this.handleOverlayClose()}"
-                    ?focus-visible=${this.tabsFilteredAsHiddenList[
-                      this.selected - this.tabsFilteredAsVisibleList.length
-                    ]?.id === tab.id
-                      ? true
-                      : false}
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                   >
                     ${unsafeHTML(tab.innerHTML)}

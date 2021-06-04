@@ -12,8 +12,10 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
+import { classMap } from "lit-html/directives/class-map";
 
 export type TabClickEvent = { id: string };
+export type TabCloseClickEvent = { id: string; name: string };
 export type TabKeyDownEvent = {
   id: string;
   key: string;
@@ -28,7 +30,10 @@ export namespace Tab {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
-    
+    @property({ type: String, attribute: "closable"}) closable: "auto" | "custom" | "" = "";
+    @property({ type: String, attribute: "name" }) name = "";
+    @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
+
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
     get disabled() {
@@ -63,6 +68,7 @@ export namespace Tab {
       this.setAttribute("aria-selected", `${value}`);
       this.requestUpdate("selected", oldValue);
     }
+
     @property({ type: Boolean, reflect: true }) vertical = false;
 
     @property({ type: Boolean, reflect: true }) viewportHidden = false;
@@ -73,7 +79,6 @@ export namespace Tab {
 
     handleClick(event: MouseEvent) {
       event.preventDefault();
-
       if (this.id) {
         this.dispatchEvent(
           new CustomEvent<TabClickEvent>("tab-click", {
@@ -87,22 +92,33 @@ export namespace Tab {
       }
     }
 
-    handleKeyDown(event: KeyboardEvent) {
+    handleCrossClick(event: MouseEvent) {
+      event.preventDefault();
+      if (this.disabled === true) return;
       if (this.id) {
+        if(this.closable === "auto"){
         this.dispatchEvent(
-          new CustomEvent<TabKeyDownEvent>("tab-keydown", {
+          new CustomEvent<TabClickEvent>("tab-cross-click", {
             detail: {
-              id: this.id,
-              key: event.code,
-              ctrlKey: event.ctrlKey,
-              shiftKey: event.shiftKey,
-              altKey: event.altKey,
-              srcEvent: event
+              id: this.id
             },
             bubbles: true,
             composed: true
           })
         );
+        }
+        else if (this.closable === "custom") {
+          this.dispatchEvent(
+            new CustomEvent<TabCloseClickEvent>("tab-close-click", {
+              detail: {
+                id: this.id,
+                name: this.name
+              },
+              bubbles: true,
+              composed: true
+            })
+          );
+        }
       }
     }
 
@@ -123,11 +139,6 @@ export namespace Tab {
       }
     }
 
-    private setupEvents() {
-      this.addEventListener("mousedown", this.handleClick);
-      this.addEventListener("keydown", this.handleKeyDown);
-    }
-
     connectedCallback() {
       super.connectedCallback();
       this.setAttribute("aria-selected", "false");
@@ -135,9 +146,7 @@ export namespace Tab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-
       this.setAttribute("role", "tab");
-      this.setupEvents();
     }
 
     render() {
@@ -151,8 +160,23 @@ export namespace Tab {
           aria-label=${ifDefined(this.ariaLabel)}
           tabindex="-1"
           part="tab"
+          class="${classMap({
+            closable: this.closable !== ""
+          })}"
+          @click=${(e: MouseEvent) => this.handleClick(e)}
         >
-          <slot></slot>
+          <slot class="tab-slot"></slot>
+          ${this.isCrossVisible && this.closable
+            ? html`
+                <div
+                  ?disabled=${this.disabled}
+                  class="tab-action-button"
+                  @click=${(e: MouseEvent) => this.handleCrossClick(e)}
+                >
+                  <md-icon name="cancel_14"></md-icon>
+                </div>
+              `
+            : ""}
         </button>
       `;
     }

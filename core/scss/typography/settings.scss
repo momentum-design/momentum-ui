@@ -181,7 +181,8 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
 $blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width})
   1rem !default;
-$blockquote-border: $blockquote-border-width solid $md-gray-50 !default;
+$blockquote-border: $blockquote-border-width solid !default;
+$blockquote-border-color: $md-gray-50 !default;
 
 $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: inherit !default;

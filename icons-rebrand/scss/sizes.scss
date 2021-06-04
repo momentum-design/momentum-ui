@@ -1,0 +1,101 @@
+@import 'mixins';
+
+@include exports('spark-icons-sizes') {
+  .#{$icon-css-prefix}-lg {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+  }
+
+  .#{$icon-css-prefix}-2x {
+    font-size: 2em;
+  }
+
+  .#{$icon-css-prefix}-3x {
+    font-size: 3em;
+  }
+
+  .#{$icon-css-prefix}-4x {
+    font-size: 4em;
+  }
+
+  .#{$icon-css-prefix}-5x {
+    font-size: 5em;
+  }
+
+  [class*='icon'][class*='_8'] {
+    font-size: 0.5rem;
+  }
+
+  [class*='icon'][class*='_10'] {
+    font-size: 0.625rem;
+  }
+
+  [class*='icon'][class*='_12'] {
+    font-size: 0.75rem;
+  }
+
+  [class*='icon'][class*='_14'] {
+    font-size: 0.875rem;
+  }
+
+  [class*='icon'][class*='_16'] {
+    font-size: 1rem;
+  }
+
+  [class*='icon'][class*='_18'] {
+    font-size: 1.125rem;
+  }
+
+  [class*='icon'][class*='_20'] {
+    font-size: 1.25rem;
+  }
+
+  [class*='icon'][class*='_24'] {
+    font-size: 1.5rem;
+  }
+
+  [class*='icon'][class*='_28'] {
+    font-size: 1.75rem;
+  }
+
+  [class*='icon'][class*='_32'] {
+    font-size: 2rem;
+  }
+
+  [class*='icon'][class*='_36'] {
+    font-size: 2.25rem;
+  }
+
+  [class*='icon'][class*='_40'] {
+    font-size: 2.5rem;
+  }
+
+  [class*='icon'][class*='_44'] {
+    font-size: 2.75rem;
+  }
+
+  [class*='icon'][class*='_48'] {
+    font-size: 3rem;
+  }
+
+  [class*='icon'][class*='_56'] {
+    font-size: 3.5rem;
+  }
+
+  [class*='icon'][class*='_64'] {
+    font-size: 4rem;
+  }
+
+  [class*='icon'][class*='_72'] {
+    font-size: 4.5rem;
+  }
+
+  [class*='icon'][class*='_80'] {
+    font-size: 5rem;
+  }
+
+  [class*='icon'][class*='_100'] {
+    font-size: 6.25rem;
+  }
+}

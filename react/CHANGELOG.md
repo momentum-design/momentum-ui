@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.24.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.24.0...@momentum-ui/react@23.24.1) (2021-06-04)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+# [23.24.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.23.3...@momentum-ui/react@23.24.0) (2021-06-02)
+
+
+### Features
+
+* **theming:** modal theming ([#917](https://github.com/momentum-design/momentum-ui/issues/917)) ([4a70ea5](https://github.com/momentum-design/momentum-ui/commit/4a70ea5f1802e9baf2d99f73ef29d622a890b995))
+
+
+
+
+
+## [23.23.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.23.2...@momentum-ui/react@23.23.3) (2021-05-29)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.23.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.23.1...@momentum-ui/react@23.23.2) (2021-05-27)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
+## [23.23.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.23.0...@momentum-ui/react@23.23.1) (2021-05-26)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 # [23.23.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.22.14...@momentum-ui/react@23.23.0) (2021-05-25)
 
 

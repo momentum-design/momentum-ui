@@ -2161,7 +2161,7 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@momentum-ui/webfonts-generator@^2.3.0", "@momentum-ui/webfonts-generator@^2.3.2":
+"@momentum-ui/webfonts-generator@^2.3.0":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@momentum-ui/webfonts-generator/-/webfonts-generator-2.3.2.tgz#db95bd21145181abaf46c13a1e815540d35c6e6f"
   integrity sha512-fvEvafF9IyhHamcJG4+7BP5obXqgQmg9c9ohZ4Bj9DRfYbQSoLs+AuBAeFYsrokNir+IFqmbD0Oke3SXdb2xMQ==

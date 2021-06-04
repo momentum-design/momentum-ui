@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/icons",
-  "version": "8.15.0",
+  "version": "8.18.0",
   "description": "The Cisco Momentum UI Icons library allows developers to easily incorporate Webex Icons and CSS into any application.",
   "homepage": "http://momentum.design/icons",
   "keywords": [
@@ -16,11 +16,11 @@
   "main": "scss/momentum-ui-icons.scss",
   "scripts": {
     "build": "yarn build:lib",
-    "build:lib": "node tools/icons-build.js",
+    "build:lib": "node ../tools/icons/icons-build.js momentum-ui-icons",
     "ci:postpublish": "node ../tools/postpublish.js",
     "ci:publishCDN": "run-s replaceFontURLs pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=icons",
-    "replaceFontURLs": "node ./tools/replaceURLs.js",
+    "replaceFontURLs": "node ../tools/icons/replaceURLs.js icons",
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",
@@ -50,7 +50,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@momentum-ui/utils": "^6.2.13",
+    "@momentum-ui/utils": "^6.2.14",
     "@momentum-ui/webfonts-generator": "^2.3.0",
     "autoprefixer": "^7.2.4",
     "dotenv": "^6.1.0",

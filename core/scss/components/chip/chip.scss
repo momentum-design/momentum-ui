@@ -4,6 +4,7 @@
   .#{$prefix}-chip {
     max-width: 400px;
     background-color: $md-gray-20;
+    background-color: var(--md-background-tertiary, $md-gray-20);
     border-radius: 4px;
 
     @include flex;
@@ -21,6 +22,7 @@
 
       &.file {
         background-color: $md-gray-30;
+        background-color: var(--md-background-tertiary, $md-gray-20);
       }
     }
 

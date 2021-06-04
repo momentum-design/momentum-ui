@@ -12,6 +12,8 @@
     .#{$modal__class} {
       &__header {
         flex-shrink: 0;
+        background-color: $modal__background;
+        background-color: var(--md-background-secondary, $modal__background);
 
         @include modal-header-size;
 
@@ -32,6 +34,7 @@
             $line-height: rem-calc(24)
           ) {
             color: $modal-message__color;
+            color: var(--md-textColor-secondary, $modal-message__color);
             text-align: center;
             flex-flow: row wrap;
           }
@@ -49,8 +52,16 @@
       &__content {
         display: flex;
         flex-direction: column;
+        background-color: $modal__background;
+        background-color: var(--md-background-primary, $modal__background);
 
-        @include modal-color($bg: $modal__background);
+        @include modal-color(
+          $color: $modal__color,
+          $color-css-var: --md-textColor-primary,
+          $bg: $modal__background,
+          $bg-css-var: --md-background-primary,
+          $border-color-css-var: --md-separator-primary
+        );
       }
 
       &__flex-container {
@@ -62,7 +73,6 @@
         margin: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        background: $md-white-100;
         flex-direction: column;
         flex: 1 1 auto;
         align-self: stretch;
@@ -87,6 +97,7 @@
 
     &.#{$modal__class}--full {
       @include modal-size(
+        $border-width: 0,
         $width: $modal__width--full-screen,
         $height: $modal__height--full-screen,
         $radius: 0
@@ -272,19 +283,18 @@
           font-family: $brand-font-bold;
           font-size: 16px;
           line-height: 24px;
-          color: $md-black-100;
         }
 
         .#{$modal__class}__body {
           margin-bottom: rem-calc(24);
           text-align: left;
-          background: $md-white-100;
 
           > * {
             font-family: $brand-font-regular;
             font-size: 14px;
             line-height: 22px;
             color: $md-gray-70;
+            color: var(--md-textColor-secondary, $md-gray-70);
           }
         }
 

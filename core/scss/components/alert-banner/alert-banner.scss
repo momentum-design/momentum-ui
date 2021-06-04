@@ -9,17 +9,23 @@
     &.#{$prefix}-alert-banner {
       &--info {
         color: $alert-banner-info__color;
+        color: var(--md-alert-text-theme, $alert-banner-info__color);
         background-color: $alert-banner-info__background;
+        background-color: var(--md-alert-background-theme, $alert-banner-info__background);
       }
 
       &--warning {
         color: $alert-banner-warning__color;
+        color: var(--md-alert-text-warning, $alert-banner-warning__color);
         background-color: $alert-banner-warning__background;
+        background-color: var(--md-alert-background-warning, $alert-banner-warning__background);
       }
 
       &--error {
         color: $alert-banner-error__color;
+        color: var(--md-alert-text-error, $alert-banner-error__color);
         background-color: $alert-banner-error__background;
+        background-color: var(--md-alert-background-error, $alert-banner-error__background);
       }
     }
 
@@ -41,6 +47,7 @@
       width: 16px;
       height: 16px;
       color: $md-black-100;
+      color: var(--md-textColor-secondary, $md-black-100);
       cursor: pointer;
     }
   }

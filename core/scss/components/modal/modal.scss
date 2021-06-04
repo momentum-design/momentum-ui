@@ -12,6 +12,8 @@
     .#{$modal__class} {
       &__header {
         flex-shrink: 0;
+        background-color: $modal__background;
+        background-color: var(--md-background-secondary, $modal__background);
 
         @include modal-header-size;
 
@@ -50,6 +52,8 @@
       &__content {
         display: flex;
         flex-direction: column;
+        background-color: $modal__background;
+        background-color: var(--md-background-primary, $modal__background);
 
         @include modal-color(
           $color: $modal__color,

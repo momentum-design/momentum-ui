@@ -79,7 +79,7 @@ describe("Floating Modal Component", () => {
     const clickEvent = new MouseEvent("click");
     setTimeout(() => element.handleMinimize(clickEvent));
 
-    const { detail } = await oneEvent(element, "floating-modal-minimize");
+    const { detail } = await oneEvent(element, "floating-min-modal-minimize");
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(clickEvent);
   });

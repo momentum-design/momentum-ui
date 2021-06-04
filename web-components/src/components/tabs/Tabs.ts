@@ -50,6 +50,8 @@ export namespace Tabs {
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
+    @property({ type: Boolean, attribute: "force-fallback" }) forceFallback = false;
+    @property({ type: String, attribute: "fallback-class" }) fallbackClass = "";
     
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -78,10 +80,12 @@ export namespace Tabs {
     private generateOptions() {
       return {
         group: "shared",
-        animation: 150,
-        delay: 0,
-        draggable: "md-tab",
+        animation: 10,
+        swapThreshold: 1,
+        draggable: "md-tab",  
         direction: this.direction,
+        forceFallback: this.forceFallback,  
+        fallbackClass: this.fallbackClass,    
         ghostClass: this.ghostClass,
         chosenClass: this.chosenClass,
         onEnd: this.handleOnDragEnd
@@ -259,7 +263,7 @@ export namespace Tabs {
       }
 
       tabs.forEach((tab, index) => {
-        const id = "tab_" + nanoid(); 
+        const id = "tab_" + nanoid(10); 
         tab.setAttribute("id", id);
         tab.setAttribute("aria-controls", id);
         tab.selected = this.selected === index;
@@ -857,7 +861,7 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              tab => nanoid(),
+              tab => nanoid(10),
               tab => html`
                 <md-tab
                   .closable="${tab.closable}"
@@ -915,7 +919,7 @@ export namespace Tabs {
             >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
-                tab => nanoid(),
+                tab => nanoid(10),
                 tab => html`
                   <md-tab
                     slot="draggable-item"

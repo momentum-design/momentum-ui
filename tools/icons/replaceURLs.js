@@ -6,11 +6,11 @@ if (process.argv.length != 3) {
 }
 
 const packageName = process.argv[2];
-const packageJSON = require(path.resolve(__dirname, `../${packageName}/package.json`));
+const packageJSON = require(path.resolve(__dirname, `../../${packageName}/package.json`));
 const cssPath = `../css/momentum-ui`;
 const version = packageJSON.version;
-const cssFile = path.resolve(__dirname, `../${packageName}/${cssPath}-${packageName}.css`);
-const cssMinFile = path.resolve(__dirname, `../${packageName}/${cssPath}-${packageName}.min.css`);
+const cssFile = path.resolve(__dirname, `../../${packageName}/${cssPath}-${packageName}.css`);
+const cssMinFile = path.resolve(__dirname, `../../${packageName}/${cssPath}-${packageName}.min.css`);
 
 fs.readFile(cssFile, 'utf8', function(err, data) {
   if (err) return console.error(err);

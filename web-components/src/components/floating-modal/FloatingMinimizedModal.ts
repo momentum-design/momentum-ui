@@ -174,7 +174,7 @@ export namespace FloatingMinimizedModal {
     handleMinimize(event : Event) {
       if(!this.dragOccured) {
       this.dispatchEvent(
-          new CustomEvent("floating-modal-minimize", {
+          new CustomEvent("floating-min-modal-minimize", {
               composed: true,
               bubbles: true,
               detail: {

@@ -184,7 +184,7 @@ export namespace FloatingModal {
                   composed: true,
                   bubbles: true,
                   detail: {
-                  srcEvent: event
+                  minimize: this.minimize
                   }
               })
             );
@@ -196,7 +196,6 @@ export namespace FloatingModal {
     handleToggleExpandCollapse() {
       this.full = !this.full;
     }
-
 
     private resizeMoveListener = (event: Interact.ResizeEvent) => {
       const { target } = event;
@@ -339,7 +338,7 @@ export namespace FloatingModal {
                       heading=${this.heading}
                       .minimize=${this.minimize}
                       .minPosition=${this.minPosition}
-                      @floating-modal-minimize=${(event: Event) => this.handleMinimize(event)}
+                      @floating-min-modal-minimize=${(event: Event) => this.handleMinimize(event)}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}
                       >

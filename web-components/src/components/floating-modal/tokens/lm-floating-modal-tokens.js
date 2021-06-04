@@ -19,8 +19,8 @@ const floatingModal = {
       dark: colors.gray[80].name
     },
     radius: {
-      light: "0.25rem",
-      dark: "0.25rem"
+      light: "0.5rem",
+      dark: "0.5rem"
     },
     "box-shadow": {
       light: "0 4px 8px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.16)",

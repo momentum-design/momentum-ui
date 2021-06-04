@@ -1,7 +1,7 @@
 .md-floating {
   background-color: var(--floating-modal-main-bg-color, $lm-floating-modal-main-bg-color-light);
   border: $floating-main-border;
-  border-radius: var(--floating-modal-main-radius, $lm-floating-modal-main-radius-light);
+  border-radius: 8px;
   box-shadow: var(--floating-modal-main-box-shadow, $lm-floating-modal-main-box-shadow-light);
   display: flex;
   flex-direction: column;
@@ -16,6 +16,24 @@
     position: fixed;
   }
 
+  &.hide {
+    display: block;
+    height: 0;
+    visibility: hidden;
+    width: 0;
+  }
+
+  &.md-floating-minimize {
+    background: var(--floating-modal-main-bg-color-alternate, $lm-floating-modal-main-bg-color-alternate-light);
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  &.md-floating-minimize:focus {
+    box-shadow: 0 0 0 $focus-ring-size $md-blue-70;
+    outline: none;
+  }
+
   .md-floating__header {
     align-items: center;
     border-bottom: $floating-header-border;
@@ -26,10 +44,11 @@
     justify-content: space-between;
     max-height: $floating-header-max-height;
     padding: $floating-header-padding;
+    width: 100%;
 
     &-text {
       flex: 2 1 auto;
-      font-family: $brand-font-bold;
+      font-family: $body-font-family;
       font-size: $font-size-large;
       line-height: $font-size-large;
       text-align: left;
@@ -39,6 +58,28 @@
   .md-floating__body {
     height: calc(100% - 3rem);
     overflow: auto;
-    padding: $floating-body-padding;  
+    padding: $floating-body-padding;
   }
+
+  .md-floating-body-minimize {
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+  .md-floating__header-minimize {
+    border-bottom: 0;
+    color: var(--floating-modal-main-text-color-alternate, $lm-floating-modal-main-text-color-alternate-light);
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+  }
+}
+
+.md-floating-min-parent {
+  bottom: 0;
+  height: 3rem !important;
+  position: absolute;
+  right: 0;
+  width: 223px !important;
 }

@@ -38,6 +38,7 @@ export { Dropdown } from "./components/dropdown/Dropdown";
 export { EditableTextfield } from "./components/editable-textfield/EditableTextfield";
 export { Favorite } from "./components/favorite/Favorite";
 export { FloatingModal } from "./components/floating-modal/FloatingModal";
+export { FloatingMinimizedModal } from "./components/floating-modal/FloatingMinimizedModal";
 export { Form } from "./components/form/Form";
 export { HelpText } from "./components/help-text/HelpText";
 export { Icon } from "./components/icon/Icon";

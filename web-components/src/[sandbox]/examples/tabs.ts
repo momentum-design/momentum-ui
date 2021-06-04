@@ -146,7 +146,7 @@ export class TabsTemplateSandbox extends LitElement {
         <h3 style="margin: 0;">Retainable Horizontal md-tabs with More button</h3>
         <p style="margin: 0; padding-bottom: 8px;">Stores tabOrder in Local Storage and also has custom close action</p>
         <div>
-          <md-tabs selected="0" justified>
+          <md-tabs selected="0" draggable justified>
             ${this.currentTabsOrder.map((tabElement: string) => {
               return unsafeHTML(this.tabs[tabElement]);
             })}
@@ -249,6 +249,33 @@ export const tabsTemplate = html`
           <span>Content for "WxM"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="Answer">
+          <md-icon name="alarm_16"></md-icon>
+          <span>Cisco Answer</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Answer"</span>
+        </md-tab-panel>
+      </md-tabs>
+    </div>
+    <br />
+    <h3>md-tabs draggable each with a closable property</h3>
+    <div>
+      <md-tabs selected="0" draggable>
+        <md-tab slot="tab" closable="auto" name="History" label="History">
+          <md-icon name="recents_16"></md-icon>
+          <span>Contact History</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
+          <md-icon name="apps_16"></md-icon>
+          <span>Cisco WxM</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" closable="auto" name="Answer">
           <md-icon name="alarm_16"></md-icon>
           <span>Cisco Answer</span>
         </md-tab>

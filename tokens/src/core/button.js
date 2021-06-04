@@ -67,6 +67,38 @@ const button = {
       }
     }
   },
+  tertiary: {
+    "bg-color": {
+      light: colors.gray[80].name,
+      dark: colors.gray[20].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[90].name,
+        dark: colors.gray[30].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray["95"].name,
+        dark: colors.gray[40].name
+      }
+    },
+    "text-color": {
+      light: colors.gray["05"].name,
+      dark: colors.gray[100].name
+    },
+    outline: {
+      color: {
+        light: colors.gray[40].name,
+        dark: colors.gray[70].name
+      },
+      "text-color": {
+        light: colors.gray[40].name,
+        dark: colors.gray[70].name
+      }
+    }
+  },
   join: {
     "bg-color": {
       light: colors.green[60].name,

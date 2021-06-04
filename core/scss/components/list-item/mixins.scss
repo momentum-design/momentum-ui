@@ -185,7 +185,8 @@
   &:focus,
   &.focus {
     .#{$dark-class} & {
-      @include focus-styles;
+      @include focus-styles($focus-visible-only: false);
+      z-index: 1;
     }
   }
 
@@ -311,7 +312,7 @@
   $hover-subheader-color: $hover-color,
   $hover-subheader-color-css-var: $hover-color-css-var,
   $background-color: $list-item__background,
-  $background-color-css-var: null,
+  $background-color-css-var: --null,
   $disabled-opacity: $list-item__opacity--disabled,
   $focus-color: $color,
   $focus-color-css-var: $color-css-var,
@@ -373,6 +374,8 @@
   {
     color: $hover-color;
     color: var($hover-color-css-var, $hover-color);
+    background-color: $hover-bgrd-color;
+    background-color: var($hover-bgrd-color-css-var, $hover-bgrd-color);
 
     .#{$list-item__class} {
       &__header {
@@ -438,7 +441,8 @@
   @if $includeFocus {
     &:focus,
     &.focus {
-      @include focus-styles;
+      @include focus-styles($focus-visible-only: false);
+      z-index:1;
     }
   }
 

@@ -1,0 +1,45 @@
+@import 'mixins';
+
+@include exports('spark-icons-bordered') {
+  .#{$icon-css-prefix}-border {
+    padding: 0.2em 0.25em 0.15em;
+    border: solid 0.08em $icon-border-color;
+    border-radius: 0.1em;
+  }
+
+  .#{$icon-css-prefix}-pull-left {
+    float: left;
+  }
+
+  .#{$icon-css-prefix}-pull-right {
+    float: right;
+  }
+
+  .#{$icon-css-prefix} {
+    &.#{$icon-css-prefix}-pull-left {
+      margin-right: 0.3em;
+    }
+
+    &.#{$icon-css-prefix}-pull-right {
+      margin-left: 0.3em;
+    }
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .#{$icon-css-prefix} {
+    &.pull-left {
+      margin-right: 0.3em;
+    }
+
+    &.pull-right {
+      margin-left: 0.3em;
+    }
+  }
+}

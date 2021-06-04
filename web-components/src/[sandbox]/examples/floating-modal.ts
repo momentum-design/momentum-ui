@@ -10,7 +10,7 @@ const data =
 export class FloatingTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpen = false;
   @property({ type: Boolean }) isMin = false;
-  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x: 681.18, y: 150};
+  @property({type: Object}) location = localStorage.getItem('location') !== null ? JSON.parse(localStorage.getItem('location') || "") : {x: 0, y: 0};
   @property({type: Object}) minLocation = localStorage.getItem('min-location') !== null? JSON.parse(localStorage.getItem('min-location') || "") : {x:0, y:0};
   @property({type: Object}) containerRect = localStorage.getItem('resize') !== null? JSON.parse(localStorage.getItem('resize') || "") : null;
   private openFloatingModal() {
@@ -47,10 +47,6 @@ export class FloatingTemplateSandbox extends LitElement {
     localStorage.setItem('min-location', JSON.stringify(event.detail.transform));
   }
 
-  private setFocus() {
-    document.getElementsByName("youtube")[0].focus();
-  }
-
   static get styles() {
     return css`
       .float-modal::part(floating) {
@@ -81,6 +77,7 @@ export class FloatingTemplateSandbox extends LitElement {
      
       <md-floating-modal
         class="float-modal"
+        heading="Shortcuts"
         ?show=${this.isOpen}
         .position=${this.location}
         .minPosition=${this.minLocation}
@@ -91,9 +88,7 @@ export class FloatingTemplateSandbox extends LitElement {
         @floating-modal-location=${this.saveLocation}
         @floating-modal-resize=${this.resize}
       >
-       <div slot="header" class="flexi"><md-icon class="space" name="youtube-circle_24" color="red"></md-icon>Youtube</div>
-       <iframe id="youtube" style="height:100%; width:100%" src="https://youtube.com" onload="${this.setFocus}" >
-        <iframe>
+        <md-table tabledata="${data}" sorting></md-table>
       </md-floating-modal>
      
     

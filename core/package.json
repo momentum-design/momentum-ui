@@ -1,7 +1,7 @@
 {
   "name": "@momentum-ui/core",
   "description": "Cisco Momentum UI CSS Framework",
-  "version": "19.14.1",
+  "version": "19.15.0",
   "author": "Cisco Systems, Inc.",
   "contributors": [
     "Paul Jeter <pauljeter@gmail.com>"
@@ -75,7 +75,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "~16.8.0",
-    "@momentum-ui/react": "^23.24.1",
+    "@momentum-ui/react": "^23.24.2",
     "@momentum-ui/tokens": "^1.7.0",
     "@momentum-ui/utils": "^6.2.14",
     "@percy/cypress": "^0.2.3",

@@ -79,12 +79,12 @@ export namespace Avatar {
       };
     }
 
-    private get pretifyTitle()  {
-      if(this.title.length) {
+    private get pretifyTitle() {
+      if (this.title.length) {
         const fullName = this.title.trim().split(" ");
-        if(fullName.length === 1) return fullName[0].charAt(0);
+        if (fullName.length === 1) return fullName[0].charAt(0);
         else {
-          return fullName[0].charAt(0) + fullName[fullName.length-1].charAt(0);
+          return fullName[0].charAt(0) + fullName[fullName.length - 1].charAt(0);
         }
       }
       return "";

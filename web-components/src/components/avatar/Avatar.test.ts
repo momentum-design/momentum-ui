@@ -41,7 +41,7 @@ describe("Avatar", () => {
     );
     const letter = element.shadowRoot!.querySelector(".md-avatar__letter");
 
-    expect(letter!.textContent!.trim()).toEqual("ABH");
+    expect(letter!.textContent!.trim()).toEqual("AH");
   });
 
   test("should render icon even if title is provided", async () => {

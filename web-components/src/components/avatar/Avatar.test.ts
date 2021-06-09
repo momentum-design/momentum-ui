@@ -41,7 +41,26 @@ describe("Avatar", () => {
     );
     const letter = element.shadowRoot!.querySelector(".md-avatar__letter");
 
-    expect(letter!.textContent!.trim()).toEqual("ABH");
+    expect(letter!.textContent!.trim()).toEqual("AH");
+
+
+    const element2 = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar alt="avatar" title="Chandler"></md-avatar>
+      `
+    );
+    const letter2 = element2.shadowRoot!.querySelector(".md-avatar__letter");
+
+    expect(letter2!.textContent!.trim()).toEqual("C");
+
+    const element3 = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar alt="avatar" title="Joseph Francis Tribbiani Junior"></md-avatar>
+      `
+    );
+    const letter3 = element3.shadowRoot!.querySelector(".md-avatar__letter");
+
+    expect(letter3!.textContent!.trim()).toEqual("JJ");
   });
 
   test("should render icon even if title is provided", async () => {

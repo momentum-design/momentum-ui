@@ -37,11 +37,14 @@ export default {
 
 export const Tabs = () => {
   const darkTheme = boolean("darkMode", false);
+  const draggable = boolean("draggable", false);
   const lumos = boolean("Lumos Theme", false);
   const disabled = boolean("disabled", false);
   const justified = boolean("Justified", false);
   const options = { vertical: "vertical", horizontal: "horizontal" };
   const alignment = select("Orientation", options, "horizontal");
+  const closeOptions = { none: "", auto: "auto" };
+  const closable = select("Closable", closeOptions, "none");
   const more = alignment === "horizontal" ? boolean("Show Tabs with More Button", false) : false;
   const moreItemsScrollLimit = more ? number("Show Tabs More menu scroll for items limit", 3) : Number.MAX_SAFE_INTEGER;
 
@@ -53,58 +56,59 @@ export const Tabs = () => {
             @selected-changed=${action("changed")}
             selected="0"
             more-items-scroll-limit="${moreItemsScrollLimit}"
+            ?draggable=${draggable}
             justified
           >
-            <md-tab slot="tab" label="History">
+            <md-tab slot="tab" closable="${closable}" label="History">
               <md-icon name="recents_16"></md-icon>
               <span>Contact History</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Contact History"</span>
             </md-tab-panel>
-            <md-tab slot="tab" label="WxM">
+            <md-tab slot="tab" closable="${closable}" label="WxM">
               <md-icon name="apps_16"></md-icon>
               <span>Cisco WxM</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "WxM"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="alarm_16"></md-icon>
               <span>Cisco Answer</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Cisco Answer"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="admin_16"></md-icon>
               <span>Cisco Admins</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Cisco Admins"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="alert_16"></md-icon>
               <span>Cisco Widgets</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Cisco Widgets"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="browser_16"></md-icon>
               <span>Cisco News</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Cisco News"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="month_16"></md-icon>
               <span>Cisco Weather</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Cisco Weather"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="camera-photo_16"></md-icon>
               <span>Cisco Turbo</span>
             </md-tab>
@@ -119,22 +123,27 @@ export const Tabs = () => {
     return html`
       <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
         <div style="height: 300px;">
-          <md-tabs @selected-changed=${action("changed")} direction="${alignment}" .justified=${justified}>
-            <md-tab slot="tab">
+          <md-tabs
+            @selected-changed=${action("changed")}
+            ?draggable=${draggable}
+            direction="${alignment}"
+            .justified=${justified}
+          >
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="recents_16"></md-icon>
               <span>Tab 1</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "First Tab"</span>
             </md-tab-panel>
-            <md-tab slot="tab">
+            <md-tab slot="tab" closable="${closable}">
               <md-icon name="apps_16"></md-icon>
               <span>Tab 2</span>
             </md-tab>
             <md-tab-panel slot="panel">
               <span>Content for "Second Tab"</span>
             </md-tab-panel>
-            <md-tab slot="tab" .disabled=${disabled}>
+            <md-tab slot="tab" closable="${closable}" .disabled=${disabled}>
               <md-icon name="alarm_16"></md-icon>
               <span>Tab 3</span>
             </md-tab>

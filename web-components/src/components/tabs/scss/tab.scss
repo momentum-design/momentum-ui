@@ -21,7 +21,7 @@
   border-left: $tab-active-border;
 }
 
-:host([focus-visible]) {
+:host(:focus) {
   background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
 
   button {
@@ -30,12 +30,12 @@
   }
 }
 
-:host([focus-visible][selected]) {
+:host(:focus[selected]) {
   background: transparent;
 }
 
 :host([viewporthidden]) {
-  display: inline-block;
+  display: none;
   height: auto !important;
   pointer-events: none;
   position: absolute;
@@ -48,6 +48,28 @@
 
 :host([measuringrealwidth]) {
   width: auto !important;
+}
+
+.tab-slot {
+  display: block;
+}
+
+.tab-action-button {
+  display: flex;
+  margin-left: calc(#{$tab-base-indent} * 4);
+
+  md-icon {
+    display: inherit;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.closable {
+  display: flex;
+  justify-content: space-between;
 }
 
 button {

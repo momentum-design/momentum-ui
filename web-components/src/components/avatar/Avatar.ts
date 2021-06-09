@@ -87,7 +87,6 @@ export namespace Avatar {
           return fullName[0].charAt(0) + fullName[fullName.length - 1].charAt(0);
         }
       }
-      return "";
     }
 
     private get chatIconName() {

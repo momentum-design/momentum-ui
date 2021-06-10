@@ -52,7 +52,7 @@ export namespace Tabs {
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
     @property({ type: Boolean, attribute: "force-fallback" }) forceFallback = false;
     @property({ type: String, attribute: "fallback-class" }) fallbackClass = "";
-    
+
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
     @internalProperty() private isMoreTabMenuOpen = false;
@@ -68,6 +68,7 @@ export namespace Tabs {
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
     @query(".md-tab__list[part='tabs-list']") tabsListElement?: HTMLDivElement;
+    @query(".md-tabs__settings[part='md-tabs__settings']") tabsSettingsElement?: HTMLElement;
     @query(".md-menu-overlay__more_tab") moreTabMenuElement?: Tab.ELEMENT;
     @query("md-menu-overlay") menuOverlayElement?: MenuOverlay.ELEMENT;
 
@@ -82,10 +83,10 @@ export namespace Tabs {
         group: "shared",
         animation: 10,
         swapThreshold: 1,
-        draggable: "md-tab",  
+        draggable: "md-tab",
         direction: this.direction,
-        forceFallback: this.forceFallback,  
-        fallbackClass: this.fallbackClass,    
+        forceFallback: this.forceFallback,
+        fallbackClass: this.fallbackClass,
         ghostClass: this.ghostClass,
         chosenClass: this.chosenClass,
         onEnd: this.handleOnDragEnd
@@ -144,7 +145,7 @@ export namespace Tabs {
         ? this.tabs.map((tab, idx) => tab.offsetWidth)
         : this.tabs.map((tab, idx) => {
             tab.setAttribute("measuringrealwidth", "");
-            const offsetWidth = tab.offsetWidth;
+            const offsetWidth = tab.closable ? tab.offsetWidth + 22 : tab.offsetWidth;
             tab.removeAttribute("measuringrealwidth");
             return offsetWidth;
           });
@@ -163,9 +164,9 @@ export namespace Tabs {
 
         const tabsCount = tabList.length;
         if (this.tabsListElement && tabsCount > 1) {
-          const tabsListViewportOffsetWidth = this.tabsListElement.offsetWidth;
-
-          // Awaiting all tabs updates
+          const tabsListViewportOffsetWidth = this.tabsSettingsElement?.offsetWidth
+            ? this.tabsListElement.offsetWidth - this.tabsSettingsElement?.offsetWidth
+            : this.tabsListElement.offsetWidth;
           await this.ensureTabsUpdateComplete(this.tabs);
 
           const tabsOffsetsWidths = this.measureTabsOffsetWidth();
@@ -263,7 +264,7 @@ export namespace Tabs {
       }
 
       tabs.forEach((tab, index) => {
-        const id = "tab_" + nanoid(10); 
+        const id = "tab_" + nanoid(10);
         tab.setAttribute("id", id);
         tab.setAttribute("aria-controls", id);
         tab.selected = this.selected === index;
@@ -938,6 +939,9 @@ export namespace Tabs {
               )}
             </div>
           </md-menu-overlay>
+          <div class="md-tabs__settings" part="md-tabs__settings">
+            <slot name="settings"></slot>
+          </div>
         </div>
         <div
           part="tabs-content"

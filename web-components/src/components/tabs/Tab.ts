@@ -13,6 +13,7 @@ import { html, LitElement, property, PropertyValues } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 import { classMap } from "lit-html/directives/class-map";
+import { Key } from "@/constants";
 
 export type TabClickEvent = { id: string };
 export type TabCloseClickEvent = { id: string; name: string };
@@ -30,7 +31,7 @@ export namespace Tab {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Number, reflect: true }) tabIndex = -1;
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
-    @property({ type: String, attribute: "closable"}) closable: "auto" | "custom" | "" = "";
+    @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
 
@@ -92,22 +93,33 @@ export namespace Tab {
       }
     }
 
-    handleCrossClick(event: MouseEvent) {
+    handleCrossKeydown(event: KeyboardEvent) {
+      event.stopPropagation();
+      if (event.code === Key.Enter) {
+        this.handleCrossEventDispatch();
+      }
+    }
+
+    handleCrossClick(event: MouseEvent | KeyboardEvent) {
       event.preventDefault();
+      console.log(event);
       if (this.disabled === true) return;
+      this.handleCrossEventDispatch();
+    }
+
+    private handleCrossEventDispatch() {
       if (this.id) {
-        if(this.closable === "auto"){
-        this.dispatchEvent(
-          new CustomEvent<TabClickEvent>("tab-cross-click", {
-            detail: {
-              id: this.id
-            },
-            bubbles: true,
-            composed: true
-          })
-        );
-        }
-        else if (this.closable === "custom") {
+        if (this.closable === "auto") {
+          this.dispatchEvent(
+            new CustomEvent<TabClickEvent>("tab-cross-click", {
+              detail: {
+                id: this.id
+              },
+              bubbles: true,
+              composed: true
+            })
+          );
+        } else if (this.closable === "custom") {
           this.dispatchEvent(
             new CustomEvent<TabCloseClickEvent>("tab-close-click", {
               detail: {
@@ -170,10 +182,12 @@ export namespace Tab {
             ? html`
                 <div
                   ?disabled=${this.disabled}
+                  tabindex="-1"
                   class="tab-action-button"
                   @click=${(e: MouseEvent) => this.handleCrossClick(e)}
+                  @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
                 >
-                  <md-icon name="cancel_14"></md-icon>
+                  <md-icon tabindex="0" name="cancel_14"></md-icon>
                 </div>
               `
             : ""}

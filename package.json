@@ -115,5 +115,10 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "md5": "^2.3.0",
+    "proxy-agent": "^4.0.1"
   }
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.2.0...@momentum-ui/illustrations@1.2.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* **illustrations:** added empty/call.svg ([#938](https://github.com/momentum-design/momentum-ui/issues/938)) ([1c720f2](https://github.com/momentum-design/momentum-ui/commit/1c720f2191c506f4cc2f5eb6e0aa0f1a1c10b747))
+
+
+
+
+
 # 1.2.0 (2021-05-25)
 
 

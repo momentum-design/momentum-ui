@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.14.1...@momentum-ui/core@19.15.0) (2021-06-05)
+
+
+### Features
+
+* **theming:** add theming to alert-banner ([#936](https://github.com/momentum-design/momentum-ui/issues/936)) ([b6b92db](https://github.com/momentum-design/momentum-ui/commit/b6b92db972f79730c412d54de7849602f035d41a))
+* **theming:** modal tweaks for dark mode ([#930](https://github.com/momentum-design/momentum-ui/issues/930)) ([f421640](https://github.com/momentum-design/momentum-ui/commit/f421640822cde30b37f468e06c3ea5a3923ba9a2))
+
+
+
+
+
 ## [19.14.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.14.0...@momentum-ui/core@19.14.1) (2021-06-04)
 
 

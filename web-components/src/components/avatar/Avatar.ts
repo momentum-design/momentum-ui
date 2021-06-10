@@ -80,14 +80,13 @@ export namespace Avatar {
     }
 
     private get pretifyTitle() {
-      return this.title.length
-        ? this.title
-            .trim()
-            .split(" ")
-            .map(word => word.charAt(0))
-            .join("")
-            .trim()
-        : "";
+      if (this.title.length) {
+        const fullName = this.title.trim().split(" ");
+        if (fullName.length === 1) return fullName[0].charAt(0);
+        else {
+          return fullName[0].charAt(0) + fullName[fullName.length - 1].charAt(0);
+        }
+      }
     }
 
     private get chatIconName() {

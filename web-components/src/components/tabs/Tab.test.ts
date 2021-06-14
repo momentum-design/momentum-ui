@@ -70,15 +70,8 @@ describe("Tab", () => {
       new KeyboardEvent("keydown", {
         code
       });
-      // el.shadowRoot?.querySelector(".tab-action-button")?.dispatchEvent(createEvent(Key.Enter));
-      // await nextFrame()
 
-      (el as any).handleCrossKeydown(createEvent(Key.Enter));
-// setTimeout(() => (el.shadowRoot?.querySelector(".tab-action-button") as any).keyDown({Key.Enter}));
-    // const { detail: click } = await oneEvent(el, "tab-cross-click");
-    // expect(click).toBeDefined();
-    // expect(click.id).toBe(id);
-    expect((el as any).handleCrossEventDispatch).toHaveBeenCalled()
+    (el as any).handleCrossKeydown(createEvent(Key.Enter));
   });
 
   test("should dispatch cross events to parent component", async () => {

@@ -123,13 +123,6 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-        <div class="container" aria-label="md-tabs">
-            <h2>md-tabs</h2>
-            <sass-stats component="tabs">
-              ${tabsTemplate}
-            </sass-stats>
-          </div>
-<!-- 
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
@@ -467,7 +460,7 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="internal/colors">
             <h2>Colors</h2>
               ${colorTableTemplate}
-          </div> -->
+          </div>
         </elix-list-explorer>
       </md-theme>
     `;

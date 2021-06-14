@@ -1,7 +1,7 @@
-import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
+import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -123,13 +123,6 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
-        <div class="container" aria-label="md-tabs">
-            <h2>md-tabs</h2>
-            <sass-stats component="tabs">
-              ${tabsTemplate}
-            </sass-stats>
-          </div>
-<!-- 
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>
             <sass-stats component="accordion">
@@ -466,8 +459,8 @@ export class Sandbox extends LitElement {
 
           <div class="container" aria-label="internal/colors">
             <h2>Colors</h2>
-              ${colorTableTemplate}
-          </div> -->
+            ${colorTableTemplate}
+          </div>
         </elix-list-explorer>
       </md-theme>
     `;

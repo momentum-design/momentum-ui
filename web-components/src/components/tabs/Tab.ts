@@ -6,14 +6,14 @@
  *
  */
 
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
-import { classMap } from "lit-html/directives/class-map";
-import { Key } from "@/constants";
 
 export type TabClickEvent = { id: string };
 export type TabCloseClickEvent = { id: string; name: string };
@@ -102,7 +102,6 @@ export namespace Tab {
 
     handleCrossClick(event: MouseEvent | KeyboardEvent) {
       event.preventDefault();
-      console.log(event);
       if (this.disabled === true) return;
       this.handleCrossEventDispatch();
     }

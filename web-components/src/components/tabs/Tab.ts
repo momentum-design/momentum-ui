@@ -94,6 +94,7 @@ export namespace Tab {
     }
 
     handleCrossKeydown(event: KeyboardEvent) {
+      console.log("ZORO REACHED")
       event.stopPropagation();
       if (event.code === Key.Enter) {
         this.handleCrossEventDispatch();

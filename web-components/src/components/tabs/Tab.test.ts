@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
-import { nanoid } from "nanoid";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
+import { nanoid } from "nanoid";
 import "./Tab";
 import { Tab } from "./Tab";
 
@@ -56,6 +56,29 @@ describe("Tab", () => {
     const { detail: click } = await oneEvent(el, "tab-click");
     expect(click).toBeDefined();
     expect(click.id).toBe(id);
+  });
+
+  test("should dispatch keydown events to parent component", async () => {
+    const id = nanoid();
+    const el = await fixture<Tab.ELEMENT>(
+      html`
+        <md-tab closable="auto" id=${id} name="test-tab"></md-tab>
+      `
+    );
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+      // el.shadowRoot?.querySelector(".tab-action-button")?.dispatchEvent(createEvent(Key.Enter));
+      // await nextFrame()
+
+      (el as any).handleCrossKeydown(createEvent(Key.Enter));
+// setTimeout(() => (el.shadowRoot?.querySelector(".tab-action-button") as any).keyDown({Key.Enter}));
+    // const { detail: click } = await oneEvent(el, "tab-cross-click");
+    // expect(click).toBeDefined();
+    // expect(click.id).toBe(id);
+    expect((el as any).handleCrossEventDispatch).toHaveBeenCalled()
   });
 
   test("should dispatch cross events to parent component", async () => {

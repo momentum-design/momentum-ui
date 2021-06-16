@@ -15,6 +15,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
+export const TAB_CROSS_WIDTH = 22;
 export type TabClickEvent = { id: string };
 export type TabCloseClickEvent = { id: string; name: string };
 export type TabKeyDownEvent = {
@@ -94,7 +95,6 @@ export namespace Tab {
     }
 
     handleCrossKeydown(event: KeyboardEvent) {
-      console.log("ZORO REACHED")
       event.stopPropagation();
       if (event.code === Key.Enter) {
         this.handleCrossEventDispatch();

@@ -65,12 +65,10 @@ describe("Tab", () => {
         <md-tab closable="auto" id=${id} name="test-tab"></md-tab>
       `
     );
-
     const createEvent = (code: string) =>
       new KeyboardEvent("keydown", {
         code
       });
-
     (el as any).handleCrossKeydown(createEvent(Key.Enter));
   });
 

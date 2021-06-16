@@ -9,7 +9,6 @@ import "@/components/tooltip/Tooltip";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -175,6 +174,7 @@ export class TabsTemplateSandbox extends LitElement {
     this.currentTabsOrder = [...this.defaultTabsOrder];
     localStorage.setItem("tabsOrder", this.currentTabsOrder.join(","));
   }
+
   handleCloseAll(event: MouseEvent) {
     event.preventDefault();
     this.currentTabsOrder = [];
@@ -183,16 +183,6 @@ export class TabsTemplateSandbox extends LitElement {
 
   handleToggleClick() {
     this.isSingleButtonResetEnabled = !this.isSingleButtonResetEnabled;
-  }
-
-  renderTab() {
-    return repeat(
-      this.currentTabsOrder,
-      tabElement => nanoid(),
-      tabElement => html`
-        ${unsafeHTML(this.tabs[tabElement])}
-      `
-    );
   }
 
   connectedCallback() {

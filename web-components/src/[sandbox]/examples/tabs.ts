@@ -9,6 +9,7 @@ import "@/components/tooltip/Tooltip";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -115,10 +116,17 @@ export class TabsTemplateSandbox extends LitElement {
           height: 100%;
           background-color: white;
           border: none;
+        }
 
-          &:hover {
-            background-color: #b2b2b2;
-          }
+        .menu-trigger-button:focus {
+          box-shadow: 0 0 0 1.5px var(--md-blue-60);
+          outline: none;
+          border-radius: 4px;
+        }
+
+        .menu-trigger-button:hover {
+          background-color: #DCDCDC;
+          border-radius: 4px;
         }
       `
     ];
@@ -178,7 +186,6 @@ export class TabsTemplateSandbox extends LitElement {
   handleCloseAll(event: MouseEvent) {
     event.preventDefault();
     this.currentTabsOrder = [];
-    console.log("Got it!!");
   }
 
   handleToggleClick() {
@@ -203,9 +210,13 @@ export class TabsTemplateSandbox extends LitElement {
         </md-toggle-switch>
         <div>
           <md-tabs selected="0" draggable justified>
-            ${this.currentTabsOrder.map((tabElement: string) => {
-              return unsafeHTML(this.tabs[tabElement]);
-            })}
+            ${repeat(
+              this.currentTabsOrder,
+              tabElement => nanoid(10),
+              tabElement => html`
+                ${unsafeHTML(this.tabs[tabElement])}
+              `
+            )}
             ${!this.isSingleButtonResetEnabled
               ? html`
                   <md-menu-overlay

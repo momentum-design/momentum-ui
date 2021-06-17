@@ -5136,6 +5136,5 @@ import Foundation
             assertionFailure("Unknown icon type: \(self)")
             return ""
         }
-        }
     }
 }

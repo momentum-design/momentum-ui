@@ -62,14 +62,18 @@ describe("Tab", () => {
     const id = nanoid();
     const el = await fixture<Tab.ELEMENT>(
       html`
-        <md-tab closable="auto" id=${id} name="test-tab"></md-tab>
+        <md-tab closable="custom" id=${id} name="test-tab"></md-tab>
       `
     );
     const createEvent = (code: string) =>
       new KeyboardEvent("keydown", {
         code
       });
-    (el as any).handleCrossKeydown(createEvent(Key.Enter));
+    setTimeout(() => (el as any).handleCrossKeydown(createEvent(Key.Enter)), 10);
+
+    const { detail: click } = await oneEvent(el, "tab-close-click");
+    expect(click).toBeDefined();
+    expect(click.id).toBe(id);
   });
 
   test("should dispatch cross events to parent component", async () => {

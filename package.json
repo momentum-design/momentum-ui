@@ -46,6 +46,7 @@
     "lint:react": "cd ./react && yarn lint",
     "lint:tokens": "cd ./tokens && yarn lint",
     "publish:www": "node ./tools/publishWebsite.js",
+    "publish:icons": "cd ./icons && yarn updateIconDatabase && yarn uploadIconSvgs",
     "release": "./tools/release.sh",
     "storybook:wc-dist": "cd ./web-components && yarn storybook:dist",
     "storybook:wc-deploy": "cd ./web-components && yarn storybook:deploy-ci",
@@ -117,6 +118,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "lodash": "^4.17.15",
     "md5": "^2.3.0",
     "proxy-agent": "^4.0.1"

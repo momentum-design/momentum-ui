@@ -72,6 +72,17 @@
   justify-content: space-between;
 }
 
+md-icon {
+  &:focus {
+    border-radius: calc(#{$tab-focus-border-radius} / 2);
+    @include remove-focus;
+    @include focus-boxshadow(
+      rem-calc(1.5),
+      var(--md-focus-border-color)
+    );
+  }
+}
+
 button {
   background: $tab-none-bg;
   border: $tab-border;

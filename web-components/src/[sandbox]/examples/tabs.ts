@@ -2,14 +2,14 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
 import "@/components/tabs/Tab";
-import { TabClickEvent, TabCloseClickEvent } from "@/components/tabs/Tab";
+import { TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
-import { customElement, internalProperty, LitElement } from "lit-element";
-import { html } from "lit-element";
+import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -29,31 +29,8 @@ export class TabsTemplateSandbox extends LitElement {
   @internalProperty() private isModalOpen = false;
   defaultTabsOrder = ["WxM", "History", "Answer", "Admins", "Widgets", "News", "Weather", "Turbo"];
   @internalProperty() private currentTabsOrder = this.defaultTabsOrder;
+  @internalProperty() private isSingleButtonResetEnabled = false;
   closeTabName = "";
-
-  private handleTabClick(event: any) {
-    console.log(event);
-    const draggableTabsOrder = event.detail.tabsOrder;
-    localStorage.setItem("tabsOrder", draggableTabsOrder);
-  }
-
-  private handleTabCustomClose(event: CustomEvent<TabCloseClickEvent>) {
-    console.log(event);
-    this.closeTabName = event.detail.name;
-    this.isModalOpen = true;
-  }
-
-  private closeTab() {
-    this.currentTabsOrder = this.currentTabsOrder.filter((tabName: any) => {
-      return tabName !== this.closeTabName;
-    });
-    this.isModalOpen = false;
-  }
-
-  private setupTabsEvents() {
-    this.addEventListener("selected-changed", this.handleTabClick as EventListener);
-    this.addEventListener("tab-close-click", this.handleTabCustomClose as EventListener);
-  }
 
   private setUpTabs() {
     this.tabs = {
@@ -132,6 +109,89 @@ export class TabsTemplateSandbox extends LitElement {
     };
   }
 
+  static get styles() {
+    return [
+      css`
+        .menu-trigger-button {
+          height: 100%;
+          background-color: white;
+          border: none;
+        }
+
+        .menu-trigger-button:focus {
+          box-shadow: 0 0 0 1.5px var(--md-blue-60);
+          outline: none;
+          border-radius: 4px;
+        }
+
+        .menu-trigger-button:hover {
+          background-color: #DCDCDC;
+          border-radius: 4px;
+        }
+      `
+    ];
+  }
+
+  private handleTabClick(event: any) {
+    console.log(event);
+    const draggableTabsOrder = event.detail.tabsOrder;
+    localStorage.setItem("tabsOrder", draggableTabsOrder);
+  }
+
+  private handleTabCustomClose(event: CustomEvent<TabCloseClickEvent>) {
+    console.log(event);
+    this.closeTabName = event.detail.name;
+    this.isModalOpen = true;
+  }
+
+  private closeTab() {
+    this.currentTabsOrder = this.currentTabsOrder.filter((tabName: any) => {
+      return tabName !== this.closeTabName;
+    });
+    this.isModalOpen = false;
+  }
+
+  private setupTabsEvents() {
+    this.addEventListener("selected-changed", this.handleTabClick as EventListener);
+    this.addEventListener("tab-close-click", this.handleTabCustomClose as EventListener);
+  }
+
+  private handleCheckboxChange(event: any, tabLabel: string) {
+    if (event && tabLabel) {
+      const path = event.composedPath();
+      const checkboxElement = Array.from(path).find(
+        element => (element as HTMLElement).nodeName.toLowerCase() === "md-checkbox"
+      );
+      if (checkboxElement) {
+        const isCheckboxChecked = (checkboxElement as HTMLInputElement).checked;
+        const tabsOrderCopy = [...this.currentTabsOrder];
+        if (!isCheckboxChecked) {
+          const index = this.currentTabsOrder.indexOf(tabLabel);
+          tabsOrderCopy.splice(index, 1);
+        } else {
+          const index = this.defaultTabsOrder.indexOf(tabLabel);
+          tabsOrderCopy.splice(index, 0, tabLabel);
+        }
+        this.currentTabsOrder = tabsOrderCopy;
+      }
+    }
+  }
+
+  handleResetTabs(event: MouseEvent) {
+    event.preventDefault();
+    this.currentTabsOrder = [...this.defaultTabsOrder];
+    localStorage.setItem("tabsOrder", this.currentTabsOrder.join(","));
+  }
+
+  handleCloseAll(event: MouseEvent) {
+    event.preventDefault();
+    this.currentTabsOrder = [];
+  }
+
+  handleToggleClick() {
+    this.isSingleButtonResetEnabled = !this.isSingleButtonResetEnabled;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.setupTabsEvents();
@@ -145,11 +205,64 @@ export class TabsTemplateSandbox extends LitElement {
       <div style="max-width: 600px; padding-top: 16px;">
         <h3 style="margin: 0;">Retainable Horizontal md-tabs with More button</h3>
         <p style="margin: 0; padding-bottom: 8px;">Stores tabOrder in Local Storage and also has custom close action</p>
+        <md-toggle-switch @click=${() => this.handleToggleClick()} htmlId="toggleSwitch1">
+          Single Button Reset
+        </md-toggle-switch>
         <div>
           <md-tabs selected="0" draggable justified>
-            ${this.currentTabsOrder.map((tabElement: string) => {
-              return unsafeHTML(this.tabs[tabElement]);
-            })}
+            ${repeat(
+              this.currentTabsOrder,
+              tabElement => nanoid(10),
+              tabElement => html`
+                ${unsafeHTML(this.tabs[tabElement])}
+              `
+            )}
+            ${!this.isSingleButtonResetEnabled
+              ? html`
+                  <md-menu-overlay
+                    slot="settings"
+                    size="small"
+                    style="display: flex; justify-content: center;height: 100%;"
+                  >
+                    <button class="menu-trigger-button" slot="menu-trigger">
+                      <md-icon name="icon-more-adr_16"></md-icon>
+                    </button>
+                    <div style="padding: 16px">
+                      <div>
+                        <md-button @click=${(e: MouseEvent) => this.handleCloseAll(e)} variant="secondary"
+                          ><span slot="text">Close All</span></md-button
+                        >
+                        <md-button @click=${(e: MouseEvent) => this.handleResetTabs(e)} variant="primary"
+                          ><span slot="text">Reset</span></md-button
+                        >
+                      </div>
+                      <p>Unselect Tabs to Hide</p>
+                      <md-checkboxgroup style="display: flex" group-label="group_process">
+                        ${this.defaultTabsOrder.map(tabLabel => {
+                          return html`
+                            <md-checkbox
+                              checked
+                              @checkbox-change=${(e: Event) => this.handleCheckboxChange(e, tabLabel)}
+                              slot="checkbox"
+                              >${tabLabel}</md-checkbox
+                            >
+                          `;
+                        })}
+                      </md-checkboxgroup>
+                    </div>
+                  </md-menu-overlay>
+                `
+              : html`
+                  <button
+                    slot="settings"
+                    class="menu-trigger-button"
+                    @click=${(e: MouseEvent) => this.handleResetTabs(e)}
+                  >
+                    <md-tooltip placement="bottom" message=${"Reset Tabs"}>
+                      <md-icon name="icon-reset_16"></md-icon>
+                    </md-tooltip>
+                  </button>
+                `}
           </md-tabs>
         </div>
         <br />

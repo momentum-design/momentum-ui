@@ -45,6 +45,7 @@ export const Tabs = () => {
   const alignment = select("Orientation", options, "horizontal");
   const closeOptions = { none: "", auto: "auto" };
   const closable = select("Closable", closeOptions, "none");
+  const settings = boolean("settings", false);
   const more = alignment === "horizontal" ? boolean("Show Tabs with More Button", false) : false;
   const moreItemsScrollLimit = more ? number("Show Tabs More menu scroll for items limit", 3) : Number.MAX_SAFE_INTEGER;
 
@@ -115,6 +116,15 @@ export const Tabs = () => {
             <md-tab-panel slot="panel">
               <span>Content for "Cisco Turbo"</span>
             </md-tab-panel>
+            ${settings
+              ? html`
+                  <button slot="settings" class="menu-trigger-button">
+                    <md-tooltip placement="bottom" message=${"More Button"}>
+                      <md-icon name="icon-reset_16"></md-icon>
+                    </md-tooltip>
+                  </button>
+                `
+              : ""}
           </md-tabs>
         </div>
       </md-theme>
@@ -150,6 +160,15 @@ export const Tabs = () => {
             <md-tab-panel slot="panel">
               <span>Content for "Third Tab"</span>
             </md-tab-panel>
+            ${settings
+              ? html`
+                  <button slot="settings" class="menu-trigger-button">
+                    <md-tooltip placement="bottom" message=${"More Button"}>
+                      <md-icon name="icon-reset_16"></md-icon>
+                    </md-tooltip>
+                  </button>
+                `
+              : ""}
           </md-tabs>
         </div>
       </md-theme>

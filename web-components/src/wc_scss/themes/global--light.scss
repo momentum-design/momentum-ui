@@ -6,7 +6,7 @@
   --main-bg-color: #{$md-gray-10};
 
   --md-default-focus-outline-color: #{$md-blue-60};
-  
+
   // New Backgrounds
   --md-primary-bg-color: #{$md-white};
   --md-primary-one-bg-color: #{$md-white};
@@ -24,6 +24,8 @@
   --md-quaternary-bg-color: #{$md-gray-20};
   --md-quaternary-one-bg-color: #{$md-gray-20};
   --md-quaternary-two-bg-color: #{$md-gray-20};
+
+  --md-conference-chat-bg-color: #{$md-slate-10};
 
   // Old Backgrounds (deprecated)
   --md-secondary-white-bg-color: #{$md-white}; // use --md-primary-one-bg-color

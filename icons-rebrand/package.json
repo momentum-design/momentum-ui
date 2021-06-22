@@ -21,6 +21,7 @@
     "ci:publishCDN": "run-s replaceFontURLs pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=icons-rebrand",
     "replaceFontURLs": "node ../tools/icons/replaceURLs.js icons-rebrand",
+    "updateIconDatabase": "node ../tools/icons/update-icon-database.js icons-rebrand",
     "lint": "echo \"Success: lint\" && exit 0",
     "prepublishOnly": "yarn build:lib",
     "start": "yarn build:lib",

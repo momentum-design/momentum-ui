@@ -238,6 +238,9 @@ jobs:
       - run:
           name: Publish website
           command: yarn publish:www
+      - run:
+          name: Publish icons
+          command: yarn publish:icons
 
   publish_www:
     <<: *image_defaults

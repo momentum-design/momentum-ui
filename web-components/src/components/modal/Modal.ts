@@ -10,8 +10,8 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { FocusTrapMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -75,7 +75,7 @@ export namespace Modal {
       if (changedProperties.has("show")) {
         if (this.show) {
           this.modalFadeIn();
-        } else {
+        } else if (changedProperties.get("show") === true) {
           this.modalFadeOut();
         }
       }

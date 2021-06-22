@@ -1,3 +1,1 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M16 29.5C23.4558 29.5 29.5 23.4558 29.5 16C29.5 8.54416 23.4558 2.5 16 2.5C8.54416 2.5 2.5 8.54416 2.5 16C2.5 23.4558 8.54416 29.5 16 29.5ZM10 15C9.44772 15 9 15.4477 9 16C9 16.5523 9.44772 17 10 17H22C22.5523 17 23 16.5523 23 16C23 15.4477 22.5523 15 22 15H10Z" fill="black"/>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#0f0f0f;fill-rule:evenodd;}</style></defs><path class="cls-1" d="M16,2.5A13.5,13.5,0,1,0,29.5,16,13.5,13.5,0,0,0,16,2.5ZM22,17H10a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z"/></svg>

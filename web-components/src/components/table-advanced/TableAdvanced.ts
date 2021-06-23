@@ -86,7 +86,11 @@ export namespace TableAdvanced {
 
     private updateTableData() {
       if (typeof this.data === "string") {
-        this.tableData = JSON.parse(this.data);
+        try {
+          this.tableData = JSON.parse(this.data);
+        } catch (error) {
+          console.error("[INVALID_JSON_FORMAT] Please recheck the config json");
+        }
       } else {
         this.tableData = { ...this.data };
       }
@@ -94,7 +98,11 @@ export namespace TableAdvanced {
 
     private updateTableConfig() {
       if (typeof this.config === "string") {
-        this.tableConfig = JSON.parse(this.config);
+        try {
+          this.tableConfig = JSON.parse(this.config);
+        } catch (error) {
+          console.error("[INVALID_JSON_FORMAT] Please recheck the data json");
+        }
       } else {
         this.tableConfig = { ...this.config };
       }

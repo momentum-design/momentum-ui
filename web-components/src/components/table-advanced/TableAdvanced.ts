@@ -6,21 +6,21 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
-import "@/components/button/Button";
-import { html, internalProperty, LitElement, property, query, queryAll, PropertyValues } from "lit-element";
-import styles from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { classMap } from "lit-html/directives/class-map";
-import { templateContent } from "lit-html/directives/template-content";
-import { nothing, TemplateResult } from "lit-html";
-import Papa from "papaparse";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { Filter } from "./src/filter";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
+import { nothing, TemplateResult } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { templateContent } from "lit-html/directives/template-content";
+import Papa from "papaparse";
+import styles from "./scss/module.scss";
 import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
+import { Filter } from "./src/filter";
 
 const IMG = document.createElement("img");
 IMG.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -32,10 +32,13 @@ export namespace TableAdvanced {
    */
   @customElementWithCheck("md-table-advanced")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
-    @property({ attribute: false }) config!: Config;
-    @property({ attribute: false }) data!: Data;
+    @property({ attribute: "config" }) config!: Config | string;
+    @property({ attribute: "data" }) data!: Data | string;
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
+
+    @internalProperty() tableConfig!: Config;
+    @internalProperty() tableData!: Data;
 
     @internalProperty() private error = "";
 
@@ -68,20 +71,39 @@ export namespace TableAdvanced {
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("dragover", this.dragover);
+      this.updateTableConfig();
+      this.updateTableData();
       this.populateTable();
     }
 
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
-      if (changedProperties.has("data")) {  
-         this.updateDataInTable();
+      if (changedProperties.has("data")) {
+        this.updateTableData();
+        this.updateDataInTable();
       }
-    } 
+    }
+
+    private updateTableData() {
+      if (typeof this.data === "string") {
+        this.tableData = JSON.parse(this.data);
+      } else {
+        this.tableData = { ...this.data };
+      }
+    }
+
+    private updateTableConfig() {
+      if (typeof this.config === "string") {
+        this.tableConfig = JSON.parse(this.config);
+      } else {
+        this.tableConfig = { ...this.config };
+      }
+    }
 
     private populateColumns() {
       let index = 0;
       const pushCol = (col: ColOptions, group?: { name: string; length: number }) => {
-        const f = col.filters || this.config.default?.col?.filters;
+        const f = col.filters || this.tableConfig.default?.col?.filters;
         const filters = f
           ? f == "forString"
             ? Filter.optionsString
@@ -97,8 +119,8 @@ export namespace TableAdvanced {
           index: index++,
           group,
           sort: "default",
-          sorter: col.sorter || this.config.default?.col?.sorter,
-          isCollapsable: this.config.cols.collapse == col.id,
+          sorter: col.sorter || this.tableConfig.default?.col?.sorter,
+          isCollapsable: this.tableConfig.cols.collapse == col.id,
           filter: filters
             ? {
                 list: filters,
@@ -111,23 +133,23 @@ export namespace TableAdvanced {
         });
       };
 
-      this.config.cols.define.forEach(col => {
+      this.tableConfig.cols.define.forEach(col => {
         if ("children" in col) {
           col.children.forEach(c => pushCol(c, { name: col.groupName, length: col.children.length }));
         } else {
           pushCol(col);
         }
       });
-      this.isSelectable = !!this.config.rows && this.config.rows?.selectable != "none";
-    };
+      this.isSelectable = !!this.tableConfig.rows && this.tableConfig.rows?.selectable != "none";
+    }
 
     private populateData() {
       const lenNodes = this.COLS.length;
 
       // data
 
-      if ("csv" in this.data) {
-        const parse = Papa.parse(this.data.csv, {
+      if ("csv" in this.tableData) {
+        const parse = Papa.parse(this.tableData.csv, {
           skipEmptyLines: true,
           transform: x => x.trim()
         });
@@ -138,14 +160,14 @@ export namespace TableAdvanced {
           const data = parse.data as string[][];
           this.ROWS = data.map(x => x.map(text => ({ text })));
         }
-      } else if ("list2d" in this.data) {
-        this.ROWS = this.data.list2d.map(x => x.map(text => ({ text })));
+      } else if ("list2d" in this.tableData) {
+        this.ROWS = this.tableData.list2d.map(x => x.map(text => ({ text })));
       } else {
-        while (this.data.list.length > lenNodes) {
-          this.ROWS.push(this.data.list.splice(0, lenNodes).map(text => ({ text })));
+        while (this.tableData.list.length > lenNodes) {
+          this.ROWS.push(this.tableData.list.splice(0, lenNodes).map(text => ({ text })));
         }
-        if (this.data.list.length != 0) {
-          this.ROWS.push(this.data.list.map(text => ({ text })));
+        if (this.tableData.list.length != 0) {
+          this.ROWS.push(this.tableData.list.map(text => ({ text })));
         }
       }
 
@@ -157,64 +179,63 @@ export namespace TableAdvanced {
 
     private validateData() {
       const lenNodes = this.COLS.length;
-       // validate
+      // validate
 
-       const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
-       if (lenData % lenNodes != 0) {
-         this.error = this.error =
-           "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
-         return;
-       }
- 
-       this.ROWS.forEach((d, i) => {
-         const len = d.length;
-         if (len != lenNodes) {
-           this.error = `DATA ERROR: Total number of cols (=${lenNodes}) and data[${i}] length (=${len}) mismatch`;
-         }
-       });
+      const lenData = this.ROWS.reduce((acc, d) => acc + d.length, 0);
+      if (lenData % lenNodes != 0) {
+        this.error = this.error =
+          "DATA ERROR: Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.";
+        return;
+      }
+
+      this.ROWS.forEach((d, i) => {
+        const len = d.length;
+        if (len != lenNodes) {
+          this.error = `DATA ERROR: Total number of cols (=${lenNodes}) and data[${i}] length (=${len}) mismatch`;
+        }
+      });
     }
 
     private populateTemplate() {
-       // TEMPLATES
-       const templates = this.config.cellTemplates;
-       const templatesKeys = Object.keys(templates || {});
-       if (templates && templatesKeys.length) {
-         this.ROWS.forEach((row, iRow) => {
-           row.forEach((cell, iCol) => {
-             for (const k in templates) {
-               const idx = cell.text.indexOf(k);
-               if (idx != -1) {
-                 const t = templates[k];
-                 const template = this.querySelector<HTMLTemplateElement>(`#${t.templateName}`);
-                 if (template == null) {
-                   console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
-                   continue;
-                 }
- 
-                 let text = cell.text.replace(k, "");
-                 if (t.contentCb) {
-                   text = t.contentCb({ col: iCol, row: iRow, content: text, insertIndex: idx });
-                 }
- 
-                 this.ROWS[iRow][iCol] = {
-                   text,
-                   template: {
-                     template,
-                     templateCb: t.templateCb,
-                     insertIndex: t.contentUse == "replace" ? -1 : idx
-                   }
-                 };
-                 break;
-               }
-             }
-           });
-         });
-       }
- 
+      // TEMPLATES
+      const templates = this.tableConfig.cellTemplates;
+      const templatesKeys = Object.keys(templates || {});
+      if (templates && templatesKeys.length) {
+        this.ROWS.forEach((row, iRow) => {
+          row.forEach((cell, iCol) => {
+            for (const k in templates) {
+              const idx = cell.text.indexOf(k);
+              if (idx != -1) {
+                const t = templates[k];
+                const template = this.querySelector<HTMLTemplateElement>(`#${t.templateName}`);
+                if (template == null) {
+                  console.warn(`cellTemplates["${k}"]: Missing '${t.templateName}' template.`);
+                  continue;
+                }
+
+                let text = cell.text.replace(k, "");
+                if (t.contentCb) {
+                  text = t.contentCb({ col: iCol, row: iRow, content: text, insertIndex: idx });
+                }
+
+                this.ROWS[iRow][iCol] = {
+                  text,
+                  template: {
+                    template,
+                    templateCb: t.templateCb,
+                    insertIndex: t.contentUse == "replace" ? -1 : idx
+                  }
+                };
+                break;
+              }
+            }
+          });
+        });
+      }
     }
 
     private setDefaultFilterAndSort() {
-      const s = this.config.default?.sort;
+      const s = this.tableConfig.default?.sort;
       if (s) {
         const col = this.COLS.find(c => c.options.id == s.colId);
         if (col) {
@@ -224,7 +245,7 @@ export namespace TableAdvanced {
         }
       }
 
-      const f = this.config.default?.filter;
+      const f = this.tableConfig.default?.filter;
       if (f) {
         const col = this.COLS.find(c => c.options.id == f.colId);
         if (col) {
@@ -242,13 +263,12 @@ export namespace TableAdvanced {
       }
     }
 
-    private populateTable(){
+    private populateTable() {
       this.populateColumns();
       this.populateData();
       this.validateData();
       this.setDefaultFilterAndSort();
       this.populateTemplate();
-
     }
 
     private updateDataInTable() {
@@ -355,7 +375,7 @@ export namespace TableAdvanced {
     private selectRow(p: { row: Row; shiftKey: boolean; metaKey: boolean }) {
       const i = p.row.idx;
       const isSelected = this.selected.hasOwnProperty(i);
-      if (this.config.rows?.selectable == "multiple") {
+      if (this.tableConfig.rows?.selectable == "multiple") {
         if (p.metaKey) {
           if (isSelected) {
             delete this.selected[i];
@@ -487,9 +507,9 @@ export namespace TableAdvanced {
           <div>${this.error}</div>
         `;
 
-      const { head } = this.config;
+      const { head } = this.tableConfig;
       const tableClass = classMap({
-        "sticky-header": !!this.config.isStickyHeader
+        "sticky-header": !!this.tableConfig.isStickyHeader
       });
 
       return html`
@@ -655,7 +675,7 @@ export namespace TableAdvanced {
     }
 
     private renderColDrag(col: Col) {
-      return this.config.cols.isDraggable
+      return this.tableConfig.cols.isDraggable
         ? html`
             <div
               draggable="true"
@@ -679,7 +699,7 @@ export namespace TableAdvanced {
     }
 
     private renderColResize(col: Col) {
-      return this.config.cols.isResizable
+      return this.tableConfig.cols.isResizable
         ? html`
             ${col.index > 0
               ? html`
@@ -834,7 +854,7 @@ export namespace TableAdvanced {
             }
 
             // drag
-            const isDrag = this.config.rows?.isDraggable && row.collapse != "child";
+            const isDrag = this.tableConfig.rows?.isDraggable && row.collapse != "child";
             const isDragArea = isDrag && this.dragRow != -1 && this.dragRow != row.idxDrag;
             const isDragHandle = isDrag && j == 0;
 

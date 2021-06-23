@@ -215,7 +215,7 @@ const button = {
     hover: {
       "bg-color": {
         light: colors.yellow[70].name,
-        dark: colors.yellow[50].name
+        dark: colors.gray[80].name
       },
       "text-color": {
         light: colors.white[100].name,
@@ -229,16 +229,6 @@ const button = {
       },
       "text-color": {
         light: colors.gray['05'].name,
-        dark: colors.gray['05'].name
-      }
-    },
-    checked: {
-      "bg-color": {
-        light: colors.yellow[60].name,
-        dark: colors.yellow[50].name
-      },
-      "text-color": {
-        light: colors.white[100].name,
         dark: colors.gray['05'].name
       }
     }
@@ -257,7 +247,7 @@ const button = {
     hover: {
       "bg-color": {
         light: colors.purple[70].name,
-        dark: colors.purple[50].name
+        dark: colors.gray[80].name
       },
       "text-color": {
         light: colors.white[100].name,
@@ -271,16 +261,6 @@ const button = {
       },
       "text-color": {
         light: colors.gray['05'].name,
-        dark: colors.gray['05'].name
-      }
-    },
-    checked: {
-      "bg-color": {
-        light: colors.purple[60].name,
-        dark: colors.purple[50].name
-      },
-      "text-color": {
-        light: colors.white[100].name,
         dark: colors.gray['05'].name
       }
     }

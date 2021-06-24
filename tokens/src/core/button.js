@@ -204,8 +204,8 @@ const button = {
   files: {
     normal: {
       "bg-color": {
-        light: 'transparent',
-        dark: 'transparent'
+        light: 'none',
+        dark: 'none'
       },
       "text-color": {
         light: colors.gray[100].name,
@@ -236,8 +236,8 @@ const button = {
   whiteboards: {
     normal: {
       "bg-color": {
-        light: 'transparent',
-        dark: 'transparent'
+        light: 'none',
+        dark: 'none'
       },
       "text-color": {
         light: colors.gray[100].name,

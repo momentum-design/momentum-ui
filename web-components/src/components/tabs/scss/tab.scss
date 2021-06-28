@@ -54,6 +54,23 @@
   display: block;
 }
 
+slot {
+  .tab-content {
+    align-items: center;
+    display: flex;
+
+    md-icon,
+    img {
+      margin-right: 0.5rem;
+    }
+
+    img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
+
 .tab-action-button {
   display: flex;
   margin-left: calc(#{$tab-base-indent} * 4);
@@ -76,10 +93,7 @@ md-icon {
   &:focus {
     border-radius: calc(#{$tab-focus-border-radius} / 2);
     @include remove-focus;
-    @include focus-boxshadow(
-      rem-calc(1.5),
-      var(--md-focus-border-color)
-    );
+    @include focus-boxshadow(rem-calc(1.5), var(--md-focus-border-color));
   }
 }
 

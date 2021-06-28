@@ -200,7 +200,71 @@ const button = {
       light: colors.gray[40].name,
       dark: colors.gray[70].name
     }
-  }
+  },
+  files: {
+    normal: {
+      "bg-color": {
+        light: 'none',
+        dark: 'none'
+      },
+      "text-color": {
+        light: colors.gray[100].name,
+        dark: colors.gray['05'].name
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: colors.yellow[70].name,
+        dark: colors.gray[80].name
+      },
+      "text-color": {
+        light: colors.white[100].name,
+        dark: colors.gray['05'].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.yellow[80].name,
+        dark: colors.yellow[50].name
+      },
+      "text-color": {
+        light: colors.gray['05'].name,
+        dark: colors.gray['05'].name
+      }
+    }
+  },
+  whiteboards: {
+    normal: {
+      "bg-color": {
+        light: 'none',
+        dark: 'none'
+      },
+      "text-color": {
+        light: colors.gray[100].name,
+        dark: colors.gray['05'].name
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: colors.purple[70].name,
+        dark: colors.gray[80].name
+      },
+      "text-color": {
+        light: colors.white[100].name,
+        dark: colors.gray['05'].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.purple[80].name,
+        dark: colors.purple[50].name
+      },
+      "text-color": {
+        light: colors.gray['05'].name,
+        dark: colors.gray['05'].name
+      }
+    }
+  },
 };
 
 module.exports = button;

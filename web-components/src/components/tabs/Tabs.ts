@@ -143,7 +143,7 @@ export namespace Tabs {
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
         ? this.tabs.map((tab, idx) => {
-            tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
+            return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
           })
         : this.tabs.map((tab, idx) => {
             tab.setAttribute("measuringrealwidth", "");

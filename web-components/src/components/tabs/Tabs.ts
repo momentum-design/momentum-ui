@@ -142,7 +142,9 @@ export namespace Tabs {
     // This operation may affect render performance when using frequently. Use careful!
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
-        ? this.tabs.map((tab, idx) => tab.offsetWidth)
+        ? this.tabs.map((tab, idx) => {
+            return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
+          })
         : this.tabs.map((tab, idx) => {
             tab.setAttribute("measuringrealwidth", "");
             const offsetWidth = tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
@@ -158,9 +160,24 @@ export namespace Tabs {
     private async manageOverflow() {
       if (this.direction !== "vertical") {
         let tabList;
-        if (this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0)
+        if (this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0) {
           tabList = [...this.tabs];
-        else tabList = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        } else {
+          tabList = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        }
+
+        tabList.forEach(tab => {
+          if (tab.children && tab.children[0].children.length === 0) {
+            const slotHeaderNode = tab
+              ?.querySelector("slot")
+              ?.assignedNodes({ flatten: true })[0]
+              .cloneNode(true);
+            if (slotHeaderNode) {
+              (slotHeaderNode as HTMLElement).classList.add("tab-content");
+              tab?.children[0]?.appendChild(slotHeaderNode);
+            }
+          }
+        });
 
         const tabsCount = tabList.length;
         if (this.tabsListElement && tabsCount > 1) {

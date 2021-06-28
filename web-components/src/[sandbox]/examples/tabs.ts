@@ -10,6 +10,7 @@ import { css, customElement, html, internalProperty, LitElement } from "lit-elem
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
+import svgWxm from "@img/wxm.svg";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -125,7 +126,7 @@ export class TabsTemplateSandbox extends LitElement {
         }
 
         .menu-trigger-button:hover {
-          background-color: #DCDCDC;
+          background-color: #dcdcdc;
           border-radius: 4px;
         }
       `
@@ -293,7 +294,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="WxM" closable="auto" label="WxM">
-          <md-icon name="apps_16"></md-icon>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -355,7 +356,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="WxM" label="WxM">
-          <md-icon name="apps_16"></md-icon>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -382,7 +383,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
-          <md-icon name="apps_16"></md-icon>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -408,7 +409,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History">
-          <md-icon name="apps_16"></md-icon>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
@@ -461,7 +462,7 @@ export const tabsTemplate = html`
         <span>Content for "Contact History"</span>
       </md-tab-panel>
       <md-tab slot="tab" name="History">
-        <md-icon name="apps_16"></md-icon>
+        <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
         <span>Cisco WxM</span>
       </md-tab>
       <md-tab-panel slot="panel">

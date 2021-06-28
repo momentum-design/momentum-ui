@@ -79,7 +79,7 @@
     "@storybook/api": "^6.1.10",
     "@storybook/storybook-deployer": "^2.8.7",
     "@storybook/theming": "^6.1.10",
-    "@storybook/web-components": "^6.0.28",
+    "@storybook/web-components": "6.2.9",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/dompurify": "^2.2.1",
     "@types/highlight.js": "^10.1.0",

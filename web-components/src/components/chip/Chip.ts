@@ -195,7 +195,7 @@ export namespace Chip {
       const iconColor = !this.disabled ? this.iconColor : "";
       return this.icon
         ? html`
-            <md-icon class="md-chip--icon" name="${this.icon}" color="${iconColor}"></md-icon>
+            <md-icon class="md-chip--icon" part="chip-icon" name="${this.icon}" color="${iconColor}"></md-icon>
           `
         : nothing;
     }
@@ -213,6 +213,7 @@ export namespace Chip {
           <span
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
+            part="chip"
             aria-selected=${this.selected}
             aria-readonly=${this.readonly}
             @click=${(e: MouseEvent) => {

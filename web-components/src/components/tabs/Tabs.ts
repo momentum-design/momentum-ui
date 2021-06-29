@@ -167,7 +167,7 @@ export namespace Tabs {
         }
 
         tabList.forEach(tab => {
-          if (tab.children && tab.children[0].children.length === 0) {
+          if (tab.children?.length && tab.children[0]?.children?.length === 0) {
             const slotHeaderNode = tab
               ?.querySelector("slot")
               ?.assignedNodes({ flatten: true })[0]

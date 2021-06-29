@@ -213,7 +213,7 @@ export namespace Chip {
           <span
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
-            part="chip-container"
+            part="chip"
             aria-selected=${this.selected}
             aria-readonly=${this.readonly}
             @click=${(e: MouseEvent) => {

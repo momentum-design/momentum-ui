@@ -207,7 +207,7 @@ export namespace ComboBox {
           }
         }) as OptionMember[];
       } else {
-        this.options = [] as OptionMember[];
+        this.options = [];
       }
     }
 

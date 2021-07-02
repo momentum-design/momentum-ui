@@ -180,7 +180,7 @@ export namespace Tabs {
         });
 
         const tabsCount = tabList.length;
-        if (this.tabsListElement && tabsCount > 1) {
+        if (this.tabsListElement && tabsCount) {
           const tabsListViewportOffsetWidth = this.tabsSettingsElement?.offsetWidth
             ? this.tabsListElement.offsetWidth - this.tabsSettingsElement?.offsetWidth
             : this.tabsListElement.offsetWidth;

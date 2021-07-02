@@ -206,6 +206,8 @@ export namespace ComboBox {
             return { [this.optionId]: customValue, [this.optionValue]: displayCustomValue };
           }
         }) as OptionMember[];
+      } else {
+        this.options = [];
       }
     }
 

@@ -213,7 +213,8 @@ describe("Tabs", () => {
         code: code,
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
+        stopPropagation: jest.fn()
       };
     };
 

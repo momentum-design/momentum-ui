@@ -662,6 +662,7 @@ export namespace Tabs {
           if (isMoreTriggerTab) {
             //
           } else if (isVisibleTab) {
+            event.stopPropagation();
             this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
           } else if (isHiddenTab) {
             //
@@ -672,6 +673,7 @@ export namespace Tabs {
           if (isMoreTriggerTab) {
             //
           } else if (isVisibleTab) {
+            event.stopPropagation();
             this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
           } else if (isHiddenTab) {
             //

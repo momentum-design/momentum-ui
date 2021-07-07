@@ -8,11 +8,11 @@
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ComplexTable, SimpleTable, ShortkeyTable } from "@/[sandbox]/sandbox.mock";
+import { ComplexTable, ShortkeyTable, SimpleTable } from "@/[sandbox]/sandbox.mock";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { Filter } from "./src/filter";
 import "./TableAdvanced";
 import { TableAdvanced } from "./TableAdvanced";
-import { Filter } from "./src/filter";
 
 const ELEM = () => {
   const DATA = ComplexTable.data;
@@ -258,7 +258,7 @@ describe("Table Advanced component", () => {
       type: "multi-select"
     });
 
-    elem.config.rows!.selectable = "single";
+    elem.tableConfig.rows!.selectable = "single";
     elem["selected"] = { 9: false };
     await elementUpdated(elem);
 

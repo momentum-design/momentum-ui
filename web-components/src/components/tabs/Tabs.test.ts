@@ -47,7 +47,7 @@ describe("Tabs", () => {
           <md-tab-panel slot="panel">
             <span>Content for "Contact History"</span>
           </md-tab-panel>
-          <md-tab name="WxM" closable="auto" slot="tab">
+          <md-tab name="WxM" slot="tab">
             <span>Cisco WxM</span>
           </md-tab>
           <md-tab-panel slot="panel">
@@ -213,7 +213,8 @@ describe("Tabs", () => {
         code: code,
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
+        stopPropagation: jest.fn()
       };
     };
 
@@ -323,6 +324,7 @@ describe("Tabs", () => {
 
   test("should close selected tab upon cross click", async () => {
     tab.forEach((t: Tab.ELEMENT) => {
+      t.setAttribute("closable", "auto");
       tabs["tabsFilteredAsVisibleList"].push(t);
     });
     const clickEvent = new MouseEvent("mousedown");

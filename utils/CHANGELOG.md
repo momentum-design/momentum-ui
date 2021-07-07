@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.15](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.14...@momentum-ui/utils@6.2.15) (2021-06-29)
+
+**Note:** Version bump only for package @momentum-ui/utils
+
+
+
+
+
 ## [6.2.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/utils@6.2.13...@momentum-ui/utils@6.2.14) (2021-05-27)
 
 **Note:** Version bump only for package @momentum-ui/utils

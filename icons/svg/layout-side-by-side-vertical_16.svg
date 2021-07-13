@@ -1,1 +1,10 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><title>format/layout-side-by-side-vertical_16</title><path d="M15 7.5l-4 0L11 3l3 0c.551 0 1 .449 1 1l0 3.5zm0 4.5c0 .551-.449 1-1 1l-3 0 0-4.5 4 0 0 3.5zM2 13c-.551 0-1-.449-1-1l0-8c0-.551.449-1 1-1l8 0 0 10-8 0zM14 2L2 2C.895 2 0 2.895 0 4l0 8c0 1.105.895 2 2 2l12 0c1.105 0 2-.895 2-2l0-8c0-1.105-.895-2-2-2z" fill="#000" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#121212;}
+</style>
+<path class="st0" d="M15,7.5h-4V3h3c0.6,0,1,0.4,1,1V7.5z M15,12c0,0.6-0.4,1-1,1h-3V8.5h4V12z M2,13c-0.6,0-1-0.4-1-1V4
+	c0-0.6,0.4-1,1-1h8v10H2z M14,2H2C0.9,2,0,2.9,0,4v8c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C16,2.9,15.1,2,14,2L14,2z"/>
+</svg>

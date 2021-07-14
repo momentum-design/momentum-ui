@@ -1,1 +1,11 @@
-<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>format/video-layout-overlay_20</title><path d="M17.5 2C18.875 2 20 3.125 20 4.5l0 11c0 1.375-1.125 2.5-2.5 2.5l-15 0C1.127 18 .003 16.877 0 15.504l0-.004 0-11 0-.004C.003 3.123 1.127 2 2.5 2l15 0zM19 12l0-7.5c0-.827-.673-1.5-1.5-1.5l-15 0C1.673 3 1 3.673 1 4.5L1 12l18 0zm0 3.5l0-2.5-5.333 0 0 4 3.833 0c.827 0 1.5-.673 1.5-1.5zM7.333 17l5.334 0 0-4-5.334 0 0 4zM2.5 17l3.833 0 0-4L1 13l0 2.5c0 .827.673 1.5 1.5 1.5z" fill="#000" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#121212;}
+</style>
+<path class="st0" d="M19,12H1V4.5C1,3.7,1.7,3,2.5,3h15C18.3,3,19,3.7,19,4.5V12z M19,15.5c0,0.8-0.7,1.5-1.5,1.5h-3.8v-4H19V15.5z
+	 M7.3,17h5.3v-4H7.3V17z M2.5,17C1.7,17,1,16.3,1,15.5V13h5.3v4H2.5z M17.5,2h-15C1.1,2,0,3.1,0,4.5v0v11v0C0,16.9,1.1,18,2.5,18h15
+	c1.4,0,2.5-1.1,2.5-2.5v-11C20,3.1,18.9,2,17.5,2L17.5,2z"/>
+</svg>

@@ -177,11 +177,21 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return false;
     }
 
+    private shouldSkipFocus(element: HTMLElement) {
+      if(element.className.split(" ").indexOf('md-combobox')>-1){
+        return true;
+      }
+    }
+
     private findFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
       const children = Array.from(root.children) as HTMLElement[];
       for (const child of children) {
         if (this.isHidden(child)) {
           continue;
+        }
+
+        if(this.shouldSkipFocus(child)){
+          break;
         }
 
         if (this.isFocusable(child)) {

@@ -35,7 +35,6 @@
   "resolutions": {
     "jest": "^26.4.2",
     "jest-config": "^26.4.2",
-    "lit-element": "2.3.1",
     "lit-html": "1.2.1"
   },
   "peerDependencies": {

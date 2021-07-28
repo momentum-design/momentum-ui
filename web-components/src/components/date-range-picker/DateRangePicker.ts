@@ -7,7 +7,7 @@
  */
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { property } from "lit-element";
+import { property } from "lit";
 import { DateTime } from "luxon";
 import "../datepicker/DatePicker";
 import { DatePicker } from "../datepicker/DatePicker";

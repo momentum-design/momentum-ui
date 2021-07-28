@@ -8,9 +8,9 @@
 
 import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, query } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, query } from "lit";
 import styles from "./scss/module.scss";
 
 export namespace CheckboxGroup {

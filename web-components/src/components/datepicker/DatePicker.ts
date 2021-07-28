@@ -8,17 +8,17 @@
 
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
-import { Input } from "../input/Input"; // Keep type import as a relative path
 import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { DateRangePicker } from "../date-range-picker/DateRangePicker";
+import { Input } from "../input/Input"; // Keep type import as a relative path
+import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];

@@ -6,12 +6,12 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/menu/Menu";
 import "@/components/menu/MenuItem";
 import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Menu",
@@ -37,7 +37,7 @@ export const Menu = () => {
   return html`
     <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-menu .direction="${direction}" .justified=${justified}>
-        <md-menu-item >
+        <md-menu-item>
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>
         </md-menu-item>

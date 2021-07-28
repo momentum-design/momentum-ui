@@ -1,16 +1,16 @@
 import "@/components/button/Button";
-import "./MenuOverlay";
 import { Key } from "@/constants";
 import {
-  defineCE,
-  elementUpdated,
-  fixture,
-  fixtureCleanup,
-  fixtureSync,
-  nextFrame,
-  oneEvent
+    defineCE,
+    elementUpdated,
+    fixture,
+    fixtureCleanup,
+    fixtureSync,
+    nextFrame,
+    oneEvent
 } from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit-element";
+import { html, PropertyValues } from "lit";
+import "./MenuOverlay";
 import { MenuOverlay, OverlaySizes } from "./MenuOverlay";
 
 Object.defineProperties(Element.prototype, {

@@ -1,5 +1,5 @@
 import { Dropdown } from "@/components/dropdown/Dropdown";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const dropdownStringOptions = ["one", "two", "three", "   non-trimmed-with-spaces "];
 

@@ -10,21 +10,21 @@ import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import {
-  addDays,
-  addMonths,
-  getLocaleData,
-  getStartOfWeek,
-  getWeekdayNameInLocale,
-  localizeDate,
-  now,
-  shouldNextMonthDisable,
-  shouldPrevMonthDisable,
-  subtractMonths
+    addDays,
+    addMonths,
+    getLocaleData,
+    getStartOfWeek,
+    getWeekdayNameInLocale,
+    localizeDate,
+    now,
+    shouldNextMonthDisable,
+    shouldPrevMonthDisable,
+    subtractMonths
 } from "@/utils/dateUtils";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, TemplateResult } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, TemplateResult } from "lit";
 import { DateTime } from "luxon";
+import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {

@@ -1,9 +1,9 @@
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
-import styles from "./scss/module.scss";
 import "@/components/avatar/Avatar";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit";
 import { ifDefined } from "lit-html/directives/if-defined";
+import styles from "./scss/module.scss";
 
 export namespace ChatMessage {
   @customElementWithCheck("md-chat-message")
@@ -13,7 +13,7 @@ export namespace ChatMessage {
     @property({ type: String }) time = "";
     @property({ type: String }) label = "Avatar";
     @property({ type: Boolean }) self = false;
-    
+
     static get styles() {
       return [reset, styles];
     }

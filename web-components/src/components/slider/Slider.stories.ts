@@ -10,8 +10,8 @@ import "@/components/slider/Slider";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from '@storybook/addon-actions';
-import { html } from "lit-element";
-import { number, boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Slider",

@@ -2,7 +2,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon.ts";
 import "@/components/spinner/Spinner.ts";
 import "@/components/tooltip/Tooltip";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const buttonTemplate = html`
   <div class="row" style="display: flex; margin: .5rem 0">
@@ -126,16 +126,15 @@ export const buttonTemplate = html`
     <md-button color="orange" outline><span slot="text">Orange Outline</span></md-button>
     <md-button color="mint" outline><span slot="text">Mint Outline</span></md-button>
   </div>
-   <div class="row" style="display: flex; margin: .5rem 0">
+  <div class="row" style="display: flex; margin: .5rem 0">
     <md-button color="yellow" outline><span slot="text">Yellow Outline</span></md-button>
     <md-button color="duck-egg" outline><span slot="text">Duck Egg Outline</span></md-button>
     <md-button color="purple" outline><span slot="text">Purple Outline</span></md-button>
     <md-button color="violet" outline><span slot="text">Violet Outline</span></md-button>
     <md-button color="pink" outline><span slot="text">Pink Outline</span></md-button>
     <md-button color="cyan" outline><span slot="text">Cyan Outline</span></md-button>
-
   </div>
-  <br/>
+  <br />
 
   <div class="row" style="display: flex; margin: .5rem 0">
     <h3 class="sandbox-header" style="margin: .5rem 1rem">Different Tags</h3>

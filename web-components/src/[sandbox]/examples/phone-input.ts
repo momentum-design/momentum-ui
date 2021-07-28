@@ -1,5 +1,5 @@
 import "@/components/phone-input/PhoneInput";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const phoneInputTemplate = html`
   <div>

@@ -6,13 +6,13 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import Papa from "papaparse";
-import { classMap } from "lit-html/directives/class-map.js";
-import styles from "./scss/module.scss";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit";
 import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map.js";
+import Papa from "papaparse";
+import styles from "./scss/module.scss";
 
 export const formatType = ["number", "default"] as const;
 type Warn = { [key: number]: any };
@@ -32,7 +32,7 @@ export namespace Table {
     @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
     @property({ type: String }) format: Table.Format = "default";
     @property({ type: Array }) warning: (any | Warn)[] = [];
-    @property({ type: Array }) errors:  (any | Warn)[] = [];
+    @property({ type: Array }) errors: (any | Warn)[] = [];
 
     @internalProperty() private sort = { columnName: "", sortting: false };
     @internalProperty() csvData: any = undefined;
@@ -64,31 +64,31 @@ export namespace Table {
     get rowItem() {
       return this.rowTable;
     }
-  
+
     linkCellItems() {
       const data = this.rowTable;
-  
+
       data?.forEach((item, idx) => {
         this.warning.forEach(i => {
-          if ((idx + 1) === i.row) {
+          if (idx + 1 === i.row) {
             const cell = item.querySelectorAll('td[role="cell"');
             cell.forEach((c, id) => {
-              if ((id + 1) === i.col) {
+              if (id + 1 === i.col) {
                 c.classList.add("warning");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+                c.insertAdjacentHTML("beforeend", '<md-icon name="warning_24" color="yellow"></md-icon>');
               }
-            })
+            });
           }
         });
         this.errors.forEach(i => {
-          if ((idx + 1) === i.row) {
+          if (idx + 1 === i.row) {
             const cell = item.querySelectorAll('td[role="cell"');
             cell.forEach((c, id) => {
-              if ((id + 1) === i.col) {
+              if (id + 1 === i.col) {
                 c.classList.add("error");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
+                c.insertAdjacentHTML("beforeend", '<md-icon name="error_24" color="red"></md-icon>');
               }
-            })
+            });
           }
         });
       });
@@ -98,7 +98,7 @@ export namespace Table {
       const elCell = ev.target as HTMLTableElement;
       const sortArr = Array.from(this.csvData);
       const index = this.headerRow.indexOf(key);
-  
+
       function compare(a: any, b: any) {
         const bandA = a[index].toLowerCase();
         const bandB = b[index].toLowerCase();
@@ -110,7 +110,7 @@ export namespace Table {
           return 0;
         }
       }
-  
+
       if (key !== this.sort.columnName || this.sort.sortting !== true) {
         sortArr.sort(compare);
         this.sort.sortting = true;
@@ -122,9 +122,9 @@ export namespace Table {
         elCell.classList.remove("sortedAbc");
         elCell.classList.add("sortedZyx");
       }
-  
+
       this.sort.columnName = key;
-  
+
       this.csvData = sortArr;
       this.requestUpdate("csvData");
     }

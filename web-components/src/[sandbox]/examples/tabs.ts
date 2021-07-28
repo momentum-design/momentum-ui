@@ -6,11 +6,11 @@ import { TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
-import { repeat } from "lit-html/directives/repeat";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
 import svgWxm from "@img/wxm.svg";
+import { css, customElement, html, internalProperty, LitElement } from "lit";
+import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { repeat } from "lit/directives/repeat";
+import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`

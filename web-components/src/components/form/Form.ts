@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { html, LitElement, property, query } from "lit-element";
+import { customElementWithCheck, SlottedMixin } from "@/mixins";
+import { html, LitElement, property, query } from "lit";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { SlottedMixin, customElementWithCheck } from "@/mixins";
 
 export namespace Form {
   export type Method = "GET" | "POST" | "dialog";

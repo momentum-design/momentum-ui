@@ -1,17 +1,17 @@
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, internalProperty, PropertyValues } from "lit-element";
-import reset from "@/wc_scss/reset.scss";
-import styles from "./scss/module.scss";
 import "@/components/input/Input";
-import { ValidationRegex } from "@/utils/validations.ts";
-import { Input } from "../input/Input"; // Keep type import as a relative path
 import { Key } from "@/constants";
-import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
-import { DateTime } from "luxon";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";
+import { ValidationRegex } from "@/utils/validations.ts";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
+import { DateTime } from "luxon";
+import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
+import { Input } from "../input/Input"; // Keep type import as a relative path
+import styles from "./scss/module.scss";
 
 export const timeUnits = [TIME_UNIT.HOUR, TIME_UNIT.MINUTE, TIME_UNIT.SECOND, TIME_UNIT.AM_PM] as const;
 

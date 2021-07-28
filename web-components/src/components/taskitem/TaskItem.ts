@@ -8,9 +8,9 @@
 
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";

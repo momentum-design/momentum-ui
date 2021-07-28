@@ -42,9 +42,7 @@
     "@momentum-ui/core": "19.15.4",
     "@momentum-ui/icons": "8.21.0",
     "@momentum-ui/tokens": "1.7.1",
-    "@momentum-ui/utils": "6.2.15",
-    "lit-element": "2.3.1",
-    "lit-html": "1.2.1"
+    "@momentum-ui/utils": "6.2.15"
   },
   "dependencies": {
     "@interactjs/actions": "1.10.3",
@@ -115,8 +113,7 @@
     "husky": "3.1.0",
     "jest": "26.4.2",
     "jest-config": "26.4.2",
-    "lit-element": "2.3.1",
-    "lit-html": "1.2.1",
+    "lit": "^2.0.0-rc.2",
     "lit-scss-loader": "1.0.1",
     "node-sass": "^4.13.1",
     "node-sass-tilde-importer": "^1.0.2",
@@ -133,7 +130,7 @@
     "ts-jest": "26.3.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
-    "typescript": "^3.8.3",
+    "typescript": "^4.3.5",
     "wc-sass-render": "^1.2.3",
     "wcag-color": "^1.1.1",
     "webpack": "^4.42.0",

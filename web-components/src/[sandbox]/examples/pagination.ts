@@ -1,5 +1,5 @@
 import "@/components/pagination/Pagination";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const paginationTemplate = html`
   <h3>Default Pagination</h3>

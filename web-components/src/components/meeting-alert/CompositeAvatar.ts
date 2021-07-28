@@ -1,4 +1,4 @@
-import { html } from "lit-element";
+import { html } from "lit";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export const templateHTML = (attendees: Array<Record<string, any>>) => {

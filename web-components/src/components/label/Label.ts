@@ -6,9 +6,9 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 

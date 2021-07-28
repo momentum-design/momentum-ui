@@ -6,14 +6,14 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { select, text, boolean, withKnobs } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
-import { html } from "lit-element";
 import "@/components/button/Button";
-import "@/components/tooltip/Tooltip";
-import { tooltipPlacement } from "./Tooltip"; // Keep type import as a relative path
 import "@/components/theme/Theme";
+import "@/components/tooltip/Tooltip";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import { tooltipPlacement } from "./Tooltip"; // Keep type import as a relative path
 
 export default {
   title: "Components/Tooltip",

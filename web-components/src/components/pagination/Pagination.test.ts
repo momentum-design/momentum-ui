@@ -1,7 +1,7 @@
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit";
 import "./Pagination";
 import { Pagination } from "./Pagination";
-import { html } from "lit-element";
-import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 
 describe("Pagination component", () => {
   afterEach(fixtureCleanup);

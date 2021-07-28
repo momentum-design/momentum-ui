@@ -6,13 +6,13 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { number, text, boolean, withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
-import { html } from "lit-element";
 import "@/components/badge/Badge";
 import "@/components/taskitem/TaskItem";
 import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from '@storybook/addon-actions';
+import { boolean, number, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Task Item",

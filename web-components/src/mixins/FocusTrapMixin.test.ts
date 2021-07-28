@@ -1,16 +1,16 @@
+import "@/components/input/Input";
 import { Key } from "@/constants";
 import {
-  defineCE,
-  elementUpdated,
-  fixture,
-  fixtureCleanup,
-  fixtureSync,
-  nextFrame,
-  oneEvent
+    defineCE,
+    elementUpdated,
+    fixture,
+    fixtureCleanup,
+    fixtureSync,
+    nextFrame,
+    oneEvent
 } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues, query } from "lit";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
-import "@/components/input/Input";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {

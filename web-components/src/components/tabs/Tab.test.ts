@@ -1,6 +1,6 @@
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit-element";
+import { html, PropertyValues } from "lit";
 import { nanoid } from "nanoid";
 import "./Tab";
 import { Tab } from "./Tab";

@@ -6,15 +6,15 @@
  *
  */
 
-import { FocusTrapMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
-import styles from "./scss/module.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, query, PropertyValues } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
 import "@/components/button/Button";
+import { FocusTrapMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, PropertyValues, query } from "lit";
+import { classMap } from "lit-html/directives/class-map";
+import styles from "./scss/module.scss";
 
-export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"]
+export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"];
 
 export namespace Coachmark {
   export type Place = typeof coachmarkPlacement[number];
@@ -22,7 +22,7 @@ export namespace Coachmark {
   @customElementWithCheck("md-coachmark")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     @property({ type: String }) message = "";
-    @property({ type: String }) actionname = "Next"
+    @property({ type: String }) actionname = "Next";
     @property({ type: Boolean }) hidebutton = false;
     @property({ type: String }) placement: Place = "auto";
     @property({ type: Boolean }) show = false;
@@ -106,25 +106,25 @@ export namespace Coachmark {
       return html`
         <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
           <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
-            <div class="md-coachmark__content" >
+            <div class="md-coachmark__content">
               ${this.message
                 ? this.message
                 : html`
                     <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
                   `}
               <div class="md-coachmark__action">
-                ${this.hidebutton 
-                  ? html`<slot name="coachmark-action"></slot>` 
-                  : html`<md-button @button-click=${this.coachAction}>${this.actionname}</md-button>`}
+                ${this.hidebutton
+                  ? html`
+                      <slot name="coachmark-action"></slot>
+                    `
+                  : html`
+                      <md-button @button-click=${this.coachAction}>${this.actionname}</md-button>
+                    `}
               </div>
             </div>
             <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
           </div>
-          <div
-            class="md-coachmark__reference"
-            @click=${() => this.notifyCoachCreate()}
-            aria-describedby="coachmark"
-          >
+          <div class="md-coachmark__reference" @click=${() => this.notifyCoachCreate()} aria-describedby="coachmark">
             <slot></slot>
           </div>
         </div>
@@ -132,10 +132,6 @@ export namespace Coachmark {
     }
   }
 }
-
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

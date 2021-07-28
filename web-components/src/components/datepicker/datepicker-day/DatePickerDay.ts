@@ -7,16 +7,16 @@
  */
 
 import "@/components/button/Button";
-import { DateRangePicker } from "../../date-range-picker/DateRangePicker"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
+import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
+import { DateRangePicker } from "../../date-range-picker/DateRangePicker"; // Keep type import as a relative path
 import styles from "../scss/module.scss";
 
 export namespace DatePickerDay {

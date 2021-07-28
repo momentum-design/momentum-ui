@@ -6,11 +6,11 @@
  *
  */
 
- import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/chat-message/ChatMessage";
 import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Chat Message",
@@ -31,10 +31,10 @@ export const ChatMessage = () => {
   const selfMode = boolean("Self", false);
 
   return html`
-  <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
-      <p slot="message">${message}</p>
-    </md-chat-message>
-  </md-theme>
+    <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
+        <p slot="message">${message}</p>
+      </md-chat-message>
+    </md-theme>
   `;
 };

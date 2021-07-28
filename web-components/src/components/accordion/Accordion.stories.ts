@@ -1,9 +1,9 @@
-import "./Accordion";
-import "./AccordionItem";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { html } from "lit-element";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import "./Accordion";
+import "./AccordionItem";
 
 export default {
   title: "Components/Accordion",

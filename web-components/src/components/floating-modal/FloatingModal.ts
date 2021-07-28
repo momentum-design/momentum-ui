@@ -1,19 +1,19 @@
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import styles from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
-import "@interactjs/auto-start";
+import { FocusMixin, SlottedMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import "@interactjs/actions/drag";
-import "@interactjs/modifiers";
 import "@interactjs/actions/resize";
-import * as Interact from "@interactjs/types";
+import "@interactjs/auto-start";
 import interact from "@interactjs/interact/index";
+import "@interactjs/modifiers";
+import * as Interact from "@interactjs/types";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
+import { nothing } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined";
 import './FloatingMinimizedModal';
-import { SlottedMixin, FocusMixin } from "@/mixins";
+import styles from "./scss/module.scss";
 
 export namespace FloatingModal {
   @customElementWithCheck("md-floating-modal")
@@ -70,8 +70,8 @@ export namespace FloatingModal {
       }
       if (this.container && changedProperties.has("position") && !changedProperties.has("show")) {
         this.setInitialTargetPosition();
-      } 
-     
+      }
+
     }
 
     private isNewPositionNotSame() {
@@ -84,7 +84,7 @@ export namespace FloatingModal {
     private setInitialTargetPosition() {
         if(this.container && this.isNewPositionNotSame()) {
           this.setTargetPosition(this.container, Number(this.position?.x), Number(this.position?.y));
-        } 
+        }
     }
 
     private cleanContainerStyles() {
@@ -112,7 +112,7 @@ export namespace FloatingModal {
     private setContainerRect() {
       requestAnimationFrame(async () => {
         await this.updateComplete;
-      
+
         this.containerRect = this.container!.getBoundingClientRect();
         this.dispatchEvent(
           new CustomEvent("floating-modal-resize", {
@@ -123,7 +123,7 @@ export namespace FloatingModal {
             }
           })
         );
-       
+
         this.containerTransform = this.getContainerTransform();
       });
     }
@@ -261,7 +261,7 @@ export namespace FloatingModal {
 
 
     render() {
-      
+
       return html`
         ${this.show
           ? html`
@@ -290,7 +290,7 @@ export namespace FloatingModal {
                       ? html`
                           ${this.heading}
                         `
-                      : html` 
+                      : html`
                           ${!this.minimize && this.headerSlot}
                           <slot name="header"></slot>
                         `}
@@ -345,7 +345,7 @@ export namespace FloatingModal {
                       ${this.minimize && this.headerSlot}
                   </md-floating-modal-minimized>
               </div>` : nothing}
-             
+
             `
           : nothing}
       `;

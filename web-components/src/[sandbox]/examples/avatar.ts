@@ -1,7 +1,7 @@
 import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import svg from "@img/profile.svg";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const avatarTemplate = html`
   <h3>Basic Large Avatar</h3>

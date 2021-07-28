@@ -1,12 +1,12 @@
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit";
 import { nothing } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
+import { repeat } from "lit/directives/repeat";
 import styles from "./scss/module.scss";
 
 export namespace Slider {
@@ -259,8 +259,7 @@ export namespace Slider {
             aria-label=${ifDefined(this.label)}
             style=${styleMap(this.sliderPointerStyleMap)}
           ></span>
-          ${this.step ? this.ticksTemplate() : nothing}
-          ${this.hideValue ? nothing : this.displayValueTemplate()}
+          ${this.step ? this.ticksTemplate() : nothing} ${this.hideValue ? nothing : this.displayValueTemplate()}
         </div>
       `;
     }

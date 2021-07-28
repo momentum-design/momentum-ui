@@ -1,7 +1,7 @@
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit";
 import "./ToggleSwitch";
 import { ToggleSwitch } from "./ToggleSwitch";
-import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
 
 describe("Toggle Switch Component", () => {
   let element: ToggleSwitch.ELEMENT;

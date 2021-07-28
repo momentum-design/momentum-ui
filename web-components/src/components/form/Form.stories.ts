@@ -9,9 +9,9 @@
 import "@/components/form/Form";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
-import { html } from "lit-element";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Form",

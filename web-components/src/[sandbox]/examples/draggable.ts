@@ -1,11 +1,11 @@
+import "@/components/checkbox/Checkbox";
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
-import "@/components/checkbox/Checkbox";
 import "@/components/icon/Icon";
 import "@/components/toggle-switch/ToggleSwitch";
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 import { DraggableOptions } from "@/[sandbox]/sandbox.mock";
-import { repeat } from "lit-html/directives/repeat";
+import { css, customElement, html, internalProperty, LitElement } from "lit";
+import { repeat } from "lit/directives/repeat";
 
 const draggableItemStyle = css`
   md-draggable-item {

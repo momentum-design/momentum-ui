@@ -1,7 +1,7 @@
 import "@/components/phone-input/PhoneInput";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
 import "../theme/Theme";
 
 export default {

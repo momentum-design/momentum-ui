@@ -6,14 +6,14 @@
  *
  */
 
-import { Key } from "@/constants";
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, TemplateResult } from "lit-element";
-import { nothing } from "lit-html";
 import "@/components/avatar/Avatar";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, TemplateResult } from "lit";
+import { nothing } from "lit-html";
 import { templateHTML } from "./CompositeAvatar"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 

@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import "@/components/editable-textfield/EditableTextfield";
 import "@/components/button/Button";
+import "@/components/editable-textfield/EditableTextfield";
 import { Input } from "@/components/input/Input";
 import { ValidationRegex } from "@/utils/validations.ts";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property } from "lit";
 import { nothing } from "lit-html";
 
 const successMessageArr: Input.Message = {

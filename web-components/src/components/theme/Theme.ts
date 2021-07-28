@@ -7,11 +7,11 @@
  */
 
 import styles from "@/components/tooltip/scss/module.scss";
-import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
+import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
 import { lumosDark, lumosLight, momentumDark, momentumLight } from "./index";
 
 declare global {

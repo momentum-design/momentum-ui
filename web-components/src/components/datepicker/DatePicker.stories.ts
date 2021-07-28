@@ -1,7 +1,7 @@
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
 
 export default {

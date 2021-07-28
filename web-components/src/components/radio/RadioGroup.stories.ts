@@ -10,8 +10,8 @@ import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Radio",

@@ -6,15 +6,15 @@
  *
  */
 
+import "@/components/button/Button";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import iconNames from "@momentum-ui/icons/data/iconNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
-import { html, LitElement, property } from "lit-element";
+import { html, LitElement, property } from "lit";
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
-import "@/components/button/Button";
 import styles from "./scss/module.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
 export const iconSize = ["16", "20", "36", "56", 16, 20, 36, 56] as const;
 export const iconType = ["", "white"] as const;

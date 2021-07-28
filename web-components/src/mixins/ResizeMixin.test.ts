@@ -1,5 +1,5 @@
 import { defineCE, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement } from "lit-element";
+import { customElement, html, LitElement } from "lit";
 import { ResizeMixin, ResizeObserver } from "./ResizeMixin";
 
 interface MyWindow extends Window {

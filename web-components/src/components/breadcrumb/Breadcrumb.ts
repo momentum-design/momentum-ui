@@ -1,9 +1,9 @@
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import styles from "./scss/module.scss";
-import { repeat } from "lit-html/directives/repeat";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, PropertyValues, queryAll } from "lit";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { repeat } from "lit/directives/repeat";
+import styles from "./scss/module.scss";
 
 export namespace Breadcrumb {
   type NavCrumb = {
@@ -73,10 +73,6 @@ export namespace Breadcrumb {
     }
   }
 }
-
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

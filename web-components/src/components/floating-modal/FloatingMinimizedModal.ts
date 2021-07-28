@@ -1,20 +1,20 @@
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import styles from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
-import "@interactjs/auto-start";
-import "@interactjs/actions/drag";
-import "@interactjs/modifiers";
-import "@interactjs/actions/resize";
-import * as Interact from "@interactjs/types";
-import interact from "@interactjs/interact/index";
-import { debounce } from "@/utils/helpers";
-import { FocusMixin } from "@/mixins";
 import { Key } from "@/constants";
+import { FocusMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { debounce } from "@/utils/helpers";
+import reset from "@/wc_scss/reset.scss";
+import "@interactjs/actions/drag";
+import "@interactjs/actions/resize";
+import "@interactjs/auto-start";
+import interact from "@interactjs/interact/index";
+import "@interactjs/modifiers";
+import * as Interact from "@interactjs/types";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
+import { nothing } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined";
+import styles from "./scss/module.scss";
 
 export namespace FloatingMinimizedModal {
   @customElementWithCheck("md-floating-modal-minimized")
@@ -24,7 +24,7 @@ export namespace FloatingMinimizedModal {
     @property({ type: Boolean, reflect: true }) show = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: Boolean, reflect: true }) minimize = false;
-    
+
     @property({type: Object}) minPosition: {
       x: number;
       y: number;
@@ -33,7 +33,7 @@ export namespace FloatingMinimizedModal {
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__header") header!: HTMLDivElement;
 
-    // To distinguish between click and drag  
+    // To distinguish between click and drag
     @internalProperty() private dragOccured: Boolean | false = false;
     @internalProperty() private containerTransform: String = "";
 
@@ -47,7 +47,7 @@ export namespace FloatingMinimizedModal {
       super.connectedCallback();
       window.addEventListener('resize', debounce(() => this.setInteractInstance(), 250));
     }
-    
+
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
@@ -57,8 +57,8 @@ export namespace FloatingMinimizedModal {
           this.setContainerRect();
           this.setInteractInstance();
           this.setFocusOnContainer();
-         
-        } 
+
+        }
          else {
           this.cleanContainerStyles();
           this.destroyInteractInstance();
@@ -70,7 +70,7 @@ export namespace FloatingMinimizedModal {
       if(changedProperties.has("minimize") && changedProperties.get("minimize") !== undefined) {
         this.setFocusOnContainer();
       }
-     
+
     }
 
     private getInitialPosition = () => {
@@ -90,7 +90,7 @@ export namespace FloatingMinimizedModal {
     private setInitialTargetPosition() {
         if(this.container && this.isNewPositionNotSame()) {
           this.setTargetPosition(this.container,  Number(this.minPosition?.x), Number(this.minPosition?.y));
-        } 
+        }
     }
 
     private setFocusOnContainer() {
@@ -129,7 +129,7 @@ export namespace FloatingMinimizedModal {
     }
 
     private setInteractInstance() {
-      requestAnimationFrame(() => { 
+      requestAnimationFrame(() => {
         if (this.container) {
           interact(this.container)
             .draggable({
@@ -147,7 +147,7 @@ export namespace FloatingMinimizedModal {
             });
         }
       });
-   
+
     }
 
     handleKeyDown(event: KeyboardEvent) {
@@ -228,7 +228,7 @@ export namespace FloatingMinimizedModal {
     render() {
       return html`
         ${this.show
-          ? html`     
+          ? html`
               <div class="md-floating ${!this.minimize ? 'hide' : ''} md-floating-minimize"
                 @click=${this.handleMinimize}
                 @keydown="${this.handleKeyDown}"

@@ -1,7 +1,7 @@
+import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
+import { PropertyValues } from "lit";
 import "./ListItem";
 import { ListItem } from "./ListItem";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues } from "lit-element";
 
 describe("ListItem", () => {
   afterEach(fixtureCleanup);

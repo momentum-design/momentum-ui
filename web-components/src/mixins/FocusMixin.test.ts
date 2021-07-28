@@ -1,5 +1,5 @@
 import { defineCE, fixture, fixtureCleanup, fixtureSync, nextFrame, oneEvent } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues } from "lit";
 import { AnyConstructor, FocusClass, FocusMixin } from "./FocusMixin";
 
 describe("Focus Mixin", () => {

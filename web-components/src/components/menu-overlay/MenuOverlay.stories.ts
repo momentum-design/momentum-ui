@@ -9,12 +9,12 @@
 import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
 import "@/components/input/Input";
+import "@/components/menu-overlay/MenuOverlay";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
-import { html } from "lit-element";
-import "@/components/menu-overlay/MenuOverlay";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 import { menuOverlayPlacement, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {

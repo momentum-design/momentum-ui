@@ -4,11 +4,11 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
-*/
+ */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit";
 import { classMap } from "lit-html/directives/class-map";
 import { AvatarSize } from "./Avatar"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
@@ -39,7 +39,6 @@ export namespace CompositeAvatar {
     }
   }
 }
-
 
 declare global {
   interface HTMLElementTagNameMap {

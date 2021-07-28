@@ -1,7 +1,7 @@
-import "@/components/card/Card";
 import "@/components/badge/Badge";
+import "@/components/card/Card";
 import { cardMenuItems } from "@/[sandbox]/sandbox.mock";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property } from "lit";
 
 @customElement("card-template-sandbox")
 export class CardTemplateSandbox extends LitElement {

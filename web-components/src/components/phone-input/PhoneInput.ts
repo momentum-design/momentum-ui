@@ -5,7 +5,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { html, internalProperty, LitElement, property, query } from "lit-element";
+import { html, internalProperty, LitElement, property, query } from "lit";
 import { nothing } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path

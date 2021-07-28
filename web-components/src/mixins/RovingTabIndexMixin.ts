@@ -20,7 +20,7 @@
  * }
  *  */
 
-import { LitElement, property } from "lit-element";
+import { LitElement, property } from "lit";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 import { SlotableClass, SlotableInterface, SlottedMixin } from "./SlottedMixin";
 

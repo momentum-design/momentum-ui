@@ -6,18 +6,18 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
-import styles from "./scss/module.scss";
-import "@/components/icon/Icon";
 import "@/components/button/Button";
+import "@/components/favorite/Favorite";
+import "@/components/icon/Icon";
 import "@/components/list/List";
 import "@/components/list/ListItem";
-import "@/components/favorite/Favorite";
-import { Key } from "../../constants"; // Keep type import as a relative path
-import { repeat } from "lit-html/directives/repeat";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit";
 import { nothing } from "lit-html";
+import { repeat } from "lit/directives/repeat";
+import { Key } from "../../constants"; // Keep type import as a relative path
+import styles from "./scss/module.scss";
 
 export namespace Card {
   @customElementWithCheck("md-card")

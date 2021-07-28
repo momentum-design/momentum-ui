@@ -10,7 +10,7 @@ import "@/components/radio/RadioGroup";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
-import { html } from "lit-element";
+import { html } from "lit";
 
 const longMenuOverlayContent = () => {
   return html`

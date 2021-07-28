@@ -1,6 +1,6 @@
 import { Button } from "@/index";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
+import { html } from "lit";
 import "./CodeEditor";
 import { CodeEditor } from "./CodeEditor";
 // import { Button } from "../button/Button"; // Keep type import as a relative path

@@ -1,6 +1,6 @@
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const radioGroupTemplate = html`
   <h3>Default</h3>

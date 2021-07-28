@@ -13,12 +13,12 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { html, LitElement, property, PropertyValues, query, queryAll } from "lit";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
+import { repeat } from "lit/directives/repeat";
 import styles from "./scss/module.scss";
 
 export namespace ComboBox {

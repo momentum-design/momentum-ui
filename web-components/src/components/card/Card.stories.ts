@@ -9,10 +9,10 @@
 import "@/components/card/Card";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { array, boolean, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import { nothing } from "lit-html";
 import { action } from "@storybook/addon-actions";
+import { array, boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import { nothing } from "lit-html";
 
 export default {
   title: "Components/Card",

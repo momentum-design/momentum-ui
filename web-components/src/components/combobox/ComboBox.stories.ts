@@ -12,7 +12,7 @@ import "@/components/theme/Theme";
 import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export default {
   title: "Components/Combobox",

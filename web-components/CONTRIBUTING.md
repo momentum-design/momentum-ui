@@ -9,10 +9,10 @@ Either you are internal to Cisco or not, feel free to reach out to the repositor
 
 ## Adding new components
 
-If you wand to add new component to `src/components`:  
+If you wand to add new component to `src/components`:
 
 1. Use unique html tag with `md-` prefix
-2. To register custom element, use `@customElementWithCheck("md-my-comp")` decorator instead of `@customElement("md-my-comp")` from "lit-element" framework
+2. To register custom element, use `@customElementWithCheck("md-my-comp")` decorator instead of `@customElement("md-my-comp")` from "lit" framework
 
     **Note**: `customElementWithCheck` will not throw error if "custom element" name is already registered by another component, so please make sure your new component name, e.g. `"md-my-comp"`, is not already being used by another component in this library.
 
@@ -42,15 +42,15 @@ If you wand to add new component to `src/components`:
     * Add Storybook component representation for each new component, as well as make sure to add any new feature to the existing component's Storybook `*.stories.ts` file.
 ---
 ### New component only
-We are using webpack chunk split functionality to minimize footprint of our library importing.  
-So you must register your component as a new chunk.  
+We are using webpack chunk split functionality to minimize footprint of our library importing.
+So you must register your component as a new chunk.
 <br/>
 Please add entry and path to component source in `webpack.config.ts`:
 ```js
 "comp/md-my-comp-entry": "./src/components/my-comp/MyComp",
 ```
-to `commonDist.entry` section. 
+to `commonDist.entry` section.
 
 
- 
+
 

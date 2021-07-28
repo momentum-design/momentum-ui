@@ -1,17 +1,17 @@
 import "@/components/button/Button";
-import "@/components/modal/Modal";
-import "@/components/tabs/Tab";
 import "@/components/combobox/ComboBox";
-import "@/components/input/Input";
-import "@/components/radio/Radio";
 import "@/components/form/Form";
-import "@/components/radio/RadioGroup";
-import "@/components/tabs/TabPanel";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import "@/components/tabs/Tabs";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
+import "@/components/modal/Modal";
+import "@/components/radio/Radio";
+import "@/components/radio/RadioGroup";
+import "@/components/tabs/Tab";
+import "@/components/tabs/TabPanel";
+import "@/components/tabs/Tabs";
 import { debounce } from "@/utils/helpers";
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { customElement, html, LitElement, property, query } from "lit";
 
 @customElement("modal-template-sandbox")
 export class ModalTemplateSandbox extends LitElement {

@@ -1,6 +1,6 @@
 import "@/components/alert-banner/AlertBanner";
 import "@/components/button/Button";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, LitElement, property } from "lit";
 
 @customElement("alert-banner-template-sandbox")
 export class AlertBannerTemplateSandbox extends LitElement {

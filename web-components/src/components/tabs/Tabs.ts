@@ -12,10 +12,10 @@ import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit";
-import { classMap } from "lit-html/directives/class-map";
-import { styleMap } from "lit-html/directives/style-map";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { classMap } from "lit/directives/class-map";
 import { repeat } from "lit/directives/repeat";
+import { styleMap } from "lit/directives/style-map";
+import { unsafeHTML } from "lit/directives/unsafe-html";
 import { nanoid } from "nanoid";
 import Sortable from "sortablejs";
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path

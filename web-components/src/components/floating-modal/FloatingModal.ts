@@ -11,7 +11,7 @@ import "@interactjs/modifiers";
 import * as Interact from "@interactjs/types";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
 import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { ifDefined } from "lit/directives/if-defined";
 import './FloatingMinimizedModal';
 import styles from "./scss/module.scss";
 

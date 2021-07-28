@@ -4,9 +4,9 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit";
 import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { styleMap } from "lit-html/directives/style-map";
+import { ifDefined } from "lit/directives/if-defined";
 import { repeat } from "lit/directives/repeat";
+import { styleMap } from "lit/directives/style-map";
 import styles from "./scss/module.scss";
 
 export namespace Slider {

@@ -6,8 +6,8 @@ import { ValidationRegex } from "@/utils/validations.ts";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { classMap } from "lit/directives/class-map";
+import { ifDefined } from "lit/directives/if-defined";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path

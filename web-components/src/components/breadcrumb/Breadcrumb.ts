@@ -1,7 +1,7 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, queryAll } from "lit";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { ifDefined } from "lit/directives/if-defined";
 import { repeat } from "lit/directives/repeat";
 import styles from "./scss/module.scss";
 

@@ -9,7 +9,7 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit";
-import { styleMap } from "lit-html/directives/style-map";
+import { styleMap } from "lit/directives/style-map";
 import styles from "./scss/module.scss";
 
 export namespace Spinner {

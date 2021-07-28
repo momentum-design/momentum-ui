@@ -8,8 +8,8 @@ import "@/components/tabs/Tabs";
 import "@/components/tooltip/Tooltip";
 import svgWxm from "@img/wxm.svg";
 import { css, customElement, html, internalProperty, LitElement } from "lit";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { repeat } from "lit/directives/repeat";
+import { unsafeHTML } from "lit/directives/unsafe-html";
 import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(

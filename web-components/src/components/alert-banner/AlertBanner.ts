@@ -12,7 +12,7 @@ import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { CSSResultArray, html, LitElement, property } from "lit";
-import { classMap } from "lit-html/directives/class-map.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace AlertBanner {

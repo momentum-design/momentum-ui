@@ -12,8 +12,8 @@ import reset from "@/wc_scss/reset.scss";
 import iconNames from "@momentum-ui/icons/data/iconNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
 import { html, LitElement, property } from "lit";
-import { classMap } from "lit-html/directives/class-map";
-import { styleMap } from "lit-html/directives/style-map";
+import { classMap } from "lit/directives/class-map";
+import { styleMap } from "lit/directives/style-map";
 import styles from "./scss/module.scss";
 
 export const iconSize = ["16", "20", "36", "56", 16, 20, 36, 56] as const;

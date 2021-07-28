@@ -12,7 +12,7 @@ import { RovingTabIndexMixin } from "@/mixins/RovingTabIndexMixin";
 import { SlottedMixin } from "@/mixins/SlottedMixin";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit";
-import { classMap } from "lit-html/directives/class-map";
+import { classMap } from "lit/directives/class-map";
 import { nanoid } from "nanoid";
 import { MenuItem } from "./MenuItem";
 import styles from "./scss/module.scss";

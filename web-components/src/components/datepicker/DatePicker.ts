@@ -14,7 +14,7 @@ import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtra
 import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { ifDefined } from "lit/directives/if-defined";
 import { DateTime } from "luxon";
 import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 import { Input } from "../input/Input"; // Keep type import as a relative path

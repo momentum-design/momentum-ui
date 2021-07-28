@@ -11,8 +11,8 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { classMap } from "lit/directives/class-map";
+import { ifDefined } from "lit/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const TAB_CROSS_WIDTH = 22;

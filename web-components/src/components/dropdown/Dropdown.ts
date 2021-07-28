@@ -12,8 +12,8 @@ import { customElementWithCheck, FocusMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit";
 import { html } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
-import { repeat } from "lit-html/directives/repeat.js";
+import { classMap } from "lit/directives/class-map.js";
+import { repeat } from "lit/directives/repeat.js";
 import styles from "./scss/module.scss";
 
 const EMPTY_KEY = "";

@@ -10,7 +10,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { classMap } from "lit/directives/class-map.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
 

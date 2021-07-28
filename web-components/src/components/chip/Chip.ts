@@ -14,7 +14,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
+import { classMap } from "lit/directives/class-map";
 import styles from "./scss/module.scss";
 
 export namespace Chip {

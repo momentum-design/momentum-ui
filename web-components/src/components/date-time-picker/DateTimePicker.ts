@@ -4,7 +4,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { ifDefined } from "lit/directives/if-defined";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { DatePicker } from "../datepicker/DatePicker";

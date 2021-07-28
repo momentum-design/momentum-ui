@@ -14,8 +14,8 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, query } from "lit";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { classMap } from "lit/directives/class-map";
+import { ifDefined } from "lit/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const buttonSize = [

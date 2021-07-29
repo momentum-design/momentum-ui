@@ -178,6 +178,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     private shouldSkipFocus(element: HTMLElement) {
+      // when combobox is having more than 100 items screen getting freezed
       if(element.className.split(" ").indexOf('md-combobox')>-1){
         return true;
       }

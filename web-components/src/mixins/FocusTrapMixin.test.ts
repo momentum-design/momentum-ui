@@ -11,6 +11,7 @@ import {
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
 import "@/components/input/Input";
+import "@/components/combobox/ComboBox";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -400,5 +401,38 @@ describe("FocusTrap Mixin", () => {
     await elementUpdated(el);
 
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
+  });
+
+  test("should skip child focus for combobox", async () => {
+    @customElement("combobox-element")
+    class comboboxElement extends LitElement {
+      render() {
+        return html`
+          <focus-trap>
+            <md-combobox .options=${["Option1", "Option2", "Option3"]}></md-combobox>
+          </focus-trap>
+        `;
+      }
+    }
+    const elWithCB = await fixture<comboboxElement>(
+      html`
+        <combobox-element></combobox-element>
+      `
+    );
+    const focusTrap = elWithCB.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const combobox = focusTrap!.querySelector("md-combobox");
+
+    await elementUpdated(elWithCB);
+    console.log("aaaaaaaaa", focusTrap?.innerHTML);
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+
+    await nextFrame();
+    await elementUpdated(elWithCB);
+
+    combobox!.click();
+    await nextFrame();
+    await elementUpdated(elWithCB);
   });
 });

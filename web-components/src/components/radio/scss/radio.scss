@@ -19,6 +19,7 @@
       line-height: $radio-input-max-height;
       padding-left: calc(#{$radio-input-size} * 1.8);
       padding-right: calc(#{$radio-main-indent} / 2);
+      pointer-events: none;
       position: relative;
       @include text-dots;
 

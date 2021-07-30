@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.20.1...@momentum-ui/icons@8.21.0) (2021-07-16)
+
+
+### Bug Fixes
+
+* **icons:** rename end-to-end-encryption_16 correctly ([#996](https://github.com/momentum-design/momentum-ui/issues/996)) ([885fd94](https://github.com/momentum-design/momentum-ui/commit/885fd949f29697721d534af54ce86867103963d9))
+
+
+### Features
+
+* **icon:** add new icons ([#993](https://github.com/momentum-design/momentum-ui/issues/993)) ([44acefa](https://github.com/momentum-design/momentum-ui/commit/44acefa757a6c37da13fff4f5cfcfdf13bc47e24))
+
+
+
+
+
 ## [8.20.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.20.0...@momentum-ui/icons@8.20.1) (2021-06-29)
 
 **Note:** Version bump only for package @momentum-ui/icons

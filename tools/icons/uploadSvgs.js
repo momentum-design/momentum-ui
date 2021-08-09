@@ -24,7 +24,7 @@ async function uploadIcons(icons) {
       console.log('Uploading ' + fileName);
       console.log('Old tag ' + icons[fileName] + ' new tag ' + fileMd5);
       const s3Promise = s3.putObject({
-          Bucket: AWS_S3_BUCKET,
+          Bucket: process.env.AWS_S3_BUCKET,
           Key: fileName,
           Body: fileContent
         }).promise();

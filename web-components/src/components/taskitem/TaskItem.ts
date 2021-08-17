@@ -26,6 +26,7 @@ export namespace TaskItem {
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
+    @property({type: String}) customAriaLabel = "";
 
     renderTaskType = () => {
       switch (this.mediaType) {
@@ -152,12 +153,21 @@ export namespace TaskItem {
       return this.quantity > 0
         ? this.quantity > 99
           ? html`
-              <span aria-label=${this.quantity} class="new-chat-quantity">99+</span>
+              <span class="new-chat-quantity">99+</span>
             `
           : html`
-              <span aria-label=${this.quantity} class="new-chat-quantity">${this.quantity}</span>
+              <span class="new-chat-quantity">${this.quantity}</span>
             `
         : nothing;
+    }
+
+    getAriaLabel(){
+      if(this.customAriaLabel){
+        return this.customAriaLabel
+      }
+      return `${this.mediaType} ${this.status} ${this.title} ${this.queue} ${this.quantity ? this.quantity : ""} ${
+        this.lastmessage
+      }`;
     }
 
     static get styles() {
@@ -173,21 +183,22 @@ export namespace TaskItem {
           aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          aria-label=${this.getAriaLabel()}
         >
           <div class="md-taskitem__mediatype">
             ${this.renderTaskType()}
             ${this.status
               ? html`
-                  <span aria-label=${this.status} class=${`md-taskitem__status ` + `${this.status}`}>
+                  <span class=${`md-taskitem__status ` + `${this.status}`}>
                     ${this.renderStatus()}
                   </span>
                 `
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
-            <span aria-label=${this.title} class="md-taskitem__content_title">${this.title}</span>
+            <span class="md-taskitem__content_title">${this.title}</span>
             <div class="md-taskitem__content_inner">
-              <span aria-label=${this.queue} class="md-taskitem__content_queue">
+              <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0
                   ? this.queue
                   : html`

@@ -378,7 +378,6 @@
 }
 
 .md-close {
-  @include easing-transition(all, 150ms, ease);
   background: transparent;
   border-radius: 0;
   cursor: pointer;

@@ -31,7 +31,7 @@
     "clearVars": "node ./src/utils/clearVars.js",
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
     "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js",
-    "sonar": "yarn test && node sonar.config.js"
+    "sonar": "yarn install && yarn test && node sonar.config.js"
   },
   "resolutions": {
     "jest": "^26.4.2",

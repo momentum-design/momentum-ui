@@ -10,7 +10,8 @@ const fixtureFactory = async (
   status: string,
   quantity: number,
   lastmessage: string,
-  selected: boolean
+  selected: boolean,
+  customAriaLabel: string = ""
 ): Promise<TaskItem.ELEMENT> => {
   return await fixture(
     html`
@@ -22,6 +23,7 @@ const fixtureFactory = async (
         quantity="${quantity}"
         lastmessage="${lastmessage}"
         .selected="${selected}"
+        customAriaLabel="${customAriaLabel}"
       >
         <div slot="task-addition">00:08</div>
       </md-task-item>
@@ -293,4 +295,21 @@ describe("TaskItem", () => {
 
     mockKeydown.mockRestore();
   });
+
+  test("should have custom aria label", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "quelle_1",
+      "transfered",
+      0,
+      "",
+      false,
+      "Custom area label"
+    );
+    await elementUpdated(element);
+    const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
+    expect(ariaLabel).toEqual("Custom area label");
+  });
+
 });

@@ -30,7 +30,8 @@
     "postinstall": "npm run build:tokens",
     "clearVars": "node ./src/utils/clearVars.js",
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
-    "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js"
+    "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js",
+    "sonar": "yarn install && yarn test && node sonar.config.js"
   },
   "resolutions": {
     "jest": "^26.4.2",
@@ -122,9 +123,11 @@
     "node-sass-tilde-importer": "^1.0.2",
     "papaparse": "^5.3.0",
     "prettier": "^1.19.1",
+    "properties-reader": "^2.2.0",
     "query-selector-shadow-dom": "^0.4.6",
     "remove-files-webpack-plugin": "^1.4.0",
     "sass-loader": "^8.0.2",
+    "sonarqube-scanner": "^2.8.1",
     "string-replace-loader": "^2.3.0",
     "strip-css-comments": "^4.1.0",
     "stylelint": "^13.0.0",

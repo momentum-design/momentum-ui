@@ -16,6 +16,7 @@
     "build:icons-rebrand": "cd ./icons-rebrand && yarn build:lib",
     "build:react": "cd ./react && yarn build:lib",
     "build:wc": "cd ./web-components && yarn dist",
+    "build:wc:sonar": "cd ./web-components && yarn sonar",
     "build:tokens": "cd ./tokens && yarn build:lib",
     "build:utils": "cd ./utils && yarn build:lib",
     "build:data": "rimraf ./data && node ./tools/generateComponentsData.js",

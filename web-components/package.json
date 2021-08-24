@@ -30,7 +30,8 @@
     "postinstall": "npm run build:tokens",
     "clearVars": "node ./src/utils/clearVars.js",
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
-    "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js"
+    "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js",
+    "sonar": "yarn install && yarn test && node sonar.config.js"
   },
   "resolutions": {
     "jest": "^26.4.2",
@@ -39,7 +40,7 @@
     "lit-html": "1.2.1"
   },
   "peerDependencies": {
-    "@momentum-ui/core": "19.15.4",
+    "@momentum-ui/core": "19.15.8",
     "@momentum-ui/icons": "8.21.0",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
@@ -66,7 +67,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@interactjs/types": "1.10.3",
-    "@momentum-ui/core": "19.15.4",
+    "@momentum-ui/core": "19.15.8",
     "@momentum-ui/icons": "8.21.0",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
@@ -122,9 +123,11 @@
     "node-sass-tilde-importer": "^1.0.2",
     "papaparse": "^5.3.0",
     "prettier": "^1.19.1",
+    "properties-reader": "^2.2.0",
     "query-selector-shadow-dom": "^0.4.6",
     "remove-files-webpack-plugin": "^1.4.0",
     "sass-loader": "^8.0.2",
+    "sonarqube-scanner": "^2.8.1",
     "string-replace-loader": "^2.3.0",
     "strip-css-comments": "^4.1.0",
     "stylelint": "^13.0.0",

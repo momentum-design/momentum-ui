@@ -22,6 +22,7 @@ export const taskItemTemplate = html`
       queue="IRV_quelle_11"
       lastmessage=" "
       quantity="123"
+      customAriaLabel="Custom outbound telephony hold Mihael Varificantare IRV_quelle_11"
     >
       <div>01:08:00</div>
     </md-task-item>

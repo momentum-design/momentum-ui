@@ -802,7 +802,7 @@ export namespace Tabs {
       this.setupTabsEvents();
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
-          console.error("persist-selection attribute is mandatory for persist selection of tab ");
+          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
           return;
         }
         const persistedSelectedTabIdx = localStorage.getItem(this.tabsId);

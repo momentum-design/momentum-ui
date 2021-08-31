@@ -437,9 +437,6 @@ export namespace Tabs {
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
       if (tab && !tab.disabled) {
         const newIndex = this.tabsIdxHash[tab.id];
-        if (this.persistSelection  && this.tabsId || this.tabsId.trim() !== "") {
-          localStorage.setItem(this.tabsId, `${newIndex}`);
-        }
 
         if (newIndex !== -1) {
           this.updateSelectedTab(newIndex);
@@ -510,9 +507,10 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
+     
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-
+     
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
           const tab = tabs[index];
@@ -577,6 +575,10 @@ export namespace Tabs {
         }
       });
       this.updateIsMoreTabMenuSelected();
+
+      if (this.persistSelection  && this.tabsId || this.tabsId.trim() !== "") {
+        localStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
+      }
     }
 
     handleOverlayClose() {

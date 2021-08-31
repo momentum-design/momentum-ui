@@ -210,7 +210,7 @@ export class TabsTemplateSandbox extends LitElement {
           Single Button Reset
         </md-toggle-switch>
         <div>
-          <md-tabs selected="0" draggable justified>
+          <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
             ${repeat(
               this.currentTabsOrder,
               tabElement => nanoid(10),

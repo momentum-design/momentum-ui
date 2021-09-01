@@ -53,6 +53,10 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "force-fallback" }) forceFallback = false;
     @property({ type: String, attribute: "fallback-class" }) fallbackClass = "";
 
+    // tabsId and persistSelection attributes are used to persist the selection of tab on remount of md-tabs component
+    @property({ type: String, attribute: "tabs-id" }) tabsId = "";
+    @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
+
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
     @internalProperty() private isMoreTabMenuOpen = false;
@@ -433,6 +437,7 @@ export namespace Tabs {
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
       if (tab && !tab.disabled) {
         const newIndex = this.tabsIdxHash[tab.id];
+
         if (newIndex !== -1) {
           this.updateSelectedTab(newIndex);
         }
@@ -502,9 +507,10 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
+     
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-
+     
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
           const tab = tabs[index];
@@ -569,6 +575,10 @@ export namespace Tabs {
         }
       });
       this.updateIsMoreTabMenuSelected();
+
+      if (this.persistSelection  && this.tabsId || this.tabsId.trim() !== "") {
+        localStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
+      }
     }
 
     handleOverlayClose() {
@@ -792,6 +802,17 @@ export namespace Tabs {
     connectedCallback() {
       super.connectedCallback();
       this.setupTabsEvents();
+      if (this.persistSelection) {
+        if (!this.tabsId || this.tabsId.trim() === "") {
+          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
+          return;
+        }
+        const persistedSelectedTabIdx = localStorage.getItem(this.tabsId);
+        this.selected =
+          persistedSelectedTabIdx && parseInt(persistedSelectedTabIdx) > -1
+            ? parseInt(persistedSelectedTabIdx)
+            : this.selected;
+      }
     }
 
     disconnectedCallback() {

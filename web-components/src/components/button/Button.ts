@@ -282,8 +282,8 @@ export namespace Button {
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             tabindex=${this.tabIndex}
-            aria-label=${this.ariaLabel}
-            aria-labelledby=${ifDefined(this.ariaLabelledBy)}
+            aria-label=${ifDefined(this.ariaLabel || undefined)}
+            aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-expanded=${this.ariaExpanded}
             aria-haspopup=${this.ariaHaspopup}
             type=${this.type}
@@ -304,8 +304,8 @@ export namespace Button {
             role=${this.role}
             tabindex=${this.tabIndex}
             aria-pressed=${this.ariaPressed}
-            aria-label=${this.ariaLabel}
-            aria-labelledby=${this.ariaLabelledBy}
+            aria-label=${ifDefined(this.ariaLabel || undefined)}
+            aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             type=${this.type}
             alt=${this.label}
             value=${this.value}
@@ -323,8 +323,8 @@ export namespace Button {
             role=${this.role}
             tabindex=${this.tabIndex}
             aria-pressed=${this.ariaPressed}
-            aria-label=${this.ariaLabel}
-            aria-labelledby=${this.ariaLabelledBy}
+            aria-label=${ifDefined(this.ariaLabel || undefined)}
+            aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             href=${this.href}
           >
             ${this.childrenTemplate()}

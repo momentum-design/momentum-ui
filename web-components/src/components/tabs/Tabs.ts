@@ -802,6 +802,10 @@ export namespace Tabs {
     connectedCallback() {
       super.connectedCallback();
       this.setupTabsEvents();
+      this.selectTabFromStorage();
+    }
+
+    selectTabFromStorage() {
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
           console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
@@ -812,6 +816,8 @@ export namespace Tabs {
           persistedSelectedTabIdx && parseInt(persistedSelectedTabIdx) > -1
             ? parseInt(persistedSelectedTabIdx)
             : this.selected;
+
+            this.requestUpdate();
       }
     }
 
@@ -832,6 +838,7 @@ export namespace Tabs {
       if (changedProperties.has("slotted")) {
         this.initializeTabs();
       }
+
 
       if (this.draggable && !this.visibleTabsSortableInstance && !this.hiddenTabsSortableInstance) {
         this.initializeSortable();
@@ -875,6 +882,11 @@ export namespace Tabs {
             }
           }
         }
+      }
+
+      if(changedProperties.has("tabsId")) {
+        console.log("tabs-id changed")
+        this.selectTabFromStorage();
       }
     }
 

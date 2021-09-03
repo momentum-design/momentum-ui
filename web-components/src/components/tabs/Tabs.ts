@@ -507,9 +507,10 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
+     
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-
+     
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
           const tab = tabs[index];
@@ -801,6 +802,17 @@ export namespace Tabs {
     connectedCallback() {
       super.connectedCallback();
       this.setupTabsEvents();
+      if (this.persistSelection) {
+        if (!this.tabsId || this.tabsId.trim() === "") {
+          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
+          return;
+        }
+        const persistedSelectedTabIdx = localStorage.getItem(this.tabsId);
+        this.selected =
+          persistedSelectedTabIdx && parseInt(persistedSelectedTabIdx) > -1
+            ? parseInt(persistedSelectedTabIdx)
+            : this.selected;
+      }
     }
 
     private getSelectedTabIndexFromStorage() {

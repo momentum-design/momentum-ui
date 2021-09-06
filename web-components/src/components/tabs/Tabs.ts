@@ -814,14 +814,6 @@ export namespace Tabs {
             : this.selected;
       }
     }
-
-    private getSelectedTabIndexFromStorage() {
-      const persistedSelectedTabIdx = localStorage.getItem(this.tabsId);
-      return persistedSelectedTabIdx && parseInt(persistedSelectedTabIdx) > -1
-        ? parseInt(persistedSelectedTabIdx)
-        : this.selected;
-    }
-
     private selectTabFromStorage() {
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {

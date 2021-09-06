@@ -576,8 +576,8 @@ export namespace Tabs {
       });
       this.updateIsMoreTabMenuSelected();
 
-      if (this.persistSelection  && this.tabsId || this.tabsId.trim() !== "") {
-        localStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
+      if (this.persistSelection && this.tabsId && newSelectedTabIdx > -1 && this.tabsId.trim() !== "") {
+        sessionStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
       }
     }
 
@@ -814,6 +814,27 @@ export namespace Tabs {
             : this.selected;
       }
     }
+    private selectTabFromStorage() {
+      if (this.persistSelection) {
+        if (!this.tabsId || this.tabsId.trim() === "") {
+          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
+          return;
+        }
+        const persistedSelectedTabIdx = sessionStorage.getItem(this.tabsId);
+        let selectedTabIndex = 0;
+        if (persistedSelectedTabIdx) {
+          const idx = parseInt(persistedSelectedTabIdx);
+          selectedTabIndex = idx > -1 ? idx : this.selected;
+        }
+
+        const currentTabsLayout = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        if (currentTabsLayout.length && currentTabsLayout[selectedTabIndex].id) {
+          this.handleNewSelectedTab(currentTabsLayout[selectedTabIndex].id);
+        } else {
+          this.selected = selectedTabIndex;
+        }
+      }
+    }
 
     disconnectedCallback() {
       super.disconnectedCallback();
@@ -824,6 +845,7 @@ export namespace Tabs {
       super.firstUpdated(changedProperties);
       this.setupPanelsAndTabs();
       this.linkPanelsAndTabs();
+      this.selectTabFromStorage();
     }
 
     protected updated(changedProperties: PropertyValues) {
@@ -875,6 +897,10 @@ export namespace Tabs {
             }
           }
         }
+      }
+
+      if (changedProperties.has("tabsId")) {
+        this.selectTabFromStorage();
       }
     }
 

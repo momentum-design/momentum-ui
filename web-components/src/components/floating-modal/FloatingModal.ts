@@ -285,7 +285,7 @@ export namespace FloatingModal {
                 )}
               >
                 <div class="md-floating__header">
-                  <div class="md-floating__header-text" @click=${this.handleMinimize}>
+                  <div class="md-floating__header-text">
                     ${this.heading
                       ? html`
                           ${this.heading}

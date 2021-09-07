@@ -38,9 +38,12 @@ describe("Tabs", () => {
   let panels: TabPanel.ELEMENT[];
 
   beforeEach(async () => {
+    
+    global.sessionStorage.setItem("tab_1", "0");
+
     const root = await fixture<HTMLDivElement>(html`
       <div style="width: 300px;max-width: 300px;">
-        <md-tabs draggable>
+        <md-tabs draggable persist-selection tabs-id=${`tab_1`} >
           <md-tab name="History" slot="tab" disabled>
             <span>Contact History</span>
           </md-tab>
@@ -412,4 +415,20 @@ describe("Tabs", () => {
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
     expect(panels[0].getAttribute("tabindex")).toBe("0");
   });
+
+  test("should log error is tabs-id is missing and persist-selection is true", async () => {
+    const element: any = await fixture(
+      html`
+        <div style="width: 300px;max-width: 300px;">
+          <md-tabs draggable persist-selection >
+            <md-tab name="History" slot="tab" disabled>
+              <span>Contact History</span>
+            </md-tab>
+          </md-tabs>
+        </div>
+      `
+    );
+    expect(element).not.toBeNull();
+  });
+
 });

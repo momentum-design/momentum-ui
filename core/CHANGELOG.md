@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.15.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.9...@momentum-ui/core@19.15.10) (2021-09-03)
+
+
+### Bug Fixes
+
+* **content-item:** fix preview background-size ([#1040](https://github.com/momentum-design/momentum-ui/issues/1040)) ([25aa572](https://github.com/momentum-design/momentum-ui/commit/25aa5728090adb49778724bac2520dd6602c615a))
+
+
+
+
+
+## [19.15.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.8...@momentum-ui/core@19.15.9) (2021-09-01)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.15.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.7...@momentum-ui/core@19.15.8) (2021-08-18)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.15.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.6...@momentum-ui/core@19.15.7) (2021-08-10)
 
 **Note:** Version bump only for package @momentum-ui/core

@@ -151,6 +151,7 @@ const commonDist = merge(common, {
     "comp/md-badge-entry": "./src/components/badge/Badge",
     "comp/md-breadcrumb-entry": "./src/components/breadcrumb/Breadcrumb",
     "comp/md-button-entry": "./src/components/button/Button",
+    "comp/md-button-group-entry": "./src/components/button-group/ButtonGroup",
     "comp/md-card-entry": "./src/components/card/Card",
     "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
     "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",

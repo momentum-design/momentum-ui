@@ -433,7 +433,7 @@ export namespace Input {
             >
               <md-icon
                 class="md-input__icon-clear"
-                name="clear-active_16"
+                name="clear-active_12"
                 aria-label=${this.clearAriaLabel || "Clear Input"}
               >
               </md-icon>

@@ -23,7 +23,7 @@
  * }
  */
 import { Key } from "@/constants";
-import { internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { internalProperty, LitElement, property, PropertyValues } from "lit";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 import { FocusClass, FocusEventDetail, FocusMixin } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

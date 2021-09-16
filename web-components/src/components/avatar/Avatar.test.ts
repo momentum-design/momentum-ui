@@ -1,7 +1,7 @@
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit";
 import "./Avatar";
 import { Avatar } from "./Avatar";
-import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
 
 describe("Avatar", () => {
   afterEach(fixtureCleanup);
@@ -42,7 +42,6 @@ describe("Avatar", () => {
     const letter = element.shadowRoot!.querySelector(".md-avatar__letter");
 
     expect(letter!.textContent!.trim()).toEqual("AH");
-
 
     const element2 = await fixture<Avatar.ELEMENT>(
       html`

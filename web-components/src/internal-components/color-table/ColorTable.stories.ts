@@ -6,11 +6,11 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/theme/Theme";
 import "@/internal-components/color-table/ColorTable";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Internal References/Color Table",
@@ -28,8 +28,8 @@ export const ColorTable = () => {
   const lumos = boolean("Lumos Theme", false);
 
   return html`
-  <md-theme class="theme-toggle" id="color-table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <color-table></color-table>
-  </md-theme>
+    <md-theme class="theme-toggle" id="color-table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <color-table></color-table>
+    </md-theme>
   `;
 };

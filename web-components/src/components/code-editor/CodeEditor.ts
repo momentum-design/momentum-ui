@@ -3,7 +3,7 @@ import "@/components/button/Button";
 import { customElementWithCheck } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import hljs from "highlight.js/lib/core";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit";
 import styles from "./scss/module.scss";
 
 export type Method = "get" | "post";

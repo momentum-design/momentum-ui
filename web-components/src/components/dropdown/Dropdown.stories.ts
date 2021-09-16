@@ -7,16 +7,16 @@
  */
 
 import "@/components/dropdown/Dropdown";
-
 import {
-  dropdownObjectKeyValueOptions,
-  dropdownObjectLongOptions,
-  dropdownStringLongOptions,
-  dropdownStringOptions
+    dropdownObjectKeyValueOptions,
+    dropdownObjectLongOptions,
+    dropdownStringLongOptions,
+    dropdownStringOptions
 } from "@/[sandbox]/examples/dropdown";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
+
 
 export default {
   title: "Components/Dropdown",

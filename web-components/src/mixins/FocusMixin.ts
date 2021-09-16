@@ -29,7 +29,7 @@
  * }
  * */
 
-import { LitElement, property, PropertyValues } from "lit-element";
+import { LitElement, property, PropertyValues } from "lit";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,7 +1,7 @@
-import "@/components/form/Form";
 import "@/components/button/Button";
+import "@/components/form/Form";
 import "@/components/input/Input";
-import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
+import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit";
 
 @customElement("form-sandbox")
 export class FormSandbox extends LitElement {

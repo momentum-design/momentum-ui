@@ -1,11 +1,11 @@
 import "@/components/date-time-picker/DateTimePicker";
-import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
-import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import as a relative path
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
+import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
+import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import as a relative path
 
 export default {
   title: "Components/Date Time Picker",

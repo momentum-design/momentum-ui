@@ -1,6 +1,6 @@
-import "@/index";
-import { html } from "lit-element";
 import "@/components/timepicker/TimePicker";
+import "@/index";
+import { html } from "lit";
 
 export const timePickerTemplate = html`
   <h3>Default</h3>

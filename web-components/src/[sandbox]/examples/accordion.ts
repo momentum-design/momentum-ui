@@ -1,7 +1,7 @@
 import "@/components/accordion/Accordion";
 import "@/components/accordion/AccordionItem";
 import "@/components/input/Input";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const accordionTemplate = html`
   <style>

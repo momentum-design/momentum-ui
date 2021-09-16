@@ -1,5 +1,5 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import { customElement, LitElement } from "lit-element";
+import { customElement, LitElement } from "lit";
 import { RovingTabIndexInterface, RovingTabIndexMixin } from "./RovingTabIndexMixin";
 
 describe("RovingTabIndex Mixin", () => {

@@ -7,11 +7,11 @@
  */
 
 /** This mixin help to manage slottable nodes (light DOM children) that become the contents of `<slot>` element.
- * 
+ *
  * @property({ type: Array, attribute: false }) slotted <--- when an element is inserted in a slot.
- * 
+ *
  * Example:
- * 
+ *
  * @customElements("custom-element")
  * class CustomElement extends SlottedMixin(LitElement) {
  *  @query('slot[name="custom"]') tabSlot?: HTMLSlotElement;
@@ -32,7 +32,7 @@
  * }
  */
 
-import { LitElement, property, PropertyValues, query } from "lit-element";
+import { LitElement, property, PropertyValues, query } from "lit";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

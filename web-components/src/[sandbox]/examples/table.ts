@@ -7,8 +7,8 @@
  */
 
 import "@/components/table/Table";
-import { html } from "lit-element";
 import { tableWarns } from "@/[sandbox]/sandbox.mock";
+import { html } from "lit";
 
 const tableError = [
   { row: 4, col: 3 },

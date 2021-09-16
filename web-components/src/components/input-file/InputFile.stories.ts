@@ -1,7 +1,7 @@
-import "./InputFile";
 import { withA11y } from "@storybook/addon-a11y";
-import { html } from "lit-element";
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import "./InputFile";
 
 export default {
   title: "Components/Input File",

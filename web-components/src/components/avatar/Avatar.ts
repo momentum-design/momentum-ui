@@ -10,12 +10,12 @@ import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property } from "lit";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { styleMap } from "lit-html/directives/style-map";
-import { until } from "lit-html/directives/until.js";
+import { classMap } from "lit/directives/class-map";
+import { ifDefined } from "lit/directives/if-defined";
+import { styleMap } from "lit/directives/style-map";
+import { until } from "lit/directives/until.js";
 import styles from "./scss/module.scss";
 
 export const AvatarType = [

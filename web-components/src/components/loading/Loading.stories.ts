@@ -9,8 +9,8 @@
 import "@/components/loading/Loading";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { select, boolean, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Loading",
@@ -41,6 +41,6 @@ export const Loading = () => {
   return html`
     <md-theme class="theme-toggle" id="loading" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-loading .size=${size as any}></md-loading>
-    </md-theme>   
+    </md-theme>
   `;
 };

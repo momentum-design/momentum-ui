@@ -1,3 +1,5 @@
+import "@/components/combobox/ComboBox";
+import "@/components/input/Input";
 import { Key } from "@/constants";
 import {
   defineCE,
@@ -8,10 +10,8 @@ import {
   nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { customElement, html, LitElement, property, PropertyValues, query } from "lit";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
-import "@/components/input/Input";
-import "@/components/combobox/ComboBox";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {

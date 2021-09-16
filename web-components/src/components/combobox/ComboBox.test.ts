@@ -1,10 +1,10 @@
-import "./ComboBox";
-import { ComboBox } from "./ComboBox";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
-import { repeat } from "lit-html/directives/repeat";
+import { repeat } from "lit/directives/repeat";
+import "./ComboBox";
+import { ComboBox } from "./ComboBox";
 
 describe("Combobox Component", () => {
   afterEach(fixtureCleanup);

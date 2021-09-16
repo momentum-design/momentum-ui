@@ -1,5 +1,5 @@
 import "@/components/label/Label";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const labelTemplate = html`
   <md-label htmlFor="htmlId" label="Default Label"> </md-label>

@@ -2,7 +2,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon.ts";
 import "@/components/tooltip/Tooltip.ts";
 import { Tooltip } from "@/components/tooltip/Tooltip.ts";
-import { css, customElement, html, LitElement, property, query } from "lit-element";
+import { css, customElement, html, LitElement, property, query } from "lit";
 
 @customElement("tooltip-message-template-sandbox")
 export class TooltipMessageTemplateSandbox extends LitElement {

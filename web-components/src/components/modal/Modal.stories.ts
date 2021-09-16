@@ -8,11 +8,11 @@
 
 import "@/components/modal/Modal";
 import "@/components/theme/Theme";
-import { modalType } from "./Modal"; // Keep type import as a relative path
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, select, withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
-import { html } from "lit-element";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import { modalType } from "./Modal"; // Keep type import as a relative path
 
 export default {
   title: "Components/Modal",
@@ -66,7 +66,7 @@ export const Modal = () => {
         .backdropClickExit="${backdropClickExit}"
         ?hideFooter=${hideFooter}
         ?hideHeader=${hideHeader}
-        @close-modal=${(action('click'))}
+        @close-modal=${action("click")}
       >
         <div slot="header">
           <span>Test slot header</span>

@@ -6,14 +6,14 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/icon/Icon";
 import "@/components/input/Input";
 import "@/components/theme/Theme";
-import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
+import { withA11y } from "@storybook/addon-a11y";
 import { action } from '@storybook/addon-actions';
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 
 export default {
   title: "Components/Input",
@@ -110,12 +110,12 @@ export const Input = () => {
   } else {
     return html`
     <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-input 
-        .label=${label} 
-        .placeholder=${placeholder} 
+      <md-input
+        .label=${label}
+        .placeholder=${placeholder}
         .messageArr=${[messageValue]}
-        .value=${value} 
-        .containerSize="${size}" 
+        .value=${value}
+        .containerSize="${size}"
         .disabled=${disabled}
         .shape=${shape}
         ?readOnly=${readOnly}

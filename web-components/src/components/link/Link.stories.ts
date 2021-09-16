@@ -6,12 +6,12 @@
  *
  */
 
+import "@/components/link/Link";
+import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import "@/components/link/Link";
-import { linkTag, linkColor } from "./Link"; // Keep type import as a relative path
-import "@/components/theme/Theme";
+import { html } from "lit";
+import { linkColor, linkTag } from "./Link"; // Keep type import as a relative path
 
 export default {
   title: "Components/Link",
@@ -32,17 +32,19 @@ export const Link = () => {
   const disabled = boolean("Disabled", false);
   const inline = boolean("Link Inline", false);
   const target = text("Target", "_self");
-  const color = select("Link color", linkColor, "blue")
+  const color = select("Link color", linkColor, "blue");
 
   return html`
     <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-link 
-        .href=${href} 
-        .tag=${tag as any} 
+      <md-link
+        .href=${href}
+        .tag=${tag as any}
         .target="${target}"
         .color="${color}"
-        ?disabled=${disabled} 
-        ?inline=${inline}>Default Link</md-link>
+        ?disabled=${disabled}
+        ?inline=${inline}
+        >Default Link</md-link
+      >
     </md-theme>
   `;
 };

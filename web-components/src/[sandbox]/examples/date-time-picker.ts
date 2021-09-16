@@ -1,6 +1,6 @@
 import "@/components/date-time-picker/DateTimePicker";
 import { now } from "@/utils/dateUtils";
-import { html } from "lit-element";
+import { html } from "lit";
 
 const minDate = now()
   .minus({ day: 5 })

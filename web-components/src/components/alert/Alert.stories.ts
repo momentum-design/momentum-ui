@@ -6,13 +6,13 @@
  *
  */
 
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { withA11y } from "@storybook/addon-a11y";
-import { html } from "lit-html";
-import { alertTypes } from "@/utils/enums";
-import { action } from '@storybook/addon-actions';
 import "@/components/alert/Alert";
 import "@/components/theme/Theme";
+import { alertTypes } from "@/utils/enums";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Alert",
@@ -21,7 +21,7 @@ export default {
   argTypes: {
     renderIconTemplate: { table: { disable: true } },
     alertClassMap: { table: { disable: true } },
-    internalClose: {description: 'By default closing internally, othervise - controlling outer via .show',}
+    internalClose: { description: "By default closing internally, othervise - controlling outer via .show" }
   },
   parameters: {
     a11y: {
@@ -42,7 +42,15 @@ export const Alert = () => {
 
   return html`
     <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-alert @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show} .inline=${inline}></md-alert>
+      <md-alert
+        @alert-close=${action("dispatchEvent")}
+        title=${title}
+        message=${message}
+        type=${type}
+        ?closable=${closable}
+        ?show=${show}
+        .inline=${inline}
+      ></md-alert>
     </md-theme>
   `;
 };

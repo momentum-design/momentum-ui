@@ -6,12 +6,12 @@
  *
  */
 
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
-import Sortable from "sortablejs";
-import reset from "@/wc_scss/reset.scss";
-import styles from "./scss/module.scss";
-import { debounce } from "@/utils/helpers";
 import { customElementWithCheck, SlottedMixin } from "@/mixins";
+import { debounce } from "@/utils/helpers";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, PropertyValues, query } from "lit";
+import Sortable from "sortablejs";
+import styles from "./scss/module.scss";
 
 export namespace Draggable {
   @customElementWithCheck("md-draggable")

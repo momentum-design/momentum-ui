@@ -1,6 +1,6 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import { LitElement } from "lit-element";
+import { LitElement } from "lit";
 import "./AlertBanner";
 import { AlertBanner } from "./AlertBanner";
 

@@ -6,12 +6,12 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import { BarFormat, BarType } from "@/utils/enums";
 import "@/components/progress-bar/ProgressBar";
 import "@/components/theme/Theme";
+import { BarFormat, BarType } from "@/utils/enums";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Progress Bar",

@@ -10,7 +10,7 @@ import "@/components/button-group/ButtonGroup";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export default {
   title: "Components/Button Group",

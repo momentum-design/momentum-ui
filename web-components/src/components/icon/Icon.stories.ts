@@ -6,14 +6,14 @@
  *
  */
 
-import iconNames from "@momentum-ui/icons/data/iconNames.json";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
+import iconNames from "@momentum-ui/icons/data/iconNames.json";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 import { iconSize, iconType } from "./Icon"; // Keep type import as a relative path
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: "Components/Icon",
@@ -50,17 +50,17 @@ export const Icon = () => {
 
   return html`
     <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-icon 
-        .name=${`icon-${name}`} 
-        .title=${title} 
-        .color=${color} 
-        .iconStyle=${iconStyle} 
-        .type=${type} 
-        .size=${size} 
+      <md-icon
+        .name=${`icon-${name}`}
+        .title=${title}
+        .color=${color}
+        .iconStyle=${iconStyle}
+        .type=${type}
+        .size=${size}
         .sizeOverrided=${sizeOverrided}
-        @icon-click=${(action('dispatchEvent'))}>
+        @icon-click=${action("dispatchEvent")}
+      >
       </md-icon>
     </md-theme>
-  `; 
-}
-
+  `;
+};

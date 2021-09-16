@@ -10,9 +10,9 @@ import "@/components/list/List";
 import "@/components/list/ListItem";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
+import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/List",
@@ -44,7 +44,12 @@ export const List = () => {
 
   return html`
     <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-list @list-item-change=${action('change')} label="Transuranium elements" .activated="${selected}" .alignment=${alignment as any}>
+      <md-list
+        @list-item-change=${action("change")}
+        label="Transuranium elements"
+        .activated="${selected}"
+        .alignment=${alignment as any}
+      >
         <md-list-item slot="list-item">Neptunium</md-list-item>
         <md-list-item slot="list-item" ?disabled=${disabled}>Plutonium</md-list-item>
         <md-list-item slot="list-item">Americium</md-list-item>

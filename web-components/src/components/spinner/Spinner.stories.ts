@@ -6,11 +6,11 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { number, boolean, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/spinner/Spinner";
 import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, number, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Spinner",

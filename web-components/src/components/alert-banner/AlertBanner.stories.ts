@@ -6,13 +6,13 @@
  *
  */
 
- import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-html";
-import { action } from '@storybook/addon-actions';
-import "@/components/icon/Icon";
 import "@/components/alert-banner/AlertBanner";
+import "@/components/icon/Icon";
 import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
 
 export default {
   title: "Components/Alert Banner",
@@ -22,10 +22,10 @@ export default {
     a11y: {
       element: "md-alert-banner"
     },
-    docs: { 
-      description: { 
-        component: 'A typical usage of Alert Banner, with text added within the element tags or message attribute' 
-      },
+    docs: {
+      description: {
+        component: "A typical usage of Alert Banner, with text added within the element tags or message attribute"
+      }
     }
   }
 };
@@ -39,10 +39,15 @@ export const AlertBanner = () => {
 
   return html`
     <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-alert-banner @alertBanner-hide=${(action('dispatchEvent'))} show type="${type}" ?closable=${closable} message="${textContent}">
+      <md-alert-banner
+        @alertBanner-hide=${action("dispatchEvent")}
+        show
+        type="${type}"
+        ?closable=${closable}
+        message="${textContent}"
+      >
         ${textContent ? `${textContent}` : `Text with slotted tag element`}
       </md-alert-banner>
     </md-theme>
   `;
 };
-

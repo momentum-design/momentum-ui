@@ -6,9 +6,9 @@
  *
  */
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit";
 import styles from "./scss/module.scss";
 
 export namespace ListItem {
@@ -58,8 +58,6 @@ export namespace ListItem {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

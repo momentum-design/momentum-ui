@@ -9,8 +9,8 @@
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, property, PropertyValues } from "lit";
+import { ifDefined } from "lit/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export namespace Radio {

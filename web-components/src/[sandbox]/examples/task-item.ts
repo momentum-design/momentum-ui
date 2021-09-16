@@ -1,7 +1,7 @@
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import "@/components/taskitem/TaskItem";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const taskItemTemplate = html`
   <div style="width:328px">

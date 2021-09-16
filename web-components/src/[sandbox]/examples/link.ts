@@ -1,5 +1,5 @@
 import "@/components/link/Link";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const linkTemplate = html`
   <div class="row">

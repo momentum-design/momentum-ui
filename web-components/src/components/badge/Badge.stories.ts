@@ -12,7 +12,7 @@ import "@/components/theme/Theme";
 import { badgeColor } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export default {
   title: "Components/Badge",

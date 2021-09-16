@@ -1,6 +1,6 @@
 import "@/components/list/List";
 import "@/components/list/ListItem";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const listTemplate = html`
   <h3>Default</h3>

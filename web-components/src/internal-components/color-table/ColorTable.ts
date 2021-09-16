@@ -1,12 +1,12 @@
 import "@/components/table-advanced/TableAdvanced";
-import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
-import { colorTableData } from "@/wc_scss/colors/vars/color-table-data-string";
 import { TableAdvanced } from "@/components/table-advanced/TableAdvanced";
+import { colorTableData } from "@/wc_scss/colors/vars/color-table-data-string";
+import reset from "@/wc_scss/reset.scss";
+import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit";
 import { nothing } from "lit-html";
 import { colorCellTemplates } from "./data";
-import { allColorTemplates } from "./utils";
-import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
+import { allColorTemplates } from "./utils";
 
 @customElement("color-table")
 export class ColorTableSandbox extends LitElement {

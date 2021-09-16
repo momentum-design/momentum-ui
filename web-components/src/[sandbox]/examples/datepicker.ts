@@ -4,7 +4,7 @@ import "@/components/datepicker/datepicker-day/DatePickerDay";
 import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import { now } from "@/utils/dateUtils";
-import { html } from "lit-element";
+import { html } from "lit";
 
 const minDate = now()
   .minus({ day: 5 })

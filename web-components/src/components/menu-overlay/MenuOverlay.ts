@@ -15,7 +15,7 @@ import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
-import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
+import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {

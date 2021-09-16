@@ -6,11 +6,11 @@
  *
  */
 
-import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/theme/Theme";
+import "@/components/toggle-switch/ToggleSwitch";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export default {
   title: "Components/Toggle Switch",
@@ -35,9 +35,10 @@ export const ToggleSwitch = () => {
   const smaller = boolean("Smaller", false);
 
   return html`
-  <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-toggle-switch htmlId="toggleSwitch" ?checked=${checked} ?disabled=${disabled} .smaller=${smaller}> Label Toggle Switch </md-toggle-switch>
-  </md-theme>
+    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-toggle-switch htmlId="toggleSwitch" ?checked=${checked} ?disabled=${disabled} .smaller=${smaller}>
+        Label Toggle Switch
+      </md-toggle-switch>
+    </md-theme>
   `;
 };
-

@@ -1,7 +1,7 @@
-import "./Pagination";
 import { withA11y } from "@storybook/addon-a11y";
-import { html } from "lit-element";
-import { withKnobs, number, boolean } from "@storybook/addon-knobs";
+import { boolean, number, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit";
+import "./Pagination";
 
 export default {
   title: "Components/Pagination",

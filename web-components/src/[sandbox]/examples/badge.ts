@@ -1,6 +1,6 @@
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const badgeTemplate = html`
   <md-badge aria-label="my aria-label">

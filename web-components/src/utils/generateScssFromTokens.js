@@ -214,7 +214,7 @@ const generateThemeStylesheets = () => {
 
   for (const themeStyleName of themeStyles) {
     themeStyleFiles[themeStyleName] += `\n:root,\n:host {\n`;
-    themeStyleFiles[themeStyleName] += `@include css-color-variables\n`;
+    themeStyleFiles[themeStyleName] += `@include css-color-variables;\n`;
     themeStyleFiles[themeStyleName] += `  @include global-vars;\n`;
     themeStyleFiles[themeStyleName] += `  @include global-theme-specfic-vars;\n`;
     themeStyleFiles[themeStyleName] += `  @include semantic-color-vars;\n`;

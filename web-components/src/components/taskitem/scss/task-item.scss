@@ -21,7 +21,8 @@
     .md-taskitem__content {
       &_title,
       &_queue,
-      &_chat {
+      &_chat,
+      &_popover_title {
         color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
       }
     }
@@ -33,7 +34,8 @@
     .md-taskitem__content {
       &_title,
       &_queue,
-      &_chat {
+      &_chat,
+      &_popover_title {
         color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
       }
     }
@@ -45,7 +47,8 @@
     .md-taskitem__content {
       &_title,
       &_queue,
-      &_chat {
+      &_chat,
+      &_popover_title {
         color: var(--taskitem-selected-text-color, $lm-taskitem-selected-text-color-light);
       }
     }
@@ -102,14 +105,28 @@
   @include taskitem-content;
   width: calc(100% - calc(#{$taskitem-mediatype-width} + #{$taskitem-additional-width}));
 
-  &_title {
+
+  &_popover_title {
     @include text-dots;
     color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
     font-family: $taskitem-title-font;
+    font-size: $taskitem-popover-title-font-size;
+    line-height: $taskitem-popover-title-height ;
+    margin-bottom: $taskitem-main-margin;
+    width: calc(100%);
+  }
+
+  &_title {
+    @include text-dots;
     font-size: $taskitem-title-font-size;
     line-height: $taskitem-title-height;
     margin-bottom: $taskitem-main-margin;
     width: calc(100%); //don't delete, it need for text overflow
+
+    &.mainTitle {
+    color: var(--taskitem-text-color, $lm-taskitem-text-color-light);
+    font-family: $taskitem-title-font;
+    }
   }
 
   &_inner {

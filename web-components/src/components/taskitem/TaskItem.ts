@@ -30,7 +30,7 @@ export namespace TaskItem {
     @property({type: String}) customAriaLabel = "";
 
     renderTaskType = () => {
-      switch (this.mediaType) {
+      switch (this.mediaType.toLowerCase()) {
         case "telephony":
           return html`
             <md-badge color="green" circle>
@@ -79,7 +79,7 @@ export namespace TaskItem {
               <md-icon name="messenger_16" color="white"></md-icon>
             </md-badge>
           `;
-        case "whatsApp":
+        case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
               <md-icon name="whatsApp_16" color="white"></md-icon>

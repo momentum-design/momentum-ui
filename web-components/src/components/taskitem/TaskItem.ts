@@ -14,7 +14,7 @@ import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
- 
+
 export namespace TaskItem {
   @customElementWithCheck("md-task-item")
   export class ELEMENT extends LitElement {

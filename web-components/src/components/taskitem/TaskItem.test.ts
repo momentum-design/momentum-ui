@@ -5,6 +5,7 @@ import { TaskItem } from "./TaskItem";
 
 const fixtureFactory = async (
   mediaType: string,
+  popovertitle: string,
   title: string,
   queue: string,
   status: string,
@@ -18,6 +19,7 @@ const fixtureFactory = async (
       <md-task-item
         mediaType="${mediaType}"
         title="${title}"
+        popovertitle="${popovertitle}"
         queue="${queue}"
         status="${status}"
         quantity="${quantity}"
@@ -38,6 +40,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "telephony",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "consulting",
       0,
@@ -55,6 +58,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "facebook",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "consulting",
       0,
@@ -67,8 +71,9 @@ describe("TaskItem", () => {
 
   test("should render TaskItem Component", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
-      "whatsApp",
+      "whatsapp",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "consulting",
       0,
@@ -83,6 +88,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "chat",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "play",
       0,
@@ -100,6 +106,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "outbound telephony",
       "Mihael Varificantare",
+      "Mihael Varificantare",
       "quelle_1",
       "play",
       0,
@@ -111,10 +118,27 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("name")).toEqual("outgoing-call-active_16");
   });
 
+  test("should render caalback type ", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "callback",
+      "Mihael Varificantare",
+      "",
+      "quelle_1",
+      "play",
+      0,
+      "",
+      false
+    );
+
+    const type = element.shadowRoot?.querySelector("md-icon");
+    expect(type?.getAttribute("name")).toEqual("icon-icon-callback_16");
+  });
+
   test("should render correct inbound type ", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "inbound telephony",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "play",
       0,
@@ -130,6 +154,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "email",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "hold",
       0,
@@ -148,6 +173,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "sms",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "conference",
       0,
@@ -165,6 +191,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "transfered",
       0,
@@ -182,6 +209,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "campaign",
       0,
@@ -197,6 +225,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "courtesy_callback",
       0,
@@ -212,6 +241,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "call",
       10,
@@ -232,6 +262,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "call",
       101,
@@ -248,6 +279,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "",
       "call",
       0,
       "Test message",
@@ -262,6 +294,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "transfered",
       0,
@@ -281,6 +314,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "transfered",
       0,
@@ -300,6 +334,7 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "",
       "quelle_1",
       "transfered",
       0,

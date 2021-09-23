@@ -27,7 +27,7 @@ export namespace TaskItem {
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
-    @property({type: String}) customAriaLabel = "";
+    @property({ type: String }) customAriaLabel = "";
 
     renderTaskType = () => {
       switch (this.mediaType.toLowerCase()) {
@@ -168,9 +168,9 @@ export namespace TaskItem {
         : nothing;
     }
 
-    getAriaLabel(){
-      if(this.customAriaLabel){
-        return this.customAriaLabel
+    getAriaLabel() {
+      if (this.customAriaLabel) {
+        return this.customAriaLabel;
       }
       return `${this.mediaType} ${this.status} ${this.title} ${this.queue} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
@@ -205,14 +205,16 @@ export namespace TaskItem {
           <div class="md-taskitem__content" part="task-item-content">
             ${this.popovertitle
               ? html`
-                  <span class="md-taskitem__content_popover_title">${this.popovertitle}</span>`
-              : nothing
-            }
+                  <span class="md-taskitem__content_popover_title">${this.popovertitle}</span>
+                `
+              : nothing}
             ${this.title
-              ? html`            
-                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}">${this.title}</span>`
-              :nothing
-            }
+              ? html`
+                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
+                    >${this.title}</span
+                  >
+                `
+              : nothing}
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0

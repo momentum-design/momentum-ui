@@ -12,7 +12,7 @@ const fixtureFactory = async (
   quantity: number,
   lastmessage: string,
   selected: boolean,
-  customAriaLabel: string = ""
+  customAriaLabel = ""
 ): Promise<TaskItem.ELEMENT> => {
   return await fixture(
     html`
@@ -346,5 +346,4 @@ describe("TaskItem", () => {
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
     expect(ariaLabel).toEqual("Custom area label");
   });
-
 });

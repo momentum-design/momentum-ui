@@ -8,8 +8,8 @@
 
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -20,16 +20,17 @@ export namespace TaskItem {
   export class ELEMENT extends LitElement {
     @property({ type: String }) mediaType = "call";
     @property({ type: String }) status = "";
+    @property({ type: String }) popovertitle = "";
     @property({ type: String }) title = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
-    @property({type: String}) customAriaLabel = "";
+    @property({ type: String }) customAriaLabel = "";
 
     renderTaskType = () => {
-      switch (this.mediaType) {
+      switch (this.mediaType.toLowerCase()) {
         case "telephony":
           return html`
             <md-badge color="green" circle>
@@ -46,6 +47,12 @@ export namespace TaskItem {
           return html`
             <md-badge color="green" circle>
               <md-icon name="incoming-call-active_16"></md-icon>
+            </md-badge>
+          `;
+        case "callback":
+          return html`
+            <md-badge color="lime" circle>
+              <md-icon name="icon-icon-callback_16"></md-icon>
             </md-badge>
           `;
         case "chat":
@@ -72,7 +79,7 @@ export namespace TaskItem {
               <md-icon name="messenger_16" color="white"></md-icon>
             </md-badge>
           `;
-        case "whatsApp":
+        case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
               <md-icon name="whatsApp_16" color="white"></md-icon>
@@ -161,9 +168,9 @@ export namespace TaskItem {
         : nothing;
     }
 
-    getAriaLabel(){
-      if(this.customAriaLabel){
-        return this.customAriaLabel
+    getAriaLabel() {
+      if (this.customAriaLabel) {
+        return this.customAriaLabel;
       }
       return `${this.mediaType} ${this.status} ${this.title} ${this.queue} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
@@ -196,7 +203,18 @@ export namespace TaskItem {
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
-            <span class="md-taskitem__content_title">${this.title}</span>
+            ${this.popovertitle
+              ? html`
+                  <span class="md-taskitem__content_popover_title">${this.popovertitle}</span>
+                `
+              : nothing}
+            ${this.title
+              ? html`
+                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
+                    >${this.title}</span
+                  >
+                `
+              : nothing}
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0

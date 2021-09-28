@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.25.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.25.0...@momentum-ui/icons@8.25.1) (2021-09-28)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
 # [8.25.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.24.1...@momentum-ui/icons@8.25.0) (2021-09-09)
 
 

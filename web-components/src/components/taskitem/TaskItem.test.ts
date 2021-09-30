@@ -131,7 +131,7 @@ describe("TaskItem", () => {
     );
 
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("icon-icon-callback_16");
+    expect(type?.getAttribute("name")).toEqual("icon-icon-callback_18");
   });
 
   test("should render correct inbound type ", async () => {

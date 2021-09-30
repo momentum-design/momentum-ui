@@ -40,7 +40,7 @@
     "lit-html": "1.2.1"
   },
   "peerDependencies": {
-    "@momentum-ui/core": "19.15.11",
+    "@momentum-ui/core": "19.15.12",
     "@momentum-ui/icons": "8.25.0",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
@@ -67,7 +67,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@interactjs/types": "1.10.3",
-    "@momentum-ui/core": "19.15.11",
+    "@momentum-ui/core": "19.15.12",
     "@momentum-ui/icons": "8.25.0",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",

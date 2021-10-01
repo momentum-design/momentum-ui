@@ -52,7 +52,7 @@ export namespace TaskItem {
         case "callback":
           return html`
             <md-badge color="lime" circle>
-              <md-icon name="icon-icon-callback_16"></md-icon>
+              <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
         case "chat":

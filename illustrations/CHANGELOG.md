@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.14.0...@momentum-ui/illustrations@1.15.0) (2021-10-09)
+
+
+### Features
+
+* **illustrations:** add illustrations ([#1079](https://github.com/momentum-design/momentum-ui/issues/1079)) ([b0260bb](https://github.com/momentum-design/momentum-ui/commit/b0260bba1e65db163a097fab9d9b07f54a4f2d90))
+
+
+
+
+
 # [1.14.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.13.0...@momentum-ui/illustrations@1.14.0) (2021-09-28)
 
 

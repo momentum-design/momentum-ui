@@ -69,7 +69,7 @@ const DEFAULT_TEMPLATE_OPTIONS = {
     // generate Other files
     await generateFile("data", upperFirst(camelCase(result.fontName)) + "Type.swift", templateData);
     await generateFile("data", camelCase(result.fontName) + "Names.json", templateData);
-    await generateIconsDataJson(templateData);
+    await generateIconsDataJson(result.fontName, templateData);
   } catch (e) {
     console.error("Something went wrong when generating the fonts", e);
   }

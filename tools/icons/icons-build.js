@@ -1,4 +1,4 @@
-const { camelCase } = require("lodash");
+const { camelCase, upperFirst } = require("lodash");
 const handlebars = require("handlebars");
 const { exec } = require("child_process");
 const { generateFonts } = require("@momentum-ui/webfonts-generator");
@@ -67,8 +67,8 @@ const DEFAULT_TEMPLATE_OPTIONS = {
     await generateFile("fonts", "index.html", templateData);
 
     // generate Other files
-    await generateFile("data", "MomentumIconType.swift", templateData);
-    await generateFile("data", "iconNames.json", templateData);
+    await generateFile("data", upperFirst(camelCase(result.fontName)) + "Type.swift", templateData);
+    await generateFile("data", camelCase(result.fontName) + "Names.json", templateData);
     await generateIconsDataJson(templateData);
   } catch (e) {
     console.error("Something went wrong when generating the fonts", e);

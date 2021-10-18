@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.27.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.26.0...@momentum-ui/icons@8.27.0) (2021-10-15)
+
+
+### Features
+
+* **icon:** add new icons for emergency services ([#1082](https://github.com/momentum-design/momentum-ui/issues/1082)) ([a07daa3](https://github.com/momentum-design/momentum-ui/commit/a07daa38ab51444abcec53f747603df95ea9d870))
+
+
+
+
+
 # [8.26.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.25.1...@momentum-ui/icons@8.26.0) (2021-10-08)
 
 

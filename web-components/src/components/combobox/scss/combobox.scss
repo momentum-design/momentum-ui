@@ -278,7 +278,7 @@ ul {
     @include text-dots;
     background: transparent;
     border: 0;
-    color: var(--combobox-text-color, $lm-combobox-text-color-light);
+    color: var(--md-secondary-text-color, $lm-combobox-text-color-light);
     display: inline-block;
     flex: 1 1 auto;
     height: $combobox-min-height;

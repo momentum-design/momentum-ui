@@ -91,7 +91,7 @@
       $border-color: var(--input-default-border-color, $md-gray-30),
       $border-color-active: var(--input-default-pressed-border-color, $md-gray-30),
       $focus-border-color: var(--input-default-focus-border-color, $md-blue-60),
-      $color: var(--input-default-text-color, $md-gray-70),
+      $color: var(--md-secondary-text-color, $md-gray-70),
       $color-clear: var(--md-secondary-text-color, $md-gray-70),
       $color-clear-hover: $input__clear-icon__color--hover,
       $color-disabled: var(--input-disabled-text-color, $md-gray-40),

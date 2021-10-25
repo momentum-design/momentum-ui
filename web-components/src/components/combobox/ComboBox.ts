@@ -263,7 +263,6 @@ export namespace ComboBox {
         this.selectedOptions = [];
       }
       const selectedIndex = this.findSelectedOption(option);
-
       if (selectedIndex !== -1) {
         const removedOption = this.selectedOptions[selectedIndex];
         this.selectedOptions.splice(selectedIndex, 1);
@@ -333,6 +332,10 @@ export namespace ComboBox {
     private unCheckedOption(index: number) {
       if (this.isMulti) {
         this.lists![index].setAttribute("aria-checked", "false");
+        this.notifySelectedChange({
+          value: this.filteredOptions[index],
+          selected: this.selectedOptions
+        });
       }
     }
 
@@ -441,6 +444,14 @@ export namespace ComboBox {
     }
 
     async handleListClick(event: MouseEvent) {
+      // const shift = event.getModifierState("Shift");
+      // if (shift) {
+      //   this.selectedOptions = this.options;
+      //   this.requestUpdate();
+      //   return;
+      // }
+      debugger;
+
       this.dispatchEvent(
         new CustomEvent("selected-changed", {
           detail: {

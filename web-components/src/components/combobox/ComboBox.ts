@@ -444,14 +444,6 @@ export namespace ComboBox {
     }
 
     async handleListClick(event: MouseEvent) {
-      // const shift = event.getModifierState("Shift");
-      // if (shift) {
-      //   this.selectedOptions = this.options;
-      //   this.requestUpdate();
-      //   return;
-      // }
-      debugger;
-
       this.dispatchEvent(
         new CustomEvent("selected-changed", {
           detail: {

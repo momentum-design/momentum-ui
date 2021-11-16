@@ -9,7 +9,7 @@
 import { Key, ARIA_INVALID } from "@/constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
-import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
+import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";

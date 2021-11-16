@@ -7,7 +7,6 @@
  */
 
 import activityButtonStyles from "@/components/activity-button/scss/module.scss";
-import "@/components/loading/Loading";
 import "@/components/spinner/Spinner";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";

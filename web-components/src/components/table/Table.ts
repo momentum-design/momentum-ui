@@ -54,6 +54,7 @@ export namespace Table {
 
     connectedCallback() {
       super.connectedCallback();
+      // @ts-ignore
       this.results = Papa.parse(this.tabledata, this.config);
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
@@ -64,10 +65,10 @@ export namespace Table {
     get rowItem() {
       return this.rowTable;
     }
-  
+
     linkCellItems() {
       const data = this.rowTable;
-  
+
       data?.forEach((item, idx) => {
         this.warning.forEach(i => {
           if ((idx + 1) === i.row) {
@@ -98,7 +99,7 @@ export namespace Table {
       const elCell = ev.target as HTMLTableElement;
       const sortArr = Array.from(this.csvData);
       const index = this.headerRow.indexOf(key);
-  
+
       function compare(a: any, b: any) {
         const bandA = a[index].toLowerCase();
         const bandB = b[index].toLowerCase();
@@ -110,7 +111,7 @@ export namespace Table {
           return 0;
         }
       }
-  
+
       if (key !== this.sort.columnName || this.sort.sortting !== true) {
         sortArr.sort(compare);
         this.sort.sortting = true;
@@ -122,9 +123,9 @@ export namespace Table {
         elCell.classList.remove("sortedAbc");
         elCell.classList.add("sortedZyx");
       }
-  
+
       this.sort.columnName = key;
-  
+
       this.csvData = sortArr;
       this.requestUpdate("csvData");
     }
@@ -132,6 +133,7 @@ export namespace Table {
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
       if (changedProperties.has("tabledata")) {
+        // @ts-ignore
         this.results = Papa.parse(this.tabledata, this.config);
         this.headerRow = this.results.data[0];
         this.csvData = this.results.data.slice(1, this.results.data.length);

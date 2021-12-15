@@ -7,6 +7,7 @@ import App from './App';
 
 import './styles.scss';
 
+// Render App Container
 render(
   <AppContainer>
     <BrowserRouter>

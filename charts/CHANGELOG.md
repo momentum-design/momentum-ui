@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.13...@momentum-ui/charts@1.0.0-beta.14) (2021-12-16)
+
+
+### Bug Fixes
+
+* **test ci:** check if ci runs ([d1dc6f7](https://github.com/momentum-design/momentum-ui/commit/d1dc6f7949b2be87ee194a817d64e089321d4fe9))
+
+
+
+
+
 # [1.0.0-beta.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/charts@1.0.0-beta.12...@momentum-ui/charts@1.0.0-beta.13) (2020-07-09)
 
 

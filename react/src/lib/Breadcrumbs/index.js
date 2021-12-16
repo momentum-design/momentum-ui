@@ -20,12 +20,10 @@ class Breadcrumbs extends React.PureComponent {
 
   render() {
     const { className, children } = this.props;
-
     const items  = React.Children.map(children, (child, idx) => {
       if (children.length - 1 === idx || !children.length) {
         return React.cloneElement(child, { className: 'current' });
       }
-
       return child;
     });
 

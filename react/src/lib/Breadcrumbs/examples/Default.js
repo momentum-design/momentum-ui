@@ -7,14 +7,14 @@ export default function DefaultBreadCrumbs() {
         <div className='columns small-12'>
           <Breadcrumbs>
             <li href='javascript:void(0)'>
-              Default1
+              Default
             </li>
           </Breadcrumbs>
         </div>
         <div className='columns small-12'>
           <Breadcrumbs>
             <li href='javascript:void(0)'>
-              Default1
+              Default
             </li>
             <li href='javascript:void(0)'>
               Default2
@@ -24,7 +24,7 @@ export default function DefaultBreadCrumbs() {
         <div className='columns small-12'>
           <Breadcrumbs>
             <li href='javascript:void(0)'>
-              Default1
+              Default
             </li>
             <li href='javascript:void(0)'>
               Default2

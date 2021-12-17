@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.15.2...@momentum-ui/illustrations@1.16.0) (2021-12-17)
+
+
+### Features
+
+* **illustration:** add 3 svg ([86ec60e](https://github.com/momentum-design/momentum-ui/commit/86ec60ee3a6881f41f6906583f75f6e2f21e7a00))
+
+
+
+
+
 ## [1.15.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.15.1...@momentum-ui/illustrations@1.15.2) (2021-12-11)
 
 **Note:** Version bump only for package @momentum-ui/illustrations

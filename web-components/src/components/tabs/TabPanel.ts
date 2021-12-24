@@ -7,8 +7,8 @@
  */
 
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import styles from "./scss/module.scss";
 
@@ -16,6 +16,7 @@ export namespace TabPanel {
   @customElementWithCheck("md-tab-panel")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) selected = false;
+    @property({ type: Boolean, reflect: true }) focusablePanel = true;
 
     static get styles() {
       return [reset, styles];
@@ -24,7 +25,9 @@ export namespace TabPanel {
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       this.setAttribute("role", "tabpanel");
-      this.setAttribute("tabindex", "0");
+      if (this.focusablePanel) {
+        this.setAttribute("tabindex", "0");
+      }
     }
 
     render() {

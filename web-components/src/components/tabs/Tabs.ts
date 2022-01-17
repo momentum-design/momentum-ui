@@ -30,6 +30,7 @@ const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
+const MAX_AUX_PANE_TAB_WIDTH = 200;
 export namespace Tabs {
   type TabViewportData = {
     isTabInViewportHidden: boolean;
@@ -45,6 +46,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
+    @property({ type: String, attribute: "max-tab-width" }) maxTabWidth = MAX_AUX_PANE_TAB_WIDTH;
 
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
@@ -904,6 +906,10 @@ export namespace Tabs {
       }
     }
 
+    private showTooltip(tabElement: Tab.ELEMENT) {
+      return tabElement.offsetWidth >= this.maxTabWidth;
+    }
+  
     render() {
       return html`
         <div
@@ -930,7 +936,9 @@ export namespace Tabs {
               this.tabsFilteredAsVisibleList,
               tab => nanoid(10),
               tab => html`
-                <md-tab
+              <md-tooltip message="${tab?.textContent?.trim() || ''}" 
+              ?disabled=${!this.showTooltip(tab)}>
+              <md-tab
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
                   .selected="${tab.selected}"
@@ -943,6 +951,7 @@ export namespace Tabs {
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
+                </md-tooltip>
               `
             )}
           </div>

@@ -34,7 +34,7 @@ export namespace DatePicker {
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
     @property({ type: Boolean }) disabled = false;
-    @property({ type: Boolean, attribute: "custom-date-trigger" }) customDateTrigger = false;
+    @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -213,7 +213,7 @@ export namespace DatePicker {
     render() {
       return html`
         <md-menu-overlay custom-width="248px" ?disabled=${this.disabled}>
-          ${this.customDateTrigger
+          ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">
                   <slot name="date-trigger"></slot>

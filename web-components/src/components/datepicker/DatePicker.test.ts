@@ -91,7 +91,7 @@ describe("DatePicker Component", () => {
   test("should render with custom date trigger", async () => {
     const el: DatePicker.ELEMENT = await fixture(
       html`
-        <md-datepicker custom-date-trigger>
+        <md-datepicker custom-trigger>
           <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
         </md-datepicker>
       `

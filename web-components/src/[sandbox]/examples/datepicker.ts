@@ -17,7 +17,7 @@ const maxDate = now()
 export const datePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>
   <h3>datepicker with custom trigger</h3>
-  <md-datepicker custom-date-trigger>
+  <md-datepicker custom-trigger>
     <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
   </md-datepicker>
   <h3>datepicker with different locale</h3>

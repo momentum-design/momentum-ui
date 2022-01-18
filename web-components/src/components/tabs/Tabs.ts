@@ -31,6 +31,7 @@ const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
 const MAX_AUX_PANE_TAB_WIDTH = 200;
+const MORE_ACTIONS_MENU_WIDTH = "226px";
 export namespace Tabs {
   type TabViewportData = {
     isTabInViewportHidden: boolean;
@@ -47,6 +48,8 @@ export namespace Tabs {
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
     @property({ type: String, attribute: "max-tab-width" }) maxTabWidth = MAX_AUX_PANE_TAB_WIDTH;
+    @property({ type: String, attribute: "more-actions-label" }) moreActionsLabel = "More Actions";
+    @property({ type: Boolean, attribute: "show-more-actions" }) showMoreActions = false;
 
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
@@ -910,6 +913,9 @@ export namespace Tabs {
       return tabElement.offsetWidth >= this.maxTabWidth;
     }
   
+    private handleResetTabs() {
+    }
+
     render() {
       return html`
         <div
@@ -1014,6 +1020,33 @@ export namespace Tabs {
               )}
             </div>
           </md-menu-overlay>
+          ${this.showMoreActions 
+            ? html `<md-menu-overlay
+                    custom-width="${MORE_ACTIONS_MENU_WIDTH}"
+                    slot="settings"
+                    size="small"
+                    style="display: flex; justify-content: center;height: 100%;"
+                  >
+                    <button class="menu-trigger-button" slot="menu-trigger">
+                  <md-tooltip placement="top" message="${this.moreActionsLabel}">
+                        <md-icon name="icon-more-adr_16"></md-icon>
+                  </md-tooltip>
+                    </button>
+                    
+                    <div class="md-menu-overlay__more_actions_list">
+                      <div>
+                        <md-button hasRemoveStyle  class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>  
+                        <md-icon
+                        slot="icon"
+                            aria-label="Reset Tab Order"
+                            name="icon-refresh_16"
+                          ></md-icon><span class="reset-tab-order-span" slot="text">Reset Tab Order</span>
+                          </md-button>
+                      </div>                      
+                    </div>
+                  </md-menu-overlay>`
+            : html ``
+          }
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

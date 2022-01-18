@@ -302,7 +302,9 @@ export const tabsTemplate = html`
         </md-tab-panel>
         <md-tab slot="tab" name="Answer" closable="auto">
           <md-icon name="alarm_16"></md-icon>
-          <span>Cisco Answer</span>
+          <md-tooltip placement="top" message="Cisco Answer for very very long label">
+            <span class="text-ellipsis">Cisco Answer for very very long label</span>
+          </md-tooltip>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Answer"</span>

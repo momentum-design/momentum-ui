@@ -58,6 +58,7 @@ slot {
   .tab-content {
     align-items: center;
     display: flex;
+    max-width: $tab-span-max-width;
 
     md-icon,
     img {
@@ -67,6 +68,10 @@ slot {
     img {
       height: 1rem;
       width: 1rem;
+    }
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -105,7 +110,7 @@ button {
   display: block;
   height: 100%;
   min-height: $tab-overflow-button-height;
-  padding: $tab-button-padding;
+  padding: $tab-header-padding;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -129,6 +134,9 @@ button {
 
   ::slotted(span) {
     @include tab-button-span;
+    max-width: $tab-span-max-width;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   span {

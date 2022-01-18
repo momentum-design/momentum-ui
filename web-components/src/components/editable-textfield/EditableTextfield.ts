@@ -219,6 +219,10 @@ export namespace EditableTextfield {
         : nothing;
     }
 
+    disableTooltip () {
+      return this.editableField && this.editableField?.offsetHeight < this.editableField?.scrollHeight && this.maxLines.length > 0
+    }
+
     render() {
       const classes = {
         [`md-editable-textfield--${this.alignment}`]: this.alignment,

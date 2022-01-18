@@ -24,7 +24,9 @@ import { Tab, TabClickEvent, TAB_CROSS_WIDTH } from "./Tab";
 import { TabPanel } from "./TabPanel";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
-const MORE_MENU_WIDTH = "264px"; // Designed width
+const MORE_MENU_WIDTH = "226px"; // Designed width
+const MORE_MENU_HEIGHT = "288px"; // Designed height
+
 export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
 const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
@@ -507,10 +509,10 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
-     
+
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-     
+
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
           const tab = tabs[index];
@@ -949,6 +951,7 @@ export namespace Tabs {
 
           <md-menu-overlay
             custom-width="${MORE_MENU_WIDTH}"
+            max-height="${MORE_MENU_HEIGHT}"
             class="md-menu-overlay__more ${classMap({
               "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
             })}"

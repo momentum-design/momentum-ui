@@ -21,7 +21,6 @@
 }
 
 .md-tab__list {
-  border-bottom: $tab-list-border;
   display: inline-flex;
   height: $tab-height;
   min-height: $tab-height;
@@ -103,12 +102,12 @@ md-tab {
 md-menu-overlay {
   md-tab {
     md-tooltip {
-      width: 210px;
+      width: 170px;
       position: absolute;
 
       .text-ellipsis {
-        width: 210px;
-        position: fixed;
+        width: 170px;
+        position: absolute;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;

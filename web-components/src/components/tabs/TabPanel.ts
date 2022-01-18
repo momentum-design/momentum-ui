@@ -16,7 +16,7 @@ export namespace TabPanel {
   @customElementWithCheck("md-tab-panel")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) selected = false;
-    @property({ type: Boolean, reflect: true }) focusablePanel = true;
+    @property({ type: Boolean, reflect: true, attribute: "focusable-panel" }) focusablePanel = true;
 
     static get styles() {
       return [reset, styles];

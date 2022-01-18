@@ -12,6 +12,7 @@ import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
@@ -1020,7 +1021,7 @@ export namespace Tabs {
               )}
             </div>
           </md-menu-overlay>
-          ${this.showMoreActions 
+          ${this.showMoreActions
             ? html `<md-menu-overlay
                     custom-width="${MORE_ACTIONS_MENU_WIDTH}"
                     slot="settings"
@@ -1042,10 +1043,10 @@ export namespace Tabs {
                             name="icon-refresh_16"
                           ></md-icon><span class="reset-tab-order-span" slot="text">Reset Tab Order</span>
                           </md-button>
-                      </div>                      
+                      </div>        
                     </div>
                   </md-menu-overlay>`
-            : html ``
+                  : nothing
           }
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>

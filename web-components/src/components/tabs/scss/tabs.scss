@@ -81,7 +81,8 @@
       }
     }
   }
-  md-menu-overlay__more_actions_list {
+
+  .md-menu-overlay__more_actions_list {
     display: flex;
     max-height: 36px;
     max-width: 100%;
@@ -94,15 +95,9 @@
   }
 
   .md-menu-overlay__more_actions_list:hover {
-    background-color:#C7F6FF;
-    color: black;
+    background-color: var(--list-hover-background, $md-blue-10);
   }
-  // .md-menu-overlay__more_actions_list .more-actions-button {
-  //   &:hover {
-  //     background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
-  //     color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
-  //   }
-  // }
+
   md-menu-overlay::part(overlay) {
     top: -$tab-menu-manual-offset;
   }

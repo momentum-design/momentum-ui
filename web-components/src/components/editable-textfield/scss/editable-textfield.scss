@@ -95,7 +95,8 @@
     }
 
     &--textoverflow {
-      display: box;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
       overflow-y: hidden;
       text-overflow: ellipsis;
     }

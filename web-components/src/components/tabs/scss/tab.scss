@@ -12,6 +12,11 @@
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 
+:host([selected]) .more-actions-header-button {
+  border: none;
+  color: var(--tabs-default-text-color, #545454)
+}
+
 :host([vertical]) button {
   text-align: left !important;
 }
@@ -70,7 +75,7 @@ slot {
     }
 
     span {
-      display: inline-block;
+      display: block;
       max-width: $tab-span-max-width;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -102,6 +107,17 @@ md-icon {
     @include remove-focus;
     @include focus-boxshadow(rem-calc(1.5), var(--md-focus-border-color));
   }
+}
+
+.more-actions-header-button::part(button) {
+  background-color: rgba(0, 0, 0, 0);
+  &:hover {
+        background-color: var(--button-secondary-bg-color, #DEDEDE);
+  }
+}
+
+.more-actions-header-button {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 button {

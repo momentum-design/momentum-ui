@@ -1032,17 +1032,18 @@ export namespace Tabs {
                     custom-width="${MORE_ACTIONS_MENU_WIDTH}"
                     slot="settings"
                     size="small"
-                    style="display: flex; justify-content: center;height: 100%;"
+                    style="display: flex; justify-content: center;height: 100%; padding-top: 2px;"
                   >
-                    <button class="menu-trigger-button" slot="menu-trigger">
-                  <md-tooltip placement="top" message="${this.moreActionsLabel}">
+                  <md-tooltip placement="top" message="${this.moreActionsLabel}" slot="menu-trigger">
+                    <md-button circle type="button" class="menu-trigger-button more-actions-header-button">
                         <md-icon name="icon-more-adr_16"></md-icon>
-                  </md-tooltip>
-                    </button>
+                    </md-button>
+                    </md-tooltip>
+
                     
                     <div class="md-menu-overlay__more_actions_list">
                       <div>
-                        <md-button hasRemoveStyle  class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>  
+                        <md-button hasRemoveStyle class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>  
                         <md-icon
                         slot="icon"
                             aria-label="Reset Tab Order"

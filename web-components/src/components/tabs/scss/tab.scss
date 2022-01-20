@@ -58,7 +58,6 @@ slot {
   .tab-content {
     align-items: center;
     display: flex;
-    max-width: $tab-span-max-width;
 
     md-icon,
     img {
@@ -69,7 +68,10 @@ slot {
       height: 1rem;
       width: 1rem;
     }
+
     span {
+      display: inline-block;
+      max-width: $tab-span-max-width;
       overflow: hidden;
       text-overflow: ellipsis;
     }

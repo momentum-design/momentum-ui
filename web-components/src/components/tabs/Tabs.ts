@@ -33,7 +33,6 @@ const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
-const MAX_AUX_PANE_TAB_WIDTH = 200;
 const MORE_ACTIONS_MENU_WIDTH = "226px";
 
 export namespace Tabs {
@@ -51,7 +50,6 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
-    @property({ type: String, attribute: "max-tab-width" }) maxTabWidth = MAX_AUX_PANE_TAB_WIDTH;
     @property({ type: String, attribute: "more-actions-label" }) moreActionsLabel = "More Actions";
     @property({ type: Boolean, attribute: "show-more-actions" }) showMoreActions = false;
 
@@ -913,7 +911,12 @@ export namespace Tabs {
       }
     }
     private showTooltip(tabElement: Tab.ELEMENT) {
-      return tabElement.offsetWidth >= this.maxTabWidth;
+      // Show tooltip only if offset width of text span < scroll width
+      let tabEl: HTMLElement | null = tabElement && tabElement.querySelector('span.tab-header-content');
+      if (!tabEl) {
+        tabEl = tabElement.querySelector('span:last-child');
+      }
+      return (tabEl && tabEl.offsetWidth < tabEl.scrollWidth) || false;
     }
 
     private handleResetTabs() {
@@ -944,8 +947,6 @@ export namespace Tabs {
               this.tabsFilteredAsVisibleList,
               tab => nanoid(10),
               tab => html`
-                 <md-tooltip message="${tab?.textContent?.trim() || ''}" 
-              ?disabled=${!this.showTooltip(tab)}>
               <md-tab
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
@@ -956,10 +957,11 @@ export namespace Tabs {
                   aria-controls="${tab.id}"
                   .isCrossVisible=${true}
                   tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                  tab-text="${tab?.textContent?.trim() || ''}"
+                  ?show-tooltip=${this.showTooltip(tab)}
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
-                </md-tooltip>
               `
             )}
           </div>
@@ -1016,6 +1018,8 @@ export namespace Tabs {
                     aria-controls="${tab.id}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                    tab-text="${tab?.textContent?.trim() || ''}"
+                    ?show-tooltip=${this.showTooltip(tab)}
                   >
                     ${unsafeHTML(tab.innerHTML)}
                   </md-tab>

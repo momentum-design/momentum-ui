@@ -79,6 +79,12 @@
         padding-left: 16px;
         padding-right: 16px;
       }
+
+      span {
+        max-width: $tab-more-span-max-width;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      } 
     }
   }
 

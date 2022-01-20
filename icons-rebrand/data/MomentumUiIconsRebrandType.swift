@@ -1656,8 +1656,8 @@ import Foundation
     case screenshotDocRegular
     case screenshotLight
     case screenshotRegular
-    case searchBoldFilled
     case searchBold
+    case searchFilled
     case searchLight
     case searchRegular
     case secondaryArrowBold
@@ -3791,8 +3791,8 @@ import Foundation
         case .screenshotDocRegular: return "\u{f76d}"
         case .screenshotLight: return "\u{f76e}"
         case .screenshotRegular: return "\u{f76f}"
-        case .searchBoldFilled: return "\u{f770}"
-        case .searchBold: return "\u{f771}"
+        case .searchBold: return "\u{f770}"
+        case .searchFilled: return "\u{f771}"
         case .searchLight: return "\u{f772}"
         case .searchRegular: return "\u{f773}"
         case .secondaryArrowBold: return "\u{f774}"
@@ -5933,8 +5933,8 @@ import Foundation
         case .screenshotDocRegular: return "screenshot-doc-regular"
         case .screenshotLight: return "screenshot-light"
         case .screenshotRegular: return "screenshot-regular"
-        case .searchBoldFilled: return "search-bold-filled"
         case .searchBold: return "search-bold"
+        case .searchFilled: return "search-filled"
         case .searchLight: return "search-light"
         case .searchRegular: return "search-regular"
         case .secondaryArrowBold: return "secondary-arrow-bold"

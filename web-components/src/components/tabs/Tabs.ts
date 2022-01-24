@@ -1032,7 +1032,7 @@ export namespace Tabs {
                     custom-width="${MORE_ACTIONS_MENU_WIDTH}"
                     slot="settings"
                     size="small"
-                    style="display: flex; justify-content: center;height: 100%; padding-top: 2px;"
+                    class="more-actions-menu-overlay"
                   >
                   <md-tooltip placement="top" message="${this.moreActionsLabel}" slot="menu-trigger">
                     <md-button circle type="button" class="menu-trigger-button more-actions-header-button">

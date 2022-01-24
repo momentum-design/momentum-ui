@@ -32,6 +32,7 @@
   .md-menu-overlay__more {
     height: 100%;
     margin-left: auto;
+    margin-right: $more-menu-tab-margin;
     width: auto;
 
     &.md-menu-overlay__more--hidden {
@@ -90,14 +91,13 @@
 
   .md-menu-overlay__more_actions_list {
     display: flex;
-    max-height: 36px;
-    max-width: 100%;
-    padding: 6px 0 7px 16px;
+    max-height: $more-actions-list-max-height;
+    padding: $more-actions-list-padding;
     width: 100%;
   }
 
   .md-menu-overlay__more_actions_list .reset-tab-order-span {
-    font-size: 14px;
+    font-size: $tab-font-size;
   }
 
   .md-menu-overlay__more_actions_list:hover {
@@ -106,6 +106,14 @@
 
   md-menu-overlay::part(overlay) {
     top: -$tab-menu-manual-offset;
+  }
+
+  .more-actions-menu-overlay {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-right: $more-actions-margin;
+    padding-top: 2px;
   }
 }
 

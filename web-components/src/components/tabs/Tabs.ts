@@ -27,7 +27,8 @@ import { TabPanel } from "./TabPanel";
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
 const MORE_MENU_HEIGHT = "288px"; // Designed height
-
+const TAB_MIN_WIDTH = 110;
+const TAB_MAX_WIDTH = 252;
 export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
 const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
@@ -46,7 +47,7 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More";
+    @property({ type: String }) overlowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
@@ -149,12 +150,21 @@ export namespace Tabs {
 
       tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
     }
+    private static getHorizontalTabWidth(width: number) {
+      if (width < TAB_MIN_WIDTH) {
+        return TAB_MIN_WIDTH;
+      }
+      else if (width > TAB_MAX_WIDTH) {
+        return TAB_MAX_WIDTH;
+      }
+      return width;
+    }
 
     // This operation may affect render performance when using frequently. Use careful!
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
         ? this.tabs.map((tab, idx) => {
-            return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
+            return ELEMENT.getHorizontalTabWidth(tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth);
           })
         : this.tabs.map((tab, idx) => {
             tab.setAttribute("measuringrealwidth", "");
@@ -1040,17 +1050,17 @@ export namespace Tabs {
                     </md-button>
                     </md-tooltip>
 
-                    
+
                     <div class="md-menu-overlay__more_actions_list">
                       <div>
-                        <md-button hasRemoveStyle class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>  
+                        <md-button hasRemoveStyle class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>
                         <md-icon
                         slot="icon"
                             aria-label="Reset Tab Order"
                             name="icon-refresh_16"
                           ></md-icon><span class="reset-tab-order-span" slot="text">Reset Tab Order</span>
                           </md-button>
-                      </div>        
+                      </div>
                     </div>
                   </md-menu-overlay>`
                   : nothing

@@ -1685,8 +1685,8 @@ $modules: () !default;
 @mixin icon-screenshot-doc-regular() { content: char-from-code("f76d"); }
 @mixin icon-screenshot-light() { content: char-from-code("f76e"); }
 @mixin icon-screenshot-regular() { content: char-from-code("f76f"); }
-@mixin icon-search-bold-filled() { content: char-from-code("f770"); }
-@mixin icon-search-bold() { content: char-from-code("f771"); }
+@mixin icon-search-bold() { content: char-from-code("f770"); }
+@mixin icon-search-filled() { content: char-from-code("f771"); }
 @mixin icon-search-light() { content: char-from-code("f772"); }
 @mixin icon-search-regular() { content: char-from-code("f773"); }
 @mixin icon-secondary-arrow-bold() { content: char-from-code("f774"); }

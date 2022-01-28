@@ -368,6 +368,7 @@ export namespace Input {
               id=${this.htmlId}
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly}
+              maxlength=${ifDefined(this.maxLength)}
             ></textarea>
           `
         : html`
@@ -513,7 +514,7 @@ export namespace Input {
 
     render() {
       return html`
-        <div class="md-input-container ${classMap(this.inputClassMap)}">
+        <div class="md-input-container ${classMap(this.inputClassMap)}" part="md-input-container">
           ${this.labelTemplate()}
           <div class="md-input__wrapper ${classMap(this.inputWrapperClassMap)}">
             ${this.inputLeftTemplate()} ${this.inputTemplate()} ${this.inputRightTemplate()}

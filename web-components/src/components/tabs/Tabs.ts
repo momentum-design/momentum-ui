@@ -12,6 +12,7 @@ import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
@@ -32,6 +33,7 @@ const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
+const MORE_ACTIONS_MENU_WIDTH = "226px";
 export namespace Tabs {
   type TabViewportData = {
     isTabInViewportHidden: boolean;
@@ -43,10 +45,13 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More";
+    @property({ type: String }) overlowLabel = "More Tabs";
+    @property({ type: String }) resetTabOrderLabel = "Reset Tab Order";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
+    @property({ type: String, attribute: "more-actions-label" }) moreActionsLabel = "More Actions";
+    @property({ type: Boolean, attribute: "show-more-actions" }) showMoreActions = false;
 
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
@@ -906,6 +911,9 @@ export namespace Tabs {
       }
     }
 
+    private handleResetTabs() {
+    }
+
     render() {
       return html`
         <div
@@ -1008,6 +1016,32 @@ export namespace Tabs {
               )}
             </div>
           </md-menu-overlay>
+          ${this.showMoreActions
+            ? html `<md-menu-overlay
+                    custom-width="${MORE_ACTIONS_MENU_WIDTH}"
+                    slot="settings"
+                    size="small"
+                    class="more-actions-menu-overlay"
+                  >
+                  <md-tooltip placement="top" message="${this.moreActionsLabel}" slot="menu-trigger">
+                    <md-button circle type="button" class="menu-trigger-button more-actions-header-button">
+                        <md-icon name="icon-more-adr_16"></md-icon>
+                    </md-button>
+                    </md-tooltip>
+                    <div class="md-menu-overlay__more_actions_list">
+                      <div>
+                        <md-button hasRemoveStyle class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>
+                        <md-icon
+                        slot="icon"
+                            aria-label=${this.resetTabOrderLabel}
+                            name="icon-refresh_16"
+                          ></md-icon><span class="reset-tab-order-span" slot="text">${this.resetTabOrderLabel}</span>
+                          </md-button>
+                      </div>
+                    </div>
+                  </md-menu-overlay>`
+                  : nothing
+          }
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

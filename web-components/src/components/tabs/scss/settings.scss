@@ -7,6 +7,7 @@ $tab-span-height: rem-calc(27);
 $tab-none-bg: transparent;
 $tab-font-size: $font-size-base;
 $tab-button-padding: 0.3rem 1.2rem;
+$tab-header-padding: 0.3rem 1rem 0.3rem 1rem;
 $tab-slot-padding: 0 rem-calc(4);
 $tab-list-border: 1px solid var(--tabs-default-border-color, $lm-tabs-default-border-color-light);
 $tab-active-border: 2px solid var(--tabs-default-active-border, $lm-tabs-default-active-border-light);
@@ -16,3 +17,7 @@ $tab-focus-border: var(--tabs-default-focus-border, $lm-tabs-default-focus-borde
 $tab-focus-bg: var(--tabs-default-bg-color, $lm-tabs-default-bg-color-light);
 $tab-more-list-bg: var(--tabs-default-bg-color, $lm-tabs-default-bg-color-light);
 $tab-menu-manual-offset: rem-calc(13);
+$more-menu-tab-margin: rem-calc(11);
+$more-actions-margin: rem-calc(17);
+$more-actions-list-padding: 6px 0 7px 16px;
+$more-actions-list-max-height: rem-calc(36);

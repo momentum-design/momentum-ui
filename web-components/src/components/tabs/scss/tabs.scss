@@ -32,6 +32,7 @@
   .md-menu-overlay__more {
     height: 100%;
     margin-left: auto;
+    margin-right: $more-menu-tab-margin;
     width: auto;
 
     &.md-menu-overlay__more--hidden {
@@ -82,8 +83,31 @@
     }
   }
 
+  .md-menu-overlay__more_actions_list {
+    display: flex;
+    max-height: $more-actions-list-max-height;
+    padding: $more-actions-list-padding;
+    width: 100%;
+  }
+
+  .md-menu-overlay__more_actions_list .reset-tab-order-span {
+    font-size: $tab-font-size;
+  }
+
+  .md-menu-overlay__more_actions_list:hover {
+    background-color: var(--list-hover-background, $md-blue-10);
+  }
+
   md-menu-overlay::part(overlay) {
     top: -$tab-menu-manual-offset;
+  }
+
+  .more-actions-menu-overlay {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-right: $more-actions-margin;
   }
 }
 

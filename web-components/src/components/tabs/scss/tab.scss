@@ -89,6 +89,11 @@ slot {
   justify-content: space-between;
 }
 
+.hiddenTab{
+  width: 100%;
+  text-align: left;
+}
+
 md-icon {
   &:focus {
     border-radius: calc(#{$tab-focus-border-radius} / 2);
@@ -111,6 +116,14 @@ button {
   text-decoration: none;
   white-space: nowrap;
   width: 100%;
+  max-width: 252px;
+  min-width: 112px;
+
+  .text-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
   &:disabled {
     background: $tab-none-bg;

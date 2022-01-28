@@ -74,7 +74,8 @@
     padding-top: calc(#{$tab-base-indent} / 2);
     width: 100%;
 
-    md-tab {
+    md-tab,
+    md-tab-advance{
       &::part(tab) {
         text-align: left;
         padding-left: 16px;
@@ -94,7 +95,9 @@
   padding: $tab-base-indent;
 }
 
-md-tab {
+md-tab,
+md-tab-advance
+{
   md-icon,
   img {
     margin-right: 0.5rem;
@@ -102,23 +105,6 @@ md-tab {
     &.more-icon{
       margin-right: 0;
       margin-left: 0.5rem;
-    }
-  }
-}
-
-md-menu-overlay {
-  md-tab {
-    md-tooltip {
-      width: 170px;
-      position: absolute;
-
-      .text-ellipsis {
-        width: 170px;
-        position: absolute;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-      }
     }
   }
 }

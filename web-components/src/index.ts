@@ -66,6 +66,7 @@ export { TableAdvanced } from "./components/table-advanced/TableAdvanced";
 export { Tab } from "./components/tabs/Tab";
 export { TabPanel } from "./components/tabs/TabPanel";
 export { Tabs } from "./components/tabs/Tabs";
+export { TabAdvance } from "./components/tabs/TabAdvance";
 export { TaskItem } from "./components/taskitem/TaskItem";
 export { Theme } from "./components/theme/Theme";
 export { TimePicker } from "./components/timepicker/TimePicker";

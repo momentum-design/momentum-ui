@@ -8,20 +8,20 @@
 
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
-import { Key } from "@/constants";
-import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
+import {Key} from "@/constants";
+import {customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin} from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
-import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
+import {html, internalProperty, LitElement, property, PropertyValues, query, queryAll} from "lit-element";
+import {classMap} from "lit-html/directives/class-map";
+import {repeat} from "lit-html/directives/repeat";
+import {styleMap} from "lit-html/directives/style-map";
+import {unsafeHTML} from "lit-html/directives/unsafe-html";
+import {nanoid} from "nanoid";
 import Sortable from "sortablejs";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import {MenuOverlay} from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-import { Tab, TabClickEvent, TAB_CROSS_WIDTH } from "./Tab";
-import { TabPanel } from "./TabPanel";
+import {Tab, TAB_CROSS_WIDTH, TabClickEvent} from "./Tab";
+import {TabPanel} from "./TabPanel";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -40,24 +40,25 @@ export namespace Tabs {
   type TabsViewportDataList = TabViewportData[];
 
   type TabId = Element["id"];
+
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
-    @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More";
-    @property({ type: Boolean, attribute: "draggable" }) draggable = false;
-    @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
-    @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
+    @property({type: Boolean}) justified = false;
+    @property({type: String}) overlowLabel = "More";
+    @property({type: Boolean, attribute: "draggable"}) draggable = false;
+    @property({type: String}) direction: "horizontal" | "vertical" = "horizontal";
+    @property({type: Number, attribute: "more-items-scroll-limit"}) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
-    @property({ type: Number }) delay = 0;
-    @property({ type: Number }) animation = 100;
-    @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
-    @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
-    @property({ type: Boolean, attribute: "force-fallback" }) forceFallback = false;
-    @property({ type: String, attribute: "fallback-class" }) fallbackClass = "";
+    @property({type: Number}) delay = 0;
+    @property({type: Number}) animation = 100;
+    @property({type: String, attribute: "ghost-class"}) ghostClass = "";
+    @property({type: String, attribute: "chosen-class"}) chosenClass = "";
+    @property({type: Boolean, attribute: "force-fallback"}) forceFallback = false;
+    @property({type: String, attribute: "fallback-class"}) fallbackClass = "";
 
     // tabsId and persistSelection attributes are used to persist the selection of tab on remount of md-tabs component
-    @property({ type: String, attribute: "tabs-id" }) tabsId = "";
-    @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
+    @property({type: String, attribute: "tabs-id"}) tabsId = "";
+    @property({type: Boolean, attribute: "persist-selection"}) persistSelection = false;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -89,7 +90,6 @@ export namespace Tabs {
         group: "shared",
         animation: 10,
         swapThreshold: 1,
-        draggable: "md-tab",
         direction: this.direction,
         forceFallback: this.forceFallback,
         fallbackClass: this.fallbackClass,
@@ -149,14 +149,14 @@ export namespace Tabs {
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
         ? this.tabs.map((tab, idx) => {
-            return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
-          })
+          return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
+        })
         : this.tabs.map((tab, idx) => {
-            tab.setAttribute("measuringrealwidth", "");
-            const offsetWidth = tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
-            tab.removeAttribute("measuringrealwidth");
-            return offsetWidth;
-          });
+          tab.setAttribute("measuringrealwidth", "");
+          const offsetWidth = tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
+          tab.removeAttribute("measuringrealwidth");
+          return offsetWidth;
+        });
     }
 
     private measureHiddenTabsCopiesOffsetHeight() {
@@ -176,7 +176,7 @@ export namespace Tabs {
           if (tab.children?.length && tab.children[0]?.children?.length === 0) {
             const slotHeaderNode = tab
               ?.querySelector("slot")
-              ?.assignedNodes({ flatten: true })[0]
+              ?.assignedNodes({flatten: true})[0]
               .cloneNode(true);
             if (slotHeaderNode) {
               (slotHeaderNode as HTMLElement).classList.add("tab-content");
@@ -220,7 +220,7 @@ export namespace Tabs {
               const isTabInViewportHidden = isTabsFitInViewport
                 ? false
                 : tabsOffsetWidthSum + (idx < tabsCount - 1 ? this.moreTabMenuOffsetWidth : 0) >
-                  tabsListViewportOffsetWidth;
+                tabsListViewportOffsetWidth;
 
               newTabsViewportList.push({
                 isTabInViewportHidden: isTabInViewportHidden,
@@ -275,7 +275,7 @@ export namespace Tabs {
     }
 
     private async linkPanelsAndTabs() {
-      const { tabs, panels } = this;
+      const {tabs, panels} = this;
 
       if (tabs.length === 0 || panels.length === 0) {
         console.warn(`The tabs or panels count should't be equal zero.`);
@@ -431,7 +431,7 @@ export namespace Tabs {
     }
 
     handleTabClick(event: CustomEvent<TabClickEvent>) {
-      const { id } = event.detail;
+      const {id} = event.detail;
       this.handleNewSelectedTab(id);
     }
 
@@ -454,7 +454,7 @@ export namespace Tabs {
     }
 
     handleTabCrossClick(event: CustomEvent<TabClickEvent>) {
-      const { id } = event.detail;
+      const {id} = event.detail;
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
       if (tab && !tab.disabled && tab.closable === "auto") {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
@@ -483,7 +483,7 @@ export namespace Tabs {
       while (
         selectedTabPanelIndex < this.tabsFilteredAsVisibleList.length &&
         this.tabsFilteredAsVisibleList[selectedTabPanelIndex]?.disabled
-      ) {
+        ) {
         selectedTabPanelIndex++;
       }
       if (
@@ -510,7 +510,7 @@ export namespace Tabs {
 
     private updateSelectedTab(newSelectedIndex: number) {
 
-      const { tabs, panels } = this;
+      const {tabs, panels} = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
 
       if (tabs && panels) {
@@ -615,7 +615,7 @@ export namespace Tabs {
       this.dispatchKeydownEvent(event, id);
 
       const key = event.code;
-      const { shiftKey } = event;
+      const {shiftKey} = event;
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -816,6 +816,7 @@ export namespace Tabs {
             : this.selected;
       }
     }
+
     private selectTabFromStorage() {
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
@@ -931,21 +932,44 @@ export namespace Tabs {
             ${repeat(
               this.tabsFilteredAsVisibleList,
               tab => nanoid(10),
-              tab => html`
-                <md-tab
-                  .closable="${tab.closable}"
-                  .disabled="${tab.disabled}"
-                  .selected="${tab.selected}"
-                  name="${tab.name}"
-                  id="${this.getCopyTabId(tab)}"
-                  aria-label=${tab.ariaLabel}
-                  aria-controls="${tab.id}"
-                  .isCrossVisible=${true}
-                  tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
-                >
-                  ${unsafeHTML(tab.innerHTML)}
-                </md-tab>
-              `
+              tab => {
+                if (tab.localName === "md-tab-advance") {
+                  return html`
+                    <md-tab-advance
+                      .closable="${tab.closable}"
+                      is-hidden="${false}"
+                      .disabled="${tab.disabled}"
+                      .selected="${tab.selected}"
+                      .text="${tab.getAttribute('text')}"
+                      .icon="${tab.getAttribute('icon')}"
+                      .width="${tab.offsetWidth}"
+                      name="${tab.name}"
+                      id="${this.getCopyTabId(tab)}"
+                      aria-label=${tab.ariaLabel}
+                      aria-controls="${tab.id}"
+                      .isCrossVisible=${true}
+                      tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                    >
+                    </md-tab-advance>
+                  `
+                } else {
+                  return html`
+                    <md-tab
+                      .closable="${tab.closable}"
+                      .disabled="${tab.disabled}"
+                      .selected="${tab.selected}"
+                      name="${tab.name}"
+                      id="${this.getCopyTabId(tab)}"
+                      aria-label=${tab.ariaLabel}
+                      aria-controls="${tab.id}"
+                      .isCrossVisible=${true}
+                      tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                    >
+                      ${unsafeHTML(tab.innerHTML)}
+                    </md-tab>
+                  `
+                }
+              }
             )}
           </div>
 
@@ -980,31 +1004,54 @@ export namespace Tabs {
               style="${styleMap(
                 this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight
                   ? {
-                      "overflow-y": "auto",
-                      height: this.moreTabMenuMaxHeight,
-                      "max-height": this.moreTabMenuMaxHeight
-                    }
+                    "overflow-y": "auto",
+                    height: this.moreTabMenuMaxHeight,
+                    "max-height": this.moreTabMenuMaxHeight
+                  }
                   : {}
               )}"
             >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
                 tab => nanoid(10),
-                tab => html`
-                  <md-tab
-                    slot="draggable-item"
-                    .disabled="${tab.disabled}"
-                    .selected="${tab.selected}"
-                    name="${tab.name}"
-                    id="${this.getCopyTabId(tab)}"
-                    aria-label=${tab.ariaLabel}
-                    aria-controls="${tab.id}"
-                    @click="${() => this.handleOverlayClose()}"
-                    tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                  >
-                    ${unsafeHTML(tab.innerHTML)}
-                  </md-tab>
-                `
+                tab => {
+                  if (tab.localName === "md-tab-advance") {
+                    return html`
+                      <md-tab-advance
+                        slot="draggable-item"
+                        is-hidden="${true}"
+                        .disabled="${tab.disabled}"
+                        .selected="${tab.selected}"
+                        .text="${tab.getAttribute('text')}"
+                        .icon="${tab.getAttribute('icon')}"
+                        .width="${tab.offsetWidth}"
+                        name="${tab.name}"
+                        id="${this.getCopyTabId(tab)}"
+                        aria-label=${tab.ariaLabel}
+                        aria-controls="${tab.id}"
+                        @click="${() => this.handleOverlayClose()}"
+                        tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                      >
+                      </md-tab-advance>
+                    `
+                  } else {
+                    return html`
+                      <md-tab
+                        slot="draggable-item"
+                        .disabled="${tab.disabled}"
+                        .selected="${tab.selected}"
+                        name="${tab.name}"
+                        id="${this.getCopyTabId(tab)}"
+                        aria-label=${tab.ariaLabel}
+                        aria-controls="${tab.id}"
+                        @click="${() => this.handleOverlayClose()}"
+                        tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                      >
+                        ${unsafeHTML(tab.innerHTML)}
+                      </md-tab>
+                    `
+                  }
+                }
               )}
             </div>
           </md-menu-overlay>

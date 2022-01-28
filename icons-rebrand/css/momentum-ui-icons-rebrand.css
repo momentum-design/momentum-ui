@@ -1,6 +1,6 @@
 @font-face {
   font-family: "momentum-ui-icons-rebrand";
-  src: url("../fonts/momentum-ui-icons-rebrand.woff2?259c649324f7a613422874590b1fd969") format("woff2"), url("../fonts/momentum-ui-icons-rebrand.woff?bcddce9407866997c6e618e8d2e410f7") format("woff");
+  src: url("../fonts/momentum-ui-icons-rebrand.woff2?fcc9fe509366bd81a97460069f98d997") format("woff2"), url("../fonts/momentum-ui-icons-rebrand.woff?94514847d03372aa94efebe176dd16c6") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -6858,11 +6858,11 @@
   content: "\f76f";
 }
 
-.icon-search-bold-filled::before {
+.icon-search-bold::before {
   content: "\f770";
 }
 
-.icon-search-bold::before {
+.icon-search-filled::before {
   content: "\f771";
 }
 

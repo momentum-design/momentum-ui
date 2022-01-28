@@ -52,7 +52,7 @@
 
     &--disabled {
       background-color: transparent;
-      color: var(--md-primary-text-color, $md-gray-100);
+      color: var(--md-secondary-text-color, $md-gray-70);
       cursor: default;
 
       &:hover {
@@ -95,7 +95,8 @@
     }
 
     &--textoverflow {
-      display: box;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
       overflow-y: hidden;
       text-overflow: ellipsis;
     }

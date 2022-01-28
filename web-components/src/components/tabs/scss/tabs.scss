@@ -21,6 +21,7 @@
 }
 
 .md-tab__list {
+  border-bottom: $tab-list-border;
   display: inline-flex;
   height: $tab-height;
   min-height: $tab-height;
@@ -121,6 +122,11 @@ md-tab {
   md-icon,
   img {
     margin-right: 0.5rem;
+
+    &.more-icon{
+      margin-right: 0;
+      margin-left: 0.5rem;
+    }
   }
 }
 

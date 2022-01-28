@@ -971,7 +971,7 @@ export namespace Tabs {
               })}"
             >
               <span>${this.overlowLabel}</span>
-              <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}"></md-icon>
+              <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
             </md-tab>
             <div
               id="tabs-more-list"

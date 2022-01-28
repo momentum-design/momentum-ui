@@ -21,6 +21,7 @@
 }
 
 .md-tab__list {
+  border-bottom: $tab-list-border;
   display: inline-flex;
   height: $tab-height;
   min-height: $tab-height;

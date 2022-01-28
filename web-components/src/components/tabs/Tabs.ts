@@ -923,7 +923,15 @@ export namespace Tabs {
     private showTooltip(tabElement: Tab.ELEMENT) {
       // Show tooltip only if offset width of text span < scroll width
       let tabEl: HTMLElement | null = tabElement && tabElement.querySelector('span.tab-header-content');
-      if (!tabEl) {
+      if (tabEl) {
+        tabEl = tabEl.querySelector('span:last-child');
+        if (tabEl) {
+        tabEl.style.maxWidth = "187px";
+        tabEl.style.overflow = "hidden";
+        tabEl.style.textOverflow = "ellipsis";
+        tabEl.style.display = "block";
+      }
+    } else {
         tabEl = tabElement.querySelector('span:last-child');
       }
       return (tabEl && tabEl.offsetWidth < tabEl.scrollWidth) || false;

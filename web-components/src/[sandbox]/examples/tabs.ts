@@ -288,17 +288,17 @@ export const tabsTemplate = html`
         <md-tab-advance slot="tab"
                         name="History"
                         icon="recents_16"
-                        text="Contact History 1 Contact History 1"
-                        label="History 1">
+                        tooltip="Contact History 1 Contact History 1"
+                        label="Contact History 1 Contact History 1">
         </md-tab-advance>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History" 1</span>
         </md-tab-panel>
         <md-tab-advance slot="tab"
                         name="History"
-                        icon="recents_16"
-                        closable="auto"
-                        text="Contact test"
+                        img="${svgWxm}"
+                        img-size="16"
+                        tooltip="Contact test"
                         label="History 4">
         </md-tab-advance>
         <md-tab-panel slot="panel">
@@ -307,8 +307,7 @@ export const tabsTemplate = html`
         <md-tab-advance slot="tab"
                         name="History"
                         icon="recents_16"
-                        closable="auto"
-                        text="Contact History 2 Contact History 2"
+                        tooltip="Contact History 2 Contact History 2"
                         label="History 2">
         </md-tab-advance>
         <md-tab-panel slot="panel">
@@ -317,8 +316,7 @@ export const tabsTemplate = html`
         <md-tab-advance slot="tab"
                         name="History"
                         icon="recents_16"
-                        closable="auto"
-                        text="Contact History 3 Contact History 3"
+                        tooltip="Contact History 3 Contact History 3"
                         label="History 3">
         </md-tab-advance>
         <md-tab-panel slot="panel">

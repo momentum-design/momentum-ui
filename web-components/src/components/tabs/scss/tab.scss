@@ -110,7 +110,7 @@ button {
   display: block;
   height: 100%;
   min-height: $tab-overflow-button-height;
-  padding: $tab-button-padding;
+  padding: 2px 16px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -123,6 +123,7 @@ button {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding: 0;
   }
 
   &:disabled {

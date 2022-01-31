@@ -35,8 +35,11 @@ export namespace TabAdvance {
     @property({type: String, attribute: "closable"}) closable: "auto" | "custom" | "" = "";
     @property({type: String, attribute: "name"}) name = "";
     @property({type: Boolean, attribute: "cross-visible"}) isCrossVisible = false;
-    @property({type: String, attribute: "text"}) text = "";
+    @property({type: String, attribute: "tooltip"}) tooltip = "";
+    @property({type: String, attribute: "label"}) label = "";
     @property({type: String, attribute: "icon"}) icon = "";
+    @property({type: String, attribute: "img"}) img = "";
+    @property({type: String, attribute: "img-size"}) imgSize = "16";
     @property({type: Number, attribute: "width"}) width = 0;
     @property({type: Boolean, attribute: "is-hidden"}) isHidden = false;
 
@@ -176,7 +179,7 @@ export namespace TabAdvance {
       let maxWidth = this.tabMaxWidth;
       if (this.isHidden) {
         maxWidth = 226;
-        hiddenPadding = 10;
+        hiddenPadding = 20;
       }
       if (this.icon && this.width > maxWidth) {
         iconWidth = 16 + 8; // 16px icon + 8px padding
@@ -191,7 +194,7 @@ export namespace TabAdvance {
       return html`
         <md-tooltip placement="top"
                     ?disabled=${this.width < (this.isHidden ? 226 : 252)}
-                    message="${this.text}">
+                    message="${this.tooltip}">
           <button
             type="button"
             role="button"
@@ -207,8 +210,10 @@ export namespace TabAdvance {
             })}"
             @click=${(e: MouseEvent) => this.handleClick(e)}
           >
-            <md-icon name="${this.icon}"></md-icon>
-            <span class="text-ellipsis" style="width: ${this.getSpanWidth()}px">${this.text}</span>
+            ${this.icon && html`<md-icon style="margin-right: 0.5rem" name="${this.icon}"></md-icon>`}
+            ${this.img && html`<span style="height: ${this.imgSize}px; width: ${this.imgSize}px; padding: 0; margin-right: 0.5rem"><img src="${this.img}"/></span>`}
+
+            <span class="text-ellipsis" style="width: ${this.getSpanWidth()}px">${this.label}</span>
             ${this.isCrossVisible && this.closable
               ? html`
                 <div

@@ -183,7 +183,9 @@ export namespace Tab {
                 <div
                   ?disabled=${this.disabled}
                   tabindex="-1"
-                  class="tab-action-button"
+                  class="tab-acti
+
+                  on-button"
                   @click=${(e: MouseEvent) => this.handleCrossClick(e)}
                   @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
                 >

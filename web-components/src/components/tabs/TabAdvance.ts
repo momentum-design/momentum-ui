@@ -42,6 +42,8 @@ export namespace TabAdvance {
     @property({type: String, attribute: "img-size"}) imgSize = "16";
     @property({type: Number, attribute: "width"}) width = 0;
     @property({type: Boolean, attribute: "is-hidden"}) isHidden = false;
+    @property({type: String, attribute: "icon-style"}) iconStyle = "";
+    @property({type: String, attribute: "label-style"}) labelStyle = "";
 
     private _disabled = false;
     private tabMaxWidth = this.isHidden ? 226 : 252;
@@ -179,10 +181,13 @@ export namespace TabAdvance {
       let maxWidth = this.tabMaxWidth;
       if (this.isHidden) {
         maxWidth = 226;
-        hiddenPadding = 20;
+        hiddenPadding = 30;
       }
       if (this.icon && this.width > maxWidth) {
         iconWidth = 16 + 8; // 16px icon + 8px padding
+      }
+      if (this.img && this.width > maxWidth) {
+        iconWidth = Number(this.imgSize) + 8; // 16px icon + 8px padding
       }
       if (this.closable && this.width > maxWidth) {
         closeIconWidth = 14 + 8;  // 14px icon + 8px padding
@@ -194,7 +199,7 @@ export namespace TabAdvance {
       return html`
         <md-tooltip placement="top"
                     ?disabled=${this.width < (this.isHidden ? 226 : 252)}
-                    message="${this.tooltip}">
+                    message="${this.tooltip ? this.tooltip : this.label}">
           <button
             type="button"
             role="button"
@@ -210,10 +215,14 @@ export namespace TabAdvance {
             })}"
             @click=${(e: MouseEvent) => this.handleClick(e)}
           >
-            ${this.icon && html`<md-icon style="margin-right: 0.5rem" name="${this.icon}"></md-icon>`}
-            ${this.img && html`<span style="height: ${this.imgSize}px; width: ${this.imgSize}px; padding: 0; margin-right: 0.5rem"><img src="${this.img}"/></span>`}
+            ${this.icon && html`
+              <md-icon style="margin-right: 0.5rem; ${this.iconStyle}" name="${this.icon}"></md-icon>`}
+            ${this.img && html`<span
+              style="height: ${this.imgSize}px; width: ${this.imgSize}px; padding: 0; margin-right: 0.5rem"><img
+              src="${this.img}"/></span>`}
 
-            <span class="text-ellipsis" style="width: ${this.getSpanWidth()}px">${this.label}</span>
+            ${this.label && html`<span class="text-ellipsis"
+                                       style="width: ${this.getSpanWidth()}px; ${this.labelStyle}">${this.label}</span>`}
             ${this.isCrossVisible && this.closable
               ? html`
                 <div

@@ -288,7 +288,9 @@ export const tabsTemplate = html`
         <md-tab-advance slot="tab"
                         name="History"
                         icon="recents_16"
-                        tooltip="Contact History 1 Contact History 1"
+                        icon-style="color: red;"
+                        label-style="color: red;"
+                        tooltip="Contact History 2 Contact History 2"
                         label="Contact History 1 Contact History 1">
         </md-tab-advance>
         <md-tab-panel slot="panel">
@@ -299,7 +301,7 @@ export const tabsTemplate = html`
                         img="${svgWxm}"
                         img-size="16"
                         tooltip="Contact test"
-                        label="History 4">
+                        label="History 4 1 Contact History 1 222">
         </md-tab-advance>
         <md-tab-panel slot="panel">
           <span>Content for test</span>
@@ -307,8 +309,10 @@ export const tabsTemplate = html`
         <md-tab-advance slot="tab"
                         name="History"
                         icon="recents_16"
+                        icon-style="color: blue;"
+                        label-style="color: blue;"
                         tooltip="Contact History 2 Contact History 2"
-                        label="History 2">
+                        label="Contact History 2 Contact History 2">
         </md-tab-advance>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History" 2</span>
@@ -325,7 +329,6 @@ export const tabsTemplate = html`
 
         <md-tab slot="tab"
                 name="History"
-                closable="auto"
                 label="History 5">
           <md-icon name="recents_16"></md-icon>
           <span>Contact History 4</span>
@@ -334,7 +337,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History" 4</span>
         </md-tab-panel>
         <md-tab slot="tab" name="WxM" label="WxM">
-          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px; padding-right: 8px"><img src="${svgWxm}"/></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">

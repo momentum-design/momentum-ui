@@ -431,4 +431,18 @@ describe("Tabs", () => {
     expect(element).not.toBeNull();
   });
 
+  test("should show more actions dropdown along with tabs", async () => {
+    const element: any = await fixture(
+      html`
+        <div style="width: 300px;max-width: 300px;">
+          <md-tabs draggable persist-selection ?show-more-actions=${true}>
+            <md-tab name="History" slot="tab" disabled>
+              <span>Contact History</span>
+            </md-tab>
+          </md-tabs>
+        </div>
+      `
+    );
+    expect(element).not.toBeNull();
+  });
 });

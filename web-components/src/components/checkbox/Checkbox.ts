@@ -151,7 +151,7 @@ export namespace Checkbox {
         <input
           class="checkbox-input"
           type="checkbox"
-          part="checkbox"
+          part="checkbox-input"
           ?checked=${this.checked}
           ?disabled=${this.disabled}
           ?autofocus=${this.autofocus}

@@ -68,6 +68,14 @@ slot {
       height: 1rem;
       width: 1rem;
     }
+    md-tooltip {
+      .text-ellipsis {
+        display: flow-root;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
   }
 }
 
@@ -99,6 +107,23 @@ md-icon {
     border-radius: calc(#{$tab-focus-border-radius} / 2);
     @include remove-focus;
     @include focus-boxshadow(rem-calc(1.5), var(--md-focus-border-color));
+  }
+}
+
+md-menu-overlay {
+  md-tab {
+    md-tooltip {
+      width: 170px;
+      position: absolute;
+
+      .text-ellipsis {
+        width: 170px;
+        position: absolute;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
   }
 }
 

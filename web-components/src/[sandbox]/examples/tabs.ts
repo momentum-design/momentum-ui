@@ -349,7 +349,7 @@ export const tabsTemplate = html`
     <br />
     <h3>md-tabs draggable tabs without closable property</h3>
     <div>
-      <md-tabs selected="2" justified draggable>
+      <md-tabs selected="2" justified draggable show-more-actions=${true}>
         <md-tab slot="tab" name="History" label="History">
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>

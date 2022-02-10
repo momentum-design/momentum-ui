@@ -35,6 +35,8 @@ export namespace Tab {
     @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
+    @property({ type: String, attribute: "tab-text" }) tabText = "";
+    @property({ type: Boolean, attribute: "show-tooltip", reflect: true }) showTooltip = false;
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -163,6 +165,7 @@ export namespace Tab {
 
     render() {
       return html`
+      <md-tooltip message="${this.tabText}" ?disabled=${!this.showTooltip}>
         <button
           type="button"
           role="button"
@@ -192,6 +195,7 @@ export namespace Tab {
               `
             : ""}
         </button>
+        </md-tooltip>
       `;
     }
   }

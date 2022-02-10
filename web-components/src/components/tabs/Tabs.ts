@@ -12,6 +12,7 @@ import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
@@ -26,12 +27,15 @@ import { TabPanel } from "./TabPanel";
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
 const MORE_MENU_HEIGHT = "288px"; // Designed height
-
+const TAB_MIN_WIDTH = 110;
+const TAB_MAX_WIDTH = 252;
 export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
 const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
+const MORE_ACTIONS_MENU_WIDTH = "226px";
+
 export namespace Tabs {
   type TabViewportData = {
     isTabInViewportHidden: boolean;
@@ -43,10 +47,12 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More";
+    @property({ type: String }) overlowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
+    @property({ type: String, attribute: "more-actions-label" }) moreActionsLabel = "More Actions";
+    @property({ type: Boolean, attribute: "show-more-actions" }) showMoreActions = false;
 
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
@@ -144,12 +150,21 @@ export namespace Tabs {
 
       tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
     }
+    private static getHorizontalTabWidth(width: number) {
+      if (width < TAB_MIN_WIDTH) {
+        return TAB_MIN_WIDTH;
+      }
+      else if (width > TAB_MAX_WIDTH) {
+        return TAB_MAX_WIDTH;
+      }
+      return width;
+    }
 
     // This operation may affect render performance when using frequently. Use careful!
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
         ? this.tabs.map((tab, idx) => {
-            return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
+            return ELEMENT.getHorizontalTabWidth(tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth);
           })
         : this.tabs.map((tab, idx) => {
             tab.setAttribute("measuringrealwidth", "");
@@ -905,7 +920,25 @@ export namespace Tabs {
         this.selectTabFromStorage();
       }
     }
+    private showTooltip(tabElement: Tab.ELEMENT) {
+      // Show tooltip only if offset width of text span < scroll width
+      let tabEl: HTMLElement | null = tabElement && tabElement.querySelector('span.tab-header-content');
+      if (tabEl) {
+        tabEl = tabEl.querySelector('span:last-child');
+        if (tabEl) {
+        tabEl.style.maxWidth = "187px";
+        tabEl.style.overflow = "hidden";
+        tabEl.style.textOverflow = "ellipsis";
+        tabEl.style.display = "block";
+      }
+    } else {
+        tabEl = tabElement.querySelector('span:last-child');
+      }
+      return (tabEl && tabEl.offsetWidth < tabEl.scrollWidth) || false;
+    }
 
+    private handleResetTabs() {
+    }
     render() {
       return html`
         <div
@@ -932,7 +965,7 @@ export namespace Tabs {
               this.tabsFilteredAsVisibleList,
               tab => nanoid(10),
               tab => html`
-                <md-tab
+              <md-tab
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
                   .selected="${tab.selected}"
@@ -942,6 +975,8 @@ export namespace Tabs {
                   aria-controls="${tab.id}"
                   .isCrossVisible=${true}
                   tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                  tab-text="${tab?.textContent?.trim() || ''}"
+                  ?show-tooltip=${this.showTooltip(tab)}
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
@@ -1001,6 +1036,8 @@ export namespace Tabs {
                     aria-controls="${tab.id}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                    tab-text="${tab?.textContent?.trim() || ''}"
+                    ?show-tooltip=${this.showTooltip(tab)}
                   >
                     ${unsafeHTML(tab.innerHTML)}
                   </md-tab>
@@ -1008,6 +1045,34 @@ export namespace Tabs {
               )}
             </div>
           </md-menu-overlay>
+          ${this.showMoreActions
+            ? html `<md-menu-overlay
+                    custom-width="${MORE_ACTIONS_MENU_WIDTH}"
+                    slot="settings"
+                    size="small"
+                    class="more-actions-menu-overlay"
+                  >
+                  <md-tooltip placement="top" message="${this.moreActionsLabel}" slot="menu-trigger">
+                    <md-button circle type="button" class="menu-trigger-button more-actions-header-button">
+                        <md-icon name="icon-more-adr_16"></md-icon>
+                    </md-button>
+                    </md-tooltip>
+
+
+                    <div class="md-menu-overlay__more_actions_list">
+                      <div>
+                        <md-button hasRemoveStyle class="more-actions-button" @click=${(e: MouseEvent) => this.handleResetTabs()}>
+                        <md-icon
+                        slot="icon"
+                            aria-label="Reset Tab Order"
+                            name="icon-refresh_16"
+                          ></md-icon><span class="reset-tab-order-span" slot="text">Reset Tab Order</span>
+                          </md-button>
+                      </div>
+                    </div>
+                  </md-menu-overlay>`
+                  : nothing
+          }
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

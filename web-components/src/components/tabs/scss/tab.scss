@@ -12,6 +12,11 @@
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 
+:host([selected]) .more-actions-header-button {
+  border: none;
+  color: var(--tabs-default-text-color, #545454)
+}
+
 :host([vertical]) button {
   text-align: left !important;
 }
@@ -68,6 +73,13 @@ slot {
       height: 1rem;
       width: 1rem;
     }
+
+    span {
+      display: block;
+      max-width: $tab-span-max-width;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 
@@ -97,6 +109,17 @@ md-icon {
   }
 }
 
+.more-actions-header-button::part(button) {
+  background-color: rgba(0, 0, 0, 0);
+  &:hover {
+        background-color: var(--button-secondary-bg-color, #DEDEDE);
+  }
+}
+
+.more-actions-header-button {
+  background-color: rgba(0, 0, 0, 0);
+}
+
 button {
   background: $tab-none-bg;
   border: $tab-border;
@@ -105,7 +128,7 @@ button {
   display: block;
   height: 100%;
   min-height: $tab-overflow-button-height;
-  padding: $tab-button-padding;
+  padding: $tab-header-padding;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -129,6 +152,9 @@ button {
 
   ::slotted(span) {
     @include tab-button-span;
+    max-width: $tab-span-max-width;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   span {

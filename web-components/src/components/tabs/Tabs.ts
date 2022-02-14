@@ -421,7 +421,6 @@ export namespace Tabs {
         }
       }
 
-      this.handleNewSelectedTab(event.item.id);
     };
 
     private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
@@ -970,7 +969,7 @@ export namespace Tabs {
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
             >
-              <span>${this.overlowLabel}</span>
+              <span class="md-menu-overlay__overflow-label">${this.overlowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
             </md-tab>
             <div

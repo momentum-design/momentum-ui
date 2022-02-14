@@ -58,6 +58,7 @@ export namespace Tabs {
     // tabsId and persistSelection attributes are used to persist the selection of tab on remount of md-tabs component
     @property({ type: String, attribute: "tabs-id" }) tabsId = "";
     @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
+    @property({ type: String, attribute: "comp-unique-id" }) compUniqueId = "";
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -70,6 +71,8 @@ export namespace Tabs {
     @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
     @internalProperty() private noTabsVisible = false;
+    @internalProperty() private defaultTabsOrderArray: string[] = [];
+    @internalProperty() private tabsOrderPrefsArray: string[] = [];
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -274,7 +277,29 @@ export namespace Tabs {
       this.tabHiddenIdPositiveTabIndex = hiddenTab ? hiddenTab.id : undefined;
     }
 
+    /* Sort tabs and panes as per the user prefs saved in the localStorage */
+    private sortTabsAndPanes() {
+      if (!this.tabsOrderPrefsArray.length) {
+        return;
+      }
+      const comparator = (a: any, b: any) => {
+        const aName = a.getAttribute("name");
+        const bName = b.getAttribute("name");
+        if (this.tabsOrderPrefsArray.indexOf(aName) > this.tabsOrderPrefsArray.indexOf(bName)) {
+          return 1;
+        }
+        if (this.tabsOrderPrefsArray.indexOf(aName) < this.tabsOrderPrefsArray.indexOf(bName)) {
+          return -1;
+        }
+        return 0;
+      };
+      this.tabs.sort(comparator);
+      this.panels.sort(comparator);
+    }
+
     private async linkPanelsAndTabs() {
+      this.sortTabsAndPanes(); /* Apply sorting on tabs and panes before linking */
+
       const { tabs, panels } = this;
 
       if (tabs.length === 0 || panels.length === 0) {
@@ -421,6 +446,12 @@ export namespace Tabs {
         }
       }
 
+      if (this.compUniqueId) {
+        const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList].map(tabElement => {
+          return tabElement.name;
+        });
+        localStorage.setItem(this.compUniqueId, tabsOrder.join(","));
+      }
     };
 
     private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
@@ -747,12 +778,23 @@ export namespace Tabs {
       this.addEventListener("tab-click", this.handleTabClick as EventListener);
       this.addEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
       this.addEventListener("keydown", this.handleTabKeydown as EventListener);
+      this.addEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
 
     private teardownTabsEvents() {
       this.removeEventListener("tab-click", this.handleTabClick as EventListener);
       this.removeEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
       this.removeEventListener("keydown", this.handleTabKeydown as EventListener);
+      this.removeEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
+    }
+
+    private clearTabOrderPrefs(event: any) {
+      const { compUniqueId } = event.detail;
+      if (compUniqueId === this.compUniqueId) {
+        localStorage.removeItem(this.compUniqueId);
+        this.tabsOrderPrefsArray = this.defaultTabsOrderArray;
+        this.initializeTabs();
+      }
     }
 
     private setupPanelsAndTabs() {
@@ -762,6 +804,8 @@ export namespace Tabs {
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
+
+      this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
     }
 
     private async setupMoreTab() {
@@ -814,6 +858,8 @@ export namespace Tabs {
             ? parseInt(persistedSelectedTabIdx)
             : this.selected;
       }
+
+      this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
     }
     private selectTabFromStorage() {
       if (this.persistSelection) {
@@ -969,7 +1015,7 @@ export namespace Tabs {
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
             >
-              <span class="md-menu-overlay__overflow-label">${this.overlowLabel}</span>
+              <span>${this.overlowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
             </md-tab>
             <div

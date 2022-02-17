@@ -447,10 +447,10 @@ export namespace Tabs {
       }
 
       if (this.compUniqueId) {
-        const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList].map(tabElement => {
-          return tabElement.name;
-        });
-        localStorage.setItem(this.compUniqueId, tabsOrder.join(","));
+        const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        const newSelectedIndex = tabsOrder.findIndex(tabItem=>tabItem.selected);
+        this.storeSelectedTabIndex(newSelectedIndex);
+        localStorage.setItem(this.compUniqueId, tabsOrder.map(tabElement => tabElement.name).join(","));
       }
     };
 
@@ -607,9 +607,12 @@ export namespace Tabs {
         }
       });
       this.updateIsMoreTabMenuSelected();
+      this.storeSelectedTabIndex(newSelectedTabIdx);
+    }
 
-      if (this.persistSelection && this.tabsId && newSelectedTabIdx > -1 && this.tabsId.trim() !== "") {
-        sessionStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
+    storeSelectedTabIndex(index: number) {
+      if (this.persistSelection && this.tabsId && index > -1 && this.tabsId.trim() !== "") {
+        sessionStorage.setItem(this.tabsId, `${index}`);
       }
     }
 
@@ -791,9 +794,13 @@ export namespace Tabs {
     private clearTabOrderPrefs(event: any) {
       const { compUniqueId } = event.detail;
       if (compUniqueId === this.compUniqueId) {
+        localStorage.removeItem(this.tabsId);
+        sessionStorage.removeItem(this.tabsId);
         localStorage.removeItem(this.compUniqueId);
         this.tabsOrderPrefsArray = this.defaultTabsOrderArray;
+        this.selected = 0;
         this.initializeTabs();
+        this.dispatchSelectedChangedEvent(0);
       }
     }
 
@@ -804,7 +811,7 @@ export namespace Tabs {
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
-
+      
       this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
     }
 

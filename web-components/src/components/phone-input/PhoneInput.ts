@@ -53,6 +53,7 @@ export namespace PhoneInput {
         value: "{countryCallingCode}",
         code: "{countryCode}"
       });
+      this.validateInput(this.value);
     }
 
     getCountryFlag(code: string) {
@@ -160,6 +161,7 @@ export namespace PhoneInput {
     }
 
     render() {
+      console.log("vinitkum:",this.formattedValue);
       return html`
         ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">

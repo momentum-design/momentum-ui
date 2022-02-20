@@ -450,7 +450,8 @@ export namespace Tabs {
         const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
         const newSelectedIndex = tabsOrder.findIndex(tabItem=>tabItem.selected);
         this.storeSelectedTabIndex(newSelectedIndex);
-        localStorage.setItem(this.compUniqueId, tabsOrder.map(tabElement => tabElement.name).join(","));
+        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name)
+        localStorage.setItem(this.compUniqueId, this.tabsOrderPrefsArray.join(","));
       }
     };
 

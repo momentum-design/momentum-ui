@@ -282,17 +282,13 @@ export namespace Tabs {
       if (!this.tabsOrderPrefsArray.length) {
         return;
       }
-      const comparator = (a: any, b: any) => {
-        const aName = a.getAttribute("name");
-        const bName = b.getAttribute("name");
-        if (this.tabsOrderPrefsArray.indexOf(aName) > this.tabsOrderPrefsArray.indexOf(bName)) {
-          return 1;
-        }
-        if (this.tabsOrderPrefsArray.indexOf(aName) < this.tabsOrderPrefsArray.indexOf(bName)) {
-          return -1;
-        }
-        return 0;
+
+      const comparator = (a: Tab.ELEMENT | TabPanel.ELEMENT, b: Tab.ELEMENT | TabPanel.ELEMENT) => {
+        const aName = a.getAttribute("name") || "";
+        const bName = b.getAttribute("name") || "";
+        return this.tabsOrderPrefsArray.indexOf(aName) - this.tabsOrderPrefsArray.indexOf(bName);
       };
+
       this.tabs.sort(comparator);
       this.panels.sort(comparator);
     }

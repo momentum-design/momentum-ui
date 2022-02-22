@@ -151,20 +151,19 @@ export namespace Checkbox {
         <input
           class="checkbox-input"
           type="checkbox"
+          part="checkbox-input"
           ?checked=${this.checked}
           ?disabled=${this.disabled}
           ?autofocus=${this.autofocus}
           aria-hidden="true"
         />
-        <label class="checkbox-label">
+        <label part="checkbox-label" class="checkbox-label">
           <slot></slot>
         </label>
       `;
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

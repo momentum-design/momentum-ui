@@ -34,6 +34,13 @@
     height: 100%;
     margin-left: auto;
     width: auto;
+    max-width: 128.5px;
+    .md-menu-overlay__overflow-label{
+      max-width: 70px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
 
     &.md-menu-overlay__more--hidden {
       display: none;

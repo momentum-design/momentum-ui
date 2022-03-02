@@ -55,7 +55,7 @@
     "@interactjs/modifiers": "1.10.3",
     "@popperjs/core": "^2.4.4",
     "country-codes-list": "^1.6.8",
-    "country-flags-svg": "^1.1.0",
+    "country-flags-svg": "1.1.4",
     "dompurify": "^2.2.6",
     "highlight.js": "^10.5.0",
     "json": "^11.0.0",

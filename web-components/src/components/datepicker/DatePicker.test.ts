@@ -3,6 +3,7 @@ import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-
 import { DateTime } from "luxon";
 import "./DatePicker";
 import { DatePicker } from "./DatePicker";
+import "../button/Button"
 
 const keyNavEvent = (key: KeyboardEvent["code"], date: DateTime): CustomEvent => {
   return new CustomEvent("day-key-event", {
@@ -85,5 +86,16 @@ describe("DatePicker Component", () => {
     el.handleKeyDown(spaceSelect);
     await el.updateComplete;
     expect(selectionFunc).toHaveBeenCalled();
+  });
+
+  test("should render with custom date trigger", async () => {
+    const el: DatePicker.ELEMENT = await fixture(
+      html`
+        <md-datepicker custom-trigger>
+          <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
+        </md-datepicker>
+      `
+    );
+    expect(el).not.toBeNull();
   });
 });

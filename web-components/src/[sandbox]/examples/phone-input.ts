@@ -15,7 +15,7 @@ export const phoneInputTemplate = html`
       ></md-phone-input>
     </div>
     <div class="row">
-      <md-form autocomlete="true">
+      <md-form>
         <md-phone-input
           showErrorMessage
           errorMessage="This phone number is invalid"
@@ -53,7 +53,7 @@ export const phoneInputTemplate = html`
     <div>
       <h4>Example with Initial Value</h4>
       <div class="row">
-        <md-form autocomlete="true">
+        <md-form>
           <md-phone-input
             .countryCallingCode=${"+91, India, IN"}
             .errorMessage=${"This phone number is invalid"}

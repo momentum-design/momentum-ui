@@ -26,6 +26,12 @@ export namespace PhoneInput {
     value: string;
     errorMessage: string;
     flagClass: string;
+    showErrorMessage: string;
+  };
+
+  export type CountryCalling = {
+    id: string;
+    value: string;
   };
 
   @customElementWithCheck("md-phone-input")
@@ -38,6 +44,7 @@ export namespace PhoneInput {
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
+    @property({ type: Boolean }) showErrorMessage = false;
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -53,6 +60,7 @@ export namespace PhoneInput {
         value: "{countryCallingCode}",
         code: "{countryCode}"
       });
+      this.validateInput(this.value);
     }
 
     getCountryFlag(code: string) {
@@ -66,6 +74,7 @@ export namespace PhoneInput {
     countryCodeOptionTemplate(country: PhoneInput.Country, index: number) {
       return html`
         <div
+          part="option"
           class="md-phone-input__option"
           display-value="+${country.value}"
           slot=${index}
@@ -78,12 +87,20 @@ export namespace PhoneInput {
       `;
     }
 
+    validateNumber() {
+      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
+    }
+
     handleCountryChange(event: CustomEvent) {
       if (!event.detail.value || !event.detail.value.id) {
+        this.countryCode = "US";
+        this.countryCallingCode = "";
+        this.validateNumber();
         return;
       }
       this.countryCallingCode = event.detail.value.id;
-      this.countryCode = event.detail.value.id.split(",")[2];
+      this.countryCode = event.detail.value.id.split(",")[2]?.trim();
+      this.validateNumber();
     }
 
     handlePhoneChange(event: CustomEvent) {
@@ -97,7 +114,8 @@ export namespace PhoneInput {
           detail: {
             srcEvent: event,
             value: `${this.countryCallingCode}${this.value}`,
-            isValid: this.isValid
+            isValid: this.isValid,
+            phoneNumber: this.value
           }
         })
       );
@@ -112,14 +130,16 @@ export namespace PhoneInput {
           composed: true,
           detail: {
             srcEvent: event,
-            value: `${this.countryCallingCode}${this.value}`
+            value: `${this.countryCallingCode}${this.value}`,
+            isValid: this.isValid,
+            phoneNumber: this.value
           }
         })
       );
     }
 
     handleBlur(event: Event) {
-      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
+      this.validateNumber();
       event.stopPropagation();
       this.dispatchEvent(
         new CustomEvent("phoneinput-blur", {
@@ -128,7 +148,8 @@ export namespace PhoneInput {
           detail: {
             srcEvent: event,
             value: `${this.countryCallingCode}${this.value}`,
-            isValid: this.isValid
+            isValid: this.isValid,
+            phoneNumber: this.value
           }
         })
       );
@@ -136,6 +157,10 @@ export namespace PhoneInput {
 
     validateInput(input: string) {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
+    }
+
+    getFormatedCountryCallingCode() {
+      return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
     }
 
     getModStyle() {
@@ -173,7 +198,7 @@ export namespace PhoneInput {
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
             placeholder="${this.codePlaceholder}"
-            .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
+            .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
             with-custom-content
           >
@@ -194,7 +219,7 @@ export namespace PhoneInput {
             clear
             type="tel"
             value="${this.formattedValue}"
-            .messageArr="${!this.isValid
+            .messageArr="${!this.isValid || this.showErrorMessage
               ? [
                   {
                     type: "error",

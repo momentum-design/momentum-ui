@@ -185,7 +185,6 @@ export namespace PhoneInput {
     }
 
     render() {
-      console.log("vinitkum:",this.formattedValue);
       return html`
         ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">

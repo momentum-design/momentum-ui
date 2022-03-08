@@ -43,7 +43,7 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More";
+    @property({ type: String }) overlowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
@@ -58,6 +58,7 @@ export namespace Tabs {
     // tabsId and persistSelection attributes are used to persist the selection of tab on remount of md-tabs component
     @property({ type: String, attribute: "tabs-id" }) tabsId = "";
     @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
+    @property({ type: String, attribute: "comp-unique-id" }) compUniqueId = "";
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -70,6 +71,8 @@ export namespace Tabs {
     @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
     @internalProperty() private noTabsVisible = false;
+    @internalProperty() private defaultTabsOrderArray: string[] = [];
+    @internalProperty() private tabsOrderPrefsArray: string[] = [];
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -274,7 +277,25 @@ export namespace Tabs {
       this.tabHiddenIdPositiveTabIndex = hiddenTab ? hiddenTab.id : undefined;
     }
 
+    /* Sort tabs and panes as per the user prefs saved in the localStorage */
+    private sortTabsAndPanes() {
+      if (!this.tabsOrderPrefsArray.length) {
+        return;
+      }
+
+      const comparator = (a: Tab.ELEMENT | TabPanel.ELEMENT, b: Tab.ELEMENT | TabPanel.ELEMENT) => {
+        const aName = a.getAttribute("name") || "";
+        const bName = b.getAttribute("name") || "";
+        return this.tabsOrderPrefsArray.indexOf(aName) - this.tabsOrderPrefsArray.indexOf(bName);
+      };
+
+      this.tabs.sort(comparator);
+      this.panels.sort(comparator);
+    }
+
     private async linkPanelsAndTabs() {
+      this.sortTabsAndPanes(); /* Apply sorting on tabs and panes before linking */
+
       const { tabs, panels } = this;
 
       if (tabs.length === 0 || panels.length === 0) {
@@ -421,6 +442,13 @@ export namespace Tabs {
         }
       }
 
+      if (this.compUniqueId) {
+        const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        const newSelectedIndex = tabsOrder.findIndex(tabItem=>tabItem.selected);
+        this.storeSelectedTabIndex(newSelectedIndex);
+        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name)
+        localStorage.setItem(this.compUniqueId, this.tabsOrderPrefsArray.join(","));
+      }
     };
 
     private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
@@ -576,9 +604,12 @@ export namespace Tabs {
         }
       });
       this.updateIsMoreTabMenuSelected();
+      this.storeSelectedTabIndex(newSelectedTabIdx);
+    }
 
-      if (this.persistSelection && this.tabsId && newSelectedTabIdx > -1 && this.tabsId.trim() !== "") {
-        sessionStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
+    storeSelectedTabIndex(index: number) {
+      if (this.persistSelection && this.tabsId && index > -1 && this.tabsId.trim() !== "") {
+        sessionStorage.setItem(this.tabsId, `${index}`);
       }
     }
 
@@ -747,12 +778,27 @@ export namespace Tabs {
       this.addEventListener("tab-click", this.handleTabClick as EventListener);
       this.addEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
       this.addEventListener("keydown", this.handleTabKeydown as EventListener);
+      this.addEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
 
     private teardownTabsEvents() {
       this.removeEventListener("tab-click", this.handleTabClick as EventListener);
       this.removeEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
       this.removeEventListener("keydown", this.handleTabKeydown as EventListener);
+      this.removeEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
+    }
+
+    private clearTabOrderPrefs(event: any) {
+      const { compUniqueId } = event.detail;
+      if (compUniqueId === this.compUniqueId) {
+        localStorage.removeItem(this.tabsId);
+        sessionStorage.removeItem(this.tabsId);
+        localStorage.removeItem(this.compUniqueId);
+        this.tabsOrderPrefsArray = this.defaultTabsOrderArray;
+        this.selected = 0;
+        this.initializeTabs();
+        this.dispatchSelectedChangedEvent(0);
+      }
     }
 
     private setupPanelsAndTabs() {
@@ -762,6 +808,8 @@ export namespace Tabs {
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
+      
+      this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
     }
 
     private async setupMoreTab() {
@@ -814,6 +862,8 @@ export namespace Tabs {
             ? parseInt(persistedSelectedTabIdx)
             : this.selected;
       }
+
+      this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
     }
     private selectTabFromStorage() {
       if (this.persistSelection) {

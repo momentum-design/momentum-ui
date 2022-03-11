@@ -133,12 +133,7 @@
           }
 
           .md-spinner-progress__mask {
-            clip: rect(
-              0px,
-              #{$circle-size},
-              #{$circle-size},
-              calc(#{$circle-size} / 2)
-            );
+            clip: rect(0px, #{$circle-size}, #{$circle-size}, calc(#{$circle-size} / 2));
 
             .md-spinner-progress__fill {
               clip: rect(0px, calc(#{$circle-size} / 2), #{$circle-size}, 0px);
@@ -175,7 +170,7 @@
         }
 
         $i: 0;
-        $increment: 180deg / 100;
+        $increment: math.div(180deg, 100);
 
         @for $i from 0 through 100 {
           &.md-spinner-progress__percentage-#{$i} {

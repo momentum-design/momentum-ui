@@ -176,8 +176,8 @@
     }
 
     [class*='block-grid']:not(.columns) {
-      margin-right: calc(-($block-grid-default-spacing - rem-calc(4)) / 2);
-      margin-left: calc(-($block-grid-default-spacing - rem-calc(4)) / 2);
+      margin-right: calc(-(#{$block-grid-default-spacing} - rem-calc(4)) / 2);
+      margin-left: calc(-(#{$block-grid-default-spacing} - rem-calc(4)) / 2);
     }
   }
 }

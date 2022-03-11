@@ -138,20 +138,10 @@
             }
 
             .md-spinner-progress__mask {
-              clip: rect(
-                0px,
-                #{$circle-size},
-                #{$circle-size},
-                calc(#{$circle-size} / 2)
-              );
+              clip: rect(0px, #{$circle-size}, #{$circle-size}, calc(#{$circle-size} / 2));
 
               .md-spinner-progress__fill {
-                clip: rect(
-                  0px,
-                  calc(#{$circle-size} / 2),
-                  #{$circle-size},
-                  0px
-                );
+                clip: rect(0px, calc(#{$circle-size} / 2), #{$circle-size}, 0px);
               }
             }
           }

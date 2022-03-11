@@ -4241,10 +4241,10 @@ $definition-list-margin-bottom: 0.5rem;
 
 // ex.: golden ratio
 // current: 16 * 1.71429 / 4 = 6.85716
-$base-scale: math.div($base-unit-rem * $base-line-height-ratio, $base-unit-px);
+$base-scale: $base-unit-rem * math.div($base-line-height-ratio, $base-unit-px);
 
 // 4px = 0.25rem
-$base-unit: math.div($base-line-height, $base-scale * $rem-base);
+$base-unit: math.div($base-line-height, $base-scale) * $rem-base;
 
 // We use these to control text direction settings
 $text-direction: ltr;
@@ -4378,14 +4378,8 @@ $vertical-small-breakpoint: em-calc(600);
 $vertical-medium-breakpoint: em-calc(800);
 
 $vertical-small-range: (0, $vertical-small-breakpoint);
-$vertical-medium-range: (
-  $vertical-small-breakpoint + em-calc(1),
-  $vertical-medium-breakpoint
-);
-$vertical-large-range: (
-  $vertical-medium-breakpoint + em-calc(1),
-  em-calc(99999999)
-);
+$vertical-medium-range: ($vertical-small-breakpoint + em-calc(1), $vertical-medium-breakpoint);
+$vertical-large-range: ($vertical-medium-breakpoint + em-calc(1), em-calc(99999999));
 
 $screen: 'only screen';
 
@@ -4535,15 +4529,13 @@ $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $brand-font-bold: 'CiscoSansTT Bold', $font-family-sans-serif;
 $brand-font-bold-oblique: 'CiscoSansTT Bold Oblique', $font-family-sans-serif;
 $brand-font-extra-light: 'CiscoSansTT Extra Light', $font-family-sans-serif;
-$brand-font-extra-light-oblique: 'CiscoSansTT Extra Light Oblique',
-  $font-family-sans-serif;
+$brand-font-extra-light-oblique: 'CiscoSansTT Extra Light Oblique', $font-family-sans-serif;
 $brand-font-heavy: 'CiscoSansTT Heavy', $font-family-sans-serif;
 $brand-font-heavy-oblique: 'CiscoSansTT Heavy Oblique', $font-family-sans-serif;
 $brand-font-light: 'CiscoSansTT Light', $font-family-sans-serif;
 $brand-font-light-Oblique: 'CiscoSansTT Light Oblique', $font-family-sans-serif;
 $brand-font-regular: 'CiscoSansTT Regular', $font-family-sans-serif;
-$brand-font-regular-oblique: 'CiscoSansTT Regular Oblique',
-  $font-family-sans-serif;
+$brand-font-regular-oblique: 'CiscoSansTT Regular Oblique', $font-family-sans-serif;
 $brand-font-thin: 'CiscoSansTT Thin', $font-family-sans-serif;
 $brand-font-thin-oblique: 'CiscoSansTT Thin Oblique', $font-family-sans-serif;
 
@@ -4629,10 +4621,7 @@ $base-font-size: $rem-base;
 
 // These control how subheaders are styled.
 $subheader-line-height: 1.4 !default;
-$subheader-font-color: scale-color(
-  $header-font-color,
-  $lightness: 35%
-) !default;
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 $subheader-font-weight: $font-weight-normal !default;
 $subheader-top-margin: 0.2rem !default;
 $subheader-bottom-margin: 0.5rem !default;
@@ -4670,10 +4659,7 @@ $code-background-color: transparent !default;
 $code-border-size: 0px !default;
 
 $code-border-style: solid !default;
-$code-border-color: scale-color(
-  $code-background-color,
-  $lightness: -10%
-) !default;
+$code-border-color: scale-color($code-background-color, $lightness: -10%) !default;
 $code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
 
 // We use these to style anchors
@@ -4707,8 +4693,7 @@ $definition-list-margin-bottom: rem-calc(12) !default;
 $blockquote-font-color: inherit !default;
 $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
-$blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width})
-  1rem !default;
+$blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width}) 1rem !default;
 $blockquote-border: $blockquote-border-width solid !default;
 $blockquote-border-color: $md-gray-50 !default;
 
@@ -4826,12 +4811,12 @@ $lineHeights: (
 );
 
 // Text alignment class names
-$align-class-names: small-only, small, medium-only, medium, large-only, large,
-  xlarge-only, xlarge, xxlarge-only, xxlarge;
+$align-class-names: small-only, small, medium-only, medium, large-only, large, xlarge-only, xlarge,
+  xxlarge-only, xxlarge;
 
 // Text alignment breakpoints
-$align-class-breakpoints: $small-only, $small-up, $medium-only, $medium-up,
-  $large-only, $large-up, $xlarge-only, $xlarge-up, $xxlarge-only, $xxlarge-up;
+$align-class-breakpoints: $small-only, $small-up, $medium-only, $medium-up, $large-only, $large-up,
+  $xlarge-only, $xlarge-up, $xxlarge-only, $xxlarge-up;
 
 $input__class: '#{$prefix}-input';
 $input__class--filled: '#{$input__class}--filled';
@@ -5036,133 +5021,23 @@ $avatar-sizes: (
     $icon-share-screen_8,
     18
   ),
-  (
-    small,
-    $icon-dnd_14,
-    $icon-pto_14,
-    $icon-handset_14,
-    $icon-camera_16,
-    $icon-share-screen_14,
-    28
-  ),
-  (
-    medium,
-    $icon-dnd_20,
-    $icon-pto_20,
-    $icon-handset_20,
-    $icon-camera_20,
-    $icon-share-screen_20,
-    40
-  ),
-  (
-    large,
-    $icon-dnd_28,
-    $icon-pto_28,
-    $icon-handset_28,
-    $icon-camera_26,
-    $icon-share-screen_28,
-    52
-  ),
-  (
-    xlarge,
-    $icon-dnd_40,
-    $icon-pto_32,
-    $icon-handset_40,
-    $icon-camera_32,
-    $icon-share-screen_36,
-    84
-  ),
-  (
-    18,
-    $icon-dnd_8,
-    $icon-pto_8,
-    $icon-handset_8,
-    $icon-camera_12,
-    $icon-share-screen_8
-  ),
-  (
-    24,
-    $icon-dnd_12,
-    $icon-pto_12,
-    $icon-handset_12,
-    $icon-camera_12,
-    $icon-share-screen_12
-  ),
-  (
-    28,
-    $icon-dnd_14,
-    $icon-pto_14,
-    $icon-handset_14,
-    $icon-camera_16,
-    $icon-share-screen_14
-  ),
-  (
-    36,
-    $icon-dnd_18,
-    $icon-pto_18,
-    $icon-handset_18,
-    $icon-camera_18,
-    $icon-share-screen_18
-  ),
-  (
-    40,
-    $icon-dnd_20,
-    $icon-pto_20,
-    $icon-handset_20,
-    $icon-camera_20,
-    $icon-share-screen_20
-  ),
-  (
-    44,
-    $icon-dnd_24,
-    $icon-pto_24,
-    $icon-handset_24,
-    $icon-camera_24,
-    $icon-share-screen_24
-  ),
-  (
-    52,
-    $icon-dnd_28,
-    $icon-pto_28,
-    $icon-handset_28,
-    $icon-camera_26,
-    $icon-share-screen_28
-  ),
-  (
-    56,
-    $icon-dnd_28,
-    $icon-pto_28,
-    $icon-handset_28,
-    $icon-camera_26,
-    $icon-share-screen_28
-  ),
-  (
-    72,
-    $icon-dnd_36,
-    $icon-pto_32,
-    $icon-handset_36,
-    $icon-camera_32,
-    $icon-share-screen_36
-  ),
-  (
-    80,
-    $icon-dnd_40,
-    $icon-pto_32,
-    $icon-handset_40,
-    $icon-camera_32,
-    $icon-share-screen_36
-  ),
-  (
-    84,
-    $icon-dnd_40,
-    $icon-pto_32,
-    $icon-handset_40,
-    $icon-camera_32,
-    $icon-share-screen_36
-  );
+  (small, $icon-dnd_14, $icon-pto_14, $icon-handset_14, $icon-camera_16, $icon-share-screen_14, 28),
+  (medium, $icon-dnd_20, $icon-pto_20, $icon-handset_20, $icon-camera_20, $icon-share-screen_20, 40),
+  (large, $icon-dnd_28, $icon-pto_28, $icon-handset_28, $icon-camera_26, $icon-share-screen_28, 52),
+  (xlarge, $icon-dnd_40, $icon-pto_32, $icon-handset_40, $icon-camera_32, $icon-share-screen_36, 84),
+  (18, $icon-dnd_8, $icon-pto_8, $icon-handset_8, $icon-camera_12, $icon-share-screen_8),
+  (24, $icon-dnd_12, $icon-pto_12, $icon-handset_12, $icon-camera_12, $icon-share-screen_12),
+  (28, $icon-dnd_14, $icon-pto_14, $icon-handset_14, $icon-camera_16, $icon-share-screen_14),
+  (36, $icon-dnd_18, $icon-pto_18, $icon-handset_18, $icon-camera_18, $icon-share-screen_18),
+  (40, $icon-dnd_20, $icon-pto_20, $icon-handset_20, $icon-camera_20, $icon-share-screen_20),
+  (44, $icon-dnd_24, $icon-pto_24, $icon-handset_24, $icon-camera_24, $icon-share-screen_24),
+  (52, $icon-dnd_28, $icon-pto_28, $icon-handset_28, $icon-camera_26, $icon-share-screen_28),
+  (56, $icon-dnd_28, $icon-pto_28, $icon-handset_28, $icon-camera_26, $icon-share-screen_28),
+  (72, $icon-dnd_36, $icon-pto_32, $icon-handset_36, $icon-camera_32, $icon-share-screen_36),
+  (80, $icon-dnd_40, $icon-pto_32, $icon-handset_40, $icon-camera_32, $icon-share-screen_36),
+  (84, $icon-dnd_40, $icon-pto_32, $icon-handset_40, $icon-camera_32, $icon-share-screen_36);
 
-$avatar--active__shadow: inset 0 0 0 rem-calc(1) $md-green-50,
-  inset 0 0 0 rem-calc(2) $white-24;
+$avatar--active__shadow: inset 0 0 0 rem-calc(1) $md-green-50, inset 0 0 0 rem-calc(2) $white-24;
 $avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $md-green-50,
   inset 0 0 0 rem-calc(2) $black-24;
 
@@ -5477,8 +5352,7 @@ $button--cyan__background-color--active--contrast: $md-cyan-80 !default;
 $button--white__background-color: $md-white-100 !default;
 $button--white__background-color--hover: $md-gray-10 !default;
 $button--white__background-color--active: $md-gray-30 !default;
-$button--white__border: 0 0 0 rem-calc(1) $md-gray-20,
-  0 rem-calc(1) rem-calc(2) 0 $md-gray-20;
+$button--white__border: 0 0 0 rem-calc(1) $md-gray-20, 0 rem-calc(1) rem-calc(2) 0 $md-gray-20;
 
 // Dark Gray button colors
 $button--dark-gray__background-color: $md-gray-90 !default;
@@ -5549,8 +5423,7 @@ $close__font-color--active: $md-theme-80;
 
 $collapse-button__width: rem-calc(16);
 $collapse-button__height: rem-calc(96);
-$collapse-button__border-radius: 0 $collapse-button__width
-  $collapse-button__width 0;
+$collapse-button__border-radius: 0 $collapse-button__width $collapse-button__width 0;
 $collapse-button__color: $md-white-100;
 
 $collapse-button__background: $md-gray-90;
@@ -5837,8 +5710,8 @@ $spinner--56__height: 3.5em;
 $spinner--80__width: 5em;
 $spinner--80__height: 5em;
 
-$spinner-sizes: (16, $icon-check_8, 6px), (20, $icon-check_8, 8px),
-  (28, $icon-check_12, 12px), (36, $icon-check_16, 16px);
+$spinner-sizes: (16, $icon-check_8, 6px), (20, $icon-check_8, 8px), (28, $icon-check_12, 12px),
+  (36, $icon-check_16, 16px);
 
 $menu-overlay__class: '#{$prefix}-menu-overlay';
 $menu__class: '#{$prefix}-menu';
@@ -5884,13 +5757,11 @@ $modal-header__padding: $modal__padding;
 $modal-header__font-size: rem-calc(16);
 $modal-header__line-height: rem-calc(24);
 
-$modal-header__padding--large: rem-calc(32) rem-calc(16) rem-calc(16)
-  rem-calc(16);
+$modal-header__padding--large: rem-calc(32) rem-calc(16) rem-calc(16) rem-calc(16);
 $modal-header__font-size--large: rem-calc(26);
 $modal-header__line-height--large: rem-calc(32);
 
-$modal-header__padding--full-screen: rem-calc(32) rem-calc(16) rem-calc(16)
-  rem-calc(16);
+$modal-header__padding--full-screen: rem-calc(32) rem-calc(16) rem-calc(16) rem-calc(16);
 $modal-header__font-size--full-screen: rem-calc(36);
 $modal-header__line-height--full-screen: rem-calc(48);
 
@@ -5939,10 +5810,7 @@ $pagination-li-margin: rem-calc(5) !default;
 
 $pagination-link-pad: rem-calc(1 10 1) !default;
 $pagination-link-font-color: $md-gray-50 !default;
-$pagination-link-active-bg: scale-color(
-  $md-white-100,
-  $lightness: -10%
-) !default;
+$pagination-link-active-bg: scale-color($md-white-100, $lightness: -10%) !default;
 
 $pagination-link-unavailable-cursor: default !default;
 $pagination-link-unavailable-font-color: $md-gray-50 !default;
@@ -6002,10 +5870,7 @@ $popover-displacement: rem-calc(10);
 $progress-bar-height: rem-calc(4) !default;
 $progress-bar-color: $md-gray-10;
 
-$progress-bar-border-color: scale-color(
-  $md-white-100,
-  $lightness: 20%
-) !default;
+$progress-bar-border-color: scale-color($md-white-100, $lightness: 20%) !default;
 $progress-bar-border-size: 1px !default;
 $progress-bar-border-style: solid !default;
 $progress-bar-border-radius: $global-radius !default;
@@ -6118,8 +5983,7 @@ $tooltip__font-weight: $font-weight-normal;
 $has-tip-border-bottom: dotted 1px $md-gray-40 !default;
 $has-tip-font-weight: $font-weight-bold !default;
 $has-tip-font-color: $md-gray-90 !default;
-$has-tip-border-bottom-hover: dotted 1px
-  scale-color($md-theme-50, $lightness: -55%) !default;
+$has-tip-border-bottom-hover: dotted 1px scale-color($md-theme-50, $lightness: -55%) !default;
 $has-tip-font-color-hover: $md-theme-50 !default;
 $has-tip-cursor-type: help !default;
 $tooltip-close-font-size: rem-calc(10) !default;

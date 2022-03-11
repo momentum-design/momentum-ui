@@ -646,7 +646,7 @@
           margin-#{$opposite-direction}: $topbar-link-padding;
           position: absolute;
           top: 50%;
-          margin-top: calc(-($topbar-dropdown-toggle-size / 2)) - 2;
+          margin-top: calc(-(#{$topbar-dropdown-toggle-size} / 2)) - 2;
           #{$opposite-direction}: 0;
         }
       }
@@ -856,8 +856,8 @@
                 top
               );
 
-              top: calc($topbar-height / 2);
-              margin-top: calc(-($topbar-dropdown-toggle-size / 2));
+              top: calc(#{$topbar-height} / 2);
+              margin-top: calc(-(#{$topbar-dropdown-toggle-size} / 2));
             }
           }
         }

@@ -31,8 +31,8 @@ $block-grid-media-queries: true !default;
 
   @if $per-row {
     > li {
-      width: calc(100% / $per-row);
-      padding: 0 ($spacing/2) $spacing;
+      width: calc(100% / #{$per-row});
+      padding: 0 calc(#{$spacing} / 2) $spacing;
       list-style: none;
 
       &:nth-of-type(1n) {
@@ -60,9 +60,9 @@ $block-grid-media-queries: true !default;
       }
 
       &:nth-of-type(#{$per-row}n#{unquote($grid-column)}) {
-        padding-right: ($spacing - (calc($spacing / $per-row) * $i));
+        padding-right: ($spacing - (calc(#{$spacing} / #{$per-row}) * $i));
         padding-left: (
-          $spacing - (calc($spacing / $per-row) * ($per-row - ($i - 1)))
+          $spacing - (calc(#{$spacing} / #{$per-row}) * ($per-row - ($i - 1)))
         );
       }
     }
@@ -125,7 +125,7 @@ $block-grid-media-queries: true !default;
     @if $align-to-grid {
       margin: 0;
     } @else {
-      margin: 0 calc(-$spacing / 2);
+      margin: 0 calc(-#{$spacing} / 2);
     }
 
     @include clearfix;
@@ -134,7 +134,7 @@ $block-grid-media-queries: true !default;
       display: block;
       float: $default-float;
       height: auto;
-      padding: 0 calc($spacing / 2) $spacing;
+      padding: 0 calc(#{$spacing} / 2) $spacing;
     }
 
     &.collapse {
@@ -146,8 +146,8 @@ $block-grid-media-queries: true !default;
 
   @if $per-row {
     > * {
-      width: calc(100% / $per-row);
-      padding: 0 calc($spacing / 2) $spacing;
+      width: calc(100% / #{$per-row});
+      padding: 0 calc(#{$spacing} / 2) $spacing;
       list-style: none;
 
       &:nth-of-type(1n) {

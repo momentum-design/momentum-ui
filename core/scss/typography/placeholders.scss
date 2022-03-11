@@ -27,7 +27,7 @@
       $fs: map-get($fontSizes, $tp);
 
       @if map-has-key($lineHeights, $tp) {
-        $lh: calc(map-get($lineHeights, $tp) / (map-get($lineHeights, $tp) * 0 + 1));
+        $lh: calc(map-get(#{$lineHeights}, #{$tp}) / (map-get(#{$lineHeights}, #{$tp}) * 0 + 1));
       }
 
       @if $type !=$tp and $fs <=$fontSize {

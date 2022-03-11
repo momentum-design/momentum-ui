@@ -16,11 +16,11 @@
       position: absolute;
       left: -$icon-li-width;
       width: $icon-li-width;
-      top: math.div(2em, 16);
+      top: calc(2em / 16);
       text-align: center;
 
       &.#{$icon-css-prefix}-lg {
-        left: -$icon-li-width + math.div(4em, 16);
+        left: -$icon-li-width + calc(4em / 16);
       }
     }
   }

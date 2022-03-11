@@ -132,7 +132,7 @@ $modules: () !default;
 }
 
 @function convert-to-rem($value, $base-value: $rem-base) {
-  $value: calc(strip-unit(#{$value}) / strip-unit(#{$base-value})) * 1rem;
+  $value: calc(#{strip-unit(#{$value})} / #{strip-unit(#{$base-value})}) * 1rem;
 
   @if ($value == 0rem) {
     $value: 0;

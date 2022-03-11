@@ -69,7 +69,7 @@ $spacings: (
     $n: if($negative, '-', '');
 
     // get rounded value minus border width
-    $v: rem((round-to(px($val * 1rem), $base-unit) - $border) / 1px);
+    $v: rem(calc((round-to(px($val * 1rem), $base-unit) - $border) / 1px));
 
     @if $media != 'small-up' {
       // use media query as needed

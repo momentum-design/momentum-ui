@@ -54,7 +54,7 @@
 
 %card-container-padding {
   .md-card-container {
-    padding-top: $page-side-padding / 2;
-    padding-bottom: $page-side-padding / 2;
+    padding-top: calc($page-side-padding / 2);
+    padding-bottom: calc($page-side-padding / 2);
   }
 }

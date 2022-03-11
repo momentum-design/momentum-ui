@@ -44,7 +44,7 @@
     }
 
     &__arrow {
-      $arrow-width: $event-overlay-arrow__width / 2;
+      $arrow-width: calc($event-overlay-arrow__width / 2);
       $arrow-layer-spacing: 2px;
       $arrow-top-layer-width: $arrow-width - $arrow-layer-spacing;
       $arrow-top-layer-height: $event-overlay-arrow__height - $arrow-layer-spacing;

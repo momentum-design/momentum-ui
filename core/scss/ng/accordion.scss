@@ -17,7 +17,7 @@ $accordion-navigation-active-bg-color: scale-color(
 $accordion-navigation-font-color: $md-black-100 !default;
 $accordion-navigation-font-size: rem-calc(16) !default;
 $accordion-navigation-font-family: $body-font-family !default;
-$accordion-content-padding: ($column-gutter/2) !default;
+$accordion-content-padding: calc(#{$column-gutter} / 2) !default;
 $accordion-content-active-bg-color: $md-white-100 !default;
 
 @include exports('accordion-bem') {

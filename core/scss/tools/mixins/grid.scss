@@ -22,7 +22,7 @@
 @mixin grid-row($behavior: false) {
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
-    margin: 0 (-($column-gutter/2));
+    margin: 0 calc(-(#{$column-gutter} / 2));
     max-width: none;
     width: auto;
   }

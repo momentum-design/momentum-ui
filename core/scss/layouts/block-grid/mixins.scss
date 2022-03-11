@@ -16,7 +16,7 @@ $block-grid-media-queries: true !default;
     @if $align-block-grid-to-grid {
       margin: 0;
     } @else {
-      margin: 0 (-$spacing/2);
+      margin: 0 calc(-#{$spacing} / 2);
     }
 
     @include clearfix;
@@ -25,7 +25,7 @@ $block-grid-media-queries: true !default;
       display: block;
       float: $default-float;
       height: auto;
-      padding: 0 ($spacing/2) $spacing;
+      padding: 0 calc(#{$spacing} / 2) $spacing;
     }
   }
 

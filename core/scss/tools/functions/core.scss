@@ -68,7 +68,7 @@ $modules: () !default;
   @if unit($val) == 'px' {
     @return $val;
   } @else if unit($val) == 'rem' {
-    @return $val * calc(#{$base} / 1rem);
+    @return calc($val * calc(#{$base} / 1rem));
   } @else {
     @warn '`#{$val}` is not a supported try a px or rem value';
 

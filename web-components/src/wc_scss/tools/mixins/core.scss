@@ -134,7 +134,7 @@
       @if $left {
         left: $left;
       } @else {
-        left: calc((#{$tabbar-menu-icon-width} - #{$width}) / 2);
+        left: calc((#{$tabbar-menu-icon-width} - calc(#{$width}) / 2));
       }
     } @else {
       margin-top: calc(-(#{$width} / 2));

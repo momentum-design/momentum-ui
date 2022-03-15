@@ -46,7 +46,7 @@ $definition-list-margin-bottom: 0.5rem;
 
 // ex.: golden ratio
 // current: 16 * 1.71429 / 4 = 6.85716
-$base-scale: $base-unit-rem * calc(#{$base-line-height-ratio} / #{$base-unit-px});
+$base-scale: calc($base-unit-rem * calc(#{$base-line-height-ratio} / #{$base-unit-px}));
 
 // 4px = 0.25rem
 $base-unit: calc(#{$base-line-height} / #{$base-scale}) * $rem-base;

@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Accordion
     className=""
     initialActive={Array []}
+    initialActiveFocus={true}
     multipleVisible={false}
     onSelect={null}
     showSeparator={false}

@@ -69,7 +69,7 @@ class Accordion extends React.Component {
   };
 
   setSelected = index => {
-    const { activeIndices } = this.state;
+    const { activeIndices, focusIndicies } = this.state;
     const { children, onSelect } = this.props;
     // Don't do anything if index is the same or outside of the bounds
     if (activeIndices.includes(index) || index < 0 || index >= children.length) return;
@@ -79,7 +79,10 @@ class Accordion extends React.Component {
 
     // Update state with selected index
     this.setState(() => ({ activeIndices: [index] }));
-    this.setFocus(index);
+
+    if (focusIndicies) {
+      this.setFocus(index);
+    }
 
     onSelect && onSelect(index, last);
   };

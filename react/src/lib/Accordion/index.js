@@ -8,18 +8,16 @@ class Accordion extends React.Component {
 
   state = {
     activeIndices: this.props.initialActive || [],
-    focusIndicies: this.props.initialActiveFocus || true,
+    focusIndicies: this.props.initialActiveFocus ,
     focus: false,
   }
 
   componentDidMount () {
-    const { focusIndicies } = this.state;
     if(!this.verifyChildren()) {
       throw new Error('Accordion should contain one or more AccordionGroup as children.');
     }
-    if (focusIndicies) {
-      this.determineInitialFocus();
-    }
+    
+    this.determineInitialFocus();
   }
 
   verifyChildren = () => {

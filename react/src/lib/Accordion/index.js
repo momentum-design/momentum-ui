@@ -8,16 +8,18 @@ class Accordion extends React.Component {
 
   state = {
     activeIndices: this.props.initialActive || [],
-    focusIndicies: this.props.initialActiveFocus,
+    focusIndicies: this.props.initialActiveFocus || true,
     focus: false,
   }
 
   componentDidMount () {
+    const { focusIndicies } = this.state;
     if(!this.verifyChildren()) {
       throw new Error('Accordion should contain one or more AccordionGroup as children.');
     }
-
-    this.determineInitialFocus();
+    if (focusIndicies) {
+      this.determineInitialFocus();
+    }
   }
 
   verifyChildren = () => {
@@ -59,7 +61,7 @@ class Accordion extends React.Component {
       newValues = activeIndices.concat(index);
     }
 
-        if (focusIndicies) {
+    if (focusIndicies) {
       this.setFocus(index);
     }
     this.setState(() => {
@@ -80,7 +82,7 @@ class Accordion extends React.Component {
 
     // Update state with selected index
     this.setState(() => ({ activeIndices: [index] }));
-        if (focusIndicies) {
+    if (focusIndicies) {
       this.setFocus(index);
     }
 
@@ -213,7 +215,7 @@ Accordion.propTypes = {
   initialActive: PropTypes.array,
   /** @prop Optional css class string | '' */
   initialActiveFocus: PropTypes.bool,
-  /** @prop Set to disallow focus upon opening Accordion on load | true */
+ /** @prop Set to disallow focus upon opening Accordion on load | true */
   className: PropTypes.string,
   /** @prop Optional underline under Accordion menu item | false  */
   showSeparator: PropTypes.bool,

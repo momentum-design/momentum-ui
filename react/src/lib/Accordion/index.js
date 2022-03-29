@@ -13,11 +13,13 @@ class Accordion extends React.Component {
   }
 
   componentDidMount () {
+    const { focusIndicies } = this.state;
     if(!this.verifyChildren()) {
       throw new Error('Accordion should contain one or more AccordionGroup as children.');
     }
-
-    this.determineInitialFocus();
+    if (focusIndicies) {
+      this.determineInitialFocus();
+    }
   }
 
   verifyChildren = () => {
@@ -59,7 +61,7 @@ class Accordion extends React.Component {
       newValues = activeIndices.concat(index);
     }
 
-        if (focusIndicies) {
+    if (focusIndicies) {
       this.setFocus(index);
     }
     this.setState(() => {
@@ -80,7 +82,7 @@ class Accordion extends React.Component {
 
     // Update state with selected index
     this.setState(() => ({ activeIndices: [index] }));
-        if (focusIndicies) {
+    if (focusIndicies) {
       this.setFocus(index);
     }
 

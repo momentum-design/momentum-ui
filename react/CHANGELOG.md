@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.27.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.26.1...@momentum-ui/react@23.27.0) (2022-03-26)
+
+
+### Features
+
+* added prop to Accordion to conditionally disallow focusing on initialActive ([15bcfe9](https://github.com/momentum-design/momentum-ui/commit/15bcfe91f895d2ad67aa25ff4b5f600f56b94311))
+
+
+
+
+
 ## [23.26.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.26.0...@momentum-ui/react@23.26.1) (2022-03-23)
 
 **Note:** Version bump only for package @momentum-ui/react

@@ -16,11 +16,11 @@
       position: absolute;
       left: -$icon-li-width;
       width: $icon-li-width;
-      top: (2em / 16);
+      top: .125em;
       text-align: center;
 
       &.#{$icon-css-prefix}-lg {
-        left: -$icon-li-width + (4em / 16);
+        left: -$icon-li-width + .25em;
       }
     }
   }

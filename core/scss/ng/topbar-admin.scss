@@ -595,7 +595,7 @@
           margin-#{$opposite-direction}: $topbar-link-padding;
           position: absolute;
           top: 50%;
-          margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
+          margin-top: calc(-(#{$topbar-dropdown-toggle-size} / 2)) - 2;
           #{$opposite-direction}: 0;
         }
       }
@@ -646,7 +646,7 @@
           font-size: $topbar-back-link-size;
 
           a {
-            // line-height: ($topbar-height / 2);
+            // line-height: calc(#{$topbar-height} / 2);
             display: block;
             color: $topbar-link-color;
 
@@ -714,7 +714,7 @@
         font-size: rem-calc(14);
         color: $md-gray-40;
         // position: relative;
-        // top: (($topbar-height - $topbar-input-height) / 2);
+        // top: calc((#{$topbar-height} - #{$topbar-input-height}) / 2);
       }
 
       &.expanded {
@@ -807,8 +807,8 @@
                 top
               );
 
-              top: $topbar-height / 2;
-              margin-top: -($topbar-dropdown-toggle-size / 2);
+              top: calc(#{$topbar-height} / 2);
+              margin-top: calc(-(#{$topbar-dropdown-toggle-size} / 2));
             }
           }
         }

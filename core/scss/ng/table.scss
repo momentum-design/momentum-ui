@@ -219,7 +219,7 @@ $table-margin-bottom: rem-calc(20) !default;
   tbody tr td,
   tr td {
     display: $table-display;
-    padding: ($table-row-padding / 2) $table-row-padding;
+    padding: calc(#{$table-row-padding} / 2) $table-row-padding;
     line-height: vr-adjust(24px) - rem($table-border-size);
   }
 
@@ -244,7 +244,7 @@ $table-margin-bottom: rem-calc(20) !default;
     tbody tr td,
     tr td {
       display: $table-display;
-      padding: ($table-row-padding / 2) $table-row-padding;
+      padding: calc(#{$table-row-padding} / 2) $table-row-padding;
       line-height: vr-adjust(24px) - rem($table-border-size);
     }
   }

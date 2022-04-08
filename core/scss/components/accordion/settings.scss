@@ -5,7 +5,7 @@ $accordion-header__font-family: $body-font-family !default;
 $accordion-list-item__font-family: $brand-font-light;
 $accordion-list-item__height: rem-calc(32);
 $accordion-list-item__padding: rem-calc(10);
-$accordion-content-padding: ($column-gutter/2) !default;
+$accordion-content-padding: calc(#{$column-gutter} / 2) !default;
 $accordion-arrow__font-size: rem-calc(12);
 
 $accordion-header__color: $md-black-100 !default;

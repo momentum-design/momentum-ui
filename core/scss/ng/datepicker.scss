@@ -207,7 +207,7 @@
       > span {
         display: block;
         float: left;
-        width: calc(100% / 7 - 4px);
+        width: calc(calc(100% / 7) - 4px);
         margin: 0 2px;
         text-align: center;
 

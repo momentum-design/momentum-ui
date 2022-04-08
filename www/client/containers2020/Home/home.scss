@@ -120,7 +120,7 @@
     h1 {
       font-size: 3rem;
       font-family: $brand-font-regular;
-      line-height: (56 / 48);
+      line-height: calc(56 / 48);
     }
   }
   
@@ -152,7 +152,7 @@
     h1 {
       font-size: 3rem;
       font-family: $brand-font-regular;
-      line-height: (56 / 48);
+      line-height: calc(56 / 48);
     }
   }
 

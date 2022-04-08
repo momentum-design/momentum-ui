@@ -1,10 +1,10 @@
 @mixin form-row-base {
   .row {
-    margin: 0 ((-$form-spacing) / 2);
+    margin: 0 calc((-#{$form-spacing}) / 2);
 
     .column,
     .columns {
-      padding: 0 ($form-spacing / 2);
+      padding: 0 calc(#{$form-spacing} / 2);
     }
 
     &.collapse {
@@ -25,7 +25,7 @@
   input.columns,
   textarea.column,
   textarea.columns {
-    padding-#{$default-float}: ($form-spacing / 2);
+    padding-#{$default-float}: calc(#{$form-spacing} / 2);
   }
 }
 

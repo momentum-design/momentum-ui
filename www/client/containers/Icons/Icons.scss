@@ -5,10 +5,10 @@
     @return calc((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total});
   }
   @function icon-size($nav-width, $total) {
-    @return calc(((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total}) * 0.8);
+    @return calc(calc((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total}) * 0.8);
   }
   @function icon-font-size($nav-width, $total) {
-    @return calc(((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total}) * 0.32);
+    @return calc(calc((100vw - #{$nav-width} - #{$item-margin-left} * (#{$total} + 1)) / #{$total}) * 0.32);
   }
 
   &__viewer {

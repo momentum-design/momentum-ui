@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.18.0...@momentum-ui/illustrations@1.18.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* **illustrations:** fix bullseye-filter-192.svg ([#1206](https://github.com/momentum-design/momentum-ui/issues/1206)) ([08604b7](https://github.com/momentum-design/momentum-ui/commit/08604b77160c70ca60bb1a2128cac9755fbfa5b2))
+
+
+
+
+
 # [1.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.17.0...@momentum-ui/illustrations@1.18.0) (2022-03-14)
 
 

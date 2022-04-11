@@ -1,10 +1,10 @@
-import "./ComboBox";
-import { ComboBox } from "./ComboBox";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
+import "./ComboBox";
+import { ComboBox } from "./ComboBox";
 
 describe("Combobox Component", () => {
   afterEach(fixtureCleanup);
@@ -1065,5 +1065,72 @@ describe("Combobox Component", () => {
     expect(el.invalid).toBeTruthy();
     expect(el.shadowRoot!.querySelector(".md-combobox-error")).not.toBeNull();
     expect(el.shadowRoot!.querySelector("md-help-text")!.message).toEqual("Error Message from Combobox");
+  });
+
+  test("should render with Slect All option", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all> </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector("#md-combobox-listbox")?.querySelector("#selectAll")).not.toBeNull();
+  });
+
+  test("should select/unselect all options on clicking Select All", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    const selectAllEl = el.shadowRoot!.querySelector("#md-combobox-listbox")?.querySelector("#selectAll");
+    expect(selectAllEl).not.toBeNull();
+    expect(el.selectedOptions.length).toEqual(0);
+    selectAllEl?.dispatchEvent(new MouseEvent("click"));
+
+    await nextFrame();
+    expect(el.selectedOptions.length).toEqual(comboBoxOptions.length);
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")).not.toBeNull();
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")?.textContent).toEqual("All");
+
+    el.expanded = true;
+    await elementUpdated(el);
+    selectAllEl?.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+    expect(el.selectedOptions.length).toEqual(0);
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")).toBeNull();
+  });
+
+  test("should show selected option's count", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+
+    const firstOption = el.shadowRoot!.querySelectorAll("#md-combobox-listbox .md-combobox-option")[1];
+    firstOption.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+    expect(el.selectedOptions.length).toEqual(1);
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")?.textContent).toEqual("1 Selected");
+  });
+
+  test("should render with custom error", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} show-custom-error>
+          <div slot="custom-error">Custom Error!!!</div>
+        </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector('[slot="custom-error"]')).not.toBeNull();
+    expect(el.shadowRoot!.querySelector('[slot="custom-error"]')!.innerHTML).toEqual("Custom Error!!!");
   });
 });

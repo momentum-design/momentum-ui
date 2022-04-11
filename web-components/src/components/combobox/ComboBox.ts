@@ -13,7 +13,7 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -59,11 +59,22 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
+
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "Combobox Input";
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
 
+    @property({ type: String, attribute: "all-i18n" }) allTextLocalization = "All";
+    @property({ type: String, attribute: "select-all-i18n" }) selectAllTextLocalization = "Select All";
+    @property({ type: String, attribute: "selected-all-i18n" }) selectedTextLocalization = "Selected";
+
+    @property({ type: Boolean, attribute: "allow-select-all", reflect: true }) allowSelectAll = false;
+    @property({ type: Boolean, attribute: "show-custom-error", reflect: true }) showCustomError = false;
+    @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
+
     @property({ type: Number, attribute: false })
+    @internalProperty()
+    private isSelectAllChecked = false;
     get focusedIndex() {
       return this._focusedIndex;
     }
@@ -277,11 +288,13 @@ export namespace ComboBox {
           selected: this.selectedOptions
         });
       }
-
+      if (this.isMulti && this.allowSelectAll) {
+        this.isSelectAllChecked = this.isSelectAllSelected();
+      }
       this.requestUpdate();
     }
 
-    private notifySelectedChange(detail: SelectedEvent) {
+    private notifySelectedChange = debounce((detail: SelectedEvent) => {
       this.dispatchEvent(
         new CustomEvent<SelectedEvent>("change-selected", {
           composed: true,
@@ -289,7 +302,7 @@ export namespace ComboBox {
           detail
         })
       );
-    }
+    }, 250);
 
     private filterOptions(value: string): (string | OptionMember)[] {
       return value && value.length
@@ -312,6 +325,13 @@ export namespace ComboBox {
             this.listBox.style.maxHeight = `${height}px`;
           }
         }
+        if (this.showCustomError) {
+          const errorContent = this.listBox?.querySelector("[slot]");
+          if (this.listBox && errorContent) {
+            this.listBox.style.height = `${errorContent.clientHeight}px`;
+            this.listBox.style.maxHeight = `${errorContent.clientHeight}px`;
+          }
+        }
       });
     }
 
@@ -326,6 +346,7 @@ export namespace ComboBox {
     private unCheckedAllOptions() {
       if (this.isMulti) {
         this.lists!.forEach((list, index) => this.unCheckedOption(index));
+        this.isSelectAllChecked = false;
       }
     }
 
@@ -337,6 +358,26 @@ export namespace ComboBox {
           selected: this.selectedOptions
         });
       }
+    }
+
+    private checkAllOptions() {
+      if (this.isMulti) {
+        this.lists!.forEach((list, index) => this.checkOption(index));
+      }
+    }
+
+    private checkOption(index: number) {
+      if (this.isMulti) {
+        this.lists![index].setAttribute("aria-checked", "true");
+        this.notifySelectedChange({
+          value: this.filteredOptions[index],
+          selected: this.selectedOptions
+        });
+      }
+    }
+
+    private isSelectAllSelected() {
+      return this.selectedOptions.length === this.options.length;
     }
 
     private setFocusOnHost(force: boolean) {
@@ -464,6 +505,25 @@ export namespace ComboBox {
       });
     }
 
+    async handleSelectAll() {
+      if (this.selectedOptions.length === 0 || this.isSelectAllSelected()) {
+        this.isSelectAllChecked = !this.isSelectAllChecked;
+        if (this.isSelectAllChecked) {
+          this.selectedOptions = [...this.options];
+          this.checkAllOptions();
+        } else {
+          this.selectedOptions = [];
+          this.unCheckedAllOptions();
+        }
+
+        await this.updateComplete;
+        this.setVisualListbox(true);
+        this.notifySelectedChange({
+          selected: this.selectedOptions
+        });
+      }
+    }
+
     handleInputKeyUp(event: KeyboardEvent) {
       switch (event.code) {
         case Key.Escape: {
@@ -548,14 +608,19 @@ export namespace ComboBox {
 
     private selectedChange(event: CustomEvent<{ event: MouseEvent }>) {
       const { event: clickEvent } = event.detail;
-      const optionIndex = this.findOptionIndex(clickEvent);
+      let optionIndex = this.findOptionIndex(clickEvent);
       if (optionIndex !== -1) {
         this.focusedIndex = optionIndex;
+        if (this.isMulti && this.allowSelectAll) {
+          optionIndex = optionIndex - 1;
+        }
         const option = this.getFocusedItem(optionIndex);
         if (option) {
           this.setSelectedOption(option);
           if (!this.isMulti) {
             this.setInputValue(this.getOptionValue(option));
+          } else if (this.isMulti && this.allowSelectAll) {
+            this.isSelectAllChecked = this.isSelectAllSelected();
           }
         }
       }
@@ -564,7 +629,7 @@ export namespace ComboBox {
     private shouldChangeButton() {
       return (
         (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
-        (this.isMulti && this.selectedOptions.length)
+        (this.isMulti && this.selectedOptions.length && !this.noClearIcon)
       );
     }
 
@@ -610,7 +675,7 @@ export namespace ComboBox {
             this.setFocusOnHost(true);
             this.setVisualListbox(false);
             this.updateOnNextFrame(() => {
-              const option = this.getFocusedItem(this.focusedIndex);
+              const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
               if (this.allowCustomValue && this.input && this.input.value.length) {
                 const isOptionAlreadyExist = this.findFilteredOption(this.inputValue) === -1;
                 if (isOptionAlreadyExist) {
@@ -620,7 +685,12 @@ export namespace ComboBox {
               }
               if (option) {
                 this.setSelectedOption(option);
-                this.setInputValue(this.getOptionValue(option));
+                if (!this.showSelectedCount) {
+                  this.setInputValue(this.getOptionValue(option));
+                }
+              }
+              if (this.isMulti && this.allowSelectAll && this.focusedIndex === 0) {
+                this.handleSelectAll();
               }
             });
           }
@@ -632,13 +702,17 @@ export namespace ComboBox {
               this.setVisualListbox(true);
             }
             this.updateOnNextFrame(() => {
-              if (this.focusedIndex === -1 || this.focusedIndex >= this.filteredOptions.length - 1) {
+              if (
+                this.focusedIndex === -1 ||
+                (!this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length - 1) ||
+                (this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length)
+              ) {
                 this.focusedIndex = 0;
               } else {
                 this.focusedIndex++;
               }
               const option = this.getFocusedItem(this.focusedIndex);
-              if (option) {
+              if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
               }
             });
@@ -652,12 +726,14 @@ export namespace ComboBox {
             }
             this.updateOnNextFrame(() => {
               if (this.focusedIndex <= 0) {
-                this.focusedIndex = this.filteredOptions.length - 1;
+                this.focusedIndex = !this.allowSelectAll
+                  ? this.filteredOptions.length - 1
+                  : this.filteredOptions.length;
               } else {
                 this.focusedIndex--;
               }
               const option = this.getFocusedItem(this.focusedIndex);
-              if (option) {
+              if (option && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(option));
               }
             });
@@ -690,10 +766,13 @@ export namespace ComboBox {
         case Key.Space: {
           if (this.isMulti) {
             event.preventDefault();
-            const option = this.getFocusedItem(this.focusedIndex);
+            const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
             if (option) {
               this.setSelectedOption(option);
-              this.setInputValue();
+              if (!this.showSelectedCount) this.setInputValue();
+            }
+            if (this.focusedIndex === 0 && this.allowSelectAll) {
+              this.handleSelectAll();
             }
           }
           break;
@@ -811,6 +890,49 @@ export namespace ComboBox {
       `;
     }
 
+    getSelectAllOption() {
+      return html`
+        <li
+          id="selectAll"
+          part="combobox-option"
+          role="option"
+          class="md-combobox-option ${classMap(this.listItemOptionMap)}"
+          @click=${this.handleSelectAll}
+          aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
+        >
+          ${!this.isSelectAllChecked && this.selectedOptions.length !== 0
+            ? html`
+                <span class="select-option indeterminate">
+                  <md-icon name="icon-minus_14"></md-icon>
+                </span>
+              `
+            : html`
+                <span class="select-option">
+                  <md-icon name="icon-check_14"></md-icon>
+                </span>
+              `}
+          <span part="label" class="select-label">${this.selectAllTextLocalization}</span>
+        </li>
+      `;
+    }
+
+    getSelctedCount() {
+      if (this.selectedOptions.length === 0) {
+        return nothing;
+      } else if (this.isSelectAllSelected()) {
+        return html`
+          <md-span class="selected-count">${this.allTextLocalization}</md-span>
+        `;
+      }
+      return html`
+        <md-span class="selected-count">${this.selectedOptions.length} ${this.selectedTextLocalization}</md-span>
+      `;
+    }
+
+    getCustomErrorContent() {
+      return this.querySelector("[slot]") || this.shadowRoot!.querySelector("[slot]");
+    }
+
     render() {
       return html`
         <div
@@ -822,7 +944,9 @@ export namespace ComboBox {
             ${this.searchable ? this.searchIconTemplate() : nothing}
             <div class="md-combobox__multiwrap" part="multiwrap">
               ${this.isMulti
-                ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
+                ? this.isMulti && !this.showSelectedCount
+                  ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
+                  : this.getSelctedCount()
                 : nothing}
               <input
                 class="md-combobox-listbox"
@@ -832,7 +956,9 @@ export namespace ComboBox {
                 aria-label=${this.ariaLabel}
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
-                placeholder=${this.placeholder}
+                placeholder=${this.isMulti && this.showSelectedCount && this.selectedOptions.length !== 0
+                  ? ""
+                  : this.placeholder}
                 aria-controls="md-combobox-listbox"
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
@@ -850,79 +976,103 @@ export namespace ComboBox {
               ? this.clearButtonTemplate()
               : this.arrowButtonTemplate()}
           </div>
-          <ul
-            id="md-combobox-listbox"
-            part="combobox-options"
-            role="listbox"
-            aria-label=${this.label}
-            style=${styleMap({
-              display: this.expanded
-                ? this.options.length && this.filteredOptions.length === 0 && this.inputValue && this.allowCustomValue
-                  ? "none"
-                  : "block"
-                : "none",
-              "z-index": "1"
-            })}
-          >
-            ${repeat(
-              this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
-              (option: string | OptionMember) => this.getOptionId(option),
-              (option, optionIndex) => html`
-                <li
-                  id=${this.getOptionId(option)}
-                  title="${this.getOptionValue(option)}"
-                  part="combobox-option"
-                  role="option"
-                  class="md-combobox-option ${classMap(this.listItemOptionMap)}"
-                  aria-label=${this.getOptionValue(option)}
-                  aria-selected=${this.getAriaState(optionIndex)}
-                  tabindex="-1"
-                  @click=${this.handleListClick}
-                  aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked(option) : undefined)}
+          ${!this.showCustomError
+            ? html`
+                <ul
+                  id="md-combobox-listbox"
+                  part="combobox-options"
+                  role="listbox"
+                  aria-label=${this.label}
+                  style=${styleMap({
+                    display: this.expanded
+                      ? this.options.length &&
+                        this.filteredOptions.length === 0 &&
+                        this.inputValue &&
+                        this.allowCustomValue
+                        ? "none"
+                        : "block"
+                      : "none",
+                    "z-index": "1"
+                  })}
                 >
-                  ${this.isMulti
-                    ? html`
-                        <span class="select-option">
-                          <md-icon name="icon-check_14"></md-icon>
+                  ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
+                  ${repeat(
+                    this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
+                    (option: string | OptionMember) => this.getOptionId(option),
+                    (option, optionIndex) => html`
+                      <li
+                        id=${this.getOptionId(option)}
+                        title="${this.getOptionValue(option)}"
+                        part="combobox-option"
+                        role="option"
+                        class="md-combobox-option"
+                        aria-label=${this.getOptionValue(option)}
+                        aria-selected=${this.getAriaState(optionIndex)}
+                        tabindex="-1"
+                        @click=${this.handleListClick}
+                        aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked(option) : undefined)}
+                      >
+                        ${this.isMulti
+                          ? html`
+                              <span class="select-option">
+                                <md-icon name="icon-check_14"></md-icon>
+                              </span>
+                            `
+                          : nothing}
+                        <span part="label" class="select-label">
+                          ${this.isCustomContent
+                            ? html`
+                                <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
+                              `
+                            : findHighlight(
+                                this.getOptionValue(option),
+                                this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                              ).map(({ text, matching }) =>
+                                matching
+                                  ? html`
+                                      <span class="highlight-text">${text}</span>
+                                    `
+                                  : html`
+                                      <span class="selected-label-text">${text}</span>
+                                    `
+                              )}
                         </span>
+                      </li>
+                    `
+                  )}
+                  ${this.options.length &&
+                  this.filteredOptions.length === 0 &&
+                  this.inputValue &&
+                  !this.allowCustomValue
+                    ? html`
+                        <li class="no-result" role="option" aria-selected="false" tabindex="-1">
+                          ${this.resultsTextLocalization.trim()}
+                        </li>
                       `
                     : nothing}
-                  <span part="label" class="select-label">
-                    ${this.isCustomContent
-                      ? html`
-                          <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
-                        `
-                      : findHighlight(
-                          this.getOptionValue(option),
-                          this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                        ).map(({ text, matching }) =>
-                          matching
-                            ? html`
-                                <span class="highlight-text">${text}</span>
-                              `
-                            : html`
-                                <span class="selected-label-text">${text}</span>
-                              `
-                        )}
-                  </span>
-                </li>
+                  ${this.options.length === 0
+                    ? html`
+                        <li class="no-result" role="option" aria-selected="false" tabindex="-1">
+                          ${this.optionsTextLocalization.trim()}
+                        </li>
+                      `
+                    : nothing}
+                </ul>
               `
-            )}
-            ${this.options.length && this.filteredOptions.length === 0 && this.inputValue && !this.allowCustomValue
-              ? html`
-                  <li class="no-result" role="option" aria-selected="false" tabindex="-1">
-                    ${this.resultsTextLocalization.trim()}
-                  </li>
-                `
-              : nothing}
-            ${this.options.length === 0
-              ? html`
-                  <li class="no-result" role="option" aria-selected="false" tabindex="-1">
-                    ${this.optionsTextLocalization.trim()}
-                  </li>
-                `
-              : nothing}
-          </ul>
+            : html`
+                <ul
+                  id="md-combobox-listbox"
+                  part="combobox-options"
+                  role="listbox"
+                  aria-label=${this.label}
+                  style=${styleMap({
+                    display: this.expanded ? "block" : "none",
+                    "z-index": "1"
+                  })}
+                >
+                  ${this.getCustomErrorContent()}
+                </ul>
+              `}
         </div>
         ${this.invalid
           ? html`

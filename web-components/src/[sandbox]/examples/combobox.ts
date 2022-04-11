@@ -1,6 +1,6 @@
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
-import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 
@@ -9,6 +9,10 @@ const testCustomValue = [
   { name: "blah", value: "123", __typename: "typename" },
   { name: "test", value: "456", __typename: "typename" }
 ];
+
+const changeHandler = (e: CustomEvent) => {
+  console.log("change-selected: ", e);
+};
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
@@ -136,10 +140,55 @@ export const comboBoxTemplate = html`
     {dropdownValue.map((item, index) => dropdownOptionTemplate(item, index))}
   </md-combobox>
   <h3>Without Clear Icon</h3>
+  <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" no-clear-icon></md-combobox>
+
+  <h3>With multi count and select all</h3>
   <md-combobox
     .options=${comboBoxOptions}
-    placeholder="Placeholder"
-    .value=${[comboBoxOptions[5]]}
+    shape=${"pill"}
+    is-multi
+    show-selected-count
     no-clear-icon
+    allow-select-all
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    select-all-i18n=${"All"}
   ></md-combobox>
+
+  <h3>With multi count and select all for Object Data</h3>
+  <md-combobox
+    .options=${comboBoxObjectOptions}
+    shape=${"pill"}
+    option-id="id"
+    is-multi
+    option-value="country"
+    show-selected-count
+    allow-select-all
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+  >
+  </md-combobox>
+
+  <h3>Custom error</h3>
+  <md-combobox
+    .options=${comboBoxObjectOptions}
+    option-id="id"
+    option-value="country"
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    show-custom-error
+    shape=${"pill"}
+  >
+    <div
+      slot="custom-error"
+      aria-label="Wikipedia"
+      display-value="Wikipedia"
+      @click=${() => {
+        console.log("clicked!");
+      }}
+    >
+      <span class="company-value">Wikipedia</span>
+      <md-icon name="icon-wikipedia_16"></md-icon>
+    </div>
+  </md-combobox>
 `;

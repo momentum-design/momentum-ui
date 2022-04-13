@@ -332,4 +332,12 @@ describe("Input Component", () => {
     const { detail } = await oneEvent(element, "input-change");
     expect(detail).toBeDefined();
   });
+
+  test("Should not show cancel button if input is readOnly",async()=>{
+    const element= await fixture<Input.ELEMENT>(
+      html`<md-input label="Multiline" containerSize="small-12" ?readonly=${true}></md-input>`
+    );
+      const rightTemplate=element.shadowRoot!.querySelector(".md-input__after")?.querySelector("md-button");
+      expect(rightTemplate).toBeNull();
+  })
 });

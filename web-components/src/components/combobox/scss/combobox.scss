@@ -52,6 +52,7 @@
 
 .md-combobox-list {
   position: relative;
+  height: $combobox-min-height;
 }
 
 .md-combobox {
@@ -61,8 +62,8 @@
     border: $combobox-border;
     border-radius: $combobox-group-radius;
     display: flex;
-    min-height: $combobox-min-height;
     padding: $combobox-input-padding;
+    height:rem-calc(34);
 
     md-icon {
       color: var(--md-secondary-text-color, $md-gray-70);
@@ -115,7 +116,6 @@
   background: transparent;
   border: 0;
   cursor: pointer;
-  height: $combobox-min-height;
   margin: 0;
   margin-left: calc(#{$combobox-main-indent} * 2);
   outline: none;
@@ -123,6 +123,11 @@
   padding-top: calc(#{$combobox-main-indent} / 2);
   position: relative;
   vertical-align: bottom;
+  .md-input__icon-clear{
+    display: flex;
+    align-items: center;
+    height: inherit;
+  }
 
   md-icon {
     color: var(--combobox-dropdown-item-icon-color, $lm-combobox-dropdown-item-icon-color-light);

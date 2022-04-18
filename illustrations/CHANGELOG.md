@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.18.1...@momentum-ui/illustrations@1.19.0) (2022-04-13)
+
+
+### Features
+
+* **illustrations:** add speakers-issue-120.svg ([#1210](https://github.com/momentum-design/momentum-ui/issues/1210)) ([79a3276](https://github.com/momentum-design/momentum-ui/commit/79a3276b46042c2ba2a025e174b1d12b61edcf77))
+
+
+
+
+
 ## [1.18.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.18.0...@momentum-ui/illustrations@1.18.1) (2022-04-09)
 
 

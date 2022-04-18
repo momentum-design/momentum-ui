@@ -349,9 +349,9 @@ $modules: () !default;
 @mixin icon-busy-presence-bold() { content: char-from-code("f235"); }
 @mixin icon-busy-presence-light() { content: char-from-code("f236"); }
 @mixin icon-busy-presence-regular() { content: char-from-code("f237"); }
-@mixin icon-button-100%-bold() { content: char-from-code("f238"); }
-@mixin icon-button-100%-light() { content: char-from-code("f239"); }
-@mixin icon-button-100%-regular() { content: char-from-code("f23a"); }
+@mixin icon-button-100-bold() { content: char-from-code("f238"); }
+@mixin icon-button-100-light() { content: char-from-code("f239"); }
+@mixin icon-button-100-regular() { content: char-from-code("f23a"); }
 @mixin icon-calendar-add-bold() { content: char-from-code("f23b"); }
 @mixin icon-calendar-add-filled() { content: char-from-code("f23c"); }
 @mixin icon-calendar-add-light() { content: char-from-code("f23d"); }

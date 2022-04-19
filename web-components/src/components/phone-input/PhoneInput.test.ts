@@ -191,7 +191,7 @@ describe("PhoneInput Component", () => {
     expect(flag?.querySelector("img")).not.toBeNull();
   });
 
-  test.only("should not display error on empty input text-box", async () => {
+  test("should not display error on empty input text-box", async () => {
     const parentElement = await fixture(
       html`
         <div class="parent"></div>

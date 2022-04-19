@@ -89,6 +89,7 @@ export namespace PhoneInput {
 
     validateNumber() {
       this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
+      this.showErrorMessage = this.value ? !isValidNumberForRegion(this.value, this.countryCode) : false;
     }
 
     handleCountryChange(event: CustomEvent) {
@@ -219,7 +220,7 @@ export namespace PhoneInput {
             clear
             type="tel"
             value="${this.formattedValue}"
-            .messageArr="${!this.isValid || this.showErrorMessage
+            .messageArr="${this.showErrorMessage
               ? [
                   {
                     type: "error",
@@ -239,3 +240,4 @@ declare global {
     "md-phone-input": PhoneInput.ELEMENT;
   }
 }
+

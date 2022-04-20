@@ -302,7 +302,7 @@ export namespace ComboBox {
           detail
         })
       );
-    }, 250);
+    }, 0);
 
     private filterOptions(value: string): (string | OptionMember)[] {
       return value && value.length

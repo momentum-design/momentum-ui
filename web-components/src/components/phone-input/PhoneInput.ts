@@ -87,7 +87,7 @@ export namespace PhoneInput {
     }
 
     validateNumber() {
-      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
+      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : true;
     }
 
     handleCountryChange(event: CustomEvent) {
@@ -238,3 +238,4 @@ declare global {
     "md-phone-input": PhoneInput.ELEMENT;
   }
 }
+

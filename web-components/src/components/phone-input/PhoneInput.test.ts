@@ -190,4 +190,34 @@ describe("PhoneInput Component", () => {
     expect(getFlagOperation).toHaveBeenCalled();
     expect(flag?.querySelector("img")).not.toBeNull();
   });
+
+  test("should not display error on empty input text-box", async () => {
+    const parentElement = await fixture(
+      html`
+        <div class="parent"></div>
+      `
+    );
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input
+          type="tel"
+          id="international"
+          name="international-value"
+          value=""
+          country-calling-code="+1"
+          errorMessage="invalid phone number"
+        ></md-phone-input>
+      `
+    );
+
+    parentElement.appendChild(element);
+
+    const event: Event = new Event("input-blur");
+    element.handleBlur(event);
+    await elementUpdated(element);
+    const input = element.shadowRoot?.querySelector("md-input");
+    const helpText = input?.shadowRoot?.querySelector("md-help-text");
+    const slot = helpText?.shadowRoot?.querySelector("slot");
+    expect(slot?.textContent).toBeUndefined();
+  });
 });

@@ -89,7 +89,6 @@ export namespace PhoneInput {
 
     validateNumber() {
       this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : true;
-      // this.showErrorMessage = this.value ? !isValidNumberForRegion(this.value, this.countryCode) : false;
     }
 
     handleCountryChange(event: CustomEvent) {

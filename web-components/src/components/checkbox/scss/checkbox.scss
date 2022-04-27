@@ -8,6 +8,8 @@
   border-radius: $checkbox__border-radius;
   cursor: pointer;
   display: inline-flex;
+  position: relative;
+  vertical-align: middle;
 
   .checkbox-input {
     height: calc(#{$checkbox__size} + #{$checkbox__main-indent});

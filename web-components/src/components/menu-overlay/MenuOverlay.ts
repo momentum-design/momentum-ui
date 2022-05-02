@@ -249,6 +249,12 @@ export namespace MenuOverlay {
                 element: this.arrow,
                 padding: 5
               }
+            },
+            {
+              name: 'computeStyles',
+              options: {
+                adaptive: false, // this will recompute popper position
+              },
             }
           ]
         });

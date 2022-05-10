@@ -51,6 +51,7 @@ export namespace Modal {
     @property({ type: String }) closeBtnName = "";
     @property({ type: Boolean }) hideFooter = false;
     @property({ type: Boolean }) hideHeader = false;
+    @property({ type: Boolean }) disableInitialFocus = false;
 
     @internalProperty() private animating = false;
 
@@ -91,7 +92,7 @@ export namespace Modal {
     }
 
     private focusInsideModal() {
-      if (this.focusableElements && this.focusableElements.length) {
+      if (!this.disableInitialFocus && this.focusableElements && this.focusableElements.length) {
         this.setInitialFocus!();
       }
     }

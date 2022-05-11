@@ -92,7 +92,7 @@ export namespace Modal {
     }
 
     private focusInsideModal() {
-      if (!this.disableInitialFocus && this.focusableElements && this.focusableElements.length) {
+      if (this.focusableElements && this.focusableElements.length) {
         this.setInitialFocus!();
       }
     }
@@ -149,7 +149,9 @@ export namespace Modal {
     private async modalFadeIn() {
       if (this.backDrop) {
         await this.transitionPromise(this.backDrop);
-        this.focusInsideModal();
+        if (!this.disableInitialFocus) {
+          this.focusInsideModal();
+        }
       }
     }
 

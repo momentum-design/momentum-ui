@@ -23,7 +23,8 @@ import styles from "./scss/module.scss";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
-  type AdvanceOptionMember = {label:string, subOptions: (string | OptionMember)[]}
+  type AddressBook = {name: string, number: string, avatar?: string}
+  type AdvanceOptionMember = {label:string, subOptions: AddressBook[]}
   type SelectedEvent = {
     value?: string | OptionMember;
     selected: (string | OptionMember)[];
@@ -323,7 +324,14 @@ export namespace ComboBox {
 
     private filterAdvanceOptions(value: string):  AdvanceOptionMember[]{
       return value && value.length
-      ? this.advanceOptions.filter(()=>true)
+      ? this.advanceOptions.filter((option: AdvanceOptionMember)=>{
+          console.log({option});
+          console.log({value});
+          console.log(option.subOptions.filter((subOption: AddressBook) =>{
+            return new RegExp(value,"ig").test(subOption.number)
+          }))
+          return true;
+      })
       : this.advanceOptions;
     }
 
@@ -1074,15 +1082,29 @@ export namespace ComboBox {
                     ${this.advanceOptions.length > 0 && html`
                       ${repeat(
                       this.filterAdvanceOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
-                      (option: AdvanceOptionMember)=>{
-                          console.log(option);
+                      (advanceOption: AdvanceOptionMember)=>{
                          return html`
-                          <li part="combobox-option"
+                          <span part="combobox-option"
                               role="option"
                               class="md-combobox-option advance-label">
-                            ${option.label}
-                          </li>
-                          
+                            ${advanceOption.label}
+                          </span>
+                          ${repeat(advanceOption.subOptions,
+                            (option, optionIndex) => html`
+                              <li id=${option.name}
+                                  title="${option.name}"
+                                  part="combobox-option"
+                                  role="option"
+                                  class="md-combobox-option advance-value"
+                                  aria-label=${option.name}
+                                  tabindex="-1"
+                                  @click=${this.handleListClick}>
+                                <div class="avatar">${option.avatar}</div>
+                                <div class="details-container">
+                                  <p class="name">${option.name}</p>
+                                  <p class="number">${option.number}</p>
+                                </div>
+                            </li>`)}
                           `
                       })}
                     `}

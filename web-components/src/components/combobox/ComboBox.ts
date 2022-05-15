@@ -23,6 +23,7 @@ import styles from "./scss/module.scss";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
+  type AdvanceOptionMember = {label:string, subOptions: (string | OptionMember)[]}
   type SelectedEvent = {
     value?: string | OptionMember;
     selected: (string | OptionMember)[];
@@ -34,6 +35,7 @@ export namespace ComboBox {
 
     @property({ type: String }) label = "Options";
     @property({ type: Array }) options: (string | OptionMember)[] = [];
+    @property({ type: Array }) advanceOptions: AdvanceOptionMember[] = [];
     @property({ type: Array, attribute: "custom-options" }) customOptions = [];
     @property({ type: String }) placeholder = "";
     @property({ type: Boolean, attribute: "is-multi" }) isMulti = false;
@@ -72,8 +74,13 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-custom-error", reflect: true }) showCustomError = false;
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
 
+    // @property({ type: Array, reflect: true }) advanceOptions = [];
+
     @property({ type: Number, attribute: false })
+
     @internalProperty()
+
+
     private isSelectAllChecked = false;
     get focusedIndex() {
       return this._focusedIndex;
@@ -312,6 +319,12 @@ export namespace ComboBox {
               .includes(value.toLowerCase())
           )
         : this.options;
+    }
+
+    private filterAdvanceOptions(value: string):  AdvanceOptionMember[]{
+      return value && value.length
+      ? this.advanceOptions.filter(()=>true)
+      : this.advanceOptions;
     }
 
     private resizeListbox() {
@@ -995,7 +1008,7 @@ export namespace ComboBox {
                     "z-index": "1"
                   })}
                 >
-                  ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
+                 ${this.advanceOptions.length === 0 ? html` ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
                   ${repeat(
                     this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
                     (option: string | OptionMember) => this.getOptionId(option),
@@ -1056,7 +1069,23 @@ export namespace ComboBox {
                           ${this.optionsTextLocalization.trim()}
                         </li>
                       `
-                    : nothing}
+                    : nothing}`:nothing}
+
+                    ${this.advanceOptions.length > 0 && html`
+                      ${repeat(
+                      this.filterAdvanceOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
+                      (option: AdvanceOptionMember)=>{
+                          console.log(option);
+                         return html`
+                          <li part="combobox-option"
+                              role="option"
+                              class="md-combobox-option advance-label">
+                            ${option.label}
+                          </li>
+                          
+                          `
+                      })}
+                    `}
                 </ul>
               `
             : html`

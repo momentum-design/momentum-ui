@@ -322,17 +322,21 @@ export namespace ComboBox {
         : this.options;
     }
 
-    private filterAdvanceOptions(value: string):  AdvanceOptionMember[]{
-      return value && value.length
-      ? this.advanceOptions.filter((option: AdvanceOptionMember)=>{
-          console.log({option});
-          console.log({value});
-          console.log(option.subOptions.filter((subOption: AddressBook) =>{
-            return new RegExp(value,"ig").test(subOption.number)
-          }))
-          return true;
-      })
-      : this.advanceOptions;
+    private filterAdvanceOptions(value: string): AdvanceOptionMember[] {
+      if (value && value.length) {
+        return this.advanceOptions.map((option: AdvanceOptionMember) => {
+          return {
+            label: option.label,
+            subOptions: option.subOptions.filter((subOption: AddressBook) => {
+              return subOption.number.toLowerCase().includes(value.toLowerCase());
+            })
+          }
+        }).filter((option: AdvanceOptionMember) => {
+          return option.subOptions.length > 0;
+        });
+      } else {
+        return this.advanceOptions;
+      }
     }
 
     private resizeListbox() {
@@ -1089,8 +1093,7 @@ export namespace ComboBox {
                               class="md-combobox-option advance-label">
                             ${advanceOption.label}
                           </span>
-                          ${repeat(advanceOption.subOptions,
-                            (option, optionIndex) => html`
+                          ${repeat(advanceOption.subOptions, (option: AddressBook) => html`
                               <li id=${option.name}
                                   title="${option.name}"
                                   part="combobox-option"
@@ -1102,7 +1105,20 @@ export namespace ComboBox {
                                 <div class="avatar">${option.avatar}</div>
                                 <div class="details-container">
                                   <p class="name">${option.name}</p>
-                                  <p class="number">${option.number}</p>
+                                  <div class="number">
+                                    ${findHighlight(
+                                      option.number,
+                                      this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                                    ).map(({ text, matching }) =>
+                                      matching
+                                        ? html`
+                                            <span class="highlight-text">${text}</span>
+                                          `
+                                        : html`
+                                            <span class="number">${text}</span>
+                                          `
+                                    )}
+                                  </div>
                                 </div>
                             </li>`)}
                           `

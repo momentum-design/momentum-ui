@@ -1,6 +1,6 @@
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
-import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { comboBoxObjectOptions, comboBoxOptions, comboBoxOptionsLabelled } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 
@@ -15,14 +15,21 @@ const changeHandler = (e: CustomEvent) => {
 };
 
 export const comboBoxTemplate = html`
-  <h3>Default</h3>
+  <br/>
   <md-combobox
+    style="width: 400px; display: inline-block;"
+    .advanceOptions=${comboBoxOptionsLabelled}
+    placeholder="Placeholder"
+  ></md-combobox>
+  <br/>
+  <h3>Default with trim space</h3>
+ <md-combobox
     style="width: 220px; display: inline-block;"
     .options=${comboBoxOptions}
     placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
   ></md-combobox>
-  <h3>Default with trim space</h3>
-  <md-combobox
+  
+   <md-combobox
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     .value=${[comboBoxOptions[5]]}
@@ -86,6 +93,7 @@ export const comboBoxTemplate = html`
   </md-combobox>
   <h3>Slot Content</h3>
   <md-combobox with-custom-content>
+      <span slot="one-label" class="label">Entry Point</span>
     <div slot="one" aria-label="Facebook" display-value="Facebook">
       <span>Facebook</span>
       <md-icon name="icon-facebook_16"></md-icon>
@@ -101,7 +109,8 @@ export const comboBoxTemplate = html`
     <div slot="four" aria-label="Google" display-value="Google">
       <span class="company-value">Google</span>
       <md-icon name="icon-google_16"></md-icon>
-    </div>
+  </div>
+   
   </md-combobox>
   <h3>Slot Content Multi</h3>
   <md-combobox with-custom-content is-multi .value=${[{ id: "Wikipedia", value: "Wikipedia" }]}>

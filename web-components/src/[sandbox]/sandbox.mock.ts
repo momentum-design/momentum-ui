@@ -55,24 +55,19 @@ export const comboBoxOptionsLabelled = [{
   label: "Address Book",
   subOptions: [
     {
-      avatar: "AW",
-      name:"Amy White",
+      avatar: "CC",
+      name:"Credit Card 1",
       number:"11236543210"
     },
     {
-      avatar: "AW",
-      name:"Amy White",
+      avatar: "CC",
+      name:"Credit Card 2",
       number:"12346543210"
     },
     {
-      avatar: "AW",
-      name:"Amy White",
+      avatar: "CC",
+      name:"Credit Card 3",
       number:"13456543210"
-    },
-    {
-      avatar: "AW",
-      name:"Amy White",
-      number:"14566543210"
     },
   ]
 },{
@@ -81,21 +76,21 @@ export const comboBoxOptionsLabelled = [{
     {
       avatar: "AW",
       name:"Amy White",
-      number:"11236543210"
+      number:"112436543210"
     },
     {
       avatar: "AW",
-      name:"Amy White",
+      name:"Barbara Kean",
       number:"12346543210"
     },
     {
       avatar: "AW",
-      name:"Amy White",
+      name:"Beatrix Kearns",
       number:"13456543210"
     },
     {
       avatar: "AW",
-      name:"Amy White",
+      name:"Eleanna Rose",
       number:"14566543210"
     },
   ]

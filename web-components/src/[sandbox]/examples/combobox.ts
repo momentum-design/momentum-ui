@@ -191,4 +191,71 @@ export const comboBoxTemplate = html`
       <md-icon name="icon-wikipedia_16"></md-icon>
     </div>
   </md-combobox>
+
+  <h3>Group Label ComboBox</h3>
+  <md-combobox style="width: 250px; display: inline-block;" 
+              with-label
+              with-custom-content
+              placeholder="Placeholder">
+    <span slot="countries-label" label="true" display-value="Countries" group-name="Countries">Countries</span>
+    <div slot="Australia" aria-label="Australia" display-value="Australia" group-name="Countries">
+      <span>Australia</span>
+    </div>
+    <div slot="Austria" aria-label="Austria" display-value="Austria" group-name="Countries">
+      <span>Austria</span>
+    </div>
+    <span slot="cites-label" label="true" display-value="Cites" group-name="Cites">Cites</span>
+    <div slot="Ambala" aria-label="Ambala" display-value="Ambala" group-name="Cites">
+      <span>Ambala</span>
+    </div>
+    <div slot="Banaras" aria-label="Banaras" display-value="Banaras" group-name="Cites">
+      <span>Banaras</span>
+    </div>
+  </md-combobox>
+  <h3>Group Label ComboBox With Multi Tag</h3>
+  <md-combobox style="width: 250; display: inline-block;" 
+              with-label
+              is-multi
+              with-custom-content
+              placeholder="Placeholder">
+    <span slot="countries-label" label="true" display-value="Countries" group-name="Countries">Countries</span>
+    <div slot="Australia" aria-label="Australia" display-value="Australia" group-name="Countries">
+      <span>Australia</span>
+    </div>
+    <div slot="Austria" aria-label="Austria" display-value="Austria" group-name="Countries">
+      <span>Austria</span>
+    </div>
+    <span slot="cites-label" label="true" display-value="Cites" group-name="Cites">Cites</span>
+    <div slot="Ambala" aria-label="Ambala" display-value="Ambala" group-name="Cites">
+      <span>Ambala</span>
+    </div>
+    <div slot="Banaras" aria-label="Banaras" display-value="Banaras" group-name="Cites">
+      <span>Banaras</span>
+    </div>
+  </md-combobox>
+  <h3>Group Label ComboBox With Multi Selected Count</h3>
+  <md-combobox style="width: 250; display: inline-block;" 
+              with-label
+              is-multi
+              show-selected-count
+              allow-select-all
+              with-custom-content
+              placeholder="Placeholder">
+    <span slot="countries-label" label="true" display-value="Countries" group-name="Countries">Countries</span>
+    <div slot="Australia" aria-label="Australia" display-value="Australia" group-name="Countries">
+      <span>Australia</span>
+    </div>
+    <div slot="Austria" aria-label="Austria" display-value="Austria" group-name="Countries">
+      <span>Austria</span>
+    </div>
+    <span slot="cites-label" label="true" display-value="Cites" group-name="Cites">Cites</span>
+    <div slot="Ambala" aria-label="Ambala" display-value="Ambala" group-name="Cites">
+      <span>Ambala</span>
+    </div>
+    <div slot="Banaras" aria-label="Banaras" display-value="Banaras" group-name="Cites">
+      <span>Banaras</span>
+    </div>
+  </md-combobox>
+  <br/>
+  <br/>
 `;

@@ -51,7 +51,6 @@ export const comboBoxObjectOptions = [
   { id: "28", country: "Chad" }
 ];
 
-
 export const comboBoxComplexObjectOption = [
   {
     countryNameEn: "Andorra",

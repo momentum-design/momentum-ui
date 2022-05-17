@@ -168,6 +168,22 @@ ul {
   white-space: pre-wrap;
 }
 
+.group-label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #545454;
+    padding: 9px 16px;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+    display: block;
+    width: 100%;
+    
+    &:hover {
+      background: unset;
+    }
+}
+
 .md-combobox-option {
   align-items: center;
   color: var(--md-primary-text-color, $md-gray-05);
@@ -246,57 +262,6 @@ ul {
 
   &[focused] {
     background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
-  }
-
-  &.advance-label{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: #545454;
-    padding: 9px 16px;
-    border-top: 1px solid #DEDEDE;
-    border-bottom: 1px solid #DEDEDE;
-
-    &:hover {
-      background: unset;
-    }
-  }
-  &.advance-value {
-    display: flex;
-    cursor: pointer;
-
-    .avatar{
-      width: 32px;
-      height: 32px;
-      background-color: #DEDEDE;
-      display: flex;
-      border-radius: 50%;
-      justify-content: center;
-      align-items: center;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 150%;
-    }
-    .details-container{
-      padding-left: 12px;
-      >.name {
-        margin-bottom: 4px;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 100%;
-        color: #121212;
-      }
-      >.number{
-        display: flex;
-        margin-bottom: 0;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 100%;
-        display: flex;
-        align-items: flex-end;
-        color: #545454;
-      }
-    }
   }
 }
 

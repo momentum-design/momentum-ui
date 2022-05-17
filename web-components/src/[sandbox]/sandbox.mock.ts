@@ -51,50 +51,6 @@ export const comboBoxObjectOptions = [
   { id: "28", country: "Chad" }
 ];
 
-export const comboBoxOptionsLabelled = [{
-  label: "Address Book",
-  subOptions: [
-    {
-      avatar: "CC",
-      name:"Credit Card 1",
-      number:"11236543210"
-    },
-    {
-      avatar: "CC",
-      name:"Credit Card 2",
-      number:"12346543210"
-    },
-    {
-      avatar: "CC",
-      name:"Credit Card 3",
-      number:"13456543210"
-    },
-  ]
-},{
-  label: "Entry Point",
-  subOptions: [
-    {
-      avatar: "AW",
-      name:"Amy White",
-      number:"112436543210"
-    },
-    {
-      avatar: "AW",
-      name:"Barbara Kean",
-      number:"12346543210"
-    },
-    {
-      avatar: "AW",
-      name:"Beatrix Kearns",
-      number:"13456543210"
-    },
-    {
-      avatar: "AW",
-      name:"Eleanna Rose",
-      number:"14566543210"
-    },
-  ]
-}]
 
 export const comboBoxComplexObjectOption = [
   {

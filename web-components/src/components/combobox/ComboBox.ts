@@ -48,7 +48,6 @@ export namespace ComboBox {
     @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";
     @property({ type: String, attribute: "option-value", reflect: true }) optionValue = "";
     @property({ type: Boolean, attribute: "with-custom-content" }) isCustomContent = false;
-    @property({ type: Boolean, attribute: "with-label" }) isWithLabel = false;
     @property({ type: Boolean, reflect: true }) searchable = false;
     @property({ type: String }) shape = "none";
     @property({ type: Array }) value: (string | OptionMember)[] = [];
@@ -73,12 +72,10 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-custom-error", reflect: true }) showCustomError = false;
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
 
-
     @property({ type: Number, attribute: false })
-
+    @internalProperty() 
+    private isWithLabel = false;
     @internalProperty()
-
-
     private isSelectAllChecked = false;
     get focusedIndex() {
       return this._focusedIndex;
@@ -214,28 +211,43 @@ export namespace ComboBox {
     }
 
     private setOptionCustomContent() {
-      this.customContent = [...this.querySelectorAll(`[slot]`)];
-      if (this.customContent && this.customContent.length) {
-        this.options = this.customContent.map(content => {
-          const customValue = content.getAttribute("aria-label");
-          const displayCustomValue = content.getAttribute("display-value");
-          const groupName = content.getAttribute("group-name");
-          const isLabel = content.getAttribute("label")?.toString() || "false";
-          if (this.isWithLabel) {
-            if (customValue && displayCustomValue && groupName) {
-              return { [this.optionId]: customValue, [this.optionValue]: displayCustomValue, isLabel, groupName };
+      if (this.isWithLabel) {
+        const customOptionGroups = [...this.querySelectorAll(`optgroup`)];
+        let final = [];
+        for (const optgroup of customOptionGroups) {
+          const label = optgroup.getAttribute("label");
+          const childOptions = [...optgroup.querySelectorAll(`[slot]`)];
+
+          final.push({ isLabel: "true", [this.optionValue]: label, groupName: label });
+          for (const option of childOptions) {
+            const customValue = option.getAttribute("aria-label");
+            const displayCustomValue = option.getAttribute("display-value");
+            const slotValue = option.getAttribute("slot");
+            if (customValue && displayCustomValue) {
+              final.push({
+                [this.optionId]: customValue,
+                [this.optionValue]: displayCustomValue,
+                isLabel: "false",
+                groupName: label,
+                slot: slotValue
+              });
             }
-            if (isLabel === "true" && displayCustomValue && groupName) {
-              return { isLabel, [this.optionValue]: displayCustomValue, groupName };
-            }
-          } else {
+          }
+        }
+        this.options = final as OptionMember[];
+      } else {
+        this.customContent = [...this.querySelectorAll(`[slot]`)];
+        if (this.customContent && this.customContent.length) {
+          this.options = this.customContent.map(content => {
+            const customValue = content.getAttribute("aria-label");
+            const displayCustomValue = content.getAttribute("display-value");
             if (customValue && displayCustomValue) {
               return { [this.optionId]: customValue, [this.optionValue]: displayCustomValue };
             }
-          }
-        }) as OptionMember[];
-      } else {
-        this.options = [];
+          }) as OptionMember[];
+        } else {
+          this.options = [];
+        }
       }
     }
 
@@ -247,7 +259,7 @@ export namespace ComboBox {
       return this.isOptionObject(option) ? (option as OptionMember)[this.optionId] : (option as string);
     }
 
-    private getFocusedItem(focusedIndex: number) {      
+    private getFocusedItem(focusedIndex: number) {
       if (focusedIndex >= 0) {
         return this.filteredOptions[focusedIndex];
       }
@@ -325,30 +337,29 @@ export namespace ComboBox {
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
           if (this.isWithLabel && typeof option !== "string" && option.isLabel === "true") {
-            return option
+            return option;
           } else {
             return (this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option))
               .toLowerCase()
-              .includes(value.toLowerCase())
+              .includes(value.toLowerCase());
           }
-        })
+        });
         if (this.isWithLabel) {
           return finalFilteredOption.filter((option: string | OptionMember) => {
             if (typeof option !== "string" && option.isLabel === "true") {
               const isGroupOption = finalFilteredOption.find(option2 => {
                 if (typeof option !== "string" && typeof option2 !== "string") {
-                  return option.groupName === option2.groupName && option2.isLabel === "false"
+                  return option.groupName === option2.groupName && option2.isLabel === "false";
                 }
-              })
-              return isGroupOption ? true : false
+              });
+              return isGroupOption ? true : false;
             } else {
-              return true
+              return true;
             }
-          })
+          });
         } else {
-          return finalFilteredOption
+          return finalFilteredOption;
         }
-
       } else {
         return this.options;
       }
@@ -360,12 +371,12 @@ export namespace ComboBox {
           const height = [...this.lists]
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-          
+
           if (this.listBox) {
             this.listBox.style.maxHeight = `${height}px`;
           }
         }
-        if(this.labels && this.lists){
+        if (this.labels && this.lists) {
           const labelHeight = [...this.labels]
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
@@ -464,8 +475,15 @@ export namespace ComboBox {
 
     private getCustomContentName(option: string | OptionMember) {
       const index = this.options.indexOf(option);
-      if (index !== -1) {
-        return this.customContent[index].slot;
+      if (this.isWithLabel) {
+        const selectedOption = this.options[index];
+        if (selectedOption && typeof selectedOption !== "string") {
+          return selectedOption.slot;
+        }
+      } else {
+        if (index !== -1) {
+          return this.customContent[index].slot;
+        }
       }
     }
 
@@ -864,6 +882,8 @@ export namespace ComboBox {
     connectedCallback() {
       super.connectedCallback();
       this.setupEvents();
+      const isOptGroup = this.querySelector("optgroup")
+      if(isOptGroup) this.isWithLabel = true;
     }
 
     disconnectedCallback() {
@@ -882,15 +902,17 @@ export namespace ComboBox {
     }
 
     get filteredOptions() {
-      return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter((options: string | OptionMember) => {
-        if (this.isWithLabel) {
-          if (typeof options !== "string") {
-            return options.isLabel === "false";
+      return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
+        (options: string | OptionMember) => {
+          if (this.isWithLabel) {
+            if (typeof options !== "string") {
+              return options.isLabel === "false";
+            }
+          } else {
+            return true;
           }
-        } else {
-          return true
         }
-      });
+      );
     }
 
     get comboBoxTemplateClassMap() {
@@ -991,7 +1013,21 @@ export namespace ComboBox {
     getCustomErrorContent() {
       return this.querySelector("[slot]") || this.shadowRoot!.querySelector("[slot]");
     }
-
+    getCustomContent(option: string | OptionMember) {
+      const slotName = this.getCustomContentName(option);
+      if (this.isWithLabel) {
+        const slot = [...this.querySelectorAll(`[slot]`)].find(element => element.slot === slotName);
+        if (slot) {
+          return document.createRange().createContextualFragment(`${slot.outerHTML}`)
+        } else {
+          return html``;
+        }
+      } else {
+        return html`
+          <slot name=${ifDefined(slotName)}></slot>
+        `;
+      }
+    }
     render() {
       return html`
         <div
@@ -1054,17 +1090,17 @@ export namespace ComboBox {
                     "z-index": "1"
                   })}
                 >
-                 ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
+                  ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
                   ${repeat(
                     this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
                     (option: string | OptionMember) => this.getOptionId(option),
                     (option: string | OptionMember, optionIndex) => {
-                      if(typeof option !== "string" && this.isWithLabel && option.isLabel === "true") {
+                      if (typeof option !== "string" && this.isWithLabel && option.isLabel === "true") {
                         return html`
-                            <span part="group-label" class="group-label">${option.value}</span>
-                          `
-                        } else {
-                          return html`
+                          <span part="group-label" class="group-label">${option.value}</span>
+                        `;
+                      } else {
+                        return html`
                           <li
                             id=${this.getOptionId(option)}
                             title="${this.getOptionValue(option)}"
@@ -1086,9 +1122,7 @@ export namespace ComboBox {
                               : nothing}
                             <span part="label" class="select-label">
                               ${this.isCustomContent
-                                ? html`
-                                    <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
-                                  `
+                                ? this.getCustomContent(option)
                                 : findHighlight(
                                     this.getOptionValue(option),
                                     this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
@@ -1103,8 +1137,8 @@ export namespace ComboBox {
                                   )}
                             </span>
                           </li>
-                        `}
-                      
+                        `;
+                      }
                     }
                   )}
                   ${this.options.length &&

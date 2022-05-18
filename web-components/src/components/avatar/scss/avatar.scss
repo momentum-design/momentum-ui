@@ -47,6 +47,9 @@
     &.md-avatar--engaged::after {
       box-shadow: $avatar--engaged__shadow--dark;
     }
+    &.md-avatar--idle::after {
+      box-shadow: $avatar--idle__shadow--dark;
+    }
   }
 
   &.md-avatar--typing {
@@ -214,6 +217,14 @@
   &.md-avatar--engaged::after {
     @include avatar-contents-base;
     box-shadow: $avatar--engaged__shadow;
+    content: "";
+    left: 0;
+    position: absolute;
+  }
+
+  &.md-avatar--idle::after {
+    @include avatar-contents-base;
+    box-shadow: $avatar--idle__shadow;
     content: "";
     left: 0;
     position: absolute;

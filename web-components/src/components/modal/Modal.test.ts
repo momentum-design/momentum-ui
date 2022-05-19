@@ -1,7 +1,7 @@
-import "./Modal";
-import { Modal } from "./Modal";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import "./Modal";
+import { Modal } from "./Modal";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -165,5 +165,35 @@ describe("Modal Component", () => {
 
     jest.runAllTimers();
     expect(element.show).toBeFalsy();
+  });
+
+  test("should call focusInsideModal in modal", async () => {
+    const focusInsideModal = jest.fn();
+    element["focusInsideModal"] = focusInsideModal;
+    const mockTransitionPromise = jest.fn();
+    element["transitionPromise"] = mockTransitionPromise;
+    element.show = true;
+    element.disableInitialFocus = false;
+
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(mockTransitionPromise).toBeCalled();
+    expect(focusInsideModal).toBeCalled();
+  });
+
+  test("shouldn't call focusInsideModal in modal", async () => {
+    const focusInsideModal = jest.fn();
+    element["focusInsideModal"] = focusInsideModal;
+    const mockTransitionPromise = jest.fn();
+    element["transitionPromise"] = mockTransitionPromise;
+    element.show = true;
+    element.disableInitialFocus = true;
+
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(mockTransitionPromise).toBeCalled();
+    expect(focusInsideModal).not.toBeCalled();
   });
 });

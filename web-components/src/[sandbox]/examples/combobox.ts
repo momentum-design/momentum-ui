@@ -242,6 +242,7 @@ export const comboBoxTemplate = html`
               with-custom-content
               allow-select-all
               show-selected-count
+              is-multi
               placeholder="Placeholder">
     <optgroup label="Countries">
         <div slot="Australia" aria-label="Australia" display-value="Australia">

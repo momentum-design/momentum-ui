@@ -74,7 +74,7 @@ export namespace ComboBox {
 
     @property({ type: Number, attribute: false })
     @internalProperty() 
-    private isWithLabel = false;
+    private isOptGroup = false;
     @internalProperty()
     private isSelectAllChecked = false;
     get focusedIndex() {
@@ -211,7 +211,7 @@ export namespace ComboBox {
     }
 
     private setOptionCustomContent() {
-      if (this.isWithLabel) {
+      if (this.isOptGroup) {
         const customOptionGroups = [...this.querySelectorAll(`optgroup`)];
         let final = [];
         for (const optgroup of customOptionGroups) {
@@ -336,7 +336,7 @@ export namespace ComboBox {
     private filterOptions(value: string): (string | OptionMember)[] {
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
-          if (this.isWithLabel && typeof option !== "string" && option.isLabel === "true") {
+          if (this.isOptGroup && typeof option !== "string" && option.isLabel === "true") {
             return option;
           } else {
             return (this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option))
@@ -344,7 +344,7 @@ export namespace ComboBox {
               .includes(value.toLowerCase());
           }
         });
-        if (this.isWithLabel) {
+        if (this.isOptGroup) {
           return finalFilteredOption.filter((option: string | OptionMember) => {
             if (typeof option !== "string" && option.isLabel === "true") {
               const isGroupOption = finalFilteredOption.find(option2 => {
@@ -475,7 +475,7 @@ export namespace ComboBox {
 
     private getCustomContentName(option: string | OptionMember) {
       const index = this.options.indexOf(option);
-      if (this.isWithLabel) {
+      if (this.isOptGroup) {
         const selectedOption = this.options[index];
         if (selectedOption && typeof selectedOption !== "string") {
           return selectedOption.slot;
@@ -883,7 +883,7 @@ export namespace ComboBox {
       super.connectedCallback();
       this.setupEvents();
       const isOptGroup = this.querySelector("optgroup")
-      if(isOptGroup) this.isWithLabel = true;
+      if(isOptGroup) this.isOptGroup = true;
     }
 
     disconnectedCallback() {
@@ -904,7 +904,7 @@ export namespace ComboBox {
     get filteredOptions() {
       return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
         (options: string | OptionMember) => {
-          if (this.isWithLabel) {
+          if (this.isOptGroup) {
             if (typeof options !== "string") {
               return options.isLabel === "false";
             }
@@ -1015,7 +1015,7 @@ export namespace ComboBox {
     }
     getCustomContent(option: string | OptionMember) {
       const slotName = this.getCustomContentName(option);
-      if (this.isWithLabel) {
+      if (this.isOptGroup) {
         const slot = [...this.querySelectorAll(`[slot]`)].find(element => element.slot === slotName);
         if (slot) {
           return document.createRange().createContextualFragment(`${slot.outerHTML}`)
@@ -1095,7 +1095,7 @@ export namespace ComboBox {
                     this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
                     (option: string | OptionMember) => this.getOptionId(option),
                     (option: string | OptionMember, optionIndex) => {
-                      if (typeof option !== "string" && this.isWithLabel && option.isLabel === "true") {
+                      if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
                         return html`
                           <span part="group-label" class="group-label">${option.value}</span>
                         `;

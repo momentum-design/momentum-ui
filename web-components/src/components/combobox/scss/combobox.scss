@@ -168,6 +168,23 @@ ul {
   white-space: pre-wrap;
 }
 
+.group-label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--combobox-group-label-color);
+    padding: 9px 16px;
+    border-top: 1px solid var(--combobox-group-label-border-color);
+    border-bottom: 1px solid var(--combobox-group-label-border-color);
+    display: block;
+    width: 100%;
+    background-color: var(--combobox-group-label-bg-color);
+    
+    &:hover {
+      background: unset;
+    }
+}
+
 .md-combobox-option {
   align-items: center;
   color: var(--md-primary-text-color, $md-gray-05);

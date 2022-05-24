@@ -152,6 +152,15 @@ $avatar--active__shadow: inset 0 0 0 rem-calc(1) $md-green-50,
   inset 0 0 0 rem-calc(2) $white-24;
 $avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $md-green-50,
   inset 0 0 0 rem-calc(2) $black-24;
+$avatar--engaged__shadow: inset 0 0 0 rem-calc(1) $md-yellow-40,
+  inset 0 0 0 rem-calc(2) $white-24;
+$avatar--engaged__shadow--dark: inset 0 0 0 rem-calc(1) $md-yellow-40,
+  inset 0 0 0 rem-calc(2) $black-24;
+$avatar--idle__shadow: inset 0 0 0 rem-calc(1) var(--md-primary-seperator-color-default),
+  inset 0 0 0 rem-calc(2) $white-24;
+$avatar--idle__shadow--dark: inset 0 0 0 rem-calc(1) var(--md-primary-seperator-color-default),
+  inset 0 0 0 rem-calc(2) $black-24;
+  
 
 $avatar-letter__color: var(--avatar-letter-text-color, $lm-avatar-letter-text-color-light);
 $avatar-letter__background: var(--avatar-letter-bg-color, $lm-avatar-letter-bg-color-light);

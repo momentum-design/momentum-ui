@@ -221,6 +221,24 @@ const button = {
       }
     }
   },
+  engaged: {
+    "bg-color": {
+      light: colors.yellow["05"].name,
+      dark: colors.yellow[90].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.yellow[10].name,
+        dark: colors.yellow[80].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.yellow[20].name,
+        dark: colors.yellow[70].name
+      }
+    }
+  },
   unavailable: {
     "bg-color": {
       light: colors.red["05"].name,

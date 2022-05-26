@@ -37,9 +37,17 @@ export const ToggleSwitch = () => {
   const align = select("Color", alignLabel, "right");
 
   return html`
-  <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-toggle-switch htmlId="toggleSwitch" ?checked=${checked} ?disabled=${disabled} .smaller=${smaller} ?align=${align}> Label Toggle Switch </md-toggle-switch>
-  </md-theme>
+    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-toggle-switch
+        htmlId="toggleSwitch"
+        ?checked=${checked}
+        ?disabled=${disabled}
+        .smaller=${smaller}
+        ?alignLabel=${align}
+      >
+        Label Toggle Switch
+      </md-toggle-switch>
+    </md-theme>
   `;
 };
 

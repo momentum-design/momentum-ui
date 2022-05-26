@@ -13,13 +13,10 @@ import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
-export const alignLabel = [
-  "left",
-  "right"
-] as const;
+export const alignLabel = ["left", "right"] as const;
 
 export namespace ToggleSwitch {
-  export type align = typeof alignLabel[number];
+  export type alignLabel = typeof alignLabel[number];
   @customElementWithCheck("md-toggle-switch")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) htmlId = "";
@@ -28,7 +25,7 @@ export namespace ToggleSwitch {
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) small = false;
     @property({ type: Boolean }) smaller = false;
-    @property({ type: String }) align: ToggleSwitch.align = "right";
+    @property({ type: String }) alignLabel: ToggleSwitch.alignLabel = "right";
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
     handleClick() {
@@ -44,52 +41,41 @@ export namespace ToggleSwitch {
       };
     }
 
-    render() {
-      if (this.align == "right") {
+    switchTemplate() {
+      if (this.alignLabel == "left") {
         return html`
-          <div
-            class="md-input-container md-toggle-switch  ${classMap(this.toggleSwitchClassMap)}"
-            @click=${this.handleClick}
-          >
-            <input
-              type="checkbox"
-              class="md-toggle-switch__input"
-              aria-label="${this.label}"
-              .id=${this.htmlId}
-              ?checked=${this.checked}
-              ?disabled=${this.disabled}
-              ?autofocus=${this.autofocus}
-              tabindex=${this.disabled ? -1 : 0}
-            />
-            <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label">
-              <span class="md-toggle-switch__label__container"></span>
-              <slot></slot>
-            </md-label>
-          </div>
+          <slot></slot>
+          <span class="md-toggle-switch__label__container md-toggle-switch__label__container__left"></span>
         `;
       } else {
         return html`
-          <div
-            class="md-input-container md-toggle-switch  ${classMap(this.toggleSwitchClassMap)}"
-            @click=${this.handleClick}
-          >
-            <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label">
-              <span class="md-toggle-switch__label__container"></span>
-              <slot></slot>
-            </md-label>
-            <input
-              type="checkbox"
-              class="md-toggle-switch__input"
-              aria-label="${this.label}"
-              .id=${this.htmlId}
-              ?checked=${this.checked}
-              ?disabled=${this.disabled}
-              ?autofocus=${this.autofocus}
-              tabindex=${this.disabled ? -1 : 0}
-            />
-          </div>
+          <span class="md-toggle-switch__label__container"></span>
+          <slot></slot>
         `;
       }
+    }
+
+    render() {
+      return html`
+        <div
+          class="md-input-container md-toggle-switch  ${classMap(this.toggleSwitchClassMap)}"
+          @click=${this.handleClick}
+        >
+          <input
+            type="checkbox"
+            class="md-toggle-switch__input"
+            aria-label="${this.label}"
+            .id=${this.htmlId}
+            ?checked=${this.checked}
+            ?disabled=${this.disabled}
+            ?autofocus=${this.autofocus}
+            tabindex=${this.disabled ? -1 : 0}
+          />
+          <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label">
+            ${this.switchTemplate()}
+          </md-label>
+        </div>
+      `;
     }
     static get styles() {
       return [reset, styles];

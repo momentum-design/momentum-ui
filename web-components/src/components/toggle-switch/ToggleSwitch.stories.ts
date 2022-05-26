@@ -34,7 +34,7 @@ export const ToggleSwitch = () => {
   const checked = boolean("Checked", false);
   const disabled = boolean("Disabled", false);
   const smaller = boolean("Smaller", false);
-  const align = select("Color", alignLabel, "right");
+  const align = select("Align Label", alignLabel, "right");
 
   return html`
     <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>

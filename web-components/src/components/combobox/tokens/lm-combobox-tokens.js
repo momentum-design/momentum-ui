@@ -115,7 +115,7 @@ const combobox = {
       dark: colors.gray[80].name
     }
   },
-  groupLabel: {
+  "group-label": {
     "bg-color": {
       light: colors.white[100].name,
       dark: colors.gray[90].name

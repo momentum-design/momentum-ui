@@ -114,6 +114,20 @@ const combobox = {
       light: colors.gray[40].name,
       dark: colors.gray[80].name
     }
+  },
+  "group-label": {
+    "bg-color": {
+      light: colors.white[100].name,
+      dark: colors.gray[90].name
+    },
+    "color": {
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
+    },
+    "border-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[80].name
+    },
   }
 };
 

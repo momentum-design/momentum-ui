@@ -733,6 +733,18 @@
   }
 }
 
+:host([variant="engaged"]) .md-button {
+  background-color: var(--button-engaged-bg-color, $lm-button-engaged-bg-color-light);
+  
+  &:hover {
+    background-color: var(--button-engaged-hover-bg-color, $lm-button-engaged-hover-bg-color-light);
+  }
+
+  &:active {
+    background-color: var(--button-engaged-pressed-bg-color, $lm-button-engaged-pressed-bg-color-light);
+  }
+}
+
 ::slotted(*) {
   display: flex;
 }

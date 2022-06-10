@@ -30,6 +30,9 @@ export const AvatarType = [
   "presenting",
   "self",
   "typing",
+  "engaged",
+  "idle",
+  "rona",
   ""
 ] as const;
 export const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 52, 56, 72, 80, 84];

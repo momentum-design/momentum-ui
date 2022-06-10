@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.19.0...@momentum-ui/illustrations@1.20.0) (2022-05-07)
+
+
+### Features
+
+* **illustrations:** add Illustration ([#1238](https://github.com/momentum-design/momentum-ui/issues/1238)) ([31d4b7e](https://github.com/momentum-design/momentum-ui/commit/31d4b7e568b7aed64fc63e0e4cf1c46d3bc2faaf))
+* **illustrations:** add illustrations ([#1237](https://github.com/momentum-design/momentum-ui/issues/1237)) ([aaa8a50](https://github.com/momentum-design/momentum-ui/commit/aaa8a50277ca7b885e280c50864f0c8705a04bd4))
+
+
+
+
+
+# [1.19.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.18.1...@momentum-ui/illustrations@1.19.0) (2022-04-13)
+
+
+### Features
+
+* **illustrations:** add speakers-issue-120.svg ([#1210](https://github.com/momentum-design/momentum-ui/issues/1210)) ([79a3276](https://github.com/momentum-design/momentum-ui/commit/79a3276b46042c2ba2a025e174b1d12b61edcf77))
+
+
+
+
+
+## [1.18.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.18.0...@momentum-ui/illustrations@1.18.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* **illustrations:** fix bullseye-filter-192.svg ([#1206](https://github.com/momentum-design/momentum-ui/issues/1206)) ([08604b7](https://github.com/momentum-design/momentum-ui/commit/08604b77160c70ca60bb1a2128cac9755fbfa5b2))
+
+
+
+
+
+# [1.18.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.17.0...@momentum-ui/illustrations@1.18.0) (2022-03-14)
+
+
+### Features
+
+* **illustration:** add new illustrations ([c4b8d0e](https://github.com/momentum-design/momentum-ui/commit/c4b8d0e013b034f3c6c15fda33fd5057ab622375))
+
+
+
+
+
 # [1.17.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.16.0...@momentum-ui/illustrations@1.17.0) (2022-02-15)
 
 

@@ -19,6 +19,7 @@
   padding: rem-calc(12);
 
   &__icon {
+    align-self: center;
     md-icon::part(icon) {
       font-size: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
       line-height: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
@@ -33,6 +34,7 @@
     max-width: $alert__content_width;
     padding-left: rem-calc(12);
     padding-right: rem-calc(2);
+    align-self: center;
   }
 
   &__title {
@@ -59,7 +61,7 @@
 
   &__button {
     margin-left: rem-calc(4);
-
+    align-self: center;
     md-button::part(button) {
       align-items: center;
       background-color: var(--alert-close-bg-color, $lm-alert-close-bg-color-light);

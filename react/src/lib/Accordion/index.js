@@ -8,15 +8,18 @@ class Accordion extends React.Component {
 
   state = {
     activeIndices: this.props.initialActive || [],
+    focusIndicies: this.props.initialActiveFocus,
     focus: false,
   }
 
   componentDidMount () {
+    const { focusIndicies } = this.state;
     if(!this.verifyChildren()) {
       throw new Error('Accordion should contain one or more AccordionGroup as children.');
     }
-
-    this.determineInitialFocus();
+    if (focusIndicies) {
+      this.determineInitialFocus();
+    }
   }
 
   verifyChildren = () => {
@@ -49,7 +52,7 @@ class Accordion extends React.Component {
   setMultiple = index => {
     let newValues;
     const { onSelect } = this.props;
-    const { activeIndices } = this.state;
+    const { activeIndices, focusIndicies } = this.state;
     const isActive = activeIndices.includes(index);
 
     if (isActive) {
@@ -58,7 +61,9 @@ class Accordion extends React.Component {
       newValues = activeIndices.concat(index);
     }
 
-    this.setFocus(index);
+    if (focusIndicies) {
+      this.setFocus(index);
+    }
     this.setState(() => {
       onSelect && onSelect(newValues);
       return { activeIndices: newValues };
@@ -66,7 +71,7 @@ class Accordion extends React.Component {
   }
 
   setSelected = index => {
-    const { activeIndices } = this.state;
+    const { activeIndices, focusIndicies } = this.state;
     const { children, onSelect } = this.props;
     // Don't do anything if index is the same or outside of the bounds
     if (activeIndices.includes(index) || index < 0 || index >= children.length)
@@ -77,7 +82,9 @@ class Accordion extends React.Component {
 
     // Update state with selected index
     this.setState(() => ({ activeIndices: [index] }));
-    this.setFocus(index);
+    if (focusIndicies) {
+      this.setFocus(index);
+    }
 
     onSelect && onSelect(index, last);
   }
@@ -207,6 +214,8 @@ Accordion.propTypes = {
   /** @prop An array of indexes that are preselected | [] */
   initialActive: PropTypes.array,
   /** @prop Optional css class string | '' */
+  initialActiveFocus: PropTypes.bool,
+  /** @prop Set to disallow focus upon opening Accordion on load | true */
   className: PropTypes.string,
   /** @prop Optional underline under Accordion menu item | false  */
   showSeparator: PropTypes.bool,
@@ -217,6 +226,7 @@ Accordion.defaultProps = {
   multipleVisible: false,
   onSelect: null,
   initialActive: [],
+  initialActiveFocus: true,
   className: '',
   showSeparator: false,
 };

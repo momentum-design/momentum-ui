@@ -424,7 +424,7 @@ export namespace Input {
     }
 
     inputRightTemplate() {
-      if (this.clear && !this.disabled && !!this.value) {
+      if (this.clear && !this.disabled && !!this.value && !this.readOnly) {
         return html`
           <div class="md-input__after">
             <md-button

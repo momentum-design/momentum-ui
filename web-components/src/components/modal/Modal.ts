@@ -51,6 +51,7 @@ export namespace Modal {
     @property({ type: String }) closeBtnName = "";
     @property({ type: Boolean }) hideFooter = false;
     @property({ type: Boolean }) hideHeader = false;
+    @property({ type: Boolean }) disableInitialFocus = false;
 
     @internalProperty() private animating = false;
 
@@ -148,7 +149,9 @@ export namespace Modal {
     private async modalFadeIn() {
       if (this.backDrop) {
         await this.transitionPromise(this.backDrop);
-        this.focusInsideModal();
+        if (!this.disableInitialFocus) {
+          this.focusInsideModal();
+        }
       }
     }
 

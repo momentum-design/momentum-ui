@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.5.5",
+  "version": "2.6.4",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -41,10 +41,10 @@
     "lit-html": "1.2.1"
   },
   "peerDependencies": {
-    "@momentum-ui/core": "^19.15.14",
-    "@momentum-ui/icons": "^8.27.0",
+    "@momentum-ui/core": "19.15.17",
+    "@momentum-ui/icons": "8.28.0",
     "@momentum-ui/tokens": "^1.7.1",
-    "@momentum-ui/utils": "^6.2.15",
+    "@momentum-ui/utils": "6.2.15",
     "lit-element": "2.3.1",
     "lit-html": "1.2.1"
   },
@@ -69,10 +69,10 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@interactjs/types": "1.10.3",
-    "@momentum-ui/core": "^19.15.14",
-    "@momentum-ui/icons": "^8.27.0",
+    "@momentum-ui/core": "19.15.17",
+    "@momentum-ui/icons": "8.28.0",
     "@momentum-ui/tokens": "^1.7.1",
-    "@momentum-ui/utils": "^6.2.15",
+    "@momentum-ui/utils": "6.2.15",
     "@open-wc/testing-helpers": "1.8.9",
     "@percy/storybook": "^3.3.0",
     "@storybook/addon-a11y": "^5.3.18",

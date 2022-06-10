@@ -10,7 +10,6 @@ import { nothing } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-
 export namespace PhoneInput {
   export interface Country {
     name: string;
@@ -88,7 +87,7 @@ export namespace PhoneInput {
     }
 
     validateNumber() {
-      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
+      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : true;
     }
 
     handleCountryChange(event: CustomEvent) {
@@ -105,7 +104,6 @@ export namespace PhoneInput {
 
     handlePhoneChange(event: CustomEvent) {
       this.value = event.detail.value;
-      this.validateInput(this.value);
       event.stopPropagation();
       this.dispatchEvent(
         new CustomEvent("phoneinput-change", {
@@ -139,6 +137,7 @@ export namespace PhoneInput {
     }
 
     handleBlur(event: Event) {
+      this.validateInput(this.value);
       this.validateNumber();
       event.stopPropagation();
       this.dispatchEvent(
@@ -239,3 +238,4 @@ declare global {
     "md-phone-input": PhoneInput.ELEMENT;
   }
 }
+

@@ -926,6 +926,23 @@ describe("Combobox Component", () => {
     });
   });
 
+  describe("Combobox with group options", () => {
+    test("should render group label", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox with-custom-content>
+            <optgroup label="foo">
+              <option slot="bar" aria-label="bar" display-value="bar">bar</option>
+            </optgroup>
+          </md-combobox>
+        `
+      );
+      el.expanded = true;
+      await elementUpdated(el);
+      expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+    });
+  })
+
   test("should set initial value", async () => {
     const el = await fixture<ComboBox.ELEMENT>(
       html`

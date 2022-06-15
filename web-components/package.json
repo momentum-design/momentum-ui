@@ -43,7 +43,7 @@
   "peerDependencies": {
     "@momentum-ui/core": "19.15.23",
     "@momentum-ui/icons": "8.28.0",
-    "@momentum-ui/tokens": "^1.7.1",
+    "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
     "lit-element": "2.3.1",
     "lit-html": "1.2.1"

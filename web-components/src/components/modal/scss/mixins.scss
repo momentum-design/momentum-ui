@@ -105,10 +105,3 @@
   padding: $modal__padding;
   width: 100%;
 }
-
-
-@mixin modal-container-center-align(){
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}

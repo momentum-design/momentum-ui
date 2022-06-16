@@ -123,6 +123,7 @@
 
   &.md-modal--large {
     @include modal-size(
+      $top-offset: $modal__top--large,
       $width: $modal__width--large,
       $min-height: $modal__height--large,
       $radius: true
@@ -153,6 +154,7 @@
 
     @media #{$medium-only} {
       @include modal-size(
+        $top-offset: $modal__top--tablet-medium,
         $width: $modal__width--medium,
         $min-height: $modal__height--medium
       );
@@ -187,6 +189,7 @@
   &.md-modal--medium,
   &.md-modal--default {
     @include modal-size(
+      $top-offset: $modal__top--medium,
       $width: $modal__width--medium,
       $min-height: $modal__height--medium
     );
@@ -202,6 +205,7 @@
 
     @media #{$medium-only} {
       @include modal-size(
+        $top-offset: $modal__top--tablet-medium,
         $width: $modal__width--medium,
         $min-height: $modal__height--medium
       );
@@ -216,6 +220,7 @@
 
   &.md-modal--small {
     @include modal-size(
+      $top-offset: $modal__top--small,
       $width: $modal__width--small,
       $min-height: $modal__height--small
     );
@@ -232,6 +237,7 @@
     // Media Query for Tablet
     @media #{$medium-only} {
       @include modal-size(
+        $top-offset: $modal__top--tablet-small,
         $width: $modal__width--small,
         $min-height: $modal__height--small
       );
@@ -239,7 +245,7 @@
   }
 
   &.md-modal--dialog {
-    @include modal-size($width: $modal__width--small, $radius: true);
+    @include modal-size($width: $modal__width--small, $radius: true, $top-offset: $modal-dialog__top);
 
     .md-modal__close {
       @include modal-close-button(
@@ -289,7 +295,6 @@
   &.md-modal--full,
   &.md-modal--default,
   &.md-modal--dialog {
-    @include modal-container-center-align;
     &.md-modal--dialog {
       @media #{$small-only} {
         .md-modal__flex-container {

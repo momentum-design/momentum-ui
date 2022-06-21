@@ -8,12 +8,11 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "start": "npm run dev",
-    "dev": "npm run check && webpack-dev-server --config ./webpack.config.dev.server.ts",
-    "dev:build": "npm run check && webpack --config-name=dev",
-    "dist": "npm run check && webpack --config-name=distProd",
-    "dist:dev": "npm run check && webpack --config-name=distDev",
-    "dist:watch": "npm run check && webpack --config-name=distDevWatch",
-    "check": "check-peer-dependencies --yarn",
+    "dev": "webpack-dev-server --config ./webpack.config.dev.server.ts",
+    "dev:build": "webpack --config-name=dev",
+    "dist": "webpack --config-name=distProd",
+    "dist:dev": "webpack --config-name=distDev",
+    "dist:watch": "webpack --config-name=distDevWatch",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private && npm run npm:publish:external",
     "npm:publish:external": "cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' && npm publish",
@@ -41,9 +40,9 @@
     "lit-html": "1.2.1"
   },
   "peerDependencies": {
-    "@momentum-ui/core": "^19.15.17",
-    "@momentum-ui/icons": "^8.28.0",
-    "@momentum-ui/tokens": "^1.7.1",
+    "@momentum-ui/core": "19.15.17",
+    "@momentum-ui/icons": "8.28.0",
+    "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
     "lit-element": "2.3.1",
     "lit-html": "1.2.1"
@@ -101,7 +100,6 @@
     "alias-resolve-loader": "^2.0.4",
     "babel-jest": "26.3.0",
     "babel-loader": "^8.1.0",
-    "check-peer-dependencies": "2.0.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",

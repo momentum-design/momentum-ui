@@ -695,7 +695,7 @@
 :host([variant="white"]) .md-button {
   background-color: var(--button-white-bg-color, $lm-button-white-bg-color-light);
   color: var(--button-white-text-color, $lm-button-white-text-color-light);
-
+  
   &:hover {
     background-color: var(--button-white-hover-bg-color, $lm-button-white-hover-bg-color-light);
   }
@@ -707,7 +707,6 @@
   &--outline {
     box-shadow: 0 0 0 1px var(--button-white-outline-color, $lm-button-white-outline-color-light);
     color: var(--button-white-outline-text-color, $lm-button-white-outline-text-color-light);
-
   }
 }
 

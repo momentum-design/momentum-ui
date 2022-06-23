@@ -945,7 +945,7 @@ export namespace ComboBox {
           aria-label=${this.clearAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
-          tabindex="-1"
+          tabindex="0"
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
@@ -962,7 +962,7 @@ export namespace ComboBox {
           aria-label=${this.arrowAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
-          tabindex="-1"
+          tabindex="0"
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >

@@ -37,7 +37,7 @@ class ComponentOverviewPage extends React.Component {
     const renderComponentItems = () => {
       const { components, keyword } = this.props;
 
-      if (!components) return (<div>There are no components</div>);
+      if (!components ||!components.children) return (<div>There are no components</div>);
 
       return components.children.reduce((agg, itm, idx) => {
         const name = itm.displayName.toLowerCase();

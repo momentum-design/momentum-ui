@@ -100,6 +100,16 @@ export namespace PhoneInput {
       this.countryCallingCode = event.detail.value.id;
       this.countryCode = event.detail.value.id.split(",")[2]?.trim();
       this.validateNumber();
+      this.dispatchEvent(
+        new CustomEvent("countrycode-change",{
+          bubbles:true,
+          composed:true,
+          detail:{
+            srcEvent : event,
+            isValid: this.isValid
+          }
+        })
+      )
     }
 
     handlePhoneChange(event: CustomEvent) {

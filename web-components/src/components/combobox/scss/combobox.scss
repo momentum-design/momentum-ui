@@ -123,6 +123,8 @@
   padding-top: calc(#{$combobox-main-indent} / 2);
   position: relative;
   vertical-align: bottom;
+  height: inherit;
+  display: flex;
   .md-input__icon-clear{
     display: flex;
     align-items: center;

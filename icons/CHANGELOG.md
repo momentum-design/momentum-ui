@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.29.0...@momentum-ui/icons@8.30.0) (2022-06-24)
+
+
+### Features
+
+* **icon:** add webex-helix-filled_16 icon ([aca7c8f](https://github.com/momentum-design/momentum-ui/commit/aca7c8f92384698fcdceb1401cc37c2f9592747c))
+
+
+
+
+
 # [8.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.5...@momentum-ui/icons@8.29.0) (2022-06-18)
 
 

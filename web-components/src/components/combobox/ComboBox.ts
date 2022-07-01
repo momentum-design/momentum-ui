@@ -19,6 +19,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
+import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
 
 export namespace ComboBox {
@@ -853,7 +854,18 @@ export namespace ComboBox {
       }
     }
 
-    toggleVisualListBox() {
+    toggleVisualListBox(e: any) {
+      if (e.target.classList.contains("md-combobox-listbox")) {
+        e.target.focus();
+      } else if(e.target.localName === "md-icon") {
+        const parentElement = e.target.parentElement?.parentElement?.parentElement;
+        if(parentElement) {
+          const input = parentElement.querySelector(".md-combobox-listbox");
+          setTimeout(() => {
+            input.focus();
+          }, 10)
+        }
+      }
       if (this.expanded) {
         this.setVisualListbox(false);
       } else {

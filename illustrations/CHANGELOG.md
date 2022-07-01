@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.21.0...@momentum-ui/illustrations@1.22.0) (2022-06-30)
+
+
+### Features
+
+* **illustrations:** add teams-320-violet-red ([#1292](https://github.com/momentum-design/momentum-ui/issues/1292)) ([1a66833](https://github.com/momentum-design/momentum-ui/commit/1a668337899941057f6c88ebfa88030d5a95538b))
+
+
+
+
+
 # [1.21.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/illustrations@1.20.0...@momentum-ui/illustrations@1.21.0) (2022-06-21)
 
 

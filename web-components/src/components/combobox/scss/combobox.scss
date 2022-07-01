@@ -136,6 +136,10 @@
   }
 }
 
+.md-combobox-button.clear:focus, .md-combobox-button.arrow-down:focus{
+  outline: 2px solid var(--button-focus-ring-color,#007aa3);
+}
+
 ul {
   background-color: var(--combobox-dropdown-bg-color, $lm-combobox-dropdown-bg-color-light);
   border: $combobox-border;

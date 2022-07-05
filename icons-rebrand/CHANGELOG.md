@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.38.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.37.1...@momentum-ui/icons-rebrand@1.38.0) (2022-07-04)
+
+
+### Features
+
+* **icon:** update svg icon dom ([#1299](https://github.com/momentum-design/momentum-ui/issues/1299)) ([4e4123f](https://github.com/momentum-design/momentum-ui/commit/4e4123f9afb830e70d2f196b22c547e08d745055))
+
+
+
+
+
 ## [1.37.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.37.0...@momentum-ui/icons-rebrand@1.37.1) (2022-06-30)
 
 **Note:** Version bump only for package @momentum-ui/icons-rebrand

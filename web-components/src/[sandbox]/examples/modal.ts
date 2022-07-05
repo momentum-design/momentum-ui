@@ -19,8 +19,12 @@ export class ModalTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isComplexModalOpen = false;
   @property({ type: Boolean }) isDialogOpen = false;
   @property({ type: Boolean }) isComplexTabsModal = false;
+  @property({ type: Boolean }) isStationLoginModal = false;
+  @property({ type: Boolean }) otherInput = false;
+  @property({ type: Boolean }) isExtensionTooltipOpened = false;
 
   @query(".dial-number") dialInput!: Input.ELEMENT;
+  @query(".international-checkbox-wrapper") checkboxWrapper!: Element;
 
   private openModal() {
     this.isModalOpen = true;
@@ -54,6 +58,18 @@ export class ModalTemplateSandbox extends LitElement {
     this.isComplexTabsModal = false;
   }
 
+  private openStationLogin() {
+    this.isStationLoginModal = true;
+  }
+
+  private closeStationLogin() {
+    this.isStationLoginModal = false;
+  }
+  private handleFormatChange() {
+    this.otherInput = !this.otherInput;
+    document.dispatchEvent(new CustomEvent("md-modal-updated"))
+  }
+
   private handleInputChange = debounce(() => {
     if (this.dialInput) {
       const shadowInput = this.dialInput.shadowRoot!.querySelector("input");
@@ -68,10 +84,83 @@ export class ModalTemplateSandbox extends LitElement {
 
   render() {
     return html`
+      <md-button @click=${this.openStationLogin}>Open Station Login Modal</md-button>
       <md-button @click=${this.openModal}>Open Modal</md-button>
       <md-button @click=${this.openDialog}>Open Dialog</md-button>
       <md-button @click=${this.openComplexModal}>Open Complex Modal</md-button>
       <md-button @click=${this.openComplexTabsModal}>Open Complex Tabs Modal</md-button>
+
+      <md-modal ?show=${this.isStationLoginModal} closeBtnName="Submit This" @close-modal="${this.closeStationLogin}">
+        <md-form class="form-class" id="international-form">
+          <div class="international-checkbox-wrapper">
+            <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${(e: CustomEvent) => {
+                    this.handleFormatChange();
+                  }}"
+              >International dialing format</md-checkbox
+            >
+          <md-tooltip
+            ?opened=${this.isExtensionTooltipOpened}
+            message="tooltip opened"
+            placement="top"
+          >
+            <md-button
+              circle
+              variant="white"
+              class="info-icon"
+              size="20"
+              @focus=${() => (this.isExtensionTooltipOpened = true)}
+              @blur=${() => (this.isExtensionTooltipOpened = false)}
+            >
+              <md-icon name="info_16"></md-icon>
+            </md-button>
+          </md-tooltip>
+          </div>
+          ${this.otherInput
+            ? html`
+                <md-input
+                  type="tel"
+                  id="international"
+                  name="international-value"
+                  pill
+                  value="88997755664"
+                  countryCallingCode="+91"
+                  numberPlaceholder="station Login"
+                  .autofocus="${true}"
+                  @phoneinput-keydown="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-change="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-blur="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                ></md-input>
+              `
+            : html`
+                <md-phone-input
+                  type="tel"
+                  id="national"
+                  name="national-value"
+                  pill
+                  value="222"
+                  countryCallingCode="+91"
+                  numberPlaceholder="station Login"
+                  .autofocus="${true}"
+                  @phoneinput-keydown="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-change="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-blur="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                ></md-phone-input>
+              `}
+        </md-form>
+      </md-modal>
+
       <md-modal
         htmlId="modal-1"
         ?show=${this.isModalOpen}

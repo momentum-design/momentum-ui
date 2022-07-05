@@ -363,6 +363,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      const self = this;
+      document.addEventListener("md-modal-updated", () => {
+        setTimeout(() => {
+          self.setFocusableElements();
+        }, 10)
+      });
       document.addEventListener("click", this.handleOutsideTrapClick);
     }
 

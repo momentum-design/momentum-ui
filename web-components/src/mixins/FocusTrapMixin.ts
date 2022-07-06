@@ -364,10 +364,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       const self = this;
-      document.addEventListener("md-modal-updated", () => {
+      document.addEventListener("component-update", () => {
         setTimeout(() => {
           self.setFocusableElements();
-        }, 10)
+        }, 10);
       });
       document.addEventListener("click", this.handleOutsideTrapClick);
     }

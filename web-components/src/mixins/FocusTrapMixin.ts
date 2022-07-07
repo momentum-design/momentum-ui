@@ -364,7 +364,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       const self = this;
-      document.addEventListener("component-update", () => {
+      document.addEventListener("on-component-update", () => {
         setTimeout(() => {
           self.setFocusableElements();
         }, 10);

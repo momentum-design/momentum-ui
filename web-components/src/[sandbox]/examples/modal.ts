@@ -67,7 +67,7 @@ export class ModalTemplateSandbox extends LitElement {
   }
   private handleFormatChange() {
     this.otherInput = !this.otherInput;
-    document.dispatchEvent(new CustomEvent("md-modal-updated"))
+    document.dispatchEvent(new CustomEvent("on-component-update"))
   }
 
   private handleInputChange = debounce(() => {

@@ -169,6 +169,7 @@ ul {
 }
 
 .group-label {
+    justify-content: space-between;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
@@ -176,7 +177,7 @@ ul {
     padding: 9px 16px;
     border-top: 1px solid var(--combobox-group-label-border-color);
     border-bottom: 1px solid var(--combobox-group-label-border-color);
-    display: block;
+    display: flex;
     width: 100%;
     background-color: var(--combobox-group-label-bg-color);
     

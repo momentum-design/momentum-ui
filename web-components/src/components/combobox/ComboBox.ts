@@ -40,6 +40,8 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) ordered = false;
     @property({ type: Boolean, reflect: true }) expanded = false;
+    @property({ type: Array, reflect: true }) groupExpandedList: any = [];
+    @property({ type: Boolean, reflect: true }) searchItem = false;
     @property({ type: Boolean, reflect: true }) compact = false;
     @property({ type: Boolean, attribute: "no-clear-icon" }) noClearIcon = false;
     @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
@@ -81,6 +83,25 @@ export namespace ComboBox {
       return this._focusedIndex;
     }
     set focusedIndex(index: number) {
+      const oldIndex = this._focusedIndex;
+      if (this.lists) {
+        const oldFocusedOption = this.lists[oldIndex];
+        if (oldFocusedOption) {
+          oldFocusedOption.toggleAttribute("focused", false);
+        }
+        const newFocusedOption = this.lists[index];
+        if (newFocusedOption) {
+          newFocusedOption.toggleAttribute("focused", true);
+        }
+      }
+      this._focusedIndex = index;
+      this.requestUpdate("focusedIndex", oldIndex);
+    }
+
+    get focusedGroupIndex() {
+      return this._focusedIndex;
+    }
+    set focusedGroupIndex(index: number) {
       const oldIndex = this._focusedIndex;
       if (this.lists) {
         const oldFocusedOption = this.lists[oldIndex];
@@ -255,6 +276,10 @@ export namespace ComboBox {
       return this.isOptionObject(option) ? (option as OptionMember)[this.optionValue] : (option as string);
     }
 
+    private getOptionGroupName(option: any) {
+      return option?.groupName;
+    }
+
     private getOptionId(option: string | OptionMember) {
       return this.isOptionObject(option) ? (option as OptionMember)[this.optionId] : (option as string);
     }
@@ -279,6 +304,18 @@ export namespace ComboBox {
 
     private setVisualListbox(value: boolean) {
       this.expanded = value;
+    }
+
+    private setGroupList(value: any) {
+      if(this.groupExpandedList.includes(value)) {
+        this.groupExpandedList.splice(this.groupExpandedList.indexOf(value), 1);
+        this.groupExpandedList = [...this.groupExpandedList];
+      } else {
+        if(this.searchItem)
+          this.groupExpandedList.push(value);
+        else
+          this.groupExpandedList = [value];
+      }
     }
 
     private findSelectedOption(option: string | OptionMember) {
@@ -344,6 +381,19 @@ export namespace ComboBox {
               .includes(value.toLowerCase());
           }
         });
+        
+        const newArr = finalFilteredOption.filter(item => {
+          if (typeof item !== "string" && item.isLabel === "true") {
+            return item.groupName ;
+          }
+        });
+        this.searchItem = true;
+        this.groupExpandedList = newArr.map(a => {
+          if(typeof a !== "string") {
+            return a.groupName;
+          }
+        });
+
         if (this.isOptGroup) {
           return finalFilteredOption.filter((option: string | OptionMember) => {
             if (typeof option !== "string" && option.isLabel === "true") {
@@ -361,6 +411,7 @@ export namespace ComboBox {
           return finalFilteredOption;
         }
       } else {
+        this.searchItem = false;
         return this.options;
       }
     }
@@ -646,6 +697,7 @@ export namespace ComboBox {
 
     private removeAllSelected() {
       this.focusedIndex = -1;
+      this.focusedGroupIndex = -1;
       this.selectedOptions = [];
       this.inputValue = "";
       this.setInputValue();
@@ -739,6 +791,22 @@ export namespace ComboBox {
           }
           break;
         case Key.Tab:
+          {
+            this.setFocusOnHost(false);
+            this.updateOnNextFrame(() => {
+              if (
+                this.focusedGroupIndex === -1 ||
+                (!this.allowSelectAll && this.focusedGroupIndex >= this.filteredGroupOptions.length - 1) ||
+                (this.allowSelectAll && this.focusedGroupIndex >= this.filteredGroupOptions.length)
+              ) {
+                this.focusedGroupIndex = 0;
+              } else {
+                this.focusedGroupIndex++;
+              }
+              const option = this.getFocusedItem(this.focusedGroupIndex);
+              this.groupExpandedList = [this.getOptionGroupName(option)];
+            });
+          }
         case Key.Enter:
           {
             this.setFocusOnHost(true);
@@ -781,6 +849,7 @@ export namespace ComboBox {
                 this.focusedIndex++;
               }
               const option = this.getFocusedItem(this.focusedIndex);
+              this.groupExpandedList = [this.getOptionGroupName(option)];
               if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
               }
@@ -802,6 +871,7 @@ export namespace ComboBox {
                 this.focusedIndex--;
               }
               const option = this.getFocusedItem(this.focusedIndex);
+              this.groupExpandedList = [this.getOptionGroupName(option)];
               if (option && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(option));
               }
@@ -860,6 +930,12 @@ export namespace ComboBox {
         this.setVisualListbox(true);
       }
       this.input!.focus();
+      this.setGroupList("");
+    }
+
+    toggleGroupListBox(e: MouseEvent, data: string) {
+      e.stopPropagation();
+      this.setGroupList(data);
     }
 
     handleRemoveAll(event: MouseEvent) {
@@ -907,6 +983,20 @@ export namespace ComboBox {
           if (this.isOptGroup) {
             if (typeof options !== "string") {
               return options.isLabel === "false";
+            }
+          } else {
+            return true;
+          }
+        }
+      );
+    }
+
+    get filteredGroupOptions() {
+      return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
+        (options: string | OptionMember) => {
+          if (this.isOptGroup) {
+            if (typeof options !== "string") {
+              return options.isLabel === "true";
             }
           } else {
             return true;
@@ -967,6 +1057,23 @@ export namespace ComboBox {
           @click=${this.toggleVisualListBox}
         >
           <span><md-icon name="icon-arrow-down_16"></md-icon> </span>
+        </button>
+      `;
+    }
+
+    groupArrowButtonTemplate (data: string) {
+      const iconName = this.groupExpandedList.includes(data) ? "icon-arrow-up_12" : "icon-arrow-down_12";
+      return html`
+        <button
+          type="button"
+          class="md-combobox-button"
+          aria-label=${this.arrowAriaLabel}
+          aria-controls="md-combobox-listbox"
+          tabindex="-1"
+          ?disabled=${this.disabled}
+          @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
+        >
+          <span><md-icon name=${iconName}></md-icon> </span>
         </button>
       `;
     }
@@ -1097,7 +1204,10 @@ export namespace ComboBox {
                     (option: string | OptionMember, optionIndex) => {
                       if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
                         return html`
-                          <span part="group-label" class="group-label">${option.value}</span>
+                          <div part="group-label" class="group-label" @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)}>
+                            <span part="group-label">${option.value}</span>
+                            ${this.groupArrowButtonTemplate(option.value)}
+                          </div>
                         `;
                       } else {
                         return html`
@@ -1112,6 +1222,9 @@ export namespace ComboBox {
                             tabindex="-1"
                             @click=${this.handleListClick}
                             aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked(option) : undefined)}
+                            style=${styleMap({
+                              display: this.groupExpandedList.includes(this.getOptionGroupName(option)) ? "flex" : "none"
+                            })}
                           >
                             ${this.isMulti
                               ? html`

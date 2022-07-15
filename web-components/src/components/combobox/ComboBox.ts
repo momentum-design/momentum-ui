@@ -31,6 +31,7 @@ export namespace ComboBox {
   @customElementWithCheck("md-combobox")
   export class ELEMENT extends FocusMixin(LitElement) {
     private _focusedIndex = -1;
+    private _focusedGroupIndex = -1;
 
     @property({ type: String }) label = "Options";
     @property({ type: Array }) options: (string | OptionMember)[] = [];
@@ -99,10 +100,10 @@ export namespace ComboBox {
     }
 
     get focusedGroupIndex() {
-      return this._focusedIndex;
+      return this._focusedGroupIndex;
     }
     set focusedGroupIndex(index: number) {
-      const oldIndex = this._focusedIndex;
+      const oldIndex = this._focusedGroupIndex;
       if (this.lists) {
         const oldFocusedOption = this.lists[oldIndex];
         if (oldFocusedOption) {
@@ -113,8 +114,8 @@ export namespace ComboBox {
           newFocusedOption.toggleAttribute("focused", true);
         }
       }
-      this._focusedIndex = index;
-      this.requestUpdate("focusedIndex", oldIndex);
+      this._focusedGroupIndex = index;
+      this.requestUpdate("focusedGroupIndex", oldIndex);
     }
 
     private multiSelectedIndex = -1;
@@ -793,6 +794,9 @@ export namespace ComboBox {
         case Key.Tab:
           {
             this.setFocusOnHost(false);
+            if (!this.expanded) {
+              this.setVisualListbox(true);
+            }
             this.updateOnNextFrame(() => {
               if (
                 this.focusedGroupIndex === -1 ||
@@ -803,7 +807,7 @@ export namespace ComboBox {
               } else {
                 this.focusedGroupIndex++;
               }
-              const option = this.getFocusedItem(this.focusedGroupIndex);
+              const option = this.focusedGroupIndex >= 0 ? this.filteredGroupOptions[this.focusedGroupIndex] : "" ;
               this.groupExpandedList = [this.getOptionGroupName(option)];
             });
           }
@@ -887,6 +891,7 @@ export namespace ComboBox {
             } else {
               this.setInputValue();
               this.focusedIndex = -1;
+              this.focusedGroupIndex = -1;
               this.removeAllSelected();
             }
           }
@@ -1204,7 +1209,12 @@ export namespace ComboBox {
                     (option: string | OptionMember, optionIndex) => {
                       if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
                         return html`
-                          <div part="group-label" class="group-label" @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)}>
+                          <div part="group-label" 
+                            class="group-label" 
+                            @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)} 
+                            tabindex="1"
+                            aria-selected=${this.getAriaState(optionIndex)}
+                          >
                             <span part="group-label">${option.value}</span>
                             ${this.groupArrowButtonTemplate(option.value)}
                           </div>

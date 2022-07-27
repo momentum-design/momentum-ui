@@ -143,11 +143,12 @@ export namespace EditableTextfield {
     handleKeydown = (e: KeyboardEvent) => {
       const flaggedKeys = ["Tab", "Meta", "Shift", "Delete", "Backspace", "Arrow"];
       const { key, code } = e;
+    
       if (flaggedKeys.some(s => code.includes(s))) {
         return;
       }
-
-      if (this.type === "integer" && key.includes(".")) {
+      
+      if ((this.type === "integer" && key.includes(".")) || ((this.type === "integer" || this.type === "decimal") && code.match("Space"))) {
         e.preventDefault();
       }
 

@@ -45,11 +45,11 @@ export namespace ToggleSwitch {
       if (this.alignLabel == "left") {
         return html`
           <slot></slot>
-          <span class="md-toggle-switch__label__container md-toggle-switch__label__container__left"></span>
+          <span class="md-toggle-switch__label__container md-toggle-switch__label__container__left" part="toggle-label"></span>
         `;
       } else {
         return html`
-          <span class="md-toggle-switch__label__container"></span>
+          <span class="md-toggle-switch__label__container" part="toggle-label"></span>
           <slot></slot>
         `;
       }

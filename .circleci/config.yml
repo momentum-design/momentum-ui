@@ -11,7 +11,7 @@ jobs:
     <<: *image_defaults
     steps:
       - checkout
-      - run: yarn global add @percy/agent lerna@4.0.0
+      - run: yarn global add lerna@4.0.0
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run: yarn cypress:verify
@@ -49,7 +49,6 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
-
   test_icons:
     <<: *image_defaults
     steps:
@@ -74,23 +73,6 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
-  test_core_percy:
-    <<: *image_defaults
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: yarn bootstrap
-      - run:
-          name: Test core library with Percy.io snapshots
-          command: yarn ci:test:core:percy
-      - store_artifacts:
-          path: ~/repo/core/cypress/
-      - store_artifacts:
-          path: ~/repo/core/dist/
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
-
   test_react:
     <<: *image_defaults
     steps:
@@ -100,9 +82,6 @@ jobs:
       - run:
           name: Unit Test react library
           command: yarn ci:test:react
-      - run:
-          name: Visual regression test react library with Percy.io snapshots
-          command: yarn ci:test:react:percy
       - run:
           name: Clear Git changed files
           command: git checkout -- .
@@ -161,15 +140,6 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
-  percy_finalize_all:
-    working_directory: ~/repo
-    docker:
-      - image: percyio/agent:latest
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: PERCY_TOKEN=$PERCY_TOKEN percy finalize --all
-
   test_www:
     <<: *image_defaults
     steps:
@@ -189,7 +159,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
+          command: yarn global add lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run: yarn cypress:verify
@@ -217,7 +187,7 @@ jobs:
           command: git checkout -- .
       - add_ssh_keys:
           fingerprints:
-            - "8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35"
+            - '8d:03:46:48:16:a2:7f:d4:97:2f:20:a1:fe:0e:81:35'
       - run:
           name: Configure git defaults
           command: git config user.email $GH_EMAIL && git config user.name $GH_USER
@@ -247,7 +217,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
+          command: yarn global add lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run:
@@ -274,9 +244,6 @@ workflows:
       - test_web_components:
           requires:
             - build_tokens
-      - test_core_percy:
-          requires:
-            - build_tokens
       - test_www:
           requires:
             - build_tokens
@@ -289,14 +256,11 @@ workflows:
       - static_analysis:
           requires:
             - build_tokens
-      - percy_finalize_all:
-          requires:
-            - test_react
 
   daily_storybook_deploy:
     triggers:
       - schedule:
-          cron: "30 5 * * *"
+          cron: '30 5 * * *'
           filters:
             branches:
               only:
@@ -307,7 +271,7 @@ workflows:
   daily_release:
     triggers:
       - schedule:
-          cron: "30 5 * * *"
+          cron: '30 5 * * *'
           filters:
             branches:
               only:

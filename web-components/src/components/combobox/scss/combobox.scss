@@ -174,8 +174,7 @@ ul {
     font-size: 14px;
     line-height: 19px;
     color: var(--combobox-group-label-color);
-    padding: 9px 16px;
-    border-top: 1px solid var(--combobox-group-label-border-color);
+    padding: $combobox-option-padding;
     border-bottom: 1px solid var(--combobox-group-label-border-color);
     display: flex;
     width: 100%;
@@ -183,6 +182,10 @@ ul {
     
     &:hover {
       background: unset;
+    }
+    
+    &[focused] {
+      background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
     }
 }
 

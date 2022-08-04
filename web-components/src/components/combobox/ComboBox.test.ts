@@ -926,23 +926,6 @@ describe("Combobox Component", () => {
     });
   });
 
-  describe("Combobox with group options", () => {
-    test("should render group label", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox with-custom-content>
-            <optgroup label="foo">
-              <option slot="bar" aria-label="bar" display-value="bar">bar</option>
-            </optgroup>
-          </md-combobox>
-        `
-      );
-      el.expanded = true;
-      await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
-    });
-  })
-
   test("should set initial value", async () => {
     const el = await fixture<ComboBox.ELEMENT>(
       html`
@@ -1149,5 +1132,271 @@ describe("Combobox Component", () => {
     await elementUpdated(el);
     expect(el.shadowRoot!.querySelector('[slot="custom-error"]')).not.toBeNull();
     expect(el.shadowRoot!.querySelector('[slot="custom-error"]')!.innerHTML).toEqual("Custom Error!!!");
+  });
+
+  describe("Combobox with group options", () => {
+    test("should render group label", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox with-custom-content>
+            <optgroup label="Countries">
+              <div slot="Australia" aria-label="Australia" display-value="Australia">
+                <span>Australia</span>
+              </div>
+              <div slot="Austria" aria-label="Austria" display-value="Austria">
+                <span>Austria</span>
+              </div>
+            </optgroup>
+            <optgroup label="Cites">
+              <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+                <span>Ambala</span>
+              </div>
+              <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+                <span>Banaras</span>
+              </div>
+            </optgroup>
+          </md-combobox>
+        `
+      );
+
+      el.expanded = true;
+      await elementUpdated(el);
+      expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keydown", {
+          code
+        });
+
+      const backspace = createEvent(Key.Backspace);
+      el.input!.dispatchEvent(backspace);
+
+      await elementUpdated(el);
+
+      expect(el.focusedIndex).toEqual(-1);
+      const arrowDown = createEvent(Key.ArrowDown);
+      el.input!.dispatchEvent(arrowDown);
+
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(-1);
+
+      const groupList = el.shadowRoot!.querySelectorAll(".group-label");
+      expect(groupList![0].hasAttribute("focused")).toBeTruthy();
+
+      const enter = createEvent(Key.Enter);
+      groupList![0].dispatchEvent(enter);
+      await elementUpdated(el);
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedGroupIndex).toEqual(0);
+      expect(el.lists?.length).toEqual(2);
+
+      groupList![0].dispatchEvent(arrowDown);
+
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(0);
+
+      groupList![0].dispatchEvent(arrowDown);
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.focusedGroupIndex).toEqual(-1);
+      expect(el.focusedIndex).toEqual(1);
+
+      groupList![0].dispatchEvent(enter);
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.input?.value).toEqual("Austria");
+      expect(el.expanded).toBeFalsy();
+
+      const arrowUp = createEvent(Key.ArrowUp);
+      el.input!.dispatchEvent(arrowUp);
+
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      groupList![0].dispatchEvent(enter);
+
+      expect(el.input?.value).toEqual("Australia");
+      expect(el.expanded).toBeFalsy();
+    });
+  });
+
+  test("should navigate through tab between groups", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content>
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `
+    );
+
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+
+    const backspace = createEvent(Key.Backspace);
+    const arrowDown = createEvent(Key.ArrowDown);
+    const arrowUp = createEvent(Key.ArrowUp);
+    const tab = createEvent(Key.Tab);
+    const enter = createEvent(Key.Enter);
+    const escape = createEvent(Key.Escape);
+
+    el.input!.dispatchEvent(backspace);
+
+    await elementUpdated(el);
+    expect(el.focusedIndex).toEqual(-1);
+    el.input!.dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+
+    const groupList = el.shadowRoot!.querySelectorAll(".group-label");
+    expect(groupList![0].hasAttribute("focused")).toBeTruthy();
+
+    groupList![0].dispatchEvent(arrowDown);
+    groupList![0].dispatchEvent(arrowUp);
+
+    groupList![0].dispatchEvent(enter);
+    await elementUpdated(el);
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.lists?.length).toEqual(2);
+
+    groupList![0]!.dispatchEvent(tab);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+    expect(el.focusedGroupIndex).toEqual(0);
+
+    groupList![1].dispatchEvent(enter);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.lists?.length).toEqual(2);
+    groupList![1].dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    groupList![1].dispatchEvent(arrowUp);
+    groupList![1].dispatchEvent(enter);
+
+    expect(el.input?.value).toEqual("Ambala");
+    expect(el.expanded).toBeFalsy();
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    el.input!.dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    groupList![0]!.dispatchEvent(escape);
+  });
+
+  test("should list all group related options on match", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content>
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+            <div slot="India" aria-label="India" display-value="India">
+              <span>India</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+            <div slot="Ujjaini" aria-label="Ujjaini" display-value="Ujjaini">
+              <span>Indonasia</span>
+            </div>
+            <div slot="Indore" aria-label="Indore" display-value="Indore">
+              <span>Indore</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `
+    );
+
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+
+    const backspace = createEvent(Key.Backspace);
+    el.input!.dispatchEvent(backspace);
+
+    await elementUpdated(el);
+
+    const event = new Event("input");
+    el.input!.value = "In";
+    el.input!.dispatchEvent(event);
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.lists?.length).toEqual(3);
+    const arrowDown = createEvent(Key.ArrowDown);
+    el.input!.dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    const enter = createEvent(Key.Enter);
+    el.input!.dispatchEvent(enter);
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.input?.value).toEqual("India");
   });
 });

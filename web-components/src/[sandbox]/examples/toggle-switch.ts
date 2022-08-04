@@ -26,4 +26,10 @@ export const toggleSwitchTemplate = html`
   <md-toggle-switch htmlId="toggleSwitch8" smaller checked>
     Checked Smaller Toggle Switch
   </md-toggle-switch>
+  <md-toggle-switch htmlId="toggleSwitch10" alignLabel="right">
+    Toggle Switch with label right aligned
+  </md-toggle-switch>
+  <md-toggle-switch htmlId="toggleSwitch9" alignLabel="left">
+    Toggle Switch with label left aligned
+  </md-toggle-switch>
 `;

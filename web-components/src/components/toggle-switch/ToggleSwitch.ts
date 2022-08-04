@@ -13,7 +13,10 @@ import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
+export const alignLabel = ["left", "right"] as const;
+
 export namespace ToggleSwitch {
+  export type alignLabel = typeof alignLabel[number];
   @customElementWithCheck("md-toggle-switch")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) htmlId = "";
@@ -22,6 +25,7 @@ export namespace ToggleSwitch {
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) small = false;
     @property({ type: Boolean }) smaller = false;
+    @property({ type: String }) alignLabel: ToggleSwitch.alignLabel = "right";
     @property({ type: Boolean, reflect: true }) autofocus = false;
 
     handleClick() {
@@ -35,6 +39,20 @@ export namespace ToggleSwitch {
         "md-toggle-switch--small": this.small,
         "md-toggle-switch--smaller": this.smaller
       };
+    }
+
+    switchTemplate() {
+      if (this.alignLabel === "left") {
+        return html`
+          <slot></slot>
+          <span class="md-toggle-switch__label__container md-toggle-switch__label__container__left" part="toggle-label"></span>
+        `;
+      } else {
+        return html`
+          <span class="md-toggle-switch__label__container" part="toggle-label"></span>
+          <slot></slot>
+        `;
+      }
     }
 
     render() {
@@ -54,8 +72,7 @@ export namespace ToggleSwitch {
             tabindex=${this.disabled ? -1 : 0}
           />
           <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label">
-            <span class="md-toggle-switch__label__container"></span>
-            <slot></slot>
+            ${this.switchTemplate()}
           </md-label>
         </div>
       `;

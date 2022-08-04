@@ -2,6 +2,7 @@
   .md-label {
     @include form-label;
     display: flex;
+    align-items: center;
 
     &.right {
       @include form-label(right, false);

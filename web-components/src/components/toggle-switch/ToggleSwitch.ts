@@ -42,7 +42,7 @@ export namespace ToggleSwitch {
     }
 
     switchTemplate() {
-      if (this.alignLabel == "left") {
+      if (this.alignLabel === "left") {
         return html`
           <slot></slot>
           <span class="md-toggle-switch__label__container md-toggle-switch__label__container__left" part="toggle-label"></span>

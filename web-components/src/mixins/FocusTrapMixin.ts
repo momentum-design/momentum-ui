@@ -179,9 +179,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private shouldSkipFocus(element: HTMLElement) {
       // when combobox is having more than 100 items screen getting freezed
-      if(element.className.split(" ").indexOf('md-combobox')>-1){
-        return true;
+      if(element.className && element.className.split && element.className.split(" ").indexOf('md-combobox')>-1){
+        return true; 
       }
+      return false;
     }
 
     private findFocusable(root: ShadowRoot | HTMLElement, matches: Set<HTMLElement>): HTMLElement[] {
@@ -362,6 +363,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      const self = this;
+      document.addEventListener("on-component-update", () => {
+        setTimeout(() => {
+          self.setFocusableElements();
+        }, 10);
+      });
       document.addEventListener("click", this.handleOutsideTrapClick);
     }
 

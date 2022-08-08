@@ -234,6 +234,25 @@ describe("Dropdown Component", () => {
     it("should render correct icon name", () => {
       expect(dropdown.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("icon-arrow-down_16");
     });
+
+    it("should change selectedKey on update of default option", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(
+        html`
+          <md-dropdown
+            .options="${dropdownObjectLongOptions}"
+            .defaultOption="${dropdownObjectLongOptions[10]}"
+            option-id="id"
+            option-value="country"
+          ></md-dropdown>
+        `
+      );
+      expect(dropdown["selectedKey"]).toEqual(dropdownObjectLongOptions[10].id);
+
+      dropdown["defaultOption"] = dropdownObjectLongOptions[1];
+      await elementUpdated(dropdown);
+
+      expect(dropdown["selectedKey"]).toEqual(dropdownObjectLongOptions[1].id);
+    });
   });
 
   describe("List", () => {

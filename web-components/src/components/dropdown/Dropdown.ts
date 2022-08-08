@@ -104,6 +104,13 @@ export namespace Dropdown {
         if (name === "disabled") {
           this.setAttribute("tabindex", !this.disabled ? "0" : "-1");
         }
+        if (name === "defaultOption") {
+          if (this.defaultOption) {
+            const { key } = this.getOptionKeyValuePair(this.defaultOption);
+
+            this.selectedKey = key;
+          }
+        }
       });
     }
 

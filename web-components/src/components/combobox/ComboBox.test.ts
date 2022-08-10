@@ -1274,7 +1274,7 @@ describe("Combobox Component", () => {
 
     await elementUpdated(el);
     expect(el.focusedIndex).toEqual(-1);
-    el.input!.dispatchEvent(arrowDown);
+    el.input!.dispatchEvent(arrowUp);
 
     await elementUpdated(el);
     await nextFrame();
@@ -1286,6 +1286,7 @@ describe("Combobox Component", () => {
     expect(groupList![0].hasAttribute("focused")).toBeTruthy();
 
     groupList![0].dispatchEvent(arrowDown);
+    await elementUpdated(el);
     groupList![0].dispatchEvent(arrowUp);
 
     groupList![0].dispatchEvent(enter);
@@ -1398,5 +1399,106 @@ describe("Combobox Component", () => {
     await nextFrame();
 
     expect(el.input?.value).toEqual("India");
+  });
+
+  test("should navigate through tab between groups for multi select", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content is-multi placeholder="Placeholder">
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `
+    );
+
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+
+    const backspace = createEvent(Key.Backspace);
+    const arrowDown = createEvent(Key.ArrowDown);
+    const arrowUp = createEvent(Key.ArrowUp);
+    const tab = createEvent(Key.Tab);
+    const enter = createEvent(Key.Enter);
+    const escape = createEvent(Key.Escape);
+    const end = createEvent(Key.End);
+
+    el.input!.dispatchEvent(backspace);
+
+    await elementUpdated(el);
+    expect(el.focusedIndex).toEqual(-1);
+    el.input!.dispatchEvent(arrowUp);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+
+    const groupList = el.shadowRoot!.querySelectorAll(".group-label");
+    expect(groupList![0].hasAttribute("focused")).toBeTruthy();
+
+    groupList![0].dispatchEvent(arrowDown);
+    await elementUpdated(el);
+    groupList![0].dispatchEvent(arrowUp);
+
+    groupList![0].dispatchEvent(enter);
+    await elementUpdated(el);
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.lists?.length).toEqual(2);
+
+    groupList![0]!.dispatchEvent(tab);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+    expect(el.focusedGroupIndex).toEqual(0);
+
+    groupList![1].dispatchEvent(enter);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.lists?.length).toEqual(2);
+    groupList![1].dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    groupList![1].dispatchEvent(enter);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.input?.value).toEqual("Ambala");
+    expect(el.expanded).toBeFalsy();
+
+    await elementUpdated(el);
+    await nextFrame();
+    groupList![0]!.dispatchEvent(end);
+    groupList![0]!.dispatchEvent(escape);
   });
 });

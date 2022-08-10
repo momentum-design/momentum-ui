@@ -521,9 +521,9 @@ export namespace ComboBox {
       const prevOption = (this.lists![this.focusedIndex - 1] || option)?.getBoundingClientRect();
 
       if (nextOption?.bottom > bottom) {
-        distance = nextOption?.bottom - bottom + 2;
+        distance = nextOption.bottom - bottom + 2;
       } else if (prevOption?.top < top) {
-        distance = prevOption?.top - top - 2;
+        distance = prevOption.top - top - 2;
       }
       this.updateOnNextFrame(() => {
         this.listBox!.scrollTop += distance;
@@ -990,9 +990,6 @@ export namespace ComboBox {
               return;
             }
             this.setFocusOnHost(false);
-            if (!this.expanded) {
-              this.setVisualListbox(true);
-            }
             this.updateOnNextFrame(() => {
               if (
                 this.focusedIndex === -1 ||
@@ -1018,9 +1015,6 @@ export namespace ComboBox {
               return;
             }
             this.setFocusOnHost(false);
-            if (!this.expanded) {
-              this.setVisualListbox(true);
-            }
             this.updateOnNextFrame(() => {
               if (this.focusedIndex <= 0) {
                 this.focusedIndex = !this.allowSelectAll

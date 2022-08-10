@@ -1352,6 +1352,9 @@ export namespace ComboBox {
                           <div
                             part="group-label"
                             class="group-label"
+                            role="listbox"
+                            aria-controls="md-combobox-listbox"
+                            aria-label=${option.value}
                             @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)}
                             @keydown=${(e: KeyboardEvent) => {
                               this.handleGroupLabelKeyDown(e, option);

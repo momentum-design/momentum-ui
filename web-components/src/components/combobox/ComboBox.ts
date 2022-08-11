@@ -32,6 +32,7 @@ export namespace ComboBox {
   @customElementWithCheck("md-combobox")
   export class ELEMENT extends FocusMixin(LitElement) {
     private _focusedIndex = -1;
+    private _focusedGroupIndex = -1;
 
     @property({ type: String }) label = "Options";
     @property({ type: Array }) options: (string | OptionMember)[] = [];
@@ -41,6 +42,8 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) ordered = false;
     @property({ type: Boolean, reflect: true }) expanded = false;
+    @property({ type: Array, reflect: true }) groupExpandedList: any = [];
+    @property({ type: Boolean, reflect: true }) searchItem = false;
     @property({ type: Boolean, reflect: true }) compact = false;
     @property({ type: Boolean, attribute: "no-clear-icon" }) noClearIcon = false;
     @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
@@ -74,7 +77,7 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
 
     @property({ type: Number, attribute: false })
-    @internalProperty() 
+    @internalProperty()
     private isOptGroup = false;
     @internalProperty()
     private isSelectAllChecked = false;
@@ -95,6 +98,27 @@ export namespace ComboBox {
       }
       this._focusedIndex = index;
       this.requestUpdate("focusedIndex", oldIndex);
+    }
+
+    get focusedGroupIndex() {
+      return this._focusedGroupIndex;
+    }
+
+    set focusedGroupIndex(index: number) {
+      const oldIndex = this._focusedGroupIndex;
+      if (this.labels && this.labels.length !== 0) {
+        const oldFocusedOption = this.labels[oldIndex];
+        if (oldFocusedOption) {
+          oldFocusedOption.toggleAttribute("focused", false);
+        }
+        const newFocusedOption = this.labels[index];
+        if (newFocusedOption) {
+          newFocusedOption.toggleAttribute("focused", true);
+          newFocusedOption.focus();
+        }
+      }
+      this._focusedGroupIndex = index;
+      this.requestUpdate("focusedGroupIndex", oldIndex);
     }
 
     private multiSelectedIndex = -1;
@@ -144,12 +168,16 @@ export namespace ComboBox {
           this.resizeListbox();
         }
       }
+      if (changedProperties.has("searchItem")) {
+        this.resizeListbox();
+      }
     }
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled) {
         requestAnimationFrame(() => {
           this.input!.focus();
+          this.focusedGroupIndex = -1;
         });
 
         if (this.selectWhenInFocus) {
@@ -202,6 +230,7 @@ export namespace ComboBox {
             this.setSelectedOption(option);
             this.setInputValue(this.getOptionValue(option));
             this.focusedIndex = selectedIndex;
+            this.focusedGroupIndex = -1;
           }
         }
       }
@@ -214,7 +243,7 @@ export namespace ComboBox {
     private setOptionCustomContent() {
       if (this.isOptGroup) {
         const customOptionGroups = [...this.querySelectorAll(`optgroup`)];
-        let final = [];
+        const final = [];
         for (const optgroup of customOptionGroups) {
           const label = optgroup.getAttribute("label");
           const childOptions = [...optgroup.querySelectorAll(`[slot]`)];
@@ -256,6 +285,10 @@ export namespace ComboBox {
       return this.isOptionObject(option) ? (option as OptionMember)[this.optionValue] : (option as string);
     }
 
+    private getOptionGroupName(option: any) {
+      return option?.groupName;
+    }
+
     private getOptionId(option: string | OptionMember) {
       return this.isOptionObject(option) ? (option as OptionMember)[this.optionId] : (option as string);
     }
@@ -280,6 +313,16 @@ export namespace ComboBox {
 
     private setVisualListbox(value: boolean) {
       this.expanded = value;
+    }
+
+    private setGroupList(value: any) {
+      if (this.groupExpandedList.includes(value)) {
+        this.groupExpandedList.splice(this.groupExpandedList.indexOf(value), 1);
+        this.groupExpandedList = [...this.groupExpandedList];
+      } else {
+        if (this.searchItem) this.groupExpandedList.push(value);
+        else this.groupExpandedList = [value];
+      }
     }
 
     private findSelectedOption(option: string | OptionMember) {
@@ -334,6 +377,33 @@ export namespace ComboBox {
       );
     }, 0);
 
+    private handleGroupFilter = (finalFilteredOption: (string | OptionMember)[]) => {
+      const tempGroupExpandedList = finalFilteredOption.filter(item => {
+        if (typeof item !== "string" && item.isLabel === "true") {
+          return item.groupName;
+        }
+      });
+      this.searchItem = true;
+      this.groupExpandedList = tempGroupExpandedList.map(a => {
+        if (typeof a !== "string") {
+          return a.groupName;
+        }
+      });
+
+      return finalFilteredOption.filter((option: string | OptionMember) => {
+        if (typeof option !== "string" && option.isLabel === "true") {
+          const isGroupOption = finalFilteredOption.find(option2 => {
+            if (typeof option !== "string" && typeof option2 !== "string") {
+              return option.groupName === option2.groupName && option2.isLabel === "false";
+            }
+          });
+          return isGroupOption ? true : false;
+        } else {
+          return true;
+        }
+      });
+    };
+
     private filterOptions(value: string): (string | OptionMember)[] {
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
@@ -345,48 +415,34 @@ export namespace ComboBox {
               .includes(value.toLowerCase());
           }
         });
+
         if (this.isOptGroup) {
-          return finalFilteredOption.filter((option: string | OptionMember) => {
-            if (typeof option !== "string" && option.isLabel === "true") {
-              const isGroupOption = finalFilteredOption.find(option2 => {
-                if (typeof option !== "string" && typeof option2 !== "string") {
-                  return option.groupName === option2.groupName && option2.isLabel === "false";
-                }
-              });
-              return isGroupOption ? true : false;
-            } else {
-              return true;
-            }
-          });
+          return this.handleGroupFilter(finalFilteredOption);
         } else {
           return finalFilteredOption;
         }
       } else {
+        this.searchItem = false;
         return this.options;
       }
     }
 
     private resizeListbox() {
       this.updateOnNextFrame(() => {
+        let height = 0;
+        let labelHeight = 0;
         if (this.lists) {
-          const height = [...this.lists]
+          height = [...this.lists]
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-
-          if (this.listBox) {
-            this.listBox.style.maxHeight = `${height}px`;
-          }
         }
-        if (this.labels && this.lists) {
-          const labelHeight = [...this.labels]
+        if (this.labels) {
+          labelHeight = [...this.labels]
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-          const height = [...this.lists]
-            .slice(0, this.visibleOptions)
-            .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-          if (this.listBox) {
-            this.listBox.style.maxHeight = `${height + labelHeight}px`;
-          }
+        }
+        if (this.listBox) {
+          this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
         }
         if (this.showCustomError) {
           const errorContent = this.listBox?.querySelector("[slot]");
@@ -464,9 +520,9 @@ export namespace ComboBox {
       const nextOption = (this.lists![this.focusedIndex + 1] || option)?.getBoundingClientRect();
       const prevOption = (this.lists![this.focusedIndex - 1] || option)?.getBoundingClientRect();
 
-      if (nextOption.bottom > bottom) {
+      if (nextOption?.bottom > bottom) {
         distance = nextOption.bottom - bottom + 2;
-      } else if (prevOption.top < top) {
+      } else if (prevOption?.top < top) {
         distance = prevOption.top - top - 2;
       }
       this.updateOnNextFrame(() => {
@@ -572,6 +628,7 @@ export namespace ComboBox {
 
       this.updateOnNextFrame(() => {
         this.input!.focus();
+        this.focusedGroupIndex = -1;
       });
     }
 
@@ -647,6 +704,7 @@ export namespace ComboBox {
 
     private removeAllSelected() {
       this.focusedIndex = -1;
+      this.focusedGroupIndex = -1;
       this.selectedOptions = [];
       this.inputValue = "";
       this.setInputValue();
@@ -673,6 +731,7 @@ export namespace ComboBox {
       }
       this.updateOnNextFrame(() => {
         this.input!.focus();
+        this.focusedGroupIndex = -1;
       });
     }
 
@@ -732,6 +791,30 @@ export namespace ComboBox {
       this.inputValue = "";
     }
 
+    handleGroupFocus() {
+      this.setFocusOnHost(false);
+      if (!this.expanded) {
+        this.setVisualListbox(true);
+      }
+      if (this.filteredGroupOptions.length > 0 && this.focusedGroupIndex === -1) {
+        this.focusedGroupIndex = this.filteredGroupOptions.findIndex(item => {
+          return typeof item !== "string" && item.groupName === this.groupExpandedList[0];
+        });
+      }
+      this.updateOnNextFrame(() => {
+        if (
+          this.focusedGroupIndex === -1 ||
+          (!this.allowSelectAll && this.focusedGroupIndex >= this.filteredGroupOptions.length - 1) ||
+          (this.allowSelectAll && this.focusedGroupIndex >= this.filteredGroupOptions.length)
+        ) {
+          this.focusedGroupIndex = 0;
+        } else {
+          this.focusedGroupIndex++;
+        }
+      });
+      this.focusedIndex = -1;
+    }
+
     handleInputKeyDown(event: KeyboardEvent) {
       switch (event.code) {
         case Key.Backspace:
@@ -767,6 +850,10 @@ export namespace ComboBox {
           break;
         case Key.ArrowDown:
           {
+            if (this.isOptGroup && this.filteredOptions.length === 0) {
+              this.handleGroupFocus();
+              return;
+            }
             this.setFocusOnHost(false);
             if (!this.expanded) {
               this.setVisualListbox(true);
@@ -782,14 +869,20 @@ export namespace ComboBox {
                 this.focusedIndex++;
               }
               const option = this.getFocusedItem(this.focusedIndex);
+              this.groupExpandedList = [this.getOptionGroupName(option)];
               if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
               }
+              this.focusedGroupIndex = -1;
             });
           }
           break;
         case Key.ArrowUp:
           {
+            if (this.isOptGroup && this.filteredOptions.length === 0) {
+              this.handleGroupFocus();
+              return;
+            }
             this.setFocusOnHost(false);
             if (!this.expanded) {
               this.setVisualListbox(true);
@@ -803,8 +896,10 @@ export namespace ComboBox {
                 this.focusedIndex--;
               }
               const option = this.getFocusedItem(this.focusedIndex);
+              this.groupExpandedList = [this.getOptionGroupName(option)];
               if (option && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(option));
+                this.focusedGroupIndex = -1;
               }
             });
           }
@@ -818,6 +913,7 @@ export namespace ComboBox {
             } else {
               this.setInputValue();
               this.focusedIndex = -1;
+              this.focusedGroupIndex = -1;
               this.removeAllSelected();
             }
           }
@@ -854,16 +950,112 @@ export namespace ComboBox {
       }
     }
 
+    handleGroupLabelKeyDown(event: KeyboardEvent, option: OptionMember) {
+      switch (event.code) {
+        case Key.Tab:
+          {
+            this.handleGroupFocus();
+          }
+          break;
+        case Key.Enter:
+        case Key.Space:
+          {
+            if (this.focusedGroupIndex !== -1) {
+              this.toggleGroupListBox(event, option.value);
+            } else {
+              this.setFocusOnHost(true);
+              this.setVisualListbox(false);
+              this.updateOnNextFrame(() => {
+                const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
+                if (option) {
+                  this.setSelectedOption(option);
+                  if (!this.showSelectedCount) {
+                    this.setInputValue(this.getOptionValue(option));
+                    this.updateOnNextFrame(() => {
+                      this.input!.focus();
+                      this.focusedGroupIndex = -1;
+                    });
+                  }
+                }
+                if (this.isMulti && this.allowSelectAll && this.focusedIndex === 0) {
+                  this.handleSelectAll();
+                }
+              });
+            }
+          }
+          break;
+        case Key.ArrowDown:
+          {
+            if (this.filteredOptions.length === 0) {
+              return;
+            }
+            this.setFocusOnHost(false);
+            this.updateOnNextFrame(() => {
+              if (
+                this.focusedIndex === -1 ||
+                (!this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length - 1) ||
+                (this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length)
+              ) {
+                this.focusedIndex = 0;
+              } else {
+                this.focusedIndex++;
+              }
+              const option = this.getFocusedItem(this.focusedIndex);
+              this.groupExpandedList = [this.getOptionGroupName(option)];
+              if (!this.showSelectedCount && option) {
+                this.setInputValue(this.getOptionValue(option));
+              }
+              this.focusedGroupIndex = -1;
+            });
+          }
+          break;
+        case Key.ArrowUp:
+          {
+            if (this.isOptGroup && this.filteredOptions.length === 0) {
+              return;
+            }
+            this.setFocusOnHost(false);
+            this.updateOnNextFrame(() => {
+              if (this.focusedIndex <= 0) {
+                this.focusedIndex = !this.allowSelectAll
+                  ? this.filteredOptions.length - 1
+                  : this.filteredOptions.length;
+              } else {
+                this.focusedIndex--;
+              }
+              const item = this.getFocusedItem(this.focusedIndex);
+              this.groupExpandedList = [this.getOptionGroupName(item)];
+              if (item && !this.showSelectedCount) {
+                this.setInputValue(this.getOptionValue(item));
+              }
+            });
+          }
+          break;
+        case Key.Escape:
+          {
+            this.focusedGroupIndex = -1;
+            this.setVisualListbox(false);
+            this.setFocusOnHost(true);
+            this.input!.focus();
+          }
+          break;
+        default: {
+          this.setVisualListbox(true);
+          break;
+        }
+      }
+    }
+
     toggleVisualListBox(e: any) {
       if (e.target.classList.contains("md-combobox-listbox")) {
         e.target.focus();
-      } else if(e.target.localName === "md-icon") {
+      } else if (e.target.localName === "md-icon") {
         const parentElement = e.target.parentElement?.parentElement?.parentElement;
-        if(parentElement) {
+        if (parentElement) {
           const input = parentElement.querySelector(".md-combobox-listbox");
           setTimeout(() => {
             input.focus();
-          }, 10)
+          }, 10);
         }
       }
       if (this.expanded) {
@@ -872,6 +1064,17 @@ export namespace ComboBox {
         this.setVisualListbox(true);
       }
       this.input!.focus();
+      this.setGroupList("");
+      this.focusedGroupIndex = -1;
+    }
+
+    toggleGroupListBox(e: Event, data: string) {
+      e.stopPropagation();
+      this.focusedGroupIndex = this.filteredGroupOptions.findIndex(item => {
+        return typeof item !== "string" && item.groupName === data;
+      });
+      this.setGroupList(data);
+      this.resizeListbox();
     }
 
     handleRemoveAll(event: MouseEvent) {
@@ -894,8 +1097,8 @@ export namespace ComboBox {
     connectedCallback() {
       super.connectedCallback();
       this.setupEvents();
-      const isOptGroup = this.querySelector("optgroup")
-      if(isOptGroup) this.isOptGroup = true;
+      const isOptGroup = this.querySelector("optgroup");
+      if (isOptGroup) this.isOptGroup = true;
     }
 
     disconnectedCallback() {
@@ -917,8 +1120,22 @@ export namespace ComboBox {
       return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
         (options: string | OptionMember) => {
           if (this.isOptGroup) {
-            if (typeof options !== "string") {
+            if (typeof options !== "string" && this.groupExpandedList.includes(this.getOptionGroupName(options))) {
               return options.isLabel === "false";
+            }
+          } else {
+            return true;
+          }
+        }
+      );
+    }
+
+    get filteredGroupOptions() {
+      return this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).filter(
+        (options: string | OptionMember) => {
+          if (this.isOptGroup) {
+            if (typeof options !== "string") {
+              return options.isLabel === "true";
             }
           } else {
             return true;
@@ -983,6 +1200,23 @@ export namespace ComboBox {
       `;
     }
 
+    groupArrowButtonTemplate(data: string) {
+      const iconName = this.groupExpandedList.includes(data) ? "icon-arrow-up_12" : "icon-arrow-down_12";
+      return html`
+        <button
+          type="button"
+          class="md-combobox-button"
+          aria-label=${this.arrowAriaLabel}
+          aria-controls="md-combobox-listbox"
+          tabindex="-1"
+          ?disabled=${this.disabled}
+          @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
+        >
+          <span><md-icon name=${iconName}></md-icon> </span>
+        </button>
+      `;
+    }
+
     getSelectAllOption() {
       return html`
         <li
@@ -1030,7 +1264,7 @@ export namespace ComboBox {
       if (this.isOptGroup) {
         const slot = [...this.querySelectorAll(`[slot]`)].find(element => element.slot === slotName);
         if (slot) {
-          return document.createRange().createContextualFragment(`${slot.outerHTML}`)
+          return document.createRange().createContextualFragment(`${slot.outerHTML}`);
         } else {
           return html``;
         }
@@ -1109,9 +1343,26 @@ export namespace ComboBox {
                     (option: string | OptionMember, optionIndex) => {
                       if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
                         return html`
-                          <span part="group-label" class="group-label">${option.value}</span>
+                          <div
+                            part="group-label"
+                            class="group-label"
+                            role="listbox"
+                            aria-controls="md-combobox-listbox"
+                            aria-label=${option.value}
+                            @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)}
+                            @keydown=${(e: KeyboardEvent) => {
+                              this.handleGroupLabelKeyDown(e, option);
+                            }}
+                            tabindex="1"
+                            aria-selected=${this.getAriaState(optionIndex)}
+                          >
+                            <span part="group-label">${option.value}</span>
+                            ${this.groupArrowButtonTemplate(option.value)}
+                          </div>
                         `;
-                      } else {
+                      } else if (
+                        !(this.isOptGroup && !this.groupExpandedList.includes(this.getOptionGroupName(option)))
+                      ) {
                         return html`
                           <li
                             id=${this.getOptionId(option)}

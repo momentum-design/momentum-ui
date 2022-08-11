@@ -175,19 +175,23 @@ ul {
 }
 
 .group-label {
+    justify-content: space-between;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
     color: var(--combobox-group-label-color);
-    padding: 9px 16px;
-    border-top: 1px solid var(--combobox-group-label-border-color);
+    padding: $combobox-option-padding;
     border-bottom: 1px solid var(--combobox-group-label-border-color);
-    display: block;
+    display: flex;
     width: 100%;
     background-color: var(--combobox-group-label-bg-color);
     
     &:hover {
       background: unset;
+    }
+    
+    &[focused] {
+      background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
     }
 }
 

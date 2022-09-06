@@ -2466,7 +2466,7 @@ import Foundation
     case secureCircleActive14
     case secureCircleActive16
     case secureFips24
-    case secureLockLight
+    case secureLockLight32
     case selfview16
     case selfview20
     case selfview24
@@ -5564,7 +5564,7 @@ import Foundation
         case .secureCircleActive14: return "\u{fa97}"
         case .secureCircleActive16: return "\u{fa98}"
         case .secureFips24: return "\u{fa99}"
-        case .secureLockLight: return "\u{fa9a}"
+        case .secureLockLight32: return "\u{fa9a}"
         case .selfview16: return "\u{fa9b}"
         case .selfview20: return "\u{fa9c}"
         case .selfview24: return "\u{fa9d}"

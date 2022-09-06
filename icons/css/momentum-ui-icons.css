@@ -1,6 +1,6 @@
 @font-face {
   font-family: "momentum-ui-icons";
-  src: url("../fonts/momentum-ui-icons.woff2?688aeffba73e7e82d55421a7f6467e23") format("woff2"), url("../fonts/momentum-ui-icons.woff?2f9cbdbf012e39ab439ccb9218babb55") format("woff");
+  src: url("../fonts/momentum-ui-icons.woff2?763de8eac556142b491881a7caa705f9") format("woff2"), url("../fonts/momentum-ui-icons.woff?20e662adbe3e180e864e40a47400a29d") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -10098,7 +10098,7 @@
   content: "\fa99";
 }
 
-.icon-secure-lock-light::before {
+.icon-secure-lock-light_32::before {
   content: "\fa9a";
 }
 

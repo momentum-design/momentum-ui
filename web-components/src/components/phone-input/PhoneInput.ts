@@ -91,25 +91,24 @@ export namespace PhoneInput {
     }
 
     handleCountryChange(event: CustomEvent) {
-      if (!event.detail.value || !event.detail.value.id) {
+      if (!event.detail.value || !event.detail.value?.id) {
         this.countryCode = "US";
         this.countryCallingCode = "";
-        this.validateNumber();
-        return;
+      } else {
+        this.countryCallingCode = event.detail.value.id;
+        this.countryCode = event.detail.value.id.split(",")[2]?.trim();
       }
-      this.countryCallingCode = event.detail.value.id;
-      this.countryCode = event.detail.value.id.split(",")[2]?.trim();
       this.validateNumber();
       this.dispatchEvent(
-        new CustomEvent("countrycode-change",{
-          bubbles:true,
-          composed:true,
-          detail:{
-            srcEvent : event,
+        new CustomEvent("countrycode-change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event,
             isValid: this.isValid
           }
         })
-      )
+      );
     }
 
     handlePhoneChange(event: CustomEvent) {
@@ -248,4 +247,3 @@ declare global {
     "md-phone-input": PhoneInput.ELEMENT;
   }
 }
-

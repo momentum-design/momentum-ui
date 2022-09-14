@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.15.29](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.28...@momentum-ui/core@19.15.29) (2022-09-14)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.15.28](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.27...@momentum-ui/core@19.15.28) (2022-09-06)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
+## [19.15.27](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.26...@momentum-ui/core@19.15.27) (2022-09-05)
+
+**Note:** Version bump only for package @momentum-ui/core
+
+
+
+
+
 ## [19.15.26](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.25...@momentum-ui/core@19.15.26) (2022-07-26)
 
 **Note:** Version bump only for package @momentum-ui/core

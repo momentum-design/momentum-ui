@@ -447,8 +447,8 @@ export namespace ComboBox {
         if (this.showCustomError) {
           const errorContent = this.listBox?.querySelector("[slot]");
           if (this.listBox && errorContent) {
-            this.listBox.style.height = `${errorContent.clientHeight}px`;
-            this.listBox.style.maxHeight = `${errorContent.clientHeight}px`;
+            this.listBox.style.height = `${errorContent.clientHeight + 2}px`;
+            this.listBox.style.maxHeight = `${errorContent.clientHeight + 2}px`;
           }
         }
       });

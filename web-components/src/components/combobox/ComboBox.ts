@@ -21,7 +21,7 @@ import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
-import "lit-virtualizer"
+import "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -88,16 +88,16 @@ export namespace ComboBox {
     }
     set focusedIndex(index: number) {
       const oldIndex = this._focusedIndex;
-      if(this.checkForVirtualScroll()) {
+      if (this.checkForVirtualScroll()) {
         const newId = this.getOptionId(this.filteredOptions[index]);
-        const newList = this.lists ? [...this.lists]?.find((list) => list.offsetHeight !== 0 && list.id === newId) : ""
-        if(this.lists){
-        [...this.lists].forEach((list) => {
-          list.toggleAttribute("focused", false);
-        })
+        const newList = this.lists ? [...this.lists]?.find(list => list.offsetHeight !== 0 && list.id === newId) : "";
+        if (this.lists) {
+          [...this.lists].forEach(list => {
+            list.toggleAttribute("focused", false);
+          });
         }
         if (newList) {
-         newList?.toggleAttribute("focused", true);
+          newList?.toggleAttribute("focused", true);
         }
       } else {
         if (this.lists) {
@@ -109,8 +109,8 @@ export namespace ComboBox {
           if (newFocusedOption) {
             newFocusedOption.toggleAttribute("focused", true);
           }
+        }
       }
-    }
       this._focusedIndex = index;
       this.requestUpdate("focusedIndex", oldIndex);
     }
@@ -166,11 +166,12 @@ export namespace ComboBox {
       if (changedProperties.has("expanded")) {
         if (this.expanded) {
           this.resizeListbox();
-    }
+        }
+      }
       if (changedProperties.has("focusedIndex")) {
         if (this.focusedIndex >= 0) {
-          if(this.checkForVirtualScroll()) {
-              this.virtualizer?.scrollToIndex(this.focusedIndex, 'center');
+          if (this.checkForVirtualScroll()) {
+            this.virtualizer?.scrollToIndex(this.focusedIndex, "center");
           } else {
             this.scrollToOption();
           }
@@ -359,33 +360,33 @@ export namespace ComboBox {
 
     private findOptionIndex(event: MouseEvent) {
       const eventPath = event.composedPath();
-      if(this.checkForVirtualScroll()) {
+      if (this.checkForVirtualScroll()) {
         let id = "";
         [...this.lists!].forEach(listOption => {
-          if(eventPath.includes(listOption)) {
-            id = listOption.id
-          } 
+          if (eventPath.includes(listOption)) {
+            id = listOption.id;
+          }
         });
-        return this.filteredOptions.findIndex((option: any) => this.getOptionId(option) === id)
+        return this.filteredOptions.findIndex((option: any) => this.getOptionId(option) === id);
       } else {
         return [...this.lists!].findIndex(listOption => eventPath.includes(listOption));
       }
     }
-    private checkSelectedOptions(){
-      if(this.checkForVirtualScroll()){
-        const selectedOptionIds = this.selectedOptions.map((option) => this.getOptionId(option));
-        const updatedLists = [...this.lists!].filter((list) => list.id !== "selectAll")
-          updatedLists?.forEach((list: HTMLLIElement) => {
-            if (selectedOptionIds.includes(list.id)){
-              if(this.isMulti){
+    private checkSelectedOptions() {
+      if (this.checkForVirtualScroll()) {
+        const selectedOptionIds = this.selectedOptions.map(option => this.getOptionId(option));
+        const updatedLists = [...this.lists!].filter(list => list.id !== "selectAll");
+        updatedLists?.forEach((list: HTMLLIElement) => {
+          if (selectedOptionIds.includes(list.id)) {
+            if (this.isMulti) {
               list?.setAttribute("aria-checked", "true");
-              }
-              list?.setAttribute("aria-selected", "true");
-            } else if(this.isMulti){
-              list?.setAttribute("aria-checked", "false");
             }
-          })
-    }
+            list?.setAttribute("aria-selected", "true");
+          } else if (this.isMulti) {
+            list?.setAttribute("aria-checked", "false");
+          }
+        });
+      }
     }
 
     private setSelectedOption(option: string | OptionMember) {
@@ -479,7 +480,9 @@ export namespace ComboBox {
         let height = 0;
         let labelHeight = 0;
         if (this.lists) {
-          const updatedList = this.checkForVirtualScroll() ? [...this.lists].filter((list) => list.offsetHeight !== 0) :  [...this.lists]
+          const updatedList = this.checkForVirtualScroll()
+            ? [...this.lists].filter(list => list.offsetHeight !== 0)
+            : [...this.lists];
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
@@ -1306,11 +1309,11 @@ export namespace ComboBox {
         <md-span class="selected-count">${this.selectedOptions.length} ${this.selectedTextLocalization}</md-span>
       `;
     }
-    checkForVirtualScroll(){
+    checkForVirtualScroll() {
       return this.useVirtualScroll && !this.isOptGroup;
     }
 
-    rangeChanged(){
+    rangeChanged() {
       this.focusedIndex = this.focusedIndex;
       this.checkSelectedOptions();
       this.resizeListbox();
@@ -1334,48 +1337,48 @@ export namespace ComboBox {
         `;
       }
     }
-    renderItem(option: OptionMember, optionIndex: number){
+    renderItem(option: OptionMember, optionIndex: number) {
       return html`
-      <li
-        id=${this.getOptionId(option)}
-        title="${this.getOptionValue(option)}"
-        part="combobox-option"
-        role="option"
-        class="md-combobox-option"
-        aria-label=${this.getOptionValue(option)}
-        aria-selected=${this.getAriaState(optionIndex)}
-        tabindex="-1"
-        @click=${this.handleListClick.bind(this)}
-        aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this,option) : undefined)}
-      >
-        ${this.isMulti
-          ? html`
-              <span class="select-option">
-                <md-icon name="icon-check_14"></md-icon>
-              </span>
-            `
-          : nothing}
-        <span part="label" class="select-label">
-          ${this.isCustomContent
+        <li
+          id=${this.getOptionId(option)}
+          title="${this.getOptionValue(option)}"
+          part="combobox-option"
+          role="option"
+          class="md-combobox-option"
+          aria-label=${this.getOptionValue(option)}
+          aria-selected=${this.getAriaState(optionIndex)}
+          tabindex="-1"
+          @click=${this.handleListClick.bind(this)}
+          aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
+        >
+          ${this.isMulti
             ? html`
-            <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
-          `
-            : findHighlight(
-                this.getOptionValue(option),
-                this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-              ).map(({ text, matching }) =>
-                matching
-                  ? html`
-                      <span class="highlight-text">${text}</span>
-                    `
-                  : html`
-                      <span class="selected-label-text">${text}</span>
-                    `
-              )}
-        </span>
-      </li>
-    `;
-  }
+                <span class="select-option">
+                  <md-icon name="icon-check_14"></md-icon>
+                </span>
+              `
+            : nothing}
+          <span part="label" class="select-label">
+            ${this.isCustomContent
+              ? html`
+                  <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
+                `
+              : findHighlight(
+                  this.getOptionValue(option),
+                  this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                ).map(({ text, matching }) =>
+                  matching
+                    ? html`
+                        <span class="highlight-text">${text}</span>
+                      `
+                    : html`
+                        <span class="selected-label-text">${text}</span>
+                      `
+                )}
+          </span>
+        </li>
+      `;
+    }
     render() {
       return html`
         <div
@@ -1426,95 +1429,97 @@ export namespace ComboBox {
                   part="combobox-options"
                   role="listbox"
                   aria-label=${this.label}
-                  style=${this.checkForVirtualScroll() ? styleMap({
-                    visibility: this.expanded
-                      ? this.options.length &&
-                        this.filteredOptions.length === 0 &&
-                        this.inputValue
-                        ? "hidden"
-                        : "visible"
-                      : "hidden",
-                    "z-index": "1"
-                  }) : styleMap({
-                    display: this.expanded
-                      ? this.options.length &&
-                        this.filteredOptions.length === 0 &&
-                        this.inputValue &&
-                        this.allowCustomValue
-                        ? "none"
-                        : "block"
-                      : "none",
-                    "z-index": "1"
-                  })}
+                  style=${this.checkForVirtualScroll()
+                    ? styleMap({
+                        visibility: this.expanded
+                          ? this.options.length && this.filteredOptions.length === 0 && this.inputValue
+                            ? "hidden"
+                            : "visible"
+                          : "hidden",
+                        "z-index": "1"
+                      })
+                    : styleMap({
+                        display: this.expanded
+                          ? this.options.length &&
+                            this.filteredOptions.length === 0 &&
+                            this.inputValue &&
+                            this.allowCustomValue
+                            ? "none"
+                            : "block"
+                          : "none",
+                        "z-index": "1"
+                      })}
                 >
                   ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
-                  ${!this.checkForVirtualScroll() ? repeat(
-                    this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
-                    (option: string | OptionMember) => this.getOptionId(option),
-                    (option: string | OptionMember, optionIndex) => {
-                      if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
-                        return html`
-                          <div
-                            part="group-label"
-                            class="group-label"
-                            role="listbox"
-                            aria-controls="md-combobox-listbox"
-                            aria-label=${option.value}
-                            @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)}
-                            @keydown=${(e: KeyboardEvent) => {
-                              this.handleGroupLabelKeyDown(e, option);
-                            }}
-                            tabindex="1"
-                            aria-selected=${this.getAriaState(optionIndex)}
-                          >
-                            <span part="group-label">${option.value}</span>
-                            ${this.groupArrowButtonTemplate(option.value)}
-                          </div>
-                        `;
-                      } else if (
-                        !(this.isOptGroup && !this.groupExpandedList.includes(this.getOptionGroupName(option)))
-                      ) {
-                        return html`
-                          <li
-                            id=${this.getOptionId(option)}
-                            title="${this.getOptionValue(option)}"
-                            part="combobox-option"
-                            role="option"
-                            class="md-combobox-option"
-                            aria-label=${this.getOptionValue(option)}
-                            aria-selected=${this.getAriaState(optionIndex)}
-                            tabindex="-1"
-                            @click=${this.handleListClick}
-                            aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked(option) : undefined)}
-                          >
-                            ${this.isMulti
-                              ? html`
-                                  <span class="select-option">
-                                    <md-icon name="icon-check_14"></md-icon>
-                                  </span>
-                                `
-                              : nothing}
-                            <span part="label" class="select-label">
-                              ${this.isCustomContent
-                                ? this.getCustomContent(option)
-                                : findHighlight(
-                                    this.getOptionValue(option),
-                                    this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                                  ).map(({ text, matching }) =>
-                                    matching
-                                      ? html`
-                                          <span class="highlight-text">${text}</span>
-                                        `
-                                      : html`
-                                          <span class="selected-label-text">${text}</span>
-                                        `
-                                  )}
-                            </span>
-                          </li>
-                        `;
-                      }
-                    }
-                  ) : nothing}
+                  ${!this.checkForVirtualScroll()
+                    ? repeat(
+                        this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
+                        (option: string | OptionMember) => this.getOptionId(option),
+                        (option: string | OptionMember, optionIndex) => {
+                          if (typeof option !== "string" && this.isOptGroup && option.isLabel === "true") {
+                            return html`
+                              <div
+                                part="group-label"
+                                class="group-label"
+                                role="listbox"
+                                aria-controls="md-combobox-listbox"
+                                aria-label=${option.value}
+                                @click=${(e: MouseEvent) => this.toggleGroupListBox(e, option.value)}
+                                @keydown=${(e: KeyboardEvent) => {
+                                  this.handleGroupLabelKeyDown(e, option);
+                                }}
+                                tabindex="1"
+                                aria-selected=${this.getAriaState(optionIndex)}
+                              >
+                                <span part="group-label">${option.value}</span>
+                                ${this.groupArrowButtonTemplate(option.value)}
+                              </div>
+                            `;
+                          } else if (
+                            !(this.isOptGroup && !this.groupExpandedList.includes(this.getOptionGroupName(option)))
+                          ) {
+                            return html`
+                              <li
+                                id=${this.getOptionId(option)}
+                                title="${this.getOptionValue(option)}"
+                                part="combobox-option"
+                                role="option"
+                                class="md-combobox-option"
+                                aria-label=${this.getOptionValue(option)}
+                                aria-selected=${this.getAriaState(optionIndex)}
+                                tabindex="-1"
+                                @click=${this.handleListClick}
+                                aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked(option) : undefined)}
+                              >
+                                ${this.isMulti
+                                  ? html`
+                                      <span class="select-option">
+                                        <md-icon name="icon-check_14"></md-icon>
+                                      </span>
+                                    `
+                                  : nothing}
+                                <span part="label" class="select-label">
+                                  ${this.isCustomContent
+                                    ? this.getCustomContent(option)
+                                    : findHighlight(
+                                        this.getOptionValue(option),
+                                        this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                                      ).map(({ text, matching }) =>
+                                        matching
+                                          ? html`
+                                              <span class="highlight-text">${text}</span>
+                                            `
+                                          : html`
+                                              <span class="selected-label-text">${text}</span>
+                                            `
+                                      )}
+                                </span>
+                              </li>
+                            `;
+                          }
+                        }
+                      )
+                    : nothing}
                   ${this.options.length &&
                   this.filteredOptions.length === 0 &&
                   this.inputValue &&
@@ -1532,15 +1537,20 @@ export namespace ComboBox {
                         </li>
                       `
                     : nothing}
-                  ${this.checkForVirtualScroll() && this.options.length !== 0 &&
-                        this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).length > 0
-                        ? html`<lit-virtualizer
-                                  class="virtual-scroll"
-                                  .items=${this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)}
-                                  .renderItem=${this.renderItem.bind(this)}
-                                  @rangechange=${this.rangeChanged.bind(this)}
-                                  />
-                  ` : nothing}
+                  ${this.checkForVirtualScroll() &&
+                  this.options.length !== 0 &&
+                  this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).length > 0
+                    ? html`
+                        <lit-virtualizer
+                          class="virtual-scroll"
+                          .items=${this.filterOptions(
+                            this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                          )}
+                          .renderItem=${this.renderItem.bind(this)}
+                          @rangechange=${this.rangeChanged.bind(this)}
+                        />
+                      `
+                    : nothing}
                 </ul>
               `
             : html`

@@ -37,7 +37,8 @@
     "jest": "^26.4.2",
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
-    "lit-html": "1.2.1"
+    "lit-html": "1.2.1",
+    "@types/express-serve-static-core": "4.17.30"
   },
   "peerDependencies": {
     "@momentum-ui/core": "19.15.23",
@@ -62,7 +63,8 @@
     "luxon": "^1.25.0",
     "nanoid": "^3.1.16",
     "papaparse": "^5.3.0",
-    "sortablejs": "^1.13.0"
+    "sortablejs": "^1.13.0",
+    "lit-virtualizer" : "0.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -97,6 +99,7 @@
     "@types/webpack-node-externals": "^1.7.1",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
+    "@types/express-serve-static-core": "4.17.30",
     "alias-resolve-loader": "^2.0.4",
     "babel-jest": "26.3.0",
     "babel-loader": "^8.1.0",

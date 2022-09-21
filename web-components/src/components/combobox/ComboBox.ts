@@ -21,6 +21,7 @@ import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
+import "lit-virtualizer"
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -39,6 +40,7 @@ export namespace ComboBox {
     @property({ type: Array, attribute: "custom-options" }) customOptions = [];
     @property({ type: String }) placeholder = "";
     @property({ type: Boolean, attribute: "is-multi" }) isMulti = false;
+    @property({ type: Boolean, attribute: "use-virtual-scroll" }) useVirtualScroll = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) ordered = false;
     @property({ type: Boolean, reflect: true }) expanded = false;
@@ -86,16 +88,29 @@ export namespace ComboBox {
     }
     set focusedIndex(index: number) {
       const oldIndex = this._focusedIndex;
-      if (this.lists) {
-        const oldFocusedOption = this.lists[oldIndex];
-        if (oldFocusedOption) {
-          oldFocusedOption.toggleAttribute("focused", false);
+      if(this.checkForVirtualScroll()) {
+        const newId = this.getOptionId(this.filteredOptions[index]);
+        const newList = this.lists ? [...this.lists]?.find((list) => list.offsetHeight !== 0 && list.id === newId) : ""
+        if(this.lists){
+        [...this.lists].forEach((list) => {
+          list.toggleAttribute("focused", false);
+        })
         }
-        const newFocusedOption = this.lists[index];
-        if (newFocusedOption) {
-          newFocusedOption.toggleAttribute("focused", true);
+        if (newList) {
+         newList?.toggleAttribute("focused", true);
         }
+      } else {
+        if (this.lists) {
+          const oldFocusedOption = this.lists[oldIndex];
+          if (oldFocusedOption) {
+            oldFocusedOption.toggleAttribute("focused", false);
+          }
+          const newFocusedOption = this.lists[index];
+          if (newFocusedOption) {
+            newFocusedOption.toggleAttribute("focused", true);
+          }
       }
+    }
       this._focusedIndex = index;
       this.requestUpdate("focusedIndex", oldIndex);
     }
@@ -129,6 +144,7 @@ export namespace ComboBox {
     @query(".md-combobox-listbox") input?: HTMLInputElement;
     @query(".md-combobox-button") button?: HTMLButtonElement;
     @query("ul[role='listbox'") listBox?: HTMLUListElement;
+    @query(".virtual-scroll") virtualizer?: any;
 
     @queryAll("li[role='option']") lists?: HTMLLIElement[];
     @queryAll(".group-label") labels?: HTMLLIElement[];
@@ -150,11 +166,14 @@ export namespace ComboBox {
       if (changedProperties.has("expanded")) {
         if (this.expanded) {
           this.resizeListbox();
-        }
-      }
+    }
       if (changedProperties.has("focusedIndex")) {
         if (this.focusedIndex >= 0) {
-          this.scrollToOption();
+          if(this.checkForVirtualScroll()) {
+              this.virtualizer?.scrollToIndex(this.focusedIndex, 'center');
+          } else {
+            this.scrollToOption();
+          }
         }
       }
       if (changedProperties.has("value")) {
@@ -230,6 +249,7 @@ export namespace ComboBox {
             this.setSelectedOption(option);
             this.setInputValue(this.getOptionValue(option));
             this.focusedIndex = selectedIndex;
+            this.virtualizer?.scrollToIndex(this.focusedIndex, "center");
             this.focusedGroupIndex = -1;
           }
         }
@@ -339,7 +359,33 @@ export namespace ComboBox {
 
     private findOptionIndex(event: MouseEvent) {
       const eventPath = event.composedPath();
-      return [...this.lists!].findIndex(listOption => eventPath.includes(listOption));
+      if(this.checkForVirtualScroll()) {
+        let id = "";
+        [...this.lists!].forEach(listOption => {
+          if(eventPath.includes(listOption)) {
+            id = listOption.id
+          } 
+        });
+        return this.filteredOptions.findIndex((option: any) => this.getOptionId(option) === id)
+      } else {
+        return [...this.lists!].findIndex(listOption => eventPath.includes(listOption));
+      }
+    }
+    private checkSelectedOptions(){
+      if(this.checkForVirtualScroll()){
+        const selectedOptionIds = this.selectedOptions.map((option) => this.getOptionId(option));
+        const updatedLists = [...this.lists!].filter((list) => list.id !== "selectAll")
+          updatedLists?.forEach((list: HTMLLIElement) => {
+            if (selectedOptionIds.includes(list.id)){
+              if(this.isMulti){
+              list?.setAttribute("aria-checked", "true");
+              }
+              list?.setAttribute("aria-selected", "true");
+            } else if(this.isMulti){
+              list?.setAttribute("aria-checked", "false");
+            }
+          })
+    }
     }
 
     private setSelectedOption(option: string | OptionMember) {
@@ -361,6 +407,7 @@ export namespace ComboBox {
           selected: this.selectedOptions
         });
       }
+      this.checkSelectedOptions();
       if (this.isMulti && this.allowSelectAll) {
         this.isSelectAllChecked = this.isSelectAllSelected();
       }
@@ -432,7 +479,8 @@ export namespace ComboBox {
         let height = 0;
         let labelHeight = 0;
         if (this.lists) {
-          height = [...this.lists]
+          const updatedList = this.checkForVirtualScroll() ? [...this.lists].filter((list) => list.offsetHeight !== 0) :  [...this.lists]
+          height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
@@ -443,6 +491,9 @@ export namespace ComboBox {
         }
         if (this.listBox) {
           this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
+        }
+        if (this.virtualizer) {
+          this.virtualizer.style.height = `${height + 10}px`;
         }
         if (this.showCustomError) {
           const errorContent = this.listBox?.querySelector("[slot]");
@@ -740,7 +791,7 @@ export namespace ComboBox {
       let optionIndex = this.findOptionIndex(clickEvent);
       if (optionIndex !== -1) {
         this.focusedIndex = optionIndex;
-        if (this.isMulti && this.allowSelectAll) {
+        if (this.isMulti && this.allowSelectAll && !this.checkForVirtualScroll()) {
           optionIndex = optionIndex - 1;
         }
         const option = this.getFocusedItem(optionIndex);
@@ -1255,6 +1306,15 @@ export namespace ComboBox {
         <md-span class="selected-count">${this.selectedOptions.length} ${this.selectedTextLocalization}</md-span>
       `;
     }
+    checkForVirtualScroll(){
+      return this.useVirtualScroll && !this.isOptGroup;
+    }
+
+    rangeChanged(){
+      this.focusedIndex = this.focusedIndex;
+      this.checkSelectedOptions();
+      this.resizeListbox();
+    }
 
     getCustomErrorContent() {
       return this.querySelector("[slot]") || this.shadowRoot!.querySelector("[slot]");
@@ -1274,6 +1334,48 @@ export namespace ComboBox {
         `;
       }
     }
+    renderItem(option: OptionMember, optionIndex: number){
+      return html`
+      <li
+        id=${this.getOptionId(option)}
+        title="${this.getOptionValue(option)}"
+        part="combobox-option"
+        role="option"
+        class="md-combobox-option"
+        aria-label=${this.getOptionValue(option)}
+        aria-selected=${this.getAriaState(optionIndex)}
+        tabindex="-1"
+        @click=${this.handleListClick.bind(this)}
+        aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this,option) : undefined)}
+      >
+        ${this.isMulti
+          ? html`
+              <span class="select-option">
+                <md-icon name="icon-check_14"></md-icon>
+              </span>
+            `
+          : nothing}
+        <span part="label" class="select-label">
+          ${this.isCustomContent
+            ? html`
+            <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
+          `
+            : findHighlight(
+                this.getOptionValue(option),
+                this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+              ).map(({ text, matching }) =>
+                matching
+                  ? html`
+                      <span class="highlight-text">${text}</span>
+                    `
+                  : html`
+                      <span class="selected-label-text">${text}</span>
+                    `
+              )}
+        </span>
+      </li>
+    `;
+  }
     render() {
       return html`
         <div
@@ -1324,7 +1426,16 @@ export namespace ComboBox {
                   part="combobox-options"
                   role="listbox"
                   aria-label=${this.label}
-                  style=${styleMap({
+                  style=${this.checkForVirtualScroll() ? styleMap({
+                    visibility: this.expanded
+                      ? this.options.length &&
+                        this.filteredOptions.length === 0 &&
+                        this.inputValue
+                        ? "hidden"
+                        : "visible"
+                      : "hidden",
+                    "z-index": "1"
+                  }) : styleMap({
                     display: this.expanded
                       ? this.options.length &&
                         this.filteredOptions.length === 0 &&
@@ -1337,7 +1448,7 @@ export namespace ComboBox {
                   })}
                 >
                   ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
-                  ${repeat(
+                  ${!this.checkForVirtualScroll() ? repeat(
                     this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
                     (option: string | OptionMember) => this.getOptionId(option),
                     (option: string | OptionMember, optionIndex) => {
@@ -1403,7 +1514,7 @@ export namespace ComboBox {
                         `;
                       }
                     }
-                  )}
+                  ) : nothing}
                   ${this.options.length &&
                   this.filteredOptions.length === 0 &&
                   this.inputValue &&
@@ -1421,6 +1532,15 @@ export namespace ComboBox {
                         </li>
                       `
                     : nothing}
+                  ${this.checkForVirtualScroll() && this.options.length !== 0 &&
+                        this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue).length > 0
+                        ? html`<lit-virtualizer
+                                  class="virtual-scroll"
+                                  .items=${this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)}
+                                  .renderItem=${this.renderItem.bind(this)}
+                                  @rangechange=${this.rangeChanged.bind(this)}
+                                  />
+                  ` : nothing}
                 </ul>
               `
             : html`

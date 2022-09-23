@@ -22,6 +22,7 @@ import { styleMap } from "lit-html/directives/style-map";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
 import "lit-virtualizer";
+import { LitVirtualizer } from "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -144,7 +145,7 @@ export namespace ComboBox {
     @query(".md-combobox-listbox") input?: HTMLInputElement;
     @query(".md-combobox-button") button?: HTMLButtonElement;
     @query("ul[role='listbox'") listBox?: HTMLUListElement;
-    @query(".virtual-scroll") virtualizer?: any;
+    @query(".virtual-scroll") virtualizer?: LitVirtualizer<any>;
 
     @queryAll("li[role='option']") lists?: HTMLLIElement[];
     @queryAll(".group-label") labels?: HTMLLIElement[];
@@ -166,6 +167,9 @@ export namespace ComboBox {
       if (changedProperties.has("expanded")) {
         if (this.expanded) {
           this.resizeListbox();
+          this.checkSelectedOptions();
+        } else {
+          this.unCheckAllOptions();
         }
       }
       if (changedProperties.has("focusedIndex")) {
@@ -383,6 +387,15 @@ export namespace ComboBox {
             }
             list?.setAttribute("aria-selected", "true");
           } else if (this.isMulti) {
+            list?.setAttribute("aria-checked", "false");
+          }
+        });
+      }
+    }
+    private unCheckAllOptions() {
+      if (this.checkForVirtualScroll() && this.isMulti) {
+        [...this.lists!]?.forEach((list: HTMLLIElement) => {
+          if(list?.id !== "selectAll"){
             list?.setAttribute("aria-checked", "false");
           }
         });
@@ -1450,7 +1463,7 @@ export namespace ComboBox {
                         "z-index": "1"
                       })}
                 >
-                  ${this.isMulti && this.allowSelectAll ? this.getSelectAllOption() : nothing}
+                  ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()
                     ? repeat(
                         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),

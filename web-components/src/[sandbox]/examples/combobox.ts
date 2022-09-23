@@ -75,6 +75,16 @@ export const comboBoxTemplate = html`
     placeholder="Placeholder"
   >
   </md-combobox>
+  <h3>Object Data Multi with virtual scroll</h3>
+  <md-combobox
+    .options=${comboBoxObjectOptions}
+    option-id="id"
+    option-value="country"
+    is-multi
+    placeholder="Placeholder"
+    use-virtual-scroll
+  >
+  </md-combobox>
   <h3>Object Data Multi Predefined</h3>
   <md-combobox
     .options=${comboBoxObjectLongOptions}
@@ -166,9 +176,22 @@ export const comboBoxTemplate = html`
     allow-select-all
     placeholder="Select Queue"
     @change-selected=${changeHandler}
-    .useVirtualScroll=${true}
   >
   </md-combobox>
+
+  <h3>With multi count and select all for virtual scroll</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    shape=${"pill"}
+    is-multi
+    show-selected-count
+    no-clear-icon
+    allow-select-all
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    select-all-i18n=${"All"}
+    use-virtual-scroll
+  ></md-combobox>
 
   <h3>Custom error</h3>
   <md-combobox

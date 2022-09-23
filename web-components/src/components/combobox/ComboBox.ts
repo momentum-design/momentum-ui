@@ -22,7 +22,6 @@ import { styleMap } from "lit-html/directives/style-map";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
 import "lit-virtualizer";
-import { LitVirtualizer } from "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -145,7 +144,7 @@ export namespace ComboBox {
     @query(".md-combobox-listbox") input?: HTMLInputElement;
     @query(".md-combobox-button") button?: HTMLButtonElement;
     @query("ul[role='listbox'") listBox?: HTMLUListElement;
-    @query(".virtual-scroll") virtualizer?: LitVirtualizer<any>;
+    @query(".virtual-scroll") virtualizer?: any;
 
     @queryAll("li[role='option']") lists?: HTMLLIElement[];
     @queryAll(".group-label") labels?: HTMLLIElement[];

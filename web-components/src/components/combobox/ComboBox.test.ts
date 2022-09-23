@@ -15,7 +15,6 @@ import {
   oneEvent,
   waitUntil
 } from "@open-wc/testing-helpers";
-import { render } from "@open-wc/testing-helpers/src/lit-html";
 import { repeat } from "lit-html/directives/repeat";
 import "lit-virtualizer";
 import "./ComboBox";
@@ -886,7 +885,6 @@ describe("Combobox Component", () => {
       expect(el.selectedOptions.length).toEqual(1);
       expect(el.selectedOptions).toEqual(expect.arrayContaining([{ country: "Afghanistan", id: "0" }]));
       expect(el.input!.value.length).toEqual(0);
-      el.renderItem(comboBoxObjectOptions[0], 0);
 
       await elementUpdated(el);
 

@@ -245,7 +245,6 @@
       @include modal-close-button(
         $size: rem-calc(14),
         $font-size: rem-calc(14),
-        //$top-offset: rem-calc(12),
         $right-offset: rem-calc(12)
       );
     }

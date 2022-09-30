@@ -19,9 +19,9 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
-import "lit-virtualizer";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
+import "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };

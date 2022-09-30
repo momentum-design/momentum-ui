@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/included:4.6.0
+      - image: cypress/included:9.0.0
         environment:
           TERM: xterm
 version: 2

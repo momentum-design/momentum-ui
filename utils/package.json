@@ -33,8 +33,7 @@
     "glob": "^7.1.2",
     "handlebars": "^4.1.0",
     "jsonfile": "^5.0.0",
-    "lodash": "^4.17.11",
-    "node-downloader-helper": "1.0.19"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

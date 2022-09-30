@@ -2,7 +2,7 @@ definitions:
   image_defaults: &image_defaults
     working_directory: ~/repo
     docker:
-      - image: cypress/included:8.7.0
+      - image: cypress/included:4.6.0
         environment:
           TERM: xterm
 version: 2
@@ -12,9 +12,8 @@ jobs:
     steps:
       - checkout
       - run: yarn global add @percy/agent lerna@4.0.0
-      - run: yarn install --force
-      - run: npm rebuild node-sass
       - run: yarn bootstrap
+      - run: npm rebuild node-sass
       - run: yarn cypress:verify
       - persist_to_workspace:
           root: ~/

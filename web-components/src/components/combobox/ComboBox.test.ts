@@ -1,8 +1,22 @@
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import {
+  comboBoxComplexObjectOption,
+  comboBoxObjectLongOptions,
+  comboBoxObjectOptions,
+  comboBoxOptions
+} from "@/[sandbox]/sandbox.mock";
+import {
+  elementUpdated,
+  fixture,
+  fixtureCleanup,
+  html,
+  nextFrame,
+  oneEvent,
+  waitUntil
+} from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
+import "lit-virtualizer";
 import "./ComboBox";
 import { ComboBox } from "./ComboBox";
 
@@ -1500,5 +1514,110 @@ describe("Combobox Component", () => {
     await nextFrame();
     groupList![0]!.dispatchEvent(end);
     groupList![0]!.dispatchEvent(escape);
+  });
+
+  describe("Combobox with virtual scroll", () => {
+    test("should correct render options for virtual scroll", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${comboBoxOptions} expanded .useVirtualScroll=${true}></md-combobox>
+        `
+      );
+
+      await elementUpdated(el);
+      const lists = comboBoxOptions.map(
+        (item, index) => {
+           return el.virtualizer?.renderItem.call(el, item, index).getTemplateElement().innerHTML;
+        }
+      );
+
+      if (lists && el.virtualizer) {
+        el.virtualizer.innerHTML = `${lists.join("")}`;
+      }
+      el.rangeChanged();
+
+      await elementUpdated(el);
+      expect(el.lists!.length).toEqual(11);
+
+    
+    });
+      test("should handle keyUp event", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
+        `
+      );
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keyup", {
+          code
+        });
+
+      const backspace = createEvent(Key.Backspace);
+      el.input!.dispatchEvent(backspace);
+
+      const mock = jest.fn();
+
+      el.listBox!.style.maxHeight = mock();
+      el.virtualizer!.style.height = mock();
+
+      expect(el.expanded).toBeTruthy();
+      expect(mock).toBeCalled();
+
+      el.expanded = false;
+
+      await elementUpdated(el);
+
+      mock.mockReset();
+      const escape = createEvent(Key.Escape);
+      el.input!.dispatchEvent(escape);
+
+      expect(el.expanded).toBeFalsy();
+      expect(mock).not.toBeCalled();
+    });
+    test("should set initial value for multi", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox
+            .options=${comboBoxOptions}
+            .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
+            is-multi
+            use-virtual-scroll
+          ></md-combobox>
+        `
+      );
+
+      expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[1], comboBoxOptions[2]]));
+      expect(el.selected!.length).toEqual(2);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Aland Islands", "Albania"]));
+    });
+
+    test("should change selected option for virtual scroll", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
+        `
+      );
+      el.expanded = true;
+      const lists = comboBoxOptions.map(
+        (item, index) => {
+          return`<li id=${item} role="option" style="height:12px;">${item}</li>`;
+        }
+      );
+
+      if (lists && el.virtualizer) {
+        el.virtualizer.innerHTML = `${lists.join("")}`;
+      }
+      let upd = el.lists![0];
+      if(el.lists![0]){
+        upd.onclick = (event) => el.handleListClick(event)
+      }
+      el.lists![0].dispatchEvent(new MouseEvent("click"));
+
+      await elementUpdated(el);
+
+      expect(el.focusedIndex).toEqual(0);
+      expect(el.selectedOptions.length).toEqual(1);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
+    });
   });
 });

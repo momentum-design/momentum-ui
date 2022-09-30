@@ -74,6 +74,7 @@ export namespace ComboBox {
 
     @property({ type: Boolean, attribute: "allow-select-all", reflect: true }) allowSelectAll = false;
     @property({ type: Boolean, attribute: "show-custom-error", reflect: true }) showCustomError = false;
+    @property({ type: Boolean, attribute: "show-loader", reflect: true }) showLoader = false;
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
 
     @property({ type: Number, attribute: false })
@@ -167,6 +168,12 @@ export namespace ComboBox {
           this.setOptionCustomContent();
           this.resizeListbox();
         }
+      }
+      if (changedProperties.has("showCustomError")) {
+        this.resizeListbox();
+      }
+      if (changedProperties.has("showLoader")) {
+        this.resizeListbox();
       }
       if (changedProperties.has("searchItem")) {
         this.resizeListbox();
@@ -444,11 +451,11 @@ export namespace ComboBox {
         if (this.listBox) {
           this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
         }
-        if (this.showCustomError) {
-          const errorContent = this.listBox?.querySelector("[slot]");
-          if (this.listBox && errorContent) {
-            this.listBox.style.height = `${errorContent.clientHeight + 2}px`;
-            this.listBox.style.maxHeight = `${errorContent.clientHeight + 2}px`;
+        if (this.showCustomError || this.showLoader) {
+          const customContent = this.listBox?.querySelector("[slot]");
+          if (this.listBox && customContent) {
+            this.listBox.style.height = `${customContent.clientHeight + 2}px`;
+            this.listBox.style.maxHeight = `${customContent.clientHeight + 2}px`;
           }
         }
       });
@@ -1061,6 +1068,13 @@ export namespace ComboBox {
       if (this.expanded) {
         this.setVisualListbox(false);
       } else {
+        // While open combo-box
+        this.dispatchEvent(
+          new CustomEvent("combobox-on-expand", {
+            composed: true,
+            bubbles: true
+          })
+        );
         this.setVisualListbox(true);
       }
       this.input!.focus();
@@ -1257,7 +1271,8 @@ export namespace ComboBox {
     }
 
     getCustomErrorContent() {
-      return this.querySelector("[slot]") || this.shadowRoot!.querySelector("[slot]");
+      const element = this.querySelector("[slot]") || this.shadowRoot!.querySelector("[slot]");
+      return document.createRange().createContextualFragment(`${element?.outerHTML}`);
     }
     getCustomContent(option: string | OptionMember) {
       const slotName = this.getCustomContentName(option);
@@ -1317,8 +1332,22 @@ export namespace ComboBox {
               ? this.clearButtonTemplate()
               : this.arrowButtonTemplate()}
           </div>
-          ${!this.showCustomError
+          ${this.showLoader || this.showCustomError
             ? html`
+                <ul
+                  id="md-combobox-listbox"
+                  part="combobox-options"
+                  role="listbox"
+                  aria-label=${this.label}
+                  style=${styleMap({
+                    display: this.expanded ? "block" : "none",
+                    "z-index": "1"
+                  })}
+                >
+                  ${this.getCustomErrorContent()}
+                </ul>
+              `
+            :  html`
                 <ul
                   id="md-combobox-listbox"
                   part="combobox-options"
@@ -1421,20 +1450,6 @@ export namespace ComboBox {
                         </li>
                       `
                     : nothing}
-                </ul>
-              `
-            : html`
-                <ul
-                  id="md-combobox-listbox"
-                  part="combobox-options"
-                  role="listbox"
-                  aria-label=${this.label}
-                  style=${styleMap({
-                    display: this.expanded ? "block" : "none",
-                    "z-index": "1"
-                  })}
-                >
-                  ${this.getCustomErrorContent()}
                 </ul>
               `}
         </div>

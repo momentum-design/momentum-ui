@@ -1,5 +1,6 @@
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
+import "@/components/spinner/Spinner";
 import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
@@ -189,6 +190,18 @@ export const comboBoxTemplate = html`
     >
       <span class="company-value">Wikipedia</span>
       <md-icon name="icon-wikipedia_16"></md-icon>
+    </div>
+  </md-combobox>
+
+  <h3>Custom Loader</h3>
+  <md-combobox
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    show-custom-error
+    shape=${"pill"}
+  >
+    <div slot="custom-loader">
+      <md-spinner size="33"></md-spinner>
     </div>
   </md-combobox>
 

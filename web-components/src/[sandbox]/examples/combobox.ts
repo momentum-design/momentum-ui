@@ -197,7 +197,7 @@ export const comboBoxTemplate = html`
   <md-combobox
     placeholder="Select Queue"
     @change-selected=${changeHandler}
-    show-custom-error
+    show-loader
     shape=${"pill"}
   >
     <div slot="custom-loader">

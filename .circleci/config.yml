@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add @percy/agent lerna@4.0.0
-      
+      - run: yarn install --force
       - run: npm rebuild node-sass
       - run: yarn bootstrap
       - run: yarn cypress:verify

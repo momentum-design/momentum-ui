@@ -14,8 +14,8 @@
     "dist:dev": "webpack --config-name=distDev",
     "dist:watch": "webpack --config-name=distDevWatch",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
-    "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private && npm run npm:publish:external",
-    "npm:publish:external": "cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' && npm publish",
+    "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private",
+    "npm:publish:external": "npm run dist && npm run create-package && cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' && npm publish && npm run notify",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot --maxWorkers=4",
@@ -31,7 +31,9 @@
     "clearVars": "node ./src/utils/clearVars.js",
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
     "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js",
-    "sonar": "yarn install && yarn test && node sonar.config.js"
+    "sonar": "yarn install && yarn test && node sonar.config.js",
+    "create-package": "node -e 'require(\"./publish-conf\").createPackageJson()'",
+    "notify": "node -e 'require(\"./publish-conf\").notify()'"
   },
   "resolutions": {
     "jest": "^26.4.2",
@@ -64,7 +66,7 @@
     "nanoid": "^3.1.16",
     "papaparse": "^5.3.0",
     "sortablejs": "^1.13.0",
-    "lit-virtualizer" : "0.4.2"
+    "lit-virtualizer": "0.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

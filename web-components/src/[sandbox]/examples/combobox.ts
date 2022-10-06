@@ -15,6 +15,10 @@ const changeHandler = (e: CustomEvent) => {
   console.log("change-selected: ", e);
 };
 
+const comboboxOnExpand =(e: CustomEvent) => {
+  console.log("combobox-on-expand: ", e);
+}
+
 export const comboBoxTemplate = html`
   <h3>Default</h3>
   <md-combobox
@@ -223,6 +227,7 @@ export const comboBoxTemplate = html`
     @change-selected=${changeHandler}
     show-loader
     shape=${"pill"}
+    @combobox-on-expand=${comboboxOnExpand}
   >
     <div slot="custom-loader">
       <md-spinner size="33"></md-spinner>

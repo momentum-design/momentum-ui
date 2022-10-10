@@ -303,4 +303,10 @@ workflows:
               only:
                 - master
     jobs:
-      - lint_test_release
+      - lint_test_release:
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only: /^.force-deploy/

@@ -40,7 +40,8 @@
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
     "lit-html": "1.2.1",
-    "@types/express-serve-static-core": "4.17.30"
+    "@types/express-serve-static-core": "4.17.30",
+    "node-downloader-helper": "1.0.19"
   },
   "peerDependencies": {
     "@momentum-ui/core": "19.15.23",

@@ -1,5 +1,6 @@
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
+import "@/components/spinner/Spinner";
 import { comboBoxObjectLongOptions, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
@@ -13,6 +14,10 @@ const testCustomValue = [
 const changeHandler = (e: CustomEvent) => {
   console.log("change-selected: ", e);
 };
+
+const comboboxOnExpand =(e: CustomEvent) => {
+  console.log("combobox-on-expand: ", e);
+}
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
@@ -213,6 +218,19 @@ export const comboBoxTemplate = html`
     >
       <span class="company-value">Wikipedia</span>
       <md-icon name="icon-wikipedia_16"></md-icon>
+    </div>
+  </md-combobox>
+
+  <h3>Custom Loader</h3>
+  <md-combobox
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    show-loader
+    shape=${"pill"}
+    @combobox-on-expand=${comboboxOnExpand}
+  >
+    <div slot="custom-loader">
+      <md-spinner size="33"></md-spinner>
     </div>
   </md-combobox>
 

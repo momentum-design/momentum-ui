@@ -294,6 +294,16 @@ workflows:
     jobs:
       - storybook_web_components
 
+  force_release:
+      jobs:
+        - lint_test_release:
+            filters:
+              branches:
+                only:
+                  - master
+              tags:
+                only: /^.force-deploy/
+
   daily_release:
     triggers:
       - schedule:
@@ -303,10 +313,4 @@ workflows:
               only:
                 - master
     jobs:
-      - lint_test_release:
-          filters:
-            branches:
-              only:
-                - master
-            tags:
-              only: /^force-deploy/
+      - lint_test_release

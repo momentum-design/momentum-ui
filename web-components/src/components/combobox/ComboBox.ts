@@ -1438,9 +1438,7 @@ export namespace ComboBox {
             : nothing}
           <span part="label" class="select-label">
             ${this.isCustomContent
-              ? html`
-                  <slot name=${ifDefined(this.getCustomContentName(option))}></slot>
-                `
+              ? this.getCustomContent(option)
               : this.highlightingSearchedText(option)}
           </span>
         </li>

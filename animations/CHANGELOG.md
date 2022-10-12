@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/animations@1.3.0...@momentum-ui/animations@1.4.0) (2022-10-10)
+
+
+### Features
+
+* added new animations ([#1359](https://github.com/momentum-design/momentum-ui/issues/1359)) ([db01df4](https://github.com/momentum-design/momentum-ui/commit/db01df474a057970e623fbb5f6684e4201cd085e))
+
+
+
+
+
 # [1.3.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/animations@1.2.0...@momentum-ui/animations@1.3.0) (2021-08-20)
 
 

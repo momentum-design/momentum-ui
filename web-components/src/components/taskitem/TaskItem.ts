@@ -52,7 +52,7 @@ export namespace TaskItem {
           `;
           case "midcall telephony":
             return html`
-            <md-badge color="#545454" circle>
+            <md-badge circle>
               <img src="${this.iconSrc}" />
             </md-badge>
           `;

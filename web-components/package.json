@@ -40,7 +40,8 @@
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
     "lit-html": "1.2.1",
-    "@types/express-serve-static-core": "4.17.30"
+    "@types/express-serve-static-core": "4.17.30",
+    "node-downloader-helper": "1.0.19"
   },
   "peerDependencies": {
     "@momentum-ui/core": "19.15.23",
@@ -148,7 +149,6 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^5.7.3",
-    "webpack-node-externals": "^1.7.2",
-    "node-downloader-helper": "1.0.19"
+    "webpack-node-externals": "^1.7.2"
   }
 }

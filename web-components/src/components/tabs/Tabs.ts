@@ -643,6 +643,7 @@ export namespace Tabs {
     handleTabKeydown(event: any) {
       const elementId = event.path ? event.path[0].id : event.originalTarget.id;
       const id = this.getNormalizedTabId(elementId);
+      this.tabChanged = false;
 
       this.dispatchKeydownEvent(event, id);
 

@@ -73,7 +73,6 @@ export namespace Tabs {
     @internalProperty() private noTabsVisible = false;
     @internalProperty() private defaultTabsOrderArray: string[] = [];
     @internalProperty() private tabsOrderPrefsArray: string[] = [];
-    @internalProperty() private tabChanged = false;
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -540,7 +539,6 @@ export namespace Tabs {
 
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-      this.tabChanged = oldSelectedIndex !== newSelectedIndex;
 
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
@@ -643,7 +641,6 @@ export namespace Tabs {
     handleTabKeydown(event: any) {
       const elementId = event.path ? event.path[0].id : event.originalTarget.id;
       const id = this.getNormalizedTabId(elementId);
-      this.tabChanged = false;
 
       this.dispatchKeydownEvent(event, id);
 

@@ -767,6 +767,11 @@ export namespace ComboBox {
           }
         })
       );
+      this.focusedGroupIndex = 0;
+      requestAnimationFrame(() => {
+        this.input!.focus();
+        this.focusedGroupIndex = -1;
+      });
     }, 250);
 
     handleInput(event: Event) {

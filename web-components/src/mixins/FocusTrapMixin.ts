@@ -276,6 +276,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     protected setFocusableElements() {
       this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
+      console.log("focusableElements$", this.focusableElements);
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {
@@ -369,6 +370,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           self.setFocusableElements();
         }, 10);
       });
+      this.addEventListener("deactivate-focus-trap", () => {
+        this.deactivateFocusTrap();
+      })
       document.addEventListener("click", this.handleOutsideTrapClick);
     }
 

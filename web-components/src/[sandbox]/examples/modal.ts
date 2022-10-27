@@ -25,6 +25,23 @@ export class ModalTemplateSandbox extends LitElement {
 
   @query(".dial-number") dialInput!: Input.ELEMENT;
   @query(".international-checkbox-wrapper") checkboxWrapper!: Element;
+  @query(".queueDropdown") menuOverlay!: Element;
+
+  connectedCallback() {
+    super.connectedCallback();
+    // setTimeout(() => {
+    // this.menuOverlay.addEventListener("menu-overlay-open", () => {
+    //   // this.menuOverlay.dispatchEvent(new CustomEvent('focus-visible', {
+    //   //   composed: true,
+    //   //   bubbles: true
+    //   // }))
+    //   this.menuOverlay.dispatchEvent(new CustomEvent('deactivate-focus-trap', {
+    //     composed: true,
+    //     bubbles: true
+    //   }))
+    // })
+    // }, 20);
+  }
 
   private openModal() {
     this.isModalOpen = true;
@@ -323,6 +340,109 @@ export class ModalTemplateSandbox extends LitElement {
           </md-button>
         </div>
       </md-modal>
+      <md-menu-overlay class="queueDropdown" size="large">
+        <md-input
+          placeholder="Search field with tabs"
+          shape="pill"
+          slot="menu-trigger"
+          variant="primary"
+          clear
+          autoFocus></md-input>
+        <div style="padding:1.25rem; width: 100%;">
+        <md-tabs justified selected="0" ref={tabElm}>
+        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
+          <span>Entry Point</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex; alignItems: center;">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+        <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
+          <span>Address Book</span>
+        </md-tab>
+        <md-tab-panel slot="panel" class="address-panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+      </md-tabs>
+        </div>
+      </md-menu-overlay>
     `;
   }
 }

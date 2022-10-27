@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.27.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.27.10...@momentum-ui/react@23.27.11) (2022-10-25)
+
+**Note:** Version bump only for package @momentum-ui/react
+
+
+
+
+
 ## [23.27.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/react@23.27.9...@momentum-ui/react@23.27.10) (2022-09-14)
 
 **Note:** Version bump only for package @momentum-ui/react

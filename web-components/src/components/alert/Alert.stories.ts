@@ -6,16 +6,17 @@
  *
  */
 
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { withA11y } from "@storybook/addon-a11y";
-import { html } from "lit-html";
-import { alertTypes } from "@/utils/enums";
-import { action } from '@storybook/addon-actions';
 import "@/components/alert/Alert";
 import "@/components/theme/Theme";
+import { alertTypes } from "@/utils/enums";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-html";
+import "../badge/Badge";
 
 export default {
-  title: "Components/Alert",
+  title: "Components/Alerts/Alert",
   component: "md-alert",
   decorators: [withKnobs, withA11y],
   argTypes: {
@@ -36,7 +37,7 @@ export const Alert = () => {
   const show = boolean("Show", true);
   const title = text("Title", "Alert");
   const message = text("Message", "Who is awesome? You are!");
-  const type = select("Size", alertTypes, "default");
+  const type = select("Type", alertTypes, "default");
   const closable = boolean("clossable", true);
   const inline = boolean("Inline", false);
 

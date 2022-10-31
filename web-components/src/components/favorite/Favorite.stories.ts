@@ -9,9 +9,9 @@
 import "@/components/favorite/Favorite";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
+import { action } from '@storybook/addon-actions';
 import { boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: "Components/Favorite",
@@ -36,7 +36,7 @@ export const Favorite = () => {
 
   return html`
   <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-    <md-favorite @favorite-elect=${(action('favorite-elect'))} id="favorite-switch" ?active=${active} ?disabled=${disabled}></md-favorite>
+    <md-favorite @favorite-elect=${(action('favorite-elect'))} id="favorite-switch" ?checked=${active} ?disabled=${disabled}></md-favorite>
   </md-theme>
   `;
 };

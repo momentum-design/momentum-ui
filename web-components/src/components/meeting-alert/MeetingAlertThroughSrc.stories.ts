@@ -34,7 +34,7 @@ export default {
   }
 };
 
-export const MeetingAlertSrc = () => {
+export const MeetingAlertThroughSrc = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const show = boolean("Show", true);

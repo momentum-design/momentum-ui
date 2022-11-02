@@ -71,7 +71,7 @@
     }
 
     &[data-popper-placement^="bottom"] > .md-tooltip__arrow {
-      top: -8px;
+      top: -9px;
 
       &::before {
         border-radius: $tooltip__radius 0 0 0;
@@ -90,7 +90,7 @@
     }
 
     &[data-popper-placement^="right"] > .md-tooltip__arrow {
-      left: -15px;
+      left: -17px;
 
       &::before {
         border-radius: 0 0 0 $tooltip__radius;

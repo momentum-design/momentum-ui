@@ -27,6 +27,11 @@ export default {
   parameters: {
     a11y: {
       element: "md-alert"
+    },
+    docs: { 
+      description: { 
+        component: 'A typical usage of Alert, with text added within the element tags or message attribute' 
+      },
     }
   }
 };

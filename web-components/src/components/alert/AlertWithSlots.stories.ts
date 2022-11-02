@@ -25,7 +25,13 @@ import "../badge/Badge";
    parameters: {
      a11y: {
        element: "md-alert"
-     }
+     },
+     docs: { 
+      description: { 
+        component: 'A typical usage of Alert with slots, with text added within the element tags or message attribute' 
+      },
+      
+    }
    }
  };
  

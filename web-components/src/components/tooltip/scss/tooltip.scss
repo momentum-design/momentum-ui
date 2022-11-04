@@ -15,7 +15,9 @@
   }
 
   &__content {
-    display: inline-block;
+    margin: 0;
+    font-family: inherit;
+    white-space: pre-line;
   }
 
   &__popper {

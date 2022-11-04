@@ -175,14 +175,14 @@ export namespace Tooltip {
     render() {
       return html`
         <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
-          <div class="md-tooltip__popper" role="tooltip">
-            <div class="md-tooltip__content">
+          <div class="md-tooltip__popper" role="tooltip" part="tooltip-popper">
+            <pre class="md-tooltip__content" part="tooltip-content">
               ${this.message
                 ? this.message
                 : html`
                     <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
                   `}
-            </div>
+            </pre>
             <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
           </div>
           <div

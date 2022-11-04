@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.32.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.31.1...@momentum-ui/icons@8.32.0) (2022-09-14)
+
+
+### Features
+
+* **icons:** add secure-lock-bold_16 ([#1338](https://github.com/momentum-design/momentum-ui/issues/1338)) ([a3281bb](https://github.com/momentum-design/momentum-ui/commit/a3281bb80a3e98e3e7290bd75751f656e8afe81a))
+
+
+
+
+
+## [8.31.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.31.0...@momentum-ui/icons@8.31.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* **icons:** fix the naming for secure-lock-light ([#1331](https://github.com/momentum-design/momentum-ui/issues/1331)) ([87b166c](https://github.com/momentum-design/momentum-ui/commit/87b166c0646917d293a04a1d5e6069918f4bd497))
+
+
+
+
+
 # [8.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.30.1...@momentum-ui/icons@8.31.0) (2022-09-05)
 
 

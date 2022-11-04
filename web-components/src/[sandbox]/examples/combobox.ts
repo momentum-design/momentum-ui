@@ -1,6 +1,7 @@
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
-import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import "@/components/spinner/Spinner";
+import { comboBoxObjectLongOptions, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 
@@ -13,6 +14,10 @@ const testCustomValue = [
 const changeHandler = (e: CustomEvent) => {
   console.log("change-selected: ", e);
 };
+
+const comboboxOnExpand =(e: CustomEvent) => {
+  console.log("combobox-on-expand: ", e);
+}
 
 export const comboBoxTemplate = html`
   <h3>Default</h3>
@@ -59,10 +64,11 @@ export const comboBoxTemplate = html`
   <h3>Object Data Predefined Value</h3>
   <md-combobox
     placeholder="Placeholder"
-    .options=${comboBoxObjectOptions}
+    .options=${comboBoxObjectLongOptions}
     option-id="id"
     option-value="country"
-    .value=${[comboBoxObjectOptions[5]]}
+    .value=${[comboBoxObjectLongOptions[5]]}
+    .useVirtualScroll=${true}
   >
   </md-combobox>
   <h3>Object Data Multi</h3>
@@ -74,10 +80,20 @@ export const comboBoxTemplate = html`
     placeholder="Placeholder"
   >
   </md-combobox>
-  <h3>Object Data Multi Predefined</h3>
+  <h3>Object Data Multi with virtual scroll</h3>
   <md-combobox
     .options=${comboBoxObjectOptions}
-    .value=${[comboBoxObjectOptions[7], comboBoxObjectOptions[8]]}
+    option-id="id"
+    option-value="country"
+    is-multi
+    placeholder="Placeholder"
+    use-virtual-scroll
+  >
+  </md-combobox>
+  <h3>Object Data Multi Predefined</h3>
+  <md-combobox
+    .options=${comboBoxObjectLongOptions}
+    .value=${[comboBoxObjectLongOptions[0], comboBoxObjectLongOptions[1]]}
     option-id="id"
     option-value="country"
     is-multi
@@ -137,7 +153,6 @@ export const comboBoxTemplate = html`
   </md-combobox>
   <h3>Slot Complex Custom Object Content</h3>
   <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content>
-    {dropdownValue.map((item, index) => dropdownOptionTemplate(item, index))}
   </md-combobox>
   <h3>Without Clear Icon</h3>
   <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" no-clear-icon></md-combobox>
@@ -169,6 +184,20 @@ export const comboBoxTemplate = html`
   >
   </md-combobox>
 
+  <h3>With multi count and select all for virtual scroll</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    shape=${"pill"}
+    is-multi
+    show-selected-count
+    no-clear-icon
+    allow-select-all
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    select-all-i18n=${"All"}
+    use-virtual-scroll
+  ></md-combobox>
+
   <h3>Custom error</h3>
   <md-combobox
     .options=${comboBoxObjectOptions}
@@ -189,6 +218,19 @@ export const comboBoxTemplate = html`
     >
       <span class="company-value">Wikipedia</span>
       <md-icon name="icon-wikipedia_16"></md-icon>
+    </div>
+  </md-combobox>
+
+  <h3>Custom Loader</h3>
+  <md-combobox
+    placeholder="Select Queue"
+    @change-selected=${changeHandler}
+    show-loader
+    shape=${"pill"}
+    @combobox-on-expand=${comboboxOnExpand}
+  >
+    <div slot="custom-loader">
+      <md-spinner size="33"></md-spinner>
     </div>
   </md-combobox>
 

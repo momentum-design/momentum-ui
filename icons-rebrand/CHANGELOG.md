@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.40.14](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.13...@momentum-ui/icons-rebrand@1.40.14) (2022-10-26)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.13](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.12...@momentum-ui/icons-rebrand@1.40.13) (2022-10-24)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.12](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.11...@momentum-ui/icons-rebrand@1.40.12) (2022-10-21)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.11](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.10...@momentum-ui/icons-rebrand@1.40.11) (2022-10-12)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.10](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.9...@momentum-ui/icons-rebrand@1.40.10) (2022-10-11)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.9](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.8...@momentum-ui/icons-rebrand@1.40.9) (2022-10-10)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.8](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.7...@momentum-ui/icons-rebrand@1.40.8) (2022-09-22)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.7](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.6...@momentum-ui/icons-rebrand@1.40.7) (2022-09-21)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.6](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.5...@momentum-ui/icons-rebrand@1.40.6) (2022-09-17)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.4...@momentum-ui/icons-rebrand@1.40.5) (2022-09-10)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
+## [1.40.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.3...@momentum-ui/icons-rebrand@1.40.4) (2022-09-08)
+
+**Note:** Version bump only for package @momentum-ui/icons-rebrand
+
+
+
+
+
 ## [1.40.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.40.2...@momentum-ui/icons-rebrand@1.40.3) (2022-08-31)
 
 **Note:** Version bump only for package @momentum-ui/icons-rebrand

@@ -120,7 +120,7 @@ export namespace Tabs {
     private hiddenTabsSortableInstance: Sortable | null = null;
 
     private getCopyTabId(tab: Tab.ELEMENT) {
-      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
+      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
         return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
       } else {
         return tab.id;
@@ -646,6 +646,7 @@ export namespace Tabs {
 
       const key = event.code;
       const { shiftKey } = event;
+      console.log("More Menu Tab Visible--", this.isMoreTabMenuVisible);
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -965,7 +966,7 @@ export namespace Tabs {
           })}"
           role="tablist"
         >
-          <slot
+        <slot
             name="tab"
             class="${classMap({
               "visible-tabs-slot": this.direction === "horizontal"
@@ -996,6 +997,7 @@ export namespace Tabs {
                 </md-tab>
               `
             )}
+           
           </div>
 
           <md-menu-overlay

@@ -694,7 +694,7 @@ export const tabsTemplate = html`
         </md-button>
       </md-tooltip>
       <div style="width: 100%;">
-        <md-tabs selected="1" more-items-scroll-limit="4">
+        <md-tabs selected="0" more-items-scroll-limit="4">
           ${repeat(tabsOverlayHtmlList, _html => _html)}
         </md-tabs>
       </div>

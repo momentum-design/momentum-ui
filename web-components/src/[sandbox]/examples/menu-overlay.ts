@@ -331,7 +331,7 @@ export const menuOverlayTemplate = html`
   
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">with list (focus)</h3>
-  <md-menu-overlay class="queueDropdown" size="large">
+  <md-menu-overlay class="queueDropdown" size="large" @menu-overlay-open=${(e: any) => {console.log("Opening modal--");document.dispatchEvent(new CustomEvent("on-widget-update"))}}>
         <md-input
           placeholder="Search field with tabs"
           shape="pill"
@@ -459,7 +459,7 @@ export const menuOverlayTemplate = html`
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
     <div style="margin:1.25rem; width: 100%">
       <md-tabs>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="contactHistory">
           <span>Contact History</span>
           <md-icon name="recents_16"></md-icon>
         </md-tab>
@@ -473,10 +473,10 @@ export const menuOverlayTemplate = html`
               <md-radio slot="radio" value="Option 3">Option 3</md-radio>
               <md-radio slot="radio" value="Option 4">Option 4</md-radio>
             </md-radiogroup>
-            <md-input autofocus></md-input>
+           
           </div>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="WXM">
           <span>Cisco WxM</span>
           <md-icon name="apps_16"></md-icon>
         </md-tab>

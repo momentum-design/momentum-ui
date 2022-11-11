@@ -175,8 +175,8 @@ export namespace Tooltip {
     render() {
       return html`
         <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
-          <div class="md-tooltip__popper" role="tooltip">
-            <div class="md-tooltip__content">
+          <div class="md-tooltip__popper" role="tooltip" part="tooltip-popper">
+            <div class="md-tooltip__content" part="tooltip-content">
               ${this.message
                 ? this.message
                 : html`

@@ -15,7 +15,7 @@ import { html } from "lit-element";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
 
 export default {
-  title: "Components/Meeting Alerts/Meeting Alert",
+  title: "Components/Meeting Alerts",
   component: "md-meeting-alert",
   decorators: [withKnobs, withA11y],
   argTypes: {
@@ -32,6 +32,11 @@ export default {
   parameters: {
     a11y: {
       element: "md-meeting-alert"
+    },
+    docs: { 
+      description: { 
+        component: 'A typical usage of Meeting Alert, with different variations as individual stories' 
+      },
     }
   }
 };
@@ -93,3 +98,110 @@ export const MeetingAlert = () => {
   }
 };
 
+
+export const MeetingAlertActionThroughSlot = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const show = boolean("Show", true);
+  const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
+  const status = text("Status", "Webex Teams Status");
+  const title = text("Title", "Webex Teams Title");
+ 
+  return html`
+    <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <h3>md-meeting-alert action through slot</h3>
+      <md-meeting-alert  
+          .show=${show}
+          .status="${status}"
+          .title="${title}">
+        <md-button
+          slot="custom-action"
+          ariaLabel="Action"
+          circle
+          @click=${(e: Event) => {
+            console.log("Custom action passed via slot");
+            e.stopPropagation();
+          }}
+          size=${44}
+          role="button"
+        >
+          <md-icon name="icon-alarm_16"></md-icon>
+        </md-button>
+      </md-meeting-alert>
+    </md-theme>
+  `;
+};
+
+
+export const MeetingAlertImageThroughSlot = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const show = boolean("Show", true);
+  const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
+  const status = text("Status", "Webex Teams Status");
+  const title = text("Title", "Webex Teams Title");
+  
+    return html`
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+        <h3>md-meeting-alert image through slot</h3>
+        <md-meeting-alert
+          .show=${show}
+          .status="${status}"
+          .title="${title}"
+          userStyles=":host .md-alert { background: red; color: white }"
+        >
+          <span slot="custom-avatar">
+            <img
+              width="40"
+              src=${src}
+            />
+          </span>
+        </md-meeting-alert>
+      </md-theme>
+    `;
+};
+
+export const MeetingAlertSrcThroughSlot = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const show = boolean("Show", true);
+  const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
+  const status = text("Status", "Webex Teams Status");
+  const title = text("Title", "Webex Teams Title");
+  
+  return html`
+    <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <h3>md-meeting-alert src through slot</h3>
+        <md-meeting-alert 
+          .show=${show}
+          .status="${status}"
+          .title="${title}">
+          <span slot="custom-avatar">
+            <img width="40'" height="40'" src=${src} />
+          </span>
+        </md-meeting-alert>
+    </md-theme>
+  `;
+};
+
+export const MeetingAlertThroughSrc = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos Theme", false);
+  const show = boolean("Show", true);
+  const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
+  const status = text("Status", "Webex Teams Status");
+  const title = text("Title", "Webex Teams Title");
+
+    return html`
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+        <h3>md-meeting-alert image through src</h3>
+        <md-meeting-alert
+          .show=${show}
+          .status="${status}"
+          .title="${title}"
+          .onKeyDown=${() => console.log("passed onKeyDown Func")}
+          src=${src}>
+        </md-meeting-alert>
+      </md-theme>
+    `;
+};

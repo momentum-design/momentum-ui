@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.15.30](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.29...@momentum-ui/core@19.15.30) (2022-10-25)
+
+
+### Bug Fixes
+
+* fonts updated ([#1370](https://github.com/momentum-design/momentum-ui/issues/1370)) ([cc914df](https://github.com/momentum-design/momentum-ui/commit/cc914df1949d2af657d140addbf58f3e12bb1c80))
+
+
+
+
+
 ## [19.15.29](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/core@19.15.28...@momentum-ui/core@19.15.29) (2022-09-14)
 
 **Note:** Version bump only for package @momentum-ui/core

@@ -109,7 +109,6 @@
         @include modal-close-button(
           $size: rem-calc(20),
           $font-size: rem-calc(20),
-          $top-offset: rem-calc(24),
           $right-offset: rem-calc(24)
         );
       }
@@ -145,7 +144,6 @@
         @include modal-close-button(
           $size: rem-calc(16),
           $font-size: rem-calc(16),
-          $top-offset: rem-calc(16),
           $right-offset: rem-calc(16)
         );
       }
@@ -170,7 +168,6 @@
           @include modal-close-button(
             $size: rem-calc(14),
             $font-size: rem-calc(14),
-            $top-offset: rem-calc(12),
             $right-offset: rem-calc(12)
           );
         }
@@ -195,7 +192,6 @@
       @include modal-close-button(
         $size: rem-calc(14),
         $font-size: rem-calc(14),
-        $top-offset: rem-calc(12),
         $right-offset: rem-calc(12)
       );
     }
@@ -224,7 +220,6 @@
       @include modal-close-button(
         $size: rem-calc(14),
         $font-size: rem-calc(14),
-        $top-offset: rem-calc(12),
         $right-offset: rem-calc(12)
       );
     }
@@ -317,7 +312,6 @@
           @include modal-close-button(
             $size: rem-calc(14),
             $font-size: rem-calc(14),
-            $top-offset: rem-calc(12),
             $right-offset: rem-calc(12)
           );
         }

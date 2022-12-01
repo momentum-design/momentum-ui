@@ -794,7 +794,7 @@ describe("Combobox Component", () => {
       el.expanded = true;
 
       expect(el.expanded).toBeTruthy();
-      expect(el.listBox!.style.zIndex).toEqual("1");
+      expect(el.listBox!.style.zIndex).toEqual("99");
     });
 
     test("should correct render options depends on input value", async () => {
@@ -1525,11 +1525,9 @@ describe("Combobox Component", () => {
       );
 
       await elementUpdated(el);
-      const lists = comboBoxOptions.map(
-        (item, index) => {
-           return el.virtualizer?.renderItem.call(el, item, index).getTemplateElement().innerHTML;
-        }
-      );
+      const lists = comboBoxOptions.map((item, index) => {
+        return el.virtualizer?.renderItem.call(el, item, index).getTemplateElement().innerHTML;
+      });
 
       if (lists && el.virtualizer) {
         el.virtualizer.innerHTML = `${lists.join("")}`;
@@ -1538,10 +1536,8 @@ describe("Combobox Component", () => {
 
       await elementUpdated(el);
       expect(el.lists!.length).toEqual(11);
-
-    
     });
-      test("should handle keyUp event", async () => {
+    test("should handle keyUp event", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
           <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
@@ -1598,18 +1594,16 @@ describe("Combobox Component", () => {
         `
       );
       el.expanded = true;
-      const lists = comboBoxOptions.map(
-        (item, index) => {
-          return`<li id=${item} role="option" style="height:12px;">${item}</li>`;
-        }
-      );
+      const lists = comboBoxOptions.map((item, index) => {
+        return `<li id=${item} role="option" style="height:12px;">${item}</li>`;
+      });
 
       if (lists && el.virtualizer) {
         el.virtualizer.innerHTML = `${lists.join("")}`;
       }
-      let upd = el.lists![0];
-      if(el.lists![0]){
-        upd.onclick = (event) => el.handleListClick(event)
+      const upd = el.lists![0];
+      if (el.lists![0]) {
+        upd.onclick = event => el.handleListClick(event);
       }
       el.lists![0].dispatchEvent(new MouseEvent("click"));
 

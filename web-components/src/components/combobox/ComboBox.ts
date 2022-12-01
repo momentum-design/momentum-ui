@@ -1428,10 +1428,10 @@ export namespace ComboBox {
       if (!this.checkForVirtualScroll()) {
         return styleMap({
           display: isInvisible ? "none" : "block",
-          "z-index": "1"
+          "z-index": "99"
         });
       } else {
-        return styleMap({ visibility: isInvisible ? "hidden" : "visible", "z-index": "1" });
+        return styleMap({ visibility: isInvisible ? "hidden" : "visible", "z-index": "99" });
       }
     }
 
@@ -1457,12 +1457,20 @@ export namespace ComboBox {
               `
             : nothing}
           <span part="label" class="select-label">
-            ${this.isCustomContent
-              ? this.getCustomContent(option)
-              : this.highlightingSearchedText(option)}
+            ${this.isCustomContent ? this.getCustomContent(option) : this.highlightingSearchedText(option)}
           </span>
         </li>
       `;
+    }
+
+    inputTitle() {
+      if (this.isMulti) {
+        // For multi select, The title should be the selected items count
+        return this.selectedOptions.length > 0
+          ? `${this.selectedOptions.length} ${this.selectedTextLocalization}`
+          : this.placeholder;
+      }
+      return this.selectedOptions.length > 0 ? this.getOptionValue(this.selectedOptions[0]) : this.placeholder;
     }
 
     render() {
@@ -1494,7 +1502,7 @@ export namespace ComboBox {
                 aria-controls="md-combobox-listbox"
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
-                title=${ifDefined(this.selectedOptions.length > 0 ? this.selectedOptions[0] : this.placeholder)}
+                title=${ifDefined(this.inputTitle())}
                 .value=${this.inputValue}
                 @click=${this.toggleVisualListBox}
                 @input=${this.handleInput}
@@ -1517,7 +1525,7 @@ export namespace ComboBox {
                   aria-label=${this.label}
                   style=${styleMap({
                     display: this.expanded ? "block" : "none",
-                    "z-index": "1"
+                    "z-index": "99"
                   })}
                 >
                   ${this.getCustomErrorContent()}

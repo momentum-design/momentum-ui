@@ -1,7 +1,7 @@
 const { camelCase } = require("lodash");
 const handlebars = require("handlebars");
 const path = require("path");
-const sass = require("node-sass");
+const sass = require("sass");
 const svgson = require("svgson");
 
 const { readFile, writeFile } = require('./icons-utils');

@@ -255,11 +255,13 @@ export namespace FloatingModal {
     }
 
     disconnectedCallback() {
-      this.containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
       super.disconnectedCallback();
       this.destroyInteractInstance();
     }
 
+    connectedCallback() {
+      this.containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
+    }
 
     render() {
       

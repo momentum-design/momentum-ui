@@ -26,10 +26,10 @@ declare global {
     };
   }
   interface ShadowRoot {
-    adoptedStyleSheets?: CSSStyleSheet[];
+    adoptedStyleSheets?: ThemeStyleSheet[];
   }
 
-  interface CSSStyleSheet {
+  interface ThemeStyleSheet {
     replaceSync: Function;
   }
 }
@@ -78,15 +78,19 @@ export namespace Theme {
       }
     }
 
-    private applyStyle() {
+    public getStyleElement() {
+      return document.createElement("style");
+    }
+
+    public applyStyle() {
       const shadow = this.shadowRoot as ShadowRoot;
       /* c8 ignore next 4 */
       if ("adoptedStyleSheets" in document) {
-        const newTheme = new CSSStyleSheet();
+        const newTheme: ThemeStyleSheet = new CSSStyleSheet();
         newTheme.replaceSync(this.activeTheme);
         shadow.adoptedStyleSheets = [newTheme];
       } else {
-        const styleNode = document.createElement("style");
+        const styleNode: HTMLStyleElement = this.getStyleElement();
         styleNode.textContent = this.activeTheme.cssText;
         shadow.appendChild(styleNode);
       }

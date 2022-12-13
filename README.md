@@ -5,6 +5,34 @@
 [![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/LICENSE)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
+## **DEPRECATION NOTICE**
+
+Packages which are deprecated and will no longer receive updates
+
+* https://www.npmjs.com/package/@momentum-ui/tokens
+* https://www.npmjs.com/package/@momentum-ui/icons
+* https://www.npmjs.com/package/@momentum-ui/illustrations
+* https://www.npmjs.com/package/@momentum-ui/animations
+
+**Replacement packages which will be updated and are backwards compatible**
+
+* [**@momentum-design/animations**](https://github.com/momentum-design/momentum-design/tree/main/packages/%40momentum-design/animations) - Animation assets. [NPMJS Package](https://www.npmjs.com/package/@momentum-design/animations)
+* [**@momentum-design/icons**](https://github.com/momentum-design/momentum-design/tree/main/packages/%40momentum-design/icons) - Icon assets. [NPMJS Package](https://www.npmjs.com/package/@momentum-design/icons)
+* [**@momentum-design/illustrations**](https://github.com/momentum-design/momentum-design/tree/main/packages/%40momentum-design/illustrations) - Illustration assets. [NPMJS Package](https://www.npmjs.com/package/@momentum-design/illustrations)
+
+**New tokens are being generated and updated here and are a work in progress. New projects should consume the tokens at the link below. Existing projects can continue to use their existing tokens, but note the current repository tokens: ttps://www.npmjs.com/package/@momentum-ui/tokens will not be receiving updates.** 
+
+* [**@momentum-design/tokens**](https://github.com/momentum-design/momentum-design/tree/main/packages/%40momentum-design/tokens) - Token assets. [NPMJS Package](https://www.npmjs.com/package/@momentum-design/tokens)
+
+
+### Migration Guide - TODO
+
+1. Windows
+2. Mac
+3. iOS
+4. Android
+5. Web
+ 
 
 > Momentum UI
 

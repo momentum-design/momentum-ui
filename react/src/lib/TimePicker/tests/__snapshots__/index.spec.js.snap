@@ -11,6 +11,7 @@ ShallowWrapper {
     minuteInterval={1}
     onChange={null}
     selectedTime={2018-01-29T09:12:40.000Z}
+    showSeconds={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

@@ -27,11 +27,9 @@ Packages which are deprecated and will no longer receive updates
 
 ### Migration Guide - TODO
 
-1. Windows
-2. Mac
-3. iOS
-4. Android
-5. Web
+Icons - https://github.com/momentum-design/momentum-ui/blob/master/icons-rebrand/MIGRATION.MD
+Illustrations - https://github.com/momentum-design/momentum-ui/blob/master/illustrations/MIGRATION.MD
+Animations - https://github.com/momentum-design/momentum-ui/blob/master/animations/MIGRATION.MD
  
 
 > Momentum UI

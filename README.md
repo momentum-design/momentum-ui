@@ -25,11 +25,12 @@ Packages which are deprecated and will no longer receive updates
 * [**@momentum-design/tokens**](https://github.com/momentum-design/momentum-design/tree/main/packages/%40momentum-design/tokens) - Token assets. [NPMJS Package](https://www.npmjs.com/package/@momentum-design/tokens)
 
 
-### Migration Guide - TODO
+### Migration Guide 
 
-Icons - https://github.com/momentum-design/momentum-ui/blob/master/icons-rebrand/MIGRATION.MD
-Illustrations - https://github.com/momentum-design/momentum-ui/blob/master/illustrations/MIGRATION.MD
-Animations - https://github.com/momentum-design/momentum-ui/blob/master/animations/MIGRATION.MD
+* Icons - https://github.com/momentum-design/momentum-ui/blob/master/icons-rebrand/MIGRATION.MD
+* Illustrations - https://github.com/momentum-design/momentum-ui/blob/master/illustrations/MIGRATION.MD
+* Animations - https://github.com/momentum-design/momentum-ui/blob/master/animations/MIGRATION.MD
+* Tokens - TODO
  
 
 > Momentum UI

@@ -48,7 +48,7 @@ export namespace FloatingModal {
     @query(".md-floating-min-parent") minimizedHeader! : HTMLDivElement;
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
-    private containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
+    private containerTransform = '';
 
     private applyInitialPosition = true;
 
@@ -259,6 +259,9 @@ export namespace FloatingModal {
       this.destroyInteractInstance();
     }
 
+    connectedCallback() {
+      this.containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
+    }
 
     render() {
       

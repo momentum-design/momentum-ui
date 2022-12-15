@@ -13,6 +13,7 @@ import { action } from '@storybook/addon-actions';
 import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
+import mdx from './MeetingAlert.mdx';
 
 export default {
   title: "Components/Meeting Alerts",
@@ -34,6 +35,7 @@ export default {
       element: "md-meeting-alert"
     },
     docs: { 
+      page: mdx,
       description: { 
         component: 'A typical usage of Meeting Alert, with different variations as individual stories' 
       },

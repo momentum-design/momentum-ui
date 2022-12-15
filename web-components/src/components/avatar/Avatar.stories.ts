@@ -13,6 +13,7 @@ import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import mdx from "./Avatar.mdx";
 
 export default {
   title: "Components/Avatar",
@@ -21,6 +22,9 @@ export default {
   parameters: {
     a11y: {
       element: "md-avatar"
+    },
+    docs: { 
+      page: mdx,
     }
   }
 };

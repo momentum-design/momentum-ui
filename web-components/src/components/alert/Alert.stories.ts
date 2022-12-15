@@ -14,9 +14,10 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import "../badge/Badge";
+import mdx from './Alert.mdx';
 
 export default {
-  title: "Components/Alerts/Alert",
+  title: "Components/Alerts",
   component: "md-alert",
   decorators: [withKnobs, withA11y],
   argTypes: {
@@ -29,6 +30,7 @@ export default {
       element: "md-alert"
     },
     docs: { 
+      page: mdx,
       description: { 
         component: 'A typical usage of Alert, with text added within the element tags or message attribute' 
       },
@@ -50,5 +52,41 @@ export const Alert = () => {
     <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
       <md-alert @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show} .inline=${inline}></md-alert>
     </md-theme>
+  `;
+};
+
+export const AlertWithIcon = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos theme", false);
+  const show = boolean("Show", true);
+  const title = text("Title", "Alert");
+  const message = text("Message", "Who is awesome? You are!");
+  const closable = boolean("clossable", true);
+
+  return html`
+   <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+       <md-alert  @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} ?show=${show} ?closable=${closable}>
+           <md-badge slot="alert-icon" color="darkmint" circle>
+               <md-icon name="sms_16" color="white"></md-icon>
+           </md-badge>
+   </md-alert>
+ </md-theme>
+  `;
+};
+
+export const AlertWithSlots = () => {
+  const darkTheme = boolean("darkMode", false);
+  const lumos = boolean("Lumos theme", false);
+  const message = text("Message", "Who is awesome? You are!");
+
+  return html`
+   <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+     <md-alert message=${message} show>
+       <a slot="alert-body" href="/">Test</a>
+       <div slot="alert-footer">
+         <md-button variant="primary"><span slot="text">Blue</span></md-button>
+       </div>
+   </md-alert>
+ </md-theme>
   `;
 };

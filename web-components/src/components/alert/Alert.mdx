@@ -1,0 +1,71 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { Alert } from "./Alert.ts";
+
+# Alert
+
+The `<md-alert/>` component
+
+### Attributes
+
+- `closable` : boolean - sets the close button visibility on the `<md-alert></md-alert>`.
+- `message` : String - renders the text to be displayed on the `<md-alert></md-alert>`.
+- `show` : boolean - sets the visibility of the `<md-alert></md-alert>`.
+- `internalClose` : boolean - sets by default closing internally, otherwise - controlling via .show
+- `title` : String - renders text to be displayed as title in the `<md-alert></md-alert>`.
+- `btnlabel` : String - accessibility text that labels the close button in the meeting alert when there is visible text on screen.
+- `type` : string - renders the type of the alert - error, info, success, warning, default.
+- `inline` : boolean - sets whether the alert is to be displayed inline.
+- `renderIconTemplate` : Function - returns the icon in the alert based on the type of the alert (error, info, success, warning, default).
+- `alertClassMap` : String - returns the classmap for the alert.
+
+### Styling
+
+The wrapping container of the alert can be reached via CSS by using the `:part()` selector. For example, in your application's stylesheet you can say:
+
+```CSS
+md-alert::part(alert) {
+    min-height: 200px;
+    min-width: 600px
+}
+```
+
+### Alert
+
+Renders an alert with dynamic properties
+
+```html
+<md-alert @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show} .inline=${inline}>
+</md-alert>
+```
+
+### Alert With Icon
+
+Any icon can be displayed in the alert by passing the `<md-icon name="_name" color="_colour"></md-icon>` inside the `<md-alert></md-alert>` tags.
+
+```html
+<md-alert  @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} ?show=${show} ?closable=${closable}>
+  <md-badge slot="alert-icon" color="darkmint" circle>
+    <md-icon name="sms_16" color="white"></md-icon>
+  </md-badge>
+</md-alert>
+```
+
+### Slots
+
+#### Named Slot
+
+Any template can be passed through `named slot` in alert by enclosing the template in the `<md-alert></md-alert>` tags.
+
+- `alert-body slot` will render text within the body of the alert with default padding
+- `alert-footer slot` will render text within the body of the alert with default padding
+
+```html
+<md-alert message="${message}" show>
+  <a slot="alert-body" href="/">Test</a>
+  <div slot="alert-footer">
+    <md-button variant="primary"><span slot="text">Blue</span></md-button>
+  </div>
+</md-alert>
+```
+
+<Props of={"md-meeting-alert"} />

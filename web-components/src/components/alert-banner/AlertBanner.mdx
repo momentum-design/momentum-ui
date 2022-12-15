@@ -1,0 +1,37 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { AlertBanner } from "./AlertBanner.ts";
+
+# Alert Banner
+
+The `<md-alert-banner/>` component
+
+### Attributes
+
+- `type` : String - renders the type of the alert-banner - error, warning, default.
+- `message` : String - renders the text to be displayed on the `<md-alert-banner></md-alert-banner>`.
+- `closable` : boolean - sets the visibility of the close button on the `<md-alert-banner/>`.
+- `show` : boolean - sets the visibility of the `<md-alert-banner></md-alert-banner>`.
+- `closeAriaLabel` : string - accessibility text that labels the close button in the alert-banner when there is visible text on screen
+
+### Alert Banner with dynamic properties
+
+Renders an alert-banner with dynamic properties
+
+```html
+<md-alert-banner @alertBanner-hide=${(action('dispatchEvent'))} show type="${type}" ?closable=${closable} message="${textContent}">
+    ${textContent ? `${textContent}` : `Text with slotted tag element`}
+</md-alert-banner>
+```
+
+### Slots
+
+#### Unnamed Slot
+
+The Unnamed `<slot>` will render any content you pass between the `<md-alert-banner></md-alert-banner>` tags.
+```html
+<md-alert-banner @alertBanner-hide=${(action('dispatchEvent'))} show type="${type}" ?closable=${closable}> 
+    <div>My banner's content!</div> 
+<md-alert-banner>
+```
+
+<Props of={"md-meeting-alert"} />

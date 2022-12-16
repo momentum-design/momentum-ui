@@ -14,8 +14,10 @@ The `<md-avatar/>` component
 - `color` : String - Color for the avatar can be provided using this property.
 - `type` : String - Depicts the status of the persona via different icons on the avatar. (typing, presenting, active, call etc...)
 - `size` : number - Represents the size of the avatar.
-- `iconName` : String - Name of the icon to be displayed inside the avatar. Must be a valid icon name.
-- `hasNotification` : boolean - If true, will show the notification symbol on the avatar.
+- `icon-name` : String - Name of the icon to be displayed inside the avatar. Must be a valid icon name.
+- `has-notification` : boolean - If true, will show the notification symbol on the avatar.
+- `iconName` : String - Name of the icon mapped to `icon-name` attribute.
+- `hasNotification` : boolean - Mapped to `has-notification` attribute. 
 
 ### Styling
 
@@ -30,6 +32,7 @@ md-avatar::part(avatar) {
 ### Simple Usage of Avatar
 
 #### Basic large avatar
+Renders a large-sized avatar based on the value passed to the `size` property.
 
 ```html
 <md-avatar alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
@@ -42,6 +45,7 @@ md-avatar::part(avatar) {
 ```
 
 #### Basic medium avatar
+Renders a medium-sized avatar based on the value passed to the `size` property.
 
 ```html
 <md-avatar
@@ -54,6 +58,8 @@ md-avatar::part(avatar) {
 
 #### Small Avatar with Custom image
 
+Renders an avatar with custom image passed via `<img/>` tag enclosed in `<md-avatar></md-avatar>` tags.
+
 ```html
 <md-avatar alt="avatar" title="Kevin Hyde" size="18">
   <img
@@ -64,6 +70,8 @@ md-avatar::part(avatar) {
 
 #### Medium Type with Custom SVG Image
 
+Renders an avatar with custom  SVG image passed via `<img src="${svg}/>` tag enclosed in `<md-avatar></md-avatar>` tags.
+
 ```html
 <md-avatar alt="avatar" title="Kevin Hyde" size="40">
   <img width="100" height="100" src="${svg}" />
@@ -72,11 +80,15 @@ md-avatar::part(avatar) {
 
 #### Icon Avatar with Color
 
+Renders an avatar with icon and colour passed via `icon-name` and `colour` atrribute respectively.
+
 ```html
 <md-avatar alt="avatar" title="Warning Icon" size="80" color="mint" icon-name="warning_20"></md-avatar>
 ```
 
 #### Icon Avatar Status
+
+iRenders an avatar with status `dnd` passed via `type` atrribute.
 
 ```html
 <md-avatar title="Icon" size="36" type="dnd"></md-avatar>
@@ -84,11 +96,15 @@ md-avatar::part(avatar) {
 
 #### Icon Avatar Group
 
+Renders an avatar with `group` type passed via `type` atrribute.
+
 ```html
 <md-avatar title="Icon" type="group"></md-avatar>
 ```
 
 #### Avatar Self
+
+Renders an avatar with `self` type passed via `type` atrribute.
 
 ```html
 <md-avatar title="Self" type="self" size="24"></md-avatar>
@@ -101,11 +117,15 @@ md-avatar::part(avatar) {
 
 #### Icon Avatar Bot
 
+Renders an avatar with `bot` type passed via `type` atrribute.
+
 ```html
 <md-avatar type="bot" title="Tom Smith"></md-avatar>
 ```
 
 #### Icon Avatar Notification
+
+Renders an avatar with `notification` symbol passed via `has-notification` atrribute.
 
 ```html
 <md-avatar has-notification type="active" size="72" title="Tom Smith"></md-avatar>
@@ -113,11 +133,15 @@ md-avatar::part(avatar) {
 
 #### Icon Avatar Typing
 
+Renders an avatar with `typing` status passed via `type` atrribute.
+
 ```html
 <md-avatar type="typing" size="84" title="Tom Smith"></md-avatar>
 ```
 
 #### Composite Avatar
+
+Renders a composite avatar by wrapping 2 or more `<md-avatar/>` tags inside `<md-composite-avatar></md-composite-avatar>` tags.
 
 ```html
 <md-composite-avatar size="72">

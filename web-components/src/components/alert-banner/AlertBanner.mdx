@@ -21,7 +21,6 @@ Renders an alert-banner with dynamic properties
 
 ```html
 <md-alert-banner @alertBanner-hide=${(action('dispatchEvent'))} show type="${type}" ?closable=${closable} message="${textContent}">
-    ${textContent ? `${textContent}` : `Text with slotted tag element`}
 </md-alert-banner>
 ```
 
@@ -33,7 +32,7 @@ The Unnamed `<slot>` will render any content you pass between the `<md-alert-ban
 ```html
 <md-alert-banner @alertBanner-hide=${(action('dispatchEvent'))} show type="${type}" ?closable=${closable}> 
     <div>My banner's content!</div> 
-<md-alert-banner>
+</md-alert-banner>
 ```
 
 <Props of={"md-alert-banner"} />

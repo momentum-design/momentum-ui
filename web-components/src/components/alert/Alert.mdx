@@ -7,16 +7,16 @@ The `<md-alert/>` component
 
 ### Attributes
 
-- `closable` : boolean - sets the close button visibility on the `<md-alert></md-alert>`.
+- `closable` : Boolean - sets the close button visibility on the `<md-alert></md-alert>`.
 - `message` : String - renders the text to be displayed on the `<md-alert></md-alert>`.
-- `show` : boolean - sets the visibility of the `<md-alert></md-alert>`.
-- `internalClose` : boolean - sets by default closing internally, otherwise - controlling via .show
+- `show` : Boolean - sets the visibility of the `<md-alert></md-alert>`.
+- `internalClose` : Boolean - sets by default closing internally, otherwise - controlling via .show
 - `title` : String - renders text to be displayed as title in the `<md-alert></md-alert>`.
 - `btnlabel` : String - accessibility text that labels the close button in the meeting alert when there is visible text on screen.
-- `type` : string - renders the type of the alert - error, info, success, warning, default.
-- `inline` : boolean - sets whether the alert is to be displayed inline.
+- `type` : String - renders the type of the alert - `error, info, success, warning, default`.
+- `inline` : Boolean - sets whether the alert is to be displayed inline.
 - `renderIconTemplate` : Function - returns the icon in the alert based on the type of the alert (error, info, success, warning, default).
-- `alertClassMap` : String - returns the classmap for the alert.
+- `alertClassMap` : Object - returns the classmap for the alert.
 - `alert-close` : event - mapped to a function which handles the closing of the alert.
 
 ### Styling
@@ -30,12 +30,12 @@ md-alert::part(alert) {
 }
 ```
 
-### Alert
+### A simple usage of Alert
 
 Renders an alert with dynamic properties
 
 ```html
-<md-alert @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show} .inline=${inline}>
+<md-alert @alert-close=${(action('dispatchEvent'))} title=${`Alert Title`} message=${`Alert Message`} type="warning" ?closable=${true} ?show=${true} .inline=${false}>
 </md-alert>
 ```
 
@@ -44,7 +44,7 @@ Renders an alert with dynamic properties
 Any icon can be displayed in the alert by passing the `<md-icon name="_name" color="_colour"></md-icon>` inside the `<md-alert></md-alert>` tags.
 
 ```html
-<md-alert  @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} ?show=${show} ?closable=${closable}>
+<md-alert  @alert-close=${(action('dispatchEvent'))} title="Alert Title" message="Alert Message" ?show=${true} ?closable=${true}>
   <md-badge slot="alert-icon" color="darkmint" circle>
     <md-icon name="sms_16" color="white"></md-icon>
   </md-badge>
@@ -57,11 +57,11 @@ Any icon can be displayed in the alert by passing the `<md-icon name="_name" col
 
 Any template can be passed through `named slot` in alert by enclosing the template in the `<md-alert></md-alert>` tags.
 
-- `alert-body slot` will render text within the body of the alert with default padding
-- `alert-footer slot` will render text within the body of the alert with default padding
+- `alert-body slot` will render text as the body of the alert with default padding
+- `alert-footer slot` will render text as the footer of the alert with default padding
 
 ```html
-<md-alert message="${message}" show>
+<md-alert message="Alert Message" show>
   <a slot="alert-body" href="/">Test</a>
   <div slot="alert-footer">
     <md-button variant="primary"><span slot="text">Blue</span></md-button>

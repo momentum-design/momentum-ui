@@ -1,19 +1,23 @@
-import "./Accordion";
-import "./AccordionItem";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { html } from "lit-element";
 import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
+import "./Accordion";
+import mdx from './Accordion.mdx';
+import "./AccordionItem";
 
 export default {
   title: "Components/Accordion",
   component: "md-accordion",
   decorators: [withKnobs, withA11y],
   parameters: {
-    a11u: {
+    a11y: {
       element: "md-accordion"
+    },
+    docs: {
+      page: mdx
     }
-  }
+  },
 };
 
 export const Accordion = () => {

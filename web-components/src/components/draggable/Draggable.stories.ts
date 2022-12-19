@@ -6,15 +6,14 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, withKnobs, color, text, select } from "@storybook/addon-knobs";
-import mdx from "./Draggable.mdx";
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, color, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { GroupOptions } from "sortablejs";
-import { SelectTypeKnobValue } from "@storybook/addon-knobs/dist/components/types";
+import mdx from "./Draggable.mdx";
 
 export default {
   title: "Components/Draggable",
@@ -47,8 +46,8 @@ export const Draggable = () => {
     "Select pull option",
     {
       clone: "clone",
-      TurnOn: (true as unknown) as SelectTypeKnobValue,
-      TurnOff: (false as unknown) as SelectTypeKnobValue,
+      TurnOn: (true as unknown) as any,
+      TurnOff: (false as unknown) as any,
       GroupArray: [leftGroupName]
     },
     "clone",
@@ -57,11 +56,11 @@ export const Draggable = () => {
   const leftGroupPut = select(
     "Select left put option",
     {
-      TurnOn: (true as unknown) as SelectTypeKnobValue,
-      TurnOff: (false as unknown) as SelectTypeKnobValue,
+      TurnOn: (true as unknown) as any,
+      TurnOff: (false as unknown) as any,
       GroupArray: [leftGroupName]
     },
-    (true as unknown) as SelectTypeKnobValue,
+    (true as unknown) as any,
     "Left List"
   );
   const leftHandle = text("Drag handle selector within left list items", "md-draggable-item", "Left List");
@@ -74,8 +73,8 @@ export const Draggable = () => {
     "Select pull option",
     {
       clone: "clone",
-      TurnOn: (true as unknown) as SelectTypeKnobValue,
-      TurnOff: (false as unknown) as SelectTypeKnobValue,
+      TurnOn: (true as unknown) as any,
+      TurnOff: (false as unknown) as any,
       GroupArray: [rightGroupName]
     },
     "clone",
@@ -84,11 +83,11 @@ export const Draggable = () => {
   const rightGroupPut = select(
     "Select right put option",
     {
-      TurnOn: (true as unknown) as SelectTypeKnobValue,
-      TurnOff: (false as unknown) as SelectTypeKnobValue,
+      TurnOn: (true as unknown) as any,
+      TurnOff: (false as unknown) as any,
       GroupArray: [rightGroupName]
     },
-    (true as unknown) as SelectTypeKnobValue,
+    (true as unknown) as any,
     "Right List"
   );
   const rightHandle = text("Drag handle selector within right list items", "md-draggable-item", "Right List");

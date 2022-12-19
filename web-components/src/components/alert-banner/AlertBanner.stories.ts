@@ -6,13 +6,14 @@
  *
  */
 
- import { withA11y } from "@storybook/addon-a11y";
+ import "@/components/alert-banner/AlertBanner";
+import "@/components/icon/Icon";
+import "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
-import { action } from '@storybook/addon-actions';
-import "@/components/icon/Icon";
-import "@/components/alert-banner/AlertBanner";
-import "@/components/theme/Theme";
+import mdx from './AlertBanner.mdx';
 
 export default {
   title: "Components/Alert Banner",
@@ -23,6 +24,7 @@ export default {
       element: "md-alert-banner"
     },
     docs: { 
+      page: mdx,
       description: { 
         component: 'A typical usage of Alert Banner, with text added within the element tags or message attribute' 
       },

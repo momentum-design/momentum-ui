@@ -17,7 +17,7 @@ export namespace TabPanel {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Boolean, reflect: true }) selected = false;
     @property({ type: String, attribute: "name" }) name = "";
-    @property({ type: Boolean, reflect: true, attribute: "focusable-panel" }) focusablePanel = true;
+    @property({ type: Boolean, reflect: true, attribute: "focusable-panel" }) focusablePanel = false;
 
     static get styles() {
       return [reset, styles];
@@ -27,6 +27,15 @@ export namespace TabPanel {
       super.firstUpdated(changedProperties);
       this.setAttribute("role", "tabpanel");
       if (this.focusablePanel) {
+        console.log("firstupdated in if part");
+        this.setAttribute("tabindex", "0");
+      }
+    }
+    protected updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
+      this.setAttribute("role", "tabpanel");
+      if (this.focusablePanel) {
+        console.log("updated in if part");
         this.setAttribute("tabindex", "0");
       }
     }

@@ -19,9 +19,9 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
+import "lit-virtualizer";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
-import "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -893,6 +893,34 @@ export namespace ComboBox {
       this.focusedIndex = -1;
     }
 
+    handleDropdownDisplay() {
+      if (this.isOptGroup && this.filteredOptions.length === 0) {
+        this.handleGroupFocus();
+        return;
+      }
+      this.setFocusOnHost(false);
+      if (!this.expanded) {
+        this.setVisualListbox(true);
+      }
+      this.updateOnNextFrame(() => {
+        if (
+          this.focusedIndex === -1 ||
+          (!this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length - 1) ||
+          (this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length)
+        ) {
+          this.focusedIndex = 0;
+        } else {
+          this.focusedIndex++;
+        }
+        const option = this.getFocusedItem(this.focusedIndex);
+        this.groupExpandedList = [this.getOptionGroupName(option)];
+        if (!this.showSelectedCount && option) {
+          this.setInputValue(this.getOptionValue(option));
+        }
+        this.focusedGroupIndex = -1;
+      });
+    }
+
     handleInputKeyDown(event: KeyboardEvent) {
       switch (event.code) {
         case Key.Backspace:
@@ -928,31 +956,7 @@ export namespace ComboBox {
           break;
         case Key.ArrowDown:
           {
-            if (this.isOptGroup && this.filteredOptions.length === 0) {
-              this.handleGroupFocus();
-              return;
-            }
-            this.setFocusOnHost(false);
-            if (!this.expanded) {
-              this.setVisualListbox(true);
-            }
-            this.updateOnNextFrame(() => {
-              if (
-                this.focusedIndex === -1 ||
-                (!this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length - 1) ||
-                (this.allowSelectAll && this.focusedIndex >= this.filteredOptions.length)
-              ) {
-                this.focusedIndex = 0;
-              } else {
-                this.focusedIndex++;
-              }
-              const option = this.getFocusedItem(this.focusedIndex);
-              this.groupExpandedList = [this.getOptionGroupName(option)];
-              if (!this.showSelectedCount && option) {
-                this.setInputValue(this.getOptionValue(option));
-              }
-              this.focusedGroupIndex = -1;
-            });
+            this.handleDropdownDisplay();
           }
           break;
         case Key.ArrowUp:
@@ -1018,6 +1022,8 @@ export namespace ComboBox {
             if (this.focusedIndex === 0 && this.allowSelectAll) {
               this.handleSelectAll();
             }
+          } else {
+            this.handleDropdownDisplay();
           }
           break;
         }
@@ -1276,7 +1282,7 @@ export namespace ComboBox {
           aria-label=${this.arrowAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
-          tabindex="0"
+          tabindex="-1"
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >

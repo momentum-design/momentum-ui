@@ -494,8 +494,7 @@ describe("Combobox Component", () => {
       await elementUpdated(el);
 
       expect(el.expanded).toBeTruthy();
-      expect(el.focusedIndex).toEqual(1);
-      expect(el.lists![1].hasAttribute("focused")).toBeTruthy();
+      expect(el.focusedIndex).toEqual(0);
     });
     test("should remove all selected option if clear icon clicked", async () => {
       const el = await fixture<ComboBox.ELEMENT>(

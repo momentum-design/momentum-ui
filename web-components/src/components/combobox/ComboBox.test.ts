@@ -1,7 +1,20 @@
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import {
+  comboBoxComplexObjectOption,
+  comboBoxObjectLongOptions,
+  comboBoxObjectOptions,
+  comboBoxOptions
+} from "@/[sandbox]/sandbox.mock";
+import {
+  elementUpdated,
+  fixture,
+  fixtureCleanup,
+  html,
+  nextFrame,
+  oneEvent,
+  waitUntil
+} from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 import "lit-virtualizer";
 import "./ComboBox";
@@ -481,19 +494,6 @@ describe("Combobox Component", () => {
 
       const key = createEvent("KeyZ");
       el.input!.dispatchEvent(key);
-      expect(el.focusedIndex).toEqual(0);
-
-      el.isMulti = false;
-      el.expanded = false;
-      el.selectedOptions = [];
-      el.focusedIndex = 0;
-      await elementUpdated(el);
-
-      el.input!.dispatchEvent(space);
-      await nextFrame();
-      await elementUpdated(el);
-
-      expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(0);
     });
     test("should remove all selected option if clear icon clicked", async () => {

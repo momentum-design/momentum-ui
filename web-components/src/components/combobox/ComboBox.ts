@@ -1010,6 +1010,7 @@ export namespace ComboBox {
           }
           break;
         case Key.Space: {
+          this.toggleVisualListBox(event);
           if (this.isMulti) {
             event.preventDefault();
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
@@ -1020,8 +1021,6 @@ export namespace ComboBox {
             if (this.focusedIndex === 0 && this.allowSelectAll) {
               this.handleSelectAll();
             }
-          } else {
-            this.toggleVisualListBox(event);
           }
           break;
         }

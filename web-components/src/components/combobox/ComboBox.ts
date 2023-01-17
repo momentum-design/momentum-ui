@@ -776,7 +776,7 @@ export namespace ComboBox {
 
     handleInput(event: Event) {
       const inputValue = (event.target as HTMLInputElement).value;
-      if (inputValue !== " ") {
+      if (inputValue.trim() !== "") {
         this.inputValue = inputValue;
         this.notifyInputValueChanged(inputValue);
       }

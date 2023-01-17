@@ -27,7 +27,6 @@ export namespace TabPanel {
       super.firstUpdated(changedProperties);
       this.setAttribute("role", "tabpanel");
       if (this.focusablePanel) {
-        console.log("firstupdated in if part");
         this.setAttribute("tabindex", "0");
       }
     }
@@ -35,7 +34,6 @@ export namespace TabPanel {
       super.updated(changedProperties);
       this.setAttribute("role", "tabpanel");
       if (this.focusablePanel) {
-        console.log("updated in if part");
         this.setAttribute("tabindex", "0");
       }
     }

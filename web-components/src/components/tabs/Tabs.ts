@@ -646,7 +646,6 @@ export namespace Tabs {
 
       const key = event.code;
       const { shiftKey } = event;
-      console.log("More Menu Tab Visible--", this.isMoreTabMenuVisible);
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 

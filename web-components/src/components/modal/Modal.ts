@@ -102,7 +102,6 @@ export namespace Modal {
         event.preventDefault();
         if (this.show && !this.noExitOnEsc) {
           this.show = false;
-          this.notifyModalClose();
         }
       }
     };
@@ -168,8 +167,11 @@ export namespace Modal {
     handleCloseBackdrop() {
       if (this.backdropClickExit) {
         this.show = false;
-        this.notifyModalClose();
       }
+    }
+    hideModal() {
+      this.animating = false;
+      this.show = false;
     }
 
     private topCloseBtnTemplate() {
@@ -179,7 +181,7 @@ export namespace Modal {
               <md-button
                 hasRemoveStyle
                 class="md-close md-modal__close"
-                @click="${this.modalFadeOut}"
+                @click="${this.hideModal}"
                 @keydown="${this.handleKeyDown}"
                 aria-label=${this.ariaLabelClose}
               >
@@ -192,7 +194,6 @@ export namespace Modal {
 
     private handleFooterClick() {
       this.show = false;
-      this.notifyModalClose();
     }
 
     private headerTemplate() {

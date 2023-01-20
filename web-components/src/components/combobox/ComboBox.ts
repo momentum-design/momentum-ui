@@ -19,9 +19,9 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
+import "lit-virtualizer";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
-import "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -776,8 +776,10 @@ export namespace ComboBox {
 
     handleInput(event: Event) {
       const inputValue = (event.target as HTMLInputElement).value;
-      this.inputValue = inputValue;
-      this.notifyInputValueChanged(inputValue);
+      if (inputValue.trim() !== "") {
+        this.inputValue = inputValue;
+        this.notifyInputValueChanged(inputValue);
+      }
     }
 
     private removeAllSelected() {
@@ -1008,6 +1010,7 @@ export namespace ComboBox {
           }
           break;
         case Key.Space: {
+          this.toggleVisualListBox(event);
           if (this.isMulti) {
             event.preventDefault();
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
@@ -1276,7 +1279,7 @@ export namespace ComboBox {
           aria-label=${this.arrowAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
-          tabindex="0"
+          tabindex="-1"
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >

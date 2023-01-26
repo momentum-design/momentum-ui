@@ -368,7 +368,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       const self = this;
       document.addEventListener("on-widget-update", () => {
-        console.log("Inside widget-update");
         setTimeout(() => {
           self.setFocusableElements();
         }, 10);

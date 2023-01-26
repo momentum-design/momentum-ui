@@ -278,7 +278,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     protected setFocusableElements() {
       this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
-      console.log("focusableElements$", this.focusableElements);
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {

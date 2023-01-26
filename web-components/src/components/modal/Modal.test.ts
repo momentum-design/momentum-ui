@@ -196,4 +196,20 @@ describe("Modal Component", () => {
     expect(mockTransitionPromise).toBeCalled();
     expect(focusInsideModal).not.toBeCalled();
   });
+
+  test("should close modal when showCloseButton is true and X button is clicked", async () => {
+    jest.useFakeTimers();
+    element.show = true;
+    element.showCloseButton = true;
+    await elementUpdated(element);
+
+    const closeButton = element.shadowRoot!.querySelector(".md-close.md-modal__close");
+    const click = new MouseEvent("click");
+
+    closeButton!.dispatchEvent(click);
+    await elementUpdated(element);
+
+    jest.runAllTimers();
+    expect(element.show).toBeFalsy();
+  });
 });

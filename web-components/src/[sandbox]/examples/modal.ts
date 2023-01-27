@@ -29,18 +29,6 @@ export class ModalTemplateSandbox extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    // setTimeout(() => {
-    // this.menuOverlay.addEventListener("menu-overlay-open", () => {
-    //   // this.menuOverlay.dispatchEvent(new CustomEvent('focus-visible', {
-    //   //   composed: true,
-    //   //   bubbles: true
-    //   // }))
-    //   this.menuOverlay.dispatchEvent(new CustomEvent('deactivate-focus-trap', {
-    //     composed: true,
-    //     bubbles: true
-    //   }))
-    // })
-    // }, 20);
   }
 
   private openModal() {

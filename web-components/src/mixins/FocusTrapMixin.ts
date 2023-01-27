@@ -371,9 +371,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           self.setFocusableElements();
         }, 10);
       });
-      this.addEventListener("deactivate-focus-trap", () => {
-        this.deactivateFocusTrap();
-      })
       document.addEventListener("click", this.handleOutsideTrapClick);
     }
 

@@ -727,7 +727,7 @@ export namespace ComboBox {
     handleInputKeyUp(event: KeyboardEvent) {
       switch (event.code) {
         case Key.Escape: {
-          return;
+          break;
         }
         case Key.Backspace:
           {
@@ -902,7 +902,10 @@ export namespace ComboBox {
             this.focusedIndex = -1;
           }
           break;
-        case Key.Tab:
+        case Key.Tab: {
+          this.setVisualListbox(false);
+          break;
+        }
         case Key.Enter:
           {
             this.setFocusOnHost(true);
@@ -1025,7 +1028,6 @@ export namespace ComboBox {
           break;
         }
         default: {
-          this.setVisualListbox(true);
           break;
         }
       }
@@ -1503,6 +1505,7 @@ export namespace ComboBox {
                   ? ""
                   : this.placeholder}
                 aria-controls="md-combobox-listbox"
+                ?readonly=${this.allowSelectAll}
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
                 title=${ifDefined(this.inputTitle())}

@@ -466,6 +466,17 @@ describe("Combobox Component", () => {
       expect(el.input!.value).toEqual("combobox");
       expect(el.focusedIndex).toEqual(0);
       expect(el.selectedOptions.length).toEqual(1);
+      const tab = createEvent(Key.Tab);
+      el.expanded = true;
+      el.focusedIndex = 0;
+      el.input!.value = "combobox";
+      el.selectedOptions.push("Afghanistan");
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(tab);
+      expect(el.expanded).toBeFalsy();
+      expect(el.input!.value).toEqual("combobox");
+      expect(el.focusedIndex).toEqual(0);
 
       const home = createEvent(Key.Home);
 

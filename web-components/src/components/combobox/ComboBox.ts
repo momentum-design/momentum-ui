@@ -727,7 +727,7 @@ export namespace ComboBox {
     handleInputKeyUp(event: KeyboardEvent) {
       switch (event.code) {
         case Key.Escape: {
-          return;
+          break;
         }
         case Key.Backspace:
           {
@@ -907,6 +907,9 @@ export namespace ComboBox {
           {
             this.setFocusOnHost(true);
             this.setVisualListbox(false);
+            if(event.code === Key.Tab && this.isMulti){
+              return;
+            }
             this.updateOnNextFrame(() => {
               const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
               if (this.allowCustomValue && this.input && this.input.value.length) {
@@ -1025,7 +1028,6 @@ export namespace ComboBox {
           break;
         }
         default: {
-          this.setVisualListbox(true);
           break;
         }
       }
@@ -1503,6 +1505,7 @@ export namespace ComboBox {
                   ? ""
                   : this.placeholder}
                 aria-controls="md-combobox-listbox"
+                ?readonly=${this.allowSelectAll}
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
                 title=${ifDefined(this.inputTitle())}

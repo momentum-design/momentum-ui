@@ -902,14 +902,14 @@ export namespace ComboBox {
             this.focusedIndex = -1;
           }
           break;
-        case Key.Tab: {
-          this.setVisualListbox(false);
-          break;
-        }
+        case Key.Tab:
         case Key.Enter:
           {
             this.setFocusOnHost(true);
             this.setVisualListbox(false);
+            if(event.code === Key.Tab && this.isMulti){
+              return;
+            }
             this.updateOnNextFrame(() => {
               const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
               if (this.allowCustomValue && this.input && this.input.value.length) {

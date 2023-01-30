@@ -1,3 +1,5 @@
+import "@/components/combobox/ComboBox";
+import "@/components/input/Input";
 import { Key } from "@/constants";
 import {
   defineCE,
@@ -10,8 +12,6 @@ import {
 } from "@open-wc/testing-helpers";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
-import "@/components/input/Input";
-import "@/components/combobox/ComboBox";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -365,7 +365,9 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
     focusTrap!["initialFocusComplete"] = true;
-    document.dispatchEvent(new CustomEvent("on-component-update"));
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+    document.dispatchEvent(new CustomEvent("deactivate-focus-trap"));
+
 
     await nextFrame();
     await elementUpdated(el);

@@ -366,7 +366,6 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["setFocusableElements"]!();
     focusTrap!["initialFocusComplete"] = true;
     document.dispatchEvent(new CustomEvent("on-widget-update"));
-    document.dispatchEvent(new CustomEvent("deactivate-focus-trap"));
 
 
     await nextFrame();

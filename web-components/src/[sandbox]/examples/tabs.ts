@@ -11,6 +11,7 @@ import { css, customElement, html, internalProperty, LitElement } from "lit-elem
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -332,6 +333,130 @@ export class TabsTemplateSandbox extends LitElement {
           Single Button Reset
         </md-toggle-switch>
         <div>
+        <md-tabs justified selected="0" ref={tabElm}>
+        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
+          <span>Entry Point</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex; alignItems: center;">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+        <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
+          <span>Address Book</span>
+        </md-tab>
+        <md-tab-panel slot="panel" class="address-panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+      </md-tabs>
+      <md-tabs justified>
+            <md-tab slot="tab" label="Dial Number">
+              <span>Dial Number</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <div class="phone-fromat">
+                <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
+                  <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
+                  <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
+                </md-radiogroup>
+              </div>
+
+              <md-input
+                type="tel"
+                id="dn"
+                class="dial-number"
+                placeholder="Dial Number"
+                shape="pill"
+                autofocus
+                clear
+              ></md-input>
+            </md-tab-panel>
+            <md-tab slot="tab" label="Extension">
+              <span>Extension</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <div class="extension-format">
+                <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
+              </div>
+              <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
+            </md-tab-panel>
+          </md-tabs>
           <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
             ${repeat(
               this.currentTabsOrder,
@@ -569,7 +694,7 @@ export const tabsTemplate = html`
         </md-button>
       </md-tooltip>
       <div style="width: 100%;">
-        <md-tabs selected="1" more-items-scroll-limit="4">
+        <md-tabs selected="0" more-items-scroll-limit="4">
           ${repeat(tabsOverlayHtmlList, _html => _html)}
         </md-tabs>
       </div>

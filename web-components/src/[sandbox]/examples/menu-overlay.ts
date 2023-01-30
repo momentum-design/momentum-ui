@@ -328,7 +328,112 @@ export const menuOverlayTemplate = html`
   </div>
   </div>
 
+  
+
   <h3 class="sandbox-header" style="margin: .5rem 1rem">with list (focus)</h3>
+  <md-menu-overlay class="queueDropdown" size="large" @menu-overlay-open=${(e: any) => {console.log("Opening modal--");document.dispatchEvent(new CustomEvent("on-widget-update"))}}>
+        <md-input
+          placeholder="Search field with tabs"
+          shape="pill"
+          slot="menu-trigger"
+          variant="primary"
+          clear
+          autoFocus></md-input>
+        <div style="padding:1.25rem; width: 100%;">
+        <md-tabs justified selected="0" ref={tabElm}>
+        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
+          <span>Entry Point</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex; alignItems: center;">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+        <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
+          <span>Address Book</span>
+        </md-tab>
+        <md-tab-panel slot="panel" class="address-panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+      </md-tabs>
+        </div>
+      </md-menu-overlay>
   <md-menu-overlay show-arrow>
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Open List</md-button>
     <md-list label="Transuranium elements" activated="3">
@@ -354,7 +459,7 @@ export const menuOverlayTemplate = html`
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
     <div style="margin:1.25rem; width: 100%">
       <md-tabs>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="contactHistory">
           <span>Contact History</span>
           <md-icon name="recents_16"></md-icon>
         </md-tab>
@@ -368,10 +473,10 @@ export const menuOverlayTemplate = html`
               <md-radio slot="radio" value="Option 3">Option 3</md-radio>
               <md-radio slot="radio" value="Option 4">Option 4</md-radio>
             </md-radiogroup>
-            <md-input autofocus></md-input>
+           
           </div>
         </md-tab-panel>
-        <md-tab slot="tab">
+        <md-tab slot="tab" name="WXM">
           <span>Cisco WxM</span>
           <md-icon name="apps_16"></md-icon>
         </md-tab>

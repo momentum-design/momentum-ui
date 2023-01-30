@@ -120,7 +120,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         element.style.opacity === "0" ||
         element.style.visibility === "hidden" ||
         element.style.visibility === "collapse" ||
-        this.isNotVisible(element)
+        this.isNotVisible(element) ||
+        getComputedStyle(element).visibility === "hidden" ||
+        getComputedStyle(element).height === "0"
       );
     }
 
@@ -364,7 +366,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       const self = this;
-      document.addEventListener("on-component-update", () => {
+      document.addEventListener("on-widget-update", () => {
         setTimeout(() => {
           self.setFocusableElements();
         }, 10);

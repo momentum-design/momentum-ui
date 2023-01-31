@@ -96,6 +96,6 @@ export function shouldPrevMonthDisable(day: DateTime, minDate: DateTime): boolea
 }
 
 export function shouldNextMonthDisable(day: DateTime, maxDate: DateTime) {
-  const lastDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: day.daysInMonth });
+  const lastDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: day.daysInMonth, year: day.year });
   return maxDate && maxDate <= lastDayOfCurrMonth;
 }

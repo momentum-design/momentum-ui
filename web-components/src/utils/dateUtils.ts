@@ -91,11 +91,11 @@ export function isDayDisabled(day: DateTime, params: DayFilters): boolean {
 }
 
 export function shouldPrevMonthDisable(day: DateTime, minDate: DateTime): boolean {
-  const firstDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: 1 });
+  const firstDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: 1, year: day.year });
   return minDate && minDate >= firstDayOfCurrMonth;
 }
 
 export function shouldNextMonthDisable(day: DateTime, maxDate: DateTime) {
-  const lastDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: day.daysInMonth });
+  const lastDayOfCurrMonth = DateTime.fromObject({ month: day.month, day: day.daysInMonth, year: day.year });
   return maxDate && maxDate <= lastDayOfCurrMonth;
 }

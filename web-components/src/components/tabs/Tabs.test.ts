@@ -265,6 +265,7 @@ describe("Tabs", () => {
         originalTarget: {
           id: id
         },
+        composedPath : ()=> [{id:"id"}, {id:"id2"}],
         code: code,
         ctrlKey: false,
         shiftKey: false,

@@ -647,7 +647,7 @@ export namespace Tabs {
       else{
         elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
       }
-
+      const id = this.getNormalizedTabId(elementId);
       this.dispatchKeydownEvent(event, id);
 
       const key = event.code;

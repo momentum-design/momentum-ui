@@ -1436,7 +1436,10 @@ export namespace ComboBox {
           "z-index": "99"
         });
       } else {
-        return styleMap({ visibility: isInvisible ? "hidden" : "visible", "z-index": "99" });
+        return styleMap({ 
+          visibility: isInvisible ? "hidden" : "visible", 
+          "z-index": isInvisible ? "-1":"99" , 
+          opacity: isInvisible ? "0":"1" , });
       }
     }
 

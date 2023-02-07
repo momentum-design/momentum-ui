@@ -32,7 +32,7 @@ export namespace RadioGroup {
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("slotted")) {
+      if (changedProperties.has("slotted") || changedProperties.has("checked")) {
         this.setFirstChecked();
       }
     }

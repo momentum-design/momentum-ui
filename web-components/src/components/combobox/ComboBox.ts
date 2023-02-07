@@ -907,7 +907,7 @@ export namespace ComboBox {
           {
             this.setFocusOnHost(true);
             this.setVisualListbox(false);
-            if(event.code === Key.Tab && this.isMulti){
+            if (event.code === Key.Tab && this.isMulti) {
               return;
             }
             this.updateOnNextFrame(() => {
@@ -1436,7 +1436,11 @@ export namespace ComboBox {
           "z-index": "99"
         });
       } else {
-        return styleMap({ visibility: isInvisible ? "hidden" : "visible", "z-index": "99" });
+        return styleMap({
+          visibility: isInvisible ? "hidden" : "visible",
+          "z-index": isInvisible ? "-1" : "99",
+          opacity: isInvisible ? "0" : "1"
+        });
       }
     }
 

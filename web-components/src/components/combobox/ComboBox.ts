@@ -503,13 +503,19 @@ export namespace ComboBox {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
             : [...this.lists];
+
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
 
-          virtualizerHeight = updatedList
-            .slice(1, this.visibleOptions)
-            .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
+          virtualizerHeight =
+            this.checkForVirtualScroll() && this.allowSelectAll
+              ? updatedList
+                  .slice(1, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0)
+              : updatedList
+                  .slice(0, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
 
         }
         if (this.labels) {

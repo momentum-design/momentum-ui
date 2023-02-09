@@ -83,10 +83,14 @@ export namespace RadioGroup {
 
     private setChecked(newIndex: number) {
       const oldIndex = this.findCheckedRadioIndex();
-      if (oldIndex !== -1 && oldIndex !== newIndex) {
+     
+      if (oldIndex !== -1 && oldIndex !== newIndex && this.slotted[oldIndex]) {
         (this.slotted[oldIndex] as Radio.ELEMENT).checked = false;
       }
+      if(this.slotted[newIndex])
+      {
       (this.slotted[newIndex] as Radio.ELEMENT).checked = true;
+      }
     }
 
     private switchRadioOnArrowPress(startIndex: number, increment = 1) {

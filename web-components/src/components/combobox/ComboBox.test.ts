@@ -1427,6 +1427,20 @@ describe("Combobox Component", () => {
   });
 
   test("should navigate through tab between groups for multi select", async () => {
+    const el2 = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder ="Placeholder">
+          <div label="Countries">
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </div>
+        </md-combobox>
+      `
+    );
+    await elementUpdated(el2);
+    await nextFrame();
+
     const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox with-custom-content is-multi placeholder="Placeholder">

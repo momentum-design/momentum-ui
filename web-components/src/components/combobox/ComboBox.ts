@@ -498,13 +498,25 @@ export namespace ComboBox {
       this.updateOnNextFrame(() => {
         let height = 0;
         let labelHeight = 0;
+        let virtualizerHeight = 0;
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
             : [...this.lists];
+
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
+
+          virtualizerHeight =
+            this.checkForVirtualScroll() && this.allowSelectAll
+              ? updatedList
+                  .slice(1, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0)
+              : updatedList
+                  .slice(0, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
+
         }
         if (this.labels) {
           labelHeight = [...this.labels]
@@ -515,7 +527,7 @@ export namespace ComboBox {
           this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
         }
         if (this.virtualizer) {
-          this.virtualizer.style.height = `${height + 10}px`;
+          this.virtualizer.style.height = `${virtualizerHeight + 10}px`;
         }
         if (this.showCustomError || this.showLoader) {
           const customContent = this.listBox?.querySelector("[slot]");

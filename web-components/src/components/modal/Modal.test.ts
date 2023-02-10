@@ -123,18 +123,22 @@ describe("Modal Component", () => {
     expect(element.show).toBeTruthy();
   });
 
-  test("should close modal when enter key is pressed", async () => {
+  test("should not close modal when enter key is pressed and focus is not on close buttons", async () => {
     jest.useFakeTimers();
-
+    element.show = true;
     await elementUpdated(element);
+    const enterPressEvent = new KeyboardEvent("keydown", { code: "Enter" });
+    element.handleKeyDown(enterPressEvent);
+    expect(element.show).toBeTruthy();
+  });
 
-    const mockEnterClick = jest.spyOn(element, "handleKeyDown");
-    element.handleKeyDown(new KeyboardEvent("Enter"));
+  test("should not close modal when enter space is pressed and focus is not on close buttons", async () => {
+    jest.useFakeTimers();
+    element.show = true;
     await elementUpdated(element);
-
-    expect(mockEnterClick).toHaveBeenCalled();
-
-    mockEnterClick.mockRestore();
+    const enterPressEvent = new KeyboardEvent("keydown", { code: "Space" });
+    element.handleKeyDown(enterPressEvent);
+    expect(element.show).toBeTruthy();
   });
 
   test("should close modal if backdrop button clicked", async () => {

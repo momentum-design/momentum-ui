@@ -19,7 +19,6 @@ import styles from "./scss/module.scss";
 
 export const modalType = ["default", "full", "large", "small", "dialog"] as const;
 
-const fadeDuration = 150;
 const minisculeLatency = 13;
 /**
  * Increasing latency above 13 ms has an increasingly negative impact
@@ -156,12 +155,8 @@ export namespace Modal {
 
     private modalFadeOut() {
       this.animating = false;
-
       this.deactivateFocusTrap!();
-
-      setTimeout(() => {
-        this.notifyModalClose();
-      }, fadeDuration);
+      this.notifyModalClose();
     }
 
     handleCloseBackdrop() {

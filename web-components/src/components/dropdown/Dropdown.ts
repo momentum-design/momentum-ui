@@ -464,6 +464,7 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
+            tabindex="0"
           >
             ${repeat(
               this.renderOptions,
@@ -472,7 +473,9 @@ export namespace Dropdown {
                 <li
                   class="md-dropdown-option"
                   role="option"
+                  tabindex="0"
                   aria-label="${o.value}"
+                  label="${o.value}"
                   aria-selected="${idx === this.focusedIndex}"
                   part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"

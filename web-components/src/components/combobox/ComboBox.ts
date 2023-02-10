@@ -205,14 +205,6 @@ export namespace ComboBox {
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled) {
-        requestAnimationFrame(() => {
-          this.input!.focus();
-          this.focusedGroupIndex = -1;
-        });
-
-        if (this.selectWhenInFocus) {
-          this.input!.select();
-        }
         super.handleFocusIn && super.handleFocusIn(event);
       }
       this.dispatchEvent(
@@ -836,10 +828,12 @@ export namespace ComboBox {
     }
 
     private shouldChangeButton() {
-      return (
-        (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
-        (this.isMulti && this.selectedOptions.length && !this.noClearIcon)
-      );
+      let shouldChange = (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
+        (this.isMulti && this.selectedOptions.length && !this.noClearIcon);
+      if (shouldChange) {
+        document.dispatchEvent(new CustomEvent("on-widget-update"));
+      }
+      return shouldChange;
     }
 
     private setCustomValue() {

@@ -162,7 +162,7 @@ ul {
   }
 }
 
-ul:has( > .virtual-scroll) {
+ul:has(lit-virtualizer) {
   overflow: hidden;
 }
 

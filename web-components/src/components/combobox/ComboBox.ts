@@ -1445,13 +1445,15 @@ export namespace ComboBox {
       if (!this.checkForVirtualScroll()) {
         return styleMap({
           display: isInvisible ? "none" : "block",
-          "z-index": "99"
+          "z-index": "99",
+          overflow : "auto"
         });
       } else {
         return styleMap({
           visibility: isInvisible ? "hidden" : "visible",
           "z-index": isInvisible ? "-1" : "99",
-          opacity: isInvisible ? "0" : "1"
+          opacity: isInvisible ? "0" : "1",
+          overflow : "hidden"
         });
       }
     }

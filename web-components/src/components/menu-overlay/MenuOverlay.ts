@@ -128,6 +128,13 @@ export namespace MenuOverlay {
       }
     }
 
+    checkIsInputField(element: HTMLElement) {
+      if(element && element.tagName && element.tagName.toLowerCase() === 'md-input') {
+        return true;
+      }
+      return false;
+    }
+
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -135,7 +142,11 @@ export namespace MenuOverlay {
       if (this.trigger) {
         this.triggerElement = this.trigger[0];
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
-        this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
+        if(!this.checkIsInputField(this.triggerElement)) {
+          // Prevent adding keydown event, if the slot element type is md-input
+          // This will allow users to use ENTER and SPACE key without issues.
+          this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
+        }
         this.triggerElement.setAttribute("aria-haspopup", "true");
       }
 

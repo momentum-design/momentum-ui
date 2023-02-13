@@ -1,4 +1,5 @@
 import "@/components/button/Button";
+import "@/components/input/Input";
 import "./MenuOverlay";
 import { Key } from "@/constants";
 import {
@@ -61,6 +62,36 @@ const fixtureFactory = async (
   `);
 };
 
+const fixtureInputFactory = async (
+  isOpen: boolean,
+  showArrow: boolean,
+  placement: MenuOverlay.Placement,
+  customWidth: string,
+  maxHeight: string,
+  size: MenuOverlay.Size
+): Promise<MenuOverlay.ELEMENT> => {
+  return await fixture<MenuOverlay.ELEMENT>(html`
+    <md-menu-overlay
+      ?is-open=${isOpen}
+      ?show-arrow=${showArrow}
+      placement=${placement}
+      custom-width=${customWidth}
+      max-height=${maxHeight}
+      size=${size}
+    >
+      <md-input
+        placeholder="Search field with tabs"
+        shape="pill"
+        slot="menu-trigger"
+        variant="primary"
+        clear
+        autoFocus
+      ></md-input>
+      <div><h1>Menu Overlay Content</h1></div>
+    </md-menu-overlay>
+  `);
+};
+
 describe("MenuOverlay", () => {
   afterEach(fixtureCleanup);
 
@@ -87,6 +118,20 @@ describe("MenuOverlay", () => {
     await nextFrame();
 
     expect(element.isOpen).toBeTruthy();
+  });
+
+  test("should prevent the keydown event if trigger element is md-input", async () => {
+    const element = await fixtureInputFactory(false, false, "bottom", "", "", "large");
+
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+
+    await nextFrame();
+
+    triggerElement.dispatchEvent(new KeyboardEvent("keydown", { code: "Space" }));
+    await nextFrame();
+
+    expect(element.isOpen).toBeFalsy();
   });
 
   test("should open overlay if trigger element is invoked by keyboard", async () => {

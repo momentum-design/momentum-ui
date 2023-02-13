@@ -166,10 +166,6 @@ ul {
   }
 }
 
-ul:has( > .virtual-scroll) {
-  overflow: hidden;
-}
-
 .md-combobox-multi-input {
   width: initial;
 }

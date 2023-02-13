@@ -205,6 +205,18 @@ export namespace ComboBox {
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled) {
+        if (this.noClearIcon) {
+          console.log("aish:inside no clearicon");
+
+          requestAnimationFrame(() => {
+            this.input!.focus();
+            this.focusedGroupIndex = -1;
+          });
+  
+          if (this.selectWhenInFocus) {
+            this.input!.select();
+          }
+        }
         super.handleFocusIn && super.handleFocusIn(event);
       }
       this.dispatchEvent(

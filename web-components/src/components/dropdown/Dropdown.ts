@@ -40,6 +40,7 @@ export namespace Dropdown {
     @property({ type: Object }) defaultOption: Option = EMPTY_KEY;
 
     @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Number, attribute: "custom-tab-index", reflect: true }) customTabIndex = 0;
     @property({ type: Boolean, attribute: "allow-unselected", reflect: true }) allowUnselected = false;
     @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
 
@@ -464,7 +465,7 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
-            tabindex="0"
+            tabindex=${this.customTabIndex}
           >
             ${repeat(
               this.renderOptions,
@@ -473,7 +474,7 @@ export namespace Dropdown {
                 <li
                   class="md-dropdown-option"
                   role="option"
-                  tabindex="0"
+                  tabindex=${this.customTabIndex}
                   aria-label="${o.value}"
                   label="${o.value}"
                   aria-selected="${idx === this.focusedIndex}"

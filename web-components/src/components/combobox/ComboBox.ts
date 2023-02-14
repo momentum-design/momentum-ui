@@ -70,7 +70,6 @@ export namespace ComboBox {
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
-    @property({ type: String, attribute: "clear-icon-padding" }) clearIconPadding = "0";
 
     @property({ type: String, attribute: "all-i18n" }) allTextLocalization = "All";
     @property({ type: String, attribute: "select-all-i18n" }) selectAllTextLocalization = "Select All";
@@ -1286,7 +1285,7 @@ export namespace ComboBox {
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
-          <span> <md-icon class="md-input__icon-clear" name="clear-active_12" style="height: ${this.clearIconHeight}; padding: ${this.clearIconPadding} "></md-icon></span>
+          <span> <md-icon class="md-input__icon-clear" name="clear-active_12" style="height: ${this.clearIconHeight};"></md-icon></span>
         </button>
       `;
     }

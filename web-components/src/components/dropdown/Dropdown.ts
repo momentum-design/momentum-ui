@@ -221,6 +221,7 @@ export namespace Dropdown {
 
     expand() {
       this.expanded = true;
+      document.dispatchEvent(new CustomEvent("on-widget-update"));
 
       if (this.focusedIndex === -1) {
         this.focusNext();

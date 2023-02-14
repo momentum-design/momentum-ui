@@ -44,7 +44,7 @@ export namespace PhoneInput {
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
     @property({ type: Boolean }) showErrorMessage = false;
-    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "0";
+    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String, attribute: "clear-icon-padding" }) clearIconPadding = "0";
 
     @internalProperty() private countryCode: CountryCode = "US";

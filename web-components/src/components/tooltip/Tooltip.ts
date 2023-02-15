@@ -141,7 +141,7 @@ export namespace Tooltip {
     }
 
     handleKeyDown(event: KeyboardEvent){
-      if (event.key === Key.Escape) {
+      if (event.code === Key.Escape) {
         this.notifyTooltipDestroy();
       }
     }

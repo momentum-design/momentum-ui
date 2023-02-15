@@ -427,7 +427,6 @@ describe("FocusTrap Mixin", () => {
     const input = combobox!.shadowRoot?.querySelector("input");
 
     await elementUpdated(elWithCB);
-    console.log("focusTrap innerHTML:", focusTrap?.innerHTML);
 
     input!.click(); // Click on input to show the ul and re-evaluate focusable elements
 

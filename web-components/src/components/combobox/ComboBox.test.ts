@@ -265,7 +265,7 @@ describe("Combobox Component", () => {
     test("should open/close dropdown if clicked", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
+          <md-combobox .options=${comboBoxOptions} no-clear-icon></md-combobox>
         `
       );
       const event = new MouseEvent("click");

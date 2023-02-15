@@ -1328,7 +1328,7 @@ describe("Combobox Component", () => {
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
-    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.focusedGroupIndex).toEqual(1);
 
     groupList![1].dispatchEvent(enter);
 
@@ -1514,7 +1514,7 @@ describe("Combobox Component", () => {
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
-    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.focusedGroupIndex).toEqual(1);
 
     groupList![1].dispatchEvent(enter);
 

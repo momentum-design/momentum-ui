@@ -38,6 +38,7 @@ export const comboBoxTemplate = html`
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     .value=${[comboBoxOptions[5]]}
+    clear-icon-height="12px"
     allow-custom-value
   ></md-combobox>
   <h3>Invalid</h3>

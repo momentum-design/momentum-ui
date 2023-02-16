@@ -5,6 +5,7 @@ import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { Theme } from "@/components/theme/Theme";
 import { Tooltip } from "./Tooltip";
+import { Key } from "@/constants";
 
 describe("Tooltip", () => {
   let theme: Theme.ELEMENT;
@@ -59,6 +60,31 @@ describe("Tooltip", () => {
     expect(tooltipDestroy).toBeDefined();
     expect(tooltip.opened).toBeFalsy();
     expect(tooltipDestroy.reference).toEqual(tooltip.reference);
+  });
+
+  test("should close tooltip on pressing escape", async () => {
+    setTimeout(() => tooltip.notifyTooltipCreate());
+
+    const { detail: tooltipCreate } = await oneEvent(tooltip, "tooltip-create");
+
+    const focusinEvent = new MouseEvent("focusin");
+    const destroyNotifySpy = jest.spyOn(tooltip, "notifyTooltipDestroy");
+
+    const createEvent = (code: string) =>
+    new KeyboardEvent("keydown", {
+      code
+    });
+
+    const escape = createEvent(Key.Escape);
+
+    tooltip.reference.dispatchEvent(focusinEvent);
+    expect(tooltip.opened).toBeTruthy();
+    expect(tooltipCreate.reference).toEqual(tooltip.reference);
+    tooltip.reference.dispatchEvent(escape);
+
+    expect(destroyNotifySpy).toHaveBeenCalled();
+    expect(tooltip.opened).toBeFalsy();
+    
   });
 
   test("should handle with slot content changes", async () => {

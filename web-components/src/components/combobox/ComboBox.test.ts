@@ -265,7 +265,7 @@ describe("Combobox Component", () => {
     test("should open/close dropdown if clicked", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
+          <md-combobox .options=${comboBoxOptions} no-clear-icon></md-combobox>
         `
       );
       const event = new MouseEvent("click");
@@ -1328,7 +1328,7 @@ describe("Combobox Component", () => {
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
-    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.focusedGroupIndex).toEqual(1);
 
     groupList![1].dispatchEvent(enter);
 
@@ -1514,7 +1514,7 @@ describe("Combobox Component", () => {
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
-    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.focusedGroupIndex).toEqual(1);
 
     groupList![1].dispatchEvent(enter);
 

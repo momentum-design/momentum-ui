@@ -40,6 +40,7 @@ export namespace Dropdown {
     @property({ type: Object }) defaultOption: Option = EMPTY_KEY;
 
     @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Number, attribute: "custom-tab-index", reflect: true }) customTabIndex = 0;
     @property({ type: Boolean, attribute: "allow-unselected", reflect: true }) allowUnselected = false;
     @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
 
@@ -220,6 +221,7 @@ export namespace Dropdown {
 
     expand() {
       this.expanded = true;
+      document.dispatchEvent(new CustomEvent("on-widget-update"));
 
       if (this.focusedIndex === -1) {
         this.focusNext();
@@ -464,6 +466,7 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
+            tabindex=${this.customTabIndex}
           >
             ${repeat(
               this.renderOptions,
@@ -472,7 +475,9 @@ export namespace Dropdown {
                 <li
                   class="md-dropdown-option"
                   role="option"
+                  tabindex=${this.customTabIndex}
                   aria-label="${o.value}"
+                  label="${o.value}"
                   aria-selected="${idx === this.focusedIndex}"
                   part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"

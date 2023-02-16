@@ -44,6 +44,7 @@ export namespace PhoneInput {
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
     @property({ type: Boolean }) showErrorMessage = false;
+    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -208,6 +209,7 @@ export namespace PhoneInput {
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            clear-icon-height="${this.clearIconHeight}"
             with-custom-content
           >
             ${repeat(

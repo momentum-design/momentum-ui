@@ -69,6 +69,7 @@ export namespace ComboBox {
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "Combobox Input";
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
+    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
 
     @property({ type: String, attribute: "all-i18n" }) allTextLocalization = "All";
     @property({ type: String, attribute: "select-all-i18n" }) selectAllTextLocalization = "Select All";
@@ -205,13 +206,15 @@ export namespace ComboBox {
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled) {
-        requestAnimationFrame(() => {
-          this.input!.focus();
-          this.focusedGroupIndex = -1;
-        });
-
-        if (this.selectWhenInFocus) {
-          this.input!.select();
+        if (this.noClearIcon) {
+          requestAnimationFrame(() => {
+            this.input!.focus();
+            this.focusedGroupIndex = -1;
+          });
+  
+          if (this.selectWhenInFocus) {
+            this.input!.select();
+          }
         }
         super.handleFocusIn && super.handleFocusIn(event);
       }
@@ -848,10 +851,12 @@ export namespace ComboBox {
     }
 
     private shouldChangeButton() {
-      return (
-        (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
-        (this.isMulti && this.selectedOptions.length && !this.noClearIcon)
-      );
+      let shouldChange = (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
+        (this.isMulti && this.selectedOptions.length && !this.noClearIcon);
+      if (shouldChange) {
+        document.dispatchEvent(new CustomEvent("on-widget-update"));
+      }
+      return shouldChange;
     }
 
     private setCustomValue() {
@@ -1280,7 +1285,7 @@ export namespace ComboBox {
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
-          <span> <md-icon class="md-input__icon-clear" name="clear-active_12"></md-icon></span>
+          <span> <md-icon class="md-input__icon-clear" name="clear-active_12" style="height: ${this.clearIconHeight};"></md-icon></span>
         </button>
       `;
     }

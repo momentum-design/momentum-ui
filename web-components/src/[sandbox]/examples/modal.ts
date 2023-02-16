@@ -12,6 +12,7 @@ import "@/components/tabs/Tabs";
 import { debounce } from "@/utils/helpers";
 import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { customElement, html, LitElement, property, query } from "lit-element";
+import { dropdownObjectLongOptions } from "./dropdown";
 
 @customElement("modal-template-sandbox")
 export class ModalTemplateSandbox extends LitElement {
@@ -220,6 +221,11 @@ export class ModalTemplateSandbox extends LitElement {
           Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
           Renaissance.
         </p>
+        <md-dropdown
+          .options="${dropdownObjectLongOptions}"
+          option-id="id"
+          option-value="country"
+        ></md-dropdown>
 
         <md-button slot="footer" type="reset">Reset</md-button>
         <md-button slot="footer" @click="${this.closeModal}" type="submit">Submit</md-button>

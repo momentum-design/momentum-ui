@@ -211,7 +211,7 @@ export namespace ComboBox {
             this.input!.focus();
             this.focusedGroupIndex = -1;
           });
-  
+
           if (this.selectWhenInFocus) {
             this.input!.select();
           }
@@ -519,7 +519,6 @@ export namespace ComboBox {
               : updatedList
                   .slice(0, this.visibleOptions)
                   .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-
         }
         if (this.labels) {
           labelHeight = [...this.labels]
@@ -791,10 +790,8 @@ export namespace ComboBox {
 
     handleInput(event: Event) {
       const inputValue = (event.target as HTMLInputElement).value;
-      if (inputValue.trim() !== "") {
-        this.inputValue = inputValue;
-        this.notifyInputValueChanged(inputValue);
-      }
+      this.inputValue = inputValue.trim();
+      this.notifyInputValueChanged(inputValue.trim());
     }
 
     private removeAllSelected() {
@@ -851,7 +848,8 @@ export namespace ComboBox {
     }
 
     private shouldChangeButton() {
-      let shouldChange = (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
+      const shouldChange =
+        (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
         (this.isMulti && this.selectedOptions.length && !this.noClearIcon);
       if (shouldChange) {
         document.dispatchEvent(new CustomEvent("on-widget-update"));
@@ -1030,7 +1028,7 @@ export namespace ComboBox {
           }
           break;
         case Key.Space: {
-          this.toggleVisualListBox(event);
+          this.expanded = true;
           if (this.isMulti) {
             event.preventDefault();
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
@@ -1285,7 +1283,13 @@ export namespace ComboBox {
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
-          <span> <md-icon class="md-input__icon-clear" name="clear-active_12" style="height: ${this.clearIconHeight};"></md-icon></span>
+          <span>
+            <md-icon
+              class="md-input__icon-clear"
+              name="clear-active_12"
+              style="height: ${this.clearIconHeight};"
+            ></md-icon
+          ></span>
         </button>
       `;
     }
@@ -1451,14 +1455,14 @@ export namespace ComboBox {
         return styleMap({
           display: isInvisible ? "none" : "block",
           "z-index": "99",
-          overflow : "auto"
+          overflow: "auto"
         });
       } else {
         return styleMap({
           visibility: isInvisible ? "hidden" : "visible",
           "z-index": isInvisible ? "-1" : "99",
           opacity: isInvisible ? "0" : "1",
-          overflow : "hidden"
+          overflow: "hidden"
         });
       }
     }

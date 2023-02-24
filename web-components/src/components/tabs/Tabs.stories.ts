@@ -20,7 +20,7 @@ export default {
   component: "md-tabs",
   decorators: [withKnobs, withA11y],
   argTypes: {
-    overlowLabel: { table: { disable: true } },
+    overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },
     panelSlotElement: { table: { disable: true } },
     moreTabMenuElement: { table: { disable: true } },

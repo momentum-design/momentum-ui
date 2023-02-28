@@ -43,7 +43,7 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More Tabs";
+    @property({ type: String }) overflowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
@@ -1018,7 +1018,7 @@ export namespace Tabs {
             <md-tab
               slot="menu-trigger"
               id="${MORE_MENU_TAB_TRIGGER_ID}"
-              aria-label="${this.overlowLabel}"
+              aria-label="${this.overflowLabel}"
               aria-haspopup="true"
               tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
               .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
@@ -1026,7 +1026,7 @@ export namespace Tabs {
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
             >
-              <span class="md-menu-overlay__overflow-label">${this.overlowLabel}</span>
+              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
             </md-tab>
             <div

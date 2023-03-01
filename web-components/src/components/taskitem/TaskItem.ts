@@ -129,6 +129,10 @@ export namespace TaskItem {
           return html`
             <md-icon name="announcement_12"></md-icon>
           `;
+        case "progressive_campaign":
+            return html`
+              <md-icon name="icon-campaign_12"></md-icon>
+            `;
         default:
           return html`
             <slot name="task-status"></slot>

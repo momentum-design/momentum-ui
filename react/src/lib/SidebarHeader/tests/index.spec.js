@@ -18,10 +18,10 @@ describe('<SidebarHeader />', () => {
   it('should render children if children prop is set', () => {
     const wrapper = shallow(
       <SidebarHeader>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </SidebarHeader>
     );
 
-    expect(wrapper.find('.dummy-children').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-children').exists()).toBeTruthy();
   });
 });

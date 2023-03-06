@@ -62,6 +62,12 @@ export namespace TaskItem {
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
+        case "progressive_campaign":
+            return html`
+              <md-badge color="green" circle>
+                <md-icon name="icon-icon-campaign_18"></md-icon>
+              </md-badge>
+            `;
         case "chat":
           return html`
             <md-badge color="blue" circle>
@@ -129,10 +135,6 @@ export namespace TaskItem {
           return html`
             <md-icon name="announcement_12"></md-icon>
           `;
-        case "progressive_campaign":
-            return html`
-              <md-icon name="icon-campaign_12"></md-icon>
-            `;
         default:
           return html`
             <slot name="task-status"></slot>

@@ -208,7 +208,7 @@ export namespace PhoneInput {
             part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
-            .ariaLabel=${this.countryCodeAriaLabel}
+            aria-label=${this.countryCodeAriaLabel}
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"

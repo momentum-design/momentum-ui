@@ -92,7 +92,7 @@ export namespace Button {
     ariaLabelledBy?: string;
     ariaExpanded?: boolean;
     ariaHaspopup?: boolean;
-    ariaPressed?: string;
+    ariaPressed?: String;
     ariaCurrent?: boolean;
     tag: Tag;
     loading: boolean;
@@ -306,7 +306,7 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${this.tabIndex}
-            aria-pressed=${this.ariaPressed === "true" ? true : false}
+            aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             type=${this.type}
@@ -325,7 +325,7 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${this.tabIndex}
-            aria-pressed=${this.ariaPressed === "true" ? true : false}
+            aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             href=${this.href}

@@ -45,6 +45,8 @@ export namespace PhoneInput {
     @property({ type: String }) errorMessage = "";
     @property({ type: Boolean }) showErrorMessage = false;
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
+    @property({ type: String }) countryCodeAriaLabel = "";
+    @property({ type: String }) dialNumberAriaLabel = "";
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -206,6 +208,7 @@ export namespace PhoneInput {
             part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
+            aria-label=${this.countryCodeAriaLabel}
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
@@ -222,6 +225,7 @@ export namespace PhoneInput {
             part="md-input"
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
+            .ariaLabel=${this.dialNumberAriaLabel}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
             @input-blur="${(e: Event) => this.handleBlur(e)}"
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"

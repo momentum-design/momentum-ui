@@ -35,3 +35,7 @@ export enum ARIA_INVALID {
   SPELLING = "spelling",
   TRUE = "true"
 }
+
+export enum ATTRIBUTES {
+  AriaActivedescendant = "aria-activedescendant"
+}

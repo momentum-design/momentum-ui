@@ -8,12 +8,12 @@
 
 import "@/components/help-text/HelpText";
 import "@/components/icon/Icon";
-import { Key } from "@/constants";
+import { ATTRIBUTES, Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { LitElement, PropertyValues, html, internalProperty, property, query, queryAll } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -262,7 +262,7 @@ export namespace ComboBox {
           if (selectedIndex !== -1) {
             this.setSelectedOption(option);
             this.setInputValue(this.getOptionValue(option));
-            this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+            this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
             this.focusedIndex = selectedIndex;
             this.virtualizer?.scrollToIndex(this.focusedIndex, "center");
             this.focusedGroupIndex = -1;
@@ -801,7 +801,7 @@ export namespace ComboBox {
       this.selectedOptions = [];
       this.inputValue = "";
       this.setInputValue();
-      this.input?.setAttribute('aria-activedescendant','')
+      this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
       this.setVisualListbox(false);
       this.unCheckedAllOptions();
       this.updateOnNextFrame(() => {
@@ -842,7 +842,7 @@ export namespace ComboBox {
           this.setSelectedOption(option);
           if (!this.isMulti) {
             this.setInputValue(this.getOptionValue(option));
-            this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+            this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
           } else if (this.isMulti && this.allowSelectAll) {
             this.isSelectAllChecked = this.isSelectAllSelected();
           }
@@ -872,7 +872,7 @@ export namespace ComboBox {
             const option = this.getFocusedItem(this.focusedIndex);
             if (option) {
               this.setInputValue(this.getOptionValue(option));
-              this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+              this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
             }
           });
         }
@@ -942,7 +942,7 @@ export namespace ComboBox {
                 this.setSelectedOption(option);
                 if (!this.showSelectedCount) {
                   this.setInputValue(this.getOptionValue(option));
-                  this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+                  this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
                 }
               }
               if (this.isMulti && this.allowSelectAll && this.focusedIndex === 0) {
@@ -975,7 +975,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(option)];
               if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
-                this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
               }
               this.focusedGroupIndex = -1;
             });
@@ -1003,7 +1003,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(option)];
               if (option && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(option));
-                this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
                 this.focusedGroupIndex = -1;
               }
             });
@@ -1017,7 +1017,7 @@ export namespace ComboBox {
               this.setVisualListbox(false);
             } else {
               this.setInputValue();
-              this.input?.setAttribute('aria-activedescendant','')
+              this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
               this.focusedIndex = -1;
               this.focusedGroupIndex = -1;
               this.removeAllSelected();
@@ -1042,9 +1042,9 @@ export namespace ComboBox {
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
             if (option) {
               this.setSelectedOption(option);
-              if (!this.showSelectedCount) { 
+              if (!this.showSelectedCount) {
                 this.setInputValue();
-                this.input?.setAttribute('aria-activedescendant','')
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
               }
             }
             if (this.focusedIndex === 0 && this.allowSelectAll) {
@@ -1080,7 +1080,7 @@ export namespace ComboBox {
                   this.setSelectedOption(option);
                   if (!this.showSelectedCount) {
                     this.setInputValue(this.getOptionValue(option));
-                    this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+                    this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
                     this.updateOnNextFrame(() => {
                       this.input!.focus();
                       this.focusedGroupIndex = -1;
@@ -1114,7 +1114,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(option)];
               if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
-                this.input?.setAttribute('aria-activedescendant',this.getOptionId(option))
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
               }
               this.focusedGroupIndex = -1;
             });
@@ -1138,7 +1138,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(item)];
               if (item && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(item));
-                this.input?.setAttribute('aria-activedescendant',this.getOptionId(item))
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(item));
               }
             });
           }
@@ -1489,7 +1489,7 @@ export namespace ComboBox {
           part="combobox-option"
           role="option"
           class="md-combobox-option"
-          aria-label=${this.isCustomContent ? this.getOptionId(option): this.getOptionValue(option)}
+          aria-label=${this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option)}
           aria-selected=${this.getAriaState(optionIndex)}
           tabindex="-1"
           @click=${this.handleListClick.bind(this)}

@@ -721,7 +721,6 @@ export namespace ComboBox {
     }
 
     async handleSelectAll() {
-      if (this.selectedOptions.length === 0 || this.isSelectAllSelected()) {
         this.isSelectAllChecked = !this.isSelectAllChecked;
         if (this.isSelectAllChecked) {
           this.selectedOptions = [...this.options];
@@ -736,7 +735,6 @@ export namespace ComboBox {
         this.notifySelectedChange({
           selected: this.selectedOptions
         });
-      }
     }
 
     handleInputKeyUp(event: KeyboardEvent) {
@@ -1352,17 +1350,11 @@ export namespace ComboBox {
           @click=${this.handleSelectAll}
           aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
         >
-          ${!this.isSelectAllChecked && this.selectedOptions.length !== 0
-            ? html`
-                <span class="select-option indeterminate">
-                  <md-icon name="icon-minus_14"></md-icon>
-                </span>
-              `
-            : html`
+       
                 <span class="select-option">
                   <md-icon name="icon-check_14"></md-icon>
                 </span>
-              `}
+              
           <span part="label" class="select-label">${this.selectAllTextLocalization}</span>
         </li>
       `;

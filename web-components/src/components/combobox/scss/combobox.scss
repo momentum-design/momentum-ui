@@ -243,16 +243,7 @@ ul {
     }
   }
 
-  .indeterminate {
-    background: var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
-    border: 1px solid
-      var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
-
-    md-icon {
-      color: var(--combobox-dropdown-item-checked-icon-color, $lm-combobox-dropdown-item-checked-icon-color-light);
-      visibility: visible;
-    }
-  }
+  
 
   &:hover {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);

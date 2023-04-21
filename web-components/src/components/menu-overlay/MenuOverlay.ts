@@ -65,6 +65,10 @@ export namespace MenuOverlay {
       this._isOpen = newValue;
       this.handleInstance(newValue);
       if (this.overlayContainer) {
+        if(this.isDatePicker)
+        {
+          this.overlayContainer.toggleAttribute("data-show-date-picker", newValue);
+        }
         this.overlayContainer.toggleAttribute("data-show", newValue);
       }
       this.requestUpdate("isOpen", oldValue);
@@ -76,6 +80,7 @@ export namespace MenuOverlay {
     @property({ type: Boolean, attribute: "show-arrow" }) showArrow = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) placement: MenuOverlay.Placement = "bottom";
+    @property({ type: Boolean}) isDatePicker = false;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;

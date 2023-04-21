@@ -30,6 +30,11 @@
       &[data-show] {
         display: block;
       }
+
+      &[data-show-date-picker] {
+        display: block;
+        top: -15px !important;
+      }
     }
   }
 

@@ -219,7 +219,6 @@ export namespace MenuOverlay {
 
     private create() {
       if (this.triggerElement) {
-        const isInput = this.checkIsInputField(this.triggerElement);
         this.popperInstance = createPopper(this.triggerElement, this.overlayContainer, {
           onFirstUpdate: async () => {
             // We need to find all focusable elements, after Popper finish its positioning calculation
@@ -267,16 +266,7 @@ export namespace MenuOverlay {
               options: {
                 adaptive: false, // this will recompute popper position
               },
-            },
-            {
-              name: 'applyTopStyle',
-              enabled: isInput ? true : false,
-              phase: 'beforeWrite',
-              fn: ({ state }) => {
-                state.styles.popper.top = '-15px';
-              },
-              requires: ['computeStyles'],
-            },
+            }
           ]
         });
       }

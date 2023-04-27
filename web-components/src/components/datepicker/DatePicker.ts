@@ -22,6 +22,7 @@ import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
+  const EMPTY_STRING = '';
 
   @customElementWithCheck("md-datepicker")
   export class ELEMENT extends LitElement {
@@ -34,6 +35,7 @@ export namespace DatePicker {
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
     @property({ type: Boolean }) disabled = false;
+    @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -56,7 +58,7 @@ export namespace DatePicker {
     async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (!this.value) {
+      if (this.value === EMPTY_STRING) {
         this.value = this.includesTime
           ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
           : this.selectedDate?.toISODate();
@@ -191,6 +193,7 @@ export namespace DatePicker {
     };
 
     isValueValid = () => {
+      if(!this.value && this.value !== EMPTY_STRING) return true;
       const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
       const regexString =
         dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
@@ -212,20 +215,29 @@ export namespace DatePicker {
     render() {
       return html`
         <md-menu-overlay custom-width="248px" ?disabled=${this.disabled}>
-          <md-input
-            class="date-input"
-            slot="menu-trigger"
-            placeholder=${this.includesTime ? ifDefined(this.placeholder) : "YYYY-MM-DD"}
-            value=${ifDefined(this.value)}
-            aria-label=${`Choose Date` + this.chosenDateLabel()}
-            auxiliaryContentPosition="before"
-            @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
-            hide-message
-            ?disabled=${this.disabled}
-            .messageArr=${[{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
-          >
-            <md-icon slot="input-section" name="calendar-month_16"></md-icon>
-          </md-input>
+          ${this.customTrigger
+            ? html`
+                <span slot="menu-trigger">
+                  <slot name="date-trigger"></slot>
+                </span>
+              `
+            : html`
+                <md-input
+                  class="date-input"
+                  slot="menu-trigger"
+                  placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
+                  value=${ifDefined(this.value)}
+                  aria-label=${`Choose Date` + this.chosenDateLabel()}
+                  auxiliaryContentPosition="before"
+                  @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
+                  hide-message
+                  ?disabled=${this.disabled}
+                  .messageArr=${[{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
+                >
+                  <md-icon slot="input-section" name="calendar-month_16"></md-icon>
+                </md-input>
+              `}
+
           <div class="date-overlay-content">
             <md-datepicker-calendar
               @day-select=${(e: CustomEvent) => this.handleSelect(e)}

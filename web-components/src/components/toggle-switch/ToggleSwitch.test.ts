@@ -57,4 +57,22 @@ describe("Toggle Switch Component", () => {
 
     expect(element.checked).toBeTruthy();
   });
+
+  test("should add class md-toggle-switch__label__container__left on align label left", async () => {
+    const div = element.shadowRoot!.querySelector(".md-toggle-switch") as HTMLInputElement;
+    element.alignLabel = "left";
+    await elementUpdated(element);
+    const span = div.querySelector("span") as HTMLSpanElement;
+
+    expect(span.classList.contains("md-toggle-switch__label__container__left")).toBeTruthy();
+  });
+
+  test("should not add class md-toggle-switch__label__container__left on align label right", async () => {
+    const div = element.shadowRoot!.querySelector(".md-toggle-switch") as HTMLInputElement;
+    element.alignLabel = "right";
+    await elementUpdated(element);
+    const span = div.querySelector("span") as HTMLSpanElement;
+
+    expect(span.classList.contains("md-toggle-switch__label__container__left")).toBeFalsy();
+  });
 });

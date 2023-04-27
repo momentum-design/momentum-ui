@@ -9,7 +9,7 @@
 import { Key, ARIA_INVALID } from "@/constants";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
-import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
+import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
@@ -368,6 +368,7 @@ export namespace Input {
               id=${this.htmlId}
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly}
+              maxlength=${ifDefined(this.maxLength)}
             ></textarea>
           `
         : html`
@@ -423,7 +424,7 @@ export namespace Input {
     }
 
     inputRightTemplate() {
-      if (this.clear && !this.disabled && !!this.value) {
+      if (this.clear && !this.disabled && !!this.value && !this.readOnly) {
         return html`
           <div class="md-input__after">
             <md-button
@@ -513,7 +514,7 @@ export namespace Input {
 
     render() {
       return html`
-        <div class="md-input-container ${classMap(this.inputClassMap)}">
+        <div class="md-input-container ${classMap(this.inputClassMap)}" part="md-input-container">
           ${this.labelTemplate()}
           <div class="md-input__wrapper ${classMap(this.inputWrapperClassMap)}">
             ${this.inputLeftTemplate()} ${this.inputTemplate()} ${this.inputRightTemplate()}

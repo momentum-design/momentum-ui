@@ -1,10 +1,24 @@
-import "./ComboBox";
-import { ComboBox } from "./ComboBox";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import {
+  comboBoxComplexObjectOption,
+  comboBoxObjectLongOptions,
+  comboBoxObjectOptions,
+  comboBoxOptions
+} from "@/[sandbox]/sandbox.mock";
+import {
+  elementUpdated,
+  fixture,
+  fixtureCleanup,
+  html,
+  nextFrame,
+  oneEvent,
+  waitUntil
+} from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
+import "lit-virtualizer";
+import "./ComboBox";
+import { ComboBox } from "./ComboBox";
 
 describe("Combobox Component", () => {
   afterEach(fixtureCleanup);
@@ -251,7 +265,7 @@ describe("Combobox Component", () => {
     test("should open/close dropdown if clicked", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
+          <md-combobox .options=${comboBoxOptions} no-clear-icon></md-combobox>
         `
       );
       const event = new MouseEvent("click");
@@ -452,6 +466,17 @@ describe("Combobox Component", () => {
       expect(el.input!.value).toEqual("combobox");
       expect(el.focusedIndex).toEqual(0);
       expect(el.selectedOptions.length).toEqual(1);
+      const tab = createEvent(Key.Tab);
+      el.expanded = true;
+      el.focusedIndex = 0;
+      el.input!.value = "combobox";
+      el.selectedOptions.push("Afghanistan");
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(tab);
+      expect(el.expanded).toBeFalsy();
+      expect(el.input!.value).toEqual("combobox");
+      expect(el.focusedIndex).toEqual(0);
 
       const home = createEvent(Key.Home);
 
@@ -780,7 +805,7 @@ describe("Combobox Component", () => {
       el.expanded = true;
 
       expect(el.expanded).toBeTruthy();
-      expect(el.listBox!.style.zIndex).toEqual("1");
+      expect(el.listBox!.style.zIndex).toEqual("99");
     });
 
     test("should correct render options depends on input value", async () => {
@@ -1065,5 +1090,553 @@ describe("Combobox Component", () => {
     expect(el.invalid).toBeTruthy();
     expect(el.shadowRoot!.querySelector(".md-combobox-error")).not.toBeNull();
     expect(el.shadowRoot!.querySelector("md-help-text")!.message).toEqual("Error Message from Combobox");
+  });
+
+  test("should render with Slect All option", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all> </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector("#md-combobox-listbox")?.querySelector("#selectAll")).not.toBeNull();
+  });
+
+  test("should select/unselect all options on clicking Select All", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    const selectAllEl = el.shadowRoot!.querySelector("#md-combobox-listbox")?.querySelector("#selectAll");
+    expect(selectAllEl).not.toBeNull();
+    expect(el.selectedOptions.length).toEqual(0);
+    selectAllEl?.dispatchEvent(new MouseEvent("click"));
+
+    await nextFrame();
+    expect(el.selectedOptions.length).toEqual(comboBoxOptions.length);
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")).not.toBeNull();
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")?.textContent).toEqual("All");
+
+    el.expanded = true;
+    await elementUpdated(el);
+    selectAllEl?.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+    expect(el.selectedOptions.length).toEqual(0);
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")).toBeNull();
+  });
+
+  test("should show selected option's count", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+
+    const firstOption = el.shadowRoot!.querySelectorAll("#md-combobox-listbox .md-combobox-option")[1];
+    firstOption.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+    expect(el.selectedOptions.length).toEqual(1);
+    expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")?.textContent).toEqual("1 Selected");
+  });
+
+  test("should render with custom error", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox .options=${comboBoxOptions} show-custom-error>
+          <div slot="custom-error">Custom Error!!!</div>
+        </md-combobox>
+      `
+    );
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector('[slot="custom-error"]')).not.toBeNull();
+    expect(el.shadowRoot!.querySelector('[slot="custom-error"]')!.innerHTML).toEqual("Custom Error!!!");
+  });
+
+  describe("Combobox with group options", () => {
+    test("should render group label", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox with-custom-content>
+            <optgroup label="Countries">
+              <div slot="Australia" aria-label="Australia" display-value="Australia">
+                <span>Australia</span>
+              </div>
+              <div slot="Austria" aria-label="Austria" display-value="Austria">
+                <span>Austria</span>
+              </div>
+            </optgroup>
+            <optgroup label="Cites">
+              <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+                <span>Ambala</span>
+              </div>
+              <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+                <span>Banaras</span>
+              </div>
+            </optgroup>
+          </md-combobox>
+        `
+      );
+
+      el.expanded = true;
+      await elementUpdated(el);
+      expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keydown", {
+          code
+        });
+
+      const backspace = createEvent(Key.Backspace);
+      el.input!.dispatchEvent(backspace);
+
+      await elementUpdated(el);
+
+      expect(el.focusedIndex).toEqual(-1);
+      const arrowDown = createEvent(Key.ArrowDown);
+      el.input!.dispatchEvent(arrowDown);
+
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(-1);
+
+      const groupList = el.shadowRoot!.querySelectorAll(".group-label");
+      expect(groupList![0].hasAttribute("focused")).toBeTruthy();
+
+      const enter = createEvent(Key.Enter);
+      groupList![0].dispatchEvent(enter);
+      await elementUpdated(el);
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedGroupIndex).toEqual(0);
+      expect(el.lists?.length).toEqual(2);
+
+      groupList![0].dispatchEvent(arrowDown);
+
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      expect(el.focusedIndex).toEqual(0);
+
+      groupList![0].dispatchEvent(arrowDown);
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.focusedGroupIndex).toEqual(-1);
+      expect(el.focusedIndex).toEqual(1);
+
+      groupList![0].dispatchEvent(enter);
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.input?.value).toEqual("Austria");
+      expect(el.expanded).toBeFalsy();
+
+      const arrowUp = createEvent(Key.ArrowUp);
+      el.input!.dispatchEvent(arrowUp);
+
+      await elementUpdated(el);
+      await nextFrame();
+
+      expect(el.expanded).toBeTruthy();
+      groupList![0].dispatchEvent(enter);
+
+      expect(el.input?.value).toEqual("Australia");
+      expect(el.expanded).toBeFalsy();
+    });
+  });
+
+  test("should navigate through tab between groups", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content>
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `
+    );
+
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+
+    const backspace = createEvent(Key.Backspace);
+    const arrowDown = createEvent(Key.ArrowDown);
+    const arrowUp = createEvent(Key.ArrowUp);
+    const tab = createEvent(Key.Tab);
+    const enter = createEvent(Key.Enter);
+    const escape = createEvent(Key.Escape);
+
+    el.input!.dispatchEvent(backspace);
+
+    await elementUpdated(el);
+    expect(el.focusedIndex).toEqual(-1);
+    el.input!.dispatchEvent(arrowUp);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+
+    const groupList = el.shadowRoot!.querySelectorAll(".group-label");
+    expect(groupList![0].hasAttribute("focused")).toBeTruthy();
+
+    groupList![0].dispatchEvent(arrowDown);
+    await elementUpdated(el);
+    groupList![0].dispatchEvent(arrowUp);
+
+    groupList![0].dispatchEvent(enter);
+    await elementUpdated(el);
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.lists?.length).toEqual(2);
+
+    groupList![0]!.dispatchEvent(tab);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+    expect(el.focusedGroupIndex).toEqual(1);
+
+    groupList![1].dispatchEvent(enter);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.lists?.length).toEqual(2);
+    groupList![1].dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    groupList![1].dispatchEvent(arrowUp);
+    groupList![1].dispatchEvent(enter);
+
+    expect(el.input?.value).toEqual("Ambala");
+    expect(el.expanded).toBeFalsy();
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    el.input!.dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    groupList![0]!.dispatchEvent(escape);
+  });
+
+  test("should list all group related options on match", async () => {
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content>
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+            <div slot="India" aria-label="India" display-value="India">
+              <span>India</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+            <div slot="Ujjaini" aria-label="Ujjaini" display-value="Ujjaini">
+              <span>Indonasia</span>
+            </div>
+            <div slot="Indore" aria-label="Indore" display-value="Indore">
+              <span>Indore</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `
+    );
+
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+
+    const backspace = createEvent(Key.Backspace);
+    el.input!.dispatchEvent(backspace);
+
+    await elementUpdated(el);
+
+    const event = new Event("input");
+    el.input!.value = "In";
+    el.input!.dispatchEvent(event);
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.lists?.length).toEqual(3);
+    const arrowDown = createEvent(Key.ArrowDown);
+    el.input!.dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    const enter = createEvent(Key.Enter);
+    el.input!.dispatchEvent(enter);
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.input?.value).toEqual("India");
+  });
+
+  test("should navigate through tab between groups for multi select", async () => {
+    const el2 = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder ="Placeholder">
+          <div label="Countries">
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </div>
+        </md-combobox>
+      `
+    );
+    await elementUpdated(el2);
+    await nextFrame();
+
+    const el = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content is-multi placeholder="Placeholder">
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `
+    );
+
+    el.expanded = true;
+    await elementUpdated(el);
+    expect(el.shadowRoot!.querySelector(".group-label")).not.toBeNull();
+
+    const createEvent = (code: string) =>
+      new KeyboardEvent("keydown", {
+        code
+      });
+
+    const backspace = createEvent(Key.Backspace);
+    const arrowDown = createEvent(Key.ArrowDown);
+    const arrowUp = createEvent(Key.ArrowUp);
+    const tab = createEvent(Key.Tab);
+    const enter = createEvent(Key.Enter);
+    const escape = createEvent(Key.Escape);
+    const end = createEvent(Key.End);
+
+    el.input!.dispatchEvent(backspace);
+
+    await elementUpdated(el);
+    expect(el.focusedIndex).toEqual(-1);
+    el.input!.dispatchEvent(arrowUp);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+
+    const groupList = el.shadowRoot!.querySelectorAll(".group-label");
+    expect(groupList![0].hasAttribute("focused")).toBeTruthy();
+
+    groupList![0].dispatchEvent(arrowDown);
+    await elementUpdated(el);
+    groupList![0].dispatchEvent(arrowUp);
+
+    groupList![0].dispatchEvent(enter);
+    await elementUpdated(el);
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.lists?.length).toEqual(2);
+
+    groupList![0]!.dispatchEvent(tab);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.expanded).toBeTruthy();
+    expect(el.focusedIndex).toEqual(-1);
+    expect(el.focusedGroupIndex).toEqual(1);
+
+    groupList![1].dispatchEvent(enter);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.lists?.length).toEqual(2);
+    groupList![1].dispatchEvent(arrowDown);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    groupList![1].dispatchEvent(enter);
+
+    await elementUpdated(el);
+    await nextFrame();
+
+    expect(el.input?.value).toEqual("Ambala");
+    expect(el.expanded).toBeFalsy();
+
+    await elementUpdated(el);
+    await nextFrame();
+    groupList![0]!.dispatchEvent(end);
+    groupList![0]!.dispatchEvent(escape);
+  });
+
+  describe("Combobox with virtual scroll", () => {
+    test("should correct render options for virtual scroll", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${comboBoxOptions} expanded .useVirtualScroll=${true}></md-combobox>
+        `
+      );
+
+      await elementUpdated(el);
+      const lists = comboBoxOptions.map((item, index) => {
+        return el.virtualizer?.renderItem.call(el, item, index).getTemplateElement().innerHTML;
+      });
+
+      if (lists && el.virtualizer) {
+        el.virtualizer.innerHTML = `${lists.join("")}`;
+      }
+      el.rangeChanged();
+
+      await elementUpdated(el);
+      expect(el.lists!.length).toEqual(11);
+    });
+    test("should handle keyUp event", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
+        `
+      );
+      const createEvent = (code: string) =>
+        new KeyboardEvent("keyup", {
+          code
+        });
+
+      const backspace = createEvent(Key.Backspace);
+      el.input!.dispatchEvent(backspace);
+
+      const mock = jest.fn();
+
+      el.listBox!.style.maxHeight = mock();
+      el.virtualizer!.style.height = mock();
+
+      expect(el.expanded).toBeTruthy();
+      expect(mock).toBeCalled();
+
+      el.expanded = false;
+
+      await elementUpdated(el);
+
+      mock.mockReset();
+      const escape = createEvent(Key.Escape);
+      el.input!.dispatchEvent(escape);
+
+      expect(el.expanded).toBeFalsy();
+      expect(mock).not.toBeCalled();
+    });
+    test("should set initial value for multi", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox
+            .options=${comboBoxOptions}
+            .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
+            is-multi
+            use-virtual-scroll
+          ></md-combobox>
+        `
+      );
+
+      expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[1], comboBoxOptions[2]]));
+      expect(el.selected!.length).toEqual(2);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Aland Islands", "Albania"]));
+    });
+
+    test("should change selected option for virtual scroll", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
+        `
+      );
+      el.expanded = true;
+      const lists = comboBoxOptions.map((item, index) => {
+        return `<li id=${item} role="option" style="height:12px;">${item}</li>`;
+      });
+
+      if (lists && el.virtualizer) {
+        el.virtualizer.innerHTML = `${lists.join("")}`;
+      }
+      const upd = el.lists![0];
+      if (el.lists![0]) {
+        upd.onclick = event => el.handleListClick(event);
+      }
+      el.lists![0].dispatchEvent(new MouseEvent("click"));
+
+      await elementUpdated(el);
+
+      expect(el.focusedIndex).toEqual(0);
+      expect(el.selectedOptions.length).toEqual(1);
+      expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
+    });
   });
 });

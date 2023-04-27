@@ -1,17 +1,18 @@
 import "@/components/button/Button";
-import "@/components/modal/Modal";
-import "@/components/tabs/Tab";
 import "@/components/combobox/ComboBox";
-import "@/components/input/Input";
-import "@/components/radio/Radio";
 import "@/components/form/Form";
-import "@/components/radio/RadioGroup";
-import "@/components/tabs/TabPanel";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import "@/components/tabs/Tabs";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
+import "@/components/modal/Modal";
+import "@/components/radio/Radio";
+import "@/components/radio/RadioGroup";
+import "@/components/tabs/Tab";
+import "@/components/tabs/TabPanel";
+import "@/components/tabs/Tabs";
 import { debounce } from "@/utils/helpers";
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { customElement, html, LitElement, property, query } from "lit-element";
+import { dropdownObjectLongOptions } from "./dropdown";
 
 @customElement("modal-template-sandbox")
 export class ModalTemplateSandbox extends LitElement {
@@ -19,8 +20,17 @@ export class ModalTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isComplexModalOpen = false;
   @property({ type: Boolean }) isDialogOpen = false;
   @property({ type: Boolean }) isComplexTabsModal = false;
+  @property({ type: Boolean }) isStationLoginModal = false;
+  @property({ type: Boolean }) otherInput = false;
+  @property({ type: Boolean }) isExtensionTooltipOpened = false;
 
   @query(".dial-number") dialInput!: Input.ELEMENT;
+  @query(".international-checkbox-wrapper") checkboxWrapper!: Element;
+  @query(".queueDropdown") menuOverlay!: Element;
+
+  connectedCallback() {
+    super.connectedCallback();
+  }
 
   private openModal() {
     this.isModalOpen = true;
@@ -54,6 +64,18 @@ export class ModalTemplateSandbox extends LitElement {
     this.isComplexTabsModal = false;
   }
 
+  private openStationLogin() {
+    this.isStationLoginModal = true;
+  }
+
+  private closeStationLogin() {
+    this.isStationLoginModal = false;
+  }
+  private handleFormatChange() {
+    this.otherInput = !this.otherInput;
+    document.dispatchEvent(new CustomEvent("on-widget-update"))
+  }
+
   private handleInputChange = debounce(() => {
     if (this.dialInput) {
       const shadowInput = this.dialInput.shadowRoot!.querySelector("input");
@@ -68,10 +90,83 @@ export class ModalTemplateSandbox extends LitElement {
 
   render() {
     return html`
+      <md-button @click=${this.openStationLogin}>Open Station Login Modal</md-button>
       <md-button @click=${this.openModal}>Open Modal</md-button>
       <md-button @click=${this.openDialog}>Open Dialog</md-button>
       <md-button @click=${this.openComplexModal}>Open Complex Modal</md-button>
       <md-button @click=${this.openComplexTabsModal}>Open Complex Tabs Modal</md-button>
+
+      <md-modal ?show=${this.isStationLoginModal} closeBtnName="Submit This" @close-modal="${this.closeStationLogin}">
+        <md-form class="form-class" id="international-form">
+          <div class="international-checkbox-wrapper">
+            <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${(e: CustomEvent) => {
+                    this.handleFormatChange();
+                  }}"
+              >International dialing format</md-checkbox
+            >
+          <md-tooltip
+            ?opened=${this.isExtensionTooltipOpened}
+            message="tooltip opened"
+            placement="top"
+          >
+            <md-button
+              circle
+              variant="white"
+              class="info-icon"
+              size="20"
+              @focus=${() => (this.isExtensionTooltipOpened = true)}
+              @blur=${() => (this.isExtensionTooltipOpened = false)}
+            >
+              <md-icon name="info_16"></md-icon>
+            </md-button>
+          </md-tooltip>
+          </div>
+          ${this.otherInput
+            ? html`
+                <md-input
+                  type="tel"
+                  id="international"
+                  name="international-value"
+                  pill
+                  value="88997755664"
+                  countryCallingCode="+91"
+                  numberPlaceholder="station Login"
+                  .autofocus="${true}"
+                  @phoneinput-keydown="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-change="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-blur="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                ></md-input>
+              `
+            : html`
+                <md-phone-input
+                  type="tel"
+                  id="national"
+                  name="national-value"
+                  pill
+                  value="222"
+                  countryCallingCode="+91"
+                  numberPlaceholder="station Login"
+                  .autofocus="${true}"
+                  @phoneinput-keydown="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-change="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                  @phoneinput-blur="${(e: CustomEvent) => {
+                    e.stopImmediatePropagation();
+                  }}"
+                ></md-phone-input>
+              `}
+        </md-form>
+      </md-modal>
+
       <md-modal
         htmlId="modal-1"
         ?show=${this.isModalOpen}
@@ -126,6 +221,11 @@ export class ModalTemplateSandbox extends LitElement {
           Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
           Renaissance.
         </p>
+        <md-dropdown
+          .options="${dropdownObjectLongOptions}"
+          option-id="id"
+          option-value="country"
+        ></md-dropdown>
 
         <md-button slot="footer" type="reset">Reset</md-button>
         <md-button slot="footer" @click="${this.closeModal}" type="submit">Submit</md-button>
@@ -234,6 +334,109 @@ export class ModalTemplateSandbox extends LitElement {
           </md-button>
         </div>
       </md-modal>
+      <md-menu-overlay class="queueDropdown" size="large">
+        <md-input
+          placeholder="Search field with tabs"
+          shape="pill"
+          slot="menu-trigger"
+          variant="primary"
+          clear
+          autoFocus></md-input>
+        <div style="padding:1.25rem; width: 100%;">
+        <md-tabs justified selected="0" ref={tabElm}>
+        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
+          <span>Entry Point</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex; alignItems: center;">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+        <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
+          <span>Address Book</span>
+        </md-tab>
+        <md-tab-panel slot="panel" class="address-panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+      </md-tabs>
+        </div>
+      </md-menu-overlay>
     `;
   }
 }

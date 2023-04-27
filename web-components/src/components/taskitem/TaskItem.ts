@@ -28,6 +28,7 @@ export namespace TaskItem {
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
     @property({ type: String }) customAriaLabel = "";
+    @property({ type: String }) iconSrc = "";
 
     renderTaskType = () => {
       switch (this.mediaType.toLowerCase()) {
@@ -49,12 +50,24 @@ export namespace TaskItem {
               <md-icon name="incoming-call-active_16"></md-icon>
             </md-badge>
           `;
+          case "midcall telephony":
+            return html`
+            <md-badge circle>
+              <img src="${this.iconSrc}" />
+            </md-badge>
+          `;
         case "callback":
           return html`
             <md-badge color="lime" circle>
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
+        case "progressive_campaign":
+            return html`
+              <md-badge color="green" circle>
+                <md-icon name="icon-icon-campaign_18"></md-icon>
+              </md-badge>
+            `;
         case "chat":
           return html`
             <md-badge color="blue" circle>

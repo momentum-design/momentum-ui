@@ -1,6 +1,7 @@
+const { camelCase } = require("lodash");
 const handlebars = require("handlebars");
 const path = require("path");
-const sass = require("node-sass");
+const sass = require("sass");
 const svgson = require("svgson");
 
 const { readFile, writeFile } = require('./icons-utils');
@@ -46,7 +47,7 @@ async function generateFile(dest, fileName, data) {
   console.warn(`${finalFile} written!`);
 }
 
-async function generateIconsDataJson(data) {
+async function generateIconsDataJson(fontName, data) {
   const glyphs = data.glyphsData.map(({ file, name }) => ({
     name,
     file
@@ -77,8 +78,8 @@ async function generateIconsDataJson(data) {
     if (curr.ds.length === 0) console.error(`⚠️ ${curr.name} has no paths!`);
     return acc;
   }, {});
-  await writeFile(path.join("data", "iconsData.json"), JSON.stringify(icons));
-  console.info("data/iconsData.json written!");
+  await writeFile(path.join("data", camelCase(fontName)+"Data.json"), JSON.stringify(icons));
+  console.info("data/"+camelCase(fontName)+"Data.json written!");
 }
 
 module.exports = {

@@ -10,7 +10,6 @@ import { nothing } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-
 export namespace PhoneInput {
   export interface Country {
     name: string;
@@ -26,6 +25,12 @@ export namespace PhoneInput {
     value: string;
     errorMessage: string;
     flagClass: string;
+    showErrorMessage: string;
+  };
+
+  export type CountryCalling = {
+    id: string;
+    value: string;
   };
 
   @customElementWithCheck("md-phone-input")
@@ -38,6 +43,10 @@ export namespace PhoneInput {
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) value = "";
     @property({ type: String }) errorMessage = "";
+    @property({ type: Boolean }) showErrorMessage = false;
+    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
+    @property({ type: String }) countryCodeAriaLabel = "";
+    @property({ type: String }) dialNumberAriaLabel = "";
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -53,6 +62,7 @@ export namespace PhoneInput {
         value: "{countryCallingCode}",
         code: "{countryCode}"
       });
+      this.validateInput(this.value);
     }
 
     getCountryFlag(code: string) {
@@ -66,6 +76,7 @@ export namespace PhoneInput {
     countryCodeOptionTemplate(country: PhoneInput.Country, index: number) {
       return html`
         <div
+          part="option"
           class="md-phone-input__option"
           display-value="+${country.value}"
           slot=${index}
@@ -78,17 +89,33 @@ export namespace PhoneInput {
       `;
     }
 
+    validateNumber() {
+      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : true;
+    }
+
     handleCountryChange(event: CustomEvent) {
-      if (!event.detail.value || !event.detail.value.id) {
-        return;
+      if (!event.detail.value || !event.detail.value?.id) {
+        this.countryCode = "US";
+        this.countryCallingCode = "";
+      } else {
+        this.countryCallingCode = event.detail.value.id;
+        this.countryCode = event.detail.value.id.split(",")[2]?.trim();
       }
-      this.countryCallingCode = event.detail.value.id;
-      this.countryCode = event.detail.value.id.split(",")[2];
+      this.validateNumber();
+      this.dispatchEvent(
+        new CustomEvent("countrycode-change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event,
+            isValid: this.isValid
+          }
+        })
+      );
     }
 
     handlePhoneChange(event: CustomEvent) {
       this.value = event.detail.value;
-      this.validateInput(this.value);
       event.stopPropagation();
       this.dispatchEvent(
         new CustomEvent("phoneinput-change", {
@@ -97,7 +124,8 @@ export namespace PhoneInput {
           detail: {
             srcEvent: event,
             value: `${this.countryCallingCode}${this.value}`,
-            isValid: this.isValid
+            isValid: this.isValid,
+            phoneNumber: this.value
           }
         })
       );
@@ -112,14 +140,17 @@ export namespace PhoneInput {
           composed: true,
           detail: {
             srcEvent: event,
-            value: `${this.countryCallingCode}${this.value}`
+            value: `${this.countryCallingCode}${this.value}`,
+            isValid: this.isValid,
+            phoneNumber: this.value
           }
         })
       );
     }
 
     handleBlur(event: Event) {
-      this.isValid = this.value ? isValidNumberForRegion(this.value, this.countryCode) : false;
+      this.validateInput(this.value);
+      this.validateNumber();
       event.stopPropagation();
       this.dispatchEvent(
         new CustomEvent("phoneinput-blur", {
@@ -128,7 +159,8 @@ export namespace PhoneInput {
           detail: {
             srcEvent: event,
             value: `${this.countryCallingCode}${this.value}`,
-            isValid: this.isValid
+            isValid: this.isValid,
+            phoneNumber: this.value
           }
         })
       );
@@ -136,6 +168,10 @@ export namespace PhoneInput {
 
     validateInput(input: string) {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
+    }
+
+    getFormatedCountryCallingCode() {
+      return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
     }
 
     getModStyle() {
@@ -172,9 +208,11 @@ export namespace PhoneInput {
             part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
+            aria-label=${this.countryCodeAriaLabel}
             placeholder="${this.codePlaceholder}"
-            .value="${this.countryCallingCode ? [this.countryCallingCode] : []}"
+            .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            clear-icon-height="${this.clearIconHeight}"
             with-custom-content
           >
             ${repeat(
@@ -187,6 +225,7 @@ export namespace PhoneInput {
             part="md-input"
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
+            .ariaLabel=${this.dialNumberAriaLabel}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
             @input-blur="${(e: Event) => this.handleBlur(e)}"
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"
@@ -194,7 +233,7 @@ export namespace PhoneInput {
             clear
             type="tel"
             value="${this.formattedValue}"
-            .messageArr="${!this.isValid
+            .messageArr="${!this.isValid || this.showErrorMessage
               ? [
                   {
                     type: "error",

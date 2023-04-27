@@ -7,7 +7,7 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import iconNames from "@momentum-ui/icons/data/iconNames.json";
+import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";

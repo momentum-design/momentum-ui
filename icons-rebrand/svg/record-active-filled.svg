@@ -1,0 +1,4 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+<path data-id='circle-outer' d="M16 2.5A13.5 13.5 0 1 0 29.5 16 13.515 13.515 0 0 0 16 2.5ZM16 21a5 5 0 1 1 5-5 5.006 5.006 0 0 1-5 5Z"/>
+<path data-id='circle-inner' d="M16 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+</svg>

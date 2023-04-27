@@ -3,6 +3,142 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.32.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.31.1...@momentum-ui/icons@8.32.0) (2022-09-14)
+
+
+### Features
+
+* **icons:** add secure-lock-bold_16 ([#1338](https://github.com/momentum-design/momentum-ui/issues/1338)) ([a3281bb](https://github.com/momentum-design/momentum-ui/commit/a3281bb80a3e98e3e7290bd75751f656e8afe81a))
+
+
+
+
+
+## [8.31.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.31.0...@momentum-ui/icons@8.31.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* **icons:** fix the naming for secure-lock-light ([#1331](https://github.com/momentum-design/momentum-ui/issues/1331)) ([87b166c](https://github.com/momentum-design/momentum-ui/commit/87b166c0646917d293a04a1d5e6069918f4bd497))
+
+
+
+
+
+# [8.31.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.30.1...@momentum-ui/icons@8.31.0) (2022-09-05)
+
+
+### Features
+
+* **icon:** add secure-lock-light icon ([#1330](https://github.com/momentum-design/momentum-ui/issues/1330)) ([6469e43](https://github.com/momentum-design/momentum-ui/commit/6469e43dab49438f9e1ef546ac88bf7f30dca7a0))
+
+
+
+
+
+## [8.30.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.30.0...@momentum-ui/icons@8.30.1) (2022-07-26)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+# [8.30.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.29.0...@momentum-ui/icons@8.30.0) (2022-06-24)
+
+
+### Features
+
+* **icon:** add webex-helix-filled_16 icon ([aca7c8f](https://github.com/momentum-design/momentum-ui/commit/aca7c8f92384698fcdceb1401cc37c2f9592747c))
+
+
+
+
+
+# [8.29.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.5...@momentum-ui/icons@8.29.0) (2022-06-18)
+
+
+### Features
+
+* **icon:** add new icons ([8169ec6](https://github.com/momentum-design/momentum-ui/commit/8169ec672c31eb1fa727ce9daca254448f953e04))
+
+
+
+
+
+## [8.28.5](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.4...@momentum-ui/icons@8.28.5) (2022-05-07)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+## [8.28.4](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.3...@momentum-ui/icons@8.28.4) (2022-04-09)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+## [8.28.3](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.2...@momentum-ui/icons@8.28.3) (2022-04-08)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+## [8.28.2](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.1...@momentum-ui/icons@8.28.2) (2022-04-07)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+## [8.28.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.28.0...@momentum-ui/icons@8.28.1) (2022-03-23)
+
+**Note:** Version bump only for package @momentum-ui/icons
+
+
+
+
+
+# [8.28.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.27.0...@momentum-ui/icons@8.28.0) (2021-11-24)
+
+
+### Features
+
+* **icon:** add new icons ([#1103](https://github.com/momentum-design/momentum-ui/issues/1103)) ([86d8ed4](https://github.com/momentum-design/momentum-ui/commit/86d8ed4d3f2c57c51e078c91f748f9093dd19c03))
+
+
+
+
+
+# [8.27.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.26.0...@momentum-ui/icons@8.27.0) (2021-10-15)
+
+
+### Features
+
+* **icon:** add new icons for emergency services ([#1082](https://github.com/momentum-design/momentum-ui/issues/1082)) ([a07daa3](https://github.com/momentum-design/momentum-ui/commit/a07daa38ab51444abcec53f747603df95ea9d870))
+
+
+
+
+
+# [8.26.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.25.1...@momentum-ui/icons@8.26.0) (2021-10-08)
+
+
+### Features
+
+* **icon:** add new icons ([#1075](https://github.com/momentum-design/momentum-ui/issues/1075)) ([5742877](https://github.com/momentum-design/momentum-ui/commit/5742877d221bdee6cebd3d9453a3c3b3ed8d2335))
+
+
+
+
+
 ## [8.25.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons@8.25.0...@momentum-ui/icons@8.25.1) (2021-09-28)
 
 **Note:** Version bump only for package @momentum-ui/icons

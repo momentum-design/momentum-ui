@@ -44,6 +44,15 @@
     &.md-avatar--active::after {
       box-shadow: $avatar--active__shadow--dark;
     }
+    &.md-avatar--engaged::after {
+      box-shadow: $avatar--engaged__shadow--dark;
+    }
+    &.md-avatar--idle::after {
+      box-shadow: $avatar--idle__shadow--dark;
+    }
+    &.md-avatar--rona::after {
+      box-shadow: $avatar--rona__shadow--dark;
+    }
   }
 
   &.md-avatar--typing {
@@ -205,6 +214,30 @@
     content: "";
     left: 0;
 
+    position: absolute;
+  }
+
+  &.md-avatar--engaged::after {
+    @include avatar-contents-base;
+    box-shadow: $avatar--engaged__shadow;
+    content: "";
+    left: 0;
+    position: absolute;
+  }
+
+  &.md-avatar--idle::after {
+    @include avatar-contents-base;
+    box-shadow: $avatar--idle__shadow;
+    content: "";
+    left: 0;
+    position: absolute;
+  }
+
+  &.md-avatar--rona::after {
+    @include avatar-contents-base;
+    box-shadow: $avatar--rona__shadow;
+    content: "";
+    left: 0;
     position: absolute;
   }
 

@@ -1,7 +1,7 @@
-import "./Modal";
-import { Modal } from "./Modal";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import "./Modal";
+import { Modal } from "./Modal";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -123,18 +123,22 @@ describe("Modal Component", () => {
     expect(element.show).toBeTruthy();
   });
 
-  test("should close modal when enter key is pressed", async () => {
+  test("should not close modal when enter key is pressed and focus is not on close buttons", async () => {
     jest.useFakeTimers();
-
+    element.show = true;
     await elementUpdated(element);
+    const enterPressEvent = new KeyboardEvent("keydown", { code: "Enter" });
+    element.handleKeyDown(enterPressEvent);
+    expect(element.show).toBeTruthy();
+  });
 
-    const mockEnterClick = jest.spyOn(element, "handleKeyDown");
-    element.handleKeyDown(new KeyboardEvent("Enter"));
+  test("should not close modal when enter space is pressed and focus is not on close buttons", async () => {
+    jest.useFakeTimers();
+    element.show = true;
     await elementUpdated(element);
-
-    expect(mockEnterClick).toHaveBeenCalled();
-
-    mockEnterClick.mockRestore();
+    const enterPressEvent = new KeyboardEvent("keydown", { code: "Space" });
+    element.handleKeyDown(enterPressEvent);
+    expect(element.show).toBeTruthy();
   });
 
   test("should close modal if backdrop button clicked", async () => {
@@ -161,6 +165,52 @@ describe("Modal Component", () => {
 
     closeButton!.dispatchEvent(click);
 
+    await elementUpdated(element);
+
+    jest.runAllTimers();
+    expect(element.show).toBeFalsy();
+  });
+
+  test("should call focusInsideModal in modal", async () => {
+    const focusInsideModal = jest.fn();
+    element["focusInsideModal"] = focusInsideModal;
+    const mockTransitionPromise = jest.fn();
+    element["transitionPromise"] = mockTransitionPromise;
+    element.show = true;
+    element.disableInitialFocus = false;
+
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(mockTransitionPromise).toBeCalled();
+    expect(focusInsideModal).toBeCalled();
+  });
+
+  test("shouldn't call focusInsideModal in modal", async () => {
+    const focusInsideModal = jest.fn();
+    element["focusInsideModal"] = focusInsideModal;
+    const mockTransitionPromise = jest.fn();
+    element["transitionPromise"] = mockTransitionPromise;
+    element.show = true;
+    element.disableInitialFocus = true;
+
+    await elementUpdated(element);
+    jest.runAllTimers();
+
+    expect(mockTransitionPromise).toBeCalled();
+    expect(focusInsideModal).not.toBeCalled();
+  });
+
+  test("should close modal when showCloseButton is true and X button is clicked", async () => {
+    jest.useFakeTimers();
+    element.show = true;
+    element.showCloseButton = true;
+    await elementUpdated(element);
+
+    const closeButton = element.shadowRoot!.querySelector(".md-close.md-modal__close");
+    const click = new MouseEvent("click");
+
+    closeButton!.dispatchEvent(click);
     await elementUpdated(element);
 
     jest.runAllTimers();

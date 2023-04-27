@@ -52,6 +52,7 @@
 
 .md-combobox-list {
   position: relative;
+  height: $combobox-min-height;
 }
 
 .md-combobox {
@@ -61,14 +62,14 @@
     border: $combobox-border;
     border-radius: $combobox-group-radius;
     display: flex;
-    min-height: $combobox-min-height;
     padding: $combobox-input-padding;
+    height:rem-calc(34);
 
     md-icon {
-      color: var(--md-primary-text-color, $md-gray-05);
+      color: var(--md-secondary-text-color, $md-gray-70);
       cursor: pointer;
+      fill: var(--md-secondary-text-color, $md-gray-70);
       height: $combobox-search-icon-height;
-      padding: calc(#{$combobox-main-indent} / 2);
 
       &:focus {
         @include remove-focus;
@@ -111,10 +112,10 @@
 
 .md-combobox-button {
   @include arrow-transition;
+  align-self: center;
   background: transparent;
   border: 0;
   cursor: pointer;
-  height: $combobox-min-height;
   margin: 0;
   margin-left: calc(#{$combobox-main-indent} * 2);
   outline: none;
@@ -122,10 +123,25 @@
   padding-top: calc(#{$combobox-main-indent} / 2);
   position: relative;
   vertical-align: bottom;
+  height: inherit;
+  display: flex;
+  
+  .md-input__icon-clear{
+    align-items: center;
+    display: flex;
+  }
 
   md-icon {
     color: var(--combobox-dropdown-item-icon-color, $lm-combobox-dropdown-item-icon-color-light);
   }
+}
+.md-combobox-button.clear {
+  height: auto;
+  padding: 0.115rem;
+}
+
+.md-combobox-button.clear:focus, .md-combobox-button.arrow-down:focus{
+  outline: 2px solid var(--button-focus-ring-color,#007aa3);
 }
 
 ul {
@@ -162,6 +178,27 @@ ul {
   white-space: pre-wrap;
 }
 
+.group-label {
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--combobox-group-label-color);
+    padding: $combobox-option-padding;
+    border-bottom: 1px solid var(--combobox-group-label-border-color);
+    display: flex;
+    width: 100%;
+    background-color: var(--combobox-group-label-bg-color);
+    
+    &:hover {
+      background: unset;
+    }
+    
+    &[focused] {
+      background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
+    }
+}
+
 .md-combobox-option {
   align-items: center;
   color: var(--md-primary-text-color, $md-gray-05);
@@ -183,7 +220,7 @@ ul {
       white-space: nowrap;
     }
   }
-
+  
   .select-option {
     background: var(--combobox-dropdown-item-select-bg-color, $lm-combobox-dropdown-item-select-bg-color-light);
     border: $combobox-border;
@@ -206,12 +243,14 @@ ul {
     }
   }
 
+  
+
   &:hover {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);
   }
 
   &.md-combobox-multiselect {
-    border-bottom: 1px solid $black-08;
+    border-bottom: 1px solid var(--md-button-tertiary-outline-color, $md-gray-70);
   }
 
   &[aria-checked="true"] {
@@ -238,6 +277,10 @@ ul {
   flex: 1 1 auto;
   margin-left: 0;
   max-height: calc(#{$combobox-select-size} * 4.5);
+
+  .selected-count{
+    color: var(--md-primary-text-color, $md-gray-05);
+  }
 
   .md-combobox-selected-item {
     align-items: center;
@@ -277,7 +320,7 @@ ul {
     @include text-dots;
     background: transparent;
     border: 0;
-    color: var(--combobox-text-color, $lm-combobox-text-color-light);
+    color: var(--md-secondary-text-color, $lm-combobox-text-color-light);
     display: inline-block;
     flex: 1 1 auto;
     height: $combobox-min-height;

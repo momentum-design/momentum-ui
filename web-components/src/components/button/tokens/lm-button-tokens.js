@@ -100,7 +100,11 @@ const button = {
   white: {
     "bg-color": {
       light: colors.white.default.name,
-      dark: colors.white.default.name
+      dark: colors.gray[90].name
+    },
+    "text-color": {
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
     },
     hover: {
       "bg-color": {
@@ -218,6 +222,24 @@ const button = {
       "bg-color": {
         light: colors.green[10].name,
         dark: colors.green[80].name
+      }
+    }
+  },
+  engaged: {
+    "bg-color": {
+      light: colors.yellow["05"].name,
+      dark: colors.yellow[90].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.yellow[10].name,
+        dark: colors.yellow[80].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.yellow[20].name,
+        dark: colors.yellow[70].name
       }
     }
   },

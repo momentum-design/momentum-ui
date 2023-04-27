@@ -6,7 +6,7 @@
  *
  */
 
-import iconNames from "@momentum-ui/icons/data/iconNames.json";
+import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -50,17 +50,17 @@ export const Icon = () => {
 
   return html`
     <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-icon 
-        .name=${`icon-${name}`} 
-        .title=${title} 
-        .color=${color} 
-        .iconStyle=${iconStyle} 
-        .type=${type} 
-        .size=${size} 
+      <md-icon
+        .name=${`icon-${name}`}
+        .title=${title}
+        .color=${color}
+        .iconStyle=${iconStyle}
+        .type=${type}
+        .size=${size}
         .sizeOverrided=${sizeOverrided}
         @icon-click=${(action('dispatchEvent'))}>
       </md-icon>
     </md-theme>
-  `; 
+  `;
 }
 

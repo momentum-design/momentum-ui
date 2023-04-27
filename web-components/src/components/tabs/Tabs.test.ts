@@ -43,23 +43,23 @@ describe("Tabs", () => {
 
     const root = await fixture<HTMLDivElement>(html`
       <div style="width: 300px;max-width: 300px;">
-        <md-tabs draggable persist-selection tabs-id=${`tab_1`} >
+        <md-tabs draggable persist-selection tabs-id=${`tab_1`} comp-unique-id="tabs-test-component">
           <md-tab name="History" slot="tab" disabled>
             <span>Contact History</span>
           </md-tab>
-          <md-tab-panel slot="panel">
+          <md-tab-panel name="History" slot="panel">
             <span>Content for "Contact History"</span>
           </md-tab-panel>
           <md-tab name="WxM" slot="tab">
             <span>Cisco WxM</span>
           </md-tab>
-          <md-tab-panel slot="panel">
+          <md-tab-panel name="WxM" slot="panel">
             <span>Content for "WxM"</span>
           </md-tab-panel>
           <md-tab name="Widgets" slot="tab">
             <span>Cisco Widgets</span>
           </md-tab>
-          <md-tab-panel slot="panel">
+          <md-tab-panel name="Widgets" slot="panel">
             <span>Content for "Cisco Widgets"</span>
           </md-tab-panel>
         </md-tabs>
@@ -207,12 +207,65 @@ describe("Tabs", () => {
     expect(tabs["tabsFilteredAsHiddenList"][0].id).toEqual(currentID);
   });
 
+  test("Save tabs order to storage on drag", async () => {
+    tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
+    tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+
+    let currentID = tabs["tabsFilteredAsVisibleList"][0].id;
+    (tabs as Tabs.ELEMENT).handleOnDragEnd({
+      item: {
+        id: tabs.slotted[0].id
+      },
+      oldIndex: 0,
+      newIndex: 1,
+      to: tabs["visibleTabsContainerElement"],
+      from: tabs["visibleTabsContainerElement"],
+      stopPropagation: () => {}
+    } as Sortable.SortableEvent);
+
+    await elementUpdated(tabs);
+    expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
+
+    expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][1]);
+
+    (tabs as Tabs.ELEMENT).handleOnDragEnd({
+      item: {
+        id: tabs.slotted[0].id
+      },
+      oldIndex: 0,
+      newIndex: 1,
+      to: tabs["visibleTabsContainerElement"],
+      from: tabs["visibleTabsContainerElement"],
+      stopPropagation: () => {}
+    } as Sortable.SortableEvent);
+
+    await elementUpdated(tabs);
+    expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][0]);
+
+  });
+
+  test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event",async () => {
+    tabs.selected = 2;
+    tabs.dispatchEvent(
+      new CustomEvent("clear-tab-order-prefs", {
+        detail: {
+          compUniqueId: tabs["compUniqueId"]
+        },
+        composed: true,
+        bubbles: true
+      })
+    );
+    await elementUpdated(tabs);
+    expect(tabs.selected).toEqual(0);
+  })
+
   test("should handle keydown event and focused appropriate tab", async () => {
     const createKeyboardEvent = (id: string, code: string) => {
       return {
         originalTarget: {
           id: id
         },
+        composedPath : ()=> [{id:"id"}, {id:"id2"}],
         code: code,
         ctrlKey: false,
         shiftKey: false,
@@ -358,7 +411,7 @@ describe("Tabs", () => {
   });
 
   test("should convert ids", () => {
-    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab.ELEMENT).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(0);
+    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab.ELEMENT).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(-1);
     expect(
       tabs["getNormalizedTabId"](`${MORE_MENU_TAB_COPY_ID_PREFIX}TEST`).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)
     ).toBe(-1);

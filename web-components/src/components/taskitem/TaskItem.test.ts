@@ -12,7 +12,8 @@ const fixtureFactory = async (
   quantity: number,
   lastmessage: string,
   selected: boolean,
-  customAriaLabel = ""
+  customAriaLabel = "",
+  iconSrc = ""
 ): Promise<TaskItem.ELEMENT> => {
   return await fixture(
     html`
@@ -26,6 +27,7 @@ const fixtureFactory = async (
         lastmessage="${lastmessage}"
         .selected="${selected}"
         customAriaLabel="${customAriaLabel}"
+        iconSrc="${iconSrc}"
       >
         <div slot="task-addition">00:08</div>
       </md-task-item>
@@ -84,6 +86,21 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("name")).toEqual("whatsApp_16");
   });
 
+  test("should render TaskItem Component with progressive_campaign", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "progressive_campaign",
+      "Mihael Varificantare",
+      "",
+      "quelle_1",
+      "consulting",
+      0,
+      "",
+      false
+    );
+    const type = element.shadowRoot?.querySelector("md-icon");
+    expect(type?.getAttribute("name")).toEqual("icon-icon-campaign_18");
+  });
+
   test("should render correct type and status", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "chat",
@@ -116,6 +133,24 @@ describe("TaskItem", () => {
 
     const type = element.shadowRoot?.querySelector("md-icon");
     expect(type?.getAttribute("name")).toEqual("outgoing-call-active_16");
+  });
+
+  test("should render midcall type", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "midcall telephony",
+      "Mihael Varificantare",
+      "Mihael Varificantare",
+      "quelle_1",
+      "play",
+      0,
+      "",
+      false,
+      "",
+      "/images/illustrations/Monitoring-regular-light.svg"
+    );
+
+    const type = element.shadowRoot?.querySelector("img");
+    expect(type?.getAttribute("src")).toEqual("/images/illustrations/Monitoring-regular-light.svg");
   });
 
   test("should render caalback type ", async () => {

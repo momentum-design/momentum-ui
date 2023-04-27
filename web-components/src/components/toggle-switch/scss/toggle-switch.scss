@@ -47,6 +47,11 @@
         transition: background 350ms;
         width: $toggle-switch__width;
 
+        &__left {
+          margin-right: 0;
+          margin-left: 0.75rem;
+        }
+
         @media screen and (-ms-high-contrast: active) {
           filter: brightness(1) contrast(1) saturate(1.5);
         }

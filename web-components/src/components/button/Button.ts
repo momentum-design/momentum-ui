@@ -7,7 +7,6 @@
  */
 
 import activityButtonStyles from "@/components/activity-button/scss/module.scss";
-import "@/components/loading/Loading";
 import "@/components/spinner/Spinner";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -93,7 +92,7 @@ export namespace Button {
     ariaLabelledBy?: string;
     ariaExpanded?: boolean;
     ariaHaspopup?: boolean;
-    ariaPressed?: boolean;
+    ariaPressed?: String;
     ariaCurrent?: boolean;
     tag: Tag;
     loading: boolean;
@@ -131,9 +130,9 @@ export namespace Button {
 
     @property({ type: String }) ariaLabel = "";
     @property({ type: String }) ariaLabelledBy = "";
-    @property({ type: Boolean }) ariaExpanded = false;
+    @property({ type: String }) ariaExpanded = "";
     @property({ type: Boolean }) ariaHaspopup = false;
-    @property({ type: Boolean }) ariaPressed = false;
+    @property({ type: String }) ariaPressed = "false";
     @property({ type: Boolean }) circle = false;
     @property({ type: String }) color: Button.color = "";
     @property({ type: Boolean }) containerLarge = false;
@@ -284,8 +283,12 @@ export namespace Button {
             tabindex=${this.tabIndex}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
-            aria-expanded=${this.ariaExpanded}
-            aria-haspopup=${this.ariaHaspopup}
+            aria-expanded="${this.ariaExpanded
+              ? this.ariaExpanded === "true"
+                ? true
+                : false
+              : ifDefined(this.ariaExpanded)}"
+            aria-haspopup=${ifDefined(this.ariaHaspopup || undefined)}
             type=${this.type}
             role=${this.role}
             ?disabled=${this.disabled || this.loading}
@@ -303,7 +306,7 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${this.tabIndex}
-            aria-pressed=${this.ariaPressed}
+            aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             type=${this.type}
@@ -322,7 +325,7 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${this.tabIndex}
-            aria-pressed=${this.ariaPressed}
+            aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             href=${this.href}

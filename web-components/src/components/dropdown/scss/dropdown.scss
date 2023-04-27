@@ -81,7 +81,7 @@
       position: absolute;
       top: calc(100% + #{$dropdown-main-indent});
       width: 100%;
-      z-index: 1;
+      z-index: 99;
     }
 
     &-option {

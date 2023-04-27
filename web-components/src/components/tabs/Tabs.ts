@@ -24,7 +24,9 @@ import { Tab, TabClickEvent, TAB_CROSS_WIDTH } from "./Tab";
 import { TabPanel } from "./TabPanel";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
-const MORE_MENU_WIDTH = "264px"; // Designed width
+const MORE_MENU_WIDTH = "226px"; // Designed width
+const MORE_MENU_HEIGHT = "288px"; // Designed height
+
 export const MORE_MENU_TAB_COPY_ID_PREFIX = "more-menu-copy-";
 const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
@@ -41,7 +43,7 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More";
+    @property({ type: String }) overflowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
@@ -56,6 +58,7 @@ export namespace Tabs {
     // tabsId and persistSelection attributes are used to persist the selection of tab on remount of md-tabs component
     @property({ type: String, attribute: "tabs-id" }) tabsId = "";
     @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
+    @property({ type: String, attribute: "comp-unique-id" }) compUniqueId = "";
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -68,6 +71,8 @@ export namespace Tabs {
     @internalProperty() private tabsFilteredAsVisibleList: Tab.ELEMENT[] = [];
     @internalProperty() private tabsFilteredAsHiddenList: Tab.ELEMENT[] = [];
     @internalProperty() private noTabsVisible = false;
+    @internalProperty() private defaultTabsOrderArray: string[] = [];
+    @internalProperty() private tabsOrderPrefsArray: string[] = [];
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -115,7 +120,7 @@ export namespace Tabs {
     private hiddenTabsSortableInstance: Sortable | null = null;
 
     private getCopyTabId(tab: Tab.ELEMENT) {
-      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
+      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
         return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
       } else {
         return tab.id;
@@ -272,7 +277,25 @@ export namespace Tabs {
       this.tabHiddenIdPositiveTabIndex = hiddenTab ? hiddenTab.id : undefined;
     }
 
+    /* Sort tabs and panes as per the user prefs saved in the localStorage */
+    private sortTabsAndPanes() {
+      if (!this.tabsOrderPrefsArray.length) {
+        return;
+      }
+
+      const comparator = (a: Tab.ELEMENT | TabPanel.ELEMENT, b: Tab.ELEMENT | TabPanel.ELEMENT) => {
+        const aName = a.getAttribute("name") || "";
+        const bName = b.getAttribute("name") || "";
+        return this.tabsOrderPrefsArray.indexOf(aName) - this.tabsOrderPrefsArray.indexOf(bName);
+      };
+
+      this.tabs.sort(comparator);
+      this.panels.sort(comparator);
+    }
+
     private async linkPanelsAndTabs() {
+      this.sortTabsAndPanes(); /* Apply sorting on tabs and panes before linking */
+
       const { tabs, panels } = this;
 
       if (tabs.length === 0 || panels.length === 0) {
@@ -419,7 +442,13 @@ export namespace Tabs {
         }
       }
 
-      this.handleNewSelectedTab(event.item.id);
+      if (this.compUniqueId) {
+        const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        const newSelectedIndex = tabsOrder.findIndex(tabItem=>tabItem.selected);
+        this.storeSelectedTabIndex(newSelectedIndex);
+        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name)
+        localStorage.setItem(this.compUniqueId, this.tabsOrderPrefsArray.join(","));
+      }
     };
 
     private makeTabCopyFocus(tabCopy: Tab.ELEMENT) {
@@ -507,10 +536,10 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
-     
+
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
-     
+
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach(index => {
           const tab = tabs[index];
@@ -575,9 +604,12 @@ export namespace Tabs {
         }
       });
       this.updateIsMoreTabMenuSelected();
+      this.storeSelectedTabIndex(newSelectedTabIdx);
+    }
 
-      if (this.persistSelection && this.tabsId && newSelectedTabIdx > -1 && this.tabsId.trim() !== "") {
-        sessionStorage.setItem(this.tabsId, `${newSelectedTabIdx}`);
+    storeSelectedTabIndex(index: number) {
+      if (this.persistSelection && this.tabsId && index > -1 && this.tabsId.trim() !== "") {
+        sessionStorage.setItem(this.tabsId, `${index}`);
       }
     }
 
@@ -607,9 +639,15 @@ export namespace Tabs {
     }
 
     handleTabKeydown(event: any) {
-      const elementId = event.path ? event.path[0].id : event.originalTarget.id;
-      const id = this.getNormalizedTabId(elementId);
+      let elementId;
 
+      if(event.path){
+        elementId = event.path[0].id;
+      }
+      else{
+        elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
+      }
+      const id = this.getNormalizedTabId(elementId);
       this.dispatchKeydownEvent(event, id);
 
       const key = event.code;
@@ -746,12 +784,27 @@ export namespace Tabs {
       this.addEventListener("tab-click", this.handleTabClick as EventListener);
       this.addEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
       this.addEventListener("keydown", this.handleTabKeydown as EventListener);
+      this.addEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
 
     private teardownTabsEvents() {
       this.removeEventListener("tab-click", this.handleTabClick as EventListener);
       this.removeEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
       this.removeEventListener("keydown", this.handleTabKeydown as EventListener);
+      this.removeEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
+    }
+
+    private clearTabOrderPrefs(event: any) {
+      const { compUniqueId } = event.detail;
+      if (compUniqueId === this.compUniqueId) {
+        localStorage.removeItem(this.tabsId);
+        sessionStorage.removeItem(this.tabsId);
+        localStorage.removeItem(this.compUniqueId);
+        this.tabsOrderPrefsArray = this.defaultTabsOrderArray;
+        this.selected = 0;
+        this.initializeTabs();
+        this.dispatchSelectedChangedEvent(0);
+      }
     }
 
     private setupPanelsAndTabs() {
@@ -761,6 +814,8 @@ export namespace Tabs {
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
+      
+      this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
     }
 
     private async setupMoreTab() {
@@ -813,6 +868,8 @@ export namespace Tabs {
             ? parseInt(persistedSelectedTabIdx)
             : this.selected;
       }
+
+      this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
     }
     private selectTabFromStorage() {
       if (this.persistSelection) {
@@ -914,7 +971,7 @@ export namespace Tabs {
           })}"
           role="tablist"
         >
-          <slot
+        <slot
             name="tab"
             class="${classMap({
               "visible-tabs-slot": this.direction === "horizontal"
@@ -945,10 +1002,12 @@ export namespace Tabs {
                 </md-tab>
               `
             )}
+           
           </div>
 
           <md-menu-overlay
             custom-width="${MORE_MENU_WIDTH}"
+            max-height="${MORE_MENU_HEIGHT}"
             class="md-menu-overlay__more ${classMap({
               "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
             })}"
@@ -959,7 +1018,7 @@ export namespace Tabs {
             <md-tab
               slot="menu-trigger"
               id="${MORE_MENU_TAB_TRIGGER_ID}"
-              aria-label="${this.overlowLabel}"
+              aria-label="${this.overflowLabel}"
               aria-haspopup="true"
               tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
               .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
@@ -967,8 +1026,8 @@ export namespace Tabs {
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
             >
-              <span>${this.overlowLabel}</span>
-              <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}"></md-icon>
+              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
+              <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
             </md-tab>
             <div
               id="tabs-more-list"

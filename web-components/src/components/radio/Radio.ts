@@ -67,7 +67,7 @@ export namespace Radio {
 
     render() {
       return html`
-        <div class="md-radio-wrapper">
+        <div class="md-radio-wrapper" part="radio-wrapper">
           <input
             class="md-radio-input"
             type="radio"

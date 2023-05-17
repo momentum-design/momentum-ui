@@ -205,7 +205,7 @@ describe("RadioGroup", () => {
     const { detail } = await oneEvent(element, "radio-change");
      await elementUpdated(element);
      expect(detail).toBeDefined();
-     const notifyEvent = jest.spyOn(el, "notifySelectedChange");
+     const notifyEvent = jest.spyOn(el, "notifySelectedChange" as never);
      expect(notifyEvent).toBeCalledTimes(0);
 
     const keyboardEvent = new KeyboardEvent("keydown");

@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon.ts";
 import "@/components/tooltip/Tooltip.ts";
-import { Tooltip } from "@/components/tooltip/Tooltip.ts";
+import { Tooltip } from "@/components/tooltip/Tooltip";
 import { css, customElement, html, LitElement, property, query } from "lit-element";
 
 @customElement("tooltip-message-template-sandbox")

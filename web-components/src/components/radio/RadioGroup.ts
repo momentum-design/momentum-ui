@@ -23,6 +23,17 @@ export namespace RadioGroup {
 
     @query("slot[name='radio']") radioSlot?: HTMLSlotElement;
 
+    private _disabled = false;
+    @property({ type: Boolean, reflect: true })
+    get disabled() {
+      return this._disabled;
+    }
+    set disabled(value: boolean) {
+      const oldValue = this._disabled;
+      this._disabled = value;
+      this.requestUpdate("disabled", oldValue);
+    }
+
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
@@ -107,6 +118,9 @@ export namespace RadioGroup {
     }
 
     handleClick(event: MouseEvent) {
+      if(this.disabled) {
+        return false;
+      }
       const newIndex = this.findRadioIndex(event);
       if (newIndex !== -1) {
         if (!this.isRadioDisabled(newIndex)) {
@@ -118,6 +132,9 @@ export namespace RadioGroup {
     }
 
     handleKeyDown(event: KeyboardEvent) {
+      if(this.disabled) {
+        return false;
+      }
       const { code } = event;
       switch (code) {
         case Key.Enter:

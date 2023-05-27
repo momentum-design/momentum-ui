@@ -371,6 +371,20 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       await elementUpdated(el);
 
+      const arrowLeft = createEvent(Key.ArrowLeft);
+      const propogationSpyLeft = jest.spyOn(arrowLeft,"stopPropagation");
+      el.input!.dispatchEvent(arrowLeft)
+
+      expect(propogationSpyLeft).toHaveBeenCalled();
+      await elementUpdated(el);
+
+      const arrowRight = createEvent(Key.ArrowRight);
+      const propogationSpyRight = jest.spyOn(arrowRight,"stopPropagation");
+      el.input!.dispatchEvent(arrowRight)
+
+      expect(propogationSpyRight).toHaveBeenCalled();
+      await elementUpdated(el);
+
       const enter = createEvent(Key.Enter);
       el.input!.dispatchEvent(enter);
 

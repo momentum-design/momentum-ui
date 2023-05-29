@@ -1007,6 +1007,12 @@ export namespace ComboBox {
             });
           }
           break;
+          case Key.ArrowLeft:
+          case Key.ArrowRight:
+              {
+                event.stopPropagation();
+              }
+              break;
         case Key.Escape:
           {
             this.setFocusOnHost(true);

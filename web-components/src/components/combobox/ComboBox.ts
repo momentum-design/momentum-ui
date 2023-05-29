@@ -1008,7 +1008,7 @@ export namespace ComboBox {
           }
           break;
           case Key.ArrowLeft:
-            case Key.ArrowRight:
+          case Key.ArrowRight:
               {
                 event.stopPropagation();
               }

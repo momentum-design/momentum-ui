@@ -156,8 +156,6 @@ export namespace TaskItem {
     }
 
     handleKeyDown(event: KeyboardEvent) {
-      event.preventDefault();
-
       this.dispatchEvent(
         new CustomEvent("taskitem-keydown", {
           detail: {

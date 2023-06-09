@@ -39,7 +39,7 @@ describe("DatePicker Component", () => {
     const secondDate = firstDate.plus({ days: 5 });
     const el: DateRangePicker.ELEMENT = await fixture(
       html`
-        <md-date-range-picker></md-date-range-picker>
+        <md-date-range-picker value={''}></md-date-range-picker>
       `
     );
     const firstSelect = new CustomEvent("day-select", {

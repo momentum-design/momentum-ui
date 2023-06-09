@@ -18,11 +18,11 @@ describe('<SidebarNav />', () => {
   it('should render children if children prop is set', () => {
     const wrapper = shallow(
       <SidebarNav>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </SidebarNav>
     );
 
-    expect(wrapper.find('.dummy-children').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-children').exists()).toBeTruthy();
   });
 
 
@@ -36,11 +36,11 @@ describe('<SidebarNav />', () => {
     const wrapper = shallow(
       <SidebarNav
         headerNode={
-          <div className='dummy-header'>Dummy Children</div>
+          <div className='sample-header'>Sample Children</div>
         }
       />
     );
 
-    expect(wrapper.find('.dummy-header').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-header').exists()).toBeTruthy();
   });
 });

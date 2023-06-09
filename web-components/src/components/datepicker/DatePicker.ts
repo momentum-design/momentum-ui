@@ -22,6 +22,7 @@ import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
+  const EMPTY_STRING = '';
 
   @customElementWithCheck("md-datepicker")
   export class ELEMENT extends LitElement {
@@ -57,7 +58,7 @@ export namespace DatePicker {
     async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      if (!this.value) {
+      if (this.value === EMPTY_STRING) {
         this.value = this.includesTime
           ? this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true })
           : this.selectedDate?.toISODate();
@@ -192,6 +193,7 @@ export namespace DatePicker {
     };
 
     isValueValid = () => {
+      if(!this.value && this.value !== EMPTY_STRING) return true;
       const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
       const regexString =
         dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
@@ -223,7 +225,7 @@ export namespace DatePicker {
                 <md-input
                   class="date-input"
                   slot="menu-trigger"
-                  placeholder=${this.includesTime ? ifDefined(this.placeholder) : "YYYY-MM-DD"}
+                  placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
                   value=${ifDefined(this.value)}
                   aria-label=${`Choose Date` + this.chosenDateLabel()}
                   auxiliaryContentPosition="before"

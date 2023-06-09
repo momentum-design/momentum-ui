@@ -15,6 +15,6 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/camelcase": "off",
-    "@wxcc-desktop/no-blocked-words-plugin/no-blocked-words": ["error", ["blockedWord1", "blockedWord2"]]
+    "@wxcc-desktop/no-blocked-words-plugin/no-blocked-words": ["error", ["master", "slave", "dummy", "whitelist", "blacklist"]]
   }
 };

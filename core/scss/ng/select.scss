@@ -11,7 +11,7 @@
 // @import  '../components/list-item/mixins';
 // @import  '../tools/mixins/nav-divider';
 // @import  '../tools/mixins/spacing';
-// @import  '@momentum-ui/icons/scss/mixins';
+// @import  '../../../icons/scss/mixins';
 
 @include exports('ng-select') {
   .hidden-select {

@@ -1,7 +1,7 @@
 // @import  '../colors/settings';
 // @import  '../tools/mixins/spacing';
 // @import  '../typography/placeholders';
-// @import  '@momentum-ui/icons/scss/mixins';
+// @import  '../../../icons/scss/mixins';
 
 @include exports('ng-messagebox') {
   .messagebox-backdrop {

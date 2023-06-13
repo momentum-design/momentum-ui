@@ -32,6 +32,7 @@
     "createTokensModule": "node ./src/utils/createTokenFilesModule.js",
     "build:tokens": "yarn createTokensModule && node ./src/utils/generateScssFromTokens.js && node ./src/utils/generateColorTableData.js",
     "sonar": "yarn install && yarn test && node sonar.config.js",
+    "eslint": "eslint --ext .ts,.js ./src --ignore-path .eslintignore",
     "create-package": "node -e 'require(\"./publish-conf\").createPackageJson()'",
     "notify": "node -e 'require(\"./publish-conf\").notify()'"
   },
@@ -151,6 +152,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^5.7.3",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "@wxcc-desktop/eslint-plugin-no-blocked-words-plugin": "1.0.4"
   }
 }

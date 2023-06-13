@@ -13,7 +13,7 @@ export namespace ChatMessage {
     @property({ type: String }) time = "";
     @property({ type: String }) label = "Avatar";
     @property({ type: Boolean }) self = false;
-    
+
     static get styles() {
       return [reset, styles];
     }

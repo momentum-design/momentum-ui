@@ -9,7 +9,7 @@
 import "@/components/slider/Slider";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 import { html } from "lit-element";
 import { number, boolean, withKnobs } from "@storybook/addon-knobs";
 
@@ -41,7 +41,16 @@ export const Slider = () => {
 
   return html`
     <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-slider @slider-change=${(action('change'))} .disabled=${disabled} .min=${min} .max=${max} .step=${step} .now=${now} ?no-pointer=${nopointer} ?hide-value=${hideValue}></md-slider>
+      <md-slider
+        @slider-change=${action("change")}
+        .disabled=${disabled}
+        .min=${min}
+        .max=${max}
+        .step=${step}
+        .now=${now}
+        ?no-pointer=${nopointer}
+        ?hide-value=${hideValue}
+      ></md-slider>
     </md-theme>
   `;
 };

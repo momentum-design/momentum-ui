@@ -1,6 +1,7 @@
 export { accordionTemplate } from "./accordion";
 export { alertTemplate } from "./alert";
 export { alertBannerTemplate } from "./alert-banner";
+export { audioPlayerTemplate } from "./audio-player";
 export { avatarTemplate } from "./avatar";
 export { badgeTemplate } from "./badge";
 export { breadcrumbTemplate } from "./breadcrumb";

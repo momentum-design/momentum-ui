@@ -38,7 +38,8 @@
   }
 
   &__title {
-    @include text-dots;
+    @include line-dots(2);
+    text-overflow: ellipsis;
     color: var(--alert-title-text-color, $lm-alert-title-text-color-light);
     font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
     line-height: rem-calc(24);
@@ -52,12 +53,9 @@
     font-size: $alert__font-size;
     line-height: 1.35;
     width: calc(100%);
-  }
-
-  &__title,
-  &__message {
     word-wrap: break-word;
   }
+
 
   &__button {
     margin-left: rem-calc(4);

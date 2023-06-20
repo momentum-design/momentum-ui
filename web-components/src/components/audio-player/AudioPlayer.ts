@@ -61,6 +61,7 @@ export type Label = {
 
 export type LabelMap = {
   playBtn: Label;
+  pauseBtn: Label;
   duration: Label;
   timeline: Label;
   volumeBtn: Label;
@@ -70,8 +71,12 @@ export type LabelMap = {
 
 export const defaultLabelMap = {
   playBtn: {
-    ariaLabel: "Play / Pause",
-    tooltipText: "Play / Pause"
+    ariaLabel: "Play",
+    tooltipText: "Play"
+  },
+  pauseBtn: {
+    ariaLabel: "Pause",
+    tooltipText: "Pause"
   },
   duration: {
     ariaLabel: "Duration:",
@@ -143,6 +148,8 @@ export namespace AudioPlayer {
       super.disconnectedCallback();
       document.removeEventListener("click", this.onOutsideClick);
       document.removeEventListener("keydown", this.handleKeyDown);
+      this.audio.pause();
+      this.isPlaying = false;
     }
 
     setAudioEventListeners() {
@@ -152,12 +159,14 @@ export namespace AudioPlayer {
       };
 
       this.audio.onerror = () => {
-        this.dispatchEvent(
-          new CustomEvent("playback-error", {
-            composed: true,
-            bubbles: true
-          })
-        );
+        if (this.audio.src) {
+          this.dispatchEvent(
+            new CustomEvent("playback-error", {
+              composed: true,
+              bubbles: true
+            })
+          );
+        }
       };
 
       this.audio.onended = () => {
@@ -314,12 +323,15 @@ export namespace AudioPlayer {
         <div class="md-audio-player">
           <div class="inner-container">
             <div class="play-container">
-              <md-tooltip placement="top" message="${this.labelMap.playBtn.tooltipText}">
+              <md-tooltip
+                placement="top"
+                message="${this.isPlaying ? this.labelMap.pauseBtn.tooltipText : this.labelMap.playBtn.tooltipText}"
+              >
                 <md-button
                   hasRemoveStyle
                   class="play-btn"
                   @click="${this.togglePlay}"
-                  aria-label="${this.labelMap.playBtn.ariaLabel}"
+                  aria-label="${this.isPlaying ? this.labelMap.pauseBtn.ariaLabel : this.labelMap.playBtn.ariaLabel}"
                 >
                   ${this.isPlaying
                     ? html`

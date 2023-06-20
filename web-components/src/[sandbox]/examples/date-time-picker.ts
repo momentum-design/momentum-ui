@@ -23,7 +23,6 @@ export const dateTimePickerTemplate = html`
   <h3>date-time-picker with value</h3>
   <md-date-time-picker
     value="2021-02-14T12:00:00-08:00"
-    @date-time-change=${() => console.log("fart")}
   ></md-date-time-picker>
   <h3>disabled date-time-picker</h3>
   <md-date-time-picker value="2021-02-14T12:00:00-08:00" disabled></md-date-time-picker>

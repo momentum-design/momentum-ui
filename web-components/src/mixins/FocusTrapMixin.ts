@@ -52,6 +52,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
     @internalProperty() protected initialFocusComplete = false;
+    @internalProperty() private focusableTimer: any;
 
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
@@ -361,17 +362,22 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
 
+    updateFocusableElements = () => {
+      if(this.focusableTimer) {
+        clearTimeout(this.focusableTimer)
+        this.focusableElements = []
+      }
+      this.focusableTimer = setTimeout(() => {
+        this.setFocusableElements();
+      }, 10);
+    }
+
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
-      const self = this;
-      document.addEventListener("on-widget-update", () => {
-        setTimeout(() => {
-          self.setFocusableElements();
-        }, 10);
-      });
       document.addEventListener("click", this.handleOutsideTrapClick);
+      document.addEventListener("on-widget-update", this.updateFocusableElements);
     }
 
     disconnectedCallback() {
@@ -379,6 +385,11 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("keydown", this.handleKeydownFocusTrap);
       this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
+      document.removeEventListener("on-widget-update", this.updateFocusableElements);
+      this.focusableElements = []
+      if(this.focusableTimer) {
+        clearTimeout(this.focusableTimer)
+      }
     }
   }
 

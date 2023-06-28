@@ -278,8 +278,8 @@ export namespace Button {
             part="button"
             id=${this.id}
             class="md-button ${classMap(this.buttonClassMap)}"
-            @click=${(e: MouseEvent) => this.handleClick(e)}
-            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            @click=${this.handleClick}
+            @keydown=${this.handleKeyDown}
             tabindex=${this.tabIndex}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
@@ -302,8 +302,8 @@ export namespace Button {
             part="button"
             id=${this.id}
             class="md-button ${classMap(this.buttonClassMap)}"
-            @click=${(e: MouseEvent) => this.handleClick(e)}
-            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            @click=${this.handleClick}
+            @keydown=${this.handleKeyDown}
             role=${this.role}
             tabindex=${this.tabIndex}
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
@@ -321,8 +321,8 @@ export namespace Button {
             part="button"
             id=${this.id}
             class="md-button ${classMap(this.buttonClassMap)}"
-            @click=${(e: MouseEvent) => this.handleClick(e)}
-            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            @click=${this.handleClick}
+            @keydown=${this.handleKeyDown}
             role=${this.role}
             tabindex=${this.tabIndex}
             aria-pressed=${this.ariaPressed === 'true' ? true : false}

@@ -175,7 +175,7 @@ export namespace Tab {
           class="${classMap({
             closable: this.closable !== ""
           })}"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
+          @click=${this.handleClick}
         >
           <slot class="tab-slot"></slot>
           ${this.isCrossVisible && this.closable
@@ -184,8 +184,8 @@ export namespace Tab {
                   ?disabled=${this.disabled}
                   tabindex="-1"
                   class="tab-action-button"
-                  @click=${(e: MouseEvent) => this.handleCrossClick(e)}
-                  @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
+                  @click=${this.handleCrossClick}
+                  @keydown=${this.handleCrossKeydown}
                 >
                   <md-icon tabindex="0" name="cancel_14"></md-icon>
                 </div>

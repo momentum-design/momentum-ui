@@ -199,8 +199,8 @@ export namespace TaskItem {
           class="md-taskitem ${classMap({ selected: this.selected })}"
           tabindex="0"
           aria-selected="${this.selected}"
-          @click=${(e: MouseEvent) => this.handleClick(e)}
-          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          @click=${this.handleClick}
+          @keydown=${this.handleKeyDown}
           aria-label=${this.getAriaLabel()}
         >
           <div class="md-taskitem__mediatype">

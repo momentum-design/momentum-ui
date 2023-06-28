@@ -102,6 +102,12 @@ export const SlottedMixin = <T extends AnyConstructor<SlotableClass>>(
         this.slottedChanged();
       }
     }
+
+    disconnectedCallback(): void {
+      if (this.slotElement) {
+        this.slotElement.removeEventListener("slotchange", this.handleSlotChange);
+      }
+    }
   }
 
   DedupeMixin(SlottedMixin, Slotted);

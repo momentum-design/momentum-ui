@@ -194,11 +194,11 @@ export namespace Tooltip {
           </div>
           <div
             class="md-tooltip__reference"
-            @mouseenter=${() => this.notifyTooltipCreate()}
-            @mouseleave=${() => this.notifyTooltipDestroy()}
-            @focusin=${(event: Event)=>this.handleFocusIn(event)}
-            @focusout=${(event: Event)=>this.handleFocusOut(event)}
-            @keydown=${(event: KeyboardEvent)=>this.handleKeyDown(event)}
+            @mouseenter=${this.notifyTooltipCreate}
+            @mouseleave=${this.notifyTooltipDestroy}
+            @focusin=${this.handleFocusIn}
+            @focusout=${this.handleFocusOut}
+            @keydown=${this.handleKeyDown}
             aria-describedby="tooltip"
           >
             <slot></slot>

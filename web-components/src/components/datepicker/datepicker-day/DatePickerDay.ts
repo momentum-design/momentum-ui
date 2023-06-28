@@ -59,16 +59,18 @@ export namespace DatePickerDay {
     }
 
     handleClick = (e: MouseEvent) => {
-      this.dispatchEvent(
-        new CustomEvent("day-select", {
-          bubbles: true,
-          composed: true,
-          detail: {
-            date: this.day,
-            sourceEvent: e
-          }
-        })
-      );
+      if (!this.disabled) {
+        this.dispatchEvent(
+          new CustomEvent("day-select", {
+            bubbles: true,
+            composed: true,
+            detail: {
+              date: this.day,
+              sourceEvent: e
+            }
+          })
+        );
+      }
     };
 
     isDateInRange = () => {
@@ -137,12 +139,8 @@ export namespace DatePickerDay {
           color=${"color-none"}
           ?disabled=${this.disabled}
           class="md-datepicker__day ${classMap(dayClassMap)}"
-          @click=${(e: MouseEvent) => {
-            if (!this.disabled) {
-              this.handleClick(e);
-            }
-          }}
-          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          @click=${this.handleClick}
+          @keydown=${this.handleKeyDown}
           ariaLabel=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
           title=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
           aria-selected=${ifDefined(this.selected)}

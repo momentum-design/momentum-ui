@@ -211,7 +211,7 @@ export namespace PhoneInput {
             aria-label=${this.countryCodeAriaLabel}
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
-            @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
+            @change-selected="${this.handleCountryChange}"
             clear-icon-height="${this.clearIconHeight}"
             with-custom-content
           >
@@ -226,9 +226,9 @@ export namespace PhoneInput {
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
             .ariaLabel=${this.dialNumberAriaLabel}
-            @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
-            @input-blur="${(e: Event) => this.handleBlur(e)}"
-            @input-keydown="${(e: Event) => this.handleKeydown(e)}"
+            @input-change="${this.handlePhoneChange}"
+            @input-blur="${this.handleBlur}"
+            @input-keydown="${this.handleKeydown}"
             shape="${this.pill ? "pill" : "none"}"
             clear
             type="tel"

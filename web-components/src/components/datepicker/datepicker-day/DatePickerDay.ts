@@ -115,12 +115,8 @@ export namespace DatePickerDay {
       );
     };
 
-    static get styles() {
-      return [reset, styles];
-    }
-
-    render() {
-      const dayClassMap = {
+    get getDayClassMap() {
+      return {
         "md-datepicker__day--selected": this.selected,
         "md-datepicker__day--focus": this.focused,
         "md-datepicker__day--today": this.isToday,
@@ -131,14 +127,20 @@ export namespace DatePickerDay {
         "md-datepicker__day--start-date": this.isStartDate(),
         "md-datepicker__day--end-date": this.isEndDate()
       };
+    }
 
+    static get styles() {
+      return [reset, styles];
+    }
+
+    render() {
       return html`
         <md-button
           circle
           size=${28}
           color=${"color-none"}
           ?disabled=${this.disabled}
-          class="md-datepicker__day ${classMap(dayClassMap)}"
+          class="md-datepicker__day ${classMap(this.getDayClassMap)}"
           @click=${this.handleClick}
           @keydown=${this.handleKeyDown}
           ariaLabel=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}

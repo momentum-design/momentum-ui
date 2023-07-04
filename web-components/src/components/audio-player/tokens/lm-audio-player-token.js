@@ -14,6 +14,10 @@ const audioPlayer = {
       light: colors.gray[80].name,
       dark: colors.gray["05"].name
     },
+    "buffer-bar": {
+      light: colors.gray[40].name,
+      dark: colors.gray["30"].name
+    },
     timeline: {
       light: colors.gray[30].name,
       dark: colors.gray[60].name

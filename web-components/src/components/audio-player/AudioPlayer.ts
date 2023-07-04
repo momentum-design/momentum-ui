@@ -115,6 +115,7 @@ export namespace AudioPlayer {
     @internalProperty() showSpeedPopup = false;
     @internalProperty() playbackSpeed = 1;
     @internalProperty() volumeExpanded = false;
+    @internalProperty() bufferedRange = 0;
 
     constructor() {
       super();
@@ -181,12 +182,23 @@ export namespace AudioPlayer {
       this.audio.onvolumechange = () => {
         this.volume = this.audio.volume;
       };
+
+      // Listen for progress in loading the resource, buffer state will be available only when this occurs
+      this.audio.onprogress = () => {
+        this.bufferedRange = this.audio.buffered.end(0);
+      };
     }
 
     togglePlay() {
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
         this.audio.play();
+        this.dispatchEvent(
+          new CustomEvent("play-clicked", {
+            composed: true,
+            bubbles: true
+          })
+        );
       } else {
         this.audio.pause();
       }
@@ -359,10 +371,16 @@ export namespace AudioPlayer {
               <md-tooltip placement="top" message="${this.labelMap.timeline.tooltipText}">
                 <div class="timeline" @click="${this.setTime}" aria-label="${this.labelMap.timeline.ariaLabel}">
                   <div class="progress-bar" style="width: ${(this.currentTime / this.duration) * 100}%"></div>
+                  <div class="buffer-bar" style="width: ${(this.bufferedRange / this.duration) * 100}%"></div>
                 </div>
               </md-tooltip>
             </div>
-            <div class="volume-container" @mouseleave="${() => this.toggleVolumeExpand(false)}" @mouseenter="${() => this.toggleVolumeExpand(true)}" aria-label="${this.labelMap.volumeSlider.ariaLabel}">
+            <div
+              class="volume-container"
+              @mouseleave="${() => this.toggleVolumeExpand(false)}"
+              @mouseenter="${() => this.toggleVolumeExpand(true)}"
+              aria-label="${this.labelMap.volumeSlider.ariaLabel}"
+            >
               <md-tooltip
                 placement="top"
                 message="${this.labelMap.volumeSlider.tooltipText} ${Math.trunc(this.volume * 100)}%"

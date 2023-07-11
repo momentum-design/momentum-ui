@@ -131,12 +131,12 @@ describe("PhoneInput Component", () => {
   });
 
   test("should trigger a Phone Change event", async () => {
+    const phoneChangeSpy = jest.spyOn(PhoneInput.ELEMENT.prototype, "handlePhoneChange");
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
       `
     );
-    const phoneChangeSpy = jest.spyOn(element, "handlePhoneChange");
     const phoneInput = element.shadowRoot?.querySelector("md-input");
     const event: CustomEvent = new CustomEvent("input-change", {
       bubbles: true,
@@ -149,12 +149,12 @@ describe("PhoneInput Component", () => {
     expect(phoneChangeSpy).toHaveBeenCalled();
   });
   test("should register a KeyDown event", async () => {
+    const keyDownSpy = jest.spyOn(PhoneInput.ELEMENT.prototype, "handleKeydown");
     const element = await fixture<PhoneInput.ELEMENT>(
       html`
         <md-phone-input></md-phone-input>
       `
     );
-    const keyDownSpy = jest.spyOn(element, "handleKeydown");
     const phoneInput = element.shadowRoot?.querySelector("md-input");
     const event: CustomEvent = new CustomEvent("input-keydown", {
       bubbles: true,

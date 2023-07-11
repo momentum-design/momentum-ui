@@ -48,11 +48,11 @@ describe("DatePicker Component", () => {
     const updateFunc = jest.spyOn(el, "updateValue");
     const initialValue = el.value;
   
-    el.handleDateSelection({ detail: { data: firstDate } });
+    el.handleDateSelection({ detail: { date: firstDate } });
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
   
-    el.handleDateSelection({ detail: { data: secondDate } });
+    el.handleDateSelection({ detail: { date: secondDate } });
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
     expect(el.value?.length).toBeGreaterThan(initialValue!.length);

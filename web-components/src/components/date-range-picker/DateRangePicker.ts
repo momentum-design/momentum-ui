@@ -30,7 +30,7 @@ export namespace DateRangePicker {
       this.removeEventListener("date-selection-change", this.handleDateSelection);
     }
 
-    updateValue(){
+    updateValue = () => {
       if (this.startDate && this.endDate) {
         this.value = `${this.sqlDateToSlashes(this.startDate)} - ${this.sqlDateToSlashes(this.endDate)}`;
       }
@@ -44,7 +44,7 @@ export namespace DateRangePicker {
       return date.replace(/-+/g, "/");
     }
 
-    handleDateSelection(e: any){
+    handleDateSelection = (e: any) => {
       const selection: DateTime = e.detail.data;
       if (this.startDate && this.endDate) {
         const startObj = DateTime.fromSQL(this.startDate);

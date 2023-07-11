@@ -37,35 +37,27 @@ describe("DatePicker Component", () => {
   test("should handle date selection and value update", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.plus({ days: 5 });
-
-    const selectFunc = jest.spyOn(DateRangePicker.ELEMENT.prototype, "handleDateSelection");
-    const updateFunc = jest.spyOn(DateRangePicker.ELEMENT.prototype, "updateValue");
-    
-    const firstSelect = new CustomEvent("day-select", {
-      detail: {
-        date: firstDate
-      }
-    });
-    const secondSelect = new CustomEvent("day-select", {
-      detail: {
-        date: secondDate
-      }
-    });
+  
     const el: DateRangePicker.ELEMENT = await fixture(
       html`
         <md-date-range-picker value={''}></md-date-range-picker>
       `
     );
+  
+    const selectFunc = jest.spyOn(el, "handleDateSelection");
+    const updateFunc = jest.spyOn(el, "updateValue");
     const initialValue = el.value;
-    el.handleSelect(firstSelect);
+  
+    el.handleDateSelection({ detail: { data: firstDate } });
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
   
-    el.handleSelect(secondSelect);
+    el.handleDateSelection({ detail: { data: secondDate } });
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
     expect(el.value?.length).toBeGreaterThan(initialValue!.length);
   });
+  
   
   test("should correctly assign start/end values if use enters in reverse order", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });

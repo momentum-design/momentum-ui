@@ -56,6 +56,7 @@ describe("DatePicker Component", () => {
         <md-date-range-picker value={''}></md-date-range-picker>
       `
     );
+    const initialValue = el.value;
     el.handleSelect(firstSelect);
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
@@ -63,7 +64,7 @@ describe("DatePicker Component", () => {
     el.handleSelect(secondSelect);
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
-    expect(el.value?.length).toBeGreaterThan(0);
+    expect(el.value?.length).toBeGreaterThan(initialValue!.length);
   });
   
   test("should correctly assign start/end values if use enters in reverse order", async () => {

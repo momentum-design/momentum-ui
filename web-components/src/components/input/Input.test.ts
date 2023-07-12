@@ -178,13 +178,17 @@ describe("Input Component", () => {
     expect(detail.srcEvent).toEqual(event);
 
     element.input.focus();
+    const eventListener = (event: MouseEvent) => {
+      element.handleOutsideClick(event);
+    };
 
+    document.addEventListener("click", eventListener);
     document.dispatchEvent(new MouseEvent("click"));
 
     expect(element.shadowRoot!.activeElement).not.toEqual(element.input);
     expect(spyBlurHandler).toHaveBeenCalled();
   });
-  
+
   test("should render nothing if no label provided", async () => {
     const element = await fixture<Input.ELEMENT>(
       ` <md-input value="text" containerSize="small-12" placeholder="Enter Text" clear></md-input>`

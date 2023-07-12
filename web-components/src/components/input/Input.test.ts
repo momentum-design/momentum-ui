@@ -47,10 +47,11 @@ describe("Input Component", () => {
   });
 
   test("should handle label click event", async () => {
-    const spyLabelHandler = jest.spyOn(Input.ELEMENT.prototype, "handleLabelClick");
     const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12" secondaryLabel="Secondary Label"></md-input>`
     );
+
+    const spyLabelHandler = jest.spyOn(Input.ELEMENT.prototype, "handleLabelClick");
 
     const labelElement = element.shadowRoot!.querySelector("md-label");
     const event = new MouseEvent("click");
@@ -61,10 +62,11 @@ describe("Input Component", () => {
   });
 
   test("should shifts focus away from the input", async () => {
-    const spyOutsideHandler = jest.spyOn(Input.ELEMENT.prototype, "handleOutsideClick");
     const element = await fixture<Input.ELEMENT>(
       `<md-input name="default" label="Default" containerSize="small-12" secondaryLabel="Secondary Label"></md-input>`
     );
+
+    const spyOutsideHandler = jest.spyOn(Input.ELEMENT.prototype, "handleOutsideClick");
 
     const label = element.shadowRoot!.querySelector("md-label");
     const labelElement = label!.shadowRoot!.querySelector("label");
@@ -83,8 +85,8 @@ describe("Input Component", () => {
   });
 
   test("should handle keyDown event", async () => {
-    const spyKeyDownHandler = jest.spyOn(Input.ELEMENT.prototype, "handleKeyDown");
     const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyKeyDownHandler = jest.spyOn(Input.ELEMENT.prototype, "handleKeyDown");
 
     const event = new KeyboardEvent("keydown");
 
@@ -99,8 +101,8 @@ describe("Input Component", () => {
   });
 
   test("should handle focus event", async () => {
-    const spyFocusHandler = jest.spyOn(Input.ELEMENT.prototype, "handleFocus");
     const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyFocusHandler = jest.spyOn(Input.ELEMENT.prototype, "handleFocus");
 
     const event = new FocusEvent("focus");
 
@@ -115,8 +117,8 @@ describe("Input Component", () => {
   });
 
   test("should handle mouseDown event", async () => {
-    const spyMouseDownHandler = jest.spyOn(Input.ELEMENT.prototype, "handleMouseDown");
     const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyMouseDownHandler = jest.spyOn(Input.ELEMENT.prototype, "handleMouseDown");
 
     const event = new MouseEvent("mousedown");
 
@@ -131,7 +133,6 @@ describe("Input Component", () => {
   });
 
   test("should handle input event", async () => {
-    const spyHandleChange = jest.spyOn(Input.ELEMENT.prototype, "handleChange");
     const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
 
     const mockInputHandler = jest.fn().mockImplementation((event: Event) => {
@@ -152,7 +153,7 @@ describe("Input Component", () => {
     const event = new InputEvent("input");
 
     element.input.dispatchEvent(event);
-    expect(spyHandleChange).toHaveBeenCalled();
+    expect(mockInputHandler).toHaveBeenCalled();
 
     setTimeout(() => element.handleChange(event));
 
@@ -162,28 +163,26 @@ describe("Input Component", () => {
   });
 
   test("should handle blur event", async () => {
-    const spyBlurHandler = jest.spyOn(Input.ELEMENT.prototype, "handleBlur");
     const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyBlurHandler = jest.spyOn(Input.ELEMENT.prototype, "handleBlur");
+
     const event = new FocusEvent("blur");
+
     element.input.dispatchEvent(event);
 
     expect(spyBlurHandler).toHaveBeenCalled();
     setTimeout(() => element.handleBlur(event));
-    const { detail } = await oneEvent(element, "input-blur");
 
+    const { detail } = await oneEvent(element, "input-blur");
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
 
     element.input.focus();
-    const eventListener = (event: MouseEvent) => {
-      element.handleOutsideClick(event);
-    };
 
-    document.addEventListener("click", eventListener);
     document.dispatchEvent(new MouseEvent("click"));
+
     expect(element.shadowRoot!.activeElement).not.toEqual(element.input);
     expect(spyBlurHandler).toHaveBeenCalled();
-    document.removeEventListener("click", eventListener);
   });
   test("should render nothing if no label provided", async () => {
     const element = await fixture<Input.ELEMENT>(

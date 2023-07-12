@@ -25,17 +25,8 @@ describe("Tooltip", () => {
   });
 
   test("should notify md-theme in show/hide case", async () => {
-    const createNotifySpy = jest.spyOn(Tooltip.ELEMENT.prototype, "notifyTooltipCreate");
-    const destroyNotifySpy = jest.spyOn(Tooltip.ELEMENT.prototype, "notifyTooltipDestroy");
-
-    theme = await fixture<Theme.ELEMENT>(html`
-      <md-theme>
-        <md-tooltip message="Tooltip">
-          <md-button>Tooltip</md-button>
-        </md-tooltip>
-      </md-theme>
-    `);
-    tooltip = theme.querySelector("md-tooltip") as Tooltip.ELEMENT;
+    const createNotifySpy = jest.spyOn(tooltip, "notifyTooltipCreate");
+    const destroyNotifySpy = jest.spyOn(tooltip, "notifyTooltipDestroy");
     
     const mouseEnterEvent = new MouseEvent("mouseenter");
     const mouseLeaveEvent = new MouseEvent("mouseleave");

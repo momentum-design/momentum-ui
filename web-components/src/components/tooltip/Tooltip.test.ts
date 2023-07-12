@@ -27,7 +27,7 @@ describe("Tooltip", () => {
   test("should notify md-theme in show/hide case", async () => {
     const createNotifySpy = jest.spyOn(tooltip, "notifyTooltipCreate");
     const destroyNotifySpy = jest.spyOn(tooltip, "notifyTooltipDestroy");
-    
+
     const mouseEnterEvent = new MouseEvent("mouseenter");
     const mouseLeaveEvent = new MouseEvent("mouseleave");
     tooltip.reference.dispatchEvent(mouseEnterEvent);

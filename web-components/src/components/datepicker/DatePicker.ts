@@ -229,7 +229,7 @@ export namespace DatePicker {
                   value=${ifDefined(this.value)}
                   aria-label=${`Choose Date` + this.chosenDateLabel()}
                   auxiliaryContentPosition="before"
-                  @input-change="${this.handleDateInputChange}"
+                  @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
                   hide-message
                   ?disabled=${this.disabled}
                   .messageArr=${[{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
@@ -240,8 +240,8 @@ export namespace DatePicker {
 
           <div class="date-overlay-content">
             <md-datepicker-calendar
-              @day-select=${this.handleSelect}
-              @day-key-event=${this.handleKeyDown}
+              @day-select=${(e: CustomEvent) => this.handleSelect(e)}
+              @day-key-event=${(e: CustomEvent) => this.handleKeyDown(e)}
               .datePickerProps=${{
                 locale: this.locale,
                 selected: this.selectedDate,

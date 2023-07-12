@@ -1055,7 +1055,7 @@ export namespace Tabs {
                     id="${this.getCopyTabId(tab)}"
                     aria-label=${tab.ariaLabel}
                     aria-controls="${tab.id}"
-                    @click="${this.handleOverlayClose}"
+                    @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                   >
                     ${unsafeHTML(tab.innerHTML)}

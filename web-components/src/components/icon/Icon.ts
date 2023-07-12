@@ -153,7 +153,7 @@ export namespace Icon {
           style=${styleMap(this.iconStyleMap)}
           aria-label=${this.ariaLabel}
           title=${this.title}
-          @click=${this.handleIconClick}
+          @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
         </i>
       `;

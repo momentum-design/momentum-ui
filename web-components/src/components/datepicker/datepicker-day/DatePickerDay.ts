@@ -141,8 +141,12 @@ export namespace DatePickerDay {
           color=${"color-none"}
           ?disabled=${this.disabled}
           class="md-datepicker__day ${classMap(this.getDayClassMap)}"
-          @click=${this.handleClick}
-          @keydown=${this.handleKeyDown}
+          @click=${(e: MouseEvent) => {
+            if (!this.disabled) {
+              this.handleClick(e);
+            }
+          }}
+          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           ariaLabel=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
           title=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
           aria-selected=${ifDefined(this.selected)}

@@ -328,12 +328,6 @@ export namespace Dropdown {
       this.toggle();
     }
 
-    onListItemClick = (idx: number) => {
-      this.focusToIndex(idx);
-      this.select();
-      this.collapse();
-    }
-
     focusFirst() {
       if (this.renderOptions.length) {
         this.focusedIndex = 0;
@@ -457,7 +451,7 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-controls="md-dropdown-list"
             ?disabled="${this.disabled}"
-            @click="${this.onLabelClick}"
+            @click="${() => this.onLabelClick()}"
             part="dropdown-header"
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>
@@ -487,7 +481,11 @@ export namespace Dropdown {
                   aria-selected="${idx === this.focusedIndex}"
                   part="dropdown-option"
                   ?focused="${idx === this.focusedIndex}"
-                  @click="${() => this.onListItemClick(idx)}"
+                  @click="${() => {
+                    this.focusToIndex(idx);
+                    this.select();
+                    this.collapse();
+                  }}"
                 >
                   <span class="select-label" part="label">
                     <span>${o.value}</span>

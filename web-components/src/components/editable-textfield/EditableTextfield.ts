@@ -237,7 +237,9 @@ export namespace EditableTextfield {
           ?contenteditable=${this.isEditing}
           @focus=${this.handleFocus}
           @blur=${this.handleBlur}
-          @keydown=${this.handleKeydown}
+          @keydown=${(e: KeyboardEvent) => {
+            this.handleKeydown(e);
+          }}
           aria-invalid=${this.alert ? "true" : "false"}
           aria-label=${this.ariaLabel}
           aria-describedby=${this.ariaDescribedBy}

@@ -351,11 +351,11 @@ export namespace Input {
             <textarea
               part="input"
               class="md-input ${classMap(this.inputTemplateClassMap)}"
-              @blur=${this.handleBlur}
-              @input=${this.handleChange}
-              @focus=${this.handleFocus}
-              @keydown=${this.handleKeyDown}
-              @mousedown=${this.handleMouseDown}
+              @blur=${(event: FocusEvent) => this.handleBlur(event)}
+              @input=${(event: Event) => this.handleChange(event)}
+              @focus=${(event: FocusEvent) => this.handleFocus(event)}
+              @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
+              @mousedown=${(event: MouseEvent) => this.handleMouseDown(event)}
               tabindex="0"
               .value=${this.value}
               aria-describedby=${this.ariaDescribedBy}
@@ -375,11 +375,11 @@ export namespace Input {
             <input
               part="input"
               class="md-input ${classMap(this.inputTemplateClassMap)}"
-              @blur=${this.handleBlur}
-              @input=${this.handleChange}
-              @focus=${this.handleFocus}
-              @keydown=${this.handleKeyDown}
-              @mousedown=${this.handleMouseDown}
+              @blur=${(event: FocusEvent) => this.handleBlur(event)}
+              @input=${(event: Event) => this.handleChange(event)}
+              @focus=${(event: FocusEvent) => this.handleFocus(event)}
+              @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
+              @mousedown=${(event: MouseEvent) => this.handleMouseDown(event)}
               tabindex="0"
               ?required=${this.required}
               ?autofocus=${this.autofocus}
@@ -429,8 +429,8 @@ export namespace Input {
           <div class="md-input__after">
             <md-button
               hasRemoveStyle
-              @click=${this.handleClear}
-              @keydown=${this.handleClear}
+              @click=${(event: MouseEvent) => this.handleClear(event)}
+              @keydown=${(event: KeyboardEvent) => this.handleClear(event)}
             >
               <md-icon
                 class="md-input__icon-clear"
@@ -458,7 +458,7 @@ export namespace Input {
               secondaryLabel
               .htmlFor=${this.htmlId}
               .label=${this.secondaryLabel}
-              @label-click="${this.handleLabelClick}"
+              @label-click="${() => this.handleLabelClick()}"
             ></md-label>
           `
         : nothing;
@@ -502,7 +502,7 @@ export namespace Input {
               class="md-input__label ${classMap({ disabled: this.disabled })}"
               .htmlFor=${this.htmlId}
               .label=${this.label}
-              @label-click="${this.handleLabelClick}"
+              @label-click="${() => this.handleLabelClick()}"
             ></md-label>
           `
         : nothing;

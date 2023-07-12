@@ -136,7 +136,7 @@ describe("PhoneInput Component", () => {
         <md-phone-input></md-phone-input>
       `
     );
-    const phoneChangeSpy = jest.spyOn(PhoneInput.ELEMENT.prototype, "handlePhoneChange");
+    const phoneChangeSpy = jest.spyOn(element, "handlePhoneChange");
     const phoneInput = element.shadowRoot?.querySelector("md-input");
     const event: CustomEvent = new CustomEvent("input-change", {
       bubbles: true,
@@ -154,7 +154,7 @@ describe("PhoneInput Component", () => {
         <md-phone-input></md-phone-input>
       `
     );
-    const keyDownSpy = jest.spyOn(PhoneInput.ELEMENT.prototype, "handleKeydown");
+    const keyDownSpy = jest.spyOn(element, "handleKeydown");
     const phoneInput = element.shadowRoot?.querySelector("md-input");
     const event: CustomEvent = new CustomEvent("input-keydown", {
       bubbles: true,

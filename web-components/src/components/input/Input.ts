@@ -182,12 +182,12 @@ export namespace Input {
 
     connectedCallback() {
       super.connectedCallback();
-      document.addEventListener("click", (event: MouseEvent) => this.handleOutsideClick(event));
+      document.addEventListener("click", this.handleOutsideClick);
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
-      document.removeEventListener("click", (event: MouseEvent) => this.handleOutsideClick(event));
+      document.removeEventListener("click", this.handleOutsideClick);
     }
 
     public select() {

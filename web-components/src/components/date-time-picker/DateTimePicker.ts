@@ -137,6 +137,16 @@ export namespace DateTimePicker {
       }
     };
 
+    disconnectedCallback(): void {
+      if (this.datePicker) {
+        this.datePicker.removeEventListener("date-selection-change", this.handleDateChange);
+        this.datePicker.removeEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
+      }
+      if (this.timePicker) {
+        this.timePicker.removeEventListener("time-selection-change", this.handleTimeChange);
+      }
+    }
+
     static get styles() {
       return [reset, styles];
     }

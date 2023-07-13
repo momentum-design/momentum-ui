@@ -69,7 +69,7 @@ export namespace DatePickerDay {
           }
         })
       );
-    }
+    };
 
     isDateInRange = () => {
       const rangePicker = this.parentRangePicker;

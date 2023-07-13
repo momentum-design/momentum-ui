@@ -59,19 +59,17 @@ export namespace DatePickerDay {
     }
 
     handleClick = (e: MouseEvent) => {
-      if (!this.disabled) {
-        this.dispatchEvent(
-          new CustomEvent("day-select", {
-            bubbles: true,
-            composed: true,
-            detail: {
-              date: this.day,
-              sourceEvent: e
-            }
-          })
-        );
-      }
-    };
+      this.dispatchEvent(
+        new CustomEvent("day-select", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            date: this.day,
+            sourceEvent: e
+          }
+        })
+      );
+    }
 
     isDateInRange = () => {
       const rangePicker = this.parentRangePicker;

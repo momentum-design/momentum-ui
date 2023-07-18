@@ -1,3 +1,5 @@
+import "@/components/combobox/ComboBox";
+import "@/components/input/Input";
 import { Key } from "@/constants";
 import {
   defineCE,
@@ -10,8 +12,6 @@ import {
 } from "@open-wc/testing-helpers";
 import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
-import "@/components/input/Input";
-import "@/components/combobox/ComboBox";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -365,7 +365,8 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
     focusTrap!["initialFocusComplete"] = true;
-    document.dispatchEvent(new CustomEvent("on-component-update"));
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+
 
     await nextFrame();
     await elementUpdated(el);
@@ -404,7 +405,7 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
   });
 
-  test("should skip child focus for combobox", async () => {
+  test("should skip child focus for combobox only ul list", async () => {
     @customElement("combobox-element")
     class comboboxElement extends LitElement {
       render() {
@@ -423,17 +424,20 @@ describe("FocusTrap Mixin", () => {
     const focusTrap = elWithCB.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const combobox = focusTrap!.querySelector("md-combobox");
 
+    const input = combobox!.shadowRoot?.querySelector("input");
+
     await elementUpdated(elWithCB);
-    console.log("aaaaaaaaa", focusTrap?.innerHTML);
+
+    input!.click(); // Click on input to show the ul and re-evaluate focusable elements
+
+    await nextFrame();
+    await elementUpdated(elWithCB);
 
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
 
-    await nextFrame();
-    await elementUpdated(elWithCB);
+    expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
 
-    combobox!.click();
-    await nextFrame();
-    await elementUpdated(elWithCB);
   });
+
 });

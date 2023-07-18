@@ -58,6 +58,8 @@ export const phoneInputTemplate = html`
             .countryCallingCode=${"+91, India, IN"}
             .errorMessage=${"This phone number is invalid"}
             .value=${"9997770100"}
+            .countryCodeAriaLabel=${"International Dialing Code"}
+            .dialNumberAriaLabel=${"Dial Number"}
             .numberPlaceholder=${"Enter The Phone Number"}
             @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
             @phoneinput-blur="${(e: CustomEvent) =>

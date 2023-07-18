@@ -36,7 +36,7 @@ export const Card = () => {
   const subtitle = text("Subtitle", "Updated 2 hours ago");
   const avatar = boolean("Change Favorite Icon in header on slot - 'card-header-icon'", false);
   const slotTitle = boolean("Add custom Title in slot - 'card-header-title'", false);
-  const info = text("Info", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+  const info = text("Info", "Lorem Ipsum is simply sample text of the printing and typesetting industry.");
 
   return html`
     <md-theme class="theme-toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>

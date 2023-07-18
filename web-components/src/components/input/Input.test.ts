@@ -52,6 +52,7 @@ describe("Input Component", () => {
     );
 
     const spyLabelHandler = jest.spyOn(Input.ELEMENT.prototype, "handleLabelClick");
+
     const labelElement = element.shadowRoot!.querySelector("md-label");
     const event = new MouseEvent("click");
     labelElement!.handleClick(event);
@@ -73,7 +74,11 @@ describe("Input Component", () => {
     labelElement!.dispatchEvent(event);
 
     expect(element.shadowRoot!.activeElement).toEqual(element.input);
+    const eventListener = (event: MouseEvent) => {
+      element.handleOutsideClick(event);
+    };
 
+    document.addEventListener("click", eventListener);
     document.dispatchEvent(event);
     expect(spyOutsideHandler).toHaveBeenCalled();
     expect(element.shadowRoot!.activeElement).not.toEqual(element.input);
@@ -173,7 +178,11 @@ describe("Input Component", () => {
     expect(detail.srcEvent).toEqual(event);
 
     element.input.focus();
+    const eventListener = (event: MouseEvent) => {
+      element.handleOutsideClick(event);
+    };
 
+    document.addEventListener("click", eventListener);
     document.dispatchEvent(new MouseEvent("click"));
 
     expect(element.shadowRoot!.activeElement).not.toEqual(element.input);

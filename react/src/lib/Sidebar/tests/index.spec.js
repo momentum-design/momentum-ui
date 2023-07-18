@@ -28,11 +28,11 @@ describe('<Sidebar />', () => {
   it('should render children if children prop is set', () => {
     const wrapper = shallow(
       <Sidebar>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </Sidebar>
     );
 
-    expect(wrapper.find('.dummy-children').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-children').exists()).toBeTruthy();
   });
 
   it('should add customized theme name if theme prop is set', () => {

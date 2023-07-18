@@ -1,17 +1,18 @@
 import "@/components/button/Button";
-import "@/components/modal/Modal";
-import "@/components/tabs/Tab";
 import "@/components/combobox/ComboBox";
-import "@/components/input/Input";
-import "@/components/radio/Radio";
 import "@/components/form/Form";
-import "@/components/radio/RadioGroup";
-import "@/components/tabs/TabPanel";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
-import "@/components/tabs/Tabs";
-import { customElement, html, LitElement, property, query } from "lit-element";
+import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
+import "@/components/modal/Modal";
+import "@/components/radio/Radio";
+import "@/components/radio/RadioGroup";
+import "@/components/tabs/Tab";
+import "@/components/tabs/TabPanel";
+import "@/components/tabs/Tabs";
 import { debounce } from "@/utils/helpers";
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
+import { customElement, html, LitElement, property, query } from "lit-element";
+import { dropdownObjectLongOptions } from "./dropdown";
 
 @customElement("modal-template-sandbox")
 export class ModalTemplateSandbox extends LitElement {
@@ -25,6 +26,11 @@ export class ModalTemplateSandbox extends LitElement {
 
   @query(".dial-number") dialInput!: Input.ELEMENT;
   @query(".international-checkbox-wrapper") checkboxWrapper!: Element;
+  @query(".queueDropdown") menuOverlay!: Element;
+
+  connectedCallback() {
+    super.connectedCallback();
+  }
 
   private openModal() {
     this.isModalOpen = true;
@@ -67,7 +73,7 @@ export class ModalTemplateSandbox extends LitElement {
   }
   private handleFormatChange() {
     this.otherInput = !this.otherInput;
-    document.dispatchEvent(new CustomEvent("on-component-update"))
+    document.dispatchEvent(new CustomEvent("on-widget-update"))
   }
 
   private handleInputChange = debounce(() => {
@@ -215,6 +221,11 @@ export class ModalTemplateSandbox extends LitElement {
           Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
           Renaissance.
         </p>
+        <md-dropdown
+          .options="${dropdownObjectLongOptions}"
+          option-id="id"
+          option-value="country"
+        ></md-dropdown>
 
         <md-button slot="footer" type="reset">Reset</md-button>
         <md-button slot="footer" @click="${this.closeModal}" type="submit">Submit</md-button>
@@ -323,6 +334,109 @@ export class ModalTemplateSandbox extends LitElement {
           </md-button>
         </div>
       </md-modal>
+      <md-menu-overlay class="queueDropdown" size="large">
+        <md-input
+          placeholder="Search field with tabs"
+          shape="pill"
+          slot="menu-trigger"
+          variant="primary"
+          clear
+          autoFocus></md-input>
+        <div style="padding:1.25rem; width: 100%;">
+        <md-tabs justified selected="0" ref={tabElm}>
+        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
+          <span>Entry Point</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex; alignItems: center;">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+        <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
+          <span>Address Book</span>
+        </md-tab>
+        <md-tab-panel slot="panel" class="address-panel">
+        <md-list role="listbox">
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-1">
+              <div
+                aria-label="item-1-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-1
+                  </p>
+                  <p>
+                    Item-1-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+            <md-list-item
+              slot="list-item"
+              type="auto"
+              aria-label="item-2">
+              <div
+                aria-label="item-2-div"
+                display-value="12345678"
+                style="display: flex, alignItems: center">
+                <div style={{ paddingLeft: '12px' }}>
+                  <div className="address-dn"></div>
+                  <p>
+                    Item-2
+                  </p>
+                  <p>
+                    Item-2-sub
+                  </p>
+                </div>
+              </div>
+            </md-list-item>
+      </md-list>
+        </md-tab-panel>
+      </md-tabs>
+        </div>
+      </md-menu-overlay>
     `;
   }
 }

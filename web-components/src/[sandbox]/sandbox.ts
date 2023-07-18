@@ -8,6 +8,7 @@ import {
   accordionTemplate,
   alertBannerTemplate,
   alertTemplate,
+  audioPlayerTemplate,
   avatarTemplate,
   badgeTemplate,
   breadcrumbTemplate,
@@ -141,6 +142,13 @@ export class Sandbox extends LitElement {
             <h2>md-alert</h2>
             <sass-stats component="alert">
               ${alertTemplate}
+            </sass-stats>
+          </div>
+
+          <div class="container" aria-label="md-audio-player">
+            <h2>md-audio-player</h2>
+            <sass-stats component="audio-player">
+              ${audioPlayerTemplate}
             </sass-stats>
           </div>
 

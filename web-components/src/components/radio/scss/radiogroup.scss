@@ -23,3 +23,7 @@
 :host([alignment="horizontal"]) div ::slotted(md-radio) {
   margin-right: calc(#{$radio-main-indent} * 8);
 }
+
+:host([disabled]) div ::slotted(md-radio) {
+  pointer-events: none;
+}

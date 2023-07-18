@@ -265,7 +265,7 @@ describe("Combobox Component", () => {
     test("should open/close dropdown if clicked", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
+          <md-combobox .options=${comboBoxOptions} no-clear-icon></md-combobox>
         `
       );
       const event = new MouseEvent("click");
@@ -371,6 +371,20 @@ describe("Combobox Component", () => {
       el.focusedIndex = 0;
       await elementUpdated(el);
 
+      const arrowLeft = createEvent(Key.ArrowLeft);
+      const propogationSpyLeft = jest.spyOn(arrowLeft,"stopPropagation");
+      el.input!.dispatchEvent(arrowLeft)
+
+      expect(propogationSpyLeft).toHaveBeenCalled();
+      await elementUpdated(el);
+
+      const arrowRight = createEvent(Key.ArrowRight);
+      const propogationSpyRight = jest.spyOn(arrowRight,"stopPropagation");
+      el.input!.dispatchEvent(arrowRight)
+
+      expect(propogationSpyRight).toHaveBeenCalled();
+      await elementUpdated(el);
+
       const enter = createEvent(Key.Enter);
       el.input!.dispatchEvent(enter);
 
@@ -466,6 +480,17 @@ describe("Combobox Component", () => {
       expect(el.input!.value).toEqual("combobox");
       expect(el.focusedIndex).toEqual(0);
       expect(el.selectedOptions.length).toEqual(1);
+      const tab = createEvent(Key.Tab);
+      el.expanded = true;
+      el.focusedIndex = 0;
+      el.input!.value = "combobox";
+      el.selectedOptions.push("Afghanistan");
+      await elementUpdated(el);
+
+      el.input!.dispatchEvent(tab);
+      expect(el.expanded).toBeFalsy();
+      expect(el.input!.value).toEqual("combobox");
+      expect(el.focusedIndex).toEqual(0);
 
       const home = createEvent(Key.Home);
 
@@ -1317,7 +1342,7 @@ describe("Combobox Component", () => {
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
-    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.focusedGroupIndex).toEqual(1);
 
     groupList![1].dispatchEvent(enter);
 
@@ -1416,6 +1441,20 @@ describe("Combobox Component", () => {
   });
 
   test("should navigate through tab between groups for multi select", async () => {
+    const el2 = await fixture<ComboBox.ELEMENT>(
+      html`
+        <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder ="Placeholder">
+          <div label="Countries">
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </div>
+        </md-combobox>
+      `
+    );
+    await elementUpdated(el2);
+    await nextFrame();
+
     const el = await fixture<ComboBox.ELEMENT>(
       html`
         <md-combobox with-custom-content is-multi placeholder="Placeholder">
@@ -1489,7 +1528,7 @@ describe("Combobox Component", () => {
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
-    expect(el.focusedGroupIndex).toEqual(0);
+    expect(el.focusedGroupIndex).toEqual(1);
 
     groupList![1].dispatchEvent(enter);
 

@@ -12,6 +12,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
+import { Key } from "@/constants";
 
 export const tooltipPlacement = [
   "auto",
@@ -139,6 +140,12 @@ export namespace Tooltip {
       }
     }
 
+    handleKeyDown(event: KeyboardEvent){
+      if (event.code === Key.Escape) {
+        this.notifyTooltipDestroy();
+      }
+    }
+
     handleSlotContentChange(event: Event) {
       const slot = event.target as HTMLSlotElement;
       if (slot) {
@@ -189,6 +196,9 @@ export namespace Tooltip {
             class="md-tooltip__reference"
             @mouseenter=${() => this.notifyTooltipCreate()}
             @mouseleave=${() => this.notifyTooltipDestroy()}
+            @focusin=${(event: Event)=>this.handleFocusIn(event)}
+            @focusout=${(event: Event)=>this.handleFocusOut(event)}
+            @keydown=${(event: KeyboardEvent)=>this.handleKeyDown(event)}
             aria-describedby="tooltip"
           >
             <slot></slot>

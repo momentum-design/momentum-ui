@@ -8,20 +8,20 @@
 
 import "@/components/help-text/HelpText";
 import "@/components/icon/Icon";
-import { Key } from "@/constants";
+import { ATTRIBUTES, Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { LitElement, PropertyValues, html, internalProperty, property, query, queryAll } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
+import "lit-virtualizer";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
-import "lit-virtualizer";
 
 export namespace ComboBox {
   type OptionMember = { [key: string]: string };
@@ -69,6 +69,7 @@ export namespace ComboBox {
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "Combobox Input";
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
+    @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
 
     @property({ type: String, attribute: "all-i18n" }) allTextLocalization = "All";
     @property({ type: String, attribute: "select-all-i18n" }) selectAllTextLocalization = "Select All";
@@ -205,13 +206,15 @@ export namespace ComboBox {
 
     protected handleFocusIn(event: Event) {
       if (!this.disabled) {
-        requestAnimationFrame(() => {
-          this.input!.focus();
-          this.focusedGroupIndex = -1;
-        });
+        if (this.noClearIcon) {
+          requestAnimationFrame(() => {
+            this.input!.focus();
+            this.focusedGroupIndex = -1;
+          });
 
-        if (this.selectWhenInFocus) {
-          this.input!.select();
+          if (this.selectWhenInFocus) {
+            this.input!.select();
+          }
         }
         super.handleFocusIn && super.handleFocusIn(event);
       }
@@ -259,6 +262,7 @@ export namespace ComboBox {
           if (selectedIndex !== -1) {
             this.setSelectedOption(option);
             this.setInputValue(this.getOptionValue(option));
+            this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
             this.focusedIndex = selectedIndex;
             this.virtualizer?.scrollToIndex(this.focusedIndex, "center");
             this.focusedGroupIndex = -1;
@@ -498,13 +502,24 @@ export namespace ComboBox {
       this.updateOnNextFrame(() => {
         let height = 0;
         let labelHeight = 0;
+        let virtualizerHeight = 0;
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
             : [...this.lists];
+
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
+
+          virtualizerHeight =
+            this.checkForVirtualScroll() && this.allowSelectAll
+              ? updatedList
+                  .slice(1, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0)
+              : updatedList
+                  .slice(0, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
         if (this.labels) {
           labelHeight = [...this.labels]
@@ -515,7 +530,7 @@ export namespace ComboBox {
           this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
         }
         if (this.virtualizer) {
-          this.virtualizer.style.height = `${height + 10}px`;
+          this.virtualizer.style.height = `${virtualizerHeight + 10}px`;
         }
         if (this.showCustomError || this.showLoader) {
           const customContent = this.listBox?.querySelector("[slot]");
@@ -706,7 +721,6 @@ export namespace ComboBox {
     }
 
     async handleSelectAll() {
-      if (this.selectedOptions.length === 0 || this.isSelectAllSelected()) {
         this.isSelectAllChecked = !this.isSelectAllChecked;
         if (this.isSelectAllChecked) {
           this.selectedOptions = [...this.options];
@@ -721,13 +735,12 @@ export namespace ComboBox {
         this.notifySelectedChange({
           selected: this.selectedOptions
         });
-      }
     }
 
     handleInputKeyUp(event: KeyboardEvent) {
       switch (event.code) {
         case Key.Escape: {
-          return;
+          break;
         }
         case Key.Backspace:
           {
@@ -776,8 +789,8 @@ export namespace ComboBox {
 
     handleInput(event: Event) {
       const inputValue = (event.target as HTMLInputElement).value;
-      this.inputValue = inputValue;
-      this.notifyInputValueChanged(inputValue);
+      this.inputValue = inputValue.trim();
+      this.notifyInputValueChanged(inputValue.trim());
     }
 
     private removeAllSelected() {
@@ -786,6 +799,7 @@ export namespace ComboBox {
       this.selectedOptions = [];
       this.inputValue = "";
       this.setInputValue();
+      this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
       this.setVisualListbox(false);
       this.unCheckedAllOptions();
       this.updateOnNextFrame(() => {
@@ -826,6 +840,7 @@ export namespace ComboBox {
           this.setSelectedOption(option);
           if (!this.isMulti) {
             this.setInputValue(this.getOptionValue(option));
+            this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
           } else if (this.isMulti && this.allowSelectAll) {
             this.isSelectAllChecked = this.isSelectAllSelected();
           }
@@ -834,10 +849,13 @@ export namespace ComboBox {
     }
 
     private shouldChangeButton() {
-      return (
+      const shouldChange =
         (this.input && this.input.value.length > 0 && !this.noClearIcon) ||
-        (this.isMulti && this.selectedOptions.length && !this.noClearIcon)
-      );
+        (this.isMulti && this.selectedOptions.length && !this.noClearIcon);
+      if (shouldChange) {
+        document.dispatchEvent(new CustomEvent("on-widget-update"));
+      }
+      return shouldChange;
     }
 
     private setCustomValue() {
@@ -852,6 +870,7 @@ export namespace ComboBox {
             const option = this.getFocusedItem(this.focusedIndex);
             if (option) {
               this.setInputValue(this.getOptionValue(option));
+              this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
             }
           });
         }
@@ -905,6 +924,9 @@ export namespace ComboBox {
           {
             this.setFocusOnHost(true);
             this.setVisualListbox(false);
+            if (event.code === Key.Tab && this.isMulti) {
+              return;
+            }
             this.updateOnNextFrame(() => {
               const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
               if (this.allowCustomValue && this.input && this.input.value.length) {
@@ -918,6 +940,7 @@ export namespace ComboBox {
                 this.setSelectedOption(option);
                 if (!this.showSelectedCount) {
                   this.setInputValue(this.getOptionValue(option));
+                  this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
                 }
               }
               if (this.isMulti && this.allowSelectAll && this.focusedIndex === 0) {
@@ -950,6 +973,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(option)];
               if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
               }
               this.focusedGroupIndex = -1;
             });
@@ -977,11 +1001,18 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(option)];
               if (option && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(option));
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
                 this.focusedGroupIndex = -1;
               }
             });
           }
           break;
+          case Key.ArrowLeft:
+          case Key.ArrowRight:
+              {
+                event.stopPropagation();
+              }
+              break;
         case Key.Escape:
           {
             this.setFocusOnHost(true);
@@ -990,6 +1021,7 @@ export namespace ComboBox {
               this.setVisualListbox(false);
             } else {
               this.setInputValue();
+              this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
               this.focusedIndex = -1;
               this.focusedGroupIndex = -1;
               this.removeAllSelected();
@@ -1008,12 +1040,16 @@ export namespace ComboBox {
           }
           break;
         case Key.Space: {
+          this.expanded = true;
           if (this.isMulti) {
             event.preventDefault();
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
             if (option) {
               this.setSelectedOption(option);
-              if (!this.showSelectedCount) this.setInputValue();
+              if (!this.showSelectedCount) {
+                this.setInputValue();
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
+              }
             }
             if (this.focusedIndex === 0 && this.allowSelectAll) {
               this.handleSelectAll();
@@ -1022,7 +1058,6 @@ export namespace ComboBox {
           break;
         }
         default: {
-          this.setVisualListbox(true);
           break;
         }
       }
@@ -1049,6 +1084,7 @@ export namespace ComboBox {
                   this.setSelectedOption(option);
                   if (!this.showSelectedCount) {
                     this.setInputValue(this.getOptionValue(option));
+                    this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
                     this.updateOnNextFrame(() => {
                       this.input!.focus();
                       this.focusedGroupIndex = -1;
@@ -1082,6 +1118,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(option)];
               if (!this.showSelectedCount && option) {
                 this.setInputValue(this.getOptionValue(option));
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
               }
               this.focusedGroupIndex = -1;
             });
@@ -1105,6 +1142,7 @@ export namespace ComboBox {
               this.groupExpandedList = [this.getOptionGroupName(item)];
               if (item && !this.showSelectedCount) {
                 this.setInputValue(this.getOptionValue(item));
+                this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(item));
               }
             });
           }
@@ -1263,7 +1301,13 @@ export namespace ComboBox {
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
-          <span> <md-icon class="md-input__icon-clear" name="clear-active_12"></md-icon></span>
+          <span>
+            <md-icon
+              class="md-input__icon-clear"
+              name="clear-active_12"
+              style="height: ${this.clearIconHeight};"
+            ></md-icon
+          ></span>
         </button>
       `;
     }
@@ -1276,7 +1320,7 @@ export namespace ComboBox {
           aria-label=${this.arrowAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
-          tabindex="0"
+          tabindex="-1"
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
@@ -1312,17 +1356,11 @@ export namespace ComboBox {
           @click=${this.handleSelectAll}
           aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
         >
-          ${!this.isSelectAllChecked && this.selectedOptions.length !== 0
-            ? html`
-                <span class="select-option indeterminate">
-                  <md-icon name="icon-minus_14"></md-icon>
-                </span>
-              `
-            : html`
+       
                 <span class="select-option">
                   <md-icon name="icon-check_14"></md-icon>
                 </span>
-              `}
+              
           <span part="label" class="select-label">${this.selectAllTextLocalization}</span>
         </li>
       `;
@@ -1428,10 +1466,16 @@ export namespace ComboBox {
       if (!this.checkForVirtualScroll()) {
         return styleMap({
           display: isInvisible ? "none" : "block",
-          "z-index": "99"
+          "z-index": "99",
+          overflow: "auto"
         });
       } else {
-        return styleMap({ visibility: isInvisible ? "hidden" : "visible", "z-index": "99" });
+        return styleMap({
+          visibility: isInvisible ? "hidden" : "visible",
+          "z-index": isInvisible ? "-1" : "99",
+          opacity: isInvisible ? "0" : "1",
+          overflow: "hidden"
+        });
       }
     }
 
@@ -1443,7 +1487,7 @@ export namespace ComboBox {
           part="combobox-option"
           role="option"
           class="md-combobox-option"
-          aria-label=${this.getOptionValue(option)}
+          aria-label=${this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option)}
           aria-selected=${this.getAriaState(optionIndex)}
           tabindex="-1"
           @click=${this.handleListClick.bind(this)}
@@ -1500,6 +1544,7 @@ export namespace ComboBox {
                   ? ""
                   : this.placeholder}
                 aria-controls="md-combobox-listbox"
+                ?readonly=${this.allowSelectAll}
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
                 title=${ifDefined(this.inputTitle())}

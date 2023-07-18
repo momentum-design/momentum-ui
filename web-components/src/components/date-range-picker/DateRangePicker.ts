@@ -21,15 +21,13 @@ export namespace DateRangePicker {
     connectedCallback() {
       super.connectedCallback();
       super.render();
-      this.addEventListener("date-selection-change", e => {
-        return this.handleDateSelection(e as CustomEvent);
-      });
+      this.addEventListener("date-selection-change", this.handleDateSelection);
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      this.removeEventListener("date-selection-change", () => {});
+      this.removeEventListener("date-selection-change", this.handleDateSelection);
     }
 
     updateValue = () => {
@@ -46,7 +44,7 @@ export namespace DateRangePicker {
       return date.replace(/-+/g, "/");
     }
 
-    handleDateSelection = (e: CustomEvent) => {
+    handleDateSelection = (e: any) => {
       const selection: DateTime = e.detail.data;
       if (this.startDate && this.endDate) {
         const startObj = DateTime.fromSQL(this.startDate);

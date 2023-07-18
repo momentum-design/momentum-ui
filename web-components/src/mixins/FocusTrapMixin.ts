@@ -120,7 +120,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         element.style.opacity === "0" ||
         element.style.visibility === "hidden" ||
         element.style.visibility === "collapse" ||
-        this.isNotVisible(element)
+        this.isNotVisible(element) ||
+        getComputedStyle(element).visibility === "hidden" ||
+        getComputedStyle(element).height === "0"
       );
     }
 
@@ -179,9 +181,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private shouldSkipFocus(element: HTMLElement) {
       // when combobox is having more than 100 items screen getting freezed
-      if(element.className && element.className.split && element.className.split(" ").indexOf('md-combobox')>-1){
-        return true; 
-      }
+      if(element.id && element.id.split && element.id.split(" ").indexOf('md-combobox-listbox')>-1){
+          return true; 
+        }
       return false;
     }
 
@@ -364,7 +366,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       const self = this;
-      document.addEventListener("on-component-update", () => {
+      document.addEventListener("on-widget-update", () => {
         setTimeout(() => {
           self.setFocusableElements();
         }, 10);

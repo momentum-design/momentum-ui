@@ -265,6 +265,7 @@ describe("Tabs", () => {
         originalTarget: {
           id: id
         },
+        composedPath : ()=> [{id:"id"}, {id:"id2"}],
         code: code,
         ctrlKey: false,
         shiftKey: false,
@@ -410,7 +411,7 @@ describe("Tabs", () => {
   });
 
   test("should convert ids", () => {
-    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab.ELEMENT).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(0);
+    expect(tabs["getCopyTabId"](tabs.slotted[0] as Tab.ELEMENT).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)).toBe(-1);
     expect(
       tabs["getNormalizedTabId"](`${MORE_MENU_TAB_COPY_ID_PREFIX}TEST`).indexOf(MORE_MENU_TAB_COPY_ID_PREFIX)
     ).toBe(-1);

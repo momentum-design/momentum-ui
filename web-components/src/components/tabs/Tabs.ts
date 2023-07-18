@@ -43,7 +43,7 @@ export namespace Tabs {
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) overlowLabel = "More Tabs";
+    @property({ type: String }) overflowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
@@ -120,7 +120,7 @@ export namespace Tabs {
     private hiddenTabsSortableInstance: Sortable | null = null;
 
     private getCopyTabId(tab: Tab.ELEMENT) {
-      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX) === false) {
+      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
         return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
       } else {
         return tab.id;
@@ -639,9 +639,15 @@ export namespace Tabs {
     }
 
     handleTabKeydown(event: any) {
-      const elementId = event.path ? event.path[0].id : event.originalTarget.id;
-      const id = this.getNormalizedTabId(elementId);
+      let elementId;
 
+      if(event.path){
+        elementId = event.path[0].id;
+      }
+      else{
+        elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
+      }
+      const id = this.getNormalizedTabId(elementId);
       this.dispatchKeydownEvent(event, id);
 
       const key = event.code;
@@ -965,7 +971,7 @@ export namespace Tabs {
           })}"
           role="tablist"
         >
-          <slot
+        <slot
             name="tab"
             class="${classMap({
               "visible-tabs-slot": this.direction === "horizontal"
@@ -996,6 +1002,7 @@ export namespace Tabs {
                 </md-tab>
               `
             )}
+           
           </div>
 
           <md-menu-overlay
@@ -1011,7 +1018,7 @@ export namespace Tabs {
             <md-tab
               slot="menu-trigger"
               id="${MORE_MENU_TAB_TRIGGER_ID}"
-              aria-label="${this.overlowLabel}"
+              aria-label="${this.overflowLabel}"
               aria-haspopup="true"
               tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
               .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
@@ -1019,7 +1026,7 @@ export namespace Tabs {
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
             >
-              <span class="md-menu-overlay__overflow-label">${this.overlowLabel}</span>
+              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
             </md-tab>
             <div

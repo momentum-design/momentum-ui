@@ -70,7 +70,6 @@
       cursor: pointer;
       fill: var(--md-secondary-text-color, $md-gray-70);
       height: $combobox-search-icon-height;
-      padding: calc(#{$combobox-main-indent} / 2);
 
       &:focus {
         @include remove-focus;
@@ -113,6 +112,7 @@
 
 .md-combobox-button {
   @include arrow-transition;
+  align-self: center;
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -125,15 +125,19 @@
   vertical-align: bottom;
   height: inherit;
   display: flex;
+  
   .md-input__icon-clear{
-    display: flex;
     align-items: center;
-    height: inherit;
+    display: flex;
   }
 
   md-icon {
     color: var(--combobox-dropdown-item-icon-color, $lm-combobox-dropdown-item-icon-color-light);
   }
+}
+.md-combobox-button.clear {
+  height: auto;
+  padding: 0.115rem;
 }
 
 .md-combobox-button.clear:focus, .md-combobox-button.arrow-down:focus{
@@ -239,16 +243,7 @@ ul {
     }
   }
 
-  .indeterminate {
-    background: var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
-    border: 1px solid
-      var(--combobox-dropdown-item-checked-bg-color, $lm-combobox-dropdown-item-checked-bg-color-light);
-
-    md-icon {
-      color: var(--combobox-dropdown-item-checked-icon-color, $lm-combobox-dropdown-item-checked-icon-color-light);
-      visibility: visible;
-    }
-  }
+  
 
   &:hover {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);

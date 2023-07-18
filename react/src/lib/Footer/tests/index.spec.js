@@ -9,7 +9,7 @@ describe('tests for <Footer />', () => {
   });
 
   it('should render top section only if children props is passed', () => {
-    const container = shallow(<Footer children='dummy content' />);
+    const container = shallow(<Footer children='sample content' />);
 
     expect(container.find('.md-footer__top').exists()).toBeTruthy();
     expect(container.find('.md-footer__bottom').exists()).toBeFalsy();

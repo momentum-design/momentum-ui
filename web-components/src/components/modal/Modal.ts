@@ -19,7 +19,6 @@ import styles from "./scss/module.scss";
 
 export const modalType = ["default", "full", "large", "small", "dialog"] as const;
 
-const fadeDuration = 150;
 const minisculeLatency = 13;
 /**
  * Increasing latency above 13 ms has an increasingly negative impact
@@ -102,7 +101,6 @@ export namespace Modal {
         event.preventDefault();
         if (this.show && !this.noExitOnEsc) {
           this.show = false;
-          this.notifyModalClose();
         }
       }
     };
@@ -157,19 +155,18 @@ export namespace Modal {
 
     private modalFadeOut() {
       this.animating = false;
-
       this.deactivateFocusTrap!();
-
-      setTimeout(() => {
-        this.notifyModalClose();
-      }, fadeDuration);
+      this.notifyModalClose();
     }
 
     handleCloseBackdrop() {
       if (this.backdropClickExit) {
         this.show = false;
-        this.notifyModalClose();
       }
+    }
+    hideModal() {
+      this.animating = false;
+      this.show = false;
     }
 
     private topCloseBtnTemplate() {
@@ -179,7 +176,7 @@ export namespace Modal {
               <md-button
                 hasRemoveStyle
                 class="md-close md-modal__close"
-                @click="${this.modalFadeOut}"
+                @click="${this.hideModal}"
                 @keydown="${this.handleKeyDown}"
                 aria-label=${this.ariaLabelClose}
               >
@@ -192,7 +189,6 @@ export namespace Modal {
 
     private handleFooterClick() {
       this.show = false;
-      this.notifyModalClose();
     }
 
     private headerTemplate() {

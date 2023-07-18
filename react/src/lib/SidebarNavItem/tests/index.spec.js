@@ -21,17 +21,17 @@ describe('tests for <SidebarNavItem />', () => {
   it('should render children if children prop is set', () => {
     const wrapper = mount(
       <SidebarNavItem>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </SidebarNavItem>
     );
 
-    expect(wrapper.find('.dummy-children').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-children').exists()).toBeTruthy();
   });
 
   it('should have expanded class if children present and expanded', () => {
     const wrapper = mount(
       <SidebarNavItem expanded>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </SidebarNavItem>
     );
 
@@ -41,7 +41,7 @@ describe('tests for <SidebarNavItem />', () => {
   it('should expand if children present and header list item is clicked', () => {
     const wrapper = mount(
       <SidebarNavItem>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </SidebarNavItem>
     );
 
@@ -55,25 +55,25 @@ describe('tests for <SidebarNavItem />', () => {
   it('should allow titleNode to be passed', () => {
     const wrapper = mount(
       <SidebarNavItem titleNode={
-        <div className='dummy-title'>Dummy Title</div>
+        <div className='sample-title'>Sample Title</div>
       } />
     );
 
-    expect(wrapper.find('.dummy-title').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-title').exists()).toBeTruthy();
   });
 
   it('should pass onClick to titleNode', () => {
     const wrapper = mount(
       <SidebarNavItem titleNode={
-        <div className='dummy-title'>Dummy Title</div>
+        <div className='sample-title'>Sample Title</div>
       }>
-        <div className='dummy-children'>Dummy Children</div>
+        <div className='sample-children'>Sample Children</div>
       </SidebarNavItem>
     );
 
     expect(wrapper.find('.md-sidebar-nav__group--collapsed').exists()).toBeTruthy();
 
-    wrapper.find('.dummy-title').first().simulate('click');
+    wrapper.find('.sample-title').first().simulate('click');
 
     expect(wrapper.find('.md-sidebar-nav__group--expanded').exists()).toBeTruthy();
   });
@@ -106,10 +106,10 @@ describe('tests for <SidebarNavItem />', () => {
 
   it('should allow icon as a node', () => {
     const wrapper = mount(
-      <SidebarNavItem icon={<div className='dummy-icon'>Icon</div>} />
+      <SidebarNavItem icon={<div className='sample-icon'>Icon</div>} />
     );
 
-    expect(wrapper.find('.dummy-icon').exists()).toBeTruthy();
+    expect(wrapper.find('.sample-icon').exists()).toBeTruthy();
   });
 
   it('should handle title prop', () => {

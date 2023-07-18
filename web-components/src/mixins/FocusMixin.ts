@@ -123,6 +123,11 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
     protected isElementFocused(element: HTMLElement) {
       return this.getDeepActiveElement() !== element;
     }
+
+    disconnectedCallback(): void {
+      this.removeEventListener("focus", this.handleFocusIn);
+      this.removeEventListener("blur", this.handleFocusOut);
+    }
   }
 
   DedupeMixin(FocusMixin, Focus);

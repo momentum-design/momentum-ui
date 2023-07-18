@@ -63,6 +63,12 @@ export namespace TaskItem {
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
+        case "progressive_campaign":
+            return html`
+              <md-badge color="green" circle>
+                <md-icon name="icon-icon-campaign_18"></md-icon>
+              </md-badge>
+            `;
         case "web":
           return html`
             <md-badge color="blue" circle>
@@ -151,8 +157,6 @@ export namespace TaskItem {
     }
 
     handleKeyDown(event: KeyboardEvent) {
-      event.preventDefault();
-
       this.dispatchEvent(
         new CustomEvent("taskitem-keydown", {
           detail: {

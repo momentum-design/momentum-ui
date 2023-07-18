@@ -50,8 +50,9 @@ export namespace TaskItem {
               <md-icon name="incoming-call-active_16"></md-icon>
             </md-badge>
           `;
-          case "midcall telephony":
-            return html`
+        case "applemessages":
+        case "midcall telephony":
+          return html`
             <md-badge circle>
               <img src="${this.iconSrc}" />
             </md-badge>
@@ -62,7 +63,7 @@ export namespace TaskItem {
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
-        case "chat":
+        case "web":
           return html`
             <md-badge color="blue" circle>
               <md-icon name="chat-active_16"></md-icon>

@@ -63,6 +63,7 @@ export namespace TaskItem {
               <md-icon name="icon-icon-callback_18"></md-icon>
             </md-badge>
           `;
+<<<<<<< Updated upstream
         case "progressive_campaign":
             return html`
               <md-badge color="green" circle>
@@ -70,6 +71,9 @@ export namespace TaskItem {
               </md-badge>
             `;
         case "web":
+=======
+        case "chat":
+>>>>>>> Stashed changes
           return html`
             <md-badge color="blue" circle>
               <md-icon name="chat-active_16"></md-icon>

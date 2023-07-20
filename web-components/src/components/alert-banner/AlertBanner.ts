@@ -69,7 +69,7 @@ export namespace AlertBanner {
       return html`
         ${this.show
           ? html`
-              <div class="${classMap(classes)}">
+              <div class="${classMap(classes)}" role="alert">
                 <div class="md-alert-banner__text">
                   <slot><span>${this.message}</span></slot>
                 </div>

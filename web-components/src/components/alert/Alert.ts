@@ -92,7 +92,7 @@ export namespace Alert {
                   ${this.renderIconTemplate()}
                 </div>
                 <div part="content" class="md-alert__content">
-                  <div aria-label=${this.title} class="md-alert__title" role="heading" aria-level="1">
+                  <div aria-label=${this.title} class="md-alert__title" aria-level="1">
                     ${this.title}
                   </div>
                   <div aria-label=${this.message} class="md-alert__message">

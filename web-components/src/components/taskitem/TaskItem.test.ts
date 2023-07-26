@@ -90,12 +90,14 @@ describe("TaskItem", () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "applemessages",
       "Mihael Varificantare",
-      "",
+      "Mihael Varificantare",
       "quelle_1",
-      "consulting",
+      "play",
       0,
       "",
-      false
+      false,
+      "",
+      "/images/illustrations/apple-messages-light.svg"
     );
     const type = element.shadowRoot?.querySelector("img");
     expect(type?.getAttribute("src")).toEqual("/images/illustrations/apple-messages-light.svg");

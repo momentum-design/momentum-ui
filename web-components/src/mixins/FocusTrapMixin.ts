@@ -52,7 +52,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
     @internalProperty() protected initialFocusComplete = false;
-    @internalProperty() private focusableTimer: any;
+    @internalProperty() private focusableTimer: any = [];
 
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
@@ -373,7 +373,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     connectedCallback() {
       super.connectedCallback();
-      this.focusableTimer= [];
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       document.addEventListener("click", this.handleOutsideTrapClick);

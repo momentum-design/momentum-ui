@@ -216,6 +216,7 @@ export namespace Input {
           }
         })
       );
+      event.stopPropagation();
     }
 
     handleFocus(event: FocusEvent) {

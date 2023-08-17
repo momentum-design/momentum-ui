@@ -86,6 +86,23 @@ describe("TaskItem", () => {
     expect(type?.getAttribute("name")).toEqual("whatsApp_16");
   });
 
+  test("should render TaskItem Component for Apple Chat Messenger", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "applemessages",
+      "Mihael Varificantare",
+      "Mihael Varificantare",
+      "quelle_1",
+      "play",
+      0,
+      "",
+      false,
+      "",
+      "/images/illustrations/apple-messages-light.svg"
+    );
+    const type = element.shadowRoot?.querySelector("img");
+    expect(type?.getAttribute("src")).toEqual("/images/illustrations/apple-messages-light.svg");
+  });
+
   test("should render TaskItem Component with progressive_campaign", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "progressive_campaign",

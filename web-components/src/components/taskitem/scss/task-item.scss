@@ -91,6 +91,10 @@
   position: relative;
   width: $taskitem-mediatype-width;
 
+  img {
+    max-width: fit-content;
+  }
+
   .md-taskitem__status {
     @include taskitem-status;
     background: var(--taskitem-status-bg-color, $lm-taskitem-status-bg-color-light);

@@ -94,6 +94,24 @@ describe("AudioPlayer", () => {
     expect(element.playbackSpeed).toBe(0.25);
   });
 
+  test("should adjust playback speed using up arrow key in combination with enter key", async () => {
+    const element: AudioPlayer.ELEMENT = await fixtureFactory();
+    await elementUpdated(element);
+    element.toggleSpeedPopup();
+    element.handleKeyDown(new KeyboardEvent("keydown", { code: Key.ArrowUp }));
+    element.handleKeyDown(new KeyboardEvent("keydown", { code: Key.Enter }));
+    expect(element.playbackSpeed).toBe(0.75);
+  });
+
+  test("should adjust playback speed using down arrow key in combination with enter key", async () => {
+    const element: AudioPlayer.ELEMENT = await fixtureFactory();
+    await elementUpdated(element);
+    element.toggleSpeedPopup();
+    element.handleKeyDown(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
+    element.handleKeyDown(new KeyboardEvent("keydown", { code: Key.Enter }));
+    expect(element.playbackSpeed).toBe(1.25);
+  });
+
   test("should convert audio duration into friendly string", async () => {
     const element: AudioPlayer.ELEMENT = await fixtureFactory();
     await elementUpdated(element);

@@ -116,7 +116,8 @@ export namespace AudioPlayer {
     @internalProperty() playbackSpeed = 1;
     @internalProperty() volumeExpanded = false;
     @internalProperty() bufferedRange = 0;
-
+    @internalProperty() selectedPlaybackSpeed = this.playbackSpeed;
+    @internalProperty() currentlySelectingPlaybackSpeed = false;
     constructor() {
       super();
       this.audio = new Audio();
@@ -305,6 +306,34 @@ export namespace AudioPlayer {
             }
           }
           break;
+        case Key.ArrowUp: {
+          if (this.showSpeedPopup) {
+            this.currentlySelectingPlaybackSpeed = true;
+            const currentIndex = playbackSpeeds.findIndex(speed => speed.value === this.selectedPlaybackSpeed);
+            const newIndex = Math.max(0, currentIndex - 1);
+            this.selectedPlaybackSpeed = playbackSpeeds[newIndex].value;
+            event.preventDefault();
+            this.currentlySelectingPlaybackSpeed = false;
+          }
+          break;
+        }
+        case Key.ArrowDown: {
+          if (this.showSpeedPopup) {
+            this.currentlySelectingPlaybackSpeed = true;
+            const currentIndex = playbackSpeeds.findIndex(speed => speed.value === this.selectedPlaybackSpeed);
+            const newIndex = Math.min(playbackSpeeds.length - 1, currentIndex + 1);
+            this.selectedPlaybackSpeed = playbackSpeeds[newIndex].value;
+            event.preventDefault();
+            this.currentlySelectingPlaybackSpeed = false;
+          }
+          break;
+        }
+        case Key.Enter: {
+          if (this.showSpeedPopup) {
+            this.setPlaybackSpeed(this.selectedPlaybackSpeed);
+            event.preventDefault();
+          }
+        }
         default:
           break;
       }
@@ -419,8 +448,13 @@ export namespace AudioPlayer {
               <div class="speed-popup ${classMap(this.popupClassMap)}">
                 <ul id="speed-popup-menu">
                   ${playbackSpeeds.map(speed => {
+                    const isCurrentlySelected =
+                      this.selectedPlaybackSpeed == speed.value && !this.currentlySelectingPlaybackSpeed;
                     return html`
-                      <li @click="${() => this.setPlaybackSpeed(speed.value)}">
+                      <li
+                        class=${isCurrentlySelected ? "speed-popup-selected-speed" : ""}
+                        @click="${() => this.setPlaybackSpeed(speed.value)}"
+                      >
                         <span>${speed.label}</span>
                         ${this.playbackSpeed == speed.value
                           ? html`

@@ -70,7 +70,7 @@ md-button::part(button) {
   border-radius: $audio-player-timeline__border-radius;
   position: absolute;
   top: 0;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .text-container {
@@ -96,7 +96,7 @@ md-button::part(button) {
 
   md-icon {
     cursor: pointer;
-  };
+  }
 }
 
 .volume-container:hover {
@@ -167,15 +167,21 @@ md-button::part(button) {
       width: rem-calc(160);
       height: rem-calc(30);
       cursor: pointer;
-      transition: background .1s ease;
+      transition: background 0.1s ease;
       display: inline-flex;
       justify-content: space-between;
       align-items: center;
 
       &:hover {
-        background: var(--audio-player-background-speed-popup-hover, $lm-audio-player-background-speed-popup-hover-light);
+        background: var(
+          --audio-player-background-speed-popup-hover,
+          $lm-audio-player-background-speed-popup-hover-light
+        );
       }
     }
   }
 }
 
+.speed-popup-selected-speed {
+  background: var(--audio-player-background-speed-popup-hover, $lm-audio-player-background-speed-popup-hover-light);
+}

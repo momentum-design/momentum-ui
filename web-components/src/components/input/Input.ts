@@ -6,22 +6,22 @@
  *
  */
 
-import { Key, ARIA_INVALID } from "@/constants";
-import { FocusMixin } from "@/mixins/FocusMixin";
-import reset from "@/wc_scss/reset.scss";
-import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
 import "@/components/help-text/HelpText";
 import "@/components/icon/Icon";
 import "@/components/label/Label";
 import "@/components/spinner/Spinner";
-import styles from "./scss/module.scss";
+import { ARIA_INVALID, Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { FocusMixin } from "@/mixins/FocusMixin";
+import reset from "@/wc_scss/reset.scss";
+import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
+import { html, internalProperty, LitElement, property, query } from "lit-element";
+import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { repeat } from "lit-html/directives/repeat";
+import { styleMap } from "lit-html/directives/style-map";
+import styles from "./scss/module.scss";
 
 export const containerSize = [
   "small-1",
@@ -216,7 +216,6 @@ export namespace Input {
           }
         })
       );
-      event.stopPropagation();
     }
 
     handleFocus(event: FocusEvent) {

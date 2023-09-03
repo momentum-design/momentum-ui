@@ -71,6 +71,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         }
 
         const newElement = this.focusableElements[this.focusTrapIndex];
+        console.log("Coming inside updated", "focusTrapIndex: " ,this.focusTrapIndex, "focusableElements" , this.focusableElements, newElement);
         if (newElement) {
           this.tryFocus(newElement);
         }
@@ -236,17 +237,38 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     private focusTrap(direction: boolean) {
       const activeElement = this.getDeepActiveElement!() as HTMLElement;
       const activeIndex = this.findElement(activeElement);
+      console.log("Coming inside the focusTrap", "activeIndex:", activeIndex, direction, this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
       if (direction) {
         if (activeIndex === -1 && this.focusTrapIndex - 1 > 0) {
+          console.log("Coming inside the focusTrap DIR TRUE IF PART", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
           this.focusTrapIndex--;
+          console.log("Coming inside the focusTrap DIR TRUE IF PART END", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
         } else {
+          console.log("Coming inside the focusTrap DIR TRUE ELSE PART", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
           this.focusTrapIndex = activeIndex > 0 ? activeIndex - 1 : this.focusableElements.length - 1;
+          console.log("Coming inside the focusTrap DIR TRUE ELSE PART END", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
         }
       } else {
         if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
+          console.log("Coming inside the focusTrap IF PART", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
           this.focusTrapIndex++;
-        } else {
+          console.log("Coming inside the focusTrap IF PART END", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
+        }
+        else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0){ //since focusTrapIndex is not changing, its not calling updated to focus on next ele
+          const nextEleToFocus = this.focusableElements[this.focusTrapIndex];
+          if(nextEleToFocus) {
+            this.tryFocus(nextEleToFocus);
+          }
+        }
+        else {
+          console.log("Coming inside the focusTrap ELSE PART", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
           this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
+          console.log("Coming inside the focusTrap ELSE PART END", "focusTrapIndex:", this.focusTrapIndex, "this.focusableElements.length:" ,this.focusableElements.length);
+          // const newElement = this.focusableElements[this.focusTrapIndex];
+          // console.log("Coming inside updated", this.focusTrapIndex, this.focusableElements, newElement)
+          // if (newElement) {
+          //   this.tryFocus(newElement);
+          // }
         }
       }
     }
@@ -279,6 +301,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     protected setFocusableElements() {
       this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
+      console.log("Coming inside the setFocusableElements ", this.focusableElements);
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {
@@ -288,18 +311,23 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     handleKeydownFocusTrap(event: KeyboardEvent) {
+      console.log("Coming inside the handleKeydownFocusTrap", this.focusableElements);
       if (event.code !== Key.Tab || (event.shiftKey && event.code !== Key.Tab)) {
+      console.log("Coming inside the handleKeydownFocusTrap cond1");
         return;
       }
 
       if (!this.activeFocusTrap || !this.focusableElements.length) {
+        console.log("Coming inside the handleKeydownFocusTrap cond2");
         return;
       }
 
       if (event.shiftKey) {
+        console.log("Coming inside the handleKeydownFocusTrap cond3");
         event.preventDefault();
         this.focusTrap(true);
       } else {
+        console.log("Coming inside the handleKeydownFocusTrap cond4");
         event.preventDefault();
         this.focusTrap(false);
       }
@@ -353,6 +381,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     handleFocusVisible(event: CustomEvent<FocusEventDetail>) {
+      console.log("Coming inside the handleFocusVisible", event);
       const originalEvent = event.detail ? event.detail.sourceEvent : event;
       const focusableElement = originalEvent.composedPath()[0];
       const focusableIndex = event.detail ? this.findElement(focusableElement as HTMLElement) : -1;
@@ -362,6 +391,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
     updateFocusableElements = () => {
+      console.log("Coming inside the updateFocusableElements dispatch");
       if(this.focusableTimer) {
         clearTimeout(this.focusableTimer)
         this.focusableElements = []

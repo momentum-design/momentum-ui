@@ -183,8 +183,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     private shouldSkipFocus(element: HTMLElement) {
       // when combobox is having more than 100 items screen getting freezed
       if(element.id && element.id.split && element.id.split(" ").indexOf('md-combobox-listbox')>-1){
-        return true;
-      }
+          return true;
+        }
       return false;
     }
 
@@ -195,7 +195,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           continue;
         }
 
-        if(this.shouldSkipFocus(child)) {
+        if(this.shouldSkipFocus(child)){
           break;
         }
 
@@ -383,6 +383,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
       document.addEventListener("click", this.handleOutsideTrapClick);
       document.addEventListener("on-widget-update", this.updateFocusableElements);
+      
     }
 
     disconnectedCallback() {

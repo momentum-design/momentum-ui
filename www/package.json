@@ -58,7 +58,7 @@
     "esm": "^3.2.25",
     "formidable": "^1.2.1",
     "lodash": "^4.17.11",
-    "marked": "^0.6.1",
+    "marked": "^4.0.10",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.14",
     "node-fetch": "^2.1.2",

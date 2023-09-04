@@ -182,9 +182,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private shouldSkipFocus(element: HTMLElement) {
       // when combobox is having more than 100 items screen getting freezed
-      if (element.id && element.id.split && element.id.split(" ").indexOf("md-combobox-listbox") > -1) {
-        return true;
-      }
+      if(element.id && element.id.split && element.id.split(" ").indexOf('md-combobox-listbox')>-1){
+          return true;
+        }
       return false;
     }
 
@@ -195,7 +195,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           continue;
         }
 
-        if (this.shouldSkipFocus(child)) {
+        if(this.shouldSkipFocus(child)){
           break;
         }
 
@@ -366,14 +366,14 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
     updateFocusableElements = () => {
-      if (this.focusableTimer) {
-        clearTimeout(this.focusableTimer);
-        this.focusableElements = [];
+      if(this.focusableTimer) {
+        clearTimeout(this.focusableTimer)
+        this.focusableElements = []
       }
       this.focusableTimer = setTimeout(() => {
         this.setFocusableElements();
       }, 10);
-    };
+    }
 
     connectedCallback() {
       super.connectedCallback();
@@ -389,8 +389,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
-      if (this.focusableTimer) {
-        clearTimeout(this.focusableTimer);
+      if(this.focusableTimer) {
+        clearTimeout(this.focusableTimer)
       }
     }
   }

@@ -246,7 +246,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
           this.focusTrapIndex++;
         } else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0) {
-          //since focusTrapIndex is not changing, its not calling updated to focus on next ele
           const nextEleToFocus = this.focusableElements[this.focusTrapIndex];
           if (nextEleToFocus) {
             this.tryFocus(nextEleToFocus);

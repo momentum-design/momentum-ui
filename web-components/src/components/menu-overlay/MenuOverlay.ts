@@ -126,7 +126,6 @@ export namespace MenuOverlay {
         this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
         this.triggerElement = null;
       }
-      this.focusableElements = [];
     }
 
     checkIsInputField(element: HTMLElement) {

@@ -35,6 +35,7 @@ export abstract class FocusTrapClass extends LitElement {
   protected focusableElements?: HTMLElement[];
   protected initialFocusComplete?: boolean;
   protected setFocusableElements?(): void;
+  protected removeFocusableElements?(): void;
   protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
 }
 export interface FocusTrapInterface {
@@ -52,7 +53,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
     @internalProperty() protected initialFocusComplete = false;
-    @internalProperty() private focusableTimer: any = [];
 
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
@@ -288,6 +288,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
     }
 
+    protected removeFocusableElements() {
+      this.focusableElements = [];
+   }
+
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -320,6 +324,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.activeFocusTrap = false;
       this.focusTrapIndex = -1;
       this.removeAttribute("focus-trap-index");
+      this.removeFocusableElements();
     }
 
     handleOutsideTrapClick = (event: MouseEvent) => {
@@ -369,12 +374,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
     updateFocusableElements = () => {
-      if(this.focusableTimer) {
-        clearTimeout(this.focusableTimer)
-        this.focusableElements = []
-      }
-      this.focusableTimer = setTimeout(() => {
+      const focusableTimer = setTimeout(() => {
         this.setFocusableElements();
+        clearTimeout(focusableTimer);
       }, 10);
     }
 
@@ -393,9 +395,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
-      if(this.focusableTimer) {
-        clearTimeout(this.focusableTimer)
-      }
+      this.removeFocusableElements();
     }
   }
 

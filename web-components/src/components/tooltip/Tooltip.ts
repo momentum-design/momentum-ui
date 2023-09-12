@@ -6,13 +6,13 @@
  *
  */
 
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
-import { Key } from "@/constants";
 
 export const tooltipPlacement = [
   "auto",
@@ -55,6 +55,16 @@ export namespace Tooltip {
     @query(".md-tooltip__reference") reference!: HTMLDivElement;
 
     private slotContent: Element[] | null = null;
+
+    connectedCallback() {
+      super.connectedCallback();
+      document.addEventListener("keydown", this.handleKeyDown.bind(this));
+    }
+
+    disconnectedCallback(): void {
+      super.disconnectedCallback();
+      document.removeEventListener("keydown", this.handleKeyDown.bind(this));
+    }
 
     protected handleFocusIn(event: Event) {
       if (super.handleFocusIn) {
@@ -140,7 +150,7 @@ export namespace Tooltip {
       }
     }
 
-    handleKeyDown(event: KeyboardEvent){
+    handleKeyDown(event: KeyboardEvent) {
       if (event.code === Key.Escape) {
         this.notifyTooltipDestroy();
       }
@@ -196,9 +206,9 @@ export namespace Tooltip {
             class="md-tooltip__reference"
             @mouseenter=${() => this.notifyTooltipCreate()}
             @mouseleave=${() => this.notifyTooltipDestroy()}
-            @focusin=${(event: Event)=>this.handleFocusIn(event)}
-            @focusout=${(event: Event)=>this.handleFocusOut(event)}
-            @keydown=${(event: KeyboardEvent)=>this.handleKeyDown(event)}
+            @focusin=${(event: Event) => this.handleFocusIn(event)}
+            @focusout=${(event: Event) => this.handleFocusOut(event)}
+            @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
             aria-describedby="tooltip"
           >
             <slot></slot>

@@ -182,9 +182,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private shouldSkipFocus(element: HTMLElement) {
       // when combobox is having more than 100 items screen getting freezed
-      if(element.id && element.id.split && element.id.split(" ").indexOf('md-combobox-listbox')>-1){
-          return true; 
-        }
+      if (element.id && element.id.split && element.id.split(" ").indexOf("md-combobox-listbox") > -1) {
+        return true;
+      }
       return false;
     }
 
@@ -195,7 +195,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           continue;
         }
 
-        if(this.shouldSkipFocus(child)){
+        if (this.shouldSkipFocus(child)) {
           break;
         }
 
@@ -307,12 +307,26 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     protected activateFocusTrap() {
       this.activeFocusTrap = true;
+      this.dispatchEvent(
+        new CustomEvent("on-focus-trap", {
+          bubbles: true,
+          composed: true,
+          cancelable: true
+        })
+      );
     }
 
     protected deactivateFocusTrap() {
       this.activeFocusTrap = false;
       this.focusTrapIndex = -1;
       this.removeAttribute("focus-trap-index");
+      this.dispatchEvent(
+        new CustomEvent("on-focus-untrap", {
+          bubbles: true,
+          composed: true,
+          cancelable: true
+        })
+      );
     }
 
     handleOutsideTrapClick = (event: MouseEvent) => {
@@ -361,33 +375,51 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         this.manageNewElement(focusableElement as HTMLElement);
       }
     }
+
     updateFocusableElements = () => {
-      if(this.focusableTimer) {
-        clearTimeout(this.focusableTimer)
-        this.focusableElements = []
+      if (this.focusableTimer) {
+        clearTimeout(this.focusableTimer);
+        this.focusableElements = [];
       }
       this.focusableTimer = setTimeout(() => {
         this.setFocusableElements();
       }, 10);
-    }
+    };
+
+    handleChildFocusTrap = (event: CustomEvent) => {
+      if (event.target !== this) {
+        this.deactivateFocusTrap();
+        event.preventDefault();
+      }
+    };
+
+    handleChildFocusUntrap = (event: CustomEvent) => {
+      if (event.target !== this) {
+        this.activateFocusTrap();
+        event.preventDefault();
+      }
+    };
 
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      this.addEventListener("on-focus-trap", this.handleChildFocusTrap as EventListener);
+      this.addEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.addEventListener("click", this.handleOutsideTrapClick);
       document.addEventListener("on-widget-update", this.updateFocusableElements);
-
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
       this.removeEventListener("keydown", this.handleKeydownFocusTrap);
       this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      this.removeEventListener("on-focus-trap", this.handleChildFocusTrap as EventListener);
+      this.removeEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
-      if(this.focusableTimer) {
-        clearTimeout(this.focusableTimer)
+      if (this.focusableTimer) {
+        clearTimeout(this.focusableTimer);
       }
     }
   }

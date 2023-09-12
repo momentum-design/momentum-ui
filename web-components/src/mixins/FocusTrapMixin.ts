@@ -242,19 +242,18 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         } else {
           this.focusTrapIndex = activeIndex > 0 ? activeIndex - 1 : this.focusableElements.length - 1;
         }
-      } else {
-        if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
-          this.focusTrapIndex++;
-        } 
-        else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0) {
-          const nextEleToFocus = this.focusableElements[this.focusTrapIndex];
-          if (nextEleToFocus) {
-            this.tryFocus(nextEleToFocus);
-          }
-        } 
-        else {
-          this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
+      }
+      else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
+        this.focusTrapIndex++;
+      } 
+      else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0) {
+        const nextEleToFocus = this.focusableElements[this.focusTrapIndex];
+        if (nextEleToFocus) {
+          this.tryFocus(nextEleToFocus);
         }
+      } 
+      else {
+        this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
       }
     }
 

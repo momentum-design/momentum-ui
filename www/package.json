@@ -144,7 +144,7 @@
     "mongoose-findorcreate": "^3.0.0",
     "mongoose-unique-validator": "^2.0.1",
     "node": "~12.11.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.17.5",
     "npm-run-all": "^4.1.5",
     "opn-cli": "3.1.0",

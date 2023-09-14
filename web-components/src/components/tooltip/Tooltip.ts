@@ -56,14 +56,18 @@ export namespace Tooltip {
 
     private slotContent: Element[] | null = null;
 
+    private _keyDownListener = (e: KeyboardEvent) => {
+      this.handleKeyDown(e);
+    };
+
     connectedCallback() {
       super.connectedCallback();
-      document.addEventListener("keydown", this.handleKeyDown.bind(this));
+      document.addEventListener("keydown", this._keyDownListener);
     }
 
     disconnectedCallback(): void {
       super.disconnectedCallback();
-      document.removeEventListener("keydown", this.handleKeyDown.bind(this));
+      document.removeEventListener("keydown", this._keyDownListener);
     }
 
     protected handleFocusIn(event: Event) {

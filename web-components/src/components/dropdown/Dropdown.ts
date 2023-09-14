@@ -317,6 +317,7 @@ export namespace Dropdown {
         }
         case Key.Escape || Key.Backspace: {
           if (this.expanded) {
+            e.stopImmediatePropagation();
             this.collapse();
           }
           break;

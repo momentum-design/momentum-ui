@@ -53,7 +53,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
   class FocusTrap extends FocusMixin(base) {
     @internalProperty() protected focusableElements: HTMLElement[] = [];
     @internalProperty() protected initialFocusComplete = false;
-
+    @internalProperty() private focusableTimer: any = [];
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
@@ -287,9 +287,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
     }
 
-    protected removeFocusableElements() {
-      this.focusableElements = [];
-   }
 
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
@@ -323,7 +320,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.activeFocusTrap = false;
       this.focusTrapIndex = -1;
       this.removeAttribute("focus-trap-index");
-      this.removeFocusableElements();
     }
 
     handleOutsideTrapClick = (event: MouseEvent) => {
@@ -373,9 +369,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
     updateFocusableElements = () => {
-      const focusableTimer = setTimeout(() => {
+      if (this.focusableTimer) {
+        clearTimeout(this.focusableTimer)
+        this.focusableElements = []
+      }
+      this.focusableTimer = setTimeout(() => {
         this.setFocusableElements();
-        clearTimeout(focusableTimer);
       }, 10);
     }
 
@@ -394,7 +393,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
-      this.removeFocusableElements();
+      if (this.focusableTimer) {
+        clearTimeout(this.focusableTimer)
+      }
     }
   }
 

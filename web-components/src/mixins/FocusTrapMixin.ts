@@ -35,7 +35,6 @@ export abstract class FocusTrapClass extends LitElement {
   protected focusableElements?: HTMLElement[];
   protected initialFocusComplete?: boolean;
   protected setFocusableElements?(): void;
-  protected removeFocusableElements?(): void;
   protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
 }
 export interface FocusTrapInterface {

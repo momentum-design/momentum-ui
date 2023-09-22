@@ -440,4 +440,40 @@ describe("FocusTrap Mixin", () => {
 
   });
 
+  test("should handle focusTrap when activeIndex is last and focusTrapIndex is 0", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap?.shadowRoot?.querySelectorAll<FocusableChild>("button");
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+    focusTrap!["initialFocusComplete"] = true;
+    focusTrap!.focusTrapIndex = 0;
+
+    if(focusableChild){
+      focusableChild[focusableChild.length-1].autofocus = true;
+      focusableChild[focusableChild.length-1].focus()
+    }
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+
+    await nextFrame();
+    await elementUpdated(el);
+  
+    await nextFrame();
+    await elementUpdated(el);
+  
+    const tabKeyEvent = new KeyboardEvent("keydown", {
+      code: Key.Tab
+    });
+    
+    focusTrap!.dispatchEvent(tabKeyEvent);
+  
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap!.focusTrapIndex).toEqual(0);
+    expect(focusTrap!["getDeepActiveElement"]!()).toEqual(focusTrap!["focusableElements"]![0]);
+  });
 });

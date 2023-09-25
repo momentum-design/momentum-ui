@@ -307,28 +307,32 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
 
-    protected activateFocusTrap() {
+    protected activateFocusTrap(emitEvent = true) {
+      if (emitEvent) {
+        this.dispatchEvent(
+          new CustomEvent("on-focus-trap", {
+            bubbles: true,
+            composed: true,
+            cancelable: true
+          })
+        );
+      }
       this.activeFocusTrap = true;
-      this.dispatchEvent(
-        new CustomEvent("on-focus-trap", {
-          bubbles: true,
-          composed: true,
-          cancelable: true
-        })
-      );
     }
 
-    protected deactivateFocusTrap() {
+    protected deactivateFocusTrap(emitEvent = true) {
       this.activeFocusTrap = false;
       this.focusTrapIndex = -1;
       this.removeAttribute("focus-trap-index");
-      this.dispatchEvent(
-        new CustomEvent("on-focus-untrap", {
-          bubbles: true,
-          composed: true,
-          cancelable: true
-        })
-      );
+      if (emitEvent) {
+        this.dispatchEvent(
+          new CustomEvent("on-focus-untrap", {
+            bubbles: true,
+            composed: true,
+            cancelable: true
+          })
+        );
+      }
     }
 
     handleOutsideTrapClick = (event: MouseEvent) => {
@@ -390,15 +394,15 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     handleChildFocusTrap = (event: CustomEvent) => {
       if (event.target !== this) {
-        this.deactivateFocusTrap();
-        event.preventDefault();
+        this.deactivateFocusTrap(false);
+        event.stopPropagation();
       }
     };
 
     handleChildFocusUntrap = (event: CustomEvent) => {
       if (event.target !== this) {
-        this.activateFocusTrap();
-        event.preventDefault();
+        this.activateFocusTrap(false);
+        event.stopPropagation();
       }
     };
 

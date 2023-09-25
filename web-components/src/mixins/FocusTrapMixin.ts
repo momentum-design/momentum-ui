@@ -394,15 +394,15 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     handleChildFocusTrap = (event: CustomEvent) => {
       if (event.target !== this) {
-        this.deactivateFocusTrap(false);
         event.stopPropagation();
+        this.deactivateFocusTrap(false);
       }
     };
 
     handleChildFocusUntrap = (event: CustomEvent) => {
       if (event.target !== this) {
-        this.activateFocusTrap(false);
         event.stopPropagation();
+        this.activateFocusTrap(false);
       }
     };
 

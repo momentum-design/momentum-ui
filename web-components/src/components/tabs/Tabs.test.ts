@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit-element";
+import { PropertyValues, html } from "lit-element";
 import Sortable from "sortablejs";
 import "./Tab";
 import { Tab } from "./Tab";
@@ -38,7 +38,6 @@ describe("Tabs", () => {
   let panels: TabPanel.ELEMENT[];
 
   beforeEach(async () => {
-    
     global.sessionStorage.setItem("tab_1", "0");
 
     const root = await fixture<HTMLDivElement>(html`
@@ -211,7 +210,7 @@ describe("Tabs", () => {
     tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
     tabs["tabsFilteredAsHiddenList"] = [tab[2]];
 
-    let currentID = tabs["tabsFilteredAsVisibleList"][0].id;
+    const currentID = tabs["tabsFilteredAsVisibleList"][0].id;
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
@@ -241,10 +240,9 @@ describe("Tabs", () => {
 
     await elementUpdated(tabs);
     expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][0]);
-
   });
 
-  test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event",async () => {
+  test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event", async () => {
     tabs.selected = 2;
     tabs.dispatchEvent(
       new CustomEvent("clear-tab-order-prefs", {
@@ -257,7 +255,7 @@ describe("Tabs", () => {
     );
     await elementUpdated(tabs);
     expect(tabs.selected).toEqual(0);
-  })
+  });
 
   test("should handle keydown event and focused appropriate tab", async () => {
     const createKeyboardEvent = (id: string, code: string) => {
@@ -265,7 +263,7 @@ describe("Tabs", () => {
         originalTarget: {
           id: id
         },
-        composedPath : ()=> [{id:"id"}, {id:"id2"}],
+        composedPath: () => [{ id: "id" }, { id: "id2" }],
         code: code,
         ctrlKey: false,
         shiftKey: false,
@@ -277,15 +275,15 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);
 
-    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
-    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.selected).toBe(1);
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.End));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(2);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
-    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(1);
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
 
     tabs.selected = 0;
     await elementUpdated(tabs);
@@ -293,8 +291,8 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowLeft));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(2);
-    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
 
     tabs.selected = 2;
     await elementUpdated(tabs);
@@ -302,8 +300,8 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.ArrowLeft));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(1);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(2);
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
 
     tabs.selected = tabs.slotted.length - 1;
     await elementUpdated(tabs);
@@ -311,8 +309,8 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(0);
-    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(2);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
 
     tabs.selected = 0;
     await elementUpdated(tabs);
@@ -320,8 +318,8 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(1);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
 
     tabs.selected = 1;
     await elementUpdated(tabs);
@@ -330,7 +328,7 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(0);
+    expect(tabs.selected).toBe(1);
     expect(panels[0].hasAttribute("hidden")).toBeTruthy();
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.Space));
@@ -473,7 +471,7 @@ describe("Tabs", () => {
     const element: any = await fixture(
       html`
         <div style="width: 300px;max-width: 300px;">
-          <md-tabs draggable persist-selection >
+          <md-tabs draggable persist-selection>
             <md-tab name="History" slot="tab" disabled>
               <span>Contact History</span>
             </md-tab>
@@ -483,5 +481,4 @@ describe("Tabs", () => {
     );
     expect(element).not.toBeNull();
   });
-
 });

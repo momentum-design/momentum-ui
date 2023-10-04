@@ -181,9 +181,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private shouldSkipFocus(element: HTMLElement) {
       // when combobox is having more than 100 items screen getting freezed
-      if(element.id && element.id.split && element.id.split(" ").indexOf('md-combobox-listbox')>-1){
-          return true; 
-        }
+      if (element.id && element.id.split && element.id.split(" ").indexOf("md-combobox-listbox") > -1) {
+        return true;
+      }
       return false;
     }
 
@@ -194,7 +194,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           continue;
         }
 
-        if(this.shouldSkipFocus(child)){
+        if (this.shouldSkipFocus(child)) {
           break;
         }
 
@@ -241,17 +241,14 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         } else {
           this.focusTrapIndex = activeIndex > 0 ? activeIndex - 1 : this.focusableElements.length - 1;
         }
-      }
-      else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
+      } else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
         this.focusTrapIndex++;
-      } 
-      else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0) {
+      } else if (activeIndex === this.focusableElements.length - 1 && this.focusTrapIndex === 0) {
         const nextEleToFocus = this.focusableElements[this.focusTrapIndex];
         if (nextEleToFocus) {
           this.tryFocus(nextEleToFocus);
         }
-      } 
-      else {
+      } else {
         this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
       }
     }
@@ -286,7 +283,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
     }
 
-
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -311,14 +307,32 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
 
-    protected activateFocusTrap() {
+    protected activateFocusTrap(emitEvent = true) {
+      if (emitEvent) {
+        this.dispatchEvent(
+          new CustomEvent("on-focus-trap", {
+            bubbles: true,
+            composed: true,
+            cancelable: true
+          })
+        );
+      }
       this.activeFocusTrap = true;
     }
 
-    protected deactivateFocusTrap() {
+    protected deactivateFocusTrap(emitEvent = true) {
       this.activeFocusTrap = false;
       this.focusTrapIndex = -1;
       this.removeAttribute("focus-trap-index");
+      if (emitEvent) {
+        this.dispatchEvent(
+          new CustomEvent("on-focus-untrap", {
+            bubbles: true,
+            composed: true,
+            cancelable: true
+          })
+        );
+      }
     }
 
     handleOutsideTrapClick = (event: MouseEvent) => {
@@ -367,33 +381,51 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         this.manageNewElement(focusableElement as HTMLElement);
       }
     }
+
     updateFocusableElements = () => {
       if (this.focusableTimer) {
-        clearTimeout(this.focusableTimer)
-        this.focusableElements = []
+        clearTimeout(this.focusableTimer);
+        this.focusableElements = [];
       }
       this.focusableTimer = setTimeout(() => {
         this.setFocusableElements();
       }, 10);
-    }
+    };
+
+    handleChildFocusTrap = (event: CustomEvent) => {
+      if (event.target !== this) {
+        event.stopPropagation();
+        this.deactivateFocusTrap(false);
+      }
+    };
+
+    handleChildFocusUntrap = (event: CustomEvent) => {
+      if (event.target !== this) {
+        event.stopPropagation();
+        this.activateFocusTrap(false);
+      }
+    };
 
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeydownFocusTrap);
       this.addEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      this.addEventListener("on-focus-trap", this.handleChildFocusTrap as EventListener);
+      this.addEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.addEventListener("click", this.handleOutsideTrapClick);
       document.addEventListener("on-widget-update", this.updateFocusableElements);
-
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
       this.removeEventListener("keydown", this.handleKeydownFocusTrap);
       this.removeEventListener("focus-visible", this.handleFocusVisible as EventListener);
+      this.removeEventListener("on-focus-trap", this.handleChildFocusTrap as EventListener);
+      this.removeEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
       if (this.focusableTimer) {
-        clearTimeout(this.focusableTimer)
+        clearTimeout(this.focusableTimer);
       }
     }
   }

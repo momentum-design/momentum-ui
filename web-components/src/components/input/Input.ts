@@ -15,7 +15,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
-import { html, internalProperty, LitElement, property, query } from "lit-element";
+import { LitElement, html, internalProperty, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -139,7 +139,7 @@ export namespace Input {
   @customElementWithCheck("md-input")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) ariaDescribedBy = "";
-    @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
+    @property({ type: String, reflect: true }) ariaInvalid: Input.AriaInvalidType = "false";
     @property({ type: String }) ariaLabel = "input";
     @property({ type: Boolean, reflect: true }) autofocus = false;
     @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
@@ -401,7 +401,7 @@ export namespace Input {
               ?autofocus=${this.autofocus}
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
-              aria-errormessage="default message"
+              aria-errormessage="${this.htmlId}-message"
               ?disabled=${this.disabled}
               id=${this.htmlId}
               placeholder=${this.placeholder}
@@ -426,6 +426,7 @@ export namespace Input {
               aria-describedby=${this.ariaDescribedBy}
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
+              aria-errormessage="${this.htmlId}-message"
               ?disabled=${this.disabled}
               id=${this.htmlId}
               placeholder=${this.placeholder}
@@ -517,7 +518,7 @@ export namespace Input {
     messagesTemplate() {
       return !this.hideMessage && this.messages && !!this.messages.length
         ? html`
-            <div part="message" class="md-input__messages">
+            <div id="${this.htmlId}-message" part="message" class="md-input__messages">
               ${repeat(
                 this.messages,
                 message =>

@@ -381,6 +381,13 @@ export namespace Input {
             placeholder=${this.placeholder}
             @input=${this.handleCustomDivChange}
             @blur=${this.handleBlur}
+            @keydown=${(e: any) => {
+               const { key } = e;
+               // not allowing new line in editable div
+               if(key === "Enter") {
+                e.preventDefault();
+               }
+            }}
           ></div>
         `;
       }

@@ -35,6 +35,20 @@ export const inputTemplate = html`
   <section id="pill-shape" class="section">
     <div class="row">
       <div class="column">
+        <md-input
+          ?customInputDiv=${true}
+          label="Normal"
+          containerSize="small-12"
+          shape="pill"
+          searchable
+          clear
+          autofocus
+          placeholder="Editable Field"
+        ></md-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
         <md-input label="Normal" containerSize="small-12" shape="pill" clear autofocus></md-input>
       </div>
     </div>

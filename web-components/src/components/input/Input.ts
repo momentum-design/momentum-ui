@@ -173,8 +173,11 @@ export namespace Input {
     @property({ type: String }) shape = "";
     @property({ type: String }) type: Input.Type = "text";
     @property({ type: String, reflect: true }) value = "";
+    @property({ type: Boolean }) customInputDiv = false;
+    @property({ type: String, reflect: true }) content = "";
 
     @query(".md-input") input!: HTMLInputElement;
+    @query(".editable-input-div-content") editableInputDiv: HTMLElement | undefined;
 
     @internalProperty() private isEditing = false;
 
@@ -267,6 +270,20 @@ export namespace Input {
       );
     }
 
+    handleCustomDivChange(event: Event) {
+      this.value = (event.target as HTMLInputElement).innerText;
+      this.dispatchEvent(
+        new CustomEvent("input-change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event,
+            value: this.value
+          }
+        })
+      );
+    }
+
     handleBlur(event: FocusEvent) {
       this.isEditing = false;
       this.dispatchEvent(
@@ -288,8 +305,14 @@ export namespace Input {
         }
         event.preventDefault();
       }
-      this.input.focus();
-      this.handleChange(event);
+      if (this.editableInputDiv) {
+        this.editableInputDiv.innerText = "";
+        this.editableInputDiv.focus();
+        this.handleCustomDivChange(event);
+      } else {
+        this.input.focus();
+        this.handleChange(event);
+      }
     }
 
     handleLabelClick() {
@@ -346,6 +369,21 @@ export namespace Input {
     }
 
     inputTemplate() {
+      if (this.customInputDiv) {
+        return html`
+          <div
+            class="md-input editable-input-div-content ${classMap(this.inputTemplateClassMap)}"
+            role="textbox"
+            tabindex="0"
+            contenteditable="true"
+            aria-label=${this.ariaLabel}
+            aria-describedby=${this.ariaDescribedBy}
+            placeholder=${this.placeholder}
+            @input=${this.handleCustomDivChange}
+            @blur=${this.handleBlur}
+          ></div>
+        `;
+      }
       return this.multiline
         ? html`
             <textarea

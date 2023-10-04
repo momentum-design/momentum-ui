@@ -205,6 +205,16 @@
     }
   }
 
+  .editable-input-div-content {
+    line-height: 2;
+  }
+
+  .editable-input-div-content:empty:before{
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block; /* For Firefox */
+  }
+
   .md-input {
     border: $input__border-width solid;
     border-radius: $input__border-radius;

@@ -17,6 +17,43 @@ export const accordionTemplate = html`
     }
   </style>
   <h3>Default</h3>
+  <md-input ?customInputDiv=${true} label="Normal" containerSize="small-12" shape="pill" searchable clear autofocus placeholder="Editable Field"></md-input>
+  <md-combobox ?customInputDiv=${true} with-custom-content>
+    <div slot="one" aria-label="Facebook" display-value="Facebook">
+      <span>Facebook</span>
+      <md-icon name="icon-facebook_16"></md-icon>
+    </div>
+    <div slot="two" aria-label="Twitter" display-value="Twitter">
+      <span class="company-value">Twitter</span>
+      <md-icon name="icon-twitter_16"></md-icon>
+    </div>
+    <div slot="three" aria-label="Wikipedia" display-value="Wikipedia">
+      <span class="company-value">Wikipedia</span>
+      <md-icon name="icon-wikipedia_16"></md-icon>
+    </div>
+    <div slot="four" aria-label="Google" display-value="Google">
+      <span class="company-value">Google</span>
+      <md-icon name="icon-google_16"></md-icon>
+    </div>
+  </md-combobox>
+  <md-combobox with-custom-content>
+    <div slot="one" aria-label="Facebook" display-value="Facebook">
+      <span>Facebook</span>
+      <md-icon name="icon-facebook_16"></md-icon>
+    </div>
+    <div slot="two" aria-label="Twitter" display-value="Twitter">
+      <span class="company-value">Twitter</span>
+      <md-icon name="icon-twitter_16"></md-icon>
+    </div>
+    <div slot="three" aria-label="Wikipedia" display-value="Wikipedia">
+      <span class="company-value">Wikipedia</span>
+      <md-icon name="icon-wikipedia_16"></md-icon>
+    </div>
+    <div slot="four" aria-label="Google" display-value="Google">
+      <span class="company-value">Google</span>
+      <md-icon name="icon-google_16"></md-icon>
+    </div>
+  </md-combobox>
   <md-accordion class="part-demo">
     <md-accordion-item slot="accordion-item" label="Header №1" expanded class="part-demo">
       <div slot="header-content" class="test-class">

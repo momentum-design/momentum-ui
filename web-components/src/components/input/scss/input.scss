@@ -207,6 +207,8 @@
 
   .editable-input-div-content {
     line-height: 2;
+    display: flex;
+    align-items: center;
   }
 
   .editable-input-div-content:empty:before{

@@ -272,6 +272,9 @@ export namespace Input {
 
     handleCustomDivChange(event: Event) {
       this.value = (event.target as HTMLInputElement).innerText;
+      if(this.editableInputDiv && this.editableInputDiv.innerHTML.includes("<br>")) {
+         this.editableInputDiv.innerHTML = this.editableInputDiv.innerHTML.replace("<br>", "");
+      }
       this.dispatchEvent(
         new CustomEvent("input-change", {
           bubbles: true,

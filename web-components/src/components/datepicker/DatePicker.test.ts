@@ -1,9 +1,10 @@
+import { Key } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { DateTime } from "luxon";
+import "../button/Button";
 import "./DatePicker";
 import { DatePicker } from "./DatePicker";
-import "../button/Button"
 
 const keyNavEvent = (key: KeyboardEvent["code"], date: DateTime): CustomEvent => {
   return new CustomEvent("day-key-event", {
@@ -13,6 +14,11 @@ const keyNavEvent = (key: KeyboardEvent["code"], date: DateTime): CustomEvent =>
     }
   });
 };
+
+const createKeyboardEvent = (code: string) =>
+  new KeyboardEvent("keydown", {
+    code
+  });
 
 describe("DatePicker Component", () => {
   afterEach(() => {
@@ -26,6 +32,19 @@ describe("DatePicker Component", () => {
     );
     expect(el).not.toBeNull();
   });
+
+  test("should open on pressing arrowDown on input", async () => {
+    const startDate = now();
+    const el: DatePicker.ELEMENT = await fixture(
+      html`
+        <md-datepicker .focusedDate=${startDate}></md-datepicker>
+      `
+    );
+    const input = el.shadowRoot!.querySelector("md-input");
+    input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
+    expect(el.menuOverlay.isOpen).toBeTruthy();
+  });
+
   test("should handle date selection update", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.plus({ days: 2 });

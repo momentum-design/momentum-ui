@@ -1,11 +1,10 @@
-import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
-import "@/components/icon/Icon";
-import "./Tooltip";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { Theme } from "@/components/theme/Theme";
-import { Tooltip } from "./Tooltip";
 import { Key } from "@/constants";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import "./Tooltip";
+import { Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
   let theme: Theme.ELEMENT;
@@ -62,7 +61,7 @@ describe("Tooltip", () => {
     expect(tooltipDestroy.reference).toEqual(tooltip.reference);
   });
 
-  test("should close tooltip on pressing escape", async () => {
+  test("should close tooltip on pressing escape anywhere when tooltip is open", async () => {
     setTimeout(() => tooltip.notifyTooltipCreate());
 
     const { detail: tooltipCreate } = await oneEvent(tooltip, "tooltip-create");
@@ -71,20 +70,19 @@ describe("Tooltip", () => {
     const destroyNotifySpy = jest.spyOn(tooltip, "notifyTooltipDestroy");
 
     const createEvent = (code: string) =>
-    new KeyboardEvent("keydown", {
-      code
-    });
+      new KeyboardEvent("keydown", {
+        code
+      });
 
     const escape = createEvent(Key.Escape);
 
     tooltip.reference.dispatchEvent(focusinEvent);
     expect(tooltip.opened).toBeTruthy();
     expect(tooltipCreate.reference).toEqual(tooltip.reference);
-    tooltip.reference.dispatchEvent(escape);
+    document.dispatchEvent(escape);
 
     expect(destroyNotifySpy).toHaveBeenCalled();
     expect(tooltip.opened).toBeFalsy();
-    
   });
 
   test("should handle with slot content changes", async () => {

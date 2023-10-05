@@ -7,11 +7,11 @@
  */
 
 import { dropdownObjectLongOptions, dropdownStringOptions } from "@/[sandbox]/examples/dropdown";
-import { Dropdown } from "./Dropdown"; // Keep type import as a relative path
 import "@/components/dropdown/Dropdown";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { Dropdown } from "./Dropdown"; // Keep type import as a relative path
 
 describe("Dropdown Component", () => {
   afterEach(() => fixtureCleanup());
@@ -124,6 +124,10 @@ describe("Dropdown Component", () => {
 
       const { detail } = await oneEvent(dropdown, "dropdown-selected");
 
+      expect(dropdown["expanded"]).toBeFalsy();
+
+      await toggleExpandCollapseDropdown(dropdown);
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Escape));
       expect(dropdown["expanded"]).toBeFalsy();
 
       expect(detail).toEqual(

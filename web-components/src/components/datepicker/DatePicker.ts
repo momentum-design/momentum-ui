@@ -8,9 +8,8 @@
 
 import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
-import { Input } from "../input/Input"; // Keep type import as a relative path
 import "@/components/menu-overlay/MenuOverlay";
-import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
+import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
@@ -19,10 +18,12 @@ import { html, internalProperty, LitElement, property, PropertyValues, query } f
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
 import { DateRangePicker } from "../date-range-picker/DateRangePicker";
+import { Input } from "../input/Input"; // Keep type import as a relative path
+import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
-  const EMPTY_STRING = '';
+  const EMPTY_STRING = "";
 
   @customElementWithCheck("md-datepicker")
   export class ELEMENT extends LitElement {
@@ -35,6 +36,11 @@ export namespace DatePicker {
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
     @property({ type: Boolean }) disabled = false;
+    @property({ type: String }) htmlId = "";
+    @property({ type: String }) label = "";
+    @property({ type: String }) ariaLabel = "Choose Date";
+    @property({ type: Boolean }) required = false;
+    @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
 
     @internalProperty() selectedDate: DateTime = now();
@@ -142,6 +148,12 @@ export namespace DatePicker {
       }
     };
 
+    handleInputKeyDown = (event: KeyboardEvent) => {
+      if (event.code === Key.ArrowDown) {
+        this.setOpen(true);
+      }
+    };
+
     handleKeyDown = (e: CustomEvent) => {
       const event = e.detail.sourceEvent;
       let flag = false;
@@ -193,7 +205,7 @@ export namespace DatePicker {
     };
 
     isValueValid = () => {
-      if(!this.value && this.value !== EMPTY_STRING) return true;
+      if (!this.value && this.value !== EMPTY_STRING) return true;
       const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
       const regexString =
         dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
@@ -227,12 +239,19 @@ export namespace DatePicker {
                   slot="menu-trigger"
                   placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
                   value=${ifDefined(this.value)}
-                  aria-label=${`Choose Date` + this.chosenDateLabel()}
+                  htmlId=${this.htmlId}
+                  label=${this.label}
+                  aria-label=${this.ariaLabel + this.chosenDateLabel()}
                   auxiliaryContentPosition="before"
+                  required=${this.required}
+                  @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
                   @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
-                  hide-message
                   ?disabled=${this.disabled}
-                  .messageArr=${[{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
+                  hide-message=${!this.errorMessage && this.isValueValid()}
+                  ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
+                  .messageArr=${this.errorMessage
+                    ? [{ message: this.errorMessage, type: "error" }]
+                    : [{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
                 >
                   <md-icon slot="input-section" name="calendar-month_16"></md-icon>
                 </md-input>

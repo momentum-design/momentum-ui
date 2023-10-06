@@ -6,18 +6,18 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property } from "lit-element";
-import styles from "./scss/module.scss";
-import "@/components/icon/Icon";
 import "@/components/button/Button";
+import "@/components/favorite/Favorite";
+import "@/components/icon/Icon";
 import "@/components/list/List";
 import "@/components/list/ListItem";
-import "@/components/favorite/Favorite";
-import { Key } from "../../constants"; // Keep type import as a relative path
-import { repeat } from "lit-html/directives/repeat";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
+import { repeat } from "lit-html/directives/repeat";
+import { Key } from "../../constants"; // Keep type import as a relative path
+import styles from "./scss/module.scss";
 
 export namespace Card {
   @customElementWithCheck("md-card")
@@ -78,10 +78,11 @@ export namespace Card {
     handleCardMenuKeyDown(event: KeyboardEvent, label: string) {
       event.preventDefault();
       this.dispatchEvent(
-        new CustomEvent<{ id: string; type: string }>("card-menu-keydown", {
+        new CustomEvent<{ id: string; type: string; keyCode: string }>("card-menu-keydown", {
           detail: {
             id: this.id,
-            type: label.toLowerCase()
+            type: label.toLowerCase(),
+            keyCode: event.code
           },
           bubbles: true,
           composed: true

@@ -10,7 +10,7 @@ import {
   nextFrame,
   oneEvent
 } from "@open-wc/testing-helpers";
-import { customElement, html, LitElement, property, PropertyValues, query } from "lit-element";
+import { LitElement, PropertyValues, customElement, html, property, query } from "lit-element";
 import { AnyConstructor, FocusTrapMixin } from "./FocusTrapMixin";
 
 Object.defineProperties(Element.prototype, {
@@ -104,6 +104,24 @@ describe("FocusTrap Mixin", () => {
     const tag = defineCE(class extends FocusTrapMixin(FocusTrap) {});
     const element = await fixture<FocusTrap>(`<${tag}></${tag}>`);
     expect(element).toBeDefined();
+  });
+
+  test("should transfer focus-trap to child when child traps focus", async () => {
+    const parentFocusTrap = await fixture<FocusTrap>(
+      html`
+        <focus-trap><focus-trap></focus-trap></focus-trap>
+      `
+    );
+    const childFocusTrap = parentFocusTrap.querySelector<FocusTrap>("focus-trap")!;
+    parentFocusTrap["activateFocusTrap"]!();
+    expect(parentFocusTrap.activeFocusTrap).toBeTruthy();
+    expect(childFocusTrap.activeFocusTrap).toBeFalsy();
+    childFocusTrap["activateFocusTrap"]!();
+    expect(parentFocusTrap.activeFocusTrap).toBeFalsy();
+    expect(childFocusTrap.activeFocusTrap).toBeTruthy();
+    childFocusTrap["deactivateFocusTrap"]!();
+    expect(parentFocusTrap.activeFocusTrap).toBeTruthy();
+    expect(childFocusTrap.activeFocusTrap).toBeFalsy();
   });
 
   test("should traverse all nested shadow roots, slots and html elements", async () => {
@@ -367,7 +385,6 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["initialFocusComplete"] = true;
     document.dispatchEvent(new CustomEvent("on-widget-update"));
 
-
     await nextFrame();
     await elementUpdated(el);
 
@@ -437,7 +454,6 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["setFocusableElements"]!();
 
     expect(focusTrap!["getDeepActiveElement"]!()).toEqual(input);
-
   });
 
   test("should handle focusTrap when activeIndex is last and focusTrapIndex is 0", async () => {
@@ -449,9 +465,9 @@ describe("FocusTrap Mixin", () => {
     focusTrap!["initialFocusComplete"] = true;
     focusTrap!.focusTrapIndex = 0;
 
-    if(focusableChild){
-      focusableChild[focusableChild.length-1].autofocus = true;
-      focusableChild[focusableChild.length-1].focus()
+    if (focusableChild) {
+      focusableChild[focusableChild.length - 1].autofocus = true;
+      focusableChild[focusableChild.length - 1].focus();
     }
 
     focusTrap!["activateFocusTrap"]!();
@@ -460,16 +476,16 @@ describe("FocusTrap Mixin", () => {
 
     await nextFrame();
     await elementUpdated(el);
-  
+
     await nextFrame();
     await elementUpdated(el);
-  
+
     const tabKeyEvent = new KeyboardEvent("keydown", {
       code: Key.Tab
     });
-    
+
     focusTrap!.dispatchEvent(tabKeyEvent);
-  
+
     await nextFrame();
     await elementUpdated(el);
 

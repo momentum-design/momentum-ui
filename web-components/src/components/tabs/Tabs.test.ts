@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit-element";
+import { PropertyValues, html } from "lit-element";
 import Sortable from "sortablejs";
 import "./Tab";
 import { Tab } from "./Tab";
@@ -36,10 +36,16 @@ describe("Tabs", () => {
   let tabs: Tabs.ELEMENT;
   let tab: Tab.ELEMENT[];
   let panels: TabPanel.ELEMENT[];
+  let new_target: Element;
 
   beforeEach(async () => {
-    
     global.sessionStorage.setItem("tab_1", "0");
+
+    const new_target_scope = await fixture<HTMLDivElement>(html`
+      <div style="width: 300px;max-width: 300px;">
+        <md-input type="text"></md-input>
+      </div>
+    `);
 
     const root = await fixture<HTMLDivElement>(html`
       <div style="width: 300px;max-width: 300px;">
@@ -67,6 +73,7 @@ describe("Tabs", () => {
     `);
 
     tabs = root.querySelector("md-tabs") as Tabs.ELEMENT;
+    new_target = new_target_scope.querySelector("md-input") as Element;
     tab = Array.from(tabs.querySelectorAll("md-tab")) as Tab.ELEMENT[];
     panels = Array.from(tabs.querySelectorAll("md-tab-panel")) as TabPanel.ELEMENT[];
   });
@@ -211,7 +218,7 @@ describe("Tabs", () => {
     tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
     tabs["tabsFilteredAsHiddenList"] = [tab[2]];
 
-    let currentID = tabs["tabsFilteredAsVisibleList"][0].id;
+    const currentID = tabs["tabsFilteredAsVisibleList"][0].id;
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
@@ -241,10 +248,9 @@ describe("Tabs", () => {
 
     await elementUpdated(tabs);
     expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][0]);
-
   });
 
-  test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event",async () => {
+  test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event", async () => {
     tabs.selected = 2;
     tabs.dispatchEvent(
       new CustomEvent("clear-tab-order-prefs", {
@@ -257,7 +263,30 @@ describe("Tabs", () => {
     );
     await elementUpdated(tabs);
     expect(tabs.selected).toEqual(0);
-  })
+  });
+
+  test("should handle skip the keydown event if target is not tabs", async () => {
+    const createKeyboardEvent = (id: string, code: string) => {
+      return {
+        originalTarget: {
+          id: id
+        },
+        composedPath: () => [{ id: "id" }, { id: "id2" }],
+        code: code,
+        target: new_target,
+        ctrlKey: false,
+        shiftKey: false,
+        altKey: false,
+        stopPropagation: jest.fn()
+      };
+    };
+
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowRight));
+    await elementUpdated(tabs);
+
+    expect(tabs.selected).toBe(1);
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+  });
 
   test("should handle keydown event and focused appropriate tab", async () => {
     const createKeyboardEvent = (id: string, code: string) => {
@@ -265,8 +294,9 @@ describe("Tabs", () => {
         originalTarget: {
           id: id
         },
-        composedPath : ()=> [{id:"id"}, {id:"id2"}],
+        composedPath: () => [{ id: "id" }, { id: "id2" }],
         code: code,
+        target: tabs,
         ctrlKey: false,
         shiftKey: false,
         altKey: false,
@@ -473,7 +503,7 @@ describe("Tabs", () => {
     const element: any = await fixture(
       html`
         <div style="width: 300px;max-width: 300px;">
-          <md-tabs draggable persist-selection >
+          <md-tabs draggable persist-selection>
             <md-tab name="History" slot="tab" disabled>
               <span>Contact History</span>
             </md-tab>
@@ -483,5 +513,4 @@ describe("Tabs", () => {
     );
     expect(element).not.toBeNull();
   });
-
 });

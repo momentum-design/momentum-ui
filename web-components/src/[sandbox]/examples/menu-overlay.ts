@@ -331,7 +331,10 @@ export const menuOverlayTemplate = html`
   
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">with list (focus)</h3>
-  <md-menu-overlay class="queueDropdown" size="large" @menu-overlay-open=${(e: any) => {console.log("Opening modal--");document.dispatchEvent(new CustomEvent("on-widget-update"))}}>
+  <md-menu-overlay class="queueDropdown" size="large" @menu-overlay-open=${(e: any) => {
+    console.log("Opening modal--");
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+  }}>
         <md-input
           placeholder="Search field with tabs"
           shape="pill"
@@ -514,6 +517,16 @@ export const menuOverlayTemplate = html`
             <md-checkbox slot="checkbox" checked>Option two</md-checkbox>
           </md-checkboxgroup>
           <md-input autofocus placeholder="Enter Text" shape="pill" clear></md-input>
+      </div>
+  </md-menu-overlay>
+  
+  <h3 class="sandbox-header" style="margin: .5rem 1rem">Menu Overlay toggle with hover</h3>
+  <md-menu-overlay allow-hover-toggle placement="right">
+    <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Hover</md-button>
+      <div style="margin:1.25rem; width: 100%">
+      <md-tooltip message="tooltip within overlay" placement="top">
+        <span>Tooltip Trigger Text</span>
+        </md-tooltip>
       </div>
   </md-menu-overlay>
   </div>

@@ -128,10 +128,10 @@ export namespace MenuOverlay {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
         this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
         if(this.allowHoverToggle){
-          console.log("vivekTest: hovered!")
-          this.overlayContainer.removeEventListener("mouseenter", ()=>{ this.setOverlay(true)});
-          this.overlayContainer.removeEventListener("mouseleave",  ()=>{this.setOverlay(false)});
-          this.triggerElement.removeEventListener("mouseleave",  ()=>{ this.setOverlay(false)});
+          this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
+          this.triggerElement.removeEventListener("mouseleave",  this.collapsePopup);
+          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup ); 
+          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup); 
         }
         this.triggerElement = null;
       }
@@ -153,10 +153,10 @@ export namespace MenuOverlay {
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
 
         if(this.allowHoverToggle){
-          this.triggerElement.addEventListener("mouseenter", ()=>{this.setOverlay(true)});
-          this.triggerElement.addEventListener("mouseleave",  ()=>{this.setOverlay(false)} );
-          this.overlayContainer.addEventListener("mouseenter", ()=>{ this.setOverlay(true)} ); 
-          this.overlayContainer.addEventListener("mouseleave", ()=>{ this.setOverlay(false)} ); 
+          this.triggerElement.addEventListener("mouseenter", this.expandPopup);
+          this.triggerElement.addEventListener("mouseleave",  this.collapsePopup);
+          this.overlayContainer.addEventListener("mouseenter", this.expandPopup); 
+          this.overlayContainer.addEventListener("mouseleave", this.collapsePopup); 
         }
         
         if(!this.checkIsInputField(this.triggerElement)) {
@@ -310,6 +310,14 @@ export namespace MenuOverlay {
         this.isOpen = flag;
       }
      }, 100);
+
+    private expandPopup = () => {
+        this.setOverlay(true)
+     }
+
+     private collapsePopup = ()=> {
+        this.setOverlay(false)
+     }
 
     handleOutsideOverlayKeydown = async (event: KeyboardEvent) => {
       let insideMenuKeyDown = false;

@@ -181,7 +181,7 @@ export namespace RadioGroup {
 
     render() {
       return html`
-        <div>
+        <div class="radio-group-container" part="radio-group-container">
           <slot name="radio"></slot>
         </div>
       `;

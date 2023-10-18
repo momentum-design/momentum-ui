@@ -9,6 +9,7 @@
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import { debounce } from "@/utils/helpers";
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
@@ -76,6 +77,7 @@ export namespace MenuOverlay {
     @property({ type: Boolean, attribute: "show-arrow" }) showArrow = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) placement: MenuOverlay.Placement = "bottom";
+    @property({ type: Boolean, attribute: "allow-hover-toggle" }) allowHoverToggle = false;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -120,10 +122,17 @@ export namespace MenuOverlay {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
+      
 
       if (this.triggerElement) {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
         this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
+        if(this.allowHoverToggle){
+          this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
+          this.triggerElement.removeEventListener("mouseleave",  this.collapsePopup);
+          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup ); 
+          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup); 
+        }
         this.triggerElement = null;
       }
     }
@@ -142,6 +151,14 @@ export namespace MenuOverlay {
       if (this.trigger) {
         this.triggerElement = this.trigger[0];
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
+
+        if(this.allowHoverToggle){
+          this.triggerElement.addEventListener("mouseenter", this.expandPopup);
+          this.triggerElement.addEventListener("mouseleave",  this.collapsePopup);
+          this.overlayContainer.addEventListener("mouseenter", this.expandPopup); 
+          this.overlayContainer.addEventListener("mouseleave", this.collapsePopup); 
+        }
+        
         if(!this.checkIsInputField(this.triggerElement)) {
           // Prevent adding keydown event, if the slot element type is md-input
           // This will allow users to use ENTER and SPACE key without issues.
@@ -287,6 +304,20 @@ export namespace MenuOverlay {
         this.isOpen = !this.isOpen;
       }
     }
+
+    private setOverlay = debounce((flag: boolean) => {
+      if (!this.disabled) {
+        this.isOpen = flag;
+      }
+     }, 100);
+
+    private expandPopup = () => {
+        this.setOverlay(true)
+     }
+
+     private collapsePopup = ()=> {
+        this.setOverlay(false)
+     }
 
     handleOutsideOverlayKeydown = async (event: KeyboardEvent) => {
       let insideMenuKeyDown = false;

@@ -1,6 +1,5 @@
 import "@/components/button/Button";
 import "@/components/input/Input";
-import "./MenuOverlay";
 import { Key } from "@/constants";
 import {
   defineCE,
@@ -12,6 +11,7 @@ import {
   oneEvent
 } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
+import "./MenuOverlay";
 import { MenuOverlay, OverlaySizes } from "./MenuOverlay";
 
 Object.defineProperties(Element.prototype, {
@@ -45,7 +45,8 @@ const fixtureFactory = async (
   placement: MenuOverlay.Placement,
   customWidth: string,
   maxHeight: string,
-  size: MenuOverlay.Size
+  size: MenuOverlay.Size,
+  allowHoverToggle = false
 ): Promise<MenuOverlay.ELEMENT> => {
   return await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
@@ -55,8 +56,9 @@ const fixtureFactory = async (
       custom-width=${customWidth}
       max-height=${maxHeight}
       size=${size}
+      ?allow-hover-toggle=${allowHoverToggle}
     >
-      <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
+      <md-button slot="menu-trigger" class="menu-trigger" variant="primary">Open Menu Overlay</md-button>
       <div><h1>Menu Overlay Content</h1></div>
     </md-menu-overlay>
   `);
@@ -212,6 +214,27 @@ describe("MenuOverlay", () => {
 
     expect(element.isOpen).toBeTruthy();
     expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy();
+  });
+
+  test("should toggle overlay if trigger element is hovered", async () => {
+    jest.useRealTimers();
+    const element = await fixtureFactory(false, false, "bottom", "", "", "large", true);
+
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+    await nextFrame();
+
+    triggerElement.dispatchEvent(new MouseEvent("mouseenter"));
+    const menuOpenEvt = await oneEvent(element, "menu-overlay-open");
+    expect(menuOpenEvt).toBeDefined();
+    expect(element.isOpen).toBeTruthy();
+
+    triggerElement.dispatchEvent(new MouseEvent("mouseleave"));
+    const MenuCloseEvt = await oneEvent(element, "menu-overlay-close");
+    expect(MenuCloseEvt).toBeDefined();
+    await nextFrame();
+    expect(element.isOpen).toBeFalsy();
+    jest.clearAllTimers();
   });
 
   test("should execute handleOutsideClick", async () => {

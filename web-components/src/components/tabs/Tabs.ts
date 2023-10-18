@@ -641,6 +641,10 @@ export namespace Tabs {
     handleTabKeydown(event: any) {
       let elementId;
 
+      if (event.target != this) {
+        return false;
+      }
+
       if(event.path){
         elementId = event.path[0].id;
       }

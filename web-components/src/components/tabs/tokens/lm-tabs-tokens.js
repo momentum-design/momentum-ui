@@ -51,7 +51,7 @@ const tabs = {
       dark: colors.gray[70].name
     },
     active: {
-      light: colors.blue[60].name,
+      light: colors.blue[70].name,
       dark: colors.theme[50].name
     }
   },

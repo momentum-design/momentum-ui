@@ -48,7 +48,15 @@ export namespace DatePickerCalendar {
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("datePickerProps") || changedProperties.has("viewAnchorDate")) {
+      if (changedProperties.has("datePickerProps") ) {
+        if(this.datePickerProps?.selected.invalidReason===null){
+          this.viewAnchorDate = this.datePickerProps.selected || now()
+        }
+        this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
+          this.monthFormat
+        );
+      }
+      if(changedProperties.has("viewAnchorDate")){
         this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
           this.monthFormat
         );
@@ -61,6 +69,7 @@ export namespace DatePickerCalendar {
     };
 
     increaseMonth = (event: MouseEvent) => {
+
       const { handleMonthChange } = this;
       const { viewAnchorDate: date } = this;
       this.setDate(addMonths(date, 1), () => handleMonthChange && handleMonthChange(event, this.viewAnchorDate));

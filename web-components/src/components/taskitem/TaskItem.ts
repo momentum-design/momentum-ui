@@ -189,7 +189,7 @@ export namespace TaskItem {
       if (!queueContent) {
         const queueSlot = this.querySelector('[slot="queue"]') as HTMLElement;
         if (queueSlot) {
-          queueContent = queueSlot.textContent || queueSlot.innerText;
+          queueContent = queueSlot.textContent?.trim() || queueSlot.innerText.trim();
         }
       }
       return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${

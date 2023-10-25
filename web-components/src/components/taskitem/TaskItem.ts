@@ -184,7 +184,15 @@ export namespace TaskItem {
       if (this.customAriaLabel) {
         return this.customAriaLabel;
       }
-      return `${this.mediaType} ${this.status} ${this.title} ${this.queue} ${this.quantity ? this.quantity : ""} ${
+      let queueContent = this.queue;
+
+      if (!queueContent) {
+        const queueSlot = this.querySelector('[slot="queue"]') as HTMLElement;
+        if (queueSlot) {
+          queueContent = queueSlot.textContent?.trim() || queueSlot.innerText.trim();
+        }
+      }
+      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
       }`;
     }

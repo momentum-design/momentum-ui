@@ -21,7 +21,6 @@ const fixtureFactory = async (
         mediaType="${mediaType}"
         title="${title}"
         popovertitle="${popovertitle}"
-        queue="${queue}"
         status="${status}"
         quantity="${quantity}"
         lastmessage="${lastmessage}"
@@ -29,6 +28,9 @@ const fixtureFactory = async (
         customAriaLabel="${customAriaLabel}"
         iconSrc="${iconSrc}"
       >
+        <span slot="queue">
+          <span className="queue-name">Test Queue Name</span>
+        </span>
         <div slot="task-addition">00:08</div>
       </md-task-item>
     `
@@ -397,5 +399,21 @@ describe("TaskItem", () => {
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
     expect(ariaLabel).toEqual("Custom area label");
+  });
+
+  test("should have custom aria label", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "",
+      "quelle_1",
+      "transfered",
+      0,
+      "",
+      false
+    );
+    await elementUpdated(element);
+    const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
+    expect(ariaLabel).toEqual("twitter transfered  Test Queue Name  ");
   });
 });

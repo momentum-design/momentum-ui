@@ -152,6 +152,13 @@ export namespace PhoneInput {
       this.validateInput(this.value);
       this.validateNumber();
       event.stopPropagation();
+      // Strip when Phone number starts with selected Country Code.
+      const countryCodeValue = this.countryCallingCode.split(",")[0]?.trim();
+      let validPhoneNumber = this.value;
+      if (this.value.startsWith(countryCodeValue)) {
+        // If yes, remove the country code andgit branch following hyphen
+        validPhoneNumber = this.value.slice(countryCodeValue.length).replace(/^-/, '');
+      }
       this.dispatchEvent(
         new CustomEvent("phoneinput-blur", {
           bubbles: true,
@@ -160,11 +167,11 @@ export namespace PhoneInput {
             srcEvent: event,
             value: `${this.countryCallingCode}${this.value}`,
             isValid: this.isValid,
-            phoneNumber: this.value
+            phoneNumber: validPhoneNumber
           }
         })
       );
-    }
+    } 
 
     validateInput(input: string) {
       this.formattedValue = new AsYouType(this.countryCode).input(input);

@@ -130,6 +130,35 @@ describe("PhoneInput Component", () => {
     expect(element.value).toBeTruthy();
   });
 
+  test("should emit a custom event on input blur with stripping the selected country code", async () => {
+    const element = await fixture<PhoneInput.ELEMENT>(
+      html`
+        <md-phone-input ></md-phone-input>
+      `
+    );
+
+    const mockFunc = jest.fn();
+    element.addEventListener("phoneinput-blur", mockFunc);
+
+    const phoneInput = element.shadowRoot?.querySelector("md-input");
+    const eventData = {
+      bubbles: true,
+      composed: true,
+      detail: {
+        value: "+19997770701"
+      }
+    }
+    const inputEvent: CustomEvent = new CustomEvent("input-keydown", eventData);
+    phoneInput?.dispatchEvent(inputEvent);
+
+    const event1: Event = new CustomEvent("input-change", eventData);
+    phoneInput?.dispatchEvent(event1);
+
+    const event: Event = new CustomEvent("input-blur", {});
+    phoneInput?.dispatchEvent(event);
+    expect(mockFunc).toBeCalled();
+  });
+
   test("should trigger a Phone Change event", async () => {
     const element = await fixture<PhoneInput.ELEMENT>(
       html`

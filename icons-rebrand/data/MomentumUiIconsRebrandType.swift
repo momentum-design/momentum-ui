@@ -1,6 +1,6 @@
 import Foundation
 
-@objc public enum MomentumIconsRebrandType: Int, CaseIterable {
+@objc public enum MomentumIconsRebrandType: Int {
     // swiftlint:disable:next identifier_name
     case _invalid
 
@@ -8010,18 +8010,8 @@ import Foundation
 
         default:
             // We need a default case to prevent the Xcode11 error: "the compiler is unable to check that this switch is exhaustive in reasonable time"
-            if !MomentumIconsRebrandType.suppressAssert {
-                assertionFailure("Unknown icon type: \(self)")
-            }
+            assertionFailure("Unknown icon type: \(self)")
             return ""
         }
-    }
-    private static var suppressAssert: Bool = false
-
-    public static func fromFileName(fileName: String) -> MomentumIconsRebrandType? {
-        MomentumIconsRebrandType.suppressAssert = true
-        let iconType = MomentumIconsRebrandType.allCases.first{ "\($0.filename)" == fileName }
-        MomentumIconsRebrandType.suppressAssert = false
-        return iconType
     }
 }

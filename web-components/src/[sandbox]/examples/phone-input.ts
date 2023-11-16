@@ -70,5 +70,22 @@ export const phoneInputTemplate = html`
         </md-form>
       </div>
     </div>
+    <div>
+      <h4>Example for Strip the country code is already present at the beginning of the phone number on blur.</h4>
+      <div class="row">
+        <md-form>
+          <md-phone-input
+            .countryCallingCode=${"+91, India, IN"}
+            .errorMessage=${"This phone number is invalid"}
+            .value=${"+919997770101"}
+            .countryCodeAriaLabel=${"International Dialing Code"}
+            .dialNumberAriaLabel=${"Dial Number"}
+            .numberPlaceholder=${"Enter The Phone Number"}
+            @phoneinput-blur="${(e: CustomEvent) =>
+              console.log("blur: ", e.detail)}"
+          ></md-phone-input>
+        </md-form>
+      </div>
+    </div>
   </div>
 `;

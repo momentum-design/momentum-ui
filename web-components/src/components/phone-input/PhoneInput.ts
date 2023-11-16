@@ -54,6 +54,7 @@ export namespace PhoneInput {
     @internalProperty() private isValid = true;
 
     @query("md-combobox") combobox!: HTMLElement;
+   
 
     connectedCallback() {
       super.connectedCallback();
@@ -152,6 +153,7 @@ export namespace PhoneInput {
       this.validateInput(this.value);
       this.validateNumber();
       event.stopPropagation();
+      this.removeCountryCode();
       this.dispatchEvent(
         new CustomEvent("phoneinput-blur", {
           bubbles: true,
@@ -164,6 +166,17 @@ export namespace PhoneInput {
           }
         })
       );
+    } 
+
+    removeCountryCode(){
+      // Strip when Phone number starts with selected Country Code.
+      const countryCodeValue = this.countryCallingCode.split(",")[0]?.trim();
+      
+      if (this.value.startsWith(countryCodeValue)) {
+        // If yes, remove the country code and any following hyphen
+        const validPhoneNumber = this.value.slice(countryCodeValue.length).replace(/^-/, '');
+        this.value = validPhoneNumber;
+      }
     }
 
     validateInput(input: string) {

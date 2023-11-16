@@ -173,7 +173,7 @@ export namespace PhoneInput {
       const countryCodeValue = this.countryCallingCode.split(",")[0]?.trim();
       
       if (this.value.startsWith(countryCodeValue)) {
-        // If yes, remove the country code andgit branch following hyphen
+        // If yes, remove the country code and any following hyphen
         const validPhoneNumber = this.value.slice(countryCodeValue.length).replace(/^-/, '');
         this.value = validPhoneNumber;
       }

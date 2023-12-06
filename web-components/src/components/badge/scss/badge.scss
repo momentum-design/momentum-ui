@@ -6,6 +6,11 @@
     @include badge-size;
     @include badge-style($radius: $badge--round__radius);
 
+    &:focus {
+      outline: 2px solid #007aa3;
+      outline-offset: 2px;
+    }
+  
     &--small {
       @include badge-size($padding: rem-calc(3 12));
       height: rem-calc(24);

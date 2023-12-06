@@ -16,7 +16,7 @@ import styles from "./scss/module.scss";
 export namespace Badge {
   @customElementWithCheck("md-badge")
   export class ELEMENT extends LitElement {
-    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
+    @property({ type: String }) ariaLabel = "";
     @property({ type: String }) color = "";
     @property({ type: String }) bgColor = "";
     @property({ type: String }) textColor = "";
@@ -28,6 +28,7 @@ export namespace Badge {
     @property({ type: Boolean }) small = false;
     @property({ type: Boolean }) split = false;
     @property({ type: Boolean }) disabled = false;
+    @property({ type: String }) tabIndexing = "";
 
     renderBgColor = () => {
       return this.bgColor ? `background-color: ${this.bgColor};` : nothing;
@@ -82,7 +83,7 @@ export namespace Badge {
 
       return html`
         ${this.getStyles()}
-        <span part="badge" class="md-badge ${classMap(classNamesInfo)}" aria-label=${this.ariaLabel}>
+        <span tabindex= ${this.tabIndexing} part="badge" class="md-badge ${classMap(classNamesInfo)}" aria-label=${this.ariaLabel}>
           ${this.split ? splitContent() : nothing}
           <slot></slot>
         </span>

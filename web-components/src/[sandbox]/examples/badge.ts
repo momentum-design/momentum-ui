@@ -3,7 +3,7 @@ import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 export const badgeTemplate = html`
-  <md-badge aria-label="my aria-label">
+  <md-badge tabIndexing="0" aria-label="my aria-label">
     Default
   </md-badge>
   <md-badge color="blue">

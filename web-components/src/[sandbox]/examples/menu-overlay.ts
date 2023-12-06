@@ -267,13 +267,15 @@ export const menuOverlayTemplate = html`
       </div>
     </md-menu-overlay>
 
-    <md-menu-overlay placement="left-end" show-arrow>
-      <md-button slot="menu-trigger" variant="primary">left-end</md-button>
-      <div style="margin:1.25rem; width: 100%">
-        <md-checkbox>Option one"</md-checkbox>
-        <md-checkbox checked>Option two</md-checkbox>
-      </div>
-    </md-menu-overlay>
+    <md-menu-overlay placement="bottom-end">
+          <md-button slot="menu-trigger" variant="primary">
+            Open List
+          </md-button>
+          <md-list>
+            <md-list-item slot="list-item">Neptunium</md-list-item>
+            <md-list-item slot="list-item">Plutonium</md-list-item>
+          </md-list>
+        </md-menu-overlay>
   </div>
   <div class="row" style="display: flex; margin: .5rem 0">
     <md-menu-overlay placement="top-start" show-arrow>
@@ -450,12 +452,49 @@ export const menuOverlayTemplate = html`
   </md-menu-overlay>
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">Without focusable content</h3>
-  <md-menu-overlay show-arrow>
-    <md-button slot="menu-trigger" slot="menu-trigger" variant="red">Click</md-button>
-    <div style="margin:1.25rem; width: 100%">
-      <span>Text</span>
-    </div>
-  </md-menu-overlay>
+  <md-menu-overlay
+          placement="bottom-end"
+          ref={menuElm}
+          size="small"
+          position="bottom"
+          id="menu-overlay"
+          max-height="180px">
+          <md-button ref={menuTriggerRef} slot="menu-trigger">
+
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="12" fill="#78F5B8" />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M16.5358 18C16.4148 18 16.2938 17.985 16.1738 17.955C14.1798 17.448 11.9068 16.029 9.93879 14.061C7.97079 12.093 6.55179 9.82 6.04579 7.826C5.93379 7.387 6.02979 6.929 6.30879 6.57C6.59079 6.208 7.01579 6 7.47379 6H8.74379C9.46079 6 10.1078 6.426 10.3908 7.085L10.8708 8.201C11.1178 8.774 11.0988 9.424 10.8198 9.983L10.4958 10.63C10.4698 10.682 10.4768 10.745 10.5158 10.794C11.1808 11.649 12.1918 12.653 13.2198 13.479C13.2688 13.517 13.3298 13.524 13.3818 13.499L14.0168 13.181C14.5768 12.903 15.2258 12.882 15.7998 13.129L16.9148 13.609C17.5748 13.893 17.9998 14.539 17.9998 15.257V16.526C17.9998 16.985 17.7918 17.41 17.4308 17.691C17.1688 17.894 16.8558 18 16.5358 18Z"
+            fill="#03612C"
+          />
+          </svg>
+          <span class="split-separator"> | </span>
+          <span>+2 Participants</span>
+          
+          </md-button>
+          <md-list class="md-list-conference" label="Transuranium elements">
+            <md-list-item class="md-list-item-conference" slot="list-item">
+              <span className="conference-span-icon">
+                <md-icon class="split-icon" name="icon-device-in-room_12" size="12"></md-icon>
+                {contactInformation.destAgentName}
+              </span>
+              <span className="conference-timer">
+                <StateTimer color="none" timerTimeStamp={contactInformation.consultTimeStamp!} />
+              </span>
+            </md-list-item>
+            <md-list-item class="md-list-item-conference" slot="list-item">
+              <span className="conference-span-icon">
+                <md-icon class="split-icon" name="icon-single-number-reach_16" size="12"></md-icon>
+                {agentCallMonitoringState?.supervisorName}
+              </span>
+              <span className="conference-timer">
+                <StateTimer color="none" timerTimeStamp={agentCallMonitoringState?.eventTime} />
+              </span>
+            </md-list-item>
+          </md-list>
+        </md-menu-overlay>
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">Open focusable content</h3>
   <md-menu-overlay is-open show-arrow>

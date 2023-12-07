@@ -258,6 +258,7 @@ jobs:
 
 workflows:
   version: 2
+
   lint_test:
     jobs:
       - checkout_install
@@ -314,3 +315,11 @@ workflows:
                 - master
     jobs:
       - lint_test_release
+
+  manual_publish_www:
+    jobs:
+      - publish_www:
+          filters:
+            branches:
+              only:
+                - website_publish

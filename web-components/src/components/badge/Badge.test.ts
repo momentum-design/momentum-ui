@@ -118,10 +118,11 @@ describe("Badge component", () => {
     const ariaLabel = "my aria-label";
     const component: Badge.ELEMENT = await fixture(
       html`
-        <md-badge aria-label=${ariaLabel}></md-badge>
+        <md-badge ariaLabel=${ariaLabel}></md-badge>
       `
     );
-    expect(component.ariaLabel).toEqual(ariaLabel);
-    expect(component.getAttribute("aria-label")).toEqual(ariaLabel);
+    const spanElement = component.shadowRoot?.querySelector("span");
+    console.log("spanElement", spanElement?.getAttribute("aria-label"));
+    expect(spanElement?.getAttribute("aria-label")).toEqual(ariaLabel);
   });
 });

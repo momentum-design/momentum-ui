@@ -7,7 +7,7 @@
     @include badge-style($radius: $badge--round__radius);
 
     &:focus {
-      outline: 2px solid #007aa3;
+      outline: 2px solid var(--button-focus-ring-color);
       outline-offset: 2px;
     }
   

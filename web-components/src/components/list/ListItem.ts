@@ -14,7 +14,6 @@ import styles from "./scss/module.scss";
 export namespace ListItem {
   @customElementWithCheck("md-list-item")
   export class ELEMENT extends FocusMixin(LitElement) {
-    @property({ type: String, reflect: true }) role: "listitem" | "option" = "listitem";
     @property({ type: Number, reflect: true }) tabIndex = -1;
 
     private _disabled = false;

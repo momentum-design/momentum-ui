@@ -12,6 +12,7 @@
   },
   "scripts": {
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "pre-build": "run-s remove-dist build:examples build:react build:create:component-list",
     "build": "run-s remove-dist build:examples build:react build:create:component-list build:dist",
     "build:watch": "yarn build && yarn open:dist",
     "build:examples": "rimraf ./client/examples && babel-node ./tools/copyExamples.js && yarn build:codePen &&  yarn build:markdown",

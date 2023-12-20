@@ -11,7 +11,23 @@ import figmaBanner from '../../assets/2020/banner-figma.svg';
 import AppHeader2020 from '../../components2020/AppHeader';
 
 class HomePage extends React.PureComponent {
+
+  state = {
+    displayPop: true,
+  }
+
+  hidePop = ()=> {
+    this.setState({displayPop:false})
+    this.render();
+  }
+
   render() {
+
+    const {
+      displayPop,
+    } = this.state;
+
+    console.log('render', displayPop);
 
     const square_icon = (
       <div className="site-con site-bg-slate site-home-icon">
@@ -97,6 +113,20 @@ class HomePage extends React.PureComponent {
 
     return (
       <div className="site-con page-body-buffer">
+        <div className={`docs-home-pop ${displayPop ? "" : "docs-home-pop-hide"}`}>
+          <div className='docs-home-pop-padding'></div>
+          <div className='docs-home-pop-content'>
+            <div className='docs-home-pop-content-img'></div>
+            <h1>Pardon our dust</h1>
+            <p>Momentum Design website is currently under construction.</p>
+            <p>The information you're about to access at https://momentum.design/ is outdated.</p>
+            <p>You can access the latest documentation in Figma until the new website goes live in early 2024.</p>
+            <a className='docs-home-pop-content-figma' href='https://www.figma.com/files/787107147284489960/team/788811036705382453'>Lastest <span>Documentation</span></a>
+            <a className='docs-home-pop-content-close' onClick={() => this.hidePop()}>Proceed to website</a>
+            <div className='docs-home-pop-content-logo'></div>            
+          </div>
+          <div className='docs-home-pop-padding'></div>
+        </div>
         <div className="site-con site-bg-black">
           <div className="site-responsive-row site-warp">
             <div className='fix-margin site-banner-home'>

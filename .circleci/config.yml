@@ -5,6 +5,7 @@ definitions:
       - image: cypress/included:8.7.0
         environment:
           TERM: xterm
+
 version: 2
 jobs:
   checkout_install:
@@ -242,6 +243,7 @@ jobs:
 
   publish_www:
     <<: *image_defaults
+    resource_class: large
     steps:
       - checkout
       - run:

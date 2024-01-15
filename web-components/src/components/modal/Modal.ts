@@ -275,7 +275,7 @@ export namespace Modal {
                   aria-describedby="${this.ariaDescription}"
                 >
                   <div part="modal-content" class="md-modal__content">
-                    <div class="md-modal__flex-container">
+                    <div part="modal-container-flex" class="md-modal__flex-container">
                       ${this.headerTemplate()}
                       <div part="modal-body" class="md-modal__body">
                         <slot></slot>

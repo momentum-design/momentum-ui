@@ -5,6 +5,7 @@ definitions:
       - image: cypress/included:8.7.0
         environment:
           TERM: xterm
+
 version: 2
 jobs:
   checkout_install:
@@ -242,6 +243,7 @@ jobs:
 
   publish_www:
     <<: *image_defaults
+    resource_class: large
     steps:
       - checkout
       - run:
@@ -250,14 +252,18 @@ jobs:
       - run: yarn bootstrap
       - run: npm rebuild node-sass
       - run:
-          name: Build website
+          name: Pre build website
           command: yarn build:www
+      - run:
+          name: Build website
+          command: yarn build:www-dist
       - run:
           name: Publish website
           command: yarn publish:www
 
 workflows:
   version: 2
+
   lint_test:
     jobs:
       - checkout_install
@@ -314,3 +320,11 @@ workflows:
                 - master
     jobs:
       - lint_test_release
+
+  manual_publish_www:
+    jobs:
+      - publish_www:
+          filters:
+            branches:
+              only:
+                - website_publish

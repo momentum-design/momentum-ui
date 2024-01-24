@@ -6,15 +6,15 @@
  *
  */
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
 
 export namespace ListItem {
   @customElementWithCheck("md-list-item")
   export class ELEMENT extends FocusMixin(LitElement) {
-    @property({ type: String, reflect: true }) role: "listitem" | "option" = "listitem";
+    // @property({ type: String, reflect: true }) role: "listitem" | "option" = "listitem";
     @property({ type: Number, reflect: true }) tabIndex = -1;
 
     private _disabled = false;
@@ -51,7 +51,7 @@ export namespace ListItem {
 
     render() {
       return html`
-        <li class="md-list-item" part="list-item">
+        <li class="md-list-item" role="listitem" part="list-item">
           <slot></slot>
         </li>
       `;

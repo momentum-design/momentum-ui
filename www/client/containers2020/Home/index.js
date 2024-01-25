@@ -121,8 +121,13 @@ class HomePage extends React.PureComponent {
             <p>Momentum Design website is currently under construction.</p>
             <p>The information you're about to access at https://momentum.design/ is outdated.</p>
             <p>You can access the latest documentation in Figma until the new website goes live in early 2024.</p>
-            <a className='docs-home-pop-content-figma' href='https://www.figma.com/files/787107147284489960/team/788811036705382453'>Lastest <span>Documentation</span></a>
-            <a className='docs-home-pop-content-close' onClick={() => this.hidePop()}>Proceed to website</a>
+            <p>
+              <a className='docs-home-pop-content-figma' href='https://www.figma.com/files/787107147284489960/team/788811036705382453'>Design <span>Documentation</span></a>
+              <a className='docs-home-pop-content-figma' href='https://momentum-design.github.io/momentum-design/en/'>Engineer <span>Documentation</span></a>
+            </p>
+            <p>
+              <a className='docs-home-pop-content-close' onClick={() => this.hidePop()}>Proceed to website</a>
+            </p>
             <div className='docs-home-pop-content-logo'></div>            
           </div>
           <div className='docs-home-pop-padding'></div>

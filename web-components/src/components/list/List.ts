@@ -6,12 +6,12 @@
  *
  */
 
-import { ListItem } from "./ListItem"; // Keep type import as a relative path
 import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { ListItem } from "./ListItem"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
 export namespace List {
@@ -19,7 +19,7 @@ export namespace List {
   export class ELEMENT extends RovingTabIndexMixin(LitElement) {
     @property({ type: String, reflect: true }) alignment: "horizontal" | "vertical" = "vertical";
     @property({ type: String }) label = "option";
-    @property({ type: String, reflect: true }) role: "list" | "listbox" = "list";
+    @property({ type: String, reflect: true }) role: "list" | "listbox" = "listbox";
     @property({ type: Number, reflect: true }) activated = -1;
 
     @query("slot[name='list-item']") listItemSlot?: HTMLSlotElement;

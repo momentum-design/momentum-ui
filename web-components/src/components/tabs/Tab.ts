@@ -158,7 +158,7 @@ export namespace Tab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      // this.setAttribute("role", "tab");
+      
     }
 
     render() {

@@ -122,7 +122,7 @@ export namespace MenuOverlay {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
-      
+
 
       if (this.triggerElement) {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
@@ -130,8 +130,8 @@ export namespace MenuOverlay {
         if(this.allowHoverToggle){
           this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
           this.triggerElement.removeEventListener("mouseleave",  this.collapsePopup);
-          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup ); 
-          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup); 
+          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup );
+          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup);
         }
         this.triggerElement = null;
       }
@@ -155,10 +155,10 @@ export namespace MenuOverlay {
         if(this.allowHoverToggle){
           this.triggerElement.addEventListener("mouseenter", this.expandPopup);
           this.triggerElement.addEventListener("mouseleave",  this.collapsePopup);
-          this.overlayContainer.addEventListener("mouseenter", this.expandPopup); 
-          this.overlayContainer.addEventListener("mouseleave", this.collapsePopup); 
+          this.overlayContainer.addEventListener("mouseenter", this.expandPopup);
+          this.overlayContainer.addEventListener("mouseleave", this.collapsePopup);
         }
-        
+
         if(!this.checkIsInputField(this.triggerElement)) {
           // Prevent adding keydown event, if the slot element type is md-input
           // This will allow users to use ENTER and SPACE key without issues.
@@ -401,7 +401,7 @@ export namespace MenuOverlay {
         ${this.getStyles()}
         <div aria-expanded=${this.isOpen} class="md-menu-overlay">
           <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role="tooltip">
+          <div part="overlay" class="overlay-container" role="menu">
             <div id="arrow" class="overlay-arrow" data-popper-arrow></div>
             <div class="overlay-content" part="overlay-content">
               <slot></slot>

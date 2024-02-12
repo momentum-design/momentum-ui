@@ -312,7 +312,7 @@ export namespace FloatingModal {
                   ${!this.minimize ? html` <md-button
                     color="color-none"
                     class="md-floating__resize"
-                    aria-label="${this.resizeAriaLabel}"
+                    aria-label="${this.full ? 'Fullscreen Resize Modal' : 'Halfscreen Resize Modal'}"
                     circle
                     @click=${this.handleToggleExpandCollapse}
                   >

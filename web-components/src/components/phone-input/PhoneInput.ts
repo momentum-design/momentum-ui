@@ -47,6 +47,7 @@ export namespace PhoneInput {
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
+    @property({ type: String }) clearAriaLabel = "";
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -244,6 +245,7 @@ export namespace PhoneInput {
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"
             shape="${this.pill ? "pill" : "none"}"
             clear
+            clearAriaLabel="${this.clearAriaLabel}"
             type="tel"
             value="${this.formattedValue}"
             .messageArr="${!this.isValid || this.showErrorMessage

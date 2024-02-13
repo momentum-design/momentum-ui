@@ -193,8 +193,17 @@ export namespace FloatingModal {
       }
     }
 
-    handleToggleExpandCollapse() {
+    handleToggleExpandCollapse(event: Event) {
       this.full = !this.full;
+      this.dispatchEvent(
+        new CustomEvent("floating-modal-fullscreen", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            srcEvent: event
+          }
+        })
+      );
     }
 
     private resizeMoveListener = (event: Interact.ResizeEvent) => {
@@ -312,7 +321,7 @@ export namespace FloatingModal {
                   ${!this.minimize ? html` <md-button
                     color="color-none"
                     class="md-floating__resize"
-                    aria-label="${this.full ? 'Fullscreen Resize Modal' : 'Halfscreen Resize Modal'}"
+                    aria-label="${this.resizeAriaLabel}"
                     circle
                     @click=${this.handleToggleExpandCollapse}
                   >

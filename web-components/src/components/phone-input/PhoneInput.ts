@@ -47,6 +47,7 @@ export namespace PhoneInput {
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
+    @property({ type: String }) clearAriaLabel = "";
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -227,6 +228,7 @@ export namespace PhoneInput {
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
             clear-icon-height="${this.clearIconHeight}"
             with-custom-content
+            clear-aria-label="${this.clearAriaLabel}"
           >
             ${repeat(
               this.codeList,

@@ -444,9 +444,9 @@ export namespace Tabs {
 
       if (this.compUniqueId) {
         const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-        const newSelectedIndex = tabsOrder.findIndex(tabItem=>tabItem.selected);
+        const newSelectedIndex = tabsOrder.findIndex(tabItem => tabItem.selected);
         this.storeSelectedTabIndex(newSelectedIndex);
-        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name)
+        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name);
         localStorage.setItem(this.compUniqueId, this.tabsOrderPrefsArray.join(","));
       }
     };
@@ -536,7 +536,6 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
-
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
 
@@ -645,10 +644,9 @@ export namespace Tabs {
         return false;
       }
 
-      if(event.path){
+      if (event.path) {
         elementId = event.path[0].id;
-      }
-      else{
+      } else {
         elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
       }
       const id = this.getNormalizedTabId(elementId);
@@ -818,7 +816,7 @@ export namespace Tabs {
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
-      
+
       this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
     }
 
@@ -875,6 +873,17 @@ export namespace Tabs {
 
       this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
     }
+
+    private allElements: Array<String> = [];
+
+    private updateSelectedTabOnVoiceOver(e: any) {
+      const index = this.allElements.indexOf(e.target.id);
+
+      if (index >= 0) {
+        this.updateSelectedTab(index);
+      }
+    }
+
     private selectTabFromStorage() {
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
@@ -974,8 +983,11 @@ export namespace Tabs {
             "no-tabs-visible": this.noTabsVisible
           })}"
           role="tablist"
+          @click=${(e: any) => {
+            this.updateSelectedTabOnVoiceOver(e);
+          }}
         >
-        <slot
+          <slot
             name="tab"
             class="${classMap({
               "visible-tabs-slot": this.direction === "horizontal"
@@ -989,7 +1001,10 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              tab => nanoid(10),
+              tab => {
+                nanoid(10);
+                this.allElements.includes(tab.id) ? null : this.allElements.push(tab.id);
+              },
               tab => html`
                 <md-tab
                   .closable="${tab.closable}"
@@ -1006,7 +1021,6 @@ export namespace Tabs {
                 </md-tab>
               `
             )}
-           
           </div>
 
           <md-menu-overlay

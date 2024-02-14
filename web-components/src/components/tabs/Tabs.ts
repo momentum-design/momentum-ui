@@ -876,10 +876,10 @@ export namespace Tabs {
 
     private allElements: Array<String> = [];
 
-    private updateSelectedTabOnVoiceOver(e: any) {
+    private updateSelectedTabIndexOnClick(e: any) {
       const index = this.allElements.indexOf(e.target.id);
 
-      if (index >= 0) {
+      if (index !== -1) {
         this.updateSelectedTab(index);
       }
     }
@@ -984,7 +984,7 @@ export namespace Tabs {
           })}"
           role="tablist"
           @click=${(e: any) => {
-            this.updateSelectedTabOnVoiceOver(e);
+            this.updateSelectedTabIndexOnClick(e);
           }}
         >
           <slot

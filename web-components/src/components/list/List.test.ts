@@ -32,7 +32,7 @@ describe("List", () => {
   });
   afterEach(fixtureCleanup);
   test("should set correct attribute", async () => {
-    expect(element.getAttribute("role")).toEqual("list");
+    expect(element.getAttribute("role")).toEqual("listbox");
 
     expect(element.getAttribute("aria-label")).toEqual("Transuranium elements");
     expect(element.getAttribute("alignment")).toEqual("vertical");

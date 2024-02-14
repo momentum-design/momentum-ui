@@ -47,7 +47,7 @@ export namespace PhoneInput {
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
-    @property({ type: String }) clearAriaLabel = "";
+    @property({ type: String }) clearAriaLabel = "Clear";
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];

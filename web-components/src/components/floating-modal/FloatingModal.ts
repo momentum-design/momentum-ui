@@ -200,7 +200,8 @@ export namespace FloatingModal {
           composed: true,
           bubbles: true,
           detail: {
-            srcEvent: event
+            srcEvent: event,
+            full: this.full
           }
         })
       );

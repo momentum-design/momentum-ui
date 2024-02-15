@@ -310,8 +310,9 @@ export namespace Tabs {
       tabs.forEach((tab, index) => {
         const uniqueId = nanoid(10);
         const tabId = "tab_" + uniqueId;
+        const panelId = "tab_panel_" + uniqueId;
         tab.setAttribute("id", tabId);
-        tab.setAttribute("aria-controls", tabId);
+        tab.setAttribute("aria-controls", panelId);
         tab.selected = this.selected === index;
 
         if (this.direction === "vertical") {
@@ -321,9 +322,8 @@ export namespace Tabs {
         const panel = panels[index];
 
         if (panel) {
-          const panelId = "tab_panel_" + uniqueId;
           panel.setAttribute("id", panelId);
-          panel.setAttribute("aria-labelledby", panelId);
+          panel.setAttribute("aria-labelledby", tabId);
           panel.selected = this.selected === index;
           if (tab.disabled) {
             panel.hidden = true;

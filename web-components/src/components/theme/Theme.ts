@@ -324,7 +324,7 @@ export namespace Theme {
 
     render() {
       return html`
-        <div class="theme-wrapper">
+        <div class="theme-wrapper" part="theme-wrapper">
           <style>
             ${styles} .theme-wrapper {
               width: 100%;

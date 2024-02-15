@@ -196,7 +196,7 @@ export namespace FloatingModal {
     handleToggleExpandCollapse(event: Event) {
       this.full = !this.full;
       this.dispatchEvent(
-        new CustomEvent("floating-modal-fullscreen", {
+        new CustomEvent("maximize-restore-event", {
           composed: true,
           bubbles: true,
           detail: {

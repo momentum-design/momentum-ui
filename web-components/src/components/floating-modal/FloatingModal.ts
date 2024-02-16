@@ -26,6 +26,7 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
+    @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel  = "Maximize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
     @property({ type: Boolean, reflect: true }) private minimize = false;
     @property({type: Object}) position: {
@@ -312,7 +313,7 @@ export namespace FloatingModal {
                   ${!this.minimize ? html` <md-button
                     color="color-none"
                     class="md-floating__resize"
-                    aria-label="${this.resizeAriaLabel}"
+                    aria-label="${this.full ? this.resizeAriaLabel: this.maximizeScreenLabel}"
                     circle
                     @click=${this.handleToggleExpandCollapse}
                   >

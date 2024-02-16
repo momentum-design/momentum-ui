@@ -130,7 +130,7 @@ export namespace Button {
 
     @property({ type: String }) ariaLabel = "";
     @property({ type: String }) ariaLabelledBy = "";
-    @property({ type: String }) ariaExpanded = "";
+    @property({ attribute: false }) ariaExpanded: string | null = null;
     @property({ type: Boolean }) ariaHaspopup = false;
     @property({ type: String }) ariaPressed = "false";
     @property({ type: Boolean }) circle = false;
@@ -287,7 +287,7 @@ export namespace Button {
               ? this.ariaExpanded === "true"
                 ? true
                 : false
-              : ifDefined(this.ariaExpanded)}"
+              : ifDefined(this.ariaExpanded || undefined)}"
             aria-haspopup=${ifDefined(this.ariaHaspopup || undefined)}
             type=${this.type}
             role=${this.role}

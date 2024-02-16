@@ -5,7 +5,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { html, internalProperty, LitElement, property, query } from "lit-element";
+import { LitElement, html, internalProperty, property, query } from "lit-element";
 import { nothing } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path
@@ -47,15 +47,13 @@ export namespace PhoneInput {
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
-    @property({ type: String }) clearAriaLabel = "";
-
+    @property({ type: String }) clearAriaLabel = "Clear Input";
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
     @internalProperty() private isValid = true;
 
     @query("md-combobox") combobox!: HTMLElement;
-   
 
     connectedCallback() {
       super.connectedCallback();
@@ -167,15 +165,15 @@ export namespace PhoneInput {
           }
         })
       );
-    } 
+    }
 
-    removeCountryCode(){
+    removeCountryCode() {
       // Strip when Phone number starts with selected Country Code.
       const countryCodeValue = this.countryCallingCode.split(",")[0]?.trim();
-      
+
       if (this.value.startsWith(countryCodeValue)) {
         // If yes, remove the country code and any following hyphen
-        const validPhoneNumber = this.value.slice(countryCodeValue.length).replace(/^-/, '');
+        const validPhoneNumber = this.value.slice(countryCodeValue.length).replace(/^-/, "");
         this.value = validPhoneNumber;
       }
     }
@@ -228,6 +226,7 @@ export namespace PhoneInput {
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
             clear-icon-height="${this.clearIconHeight}"
             with-custom-content
+            clear-aria-label="${this.clearAriaLabel}"
           >
             ${repeat(
               this.codeList,

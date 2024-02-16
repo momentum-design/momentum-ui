@@ -194,7 +194,7 @@ export namespace FloatingModal {
       }
     }
 
-    handleToggleExpandCollapse(event: Event) {
+    handleToggleExpandCollapse() {
       this.full = !this.full;
     }
 

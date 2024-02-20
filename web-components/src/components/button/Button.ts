@@ -130,7 +130,7 @@ export namespace Button {
 
     @property({ type: String }) ariaLabel = "";
     @property({ type: String }) ariaLabelledBy = "";
-    @property({ attribute: false }) ariaExpanded: string | null = null;
+    @property({ type: String }) ariaExpanded = "";
     @property({ type: Boolean }) ariaHaspopup = false;
     @property({ type: String }) ariaPressed = "false";
     @property({ type: Boolean }) circle = false;

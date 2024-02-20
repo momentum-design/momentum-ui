@@ -13,7 +13,7 @@ describe("ListItem", () => {
     const element = await fixture<ListItem.ELEMENT>(`<md-list-item disabled>Neptunium</md-list-item>`);
     expect(element.disabled).toBeTruthy();
     expect(element.getAttribute("aria-disabled")).toEqual("true");
-    expect(element.getAttribute("role")).toEqual("listitem");
+    expect(element.getAttribute("role")).toEqual("option");
   });
 
   test("should change tabindex when disabled attribute is set", async () => {

@@ -489,7 +489,7 @@ describe("Tabs", () => {
     expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });
 
-  test("should update the tab index on voiceover", () => {
+  test("should update the tab index on macos voiceover", () => {
     tabs["updateSelectedTab"] = jest.fn();
     tabs["allElements"]  = ["tab1","tab2","tab3"]
     const e = {

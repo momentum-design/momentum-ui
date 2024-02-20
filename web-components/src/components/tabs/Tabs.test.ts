@@ -489,6 +489,19 @@ describe("Tabs", () => {
     expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });
 
+  test("should update the tab index on voiceover", () => {
+    tabs["updateSelectedTab"] = jest.fn();
+    tabs["allElements"]  = ["tab1","tab2","tab3"]
+    const e = {
+      target: {
+        id: "tab2"
+      }
+    }
+    tabs["updateSelectedTabIndexOnClick"](e);
+    expect(tabs["updateSelectedTab"]).toHaveBeenCalledWith(1);
+  });
+
+
   test("should handle keydown event and focused appropriate tabPanel upon Tab Press", async () => {
     const createKeyboardEvent = (code: string) =>
       new KeyboardEvent("keydown", {

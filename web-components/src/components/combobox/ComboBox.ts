@@ -91,7 +91,14 @@ export namespace ComboBox {
     set focusedIndex(index: number) {
       const oldIndex = this._focusedIndex;
       if (this.checkForVirtualScroll()) {
-        const newId = this.getOptionId(this.filteredOptions[index]);
+        // Virtual Scroll is Enabled.
+        let newId: any;
+        if(this.allowSelectAll) {
+          // "Select All" checkbox option is enabled.
+          newId = index === 0 ? "selectAll" : this.getOptionId(this.filteredOptions[index - 1]);
+        } else {
+          newId = this.getOptionId(this.filteredOptions[index])
+        }
         const newList = this.lists ? [...this.lists]?.find(list => list.offsetHeight !== 0 && list.id === newId) : "";
         if (this.lists) {
           [...this.lists].forEach(list => {
@@ -831,7 +838,7 @@ export namespace ComboBox {
       const { event: clickEvent } = event.detail;
       let optionIndex = this.findOptionIndex(clickEvent);
       if (optionIndex !== -1) {
-        this.focusedIndex = optionIndex;
+        this.focusedIndex = this.allowSelectAll && this.checkForVirtualScroll() ? optionIndex + 1 : optionIndex;
         if (this.isMulti && this.allowSelectAll && !this.checkForVirtualScroll()) {
           optionIndex = optionIndex - 1;
         }

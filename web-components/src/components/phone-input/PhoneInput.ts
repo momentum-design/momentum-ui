@@ -209,7 +209,6 @@ export namespace PhoneInput {
     }
 
     render() {
-      console.log("vinitkum, addDialNumberErrorInAriaLabel", this.addDialNumberErrorInAriaLabel)
       return html`
         ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">

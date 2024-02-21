@@ -877,6 +877,17 @@ export namespace Tabs {
 
       this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
     }
+
+    private allElements: Array<String> = [];
+
+    private updateSelectedTabIndexOnClick(e: any) {
+      const index = this.allElements.indexOf(e.target.id);
+
+      if (index !== -1) {
+        this.updateSelectedTab(index);
+      }
+    }
+
     private selectTabFromStorage() {
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
@@ -976,6 +987,8 @@ export namespace Tabs {
             "no-tabs-visible": this.noTabsVisible
           })}"
           role="tablist"
+          @click=${(e: any) => {
+            this.updateSelectedTabIndexOnClick(e);}}
         >
         <slot
             name="tab"
@@ -991,7 +1004,10 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              tab => nanoid(10),
+              tab => {
+                nanoid(10);
+                this.allElements.includes(tab.id) ? null : this.allElements.push(tab.id);
+              },
               tab => html`
                 <md-tab
                   .closable="${tab.closable}"

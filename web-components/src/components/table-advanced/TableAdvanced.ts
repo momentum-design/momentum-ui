@@ -527,10 +527,14 @@ export namespace TableAdvanced {
             ${head?.caption
               ? html`
                   <caption>
-                    ${head?.caption}
+                    ${head?.caption} <span style="position: absolute; top: -30em">Column headers with buttons are sortable</span>
                   </caption>
                 `
-              : nothing}
+              : html`
+              <caption>
+              <span style="position: absolute; top: -30em">Column headers with buttons are sortable</span>
+              </caption>
+            `}
             ${this.renderHead()} ${this.renderBody()}
           </table>
         </div>
@@ -613,6 +617,7 @@ export namespace TableAdvanced {
           width=${ifDefined(col.width ? col.width : col.options.width)}
           scope="col"
           part="head-col"
+           aria-sort=${col.sort}
           title="${col.options.title}"
           class=${"col-index-" + col.index}
         >

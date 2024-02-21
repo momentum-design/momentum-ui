@@ -208,6 +208,7 @@ export namespace Tooltip {
           </div>
           <div
             class="md-tooltip__reference"
+            part="tooltip_reference"
             @mouseenter=${() => this.notifyTooltipCreate()}
             @mouseleave=${() => this.notifyTooltipDestroy()}
             @focusin=${(event: Event) => this.handleFocusIn(event)}

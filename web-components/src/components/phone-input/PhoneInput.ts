@@ -48,6 +48,7 @@ export namespace PhoneInput {
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Input";
+    @property({ type: Boolean }) addDialNumberErrorInAriaLabel = false;
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
@@ -208,6 +209,7 @@ export namespace PhoneInput {
     }
 
     render() {
+      console.log("vinitkum, addDialNumberErrorInAriaLabel", this.addDialNumberErrorInAriaLabel)
       return html`
         ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">
@@ -238,7 +240,7 @@ export namespace PhoneInput {
             part="md-input"
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
-            .ariaLabel=${this.dialNumberAriaLabel}
+            .ariaLabel=${`${this.dialNumberAriaLabel} ${this.addDialNumberErrorInAriaLabel && !this.isValid ? `, ${this.errorMessage}` : ''}`}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
             @input-blur="${(e: Event) => this.handleBlur(e)}"
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"

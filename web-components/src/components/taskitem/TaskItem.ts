@@ -50,8 +50,9 @@ export namespace TaskItem {
               <md-icon name="incoming-call-active_16"></md-icon>
             </md-badge>
           `;
-        case "applemessages":
-        case "midcall telephony":
+        // case "applemessages": Generic type will be passed for all img src
+        // case "midcall telephony": Generic type will be passed for all img src
+        case "icon src":
           return html`
             <md-badge circle>
               <img src="${this.iconSrc}" />

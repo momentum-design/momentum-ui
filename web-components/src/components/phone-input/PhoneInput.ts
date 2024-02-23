@@ -239,6 +239,7 @@ export namespace PhoneInput {
             part="md-input"
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
+            .ariaInvalid=${!this.isValid ? "true" : "false"}
             .ariaLabel=${`${this.dialNumberAriaLabel} ${this.addDialNumberErrorInAriaLabel && !this.isValid ? `, ${this.errorMessage}` : ''}`}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
             @input-blur="${(e: Event) => this.handleBlur(e)}"

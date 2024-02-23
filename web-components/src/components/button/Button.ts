@@ -287,7 +287,7 @@ export namespace Button {
               ? this.ariaExpanded === "true"
                 ? true
                 : false
-              : ifDefined(this.ariaExpanded)}"
+              : ifDefined(this.ariaExpanded || undefined)}"
             aria-haspopup=${ifDefined(this.ariaHaspopup || undefined)}
             type=${this.type}
             role=${this.role}

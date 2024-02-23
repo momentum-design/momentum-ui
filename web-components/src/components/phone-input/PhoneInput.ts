@@ -227,7 +227,7 @@ export namespace PhoneInput {
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
             clear-icon-height="${this.clearIconHeight}"
             with-custom-content
-            clear-aria-label="${this.clearAriaLabel}"
+            clear-aria-label="${this.clearAriaLabel} ${this.countryCodeAriaLabel}"
           >
             ${repeat(
               this.codeList,
@@ -246,7 +246,7 @@ export namespace PhoneInput {
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"
             shape="${this.pill ? "pill" : "none"}"
             clear
-            clearAriaLabel="${this.clearAriaLabel}"
+            clearAriaLabel="${this.clearAriaLabel} ${this.dialNumberAriaLabel}"
             type="tel"
             value="${this.formattedValue}"
             .messageArr="${!this.isValid || this.showErrorMessage

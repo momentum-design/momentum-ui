@@ -48,7 +48,8 @@ export namespace PhoneInput {
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Input";
-    @property({ type: Boolean }) addDialNumberErrorInAriaLabel = false;
+    @property({ type: String })  id = "";
+
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
@@ -63,6 +64,9 @@ export namespace PhoneInput {
         value: "{countryCallingCode}",
         code: "{countryCode}"
       });
+      if(this.id === "") {
+        this.id = `md-phone-input-${Math.random().toString(36).substr(2, 4)}`;
+      }
       this.validateInput(this.value);
     }
 
@@ -187,6 +191,7 @@ export namespace PhoneInput {
       return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
     }
 
+
     getModStyle() {
       return html`
         <style>
@@ -240,11 +245,13 @@ export namespace PhoneInput {
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
             .ariaInvalid=${!this.isValid ? "true" : "false"}
-            .ariaLabel=${`${this.dialNumberAriaLabel} ${this.addDialNumberErrorInAriaLabel && !this.isValid ? `, ${this.errorMessage}` : ''}`}
+            .ariaErrorMessage=${this.errorMessage}
+            .ariaLabel=${`${this.dialNumberAriaLabel}`}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
             @input-blur="${(e: Event) => this.handleBlur(e)}"
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"
             shape="${this.pill ? "pill" : "none"}"
+            .ariaControls=${this.id}
             clear
             clearAriaLabel="${this.clearAriaLabel} ${this.dialNumberAriaLabel}"
             type="tel"
@@ -253,8 +260,10 @@ export namespace PhoneInput {
               ? [
                   {
                     type: "error",
+                    id: this.id,
+                    ariaLive: "polite",
                     message: this.errorMessage
-                  } as Input.Message
+                  } as Input.Message,
                 ]
               : []}"
           ></md-input>

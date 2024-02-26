@@ -52,6 +52,7 @@ export namespace TaskItem {
           `;
         case "applemessages":
         case "midcall telephony":
+        case "icon src":
           return html`
             <md-badge circle>
               <img src="${this.iconSrc}" />

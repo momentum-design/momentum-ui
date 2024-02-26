@@ -48,4 +48,9 @@ export const linkTemplate = html`
       tab-index -1
     </md-link>
   </div>
+  <div class="row">
+    <md-link ariaLabel="Test Link">
+      Link with Aria Label
+    </md-link>
+  </div>
 `;

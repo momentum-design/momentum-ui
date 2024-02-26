@@ -198,11 +198,18 @@ export namespace MenuOverlay {
 
           if (this.triggerElement) {
             this.triggerElement.setAttribute("aria-expanded", "true");
+            if(this.triggerElement.hasAttribute("ariaexpanded")){
+              this.triggerElement.setAttribute("ariaexpanded", "true");
+            }
           }
         } else {
           this.dispatchMenuClose();
           if (this.triggerElement) {
             this.triggerElement.removeAttribute("aria-expanded");
+
+            if(this.triggerElement.hasAttribute("ariaexpanded")){
+              this.triggerElement.setAttribute("ariaexpanded", "false");
+            }
           }
         }
       }

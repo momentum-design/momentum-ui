@@ -10,6 +10,7 @@ import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const linkTag = ["a", "div", "span"] as const;
@@ -22,6 +23,7 @@ export namespace Link {
   @customElementWithCheck("md-link")
   export class ELEMENT extends LitElement {
     @property({ type: String, attribute: false }) color: Color = "";
+    @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) inline = false;
     @property({ type: String }) href = "";
@@ -71,6 +73,7 @@ export namespace Link {
             return html`
               <a
                 class="md-link ${classMap(linkClassNamesInfo)}"
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
                 .target="${this.target}"
                 href=${this.href}
                 tabindex=${this.tabIndex}

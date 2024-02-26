@@ -32,16 +32,18 @@ export const Link = () => {
   const disabled = boolean("Disabled", false);
   const inline = boolean("Link Inline", false);
   const target = text("Target", "_self");
-  const color = select("Link color", linkColor, "blue")
+  const color = select("Link color", linkColor, "blue");
+  const ariaLabel = text("AriaLabel", "Link Storybook");
 
   return html`
     <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-link 
-        .href=${href} 
-        .tag=${tag as any} 
+      <md-link
+        .href=${href}
+        .ariaLabel=${ariaLabel}
+        .tag=${tag as any}
         .target="${target}"
         .color="${color}"
-        ?disabled=${disabled} 
+        ?disabled=${disabled}
         ?inline=${inline}>Default Link</md-link>
     </md-theme>
   `;

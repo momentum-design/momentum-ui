@@ -176,7 +176,6 @@ export namespace Input {
     @property({ type: String }) type: Input.Type = "text";
     @property({ type: String, reflect: true }) value = "";
     @property({ type: String }) ariaControls = "";
-    @property({ type: String }) ariaErrorMessage = "";
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -393,7 +392,7 @@ export namespace Input {
               aria-controls=${this.ariaControls}
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
-              aria-errormessage=${this.ariaErrorMessage || `${this.htmlId}-message`}
+              aria-errormessage=${`${this.htmlId}-message`}
               ?disabled=${this.disabled}
               id=${this.htmlId}
               placeholder=${this.placeholder}
@@ -486,19 +485,16 @@ export namespace Input {
       return !this.hideMessage && this.messages && !!this.messages.length
         ? html`
             <div id="${this.htmlId}-message" part="message" class="md-input__messages">
-              ${repeat(
-                this.messages,
-                (message, id) =>{
-                  return  html`
+              ${repeat(this.messages, (message, id) => {
+                return html`
                   <md-help-text
                     .message=${message}
                     .id=${this.messageArr[id].id || ""}
                     .ariaLive=${this.messageArr[id].ariaLive || "polite"}
                     .messageType=${this.messageType as Input.MessageType}
                   ></md-help-text>
-                `
-                }
-              )}
+                `;
+              })}
             </div>
           `
         : nothing;

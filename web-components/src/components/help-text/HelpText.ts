@@ -18,6 +18,8 @@ export namespace HelpText {
   export class ELEMENT extends LitElement {
     @property({ type: String }) message = "";
     @property({ type: String }) messageType: Input.MessageType | undefined = undefined;
+    @property({ type: String }) id = "";
+    @property({ type: String }) ariaLive: "off" | "assertive" | "polite" = "off";
 
     get inputMessageClassMap() {
       return {
@@ -44,7 +46,10 @@ export namespace HelpText {
 
     render() {
       return html`
-        <div class="md-input__message ${classMap(this.inputMessageClassMap)}" role="alert">
+        <div class="md-input__message ${classMap(this.inputMessageClassMap)}" 
+            id=${this.id}
+            aria-live=${this.ariaLive}
+             role="alert">
           <md-icon name="${this.getIconName()}"></md-icon>
           <slot>${this.message}</slot>
         </div>

@@ -48,6 +48,8 @@ export namespace PhoneInput {
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Input";
+    @property({ type: String }) id = "";
+
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
     @internalProperty() private formattedValue = "";
@@ -62,6 +64,11 @@ export namespace PhoneInput {
         value: "{countryCallingCode}",
         code: "{countryCode}"
       });
+      if (this.id === "") {
+        this.id = `md-phone-input-${Math.random()
+          .toString(36)
+          .substr(2, 4)}`;
+      }
       this.validateInput(this.value);
     }
 
@@ -238,11 +245,13 @@ export namespace PhoneInput {
             part="md-input"
             ?disabled=${this.disabled}
             placeholder=${this.numberPlaceholder}
-            .ariaLabel=${this.dialNumberAriaLabel}
+            .ariaInvalid=${!this.isValid ? "true" : "false"}
+            .ariaLabel=${`${this.dialNumberAriaLabel}`}
             @input-change="${(e: CustomEvent) => this.handlePhoneChange(e)}"
             @input-blur="${(e: Event) => this.handleBlur(e)}"
             @input-keydown="${(e: Event) => this.handleKeydown(e)}"
             shape="${this.pill ? "pill" : "none"}"
+            .ariaControls=${this.id}
             clear
             clearAriaLabel="${this.clearAriaLabel} ${this.dialNumberAriaLabel}"
             type="tel"
@@ -251,6 +260,8 @@ export namespace PhoneInput {
               ? [
                   {
                     type: "error",
+                    id: this.id,
+                    ariaLive: "polite",
                     message: this.errorMessage
                   } as Input.Message
                 ]

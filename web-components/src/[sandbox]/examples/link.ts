@@ -53,4 +53,9 @@ export const linkTemplate = html`
       Link with Aria Label
     </md-link>
   </div>
+  <div class="row">
+    <md-link role="button">
+      Role as button
+    </md-link>
+  </div>
 `;

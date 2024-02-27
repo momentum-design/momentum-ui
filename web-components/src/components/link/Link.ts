@@ -15,15 +15,18 @@ import styles from "./scss/module.scss";
 
 export const linkTag = ["a", "div", "span"] as const;
 export const linkColor = ["", "blue", "red", "green", "yellow", "orange"] as const;
+export const linkRole = ["link", "button"] as const;
 
 export namespace Link {
   export type Tag = typeof linkTag[number];
   export type Color = typeof linkColor[number];
+  export type Role = typeof linkRole[number];
 
   @customElementWithCheck("md-link")
   export class ELEMENT extends LitElement {
     @property({ type: String, attribute: false }) color: Color = "";
     @property({ type: String }) ariaLabel = "";
+    @property({ type: String }) role: Role = "link";
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) inline = false;
     @property({ type: String }) href = "";
@@ -58,13 +61,13 @@ export namespace Link {
         switch (this.tag) {
           case "div":
             return html`
-              <div class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex} role="link" part="link">
+              <div class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex}  aria-label=${ifDefined(this.ariaLabel || undefined)} role=${this.role} part="link">
                 <slot></slot>
               </div>
             `;
           case "span":
             return html`
-              <span class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex} role="link" part="link">
+              <span class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex}  aria-label=${ifDefined(this.ariaLabel || undefined)} role=${this.role} part="link">
                 <slot></slot>
               </span>
             `;
@@ -73,11 +76,11 @@ export namespace Link {
             return html`
               <a
                 class="md-link ${classMap(linkClassNamesInfo)}"
-                aria-label=${ifDefined(this.ariaLabel || undefined)}
                 .target="${this.target}"
                 href=${this.href}
                 tabindex=${this.tabIndex}
-                role="link"
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
+                role=${this.role}
                 part="link"
               >
                 <slot></slot>

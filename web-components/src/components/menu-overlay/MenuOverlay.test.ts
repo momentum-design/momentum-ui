@@ -64,6 +64,31 @@ const fixtureFactory = async (
   `);
 };
 
+const fixtureFactory2 = async (
+  isOpen: boolean,
+  showArrow: boolean,
+  placement: MenuOverlay.Placement,
+  customWidth: string,
+  maxHeight: string,
+  size: MenuOverlay.Size,
+  allowHoverToggle = false
+): Promise<MenuOverlay.ELEMENT> => {
+  return await fixture<MenuOverlay.ELEMENT>(html`
+    <md-menu-overlay
+      ?is-open=${isOpen}
+      ?show-arrow=${showArrow}
+      placement=${placement}
+      custom-width=${customWidth}
+      max-height=${maxHeight}
+      size=${size}
+      ?allow-hover-toggle=${allowHoverToggle}
+    >
+      <md-button slot="menu-trigger" class="menu-trigger" variant="primary" ariaexpanded="false">Open Menu Overlay</md-button>
+      <div><h1>Menu Overlay Content</h1></div>
+    </md-menu-overlay>
+  `);
+};
+
 const fixtureInputFactory = async (
   isOpen: boolean,
   showArrow: boolean,
@@ -216,6 +241,38 @@ describe("MenuOverlay", () => {
     expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy();
   });
 
+  test("triggerElement should have the correct aria labels with extra attribute", async () => {
+    const element = await fixtureFactory2(false, false, "bottom", "", "", "large");
+
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+    await nextFrame();
+
+    expect(triggerElement.getAttribute("aria-haspopup")).toBeTruthy();
+    expect(triggerElement.getAttribute("aria-expanded")).toBeFalsy();
+    expect(triggerElement.getAttribute("ariaexpanded")).toBe("false");
+
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+
+    expect(element.isOpen).toBeTruthy();
+    expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy();
+    expect(triggerElement.getAttribute("ariaexpanded")).toBe("true");
+  });
+
+  test("triggerElement should have the correct aria labels click when already opened", async () => {
+    const element = await fixtureFactory2(true, false, "bottom", "", "", "large");
+
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+    await nextFrame();
+
+
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+
+    expect(triggerElement.getAttribute("ariaexpanded")).toBe("false");
+  });
   test("should toggle overlay if trigger element is hovered", async () => {
     jest.useRealTimers();
     const element = await fixtureFactory(false, false, "bottom", "", "", "large", true);

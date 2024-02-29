@@ -78,6 +78,7 @@ export namespace MenuOverlay {
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) placement: MenuOverlay.Placement = "bottom";
     @property({ type: Boolean, attribute: "allow-hover-toggle" }) allowHoverToggle = false;
+    @property({ type: String, attribute: "custom-role" }) customRole = "menu";
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -401,7 +402,7 @@ export namespace MenuOverlay {
         ${this.getStyles()}
         <div aria-expanded=${this.isOpen} class="md-menu-overlay">
           <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role="menu">
+          <div part="overlay" class="overlay-container" role=${this.customRole} ${this.customRole == 'dialog' ? 'aria-modal="true"' : ''}>
             <div id="arrow" class="overlay-arrow" data-popper-arrow></div>
             <div class="overlay-content" part="overlay-content">
               <slot></slot>

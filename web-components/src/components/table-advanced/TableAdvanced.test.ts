@@ -296,4 +296,68 @@ describe("Table Advanced component", () => {
     const disconnectedEvent = await oneEvent(tableAdvanced, "disconnected-callback");
     expect(disconnectedEvent).toBeDefined();
   });
+
+  test("should render caption when head.caption is defined", async () => {
+    const elem = await ELEM();
+    elem.tableConfig.head = { caption: "Test Caption", tableDescription: "Test tableDescription" };
+  
+    // Wait for changes in the shadow DOM
+    await new Promise<void>((resolve) => {
+      const observer = new MutationObserver(() => {
+        resolve();
+        observer.disconnect();
+      });
+      observer.observe(elem.shadowRoot!, { childList: true, subtree: true });
+    });
+  
+    const caption = elem.shadowRoot!.querySelector("caption");
+    expect(caption).toBeDefined();
+    expect(caption!.textContent).toContain("Test Caption");
+    expect(caption!.textContent).toContain("Test tableDescription");
+  });
+
+  test("should render caption when head.caption is defined but head.tableDescription is not defined", async () => {
+    const elem = await ELEM();
+    elem.tableConfig.head = { caption: "Test Caption" };
+  
+    // Wait for changes in the shadow DOM
+    await new Promise<void>((resolve) => {
+      const observer = new MutationObserver(() => {
+        resolve();
+        observer.disconnect();
+      });
+      observer.observe(elem.shadowRoot!, { childList: true, subtree: true });
+    });
+  
+    const caption = elem.shadowRoot!.querySelector("caption");
+    expect(caption).toBeDefined();
+    expect(caption!.textContent).toContain("Test Caption");
+  });
+  
+  test("should render tableDescription when head.caption is not defined but head.tableDescription is defined", async () => {
+    const elem = await ELEM();
+    elem.tableConfig.head = { tableDescription: "Test tableDescription" };
+  
+    // Wait for changes in the shadow DOM
+    await new Promise<void>((resolve) => {
+      const observer = new MutationObserver(() => {
+        resolve();
+        observer.disconnect();
+      });
+      observer.observe(elem.shadowRoot!, { childList: true, subtree: true });
+    });
+  
+    const caption = elem.shadowRoot!.querySelector("caption");
+    expect(caption).toBeDefined();
+    expect(caption!.textContent).toContain("Test tableDescription");
+  });
+  
+  test("should not render caption when neither head.caption nor head.tableDescription is defined", async () => {
+    const elem = await ELEM();
+    elem.tableConfig.head = {};
+    
+    const caption = elem.shadowRoot!.querySelector("caption");
+    expect(caption).toBeNull();
+  });
 });
+

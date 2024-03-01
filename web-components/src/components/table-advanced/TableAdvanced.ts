@@ -77,7 +77,7 @@ export namespace TableAdvanced {
     }
 
     protected update(changedProperties: PropertyValues) {
-      super.update(changedProperties);
+            super.update(changedProperties);
       if (changedProperties.has("data")) {
         this.updateTableData();
         this.updateDataInTable();
@@ -527,10 +527,15 @@ export namespace TableAdvanced {
             ${head?.caption
               ? html`
                   <caption>
-                    ${head?.caption}
+                    ${head?.caption} ${head?.tableDescription ? html`<span style="position: absolute; top: -30em">${head?.tableDescription}</span>` : nothing} 
                   </caption>
                 `
-              : nothing}
+              :head?.tableDescription
+              ? html`
+                  <caption>
+                    <span style="position: absolute; top: -30em">${head?.tableDescription}</span>
+                  </caption>
+                ` : nothing}
             ${this.renderHead()} ${this.renderBody()}
           </table>
         </div>
@@ -613,6 +618,7 @@ export namespace TableAdvanced {
           width=${ifDefined(col.width ? col.width : col.options.width)}
           scope="col"
           part="head-col"
+          aria-sort=${col.sort}
           title="${col.options.title}"
           class=${"col-index-" + col.index}
         >
@@ -1002,6 +1008,7 @@ export namespace TableAdvanced {
     head?: {
       caption?: string;
       summary?: string;
+      tableDescription?: string;
     };
   };
 

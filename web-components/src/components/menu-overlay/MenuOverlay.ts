@@ -18,6 +18,7 @@ import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export enum OverlaySizes {
   small = "260px",
@@ -402,7 +403,9 @@ export namespace MenuOverlay {
         ${this.getStyles()}
         <div aria-expanded=${this.isOpen} class="md-menu-overlay">
           <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role=${this.customRole} ${this.customRole == 'dialog' ? 'aria-modal="true"' : ''}>
+          <div part="overlay" class="overlay-container" role="${this.customRole}" 
+          aria-modal=${ifDefined(this.customRole === 'dialog' ? "true" : undefined)}
+          >
             <div id="arrow" class="overlay-arrow" data-popper-arrow></div>
             <div class="overlay-content" part="overlay-content">
               <slot></slot>

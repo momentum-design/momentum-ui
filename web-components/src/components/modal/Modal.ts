@@ -256,6 +256,7 @@ export namespace Modal {
     }
 
     render() {
+      console.log("this.ariaDescription", this.ariaDescription);
       return html`
         ${this.show
           ? html`
@@ -273,7 +274,7 @@ export namespace Modal {
                   class="md-modal ${classMap(this.modalContainerClassMap)}"
                   aria-label="${this.ariaLabel}"
                   aria-labelledby="modal_header"
-                  aria-describedby=${ifDefined(this.ariaDescription || undefined)}
+                  aria-describedby=${ifDefined(this.ariaDescription)}
                 >
                   <div part="modal-content" class="md-modal__content">
                     <div class="md-modal__flex-container" part="modal-flex-container">

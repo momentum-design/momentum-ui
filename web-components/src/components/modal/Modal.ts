@@ -256,7 +256,6 @@ export namespace Modal {
     }
 
     render() {
-      console.log("this.ariaDescription", this.ariaDescription);
       return html`
         ${this.show
           ? html`

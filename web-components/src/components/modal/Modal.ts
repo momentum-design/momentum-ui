@@ -201,7 +201,7 @@ export namespace Modal {
           `
         : html`
             <div part="modal-header" class="md-modal__header">
-              <span class="md-modal__title">${this.headerLabel}</span>
+              <h2 class="md-modal__title">${this.headerLabel}</h2>
               ${this.headerMessage
                 ? html`
                     <span class="md-modal__message">${this.headerMessage}</span>

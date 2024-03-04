@@ -38,7 +38,7 @@ describe("Link component", () => {
   // role
   test("should set role when passed", async () => {
     expect.hasAssertions();
-    const component: Link.ELEMENT = await fixture(` <md-link custom-role="button"></md-link> `);
+    const component: Link.ELEMENT = await fixture(` <md-link ariaRole="button"></md-link> `);
     const linkComponent = component.shadowRoot?.querySelector("a");
     expect(linkComponent?.getAttribute("role")).toContain("button");
   });

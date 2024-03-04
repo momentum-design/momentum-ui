@@ -611,6 +611,10 @@ export const ShortkeyTable: { config: TableAdvanced.Config; data: TableAdvanced.
         { id: "c2", title: "Action", sorter: "byString", width: "40%" },
         { id: "c3", title: "Shortcut Key", width: "30%", filters: "forString" }
       ]
+    },
+
+    head: {
+      tableDescription: "Column headers with buttons are sortable"
     }
   },
 

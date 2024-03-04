@@ -57,6 +57,7 @@ type Config = {
   head?: {
     caption?: string;
     summary?: string;
+    tableDescription?: string;
   };
 };
 ```

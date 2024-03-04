@@ -15,6 +15,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const modalType = ["default", "full", "large", "small", "dialog"] as const;
@@ -42,7 +43,7 @@ export namespace Modal {
     @property({ type: String }) ariaLabelClose = "Close Modal";
     @property({ type: String }) ariaLabelCancel = "Cancel Modal";
     @property({ type: String }) ariaLabelSubmit = "Submit Modal";
-    @property({ type: String }) ariaDescription = "";
+    @property({ type: String }) ariaDescription?: string;
     @property({ type: Boolean }) showCloseButton = false;
     @property({ type: Boolean }) backdropClickExit = false;
     @property({ type: Boolean }) noExitOnEsc = false;
@@ -194,7 +195,7 @@ export namespace Modal {
     private headerTemplate() {
       return this.hideHeader
         ? html`
-            <div part="modal-header" class="md-modal__header">
+            <div id="modal_header" part="modal-header" class="md-modal__header">
               <slot name="header"></slot>
               ${this.topCloseBtnTemplate()}
             </div>
@@ -271,8 +272,8 @@ export namespace Modal {
                   id="${this.htmlId}"
                   class="md-modal ${classMap(this.modalContainerClassMap)}"
                   aria-label="${this.ariaLabel}"
-                  aria-labelledby="${this.ariaLabelledBy}"
-                  aria-describedby="${this.ariaDescription}"
+                  aria-labelledby="modal_header"
+                  aria-describedby=${ifDefined(this.ariaDescription)}
                 >
                   <div part="modal-content" class="md-modal__content">
                     <div class="md-modal__flex-container" part="modal-flex-container">

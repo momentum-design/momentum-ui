@@ -41,7 +41,7 @@ export const Link = () => {
       <md-link
         .href=${href}
         .ariaLabel=${ariaLabel}
-        .role=${role}
+        .custom-role=${role}
         .tag=${tag as any}
         .target="${target}"
         .color="${color}"

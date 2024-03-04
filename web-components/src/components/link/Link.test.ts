@@ -38,17 +38,18 @@ describe("Link component", () => {
   // role
   test("should set role when passed", async () => {
     expect.hasAssertions();
-    const component: Link.ELEMENT = await fixture(` <md-link role="button"></md-link> `);
-    expect(component.role).toContain("button");
+    const component: Link.ELEMENT = await fixture(` <md-link custom-role="button"></md-link> `);
+    const linkComponent = component.shadowRoot?.querySelector("a");
+    expect(linkComponent?.getAttribute("role")).toContain("button");
   });
 
   // role
   test("should set role as link when not passed", async () => {
     expect.hasAssertions();
     const component: Link.ELEMENT = await fixture(` <md-link></md-link> `);
-    expect(component.role).toContain("link");
+    const linkComponent = component.shadowRoot?.querySelector("a");
+    expect(linkComponent?.getAttribute("role")).toContain("link");
   });
-
 
   test("should render correct aria label", async () => {
     expect.hasAssertions();

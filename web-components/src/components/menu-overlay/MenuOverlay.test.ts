@@ -442,12 +442,18 @@ describe("MenuOverlay", () => {
     const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ariaRole="dialog" ></md-menu-overlay>`);
     const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
     expect(overlayPart?.getAttribute('role')).toEqual("dialog");
+    // when the role is dialog, aria-modal should be true
+    expect(overlayPart?.getAttribute('aria-modal')).toEqual("true");
+
   });
 
   test("should have a role as menu when we are not passing", async () => {
     const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ></md-menu-overlay>`);
     const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
     expect(overlayPart?.getAttribute('role')).toEqual("menu");
+    // when the role is other than dialog, aria-modal should be false
+    expect(overlayPart?.hasAttribute('aria-modal')).toBe(false);
+
   });
 
 

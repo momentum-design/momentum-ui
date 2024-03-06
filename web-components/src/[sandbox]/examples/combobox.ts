@@ -19,12 +19,18 @@ const comboboxOnExpand =(e: CustomEvent) => {
   console.log("combobox-on-expand: ", e);
 }
 
+const onSearchListUpdated = (e: CustomEvent) => {
+  console.log("onSearchListUpdated: ", e);
+}
+
 export const comboBoxTemplate = html`
   <h3>Default</h3>
   <md-combobox
     style="width: 220px; display: inline-block;"
     .options=${comboBoxOptions}
-    placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+    placeholder="Placeholder"
+    aria-label="Select the country"
+    @listItemsCount-changed=${onSearchListUpdated}
   ></md-combobox>
   <h3>Default with trim space</h3>
   <md-combobox

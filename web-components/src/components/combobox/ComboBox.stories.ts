@@ -39,6 +39,11 @@ export const Combobox = () => {
   const objectInit = boolean("Object Data InitialValue", false);
   const customContent = boolean("Custom Content", false);
   const customContentInit = boolean("Multi Custom Content InitialValue", false);
+  const ariaLabel = text("aria-label", "Search Country")
+
+  const onSearchListUpdated = (e: CustomEvent) => {
+    console.log("onSearchListUpdated: ", e);
+  }
 
   if (init) {
     return html`
@@ -49,6 +54,8 @@ export const Combobox = () => {
           ?disabled=${disabled}
           ?search-trim-space=${trimSpace}
           .value=${[comboBoxOptions[3]]}
+          aria-label=${ariaLabel}
+          @listItemsCount-changed=${onSearchListUpdated}
         ></md-combobox>
       </md-theme>
     `;

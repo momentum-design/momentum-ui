@@ -150,7 +150,7 @@ export namespace ComboBox {
     private multiSelected: number[] = [];
     private customContent: Element[] = [];
 
-    private notifyListItemsCountToParent() {
+    private notifylistitemscounttoparent() {
       this.dispatchEvent(
         new CustomEvent('listItemsCount-changed', {
           detail: { listItemsCount: this.listItemsCount, searchValue: this.inputValue },
@@ -1450,7 +1450,7 @@ export namespace ComboBox {
 
     renderWithoutVirtualScroll() {
       this.listItemsCount = this.filteredGroupOptions.length;
-      this.notifyListItemsCountToParent()
+      this.notifylistitemscounttoparent()
       return repeat(
         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
         (option: string | OptionMember) => this.getOptionId(option),

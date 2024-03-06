@@ -51,6 +51,7 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
     @property({ type: Array }) selectedOptions: (string | OptionMember)[] = [];
     @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
+    @property({ type: Number, attribute: "list-items-count", reflect: true }) listItemsCount = 0;
     @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";
     @property({ type: String, attribute: "option-value", reflect: true }) optionValue = "";
     @property({ type: Boolean, attribute: "with-custom-content" }) isCustomContent = false;
@@ -66,7 +67,7 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
 
-    @property({ type: String, attribute: "aria-label" }) ariaLabel = "Combobox Input";
+    @property({ type: String, attribute: "aria-label", reflect: true }) ariaLabel = "";
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
@@ -148,6 +149,16 @@ export namespace ComboBox {
     private multiSelectedIndex = -1;
     private multiSelected: number[] = [];
     private customContent: Element[] = [];
+
+    private notifyListItemsCountToParent() {
+      this.dispatchEvent(
+        new CustomEvent('listItemsCount-changed', {
+          detail: { listItemsCount: this.listItemsCount, searchValue: this.inputValue },
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
 
     @query(".group") group?: HTMLDivElement;
     @query(".md-combobox-listbox") input?: HTMLInputElement;
@@ -1438,6 +1449,8 @@ export namespace ComboBox {
     }
 
     renderWithoutVirtualScroll() {
+      this.listItemsCount = this.filteredGroupOptions.length;
+      this.notifyListItemsCountToParent()
       return repeat(
         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
         (option: string | OptionMember) => this.getOptionId(option),

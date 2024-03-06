@@ -55,7 +55,7 @@ export const Combobox = () => {
           ?search-trim-space=${trimSpace}
           .value=${[comboBoxOptions[3]]}
           aria-label=${ariaLabel}
-          @listItemsCount-changed=${onSearchListUpdated}
+          @item-count-changed=${onSearchListUpdated}
         ></md-combobox>
       </md-theme>
     `;

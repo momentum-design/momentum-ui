@@ -152,7 +152,7 @@ export namespace ComboBox {
 
     private notifylistitemscounttoparent() {
       this.dispatchEvent(
-        new CustomEvent('listItemsCount-changed', {
+        new CustomEvent('item-count-changed', {
           detail: { listItemsCount: this.listItemsCount, searchValue: this.inputValue },
           bubbles: true,
           composed: true

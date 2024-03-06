@@ -54,7 +54,7 @@ export const linkTemplate = html`
     </md-link>
   </div>
   <div class="row">
-    <md-link role="button">
+    <md-link ariaRole="button">
       Role as button
     </md-link>
   </div>

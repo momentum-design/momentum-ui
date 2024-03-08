@@ -83,7 +83,7 @@ export namespace MenuOverlay {
     @property({ type: String }) placement: MenuOverlay.Placement = "bottom";
     @property({ type: Boolean, attribute: "allow-hover-toggle" }) allowHoverToggle = false;
     @property({ type: String }) ariaRole: Role = "menu";
-    @property({ type: String }) ariaLabel = "";
+    @property({ type: String }) ariaLabel: string = "";
 
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;

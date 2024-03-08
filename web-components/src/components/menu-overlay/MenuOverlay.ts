@@ -410,7 +410,7 @@ export namespace MenuOverlay {
           <slot name="menu-trigger"></slot>
           <div part="overlay" class="overlay-container" role=${this.ariaRole} 
           aria-modal=${ifDefined(this.ariaRole === 'dialog' ? "true" : undefined)}
-          aria-label=${ifDefined(this.ariaLabel)}
+          aria-label=${ifDefined(this.ariaLabel || undefined)}
           >
             <div id="arrow" class="overlay-arrow" data-popper-arrow></div>
             <div class="overlay-content" part="overlay-content">

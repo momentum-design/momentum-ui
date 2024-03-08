@@ -425,4 +425,36 @@ describe("MenuOverlay", () => {
     expect(element.isOpen).toBeTruthy();
     expect(document.activeElement).not.toEqual(button);
   });
+
+  test("should have an aria-label attribute when ariaLabel is set", async () => {
+    const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ariaLabel="Menu Overlay"></md-menu-overlay>`);
+    const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
+    expect(overlayPart?.getAttribute('aria-label')).toEqual('Menu Overlay');
+  });
+
+  test("should not have an aria-label attribute when ariaLabel is not set", async () => {
+    const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ></md-menu-overlay>`);
+    const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
+    expect(overlayPart?.hasAttribute('aria-label')).toBe(false);
+  });
+
+  test("should have a role when we set ariaRole", async () => {
+    const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ariaRole="dialog" ></md-menu-overlay>`);
+    const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
+    expect(overlayPart?.getAttribute('role')).toEqual("dialog");
+    // when the role is dialog, aria-modal should be true
+    expect(overlayPart?.getAttribute('aria-modal')).toEqual("true");
+
+  });
+
+  test("should have a role as menu when we are not passing", async () => {
+    const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ></md-menu-overlay>`);
+    const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
+    expect(overlayPart?.getAttribute('role')).toEqual("menu");
+    // when the role is other than dialog, aria-modal should be false
+    expect(overlayPart?.hasAttribute('aria-modal')).toBe(false);
+
+  });
+
+
 });

@@ -15,7 +15,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/menu-overlay/MenuOverlay";
-import { menuOverlayPlacement, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
+import { menuOverlayPlacement, menuOverlaySize, menuOverlayRole } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
   title: "Components/Menu Overlay",
@@ -46,6 +46,9 @@ export const MenuOverlay = () => {
   const size = select("size", menuOverlaySize, "large");
   const maxHeight = text("max height", "");
   const customWidth = text("custom width", "");
+  const ariaRole = select("ariaRole", menuOverlayRole, "menu");
+  const ariaLabel = text("AriaLabel", "Link Storybook");
+
 
   return html`
     <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} ?lumos=${lumos}>
@@ -55,6 +58,8 @@ export const MenuOverlay = () => {
         size=${size}
         max-height=${maxHeight}
         custom-width=${customWidth}
+        ariaRole=${ariaRole}
+        ariaLabel=${ariaLabel}
         ?is-open=${isOpen}
         ?show-arrow=${showArrow}
         ?disabled=${disabled}

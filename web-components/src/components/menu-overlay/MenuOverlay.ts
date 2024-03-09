@@ -18,6 +18,7 @@ import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export enum OverlaySizes {
   small = "260px",
@@ -49,10 +50,13 @@ export const menuOverlayPlacement = [
   "bottom",
   "bottom-end"
 ] as const;
+export const menuOverlayRole = ["menu", "dialog"] as const;
+
 
 export namespace MenuOverlay {
   export type Size = typeof menuOverlaySize[number];
   export type Placement = typeof menuOverlayPlacement[number];
+  export type Role = typeof menuOverlayRole[number];
 
   @customElementWithCheck("md-menu-overlay")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
@@ -78,6 +82,9 @@ export namespace MenuOverlay {
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) placement: MenuOverlay.Placement = "bottom";
     @property({ type: Boolean, attribute: "allow-hover-toggle" }) allowHoverToggle = false;
+    @property({ type: String }) ariaRole: Role = "menu";
+    @property({ type: String }) ariaLabel: string = "";
+
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -401,7 +408,10 @@ export namespace MenuOverlay {
         ${this.getStyles()}
         <div aria-expanded=${this.isOpen} class="md-menu-overlay">
           <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role="menu">
+          <div part="overlay" class="overlay-container" role=${this.ariaRole} 
+          aria-modal=${ifDefined(this.ariaRole === 'dialog' ? "true" : undefined)}
+          aria-label=${ifDefined(this.ariaLabel || undefined)}
+          >
             <div id="arrow" class="overlay-arrow" data-popper-arrow></div>
             <div class="overlay-content" part="overlay-content">
               <slot></slot>

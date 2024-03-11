@@ -35,6 +35,36 @@ describe("Link component", () => {
     expect(component.className).toContain("md-link--yellow");
   });
 
+  // role
+  test("should set role when passed", async () => {
+    expect.hasAssertions();
+    const component: Link.ELEMENT = await fixture(` <md-link ariaRole="button"></md-link> `);
+    const linkComponent = component.shadowRoot?.querySelector("a");
+    expect(linkComponent?.getAttribute("role")).toContain("button");
+  });
+
+  // role
+  test("should set role as link when not passed", async () => {
+    expect.hasAssertions();
+    const component: Link.ELEMENT = await fixture(` <md-link></md-link> `);
+    const linkComponent = component.shadowRoot?.querySelector("a");
+    expect(linkComponent?.getAttribute("role")).toContain("link");
+  });
+
+  test("should render correct aria label", async () => {
+    expect.hasAssertions();
+    const component: Link.ELEMENT = await fixture(`<md-link ariaLabel="Link Component"></md-link>`);
+    const linkComponent = component.shadowRoot?.querySelector("a");
+    expect(linkComponent?.getAttribute("aria-label")).toMatch("Link Component");
+  });
+
+  test("should not set aria label when not passed", async () => {
+    expect.hasAssertions();
+    const component: Link.ELEMENT = await fixture(`<md-link class="md-link--yellow"></md-link>`);
+    const linkComponent = component.shadowRoot?.querySelector("a");
+    expect(linkComponent?.getAttribute("aria-label")).toBeNull();
+  });
+
   test("should set link tab-index", async () => {
     expect.hasAssertions();
     const component: Link.ELEMENT = await fixture(` <md-link tab-index="1"></md-link> `);

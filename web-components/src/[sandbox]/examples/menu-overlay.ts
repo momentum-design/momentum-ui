@@ -529,5 +529,23 @@ export const menuOverlayTemplate = html`
         </md-tooltip>
       </div>
   </md-menu-overlay>
+
+  <h3 class="sandbox-header" style="margin: .5rem 1rem">Menu with role as dialog and aria label</h3>
+  <div>
+  <md-menu-overlay ariaRole="dialog" ariaLabel="sample label">
+    <md-button slot="menu-trigger" variant="primary">Open Menu Overlay </md-button>
+    <div style="padding:1.25rem ; width: 100%;">
+      <md-input htmlId="inputSearchClearPill" containerSize="small-12" placeholder="Enter Text" shape="pill" clear>
+      </md-input>
+      <md-checkbox>Default Checkbox</md-checkbox>
+      <md-checkbox checked>Default Checked Checkbox</md-checkbox>
+      <md-checkbox indeterminate>Default Indeterminate Checkbox</md-checkbox>
+      <div style="text-align: center">
+        <p style="margin-bottom: .5rem">Please complete the entire form</p>
+        <md-button variant="primary">Submit</md-button>
+      </div>
+    </div>
+  </md-menu-overlay>
+</div>
   </div>
 `;

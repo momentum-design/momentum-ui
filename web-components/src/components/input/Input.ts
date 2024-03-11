@@ -112,6 +112,8 @@ export namespace Input {
   export type Message = {
     type: MessageType;
     message: string;
+    id?: string;
+    ariaLive?: "off" | "assertive" | "polite";
   };
   export type ContainerSize = typeof containerSize[number];
   export type InputSize = typeof inputSize[number];
@@ -173,6 +175,7 @@ export namespace Input {
     @property({ type: String }) shape = "";
     @property({ type: String }) type: Input.Type = "text";
     @property({ type: String, reflect: true }) value = "";
+    @property({ type: String }) ariaControls = "";
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -386,9 +389,10 @@ export namespace Input {
               type=${this.type}
               .value=${this.value}
               aria-describedby=${this.ariaDescribedBy}
+              aria-controls=${this.ariaControls}
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
-              aria-errormessage="${this.htmlId}-message"
+              aria-errormessage=${`${this.htmlId}-message`}
               ?disabled=${this.disabled}
               id=${this.htmlId}
               placeholder=${this.placeholder}
@@ -481,16 +485,16 @@ export namespace Input {
       return !this.hideMessage && this.messages && !!this.messages.length
         ? html`
             <div id="${this.htmlId}-message" part="message" class="md-input__messages">
-              ${repeat(
-                this.messages,
-                message =>
-                  html`
-                    <md-help-text
-                      .message=${message}
-                      .messageType=${this.messageType as Input.MessageType}
-                    ></md-help-text>
-                  `
-              )}
+              ${repeat(this.messages, (message, id) => {
+                return html`
+                  <md-help-text
+                    .message=${message}
+                    .id=${this.messageArr[id].id || ""}
+                    .ariaLive=${this.messageArr[id].ariaLive || "polite"}
+                    .messageType=${this.messageType as Input.MessageType}
+                  ></md-help-text>
+                `;
+              })}
             </div>
           `
         : nothing;

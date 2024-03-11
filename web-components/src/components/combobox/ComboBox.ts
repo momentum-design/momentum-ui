@@ -151,6 +151,7 @@ export namespace ComboBox {
     private customContent: Element[] = [];
 
     private notifySearchResultCount() {
+      // this function is used to notify search result count.
       this.dispatchEvent(
         new CustomEvent('md-combobox-search-result-count', {
           detail: { listItemsCount: this.listItemsCount, searchValue: this.inputValue },
@@ -1206,7 +1207,7 @@ export namespace ComboBox {
           })
         );
       this.listItemsCount = this.filteredGroupOptions.length;
-      this.notifySearchResultCount()
+      this.notifySearchResultCount();
         this.setVisualListbox(true);
       }
       this.input!.focus();

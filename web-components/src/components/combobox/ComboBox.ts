@@ -798,6 +798,9 @@ export namespace ComboBox {
           }
         })
       );
+
+      this.listItemsCount = this.filteredGroupOptions.length;
+      this.notifylistitemscounttoparent()
       this.focusedGroupIndex = 0;
       requestAnimationFrame(() => {
         this.input!.focus();
@@ -1202,6 +1205,8 @@ export namespace ComboBox {
             bubbles: true
           })
         );
+      this.listItemsCount = this.filteredGroupOptions.length;
+      this.notifylistitemscounttoparent()
         this.setVisualListbox(true);
       }
       this.input!.focus();
@@ -1449,8 +1454,6 @@ export namespace ComboBox {
     }
 
     renderWithoutVirtualScroll() {
-      this.listItemsCount = this.filteredGroupOptions.length;
-      this.notifylistitemscounttoparent()
       return repeat(
         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue),
         (option: string | OptionMember) => this.getOptionId(option),

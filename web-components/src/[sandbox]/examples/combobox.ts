@@ -30,7 +30,7 @@ export const comboBoxTemplate = html`
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     aria-label="Select the country"
-    @item-count-changed=${onSearchListUpdated}
+    @md-combobox-search-result-count=${onSearchListUpdated}
   ></md-combobox>
   <h3>Default with trim space</h3>
   <md-combobox

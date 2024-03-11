@@ -150,9 +150,9 @@ export namespace ComboBox {
     private multiSelected: number[] = [];
     private customContent: Element[] = [];
 
-    private notifylistitemscounttoparent() {
+    private notifySearchResultCount() {
       this.dispatchEvent(
-        new CustomEvent('item-count-changed', {
+        new CustomEvent('md-combobox-search-result-count', {
           detail: { listItemsCount: this.listItemsCount, searchValue: this.inputValue },
           bubbles: true,
           composed: true
@@ -800,7 +800,7 @@ export namespace ComboBox {
       );
 
       this.listItemsCount = this.filteredGroupOptions.length;
-      this.notifylistitemscounttoparent()
+      this.notifySearchResultCount()
       this.focusedGroupIndex = 0;
       requestAnimationFrame(() => {
         this.input!.focus();
@@ -1206,7 +1206,7 @@ export namespace ComboBox {
           })
         );
       this.listItemsCount = this.filteredGroupOptions.length;
-      this.notifylistitemscounttoparent()
+      this.notifySearchResultCount()
         this.setVisualListbox(true);
       }
       this.input!.focus();

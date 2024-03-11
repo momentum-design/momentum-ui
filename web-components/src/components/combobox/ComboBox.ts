@@ -801,7 +801,7 @@ export namespace ComboBox {
       );
 
       this.listItemsCount = this.filteredGroupOptions.length;
-      this.notifySearchResultCount()
+      this.notifySearchResultCount();
       this.focusedGroupIndex = 0;
       requestAnimationFrame(() => {
         this.input!.focus();

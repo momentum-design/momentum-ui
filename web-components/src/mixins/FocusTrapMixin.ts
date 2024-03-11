@@ -373,6 +373,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     handleFocusVisible(event: CustomEvent<FocusEventDetail>) {
+      event.stopPropagation();
       const originalEvent = event.detail ? event.detail.sourceEvent : event;
       const focusableElement = originalEvent.composedPath()[0];
       const focusableIndex = event.detail ? this.findElement(focusableElement as HTMLElement) : -1;

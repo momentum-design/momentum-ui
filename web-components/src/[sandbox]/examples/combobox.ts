@@ -19,10 +19,6 @@ const comboboxOnExpand =(e: CustomEvent) => {
   console.log("combobox-on-expand: ", e);
 }
 
-const onSearchListUpdated = (e: CustomEvent) => {
-  console.log("onSearchListUpdated: ", e);
-}
-
 export const comboBoxTemplate = html`
   <h3>Default</h3>
   <md-combobox

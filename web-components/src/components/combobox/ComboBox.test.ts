@@ -1633,13 +1633,13 @@ describe("Combobox Component", () => {
         `
       );
     
-      el.searchSpecificAriaLabel = 'Search results: {{count}} results found.';
+      el.searchResultAriaLabel = 'Search results: {{count}} results found.';
       el.inputValue = 'One';
       el["notifySearchResultCount"]();
       await elementUpdated(el);
       expect(el.ariaLabelForComboBox).toEqual('Search results: 1 results found.');
     
-      el.searchSpecificAriaLabel = "";
+      el.searchResultAriaLabel = "";
       el.ariaLabel = 'Search results';
       el["notifySearchResultCount"]();
       await elementUpdated(el);

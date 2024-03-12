@@ -56,7 +56,7 @@ export const Combobox = () => {
           ?search-trim-space=${trimSpace}
           .value=${[comboBoxOptions[3]]}
           aria-label=${ariaLabel}
-          search-specific-aria-label=${searchSpecificAriaLabel}
+          search-result-aria-label=${searchSpecificAriaLabel}
         ></md-combobox>
       </md-theme>
     `;

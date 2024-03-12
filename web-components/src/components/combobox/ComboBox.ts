@@ -67,7 +67,7 @@ export namespace ComboBox {
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
 
     @property({ type: String, attribute: "aria-label" }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
-    @property({ type: String, attribute: "search-specific-aria-label" }) searchSpecificAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
+    @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
     @internalProperty() ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
 
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
@@ -155,16 +155,16 @@ export namespace ComboBox {
     private notifySearchResultCount() {
       // this function is to update ariaLabelForComboBox for search result count. 
 
-      // If searchSpecificAriaLabel is passed, the {{}} is replaced with the search result count.
-      if (this.searchSpecificAriaLabel) {
+      // If searchResultAriaLabel is passed, the {{}} is replaced with the search result count.
+      if (this.searchResultAriaLabel) {
         let regex = /{{.*?}}/g;
-        this.ariaLabelForComboBox = this.searchSpecificAriaLabel.replace(regex, this.filteredOptions.length.toString());
+        this.ariaLabelForComboBox = this.searchResultAriaLabel.replace(regex, this.filteredOptions.length.toString());
       } 
-      // If searchSpecificAriaLabel is not passed and ariaLabel is passed, the ariaLabel is appended with the search result count.
+      // If searchResultAriaLabel is not passed and ariaLabel is passed, the ariaLabel is appended with the search result count.
       else if(this.ariaLabel) {
         this.ariaLabelForComboBox = `${this.ariaLabel}, ${this.filteredOptions.length} results found.`;
       }
-      // If both searchSpecificAriaLabel and ariaLabel are not passed, the default text is appended with the search result count.
+      // If both searchResultAriaLabel and ariaLabel are not passed, the default text is appended with the search result count.
       else{
         this.ariaLabelForComboBox = `ComboBox Element, ${this.filteredOptions.length} results found.`;
       }

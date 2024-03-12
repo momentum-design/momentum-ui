@@ -24,7 +24,9 @@ export const comboBoxTemplate = html`
   <md-combobox
     style="width: 220px; display: inline-block;"
     .options=${comboBoxOptions}
-    placeholder="PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+    placeholder="Placeholder"
+    aria-label="Select the country"
+    search-result-aria-label="Select the country, {{count}} results found."
   ></md-combobox>
   <h3>Default with trim space</h3>
   <md-combobox

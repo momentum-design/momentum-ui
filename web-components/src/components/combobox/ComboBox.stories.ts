@@ -42,10 +42,6 @@ export const Combobox = () => {
   const ariaLabel = text("aria-label", "Select the country");
   const searchSpecificAriaLabel = text("aria-label", "Select the country, {{count}} results found");
 
-  const onSearchListUpdated = (e: CustomEvent) => {
-    console.log("onSearchListUpdated: ", e);
-  }
-
   if (init) {
     return html`
       <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>

@@ -1302,7 +1302,6 @@ export namespace ComboBox {
           type="button"
           class="md-combobox-button clear"
           aria-label=${this.clearAriaLabel}
-          aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="0"
           ?disabled=${this.disabled}

@@ -1626,6 +1626,33 @@ describe("Combobox Component", () => {
       expect(el.selectedOptions).toEqual(expect.arrayContaining(["Aland Islands", "Albania"]));
     });
 
+    test("should update ariaLabelForComboBox based on search result count", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${['One', 'Two', 'Three']}></md-combobox>
+        `
+      );
+    
+      el.searchSpecificAriaLabel = 'Search results: {{count}} results found.';
+      el.inputValue = 'One';
+      el["notifySearchResultCount"]();
+      await elementUpdated(el);
+      console.log(el);
+      
+      expect(el.ariaLabelForComboBox).toEqual('Search results: 1 results found.');
+    
+      el.searchSpecificAriaLabel = "";
+      el.ariaLabel = 'Search results';
+      el["notifySearchResultCount"]();
+      await elementUpdated(el);
+      expect(el.ariaLabelForComboBox).toEqual('Search results, 1 results found.');
+    
+      el.ariaLabel = "";
+      el["notifySearchResultCount"]();
+      await elementUpdated(el);
+      expect(el.ariaLabelForComboBox).toEqual('ComboBox Element, 1 results found.');
+    });
+
     test("should change selected option for virtual scroll", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`

@@ -51,7 +51,6 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
     @property({ type: Array }) selectedOptions: (string | OptionMember)[] = [];
     @property({ type: Number, attribute: "visible-option", reflect: true }) visibleOptions = 8;
-    @property({ type: Number, attribute: "list-items-count", reflect: true }) listItemsCount = 0;
     @property({ type: String, attribute: "option-id", reflect: true }) optionId = "";
     @property({ type: String, attribute: "option-value", reflect: true }) optionValue = "";
     @property({ type: Boolean, attribute: "with-custom-content" }) isCustomContent = false;
@@ -67,7 +66,10 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
 
-    @property({ type: String, attribute: "aria-label", reflect: true }) ariaLabel = "";
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
+    @property({ type: String, attribute: "search-specific-aria-label" }) searchSpecificAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
+    @internalProperty() ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
+
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";
     @property({ type: String, attribute: "clear-icon-height" }) clearIconHeight = "auto";
@@ -151,14 +153,21 @@ export namespace ComboBox {
     private customContent: Element[] = [];
 
     private notifySearchResultCount() {
-      // this function is used to notify search result count.
-      this.dispatchEvent(
-        new CustomEvent('md-combobox-search-result-count', {
-          detail: { listItemsCount: this.listItemsCount, searchValue: this.inputValue },
-          bubbles: true,
-          composed: true
-        })
-      );
+      // this function is to update ariaLabelForComboBox for search result count. 
+
+      // If searchSpecificAriaLabel is passed, the {{}} is replaced with the search result count.
+      if (this.searchSpecificAriaLabel) {
+        let regex = /{{.*?}}/g;
+        this.ariaLabelForComboBox = this.searchSpecificAriaLabel.replace(regex, this.filteredOptions.length.toString());
+      } 
+      // If searchSpecificAriaLabel is not passed and ariaLabel is passed, the ariaLabel is appended with the search result count.
+      else if(this.ariaLabel) {
+        this.ariaLabelForComboBox = `${this.ariaLabel}, ${this.filteredOptions.length} results found.`;
+      }
+      // If both searchSpecificAriaLabel and ariaLabel are not passed, the default text is appended with the search result count.
+      else{
+        this.ariaLabelForComboBox = `ComboBox Element, ${this.filteredOptions.length} results found.`;
+      }
     }
 
     @query(".group") group?: HTMLDivElement;
@@ -172,6 +181,8 @@ export namespace ComboBox {
     @queryAll(".md-combobox-selected-item") selected?: HTMLDivElement[];
 
     protected firstUpdated(changedProperties: PropertyValues) {
+      // Initially the ariaLabelForComboBox is set for ariaLabel value if found or a static text is set.
+      this.ariaLabelForComboBox = this.ariaLabel ? this.ariaLabel : "ComboBox Element";
       super.firstUpdated(changedProperties);
       this.setAttribute("tabindex", "0");
       if (this.isCustomContent) {
@@ -800,7 +811,7 @@ export namespace ComboBox {
         })
       );
 
-      this.listItemsCount = this.filteredGroupOptions.length;
+      
       this.notifySearchResultCount();
       this.focusedGroupIndex = 0;
       requestAnimationFrame(() => {
@@ -1206,7 +1217,6 @@ export namespace ComboBox {
             bubbles: true
           })
         );
-      this.listItemsCount = this.filteredGroupOptions.length;
       this.notifySearchResultCount();
         this.setVisualListbox(true);
       }
@@ -1545,7 +1555,7 @@ export namespace ComboBox {
       return html`
         <div
           part="combobox"
-          aria-label=${this.ariaLabel}
+          aria-label=${this.ariaLabelForComboBox}
           class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}"
         >
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">
@@ -1561,7 +1571,7 @@ export namespace ComboBox {
                 type="text"
                 role="combobox"
                 aria-autocomplete="both"
-                aria-label=${this.ariaLabel}
+                aria-label=${this.ariaLabelForComboBox}
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
                 placeholder=${this.isMulti && this.showSelectedCount && this.selectedOptions.length !== 0

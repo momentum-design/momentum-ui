@@ -39,7 +39,8 @@ export const Combobox = () => {
   const objectInit = boolean("Object Data InitialValue", false);
   const customContent = boolean("Custom Content", false);
   const customContentInit = boolean("Multi Custom Content InitialValue", false);
-  const ariaLabel = text("aria-label", "Search Country")
+  const ariaLabel = text("aria-label", "Select the country");
+  const searchSpecificAriaLabel = text("aria-label", "Select the country, {{count}} results found");
 
   const onSearchListUpdated = (e: CustomEvent) => {
     console.log("onSearchListUpdated: ", e);
@@ -55,7 +56,7 @@ export const Combobox = () => {
           ?search-trim-space=${trimSpace}
           .value=${[comboBoxOptions[3]]}
           aria-label=${ariaLabel}
-          @md-combobox-search-result-count=${onSearchListUpdated}
+          search-specific-aria-label=${searchSpecificAriaLabel}
         ></md-combobox>
       </md-theme>
     `;

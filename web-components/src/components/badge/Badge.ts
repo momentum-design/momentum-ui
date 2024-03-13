@@ -75,9 +75,9 @@ export namespace Badge {
 
       const splitContent = () => {
         return html`
-          <slot aria-hidden="true" name="split-left" class="split split-left"></slot>
+          <slot name="split-left" class="split split-left"></slot>
           <span aria-hidden="true" class="split-separator"> | </span>
-          <slot aria-hidden="true" name="split-right" class="split split-right"></slot>
+          <slot name="split-right" class="split split-right"></slot>
         `;
       };
 

@@ -1354,6 +1354,7 @@ export namespace ComboBox {
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
+          aria-hidden="true"
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
@@ -1368,9 +1369,9 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button"
-          aria-label=${this.arrowAriaLabel}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
+          aria-hidden="true"
           ?disabled=${this.disabled}
           @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
         >

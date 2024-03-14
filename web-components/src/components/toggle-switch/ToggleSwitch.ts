@@ -63,6 +63,7 @@ export namespace ToggleSwitch {
         >
           <input
             type="checkbox"
+            role="switch"
             class="md-toggle-switch__input"
             aria-label="${this.label}"
             .id=${this.htmlId}

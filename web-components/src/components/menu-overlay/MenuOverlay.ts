@@ -122,13 +122,13 @@ export namespace MenuOverlay {
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("click", this.handleOutsideOverlayClick);
-      this.addEventListener("keydown", this.handleOutsideOverlayKeydown);
+      document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
-      this.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
+      document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
 
       if (this.triggerElement) {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
@@ -349,7 +349,6 @@ export namespace MenuOverlay {
       if (event.code === Key.Escape) {
         event.preventDefault();
         if (this.isOpen) {
-          event.stopPropagation();
           this.isOpen = false;
           await this.updateComplete;
           this.focusOnTrigger();

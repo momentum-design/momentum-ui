@@ -1350,7 +1350,6 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button arrow-down"
-          aria-label=${this.arrowAriaLabel}
           aria-expanded=${this.expanded}
           aria-controls="md-combobox-listbox"
           tabindex="-1"

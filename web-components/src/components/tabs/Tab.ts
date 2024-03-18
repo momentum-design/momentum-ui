@@ -153,7 +153,7 @@ export namespace Tab {
 
     connectedCallback() {
       super.connectedCallback();
-      this.setAttribute("aria-selected", `${this._selected}`);
+      this.setAttribute("aria-selected", `${this.selected}`);
     }
 
     protected firstUpdated(changedProperties: PropertyValues) {

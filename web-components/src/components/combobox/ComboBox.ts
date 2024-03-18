@@ -82,6 +82,7 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-custom-error", reflect: true }) showCustomError = false;
     @property({ type: Boolean, attribute: "show-loader", reflect: true }) showLoader = false;
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
+    @property({ type: String, attribute: "popup-indicator-aria-hidden" }) popupIndicatorAriaHidden = "true";
 
     @property({ type: Number, attribute: false })
     @internalProperty()
@@ -1351,9 +1352,10 @@ export namespace ComboBox {
           type="button"
           class="md-combobox-button arrow-down"
           aria-expanded=${this.expanded}
+          aria-label=${ifDefined(this.popupIndicatorAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
-          aria-hidden="true"
+          aria-hidden=${this.popupIndicatorAriaHidden}
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
@@ -1368,9 +1370,10 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button"
+          aria-label=${ifDefined(this.popupIndicatorAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
-          aria-hidden="true"
+          aria-hidden=${this.popupIndicatorAriaHidden}
           ?disabled=${this.disabled}
           @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
         >

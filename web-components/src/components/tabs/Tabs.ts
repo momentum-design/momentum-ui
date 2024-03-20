@@ -1013,6 +1013,7 @@ export namespace Tabs {
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
                   .selected="${tab.selected}"
+                  isSelected=${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id}
                   name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}

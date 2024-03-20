@@ -1573,7 +1573,7 @@ export namespace ComboBox {
                 type="text"
                 role="combobox"
                 aria-autocomplete="both"
-                aria-label=${this.ariaLabelForComboBox}
+                aria-labelledby=${this.ariaLabelForComboBox}
                 part="multiwrap-input"
                 aria-expanded=${this.expanded}
                 placeholder=${this.isMulti && this.showSelectedCount && this.selectedOptions.length !== 0

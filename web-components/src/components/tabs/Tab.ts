@@ -35,7 +35,6 @@ export namespace Tab {
     @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
-    @property({ type: Boolean }) isSelected = false;
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -54,7 +53,7 @@ export namespace Tab {
       this.requestUpdate("disabled", oldValue);
     }
 
-    private _selected = this.isSelected;
+    private _selected = this.tabIndex === 0;
     @property({ type: Boolean, reflect: true })
     get selected() {
       return this._selected;

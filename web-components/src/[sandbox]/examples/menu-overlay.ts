@@ -547,5 +547,31 @@ export const menuOverlayTemplate = html`
     </div>
   </md-menu-overlay>
 </div>
+
+<h3 class="sandbox-header" style="margin: .5rem 1rem">Menu overlay inside menu overlay</h3>
+<div>
+<md-menu-overlay id="menu-inside" ariaRole="dialog" ariaLabel="sample label" custom-width="254px"
+max-height="465px">
+  <md-button slot="menu-trigger" variant="primary">Open Menu Overlay </md-button>
+  <div style="padding:1.25rem ; width: 100%;">
+  <md-button variant="primary">Button 1</md-button>
+  <md-button variant="primary">Button 2</md-button>
+  <md-menu-overlay placement="right-start" show-arrow custom-width="200px"
+  position="bottom"
+  id="outdial-overlay"
+  max-height="327px">
+  <md-button slot="menu-trigger" variant="primary">Open child menu overlay</md-button>
+  <div style="padding:1.25rem; width: 100%;">
+  <md-list class="menu-list" role="list" activated="0" alignment="vertical" aria-label="option">
+  <md-list-item slot="list-item" class="status-menu-item" id="id-Select Outdial ANI" aria-label="Select Outdial ANI" role="option" selected="">
+    <md-tooltip message="Select Outdial ANI" disabled="" placement="auto"><div class="agent-status-option-text ellipsis-text">Select Outdial ANI</div></md-tooltip></md-list-item>
+  <md-list-item  slot="list-item" class="status-menu-item" id="id-Parag" aria-label="Parag" role="option" tabindex="-1"><md-tooltip message="Parag" disabled="" placement="auto"><div class="agent-status-option-text ellipsis-text">Parag</div>
+  </md-tooltip></md-list-item>
+  </md-list>
+  </div>
+
+  </div>
+</md-menu-overlay>
+</div>
   </div>
 `;

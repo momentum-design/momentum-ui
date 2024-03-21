@@ -53,7 +53,7 @@ export namespace Tab {
       this.requestUpdate("disabled", oldValue);
     }
 
-    private _selected = false;
+    private _selected = this.tabIndex === 0;
     @property({ type: Boolean, reflect: true })
     get selected() {
       return this._selected;
@@ -153,7 +153,6 @@ export namespace Tab {
 
     connectedCallback() {
       super.connectedCallback();
-      this.setAttribute("aria-selected", `${this.selected}`);
     }
 
     protected firstUpdated(changedProperties: PropertyValues) {

@@ -1006,7 +1006,7 @@ export namespace Tabs {
               this.tabsFilteredAsVisibleList,
               tab => {
                 nanoid(10);
-                this.allElements.includes(tab.id) ? null : this.allElements.push(tab.id);
+                this.allElements.includes(tab?.id) ? null : this.allElements.push(tab?.id);
               },
               tab => html`
                 <md-tab

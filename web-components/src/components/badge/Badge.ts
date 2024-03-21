@@ -12,6 +12,7 @@ import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export namespace Badge {
   @customElementWithCheck("md-badge")
@@ -29,6 +30,7 @@ export namespace Badge {
     @property({ type: Boolean }) split = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) tabIndexing = "";
+    @property({ type: String }) ariaHiddenSplits = "";
 
     renderBgColor = () => {
       return this.bgColor ? `background-color: ${this.bgColor};` : nothing;
@@ -75,9 +77,9 @@ export namespace Badge {
 
       const splitContent = () => {
         return html`
-          <slot aria-hidden="true" name="split-left" class="split split-left"></slot>
+          <slot aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)} name="split-left" class="split split-left"></slot>
           <span aria-hidden="true" class="split-separator"> | </span>
-          <slot aria-hidden="true" name="split-right" class="split split-right"></slot>
+          <slot aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)} name="split-right" class="split split-right"></slot>
         `;
       };
 

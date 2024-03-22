@@ -179,7 +179,7 @@ export namespace Modal {
                 class="md-close md-modal__close"
                 @click="${this.hideModal}"
                 @keydown="${this.handleKeyDown}"
-                aria-label=${this.ariaLabelClose}
+                ariaLabel=${this.ariaLabelClose}
               >
                 <md-icon name="cancel_14"></md-icon>
               </md-button>

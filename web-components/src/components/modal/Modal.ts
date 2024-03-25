@@ -278,7 +278,7 @@ export namespace Modal {
                   <div part="modal-content" class="md-modal__content">
                     <div class="md-modal__flex-container" part="modal-flex-container">
                       ${this.headerTemplate()}
-                      <div part="modal-body" class="md-modal__body">
+                      <div id="modal-body" part="modal-body" class="md-modal__body">
                         <slot></slot>
                       </div>
                       ${this.footerTemplate()}

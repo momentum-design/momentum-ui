@@ -35,3 +35,6 @@
 .pills-dropdown md-dropdown::part(dropdown-header) {
   border-radius: 30px;
 }
+#menu-inside::part(overlay-content) {
+  overflow: visible;
+}

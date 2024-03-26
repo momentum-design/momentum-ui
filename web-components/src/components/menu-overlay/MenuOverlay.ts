@@ -61,6 +61,7 @@ export namespace MenuOverlay {
   @customElementWithCheck("md-menu-overlay")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     private _isOpen = false;
+    private static activeOverlay: ELEMENT[] = [];
     @property({ type: Boolean, attribute: "is-open", reflect: true })
     get isOpen() {
       return this._isOpen;
@@ -118,34 +119,57 @@ export namespace MenuOverlay {
         </style>
       `;
     }
+    updateActiveMenuOverlayOpened =
+      (event: Event) => {
+        if (this === event.target) {
+          MenuOverlay.ELEMENT.activeOverlay?.push(event.target as ELEMENT);
+        }
+      };
+    updateActiveMenuOverlayClosed =
+      (event: Event) => {
+        let index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
+        if (this === event.target && index !== -1) {
+          MenuOverlay.ELEMENT.activeOverlay.splice(index);
+          if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
+            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
+          } else {
+            this.setFocusableElements!();
+            this.focusOnTrigger();
+          }
+        }
+      };
 
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
+      this.addEventListener('menu-overlay-open', this.updateActiveMenuOverlayOpened);
+      this.addEventListener('menu-overlay-close', this.updateActiveMenuOverlayClosed);
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
-      
+
+      this.removeEventListener('menu-overlay-open', this.updateActiveMenuOverlayOpened);
+      this.removeEventListener('menu-overlay-close', this.updateActiveMenuOverlayClosed);
 
       if (this.triggerElement) {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
         this.triggerElement.removeEventListener("keydown", this.handleTriggerKeyDown);
-        if(this.allowHoverToggle){
+        if (this.allowHoverToggle) {
           this.triggerElement.removeEventListener("mouseenter", this.expandPopup);
-          this.triggerElement.removeEventListener("mouseleave",  this.collapsePopup);
-          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup ); 
-          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup); 
+          this.triggerElement.removeEventListener("mouseleave", this.collapsePopup);
+          this.overlayContainer.removeEventListener("mouseenter", this.expandPopup);
+          this.overlayContainer.removeEventListener("mouseleave", this.collapsePopup);
         }
         this.triggerElement = null;
       }
     }
 
     checkIsInputField(element: HTMLElement) {
-      if(element && element.tagName && element.tagName.toLowerCase() === 'md-input') {
+      if (element && element.tagName && element.tagName.toLowerCase() === 'md-input') {
         return true;
       }
       return false;
@@ -159,14 +183,14 @@ export namespace MenuOverlay {
         this.triggerElement = this.trigger[0];
         this.triggerElement.addEventListener("click", this.handleTriggerClick);
 
-        if(this.allowHoverToggle){
+        if (this.allowHoverToggle) {
           this.triggerElement.addEventListener("mouseenter", this.expandPopup);
-          this.triggerElement.addEventListener("mouseleave",  this.collapsePopup);
-          this.overlayContainer.addEventListener("mouseenter", this.expandPopup); 
-          this.overlayContainer.addEventListener("mouseleave", this.collapsePopup); 
+          this.triggerElement.addEventListener("mouseleave", this.collapsePopup);
+          this.overlayContainer.addEventListener("mouseenter", this.expandPopup);
+          this.overlayContainer.addEventListener("mouseleave", this.collapsePopup);
         }
-        
-        if(!this.checkIsInputField(this.triggerElement)) {
+
+        if (!this.checkIsInputField(this.triggerElement)) {
           // Prevent adding keydown event, if the slot element type is md-input
           // This will allow users to use ENTER and SPACE key without issues.
           this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
@@ -316,15 +340,15 @@ export namespace MenuOverlay {
       if (!this.disabled) {
         this.isOpen = flag;
       }
-     }, 100);
+    }, 100);
 
     private expandPopup = () => {
-        this.setOverlay(true)
-     }
+      this.setOverlay(true)
+    }
 
-     private collapsePopup = ()=> {
-        this.setOverlay(false)
-     }
+    private collapsePopup = () => {
+      this.setOverlay(false)
+    }
 
     handleOutsideOverlayKeydown = async (event: KeyboardEvent) => {
       let insideMenuKeyDown = false;
@@ -342,7 +366,8 @@ export namespace MenuOverlay {
 
       if (event.code === Key.Escape) {
         event.preventDefault();
-        if (this.isOpen) {
+        let lastOverlay = MenuOverlay.ELEMENT.activeOverlay.length > 0 ? MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1] : undefined;
+        if (lastOverlay === this) {
           this.isOpen = false;
           await this.updateComplete;
           this.focusOnTrigger();

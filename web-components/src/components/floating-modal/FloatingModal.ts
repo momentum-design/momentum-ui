@@ -303,7 +303,7 @@ export namespace FloatingModal {
                     <md-button
                       color="color-none"
                       class="md-floating__minimize"
-                      aria-label="${this.minimizeAriaLabel}"
+                      ariaLabel="${this.minimizeAriaLabel}"
                       circle
                       @click=${this.handleMinimize}
                     >
@@ -313,7 +313,7 @@ export namespace FloatingModal {
                   ${!this.minimize ? html` <md-button
                     color="color-none"
                     class="md-floating__resize"
-                    aria-label="${this.full ? this.resizeAriaLabel: this.maximizeScreenLabel}"
+                    ariaLabel="${this.full ? this.resizeAriaLabel: this.maximizeScreenLabel}"
                     circle
                     @click=${this.handleToggleExpandCollapse}
                   >
@@ -323,7 +323,7 @@ export namespace FloatingModal {
                   <md-button
                     color="color-none"
                     class="md-floating__close"
-                    aria-label="${this.closeAriaLabel}"
+                    ariaLabel="${this.closeAriaLabel}"
                     circle
                     @click=${this.handleClose}
                   >

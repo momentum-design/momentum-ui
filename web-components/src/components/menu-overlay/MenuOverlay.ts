@@ -129,7 +129,6 @@ export namespace MenuOverlay {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
-      
 
       if (this.triggerElement) {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
@@ -205,11 +204,18 @@ export namespace MenuOverlay {
 
           if (this.triggerElement) {
             this.triggerElement.setAttribute("aria-expanded", "true");
+            if(this.triggerElement.hasAttribute("ariaexpanded")){
+              this.triggerElement.setAttribute("ariaexpanded", "true");
+            }
           }
         } else {
           this.dispatchMenuClose();
           if (this.triggerElement) {
             this.triggerElement.removeAttribute("aria-expanded");
+
+            if(this.triggerElement.hasAttribute("ariaexpanded")){
+              this.triggerElement.setAttribute("ariaexpanded", "false");
+            }
           }
         }
       }

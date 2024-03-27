@@ -211,4 +211,9 @@ export const buttonTemplate = html`
       ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Icon Button Armageddon</span></md-button
     >
   </div>
+
+  <div class="row" style="display: flex; margin: .5rem 0">
+    <h3 class="sandbox-header" style="margin: .5rem 1rem">Button with Aria Live</h3>
+    <md-button ariaLive="assertive" type="button">button</md-button>
+  </div>
 `;

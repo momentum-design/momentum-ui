@@ -86,6 +86,26 @@ describe("Button Component", () => {
     expect(element.shadowRoot!.querySelectorAll(".md-button__label").length).toEqual(1);
   });
 
+  test("should render correct aria live", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button ariaLive="polite" active></md-button>
+      `
+    );
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("aria-live")).toMatch("polite");
+  });
+
+  test("should not set aria live when not passed", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button></md-button>
+      `
+    );
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("aria-live")).toBeNull();
+  });
+
   test("should render wrapped button in large container if label and containerLarge passed", async () => {
     const element: Button.ELEMENT = await fixture(
       html`

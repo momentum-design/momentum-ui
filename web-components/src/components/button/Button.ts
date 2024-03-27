@@ -280,7 +280,7 @@ export namespace Button {
             class="md-button ${classMap(this.buttonClassMap)}"
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-            tabindex=${this.tabIndex}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-expanded="${this.ariaExpanded
@@ -291,7 +291,7 @@ export namespace Button {
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed === "false" ? undefined : this.ariaPressed)}
             type=${this.type}
-            role=${this.role}
+            role=${ifDefined(this.role === 'button'? undefined : this.role)}
             ?disabled=${this.disabled || this.loading}
           >
             ${this.childrenTemplate()}
@@ -306,7 +306,7 @@ export namespace Button {
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
-            tabindex=${this.tabIndex}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
@@ -325,7 +325,7 @@ export namespace Button {
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
-            tabindex=${this.tabIndex}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}

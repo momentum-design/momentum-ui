@@ -166,7 +166,6 @@ md-menu-overlay {
 
 .md-tab__content ::slotted([slot="panel"]) {
   display: none;
-  padding-top: calc($tab-base-indent * 5);
   visibility: hidden;
 }
 

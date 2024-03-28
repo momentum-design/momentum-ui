@@ -204,4 +204,26 @@ describe("Button Component", () => {
     const buttonElement = await fixture(`<md-button label="Button Component" tag="p"></md-button>`);
     expect(buttonElement.shadowRoot!.querySelector("button")).toBeNull();
   });
+
+  test("should render link if passed tag a with custom tabIndex of 1", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button tag="a" tab-index="1"><span slot="text">Test</span></md-button>
+      `
+    );
+    const link = element.shadowRoot!.querySelector("a");
+    expect(link!.getAttribute("tabindex")).toContain("1");
+    expect(link).toBeDefined;
+  });
+
+  test("should render link if passed tag input with custom tabIndex of 1", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button tag="input" tab-index="1"><span slot="text">Test</span></md-button>
+      `
+    );
+    const input = element.shadowRoot!.querySelector("input");
+    expect(input!.getAttribute("tabindex")).toContain("1");
+    expect(input).toBeDefined;
+  });
 });

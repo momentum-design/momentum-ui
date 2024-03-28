@@ -211,6 +211,7 @@ export namespace Chip {
         ${this.getStyles()}
         <md-tooltip ?disabled=${!this.textOverflow} message="${this.value}">
           <span
+            role="button"
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"

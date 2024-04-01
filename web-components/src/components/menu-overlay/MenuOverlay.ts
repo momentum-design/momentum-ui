@@ -132,7 +132,7 @@ export namespace MenuOverlay {
           MenuOverlay.ELEMENT.activeOverlay.splice(index);
           if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
             MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
-            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusTheNestedTrigger(this.triggerElement as HTMLElement);
+            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnTheNestedTrigger(this.triggerElement as HTMLElement);
           } else {
             this.setFocusableElements!();
             this.focusOnTrigger();
@@ -414,8 +414,8 @@ export namespace MenuOverlay {
       }
     }
 
-    private focusTheNestedTrigger(triggerEleement?: HTMLElement) {
-      this.setFocusOnTrigger!(triggerEleement);
+    private focusOnTheNestedTrigger(triggerElement?: HTMLElement) {
+      this.setFocusOnTrigger!(triggerElement);
     }
 
     handleOutsideOverlayClick = (event: MouseEvent) => {
@@ -438,7 +438,7 @@ export namespace MenuOverlay {
         ${this.getStyles()}
         <div aria-expanded=${this.isOpen} class="md-menu-overlay">
           <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role=${this.ariaRole} 
+          <div part="overlay" class="overlay-container" role=${this.ariaRole}
           aria-modal=${ifDefined(this.ariaRole === 'dialog' ? "true" : undefined)}
           aria-label=${ifDefined(this.ariaLabel || undefined)}
           >

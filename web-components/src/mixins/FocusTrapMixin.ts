@@ -280,6 +280,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
 
+    /**
+    * this method is used to set focus on trigger element by finding the focusable element in the trigger element.
+    *
+    * @param   triggerElement  The trigger element.
+    * @returns void
+    */
     protected setFocusOnTrigger(triggerElement: HTMLElement) {
       let deepNestedTriggerElement;
       if (triggerElement.shadowRoot!) {

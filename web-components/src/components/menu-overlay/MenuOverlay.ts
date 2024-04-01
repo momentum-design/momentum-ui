@@ -132,6 +132,7 @@ export namespace MenuOverlay {
           MenuOverlay.ELEMENT.activeOverlay.splice(index);
           if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
             MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
+            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusTheNestedTrigger(this.triggerElement as HTMLElement);
           } else {
             this.setFocusableElements!();
             this.focusOnTrigger();
@@ -411,6 +412,10 @@ export namespace MenuOverlay {
           this.setInitialFocus!();
         }
       }
+    }
+
+    private focusTheNestedTrigger(triggerEleement?: HTMLElement) {
+      this.setFocusOnTrigger!(triggerEleement);
     }
 
     handleOutsideOverlayClick = (event: MouseEvent) => {

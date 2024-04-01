@@ -36,6 +36,7 @@ export abstract class FocusTrapClass extends LitElement {
   protected initialFocusComplete?: boolean;
   protected setFocusableElements?(): void;
   protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
+  protected setFocusOnTrigger?(triggerEleement?: HTMLElement): void;
 }
 export interface FocusTrapInterface {
   activeFocusTrap: boolean;
@@ -277,6 +278,19 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       if (this.focusableElements[focusableIndex]) {
         this.focusTrapIndex = focusableIndex;
       }
+    }
+
+    protected setFocusOnTrigger(triggerElement: HTMLElement) {
+      let deepNestedTriggerElement;
+      if (triggerElement.shadowRoot!) {
+        deepNestedTriggerElement = this.findFocusable(triggerElement.shadowRoot!, new Set());
+      } else if (this.isFocusable(triggerElement)) {
+        deepNestedTriggerElement = [triggerElement];
+      } else {
+        deepNestedTriggerElement = this.findFocusable(triggerElement, new Set());
+      }
+      const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
+      this.focusTrapIndex = focusableIndex;
     }
 
     protected setFocusableElements() {

@@ -289,8 +289,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       } else {
         deepNestedTriggerElement = this.findFocusable(triggerElement, new Set());
       }
-      const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
-      this.focusTrapIndex = focusableIndex;
+      if(deepNestedTriggerElement[0]){
+        const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
+        this.focusTrapIndex = focusableIndex;
+      }
     }
 
     protected setFocusableElements() {

@@ -75,6 +75,12 @@ export const buttonColor = [
   "color-none",
   ""
 ] as const;
+export const buttonAriaLive = [
+  "",
+  "off",
+  "polite",
+  "assertive"
+] as const;
 
 export namespace Button {
   export type Tag = typeof buttonTag[number];
@@ -82,6 +88,7 @@ export namespace Button {
   export type Role = typeof buttonRoles[number];
   export type variant = typeof buttonVariant[number];
   export type color = typeof buttonColor[number];
+  export type ariaLive = typeof buttonAriaLive[number];
   export type Attributes = {
     id?: string;
     disabled: boolean;
@@ -90,6 +97,7 @@ export namespace Button {
     type: Type;
     ariaLabel?: string;
     ariaLabelledBy?: string;
+    ariaLive?: string;
     ariaExpanded?: boolean;
     ariaHaspopup?: boolean;
     ariaPressed?: String;
@@ -130,6 +138,7 @@ export namespace Button {
 
     @property({ type: String }) ariaLabel = "";
     @property({ type: String }) ariaLabelledBy = "";
+    @property({ type: String }) ariaLive: Button.ariaLive = "";
     @property({ type: String }) ariaExpanded = "";
     @property({ type: String }) ariaHaspopup = "false";
     @property({ type: String }) ariaPressed = "";
@@ -283,6 +292,7 @@ export namespace Button {
             tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
+            aria-live=${ifDefined(this.ariaLive || undefined)}
             aria-expanded="${this.ariaExpanded
               ? this.ariaExpanded === "true"
                 ? true
@@ -310,6 +320,7 @@ export namespace Button {
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
+            aria-live=${ifDefined(this.ariaLive || undefined)}
             type=${this.type}
             alt=${this.label}
             value=${this.value}
@@ -329,6 +340,7 @@ export namespace Button {
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
+            aria-live=${ifDefined(this.ariaLive || undefined)}
             href=${this.href}
           >
             ${this.childrenTemplate()}

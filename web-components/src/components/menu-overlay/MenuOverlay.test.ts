@@ -301,7 +301,6 @@ describe("MenuOverlay", () => {
     await nextFrame();
 
     expect(element.isOpen).toBeTruthy();
-    console.log("hell>>>>",triggerElement.getAttribute("ariaexpanded"));
     expect(triggerElement.getAttribute("ariaexpanded")).toBeTruthy();
     element.isOpen = false;
   });

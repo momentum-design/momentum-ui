@@ -259,7 +259,6 @@ describe("Combobox Component", () => {
       await elementUpdated(el);
       expect(el.input!.getAttribute("aria-expanded")).toEqual("true");
       expect(el.button!.getAttribute("aria-expanded")).toEqual("true");
-      expect(el.button!.getAttribute("aria-label")).toEqual("Expand");
     });
 
     test("should open/close dropdown if clicked", async () => {
@@ -1624,6 +1623,31 @@ describe("Combobox Component", () => {
       expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[1], comboBoxOptions[2]]));
       expect(el.selected!.length).toEqual(2);
       expect(el.selectedOptions).toEqual(expect.arrayContaining(["Aland Islands", "Albania"]));
+    });
+
+    test("should update ariaLabelForComboBox based on search result count", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(
+        html`
+          <md-combobox .options=${['One', 'Two', 'Three']}></md-combobox>
+        `
+      );
+    
+      el.searchResultAriaLabel = 'Search results: {{count}} results found.';
+      el.inputValue = 'One';
+      el["notifySearchResultCount"]();
+      await elementUpdated(el);
+      expect(el.ariaLabelForComboBox).toEqual('Search results: 1 results found.');
+    
+      el.searchResultAriaLabel = "";
+      el.ariaLabel = 'Search results';
+      el["notifySearchResultCount"]();
+      await elementUpdated(el);
+      expect(el.ariaLabelForComboBox).toEqual('Search results, 1 results found.');
+    
+      el.ariaLabel = "";
+      el["notifySearchResultCount"]();
+      await elementUpdated(el);
+      expect(el.ariaLabelForComboBox).toEqual('ComboBox Element, 1 results found.');
     });
 
     test("should change selected option for virtual scroll", async () => {

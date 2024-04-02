@@ -31,7 +31,7 @@ export namespace Tab {
   @customElementWithCheck("md-tab")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Number, reflect: true }) tabIndex = -1;
-    @property({ type: String, attribute: "aria-label" }) ariaLabel = "tab";
+    @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
     @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
@@ -53,7 +53,7 @@ export namespace Tab {
       this.requestUpdate("disabled", oldValue);
     }
 
-    private _selected = false;
+    private _selected = this.tabIndex === 0;
     @property({ type: Boolean, reflect: true })
     get selected() {
       return this._selected;
@@ -153,7 +153,6 @@ export namespace Tab {
 
     connectedCallback() {
       super.connectedCallback();
-      this.setAttribute("aria-selected", "false");
     }
 
     protected firstUpdated(changedProperties: PropertyValues) {
@@ -169,7 +168,7 @@ export namespace Tab {
           ?disabled=${this.disabled}
           aria-hidden="true"
           aria-selected="false"
-          aria-label=${ifDefined(this.ariaLabel)}
+          aria-label=${ifDefined(this.ariaLabel || undefined)}
           tabindex="-1"
           part="tab"
           class="${classMap({

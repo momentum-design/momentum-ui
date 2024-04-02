@@ -64,6 +64,31 @@ const fixtureFactory = async (
   `);
 };
 
+const fixtureFactoryWithCustomAttr = async (
+  isOpen: boolean,
+  showArrow: boolean,
+  placement: MenuOverlay.Placement,
+  customWidth: string,
+  maxHeight: string,
+  size: MenuOverlay.Size,
+  allowHoverToggle = false
+): Promise<MenuOverlay.ELEMENT> => {
+  return await fixture<MenuOverlay.ELEMENT>(html`
+    <md-menu-overlay
+      ?is-open=${isOpen}
+      ?show-arrow=${showArrow}
+      placement=${placement}
+      custom-width=${customWidth}
+      max-height=${maxHeight}
+      size=${size}
+      ?allow-hover-toggle=${allowHoverToggle}
+    >
+      <md-button slot="menu-trigger" ariaexpanded="false" class="menu-trigger" variant="primary">Open Menu Overlay</md-button>
+      <div><h1>Menu Overlay Content</h1></div>
+    </md-menu-overlay>
+  `);
+};
+
 const fixtureFactoryForNestedOverlays = async (
   isOpen: boolean,
   showArrow: boolean,
@@ -258,6 +283,26 @@ describe("MenuOverlay", () => {
 
     expect(element.isOpen).toBeTruthy();
     expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy();
+    element.isOpen = false;
+  });
+
+
+  test("triggerElement should have the correct aria labels", async () => {
+    const element = await fixtureFactoryWithCustomAttr(false, false, "bottom", "", "", "large");
+
+    const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
+    const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
+    await nextFrame();
+
+    expect(triggerElement.getAttribute("aria-haspopup")).toBeTruthy();
+    expect(triggerElement.getAttribute("aria-expanded")).toBeFalsy();
+
+    triggerElement.dispatchEvent(new MouseEvent("click"));
+    await nextFrame();
+
+    expect(element.isOpen).toBeTruthy();
+    console.log("hell>>>>",triggerElement.getAttribute("ariaexpanded"));
+    expect(triggerElement.getAttribute("ariaexpanded")).toBeTruthy();
     element.isOpen = false;
   });
 

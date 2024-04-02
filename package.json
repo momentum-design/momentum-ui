@@ -6,7 +6,7 @@
     "url": "https://github.com/momentum-design/momentum-ui.git"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap && lerna link && cd ./web-components && yarn",
+    "bootstrap": "yarn build:tokens && lerna bootstrap && lerna link && cd ./web-components && yarn",
     "bootstrap:clean": "run-s clean bootstrap",
     "build": "yarn build:all",
     "build:all": "run-s build:icons build:icons-rebrand build:core build:react build:charts",

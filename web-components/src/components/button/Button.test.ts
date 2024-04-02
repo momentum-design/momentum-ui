@@ -86,6 +86,48 @@ describe("Button Component", () => {
     expect(element.shadowRoot!.querySelectorAll(".md-button__label").length).toEqual(1);
   });
 
+  test("should render correct aria live", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button ariaLive="polite" active></md-button>
+      `
+    );
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("aria-live")).toMatch("polite");
+  });
+
+  test("should not set aria live when not passed for button tag", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button></md-button>
+      `
+    );
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("aria-live")).toBeNull();
+  });
+
+
+  test("should not set aria live when not passed for input tag", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button tag="input"><span slot="text">Test</span></md-button>
+      `
+    );
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("aria-live")).toBeNull();
+  });
+
+
+  test("should not set aria live when not passed for a tag", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button tag="a"><span slot="text">Test</span></md-button>
+      `
+    );
+    const btn = element.shadowRoot!.querySelector(".md-button");
+    expect(btn?.getAttribute("aria-live")).toBeNull();
+  });
+
   test("should render wrapped button in large container if label and containerLarge passed", async () => {
     const element: Button.ELEMENT = await fixture(
       html`
@@ -147,7 +189,7 @@ describe("Button Component", () => {
     expect(element.disabled).toEqual(true);
   });
 
-  test("should set width successfulyl", async () => {
+  test("should set width successfully", async () => {
     const customWidth = "260px";
     const element: Button.ELEMENT = await fixture(
       html`
@@ -161,7 +203,7 @@ describe("Button Component", () => {
     expect(hasStyle).toBeTruthy();
   });
 
-  test("should set maxWidth successfulyl", async () => {
+  test("should set maxWidth successfully", async () => {
     const customMaxWidth = "100px";
     const element: Button.ELEMENT = await fixture(
       html`
@@ -203,5 +245,27 @@ describe("Button Component", () => {
   test("should render nothing if correct tag is not provided", async () => {
     const buttonElement = await fixture(`<md-button label="Button Component" tag="p"></md-button>`);
     expect(buttonElement.shadowRoot!.querySelector("button")).toBeNull();
+  });
+
+  test("should render link if passed tag a with custom tabIndex of 1", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button tag="a" tab-index="1"><span slot="text">Test</span></md-button>
+      `
+    );
+    const link = element.shadowRoot!.querySelector("a");
+    expect(link!.getAttribute("tabindex")).toContain("1");
+    expect(link).toBeDefined;
+  });
+
+  test("should render link if passed tag input with custom tabIndex of 1", async () => {
+    const element: Button.ELEMENT = await fixture(
+      html`
+        <md-button tag="input" tab-index="1"><span slot="text">Test</span></md-button>
+      `
+    );
+    const input = element.shadowRoot!.querySelector("input");
+    expect(input!.getAttribute("tabindex")).toContain("1");
+    expect(input).toBeDefined;
   });
 });

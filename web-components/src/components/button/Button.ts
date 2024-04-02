@@ -75,6 +75,12 @@ export const buttonColor = [
   "color-none",
   ""
 ] as const;
+export const buttonAriaLive = [
+  "",
+  "off",
+  "polite",
+  "assertive"
+] as const;
 
 export namespace Button {
   export type Tag = typeof buttonTag[number];
@@ -82,6 +88,7 @@ export namespace Button {
   export type Role = typeof buttonRoles[number];
   export type variant = typeof buttonVariant[number];
   export type color = typeof buttonColor[number];
+  export type ariaLive = typeof buttonAriaLive[number];
   export type Attributes = {
     id?: string;
     disabled: boolean;
@@ -90,6 +97,7 @@ export namespace Button {
     type: Type;
     ariaLabel?: string;
     ariaLabelledBy?: string;
+    ariaLive?: string;
     ariaExpanded?: boolean;
     ariaHaspopup?: boolean;
     ariaPressed?: String;
@@ -130,6 +138,7 @@ export namespace Button {
 
     @property({ type: String }) ariaLabel = "";
     @property({ type: String }) ariaLabelledBy = "";
+    @property({ type: String }) ariaLive: Button.ariaLive = "";
     @property({ type: String }) ariaExpanded = "";
     @property({ type: String }) ariaHaspopup = "false";
     @property({ type: String }) ariaPressed = "";
@@ -280,9 +289,10 @@ export namespace Button {
             class="md-button ${classMap(this.buttonClassMap)}"
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-            tabindex=${this.tabIndex}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
+            aria-live=${ifDefined(this.ariaLive || undefined)}
             aria-expanded="${this.ariaExpanded
               ? this.ariaExpanded === "true"
                 ? true
@@ -291,7 +301,7 @@ export namespace Button {
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed || undefined)}
             type=${this.type}
-            role=${this.role}
+            role=${ifDefined(this.role === 'button'? undefined : this.role)}
             ?disabled=${this.disabled || this.loading}
           >
             ${this.childrenTemplate()}
@@ -306,10 +316,11 @@ export namespace Button {
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
-            tabindex=${this.tabIndex}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
+            aria-live=${ifDefined(this.ariaLive || undefined)}
             type=${this.type}
             alt=${this.label}
             value=${this.value}
@@ -325,10 +336,11 @@ export namespace Button {
             @click=${(e: MouseEvent) => this.handleClick(e)}
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
-            tabindex=${this.tabIndex}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
             aria-pressed=${this.ariaPressed === 'true' ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
+            aria-live=${ifDefined(this.ariaLive || undefined)}
             href=${this.href}
           >
             ${this.childrenTemplate()}

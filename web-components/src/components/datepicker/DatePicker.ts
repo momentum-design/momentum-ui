@@ -241,7 +241,7 @@ export namespace DatePicker {
                   value=${ifDefined(this.value)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  aria-label=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
                   auxiliaryContentPosition="before"
                   required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}

@@ -591,7 +591,7 @@ component.isOpen = false;
   
     document.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Escape }));
     await nextFrame();
-  
+
     //Verify that both the nested menu overlay and the parent menu overlay are closed
     expect(nestedMenuOverlay.isOpen).toBeFalsy();
     expect(element.isOpen).toBeFalsy();

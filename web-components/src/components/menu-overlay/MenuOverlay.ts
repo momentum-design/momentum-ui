@@ -132,6 +132,7 @@ export namespace MenuOverlay {
           MenuOverlay.ELEMENT.activeOverlay.splice(index);
           if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
             MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
+            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnNestedTrigger(this.triggerElement as HTMLElement);
           } else {
             this.setFocusableElements!();
             this.focusOnTrigger();
@@ -229,11 +230,17 @@ export namespace MenuOverlay {
 
           if (this.triggerElement) {
             this.triggerElement.setAttribute("aria-expanded", "true");
+            if(this.triggerElement.hasAttribute("ariaexpanded")){
+              this.triggerElement.setAttribute("ariaexpanded", "true");
+            }
           }
         } else {
           this.dispatchMenuClose();
           if (this.triggerElement) {
             this.triggerElement.removeAttribute("aria-expanded");
+            if(this.triggerElement.hasAttribute("ariaexpanded")){
+              this.triggerElement.setAttribute("ariaexpanded", "false");
+            }
           }
         }
       }
@@ -413,6 +420,10 @@ export namespace MenuOverlay {
       }
     }
 
+    private focusOnNestedTrigger(triggerElement?: HTMLElement) {
+      this.setFocusOnTrigger!(triggerElement);
+    }
+
     handleOutsideOverlayClick = (event: MouseEvent) => {
       let insideMenuClick = false;
       const path = event.composedPath();
@@ -433,7 +444,7 @@ export namespace MenuOverlay {
         ${this.getStyles()}
         <div aria-expanded=${this.isOpen} class="md-menu-overlay">
           <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role=${this.ariaRole} 
+          <div part="overlay" class="overlay-container" role=${this.ariaRole}
           aria-modal=${ifDefined(this.ariaRole === 'dialog' ? "true" : undefined)}
           aria-label=${ifDefined(this.ariaLabel || undefined)}
           >

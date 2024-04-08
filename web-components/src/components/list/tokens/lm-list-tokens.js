@@ -13,6 +13,10 @@ const list = {
     background: {
       light: colors.blue[10].name,
       dark: colors.blue[80].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray[100].name
     }
   },
   disabled: {
@@ -25,6 +29,10 @@ const list = {
     background: {
       light: colors.blue[20].name,
       dark: colors.blue[70].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray[100].name
     }
   },
   focus: {

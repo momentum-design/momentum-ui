@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.9.11",
+  "version": "2.9.12-dev.0",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -40,7 +40,7 @@
     "jest": "^26.4.2",
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
-    "lit-html": "1.2.1",
+    "lit-html": "^1.2.1",
     "@types/express-serve-static-core": "4.17.30",
     "node-downloader-helper": "1.0.19"
   },
@@ -50,7 +50,7 @@
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
     "lit-element": "2.3.1",
-    "lit-html": "1.2.1"
+    "lit-html": "^1.2.1"
   },
   "dependencies": {
     "@interactjs/actions": "1.10.3",
@@ -126,7 +126,7 @@
     "jest": "26.4.2",
     "jest-config": "26.4.2",
     "lit-element": "2.3.1",
-    "lit-html": "1.2.1",
+    "lit-html": "^1.2.1",
     "lit-scss-loader": "1.0.1",
     "node-sass": "^4.13.1",
     "node-sass-tilde-importer": "^1.0.2",

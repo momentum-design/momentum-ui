@@ -1074,8 +1074,7 @@ export namespace ComboBox {
           }
           break;
         case Key.Space: {
-          this.expanded = true;
-          if (this.isMulti) {
+          if (this.isMulti && this.expanded) {
             event.preventDefault();
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
             if (option) {
@@ -1089,6 +1088,7 @@ export namespace ComboBox {
               this.handleSelectAll();
             }
           }
+          this.expanded = true;
           break;
         }
         default: {

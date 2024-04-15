@@ -23,6 +23,7 @@
 :host(:hover:not([disabled])) {
   .md-list-item {
     background-color: var(--list-hover-background, $md-list-hover-background-light);
+    color: var(--list-hover-text-color, $md-list-hover-text-color-light);
   }
 }
 
@@ -30,6 +31,7 @@
 :host([selected]:not([disabled])) {
   .md-list-item {
     background-color: var(--list-active-background, $md-list-active-background-light);
+    color: var(--list-active-text-color, $md-list-active-text-color-light);
   }
 }
 

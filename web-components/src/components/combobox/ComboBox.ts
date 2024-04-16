@@ -97,11 +97,11 @@ export namespace ComboBox {
       if (this.checkForVirtualScroll()) {
         // Virtual Scroll is Enabled.
         let newId: any;
-        if(this.allowSelectAll) {
+        if (this.allowSelectAll) {
           // "Select All" checkbox option is enabled.
           newId = index === 0 ? "selectAll" : this.getOptionId(this.filteredOptions[index - 1]);
         } else {
-          newId = this.getOptionId(this.filteredOptions[index])
+          newId = this.getOptionId(this.filteredOptions[index]);
         }
         const newList = this.lists ? [...this.lists]?.find(list => list.offsetHeight !== 0 && list.id === newId) : "";
         if (this.lists) {
@@ -154,19 +154,19 @@ export namespace ComboBox {
     private customContent: Element[] = [];
 
     private notifySearchResultCount() {
-      // this function is to update ariaLabelForComboBox for search result count. 
+      // this function is to update ariaLabelForComboBox for search result count.
 
       // If searchResultAriaLabel is passed, the {{}} is replaced with the search result count.
       if (this.searchResultAriaLabel) {
         let regex = /{{.*?}}/g;
         this.ariaLabelForComboBox = this.searchResultAriaLabel.replace(regex, this.filteredOptions.length.toString());
-      } 
+      }
       // If searchResultAriaLabel is not passed and ariaLabel is passed, the ariaLabel is appended with the search result count.
-      else if(this.ariaLabel) {
+      else if (this.ariaLabel) {
         this.ariaLabelForComboBox = `${this.ariaLabel}, ${this.filteredOptions.length} results found.`;
       }
       // If both searchResultAriaLabel and ariaLabel are not passed, the default text is appended with the search result count.
-      else{
+      else {
         this.ariaLabelForComboBox = `ComboBox Element, ${this.filteredOptions.length} results found.`;
       }
     }
@@ -752,20 +752,20 @@ export namespace ComboBox {
     }
 
     async handleSelectAll() {
-        this.isSelectAllChecked = !this.isSelectAllChecked;
-        if (this.isSelectAllChecked) {
-          this.selectedOptions = [...this.options];
-          this.checkAllOptions();
-        } else {
-          this.selectedOptions = [];
-          this.unCheckedAllOptions();
-        }
+      this.isSelectAllChecked = !this.isSelectAllChecked;
+      if (this.isSelectAllChecked) {
+        this.selectedOptions = [...this.options];
+        this.checkAllOptions();
+      } else {
+        this.selectedOptions = [];
+        this.unCheckedAllOptions();
+      }
 
-        await this.updateComplete;
-        this.setVisualListbox(true);
-        this.notifySelectedChange({
-          selected: this.selectedOptions
-        });
+      await this.updateComplete;
+      this.setVisualListbox(true);
+      this.notifySelectedChange({
+        selected: this.selectedOptions
+      });
     }
 
     handleInputKeyUp(event: KeyboardEvent) {
@@ -812,7 +812,6 @@ export namespace ComboBox {
         })
       );
 
-      
       this.notifySearchResultCount();
       this.focusedGroupIndex = 0;
       requestAnimationFrame(() => {
@@ -957,30 +956,32 @@ export namespace ComboBox {
         case Key.Enter:
           {
             this.setFocusOnHost(true);
+            if (this.expanded) {
+              this.updateOnNextFrame(() => {
+                const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
+                if (this.allowCustomValue && this.input && this.input.value.length) {
+                  const isOptionAlreadyExist = this.findFilteredOption(this.inputValue) === -1;
+                  if (isOptionAlreadyExist) {
+                    this.setCustomValue();
+                    return;
+                  }
+                }
+                if (option) {
+                  this.setSelectedOption(option);
+                  if (!this.showSelectedCount) {
+                    this.setInputValue(this.getOptionValue(option));
+                    this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
+                  }
+                }
+                if (this.isMulti && this.allowSelectAll && this.focusedIndex === 0) {
+                  this.handleSelectAll();
+                }
+              });
+            }
             this.setVisualListbox(false);
             if (event.code === Key.Tab && this.isMulti) {
               return;
             }
-            this.updateOnNextFrame(() => {
-              const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
-              if (this.allowCustomValue && this.input && this.input.value.length) {
-                const isOptionAlreadyExist = this.findFilteredOption(this.inputValue) === -1;
-                if (isOptionAlreadyExist) {
-                  this.setCustomValue();
-                  return;
-                }
-              }
-              if (option) {
-                this.setSelectedOption(option);
-                if (!this.showSelectedCount) {
-                  this.setInputValue(this.getOptionValue(option));
-                  this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
-                }
-              }
-              if (this.isMulti && this.allowSelectAll && this.focusedIndex === 0) {
-                this.handleSelectAll();
-              }
-            });
           }
           break;
         case Key.ArrowDown:
@@ -1041,12 +1042,12 @@ export namespace ComboBox {
             });
           }
           break;
-          case Key.ArrowLeft:
-          case Key.ArrowRight:
-              {
-                event.stopPropagation();
-              }
-              break;
+        case Key.ArrowLeft:
+        case Key.ArrowRight:
+          {
+            event.stopPropagation();
+          }
+          break;
         case Key.Escape:
           {
             this.setFocusOnHost(true);
@@ -1218,7 +1219,7 @@ export namespace ComboBox {
             bubbles: true
           })
         );
-      this.notifySearchResultCount();
+        this.notifySearchResultCount();
         this.setVisualListbox(true);
       }
       this.input!.focus();
@@ -1392,11 +1393,10 @@ export namespace ComboBox {
           @click=${this.handleSelectAll}
           aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
         >
-       
-                <span class="select-option">
-                  <md-icon name="icon-check_14"></md-icon>
-                </span>
-              
+          <span class="select-option">
+            <md-icon name="icon-check_14"></md-icon>
+          </span>
+
           <span part="label" class="select-label">${this.selectAllTextLocalization}</span>
         </li>
       `;

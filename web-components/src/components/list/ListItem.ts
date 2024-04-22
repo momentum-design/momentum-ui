@@ -51,7 +51,7 @@ export namespace ListItem {
 
     render() {
       return html`
-        <li class="md-list-item" part="list-item">
+        <li class="md-list-item" part="list-item" role="${this.role}">
           <slot></slot>
         </li>
       `;

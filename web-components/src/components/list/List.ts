@@ -166,7 +166,7 @@ export namespace List {
 
     render() {
       return html`
-        <ul class="md-list" part="list">
+        <ul class="md-list" part="list" role="${this.role}" aria-orientation="${this.alignment}">
           <slot name="list-item"></slot>
         </ul>
       `;

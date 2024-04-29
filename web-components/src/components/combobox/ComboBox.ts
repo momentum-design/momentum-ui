@@ -66,7 +66,7 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true }) invalid = false;
     @property({ type: String, reflect: true, attribute: "invalid-text-i18n" }) invalidText = "";
 
-    @property({ type: String, attribute: "aria-label" }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
+    @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
     @internalProperty() ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
 
@@ -185,7 +185,7 @@ export namespace ComboBox {
       // Initially the ariaLabelForComboBox is set for ariaLabel value if found or a static text is set.
       this.ariaLabelForComboBox = this.ariaLabel ? this.ariaLabel : "ComboBox Element";
       super.firstUpdated(changedProperties);
-      this.setAttribute("tabindex", "0");
+      // this.setAttribute("tabindex", "0");
       if (this.isCustomContent) {
         this.optionId = "id";
         this.optionValue = "value";
@@ -1557,7 +1557,6 @@ export namespace ComboBox {
       return html`
         <div
           part="combobox"
-          aria-label=${this.ariaLabelForComboBox}
           class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}"
         >
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">

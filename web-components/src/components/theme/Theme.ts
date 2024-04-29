@@ -61,6 +61,12 @@ export namespace Theme {
 
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
+    private eventListeners: {
+      mouseEnter?: (event: MouseEvent) => void;
+      mouseLeave?: (event: MouseEvent) => void;
+    } = {};
+    private currentPopperClone: HTMLElement | null = null;
+    private parentPopper: HTMLElement | null = null;
 
     private setTheme() {
       if (this.lumos) {
@@ -141,6 +147,12 @@ export namespace Theme {
     ) {
       const popperClone = popper.cloneNode(true) as HTMLDivElement;
 
+      this.eventListeners.mouseEnter = () => this.handleMouseEnterPopper();
+      this.eventListeners.mouseLeave = () => this.handleMouseLeavePopper();
+      popperClone.addEventListener('mouseenter', this.eventListeners.mouseEnter);
+      popperClone.addEventListener('mouseleave', this.eventListeners.mouseLeave);
+      this.currentPopperClone = popperClone;
+
       if (this.virtualWrapper.hasChildNodes()) {
         this.removeChildFromVirtualPopper();
       }
@@ -152,6 +164,14 @@ export namespace Theme {
       }
 
       this.setVirtualReferencePosition(reference);
+    }
+
+    private handleMouseEnterPopper() {
+      this.mdToolTip.toggleAttribute('opened',true);
+    }
+    
+    private handleMouseLeavePopper() {
+      this.mdToolTip.toggleAttribute('opened',false);
     }
 
     private setVirtualSlotContent(slotContent: Element[]) {
@@ -188,6 +208,7 @@ export namespace Theme {
       const { popper, placement, reference, slotContent } = event.detail;
 
       this.placement = placement;
+      this.parentPopper = popper;
       this.initVirtualElements(popper, reference, slotContent);
       this.showVirtualTooltip();
     }
@@ -274,6 +295,10 @@ export namespace Theme {
       return this.shadowRoot!.querySelector(".md-tooltip__content");
     }
 
+    private get mdToolTip() {
+      return (this.parentPopper!.getRootNode() as ShadowRoot).host;
+    }
+
     private showVirtualTooltip() {
       if (this.virtualPopper) {
         this.virtualPopper.toggleAttribute("data-show", true);
@@ -307,9 +332,22 @@ export namespace Theme {
       document.removeEventListener("tooltip-disconnected", this.handleTooltipRemoved as EventListener, true);
     }
 
+    private removeVirtualPopperEvents() {
+      if (this.eventListeners.mouseEnter && this.currentPopperClone) {
+        this.currentPopperClone.removeEventListener('mouseenter', this.eventListeners.mouseEnter);
+      }
+      if (this.eventListeners.mouseLeave && this.currentPopperClone) {
+        this.currentPopperClone.removeEventListener('mouseleave', this.eventListeners.mouseLeave);
+      }
+      this.eventListeners.mouseEnter = undefined;
+      this.eventListeners.mouseLeave = undefined;
+      this.currentPopperClone = null;
+    }
+
     disconnectedCallback() {
       super.disconnectedCallback();
       this.teardownEvents();
+      this.removeVirtualPopperEvents();
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {

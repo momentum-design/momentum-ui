@@ -1043,6 +1043,7 @@ describe("Combobox Component", () => {
         <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[1]]} allow-custom-value></md-combobox>
       `
     );
+    el.expanded = true;
     const enter = new KeyboardEvent("keydown", { code: Key.Enter });
 
     el.inputValue = "One";
@@ -1076,6 +1077,7 @@ describe("Combobox Component", () => {
         ></md-combobox>
       `
     );
+    el.expanded = true;
     const enter = new KeyboardEvent("keydown", { code: Key.Enter });
 
     el.inputValue = "One";

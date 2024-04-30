@@ -29,6 +29,7 @@ export namespace TaskItem {
     @property({ type: Boolean }) selected = false;
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
+    @property({ type: String }) tabIndexForContainer = "0";
 
     renderTaskType = () => {
       switch (this.mediaType.toLowerCase()) {
@@ -207,7 +208,7 @@ export namespace TaskItem {
         <div
           part="task-item-container"
           class="md-taskitem ${classMap({ selected: this.selected })}"
-          tabindex="0"
+          tabindex=${this.tabIndexForContainer}
           aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}

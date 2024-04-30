@@ -147,8 +147,8 @@ export namespace Theme {
     ) {
       const popperClone = popper.cloneNode(true) as HTMLDivElement;
 
-      this.eventListeners.mouseEnter = () => this.handleMouseEnterPopper();
-      this.eventListeners.mouseLeave = () => this.handleMouseLeavePopper();
+      this.eventListeners.mouseEnter = () => this.mdToolTip.toggleAttribute('opened',true);
+      this.eventListeners.mouseLeave = () => this.mdToolTip.toggleAttribute('opened',false);
       popperClone.addEventListener('mouseenter', this.eventListeners.mouseEnter);
       popperClone.addEventListener('mouseleave', this.eventListeners.mouseLeave);
       this.currentPopperClone = popperClone;
@@ -164,14 +164,6 @@ export namespace Theme {
       }
 
       this.setVirtualReferencePosition(reference);
-    }
-
-    private handleMouseEnterPopper() {
-      this.mdToolTip.toggleAttribute('opened',true);
-    }
-    
-    private handleMouseLeavePopper() {
-      this.mdToolTip.toggleAttribute('opened',false);
     }
 
     private setVirtualSlotContent(slotContent: Element[]) {

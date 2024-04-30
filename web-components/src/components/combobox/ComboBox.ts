@@ -84,6 +84,8 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
 
+    @property({ type: String }) comboboxId = "";
+
     @property({ type: Number, attribute: false })
     @internalProperty()
     private isOptGroup = false;
@@ -1568,6 +1570,7 @@ export namespace ComboBox {
                   : this.getSelctedCount()
                 : nothing}
               <input
+                id=${ifDefined(this.comboboxId || undefined)}
                 class="md-combobox-listbox"
                 type="text"
                 role="combobox"

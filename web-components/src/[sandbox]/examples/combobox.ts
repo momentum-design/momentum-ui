@@ -20,6 +20,19 @@ const comboboxOnExpand =(e: CustomEvent) => {
 }
 
 export const comboBoxTemplate = html`
+
+  <md-label htmlFor="comboboxid">
+    <span>Label Combobox</span>
+  </md-label>
+  <md-combobox
+    style="width: 220px; display: inline-block;"
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    ariaLabel="Select the country"
+    search-result-aria-label="Select the country, {{count}} results found."
+    comboboxId="comboboxid"
+  ></md-combobox>
+
   <h3>Default</h3>
   <md-combobox
     style="width: 220px; display: inline-block;"

@@ -187,7 +187,6 @@ export namespace ComboBox {
       // Initially the ariaLabelForComboBox is set for ariaLabel value if found or a static text is set.
       this.ariaLabelForComboBox = this.ariaLabel ? this.ariaLabel : "ComboBox Element";
       super.firstUpdated(changedProperties);
-      // this.setAttribute("tabindex", "0");
       if (this.isCustomContent) {
         this.optionId = "id";
         this.optionValue = "value";

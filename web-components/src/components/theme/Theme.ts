@@ -66,7 +66,6 @@ export namespace Theme {
       mouseLeave?: (event: MouseEvent) => void;
     } = {};
     private currentPopperClone: HTMLElement | null = null;
-    private parentPopper: HTMLElement | null = null;
 
     private setTheme() {
       if (this.lumos) {
@@ -146,9 +145,10 @@ export namespace Theme {
       slotContent: Element[] | null | undefined
     ) {
       const popperClone = popper.cloneNode(true) as HTMLDivElement;
+      const popperShadowRoot = (popper.getRootNode() as ShadowRoot).host;
 
-      this.eventListeners.mouseEnter = () => this.mdToolTip.toggleAttribute('opened',true);
-      this.eventListeners.mouseLeave = () => this.mdToolTip.toggleAttribute('opened',false);
+      this.eventListeners.mouseEnter = () => popperShadowRoot.toggleAttribute('opened',true);
+      this.eventListeners.mouseLeave = () => popperShadowRoot.toggleAttribute('opened',false);
       popperClone.addEventListener('mouseenter', this.eventListeners.mouseEnter);
       popperClone.addEventListener('mouseleave', this.eventListeners.mouseLeave);
       this.currentPopperClone = popperClone;
@@ -200,7 +200,6 @@ export namespace Theme {
       const { popper, placement, reference, slotContent } = event.detail;
 
       this.placement = placement;
-      this.parentPopper = popper;
       this.initVirtualElements(popper, reference, slotContent);
       this.showVirtualTooltip();
     }
@@ -285,10 +284,6 @@ export namespace Theme {
 
     private get virtualTooltipContent() {
       return this.shadowRoot!.querySelector(".md-tooltip__content");
-    }
-
-    private get mdToolTip() {
-      return (this.parentPopper!.getRootNode() as ShadowRoot).host;
     }
 
     private showVirtualTooltip() {

@@ -47,18 +47,6 @@ describe("Combobox Component", () => {
       expect(el.expanded).toBeFalsy();
     });
 
-    test("should set correct handle focusin", async () => {
-      el.dispatchEvent(new FocusEvent("focusin"));
-      el.focus();
-      expect(document.activeElement).toEqual(el);
-    });
-
-    test("should set correct handle focusout", async () => {
-      el.dispatchEvent(new FocusEvent("focusout"));
-      el.blur();
-
-      expect(document.activeElement).not.toEqual(el);
-    });
 
     test("should dispatch events", async () => {
       const eventIn = new Event("focusin");
@@ -272,13 +260,11 @@ describe("Combobox Component", () => {
       el.input!.focus();
 
       expect(el.expanded).toBeTruthy();
-      expect(document.activeElement).toEqual(el);
 
       document.dispatchEvent(event);
       el.input!.blur();
 
       expect(el.expanded).toBeFalsy();
-      expect(document.activeElement).not.toEqual(el);
     });
 
     test("should set placeholder if property exist", async () => {

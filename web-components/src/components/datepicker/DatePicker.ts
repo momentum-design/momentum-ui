@@ -237,6 +237,7 @@ export namespace DatePicker {
                 <md-input
                   class="date-input"
                   slot="menu-trigger"
+                  role="combobox"
                   placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
                   value=${ifDefined(this.value)}
                   htmlId=${this.htmlId}

@@ -158,6 +158,7 @@ export namespace Input {
     @property({ type: String }) helpText = "";
     @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
     @property({ type: String }) htmlId = "";
+    @property({ type: String }) role = "";
     @property({ type: Array }) messageArr: Input.Message[] = [];
     @property({ type: Number, reflect: true }) min: number | undefined = undefined;
     @property({ type: Number, reflect: true }) max: number | undefined = undefined;
@@ -395,6 +396,7 @@ export namespace Input {
               aria-errormessage=${`${this.htmlId}-message`}
               ?disabled=${this.disabled}
               id=${this.htmlId}
+              role=${this.role}
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly}
               min=${ifDefined(this.min)}

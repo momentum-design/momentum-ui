@@ -36,6 +36,7 @@ export abstract class FocusTrapClass extends LitElement {
   protected initialFocusComplete?: boolean;
   protected setFocusableElements?(): void;
   protected setInitialFocus?(prefferableElement?: HTMLElement | number, ignoreAutoFocus?: boolean): void;
+  protected setFocusOnTrigger?(triggerEleement?: HTMLElement): void;
 }
 export interface FocusTrapInterface {
   activeFocusTrap: boolean;
@@ -275,6 +276,27 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
 
       if (this.focusableElements[focusableIndex]) {
+        this.focusTrapIndex = focusableIndex;
+      }
+    }
+
+    /**
+    * this method is used to set focus on trigger element by finding the focusable element in the trigger element.
+    *
+    * @param   triggerElement  The trigger element.
+    * @returns void
+    */
+    protected setFocusOnTrigger(triggerElement: HTMLElement) {
+      let deepNestedTriggerElement;
+      if (triggerElement.shadowRoot!) {
+        deepNestedTriggerElement = this.findFocusable(triggerElement.shadowRoot!, new Set());
+      } else if (this.isFocusable(triggerElement)) {
+        deepNestedTriggerElement = [triggerElement];
+      } else {
+        deepNestedTriggerElement = this.findFocusable(triggerElement, new Set());
+      }
+      if(deepNestedTriggerElement[0]){
+        const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
         this.focusTrapIndex = focusableIndex;
       }
     }

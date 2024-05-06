@@ -15,6 +15,13 @@
     padding-left: calc(#{$modal-main__padding} / 2);
     padding-right: calc(#{$modal-main__padding} / 2);
 
+    h2 {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      margin: 0;
+    }
+
     .md-modal__title {
       overflow: hidden;
       text-align: center;

@@ -11,8 +11,12 @@ const list = {
   },
   hover: {
     background: {
-      light: colors.blue[10].name,
-      dark: colors.blue[80].name
+      light: colors.blue[20].name,
+      dark: colors.blue[50].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray[100].name
     }
   },
   disabled: {
@@ -23,13 +27,17 @@ const list = {
   },
   active: {
     background: {
-      light: colors.blue[20].name,
-      dark: colors.blue[70].name
+      light: colors.blue[50].name,
+      dark: colors.blue[40].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray[100].name
     }
   },
   focus: {
     "border-color": {
-      light: colors.blue[60].name,
+      light: colors.blue[70].name,
       dark: colors.blue[40].name
     }
   }

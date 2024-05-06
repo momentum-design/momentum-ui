@@ -106,6 +106,64 @@ describe("FocusTrap Mixin", () => {
     expect(element).toBeDefined();
   });
 
+  test("should set trap index of normal focusable element", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+    const input = focusableChild!.shadowRoot!.querySelector("input");
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!["setFocusOnTrigger"]!(input!);
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap!["focusTrapIndex"]).toEqual(5);
+
+  });
+
+  test("should set trap index of element with shadowRoot", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+    const mdInput = focusableChild!.shadowRoot!.querySelector("md-input");
+
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!["setFocusOnTrigger"]!(mdInput!);
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap!["focusTrapIndex"]).toEqual(6);
+  });
+
+
+  test("should set trap index of button inside div", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelectorAll<FocusableChild>("div")[1];
+
+
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+
+    await nextFrame();
+    await elementUpdated(el);
+
+    focusTrap!["setFocusOnTrigger"]!(focusableChild!);
+    await nextFrame();
+    await elementUpdated(el);
+
+    expect(focusTrap!["focusTrapIndex"]).toEqual(4);
+  });
+
+
   test("should transfer focus-trap to child when child traps focus", async () => {
     const parentFocusTrap = await fixture<FocusTrap>(
       html`

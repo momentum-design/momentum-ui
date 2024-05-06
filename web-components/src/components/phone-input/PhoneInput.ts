@@ -48,6 +48,7 @@ export namespace PhoneInput {
     @property({ type: String }) countryCodeAriaLabel = "";
     @property({ type: String }) dialNumberAriaLabel = "";
     @property({ type: String }) clearAriaLabel = "Clear Input";
+    @property({ type: String }) clearCountryCodeAriaLabel = "Clear Country Code";
     @property({ type: String }) id = "";
 
     @internalProperty() private countryCode: CountryCode = "US";
@@ -227,13 +228,13 @@ export namespace PhoneInput {
             part="combobox"
             ?disabled=${this.disabled}
             shape="${this.pill ? "pill" : "none"}"
-            aria-label=${this.countryCodeAriaLabel}
+            ariaLabel=${this.countryCodeAriaLabel}
             placeholder="${this.codePlaceholder}"
             .value="${this.countryCallingCode ? [this.getFormatedCountryCallingCode()] : []}"
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
             clear-icon-height="${this.clearIconHeight}"
             with-custom-content
-            clear-aria-label="${this.clearAriaLabel} ${this.countryCodeAriaLabel}"
+            .clearAriaLabel="${this.clearCountryCodeAriaLabel}"
           >
             ${repeat(
               this.codeList,
@@ -253,7 +254,7 @@ export namespace PhoneInput {
             shape="${this.pill ? "pill" : "none"}"
             .ariaControls=${this.id}
             clear
-            clearAriaLabel="${this.clearAriaLabel} ${this.dialNumberAriaLabel}"
+            clearAriaLabel="${this.clearAriaLabel}"
             type="tel"
             value="${this.formattedValue}"
             .messageArr="${!this.isValid || this.showErrorMessage

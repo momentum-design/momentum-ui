@@ -73,7 +73,7 @@ export namespace Link {
                 class="md-link ${classMap(linkClassNamesInfo)}"
                 tabindex=${this.tabIndex}  
                 aria-label=${ifDefined(this.ariaLabel || undefined)} 
-                aria-disabled="${ifDefined(this.disabled || undefined)}" 
+                aria-disabled=${ifDefined(this.disabled || undefined)}
                 role=${this.ariaRole} 
                 part="link"
               >
@@ -86,7 +86,7 @@ export namespace Link {
                 class="md-link ${classMap(linkClassNamesInfo)}" 
                 tabindex=${this.tabIndex}  
                 aria-label=${ifDefined(this.ariaLabel || undefined)} 
-                aria-disabled="${ifDefined(this.disabled || undefined)}" 
+                aria-disabled=${ifDefined(this.disabled || undefined)}
                 role=${this.ariaRole} 
                 part="link"
               > 
@@ -101,8 +101,8 @@ export namespace Link {
                 .target="${this.target}"
                 href=${ifDefined(!this.disabled ? this.href : undefined)}
                 tabindex=${this.tabIndex}
-                aria-disabled="${this.disabled}"
                 aria-label=${ifDefined(this.ariaLabel || undefined)}
+                aria-disabled=${ifDefined(this.disabled || undefined)}
                 role=${this.ariaRole}
                 part="link"
               >

@@ -29,7 +29,7 @@ export const linkTemplate = html`
   </div>
   <div class="row">
     <md-link tag="span" disabled>
-      Link Tag Span disableds
+      Link Tag Span disabled
     </md-link>
   </div>
 

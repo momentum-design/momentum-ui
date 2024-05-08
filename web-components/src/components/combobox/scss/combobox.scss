@@ -343,3 +343,8 @@ ul {
     margin-left: calc(#{$combobox-main-indent} * 3);
   }
 }
+input::placeholder,
+input::-webkit-input-placeholder{
+  opacity: 1;
+  color: var(--combobox-placeholder-color,$lm-combobox-placeholder-color-light);
+}

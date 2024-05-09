@@ -11,6 +11,8 @@ export class DefaultTableAdvanced extends LitElement {
       <br /><br />
       ${this.renderShortkeyTable()}
       <br /><br />
+      ${this.renderTableNonFocusableRows()}
+      <br /><br />
     `;
   }
 
@@ -65,7 +67,7 @@ export class DefaultTableAdvanced extends LitElement {
     `;
   }
 
-  renderShortkeyTable() {
+  renderSimpleTable(isRowFocusable: string) {
     const conf = ShortkeyTable.config;
     conf.cellTemplates = {
       _info_: { templateName: "tmp1" },
@@ -74,7 +76,7 @@ export class DefaultTableAdvanced extends LitElement {
     };
 
     return html`
-      <md-table-advanced .config=${conf} .data=${ShortkeyTable.data}>
+      <md-table-advanced .config=${conf} .data=${ShortkeyTable.data} isRowFocusable=${isRowFocusable}>
         <template id="tmp1">
           <md-icon class="warn-icon" name="warning_20" color="blue"></md-icon>
         </template>
@@ -88,6 +90,14 @@ export class DefaultTableAdvanced extends LitElement {
         </template>
       </md-table-advanced>
     `;
+  }
+
+  renderShortkeyTable() {
+    return this.renderSimpleTable("true");
+  }
+
+  renderTableNonFocusableRows() {
+    return this.renderSimpleTable("false");
   }
 }
 

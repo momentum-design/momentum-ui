@@ -128,6 +128,12 @@ const combobox = {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
     },
+  },
+  "placeholder": {
+    "color": {
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
+    }
   }
 };
 

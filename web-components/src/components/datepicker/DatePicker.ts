@@ -237,11 +237,12 @@ export namespace DatePicker {
                 <md-input
                   class="date-input"
                   slot="menu-trigger"
+                  role="combobox"
                   placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
                   value=${ifDefined(this.value)}
                   htmlId=${this.htmlId}
                   label=${this.label}
-                  aria-label=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
                   auxiliaryContentPosition="before"
                   required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}

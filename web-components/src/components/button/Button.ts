@@ -293,7 +293,7 @@ export namespace Button {
               : ifDefined(this.ariaExpanded || undefined)}"
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed || undefined)}
-            aria-disabled=${this.disabled || this.loading ? "true" : "false"}
+            aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
             type=${this.type}
             role=${ifDefined(this.role === "button" ? undefined : this.role)}
           >
@@ -317,7 +317,7 @@ export namespace Button {
             type=${this.type}
             alt=${this.label}
             value=${this.value}
-            aria-disabled=${this.disabled || this.loading ? "true" : "false"}
+            aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
           />
         `;
       } else if (tag === "a") {
@@ -334,6 +334,7 @@ export namespace Button {
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}
+            aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
             href=${this.href}
           >
             ${this.childrenTemplate()}

@@ -80,7 +80,7 @@ describe("Link component", () => {
     expect(component.disabled).toBeTruthy();
 
     const linkShadow = component!.shadowRoot!.querySelector(".md-link");
-    expect(linkShadow!.getAttribute("tabindex")).toContain("-1");
+    expect(linkShadow!.getAttribute("aria-disabled")).toBeTruthy;
   });
 
   // disabled

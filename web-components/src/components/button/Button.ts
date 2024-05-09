@@ -75,12 +75,7 @@ export const buttonColor = [
   "color-none",
   ""
 ] as const;
-export const buttonAriaLive = [
-  "",
-  "off",
-  "polite",
-  "assertive"
-] as const;
+export const buttonAriaLive = ["", "off", "polite", "assertive"] as const;
 
 export namespace Button {
   export type Tag = typeof buttonTag[number];
@@ -125,9 +120,6 @@ export namespace Button {
     private _tabIndex = 0;
     @property({ type: Number, attribute: "tab-index", reflect: true })
     get tabIndex() {
-      if (this.disabled) {
-        return -1;
-      }
       return this._tabIndex;
     }
     set tabIndex(newValue: number) {
@@ -232,6 +224,7 @@ export namespace Button {
         "md-button--none": this.hasRemoveStyle,
         "md-button--outline": this.outline,
         active: this.active && !this.disabled,
+        disabled: this.disabled && !this.active,
         [`md-button--${this.size}`]: !this.hasRemoveStyle,
         [`md-button--${this.color}`]: !this.hasRemoveStyle && !!this.color,
         [`md-activity__${this.activityType}`]: !!this.activityType,
@@ -300,9 +293,9 @@ export namespace Button {
               : ifDefined(this.ariaExpanded || undefined)}"
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed || undefined)}
+            aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
             type=${this.type}
-            role=${ifDefined(this.role === 'button'? undefined : this.role)}
-            ?disabled=${this.disabled || this.loading}
+            role=${ifDefined(this.role === "button" ? undefined : this.role)}
           >
             ${this.childrenTemplate()}
           </button>
@@ -317,14 +310,14 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${ifDefined(this.tabIndex || undefined)}
-            aria-pressed=${this.ariaPressed === 'true' ? true : false}
+            aria-pressed=${this.ariaPressed === "true" ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}
             type=${this.type}
             alt=${this.label}
             value=${this.value}
-            ?disabled=${this.disabled || this.loading}
+            aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
           />
         `;
       } else if (tag === "a") {
@@ -337,10 +330,11 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${ifDefined(this.tabIndex || undefined)}
-            aria-pressed=${this.ariaPressed === 'true' ? true : false}
+            aria-pressed=${this.ariaPressed === "true" ? true : false}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}
+            aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
             href=${this.href}
           >
             ${this.childrenTemplate()}

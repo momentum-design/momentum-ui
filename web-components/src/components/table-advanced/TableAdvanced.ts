@@ -34,6 +34,7 @@ export namespace TableAdvanced {
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     @property({ attribute: "config" }) config!: Config | string;
     @property({ attribute: "data" }) data!: Data | string;
+    @property({ type: String }) isRowFocusable = "true";
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
 
@@ -77,7 +78,7 @@ export namespace TableAdvanced {
     }
 
     protected update(changedProperties: PropertyValues) {
-            super.update(changedProperties);
+      super.update(changedProperties);
       if (changedProperties.has("data")) {
         this.updateTableData();
         this.updateDataInTable();
@@ -527,15 +528,21 @@ export namespace TableAdvanced {
             ${head?.caption
               ? html`
                   <caption>
-                    ${head?.caption} ${head?.tableDescription ? html`<span style="position: absolute; top: -30em">${head?.tableDescription}</span>` : nothing} 
+                    ${head?.caption}
+                    ${head?.tableDescription
+                      ? html`
+                          <span style="position: absolute; top: -30em">${head?.tableDescription}</span>
+                        `
+                      : nothing}
                   </caption>
                 `
-              :head?.tableDescription
+              : head?.tableDescription
               ? html`
                   <caption>
                     <span style="position: absolute; top: -30em">${head?.tableDescription}</span>
                   </caption>
-                ` : nothing}
+                `
+              : nothing}
             ${this.renderHead()} ${this.renderBody()}
           </table>
         </div>
@@ -832,7 +839,7 @@ export namespace TableAdvanced {
       return html`
         <tr
           class=${rowStyles}
-          tabindex="0"
+          tabindex=${ifDefined(this.isRowFocusable === "true" ? "0" : undefined)}
           part=${row.first ? "first-row" : "row"}
           @click=${({ shiftKey, metaKey }: MouseEvent) => {
             if (this.isSelectable) this.selectRow({ row, shiftKey, metaKey });

@@ -35,7 +35,7 @@
   }
 }
 
-:host([focus-visible]:not([disabled])) {
+:host([focus-visible]) {
   .md-list-item {
     box-shadow: $list-item__focus-shadow;
   }

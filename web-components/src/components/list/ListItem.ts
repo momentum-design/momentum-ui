@@ -26,11 +26,6 @@ export namespace ListItem {
       const oldValue = this._disabled;
       this._disabled = value;
       this.setAttribute("aria-disabled", `${value}`);
-      if (value) {
-        this.tabIndex = -1;
-      } else {
-        this.tabIndex = 0;
-      }
       this.requestUpdate("disabled", oldValue);
     }
 

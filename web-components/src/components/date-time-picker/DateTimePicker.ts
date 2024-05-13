@@ -157,7 +157,7 @@ export namespace DateTimePicker {
         <md-datepicker
           includes-time
           ?disabled=${this.disabled}
-          aria-label=${ifDefined(this.ariaLabel || undefined)}
+          ariaLabel=${ifDefined(this.ariaLabel || undefined)}
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}

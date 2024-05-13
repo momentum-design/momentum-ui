@@ -19,6 +19,7 @@ export namespace DateTimePicker {
     @property({ type: String }) maxDate: string | undefined = undefined;
     @property({ type: String }) minDate: string | undefined = undefined;
     @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+    @property({ type: String }) ariaLabel = "";
 
     @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
     @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
@@ -156,6 +157,7 @@ export namespace DateTimePicker {
         <md-datepicker
           includes-time
           ?disabled=${this.disabled}
+          aria-label=${ifDefined(this.ariaLabel || undefined)}
           minDate=${ifDefined(this.minDate)}
           maxDate=${ifDefined(this.maxDate)}
           value=${ifDefined(this.value)}

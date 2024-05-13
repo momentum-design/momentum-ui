@@ -60,6 +60,12 @@ const task_item = {
       light: colors.cobalt[80].name,
       dark: colors.cobalt[20].name
     }
+  },
+  timer: {
+    "text-color": {
+      light: colors.green[70].name,
+      dark: colors.green[50].name
+    }
   }
 };
 

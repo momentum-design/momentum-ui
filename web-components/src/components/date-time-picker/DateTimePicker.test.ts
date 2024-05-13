@@ -47,7 +47,7 @@ describe("DateTimePicker Component", () => {
         <md-date-time-picker ariaLabel="Date Time Picker"></md-date-time-picker>>
       `
     );
-    expect( el?.getAttribute("ariaLabel")).toMatch("Date Time Picker");
+    expect(el?.getAttribute("ariaLabel")).toMatch("Date Time Picker");
   });
 
   test("should not set aria label when not passed", async () => {
@@ -56,6 +56,6 @@ describe("DateTimePicker Component", () => {
         <md-date-time-picker></md-date-time-picker>>
       `
     );
-    expect(el?.getAttribute("aria-label")).toBeNull();
+    expect(el?.getAttribute("ariaLabel")).toBeNull();
   });
 });

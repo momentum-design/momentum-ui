@@ -52,7 +52,7 @@ const tabs = {
     },
     active: {
       light: colors.blue[70].name,
-      dark: colors.theme[50].name
+      dark: colors.theme[40].name
     }
   },
   "left-arrow": {

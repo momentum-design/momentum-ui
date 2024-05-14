@@ -11,8 +11,8 @@ const tabs = {
       dark: colors.gray[90].name
     },
     "text-color": {
-      light: colors.gray[80].name,
-      dark: colors.gray[30].name
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
     },
     "border-color": {
       light: colors.gray[20].name,

@@ -11,23 +11,23 @@ const tabs = {
       dark: colors.gray[90].name
     },
     "text-color": {
-      light: colors.gray[70].name,
-      dark: colors.gray[40].name
+      light: colors.gray[80].name,
+      dark: colors.gray[30].name
     },
     "border-color": {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
     },
     "active-border": {
-      light: colors.theme[50].name,
-      dark: colors.theme[50].name
+      light: colors.blue[70].name,
+      dark: colors.blue[40].name
     },
     "focus-bg": {
       light: colors.white[100].name,
       dark: colors.gray[90].name
     },
     "focus-border": {
-      light: colors.blue[60].name,
+      light: colors.blue[70].name,
       dark: colors.blue[40].name
     },
     "hover-border": {
@@ -47,8 +47,8 @@ const tabs = {
       dark: colors.gray[60].name
     },
     active: {
-      light: colors.theme[70].name,
-      dark: colors.theme[40].name
+      light: colors.blue[70].name,
+      dark: colors.blue[40].name
     }
   },
   "left-arrow": {

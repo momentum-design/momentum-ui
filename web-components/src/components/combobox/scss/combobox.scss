@@ -348,3 +348,14 @@ input::-webkit-input-placeholder{
   opacity: 1;
   color: var(--combobox-placeholder-color,$lm-combobox-placeholder-color-light);
 }
+
+@media (forced-colors: active) {
+  .md-combobox-option[aria-checked="true"] {
+    .select-option {
+      forced-color-adjust: none;
+      md-icon {
+        forced-color-adjust: none;
+      }
+    }
+  }
+}

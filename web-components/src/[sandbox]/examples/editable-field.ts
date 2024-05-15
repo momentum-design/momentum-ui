@@ -102,6 +102,10 @@ export class EditableFieldTemplateSandbox extends LitElement {
         ${this.renderErrorMessage()}
         <br>
         <md-button @click=${this.resetErrorMessage}>Reset Error</md-button>
+        <br>
+        <h4> Test Field </h4>
+        <md-editable-field ariaLabel="Test Field ">
+      </md-editable-field>
     `;
   }
 }

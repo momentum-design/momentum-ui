@@ -40,7 +40,7 @@ export namespace EditableTextfield {
     @property({ type: Boolean }) hideMessage = false;
     @property({ type: String }) pattern = "";
     @property({ type: String }) type: EditableTextfield.InputType[number] | null = null;
-    @property({ type: String, attribute: "aria-label" }) ariaLabel = "editable field";
+    @property({ type: String }) ariaLabel = "editable field";
     @property({ type: String, attribute: "aria-described-by" }) ariaDescribedBy = "";
 
     private readonly messageController: Input.MessageController = new Input.MessageController();

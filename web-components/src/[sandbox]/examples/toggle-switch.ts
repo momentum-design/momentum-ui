@@ -32,4 +32,7 @@ export const toggleSwitchTemplate = html`
   <md-toggle-switch htmlId="toggleSwitch9" alignLabel="left">
     Toggle Switch with label left aligned
   </md-toggle-switch>
+  <md-toggle-switch htmlId="toggleSwitch9" label="Switch to Dark Mode" alignLabel="left">
+    Switch to Dark Mode
+  </md-toggle-switch>
 `;

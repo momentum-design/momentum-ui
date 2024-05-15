@@ -368,7 +368,7 @@ export namespace Input {
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage="${this.htmlId}-message"
-              ?disabled=${this.disabled}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
               id=${this.htmlId}
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly}
@@ -394,7 +394,7 @@ export namespace Input {
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage=${`${this.htmlId}-message`}
-              ?disabled=${this.disabled}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
               id=${this.htmlId}
               role=${this.role}
               placeholder=${this.placeholder}

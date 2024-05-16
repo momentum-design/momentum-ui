@@ -29,6 +29,13 @@ describe("ListItem", () => {
     expect(element.getAttribute("tabindex")).toEqual("-1");
   });
 
+  test("should handle focus", async () => {
+    const element = await fixture<ListItem.ELEMENT>(`<md-list-item>Neptunium</md-list-item>`);
+    setTimeout(() => element.focus());
+    const event = await oneEvent(element, 'focus');
+    expect(document.activeElement).toEqual(element);
+  });
+
   test("handle firstUpdated lifecycle hook", async () => {
     const tag = defineCE(
       class extends ListItem.ELEMENT {

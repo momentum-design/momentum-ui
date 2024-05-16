@@ -19,16 +19,16 @@ const tabs = {
       dark: colors.gray[90].name
     },
     "active-border": {
-      light: colors.theme[60].name,
-      dark: colors.theme[40].name
+      light: colors.blue[70].name,
+      dark: colors.blue[40].name
     },
     "focus-bg": {
       light: colors.white[60].name,
       dark: colors.gray[90].name
     },
     "focus-border": {
-      light: colors.theme[60].name,
-      dark: colors.theme[40].name
+      light: colors.blue[70].name,
+      dark: colors.blue[40].name
     },
     "focus-shadow": {
       light: "0 0 4px 2px transparent",
@@ -52,7 +52,7 @@ const tabs = {
     },
     active: {
       light: colors.blue[70].name,
-      dark: colors.theme[50].name
+      dark: colors.blue[40].name
     }
   },
   "left-arrow": {

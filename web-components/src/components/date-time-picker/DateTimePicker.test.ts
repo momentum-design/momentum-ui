@@ -40,4 +40,22 @@ describe("DateTimePicker Component", () => {
 
     expect(el.value).not.toBeNull();
   });
+
+  test("should render correct aria label", async () => {
+    const el: DateTimePicker.ELEMENT = await fixture(
+      html`
+        <md-date-time-picker ariaLabel="Date Time Picker"></md-date-time-picker>>
+      `
+    );
+    expect(el?.getAttribute("ariaLabel")).toMatch("Date Time Picker");
+  });
+
+  test("should not set aria label when not passed", async () => {
+    const el: DateTimePicker.ELEMENT = await fixture(
+      html`
+        <md-date-time-picker></md-date-time-picker>>
+      `
+    );
+    expect(el?.getAttribute("ariaLabel")).toBeNull();
+  });
 });

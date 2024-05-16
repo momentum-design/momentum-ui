@@ -30,4 +30,6 @@ export const datePickerTemplate = html`
   <md-datepicker weekStart="Monday" value="2021-01-31"></md-datepicker>
   <h3>disabled datepicker</h3>
   <md-datepicker weekStart="Monday" value="2021-01-31" disabled></md-datepicker>
+  <h3>Call Date</h3>
+  <md-datepicker ariaLabel="Call Date" weekStart="Monday" value="2021-01-31"></md-datepicker>
 `;

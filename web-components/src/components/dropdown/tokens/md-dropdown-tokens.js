@@ -44,12 +44,12 @@ const dropdown = {
     },
     item: {
       "bg-color-hover": {
-        light: colors.theme[10].name,
-        dark: colors.theme[90].name
+        light: colors.blue[20].name,
+        dark: colors.blue[50].name
       },
       "bg-color-focus": {
-        light: colors.theme[20].name,
-        dark: colors.theme[60].name
+        light: colors.blue[50].name,
+        dark: colors.blue[40].name
       }
     }
   }

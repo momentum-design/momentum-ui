@@ -52,6 +52,7 @@
         border-radius: 50%;
         box-shadow: $slider-pointer__box-shadow;
         content: "";
+        border: rem-calc(1) solid var(--md-secondary-text-color);
         height: 100%;
         position: absolute;
         width: 100%;

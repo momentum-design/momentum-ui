@@ -135,7 +135,6 @@ export namespace MenuOverlay {
             MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnNestedTrigger(this.triggerElement as HTMLElement);
           } else {
             this.setFocusableElements!();
-            this.focusOnTrigger();
           }
         }
       };

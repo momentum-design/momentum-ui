@@ -6,8 +6,8 @@ const toggleSwitch = {
   prefix: "md",
   component: "toggle-switch",
   "bg-color": {
-    light: colors.gray["30"].name,
-    dark: colors.gray["70"].name
+    light: colors.gray["50"].name,
+    dark: colors.gray["50"].name
   },
   "bg-color--hover": {
     light: colors.gray["40"].name,

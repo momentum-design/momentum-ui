@@ -129,13 +129,12 @@ export namespace MenuOverlay {
       (event: Event) => {
         let index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
         if (this === event.target && index !== -1) {
-          MenuOverlay.ELEMENT.activeOverlay.splice(index);
+          MenuOverlay.ELEMENT.activeOverlay.splice(index, 1);
           if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
             MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
             MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnNestedTrigger(this.triggerElement as HTMLElement);
           } else {
             this.setFocusableElements!();
-            this.focusOnTrigger();
           }
         }
       };

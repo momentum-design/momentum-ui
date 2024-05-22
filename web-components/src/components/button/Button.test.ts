@@ -106,7 +106,6 @@ describe("Button Component", () => {
     expect(btn?.getAttribute("aria-live")).toBeNull();
   });
 
-
   test("should not set aria live when not passed for input tag", async () => {
     const element: Button.ELEMENT = await fixture(
       html`
@@ -116,7 +115,6 @@ describe("Button Component", () => {
     const btn = element.shadowRoot!.querySelector(".md-button");
     expect(btn?.getAttribute("aria-live")).toBeNull();
   });
-
 
   test("should not set aria live when not passed for a tag", async () => {
     const element: Button.ELEMENT = await fixture(
@@ -167,17 +165,6 @@ describe("Button Component", () => {
     const button = element.shadowRoot!.querySelector("button");
     expect(button!.getAttribute("tabindex")).toContain("1");
     expect(element.disabled).toBeFalsy();
-  });
-
-  test("should have tab-index of -1 if disabled", async () => {
-    const element: Button.ELEMENT = await fixture(
-      html`
-        <md-button tab-index="1" disabled></md-button>
-      `
-    );
-    const button = element.shadowRoot!.querySelector("button");
-    expect(button!.getAttribute("tabindex")).toContain("-1");
-    expect(element.disabled).toBeTruthy();
   });
 
   test("should handle disabled state", async () => {

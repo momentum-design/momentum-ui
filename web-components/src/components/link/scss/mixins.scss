@@ -42,7 +42,7 @@
 
   &.disabled,
   &.md-link--inline.disabled {
-    color: $color-disabled;
+    color: $color-disabled !important;
   }
 
   &.md-link--inline {

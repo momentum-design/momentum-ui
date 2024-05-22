@@ -99,6 +99,8 @@ export namespace MenuOverlay {
       return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
     }
 
+    shouldWrapFocus = () => this.ariaRole === 'dialog';
+    
     private renderWidth() {
       if (this.customWidth) {
         return `width: ${this.customWidth};`;

@@ -349,13 +349,63 @@ input::-webkit-input-placeholder{
   color: var(--combobox-placeholder-color,$lm-combobox-placeholder-color-light);
 }
 
+
+
 @media (forced-colors: active) {
-  .md-combobox-option[aria-checked="true"] {
+  :host([focus-visible]) .group {
+    border: none;
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
+
+  .md-combobox-option {
+    // color: CanvasText !important;
     .select-option {
-      forced-color-adjust: none;
-      md-icon {
-        forced-color-adjust: none;
+      background: Canvas !important;
+      color: CanvasText !important;
+      border: 1px solid CanvasText !important;
+    }
+
+    &[aria-checked="true"] {
+      .select-option {
+        background: Canvas !important;
+        color: CanvasText !important;
+        border: 1px solid CanvasText !important;
+
+        md-icon {
+          color: CanvasText;
+          visibility: visible;
+        }
       }
     }
+
+    &[focused] {
+      forced-color-adjust: none;
+      color: Canvas !important;
+      background-color: Highlight;
+    }
   }
+
+
+  // :host([disabled]) {
+  //   .group,
+  //   .group:hover,
+  //   .group:active, 
+  //   .group:focus{
+  //     background: var(--combobox-disabled-bg-color, $lm-combobox-disabled-bg-color-light);
+  //     pointer-events: none;
+  //     opacity: $combobox-disabled-opacity-hc;
+  //   }
+  // }
+
+  // :host([invalid]) {
+  //   .group,
+  //   .group:hover,
+  //   .group:active {
+  //     forced-color-adjust: none;
+  //     background: Canvas;
+  //     border-color: var(--md-alert-error-text-color, $md-red-70)
+  //   }
+  // }
 }
+

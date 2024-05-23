@@ -198,3 +198,32 @@
     text-align: center;
   }
 }
+
+@media (forced-colors:active) {
+  .md-taskitem {
+    &:focus {
+      outline: 1px solid Highlight;
+    }
+
+    &.selected,
+    &:hover {
+      forced-color-adjust: none;
+      outline: 1px solid Highlight;
+      background-color: Highlight;
+      color: HighlightText;
+      box-shadow: none;
+    }
+
+    &:active {
+      forced-color-adjust: none;
+      outline: 1px solid HighlightText;
+      background-color: Highlight;
+      color: HighlightText;
+      box-shadow: none;
+    }
+  }
+
+  .md-taskitem__addition .new-chat-quantity {
+    forced-color-adjust: auto;
+  }
+}

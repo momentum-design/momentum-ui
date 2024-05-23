@@ -49,4 +49,10 @@
       width: $alert-banner-close__size;
     }
   }
+  @media (forced-colors:active) {
+    .md-alert-banner {
+      box-shadow: none; 
+      outline: 2px solid CanvasText; 
+    }
+  }
 }

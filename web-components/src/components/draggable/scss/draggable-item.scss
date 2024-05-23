@@ -51,3 +51,19 @@
     }
   }
 }
+
+@media(forced-colors:active) {
+  .md-draggable-item {
+    &.extended {
+      border: 1px solid CanvasText;
+    }
+    &.default {
+      border:none !important;
+      outline:none !important;
+  
+      &:hover {
+        outline: 1px solid Highlight !important;
+      }
+    }
+  }
+}

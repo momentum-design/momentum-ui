@@ -482,6 +482,14 @@
   }
 }
 
+@media (forced-colors:active) {
+  .md-coachmark {
+    md-task-item{
+      outline: 2px solid transparent;
+    }
+  }
+}
+
 @keyframes coach-fade {
   from {
     opacity: 0;

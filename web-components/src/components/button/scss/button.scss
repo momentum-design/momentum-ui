@@ -788,3 +788,51 @@ md-spinner {
 md-spinner + ::slotted(*) {
   margin-left: 0.5rem;
 }
+
+@media screen and (-ms-high-contrast: active),
+screen and (forced-colors: active) {
+  :host .md-button {
+
+    &:focus,
+    &:active {
+      color: Highlight !important;
+      outline: 2px solid Highlight !important;
+    }
+
+    &:disabled {
+      outline: 1px solid GrayText !important;
+      opacity: 0.6;
+    }
+
+    &--outline {
+      outline: 1px solid CanvasText !important;
+
+      &:disabled {
+        outline: 1px solid GrayText !important;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  :host([variant="primary"]) .md-button {
+    outline: 1px solid Highlight !important;
+
+    &:disabled {
+      outline: 1px solid GrayText !important;
+      border: none !important;
+      opacity: 0.6;
+    }
+
+    &:focus,
+    &:active {
+      color: Highlight !important;
+      outline: 2px dashed Highlight !important;
+    }
+  }
+}
+
+  // in the last theme
+  // WindowText: White;
+  // Highlight: purple;
+  // ButtonText: yellow;
+  //window: bg black(in this case)

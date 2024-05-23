@@ -106,3 +106,39 @@
     padding: $field-message-padding;
   }
 }
+
+@media(forced-colors:active) {
+  @include exports("md-editable-textfield") {
+    .md-editable-textfield {
+      &:focus {
+        outline: 1px solid Highlight;
+        box-shadow: none;
+      }
+
+      &--error {
+        forced-color-adjust: none;
+        background-color: Canvas !important;
+        border: 1px solid var(--md-alert-error-text-color, $md-red-70);
+        color: CanvasText !important;
+
+        &:focus {
+          @include remove-focus;
+          outline: none;
+        }
+      }
+      &--disabled {
+        // background-color: transparent;
+        color: GrayText;
+        cursor: default;
+  
+        // &:hover {
+          // background-color: transparent;
+        // }
+  
+        &:focus {
+          @include remove-focus;
+        }
+      }
+    }
+  }
+}

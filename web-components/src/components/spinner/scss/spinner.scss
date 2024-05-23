@@ -35,3 +35,16 @@
   }
 }
 
+@media (forced-colors: active) {
+  :host(md-spinner) {
+    .md-spinner {
+      &:after {
+        border-bottom: 2px solid Highlight;
+        border-left: 2px solid HighlightText;
+        border-right: 2px solid Highlight;
+        border-top: 2px solid Highlight;
+      }
+    }
+  }
+}
+

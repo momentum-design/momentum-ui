@@ -52,6 +52,13 @@
       font-size: 3rem;
     }
 
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+
+      .md-loading__icon::before {
+        color: CanvasText; // High contrast mode compliant color, e.g., CanvasText
+      }
+    }
   }
 
   @keyframes loading {

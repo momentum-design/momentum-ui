@@ -125,6 +125,11 @@ button {
     &:hover {
       background: none;
     }
+
+    &:focus {
+      outline: none !important;
+      border: none !important;
+    }
   }
 
   ::slotted(span) {
@@ -149,3 +154,37 @@ button {
     outline: none;
   }
 }
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+  :host {
+    background-color: Canvas !important;
+    box-shadow: none;
+  }
+
+  :host button {
+    border: none !important;
+  }
+
+  :host([selected]) button {
+    border-bottom: 3px solid Highlight !important;
+    color: Highlight !important;
+  }
+
+  :host(:focus) button {
+    outline: 2px solid Highlight !important;
+    outline-offset: -2px;
+    color: Highlight !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  :host(:focus[selected]) {
+    background: Canvas !important;
+  }
+
+  button:focus:not(:disabled) {
+    outline: 1px solid Highlight !important;
+  }
+}
+

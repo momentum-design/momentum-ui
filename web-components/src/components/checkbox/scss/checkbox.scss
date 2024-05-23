@@ -47,8 +47,17 @@
 }
 
 :host([focus-visible]:not([disabled])) {
+  // Default focus style using box-shadow
   @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+
+  // Media query for high contrast mode
+  @media (prefers-contrast: more), (prefers-contrast: less){
+    // High contrast mode specific styles
+    outline: 2px solid Highlight; // This color can be changed based on your design system
+    box-shadow: none; // Remove box-shadow in high contrast mode
+  }
 }
+
 
 :host(:hover:not([disabled])) {
   .checkbox-label {

@@ -195,6 +195,11 @@ export namespace Dropdown {
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
 
+
+      if (this.expanded) {
+        this.collapse();
+      }
+
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,
@@ -272,6 +277,8 @@ export namespace Dropdown {
 
     onKeyDown = (e: KeyboardEvent) => {
       switch (e.code) {
+
+        case Key.Space:
         case Key.Enter: {
           if (!this.expanded) {
             this.expand();

@@ -111,4 +111,20 @@
       gap: $md-card-indent;
     }
   }
+
+  @media (forced-colors:active) {
+    .md-card {
+      // High contrast mode specific styles
+      box-shadow: none; // Clears any box shadow
+      outline: 1px solid CanvasText; // High visibility outline in high contrast mode
+      &:focus{
+        outline: 2px solid Highlight;
+      }
+    }
+    &-header {
+      md-favorite {
+        color: windowText;
+      }
+    }
+  }
 }

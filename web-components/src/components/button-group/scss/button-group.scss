@@ -64,3 +64,29 @@
   }
 }
 
+
+@media (forced-colors:active) {
+    :host(md-button-group) {
+  
+      .md-button-group {
+        outline: 1px solid CanvasText; 
+        background: transparent;
+  
+        ::slotted([selected]) {
+          forced-color-adjust: none;
+          outline: 1px solid Highlight;
+          background: Highlight;
+          color:HighlightText;
+        }
+      }
+    }
+    :host([focus-visible]:not([disabled])) {
+      .md-button-group {
+        outline: 2px solid Highlight; 
+      }
+    }
+
+}
+
+
+// :host(md-button-group) .md-button-group ::slotted(button)

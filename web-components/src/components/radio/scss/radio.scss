@@ -99,3 +99,46 @@
       inset 0 0 0 $radio-input-size $md-white-100;
   }
 }
+
+@media (forced-colors: active) {
+  :host(md-radio) {
+    .md-radio {
+      &-label {
+        &::before {
+          outline: 1px solid WindowText;
+        }
+      }
+    }
+  }
+
+  :host([aria-checked="true"]) .md-radio-label:before,
+  :host(:hover:not([disabled])) .md-radio-label:before,
+  :host(:active:not([disabled])) .md-radio-label:before,
+  :host([disabled]) .md-radio-label:before {
+    background-color: transparent;
+    border: 1px solid Highlight;
+  }
+
+  
+  :host([aria-checked="true"]) .md-radio-label:before, 
+  :host([aria-checked="true"]:hover:not([disabled])) .md-radio-label:before {
+    background-color: Highlight;
+  }
+
+  :host([aria-checked="true"]) .md-radio-label:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: Canvas;
+    border-radius: 50%;
+  }
+
+  :host(:focus) {
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
+}

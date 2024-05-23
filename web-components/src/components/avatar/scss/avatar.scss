@@ -326,3 +326,11 @@
   max-width: 100%;
   vertical-align: middle;
 }
+
+
+
+@media(forced-colors:active){
+  .md-avatar {
+    outline: 1px solid CanvasText;
+  }
+}

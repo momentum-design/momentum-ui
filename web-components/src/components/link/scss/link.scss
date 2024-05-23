@@ -25,3 +25,21 @@
     }
   }
 }
+
+
+
+@media (forced-colors:active) {
+  @include exports("md-link") {
+    .md-link {
+      &:focus {
+        box-shadow: none; 
+        outline: 2px solid Highlight; 
+      }
+
+      &.disabled {
+        color: GrayText;
+        opacity: 0.5;
+      }
+    }
+  }
+}

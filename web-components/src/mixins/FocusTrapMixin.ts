@@ -58,6 +58,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
     @property({ type: Boolean, reflect: true, attribute: "prevent-scroll" }) preventScroll = false;
+    shouldWrapFocus: () => boolean = () => false;
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
@@ -236,7 +237,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         if (activeIndex === -1 && this.focusTrapIndex - 1 > 0) {
           this.focusTrapIndex--;
         } else {
-          this.focusTrapIndex = activeIndex > 0 ? activeIndex - 1 : this.focusableElements.length - 1;
+          this.focusTrapIndex = activeIndex > (this.shouldWrapFocus() ? 1 : 0) ? activeIndex - 1 : this.focusableElements.length - 1;
         }
       } else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
         this.focusTrapIndex++;
@@ -246,7 +247,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           this.tryFocus(nextEleToFocus);
         }
       } else {
-        this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
+        this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : (this.shouldWrapFocus() ? 1 : 0);
       }
     }
 

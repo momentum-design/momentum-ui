@@ -18,10 +18,21 @@ export const linkTemplate = html`
     </md-link>
   </div>
   <div class="row">
+    <md-link tag="div" disabled>
+      Link Tag DIV disabled
+    </md-link>
+  </div>
+  <div class="row">
     <md-link tag="span">
       Link Tag Span
     </md-link>
   </div>
+  <div class="row">
+    <md-link tag="span" disabled>
+      Link Tag Span disabled
+    </md-link>
+  </div>
+
   <div class="row">
     <md-link inline>
       Link inline

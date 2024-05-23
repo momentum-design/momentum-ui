@@ -46,9 +46,6 @@ export namespace Link {
     private _tabIndex = 0;
     @property({ type: Number, attribute: "tab-index", reflect: true })
     get tabIndex() {
-      if (this.disabled) {
-        return -1;
-      }
       return this._tabIndex;
     }
     set tabIndex(newValue: number) {
@@ -72,13 +69,27 @@ export namespace Link {
         switch (this.tag) {
           case "div":
             return html`
-              <div class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex}  aria-label=${ifDefined(this.ariaLabel || undefined)} role=${this.ariaRole} part="link">
+              <div 
+                class="md-link ${classMap(linkClassNamesInfo)}"
+                tabindex=${this.tabIndex}  
+                aria-label=${ifDefined(this.ariaLabel || undefined)} 
+                aria-disabled=${ifDefined(this.disabled || undefined)}
+                role=${this.ariaRole} 
+                part="link"
+              >
                 <slot></slot>
               </div>
             `;
           case "span":
             return html`
-              <span class="md-link ${classMap(linkClassNamesInfo)}" tabindex=${this.tabIndex}  aria-label=${ifDefined(this.ariaLabel || undefined)} role=${this.ariaRole} part="link">
+              <span 
+                class="md-link ${classMap(linkClassNamesInfo)}" 
+                tabindex=${this.tabIndex}  
+                aria-label=${ifDefined(this.ariaLabel || undefined)} 
+                aria-disabled=${ifDefined(this.disabled || undefined)}
+                role=${this.ariaRole} 
+                part="link"
+              > 
                 <slot></slot>
               </span>
             `;
@@ -88,9 +99,10 @@ export namespace Link {
               <a
                 class="md-link ${classMap(linkClassNamesInfo)}"
                 .target="${this.target}"
-                href=${this.href}
+                href=${ifDefined(!this.disabled ? this.href : undefined)}
                 tabindex=${this.tabIndex}
                 aria-label=${ifDefined(this.ariaLabel || undefined)}
+                aria-disabled=${ifDefined(this.disabled || undefined)}
                 role=${this.ariaRole}
                 part="link"
               >

@@ -101,7 +101,7 @@ export const FocusMixin = <T extends AnyConstructor<FocusClass>>(base: T): T & A
       this.addEventListener("focus", this.handleFocusIn);
       this.addEventListener("blur", this.handleFocusOut);
 
-      if (this.autofocus && !this.hasAttribute("disabled")) {
+      if (this.autofocus) {
         requestAnimationFrame(() => {
           this.manageAutoFocus();
         });

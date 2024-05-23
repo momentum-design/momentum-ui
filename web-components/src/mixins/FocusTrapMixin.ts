@@ -128,10 +128,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       );
     }
 
-    private isDisabled(element: HTMLElement) {
-      return element.hasAttribute("disabled") || element.getAttribute("aria-disabled") === "true";
-    }
-
     private isNotTabbable(element: HTMLElement) {
       return element.getAttribute("tabindex") === "-1";
     }
@@ -172,7 +168,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     private isFocusable(element: HTMLElement) {
-      if (this.isDisabled(element) || this.isHidden(element) || this.isNotTabbable(element)) {
+      if (this.isHidden(element) || this.isNotTabbable(element)) {
         return false;
       }
       if (this.isInteractiveElement(element)) {

@@ -81,3 +81,23 @@
     margin-bottom: 0;
   }
 }
+
+@media (forced-colors: active) {
+  .md-alert {
+    &__button {
+      md-icon::part(icon) {
+        color: ButtonText;
+      }
+    }
+    &__icon {
+      background: none;
+      md-icon::part(icon) {
+        color: CanvasText;
+      }
+    }
+    .md-badge{
+      // forced-color-adjust: none;
+      background-color: inherit;
+    }
+  }
+}

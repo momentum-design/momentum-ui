@@ -32,3 +32,12 @@
 :host(.help-text-radio) {
   padding-left: rem-calc(32);
 }
+
+
+@media(forced-colors:active) {
+  .md-input__message {
+    &.md-error{
+      forced-color-adjust: none;
+    }
+  }
+}

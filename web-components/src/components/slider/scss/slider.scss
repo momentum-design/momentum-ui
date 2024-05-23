@@ -137,3 +137,48 @@
     }
   }
 }
+
+@media(forced-colors:active){
+  :host(md-slider){
+    .md-slider{
+      &__bar{
+        background-color: CanvasText;
+      }
+      &__selection{
+        background-color: Highlight;
+      }
+      &__pointer::after{
+        background-color: Highlight;
+      }
+    }
+  }
+
+
+  :host(:hover:not([disabled])) {
+    .md-slider__pointer::after {
+      background-color: Highlight;
+    }
+  }
+
+  :host([no-pointer][focus-visible]:not([disabled])) {
+    .md-slider {
+      outline: 1px solid Highlight;
+    }
+  }
+
+  :host([focus-visible]:not([disabled])) {
+    .md-slider__pointer {
+      outline: 2px solid Highlight;
+    }
+  }
+
+  :host([disabled]) {
+    .md-slider {  
+      &__pointer {  
+        &::after {
+          background-color: GrayText;
+        }
+      }
+    }
+  }
+}

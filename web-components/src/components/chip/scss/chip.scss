@@ -377,3 +377,17 @@
 ::slotted([slot="custom-right-content"]) {
   margin-left: $chip-inner-content-margin;
 }
+
+@media (forced-colors:active) {
+  .md-chip  {
+    outline : 1px solid ButtonText;
+    &:focus, &:hover{
+      // High contrast mode specific styles
+      box-shadow: none; // Clears any box shadow
+      outline: 2px solid Highlight; // High visibility outline in high contrast mode
+    }
+    &--disabled {
+      opacity: 0.5;
+    }
+  }
+}

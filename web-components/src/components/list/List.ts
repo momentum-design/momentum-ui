@@ -42,6 +42,16 @@ export namespace List {
       );
     }
 
+  /**
+   * @override
+   * Overridden isFocusable method.
+   * @param {Element} slottedItem - The slotted item to check.
+   * @returns {boolean} - Returns true if the slotted item does not have the "hidden" attribute, false otherwise.
+   */
+    private isFocusable(slottedItem: Element) {
+      return !slottedItem.hasAttribute("hidden");
+    }
+
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener("keydown", this.handleKeyDown);

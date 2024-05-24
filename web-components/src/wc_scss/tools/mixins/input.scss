@@ -54,7 +54,7 @@
     &.md-disabled {
       background-color: $background-color-disabled;
       border-color: $input__border-color--read-only;
-      color: $color-disabled;
+      color: $color-disabled !important;
 
       &::placeholder {
         color: $color-disabled;

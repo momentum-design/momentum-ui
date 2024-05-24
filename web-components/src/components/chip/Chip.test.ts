@@ -126,4 +126,20 @@ describe("Chip component", () => {
     await elementUpdated(component);
     expect(component.selected).toBeFalsy;
   });
+
+  test("should return add tooltip text", async () => {
+    const component: Chip.ELEMENT = await fixture(html`
+      <md-chip value="Test Line1" tooltipText="More Info about the Chip"></md-chip>
+    `);
+    const expectedResult = "More Info about the Chip";
+    expect(component.shadowRoot?.querySelector('md-tooltip')?.getAttribute('message')).toEqual(expectedResult);   
+  });
+  
+  test("should truncate long text from value attribute and also add tooltip text", async () => {
+    const component: Chip.ELEMENT = await fixture(html`
+      <md-chip value="chip text content that is too long" tooltipText="More Info about the Chip"></md-chip>
+    `);
+    const expectedResult = "chip text content that is too long, More Info about the Chip";
+    expect(component.shadowRoot?.querySelector('md-tooltip')?.getAttribute('message')).toEqual(expectedResult);   
+  });
 });

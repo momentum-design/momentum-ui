@@ -17,8 +17,27 @@ import "@/components/progress-bar/ProgressBar";
 import "@/components/tooltip/Tooltip";
 import styles from "./scss/module.scss";
 
+export const tooltipPlacement = [
+  "auto",
+  "auto-start",
+  "auto-end",
+  "left-start",
+  "left",
+  "left-end",
+  "right-start",
+  "right",
+  "right-end",
+  "top-start",
+  "top",
+  "top-end",
+  "bottom-start",
+  "bottom",
+  "bottom-end"
+] as const;
+
 export namespace Chip {
   export type Role = "group" | "option";
+  export type Placement = typeof tooltipPlacement[number];
 
   @customElementWithCheck("md-chip")
   export class ELEMENT extends LitElement {
@@ -36,6 +55,9 @@ export namespace Chip {
     @property({ type: Boolean }) disabled = false;
     @property({ type: Number }) determinateProgress = 0;
     @property({ type: Boolean }) indeterminateProgress = false;
+    @property({ type: String }) tooltipText = "";
+    @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
+
     @property({
       type: String,
       hasChanged(newVal, oldVal) {
@@ -199,6 +221,15 @@ export namespace Chip {
           `
         : nothing;
     }
+    
+
+    getToolTipContent() {
+      if (this.tooltipText && this.textOverflow) {
+        return `${this.value}, ${this.tooltipText}`;
+      } else {
+        return this.tooltipText ? this.tooltipText: this.value;
+      }
+    }
 
     render() {
       const classNamesInfo = {
@@ -209,7 +240,7 @@ export namespace Chip {
 
       return html`
         ${this.getStyles()}
-        <md-tooltip ?disabled=${!this.textOverflow} message="${this.value}">
+        <md-tooltip ?disabled=${!this.tooltipText && !this.textOverflow} message="${this.getToolTipContent()}" placement="${this.tooltipPlacement}">
           <span
             role="button"
             tabindex="0"

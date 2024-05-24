@@ -13,6 +13,7 @@ import reset from "@/wc_scss/reset.scss";
 import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
+import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat.js";
 import styles from "./scss/module.scss";
 
@@ -195,6 +196,11 @@ export namespace Dropdown {
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
 
+
+      if (this.expanded) {
+        this.collapse();
+      }
+
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,
@@ -272,6 +278,8 @@ export namespace Dropdown {
 
     onKeyDown = (e: KeyboardEvent) => {
       switch (e.code) {
+
+        case Key.Space:
         case Key.Enter: {
           if (!this.expanded) {
             this.expand();
@@ -467,7 +475,7 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
-            tabindex=${this.customTabIndex}
+            tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
           >
             ${repeat(
               this.renderOptions,
@@ -476,7 +484,7 @@ export namespace Dropdown {
                 <li
                   class="md-dropdown-option"
                   role="option"
-                  tabindex=${this.customTabIndex}
+                  tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
                   aria-label="${o.value}"
                   label="${o.value}"
                   aria-selected="${idx === this.focusedIndex}"

@@ -18,6 +18,10 @@ const button = {
       light: colors.gray[30].name,
       dark: colors.gray[80].name
     },
+    "placeholder-color" : {
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
+    },
     hover: {
       "bg-color": {
         light: colors.gray[30].name,

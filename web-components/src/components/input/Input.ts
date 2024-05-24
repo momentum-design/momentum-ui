@@ -398,7 +398,7 @@ export namespace Input {
               id=${this.htmlId}
               role=${this.role}
               placeholder=${this.placeholder}
-              ?readonly=${this.readOnly}
+              ?readonly=${this.readOnly || this.disabled}
               min=${ifDefined(this.min)}
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}

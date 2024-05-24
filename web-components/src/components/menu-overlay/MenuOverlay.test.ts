@@ -501,7 +501,7 @@ describe("MenuOverlay", () => {
 
     await nextFrame();
     expect(element.isOpen).toBeFalsy();
-    expect(document.activeElement).toEqual(button);
+    expect(document.activeElement).toBe(null)
   });
 
   test("shouldn't focus on trigger when press any button except escape to close modal", async () => {

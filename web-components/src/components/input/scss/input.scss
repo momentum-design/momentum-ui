@@ -96,7 +96,7 @@
       $color-clear-hover: $input__clear-icon__color--hover,
       $color-disabled: var(--input-disabled-text-color, $md-gray-40),
       $color-help: $input__font-color--help,
-      $color-placeholder: $input__font-color--placeholder,
+      $color-placeholder: var(--input-default-placeholder-color, $input__font-color--placeholder),
       $color-read-only: var(--md-primary-text-color, $md-gray-100)
     );
     box-sizing: border-box;

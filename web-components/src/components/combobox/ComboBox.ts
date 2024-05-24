@@ -19,7 +19,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
-import "lit-virtualizer";
+import { scroll } from "lit-virtualizer";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
 
@@ -176,10 +176,10 @@ export namespace ComboBox {
     @query(".group") group?: HTMLDivElement;
     @query(".md-combobox-listbox") input?: HTMLInputElement;
     @query(".md-combobox-button") button?: HTMLButtonElement;
-    @query("ul[role='listbox'") listBox?: HTMLUListElement;
+    @query("div.virtual-scroll") listBox?: HTMLUListElement;
     @query(".virtual-scroll") virtualizer?: any;
 
-    @queryAll("li[role='option']") lists?: HTMLLIElement[];
+    @queryAll("div.md-combobox-option") lists?: HTMLLIElement[];
     @queryAll(".group-label") labels?: HTMLLIElement[];
     @queryAll(".md-combobox-selected-item") selected?: HTMLDivElement[];
 
@@ -207,9 +207,7 @@ export namespace ComboBox {
       }
       if (changedProperties.has("focusedIndex")) {
         if (this.focusedIndex >= 0) {
-          if (this.checkForVirtualScroll()) {
-            this.virtualizer?.scrollToIndex(this.focusedIndex, "center");
-          } else {
+          if (!this.checkForVirtualScroll()) {
             this.scrollToOption();
           }
         }
@@ -296,7 +294,6 @@ export namespace ComboBox {
             this.setInputValue(this.getOptionValue(option));
             this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, this.getOptionId(option));
             this.focusedIndex = selectedIndex;
-            this.virtualizer?.scrollToIndex(this.focusedIndex, "center");
             this.focusedGroupIndex = -1;
           }
         }
@@ -508,6 +505,7 @@ export namespace ComboBox {
     };
 
     private filterOptions(value: string): (string | OptionMember)[] {
+      console.log("Options--", this.options, value);
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
           if (this.isOptGroup && typeof option !== "string" && option.isLabel === "true") {
@@ -543,7 +541,6 @@ export namespace ComboBox {
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-
           virtualizerHeight =
             this.checkForVirtualScroll() && this.allowSelectAll
               ? updatedList
@@ -1386,20 +1383,21 @@ export namespace ComboBox {
 
     getSelectAllOption() {
       return html`
-        <li
+        <div
           id="selectAll"
           part="combobox-option"
-          role="option"
           class="md-combobox-option ${classMap(this.listItemOptionMap)}"
           @click=${this.handleSelectAll}
+          tabindex="-1"
+          aria-label=${this.selectAllTextLocalization}
           aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
         >
-          <span class="select-option">
+          <span class="select-option" aria-hidden="true">
             <md-icon name="icon-check_14"></md-icon>
           </span>
 
-          <span part="label" class="select-label">${this.selectAllTextLocalization}</span>
-        </li>
+          <span part="label" class="select-label" aria-hidden="true">${this.selectAllTextLocalization}</span>
+        </div>
       `;
     }
 
@@ -1500,6 +1498,7 @@ export namespace ComboBox {
       const isInvisible = this.expanded
         ? this.options.length && this.filteredOptions.length === 0 && this.inputValue && this.allowCustomValue
         : true;
+        console.log("isInvisible--", isInvisible);
       if (!this.checkForVirtualScroll()) {
         return styleMap({
           display: isInvisible ? "none" : "block",
@@ -1511,36 +1510,36 @@ export namespace ComboBox {
           visibility: isInvisible ? "hidden" : "visible",
           "z-index": isInvisible ? "-1" : "99",
           opacity: isInvisible ? "0" : "1",
-          overflow: "hidden"
+          
         });
       }
     }
 
-    renderItem(option: OptionMember | string, optionIndex: number) {
+    renderItem(option: OptionMember | string, index: number | undefined) {
+      console.log("Render Item--", option);
       return html`
-        <li
+        <div
           id=${this.getOptionId(option)}
           title="${this.getOptionValue(option)}"
           part="combobox-option"
-          role="option"
           class="md-combobox-option"
-          aria-label=${this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option)}
-          aria-selected=${this.getAriaState(optionIndex)}
+          role=${this.isMulti ? "checkbox": undefined}
+          aria-label="${this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option)} option, Showing ${index? index+1 : 1} of ${this.options.length}"
           tabindex="-1"
-          @click=${this.handleListClick.bind(this)}
+          @click=${this.handleListClick}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
         >
           ${this.isMulti
             ? html`
-                <span class="select-option">
+                <span class="select-option" aria-hidden="true">
                   <md-icon name="icon-check_14"></md-icon>
                 </span>
               `
             : nothing}
-          <span part="label" class="select-label">
+          <span part="label" class="select-label" aria-hidden="true">
             ${this.isCustomContent ? this.getCustomContent(option) : this.highlightingSearchedText(option)}
           </span>
-        </li>
+        </div>
       `;
     }
 
@@ -1556,10 +1555,7 @@ export namespace ComboBox {
 
     render() {
       return html`
-        <div
-          part="combobox"
-          class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}"
-        >
+        <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">
             ${this.searchable ? this.searchIconTemplate() : nothing}
             <div class="md-combobox__multiwrap" part="multiwrap">
@@ -1600,26 +1596,27 @@ export namespace ComboBox {
           </div>
           ${this.showLoader || this.showCustomError
             ? html`
-                <ul
+                <div
                   id="md-combobox-listbox"
                   part="combobox-options"
-                  role="listbox"
                   aria-label=${this.label}
                   style=${styleMap({
                     display: this.expanded ? "block" : "none",
                     "z-index": "99"
                   })}
+                  
                 >
                   ${this.getCustomErrorContent()}
-                </ul>
+                </div>
               `
             : html`
-                <ul
+                <div
                   id="md-combobox-listbox"
                   part="combobox-options"
-                  role="listbox"
+                  class="virtual-scroll"
                   aria-label=${this.label}
                   style=${this.addStyle()}
+                  @rangechange=${this.rangeChanged}
                 >
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()
@@ -1628,14 +1625,15 @@ export namespace ComboBox {
                       this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
                         .length > 0
                     ? html`
-                        <lit-virtualizer
-                          class="virtual-scroll"
-                          .items=${this.filterOptions(
+                        ${scroll({
+                          items: this.filterOptions(
                             this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                          )}
-                          .renderItem=${this.renderItem.bind(this)}
-                          @rangechange=${this.rangeChanged.bind(this)}
-                        ></lit-virtualizer>
+                          ),
+                          renderItem: (item: string | OptionMember, index?: number | undefined) => this.renderItem(item, index),
+                          useShadowDOM: false,
+                          scrollToIndex: {index: this.focusedIndex, position:"center"}
+                          
+                        })}
                       `
                     : nothing}
                   ${this.options.length &&
@@ -1643,19 +1641,19 @@ export namespace ComboBox {
                   this.inputValue &&
                   !this.allowCustomValue
                     ? html`
-                        <li class="no-result" role="option" aria-selected="false" tabindex="-1">
+                        <div class="no-result" role="option" aria-selected="false" tabindex="-1">
                           ${this.resultsTextLocalization.trim()}
-                        </li>
+                        </div>
                       `
                     : nothing}
                   ${this.options.length === 0
                     ? html`
-                        <li class="no-result" role="option" aria-selected="false" tabindex="-1">
+                        <div class="no-result" role="option" aria-selected="false" tabindex="-1">
                           ${this.optionsTextLocalization.trim()}
-                        </li>
+                        </div>
                       `
                     : nothing}
-                </ul>
+                </div>
               `}
         </div>
         ${this.invalid

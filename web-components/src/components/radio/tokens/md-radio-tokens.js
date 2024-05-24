@@ -15,7 +15,7 @@ const radio = {
       dark: colors.gray[10].name
     },
     "border-color": {
-      light: colors.gray[20].name,
+      light: colors.gray[50].name,
       dark: colors.gray[80].name
     },
     hover: {

@@ -61,6 +61,14 @@ export const chipTemplate = html`
     <md-icon name="icon-alert_16" slot="custom-left-content"></md-icon>
     <md-icon name="icon-alarm_16" slot="custom-right-content"></md-icon>
   </md-chip>
+  <md-tooltip message="more info on filter1" placement="bottom">
+  <md-chip value="Test Agent Filter1">
+    <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>
+  </md-chip>
+  </md-tooltip>
+  <md-chip tooltipText="more info on filter2" value="Test Agent Filter 2" tooltipPlacement="right">
+    <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>
+  </md-chip>
   <h3>Chip List</h3>
   <ul role="list">
     <md-chip value="developer@cisco.ninja" slot="list-item" id="Chip1"></md-chip>

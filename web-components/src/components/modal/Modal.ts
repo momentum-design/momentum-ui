@@ -270,7 +270,7 @@ export namespace Modal {
                   role="dialog"
                   id="${this.htmlId}"
                   class="md-modal ${classMap(this.modalContainerClassMap)}"
-                  aria-label="${ifDefined(this.headerLabel || this.ariaLabel)}"
+                  aria-label="${ifDefined(this.headerLabel || this.ariaLabel || undefined)}"
                   aria-describedby=${ifDefined(this.ariaDescription || undefined)}
                 >
                   <div part="modal-content" class="md-modal__content">

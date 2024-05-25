@@ -144,7 +144,7 @@
   outline: 2px solid var(--button-focus-ring-color,#007aa3);
 }
 
-div.virtual-scroll {
+div#md-combobox-listbox {
   background-color: var(--combobox-dropdown-bg-color, $lm-combobox-dropdown-bg-color-light);
   border: $combobox-border;
   border-radius: $combobox-dropdown-radius;

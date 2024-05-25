@@ -176,8 +176,7 @@ export namespace ComboBox {
     @query(".group") group?: HTMLDivElement;
     @query(".md-combobox-listbox") input?: HTMLInputElement;
     @query(".md-combobox-button") button?: HTMLButtonElement;
-    @query("div.virtual-scroll") listBox?: HTMLUListElement;
-    @query(".virtual-scroll") virtualizer?: any;
+    @query("div#md-combobox-listbox") listBox?: HTMLUListElement;
 
     @queryAll("div.md-combobox-option") lists?: HTMLLIElement[];
     @queryAll(".group-label") labels?: HTMLLIElement[];
@@ -505,7 +504,6 @@ export namespace ComboBox {
     };
 
     private filterOptions(value: string): (string | OptionMember)[] {
-      console.log("Options--", this.options, value);
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
           if (this.isOptGroup && typeof option !== "string" && option.isLabel === "true") {
@@ -532,7 +530,6 @@ export namespace ComboBox {
       this.updateOnNextFrame(() => {
         let height = 0;
         let labelHeight = 0;
-        let virtualizerHeight = 0;
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
@@ -541,14 +538,6 @@ export namespace ComboBox {
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-          virtualizerHeight =
-            this.checkForVirtualScroll() && this.allowSelectAll
-              ? updatedList
-                  .slice(1, this.visibleOptions)
-                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0)
-              : updatedList
-                  .slice(0, this.visibleOptions)
-                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
         if (this.labels) {
           labelHeight = [...this.labels]
@@ -558,8 +547,8 @@ export namespace ComboBox {
         if (this.listBox) {
           this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
         }
-        if (this.virtualizer) {
-          this.virtualizer.style.height = `${virtualizerHeight + 10}px`;
+        if (this.checkForVirtualScroll() && this.listBox) {
+          this.listBox.style.height = `${height + 10}px`;
         }
         if (this.showCustomError || this.showLoader) {
           const customContent = this.listBox?.querySelector("[slot]");
@@ -1498,7 +1487,6 @@ export namespace ComboBox {
       const isInvisible = this.expanded
         ? this.options.length && this.filteredOptions.length === 0 && this.inputValue && this.allowCustomValue
         : true;
-        console.log("isInvisible--", isInvisible);
       if (!this.checkForVirtualScroll()) {
         return styleMap({
           display: isInvisible ? "none" : "block",
@@ -1508,23 +1496,22 @@ export namespace ComboBox {
       } else {
         return styleMap({
           visibility: isInvisible ? "hidden" : "visible",
-          "z-index": isInvisible ? "-1" : "99",
-          opacity: isInvisible ? "0" : "1",
-          
+          "z-index": isInvisible ? "-1" : "99"
         });
       }
     }
 
     renderItem(option: OptionMember | string, index: number | undefined) {
-      console.log("Render Item--", option);
       return html`
         <div
           id=${this.getOptionId(option)}
           title="${this.getOptionValue(option)}"
           part="combobox-option"
           class="md-combobox-option"
-          role=${this.isMulti ? "checkbox": undefined}
-          aria-label="${this.isCustomContent ? this.getOptionId(option) : this.getOptionValue(option)} option, Showing ${index? index+1 : 1} of ${this.options.length}"
+          role=${this.isMulti ? "checkbox" : undefined}
+          aria-label="${this.isCustomContent
+            ? this.getOptionId(option)
+            : this.getOptionValue(option)} option, Showing ${index ? index + 1 : 1} of ${this.options.length}"
           tabindex="-1"
           @click=${this.handleListClick}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
@@ -1604,7 +1591,6 @@ export namespace ComboBox {
                     display: this.expanded ? "block" : "none",
                     "z-index": "99"
                   })}
-                  
                 >
                   ${this.getCustomErrorContent()}
                 </div>
@@ -1629,10 +1615,10 @@ export namespace ComboBox {
                           items: this.filterOptions(
                             this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
                           ),
-                          renderItem: (item: string | OptionMember, index?: number | undefined) => this.renderItem(item, index),
+                          renderItem: (item: string | OptionMember, index?: number | undefined) =>
+                            this.renderItem(item, index),
                           useShadowDOM: false,
-                          scrollToIndex: {index: this.focusedIndex, position:"center"}
-                          
+                          scrollToIndex: { index: this.focusedIndex, position: "center" }
                         })}
                       `
                     : nothing}
@@ -1641,14 +1627,14 @@ export namespace ComboBox {
                   this.inputValue &&
                   !this.allowCustomValue
                     ? html`
-                        <div class="no-result" role="option" aria-selected="false" tabindex="-1">
+                        <div class="no-result md-combobox-option" role="option" aria-selected="false" tabindex="-1">
                           ${this.resultsTextLocalization.trim()}
                         </div>
                       `
                     : nothing}
                   ${this.options.length === 0
                     ? html`
-                        <div class="no-result" role="option" aria-selected="false" tabindex="-1">
+                        <div class="no-result md-combobox-option" role="option" aria-selected="false" tabindex="-1">
                           ${this.optionsTextLocalization.trim()}
                         </div>
                       `

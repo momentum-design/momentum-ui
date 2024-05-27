@@ -113,19 +113,19 @@
         li:not(.page-ellipsis) {
           &[aria-current="true"], &:hover {
             forced-color-adjust: none;
-            background-color: Highlight !important;
-            color: Canvas !important;
+            background-color: Highlight;
+            color: Canvas;
           }
         }
       }
 
       &-dots {
         li {
-          background-color: GrayText !important;
+          background-color: GrayText;
           &[aria-current="true"], &:hover {
             forced-color-adjust: none;
-            background-color: Highlight !important;
-            color: Canvas !important;
+            background-color: Highlight;
+            color: Canvas;
           }
         }
       }

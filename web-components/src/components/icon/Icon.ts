@@ -15,6 +15,7 @@ import { styleMap } from "lit-html/directives/style-map";
 import "@/components/button/Button";
 import styles from "./scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export const iconSize = ["16", "20", "36", "56", 16, 20, 36, 56] as const;
 export const iconType = ["", "white"] as const;
@@ -36,6 +37,7 @@ export namespace Icon {
     @property({ type: Boolean }) sizeOverrided = false;
     @property({ type: String }) title = "";
     @property({ type: String }) type = "";
+    @property({ type: String }) ariaHidden: any;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
 
@@ -153,6 +155,7 @@ export namespace Icon {
           style=${styleMap(this.iconStyleMap)}
           aria-label=${this.ariaLabel}
           title=${this.title}
+          aria-hidden=${ifDefined(this.ariaHidden || undefined)}
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
         </i>

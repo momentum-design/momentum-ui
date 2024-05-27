@@ -415,7 +415,7 @@ export namespace Input {
                   <md-spinner size="20"></md-spinner>
                 `
               : html`
-                  <md-icon name="search_20"></md-icon>
+                  <md-icon ariaHidden="true" name="search_20"></md-icon>
                 `}
           </div>
         `;

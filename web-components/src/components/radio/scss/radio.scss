@@ -105,22 +105,27 @@
     .md-radio {
       &-label {
         &::before {
-          outline: 1px solid WindowText;
+          border: 1px solid CanvasText;
         }
       }
     }
   }
 
-  :host([aria-checked="true"]) .md-radio-label:before,
   :host(:hover:not([disabled])) .md-radio-label:before,
-  :host(:active:not([disabled])) .md-radio-label:before,
-  :host([disabled]) .md-radio-label:before {
-    background-color: transparent;
-    border: 1px solid Highlight;
+  :host(:active:not([disabled])) .md-radio-label:before
+   {
+    border: none;
+    outline: 2px solid Highlight;
+    outline-offset: -1px;
   }
 
   
-  :host([aria-checked="true"]) .md-radio-label:before, 
+  :host([aria-checked="true"]) .md-radio-label:before {
+    background-color: Highlight;
+    border:none;
+    outline:none;
+  }
+
   :host([aria-checked="true"]:hover:not([disabled])) .md-radio-label:before {
     background-color: Highlight;
   }
@@ -137,8 +142,8 @@
     border-radius: 50%;
   }
 
-  :host(:focus) {
+  :host([focus-visible]:not([disabled])) {
     outline: 2px solid Highlight;
-    box-shadow: none;
+    outline-offset: -1px;
   }
 }

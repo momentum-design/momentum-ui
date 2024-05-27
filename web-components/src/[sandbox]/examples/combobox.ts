@@ -212,6 +212,7 @@ export const comboBoxTemplate = html`
     @change-selected=${changeHandler}
     select-all-i18n=${"All"}
     use-virtual-scroll
+    ariaLabel="Queue Name"
   ></md-combobox>
 
   <h3>Custom error</h3>

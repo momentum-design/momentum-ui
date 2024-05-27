@@ -1586,7 +1586,7 @@ export namespace ComboBox {
                 <div
                   id="md-combobox-listbox"
                   part="combobox-options"
-                  aria-label=${this.label}
+                  aria-label=${this.ariaLabel}
                   style=${styleMap({
                     display: this.expanded ? "block" : "none",
                     "z-index": "99"
@@ -1600,7 +1600,7 @@ export namespace ComboBox {
                   id="md-combobox-listbox"
                   part="combobox-options"
                   class="virtual-scroll"
-                  aria-label=${this.label}
+                  aria-label=${this.ariaLabel}
                   style=${this.addStyle()}
                   @rangechange=${this.rangeChanged}
                 >

@@ -36,6 +36,7 @@ export namespace Icon {
     @property({ type: Boolean }) sizeOverrided = false;
     @property({ type: String }) title = "";
     @property({ type: String }) type = "";
+    @property({ type: String, attribute: 'aria-hidden' }) ariaHidden = "false";
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
 
@@ -153,6 +154,7 @@ export namespace Icon {
           style=${styleMap(this.iconStyleMap)}
           aria-label=${this.ariaLabel}
           title=${this.title}
+          aria-hidden=${this.ariaHidden}
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
         </i>

@@ -795,44 +795,38 @@ screen and (forced-colors: active) {
 
     &:focus,
     &:active {
-      color: Highlight !important;
-      outline: 2px solid Highlight !important;
+      color: Highlight;
+      outline: 2px solid Highlight;
     }
 
     &:disabled {
-      outline: 1px solid GrayText !important;
+      outline: 1px solid GrayText;
       opacity: 0.6;
     }
 
     &--outline {
-      outline: 1px solid CanvasText !important;
+      outline: 1px solid CanvasText;
 
       &:disabled {
-        outline: 1px solid GrayText !important;
+        outline: 1px solid GrayText;
         opacity: 0.6;
       }
     }
   }
 
   :host([variant="primary"]) .md-button {
-    outline: 1px solid Highlight !important;
+    outline: 1px solid Highlight;
 
     &:disabled {
-      outline: 1px solid GrayText !important;
-      border: none !important;
+      outline: 1px solid GrayText;
+      border: none;
       opacity: 0.6;
     }
 
     &:focus,
     &:active {
-      color: Highlight !important;
-      outline: 2px dashed Highlight !important;
+      color: Highlight;
+      outline: 2px dashed Highlight;
     }
   }
 }
-
-  // in the last theme
-  // WindowText: White;
-  // Highlight: purple;
-  // ButtonText: yellow;
-  //window: bg black(in this case)

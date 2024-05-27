@@ -103,15 +103,6 @@
       &[focused] {
         background-color: var(--dropdown-list-item-bg-color-focus, $lm-dropdown-list-item-bg-color-focus-light);
       }
-
-      @media (forced-colors:active) {
-        &[focused] {
-          forced-color-adjust: none;
-          // background-color: Highlight;
-          background-color: Highlight;
-          color : HighlightText;
-        }
-      }
     }
 
     &__expanded {
@@ -164,27 +155,35 @@
   :host([focus-visible]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 2px solid Highlight !important;
-        &--text{
-          forced-color-adjust: none ;
-          background-color: Canvas !important;
-          color : CanvasText !important;
+        border: 2px solid Highlight;
+        &--text {
+          forced-color-adjust: none;
+          background-color: Canvas;
+          color: CanvasText;
         }
       }
-      &-list{
-        border: 1px solid Highlight !important;
+
+      &-list {
+        border: 1px solid CanvasText;
       }
     }
   }
-
+  :host{
+    .md-dropdown{
+      &[focused] {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color : HighlightText;
+      }
+    }
+  }
   :host([disabled]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 1px solid GrayText !important;
-        color: GrayText !important;
+        border: 1px solid GrayText;
+        color: GrayText;
         opacity: 0.5;
       }
     }
   }
 }
-

@@ -58,11 +58,12 @@
       border: 1px solid CanvasText;
     }
     &.default {
-      border:none !important;
-      outline:none !important;
+      border:none;
+      outline:none;
   
       &:hover {
-        outline: 1px solid Highlight !important;
+        outline: 1px solid Highlight;
+        border: none;
       }
     }
   }

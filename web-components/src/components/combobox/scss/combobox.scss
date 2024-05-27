@@ -359,18 +359,17 @@ input::-webkit-input-placeholder{
   }
 
   .md-combobox-option {
-    // color: CanvasText !important;
     .select-option {
-      background: Canvas !important;
-      color: CanvasText !important;
-      border: 1px solid CanvasText !important;
+      background: Canvas;
+      color: CanvasText;
+      border: 1px solid CanvasText;
     }
 
     &[aria-checked="true"] {
       .select-option {
-        background: Canvas !important;
-        color: CanvasText !important;
-        border: 1px solid CanvasText !important;
+        background: Canvas;
+        color: CanvasText;
+        border: 1px solid CanvasText;
 
         md-icon {
           color: CanvasText;
@@ -381,31 +380,8 @@ input::-webkit-input-placeholder{
 
     &[focused] {
       forced-color-adjust: none;
-      color: Canvas !important;
+      color: Canvas;
       background-color: Highlight;
     }
   }
-
-
-  // :host([disabled]) {
-  //   .group,
-  //   .group:hover,
-  //   .group:active, 
-  //   .group:focus{
-  //     background: var(--combobox-disabled-bg-color, $lm-combobox-disabled-bg-color-light);
-  //     pointer-events: none;
-  //     opacity: $combobox-disabled-opacity-hc;
-  //   }
-  // }
-
-  // :host([invalid]) {
-  //   .group,
-  //   .group:hover,
-  //   .group:active {
-  //     forced-color-adjust: none;
-  //     background: Canvas;
-  //     border-color: var(--md-alert-error-text-color, $md-red-70)
-  //   }
-  // }
 }
-

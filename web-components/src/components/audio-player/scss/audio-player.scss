@@ -220,19 +220,17 @@ md-button::part(button) {
   .speed-popup {
     ul {
       outline: 1px solid Highlight;
+      li:hover{
+        forced-color-adjust: none;
+        color: Canvas;
+        background: Highlight;
+      }
     }
   }
 
-  .speed-popup-selected-speed {
+  #speed-popup-menu > .speed-popup-selected-speed {
     forced-color-adjust: none;
-    color: Canvas !important;
-    background: Highlight !important;
-    &:hover{
-      color: Canvas !important;
-      background: Highlight !important;
-    }
-    md-icon{
-      color: Canvas !important;
-    }
+    color: Canvas;
+    background: Highlight;
   }
 }

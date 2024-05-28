@@ -419,7 +419,6 @@ export namespace ComboBox {
       }
     }
     private checkSelectedOptions() {
-      console.log("list selected  ", this.checkForVirtualScroll());
       if (this.checkForVirtualScroll()) {
         const selectedOptionIds = this.selectedOptions.map(option => this.getOptionId(option));
         const updatedLists = [...this.lists!].filter(list => list.id !== "selectAll");
@@ -427,12 +426,7 @@ export namespace ComboBox {
           if (selectedOptionIds.includes(list.id)) {
             if (this.isMulti) {
               list?.setAttribute("aria-checked", "true");
-            } else {
-              // list?.classList.add("selected-class");
-              list?.setAttribute("selected", "true");
             }
-            console.log("list selected", list);
-            list?.classList.add("selected-class");
             list?.setAttribute("aria-selected", "true");
           } else if (this.isMulti) {
             list?.setAttribute("aria-checked", "false");
@@ -877,7 +871,6 @@ export namespace ComboBox {
           optionIndex = optionIndex - 1;
         }
         const option = this.getFocusedItem(optionIndex);
-        console.log("option", option, this.lists);
         this.setSelectedatribute(option);
         if (option) {
           this.setSelectedOption(option);
@@ -894,7 +887,6 @@ export namespace ComboBox {
     private setSelectedatribute(option: string | OptionMember | undefined) {
       this.lists?.forEach((list, index) => {
         if (list?.id === option) {
-          // console.log("list 1", list, index, option);
           list?.setAttribute("selected", "true");
         } else {
           list?.setAttribute("selected", "false");

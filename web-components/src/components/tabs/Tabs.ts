@@ -609,6 +609,29 @@ export namespace Tabs {
       this.storeSelectedTabIndex(newSelectedTabIdx);
     }
 
+    private moveFocusToPreviousTab(elementId: string){
+      const visibleTabList = [...this.tabsFilteredAsVisibleList];
+      const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
+      if (currentTabIndex === 0) {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[visibleTabList.length - 1]);
+      } else {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex - 1]);
+      }
+    }
+
+    private moveFocusToNextTab(elementId: string){
+      const visibleTabList = [...this.tabsFilteredAsVisibleList];
+      const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
+      if (currentTabIndex === visibleTabList.length - 1) {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
+      } else {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex + 1]);
+      }
+    }
+    moveFocusToTab(currentTab: any) {
+     (currentTab as HTMLElement).focus();      
+    }
+
     storeSelectedTabIndex(index: number) {
       if (this.persistSelection && this.tabsId && index > -1 && this.tabsId.trim() !== "") {
         sessionStorage.setItem(this.tabsId, `${index}`);
@@ -713,11 +736,12 @@ export namespace Tabs {
           break;
         }
         case Key.ArrowLeft: {
-          if (isMoreTriggerTab) {
-            //
-          } else if (isVisibleTab) {
-            event.stopPropagation();
-            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+            if (isMoreTriggerTab) {
+              //
+            } else if (isVisibleTab) {
+              event.stopPropagation();
+            this.moveFocusToPreviousTab(elementId);
+            //this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
           } else if (isHiddenTab) {
             //
           }
@@ -728,12 +752,14 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
-          } else if (isHiddenTab) {
-            //
-          }
-          break;
+          this.moveFocusToNextTab(elementId);
+          //this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+        } else if (isHiddenTab) {
+          //
         }
+        break;
+      }
+
         case Key.ArrowUp: {
           if (isMoreTriggerTab) {
             //

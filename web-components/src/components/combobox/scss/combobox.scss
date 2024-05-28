@@ -273,7 +273,7 @@ ul {
     border-radius: 4px;
   }
   &[selected="true"] {
-    background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);
+    background: var(--combobox-dropdown-item-selected-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);
     color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
   }
 }

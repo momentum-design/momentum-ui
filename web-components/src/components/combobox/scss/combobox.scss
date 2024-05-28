@@ -251,7 +251,7 @@ ul {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);
     // border: 2px solid #07C1F5;
     // border-radius: 4px;
-    color: #2ba300;
+    color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
     
   }
 
@@ -279,6 +279,7 @@ ul {
   }
   &[selected="true"] {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);
+    color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
   }
 }
 

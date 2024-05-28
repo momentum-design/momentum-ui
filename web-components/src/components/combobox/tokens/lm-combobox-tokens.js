@@ -58,16 +58,24 @@ const combobox = {
     },
     item: {
       "hover-bg-color": {
-        light: "#f44336",
-        dark: "#f44336"
+        light: colors.blue[20].name,
+        dark: colors.blue[50].name
       },
       "focus-bg-color": {
-        light: "#f44336",
-        dark: "#f44336"
+        light: colors.blue[70].name,
+        dark: colors.blue[40].name
       },
       "select-bg-color": {
         light: colors.white[100].name,
         dark: colors.gray[100].name
+      },
+      "select-font-color": {
+        light: colors.gray[100].name,
+        dark: colors.gray[90].name
+      },
+      "selected-bg-color": {
+        light: colors.blue[50].name,
+        dark: colors.blue[40].name
       },
       "checked-bg-color": {
         light: colors.blue[70].name,

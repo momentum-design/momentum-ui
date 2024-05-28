@@ -39,7 +39,6 @@ export namespace Modal {
     @property({ type: String }) headerMessage = "";
     @property({ type: String }) htmlId = "";
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "modal";
-    @property({ type: String, attribute: "aria-labelled-by" }) ariaLabelledBy = "modal_header";
     @property({ type: String }) ariaLabelClose = "Close Modal";
     @property({ type: String }) ariaLabelCancel = "Cancel Modal";
     @property({ type: String }) ariaLabelSubmit = "Submit Modal";
@@ -271,8 +270,7 @@ export namespace Modal {
                   role="dialog"
                   id="${this.htmlId}"
                   class="md-modal ${classMap(this.modalContainerClassMap)}"
-                  aria-label="${this.ariaLabel}"
-                  aria-labelledby=${this.ariaLabelledBy}
+                  aria-label="${ifDefined(this.headerLabel || this.ariaLabel || undefined)}"
                   aria-describedby=${ifDefined(this.ariaDescription || undefined)}
                 >
                   <div part="modal-content" class="md-modal__content">

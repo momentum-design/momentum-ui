@@ -160,7 +160,7 @@ export namespace ComboBox {
 
       // If searchResultAriaLabel is passed, the {{}} is replaced with the search result count.
       if (this.searchResultAriaLabel) {
-        let regex = /{{.*?}}/g;
+        const regex = /{{.*?}}/g;
         this.ariaLabelForComboBox = this.searchResultAriaLabel.replace(regex, this.filteredOptions.length.toString());
       }
       // If searchResultAriaLabel is not passed and ariaLabel is passed, the ariaLabel is appended with the search result count.
@@ -419,6 +419,7 @@ export namespace ComboBox {
       }
     }
     private checkSelectedOptions() {
+      console.log("list selected  ", this.checkForVirtualScroll());
       if (this.checkForVirtualScroll()) {
         const selectedOptionIds = this.selectedOptions.map(option => this.getOptionId(option));
         const updatedLists = [...this.lists!].filter(list => list.id !== "selectAll");
@@ -426,7 +427,12 @@ export namespace ComboBox {
           if (selectedOptionIds.includes(list.id)) {
             if (this.isMulti) {
               list?.setAttribute("aria-checked", "true");
+            } else {
+              // list?.classList.add("selected-class");
+              list?.setAttribute("selected", "true");
             }
+            console.log("list selected", list);
+            list?.classList.add("selected-class");
             list?.setAttribute("aria-selected", "true");
           } else if (this.isMulti) {
             list?.setAttribute("aria-checked", "false");
@@ -836,6 +842,7 @@ export namespace ComboBox {
       this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
       this.setVisualListbox(false);
       this.unCheckedAllOptions();
+      this.setSelectedatribute(undefined);
       this.updateOnNextFrame(() => {
         this.input!.focus();
       });
@@ -870,6 +877,8 @@ export namespace ComboBox {
           optionIndex = optionIndex - 1;
         }
         const option = this.getFocusedItem(optionIndex);
+        console.log("option", option, this.lists);
+        this.setSelectedatribute(option);
         if (option) {
           this.setSelectedOption(option);
           if (!this.isMulti) {
@@ -880,6 +889,17 @@ export namespace ComboBox {
           }
         }
       }
+    }
+
+    private setSelectedatribute(option: string | OptionMember | undefined) {
+      this.lists?.forEach((list, index) => {
+        if (list?.id === option) {
+          // console.log("list 1", list, index, option);
+          list?.setAttribute("selected", "true");
+        } else {
+          list?.setAttribute("selected", "false");
+        }
+      });
     }
 
     private shouldChangeButton() {
@@ -968,6 +988,7 @@ export namespace ComboBox {
                   }
                 }
                 if (option) {
+                  this.setSelectedatribute(option);
                   this.setSelectedOption(option);
                   if (!this.showSelectedCount) {
                     this.setInputValue(this.getOptionValue(option));
@@ -1061,6 +1082,7 @@ export namespace ComboBox {
               this.focusedIndex = -1;
               this.focusedGroupIndex = -1;
               this.removeAllSelected();
+              this.setSelectedatribute(undefined);
             }
           }
           break;
@@ -1556,10 +1578,7 @@ export namespace ComboBox {
 
     render() {
       return html`
-        <div
-          part="combobox"
-          class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}"
-        >
+        <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">
             ${this.searchable ? this.searchIconTemplate() : nothing}
             <div class="md-combobox__multiwrap" part="multiwrap">

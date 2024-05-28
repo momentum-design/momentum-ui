@@ -58,12 +58,12 @@ const combobox = {
     },
     item: {
       "hover-bg-color": {
-        light: "#e6f9fc",
-        dark: colors.theme[90].name
+        light: "#f44336",
+        dark: "#f44336"
       },
       "focus-bg-color": {
-        light: "#b8f2ff",
-        dark: colors.theme[60].name
+        light: "#f44336",
+        dark: "#f44336"
       },
       "select-bg-color": {
         light: colors.white[60].name,
@@ -120,17 +120,17 @@ const combobox = {
       light: colors.white[100].name,
       dark: colors.gray[90].name
     },
-    "color": {
+    color: {
       light: colors.gray[70].name,
       dark: colors.gray[40].name
     },
     "border-color": {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
-    },
+    }
   },
-  "placeholder": {
-    "color": {
+  placeholder: {
+    color: {
       light: colors.gray[70].name,
       dark: colors.gray[40].name
     }

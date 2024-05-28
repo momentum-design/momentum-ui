@@ -1047,6 +1047,7 @@ export namespace Tabs {
               class="md-menu-overlay__more_tab ${classMap({
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
+              ariaRole="button"
             >
               <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
@@ -1079,6 +1080,7 @@ export namespace Tabs {
                     aria-controls="${tab.id}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                    ariaRole="menuitem"
                   >
                     ${unsafeHTML(tab.innerHTML)}
                   </md-tab>

@@ -35,6 +35,7 @@ export namespace Tab {
     @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
+    @property({ type: String }) ariaRole = "tab";
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -157,7 +158,10 @@ export namespace Tab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      this.setAttribute("role", "tab");
+      if(this.ariaRole){
+        this.setAttribute("role", this.ariaRole);
+      }
+     
     }
 
     render() {
@@ -166,7 +170,6 @@ export namespace Tab {
           type="button"
           role="button"
           ?disabled=${this.disabled}
-          aria-hidden="true"
           aria-selected="false"
           aria-label=${ifDefined(this.ariaLabel || undefined)}
           tabindex="-1"

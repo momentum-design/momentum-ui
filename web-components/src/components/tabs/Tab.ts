@@ -172,6 +172,7 @@ export namespace Tab {
           ?disabled=${this.disabled}
           aria-selected="false"
           aria-label=${ifDefined(this.ariaLabel || undefined)}
+          aria-hidden="true"
           tabindex="-1"
           part="tab"
           class="${classMap({

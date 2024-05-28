@@ -1600,7 +1600,7 @@ export namespace ComboBox {
                   id="md-combobox-listbox"
                   part="combobox-options"
                   class="virtual-scroll"
-                  aria-label=${this.ariaLabel}
+                  aria-label=${this.ariaLabel || this.label}
                   style=${this.addStyle()}
                   @rangechange=${this.rangeChanged}
                 >

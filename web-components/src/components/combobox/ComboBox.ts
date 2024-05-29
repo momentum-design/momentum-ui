@@ -836,7 +836,7 @@ export namespace ComboBox {
       this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
       this.setVisualListbox(false);
       this.unCheckedAllOptions();
-      this.setSelectedatribute(undefined);
+      this.setSelectedAttribute(undefined);
       this.updateOnNextFrame(() => {
         this.input!.focus();
       });
@@ -871,7 +871,7 @@ export namespace ComboBox {
           optionIndex = optionIndex - 1;
         }
         const option = this.getFocusedItem(optionIndex);
-        this.setSelectedatribute(option);
+        this.setSelectedAttribute(option);
         if (option) {
           this.setSelectedOption(option);
           if (!this.isMulti) {
@@ -884,7 +884,7 @@ export namespace ComboBox {
       }
     }
 
-    private setSelectedatribute(option: string | OptionMember | undefined) {
+    private setSelectedAttribute(option: string | OptionMember | undefined) {
       this.lists?.forEach((list, index) => {
         if (list?.id === option) {
           list?.setAttribute("selected", "true");
@@ -980,7 +980,7 @@ export namespace ComboBox {
                   }
                 }
                 if (option) {
-                  this.setSelectedatribute(option);
+                  this.setSelectedAttribute(option);
                   this.setSelectedOption(option);
                   if (!this.showSelectedCount) {
                     this.setInputValue(this.getOptionValue(option));
@@ -1074,7 +1074,7 @@ export namespace ComboBox {
               this.focusedIndex = -1;
               this.focusedGroupIndex = -1;
               this.removeAllSelected();
-              this.setSelectedatribute(undefined);
+              this.setSelectedAttribute(undefined);
             }
           }
           break;

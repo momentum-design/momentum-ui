@@ -115,19 +115,7 @@
         box-shadow: none;
       }
 
-      &--error {
-        forced-color-adjust: none;
-        background-color: Canvas;
-        border: 1px solid var(--md-alert-error-text-color, $md-red-70);
-        color: CanvasText;
-
-        &:focus {
-          @include remove-focus;
-          outline: none;
-        }
-      }
       &--disabled {
-        // background-color: transparent;
         color: GrayText;
         cursor: default;
   

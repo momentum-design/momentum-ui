@@ -411,24 +411,9 @@
 
       &:disabled,
       &.md-disabled {
-        forced-color-adjust: auto;
-        color: GrayText;
+        color: GrayText !important;
         border: 1px solid GrayText;
-        opacity: 0.5;
       }
     }
-  }
-
-  .md-input-container.md-error .md-input {
-    forced-color-adjust: none;
-    border: 1px solid var(--md-alert-error-text-color, $md-red-70);
-    background-color: Canvas;
-    outline: none;
-    color: CanvasText;
-  }
-
-  .md-input__message.md-error {
-    forced-color-adjust: none;
-    color: var(--md-alert-error-text-color, $md-red-70);
   }
 }

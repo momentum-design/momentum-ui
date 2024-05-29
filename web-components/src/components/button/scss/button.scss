@@ -789,44 +789,57 @@ md-spinner + ::slotted(*) {
   margin-left: 0.5rem;
 }
 
-@media screen and (-ms-high-contrast: active),
-screen and (forced-colors: active) {
-  :host .md-button {
+// @media(forced-colors:active) {
+//   :host .md-button {
+//     &:focus,
+//     &:active {
+//       color: Highlight;
+//       outline: 2px solid Highlight;
+//     }
 
+//     &.disabled{
+//       color: GrayText !important;
+//     }
+//   }
+
+//   :host .md-button--outline {
+//     &.disabled {
+//       color: GrayText;
+//       &:focus, &:active{
+//         color: GrayText !important;
+//         outline: 2px solid Highlight;
+//       }
+//     }
+//     }
+
+//     &.md-button--disabled,
+//     &[disabled] {
+//       color: GrayText !important;
+//     }
+//   }
+
+
+@media (forced-colors: active) {
+  :host .md-button {
     &:focus,
     &:active {
       color: Highlight;
       outline: 2px solid Highlight;
     }
 
-    &:disabled {
-      outline: 1px solid GrayText;
-      opacity: 0.6;
-    }
-
-    &--outline {
-      outline: 1px solid CanvasText;
-
-      &:disabled {
-        outline: 1px solid GrayText;
-        opacity: 0.6;
-      }
+    &.disabled,
+    &[disabled] {
+      color: GrayText !important;
     }
   }
 
-  :host([variant="primary"]) .md-button {
-    outline: 1px solid Highlight;
-
-    &:disabled {
-      outline: 1px solid GrayText;
-      border: none;
-      opacity: 0.6;
+  :host .md-button--outline {
+    &.disabled{
+      color: GrayText !important;
     }
-
-    &:focus,
-    &:active {
-      color: Highlight;
-      outline: 2px dashed Highlight;
+    &:focus:disabled,
+    &:active:disabled {
+      outline: 2px solid Highlight;
     }
   }
 }

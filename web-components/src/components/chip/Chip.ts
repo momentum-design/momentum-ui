@@ -36,7 +36,7 @@ export const tooltipPlacement = [
 ] as const;
 
 export namespace Chip {
-  export type Role = "group" | "option";
+  export type Role = "group" | "option" | "button";
   export type Placement = typeof tooltipPlacement[number];
 
   @customElementWithCheck("md-chip")

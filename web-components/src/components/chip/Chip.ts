@@ -36,7 +36,7 @@ export const tooltipPlacement = [
 ] as const;
 
 export namespace Chip {
-  export type Role = "group" | "option";
+  export type Role = "group" | "option" | "button";
   export type Placement = typeof tooltipPlacement[number];
 
   @customElementWithCheck("md-chip")
@@ -145,6 +145,18 @@ export namespace Chip {
     };
 
     handleClick(e: MouseEvent) {
+      const tooltip = this.shadowRoot?.querySelector("md-tooltip");
+      tooltip?.dispatchEvent(
+        new CustomEvent("tooltip-destroy", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: tooltip?.placement,
+            reference: tooltip?.reference,
+            popper: tooltip?.popper
+          }
+        })
+      );
       this.dispatchEvent(
         new CustomEvent("chip-interaction", {
           composed: true,

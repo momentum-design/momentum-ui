@@ -202,8 +202,10 @@ export const comboBoxTemplate = html`
 
   <h3>With multi count and select all for virtual scroll</h3>
   <md-combobox
-    .options=${comboBoxOptions}
+    .options=${comboBoxObjectOptions}
     shape=${"pill"}
+    option-id="id"
+    option-value="country"
     is-multi
     show-selected-count
     no-clear-icon

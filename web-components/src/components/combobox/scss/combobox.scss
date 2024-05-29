@@ -165,6 +165,10 @@ div#md-combobox-listbox {
     padding: $combobox-option-padding;
   }
 }
+.virtual-scroll {
+  overflow: auto;
+  position: relative;
+}
 
 .md-combobox-multi-input {
   width: initial;

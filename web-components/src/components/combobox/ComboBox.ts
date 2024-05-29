@@ -176,10 +176,11 @@ export namespace ComboBox {
     @query(".group") group?: HTMLDivElement;
     @query(".md-combobox-listbox") input?: HTMLInputElement;
     @query(".md-combobox-button") button?: HTMLButtonElement;
-    @query("div#md-combobox-listbox") listBox?: HTMLUListElement;
+    @query("div#md-combobox-listbox") listBox?: HTMLDivElement;
+    @query(".virtual-scroll") virtualizer?: any;
 
-    @queryAll("div.md-combobox-option") lists?: HTMLLIElement[];
-    @queryAll(".group-label") labels?: HTMLLIElement[];
+    @queryAll("div.md-combobox-option") lists?: HTMLDivElement[];
+    @queryAll(".group-label") labels?: HTMLDivElement[];
     @queryAll(".md-combobox-selected-item") selected?: HTMLDivElement[];
 
     protected firstUpdated(changedProperties: PropertyValues) {
@@ -418,7 +419,7 @@ export namespace ComboBox {
       if (this.checkForVirtualScroll()) {
         const selectedOptionIds = this.selectedOptions.map(option => this.getOptionId(option));
         const updatedLists = [...this.lists!].filter(list => list.id !== "selectAll");
-        updatedLists?.forEach((list: HTMLLIElement) => {
+        updatedLists?.forEach((list: HTMLDivElement) => {
           if (selectedOptionIds.includes(list.id)) {
             if (this.isMulti) {
               list?.setAttribute("aria-checked", "true");
@@ -432,7 +433,7 @@ export namespace ComboBox {
     }
     private unCheckAllOptions() {
       if (this.checkForVirtualScroll() && this.isMulti) {
-        [...this.lists!]?.forEach((list: HTMLLIElement) => {
+        [...this.lists!]?.forEach((list: HTMLDivElement) => {
           if (list?.id !== "selectAll") {
             list?.setAttribute("aria-checked", "false");
           }
@@ -530,6 +531,7 @@ export namespace ComboBox {
       this.updateOnNextFrame(() => {
         let height = 0;
         let labelHeight = 0;
+        let virtualizerHeight = 0;
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
@@ -538,6 +540,14 @@ export namespace ComboBox {
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
+            virtualizerHeight =
+            this.checkForVirtualScroll() && this.allowSelectAll
+              ? updatedList
+                  .slice(1, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0)
+              : updatedList
+                  .slice(0, this.visibleOptions)
+                  .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
         if (this.labels) {
           labelHeight = [...this.labels]
@@ -547,8 +557,9 @@ export namespace ComboBox {
         if (this.listBox) {
           this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
         }
-        if (this.checkForVirtualScroll() && this.listBox) {
-          this.listBox.style.height = `${height + 10}px`;
+       
+        if (this.virtualizer) {
+          this.virtualizer.style.height = `${virtualizerHeight + 10}px`;
         }
         if (this.showCustomError || this.showLoader) {
           const customContent = this.listBox?.querySelector("[slot]");
@@ -1496,7 +1507,8 @@ export namespace ComboBox {
       } else {
         return styleMap({
           visibility: isInvisible ? "hidden" : "visible",
-          "z-index": isInvisible ? "-1" : "99"
+          "z-index": isInvisible ? "-1" : "99",
+          "overflow": "hidden"
         });
       }
     }
@@ -1599,10 +1611,8 @@ export namespace ComboBox {
                 <div
                   id="md-combobox-listbox"
                   part="combobox-options"
-                  class="virtual-scroll"
                   aria-label=${this.ariaLabel || this.label}
                   style=${this.addStyle()}
-                  @rangechange=${this.rangeChanged}
                 >
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()
@@ -1611,6 +1621,7 @@ export namespace ComboBox {
                       this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
                         .length > 0
                     ? html`
+                    <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
                         ${scroll({
                           items: this.filterOptions(
                             this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
@@ -1620,6 +1631,7 @@ export namespace ComboBox {
                           useShadowDOM: false,
                           scrollToIndex: { index: this.focusedIndex, position: "center" }
                         })}
+                        </div>
                       `
                     : nothing}
                   ${this.options.length &&

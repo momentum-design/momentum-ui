@@ -87,13 +87,7 @@ export namespace Alert {
       return html`
         ${this.show
           ? html`
-              <div
-                role="alert"
-                aria-live="polite"
-                aria-atomic="true"
-                part="alert"
-                class="md-alert ${classMap(this.alertClassMap)}"
-              >
+              <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
                 <div class="md-alert__icon">
                   ${this.renderIconTemplate()}
                 </div>

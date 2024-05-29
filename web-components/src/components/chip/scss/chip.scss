@@ -382,9 +382,8 @@
   .md-chip  {
     outline : 1px solid ButtonText;
     &:focus, &:hover{
-      // High contrast mode specific styles
-      box-shadow: none; // Clears any box shadow
-      outline: 2px solid Highlight; // High visibility outline in high contrast mode
+      box-shadow: none; 
+      outline: 2px solid Highlight; 
     }
     &--disabled {
       opacity: 0.5;

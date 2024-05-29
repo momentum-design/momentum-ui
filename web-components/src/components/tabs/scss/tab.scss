@@ -192,5 +192,10 @@ button {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }
+  button:disabled{
+    forced-color-adjust: none;
+    background-color: none;
+    color: GrayText;
+  }
 }
 

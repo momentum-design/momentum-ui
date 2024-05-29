@@ -482,13 +482,6 @@
   }
 }
 
-@media (forced-colors:active) {
-  .md-coachmark {
-    md-task-item{
-      outline: 2px solid transparent;
-    }
-  }
-}
 
 @keyframes coach-fade {
   from {
@@ -533,4 +526,44 @@
   to {
     top: calc(100% + 0.5rem);
   }
+}
+
+@media (forced-colors:active) {
+  .md-coachmark {
+    md-task-item {
+      outline: 2px solid transparent;
+    }
+
+    &__popper {
+
+      &--default,
+      &--violet,
+      &--green,
+      &--mint,
+      &--blue,
+      &--purple,
+      &--darkmint,
+      &--yellow,
+      &--red,
+      &--darked,
+      &--orange,
+      &--cyan {
+        background-color: Canvas;
+        outline: 1px solid CanvasText;
+      }
+    }
+  }
+
+  .md-coachmark__popper--top .md-coachmark__arrow,
+  .md-coachmark__popper--bottom .md-coachmark__arrow {
+    border-left: 0.625rem solid Canvas;
+    border-right: 0.625rem solid Canvas;
+  }
+
+  .md-coachmark__popper--right .md-coachmark__arrow,
+  .md-coachmark__popper--left .md-coachmark__arrow {
+    border-top: 0.625rem solid Canvas;
+    border-bottom: 0.625rem solid Canvas;
+  }
+
 }

@@ -248,9 +248,8 @@ ul {
   &:hover {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);
     color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
-    
+     
   }
-
   &.md-combobox-multiselect {
     border-bottom: 1px solid var(--md-button-tertiary-outline-color, $md-gray-70);
   }
@@ -271,10 +270,14 @@ ul {
   &[focused] {
     border: 2px solid var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
     border-radius: 4px;
+    z-index: 100;
   }
   &[selected="true"] {
     background: var(--combobox-dropdown-item-selected-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);
     color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
+    .select-option {
+      border: 1px solid #fff;
+    }
   }
 }
 

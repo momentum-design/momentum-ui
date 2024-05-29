@@ -885,8 +885,12 @@ export namespace ComboBox {
     }
 
     private setSelectedAttribute(option: string | OptionMember | undefined) {
+      let optionId = "";
+      if (option) {
+        optionId = this.getOptionId(option);
+      }
       this.lists?.forEach((list, index) => {
-        if (list?.id === option) {
+        if (list?.id === optionId) {
           list?.setAttribute("selected", "true");
         } else {
           list?.setAttribute("selected", "false");
@@ -1095,6 +1099,7 @@ export namespace ComboBox {
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
             if (option) {
               this.setSelectedOption(option);
+              this.setSelectedAttribute(option);
               if (!this.showSelectedCount) {
                 this.setInputValue();
                 this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");

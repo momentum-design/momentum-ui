@@ -78,8 +78,8 @@ const combobox = {
         dark: colors.blue[40].name
       },
       "checked-bg-color": {
-        light: colors.blue[70].name,
-        dark: colors.blue[70].name
+        light: colors.blue[50].name,
+        dark: colors.blue[50].name
       },
       "checked-icon-color": {
         light: colors.white[60].name,

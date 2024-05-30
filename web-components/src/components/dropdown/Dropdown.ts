@@ -195,12 +195,6 @@ export namespace Dropdown {
 
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
-
-
-      if (this.expanded) {
-        this.collapse();
-      }
-
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,
@@ -278,6 +272,13 @@ export namespace Dropdown {
 
     onKeyDown = (e: KeyboardEvent) => {
       switch (e.code) {
+        case Key.Tab: {
+          if (this.expanded) {
+            e.stopPropagation();
+            this.collapse();
+          }
+          break;
+        }
 
         case Key.Space:
         case Key.Enter: {
@@ -445,6 +446,16 @@ export namespace Dropdown {
       return this.title;
     }
 
+    get ariaLabelTitle() {
+      if (this.selectedKey) {
+        const option = this.renderOptions.find(o => o.key === this.selectedKey);
+        if (option) {
+          return option.value + ", " + this.title;
+        }
+      }
+      return this.title;
+    }
+
     get dropDownClassMap() {
       return {
         "md-dropdown__expanded": this.expanded
@@ -457,11 +468,12 @@ export namespace Dropdown {
           <label
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"
-            aria-label="${this.labelTitle}"
+            aria-label="${this.ariaLabelTitle}"
             aria-controls="md-dropdown-list"
             ?disabled="${this.disabled}"
             @click="${() => this.onLabelClick()}"
             part="dropdown-header"
+            role="combobox" 
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>
             <span class="md-dropdown-label--icon">

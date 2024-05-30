@@ -232,7 +232,7 @@ export namespace EditableTextfield {
         <div
           style="${this.overflowStyles}"
           class="md-editable-textfield ${classMap(classes)}"
-          role="textbox"
+          role=${ifDefined(!this.disabled ? "textbox" : undefined)}
           tabindex=${this.disabled ? "-1" : "0"}
           ?contenteditable=${this.isEditing}
           @focus=${this.handleFocus}
@@ -240,9 +240,9 @@ export namespace EditableTextfield {
           @keydown=${(e: KeyboardEvent) => {
             this.handleKeydown(e);
           }}
-          aria-invalid=${this.alert ? "true" : "false"}
-          aria-label=${this.ariaLabel}
-          aria-describedby=${this.ariaDescribedBy}
+          aria-invalid=${ifDefined(!this.disabled ? this.alert ? "true" : "false" : undefined)}
+          aria-label=${ifDefined(!this.disabled ? this.ariaLabel : undefined)}
+          aria-describedby=${ifDefined(!this.disabled ? this.ariaDescribedBy : undefined)}
         >
           ${dompurify.sanitize(this.content)}
         </div>

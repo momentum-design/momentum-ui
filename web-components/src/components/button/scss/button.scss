@@ -789,36 +789,6 @@ md-spinner + ::slotted(*) {
   margin-left: 0.5rem;
 }
 
-// @media(forced-colors:active) {
-//   :host .md-button {
-//     &:focus,
-//     &:active {
-//       color: Highlight;
-//       outline: 2px solid Highlight;
-//     }
-
-//     &.disabled{
-//       color: GrayText !important;
-//     }
-//   }
-
-//   :host .md-button--outline {
-//     &.disabled {
-//       color: GrayText;
-//       &:focus, &:active{
-//         color: GrayText !important;
-//         outline: 2px solid Highlight;
-//       }
-//     }
-//     }
-
-//     &.md-button--disabled,
-//     &[disabled] {
-//       color: GrayText !important;
-//     }
-//   }
-
-
 @media (forced-colors: active) {
   :host .md-button {
     &:focus,

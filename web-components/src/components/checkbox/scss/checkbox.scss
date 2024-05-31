@@ -143,9 +143,8 @@
 }
 
 @media(forced-colors:active) {
-  // @media (prefers-contrast: more), (prefers-contrast: less){
   :host([focus-visible]:not([disabled])) {
-    outline: 2px solid Highlight; // This color can be changed based on your design system
-    box-shadow: none; // Remove box-shadow in high contrast mode
+    outline: 2px solid Highlight; 
+    box-shadow: none; 
   }
 }

@@ -9,6 +9,7 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, withKnobs, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -47,6 +48,7 @@ export default {
 export const Button = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const variant = select("Variant", buttonVariant, "secondary");
   const color = select("Color", buttonColor, "");
   const disabled = boolean("Disabled Mode", false);
@@ -69,7 +71,7 @@ export const Button = () => {
   const role = select("role", buttonRoles, "button");
 
   return html`
-    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-button
         @button-click=${action("ditail")}
         variant=${variant}

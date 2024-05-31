@@ -74,7 +74,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("check-circle_36");
-    expect(type?.getAttribute("color")).toEqual("green");
+    expect(type?.getAttribute("color")).toEqual("green-50");
   });
 
   test("should render info Alert", async () => {
@@ -87,7 +87,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("info_32");
-    expect(type?.getAttribute("color")).toEqual("blue");
+    expect(type?.getAttribute("color")).toEqual("blue-50");
   });
 
   test("should render error Alert", async () => {
@@ -100,7 +100,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("red");
+    expect(type?.getAttribute("color")).toEqual("red-50");
   });
 
   test("should render warning Alert", async () => {
@@ -113,7 +113,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("orange");
+    expect(type?.getAttribute("color")).toEqual("orange-50");
   });
 
   test("should render close button & icon when closable prop is true", async () => {

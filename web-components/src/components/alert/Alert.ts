@@ -49,23 +49,23 @@ export namespace Alert {
       switch (this.type) {
         case "error":
           return html`
-            <md-icon name="icon-warning_32" color="red"></md-icon>
+            <md-icon name="icon-warning_32" color="red-50"></md-icon>
           `;
           break;
         case "info":
           return html`
-            <md-icon name="info_32" color="blue"></md-icon>
+            <md-icon name="info_32" color="blue-50"></md-icon>
           `;
           break;
         case "success":
           return html`
-            <md-icon name="check-circle_36" color="green"></md-icon>
+            <md-icon name="check-circle_36" color="green-50"></md-icon>
           `;
           break;
         case "warn":
         case "warning":
           return html`
-            <md-icon name="icon-warning_32" color="orange"></md-icon>
+            <md-icon name="icon-warning_32" color="orange-50"></md-icon>
           `;
           break;
         default:

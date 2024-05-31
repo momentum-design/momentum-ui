@@ -76,7 +76,7 @@ export namespace Table {
             cell.forEach((c, id) => {
               if ((id + 1) === i.col) {
                 c.classList.add("warning");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+                c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow-50"></md-icon>');
               }
             })
           }
@@ -87,7 +87,7 @@ export namespace Table {
             cell.forEach((c, id) => {
               if ((id + 1) === i.col) {
                 c.classList.add("error");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
+                c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red-50"></md-icon>');
               }
             })
           }

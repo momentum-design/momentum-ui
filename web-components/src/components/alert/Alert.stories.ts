@@ -67,7 +67,7 @@ export const AlertWithIcon = () => {
    <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
        <md-alert  @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} ?show=${show} ?closable=${closable}>
            <md-badge slot="alert-icon" color="darkmint" circle>
-               <md-icon name="sms_16" color="white"></md-icon>
+               <md-icon name="sms_16" color="white-100"></md-icon>
            </md-badge>
    </md-alert>
  </md-theme>

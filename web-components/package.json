@@ -68,7 +68,8 @@
     "nanoid": "^3.1.16",
     "papaparse": "^5.3.0",
     "sortablejs": "^1.13.0",
-    "lit-virtualizer": "0.4.2"
+    "lit-virtualizer": "0.4.2",
+    "@momentum-design/tokens": "0.0.54"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

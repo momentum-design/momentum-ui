@@ -136,6 +136,7 @@
         $line-height: $button__line-height--40,
         $radius: $button__radius--40
       );
+      
     }
 
     &--52 {
@@ -588,6 +589,24 @@
   &:disabled,
   &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="promotional"]) .md-button {
+  background: var(--button-promotional-bg-color, $lm-button-primary-bg-color-light);
+  color: var(--button-color-text-color, $lm-button-primary-text-color-light);
+
+  &:hover {
+    background: var(--button-promotional-hover-bg-color, $lm-button-primary-hover-bg-color-light);
+  }
+
+  &:active {
+    background: var(--button-promotional-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
 }

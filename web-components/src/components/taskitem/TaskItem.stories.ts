@@ -57,7 +57,7 @@ export const TaskItem = () => {
         @taskitem-keydown=${(action('keydown'))}
       >
         <md-badge slot="task-type" color="darkmint" circle>
-          <md-icon name="sms_16" color="white"></md-icon>
+          <md-icon name="sms_16" color="white-100"></md-icon>
         </md-badge>
         <div>${time}</div>
       </md-task-item>

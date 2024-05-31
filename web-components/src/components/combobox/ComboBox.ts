@@ -1388,9 +1388,9 @@ export namespace ComboBox {
           part="combobox-option"
           class="md-combobox-option ${classMap(this.listItemOptionMap)}"
           @click=${this.handleSelectAll}
-          tabindex="-1"
-          aria-label=${this.selectAllTextLocalization}
+          aria-label="${this.selectAllTextLocalization}, 1 of ${this.options.length + 1}"
           aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
+          role="checkbox"
         >
           <span class="select-option" aria-hidden="true">
             <md-icon name="icon-check_14"></md-icon>
@@ -1513,7 +1513,9 @@ export namespace ComboBox {
       }
     }
 
-    renderItem(option: OptionMember | string, index: number | undefined) {
+    renderItem(option: OptionMember | string, index: number) {
+      const count = this.allowSelectAll ? index + 2 : index + 1;
+      const total = this.allowSelectAll ? this.options.length + 1 : this.options.length
       return html`
         <div
           id=${this.getOptionId(option)}
@@ -1523,7 +1525,7 @@ export namespace ComboBox {
           role=${this.isMulti ? "checkbox" : undefined}
           aria-label="${this.isCustomContent
             ? this.getOptionId(option)
-            : this.getOptionValue(option)} option, Showing ${index ? index + 1 : 1} of ${this.options.length}"
+            : this.getOptionValue(option)}, ${count} of ${total}"
           tabindex="-1"
           @click=${this.handleListClick}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
@@ -1626,8 +1628,8 @@ export namespace ComboBox {
                           items: this.filterOptions(
                             this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
                           ),
-                          renderItem: (item: string | OptionMember, index?: number | undefined) =>
-                            this.renderItem(item, index),
+                          renderItem: (item: string | OptionMember, index?: number) =>
+                            this.renderItem(item, index || 0),
                           useShadowDOM: false,
                           scrollToIndex: { index: this.focusedIndex, position: "center" }
                         })}

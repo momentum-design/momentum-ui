@@ -378,15 +378,27 @@
   margin-left: $chip-inner-content-margin;
 }
 
-@media (forced-colors:active) {
-  .md-chip  {
-    outline : 1px solid ButtonText;
-    &:focus, &:hover{
-      box-shadow: none; 
-      outline: 2px solid Highlight; 
+@media (forced-colors: active) {
+  .md-chip {
+    outline: 1px solid CanvasText;
+
+    &:focus, &:hover {
+      box-shadow: none;
+      outline: 2px solid Highlight;
     }
-    &--disabled {
-      opacity: 0.5;
+  }
+
+  .md-chip.md-chip--disabled {
+    color: GrayText;
+    outline: 1px solid GrayText;
+
+    &:focus, &:hover {
+      outline: 2px solid Highlight;
+    }
+
+    md-icon {
+      color: GrayText;
     }
   }
 }
+

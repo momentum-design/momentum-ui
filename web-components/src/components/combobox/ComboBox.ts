@@ -1382,13 +1382,14 @@ export namespace ComboBox {
     }
 
     getSelectAllOption() {
+      const ariaLabelForCount = this.checkForVirtualScroll() ? `, 1 of ${this.options.length + 1}` : ""
       return html`
         <div
           id="selectAll"
           part="combobox-option"
           class="md-combobox-option ${classMap(this.listItemOptionMap)}"
           @click=${this.handleSelectAll}
-          aria-label="${this.selectAllTextLocalization}, 1 of ${this.options.length + 1}"
+          aria-label="${this.selectAllTextLocalization}${ariaLabelForCount}"
           aria-checked=${ifDefined(this.isSelectAllChecked ? "true" : undefined)}
           role="checkbox"
         >
@@ -1616,9 +1617,9 @@ export namespace ComboBox {
                 <div
                   id="md-combobox-listbox"
                   part="combobox-options"
-                  aria-label=${this.ariaLabel || this.label}
+                  aria-label=${ifDefined(this.checkForVirtualScroll() ? this.ariaLabel || this.label : undefined)}
                   style=${this.addStyle()}
-                  role=${ifDefined(this.checkForVirtualScroll() && this.allowSelectAll ? undefined : "list")}
+                  role=${ifDefined(this.checkForVirtualScroll() && this.isMulti ? undefined : "list")}
                 >
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()

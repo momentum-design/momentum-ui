@@ -1516,16 +1516,19 @@ export namespace ComboBox {
     renderItem(option: OptionMember | string, index: number) {
       const count = this.allowSelectAll ? index + 2 : index + 1;
       const total = this.allowSelectAll ? this.options.length + 1 : this.options.length
+      const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : ""
       return html`
         <div
           id=${this.getOptionId(option)}
           title="${this.getOptionValue(option)}"
           part="combobox-option"
           class="md-combobox-option"
-          role=${this.isMulti ? "checkbox" : undefined}
+          aria-posinset=${count}
+          aria-setsize=${total}
+          role=${this.isMulti ? "checkbox" : "listitem"}
           aria-label="${this.isCustomContent
             ? this.getOptionId(option)
-            : this.getOptionValue(option)}, ${count} of ${total}"
+            : this.getOptionValue(option)}${ariaLabelForCount}"
           tabindex="-1"
           @click=${this.handleListClick}
           aria-checked=${ifDefined(this.isMulti ? this.isOptionChecked.call(this, option) : undefined)}
@@ -1615,6 +1618,7 @@ export namespace ComboBox {
                   part="combobox-options"
                   aria-label=${this.ariaLabel || this.label}
                   style=${this.addStyle()}
+                  role=${ifDefined(this.checkForVirtualScroll() && this.allowSelectAll ? undefined : "list")}
                 >
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()

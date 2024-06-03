@@ -47,7 +47,6 @@ describe("Combobox Component", () => {
       expect(el.expanded).toBeFalsy();
     });
 
-
     test("should dispatch events", async () => {
       const eventIn = new Event("focusin");
       const eventOut = new Event("focusOut");
@@ -357,15 +356,15 @@ describe("Combobox Component", () => {
       await elementUpdated(el);
 
       const arrowLeft = createEvent(Key.ArrowLeft);
-      const propogationSpyLeft = jest.spyOn(arrowLeft,"stopPropagation");
-      el.input!.dispatchEvent(arrowLeft)
+      const propogationSpyLeft = jest.spyOn(arrowLeft, "stopPropagation");
+      el.input!.dispatchEvent(arrowLeft);
 
       expect(propogationSpyLeft).toHaveBeenCalled();
       await elementUpdated(el);
 
       const arrowRight = createEvent(Key.ArrowRight);
-      const propogationSpyRight = jest.spyOn(arrowRight,"stopPropagation");
-      el.input!.dispatchEvent(arrowRight)
+      const propogationSpyRight = jest.spyOn(arrowRight, "stopPropagation");
+      el.input!.dispatchEvent(arrowRight);
 
       expect(propogationSpyRight).toHaveBeenCalled();
       await elementUpdated(el);
@@ -899,6 +898,7 @@ describe("Combobox Component", () => {
       await elementUpdated(el);
 
       expect(el.lists![0].getAttribute("aria-checked")).toEqual("true");
+      expect(el.lists![0].getAttribute("selected")).toEqual("true");
 
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       await nextFrame();
@@ -1430,7 +1430,7 @@ describe("Combobox Component", () => {
   test("should navigate through tab between groups for multi select", async () => {
     const el2 = await fixture<ComboBox.ELEMENT>(
       html`
-        <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder ="Placeholder">
+        <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder="Placeholder">
           <div label="Countries">
             <div slot="Austria" aria-label="Austria" display-value="Austria">
               <span>Austria</span>
@@ -1616,26 +1616,26 @@ describe("Combobox Component", () => {
     test("should update ariaLabelForComboBox based on search result count", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
-          <md-combobox .options=${['One', 'Two', 'Three']}></md-combobox>
+          <md-combobox .options=${["One", "Two", "Three"]}></md-combobox>
         `
       );
-    
-      el.searchResultAriaLabel = 'Search results: {{count}} results found.';
-      el.inputValue = 'One';
+
+      el.searchResultAriaLabel = "Search results: {{count}} results found.";
+      el.inputValue = "One";
       el["notifySearchResultCount"]();
       await elementUpdated(el);
-      expect(el.ariaLabelForComboBox).toEqual('Search results: 1 results found.');
-    
+      expect(el.ariaLabelForComboBox).toEqual("Search results: 1 results found.");
+
       el.searchResultAriaLabel = "";
-      el.ariaLabel = 'Search results';
+      el.ariaLabel = "Search results";
       el["notifySearchResultCount"]();
       await elementUpdated(el);
-      expect(el.ariaLabelForComboBox).toEqual('Search results, 1 results found.');
-    
+      expect(el.ariaLabelForComboBox).toEqual("Search results, 1 results found.");
+
       el.ariaLabel = "";
       el["notifySearchResultCount"]();
       await elementUpdated(el);
-      expect(el.ariaLabelForComboBox).toEqual('ComboBox Element, 1 results found.');
+      expect(el.ariaLabelForComboBox).toEqual("ComboBox Element, 1 results found.");
     });
 
     test("should change selected option for virtual scroll", async () => {

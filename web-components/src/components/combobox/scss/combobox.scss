@@ -207,6 +207,7 @@ ul {
   outline: none;
   padding: $combobox-option-padding;
   width: 100%;
+  border: solid 2px transparent;
 
   .select-label {
     @include text-dots;
@@ -243,12 +244,11 @@ ul {
     }
   }
 
-  
-
   &:hover {
     background: var(--combobox-dropdown-item-hover-bg-color, $lm-combobox-dropdown-item-hover-bg-color-light);
+    color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
+     
   }
-
   &.md-combobox-multiselect {
     border-bottom: 1px solid var(--md-button-tertiary-outline-color, $md-gray-70);
   }
@@ -264,10 +264,18 @@ ul {
         visibility: visible;
       }
     }
+    
   }
 
   &[focused] {
-    background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
+    border: 2px solid var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
+  }
+  &[selected="true"] {
+    background: var(--combobox-dropdown-item-selected-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);
+    color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
+    .select-option {
+      border: 1px solid #fff;
+    }
   }
 }
 

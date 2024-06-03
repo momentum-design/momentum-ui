@@ -397,3 +397,23 @@
     margin-right: 0.5em;
   }
 }
+
+@media (forced-colors: active) {
+  .md-input-container {
+    .md-input {
+      border: 1px solid CanvasText;
+
+      &:focus,
+      &.md-focus {
+        border: none;
+        outline: 2px solid Highlight;
+      }
+
+      &:disabled,
+      &.md-disabled {
+        color: GrayText !important;
+        border: 1px solid GrayText;
+      }
+    }
+  }
+}

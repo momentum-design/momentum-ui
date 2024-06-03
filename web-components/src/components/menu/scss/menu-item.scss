@@ -32,3 +32,20 @@
     }
   }
 }
+
+/* Styles for High Contrast Mode */
+@media (forced-colors: active) {
+  .md-menu-item {
+    &--selected,
+    &:hover,
+    &:active,
+    &:focus{
+      outline: 1px solid Highlight;
+    }
+    &.disabled {
+      a {
+        color: GrayText;
+      }
+    }
+  }
+}

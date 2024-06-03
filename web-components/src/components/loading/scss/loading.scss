@@ -51,7 +51,6 @@
     &.md-loading--large {
       font-size: 3rem;
     }
-
   }
 
   @keyframes loading {
@@ -65,5 +64,11 @@
       opacity: 1;
       transform: scale(1, 1);
     }
+  }
+}
+
+@media (forced-colors: active) {
+  .md-loading__icon::before {
+    color: CanvasText; 
   }
 }

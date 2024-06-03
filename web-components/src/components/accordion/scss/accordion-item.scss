@@ -61,3 +61,27 @@
     cursor: not-allowed;
   }
 }
+
+
+@media(forced-colors: active) {
+  :host(md-accordion-item[focus-visible]) {
+    .md-accordion-expander {
+      outline: rem-calc(2) solid Highlight;
+    }
+  }
+
+  :host(md-accordion-item) {
+    .md-accordion-item:hover {
+      .md-accordion-header {
+        outline: rem-calc(2) solid Highlight;
+      }
+    }
+  }
+
+  :host(md-accordion-item[disabled]) {
+    .md-accordion-expander {
+      opacity: 0.5;
+    }
+  }
+}
+

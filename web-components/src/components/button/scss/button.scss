@@ -788,3 +788,28 @@ md-spinner {
 md-spinner + ::slotted(*) {
   margin-left: 0.5rem;
 }
+
+@media (forced-colors: active) {
+  :host .md-button {
+    &:focus,
+    &:active {
+      color: Highlight;
+      outline: 2px solid Highlight;
+    }
+
+    &.disabled,
+    &[disabled] {
+      color: GrayText !important;
+    }
+  }
+
+  :host .md-button--outline {
+    &.disabled{
+      color: GrayText !important;
+    }
+    &:focus:disabled,
+    &:active:disabled {
+      outline: 2px solid Highlight;
+    }
+  }
+}

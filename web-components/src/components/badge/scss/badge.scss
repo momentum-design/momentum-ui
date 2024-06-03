@@ -218,3 +218,14 @@
   margin: rem-calc(0 8);
   opacity: 0.4;
 }
+
+@media(forced-colors:active) {
+  @include exports("md-badge") {
+    .md-badge {
+      forced-color-adjust: none ;
+      background-color: Canvas !important;
+      color: CanvasText !important;
+      outline: 1px solid CanvasText !important;
+    }
+  }
+}

@@ -187,3 +187,50 @@ md-button::part(button) {
 .speed-popup-selected-speed {
   background: var(--audio-player-background-speed-popup-hover, $lm-audio-player-background-speed-popup-hover-light);
 }
+
+@media(forced-colors:active) {
+
+  .md-audio-player {
+    outline: 1px solid transparent !important;
+  }
+
+  .buffer-bar {
+    forced-color-adjust: none;
+    opacity: 0.3;
+    background-color: GrayText;
+  }
+
+  .progress-bar {
+    forced-color-adjust: none;
+    background-color: Highlight;
+  }
+
+  .volume {
+    forced-color-adjust: none;
+    background-color: HighlightText;
+    outline: 1px solid Highlight;
+    outline-offset: -1px;
+  }
+
+  .volume-slider {
+    forced-color-adjust: none;
+    background-color: Highlight;
+  }
+
+  .speed-popup {
+    ul {
+      outline: 1px solid Highlight;
+      li:hover{
+        forced-color-adjust: none;
+        color: Canvas;
+        background: Highlight;
+      }
+    }
+  }
+
+  #speed-popup-menu > .speed-popup-selected-speed {
+    forced-color-adjust: none;
+    color: Canvas;
+    background: Highlight;
+  }
+}

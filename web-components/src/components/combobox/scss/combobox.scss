@@ -357,13 +357,39 @@ input::-webkit-input-placeholder{
   color: var(--combobox-placeholder-color,$lm-combobox-placeholder-color-light);
 }
 
+
+
 @media (forced-colors: active) {
-  .md-combobox-option[aria-checked="true"] {
+  :host([focus-visible]) .group {
+    border: none;
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
+
+  .md-combobox-option {
     .select-option {
-      forced-color-adjust: none;
-      md-icon {
-        forced-color-adjust: none;
+      background: Canvas;
+      color: CanvasText;
+      border: 1px solid CanvasText;
+    }
+
+    &[aria-checked="true"] {
+      .select-option {
+        background: Canvas;
+        color: CanvasText;
+        border: 1px solid CanvasText;
+
+        md-icon {
+          color: CanvasText;
+          visibility: visible;
+        }
       }
+    }
+
+    &[focused] {
+      forced-color-adjust: none;
+      color: Canvas;
+      background-color: Highlight;
     }
   }
 }

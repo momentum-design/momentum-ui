@@ -160,7 +160,7 @@ export namespace ComboBox {
 
       // If searchResultAriaLabel is passed, the {{}} is replaced with the search result count.
       if (this.searchResultAriaLabel) {
-        let regex = /{{.*?}}/g;
+        const regex = /{{.*?}}/g;
         this.ariaLabelForComboBox = this.searchResultAriaLabel.replace(regex, this.filteredOptions.length.toString());
       }
       // If searchResultAriaLabel is not passed and ariaLabel is passed, the ariaLabel is appended with the search result count.
@@ -833,6 +833,7 @@ export namespace ComboBox {
       this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");
       this.setVisualListbox(false);
       this.unCheckedAllOptions();
+      this.setSelectedAttribute(undefined);
       this.updateOnNextFrame(() => {
         this.input!.focus();
       });
@@ -867,6 +868,7 @@ export namespace ComboBox {
           optionIndex = optionIndex - 1;
         }
         const option = this.getFocusedItem(optionIndex);
+        this.setSelectedAttribute(option);
         if (option) {
           this.setSelectedOption(option);
           if (!this.isMulti) {
@@ -877,6 +879,20 @@ export namespace ComboBox {
           }
         }
       }
+    }
+
+    private setSelectedAttribute(option: string | OptionMember | undefined) {
+      let optionId = "";
+      if (option) {
+        optionId = this.getOptionId(option);
+      }
+      this.lists?.forEach((list, index) => {
+        if (list?.id === optionId) {
+          list?.setAttribute("selected", "true");
+        } else {
+          list?.setAttribute("selected", "false");
+        }
+      });
     }
 
     private shouldChangeButton() {
@@ -965,6 +981,7 @@ export namespace ComboBox {
                   }
                 }
                 if (option) {
+                  this.setSelectedAttribute(option);
                   this.setSelectedOption(option);
                   if (!this.showSelectedCount) {
                     this.setInputValue(this.getOptionValue(option));
@@ -1058,6 +1075,7 @@ export namespace ComboBox {
               this.focusedIndex = -1;
               this.focusedGroupIndex = -1;
               this.removeAllSelected();
+              this.setSelectedAttribute(undefined);
             }
           }
           break;
@@ -1078,6 +1096,7 @@ export namespace ComboBox {
             const option = this.getFocusedItem(!this.allowSelectAll ? this.focusedIndex : this.focusedIndex - 1);
             if (option) {
               this.setSelectedOption(option);
+              this.setSelectedAttribute(option);
               if (!this.showSelectedCount) {
                 this.setInputValue();
                 this.input?.setAttribute(ATTRIBUTES.AriaActivedescendant, "");

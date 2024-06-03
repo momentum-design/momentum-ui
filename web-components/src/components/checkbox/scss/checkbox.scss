@@ -48,7 +48,9 @@
 
 :host([focus-visible]:not([disabled])) {
   @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+
 }
+
 
 :host(:hover:not([disabled])) {
   .checkbox-label {
@@ -137,5 +139,12 @@
       background: var(--checkbox-selected-pressed-bg-color, $lm-checkbox-selected-pressed-bg-color-light);
       border-color: var(--checkbox-selected-pressed-border-color, $lm-checkbox-selected-pressed-border-color-light);
     }
+  }
+}
+
+@media(forced-colors:active) {
+  :host([focus-visible]:not([disabled])) {
+    outline: 2px solid Highlight; 
+    box-shadow: none; 
   }
 }

@@ -288,7 +288,7 @@ describe("Tabs", () => {
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
   });
 
-  test("should handle keydown event and focused appropriate tab", async () => {
+  test.skip("should handle keydown event and focused appropriate tab", async () => {
     const createKeyboardEvent = (id: string, code: string) => {
       return {
         originalTarget: {

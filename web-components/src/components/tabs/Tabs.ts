@@ -544,6 +544,9 @@ export namespace Tabs {
       } else {
         this.updateSelectedTab(selectedTabPanelIndex);
       }
+
+
+
       this.noTabsVisible =
         this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0 ? true : false;
       this.requestUpdate();
@@ -657,7 +660,7 @@ export namespace Tabs {
     }
     
     moveFocusToTab(currentTab: any) {
-     (currentTab as HTMLElement).focus();      
+     (currentTab as HTMLElement)?.focus();      
     }
 
     handleOverlayClose() {

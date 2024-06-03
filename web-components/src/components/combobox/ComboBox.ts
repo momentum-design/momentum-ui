@@ -1636,9 +1636,9 @@ export namespace ComboBox {
                 <div
                   id="md-combobox-listbox"
                   part="combobox-options"
-                  aria-label=${ifDefined(this.checkForVirtualScroll() ? this.ariaLabel || this.label : undefined)}
+                  aria-label=${this.ariaLabel || this.label}
                   style=${this.addStyle()}
-                  role=${ifDefined(this.checkForVirtualScroll() && this.isMulti ? undefined : "list")}
+                  role=${ifDefined(this.checkForVirtualScroll() ? undefined : "list")}
                 >
                   ${this.isMulti && this.allowSelectAll && this.expanded ? this.getSelectAllOption() : nothing}
                   ${!this.checkForVirtualScroll()

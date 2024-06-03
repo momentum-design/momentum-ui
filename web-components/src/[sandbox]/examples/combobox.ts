@@ -19,6 +19,13 @@ const comboboxOnExpand =(e: CustomEvent) => {
   console.log("combobox-on-expand: ", e);
 }
 
+const comboboxOnExpand2 =(e: CustomEvent) => {
+  console.log("combobox-on-expand2: ", e.composedPath());
+  const target =  e.composedPath()[0] as HTMLElement | any;
+  setTimeout(() => {target.options = comboBoxObjectOptions}, 500)
+
+}
+
 export const comboBoxTemplate = html`
 
   <md-label htmlFor="comboboxid">
@@ -76,6 +83,9 @@ export const comboBoxTemplate = html`
   <md-combobox disabled .options=${comboBoxOptions} placeholder="Placeholder" searchable> </md-combobox>
   <h3>Object Data</h3>
   <md-combobox placeholder="Placeholder" .options=${comboBoxObjectOptions} option-id="id" option-value="country">
+  </md-combobox>
+  <h3>Object Data With Virtual Scroll</h3>
+  <md-combobox placeholder="Placeholder" .options=${comboBoxObjectOptions} option-id="id" option-value="country"  use-virtual-scroll>
   </md-combobox>
   <h3>Object Data Predefined Value</h3>
   <md-combobox
@@ -202,7 +212,7 @@ export const comboBoxTemplate = html`
 
   <h3>With multi count and select all for virtual scroll</h3>
   <md-combobox
-    .options=${comboBoxObjectOptions}
+    .options=${[]}
     shape=${"pill"}
     option-id="id"
     option-value="country"
@@ -215,6 +225,7 @@ export const comboBoxTemplate = html`
     select-all-i18n=${"All"}
     use-virtual-scroll
     ariaLabel="Queue Name"
+    @combobox-on-expand=${comboboxOnExpand2}
   ></md-combobox>
 
   <h3>Custom error</h3>

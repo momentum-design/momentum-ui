@@ -127,6 +127,18 @@ export namespace Tabs {
       }
     }
 
+    private getTabIndex(tab: Tab.ELEMENT) {
+      // Get first tabindex to 0 only when More button is there and the visible tab is not selected
+      if (this.isMoreTabMenuVisible && (tab?.id?.split("_")[tab?.id?.split("_").length - 1] === "0") && 
+      (this.selected > (this.tabsFilteredAsVisibleList?.length - 1))) {
+        return 0;
+      } else if (this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id) {
+        return 0;
+      } else {
+        return -1;
+      }         
+    }
+
     private getNormalizedTabId(id: TabId) {
       return id.replace(MORE_MENU_TAB_COPY_ID_PREFIX, "");
     }
@@ -309,7 +321,7 @@ export namespace Tabs {
 
       tabs.forEach((tab, index) => {
         const uniqueId = nanoid(10);
-        const tabId = "tab_" + uniqueId;
+        const tabId = "tab_" + uniqueId + "_" + index;
         const panelId = "tab_panel_" + uniqueId;
         tab.setAttribute("id", tabId);
         tab.setAttribute("aria-controls", panelId);
@@ -615,6 +627,39 @@ export namespace Tabs {
       }
     }
 
+    private moveFocusToPreviousTab(elementId: string) {
+      const visibleTabList = [...this.tabsFilteredAsVisibleList];
+      const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
+      if (currentTabIndex === 0) {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[visibleTabList.length - 1]);
+      } else {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex - 1]);
+      }
+    }
+
+    private moveFocusToNextTab(elementId: string) {
+      const visibleTabList = [...this.tabsFilteredAsVisibleList];
+      const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
+      if (currentTabIndex === visibleTabList.length - 1) {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
+      } else {
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex + 1]);
+      }
+    }
+    
+    private moveFocusFromMoreTabs(elementId: string) {
+       if (this.selected >= this.tabsFilteredAsVisibleList.length) {
+        this.changeSelectedTabIdx(0);
+      } else{
+        this.changeSelectedTabIdx(this.selected);
+      }
+
+    }
+    
+    moveFocusToTab(currentTab: any) {
+     (currentTab as HTMLElement).focus();      
+    }
+
     handleOverlayClose() {
       if (this.menuOverlayElement) {
         this.menuOverlayElement.isOpen = false;
@@ -683,7 +728,7 @@ export namespace Tabs {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {
               event.preventDefault();
-              this.changeSelectedTabIdx(lastVisibleTabIdx);
+              this.moveFocusFromMoreTabs(elementId);
             }
           } else if (isVisibleTab) {
             //
@@ -717,7 +762,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+            this.moveFocusToPreviousTab(elementId);
           } else if (isHiddenTab) {
             //
           }
@@ -728,7 +773,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
+            this.moveFocusToNextTab(elementId);
           } else if (isHiddenTab) {
             //
           }
@@ -816,7 +861,7 @@ export namespace Tabs {
     private setupPanelsAndTabs() {
       if (this.tabSlotElement) {
         this.tabs = this.tabSlotElement.assignedElements() as Tab.ELEMENT[];
-      }
+       }
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
@@ -907,7 +952,7 @@ export namespace Tabs {
         } else {
           this.selected = selectedTabIndex;
         }
-      }
+      }     
     }
 
     disconnectedCallback() {
@@ -1018,7 +1063,7 @@ export namespace Tabs {
                   aria-label=${tab.ariaLabel}
                   aria-controls="${tab.id}"
                   .isCrossVisible=${true}
-                  tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                  tabIndex="${this.getTabIndex(tab)}"
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>

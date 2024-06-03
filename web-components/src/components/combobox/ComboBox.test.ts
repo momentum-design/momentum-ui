@@ -12,11 +12,9 @@ import {
   fixtureCleanup,
   html,
   nextFrame,
-  oneEvent,
-  waitUntil
+  oneEvent
 } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
-import "lit-virtualizer";
 import "./ComboBox";
 import { ComboBox } from "./ComboBox";
 
@@ -1543,26 +1541,7 @@ describe("Combobox Component", () => {
   });
 
   describe("Combobox with virtual scroll", () => {
-    test("should correct render options for virtual scroll", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} expanded .useVirtualScroll=${true}></md-combobox>
-        `
-      );
-
-      await elementUpdated(el);
-      const lists = comboBoxOptions.map((item, index) => {
-        return el.virtualizer?.renderItem.call(el, item, index).getTemplateElement().innerHTML;
-      });
-
-      if (lists && el.virtualizer) {
-        el.virtualizer.innerHTML = `${lists.join("")}`;
-      }
-      el.rangeChanged();
-
-      await elementUpdated(el);
-      expect(el.lists!.length).toEqual(11);
-    });
+   
     test("should handle keyUp event", async () => {
       const el = await fixture<ComboBox.ELEMENT>(
         html`
@@ -1580,7 +1559,7 @@ describe("Combobox Component", () => {
       const mock = jest.fn();
 
       el.listBox!.style.maxHeight = mock();
-      el.virtualizer!.style.height = mock();
+      
 
       expect(el.expanded).toBeTruthy();
       expect(mock).toBeCalled();
@@ -1645,12 +1624,12 @@ describe("Combobox Component", () => {
         `
       );
       el.expanded = true;
-      const lists = comboBoxOptions.map((item, index) => {
-        return `<li id=${item} role="option" style="height:12px;">${item}</li>`;
+      const lists = comboBoxOptions.map((item, _index) => {
+        return `<div id=${item} class="md-combobox-option" role="option" style="height:12px;">${item}</div>`;
       });
 
-      if (lists && el.virtualizer) {
-        el.virtualizer.innerHTML = `${lists.join("")}`;
+      if (lists && el.listBox) {
+        el.listBox.innerHTML = `${lists.join("")}`;
       }
       const upd = el.lists![0];
       if (el.lists![0]) {

@@ -58,16 +58,24 @@ const combobox = {
     },
     item: {
       "hover-bg-color": {
-        light: colors.blue[10].name,
-        dark: colors.blue[80].name
+        light: colors.blue[20].name,
+        dark: colors.blue[50].name
       },
       "focus-bg-color": {
-        light: colors.blue[20].name,
-        dark: colors.blue[70].name
+        light: colors.blue[70].name,
+        dark: colors.blue[40].name
       },
       "select-bg-color": {
         light: colors.white[100].name,
         dark: colors.gray[100].name
+      },
+      "select-font-color": {
+        light: colors.gray[100].name,
+        dark: colors.gray[90].name
+      },
+      "selected-bg-color": {
+        light: colors.blue[50].name,
+        dark: colors.blue[40].name
       },
       "checked-bg-color": {
         light: colors.blue[50].name,
@@ -120,17 +128,17 @@ const combobox = {
       light: colors.white[100].name,
       dark: colors.gray[90].name
     },
-    "color": {
+    color: {
       light: colors.gray[70].name,
       dark: colors.gray[40].name
     },
     "border-color": {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
-    },
+    }
   },
-  "placeholder": {
-    "color": {
+  placeholder: {
+    color: {
       light: colors.gray[70].name,
       dark: colors.gray[40].name
     }

@@ -1636,7 +1636,7 @@ export namespace ComboBox {
                           renderItem: (item: string | OptionMember, index?: number) =>
                             this.renderItem(item, index || 0),
                           useShadowDOM: false,
-                          scrollToIndex: { index: this.focusedIndex, position: "center" }
+                          scrollToIndex: { index: this.focusedIndex , position: this.focusedIndex === -1 ? "start" : "center" }
                         })}
                         </div>
                       `

@@ -269,7 +269,6 @@ ul {
 
   &[focused] {
     border: 2px solid var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
-    border-radius: 4px;
   }
   &[selected="true"] {
     background: var(--combobox-dropdown-item-selected-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);

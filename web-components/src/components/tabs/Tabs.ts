@@ -545,9 +545,6 @@ export namespace Tabs {
       } else {
         this.updateSelectedTab(selectedTabPanelIndex);
       }
-
-
-
       this.noTabsVisible =
         this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0 ? true : false;
       this.requestUpdate();
@@ -632,7 +629,6 @@ export namespace Tabs {
     }
 
     private moveFocusToPreviousTab(elementId: string) {
-      console.log("element", elementId);
       const visibleTabList = [...this.tabsFilteredAsVisibleList];
       const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
       if (currentTabIndex === 0) {

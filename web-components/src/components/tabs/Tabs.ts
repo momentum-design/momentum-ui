@@ -744,19 +744,21 @@ export namespace Tabs {
           if (isMoreTriggerTab) {
             //
           } else if (isVisibleTab) {
-            this.changeSelectedTabIdx(lastVisibleTabIdx);
+            event.preventDefault();              
+            this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.tabsFilteredAsVisibleList?.length - 1]);
           } else if (isHiddenTab) {
-            this.changeSelectedTabIdx(lastHiddenTabIdx);
+            event.preventDefault();    
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[this.tabsFilteredAsHiddenList?.length - 1]);             
           }
           break;
         }
         case Key.Home: {
-          if (isMoreTriggerTab) {
-            this.changeSelectedTabIdx(firstVisibleTabIdx);
-          } else if (isVisibleTab) {
-            this.changeSelectedTabIdx(firstVisibleTabIdx);
+          if (isMoreTriggerTab || isVisibleTab) {
+            event.preventDefault();  
+            this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
           } else if (isHiddenTab) {
-            this.changeSelectedTabIdx(firstHiddenTabIdx);
+            event.preventDefault();    
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[0]);
           }
           break;
         }

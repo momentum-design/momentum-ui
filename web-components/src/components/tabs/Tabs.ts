@@ -22,6 +22,7 @@ import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import a
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TAB_CROSS_WIDTH } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { setTimeout } from "timers";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -631,6 +632,7 @@ export namespace Tabs {
     }
 
     private moveFocusToPreviousTab(elementId: string) {
+      console.log("element", elementId);
       const visibleTabList = [...this.tabsFilteredAsVisibleList];
       const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
       if (currentTabIndex === 0) {
@@ -660,7 +662,7 @@ export namespace Tabs {
     }
     
     moveFocusToTab(currentTab: any) {
-     (currentTab as HTMLElement)?.focus();      
+      setTimeout(() =>  (currentTab as HTMLElement)?.focus(), 0);
     }
 
     handleOverlayClose() {
@@ -746,17 +748,17 @@ export namespace Tabs {
           } else if (isVisibleTab) {
             event.preventDefault();              
             this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.tabsFilteredAsVisibleList?.length - 1]);
-          } else if (isHiddenTab) {
+          } else if (this.isMoreTabMenuOpen) {
             event.preventDefault();    
             this.moveFocusToTab(this.hiddenTabsContainerElement?.children[this.tabsFilteredAsHiddenList?.length - 1]);             
           }
           break;
         }
         case Key.Home: {
-          if (isMoreTriggerTab || isVisibleTab) {
+          if (isVisibleTab) {
             event.preventDefault();  
             this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
-          } else if (isHiddenTab) {
+          } else if (this.isMoreTabMenuOpen) {
             event.preventDefault();    
             this.moveFocusToTab(this.hiddenTabsContainerElement?.children[0]);
           }
@@ -789,8 +791,10 @@ export namespace Tabs {
             //
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
-            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
-          } else if (isHiddenTab) {
+            this.moveFocusToPreviousTab(elementId);
+          
+            //this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+          } else if (this.isMoreTabMenuOpen) {
             event.preventDefault();
             const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
             this.changeSelectedTabIdx(idx);
@@ -802,8 +806,10 @@ export namespace Tabs {
             //
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
-            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
-          } else if (isHiddenTab) {
+            this.moveFocusToNextTab(elementId);
+          
+            //this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
+          } else if (this.isMoreTabMenuOpen) {
             event.preventDefault();
             const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;
             this.changeSelectedTabIdx(idx);

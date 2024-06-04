@@ -97,3 +97,97 @@
     }
   }
 }
+
+@media(forced-colors: active) {
+  .md-toggle-switch {
+    .md-toggle-switch__input {
+      + .md-toggle-switch__label {
+        .md-toggle-switch__label__container {
+          background-color: Canvas;
+          outline: 1px solid CanvasText;
+          transition: background-color 350ms, outline 350ms;
+
+          &::after {
+            background-color: CanvasText;
+            transition: background-color 350ms;
+          }
+        }
+
+        &:hover {
+          .md-toggle-switch__label__container {
+            background-color: HighlightText;
+          }
+        }
+      }
+
+      &:focus,
+      &.focus {
+        + .md-toggle-switch__label {
+          .md-toggle-switch__label__container {
+            outline: 2px solid Highlight;
+          }
+        }
+      }
+
+      // Checked
+      &.checked,
+      &:checked {
+        + .md-toggle-switch__label {
+          .md-toggle-switch__label__container {
+            &::after {
+              background-color: Highlight;
+            }
+          }
+
+          &:hover {
+            .md-toggle-switch__label__container {
+              background-color: HighlightText;
+            }
+          }
+        }
+      }
+
+      // Disabled Settings
+      &:disabled,
+      &.disabled {
+        + .md-toggle-switch__label {
+          .md-toggle-switch__label__container {
+            background-color: GrayText;
+            transition: background 350ms, background-color 350ms, outline 350ms;
+
+            &::after {
+              background-color: Canvas;
+            }
+          }
+
+          &:hover {
+            .md-toggle-switch__label__container {
+              background-color: GrayText;
+            }
+          }
+        }
+
+        //--> Disabled--Checked/Indeterminate
+        &.checked,
+        &:checked {
+          + .md-toggle-switch__label {
+            .md-toggle-switch__label__container {
+              background-color: GrayText;
+
+              &::after {
+                background-color: CanvasText;
+                border: 1px solid Canvas;
+              }
+            }
+
+            &:hover {
+              .md-toggle-switch__label__container {
+                background-color: GrayText;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

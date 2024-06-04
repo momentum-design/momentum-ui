@@ -99,3 +99,35 @@
 :host([focus-visible]) {
   box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
 }
+
+@media(forced-colors:active) {
+  :host(md-pagination) {
+    .md-pagination {
+      &-nav {
+        &:focus, &:hover {
+          outline: 1px solid Highlight;
+        }
+      }
+
+      &-list {
+        li:not(.page-ellipsis) {
+          &[aria-current="true"], &:hover {
+            forced-color-adjust: none;
+            background-color: Highlight;
+            color: Canvas;
+          }
+        }
+      }
+
+      &-dots {
+        li {
+          background-color: GrayText;
+          &[aria-current="true"], &:hover {
+            forced-color-adjust: none;
+            background-color: Highlight;
+            color: Canvas;
+          }
+        }
+      }
+    }
+  }}

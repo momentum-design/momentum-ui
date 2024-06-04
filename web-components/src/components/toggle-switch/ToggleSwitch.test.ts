@@ -77,21 +77,20 @@ describe("Toggle Switch Component", () => {
   });
 
   test("should have correct accessible description", async () => {
-    expect(element.hasAttribute("aria-describedby")).toBe(false);
+    expect(element.hasAttribute("description")).toBe(false);
 
-    let input = element.shadowRoot!.querySelector(".md-toggle-switch__input")!;
-    expect(input.hasAttribute("aria-describedby")).toBe(false);
-
+    const input = element.shadowRoot!.querySelector(".md-toggle-switch__input")!;
     let accessibleDescriptionLabel = element.shadowRoot!.getElementById("md-toggle-switch__accessible-description");
+  
+    expect(input.hasAttribute("aria-describedby")).toBe(false);
     expect(accessibleDescriptionLabel).toBeNull();
 
-    element.ariaDescription = "this is a test description";
+    element.description = "this is a test description";
     await elementUpdated(element);
-
-    input = element.shadowRoot!.querySelector(".md-toggle-switch__input")!;
-    expect(input.hasAttribute("aria-describedby")).toBe(true);
-
     accessibleDescriptionLabel = element.shadowRoot!.getElementById("md-toggle-switch__accessible-description");
+
+    expect(input.getAttribute("aria-describedby")).toBe("md-toggle-switch__accessible-description");
     expect(accessibleDescriptionLabel).not.toBeNull();
+    expect(accessibleDescriptionLabel!.getAttribute("id")).toBe("md-toggle-switch__accessible-description");
   });
 });

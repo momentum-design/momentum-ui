@@ -711,13 +711,9 @@ export namespace Tabs {
         !isMoreTriggerTab || !this.isMoreTabMenuVisible
           ? this.tabsHash[this.getNormalizedTabId(id)]
           : this.moreTabMenuElement;
-
+     
       const isVisibleTab = this.isMoreTabMenuVisible ? tab && this.tabsVisibleIdxHash[tab.id] > -1 : true;
       const isHiddenTab = this.isMoreTabMenuVisible ? tab && this.tabsHiddenIdxHash[tab.id] > -1 : false;
-      const firstVisibleTabIdx = 0;
-      const lastVisibleTabIdx = this.isMoreTabMenuVisible
-        ? this.tabsFilteredAsVisibleList.length - 1
-        : this.tabs.length - 1;
       const firstHiddenTabIdx = this.isMoreTabMenuVisible ? this.tabsFilteredAsVisibleList.length : -1;
       const lastHiddenTabIdx = this.isMoreTabMenuVisible
         ? this.tabsFilteredAsVisibleList.length + this.tabsFilteredAsHiddenList.length - 1
@@ -788,8 +784,6 @@ export namespace Tabs {
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
             this.moveFocusToPreviousTab(elementId);
-          
-            //this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
           } else if (this.isMoreTabMenuOpen) {
             event.preventDefault();
             const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
@@ -803,8 +797,6 @@ export namespace Tabs {
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
             this.moveFocusToNextTab(elementId);
-          
-            //this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
           } else if (this.isMoreTabMenuOpen) {
             event.preventDefault();
             const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;

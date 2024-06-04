@@ -288,7 +288,7 @@ describe("Tabs", () => {
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
   });
 
-  test.skip("should handle keydown event and focused appropriate tab", async () => {
+  test("should handle keydown event and focused appropriate tab", async () => {
     const createKeyboardEvent = (id: string, code: string) => {
       return {
         originalTarget: {
@@ -300,22 +300,25 @@ describe("Tabs", () => {
         ctrlKey: false,
         shiftKey: false,
         altKey: false,
-        stopPropagation: jest.fn()
+        stopPropagation: jest.fn(),
+        preventDefault: jest.fn()
       };
     };
-
+    tabs.selected = 1;
+    
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);
 
-    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
-    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(1);
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.End));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(2);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
-    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(1);
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
 
     tabs.selected = 0;
     await elementUpdated(tabs);
@@ -323,46 +326,54 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowLeft));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(2);
-    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
-
+    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
+    
     tabs.selected = 2;
     await elementUpdated(tabs);
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.ArrowLeft));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(1);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
-
+    expect(tabs.selected).toBe(2);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
+    
+    
     tabs.selected = tabs.slotted.length - 1;
     await elementUpdated(tabs);
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(0);
-    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
-
+    expect(tabs.selected).toBe(2);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
+    
     tabs.selected = 0;
     await elementUpdated(tabs);
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(1);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
-
-    tabs.selected = 1;
+    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
+    
+    tabs.selected = 0;
     await elementUpdated(tabs);
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.ArrowLeft));
-    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
     await elementUpdated(tabs);
 
     expect(tabs.selected).toBe(0);
     expect(panels[0].hasAttribute("hidden")).toBeTruthy();
-
+    
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.Space));
     await elementUpdated(tabs);
     expect(panels[2].hasAttribute("hidden")).toBeFalsy();

@@ -628,33 +628,42 @@ export namespace Tabs {
       }
     }
 
+    private getCurrentIndex(elementId: string) {
+      const arrayLength = this.visibleTabsContainerElement?.children.length  || 0;
+      for(let i =0; i < arrayLength ; i++) {
+        if(this.visibleTabsContainerElement?.children[i].id === elementId) {
+          return i;          
+        };   
+      }
+    }
+
     private moveFocusToPreviousTab(elementId: string) {
-      const visibleTabList = [...this.tabsFilteredAsVisibleList];
-      const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
+      const currentTabIndex = this.getCurrentIndex(elementId) || 0;
+      this.getCurrentIndex(elementId);
       if (currentTabIndex === 0) {
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[visibleTabList.length - 1]);
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.visibleTabsContainerElement?.children.length - 1]);
       } else {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex - 1]);
       }
     }
 
     private moveFocusToNextTab(elementId: string) {
-      const visibleTabList = [...this.tabsFilteredAsVisibleList];
-      const currentTabIndex = visibleTabList.findIndex((element)=> element.id===elementId);
-      if (currentTabIndex === visibleTabList.length - 1) {
+      const currentTabIndex = this.getCurrentIndex(elementId) || 0;
+      const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
+      if (currentTabIndex === visibleArrayLength - 1) {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
       } else {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex + 1]);
       }
     }
     
-    private moveFocusFromMoreTabs(elementId: string) {
-       if (this.selected >= this.tabsFilteredAsVisibleList.length) {
+    private moveFocusFromMoreTabs() {
+      const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
+      if (this.selected >= visibleArrayLength) {
         this.changeSelectedTabIdx(0);
       } else{
         this.changeSelectedTabIdx(this.selected);
       }
-
     }
     
     moveFocusToTab(currentTab: any) {
@@ -725,7 +734,7 @@ export namespace Tabs {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {
               event.preventDefault();
-              this.moveFocusFromMoreTabs(elementId);
+              this.moveFocusFromMoreTabs();
             }
           } else if (isVisibleTab) {
             //

@@ -632,7 +632,6 @@ export namespace Tabs {
       const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
       for(let i =0; i < arrayLength; i++) {
         if(this.visibleTabsContainerElement?.children[i].id === elementId) {
-          console.log("**Yes", i);
           return i;          
         };   
       }

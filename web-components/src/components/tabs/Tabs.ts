@@ -660,7 +660,7 @@ export namespace Tabs {
     }
     
     private moveFocusFromMoreTabs() {
-      // Shift tab from More Tabs will move focus to selected Tab or the first visible Tab
+      // Shift tab from More tabs will move focus to selected Tab or the first visible Tab
       const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
       if (this.selected >= visibleArrayLength) {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
@@ -670,7 +670,7 @@ export namespace Tabs {
     }
     
     moveFocusToTab(currentTab: any) {
-      setTimeout(() =>  (currentTab as HTMLElement)?.focus(), 0);
+      setTimeout(() => (currentTab as HTMLElement)?.focus(), 0);
     }
 
     handleOverlayClose() {
@@ -726,6 +726,10 @@ export namespace Tabs {
      
       const isVisibleTab = this.isMoreTabMenuVisible ? tab && this.tabsVisibleIdxHash[tab.id] > -1 : true;
       const isHiddenTab = this.isMoreTabMenuVisible ? tab && this.tabsHiddenIdxHash[tab.id] > -1 : false;
+      const firstVisibleTabIdx = 0;
+      const lastVisibleTabIdx = this.isMoreTabMenuVisible
+        ? this.tabsFilteredAsVisibleList.length - 1
+        : this.tabs.length - 1;
       const firstHiddenTabIdx = this.isMoreTabMenuVisible ? this.tabsFilteredAsVisibleList.length : -1;
       const lastHiddenTabIdx = this.isMoreTabMenuVisible
         ? this.tabsFilteredAsVisibleList.length + this.tabsFilteredAsHiddenList.length - 1
@@ -795,8 +799,8 @@ export namespace Tabs {
             //
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
-            this.moveFocusToPreviousTab(elementId);
-          } else if (this.isMoreTabMenuOpen) {
+            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+          } else if (isHiddenTab) {
             event.preventDefault();
             const idx = this.selected === firstHiddenTabIdx ? lastHiddenTabIdx : this.selected - 1;
             this.changeSelectedTabIdx(idx);
@@ -808,8 +812,8 @@ export namespace Tabs {
             //
           } else if (isVisibleTab && this.direction === "vertical") {
             event.preventDefault();
-            this.moveFocusToNextTab(elementId);
-          } else if (this.isMoreTabMenuOpen) {
+            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
+          } else if (isHiddenTab) {
             event.preventDefault();
             const idx = this.selected === lastHiddenTabIdx ? firstHiddenTabIdx : this.selected + 1;
             this.changeSelectedTabIdx(idx);
@@ -872,7 +876,7 @@ export namespace Tabs {
     private setupPanelsAndTabs() {
       if (this.tabSlotElement) {
         this.tabs = this.tabSlotElement.assignedElements() as Tab.ELEMENT[];
-       }
+      }
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }

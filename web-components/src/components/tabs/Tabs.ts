@@ -395,7 +395,7 @@ export namespace Tabs {
       event.stopPropagation();
       const oldIndex = event.oldIndex;
       const newIndex = event.newIndex;
-
+     
       const visibleTabElements = [...this.tabsFilteredAsVisibleList];
       const hiddenTabElements = [...this.tabsFilteredAsHiddenList];
 
@@ -628,14 +628,14 @@ export namespace Tabs {
       }
     }
 
-    private getCurrentIndex(elementId: string) {
+    private getCurrentIndex(tabId: string) {
       const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
       for(let i =0; i < arrayLength; i++) {
-        if(this.visibleTabsContainerElement?.children[i].id === elementId) {
+        if(this.visibleTabsContainerElement?.children[i].id === tabId) {
           return i;          
         };   
       }
-      return 0;
+      return this.tabsVisibleIdxHash[tabId];
     }
 
     private moveFocusToPreviousTab(elementId: string) {
@@ -717,6 +717,8 @@ export namespace Tabs {
 
       const key = event.code;
       const { shiftKey } = event;
+      console.log("****this.isMoreTabMenuVisible******",this.isMoreTabMenuVisible);
+      console.log("****id******",id);
 
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
@@ -734,6 +736,8 @@ export namespace Tabs {
 
       switch (key) {
         case Key.Tab: {
+          console.log("****isMoreTriggerTab***",isMoreTriggerTab );
+ 
           if (isMoreTriggerTab) {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {

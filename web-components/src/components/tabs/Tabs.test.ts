@@ -289,6 +289,10 @@ describe("Tabs", () => {
   });
 
   test("should handle keydown event and focused appropriate tab", async () => {
+    tab.forEach((t: Tab.ELEMENT) => {
+      tabs["tabsFilteredAsVisibleList"].push(t);
+    });
+    
     const createKeyboardEvent = (id: string, code: string) => {
       return {
         originalTarget: {
@@ -305,9 +309,6 @@ describe("Tabs", () => {
       };
     };
     tabs.selected = 1;
-    tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
-    tabs["tabsFilteredAsHiddenList"] = [tab[2]];
-
     
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);
@@ -384,6 +385,36 @@ describe("Tabs", () => {
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Enter));
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Tab));
     await elementUpdated(tabs);
+  });
+
+  test("should handle Keydown event with More Button", async() => {
+    tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
+    tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+    tabs["updateIsMoreTabMenuSelected"]();
+    const createKeyboardEvent = (id: string, code: string) => {
+      return {
+        originalTarget: {
+          id: id
+        },
+        composedPath: jest.fn(),
+        code: code,
+        target: tabs,
+        ctrlKey: false,
+        shiftKey: true,
+        altKey: false,
+        stopPropagation: jest.fn(),
+        preventDefault: jest.fn()
+      };
+    };
+    tabs.selected = 3;
+    tabs["isMoreTabMenuVisible"]=true;
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(0);
+    tabs.selected = 1;
+     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(1);
   });
 
   test("should handle click event and select appropriate tab", async () => {

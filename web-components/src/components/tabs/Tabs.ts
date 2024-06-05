@@ -661,6 +661,7 @@ export namespace Tabs {
     }
     
     private moveFocusFromMoreTabs() {
+      // Shift Tab from More Tabs will move focus to selected Tab or the first visible Tab
       const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
       if (this.selected >= visibleArrayLength) {
         this.changeSelectedTabIdx(0);

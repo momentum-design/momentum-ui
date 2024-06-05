@@ -294,7 +294,7 @@ describe("Tabs", () => {
         originalTarget: {
           id: id
         },
-        composedPath: () => [{ id: "id" }, { id: "id2" }],
+        composedPath: jest.fn(),
         code: code,
         target: tabs,
         ctrlKey: false,
@@ -305,6 +305,9 @@ describe("Tabs", () => {
       };
     };
     tabs.selected = 1;
+    tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
+    tabs["tabsFilteredAsHiddenList"] = [tab[2]];
+
     
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);

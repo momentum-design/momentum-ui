@@ -717,9 +717,7 @@ export namespace Tabs {
 
       const key = event.code;
       const { shiftKey } = event;
-      console.log("****this.isMoreTabMenuVisible******",this.isMoreTabMenuVisible);
-      console.log("****id******",id);
-
+    
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
       const tab =
@@ -736,8 +734,6 @@ export namespace Tabs {
 
       switch (key) {
         case Key.Tab: {
-          console.log("****isMoreTriggerTab***",isMoreTriggerTab );
- 
           if (isMoreTriggerTab) {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {

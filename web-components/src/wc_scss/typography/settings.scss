@@ -1,4 +1,6 @@
 // We use these to define default font stacks
+@use "sass:math";
+
 $brand-font-folder: "~@momentum-ui/core/fonts" !default;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -180,16 +182,16 @@ $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 $acronym-underline: 1px dotted $md-gray-20 !default;
 
 // line height (px) divided by font-size
-$title-heading-line-height: rem-calc(80) / $title-heading-font-size !default;
-$h1-line-height: rem-calc(64) / $h1-font-size !default;
-$h2-line-height: rem-calc(48) / $h2-font-size !default;
-$h3-line-height: rem-calc(32) / $h3-font-size !default;
-$h4-line-height: rem-calc(32) / $h4-font-size !default;
-$h5-line-height: rem-calc(24) / $h5-font-size !default;
-$h6-line-height: rem-calc(24) / $h6-font-size !default;
-$paragraph-line-height: rem-calc(24) / $paragraph-font-size !default;
-$body-small-line-height: rem-calc(16) / $body-small-font-size !default;
-$body-smallest-line-height: rem-calc(16) / $body-smallest-font-size !default;
+$title-heading-line-height: math.div(rem-calc(80), $title-heading-font-size) !default;
+$h1-line-height: math.div(rem-calc(64), $h1-font-size) !default;
+$h2-line-height: math.div(rem-calc(48), $h2-font-size) !default;
+$h3-line-height: math.div(rem-calc(32), $h3-font-size) !default;
+$h4-line-height: math.div(rem-calc(32), $h4-font-size) !default;
+$h5-line-height: math.div(rem-calc(24), $h5-font-size) !default;
+$h6-line-height: math.div(rem-calc(24), $h6-font-size) !default;
+$paragraph-line-height: math.div(rem-calc(24), $paragraph-font-size) !default;
+$body-small-line-height: math.div(rem-calc(16), $body-small-font-size) !default;
+$body-smallest-line-height: math.div(rem-calc(16), $body-smallest-font-size) !default;
 
 //------------------------------------
 //    #FONT-SIZE-VARIABLES

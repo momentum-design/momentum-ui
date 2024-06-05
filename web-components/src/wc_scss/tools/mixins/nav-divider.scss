@@ -5,6 +5,6 @@
 @mixin nav-divider($color: #e5e5e5) {
   background-color: $color;
   height: 1px;
-  margin: ((20px / 2) - 1) 0;
+  margin: ((20px * 0.5) - 1) 0;
   overflow: hidden;
 }

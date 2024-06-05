@@ -128,16 +128,16 @@
         top: $top;
       } @else {
         top: 50%;
-        margin-top: (-$width/2);
+        margin-top: (-$width*0.5);
       }
 
       @if $left {
         left: $left;
       } @else {
-        left: ($tabbar-menu-icon-width - $width)/2;
+        left: ($tabbar-menu-icon-width - $width)*0.5;
       }
     } @else {
-      margin-top: -($width/2);
+      margin-top: -($width*0.5);
       top: 50%;
       #{$opposite-direction}: $topbar-link-padding;
     }

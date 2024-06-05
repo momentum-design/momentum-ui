@@ -130,7 +130,7 @@ export namespace Tabs {
 
     private getTabIndex(tab: Tab.ELEMENT) {
       // Get first tabindex to 0 only when More button is there and the visible tab is not selected
-      if (this.isMoreTabMenuVisible && (tab?.id?.split("_")[tab?.id?.split("_").length - 1] === "0") && 
+      if (this.isMoreTabMenuVisible && (this.getCurrentIndex(tab?.id) === 0) && 
       (this.selected > (this.tabsFilteredAsVisibleList?.length - 1))) {
         return 0;
       } else if (this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id) {
@@ -322,7 +322,7 @@ export namespace Tabs {
 
       tabs.forEach((tab, index) => {
         const uniqueId = nanoid(10);
-        const tabId = "tab_" + uniqueId + "_" + index;
+        const tabId = "tab_" + uniqueId;
         const panelId = "tab_panel_" + uniqueId;
         tab.setAttribute("id", tabId);
         tab.setAttribute("aria-controls", panelId);
@@ -629,17 +629,20 @@ export namespace Tabs {
     }
 
     private getCurrentIndex(elementId: string) {
-      const arrayLength = this.visibleTabsContainerElement?.children.length  || 0;
-      for(let i =0; i < arrayLength ; i++) {
+      const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
+      for(let i =0; i < arrayLength; i++) {
         if(this.visibleTabsContainerElement?.children[i].id === elementId) {
+          console.log("**Yes", i);
           return i;          
         };   
       }
+      return 0;
     }
 
     private moveFocusToPreviousTab(elementId: string) {
-      const currentTabIndex = this.getCurrentIndex(elementId) || 0;
+      const currentTabIndex = this.getCurrentIndex(elementId);
       this.getCurrentIndex(elementId);
+      // Move focus to last if current tab is first
       if (currentTabIndex === 0) {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.visibleTabsContainerElement?.children.length - 1]);
       } else {
@@ -648,8 +651,9 @@ export namespace Tabs {
     }
 
     private moveFocusToNextTab(elementId: string) {
-      const currentTabIndex = this.getCurrentIndex(elementId) || 0;
+      const currentTabIndex = this.getCurrentIndex(elementId);
       const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
+      // Move focus to first Tab if the cuurent tab is last
       if (currentTabIndex === visibleArrayLength - 1) {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
       } else {

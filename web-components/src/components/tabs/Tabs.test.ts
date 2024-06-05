@@ -410,7 +410,7 @@ describe("Tabs", () => {
     tabs["isMoreTabMenuVisible"]=true;
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
     await elementUpdated(tabs);
-    expect(tabs.selected).toBe(0);
+    expect(tabs.selected).toBe(3);
     tabs.selected = 1;
      (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
     await elementUpdated(tabs);

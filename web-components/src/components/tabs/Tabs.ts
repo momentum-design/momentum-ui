@@ -640,8 +640,7 @@ export namespace Tabs {
 
     private moveFocusToPreviousTab(elementId: string) {
       const currentTabIndex = this.getCurrentIndex(elementId);
-      this.getCurrentIndex(elementId);
-      // Move focus to last if current tab is first
+      // Move focus to last tab if current tab is first
       if (currentTabIndex === 0) {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.visibleTabsContainerElement?.children.length - 1]);
       } else {
@@ -652,7 +651,7 @@ export namespace Tabs {
     private moveFocusToNextTab(elementId: string) {
       const currentTabIndex = this.getCurrentIndex(elementId);
       const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
-      // Move focus to first Tab if the cuurent tab is last
+      // Move focus to first tab if current tab is last
       if (currentTabIndex === visibleArrayLength - 1) {
         this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
       } else {
@@ -661,12 +660,12 @@ export namespace Tabs {
     }
     
     private moveFocusFromMoreTabs() {
-      // Shift Tab from More Tabs will move focus to selected Tab or the first visible Tab
+      // Shift tab from More Tabs will move focus to selected Tab or the first visible Tab
       const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
       if (this.selected >= visibleArrayLength) {
-        this.changeSelectedTabIdx(0);
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
       } else{
-        this.changeSelectedTabIdx(this.selected);
+        this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.selected]);
       }
     }
     

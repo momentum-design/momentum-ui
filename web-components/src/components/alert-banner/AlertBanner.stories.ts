@@ -14,6 +14,7 @@ import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import mdx from "./AlertBanner.mdx";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Alert Banner",
@@ -35,12 +36,13 @@ export default {
 export const AlertBanner = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const type = select("type", ["default", "warning", "error"], "default");
   const closable = boolean("closable", false);
   const textContent = text("alert message", "Test Alert Message");
 
   return html`
-    <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-alert-banner
         @alertBanner-hide=${action("dispatchEvent")}
         show

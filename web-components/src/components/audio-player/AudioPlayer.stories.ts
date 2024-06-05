@@ -10,7 +10,8 @@ import "@/components/audio-player/AudioPlayer";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { html } from "lit-element";
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Audio Player",
@@ -26,9 +27,10 @@ export default {
 export const AudioPlayer = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
 
   return html`
-    <md-theme class="theme-toggle" id="audio" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="audio" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-audio-player src="https://www2.cs.uic.edu/~i101/SoundFiles/ImperialMarch60.wav"></md-audio-player>
     </md-theme>
   `;

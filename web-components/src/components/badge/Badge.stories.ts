@@ -13,6 +13,7 @@ import { badgeColor } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Badge",
@@ -35,6 +36,7 @@ export default {
 export const Badge = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const color = select("Color", badgeColor, "blue");
   const bgColor = text("BG Color Overrides", "");
   const textColor = text("Text Color Override", "");
@@ -46,7 +48,7 @@ export const Badge = () => {
   const disabled = boolean("Disabled", false);
 
   return html`
-    <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-badge
         .color=${color}
         .bgColor=${bgColor}

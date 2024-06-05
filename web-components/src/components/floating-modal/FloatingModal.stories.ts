@@ -11,9 +11,10 @@ import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import mdx from "./Floating.mdx";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Floating Modal",
@@ -46,6 +47,7 @@ export default {
 export const FloatingModal = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("show", true);
   const full = boolean("full-screen", false);
   const fixed = boolean("fixed-strategy", false);
@@ -54,7 +56,7 @@ export const FloatingModal = () => {
   const label = text("label", "Test label");
 
   return html`
-    <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="floating" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-floating-modal
         ?show=${show}
         ?full-screen=${full}

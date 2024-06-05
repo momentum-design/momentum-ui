@@ -14,6 +14,7 @@ import "@/components/input/Input";
 import "@/components/theme/Theme";
 import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 import { action } from '@storybook/addon-actions';
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Input",
@@ -65,6 +66,7 @@ const messageArr = [
 export const Input = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const placeholder = text("Enter Text", "Enter Text");
   const label = text("Label", "Label");
   const value = text("Value Text", "Value Text");
@@ -86,7 +88,7 @@ export const Input = () => {
     const nested = select("Nested Level", nestedLevel, 1);
 
     return html`
-    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-input label="Default Input"></md-input>
       <md-input label="Input Nested Level" containerSize="small-12" .nestedLevel=${nested}></md-input>
     </md-theme>
@@ -96,7 +98,7 @@ export const Input = () => {
     const nameIcon = select("Icon Name", iconNames, "accessibility_16");
 
     return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-input
           label="Input Icon"
           containerSize="small-12"
@@ -109,7 +111,7 @@ export const Input = () => {
     `;
   } else {
     return html`
-    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-input 
         .label=${label} 
         .placeholder=${placeholder} 

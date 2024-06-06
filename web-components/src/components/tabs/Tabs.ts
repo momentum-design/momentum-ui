@@ -33,6 +33,9 @@ const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
+const PREVIOUS = "previous";
+const NEXT = "next";
+const FROM_MORE_TABS = "fromMoreTabs";
 export namespace Tabs {
   type TabViewportData = {
     isTabInViewportHidden: boolean;
@@ -638,37 +641,28 @@ export namespace Tabs {
       return this.tabsVisibleIdxHash[tabId];
     }
 
-    private moveFocusToPreviousTab(elementId: string) {
+    private moveFocusToAdjacentTab(elementId: string, direction: 'previous' | 'next' | 'fromMoreTabs') {
       const currentTabIndex = this.getCurrentIndex(elementId);
-      // Move focus to last tab if current tab is first
-      if (currentTabIndex === 0) {
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.visibleTabsContainerElement?.children.length - 1]);
+      const visibleTabs = this.visibleTabsContainerElement?.children;
+      const visibleArrayLength = visibleTabs?.length || 0;
+      
+      if (!visibleTabs  || visibleArrayLength === 0) return;
+      
+      let newIndex: number;
+      
+      if (direction === PREVIOUS) {
+      newIndex = (currentTabIndex === 0) ? visibleArrayLength - 1 : currentTabIndex - 1;
+      } else if (direction === NEXT) {
+      newIndex = (currentTabIndex === visibleArrayLength - 1) ? 0 : currentTabIndex + 1;
+      } else if (direction === FROM_MORE_TABS) {
+      newIndex = (this.selected >= visibleArrayLength) ? 0 : this.selected;
       } else {
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex - 1]);
+      return;
       }
-    }
 
-    private moveFocusToNextTab(elementId: string) {
-      const currentTabIndex = this.getCurrentIndex(elementId);
-      const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
-      // Move focus to first tab if current tab is last
-      if (currentTabIndex === visibleArrayLength - 1) {
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
-      } else {
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[currentTabIndex + 1]);
-      }
-    }
-    
-    private moveFocusFromMoreTabs() {
-      // Shift tab from More tabs will move focus to selected Tab or the first visible Tab
-      const visibleArrayLength = this.visibleTabsContainerElement?.children.length || 0;
-      if (this.selected >= visibleArrayLength) {
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
-      } else{
-        this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.selected]);
-      }
-    }
-    
+      this.moveFocusToTab(visibleTabs[newIndex]);
+    };
+      
     moveFocusToTab(currentTab: any) {
       setTimeout(() => (currentTab as HTMLElement)?.focus(), 0);
     }
@@ -741,7 +735,7 @@ export namespace Tabs {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {
               event.preventDefault();
-              this.moveFocusFromMoreTabs();
+              this.moveFocusToAdjacentTab(elementId, FROM_MORE_TABS);
             }
           } else if (isVisibleTab) {
             //
@@ -777,7 +771,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.moveFocusToPreviousTab(elementId);
+            this.moveFocusToAdjacentTab(elementId, PREVIOUS);
           } else if (isHiddenTab) {
             //
           }
@@ -788,7 +782,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.moveFocusToNextTab(elementId);
+            this.moveFocusToAdjacentTab(elementId, NEXT);
           } else if (isHiddenTab) {
             //
           }

@@ -648,7 +648,7 @@ export namespace Tabs {
       
       if (!visibleTabs  || visibleArrayLength === 0) return;
       
-      let newIndex: number;
+      let newIndex: number = 0;
       
       if (direction === PREVIOUS) {
       newIndex = (currentTabIndex === 0) ? visibleArrayLength - 1 : currentTabIndex - 1;
@@ -656,9 +656,7 @@ export namespace Tabs {
       newIndex = (currentTabIndex === visibleArrayLength - 1) ? 0 : currentTabIndex + 1;
       } else if (direction === FROM_MORE_TABS) {
       newIndex = (this.selected >= visibleArrayLength) ? 0 : this.selected;
-      } else {
-      return;
-      }
+      };
 
       this.moveFocusToTab(visibleTabs[newIndex]);
     };

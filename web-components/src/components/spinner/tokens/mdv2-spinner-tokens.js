@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const spinner = {
   prefix: "mdv2",
   component: "spinner",
   "bg-color": {
-    light: colors.gray[40].name,
-    dark: colors.gray[50].name
+    light: "$mds-color-theme-neutral-control-default",
+    dark: "$mds-color-theme-neutral-control-default"
   },
   color: {
-    light: colors.black[100].name,
-    dark: colors.white[100].name
+    light: "$mds-color-theme-neutral-indicator-default",
+    dark: "$mds-color-theme-neutral-indicator-default"
   }
 }
 

@@ -1,44 +1,43 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const list = {
   prefix: "mdv2",
   component: "list",
   "text-color": {
-    light: colors.gray[100].name,
-    dark: colors.gray["05"].name
+    light: "$mds-color-theme-neutral-text-primary",
+    dark: "$mds-color-theme-neutral-text-primary"
   },
   hover: {
     background: {
-      light: colors.blue[20].name,
-      dark: colors.blue[50].name
+      light: "$mds-color-theme-neutral-surface-secondary-hover",
+      dark: "$mds-color-theme-neutral-surface-secondary-hover"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray[100].name
+      light: "$mds-color-theme-neutral-text-primary",
+      dark: "$mds-color-theme-neutral-text-primary"
     }
   },
   disabled: {
     "text-color": {
-      light: colors.gray[40].name,
-      dark: colors.gray[70].name
+      light: "$mds-color-theme-neutral-text-primary",
+      dark: "$mds-color-theme-neutral-text-primary"
     }
   },
   active: {
     background: {
-      light: colors.blue[50].name,
-      dark: colors.blue[40].name
+      light: "$mds-color-theme-neutral-surface-primary-active",
+      dark: "$mds-color-theme-neutral-surface-primary-active"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray[100].name
+      light: "$mds-color-theme-neutral-text-primary",
+      dark: "$mds-color-theme-neutral-text-primary"
     }
   },
   focus: {
     "border-color": {
-      light: colors.blue[70].name,
-      dark: colors.blue[40].name
+      light: "$mds-color-theme-accent-text-default",
+      dark: "$mds-color-theme-accent-text-default"
     }
   }
 };

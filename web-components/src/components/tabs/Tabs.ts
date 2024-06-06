@@ -651,11 +651,11 @@ export namespace Tabs {
       let newIndex: number = 0;
       
       if (direction === PREVIOUS) {
-      newIndex = (currentTabIndex === 0) ? visibleArrayLength - 1 : currentTabIndex - 1;
+        newIndex = (currentTabIndex === 0) ? visibleArrayLength - 1 : currentTabIndex - 1;
       } else if (direction === NEXT) {
-      newIndex = (currentTabIndex === visibleArrayLength - 1) ? 0 : currentTabIndex + 1;
+        newIndex = (currentTabIndex === visibleArrayLength - 1) ? 0 : currentTabIndex + 1;
       } else if (direction === FROM_MORE_TABS) {
-      newIndex = (this.selected >= visibleArrayLength) ? 0 : this.selected;
+        newIndex = (this.selected >= visibleArrayLength) ? 0 : this.selected;
       };
 
       this.moveFocusToTab(visibleTabs[newIndex]);

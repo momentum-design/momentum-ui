@@ -427,6 +427,14 @@ describe("Tabs", () => {
     await elementUpdated(tabs);
     
     expect(tabs.selected).toBe(3);
+    tabs.selected = 0;
+    tabs["tabsFilteredAsVisibleList"] = [];
+    const tabId = tabs.slotted[0].id;
+    tabs["tabsVisibleIdxHash"]={ tabId : 0 };
+
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(0);
   });
 
   test("should handle click event and select appropriate tab", async () => {

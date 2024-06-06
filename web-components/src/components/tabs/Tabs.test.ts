@@ -406,6 +406,7 @@ describe("Tabs", () => {
         preventDefault: jest.fn()
       };
     };
+    await elementUpdated(tabs);
     tabs.selected = 3;
     tabs["isMoreTabMenuVisible"]=true;
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
@@ -415,6 +416,17 @@ describe("Tabs", () => {
      (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
     await elementUpdated(tabs);
     expect(tabs.selected).toBe(1);
+
+    tabs["isMoreTabMenuOpen"] = true;
+    tabs.selected = 3;
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.End));
+    await elementUpdated(tabs);
+    
+    expect(tabs.selected).toBe(3);
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.Home));
+    await elementUpdated(tabs);
+    
+    expect(tabs.selected).toBe(3);
   });
 
   test("should handle click event and select appropriate tab", async () => {

@@ -56,4 +56,16 @@ describe("Theme", () => {
     expect(element.theme).toBe("momentumV2");
     expect(element.darkTheme).toBeTruthy;
   });
+
+  test("should return lumos from setTheme() function", async () => {
+    const element = await fixture<Theme.ELEMENT>(`<md-theme theme="lumos"></md-theme>`);
+    expect(element.theme).toBe("lumos");
+    expect(element.darkTheme).toBeFalsy;
+  });
+
+  test("should return momentum from setTheme() function", async () => {
+    const element = await fixture<Theme.ELEMENT>(`<md-theme theme="momentum"></md-theme>`);
+    expect(element.theme).toBe("momentum");
+    expect(element.darkTheme).toBeFalsy;
+  });
 });

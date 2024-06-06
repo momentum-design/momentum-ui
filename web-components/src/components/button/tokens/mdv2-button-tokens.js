@@ -39,23 +39,23 @@ const button = {
   },
   secondary: {
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-neutral-btn-secondary-default",
+      dark: "$mds-color-theme-neutral-btn-secondary-default"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      light: "$mds-color-theme-neutral-text-primary",
+      dark: "$mds-color-theme-neutral-text-primary"
     },
     hover: {
       "bg-color": {
-        light: colors.gray[30].name,
-        dark: colors.gray[90].name
+        light: "$mds-color-theme-neutral-btn-secondary-pressed",
+        dark: "$mds-color-theme-neutral-btn-secondary-pressed"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.gray[40].name,
-        dark: colors.gray[100].name
+        light: "$mds-color-theme-neutral-btn-secondary-pressed",
+        dark: "$mds-color-theme-neutral-btn-secondary-pressed"
       }
     },
     outline: {
@@ -71,19 +71,19 @@ const button = {
   },
   green: {
     "bg-color": {
-      light: colors.green[60].name,
-      dark: colors.green[60].name
+      light: "$mds-color-theme-positive-btn-fixed-default",
+      dark: "$mds-color-theme-positive-btn-fixed-default"
     },
     hover: {
       "bg-color": {
-        light: colors.green[70].name,
-        dark: colors.green[70].name
+        light: "$mds-color-theme-positive-btn-fixed-hover",
+        dark: "$mds-color-theme-positive-btn-fixed-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.green[80].name,
-        dark: colors.green[80].name
+        light: "$mds-color-theme-positive-btn-fixed-pressed",
+        dark: "$mds-color-theme-positive-btn-fixed-pressed"
       }
     },
     outline: {
@@ -181,19 +181,19 @@ const button = {
   },
   red: {
     "bg-color": {
-      light: colors.red[60].name,
-      dark: colors.red[60].name
+      light: "$mds-color-theme-negative-btn-fixed-default",
+      dark: "$mds-color-theme-negative-btn-fixed-default"
     },
     hover: {
       "bg-color": {
-        light: colors.red[70].name,
-        dark: colors.red[70].name
+        light: "$mds-color-theme-negative-btn-fixed-hover",
+        dark: "$mds-color-theme-negative-btn-fixed-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.red[80].name,
-        dark: colors.red[80].name
+        light: "$mds-color-theme-negative-btn-fixed-pressed",
+        dark: "$mds-color-theme-negative-btn-fixed-pressed"
       }
     },
     outline: {
@@ -204,6 +204,24 @@ const button = {
       "text-color": {
         light: colors.red[70].name,
         dark: colors.red[40].name
+      }
+    }
+  },
+  promotional: {
+    "bg-color": {
+      light: "$mds-color-theme-promotion-button-fixed-default",
+      dark: "$mds-color-theme-promotion-button-fixed-default"
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-promotion-button-fixed-hover",
+        dark: "$mds-color-theme-promotion-button-fixed-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-promotion-button-fixed-active",
+        dark: "$mds-color-theme-promotion-button-fixed-active"
       }
     }
   },

@@ -102,7 +102,7 @@ export namespace Dropdown {
           this.updateListDOM();
         }
         if (name === "disabled") {
-          this.setAttribute("tabindex", !this.disabled ? "0" : "-1");
+          //this.setAttribute("tabindex", !this.disabled ? "0" : "-1");
         }
         if (name === "defaultOption") {
           if (this.defaultOption) {

@@ -148,6 +148,10 @@
           opacity: $dropdown-disabled-opacity;
         }
       }
+      &:focus-visible {
+        border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+        outline: none;
+      }
     }
   }
 }

@@ -203,7 +203,10 @@ const generateThemeStylesheets = () => {
       if (designTheme === "mdv2") {
         themeStyleFiles[
           `${designTheme}${lightDarkTheme}`
-        ] += `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-complete.scss";\n`;
+        ] += `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-stable.scss";\n`;
+        themeStyleFiles[
+          `${designTheme}${lightDarkTheme}`
+        ] += `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-complete.scss";\n`;        
       }
 
       for (const componentName of componentsWithTokens) {

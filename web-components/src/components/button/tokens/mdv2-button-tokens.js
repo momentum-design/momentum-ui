@@ -7,23 +7,23 @@ const button = {
   component: "button",
   primary: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-btn-primary-default",
-      dark: "$mds-color-theme-neutral-btn-primary-default"
+      light: "$mds-color-theme-button-primary-normal",
+      dark: "$mds-color-theme-button-primary-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-inverse-neutral-text-primary",
-      dark: "$mds-color-theme-inverse-neutral-text-primary"
+      light: "$mds-color-theme-inverted-text-primary-normal",
+      dark: "$mds-color-theme-inverted-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-neutral-btn-primary-hover",
-        dark: "$mds-color-theme-neutral-btn-primary-hover"
+        light: "$mds-color-theme-button-primary-hover",
+        dark: "$mds-color-theme-button-primary-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-neutral-btn-primary-pressed",
-        dark: "$mds-color-theme-neutral-btn-primary-pressed"
+        light: "$mds-color-theme-button-primary-pressed",
+        dark: "$mds-color-theme-button-primary-pressed"
       }
     },
     outline: {
@@ -39,51 +39,55 @@ const button = {
   },
   secondary: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-btn-secondary-default",
-      dark: "$mds-color-theme-neutral-btn-secondary-default"
+      light: "$mds-color-theme-button-secondary-normal",
+      dark: "$mds-color-theme-button-secondary-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-neutral-text-primary",
-      dark: "$mds-color-theme-neutral-text-primary"
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-neutral-btn-secondary-pressed",
-        dark: "$mds-color-theme-neutral-btn-secondary-pressed"
+        light: "$mds-color-theme-button-secondary-hover",
+        dark: "$mds-color-theme-button-secondary-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-neutral-btn-secondary-pressed",
-        dark: "$mds-color-theme-neutral-btn-secondary-pressed"
+        light: "$mds-color-theme-button-secondary-pressed",
+        dark: "$mds-color-theme-button-secondary-pressed"
       }
     },
     outline: {
       color: {
-        light: colors.gray[70].name,
-        dark: colors.gray[40].name
+        light: "$mds-color-theme-outline-button-normal",
+        dark: "$mds-color-theme-outline-button-normal",
       },
       "text-color": {
-        light: colors.gray[70].name,
-        dark: colors.gray[40].name
+        light: "$mds-color-theme-text-primary-normal",
+        dark: "$mds-color-theme-text-primary-normal"
       }
     }
   },
   green: {
     "bg-color": {
-      light: "$mds-color-theme-positive-btn-fixed-default",
-      dark: "$mds-color-theme-positive-btn-fixed-default"
+      light: "$mds-color-theme-button-join-normal",
+      dark: "$mds-color-theme-button-join-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-positive-btn-fixed-hover",
-        dark: "$mds-color-theme-positive-btn-fixed-hover"
+        light: "$mds-color-theme-button-join-hover",
+        dark: "$mds-color-theme-button-join-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-positive-btn-fixed-pressed",
-        dark: "$mds-color-theme-positive-btn-fixed-pressed"
+        light: "$mds-color-theme-button-join-pressed",
+        dark: "$mds-color-theme-button-join-pressed"
       }
     },
     outline: {
@@ -181,19 +185,23 @@ const button = {
   },
   red: {
     "bg-color": {
-      light: "$mds-color-theme-negative-btn-fixed-default",
-      dark: "$mds-color-theme-negative-btn-fixed-default"
+      light: "$mds-color-theme-button-cancel-normal",
+      dark: "$mds-color-theme-button-cancel-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-negative-btn-fixed-hover",
-        dark: "$mds-color-theme-negative-btn-fixed-hover"
+        light: "$mds-color-theme-button-cancel-hover",
+        dark: "$mds-color-theme-button-cancel-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-negative-btn-fixed-pressed",
-        dark: "$mds-color-theme-negative-btn-fixed-pressed"
+        light: "$mds-color-theme-button-cancel-pressed",
+        dark: "$mds-color-theme-button-cancel-pressed"
       }
     },
     outline: {
@@ -209,19 +217,23 @@ const button = {
   },
   promotional: {
     "bg-color": {
-      light: "$mds-color-theme-promotion-button-fixed-default",
-      dark: "$mds-color-theme-promotion-button-fixed-default"
+      light: "$mds-color-theme-common-button-promotion-normal",
+      dark: "$mds-color-theme-common-button-promotion-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-promotion-button-fixed-hover",
-        dark: "$mds-color-theme-promotion-button-fixed-hover"
+        light: "$mds-color-theme-common-button-promotion-hover",
+        dark: "$mds-color-theme-common-button-promotion-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-promotion-button-fixed-active",
-        dark: "$mds-color-theme-promotion-button-fixed-active"
+        light: "$mds-color-theme-common-button-promotion-active",
+        dark: "$mds-color-theme-common-button-promotion-active"
       }
     }
   },

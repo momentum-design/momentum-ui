@@ -37,7 +37,7 @@ export const AlertBanner = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
   const theme = select("Theme name", ThemeNameValues, "");
-  const type = select("type", ["default", "warning", "error"], "default");
+  const type = select("type", ["default", "warning", "error, success"], "default");
   const closable = boolean("closable", false);
   const textContent = text("alert message", "Test Alert Message");
 

@@ -6,46 +6,54 @@ const toggleSwitch = {
   prefix: "mdv2",
   component: "toggle-switch",
   "bg-color": {
-    light: colors.gray[50].name,
-    dark: colors.gray[50].name
+    light: "$mds-color-theme-button-secondary-normal",
+    dark: "$mds-color-theme-button-secondary-normal"
+  },
+  "border-color": {
+    light: "$mds-color-theme-outline-input-normal",
+    dark: "$mds-color-theme-outline-input-normal",    
   },
   "bg-color--hover": {
-    light: colors.gray[40].name,
-    dark: colors.gray[40].name
+    light: "$mds-color-theme-button-secondary-hover",
+    dark: "$mds-color-theme-button-secondary-hover"
   },
   "bg-color--checked": {
-    light: colors.blue[60].name,
-    dark: colors.blue[50].name
+    light: "$mds-color-theme-control-active-normal",
+    dark: "$mds-color-theme-control-active-normal"
   },
   "bg-color--checked-hover": {
-    light: colors.blue[70].name,
-    dark: colors.blue[60].name
+    light: "$mds-color-theme-control-active-hover",
+    dark: "$mds-color-theme-control-active-hover"
   },
   "bg-color--disabled": {
-    light: colors.gray[10].name,
-    dark: colors.gray[90].name
+    light: "$mds-color-theme-button-secondary-disabled",
+    dark: "$mds-color-theme-button-secondary-disabled"
   },
   "bg-color--disabled--checked": {
-    light: colors.blue[10].name,
-    dark: colors.blue[90].name
+    light: "$mds-color-theme-button-secondary-pressed",
+    dark: "$mds-color-theme-button-secondary-pressed"
   },
   slider: {
-    "color": {
-      light: colors.white[100].name,
-      dark: colors.white[100].name
+    color: {
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
+    },
+    "color--checked": {
+      light: "$mds-color-theme-inverted-text-primary-normal",
+      dark: "$mds-color-theme-inverted-text-primary-normal"
     },
     "color-disabled": {
-      light: colors.gray["05"].name,
-      dark: colors.gray[70].name
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled",
     },
     "color-disabled--checked": {
-      light: colors.white[100].name,
-      dark: colors.gray[70].name
+      light: "$mds-color-theme-inverted-text-primary-disabled",
+      dark: "$mds-color-theme-inverted-text-primary-disabled"
     }
   },
-  "focus": {
-    light: colors.blue[50].name,
-    dark: colors.blue[60].name
+  focus: {
+    light: "yellow",
+    dark: "yellow"
   }
 };
 

@@ -595,7 +595,7 @@
 
 :host([variant="promotional"]) .md-button {
   background: var(--button-promotional-bg-color, $lm-button-primary-bg-color-light);
-  color: var(--button-color-text-color, $lm-button-primary-text-color-light);
+  color: var(--button-promotional-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));  
 
   &:hover {
     background: var(--button-promotional-hover-bg-color, $lm-button-primary-hover-bg-color-light);
@@ -634,7 +634,7 @@
 
 :host([variant="red"]) .md-button {
   background-color: var(--button-red-bg-color, $lm-button-red-bg-color-light);
-  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+  color: var(--button-red-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
 
   &:hover {
     background-color: var(--button-red-hover-bg-color, $lm-button-red-hover-bg-color-light);
@@ -653,7 +653,7 @@
 
 :host([variant="green"]) .md-button {
   background-color: var(--button-green-bg-color, $lm-button-green-bg-color-light);
-  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+  color: var(--button-green-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));  
 
   &:hover {
     background-color: var(--button-green-hover-bg-color, $lm-button-green-hover-bg-color-light);

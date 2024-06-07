@@ -47,7 +47,24 @@ describe("Theme", () => {
 
     await elementUpdated(element);
     expect(changeSpy).toHaveBeenCalled();
+    changeSpy.mockReset();
 
+    element.darkTheme = false;
+
+    await elementUpdated(element);
+    expect(changeSpy).toHaveBeenCalled();
+    changeSpy.mockReset();
+
+    element.theme = "momentum";
+
+    await elementUpdated(element);
+    expect(changeSpy).toHaveBeenCalled();
+    changeSpy.mockReset();
+
+    element.theme = "lumos";
+
+    await elementUpdated(element);
+    expect(changeSpy).toHaveBeenCalled();
     changeSpy.mockRestore();
   });
 

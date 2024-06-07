@@ -72,8 +72,6 @@ export namespace Dropdown {
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      this.setAttribute("tabindex", "0");
-
       changedProperties.forEach((oldValue, name) => {
         if (name === "defaultOption") {
           if (this.defaultOption) {
@@ -196,10 +194,9 @@ export namespace Dropdown {
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
 
-
-      if (this.expanded) {
-        this.collapse();
-      }
+      //if (this.expanded) {
+        // this.collapse();
+     // }
 
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
@@ -227,7 +224,12 @@ export namespace Dropdown {
 
     expand() {
       this.expanded = true;
+      const selectedIndex = this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
       document.dispatchEvent(new CustomEvent("on-widget-update"));
+      this.label.setAttribute("aria-activedescendant", selectedIndex);
+      if(this.optionsList){
+        (this.optionsList as HTMLElement).focus();
+      }
 
       if (this.focusedIndex === -1) {
         this.focusNext();
@@ -236,6 +238,7 @@ export namespace Dropdown {
 
     collapse() {
       this.expanded = false;
+      this.label.setAttribute("aria-activedescendant", "");
     }
 
     toggle() {
@@ -271,14 +274,22 @@ export namespace Dropdown {
       if (path.length) {
         insideSelfClick = !!path.find(element => element === this);
         if (!insideSelfClick) {
-          this.collapse();
+          if(this.expanded){
+            this.collapse();
+          }
         }
       }
     };
 
     onKeyDown = (e: KeyboardEvent) => {
       switch (e.code) {
-
+        case Key.Tab: {
+          if (this.expanded) {
+            e.stopPropagation();
+            this.collapse();
+          }
+          break;
+        }
         case Key.Space:
         case Key.Enter: {
           if (!this.expanded) {
@@ -334,7 +345,8 @@ export namespace Dropdown {
     };
 
     onLabelClick() {
-      this.toggle();
+      this.label.focus();
+      this.toggle();      
     }
 
     focusFirst() {
@@ -445,6 +457,16 @@ export namespace Dropdown {
       return this.title;
     }
 
+    get ariaLabelTitle() {
+      if (this.selectedKey) {
+        const option = this.renderOptions.find(o => o.key === this.selectedKey);
+        if (option) {
+          return option.value + ", " + this.title;
+        }
+      }
+      return this.title;
+    }
+
     get dropDownClassMap() {
       return {
         "md-dropdown__expanded": this.expanded
@@ -452,16 +474,19 @@ export namespace Dropdown {
     }
 
     render() {
-      return html`
+       return html`
         <div class="md-dropdown ${classMap(this.dropDownClassMap)}" part="dropdown">
           <label
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"
-            aria-label="${this.labelTitle}"
+            aria-label="${this.ariaLabelTitle}"
             aria-controls="md-dropdown-list"
+            aria-haspopup="listbox"
             ?disabled="${this.disabled}"
             @click="${() => this.onLabelClick()}"
             part="dropdown-header"
+            role="combobox" 
+            tabindex="0"
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>
             <span class="md-dropdown-label--icon">
@@ -472,7 +497,7 @@ export namespace Dropdown {
             id="md-dropdown-list"
             class="md-dropdown-list"
             role="listbox"
-            aria-label="${this.labelTitle}"
+            aria-label="${this.ariaLabelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
             tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
@@ -482,6 +507,7 @@ export namespace Dropdown {
               o => o.key,
               (o, idx) => html`
                 <li
+                  id="combo-${idx}"
                   class="md-dropdown-option"
                   role="option"
                   tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
@@ -495,6 +521,7 @@ export namespace Dropdown {
                     this.select();
                     this.collapse();
                   }}"
+                  tabindex="0"
                 >
                   <span class="select-label" part="label">
                     <span>${o.value}</span>

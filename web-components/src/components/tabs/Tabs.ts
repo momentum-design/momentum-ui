@@ -633,7 +633,7 @@ export namespace Tabs {
 
     private getCurrentIndex(tabId: string) {
       const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
-      for(let i =0; i < arrayLength; i++) {
+      for(let i = 0; i < arrayLength; i++) {
         if(this.visibleTabsContainerElement?.children[i].id === tabId) {
           return i;          
         };   
@@ -661,8 +661,8 @@ export namespace Tabs {
       this.moveFocusToTab(visibleTabs[newIndex]);
     };
       
-    moveFocusToTab(currentTab: any) {
-      setTimeout(() => (currentTab as HTMLElement)?.focus(), 0);
+    moveFocusToTab(tabElement: any) {
+      setTimeout(() => (tabElement as HTMLElement)?.focus(), 0);
     }
 
     handleOverlayClose() {

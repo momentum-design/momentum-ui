@@ -172,9 +172,9 @@ $avatar-letter__background: var(--avatar-letter-bg-color, $lm-avatar-letter-bg-c
 $avatar-icon__color: $black-80;
 $avatar-icon__background: $gray-5-88;
 
-$avatar-self__color: $md-theme-50;
-$avatar-self__background: $md-white-100;
-$avatar-self__border: 1px solid $black-08;
+$avatar-self__color: var(--avatar-self-icon-color, $md-theme-50);
+$avatar-self__background: var(--avatar-self-bg-color, $md-white-100);
+$avatar-self__border: 1px solid var(--avatar-self-border-color, $black-08);
 
 $avatar-img__background: $gray-5-88;
 

@@ -7,47 +7,51 @@ const button = {
   component: "input",
   default: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-surface-primary-default",
-      dark: "$mds-color-theme-neutral-surface-primary-default"
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-neutral-text-primary",
-      dark: "$mds-color-theme-neutral-text-primary"
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     "border-color": {
-      light: "$mds-color-theme-neutral-border-default",
-      dark: "$mds-color-theme-neutral-border-default"
+      light: "$mds-color-theme-outline-primary-normal",
+      dark: "$mds-color-theme-outline-primary-normal"
     },
     "placeholder-color": {
-      light: "$mds-color-theme-neutral-text-secondary-default",
-      dark: "$mds-color-theme-neutral-text-secondary-default"
+      light: "$mds-color-theme-text-secondary-normal",
+      dark: "$mds-color-theme-text-secondary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-neutral-surface-primary-active",
-        dark: "$mds-color-theme-neutral-surface-primary-active"
+        light: "$mds-color-theme-background-primary-hover",
+        dark: "$mds-color-theme-background-primary-hover"
       }
     },
     "read-only": {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[90].name
+        light: "$mds-color-theme-background-solid-primary-normal",
+        dark: "$mds-color-theme-background-solid-primary-normal"
+      },
+      "border-color": {
+        light: "$mds-color-theme-outline-disabled-normal",
+        dark: "$mds-color-theme-outline-disabled-normal"
       }
     },
     focus: {
       "border-color": {
-        light: "$mds-color-theme-accent-border-default",
-        dark: "$mds-color-theme-accent-border-default"
+        light: "$mds-color-theme-outline-theme-normal",
+        dark: "$mds-color-theme-outline-theme-normal"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.gray[30].name,
-        dark: colors.gray[80].name
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
       },
       "border-color": {
-        light: colors.gray[40].name,
-        dark: colors.gray[70].name
+        light: "$mds-color-theme-outline-primary-normal",
+        dark: "$mds-color-theme-outline-primary-normal"
       }
     },
     outline: {
@@ -63,78 +67,78 @@ const button = {
   },
   disabled: {
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-primary-disabled",
+      dark: "$mds-color-theme-background-primary-disabled"
     },
     "text-color": {
-      light: colors.gray[40].name,
-      dark: colors.gray[70].name
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled"
     }
   },
   error: {
     "bg-color": {
-      light: colors.red[10].name,
-      dark: colors.red[90].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     "border-color": {
-      light: "$mds-color-theme-negative-border-default",
-      dark: "$mds-color-theme-negative-border-default"
+      light: "$mds-color-theme-outline-cancel-normal",
+      dark: "$mds-color-theme-outline-cancel-normal"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     "message-text-color": {
-      light: colors.red[70].name,
-      dark: colors.red[50].name
+      light: "$mds-color-theme-text-error-normal",
+      dark: "$mds-color-theme-text-error-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.red[20].name,
-        dark: colors.red[80].name
+        light: "$mds-color-theme-background-primary-hover",
+        dark: "$mds-color-theme-background-primary-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.red[30].name,
-        dark: colors.red[70].name
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
       }
     }
   },
   succes: {
     "border-color": {
-      light: "$mds-color-theme-positive-border-default",
-      dark: "$mds-color-theme-positive-border-default"
+      light: "$mds-color-theme-outline-join-normal",
+      dark: "$mds-color-theme-outline-join-normal"
     }
   },
   warning: {
     "border-color": {
       light: "$mds-color-theme-warning-border-default",
-      dark: "$mds-color-theme-warning-border-default",
+      dark: "$mds-color-theme-warning-border-default"
     }
   },
   filled: {
     "bg-color": {
-      light: colors.gray[10].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-solid-secondary-normal",
+      dark: "$mds-color-theme-background-solid-secondary-normal"
     },
     disabled: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[90].name
+        light: "$mds-color-theme-background-primary-disabled",
+        dark: "$mds-color-theme-background-primary-disabled"
       }
     },
     hover: {
       "bg-color": {
-        light: colors.gray[20].name,
-        dark: colors.gray[70].name
+        light: "$mds-color-theme-background-secondary-hover",
+        dark: "$mds-color-theme-background-secondary-hover"
       }
     }
   },
   "focus-ring": {
     color: {
-      light: colors.blue[60].name,
-      dark: colors.blue[40].name
+      light: "$mds-color-theme-outline-theme-normal",
+      dark: "$mds-color-theme-outline-theme-normal"
     }
   }
 };

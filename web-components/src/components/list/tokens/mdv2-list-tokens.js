@@ -5,39 +5,39 @@ const list = {
   prefix: "mdv2",
   component: "list",
   "text-color": {
-    light: "$mds-color-theme-neutral-text-primary",
-    dark: "$mds-color-theme-neutral-text-primary"
+    light: "$mds-color-theme-text-primary-normal",
+    dark: "$mds-color-theme-text-primary-normal"
   },
   hover: {
     background: {
-      light: "$mds-color-theme-neutral-surface-secondary-hover",
-      dark: "$mds-color-theme-neutral-surface-secondary-hover"
+      light: "$mds-color-theme-background-primary-hover",
+      dark: "$mds-color-theme-background-primary-hover"
     },
     "text-color": {
-      light: "$mds-color-theme-neutral-text-primary",
-      dark: "$mds-color-theme-neutral-text-primary"
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     }
   },
   disabled: {
     "text-color": {
-      light: "$mds-color-theme-neutral-text-primary",
-      dark: "$mds-color-theme-neutral-text-primary"
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled"
     }
   },
   active: {
     background: {
-      light: "$mds-color-theme-neutral-surface-primary-active",
-      dark: "$mds-color-theme-neutral-surface-primary-active"
+      light: "$mds-color-theme-background-primary-active",
+      dark: "$mds-color-theme-background-primary-active"
     },
     "text-color": {
-      light: "$mds-color-theme-neutral-text-primary",
-      dark: "$mds-color-theme-neutral-text-primary"
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     }
   },
   focus: {
     "border-color": {
-      light: "$mds-color-theme-accent-text-default",
-      dark: "$mds-color-theme-accent-text-default"
+      light: "$mds-color-theme-outline-theme-normal",
+      dark: "$mds-color-theme-outline-theme-normal"
     }
   }
 };

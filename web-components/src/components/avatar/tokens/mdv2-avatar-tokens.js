@@ -1,168 +1,181 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const avatar = {
   prefix: "mdv2",
   component: "avatar",
   letter: {
     "bg-color": {
-      light: colors.gray[10].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-avatar-default",
+      dark: "$mds-color-theme-avatar-default"
     },
     "text-color": {
-      light: colors.gray[90].name,
-      dark: colors.gray[10].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   blue: {
     "bg-color": {
-      light: colors.cobalt[20].name,
-      dark: colors.cobalt[80].name
+      light: "$mds-color-theme-avatar-cobalt",
+      dark: "$mds-color-theme-avatar-cobalt"
     },
     "text-color": {
-      light: colors.cobalt[70].name,
-      dark: colors.cobalt[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   green: {
     "bg-color": {
-      light: colors.green[20].name,
-      dark: colors.green[80].name
+      light: "$mds-color-theme-button-join-normal",
+      dark: "$mds-color-theme-button-join-normal"
     },
     "text-color": {
-      light: colors.green[70].name,
-      dark: colors.green[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   purple: {
     "bg-color": {
-      light: colors.purple[20].name,
-      dark: colors.purple[80].name
+      light: "$mds-color-theme-avatar-purple",
+      dark: "$mds-color-theme-avatar-purple"
     },
     "text-color": {
-      light: colors.purple[70].name,
-      dark: colors.purple[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   violet: {
     "bg-color": {
-      light: colors.violet[20].name,
-      dark: colors.violet[80].name
+      light: "$mds-color-theme-avatar-violet",
+      dark: "$mds-color-theme-avatar-violet"
     },
     "text-color": {
-      light: colors.violet[70].name,
-      dark: colors.violet[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   mint: {
     "bg-color": {
-      light: colors.mint[20].name,
-      dark: colors.mint[80].name
+      light: "$mds-color-theme-avatar-mint",
+      dark: "$mds-color-theme-avatar-mint"
     },
     "text-color": {
-      light: colors.mint[70].name,
-      dark: colors.mint[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   darkmint: {
     "bg-color": {
-      light: colors.mint[50].name,
-      dark: colors.mint[50].name
+      light: "$mds-color-theme-avatar-mint",
+      dark: "$mds-color-theme-avatar-mint"
     },
     "text-color": {
-      light: colors.gray["05"].name,
-      dark: colors.gray["05"].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   yellow: {
     "bg-color": {
-      light: colors.yellow[20].name,
-      dark: colors.yellow[80].name
+      light: "$mds-color-theme-avatar-yellow",
+      dark: "$mds-color-theme-avatar-yellow"
     },
     "text-color": {
-      light: colors.yellow[70].name,
-      dark: colors.yellow[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   red: {
     "bg-color": {
-      light: colors.red[20].name,
-      dark: colors.red[80].name
+      light: "$mds-color-theme-button-cancel-normal",
+      dark: "$mds-color-theme-button-cancel-normal"
     },
     "text-color": {
-      light: colors.red[70].name,
-      dark: colors.red[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   orange: {
     "bg-color": {
-      light: colors.orange[20].name,
-      dark: colors.orange[80].name
+      light: "$mds-color-theme-avatar-orange",
+      dark: "$mds-color-theme-avatar-orange"
     },
     "text-color": {
-      light: colors.orange[70].name,
-      dark: colors.orange[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   cyan: {
     "bg-color": {
-      light: colors.cyan[20].name,
-      dark: colors.cyan[80].name
+      light: "$mds-color-theme-avatar-cyan",
+      dark: "$mds-color-theme-avatar-cyan"
     },
     "text-color": {
-      light: colors.cyan[70].name,
-      dark: colors.cyan[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   slate: {
     "bg-color": {
-      light: colors.slate[20].name,
-      dark: colors.slate[80].name
+      light: "$mds-color-theme-avatar-slate",
+      dark: "$mds-color-theme-avatar-slate"
     },
     "text-color": {
-      light: colors.slate[70].name,
-      dark: colors.slate[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   pink: {
     "bg-color": {
-      light: colors.pink[20].name,
-      dark: colors.pink[80].name
+      light: "$mds-color-theme-avatar-pink",
+      dark: "$mds-color-theme-avatar-pink"
     },
     "text-color": {
-      light: colors.pink[70].name,
-      dark: colors.pink[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   cobalt: {
     "bg-color": {
-      light: colors.cobalt[20].name,
-      dark: colors.cobalt[80].name
+      light: "$mds-color-theme-avatar-cobalt",
+      dark: "$mds-color-theme-avatar-cobalt"
     },
     "text-color": {
-      light: colors.cobalt[70].name,
-      dark: colors.cobalt[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   gold: {
     "bg-color": {
-      light: colors.gold[20].name,
-      dark: colors.gold[80].name
+      light: "$mds-color-theme-avatar-gold",
+      dark: "$mds-color-theme-avatar-gold"
     },
     "text-color": {
-      light: colors.gold[70].name,
-      dark: colors.gold[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
     }
   },
   lime: {
     "bg-color": {
-      light: colors.lime[20].name,
-      dark: colors.lime[80].name
+      light: "$mds-color-theme-avatar-lime",
+      dark: "$mds-color-theme-avatar-lime"
     },
     "text-color": {
-      light: colors.lime[70].name,
-      dark: colors.lime[20].name
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
+    }
+  },
+  self: {
+    "bg-color": {
+      light: "$mds-color-theme-background-primary-ghost",
+      dark: "$mds-color-theme-background-primary-ghost"
+    },
+    "icon-color": {
+      light: "$mds-color-theme-control-active-normal",
+      dark: "$mds-color-theme-control-active-normal"
+    },
+    "border-color": {
+      light: "$mds-color-theme-outline-primary-normal",
+      dark: "$mds-color-theme-outline-primary-normal"
     }
   }
 };

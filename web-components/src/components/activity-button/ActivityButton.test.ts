@@ -44,6 +44,7 @@ describe("ActivityButton", () => {
     const buttonElement = element.shadowRoot!.querySelector("md-button");
     const button = buttonElement!.shadowRoot!.querySelector("button");
     expect(button!.getAttribute("class")).toContain("md-button--84");
+    expect(element.formatClass["md-activity"]).toBe(true);
   });
 
   test("should set default type if attribute value not correct", async () => {

@@ -30,8 +30,8 @@ const button = {
     },
     "read-only": {
       "bg-color": {
-        light: "$mds-color-theme-background-solid-primary-normal",
-        dark: "$mds-color-theme-background-solid-primary-normal"
+        light: "$mds-color-theme-background-primary-disabled",
+        dark: "$mds-color-theme-background-primary-disabled"
       },
       "border-color": {
         light: "$mds-color-theme-outline-disabled-normal",
@@ -42,6 +42,10 @@ const button = {
       "border-color": {
         light: "$mds-color-theme-outline-theme-normal",
         dark: "$mds-color-theme-outline-theme-normal"
+      },
+      "background-color": {
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
       }
     },
     pressed: {

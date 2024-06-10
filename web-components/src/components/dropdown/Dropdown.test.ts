@@ -53,9 +53,11 @@ describe("Dropdown Component", () => {
     });
 
     it("should set correct handle focusin", async () => {
-      dropdown.dispatchEvent(new FocusEvent("focusin"));
-      dropdown.focus();
-      expect(document.activeElement).toEqual(dropdown);
+      const eventIn = new Event("focusin");
+      
+      setTimeout(() => dropdown["handleFocusIn"](eventIn));
+      const focusIn = await oneEvent(dropdown, "dropdown-focus-in");
+      expect(focusIn).toBeDefined();
     });
 
     it("should set correct handle focusout", async () => {

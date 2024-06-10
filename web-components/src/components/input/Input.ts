@@ -211,6 +211,13 @@ export namespace Input {
     }
 
     handleKeyDown(event: KeyboardEvent) {
+      if (event.code === 'Tab') {
+        event.preventDefault();
+        const clearButton = this.shadowRoot?.querySelector(".md-input__icon-clear") as HTMLElement;
+        if (clearButton) {
+          clearButton.focus();
+        }
+      }
       this.dispatchEvent(
         new CustomEvent("input-keydown", {
           bubbles: true,
@@ -292,8 +299,19 @@ export namespace Input {
         }
         event.preventDefault();
       }
+      this.input.click();
+      this.value = '';
+      this.dispatchEvent(
+        new CustomEvent("input-change", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event,
+            value: this.value
+          }
+        })
+      );
       this.input.focus();
-      this.handleChange(event);
     }
 
     handleLabelClick() {
@@ -443,6 +461,7 @@ export namespace Input {
                 class="md-input__icon-clear"
                 name="clear-active_12"
                 aria-label=${this.clearAriaLabel || "Clear Input"}
+                tabindex="1"                
               >
               </md-icon>
             </md-button>

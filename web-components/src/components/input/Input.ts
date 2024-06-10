@@ -305,16 +305,7 @@ export namespace Input {
       }
       this.input.click();
       this.value = '';
-      this.dispatchEvent(
-        new CustomEvent("input-change", {
-          bubbles: true,
-          composed: true,
-          detail: {
-            srcEvent: event,
-            value: this.value
-          }
-        })
-      );
+      this.handleChange(event);
       this.input.focus();
     }
 

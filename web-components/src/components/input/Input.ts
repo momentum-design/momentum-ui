@@ -264,8 +264,12 @@ export namespace Input {
       }
     }
 
-    handleChange(event: Event) {
-      this.value = (event.target as HTMLInputElement).value;
+    handleChange(event: Event| MouseEvent | KeyboardEvent) {
+      if (event instanceof MouseEvent || event instanceof KeyboardEvent) {
+        this.value = '';
+      } else {
+        this.value = (event.target as HTMLInputElement).value;
+      }
       this.dispatchEvent(
         new CustomEvent("input-change", {
           bubbles: true,

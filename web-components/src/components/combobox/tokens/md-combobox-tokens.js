@@ -13,6 +13,10 @@ const combobox = {
     light: colors.gray[30].name,
     dark: colors.gray[70].name
   },
+  "select-border-color": {
+    light: colors.gray[70].name,
+    dark: colors.gray[40].name
+  },
   "text-color": {
     light: colors.gray[80].name,
     dark: colors.gray[30].name

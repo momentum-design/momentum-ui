@@ -228,7 +228,7 @@ div#md-combobox-listbox {
   
   .select-option {
     background: var(--combobox-dropdown-item-select-bg-color, $lm-combobox-dropdown-item-select-bg-color-light);
-    border: $combobox-border;
+    border: $combobox-select-border;
     border-radius: calc(#{$combobox-dropdown-radius} / 2);
     box-sizing: border-box;
     cursor: pointer;

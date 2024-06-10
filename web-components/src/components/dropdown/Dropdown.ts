@@ -101,9 +101,6 @@ export namespace Dropdown {
         if (name === "focusedIndex") {
           this.updateListDOM();
         }
-        if (name === "disabled") {
-          //this.setAttribute("tabindex", !this.disabled ? "0" : "-1");
-        }
         if (name === "defaultOption") {
           if (this.defaultOption) {
             const { key } = this.getOptionKeyValuePair(this.defaultOption);
@@ -193,11 +190,7 @@ export namespace Dropdown {
 
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
-
-      //if (this.expanded) {
-        // this.collapse();
-     // }
-
+   
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,

@@ -145,6 +145,24 @@ describe("Dropdown Component", () => {
       expect(dropdown["expanded"]).toBeFalsy();
     });
 
+    it("should call collapse on outside click", async () => {
+      const originalComposedPath = Event.prototype.composedPath;
+      const collapseFunc = jest.spyOn(dropdown, "collapse");
+   
+      await toggleExpandCollapseDropdown(dropdown);
+      
+      Event.prototype.composedPath = originalComposedPath;
+      const outsideDiv = await fixture<HTMLElement>(
+        html`
+          <div></div>
+        `);
+      const composedPathMock1 = jest.fn(() => [outsideDiv]);
+      Event.prototype.composedPath = composedPathMock1;
+      dropdown.onOutsideClick(new MouseEvent("click"));
+      expect(collapseFunc).toHaveBeenCalled();
+      Event.prototype.composedPath = originalComposedPath;
+    });  
+
     it("should allow unselected", async () => {
       const dropdown = await fixture<Dropdown.ELEMENT>(
         html`

@@ -87,8 +87,8 @@ export namespace Alert {
       return html`
         ${this.show
           ? html`
-              <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
-                <div class="md-alert__icon">
+              <div role="alert" aria-live="assertive" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
+                <div class="md-alert__icon aria-hidden="true">
                   ${this.renderIconTemplate()}
                 </div>
                 <div part="content" class="md-alert__content">
@@ -104,7 +104,6 @@ export namespace Alert {
                   ? html`
                       <div class="md-alert__button">
                         <md-button
-                          arialabel="${this.btnlabel}"
                           title="${this.btnlabel}"
                           hasRemoveStyle
                           color="color-none"

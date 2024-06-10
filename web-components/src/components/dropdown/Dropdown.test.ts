@@ -137,6 +137,12 @@ describe("Dropdown Component", () => {
           option: dropdownStringOptions[dropdownStringOptions.length - 1]
         })
       );
+
+      await toggleExpandCollapseDropdown(dropdown);
+      expect(dropdown["expanded"]).toBeTruthy();
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Tab));
+      expect(dropdown["expanded"]).toBeFalsy();
     });
 
     it("should allow unselected", async () => {

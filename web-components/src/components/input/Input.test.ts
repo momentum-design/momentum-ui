@@ -100,6 +100,25 @@ describe("Input Component", () => {
     expect(detail.srcEvent).toEqual(event);
   });
 
+  test("should focus on clear button when Tab is pressed", async () => {
+    const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
+    const spyFocus = jest.fn();
+    const clearButton = document.createElement('button');
+    clearButton.focus = spyFocus;
+    if (element.shadowRoot) {
+      jest.spyOn(element.shadowRoot, 'querySelector').mockReturnValue(clearButton);
+    }
+    const tabEvent = new KeyboardEvent("keydown", { code: 'Tab' });
+    const otherEvent = new KeyboardEvent("keydown", { code: 'Enter' });
+  
+    element.handleKeyDown(tabEvent);
+    expect(spyFocus).toHaveBeenCalled();
+  
+    spyFocus.mockClear();
+    element.handleKeyDown(otherEvent);
+    expect(spyFocus).not.toHaveBeenCalled();
+  });
+
   test("should handle focus event", async () => {
     const element = await fixture<Input.ELEMENT>(`<md-input label="Default" containerSize="small-12"></md-input>`);
     const spyFocusHandler = jest.spyOn(Input.ELEMENT.prototype, "handleFocus");

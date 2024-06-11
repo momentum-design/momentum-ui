@@ -450,16 +450,6 @@ export namespace Dropdown {
       return this.title;
     }
 
-    get ariaLabelTitle() {
-      if (this.selectedKey) {
-        const option = this.renderOptions.find(o => o.key === this.selectedKey);
-        if (option) {
-          return option.value + ", " + this.title;
-        }
-      }
-      return this.title;
-    }
-
     get dropDownClassMap() {
       return {
         "md-dropdown__expanded": this.expanded
@@ -472,7 +462,7 @@ export namespace Dropdown {
           <label
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"
-            aria-label="${this.ariaLabelTitle}"
+            aria-label="${this.title}"
             aria-controls="md-dropdown-list"
             aria-haspopup="listbox"
             ?disabled="${this.disabled}"
@@ -490,7 +480,7 @@ export namespace Dropdown {
             id="md-dropdown-list"
             class="md-dropdown-list"
             role="listbox"
-            aria-label="${this.ariaLabelTitle}"
+            aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
             tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}

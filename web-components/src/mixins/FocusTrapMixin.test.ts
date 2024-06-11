@@ -125,6 +125,28 @@ describe("FocusTrap Mixin", () => {
 
   });
 
+  test("should decrease trap index when input-clear event is dispatched", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+    const input = focusableChild!.shadowRoot!.querySelector("input");
+  
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+    await nextFrame();
+    await elementUpdated(el);
+    focusTrap!["focusTrapIndex"] = 5;
+    input!.dispatchEvent(new CustomEvent("input-clear", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: new KeyboardEvent("keydown", { code: "Enter" })
+      }
+    }));
+    await nextFrame();
+    await elementUpdated(el);
+    expect(focusTrap!["focusTrapIndex"]).toEqual(4);
+  });
+
   test("should set trap index of element with shadowRoot", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");

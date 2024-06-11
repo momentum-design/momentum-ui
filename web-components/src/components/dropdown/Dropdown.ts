@@ -457,7 +457,7 @@ export namespace Dropdown {
     }
 
     render() {
-       return html`
+      return html`
         <div class="md-dropdown ${classMap(this.dropDownClassMap)}" part="dropdown">
           <label
             class="md-dropdown-label"
@@ -480,7 +480,7 @@ export namespace Dropdown {
             id="md-dropdown-list"
             class="md-dropdown-list"
             role="listbox"
-            aria-label="${this.labelTitle}"
+            aria-label="${this.git}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
             tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}

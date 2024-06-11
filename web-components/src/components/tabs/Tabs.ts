@@ -131,6 +131,16 @@ export namespace Tabs {
       }
     }
 
+    private getAriaConrolId(tab: Tab.ELEMENT) {
+      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
+        return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
+      } else {
+        const uniqueId = tab.id?.substring(4);
+        const panelId = "tab_panel_" + uniqueId;
+        return panelId;
+      }
+    }
+
     private getTabIndex(tab: Tab.ELEMENT) {
       // Get first tabindex to 0 only when More button is there and the visible tab is not selected
       if (this.isMoreTabMenuVisible && (this.getCurrentIndex(tab?.id) === 0) && 
@@ -1068,7 +1078,7 @@ export namespace Tabs {
                   name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
-                  aria-controls="${tab.id}"
+                  aria-controls="${this.getAriaConrolId(tab)}"
                   .isCrossVisible=${true}
                   tabIndex="${this.getTabIndex(tab)}"
                 >
@@ -1129,7 +1139,7 @@ export namespace Tabs {
                     name="${tab.name}"
                     id="${this.getCopyTabId(tab)}"
                     aria-label=${tab.ariaLabel}
-                    aria-controls="${tab.id}"
+                    aria-controls="${this.getAriaConrolId(tab)}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                     ariaRole="menuitem"

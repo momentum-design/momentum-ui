@@ -480,7 +480,7 @@ export namespace Dropdown {
             id="md-dropdown-list"
             class="md-dropdown-list"
             role="listbox"
-            aria-label="${this.git}"
+            aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
             tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}

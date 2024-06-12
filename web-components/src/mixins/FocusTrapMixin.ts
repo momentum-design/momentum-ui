@@ -448,7 +448,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
-      this.addEventListener("input-clear", this.handleFocusOnClear);
+      this.removeEventListener("input-clear", this.handleFocusOnClear);
       if (this.focusableTimer) {
         clearTimeout(this.focusableTimer);
       }

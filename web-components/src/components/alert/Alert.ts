@@ -105,7 +105,6 @@ export namespace Alert {
                       <div class="md-alert__button">
                         <md-button
                           arialabel="${this.btnlabel}"
-                          title="${this.btnlabel}"
                           hasRemoveStyle
                           color="color-none"
                           circle

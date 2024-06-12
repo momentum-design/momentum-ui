@@ -244,6 +244,7 @@
     &:focus,
     &.md-focus {
       @include focus-styles($border-color: $md-blue-60);
+      background-color: var(--input-default-focus-background-color, --input-default-bg-color);
 
       transition: border ease-in 0.15s;
     }

@@ -14,6 +14,7 @@ import { Input } from "../input/Input"; // Keep type import as a relative path
 import "@/components/editable-textfield/EditableTextfield";
 import "@/components/theme/Theme";
 import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Editable Textfield",
@@ -62,52 +63,57 @@ const messages: EditableMap = {
 export const EditableTextfield = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const fieldAlignment = select("Alignment", alignment, "left");
   const disabledSetting = boolean("disabled", false);
   const messageStatus = boolean("Add message Status", false);
   const inputDiff = boolean("Input Type", false);
   const inputValid = boolean("Validation Pattern", false);
 
-
   if (messageStatus) {
     const messageOptions = ["success", "error", "warning"];
     const message = select("message", messageOptions, "error");
 
     return html`
-    <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-editable-field .message=${{ ...messages[message] }}>
-        ${message} Status
-      </md-editable-field>
-    </md-theme>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+        <md-editable-field .message=${{ ...messages[message] }}>
+          ${message} Status
+        </md-editable-field>
+      </md-theme>
     `;
   } else if (inputDiff) {
     const inputTypes = numInputTypes;
     const inputType = select("Input Type", inputTypes, "text");
 
     return html`
-    <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field .message=${errorMessageArr} numberType=${inputType}>
-        12345
-      </md-editable-field>
-    </md-theme>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+        <md-editable-field .message=${errorMessageArr} numberType=${inputType}>
+          12345
+        </md-editable-field>
+      </md-theme>
     `;
   } else if (inputValid) {
     const regexString = text("Regex String", "^([+-]?[1-9]\\d*|0)$");
 
     return html`
-    <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field .message=${errorMessageArr} .pattern=${regexString}>
-        Test Regex Match . . .
-      </md-editable-field>
-    </md-theme>
-  `;
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+        <md-editable-field .message=${errorMessageArr} .pattern=${regexString}>
+          Test Regex Match . . .
+        </md-editable-field>
+      </md-theme>
+    `;
   } else {
     return html`
-    <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme}>
-      <md-editable-field maxLines="2" ?disabled=${disabledSetting} .alignment=${fieldAlignment} content="Text from Content Attribute">
-        Test editable text in slot
-      </md-editable-field>
-    <md-theme>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+        <md-editable-field
+          maxLines="2"
+          ?disabled=${disabledSetting}
+          .alignment=${fieldAlignment}
+          content="Text from Content Attribute"
+        >
+          Test editable text in slot
+        </md-editable-field>
+      </md-theme>
     `;
   }
 };

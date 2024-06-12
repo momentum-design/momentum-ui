@@ -89,7 +89,7 @@
 :host([aria-checked="true"]) {
   .checkbox-label {
     &::after {
-      border: solid $md-white-100;
+      border: solid var(--checkbox-icon-color, $md-white-100);
       border-width: 0 0.12em 0.12em 0;
       display: block;
       height: 0.6em;
@@ -107,7 +107,7 @@
 :host([indeterminate]) {
   .checkbox-label {
     &::after {
-      border: solid $md-white-100;
+      border: solid var(--checkbox-icon-color, $md-white-100);
       border-width: 0 0 0.12em;
       display: block;
       height: 0.2em;

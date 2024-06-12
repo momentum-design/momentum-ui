@@ -3,6 +3,7 @@
 }
 $combobox-radius: rem-calc(16);
 $combobox-border: 1px solid var(--combobox-border-color, $lm-combobox-border-color-light);
+$combobox-select-border: 1px solid var(--combobox-select-border-color, $lm-combobox-select-border-color-light);
 $combobox-group-radius: var(--combobox-group-radius, $lm-combobox-group-radius-light);
 $combobox-disabled-opacity: 0.3;
 $combobox-main-indent: rem-calc(4);

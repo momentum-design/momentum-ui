@@ -7,10 +7,11 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { number, boolean, withKnobs } from "@storybook/addon-knobs";
+import { number, select, boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/spinner/Spinner";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Spinner",
@@ -29,10 +30,11 @@ export default {
 export const Spinner = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const size = number("Size", 20);
 
   return html`
-    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-spinner .size="${size}"></md-spinner>
     </md-theme>
   `;

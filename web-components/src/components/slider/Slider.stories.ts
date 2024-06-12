@@ -11,7 +11,8 @@ import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { html } from "lit-element";
-import { number, boolean, withKnobs } from "@storybook/addon-knobs";
+import { number, select, boolean, withKnobs } from "@storybook/addon-knobs";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Slider",
@@ -31,6 +32,7 @@ export default {
 export const Slider = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const disabled = boolean("Disabled", false);
   const step = number("step", 1);
   const min = number("min", 0);
@@ -40,7 +42,7 @@ export const Slider = () => {
   const hideValue = boolean("Hide Value", false);
 
   return html`
-    <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-slider
         @slider-change=${action("change")}
         .disabled=${disabled}

@@ -11,8 +11,9 @@ import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Combobox",
@@ -28,6 +29,7 @@ export default {
 export const Combobox = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const placeholder = text("placeholder", "Add Country");
   const disabled = boolean("Disabled", false);
   const trimSpace = boolean("Trim white space", false);
@@ -44,7 +46,7 @@ export const Combobox = () => {
 
   if (init) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox
           placeholder=${placeholder}
           .options=${comboBoxOptions}
@@ -58,13 +60,13 @@ export const Combobox = () => {
     `;
   } else if (multi) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} is-multi></md-combobox>
       </md-theme>
     `;
   } else if (customValue) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox
           placeholder=${placeholder}
           .options=${comboBoxOptions}
@@ -75,7 +77,7 @@ export const Combobox = () => {
     `;
   } else if (multiInit) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox
           placeholder=${placeholder}
           .options=${comboBoxOptions}
@@ -86,7 +88,7 @@ export const Combobox = () => {
     `;
   } else if (object) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox
           placeholder=${placeholder}
           .options=${comboBoxObjectOptions}
@@ -98,7 +100,7 @@ export const Combobox = () => {
     `;
   } else if (objectInit) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox
           placeholder=${placeholder}
           .options=${comboBoxObjectOptions}
@@ -112,7 +114,7 @@ export const Combobox = () => {
     `;
   } else if (customContent) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox with-custom-content .is-multi=${multi}>
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
@@ -135,7 +137,7 @@ export const Combobox = () => {
     `;
   } else if (customContentInit) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox with-custom-content is-multi .value=${[{ id: "Wikipedia", value: "Wikipedia" }]}>
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
@@ -158,7 +160,7 @@ export const Combobox = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-combobox
           .options=${comboBoxOptions}
           placeholder=${placeholder}

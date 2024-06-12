@@ -7,6 +7,7 @@ export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: Boolean }) default = false;
   @property({ type: Boolean }) warning = false;
   @property({ type: Boolean }) error = false;
+  @property({ type: Boolean }) success = false;
 
   async openAlert(kind: string) {
     switch (kind) {
@@ -18,6 +19,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         break;
       case "error":
         this.error = true;
+        break;
+      case "success":
+        this.success = true;
         break;
       default:
         break;
@@ -36,6 +40,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
       case "error":
         this.error = false;
         break;
+      case "success":
+        this.success = false;
+        break;
       default:
         break;
     }
@@ -53,6 +60,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
       </div>
       <div style="margin-bottom: 15px;">
         <md-button @click=${() => this.openAlert("default")}>Trigger Default Alert</md-button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <md-button @click=${() => this.openAlert("success")}>Trigger Success Alert</md-button>
       </div>
       <md-alert-banner ?show=${this.default} type="default" @alertBanner-hide=${() => this.hideAlert("default")}>
         Test Alert Message
@@ -75,6 +85,13 @@ export class AlertBannerTemplateSandbox extends LitElement {
         type="error"
         @alertBanner-hide=${() => this.hideAlert("error")}
         message="text from a message attribute instead"
+      ></md-alert-banner>
+      <md-alert-banner
+        ?show=${this.success}
+        closable
+        type="success"
+        @alertBanner-hide=${() => this.hideAlert("success")}
+        message="success text from a message attribute"
       ></md-alert-banner>
     `;
   }

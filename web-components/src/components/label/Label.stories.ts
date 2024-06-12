@@ -7,12 +7,13 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { text, boolean, withKnobs } from "@storybook/addon-knobs";
+import { text, select, boolean, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "@/components/input/Input";
 import "@/components/label/Label";
 import "@/components/theme/Theme";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Label",
@@ -37,21 +38,28 @@ export default {
 export const Label = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const label = text("Label", "Label");
   const withInput = boolean("With Input", false);
   const secondaryLabel = text("Secondary Label", "");
 
   if (withInput) {
     return html`
-    <md-theme class="theme-toggle" id="label" ?darkTheme=${darkTheme} ?lumos=${lumos}>
-      <md-input @label-click=${action('click')} .label=${label} placeholder="placeholder text" .secondaryLabel=${secondaryLabel}> </md-input>
-    </md-theme>
+      <md-theme class="theme-toggle" id="label" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+        <md-input
+          @label-click=${action("click")}
+          .label=${label}
+          placeholder="placeholder text"
+          .secondaryLabel=${secondaryLabel}
+        >
+        </md-input>
+      </md-theme>
     `;
   } else {
     return html`
-    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme}>
-      <md-label htmlFor="#">${label}</md-label>
-    </md-theme>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+        <md-label htmlFor="#">${label}</md-label>
+      </md-theme>
     `;
   }
 };

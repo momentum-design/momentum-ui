@@ -34,6 +34,10 @@ describe("Accordion", () => {
   });
   afterEach(fixtureCleanup);
 
+  test("slotted item", async () => {
+    expect(accordion.slotItem.name).toBe("accordion-item");
+  });
+
   test("should correct navigate between items using keyboard", async () => {
     const createEvent = (code: string) =>
       new KeyboardEvent("keydown", {

@@ -125,4 +125,18 @@ describe("Badge component", () => {
     console.log("spanElement", spanElement?.getAttribute("aria-label"));
     expect(spanElement?.getAttribute("aria-label")).toEqual(ariaLabel);
   });
+
+  test("no attributes set", async () => {
+    const component: Badge.ELEMENT = await fixture(
+      html`
+        <md-badge></md-badge>
+      `
+    );
+
+    expect(component.bgColor).toBeFalsy;
+    expect(component.textColor).toBeFalsy;
+    expect(component.height).toBeFalsy;
+    expect(component.width).toBeFalsy;
+    expect(component.getStyles()).toBeFalsy;
+  });
 });

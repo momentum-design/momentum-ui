@@ -29,7 +29,7 @@ const fixtureFactory = async (
         iconSrc="${iconSrc}"
       >
         <span slot="queue">
-          <span className="queue-name">Test Queue Name</span>
+          <span className="queue-name">Test Queue Name 00:00</span>
         </span>
         <div slot="task-addition">00:08</div>
       </md-task-item>
@@ -414,6 +414,6 @@ describe("TaskItem", () => {
     );
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
-    expect(ariaLabel).toEqual("twitter transfered  Test Queue Name  ");
+    expect(ariaLabel).toEqual("twitter transfered  Test Queue Name 0 minutes 0 seconds  ");
   });
 });

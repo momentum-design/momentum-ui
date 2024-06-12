@@ -12,7 +12,7 @@ import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib"
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { lumosDark, lumosLight, momentumDark, momentumLight } from "./index";
+import { lumosDark, lumosLight, momentumDark, momentumLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {
   interface Window {
@@ -34,6 +34,9 @@ declare global {
   }
 }
 
+export type ThemeName = "momentum" | "lumos" | "momentumV2" | "";
+export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2", ""];
+
 export namespace Theme {
   export type Attributes = {
     darkTheme: boolean;
@@ -53,6 +56,7 @@ export namespace Theme {
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) darkTheme = false;
     @property({ type: Boolean }) lumos = false;
+    @property({ type: String }) theme: ThemeName = "";
 
     @internalProperty() private activeTheme = momentumLight;
 
@@ -68,18 +72,18 @@ export namespace Theme {
     private currentPopperClone: HTMLElement | null = null;
 
     private setTheme() {
+      //If the theme property is set, prefer using that theme over the lumos property
+      if (this.theme === "momentum") {
+        return this.darkTheme ? momentumDark : momentumLight;
+      } else if (this.theme === "lumos") {
+        return this.darkTheme ? lumosDark : lumosLight;
+      } else if (this.theme === "momentumV2") {
+        return this.darkTheme ? momentumV2Dark : momentumV2Light;
+      }
       if (this.lumos) {
-        if (this.darkTheme) {
-          return lumosDark;
-        } else {
-          return lumosLight;
-        }
+        return this.darkTheme ? lumosDark : lumosLight;
       } else {
-        if (this.darkTheme) {
-          return momentumDark;
-        } else {
-          return momentumLight;
-        }
+        return this.darkTheme ? momentumDark : momentumLight;
       }
     }
 
@@ -147,10 +151,10 @@ export namespace Theme {
       const popperClone = popper.cloneNode(true) as HTMLDivElement;
       const popperShadowRoot = (popper.getRootNode() as ShadowRoot).host;
 
-      this.eventListeners.mouseEnter = () => popperShadowRoot.toggleAttribute('opened',true);
-      this.eventListeners.mouseLeave = () => popperShadowRoot.toggleAttribute('opened',false);
-      popperClone.addEventListener('mouseenter', this.eventListeners.mouseEnter);
-      popperClone.addEventListener('mouseleave', this.eventListeners.mouseLeave);
+      this.eventListeners.mouseEnter = () => popperShadowRoot.toggleAttribute("opened", true);
+      this.eventListeners.mouseLeave = () => popperShadowRoot.toggleAttribute("opened", false);
+      popperClone.addEventListener("mouseenter", this.eventListeners.mouseEnter);
+      popperClone.addEventListener("mouseleave", this.eventListeners.mouseLeave);
       this.currentPopperClone = popperClone;
 
       if (this.virtualWrapper.hasChildNodes()) {
@@ -178,14 +182,15 @@ export namespace Theme {
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("lumos") || changedProperties.has("darkTheme")) {
+      if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme")) {
         this.dispatchEvent(
           new CustomEvent("theme-changed", {
             composed: true,
             bubbles: true,
             detail: {
               darkTheme: this.darkTheme,
-              lumos: this.lumos
+              lumos: this.lumos,
+              theme: this.theme
             }
           })
         );
@@ -321,10 +326,10 @@ export namespace Theme {
 
     private removeVirtualPopperEvents() {
       if (this.eventListeners.mouseEnter && this.currentPopperClone) {
-        this.currentPopperClone.removeEventListener('mouseenter', this.eventListeners.mouseEnter);
+        this.currentPopperClone.removeEventListener("mouseenter", this.eventListeners.mouseEnter);
       }
       if (this.eventListeners.mouseLeave && this.currentPopperClone) {
-        this.currentPopperClone.removeEventListener('mouseleave', this.eventListeners.mouseLeave);
+        this.currentPopperClone.removeEventListener("mouseleave", this.eventListeners.mouseLeave);
       }
       this.eventListeners.mouseEnter = undefined;
       this.eventListeners.mouseLeave = undefined;

@@ -12,8 +12,10 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export const alignLabel = ["left", "right"] as const;
+const accessibleDescriptionLabelId = "md-toggle-switch__accessible-description";
 
 export namespace ToggleSwitch {
   export type alignLabel = typeof alignLabel[number];
@@ -21,6 +23,7 @@ export namespace ToggleSwitch {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) htmlId = "";
     @property({ type: String }) label = "toggle";
+    @property({ type: String }) description: string | undefined = undefined;
     @property({ type: Boolean }) checked = false;
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) small = false;
@@ -58,7 +61,7 @@ export namespace ToggleSwitch {
     render() {
       return html`
         <div
-          class="md-input-container md-toggle-switch  ${classMap(this.toggleSwitchClassMap)}"
+          class="md-input-container md-toggle-switch ${classMap(this.toggleSwitchClassMap)}"
           @click=${this.handleClick}
         >
           <input
@@ -71,10 +74,16 @@ export namespace ToggleSwitch {
             ?disabled=${this.disabled}
             ?autofocus=${this.autofocus}
             tabindex=${this.disabled ? -1 : 0}
+            aria-describedby=${ifDefined(this.description ? accessibleDescriptionLabelId : undefined)}
           />
           <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label">
             ${this.switchTemplate()}
           </md-label>
+          ${this.description && html`
+            <div id=${accessibleDescriptionLabelId} class="md-toggle-switch__accessible-description">
+              ${this.description}
+            </div>
+          `}
         </div>
       `;
     }

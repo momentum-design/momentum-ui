@@ -30,6 +30,10 @@
       }
     }
 
+    &__accessible-description {
+      display: none;
+    }
+
     &__label {
       cursor: pointer;
       display: inline-flex;

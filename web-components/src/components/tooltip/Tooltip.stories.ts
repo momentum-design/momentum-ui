@@ -14,6 +14,7 @@ import "@/components/button/Button";
 import "@/components/tooltip/Tooltip";
 import { tooltipPlacement } from "./Tooltip"; // Keep type import as a relative path
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Tooltip",
@@ -33,12 +34,13 @@ export default {
 export const Tooltip = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const message = text("message", "Test tooltip");
   const placement = select("placement", tooltipPlacement, "right");
   const opened = boolean("Opened", false);
 
   return html`
-    <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-tooltip
         message=${message}
         placement=${placement}

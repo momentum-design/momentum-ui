@@ -86,19 +86,19 @@ export namespace TaskItem {
         case "sms":
           return html`
             <md-badge color="darkmint" circle>
-              <md-icon name="sms_16" color="white"></md-icon>
+              <md-icon name="sms_16" color="white-100"></md-icon>
             </md-badge>
           `;
         case "facebook":
           return html`
             <md-badge bgColor="#0078FF" circle>
-              <md-icon name="messenger_16" color="white"></md-icon>
+              <md-icon name="messenger_16" color="white-100"></md-icon>
             </md-badge>
           `;
         case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
-              <md-icon name="whatsApp_16" color="white"></md-icon>
+              <md-icon name="whatsApp_16" color="white-100"></md-icon>
             </md-badge>
           `;
         default:
@@ -192,6 +192,21 @@ export namespace TaskItem {
         const queueSlot = this.querySelector('[slot="queue"]') as HTMLElement;
         if (queueSlot) {
           queueContent = queueSlot.textContent?.trim() || queueSlot.innerText.trim();
+          const timeMatch = queueContent.match(/(?:([01]?\d|2[0-3]):)?([0-5]?\d):([0-5]?\d)/);
+
+          if (timeMatch) {
+            const [, hours = 0, minutes, seconds] = timeMatch.map(Number);
+
+            // Create a Date object from the time
+            const date = new Date();
+            date.setHours(hours, minutes, seconds);
+
+            // Format the new time and add it back to the queueContent string
+            queueContent = queueContent.replace(
+              /(?:([01]?\d|2[0-3]):)?([0-5]?\d):([0-5]?\d)/,
+              `${hours ? hours + " hours " : ""}${minutes} minutes ${seconds} seconds`
+            );
+          }
         }
       }
       return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${

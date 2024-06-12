@@ -251,6 +251,10 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       }
     }
 
+    handleFocusOnClear = () => {
+      this.focusTrap(true);
+    }
+
     private hasAutofocus(element: HTMLElement) {
       return element.hasAttribute("autofocus");
     }
@@ -433,6 +437,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.addEventListener("click", this.handleOutsideTrapClick);
       document.addEventListener("on-widget-update", this.updateFocusableElements);
+      this.addEventListener("input-clear", this.handleFocusOnClear);
     }
 
     disconnectedCallback() {
@@ -443,6 +448,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
+      this.removeEventListener("input-clear", this.handleFocusOnClear);
       if (this.focusableTimer) {
         clearTimeout(this.focusableTimer);
       }

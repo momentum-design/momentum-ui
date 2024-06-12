@@ -14,8 +14,8 @@ const checkbox = {
     dark: colors.gray["05"].name
   },
   "border-color": {
-    light: colors.gray[20].name,
-    dark: colors.gray[70].name
+    light: colors.gray[70].name,
+    dark: colors.gray[40].name
   },
   "icon-color": {
     light: colors.white[100].name,
@@ -27,8 +27,8 @@ const checkbox = {
       dark: colors.gray[90].name
     },
     "border-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[80].name
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
     }
   },
   pressed: {

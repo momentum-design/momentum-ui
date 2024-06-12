@@ -293,6 +293,16 @@ export namespace Input {
         event.preventDefault();
       }
       this.input.focus();
+      this.dispatchEvent(
+        new CustomEvent("input-clear", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event
+          }
+        })
+      );
+      document.dispatchEvent(new CustomEvent('on-widget-update')); 
       this.handleChange(event);
     }
 

@@ -810,7 +810,9 @@ md-spinner + ::slotted(*) {
 
 @media (forced-colors: active) {
   :host .md-button {
-    &:focus,
+    &:focus{
+      outline: 2px solid Highlight;
+    }
     &:active {
       color: Highlight;
       outline: 2px solid Highlight;

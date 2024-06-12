@@ -12,6 +12,7 @@ import { alignLabel } from "@/components/toggle-switch/ToggleSwitch";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, withKnobs, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Toggle Switch",
@@ -31,13 +32,14 @@ export default {
 export const ToggleSwitch = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const checked = boolean("Checked", false);
   const disabled = boolean("Disabled", false);
   const smaller = boolean("Smaller", false);
   const align = select("Align Label", alignLabel, "right");
 
   return html`
-    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-toggle-switch
         htmlId="toggleSwitch"
         ?checked=${checked}

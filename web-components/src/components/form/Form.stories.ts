@@ -12,6 +12,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Form",
@@ -27,7 +28,7 @@ export default {
 export const Form = () => {
   const darkTheme = boolean("Dark Mode", false);
   const lumos = boolean("Lumos Theme", false);
-
+  const theme = select("Theme name", ThemeNameValues, "");
   const noValidate = boolean("Allow form shouldn't be validated when submitted", false);
   const allowRedirect = boolean("Allow redirect to the action URL", true);
   const isValid = boolean("Is form valid", false);
@@ -43,7 +44,7 @@ export const Form = () => {
   );
 
   return html`
-    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-form
         ?no-validate=${noValidate}
         ?allow-redirect=${allowRedirect}

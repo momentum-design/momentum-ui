@@ -7,7 +7,7 @@ describe("Checkbox component", () => {
   let element: Checkbox.ELEMENT;
   afterEach(fixtureCleanup);
   beforeEach(async () => {
-    element = await fixture<Checkbox.ELEMENT>(`<md-checkbox></md-checkbox>`);
+    element = await fixture<Checkbox.ELEMENT>(`<md-checkbox label="text"></md-checkbox>`);
   });
   test("should render checkbox", async () => {
     expect(element).not.toBeNull();

@@ -133,7 +133,7 @@ export class TabsOrderPrefsExample extends LitElement {
             <span>Content for "Cisco News"</span>
           </md-tab-panel>
           <md-tab slot="tab" name="Weather" closable="auto">
-            <md-icon name="month_16"></md-icon>
+            <md-icon name="calendar-month_16"></md-icon>
             <span>Cisco Weather</span>
           </md-tab>
           <md-tab-panel name="Weather" slot="panel">
@@ -214,7 +214,7 @@ export class TabsTemplateSandbox extends LitElement {
       `,
       Weather: `
         <md-tab slot="tab" name="Weather" closable="auto">
-          <md-icon name="month_16"></md-icon>
+          <md-icon name="calendar-month_16"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -579,7 +579,7 @@ export const tabsTemplate = html`
           <span>Content for "Cisco News"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="Weather" closable="auto">
-          <md-icon name="month_16"></md-icon>
+          <md-icon name="calendar-month_16"></md-icon>
           <span>Cisco Weather</span>
         </md-tab>
         <md-tab-panel slot="panel">

@@ -7,12 +7,13 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import mdx from "./TableAdvanced.mdx";
 import { html } from "lit-element";
 import { TableAdvanced as TableAdvancedType } from "./TableAdvanced"; // Keep type import as a relative path
 import "@/components/table-advanced/TableAdvanced";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Table Advanced",
@@ -31,6 +32,7 @@ export default {
 export const TableAdvanced = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const stickheader = boolean("Sticky Header", false);
   const resize = boolean("Column Resize", false);
   const dragRow = boolean("Row Draggable", false);
@@ -137,7 +139,7 @@ export const TableAdvanced = () => {
 
   if (customize) {
     return html`
-      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
           <md-table-advanced
             .style="${collapse ? `display: block;` : `display: none;`}"
@@ -161,7 +163,7 @@ export const TableAdvanced = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
           <md-table-advanced
             .style="${collapse ? `display: block;` : `display: none;`}"

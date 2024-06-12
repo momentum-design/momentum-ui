@@ -12,6 +12,7 @@ import { html } from "lit-element";
 import "@/components/menu/Menu";
 import "@/components/menu/MenuItem";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Menu",
@@ -29,13 +30,14 @@ const menuDirection = ["horizontal", "vertical"];
 export const Menu = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const direction = select("Direction", menuDirection, "horizontal");
   const justified = boolean("Justified", false);
   const disabled = boolean("Disabled", false);
   const href = text("href", "");
 
   return html`
-    <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-menu .direction="${direction}" .justified=${justified}>
         <md-menu-item >
           <md-icon name="recents_16"></md-icon>

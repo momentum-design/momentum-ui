@@ -57,7 +57,7 @@ export const buttonRoles = [
   "switch",
   "tab"
 ] as const;
-export const buttonVariant = ["primary", "secondary", "red", "green", "white", "darkGrey"] as const;
+export const buttonVariant = ["primary", "secondary", "red", "green", "white", "darkGrey", "promotional"] as const;
 export const buttonColor = [
   "blue",
   "red",

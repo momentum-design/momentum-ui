@@ -16,6 +16,7 @@ import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/menu-overlay/MenuOverlay";
 import { menuOverlayPlacement, menuOverlaySize, menuOverlayRole } from "./MenuOverlay"; // Keep type import as a relative path
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Menu Overlay",
@@ -39,6 +40,7 @@ export default {
 export const MenuOverlay = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const isOpen = boolean("isOpen", false);
   const disabled = boolean("Disabled", false)
   const placement = select("placement", menuOverlayPlacement, "bottom");
@@ -51,7 +53,7 @@ export const MenuOverlay = () => {
 
 
   return html`
-    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-menu-overlay
         style="margin: 10rem"
         placement=${placement}

@@ -14,6 +14,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Tabs",
@@ -39,6 +40,7 @@ export const Tabs = () => {
   const darkTheme = boolean("darkMode", false);
   const draggable = boolean("draggable", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const disabled = boolean("disabled", false);
   const justified = boolean("Justified", false);
   const options = { vertical: "vertical", horizontal: "horizontal" };
@@ -51,7 +53,7 @@ export const Tabs = () => {
 
   if (more) {
     return html`
-      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <div style="max-width: 600px;">
           <md-tabs
             @selected-changed=${action("changed")}
@@ -131,7 +133,7 @@ export const Tabs = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="tabs" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <div style="height: 300px;">
           <md-tabs
             @selected-changed=${action("changed")}

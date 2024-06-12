@@ -86,19 +86,19 @@ export namespace TaskItem {
         case "sms":
           return html`
             <md-badge color="darkmint" circle>
-              <md-icon name="sms_16" color="white"></md-icon>
+              <md-icon name="sms_16" color="white-100"></md-icon>
             </md-badge>
           `;
         case "facebook":
           return html`
             <md-badge bgColor="#0078FF" circle>
-              <md-icon name="messenger_16" color="white"></md-icon>
+              <md-icon name="messenger_16" color="white-100"></md-icon>
             </md-badge>
           `;
         case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
-              <md-icon name="whatsApp_16" color="white"></md-icon>
+              <md-icon name="whatsApp_16" color="white-100"></md-icon>
             </md-badge>
           `;
         default:

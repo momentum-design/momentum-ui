@@ -1,10 +1,11 @@
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./Accordion";
 import mdx from "./Accordion.mdx";
 import "./AccordionItem";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Accordion",
@@ -23,12 +24,13 @@ export default {
 export const Accordion = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const disabled = boolean("disabled", false);
   const expanded = boolean("expanded", false);
   const multiple = boolean("multiple", false);
 
   return html`
-    <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="activity-button" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-accordion ?multiple=${multiple}>
         <md-accordion-item slot="accordion-item" label="Header №1" ?expanded=${expanded}>
           <div>Panel №1</div>

@@ -14,6 +14,7 @@ import "@/components/icon/Icon";
 import "@/components/theme/Theme";
 import { iconSize, iconType } from "./Icon"; // Keep type import as a relative path
 import { action } from '@storybook/addon-actions';
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Icon",
@@ -40,6 +41,7 @@ export default {
 export const Icon = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const name = select("Name", iconNames, "arrow-up_16");
   const color = text("Color", "red");
   const title = text("Title", "");
@@ -49,7 +51,7 @@ export const Icon = () => {
   const sizeOverrided = boolean("Size Override", false);
 
   return html`
-    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-icon
         .name=${`icon-${name}`}
         .title=${title}

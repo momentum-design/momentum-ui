@@ -6,6 +6,7 @@ import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Date Time Picker",
@@ -21,6 +22,7 @@ export default {
 export const DateTimePicker = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const weekStart = select("weekStart", DatePicker.weekStartDays, "");
   const twoDigitAutoTab = boolean("twoDigitAutoTab", false);
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
@@ -55,7 +57,7 @@ export const DateTimePicker = () => {
   );
 
   return html`
-    <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-date-time-picker
         ?disabled=${disabled}
         value=${value}

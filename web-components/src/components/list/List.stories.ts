@@ -13,6 +13,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { action } from '@storybook/addon-actions';
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/List",
@@ -38,12 +39,13 @@ const options = {
 export const List = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const disabled = boolean("Disabled", false);
   const selected = number("Preselected", 2);
   const alignment = select("Orientation", options, "vertical");
 
   return html`
-    <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-list @list-item-change=${action('change')} label="Transuranium elements" .activated="${selected}" .alignment=${alignment as any}>
         <md-list-item slot="list-item">Neptunium</md-list-item>
         <md-list-item slot="list-item" ?disabled=${disabled}>Plutonium</md-list-item>

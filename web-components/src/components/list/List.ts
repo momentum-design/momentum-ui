@@ -106,6 +106,9 @@ export namespace List {
       if (changedProperties.has("activated")) {
         this.setActivated(this.activated);
       }
+      if (changedProperties.has("label")) {
+        this.setAttribute("aria-label", this.label);
+      }
     }
     private isListItemDisabled(index: number) {
       return (this.slotted[index] as ListItem.ELEMENT).disabled;

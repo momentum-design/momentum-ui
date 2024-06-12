@@ -32,7 +32,20 @@ export const avatarTemplate = html`
   <h3>Icon Avatar with Color</h3>
   <md-avatar alt="avatar" title="Warning Icon" size="80" color="mint" icon-name="warning_20"></md-avatar>
   <h3>Icon Avatar Status</h3>
-  <md-avatar title="Icon" size="36" type="dnd"></md-avatar>
+  <md-avatar title="active" size="36" type="active"></md-avatar>
+  <md-avatar title="bot" size="36" type="bot"></md-avatar>
+  <md-avatar title="call" size="36" type="call"></md-avatar>
+  <md-avatar title="dnd" size="36" type="dnd"></md-avatar>
+  <md-avatar title="group" size="36" type="group"></md-avatar>
+  <md-avatar title="inactive" size="36" type="inactive"></md-avatar>
+  <md-avatar title="meeting" size="36" type="meeting"></md-avatar>
+  <md-avatar title="ooo" size="36" type="ooo"></md-avatar>
+  <md-avatar title="presenting" size="36" type="presenting"></md-avatar>
+  <md-avatar title="self" size="36" type="self"></md-avatar>
+  <md-avatar title="typing" size="36" type="typing"></md-avatar>
+  <md-avatar title="engaged" size="36" type="engaged"></md-avatar>
+  <md-avatar title="idle" size="36" type="idle"></md-avatar>
+  <md-avatar title="rona" size="36" type="rona"></md-avatar>
   <h3>Icon Avatar Group</h3>
   <md-avatar title="Icon" type="group"></md-avatar>
   <h3>Avatar Self</h3>

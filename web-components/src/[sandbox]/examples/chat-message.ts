@@ -20,7 +20,7 @@ export const chatMessageTemplate = html`
     <p slot="message">
       <md-alert message="Who's awesome? You are!" show closable>
         <md-badge slot="alert-icon" color="darkmint" circle>
-          <md-icon name="sms_16" color="white"></md-icon>
+          <md-icon name="sms_16" color="white-100"></md-icon>
         </md-badge>
       </md-alert>
     </p>

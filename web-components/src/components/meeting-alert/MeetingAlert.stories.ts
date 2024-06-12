@@ -14,6 +14,7 @@ import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs"
 import { html } from "lit-element";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
 import mdx from './MeetingAlert.mdx';
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Meeting Alerts",
@@ -52,6 +53,7 @@ const defaultValue = [
 export const MeetingAlert = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const closeAriaLabel = text("Close Aria Label", "Webex Teams aria label");
   const remindAriaLabel = text("Remind Aria Label", "Webex Teams Remind");
@@ -67,7 +69,7 @@ export const MeetingAlert = () => {
     const attendees = array("Attendees", defaultValue);
 
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-meeting-alert
           show
           .attendees=${attendees as any}
@@ -81,7 +83,7 @@ export const MeetingAlert = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-meeting-alert
           .show=${show}
           .closeAriaLabel=${closeAriaLabel}
@@ -104,13 +106,14 @@ export const MeetingAlert = () => {
 export const MeetingAlertActionThroughSlot = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
  
   return html`
-    <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <h3>md-meeting-alert action through slot</h3>
       <md-meeting-alert  
           .show=${show}
@@ -138,13 +141,14 @@ export const MeetingAlertActionThroughSlot = () => {
 export const MeetingAlertImageThroughSlot = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
   
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <h3>md-meeting-alert image through slot</h3>
         <md-meeting-alert
           .show=${show}
@@ -166,13 +170,14 @@ export const MeetingAlertImageThroughSlot = () => {
 export const MeetingAlertSrcThroughSlot = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
   
   return html`
-    <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <h3>md-meeting-alert src through slot</h3>
         <md-meeting-alert 
           .show=${show}
@@ -189,13 +194,14 @@ export const MeetingAlertSrcThroughSlot = () => {
 export const MeetingAlertThroughSrc = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const src = text("Src", "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg");
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
 
     return html`
-      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <h3>md-meeting-alert image through src</h3>
         <md-meeting-alert
           .show=${show}

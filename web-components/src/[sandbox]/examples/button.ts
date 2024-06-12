@@ -114,6 +114,7 @@ export const buttonTemplate = html`
     <md-button variant="red"><span slot="text">red</span></md-button>
     <md-button variant="green"><span slot="text">green</span></md-button>
     <md-button variant="white"><span slot="text">White</span></md-button>
+    <md-button variant="promotional"><span slot="text">Promotional</span></md-button>
   </div>
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">Outline Color Schema</h3>

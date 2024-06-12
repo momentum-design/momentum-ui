@@ -6,6 +6,7 @@
   $background-color--disabled: var(--toggle-switch-bg-color--disabled, $lm-toggle-switch-bg-color--disabled-light),
   $background-color--disabled-checked: var(--toggle-switch-bg-color--disabled--checked, $lm-toggle-switch-bg-color--disabled--checked-light),
   $background-color-slider: var(--toggle-switch-slider-color, $lm-toggle-switch-slider-color-light),
+  $background-color-slider-checked: var(--toggle-switch-slider-color--checked, $background-color-slider),
   $background-color-slider-disabled:  var(--toggle-switch-slider-color-disabled, $lm-toggle-switch-slider-color-disabled-light),
   $background-color-slider-disabled--checked:  var(  --toggle-switch-slider-color-disabled--checked, $lm-toggle-switch-slider-color-disabled--checked-light),
   $border-focus: var( --toggle-switch-focus, $lm-toggle-switch-focus-light)
@@ -41,6 +42,10 @@
       + .md-toggle-switch__label {
          .md-toggle-switch__label__container {
           background-color: $background-color--checked;
+
+          &::after {
+            background-color: $background-color-slider-checked;
+          }
         }
 
         &:hover {

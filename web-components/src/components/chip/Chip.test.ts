@@ -114,6 +114,12 @@ describe("Chip component", () => {
       })
     );
 
+    chip!.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        code: Key.ArrowUp
+      })
+    );
+
     expect(spyKeyDown).toHaveBeenCalledTimes(2);
   });
   test("should be selectable", async () => {

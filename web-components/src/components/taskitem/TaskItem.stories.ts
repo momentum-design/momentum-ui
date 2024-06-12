@@ -7,12 +7,12 @@
  */
 
 import { withA11y } from "@storybook/addon-a11y";
-import { number, text, boolean, withKnobs } from "@storybook/addon-knobs";
+import { number, select, text, boolean, withKnobs } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
 import "@/components/badge/Badge";
 import "@/components/taskitem/TaskItem";
-import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Task Item",
@@ -36,6 +36,7 @@ export default {
 export const TaskItem = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const title = text("Task Title", "Mihael Varificantare");
   const quantity = number("New Chat Quantity", 12);
   const mediaType = text("type", "voice");
@@ -45,7 +46,7 @@ export const TaskItem = () => {
   const time = text("Timer", "00:00");
 
   return html`
-    <md-theme class="theme-toggle" id="taskitem" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="taskitem" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-task-item
         mediaType="${mediaType}"
         status="${status}"
@@ -57,7 +58,7 @@ export const TaskItem = () => {
         @taskitem-keydown=${(action('keydown'))}
       >
         <md-badge slot="task-type" color="darkmint" circle>
-          <md-icon name="sms_16" color="white"></md-icon>
+          <md-icon name="sms_16" color="white-100"></md-icon>
         </md-badge>
         <div>${time}</div>
       </md-task-item>

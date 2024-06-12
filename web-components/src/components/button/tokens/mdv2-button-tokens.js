@@ -46,6 +46,24 @@ const button = {
       light: "$mds-color-theme-text-primary-normal",
       dark: "$mds-color-theme-text-primary-normal"
     },
+    "border-color": {
+      light: "$mds-color-theme-outline-button-normal",
+      dark: "$mds-color-theme-outline-button-normal"
+    },
+    disabled: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-disabled",
+        dark: "$mds-color-theme-button-secondary-disabled"
+      },
+      "text-color": {
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled"
+    },
+      "border-color": {
+        light: "$mds-color-theme-outline-disabled-normal",
+        dark: "$mds-color-theme-outline-disabled-normal"
+      }
+    },
     hover: {
       "bg-color": {
         light: "$mds-color-theme-button-secondary-hover",

@@ -614,6 +614,7 @@
 :host([variant="secondary"]) .md-button {
   background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
   color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  border: 1px solid var(--button-secondary-border-color);
 
   &:hover {
     background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
@@ -627,8 +628,9 @@
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-secondary-disabled-bg-color ,var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light));
+    border: 1px solid var(--button-secondary-disabled-border-color);
+    color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color, $lm-button-disabled-text-color-light));
   }
 }
 

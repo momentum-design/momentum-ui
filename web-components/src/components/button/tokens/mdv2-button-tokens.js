@@ -56,9 +56,9 @@ const button = {
         dark: "$mds-color-theme-button-secondary-disabled"
       },
       "text-color": {
-      light: "$mds-color-theme-text-primary-disabled",
-      dark: "$mds-color-theme-text-primary-disabled"
-    },
+        light: "$mds-color-theme-text-primary-disabled",
+        dark: "$mds-color-theme-text-primary-disabled"
+      },
       "border-color": {
         light: "$mds-color-theme-outline-disabled-normal",
         dark: "$mds-color-theme-outline-disabled-normal"
@@ -79,7 +79,7 @@ const button = {
     outline: {
       color: {
         light: "$mds-color-theme-outline-button-normal",
-        dark: "$mds-color-theme-outline-button-normal",
+        dark: "$mds-color-theme-outline-button-normal"
       },
       "text-color": {
         light: "$mds-color-theme-text-primary-normal",
@@ -252,6 +252,28 @@ const button = {
       "bg-color": {
         light: "$mds-color-theme-common-button-promotion-active",
         dark: "$mds-color-theme-common-button-promotion-active"
+      }
+    }
+  },
+  accent: {
+    "bg-color": {
+      light: "$mds-color-theme-button-accent-normal",
+      dark: "$mds-color-theme-button-accent-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-accent-hover",
+        dark: "$mds-color-theme-button-accent-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-accent-pressed",
+        dark: "$mds-color-theme-button-accent-pressed"
       }
     }
   },

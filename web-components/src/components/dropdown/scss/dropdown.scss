@@ -130,6 +130,7 @@
     .md-dropdown-label {
       border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
       box-shadow: none;
+      outline: none;
     }
   }
 }
@@ -138,7 +139,7 @@
   .md-dropdown {
     .md-dropdown-label {
       background-color: var(--md-tertiary-bg-color);
-
+      
       &:hover, &:active {
         background-color: var(--md-tertiary-bg-color);
         pointer-events: none;
@@ -146,6 +147,10 @@
         > md-icon {
           opacity: $dropdown-disabled-opacity;
         }
+      }
+      &:focus-visible {
+        border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+        outline: none;
       }
     }
   }

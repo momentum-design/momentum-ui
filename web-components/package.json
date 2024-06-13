@@ -129,7 +129,7 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1",
     "lit-scss-loader": "1.0.1",
-    "node-sass": "^4.13.1",
+    "sass": "^1.71.1",
     "node-sass-tilde-importer": "^1.0.2",
     "papaparse": "^5.3.0",
     "prettier": "^1.19.1",

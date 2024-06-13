@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "../../settings/rem";
 
 @function char($iso-char) {
@@ -43,7 +45,7 @@ $modules: () !default;
 
 // convert px to em
 @function em($px: 0, $font-size: $rem-base) {
-  @return $px / $font-size + em;
+  @return math.div($px, $font-size) + em;
 }
 
 // convert unitless or px to rem
@@ -68,7 +70,7 @@ $modules: () !default;
   @if unit($val) == "px" {
     @return $val;
   } @else if unit($val) == "rem" {
-    @return $val * $base / 1rem;
+    @return math.div($val * $base, 1rem);
   } @else {
     @warn "`#{$val}` is not a supported try a px or rem value";
 
@@ -78,7 +80,7 @@ $modules: () !default;
 
 // find the nearest ceiling rem value to a baseline unit
 @function vr-adjust($val: 1px, $remove: 0, $base-unit: rem($base-unit)) {
-  @return ceil(rem($val) / $base-unit) * $base-unit - rem($remove);
+  @return ceil(math.div(rem($val), $base-unit)) * $base-unit - rem($remove);
 }
 
 // round to the nearest specified number
@@ -103,7 +105,7 @@ $modules: () !default;
 }
 
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return math.div($num, $num * 0 + 1);
 }
 
 @function text-inputs($types: all, $selector: input) {
@@ -132,7 +134,7 @@ $modules: () !default;
 }
 
 @function convert-to-rem($value, $base-value: $rem-base) {
-  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
 
   @if ($value == 0) {
     $value: 0;

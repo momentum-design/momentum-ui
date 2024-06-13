@@ -53,9 +53,11 @@ describe("Dropdown Component", () => {
     });
 
     it("should set correct handle focusin", async () => {
-      dropdown.dispatchEvent(new FocusEvent("focusin"));
-      dropdown.focus();
-      expect(document.activeElement).toEqual(dropdown);
+      const eventIn = new Event("focusin");
+      
+      setTimeout(() => dropdown["handleFocusIn"](eventIn));
+      const focusIn = await oneEvent(dropdown, "dropdown-focus-in");
+      expect(focusIn).toBeDefined();
     });
 
     it("should set correct handle focusout", async () => {
@@ -135,7 +137,31 @@ describe("Dropdown Component", () => {
           option: dropdownStringOptions[dropdownStringOptions.length - 1]
         })
       );
+
+      await toggleExpandCollapseDropdown(dropdown);
+      expect(dropdown["expanded"]).toBeTruthy();
+
+      dropdown.dispatchEvent(createKeyboardEvent(Key.Tab));
+      expect(dropdown["expanded"]).toBeFalsy();
     });
+
+    it("should call collapse on outside click", async () => {
+      const originalComposedPath = Event.prototype.composedPath;
+      const collapseFunc = jest.spyOn(dropdown, "collapse");
+   
+      await toggleExpandCollapseDropdown(dropdown);
+      
+      Event.prototype.composedPath = originalComposedPath;
+      const outsideDiv = await fixture<HTMLElement>(
+        html`
+          <div></div>
+        `);
+      const composedPathMock1 = jest.fn(() => [outsideDiv]);
+      Event.prototype.composedPath = composedPathMock1;
+      dropdown.onOutsideClick(new MouseEvent("click"));
+      expect(collapseFunc).toHaveBeenCalled();
+      Event.prototype.composedPath = originalComposedPath;
+    });  
 
     it("should allow unselected", async () => {
       const dropdown = await fixture<Dropdown.ELEMENT>(

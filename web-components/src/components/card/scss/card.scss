@@ -120,10 +120,11 @@
       &:focus{
         outline: 2px solid Highlight;
       }
-    }
-    &-header {
-      md-favorite { // favorite icon
-        color: windowText;
+
+      &-header {
+        md-favorite { // favorite icon
+          color: windowText;
+        }
       }
     }
   }

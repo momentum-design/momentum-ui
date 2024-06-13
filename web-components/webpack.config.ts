@@ -9,6 +9,7 @@ import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
 import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
+import sass from "sass";
 
 const pSrc = path.resolve("src");
 const pStats = path.resolve("stats");
@@ -76,8 +77,9 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
-        loader: "sass-loader",
+        loader: "sass-loader",        
         options: {
+          implementation: sass,
           sourceMap: isDev,
           sassOptions: {
             outputStyle: "compressed"

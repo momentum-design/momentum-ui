@@ -11,7 +11,7 @@
     text-align: right;
   } @else if $alignment==inline {
     margin: 0 0 $label__spacing 0;
-    padding: $label__spacing / 2 + rem-calc($input__border-width) 0;
+    padding: $label__spacing * 0.5 + rem-calc($input__border-width) 0;
   }
 }
 

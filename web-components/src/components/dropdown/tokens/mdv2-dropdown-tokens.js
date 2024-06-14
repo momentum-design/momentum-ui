@@ -8,27 +8,26 @@
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const dropdown = {
   prefix: "mdv2",
   component: "dropdown",
   "bg-color": {
     hover: {
-      light: colors.gray[20].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-primary-hover",
+      dark: "$mds-color-theme-background-primary-hover"
     },
     active: {
-      light: colors.gray[30].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-background-primary-active",
+      dark: "$mds-color-theme-background-primary-active"
     }
   },
   "border-color": {
-    light: colors.gray[30].name,
-    dark: colors.gray[80].name,
+    light: "$mds-color-theme-outline-input-normal",
+    dark: "$mds-color-theme-outline-input-normal",
     focus: {
-      light: colors.theme[70].name,
-      dark: colors.theme[50].name
+      light: "$mds-color-theme-outline-theme-normal",
+      dark: "$mds-color-theme-outline-theme-normal"
     }
   },
   label: {
@@ -39,17 +38,17 @@ const dropdown = {
   },
   list: {
     "bg-color": {
-      light: colors.white[100].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     item: {
       "bg-color-hover": {
-        light: colors.blue[20].name,
-        dark: colors.blue[50].name
+        light: "$mds-color-theme-background-primary-hover",
+        dark: "$mds-color-theme-background-primary-hover"
       },
       "bg-color-focus": {
-        light: colors.blue[50].name,
-        dark: colors.blue[40].name
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
       }
     }
   }

@@ -52,8 +52,8 @@ const toggleSwitch = {
     }
   },
   focus: {
-    light: "yellow",
-    dark: "yellow"
+    light: "$mds-color-theme-outline-theme-normal",
+    dark: "$mds-color-theme-outline-theme-normal"
   }
 };
 

@@ -1,21 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-const colors = require("@momentum-ui/tokens/dist/colors.json");
-
 const breadcrumb = {
   prefix: "mdv2",
   component: "breadcrumb",
   color: {
-    light: colors.blue[50].name,
-    dark: colors.blue[40].name,
+    light: "$mds-color-theme-text-accent-normal",
+    dark: "$mds-color-theme-text-accent-normal",
     current: {
-      light: colors.gray[90].name,
-      dark: colors.gray[50].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     slash: {
-      light: colors.gray[50].name,
-      dark: colors.gray[40].name
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled"
     }
   }
 };

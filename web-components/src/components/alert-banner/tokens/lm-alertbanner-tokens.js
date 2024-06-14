@@ -34,6 +34,16 @@ const alertBanner = {
       light: colors.yellow[70].name,
       dark: colors.yellow[10].name
     }
+  },
+  success: {
+    "bg-color": {
+      light: colors.green[10].name,
+      dark: colors.green[70].name
+    },
+    "text-color": {
+      light: colors.green[70].name,
+      dark: colors.green[10].name
+    }
   }
 };
 

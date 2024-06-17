@@ -360,16 +360,28 @@ const button = {
     }
   },
   favorite: {
+    "icon-color": {
+      light: "$mds-color-theme-text-warning-normal",
+      dark: "$mds-color-theme-text-warning-normal"
+    },
     hover: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[90].name
+        light: "$mds-color-theme-button-secondary-hover",
+        dark: "$mds-color-theme-button-secondary-hover"
+      },
+      "icon-color": {
+        light: "$mds-color-theme-text-warning-hover",
+        dark: "$mds-color-theme-text-warning-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.gray[20].name,
-        dark: colors.gray[80].name
+        light: "$mds-color-theme-button-secondary-pressed",
+        dark: "$mds-color-theme-button-secondary-pressed"
+      },
+      "icon-color": {
+        light: "$mds-color-theme-text-warning-active",
+        dark: "$mds-color-theme-text-warning-active"
       }
     }
   },

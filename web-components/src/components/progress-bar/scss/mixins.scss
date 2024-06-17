@@ -4,6 +4,7 @@
   margin-bottom: $progress-bar-margin-bottom;
   overflow: hidden;
   padding: $progress-bar-pad;
+  border-radius: $progress-bar-border-radius;
 }
 
 @mixin progress-meter($bg: $progress-meter-color) {

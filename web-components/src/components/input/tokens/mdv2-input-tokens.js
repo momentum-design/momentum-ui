@@ -113,12 +113,44 @@ const button = {
     "border-color": {
       light: "$mds-color-theme-outline-join-normal",
       dark: "$mds-color-theme-outline-join-normal"
+    },
+    "bg-color": {
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-background-primary-hover",
+        dark: "$mds-color-theme-background-primary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
+      }
     }
   },
   warning: {
     "border-color": {
       light: "$mds-color-theme-warning-border-default",
       dark: "$mds-color-theme-warning-border-default"
+    },
+    "bg-color": {
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-background-primary-hover",
+        dark: "$mds-color-theme-background-primary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
+      }
     }
   },
   filled: {

@@ -6,68 +6,72 @@ const combobox = {
   prefix: "mdv2",
   component: "combobox",
   "bg-color": {
-    light: colors.white[100].name,
-    dark: colors.gray[100].name
+    light: "$mds-color-theme-background-solid-primary-normal",
+    dark: "$mds-color-theme-background-solid-primary-normal"
   },
   "border-color": {
-    light: colors.gray[40].name,
-    dark: colors.gray[80].name
+    light: "$mds-color-theme-outline-input-normal",
+    dark: "$mds-color-theme-outline-input-normal"
   },
   "text-color": {
-    light: colors.gray[70].name,
-    dark: colors.gray[40].name
+    light: "$mds-color-theme-text-primary-normal",
+    dark: "$mds-color-theme-text-primary-normal"
   },
   hover: {
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-primary-hover",
+      dark: "$mds-color-theme-background-primary-hover"
     }
   },
   pressed: {
     "bg-color": {
-      light: colors.gray[30].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-background-primary-active",
+      dark: "$mds-color-theme-background-primary-active"
     }
   },
   focus: {
     "border-color": {
-      light: colors.theme[70].name,
-      dark: colors.theme[50].name
+      light: "$mds-color-theme-outline-theme-normal",
+      dark: "$mds-color-theme-outline-theme-normal"
     }
   },
   disabled: {
     "bg-color": {
-      light: colors.gray[10].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-primary-disabled",
+      dark: "$mds-color-theme-background-primary-disabled"
     }
   },
   invalid: {
     "bg-color": {
-      light: colors.red[10].name,
-      dark: colors.red[90].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     "border-color": {
-      light: colors.red[50].name,
-      dark: colors.red[50].name
+      light: "$mds-color-theme-outline-cancel-normal",
+      dark: "$mds-color-theme-outline-cancel-normal"
     }
   },
   dropdown: {
     "bg-color": {
-      light: colors.white[100].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     item: {
       "hover-bg-color": {
-        light: colors.blue[10].name,
-        dark: colors.blue[80].name
+        light: "$mds-color-theme-background-primary-hover",
+        dark: "$mds-color-theme-background-primary-hover"
       },
       "focus-bg-color": {
-        light: colors.blue[20].name,
-        dark: colors.blue[70].name
+        light: "$mds-color-theme-outline-theme-normal",
+        dark: "$mds-color-theme-outline-theme-normal"
       },
       "select-bg-color": {
-        light: colors.white[100].name,
-        dark: colors.gray[100].name
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
+      },
+      "select-font-color": {
+        light: "$mds-color-theme-text-primary-normal",
+        dark: "$mds-color-theme-text-primary-normal"
       },
       "checked-bg-color": {
         light: colors.blue[50].name,
@@ -120,19 +124,19 @@ const combobox = {
       light: colors.white[100].name,
       dark: colors.gray[90].name
     },
-    "color": {
+    color: {
       light: colors.gray[70].name,
       dark: colors.gray[40].name
     },
     "border-color": {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
-    },
+    }
   },
-  "placeholder": {
-    "color": {
-      light: colors.gray[70].name,
-      dark: colors.gray[40].name
+  placeholder: {
+    color: {
+      light: "$mds-color-theme-text-secondary-normal",
+      dark: "$mds-color-theme-text-secondary-normal"
     }
   }
 };

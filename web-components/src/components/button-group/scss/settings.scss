@@ -1,5 +1,5 @@
-$button-group-indent: rem-calc(2);
-$button-group-border-radius: rem-calc(4);
+$button-group-indent: var(--button-group-indent, rem-calc(2));
+$button-group-border-radius: var(--button-group-border-radius, rem-calc(4));
 $button-group-btn-padding: rem-calc(4 12);
 $button-group-btn-height: rem-calc(30);
 $button-group-btn-shadow: 0 2px 4px rgba($md-black-100, 0.1), 0 0 1px rgba($md-black-100, 0.18);

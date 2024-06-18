@@ -14,6 +14,12 @@ const avatar = {
       dark: "$mds-color-theme-common-text-white"
     }
   },
+  icon: {
+    "icon-color": {
+      light: "$mds-color-theme-common-text-white",
+      dark: "$mds-color-theme-common-text-white"
+    }
+  },
   blue: {
     "bg-color": {
       light: "$mds-color-theme-avatar-cobalt",
@@ -177,6 +183,28 @@ const avatar = {
       light: "$mds-color-theme-outline-primary-normal",
       dark: "$mds-color-theme-outline-primary-normal"
     }
+  },
+  presence: {
+    active: {
+      light: "$mds-color-theme-indicator-stable",
+      dark: "$mds-color-theme-indicator-stable"
+    },
+    inactive: {
+      light: "$mds-color-theme-indicator-locked",
+      dark: "$mds-color-theme-indicator-locked"
+    },
+    engaged: {
+      light: "$mds-color-theme-indicator-caution",
+      dark: "$mds-color-theme-indicator-caution"
+    },
+    rona: {
+      light: "$mds-color-theme-indicator-attention",
+      dark: "$mds-color-theme-indicator-attention"
+    }
+  },
+  notificationBadge: {
+    light: "$mds-color-theme-background-accent-normal",
+    dark: "$mds-color-theme-background-accent-normal"
   }
 };
 

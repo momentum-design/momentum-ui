@@ -67,7 +67,18 @@
 
   &--active {
     md-icon::part(icon) {
-      color: $md-yellow-50;
+      color: var(--button-favorite-icon-color, $md-yellow-50);
+    }
+
+    &:hover {
+      md-icon::part(icon) {
+        color: var(--button-favorite-hover-icon-color, $md-yellow-50);
+      }
+    }
+    &:active {
+      md-icon::part(icon) {
+        color: var(--button-favorite-pressed-icon-color, $md-yellow-50);
+      }
     }
   }
 }

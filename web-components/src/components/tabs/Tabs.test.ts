@@ -437,6 +437,42 @@ describe("Tabs", () => {
     expect(tabs.selected).toBe(0);
   });
 
+  test("should handle Enter Press keydown event with More Button and focus appropriate tab", async () => {
+    tabs["tabsFilteredAsVisibleList"] = [tab[0]];
+    tabs["tabsFilteredAsHiddenList"] = [ tab[1], tab[2]];
+    tabs["updateIsMoreTabMenuSelected"]();
+    const createKeyboardEvent = (id: string, code: string) => {
+      return {
+        originalTarget: {
+          id: id
+        },
+        composedPath: jest.fn(),
+        code: code,
+        target: tabs,
+        ctrlKey: false,
+        shiftKey: true,
+        altKey: false,
+        stopPropagation: jest.fn(),
+        preventDefault: jest.fn()
+      };
+    };
+
+    tabs["isMoreTabMenuVisible"] = true;
+    tabs["isMoreTabMenuOpen"] = true;
+
+    tab[1].selected = false;
+    tab[2].selected = false;
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Enter));
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(1);
+
+    tab[1].selected = false;
+    tab[2].selected = true;
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Enter));
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(2);
+  });
+
   test("should handle click event and select appropriate tab", async () => {
     tab.forEach((t: Tab.ELEMENT) => {
       tabs["tabsFilteredAsVisibleList"].push(t);

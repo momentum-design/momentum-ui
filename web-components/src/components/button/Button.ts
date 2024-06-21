@@ -57,7 +57,19 @@ export const buttonRoles = [
   "switch",
   "tab"
 ] as const;
-export const buttonVariant = ["primary", "secondary", "red", "green", "white", "darkGrey", "promotional"] as const;
+export const buttonVariant = [
+  "primary",
+  "secondary",
+  "red",
+  "green",
+  "white",
+  "darkGrey",
+  "promotional",
+  "available",
+  "unavailable",
+  "engaged",
+  "idle"
+] as const;
 export const buttonColor = [
   "blue",
   "red",
@@ -95,7 +107,7 @@ export namespace Button {
     ariaLive?: string;
     ariaExpanded?: boolean;
     ariaHaspopup?: boolean;
-    ariaPressed?: String;
+    ariaPressed?: string;
     ariaCurrent?: boolean;
     tag: Tag;
     loading: boolean;

@@ -1,0 +1,170 @@
+{
+  "size": 719,
+  "gzipSize": 346,
+  "humanizedSize": "719B",
+  "humanizedGzipSize": "346B",
+  "rules": {
+    "total": 6,
+    "size": {
+      "graph": [
+        2,
+        8,
+        3,
+        4,
+        1,
+        3
+      ],
+      "max": 8,
+      "average": 3.5
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-breadcrumb) .md-breadcrumb ul",
+        "declarations": 8
+      },
+      {
+        "selector": ":host(md-breadcrumb) .md-breadcrumb li:not(:first-child)::before",
+        "declarations": 4
+      },
+      {
+        "selector": ":host(md-breadcrumb) .md-breadcrumb a[aria-current=page]",
+        "declarations": 3
+      },
+      {
+        "selector": ":host(md-breadcrumb) .md-breadcrumb li",
+        "declarations": 3
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(md-breadcrumb) .md-breadcrumb a",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 6,
+    "type": 5,
+    "class": 5,
+    "id": 0,
+    "pseudoClass": 2,
+    "pseudoElement": 1,
+    "values": [
+      ":host(:focus)",
+      ":host(md-breadcrumb) .md-breadcrumb ul",
+      ":host(md-breadcrumb) .md-breadcrumb li",
+      ":host(md-breadcrumb) .md-breadcrumb li:not(:first-child)::before",
+      ":host(md-breadcrumb) .md-breadcrumb a",
+      ":host(md-breadcrumb) .md-breadcrumb a[aria-current=page]"
+    ],
+    "specificity": {
+      "max": 32,
+      "average": 22.666666666666668,
+      "graph": [
+        10,
+        21,
+        21,
+        32,
+        21,
+        31
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host(md-breadcrumb) .md-breadcrumb li:not(:first-child)::before",
+          "specificity": 32
+        },
+        {
+          "selector": ":host(md-breadcrumb) .md-breadcrumb a[aria-current=page]",
+          "specificity": 31
+        },
+        {
+          "selector": ":host(md-breadcrumb) .md-breadcrumb ul",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-breadcrumb) .md-breadcrumb li",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-breadcrumb) .md-breadcrumb a",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 21,
+    "unique": 19,
+    "properties": {
+      "box-shadow": [
+        "none"
+      ],
+      "outline": [
+        "none"
+      ],
+      "align-content": [
+        "center"
+      ],
+      "align-items": [
+        "center"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "flex"
+      ],
+      "flex-flow": [
+        "row nowrap"
+      ],
+      "justify-content": [
+        "flex-start"
+      ],
+      "margin": [
+        "0",
+        "0rem .75rem"
+      ],
+      "padding": [
+        ".5625rem .875rem .5625rem"
+      ],
+      "list-style": [
+        "none"
+      ],
+      "text-transform": [
+        "capitalize"
+      ],
+      "font-size": [
+        ".875rem"
+      ],
+      "color": [
+        "var(--breadcrumb-color-slash, #949494)",
+        "var(--breadcrumb-color, #00A0D1)",
+        "var(--breadcrumb-color-current, #292929)"
+      ],
+      "content": [
+        "\"/\""
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "cursor": [
+        "default"
+      ]
+    },
+    "resets": {
+      "margin": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

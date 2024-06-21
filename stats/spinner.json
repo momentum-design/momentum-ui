@@ -1,0 +1,254 @@
+{
+  "size": 864,
+  "gzipSize": 368,
+  "humanizedSize": "864B",
+  "humanizedGzipSize": "368B",
+  "rules": {
+    "total": 8,
+    "size": {
+      "graph": [
+        2,
+        1,
+        4,
+        4,
+        8,
+        1,
+        1,
+        4
+      ],
+      "max": 8,
+      "average": 3.125
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-spinner) .md-spinner::after",
+        "declarations": 8
+      },
+      {
+        "selector": ":host(md-spinner) .md-spinner:after",
+        "declarations": 4
+      },
+      {
+        "selector": ":host(md-spinner) .md-spinner::after",
+        "declarations": 4
+      },
+      {
+        "selector": ":host(md-spinner) .md-spinner",
+        "declarations": 4
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": "100%",
+        "declarations": 1
+      },
+      {
+        "selector": "0%",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-spinner)",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 6,
+    "type": 0,
+    "class": 4,
+    "id": 0,
+    "pseudoClass": 1,
+    "pseudoElement": 3,
+    "values": [
+      ":host(:focus)",
+      ":host(md-spinner)",
+      ":host(md-spinner) .md-spinner",
+      ":host(md-spinner) .md-spinner::after",
+      ":host(md-spinner) .md-spinner::after",
+      ":host(md-spinner) .md-spinner:after"
+    ],
+    "specificity": {
+      "max": 21,
+      "average": 17.166666666666668,
+      "graph": [
+        10,
+        10,
+        20,
+        21,
+        21,
+        21
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host(md-spinner) .md-spinner::after",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-spinner) .md-spinner::after",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-spinner) .md-spinner:after",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-spinner) .md-spinner",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        },
+        {
+          "selector": ":host(md-spinner)",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ":host(md-spinner) .md-spinner::after"
+    ]
+  },
+  "declarations": {
+    "total": 25,
+    "unique": 24,
+    "properties": {
+      "box-shadow": [
+        "none"
+      ],
+      "outline": [
+        "none"
+      ],
+      "line-height": [
+        "1rem"
+      ],
+      "border": [
+        "1px solid var(--spinner-bg-color, #b2b2b2)"
+      ],
+      "border-radius": [
+        "50%",
+        "50%"
+      ],
+      "display": [
+        "block"
+      ],
+      "position": [
+        "relative",
+        "absolute"
+      ],
+      "border-bottom": [
+        "1px solid rgba(0,0,0,0)",
+        "2px solid Highlight"
+      ],
+      "border-left": [
+        "1px solid var(--spinner-color, #000)",
+        "2px solid HighlightText"
+      ],
+      "border-right": [
+        "1px solid rgba(0,0,0,0)",
+        "2px solid Highlight"
+      ],
+      "border-top": [
+        "1px solid rgba(0,0,0,0)",
+        "2px solid Highlight"
+      ],
+      "animation": [
+        "load8 1s infinite linear"
+      ],
+      "content": [
+        "\"\""
+      ],
+      "height": [
+        "calc(100% + 2px)"
+      ],
+      "left": [
+        "-1px"
+      ],
+      "top": [
+        "-1px"
+      ],
+      "width": [
+        "calc(100% + 2px)"
+      ],
+      "transform": [
+        "rotate(0deg)",
+        "rotate(360deg)"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              4
+            ],
+            "max": 4,
+            "average": 4
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ":host(md-spinner) .md-spinner:after",
+              "declarations": 4
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 1,
+          "values": [
+            ":host(md-spinner) .md-spinner:after"
+          ],
+          "specificity": {
+            "max": 21,
+            "average": 21,
+            "graph": [
+              21
+            ],
+            "sortedGraph": [
+              {
+                "selector": ":host(md-spinner) .md-spinner:after",
+                "specificity": 21
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 4,
+          "unique": 4,
+          "properties": {
+            "border-bottom": [
+              "2px solid Highlight"
+            ],
+            "border-left": [
+              "2px solid HighlightText"
+            ],
+            "border-right": [
+              "2px solid Highlight"
+            ],
+            "border-top": [
+              "2px solid Highlight"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

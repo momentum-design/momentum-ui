@@ -1,0 +1,632 @@
+{
+  "size": 3699,
+  "gzipSize": 1090,
+  "humanizedSize": "4KB",
+  "humanizedGzipSize": "1KB",
+  "rules": {
+    "total": 32,
+    "size": {
+      "graph": [
+        18,
+        2,
+        4,
+        2,
+        6,
+        1,
+        5,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        2,
+        4
+      ],
+      "max": 18,
+      "average": 2.90625
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-badge",
+        "declarations": 18
+      },
+      {
+        "selector": ".md-badge--circle",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-badge--outline",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-badge",
+        "declarations": 4
+      },
+      {
+        "selector": "::slotted(span)",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-badge--small",
+        "declarations": 4
+      },
+      {
+        "selector": "::slotted(md-badge)",
+        "declarations": 3
+      },
+      {
+        "selector": "::slotted(md-icon)",
+        "declarations": 3
+      },
+      {
+        "selector": ".split-separator",
+        "declarations": 2
+      },
+      {
+        "selector": ".badge-counter",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--small.md-badge--circle",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--hold",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--pink",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--cyan",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--violet",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--purple",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--orange",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--darkred",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--red",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--yellow",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--green",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--darkmint",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--mint",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--blue,.md-badge--cobalt",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--lime",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--gold",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--gray",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--compact,.md-badge--split",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-badge--disabled ::slotted(md-icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-badge--circle ::slotted(md-icon)",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 34,
+    "type": 5,
+    "class": 31,
+    "id": 0,
+    "pseudoClass": 1,
+    "pseudoElement": 0,
+    "values": [
+      ".md-badge",
+      ".md-badge:focus",
+      ".md-badge--small",
+      ".md-badge--compact",
+      ".md-badge--split",
+      ".md-badge--circle",
+      ".md-badge--circle ::slotted(md-icon)",
+      ".md-badge--outline",
+      ".md-badge--gray",
+      ".md-badge--gold",
+      ".md-badge--lime",
+      ".md-badge--blue",
+      ".md-badge--cobalt",
+      ".md-badge--mint",
+      ".md-badge--darkmint",
+      ".md-badge--green",
+      ".md-badge--yellow",
+      ".md-badge--red",
+      ".md-badge--darkred",
+      ".md-badge--orange",
+      ".md-badge--purple",
+      ".md-badge--violet",
+      ".md-badge--cyan",
+      ".md-badge--pink",
+      ".md-badge--hold",
+      ".md-badge--disabled",
+      ".md-badge--disabled ::slotted(md-icon)",
+      ".md-badge--small.md-badge--circle",
+      ".badge-counter",
+      "::slotted(md-icon)",
+      "::slotted(md-badge)",
+      "::slotted(span)",
+      ".split-separator",
+      ".md-badge"
+    ],
+    "specificity": {
+      "max": 20,
+      "average": 9.852941176470589,
+      "graph": [
+        10,
+        20,
+        10,
+        10,
+        10,
+        10,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        20,
+        10,
+        1,
+        1,
+        1,
+        10,
+        10
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-badge:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-badge--small.md-badge--circle",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-badge--circle ::slotted(md-icon)",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-badge--disabled ::slotted(md-icon)",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-badge",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--small",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--compact",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--split",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--circle",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--outline",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--gray",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--gold",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--lime",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--blue",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--cobalt",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--mint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--darkmint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--green",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--yellow",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--red",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--darkred",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--orange",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--purple",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--violet",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--cyan",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--pink",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--hold",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge--disabled",
+          "specificity": 10
+        },
+        {
+          "selector": ".badge-counter",
+          "specificity": 10
+        },
+        {
+          "selector": ".split-separator",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-badge",
+          "specificity": 10
+        },
+        {
+          "selector": "::slotted(md-icon)",
+          "specificity": 1
+        },
+        {
+          "selector": "::slotted(md-badge)",
+          "specificity": 1
+        },
+        {
+          "selector": "::slotted(span)",
+          "specificity": 1
+        }
+      ]
+    },
+    "repeated": [
+      ".md-badge"
+    ]
+  },
+  "declarations": {
+    "total": 93,
+    "unique": 79,
+    "properties": {
+      "align-items": [
+        "center",
+        "center"
+      ],
+      "display": [
+        "inline-flex",
+        "inline-flex"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+      ],
+      "font-weight": [
+        "normal",
+        "bold"
+      ],
+      "height": [
+        "2rem",
+        "1.5rem",
+        "2.5rem",
+        "1.5rem",
+        "1rem",
+        "1rem",
+        "1rem"
+      ],
+      "justify-content": [
+        "flex-start",
+        "center",
+        "center"
+      ],
+      "line-height": [
+        "1rem"
+      ],
+      "margin-bottom": [
+        "auto"
+      ],
+      "overflow": [
+        "hidden"
+      ],
+      "position": [
+        "relative"
+      ],
+      "text-align": [
+        "center"
+      ],
+      "text-decoration": [
+        "none"
+      ],
+      "white-space": [
+        "nowrap"
+      ],
+      "padding": [
+        ".25rem 1rem",
+        ".1875rem .75rem",
+        ".25rem 1rem .25rem .25rem",
+        ".75rem .75rem"
+      ],
+      "font-size": [
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        ".75rem"
+      ],
+      "background-color": [
+        "var(--badge-default-bg-color, #F7F7F7)",
+        "rgba(0,0,0,0)",
+        "var(--badge-gray-bg-color, #DEDEDE)",
+        "var(--badge-gold-bg-color, #F5EAA2)",
+        "var(--badge-lime-bg-color, #DDF2AE)",
+        "var(--badge-blue-bg-color, #C7EEFF)",
+        "var(--badge-mint-bg-color, #BAF5E7)",
+        "var(--badge-darkmint-bg-color, #16A693)",
+        "var(--badge-green-bg-color, #78F5B8)",
+        "var(--badge-yellow-bg-color, #FFD98C)",
+        "var(--badge-red-bg-color)",
+        "var(--badge-darkred-bg-color, #16A693)",
+        "var(--badge-orange-bg-color, #FCE4C7)",
+        "var(--badge-purple-bg-color, #FCE1FC)",
+        "var(--badge-violet-bg-color, #F0E3FC)",
+        "var(--badge-cyan-bg-color, #B2F4F7)",
+        "var(--badge-pink-bg-color, #FFE0E7)",
+        "var(--badge-hold-bg-color, #FFECC2)",
+        "var(--md-quaternary-two-bg-color, #DEDEDE)",
+        "Canvas"
+      ],
+      "color": [
+        "var(--badge-default-text-color, #545454)",
+        "var(--badge-outline-color, #B2B2B2)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-darkmint-text-color, #F7F7F7)",
+        "var(--badge-green-text-color, #03612C)",
+        "var(--badge-yellow-text-color, #7D4705)",
+        "var(--badge-red-text-color, #A12512)",
+        "var(--badge-darkred-text-color, #4A1812)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-purple-text-color, #932099)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-cyan-text-color, #066070)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-hold-text-color, #121212)",
+        "var(--md-disabled-text-color, #B2B2B2)",
+        "var(--md-disabled-text-color, #B2B2B2)",
+        "CanvasText"
+      ],
+      "border-radius": [
+        "6.25rem"
+      ],
+      "outline": [
+        "2px solid var(--button-focus-ring-color)",
+        "1px solid CanvasText"
+      ],
+      "outline-offset": [
+        "2px"
+      ],
+      "min-width": [
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "width": [
+        "2.5rem",
+        "1.5rem",
+        "1rem",
+        "1rem"
+      ],
+      "margin": [
+        "0",
+        "0rem .5rem"
+      ],
+      "border": [
+        "2px solid var(--badge-outline-color, #B2B2B2)",
+        "1px solid"
+      ],
+      "margin-left": [
+        ".5rem"
+      ],
+      "margin-right": [
+        ".5rem",
+        ".5rem"
+      ],
+      "opacity": [
+        ".4"
+      ],
+      "forced-color-adjust": [
+        "none"
+      ]
+    },
+    "resets": {
+      "margin": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              4
+            ],
+            "max": 4,
+            "average": 4
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-badge",
+              "declarations": 4
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-badge"
+          ],
+          "specificity": {
+            "max": 10,
+            "average": 10,
+            "graph": [
+              10
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-badge",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 4,
+          "unique": 4,
+          "properties": {
+            "forced-color-adjust": [
+              "none"
+            ],
+            "background-color": [
+              "Canvas"
+            ],
+            "color": [
+              "CanvasText"
+            ],
+            "outline": [
+              "1px solid CanvasText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

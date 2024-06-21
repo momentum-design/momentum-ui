@@ -1,0 +1,485 @@
+{
+  "size": 2137,
+  "gzipSize": 623,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "623B",
+  "rules": {
+    "total": 15,
+    "size": {
+      "graph": [
+        2,
+        2,
+        13,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        5,
+        10,
+        5,
+        6,
+        5
+      ],
+      "max": 13,
+      "average": 3.8666666666666667
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-list-item) .md-list-item",
+        "declarations": 13
+      },
+      {
+        "selector": ":host(md-list) .md-list",
+        "declarations": 10
+      },
+      {
+        "selector": ":host([alignment=horizontal]) ::slotted(md-list-item)",
+        "declarations": 6
+      },
+      {
+        "selector": ":host([alignment=vertical])",
+        "declarations": 5
+      },
+      {
+        "selector": ":host([alignment=horizontal]) ul",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(:active:not([disabled])) .md-list-item,:host([selected]:not([disabled])) .md-list-item",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(:active[disabled]) .md-list-item,:host([disabled]) .md-list-item",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:active:not([disabled])) .md-list-item,:host([selected]:not([disabled])) .md-list-item",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:hover:not([disabled])) .md-list-item",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(md-list-item)",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:active[disabled]) .md-list-item,:host([disabled]) .md-list-item",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([focus-visible]:not([disabled])) .md-list-item,:host(:hover:not([disabled])) .md-list-item,:host(:focus:not([disabled])) .md-list-item",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([focus-visible]) .md-list-item",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-list-item) .md-list-item .md-input-container",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 21,
+    "type": 2,
+    "class": 16,
+    "id": 0,
+    "pseudoClass": 11,
+    "pseudoElement": 0,
+    "values": [
+      ":host(:focus)",
+      ":host(md-list-item)",
+      ":host(md-list-item) .md-list-item",
+      ":host(md-list-item) .md-list-item .md-input-container",
+      ":host(:hover:not([disabled])) .md-list-item",
+      ":host(:active:not([disabled])) .md-list-item",
+      ":host([selected]:not([disabled])) .md-list-item",
+      ":host([focus-visible]) .md-list-item",
+      ":host(:active[disabled]) .md-list-item",
+      ":host([disabled]) .md-list-item",
+      ":host([focus-visible]:not([disabled])) .md-list-item",
+      ":host(:hover:not([disabled])) .md-list-item",
+      ":host(:focus:not([disabled])) .md-list-item",
+      ":host(:active[disabled]) .md-list-item",
+      ":host([disabled]) .md-list-item",
+      ":host(:active:not([disabled])) .md-list-item",
+      ":host([selected]:not([disabled])) .md-list-item",
+      ":host(md-list) .md-list",
+      ":host([alignment=horizontal]) ul",
+      ":host([alignment=horizontal]) ::slotted(md-list-item)",
+      ":host([alignment=vertical])"
+    ],
+    "specificity": {
+      "max": 40,
+      "average": 27.238095238095237,
+      "graph": [
+        10,
+        10,
+        20,
+        30,
+        30,
+        30,
+        40,
+        30,
+        30,
+        30,
+        40,
+        30,
+        30,
+        30,
+        30,
+        30,
+        40,
+        20,
+        21,
+        21,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host([selected]:not([disabled])) .md-list-item",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([focus-visible]:not([disabled])) .md-list-item",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([selected]:not([disabled])) .md-list-item",
+          "specificity": 40
+        },
+        {
+          "selector": ":host(md-list-item) .md-list-item .md-input-container",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:hover:not([disabled])) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:active:not([disabled])) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([focus-visible]) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:active[disabled]) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([disabled]) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:hover:not([disabled])) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:focus:not([disabled])) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:active[disabled]) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([disabled]) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(:active:not([disabled])) .md-list-item",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([alignment=horizontal]) ul",
+          "specificity": 21
+        },
+        {
+          "selector": ":host([alignment=horizontal]) ::slotted(md-list-item)",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-list-item) .md-list-item",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-list) .md-list",
+          "specificity": 20
+        },
+        {
+          "selector": ":host([alignment=vertical])",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        },
+        {
+          "selector": ":host(md-list-item)",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ":host(:active:not([disabled])) .md-list-item",
+      ":host(:active[disabled]) .md-list-item",
+      ":host(:hover:not([disabled])) .md-list-item",
+      ":host([disabled]) .md-list-item",
+      ":host([selected]:not([disabled])) .md-list-item"
+    ]
+  },
+  "declarations": {
+    "total": 58,
+    "unique": 38,
+    "properties": {
+      "box-shadow": [
+        "none",
+        "0 0 0 .125rem var(--list-focus-border-color, #005e7d)",
+        "none"
+      ],
+      "outline": [
+        "none",
+        "2px solid Highlight"
+      ],
+      "box-sizing": [
+        "border-box",
+        "border-box"
+      ],
+      "cursor": [
+        "pointer"
+      ],
+      "align-content": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "stretch",
+        "center",
+        "center",
+        "stretch"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex"
+      ],
+      "flex-flow": [
+        "row nowrap",
+        "column nowrap",
+        "row nowrap",
+        "row nowrap",
+        "column nowrap"
+      ],
+      "justify-content": [
+        "flex-start",
+        "center",
+        "stretch",
+        "center",
+        "center"
+      ],
+      "color": [
+        "var(--list-text-color, #121212)",
+        "var(--list-hover-text-color, #121212)",
+        "var(--list-active-text-color, #121212)",
+        "var(--list-disabled-text-color, #b2b2b2)",
+        "GrayText",
+        "Canvas"
+      ],
+      "flex": [
+        "1 1 auto",
+        "1 1 auto"
+      ],
+      "font-size": [
+        ".875rem"
+      ],
+      "line-height": [
+        "1.125rem"
+      ],
+      "min-height": [
+        "2.25rem"
+      ],
+      "padding": [
+        ".5rem 1rem",
+        "0"
+      ],
+      "position": [
+        "relative",
+        "relative"
+      ],
+      "margin-bottom": [
+        "0"
+      ],
+      "background-color": [
+        "var(--list-hover-background, #91ebff)",
+        "var(--list-active-background, #00a0d1)",
+        "Highlight"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "forced-color-adjust": [
+        "none"
+      ],
+      "border": [
+        "none"
+      ],
+      "list-style": [
+        "none"
+      ],
+      "margin": [
+        "0"
+      ],
+      "width": [
+        "100%"
+      ]
+    },
+    "resets": {
+      "padding": 1,
+      "margin-bottom": 1,
+      "margin": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 3,
+          "size": {
+            "graph": [
+              1,
+              1,
+              5
+            ],
+            "max": 5,
+            "average": 2.3333333333333335
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",:host(:active:not([disabled])) .md-list-item,:host([selected]:not([disabled])) .md-list-item",
+              "declarations": 5
+            },
+            {
+              "selector": ",:host(:active[disabled]) .md-list-item,:host([disabled]) .md-list-item",
+              "declarations": 1
+            },
+            {
+              "selector": ":host([focus-visible]:not([disabled])) .md-list-item,:host(:hover:not([disabled])) .md-list-item,:host(:focus:not([disabled])) .md-list-item",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 7,
+          "type": 0,
+          "class": 7,
+          "id": 0,
+          "pseudoClass": 6,
+          "pseudoElement": 0,
+          "values": [
+            ":host([focus-visible]:not([disabled])) .md-list-item",
+            ":host(:hover:not([disabled])) .md-list-item",
+            ":host(:focus:not([disabled])) .md-list-item",
+            ":host(:active[disabled]) .md-list-item",
+            ":host([disabled]) .md-list-item",
+            ":host(:active:not([disabled])) .md-list-item",
+            ":host([selected]:not([disabled])) .md-list-item"
+          ],
+          "specificity": {
+            "max": 40,
+            "average": 32.857142857142854,
+            "graph": [
+              40,
+              30,
+              30,
+              30,
+              30,
+              30,
+              40
+            ],
+            "sortedGraph": [
+              {
+                "selector": ":host([focus-visible]:not([disabled])) .md-list-item",
+                "specificity": 40
+              },
+              {
+                "selector": ":host([selected]:not([disabled])) .md-list-item",
+                "specificity": 40
+              },
+              {
+                "selector": ":host(:hover:not([disabled])) .md-list-item",
+                "specificity": 30
+              },
+              {
+                "selector": ":host(:focus:not([disabled])) .md-list-item",
+                "specificity": 30
+              },
+              {
+                "selector": ":host(:active[disabled]) .md-list-item",
+                "specificity": 30
+              },
+              {
+                "selector": ":host([disabled]) .md-list-item",
+                "specificity": 30
+              },
+              {
+                "selector": ":host(:active:not([disabled])) .md-list-item",
+                "specificity": 30
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 7,
+          "unique": 7,
+          "properties": {
+            "outline": [
+              "2px solid Highlight"
+            ],
+            "color": [
+              "GrayText",
+              "Canvas"
+            ],
+            "forced-color-adjust": [
+              "none"
+            ],
+            "background-color": [
+              "Highlight"
+            ],
+            "box-shadow": [
+              "none"
+            ],
+            "border": [
+              "none"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

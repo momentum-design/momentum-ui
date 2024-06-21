@@ -1,0 +1,403 @@
+{
+  "size": 2187,
+  "gzipSize": 650,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "650B",
+  "rules": {
+    "total": 15,
+    "size": {
+      "graph": [
+        2,
+        1,
+        11,
+        1,
+        1,
+        14,
+        1,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        4,
+        1
+      ],
+      "max": 14,
+      "average": 3.1333333333333333
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-button-group) .md-button-group ::slotted(button)",
+        "declarations": 14
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group",
+        "declarations": 11
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group ::slotted([selected])",
+        "declarations": 4
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group ::slotted([selected])",
+        "declarations": 3
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([disabled]) .md-button-group",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group ::slotted(:hover)",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([focus-visible]:not([disabled])) .md-button-group",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([focus-visible]:not([disabled])) .md-button-group",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group ::slotted(button):last-child",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group ::slotted(button):first-child",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group:active",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-button-group) .md-button-group:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-button-group)",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 15,
+    "type": 3,
+    "class": 13,
+    "id": 0,
+    "pseudoClass": 8,
+    "pseudoElement": 0,
+    "values": [
+      ":host(:focus)",
+      ":host(md-button-group)",
+      ":host(md-button-group) .md-button-group",
+      ":host(md-button-group) .md-button-group:hover",
+      ":host(md-button-group) .md-button-group:active",
+      ":host(md-button-group) .md-button-group ::slotted(button)",
+      ":host(md-button-group) .md-button-group ::slotted(button):first-child",
+      ":host(md-button-group) .md-button-group ::slotted(button):last-child",
+      ":host(md-button-group) .md-button-group ::slotted(:hover)",
+      ":host(md-button-group) .md-button-group ::slotted([selected])",
+      ":host([focus-visible]:not([disabled])) .md-button-group",
+      ":host([disabled]) .md-button-group",
+      ":host(md-button-group) .md-button-group",
+      ":host(md-button-group) .md-button-group ::slotted([selected])",
+      ":host([focus-visible]:not([disabled])) .md-button-group"
+    ],
+    "specificity": {
+      "max": 40,
+      "average": 27.066666666666666,
+      "graph": [
+        10,
+        10,
+        20,
+        30,
+        30,
+        21,
+        31,
+        31,
+        31,
+        31,
+        40,
+        30,
+        20,
+        31,
+        40
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host([focus-visible]:not([disabled])) .md-button-group",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([focus-visible]:not([disabled])) .md-button-group",
+          "specificity": 40
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group ::slotted(button):first-child",
+          "specificity": 31
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group ::slotted(button):last-child",
+          "specificity": 31
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group ::slotted(:hover)",
+          "specificity": 31
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group ::slotted([selected])",
+          "specificity": 31
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group ::slotted([selected])",
+          "specificity": 31
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group:active",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([disabled]) .md-button-group",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group ::slotted(button)",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-button-group) .md-button-group",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        },
+        {
+          "selector": ":host(md-button-group)",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ":host([focus-visible]:not([disabled])) .md-button-group",
+      ":host(md-button-group) .md-button-group",
+      ":host(md-button-group) .md-button-group ::slotted([selected])"
+    ]
+  },
+  "declarations": {
+    "total": 47,
+    "unique": 41,
+    "properties": {
+      "box-shadow": [
+        "none",
+        "0 2px 4px rgba(0,0,0,.1),0 0 1px rgba(0,0,0,.18)",
+        "0 0 0 .125rem var(--md-default-focus-outline-color, #005E7D)"
+      ],
+      "outline": [
+        "none",
+        "none",
+        "1px solid CanvasText",
+        "1px solid Highlight",
+        "2px solid Highlight"
+      ],
+      "display": [
+        "flex",
+        "inline-flex",
+        "flex"
+      ],
+      "align-content": [
+        "flex-start",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center"
+      ],
+      "flex-flow": [
+        "row nowrap",
+        "row nowrap"
+      ],
+      "justify-content": [
+        "flex-start",
+        "center"
+      ],
+      "background": [
+        "var(--button-group-bg-color, #DEDEDE)",
+        "var(--button-group-bg-color-hover, #CCCCCC)",
+        "var(--button-group-bg-color-pressed, #B2B2B2)",
+        "none",
+        "var(--button-group-color-hover, none)",
+        "var(--button-group-bg-color-active, #FFFFFF)",
+        "Canvas",
+        "Highlight"
+      ],
+      "border-radius": [
+        "var(--button-group-border-radius, 0.25rem)",
+        "var(--button-group-border-radius, 0.25rem)"
+      ],
+      "font-size": [
+        "12px"
+      ],
+      "padding": [
+        "var(--button-group-indent, 0.125rem)",
+        ".25rem .75rem"
+      ],
+      "transition": [
+        "background .2s ease"
+      ],
+      "border": [
+        "1px solid var(--button-group-outline-border)",
+        "0"
+      ],
+      "color": [
+        "var(--button-group-color, #545454)",
+        "var(--button-group-color-active, #121212)",
+        "var(--button-group-color-active, #121212)",
+        "HighlightText"
+      ],
+      "cursor": [
+        "pointer"
+      ],
+      "height": [
+        "1.875rem"
+      ],
+      "margin": [
+        "0 var(--button-group-indent, 0.125rem)"
+      ],
+      "margin-left": [
+        "0"
+      ],
+      "margin-right": [
+        "0"
+      ],
+      "opacity": [
+        ".5"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "forced-color-adjust": [
+        "none"
+      ]
+    },
+    "resets": {
+      "margin-left": 1,
+      "margin-right": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 3,
+          "size": {
+            "graph": [
+              2,
+              4,
+              1
+            ],
+            "max": 4,
+            "average": 2.3333333333333335
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",:host(md-button-group) .md-button-group ::slotted([selected])",
+              "declarations": 4
+            },
+            {
+              "selector": ":host(md-button-group) .md-button-group",
+              "declarations": 2
+            },
+            {
+              "selector": ",:host([focus-visible]:not([disabled])) .md-button-group",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 3,
+          "type": 0,
+          "class": 3,
+          "id": 0,
+          "pseudoClass": 1,
+          "pseudoElement": 0,
+          "values": [
+            ":host(md-button-group) .md-button-group",
+            ":host(md-button-group) .md-button-group ::slotted([selected])",
+            ":host([focus-visible]:not([disabled])) .md-button-group"
+          ],
+          "specificity": {
+            "max": 40,
+            "average": 30.333333333333332,
+            "graph": [
+              20,
+              31,
+              40
+            ],
+            "sortedGraph": [
+              {
+                "selector": ":host([focus-visible]:not([disabled])) .md-button-group",
+                "specificity": 40
+              },
+              {
+                "selector": ":host(md-button-group) .md-button-group ::slotted([selected])",
+                "specificity": 31
+              },
+              {
+                "selector": ":host(md-button-group) .md-button-group",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 7,
+          "unique": 7,
+          "properties": {
+            "outline": [
+              "1px solid CanvasText",
+              "1px solid Highlight",
+              "2px solid Highlight"
+            ],
+            "background": [
+              "Canvas",
+              "Highlight"
+            ],
+            "forced-color-adjust": [
+              "none"
+            ],
+            "color": [
+              "HighlightText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

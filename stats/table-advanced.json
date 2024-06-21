@@ -1,0 +1,1094 @@
+{
+  "size": 7080,
+  "gzipSize": 1508,
+  "humanizedSize": "7KB",
+  "humanizedGzipSize": "1KB",
+  "rules": {
+    "total": 64,
+    "size": {
+      "graph": [
+        1,
+        1,
+        5,
+        1,
+        1,
+        6,
+        7,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        11,
+        3,
+        8,
+        3,
+        4,
+        7,
+        3,
+        1,
+        1,
+        6,
+        10,
+        2,
+        2,
+        8,
+        2,
+        3,
+        3,
+        9,
+        2,
+        2,
+        1,
+        1,
+        5,
+        1,
+        4,
+        5,
+        5,
+        1,
+        1,
+        7,
+        1,
+        8,
+        2,
+        6,
+        1,
+        7,
+        4,
+        5,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        4,
+        2,
+        1
+      ],
+      "max": 11,
+      "average": 3.203125
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": "thead th",
+        "declarations": 11
+      },
+      {
+        "selector": "thead .head-inner-cell .sortable",
+        "declarations": 10
+      },
+      {
+        "selector": "thead .sortable::before,thead .sortable::after",
+        "declarations": 9
+      },
+      {
+        "selector": "tbody tr th",
+        "declarations": 8
+      },
+      {
+        "selector": "thead .drag-area-col",
+        "declarations": 8
+      },
+      {
+        "selector": "thead th .resize",
+        "declarations": 8
+      },
+      {
+        "selector": "tbody tr .inner-cell span",
+        "declarations": 7
+      },
+      {
+        "selector": "tbody tr td",
+        "declarations": 7
+      },
+      {
+        "selector": "thead .head-inner-cell .filter-icon",
+        "declarations": 7
+      },
+      {
+        "selector": "table.sticky-header thead th::before",
+        "declarations": 7
+      },
+      {
+        "selector": "tbody tr .inner-cell .warn-icon",
+        "declarations": 6
+      },
+      {
+        "selector": "thead .head-inner-cell span",
+        "declarations": 6
+      },
+      {
+        "selector": "table.sticky-header thead th",
+        "declarations": 6
+      },
+      {
+        "selector": "tbody tr .drag-area",
+        "declarations": 5
+      },
+      {
+        "selector": ".filter-menu input",
+        "declarations": 5
+      },
+      {
+        "selector": ".filter-menu select",
+        "declarations": 5
+      },
+      {
+        "selector": ".filter-active",
+        "declarations": 5
+      },
+      {
+        "selector": "table",
+        "declarations": 5
+      },
+      {
+        "selector": "md-button.row-collapsible",
+        "declarations": 4
+      },
+      {
+        "selector": "tbody tr .drag-handle",
+        "declarations": 4
+      },
+      {
+        "selector": ".filter-menu",
+        "declarations": 4
+      },
+      {
+        "selector": "thead .head-inner-cell .filter-wrap",
+        "declarations": 4
+      },
+      {
+        "selector": "thead .sortable",
+        "declarations": 3
+      },
+      {
+        "selector": "thead .drag-area-col.over",
+        "declarations": 3
+      },
+      {
+        "selector": "thead .head-inner-cell .filter-icon::part(button)",
+        "declarations": 3
+      },
+      {
+        "selector": "thead .head-inner-cell",
+        "declarations": 3
+      },
+      {
+        "selector": "thead th .filter",
+        "declarations": 3
+      },
+      {
+        "selector": "md-button.row-collapsible::part(button)",
+        "declarations": 2
+      },
+      {
+        "selector": "tbody tr .drag-area.bottom",
+        "declarations": 2
+      },
+      {
+        "selector": "tbody tr .inner-cell",
+        "declarations": 2
+      },
+      {
+        "selector": "thead .sortable::after",
+        "declarations": 2
+      },
+      {
+        "selector": "thead .sortable::before",
+        "declarations": 2
+      },
+      {
+        "selector": "thead .drag-area-col.drag",
+        "declarations": 2
+      },
+      {
+        "selector": "thead md-menu-overlay::part(overlay)",
+        "declarations": 2
+      },
+      {
+        "selector": "thead md-menu-overlay::part(overlay)",
+        "declarations": 2
+      },
+      {
+        "selector": "table.sticky-header thead tr:focus th::before",
+        "declarations": 2
+      },
+      {
+        "selector": "table.sticky-header thead tr:first-child th::before",
+        "declarations": 2
+      },
+      {
+        "selector": "table.sticky-header thead tr:first-child th",
+        "declarations": 2
+      },
+      {
+        "selector": "table.sticky-header thead tr:last-child th::before",
+        "declarations": 2
+      },
+      {
+        "selector": "md-button.row-collapsible md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr:active td,tbody tr:active th,tbody tr.selected td,tbody tr.selected th",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr:active,tbody tr.selected",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr:hover td,tbody tr:hover th",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr:hover",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr.ghost",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr .drag-area.top",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr .inner-cell md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr th:first-child",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr td:first-child",
+        "declarations": 1
+      },
+      {
+        "selector": "tbody tr",
+        "declarations": 1
+      },
+      {
+        "selector": ".filter-active::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": "thead .sortable.descending::before",
+        "declarations": 1
+      },
+      {
+        "selector": "thead .sortable.ascending::after",
+        "declarations": 1
+      },
+      {
+        "selector": "thead .head-inner-cell .filter-icon:active",
+        "declarations": 1
+      },
+      {
+        "selector": "thead .head-inner-cell .filter-icon:hover",
+        "declarations": 1
+      },
+      {
+        "selector": "thead th:first-child",
+        "declarations": 1
+      },
+      {
+        "selector": "table.sticky-header thead tr:focus th:last-child",
+        "declarations": 1
+      },
+      {
+        "selector": "table.sticky-header thead tr:focus th:first-child",
+        "declarations": 1
+      },
+      {
+        "selector": "table.sticky-header thead tr:focus",
+        "declarations": 1
+      },
+      {
+        "selector": "table.sticky-header thead tr:last-child th",
+        "declarations": 1
+      },
+      {
+        "selector": "table.sticky-header thead th:first-child",
+        "declarations": 1
+      },
+      {
+        "selector": "table.sticky-header",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-table-advanced",
+        "declarations": 1
+      },
+      {
+        "selector": ":host",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 70,
+    "type": 66,
+    "class": 53,
+    "id": 0,
+    "pseudoClass": 20,
+    "pseudoElement": 10,
+    "values": [
+      ":host",
+      ".md-table-advanced",
+      "table",
+      "table.sticky-header",
+      "table.sticky-header thead th:first-child",
+      "table.sticky-header thead th",
+      "table.sticky-header thead th::before",
+      "table.sticky-header thead tr:last-child th",
+      "table.sticky-header thead tr:last-child th::before",
+      "table.sticky-header thead tr:first-child th",
+      "table.sticky-header thead tr:first-child th::before",
+      "table.sticky-header thead tr:focus",
+      "table.sticky-header thead tr:focus th:first-child",
+      "table.sticky-header thead tr:focus th:last-child",
+      "table.sticky-header thead tr:focus th::before",
+      "thead th:first-child",
+      "thead th",
+      "thead th .filter",
+      "thead th .resize",
+      "thead .head-inner-cell",
+      "thead .head-inner-cell .filter-wrap",
+      "thead .head-inner-cell .filter-icon",
+      "thead .head-inner-cell .filter-icon::part(button)",
+      "thead .head-inner-cell .filter-icon:hover",
+      "thead .head-inner-cell .filter-icon:active",
+      "thead .head-inner-cell span",
+      "thead .head-inner-cell .sortable",
+      "thead md-menu-overlay::part(overlay)",
+      "thead md-menu-overlay::part(overlay)",
+      "thead .drag-area-col",
+      "thead .drag-area-col.drag",
+      "thead .drag-area-col.over",
+      "thead .sortable",
+      "thead .sortable::before",
+      "thead .sortable::after",
+      "thead .sortable::before",
+      "thead .sortable::after",
+      "thead .sortable.ascending::after",
+      "thead .sortable.descending::before",
+      ".filter-active",
+      ".filter-active::part(icon)",
+      ".filter-menu",
+      ".filter-menu select",
+      ".filter-menu input",
+      "tbody tr",
+      "tbody tr td:first-child",
+      "tbody tr td",
+      "tbody tr th:first-child",
+      "tbody tr th",
+      "tbody tr .inner-cell",
+      "tbody tr .inner-cell .warn-icon",
+      "tbody tr .inner-cell md-icon::part(icon)",
+      "tbody tr .inner-cell span",
+      "tbody tr .drag-handle",
+      "tbody tr .drag-area",
+      "tbody tr .drag-area.top",
+      "tbody tr .drag-area.bottom",
+      "tbody tr.ghost",
+      "tbody tr:hover",
+      "tbody tr:hover td",
+      "tbody tr:hover th",
+      "tbody tr:active",
+      "tbody tr.selected",
+      "tbody tr:active td",
+      "tbody tr:active th",
+      "tbody tr.selected td",
+      "tbody tr.selected th",
+      "md-button.row-collapsible",
+      "md-button.row-collapsible::part(button)",
+      "md-button.row-collapsible md-icon::part(icon)"
+    ],
+    "specificity": {
+      "max": 34,
+      "average": 14.914285714285715,
+      "graph": [
+        10,
+        10,
+        1,
+        11,
+        23,
+        13,
+        14,
+        24,
+        25,
+        24,
+        25,
+        23,
+        34,
+        34,
+        25,
+        12,
+        2,
+        12,
+        12,
+        11,
+        21,
+        21,
+        22,
+        31,
+        31,
+        12,
+        21,
+        3,
+        3,
+        11,
+        21,
+        21,
+        11,
+        12,
+        12,
+        12,
+        12,
+        22,
+        22,
+        10,
+        11,
+        10,
+        11,
+        11,
+        2,
+        13,
+        3,
+        13,
+        3,
+        12,
+        22,
+        14,
+        13,
+        12,
+        12,
+        22,
+        22,
+        12,
+        12,
+        13,
+        13,
+        12,
+        12,
+        13,
+        13,
+        13,
+        13,
+        11,
+        12,
+        13
+      ],
+      "sortedGraph": [
+        {
+          "selector": "table.sticky-header thead tr:focus th:first-child",
+          "specificity": 34
+        },
+        {
+          "selector": "table.sticky-header thead tr:focus th:last-child",
+          "specificity": 34
+        },
+        {
+          "selector": "thead .head-inner-cell .filter-icon:hover",
+          "specificity": 31
+        },
+        {
+          "selector": "thead .head-inner-cell .filter-icon:active",
+          "specificity": 31
+        },
+        {
+          "selector": "table.sticky-header thead tr:last-child th::before",
+          "specificity": 25
+        },
+        {
+          "selector": "table.sticky-header thead tr:first-child th::before",
+          "specificity": 25
+        },
+        {
+          "selector": "table.sticky-header thead tr:focus th::before",
+          "specificity": 25
+        },
+        {
+          "selector": "table.sticky-header thead tr:last-child th",
+          "specificity": 24
+        },
+        {
+          "selector": "table.sticky-header thead tr:first-child th",
+          "specificity": 24
+        },
+        {
+          "selector": "table.sticky-header thead th:first-child",
+          "specificity": 23
+        },
+        {
+          "selector": "table.sticky-header thead tr:focus",
+          "specificity": 23
+        },
+        {
+          "selector": "thead .head-inner-cell .filter-icon::part(button)",
+          "specificity": 22
+        },
+        {
+          "selector": "thead .sortable.ascending::after",
+          "specificity": 22
+        },
+        {
+          "selector": "thead .sortable.descending::before",
+          "specificity": 22
+        },
+        {
+          "selector": "tbody tr .inner-cell .warn-icon",
+          "specificity": 22
+        },
+        {
+          "selector": "tbody tr .drag-area.top",
+          "specificity": 22
+        },
+        {
+          "selector": "tbody tr .drag-area.bottom",
+          "specificity": 22
+        },
+        {
+          "selector": "thead .head-inner-cell .filter-wrap",
+          "specificity": 21
+        },
+        {
+          "selector": "thead .head-inner-cell .filter-icon",
+          "specificity": 21
+        },
+        {
+          "selector": "thead .head-inner-cell .sortable",
+          "specificity": 21
+        },
+        {
+          "selector": "thead .drag-area-col.drag",
+          "specificity": 21
+        },
+        {
+          "selector": "thead .drag-area-col.over",
+          "specificity": 21
+        },
+        {
+          "selector": "table.sticky-header thead th::before",
+          "specificity": 14
+        },
+        {
+          "selector": "tbody tr .inner-cell md-icon::part(icon)",
+          "specificity": 14
+        },
+        {
+          "selector": "table.sticky-header thead th",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr td:first-child",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr th:first-child",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr .inner-cell span",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr:hover td",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr:hover th",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr:active td",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr:active th",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr.selected td",
+          "specificity": 13
+        },
+        {
+          "selector": "tbody tr.selected th",
+          "specificity": 13
+        },
+        {
+          "selector": "md-button.row-collapsible md-icon::part(icon)",
+          "specificity": 13
+        },
+        {
+          "selector": "thead th:first-child",
+          "specificity": 12
+        },
+        {
+          "selector": "thead th .filter",
+          "specificity": 12
+        },
+        {
+          "selector": "thead th .resize",
+          "specificity": 12
+        },
+        {
+          "selector": "thead .head-inner-cell span",
+          "specificity": 12
+        },
+        {
+          "selector": "thead .sortable::before",
+          "specificity": 12
+        },
+        {
+          "selector": "thead .sortable::after",
+          "specificity": 12
+        },
+        {
+          "selector": "thead .sortable::before",
+          "specificity": 12
+        },
+        {
+          "selector": "thead .sortable::after",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr .inner-cell",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr .drag-handle",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr .drag-area",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr.ghost",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr:hover",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr:active",
+          "specificity": 12
+        },
+        {
+          "selector": "tbody tr.selected",
+          "specificity": 12
+        },
+        {
+          "selector": "md-button.row-collapsible::part(button)",
+          "specificity": 12
+        },
+        {
+          "selector": "table.sticky-header",
+          "specificity": 11
+        },
+        {
+          "selector": "thead .head-inner-cell",
+          "specificity": 11
+        },
+        {
+          "selector": "thead .drag-area-col",
+          "specificity": 11
+        },
+        {
+          "selector": "thead .sortable",
+          "specificity": 11
+        },
+        {
+          "selector": ".filter-active::part(icon)",
+          "specificity": 11
+        },
+        {
+          "selector": ".filter-menu select",
+          "specificity": 11
+        },
+        {
+          "selector": ".filter-menu input",
+          "specificity": 11
+        },
+        {
+          "selector": "md-button.row-collapsible",
+          "specificity": 11
+        },
+        {
+          "selector": ":host",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-table-advanced",
+          "specificity": 10
+        },
+        {
+          "selector": ".filter-active",
+          "specificity": 10
+        },
+        {
+          "selector": ".filter-menu",
+          "specificity": 10
+        },
+        {
+          "selector": "thead md-menu-overlay::part(overlay)",
+          "specificity": 3
+        },
+        {
+          "selector": "thead md-menu-overlay::part(overlay)",
+          "specificity": 3
+        },
+        {
+          "selector": "tbody tr td",
+          "specificity": 3
+        },
+        {
+          "selector": "tbody tr th",
+          "specificity": 3
+        },
+        {
+          "selector": "thead th",
+          "specificity": 2
+        },
+        {
+          "selector": "tbody tr",
+          "specificity": 2
+        },
+        {
+          "selector": "table",
+          "specificity": 1
+        }
+      ]
+    },
+    "repeated": [
+      "thead .sortable::after",
+      "thead .sortable::before",
+      "thead md-menu-overlay::part(overlay)"
+    ]
+  },
+  "declarations": {
+    "total": 205,
+    "unique": 114,
+    "properties": {
+      "display": [
+        "block",
+        "inline-block",
+        "flex",
+        "inline-flex",
+        "inline-block",
+        "inline-block",
+        "inline-block",
+        "block",
+        "block",
+        "inline-block",
+        "flex",
+        "inline-block",
+        "inline-block",
+        "block"
+      ],
+      "width": [
+        "100%",
+        "100%",
+        "100%",
+        ".25rem",
+        "1.5rem",
+        "100%",
+        "auto",
+        "0",
+        "1.25rem",
+        "100%",
+        "100%"
+      ],
+      "border-collapse": [
+        "separate"
+      ],
+      "border-spacing": [
+        "0"
+      ],
+      "max-width": [
+        "100%",
+        "0",
+        "0",
+        "0",
+        "1.25rem"
+      ],
+      "position": [
+        "relative",
+        "sticky",
+        "absolute",
+        "relative",
+        "absolute",
+        "relative",
+        "absolute",
+        "relative",
+        "absolute",
+        "relative",
+        "relative",
+        "relative",
+        "relative",
+        "relative",
+        "absolute"
+      ],
+      "height": [
+        "100%",
+        "calc(2.5rem + 0.0625rem*2)",
+        "2.5rem",
+        "auto",
+        "100%",
+        "1.5rem",
+        "calc(0.25rem*10)",
+        "100%",
+        "0",
+        "1.25rem",
+        "2.5rem",
+        "50%",
+        "1.25rem"
+      ],
+      "border-left": [
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "0",
+        "2px solid var(--md-focus-border-color)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "0",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)"
+      ],
+      "background-color": [
+        "var(--table-advanced-header-bg-color, #F7F7F7)",
+        "var(--table-advanced-header-bg-color, #F7F7F7)",
+        "rgba(0,0,0,0)",
+        "var(--table-advanced-filter-hover-bg-color, #EDEDED)",
+        "var(--table-advanced-filter-pressed-bg-color, #DEDEDE)",
+        "#a87ff1",
+        "var(--table-advanced-filter-bg-color, #FFFFFF)",
+        "var(--table-advanced-filter-bg-color, #FFFFFF)",
+        "var(--table-advanced-filter-bg-color, #FFFFFF)",
+        "var(--table-advanced-header-bg-color, #F7F7F7)",
+        "rgba(0,0,0,0)",
+        "var(--table-advanced-hover-bg-color, #F7F7F7)",
+        "var(--table-advanced-hover-bg-color, #F7F7F7)",
+        "var(--table-advanced-selected-bg-color, #EDEDED)",
+        "var(--table-advanced-selected-bg-color, #EDEDED)"
+      ],
+      "border-top": [
+        "0",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "2px solid var(--md-focus-border-color)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)"
+      ],
+      "top": [
+        "0",
+        "0",
+        "2.5rem",
+        "0",
+        "0",
+        "-0.375rem",
+        "-0.25rem",
+        "0",
+        "50%",
+        "0"
+      ],
+      "z-index": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "0"
+      ],
+      "bottom": [
+        "0",
+        "0"
+      ],
+      "content": [
+        "\" \"",
+        "\"\""
+      ],
+      "left": [
+        "0",
+        "calc(-0.25rem/2)",
+        ".25rem",
+        "0"
+      ],
+      "border-bottom": [
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "2px solid var(--md-focus-border-color)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)"
+      ],
+      "outline": [
+        "none"
+      ],
+      "border-right": [
+        "2px solid var(--md-focus-border-color)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "1px solid var(--table-advanced-border-color, #DEDEDE)"
+      ],
+      "border": [
+        "1px solid var(--table-advanced-border-color, #DEDEDE)",
+        "0",
+        "2px dashed var(--table-advanced-filter-border-color, #CCCCCC)",
+        ".25rem solid rgba(0,0,0,0)",
+        "1px solid var(--table-advanced-filter-border-color, #CCCCCC)",
+        "1px solid var(--table-advanced-filter-border-color, #CCCCCC)"
+      ],
+      "color": [
+        "var(--md-secondary-text-color)",
+        "var(--md-secondary-text-color)",
+        "var(--md-secondary-text-color)",
+        "var(--md-secondary-text-color)",
+        "var(--md-secondary-text-color)"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+      ],
+      "font-size": [
+        "14px",
+        "14px",
+        "14px"
+      ],
+      "padding": [
+        "0 .375rem",
+        ".25rem",
+        "calc(0.25rem*3)",
+        "calc(0.25rem*1.5)",
+        "0 calc(0.25rem*4)",
+        "0 .25rem",
+        "0 .25rem"
+      ],
+      "text-align": [
+        "left",
+        "center",
+        "center",
+        "left"
+      ],
+      "margin-top": [
+        "calc(0.25rem/2)",
+        "-9px",
+        "1px",
+        "calc(0.25rem*2)"
+      ],
+      "cursor": [
+        "col-resize",
+        "pointer",
+        "grab",
+        "pointer",
+        "grab"
+      ],
+      "align-items": [
+        "center",
+        "center"
+      ],
+      "min-width": [
+        ".875rem",
+        "1.25rem",
+        "calc(1rem*2.5)",
+        "1.25rem"
+      ],
+      "flex": [
+        "1",
+        "1"
+      ],
+      "justify-content": [
+        "flex-end"
+      ],
+      "overflow": [
+        "hidden",
+        "hidden",
+        "hidden"
+      ],
+      "padding-right": [
+        "calc(0.25rem*1.25)",
+        "calc(0.25rem*4)"
+      ],
+      "text-overflow": [
+        "ellipsis",
+        "ellipsis",
+        "ellipsis"
+      ],
+      "white-space": [
+        "nowrap",
+        "nowrap",
+        "normal",
+        "normal",
+        "nowrap"
+      ],
+      "background": [
+        "rgba(0,0,0,0)"
+      ],
+      "right": [
+        ".25rem",
+        ".25rem",
+        "0"
+      ],
+      "opacity": [
+        "1",
+        ".1",
+        ".3",
+        "1",
+        "1",
+        ".3",
+        ".3"
+      ],
+      "border-bottom-color": [
+        "var(--md-secondary-text-color)"
+      ],
+      "border-top-color": [
+        "var(--md-secondary-text-color)"
+      ],
+      "vertical-align": [
+        "bottom",
+        "middle",
+        "middle"
+      ],
+      "line-height": [
+        ".875rem",
+        "1.25rem",
+        "calc(0.25rem*4)"
+      ],
+      "min-height": [
+        "calc(0.875rem*1.8)"
+      ],
+      "margin-left": [
+        ".25rem"
+      ],
+      "max-height": [
+        "1.25rem"
+      ],
+      "align-self": [
+        "center"
+      ],
+      "float": [
+        "left"
+      ],
+      "margin-right": [
+        "calc(0.25rem*1.5)",
+        "calc(0.25rem*1.5)"
+      ],
+      "border-radius": [
+        "calc(0.25rem/2)"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

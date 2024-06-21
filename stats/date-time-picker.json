@@ -1,0 +1,75 @@
+{
+  "size": 154,
+  "gzipSize": 143,
+  "humanizedSize": "154B",
+  "humanizedGzipSize": "143B",
+  "rules": {
+    "total": 1,
+    "size": {
+      "graph": [
+        5
+      ],
+      "max": 5,
+      "average": 5
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".included-timepicker-wrapper",
+        "declarations": 5
+      }
+    ]
+  },
+  "selectors": {
+    "total": 1,
+    "type": 0,
+    "class": 1,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ".included-timepicker-wrapper"
+    ],
+    "specificity": {
+      "max": 10,
+      "average": 10,
+      "graph": [
+        10
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".included-timepicker-wrapper",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 5,
+    "unique": 5,
+    "properties": {
+      "border-top": [
+        "1px solid var(--md-primary-seperator-color)"
+      ],
+      "display": [
+        "flex"
+      ],
+      "justify-content": [
+        "center"
+      ],
+      "padding": [
+        "1rem 0"
+      ],
+      "white-space": [
+        "nowrap"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

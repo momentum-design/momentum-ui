@@ -1,0 +1,2718 @@
+{
+  "size": 12325,
+  "gzipSize": 1836,
+  "humanizedSize": "12KB",
+  "humanizedGzipSize": "2KB",
+  "rules": {
+    "total": 79,
+    "size": {
+      "graph": [
+        12,
+        1,
+        4,
+        1,
+        13,
+        4,
+        5,
+        12,
+        7,
+        5,
+        7,
+        11,
+        1,
+        10,
+        1,
+        1,
+        3,
+        4,
+        9,
+        3,
+        4,
+        1,
+        2,
+        3,
+        3,
+        9,
+        3,
+        4,
+        1,
+        3,
+        2,
+        9,
+        3,
+        4,
+        1,
+        1,
+        3,
+        2,
+        4,
+        1,
+        3,
+        2,
+        1,
+        3,
+        2,
+        4,
+        1,
+        3,
+        2,
+        3,
+        4,
+        4,
+        1,
+        1,
+        2,
+        3,
+        2,
+        3,
+        3,
+        3,
+        1,
+        3,
+        4,
+        1,
+        9,
+        3,
+        4,
+        1,
+        2,
+        1,
+        8,
+        4,
+        6,
+        3,
+        6,
+        2,
+        1,
+        2,
+        1
+      ],
+      "max": 13,
+      "average": 3.6582278481012658
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-modal__header",
+        "declarations": 13
+      },
+      {
+        "selector": ".md-modal__header .md-modal__message",
+        "declarations": 12
+      },
+      {
+        "selector": ".md-modal",
+        "declarations": 12
+      },
+      {
+        "selector": ".md-modal__body",
+        "declarations": 11
+      },
+      {
+        "selector": ".md-modal__footer",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__header,.md-modal.md-modal--medium .md-modal__header,.md-modal.md-modal--large .md-modal__header,.md-modal.md-modal--full .md-modal__header,.md-modal.md-modal--default .md-modal__header,.md-modal.md-modal--dialog .md-modal__header",
+        "declarations": 9
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header",
+        "declarations": 9
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header",
+        "declarations": 9
+      },
+      {
+        "selector": ".md-modal.md-modal--full .md-modal__header",
+        "declarations": 9
+      },
+      {
+        "selector": ".md-modal__backdrop",
+        "declarations": 8
+      },
+      {
+        "selector": ".md-modal__flex-container",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-modal__header .md-modal__close",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-close",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-close",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-modal__content",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-modal__header .md-modal__title",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-modal__backdrop .md-modal_overlay",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__close,.md-modal.md-modal--medium .md-modal__header .md-modal__close,.md-modal.md-modal--large .md-modal__header .md-modal__close,.md-modal.md-modal--full .md-modal__header .md-modal__close,.md-modal.md-modal--default .md-modal__header .md-modal__close,.md-modal.md-modal--dialog .md-modal__header .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__content,.md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--large .md-modal__content,.md-modal.md-modal--full .md-modal__content,.md-modal.md-modal--default .md-modal__content,.md-modal.md-modal--dialog .md-modal__content",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--medium .md-modal__close,.md-modal.md-modal--default .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal.md-modal--full .md-modal__content",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal__header h2",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-modal .md-modal__content",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-close:hover,.md-close:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__message,.md-modal.md-modal--medium .md-modal__header .md-modal__message,.md-modal.md-modal--large .md-modal__header .md-modal__message,.md-modal.md-modal--full .md-modal__header .md-modal__message,.md-modal.md-modal--default .md-modal__header .md-modal__message,.md-modal.md-modal--dialog .md-modal__header .md-modal__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--small,.md-modal.md-modal--medium,.md-modal.md-modal--large,.md-modal.md-modal--full,.md-modal.md-modal--default,.md-modal.md-modal--dialog",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--small,.md-modal.md-modal--medium,.md-modal.md-modal--large,.md-modal.md-modal--full,.md-modal.md-modal--default,.md-modal.md-modal--dialog",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__footer",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__body>*",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__title",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--small",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--small",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--medium,.md-modal.md-modal--default",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--medium,.md-modal.md-modal--default",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--large",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__content",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--large",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-modal.md-modal--full",
+        "declarations": 3
+      },
+      {
+        "selector": ".fade",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-close::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__footer,.md-modal.md-modal--medium .md-modal__footer,.md-modal.md-modal--large .md-modal__footer,.md-modal.md-modal--full .md-modal__footer,.md-modal.md-modal--default .md-modal__footer,.md-modal.md-modal--dialog .md-modal__footer",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__body",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__header",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__content",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__content",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--default .md-modal__content",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--default .md-modal__content",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__content",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-modal.md-modal--full .md-modal__footer",
+        "declarations": 2
+      },
+      {
+        "selector": ".fade.in",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-close:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--medium .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--large .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--full .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--default .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--dialog .md-modal__footer md-button:not(:first-of-type)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__close::before,.md-modal.md-modal--medium .md-modal__header .md-modal__close::before,.md-modal.md-modal--large .md-modal__header .md-modal__close::before,.md-modal.md-modal--full .md-modal__header .md-modal__close::before,.md-modal.md-modal--default .md-modal__header .md-modal__close::before,.md-modal.md-modal--dialog .md-modal__header .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__flex-container,.md-modal.md-modal--medium .md-modal__flex-container,.md-modal.md-modal--large .md-modal__flex-container,.md-modal.md-modal--full .md-modal__flex-container,.md-modal.md-modal--default .md-modal__flex-container,.md-modal.md-modal--dialog .md-modal__flex-container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--small.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--medium.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--large.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--full.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--default.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--dialog.md-modal--dialog .md-modal__flex-container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__content",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--dialog .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--small .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--default .md-modal__content",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--medium .md-modal__close::before,.md-modal.md-modal--default .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__content",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal__footer ::slotted(md-button)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal__footer md-button:not(:first-of-type)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal__body--padding",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-modal .md-modal__title",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 142,
+    "type": 9,
+    "class": 142,
+    "id": 0,
+    "pseudoClass": 11,
+    "pseudoElement": 14,
+    "values": [
+      ".md-modal",
+      ".md-modal .md-modal__title",
+      ".md-modal .md-modal__content",
+      ".md-modal:focus",
+      ".md-modal__header",
+      ".md-modal__header h2",
+      ".md-modal__header .md-modal__title",
+      ".md-modal__header .md-modal__message",
+      ".md-modal__header .md-modal__close",
+      ".md-modal__content",
+      ".md-modal__flex-container",
+      ".md-modal__body",
+      ".md-modal__body--padding",
+      ".md-modal__footer",
+      ".md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal__footer ::slotted(md-button)",
+      ".md-modal.md-modal--full",
+      ".md-modal.md-modal--full .md-modal__content",
+      ".md-modal.md-modal--full .md-modal__header",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--full .md-modal__footer",
+      ".md-modal.md-modal--large",
+      ".md-modal.md-modal--large .md-modal__content",
+      ".md-modal.md-modal--large .md-modal__header",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--large",
+      ".md-modal.md-modal--large .md-modal__content",
+      ".md-modal.md-modal--large .md-modal__header",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--large .md-modal__content",
+      ".md-modal.md-modal--medium",
+      ".md-modal.md-modal--default",
+      ".md-modal.md-modal--medium .md-modal__content",
+      ".md-modal.md-modal--default .md-modal__content",
+      ".md-modal.md-modal--medium .md-modal__close",
+      ".md-modal.md-modal--default .md-modal__close",
+      ".md-modal.md-modal--medium .md-modal__close::before",
+      ".md-modal.md-modal--default .md-modal__close::before",
+      ".md-modal.md-modal--medium",
+      ".md-modal.md-modal--default",
+      ".md-modal.md-modal--medium .md-modal__content",
+      ".md-modal.md-modal--default .md-modal__content",
+      ".md-modal.md-modal--medium .md-modal__content",
+      ".md-modal.md-modal--default .md-modal__content",
+      ".md-modal.md-modal--small",
+      ".md-modal.md-modal--small .md-modal__content",
+      ".md-modal.md-modal--small .md-modal__close",
+      ".md-modal.md-modal--small .md-modal__close::before",
+      ".md-modal.md-modal--small",
+      ".md-modal.md-modal--small .md-modal__content",
+      ".md-modal.md-modal--dialog",
+      ".md-modal.md-modal--dialog .md-modal__content",
+      ".md-modal.md-modal--dialog .md-modal__close",
+      ".md-modal.md-modal--dialog .md-modal__close::before",
+      ".md-modal.md-modal--dialog .md-modal__content",
+      ".md-modal.md-modal--dialog .md-modal__content .md-modal__header",
+      ".md-modal.md-modal--dialog .md-modal__content .md-modal__title",
+      ".md-modal.md-modal--dialog .md-modal__content .md-modal__body",
+      ".md-modal.md-modal--dialog .md-modal__content .md-modal__body>*",
+      ".md-modal.md-modal--dialog .md-modal__content .md-modal__footer",
+      ".md-modal.md-modal--small",
+      ".md-modal.md-modal--medium",
+      ".md-modal.md-modal--large",
+      ".md-modal.md-modal--full",
+      ".md-modal.md-modal--default",
+      ".md-modal.md-modal--dialog",
+      ".md-modal.md-modal--small.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--medium.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--large.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--full.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--default.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--dialog.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--small",
+      ".md-modal.md-modal--medium",
+      ".md-modal.md-modal--large",
+      ".md-modal.md-modal--full",
+      ".md-modal.md-modal--default",
+      ".md-modal.md-modal--dialog",
+      ".md-modal.md-modal--small .md-modal__content",
+      ".md-modal.md-modal--medium .md-modal__content",
+      ".md-modal.md-modal--large .md-modal__content",
+      ".md-modal.md-modal--full .md-modal__content",
+      ".md-modal.md-modal--default .md-modal__content",
+      ".md-modal.md-modal--dialog .md-modal__content",
+      ".md-modal.md-modal--small .md-modal__flex-container",
+      ".md-modal.md-modal--medium .md-modal__flex-container",
+      ".md-modal.md-modal--large .md-modal__flex-container",
+      ".md-modal.md-modal--full .md-modal__flex-container",
+      ".md-modal.md-modal--default .md-modal__flex-container",
+      ".md-modal.md-modal--dialog .md-modal__flex-container",
+      ".md-modal.md-modal--small .md-modal__header",
+      ".md-modal.md-modal--medium .md-modal__header",
+      ".md-modal.md-modal--large .md-modal__header",
+      ".md-modal.md-modal--full .md-modal__header",
+      ".md-modal.md-modal--default .md-modal__header",
+      ".md-modal.md-modal--dialog .md-modal__header",
+      ".md-modal.md-modal--small .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--medium .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--default .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--dialog .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--small .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--medium .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--default .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--dialog .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--small .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--medium .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--default .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--dialog .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--small .md-modal__footer",
+      ".md-modal.md-modal--medium .md-modal__footer",
+      ".md-modal.md-modal--large .md-modal__footer",
+      ".md-modal.md-modal--full .md-modal__footer",
+      ".md-modal.md-modal--default .md-modal__footer",
+      ".md-modal.md-modal--dialog .md-modal__footer",
+      ".md-modal.md-modal--small .md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal.md-modal--medium .md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal.md-modal--large .md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal.md-modal--full .md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal.md-modal--default .md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal.md-modal--dialog .md-modal__footer md-button:not(:first-of-type)",
+      ".md-modal__backdrop",
+      ".md-modal__backdrop .md-modal_overlay",
+      ".md-close",
+      ".md-close:hover",
+      ".md-close:focus",
+      ".md-close",
+      ".md-close::before",
+      ".md-close:hover",
+      ".fade",
+      ".fade.in"
+    ],
+    "specificity": {
+      "max": 41,
+      "average": 28.8943661971831,
+      "graph": [
+        10,
+        20,
+        20,
+        20,
+        10,
+        11,
+        20,
+        20,
+        20,
+        10,
+        10,
+        10,
+        10,
+        10,
+        21,
+        11,
+        20,
+        30,
+        30,
+        40,
+        40,
+        41,
+        30,
+        20,
+        30,
+        30,
+        40,
+        40,
+        41,
+        20,
+        30,
+        30,
+        40,
+        40,
+        41,
+        30,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        31,
+        31,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        20,
+        30,
+        30,
+        31,
+        20,
+        30,
+        20,
+        30,
+        30,
+        31,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        41,
+        41,
+        41,
+        41,
+        41,
+        41,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        41,
+        41,
+        41,
+        41,
+        41,
+        41,
+        10,
+        20,
+        10,
+        20,
+        20,
+        10,
+        11,
+        20,
+        10,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__header .md-modal__close::before",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__header",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__title",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__body",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__body>*",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content .md-modal__footer",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--small.md-modal--dialog .md-modal__flex-container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--medium.md-modal--dialog .md-modal__flex-container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large.md-modal--dialog .md-modal__flex-container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--full.md-modal--dialog .md-modal__flex-container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--default.md-modal--dialog .md-modal__flex-container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog.md-modal--dialog .md-modal__flex-container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__header .md-modal__message",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__header .md-modal__close",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__close::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__close::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__close::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__close::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__close",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__close",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__close",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__close",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__flex-container",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__flex-container",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__flex-container",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__flex-container",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__flex-container",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__flex-container",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__header",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--small .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--medium .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--large .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--full .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--default .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog .md-modal__footer",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-modal__footer md-button:not(:first-of-type)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-modal .md-modal__title",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal .md-modal__content",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal__header .md-modal__title",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal__header .md-modal__message",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal__header .md-modal__close",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--full",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--large",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--large",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--medium",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--default",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--medium",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--default",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--small",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--small",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--small",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--medium",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--large",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--full",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--default",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--small",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--medium",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--large",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--full",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--default",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal.md-modal--dialog",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal__backdrop .md-modal_overlay",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-close:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-close:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-close:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".fade.in",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-modal__header h2",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-modal__footer ::slotted(md-button)",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-close::before",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-modal",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__header",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__content",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__flex-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__body",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__body--padding",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__footer",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-modal__backdrop",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-close",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-close",
+          "specificity": 10
+        },
+        {
+          "selector": ".fade",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-close",
+      ".md-close:hover",
+      ".md-modal.md-modal--default",
+      ".md-modal.md-modal--default .md-modal__content",
+      ".md-modal.md-modal--dialog",
+      ".md-modal.md-modal--dialog .md-modal__content",
+      ".md-modal.md-modal--full",
+      ".md-modal.md-modal--full .md-modal__content",
+      ".md-modal.md-modal--full .md-modal__footer",
+      ".md-modal.md-modal--full .md-modal__header",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--large",
+      ".md-modal.md-modal--large .md-modal__content",
+      ".md-modal.md-modal--large .md-modal__header",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+      ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+      ".md-modal.md-modal--medium",
+      ".md-modal.md-modal--medium .md-modal__content",
+      ".md-modal.md-modal--small",
+      ".md-modal.md-modal--small .md-modal__content"
+    ]
+  },
+  "declarations": {
+    "total": 289,
+    "unique": 123,
+    "properties": {
+      "color": [
+        "var(--md-primary-text-color, #121212)",
+        "var(--md-primary-text-color, #707070)",
+        "var(--modal-main-text-color, #545454)",
+        "#545454",
+        "#064157",
+        "#005e7d"
+      ],
+      "display": [
+        "block",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "block"
+      ],
+      "height": [
+        "100vh",
+        "auto",
+        "100vh",
+        "1.25rem",
+        "1rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        "auto",
+        ".875rem",
+        "100vh",
+        ".875rem"
+      ],
+      "left": [
+        "0",
+        "0"
+      ],
+      "margin": [
+        "0 auto",
+        "0",
+        "0"
+      ],
+      "position": [
+        "fixed",
+        "absolute",
+        "fixed",
+        "absolute"
+      ],
+      "right": [
+        "0",
+        "1.5rem",
+        "1rem",
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        "0"
+      ],
+      "visibility": [
+        "visible"
+      ],
+      "width": [
+        "100vw",
+        "100vw",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100vw",
+        "100%",
+        "1.25rem",
+        "60rem",
+        "100%",
+        "1rem",
+        "40rem",
+        "100%",
+        ".875rem",
+        "40rem",
+        ".875rem",
+        "40rem",
+        "27.5rem",
+        ".875rem",
+        "27.5rem",
+        "27.5rem",
+        ".875rem",
+        "100vw",
+        "100%",
+        ".875rem",
+        "100%"
+      ],
+      "max-height": [
+        "none",
+        "none",
+        "inherit",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "top": [
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "0",
+        "0"
+      ],
+      "min-height": [
+        "0",
+        "inherit",
+        "0",
+        "45rem",
+        "30rem",
+        "auto",
+        "30rem",
+        "30rem",
+        "auto",
+        "23.75rem",
+        "23.75rem",
+        "0",
+        "calc(100vh - 1.5rem*2)",
+        "0",
+        "100vh"
+      ],
+      "border-radius": [
+        "var(--modal-main-radius, 0.5rem)",
+        "0",
+        "var(--modal-main-radius, 0.5rem)",
+        "var(--modal-main-radius, 0.5rem)",
+        "0",
+        "0"
+      ],
+      "box-shadow": [
+        "none",
+        "0 8px 16px 0 rgba(0,0,0,.16)"
+      ],
+      "align-content": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center",
+        "center",
+        "stretch",
+        "center",
+        "center",
+        "center",
+        "center",
+        "flex-start",
+        "center"
+      ],
+      "flex-flow": [
+        "column nowrap",
+        "column nowrap",
+        "row wrap",
+        "row nowrap",
+        "row nowrap",
+        "column nowrap",
+        "column nowrap",
+        "column nowrap",
+        "column nowrap"
+      ],
+      "justify-content": [
+        "center",
+        "center",
+        "center",
+        "flex-end",
+        "center",
+        "center",
+        "center",
+        "flex-end",
+        "center",
+        "center"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Bold\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Bold\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Bold\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Bold\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"momentum-ui-icons\""
+      ],
+      "font-size": [
+        "1rem",
+        "inherit",
+        ".875rem",
+        "2.25rem",
+        "1.25rem",
+        "1.25rem",
+        "1.625rem",
+        "1rem",
+        "1rem",
+        "1rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        "16px",
+        "14px",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        "21px"
+      ],
+      "line-height": [
+        "1.5rem",
+        "inherit",
+        "1.5rem",
+        "3rem",
+        "2rem",
+        "2rem",
+        "1.5rem",
+        "1.5rem",
+        "1.5rem",
+        "1.5rem",
+        "1.375rem",
+        "1.5rem",
+        "1.5rem",
+        "1"
+      ],
+      "flex-shrink": [
+        "0",
+        "0"
+      ],
+      "padding-bottom": [
+        "1rem",
+        "1.5rem"
+      ],
+      "padding-left": [
+        "calc(1rem/2)",
+        "calc(1rem/2)",
+        "calc(1rem/2)"
+      ],
+      "padding-right": [
+        "calc(1rem/2)",
+        "calc(1rem/2)",
+        "calc(1rem/2)",
+        "1.5rem"
+      ],
+      "font-weight": [
+        "inherit",
+        "bold",
+        "normal"
+      ],
+      "overflow": [
+        "hidden"
+      ],
+      "text-align": [
+        "center",
+        "center",
+        "left",
+        "center",
+        "left"
+      ],
+      "text-overflow": [
+        "ellipsis"
+      ],
+      "white-space": [
+        "nowrap"
+      ],
+      "border": [
+        "0",
+        "1px solid var(--modal-main-border-color, #DEDEDE)"
+      ],
+      "background-color": [
+        "var(--modal-main-bg-color, #FFFFFF)"
+      ],
+      "flex-direction": [
+        "column",
+        "column",
+        "column",
+        "row",
+        "column"
+      ],
+      "flex": [
+        "1 1 0%",
+        "1 1 auto"
+      ],
+      "padding": [
+        "var(--modal-main-padding, 1.5rem 1rem)",
+        "0 2rem",
+        "0 0 .75rem 0",
+        "0",
+        "var(--modal-main-padding, 1.5rem 1rem)",
+        "0"
+      ],
+      "align-self": [
+        "stretch"
+      ],
+      "background": [
+        "var(--modal-main-bg-color, #FFFFFF)",
+        "rgba(0,0,0,.45)",
+        "rgba(0,0,0,0)"
+      ],
+      "overflow-x": [
+        "hidden"
+      ],
+      "overflow-y": [
+        "auto"
+      ],
+      "padding-top": [
+        "1rem",
+        "1.25rem",
+        "1.5rem",
+        ".75rem"
+      ],
+      "margin-left": [
+        ".75rem",
+        ".75rem",
+        "1rem"
+      ],
+      "margin-bottom": [
+        "1.5rem"
+      ],
+      "bottom": [
+        "0",
+        "0"
+      ],
+      "z-index": [
+        "1040"
+      ],
+      "float": [
+        "right"
+      ],
+      "text-shadow": [
+        "0 1px 0 #fff"
+      ],
+      "cursor": [
+        "pointer",
+        "pointer"
+      ],
+      "text-decoration": [
+        "none"
+      ],
+      "min-width": [
+        "initial"
+      ],
+      "vertical-align": [
+        "middle"
+      ],
+      "opacity": [
+        "0",
+        "1"
+      ],
+      "transition": [
+        "opacity .15s linear"
+      ]
+    },
+    "resets": {
+      "margin": 2,
+      "padding": 2
+    }
+  },
+  "mediaQueries": {
+    "total": 7,
+    "unique": 3,
+    "values": [
+      "only screen and (min-width:40.0625em)and (max-width:64em)",
+      "only screen and (max-height:50em)",
+      "only screen and (min-width:40.0625em)and (max-width:64em)",
+      "only screen and (max-height:50em)",
+      "only screen and (min-width:40.0625em)and (max-width:64em)",
+      "only screen and (max-width: 40em)",
+      "only screen and (max-width: 40em)"
+    ],
+    "contents": [
+      {
+        "value": "only screen and (min-width:40.0625em)and (max-width:64em)",
+        "rules": {
+          "total": 6,
+          "size": {
+            "graph": [
+              3,
+              2,
+              9,
+              3,
+              4,
+              1
+            ],
+            "max": 9,
+            "average": 3.6666666666666665
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-modal.md-modal--large .md-modal__header",
+              "declarations": 9
+            },
+            {
+              "selector": ",.md-modal.md-modal--large .md-modal__header .md-modal__close",
+              "declarations": 4
+            },
+            {
+              "selector": ",.md-modal.md-modal--large .md-modal__header .md-modal__message",
+              "declarations": 3
+            },
+            {
+              "selector": ".md-modal.md-modal--large",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-modal.md-modal--large .md-modal__content",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 6,
+          "type": 0,
+          "class": 6,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 1,
+          "values": [
+            ".md-modal.md-modal--large",
+            ".md-modal.md-modal--large .md-modal__content",
+            ".md-modal.md-modal--large .md-modal__header",
+            ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--large .md-modal__header .md-modal__close::before"
+          ],
+          "specificity": {
+            "max": 41,
+            "average": 33.5,
+            "graph": [
+              20,
+              30,
+              30,
+              40,
+              40,
+              41
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--large",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 22,
+          "unique": 18,
+          "properties": {
+            "width": [
+              "40rem",
+              "100%",
+              ".875rem"
+            ],
+            "max-height": [
+              "none",
+              "none"
+            ],
+            "top": [
+              "auto",
+              "auto"
+            ],
+            "min-height": [
+              "30rem"
+            ],
+            "align-content": [
+              "center"
+            ],
+            "align-items": [
+              "center"
+            ],
+            "display": [
+              "flex"
+            ],
+            "flex-flow": [
+              "column nowrap"
+            ],
+            "justify-content": [
+              "center"
+            ],
+            "font-family": [
+              "\"CiscoSansTT Bold\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+            ],
+            "font-size": [
+              "1rem",
+              ".875rem",
+              ".875rem"
+            ],
+            "line-height": [
+              "1.5rem",
+              "1.5rem"
+            ],
+            "text-align": [
+              "center"
+            ],
+            "height": [
+              ".875rem"
+            ],
+            "right": [
+              ".75rem"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "only screen and (max-height:50em)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-modal.md-modal--large .md-modal__content",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-modal.md-modal--large .md-modal__content"
+          ],
+          "specificity": {
+            "max": 30,
+            "average": 30,
+            "graph": [
+              30
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__content",
+                "specificity": 30
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 1,
+          "unique": 1,
+          "properties": {
+            "min-height": [
+              "auto"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "only screen and (min-width:40.0625em)and (max-width:64em)",
+        "rules": {
+          "total": 2,
+          "size": {
+            "graph": [
+              3,
+              2
+            ],
+            "max": 3,
+            "average": 2.5
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-modal.md-modal--medium,.md-modal.md-modal--default",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--default .md-modal__content",
+              "declarations": 2
+            }
+          ]
+        },
+        "selectors": {
+          "total": 4,
+          "type": 0,
+          "class": 4,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-modal.md-modal--medium",
+            ".md-modal.md-modal--default",
+            ".md-modal.md-modal--medium .md-modal__content",
+            ".md-modal.md-modal--default .md-modal__content"
+          ],
+          "specificity": {
+            "max": 30,
+            "average": 25,
+            "graph": [
+              20,
+              20,
+              30,
+              30
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--medium",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-modal.md-modal--default",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 5,
+          "unique": 4,
+          "properties": {
+            "width": [
+              "40rem"
+            ],
+            "max-height": [
+              "none",
+              "none"
+            ],
+            "top": [
+              "auto"
+            ],
+            "min-height": [
+              "30rem"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "only screen and (max-height:50em)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--default .md-modal__content",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 2,
+          "type": 0,
+          "class": 2,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-modal.md-modal--medium .md-modal__content",
+            ".md-modal.md-modal--default .md-modal__content"
+          ],
+          "specificity": {
+            "max": 30,
+            "average": 30,
+            "graph": [
+              30,
+              30
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__content",
+                "specificity": 30
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 1,
+          "unique": 1,
+          "properties": {
+            "min-height": [
+              "auto"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "only screen and (min-width:40.0625em)and (max-width:64em)",
+        "rules": {
+          "total": 2,
+          "size": {
+            "graph": [
+              3,
+              2
+            ],
+            "max": 3,
+            "average": 2.5
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-modal.md-modal--small",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__content",
+              "declarations": 2
+            }
+          ]
+        },
+        "selectors": {
+          "total": 2,
+          "type": 0,
+          "class": 2,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-modal.md-modal--small",
+            ".md-modal.md-modal--small .md-modal__content"
+          ],
+          "specificity": {
+            "max": 30,
+            "average": 25,
+            "graph": [
+              20,
+              30
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--small",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 5,
+          "unique": 4,
+          "properties": {
+            "width": [
+              "27.5rem"
+            ],
+            "max-height": [
+              "none",
+              "none"
+            ],
+            "top": [
+              "auto"
+            ],
+            "min-height": [
+              "23.75rem"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "only screen and (max-width: 40em)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-modal.md-modal--small.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--medium.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--large.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--full.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--default.md-modal--dialog .md-modal__flex-container,.md-modal.md-modal--dialog.md-modal--dialog .md-modal__flex-container",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 6,
+          "type": 0,
+          "class": 6,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-modal.md-modal--small.md-modal--dialog .md-modal__flex-container",
+            ".md-modal.md-modal--medium.md-modal--dialog .md-modal__flex-container",
+            ".md-modal.md-modal--large.md-modal--dialog .md-modal__flex-container",
+            ".md-modal.md-modal--full.md-modal--dialog .md-modal__flex-container",
+            ".md-modal.md-modal--default.md-modal--dialog .md-modal__flex-container",
+            ".md-modal.md-modal--dialog.md-modal--dialog .md-modal__flex-container"
+          ],
+          "specificity": {
+            "max": 40,
+            "average": 40,
+            "graph": [
+              40,
+              40,
+              40,
+              40,
+              40,
+              40
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--small.md-modal--dialog .md-modal__flex-container",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--medium.md-modal--dialog .md-modal__flex-container",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--large.md-modal--dialog .md-modal__flex-container",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--full.md-modal--dialog .md-modal__flex-container",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--default.md-modal--dialog .md-modal__flex-container",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog.md-modal--dialog .md-modal__flex-container",
+                "specificity": 40
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 1,
+          "unique": 1,
+          "properties": {
+            "min-height": [
+              "calc(100vh - 1.5rem*2)"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "only screen and (max-width: 40em)",
+        "rules": {
+          "total": 9,
+          "size": {
+            "graph": [
+              3,
+              4,
+              1,
+              9,
+              3,
+              4,
+              1,
+              2,
+              1
+            ],
+            "max": 9,
+            "average": 3.111111111111111
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__header,.md-modal.md-modal--medium .md-modal__header,.md-modal.md-modal--large .md-modal__header,.md-modal.md-modal--full .md-modal__header,.md-modal.md-modal--default .md-modal__header,.md-modal.md-modal--dialog .md-modal__header",
+              "declarations": 9
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__header .md-modal__close,.md-modal.md-modal--medium .md-modal__header .md-modal__close,.md-modal.md-modal--large .md-modal__header .md-modal__close,.md-modal.md-modal--full .md-modal__header .md-modal__close,.md-modal.md-modal--default .md-modal__header .md-modal__close,.md-modal.md-modal--dialog .md-modal__header .md-modal__close",
+              "declarations": 4
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__content,.md-modal.md-modal--medium .md-modal__content,.md-modal.md-modal--large .md-modal__content,.md-modal.md-modal--full .md-modal__content,.md-modal.md-modal--default .md-modal__content,.md-modal.md-modal--dialog .md-modal__content",
+              "declarations": 4
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__header .md-modal__message,.md-modal.md-modal--medium .md-modal__header .md-modal__message,.md-modal.md-modal--large .md-modal__header .md-modal__message,.md-modal.md-modal--full .md-modal__header .md-modal__message,.md-modal.md-modal--default .md-modal__header .md-modal__message,.md-modal.md-modal--dialog .md-modal__header .md-modal__message",
+              "declarations": 3
+            },
+            {
+              "selector": ".md-modal.md-modal--small,.md-modal.md-modal--medium,.md-modal.md-modal--large,.md-modal.md-modal--full,.md-modal.md-modal--default,.md-modal.md-modal--dialog",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__footer,.md-modal.md-modal--medium .md-modal__footer,.md-modal.md-modal--large .md-modal__footer,.md-modal.md-modal--full .md-modal__footer,.md-modal.md-modal--default .md-modal__footer,.md-modal.md-modal--dialog .md-modal__footer",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--medium .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--large .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--full .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--default .md-modal__footer md-button:not(:first-of-type),.md-modal.md-modal--dialog .md-modal__footer md-button:not(:first-of-type)",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__header .md-modal__close::before,.md-modal.md-modal--medium .md-modal__header .md-modal__close::before,.md-modal.md-modal--large .md-modal__header .md-modal__close::before,.md-modal.md-modal--full .md-modal__header .md-modal__close::before,.md-modal.md-modal--default .md-modal__header .md-modal__close::before,.md-modal.md-modal--dialog .md-modal__header .md-modal__close::before",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-modal.md-modal--small .md-modal__flex-container,.md-modal.md-modal--medium .md-modal__flex-container,.md-modal.md-modal--large .md-modal__flex-container,.md-modal.md-modal--full .md-modal__flex-container,.md-modal.md-modal--default .md-modal__flex-container,.md-modal.md-modal--dialog .md-modal__flex-container",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 54,
+          "type": 6,
+          "class": 54,
+          "id": 0,
+          "pseudoClass": 6,
+          "pseudoElement": 6,
+          "values": [
+            ".md-modal.md-modal--small",
+            ".md-modal.md-modal--medium",
+            ".md-modal.md-modal--large",
+            ".md-modal.md-modal--full",
+            ".md-modal.md-modal--default",
+            ".md-modal.md-modal--dialog",
+            ".md-modal.md-modal--small .md-modal__content",
+            ".md-modal.md-modal--medium .md-modal__content",
+            ".md-modal.md-modal--large .md-modal__content",
+            ".md-modal.md-modal--full .md-modal__content",
+            ".md-modal.md-modal--default .md-modal__content",
+            ".md-modal.md-modal--dialog .md-modal__content",
+            ".md-modal.md-modal--small .md-modal__flex-container",
+            ".md-modal.md-modal--medium .md-modal__flex-container",
+            ".md-modal.md-modal--large .md-modal__flex-container",
+            ".md-modal.md-modal--full .md-modal__flex-container",
+            ".md-modal.md-modal--default .md-modal__flex-container",
+            ".md-modal.md-modal--dialog .md-modal__flex-container",
+            ".md-modal.md-modal--small .md-modal__header",
+            ".md-modal.md-modal--medium .md-modal__header",
+            ".md-modal.md-modal--large .md-modal__header",
+            ".md-modal.md-modal--full .md-modal__header",
+            ".md-modal.md-modal--default .md-modal__header",
+            ".md-modal.md-modal--dialog .md-modal__header",
+            ".md-modal.md-modal--small .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--medium .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--default .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--dialog .md-modal__header .md-modal__message",
+            ".md-modal.md-modal--small .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--medium .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--default .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--dialog .md-modal__header .md-modal__close",
+            ".md-modal.md-modal--small .md-modal__header .md-modal__close::before",
+            ".md-modal.md-modal--medium .md-modal__header .md-modal__close::before",
+            ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+            ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+            ".md-modal.md-modal--default .md-modal__header .md-modal__close::before",
+            ".md-modal.md-modal--dialog .md-modal__header .md-modal__close::before",
+            ".md-modal.md-modal--small .md-modal__footer",
+            ".md-modal.md-modal--medium .md-modal__footer",
+            ".md-modal.md-modal--large .md-modal__footer",
+            ".md-modal.md-modal--full .md-modal__footer",
+            ".md-modal.md-modal--default .md-modal__footer",
+            ".md-modal.md-modal--dialog .md-modal__footer",
+            ".md-modal.md-modal--small .md-modal__footer md-button:not(:first-of-type)",
+            ".md-modal.md-modal--medium .md-modal__footer md-button:not(:first-of-type)",
+            ".md-modal.md-modal--large .md-modal__footer md-button:not(:first-of-type)",
+            ".md-modal.md-modal--full .md-modal__footer md-button:not(:first-of-type)",
+            ".md-modal.md-modal--default .md-modal__footer md-button:not(:first-of-type)",
+            ".md-modal.md-modal--dialog .md-modal__footer md-button:not(:first-of-type)"
+          ],
+          "specificity": {
+            "max": 41,
+            "average": 33.55555555555556,
+            "graph": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              40,
+              41,
+              41,
+              41,
+              41,
+              41,
+              41,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              41,
+              41,
+              41,
+              41,
+              41,
+              41
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__header .md-modal__close::before",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__footer md-button:not(:first-of-type)",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__footer md-button:not(:first-of-type)",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__footer md-button:not(:first-of-type)",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__footer md-button:not(:first-of-type)",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__footer md-button:not(:first-of-type)",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__footer md-button:not(:first-of-type)",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__header .md-modal__message",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__header .md-modal__close",
+                "specificity": 40
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__content",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__flex-container",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__flex-container",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__flex-container",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__flex-container",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__flex-container",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__flex-container",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__header",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--small .md-modal__footer",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--medium .md-modal__footer",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--large .md-modal__footer",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--full .md-modal__footer",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--default .md-modal__footer",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog .md-modal__footer",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-modal.md-modal--small",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-modal.md-modal--medium",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-modal.md-modal--large",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-modal.md-modal--full",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-modal.md-modal--default",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-modal.md-modal--dialog",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 28,
+          "unique": 23,
+          "properties": {
+            "width": [
+              "100vw",
+              "100%",
+              ".875rem"
+            ],
+            "max-height": [
+              "none",
+              "none"
+            ],
+            "top": [
+              "auto",
+              "auto"
+            ],
+            "height": [
+              "100vh",
+              ".875rem"
+            ],
+            "min-height": [
+              "0",
+              "100vh"
+            ],
+            "border-radius": [
+              "0"
+            ],
+            "align-content": [
+              "center"
+            ],
+            "align-items": [
+              "center"
+            ],
+            "display": [
+              "flex"
+            ],
+            "flex-flow": [
+              "column nowrap"
+            ],
+            "justify-content": [
+              "center"
+            ],
+            "font-family": [
+              "\"CiscoSansTT Bold\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+            ],
+            "font-size": [
+              ".875rem",
+              ".875rem",
+              ".875rem"
+            ],
+            "line-height": [
+              "1.5rem",
+              "1.5rem"
+            ],
+            "padding-top": [
+              ".75rem"
+            ],
+            "right": [
+              ".75rem"
+            ],
+            "padding": [
+              "var(--modal-main-padding, 1.5rem 1rem)"
+            ],
+            "padding-right": [
+              "1.5rem"
+            ],
+            "margin-left": [
+              "1rem"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

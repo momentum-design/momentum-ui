@@ -1,0 +1,242 @@
+{
+  "size": 935,
+  "gzipSize": 373,
+  "humanizedSize": "935B",
+  "humanizedGzipSize": "373B",
+  "rules": {
+    "total": 12,
+    "size": {
+      "graph": [
+        2,
+        1,
+        3,
+        5,
+        1,
+        3,
+        2,
+        2,
+        1,
+        2,
+        1,
+        4
+      ],
+      "max": 5,
+      "average": 2.25
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-timepicker .amPm-combo-box",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-timepicker .colon-separator",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-timepicker .amPm-combo-box::part(multiwrap-input)",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-timepicker .time-input-box",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-timepicker md-input::part(input)",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-timepicker .amPm-combo-box::part(combobox-option)",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-timepicker .amPm-combo-box::part(label)",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-timepicker",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-timepicker md-input::part(message)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-timepicker .amPm-combo-box::part(combobox-options)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-timepicker .amPm-combo-box::part(group)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-timepicker.twenty-four-hour-format",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 12,
+    "type": 7,
+    "class": 12,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ".md-timepicker",
+      ".md-timepicker.twenty-four-hour-format",
+      ".md-timepicker .time-input-box",
+      ".md-timepicker .amPm-combo-box",
+      ".md-timepicker .amPm-combo-box::part(group)",
+      ".md-timepicker .amPm-combo-box::part(multiwrap-input)",
+      ".md-timepicker .amPm-combo-box::part(label)",
+      ".md-timepicker .amPm-combo-box::part(combobox-option)",
+      ".md-timepicker .amPm-combo-box::part(combobox-options)",
+      ".md-timepicker md-input::part(input)",
+      ".md-timepicker md-input::part(message)",
+      ".md-timepicker .colon-separator"
+    ],
+    "specificity": {
+      "max": 21,
+      "average": 18.25,
+      "graph": [
+        10,
+        20,
+        20,
+        20,
+        21,
+        21,
+        21,
+        21,
+        21,
+        12,
+        12,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-timepicker .amPm-combo-box::part(group)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-timepicker .amPm-combo-box::part(multiwrap-input)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-timepicker .amPm-combo-box::part(label)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-timepicker .amPm-combo-box::part(combobox-option)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-timepicker .amPm-combo-box::part(combobox-options)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-timepicker.twenty-four-hour-format",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-timepicker .time-input-box",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-timepicker .amPm-combo-box",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-timepicker .colon-separator",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-timepicker md-input::part(input)",
+          "specificity": 12
+        },
+        {
+          "selector": ".md-timepicker md-input::part(message)",
+          "specificity": 12
+        },
+        {
+          "selector": ".md-timepicker",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 27,
+    "unique": 20,
+    "properties": {
+      "padding-right": [
+        "3rem",
+        "0",
+        "0"
+      ],
+      "width": [
+        "fit-content",
+        "2.5rem",
+        "2.5rem",
+        "100%",
+        "100%"
+      ],
+      "display": [
+        "inline-block",
+        "inline-block",
+        "none"
+      ],
+      "height": [
+        "2rem",
+        "2rem"
+      ],
+      "margin-left": [
+        ".5rem"
+      ],
+      "position": [
+        "absolute"
+      ],
+      "padding": [
+        "0",
+        "0 .4375rem",
+        "0"
+      ],
+      "text-align": [
+        "center",
+        "center"
+      ],
+      "text-transform": [
+        "uppercase"
+      ],
+      "padding-left": [
+        "0"
+      ],
+      "max-height": [
+        "5rem"
+      ],
+      "color": [
+        "var(--md-secondary-text-color, #545454)"
+      ],
+      "font-size": [
+        "1.25rem"
+      ],
+      "line-height": [
+        "125%"
+      ],
+      "margin": [
+        "0 .25rem"
+      ]
+    },
+    "resets": {
+      "padding-right": 2,
+      "padding": 2,
+      "padding-left": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

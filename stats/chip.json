@@ -1,0 +1,1806 @@
+{
+  "size": 13904,
+  "gzipSize": 1622,
+  "humanizedSize": "14KB",
+  "humanizedGzipSize": "2KB",
+  "rules": {
+    "total": 111,
+    "size": {
+      "graph": [
+        1,
+        21,
+        4,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        7,
+        1,
+        5,
+        1,
+        2,
+        21,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "max": 21,
+      "average": 2.315315315315315
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-chip.md-chip--disabled",
+        "declarations": 21
+      },
+      {
+        "selector": ".md-chip",
+        "declarations": 21
+      },
+      {
+        "selector": ".md-chip .md-chip--clear",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-chip .md-chip--loading",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-chip--small",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-chip.md-chip--disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip:focus,.md-chip:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip md-icon",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--cyan:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--cyan:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--cyan",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--violet",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--purple:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--purple:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--purple",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--pink",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--lime",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gold",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--orange",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--red:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--red:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--red",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--yellow:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--yellow:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--yellow",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--green:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--green:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--green",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--darkmint:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--darkmint:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--darkmint",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--mint",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--gray",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:active:active,.md-chip--cobalt:active:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:active:hover,.md-chip--cobalt:active:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:active,.md-chip--cobalt:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:hover:active,.md-chip--cobalt:hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:hover:hover,.md-chip--cobalt:hover:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:hover,.md-chip--cobalt:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:active,.md-chip--cobalt:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue:hover,.md-chip--cobalt:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip--blue,.md-chip--cobalt",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-chip.md-chip--disabled md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip.md-chip--disabled:focus,.md-chip.md-chip--disabled:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip",
+        "declarations": 1
+      },
+      {
+        "selector": "::slotted([slot=custom-right-content])",
+        "declarations": 1
+      },
+      {
+        "selector": "::slotted([slot=custom-left-content])",
+        "declarations": 1
+      },
+      {
+        "selector": "::slotted(*)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip.md-chip--disabled md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip .md-chip--textcontent",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip .md-chip--clear::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip:active,.md-chip[aria-selected=true]",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-chip:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ":focus",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 123,
+    "type": 3,
+    "class": 119,
+    "id": 0,
+    "pseudoClass": 92,
+    "pseudoElement": 1,
+    "values": [
+      ":focus",
+      ".md-chip",
+      ".md-chip--small",
+      ".md-chip:focus",
+      ".md-chip:hover",
+      ".md-chip:active",
+      ".md-chip[aria-selected=true]",
+      ".md-chip--blue",
+      ".md-chip--cobalt",
+      ".md-chip--blue:hover",
+      ".md-chip--cobalt:hover",
+      ".md-chip--blue:active",
+      ".md-chip--cobalt:active",
+      ".md-chip--blue:hover",
+      ".md-chip--cobalt:hover",
+      ".md-chip--blue:hover:hover",
+      ".md-chip--cobalt:hover:hover",
+      ".md-chip--blue:hover:active",
+      ".md-chip--cobalt:hover:active",
+      ".md-chip--blue:active",
+      ".md-chip--cobalt:active",
+      ".md-chip--blue:active:hover",
+      ".md-chip--cobalt:active:hover",
+      ".md-chip--blue:active:active",
+      ".md-chip--cobalt:active:active",
+      ".md-chip--gray",
+      ".md-chip--gray:hover",
+      ".md-chip--gray:active",
+      ".md-chip--gray:hover",
+      ".md-chip--gray:hover:hover",
+      ".md-chip--gray:hover:active",
+      ".md-chip--gray:active",
+      ".md-chip--gray:active:hover",
+      ".md-chip--gray:active:active",
+      ".md-chip--mint",
+      ".md-chip--mint:hover",
+      ".md-chip--mint:active",
+      ".md-chip--mint:hover",
+      ".md-chip--mint:hover:hover",
+      ".md-chip--mint:hover:active",
+      ".md-chip--mint:active",
+      ".md-chip--mint:active:hover",
+      ".md-chip--mint:active:active",
+      ".md-chip--darkmint",
+      ".md-chip--darkmint:hover",
+      ".md-chip--darkmint:active",
+      ".md-chip--green",
+      ".md-chip--green:hover",
+      ".md-chip--green:active",
+      ".md-chip--yellow",
+      ".md-chip--yellow:hover",
+      ".md-chip--yellow:active",
+      ".md-chip--red",
+      ".md-chip--red:hover",
+      ".md-chip--red:active",
+      ".md-chip--orange",
+      ".md-chip--orange:hover",
+      ".md-chip--orange:active",
+      ".md-chip--orange:hover",
+      ".md-chip--orange:hover:hover",
+      ".md-chip--orange:hover:active",
+      ".md-chip--orange:active",
+      ".md-chip--orange:active:hover",
+      ".md-chip--orange:active:active",
+      ".md-chip--gold",
+      ".md-chip--gold:hover",
+      ".md-chip--gold:active",
+      ".md-chip--gold:hover",
+      ".md-chip--gold:hover:hover",
+      ".md-chip--gold:hover:active",
+      ".md-chip--gold:active",
+      ".md-chip--gold:active:hover",
+      ".md-chip--gold:active:active",
+      ".md-chip--lime",
+      ".md-chip--lime:hover",
+      ".md-chip--lime:active",
+      ".md-chip--lime:hover",
+      ".md-chip--lime:hover:hover",
+      ".md-chip--lime:hover:active",
+      ".md-chip--lime:active",
+      ".md-chip--lime:active:hover",
+      ".md-chip--lime:active:active",
+      ".md-chip--pink",
+      ".md-chip--pink:hover",
+      ".md-chip--pink:active",
+      ".md-chip--pink:hover",
+      ".md-chip--pink:hover:hover",
+      ".md-chip--pink:hover:active",
+      ".md-chip--pink:active",
+      ".md-chip--pink:active:hover",
+      ".md-chip--pink:active:active",
+      ".md-chip--purple",
+      ".md-chip--purple:hover",
+      ".md-chip--purple:active",
+      ".md-chip--violet",
+      ".md-chip--violet:hover",
+      ".md-chip--violet:active",
+      ".md-chip--violet:hover",
+      ".md-chip--violet:hover:hover",
+      ".md-chip--violet:hover:active",
+      ".md-chip--violet:active",
+      ".md-chip--violet:active:hover",
+      ".md-chip--violet:active:active",
+      ".md-chip--cyan",
+      ".md-chip--cyan:hover",
+      ".md-chip--cyan:active",
+      ".md-chip .md-chip--clear",
+      ".md-chip .md-chip--clear::before",
+      ".md-chip .md-chip--loading",
+      ".md-chip .md-chip--textcontent",
+      ".md-chip md-icon",
+      ".md-chip.md-chip--disabled",
+      ".md-chip.md-chip--disabled md-icon",
+      "::slotted(*)",
+      "::slotted([slot=custom-left-content])",
+      "::slotted([slot=custom-right-content])",
+      ".md-chip",
+      ".md-chip:focus",
+      ".md-chip:hover",
+      ".md-chip.md-chip--disabled",
+      ".md-chip.md-chip--disabled:focus",
+      ".md-chip.md-chip--disabled:hover",
+      ".md-chip.md-chip--disabled md-icon"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 21.195121951219512,
+      "graph": [
+        10,
+        10,
+        10,
+        20,
+        20,
+        20,
+        20,
+        10,
+        10,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        10,
+        20,
+        20,
+        10,
+        20,
+        20,
+        10,
+        20,
+        20,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        10,
+        20,
+        20,
+        20,
+        21,
+        20,
+        20,
+        11,
+        20,
+        21,
+        1,
+        11,
+        11,
+        10,
+        20,
+        20,
+        20,
+        30,
+        30,
+        21
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-chip--blue:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--cobalt:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--blue:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--cobalt:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--blue:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--cobalt:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--blue:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--cobalt:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gray:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gray:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gray:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gray:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--mint:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--mint:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--mint:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--mint:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--orange:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--orange:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--orange:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--orange:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gold:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gold:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gold:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--gold:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--lime:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--lime:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--lime:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--lime:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--pink:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--pink:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--pink:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--pink:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--violet:hover:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--violet:hover:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--violet:active:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip--violet:active:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip.md-chip--disabled:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip.md-chip--disabled:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-chip .md-chip--clear::before",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-chip.md-chip--disabled md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-chip.md-chip--disabled md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-chip:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip[aria-selected=true]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--blue:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--cobalt:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--blue:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--cobalt:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--blue:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--cobalt:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--blue:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--cobalt:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gray:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gray:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gray:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gray:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--mint:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--mint:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--mint:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--mint:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--darkmint:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--darkmint:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--green:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--green:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--yellow:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--yellow:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--red:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--red:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--orange:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--orange:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--orange:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--orange:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gold:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gold:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gold:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--gold:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--lime:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--lime:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--lime:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--lime:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--pink:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--pink:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--pink:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--pink:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--purple:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--purple:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--violet:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--violet:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--violet:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--violet:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--cyan:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip--cyan:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip .md-chip--clear",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip .md-chip--loading",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip .md-chip--textcontent",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip.md-chip--disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip.md-chip--disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-chip md-icon",
+          "specificity": 11
+        },
+        {
+          "selector": "::slotted([slot=custom-left-content])",
+          "specificity": 11
+        },
+        {
+          "selector": "::slotted([slot=custom-right-content])",
+          "specificity": 11
+        },
+        {
+          "selector": ":focus",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--small",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--blue",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--cobalt",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--gray",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--mint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--darkmint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--green",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--yellow",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--red",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--orange",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--gold",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--lime",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--pink",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--purple",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--violet",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip--cyan",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-chip",
+          "specificity": 10
+        },
+        {
+          "selector": "::slotted(*)",
+          "specificity": 1
+        }
+      ]
+    },
+    "repeated": [
+      ".md-chip",
+      ".md-chip--blue:active",
+      ".md-chip--blue:hover",
+      ".md-chip--cobalt:active",
+      ".md-chip--cobalt:hover",
+      ".md-chip--gold:active",
+      ".md-chip--gold:hover",
+      ".md-chip--gray:active",
+      ".md-chip--gray:hover",
+      ".md-chip--lime:active",
+      ".md-chip--lime:hover",
+      ".md-chip--mint:active",
+      ".md-chip--mint:hover",
+      ".md-chip--orange:active",
+      ".md-chip--orange:hover",
+      ".md-chip--pink:active",
+      ".md-chip--pink:hover",
+      ".md-chip--violet:active",
+      ".md-chip--violet:hover",
+      ".md-chip.md-chip--disabled",
+      ".md-chip.md-chip--disabled md-icon",
+      ".md-chip:focus",
+      ".md-chip:hover"
+    ]
+  },
+  "declarations": {
+    "total": 257,
+    "unique": 96,
+    "properties": {
+      "outline": [
+        "none",
+        "1px solid CanvasText",
+        "2px solid Highlight",
+        "1px solid GrayText",
+        "2px solid Highlight"
+      ],
+      "border-radius": [
+        "1.125rem",
+        "1.125rem"
+      ],
+      "align-items": [
+        "center",
+        "center"
+      ],
+      "background-color": [
+        "var(--md-secondary-bg-color, #F7F7F7)",
+        "var(--md-tertiary-bg-color, #EDEDED)",
+        "var(--md-quaternary-bg-color, #DEDEDE)",
+        "var(--badge-blue-bg-color, #C7EEFF)",
+        "var(--badge-blue-bg-color, #C7EEFF)",
+        "var(--badge-blue-bg-color, #C7EEFF)",
+        "var(--badge-blue-hover-bg-color, #99DDFF)",
+        "var(--badge-blue-hover-bg-color, #99DDFF)",
+        "var(--badge-blue-hover-bg-color, #99DDFF)",
+        "var(--badge-blue-active-bg-color, #5EBFF6)",
+        "var(--badge-blue-active-bg-color, #5EBFF6)",
+        "var(--badge-blue-active-bg-color, #5EBFF6)",
+        "var(--badge-gray-bg-color, #DEDEDE)",
+        "var(--badge-gray-bg-color, #DEDEDE)",
+        "var(--badge-gray-bg-color, #DEDEDE)",
+        "var(--badge-gray-hover-bg-color, #CCCCCC)",
+        "var(--badge-gray-hover-bg-color, #CCCCCC)",
+        "var(--badge-gray-hover-bg-color, #CCCCCC)",
+        "var(--badge-gray-active-bg-color, #CCCCCC)",
+        "var(--badge-gray-active-bg-color, #CCCCCC)",
+        "var(--badge-gray-active-bg-color, #CCCCCC)",
+        "var(--badge-mint-bg-color, #BAF5E7)",
+        "var(--badge-mint-bg-color, #BAF5E7)",
+        "var(--badge-mint-bg-color, #BAF5E7)",
+        "var(--badge-mint-hover-bg-color, #74E8D1)",
+        "var(--badge-mint-hover-bg-color, #74E8D1)",
+        "var(--badge-mint-hover-bg-color, #74E8D1)",
+        "var(--badge-mint-active-bg-color, #30C9B0)",
+        "var(--badge-mint-active-bg-color, #30C9B0)",
+        "var(--badge-mint-active-bg-color, #30C9B0)",
+        "var(--badge-darkmint-bg-color, #16A693)",
+        "var(--badge-darkmint-bg-color, #16A693)",
+        "var(--badge-darkmint-bg-color, #16A693)",
+        "var(--badge-green-bg-color, #78F5B8)",
+        "var(--badge-green-bg-color, #78F5B8)",
+        "var(--badge-green-bg-color, #78F5B8)",
+        "var(--badge-yellow-bg-color, #FFD98C)",
+        "var(--badge-yellow-bg-color, #FFD98C)",
+        "var(--badge-yellow-bg-color, #FFD98C)",
+        "var(--badge-red-bg-color, #FFD5CC)",
+        "var(--badge-red-bg-color, #FFD5CC)",
+        "var(--badge-red-bg-color, #FFD5CC)",
+        "var(--badge-orange-bg-color, #FCE4C7)",
+        "var(--badge-orange-bg-color, #FCE4C7)",
+        "var(--badge-orange-bg-color, #FCE4C7)",
+        "var(--badge-orange-hover-bg-color, #FFCA99)",
+        "var(--badge-orange-hover-bg-color, #FFCA99)",
+        "var(--badge-orange-hover-bg-color, #FFCA99)",
+        "var(--badge-orange-active-bg-color, #FF9D52)",
+        "var(--badge-orange-active-bg-color, #FF9D52)",
+        "var(--badge-orange-active-bg-color, #FF9D52)",
+        "var(--badge-gold-bg-color, #F5EAA2)",
+        "var(--badge-gold-bg-color, #F5EAA2)",
+        "var(--badge-gold-bg-color, #F5EAA2)",
+        "var(--badge-gold-hover-bg-color, #EBD460)",
+        "var(--badge-gold-hover-bg-color, #EBD460)",
+        "var(--badge-gold-hover-bg-color, #EBD460)",
+        "var(--badge-gold-active-bg-color, #D6B220)",
+        "var(--badge-gold-active-bg-color, #D6B220)",
+        "var(--badge-gold-active-bg-color, #D6B220)",
+        "var(--badge-lime-bg-color, #DDF2AE)",
+        "var(--badge-lime-bg-color, #DDF2AE)",
+        "var(--badge-lime-bg-color, #DDF2AE)",
+        "var(--badge-lime-hover-bg-color, #BCE36F)",
+        "var(--badge-lime-hover-bg-color, #BCE36F)",
+        "var(--badge-lime-hover-bg-color, #BCE36F)",
+        "var(--badge-lime-active-bg-color, #93C437)",
+        "var(--badge-lime-active-bg-color, #93C437)",
+        "var(--badge-lime-active-bg-color, #93C437)",
+        "var(--badge-pink-bg-color, #FFE0E7)",
+        "var(--badge-pink-bg-color, #FFE0E7)",
+        "var(--badge-pink-bg-color, #FFE0E7)",
+        "var(--badge-pink-hover-bg-color, #FFC7D2)",
+        "var(--badge-pink-hover-bg-color, #FFC7D2)",
+        "var(--badge-pink-hover-bg-color, #FFC7D2)",
+        "var(--badge-pink-active-bg-color, #FC97AA)",
+        "var(--badge-pink-active-bg-color, #FC97AA)",
+        "var(--badge-pink-active-bg-color, #FC97AA)",
+        "var(--badge-purple-bg-color, #FCE1FC)",
+        "var(--badge-purple-bg-color, #FCE1FC)",
+        "var(--badge-purple-bg-color, #FCE1FC)",
+        "var(--badge-violet-bg-color, #F0E3FC)",
+        "var(--badge-violet-bg-color, #F0E3FC)",
+        "var(--badge-violet-bg-color, #F0E3FC)",
+        "var(--badge-violet-hover-bg-color, #E2CAFC)",
+        "var(--badge-violet-hover-bg-color, #E2CAFC)",
+        "var(--badge-violet-hover-bg-color, #E2CAFC)",
+        "var(--badge-violet-active-bg-color, #C7A5FA)",
+        "var(--badge-violet-active-bg-color, #C7A5FA)",
+        "var(--badge-violet-active-bg-color, #C7A5FA)",
+        "var(--badge-cyan-bg-color, #B2F4F7)",
+        "var(--badge-cyan-bg-color, #B2F4F7)",
+        "var(--badge-cyan-bg-color, #B2F4F7)",
+        "var(--md-secondary-bg-color, #F7F7F7)"
+      ],
+      "color": [
+        "var(--md-primary-text-color, #121212)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-blue-text-color, #08599C)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-gray-text-color, #121212)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-mint-text-color, #12615A)",
+        "var(--badge-darkmint-text-color, #F7F7F7)",
+        "var(--badge-darkmint-text-color, #F7F7F7)",
+        "var(--badge-darkmint-text-color, #F7F7F7)",
+        "var(--badge-green-text-color, #03612C)",
+        "var(--badge-green-text-color, #03612C)",
+        "var(--badge-green-text-color, #03612C)",
+        "var(--badge-yellow-text-color, #7D4705)",
+        "var(--badge-yellow-text-color, #7D4705)",
+        "var(--badge-yellow-text-color, #7D4705)",
+        "var(--badge-red-text-color, #A12512)",
+        "var(--badge-red-text-color, #A12512)",
+        "var(--badge-red-text-color, #A12512)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-orange-text-color, #914017)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-gold-text-color, #735107)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-lime-text-color, #416116)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-pink-text-color, #A12A3A)",
+        "var(--badge-purple-text-color, #932099)",
+        "var(--badge-purple-text-color, #932099)",
+        "var(--badge-purple-text-color, #932099)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-violet-text-color, #643ABD)",
+        "var(--badge-cyan-text-color, #066070)",
+        "var(--badge-cyan-text-color, #066070)",
+        "var(--badge-cyan-text-color, #066070)",
+        "var(--md-primary-text-color, #121212)",
+        "var(--md-disabled-text-color, #B2B2B2)",
+        "var(--md-disabled-text-color, #B2B2B2)",
+        "GrayText",
+        "GrayText"
+      ],
+      "cursor": [
+        "pointer",
+        "pointer",
+        "default"
+      ],
+      "display": [
+        "inline-flex",
+        "flow-root",
+        "flex",
+        "inline-flex"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+      ],
+      "font-weight": [
+        "normal",
+        "normal"
+      ],
+      "height": [
+        "2rem",
+        "1.5rem",
+        ".875rem",
+        "2rem"
+      ],
+      "justify-content": [
+        "space-between",
+        "space-between"
+      ],
+      "line-height": [
+        "1rem",
+        "1rem",
+        "normal"
+      ],
+      "margin-bottom": [
+        "auto",
+        "auto"
+      ],
+      "max-width": [
+        "12.5rem",
+        "9.375rem",
+        "12.5rem"
+      ],
+      "overflow": [
+        "auto",
+        "hidden",
+        "auto"
+      ],
+      "position": [
+        "relative",
+        "absolute",
+        "relative"
+      ],
+      "text-align": [
+        "center",
+        "center"
+      ],
+      "text-decoration": [
+        "none",
+        "none"
+      ],
+      "white-space": [
+        "nowrap",
+        "nowrap"
+      ],
+      "width": [
+        "auto",
+        ".875rem",
+        "100%",
+        "auto"
+      ],
+      "padding": [
+        ".25rem 1rem",
+        ".1875rem .75rem"
+      ],
+      "font-size": [
+        ".75rem",
+        ".75rem",
+        ".875rem"
+      ],
+      "min-width": [
+        "auto"
+      ],
+      "box-shadow": [
+        "0 0 0 .0625rem var(--md-default-focus-outline-color, #005E7D)",
+        "none"
+      ],
+      "right": [
+        ".75rem"
+      ],
+      "top": [
+        ".75rem",
+        "-0.125rem"
+      ],
+      "margin-left": [
+        ".625rem",
+        ".625rem"
+      ],
+      "margin-right": [
+        "0",
+        ".625rem",
+        ".625rem"
+      ],
+      "left": [
+        "0"
+      ]
+    },
+    "resets": {
+      "margin-right": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 5,
+          "size": {
+            "graph": [
+              1,
+              2,
+              2,
+              1,
+              1
+            ],
+            "max": 2,
+            "average": 1.4
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-chip.md-chip--disabled",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-chip:focus,.md-chip:hover",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-chip.md-chip--disabled md-icon",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-chip.md-chip--disabled:focus,.md-chip.md-chip--disabled:hover",
+              "declarations": 1
+            },
+            {
+              "selector": ".md-chip",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 7,
+          "type": 1,
+          "class": 7,
+          "id": 0,
+          "pseudoClass": 4,
+          "pseudoElement": 0,
+          "values": [
+            ".md-chip",
+            ".md-chip:focus",
+            ".md-chip:hover",
+            ".md-chip.md-chip--disabled",
+            ".md-chip.md-chip--disabled:focus",
+            ".md-chip.md-chip--disabled:hover",
+            ".md-chip.md-chip--disabled md-icon"
+          ],
+          "specificity": {
+            "max": 30,
+            "average": 21.571428571428573,
+            "graph": [
+              10,
+              20,
+              20,
+              20,
+              30,
+              30,
+              21
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-chip.md-chip--disabled:focus",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-chip.md-chip--disabled:hover",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-chip.md-chip--disabled md-icon",
+                "specificity": 21
+              },
+              {
+                "selector": ".md-chip:focus",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-chip:hover",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-chip.md-chip--disabled",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-chip",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 7,
+          "unique": 5,
+          "properties": {
+            "outline": [
+              "1px solid CanvasText",
+              "2px solid Highlight",
+              "1px solid GrayText",
+              "2px solid Highlight"
+            ],
+            "box-shadow": [
+              "none"
+            ],
+            "color": [
+              "GrayText",
+              "GrayText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

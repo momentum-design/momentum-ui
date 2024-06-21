@@ -1,0 +1,2112 @@
+{
+  "size": 13363,
+  "gzipSize": 2290,
+  "humanizedSize": "13KB",
+  "humanizedGzipSize": "2KB",
+  "rules": {
+    "total": 118,
+    "size": {
+      "graph": [
+        4,
+        1,
+        7,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        10,
+        3,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        1,
+        3,
+        1,
+        2,
+        1,
+        4,
+        4,
+        3,
+        2,
+        1,
+        4,
+        1,
+        1,
+        3,
+        3,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        3,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        3,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        8,
+        1,
+        1,
+        1,
+        1,
+        2,
+        3,
+        1,
+        1,
+        2,
+        2,
+        9,
+        1,
+        2,
+        1,
+        5,
+        3,
+        1,
+        6,
+        1,
+        4,
+        6,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        2,
+        2
+      ],
+      "max": 10,
+      "average": 1.923728813559322
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-input-container",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-input__after,.md-input__before",
+        "declarations": 9
+      },
+      {
+        "selector": ".md-input",
+        "declarations": 8
+      },
+      {
+        "selector": "[class*=md] textarea",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-input__wrapper",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-input__message--error",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-input__messages",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-input__message::before",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-input-container.md-disabled .md-input__before .md-spinner::after",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-input-container .md-input__icon-clear",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-input-container .md-input__after .md-spinner::after,.md-input-container .md-input__before .md-spinner::after",
+        "declarations": 4
+      },
+      {
+        "selector": "[class*=md] button,[class*=md] input,[class*=md] textarea,[class*=md] select,[class*=md] *,[class*=md] *::before,[class*=md] *::after",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-spinner-container",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input:focus,.md-input.md-focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input:disabled,.md-input-container.md-input--filled .md-input.md-disabled",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container.md-error:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container .md-input.md-input--multi",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container.md-multi",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container .md-input__icon-clear:hover,.md-input-container .md-input__icon-clear:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container .md-input[readonly],.md-input-container .md-input.md-readonly",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container .md-input:disabled,.md-input-container .md-input.md-disabled",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container .md-input",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-input-container .md-input:disabled,.md-input-container .md-input.md-disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container .md-input:focus,.md-input-container .md-input.md-focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input__icon-clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input--multiline",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input__help-text,.md-input__label,.md-input__messages",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input__before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input__after",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input::-ms-clear,.md-input::-ms-reveal",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input__icon-clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input[readonly],.md-input-container.md-input--filled .md-input.md-readonly",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input__icon-clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input:disabled,.md-input-container.md-success .md-input.md-disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input__icon-clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input:disabled,.md-input-container.md-warning .md-input.md-disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input__icon-clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input:disabled,.md-input-container.md-error .md-input.md-disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container.md-disabled .md-input__before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container .md-input__after,.md-input-container .md-input__before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container .md-input:hover:active,.md-input-container .md-input.md-hover:active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container .md-input::placeholder",
+        "declarations": 2
+      },
+      {
+        "selector": "[class*=md] ::-webkit-file-upload-button",
+        "declarations": 2
+      },
+      {
+        "selector": "[class*=md] ::input-placeholder",
+        "declarations": 2
+      },
+      {
+        "selector": "[class*=md] input::-webkit-outer-spin-button,[class*=md] input::-webkit-inner-spin-button",
+        "declarations": 2
+      },
+      {
+        "selector": "[class*=md] input[type=file]",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-input-container .md-input",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input__message md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": "::slotted(*)",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-input__label",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input[type=search].md-input--milti:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input[type=search].md-input--milti",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input[type=search]",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input--pill",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input--before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input--after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input__message--error::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input__message md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input__label",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input__after md-icon::part(icon),.md-input__before md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input:disabled,.md-input.md-disabled",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input[readonly],.md-input.md-readonly",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input--nested-3",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input--nested-2",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input--nested-1",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input.md-dirty",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input__messages",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input__icon-clear:hover,.md-input-container.md-input--filled .md-input__icon-clear:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input[readonly]:hover,.md-input-container.md-input--filled .md-input.md-readonly:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input:disabled:hover,.md-input-container.md-input--filled .md-input.md-disabled:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input:hover,.md-input-container.md-input--filled .md-input.md-hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-input--filled .md-input::placeholder",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input__message::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input__messages",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input__icon-clear:hover,.md-input-container.md-success .md-input__icon-clear:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input[readonly],.md-input-container.md-success .md-input.md-readonly",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input:hover,.md-input-container.md-success .md-input.md-hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-success .md-input::placeholder",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input__message::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input__messages",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input__icon-clear:hover,.md-input-container.md-warning .md-input__icon-clear:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input[readonly],.md-input-container.md-warning .md-input.md-readonly",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input:hover:active,.md-input-container.md-warning .md-input.md-hover:active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input:hover,.md-input-container.md-warning .md-input.md-hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-warning .md-input::placeholder",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input__message::before",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input__message",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input__messages",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input__icon-clear:hover,.md-input-container.md-error .md-input__icon-clear:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input[readonly],.md-input-container.md-error .md-input.md-readonly",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input:hover:active,.md-input-container.md-error .md-input.md-hover:active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input:hover,.md-input-container.md-error .md-input.md-hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-error .md-input::placeholder",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.column,.md-input-container.columns",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input__before.md-input__content",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input.md-input--multi:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input__help-text,.md-input-container .md-input__secondary-label",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input__messages",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container.md-disabled .md-input__before .md-spinner",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input__after .md-spinner,.md-input-container .md-input__before .md-spinner",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input[readonly]:hover,.md-input-container .md-input.md-readonly:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input:disabled:hover,.md-input-container .md-input.md-disabled:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input:disabled::placeholder,.md-input-container .md-input.md-disabled::placeholder",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-input-container .md-input:hover,.md-input-container .md-input.md-hover",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] [type=search]::-webkit-search-cancel-button,[class*=md] [type=search]::-webkit-search-decoration",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] [type=number]::-webkit-inner-spin-button,[class*=md] [type=number]::-webkit-outer-spin-button",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] [type=number]",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] input[type=number]",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] [type=submit]",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] textarea[rows]",
+        "declarations": 1
+      },
+      {
+        "selector": "[class*=md] button,[class*=md] input",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 171,
+    "type": 16,
+    "class": 147,
+    "id": 0,
+    "pseudoClass": 44,
+    "pseudoElement": 17,
+    "values": [
+      "[class*=md] button",
+      "[class*=md] input",
+      "[class*=md] textarea",
+      "[class*=md] select",
+      "[class*=md] *",
+      "[class*=md] *::before",
+      "[class*=md] *::after",
+      "[class*=md] button",
+      "[class*=md] input",
+      "[class*=md] textarea",
+      "[class*=md] textarea[rows]",
+      "[class*=md] [type=submit]",
+      "[class*=md] input[type=file]",
+      "[class*=md] input::-webkit-outer-spin-button",
+      "[class*=md] input::-webkit-inner-spin-button",
+      "[class*=md] input[type=number]",
+      "[class*=md] [type=number]",
+      "[class*=md] [type=number]::-webkit-inner-spin-button",
+      "[class*=md] [type=number]::-webkit-outer-spin-button",
+      "[class*=md] [type=search]::-webkit-search-cancel-button",
+      "[class*=md] [type=search]::-webkit-search-decoration",
+      "[class*=md] ::input-placeholder",
+      "[class*=md] ::-webkit-file-upload-button",
+      ".md-input-container",
+      ".md-input-container .md-input",
+      ".md-input-container .md-input::placeholder",
+      ".md-input-container .md-input:hover",
+      ".md-input-container .md-input.md-hover",
+      ".md-input-container .md-input:hover:active",
+      ".md-input-container .md-input.md-hover:active",
+      ".md-input-container .md-input:focus",
+      ".md-input-container .md-input:disabled",
+      ".md-input-container .md-input.md-disabled",
+      ".md-input-container .md-input:disabled::placeholder",
+      ".md-input-container .md-input.md-disabled::placeholder",
+      ".md-input-container .md-input:disabled:hover",
+      ".md-input-container .md-input.md-disabled:hover",
+      ".md-input-container .md-input[readonly]",
+      ".md-input-container .md-input.md-readonly",
+      ".md-input-container .md-input[readonly]:hover",
+      ".md-input-container .md-input.md-readonly:hover",
+      ".md-input-container .md-input__after",
+      ".md-input-container .md-input__before",
+      ".md-input-container .md-input__after .md-spinner",
+      ".md-input-container .md-input__before .md-spinner",
+      ".md-input-container .md-input__after .md-spinner::after",
+      ".md-input-container .md-input__before .md-spinner::after",
+      ".md-input-container .md-input__icon-clear",
+      ".md-input-container .md-input__icon-clear:hover",
+      ".md-input-container .md-input__icon-clear:focus",
+      ".md-input-container.md-disabled .md-input__before",
+      ".md-input-container.md-disabled .md-input__before .md-spinner",
+      ".md-input-container.md-disabled .md-input__before .md-spinner::after",
+      ".md-input-container .md-input__messages",
+      ".md-input-container .md-input__help-text",
+      ".md-input-container .md-input__secondary-label",
+      ".md-input-container.md-multi",
+      ".md-input-container .md-input.md-input--multi",
+      ".md-input-container .md-input.md-input--multi:hover",
+      ".md-input-container .md-input__before.md-input__content",
+      ".md-input-container.column",
+      ".md-input-container.columns",
+      ".md-input-container.md-error .md-input",
+      ".md-input-container.md-error .md-input::placeholder",
+      ".md-input-container.md-error .md-input:hover",
+      ".md-input-container.md-error .md-input.md-hover",
+      ".md-input-container.md-error .md-input:hover:active",
+      ".md-input-container.md-error .md-input.md-hover:active",
+      ".md-input-container.md-error .md-input:focus",
+      ".md-input-container.md-error .md-input:disabled",
+      ".md-input-container.md-error .md-input.md-disabled",
+      ".md-input-container.md-error .md-input[readonly]",
+      ".md-input-container.md-error .md-input.md-readonly",
+      ".md-input-container.md-error .md-input__icon-clear",
+      ".md-input-container.md-error .md-input__icon-clear:hover",
+      ".md-input-container.md-error .md-input__icon-clear:focus",
+      ".md-input-container.md-error .md-input__messages",
+      ".md-input-container.md-error:focus",
+      ".md-input-container.md-error .md-input__message",
+      ".md-input-container.md-error .md-input__message::before",
+      ".md-input-container.md-warning .md-input",
+      ".md-input-container.md-warning .md-input::placeholder",
+      ".md-input-container.md-warning .md-input:hover",
+      ".md-input-container.md-warning .md-input.md-hover",
+      ".md-input-container.md-warning .md-input:hover:active",
+      ".md-input-container.md-warning .md-input.md-hover:active",
+      ".md-input-container.md-warning .md-input:disabled",
+      ".md-input-container.md-warning .md-input.md-disabled",
+      ".md-input-container.md-warning .md-input[readonly]",
+      ".md-input-container.md-warning .md-input.md-readonly",
+      ".md-input-container.md-warning .md-input__icon-clear",
+      ".md-input-container.md-warning .md-input__icon-clear:hover",
+      ".md-input-container.md-warning .md-input__icon-clear:focus",
+      ".md-input-container.md-warning .md-input__messages",
+      ".md-input-container.md-warning .md-input__message::before",
+      ".md-input-container.md-success .md-input",
+      ".md-input-container.md-success .md-input::placeholder",
+      ".md-input-container.md-success .md-input:hover",
+      ".md-input-container.md-success .md-input.md-hover",
+      ".md-input-container.md-success .md-input:disabled",
+      ".md-input-container.md-success .md-input.md-disabled",
+      ".md-input-container.md-success .md-input[readonly]",
+      ".md-input-container.md-success .md-input.md-readonly",
+      ".md-input-container.md-success .md-input__icon-clear",
+      ".md-input-container.md-success .md-input__icon-clear:hover",
+      ".md-input-container.md-success .md-input__icon-clear:focus",
+      ".md-input-container.md-success .md-input__messages",
+      ".md-input-container.md-success .md-input__message::before",
+      ".md-input-container.md-input--filled .md-input",
+      ".md-input-container.md-input--filled .md-input::placeholder",
+      ".md-input-container.md-input--filled .md-input:hover",
+      ".md-input-container.md-input--filled .md-input.md-hover",
+      ".md-input-container.md-input--filled .md-input:disabled",
+      ".md-input-container.md-input--filled .md-input.md-disabled",
+      ".md-input-container.md-input--filled .md-input:disabled:hover",
+      ".md-input-container.md-input--filled .md-input.md-disabled:hover",
+      ".md-input-container.md-input--filled .md-input[readonly]",
+      ".md-input-container.md-input--filled .md-input.md-readonly",
+      ".md-input-container.md-input--filled .md-input[readonly]:hover",
+      ".md-input-container.md-input--filled .md-input.md-readonly:hover",
+      ".md-input-container.md-input--filled .md-input__icon-clear",
+      ".md-input-container.md-input--filled .md-input__icon-clear:hover",
+      ".md-input-container.md-input--filled .md-input__icon-clear:focus",
+      ".md-input-container.md-input--filled .md-input__messages",
+      ".md-input",
+      ".md-input.md-dirty",
+      ".md-input--nested-1",
+      ".md-input--nested-2",
+      ".md-input--nested-3",
+      ".md-input::-ms-clear",
+      ".md-input::-ms-reveal",
+      ".md-input:focus",
+      ".md-input.md-focus",
+      ".md-input[readonly]",
+      ".md-input.md-readonly",
+      ".md-input:disabled",
+      ".md-input.md-disabled",
+      ".md-input__after",
+      ".md-input__before",
+      ".md-input__after",
+      ".md-input__before",
+      ".md-input__after md-icon::part(icon)",
+      ".md-input__before md-icon::part(icon)",
+      ".md-input__help-text",
+      ".md-input__label",
+      ".md-input__messages",
+      ".md-input__label",
+      ".md-input__messages",
+      ".md-input__message",
+      ".md-input__message md-icon",
+      ".md-input__message--error",
+      ".md-input__message--error::before",
+      ".md-input__message::before",
+      ".md-input__wrapper",
+      ".md-input--after",
+      ".md-input--before",
+      ".md-input--pill",
+      ".md-input--multiline",
+      ".md-input__icon-clear",
+      ".md-input[type=search]",
+      ".md-input[type=search].md-input--milti",
+      ".md-input[type=search].md-input--milti:hover",
+      ":host .md-input__label",
+      "::slotted(*)",
+      ".md-spinner-container",
+      ".md-input__message md-icon",
+      ".md-input-container .md-input",
+      ".md-input-container .md-input:focus",
+      ".md-input-container .md-input.md-focus",
+      ".md-input-container .md-input:disabled",
+      ".md-input-container .md-input.md-disabled"
+    ],
+    "specificity": {
+      "max": 50,
+      "average": 26.526315789473685,
+      "graph": [
+        11,
+        11,
+        11,
+        11,
+        10,
+        11,
+        11,
+        11,
+        11,
+        11,
+        21,
+        20,
+        21,
+        12,
+        12,
+        21,
+        20,
+        21,
+        21,
+        21,
+        21,
+        11,
+        11,
+        10,
+        20,
+        21,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        31,
+        31,
+        40,
+        40,
+        30,
+        30,
+        40,
+        40,
+        20,
+        20,
+        30,
+        30,
+        31,
+        31,
+        20,
+        30,
+        30,
+        30,
+        40,
+        41,
+        20,
+        20,
+        20,
+        20,
+        30,
+        40,
+        30,
+        20,
+        20,
+        30,
+        31,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        40,
+        40,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        31,
+        30,
+        31,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        40,
+        30,
+        40,
+        40,
+        30,
+        31,
+        30,
+        31,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        30,
+        40,
+        40,
+        30,
+        31,
+        30,
+        31,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        50,
+        50,
+        30,
+        40,
+        40,
+        30,
+        10,
+        20,
+        10,
+        10,
+        10,
+        11,
+        11,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        10,
+        10,
+        10,
+        10,
+        12,
+        12,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        10,
+        11,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        30,
+        40,
+        20,
+        1,
+        10,
+        11,
+        20,
+        30,
+        30,
+        30,
+        30
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-input-container.md-error .md-input:hover:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input.md-hover:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input:hover:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input.md-hover:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input:disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input.md-disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input[readonly]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input.md-readonly:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-input-container.md-disabled .md-input__before .md-spinner::after",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-input-container .md-input:hover:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input.md-hover:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input:disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input.md-disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input[readonly]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input.md-readonly:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-disabled .md-input__before .md-spinner",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input.md-input--multi:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input.md-hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input:disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input.md-disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input[readonly]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input.md-readonly",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input__icon-clear:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input__icon-clear:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input.md-hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input:disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input.md-disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input[readonly]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input.md-readonly",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input__icon-clear:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input__icon-clear:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input.md-hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input:disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input.md-disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input[readonly]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input.md-readonly",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input__icon-clear:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input__icon-clear:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input.md-hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input:disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input.md-disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input[readonly]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input.md-readonly",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input__icon-clear:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input__icon-clear:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input[type=search].md-input--milti:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-input-container .md-input:disabled::placeholder",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container .md-input.md-disabled::placeholder",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container .md-input__after .md-spinner::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container .md-input__before .md-spinner::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input::placeholder",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input__message::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input::placeholder",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input__message::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input::placeholder",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input__message::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input::placeholder",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-input-container .md-input:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input.md-hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input:disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input.md-disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input[readonly]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input.md-readonly",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input__after .md-spinner",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input__before .md-spinner",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input__icon-clear:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input__icon-clear:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-disabled .md-input__before",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input.md-input--multi",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input__before.md-input__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input__icon-clear",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input__messages",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-error:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-error .md-input__message",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input__icon-clear",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-warning .md-input__messages",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input__icon-clear",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-success .md-input__messages",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input__icon-clear",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container.md-input--filled .md-input__messages",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input[type=search].md-input--milti",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input.md-focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input:disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-input-container .md-input.md-disabled",
+          "specificity": 30
+        },
+        {
+          "selector": "[class*=md] textarea[rows]",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] input[type=file]",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] input[type=number]",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] [type=number]::-webkit-inner-spin-button",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] [type=number]::-webkit-outer-spin-button",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] [type=search]::-webkit-search-cancel-button",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] [type=search]::-webkit-search-decoration",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-input-container .md-input::placeholder",
+          "specificity": 21
+        },
+        {
+          "selector": "[class*=md] [type=submit]",
+          "specificity": 20
+        },
+        {
+          "selector": "[class*=md] [type=number]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input__after",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input__before",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input__icon-clear",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input__messages",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input__help-text",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input__secondary-label",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container.md-multi",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container.column",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container.columns",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input.md-dirty",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input.md-focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input[readonly]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input.md-readonly",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input:disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input.md-disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input[type=search]",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-input__label",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-input-container .md-input",
+          "specificity": 20
+        },
+        {
+          "selector": "[class*=md] input::-webkit-outer-spin-button",
+          "specificity": 12
+        },
+        {
+          "selector": "[class*=md] input::-webkit-inner-spin-button",
+          "specificity": 12
+        },
+        {
+          "selector": ".md-input__after md-icon::part(icon)",
+          "specificity": 12
+        },
+        {
+          "selector": ".md-input__before md-icon::part(icon)",
+          "specificity": 12
+        },
+        {
+          "selector": "[class*=md] button",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] input",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] textarea",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] select",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] *::before",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] *::after",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] button",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] input",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] textarea",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] ::input-placeholder",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] ::-webkit-file-upload-button",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-input::-ms-clear",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-input::-ms-reveal",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-input__message md-icon",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-input__message--error::before",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-input__message::before",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-input__message md-icon",
+          "specificity": 11
+        },
+        {
+          "selector": "[class*=md] *",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--nested-1",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--nested-2",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--nested-3",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__after",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__before",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__after",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__before",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__help-text",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__label",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__messages",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__label",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__messages",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__message",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__message--error",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__wrapper",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--after",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--before",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--pill",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input--multiline",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-input__icon-clear",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-spinner-container",
+          "specificity": 10
+        },
+        {
+          "selector": "::slotted(*)",
+          "specificity": 1
+        }
+      ]
+    },
+    "repeated": [
+      ".md-input-container .md-input",
+      ".md-input-container .md-input.md-disabled",
+      ".md-input-container .md-input:disabled",
+      ".md-input-container .md-input:focus",
+      ".md-input__after",
+      ".md-input__before",
+      ".md-input__label",
+      ".md-input__message md-icon",
+      ".md-input__messages",
+      "[class*=md] button",
+      "[class*=md] input",
+      "[class*=md] textarea"
+    ]
+  },
+  "declarations": {
+    "total": 227,
+    "unique": 136,
+    "properties": {
+      "-webkit-box-sizing": [
+        "inherit"
+      ],
+      "-moz-box-sizing": [
+        "inherit"
+      ],
+      "box-sizing": [
+        "inherit",
+        "border-box",
+        "border-box"
+      ],
+      "font-size": [
+        "var(--rem-base)",
+        "1rem",
+        ".75rem",
+        ".75rem",
+        "1rem"
+      ],
+      "overflow": [
+        "visible",
+        "auto"
+      ],
+      "line-height": [
+        "1.2rem",
+        "0",
+        "1.375rem",
+        "1.375rem",
+        "1.375rem",
+        "1"
+      ],
+      "max-height": [
+        "2.25rem"
+      ],
+      "max-width": [
+        "100%"
+      ],
+      "padding-bottom": [
+        ".375rem"
+      ],
+      "padding-top": [
+        ".375rem",
+        ".5rem"
+      ],
+      "resize": [
+        "none"
+      ],
+      "height": [
+        "auto",
+        "auto",
+        "2.125rem",
+        "0",
+        "100%",
+        "auto"
+      ],
+      "appearance": [
+        "none",
+        "none",
+        "textfield",
+        "none",
+        "button"
+      ],
+      "margin": [
+        "0 0 1rem 0",
+        "0"
+      ],
+      "width": [
+        "100%",
+        "100%",
+        "auto",
+        "100%",
+        "0",
+        "2.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%"
+      ],
+      "moz-appearance": [
+        "textfield"
+      ],
+      "color": [
+        "inherit",
+        "var(--md-secondary-text-color, #545454)",
+        "var(--input-default-placeholder-color, #545454)",
+        "var(--input-disabled-text-color, #B2B2B2)",
+        "var(--input-disabled-text-color, #B2B2B2)",
+        "var(--md-primary-text-color, #121212)",
+        "var(--md-secondary-text-color, #545454)",
+        "var(--md-secondary-text-color, #545454)",
+        "#545454",
+        "var(--input-disabled-text-color, #B2B2B2)",
+        "#545454",
+        "",
+        "var(--input-error-message-text-color, #A12512)",
+        "",
+        "",
+        "",
+        "var(--input-error-mesage-text-color, #F7644A)",
+        "GrayText"
+      ],
+      "opacity": [
+        ".6",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "font": [
+        "inherit"
+      ],
+      "align-content": [
+        "normal",
+        "center"
+      ],
+      "align-items": [
+        "normal",
+        "center",
+        "center"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "block",
+        "inline-flex",
+        "flex",
+        "block",
+        "flex",
+        "block",
+        "flex",
+        "block",
+        "flex",
+        "block",
+        "flex",
+        "flex",
+        "none",
+        "inline-flex",
+        "block",
+        "flex",
+        "flex"
+      ],
+      "flex-flow": [
+        "column wrap",
+        "row nowrap"
+      ],
+      "justify-content": [
+        "normal",
+        "center"
+      ],
+      "margin-bottom": [
+        "1rem",
+        "0",
+        ".5rem"
+      ],
+      "position": [
+        "relative",
+        "absolute",
+        "relative",
+        "relative"
+      ],
+      "background-color": [
+        "var(--input-default-bg-color, #FFFFFF)",
+        "var(--input-default-hover-bg-color, #CCCCCC)",
+        "var(--input-default-pressed-bg-color, #CCCCCC)",
+        "var(--input-default-focus-background-color, var(--input-default-bg-color))",
+        "var(--input-default-read-only-bg-color, #EDEDED)",
+        "var(--input-default-read-only-bg-color, #EDEDED)",
+        "var(--input-default-read-only-bg-color, #EDEDED)",
+        "var(--input-default-read-only-bg-color, #EDEDED)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--input-default-bg-color, #FFFFFF)",
+        "var(--input-default-hover-bg-color, #CCCCCC)",
+        "var(--input-error-bg-color, #FFE8E3)",
+        "var(--input-error-hover-bg-color, #FFD5CC)",
+        "var(--input-error-pressed-bg-color, #FFBBAD)",
+        "var(--input-default-focus-background-color, var(--input-error-bg-color))",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--md-alert-warning-bg-color, #FFECC2)",
+        "var(--md-alert-warning-bg-color, #FFECC2)",
+        "var(--md-alert-warning-bg-color, #FFECC2)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--md-alert-success-bg-color, #78F5B8)",
+        "var(--md-alert-success-bg-color, #78F5B8)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--input-filled-bg-color, #EDEDED)",
+        "var(--input-filled-hover-bg-color, #DEDEDE)",
+        "var(--input-filled-disabled-bg-color, #EDEDED)",
+        "var(--input-filled-disabled-bg-color, #EDEDED)",
+        "var(--input-filled-disabled-bg-color, #EDEDED)",
+        "var(--input-filled-disabled-bg-color, #EDEDED)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "#dedede"
+      ],
+      "border-color": [
+        "var(--input-default-border-color, #CCCCCC)",
+        "var(--input-default-pressed-border-color, #CCCCCC)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--input-default-border-color, #CCCCCC)",
+        "var(--input-error-hover-border-color, #F7644A)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--input-error-focus-border-color, #F7644A)",
+        "var(--input-warning-border-color, #FC9D03)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--input-success-border-color, #00AB50)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "#007aa3",
+        "rgba(0,0,0,0)"
+      ],
+      "fill": [
+        "var(--md-secondary-text-color, #545454)",
+        "var(--md-secondary-text-color, #545454)",
+        "#545454",
+        "var(--input-disabled-text-color, #B2B2B2)"
+      ],
+      "border": [
+        "1px solid #b2b2b2",
+        "1px solid #b2b2b2",
+        "none",
+        ".0625rem solid",
+        "none",
+        "1px solid CanvasText",
+        "none",
+        "1px solid GrayText"
+      ],
+      "border-bottom": [
+        "1px solid rgba(0,0,0,0)",
+        "1px solid rgba(0,0,0,0)"
+      ],
+      "border-left": [
+        "1px solid var(--md-secondary-text-color, #545454)",
+        "1px solid var(--input-disabled-text-color, #B2B2B2)"
+      ],
+      "border-right": [
+        "1px solid rgba(0,0,0,0)",
+        "1px solid rgba(0,0,0,0)"
+      ],
+      "border-top": [
+        "1px solid rgba(0,0,0,0)",
+        "1px solid rgba(0,0,0,0)"
+      ],
+      "flex": [
+        "1 1 100%"
+      ],
+      "box-shadow": [
+        "rgba(0,0,0,0)"
+      ],
+      "padding": [
+        "0",
+        "0 1rem",
+        "0"
+      ],
+      "outline": [
+        "none",
+        "none",
+        "2px solid Highlight"
+      ],
+      "transition": [
+        "border ease-in .15s",
+        "box-shadow ease-out .15s",
+        "border ease-in .15s"
+      ],
+      "content": [
+        "\"\\f38d\"",
+        "\"\\fca1\"",
+        "\"\\f37e\"",
+        "\"\\f38d\""
+      ],
+      "border-radius": [
+        "4px",
+        "18px"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"momentum-ui-icons\""
+      ],
+      "padding-right": [
+        "2.1875rem",
+        "2.75rem",
+        "2.75rem"
+      ],
+      "padding-left": [
+        "2rem",
+        "4rem",
+        "6rem",
+        "1rem",
+        "1rem",
+        "2.75rem"
+      ],
+      "cursor": [
+        "default",
+        "not-allowed",
+        "pointer"
+      ],
+      "left": [
+        "auto",
+        "0"
+      ],
+      "right": [
+        "0",
+        "auto"
+      ],
+      "top": [
+        "0",
+        "-0.5rem"
+      ],
+      "margin-right": [
+        ".5em",
+        ".5rem",
+        ".5em"
+      ],
+      "float": [
+        "left"
+      ],
+      "flex-grow": [
+        "1"
+      ],
+      "min-height": [
+        "4.3125rem"
+      ]
+    },
+    "resets": {
+      "margin": 1,
+      "margin-bottom": 1,
+      "padding": 2
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 3,
+          "size": {
+            "graph": [
+              1,
+              2,
+              2
+            ],
+            "max": 2,
+            "average": 1.6666666666666667
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-input-container .md-input:disabled,.md-input-container .md-input.md-disabled",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-input-container .md-input:focus,.md-input-container .md-input.md-focus",
+              "declarations": 2
+            },
+            {
+              "selector": ".md-input-container .md-input",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 5,
+          "type": 0,
+          "class": 5,
+          "id": 0,
+          "pseudoClass": 2,
+          "pseudoElement": 0,
+          "values": [
+            ".md-input-container .md-input",
+            ".md-input-container .md-input:focus",
+            ".md-input-container .md-input.md-focus",
+            ".md-input-container .md-input:disabled",
+            ".md-input-container .md-input.md-disabled"
+          ],
+          "specificity": {
+            "max": 30,
+            "average": 28,
+            "graph": [
+              20,
+              30,
+              30,
+              30,
+              30
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-input-container .md-input:focus",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-input-container .md-input.md-focus",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-input-container .md-input:disabled",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-input-container .md-input.md-disabled",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-input-container .md-input",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 5,
+          "unique": 5,
+          "properties": {
+            "border": [
+              "1px solid CanvasText",
+              "none",
+              "1px solid GrayText"
+            ],
+            "outline": [
+              "2px solid Highlight"
+            ],
+            "color": [
+              "GrayText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

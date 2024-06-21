@@ -1,0 +1,1209 @@
+{
+  "size": 7628,
+  "gzipSize": 1805,
+  "humanizedSize": "7KB",
+  "humanizedGzipSize": "2KB",
+  "rules": {
+    "total": 62,
+    "size": {
+      "graph": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        7,
+        4,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        14,
+        2,
+        1,
+        2,
+        1,
+        15,
+        1,
+        2,
+        1,
+        1,
+        1,
+        10,
+        1,
+        1,
+        8,
+        7,
+        2,
+        10,
+        6,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        5,
+        1,
+        13,
+        5,
+        1,
+        1,
+        1,
+        10,
+        5,
+        1,
+        1,
+        2,
+        3,
+        3,
+        3,
+        2,
+        3
+      ],
+      "max": 15,
+      "average": 3.096774193548387
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": "div#md-combobox-listbox",
+        "declarations": 15
+      },
+      {
+        "selector": ".md-combobox-button",
+        "declarations": 14
+      },
+      {
+        "selector": ".md-combobox__multiwrap .md-combobox-selected-item",
+        "declarations": 13
+      },
+      {
+        "selector": ".md-combobox__multiwrap input",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-combobox-option .select-option",
+        "declarations": 10
+      },
+      {
+        "selector": ".group-label",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-combobox-option",
+        "declarations": 8
+      },
+      {
+        "selector": ".md-combobox-option .select-label",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-combobox .group",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-combobox-option .select-option md-icon",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-combobox__multiwrap ::input-placeholder",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-combobox__multiwrap .md-combobox-selected-item span",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-combobox__multiwrap",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-combobox .group md-icon",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-combobox-option[focused]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-combobox-option[aria-checked=true] .select-option",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-combobox-option .select-option",
+        "declarations": 3
+      },
+      {
+        "selector": ":host([focus-visible]) .group",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-combobox .group md-icon:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-combobox-option[aria-checked=true] .select-option md-icon",
+        "declarations": 2
+      },
+      {
+        "selector": "input::placeholder,input::-webkit-input-placeholder",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-option[selected=true]",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-option[aria-checked=true] .select-option md-icon",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-option[aria-checked=true] .select-option",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-option:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-option .select-label span",
+        "declarations": 2
+      },
+      {
+        "selector": ".virtual-scroll",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-button.clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-button .md-input__icon-clear",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-list",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([invalid]) .group,:host([invalid]) .group:hover,:host([invalid]) .group:active",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([disabled]) .group,:host([disabled]) .group:hover,:host([disabled]) .group:active",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([focus-visible]) .group",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-combobox-searchable .md-combobox__multiwrap",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox__multiwrap .remove-item",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox__multiwrap .md-combobox-selected-item[selected]",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox__multiwrap .md-combobox-selected-item:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox__multiwrap .md-combobox-selected-item .remove-item",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox__multiwrap .selected-count",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox-option[selected=true] .select-option",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox-option[focused]",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox-option.md-combobox-multiselect",
+        "declarations": 1
+      },
+      {
+        "selector": ".group-label[focused]",
+        "declarations": 1
+      },
+      {
+        "selector": ".group-label:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".selected-label-text",
+        "declarations": 1
+      },
+      {
+        "selector": ".highlight-text",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox-multi-input",
+        "declarations": 1
+      },
+      {
+        "selector": "div#md-combobox-listbox .no-result",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox-button.clear:focus,.md-combobox-button.arrow-down:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox-button md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox--pill .group",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox .md-combobox-button[disabled] md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox .group.multiselect:active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox .group.multiselect:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox .group:active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-combobox .group:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([invalid]) .md-combobox-error",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([expanded]) .md-combobox-button.arrow-down",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([disabled]) .group>md-icon,:host([disabled]) .group:hover>md-icon,:host([disabled]) .group:active>md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .group",
+        "declarations": 1
+      },
+      {
+        "selector": ":host",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 70,
+    "type": 17,
+    "class": 65,
+    "id": 2,
+    "pseudoClass": 17,
+    "pseudoElement": 1,
+    "values": [
+      ":host",
+      ":host .group",
+      ":host(:focus)",
+      ":host([focus-visible]) .group",
+      ":host([disabled]) .group",
+      ":host([disabled]) .group:hover",
+      ":host([disabled]) .group:active",
+      ":host([disabled]) .group>md-icon",
+      ":host([disabled]) .group:hover>md-icon",
+      ":host([disabled]) .group:active>md-icon",
+      ":host([expanded]) .md-combobox-button.arrow-down",
+      ":host([invalid]) .group",
+      ":host([invalid]) .group:hover",
+      ":host([invalid]) .group:active",
+      ":host([invalid]) .md-combobox-error",
+      ".md-combobox-list",
+      ".md-combobox .group",
+      ".md-combobox .group md-icon",
+      ".md-combobox .group md-icon:focus",
+      ".md-combobox .group:hover",
+      ".md-combobox .group:active",
+      ".md-combobox .group.multiselect:hover",
+      ".md-combobox .group.multiselect:active",
+      ".md-combobox .md-combobox-button[disabled] md-icon",
+      ".md-combobox--pill .group",
+      ".md-combobox-button",
+      ".md-combobox-button .md-input__icon-clear",
+      ".md-combobox-button md-icon",
+      ".md-combobox-button.clear",
+      ".md-combobox-button.clear:focus",
+      ".md-combobox-button.arrow-down:focus",
+      "div#md-combobox-listbox",
+      "div#md-combobox-listbox .no-result",
+      ".virtual-scroll",
+      ".md-combobox-multi-input",
+      ".highlight-text",
+      ".selected-label-text",
+      ".group-label",
+      ".group-label:hover",
+      ".group-label[focused]",
+      ".md-combobox-option",
+      ".md-combobox-option .select-label",
+      ".md-combobox-option .select-label span",
+      ".md-combobox-option .select-option",
+      ".md-combobox-option .select-option md-icon",
+      ".md-combobox-option:hover",
+      ".md-combobox-option.md-combobox-multiselect",
+      ".md-combobox-option[aria-checked=true] .select-option",
+      ".md-combobox-option[aria-checked=true] .select-option md-icon",
+      ".md-combobox-option[focused]",
+      ".md-combobox-option[selected=true]",
+      ".md-combobox-option[selected=true] .select-option",
+      ".md-combobox__multiwrap",
+      ".md-combobox__multiwrap .selected-count",
+      ".md-combobox__multiwrap .md-combobox-selected-item",
+      ".md-combobox__multiwrap .md-combobox-selected-item span",
+      ".md-combobox__multiwrap .md-combobox-selected-item .remove-item",
+      ".md-combobox__multiwrap .md-combobox-selected-item:hover",
+      ".md-combobox__multiwrap .md-combobox-selected-item[selected]",
+      ".md-combobox__multiwrap input",
+      ".md-combobox__multiwrap ::input-placeholder",
+      ".md-combobox__multiwrap .remove-item",
+      ".md-combobox-searchable .md-combobox__multiwrap",
+      "input::placeholder",
+      "input::-webkit-input-placeholder",
+      ":host([focus-visible]) .group",
+      ".md-combobox-option .select-option",
+      ".md-combobox-option[aria-checked=true] .select-option",
+      ".md-combobox-option[aria-checked=true] .select-option md-icon",
+      ".md-combobox-option[focused]"
+    ],
+    "specificity": {
+      "max": 111,
+      "average": 25.571428571428573,
+      "graph": [
+        10,
+        20,
+        10,
+        30,
+        30,
+        40,
+        40,
+        31,
+        41,
+        41,
+        40,
+        30,
+        40,
+        40,
+        30,
+        10,
+        20,
+        21,
+        31,
+        30,
+        30,
+        40,
+        40,
+        31,
+        20,
+        10,
+        20,
+        11,
+        20,
+        30,
+        30,
+        101,
+        111,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        20,
+        10,
+        20,
+        21,
+        20,
+        21,
+        20,
+        20,
+        30,
+        31,
+        20,
+        20,
+        30,
+        10,
+        20,
+        20,
+        21,
+        30,
+        30,
+        30,
+        11,
+        11,
+        20,
+        20,
+        2,
+        2,
+        30,
+        20,
+        30,
+        31,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": "div#md-combobox-listbox .no-result",
+          "specificity": 111
+        },
+        {
+          "selector": "div#md-combobox-listbox",
+          "specificity": 101
+        },
+        {
+          "selector": ":host([disabled]) .group:hover>md-icon",
+          "specificity": 41
+        },
+        {
+          "selector": ":host([disabled]) .group:active>md-icon",
+          "specificity": 41
+        },
+        {
+          "selector": ":host([disabled]) .group:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([disabled]) .group:active",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([expanded]) .md-combobox-button.arrow-down",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([invalid]) .group:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([invalid]) .group:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-combobox .group.multiselect:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-combobox .group.multiselect:active",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([disabled]) .group>md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-combobox .group md-icon:focus",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-combobox .md-combobox-button[disabled] md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-combobox-option[aria-checked=true] .select-option md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-combobox-option[aria-checked=true] .select-option md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ":host([focus-visible]) .group",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([disabled]) .group",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([invalid]) .group",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([invalid]) .md-combobox-error",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox .group:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox .group:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox-button.clear:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox-button.arrow-down:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox-option[aria-checked=true] .select-option",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox-option[selected=true] .select-option",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox__multiwrap .md-combobox-selected-item .remove-item",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox__multiwrap .md-combobox-selected-item:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox__multiwrap .md-combobox-selected-item[selected]",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([focus-visible]) .group",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox-option[aria-checked=true] .select-option",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-combobox .group md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-combobox-option .select-label span",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-combobox-option .select-option md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-combobox__multiwrap .md-combobox-selected-item span",
+          "specificity": 21
+        },
+        {
+          "selector": ":host .group",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox .group",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox--pill .group",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-button .md-input__icon-clear",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-button.clear",
+          "specificity": 20
+        },
+        {
+          "selector": ".group-label:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".group-label[focused]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option .select-label",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option .select-option",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option.md-combobox-multiselect",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option[focused]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option[selected=true]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox__multiwrap .selected-count",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox__multiwrap .md-combobox-selected-item",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox__multiwrap .remove-item",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-searchable .md-combobox__multiwrap",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option .select-option",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-option[focused]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-combobox-button md-icon",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-combobox__multiwrap input",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-combobox__multiwrap ::input-placeholder",
+          "specificity": 11
+        },
+        {
+          "selector": ":host",
+          "specificity": 10
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-combobox-list",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-combobox-button",
+          "specificity": 10
+        },
+        {
+          "selector": ".virtual-scroll",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-combobox-multi-input",
+          "specificity": 10
+        },
+        {
+          "selector": ".highlight-text",
+          "specificity": 10
+        },
+        {
+          "selector": ".selected-label-text",
+          "specificity": 10
+        },
+        {
+          "selector": ".group-label",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-combobox-option",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-combobox__multiwrap",
+          "specificity": 10
+        },
+        {
+          "selector": "input::placeholder",
+          "specificity": 2
+        },
+        {
+          "selector": "input::-webkit-input-placeholder",
+          "specificity": 2
+        }
+      ]
+    },
+    "repeated": [
+      ".md-combobox-option .select-option",
+      ".md-combobox-option[aria-checked=true] .select-option",
+      ".md-combobox-option[aria-checked=true] .select-option md-icon",
+      ".md-combobox-option[focused]",
+      ":host([focus-visible]) .group"
+    ]
+  },
+  "declarations": {
+    "total": 192,
+    "unique": 128,
+    "properties": {
+      "--combobox-input-clear-bg": [
+        "var(--combobox-group-button-bg-color, $lm-combobox-group-button-bg-color-light)"
+      ],
+      "background": [
+        "var(--combobox-bg-color, #fff)",
+        "var(--combobox-disabled-bg-color, #ededed)",
+        "var(--combobox-invalid-bg-color, #ffe8e3)",
+        "var(--combobox-bg-color, #fff)",
+        "var(--combobox-hover-bg-color, #dedede)",
+        "var(--combobox-pressed-bg-color, #ccc)",
+        "var(--combobox-bg-color, #fff)",
+        "var(--combobox-bg-color, #fff)",
+        "rgba(0,0,0,0)",
+        "unset",
+        "var(--combobox-dropdown-item-focus-bg-color, #005e7d)",
+        "var(--combobox-dropdown-item-select-bg-color, #fff)",
+        "var(--combobox-dropdown-item-hover-bg-color, #91ebff)",
+        "var(--combobox-dropdown-item-checked-bg-color, #00a0d1)",
+        "var(--combobox-dropdown-item-select-bg-color, #00a0d1)",
+        "var(--combobox-selected-bg-color, #dedede)",
+        "var(--combobox-selected-hover, #b2b2b2)",
+        "var(--combobox-selected-hover, #b2b2b2)",
+        "rgba(0,0,0,0)",
+        "Canvas",
+        "Canvas"
+      ],
+      "box-shadow": [
+        "none",
+        "none",
+        "none",
+        "0 0 0 .125rem var(--md-focus-border-color, #005e7d)",
+        "0 4px 8px rgba(0,0,0,.16),0 0 1px rgba(0,0,0,.16)",
+        "none"
+      ],
+      "outline": [
+        "none",
+        "0",
+        "none",
+        "2px solid var(--button-focus-ring-color, #007aa3)",
+        "none",
+        "none",
+        "2px solid Highlight"
+      ],
+      "border-color": [
+        "var(--combobox-focus-border-color, #005e7d)",
+        "var(--combobox-invalid-border-color, #f7644a)"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "opacity": [
+        ".3",
+        "1"
+      ],
+      "transform": [
+        "rotate(180deg)"
+      ],
+      "padding": [
+        ".1875rem 0 0 .75rem",
+        "0 .75rem",
+        "0",
+        ".115rem",
+        "0",
+        ".4375rem .75rem .5rem",
+        ".4375rem .75rem .5rem",
+        ".4375rem .75rem .5rem",
+        "0 .75rem"
+      ],
+      "position": [
+        "relative",
+        "relative",
+        "absolute",
+        "relative",
+        "relative",
+        "absolute"
+      ],
+      "height": [
+        "2rem",
+        "2.125rem",
+        "1.75rem",
+        "inherit",
+        "auto",
+        "1.25rem",
+        "1.125rem",
+        "1.5rem",
+        "2rem"
+      ],
+      "align-items": [
+        "start",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "border": [
+        "1px solid var(--combobox-border-color, #b2b2b2)",
+        "0",
+        "1px solid var(--combobox-border-color, #b2b2b2)",
+        "solid 2px rgba(0,0,0,0)",
+        "1px solid var(--combobox-select-border-color, #545454)",
+        "1px solid var(--combobox-dropdown-item-checked-bg-color, #00a0d1)",
+        "2px solid var(--combobox-dropdown-item-focus-bg-color, #005e7d)",
+        "1px solid #fff",
+        "1px solid var(--combobox-selected-border-color, #ccc)",
+        "0",
+        "none",
+        "1px solid CanvasText",
+        "1px solid CanvasText"
+      ],
+      "border-radius": [
+        "var(--combobox-group-radius, 0.25rem)",
+        "18px",
+        ".5rem",
+        "calc(0.5rem/2)",
+        ".875rem"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "block",
+        "inline-block",
+        "inline-flex",
+        "flex",
+        "inline-block",
+        "inline-block",
+        "inline-block"
+      ],
+      "color": [
+        "var(--md-secondary-text-color, #545454)",
+        "var(--md-disabled-text-color, #b2b2b2)",
+        "var(--combobox-dropdown-item-icon-color, #121212)",
+        "var(--combobox-group-label-color)",
+        "var(--md-primary-text-color, #f7f7f7)",
+        "var(--combobox-dropdown-item-select-font-color, #121212)",
+        "var(--combobox-dropdown-item-checked-icon-color, #fff)",
+        "var(--combobox-dropdown-item-select-font-color, #121212)",
+        "var(--md-primary-text-color, #f7f7f7)",
+        "var(--md-secondary-text-color, #545454)",
+        "var(--combobox-placeholder-color, #545454)",
+        "CanvasText",
+        "CanvasText",
+        "CanvasText",
+        "Canvas"
+      ],
+      "cursor": [
+        "pointer",
+        "pointer",
+        "default",
+        "pointer",
+        "pointer"
+      ],
+      "fill": [
+        "var(--md-secondary-text-color, #545454)"
+      ],
+      "transition": [
+        "all .15s linear"
+      ],
+      "align-self": [
+        "center"
+      ],
+      "margin": [
+        "0",
+        "0",
+        "0"
+      ],
+      "margin-left": [
+        "calc(0.25rem*2)",
+        "0",
+        "calc(0.25rem*3)"
+      ],
+      "padding-top": [
+        "calc(0.25rem/2)"
+      ],
+      "vertical-align": [
+        "bottom",
+        "top"
+      ],
+      "background-color": [
+        "var(--combobox-dropdown-bg-color, #fff)",
+        "var(--combobox-group-label-bg-color)",
+        "Highlight"
+      ],
+      "box-sizing": [
+        "border-box",
+        "border-box",
+        "border-box"
+      ],
+      "font-size": [
+        "14px",
+        "14px",
+        "12px"
+      ],
+      "left": [
+        "0",
+        ".125rem"
+      ],
+      "list-style": [
+        "none"
+      ],
+      "overflow": [
+        "auto",
+        "auto",
+        "hidden",
+        "hidden",
+        "hidden",
+        "hidden"
+      ],
+      "overflow-x": [
+        "hidden"
+      ],
+      "top": [
+        "calc(100% + 0.25rem)",
+        "-0.1875rem"
+      ],
+      "width": [
+        "100%",
+        "initial",
+        "100%",
+        "100%",
+        "calc(100% - 1.25rem)",
+        "100%"
+      ],
+      "font-weight": [
+        "bold",
+        "400"
+      ],
+      "white-space": [
+        "pre-wrap",
+        "nowrap",
+        "nowrap",
+        "nowrap",
+        "nowrap",
+        "nowrap"
+      ],
+      "justify-content": [
+        "space-between"
+      ],
+      "line-height": [
+        "19px"
+      ],
+      "border-bottom": [
+        "1px solid var(--combobox-group-label-border-color)",
+        "1px solid var(--md-button-tertiary-outline-color, #545454)"
+      ],
+      "text-overflow": [
+        "ellipsis",
+        "ellipsis",
+        "ellipsis",
+        "ellipsis"
+      ],
+      "letter-spacing": [
+        "normal"
+      ],
+      "margin-right": [
+        "-0.25rem",
+        "1rem",
+        ".25rem"
+      ],
+      "min-width": [
+        "1.25rem"
+      ],
+      "visibility": [
+        "hidden",
+        "visible",
+        "visible"
+      ],
+      "flex": [
+        "1 1 auto",
+        "1 1 auto"
+      ],
+      "max-height": [
+        "calc(1.25rem*4.5)",
+        "1.5rem"
+      ],
+      "margin-bottom": [
+        "calc(0.25rem/2)"
+      ],
+      "margin-top": [
+        ".25rem"
+      ],
+      "max-width": [
+        "calc(1.25rem*4)"
+      ],
+      "padding-left": [
+        "calc(0.25rem*3)"
+      ],
+      "forced-color-adjust": [
+        "none"
+      ]
+    },
+    "resets": {
+      "padding": 2,
+      "margin": 3,
+      "margin-left": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 5,
+          "size": {
+            "graph": [
+              3,
+              3,
+              3,
+              2,
+              3
+            ],
+            "max": 3,
+            "average": 2.8
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-combobox-option[focused]",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-combobox-option[aria-checked=true] .select-option",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-combobox-option .select-option",
+              "declarations": 3
+            },
+            {
+              "selector": ":host([focus-visible]) .group",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-combobox-option[aria-checked=true] .select-option md-icon",
+              "declarations": 2
+            }
+          ]
+        },
+        "selectors": {
+          "total": 5,
+          "type": 1,
+          "class": 5,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ":host([focus-visible]) .group",
+            ".md-combobox-option .select-option",
+            ".md-combobox-option[aria-checked=true] .select-option",
+            ".md-combobox-option[aria-checked=true] .select-option md-icon",
+            ".md-combobox-option[focused]"
+          ],
+          "specificity": {
+            "max": 31,
+            "average": 26.2,
+            "graph": [
+              30,
+              20,
+              30,
+              31,
+              20
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-combobox-option[aria-checked=true] .select-option md-icon",
+                "specificity": 31
+              },
+              {
+                "selector": ":host([focus-visible]) .group",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-combobox-option[aria-checked=true] .select-option",
+                "specificity": 30
+              },
+              {
+                "selector": ".md-combobox-option .select-option",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-combobox-option[focused]",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 14,
+          "unique": 10,
+          "properties": {
+            "border": [
+              "none",
+              "1px solid CanvasText",
+              "1px solid CanvasText"
+            ],
+            "outline": [
+              "2px solid Highlight"
+            ],
+            "box-shadow": [
+              "none"
+            ],
+            "background": [
+              "Canvas",
+              "Canvas"
+            ],
+            "color": [
+              "CanvasText",
+              "CanvasText",
+              "CanvasText",
+              "Canvas"
+            ],
+            "visibility": [
+              "visible"
+            ],
+            "forced-color-adjust": [
+              "none"
+            ],
+            "background-color": [
+              "Highlight"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

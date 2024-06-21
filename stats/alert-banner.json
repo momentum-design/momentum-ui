@@ -1,0 +1,310 @@
+{
+  "size": 1447,
+  "gzipSize": 398,
+  "humanizedSize": "1KB",
+  "humanizedGzipSize": "398B",
+  "rules": {
+    "total": 13,
+    "size": {
+      "graph": [
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        2,
+        6,
+        2
+      ],
+      "max": 6,
+      "average": 2.1538461538461537
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-alert-banner__close",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-alert-banner__text",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert-banner",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert-banner",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert-banner__text a",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--success",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--error",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--warning",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--default",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--success md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--error md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--warning md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert-banner.md-alert-banner--default md-icon",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 13,
+    "type": 5,
+    "class": 13,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ".md-alert-banner",
+      ".md-alert-banner.md-alert-banner--default",
+      ".md-alert-banner.md-alert-banner--default md-icon",
+      ".md-alert-banner.md-alert-banner--warning",
+      ".md-alert-banner.md-alert-banner--warning md-icon",
+      ".md-alert-banner.md-alert-banner--error",
+      ".md-alert-banner.md-alert-banner--error md-icon",
+      ".md-alert-banner.md-alert-banner--success",
+      ".md-alert-banner.md-alert-banner--success md-icon",
+      ".md-alert-banner__text",
+      ".md-alert-banner__text a",
+      ".md-alert-banner__close",
+      ".md-alert-banner"
+    ],
+    "specificity": {
+      "max": 21,
+      "average": 16.53846153846154,
+      "graph": [
+        10,
+        20,
+        21,
+        20,
+        21,
+        20,
+        21,
+        20,
+        21,
+        10,
+        11,
+        10,
+        10
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-alert-banner.md-alert-banner--default md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--warning md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--error md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--success md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--default",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--warning",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--error",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-alert-banner.md-alert-banner--success",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-alert-banner__text a",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-alert-banner",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert-banner__text",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert-banner__close",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert-banner",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-alert-banner"
+    ]
+  },
+  "declarations": {
+    "total": 28,
+    "unique": 23,
+    "properties": {
+      "padding": [
+        ".75rem",
+        "0 1.75rem"
+      ],
+      "position": [
+        "relative",
+        "absolute"
+      ],
+      "text-align": [
+        "center",
+        "center"
+      ],
+      "background-color": [
+        "var(--alert-banner-default-bg-color, #c9f4ff)",
+        "var(--alert-banner-warning-bg-color, #ffecc2)",
+        "var(--alert-banner-error-bg-color, #ffe8e3)",
+        "var(--alert-banner-success-bg-color, #c9f4ff)"
+      ],
+      "color": [
+        "var(--alert-banner-default-text-color, #005e7d)",
+        "var(--alert-banner-default-text-color, #005e7d)",
+        "var(--alert-banner-warning-text-color, #7d4705)",
+        "var(--alert-banner-warning-text-color, #7d4705)",
+        "var(--alert-banner-error-text-color, #a12512)",
+        "var(--alert-banner-error-text-color, #a12512)",
+        "var(--alert-banner-success-text-color, #005e7d)",
+        "var(--alert-banner-success-text-color, #005e7d)",
+        "inherit"
+      ],
+      "font-size": [
+        ".875rem"
+      ],
+      "text-decoration": [
+        "underline"
+      ],
+      "cursor": [
+        "pointer"
+      ],
+      "height": [
+        "1rem"
+      ],
+      "right": [
+        "1rem"
+      ],
+      "top": [
+        ".75rem"
+      ],
+      "width": [
+        "1rem"
+      ],
+      "box-shadow": [
+        "none"
+      ],
+      "outline": [
+        "2px solid CanvasText"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              2
+            ],
+            "max": 2,
+            "average": 2
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-alert-banner",
+              "declarations": 2
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-alert-banner"
+          ],
+          "specificity": {
+            "max": 10,
+            "average": 10,
+            "graph": [
+              10
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-alert-banner",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 2,
+          "unique": 2,
+          "properties": {
+            "box-shadow": [
+              "none"
+            ],
+            "outline": [
+              "2px solid CanvasText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "size": 2271,
+  "gzipSize": 670,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "670B",
+  "rules": {
+    "total": 24,
+    "size": {
+      "graph": [
+        1,
+        2,
+        1,
+        1,
+        15,
+        4,
+        7,
+        2,
+        1,
+        3,
+        1,
+        3,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "max": 15,
+      "average": 2.2916666666666665
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-tooltip__popper",
+        "declarations": 15
+      },
+      {
+        "selector": ".md-tooltip__popper .md-tooltip__arrow::before",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-tooltip__popper .md-tooltip__arrow,.md-tooltip__popper .md-tooltip__arrow::before",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=bottom]>.md-tooltip__arrow::before",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=top]>.md-tooltip__arrow::before",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=right]>.md-tooltip__arrow::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=left]>.md-tooltip__arrow::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-tooltip__popper[data-show]",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-tooltip",
+        "declarations": 2
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=right]>.md-tooltip__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=left]>.md-tooltip__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=bottom]>.md-tooltip__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-tooltip__popper[data-popper-placement^=top]>.md-tooltip__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-tooltip__content",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-tooltip.md-tooltip--disabled .md-tooltip__popper",
+        "declarations": 1
+      },
+      {
+        "selector": ":host",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 17,
+    "type": 0,
+    "class": 16,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 6,
+    "values": [
+      ":host",
+      ".md-tooltip",
+      ".md-tooltip.md-tooltip--disabled .md-tooltip__popper",
+      ".md-tooltip__content",
+      ".md-tooltip__popper",
+      ".md-tooltip__popper .md-tooltip__arrow",
+      ".md-tooltip__popper .md-tooltip__arrow::before",
+      ".md-tooltip__popper .md-tooltip__arrow::before",
+      ".md-tooltip__popper[data-show]",
+      ".md-tooltip__popper[data-popper-placement^=top]>.md-tooltip__arrow",
+      ".md-tooltip__popper[data-popper-placement^=top]>.md-tooltip__arrow::before",
+      ".md-tooltip__popper[data-popper-placement^=bottom]>.md-tooltip__arrow",
+      ".md-tooltip__popper[data-popper-placement^=bottom]>.md-tooltip__arrow::before",
+      ".md-tooltip__popper[data-popper-placement^=left]>.md-tooltip__arrow",
+      ".md-tooltip__popper[data-popper-placement^=left]>.md-tooltip__arrow::before",
+      ".md-tooltip__popper[data-popper-placement^=right]>.md-tooltip__arrow",
+      ".md-tooltip__popper[data-popper-placement^=right]>.md-tooltip__arrow::before"
+    ],
+    "specificity": {
+      "max": 31,
+      "average": 23.294117647058822,
+      "graph": [
+        10,
+        10,
+        30,
+        10,
+        10,
+        20,
+        21,
+        21,
+        20,
+        30,
+        31,
+        30,
+        31,
+        30,
+        31,
+        30,
+        31
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=top]>.md-tooltip__arrow::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=bottom]>.md-tooltip__arrow::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=left]>.md-tooltip__arrow::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=right]>.md-tooltip__arrow::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-tooltip.md-tooltip--disabled .md-tooltip__popper",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=top]>.md-tooltip__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=bottom]>.md-tooltip__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=left]>.md-tooltip__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-tooltip__popper[data-popper-placement^=right]>.md-tooltip__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-tooltip__popper .md-tooltip__arrow::before",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-tooltip__popper .md-tooltip__arrow::before",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-tooltip__popper .md-tooltip__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-tooltip__popper[data-show]",
+          "specificity": 20
+        },
+        {
+          "selector": ":host",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-tooltip",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-tooltip__content",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-tooltip__popper",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-tooltip__popper .md-tooltip__arrow::before"
+    ]
+  },
+  "declarations": {
+    "total": 55,
+    "unique": 50,
+    "properties": {
+      "display": [
+        "inline-flex",
+        "none",
+        "inline-block",
+        "none",
+        "block"
+      ],
+      "position": [
+        "relative",
+        "relative",
+        "absolute"
+      ],
+      "width": [
+        "100%",
+        "max-content",
+        "1rem"
+      ],
+      "background-color": [
+        "var(--tooltip-bg-color, #292929)",
+        "var(--tooltip-bg-color, #292929)"
+      ],
+      "border": [
+        "1px solid #545454",
+        "1px solid var(--tooltip-bg-color, #292929)"
+      ],
+      "border-radius": [
+        ".25rem",
+        "0 0 .25rem 0",
+        ".25rem 0 0 0",
+        "0 .25rem 0 0",
+        "0 0 0 .25rem"
+      ],
+      "box-shadow": [
+        "0 .5rem 1rem rgba(0,0,0,.16),0 0 .0625rem rgba(0,0,0,.16),0 0 0 .0625rem #292929",
+        "inset 0 0 0 1px #545454"
+      ],
+      "color": [
+        "var(--tooltip-font-color, #f7f7f7)"
+      ],
+      "font-size": [
+        ".875rem"
+      ],
+      "line-height": [
+        "1.3125rem"
+      ],
+      "max-width": [
+        "200px"
+      ],
+      "padding": [
+        ".375rem .625rem"
+      ],
+      "text-align": [
+        "center"
+      ],
+      "word-break": [
+        "break-word"
+      ],
+      "z-index": [
+        "9999",
+        "-1",
+        "1",
+        "9999"
+      ],
+      "height": [
+        "1rem"
+      ],
+      "content": [
+        "\"\""
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "transform": [
+        "rotate(45deg)"
+      ],
+      "bottom": [
+        "-7px",
+        "100%",
+        "calc(100% + .7rem)"
+      ],
+      "clip-path": [
+        "polygon(0% 100%, 100% 100%, 100% 0%)",
+        "polygon(0% 0%, 100% 0%, 0% 100%)",
+        "polygon(0% 0%, 100% 100%, 100% 0%)",
+        "polygon(0% 100%, 100% 100%, 0% 0%)"
+      ],
+      "left": [
+        "0",
+        "0",
+        "-15px",
+        "100%",
+        "calc(100% + .7rem)"
+      ],
+      "top": [
+        "-8px",
+        "100%",
+        "calc(100% + .7rem)"
+      ],
+      "right": [
+        "1px",
+        "100%",
+        "calc(100% + .7rem)"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

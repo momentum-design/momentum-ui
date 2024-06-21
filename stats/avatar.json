@@ -1,0 +1,4500 @@
+{
+  "size": 51836,
+  "gzipSize": 2868,
+  "humanizedSize": "51KB",
+  "humanizedGzipSize": "3KB",
+  "rules": {
+    "total": 194,
+    "size": {
+      "graph": [
+        10,
+        20,
+        17,
+        1,
+        1,
+        1,
+        1,
+        17,
+        11,
+        12,
+        13,
+        10,
+        14,
+        14,
+        7,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        13,
+        17,
+        17,
+        15,
+        15,
+        15,
+        15,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        4,
+        19,
+        19,
+        19,
+        19,
+        19,
+        1,
+        1,
+        3,
+        4,
+        6,
+        1,
+        2,
+        3,
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        2,
+        4
+      ],
+      "max": 20,
+      "average": 10.608247422680412
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-avatar>.md-avatar__failure-badge::after",
+        "declarations": 20
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--presenting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--meeting::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--call::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--dnd::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--ooo::after",
+        "declarations": 19
+      },
+      {
+        "selector": ".md-avatar.md-avatar--clickable:active::after",
+        "declarations": 17
+      },
+      {
+        "selector": ".md-avatar.md-avatar--clickable:hover::after",
+        "declarations": 17
+      },
+      {
+        "selector": ".md-avatar.md-avatar--typing>.md-loading",
+        "declarations": 17
+      },
+      {
+        "selector": ".md-avatar>.md-avatar__notification-badge::after",
+        "declarations": 17
+      },
+      {
+        "selector": ".md-avatar.md-avatar--rona::after",
+        "declarations": 15
+      },
+      {
+        "selector": ".md-avatar.md-avatar--idle::after",
+        "declarations": 15
+      },
+      {
+        "selector": ".md-avatar.md-avatar--engaged::after",
+        "declarations": 15
+      },
+      {
+        "selector": ".md-avatar.md-avatar--active::after",
+        "declarations": 15
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon",
+        "declarations": 14
+      },
+      {
+        "selector": ".md-avatar .md-avatar__self",
+        "declarations": 14
+      },
+      {
+        "selector": ".md-avatar.md-avatar--clickable::after",
+        "declarations": 13
+      },
+      {
+        "selector": ".md-avatar .md-avatar__letter",
+        "declarations": 13
+      },
+      {
+        "selector": ".md-avatar .md-avatar__img",
+        "declarations": 12
+      },
+      {
+        "selector": ".md-avatar.md-avatar--bot::after",
+        "declarations": 11
+      },
+      {
+        "selector": ".md-avatar .md-avatar__letter md-loading",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-avatar",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon--overview",
+        "declarations": 7
+      },
+      {
+        "selector": "::slotted(img)",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--large .md-avatar,.md-composite-avatar.md-composite-avatar--135 .md-avatar",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--84 .md-avatar",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--84",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--72 .md-avatar",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--72",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--56 .md-avatar",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--56",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--medium .md-avatar,.md-composite-avatar.md-composite-avatar--40 .md-avatar",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--medium,.md-composite-avatar.md-composite-avatar--40",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--small .md-avatar,.md-composite-avatar.md-composite-avatar--28 .md-avatar",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--small,.md-composite-avatar.md-composite-avatar--28",
+        "declarations": 4
+      },
+      {
+        "selector": "::slotted(*)",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-composite-avatar ::slotted(md-avatar:nth-child(2))",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-composite-avatar ::slotted(md-avatar:nth-child(1))",
+        "declarations": 3
+      },
+      {
+        "selector": ":host",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-composite-avatar.md-composite-avatar--large,.md-composite-avatar.md-composite-avatar--135",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-composite-avatar",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-avatar",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--84.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--80.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--72.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--56.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--52.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--44.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--40.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--36.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--32.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--28.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--24.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--18.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xlarge.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--large.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--medium.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--small.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--self md-icon::part(icon)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--xsmall.md-avatar--self md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--inactive",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__img--hidden",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--lime,.md-avatar .md-avatar__letter.md-avatar--lime",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--gold,.md-avatar .md-avatar__letter.md-avatar--gold",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--slate,.md-avatar .md-avatar__letter.md-avatar--slate",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--pink,.md-avatar .md-avatar__letter.md-avatar--pink",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--cobalt,.md-avatar .md-avatar__letter.md-avatar--cobalt",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--cyan,.md-avatar .md-avatar__letter.md-avatar--cyan",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--violet,.md-avatar .md-avatar__letter.md-avatar--violet",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--purple,.md-avatar .md-avatar__letter.md-avatar--purple",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--orange,.md-avatar .md-avatar__letter.md-avatar--orange",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--red,.md-avatar .md-avatar__letter.md-avatar--red",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--yellow,.md-avatar .md-avatar__letter.md-avatar--yellow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--green,.md-avatar .md-avatar__letter.md-avatar--green",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--darkmint,.md-avatar .md-avatar__letter.md-avatar--darkmint",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--mint,.md-avatar .md-avatar__letter.md-avatar--mint",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar .md-avatar__icon.md-avatar--blue,.md-avatar .md-avatar__letter.md-avatar--blue",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--dark.md-avatar--rona::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--dark.md-avatar--idle::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--dark.md-avatar--engaged::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-avatar.md-avatar--dark.md-avatar--active::after",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 215,
+    "type": 38,
+    "class": 212,
+    "id": 0,
+    "pseudoClass": 4,
+    "pseudoElement": 99,
+    "values": [
+      ".md-avatar",
+      ".md-avatar>.md-avatar__failure-badge::after",
+      ".md-avatar>.md-avatar__notification-badge::after",
+      ".md-avatar.md-avatar--dark.md-avatar--active::after",
+      ".md-avatar.md-avatar--dark.md-avatar--engaged::after",
+      ".md-avatar.md-avatar--dark.md-avatar--idle::after",
+      ".md-avatar.md-avatar--dark.md-avatar--rona::after",
+      ".md-avatar.md-avatar--typing>.md-loading",
+      ".md-avatar.md-avatar--bot::after",
+      ".md-avatar .md-avatar__img",
+      ".md-avatar .md-avatar__letter",
+      ".md-avatar .md-avatar__letter md-loading",
+      ".md-avatar .md-avatar__self",
+      ".md-avatar .md-avatar__icon",
+      ".md-avatar .md-avatar__icon--overview",
+      ".md-avatar .md-avatar__icon.md-avatar--blue",
+      ".md-avatar .md-avatar__letter.md-avatar--blue",
+      ".md-avatar .md-avatar__icon.md-avatar--mint",
+      ".md-avatar .md-avatar__letter.md-avatar--mint",
+      ".md-avatar .md-avatar__icon.md-avatar--darkmint",
+      ".md-avatar .md-avatar__letter.md-avatar--darkmint",
+      ".md-avatar .md-avatar__icon.md-avatar--green",
+      ".md-avatar .md-avatar__letter.md-avatar--green",
+      ".md-avatar .md-avatar__icon.md-avatar--yellow",
+      ".md-avatar .md-avatar__letter.md-avatar--yellow",
+      ".md-avatar .md-avatar__icon.md-avatar--red",
+      ".md-avatar .md-avatar__letter.md-avatar--red",
+      ".md-avatar .md-avatar__icon.md-avatar--orange",
+      ".md-avatar .md-avatar__letter.md-avatar--orange",
+      ".md-avatar .md-avatar__icon.md-avatar--purple",
+      ".md-avatar .md-avatar__letter.md-avatar--purple",
+      ".md-avatar .md-avatar__icon.md-avatar--violet",
+      ".md-avatar .md-avatar__letter.md-avatar--violet",
+      ".md-avatar .md-avatar__icon.md-avatar--cyan",
+      ".md-avatar .md-avatar__letter.md-avatar--cyan",
+      ".md-avatar .md-avatar__icon.md-avatar--cobalt",
+      ".md-avatar .md-avatar__letter.md-avatar--cobalt",
+      ".md-avatar .md-avatar__icon.md-avatar--pink",
+      ".md-avatar .md-avatar__letter.md-avatar--pink",
+      ".md-avatar .md-avatar__icon.md-avatar--slate",
+      ".md-avatar .md-avatar__letter.md-avatar--slate",
+      ".md-avatar .md-avatar__icon.md-avatar--gold",
+      ".md-avatar .md-avatar__letter.md-avatar--gold",
+      ".md-avatar .md-avatar__icon.md-avatar--lime",
+      ".md-avatar .md-avatar__letter.md-avatar--lime",
+      ".md-avatar .md-avatar__img--hidden",
+      ".md-avatar.md-avatar--clickable::after",
+      ".md-avatar.md-avatar--clickable:hover::after",
+      ".md-avatar.md-avatar--clickable:active::after",
+      ".md-avatar.md-avatar--active::after",
+      ".md-avatar.md-avatar--engaged::after",
+      ".md-avatar.md-avatar--idle::after",
+      ".md-avatar.md-avatar--rona::after",
+      ".md-avatar.md-avatar--inactive",
+      ".md-avatar.md-avatar--xsmall",
+      ".md-avatar.md-avatar--xsmall.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--xsmall.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--xsmall.md-avatar--call::after",
+      ".md-avatar.md-avatar--xsmall.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--xsmall.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--xsmall.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--xsmall.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--small",
+      ".md-avatar.md-avatar--small.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--small.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--small.md-avatar--call::after",
+      ".md-avatar.md-avatar--small.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--small.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--small.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--small.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--medium",
+      ".md-avatar.md-avatar--medium.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--medium.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--medium.md-avatar--call::after",
+      ".md-avatar.md-avatar--medium.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--medium.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--medium.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--medium.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--large",
+      ".md-avatar.md-avatar--large.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--large.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--large.md-avatar--call::after",
+      ".md-avatar.md-avatar--large.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--large.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--large.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--large.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--xlarge",
+      ".md-avatar.md-avatar--xlarge.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--xlarge.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--xlarge.md-avatar--call::after",
+      ".md-avatar.md-avatar--xlarge.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--xlarge.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--xlarge.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--xlarge.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--18",
+      ".md-avatar.md-avatar--18.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--18.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--18.md-avatar--call::after",
+      ".md-avatar.md-avatar--18.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--18.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--18.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--18.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--24",
+      ".md-avatar.md-avatar--24.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--24.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--24.md-avatar--call::after",
+      ".md-avatar.md-avatar--24.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--24.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--24.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--24.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--28",
+      ".md-avatar.md-avatar--28.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--28.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--28.md-avatar--call::after",
+      ".md-avatar.md-avatar--28.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--28.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--28.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--28.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--32",
+      ".md-avatar.md-avatar--32.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--32.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--32.md-avatar--call::after",
+      ".md-avatar.md-avatar--32.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--32.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--32.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--32.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--36",
+      ".md-avatar.md-avatar--36.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--36.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--36.md-avatar--call::after",
+      ".md-avatar.md-avatar--36.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--36.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--36.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--36.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--40",
+      ".md-avatar.md-avatar--40.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--40.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--40.md-avatar--call::after",
+      ".md-avatar.md-avatar--40.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--40.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--40.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--40.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--44",
+      ".md-avatar.md-avatar--44.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--44.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--44.md-avatar--call::after",
+      ".md-avatar.md-avatar--44.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--44.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--44.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--44.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--52",
+      ".md-avatar.md-avatar--52.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--52.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--52.md-avatar--call::after",
+      ".md-avatar.md-avatar--52.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--52.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--52.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--52.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--56",
+      ".md-avatar.md-avatar--56.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--56.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--56.md-avatar--call::after",
+      ".md-avatar.md-avatar--56.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--56.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--56.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--56.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--72",
+      ".md-avatar.md-avatar--72.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--72.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--72.md-avatar--call::after",
+      ".md-avatar.md-avatar--72.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--72.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--72.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--72.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--80",
+      ".md-avatar.md-avatar--80.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--80.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--80.md-avatar--call::after",
+      ".md-avatar.md-avatar--80.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--80.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--80.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--80.md-avatar--self md-icon::part(icon)",
+      ".md-avatar.md-avatar--84",
+      ".md-avatar.md-avatar--84.md-avatar--ooo::after",
+      ".md-avatar.md-avatar--84.md-avatar--dnd::after",
+      ".md-avatar.md-avatar--84.md-avatar--call::after",
+      ".md-avatar.md-avatar--84.md-avatar--meeting::after",
+      ".md-avatar.md-avatar--84.md-avatar--presenting::after",
+      ".md-avatar.md-avatar--84.md-avatar--self md-icon",
+      ".md-avatar.md-avatar--84.md-avatar--self md-icon::part(icon)",
+      ":host",
+      "::slotted(*)",
+      "::slotted(img)",
+      ".md-avatar",
+      ".md-composite-avatar",
+      ".md-composite-avatar ::slotted(md-avatar:nth-child(1))",
+      ".md-composite-avatar ::slotted(md-avatar:nth-child(2))",
+      ".md-composite-avatar.md-composite-avatar--small",
+      ".md-composite-avatar.md-composite-avatar--28",
+      ".md-composite-avatar.md-composite-avatar--small .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--28 .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--medium",
+      ".md-composite-avatar.md-composite-avatar--40",
+      ".md-composite-avatar.md-composite-avatar--medium .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--40 .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--56",
+      ".md-composite-avatar.md-composite-avatar--56 .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--72",
+      ".md-composite-avatar.md-composite-avatar--72 .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--84",
+      ".md-composite-avatar.md-composite-avatar--84 .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--large",
+      ".md-composite-avatar.md-composite-avatar--135",
+      ".md-composite-avatar.md-composite-avatar--large .md-avatar",
+      ".md-composite-avatar.md-composite-avatar--135 .md-avatar"
+    ],
+    "specificity": {
+      "max": 32,
+      "average": 28.023255813953487,
+      "graph": [
+        10,
+        21,
+        21,
+        31,
+        31,
+        31,
+        31,
+        30,
+        21,
+        20,
+        20,
+        21,
+        20,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        20,
+        21,
+        31,
+        31,
+        21,
+        21,
+        21,
+        21,
+        20,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        20,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        32,
+        10,
+        1,
+        1,
+        10,
+        10,
+        21,
+        21,
+        20,
+        20,
+        30,
+        30,
+        20,
+        20,
+        30,
+        30,
+        20,
+        30,
+        20,
+        30,
+        20,
+        30,
+        20,
+        20,
+        30,
+        30
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--self md-icon::part(icon)",
+          "specificity": 32
+        },
+        {
+          "selector": ".md-avatar.md-avatar--dark.md-avatar--active::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--dark.md-avatar--engaged::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--dark.md-avatar--idle::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--dark.md-avatar--rona::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--clickable:hover::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--clickable:active::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--ooo::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--dnd::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--call::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--meeting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--presenting::after",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84.md-avatar--self md-icon",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-avatar.md-avatar--typing>.md-loading",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--blue",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--blue",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--mint",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--mint",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--darkmint",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--darkmint",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--green",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--green",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--yellow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--yellow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--red",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--red",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--orange",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--orange",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--purple",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--purple",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--violet",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--violet",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--cyan",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--cyan",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--cobalt",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--cobalt",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--pink",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--pink",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--slate",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--slate",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--gold",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--gold",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon.md-avatar--lime",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter.md-avatar--lime",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--small .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--28 .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--medium .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--40 .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--56 .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--72 .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--84 .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--large .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--135 .md-avatar",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-avatar>.md-avatar__failure-badge::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar>.md-avatar__notification-badge::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar.md-avatar--bot::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter md-loading",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar.md-avatar--clickable::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar.md-avatar--active::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar.md-avatar--engaged::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar.md-avatar--idle::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar.md-avatar--rona::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-composite-avatar ::slotted(md-avatar:nth-child(1))",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-composite-avatar ::slotted(md-avatar:nth-child(2))",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-avatar .md-avatar__img",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar .md-avatar__letter",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar .md-avatar__self",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar .md-avatar__icon--overview",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar .md-avatar__img--hidden",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--inactive",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xsmall",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--small",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--medium",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--large",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--xlarge",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--18",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--24",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--28",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--32",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--36",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--40",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--44",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--52",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--56",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--72",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--80",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar.md-avatar--84",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--small",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--28",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--medium",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--40",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--56",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--72",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--84",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--large",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-composite-avatar.md-composite-avatar--135",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-avatar",
+          "specificity": 10
+        },
+        {
+          "selector": ":host",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-avatar",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-composite-avatar",
+          "specificity": 10
+        },
+        {
+          "selector": "::slotted(*)",
+          "specificity": 1
+        },
+        {
+          "selector": "::slotted(img)",
+          "specificity": 1
+        }
+      ]
+    },
+    "repeated": [
+      ".md-avatar"
+    ]
+  },
+  "declarations": {
+    "total": 2058,
+    "unique": 221,
+    "properties": {
+      "font-size": [
+        ".875rem",
+        ".85em",
+        ".571em",
+        ".39375rem",
+        ".5625rem",
+        ".5625rem",
+        ".5625rem",
+        ".5625rem",
+        ".5625rem",
+        ".6125rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        "1.25rem",
+        "1.25rem",
+        "1.25rem",
+        "1.25rem",
+        "1.25rem",
+        "1.1375rem",
+        "1.625rem",
+        "1.625rem",
+        "1.625rem",
+        "1.625rem",
+        "1.625rem",
+        "1.8375rem",
+        "2.625rem",
+        "2.625rem",
+        "2.625rem",
+        "2.625rem",
+        "2.625rem",
+        ".39375rem",
+        ".5625rem",
+        ".5625rem",
+        ".5625rem",
+        ".5625rem",
+        ".5625rem",
+        ".525rem",
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        ".75rem",
+        ".6125rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".875rem",
+        ".7rem",
+        "1rem",
+        "1rem",
+        "1rem",
+        "1rem",
+        "1rem",
+        ".7875rem",
+        "1.125rem",
+        "1.125rem",
+        "1.125rem",
+        "1.125rem",
+        "1.125rem",
+        ".875rem",
+        "1.25rem",
+        "1.25rem",
+        "1.25rem",
+        "1.25rem",
+        "1.25rem",
+        ".9625rem",
+        "1.375rem",
+        "1.375rem",
+        "1.375rem",
+        "1.375rem",
+        "1.375rem",
+        "1.1375rem",
+        "1.625rem",
+        "1.625rem",
+        "1.625rem",
+        "1.625rem",
+        "1.625rem",
+        "1.225rem",
+        "1.75rem",
+        "1.75rem",
+        "1.75rem",
+        "1.75rem",
+        "1.75rem",
+        "1.575rem",
+        "2.25rem",
+        "2.25rem",
+        "2.25rem",
+        "2.25rem",
+        "2.25rem",
+        "1.75rem",
+        "2.5rem",
+        "2.5rem",
+        "2.5rem",
+        "2.5rem",
+        "2.5rem",
+        "1.8375rem",
+        "2.625rem",
+        "2.625rem",
+        "2.625rem",
+        "2.625rem",
+        "2.625rem",
+        ".6125rem",
+        ".39375rem",
+        ".875rem",
+        ".56875rem",
+        "1.225rem",
+        ".74375rem",
+        "1.575rem",
+        ".91875rem",
+        "1.8375rem",
+        "1.1375rem",
+        "1.96875rem"
+      ],
+      "height": [
+        "2.5rem",
+        ".85em",
+        ".66em",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.125rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.125rem",
+        "1.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.75rem",
+        "2.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.5rem",
+        "3.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "3.25rem",
+        "5.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "5.25rem",
+        "1.125rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.125rem",
+        "1.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.5rem",
+        "1.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.75rem",
+        "2rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2rem",
+        "2.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.25rem",
+        "2.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.5rem",
+        "2.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.75rem",
+        "3.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "3.25rem",
+        "3.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "3.5rem",
+        "4.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "4.5rem",
+        "5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "5rem",
+        "5.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "5.25rem",
+        "auto",
+        "1.75rem",
+        "1.125rem",
+        "2.5rem",
+        "1.625rem",
+        "3.5rem",
+        "2.125rem",
+        "4.5rem",
+        "2.625rem",
+        "5.25rem",
+        "3.25rem",
+        "8.4375rem",
+        "5.625rem"
+      ],
+      "line-height": [
+        "1.25rem",
+        "1.25em",
+        ".5625rem",
+        "1.125rem",
+        ".875rem",
+        "1.75rem",
+        "1.25rem",
+        "2.5rem",
+        "1.625rem",
+        "3.25rem",
+        "2.625rem",
+        "5.25rem",
+        ".5625rem",
+        "1.125rem",
+        ".75rem",
+        "1.5rem",
+        ".875rem",
+        "1.75rem",
+        "1rem",
+        "2rem",
+        "1.125rem",
+        "2.25rem",
+        "1.25rem",
+        "2.5rem",
+        "1.375rem",
+        "2.75rem",
+        "1.625rem",
+        "3.25rem",
+        "1.75rem",
+        "3.5rem",
+        "2.25rem",
+        "4.5rem",
+        "2.5rem",
+        "5rem",
+        "2.625rem",
+        "5.25rem",
+        "0rem",
+        ".875rem",
+        ".5625rem",
+        "1.25rem",
+        ".8125rem",
+        "1.75rem",
+        "1.0625rem",
+        "2.25rem",
+        "1.3125rem",
+        "2.625rem",
+        "1.625rem",
+        "2.8125rem"
+      ],
+      "width": [
+        "2.5rem",
+        ".85em",
+        ".66em",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.125rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "3.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "5.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.125rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "2.75rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "3.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "3.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "4.5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "5rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "5.25rem",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "1.75rem",
+        "1.125rem",
+        "2.5rem",
+        "1.625rem",
+        "3.5rem",
+        "2.125rem",
+        "4.5rem",
+        "2.625rem",
+        "5.25rem",
+        "3.25rem",
+        "8.4375rem",
+        "5.625rem"
+      ],
+      "border-radius": [
+        "100%",
+        ".571em",
+        "100%"
+      ],
+      "display": [
+        "inline-flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "none",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "inline-block",
+        "flex",
+        "inline-block",
+        "inline-block"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\"",
+        "\"momentum-ui-icons\""
+      ],
+      "position": [
+        "relative",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "relative",
+        "absolute",
+        "absolute"
+      ],
+      "text-transform": [
+        "uppercase",
+        "none"
+      ],
+      "user-select": [
+        "none"
+      ],
+      "align-content": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "flex-flow": [
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap",
+        "row nowrap"
+      ],
+      "justify-content": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "border-top-left-radius": [
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%"
+      ],
+      "border-top-right-radius": [
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%"
+      ],
+      "border-bottom-left-radius": [
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%"
+      ],
+      "border-bottom-right-radius": [
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%",
+        "100%"
+      ],
+      "background-color": [
+        "#ffe8e3",
+        "var(--avatar-notificationBadge, #00a0d1)",
+        "#545454",
+        "rgba(204,204,204,.88)",
+        "var(--avatar-letter-bg-color, #ededed)",
+        "var(--avatar-self-bg-color, #fff)",
+        "rgba(204,204,204,.88)",
+        "rgba(0,0,0,0)",
+        "var(--avatar-blue-bg-color, #c7eeff)",
+        "var(--avatar-mint-bg-color, #baf5e7)",
+        "var(--avatar-darkmint-bg-color, #16a693)",
+        "var(--avatar-green-bg-color, #03612c)",
+        "var(--avatar-yellow-bg-color, #ffd98c)",
+        "var(--avatar-red-bg-color, #ffd5cc)",
+        "var(--avatar-orange-bg-color, #fce4c7)",
+        "var(--avatar-purple-bg-color, #fce1fc)",
+        "var(--avatar-violet-bg-color, #f0e3fc)",
+        "var(--avatar-cyan-bg-color, #b2f4f7)",
+        "var(--avatar-cobalt-bg-color, #c7eeff)",
+        "var(--avatar-pink-bg-color, #ffe0e7)",
+        "var(--avatar-slate-bg-color, #e3e7fa)",
+        "var(--avatar-gold-bg-color, #f5eaa2)",
+        "var(--avatar-lime-bg-color, #ddf2ae)"
+      ],
+      "bottom": [
+        ".14em",
+        "0",
+        "0",
+        "0"
+      ],
+      "color": [
+        "#f7644a",
+        "#fff",
+        "#fff",
+        "var(--avatar-letter-text-color, #292929)",
+        "#fff",
+        "var(--avatar-self-icon-color, #00a0d1)",
+        "var(--avatar-icon-icon-color, rgba(0, 0, 0, 0.8))",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff",
+        "#fff"
+      ],
+      "content": [
+        "\"\\f99a\"",
+        "\" \"",
+        "\"Bot\"",
+        "\"\"",
+        "\"\"",
+        "\"\"",
+        "\"\"",
+        "\"\"",
+        "\"\\f9e1\"",
+        "\"\\f43e\"",
+        "\"\\f65f\"",
+        "\"\\f300\"",
+        "\"\\faf6\"",
+        "\"\\f9d6\"",
+        "\"\\f432\"",
+        "\"\\f652\"",
+        "\"\\f304\"",
+        "\"\\faeb\"",
+        "\"\\f9d9\"",
+        "\"\\f435\"",
+        "\"\\f655\"",
+        "\"\\f306\"",
+        "\"\\faee\"",
+        "\"\\f9dc\"",
+        "\"\\f438\"",
+        "\"\\f658\"",
+        "\"\\f308\"",
+        "\"\\faf1\"",
+        "\"\\f9dd\"",
+        "\"\\f43b\"",
+        "\"\\f65b\"",
+        "\"\\f30a\"",
+        "\"\\faf3\"",
+        "\"\\f9e1\"",
+        "\"\\f43e\"",
+        "\"\\f65f\"",
+        "\"\\f300\"",
+        "\"\\faf6\"",
+        "\"\\f9d3\"",
+        "\"\\f42f\"",
+        "\"\\f64f\"",
+        "\"\\f300\"",
+        "\"\\fae8\"",
+        "\"\\f9d6\"",
+        "\"\\f432\"",
+        "\"\\f652\"",
+        "\"\\f304\"",
+        "\"\\faeb\"",
+        "\"\\f9d7\"",
+        "\"\\f433\"",
+        "\"\\f653\"",
+        "\"\\f304\"",
+        "\"\\faec\"",
+        "\"\\f9d8\"",
+        "\"\\f434\"",
+        "\"\\f654\"",
+        "\"\\f305\"",
+        "\"\\faed\"",
+        "\"\\f9d9\"",
+        "\"\\f435\"",
+        "\"\\f655\"",
+        "\"\\f306\"",
+        "\"\\faee\"",
+        "\"\\f9da\"",
+        "\"\\f436\"",
+        "\"\\f656\"",
+        "\"\\f307\"",
+        "\"\\faef\"",
+        "\"\\f9dc\"",
+        "\"\\f438\"",
+        "\"\\f658\"",
+        "\"\\f308\"",
+        "\"\\faf1\"",
+        "\"\\f9dc\"",
+        "\"\\f438\"",
+        "\"\\f658\"",
+        "\"\\f308\"",
+        "\"\\faf1\"",
+        "\"\\f9dd\"",
+        "\"\\f43a\"",
+        "\"\\f65a\"",
+        "\"\\f30a\"",
+        "\"\\faf3\"",
+        "\"\\f9dd\"",
+        "\"\\f43b\"",
+        "\"\\f65b\"",
+        "\"\\f30a\"",
+        "\"\\faf3\"",
+        "\"\\f9dd\"",
+        "\"\\f43b\"",
+        "\"\\f65b\"",
+        "\"\\f30a\"",
+        "\"\\faf3\""
+      ],
+      "right": [
+        ".14em",
+        ".14em",
+        "0"
+      ],
+      "z-index": [
+        "1015",
+        "1015"
+      ],
+      "top": [
+        ".14em",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "box-shadow": [
+        "inset 0 0 0 .0625rem var(--avatar-presence-active, #00ab50),inset 0 0 0 .125rem rgba(0,0,0,.24)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-engaged, #fc9d03),inset 0 0 0 .125rem rgba(0,0,0,.24)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-inactive, #ccc),inset 0 0 0 .125rem rgba(0,0,0,.24)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-rona, #d4371c),inset 0 0 0 .125rem rgba(0,0,0,.24)",
+        "inset 0 0 0 1px rgba(255,255,255,.16)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-active, #00ab50),inset 0 0 0 .125rem rgba(255,255,255,.24)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-engaged, #fc9d03),inset 0 0 0 .125rem rgba(255,255,255,.24)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-inactive, #ccc),inset 0 0 0 .125rem rgba(255,255,255,.24)",
+        "inset 0 0 0 .0625rem var(--avatar-presence-rona, #d4371c),inset 0 0 0 .125rem rgba(255,255,255,.24)"
+      ],
+      "background": [
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.08)",
+        "rgba(0,0,0,.16)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)",
+        "rgba(0,0,0,.4)"
+      ],
+      "left": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "padding": [
+        ".25em .75em"
+      ],
+      "border": [
+        "1px solid var(--avatar-self-border-color, rgba(0, 0, 0, 0.08))"
+      ],
+      "fill": [
+        "currentColor"
+      ],
+      "opacity": [
+        ".55"
+      ],
+      "vertical-align": [
+        "middle",
+        "middle"
+      ],
+      "border-style": [
+        "none"
+      ],
+      "-ms-interpolation-mode": [
+        "bicubic"
+      ],
+      "max-width": [
+        "100%"
+      ],
+      "outline": [
+        "1px solid CanvasText"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-avatar",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-avatar"
+          ],
+          "specificity": {
+            "max": 10,
+            "average": 10,
+            "graph": [
+              10
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-avatar",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 1,
+          "unique": 1,
+          "properties": {
+            "outline": [
+              "1px solid CanvasText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

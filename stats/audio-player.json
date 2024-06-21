@@ -1,0 +1,802 @@
+{
+  "size": 3599,
+  "gzipSize": 1017,
+  "humanizedSize": "4KB",
+  "humanizedGzipSize": "1017B",
+  "rules": {
+    "total": 36,
+    "size": {
+      "graph": [
+        1,
+        10,
+        4,
+        2,
+        1,
+        1,
+        2,
+        1,
+        6,
+        7,
+        8,
+        2,
+        1,
+        1,
+        6,
+        1,
+        3,
+        2,
+        7,
+        3,
+        1,
+        1,
+        9,
+        1,
+        10,
+        9,
+        1,
+        1,
+        1,
+        3,
+        2,
+        4,
+        2,
+        1,
+        3,
+        3
+      ],
+      "max": 10,
+      "average": 3.361111111111111
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".speed-popup ul",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-audio-player",
+        "declarations": 10
+      },
+      {
+        "selector": ".speed-popup ul li",
+        "declarations": 9
+      },
+      {
+        "selector": ".speed-popup",
+        "declarations": 9
+      },
+      {
+        "selector": ".buffer-bar",
+        "declarations": 8
+      },
+      {
+        "selector": ".volume",
+        "declarations": 7
+      },
+      {
+        "selector": ".progress-bar",
+        "declarations": 7
+      },
+      {
+        "selector": ".volume-container",
+        "declarations": 6
+      },
+      {
+        "selector": ".timeline",
+        "declarations": 6
+      },
+      {
+        "selector": ".volume",
+        "declarations": 4
+      },
+      {
+        "selector": ".inner-container",
+        "declarations": 4
+      },
+      {
+        "selector": "#speed-popup-menu>.speed-popup-selected-speed",
+        "declarations": 3
+      },
+      {
+        "selector": ".speed-popup ul li:hover",
+        "declarations": 3
+      },
+      {
+        "selector": ".buffer-bar",
+        "declarations": 3
+      },
+      {
+        "selector": ".volume-slider",
+        "declarations": 3
+      },
+      {
+        "selector": ".volume-container:hover",
+        "declarations": 3
+      },
+      {
+        "selector": ".volume-slider",
+        "declarations": 2
+      },
+      {
+        "selector": ".progress-bar",
+        "declarations": 2
+      },
+      {
+        "selector": ".volume-container:hover .volume",
+        "declarations": 2
+      },
+      {
+        "selector": ".text-container",
+        "declarations": 2
+      },
+      {
+        "selector": "md-button::part(button):focus::after",
+        "declarations": 2
+      },
+      {
+        "selector": ".timeline-container",
+        "declarations": 2
+      },
+      {
+        "selector": ".speed-popup ul",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-audio-player",
+        "declarations": 1
+      },
+      {
+        "selector": ".speed-popup-selected-speed",
+        "declarations": 1
+      },
+      {
+        "selector": ".speed-popup ul li:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".speed-popup.popup-open",
+        "declarations": 1
+      },
+      {
+        "selector": "#speed-btn",
+        "declarations": 1
+      },
+      {
+        "selector": ".speed-icon-container",
+        "declarations": 1
+      },
+      {
+        "selector": ".volume-container md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".play-btn md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".play-btn",
+        "declarations": 1
+      },
+      {
+        "selector": "md-button::part(button):focus-visible",
+        "declarations": 1
+      },
+      {
+        "selector": "md-button::part(button)",
+        "declarations": 1
+      },
+      {
+        "selector": ".timeline-container md-tooltip",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-audio-player)",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 36,
+    "type": 11,
+    "class": 31,
+    "id": 2,
+    "pseudoClass": 6,
+    "pseudoElement": 1,
+    "values": [
+      ":host(md-audio-player)",
+      ".md-audio-player",
+      ".inner-container",
+      ".timeline-container",
+      ".timeline-container md-tooltip",
+      "md-button::part(button)",
+      "md-button::part(button):focus::after",
+      "md-button::part(button):focus-visible",
+      ".timeline",
+      ".progress-bar",
+      ".buffer-bar",
+      ".text-container",
+      ".play-btn",
+      ".play-btn md-icon",
+      ".volume-container",
+      ".volume-container md-icon",
+      ".volume-container:hover",
+      ".volume-container:hover .volume",
+      ".volume",
+      ".volume-slider",
+      ".speed-icon-container",
+      "#speed-btn",
+      ".speed-popup",
+      ".speed-popup.popup-open",
+      ".speed-popup ul",
+      ".speed-popup ul li",
+      ".speed-popup ul li:hover",
+      ".speed-popup-selected-speed",
+      ".md-audio-player",
+      ".buffer-bar",
+      ".progress-bar",
+      ".volume",
+      ".volume-slider",
+      ".speed-popup ul",
+      ".speed-popup ul li:hover",
+      "#speed-popup-menu>.speed-popup-selected-speed"
+    ],
+    "specificity": {
+      "max": 110,
+      "average": 17.166666666666668,
+      "graph": [
+        10,
+        10,
+        10,
+        10,
+        11,
+        2,
+        13,
+        12,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        10,
+        11,
+        20,
+        30,
+        10,
+        10,
+        10,
+        100,
+        10,
+        20,
+        11,
+        12,
+        22,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        22,
+        110
+      ],
+      "sortedGraph": [
+        {
+          "selector": "#speed-popup-menu>.speed-popup-selected-speed",
+          "specificity": 110
+        },
+        {
+          "selector": "#speed-btn",
+          "specificity": 100
+        },
+        {
+          "selector": ".volume-container:hover .volume",
+          "specificity": 30
+        },
+        {
+          "selector": ".speed-popup ul li:hover",
+          "specificity": 22
+        },
+        {
+          "selector": ".speed-popup ul li:hover",
+          "specificity": 22
+        },
+        {
+          "selector": ".volume-container:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".speed-popup.popup-open",
+          "specificity": 20
+        },
+        {
+          "selector": "md-button::part(button):focus::after",
+          "specificity": 13
+        },
+        {
+          "selector": "md-button::part(button):focus-visible",
+          "specificity": 12
+        },
+        {
+          "selector": ".speed-popup ul li",
+          "specificity": 12
+        },
+        {
+          "selector": ".timeline-container md-tooltip",
+          "specificity": 11
+        },
+        {
+          "selector": ".play-btn md-icon",
+          "specificity": 11
+        },
+        {
+          "selector": ".volume-container md-icon",
+          "specificity": 11
+        },
+        {
+          "selector": ".speed-popup ul",
+          "specificity": 11
+        },
+        {
+          "selector": ".speed-popup ul",
+          "specificity": 11
+        },
+        {
+          "selector": ":host(md-audio-player)",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-audio-player",
+          "specificity": 10
+        },
+        {
+          "selector": ".inner-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".timeline-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".timeline",
+          "specificity": 10
+        },
+        {
+          "selector": ".progress-bar",
+          "specificity": 10
+        },
+        {
+          "selector": ".buffer-bar",
+          "specificity": 10
+        },
+        {
+          "selector": ".text-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".play-btn",
+          "specificity": 10
+        },
+        {
+          "selector": ".volume-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".volume",
+          "specificity": 10
+        },
+        {
+          "selector": ".volume-slider",
+          "specificity": 10
+        },
+        {
+          "selector": ".speed-icon-container",
+          "specificity": 10
+        },
+        {
+          "selector": ".speed-popup",
+          "specificity": 10
+        },
+        {
+          "selector": ".speed-popup-selected-speed",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-audio-player",
+          "specificity": 10
+        },
+        {
+          "selector": ".buffer-bar",
+          "specificity": 10
+        },
+        {
+          "selector": ".progress-bar",
+          "specificity": 10
+        },
+        {
+          "selector": ".volume",
+          "specificity": 10
+        },
+        {
+          "selector": ".volume-slider",
+          "specificity": 10
+        },
+        {
+          "selector": "md-button::part(button)",
+          "specificity": 2
+        }
+      ]
+    },
+    "repeated": [
+      ".buffer-bar",
+      ".md-audio-player",
+      ".progress-bar",
+      ".speed-popup ul",
+      ".speed-popup ul li:hover",
+      ".volume",
+      ".volume-slider"
+    ]
+  },
+  "declarations": {
+    "total": 121,
+    "unique": 72,
+    "properties": {
+      "display": [
+        "block",
+        "flex",
+        "flex",
+        "unset",
+        "flex",
+        "flex",
+        "none",
+        "flex",
+        "flex",
+        "inline-flex"
+      ],
+      "background": [
+        "var(--audio-player-background-body, #EDEDED)",
+        "var(--audio-player-background-timeline, #CCCCCC)",
+        "var(--audio-player-background-progress-bar, #3B3B3B)",
+        "var(--audio-player-background-buffer-bar, #B2B2B2)",
+        "var(--audio-player-background-body, #EDEDED)",
+        "var(--audio-player-background-timeline, #CCCCCC)",
+        "var(--audio-player-background-progress-bar, #3B3B3B)",
+        "var(--audio-player-background-speed-popup, #FFFFFF)",
+        "var(--audio-player-background-speed-popup-hover, #F7F7F7)",
+        "var(--audio-player-background-speed-popup-hover, #F7F7F7)",
+        "Highlight",
+        "Highlight"
+      ],
+      "box-shadow": [
+        "inset 0 0 1.25rem rgba(176,176,176,.25)",
+        "none",
+        "0 0 0 .125rem var(--aido-player-focus-ring-color, #007AA3)",
+        "inset 0 0 1.25rem rgba(176,176,176,.25)",
+        "0 .25rem .5rem rgba(0,0,0,.2),0 0 .0625rem rgba(0,0,0,.12)"
+      ],
+      "border-radius": [
+        "1.875rem",
+        ".25rem",
+        ".25rem",
+        ".25rem",
+        "1.875rem",
+        ".625rem",
+        ".5rem"
+      ],
+      "height": [
+        "3.75rem",
+        ".375rem",
+        "100%",
+        "100%",
+        "1.75rem",
+        ".375rem",
+        "100%",
+        "100%",
+        "1.875rem"
+      ],
+      "color": [
+        "var(--audio-player-font-color, #121212)",
+        "var(--audio-player-font-color, #121212)",
+        "Canvas",
+        "Canvas"
+      ],
+      "flex-direction": [
+        "column",
+        "column"
+      ],
+      "justify-content": [
+        "center",
+        "space-between",
+        "center",
+        "center",
+        "center",
+        "space-between"
+      ],
+      "padding": [
+        "0 1.25rem",
+        "0 .9375rem",
+        ".375rem 0",
+        ".125rem .75rem .125rem .75rem"
+      ],
+      "font-size": [
+        "14px"
+      ],
+      "gap": [
+        ".625rem"
+      ],
+      "align-items": [
+        "center",
+        "center",
+        "flex-end",
+        "center",
+        "center"
+      ],
+      "justify-items": [
+        "center"
+      ],
+      "flex": [
+        "1"
+      ],
+      "z-index": [
+        "0",
+        "2",
+        "1"
+      ],
+      "vertical-align": [
+        "text-bottom",
+        "sub"
+      ],
+      "outline": [
+        "none",
+        "1px solid rgba(0,0,0,0)",
+        "1px solid Highlight",
+        "1px solid Highlight"
+      ],
+      "cursor": [
+        "pointer",
+        "pointer",
+        "pointer",
+        "pointer",
+        "pointer",
+        "pointer"
+      ],
+      "width": [
+        "100%",
+        "0",
+        "0",
+        "5rem",
+        "0",
+        "24%",
+        "100%",
+        "10rem"
+      ],
+      "position": [
+        "relative",
+        "absolute",
+        "absolute",
+        "relative",
+        "absolute"
+      ],
+      "transition": [
+        ".25s",
+        ".25s",
+        ".25s",
+        ".25s",
+        "background .1s ease"
+      ],
+      "top": [
+        "0"
+      ],
+      "opacity": [
+        ".6",
+        ".3"
+      ],
+      "margin-right": [
+        ".625rem"
+      ],
+      "overflow": [
+        "hidden"
+      ],
+      "bottom": [
+        "-0.375rem"
+      ],
+      "right": [
+        "4.75rem"
+      ],
+      "list-style": [
+        "none"
+      ],
+      "text-align": [
+        "left"
+      ],
+      "forced-color-adjust": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "background-color": [
+        "GrayText",
+        "Highlight",
+        "HighlightText",
+        "Highlight"
+      ],
+      "outline-offset": [
+        "-1px"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 8,
+          "size": {
+            "graph": [
+              1,
+              3,
+              2,
+              4,
+              2,
+              1,
+              3,
+              3
+            ],
+            "max": 4,
+            "average": 2.375
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.volume",
+              "declarations": 4
+            },
+            {
+              "selector": ",#speed-popup-menu>.speed-popup-selected-speed",
+              "declarations": 3
+            },
+            {
+              "selector": ",.speed-popup ul li:hover",
+              "declarations": 3
+            },
+            {
+              "selector": ",.buffer-bar",
+              "declarations": 3
+            },
+            {
+              "selector": ",.volume-slider",
+              "declarations": 2
+            },
+            {
+              "selector": ",.progress-bar",
+              "declarations": 2
+            },
+            {
+              "selector": ",.speed-popup ul",
+              "declarations": 1
+            },
+            {
+              "selector": ".md-audio-player",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 8,
+          "type": 2,
+          "class": 8,
+          "id": 1,
+          "pseudoClass": 1,
+          "pseudoElement": 0,
+          "values": [
+            ".md-audio-player",
+            ".buffer-bar",
+            ".progress-bar",
+            ".volume",
+            ".volume-slider",
+            ".speed-popup ul",
+            ".speed-popup ul li:hover",
+            "#speed-popup-menu>.speed-popup-selected-speed"
+          ],
+          "specificity": {
+            "max": 110,
+            "average": 24.125,
+            "graph": [
+              10,
+              10,
+              10,
+              10,
+              10,
+              11,
+              22,
+              110
+            ],
+            "sortedGraph": [
+              {
+                "selector": "#speed-popup-menu>.speed-popup-selected-speed",
+                "specificity": 110
+              },
+              {
+                "selector": ".speed-popup ul li:hover",
+                "specificity": 22
+              },
+              {
+                "selector": ".speed-popup ul",
+                "specificity": 11
+              },
+              {
+                "selector": ".md-audio-player",
+                "specificity": 10
+              },
+              {
+                "selector": ".buffer-bar",
+                "specificity": 10
+              },
+              {
+                "selector": ".progress-bar",
+                "specificity": 10
+              },
+              {
+                "selector": ".volume",
+                "specificity": 10
+              },
+              {
+                "selector": ".volume-slider",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 19,
+          "unique": 10,
+          "properties": {
+            "outline": [
+              "1px solid rgba(0,0,0,0)",
+              "1px solid Highlight",
+              "1px solid Highlight"
+            ],
+            "forced-color-adjust": [
+              "none",
+              "none",
+              "none",
+              "none",
+              "none",
+              "none"
+            ],
+            "opacity": [
+              ".3"
+            ],
+            "background-color": [
+              "GrayText",
+              "Highlight",
+              "HighlightText",
+              "Highlight"
+            ],
+            "outline-offset": [
+              "-1px"
+            ],
+            "color": [
+              "Canvas",
+              "Canvas"
+            ],
+            "background": [
+              "Highlight",
+              "Highlight"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

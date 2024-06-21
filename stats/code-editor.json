@@ -1,0 +1,840 @@
+{
+  "size": 3175,
+  "gzipSize": 771,
+  "humanizedSize": "3KB",
+  "humanizedGzipSize": "771B",
+  "rules": {
+    "total": 21,
+    "size": {
+      "graph": [
+        5,
+        10,
+        5,
+        5,
+        6,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        5,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "max": 10,
+      "average": 2.5714285714285716
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-code-editor) .md-code-editor-header",
+        "declarations": 10
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor-copy",
+        "declarations": 6
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor md-badge::part(badge)",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor-name",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor-copy-btn::part(button)",
+        "declarations": 3
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor-copy-btn[disabled]",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor-header",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .md-code-editor",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-keyword,:host(md-code-editor) .hljs-selector-tag",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-addition,:host(md-code-editor) .hljs-attribute,:host(md-code-editor) .hljs-built_in,:host(md-code-editor) .hljs-builtin-name,:host(md-code-editor) .hljs-bullet,:host(md-code-editor) .hljs-comment,:host(md-code-editor) .hljs-link,:host(md-code-editor) .hljs-literal,:host(md-code-editor) .hljs-meta,:host(md-code-editor) .hljs-number,:host(md-code-editor) .hljs-params,:host(md-code-editor) .hljs-string,:host(md-code-editor) .hljs-symbol,:host(md-code-editor) .hljs-type,:host(md-code-editor) .hljs-quote",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-strong",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-emphasis",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-keyword,:host(md-code-editor) .hljs-selector-tag",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-title,:host(md-code-editor) .hljs-section",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-string,:host(md-code-editor) .hljs-symbol,:host(md-code-editor) .hljs-bullet,:host(md-code-editor) .hljs-addition",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-attribute",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-number,:host(md-code-editor) .hljs-built_in,:host(md-code-editor) .hljs-builtin-name,:host(md-code-editor) .hljs-literal,:host(md-code-editor) .hljs-type,:host(md-code-editor) .hljs-params,:host(md-code-editor) .hljs-meta,:host(md-code-editor) .hljs-link",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-variable,:host(md-code-editor) .hljs-template-variable,:host(md-code-editor) .hljs-tag,:host(md-code-editor) .hljs-name,:host(md-code-editor) .hljs-selector-id,:host(md-code-editor) .hljs-selector-class,:host(md-code-editor) .hljs-regexp,:host(md-code-editor) .hljs-deletion",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-code-editor) .hljs-comment,:host(md-code-editor) .hljs-quote",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 56,
+    "type": 2,
+    "class": 56,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ":host(md-code-editor) .md-code-editor",
+      ":host(md-code-editor) .md-code-editor-header",
+      ":host(md-code-editor) .md-code-editor-name",
+      ":host(md-code-editor) .md-code-editor md-badge::part(badge)",
+      ":host(md-code-editor) .md-code-editor-copy",
+      ":host(md-code-editor) .md-code-editor-copy-btn::part(button)",
+      ":host(md-code-editor) .md-code-editor-copy-btn[disabled]",
+      ":host(md-code-editor) .hljs-comment",
+      ":host(md-code-editor) .hljs-quote",
+      ":host(md-code-editor) .hljs-variable",
+      ":host(md-code-editor) .hljs-template-variable",
+      ":host(md-code-editor) .hljs-tag",
+      ":host(md-code-editor) .hljs-name",
+      ":host(md-code-editor) .hljs-selector-id",
+      ":host(md-code-editor) .hljs-selector-class",
+      ":host(md-code-editor) .hljs-regexp",
+      ":host(md-code-editor) .hljs-deletion",
+      ":host(md-code-editor) .hljs-number",
+      ":host(md-code-editor) .hljs-built_in",
+      ":host(md-code-editor) .hljs-builtin-name",
+      ":host(md-code-editor) .hljs-literal",
+      ":host(md-code-editor) .hljs-type",
+      ":host(md-code-editor) .hljs-params",
+      ":host(md-code-editor) .hljs-meta",
+      ":host(md-code-editor) .hljs-link",
+      ":host(md-code-editor) .hljs-attribute",
+      ":host(md-code-editor) .hljs-string",
+      ":host(md-code-editor) .hljs-symbol",
+      ":host(md-code-editor) .hljs-bullet",
+      ":host(md-code-editor) .hljs-addition",
+      ":host(md-code-editor) .hljs-title",
+      ":host(md-code-editor) .hljs-section",
+      ":host(md-code-editor) .hljs-keyword",
+      ":host(md-code-editor) .hljs-selector-tag",
+      ":host(md-code-editor) .hljs",
+      ":host(md-code-editor) .hljs-emphasis",
+      ":host(md-code-editor) .hljs-strong",
+      ":host(md-code-editor) .hljs-addition",
+      ":host(md-code-editor) .hljs-attribute",
+      ":host(md-code-editor) .hljs-built_in",
+      ":host(md-code-editor) .hljs-builtin-name",
+      ":host(md-code-editor) .hljs-bullet",
+      ":host(md-code-editor) .hljs-comment",
+      ":host(md-code-editor) .hljs-link",
+      ":host(md-code-editor) .hljs-literal",
+      ":host(md-code-editor) .hljs-meta",
+      ":host(md-code-editor) .hljs-number",
+      ":host(md-code-editor) .hljs-params",
+      ":host(md-code-editor) .hljs-string",
+      ":host(md-code-editor) .hljs-symbol",
+      ":host(md-code-editor) .hljs-type",
+      ":host(md-code-editor) .hljs-quote",
+      ":host(md-code-editor) .hljs-keyword",
+      ":host(md-code-editor) .hljs-selector-tag",
+      ":host(md-code-editor) .md-code-editor",
+      ":host(md-code-editor) .md-code-editor-header"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 20.232142857142858,
+      "graph": [
+        20,
+        20,
+        20,
+        22,
+        20,
+        21,
+        30,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host(md-code-editor) .md-code-editor-copy-btn[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor md-badge::part(badge)",
+          "specificity": 22
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor-copy-btn::part(button)",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor-header",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor-name",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor-copy",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-comment",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-quote",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-variable",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-template-variable",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-tag",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-name",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-selector-id",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-selector-class",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-regexp",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-deletion",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-number",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-built_in",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-builtin-name",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-literal",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-type",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-params",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-meta",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-link",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-attribute",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-string",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-symbol",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-bullet",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-addition",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-title",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-section",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-keyword",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-selector-tag",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-emphasis",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-strong",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-addition",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-attribute",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-built_in",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-builtin-name",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-bullet",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-comment",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-link",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-literal",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-meta",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-number",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-params",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-string",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-symbol",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-type",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-quote",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-keyword",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .hljs-selector-tag",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-code-editor) .md-code-editor-header",
+          "specificity": 20
+        }
+      ]
+    },
+    "repeated": [
+      ":host(md-code-editor) .hljs-addition",
+      ":host(md-code-editor) .hljs-attribute",
+      ":host(md-code-editor) .hljs-built_in",
+      ":host(md-code-editor) .hljs-builtin-name",
+      ":host(md-code-editor) .hljs-bullet",
+      ":host(md-code-editor) .hljs-comment",
+      ":host(md-code-editor) .hljs-keyword",
+      ":host(md-code-editor) .hljs-link",
+      ":host(md-code-editor) .hljs-literal",
+      ":host(md-code-editor) .hljs-meta",
+      ":host(md-code-editor) .hljs-number",
+      ":host(md-code-editor) .hljs-params",
+      ":host(md-code-editor) .hljs-quote",
+      ":host(md-code-editor) .hljs-selector-tag",
+      ":host(md-code-editor) .hljs-string",
+      ":host(md-code-editor) .hljs-symbol",
+      ":host(md-code-editor) .hljs-type",
+      ":host(md-code-editor) .md-code-editor",
+      ":host(md-code-editor) .md-code-editor-header"
+    ]
+  },
+  "declarations": {
+    "total": 54,
+    "unique": 41,
+    "properties": {
+      "background": [
+        "#091e26",
+        "#092d3b",
+        "none",
+        "rgba(0,0,0,0)"
+      ],
+      "border-radius": [
+        ".25rem",
+        ".25rem"
+      ],
+      "color": [
+        "#fff",
+        "#00a0d1",
+        "#ffecc2",
+        "#ff9d52",
+        "#fc9d03",
+        "#ebd460",
+        "#93c437",
+        "#22c7d6",
+        "#f0e3fc",
+        "#dedede",
+        "highlight"
+      ],
+      "min-height": [
+        "18.75rem"
+      ],
+      "overflow": [
+        "hidden"
+      ],
+      "align-content": [
+        "center",
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "flex",
+        "block"
+      ],
+      "flex-flow": [
+        "row nowrap",
+        "row nowrap",
+        "row nowrap"
+      ],
+      "justify-content": [
+        "space-between",
+        "center",
+        "center"
+      ],
+      "flex": [
+        "0 0 auto"
+      ],
+      "font-size": [
+        "14px"
+      ],
+      "padding": [
+        ".625rem",
+        ".25rem .375rem",
+        ".5em"
+      ],
+      "height": [
+        "1.25rem"
+      ],
+      "margin-right": [
+        ".625rem"
+      ],
+      "text-transform": [
+        "capitalize"
+      ],
+      "line-height": [
+        "1"
+      ],
+      "margin-left": [
+        ".625rem"
+      ],
+      "cursor": [
+        "not-allowed"
+      ],
+      "opacity": [
+        ".5"
+      ],
+      "overflow-x": [
+        "auto"
+      ],
+      "font-style": [
+        "italic"
+      ],
+      "font-weight": [
+        "bold",
+        "bold"
+      ],
+      "outline": [
+        "1px solid CanvasText",
+        "1px solid CanvasText"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 2,
+    "unique": 2,
+    "values": [
+      "screen and (-ms-high-contrast: active)",
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "screen and (-ms-high-contrast: active)",
+        "rules": {
+          "total": 2,
+          "size": {
+            "graph": [
+              1,
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",:host(md-code-editor) .hljs-keyword,:host(md-code-editor) .hljs-selector-tag",
+              "declarations": 1
+            },
+            {
+              "selector": ":host(md-code-editor) .hljs-addition,:host(md-code-editor) .hljs-attribute,:host(md-code-editor) .hljs-built_in,:host(md-code-editor) .hljs-builtin-name,:host(md-code-editor) .hljs-bullet,:host(md-code-editor) .hljs-comment,:host(md-code-editor) .hljs-link,:host(md-code-editor) .hljs-literal,:host(md-code-editor) .hljs-meta,:host(md-code-editor) .hljs-number,:host(md-code-editor) .hljs-params,:host(md-code-editor) .hljs-string,:host(md-code-editor) .hljs-symbol,:host(md-code-editor) .hljs-type,:host(md-code-editor) .hljs-quote",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 17,
+          "type": 0,
+          "class": 17,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ":host(md-code-editor) .hljs-addition",
+            ":host(md-code-editor) .hljs-attribute",
+            ":host(md-code-editor) .hljs-built_in",
+            ":host(md-code-editor) .hljs-builtin-name",
+            ":host(md-code-editor) .hljs-bullet",
+            ":host(md-code-editor) .hljs-comment",
+            ":host(md-code-editor) .hljs-link",
+            ":host(md-code-editor) .hljs-literal",
+            ":host(md-code-editor) .hljs-meta",
+            ":host(md-code-editor) .hljs-number",
+            ":host(md-code-editor) .hljs-params",
+            ":host(md-code-editor) .hljs-string",
+            ":host(md-code-editor) .hljs-symbol",
+            ":host(md-code-editor) .hljs-type",
+            ":host(md-code-editor) .hljs-quote",
+            ":host(md-code-editor) .hljs-keyword",
+            ":host(md-code-editor) .hljs-selector-tag"
+          ],
+          "specificity": {
+            "max": 20,
+            "average": 20,
+            "graph": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "sortedGraph": [
+              {
+                "selector": ":host(md-code-editor) .hljs-addition",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-attribute",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-built_in",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-builtin-name",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-bullet",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-comment",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-link",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-literal",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-meta",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-number",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-params",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-string",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-symbol",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-type",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-quote",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-keyword",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .hljs-selector-tag",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 2,
+          "unique": 2,
+          "properties": {
+            "color": [
+              "highlight"
+            ],
+            "font-weight": [
+              "bold"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 2,
+          "size": {
+            "graph": [
+              1,
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",:host(md-code-editor) .md-code-editor-header",
+              "declarations": 1
+            },
+            {
+              "selector": ":host(md-code-editor) .md-code-editor",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 2,
+          "type": 0,
+          "class": 2,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ":host(md-code-editor) .md-code-editor",
+            ":host(md-code-editor) .md-code-editor-header"
+          ],
+          "specificity": {
+            "max": 20,
+            "average": 20,
+            "graph": [
+              20,
+              20
+            ],
+            "sortedGraph": [
+              {
+                "selector": ":host(md-code-editor) .md-code-editor",
+                "specificity": 20
+              },
+              {
+                "selector": ":host(md-code-editor) .md-code-editor-header",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 2,
+          "unique": 1,
+          "properties": {
+            "outline": [
+              "1px solid CanvasText",
+              "1px solid CanvasText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

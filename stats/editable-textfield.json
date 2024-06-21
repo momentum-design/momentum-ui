@@ -1,0 +1,483 @@
+{
+  "size": 2259,
+  "gzipSize": 635,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "635B",
+  "rules": {
+    "total": 24,
+    "size": {
+      "graph": [
+        1,
+        5,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        2,
+        3,
+        2,
+        3,
+        2,
+        3,
+        2,
+        4,
+        1,
+        2,
+        2,
+        2
+      ],
+      "max": 5,
+      "average": 1.9166666666666667
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-editable-textfield",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-editable-textfield--textoverflow",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-editable-textfield--success",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-editable-textfield--warning",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-editable-textfield--error",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-editable-textfield--disabled",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-editable-textfield--disabled:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield--disabled",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield--success:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield--warning:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield--error:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield--disabled:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-editable-textfield__messages",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield--disabled:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield--right ::slotted(*)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield--right .md-input",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield--center ::slotted(*)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield--center .md-input",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield--left .md-input",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield:active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-editable-textfield:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ":focus",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 24,
+    "type": 0,
+    "class": 23,
+    "id": 0,
+    "pseudoClass": 11,
+    "pseudoElement": 0,
+    "values": [
+      ":focus",
+      ".md-editable-textfield",
+      ".md-editable-textfield:hover",
+      ".md-editable-textfield:active",
+      ".md-editable-textfield:focus",
+      ".md-editable-textfield--left .md-input",
+      ".md-editable-textfield--center .md-input",
+      ".md-editable-textfield--center ::slotted(*)",
+      ".md-editable-textfield--right .md-input",
+      ".md-editable-textfield--right ::slotted(*)",
+      ".md-editable-textfield--disabled",
+      ".md-editable-textfield--disabled:hover",
+      ".md-editable-textfield--disabled:focus",
+      ".md-editable-textfield--error",
+      ".md-editable-textfield--error:focus",
+      ".md-editable-textfield--warning",
+      ".md-editable-textfield--warning:focus",
+      ".md-editable-textfield--success",
+      ".md-editable-textfield--success:focus",
+      ".md-editable-textfield--textoverflow",
+      ".md-editable-textfield__messages",
+      ".md-editable-textfield:focus",
+      ".md-editable-textfield--disabled",
+      ".md-editable-textfield--disabled:focus"
+    ],
+    "specificity": {
+      "max": 20,
+      "average": 15.5,
+      "graph": [
+        10,
+        10,
+        20,
+        20,
+        20,
+        20,
+        20,
+        11,
+        20,
+        11,
+        10,
+        20,
+        20,
+        10,
+        20,
+        10,
+        20,
+        10,
+        20,
+        10,
+        10,
+        20,
+        10,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-editable-textfield:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--left .md-input",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--center .md-input",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--right .md-input",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--disabled:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--disabled:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--error:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--warning:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--success:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--disabled:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-editable-textfield--center ::slotted(*)",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-editable-textfield--right ::slotted(*)",
+          "specificity": 11
+        },
+        {
+          "selector": ":focus",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield--disabled",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield--error",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield--warning",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield--success",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield--textoverflow",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield__messages",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-editable-textfield--disabled",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-editable-textfield--disabled",
+      ".md-editable-textfield--disabled:focus",
+      ".md-editable-textfield:focus"
+    ]
+  },
+  "declarations": {
+    "total": 46,
+    "unique": 33,
+    "properties": {
+      "outline": [
+        "none",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1px solid Highlight",
+        "0"
+      ],
+      "border-radius": [
+        ".25rem"
+      ],
+      "line-height": [
+        "1.3571428571 rem"
+      ],
+      "min-height": [
+        "2rem"
+      ],
+      "overflow-y": [
+        "auto",
+        "hidden"
+      ],
+      "padding": [
+        "0 .375rem 0 .375rem",
+        ".375rem 0 0 1rem"
+      ],
+      "background-color": [
+        "var(--editable-textfield-default-hover-bg-color, #EDEDED)",
+        "var(--editable-textfield-default-pressed-bg-color, #DEDEDE)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "var(--md-alert-error-bg-color, #FFE8E3)",
+        "var(--md-alert-warning-bg-color, #FFECC2)",
+        "var(--md-alert-success-bg-color, #BEFADE)"
+      ],
+      "box-shadow": [
+        "0 0 0 .0625rem var(--md-default-focus-outline-color, #007AA3)",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "text-align": [
+        "left",
+        "center",
+        "center",
+        "right",
+        "right"
+      ],
+      "color": [
+        "var(--md-secondary-text-color, #545454)",
+        "var(--md-alert-error-text-color, #A12512)",
+        "var(--md-alert-warning-text-color, #7D4705)",
+        "var(--md-alert-success-text-color, #03612C)",
+        "GrayText"
+      ],
+      "cursor": [
+        "default",
+        "default"
+      ],
+      "border": [
+        "1px solid var(--editable-textfield-error-border-color, #A12512)",
+        "1px solid var(--editable-textfield-warning-border-color, #D97F00)",
+        "1px solid var(--editable-textfield-success-border-color, #00AB50)"
+      ],
+      "-webkit-box-orient": [
+        "vertical"
+      ],
+      "display": [
+        "-webkit-box"
+      ],
+      "text-overflow": [
+        "ellipsis"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 3,
+          "size": {
+            "graph": [
+              2,
+              2,
+              2
+            ],
+            "max": 2,
+            "average": 2
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-editable-textfield--disabled:focus",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-editable-textfield--disabled",
+              "declarations": 2
+            },
+            {
+              "selector": ".md-editable-textfield:focus",
+              "declarations": 2
+            }
+          ]
+        },
+        "selectors": {
+          "total": 3,
+          "type": 0,
+          "class": 3,
+          "id": 0,
+          "pseudoClass": 2,
+          "pseudoElement": 0,
+          "values": [
+            ".md-editable-textfield:focus",
+            ".md-editable-textfield--disabled",
+            ".md-editable-textfield--disabled:focus"
+          ],
+          "specificity": {
+            "max": 20,
+            "average": 16.666666666666668,
+            "graph": [
+              20,
+              10,
+              20
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-editable-textfield:focus",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-editable-textfield--disabled:focus",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-editable-textfield--disabled",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 6,
+          "unique": 5,
+          "properties": {
+            "outline": [
+              "1px solid Highlight",
+              "0"
+            ],
+            "box-shadow": [
+              "none",
+              "none"
+            ],
+            "color": [
+              "GrayText"
+            ],
+            "cursor": [
+              "default"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,3697 @@
+{
+  "size": 29437,
+  "gzipSize": 2118,
+  "humanizedSize": "29KB",
+  "humanizedGzipSize": "2KB",
+  "rules": {
+    "total": 102,
+    "size": {
+      "graph": [
+        6,
+        1,
+        21,
+        1,
+        5,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        2,
+        8,
+        6,
+        6,
+        6,
+        6,
+        2,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2,
+        3,
+        3
+      ],
+      "max": 21,
+      "average": 2.9019607843137254
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-button",
+        "declarations": 21
+      },
+      {
+        "selector": ".md-button.md-button--circle",
+        "declarations": 8
+      },
+      {
+        "selector": ".md-button.md-button--circle[class*=\"--84\"]",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-button.md-button--circle[class*=\"--68\"]",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-button.md-button--circle[class*=\"--56\"]",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-button.md-button--circle[class*=\"--36\"]",
+        "declarations": 6
+      },
+      {
+        "selector": "[class|=md-button__container]",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-button .md-button__children",
+        "declarations": 5
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__tasks.disabled:hover,.md--contrast .md-button.md-activity__tasks.disabled:focus,.md--contrast .md-button.md-activity__tasks.md-button--disabled:hover,.md--contrast .md-button.md-activity__tasks.md-button--disabled:focus,.md--contrast .md-button.md-activity__tasks[disabled]:hover,.md--contrast .md-button.md-activity__tasks[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__tasks.disabled,.md--contrast .md-button.md-activity__tasks.md-button--disabled,.md--contrast .md-button.md-activity__tasks[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__tasks,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__tasks.disabled:hover,.md-button.md-activity__tasks.disabled:focus,.md-button.md-activity__tasks.md-button--disabled:hover,.md-button.md-activity__tasks.md-button--disabled:focus,.md-button.md-activity__tasks[disabled]:hover,.md-button.md-activity__tasks[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__tasks.disabled,.md-button.md-activity__tasks.md-button--disabled,.md-button.md-activity__tasks[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__tasks,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__share-screen.disabled:hover,.md--contrast .md-button.md-activity__share-screen.disabled:focus,.md--contrast .md-button.md-activity__share-screen.md-button--disabled:hover,.md--contrast .md-button.md-activity__share-screen.md-button--disabled:focus,.md--contrast .md-button.md-activity__share-screen[disabled]:hover,.md--contrast .md-button.md-activity__share-screen[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__share-screen.disabled,.md--contrast .md-button.md-activity__share-screen.md-button--disabled,.md--contrast .md-button.md-activity__share-screen[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__share-screen,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__share-screen.disabled:hover,.md-button.md-activity__share-screen.disabled:focus,.md-button.md-activity__share-screen.md-button--disabled:hover,.md-button.md-activity__share-screen.md-button--disabled:focus,.md-button.md-activity__share-screen[disabled]:hover,.md-button.md-activity__share-screen[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__share-screen.disabled,.md-button.md-activity__share-screen.md-button--disabled,.md-button.md-activity__share-screen[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__share-screen,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__files.disabled:hover,.md--contrast .md-button.md-activity__files.disabled:focus,.md--contrast .md-button.md-activity__files.md-button--disabled:hover,.md--contrast .md-button.md-activity__files.md-button--disabled:focus,.md--contrast .md-button.md-activity__files[disabled]:hover,.md--contrast .md-button.md-activity__files[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__files.disabled,.md--contrast .md-button.md-activity__files.md-button--disabled,.md--contrast .md-button.md-activity__files[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__files,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__files.disabled:hover,.md-button.md-activity__files.disabled:focus,.md-button.md-activity__files.md-button--disabled:hover,.md-button.md-activity__files.md-button--disabled:focus,.md-button.md-activity__files[disabled]:hover,.md-button.md-activity__files[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__files.disabled,.md-button.md-activity__files.md-button--disabled,.md-button.md-activity__files[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__files,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__whiteboard.disabled:hover,.md--contrast .md-button.md-activity__whiteboard.disabled:focus,.md--contrast .md-button.md-activity__whiteboard.md-button--disabled:hover,.md--contrast .md-button.md-activity__whiteboard.md-button--disabled:focus,.md--contrast .md-button.md-activity__whiteboard[disabled]:hover,.md--contrast .md-button.md-activity__whiteboard[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__whiteboard.disabled,.md--contrast .md-button.md-activity__whiteboard.md-button--disabled,.md--contrast .md-button.md-activity__whiteboard[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__whiteboard,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__whiteboard.disabled:hover,.md-button.md-activity__whiteboard.disabled:focus,.md-button.md-activity__whiteboard.md-button--disabled:hover,.md-button.md-activity__whiteboard.md-button--disabled:focus,.md-button.md-activity__whiteboard[disabled]:hover,.md-button.md-activity__whiteboard[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__whiteboard.disabled,.md-button.md-activity__whiteboard.md-button--disabled,.md-button.md-activity__whiteboard[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__whiteboard,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__meetings.disabled:hover,.md--contrast .md-button.md-activity__meetings.disabled:focus,.md--contrast .md-button.md-activity__meetings.md-button--disabled:hover,.md--contrast .md-button.md-activity__meetings.md-button--disabled:focus,.md--contrast .md-button.md-activity__meetings[disabled]:hover,.md--contrast .md-button.md-activity__meetings[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__meetings.disabled,.md--contrast .md-button.md-activity__meetings.md-button--disabled,.md--contrast .md-button.md-activity__meetings[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__meetings,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__meetings.disabled:hover,.md-button.md-activity__meetings.disabled:focus,.md-button.md-activity__meetings.md-button--disabled:hover,.md-button.md-activity__meetings.md-button--disabled:focus,.md-button.md-activity__meetings[disabled]:hover,.md-button.md-activity__meetings[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__meetings.disabled,.md-button.md-activity__meetings.md-button--disabled,.md-button.md-activity__meetings[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__meetings,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__contact-card.disabled:hover,.md--contrast .md-button.md-activity__contact-card.disabled:focus,.md--contrast .md-button.md-activity__contact-card.md-button--disabled:hover,.md--contrast .md-button.md-activity__contact-card.md-button--disabled:focus,.md--contrast .md-button.md-activity__contact-card[disabled]:hover,.md--contrast .md-button.md-activity__contact-card[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__contact-card.disabled,.md--contrast .md-button.md-activity__contact-card.md-button--disabled,.md--contrast .md-button.md-activity__contact-card[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__contact-card,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__contact-card.disabled:hover,.md-button.md-activity__contact-card.disabled:focus,.md-button.md-activity__contact-card.md-button--disabled:hover,.md-button.md-activity__contact-card.md-button--disabled:focus,.md-button.md-activity__contact-card[disabled]:hover,.md-button.md-activity__contact-card[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__contact-card.disabled,.md-button.md-activity__contact-card.md-button--disabled,.md-button.md-activity__contact-card[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__contact-card,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__camera.disabled:hover,.md--contrast .md-button.md-activity__camera.disabled:focus,.md--contrast .md-button.md-activity__camera.md-button--disabled:hover,.md--contrast .md-button.md-activity__camera.md-button--disabled:focus,.md--contrast .md-button.md-activity__camera[disabled]:hover,.md--contrast .md-button.md-activity__camera[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__camera.disabled,.md--contrast .md-button.md-activity__camera.md-button--disabled,.md--contrast .md-button.md-activity__camera[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__camera,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__camera.disabled:hover,.md-button.md-activity__camera.disabled:focus,.md-button.md-activity__camera.md-button--disabled:hover,.md-button.md-activity__camera.md-button--disabled:focus,.md-button.md-activity__camera[disabled]:hover,.md-button.md-activity__camera[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__camera.disabled,.md-button.md-activity__camera.md-button--disabled,.md-button.md-activity__camera[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__camera,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__chat.disabled:hover,.md--contrast .md-button.md-activity__chat.disabled:focus,.md--contrast .md-button.md-activity__chat.md-button--disabled:hover,.md--contrast .md-button.md-activity__chat.md-button--disabled:focus,.md--contrast .md-button.md-activity__chat[disabled]:hover,.md--contrast .md-button.md-activity__chat[disabled]:focus,.md--contrast .md--dark .md-button.md-activity.disabled:hover,.md--contrast .md--dark .md-button.md-activity.disabled:focus,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover,.md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus,.md--contrast .md--dark .md-button.md-activity[disabled]:hover,.md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__chat.disabled,.md--contrast .md-button.md-activity__chat.md-button--disabled,.md--contrast .md-button.md-activity__chat[disabled],.md--contrast .md--dark .md-button.md-activity.disabled,.md--contrast .md--dark .md-button.md-activity.md-button--disabled,.md--contrast .md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__chat,.md--contrast .md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__chat.disabled:hover,.md-button.md-activity__chat.disabled:focus,.md-button.md-activity__chat.md-button--disabled:hover,.md-button.md-activity__chat.md-button--disabled:focus,.md-button.md-activity__chat[disabled]:hover,.md-button.md-activity__chat[disabled]:focus,.md--dark .md-button.md-activity.disabled:hover,.md--dark .md-button.md-activity.disabled:focus,.md--dark .md-button.md-activity.md-button--disabled:hover,.md--dark .md-button.md-activity.md-button--disabled:focus,.md--dark .md-button.md-activity[disabled]:hover,.md--dark .md-button.md-activity[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__chat.disabled,.md-button.md-activity__chat.md-button--disabled,.md-button.md-activity__chat[disabled],.md--dark .md-button.md-activity.disabled,.md--dark .md-button.md-activity.md-button--disabled,.md--dark .md-button.md-activity[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.md-activity__chat,.md--dark .md-button.md-activity",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.disabled:hover,.md-button.disabled:focus,.md-button.md-button--disabled:hover,.md-button.md-button--disabled:focus,.md-button[disabled]:hover,.md-button[disabled]:focus",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.disabled,.md-button.md-button--disabled,.md-button[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-button.disabled,.md-button.md-button--disabled,.md-button[disabled]",
+        "declarations": 3
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__tasks:active,.md--contrast .md-button.md-activity__tasks.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__tasks:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__tasks:active,.md-button.md-activity__tasks.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__tasks:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__share-screen:active,.md--contrast .md-button.md-activity__share-screen.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__share-screen:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__share-screen:active,.md-button.md-activity__share-screen.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__share-screen:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__files:active,.md--contrast .md-button.md-activity__files.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__files:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__files:active,.md-button.md-activity__files.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__files:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__whiteboard:active,.md--contrast .md-button.md-activity__whiteboard.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__whiteboard:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__whiteboard:active,.md-button.md-activity__whiteboard.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__whiteboard:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__meetings:active,.md--contrast .md-button.md-activity__meetings.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__meetings:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__meetings:active,.md-button.md-activity__meetings.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__meetings:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__contact-card:active,.md--contrast .md-button.md-activity__contact-card.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__contact-card:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__contact-card:active,.md-button.md-activity__contact-card.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__contact-card:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__camera:active,.md--contrast .md-button.md-activity__camera.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__camera:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__camera:active,.md-button.md-activity__camera.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__camera:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__chat:active,.md--contrast .md-button.md-activity__chat.active,.md--contrast .md--dark .md-button.md-activity:active,.md--contrast .md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md--contrast .md-button.md-activity__chat:hover,.md--contrast .md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__chat:active,.md-button.md-activity__chat.active,.md--dark .md-button.md-activity:active,.md--dark .md-button.md-activity.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity__chat:hover,.md--dark .md-button.md-activity:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button.md-activity",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button:focus,.md-button.focus-state",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button:active,.md-button.active",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button:hover",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-button .md-append",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-button .md-prepend",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-button.disabled:hover,.md-button.disabled:focus,.md-button.md-button--disabled:hover,.md-button.md-button--disabled:focus,.md-button[disabled]:hover,.md-button[disabled]:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-button:active:focus,.md-button:active.focus-state,.md-button.active-state:focus,.md-button.active-state.focus-state",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-button+.md-button",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-button>*",
+        "declarations": 1
+      },
+      {
+        "selector": "[class|=md-button__container][class$=\"--small\"]",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 457,
+    "type": 0,
+    "class": 455,
+    "id": 0,
+    "pseudoClass": 274,
+    "pseudoElement": 0,
+    "values": [
+      "[class|=md-button__container]",
+      "[class|=md-button__container][class$=\"--small\"]",
+      ".md-button",
+      ".md-button>*",
+      ".md-button .md-button__children",
+      ".md-button+.md-button",
+      ".md-button:active:focus",
+      ".md-button:active.focus-state",
+      ".md-button.active-state:focus",
+      ".md-button.active-state.focus-state",
+      ".md-button.disabled",
+      ".md-button.md-button--disabled",
+      ".md-button[disabled]",
+      ".md-button.disabled:hover",
+      ".md-button.disabled:focus",
+      ".md-button.md-button--disabled:hover",
+      ".md-button.md-button--disabled:focus",
+      ".md-button[disabled]:hover",
+      ".md-button[disabled]:focus",
+      ".md-button .md-prepend",
+      ".md-button .md-append",
+      ".md-button:hover",
+      ".md-button:active",
+      ".md-button.active",
+      ".md-button.disabled",
+      ".md-button.md-button--disabled",
+      ".md-button[disabled]",
+      ".md-button.disabled:hover",
+      ".md-button.disabled:focus",
+      ".md-button.md-button--disabled:hover",
+      ".md-button.md-button--disabled:focus",
+      ".md-button[disabled]:hover",
+      ".md-button[disabled]:focus",
+      ".md-button:focus",
+      ".md-button.focus-state",
+      ".md-button.md-button--circle",
+      ".md-button.md-button--circle[class*=\"--36\"]",
+      ".md-button.md-button--circle[class*=\"--56\"]",
+      ".md-button.md-button--circle[class*=\"--68\"]",
+      ".md-button.md-button--circle[class*=\"--84\"]",
+      ".md-button.md-activity",
+      ".md-button.md-activity__chat",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__chat:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__chat:active",
+      ".md-button.md-activity__chat.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__chat.disabled",
+      ".md-button.md-activity__chat.md-button--disabled",
+      ".md-button.md-activity__chat[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__chat.disabled:hover",
+      ".md-button.md-activity__chat.disabled:focus",
+      ".md-button.md-activity__chat.md-button--disabled:hover",
+      ".md-button.md-activity__chat.md-button--disabled:focus",
+      ".md-button.md-activity__chat[disabled]:hover",
+      ".md-button.md-activity__chat[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__chat",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__chat:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__chat:active",
+      ".md--contrast .md-button.md-activity__chat.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__chat.disabled",
+      ".md--contrast .md-button.md-activity__chat.md-button--disabled",
+      ".md--contrast .md-button.md-activity__chat[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__chat.disabled:hover",
+      ".md--contrast .md-button.md-activity__chat.disabled:focus",
+      ".md--contrast .md-button.md-activity__chat.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__chat.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__chat[disabled]:hover",
+      ".md--contrast .md-button.md-activity__chat[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__camera",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__camera:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__camera:active",
+      ".md-button.md-activity__camera.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__camera.disabled",
+      ".md-button.md-activity__camera.md-button--disabled",
+      ".md-button.md-activity__camera[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__camera.disabled:hover",
+      ".md-button.md-activity__camera.disabled:focus",
+      ".md-button.md-activity__camera.md-button--disabled:hover",
+      ".md-button.md-activity__camera.md-button--disabled:focus",
+      ".md-button.md-activity__camera[disabled]:hover",
+      ".md-button.md-activity__camera[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__camera",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__camera:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__camera:active",
+      ".md--contrast .md-button.md-activity__camera.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__camera.disabled",
+      ".md--contrast .md-button.md-activity__camera.md-button--disabled",
+      ".md--contrast .md-button.md-activity__camera[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__camera.disabled:hover",
+      ".md--contrast .md-button.md-activity__camera.disabled:focus",
+      ".md--contrast .md-button.md-activity__camera.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__camera.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__camera[disabled]:hover",
+      ".md--contrast .md-button.md-activity__camera[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__contact-card",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__contact-card:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__contact-card:active",
+      ".md-button.md-activity__contact-card.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__contact-card.disabled",
+      ".md-button.md-activity__contact-card.md-button--disabled",
+      ".md-button.md-activity__contact-card[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__contact-card.disabled:hover",
+      ".md-button.md-activity__contact-card.disabled:focus",
+      ".md-button.md-activity__contact-card.md-button--disabled:hover",
+      ".md-button.md-activity__contact-card.md-button--disabled:focus",
+      ".md-button.md-activity__contact-card[disabled]:hover",
+      ".md-button.md-activity__contact-card[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__contact-card",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__contact-card:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__contact-card:active",
+      ".md--contrast .md-button.md-activity__contact-card.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__contact-card.disabled",
+      ".md--contrast .md-button.md-activity__contact-card.md-button--disabled",
+      ".md--contrast .md-button.md-activity__contact-card[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__contact-card.disabled:hover",
+      ".md--contrast .md-button.md-activity__contact-card.disabled:focus",
+      ".md--contrast .md-button.md-activity__contact-card.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__contact-card.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__contact-card[disabled]:hover",
+      ".md--contrast .md-button.md-activity__contact-card[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__meetings",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__meetings:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__meetings:active",
+      ".md-button.md-activity__meetings.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__meetings.disabled",
+      ".md-button.md-activity__meetings.md-button--disabled",
+      ".md-button.md-activity__meetings[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__meetings.disabled:hover",
+      ".md-button.md-activity__meetings.disabled:focus",
+      ".md-button.md-activity__meetings.md-button--disabled:hover",
+      ".md-button.md-activity__meetings.md-button--disabled:focus",
+      ".md-button.md-activity__meetings[disabled]:hover",
+      ".md-button.md-activity__meetings[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__meetings",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__meetings:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__meetings:active",
+      ".md--contrast .md-button.md-activity__meetings.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__meetings.disabled",
+      ".md--contrast .md-button.md-activity__meetings.md-button--disabled",
+      ".md--contrast .md-button.md-activity__meetings[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__meetings.disabled:hover",
+      ".md--contrast .md-button.md-activity__meetings.disabled:focus",
+      ".md--contrast .md-button.md-activity__meetings.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__meetings.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__meetings[disabled]:hover",
+      ".md--contrast .md-button.md-activity__meetings[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__whiteboard",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__whiteboard:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__whiteboard:active",
+      ".md-button.md-activity__whiteboard.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__whiteboard.disabled",
+      ".md-button.md-activity__whiteboard.md-button--disabled",
+      ".md-button.md-activity__whiteboard[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__whiteboard.disabled:hover",
+      ".md-button.md-activity__whiteboard.disabled:focus",
+      ".md-button.md-activity__whiteboard.md-button--disabled:hover",
+      ".md-button.md-activity__whiteboard.md-button--disabled:focus",
+      ".md-button.md-activity__whiteboard[disabled]:hover",
+      ".md-button.md-activity__whiteboard[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__whiteboard",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__whiteboard:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__whiteboard:active",
+      ".md--contrast .md-button.md-activity__whiteboard.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__whiteboard.disabled",
+      ".md--contrast .md-button.md-activity__whiteboard.md-button--disabled",
+      ".md--contrast .md-button.md-activity__whiteboard[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__whiteboard.disabled:hover",
+      ".md--contrast .md-button.md-activity__whiteboard.disabled:focus",
+      ".md--contrast .md-button.md-activity__whiteboard.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__whiteboard.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__whiteboard[disabled]:hover",
+      ".md--contrast .md-button.md-activity__whiteboard[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__files",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__files:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__files:active",
+      ".md-button.md-activity__files.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__files.disabled",
+      ".md-button.md-activity__files.md-button--disabled",
+      ".md-button.md-activity__files[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__files.disabled:hover",
+      ".md-button.md-activity__files.disabled:focus",
+      ".md-button.md-activity__files.md-button--disabled:hover",
+      ".md-button.md-activity__files.md-button--disabled:focus",
+      ".md-button.md-activity__files[disabled]:hover",
+      ".md-button.md-activity__files[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__files",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__files:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__files:active",
+      ".md--contrast .md-button.md-activity__files.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__files.disabled",
+      ".md--contrast .md-button.md-activity__files.md-button--disabled",
+      ".md--contrast .md-button.md-activity__files[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__files.disabled:hover",
+      ".md--contrast .md-button.md-activity__files.disabled:focus",
+      ".md--contrast .md-button.md-activity__files.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__files.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__files[disabled]:hover",
+      ".md--contrast .md-button.md-activity__files[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__share-screen",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__share-screen:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__share-screen:active",
+      ".md-button.md-activity__share-screen.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__share-screen.disabled",
+      ".md-button.md-activity__share-screen.md-button--disabled",
+      ".md-button.md-activity__share-screen[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__share-screen.disabled:hover",
+      ".md-button.md-activity__share-screen.disabled:focus",
+      ".md-button.md-activity__share-screen.md-button--disabled:hover",
+      ".md-button.md-activity__share-screen.md-button--disabled:focus",
+      ".md-button.md-activity__share-screen[disabled]:hover",
+      ".md-button.md-activity__share-screen[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__share-screen",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__share-screen:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__share-screen:active",
+      ".md--contrast .md-button.md-activity__share-screen.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__share-screen.disabled",
+      ".md--contrast .md-button.md-activity__share-screen.md-button--disabled",
+      ".md--contrast .md-button.md-activity__share-screen[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__share-screen.disabled:hover",
+      ".md--contrast .md-button.md-activity__share-screen.disabled:focus",
+      ".md--contrast .md-button.md-activity__share-screen.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__share-screen.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__share-screen[disabled]:hover",
+      ".md--contrast .md-button.md-activity__share-screen[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md-button.md-activity__tasks",
+      ".md--dark .md-button.md-activity",
+      ".md-button.md-activity__tasks:hover",
+      ".md--dark .md-button.md-activity:hover",
+      ".md-button.md-activity__tasks:active",
+      ".md-button.md-activity__tasks.active",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity.active",
+      ".md-button.md-activity__tasks.disabled",
+      ".md-button.md-activity__tasks.md-button--disabled",
+      ".md-button.md-activity__tasks[disabled]",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md-button.md-activity__tasks.disabled:hover",
+      ".md-button.md-activity__tasks.disabled:focus",
+      ".md-button.md-activity__tasks.md-button--disabled:hover",
+      ".md-button.md-activity__tasks.md-button--disabled:focus",
+      ".md-button.md-activity__tasks[disabled]:hover",
+      ".md-button.md-activity__tasks[disabled]:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md-button.md-activity__tasks",
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md-button.md-activity__tasks:hover",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md-button.md-activity__tasks:active",
+      ".md--contrast .md-button.md-activity__tasks.active",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md-button.md-activity__tasks.disabled",
+      ".md--contrast .md-button.md-activity__tasks.md-button--disabled",
+      ".md--contrast .md-button.md-activity__tasks[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md-button.md-activity__tasks.disabled:hover",
+      ".md--contrast .md-button.md-activity__tasks.disabled:focus",
+      ".md--contrast .md-button.md-activity__tasks.md-button--disabled:hover",
+      ".md--contrast .md-button.md-activity__tasks.md-button--disabled:focus",
+      ".md--contrast .md-button.md-activity__tasks[disabled]:hover",
+      ".md--contrast .md-button.md-activity__tasks[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus"
+    ],
+    "specificity": {
+      "max": 60,
+      "average": 42.078774617067836,
+      "graph": [
+        10,
+        20,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        20,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        20,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        20,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        20,
+        30,
+        30,
+        40,
+        30,
+        30,
+        40,
+        40,
+        30,
+        30,
+        30,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        30,
+        40,
+        40,
+        50,
+        40,
+        40,
+        50,
+        50,
+        40,
+        40,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 60
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity:active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.active",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity[disabled]",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.md-button--disabled:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.md-button--disabled:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks[disabled]:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks[disabled]:focus",
+          "specificity": 50
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__chat.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__chat.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__chat.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__chat.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__chat[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__chat[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__camera.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__camera.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__camera.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__camera.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__camera[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__camera[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__meetings[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__meetings[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__files.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__files.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__files.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__files.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__files[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__files[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.md-button--disabled:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.md-button--disabled:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__tasks[disabled]:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button.md-activity__tasks[disabled]:focus",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md--dark .md-button.md-activity",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks:hover",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks:active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.active",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks.md-button--disabled",
+          "specificity": 40
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks[disabled]",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-button:active:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button:active.focus-state",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.active-state:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.active-state.focus-state",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.disabled:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.disabled:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--disabled:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--disabled:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button[disabled]:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button[disabled]:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.disabled:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.disabled:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--disabled:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--disabled:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button[disabled]:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button[disabled]:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--circle[class*=\"--36\"]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--circle[class*=\"--56\"]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--circle[class*=\"--68\"]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-button--circle[class*=\"--84\"]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__chat:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__chat:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__chat.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__chat.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__chat.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__chat[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__chat",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__camera:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__camera:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__camera.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__camera.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__camera.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__camera[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__camera",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__contact-card",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__meetings:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__meetings:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__meetings.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__meetings[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__meetings",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__whiteboard",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__files:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__files:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__files.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__files.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__files.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__files[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__files",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__share-screen",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--dark .md-button.md-activity",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__tasks:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__tasks:active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__tasks.md-button--disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-button.md-activity__tasks[disabled]",
+          "specificity": 30
+        },
+        {
+          "selector": ".md--contrast .md-button.md-activity__tasks",
+          "specificity": 30
+        },
+        {
+          "selector": "[class|=md-button__container][class$=\"--small\"]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button .md-button__children",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button+.md-button",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-button--disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button[disabled]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button .md-prepend",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button .md-append",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-button--disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button[disabled]",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.focus-state",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-button--circle",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__chat",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__camera",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__contact-card",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__meetings",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__whiteboard",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__files",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__share-screen",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-button.md-activity__tasks",
+          "specificity": 20
+        },
+        {
+          "selector": "[class|=md-button__container]",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-button",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-button>*",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md--contrast .md--dark .md-button.md-activity",
+      ".md--contrast .md--dark .md-button.md-activity.active",
+      ".md--contrast .md--dark .md-button.md-activity.disabled",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--contrast .md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--contrast .md--dark .md-button.md-activity:active",
+      ".md--contrast .md--dark .md-button.md-activity:hover",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:focus",
+      ".md--contrast .md--dark .md-button.md-activity[disabled]:hover",
+      ".md--dark .md-button.md-activity",
+      ".md--dark .md-button.md-activity.active",
+      ".md--dark .md-button.md-activity.disabled",
+      ".md--dark .md-button.md-activity.disabled:focus",
+      ".md--dark .md-button.md-activity.disabled:hover",
+      ".md--dark .md-button.md-activity.md-button--disabled",
+      ".md--dark .md-button.md-activity.md-button--disabled:focus",
+      ".md--dark .md-button.md-activity.md-button--disabled:hover",
+      ".md--dark .md-button.md-activity:active",
+      ".md--dark .md-button.md-activity:hover",
+      ".md--dark .md-button.md-activity[disabled]",
+      ".md--dark .md-button.md-activity[disabled]:focus",
+      ".md--dark .md-button.md-activity[disabled]:hover",
+      ".md-button.disabled",
+      ".md-button.disabled:focus",
+      ".md-button.disabled:hover",
+      ".md-button.md-button--disabled",
+      ".md-button.md-button--disabled:focus",
+      ".md-button.md-button--disabled:hover",
+      ".md-button[disabled]",
+      ".md-button[disabled]:focus",
+      ".md-button[disabled]:hover"
+    ]
+  },
+  "declarations": {
+    "total": 296,
+    "unique": 92,
+    "properties": {
+      "align-content": [
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center"
+      ],
+      "display": [
+        "inline-flex",
+        "inline-block",
+        "flex"
+      ],
+      "flex-flow": [
+        "column nowrap",
+        "row nowrap"
+      ],
+      "justify-content": [
+        "center",
+        "center"
+      ],
+      "width": [
+        "116px",
+        "104px",
+        "2.25rem",
+        "2.25rem",
+        "3.5rem",
+        "4.25rem",
+        "5.25rem"
+      ],
+      "border": [
+        "none"
+      ],
+      "border-radius": [
+        "1.125rem",
+        "1.125rem",
+        "100%"
+      ],
+      "cursor": [
+        "pointer",
+        "default"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+      ],
+      "font-size": [
+        "1rem",
+        "1rem",
+        "inherit",
+        ".875rem",
+        ".875rem",
+        "1.5rem",
+        "1.75rem",
+        "2.25rem"
+      ],
+      "font-weight": [
+        "normal"
+      ],
+      "line-height": [
+        "1.5rem",
+        "1.5rem",
+        ".875rem",
+        ".875rem",
+        "1.5rem",
+        "1.75rem",
+        "2.25rem"
+      ],
+      "min-width": [
+        "4.5rem",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "position": [
+        "relative"
+      ],
+      "text-align": [
+        "center"
+      ],
+      "text-decoration": [
+        "none"
+      ],
+      "height": [
+        "2.25rem",
+        "2.25rem",
+        "2.25rem",
+        "3.5rem",
+        "4.25rem",
+        "5.25rem"
+      ],
+      "padding": [
+        ".375rem 1.125rem",
+        "0"
+      ],
+      "background-color": [
+        "#dedede",
+        "#ccc",
+        "#b2b2b2",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#00a0d1",
+        "#007aa3",
+        "#005e7d",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#007aa3",
+        "#005e7d",
+        "#064157",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#00ab50",
+        "#00853c",
+        "#03612c",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#00853c",
+        "#03612c",
+        "#08421f",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#949494",
+        "#707070",
+        "#545454",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#949494",
+        "#707070",
+        "#545454",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#f26b1d",
+        "#c74f0e",
+        "#914017",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#c74f0e",
+        "#914017",
+        "#59311e",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#e060de",
+        "#c233c4",
+        "#932099",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#c233c4",
+        "#932099",
+        "#601e66",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#d97f00",
+        "#a85f00",
+        "#7d4705",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#a85f00",
+        "#7d4705",
+        "#54330d",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#00a3b5",
+        "#008094",
+        "#066070",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#008094",
+        "#066070",
+        "#0a414d",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#16a693",
+        "#148579",
+        "#12615a",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)",
+        "#148579",
+        "#12615a",
+        "#12423f",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)"
+      ],
+      "border-color": [
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)",
+        "rgba(0,0,0,0)"
+      ],
+      "color": [
+        "#000",
+        "#000",
+        "#000",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "#fff",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)"
+      ],
+      "transition": [
+        "background-color 150ms ease"
+      ],
+      "margin-left": [
+        ".3125rem",
+        "calc(2.25rem/4)"
+      ],
+      "box-shadow": [
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "margin-right": [
+        "calc(2.25rem/4)"
+      ],
+      "fill": [
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "#fff",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)",
+        "rgba(0,0,0,.2)"
+      ],
+      "outline": [
+        "none"
+      ],
+      "min-height": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "margin": [
+        ".3125rem"
+      ]
+    },
+    "resets": {
+      "padding": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

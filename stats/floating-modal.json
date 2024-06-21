@@ -1,0 +1,285 @@
+{
+  "size": 1659,
+  "gzipSize": 658,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "658B",
+  "rules": {
+    "total": 11,
+    "size": {
+      "graph": [
+        12,
+        1,
+        4,
+        3,
+        2,
+        10,
+        5,
+        3,
+        3,
+        5,
+        5
+      ],
+      "max": 12,
+      "average": 4.818181818181818
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-floating",
+        "declarations": 12
+      },
+      {
+        "selector": ".md-floating .md-floating__header",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-floating-min-parent",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-floating .md-floating__header-minimize",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-floating .md-floating__header-text",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-floating.hide",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-floating .md-floating-body-minimize",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-floating .md-floating__body",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-floating.md-floating-minimize",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-floating.md-floating-minimize:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-floating.fixed",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 11,
+    "type": 0,
+    "class": 11,
+    "id": 0,
+    "pseudoClass": 1,
+    "pseudoElement": 0,
+    "values": [
+      ".md-floating",
+      ".md-floating.fixed",
+      ".md-floating.hide",
+      ".md-floating.md-floating-minimize",
+      ".md-floating.md-floating-minimize:focus",
+      ".md-floating .md-floating__header",
+      ".md-floating .md-floating__header-text",
+      ".md-floating .md-floating__body",
+      ".md-floating .md-floating-body-minimize",
+      ".md-floating .md-floating__header-minimize",
+      ".md-floating-min-parent"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 19.09090909090909,
+      "graph": [
+        10,
+        20,
+        20,
+        20,
+        30,
+        20,
+        20,
+        20,
+        20,
+        20,
+        10
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-floating.md-floating-minimize:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-floating.fixed",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating.hide",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating.md-floating-minimize",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating .md-floating__header",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating .md-floating__header-text",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating .md-floating__body",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating .md-floating-body-minimize",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating .md-floating__header-minimize",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-floating",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-floating-min-parent",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 53,
+    "unique": 44,
+    "properties": {
+      "background-color": [
+        "var(--floating-modal-main-bg-color, #FFFFFF)"
+      ],
+      "border": [
+        "1px solid var(--floating-modal-outer-border-color, #EDEDED)"
+      ],
+      "border-radius": [
+        "8px",
+        "8px"
+      ],
+      "box-shadow": [
+        "var(--floating-modal-main-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.16))",
+        "0 0 0 .125rem #005e7d"
+      ],
+      "display": [
+        "flex",
+        "block",
+        "flex",
+        "block"
+      ],
+      "flex-direction": [
+        "column",
+        "row"
+      ],
+      "max-height": [
+        "100%",
+        "3rem"
+      ],
+      "max-width": [
+        "100%"
+      ],
+      "position": [
+        "absolute",
+        "fixed",
+        "absolute"
+      ],
+      "touch-action": [
+        "none"
+      ],
+      "user-select": [
+        "none"
+      ],
+      "z-index": [
+        "1040"
+      ],
+      "height": [
+        "0",
+        "calc(100% - 3rem)",
+        "0",
+        "3rem"
+      ],
+      "visibility": [
+        "hidden",
+        "hidden"
+      ],
+      "width": [
+        "0",
+        "100%",
+        "100%",
+        "100%",
+        "223px"
+      ],
+      "background": [
+        "var(--floating-modal-main-bg-color-alternate, #545454)"
+      ],
+      "outline": [
+        "none"
+      ],
+      "align-items": [
+        "center"
+      ],
+      "border-bottom": [
+        "1px solid var(--floating-modal-main-border-color, #DEDEDE)",
+        "0"
+      ],
+      "color": [
+        "var(--floating-modal-main-text-color, #121212)",
+        "var(--floating-modal-main-text-color-alternate, #F7F7F7)"
+      ],
+      "flex-wrap": [
+        "nowrap"
+      ],
+      "justify-content": [
+        "space-between"
+      ],
+      "padding": [
+        ".5rem .5rem .5rem .75rem",
+        ".75rem 1.25rem"
+      ],
+      "flex": [
+        "2 1 auto"
+      ],
+      "font-family": [
+        "\"CiscoSansTT Regular\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+      ],
+      "font-size": [
+        "16px",
+        "16px"
+      ],
+      "line-height": [
+        "16px",
+        "24px"
+      ],
+      "text-align": [
+        "left"
+      ],
+      "overflow": [
+        "auto"
+      ],
+      "bottom": [
+        "0"
+      ],
+      "right": [
+        "0"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

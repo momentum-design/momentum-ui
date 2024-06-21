@@ -1,0 +1,653 @@
+{
+  "size": 3551,
+  "gzipSize": 963,
+  "humanizedSize": "3KB",
+  "humanizedGzipSize": "963B",
+  "rules": {
+    "total": 27,
+    "size": {
+      "graph": [
+        2,
+        3,
+        1,
+        10,
+        13,
+        13,
+        1,
+        1,
+        1,
+        14,
+        7,
+        6,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        3,
+        2
+      ],
+      "max": 14,
+      "average": 3.5555555555555554
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host .md-dropdown-list",
+        "declarations": 14
+      },
+      {
+        "selector": ":host .md-dropdown-label--icon",
+        "declarations": 13
+      },
+      {
+        "selector": ":host .md-dropdown-label--text",
+        "declarations": 13
+      },
+      {
+        "selector": ":host .md-dropdown-label",
+        "declarations": 10
+      },
+      {
+        "selector": ":host .md-dropdown-option",
+        "declarations": 7
+      },
+      {
+        "selector": ":host .md-dropdown-option .select-label",
+        "declarations": 6
+      },
+      {
+        "selector": ":host .md-dropdown-option[focused]",
+        "declarations": 3
+      },
+      {
+        "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label--text",
+        "declarations": 3
+      },
+      {
+        "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+        "declarations": 3
+      },
+      {
+        "selector": ":host .md-dropdown",
+        "declarations": 3
+      },
+      {
+        "selector": ":host([disabled]) .md-dropdown .md-dropdown-label",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:focus-visible",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:hover,:host([disabled]) .md-dropdown .md-dropdown-label:active",
+        "declarations": 2
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": ":host([focus-visible]) .md-dropdown-list",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:hover>md-icon,:host([disabled]) .md-dropdown .md-dropdown-label:active>md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ":host([disabled]) .md-dropdown .md-dropdown-label",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown--pill .md-dropdown-label",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown__expanded .md-dropdown-label--icon",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown__expanded .md-dropdown-list",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown-option[focused]",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown-option:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown-label:active",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown-label:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown-label--icon md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ":host .md-dropdown-select",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 29,
+    "type": 3,
+    "class": 28,
+    "id": 0,
+    "pseudoClass": 9,
+    "pseudoElement": 0,
+    "values": [
+      ":host(:focus)",
+      ":host .md-dropdown",
+      ":host .md-dropdown-select",
+      ":host .md-dropdown-label",
+      ":host .md-dropdown-label--text",
+      ":host .md-dropdown-label--icon",
+      ":host .md-dropdown-label--icon md-icon",
+      ":host .md-dropdown-label:hover",
+      ":host .md-dropdown-label:active",
+      ":host .md-dropdown-list",
+      ":host .md-dropdown-option",
+      ":host .md-dropdown-option .select-label",
+      ":host .md-dropdown-option:hover",
+      ":host .md-dropdown-option[focused]",
+      ":host .md-dropdown__expanded .md-dropdown-list",
+      ":host .md-dropdown__expanded .md-dropdown-label--icon",
+      ":host .md-dropdown--pill .md-dropdown-label",
+      ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+      ":host([disabled]) .md-dropdown .md-dropdown-label",
+      ":host([disabled]) .md-dropdown .md-dropdown-label:hover",
+      ":host([disabled]) .md-dropdown .md-dropdown-label:active",
+      ":host([disabled]) .md-dropdown .md-dropdown-label:hover>md-icon",
+      ":host([disabled]) .md-dropdown .md-dropdown-label:active>md-icon",
+      ":host([disabled]) .md-dropdown .md-dropdown-label:focus-visible",
+      ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+      ":host([focus-visible]) .md-dropdown .md-dropdown-label--text",
+      ":host([focus-visible]) .md-dropdown-list",
+      ":host .md-dropdown-option[focused]",
+      ":host([disabled]) .md-dropdown .md-dropdown-label"
+    ],
+    "specificity": {
+      "max": 51,
+      "average": 31.82758620689655,
+      "graph": [
+        10,
+        20,
+        20,
+        20,
+        20,
+        20,
+        21,
+        30,
+        30,
+        20,
+        20,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        40,
+        40,
+        50,
+        50,
+        51,
+        51,
+        50,
+        40,
+        40,
+        30,
+        30,
+        40
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:hover>md-icon",
+          "specificity": 51
+        },
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:active>md-icon",
+          "specificity": 51
+        },
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:active",
+          "specificity": 50
+        },
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label:focus-visible",
+          "specificity": 50
+        },
+        {
+          "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label--text",
+          "specificity": 40
+        },
+        {
+          "selector": ":host([disabled]) .md-dropdown .md-dropdown-label",
+          "specificity": 40
+        },
+        {
+          "selector": ":host .md-dropdown-label:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown-label:active",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown-option .select-label",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown-option:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown-option[focused]",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown__expanded .md-dropdown-list",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown__expanded .md-dropdown-label--icon",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown--pill .md-dropdown-label",
+          "specificity": 30
+        },
+        {
+          "selector": ":host([focus-visible]) .md-dropdown-list",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown-option[focused]",
+          "specificity": 30
+        },
+        {
+          "selector": ":host .md-dropdown-label--icon md-icon",
+          "specificity": 21
+        },
+        {
+          "selector": ":host .md-dropdown",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-dropdown-select",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-dropdown-label",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-dropdown-label--text",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-dropdown-label--icon",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-dropdown-list",
+          "specificity": 20
+        },
+        {
+          "selector": ":host .md-dropdown-option",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ":host .md-dropdown-option[focused]",
+      ":host([disabled]) .md-dropdown .md-dropdown-label",
+      ":host([focus-visible]) .md-dropdown .md-dropdown-label"
+    ]
+  },
+  "declarations": {
+    "total": 96,
+    "unique": 68,
+    "properties": {
+      "box-shadow": [
+        "none",
+        "0 4px 8px rgba(0,0,0,.16),0 0 1px rgba(0,0,0,.16)",
+        "none"
+      ],
+      "outline": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "display": [
+        "flex",
+        "none",
+        "flex",
+        "flex",
+        "inline-block",
+        "none",
+        "flex",
+        "block",
+        "block"
+      ],
+      "flex-direction": [
+        "column"
+      ],
+      "position": [
+        "relative",
+        "relative",
+        "absolute"
+      ],
+      "align-content": [
+        "center",
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center",
+        "center"
+      ],
+      "flex-flow": [
+        "row nowrap",
+        "row nowrap",
+        "row nowrap"
+      ],
+      "justify-content": [
+        "center",
+        "flex-start",
+        "center"
+      ],
+      "background-color": [
+        "var(--md-primary-bg-color)",
+        "rgba(0,0,0,0)",
+        "var(--dropdown-bg-color-hover, #dedede)",
+        "var(--dropdown-bg-color-active, #ccc)",
+        "var(--md-primary-bg-color)",
+        "var(--dropdown-list-item-bg-color-hover, #91ebff)",
+        "var(--dropdown-list-item-bg-color-focus, #00a0d1)",
+        "var(--md-tertiary-bg-color)",
+        "var(--md-tertiary-bg-color)",
+        "Canvas",
+        "Highlight"
+      ],
+      "border": [
+        "1px solid var(--md-secondary-seperator-color)",
+        "none",
+        "2px solid Highlight",
+        "1px solid CanvasText",
+        "1px solid GrayText"
+      ],
+      "border-radius": [
+        "var(--dropdown-group-radius, 0.25rem)",
+        ".5rem",
+        "18px"
+      ],
+      "min-height": [
+        "2rem"
+      ],
+      "padding": [
+        "0 .75rem",
+        "0",
+        "0",
+        ".4375rem .75rem .5rem"
+      ],
+      "overflow": [
+        "hidden",
+        "auto",
+        "hidden"
+      ],
+      "text-overflow": [
+        "ellipsis",
+        "ellipsis"
+      ],
+      "white-space": [
+        "nowrap",
+        "nowrap"
+      ],
+      "color": [
+        "var(--md-secondary-text-color)",
+        "var(--md-primary-text-color, #f7f7f7)",
+        "var(--md-primary-text-color, #f7f7f7)",
+        "CanvasText",
+        "HighlightText",
+        "GrayText"
+      ],
+      "line-height": [
+        "2rem"
+      ],
+      "width": [
+        "6.25rem",
+        "100%",
+        "calc(100% - 1rem)"
+      ],
+      "flex": [
+        "1 0 auto"
+      ],
+      "transition": [
+        "all .15s linear"
+      ],
+      "cursor": [
+        "pointer",
+        "default"
+      ],
+      "height": [
+        "1.75rem"
+      ],
+      "margin": [
+        "0",
+        "0"
+      ],
+      "margin-left": [
+        "calc(0.25rem*3)"
+      ],
+      "padding-top": [
+        "calc(0.25rem/2)"
+      ],
+      "vertical-align": [
+        "bottom"
+      ],
+      "list-style": [
+        "none"
+      ],
+      "left": [
+        "0"
+      ],
+      "overflow-x": [
+        "hidden"
+      ],
+      "top": [
+        "calc(100% + 0.25rem)"
+      ],
+      "z-index": [
+        "99"
+      ],
+      "transform": [
+        "rotate(180deg)"
+      ],
+      "border-color": [
+        "var(--dropdown-border-color-focus, #005e7d)",
+        "var(--dropdown-border-color-focus, #005e7d)"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "opacity": [
+        ".3"
+      ],
+      "forced-color-adjust": [
+        "none",
+        "none"
+      ]
+    },
+    "resets": {
+      "padding": 2,
+      "margin": 2
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 5,
+          "size": {
+            "graph": [
+              1,
+              3,
+              1,
+              3,
+              2
+            ],
+            "max": 3,
+            "average": 2
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",:host .md-dropdown-option[focused]",
+              "declarations": 3
+            },
+            {
+              "selector": ",:host([focus-visible]) .md-dropdown .md-dropdown-label--text",
+              "declarations": 3
+            },
+            {
+              "selector": ",:host([disabled]) .md-dropdown .md-dropdown-label",
+              "declarations": 2
+            },
+            {
+              "selector": ",:host([focus-visible]) .md-dropdown-list",
+              "declarations": 1
+            },
+            {
+              "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 5,
+          "type": 0,
+          "class": 5,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+            ":host([focus-visible]) .md-dropdown .md-dropdown-label--text",
+            ":host([focus-visible]) .md-dropdown-list",
+            ":host .md-dropdown-option[focused]",
+            ":host([disabled]) .md-dropdown .md-dropdown-label"
+          ],
+          "specificity": {
+            "max": 40,
+            "average": 36,
+            "graph": [
+              40,
+              40,
+              30,
+              30,
+              40
+            ],
+            "sortedGraph": [
+              {
+                "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label",
+                "specificity": 40
+              },
+              {
+                "selector": ":host([focus-visible]) .md-dropdown .md-dropdown-label--text",
+                "specificity": 40
+              },
+              {
+                "selector": ":host([disabled]) .md-dropdown .md-dropdown-label",
+                "specificity": 40
+              },
+              {
+                "selector": ":host([focus-visible]) .md-dropdown-list",
+                "specificity": 30
+              },
+              {
+                "selector": ":host .md-dropdown-option[focused]",
+                "specificity": 30
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 10,
+          "unique": 9,
+          "properties": {
+            "border": [
+              "2px solid Highlight",
+              "1px solid CanvasText",
+              "1px solid GrayText"
+            ],
+            "forced-color-adjust": [
+              "none",
+              "none"
+            ],
+            "background-color": [
+              "Canvas",
+              "Highlight"
+            ],
+            "color": [
+              "CanvasText",
+              "HighlightText",
+              "GrayText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1458 @@
+{
+  "size": 12069,
+  "gzipSize": 1301,
+  "humanizedSize": "12KB",
+  "humanizedGzipSize": "1KB",
+  "rules": {
+    "total": 91,
+    "size": {
+      "graph": [
+        2,
+        7,
+        3,
+        4,
+        5,
+        4,
+        5,
+        4,
+        5,
+        4,
+        5,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "max": 7,
+      "average": 1.5824175824175823
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-coachmark__popper",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-coachmark__popper--bottom",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-coachmark__popper--top",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-coachmark__popper--left",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-coachmark__popper--right",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-coachmark__popper .md-coachmark__arrow",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-coachmark__popper--right .md-coachmark__arrow,.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--top .md-coachmark__arrow,.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--default,.md-coachmark__popper--violet,.md-coachmark__popper--green,.md-coachmark__popper--mint,.md-coachmark__popper--blue,.md-coachmark__popper--purple,.md-coachmark__popper--darkmint,.md-coachmark__popper--yellow,.md-coachmark__popper--red,.md-coachmark__popper--darked,.md-coachmark__popper--orange,.md-coachmark__popper--cyan",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--outline",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--cyan",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--orange",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--darkred",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--red",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--yellow",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--darkmint",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--mint",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--violet",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--purple",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--green",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--blue",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark__popper--default",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-coachmark md-task-item",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": "to",
+        "declarations": 1
+      },
+      {
+        "selector": "from",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark--active .md-coachmark__popper",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--outline.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--outline.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--outline.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--outline.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--orange.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--orange.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--orange.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--orange.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--red.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--red.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--red.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--red.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--mint.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--mint.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--mint.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--mint.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--violet.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--violet.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--violet.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--violet.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--purple.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--purple.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--purple.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--purple.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--green.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--green.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--green.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--green.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--blue.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--blue.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--blue.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--blue.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--default.md-coachmark__popper--bottom .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--default.md-coachmark__popper--top .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--default.md-coachmark__popper--right .md-coachmark__arrow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-coachmark__popper--default.md-coachmark__popper--left .md-coachmark__arrow",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 94,
+    "type": 1,
+    "class": 94,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ".md-coachmark",
+      ".md-coachmark__popper",
+      ".md-coachmark__popper .md-coachmark__arrow",
+      ".md-coachmark__popper--right",
+      ".md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--left",
+      ".md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--top",
+      ".md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--bottom",
+      ".md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--default",
+      ".md-coachmark__popper--default.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--default.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--default.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--default.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--blue",
+      ".md-coachmark__popper--blue.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--blue.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--blue.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--blue.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--green",
+      ".md-coachmark__popper--green.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--green.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--green.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--green.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--purple",
+      ".md-coachmark__popper--purple.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--purple.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--purple.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--purple.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--violet",
+      ".md-coachmark__popper--violet.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--violet.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--violet.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--violet.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--mint",
+      ".md-coachmark__popper--mint.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--mint.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--mint.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--mint.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--darkmint",
+      ".md-coachmark__popper--darkmint.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--darkmint.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--darkmint.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--darkmint.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--yellow",
+      ".md-coachmark__popper--yellow.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--yellow.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--yellow.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--yellow.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--red",
+      ".md-coachmark__popper--red.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--red.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--red.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--red.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--darkred",
+      ".md-coachmark__popper--darkred.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--darkred.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--darkred.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--darkred.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--orange",
+      ".md-coachmark__popper--orange.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--orange.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--orange.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--orange.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--cyan",
+      ".md-coachmark__popper--cyan.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--cyan.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--cyan.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--cyan.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--outline",
+      ".md-coachmark__popper--outline.md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--outline.md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--outline.md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--outline.md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark--active .md-coachmark__popper",
+      ".md-coachmark md-task-item",
+      ".md-coachmark__popper--default",
+      ".md-coachmark__popper--violet",
+      ".md-coachmark__popper--green",
+      ".md-coachmark__popper--mint",
+      ".md-coachmark__popper--blue",
+      ".md-coachmark__popper--purple",
+      ".md-coachmark__popper--darkmint",
+      ".md-coachmark__popper--yellow",
+      ".md-coachmark__popper--red",
+      ".md-coachmark__popper--darked",
+      ".md-coachmark__popper--orange",
+      ".md-coachmark__popper--cyan",
+      ".md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--left .md-coachmark__arrow"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 22.138297872340427,
+      "graph": [
+        10,
+        10,
+        20,
+        10,
+        20,
+        10,
+        20,
+        10,
+        20,
+        10,
+        20,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        10,
+        30,
+        30,
+        30,
+        30,
+        20,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        20,
+        20,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-coachmark__popper--default.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--default.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--default.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--default.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--blue.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--blue.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--blue.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--blue.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--green.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--green.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--green.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--green.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--purple.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--purple.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--purple.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--purple.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--violet.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--violet.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--violet.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--violet.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--mint.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--mint.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--mint.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--mint.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkmint.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--yellow.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--red.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--red.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--red.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--red.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--darkred.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--orange.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--orange.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--orange.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--orange.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--cyan.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--outline.md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--outline.md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--outline.md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper--outline.md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-coachmark__popper .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark--active .md-coachmark__popper",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--top .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--bottom .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--right .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark__popper--left .md-coachmark__arrow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-coachmark md-task-item",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-coachmark",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--right",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--left",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--top",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--bottom",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--default",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--blue",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--green",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--purple",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--violet",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--mint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--darkmint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--yellow",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--red",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--darkred",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--orange",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--cyan",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--outline",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--default",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--violet",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--green",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--mint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--blue",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--purple",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--darkmint",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--yellow",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--red",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--darked",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--orange",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-coachmark__popper--cyan",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-coachmark__popper--blue",
+      ".md-coachmark__popper--bottom .md-coachmark__arrow",
+      ".md-coachmark__popper--cyan",
+      ".md-coachmark__popper--darkmint",
+      ".md-coachmark__popper--default",
+      ".md-coachmark__popper--green",
+      ".md-coachmark__popper--left .md-coachmark__arrow",
+      ".md-coachmark__popper--mint",
+      ".md-coachmark__popper--orange",
+      ".md-coachmark__popper--purple",
+      ".md-coachmark__popper--red",
+      ".md-coachmark__popper--right .md-coachmark__arrow",
+      ".md-coachmark__popper--top .md-coachmark__arrow",
+      ".md-coachmark__popper--violet",
+      ".md-coachmark__popper--yellow"
+    ]
+  },
+  "declarations": {
+    "total": 144,
+    "unique": 123,
+    "properties": {
+      "display": [
+        "inline-flex",
+        "none",
+        "block"
+      ],
+      "position": [
+        "relative",
+        "absolute",
+        "absolute"
+      ],
+      "border-radius": [
+        ".25rem"
+      ],
+      "min-width": [
+        "10.625rem"
+      ],
+      "padding": [
+        ".75rem"
+      ],
+      "width": [
+        "auto",
+        "0"
+      ],
+      "z-index": [
+        "1"
+      ],
+      "height": [
+        "0"
+      ],
+      "animation": [
+        "coach-fade 1s,coach-slide-right .5s ease",
+        "coach-fade 1s,coach-slide-left .5s ease",
+        "coach-fade 1s,coach-slide-top .5s ease",
+        "coach-fade 1s,coach-slide-bottom .5s ease"
+      ],
+      "left": [
+        "calc(100% + 1rem)",
+        "-0.625rem",
+        "50%",
+        "50%",
+        "50%",
+        "50%",
+        "100%",
+        "calc(100% + 1rem)"
+      ],
+      "top": [
+        "50%",
+        "50%",
+        "50%",
+        "50%",
+        "calc(100% + .5rem)",
+        "-0.625rem",
+        "100%",
+        "calc(100% + .5rem)"
+      ],
+      "transform": [
+        "translateY(-50%)",
+        "translateY(-50%)",
+        "translateY(-50%)",
+        "translateY(-50%)",
+        "translateX(-50%)",
+        "translateX(-50%)",
+        "translateX(-50%)",
+        "translateX(-50%)"
+      ],
+      "border-bottom": [
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid var(--coachmark-default-bg-color, #F7F7F7)",
+        ".625rem solid var(--coachmark-blue-bg-color, #C7EEFF)",
+        ".625rem solid var(--coachmark-green-bg-color, #78F5B8)",
+        ".625rem solid var(--coachmark-purple-bg-color, #FCE1FC)",
+        ".625rem solid var(--coachmark-violet-bg-color, #F0E3FC)",
+        ".625rem solid var(--coachmark-mint-bg-color, #BAF5E7)",
+        ".625rem solid var(--coachmark-darkmint-bg-color, #16A693)",
+        ".625rem solid var(--coachmark-yellow-bg-color, #FFD98C)",
+        ".625rem solid var(--coachmark-red-bg-color, #FFD5CC)",
+        ".625rem solid var(--coachmark-darkred-bg-color, #D4371C)",
+        ".625rem solid var(--coachmark-orange-bg-color, #FCE4C7)",
+        ".625rem solid var(--coachmark-cyan-bg-color, #B2F4F7)",
+        ".625rem solid var(--coachmark-outline-color, #B2B2B2)",
+        ".625rem solid Canvas"
+      ],
+      "border-top": [
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid var(--coachmark-default-bg-color, #F7F7F7)",
+        ".625rem solid var(--coachmark-blue-bg-color, #C7EEFF)",
+        ".625rem solid var(--coachmark-green-bg-color, #78F5B8)",
+        ".625rem solid var(--coachmark-purple-bg-color, #FCE1FC)",
+        ".625rem solid var(--coachmark-violet-bg-color, #F0E3FC)",
+        "1 .625rem solid var(--coachmark-mint-bg-color, #BAF5E7)",
+        ".625rem solid var(--coachmark-darkmint-bg-color, #16A693)",
+        ".625rem solid var(--coachmark-yellow-bg-color, #FFD98C)",
+        ".625rem solid var(--coachmark-red-bg-color, #FFD5CC)",
+        ".625rem solid var(--coachmark-darkred-bg-color, #D4371C)",
+        ".625rem solid var(--coachmark-orange-bg-color, #FCE4C7)",
+        ".625rem solid var(--coachmark-cyan-bg-color, #B2F4F7)",
+        ".625rem solid var(--coachmark-outline-color, #B2B2B2)",
+        ".625rem solid Canvas"
+      ],
+      "right": [
+        "calc(100% + 1rem)",
+        "-0.625rem",
+        "100%",
+        "calc(100% + 1rem)"
+      ],
+      "bottom": [
+        "calc(100% + .5rem)",
+        "-0.625rem",
+        "100%",
+        "calc(100% + .5rem)"
+      ],
+      "border-left": [
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid var(--coachmark-default-bg-color, #F7F7F7)",
+        ".625rem solid var(--coachmark-blue-bg-color, #C7EEFF)",
+        ".625rem solid var(--coachmark-green-bg-color, #78F5B8)",
+        ".625rem solid var(--coachmark-purple-bg-color, #FCE1FC)",
+        ".625rem solid var(--coachmark-violet-bg-color, #F0E3FC)",
+        ".625rem solid var(--coachmark-mint-bg-color, #BAF5E7)",
+        ".625rem solid var(--coachmark-darkmint-bg-color, #16A693)",
+        ".625rem solid var(--coachmark-yellow-bg-color, #FFD98C)",
+        ".625rem solid var(--coachmark-red-bg-color, #FFD5CC)",
+        ".625rem solid var(--coachmark-darkred-bg-color, #D4371C)",
+        ".625rem solid var(--coachmark-orange-bg-color, #FCE4C7)",
+        ".625rem solid var(--coachmark-cyan-bg-color, #B2F4F7)",
+        ".625rem solid var(--coachmark-outline-color, #B2B2B2)",
+        ".625rem solid Canvas"
+      ],
+      "border-right": [
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid rgba(0,0,0,0)",
+        ".625rem solid var(--coachmark-default-bg-color, #F7F7F7)",
+        ".625rem solid var(--coachmark-blue-bg-color, #C7EEFF)",
+        ".625rem solid var(--coachmark-green-bg-color, #78F5B8)",
+        ".625rem solid var(--coachmark-purple-bg-color, #FCE1FC)",
+        ".625rem solid var(--coachmark-violet-bg-color, #F0E3FC)",
+        ".625rem solid var(--coachmark-mint-bg-color, #BAF5E7)",
+        ".625rem solid var(--coachmark-darkmint-bg-color, #16A693)",
+        ".625rem solid var(--coachmark-yellow-bg-color, #FFD98C)",
+        ".625rem solid var(--coachmark-red-bg-color, #FFD5CC)",
+        ".625rem solid var(--coachmark-darkred-bg-color, #D4371C)",
+        ".625rem solid var(--coachmark-orange-bg-color, #FCE4C7)",
+        ".625rem solid var(--coachmark-cyan-bg-color, #B2F4F7)",
+        ".625rem solid var(--coachmark-outline-color, #B2B2B2)",
+        ".625rem solid Canvas"
+      ],
+      "background": [
+        "var(--coachmark-default-bg-color, #F7F7F7)",
+        "var(--coachmark-blue-bg-color, #C7EEFF)",
+        "var(--coachmark-green-bg-color, #78F5B8)",
+        "var(--coachmark-purple-bg-color, #FCE1FC)",
+        "var(--coachmark-violet-bg-color, #F0E3FC)",
+        "var(--coachmark-mint-bg-color, #BAF5E7)",
+        "var(--coachmark-darkmint-bg-color, #16A693)",
+        "var(--coachmark-yellow-bg-color, #FFD98C)",
+        "var(--coachmark-red-bg-color, #FFD5CC)",
+        "var(--coachmark-darkred-bg-color, #D4371C)",
+        "var(--coachmark-orange-bg-color, #FCE4C7)",
+        "var(--coachmark-cyan-bg-color, #B2F4F7)",
+        "var(--coachmark-outline-color, #B2B2B2)"
+      ],
+      "color": [
+        "var(-coachmark-default-text-color, #545454)",
+        "var(--coachmark-blue-text-color, #08599C)",
+        "var(--coachmark-green-text-color, #03612C)",
+        "var(--coachmark-purple-text-color, #932099)",
+        "var(--coachmark-violet-text-color, #643ABD)",
+        "var(--coachmark-mint-text-color, #12615A)",
+        "var(--coachmark-darkmint-text-color, #F7F7F7)",
+        "var(--coachmark-yellow-text-color, #7D4705)",
+        "var(--coachmark-red-text-color, #A12512)",
+        "var(--coachmark-darkred-text-color, #4A1812)",
+        "var(--coachmark-orange-text-color, #914017)",
+        "var(--coachmark-cyan-text-color, #066070)",
+        "var(--coachmark-outline-text-color, #949494)"
+      ],
+      "opacity": [
+        "0",
+        "1"
+      ],
+      "outline": [
+        "2px solid rgba(0,0,0,0)",
+        "1px solid CanvasText"
+      ],
+      "background-color": [
+        "Canvas"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 4,
+          "size": {
+            "graph": [
+              1,
+              2,
+              2,
+              2
+            ],
+            "max": 2,
+            "average": 1.75
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-coachmark__popper--right .md-coachmark__arrow,.md-coachmark__popper--left .md-coachmark__arrow",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-coachmark__popper--top .md-coachmark__arrow,.md-coachmark__popper--bottom .md-coachmark__arrow",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-coachmark__popper--default,.md-coachmark__popper--violet,.md-coachmark__popper--green,.md-coachmark__popper--mint,.md-coachmark__popper--blue,.md-coachmark__popper--purple,.md-coachmark__popper--darkmint,.md-coachmark__popper--yellow,.md-coachmark__popper--red,.md-coachmark__popper--darked,.md-coachmark__popper--orange,.md-coachmark__popper--cyan",
+              "declarations": 2
+            },
+            {
+              "selector": ".md-coachmark md-task-item",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 17,
+          "type": 1,
+          "class": 17,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-coachmark md-task-item",
+            ".md-coachmark__popper--default",
+            ".md-coachmark__popper--violet",
+            ".md-coachmark__popper--green",
+            ".md-coachmark__popper--mint",
+            ".md-coachmark__popper--blue",
+            ".md-coachmark__popper--purple",
+            ".md-coachmark__popper--darkmint",
+            ".md-coachmark__popper--yellow",
+            ".md-coachmark__popper--red",
+            ".md-coachmark__popper--darked",
+            ".md-coachmark__popper--orange",
+            ".md-coachmark__popper--cyan",
+            ".md-coachmark__popper--top .md-coachmark__arrow",
+            ".md-coachmark__popper--bottom .md-coachmark__arrow",
+            ".md-coachmark__popper--right .md-coachmark__arrow",
+            ".md-coachmark__popper--left .md-coachmark__arrow"
+          ],
+          "specificity": {
+            "max": 20,
+            "average": 12.411764705882353,
+            "graph": [
+              11,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              20,
+              20,
+              20,
+              20
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-coachmark__popper--top .md-coachmark__arrow",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-coachmark__popper--bottom .md-coachmark__arrow",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-coachmark__popper--right .md-coachmark__arrow",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-coachmark__popper--left .md-coachmark__arrow",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-coachmark md-task-item",
+                "specificity": 11
+              },
+              {
+                "selector": ".md-coachmark__popper--default",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--violet",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--green",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--mint",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--blue",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--purple",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--darkmint",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--yellow",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--red",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--darked",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--orange",
+                "specificity": 10
+              },
+              {
+                "selector": ".md-coachmark__popper--cyan",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 7,
+          "unique": 7,
+          "properties": {
+            "outline": [
+              "2px solid rgba(0,0,0,0)",
+              "1px solid CanvasText"
+            ],
+            "background-color": [
+              "Canvas"
+            ],
+            "border-left": [
+              ".625rem solid Canvas"
+            ],
+            "border-right": [
+              ".625rem solid Canvas"
+            ],
+            "border-top": [
+              ".625rem solid Canvas"
+            ],
+            "border-bottom": [
+              ".625rem solid Canvas"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

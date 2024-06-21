@@ -1,0 +1,1178 @@
+{
+  "size": 10009,
+  "gzipSize": 979,
+  "humanizedSize": "10KB",
+  "humanizedGzipSize": "979B",
+  "rules": {
+    "total": 40,
+    "size": {
+      "graph": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        10,
+        2,
+        1,
+        10,
+        2,
+        2,
+        2,
+        2,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "max": 10,
+      "average": 1.825
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-toggle-switch__label__container::after",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-toggle-switch__label__container",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-toggle-switch__label",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-toggle-switch__input",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch--smaller .md-toggle-switch__label__container::after",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch--smaller .md-toggle-switch__label__container",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch--small .md-toggle-switch__label__container::after",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch--small .md-toggle-switch__label__container",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch__label__container__left",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch__accessible-description",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch__input:disabled+.md-toggle-switch__label,.md-toggle-switch__input.disabled+.md-toggle-switch__label",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 73,
+    "type": 0,
+    "class": 73,
+    "id": 0,
+    "pseudoClass": 43,
+    "pseudoElement": 22,
+    "values": [
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch__input",
+      ".md-toggle-switch__input:disabled+.md-toggle-switch__label",
+      ".md-toggle-switch__input.disabled+.md-toggle-switch__label",
+      ".md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch__accessible-description",
+      ".md-toggle-switch__label",
+      ".md-toggle-switch__label__container",
+      ".md-toggle-switch__label__container__left",
+      ".md-toggle-switch__label__container",
+      ".md-toggle-switch__label__container::after",
+      ".md-toggle-switch--small .md-toggle-switch__label__container",
+      ".md-toggle-switch--small .md-toggle-switch__label__container::after",
+      ".md-toggle-switch--smaller .md-toggle-switch__label__container",
+      ".md-toggle-switch--smaller .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container"
+    ],
+    "specificity": {
+      "max": 70,
+      "average": 48.657534246575345,
+      "graph": [
+        40,
+        41,
+        50,
+        50,
+        50,
+        50,
+        50,
+        51,
+        51,
+        60,
+        60,
+        50,
+        50,
+        51,
+        51,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        61,
+        61,
+        61,
+        61,
+        70,
+        70,
+        70,
+        70,
+        10,
+        30,
+        30,
+        40,
+        40,
+        40,
+        41,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        20,
+        21,
+        20,
+        21,
+        40,
+        41,
+        50,
+        50,
+        50,
+        51,
+        51,
+        60,
+        60,
+        50,
+        50,
+        51,
+        51,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        61,
+        61,
+        61,
+        61,
+        70,
+        70,
+        70,
+        70
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 70
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 61
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 60
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 51
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+          "specificity": 41
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-toggle-switch__input:disabled+.md-toggle-switch__label",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-toggle-switch__input.disabled+.md-toggle-switch__label",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-toggle-switch--small .md-toggle-switch__label__container::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-toggle-switch--smaller .md-toggle-switch__label__container::after",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-toggle-switch--small .md-toggle-switch__label__container",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-toggle-switch--smaller .md-toggle-switch__label__container",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-toggle-switch__label__container::after",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-toggle-switch__input",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-toggle-switch__accessible-description",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-toggle-switch__label",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-toggle-switch__label__container",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-toggle-switch__label__container__left",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-toggle-switch__label__container",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+      ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+      ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+      ".md-toggle-switch__label__container"
+    ]
+  },
+  "declarations": {
+    "total": 73,
+    "unique": 61,
+    "properties": {
+      "background-color": [
+        "var(--toggle-switch-bg-color, #949494)",
+        "var(--toggle-switch-slider-color, #FFFFFF)",
+        "var(--toggle-switch-bg-color--hover, #B2B2B2)",
+        "var(--toggle-switch-bg-color--checked, #007AA3)",
+        "var(--toggle-switch-slider-color--checked, var(--toggle-switch-slider-color, #FFFFFF))",
+        "var(--toggle-switch-bg-color--checked-hover, #005E7D)",
+        "var(--toggle-switch-bg-color--disabled, #EDEDED)",
+        "var(--toggle-switch-slider-color-disabled, #F7F7F7)",
+        "var(--toggle-switch-bg-color--disabled, #EDEDED)",
+        "var(--toggle-switch-bg-color--disabled--checked, #C9F4FF)",
+        "var(--toggle-switch-slider-color-disabled--checked, #FFFFFF)",
+        "var(--toggle-switch-bg-color--disabled--checked, #C9F4FF)",
+        "Canvas",
+        "CanvasText",
+        "HighlightText",
+        "Highlight",
+        "HighlightText",
+        "GrayText",
+        "Canvas",
+        "GrayText",
+        "GrayText",
+        "CanvasText",
+        "GrayText"
+      ],
+      "outline": [
+        "2px solid var(--md-focus-border-color, #005E7D)",
+        "1px solid CanvasText",
+        "2px solid Highlight"
+      ],
+      "margin-left": [
+        "-9999px",
+        ".75rem"
+      ],
+      "opacity": [
+        "0"
+      ],
+      "position": [
+        "absolute",
+        "relative",
+        "absolute"
+      ],
+      "cursor": [
+        "default",
+        "default",
+        "pointer",
+        "pointer"
+      ],
+      "border": [
+        "none",
+        "1px solid var(--toggle-switch-border-color)",
+        "1px solid Canvas"
+      ],
+      "left": [
+        "calc(100% - 2px)",
+        "2px"
+      ],
+      "transform": [
+        "translateX(-100%) translateY(-50%)",
+        "translateY(-50%)"
+      ],
+      "display": [
+        "none",
+        "inline-flex",
+        "block"
+      ],
+      "line-height": [
+        "1.5rem"
+      ],
+      "background-clip": [
+        "padding-box"
+      ],
+      "border-radius": [
+        "24px",
+        "100%"
+      ],
+      "height": [
+        "24px",
+        "1.25rem",
+        "1.375rem",
+        "1.125rem",
+        "1.25rem",
+        "1rem"
+      ],
+      "margin-right": [
+        ".75rem",
+        "0"
+      ],
+      "transition": [
+        "background 350ms",
+        "350ms",
+        "background-color 350ms,outline 350ms",
+        "background-color 350ms",
+        "background 350ms,background-color 350ms,outline 350ms"
+      ],
+      "width": [
+        "2.5rem",
+        "1.25rem",
+        "2.25rem",
+        "1.125rem",
+        "2rem",
+        "1rem"
+      ],
+      "filter": [
+        "brightness(1) contrast(1) saturate(1.5)"
+      ],
+      "box-shadow": [
+        "0 1px 2px 0 rgba(0,0,0,.32)"
+      ],
+      "content": [
+        "\"\""
+      ],
+      "top": [
+        "50%"
+      ]
+    },
+    "resets": {
+      "margin-right": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 2,
+    "unique": 2,
+    "values": [
+      "screen and (-ms-high-contrast: active)",
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "screen and (-ms-high-contrast: active)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-toggle-switch__label__container",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-toggle-switch__label__container"
+          ],
+          "specificity": {
+            "max": 10,
+            "average": 10,
+            "graph": [
+              10
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-toggle-switch__label__container",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 1,
+          "unique": 1,
+          "properties": {
+            "filter": [
+              "brightness(1) contrast(1) saturate(1.5)"
+            ]
+          },
+          "resets": {}
+        }
+      },
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 12,
+          "size": {
+            "graph": [
+              3,
+              2,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1,
+              2,
+              1
+            ],
+            "max": 3,
+            "average": 1.4166666666666667
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+              "declarations": 3
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after,.md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container,.md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+              "declarations": 1
+            },
+            {
+              "selector": ",.md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 27,
+          "type": 0,
+          "class": 27,
+          "id": 0,
+          "pseudoClass": 19,
+          "pseudoElement": 9,
+          "values": [
+            ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+            ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+            ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container"
+          ],
+          "specificity": {
+            "max": 70,
+            "average": 57,
+            "graph": [
+              40,
+              41,
+              50,
+              50,
+              50,
+              51,
+              51,
+              60,
+              60,
+              50,
+              50,
+              51,
+              51,
+              60,
+              60,
+              60,
+              60,
+              60,
+              60,
+              61,
+              61,
+              61,
+              61,
+              70,
+              70,
+              70,
+              70
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 70
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 70
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 70
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 70
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 61
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 61
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 61
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 61
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled.checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled:checked+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 60
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 51
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:checked+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 51
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 51
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 51
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label:hover .md-toggle-switch__label__container",
+                "specificity": 50
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 50
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.focus+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 50
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input:disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 50
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input.disabled+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 50
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container::after",
+                "specificity": 41
+              },
+              {
+                "selector": ".md-toggle-switch .md-toggle-switch__input+.md-toggle-switch__label .md-toggle-switch__label__container",
+                "specificity": 40
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 17,
+          "unique": 11,
+          "properties": {
+            "background-color": [
+              "Canvas",
+              "CanvasText",
+              "HighlightText",
+              "Highlight",
+              "HighlightText",
+              "GrayText",
+              "Canvas",
+              "GrayText",
+              "GrayText",
+              "CanvasText",
+              "GrayText"
+            ],
+            "outline": [
+              "1px solid CanvasText",
+              "2px solid Highlight"
+            ],
+            "transition": [
+              "background-color 350ms,outline 350ms",
+              "background-color 350ms",
+              "background 350ms,background-color 350ms,outline 350ms"
+            ],
+            "border": [
+              "1px solid Canvas"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

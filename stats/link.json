@@ -1,0 +1,512 @@
+{
+  "size": 2056,
+  "gzipSize": 603,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "603B",
+  "rules": {
+    "total": 29,
+    "size": {
+      "graph": [
+        7,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1
+      ],
+      "max": 7,
+      "average": 1.3448275862068966
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-link",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-link--inline",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-link:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-link:focus",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-link.disabled",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.disabled",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--orange.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--orange:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--orange",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--yellow.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--yellow:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--yellow",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--green.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--green:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--green",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--red.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--red:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--red",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--blue.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--blue:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link .md-link--blue",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.md-link--inline.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.md-link--inline:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.md-link--inline:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.md-link--inline",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.disabled,.md-link.md-link--inline.disabled",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link.active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-link:hover",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 30,
+    "type": 0,
+    "class": 30,
+    "id": 0,
+    "pseudoClass": 11,
+    "pseudoElement": 0,
+    "values": [
+      ".md-link",
+      ".md-link:hover",
+      ".md-link:focus",
+      ".md-link.active",
+      ".md-link.disabled",
+      ".md-link.md-link--inline.disabled",
+      ".md-link.md-link--inline",
+      ".md-link.md-link--inline:hover",
+      ".md-link.md-link--inline:focus",
+      ".md-link.md-link--inline.active",
+      ".md-link .md-link--blue",
+      ".md-link .md-link--blue:hover",
+      ".md-link .md-link--blue.active",
+      ".md-link .md-link--red",
+      ".md-link .md-link--red:hover",
+      ".md-link .md-link--red.active",
+      ".md-link .md-link--green",
+      ".md-link .md-link--green:hover",
+      ".md-link .md-link--green.active",
+      ".md-link .md-link--yellow",
+      ".md-link .md-link--yellow:hover",
+      ".md-link .md-link--yellow.active",
+      ".md-link .md-link--orange",
+      ".md-link .md-link--orange:hover",
+      ".md-link .md-link--orange.active",
+      ".md-link:focus",
+      ".md-link.disabled",
+      ".md-link--inline",
+      ".md-link:focus",
+      ".md-link.disabled"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 24,
+      "graph": [
+        10,
+        20,
+        20,
+        20,
+        20,
+        30,
+        20,
+        30,
+        30,
+        30,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        20,
+        30,
+        30,
+        20,
+        20,
+        10,
+        20,
+        20
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-link.md-link--inline.disabled",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link.md-link--inline:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link.md-link--inline:focus",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link.md-link--inline.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--blue:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--blue.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--red:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--red.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--green:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--green.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--yellow:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--yellow.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--orange:hover",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link .md-link--orange.active",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-link:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link.active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link.disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link.md-link--inline",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link .md-link--blue",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link .md-link--red",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link .md-link--green",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link .md-link--yellow",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link .md-link--orange",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link.disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link.disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-link",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-link--inline",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-link.disabled",
+      ".md-link:focus"
+    ]
+  },
+  "declarations": {
+    "total": 39,
+    "unique": 38,
+    "properties": {
+      "color": [
+        "var(--link-default, #005e7d)",
+        "var(--link-hover, #005e7d)",
+        "var(--link-focus, #005e7d)",
+        "var(--link-pressed, #064157)",
+        "var(--link-disabled, #b2b2b2)",
+        "var(--link-inline, #a12512)",
+        "var(--link-inline-hover, #6e1d13)",
+        "var(--link-inline-focus, #a12512)",
+        "var(--link-inline-pressed, #4a1812)",
+        "var(--link-blue, #00a0d1)",
+        "var(--link-blue-hover, #007aa3)",
+        "var(--link-blue-active, #005e7d)",
+        "var(--link-red, #f7644a)",
+        "var(--link-red-hover, #d4371c)",
+        "var(--link-red-active, #a12512)",
+        "var(--link-green, #00ab50)",
+        "var(--link-green-hover, #00853c)",
+        "var(--link-green-active, #03612c)",
+        "var(--link-yellow, #d97f00)",
+        "var(--link-yellow-hover, #a85f00)",
+        "var(--link-yellow-active, #7d4705)",
+        "var(--link-orange, #f26b1d)",
+        "var(--link-orange-hover, #c74f0e)",
+        "var(--link-orange-active, #914017)",
+        "GrayText"
+      ],
+      "border-radius": [
+        ".25rem"
+      ],
+      "cursor": [
+        "pointer"
+      ],
+      "display": [
+        "inline-flex"
+      ],
+      "font-size": [
+        "var(--link-inline-font-size, 14px)",
+        "var(--link-inline-font-size, 14px)"
+      ],
+      "line-height": [
+        "170%",
+        "100%"
+      ],
+      "width": [
+        "fit-content"
+      ],
+      "box-shadow": [
+        "0 0 0 2px var(--link-focus-outline, #007aa3)",
+        "none"
+      ],
+      "outline": [
+        "none",
+        "2px solid Highlight"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "text-decoration": [
+        "underline"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 2,
+          "size": {
+            "graph": [
+              2,
+              1
+            ],
+            "max": 2,
+            "average": 1.5
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-link:focus",
+              "declarations": 2
+            },
+            {
+              "selector": ",.md-link.disabled",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 2,
+          "type": 0,
+          "class": 2,
+          "id": 0,
+          "pseudoClass": 1,
+          "pseudoElement": 0,
+          "values": [
+            ".md-link:focus",
+            ".md-link.disabled"
+          ],
+          "specificity": {
+            "max": 20,
+            "average": 20,
+            "graph": [
+              20,
+              20
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-link:focus",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-link.disabled",
+                "specificity": 20
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 3,
+          "unique": 3,
+          "properties": {
+            "box-shadow": [
+              "none"
+            ],
+            "outline": [
+              "2px solid Highlight"
+            ],
+            "color": [
+              "GrayText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

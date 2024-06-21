@@ -1,0 +1,719 @@
+{
+  "size": 3820,
+  "gzipSize": 983,
+  "humanizedSize": "4KB",
+  "humanizedGzipSize": "983B",
+  "rules": {
+    "total": 40,
+    "size": {
+      "graph": [
+        2,
+        2,
+        3,
+        2,
+        2,
+        3,
+        2,
+        8,
+        18,
+        3,
+        2,
+        6,
+        3,
+        3,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        3,
+        1,
+        10,
+        5,
+        5,
+        4,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        3
+      ],
+      "max": 18,
+      "average": 2.875
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-alert",
+        "declarations": 18
+      },
+      {
+        "selector": ".md-alert.md-alert--call",
+        "declarations": 10
+      },
+      {
+        "selector": ".md-alert__container--call",
+        "declarations": 8
+      },
+      {
+        "selector": ".md-alert__content",
+        "declarations": 6
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-alert__caller",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-alert__title",
+        "declarations": 5
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-alert__caller-title",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-list .md-list-item-header",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert.md-alert--meeting .md-alert__title,.md-alert.md-alert--meeting .md-alert__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert__status,.md-alert__message",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert__title",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert__icon",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert__container--bottom-center",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert__container--top-center",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-list .md-list-item:last-child",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-alert__caller-subtitle",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert.md-alert--error .md-alert__icon::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert.md-alert--warning .md-alert__icon::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert.md-alert--success .md-alert__icon::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__title,.md-alert__message",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__icon::before",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__container--bottom-right",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__container--bottom-left",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__container--top-right",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__container--top-left",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__container",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-list .md-list-item:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-list .md-list-item",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-list",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-alert--call--buttons .md-icon",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--call .md-alert--call--buttons",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--meeting .md-alert__title",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--meeting .md-alert__content--wide",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--meeting .md-alert__content",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--error .md-alert__title",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--warning .md-alert__title",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert.md-alert--success .md-alert__title",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert__button",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert__message",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-alert__status",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 43,
+    "type": 0,
+    "class": 43,
+    "id": 0,
+    "pseudoClass": 2,
+    "pseudoElement": 4,
+    "values": [
+      ".md-alert__container",
+      ".md-alert__container--top-left",
+      ".md-alert__container--top-center",
+      ".md-alert__container--top-right",
+      ".md-alert__container--bottom-left",
+      ".md-alert__container--bottom-center",
+      ".md-alert__container--bottom-right",
+      ".md-alert__container--call",
+      ".md-alert",
+      ".md-alert__icon",
+      ".md-alert__icon::before",
+      ".md-alert__content",
+      ".md-alert__title",
+      ".md-alert__status",
+      ".md-alert__message",
+      ".md-alert__status",
+      ".md-alert__message",
+      ".md-alert__title",
+      ".md-alert__message",
+      ".md-alert__button",
+      ".md-alert.md-alert--success .md-alert__icon::before",
+      ".md-alert.md-alert--success .md-alert__title",
+      ".md-alert.md-alert--warning .md-alert__icon::before",
+      ".md-alert.md-alert--warning .md-alert__title",
+      ".md-alert.md-alert--error .md-alert__icon::before",
+      ".md-alert.md-alert--error .md-alert__title",
+      ".md-alert.md-alert--meeting .md-alert__content",
+      ".md-alert.md-alert--meeting .md-alert__content--wide",
+      ".md-alert.md-alert--meeting .md-alert__title",
+      ".md-alert.md-alert--meeting .md-alert__message",
+      ".md-alert.md-alert--meeting .md-alert__title",
+      ".md-alert.md-alert--call",
+      ".md-alert.md-alert--call .md-alert__title",
+      ".md-alert.md-alert--call .md-alert__caller",
+      ".md-alert.md-alert--call .md-alert__caller-title",
+      ".md-alert.md-alert--call .md-alert__caller-subtitle",
+      ".md-alert.md-alert--call .md-alert--call--buttons",
+      ".md-alert.md-alert--call .md-alert--call--buttons .md-icon",
+      ".md-alert.md-alert--call .md-list",
+      ".md-alert.md-alert--call .md-list .md-list-item",
+      ".md-alert.md-alert--call .md-list .md-list-item:hover",
+      ".md-alert.md-alert--call .md-list .md-list-item:last-child",
+      ".md-alert.md-alert--call .md-list .md-list-item-header"
+    ],
+    "specificity": {
+      "max": 50,
+      "average": 22.186046511627907,
+      "graph": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        31,
+        30,
+        31,
+        30,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        20,
+        30,
+        30,
+        30,
+        30,
+        30,
+        40,
+        30,
+        40,
+        50,
+        50,
+        40
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-alert.md-alert--call .md-list .md-list-item:hover",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-list .md-list-item:last-child",
+          "specificity": 50
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-alert--call--buttons .md-icon",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-list .md-list-item",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-list .md-list-item-header",
+          "specificity": 40
+        },
+        {
+          "selector": ".md-alert.md-alert--success .md-alert__icon::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-alert.md-alert--warning .md-alert__icon::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-alert.md-alert--error .md-alert__icon::before",
+          "specificity": 31
+        },
+        {
+          "selector": ".md-alert.md-alert--success .md-alert__title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--warning .md-alert__title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--error .md-alert__title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--meeting .md-alert__content",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--meeting .md-alert__content--wide",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--meeting .md-alert__title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--meeting .md-alert__message",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--meeting .md-alert__title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-alert__title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-alert__caller",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-alert__caller-title",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-alert__caller-subtitle",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-alert--call--buttons",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call .md-list",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-alert.md-alert--call",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-alert__icon::before",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-alert__container",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--top-left",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--top-center",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--top-right",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--bottom-left",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--bottom-center",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--bottom-right",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__container--call",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__icon",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__content",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__title",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__status",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__message",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__status",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__message",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__title",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__message",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__button",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-alert.md-alert--meeting .md-alert__title",
+      ".md-alert__message",
+      ".md-alert__status",
+      ".md-alert__title"
+    ]
+  },
+  "declarations": {
+    "total": 115,
+    "unique": 79,
+    "properties": {
+      "position": [
+        "fixed"
+      ],
+      "z-index": [
+        "9999"
+      ],
+      "left": [
+        "1em",
+        "50%",
+        "1em",
+        "50%",
+        "50%"
+      ],
+      "top": [
+        "1em",
+        "1em",
+        "1em",
+        "50%"
+      ],
+      "transform": [
+        "translate(-50%)",
+        "translate(-50%)",
+        "translate(-50%, -50%)"
+      ],
+      "right": [
+        "1em",
+        "1em"
+      ],
+      "bottom": [
+        "1em",
+        "1em",
+        "1em"
+      ],
+      "align-content": [
+        "center",
+        "space-between",
+        "center",
+        "center"
+      ],
+      "align-items": [
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "flex"
+      ],
+      "flex-flow": [
+        "row nowrap",
+        "row nowrap",
+        "column nowrap",
+        "column nowrap"
+      ],
+      "justify-content": [
+        "center",
+        "space-between",
+        "space-between",
+        "center",
+        "center"
+      ],
+      "border-top-left-radius": [
+        "5px",
+        "8px"
+      ],
+      "border-top-right-radius": [
+        "5px",
+        "8px"
+      ],
+      "border-bottom-left-radius": [
+        "5px",
+        "8px"
+      ],
+      "border-bottom-right-radius": [
+        "5px",
+        "8px"
+      ],
+      "background-color": [
+        "#fff",
+        "rgba(0,0,0,.04)",
+        "rgba(0,0,0,.04)"
+      ],
+      "border": [
+        "1px solid rgba(0,0,0,.12)"
+      ],
+      "box-shadow": [
+        "0 8px 16px 0 rgba(0,0,0,.08)"
+      ],
+      "margin-bottom": [
+        ".5rem"
+      ],
+      "max-height": [
+        "19.25rem",
+        "31.25rem"
+      ],
+      "min-height": [
+        "4.875rem",
+        "17.625rem"
+      ],
+      "padding": [
+        ".5rem .8125rem .5rem 1.0625rem",
+        ".75rem 1.0625rem 1.5625rem 1.0625rem"
+      ],
+      "width": [
+        "21.375rem",
+        "10rem",
+        "13rem",
+        "17.375rem"
+      ],
+      "font-family": [
+        "\"momentum-ui-icons\"",
+        "\"CiscoSansTT Light\",\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+      ],
+      "font-size": [
+        "2.75rem",
+        "1rem",
+        ".875rem",
+        ".875rem",
+        "1rem",
+        ".875rem"
+      ],
+      "line-height": [
+        "0",
+        "1.5rem",
+        "1.125rem",
+        "1.375rem",
+        "1.5rem",
+        "1.375rem"
+      ],
+      "content": [
+        "\"\\f6e8\"",
+        "\"\\f381\"",
+        "\"\\fca3\"",
+        "\"\\fca3\""
+      ],
+      "color": [
+        "#00a0d1",
+        "#00a0d1",
+        "#03612c",
+        "#292929",
+        "#00ab50",
+        "#00ab50",
+        "#d97f00",
+        "#d97f00",
+        "#f7644a",
+        "#f7644a",
+        "#000",
+        "#000"
+      ],
+      "flex-basis": [
+        "0%"
+      ],
+      "flex-direction": [
+        "column"
+      ],
+      "flex-grow": [
+        "2"
+      ],
+      "padding-left": [
+        "1rem"
+      ],
+      "padding-right": [
+        ".125rem"
+      ],
+      "max-width": [
+        "10rem"
+      ],
+      "word-wrap": [
+        "break-word"
+      ],
+      "margin-left": [
+        ".5rem"
+      ],
+      "overflow": [
+        "hidden"
+      ],
+      "text-overflow": [
+        "ellipsis"
+      ],
+      "white-space": [
+        "nowrap"
+      ],
+      "margin-right": [
+        ".9375rem"
+      ],
+      "font-weight": [
+        "bold",
+        "bold"
+      ],
+      "padding-bottom": [
+        "1.5rem"
+      ],
+      "padding-top": [
+        ".5rem",
+        "1.5rem",
+        ".75rem"
+      ],
+      "fill": [
+        "#fff"
+      ],
+      "border-bottom": [
+        "1px solid rgba(0,0,0,.08)"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

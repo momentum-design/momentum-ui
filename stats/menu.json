@@ -1,0 +1,368 @@
+{
+  "size": 947,
+  "gzipSize": 389,
+  "humanizedSize": "947B",
+  "humanizedGzipSize": "389B",
+  "rules": {
+    "total": 15,
+    "size": {
+      "graph": [
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "max": 3,
+      "average": 1.4
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-menu-item a",
+        "declarations": 3
+      },
+      {
+        "selector": ".md-menu-item.disabled a",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-menu-item",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-menu.justified .md-menu-list",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-menu",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-menu-item.disabled a",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-item--selected,.md-menu-item:hover,.md-menu-item:active,.md-menu-item:focus",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-item.disabled",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-item:active",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-item:hover",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-item--selected",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-item ::slotted(*)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu .md-menu-list",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu--vertical .md-menu-list ::slotted(*)",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu--horizontal .md-menu-list ::slotted(*)",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 18,
+    "type": 3,
+    "class": 18,
+    "id": 0,
+    "pseudoClass": 5,
+    "pseudoElement": 0,
+    "values": [
+      ".md-menu",
+      ".md-menu--horizontal .md-menu-list ::slotted(*)",
+      ".md-menu--vertical .md-menu-list ::slotted(*)",
+      ".md-menu.justified .md-menu-list",
+      ".md-menu .md-menu-list",
+      ".md-menu-item",
+      ".md-menu-item a",
+      ".md-menu-item ::slotted(*)",
+      ".md-menu-item--selected",
+      ".md-menu-item:hover",
+      ".md-menu-item:active",
+      ".md-menu-item.disabled",
+      ".md-menu-item.disabled a",
+      ".md-menu-item--selected",
+      ".md-menu-item:hover",
+      ".md-menu-item:active",
+      ".md-menu-item:focus",
+      ".md-menu-item.disabled a"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 17.555555555555557,
+      "graph": [
+        10,
+        21,
+        21,
+        30,
+        20,
+        10,
+        11,
+        11,
+        10,
+        20,
+        20,
+        20,
+        21,
+        10,
+        20,
+        20,
+        20,
+        21
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-menu.justified .md-menu-list",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-menu--horizontal .md-menu-list ::slotted(*)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-menu--vertical .md-menu-list ::slotted(*)",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-menu-item.disabled a",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-menu-item.disabled a",
+          "specificity": 21
+        },
+        {
+          "selector": ".md-menu .md-menu-list",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item.disabled",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item:hover",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item:active",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item:focus",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-item a",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-menu-item ::slotted(*)",
+          "specificity": 11
+        },
+        {
+          "selector": ".md-menu",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-menu-item",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-menu-item--selected",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-menu-item--selected",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": [
+      ".md-menu-item--selected",
+      ".md-menu-item.disabled a",
+      ".md-menu-item:active",
+      ".md-menu-item:hover"
+    ]
+  },
+  "declarations": {
+    "total": 21,
+    "unique": 17,
+    "properties": {
+      "margin": [
+        "0",
+        "0"
+      ],
+      "padding": [
+        "0",
+        ".125rem",
+        ".375rem .75rem",
+        "0 .1875rem"
+      ],
+      "display": [
+        "inline-flex",
+        "flex",
+        "flex",
+        "flex"
+      ],
+      "justify-content": [
+        "space-between"
+      ],
+      "list-style": [
+        "none"
+      ],
+      "color": [
+        "var(--menu-default, #121212)",
+        "var(--md-disabled-text-color)",
+        "GrayText"
+      ],
+      "background": [
+        "var(--menu-pressed-bg, #91ebff)",
+        "var(--menu-hover-bg, #c9f4ff)",
+        "var(--menu-pressed-bg, #91ebff)",
+        "rgba(0,0,0,0)"
+      ],
+      "pointer-events": [
+        "none"
+      ],
+      "outline": [
+        "1px solid Highlight"
+      ]
+    },
+    "resets": {
+      "margin": 2,
+      "padding": 1
+    }
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 2,
+          "size": {
+            "graph": [
+              1,
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ",.md-menu-item.disabled a",
+              "declarations": 1
+            },
+            {
+              "selector": ".md-menu-item--selected,.md-menu-item:hover,.md-menu-item:active,.md-menu-item:focus",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 5,
+          "type": 1,
+          "class": 5,
+          "id": 0,
+          "pseudoClass": 3,
+          "pseudoElement": 0,
+          "values": [
+            ".md-menu-item--selected",
+            ".md-menu-item:hover",
+            ".md-menu-item:active",
+            ".md-menu-item:focus",
+            ".md-menu-item.disabled a"
+          ],
+          "specificity": {
+            "max": 21,
+            "average": 18.2,
+            "graph": [
+              10,
+              20,
+              20,
+              20,
+              21
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-menu-item.disabled a",
+                "specificity": 21
+              },
+              {
+                "selector": ".md-menu-item:hover",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-menu-item:active",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-menu-item:focus",
+                "specificity": 20
+              },
+              {
+                "selector": ".md-menu-item--selected",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 2,
+          "unique": 2,
+          "properties": {
+            "outline": [
+              "1px solid Highlight"
+            ],
+            "color": [
+              "GrayText"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

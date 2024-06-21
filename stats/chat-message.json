@@ -1,0 +1,265 @@
+{
+  "size": 934,
+  "gzipSize": 408,
+  "humanizedSize": "934B",
+  "humanizedGzipSize": "408B",
+  "rules": {
+    "total": 8,
+    "size": {
+      "graph": [
+        2,
+        5,
+        3,
+        6,
+        6,
+        5,
+        1,
+        1
+      ],
+      "max": 6,
+      "average": 3.625
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-chat-message) .md-chat-message_title",
+        "declarations": 6
+      },
+      {
+        "selector": ":host(md-chat-message) .md-chat-message_heading",
+        "declarations": 6
+      },
+      {
+        "selector": ":host(md-chat-message) .md-chat-message_title span",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(md-chat-message) .md-chat-message",
+        "declarations": 5
+      },
+      {
+        "selector": ":host(md-chat-message) .md-chat-message_content",
+        "declarations": 3
+      },
+      {
+        "selector": ":host(:focus)",
+        "declarations": 2
+      },
+      {
+        "selector": ".md-alert__icon",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-chat-message) .md-chat-message_time",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 8,
+    "type": 1,
+    "class": 7,
+    "id": 0,
+    "pseudoClass": 1,
+    "pseudoElement": 0,
+    "values": [
+      ":host(:focus)",
+      ":host(md-chat-message) .md-chat-message",
+      ":host(md-chat-message) .md-chat-message_content",
+      ":host(md-chat-message) .md-chat-message_heading",
+      ":host(md-chat-message) .md-chat-message_title",
+      ":host(md-chat-message) .md-chat-message_title span",
+      ":host(md-chat-message) .md-chat-message_time",
+      ".md-alert__icon"
+    ],
+    "specificity": {
+      "max": 21,
+      "average": 17.625,
+      "graph": [
+        10,
+        20,
+        20,
+        20,
+        20,
+        21,
+        20,
+        10
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host(md-chat-message) .md-chat-message_title span",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-chat-message) .md-chat-message",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-chat-message) .md-chat-message_content",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-chat-message) .md-chat-message_heading",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-chat-message) .md-chat-message_title",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(md-chat-message) .md-chat-message_time",
+          "specificity": 20
+        },
+        {
+          "selector": ":host(:focus)",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-alert__icon",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 29,
+    "unique": 25,
+    "properties": {
+      "box-shadow": [
+        "none"
+      ],
+      "outline": [
+        "none"
+      ],
+      "color": [
+        "var(--chat-message-color, #1C1C1C)",
+        "var(--chat-message-color-heading, #3B3B3B)"
+      ],
+      "display": [
+        "flex",
+        "flex",
+        "flex",
+        "flex",
+        "block"
+      ],
+      "font-size": [
+        ".875rem",
+        ".75rem"
+      ],
+      "line-height": [
+        "1.375rem",
+        ".75rem"
+      ],
+      "margin": [
+        ".75rem 0"
+      ],
+      "flex-direction": [
+        "column"
+      ],
+      "padding-left": [
+        ".75rem"
+      ],
+      "flex": [
+        "0 1 auto",
+        "0 1 auto"
+      ],
+      "margin-bottom": [
+        "calc(0.75rem*.5)"
+      ],
+      "align-content": [
+        "center"
+      ],
+      "align-items": [
+        "center"
+      ],
+      "flex-flow": [
+        "row nowrap"
+      ],
+      "justify-content": [
+        "center"
+      ],
+      "overflow": [
+        "hidden"
+      ],
+      "text-overflow": [
+        "ellipsis"
+      ],
+      "white-space": [
+        "nowrap"
+      ],
+      "width": [
+        "100%"
+      ],
+      "margin-left": [
+        "calc(0.75rem*1.5)"
+      ],
+      "background-color": [
+        "Canvas"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 1,
+    "unique": 1,
+    "values": [
+      "(forced-colors: active)"
+    ],
+    "contents": [
+      {
+        "value": "(forced-colors: active)",
+        "rules": {
+          "total": 1,
+          "size": {
+            "graph": [
+              1
+            ],
+            "max": 1,
+            "average": 1
+          },
+          "selectorByRuleSizes": [
+            {
+              "selector": ".md-alert__icon",
+              "declarations": 1
+            }
+          ]
+        },
+        "selectors": {
+          "total": 1,
+          "type": 0,
+          "class": 1,
+          "id": 0,
+          "pseudoClass": 0,
+          "pseudoElement": 0,
+          "values": [
+            ".md-alert__icon"
+          ],
+          "specificity": {
+            "max": 10,
+            "average": 10,
+            "graph": [
+              10
+            ],
+            "sortedGraph": [
+              {
+                "selector": ".md-alert__icon",
+                "specificity": 10
+              }
+            ]
+          },
+          "repeated": []
+        },
+        "declarations": {
+          "total": 1,
+          "unique": 1,
+          "properties": {
+            "background-color": [
+              "Canvas"
+            ]
+          },
+          "resets": {}
+        }
+      }
+    ]
+  }
+}

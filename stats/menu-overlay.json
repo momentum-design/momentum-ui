@@ -1,0 +1,272 @@
+{
+  "size": 1672,
+  "gzipSize": 527,
+  "humanizedSize": "2KB",
+  "humanizedGzipSize": "527B",
+  "rules": {
+    "total": 12,
+    "size": {
+      "graph": [
+        1,
+        3,
+        1,
+        7,
+        6,
+        1,
+        5,
+        1,
+        4,
+        4,
+        4,
+        4
+      ],
+      "max": 7,
+      "average": 3.4166666666666665
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ".md-menu-overlay .overlay-content",
+        "declarations": 7
+      },
+      {
+        "selector": ".md-menu-overlay .overlay-container",
+        "declarations": 6
+      },
+      {
+        "selector": ".overlay-arrow",
+        "declarations": 5
+      },
+      {
+        "selector": ".overlay-container[data-popper-placement^=left]>.overlay-arrow",
+        "declarations": 4
+      },
+      {
+        "selector": ".overlay-container[data-popper-placement^=right]>.overlay-arrow",
+        "declarations": 4
+      },
+      {
+        "selector": ".overlay-container[data-popper-placement^=bottom]>.overlay-arrow",
+        "declarations": 4
+      },
+      {
+        "selector": ".overlay-container[data-popper-placement^=top]>.overlay-arrow",
+        "declarations": 4
+      },
+      {
+        "selector": ".md-menu-overlay",
+        "declarations": 3
+      },
+      {
+        "selector": ".overlay-arrow[data-show]",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-overlay .overlay-container[data-show]",
+        "declarations": 1
+      },
+      {
+        "selector": ".md-menu-overlay *",
+        "declarations": 1
+      },
+      {
+        "selector": ":host",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 12,
+    "type": 0,
+    "class": 11,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ":host",
+      ".md-menu-overlay",
+      ".md-menu-overlay *",
+      ".md-menu-overlay .overlay-content",
+      ".md-menu-overlay .overlay-container",
+      ".md-menu-overlay .overlay-container[data-show]",
+      ".overlay-arrow",
+      ".overlay-arrow[data-show]",
+      ".overlay-container[data-popper-placement^=top]>.overlay-arrow",
+      ".overlay-container[data-popper-placement^=bottom]>.overlay-arrow",
+      ".overlay-container[data-popper-placement^=right]>.overlay-arrow",
+      ".overlay-container[data-popper-placement^=left]>.overlay-arrow"
+    ],
+    "specificity": {
+      "max": 30,
+      "average": 20.833333333333332,
+      "graph": [
+        10,
+        10,
+        10,
+        20,
+        20,
+        30,
+        10,
+        20,
+        30,
+        30,
+        30,
+        30
+      ],
+      "sortedGraph": [
+        {
+          "selector": ".md-menu-overlay .overlay-container[data-show]",
+          "specificity": 30
+        },
+        {
+          "selector": ".overlay-container[data-popper-placement^=top]>.overlay-arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".overlay-container[data-popper-placement^=bottom]>.overlay-arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".overlay-container[data-popper-placement^=right]>.overlay-arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".overlay-container[data-popper-placement^=left]>.overlay-arrow",
+          "specificity": 30
+        },
+        {
+          "selector": ".md-menu-overlay .overlay-content",
+          "specificity": 20
+        },
+        {
+          "selector": ".md-menu-overlay .overlay-container",
+          "specificity": 20
+        },
+        {
+          "selector": ".overlay-arrow[data-show]",
+          "specificity": 20
+        },
+        {
+          "selector": ":host",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-menu-overlay",
+          "specificity": 10
+        },
+        {
+          "selector": ".md-menu-overlay *",
+          "specificity": 10
+        },
+        {
+          "selector": ".overlay-arrow",
+          "specificity": 10
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 41,
+    "unique": 35,
+    "properties": {
+      "--vw-padding": [
+        "16px"
+      ],
+      "box-sizing": [
+        "border-box",
+        "inherit",
+        "border-box"
+      ],
+      "color": [
+        "var(--md-primary-text-color)"
+      ],
+      "position": [
+        "relative",
+        "absolute"
+      ],
+      "background-color": [
+        "var(--md-secondary-white-bg-color)"
+      ],
+      "border": [
+        "1px solid var(--md-menu-overlay-border-color, --gray-20)"
+      ],
+      "border-radius": [
+        ".5rem",
+        ".5rem"
+      ],
+      "display": [
+        "flex",
+        "none",
+        "block"
+      ],
+      "justify-content": [
+        "space-around"
+      ],
+      "max-width": [
+        "calc(100vw - var(--vw-padding)*2)"
+      ],
+      "overflow-y": [
+        "auto"
+      ],
+      "box-shadow": [
+        "0 8px 16px rgba(0,0,0,.16),0 0 1px rgba(0,0,0,.14)"
+      ],
+      "z-index": [
+        "1000",
+        "-1"
+      ],
+      "filter": [
+        "drop-shadow(0 0 5px rgba(0, 0, 0, 0.16))"
+      ],
+      "height": [
+        "0"
+      ],
+      "visibility": [
+        "hidden",
+        "visible"
+      ],
+      "width": [
+        "0"
+      ],
+      "border-left": [
+        "solid 1rem rgba(0,0,0,0)",
+        "solid 1rem rgba(0,0,0,0)",
+        "solid 1rem var(--md-tertiary-white-bg-color)"
+      ],
+      "border-right": [
+        "solid 1rem rgba(0,0,0,0)",
+        "solid 1rem rgba(0,0,0,0)",
+        "solid 1rem var(--md-tertiary-white-bg-color)"
+      ],
+      "border-top": [
+        "solid 1rem var(--md-tertiary-white-bg-color)",
+        "solid 1rem rgba(0,0,0,0)",
+        "solid 1rem rgba(0,0,0,0)"
+      ],
+      "bottom": [
+        "-0.875rem"
+      ],
+      "border-bottom": [
+        "solid 1rem var(--md-tertiary-white-bg-color)",
+        "solid 1rem rgba(0,0,0,0)",
+        "solid 1rem rgba(0,0,0,0)"
+      ],
+      "top": [
+        "-0.875rem"
+      ],
+      "left": [
+        "-0.875rem"
+      ],
+      "right": [
+        "-0.875rem"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

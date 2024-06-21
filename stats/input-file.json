@@ -1,0 +1,77 @@
+{
+  "size": 96,
+  "gzipSize": 91,
+  "humanizedSize": "96B",
+  "humanizedGzipSize": "91B",
+  "rules": {
+    "total": 2,
+    "size": {
+      "graph": [
+        1,
+        1
+      ],
+      "max": 1,
+      "average": 1
+    },
+    "selectorByRuleSizes": [
+      {
+        "selector": ":host(md-input-file) input[type=file]",
+        "declarations": 1
+      },
+      {
+        "selector": ":host(md-input-file) md-button",
+        "declarations": 1
+      }
+    ]
+  },
+  "selectors": {
+    "total": 2,
+    "type": 2,
+    "class": 0,
+    "id": 0,
+    "pseudoClass": 0,
+    "pseudoElement": 0,
+    "values": [
+      ":host(md-input-file) md-button",
+      ":host(md-input-file) input[type=file]"
+    ],
+    "specificity": {
+      "max": 21,
+      "average": 16,
+      "graph": [
+        11,
+        21
+      ],
+      "sortedGraph": [
+        {
+          "selector": ":host(md-input-file) input[type=file]",
+          "specificity": 21
+        },
+        {
+          "selector": ":host(md-input-file) md-button",
+          "specificity": 11
+        }
+      ]
+    },
+    "repeated": []
+  },
+  "declarations": {
+    "total": 2,
+    "unique": 2,
+    "properties": {
+      "margin": [
+        ".25rem"
+      ],
+      "display": [
+        "none"
+      ]
+    },
+    "resets": {}
+  },
+  "mediaQueries": {
+    "total": 0,
+    "unique": 0,
+    "values": [],
+    "contents": []
+  }
+}

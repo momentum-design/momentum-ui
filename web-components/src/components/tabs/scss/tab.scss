@@ -8,7 +8,7 @@
 }
 
 :host([selected]) button {
-  border-bottom: $tab-active-border;
+  border-bottom: var(--tabs-default-active-bottom-border, $tab-active-border);
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 
@@ -182,8 +182,8 @@ button {
     background: Canvas;
   }
 
-  button{
-    &:hover{
+  button {
+    &:hover {
       outline: 1px solid Highlight;
       outline-offset: -1px;
     }
@@ -192,10 +192,9 @@ button {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }
-  button:disabled{
+  button:disabled {
     forced-color-adjust: none;
     background-color: none;
     color: GrayText;
   }
 }
-

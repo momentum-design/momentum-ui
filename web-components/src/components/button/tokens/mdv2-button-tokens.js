@@ -110,12 +110,12 @@ const button = {
     },
     outline: {
       color: {
-        light: colors.green[70].name,
-        dark: colors.green[40].name
+        light: "$mds-color-theme-outline-join-normal",
+        dark: "$mds-color-theme-outline-join-normal"
       },
       "text-color": {
-        light: colors.green[70].name,
-        dark: colors.green[40].name
+        light: "$mds-color-theme-text-success-normal",
+        dark: "$mds-color-theme-text-success-normal"
       }
     }
   },
@@ -224,12 +224,12 @@ const button = {
     },
     outline: {
       color: {
-        light: colors.red[70].name,
-        dark: colors.red[40].name
+        light: "$mds-color-theme-outline-cancel-normal",
+        dark: "$mds-color-theme-outline-cancel-normal"
       },
       "text-color": {
-        light: colors.red[70].name,
-        dark: colors.red[40].name
+        light: "$mds-color-theme-text-error-normal",
+        dark: "$mds-color-theme-text-error-normal"
       }
     }
   },

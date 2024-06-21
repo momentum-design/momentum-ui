@@ -1,8 +1,8 @@
+import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import { ThemeName } from "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
-import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -145,12 +145,7 @@ export class Sandbox extends LitElement {
 
   render() {
     return html`
-      <md-theme
-        class="theme-toggle"
-        id="app-theme"
-        ?darkTheme=${this.darkTheme}
-        theme=${this.theme}
-      >
+      <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
           <div class="container" aria-label="md-accordion">

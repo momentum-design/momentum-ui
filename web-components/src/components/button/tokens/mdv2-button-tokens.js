@@ -279,19 +279,19 @@ const button = {
   },
   available: {
     "bg-color": {
-      light: colors.green["05"].name,
-      dark: colors.green[90].name
+      light: "$mds-color-theme-background-alert-success-normal",
+      dark: "$mds-color-theme-background-alert-success-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.green[10].name,
-        dark: colors.green[80].name
+        light: "$mds-color-theme-background-alert-success-hover",
+        dark: "$mds-color-theme-background-alert-success-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.green[10].name,
-        dark: colors.green[80].name
+        light: "$mds-color-theme-background-alert-success-active",
+        dark: "$mds-color-theme-background-alert-success-active"
       }
     }
   },

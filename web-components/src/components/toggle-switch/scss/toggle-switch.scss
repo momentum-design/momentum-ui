@@ -21,9 +21,10 @@
       &:checked {
         + .md-toggle-switch__label {
           .md-toggle-switch__label__container {
+            border: none;
             &::after {
               left: calc(100% - 2px);
-              transform: translateX(-100%);
+              transform: translateX(-100%) translateY(-50%);              
             }
           }
         }
@@ -41,7 +42,7 @@
 
       &__container {
         background-clip: padding-box;
-        border: none;
+        border: 1px solid var(--toggle-switch-border-color);
         border-radius: $toggle-switch__height;
         cursor: pointer;
         display: block;
@@ -61,14 +62,14 @@
         }
 
         &::after {
-          border-radius: 100%;
-          bottom: 2px;
+          border-radius: 100%;          
           box-shadow: 0 1px 2px 0 $black-32;
           content: "";
           height: $toggle-switch__size;
           left: 2px;
           position: absolute;
-          top: 2px;
+          top: 50%;
+          transform: translateY(-50%);
           transition: 350ms;
           width: $toggle-switch__size;
         }
@@ -85,7 +86,6 @@
           width: $toggle-switch__size--small;
         }
       }
-
     }
 
     &--smaller {
@@ -102,7 +102,7 @@
   }
 }
 
-@media(forced-colors: active) {
+@media (forced-colors: active) {
   .md-toggle-switch {
     .md-toggle-switch__input {
       + .md-toggle-switch__label {

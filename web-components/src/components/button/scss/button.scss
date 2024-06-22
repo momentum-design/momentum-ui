@@ -674,6 +674,7 @@
 
 :host([variant="available"]) .md-button {
   background-color: var(--button-available-bg-color, $lm-button-available-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-available-hover-bg-color, $lm-button-available-hover-bg-color-light);
@@ -692,6 +693,7 @@
 
 :host([variant="unavailable"]) .md-button {
   background-color: var(--button-unavailable-bg-color, $lm-button-unavailable-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-unavailable-hover-bg-color, $lm-button-unavailable-hover-bg-color-light);
@@ -710,6 +712,7 @@
 
 :host([variant="idle"]) .md-button {
   background-color: var(--button-idle-bg-color, $lm-button-idle-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-idle-hover-bg-color, $lm-button-idle-hover-bg-color-light);
@@ -770,6 +773,7 @@
 
 :host([variant="engaged"]) .md-button {
   background-color: var(--button-engaged-bg-color, $lm-button-engaged-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-engaged-hover-bg-color, $lm-button-engaged-hover-bg-color-light);

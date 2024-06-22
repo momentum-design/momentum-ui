@@ -110,12 +110,12 @@ const button = {
     },
     outline: {
       color: {
-        light: colors.green[70].name,
-        dark: colors.green[40].name
+        light: "$mds-color-theme-outline-join-normal",
+        dark: "$mds-color-theme-outline-join-normal"
       },
       "text-color": {
-        light: colors.green[70].name,
-        dark: colors.green[40].name
+        light: "$mds-color-theme-text-success-normal",
+        dark: "$mds-color-theme-text-success-normal"
       }
     }
   },
@@ -224,12 +224,12 @@ const button = {
     },
     outline: {
       color: {
-        light: colors.red[70].name,
-        dark: colors.red[40].name
+        light: "$mds-color-theme-outline-cancel-normal",
+        dark: "$mds-color-theme-outline-cancel-normal"
       },
       "text-color": {
-        light: colors.red[70].name,
-        dark: colors.red[40].name
+        light: "$mds-color-theme-text-error-normal",
+        dark: "$mds-color-theme-text-error-normal"
       }
     }
   },
@@ -279,73 +279,73 @@ const button = {
   },
   available: {
     "bg-color": {
-      light: colors.green["05"].name,
-      dark: colors.green[90].name
+      light: "$mds-color-theme-background-alert-success-normal",
+      dark: "$mds-color-theme-background-alert-success-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.green[10].name,
-        dark: colors.green[80].name
+        light: "$mds-color-theme-background-alert-success-hover",
+        dark: "$mds-color-theme-background-alert-success-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.green[10].name,
-        dark: colors.green[80].name
+        light: "$mds-color-theme-background-alert-success-active",
+        dark: "$mds-color-theme-background-alert-success-active"
       }
     }
   },
   engaged: {
     "bg-color": {
-      light: colors.yellow["05"].name,
-      dark: colors.yellow[90].name
+      light: "$mds-color-theme-background-alert-warning-normal",
+      dark: "$mds-color-theme-background-alert-warning-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.yellow[10].name,
-        dark: colors.yellow[80].name
+        light: "$mds-color-theme-background-alert-warning-hover",
+        dark: "$mds-color-theme-background-alert-warning-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.yellow[20].name,
-        dark: colors.yellow[70].name
+        light: "$mds-color-theme-background-alert-warning-active",
+        dark: "$mds-color-theme-background-alert-warning-active"
       }
     }
   },
   unavailable: {
     "bg-color": {
-      light: colors.red["05"].name,
-      dark: colors.red[90].name
+      light: "$mds-color-theme-background-alert-error-normal",
+      dark: "$mds-color-theme-background-alert-error-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.red[10].name,
-        dark: colors.red[80].name
+        light: "$mds-color-theme-background-alert-error-hover",
+        dark: "$mds-color-theme-background-alert-error-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.red[10].name,
-        dark: colors.red[80].name
+        light: "$mds-color-theme-background-alert-error-active",
+        dark: "$mds-color-theme-background-alert-error-active"
       }
     }
   },
   idle: {
     "bg-color": {
-      light: colors.gray["05"].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-alert-default-normal",
+      dark: "$mds-color-theme-background-alert-default-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[80].name
+        light: "$mds-color-theme-background-alert-default-hover",
+        dark: "$mds-color-theme-background-alert-default-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[80].name
+        light: "$mds-color-theme-background-alert-default-active",
+        dark: "$mds-color-theme-background-alert-default-active"
       }
     }
   },
@@ -387,8 +387,8 @@ const button = {
   },
   "focus-ring": {
     color: {
-      light: colors.blue[60].name,
-      dark: colors.blue[40].name
+      light: "$mds-color-theme-outline-theme-normal",
+      dark: "$mds-color-theme-outline-theme-normal"
     }
   }
 };

@@ -61,7 +61,7 @@ import {
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends LitElement {
   @property({ type: Boolean }) darkTheme = false;
-  @property({ type: String }) theme: ThemeName = "";
+  @property({ type: String }) theme: ThemeName = "lumos";
 
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);

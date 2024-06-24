@@ -527,11 +527,24 @@ export namespace ComboBox {
       }
     }
 
+    private getListBoxVerticalPadding() {
+      if (this.listBox) {
+        const computedStyle = window.getComputedStyle(this.listBox, null);
+        const paddingTop = parseInt(computedStyle.getPropertyValue("padding-top"));
+        const paddingBottom = parseInt(computedStyle.getPropertyValue("padding-bottom"));
+
+        return paddingTop + paddingBottom;
+      }
+
+      return 0;
+    }
+
     private resizeListbox() {
       this.updateOnNextFrame(() => {
         let height = 0;
         let labelHeight = 0;
         let virtualizerHeight = 0;
+
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
@@ -540,7 +553,7 @@ export namespace ComboBox {
           height = updatedList
             .slice(0, this.visibleOptions)
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
-            virtualizerHeight =
+          virtualizerHeight =
             this.checkForVirtualScroll() && this.allowSelectAll
               ? updatedList
                   .slice(1, this.visibleOptions)
@@ -555,17 +568,17 @@ export namespace ComboBox {
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
         if (this.listBox) {
-          this.listBox.style.maxHeight = `${height + labelHeight + 10}px`;
+          this.listBox.style.maxHeight = `${height + labelHeight + 16}px`;
         }
-       
+
         if (this.virtualizer) {
-          this.virtualizer.style.height = `${virtualizerHeight + 10}px`;
+          this.virtualizer.style.height = `${virtualizerHeight + 16}px`;
         }
         if (this.showCustomError || this.showLoader) {
           const customContent = this.listBox?.querySelector("[slot]");
           if (this.listBox && customContent) {
-            this.listBox.style.height = `${customContent.clientHeight + 2}px`;
-            this.listBox.style.maxHeight = `${customContent.clientHeight + 2}px`;
+            this.listBox.style.height = `${customContent.clientHeight + 16}px`;
+            this.listBox.style.maxHeight = `${customContent.clientHeight + 16}px`;
           }
         }
       });
@@ -1401,7 +1414,7 @@ export namespace ComboBox {
     }
 
     getSelectAllOption() {
-      const ariaLabelForCount = this.checkForVirtualScroll() ? `, 1 of ${this.options.length + 1}` : ""
+      const ariaLabelForCount = this.checkForVirtualScroll() ? `, 1 of ${this.options.length + 1}` : "";
       return html`
         <div
           id="selectAll"
@@ -1528,15 +1541,15 @@ export namespace ComboBox {
         return styleMap({
           visibility: isInvisible ? "hidden" : "visible",
           "z-index": isInvisible ? "-1" : "99",
-          "overflow": "hidden"
+          overflow: "hidden"
         });
       }
     }
 
     renderItem(option: OptionMember | string, index: number) {
       const count = this.allowSelectAll ? index + 2 : index + 1;
-      const total = this.allowSelectAll ? this.options.length + 1 : this.options.length
-      const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : ""
+      const total = this.allowSelectAll ? this.options.length + 1 : this.options.length;
+      const ariaLabelForCount = this.checkForVirtualScroll() ? `, ${count} of ${total}` : "";
       return html`
         <div
           id=${this.getOptionId(option)}
@@ -1647,16 +1660,19 @@ export namespace ComboBox {
                       this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
                         .length > 0
                     ? html`
-                    <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
-                        ${scroll({
-                          items: this.filterOptions(
-                            this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                          ),
-                          renderItem: (item: string | OptionMember, index?: number) =>
-                            this.renderItem(item, index || 0),
-                          useShadowDOM: false,
-                          scrollToIndex: { index: this.focusedIndex , position: this.focusedIndex === -1 ? "start" : "center" }
-                        })}
+                        <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
+                          ${scroll({
+                            items: this.filterOptions(
+                              this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                            ),
+                            renderItem: (item: string | OptionMember, index?: number) =>
+                              this.renderItem(item, index || 0),
+                            useShadowDOM: false,
+                            scrollToIndex: {
+                              index: this.focusedIndex,
+                              position: this.focusedIndex === -1 ? "start" : "center"
+                            }
+                          })}
                         </div>
                       `
                     : nothing}

@@ -18,6 +18,8 @@ export namespace TabPanel {
     @property({ type: Boolean, reflect: true }) selected = false;
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, reflect: true, attribute: "focusable-panel" }) focusablePanel = true;
+    @property({ type: String }) removeFocus = '';
+    
 
     static get styles() {
       return [reset, styles];
@@ -28,6 +30,9 @@ export namespace TabPanel {
       this.setAttribute("role", "tabpanel");
       if (this.focusablePanel) {
         this.setAttribute("tabindex", "0");
+      }
+      if(this.removeFocus){
+        this.removeAttribute("tabindex")
       }
     }
 

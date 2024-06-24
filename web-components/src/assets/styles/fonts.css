@@ -8,6 +8,14 @@
 
 @font-face {
   font-display: fallback;
+  font-family: "Inter Regular";
+  font-style: normal;
+  font-weight: 450;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
   font-family: "CiscoSansTT Thin";
   font-style: normal;
   font-weight: normal;

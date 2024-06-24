@@ -1,6 +1,9 @@
+@import "@/wc_scss/typography/settings.scss";
+
 @mixin global-theme-specfic-vars {
   --rem-base: 14px;
   font-size: var(--rem-base);
+  font-family: $brand-font-regular;
 
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;

@@ -14,6 +14,8 @@
     padding: $button-group-indent;
     transition: background 0.2s ease;
 
+    border: 1px solid var(--button-group-outline-border);
+
     &:hover {
       background: var(--button-group-bg-color-hover, $lm-button-group-bg-color-hover-light);
     }
@@ -43,6 +45,11 @@
       }
     }
 
+    ::slotted(:hover) {
+      background: var(--button-group-color-hover, none);
+      color: var(--button-group-color-active, $lm-button-group-color-active-light);
+    }
+    
     ::slotted([selected]) {
       background: var(--button-group-bg-color-active, $lm-button-group-bg-color-active-light);
       box-shadow: $button-group-btn-shadow;
@@ -64,3 +71,25 @@
   }
 }
 
+
+@media (forced-colors:active) {
+    :host(md-button-group) {
+      .md-button-group {
+        outline: 1px solid CanvasText; 
+        background: Canvas;
+  
+        ::slotted([selected]) {
+          forced-color-adjust: none;
+          outline: 1px solid Highlight;
+          background: Highlight;
+          color:HighlightText;
+        }
+      }
+    }
+    :host([focus-visible]:not([disabled])) {
+      .md-button-group {
+        outline: 2px solid Highlight; 
+      }
+    }
+
+}

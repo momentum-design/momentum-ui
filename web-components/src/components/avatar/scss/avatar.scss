@@ -260,35 +260,35 @@
         @include avatar-overlay-style;
         content: $pto-size;
 
-        font-size: rem-calc($size/2);
+        font-size: rem-calc($size*0.5);
       }
 
       &.md-avatar--dnd::after {
         @include avatar-overlay-style;
         content: $dnd-size;
 
-        font-size: rem-calc($size/2);
+        font-size: rem-calc($size*0.5);
       }
 
       &.md-avatar--call::after {
         @include avatar-overlay-style;
         content: $call-size;
 
-        font-size: rem-calc($size/2);
+        font-size: rem-calc($size*0.5);
       }
 
       &.md-avatar--meeting::after {
         @include avatar-overlay-style;
         content: $meet-size;
 
-        font-size: rem-calc($size/2);
+        font-size: rem-calc($size*0.5);
       }
 
       &.md-avatar--presenting::after {
         @include avatar-overlay-style;
         content: $present-size;
 
-        font-size: rem-calc($size/2);
+        font-size: rem-calc($size*0.5);
       }
 
       &.md-avatar--self {
@@ -325,4 +325,12 @@
   -ms-interpolation-mode: bicubic;
   max-width: 100%;
   vertical-align: middle;
+}
+
+
+
+@media(forced-colors:active){
+  .md-avatar {
+    outline: 1px solid CanvasText;
+  }
 }

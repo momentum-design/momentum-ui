@@ -8,7 +8,7 @@
 }
 
 :host([selected]) button {
-  border-bottom: $tab-active-border;
+  border-bottom: var(--tabs-default-active-bottom-border, $tab-active-border);
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
 }
 
@@ -125,6 +125,11 @@ button {
     &:hover {
       background: none;
     }
+
+    &:focus {
+      outline: none !important;
+      border: none !important;
+    }
   }
 
   ::slotted(span) {
@@ -147,5 +152,49 @@ button {
 
   &:focus {
     outline: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+  :host {
+    background-color: Canvas;
+    box-shadow: none;
+  }
+
+  :host button {
+    border: none;
+  }
+
+  :host([selected]) button {
+    border-bottom: 3px solid Highlight;
+    color: Highlight;
+  }
+
+  :host(:focus) button {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+    box-shadow: none;
+    border: none;
+  }
+
+  :host(:focus[selected]) {
+    background: Canvas;
+  }
+
+  button {
+    &:hover {
+      outline: 1px solid Highlight;
+      outline-offset: -1px;
+    }
+  }
+  button:focus:not(:disabled) {
+    outline: 1px solid Highlight;
+    outline-offset: -1px;
+  }
+  button:disabled {
+    forced-color-adjust: none;
+    background-color: none;
+    color: GrayText;
   }
 }

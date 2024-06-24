@@ -27,6 +27,13 @@
           var(--alert-banner-error-text-color, $alert-banner-error__color)
         );
       }
+
+      &--success {
+        @include alert-banner-color(
+          var(--alert-banner-success-bg-color, $alert-banner-info__background),
+          var(--alert-banner-success-text-color, $alert-banner-info__color)
+        );
+      }
     }
 
     &__text {
@@ -47,6 +54,12 @@
       right: $alert-banner-close__size;
       top: $alert-banner-close__top-space;
       width: $alert-banner-close__size;
+    }
+  }
+  @media (forced-colors:active) {
+    .md-alert-banner {
+      box-shadow: none; 
+      outline: 2px solid CanvasText; 
     }
   }
 }

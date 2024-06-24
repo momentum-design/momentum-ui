@@ -11,9 +11,9 @@
 
   .progressbar-label,
   .progressbar-progress {
-    color: $md-black-100;
-    font-family: $font-family-sans-serif;
-    font-size: rem-calc(11);
+    color: var(--progress-bar-label-text-color, $md-black-100);
+    font-family: $brand-font-regular;
+    font-size: $progress-label-font-size;
   }
 
   .progress {
@@ -61,6 +61,17 @@
 
     &.info .meter {
       @include progress-meter($bg: $progress-meter-info-color);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .progress {
+    background-color: HighlightText;
+    outline: 1px solid Highlight;
+    outline-offset: -1px;
+    .meter {
+      background-color: Highlight;
     }
   }
 }

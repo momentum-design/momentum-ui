@@ -49,30 +49,25 @@ export namespace Alert {
       switch (this.type) {
         case "error":
           return html`
-            <md-icon name="icon-warning_32" color="red"></md-icon>
+            <md-icon name="icon-warning_32" color="red-50"></md-icon>
           `;
-          break;
         case "info":
           return html`
-            <md-icon name="info_32" color="blue"></md-icon>
+            <md-icon name="info_32" color="blue-50"></md-icon>
           `;
-          break;
         case "success":
           return html`
-            <md-icon name="check-circle_36" color="green"></md-icon>
+            <md-icon name="check-circle_36" color="green-50"></md-icon>
           `;
-          break;
         case "warn":
         case "warning":
           return html`
-            <md-icon name="icon-warning_32" color="orange"></md-icon>
+            <md-icon name="icon-warning_32" color="orange-50"></md-icon>
           `;
-          break;
         default:
           return html`
             <slot name="alert-icon"></slot>
           `;
-          break;
       }
     };
 
@@ -87,15 +82,15 @@ export namespace Alert {
       return html`
         ${this.show
           ? html`
-              <div role="alert" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
-                <div class="md-alert__icon">
+              <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
+              <div class="md-alert__icon aria-hidden="true">
                   ${this.renderIconTemplate()}
                 </div>
                 <div part="content" class="md-alert__content">
-                  <div aria-label=${this.title} class="md-alert__title" aria-level="1">
+                  <div class="md-alert__title" aria-level="1">
                     ${this.title}
                   </div>
-                  <div aria-label=${this.message} class="md-alert__message">
+                  <div class="md-alert__message">
                     ${this.message}
                     <slot name="alert-body"></slot>
                   </div>
@@ -105,7 +100,6 @@ export namespace Alert {
                       <div class="md-alert__button">
                         <md-button
                           arialabel="${this.btnlabel}"
-                          title="${this.btnlabel}"
                           hasRemoveStyle
                           color="color-none"
                           circle

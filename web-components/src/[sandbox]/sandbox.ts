@@ -1,7 +1,8 @@
+import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
+import { ThemeName } from "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
-import styles from "@/[sandbox]/sandbox.scss";
 import "elix/define/ListExplorer.js";
 import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
 import {
@@ -60,7 +61,7 @@ import {
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends LitElement {
   @property({ type: Boolean }) darkTheme = false;
-  @property({ type: Boolean }) lumos = false;
+  @property({ type: String }) theme: ThemeName = "lumos";
 
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
@@ -77,8 +78,8 @@ export class Sandbox extends LitElement {
     const composedPath = event.composedPath();
     const target = (composedPath[0] as unknown) as HTMLOrSVGElement;
     const { aspect } = target.dataset;
-    if (aspect === "lumos") {
-      this.lumos = !this.lumos;
+    if (aspect === "lumos" || aspect === "momentumV2" || aspect === "momentum") {
+      this.theme = aspect;
     } else if (aspect === "darkTheme") {
       this.darkTheme = !this.darkTheme;
     } else {
@@ -103,13 +104,36 @@ export class Sandbox extends LitElement {
         </label>
         <label class="switch">
           <input
-            type="checkbox"
+            type="radio"
+            name="theme-switch"
+            class="momentum-switch"
+            data-aspect="momentum"
+            @click=${this.toggleSetting}
+            ?checked=${this.theme === "momentum"}
+          />
+          Momentum
+        </label>
+        <label class="switch">
+          <input
+            type="radio"
+            name="theme-switch"
             class="lumos-switch"
             data-aspect="lumos"
             @click=${this.toggleSetting}
-            ?checked=${this.lumos}
+            ?checked=${this.theme === "lumos"}
           />
-          Lumos Theme
+          Lumos
+        </label>
+        <label class="switch">
+          <input
+            type="radio"
+            name="theme-switch"
+            class="momentumv2-switch"
+            data-aspect="momentumV2"
+            @click=${this.toggleSetting}
+            ?checked=${this.theme === "momentumV2"}
+          />
+          MomentumV2
         </label>
       </div>
     `;
@@ -121,7 +145,7 @@ export class Sandbox extends LitElement {
 
   render() {
     return html`
-      <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} ?lumos=${this.lumos}>
+      <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
         ${this.themeToggle()}
         <elix-list-explorer class="explorer">
           <div class="container" aria-label="md-accordion">
@@ -467,7 +491,7 @@ export class Sandbox extends LitElement {
 
           <div class="container" aria-label="internal/colors">
             <h2>Colors</h2>
-              ${colorTableTemplate}
+            ${colorTableTemplate}
           </div>
         </elix-list-explorer>
       </md-theme>

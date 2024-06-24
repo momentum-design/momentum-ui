@@ -1,7 +1,8 @@
-import "./Button";
-import { Button } from "./Button";
 import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { nothing } from "lit-html";
+import "./Button";
+import { Button } from "./Button";
 
 describe("Button Component", () => {
   afterEach(fixtureCleanup);
@@ -106,7 +107,6 @@ describe("Button Component", () => {
     expect(btn?.getAttribute("aria-live")).toBeNull();
   });
 
-
   test("should not set aria live when not passed for input tag", async () => {
     const element: Button.ELEMENT = await fixture(
       html`
@@ -116,7 +116,6 @@ describe("Button Component", () => {
     const btn = element.shadowRoot!.querySelector(".md-button");
     expect(btn?.getAttribute("aria-live")).toBeNull();
   });
-
 
   test("should not set aria live when not passed for a tag", async () => {
     const element: Button.ELEMENT = await fixture(
@@ -167,17 +166,6 @@ describe("Button Component", () => {
     const button = element.shadowRoot!.querySelector("button");
     expect(button!.getAttribute("tabindex")).toContain("1");
     expect(element.disabled).toBeFalsy();
-  });
-
-  test("should have tab-index of -1 if disabled", async () => {
-    const element: Button.ELEMENT = await fixture(
-      html`
-        <md-button tab-index="1" disabled></md-button>
-      `
-    );
-    const button = element.shadowRoot!.querySelector("button");
-    expect(button!.getAttribute("tabindex")).toContain("-1");
-    expect(element.disabled).toBeTruthy();
   });
 
   test("should handle disabled state", async () => {
@@ -234,12 +222,71 @@ describe("Button Component", () => {
       `
     );
     const spyKeyDown = jest.spyOn(element, "handleKeyDown");
+
+    const mockFn = jest.fn();
+    element.addEventListener("button-keydown", mockFn);
+
     const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
     const keyEvent2 = new KeyboardEvent("keydown", { code: Key.Space });
     element.handleKeyDown(keyEvent);
     element.handleKeyDown(keyEvent2);
     expect(spyKeyDown).toHaveBeenCalledTimes(2);
+    expect(mockFn).toHaveBeenCalledTimes(2);
     spyKeyDown.mockRestore();
+  });
+
+  test("should not dispatch custom keydown event if disabled", async () => {
+    const element = await fixture<Button.ELEMENT>(
+      html`
+        <md-button disabled label="Button Component"></md-button>
+      `
+    );
+    const spyKeyDown = jest.spyOn(element, "handleKeyDown");
+
+    const mockFn = jest.fn();
+    element.addEventListener("button-keydown", mockFn);
+
+    const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
+    const keyEvent2 = new KeyboardEvent("keydown", { code: Key.Space });
+    element.handleKeyDown(keyEvent);
+    element.handleKeyDown(keyEvent2);
+    expect(spyKeyDown).toHaveBeenCalledTimes(2);
+    expect(mockFn).toHaveBeenCalledTimes(0);
+    spyKeyDown.mockRestore();
+  });
+
+  test("should not dispatch custom click if disabled", async () => {
+    const element = await fixture<Button.ELEMENT>(
+      html`
+        <md-button disabled label="Button Component"></md-button>
+      `
+    );
+    const spyHandleClick = jest.spyOn(element, "handleClick");
+
+    const clickFunction = jest.fn();
+    element.clickFunction = clickFunction;
+
+    const mockFn = jest.fn();
+    element.addEventListener("button-click", mockFn);
+
+    const evt = new MouseEvent("click");
+    element.handleClick(evt);
+    expect(spyHandleClick).toHaveBeenCalledTimes(1);
+    expect(clickFunction).toHaveBeenCalledTimes(0);
+    expect(mockFn).toHaveBeenCalledTimes(0);
+    spyHandleClick.mockRestore();
+  });
+
+  test("text template should be nothing for circle icons", async () => {
+    const element = await fixture<Button.ELEMENT>(
+      html`
+        <md-button circle size="40" variant="primary">
+          <md-icon slot="icon" name="check-circle-active_16" color="var(--avatar-presence-active)"></md-icon>
+        </md-button>
+      `
+    );
+
+    expect(element.textTemplate()).toBe(nothing);
   });
 
   test("should render nothing if correct tag is not provided", async () => {
@@ -267,5 +314,49 @@ describe("Button Component", () => {
     const input = element.shadowRoot!.querySelector("input");
     expect(input!.getAttribute("tabindex")).toContain("1");
     expect(input).toBeDefined;
+  });
+
+  test("Button variants", async () => {
+    let element: Button.ELEMENT = await fixture(
+      html`
+        <md-button variant="primary"></md-button>
+      `
+    );
+
+    expect(element.variant).toEqual("primary");
+
+    element = await fixture(
+      html`
+        <md-button variant="secondary"></md-button>
+      `
+    );
+    expect(element.variant).toEqual("secondary");
+
+    element.variant = "red";
+    expect(element.variant).toEqual("red");
+
+    element.variant = "green";
+    expect(element.variant).toEqual("green");
+
+    element.variant = "white";
+    expect(element.variant).toEqual("white");
+
+    element.variant = "darkGrey";
+    expect(element.variant).toEqual("darkGrey");
+
+    element.variant = "promotional";
+    expect(element.variant).toEqual("promotional");
+
+    element.variant = "available";
+    expect(element.variant).toEqual("available");
+
+    element.variant = "unavailable";
+    expect(element.variant).toEqual("unavailable");
+
+    element.variant = "engaged";
+    expect(element.variant).toEqual("engaged");
+
+    element.variant = "idle";
+    expect(element.variant).toEqual("idle");
   });
 });

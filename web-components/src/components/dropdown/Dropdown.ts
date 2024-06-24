@@ -13,6 +13,7 @@ import reset from "@/wc_scss/reset.scss";
 import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
+import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat.js";
 import styles from "./scss/module.scss";
 
@@ -71,8 +72,6 @@ export namespace Dropdown {
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
-      this.setAttribute("tabindex", "0");
-
       changedProperties.forEach((oldValue, name) => {
         if (name === "defaultOption") {
           if (this.defaultOption) {
@@ -101,9 +100,6 @@ export namespace Dropdown {
         }
         if (name === "focusedIndex") {
           this.updateListDOM();
-        }
-        if (name === "disabled") {
-          this.setAttribute("tabindex", !this.disabled ? "0" : "-1");
         }
         if (name === "defaultOption") {
           if (this.defaultOption) {
@@ -194,7 +190,7 @@ export namespace Dropdown {
 
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
-
+   
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,
@@ -221,7 +217,12 @@ export namespace Dropdown {
 
     expand() {
       this.expanded = true;
+      const selectedIndex = this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
       document.dispatchEvent(new CustomEvent("on-widget-update"));
+      this.label.setAttribute("aria-activedescendant", selectedIndex);
+      if(this.optionsList){
+        (this.optionsList as HTMLElement).focus();
+      }
 
       if (this.focusedIndex === -1) {
         this.focusNext();
@@ -230,6 +231,7 @@ export namespace Dropdown {
 
     collapse() {
       this.expanded = false;
+      this.label.setAttribute("aria-activedescendant", "");
     }
 
     toggle() {
@@ -265,13 +267,23 @@ export namespace Dropdown {
       if (path.length) {
         insideSelfClick = !!path.find(element => element === this);
         if (!insideSelfClick) {
-          this.collapse();
+          if(this.expanded){
+            this.collapse();
+          }
         }
       }
     };
 
     onKeyDown = (e: KeyboardEvent) => {
       switch (e.code) {
+        case Key.Tab: {
+          if (this.expanded) {
+            e.stopPropagation();
+            this.collapse();
+          }
+          break;
+        }
+        case Key.Space:
         case Key.Enter: {
           if (!this.expanded) {
             this.expand();
@@ -326,7 +338,8 @@ export namespace Dropdown {
     };
 
     onLabelClick() {
-      this.toggle();
+      this.label.focus();
+      this.toggle();      
     }
 
     focusFirst() {
@@ -449,11 +462,14 @@ export namespace Dropdown {
           <label
             class="md-dropdown-label"
             aria-expanded="${this.expanded}"
-            aria-label="${this.labelTitle}"
+            aria-label="${this.title}"
             aria-controls="md-dropdown-list"
+            aria-haspopup="listbox"
             ?disabled="${this.disabled}"
             @click="${() => this.onLabelClick()}"
             part="dropdown-header"
+            role="combobox" 
+            tabindex="0"
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>
             <span class="md-dropdown-label--icon">
@@ -467,16 +483,17 @@ export namespace Dropdown {
             aria-label="${this.labelTitle}"
             aria-hidden="${!this.expanded}"
             part="dropdown-options"
-            tabindex=${this.customTabIndex}
+            tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
           >
             ${repeat(
               this.renderOptions,
               o => o.key,
               (o, idx) => html`
                 <li
+                  id="combo-${idx}"
                   class="md-dropdown-option"
                   role="option"
-                  tabindex=${this.customTabIndex}
+                  tabindex=${ifDefined(this.customTabIndex === -1 ? undefined : this.customTabIndex)}
                   aria-label="${o.value}"
                   label="${o.value}"
                   aria-selected="${idx === this.focusedIndex}"

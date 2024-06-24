@@ -15,6 +15,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import "../badge/Badge";
 import mdx from './Alert.mdx';
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Alerts",
@@ -41,6 +42,7 @@ export default {
 export const Alert = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const title = text("Title", "Alert");
   const message = text("Message", "Who is awesome? You are!");
@@ -49,7 +51,7 @@ export const Alert = () => {
   const inline = boolean("Inline", false);
 
   return html`
-    <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-alert @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} type=${type} ?closable=${closable} ?show=${show} .inline=${inline}></md-alert>
     </md-theme>
   `;
@@ -58,16 +60,17 @@ export const Alert = () => {
 export const AlertWithIcon = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Show", true);
   const title = text("Title", "Alert");
   const message = text("Message", "Who is awesome? You are!");
   const closable = boolean("clossable", true);
 
   return html`
-   <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+   <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
        <md-alert  @alert-close=${(action('dispatchEvent'))} title=${title} message=${message} ?show=${show} ?closable=${closable}>
            <md-badge slot="alert-icon" color="darkmint" circle>
-               <md-icon name="sms_16" color="white"></md-icon>
+               <md-icon name="sms_16" color="white-100"></md-icon>
            </md-badge>
    </md-alert>
  </md-theme>
@@ -77,10 +80,11 @@ export const AlertWithIcon = () => {
 export const AlertWithSlots = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const message = text("Message", "Who is awesome? You are!");
 
   return html`
-   <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+   <md-theme class="theme-toggle" id="alert" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
      <md-alert message=${message} show>
        <a slot="alert-body" href="/">Test</a>
        <div slot="alert-footer">

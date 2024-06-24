@@ -57,7 +57,7 @@ export const taskItemTemplate = html`
       queue="IRV_quelle_1167676776767676asdadadas"
     >
       <md-badge slot="task-type" color="darkmint" circle>
-        <md-icon name="sms_16" color="white"></md-icon>
+        <md-icon name="sms_16" color="white-100"></md-icon>
       </md-badge>
       <md-button variant="green" title="text title"><span slot="text">Ringing</span></md-button>
     </md-task-item>

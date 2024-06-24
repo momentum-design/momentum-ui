@@ -12,6 +12,7 @@ import { html } from "lit-element";
 import { BarFormat, BarType } from "@/utils/enums";
 import "@/components/progress-bar/ProgressBar";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Progress Bar",
@@ -27,6 +28,7 @@ export default {
 export const ProgressBar = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const label = text("Label", "Test Progress Bar");
   const color = text("color", "blue");
   const dynamic = boolean("dynamic", false);
@@ -35,7 +37,7 @@ export const ProgressBar = () => {
   const value = number("Value", 25);
 
   return html`
-    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-progress-bar
         .value=${value}
         .type=${type}

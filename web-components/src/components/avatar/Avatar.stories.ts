@@ -14,6 +14,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import mdx from "./Avatar.mdx";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Avatar",
@@ -49,6 +50,7 @@ const options = {
 export const Avatar = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const type = select("Type", AvatarType, "");
   const title = text("Title", "Rachell Harris");
   const preDefinedColor = select("PreDefined Color", options, "mint");
@@ -64,7 +66,7 @@ export const Avatar = () => {
 
   if (composite) {
     return html`
-      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
         <md-composite-avatar .size=${sizeComos}>
           <md-avatar title="Anthony Russell" type="dnd" has-notification alt="Avatar"></md-avatar>
           <md-avatar type="typing" title="Alyson Hoagland Pace" alt="Avatar"></md-avatar>
@@ -73,7 +75,7 @@ export const Avatar = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} theme=${theme}>
         <md-avatar .title=${title} alt="Avatar" icon-name=${iconName} label="Avatar" .type=${type} .src="${customUrl ? `${url}` : ""}" .color=${preDefinedColor} .size=${size} ?has-notification=${hasNotification}>
           ${customImage ? html`<img
           width="100"

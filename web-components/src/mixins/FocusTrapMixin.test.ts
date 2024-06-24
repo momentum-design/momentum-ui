@@ -125,6 +125,28 @@ describe("FocusTrap Mixin", () => {
 
   });
 
+  test("should decrease trap index when input-clear event is dispatched", async () => {
+    const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
+    const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
+    const input = focusableChild!.shadowRoot!.querySelector("input");
+  
+    focusTrap!["activateFocusTrap"]!();
+    focusTrap!["setFocusableElements"]!();
+    await nextFrame();
+    await elementUpdated(el);
+    focusTrap!["focusTrapIndex"] = 5;
+    input!.dispatchEvent(new CustomEvent("input-clear", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        srcEvent: new KeyboardEvent("keydown", { code: "Enter" })
+      }
+    }));
+    await nextFrame();
+    await elementUpdated(el);
+    expect(focusTrap!["focusTrapIndex"]).toEqual(4);
+  });
+
   test("should set trap index of element with shadowRoot", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
@@ -194,7 +216,7 @@ describe("FocusTrap Mixin", () => {
 
     await elementUpdated(focusTrap);
 
-    expect(focusTrap["focusableElements"]!.length).toEqual(12);
+    expect(focusTrap["focusableElements"]!.length).toEqual(13);
   });
 
   test("should initialize focusableElements on firstUpdated lifecycle", async () => {
@@ -277,8 +299,8 @@ describe("FocusTrap Mixin", () => {
     await nextFrame();
     await elementUpdated(el);
 
-    expect(focusTrap.focusTrapIndex).toEqual(11);
-    expect(focusTrap["getDeepActiveElement"]!()).toEqual(focusTrap["focusableElements"]![11]);
+    expect(focusTrap.focusTrapIndex).toEqual(12);
+    expect(focusTrap["getDeepActiveElement"]!()).toEqual(focusTrap["focusableElements"]![12]);
 
     focusTrap.focusTrapIndex = 11;
     await elementUpdated(focusTrap);

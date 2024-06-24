@@ -5,6 +5,7 @@ import { html } from "lit-element";
 import { badgeColor, coachPlacement } from "@/utils/enums";
 import "@/components/coachmark/Coachmark";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Coachmark",
@@ -26,12 +27,13 @@ export default {
 export const Coachmark = () => {
   const dark = boolean("Dark Theme", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("Open", false);
   const color = select("Color", badgeColor, "default");
   const placement = select("Placement", coachPlacement , "right");
 
   return html`
-  <md-theme .darkTheme=${dark} .lumos=${lumos}>
+  <md-theme .darkTheme=${dark} .lumos=${lumos} theme=${theme}>
     <md-coachmark ?show=${show} .placement="${placement}" .color="${color}" @coach-create=${(action('coach-create'))}>
         <div slot="coachmark-content">
           <span>Coachmark  test content</span>

@@ -293,6 +293,16 @@ export namespace Input {
         event.preventDefault();
       }
       this.input.focus();
+      this.dispatchEvent(
+        new CustomEvent("input-clear", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            srcEvent: event
+          }
+        })
+      );
+      document.dispatchEvent(new CustomEvent('on-widget-update')); 
       this.handleChange(event);
     }
 
@@ -368,7 +378,7 @@ export namespace Input {
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage="${this.htmlId}-message"
-              ?disabled=${this.disabled}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
               id=${this.htmlId}
               placeholder=${this.placeholder}
               ?readonly=${this.readOnly}
@@ -394,11 +404,11 @@ export namespace Input {
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage=${`${this.htmlId}-message`}
-              ?disabled=${this.disabled}
+              aria-disabled=${ifDefined(this.disabled || undefined)}
               id=${this.htmlId}
               role=${this.role}
               placeholder=${this.placeholder}
-              ?readonly=${this.readOnly}
+              ?readonly=${this.readOnly || this.disabled}
               min=${ifDefined(this.min)}
               max=${ifDefined(this.max)}
               maxlength=${ifDefined(this.maxLength)}
@@ -415,7 +425,7 @@ export namespace Input {
                   <md-spinner size="20"></md-spinner>
                 `
               : html`
-                  <md-icon name="search_20"></md-icon>
+                  <md-icon ariaHidden="true" name="search_20"></md-icon>
                 `}
           </div>
         `;

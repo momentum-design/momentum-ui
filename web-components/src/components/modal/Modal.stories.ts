@@ -13,6 +13,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { boolean, text, select, withKnobs } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Modal",
@@ -44,6 +45,7 @@ const content = html`
 export const Modal = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const show = boolean("show", false);
   const headerLabel = text("headerLabel", "Test header text");
   const headerMessage = text("message", "Test message in header");
@@ -55,7 +57,7 @@ export const Modal = () => {
   const hideHeader = boolean("hideHeader", false);
 
   return html`
-    <md-theme class="theme-toggle" id="modal" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="modal" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-modal
         .size="${size}"
         .show=${show}

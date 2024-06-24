@@ -148,33 +148,33 @@ $avatar-sizes: (
   $icon-share-screen_36
 );
 
-$avatar--active__shadow: inset 0 0 0 rem-calc(1) $md-green-50,
+$avatar--active__shadow: inset 0 0 0 rem-calc(1) var(--avatar-presence-active, $md-green-50),
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $md-green-50,
+$avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) var(--avatar-presence-active, $md-green-50),
   inset 0 0 0 rem-calc(2) $black-24;
-$avatar--engaged__shadow: inset 0 0 0 rem-calc(1) $md-yellow-40,
+$avatar--engaged__shadow: inset 0 0 0 rem-calc(1) var(--avatar-presence-engaged, $md-yellow-40),
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--engaged__shadow--dark: inset 0 0 0 rem-calc(1) $md-yellow-40,
+$avatar--engaged__shadow--dark: inset 0 0 0 rem-calc(1) var(--avatar-presence-engaged, $md-yellow-40),
   inset 0 0 0 rem-calc(2) $black-24;
-$avatar--idle__shadow: inset 0 0 0 rem-calc(1) $md-gray-30,
+$avatar--idle__shadow: inset 0 0 0 rem-calc(1) var(--avatar-presence-inactive, $md-gray-30),
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--idle__shadow--dark: inset 0 0 0 rem-calc(1) $md-gray-30,
+$avatar--idle__shadow--dark: inset 0 0 0 rem-calc(1) var(--avatar-presence-inactive, $md-gray-30),
   inset 0 0 0 rem-calc(2) $black-24;
-$avatar--rona__shadow: inset 0 0 0 rem-calc(1) $md-red-60,
+$avatar--rona__shadow: inset 0 0 0 rem-calc(1) var(--avatar-presence-rona, $md-red-60),
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--rona__shadow--dark: inset 0 0 0 rem-calc(1) $md-red-60,
+$avatar--rona__shadow--dark: inset 0 0 0 rem-calc(1) var(--avatar-presence-rona, $md-red-60),
   inset 0 0 0 rem-calc(2) $black-24;
   
 
 $avatar-letter__color: var(--avatar-letter-text-color, $lm-avatar-letter-text-color-light);
 $avatar-letter__background: var(--avatar-letter-bg-color, $lm-avatar-letter-bg-color-light);
 
-$avatar-icon__color: $black-80;
+$avatar-icon__color: var(--avatar-icon-icon-color, $black-80);
 $avatar-icon__background: $gray-5-88;
 
-$avatar-self__color: $md-theme-50;
-$avatar-self__background: $md-white-100;
-$avatar-self__border: 1px solid $black-08;
+$avatar-self__color: var(--avatar-self-icon-color, $md-theme-50);
+$avatar-self__background: var(--avatar-self-bg-color, $md-white-100);
+$avatar-self__border: 1px solid var(--avatar-self-border-color, $black-08);
 
 $avatar-img__background: $gray-5-88;
 
@@ -186,7 +186,7 @@ $avatar-failure-badge__color: $md-red-50;
 $avatar-failure-badge__background: $md-red-10;
 
 $avatar-notification-badge__size: 0.66em;
-$avatar-notification-badge__color: $md-theme-50;
+$avatar-notification-badge__color: var(--avatar-notificationBadge, $md-theme-50);
 
 $avatar-bot__border-radius: 0.571em;
 $avatar-bot__font-size: 0.571em;

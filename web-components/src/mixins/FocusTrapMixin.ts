@@ -58,6 +58,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;
     @property({ type: Boolean, reflect: true, attribute: "prevent-scroll" }) preventScroll = false;
+    shouldWrapFocus: () => boolean = () => false;
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
@@ -127,10 +128,6 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       );
     }
 
-    private isDisabled(element: HTMLElement) {
-      return element.hasAttribute("disabled") || element.getAttribute("aria-disabled") === "true";
-    }
-
     private isNotTabbable(element: HTMLElement) {
       return element.getAttribute("tabindex") === "-1";
     }
@@ -171,7 +168,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     private isFocusable(element: HTMLElement) {
-      if (this.isDisabled(element) || this.isHidden(element) || this.isNotTabbable(element)) {
+      if (this.isHidden(element) || this.isNotTabbable(element)) {
         return false;
       }
       if (this.isInteractiveElement(element)) {
@@ -240,7 +237,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         if (activeIndex === -1 && this.focusTrapIndex - 1 > 0) {
           this.focusTrapIndex--;
         } else {
-          this.focusTrapIndex = activeIndex > 0 ? activeIndex - 1 : this.focusableElements.length - 1;
+          this.focusTrapIndex = activeIndex > (this.shouldWrapFocus() ? 1 : 0) ? activeIndex - 1 : this.focusableElements.length - 1;
         }
       } else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
         this.focusTrapIndex++;
@@ -250,8 +247,12 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           this.tryFocus(nextEleToFocus);
         }
       } else {
-        this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : 0;
+        this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : (this.shouldWrapFocus() ? 1 : 0);
       }
+    }
+
+    handleFocusOnClear = () => {
+      this.focusTrap(true);
     }
 
     private hasAutofocus(element: HTMLElement) {
@@ -436,6 +437,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.addEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.addEventListener("click", this.handleOutsideTrapClick);
       document.addEventListener("on-widget-update", this.updateFocusableElements);
+      this.addEventListener("input-clear", this.handleFocusOnClear);
     }
 
     disconnectedCallback() {
@@ -446,6 +448,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       this.removeEventListener("on-focus-untrap", this.handleChildFocusUntrap as EventListener);
       document.removeEventListener("click", this.handleOutsideTrapClick);
       document.removeEventListener("on-widget-update", this.updateFocusableElements);
+      this.removeEventListener("input-clear", this.handleFocusOnClear);
       if (this.focusableTimer) {
         clearTimeout(this.focusableTimer);
       }

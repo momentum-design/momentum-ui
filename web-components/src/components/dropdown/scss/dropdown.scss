@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
- 
+
 :host(:focus) {
   box-shadow: none !important;
   outline: none !important;
@@ -73,6 +73,7 @@
       @include list-reset;
       display: none;
       background-color: var(--md-primary-bg-color);
+      border: 1px solid var(--dropdown-list-border-color);
       border-radius: $dropdown-list-radius;
       box-shadow: $dropdown-list-shadow;
       left: 0;
@@ -82,12 +83,15 @@
       top: calc(100% + #{$dropdown-main-indent});
       width: 100%;
       z-index: 99;
+      padding: calc((var(--dropdown-list-padding) / 16) * 1rem);
     }
 
     &-option {
       @include flex;
       color: var(--md-primary-text-color, $md-gray-05);
       padding: $dropdown-option-padding;
+      border-radius: calc((var(--dropdown-list-item-border-radius) / 16) * 1rem);
+      height: calc((var(--dropdown-list-item-height) / 16) * 1rem);
 
       .select-label {
         @include text-dots;
@@ -102,6 +106,8 @@
 
       &[focused] {
         background-color: var(--dropdown-list-item-bg-color-focus, $lm-dropdown-list-item-bg-color-focus-light);
+        @include remove-focus;
+        @include focus-boxshadow(rem-calc(1.5), var(--dropdown-list-item-border-focus));
       }
     }
 
@@ -130,6 +136,7 @@
     .md-dropdown-label {
       border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
       box-shadow: none;
+      outline: none;
     }
   }
 }
@@ -139,13 +146,57 @@
     .md-dropdown-label {
       background-color: var(--md-tertiary-bg-color);
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         background-color: var(--md-tertiary-bg-color);
         pointer-events: none;
 
         > md-icon {
           opacity: $dropdown-disabled-opacity;
         }
+      }
+      &:focus-visible {
+        border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+        outline: none;
+      }
+    }
+  }
+}
+@media (forced-colors: active) {
+  :host([focus-visible]) {
+    .md-dropdown {
+      .md-dropdown-label {
+        border: 2px solid Highlight;
+        &--text {
+          forced-color-adjust: none;
+          background-color: Canvas;
+          color: CanvasText;
+        }
+      }
+
+      &-list {
+        border: 1px solid CanvasText;
+      }
+    }
+  }
+
+  :host {
+    .md-dropdown {
+      &-option {
+        &[focused] {
+          forced-color-adjust: none;
+          background-color: Highlight;
+          color: HighlightText;
+        }
+      }
+    }
+  }
+
+  :host([disabled]) {
+    .md-dropdown {
+      .md-dropdown-label {
+        border: 1px solid GrayText;
+        color: GrayText;
       }
     }
   }

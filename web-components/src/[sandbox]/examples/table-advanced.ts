@@ -78,15 +78,15 @@ export class DefaultTableAdvanced extends LitElement {
     return html`
       <md-table-advanced .config=${conf} .data=${ShortkeyTable.data} isRowFocusable=${isRowFocusable}>
         <template id="tmp1">
-          <md-icon class="warn-icon" name="warning_20" color="blue"></md-icon>
+          <md-icon class="warn-icon" name="warning_20" color="blue-50"></md-icon>
         </template>
 
         <template id="tmp2">
-          <md-icon class="warn-icon" name="warning_20" color="yellow"></md-icon>
+          <md-icon class="warn-icon" name="warning_20" color="yellow-50"></md-icon>
         </template>
 
         <template id="tmp3">
-          <md-icon class="warn-icon" name="error_20" color="red"></md-icon>
+          <md-icon class="warn-icon" name="error_20" color="red-50"></md-icon>
         </template>
       </md-table-advanced>
     `;

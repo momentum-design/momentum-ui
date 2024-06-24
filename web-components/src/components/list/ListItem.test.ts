@@ -25,8 +25,8 @@ describe("ListItem", () => {
     element.disabled = false;
     await elementUpdated(element);
 
-    expect(element.tabIndex).toEqual(0);
-    expect(element.getAttribute("tabindex")).toEqual("0");
+    expect(element.tabIndex).toEqual(-1);
+    expect(element.getAttribute("tabindex")).toEqual("-1");
   });
 
   test("handle firstUpdated lifecycle hook", async () => {

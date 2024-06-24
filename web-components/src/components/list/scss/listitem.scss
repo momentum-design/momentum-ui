@@ -35,7 +35,7 @@
   }
 }
 
-:host([focus-visible]:not([disabled])) {
+:host([focus-visible]) {
   .md-list-item {
     box-shadow: $list-item__focus-shadow;
   }
@@ -48,3 +48,34 @@
     pointer-events: none;
   }
 }
+
+
+@media (forced-colors: active) {
+  :host([focus-visible]:not([disabled])),
+  :host(:hover:not([disabled])),
+  :host(:focus:not([disabled])) {
+    .md-list-item {
+      outline: 2px solid Highlight;
+    }
+  }
+
+  :host(:active[disabled]),
+  :host([disabled]) {
+    .md-list-item {
+      color: GrayText;
+    }
+  }
+
+  :host(:active:not([disabled])),
+  :host([selected]:not([disabled])) {
+    .md-list-item {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: Canvas;
+      box-shadow: none;
+      border: none;
+    }
+  }
+}
+
+

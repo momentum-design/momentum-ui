@@ -34,9 +34,14 @@
       color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
     }
 
-    &:disabled {
+    &:disabled,
+    &.disabled {
       background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
       color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+      &:focus {
+        background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+        color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+      }
     }
 
     &::after {
@@ -131,6 +136,7 @@
         $line-height: $button__line-height--40,
         $radius: $button__radius--40
       );
+      
     }
 
     &--52 {
@@ -548,7 +554,8 @@
     }
 
     &.md-button--onlyicon {
-      &:disabled {
+      &:disabled,
+      &.disabled {
         background-color: transparent !important;
       }
     }
@@ -579,8 +586,27 @@
     background-color: var(--button-primary-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
+    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="promotional"]) .md-button {
+  background: var(--button-promotional-bg-color, $lm-button-primary-bg-color-light);
+  color: var(--button-promotional-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));  
+
+  &:hover {
+    background: var(--button-promotional-hover-bg-color, $lm-button-primary-hover-bg-color-light);
+  }
+
+  &:active {
+    background: var(--button-promotional-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
+  }
+
+  &:disabled {
+    background: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
 }
@@ -588,6 +614,7 @@
 :host([variant="secondary"]) .md-button {
   background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
   color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  border: 1px solid var(--button-secondary-border-color);
 
   &:hover {
     background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
@@ -599,15 +626,17 @@
     color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
   }
 
-  &:disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-secondary-disabled-bg-color ,var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light));
+    border: 1px solid var(--button-secondary-disabled-border-color);
+    color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color, $lm-button-disabled-text-color-light));
   }
 }
 
 :host([variant="red"]) .md-button {
   background-color: var(--button-red-bg-color, $lm-button-red-bg-color-light);
-  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+  color: var(--button-red-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
 
   &:hover {
     background-color: var(--button-red-hover-bg-color, $lm-button-red-hover-bg-color-light);
@@ -617,7 +646,8 @@
     background-color: var(--button-red-pressed-bg-color, $lm-button-red-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
@@ -625,7 +655,7 @@
 
 :host([variant="green"]) .md-button {
   background-color: var(--button-green-bg-color, $lm-button-green-bg-color-light);
-  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+  color: var(--button-green-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));  
 
   &:hover {
     background-color: var(--button-green-hover-bg-color, $lm-button-green-hover-bg-color-light);
@@ -635,7 +665,8 @@
     background-color: var(--button-green-pressed-bg-color, $lm-button-green-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
@@ -643,6 +674,7 @@
 
 :host([variant="available"]) .md-button {
   background-color: var(--button-available-bg-color, $lm-button-available-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-available-hover-bg-color, $lm-button-available-hover-bg-color-light);
@@ -652,7 +684,8 @@
     background-color: var(--button-available-pressed-bg-color, $lm-button-available-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
@@ -660,6 +693,7 @@
 
 :host([variant="unavailable"]) .md-button {
   background-color: var(--button-unavailable-bg-color, $lm-button-unavailable-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-unavailable-hover-bg-color, $lm-button-unavailable-hover-bg-color-light);
@@ -669,7 +703,8 @@
     background-color: var(--button-unavailable-pressed-bg-color, $lm-button-unavailable-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
@@ -677,6 +712,7 @@
 
 :host([variant="idle"]) .md-button {
   background-color: var(--button-idle-bg-color, $lm-button-idle-bg-color-light);
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
 
   &:hover {
     background-color: var(--button-idle-hover-bg-color, $lm-button-idle-hover-bg-color-light);
@@ -686,7 +722,8 @@
     background-color: var(--button-idle-pressed-bg-color, $lm-button-idle-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
@@ -695,7 +732,7 @@
 :host([variant="white"]) .md-button {
   background-color: var(--button-white-bg-color, $lm-button-white-bg-color-light);
   color: var(--button-white-text-color, $lm-button-white-text-color-light);
-  
+
   &:hover {
     background-color: var(--button-white-hover-bg-color, $lm-button-white-hover-bg-color-light);
   }
@@ -722,7 +759,8 @@
     background-color: var(--button-inverted-white-pressed-bg-color, $lm-button-inverted-white-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
   }
@@ -735,7 +773,8 @@
 
 :host([variant="engaged"]) .md-button {
   background-color: var(--button-engaged-bg-color, $lm-button-engaged-bg-color-light);
-  
+  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+
   &:hover {
     background-color: var(--button-engaged-hover-bg-color, $lm-button-engaged-hover-bg-color-light);
   }
@@ -773,4 +812,31 @@ md-spinner {
 
 md-spinner + ::slotted(*) {
   margin-left: 0.5rem;
+}
+
+@media (forced-colors: active) {
+  :host .md-button {
+    &:focus{
+      outline: 2px solid Highlight;
+    }
+    &:active {
+      color: Highlight;
+      outline: 2px solid Highlight;
+    }
+
+    &.disabled,
+    &[disabled] {
+      color: GrayText !important;
+    }
+  }
+
+  :host .md-button--outline {
+    &.disabled{
+      color: GrayText !important;
+    }
+    &:focus:disabled,
+    &:active:disabled {
+      outline: 2px solid Highlight;
+    }
+  }
 }

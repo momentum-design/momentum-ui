@@ -48,7 +48,9 @@
 
 :host([focus-visible]:not([disabled])) {
   @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+
 }
+
 
 :host(:hover:not([disabled])) {
   .checkbox-label {
@@ -87,7 +89,7 @@
 :host([aria-checked="true"]) {
   .checkbox-label {
     &::after {
-      border: solid $md-white-100;
+      border: solid var(--checkbox-icon-color, $md-white-100);
       border-width: 0 0.12em 0.12em 0;
       display: block;
       height: 0.6em;
@@ -105,7 +107,7 @@
 :host([indeterminate]) {
   .checkbox-label {
     &::after {
-      border: solid $md-white-100;
+      border: solid var(--checkbox-icon-color, $md-white-100);
       border-width: 0 0 0.12em;
       display: block;
       height: 0.2em;
@@ -137,5 +139,12 @@
       background: var(--checkbox-selected-pressed-bg-color, $lm-checkbox-selected-pressed-bg-color-light);
       border-color: var(--checkbox-selected-pressed-border-color, $lm-checkbox-selected-pressed-border-color-light);
     }
+  }
+}
+
+@media(forced-colors:active) {
+  :host([focus-visible]:not([disabled])) {
+    outline: 2px solid Highlight; 
+    box-shadow: none; 
   }
 }

@@ -22,6 +22,7 @@ import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import a
 import styles from "./scss/module.scss";
 import { Tab, TabClickEvent, TAB_CROSS_WIDTH } from "./Tab";
 import { TabPanel } from "./TabPanel";
+import { setTimeout } from "timers";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -32,6 +33,9 @@ const VISIBLE_TO_VISIBLE = "visibleToVisible";
 const VISIBLE_TO_HIDDEN = "visibleToHidden";
 const HIDDEN_TO_VISIBLE = "hiddenToVisible";
 const HIDDEN_TO_HIDDEN = "hiddenToHidden";
+const PREVIOUS = "previous";
+const NEXT = "next";
+const FROM_MORE_TABS = "fromMoreTabs";
 export namespace Tabs {
   type TabViewportData = {
     isTabInViewportHidden: boolean;
@@ -125,6 +129,28 @@ export namespace Tabs {
       } else {
         return tab.id;
       }
+    }
+
+    private getAriaConrolId(tab: Tab.ELEMENT) {
+      if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
+        return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
+      } else {
+        const uniqueId = tab.id?.substring(4);
+        const panelId = "tab_panel_" + uniqueId;
+        return panelId;
+      }
+    }
+
+    private getTabIndex(tab: Tab.ELEMENT) {
+      // Get first tabindex to 0 only when More button is there and the visible tab is not selected
+      if (this.isMoreTabMenuVisible && (this.getCurrentIndex(tab?.id) === 0) && 
+      (this.selected > (this.tabsFilteredAsVisibleList?.length - 1))) {
+        return 0;
+      } else if (this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id) {
+        return 0;
+      } else {
+        return -1;
+      }         
     }
 
     private getNormalizedTabId(id: TabId) {
@@ -382,7 +408,7 @@ export namespace Tabs {
       event.stopPropagation();
       const oldIndex = event.oldIndex;
       const newIndex = event.newIndex;
-
+     
       const visibleTabElements = [...this.tabsFilteredAsVisibleList];
       const hiddenTabElements = [...this.tabsFilteredAsHiddenList];
 
@@ -615,6 +641,40 @@ export namespace Tabs {
       }
     }
 
+    private getCurrentIndex(tabId: string) {
+      const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
+      for(let i = 0; i < arrayLength; i++) {
+        if(this.visibleTabsContainerElement?.children[i].id === tabId) {
+          return i;          
+        };   
+      }
+      return this.tabsVisibleIdxHash[tabId];
+    }
+
+    private moveFocusToAdjacentTab(elementId: string, direction: 'previous' | 'next' | 'fromMoreTabs') {
+      const currentTabIndex = this.getCurrentIndex(elementId);
+      const visibleTabs = this.visibleTabsContainerElement?.children;
+      const visibleArrayLength = visibleTabs?.length || 0;
+      
+      if (!visibleTabs  || visibleArrayLength === 0) return;
+      
+      let newIndex: number = 0;
+      
+      if (direction === PREVIOUS) {
+        newIndex = (currentTabIndex === 0) ? visibleArrayLength - 1 : currentTabIndex - 1;
+      } else if (direction === NEXT) {
+        newIndex = (currentTabIndex === visibleArrayLength - 1) ? 0 : currentTabIndex + 1;
+      } else if (direction === FROM_MORE_TABS) {
+        newIndex = (this.selected >= visibleArrayLength) ? 0 : this.selected;
+      };
+
+      this.moveFocusToTab(visibleTabs[newIndex]);
+    };
+      
+    moveFocusToTab(tabElement: any) {
+      setTimeout(() => (tabElement as HTMLElement)?.focus(), 0);
+    }
+
     handleOverlayClose() {
       if (this.menuOverlayElement) {
         this.menuOverlayElement.isOpen = false;
@@ -658,14 +718,14 @@ export namespace Tabs {
 
       const key = event.code;
       const { shiftKey } = event;
-
+    
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
       const tab =
         !isMoreTriggerTab || !this.isMoreTabMenuVisible
           ? this.tabsHash[this.getNormalizedTabId(id)]
           : this.moreTabMenuElement;
-
+     
       const isVisibleTab = this.isMoreTabMenuVisible ? tab && this.tabsVisibleIdxHash[tab.id] > -1 : true;
       const isHiddenTab = this.isMoreTabMenuVisible ? tab && this.tabsHiddenIdxHash[tab.id] > -1 : false;
       const firstVisibleTabIdx = 0;
@@ -683,7 +743,7 @@ export namespace Tabs {
             // Support Shift + Tab from More to last visible tab
             if (!this.isMoreTabMenuOpen && shiftKey) {
               event.preventDefault();
-              this.changeSelectedTabIdx(lastVisibleTabIdx);
+              this.moveFocusToAdjacentTab(elementId, FROM_MORE_TABS);
             }
           } else if (isVisibleTab) {
             //
@@ -696,19 +756,21 @@ export namespace Tabs {
           if (isMoreTriggerTab) {
             //
           } else if (isVisibleTab) {
-            this.changeSelectedTabIdx(lastVisibleTabIdx);
-          } else if (isHiddenTab) {
-            this.changeSelectedTabIdx(lastHiddenTabIdx);
+            event.preventDefault();              
+            this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.tabsFilteredAsVisibleList?.length - 1]);
+          } else if (this.isMoreTabMenuOpen) {
+            event.preventDefault();    
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[this.tabsFilteredAsHiddenList?.length - 1]);             
           }
           break;
         }
         case Key.Home: {
-          if (isMoreTriggerTab) {
-            this.changeSelectedTabIdx(firstVisibleTabIdx);
-          } else if (isVisibleTab) {
-            this.changeSelectedTabIdx(firstVisibleTabIdx);
-          } else if (isHiddenTab) {
-            this.changeSelectedTabIdx(firstHiddenTabIdx);
+          if (isVisibleTab) {
+            event.preventDefault();  
+            this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
+          } else if (this.isMoreTabMenuOpen) {
+            event.preventDefault();    
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[0]);
           }
           break;
         }
@@ -717,7 +779,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.changeSelectedTabIdx(this.selected === firstVisibleTabIdx ? lastVisibleTabIdx : this.selected - 1);
+            this.moveFocusToAdjacentTab(elementId, PREVIOUS);
           } else if (isHiddenTab) {
             //
           }
@@ -728,7 +790,7 @@ export namespace Tabs {
             //
           } else if (isVisibleTab) {
             event.stopPropagation();
-            this.changeSelectedTabIdx(this.selected === lastVisibleTabIdx ? firstVisibleTabIdx : this.selected + 1);
+            this.moveFocusToAdjacentTab(elementId, NEXT);
           } else if (isHiddenTab) {
             //
           }
@@ -764,10 +826,9 @@ export namespace Tabs {
         case Key.Space: {
           if (isMoreTriggerTab) {
             const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter(t => !t.disabled);
-            const t =
-              tabsFilteredAsHiddenNonDisabledList.find(t => t.selected) || tabsFilteredAsHiddenNonDisabledList.length
-                ? tabsFilteredAsHiddenNonDisabledList[0]
-                : undefined;
+            const t = tabsFilteredAsHiddenNonDisabledList.length
+              ? tabsFilteredAsHiddenNonDisabledList.find(t => t.selected) || tabsFilteredAsHiddenNonDisabledList[0]
+              : undefined;
             this.updateHiddenIdPositiveTabIndex(t);
             if (t) {
               const idx = this.tabsIdxHash[this.getNormalizedTabId(t.id)];
@@ -907,7 +968,7 @@ export namespace Tabs {
         } else {
           this.selected = selectedTabIndex;
         }
-      }
+      }     
     }
 
     disconnectedCallback() {
@@ -1016,9 +1077,9 @@ export namespace Tabs {
                   name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
-                  aria-controls="${tab.id}"
+                  aria-controls="${this.getAriaConrolId(tab)}"
                   .isCrossVisible=${true}
-                  tabIndex="${this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id ? 0 : -1}"
+                  tabIndex="${this.getTabIndex(tab)}"
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
@@ -1047,6 +1108,7 @@ export namespace Tabs {
               class="md-menu-overlay__more_tab ${classMap({
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
+              ariaRole="button"
             >
               <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
@@ -1076,9 +1138,10 @@ export namespace Tabs {
                     name="${tab.name}"
                     id="${this.getCopyTabId(tab)}"
                     aria-label=${tab.ariaLabel}
-                    aria-controls="${tab.id}"
+                    aria-controls="${this.getAriaConrolId(tab)}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                    ariaRole="menuitem"
                   >
                     ${unsafeHTML(tab.innerHTML)}
                   </md-tab>

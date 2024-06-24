@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.10.4",
+  "version": "2.11.0",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -68,7 +68,8 @@
     "nanoid": "^3.1.16",
     "papaparse": "^5.3.0",
     "sortablejs": "^1.13.0",
-    "lit-virtualizer": "0.4.2"
+    "lit-virtualizer": "0.4.2",
+    "@momentum-design/tokens": "0.0.56"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -128,7 +129,7 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1",
     "lit-scss-loader": "1.0.1",
-    "node-sass": "^4.13.1",
+    "sass": "^1.71.1",
     "node-sass-tilde-importer": "^1.0.2",
     "papaparse": "^5.3.0",
     "prettier": "^1.19.1",

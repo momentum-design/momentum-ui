@@ -142,3 +142,16 @@
     }
   }
 }
+
+
+@media(forced-colors:active) {
+  :host(md-code-editor) {
+    .md-code-editor {
+      outline: 1px solid CanvasText;
+
+      &-header {
+       outline: 1px solid CanvasText;
+      }
+    }
+  }
+}

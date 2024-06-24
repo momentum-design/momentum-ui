@@ -1,7 +1,5 @@
 // Remove after fixing checkbox/radio button
-@mixin input__help-text(
-  $color: $input__font-color--help,
-) {
+@mixin input__help-text($color: $input__font-color--help) {
   @include vr-spacing(mb, 0.25);
   color: $input__font-color--help;
   font-family: $brand-font-regular;
@@ -29,7 +27,8 @@
   $background-color-active: null,
   $border-color: null,
   $border-color-active: null,
-  $focus-border-color: null
+  $focus-border-color: null,
+  $focus-background-color: null
 ) {
   .md-input {
     background-color: $background-color;
@@ -50,11 +49,17 @@
       }
     }
 
+    &:focus {
+      @if $focus-background-color != null {
+        background-color: $focus-background-color;
+      }
+    }
+
     &:disabled,
     &.md-disabled {
       background-color: $background-color-disabled;
       border-color: $input__border-color--read-only;
-      color: $color-disabled;
+      color: $color-disabled !important;
 
       &::placeholder {
         color: $color-disabled;

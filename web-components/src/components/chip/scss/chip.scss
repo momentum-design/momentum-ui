@@ -377,3 +377,28 @@
 ::slotted([slot="custom-right-content"]) {
   margin-left: $chip-inner-content-margin;
 }
+
+@media (forced-colors: active) {
+  .md-chip {
+    outline: 1px solid CanvasText;
+
+    &:focus, &:hover {
+      box-shadow: none;
+      outline: 2px solid Highlight;
+    }
+  }
+
+  .md-chip.md-chip--disabled {
+    color: GrayText;
+    outline: 1px solid GrayText;
+
+    &:focus, &:hover {
+      outline: 2px solid Highlight;
+    }
+
+    md-icon {
+      color: GrayText;
+    }
+  }
+}
+

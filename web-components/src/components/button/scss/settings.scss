@@ -100,9 +100,9 @@ $button--blue__background-color--active: $md-theme-70 !default;
 $button--blue__border: 0 0 0 1px $button--blue__outline-color !default;
 
 // Blue button contrast colors
-$button--blue__background-color--contrast: $md-theme-60 !default;
-$button--blue__background-color--hover--contrast: $md-theme-70 !default;
-$button--blue__background-color--active--contrast: $md-theme-80 !default;
+$button--blue__background-color--contrast: var(--button-accent-bg-color, $md-theme-60) !default;
+$button--blue__background-color--hover--contrast: var(--button-accent-hover-bg-color, $md-theme-70) !default;
+$button--blue__background-color--active--contrast: var(--button-accent-pressed-bg-color, $md-theme-80) !default;
 $button--blue__border--contrast: 0 0 0 1px $md-theme-60 !default;
 
 // Red button colors

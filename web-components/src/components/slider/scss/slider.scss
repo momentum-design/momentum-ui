@@ -55,6 +55,7 @@
         height: 100%;
         position: absolute;
         width: 100%;
+        border: 1px solid var(--slider-background-pointerBorder);
 
         @media screen and (-ms-high-contrast: active) {
           filter: brightness(1) contrast(1) saturate(1.5);
@@ -89,6 +90,10 @@
   .md-slider {
     &__bar {
       cursor: not-allowed;
+      background-color: var(
+        --slider-background-disabled-bar,
+        var(--slider-background-bar, $md-slider-background-bar-light)
+      );
     }
 
     &__pointer {
@@ -107,13 +112,13 @@
 
 :host([focus-visible]:not([disabled])) {
   .md-slider__pointer::after {
-    box-shadow: $slider-pointer__box-shadow--focus;
+    box-shadow: var(--slider-background-focus-shadow, $slider-pointer__box-shadow--focus);
   }
 }
 
 :host([no-pointer][focus-visible]:not([disabled])) {
   .md-slider {
-    box-shadow: $slider__focus-shadow;
+    box-shadow: var(--slider-background-focus-shadow, $slider__focus-shadow);
   }
 }
 
@@ -134,6 +139,50 @@
 
     &__pointer {
       display: none;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  :host(md-slider) {
+    .md-slider {
+      &__bar {
+        background-color: CanvasText;
+      }
+      &__selection {
+        background-color: Highlight;
+      }
+      &__pointer::after {
+        background-color: Highlight;
+      }
+    }
+  }
+
+  :host(:hover:not([disabled])) {
+    .md-slider__pointer::after {
+      background-color: Highlight;
+    }
+  }
+
+  :host([no-pointer][focus-visible]:not([disabled])) {
+    .md-slider {
+      outline: 1px solid Highlight;
+    }
+  }
+
+  :host([focus-visible]:not([disabled])) {
+    .md-slider__pointer {
+      outline: 2px solid Highlight;
+    }
+  }
+
+  :host([disabled]) {
+    .md-slider {
+      &__pointer {
+        &::after {
+          background-color: GrayText;
+        }
+      }
     }
   }
 }

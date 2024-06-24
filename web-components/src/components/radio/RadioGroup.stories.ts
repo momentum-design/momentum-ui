@@ -12,6 +12,7 @@ import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs";
 import { html } from "lit-element";
+import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Radio",
@@ -27,13 +28,14 @@ export default {
 export const Radio = () => {
   const darkTheme = boolean("darkMode", false);
   const lumos = boolean("Lumos Theme", false);
+  const theme = select("Theme name", ThemeNameValues, "");
   const options = { Vertical: "vertical", Horizontal: "horizontal"};
   const alignment = select("Orientation", options, "horizontal");
   const check = number("Precheck", 1);
   const disabled = boolean("Disabled", false);
 
   return html`
-    <md-theme class="theme-toggle" id="radio" ?darkTheme=${darkTheme} ?lumos=${lumos}>
+    <md-theme class="theme-toggle" id="radio" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-radiogroup group-label="group_process" .alignment=${alignment as any} .checked="${check}">
         <md-radio slot="radio" value="developing">Developing</md-radio>
         <md-radio slot="radio" value="linting" .disabled=${disabled}>Linting</md-radio>

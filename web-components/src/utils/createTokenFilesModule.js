@@ -58,10 +58,14 @@ const createTokenFilesModule = async () => {
     const tokenFileNames = await _getTokenFiles(componentName);
 
     for (const tokenFileName of tokenFileNames) {
-      if (!tokenFileName.endsWith(".js")) {
+      if (tokenFileName === ".DS_Store") {
+        continue;
+      }
+      else if (!tokenFileName.endsWith(".js")) {
         console.error(`${tokenFileName} is not the correct file type. It should be a javascript file.`);
         process.exit(1);
-      }
+      }  
+
       const importName = _createImportName(tokenFileName);
       references.push(importName);
       fileNames.push(`"${tokenFileName}"`);

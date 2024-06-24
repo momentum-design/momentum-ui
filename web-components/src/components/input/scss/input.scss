@@ -96,8 +96,9 @@
       $color-clear-hover: $input__clear-icon__color--hover,
       $color-disabled: var(--input-disabled-text-color, $md-gray-40),
       $color-help: $input__font-color--help,
-      $color-placeholder: $input__font-color--placeholder,
-      $color-read-only: var(--md-primary-text-color, $md-gray-100)
+      $color-placeholder: var(--input-default-placeholder-color, $input__font-color--placeholder),
+      $color-read-only: var(--md-primary-text-color, $md-gray-100),
+      $focus-background-color: var(--input-default-focus-background-color, var(--input-default-bg-color))
     );
     box-sizing: border-box;
     line-height: 0;
@@ -139,7 +140,8 @@
         $background-color-hover: var(--input-error-hover-bg-color, $md-red-20),
         $border-color: var(--input-error-hover-border-color, $md-red-50),
         $background-color-active: var(--input-error-pressed-bg-color, $md-red-30),
-        $color-message: var(--input-error-message-text-color, $md-red-70)
+        $color-message: var(--input-error-message-text-color, $md-red-70),
+        $focus-background-color: var(--input-default-focus-background-color, var(--input-error-bg-color))
       );
 
       &:focus {
@@ -164,6 +166,7 @@
       @include input-color(
         $background-color: var(--md-alert-warning-bg-color, $input__background--warning),
         $background-color-hover: var(--md-alert-warning-bg-color, $input__background--warning),
+        $background-color-active: var(--md-alert-warning-bg-color, $input__background--warning),
         $border-color: var(--input-warning-border-color, $input__border-color--warning),
         $color-message: var(--md-alert-warning-text-color, $input__message__font-color--warning)
       );
@@ -395,5 +398,25 @@
 .md-input__message {
   md-icon {
     margin-right: 0.5em;
+  }
+}
+
+@media (forced-colors: active) {
+  .md-input-container {
+    .md-input {
+      border: 1px solid CanvasText;
+
+      &:focus,
+      &.md-focus {
+        border: none;
+        outline: 2px solid Highlight;
+      }
+
+      &:disabled,
+      &.md-disabled {
+        color: GrayText !important;
+        border: 1px solid GrayText;
+      }
+    }
   }
 }

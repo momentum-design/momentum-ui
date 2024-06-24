@@ -1,4 +1,8 @@
 @mixin global-theme-specfic-vars {
   --rem-base: 14px;
   font-size: var(--rem-base);
+
+  --wc-menu-padding:  0.5rem;
+  --wc-menu-item-height:  2.5rem;
+  --wc-menu-item-rounded-border-radius: 0.5rem;
 }

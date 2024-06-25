@@ -132,7 +132,7 @@ export namespace DatePickerDay {
     }
 
     render() {
-      const localisedDateFormat = localizeDate(this.day, this.datePickerProps?.locale || "en").toFormat("D, dd MMMM yyyy")
+      const localisedDateFormat = localizeDate(this.day, this.datePickerProps?.locale || "en").toFormat("D, dd MMMM yyyy");
       return html`
         <md-button
           circle

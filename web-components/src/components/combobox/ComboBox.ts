@@ -532,11 +532,14 @@ export namespace ComboBox {
         const computedStyle = window.getComputedStyle(this.listBox, null);
         const paddingTop = parseInt(computedStyle.getPropertyValue("padding-top"));
         const paddingBottom = parseInt(computedStyle.getPropertyValue("padding-bottom"));
+        const padding = paddingTop + paddingBottom;
 
-        return paddingTop + paddingBottom;
+        if (!isNaN(padding)) {
+          return padding + 2;
+        }
       }
 
-      return 0;
+      return 10;
     }
 
     private resizeListbox() {
@@ -544,7 +547,7 @@ export namespace ComboBox {
         let height = 0;
         let labelHeight = 0;
         let virtualizerHeight = 0;
-
+        const verticalPadding: number = this.getListBoxVerticalPadding();
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
             ? [...this.lists].filter(list => list.offsetHeight !== 0)
@@ -568,17 +571,17 @@ export namespace ComboBox {
             .reduce((accumulator, option) => accumulator + option.offsetHeight, 0);
         }
         if (this.listBox) {
-          this.listBox.style.maxHeight = `${height + labelHeight + 16}px`;
+          this.listBox.style.maxHeight = `${height + labelHeight + verticalPadding}px`;
         }
 
         if (this.virtualizer) {
-          this.virtualizer.style.height = `${virtualizerHeight + 16}px`;
+          this.virtualizer.style.height = `${virtualizerHeight + verticalPadding}px`;
         }
         if (this.showCustomError || this.showLoader) {
           const customContent = this.listBox?.querySelector("[slot]");
           if (this.listBox && customContent) {
-            this.listBox.style.height = `${customContent.clientHeight + 16}px`;
-            this.listBox.style.maxHeight = `${customContent.clientHeight + 16}px`;
+            this.listBox.style.height = `${customContent.clientHeight + verticalPadding}px`;
+            this.listBox.style.maxHeight = `${customContent.clientHeight + verticalPadding}px`;
           }
         }
       });

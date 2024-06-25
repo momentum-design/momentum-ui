@@ -2,12 +2,12 @@
   --rem-base: 14px;
   font-size: var(--rem-base);
 
-  --wc-menu-padding:  0.5rem;
-  --wc-menu-item-height:  2.5rem;
+  --wc-menu-padding: 0.5rem;
+  --wc-menu-item-height: 2.5rem;
   --wc-menu-item-rounded-border-radius: 0.5rem;
 
+  //Override the light and dark theme colors vars
   --main-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-
   --md-default-focus-outline-color: #{$mds-color-theme-outline-theme-normal};
 
   // New Backgrounds
@@ -32,7 +32,7 @@
   --md-secondary-text-color: #{$mds-color-theme-text-secondary-normal};
   --md-disabled-text-color: #{$mds-color-theme-text-primary-disabled};
   --md-highlight-text-color: #{$mds-color-theme-text-highlight};
-  
+
   --md-hyperlink-text-color: #{$mds-color-theme-text-accent-normal};
   --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
   --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};
@@ -43,7 +43,6 @@
 
   --md-primary-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
   --md-primary-success-text-color: #{$mds-color-theme-text-success-normal};
-
 
   --md-focus-border-color: #{$mds-color-theme-outline-theme-normal};
 
@@ -58,10 +57,9 @@
   --md-alert-success-text-color: #{$mds-color-theme-text-success-normal};
   --md-alert-info-bg-color: #{$mds-color-theme-background-alert-theme-normal};
   --md-alert-info-text-color: #{$mds-color-theme-text-accent-normal};
-  
+
   --md-nav-tab-hover-bg-color: #{$mds-color-theme-button-secondary-hover};
   --md-nav-tab-active-bg-color: #{$mds-color-theme-button-secondary-active-normal};
-
 
   // --md-presence-active-bg-color: #{$md-green-50};
   // --md-presence-do-not-disturb-bg-color: #{$md-red-60};

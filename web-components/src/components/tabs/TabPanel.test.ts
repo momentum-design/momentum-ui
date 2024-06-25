@@ -23,8 +23,8 @@ describe("TabPanel", () => {
     expect(el.getAttribute("tabindex")).toBe("0");
   });
 
-  test("should not have tabindex attribute when removeFocus is passed", async () => {
-    const el = await fixture<TabPanel.ELEMENT>(`<md-tab-panel removeFocus="true"></md-tab-panel>`);
+  test("should not have tabindex attribute when focusable-panel is passed as false", async () => {
+    const el = await fixture<TabPanel.ELEMENT>(`<md-tab-panel focusable-panel="false"></md-tab-panel>`);
     await elementUpdated(el);
     expect(el.hasAttribute("tabindex")).not.toBeTruthy();
   });

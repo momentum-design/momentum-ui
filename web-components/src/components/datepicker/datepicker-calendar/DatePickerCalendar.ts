@@ -21,10 +21,10 @@ import {
   shouldPrevMonthDisable,
   subtractMonths
 } from "@/utils/dateUtils";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, TemplateResult } from "lit-element";
+import { LitElement, PropertyValues, TemplateResult, html, internalProperty, property } from "lit-element";
 import { DateTime } from "luxon";
+import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import styles from "../scss/module.scss";
 
 export namespace DatePickerCalendar {
@@ -48,15 +48,15 @@ export namespace DatePickerCalendar {
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("datePickerProps") ) {
-        if(this.datePickerProps?.selected.invalidReason===null){
-          this.viewAnchorDate = this.datePickerProps.selected || now()
+      if (changedProperties.has("datePickerProps")) {
+        if (this.datePickerProps?.selected.invalidReason === null) {
+          this.viewAnchorDate = this.datePickerProps.selected || now();
         }
         this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
           this.monthFormat
         );
       }
-      if(changedProperties.has("viewAnchorDate")){
+      if (changedProperties.has("viewAnchorDate")) {
         this.localeMonth = localizeDate(this.viewAnchorDate, this.datePickerProps?.locale || "en").toFormat(
           this.monthFormat
         );
@@ -69,7 +69,6 @@ export namespace DatePickerCalendar {
     };
 
     increaseMonth = (event: MouseEvent) => {
-
       const { handleMonthChange } = this;
       const { viewAnchorDate: date } = this;
       this.setDate(addMonths(date, 1), () => handleMonthChange && handleMonthChange(event, this.viewAnchorDate));

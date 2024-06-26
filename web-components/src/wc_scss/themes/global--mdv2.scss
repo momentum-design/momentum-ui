@@ -61,6 +61,11 @@
   --md-nav-tab-hover-bg-color: #{$mds-color-theme-button-secondary-hover};
   --md-nav-tab-active-bg-color: #{$mds-color-theme-button-secondary-active-normal};
 
+  --md-menu-overlay-border-color: #{$mds-color-theme-outline-secondary-normal};
+  
+  --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
+  --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
+  
   // --md-presence-active-bg-color: #{$md-green-50};
   // --md-presence-do-not-disturb-bg-color: #{$md-red-60};
   // --md-presence-away-bg-color: #{$md-gray-30};
@@ -70,8 +75,7 @@
   // --md-email-composer-ccChip-bg-color: #{$md-gray-90};
   // --md-interaction-history-bg-color: #{$md-gray-95};
   // --md-auto-wrapup-bg-color: #{$md-blue-90};
-  // --md-menu-overlay-border-color: #{$md-gray-80};
-  // --md-dynamic-layout-button-border-color: #{$md-gray-70};
+  
   // --md-dynamic-layout-button-inverted-border-color: #{$md-gray-10};
   // --md-input-bg-color: #{$md-gray-95};
   // --md-input-chat-length-indicator-bg-color: #{$md-gray-90};

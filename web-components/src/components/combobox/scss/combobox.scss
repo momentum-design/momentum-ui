@@ -160,6 +160,7 @@ div#md-combobox-listbox {
   position: absolute;
   top: calc(100% + #{$combobox-main-indent});
   width: 100%;
+  padding: var(--wc-menu-padding);
 
   .no-result {
     padding: $combobox-option-padding;
@@ -193,6 +194,7 @@ div#md-combobox-listbox {
     display: flex;
     width: 100%;
     background-color: var(--combobox-group-label-bg-color);
+    border-radius: var(--wc-menu-item-rounded-border-radius);
     
     &:hover {
       background: unset;
@@ -212,6 +214,7 @@ div#md-combobox-listbox {
   padding: $combobox-option-padding;
   width: 100%;
   border: solid 2px transparent;
+  border-radius: var(--wc-menu-item-rounded-border-radius);
 
   .select-label {
     @include text-dots;
@@ -254,7 +257,7 @@ div#md-combobox-listbox {
      
   }
   &.md-combobox-multiselect {
-    border-bottom: 1px solid var(--md-button-tertiary-outline-color, $md-gray-70);
+    border-bottom: 1px solid var(--md-primary-seperator-color, $md-gray-70);
   }
 
   &[aria-checked="true"] {
@@ -272,7 +275,7 @@ div#md-combobox-listbox {
   }
 
   &[focused] {
-    border: 2px solid var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
+    border: 2px solid var(--combobox-dropdown-item-focus-border-color, $lm-combobox-dropdown-item-focus-bg-color-light);
   }
   &[selected="true"] {
     background: var(--combobox-dropdown-item-select-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);

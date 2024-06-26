@@ -110,7 +110,7 @@ export const buttonTemplate = html`
 
   <div class="row" style="display: flex; margin: .5rem 0">
     <h3 class="sandbox-header" style="margin: .5rem 1rem">Variants</h3>
-    <md-button variant="primary"><span slot="text">pimary</span></md-button>
+    <md-button variant="primary"><span slot="text">primary</span></md-button>
     <md-button variant="secondary"><span slot="text">secondary</span></md-button>
     <md-button variant="red"><span slot="text">red</span></md-button>
     <md-button variant="green"><span slot="text">green</span></md-button>

@@ -53,16 +53,16 @@ export class AlertBannerTemplateSandbox extends LitElement {
     return html`
       <h2>Alert Banner</h2>
       <div style="margin-bottom: 15px;">
-        <md-button @click=${() => this.openAlert("warning")}>Trigger Warning Alert</md-button>
+        <md-button variant="secondary" @click=${() => this.openAlert("warning")}>Trigger Warning Alert</md-button>
       </div>
       <div style="margin-bottom: 15px;">
-        <md-button @click=${() => this.openAlert("error")}>Trigger Error Alert</md-button>
+        <md-button variant="secondary" @click=${() => this.openAlert("error")}>Trigger Error Alert</md-button>
       </div>
       <div style="margin-bottom: 15px;">
-        <md-button @click=${() => this.openAlert("default")}>Trigger Default Alert</md-button>
+        <md-button variant="secondary" @click=${() => this.openAlert("default")}>Trigger Default Alert</md-button>
       </div>
       <div style="margin-bottom: 15px;">
-        <md-button @click=${() => this.openAlert("success")}>Trigger Success Alert</md-button>
+        <md-button variant="secondary" @click=${() => this.openAlert("success")}>Trigger Success Alert</md-button>
       </div>
       <md-alert-banner ?show=${this.default} type="default" @alertBanner-hide=${() => this.hideAlert("default")}>
         Test Alert Message

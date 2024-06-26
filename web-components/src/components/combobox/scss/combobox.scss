@@ -258,6 +258,8 @@ div#md-combobox-listbox {
   }
   &.md-combobox-multiselect {
     border-bottom: 1px solid var(--md-primary-seperator-color, $md-gray-70);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   &[aria-checked="true"] {

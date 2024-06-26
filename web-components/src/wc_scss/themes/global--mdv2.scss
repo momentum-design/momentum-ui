@@ -12,19 +12,20 @@
 
   // New Backgrounds
   --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  --md-primary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  --md-primary-two-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
+  --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+  --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
 
-  --md-secondary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
   --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
+  
   --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
   --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active};
 
-  --md-tertiary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
-  // --md-tertiary-one-bg-color: #{$md-gray-95};
+  --md-tertiary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  --md-tertiary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
   // --md-tertiary-two-bg-color: #{$md-gray-80};
 
-  --md-quaternary-bg-color: #{$mds-color-theme-background-solid-quaternary-normal};
+  --md-quaternary-bg-color: #{$mds-color-theme-background-alert-default-active};
   // --md-quaternary-one-bg-color: #{$md-gray-60};
   // --md-quaternary-two-bg-color: #{$md-gray-90};
 
@@ -38,8 +39,8 @@
   --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};
 
   // Old Backgrounds (deprecated)
-  --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-one-bg-color
-  --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-tertiary-normal}; // use --md-primary-two-bg-color
+  --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
+  --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color
 
   --md-primary-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
   --md-primary-success-text-color: #{$mds-color-theme-text-success-normal};

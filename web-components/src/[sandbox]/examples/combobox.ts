@@ -1,7 +1,7 @@
+import { comboBoxObjectLongOptions, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import "@/components/spinner/Spinner";
-import { comboBoxObjectLongOptions, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
 
@@ -15,19 +15,19 @@ const changeHandler = (e: CustomEvent) => {
   console.log("change-selected: ", e);
 };
 
-const comboboxOnExpand =(e: CustomEvent) => {
+const comboboxOnExpand = (e: CustomEvent) => {
   console.log("combobox-on-expand: ", e);
-}
+};
 
-const comboboxOnExpand2 =(e: CustomEvent) => {
+const comboboxOnExpand2 = (e: CustomEvent) => {
   console.log("combobox-on-expand2: ", e.composedPath());
-  const target =  e.composedPath()[0] as HTMLElement | any;
-  setTimeout(() => {target.options = comboBoxObjectOptions}, 500)
-
-}
+  const target = e.composedPath()[0] as HTMLElement | any;
+  setTimeout(() => {
+    target.options = comboBoxObjectOptions;
+  }, 500);
+};
 
 export const comboBoxTemplate = html`
-
   <md-label htmlFor="comboboxid">
     <span>Label Combobox</span>
   </md-label>
@@ -85,7 +85,13 @@ export const comboBoxTemplate = html`
   <md-combobox placeholder="Placeholder" .options=${comboBoxObjectOptions} option-id="id" option-value="country">
   </md-combobox>
   <h3>Object Data With Virtual Scroll</h3>
-  <md-combobox placeholder="Placeholder" .options=${comboBoxObjectOptions} option-id="id" option-value="country"  use-virtual-scroll>
+  <md-combobox
+    placeholder="Placeholder"
+    .options=${comboBoxObjectOptions}
+    option-id="id"
+    option-value="country"
+    use-virtual-scroll
+  >
   </md-combobox>
   <h3>Object Data Predefined Value</h3>
   <md-combobox
@@ -178,8 +184,7 @@ export const comboBoxTemplate = html`
     )}
   </md-combobox>
   <h3>Slot Complex Custom Object Content</h3>
-  <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content>
-  </md-combobox>
+  <md-combobox .custom-options=${JSON.stringify(dropdownValue)} with-custom-content> </md-combobox>
   <h3>Without Clear Icon</h3>
   <md-combobox .options=${comboBoxOptions} placeholder="Placeholder" no-clear-icon></md-combobox>
 

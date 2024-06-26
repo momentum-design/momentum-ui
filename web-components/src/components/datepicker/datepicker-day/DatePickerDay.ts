@@ -9,7 +9,7 @@
 import "@/components/button/Button";
 import { DateRangePicker } from "../../date-range-picker/DateRangePicker"; // Keep type import as a relative path
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { getDate, isDayDisabled, isSameDay, now } from "@/utils/dateUtils";
+import { getDate, isDayDisabled, isSameDay, now, localizeDate } from "@/utils/dateUtils";
 import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
@@ -132,6 +132,7 @@ export namespace DatePickerDay {
     }
 
     render() {
+      const localisedDateFormat = localizeDate(this.day, this.datePickerProps?.locale || "en").toFormat("D, dd MMMM yyyy");
       return html`
         <md-button
           circle
@@ -145,8 +146,8 @@ export namespace DatePickerDay {
             }
           }}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
-          ariaLabel=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
-          title=${`${this.day?.toFormat("D, dd MMMM yyyy")}`}
+          ariaLabel=${`${localisedDateFormat}`}
+          title=${`${localisedDateFormat}`}
           aria-selected=${ifDefined(this.selected)}
           tab-index=${this.focused ? "0" : "-1"}
         >

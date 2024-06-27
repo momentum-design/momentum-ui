@@ -66,8 +66,8 @@ const combobox = {
         dark: "$mds-color-theme-background-primary-active"
       },
       "focus-border-color": {
-        light: "$mds-color-theme-accent-control-default",
-        dark: "$mds-color-theme-accent-control-default"
+        light: "$mds-color-theme-control-active-normal",
+        dark: "$mds-color-theme-control-active-normal"
       },
       "select-bg-color": {
         light: "$mds-color-theme-background-primary-active",
@@ -78,12 +78,12 @@ const combobox = {
         dark: "$mds-color-theme-text-primary-normal"
       },
       "checked-bg-color": {
-        light: "$mds-color-theme-accent-control-default",
-        dark: "$mds-color-theme-accent-control-default"
+        light: "$mds-color-theme-control-active-normal",
+        dark: "$mds-color-theme-control-active-normal"
       },
       "checked-icon-color": {
-        light: "$mds-color-theme-inverse-neutral-text-primary",
-        dark: "$mds-color-theme-inverse-neutral-text-primary"
+        light: "$mds-color-theme-inverted-text-primary-normal",
+        dark: "$mds-color-theme-inverted-text-primary-normal"
       },
       "icon-color": {
         light: colors.gray[100].name,

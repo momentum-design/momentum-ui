@@ -5,12 +5,12 @@ const label = {
   prefix: "mdv2",
   component: "label",
   color: {
-    light: "$mds-color-theme-neutral-text-primary",
-    dark: "$mds-color-theme-neutral-text-primary"
+    light: "$mds-color-theme-text-primary-normal",
+    dark: "$mds-color-theme-text-primary-normal"
   },
   secondary: {
-    light: "$mds-color-theme-neutral-text-secondary-default",
-    dark: "$mds-color-theme-neutral-text-secondary-default"
+    light: "$mds-color-theme-text-secondary-normal",
+    dark: "$mds-color-theme-text-secondary-normal"
   }
 };
 

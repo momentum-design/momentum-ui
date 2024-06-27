@@ -56,8 +56,8 @@ const task_item = {
       dark: "$mds-color-theme-background-accent-normal"
     },
     "quantity-text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     }
   },
   timer: {

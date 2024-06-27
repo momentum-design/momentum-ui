@@ -34,8 +34,8 @@ const modal = {
   },
   backdrop: {
     "bg-color": {
-      light: "$mds-color-theme-common-overlay-secondary-normal",
-      dark: "$mds-color-theme-common-overlay-secondary-normal"
+      light: "$mds-color-theme-common-overlays-secondary-normal",
+      dark: "$mds-color-theme-common-overlays-secondary-normal"
     }
   }
 };

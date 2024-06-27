@@ -8,8 +8,8 @@ const pagination = {
     light: "$mds-color-theme-text-secondary-normal",
     dark: "$mds-color-theme-text-secondary-normal",
     current: {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     }
   },
   "bg-current": {

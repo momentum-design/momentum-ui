@@ -7,7 +7,7 @@ const progressbar = {
   track: {
     "bg-color": {
       light: "$mds-color-theme-control-inactive-normal",
-      dark: "$mds-color-theme-inverted-control-inactive-normal"
+      dark: "$mds-color-theme-control-inactive-normal"
     }
   },
   indicator: {

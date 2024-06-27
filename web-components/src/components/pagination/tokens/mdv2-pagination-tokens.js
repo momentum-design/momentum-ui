@@ -18,8 +18,8 @@ const pagination = {
   },
 
   "bg-hover": {
-    light: "$mds-color-theme-control-inactive-normal",
-    dark: "$mds-color-theme-inverted-control-inactive-normal" //todo
+    light: "$mds-color-theme-inverted-control-inactive-normal",
+    dark: "$mds-color-theme-inverted-control-inactive-normal"
   },
   nav: {
     color: {
@@ -36,8 +36,8 @@ const pagination = {
     }
   },
   "dots-color": {
-    light: "$mds-color-theme-control-inactive-normal",
-    dark: "$mds-color-theme-inverted-control-inactive-normal", //todo
+    light: "$mds-color-theme-inverted-control-inactive-normal",
+    dark: "$mds-color-theme-inverted-control-inactive-normal",
     current: {
       light: "$mds-color-theme-control-active-normal",
       dark: "$mds-color-theme-control-active-normal"

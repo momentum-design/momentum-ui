@@ -235,8 +235,10 @@ const button = {
   },
   promotional: {
     "bg-color": {
-      light: "$mds-color-theme-common-button-promotion-normal-0",
-      dark: "$mds-color-theme-common-button-promotion-normal-0"
+      light:
+        "linear-gradient(46deg, $mds-color-theme-common-button-promotion-normal-0 -0.03%, $mds-color-theme-common-button-promotion-normal-1 99.99%)",
+      dark:
+        "linear-gradient(46deg, $mds-color-theme-common-button-promotion-normal-0 -0.03%, $mds-color-theme-common-button-promotion-normal-1 99.99%)"
     },
     "text-color": {
       light: "$mds-color-theme-common-text-primary-normal",
@@ -244,14 +246,18 @@ const button = {
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-common-button-promotion-hover-0",
-        dark: "$mds-color-theme-common-button-promotion-hover-0"
+        light:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-hover-0 -0.03%, $mds-color-theme-common-button-promotion-hover-1 99.99%)",
+        dark:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-hover-0 -0.03%, $mds-color-theme-common-button-promotion-hover-1 99.99%)"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-common-button-promotion-active-0",
-        dark: "$mds-color-theme-common-button-promotion-active-0"
+        light:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-active-0 -0.03%, $mds-color-theme-common-button-promotion-active-1 99.99%)",
+        dark:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-active-0 -0.03%, $mds-color-theme-common-button-promotion-active-1 99.99%)"
       }
     }
   },

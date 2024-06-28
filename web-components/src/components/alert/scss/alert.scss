@@ -9,7 +9,7 @@
   @include flex($jc: space-between, $ai: flex-start);
   @include border-radius($alert__border-radius);
   background-color: var(--alert-default-bg-color, $lm-alert-default-bg-color-light);
-  border: 1px solid $black-12;
+  border: 1px solid var(--alert-default-border-color, $black-12);
   box-shadow: 0 8px 16px 0 $black-08;
   flex: 1 1 100%;
   margin-bottom: rem-calc(8);

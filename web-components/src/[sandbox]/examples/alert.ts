@@ -18,7 +18,7 @@ export const alertTemplate = html`
     </md-badge>
   </md-alert>
   <md-alert message="Who's awesome? You are!" show>
-    <a slot="alert-body" href="/">Test</a>
+    <md-link slot="alert-body" href="/">Test</md-link>
     <div slot="alert-footer">
       <md-button variant="primary"><span slot="text">primary</span></md-button>
     </div>

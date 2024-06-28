@@ -6,6 +6,15 @@
   --wc-menu-item-height: 2.5rem;
   --wc-menu-item-rounded-border-radius: 0.5rem;
 
+  --wc-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
+  --wc-error-text-color: #{$mds-color-theme-text-error-normal};
+  --wc-warning-bg-color: #{$mds-color-theme-background-alert-warning-normal};
+  --wc-warning-text-color: #{$mds-color-theme-text-warning-normal};
+  --wc-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
+  --wc-success-text-color: #{$mds-color-theme-text-success-normal};
+  --wc-info-bg-color: #{$mds-color-theme-background-alert-theme-normal};
+  --wc-info-text-color: #{$mds-color-theme-text-accent-normal};
+
   //Override the light and dark theme colors vars
   --main-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   --md-default-focus-outline-color: #{$mds-color-theme-outline-theme-normal};
@@ -17,7 +26,7 @@
 
   --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
   --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
-  
+
   --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
   --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active};
 
@@ -63,10 +72,10 @@
   --md-nav-tab-active-bg-color: #{$mds-color-theme-button-secondary-active-normal};
 
   --md-menu-overlay-border-color: #{$mds-color-theme-outline-secondary-normal};
-  
+
   --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
-  
+
   // --md-presence-active-bg-color: #{$md-green-50};
   // --md-presence-do-not-disturb-bg-color: #{$md-red-60};
   // --md-presence-away-bg-color: #{$md-gray-30};

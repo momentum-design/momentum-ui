@@ -39,6 +39,16 @@ const list = {
       light: "$mds-color-theme-outline-theme-normal",
       dark: "$mds-color-theme-outline-theme-normal"
     }
+  },
+  "border-radius": {
+    pill: {
+      light: "9999px",
+      dark: "9999px"
+    },
+    rounded: {
+      light: "0.5rem",
+      dark: "0.5rem"
+    }
   }
 };
 

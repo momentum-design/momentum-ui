@@ -1,5 +1,7 @@
 @import "@/wc_scss/typography/settings.scss";
 
+$brand-font-regular: "Inter Regular", $font-family-sans-serif;
+
 @mixin global-theme-specfic-vars {
   --rem-base: 14px;
   font-size: var(--rem-base);

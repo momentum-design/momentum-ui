@@ -6,8 +6,8 @@ const progressbar = {
   component: "progress-bar",
   track: {
     "bg-color": {
-      light: "$mds-color-theme-control-inactive-normal",
-      dark: "$mds-color-theme-control-inactive-normal"
+      light: "$mds-color-theme-control-indicator-inactive-normal",
+      dark: "$mds-color-theme-control-indicator-inactive-normal"
     }
   },
   indicator: {

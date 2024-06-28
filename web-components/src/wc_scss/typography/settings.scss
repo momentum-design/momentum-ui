@@ -1,6 +1,5 @@
 // We use these to define default font stacks
 @use "sass:math";
-@import "@/wc_scss/settings/rem.scss";
 
 $brand-font-folder: "~@momentum-ui/core/fonts" !default;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -16,13 +15,13 @@ $brand-font-heavy: "CiscoSansTT Heavy", $font-family-sans-serif;
 $brand-font-heavy-oblique: "CiscoSansTT Heavy Oblique", $font-family-sans-serif;
 $brand-font-light: "CiscoSansTT Light", $font-family-sans-serif;
 $brand-font-light-Oblique: "CiscoSansTT Light Oblique", $font-family-sans-serif;
-$brand-font-regular: "CiscoSansTT Regular", "Inter Regular", $font-family-sans-serif;
+$brand-font-regular: "CiscoSansTT Regular", $font-family-sans-serif;
 $brand-font-regular-oblique: "CiscoSansTT Regular Oblique",
   $font-family-sans-serif;
 $brand-font-thin: "CiscoSansTT Thin", $font-family-sans-serif;
 $brand-font-thin-oblique: "CiscoSansTT Thin Oblique", $font-family-sans-serif;
 
-$brand-font-medium: "CiscoSansTT-Medium", $font-family-sans-serif;
+$brand-font-medium: "CiscoSans-Medium", $font-family-sans-serif;
 
 $body-font-family: $brand-font-regular;
 

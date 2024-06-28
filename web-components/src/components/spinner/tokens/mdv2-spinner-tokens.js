@@ -5,8 +5,8 @@ const spinner = {
   prefix: "mdv2",
   component: "spinner",
   "bg-color": {
-    light: "$mds-color-theme-control-inactive-normal",
-    dark: "$mds-color-theme-control-inactive-normal"
+    light: "$mds-color-theme-control-indicator-inactive-normal",
+    dark: "$mds-color-theme-control-indicator-inactive-normal"
   },
   color: {
     light: "$mds-color-theme-outline-input-active",

@@ -8,8 +8,8 @@ const pagination = {
     light: "$mds-color-theme-text-secondary-normal",
     dark: "$mds-color-theme-text-secondary-normal",
     current: {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     }
   },
   "bg-current": {
@@ -18,8 +18,8 @@ const pagination = {
   },
 
   "bg-hover": {
-    light: "$mds-color-theme-control-inactive-normal",
-    dark: "$mds-color-theme-inverted-control-inactive-normal" //todo
+    light: "$mds-color-theme-inverted-control-inactive-normal",
+    dark: "$mds-color-theme-inverted-control-inactive-normal"
   },
   nav: {
     color: {
@@ -36,8 +36,8 @@ const pagination = {
     }
   },
   "dots-color": {
-    light: "$mds-color-theme-control-inactive-normal",
-    dark: "$mds-color-theme-inverted-control-inactive-normal", //todo
+    light: "$mds-color-theme-inverted-control-inactive-normal",
+    dark: "$mds-color-theme-inverted-control-inactive-normal",
     current: {
       light: "$mds-color-theme-control-active-normal",
       dark: "$mds-color-theme-control-active-normal"

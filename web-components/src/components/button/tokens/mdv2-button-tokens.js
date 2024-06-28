@@ -60,8 +60,8 @@ const button = {
         dark: "$mds-color-theme-text-primary-disabled"
       },
       "border-color": {
-        light: "$mds-color-theme-outline-disabled-normal",
-        dark: "$mds-color-theme-outline-disabled-normal"
+        light: "$mds-color-theme-outline-primary-disabled",
+        dark: "$mds-color-theme-outline-primary-disabled"
       }
     },
     hover: {
@@ -93,8 +93,8 @@ const button = {
       dark: "$mds-color-theme-button-join-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
@@ -207,8 +207,8 @@ const button = {
       dark: "$mds-color-theme-button-cancel-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
@@ -235,23 +235,29 @@ const button = {
   },
   promotional: {
     "bg-color": {
-      light: "$mds-color-theme-common-button-promotion-normal",
-      dark: "$mds-color-theme-common-button-promotion-normal"
+      light:
+        "linear-gradient(46deg, $mds-color-theme-common-button-promotion-normal-0 -0.03%, $mds-color-theme-common-button-promotion-normal-1 99.99%)",
+      dark:
+        "linear-gradient(46deg, $mds-color-theme-common-button-promotion-normal-0 -0.03%, $mds-color-theme-common-button-promotion-normal-1 99.99%)"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-common-button-promotion-hover",
-        dark: "$mds-color-theme-common-button-promotion-hover"
+        light:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-hover-0 -0.03%, $mds-color-theme-common-button-promotion-hover-1 99.99%)",
+        dark:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-hover-0 -0.03%, $mds-color-theme-common-button-promotion-hover-1 99.99%)"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-common-button-promotion-active",
-        dark: "$mds-color-theme-common-button-promotion-active"
+        light:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-active-0 -0.03%, $mds-color-theme-common-button-promotion-active-1 99.99%)",
+        dark:
+          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-active-0 -0.03%, $mds-color-theme-common-button-promotion-active-1 99.99%)"
       }
     }
   },
@@ -261,8 +267,8 @@ const button = {
       dark: "$mds-color-theme-button-accent-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
@@ -351,12 +357,12 @@ const button = {
   },
   disabled: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-btn-primary-disabled",
-      dark: "$mds-color-theme-neutral-btn-primary-disabled"
+      light: "$mds-color-theme-common-text-primary-disabled",
+      dark: "$mds-color-theme-common-text-primary-disabled"
     },
     "text-color": {
-      light: "$mds-color-theme-neutral-text-disabled",
-      dark: "$mds-color-theme-neutral-text-disabled"
+      light: "$mds-color-theme-common-text-primary-disabled",
+      dark: "$mds-color-theme-common-text-primary-disabled"
     }
   },
   favorite: {

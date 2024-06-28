@@ -6,15 +6,15 @@
  *
  */
 
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
-import { MenuItem } from "./MenuItem";
 import { Key } from "@/constants";
-import { nanoid } from "nanoid";
-import { SlottedMixin } from "@/mixins/SlottedMixin";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { RovingTabIndexMixin } from "@/mixins/RovingTabIndexMixin";
-import { classMap } from "lit-html/directives/class-map";
+import { SlottedMixin } from "@/mixins/SlottedMixin";
 import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
+import { nanoid } from "nanoid";
+import { MenuItem } from "./MenuItem";
 import styles from "./scss/module.scss";
 
 type ItemId = Element["id"];
@@ -24,9 +24,9 @@ export namespace Menu {
   @customElementWithCheck("md-menu")
   export class ELEMENT extends SlottedMixin(RovingTabIndexMixin(LitElement)) {
     @property({ type: Boolean }) justified = false;
-    @property({ type: String }) direction = "horizontal"
-    
-    @query('slot') menuSlotElement?: HTMLSlotElement;
+    @property({ type: String }) direction = "horizontal";
+
+    @query("slot") menuSlotElement?: HTMLSlotElement;
     @query("md-menu-overlay") menuSubElement?: HTMLSlotElement;
 
     private items: MenuItem.ELEMENT[] = [];
@@ -69,14 +69,14 @@ export namespace Menu {
 
     private setupMenuItems() {
       if (this.menuSlotElement) {
-        const children = this.menuSlotElement.assignedElements({ flatten: true })
+        const children = this.menuSlotElement.assignedElements({ flatten: true });
         this.getChildrenFromTree({ children }, this.items);
       }
     }
 
-    private getChildrenFromTree(elem: {children: Element[]}, menuItems: MenuItem.ELEMENT[]) {
-      for (var i = 0; i < elem.children.length; i++) {
-        var child = elem.children[i];
+    private getChildrenFromTree(elem: { children: Element[] }, menuItems: MenuItem.ELEMENT[]) {
+      for (let i = 0; i < elem.children.length; i++) {
+        const child = elem.children[i];
         if (child instanceof MenuItem.ELEMENT) {
           menuItems.push(child);
         }
@@ -85,7 +85,6 @@ export namespace Menu {
     }
 
     private updateSelectedItem(newSelectedIndex: number) {
-
       const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
 
       if (oldSelectedIndex === newSelectedIndex) {
@@ -118,7 +117,7 @@ export namespace Menu {
 
     handleItemClick(event: CustomEvent<MenuItem.MenuItemEvent>) {
       const { id } = event.detail;
-    
+
       const menuItem = this.itemsHash[this.getNormalizedItemId(id)];
 
       if (menuItem && !menuItem.disabled) {
@@ -140,7 +139,7 @@ export namespace Menu {
           this.changeSelectedItemIdx(0);
           break;
         case Key.ArrowLeft:
-        case Key.ArrowUp:  
+        case Key.ArrowUp:
           if (this.selected === 0) {
             this.changeSelectedItemIdx(this.items.length - 1);
           } else {
@@ -158,7 +157,9 @@ export namespace Menu {
         case Key.Enter:
         case Key.Space:
           // eslint-disable-next-line no-case-declarations
-          const tabIndex = this.slotted.findIndex(element => element.id === id && !(element as MenuItem.ELEMENT).disabled);
+          const tabIndex = this.slotted.findIndex(
+            element => element.id === id && !(element as MenuItem.ELEMENT).disabled
+          );
           if (tabIndex !== -1) {
             this.updateSelectedItem(tabIndex);
           }
@@ -194,7 +195,6 @@ export namespace Menu {
     }
 
     render() {
-      
       return html`
         <nav class="md-menu ${classMap(this.menuClassMap)}">
           <ul class="md-menu-list">

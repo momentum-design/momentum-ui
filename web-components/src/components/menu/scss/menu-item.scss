@@ -3,7 +3,7 @@
   padding: rem-calc(2);
 
   a {
-    color: var(--menu-default, $lm-menu-default-light);
+    color: $menu-item-text-color;
     display: flex;
     padding: $menu-item-main-padding;
   }
@@ -12,17 +12,27 @@
     padding: 0 rem-calc(3);
   }
 
-  &--selected {
-    background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
-  }
-
   &:hover {
-    background: var(--menu-hover-bg, $lm-menu-hover-bg-light);
+    background: $menu-item-background-hover-color;
   }
 
   &:active {
-    background: var(--menu-pressed-bg, $lm-menu-pressed-bg-light);
+    background: $menu-item-background-pressed-color;
   }
+
+  &--selected {
+    background: $menu-item-background-selected-background-color;
+
+    &:hover {
+      background: $menu-item-background-selected-hover-color;
+    }
+    
+    &:active {
+      background: $menu-item-background-selected-pressed-color;
+    }
+  }
+
+  
 
   &.disabled {
     pointer-events: none;

@@ -1,22 +1,21 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const floatingModal = {
   prefix: "mdv2",
   component: "floating-modal",
   main: {
     "bg-color": {
-      light: colors.white[100].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     "border-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-outline-secondary-normal",
+      dark: "$mds-color-theme-outline-secondary-normal"
     },
     radius: {
       light: "0.5rem",
@@ -27,18 +26,18 @@ const floatingModal = {
       dark: "0 4px 8px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.20)"
     },
     "bg-color-alternate": {
-      light: colors.gray[70].name,
-      dark: colors.gray[30].name
+      light: "$mds-color-theme-background-solid-secondary-normal",
+      dark: "$mds-color-theme-background-solid-secondary-normal"
     },
     "text-color-alternate": {
-      light: colors.gray["05"].name,
-      dark: colors.gray[100].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     }
   },
   outer: {
     "border-color": {
-      light: colors.gray[10].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-outline-secondary-normal",
+      dark: "$mds-color-theme-outline-secondary-normal"
     }
   }
 };

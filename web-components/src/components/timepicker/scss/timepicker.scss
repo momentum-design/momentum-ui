@@ -26,6 +26,10 @@
     padding: 0;
   }
 
+  .amPm-combo-box::part(combobox-options) {
+    padding: 0;
+  }
+
   .amPm-combo-box::part(multiwrap-input) {
     text-align: center;
     text-transform: uppercase;

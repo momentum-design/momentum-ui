@@ -843,10 +843,9 @@ export namespace Tabs {
         case Key.Space: {
           if (isMoreTriggerTab) {
             const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter(t => !t.disabled);
-            const t =
-              tabsFilteredAsHiddenNonDisabledList.find(t => t.selected) || tabsFilteredAsHiddenNonDisabledList.length
-                ? tabsFilteredAsHiddenNonDisabledList[0]
-                : undefined;
+            const t = tabsFilteredAsHiddenNonDisabledList.length
+              ? tabsFilteredAsHiddenNonDisabledList.find(t => t.selected) || tabsFilteredAsHiddenNonDisabledList[0]
+              : undefined;
             this.updateHiddenIdPositiveTabIndex(t);
             if (t) {
               const idx = this.tabsIdxHash[this.getNormalizedTabId(t.id)];

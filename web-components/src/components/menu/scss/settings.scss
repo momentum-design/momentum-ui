@@ -1,1 +1,18 @@
 $menu-item-main-padding: rem-calc(6) rem-calc(12);
+$menu-item-text-color: var(--menu-text-color, var(--menu-default, $lm-menu-default-light));
+
+$menu-item-background-hover-color: var(--menu-hover-bg, var(--menu-hover-bg, $lm-menu-hover-bg-light));
+$menu-item-background-pressed-color: var(--menu-pressed-bg, var(--menu-pressed-bg, $lm-menu-pressed-bg-light));
+
+$menu-item-background-selected-background-color: var(
+  --menu-selected-default-bg,
+  var(--menu-pressed-bg, $lm-menu-pressed-bg-light)
+);
+$menu-item-background-selected-hover-color: var(
+  --menu-selected-hover-bg,
+  var(--menu-hover-bg, $lm-menu-hover-bg-light)
+);
+$menu-item-background-selected-pressed-color: var(
+  --menu-selected-pressed-bg,
+  var(--menu-pressed-bg, $lm-menu-pressed-bg-light)
+);

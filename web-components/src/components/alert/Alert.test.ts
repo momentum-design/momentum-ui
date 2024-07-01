@@ -74,7 +74,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("check-circle_36");
-    expect(type?.getAttribute("color")).toEqual("green-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-success-text-color, green)");
   });
 
   test("should render info Alert", async () => {
@@ -87,7 +87,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("info_32");
-    expect(type?.getAttribute("color")).toEqual("blue-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-info-text-color, blue)");
   });
 
   test("should render error Alert", async () => {
@@ -100,7 +100,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("red-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-error-text-color, red)");
   });
 
   test("should render warning Alert", async () => {
@@ -113,7 +113,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("orange-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
   test("should render warning Alert", async () => {
@@ -126,7 +126,7 @@ describe("Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("orange-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
   test("should render close button & icon when closable prop is true", async () => {

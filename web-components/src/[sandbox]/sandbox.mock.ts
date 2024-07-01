@@ -48,7 +48,7 @@ export const comboBoxObjectOptions = [
   { id: "26", country: "Cayman Islands" },
   { id: "27", country: "The Central African Republic" },
   { id: "28", country: "Chad" }
-]
+];
 export const comboBoxObjectLongOptions = [
   { id: "0", country: "Afghanistan" },
   { id: "1", country: "Aland Islands" },

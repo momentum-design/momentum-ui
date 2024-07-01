@@ -7,68 +7,52 @@ const tabs = {
   component: "tabs",
   default: {
     "bg-color": {
-      light: colors.white[60].name,
-      dark: colors.gray[100].name
+      light: "$mds-color-theme-button-secondary-normal",
+      dark: "$mds-color-theme-button-secondary-normal"
     },
     "text-color": {
-      light: colors.gray[70].name,
-      dark: colors.gray[40].name
+      light: "$mds-color-theme-text-secondary-normal",
+      dark: "$mds-color-theme-text-secondary-normal"
     },
     "border-color": {
-      light: colors.gray[10].name,
-      dark: colors.gray[90].name
+      light: "transparent",
+      dark: "transparent"
     },
-    "active-border": {
-      light: colors.blue[70].name,
-      dark: colors.blue[40].name
+    "active-bottom-border": {
+      light: "2px solid $mds-color-theme-outline-input-active",
+      dark: "2px solid $mds-color-theme-outline-input-active"
     },
     "focus-bg": {
       light: colors.white[60].name,
       dark: colors.gray[90].name
     },
     "focus-border": {
-      light: colors.blue[70].name,
-      dark: colors.blue[40].name
+      light: "$mds-color-theme-outline-theme-normal",
+      dark: "$mds-color-theme-outline-theme-normal"
     },
     "focus-shadow": {
-      light: "0 0 4px 2px transparent",
-      dark: "0 0 4px 2px Transparent"
+      light: "0 0 4px 0px $mds-color-theme-outline-theme-normal",
+      dark: "0 0 4px 0px $mds-color-theme-outline-theme-normal"
     },
     "hover-border": {
-      light: colors.gray[10].name,
-      dark: colors.gray[20].name
+      light: "transparent",
+      dark: "transparent"
     },
     hover: {
-      light: colors.gray[10].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-button-secondary-hover",
+      dark: "$mds-color-theme-button-secondary-hover"
     },
     pressed: {
-      light: colors.gray[20].name,
-      dark: colors.gray[70].name
+      light: "$mds-color-theme-button-secondary-pressed",
+      dark: "$mds-color-theme-button-secondary-pressed"
     },
     disabled: {
-      light: colors.gray[40].name,
-      dark: colors.gray[70].name
+      light: "$mds-color-theme-button-secondary-disabled",
+      dark: "$mds-color-theme-button-secondary-disabled"
     },
     active: {
-      light: colors.blue[70].name,
-      dark: colors.blue[40].name
-    }
-  },
-  "left-arrow": {
-    "bg-color": {
-      light:
-        "linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 58%, rgba(255, 255, 255, 0.55) 77%, rgba(255, 255, 255, 0.02) 99%, rgba(255, 255, 255, 0) 100%)",
-      dark:
-        "linear-gradient(to right, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 1) 50%, rgba(18, 18, 18, 0.5) 75%, rgba(18, 18, 18, 0) 100%)"
-    }
-  },
-  "right-arrow": {
-    "bg-color": {
-      light:
-        "linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.53) 24%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 100%)",
-      dark:
-        "linear-gradient(to right, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.5) 25%, rgba(18, 18, 18, 1) 50%, rgba(18, 18, 18, 1) 100%)"
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     }
   }
 };

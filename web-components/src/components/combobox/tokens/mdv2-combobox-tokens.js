@@ -62,8 +62,12 @@ const combobox = {
         dark: "$mds-color-theme-background-primary-hover"
       },
       "focus-bg-color": {
-        light: "$mds-color-theme-outline-theme-normal",
-        dark: "$mds-color-theme-outline-theme-normal"
+        light: "$mds-color-theme-background-primary-active",
+        dark: "$mds-color-theme-background-primary-active"
+      },
+      "focus-border-color": {
+        light: "$mds-color-theme-control-active-normal",
+        dark: "$mds-color-theme-control-active-normal"
       },
       "select-bg-color": {
         light: "$mds-color-theme-background-primary-active",
@@ -74,12 +78,12 @@ const combobox = {
         dark: "$mds-color-theme-text-primary-normal"
       },
       "checked-bg-color": {
-        light: colors.blue[50].name,
-        dark: colors.blue[50].name
+        light: "$mds-color-theme-control-active-normal",
+        dark: "$mds-color-theme-control-active-normal"
       },
       "checked-icon-color": {
-        light: colors.white[60].name,
-        dark: colors.white[100].name
+        light: "$mds-color-theme-inverted-text-primary-normal",
+        dark: "$mds-color-theme-inverted-text-primary-normal"
       },
       "icon-color": {
         light: colors.gray[100].name,
@@ -89,8 +93,8 @@ const combobox = {
   },
   group: {
     "button-bg-color": {
-      light: colors.gray[60].name,
-      dark: colors.gray[40].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     radius: {
       light: "0.25rem",
@@ -107,30 +111,30 @@ const combobox = {
   },
   selected: {
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-background-alert-default-normal",
+      dark: "$mds-color-theme-background-alert-default-normal"
     },
     "border-color": {
-      light: colors.gray[30].name,
-      dark: colors.gray[70].name
+      light: "mds-color-theme-background-alert-default-normal",
+      dark: "mds-color-theme-background-alert-default-normal"
     },
     hover: {
-      light: colors.gray[40].name,
-      dark: colors.gray[80].name
+      light: "$mds-color-theme-background-alert-default-hover",
+      dark: "$mds-color-theme-background-alert-default-hover"
     }
   },
   "group-label": {
     "bg-color": {
-      light: colors.white[100].name,
-      dark: colors.gray[90].name
+      light: "$mds-color-theme-background-solid-primary-normal",
+      dark: "$mds-color-theme-background-solid-primary-normal"
     },
     color: {
-      light: colors.gray[70].name,
-      dark: colors.gray[40].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     "border-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[80].name
+      light: "unset",
+      dark: "unset"
     }
   },
   placeholder: {

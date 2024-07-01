@@ -34,8 +34,8 @@ const button = {
         dark: "$mds-color-theme-background-primary-disabled"
       },
       "border-color": {
-        light: "$mds-color-theme-outline-disabled-normal",
-        dark: "$mds-color-theme-outline-disabled-normal"
+        light: "$mds-color-theme-outline-primary-disabled",
+        dark: "$mds-color-theme-outline-primary-disabled"
       }
     },
     focus: {
@@ -133,8 +133,8 @@ const button = {
   },
   warning: {
     "border-color": {
-      light: "$mds-color-theme-warning-border-default",
-      dark: "$mds-color-theme-warning-border-default"
+      light: "$mds-color-theme-text-warning-normal",
+      dark: "$mds-color-theme-text-warning-normal"
     },
     "bg-color": {
       light: "$mds-color-theme-background-solid-primary-normal",

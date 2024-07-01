@@ -1,47 +1,46 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const pagination = {
   prefix: "mdv2",
   component: "pagination",
   color: {
-    light: colors.gray[50].name,
-    dark: colors.gray[60].name,
+    light: "$mds-color-theme-text-secondary-normal",
+    dark: "$mds-color-theme-text-secondary-normal",
     current: {
-      light: colors.white[100].name,
-      dark: colors.white[100].name
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
     }
   },
   "bg-current": {
-    light: colors.blue[50].name,
-    dark: colors.blue[60].name
+    light: "$mds-color-theme-control-active-normal",
+    dark: "$mds-color-theme-control-active-normal"
   },
 
   "bg-hover": {
-    light: colors.gray[20].name,
-    dark: colors.gray[10].name
+    light: "$mds-color-theme-inverted-control-inactive-normal",
+    dark: "$mds-color-theme-inverted-control-inactive-normal"
   },
   nav: {
     color: {
-      light: colors.gray[90].name,
-      dark: colors.gray[40].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     hover: {
-      light: colors.gray[100].name,
-      dark: colors.gray[60].name
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     },
     disabled: {
-      light: colors.gray[30].name,
-      dark: colors.gray[30].name
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled"
     }
   },
   "dots-color": {
-    light: colors.gray[30].name,
-    dark: colors.gray[30].name,
+    light: "$mds-color-theme-inverted-control-inactive-normal",
+    dark: "$mds-color-theme-inverted-control-inactive-normal",
     current: {
-      light: colors.gray[100].name,
-      dark: colors.gray[60].name
+      light: "$mds-color-theme-control-active-normal",
+      dark: "$mds-color-theme-control-active-normal"
     }
   }
 };

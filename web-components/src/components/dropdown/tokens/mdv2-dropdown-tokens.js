@@ -41,6 +41,14 @@ const dropdown = {
       light: "$mds-color-theme-background-solid-primary-normal",
       dark: "$mds-color-theme-background-solid-primary-normal"
     },
+    "border-color": {
+      light: "$mds-color-theme-outline-secondary-normal",
+      dark: "$mds-color-theme-outline-secondary-normal"
+    },
+    padding: {
+      light: "8",
+      dark: "8"
+    },
     item: {
       "bg-color-hover": {
         light: "$mds-color-theme-background-primary-hover",
@@ -49,6 +57,18 @@ const dropdown = {
       "bg-color-focus": {
         light: "$mds-color-theme-background-primary-active",
         dark: "$mds-color-theme-background-primary-active"
+      },
+      "border-focus": {
+        light: "$mds-color-theme-outline-theme-normal",
+        dark: "$mds-color-theme-outline-theme-normal"
+      },
+      "border-radius": {
+        light: "8",
+        dark: "8"
+      },
+      height: {
+        light: "40",
+        dark: "40"
       }
     }
   }

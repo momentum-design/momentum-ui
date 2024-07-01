@@ -17,6 +17,7 @@
     min-height: $list-item__min-height;
     padding: $list-item__padding;
     position: relative;
+    border-radius: var(--list-border-radius-pill);
   }
 }
 

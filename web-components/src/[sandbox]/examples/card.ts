@@ -1,6 +1,6 @@
-import "@/components/card/Card";
-import "@/components/badge/Badge";
 import { cardMenuItems } from "@/[sandbox]/sandbox.mock";
+import "@/components/badge/Badge";
+import "@/components/card/Card";
 import { customElement, html, LitElement, property } from "lit-element";
 
 @customElement("card-template-sandbox")
@@ -52,7 +52,7 @@ export class CardTemplateSandbox extends LitElement {
         <div slot="content">
           <img
             style="width: 100%;"
-            src="https://media.istockphoto.com/vectors/dashboard-ui-modern-presentation-with-data-graphs-and-hud-diagrams-vector-id1159848977"
+            src="https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
             alt=""
           />
         </div>

@@ -2,12 +2,36 @@
 @import "@/wc_scss/typography/settings";
 
 $inter-base-font: "Inter Regular", $font-family-sans-serif;
+$inter-bold-font:  "Inter Bold", $font-family-sans-serif;
+$inter-bold-oblique-font: "Inter Bold Oblique", $font-family-sans-serif;
+$inter-extra-light-font: "Inter Extra Light", $font-family-sans-serif;
+$inter-extra-light-oblique-font: "Inter Extra Light Oblique", $font-family-sans-serif;
+$inter-heavy-font: "Inter Heavy", $font-family-sans-serif;
+$inter-heavy-oblique-font: "Inter Heavy Oblique", $font-family-sans-serif;
 $inter-light-font: "Inter Light", $font-family-sans-serif;
+$inter-light-oblique-font: "Inter Light Oblique", $font-family-sans-serif;
+$inter-regular-oblique-font: "Inter Regular Oblique", $font-family-sans-serif;
+$inter-thin-font: "Inter Thin", $font-family-sans-serif;
+$inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
+$inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
 @mixin global-theme-specfic-vars {
   --rem-base: 14px;
   --brand-font-regular: #{$inter-base-font};
+  --brand-font-bold: #{$inter-bold-font};
+  --brand-font-bold-oblique: #{$inter-bold-oblique-font};
+  --brand-font-extra-light: #{$inter-extra-light-font};
+  --brand-font-extra-light-oblique: #{$inter-extra-light-oblique-font};
+  --brand-font-heavy: #{$inter-heavy-font};
+  --brand-font-heavy-oblique: #{$inter-heavy-oblique-font};
   --brand-font-light: #{$inter-light-font};
+  --brand-font-light-oblique: #{$inter-light-oblique-font};
+  --brand-font-regular-oblique: #{$inter-regular-oblique-font};
+  --brand-font-thin: #{$inter-thin-font};
+  --brand-font-thin-oblique: #{$inter-thin-oblique-font};
+
+  --brand-font-medium: #{$inter-medium-font};
+
   font-size: var(--rem-base);
   font-family: var(--brand-font-regular);
 

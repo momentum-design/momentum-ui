@@ -6,22 +6,24 @@ $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
-$brand-font-bold: "CiscoSansTT Bold", $font-family-sans-serif;
-$brand-font-bold-oblique: "CiscoSansTT Bold Oblique", $font-family-sans-serif;
-$brand-font-extra-light: "CiscoSansTT Extra Light", $font-family-sans-serif;
-$brand-font-extra-light-oblique: "CiscoSansTT Extra Light Oblique",
-  $font-family-sans-serif;
-$brand-font-heavy: "CiscoSansTT Heavy", $font-family-sans-serif;
-$brand-font-heavy-oblique: "CiscoSansTT Heavy Oblique", $font-family-sans-serif;
-$brand-font-light: var(--brand-font-light, "CiscoSansTT Light", $font-family-sans-serif);
-$brand-font-light-Oblique: "CiscoSansTT Light Oblique", $font-family-sans-serif;
 $brand-font-regular: var(--brand-font-regular, "CiscoSansTT Regular", $font-family-sans-serif);
-$brand-font-regular-oblique: "CiscoSansTT Regular Oblique",
-  $font-family-sans-serif;
-$brand-font-thin: "CiscoSansTT Thin", $font-family-sans-serif;
-$brand-font-thin-oblique: "CiscoSansTT Thin Oblique", $font-family-sans-serif;
+$brand-font-bold: var(--brand-font-bold, "CiscoSansTT Bold", $font-family-sans-serif);
+$brand-font-bold-oblique: var(--brand-font-bold-oblique, "CiscoSansTT Bold Oblique", $font-family-sans-serif);
+$brand-font-extra-light: var(--brand-font-extra-light, "CiscoSansTT Extra Light", $font-family-sans-serif);
+$brand-font-extra-light-oblique: var(
+  --brand-font-extra-light-oblique,
+  "CiscoSansTT Extra Light Oblique",
+  $font-family-sans-serif
+);
+$brand-font-heavy: var(--brand-font-heavy, "CiscoSansTT Heavy", $font-family-sans-serif);
+$brand-font-heavy-oblique: var(--brand-font-heavy-oblique, "CiscoSansTT Heavy Oblique", $font-family-sans-serif);
+$brand-font-light: var(--brand-font-light, "CiscoSansTT Light", $font-family-sans-serif);
+$brand-font-light-Oblique: var(--brand-font-light-oblique, "CiscoSansTT Light Oblique", $font-family-sans-serif);
+$brand-font-regular-oblique: var(--brand-font-regular-oblique, "CiscoSansTT Regular Oblique", $font-family-sans-serif);
+$brand-font-thin: var(--brand-font-thin, "CiscoSansTT Thin", $font-family-sans-serif);
+$brand-font-thin-oblique: var(--brand-font-thin-oblique, "CiscoSansTT Thin Oblique", $font-family-sans-serif);
 
-$brand-font-medium: "CiscoSans-Medium", $font-family-sans-serif;
+$brand-font-medium: var(--brand-font-medium, "CiscoSans-Medium", $font-family-sans-serif);
 
 $body-font-family: $brand-font-regular;
 
@@ -34,8 +36,8 @@ $brand-font-cisco-TT-Heavy: $brand-font-heavy;
 $brand-font-cisco-TT-Heavy-Oblique: $brand-font-heavy-oblique;
 $brand-font-cisco-TT-Light: $brand-font-light;
 $brand-font-cisco-TT-Light-Oblique: $brand-font-light-Oblique;
-$brand-font-cisco-TT-Regular: var(--brand-font-regular, $brand-font-regular);
-$brand-font-cisco-TT-Regular-Oblique: var(--brand-font-regular, $brand-font-regular)-oblique;
+$brand-font-cisco-TT-Regular: $brand-font-regular;
+$brand-font-cisco-TT-Regular-Oblique: $brand-font-regular-oblique;
 $brand-font-cisco-TT-Thin: $brand-font-thin;
 $brand-font-cisco-TT-Thin-Oblique: $brand-font-thin-oblique;
 
@@ -96,8 +98,7 @@ $base-font-size: $rem-base;
 
 // These control how subheaders are styled.
 $subheader-line-height: 1.4 !default;
-$subheader-font-color: scale-color($header-font-color,
-$lightness: 35%) !default;
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 $subheader-font-weight: $font-weight-normal !default;
 $subheader-top-margin: 0.2rem !default;
 $subheader-bottom-margin: 0.5rem !default;
@@ -135,8 +136,7 @@ $code-background-color: transparent !default;
 $code-border-size: 0 !default;
 
 $code-border-style: solid !default;
-$code-border-color: scale-color($code-background-color,
-$lightness: -10%) !default;
+$code-border-color: scale-color($code-background-color, $lightness: -10%) !default;
 $code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
 
 // We use these to style anchors
@@ -170,8 +170,7 @@ $definition-list-margin-bottom: rem-calc(12) !default;
 $blockquote-font-color: inherit !default;
 $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
-$blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width})
-  1rem !default;
+$blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width}) 1rem !default;
 $blockquote-border: $blockquote-border-width solid $md-gray-50 !default;
 
 $blockquote-cite-font-size: rem-calc(13) !default;

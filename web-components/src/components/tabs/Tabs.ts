@@ -20,7 +20,7 @@ import { nanoid } from "nanoid";
 import Sortable from "sortablejs";
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-import { Tab, TabClickEvent, TAB_CROSS_WIDTH } from "./Tab";
+import { Tab, TabClickEvent, TAB_CROSS_WIDTH, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
 import { setTimeout } from "timers";
 
@@ -441,6 +441,13 @@ export namespace Tabs {
           if (newIndex === this.tabsFilteredAsVisibleList.length - 1) {
             this.visibleTabsContainerElement?.children[this.visibleTabsContainerElement.children.length - 1]?.remove();
           }
+          const draggedContainerElement = this.visibleTabsContainerElement?.children[oldIndex];
+          const targetContainerElement = this.visibleTabsContainerElement?.children[newIndex];
+
+          if (draggedContainerElement && targetContainerElement) {
+            this.visibleTabsContainerElement?.replaceChild(targetContainerElement, draggedContainerElement);
+            this.visibleTabsContainerElement?.insertBefore(draggedContainerElement, targetContainerElement);
+          }
           break;
         }
         case HIDDEN_TO_VISIBLE: {
@@ -510,8 +517,17 @@ export namespace Tabs {
 
     handleTabCrossClick(event: CustomEvent<TabClickEvent>) {
       const { id } = event.detail;
+      this.handleTabCloseEvent(id);
+    }
+
+    handleTabCloseClick(event: CustomEvent<TabCloseClickEvent>) {
+      const { id } = event.detail;
+      this.handleTabCloseEvent(id);
+    }
+
+    handleTabCloseEvent(id: string) {
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
-      if (tab && !tab.disabled && tab.closable === "auto") {
+      if (tab && !tab.disabled && (tab.closable === "auto" || tab.closable === "custom")) {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
           element => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
         );
@@ -588,7 +604,7 @@ export namespace Tabs {
 
       if (newSelectedIndex >= 0) {
         this.dispatchSelectedChangedEvent(newSelectedIndex);
-        const currentTabsConfiguration = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+        const currentTabsConfiguration = this.direction === "horizontal"? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList] : this.tabs;
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(
           element => element.id === tabs[newSelectedIndex].id
         );
@@ -703,7 +719,7 @@ export namespace Tabs {
     handleTabKeydown(event: any) {
       let elementId;
 
-      if (event.target != this) {
+      if (event.target != this && !this.tabs.find(tab => tab.id === event.target.id)) {
         return false;
       }
 
@@ -851,6 +867,7 @@ export namespace Tabs {
     private setupTabsEvents() {
       this.addEventListener("tab-click", this.handleTabClick as EventListener);
       this.addEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
+      this.addEventListener("tab-close-click", this.handleTabCloseClick as EventListener);
       this.addEventListener("keydown", this.handleTabKeydown as EventListener);
       this.addEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
@@ -858,6 +875,7 @@ export namespace Tabs {
     private teardownTabsEvents() {
       this.removeEventListener("tab-click", this.handleTabClick as EventListener);
       this.removeEventListener("tab-cross-click", this.handleTabCrossClick as EventListener);
+      this.removeEventListener("tab-close-click", this.handleTabCloseClick as EventListener);
       this.removeEventListener("keydown", this.handleTabKeydown as EventListener);
       this.removeEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
@@ -938,16 +956,6 @@ export namespace Tabs {
       }
 
       this.compUniqueId && (this.tabsOrderPrefsArray = localStorage.getItem(this.compUniqueId)?.split(",") || []);
-    }
-
-    private allElements: Array<String> = [];
-
-    private updateSelectedTabIndexOnClick(e: any) {
-      const index = this.allElements.indexOf(e.target.id);
-
-      if (index !== -1) {
-        this.updateSelectedTab(index);
-      }
     }
 
     private selectTabFromStorage() {
@@ -1049,8 +1057,6 @@ export namespace Tabs {
             "no-tabs-visible": this.noTabsVisible
           })}"
           role="tablist"
-          @click=${(e: any) => {
-            this.updateSelectedTabIndexOnClick(e);}}
         >
         <slot
             name="tab"
@@ -1066,10 +1072,7 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              tab => {
-                nanoid(10);
-                this.allElements.includes(tab?.id) ? null : this.allElements.push(tab?.id);
-              },
+              tab => nanoid(10),
               tab => html`
                 <md-tab
                   .closable="${tab.closable}"

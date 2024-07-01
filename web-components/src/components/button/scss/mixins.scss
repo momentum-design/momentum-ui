@@ -5,7 +5,7 @@
   display: inline-block;
   font-family: $brand-font-regular;
   font-size: $button__font-size;
-  font-weight: normal;
+  font-weight: var(--button-font-weight-regular, normal);
   line-height: rem-calc(24);
   min-width: rem-calc(72);
   position: relative;

@@ -396,6 +396,16 @@ const button = {
       light: "$mds-color-theme-outline-theme-normal",
       dark: "$mds-color-theme-outline-theme-normal"
     }
+  },
+  "font-weight": {
+    regular: {
+      light: "550",
+      dark: "550"
+    },
+    large: {
+      light: "450",
+      dark: "450"
+    }
   }
 };
 

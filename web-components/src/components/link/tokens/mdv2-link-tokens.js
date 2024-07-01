@@ -46,12 +46,12 @@ const link = {
       dark: "$mds-color-theme-text-error-normal"
     },
     "font-size": {
-      light: "14px",
-      dark: "14px"
+      light: "0.875rem",
+      dark: "0.875rem"
     },
     "font-size__inline": {
-      light: "12px",
-      dark: "12px"
+      light: "0.75",
+      dark: "0.75rem"
     }
   }
 };

@@ -149,7 +149,7 @@ export const buttonTemplate = html`
     <h3 class="sandbox-header" style="margin: .5rem 1rem">Different Tags</h3>
     <md-button tag="a" variant="green">anchor</md-button>
     <md-button tag="button" variant="green">button</md-button>
-    <md-button tag="input" variant="green" label="input" value="input">input</md-button>
+    <md-button tag="input" variant="green" value="input">input</md-button>
   </div>
 
   <div class="row" style="display: flex; margin: .5rem 0">

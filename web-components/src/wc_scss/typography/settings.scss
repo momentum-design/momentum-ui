@@ -13,9 +13,9 @@ $brand-font-extra-light-oblique: "CiscoSansTT Extra Light Oblique",
   $font-family-sans-serif;
 $brand-font-heavy: "CiscoSansTT Heavy", $font-family-sans-serif;
 $brand-font-heavy-oblique: "CiscoSansTT Heavy Oblique", $font-family-sans-serif;
-$brand-font-light: "CiscoSansTT Light", $font-family-sans-serif;
+$brand-font-light: var(--brand-font-light, "CiscoSansTT Light", $font-family-sans-serif);
 $brand-font-light-Oblique: "CiscoSansTT Light Oblique", $font-family-sans-serif;
-$brand-font-regular: "CiscoSansTT Regular", $font-family-sans-serif;
+$brand-font-regular: var(--brand-font-regular, "CiscoSansTT Regular", $font-family-sans-serif);
 $brand-font-regular-oblique: "CiscoSansTT Regular Oblique",
   $font-family-sans-serif;
 $brand-font-thin: "CiscoSansTT Thin", $font-family-sans-serif;
@@ -34,8 +34,8 @@ $brand-font-cisco-TT-Heavy: $brand-font-heavy;
 $brand-font-cisco-TT-Heavy-Oblique: $brand-font-heavy-oblique;
 $brand-font-cisco-TT-Light: $brand-font-light;
 $brand-font-cisco-TT-Light-Oblique: $brand-font-light-Oblique;
-$brand-font-cisco-TT-Regular: $brand-font-regular;
-$brand-font-cisco-TT-Regular-Oblique: $brand-font-regular-oblique;
+$brand-font-cisco-TT-Regular: var(--brand-font-regular, $brand-font-regular);
+$brand-font-cisco-TT-Regular-Oblique: var(--brand-font-regular, $brand-font-regular)-oblique;
 $brand-font-cisco-TT-Thin: $brand-font-thin;
 $brand-font-cisco-TT-Thin-Oblique: $brand-font-thin-oblique;
 
@@ -237,21 +237,21 @@ $fontFaces: (
   code: $font-family-monospace,
   kbd: $brand-font-light,
   p: $brand-font-light,
-  small: $brand-font-regular,
-  body-small: $brand-font-regular,
-  body-smallest: $brand-font-regular,
+  small: var(--brand-font-regular),
+  body-small: var(--brand-font-regular),
+  body-smallest: var(--brand-font-regular),
 );
 
 $fontVariations: (
   h1--bold: $brand-font-extra-light,
   h2--light: $brand-font-extra-light,
-  h2--bold: $brand-font-regular,
+  h2--bold: var(--brand-font-regular),
   h3--light: $brand-font-extra-light,
-  h3--bold: $brand-font-regular,
-  h4--bold: $brand-font-regular,
-  h5--bold: $brand-font-regular,
+  h3--bold: var(--brand-font-regular),
+  h4--bold: var(--brand-font-regular),
+  h5--bold: var(--brand-font-regular),
   h5--heavy: $brand-font-bold,
-  body--bold: $brand-font-regular,
+  body--bold: var(--brand-font-regular),
   body--heavy: $brand-font-bold,
   body-small--light: $brand-font-light,
   body-small--bold: $brand-font-bold,

@@ -441,13 +441,14 @@ export namespace Tabs {
           if (newIndex === this.tabsFilteredAsVisibleList.length - 1) {
             this.visibleTabsContainerElement?.children[this.visibleTabsContainerElement.children.length - 1]?.remove();
           }
-          const draggedContainerElement = this.visibleTabsContainerElement?.children[oldIndex];
-          const targetContainerElement = this.visibleTabsContainerElement?.children[newIndex];
+          const draggedContainerElement = this.visibleTabsContainerElement!.children[oldIndex];
+          const targetContainerElement = this.visibleTabsContainerElement!.children[newIndex];
 
-          if (draggedContainerElement && targetContainerElement) {
-            this.visibleTabsContainerElement?.replaceChild(targetContainerElement, draggedContainerElement);
-            this.visibleTabsContainerElement?.insertBefore(draggedContainerElement, targetContainerElement);
+          if (!draggedContainerElement || !targetContainerElement) {
+            return;
           }
+          this.visibleTabsContainerElement?.replaceChild(targetContainerElement, draggedContainerElement);
+          this.visibleTabsContainerElement?.insertBefore(draggedContainerElement, targetContainerElement);
           break;
         }
         case HIDDEN_TO_VISIBLE: {

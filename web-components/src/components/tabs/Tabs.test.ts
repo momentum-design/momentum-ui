@@ -233,10 +233,11 @@ describe("Tabs", () => {
     } as Sortable.SortableEvent);
 
     await elementUpdated(tabs);
+
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
-
-    expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][1]);
-
+    let visibleTab = tabs["visibleTabsContainerElement"]!.children[1].getAttribute("name");
+    expect(tabs["defaultTabsOrderArray"][0]).toEqual(visibleTab);
+    
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
@@ -249,7 +250,8 @@ describe("Tabs", () => {
     } as Sortable.SortableEvent);
 
     await elementUpdated(tabs);
-    expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][0]);
+    visibleTab = tabs["visibleTabsContainerElement"]!.children[0].getAttribute("name");
+    expect(tabs["defaultTabsOrderArray"][0]).toEqual(visibleTab);
   });
 
   test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event", async () => {
@@ -257,7 +259,7 @@ describe("Tabs", () => {
     tabs.dispatchEvent(
       new CustomEvent("clear-tab-order-prefs", {
         detail: {
-          compUniqueId: tabs["compUniqueId"]
+          compUniqueId: "tabs-test-component"
         },
         composed: true,
         bubbles: true

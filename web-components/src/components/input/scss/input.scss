@@ -138,7 +138,7 @@
       @include input-color(
         $background-color: var(--input-error-bg-color, $md-red-10),
         $background-color-hover: var(--input-error-hover-bg-color, $md-red-20),
-        $border-color: var(--input-error-hover-border-color, $md-red-50),
+        $border-color: var(--input-error-border-color, $md-red-50),
         $background-color-active: var(--input-error-pressed-bg-color, $md-red-30),
         $color-message: var(--input-error-message-text-color, $md-red-70),
         $focus-background-color: var(--input-default-focus-background-color, var(--input-error-bg-color))

@@ -2,10 +2,14 @@
   --rem-base: 14px;
   font-size: var(--rem-base);
 
+  //This will be updated to 16px / 14px
+  --body-primary-font-size: 0.875rem;
+  --body-secondary-font-size: 0.75rem;
+
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;
   --wc-menu-item-rounded-border-radius: 0.5rem;
-
+  
   --wc-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
   --wc-error-text-color: #{$mds-color-theme-text-error-normal};
   --wc-warning-bg-color: #{$mds-color-theme-background-alert-warning-normal};

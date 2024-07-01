@@ -1,11 +1,13 @@
-@import "@/wc_scss/typography/settings.scss";
+@import "@/wc_scss/settings/rem";
+@import "@/wc_scss/typography/settings";
 
-$brand-font-regular: "Inter Regular", $font-family-sans-serif;
+$inter-base-font: "Inter Regular", $font-family-sans-serif;
 
 @mixin global-theme-specfic-vars {
   --rem-base: 14px;
   font-size: var(--rem-base);
-  font-family: $brand-font-regular;
+  --brand-font-regular: $inter-base-font;
+  font-family: $inter-base-font;
 
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;

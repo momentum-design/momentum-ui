@@ -50,7 +50,7 @@ const link = {
       dark: "0.875rem"
     },
     "font-size__inline": {
-      light: "0.75",
+      light: "0.75rem",
       dark: "0.75rem"
     }
   }

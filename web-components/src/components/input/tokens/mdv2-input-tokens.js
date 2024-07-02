@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const button = {
   prefix: "mdv2",
@@ -60,12 +59,12 @@ const button = {
     },
     outline: {
       color: {
-        light: colors.blue[70].name,
-        dark: colors.blue[40].name
+        light: "$mds-color-theme-outline-theme-normal",
+        dark: "$mds-color-theme-outline-theme-normal"
       },
       "text-color": {
-        light: colors.blue[70].name,
-        dark: colors.blue[40].name
+        light: "$mds-color-theme-text-accent-normal",
+        dark: "$mds-color-theme-text-accent-normal"
       }
     }
   },
@@ -109,7 +108,7 @@ const button = {
       }
     }
   },
-  succes: {
+  success: {
     "border-color": {
       light: "$mds-color-theme-outline-join-normal",
       dark: "$mds-color-theme-outline-join-normal"
@@ -129,6 +128,10 @@ const button = {
         light: "$mds-color-theme-background-primary-active",
         dark: "$mds-color-theme-background-primary-active"
       }
+    },
+    "text-color": {
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     }
   },
   warning: {
@@ -151,6 +154,10 @@ const button = {
         light: "$mds-color-theme-background-primary-active",
         dark: "$mds-color-theme-background-primary-active"
       }
+    },
+    "text-color": {
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
     }
   },
   filled: {

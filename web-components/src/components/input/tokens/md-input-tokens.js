@@ -91,7 +91,7 @@ const button = {
       }
     }
   },
-  succes: {
+  success: {
     "border-color": {
       light: colors.green[50].name,
       dark: colors.blue[40].name

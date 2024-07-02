@@ -7,14 +7,16 @@
  */
 
 import "@/components/button/Button";
+import { Theme } from "@/components/theme/Theme";
 import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { LitElement, PropertyValues, html, property, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
-export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"]
+export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"];
 
 export namespace Coachmark {
   export type Place = typeof coachmarkPlacement[number];
@@ -22,7 +24,7 @@ export namespace Coachmark {
   @customElementWithCheck("md-coachmark")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     @property({ type: String }) message = "";
-    @property({ type: String }) actionname = "Next"
+    @property({ type: String }) actionname = "Next";
     @property({ type: Boolean }) hidebutton = false;
     @property({ type: String }) placement: Place = "auto";
     @property({ type: Boolean }) show = false;
@@ -102,29 +104,48 @@ export namespace Coachmark {
       return [reset, styles];
     }
 
+    coachmarkContentTemplate() {
+      return html`
+        <div class="md-coachmark__content">
+          ${this.message
+            ? this.message
+            : html`
+                <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
+              `}
+          <div class="md-coachmark__action">
+            ${this.hidebutton
+              ? html`
+                  <slot name="coachmark-action"></slot>
+                `
+              : html`
+                  <md-button variant="secondary" @button-click=${this.coachAction}>${this.actionname}</md-button>
+                `}
+          </div>
+        </div>
+      `;
+    }
+
+    wrappedCoachmarkContentTemplate() {
+      const themeAncestor = closestElement("md-theme", this) as Theme.ELEMENT;
+
+      if (themeAncestor?.theme === "momentumV2") {
+        return html`
+          <md-theme theme="momentumV2" ?darkTheme=${!themeAncestor.darkTheme}>
+            ${this.coachmarkContentTemplate()}
+          </md-theme>
+        `;
+      }
+      return this.coachmarkContentTemplate();
+    }
+
     render() {
       return html`
         <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
           <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
-            <div class="md-coachmark__content" >
-              ${this.message
-                ? this.message
-                : html`
-                    <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
-                  `}
-              <div class="md-coachmark__action">
-                ${this.hidebutton 
-                  ? html`<slot name="coachmark-action"></slot>` 
-                  : html`<md-button @button-click=${this.coachAction}>${this.actionname}</md-button>`}
-              </div>
-            </div>
+            ${this.wrappedCoachmarkContentTemplate()}
             <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
           </div>
-          <div
-            class="md-coachmark__reference"
-            @click=${() => this.notifyCoachCreate()}
-            aria-describedby="coachmark"
-          >
+          <div class="md-coachmark__reference" @click=${() => this.notifyCoachCreate()} aria-describedby="coachmark">
             <slot></slot>
           </div>
         </div>
@@ -132,10 +153,6 @@ export namespace Coachmark {
     }
   }
 }
-
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

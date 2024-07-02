@@ -6,8 +6,8 @@ const coachmark = {
   component: "coachmark",
   default: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -16,8 +16,8 @@ const coachmark = {
   },
   blue: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -26,8 +26,8 @@ const coachmark = {
   },
   green: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -36,8 +36,8 @@ const coachmark = {
   },
   purple: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -46,8 +46,8 @@ const coachmark = {
   },
   violet: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -56,8 +56,8 @@ const coachmark = {
   },
   mint: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -66,8 +66,8 @@ const coachmark = {
   },
   darkmint: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -76,8 +76,8 @@ const coachmark = {
   },
   yellow: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -86,8 +86,8 @@ const coachmark = {
   },
   red: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -96,8 +96,8 @@ const coachmark = {
   },
   darkred: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -106,8 +106,8 @@ const coachmark = {
   },
   orange: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -116,8 +116,8 @@ const coachmark = {
   },
   cyan: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",
@@ -126,8 +126,8 @@ const coachmark = {
   },
   outline: {
     color: {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      light: "$mds-color-theme-inverted-background-normal",
+      dark: "$mds-color-theme-inverted-background-normal"
     },
     "text-color": {
       light: "$mds-color-theme-text-primary-normal",

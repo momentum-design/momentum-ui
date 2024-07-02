@@ -2,7 +2,7 @@ $button__class: "#{$prefix}-button";
 
 // Default font size
 $button__font-size: rem-calc(16);
-$button__line-height: rem-calc(24);
+$button__line-height: normal;
 
 // Pill Font Sizes
 $button__font-size--28: rem-calc(12);
@@ -15,12 +15,12 @@ $button__line-height--40: rem-calc(17);
 $button__line-height--52: rem-calc(25);
 
 // button font size
-$button__font-size--20: rem-calc(8);
-$button__font-size--28: rem-calc(12);
-$button__font-size--32: rem-calc(14);
-$button__font-size--36: rem-calc(14);
-$button__font-size--40: rem-calc(14);
-$button__font-size--44: rem-calc(14);
+$button__font-size--20: var(--button-font-size-extra-small, rem-calc(8));
+$button__font-size--28: var(--button-font-size-small, rem-calc(12));
+$button__font-size--32: var(--button-font-size-medium, rem-calc(14));
+$button__font-size--36: var(--button-font-size-medium, rem-calc(14));
+$button__font-size--40: var(--button-font-size-medium, rem-calc(14));
+$button__font-size--44: var(--button-font-size-medium, rem-calc(14));
 $button__font-size--52: rem-calc(22);
 $button__font-size--56: rem-calc(24);
 $button__font-size--68: rem-calc(28);
@@ -52,11 +52,11 @@ $button__radius--round: $global-rounded !default;
 $button__font-align: center !default;
 
 // Set paddings
-$button__padding--28: rem-calc(6) rem-calc(14) rem-calc(7) rem-calc(14);
-$button__padding--32: rem-calc(8) rem-calc(16) rem-calc(9) rem-calc(16);
-$button__padding--36: rem-calc(9) rem-calc(18) rem-calc(10) rem-calc(18);
-$button__padding--40: rem-calc(11) rem-calc(20) rem-calc(12) rem-calc(20);
-$button__padding--52: rem-calc(14) rem-calc(26) rem-calc(15) rem-calc(26);
+$button__padding--28: var(--button-padding-28, rem-calc(6) rem-calc(14) rem-calc(7) rem-calc(14));
+$button__padding--32: var(--button-padding-32, rem-calc(8) rem-calc(16) rem-calc(9) rem-calc(16));
+$button__padding--36: var(--button-padding-36, rem-calc(9) rem-calc(18) rem-calc(10) rem-calc(18));
+$button__padding--40: var(--button-padding-40, rem-calc(11) rem-calc(20) rem-calc(12) rem-calc(20));
+$button__padding--52: var(--button-padding-52, rem-calc(14) rem-calc(26) rem-calc(15) rem-calc(26));
 
 $button__transition-speed: 150ms;
 

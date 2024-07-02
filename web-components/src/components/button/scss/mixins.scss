@@ -2,15 +2,18 @@
   border: none;
   border-radius: $button__radius--36;
   cursor: $cursor-pointer-value;
-  display: inline-block;
+  display: inline-flex;
   font-family: $brand-font-regular;
   font-size: $button__font-size;
   font-weight: var(--button-font-weight-regular, normal);
-  line-height: rem-calc(24);
+  line-height: normal;
   min-width: rem-calc(72);
   position: relative;
   text-align: $button__font-align;
   text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  
 
   > * {
     font-size: inherit;
@@ -18,6 +21,7 @@
 
   .#{$button__class}__children {
     @include flex;
+    max-width: 100%;
   }
 
   + .#{$button__class} {

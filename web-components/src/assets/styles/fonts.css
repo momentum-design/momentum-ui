@@ -8,6 +8,110 @@
 
 @font-face {
   font-display: fallback;
+  font-family: "Inter Regular";
+  font-style: normal;
+  font-weight: 450;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Light";
+  font-style: normal;
+  font-weight: 350;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Bold";
+  font-style: normal;
+  font-weight: 750;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Thin";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Thin Oblique";
+  font-style: 200;
+  font-weight: 450;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Extra Light";
+  font-style: normal;
+  font-weight: 250;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Extra Light Oblique";
+  font-style: italic;
+  font-weight: 250;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Light Oblique";
+  font-style: italic;
+  font-weight: 350;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Regular Oblique";
+  font-style: italic;
+  font-weight: 450;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Medium";
+  font-style: normal;
+  font-weight: 550;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Bold Oblique";
+  font-style: italic;
+  font-weight: 750;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Heavy";
+  font-style: normal;
+  font-weight: 850;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Inter Heavy Oblique";
+  font-style: italic;
+  font-weight: 850;
+  src: url("../../fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: fallback;
   font-family: "CiscoSansTT Thin";
   font-style: normal;
   font-weight: normal;

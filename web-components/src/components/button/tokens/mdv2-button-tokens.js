@@ -357,12 +357,12 @@ const button = {
   },
   disabled: {
     "bg-color": {
-      light: "$mds-color-theme-common-text-primary-disabled",
-      dark: "$mds-color-theme-common-text-primary-disabled"
+      light: "$mds-color-theme-button-primary-disabled",
+      dark: "$mds-color-theme-button-primary-disabled"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-primary-disabled",
-      dark: "$mds-color-theme-common-text-primary-disabled"
+      light: "$mds-color-theme-text-primary-disabled",
+      dark: "$mds-color-theme-text-primary-disabled"
     }
   },
   favorite: {
@@ -397,14 +397,52 @@ const button = {
       dark: "$mds-color-theme-outline-theme-normal"
     }
   },
-  "font-weight": {
-    regular: {
-      light: "550",
-      dark: "550"
+  font: {
+    weight: {
+      regular: {
+        light: "550",
+        dark: "550"
+      },
+      large: {
+        light: "450",
+        dark: "450"
+      }
     },
-    large: {
-      light: "450",
-      dark: "450"
+    size: {
+      "extra-small": {
+        light: "0.625rem", //"0.75rem"
+        dark: "0.625rem" //"0.75rem"
+      },
+      small: {
+        light: "0.75rem", //"0.875rem"
+        dark: "0.75rem" //"0.875rem"
+      },
+      medium: {
+        light: "0.875rem", //1rem
+        dark: "0.875rem" //1rem
+      }
+    }
+  },
+  padding: {
+    28: {
+      light: "0rem 0.625rem 0rem 0.625rem",
+      dark: "0rem 0.625rem 0rem 0.625rem"
+    },
+    32: {
+      light: "0rem 0.75rem 0rem 0.75rem",
+      dark: "0rem 0.75rem 0rem 0.75rem"
+    },
+    36: {
+      light: "0rem 0.875rem 0rem 0.875rem",
+      dark: "0rem 0.875rem 0rem 0.875rem"
+    },
+    40: {
+      light: "0rem 1rem 0rem 1rem",
+      dark: "0rem 1rem 0rem 1rem"
+    },
+    52: {
+      light: "0rem 1.125rem 0rem 1.125rem",
+      dark: "0rem 1.125rem 0rem 1.25rem"
     }
   }
 };

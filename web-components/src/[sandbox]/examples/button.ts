@@ -161,15 +161,16 @@ export const buttonTemplate = html`
 
   <div class="row" style="display: flex; margin: .5rem 0">
     <h3 class="sandbox-header" style="margin: .5rem 1rem">Links</h3>
-    <md-button tag="a" ariaLabel="Link"
-      ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Link</span></md-button
-    >
-    <md-button tag="a" ariaLabel="Link"><span slot="text">Link</span></md-button>
-    <md-button tag="a" ariaLabel="Link">Link</md-button>
-    <md-button tag="a" variant="primary" ariaLabel="Link">Link</md-button>
-    <md-button tag="a" variant="secondary" ariaLabel="Link">Link</md-button>
-    <md-button tag="a" variant="red" ariaLabel="Link">Link</md-button>
-    <md-button tag="a" variant="green" ariaLabel="Link">Link</md-button>
+    <md-button variant="secondary" tag="a" ariaLabel="Link">
+      <md-icon slot="icon" name="pause_16"></md-icon>
+      <span slot="text">Link</span>
+    </md-button>
+    <md-button variant="secondary" tag="a" ariaLabel="Link"><span slot="text">Link</span></md-button>
+    <md-button variant="secondary" tag="a" ariaLabel="Link">Link</md-button>
+    <md-button variant="secondary" tag="a" variant="primary" ariaLabel="Link">Link</md-button>
+    <md-button variant="secondary" tag="a" variant="secondary" ariaLabel="Link">Link</md-button>
+    <md-button variant="secondary" tag="a" variant="red" ariaLabel="Link">Link</md-button>
+    <md-button variant="secondary" tag="a" variant="green" ariaLabel="Link">Link</md-button>
   </div>
 
   <div class="row" style="display: flex; margin: .5rem 0">

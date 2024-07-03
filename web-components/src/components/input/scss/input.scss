@@ -139,6 +139,7 @@
         $background-color: var(--input-error-bg-color, $md-red-10),
         $background-color-hover: var(--input-error-hover-bg-color, $md-red-20),
         $border-color: var(--input-error-border-color, $md-red-50),
+        $border-color-active: var(--input-error-border-color, $md-red-50),
         $background-color-active: var(--input-error-pressed-bg-color, $md-red-30),
         $color-message: var(--input-error-message-text-color, $md-red-70),
         $focus-background-color: var(--input-default-focus-background-color, var(--input-error-bg-color))
@@ -164,11 +165,13 @@
     // Warning
     &.md-warning {
       @include input-color(
-        $background-color: var(--md-alert-warning-bg-color, $input__background--warning),
-        $background-color-hover: var(--md-alert-warning-bg-color, $input__background--warning),
-        $background-color-active: var(--md-alert-warning-bg-color, $input__background--warning),
-        $border-color: var(--input-warning-border-color, $input__border-color--warning),
-        $color-message: var(--md-alert-warning-text-color, $input__message__font-color--warning)
+        $background-color: var(--input-warning-bg-color, var(--md-alert-warning-bg-color, $input__background--warning)),
+        $background-color-hover: var(--input-warning-hover-bg-color, var(--md-alert-warning-bg-color, $input__background--warning)),
+        $background-color-active: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color, $input__background--warning)),
+        $border-color: var(--input-warning-border-color, var(--input-warning-border-color, $input__border-color--warning)),
+        $border-color-active: var(--input-warning-border-color, var(--input-warning-border-color, $input__border-color--warning)),
+        $color-message: var(--input-success-text-color, var(--md-alert-warning-text-color, $input__message__font-color--warning)),
+        $focus-background-color: var(--input-warning-pressed-bg-color, var(--md-alert-warning-bg-color, $input__background--warning))
       );
 
       .md-input {
@@ -183,10 +186,13 @@
     // Success
     &.md-success {
       @include input-color(
-        $background-color: var(--md-alert-success-bg-color, $input__background--success--hover),
-        $background-color-hover: var(--md-alert-success-bg-color, $input__background--success--hover),
-        $border-color: var(--input-success-border-color, $input__border-color--success),
-        $color-message: var(--md-success-text-color , $input__message__font-color--success)
+        $background-color: var(--input-success-bg-color, var(--md-alert-success-bg-color, $input__background--success--hover)),
+        $background-color-hover: var(--input-success-hover-bg-color, var(--md-alert-success-bg-color, $input__background--success--hover)),
+        $background-color-active: var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color, $input__background--success)),
+        $border-color: var(--input-success-border-color, var(--input-success-border-color, $input__border-color--success)),
+        $border-color-active: var(--input-success-border-color, var(--input-success-border-color, $input__border-color--success)),
+        $color-message: var(--input-success-text-color, var(--md-success-text-color , $input__message__font-color--success)),
+        $focus-background-color: var(--input-success-pressed-bg-color, var(--md-alert-success-bg-color, $input__background--success))
       );
 
       .md-input {

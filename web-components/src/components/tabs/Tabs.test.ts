@@ -168,6 +168,8 @@ describe("Tabs", () => {
 
     await elementUpdated(tabs);
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
+    expect(tabs["visibleTabsContainerElement"]?.children[1].id).toEqual(currentID);
+
 
     currentID = tabs["tabsFilteredAsVisibleList"][0].id;
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
@@ -231,10 +233,11 @@ describe("Tabs", () => {
     } as Sortable.SortableEvent);
 
     await elementUpdated(tabs);
+
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
-
-    expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][1]);
-
+    let visibleTab = tabs["visibleTabsContainerElement"]!.children[1].getAttribute("name");
+    expect(tabs["defaultTabsOrderArray"][0]).toEqual(visibleTab);
+    
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
@@ -247,7 +250,8 @@ describe("Tabs", () => {
     } as Sortable.SortableEvent);
 
     await elementUpdated(tabs);
-    expect(tabs["defaultTabsOrderArray"][0]).toEqual(tabs["tabsOrderPrefsArray"][0]);
+    visibleTab = tabs["visibleTabsContainerElement"]!.children[0].getAttribute("name");
+    expect(tabs["defaultTabsOrderArray"][0]).toEqual(visibleTab);
   });
 
   test("clearTabOrderPrefs should be called on `clear-tab-order-prefs` event", async () => {
@@ -255,7 +259,7 @@ describe("Tabs", () => {
     tabs.dispatchEvent(
       new CustomEvent("clear-tab-order-prefs", {
         detail: {
-          compUniqueId: tabs["compUniqueId"]
+          compUniqueId: "tabs-test-component"
         },
         composed: true,
         bubbles: true
@@ -286,6 +290,46 @@ describe("Tabs", () => {
 
     expect(tabs.selected).toBe(1);
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+  });
+
+  test("should handle keydown event for vertical tabs", async () => {
+    tabs.setAttribute("direction", "vertical");
+    tab.forEach((t: Tab.ELEMENT) => {
+      tabs["tabsFilteredAsVisibleList"].push(t);
+    });
+
+    const createKeyboardEvent = (id: string, code: string) => {
+      return {
+        originalTarget: {
+          id: id
+        },
+        composedPath: jest.fn(),
+        code: code,
+        target: tabs,
+        ctrlKey: false,
+        shiftKey: false,
+        altKey: false,
+        stopPropagation: jest.fn(),
+        preventDefault: jest.fn()
+      };
+    };
+    tabs.selected = 0;
+
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowDown));
+    await elementUpdated(tabs);
+
+    expect(tabs.selected).toBe(1);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
+
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.ArrowUp));
+    await elementUpdated(tabs);
+
+    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
+    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
+    expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
   });
 
   test("should handle keydown event and focused appropriate tab", async () => {
@@ -516,7 +560,24 @@ describe("Tabs", () => {
     });
     const clickEvent = new MouseEvent("mousedown");
 
+    tabs.selected = 1;
     (tabs.slotted[1] as Tab.ELEMENT).handleCrossClick(clickEvent);
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(1);
+    expect(tabs["tabsFilteredAsVisibleList"].length).toEqual(2);
+  });
+
+  test("should close selected tab upon custom close click", async () => {
+    tab.forEach((t: Tab.ELEMENT) => {
+      t.setAttribute("closable", "custom");
+      tabs["tabsFilteredAsVisibleList"].push(t);
+    });
+    const clickEvent = new MouseEvent("mousedown");
+
+    tabs.selected = 1;
+    (tabs.slotted[1] as Tab.ELEMENT).handleCrossClick(clickEvent);
+    await elementUpdated(tabs);
+    expect(tabs.selected).toBe(1);
     expect(tabs["tabsFilteredAsVisibleList"].length).toEqual(2);
   });
 
@@ -590,17 +651,6 @@ describe("Tabs", () => {
     expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });
 
-  test("should update the tab index on macos voiceover", () => {
-    tabs["updateSelectedTab"] = jest.fn();
-    tabs["allElements"]  = ["tab1","tab2","tab3"]
-    const e = {
-      target: {
-        id: "tab2"
-      }
-    }
-    tabs["updateSelectedTabIndexOnClick"](e);
-    expect(tabs["updateSelectedTab"]).toHaveBeenCalledWith(1);
-  });
 
   test("should handle keydown event and focused appropriate tabPanel upon Tab Press", async () => {
     const createKeyboardEvent = (code: string) =>

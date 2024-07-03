@@ -16,6 +16,16 @@ const maxDate = now()
 
 export const datePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>
+  <h3>row calendar</h3>
+  <md-datepicker-calendar
+    .datePickerProps=${{
+      locale: "en-US",
+      selected: now().plus({ days: 1 }),
+      focused: now().minus({ day: 1 }),
+      weekStart: "Sunday"
+    }}
+    .filterParams=${{ minDate: undefined, maxDate: undefined, filterDate: undefined }}
+  ></md-datepicker-calendar>
   <h3>datepicker with custom trigger</h3>
   <md-datepicker custom-trigger>
     <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>

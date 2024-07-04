@@ -20,9 +20,9 @@
 
   &__popper {
     background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
-    border: 1px solid $tooltip-border-color;
-    border-radius: $tooltip__radius;
-    box-shadow: $tooltip-box-shadow;
+    border: 1px solid var(--tooltip-border, $tooltip-border-color);
+    border-radius: var(--tooltip-radius, $tooltip__radius);
+    box-shadow: var(--tooltip-shadow, $tooltip-box-shadow);
     color: var(--tooltip-font-color, $lm-tooltip-font-color-light);
     display: none;
     font-size: $tooltip__font-size;
@@ -45,8 +45,8 @@
 
     .md-tooltip__arrow::before {
       background-color: var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
-      border: 1px solid var(--tooltip-bg-color, $lm-tooltip-bg-color-light);
-      box-shadow: inset 0 0 0 1px $tooltip-border-color;
+      border: 1px solid var(--tooltip-border, var(--tooltip-bg-color, $lm-tooltip-bg-color-light));
+      box-shadow: var(--tooltip-shadow, "inset 0 0 0 1px $tooltip-border-color");
       content: "";
       pointer-events: none;
       transform: rotate(45deg);
@@ -69,7 +69,7 @@
     }
 
     &[data-popper-placement^="bottom"] > .md-tooltip__arrow {
-      top: -8px;
+      top: var(--tooltip-arrow-bottom-top, -8px);
 
       &::before {
         border-radius: $tooltip__radius 0 0 0;
@@ -82,15 +82,17 @@
       right: 1px;
 
       &::before {
+        top: var(--tooltip-arrow-right-before-top, inherit);
         border-radius: 0 $tooltip__radius 0 0;
         clip-path: polygon(0% 0%, 100% 100%, 100% 0%);
       }
     }
 
     &[data-popper-placement^="right"] > .md-tooltip__arrow {
-      left: -15px;
+      left: var(--tooltip-arrow-right-left, -15px);
 
       &::before {
+        top: var(--tooltip-arrow-right-before-top, inherit);
         border-radius: 0 0 0 $tooltip__radius;
         clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
       }

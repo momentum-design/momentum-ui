@@ -26,8 +26,8 @@ const link = {
     }
   },
   disabled: {
-    light: "$mds-color-theme-common-text-primary-disabled",
-    dark: "$mds-color-theme-common-text-primary-disabled"
+    light: "$mds-color-theme-text-primary-disabled",
+    dark: "$mds-color-theme-text-primary-disabled"
   },
   inline: {
     light: "$mds-color-theme-text-error-normal",
@@ -46,12 +46,12 @@ const link = {
       dark: "$mds-color-theme-text-error-normal"
     },
     "font-size": {
-      light: "0.875rem",
-      dark: "0.875rem"
+      light: "1rem",
+      dark: "1rem"
     },
     "font-size__inline": {
-      light: "0.75rem",
-      dark: "0.75rem"
+      light: "0.875rem",
+      dark: "0.875rem"
     }
   }
 };

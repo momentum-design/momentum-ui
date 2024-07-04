@@ -8,12 +8,12 @@
 
 import "@/components/card/Card";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
 import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { nothing } from "lit-html";
-import { action } from "@storybook/addon-actions";
-import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Card",
@@ -66,10 +66,8 @@ export const Card = () => {
             `
           : nothing}
         <div slot="content">
-          <img
-            src="https://media.istockphoto.com/vectors/dashboard-ui-modern-presentation-with-data-graphs-and-hud-diagrams-vector-id1159848977"
-            alt=""
-          />
+          <img src=https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
+          alt="" />
         </div>
 
         <md-badge slot="footer" color="violet" small>Active</md-badge>

@@ -87,6 +87,26 @@ const button = {
       }
     }
   },
+  "secondary-active": {
+    normal: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-normal",
+        dark: "$mds-color-theme-button-secondary-active-normal"
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-hover",
+        dark: "$mds-color-theme-button-secondary-active-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-pressed",
+        dark: "$mds-color-theme-button-secondary-active-pressed"
+      }
+    }
+  },
   green: {
     "bg-color": {
       light: "$mds-color-theme-button-join-normal",

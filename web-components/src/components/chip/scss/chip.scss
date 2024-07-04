@@ -22,7 +22,7 @@
 
   &:active,
   &[aria-selected="true"] {
-    background-color: var(--md-quaternary-bg-color, $md-gray-20);
+    background-color: var(--button-secondary-active-normal-bg-color, var(--md-quaternary-bg-color, $md-gray-20));
   }
 
   &--blue,

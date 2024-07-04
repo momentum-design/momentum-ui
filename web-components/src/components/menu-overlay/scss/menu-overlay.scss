@@ -48,12 +48,12 @@
   .overlay-container[data-popper-placement^="top"] > .overlay-arrow {
     border-left: solid $arrow-size transparent;
     border-right: solid $arrow-size transparent;
-    border-top: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-top: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
     bottom: $arrow-offset;
   }
 
   .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow {
-    border-bottom: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-bottom: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
     border-left: solid $arrow-size transparent;
     border-right: solid $arrow-size transparent;
     top: $arrow-offset;
@@ -61,14 +61,14 @@
 
   .overlay-container[data-popper-placement^="right"] > .overlay-arrow {
     border-bottom: solid $arrow-size transparent;
-    border-right: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-right: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
     border-top: solid $arrow-size transparent;
     left: $arrow-offset;
   }
 
   .overlay-container[data-popper-placement^="left"] > .overlay-arrow {
     border-bottom: solid $arrow-size transparent;
-    border-left: solid $arrow-size var(--md-tertiary-white-bg-color);
+    border-left: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
     border-top: solid $arrow-size transparent;
     right: $arrow-offset;
   }

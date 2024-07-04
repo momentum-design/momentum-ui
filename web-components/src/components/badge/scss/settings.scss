@@ -9,7 +9,7 @@ $badge__radius: $global-radius !default;
 $badge--round__radius: rem-calc(100);
 
 // Set the badge text
-$badge__font-size: rem-calc(12) !default;
+$badge__font-size: var(--body-secondary-font-size, rem-calc(12)) !default;
 $badge__font-color-alt: $md-white-100 !default;
 $badge__font-color: $md-white-100 !default;
 $badge__font-weight: $font-weight-normal !default;

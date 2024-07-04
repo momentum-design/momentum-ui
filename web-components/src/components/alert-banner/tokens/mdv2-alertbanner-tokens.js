@@ -43,6 +43,10 @@ const alertBanner = {
       light: "$mds-color-theme-text-success-normal",
       dark: "$mds-color-theme-text-success-normal"
     }
+  },
+  "border-radius": {
+    light: "0.5rem",
+    dark: "0.5rem"
   }
 };
 

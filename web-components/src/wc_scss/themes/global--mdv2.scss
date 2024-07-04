@@ -16,7 +16,7 @@ $inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
 $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
 @mixin global-theme-specfic-vars {
-  --rem-base: 14px;
+  --rem-base: 16px;
   --brand-font-regular: #{$inter-base-font};
   --brand-font-bold: #{$inter-bold-font};
   --brand-font-bold-oblique: #{$inter-bold-oblique-font};
@@ -36,8 +36,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   font-family: var(--brand-font-regular);
 
   //This will be updated to 16px / 14px
-  --body-primary-font-size: 0.875rem;
-  --body-secondary-font-size: 0.75rem;
+  --body-primary-font-size: 1rem;
+  --body-secondary-font-size: 0.875rem;
 
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;
@@ -109,6 +109,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-nav-tab-active-bg-color: #{$mds-color-theme-button-secondary-active-normal};
 
   --md-menu-overlay-border-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-menu-overlay-arrow-bg-color: #{$mds-color-theme-background-solid-primary-normal};
 
   --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};

@@ -3,8 +3,8 @@ $tooltip__min-width: 100px;
 $tooltip__padding: rem-calc(6) rem-calc(10);
 $tooltip__radius: rem-calc(4);
 $tooltip-arrow__size: rem-calc(16);
-$tooltip__font-size: rem-calc(14);
-$tooltip__line-height: rem-calc(21);
+$tooltip__font-size: var(--body-primary-font-size, rem-calc(14));
+$tooltip__line-height: var(--body-primary-line-height, rem-calc(21));
 
 $tooltip-box-shadow: 0 rem-calc(8) rem-calc(16) $black-16, 0 0 rem-calc(1) $black-16, 0 0 0 rem-calc(1) $md-gray-90;
 $tooltip-border-color: $md-gray-70;

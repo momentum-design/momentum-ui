@@ -430,16 +430,16 @@ const button = {
     },
     size: {
       "extra-small": {
-        light: "0.625rem", //"0.75rem"
-        dark: "0.625rem" //"0.75rem"
+        light: "0.75rem",
+        dark: "0.75rem"
       },
       small: {
-        light: "0.75rem", //"0.875rem"
-        dark: "0.75rem" //"0.875rem"
+        light: "0.875rem",
+        dark: "0.875rem"
       },
       medium: {
-        light: "0.875rem", //1rem
-        dark: "0.875rem" //1rem
+        light: "1rem",
+        dark: "1rem"
       }
     }
   },

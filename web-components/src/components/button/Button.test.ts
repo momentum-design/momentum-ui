@@ -358,5 +358,8 @@ describe("Button Component", () => {
 
     element.variant = "idle";
     expect(element.variant).toEqual("idle");
+
+    element.variant = "ghost";
+    expect(element.variant).toEqual("ghost");
   });
 });

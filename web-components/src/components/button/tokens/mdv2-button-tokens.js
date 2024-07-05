@@ -253,6 +253,38 @@ const button = {
       }
     }
   },
+  ghost: {
+    "bg-color": {
+      light: "$mds-color-theme-button-secondary-normal",
+      dark: "$mds-color-theme-button-secondary-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
+    },
+    disabled: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-disabled",
+        dark: "$mds-color-theme-button-secondary-disabled"
+      },
+      "text-color": {
+        light: "$mds-color-theme-text-primary-disabled",
+        dark: "$mds-color-theme-text-primary-disabled"
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-hover",
+        dark: "$mds-color-theme-button-secondary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-pressed",
+        dark: "$mds-color-theme-button-secondary-pressed"
+      }
+    }
+  },
   promotional: {
     "bg-color": {
       light:

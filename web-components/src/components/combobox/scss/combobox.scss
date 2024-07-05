@@ -150,17 +150,16 @@ div#md-combobox-listbox {
   border-radius: $combobox-dropdown-radius;
   box-shadow: $combobox-dropdown-shadow;
   box-sizing: border-box;
-  font-size: $font-size-base;
+  font-size: var(--body-primary-font-size, $font-size-base);
   left: 0;
   list-style: none;
   margin: 0;
   overflow: auto;
   overflow-x: hidden;
-  padding: 0;
   position: absolute;
   top: calc(100% + #{$combobox-main-indent});
   width: 100%;
-  padding: var(--wc-menu-padding);
+  padding: var(--wc-menu-padding, 0);
 
   .no-result {
     padding: $combobox-option-padding;

@@ -602,9 +602,30 @@
     background: var(--button-promotional-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
   }
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
     color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+  }
+}
+
+:host([variant="ghost"]) .md-button {
+  background-color: var(--button-ghost-bg-color, transparent);
+  color: var(--button-ghost-text-color, var(--button-text-color));
+  border: unset;
+
+  &:hover {
+    background-color: var(--button-ghost-hover-bg-color, var(--button-secondary-hover-bg-color));
+  }
+
+  &:active {
+    background-color: var(--button-ghost-pressed-bg-color, var(--button-secondary-pressed-bg-color));
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-ghost-disabled-bg-color, var(--button-disabled-bg-color));
+    color: var(--button-ghost-disabled-text-color, var(--button-disabled-text-color));
   }
 }
 

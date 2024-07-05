@@ -62,6 +62,7 @@ export const buttonVariant = [
   "secondary",
   "red",
   "green",
+  "ghost",
   "white",
   "darkGrey",
   "promotional",

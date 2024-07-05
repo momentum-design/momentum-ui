@@ -49,6 +49,10 @@ const list = {
       light: "0.5rem",
       dark: "0.5rem"
     }
+  },
+  "line-height": {
+    light: "1.5rem",
+    dark: "1.5rem"
   }
 };
 

@@ -87,6 +87,26 @@ const button = {
       }
     }
   },
+  "secondary-active": {
+    normal: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-normal",
+        dark: "$mds-color-theme-button-secondary-active-normal"
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-hover",
+        dark: "$mds-color-theme-button-secondary-active-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-pressed",
+        dark: "$mds-color-theme-button-secondary-active-pressed"
+      }
+    }
+  },
   green: {
     "bg-color": {
       light: "$mds-color-theme-button-join-normal",
@@ -230,6 +250,38 @@ const button = {
       "text-color": {
         light: "$mds-color-theme-text-error-normal",
         dark: "$mds-color-theme-text-error-normal"
+      }
+    }
+  },
+  ghost: {
+    "bg-color": {
+      light: "$mds-color-theme-button-secondary-normal",
+      dark: "$mds-color-theme-button-secondary-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
+    },
+    disabled: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-disabled",
+        dark: "$mds-color-theme-button-secondary-disabled"
+      },
+      "text-color": {
+        light: "$mds-color-theme-text-primary-disabled",
+        dark: "$mds-color-theme-text-primary-disabled"
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-hover",
+        dark: "$mds-color-theme-button-secondary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-pressed",
+        dark: "$mds-color-theme-button-secondary-pressed"
       }
     }
   },
@@ -410,16 +462,16 @@ const button = {
     },
     size: {
       "extra-small": {
-        light: "0.625rem", //"0.75rem"
-        dark: "0.625rem" //"0.75rem"
+        light: "0.75rem",
+        dark: "0.75rem"
       },
       small: {
-        light: "0.75rem", //"0.875rem"
-        dark: "0.75rem" //"0.875rem"
+        light: "0.875rem",
+        dark: "0.875rem"
       },
       medium: {
-        light: "0.875rem", //1rem
-        dark: "0.875rem" //1rem
+        light: "1rem",
+        dark: "1rem"
       }
     }
   },

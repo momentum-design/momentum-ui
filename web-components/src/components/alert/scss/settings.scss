@@ -6,8 +6,8 @@
 $alert__class: "md-alert";
 $alert__border-radius: rem-calc(5);
 
-$alert__font-size: rem-calc(14) !default;
-$alert__font-size--title: rem-calc(16) !default;
+$alert__font-size: var(--body-secondary-font-size ,rem-calc(14)) !default;
+$alert__font-size--title: var(--body-primary-font-size, rem-calc(16)) !default;
 $alert__icon-font-size: rem-calc(44) !default;
 $alert__close-icon-color: var(--alert-close-text-color, $lm-alert-close-text-color-light);
 

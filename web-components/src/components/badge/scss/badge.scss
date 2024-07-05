@@ -19,7 +19,7 @@
 
     &--compact,
     &--split {
-      @include badge-size($padding: rem-calc(4 16 4 4), $text-size: rem-calc(12));
+      @include badge-size($padding: rem-calc(4 16 4 4), $text-size: var(--body-secondary, rem-calc(12)));
     }
 
     &--circle {

@@ -1,7 +1,7 @@
 
 
 .md-timepicker {
-  padding-right: $am-pm-combobox-width;
+  padding-right: $timepicker-right-padding;
   width: fit-content;
 
   &.twenty-four-hour-format {
@@ -18,8 +18,7 @@
     display: inline-block;
     height: $time-box-height;
     margin-left: $am-pm-combobox-left-margin;
-    position: absolute;
-    width: $time-box-width;
+    width: $am-pm-combobox-width;
   }
 
   .amPm-combo-box::part(group) {

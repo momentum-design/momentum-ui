@@ -5,6 +5,7 @@
     padding: $alert-banner__padding;
     position: relative;
     text-align: center;
+    border-radius: var(--alert-banner-border-radius);
 
     &.md-alert-banner {
       &--default {

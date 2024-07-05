@@ -32,7 +32,7 @@ export const comboBoxTemplate = html`
     <span>Label Combobox</span>
   </md-label>
   <md-combobox
-    style="width: 220px; display: inline-block;"
+    style="width: 220px; display: flex;"
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     ariaLabel="Select the country"
@@ -42,7 +42,7 @@ export const comboBoxTemplate = html`
 
   <h3>Default</h3>
   <md-combobox
-    style="width: 220px; display: inline-block;"
+    style="width: 240px; display: inline-block;"
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     ariaLabel="Select the country"

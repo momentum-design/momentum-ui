@@ -1,5 +1,5 @@
 $help-text__font-family: $brand-font-regular !default;
-$help-text__font-size: rem-calc(12) !default;
+$help-text__font-size: var(--body-secondary-font-size, rem-calc(12)) !default;
 $help-text__line-height: 1.25rem !default;
 $help-text__spacing: rem-calc(16) !default;
 

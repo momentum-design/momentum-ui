@@ -93,6 +93,9 @@ export namespace DatePickerCalendar {
         this.filterParams?.minDate && shouldPrevMonthDisable(this.viewAnchorDate, this.filterParams?.minDate);
       return html`
         <md-button
+          variant="ghost"
+          circle
+          size="28"
           aria-controls="Datepicker-Calendar"
           aria-label=${`previous month`}
           title=${`previous month`}
@@ -110,6 +113,9 @@ export namespace DatePickerCalendar {
         this.filterParams?.maxDate && shouldNextMonthDisable(this.viewAnchorDate, this.filterParams?.maxDate);
       return html`
         <md-button
+          variant="ghost"
+          circle
+          size="28"
           aria-controls="Datepicker-Calendar"
           aria-label=${`next month`}
           title=${`next month`}

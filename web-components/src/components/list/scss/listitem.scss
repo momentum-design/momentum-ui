@@ -19,6 +19,14 @@
     position: relative;
     border-radius: var(--list-border-radius-pill);
   }
+
+  .md-list-item--pill {
+    border-radius: var(--list-border-radius-pill);
+  }
+
+  .md-list-item--rounded {
+    border-radius: var(--list-border-radius-rounded);
+  }
 }
 
 :host(:hover:not([disabled])) {

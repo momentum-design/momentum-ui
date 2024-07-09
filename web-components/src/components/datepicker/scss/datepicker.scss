@@ -92,7 +92,7 @@
       background: var(--datepicker-default-number-bg-color, var(--datepicker-range-hover-bg-color, $md-gray-20));
     }
 
-    &--selected::part(button) {
+    &--selected::part(button):not(:hover) {
       background: var(--datepicker-selected-bg-color, var(--md-primary-text-color, $md-gray-100));
       color: var(--datepicker-selected-text-color, var(--md-secondary-bg-color, $md-white));
     }

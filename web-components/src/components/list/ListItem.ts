@@ -9,6 +9,7 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export namespace ListItem {
@@ -16,6 +17,7 @@ export namespace ListItem {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String, reflect: true }) role: "listitem" | "option" = "option";
     @property({ type: Number, reflect: true }) tabIndex = -1;
+    @property({ type: String, reflect: true }) shape: "pill" | "rounded" = "rounded";
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -40,21 +42,25 @@ export namespace ListItem {
       this.requestUpdate("selected", oldValue);
     }
 
+    get listItemTemplateClassMap() {
+      return {
+        [`md-list-item--${this.shape}`]: !!this.shape
+      };
+    }
+
     static get styles() {
       return [reset, styles];
     }
 
     render() {
       return html`
-        <li class="md-list-item" part="list-item">
+        <li class="md-list-item ${classMap(this.listItemTemplateClassMap)}" part="list-item">
           <slot></slot>
         </li>
       `;
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

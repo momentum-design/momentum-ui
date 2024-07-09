@@ -17,7 +17,7 @@ export namespace ListItem {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String, reflect: true }) role: "listitem" | "option" = "option";
     @property({ type: Number, reflect: true }) tabIndex = -1;
-    @property({ type: String }) shape = "pill";
+    @property({ type: String, reflect: true }) shape: "pill" | "rounded" = "rounded";
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })

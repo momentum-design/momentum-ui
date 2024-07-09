@@ -9,11 +9,11 @@
 import "@/components/list/List";
 import "@/components/list/ListItem";
 import "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { select, boolean, text, withKnobs, number } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import { action } from '@storybook/addon-actions';
 import { ThemeNameValues } from "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
 
 export default {
   title: "Components/List",
@@ -43,16 +43,22 @@ export const List = () => {
   const disabled = boolean("Disabled", false);
   const selected = number("Preselected", 2);
   const alignment = select("Orientation", options, "vertical");
+  const shape = select("Shape", ["pill", "rounded"], "rounded");
 
   return html`
     <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
-      <md-list @list-item-change=${action('change')} label="Transuranium elements" .activated="${selected}" .alignment=${alignment as any}>
-        <md-list-item slot="list-item">Neptunium</md-list-item>
-        <md-list-item slot="list-item" ?disabled=${disabled}>Plutonium</md-list-item>
-        <md-list-item slot="list-item">Americium</md-list-item>
-        <md-list-item slot="list-item" ?disabled=${disabled}>Curium</md-list-item>
-        <md-list-item slot="list-item">Berkelium</md-list-item>
-        <md-list-item slot="list-item">Californium</md-list-item>
+      <md-list
+        @list-item-change=${action("change")}
+        label="Transuranium elements"
+        .activated="${selected}"
+        .alignment=${alignment as "horizontal" | "vertical"}
+      >
+        <md-list-item shape=${shape} slot="list-item">Neptunium</md-list-item>
+        <md-list-item shape=${shape} slot="list-item" ?disabled=${disabled}>Plutonium</md-list-item>
+        <md-list-item shape=${shape} slot="list-item">Americium</md-list-item>
+        <md-list-item shape=${shape} slot="list-item" ?disabled=${disabled}>Curium</md-list-item>
+        <md-list-item shape=${shape} slot="list-item">Berkelium</md-list-item>
+        <md-list-item shape=${shape} slot="list-item">Californium</md-list-item>
       </md-list>
     </md-theme>
   `;

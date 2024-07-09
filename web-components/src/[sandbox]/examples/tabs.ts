@@ -1,3 +1,4 @@
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
@@ -11,7 +12,6 @@ import { css, customElement, html, internalProperty, LitElement } from "lit-elem
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index, array) => html`
@@ -92,10 +92,12 @@ export class TabsOrderPrefsExample extends LitElement {
           This inbuilt feature will work only if the below conditions are satisfied.
         </p>
         <ul>
-            <li><code>md-tabs</code> tag must have <i>draggable</i> and <i>comp-unique-id</i> attributes.</li>
-            <li><i>comp-unique-id</i> attribute value should be unique in the application, to avoid conflict of tabs order</li>
-            <li>Each pair of <code>md-tab</code> and <code>md-tab-panel</code> should have <i>name</i> attribute </li>
-          </ul>
+          <li><code>md-tabs</code> tag must have <i>draggable</i> and <i>comp-unique-id</i> attributes.</li>
+          <li>
+            <i>comp-unique-id</i> attribute value should be unique in the application, to avoid conflict of tabs order
+          </li>
+          <li>Each pair of <code>md-tab</code> and <code>md-tab-panel</code> should have <i>name</i> attribute</li>
+        </ul>
         <md-tabs persist-selection tabs-id="tabOrder" draggable comp-unique-id="tabs-test-component">
           <md-tab slot="tab" name="History" closable="custom" label="History">
             <md-icon name="recents_16"></md-icon>
@@ -145,7 +147,6 @@ export class TabsOrderPrefsExample extends LitElement {
     `;
   }
 }
-
 
 @customElement("default-tabs-sandbox")
 export class TabsTemplateSandbox extends LitElement {
@@ -342,7 +343,8 @@ export class TabsTemplateSandbox extends LitElement {
             <md-list-item
               slot="list-item"
               type="auto"
-              aria-label="item-1">
+              aria-label="item-1"
+              shape="rounded">
               <div
                 aria-label="item-1-div"
                 display-value="12345678"
@@ -361,7 +363,8 @@ export class TabsTemplateSandbox extends LitElement {
             <md-list-item
               slot="list-item"
               type="auto"
-              aria-label="item-2">
+              aria-label="item-2"
+              shape="rounded">
               <div
                 aria-label="item-2-div"
                 display-value="12345678"
@@ -465,52 +468,52 @@ export class TabsTemplateSandbox extends LitElement {
                 ${unsafeHTML(this.tabs[tabElement])}
               `
             )}
-            ${!this.isSingleButtonResetEnabled
-              ? html`
-                  <md-menu-overlay
-                    slot="settings"
-                    size="small"
-                    style="display: flex; justify-content: center;height: 100%;"
-                  >
-                    <button class="menu-trigger-button" slot="menu-trigger">
-                      <md-icon name="icon-more-adr_16"></md-icon>
-                    </button>
-                    <div style="padding: 16px">
-                      <div>
-                        <md-button @click=${(e: MouseEvent) => this.handleCloseAll(e)} variant="secondary"
-                          ><span slot="text">Close All</span></md-button
-                        >
-                        <md-button @click=${(e: MouseEvent) => this.handleResetTabs(e)} variant="primary"
-                          ><span slot="text">Reset</span></md-button
-                        >
+            ${
+              !this.isSingleButtonResetEnabled
+                ? html`
+                    <md-menu-overlay
+                      slot="settings"
+                      size="small"
+                      style="display: flex; justify-content: center;height: 100%;">
+                      <button class="menu-trigger-button" slot="menu-trigger">
+                        <md-icon name="icon-more-adr_16"></md-icon>
+                      </button>
+                      <div style="padding: 16px">
+                        <div>
+                          <md-button @click=${(e: MouseEvent) => this.handleCloseAll(e)} variant="secondary"
+                            ><span slot="text">Close All</span></md-button>
+                          <md-button @click=${(e: MouseEvent) => this.handleResetTabs(e)} variant="primary">
+                            <span slot="text">Reset</span><
+                            /md-button>
+                        </div>
+                        <p>Unselect Tabs to Hide</p>
+                        <md-checkboxgroup style="display: flex" group-label="group_process">
+                          ${this.defaultTabsOrder.map(tabLabel => {
+                            return html`
+                              <md-checkbox
+                                checked
+                                @checkbox-change=${(e: Event) => this.handleCheckboxChange(e, tabLabel)}
+                                slot="checkbox"
+                                >${tabLabel}</md-checkbox
+                              >
+                            `;
+                          })}
+                        </md-checkboxgroup>
                       </div>
-                      <p>Unselect Tabs to Hide</p>
-                      <md-checkboxgroup style="display: flex" group-label="group_process">
-                        ${this.defaultTabsOrder.map(tabLabel => {
-                          return html`
-                            <md-checkbox
-                              checked
-                              @checkbox-change=${(e: Event) => this.handleCheckboxChange(e, tabLabel)}
-                              slot="checkbox"
-                              >${tabLabel}</md-checkbox
-                            >
-                          `;
-                        })}
-                      </md-checkboxgroup>
-                    </div>
-                  </md-menu-overlay>
-                `
-              : html`
-                  <button
-                    slot="settings"
-                    class="menu-trigger-button"
-                    @click=${(e: MouseEvent) => this.handleResetTabs(e)}
-                  >
-                    <md-tooltip placement="bottom" message=${"Reset Tabs"}>
-                      <md-icon name="icon-reset_16"></md-icon>
-                    </md-tooltip>
-                  </button>
-                `}
+                    </md-menu-overlay>
+                  `
+                : html`
+                    <button
+                      slot="settings"
+                      class="menu-trigger-button"
+                      @click=${(e: MouseEvent) => this.handleResetTabs(e)}
+                    >
+                      <md-tooltip placement="bottom" message=${"Reset Tabs"}>
+                        <md-icon name="icon-reset_16"></md-icon>
+                      </md-tooltip>
+                    </button>
+                  `
+            }
           </md-tabs>
         </div>
         <br />

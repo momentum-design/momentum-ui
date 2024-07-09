@@ -21,11 +21,9 @@ export const dateTimePickerTemplate = html`
   <h3>date-time-picker with dateValue & timeValue</h3>
   <md-date-time-picker date-value="2021-01-31" time-value="08:20:00-08:00"></md-date-time-picker>
   <h3>date-time-picker with value</h3>
-  <md-date-time-picker
-    value="2021-02-14T12:00:00-08:00"
-  ></md-date-time-picker>
+  <md-date-time-picker value="2021-02-14T12:00:00-08:00"></md-date-time-picker>
   <h3>disabled date-time-picker</h3>
   <md-date-time-picker value="2021-02-14T12:00:00-08:00" disabled></md-date-time-picker>
   <h3>Call Date</h3>
-  <md-date-time-picker value="2021-02-14T12:00:00-08:00"  ariaLabel="Call Date" ></md-date-time-picker>
+  <md-date-time-picker value="2021-02-14T12:00:00-08:00" ariaLabel="Call Date"></md-date-time-picker>
 `;

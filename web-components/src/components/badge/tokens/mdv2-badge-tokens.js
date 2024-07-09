@@ -321,6 +321,16 @@ const badge = {
       dark: "$mds-color-theme-inverted-text-primary-normal"
     }
   },
+  unreadcount: {
+    "bg-color": {
+      light: "$mds-color-theme-background-accent-normal",
+      dark: "$mds-color-theme-background-accent-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-common-text-primary-normal",
+      dark: "$mds-color-theme-common-text-primary-normal"
+    }
+  },
   hold: {
     "bg-color": {
       light: colors.yellow[10].name,

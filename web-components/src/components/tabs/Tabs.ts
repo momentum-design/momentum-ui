@@ -18,11 +18,11 @@ import { styleMap } from "lit-html/directives/style-map";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
 import Sortable from "sortablejs";
+import { setTimeout } from "timers";
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
-import { Tab, TabClickEvent, TAB_CROSS_WIDTH, TabCloseClickEvent } from "./Tab";
+import { Tab, TAB_CROSS_WIDTH, TabClickEvent, TabCloseClickEvent } from "./Tab";
 import { TabPanel } from "./TabPanel";
-import { setTimeout } from "timers";
 
 const MORE_MENU_TAB_TRIGGER_ID = "tab-more";
 const MORE_MENU_WIDTH = "226px"; // Designed width
@@ -143,14 +143,17 @@ export namespace Tabs {
 
     private getTabIndex(tab: Tab.ELEMENT) {
       // Get first tabindex to 0 only when More button is there and the visible tab is not selected
-      if (this.isMoreTabMenuVisible && (this.getCurrentIndex(tab?.id) === 0) && 
-      (this.selected > (this.tabsFilteredAsVisibleList?.length - 1))) {
+      if (
+        this.isMoreTabMenuVisible &&
+        this.getCurrentIndex(tab?.id) === 0 &&
+        this.selected > this.tabsFilteredAsVisibleList?.length - 1
+      ) {
         return 0;
       } else if (this.tabsFilteredAsVisibleList[this.selected]?.id === tab.id) {
         return 0;
       } else {
         return -1;
-      }         
+      }
     }
 
     private getNormalizedTabId(id: TabId) {
@@ -408,7 +411,7 @@ export namespace Tabs {
       event.stopPropagation();
       const oldIndex = event.oldIndex;
       const newIndex = event.newIndex;
-     
+
       const visibleTabElements = [...this.tabsFilteredAsVisibleList];
       const hiddenTabElements = [...this.tabsFilteredAsHiddenList];
 
@@ -480,9 +483,9 @@ export namespace Tabs {
 
       if (this.compUniqueId) {
         const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-        const newSelectedIndex = tabsOrder.findIndex(tabItem=>tabItem.selected);
+        const newSelectedIndex = tabsOrder.findIndex(tabItem => tabItem.selected);
         this.storeSelectedTabIndex(newSelectedIndex);
-        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name)
+        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name);
         localStorage.setItem(this.compUniqueId, this.tabsOrderPrefsArray.join(","));
       }
     };
@@ -581,7 +584,6 @@ export namespace Tabs {
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
-
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
 
@@ -605,7 +607,10 @@ export namespace Tabs {
 
       if (newSelectedIndex >= 0) {
         this.dispatchSelectedChangedEvent(newSelectedIndex);
-        const currentTabsConfiguration = this.direction === "horizontal"? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList] : this.tabs;
+        const currentTabsConfiguration =
+          this.direction === "horizontal"
+            ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
+            : this.tabs;
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(
           element => element.id === tabs[newSelectedIndex].id
         );
@@ -660,34 +665,34 @@ export namespace Tabs {
 
     private getCurrentIndex(tabId: string) {
       const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
-      for(let i = 0; i < arrayLength; i++) {
-        if(this.visibleTabsContainerElement?.children[i].id === tabId) {
-          return i;          
-        };   
+      for (let i = 0; i < arrayLength; i++) {
+        if (this.visibleTabsContainerElement?.children[i].id === tabId) {
+          return i;
+        }
       }
       return this.tabsVisibleIdxHash[tabId];
     }
 
-    private moveFocusToAdjacentTab(elementId: string, direction: 'previous' | 'next' | 'fromMoreTabs') {
+    private moveFocusToAdjacentTab(elementId: string, direction: "previous" | "next" | "fromMoreTabs") {
       const currentTabIndex = this.getCurrentIndex(elementId);
       const visibleTabs = this.visibleTabsContainerElement?.children;
       const visibleArrayLength = visibleTabs?.length || 0;
-      
-      if (!visibleTabs  || visibleArrayLength === 0) return;
-      
-      let newIndex: number = 0;
-      
+
+      if (!visibleTabs || visibleArrayLength === 0) return;
+
+      let newIndex = 0;
+
       if (direction === PREVIOUS) {
-        newIndex = (currentTabIndex === 0) ? visibleArrayLength - 1 : currentTabIndex - 1;
+        newIndex = currentTabIndex === 0 ? visibleArrayLength - 1 : currentTabIndex - 1;
       } else if (direction === NEXT) {
-        newIndex = (currentTabIndex === visibleArrayLength - 1) ? 0 : currentTabIndex + 1;
+        newIndex = currentTabIndex === visibleArrayLength - 1 ? 0 : currentTabIndex + 1;
       } else if (direction === FROM_MORE_TABS) {
-        newIndex = (this.selected >= visibleArrayLength) ? 0 : this.selected;
-      };
+        newIndex = this.selected >= visibleArrayLength ? 0 : this.selected;
+      }
 
       this.moveFocusToTab(visibleTabs[newIndex]);
-    };
-      
+    }
+
     moveFocusToTab(tabElement: any) {
       setTimeout(() => (tabElement as HTMLElement)?.focus(), 0);
     }
@@ -724,10 +729,9 @@ export namespace Tabs {
         return false;
       }
 
-      if(event.path){
+      if (event.path) {
         elementId = event.path[0].id;
-      }
-      else{
+      } else {
         elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
       }
       const id = this.getNormalizedTabId(elementId);
@@ -735,14 +739,14 @@ export namespace Tabs {
 
       const key = event.code;
       const { shiftKey } = event;
-    
+
       const isMoreTriggerTab = this.isMoreTabMenuVisible ? id === MORE_MENU_TAB_TRIGGER_ID : false;
 
       const tab =
         !isMoreTriggerTab || !this.isMoreTabMenuVisible
           ? this.tabsHash[this.getNormalizedTabId(id)]
           : this.moreTabMenuElement;
-     
+
       const isVisibleTab = this.isMoreTabMenuVisible ? tab && this.tabsVisibleIdxHash[tab.id] > -1 : true;
       const isHiddenTab = this.isMoreTabMenuVisible ? tab && this.tabsHiddenIdxHash[tab.id] > -1 : false;
       const firstVisibleTabIdx = 0;
@@ -773,20 +777,20 @@ export namespace Tabs {
           if (isMoreTriggerTab) {
             //
           } else if (isVisibleTab) {
-            event.preventDefault();              
+            event.preventDefault();
             this.moveFocusToTab(this.visibleTabsContainerElement?.children[this.tabsFilteredAsVisibleList?.length - 1]);
           } else if (this.isMoreTabMenuOpen) {
-            event.preventDefault();    
-            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[this.tabsFilteredAsHiddenList?.length - 1]);             
+            event.preventDefault();
+            this.moveFocusToTab(this.hiddenTabsContainerElement?.children[this.tabsFilteredAsHiddenList?.length - 1]);
           }
           break;
         }
         case Key.Home: {
           if (isVisibleTab) {
-            event.preventDefault();  
+            event.preventDefault();
             this.moveFocusToTab(this.visibleTabsContainerElement?.children[0]);
           } else if (this.isMoreTabMenuOpen) {
-            event.preventDefault();    
+            event.preventDefault();
             this.moveFocusToTab(this.hiddenTabsContainerElement?.children[0]);
           }
           break;
@@ -900,7 +904,7 @@ export namespace Tabs {
       if (this.panelSlotElement) {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
-      
+
       this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
     }
 
@@ -977,7 +981,7 @@ export namespace Tabs {
         } else {
           this.selected = selectedTabIndex;
         }
-      }     
+      }
     }
 
     disconnectedCallback() {
@@ -1054,11 +1058,12 @@ export namespace Tabs {
           part="tabs-list"
           class="md-tab__list ${classMap({
             "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
-            "no-tabs-visible": this.noTabsVisible
+            "no-tabs-visible": this.noTabsVisible,
+            "vertical-tab-list": this.direction === "vertical"
           })}"
           role="tablist"
         >
-        <slot
+          <slot
             name="tab"
             class="${classMap({
               "visible-tabs-slot": this.direction === "horizontal"
@@ -1089,7 +1094,6 @@ export namespace Tabs {
                 </md-tab>
               `
             )}
-           
           </div>
 
           <md-menu-overlay

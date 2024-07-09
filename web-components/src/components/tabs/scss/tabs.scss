@@ -198,6 +198,36 @@ md-menu-overlay {
 
 // Vertical Direction
 
+//Host context is not supported in Safari or Firefox so set
+//using host which will be overridden by host-context if supported
+:host([direction="vertical"]) {
+  flex-direction: row;
+
+  .md-tab__list {
+    border-right: $tab-list-border;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    width: auto;
+
+    ::slotted([slot="tab"]) {
+      border-left: $tab-border;
+      display: block;
+      height: auto;
+      text-align: left;
+
+      &[selected] {
+        color: var(--tabs-default-active, $lm-tabs-default-active-light);
+      }
+    }
+  }
+
+  .md-tab__content ::slotted([slot="panel"]) {
+    padding-left: calc($tab-base-indent * 5);
+  }
+}
+
 :host-context([direction="vertical"]) {
   flex-direction: row;
 }

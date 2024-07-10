@@ -45,7 +45,7 @@
     "node-downloader-helper": "1.0.19"
   },
   "peerDependencies": {
-    "@momentum-ui/core": "19.15.30",
+    "@momentum-ui/core": "19.16.0",
     "@momentum-ui/icons": "8.28.5",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
@@ -75,7 +75,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@interactjs/types": "1.10.3",
-    "@momentum-ui/core": "19.15.30",
+    "@momentum-ui/core": "19.16.0",
     "@momentum-ui/icons": "8.28.5",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",

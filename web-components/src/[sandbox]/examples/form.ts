@@ -1,5 +1,5 @@
-import "@/components/form/Form";
 import "@/components/button/Button";
+import "@/components/form/Form";
 import "@/components/input/Input";
 import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
 
@@ -71,7 +71,7 @@ export const formTemplate = html`
     <md-input label="Address" name="address"></md-input>
     <md-input label="Email" name="email"></md-input>
     <md-input label="Phone" name="phone"></md-input>
-    <md-button type="submit" label="Please Submit Form" size="52" color="blue">Submit</md-button>
+    <md-button type="submit" label="Please Submit Form" size="40" variant="primary">Submit</md-button>
   </md-form>
   <h3>Allow redirect after submit (Valid)</h3>
   <md-form target="_blank" allow-redirect @form-submitted=${() => console.info("Form Submitted!!!")}>
@@ -89,12 +89,12 @@ export const formTemplate = html`
   <h3>No Validation</h3>
   <md-form no-validate @form-submitted=${() => console.info("Form Submitted!!!")}>
     <md-input name="address"></md-input>
-    <md-button type="submit" color="green">Submit</md-button>
+    <md-button type="submit" variant="green">Submit</md-button>
   </md-form>
   <h3>Autofill Name Attribute</h3>
   <md-form no-validate autofill-name="address" @form-submitted=${() => console.info("Form Submitted!!!")}>
     <md-input></md-input>
-    <md-button type="submit" color="green">Submit</md-button>
+    <md-button type="submit" variant="green">Submit</md-button>
   </md-form>
   <h3>Form Submit Handle</h3>
   <form-sandbox></form-sandbox>

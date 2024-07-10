@@ -1,4 +1,5 @@
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { DateTime } from "luxon";
 import "./DatePickerCalendar";
 import { DatePickerCalendar } from "./DatePickerCalendar";
 
@@ -47,5 +48,35 @@ describe("DatePickerCalendar Component", () => {
     prevMonthButton?.dispatchEvent(event);
 
     expect(setDateFunc).toHaveBeenCalledTimes(2);
+  });
+
+  test("should generate correct day names in header", async () => {
+    const el: DatePickerCalendar.ELEMENT = await fixture(
+      html`
+        <md-datepicker-calendar></md-datepicker-calendar>
+      `
+    );
+
+    // Set the viewAnchorDate and weekStart
+    el.viewAnchorDate = DateTime.now();
+    el.datePickerProps = {
+      weekStart: "Monday",
+      locale: "en-US",
+      selected: DateTime.now(),
+      focused: DateTime.now()
+    };
+
+    const header = el.header();
+
+    const dayNames = header.map(dayTemplate => dayTemplate.values[0]);
+
+    expect(dayNames).toHaveLength(7);
+    expect(dayNames[0]).toContain("M");
+    expect(dayNames[1]).toContain("T");
+    expect(dayNames[2]).toContain("W");
+    expect(dayNames[3]).toContain("T");
+    expect(dayNames[4]).toContain("F");
+    expect(dayNames[5]).toContain("S");
+    expect(dayNames[6]).toContain("S");
   });
 });

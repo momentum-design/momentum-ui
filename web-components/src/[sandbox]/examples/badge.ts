@@ -192,4 +192,13 @@ export const badgeTemplate = html`
   <md-badge outlined small>
     March 21, 2020
   </md-badge>
+
+  <h4 class="snadbox-header">Unread count</h4>
+
+  <md-badge color="unreadcount">
+    99
+  </md-badge>
+  <md-badge color="unreadcount">
+    4
+  </md-badge>
 `;

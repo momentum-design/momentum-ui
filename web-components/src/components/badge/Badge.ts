@@ -11,8 +11,8 @@ import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
+import styles from "./scss/module.scss";
 
 export namespace Badge {
   @customElementWithCheck("md-badge")
@@ -77,15 +77,28 @@ export namespace Badge {
 
       const splitContent = () => {
         return html`
-          <slot aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)} name="split-left" class="split split-left"></slot>
+          <slot
+            aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)}
+            name="split-left"
+            class="split split-left"
+          ></slot>
           <span aria-hidden="true" class="split-separator"> | </span>
-          <slot aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)} name="split-right" class="split split-right"></slot>
+          <slot
+            aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)}
+            name="split-right"
+            class="split split-right"
+          ></slot>
         `;
       };
 
       return html`
         ${this.getStyles()}
-        <span tabindex= ${this.tabIndexing} part="badge" class="md-badge ${classMap(classNamesInfo)}" aria-label=${this.ariaLabel}>
+        <span
+          tabindex=${this.tabIndexing}
+          part="badge"
+          class="md-badge ${classMap(classNamesInfo)}"
+          aria-label=${this.ariaLabel}
+        >
           ${this.split ? splitContent() : nothing}
           <slot></slot>
         </span>

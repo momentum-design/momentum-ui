@@ -10,7 +10,7 @@
       outline: 2px solid var(--button-focus-ring-color);
       outline-offset: 2px;
     }
-  
+
     &--small {
       @include badge-size($padding: rem-calc(3 12));
       height: rem-calc(24);
@@ -39,8 +39,6 @@
       border: 1px solid;
       min-width: auto;
     }
-
-
 
     &--gray {
       @include badge-style(
@@ -121,6 +119,20 @@
         false,
         var(--badge-darkred-text-color, $lm-badge-darkred-text-color-light)
       );
+    }
+
+    &--unreadcount {
+      @include badge-style(
+        var(--badge-unreadcount-bg-color, var(--badge-darkred-bg-color)),
+        false,
+        var(--badge-unreadcount-text-color, var(--button-primary-text-color))
+      );
+      font-weight: 550;
+      font-size: var(--label-compact-font-size);
+      padding: 0rem 0.25rem;
+      min-width: rem-calc(20);
+      height: rem-calc(20);
+      justify-content: center;
     }
 
     &--orange {
@@ -219,10 +231,10 @@
   opacity: 0.4;
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   @include exports("md-badge") {
     .md-badge {
-      forced-color-adjust: none ;
+      forced-color-adjust: none;
       background-color: Canvas !important;
       color: CanvasText !important;
       outline: 1px solid CanvasText !important;

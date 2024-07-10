@@ -1,23 +1,20 @@
 $alert__class: "md-alert";
 $alert__border-radius: 5px;
 
-$alert__font-size: rem-calc(14) !default;
-$alert__font-size--title: rem-calc(16) !default;
+$alert__font-size: var(--body-secondary-font-size, rem-calc(14)) !default;
+$alert__font-size--title: var(--body-primary-font-size, rem-calc(16)) !default;
 $alert__icon-font-size: rem-calc(44) !default;
 
-$alert__background-color: $md-white-100 !default;
-$alert__background-color--info: $md-theme-50 !default;
-$alert__background-color--success: $md-green-50 !default;
-$alert__background-color--warning: $md-yellow-50 !default;
-$alert__background-color--error: $md-red-50 !default;
+$alert__background-color: var(--meeting-alert-bg-color, $md-white-100) !default;
+$alert__border-color: var(--meeting-alert-border-color, $black-12) !default;
 
-$alert__font-color: $md-gray-90 !default;
-$alert__font-color--title: $md-black-100 !default;
-$alert__font-color--status: $md-green-70 !default;
-$alert__font-color--info: $md-theme-50 !default;
-$alert__font-color--success: $md-green-50 !default;
-$alert__font-color--warning: $md-yellow-50 !default;
-$alert__font-color--error: $md-red-50 !default;
+$alert__font-color: var(--meeting-alert-text-color, $md-gray-90) !default;
+$alert__font-color--title: var(--meeting-alert-title-text-color, $md-black-100) !default;
+$alert__font-color--status: var(--meeting-alert-success-text-color, $md-green-70) !default;
+$alert__font-color--info: var(--meeting-alert-info-text-color, $md-theme-50) !default;
+$alert__font-color--success: var(--meeting-alert-success-text-color, $md-green-50 )!default;
+$alert__font-color--warning: var(--meeting-alert-warning-text-color, $md-yellow-50) !default;
+$alert__font-color--error: var(--meeting-alert-error-text-color, $md-red-50) !default;
 
 $alert__padding: rem-calc(8);
 $alert__padding-right: rem-calc(13);

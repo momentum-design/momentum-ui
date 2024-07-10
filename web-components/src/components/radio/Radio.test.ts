@@ -1,7 +1,6 @@
-import "./Radio";
-import { Radio } from "./Radio";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { PropertyValues } from "lit-element";
+import { Radio } from "./Radio";
 
 describe("Radio", () => {
   afterEach(fixtureCleanup);
@@ -56,5 +55,12 @@ describe("Radio", () => {
     const element = fixtureSync(`<${tag}></${tag}>`);
     const event = await oneEvent(element, "first-updated");
     expect(event).toBeDefined();
+  });
+
+  test("should set aria-label if label is set", async () => {
+    const labelValue = "Test Label";
+    const element = await fixture(`<md-radio label="${labelValue}"></md-radio>`);
+    await elementUpdated(element);
+    expect(element.getAttribute("aria-label")).toEqual(labelValue);
   });
 });

@@ -624,7 +624,7 @@
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-ghost-disabled-bg-color, var(--button-disabled-bg-color));
+    background-color: var(--button-ghost-disabled-bg-color, transparent);
     color: var(--button-ghost-disabled-text-color, var(--button-disabled-text-color));
   }
 }

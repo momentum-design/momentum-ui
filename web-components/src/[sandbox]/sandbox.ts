@@ -139,6 +139,34 @@ export class Sandbox extends LitElement {
     `;
   }
 
+  containerColorOptionTemplate() {
+    return html`
+      <div class="container-color-bg-color-options">
+        <label for="color-dropdown">container color:</label>
+        <select id="color-dropdown" name="colors" @change=${this.handleContainerColorChange}>
+          <option value="--md-primary-bg-color">--md-primary-bg-color</option>
+          <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
+          <option value="--md-primary-gradient-background">--md-primary-gradient-background</option>
+          <option value="--md-secondary-gradient-background">--md-secondary-gradient-background</option>
+          <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
+          <option value="--md-tertiary-one-bg-color">--md-tertiary-one-bg-color</option>
+          <option value="--md-quaternary-bg-color">--md-md-quaternary-bg-color</option>
+          <option value="--md-secondary-white-bg-color">--md-secondary-white-bg-color</option>
+        </select>
+      </div>
+    `;
+  }
+
+  handleContainerColorChange() {
+    const colorDropdown = this.shadowRoot?.getElementById("color-dropdown") as HTMLSelectElement;
+    const selectedColor = colorDropdown.value;
+    const elements = this.shadowRoot?.querySelectorAll(".container");
+    elements?.forEach(element => {
+      const containerElement = element as HTMLElement;
+      containerElement.style.background = `var(${selectedColor})`;
+    });
+  }
+
   static get styles() {
     return [reset, styles];
   }
@@ -146,7 +174,9 @@ export class Sandbox extends LitElement {
   render() {
     return html`
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
-        ${this.themeToggle()}
+        <div class="header-controls">
+          ${this.themeToggle()} ${this.containerColorOptionTemplate()}
+        </div>
         <elix-list-explorer class="explorer">
           <div class="container" aria-label="md-accordion">
             <h2>md-accordion</h2>

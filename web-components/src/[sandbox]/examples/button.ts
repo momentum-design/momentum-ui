@@ -10,6 +10,7 @@ export const buttonTemplate = html`
     <md-button disabled><span slot="text">disabled</span></md-button>
     <md-button variant="primary" disabled><span slot="text">disabled</span></md-button>
     <md-button variant="secondary" disabled><span slot="text">secondary disabled</span></md-button>
+    <md-button variant="ghost" disabled><span slot="text">ghost disabled</span></md-button>
     <md-button variant="primary" tab-index="-1" color="violet"><span slot="text">no disabled</span></md-button>
     <md-button loading circle><span slot="text">loading</span></md-button>
     <md-button loading><span slot="text">loading</span></md-button>

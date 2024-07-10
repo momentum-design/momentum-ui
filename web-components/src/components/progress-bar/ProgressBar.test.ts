@@ -77,4 +77,58 @@ describe("ProgressBar", () => {
 
     expect(el?.getAttribute("style")).toMatch("width: 80%; background: danger");
   });
+
+  test("dynamic get color", async () => {
+    const element: ProgressBar.ELEMENT = await fixture(
+      html`
+        <md-progress-bar label="test list"></md-progress-bar>
+      `
+    );
+
+    element.dynamic = true;
+
+    element.valueFraction = 20;
+    await elementUpdated(element);
+    expect(element.getColor()).toMatch("success");
+
+    element.valueFraction = 45;
+    await elementUpdated(element);
+    expect(element.getColor()).toMatch("info");
+
+    element.valueFraction = 70;
+    await elementUpdated(element);
+    expect(element.getColor()).toMatch("warning");
+
+    element.valueFraction = 80;
+    await elementUpdated(element);
+    expect(element.getColor()).toMatch("danger");
+  });
+
+  test("adjusted value", async () => {
+    const element: ProgressBar.ELEMENT = await fixture(
+      html`
+        <md-progress-bar label="test list" type="determinate"></md-progress-bar>
+      `
+    );
+
+    element.min = 0;
+    element.max = 100;
+    element.value = 25;
+    await elementUpdated(element);
+
+    expect(element.adjustedValue).toEqual(25);
+    expect(element.valueFraction).toEqual(25);
+
+    element.value = 105;
+    await elementUpdated(element);
+    expect(element.adjustedValue).toEqual(100);
+    expect(element.valueFraction).toEqual(100);
+
+    element.value = 0;
+    element.max = 0;
+    const displayFormat = element.getDisplayFormat();
+    // This scenario explicitly tests the `|| 0` fallback
+    expect(element.valueFraction).toBe(0);
+    expect(displayFormat).toBe("0%");
+  });
 });

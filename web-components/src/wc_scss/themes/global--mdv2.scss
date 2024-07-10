@@ -86,6 +86,11 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
   --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};
 
+
+  --md-primary-gradient-background: linear-gradient(180deg, #{$mds-color-theme-background-gradient-primary-normal-0} 0%, #{$mds-color-theme-background-gradient-primary-normal-1});
+  --md-secondary-gradient-background: linear-gradient(180deg, #{$mds-color-theme-background-gradient-secondary-normal-0} 0%, #{$mds-color-theme-background-gradient-secondary-normal-1});
+  
+
   // Old Backgrounds (deprecated)
   --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
   --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color

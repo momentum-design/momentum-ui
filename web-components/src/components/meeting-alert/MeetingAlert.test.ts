@@ -71,6 +71,46 @@ describe("MeetingAlert", () => {
     expect(el.getAttribute("title")).toEqual("Test title");
   });
 
+  test("should dispatch 'snooze' event on _onSnooze call", async () => {
+    const el: MeetingAlert.ELEMENT = await fixture("<md-meeting-alert></md-meeting-alert>");
+    const snoozeEventSpy = jest.fn();
+    el.addEventListener("snooze", snoozeEventSpy);
+    const event = new Event("test");
+    el._onSnooze(event);
+    expect(snoozeEventSpy).toHaveBeenCalled();
+    expect(snoozeEventSpy.mock.calls[0][0].detail.srcEvent).toBe(event);
+  });
+
+  test("handleKeyDown should call handleClose on Escape key press", async () => {
+    const el: MeetingAlert.ELEMENT = await fixture("<md-meeting-alert></md-meeting-alert>");
+    const handleCloseSpy = jest.spyOn(el, "handleClose");
+    const keyboardEvent = new KeyboardEvent("keydown", { code: "Escape" });
+    el.handleKeyDown(keyboardEvent);
+    expect(handleCloseSpy).toHaveBeenCalledWith(keyboardEvent);
+  });
+
+  test("handleKeyDown should call handleClose when 'close' button is pressed with Enter key", async () => {
+    const el: MeetingAlert.ELEMENT = await fixture("<md-meeting-alert></md-meeting-alert>");
+    const handleCloseSpy = jest.spyOn(el, "handleClose");
+    const button = document.createElement("button");
+    button.setAttribute("aria-label", "close");
+    const keyboardEvent = new KeyboardEvent("keydown", { code: "Enter" });
+    Object.defineProperty(keyboardEvent, "target", { value: button });
+    el.handleKeyDown(keyboardEvent);
+    expect(handleCloseSpy).toHaveBeenCalledWith(keyboardEvent);
+  });
+
+  test("handleKeyDown should call handleClose when 'close' button is pressed with Space key", async () => {
+    const el: MeetingAlert.ELEMENT = await fixture("<md-meeting-alert></md-meeting-alert>");
+    const handleCloseSpy = jest.spyOn(el, "handleClose");
+    const button = document.createElement("button");
+    button.setAttribute("aria-label", "close");
+    const keyboardEvent = new KeyboardEvent("keydown", { code: "Space" });
+    Object.defineProperty(keyboardEvent, "target", { value: button });
+    el.handleKeyDown(keyboardEvent);
+    expect(handleCloseSpy).toHaveBeenCalledWith(keyboardEvent);
+  });
+
   describe("Should Handle Events", () => {
     afterEach(() => {
       fixtureCleanup();
@@ -95,7 +135,6 @@ describe("MeetingAlert", () => {
       // );
       expect(spyClick).toHaveBeenCalledTimes(1);
     });
-
 
     describe("Should handle KeyDown events", () => {
       test("Should trigger a passed Keydown event", async () => {

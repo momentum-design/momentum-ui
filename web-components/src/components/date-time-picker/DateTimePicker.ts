@@ -1,12 +1,12 @@
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
-import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
+import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { DatePicker } from "../datepicker/DatePicker";
 import { TimePicker } from "../timepicker/TimePicker";
 import styles from "./scss/module.scss";
@@ -73,12 +73,12 @@ export namespace DateTimePicker {
       }
 
       if (
-          this.dateValue &&
-          this.timeValue &&
-          (changedProperties.has("timeValue") || changedProperties.has("dateValue"))
-        ) {
-          this.combineDateAndTimeValues(this.dateValue, this.timeValue);
-        }
+        this.dateValue &&
+        this.timeValue &&
+        (changedProperties.has("timeValue") || changedProperties.has("dateValue"))
+      ) {
+        this.combineDateAndTimeValues(this.dateValue, this.timeValue);
+      }
 
       if (this.value && changedProperties.has("locale")) {
         this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
@@ -93,7 +93,7 @@ export namespace DateTimePicker {
 
     handleTimeChange = (event: any) => {
       this.selectedTimeObject = event?.detail?.data as DateTime;
-      this.timeValue = this.selectedTimeObject?.startOf('second').toISOTime({ suppressMilliseconds: true });
+      this.timeValue = this.selectedTimeObject?.startOf("second").toISOTime({ suppressMilliseconds: true });
       this.combineDateAndTimeValues(this.dateValue, this.timeValue);
     };
 
@@ -108,7 +108,7 @@ export namespace DateTimePicker {
         this.dateValue = value.split("T")[0];
         this.timeValue = value.split("T")[1];
       }
-    }
+    };
 
     updateDateTimeObject = () => {
       if (this.value) {

@@ -4,6 +4,7 @@
   cursor: $cursor-pointer-value;
   display: inline-flex;
   font-family: var(--brand-font-medium, $brand-font-regular);
+  font-weight: 550;
   font-size: $button__font-size;  
   line-height: normal;
   min-width: rem-calc(72);

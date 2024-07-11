@@ -285,6 +285,38 @@ const button = {
       }
     }
   },
+  "ghost-active": {
+    "bg-color": {
+      light: "$mds-color-theme-button-secondary-active-normal",
+      dark: "$mds-color-theme-button-secondary-active-normal"
+    },
+    "text-color": {
+      light: "$mds-color-theme-text-primary-normal",
+      dark: "$mds-color-theme-text-primary-normal"
+    },
+    disabled: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-disabled",
+        dark: "$mds-color-theme-button-secondary-active-disabled"
+      },
+      "text-color": {
+        light: "$mds-color-theme-text-primary-disabled",
+        dark: "$mds-color-theme-text-primary-disabled"
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-hover",
+        dark: "$mds-color-theme-button-secondary-active-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-secondary-active-pressed",
+        dark: "$mds-color-theme-button-secondary-active-pressed"
+      }
+    }
+  },
   promotional: {
     "bg-color": {
       light:

@@ -128,12 +128,7 @@
     }
 
     &--40 {
-      @include button-size(
-        $height: rem-calc(40),
-        $padding: $button__padding--40,        
-        $radius: $button__radius--40
-      );
-      
+      @include button-size($height: rem-calc(40), $padding: $button__padding--40, $radius: $button__radius--40);
     }
 
     &--52 {
@@ -592,7 +587,7 @@
 
 :host([variant="promotional"]) .md-button {
   background: var(--button-promotional-bg-color, $lm-button-primary-bg-color-light);
-  color: var(--button-promotional-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));  
+  color: var(--button-promotional-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
 
   &:hover {
     background: var(--button-promotional-hover-bg-color, $lm-button-primary-hover-bg-color-light);
@@ -630,25 +625,62 @@
 }
 
 :host([variant="secondary"]) .md-button {
-  background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
-  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
-  border: 1px solid var(--button-secondary-border-color);
-
-  &:hover {
-    background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
+  &:not(.isActive) {
+    background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
     color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    border: 1px solid var(--button-secondary-border-color);
+
+    &:hover {
+      background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
+
+    &:active {
+      background-color: var(--button-secondary-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(
+        --button-secondary-disabled-bg-color,
+        var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light)
+      );
+      border: 1px solid var(--button-secondary-disabled-border-color);
+      color: var(
+        --button-secondary-disabled-text-color,
+        var(--button-disabled-text-color, $lm-button-disabled-text-color-light)
+      );
+    }
   }
 
-  &:active {
-    background-color: var(--button-secondary-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
+  &.isActive {
+    background-color: var(--button-secondary-active-bg-color, $lm-button-secondary-bg-color-light);
     color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
-  }
+    border: 1px solid var(--button-secondary-border-color);
 
-  &:disabled,
-  &.disabled {
-    background-color: var(--button-secondary-disabled-bg-color ,var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light));
-    border: 1px solid var(--button-secondary-disabled-border-color);
-    color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color, $lm-button-disabled-text-color-light));
+    &:hover {
+      background-color: var(--button-secondary-active-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
+
+    &:active {
+      background-color: var(--button-secondary-active-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(
+        --button-secondary-disabled-bg-color,
+        var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light)
+      );
+      border: 1px solid var(--button-secondary-disabled-border-color);
+      color: var(
+        --button-secondary-disabled-text-color,
+        var(--button-disabled-text-color, $lm-button-disabled-text-color-light)
+      );
+    }
   }
 }
 
@@ -673,7 +705,7 @@
 
 :host([variant="green"]) .md-button {
   background-color: var(--button-green-bg-color, $lm-button-green-bg-color-light);
-  color: var(--button-green-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));  
+  color: var(--button-green-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
 
   &:hover {
     background-color: var(--button-green-hover-bg-color, $lm-button-green-hover-bg-color-light);
@@ -802,6 +834,46 @@
   }
 }
 
+:host([variant="tab"]) .md-button {
+  &:not(.isActive) {
+    background-color: var(--button-ghost-bg-color, transparent);
+    color: var(--button-ghost-text-color, var(--button-text-color));
+
+    &:hover {
+      background-color: var(--button-ghost-hover-bg-color, var(--button-secondary-hover-bg-color));
+    }
+
+    &:active {
+      background-color: var(--button-ghost-pressed-bg-color, var(--button-secondary-pressed-bg-color));
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--button-ghost-disabled-bg-color, transparent);
+      color: var(--button-ghost-disabled-text-color, var(--button-disabled-text-color));
+    }
+  }
+
+  &.isActive {
+    background-color: var(--button-ghost-active-bg-color);
+    color: var(--button-ghost-active-text-color);
+
+    &:hover {
+      background-color: var(--button-ghost-active-hover-bg-color);
+    }
+
+    &:active {
+      background-color: var(--button-ghost-active-pressed-bg-color);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--button-ghost-active-disabled-bg-color);
+      color: var(--button-ghost-active-disabled-text-color);
+    }
+  }
+}
+
 ::slotted(*) {
   display: flex;
 }
@@ -834,7 +906,7 @@ md-spinner + ::slotted(*) {
 
 @media (forced-colors: active) {
   :host .md-button {
-    &:focus{
+    &:focus {
       outline: 2px solid Highlight;
     }
     &:active {
@@ -849,7 +921,7 @@ md-spinner + ::slotted(*) {
   }
 
   :host .md-button--outline {
-    &.disabled{
+    &.disabled {
       color: GrayText !important;
     }
     &:focus:disabled,

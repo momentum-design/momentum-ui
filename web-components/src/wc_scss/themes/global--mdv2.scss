@@ -29,11 +29,11 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --brand-font-regular-oblique: #{$inter-regular-oblique-font};
   --brand-font-thin: #{$inter-thin-font};
   --brand-font-thin-oblique: #{$inter-thin-oblique-font};
-
   --brand-font-medium: #{$inter-medium-font};
 
   font-size: var(--rem-base);
   font-family: var(--brand-font-regular);
+  font-weight: 450;
 
   --body-primary-font-size: 1rem;
   --body-secondary-font-size: 0.875rem;

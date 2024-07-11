@@ -3,9 +3,8 @@
   border-radius: $button__radius--36;
   cursor: $cursor-pointer-value;
   display: inline-flex;
-  font-family: $brand-font-regular;
-  font-size: $button__font-size;
-  font-weight: var(--button-font-weight-regular, normal);
+  font-family: var(--brand-font-medium, $brand-font-regular);
+  font-size: $button__font-size;  
   line-height: normal;
   min-width: rem-calc(72);
   position: relative;

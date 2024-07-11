@@ -127,8 +127,8 @@
         false,
         var(--badge-unreadcount-text-color, var(--button-primary-text-color))
       );
-      font-weight: 550;
-      font-size: var(--label-compact-font-size);
+      font-family: var(--brand-font-medium);
+      font-size: var(--label-compact-font-size, rem-calc(12));
       padding: 0rem 0.25rem;
       min-width: rem-calc(20);
       height: rem-calc(20);

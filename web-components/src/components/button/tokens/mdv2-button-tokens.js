@@ -450,16 +450,6 @@ const button = {
     }
   },
   font: {
-    weight: {
-      regular: {
-        light: "550",
-        dark: "550"
-      },
-      large: {
-        light: "450",
-        dark: "450"
-      }
-    },
     size: {
       "extra-small": {
         light: "0.75rem",

@@ -89,10 +89,9 @@
     }
 
     &__status,
-    &__message {
-      font-family: $brand-font-light;
+    &__message {      
       font-size: $alert__font-size;
-      font-weight: 550;
+      font-family: var(--brand-font-medium, $brand-font-light);
       line-height: rem-calc(18);
     }
 

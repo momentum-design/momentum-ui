@@ -4,7 +4,7 @@
   @include avatar-size;
   border-radius: 100%;
   display: inline-flex;
-  font-family: $brand-font-regular;
+  font-family: var(--brand-font-medium, $brand-font-regular);
   position: relative;
   text-transform: uppercase;
   user-select: none;

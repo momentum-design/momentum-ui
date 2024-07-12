@@ -78,13 +78,20 @@ $header-bottom-margin: 0.5rem !default;
 $header-text-rendering: optimizeLegibility !default;
 
 // We use these to control header font sizes
-$title-heading-font-size: rem-calc(62) !default;
-$h1-font-size: rem-calc(48) !default;
-$h2-font-size: rem-calc(36) !default;
-$h3-font-size: rem-calc(26) !default;
-$h4-font-size: rem-calc(20) !default;
-$h5-font-size: rem-calc(16) !default;
-$h6-font-size: rem-calc(14) !default;
+$title-heading-font-size-pixel: 62;
+$title-heading-font-size: rem-calc($title-heading-font-size-pixel) !default;
+$h1-font-size-pixel: 48;
+$h1-font-size: rem-calc($h1-font-size-pixel) !default;
+$h2-font-size-pixel: 36;
+$h2-font-size: rem-calc($h2-font-size-pixel) !default;
+$h3-font-size-pixel: 26;
+$h3-font-size: rem-calc($h3-font-size-pixel) !default;
+$h4-font-size-pixel: 20;
+$h4-font-size: rem-calc($h4-font-size-pixel) !default;
+$h5-font-size-pixel: 16;
+$h5-font-size: rem-calc($h5-font-size-pixel) !default;
+$h6-font-size-pixel: 14;
+$h6-font-size: rem-calc($h6-font-size-pixel) !default;
 
 // We use these to control header size reduction on small screens
 $h1-font-reduction: 0 !default;
@@ -111,7 +118,8 @@ $small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 // We use these to style paragraphs
 $paragraph-font-family: inherit !default;
 $paragraph-font-weight: $font-weight-normal !default;
-$paragraph-font-size: rem-calc(14) !default;
+$paragraph-font-size-pixel: 14;
+$paragraph-font-size: rem-calc($paragraph-font-size-pixel) !default;
 
 $paragraph-line-height: 1.6 !default;
 $paragraph-margin-bottom: rem-calc(20) !default;
@@ -121,8 +129,10 @@ $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 // body-small/est styling
-$body-small-font-size: rem-calc(12) !default;
-$body-smallest-font-size: rem-calc(10) !default;
+$body-small-font-size-pixel: 12;
+$body-small-font-size: rem-calc($body-small-font-size-pixel) !default;
+$body-smallest-font-size-pixel: 10;
+$body-smallest-font-size: rem-calc($body-smallest-font-size-pixel) !default;
 
 $lead-font-size: rem-calc(14) !default;
 
@@ -181,16 +191,16 @@ $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 $acronym-underline: 1px dotted $md-gray-20 !default;
 
 // line height (px) divided by font-size
-$title-heading-line-height: math.div(rem-calc(80), $title-heading-font-size) !default;
-$h1-line-height: math.div(rem-calc(64), $h1-font-size) !default;
-$h2-line-height: math.div(rem-calc(48), $h2-font-size) !default;
-$h3-line-height: math.div(rem-calc(32), $h3-font-size) !default;
-$h4-line-height: math.div(rem-calc(32), $h4-font-size) !default;
-$h5-line-height: math.div(rem-calc(24), $h5-font-size) !default;
-$h6-line-height: math.div(rem-calc(24), $h6-font-size) !default;
-$paragraph-line-height: math.div(rem-calc(24), $paragraph-font-size) !default;
-$body-small-line-height: math.div(rem-calc(16), $body-small-font-size) !default;
-$body-smallest-line-height: math.div(rem-calc(16), $body-smallest-font-size) !default;
+$title-heading-line-height: rem-calc(math.div(80, $title-heading-font-size-pixel)) !default;
+$h1-line-height: rem-calc(math.div(64, $h1-font-size-pixel)) !default;
+$h2-line-height: rem-calc(math.div(48, $h2-font-size-pixel)) !default;
+$h3-line-height: rem-calc(math.div(32, $h3-font-size-pixel)) !default;
+$h4-line-height: rem-calc(math.div(32, $h4-font-size-pixel)) !default;
+$h5-line-height: rem-calc(math.div(24, $h5-font-size-pixel)) !default;
+$h6-line-height: rem-calc(math.div(24, $h6-font-size-pixel)) !default;
+$paragraph-line-height: rem-calc(math.div(24, $paragraph-font-size-pixel)) !default;
+$body-small-line-height: rem-calc(math.div(16, $body-small-font-size-pixel)) !default;
+$body-smallest-line-height: rem-calc(math.div(16, $body-smallest-font-size-pixel)) !default;
 
 //------------------------------------
 //    #FONT-SIZE-VARIABLES
@@ -216,7 +226,7 @@ $fontSizes: (
   td: $paragraph-font-size,
   small: $small-font-size,
   body-small: $body-small-font-size,
-  body-smallest: $body-smallest-font-size,
+  body-smallest: $body-smallest-font-size
 );
 
 //------------------------------------
@@ -238,7 +248,7 @@ $fontFaces: (
   p: $brand-font-light,
   small: $brand-font-regular,
   body-small: $brand-font-regular,
-  body-smallest: $brand-font-regular,
+  body-smallest: $brand-font-regular
 );
 
 $fontVariations: (
@@ -255,14 +265,14 @@ $fontVariations: (
   body-small--light: $brand-font-light,
   body-small--bold: $brand-font-bold,
   body-smallest--light: $brand-font-light,
-  body-smallest--bold: $brand-font-bold,
+  body-smallest--bold: $brand-font-bold
 );
 
 $fontColors: (
   primary: $md-gray-90,
   alternate: $md-black-100,
   secondary: $md-gray-70,
-  disabled: $md-gray-50,
+  disabled: $md-gray-50
 );
 
 //------------------------------------
@@ -283,5 +293,5 @@ $lineHeights: (
   ol: $list-line-height,
   dl: $list-line-height,
   body-small: $body-small-line-height,
-  body-smallest: $body-smallest-line-height,
+  body-smallest: $body-smallest-line-height
 );

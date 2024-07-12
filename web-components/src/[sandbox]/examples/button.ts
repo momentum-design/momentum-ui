@@ -8,6 +8,12 @@ import { customElement, html, LitElement } from "lit-element";
 export class ButtonTemplateSandbox extends LitElement {
   toggleIsActive(element: any) {
     element.isActive = !element.isActive;
+
+    //demonstrate toggle an icon if isActive is set
+    const icon = element.querySelector('md-icon[slot="icon"]');
+    if (icon) {
+      icon.setAttribute("name", element.isActive ? "chat-active_16" : "chat_16");
+    }
   }
 
   render() {
@@ -21,9 +27,10 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="primary" tab-index="-1" color="violet"><span slot="text">no disabled</span></md-button>
         <md-button loading circle><span slot="text">loading</span></md-button>
         <md-button loading><span slot="text">loading</span></md-button>
-        <md-button variant="green" circle loading
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">loading</span></md-button
-        >
+        <md-button variant="green" circle loading>
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">loading</span>
+        </md-button>
       </div>
 
       <div class="row" style="display: flex; margin: .5rem 0">
@@ -46,27 +53,33 @@ export class ButtonTemplateSandbox extends LitElement {
 
       <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Call Control Buttons (40)</h3>
-        <md-button variant="secondary" size="40"
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Hold</span></md-button
-        >
-        <md-button variant="red" size="40"
-          ><md-icon slot="icon" name="clear_16"></md-icon><span slot="text">End</span></md-button
-        >
+        <md-button variant="secondary" size="40">
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">Hold</span>
+        </md-button>
+        <md-button variant="red" size="40">
+          <md-icon slot="icon" name="clear_16"></md-icon>
+          <span slot="text">End</span>
+        </md-button>
 
         <md-button variant="secondary" size="40" tag="a"><span slot="text">Link</span></md-button>
-        <md-button variant="secondary" size="40" tag="a"
-          ><md-icon slot="icon" name="phone-reply_16"></md-icon><span slot="text">Link</span></md-button
-        >
-        <md-button variant="green" circle loading size="40"
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">loading</span></md-button
-        >
-        <md-button variant="green" loading size="40"
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">loading</span></md-button
-        >
+        <md-button variant="secondary" size="40" tag="a">
+          <md-icon slot="icon" name="phone-reply_16"></md-icon>
+          <span slot="text">Link</span>
+        </md-button>
+        <md-button variant="green" circle loading size="40">
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">loading</span>
+        </md-button>
+        <md-button variant="green" loading size="40">
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">loading</span>
+        </md-button>
 
-        <md-button size="40" color="white" outline
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Outlined</span></md-button
-        >
+        <md-button size="40" color="white" outline>
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">Outlined</span>
+        </md-button>
       </div>
 
       <div class="row" style="display: flex; margin: .5rem 0">
@@ -138,11 +151,14 @@ export class ButtonTemplateSandbox extends LitElement {
 
       <h3 class="sandbox-header" style="margin: .5rem 1rem">Toggle state variant button</h3>
       <div class="row" style="display: flex; margin: .5rem 0">
-        <md-button variant="tab" size="32" @click=${(e: Event) => this.toggleIsActive(e.target)}>
+        <md-button variant="tab" size="40" @click=${(e: Event) => this.toggleIsActive(e.target)}>
           <span slot="text">tab</span>
         </md-button>
         <md-button variant="secondary" size="32" @click=${(e: Event) => this.toggleIsActive(e.target)}>
           <span slot="text">secondary</span>
+        </md-button>
+        <md-button variant="tab" size="40" circle @click=${(e: Event) => this.toggleIsActive(e.target)}>
+          <md-icon slot="icon" name="chat_16"></md-icon>
         </md-button>
       </div>
 
@@ -200,14 +216,16 @@ export class ButtonTemplateSandbox extends LitElement {
           <md-button loading circle><span slot="text">Reply</span></md-button>
         </md-tooltip>
         <md-tooltip message="Pause" placement="bottom">
-          <md-button variant="green" circle
-            ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Pause</span></md-button
-          ></md-tooltip
-        >
+          <md-button variant="green" circle>
+            <md-icon slot="icon" name="pause_16"></md-icon>
+            <span slot="text">Pause</span>
+          </md-button>
+        </md-tooltip>
         <md-tooltip message="Test text" placement="left">
-          <md-button variant="primary" title="text title"
-            ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Pause</span></md-button
-          >
+          <md-button variant="primary" title="text title">
+            <md-icon slot="icon" name="pause_16"></md-icon>
+            <span slot="text">Pause</span>
+          </md-button>
         </md-tooltip>
         <md-tooltip message="Test text" disabled>
           <md-button variant="green" title="text title"><span slot="text">(with disabled tooltip)</span></md-button>
@@ -227,23 +245,25 @@ export class ButtonTemplateSandbox extends LitElement {
 
       <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Both Icon + Text</h3>
-        <md-button variant="red"
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Hold</span></md-button
-        >
+        <md-button variant="red">
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">Hold</span>
+        </md-button>
         <md-button loading><span slot="text">Reply</span></md-button>
       </div>
 
       <div class="row" style="display: flex; margin: .5rem 0;">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Text Ellipsis</h3>
-        <md-button variant="primary" label="button" maxWidth="100px"
-          ><span slot="text">Text Slot Button Armageddon</span></md-button
-        >
-        <md-button variant="primary" loading maxWidth="100px"
-          ><span slot="text">Loading Button Armageddon</span></md-button
-        >
-        <md-button variant="primary" width="300px"
-          ><md-icon slot="icon" name="pause_16"></md-icon><span slot="text">Icon Button Armageddon</span></md-button
-        >
+        <md-button variant="primary" label="button" maxWidth="100px">
+          <span slot="text">Text Slot Button Armageddon</span>
+        </md-button>
+        <md-button variant="primary" loading maxWidth="100px">
+          <span slot="text">Loading Button Armageddon</span>
+        </md-button>
+        <md-button variant="primary" width="300px">
+          <md-icon slot="icon" name="pause_16"></md-icon>
+          <span slot="text">Icon Button Armageddon</span>
+        </md-button>
       </div>
 
       <div class="row" style="display: flex; margin: .5rem 0">

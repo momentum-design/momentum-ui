@@ -347,6 +347,9 @@ describe("Button Component", () => {
     element.variant = "promotional";
     expect(element.variant).toEqual("promotional");
 
+    element.variant = "tab";
+    expect(element.variant).toEqual("tab");
+
     element.variant = "available";
     expect(element.variant).toEqual("available");
 

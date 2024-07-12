@@ -66,6 +66,7 @@ export const buttonVariant = [
   "white",
   "darkGrey",
   "promotional",
+  "tab",
   "available",
   "unavailable",
   "engaged",
@@ -168,6 +169,7 @@ export namespace Button {
     @property({ type: String }) maxWidth = "";
     @property({ type: String }) activityType = "";
     @property({ type: Boolean }) iconActive = false;
+    @property({ type: Boolean }) isActive = false;
     @property({ attribute: false }) clickFunction: Function | null = null;
 
     @query(".md-button") button!: HTMLButtonElement;
@@ -238,6 +240,7 @@ export namespace Button {
         "md-button--outline": this.outline,
         active: this.active && !this.disabled,
         disabled: this.disabled && !this.active,
+        isActive: this.isActive,
         [`md-button--${this.size}`]: !this.hasRemoveStyle,
         [`md-button--${this.color}`]: !this.hasRemoveStyle && !!this.color,
         [`md-activity__${this.activityType}`]: !!this.activityType,

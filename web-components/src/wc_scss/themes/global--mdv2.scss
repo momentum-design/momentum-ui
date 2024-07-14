@@ -31,9 +31,11 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --brand-font-thin-oblique: #{$inter-thin-oblique-font};
   --brand-font-medium: #{$inter-medium-font};
 
+  --brand-font-weight-regular: 450;
+
   font-size: var(--rem-base);
   font-family: var(--brand-font-regular);
-  font-weight: 450;
+  font-weight: var(--brand-font-weight-regular);
 
   --body-primary-font-size: 1rem;
   --body-secondary-font-size: 0.875rem;

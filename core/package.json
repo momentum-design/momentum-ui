@@ -40,7 +40,7 @@
     "ci:postpublish": "node ../tools/postpublish.js",
     "ci:publishCDN": "run-s replaceFontURLs pushToS3",
     "pushToS3": "node ../tools/pushToS3.js --library=core",
-    "css:build": "sass templates/momentum-ui.scss:css/momentum-ui.css load-path=../node_modules",
+    "css:build": "sass templates/momentum-ui.scss:css/momentum-ui.css --load-path=../node_modules",
     "replaceFontURLs": "node ./tools/replaceURLs.js",
     "css:build:components": "node ./tools/compileCSSModules.js",
     "css:clean": "rimraf css/",

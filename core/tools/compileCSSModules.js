@@ -1,8 +1,7 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
-const sass = require('node-sass');
+const sass = require('sass');
 const path = require('path');
-const tildeImporter = require('node-sass-tilde-importer');
 const modules = [
   'accordion',
   'activity-button',
@@ -61,30 +60,31 @@ const modules = [
 const compileCSSModules = () => {
   modules.forEach((module, idx) => {
     const componentsDirectory = path.resolve(__dirname, `../css/components`);
-    const outFile = path.resolve(__dirname, componentsDirectory, `${module}.css`);
+    const outFile = path.resolve(componentsDirectory, `${module}.css`);
 
-    sass.render(
-      {
-        file: path.resolve(__dirname, `../scss/components/${module}/module.scss`),
-        importer: tildeImporter,
-        outputStyle: 'compressed',
-        outFile: outFile,
-        sourceMap: true,
-      },
-      function(error, result) {
-        // node-style callback from v3.0.0 onwards
-        if (error) {
-          console.log(error.status); // used to be "code" in v2x and below
-          console.log(error.column);
-          console.log(error.message);
-          console.log(error.line);
-        } else {
-          fsExtra.ensureDir(componentsDirectory).then(() => {
-            fs.writeFileSync(outFile, result.css);
-          });
+    sass.compileAsync(path.resolve(__dirname, `../scss/components/${module}/module.scss`), {
+      importers: [{
+        findFileUrl(url) {
+          if (url.startsWith('~')) {
+            return new URL(url.slice(1), 'file://node_modules/');
+          }
+          return null;
         }
-      }
-    );
+      }],
+      style: 'compressed',
+      sourceMap: true,
+      outFile: outFile,
+    }).then(result => {
+      fsExtra.ensureDir(componentsDirectory).then(() => {
+        fs.writeFileSync(outFile, result.css);
+        if (result.sourceMap) {
+          fs.writeFileSync(`${outFile}.map`, result.sourceMap);
+        }
+      });
+    }).catch(error => {
+      // eslint-disable-next-line no-console
+      console.log(`Error status: ${error.status}, Message: ${error.message}`);
+    });
   });
 };
 

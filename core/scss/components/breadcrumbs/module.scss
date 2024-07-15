@@ -16,7 +16,7 @@
 @import '../../typography/placeholders';
 
 // Elements
-@import '~@momentum-ui/icons/scss/mixins';
+@import '@momentum-ui/icons/scss/mixins';
 
 // Typography
 @include brand-font-face-regular;

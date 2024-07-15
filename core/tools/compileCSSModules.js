@@ -2,6 +2,7 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 const sass = require('sass');
 const path = require('path');
+
 const modules = [
   'accordion',
   'activity-button',
@@ -57,35 +58,27 @@ const modules = [
   'top-bar',
 ];
 
-const compileCSSModules = () => {
-  modules.forEach((module, idx) => {
+const compileCSSModules = async () => {
+  for (const module of modules) {
     const componentsDirectory = path.resolve(__dirname, `../css/components`);
     const outFile = path.resolve(componentsDirectory, `${module}.css`);
+    const inFile = path.resolve(__dirname, `../scss/components/${module}/module.scss`);
 
-    sass.compileAsync(path.resolve(__dirname, `../scss/components/${module}/module.scss`), {
-      importers: [{
-        findFileUrl(url) {
-          if (url.startsWith('~')) {
-            return new URL(url.slice(1), 'file://node_modules/');
-          }
-          return null;
-        }
-      }],
-      style: 'compressed',
-      sourceMap: true,
-      outFile: outFile,
-    }).then(result => {
-      fsExtra.ensureDir(componentsDirectory).then(() => {
-        fs.writeFileSync(outFile, result.css);
-        if (result.sourceMap) {
-          fs.writeFileSync(`${outFile}.map`, result.sourceMap);
-        }
+    try {
+      const result = await sass.compileAsync(inFile, {
+        style: 'compressed',
+        sourceMap: true,
+        loadPaths: ['../node_modules', "../sass/tools/functions"],
+        silenceDeprecations: ['mixed-decls', 'slash-div'],
       });
-    }).catch(error => {
+
+      await fsExtra.ensureDir(componentsDirectory);
+      fs.writeFileSync(outFile, result.css);
+    } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(`Error status: ${error.status}, Message: ${error.message}`);
-    });
-  });
+      console.error(error);
+    }
+  }
 };
 
 compileCSSModules();

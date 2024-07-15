@@ -1,8 +1,9 @@
 @import '../../tools/functions/core';
 @import '../../tools/mixins/core';
 
+
 // Icons
-@import '~@momentum-ui/icons/scss/momentum-ui-icons';
+@import '@momentum-ui/icons/scss/momentum-ui-icons';
 
 // Settings
 @import "../../colors/settings-base.scss";
@@ -17,6 +18,7 @@
 @import '../../tools/mixins/focus';
 @import '../../tools/mixins/grid';
 @import '../../typography/mixins';
+@import '../../layouts/block-grid/settings';
 @import '../../layouts/block-grid/mixins';
 
 // Generic

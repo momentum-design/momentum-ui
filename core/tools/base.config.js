@@ -1,11 +1,13 @@
 const webpack = require('webpack');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const autoprefixer = require('autoprefixer');
-const postcssFlexbugsFixes = require('postcss-flexbugs-fixes')
+const postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const sass = require('sass');
 
 const codePath = path.resolve(__dirname, '..');
+const nodeModulesPath = path.resolove(codePath, 'node_modules');
 
 const baseConfig = {
   entry: undefined,
@@ -22,7 +24,7 @@ const baseConfig = {
       'react-native': 'react-native-web',
       '@momentum-ui/icons': path.resolve(codePath, '../icons'),
       '@momentum-ui/react': path.resolve(codePath, '../react'),
-      'images': path.resolve(codePath, 'images'),
+      images: path.resolve(codePath, 'images'),
     },
   },
 
@@ -38,21 +40,16 @@ const baseConfig = {
     rules: [
       {
         test: /\.(js|jsx)?$/,
-        include: [
-          path.resolve(codePath, 'app'),
-        ],
+        include: [path.resolve(codePath, 'app')],
         loader: ['babel-loader'],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: [
-          'file-loader?name=[name].[ext]'
-        ]
+        loader: ['file-loader?name=[name].[ext]'],
       },
       {
         test: /\.svg(\?v=\d+.\d+.\d+)?$/,
-        loader:
-          'url-loader?limit=10000&mimetype=image/svg+xml&name=[name].[ext]',
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=[name].[ext]',
       },
       { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
@@ -63,11 +60,11 @@ const baseConfig = {
           fallback: 'style-loader',
           use: [
             {
-                loader: 'css-loader',
-                options: {
-                    minimize: true,
-                    sourceMap: true
-                }
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                sourceMap: true,                
+              },
             },
             {
               loader: 'postcss-loader',
@@ -77,10 +74,7 @@ const baseConfig = {
                 plugins: () => [
                   postcssFlexbugsFixes,
                   autoprefixer({
-                    browsers: [
-                      '>.25%',
-                      'not ie < 9',
-                    ],
+                    browsers: ['>.25%', 'not ie < 9'],
                     flexbox: 'no-2009',
                   }),
                 ],
@@ -89,11 +83,15 @@ const baseConfig = {
             {
               loader: 'sass-loader',
               options: {
-                outputStyle: 'compressed',
+                implementation: sass,
                 sourceMap: true,
-              }
-            }
-          ]
+                sassOptions: {
+                  outputStyle: 'compressed',
+                  includePaths: [nodeModulesPath],
+                },
+              },
+            },
+          ],
         }),
       },
     ],
@@ -101,5 +99,5 @@ const baseConfig = {
 };
 
 module.exports = {
-  baseConfig
+  baseConfig,
 };

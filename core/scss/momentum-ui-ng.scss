@@ -5,7 +5,7 @@
 @import 'ng/settings/settings';
 
 // Tools
-@import '~@momentum-ui/icons/scss/mixins';
+@import '@momentum-ui/icons/scss/mixins';
 @import 'tools/mixins/background-variant';
 @import 'tools/mixins/baseline';
 @import 'tools/mixins/border-radius';
@@ -84,8 +84,8 @@
 @import 'layouts/layout-grid/layout-grid';
 
 // Icons
-@import '~@momentum-ui/icons/scss/momentum-ui-icons';
-@import '~@momentum-ui/icons/scss/symphony/icon-mapping';
+@import '@momentum-ui/icons/scss/momentum-ui-icons';
+@import '@momentum-ui/icons/scss/symphony/icon-mapping';
 
 // Components
 @import 'components/accordion/accordion';
@@ -149,7 +149,7 @@
 @import 'components/top-bar/top-bar';
 
 // ng specific styles
-@import '~@momentum-ui/icons/scss/symphony/placeholder-mapping';
+@import '@momentum-ui/icons/scss/symphony/placeholder-mapping';
 @import 'settings/dropdown';
 @import 'ng/settings/slider';
 @import 'ng/settings/sidepanel';

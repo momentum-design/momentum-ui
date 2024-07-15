@@ -2,11 +2,11 @@ $brand-font-folder: '~@momentum-ui/core/fonts';
 $icon-font-path: '~@momentum-ui/icons/fonts';
 $images-path: '~@momentum-ui/core/images';
 $side-nav-width: 240px;
-@import '~@momentum-ui/core/scss/momentum-ui';
-@import '~@momentum-ui/core/scss/layouts/sites';
+@import '@momentum-ui/core/scss/momentum-ui';
+@import '@momentum-ui/core/scss/layouts/sites';
 //TODO: Below 2 imported for Footer
-@import '~@momentum-ui/core/scss/typography/settings';
-@import '~@momentum-ui/core/scss/settings/media';
+@import '@momentum-ui/core/scss/typography/settings';
+@import '@momentum-ui/core/scss/settings/media';
 @import '../momentum-ui/flex-grid/flex-grid';
 @import '../momentum-ui/CodeBlock/Prism';
 @import '../momentum-ui/Footer/Footer';

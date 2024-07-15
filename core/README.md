@@ -50,7 +50,7 @@ $images-path: 'path/to/images/directory';
 
 3. Import "@momentum-ui/core/scss/momentum-ui.scss" into your main entry Scss file AFTER the variables.
 
-`@import '~@momentum-ui/core/scss/momentum-ui';`
+`@import '@momentum-ui/core/scss/momentum-ui';`
 
 4. Compile your Scss using your static compiler or bundler (Webpack, Grunt, Gulp, etc.)
 

@@ -158,10 +158,9 @@ export namespace Tab {
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      if(this.ariaRole){
+      if (this.ariaRole) {
         this.setAttribute("role", this.ariaRole);
       }
-     
     }
 
     render() {

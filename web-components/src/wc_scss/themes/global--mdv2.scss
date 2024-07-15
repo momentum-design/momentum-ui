@@ -2,7 +2,7 @@
 @import "@/wc_scss/typography/settings";
 
 $inter-base-font: "Inter Regular", $font-family-sans-serif;
-$inter-bold-font:  "Inter Bold", $font-family-sans-serif;
+$inter-bold-font: "Inter Bold", $font-family-sans-serif;
 $inter-bold-oblique-font: "Inter Bold Oblique", $font-family-sans-serif;
 $inter-extra-light-font: "Inter Extra Light", $font-family-sans-serif;
 $inter-extra-light-oblique-font: "Inter Extra Light Oblique", $font-family-sans-serif;
@@ -31,9 +31,11 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --brand-font-thin-oblique: #{$inter-thin-oblique-font};
   --brand-font-medium: #{$inter-medium-font};
 
+  --brand-font-weight-regular: 450;
+
   font-size: var(--rem-base);
   font-family: var(--brand-font-regular);
-  font-weight: 450;
+  font-weight: var(--brand-font-weight-regular);
 
   --body-primary-font-size: 1rem;
   --body-secondary-font-size: 0.875rem;
@@ -44,7 +46,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;
   --wc-menu-item-rounded-border-radius: 0.5rem;
-  
+
   --wc-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
   --wc-error-text-color: #{$mds-color-theme-text-error-normal};
   --wc-warning-bg-color: #{$mds-color-theme-background-alert-warning-normal};
@@ -86,10 +88,16 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
   --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};
 
-
-  --md-primary-gradient-background: linear-gradient(180deg, #{$mds-color-theme-background-gradient-primary-normal-0} 0%, #{$mds-color-theme-background-gradient-primary-normal-1});
-  --md-secondary-gradient-background: linear-gradient(180deg, #{$mds-color-theme-background-gradient-secondary-normal-0} 0%, #{$mds-color-theme-background-gradient-secondary-normal-1});
-  
+  --md-primary-gradient-background: linear-gradient(
+    180deg,
+    #{$mds-color-theme-background-gradient-primary-normal-0} 0%,
+    #{$mds-color-theme-background-gradient-primary-normal-1} 100%
+  );
+  --md-secondary-gradient-background: linear-gradient(
+    180deg,
+    #{$mds-color-theme-background-gradient-secondary-normal-0} 0%,
+    #{$mds-color-theme-background-gradient-secondary-normal-1} 100%
+  );
 
   // Old Backgrounds (deprecated)
   --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
@@ -120,6 +128,13 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
   --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
+
+  --md-navigation-bg-color: transparent;
+  --md-header-bg-color: transparent;
+  --md-app-bg-color: var(--md-primary-gradient-background);
+  --md-header-bg-color: transparent;
+  --md-header-separator-color: transparent;
+  --md-content-bg-color: var(--md-secondary-gradient-background);
 
   // --md-presence-active-bg-color: #{$md-green-50};
   // --md-presence-do-not-disturb-bg-color: #{$md-red-60};

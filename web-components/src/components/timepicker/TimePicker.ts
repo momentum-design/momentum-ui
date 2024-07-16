@@ -380,6 +380,7 @@ export namespace TimePicker {
     generateAmPmComboBox = () => {
       const options = ["AM", "PM"];
       return html`
+        <div class="placeholder"></div>
         <md-combobox
           compact
           select-when-in-focus

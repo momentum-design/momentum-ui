@@ -2,7 +2,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon.ts";
 import "@/components/spinner/Spinner.ts";
 import "@/components/tooltip/Tooltip";
-import { customElement, html, LitElement } from "lit-element";
+import { css, customElement, html, LitElement } from "lit-element";
 
 @customElement("button-template-sandbox")
 export class ButtonTemplateSandbox extends LitElement {
@@ -14,6 +14,47 @@ export class ButtonTemplateSandbox extends LitElement {
     if (icon) {
       icon.setAttribute("name", element.isActive ? "chat-active_16" : "chat_16");
     }
+  }
+
+  static get styles() {
+    return [
+      css`
+        :host {
+        }
+
+        .status-state-button::part(button) {
+          width: 206px;
+        }
+
+        .status-button__children {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        .status-button__children .status-indicator-container {
+          width: 16px;
+          height: 16px;
+          border: 1.25px solid var(--md-primary-one-bg-color, --md-primary-bg-color);
+          border-radius: 50%;
+        }
+
+        .status-button__children svg {
+          width: 13.5px;
+          height: 13.5px;
+          background-color: var(--md-primary-one-bg-color, --md-primary-bg-color);
+          border-radius: 50%;
+        }
+
+        .status-label {
+          flex-grow: 1;
+          text-align: left;
+          width: 1%;
+          padding: 0.5px 0 0 calc(5px * 2);
+        }
+      `
+    ];
   }
 
   render() {
@@ -269,6 +310,22 @@ export class ButtonTemplateSandbox extends LitElement {
       <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Button with Aria Live</h3>
         <md-button ariaLive="assertive" type="button">button</md-button>
+      </div>
+
+      <h3 class="sandbox-header" style="margin: .5rem 1rem">State button</h3>
+      <div class="row" style="display: flex; margin: .5rem 0">
+        <md-button variant="available" class="status-state-button">
+          <div class="status-button__children">
+            <span class="status-indicator-container">
+              <md-icon slot="icon" name="check-circle-active_16" color="var(--avatar-presence-active)" />
+            </span>
+            <span class="status-label">
+              Available
+            </span>
+            <span>10:11</span>
+            <md-icon name="arrow-down-optical_8" />
+          </div>
+        </md-button>
       </div>
     `;
   }

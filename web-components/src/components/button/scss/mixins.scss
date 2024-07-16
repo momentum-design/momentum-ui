@@ -22,6 +22,7 @@
   .#{$button__class}__children {
     @include flex;
     max-width: 100%;
+    flex: 1;
   }
 
   + .#{$button__class} {

@@ -1,4 +1,5 @@
 .md-datepicker {
+  overflow: visible;
   &__month-container {
     display: flex;
     flex-direction: column;
@@ -92,10 +93,21 @@
       background: var(--datepicker-default-number-bg-color, var(--datepicker-range-hover-bg-color, $md-gray-20));
     }
 
-    &--selected::part(button):not(:hover) {
+    &--selected::part(button) {
       background: var(--datepicker-selected-bg-color, var(--md-primary-text-color, $md-gray-100));
       color: var(--datepicker-selected-text-color, var(--md-secondary-bg-color, $md-white));
     }
+
+    &--selected::part(button):hover {
+      background: var(--datepicker-selected-hover-bg-color);
+      color: var(--datepicker-selected-text-color);
+    }
+
+    &--selected::part(button):active {
+      background: var(--datepicker-selected-pressed-bg-color);
+      color: var(--datepicker-selected-text-color);
+    }
+
 
     &--outside-month {
       color: var(--datepicker-invalid-text-color, var(--md-disabled-text-color, inherit));

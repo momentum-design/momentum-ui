@@ -10,6 +10,8 @@
 :host([selected]) button {
   border-bottom: var(--tabs-default-active-bottom-border, $tab-active-border);
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
+  font-family: var(--brand-font-bold);
+  font-weight: var(--brand-font-weight-bold);
 }
 
 :host([vertical]) button {

@@ -58,6 +58,18 @@ const datepicker = {
     "bg-color": {
       light: "$mds-color-theme-background-accent-normal",
       dark: "$mds-color-theme-background-accent-normal"
+    },
+    hover: {
+      "bg-color": {
+        light: "$mds-color-theme-button-accent-hover",
+        dark: "$mds-color-theme-button-accent-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: "$mds-color-theme-button-accent-pressed",
+        dark: "$mds-color-theme-button-accent-pressed"
+      }
     }
   },
   hover: {

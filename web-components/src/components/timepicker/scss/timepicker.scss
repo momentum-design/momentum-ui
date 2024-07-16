@@ -15,9 +15,9 @@
   .amPm-combo-box {
     display: inline-block;
     height: $time-box-height;
+    margin-left: $am-pm-combobox-left-margin;
     width: $time-box-width;
-    position: absolute;
-    transform: translate(-$time-box-width);
+    position: relative;
   }
 
   .amPm-combo-box::part(group) {
@@ -62,11 +62,5 @@
     font-size: $colon-separator-font-size;
     line-height: 125%;
     margin: 0 $colon-side-margin;
-  }
-
-  .placeholder {
-    display: inline-block;
-    margin-left: $am-pm-combobox-left-margin;
-    width: $time-box-width;
   }
 }

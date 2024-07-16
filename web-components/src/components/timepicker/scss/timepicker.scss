@@ -15,7 +15,6 @@
   .amPm-combo-box {
     display: inline-block;
     height: $time-box-height;
-    margin-left: $am-pm-combobox-left-margin;
     width: $time-box-width;
     position: absolute;
     transform: translate(-$time-box-width);
@@ -67,6 +66,7 @@
 
   .placeholder {
     display: inline-block;
+    margin-left: $am-pm-combobox-left-margin;
     width: $time-box-width;
   }
 }

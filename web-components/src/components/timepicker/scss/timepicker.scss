@@ -31,8 +31,13 @@
   }
 
   .amPm-combo-box::part(label) {
-    padding: 0 $am-pm-combobox-side-padding;
     width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .amPm-combo-box::part(select-label) {
+    margin-right: 0;
   }
 
   .amPm-combo-box::part(combobox-option) {

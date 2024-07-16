@@ -327,15 +327,16 @@
   }
 
   .md-chip--clear {
+    display: flow-root;
+    margin-left: $chip-inner-content-margin;
+    margin-right: 0;
+
     @include modal-close-button(
       $size: rem-calc(14),
       $font-size: rem-calc(14),
       $top-offset: rem-calc(12),
       $right-offset: rem-calc(12)
     );
-    display: flow-root;
-    margin-left: $chip-inner-content-margin;
-    margin-right: 0;
   }
 
   .md-chip--loading {
@@ -382,7 +383,8 @@
   .md-chip {
     outline: 1px solid CanvasText;
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       box-shadow: none;
       outline: 2px solid Highlight;
     }
@@ -392,7 +394,8 @@
     color: GrayText;
     outline: 1px solid GrayText;
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       outline: 2px solid Highlight;
     }
 
@@ -401,4 +404,3 @@
     }
   }
 }
-

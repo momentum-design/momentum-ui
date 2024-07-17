@@ -1522,10 +1522,10 @@ export namespace ComboBox {
       ).map(({ text, matching }) =>
         matching
           ? html`
-              <span class="highlight-text">${text}</span>
+              <span class="highlight-text" part="select-label">${text}</span>
             `
           : html`
-              <span class="selected-label-text">${text}</span>
+              <span class="selected-label-text" part="select-label">${text}</span>
             `
       );
     }

@@ -85,7 +85,7 @@ export namespace MenuOverlay {
     @property({ type: Boolean, attribute: "allow-hover-toggle" }) allowHoverToggle = false;
     @property({ type: String }) ariaRole: Role = "menu";
     @property({ type: String }) ariaLabel: string = "";
-
+    @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -100,7 +100,11 @@ export namespace MenuOverlay {
     }
 
     shouldWrapFocus = () => this.ariaRole === 'dialog';
-    
+
+    private renderOverflowY() {
+      return this.isDatePicker ? `overflow-y: visible;` : `overflow-y: auto;`;
+    }
+
     private renderWidth() {
       if (this.customWidth) {
         return `width: ${this.customWidth};`;
@@ -117,6 +121,7 @@ export namespace MenuOverlay {
           :host .md-menu-overlay .overlay-content {
             ${this.renderMaxHeight()};
             ${this.renderWidth()};
+            ${this.renderOverflowY()};
           }
         </style>
       `;
@@ -127,7 +132,7 @@ export namespace MenuOverlay {
           MenuOverlay.ELEMENT.activeOverlay?.push(event.target as ELEMENT);
         }
       };
-    updateActiveMenuOverlayClosed =
+      updateActiveMenuOverlayClosed =
       (event: Event) => {
         let index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
         if (this === event.target && index !== -1) {

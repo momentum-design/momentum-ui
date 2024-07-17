@@ -226,7 +226,7 @@ export namespace DatePicker {
 
     render() {
       return html`
-        <md-menu-overlay custom-width="248px" ?disabled=${this.disabled}>
+        <md-menu-overlay is-date-picker="true" custom-width="248px" ?disabled=${this.disabled}>
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">

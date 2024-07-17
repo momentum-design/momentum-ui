@@ -109,6 +109,7 @@
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.19.1",
+    "stylelint": "^13.0.0",
     "stylelint-config-prettier": "^5.1.0",
     "url-loader": "^0.6.2",
     "wait-on": "^3.2.0",

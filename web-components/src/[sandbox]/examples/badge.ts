@@ -24,6 +24,9 @@ export const badgeTemplate = html`
   <md-badge color="cyan">
     Cyan
   </md-badge>
+  <md-badge color="purple">
+    Purple
+  </md-badge>
 
   <h4 class="sandbox-header">Additional Badges</h4>
   <md-badge color="gray">

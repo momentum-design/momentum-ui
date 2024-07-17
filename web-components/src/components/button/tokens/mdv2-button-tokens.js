@@ -372,6 +372,10 @@ const button = {
       light: "$mds-color-theme-background-alert-success-normal",
       dark: "$mds-color-theme-background-alert-success-normal"
     },
+    "border-color": {
+      light: "$mds-color-theme-outline-join-normal",
+      dark: "$mds-color-theme-outline-join-normal"
+    },
     hover: {
       "bg-color": {
         light: "$mds-color-theme-background-alert-success-hover",
@@ -389,6 +393,10 @@ const button = {
     "bg-color": {
       light: "$mds-color-theme-background-alert-warning-normal",
       dark: "$mds-color-theme-background-alert-warning-normal"
+    },
+    "border-color": {
+      light: "$mds-color-theme-text-warning-normal",
+      dark: "$mds-color-theme-text-warning-normal"
     },
     hover: {
       "bg-color": {
@@ -408,6 +416,10 @@ const button = {
       light: "$mds-color-theme-background-alert-error-normal",
       dark: "$mds-color-theme-background-alert-error-normal"
     },
+    "border-color": {
+      light: "$mds-color-theme-outline-cancel-normal",
+      dark: "$mds-color-theme-outline-cancel-normal"
+    },
     hover: {
       "bg-color": {
         light: "$mds-color-theme-background-alert-error-hover",
@@ -425,6 +437,10 @@ const button = {
     "bg-color": {
       light: "$mds-color-theme-background-alert-default-normal",
       dark: "$mds-color-theme-background-alert-default-normal"
+    },
+    "border-color": {
+      light: "$mds-color-theme-outline-primary-normal",
+      dark: "$mds-color-theme-outline-primary-normal"
     },
     hover: {
       "bg-color": {

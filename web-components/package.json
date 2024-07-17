@@ -10,7 +10,7 @@
     "start": "npm run dev",
     "dev": "webpack-dev-server --config ./webpack.config.dev.server.ts",
     "dev:build": "webpack --config-name=dev",
-    "dist": "webpack --config-name=distProd",
+    "dist": "NODE_OPTIONS=--openssl-legacy-provider webpack --config-name=distProd",
     "dist:dev": "webpack --config-name=distDev",
     "dist:watch": "webpack --config-name=distDevWatch",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
@@ -41,8 +41,7 @@
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1",
-    "@types/express-serve-static-core": "4.17.30",
-    "node-downloader-helper": "1.0.19"
+    "@types/express-serve-static-core": "4.17.30"    
   },
   "peerDependencies": {
     "@momentum-ui/core": "19.16.0",
@@ -108,7 +107,7 @@
     "alias-resolve-loader": "^2.0.4",
     "babel-jest": "26.3.0",
     "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
+    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "cssstats": "^3.4.1",

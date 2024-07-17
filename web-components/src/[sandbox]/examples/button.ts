@@ -53,6 +53,10 @@ export class ButtonTemplateSandbox extends LitElement {
           width: 1%;
           padding: 0.5px 0 0 calc(5px * 2);
         }
+
+        .status-arrow {
+          margin-left: 8px;
+        }
       `
     ];
   }
@@ -323,7 +327,7 @@ export class ButtonTemplateSandbox extends LitElement {
               Available
             </span>
             <span>10:11</span>
-            <md-icon name="arrow-down-optical_8" />
+            <md-icon class="status-arrow" name="arrow-down-optical_8" />
           </div>
         </md-button>
       </div>

@@ -725,6 +725,10 @@
 :host([variant="available"]) .md-button {
   background-color: var(--button-available-bg-color, $lm-button-available-bg-color-light);
   color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  border: 1px solid var(--button-available-border-color);
+  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-family: var(--brand-font-regular, $brand-font-regular);
+  font-weight: 400;
 
   &:hover {
     background-color: var(--button-available-hover-bg-color, $lm-button-available-hover-bg-color-light);
@@ -744,6 +748,10 @@
 :host([variant="unavailable"]) .md-button {
   background-color: var(--button-unavailable-bg-color, $lm-button-unavailable-bg-color-light);
   color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  border: 1px solid var(--button-unavailable-border-color);
+  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-family: var(--brand-font-regular, $brand-font-regular);
+  font-weight: 400;
 
   &:hover {
     background-color: var(--button-unavailable-hover-bg-color, $lm-button-unavailable-hover-bg-color-light);
@@ -763,6 +771,10 @@
 :host([variant="idle"]) .md-button {
   background-color: var(--button-idle-bg-color, $lm-button-idle-bg-color-light);
   color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  border: 1px solid var(--button-idle-border-color);
+  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-family: var(--brand-font-regular, $brand-font-regular);
+  font-weight: 400;
 
   &:hover {
     background-color: var(--button-idle-hover-bg-color, $lm-button-idle-hover-bg-color-light);
@@ -824,6 +836,10 @@
 :host([variant="engaged"]) .md-button {
   background-color: var(--button-engaged-bg-color, $lm-button-engaged-bg-color-light);
   color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  border: 1px solid var(--button-engaged-border-color);
+  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-family: var(--brand-font-regular, $brand-font-regular);
+  font-weight: 400;
 
   &:hover {
     background-color: var(--button-engaged-hover-bg-color, $lm-button-engaged-hover-bg-color-light);

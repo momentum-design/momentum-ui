@@ -13,8 +13,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add @percy/agent lerna@4.0.0
-      - run: yarn bootstrap
-      - run: npm rebuild node-sass
+      - run: yarn bootstrap      
       - run: yarn cypress:verify
       - persist_to_workspace:
           root: ~/
@@ -190,8 +189,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
-      - run: yarn bootstrap
-      - run: npm rebuild node-sass
+      - run: yarn bootstrap      
       - run: yarn cypress:verify
       - run:
           name: Lint all Libraries
@@ -249,8 +247,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
-      - run: yarn bootstrap
-      - run: npm rebuild node-sass
+      - run: yarn bootstrap      
       - run:
           name: Pre build website
           command: yarn build:www

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
-const sass = require('node-sass');
+const sass = require('sass');
 const path = require('path');
 const tildeImporter = require('node-sass-tilde-importer');
 const modules = [
@@ -59,7 +59,7 @@ const modules = [
 ];
 
 const compileCSSModules = () => {
-  modules.forEach((module, idx) => {
+  modules.forEach(module => {
     const componentsDirectory = path.resolve(__dirname, `../css/components`);
     const outFile = path.resolve(__dirname, componentsDirectory, `${module}.css`);
 
@@ -70,14 +70,14 @@ const compileCSSModules = () => {
         outputStyle: 'compressed',
         outFile: outFile,
         sourceMap: true,
+        quietDeps: true,
       },
       function(error, result) {
-        // node-style callback from v3.0.0 onwards
         if (error) {
-          console.log(error.status); // used to be "code" in v2x and below
-          console.log(error.column);
-          console.log(error.message);
-          console.log(error.line);
+          // eslint-disable-next-line no-console
+          console.log(
+            `Error: ${error.message} (Status: ${error.status}, Line: ${error.line}, Column: ${error.column})`
+          );
         } else {
           fsExtra.ensureDir(componentsDirectory).then(() => {
             fs.writeFileSync(outFile, result.css);

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
-const { before } = require("lodash");
 
 const tooltip = {
   prefix: "mdv2",
@@ -21,10 +20,6 @@ const tooltip = {
   radius: {
     light: "8px",
     dark: "8px"
-  },
-  border: {
-    light: "$mds-color-theme-outline-secondary-normal",
-    dark: "$mds-color-theme-outline-secondary-normal"
   },
   shadow: {
     light: "none",

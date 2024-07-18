@@ -10,7 +10,7 @@
     "start": "npm run dev",
     "dev": "webpack-dev-server --config ./webpack.config.dev.server.ts",
     "dev:build": "webpack --config-name=dev",
-    "dist": "NODE_OPTIONS=--openssl-legacy-provider webpack --config-name=distProd",
+    "dist": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --config-name=distProd",
     "dist:dev": "webpack --config-name=distDev",
     "dist:watch": "webpack --config-name=distDevWatch",
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
@@ -150,6 +150,7 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^1.7.2",
-    "@wxcc-desktop/eslint-plugin-no-blocked-words-plugin": "1.0.4"
+    "@wxcc-desktop/eslint-plugin-no-blocked-words-plugin": "1.0.4",
+    "cross-env": "^7.0.3"
   }
 }

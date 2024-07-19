@@ -34,6 +34,12 @@
     background-color: $background-color;
     color: $color;
 
+    @if $border-color {
+      border-color: $border-color;
+    } @else {
+      border: none;
+    }
+
     &::placeholder {
       color: $color-placeholder;
       opacity: 1;
@@ -81,20 +87,14 @@
       }
     }
 
-    @if $border-color {
-      border-color: $border-color;
-    } @else {
-      border: none;
-    }
-
     &__after,
     &__before {
       @include input-icon($color: $color);
     }
 
     &__icon-clear {
-      @include input-clear-color($color-clear, $color-clear-hover);
       display: flex;
+      @include input-clear-color($color-clear, $color-clear-hover);
     }
   }
 

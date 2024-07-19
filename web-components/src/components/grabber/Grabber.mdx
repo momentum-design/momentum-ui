@@ -1,0 +1,27 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import { Favorite } from "./Favorite.ts";
+
+# Favorite
+
+The `<md-favorite/>` component
+
+### Attributes
+
+- `disabled` : Boolean - if true, `<md-favorite/>` is diabled.
+- `checked` : Boolean - if true, `<md-favorite/>` is checked, else unchecked.
+- `value` : String - value provided to `<md-favorite/>`
+- `id` : String - id provided to `<md-favorite/>`
+- `favoriteClassMap` : Object - adds and remove classes to `<md-favorite/>` html based on object passed by the user.
+- `favorite-toggle` : event - custom event displatched on toggle of `<md-favorite/>`.
+- `favorite-keydown` : event - custom event displatched on keyboard navigation of `<md-favorite/>`.
+
+### A simple usage of `<md-favorite/>`
+
+Renders `<md-favorite/>` with dynamic properties
+
+```html
+<md-favorite @favorite-toggle=${(action('favorite-toggle'))} id="favorite-switch" ?checked=${true} ?disabled=${false} value="Select Favorite">
+</md-favorite>
+```
+
+<Props of={"md-favorite"} />

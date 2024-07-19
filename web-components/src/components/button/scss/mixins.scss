@@ -59,38 +59,41 @@
   $padding: false,
   $radius: false
 ) {
+  // Declarations before nested rules
   font-size: $font-size;
   line-height: $line-height;
+  
+  @if $full-width {
+    width: 100%;
+  }
 
+  @if $padding {
+    padding: $padding;
+  }
+  
+  @if $height {
+    height: $height;
+    @if $height == auto or $height == initial or $height == inherit {
+      $height: 100%;
+    }
+  }
+  
+  // Nested rules with conditional logic
   @if $radius {
     @include radius($radius);
-
     &::after {
       border-radius: $radius;
     }
   }
-
+  
+  // Nested rules related to $height
   @if $height {
-    height: $height;
-
-    @if $height == auto or $height == initial or $height == inherit {
-      $height: 100%;
-    }
-
     .#{$prefix}-prepend {
       margin-right: calc(#{$height} / 4);
     }
     .#{$prefix}-append {
       margin-left: calc(#{$height} / 4);
     }
-  }
-
-  @if $padding {
-    padding: $padding;
-  }
-
-  @if $full-width {
-    width: 100%;
   }
 }
 

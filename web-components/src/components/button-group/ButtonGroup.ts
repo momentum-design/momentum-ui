@@ -89,10 +89,10 @@ export namespace ButtonGroup {
     private setSelected(newIndex: number) {
       const oldIndex = this.findSelectedBtnIndex();
       if (oldIndex !== -1 && oldIndex !== newIndex) {
-        (this.slotted[oldIndex] as CustomHTMLButtonElement).toggleAttribute("selected", false);
+        (this.slotted[oldIndex] as CustomHTMLButtonElement)?.toggleAttribute("selected", false);
       }
 
-      (this.slotted[newIndex] as CustomHTMLButtonElement).toggleAttribute("selected", true);
+      (this.slotted[newIndex] as CustomHTMLButtonElement)?.toggleAttribute("selected", true);
     }
 
     private setFirstActive() {

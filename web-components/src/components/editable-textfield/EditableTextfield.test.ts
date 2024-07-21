@@ -1,5 +1,5 @@
-import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { Input } from "@/components/input/Input";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./EditableTextfield";
 import { EditableTextfield } from "./EditableTextfield";
 
@@ -69,11 +69,16 @@ describe("Editable Textfield component", () => {
     await elementUpdated(component);
 
     const el = component.shadowRoot?.querySelector("div.md-editable-textfield");
-    expect(el?.getAttribute("class")).toMatch("md-editable-textfield md-editable-textfield--center");
+    let expectedClassList = ["md-editable-textfield", "md-editable-textfield--center"];
+    expect(el?.classList?.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => el?.classList?.contains(className))).toBe(true);
 
     component.alignment = "right";
     await elementUpdated(component);
-    expect(el?.getAttribute("class")).toMatch("md-editable-textfield md-editable-textfield--right");
+
+    expectedClassList = ["md-editable-textfield", "md-editable-textfield--right"];
+    expect(el?.classList?.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => el?.classList?.contains(className))).toBe(true);
   });
 
   test("should update slot element's contenteditable attribute when clicked", async () => {
@@ -230,15 +235,19 @@ describe("Editable Textfield component", () => {
     expect(component.shadowRoot!.querySelector(".md-editable-textfield")?.getAttribute("aria-invalid")).toEqual("true");
   });
   test("should render role and other aria fields", async () => {
-    const component: EditableTextfield.ELEMENT = await fixture(` <md-editable-field ariaLabel="test field" aria-described-by="test Described details"></md-editable-field> `);
-    const editComponent =  component?.shadowRoot?.querySelector("div");
+    const component: EditableTextfield.ELEMENT = await fixture(
+      ` <md-editable-field ariaLabel="test field" aria-described-by="test Described details"></md-editable-field> `
+    );
+    const editComponent = component?.shadowRoot?.querySelector("div");
     expect(editComponent?.getAttribute("role")).toContain("textbox");
     expect(editComponent?.getAttribute("aria-label")).toMatch("test field");
     expect(editComponent?.getAttribute("aria-describedby")).toMatch("test Described details");
   });
   test("should not render role and aria fields when disabled", async () => {
-    const component: EditableTextfield.ELEMENT = await fixture(` <md-editable-field disabled ariaLabel="test field" aria-described-by="test Described details"></md-editable-field> `);
-    const editComponent =  component?.shadowRoot?.querySelector("div");
+    const component: EditableTextfield.ELEMENT = await fixture(
+      ` <md-editable-field disabled ariaLabel="test field" aria-described-by="test Described details"></md-editable-field> `
+    );
+    const editComponent = component?.shadowRoot?.querySelector("div");
     expect(editComponent?.getAttribute("role")).toBeNull();
     expect(editComponent?.getAttribute("aria-label")).toBeNull();
     expect(editComponent?.getAttribute("aria-describedby")).toBeNull();

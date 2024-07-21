@@ -46,10 +46,14 @@ describe("ListItem", () => {
   test("should reflect shape property changes to the class attribute", async () => {
     const element = await fixture<ListItem.ELEMENT>(`<md-list-item shape="rounded"></md-list-item>`);
     const listItem = await element.shadowRoot!.querySelector(".md-list-item--rounded");
-    expect(listItem).not.toBeNull();
-    expect(listItem?.className).toEqual("md-list-item md-list-item--rounded");
+    let expectedClassList = ["md-list-item", "md-list-item--rounded"];
+    expect(listItem?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => listItem?.classList?.contains(className))).toBe(true);
+
     element.shape = "pill";
     await elementUpdated(element);
-    expect(listItem?.className).toEqual("md-list-item md-list-item--pill");
+    expectedClassList = ["md-list-item", "md-list-item--pill"];
+    expect(listItem?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => listItem?.classList?.contains(className))).toBe(true);
   });
 });

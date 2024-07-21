@@ -143,7 +143,9 @@ describe("Button Component", () => {
       `
     );
     const btn = element.shadowRoot!.querySelector(".md-button");
-    expect(btn?.getAttribute("class")).toContain("md-button active md-button--32");
+    const expectedClassList = ["md-button", "active", "md-button--32"];
+    expect(btn?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => btn?.classList?.contains(className))).toBe(true);
   });
 
   test("should show type if passed one", async () => {

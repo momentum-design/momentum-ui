@@ -1,12 +1,12 @@
-import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { Key } from "@/constants";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Menu";
 import { Menu } from "./Menu";
 
 const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
   return await fixture<Menu.ELEMENT>(html`
     <md-menu>
-      <md-menu-item >
+      <md-menu-item>
         <md-icon name="recents_16"></md-icon>
         <span>Contact History</span>
       </md-menu-item>
@@ -15,9 +15,9 @@ const fixtureFactory = async (): Promise<Menu.ELEMENT> => {
         <span>Cisco WxM</span>
       </md-menu-item>
       <md-menu-item>
-          <md-icon name="cancel_16"></md-icon>
-          <span>Cisco Test</span>
-        </md-menu-item>
+        <md-icon name="cancel_16"></md-icon>
+        <span>Cisco Test</span>
+      </md-menu-item>
       <md-menu-item>
         <md-icon name="alarm_16"></md-icon>
         <span>Cisco Answer</span>

@@ -19,8 +19,9 @@ import styles from "./scss/module.scss";
 export namespace Grabber {
   @customElementWithCheck("md-grabber")
   export class ELEMENT extends FocusMixin(LitElement) {
-    @property({ type: String }) value = "Expanded";
     @property({ type: String }) label = "Expand";
+    @property({ type: String }) checkedLabel = "Collapse";
+    @property({ type: Boolean }) hovered = false;
 
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) checked = false;
@@ -28,24 +29,25 @@ export namespace Grabber {
 
     connectedCallback() {
       super.connectedCallback();
-      this.addEventListener("keydown", this.handleElectKeyDown);
-      this.addEventListener("click", this.handleFavorite as EventListener);
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
     }
 
     static get styles() {
       return [reset, styles];
     }
 
-    handleFavorite(event: CustomEvent) {
+    toggleGrabber() {
       if (this.disabled) {
         return;
       } else {
         this.checked = !this.checked;
         this.dispatchEvent(
-          new CustomEvent<{ value: string; active: boolean }>("grabber-toggle", {
+          new CustomEvent<{ checked: boolean }>("grabber-toggled", {
             detail: {
-              active: this.checked,
-              value: this.value
+              checked: this.checked
             },
             bubbles: true,
             composed: true
@@ -54,26 +56,31 @@ export namespace Grabber {
       }
     }
 
-    handleElectKeyDown(event: KeyboardEvent) {
-      if (event.code === Key.Enter || event.code === Key.Space) {
-        this.checked = !this.checked;
-        this.dispatchEvent(
-          new CustomEvent<{ value: string; active: boolean }>("grabber-keydown", {
-            detail: {
-              active: this.checked,
-              value: this.value
-            },
-            bubbles: true,
-            composed: true
-          })
-        );
+    handleKeyDown(e: KeyboardEvent) {
+      if (e.code === Key.Enter || e.code === Key.Space) {
+        e.preventDefault();
+        this.toggleGrabber();
       }
     }
 
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      this.removeEventListener("keydown", this.handleElectKeyDown);
-      this.removeEventListener("click", this.handleFavorite as EventListener);
+    handleMouseEnter() {
+      this.hovered = true;
+      this.dispatchHoverEvent();
+    }
+
+    handleMouseLeave() {
+      this.hovered = false;
+      this.dispatchHoverEvent();
+    }
+
+    dispatchHoverEvent() {
+      this.dispatchEvent(
+        new CustomEvent("grabber-hover-changed", {
+          bubbles: true,
+          composed: true,
+          detail: { hovered: this.hovered }
+        })
+      );
     }
 
     get grabberClassMap() {
@@ -94,23 +101,21 @@ export namespace Grabber {
 
     render() {
       return html`
-        <label
-          for="favorite-checkbox"
-          id="${this.id}"
+        <button
           class="md-grabber ${classMap(this.grabberClassMap)}"
+          aria-checked=${this.checked}
+          ?disabled=${this.disabled}
           tabindex="0"
+          aria-label=${ifDefined(this.label.length ? this.label : undefined)}
+          type="button"
+          role="button"
+          @click="${() => this.toggleGrabber()}"
+          @keydown="${(e: KeyboardEvent) => this.handleKeyDown(e)}"
+          @mouseenter="${() => this.handleMouseEnter()}"
+          @mouseleave="${() => this.handleMouseLeave()}"
         >
-          <input
-            type="checkbox"
-            aria-label=${ifDefined(this.label.length ? this.label : undefined)}
-            value=${this.value}
-            ?checked=${this.checked}
-            ?disabled=${this.disabled}
-            aria-hidden="true"
-            name="favorite-checkbox"
-          />
-          <md-icon name="${this.iconName}"></md-icon>
-        </label>
+          <md-icon name="${this.iconName}" size="12"></md-icon>
+        </button>
       `;
     }
   }

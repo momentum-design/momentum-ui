@@ -1,64 +1,78 @@
 import "@/components/grabber/Grabber";
-import { customElement, html, LitElement, property } from "lit-element";
+import { Grabber } from "@/components/grabber/Grabber";
+import { customElement, html, LitElement, PropertyValues, query } from "lit-element";
 
 @customElement("grabber-template-sandbox")
-export class FavoriteTemplateSandbox extends LitElement {
-  @property({ type: Boolean }) selected = false;
-  @property({ type: String }) value = "";
+export class GrabberTemplateSandbox extends LitElement {
+  @query("#grabberLeading") grabberLeading!: Grabber.ELEMENT;
+  @query("#grabberTrailing") grabberTrailing!: Grabber.ELEMENT;
+  @query("#grabberTop") grabberTop!: Grabber.ELEMENT;
+  @query("#grabberBottom") grabberBottom!: Grabber.ELEMENT;
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
-    this.addEventListener("favorite-toggle", this.countFavorite as EventListener);
-    this.addEventListener("favorite-keydown", this.handleKeydownFavorite as EventListener);
+
+    this.addEventListener("grabber-toggled", this.grabberToggled as EventListener);
+    this.addEventListener("grabber-hover-changed", this.grabberToggled as EventListener);
   }
 
-  private countFavorite(e: CustomEvent) {
-    const { active, value } = e.detail;
+  disconnectedCallback(): void {
+    this.removeEventListener("grabber-toggled", this.grabberToggled as EventListener);
+    this.removeEventListener("grabber-hover-changed", this.grabberToggled as EventListener);
 
-    this.selected = active;
-    if (active === true) {
-      this.value = value;
-    } else {
-      this.value = "";
-    }
+    super.disconnectedCallback();
   }
 
-  private handleKeydownFavorite(e: KeyboardEvent) {
-    const { active, value } = e.detail as any;
+  grabberToggled(_e: CustomEvent) {
+    this.requestUpdate();
+  }
 
-    this.selected = active;
-    if (active === true) {
-      this.value = "Keyboard event: " + value;
-    } else {
-      this.value = "";
+  grabberHovered(_e: CustomEvent) {
+    this.requestUpdate();
+  }
+
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    super.firstUpdated(_changedProperties);
+
+    //After the first update the query properties will
+    //no longer be null so request an other update
+    this.requestUpdate();
+  }
+
+  grabberDetailTemplate(grabber: Grabber.ELEMENT | null | undefined) {
+    if (grabber === null || grabber === undefined) {
+      return html`
+        <p>Loading...</p>
+      `;
     }
+    return html`
+      <p>Label: ${grabber.checked ? grabber.checkedLabel : grabber.label}</p>
+      <p>Checked: ${grabber.checked}</p>
+      <p>Hovered: ${grabber.hovered}</p>
+    `;
   }
 
   render() {
     return html`
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Leading</h3>
-        <md-grabber alignment="leading"></md-grabber>
-        <p>Select: ${this.selected}</p>
-        <p>Value: ${this.value}</p>
+        <md-grabber id="grabberLeading" alignment="leading"></md-grabber>
+        ${this.grabberDetailTemplate(this.grabberLeading)}
       </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Trailing</h3>
-        <md-grabber alignment="trailing"></md-grabber>
-        <p>Select: ${this.selected}</p>
-        <p>Value: ${this.value}</p>
+        <md-grabber id="grabberTrailing" alignment="trailing"></md-grabber>
+        ${this.grabberDetailTemplate(this.grabberTrailing)}
       </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Top</h3>
-        <md-grabber alignment="top"></md-grabber>
-        <p>Select: ${this.selected}</p>
-        <p>Value: ${this.value}</p>
+        <md-grabber id="grabberTop" alignment="top"></md-grabber>
+        ${this.grabberDetailTemplate(this.grabberTop)}
       </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Bottom</h3>
-        <md-grabber alignment="bottom"></md-grabber>
-        <p>Select: ${this.selected}</p>
-        <p>Value: ${this.value}</p>
+        <md-grabber id="grabberBottom" alignment="bottom"></md-grabber>
+        ${this.grabberDetailTemplate(this.grabberBottom)}
       </div>
     `;
   }

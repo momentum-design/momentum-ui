@@ -7,9 +7,11 @@
 
   position: relative;
   gap: 2px;
-
   background-color: var(--grabber-bg-color);
-  border-color: var(--graber-border-colro);
+  border-color: var(--graber-border-color);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--grabber-hover-bg-color);
@@ -23,54 +25,41 @@
   &--trailing {
     width: 20px;
     height: 40px;
-    padding: 14px 4px;
     border-radius: 0 8px 8px 0;
     border: 1px solid var(--grabber-border-color);
     border-left-width: 0;
   }
 
-  // Unique style for trailing
   &--trailing {
     rotate: 180deg;
   }
 
-  // Shared styles for top and bottom
   &--top,
   &--bottom {
     width: 40px;
     height: 20px;
-    padding: 4px 14px;
     border-radius: 0 0 8px 8px;
     border: 1px solid var(--grabber-border-color);
     border-top-width: 0;
   }
 
-  // Unique style for bottom
   &--bottom {
     rotate: 180deg;
-  }
-
-  input {
-    visibility: hidden;
-  }
-
-  md-icon {
-    position: absolute;
   }
 
   md-icon,
   md-icon::part(icon) {
     color: var(--grabber-text-color);
+    width:fit-content;
+    height:fit-content;
   }
 
-  &::after {
-    content: "";
-    display: block;
-    height: calc(100%);
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: calc(100%);
+  &--leading md-icon::part(icon) {
+    padding-top: 3px;
+  }
+
+  &--trailing md-icon::part(icon) {
+    padding-bottom: 2x;
   }
 
   &:focus::after {
@@ -90,8 +79,6 @@
     }
   }
 
-  &--active {
-  }
 }
 
 @media (forced-colors: active) {

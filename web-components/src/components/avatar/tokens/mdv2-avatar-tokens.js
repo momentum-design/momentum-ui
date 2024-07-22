@@ -200,6 +200,10 @@ const avatar = {
     rona: {
       light: "$mds-color-theme-indicator-attention",
       dark: "$mds-color-theme-indicator-attention"
+    },
+    unstable: {
+      light: "$mds-color-theme-indicator-unstable",
+      dark: "$mds-color-theme-indicator-unstable"
     }
   },
   notificationBadge: {

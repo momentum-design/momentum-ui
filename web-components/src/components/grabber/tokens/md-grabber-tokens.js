@@ -24,6 +24,10 @@ const grabber = {
       light: colors.gray[30].name,
       dark: colors.gray[70].name
     }
+  },
+  width: {
+    light: "14px",
+    dark: "14px"
   }
 };
 

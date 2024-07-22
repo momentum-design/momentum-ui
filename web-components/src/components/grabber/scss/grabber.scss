@@ -23,7 +23,7 @@
 
   &--leading,
   &--trailing {
-    width: 20px;
+    width: var(--grabber-width, 20px);
     height: 40px;
     border-radius: 0 8px 8px 0;
     border: 1px solid var(--grabber-border-color);
@@ -37,7 +37,7 @@
   &--top,
   &--bottom {
     width: 40px;
-    height: 20px;
+    height: var(--grabber-width, 20px);;
     border-radius: 0 0 8px 8px;
     border: 1px solid var(--grabber-border-color);
     border-top-width: 0;

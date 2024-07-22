@@ -27,6 +27,10 @@ const grabber = {
       light: "$mds-color-theme-button-secondary-pressed",
       dark: "$mds-color-theme-button-secondary-pressed"
     }
+  },
+  width: {
+    light: "20px",
+    dark: "20px"
   }
 };
 

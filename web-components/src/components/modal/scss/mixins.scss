@@ -8,10 +8,6 @@
   right: 0;
   visibility: visible;
   width: $width;
-
-  .md-modal__title {
-    color: var(--md-primary-text-color, $md-gray-60);
-  }
 }
 
 @mixin modal-size(
@@ -106,7 +102,7 @@
   width: 100%;
 }
 
-@mixin modal-container-center-align(){
+@mixin modal-container-center-align() {
   display: flex;
   flex-direction: column;
   justify-content: center;

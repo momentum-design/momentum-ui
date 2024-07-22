@@ -4,6 +4,10 @@
   @include modal-base;
   @include modal-size($radius: true);
 
+  .md-modal__title {
+    color: var(--md-primary-text-color, $md-gray-60);
+  }
+
   &:focus {
     box-shadow: none;
   }
@@ -113,11 +117,7 @@
       }
 
       .md-modal__close {
-        @include modal-close-button(
-          $size: rem-calc(20),
-          $font-size: rem-calc(20),
-          $right-offset: rem-calc(24)
-        );
+        @include modal-close-button($size: rem-calc(20), $font-size: rem-calc(20), $right-offset: rem-calc(24));
       }
     }
 
@@ -128,11 +128,7 @@
   }
 
   &.md-modal--large {
-    @include modal-size(
-      $width: $modal__width--large,
-      $min-height: $modal__height--large,
-      $radius: true
-    );
+    @include modal-size($width: $modal__width--large, $min-height: $modal__height--large, $radius: true);
 
     .md-modal__header {
       @include modal-header-size(
@@ -148,19 +144,12 @@
       }
 
       .md-modal__close {
-        @include modal-close-button(
-          $size: rem-calc(16),
-          $font-size: rem-calc(16),
-          $right-offset: rem-calc(16)
-        );
+        @include modal-close-button($size: rem-calc(16), $font-size: rem-calc(16), $right-offset: rem-calc(16));
       }
     }
 
     @media #{$medium-only} {
-      @include modal-size(
-        $width: $modal__width--medium,
-        $min-height: $modal__height--medium
-      );
+      @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
 
       .md-modal__header {
         @include modal-header-size;
@@ -172,11 +161,7 @@
         }
 
         .md-modal__close {
-          @include modal-close-button(
-            $size: rem-calc(14),
-            $font-size: rem-calc(14),
-            $right-offset: rem-calc(12)
-          );
+          @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
         }
       }
     }
@@ -190,24 +175,14 @@
 
   &.md-modal--medium,
   &.md-modal--default {
-    @include modal-size(
-      $width: $modal__width--medium,
-      $min-height: $modal__height--medium
-    );
+    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
 
     .md-modal__close {
-      @include modal-close-button(
-        $size: rem-calc(14),
-        $font-size: rem-calc(14),
-        $right-offset: rem-calc(12)
-      );
+      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
     }
 
     @media #{$medium-only} {
-      @include modal-size(
-        $width: $modal__width--medium,
-        $min-height: $modal__height--medium
-      );
+      @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
     }
 
     @media #{$v-medium-down} {
@@ -218,25 +193,15 @@
   }
 
   &.md-modal--small {
-    @include modal-size(
-      $width: $modal__width--small,
-      $min-height: $modal__height--small
-    );
+    @include modal-size($width: $modal__width--small, $min-height: $modal__height--small);
 
     .md-modal__close {
-      @include modal-close-button(
-        $size: rem-calc(14),
-        $font-size: rem-calc(14),
-        $right-offset: rem-calc(12)
-      );
+      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
     }
 
     // Media Query for Tablet
     @media #{$medium-only} {
-      @include modal-size(
-        $width: $modal__width--small,
-        $min-height: $modal__height--small
-      );
+      @include modal-size($width: $modal__width--small, $min-height: $modal__height--small);
     }
   }
 
@@ -244,11 +209,7 @@
     @include modal-size($width: $modal__width--small, $radius: true);
 
     .md-modal__close {
-      @include modal-close-button(
-        $size: rem-calc(14),
-        $font-size: rem-calc(14),
-        $right-offset: rem-calc(12)
-      );
+      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
     }
 
     .md-modal__content {
@@ -316,11 +277,7 @@
         }
 
         .md-modal__close {
-          @include modal-close-button(
-            $size: rem-calc(14),
-            $font-size: rem-calc(14),
-            $right-offset: rem-calc(12)
-          );
+          @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
         }
       }
 

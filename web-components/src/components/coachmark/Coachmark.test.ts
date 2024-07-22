@@ -119,7 +119,7 @@ describe("Coachmark component", () => {
       const result = coachmark.wrappedCoachmarkContentTemplate();
 
       // Assert: Check if the result contains md-theme with momentumV2 theme and correct darkTheme attribute
-      expect(result.getHTML()).toContain("<md-theme");
+      expect(result.strings[0]).toContain("<md-theme");
 
       // Cleanup
       document.body.removeChild(theme);
@@ -136,7 +136,7 @@ describe("Coachmark component", () => {
       const result = coachmark.wrappedCoachmarkContentTemplate();
 
       // Assert: Check if the result does not contain an md-theme wrapper
-      expect(result.getHTML()).not.toContain("<md-theme");
+      expect(result.strings[0]).not.toContain("<md-theme");
 
       // Cleanup
       document.body.removeChild(coachmark);

@@ -85,19 +85,29 @@ describe("Table Advanced component", () => {
     });
   });
 
-  test("should show error on column/row mismatch", async() => {
-    const badData = {...ShortkeyTable.data, list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"]]};
+  test("should show error on column/row mismatch", async () => {
+    const badData = {
+      ...ShortkeyTable.data,
+      list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"]]
+    };
     const elemWithBadData = await fixture<TableAdvanced.ELEMENT>(html`
-    <md-table-advanced .config=${ShortkeyTable.config} .data=${badData}> </md-table-advanced>
-  `);
-    expect(elemWithBadData["error"]).toContain("Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values.");
+      <md-table-advanced .config=${ShortkeyTable.config} .data=${badData}> </md-table-advanced>
+    `);
+    expect(elemWithBadData["error"]).toContain(
+      "Data length mismatch. You must provide (numberOfRows * numberOfColumns) amount of data values."
+    );
 
-    const badData2 = {...ShortkeyTable.data, list2d: [["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"], 
-    ["Active Task List", "Switch between tasks"]]};
+    const badData2 = {
+      ...ShortkeyTable.data,
+      list2d: [
+        ["Active Task List", "Switch between tasks", "Ctrl + Alt + T", "error"],
+        ["Active Task List", "Switch between tasks"]
+      ]
+    };
 
     const elem = await fixture<TableAdvanced.ELEMENT>(html`
-    <md-table-advanced .config=${ShortkeyTable.config} .data=${badData2}> </md-table-advanced>
-  `);
+      <md-table-advanced .config=${ShortkeyTable.config} .data=${badData2}> </md-table-advanced>
+    `);
     expect(elem["error"]).toContain("DATA ERROR: Total number of cols");
   });
 
@@ -116,8 +126,10 @@ describe("Table Advanced component", () => {
   test("should set sticky header and part", async () => {
     const elem = await ELEM();
 
-    const header = elem.shadowRoot?.querySelector("table");
-    expect(header?.getAttribute("class")).toEqual("sticky-header");
+    const headerClassList = elem.shadowRoot?.querySelector("table")?.classList;
+    const expectedClasses = ["sticky-header"];
+    expect(headerClassList?.length).toEqual(expectedClasses.length);
+    expect(expectedClasses.every(className => headerClassList?.contains(className))).toBe(true);
 
     const row = elem.shadowRoot?.querySelector("table tbody tr");
     expect(row?.getAttribute("part")).toEqual("first-row");
@@ -300,16 +312,16 @@ describe("Table Advanced component", () => {
   test("should render caption when head.caption is defined", async () => {
     const elem = await ELEM();
     elem.tableConfig.head = { caption: "Test Caption", tableDescription: "Test tableDescription" };
-  
+
     // Wait for changes in the shadow DOM
-    await new Promise<void>((resolve) => {
+    await new Promise<void>(resolve => {
       const observer = new MutationObserver(() => {
         resolve();
         observer.disconnect();
       });
       observer.observe(elem.shadowRoot!, { childList: true, subtree: true });
     });
-  
+
     const caption = elem.shadowRoot!.querySelector("caption");
     expect(caption).toBeDefined();
     expect(caption!.textContent).toContain("Test Caption");
@@ -319,45 +331,44 @@ describe("Table Advanced component", () => {
   test("should render caption when head.caption is defined but head.tableDescription is not defined", async () => {
     const elem = await ELEM();
     elem.tableConfig.head = { caption: "Test Caption" };
-  
+
     // Wait for changes in the shadow DOM
-    await new Promise<void>((resolve) => {
+    await new Promise<void>(resolve => {
       const observer = new MutationObserver(() => {
         resolve();
         observer.disconnect();
       });
       observer.observe(elem.shadowRoot!, { childList: true, subtree: true });
     });
-  
+
     const caption = elem.shadowRoot!.querySelector("caption");
     expect(caption).toBeDefined();
     expect(caption!.textContent).toContain("Test Caption");
   });
-  
+
   test("should render tableDescription when head.caption is not defined but head.tableDescription is defined", async () => {
     const elem = await ELEM();
     elem.tableConfig.head = { tableDescription: "Test tableDescription" };
-  
+
     // Wait for changes in the shadow DOM
-    await new Promise<void>((resolve) => {
+    await new Promise<void>(resolve => {
       const observer = new MutationObserver(() => {
         resolve();
         observer.disconnect();
       });
       observer.observe(elem.shadowRoot!, { childList: true, subtree: true });
     });
-  
+
     const caption = elem.shadowRoot!.querySelector("caption");
     expect(caption).toBeDefined();
     expect(caption!.textContent).toContain("Test tableDescription");
   });
-  
+
   test("should not render caption when neither head.caption nor head.tableDescription is defined", async () => {
     const elem = await ELEM();
     elem.tableConfig.head = {};
-    
+
     const caption = elem.shadowRoot!.querySelector("caption");
     expect(caption).toBeNull();
   });
 });
-

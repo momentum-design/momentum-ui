@@ -6,12 +6,12 @@
  *
  */
 
-import { Radio } from "./Radio";
 import { Key } from "@/constants";
 import { RovingTabIndexMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { Radio } from "./Radio";
 import styles from "./scss/module.scss";
 
 export namespace RadioGroup {
@@ -94,13 +94,12 @@ export namespace RadioGroup {
 
     private setChecked(newIndex: number) {
       const oldIndex = this.findCheckedRadioIndex();
-     
+
       if (oldIndex !== -1 && oldIndex !== newIndex && this.slotted[oldIndex]) {
         (this.slotted[oldIndex] as Radio.ELEMENT).checked = false;
       }
-      if(this.slotted[newIndex])
-      {
-      (this.slotted[newIndex] as Radio.ELEMENT).checked = true;
+      if (this.slotted[newIndex]) {
+        (this.slotted[newIndex] as Radio.ELEMENT).checked = true;
       }
     }
 
@@ -118,7 +117,7 @@ export namespace RadioGroup {
     }
 
     handleClick(event: MouseEvent) {
-      if(this.disabled) {
+      if (this.disabled) {
         return false;
       }
       const newIndex = this.findRadioIndex(event);
@@ -132,7 +131,7 @@ export namespace RadioGroup {
     }
 
     handleKeyDown(event: KeyboardEvent) {
-      if(this.disabled) {
+      if (this.disabled) {
         return false;
       }
       const { code } = event;

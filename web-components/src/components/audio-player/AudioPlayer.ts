@@ -6,13 +6,13 @@
  *
  */
 
+import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
-import reset from "@/wc_scss/reset.scss";
-import { nothing } from "lit-html";
-import { Key } from "@/constants";
 
 export type AudioEvent = {
   name: string;
@@ -186,7 +186,9 @@ export namespace AudioPlayer {
 
       // Listen for progress in loading the resource, buffer state will be available only when this occurs
       this.audio.onprogress = () => {
-        this.bufferedRange = this.audio.buffered.end(0);
+        if (this.audio.buffered.length > 0) {
+          this.bufferedRange = this.audio.buffered.end(this.audio.buffered.length - 1);
+        }
       };
     }
 

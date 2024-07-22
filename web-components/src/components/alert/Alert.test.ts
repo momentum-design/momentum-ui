@@ -49,7 +49,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--default");
+    const expectedClassList = ["md-alert", "md-alert--default"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
   });
 
   test("should render Alert with icon reflecting default type", async () => {
@@ -58,7 +60,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--default");
+    const expectedClassList = ["md-alert", "md-alert--default"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const iconTypeElement = await element.shadowRoot!.querySelector(".md-alert__icon");
     expect(iconTypeElement).not.toBeNull();
@@ -70,7 +74,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--success");
+    const expectedClassList = ["md-alert", "md-alert--success"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("check-circle_36");
@@ -83,7 +89,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--info");
+    const expectedClassList = ["md-alert", "md-alert--info"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("info_32");
@@ -96,7 +104,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--error");
+    const expectedClassList = ["md-alert", "md-alert--error"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
@@ -109,7 +119,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--warning");
+    const expectedClassList = ["md-alert", "md-alert--warning"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
@@ -122,7 +134,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--warn");
+    const expectedClassList = ["md-alert", "md-alert--warn"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");

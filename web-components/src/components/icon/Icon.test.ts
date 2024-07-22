@@ -23,7 +23,11 @@ describe("Momentun Icon Component", () => {
     const element = await fixture(
       `<md-icon class="test-class" name="arrow-up_16" size="24" sizeOverrided color="red"></md-icon>`
     );
-    expect(element.shadowRoot!.querySelector("i")!.className).toMatch("md-icon icon arrow-up_24");
+
+    const expectedClasses = ["md-icon", "icon", "arrow-up_24"];
+    const classList = element.shadowRoot?.querySelector("i")?.classList;
+    expect(classList?.length).toEqual(expectedClasses.length);
+    expect(expectedClasses.every(className => classList?.contains(className))).toBe(true);
   });
 
   test("should set font-size to default if not specified", async () => {

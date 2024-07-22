@@ -41,7 +41,8 @@
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1",
-    "@types/express-serve-static-core": "4.17.30"
+    "@types/express-serve-static-core": "4.17.33",
+    "wc-sass-render/**/sass": "1.77.8"
   },
   "peerDependencies": {
     "@momentum-ui/core": "19.16.0",
@@ -106,6 +107,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@types/express-serve-static-core": "4.17.30",
+    "@types/webpack": "^4.41.38",
     "alias-resolve-loader": "^2.0.4",
     "babel-jest": "26.3.0",
     "babel-loader": "^8.1.0",
@@ -133,7 +135,7 @@
     "prettier": "^1.19.1",
     "properties-reader": "^2.2.0",
     "query-selector-shadow-dom": "^0.4.6",
-    "remove-files-webpack-plugin": "^1.4.0",
+    "remove-files-webpack-plugin": "1.4.0",
     "sass-loader": "^10.5.2",
     "sonarqube-scanner": "^2.8.1",
     "string-replace-loader": "^2.3.0",
@@ -142,11 +144,12 @@
     "stylelint-config-sass-guidelines": "^9.0.0",
     "stylelint-prettier": "^1.1.2",
     "postcss": "^8.4.29",
+    "postcss-selector-parser": "^6.1.1",
     "ts-jest": "26.3.0",
     "ts-loader": "8.4.0",
     "ts-node": "^8.6.2",
     "typescript": "4.9.4",
-    "wc-sass-render": "^1.2.3",
+    "wc-sass-render": "^1.4.0",
     "wcag-color": "^1.1.1",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
@@ -154,6 +157,7 @@
     "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^1.7.2",
     "@wxcc-desktop/eslint-plugin-no-blocked-words-plugin": "1.0.4",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "import-local": "^3.0.0"
   }
 }

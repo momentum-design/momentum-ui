@@ -42,9 +42,9 @@ export namespace Avatar {
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
-    @internalProperty() private presenceColor = "";
-    @internalProperty() private presenceIcon = "";
-    @internalProperty() private isCircularWrapper = false;
+    @internalProperty() public presenceColor = "";
+    @internalProperty() public presenceIcon = "";
+    @internalProperty() public isCircularWrapper = false;
 
     static get styles() {
       return [reset, styles];

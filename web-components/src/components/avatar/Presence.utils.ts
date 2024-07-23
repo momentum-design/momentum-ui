@@ -61,7 +61,7 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         break;
       case "busy":
         presenceIcon = "busy-presence";
-        presenceColor = "var(--mds-color-theme-indicator-unstable)";
+        presenceColor = "var(--avatar-presence-rona)";
         break;
       case "on-mobile":
         presenceIcon = "phone-ios_16";
@@ -81,10 +81,6 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
       case "engaged":
         presenceIcon = "unread-badge_12";
         presenceColor = "var(--avatar-presence-engaged)";
-        break;
-      case "idle":
-        presenceIcon = "unread-badge_12";
-        presenceColor = "var(--avatar-blue-bg-color)";
         break;
       case "rona":
         presenceIcon = "unread-badge_12";

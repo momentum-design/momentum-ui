@@ -11,7 +11,7 @@ import "@/components/loading/Loading";
 import "@/components/avatar/Presence";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -42,9 +42,28 @@ export namespace Avatar {
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
+    @internalProperty() private presenceColor = "";
+    @internalProperty() private presenceIcon = "";
+    @internalProperty() private isCircularWrapper = false;
 
     static get styles() {
       return [reset, styles];
+    }
+
+    firstUpdated() {
+      const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
+      this.presenceColor = presenceColor!;
+      this.presenceIcon = presenceIcon!;
+      this.isCircularWrapper = isCircularWrapper!;
+    }
+
+    updated(changedProperties: PropertyValues) {
+      if (changedProperties.has("type")) {
+        const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
+        this.presenceColor = presenceColor!;
+        this.presenceIcon = presenceIcon!;
+        this.isCircularWrapper = isCircularWrapper!;
+      }
     }
 
     private get avatarClassMap() {
@@ -157,8 +176,6 @@ export namespace Avatar {
     }
 
     render() {
-      const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
-
       return html`
         <div
           part="avatar"
@@ -188,9 +205,9 @@ export namespace Avatar {
           ${this.newMomentum && this.type && this.type !== "self"
             ? html`
                 <md-presence
-                  name="${presenceIcon}"
-                  color="${presenceColor}"
-                  .isCircularWrapper=${isCircularWrapper}
+                  name="${this.presenceIcon}"
+                  color="${this.presenceColor}"
+                  .isCircularWrapper=${this.isCircularWrapper}
                   size="${this.size}"
                 />
               `

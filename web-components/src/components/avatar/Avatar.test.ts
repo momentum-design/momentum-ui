@@ -43,7 +43,6 @@ describe("Avatar", () => {
 
     expect(letter!.textContent!.trim()).toEqual("AH");
 
-
     const element2 = await fixture<Avatar.ELEMENT>(
       html`
         <md-avatar alt="avatar" title="Chandler"></md-avatar>
@@ -115,5 +114,40 @@ describe("Avatar", () => {
     );
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
+  });
+
+  test("should provide loading status if boolean typing is true", async () => {
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar typing="true" title="Tom Smith"></md-avatar>
+      `
+    );
+
+    expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
+  });
+
+  test("should render presence if boolean newMomentum is true", async () => {
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar type="active" title="active" newMomentum="true"></md-avatar>
+      `
+    );
+
+    expect(element.shadowRoot!.querySelector("md-presence")).not.toBeNull();
+    expect(element.shadowRoot!.querySelector(".md-avatar--active")).toBeNull();
+  });
+
+  test("should set presenceColor, presenceIcon, and isCircularWrapper based on type", async () => {
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar type="active" title="active" newMomentum="true"></md-avatar>
+      `
+    );
+
+    await element.updateComplete;
+
+    expect(element.presenceColor).toBe("var(--avatar-presence-active)");
+    expect(element.presenceIcon).toBe("unread-badge_12");
+    expect(element.isCircularWrapper).toBe(true);
   });
 });

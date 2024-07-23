@@ -31,7 +31,6 @@ export namespace Presence {
           />
         </div>
       `;
-      1;
     }
   }
 }

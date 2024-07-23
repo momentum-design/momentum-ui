@@ -31,6 +31,10 @@ const grabber = {
   width: {
     light: "20px",
     dark: "20px"
+  },
+  "border-radius": {
+    light: "8px",
+    dark: "8px"
   }
 };
 

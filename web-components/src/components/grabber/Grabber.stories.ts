@@ -6,7 +6,7 @@
  *
  */
 
-import "@/components/favorite/Favorite";
+import "@/components/grabber/Grabber";
 import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
@@ -16,8 +16,8 @@ import { html } from "lit-element";
 import mdx from "./Grabber.mdx";
 
 export default {
-  title: "Components/Favorite",
-  component: "md-favorite",
+  title: "Components/Grabber",
+  component: "md-grabber",
   decorators: [withKnobs, withA11y],
   argTypes: {
     toggleSwitchClassMap: { table: { disable: true } },
@@ -25,7 +25,7 @@ export default {
   },
   parameters: {
     a11y: {
-      element: "md-favorite"
+      element: "md-grabber"
     },
     docs: {
       page: mdx
@@ -39,16 +39,17 @@ export const Grabber = () => {
   const theme = select("Theme name", ThemeNameValues, "");
   const active = boolean("Checked", false);
   const disabled = boolean("Disabled", false);
-  const value = text("Value", "Select favorite");
+  const label = text("Label", "Expand");
+  const checkedLabel = text("Label", "Collapse");
 
   return html`
     <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
       <md-grabber
-        @favorite-toggle=${action("favorite-toggle")}
-        id="favorite-switch"
+        @grabber-toggled=${action("grabber-toggled")}
         ?checked=${active}
         ?disabled=${disabled}
-        value=${value}
+        label=${label}
+        checkedLabel=${checkedLabel}
       ></md-grabber>
     </md-theme>
   `;

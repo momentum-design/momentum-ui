@@ -25,7 +25,7 @@
   &--trailing {
     width: var(--grabber-width, 20px);
     height: 40px;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
     border: 1px solid var(--grabber-border-color);
     border-left-width: 0;
   }
@@ -38,7 +38,7 @@
   &--bottom {
     width: 40px;
     height: var(--grabber-width, 20px);;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
     border: 1px solid var(--grabber-border-color);
     border-top-width: 0;
   }
@@ -59,7 +59,7 @@
   }
 
   &--trailing md-icon::part(icon) {
-    padding-bottom: 2x;
+    padding-bottom: 8px;
   }
 
   &:focus::after {

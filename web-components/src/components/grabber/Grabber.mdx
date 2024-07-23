@@ -1,27 +1,26 @@
 import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
-import { Favorite } from "./Favorite.ts";
+import { Grabber } from "./Grabber.ts";
 
-# Favorite
+# Grabber
 
-The `<md-favorite/>` component
+The `<md-grabber/>` component
 
 ### Attributes
 
-- `disabled` : Boolean - if true, `<md-favorite/>` is diabled.
+- `disabled` : Boolean - if true, `<md-grabber/>` is diabled.
 - `checked` : Boolean - if true, `<md-favorite/>` is checked, else unchecked.
-- `value` : String - value provided to `<md-favorite/>`
-- `id` : String - id provided to `<md-favorite/>`
-- `favoriteClassMap` : Object - adds and remove classes to `<md-favorite/>` html based on object passed by the user.
-- `favorite-toggle` : event - custom event displatched on toggle of `<md-favorite/>`.
-- `favorite-keydown` : event - custom event displatched on keyboard navigation of `<md-favorite/>`.
+- `label`: String - aria label of unchecked grabber `<md-grabber/>`
+- `checkedLabel`: String - aria label of checked grabber `<md-grabber/>`
+- `grabber-toggled` : event - custom event displatched on toggle of `<md-grabber/>`.
+- `grabber-hover-changed` : event - custom event displatched mouse enter and exit `<md-grabber/>`.
 
-### A simple usage of `<md-favorite/>`
+### A simple usage of `<md-grabber/>`
 
-Renders `<md-favorite/>` with dynamic properties
+Renders `<md-grabber/>` with dynamic properties
 
 ```html
-<md-favorite @favorite-toggle=${(action('favorite-toggle'))} id="favorite-switch" ?checked=${true} ?disabled=${false} value="Select Favorite">
-</md-favorite>
+<md-grabber @grabber-toggled=${(action('grabber-toggled'))}  ?checked=${true} ?disabled=${false} label="Expand" checkedLabel="collapse">
+</md-grabber>
 ```
 
-<Props of={"md-favorite"} />
+<Props of={"md-grabber"} />

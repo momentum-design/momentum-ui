@@ -1,0 +1,116 @@
+:host {
+  @include flex($display: inline-flex);
+}
+
+.md-grabber {
+  @include flex($display: inline-flex);
+
+  position: relative;
+  gap: 2px;
+  background-color: var(--grabber-bg-color);
+  border-color: var(--graber-border-color);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--grabber-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--grabber-pressed-bg-color);
+  }
+
+  &--leading,
+  &--trailing {
+    width: var(--grabber-width, 20px);
+    height: 40px;
+    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
+    border: 1px solid var(--grabber-border-color);
+    border-left-width: 0;
+  }
+
+  &--trailing {
+    rotate: 180deg;
+  }
+
+  &--top,
+  &--bottom {
+    width: 40px;
+    height: var(--grabber-width, 20px);;
+    border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
+    border: 1px solid var(--grabber-border-color);
+    border-top-width: 0;
+  }
+
+  &--bottom {
+    rotate: 180deg;
+  }
+
+  md-icon,
+  md-icon::part(icon) {
+    color: var(--grabber-text-color);
+    width:fit-content;
+    height:fit-content;
+  }
+
+  &--leading md-icon::part(icon) {
+    padding-top: 3px;
+  }
+
+  &--trailing md-icon::part(icon) {
+    padding-bottom: 3px;
+  }
+
+  &:focus::after {
+    box-shadow: $focus-boxshadow;
+  }
+
+  &--disabled {
+    background-color: transparent;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+
+    md-icon::part(icon) {
+      color: var(--button-disabled-text-color);
+    }
+  }
+
+}
+
+@media (forced-colors: active) {
+  :host {
+    border: none;
+  }
+
+  .md-grabber {
+    background-color: ButtonFace;
+
+    md-icon,
+    md-icon::part(icon) {
+      color: ButtonText;
+    }
+
+    &:focus {
+      outline: 2px solid Highlight;
+    }
+
+    &--disabled {
+      background-color: ButtonFace;
+      color: GrayText;
+
+      md-icon::part(icon) {
+        color: GrayText;
+      }
+    }
+
+    &--active {
+      md-icon::part(icon) {
+        color: ButtonText;
+      }
+    }
+  }
+}

@@ -32,6 +32,7 @@ import {
   favoriteTemplate,
   floatingModalTemplate,
   formTemplate,
+  grabberTemplate,
   iconTemplate,
   inputFileTemplate,
   inputTemplate,
@@ -349,6 +350,11 @@ export class Sandbox extends LitElement {
           <div class="container" aria-label="md-form">
             <h2>md-form</h2>
             ${formTemplate}
+          </div>
+
+          <div class="container" aria-label="md-grabber">
+            <h2>md-grabber</h2>
+            ${grabberTemplate}
           </div>
 
           <div class="container" aria-label="md-icon">

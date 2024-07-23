@@ -63,25 +63,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --main-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   --md-default-focus-outline-color: #{$mds-color-theme-outline-theme-normal};
 
-  // New Backgrounds
-  --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-
-  --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
-  --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
-
-  --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
-  --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active};
-
-  --md-tertiary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  --md-tertiary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-tertiary-two-bg-color: #{$md-gray-80};
-
-  --md-quaternary-bg-color: #{$mds-color-theme-background-alert-default-active};
-  // --md-quaternary-one-bg-color: #{$md-gray-60};
-  // --md-quaternary-two-bg-color: #{$md-gray-90};
-
   --md-primary-text-color: #{$mds-color-theme-text-primary-normal};
   --md-secondary-text-color: #{$mds-color-theme-text-secondary-normal};
   --md-disabled-text-color: #{$mds-color-theme-text-primary-disabled};
@@ -102,9 +83,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
     #{$mds-color-theme-background-gradient-secondary-normal-1} 100%
   );
 
-  // Old Backgrounds (deprecated)
-  --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
-  --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color
 
   --md-primary-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
   --md-primary-success-text-color: #{$mds-color-theme-text-success-normal};
@@ -140,6 +118,24 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-content-bg-color: var(--md-secondary-gradient-background);
   --md-task-list-bg-color: transparent;
   --md-agent-history-bg-color: transparent;
+
+  // Background colours can not be overwritten because they are being used by consumers in unexpected ways
+  // New background colours should be introduced and these phased out  
+  // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+  // --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+  // --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  // --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
+  // --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
+  // --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
+  // --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active}
+  // --md-tertiary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  // --md-tertiary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  // --md-tertiary-two-bg-color: #{$md-gray-80};
+  // --md-quaternary-bg-color: #{$mds-color-theme-background-alert-default-active};
+  // --md-quaternary-one-bg-color: #{$md-gray-60};
+  // --md-quaternary-two-bg-color: #{$md-gray-90};
+  // --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
+  // --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color
 
   // --md-presence-active-bg-color: #{$md-green-50};
   // --md-presence-do-not-disturb-bg-color: #{$md-red-60};

@@ -13,12 +13,12 @@ export class GrabberTemplateSandbox extends LitElement {
     super.connectedCallback();
 
     this.addEventListener("grabber-toggled", this.grabberToggled as EventListener);
-    this.addEventListener("grabber-hover-changed", this.grabberToggled as EventListener);
+    this.addEventListener("grabber-hover-changed", this.grabberHovered as EventListener);
   }
 
   disconnectedCallback(): void {
     this.removeEventListener("grabber-toggled", this.grabberToggled as EventListener);
-    this.removeEventListener("grabber-hover-changed", this.grabberToggled as EventListener);
+    this.removeEventListener("grabber-hover-changed", this.grabberHovered as EventListener);
 
     super.disconnectedCallback();
   }

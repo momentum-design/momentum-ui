@@ -7,7 +7,7 @@
  */
 
 import "@/components/avatar/Avatar";
-import { AvatarSize, AvatarType } from "@/components/avatar/Avatar";
+import { AvatarSize, AvatarType } from "@/components/avatar/Avatar.constants";
 import "@/components/avatar/CompositeAvatar";
 import "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";

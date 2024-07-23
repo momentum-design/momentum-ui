@@ -78,6 +78,18 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         presenceColor = "var(--avatar-presence-inactive)";
         isCircularWrapper = false;
         break;
+      case "engaged":
+        presenceIcon = "unread-badge_12";
+        presenceColor = "var(--avatar-presence-engaged)";
+        break;
+      case "idle":
+        presenceIcon = "unread-badge_12";
+        presenceColor = "var(--avatar-blue-bg-color)";
+        break;
+      case "rona":
+        presenceIcon = "unread-badge_12";
+        presenceColor = "var(--avatar-presence-rona)";
+        break;
       default:
         break;
     }

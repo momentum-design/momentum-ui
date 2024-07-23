@@ -29,7 +29,13 @@
     right: -0.15rem;
 
     &[data-shape="true"] {
-      padding-top: 0.15rem;
+      padding-top: 0.1rem;
+    }
+  }
+
+  &[data-size="48"] {
+    &[data-shape="true"] {
+      padding-top: 0.05rem;
     }
   }
 

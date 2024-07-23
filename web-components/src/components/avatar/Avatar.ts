@@ -36,6 +36,7 @@ export namespace Avatar {
     @property({ type: String, attribute: "icon-name" }) iconName = "";
     @property({ type: String }) type: Type = "";
     @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
 
@@ -93,7 +94,7 @@ export namespace Avatar {
         ? html`
             <span class="md-avatar__letter ${classMap(this.avatarLetterClassMap)}"
               >${this.pretifyTitle}<slot></slot>
-              ${this.type === "typing"
+              ${this.type === "typing" || this.typing
                 ? html`
                     <md-loading></md-loading>
                   `

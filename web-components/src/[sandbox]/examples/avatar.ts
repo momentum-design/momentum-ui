@@ -60,6 +60,10 @@ export const avatarTemplate = html`
   <md-avatar title="on-mobile" size="48" type="on-mobile" newMomentum="true"></md-avatar>
   <md-avatar title="on-device" size="48" type="on-device" newMomentum="true"></md-avatar>
   <md-avatar title="on-hold" size="48" type="on-hold" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="48" type="active" newMomentum="true" typing="true"></md-avatar>
+  <md-avatar title="engaged" size="48" type="engaged" newMomentum="true"></md-avatar>
+  <md-avatar title="idle" size="48" type="idle" newMomentum="true"></md-avatar>
+  <md-avatar title="rona" size="48" type="rona" newMomentum="true"></md-avatar>
   <h3>New Icon Avatar Status Size</h3>
   <md-avatar title="active" size="24" type="active" newMomentum="true"></md-avatar>
   <md-avatar title="active" size="32" type="active" newMomentum="true"></md-avatar>

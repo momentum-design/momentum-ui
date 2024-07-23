@@ -3,6 +3,7 @@ import "@/components/icon/Icon";
 const AvatarType = [
   "active",
   "away",
+  "busy",
   "bot",
   "call",
   "dnd",
@@ -10,6 +11,9 @@ const AvatarType = [
   "inactive",
   "meeting",
   "ooo",
+  "on-mobile",
+  "on-device",
+  "on-hold",
   "presenting",
   "self",
   "schedule",
@@ -17,6 +21,7 @@ const AvatarType = [
   "engaged",
   "idle",
   "rona",
+  "quiet-hours",
   ""
 ] as const;
 

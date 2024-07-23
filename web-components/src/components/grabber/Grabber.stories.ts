@@ -41,6 +41,7 @@ export const Grabber = () => {
   const disabled = boolean("Disabled", false);
   const label = text("Label", "Expand");
   const checkedLabel = text("Label", "Collapse");
+  const alignment = select("Alignment", ["leading", "trailing", "top", "bottom"], "leading");
 
   return html`
     <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
@@ -50,6 +51,7 @@ export const Grabber = () => {
         ?disabled=${disabled}
         label=${label}
         checkedLabel=${checkedLabel}
+        alignment=${alignment}
       ></md-grabber>
     </md-theme>
   `;

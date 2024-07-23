@@ -17,7 +17,7 @@ import styles from "./scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ifDefined } from "lit-html/directives/if-defined";
 
-export const iconSize = ["16", "20", "36", "56", 16, 20, 36, 56] as const;
+export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
 export const iconType = ["", "white"] as const;
 
 export namespace Icon {

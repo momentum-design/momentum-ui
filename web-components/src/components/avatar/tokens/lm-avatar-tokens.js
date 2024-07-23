@@ -164,6 +164,28 @@ const avatar = {
       light: colors.lime[70].name,
       dark: colors.lime[20].name
     }
+  },
+  presence: {
+    active: {
+      light: colors.green[50].name,
+      dark: colors.green[70].name
+    },
+    inactive: {
+      light: colors.gray[50].name,
+      dark: colors.gray[80].name
+    },
+    engaged: {
+      light: colors.yellow[50].name,
+      dark: colors.yellow[70].name
+    },
+    rona: {
+      light: colors.red[50].name,
+      dark: colors.red[60].name
+    },
+    unstable: {
+      light: colors.red[50].name,
+      dark: colors.red[70].name
+    }
   }
 };
 

@@ -46,6 +46,40 @@ export const avatarTemplate = html`
   <md-avatar title="engaged" size="36" type="engaged"></md-avatar>
   <md-avatar title="idle" size="36" type="idle"></md-avatar>
   <md-avatar title="rona" size="36" type="rona"></md-avatar>
+  <h3>New Icon Avatar Status</h3>
+  <md-avatar title="active" size="48" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="48" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="schedule" size="48" type="schedule" newMomentum="true"></md-avatar>
+  <md-avatar title="call" size="48" type="call" newMomentum="true"></md-avatar>
+  <md-avatar title="dnd" size="48" type="dnd" newMomentum="true"></md-avatar>
+  <md-avatar title="presenting" size="48" type="presenting" newMomentum="true"></md-avatar>
+  <md-avatar title="quiet-hours" size="48" type="quiet-hours" newMomentum="true"></md-avatar>
+  <md-avatar title="away" size="48" type="away" newMomentum="true"></md-avatar>
+  <md-avatar title="ooo" size="48" type="ooo" newMomentum="true"></md-avatar>
+  <md-avatar title="busy" size="48" type="busy" newMomentum="true"></md-avatar>
+  <md-avatar title="on-mobile" size="48" type="on-mobile" newMomentum="true"></md-avatar>
+  <md-avatar title="on-device" size="48" type="on-device" newMomentum="true"></md-avatar>
+  <md-avatar title="on-hold" size="48" type="on-hold" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="48" type="active" newMomentum="true" typing="true"></md-avatar>
+  <md-avatar title="engaged" size="48" type="engaged" newMomentum="true"></md-avatar>
+  <md-avatar title="rona" size="48" type="rona" newMomentum="true"></md-avatar>
+  <h3>New Icon Avatar Status Size</h3>
+  <md-avatar title="active" size="24" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="32" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="48" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="64" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="72" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="88" type="active" newMomentum="true"></md-avatar>
+  <md-avatar title="active" size="124" type="active" newMomentum="true"></md-avatar>
+  <br />
+  <br />
+  <md-avatar title="meeting" size="24" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="32" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="48" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="64" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="72" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="88" type="meeting" newMomentum="true"></md-avatar>
+  <md-avatar title="meeting" size="124" type="meeting" newMomentum="true"></md-avatar>
   <h3>Icon Avatar Group</h3>
   <md-avatar title="Icon" type="group"></md-avatar>
   <h3>Avatar Self</h3>

@@ -107,7 +107,7 @@ const _checkDataFileFormat = (colorDataFileName, colorDataFile) => {
   }
 
   if (!deepestKeys.includes("light") && !deepestKeys.includes("dark") && !deepestKeys.includes("common")) {
-    errorMsg += `The token object in ${colorDataFileName} needs to have all colors defined with key name "light", "dark" or "comment".\n`;
+    errorMsg += `The token object in ${colorDataFileName} needs to have all colors defined with key name "light", "dark" or "common".\n`;
   }
 
   if (errorMsg.length > 0) {

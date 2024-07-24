@@ -9,86 +9,71 @@ const datepicker = {
   default: {
     navigation: {
       label: {
-        light: "$mds-color-theme-text-primary-normal",
-        dark: "$mds-color-theme-text-primary-normal"
+        common: "$mds-color-theme-text-primary-normal"
       },
       button: {
-        light: "$mds-color-theme-text-primary-normal",
-        dark: "$mds-color-theme-text-primary-normal"
+        common: "$mds-color-theme-text-primary-normal"
       }
     },
     days: {
-      light: "$mds-color-theme-text-secondary-normal",
-      dark: "$mds-color-theme-text-secondary-normal"
+      common: "$mds-color-theme-text-secondary-normal"
     },
     number: {
       color: {
-        light: "$mds-color-theme-text-primary-normal",
-        dark: "$mds-color-theme-text-primary-normal"
+        common: "$mds-color-theme-text-primary-normal"
       },
       "bg-color": {
-        light: "$mds-color-theme-button-secondary-normal",
-        dark: "$mds-color-theme-button-secondary-normal"
+        common: "$mds-color-theme-button-secondary-normal"
       }
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-secondary-hover",
-        dark: "$mds-color-theme-button-secondary-hover"
+        common: "$mds-color-theme-button-secondary-hover"
       }
     }
   },
   invalid: {
     "text-color": {
-      light: "$mds-color-theme-text-primary-disabled",
-      dark: "$mds-color-theme-text-primary-disabled"
+      common: "$mds-color-theme-text-primary-disabled"
     }
   },
   selected: {
     "text-color": {
-      light: "$mds-color-theme-common-text-primary-normal",
-      dark: "$mds-color-theme-common-text-primary-normal"
+      common: "$mds-color-theme-common-text-primary-normal"
     },
     today: {
       border: {
-        light: "1px solid $mds-color-theme-outline-button-normal",
-        dark: "1px solid $mds-color-theme-outline-button-normal"
+        common: "1px solid $mds-color-theme-outline-button-normal"
       }
     },
     "bg-color": {
-      light: "$mds-color-theme-background-accent-normal",
-      dark: "$mds-color-theme-background-accent-normal"
+      common: "$mds-color-theme-background-accent-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-accent-hover",
-        dark: "$mds-color-theme-button-accent-hover"
+        common: "$mds-color-theme-button-accent-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-button-accent-pressed",
-        dark: "$mds-color-theme-button-accent-pressed"
+        common: "$mds-color-theme-button-accent-pressed"
       }
     }
   },
   hover: {
     "bg-color": {
-      light: "$mds-color-theme-button-secondary-hover",
-      dark: "$mds-color-theme-button-secondary-hover"
+      common: "$mds-color-theme-button-secondary-hover"
     }
   },
   pressed: {
     "bg-color": {
-      light: "$mds-color-theme-button-secondary-pressed",
-      dark: "$mds-color-theme-button-secondary-pressed"
+      common: "$mds-color-theme-button-secondary-pressed"
     }
   },
   range: {
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-secondary-normal",
-        dark: "$mds-color-theme-button-secondary-normal"
+        common: "$mds-color-theme-button-secondary-normal"
       }
     }
   }

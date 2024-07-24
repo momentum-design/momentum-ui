@@ -5,12 +5,10 @@ const chatMessage = {
   prefix: "mdv2",
   component: "chat-message",
   color: {
-    light: "$mds-color-theme-text-primary-normal",
-    dark: "$mds-color-theme-text-primary-normal"
+    common: "$mds-color-theme-text-primary-normal"
   },
   "color-heading": {
-    light: "$mds-color-theme-text-secondary-normal",
-    dark: "$mds-color-theme-text-secondary-normal"
+    common: "$mds-color-theme-text-secondary-normal"
   }
 };
 

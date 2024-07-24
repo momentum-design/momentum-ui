@@ -6,8 +6,7 @@ const helpText = {
   component: "help-text",
   default: {
     color: {
-      light: "$mds-color-theme-text-secondary-normal",
-      dark: "$mds-color-theme-text-secondary-normal"
+      common: "$mds-color-theme-text-secondary-normal"
     }
   }
 };

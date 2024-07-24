@@ -6,28 +6,28 @@
 //----------------------------------------------------------
 
 @mixin {{component}}-vars {
-  {{#each this}}
-    {{#with light}}
-      --{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-light};
-    {{/with}}
-    {{#with common}}
-      --{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-common};
-    {{/with}}
-    {{#each this}}
-      {{#with light}}
-        --{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-light};
-      {{/with}}
-      {{#with common}}
-        --{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-common};
-      {{/with}}
-      {{#each this}}
-        {{#with light}}
-          --{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-light};
-        {{/with}}
-        {{#with common}}
-          --{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-common};
-        {{/with}}
-      {{/each}}
-    {{/each}}
+{{#each this}}
+{{#with light}}
+--{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-light};
+{{/with}}
+{{#with common}}
+--{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-common};
+{{/with}}
+{{#each this}}
+{{#with light}}
+--{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-light};
+{{/with}}
+{{#with common}}
+--{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-common};
+{{/with}}
+{{#each this}}
+{{#with light}}
+--{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-light};
+{{/with}}
+{{#with common}}
+--{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-common};
+{{/with}}
+{{/each}}
+{{/each}}
   {{/each}}
 }

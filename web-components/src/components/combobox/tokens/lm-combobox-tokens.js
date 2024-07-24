@@ -70,8 +70,8 @@ const combobox = {
         dark: colors.blue[40].name
       },
       "select-bg-color": {
-        light: colors.white[100].name,
-        dark: colors.gray[100].name
+        light: colors.blue[50].name,
+        dark: colors.blue[40].name
       },
       "select-font-color": {
         light: colors.gray[100].name,

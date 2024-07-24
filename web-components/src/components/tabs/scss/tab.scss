@@ -9,9 +9,14 @@
 
 :host([selected]) button {
   border-bottom: var(--tabs-default-active-bottom-border, $tab-active-border);
+  border-radius: 0;
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
   font-family: var(--brand-font-bold);
   font-weight: var(--brand-font-weight-bold);
+
+  &:active {
+    border-radius: $tab-focus-border-radius;
+  }
 }
 
 :host([vertical]) button {
@@ -20,7 +25,12 @@
 
 :host([selected][vertical]) button {
   border-bottom: $tab-border;
+  border-radius: 0;
   border-left: $tab-active-border;
+
+  &:active {
+    border-radius: $tab-focus-border-radius;
+  }
 }
 
 :host(:focus) {
@@ -170,7 +180,12 @@ button {
 
   :host([selected]) button {
     border-bottom: 3px solid Highlight;
+    border-radius: 0;
     color: Highlight;
+
+    &:active {
+      border-radius: $tab-focus-border-radius;
+    }
   }
 
   :host(:focus) button {

@@ -844,6 +844,7 @@ export namespace Tabs {
           break;
         }
         case Key.Enter:
+        case Key.NumpadEnter:
         case Key.Space: {
           if (isMoreTriggerTab) {
             const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter(t => !t.disabled);
@@ -860,6 +861,7 @@ export namespace Tabs {
           } else if (tab && !tab.disabled) {
             const idx = this.tabsIdxHash[this.getNormalizedTabId(tab.id)];
             if (idx !== -1) {
+              event.preventDefault();
               this.updateSelectedTab(idx);
             }
           }

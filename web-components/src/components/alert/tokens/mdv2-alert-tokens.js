@@ -6,48 +6,38 @@ const alert = {
   component: "alert",
   default: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      common: "$mds-color-theme-background-solid-primary-normal"
     },
     "align-items": {
-      light: "flex-start",
-      dark: "flex-start"
+      common: "flex-start"
     },
     "text-color": {
-      light: "$mds-color-theme-text-secondary-normal",
-      dark: "$mds-color-theme-text-secondary-normal"
+      common: "$mds-color-theme-text-secondary-normal"
     },
     "icon-size": {
-      light: "24px",
-      dark: "24px"
+      common: "24px"
     },
     "border-color": {
-      light: "$mds-color-theme-outline-secondary-normal",
-      dark: "$mds-color-theme-outline-secondary-normal"
+      common: "$mds-color-theme-outline-secondary-normal"
     }
   },
   title: {
     "text-color": {
-      light: "$mds-color-theme-text-primary-normal",
-      dark: "$mds-color-theme-text-primary-normal"
+      common: "$mds-color-theme-text-primary-normal"
     },
     "font-size": {
-      light: "1rem",
-      dark: "1rem"
+      common: "1rem"
     }
   },
   close: {
     "bg-color": {
-      light: "transparent",
-      dark: "transparent"
+      common: "transparent"
     },
     size: {
-      light: "1rem",
-      dark: "1rem"
+      common: "1rem"
     },
     "text-color": {
-      light: "$mds-color-theme-text-primary-normal",
-      dark: "$mds-color-theme-text-primary-normal"
+      common: "$mds-color-theme-text-primary-normal"
     }
   }
 };

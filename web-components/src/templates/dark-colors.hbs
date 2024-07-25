@@ -8,15 +8,24 @@
 @mixin {{component}}-vars {
 {{#each this}}
 {{#with dark}}
-  --{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-dark};
+--{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-dark};
+{{/with}}
+{{#with common}}
+--{{../../component}}-{{@key}}: #{${{../../prefix}}-{{../../component}}-{{@key}}-common};
 {{/with}}
 {{#each this}}
 {{#with dark}}
-  --{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-dark};
+--{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-dark};
+{{/with}}
+{{#with common}}
+--{{../../../component}}-{{@../key}}-{{@key}}: #{${{../../../prefix}}-{{../../../component}}-{{@../key}}-{{@key}}-common};
 {{/with}}
 {{#each this}}
 {{#with dark}}
-  --{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-dark};
+--{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-dark};
+{{/with}}
+{{#with common}}
+--{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}: #{${{../../../../prefix}}-{{../../../../component}}-{{@../../key}}-{{@../key}}-{{@key}}-common};
 {{/with}}
 {{/each}}
 {{/each}}

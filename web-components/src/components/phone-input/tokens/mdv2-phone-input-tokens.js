@@ -6,18 +6,15 @@ const phoneinput = {
   component: "phone-input",
   default: {
     "bg-color": {
-      light: "$mds-color-theme-background-solid-primary-normal",
-      dark: "$mds-color-theme-background-solid-primary-normal"
+      common: "$mds-color-theme-background-solid-primary-normal"
     },
     "border-color": {
-      light: "$mds-color-theme-outline-primary-normal",
-      dark: "$mds-color-theme-outline-primary-normal"
+      common: "$mds-color-theme-outline-primary-normal"
     }
   },
   disabled: {
     "bg-color": {
-      light: "$mds-color-theme-background-primary-disabled",
-      dark: "$mds-color-theme-background-primary-disabled"
+      common: "$mds-color-theme-background-primary-disabled"
     }
   }
 };

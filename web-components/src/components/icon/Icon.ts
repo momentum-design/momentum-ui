@@ -152,6 +152,8 @@ export namespace Icon {
     get iconName() {
       const iconName = this.getIconName();
 
+      this.design = false;
+
       if (this.override) {
         return this.handleOverride(iconName);
       } else if (this.enabled) {

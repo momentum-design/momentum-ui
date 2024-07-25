@@ -7,16 +7,13 @@ const tabs = {
   component: "tabs",
   default: {
     "bg-color": {
-      light: "$mds-color-theme-button-secondary-normal",
-      dark: "$mds-color-theme-button-secondary-normal"
+      common: "$mds-color-theme-button-secondary-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-text-secondary-normal",
-      dark: "$mds-color-theme-text-secondary-normal"
+      common: "$mds-color-theme-text-secondary-normal"
     },
     "border-color": {
-      light: "transparent",
-      dark: "transparent"
+      common: "transparent"
     },
     "active-bottom-border": {
       common: "inset 0 -2px 0 0 $mds-color-theme-outline-input-active"
@@ -29,32 +26,25 @@ const tabs = {
       dark: colors.gray[90].name
     },
     "focus-border": {
-      light: "$mds-color-theme-outline-theme-normal",
-      dark: "$mds-color-theme-outline-theme-normal"
+      common: "$mds-color-theme-outline-theme-normal"
     },
     "focus-shadow": {
-      light: "0 0 4px 0px $mds-color-theme-outline-theme-normal",
-      dark: "0 0 4px 0px $mds-color-theme-outline-theme-normal"
+      common: "0 0 4px 0px $mds-color-theme-outline-theme-normal"
     },
     "hover-border": {
-      light: "transparent",
-      dark: "transparent"
+      common: "transparent"
     },
     hover: {
-      light: "$mds-color-theme-button-secondary-hover",
-      dark: "$mds-color-theme-button-secondary-hover"
+      common: "$mds-color-theme-button-secondary-hover"
     },
     pressed: {
-      light: "$mds-color-theme-button-secondary-pressed",
-      dark: "$mds-color-theme-button-secondary-pressed"
+      common: "$mds-color-theme-button-secondary-pressed"
     },
     disabled: {
-      light: "$mds-color-theme-button-secondary-disabled",
-      dark: "$mds-color-theme-button-secondary-disabled"
+      common: "$mds-color-theme-button-secondary-disabled"
     },
     active: {
-      light: "$mds-color-theme-text-primary-normal",
-      dark: "$mds-color-theme-text-primary-normal"
+      common: "$mds-color-theme-text-primary-normal"
     }
   }
 };

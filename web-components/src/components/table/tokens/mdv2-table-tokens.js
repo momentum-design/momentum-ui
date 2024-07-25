@@ -6,34 +6,28 @@ const table = {
   component: "table",
   header: {
     "bg-color": {
-      light: "$mds-color-theme-background-secondary-normal",
-      dark: "$mds-color-theme-background-secondary-normal"
+      common: "$mds-color-theme-background-secondary-normal"
     }
   },
   hover: {
     "bg-color": {
-      light: "$mds-color-theme-background-primary-hover",
-      dark: "$mds-color-theme-background-primary-hover"
+      common: "$mds-color-theme-background-primary-hover"
     }
   },
   pressed: {
     "bg-color": {
-      light: "$mds-color-theme-background-primary-active",
-      dark: "$mds-color-theme-background-primary-active"
+      common: "$mds-color-theme-background-primary-active"
     }
   },
   "border-color": {
-    light: "$mds-color-theme-outline-secondary-normal",
-    dark: "$mds-color-theme-outline-secondary-normal"
+    common: "$mds-color-theme-outline-secondary-normal"
   },
   "text-color": {
-    light: "$mds-color-theme-text-secondary-normal",
-    dark: "$mds-color-theme-text-secondary-normal"
+    common: "$mds-color-theme-text-secondary-normal"
   },
   stripped: {
     "bg-color": {
-      light: "$mds-color-theme-button-primary-disabled",
-      dark: "$mds-color-theme-button-primary-disabled"
+      common: "$mds-color-theme-button-primary-disabled"
     }
   }
 };

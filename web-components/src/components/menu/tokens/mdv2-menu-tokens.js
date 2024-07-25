@@ -5,42 +5,35 @@ const menu = {
   prefix: "mdv2",
   component: "menu",
   "text-color": {
-    light: "$mds-color-theme-text-primary-normal",
-    dark: "$mds-color-theme-text-primary-normal"
+    common: "$mds-color-theme-text-primary-normal"
   },
   default: {
-    light: "$mds-color-theme-button-secondary-normal",
-    dark: "$mds-color-theme-button-secondary-normal"
+    common: "$mds-color-theme-button-secondary-normal"
   },
   hover: {
     bg: {
-      light: "$mds-color-theme-button-secondary-hover",
-      dark: "$mds-color-theme-button-secondary-hover"
+      common: "$mds-color-theme-button-secondary-hover"
     }
   },
   pressed: {
     bg: {
-      light: "$mds-color-theme-button-secondary-pressed",
-      dark: "$mds-color-theme-button-secondary-pressed"
+      common: "$mds-color-theme-button-secondary-pressed"
     }
   },
   selected: {
     default: {
       bg: {
-        light: "$mds-color-theme-button-secondary-active-normal",
-        dark: "$mds-color-theme-button-secondary-active-normal"
+        common: "$mds-color-theme-button-secondary-active-normal"
       }
     },
     hover: {
       bg: {
-        light: "$mds-color-theme-button-secondary-active-hover",
-        dark: "$mds-color-theme-button-secondary-active-hover"
+        common: "$mds-color-theme-button-secondary-active-hover"
       }
     },
     pressed: {
       bg: {
-        light: "$mds-color-theme-button-secondary-active-pressed",
-        dark: "$mds-color-theme-button-secondary-active-pressed"
+        common: "$mds-color-theme-button-secondary-active-pressed"
       }
     }
   }

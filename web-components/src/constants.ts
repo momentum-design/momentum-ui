@@ -19,7 +19,8 @@ export enum Key {
   Digit6 = "Digit6",
   Digit7 = "Digit7",
   Digit8 = "Digit8",
-  Digit9 = "Digit9"
+  Digit9 = "Digit9",
+  NumpadEnter = "NumpadEnter"
 }
 
 export enum TIME_UNIT {

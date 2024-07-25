@@ -49,6 +49,7 @@
     "@momentum-ui/icons": "8.28.5",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
+    "@momentum-design/icons": "0.0.144",
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1"
   },
@@ -81,6 +82,7 @@
     "@momentum-ui/icons": "8.28.5",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
+    "@momentum-design/icons": "0.0.144",
     "@open-wc/testing-helpers": "1.8.9",
     "@storybook/addons": "6.2.9",
     "@storybook/client-api": "6.2.9",

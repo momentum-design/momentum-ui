@@ -26,12 +26,13 @@ const grabber = {
     }
   },
   width: {
-    light: "14px",
-    dark: "14px"
+    common: "14px"
   },
   "border-radius": {
-    light: "16px",
-    dark: "16px"
+    common: "16px"
+  },
+  "border-width": {
+    light: "0"
   }
 };
 

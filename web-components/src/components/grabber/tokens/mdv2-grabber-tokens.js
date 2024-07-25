@@ -28,6 +28,9 @@ const grabber = {
   },
   "border-radius": {
     common: "8px"
+  },
+  "border-width": {
+    common: "1px"
   }
 };
 

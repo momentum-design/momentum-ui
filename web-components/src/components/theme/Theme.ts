@@ -7,11 +7,11 @@
  */
 
 import styles from "@/components/tooltip/scss/module.scss";
-import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
 import { lumosDark, lumosLight, momentumDark, momentumLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {
@@ -60,8 +60,8 @@ export namespace Theme {
 
     @internalProperty() private activeTheme = momentumLight;
 
-    @query("[virtual-global-popper]") virtualWrapper!: HTMLDivElement;
-    @query("[virtual-global-reference]") virtualReference!: HTMLDivElement;
+    @query("[data-virtual-global-popper]") virtualWrapper!: HTMLDivElement;
+    @query("[data-virtual-global-reference]") virtualReference!: HTMLDivElement;
 
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
@@ -361,8 +361,8 @@ export namespace Theme {
             }
           </style>
           <slot></slot>
-          <div class="md-tooltip" virtual-global-popper></div>
-          <div virtual-global-reference aria-describedby="tooltip"></div>
+          <div class="md-tooltip" data-virtual-global-popper></div>
+          <div data-virtual-global-reference aria-describedby="tooltip"></div>
         </div>
       `;
     }

@@ -25,6 +25,7 @@ export namespace Grabber {
 
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) checked = false;
+    @property({ type: Boolean }) visible = true;
     @property({ type: String, reflect: true }) alignment: "leading" | "trailing" | "top" | "bottom" = "leading";
 
     connectedCallback() {
@@ -83,11 +84,16 @@ export namespace Grabber {
       );
     }
 
+    get collapsed() {
+      return !this.checked;
+    }
+
     get grabberClassMap() {
       return {
         "md-grabber--active": this.checked,
         "md-grabber--disabled": this.disabled,
-        [`md-grabber--${this.alignment}`]: this.alignment
+        [`md-grabber--${this.alignment}`]: this.alignment,
+        visible: this.visible || this.collapsed
       };
     }
 

@@ -120,7 +120,9 @@ export namespace Icon {
       if (this.sizeOverrided) {
         return `${iconName.split("_")[0]}_${this.iconFontSize}`;
       }
-      return iconNames.includes(iconName) ? `icon-${iconName}` : this.consoleHandler("name-error", iconName);
+      return iconNames.includes(iconName) || iconName === ""
+        ? `icon-${iconName}`
+        : this.consoleHandler("name-error", iconName);
     }
 
     get iconStyleMap() {

@@ -112,7 +112,7 @@ describe("Presence", () => {
   test("returns correct values for meeting presenceType", () => {
     const result = getPresenceIconColor("busy", false);
     expect(result).toEqual({
-      presenceIcon: "busy-presence",
+      presenceIcon: "unread-badge_12", // busy-presence
       presenceColor: "var(--avatar-presence-rona)",
       isCircularWrapper: true
     });

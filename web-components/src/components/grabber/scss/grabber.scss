@@ -1,5 +1,6 @@
 :host {
   @include flex($display: inline-flex);
+  overflow: hidden;
 }
 
 .md-grabber {
@@ -12,6 +13,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 150ms ease-in-out;
+
+  &.visible {
+    transform: translate3d(0, 0, 0);
+  }
 
   &:hover {
     background-color: var(--grabber-hover-bg-color);
@@ -28,6 +34,10 @@
     border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
     border: 1px solid var(--grabber-border-color);
     border-left-width: 0;
+
+    &:not(.visible) {
+      transform: translate3d(-100%, 0, 0);
+    }
   }
 
   &--trailing {
@@ -41,6 +51,10 @@
     border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
     border: 1px solid var(--grabber-border-color);
     border-top-width: 0;
+
+    &:not(.visible) {
+      transform: translate3d(0, -100%, 0);
+    }
   }
 
   &--bottom {

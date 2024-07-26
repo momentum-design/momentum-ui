@@ -60,7 +60,7 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "busy":
-        presenceIcon = "busy-presence";
+        presenceIcon = "unread-badge_12"; // busy-presence
         presenceColor = "var(--avatar-presence-rona)";
         break;
       case "on-mobile":

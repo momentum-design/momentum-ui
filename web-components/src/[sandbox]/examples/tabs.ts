@@ -1,11 +1,19 @@
 import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/button/Button";
+import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
+import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
+import "@/components/input/Input";
+import "@/components/list/List";
 import "@/components/menu-overlay/MenuOverlay";
+import "@/components/modal/Modal";
+import "@/components/radio/RadioGroup";
 import "@/components/tabs/Tab";
 import { TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
+import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/tooltip/Tooltip";
 import svgWxm from "@img/wxm.svg";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
@@ -74,8 +82,9 @@ export class TabsOrderPrefsExample extends LitElement {
               this.handleResetTabs(e);
             }}
             variant="primary"
-            ><span slot="text">Reset</span></md-button
           >
+            <span slot="text">Reset</span>
+          </md-button>
         </div>
       </div>
     </md-menu-overlay>
@@ -339,7 +348,7 @@ export class TabsTemplateSandbox extends LitElement {
           <span>Entry Point</span>
         </md-tab>
         <md-tab-panel slot="panel">
-        <md-list role="listbox">
+          <md-list role="listbox">
             <md-list-item
               slot="list-item"
               type="auto"
@@ -380,7 +389,7 @@ export class TabsTemplateSandbox extends LitElement {
                 </div>
               </div>
             </md-list-item>
-      </md-list>
+          </md-list>
         </md-tab-panel>
         <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
           <span>Address Book</span>
@@ -429,91 +438,92 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       </md-tabs>
       <md-tabs justified>
-            <md-tab slot="tab" label="Dial Number">
-              <span>Dial Number</span>
-            </md-tab>
-            <md-tab-panel slot="panel">
-              <div class="phone-fromat">
-                <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
-                  <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
-                  <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
-                </md-radiogroup>
-              </div>
-
-              <md-input
-                type="tel"
-                id="dn"
-                class="dial-number"
-                placeholder="Dial Number"
-                shape="pill"
-                autofocus
-                clear
-              ></md-input>
-            </md-tab-panel>
-            <md-tab slot="tab" label="Extension">
-              <span>Extension</span>
-            </md-tab>
-            <md-tab-panel slot="panel">
-              <div class="extension-format">
-                <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
-              </div>
-              <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
-            </md-tab-panel>
-          </md-tabs>
-          <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
-            ${repeat(
-              this.currentTabsOrder,
-              tabElement => nanoid(10),
-              tabElement => html`
-                ${unsafeHTML(this.tabs[tabElement])}
-              `
-            )}
-            ${
-              !this.isSingleButtonResetEnabled
-                ? html`
-                    <md-menu-overlay
-                      slot="settings"
-                      size="small"
-                      style="display: flex; justify-content: center;height: 100%;">
-                      <button class="menu-trigger-button" slot="menu-trigger">
-                        <md-icon name="icon-more-adr_16"></md-icon>
-                      </button>
-                      <div style="padding: 16px">
-                        <div>
-                          <md-button @click=${(e: MouseEvent) => this.handleCloseAll(e)} variant="secondary"
-                            ><span slot="text">Close All</span></md-button>
-                          <md-button @click=${(e: MouseEvent) => this.handleResetTabs(e)} variant="primary">
-                            <span slot="text">Reset</span><
-                            /md-button>
-                        </div>
-                        <p>Unselect Tabs to Hide</p>
-                        <md-checkboxgroup style="display: flex" group-label="group_process">
-                          ${this.defaultTabsOrder.map(tabLabel => {
-                            return html`
-                              <md-checkbox
-                                checked
-                                @checkbox-change=${(e: Event) => this.handleCheckboxChange(e, tabLabel)}
-                                slot="checkbox"
-                                >${tabLabel}</md-checkbox
-                              >
-                            `;
-                          })}
-                        </md-checkboxgroup>
-                      </div>
-                    </md-menu-overlay>
-                  `
-                : html`
-                    <button
-                      slot="settings"
-                      class="menu-trigger-button"
-                      @click=${(e: MouseEvent) => this.handleResetTabs(e)}
-                    >
-                      <md-tooltip placement="bottom" message=${"Reset Tabs"}>
-                        <md-icon name="icon-reset_16"></md-icon>
-                      </md-tooltip>
+        <md-tab slot="tab" label="Dial Number">
+          <span>Dial Number</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <div class="phone-fromat">
+            <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
+              <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
+              <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
+            </md-radiogroup>
+          </div>
+          <md-input
+            type="tel"
+            id="dn"
+            class="dial-number"
+            placeholder="Dial Number"
+            shape="pill"
+            autofocus
+            clear
+          ></md-input>
+        </md-tab-panel>
+        <md-tab slot="tab" label="Extension">
+          <span>Extension</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <div class="extension-format">
+            <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
+          </div>
+          <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
+        </md-tab-panel>
+      </md-tabs>
+        <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
+          ${repeat(
+            this.currentTabsOrder,
+            tabElement => nanoid(10),
+            tabElement => html`
+              ${unsafeHTML(this.tabs[tabElement])}
+            `
+          )}
+          ${
+            !this.isSingleButtonResetEnabled
+              ? html`
+                  <md-menu-overlay
+                    slot="settings"
+                    size="small"
+                    style="display: flex; justify-content: center;height: 100%;"
+                  >
+                    <button class="menu-trigger-button" slot="menu-trigger">
+                      <md-icon name="icon-more-adr_16"></md-icon>
                     </button>
-                  `
-            }
+                    <div style="padding: 16px">
+                      <div>
+                        <md-button @click=${(e: MouseEvent) => this.handleCloseAll(e)} variant="secondary">
+                          <span slot="text">Close All</span>
+                        </md-button>
+                        <md-button @click=${(e: MouseEvent) => this.handleResetTabs(e)} variant="primary">
+                          <span slot="text">Reset</span>
+                        </md-button>
+                      </div>
+                      <p>Unselect Tabs to Hide</p>
+                      <md-checkboxgroup style="display: flex" group-label="group_process">
+                        ${this.defaultTabsOrder.map(tabLabel => {
+                          return html`
+                            <md-checkbox
+                              checked
+                              @checkbox-change=${(e: Event) => this.handleCheckboxChange(e, tabLabel)}
+                              slot="checkbox"
+                              >${tabLabel}</md-checkbox
+                            >
+                          `;
+                        })}
+                      </md-checkboxgroup>
+                    </div>
+                  </md-menu-overlay>
+                `
+              : html`
+                  <button
+                    slot="settings"
+                    class="menu-trigger-button"
+                    @click=${(e: MouseEvent) => this.handleResetTabs(e)}
+                  >
+                    <md-tooltip placement="bottom" message=${"Reset Tabs"}>
+                      <md-icon name="icon-reset_16"></md-icon>
+                    </md-tooltip>
+                  </button>
+                `
+          }
           </md-tabs>
         </div>
         <br />
@@ -693,7 +703,7 @@ export const tabsTemplate = html`
       </style>
       <md-tooltip slot="menu-trigger" placement="right" message="Click to show tabs in overlay menu">
         <md-button hasRemoveStyle type="button" class="mv-predefined-icon">
-          <md-icon name="icon-response_16" />
+          <md-icon name="icon-response_16"></md-icon>
         </md-button>
       </md-tooltip>
       <div style="width: 100%;">

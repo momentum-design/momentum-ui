@@ -43,19 +43,19 @@ const badge = {
   },
   gray: {
     "bg-color": {
-      common: "$mds-color-theme-button-primary-normal"
+      common: "$mds-color-theme-background-alert-default-normal"
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      common: "$mds-color-theme-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-button-primary-hover"
+        common: "$mds-color-theme-background-alert-default-hover"
       }
     },
     active: {
       "bg-color": {
-        common: "$mds-color-theme-button-primary-pressed"
+        common: "$mds-color-theme-background-alert-default-active"
       }
     }
   },
@@ -79,37 +79,45 @@ const badge = {
   },
   lime: {
     "bg-color": {
-      common: "$mds-color-theme-text-team-lime-normal"
+      light: colors.lime[20].name,
+      dark: colors.lime[70].name
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      light: colors.lime[70].name,
+      dark: colors.lime[20].name
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-lime-hover"
+        light: colors.lime[30].name,
+        dark: colors.lime[60].name
       }
     },
     active: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-lime-active"
+        light: colors.lime[40].name,
+        dark: colors.lime[50].name
       }
     }
   },
   pink: {
     "bg-color": {
-      common: "$mds-color-theme-text-team-pink-normal"
+      light: colors.pink[20].name,
+      dark: colors.pink[70].name
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      light: colors.pink[70].name,
+      dark: colors.pink[20].name
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-pink-hover"
+        light: colors.pink[30].name,
+        dark: colors.pink[60].name
       }
     },
     active: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-pink-active"
+        light: colors.pink[40].name,
+        dark: colors.pink[50].name
       }
     }
   },
@@ -133,37 +141,45 @@ const badge = {
   },
   violet: {
     "bg-color": {
-      common: "$mds-color-theme-text-team-violet-normal"
+      light: colors.violet[20].name,
+      dark: colors.violet[70].name
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      light: colors.violet[70].name,
+      dark: colors.violet[20].name
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-violet-hover"
+        light: colors.violet[30].name,
+        dark: colors.violet[60].name
       }
     },
     active: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-violet-active"
+        light: colors.violet[40].name,
+        dark: colors.violet[50].name
       }
     }
   },
   mint: {
     "bg-color": {
-      common: "$mds-color-theme-text-team-mint-normal"
+      light: colors.mint[20].name,
+      dark: colors.mint[70].name
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      light: colors.mint[70].name,
+      dark: colors.mint[20].name
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-mint-hover"
+        light: colors.mint[30].name,
+        dark: colors.mint[60].name
       }
     },
     active: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-mint-active"
+        light: colors.mint[40].name,
+        dark: colors.mint[50].name
       }
     }
   },
@@ -195,19 +211,23 @@ const badge = {
   },
   gold: {
     "bg-color": {
-      common: "$mds-color-theme-text-team-gold-normal"
+      light: colors.gold[20].name,
+      dark: colors.gold[70].name
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      light: colors.gold[70].name,
+      dark: colors.gold[20].name
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-gold-hover"
+        light: colors.gold[30].name,
+        dark: colors.gold[60].name
       }
     },
     active: {
       "bg-color": {
-        common: "$mds-color-theme-text-team-gold-active"
+        light: colors.gold[40].name,
+        dark: colors.gold[50].name
       }
     }
   },
@@ -258,10 +278,12 @@ const badge = {
   },
   cyan: {
     "bg-color": {
-      common: "$mds-color-theme-text-team-cyan-normal"
+      light: colors.cyan[20].name,
+      dark: colors.cyan[80].name
     },
     "text-color": {
-      common: "$mds-color-theme-inverted-text-primary-normal"
+      light: colors.cyan[70].name,
+      dark: colors.cyan[20].name
     }
   },
   unreadcount: {

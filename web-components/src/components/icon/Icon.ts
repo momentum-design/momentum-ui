@@ -166,7 +166,9 @@ export namespace Icon {
       if (this.sizeOverrided) {
         return this.handleSizeOverride(iconName);
       }
-      return iconNames.includes(iconName) ? `icon-${iconName}` : this.consoleHandler("name-error", iconName);
+      return iconNames.includes(iconName) || iconName === ""
+        ? `icon-${iconName}`
+        : this.consoleHandler("name-error", iconName);
     }
 
     get iconStyleMap() {

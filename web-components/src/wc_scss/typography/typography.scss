@@ -1,7 +1,6 @@
 /** @component typography */
 
 @include exports("type-bem") {
-
   @include align-classes;
 
   @include brand-font-family-ciscoFont;
@@ -141,8 +140,13 @@
   }
 
   ul {
+    // Declarations before nested rules
+    margin-#{$default-float}: $list-side-margin;
+
     &.no-bullet {
       list-style: none;
+      // Declarations before nested rules
+      margin-#{$default-float}: $list-side-margin-no-bullet;
 
       li {
         ul,
@@ -152,7 +156,6 @@
           margin-#{$default-float}: $list-nested-margin;
         }
       }
-      margin-#{$default-float}: $list-side-margin-no-bullet;
     }
 
     li {
@@ -185,10 +188,11 @@
       list-style-type: disc;
       margin-#{$default-float}: $list-side-margin;
     }
-    margin-#{$default-float}: $list-side-margin;
   }
 
   ol {
+    // Declarations before nested rules
+    margin-#{$default-float}: $list-ordered-side-margin;
     li {
       ul,
       ol {
@@ -196,7 +200,6 @@
         margin-#{$default-float}: $list-nested-margin;
       }
     }
-    margin-#{$default-float}: $list-ordered-side-margin;
   }
 
   dl {
@@ -255,7 +258,6 @@
 
   .debug-grid {
     &::after {
-
       @include show-baseline(rgba(255, 0, 0, 0.1667));
       content: "";
       display: inline-block;

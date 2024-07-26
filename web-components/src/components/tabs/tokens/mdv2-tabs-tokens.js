@@ -16,7 +16,10 @@ const tabs = {
       common: "transparent"
     },
     "active-bottom-border": {
-      common: "2px solid $mds-color-theme-outline-input-active"
+      common: "inset 0 -2px 0 0 $mds-color-theme-outline-input-active"
+    },
+    "active-vertical-border": {
+      common: "inset 2px 0 0 0 $mds-color-theme-outline-input-active"
     },
     "focus-bg": {
       light: colors.white[60].name,

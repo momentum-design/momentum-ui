@@ -8,10 +8,15 @@
 }
 
 :host([selected]) button {
-  border-bottom: var(--tabs-default-active-bottom-border, $tab-active-border);
+  box-shadow: var(--tabs-default-active-bottom-border, $tab-active-border);
+  border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
   color: var(--tabs-default-active, $lm-tabs-default-active-light);
   font-family: var(--brand-font-bold);
   font-weight: var(--brand-font-weight-bold);
+
+  &:active {
+    border-radius: $tab-focus-border-radius;
+  }
 }
 
 :host([vertical]) button {
@@ -19,15 +24,20 @@
 }
 
 :host([selected][vertical]) button {
-  border-bottom: $tab-border;
-  border-left: $tab-active-border;
+  border-radius: 0 $tab-focus-border-radius $tab-focus-border-radius 0;
+  box-shadow: var(--tabs-default-active-vertical-border, $tab-active-vertical-border);
+
+  &:active {
+    border-radius: $tab-focus-border-radius;
+  }
 }
 
 :host(:focus) {
   background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
 
   button {
-    border: $tab-main-focus-border !important;
+    outline: $tab-main-focus-border !important;
+    outline-offset: rem-calc(-2);
     box-shadow: var(--tabs-default-focus-shadow, $lm-tabs-default-focus-shadow-light) !important;
   }
 }
@@ -101,7 +111,7 @@ md-icon {
 
 button {
   background: $tab-none-bg;
-  border: $tab-border;
+  border: none;
   border-radius: $tab-focus-border-radius;
   color: var(--tabs-default-text-color, $lm-tabs-default-text-color-light);
   display: block;
@@ -169,8 +179,13 @@ button {
   }
 
   :host([selected]) button {
-    border-bottom: 3px solid Highlight;
+    box-shadow: inset 0 -3px 0 0 Highlight;
+    border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
     color: Highlight;
+
+    &:active {
+      border-radius: $tab-focus-border-radius;
+    }
   }
 
   :host(:focus) button {

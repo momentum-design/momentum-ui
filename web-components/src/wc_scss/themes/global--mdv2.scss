@@ -73,16 +73,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
   --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};
 
-  --md-primary-gradient-background: linear-gradient(
-    180deg,
-    #{$mds-color-theme-background-gradient-primary-normal-0} 0%,
-    #{$mds-color-theme-background-gradient-primary-normal-1} 100%
-  );
-  --md-secondary-gradient-background: linear-gradient(
-    180deg,
-    #{$mds-color-theme-background-gradient-secondary-normal-0} 0%,
-    #{$mds-color-theme-background-gradient-secondary-normal-1} 100%
-  );
+  --md-primary-gradient-background: #{$mds-color-theme-background-gradient-primary-normal};
+  --md-secondary-gradient-background: #{$mds-color-theme-background-gradient-secondary-normal};
 
   --md-primary-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
   --md-primary-success-text-color: #{$mds-color-theme-text-success-normal};
@@ -119,14 +111,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-task-list-bg-color: transparent;
   --md-agent-history-bg-color: transparent;
 
-  --md-nav-divider-primary: linear-gradient(
-    90deg,
-    #{$mds-color-theme-gradientdivider-normal-0} -2.27%,
-    #{$mds-color-theme-gradientdivider-normal-1} 21.16%,
-    #{$mds-color-theme-gradientdivider-normal-1} 73.47%,
-    #{$mds-color-theme-gradientdivider-normal-0} 102.35%
-  );
-
+  --md-nav-divider-primary: #{$mds-color-theme-gradientdivider-default-normal};
+ 
   // Background colours can not be overwritten because they are being used by consumers in unexpected ways
   // New background colours should be introduced and these phased out
   // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};

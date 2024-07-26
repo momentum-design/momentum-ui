@@ -15,7 +15,7 @@ import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
 import "@/components/button/Button";
 import styles from "./scss/module.scss";
-import designStyles from "./scss/module_new.scss";
+import designStyles from "./scss/design_module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ifDefined } from "lit-html/directives/if-defined";
 
@@ -42,7 +42,7 @@ export namespace Icon {
     @property({ type: String }) ariaHidden: any;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
-    @property({ type: Boolean }) enabled = false; // enable design icon lookup
+    @property({ type: Boolean }) designEnabled = false; // enable design icon lookup
     @property({ type: Boolean }) override = false; // use icon as design icon
 
     private static designLookup = new Map(Object.entries(designMapping));
@@ -156,7 +156,7 @@ export namespace Icon {
 
       if (this.override) {
         return this.handleOverride(iconName);
-      } else if (this.enabled) {
+      } else if (this.designEnabled) {
         const enabledResult = this.handleEnabled(iconName);
         if (enabledResult) {
           return enabledResult;

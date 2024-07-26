@@ -49,7 +49,6 @@
     "@momentum-ui/icons": "8.28.5",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
-    "@momentum-design/icons": "0.0.144",
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1"
   },
@@ -72,7 +71,8 @@
     "papaparse": "^5.3.0",
     "sortablejs": "^1.13.0",
     "lit-virtualizer": "0.4.2",
-    "@momentum-design/tokens": "0.0.60"
+    "@momentum-design/tokens": "0.0.60",
+    "@momentum-design/icons": "0.0.144"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -82,7 +82,6 @@
     "@momentum-ui/icons": "8.28.5",
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
-    "@momentum-design/icons": "0.0.144",
     "@open-wc/testing-helpers": "1.8.9",
     "@storybook/addons": "6.2.9",
     "@storybook/client-api": "6.2.9",
@@ -116,7 +115,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "cssstats": "^3.4.1",    
+    "cssstats": "^3.4.1",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^3.1.2",
     "extract-loader": "^4.0.3",

@@ -11,9 +11,27 @@ export const iconTemplate = html`
   <h3>Old icon:</h3>
   <md-icon name="pto_28" class="testClass" color="green-50"></md-icon>
   <h3>Swapping from old icon-> new icon (enabled):</h3>
-  <md-icon name="pto_28" enabled="true" class="testClass" size="50" color="green-50"></md-icon>
+  <md-icon
+    name="pto_28"
+    designEnabled="false"
+    class="testClass"
+    size="50"
+    color="var(--avatar-presence-active)"
+  ></md-icon>
   <h3>Using new icon enabled (enabled):</h3>
-  <md-icon name="search-bold" enabled="true" class="testClass" size="50" color="green-50"></md-icon>
+  <md-icon
+    name="search-bold"
+    designEnabled="true"
+    class="testClass"
+    size="50"
+    color="var(--avatar-presence-active)"
+  ></md-icon>
   <h3>Using new icon override (override):</h3>
-  <md-icon name="search-bold" override="true" class="testClass" size="50" color="green-50"></md-icon>
+  <md-icon
+    name="search-bold"
+    override="true"
+    class="testClass"
+    size="50"
+    color="var(--avatar-presence-active)"
+  ></md-icon>
 `;

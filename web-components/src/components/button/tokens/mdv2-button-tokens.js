@@ -276,22 +276,19 @@ const button = {
   },
   promotional: {
     "bg-color": {
-      common:
-        "linear-gradient(46deg, $mds-color-theme-common-button-promotion-normal-0 -0.03%, $mds-color-theme-common-button-promotion-normal-1 99.99%)"
+      common: "$mds-color-theme-common-button-promotion-normal"
     },
     "text-color": {
       common: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        common:
-          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-hover-0 -0.03%, $mds-color-theme-common-button-promotion-hover-1 99.99%)"
+        common: "$mds-color-theme-common-button-promotion-hover"
       }
     },
     pressed: {
       "bg-color": {
-        common:
-          "linear-gradient(46deg, $mds-color-theme-common-button-promotion-active-0 -0.03%, $mds-color-theme-common-button-promotion-active-1 99.99%)"
+        common: "$mds-color-theme-common-button-promotion-active"
       }
     }
   },

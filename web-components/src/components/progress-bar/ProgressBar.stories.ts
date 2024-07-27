@@ -6,13 +6,12 @@
  *
  */
 
+import "@/components/progress-bar/ProgressBar";
+import { ThemeNameValues } from "@/components/theme/Theme";
+import { BarFormat, BarType } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { BarFormat, BarType } from "@/utils/enums";
-import "@/components/progress-bar/ProgressBar";
-import "@/components/theme/Theme";
-import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Progress Bar",
@@ -27,8 +26,7 @@ export default {
 
 export const ProgressBar = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const label = text("Label", "Test Progress Bar");
   const color = text("color", "blue");
   const dynamic = boolean("dynamic", false);
@@ -37,7 +35,7 @@ export const ProgressBar = () => {
   const value = number("Value", 25);
 
   return html`
-    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme} theme=${theme}>
       <md-progress-bar
         .value=${value}
         .type=${type}

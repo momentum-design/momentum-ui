@@ -91,7 +91,7 @@
     "@storybook/addon-essentials": "6.2.9",
     "@storybook/addon-knobs": "6.2.9",
     "@percy/storybook": "^3.3.0",
-    "@storybook/storybook-deployer": "^2.8.7",
+    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/web-components": "6.2.9",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/dompurify": "^2.2.1",

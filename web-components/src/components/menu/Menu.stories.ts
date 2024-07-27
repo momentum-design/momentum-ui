@@ -6,13 +6,12 @@
  *
  */
 
+import "@/components/menu/Menu";
+import "@/components/menu/MenuItem";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "@/components/menu/Menu";
-import "@/components/menu/MenuItem";
-import "@/components/theme/Theme";
-import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Menu",
@@ -29,17 +28,16 @@ const menuDirection = ["horizontal", "vertical"];
 
 export const Menu = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const direction = select("Direction", menuDirection, "horizontal");
   const justified = boolean("Justified", false);
   const disabled = boolean("Disabled", false);
   const href = text("href", "");
 
   return html`
-    <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} theme=${theme}>
       <md-menu .direction="${direction}" .justified=${justified}>
-        <md-menu-item >
+        <md-menu-item>
           <md-icon name="recents_16"></md-icon>
           <span>Contact History</span>
         </md-menu-item>

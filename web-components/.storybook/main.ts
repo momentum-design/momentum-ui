@@ -20,12 +20,13 @@ module.exports = {
   ],
 
   addons: [
-    "@storybook/addon-knobs/register",
-    "@storybook/addon-a11y/register",
+    "@storybook/addon-knobs",
+    "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "@storybook/addon-controls",
     "@storybook/addon-actions",
-    "@storybook/addon-viewport"
+    "@storybook/addon-viewport",
+    "@storybook/addon-postcss"
   ],
 
   webpackFinal: async (

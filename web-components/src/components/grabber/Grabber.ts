@@ -109,7 +109,7 @@ export namespace Grabber {
       return html`
         <button
           class="md-grabber ${classMap(this.grabberClassMap)}"
-          aria-checked=${this.checked}
+          aria-pressed=${this.checked}
           ?disabled=${this.disabled}
           tabindex="0"
           aria-label=${ifDefined(this.label.length ? this.label : undefined)}

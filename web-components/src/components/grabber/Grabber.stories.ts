@@ -7,7 +7,6 @@
  */
 
 import "@/components/grabber/Grabber";
-import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
@@ -35,8 +34,7 @@ export default {
 
 export const Grabber = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const active = boolean("Checked", false);
   const disabled = boolean("Disabled", false);
   const label = text("Label", "Expand");
@@ -45,7 +43,7 @@ export const Grabber = () => {
   const visible = boolean("Visible", true);
 
   return html`
-    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} theme=${theme}>
       <md-grabber
         @grabber-toggled=${action("grabber-toggled")}
         ?checked=${active}

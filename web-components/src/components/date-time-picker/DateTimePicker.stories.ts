@@ -1,12 +1,12 @@
 import "@/components/date-time-picker/DateTimePicker";
-import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
-import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import as a relative path
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { ThemeNameValues } from "@/components/theme/Theme";
+import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
+import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import as a relative path
 
 export default {
   title: "Components/Date Time Picker",
@@ -21,8 +21,7 @@ export default {
 
 export const DateTimePicker = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const weekStart = select("weekStart", DatePicker.weekStartDays, "");
   const twoDigitAutoTab = boolean("twoDigitAutoTab", false);
   const twentyFourHourFormat = boolean("twentyFourHourFormat", false);
@@ -57,7 +56,7 @@ export const DateTimePicker = () => {
   );
 
   return html`
-    <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} theme=${theme}>
       <md-date-time-picker
         ?disabled=${disabled}
         value=${value}

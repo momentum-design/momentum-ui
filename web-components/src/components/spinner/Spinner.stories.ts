@@ -6,12 +6,11 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { number, select, boolean, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/spinner/Spinner";
-import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
 
 export default {
   title: "Components/Spinner",
@@ -29,13 +28,12 @@ export default {
 
 export const Spinner = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const size = number("Size", 20);
 
   return html`
-    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${darkTheme} theme=${theme}>
       <md-spinner .size="${size}"></md-spinner>
     </md-theme>
   `;
-}
+};

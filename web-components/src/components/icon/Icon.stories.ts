@@ -39,7 +39,8 @@ export default {
 };
 
 export const Icon = () => {
-  const darkTheme = boolean("darkMode", false);
+  const enable = boolean("Design Enabled", false);
+  const darkTheme = boolean("Dark Mode", false);
   const lumos = boolean("Lumos Theme", false);
   const theme = select("Theme name", ThemeNameValues, "");
   const name = select("Name", iconNames, "arrow-up_16");
@@ -60,9 +61,11 @@ export const Icon = () => {
         .type=${type}
         .size=${size}
         .sizeOverrided=${sizeOverrided}
-        @icon-click=${(action('dispatchEvent'))}>
+        .override=${override}
+        .designEnabled=${enable}
+        @icon-click=${action("dispatchEvent")}
+      >
       </md-icon>
     </md-theme>
   `;
-}
-
+};

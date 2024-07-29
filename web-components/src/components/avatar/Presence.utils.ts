@@ -1,12 +1,12 @@
 type ReturnType = {
-  presenceIcon?: string | undefined;
-  presenceColor?: string | undefined;
+  presenceIcon: string | undefined;
+  presenceColor: string | undefined;
   isCircularWrapper?: boolean;
 };
 
 export const getPresenceIconColor = (presenceType: string, failureBadge: boolean): ReturnType => {
-  let presenceIcon: string = "";
-  let presenceColor: string = "";
+  let presenceIcon = "";
+  let presenceColor = "";
   let isCircularWrapper = true;
 
   //TODO: temporary fix until design gives proper design spec for failure badge
@@ -15,7 +15,11 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
     presenceColor = "var(--mds-color-theme-indicator-attention)";
   } else {
     if (!presenceType || presenceType === "") {
-      return {};
+      return {
+        presenceIcon: undefined,
+        presenceColor: undefined,
+        isCircularWrapper: undefined
+      };
     }
 
     switch (presenceType) {

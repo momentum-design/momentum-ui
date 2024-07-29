@@ -9,14 +9,13 @@
 import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
 import "@/components/input/Input";
-import "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
-import { html } from "lit-element";
 import "@/components/menu-overlay/MenuOverlay";
-import { menuOverlayPlacement, menuOverlaySize, menuOverlayRole } from "./MenuOverlay"; // Keep type import as a relative path
 import { ThemeNameValues } from "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
+import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
   title: "Components/Menu Overlay",
@@ -39,21 +38,19 @@ export default {
 
 export const MenuOverlay = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const isOpen = boolean("isOpen", false);
-  const disabled = boolean("Disabled", false)
+  const disabled = boolean("Disabled", false);
   const placement = select("placement", menuOverlayPlacement, "bottom");
-  const showArrow = boolean("Show Arrow", false)
+  const showArrow = boolean("Show Arrow", false);
   const size = select("size", menuOverlaySize, "large");
   const maxHeight = text("max height", "");
   const customWidth = text("custom width", "");
   const ariaRole = select("ariaRole", menuOverlayRole, "menu");
   const ariaLabel = text("AriaLabel", "Link Storybook");
 
-
   return html`
-    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} theme=${theme}>
       <md-menu-overlay
         style="margin: 10rem"
         placement=${placement}
@@ -65,8 +62,8 @@ export const MenuOverlay = () => {
         ?is-open=${isOpen}
         ?show-arrow=${showArrow}
         ?disabled=${disabled}
-        @menu-overlay-open=${(action('click open'))}
-        @menu-overlay-close=${(action('click close'))}
+        @menu-overlay-open=${action("click open")}
+        @menu-overlay-close=${action("click close")}
       >
         <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
         <div style="padding:1.25rem ; width: 100%;">
@@ -89,4 +86,3 @@ export const MenuOverlay = () => {
     </md-theme>
   `;
 };
-

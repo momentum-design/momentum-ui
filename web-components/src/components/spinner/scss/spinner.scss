@@ -7,10 +7,11 @@
   line-height: 1rem;
 
   .md-spinner {
-    @include spinner-style();
     border-radius: 50%;
     display: block;
     position: relative;
+    // Declarations before nested rules
+    @include spinner-style();
 
     &::after {
       animation: load8 1s infinite linear;
@@ -47,4 +48,3 @@
     }
   }
 }
-

@@ -6,12 +6,11 @@
  *
  */
 
- import { withA11y } from "@storybook/addon-a11y";
-import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/chat-message/ChatMessage";
-import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
 
 export default {
   title: "Components/Chat Message",
@@ -26,17 +25,16 @@ export default {
 
 export const ChatMessage = () => {
   const darkTheme = boolean("Dark Theme", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const title = text("title", "John Doe");
   const message = text("message", "I have issue with my silencer");
   const selfMode = boolean("Self", false);
 
   return html`
-  <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
-    <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
-      <p slot="message">${message}</p>
-    </md-chat-message>
-  </md-theme>
+    <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
+        <p slot="message">${message}</p>
+      </md-chat-message>
+    </md-theme>
   `;
 };

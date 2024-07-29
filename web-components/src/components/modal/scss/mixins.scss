@@ -37,12 +37,6 @@
       min-height: $min-height;
     }
 
-    @if $radius==true {
-      @include radius($modal__radius);
-    } @else if $radius {
-      @include radius($radius);
-    }
-
     @if $top-offset {
       max-height: calc(100vh - (#{$top-offset} * 2));
     } @else {
@@ -52,6 +46,12 @@
     @if $border-width !=false {
       border-style: solid;
       border-width: $border-width;
+    }
+
+    @if $radius==true {
+      @include radius($modal__radius);
+    } @else if $radius {
+      @include radius($radius);
     }
   }
 }

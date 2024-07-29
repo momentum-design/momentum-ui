@@ -1,5 +1,5 @@
 import * as webpack from "webpack";
-import { commonDev } from '../webpack.config';
+import { commonDev } from "../webpack.config";
 
 /**
  * merge two arrays into one and remove the duplicates
@@ -9,9 +9,7 @@ import { commonDev } from '../webpack.config';
  * @returns {Array<any>} merged unique array
  */
 const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
-  mergee ?
-    merger.concat(mergee.filter((item: any) => merger.indexOf(item) === -1)) :
-    merger;
+  mergee ? merger.concat(mergee.filter((item: any) => merger.indexOf(item) === -1)) : merger;
 
 module.exports = {
   stories: [
@@ -22,54 +20,48 @@ module.exports = {
   ],
 
   addons: [
-    "@storybook/addon-knobs/register",
-    "@storybook/addon-a11y/register",
+    "@storybook/addon-knobs",
+    "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "@storybook/addon-controls",
     "@storybook/addon-actions",
-    "@storybook/addon-viewport"
+    "@storybook/addon-viewport",
+    "@storybook/addon-postcss"
   ],
 
-  webpackFinal: async (storybookConfig: webpack.Configuration, { configType }: { configType : "DEVELOPMENT" | "PRODUCTION" }) => {
-
+  webpackFinal: async (
+    storybookConfig: webpack.Configuration,
+    { configType }: { configType: "DEVELOPMENT" | "PRODUCTION" }
+  ) => {
     console.log("Storybook build mode: ", configType);
 
     // RESOLVE
-    {
-      storybookConfig.resolve = storybookConfig.resolve || {};
+    storybookConfig.resolve = storybookConfig.resolve || {};
 
-      // EXTENSIONS
-      {
-        storybookConfig.resolve.extensions = mergeUnique(storybookConfig.resolve?.extensions || [], commonDev.resolve?.extensions || []);
-      }
+    // EXTENSIONS
+    storybookConfig.resolve.extensions = mergeUnique(
+      storybookConfig.resolve?.extensions || [],
+      commonDev.resolve?.extensions || []
+    );
 
-      // ALIAS
-      {
-        storybookConfig.resolve.alias = commonDev.resolve?.alias;
-      }
-    }
+    // ALIAS
+    storybookConfig.resolve.alias = commonDev.resolve?.alias;
 
     // MODULE
-    {
-      storybookConfig.module = storybookConfig.module || { rules: [] };
+    storybookConfig.module = storybookConfig.module || { rules: [] };
 
-      // RULES
-      {
-        storybookConfig.module.rules = mergeUnique(storybookConfig.module.rules, commonDev.module?.rules || []);
-      }
-    }
+    // RULES
+    storybookConfig.module.rules = mergeUnique(storybookConfig.module.rules, commonDev.module?.rules || []);
 
     // PLUGINS
-    {
 
-      // Storybook production has it's own tuned HtmlWebpackPlugin
-      const omitPluginNames = (configType === "DEVELOPMENT") ? [] : ["HtmlWebpackPlugin"];
+    // Storybook production has it's own tuned HtmlWebpackPlugin
+    const omitPluginNames = configType === "DEVELOPMENT" ? [] : ["HtmlWebpackPlugin"];
+    
+    const plugins = (commonDev.plugins || []).filter(p => omitPluginNames.indexOf(p.constructor.name) === -1);
 
-      const plugins = (commonDev.plugins || []).filter(p => omitPluginNames.indexOf(p.constructor.name) === -1);
-
-      storybookConfig.plugins = mergeUnique(storybookConfig.plugins || [], plugins);
-    }
+    storybookConfig.plugins = mergeUnique(storybookConfig.plugins || [], plugins);
 
     return storybookConfig;
   }
-}
+};

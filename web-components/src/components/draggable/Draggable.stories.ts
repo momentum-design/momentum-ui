@@ -9,6 +9,7 @@
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, color, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -36,8 +37,7 @@ export default {
 
 export const Draggable = () => {
   const darkTheme = boolean("Dark Mode", false);
-  const lumosTheme = boolean("Lumos Theme", false);
-
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const leftSort = boolean("Allow sorting inside left draggable list", false, "Left List");
   const leftDisabled = boolean("Disables the left sortable", false, "Left List");
   const leftFiltered = text("Left list items that will be filtered out", "md-draggable-item[disabled]", "Left List");
@@ -127,7 +127,7 @@ export const Draggable = () => {
         margin-right: 10px;
       }
     </style>
-    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} ?lumos=${lumosTheme}>
+    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} theme=${theme}>
       <div class="draggable-wrapper">
         <md-draggable
           ?sort=${leftSort}

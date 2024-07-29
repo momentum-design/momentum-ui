@@ -7,13 +7,15 @@
  */
 
 import reset from "@/wc_scss/reset.scss";
-import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
+import designMapping from "./momentum-ui-to-design-icons.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
+import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
 import "@/components/button/Button";
 import styles from "./scss/module.scss";
+import designStyles from "./scss/design_module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ifDefined } from "lit-html/directives/if-defined";
 
@@ -40,6 +42,11 @@ export namespace Icon {
     @property({ type: String }) ariaHidden: any;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
+    @property({ type: Boolean }) designEnabled = false; // enable design icon lookup
+    @property({ type: Boolean }) override = false; // use icon as design icon
+
+    private static designLookup = new Map(Object.entries(designMapping));
+    private design = false;
 
     _ariaLabel = "";
     @property({ type: String })
@@ -109,16 +116,55 @@ export namespace Icon {
       return {
         "md-combobox-input__icon": this.isComboBoxIcon,
         "md-combobox-input__icon--active": this.isComboBoxIcon && this.isActive,
-        [`${this.iconName}`]: !!this.iconName
+        [`${this.iconName}`]: !!this.iconName,
+        "design-font": !!this.design
       };
     }
 
-    get iconName() {
+    getIconName() {
       let iconName = this.name;
       iconName = iconName.startsWith("icon-") ? iconName.substring(5) : iconName;
+      return iconName;
+    }
+
+    handleOverride(iconName: string) {
+      this.design = true;
+      return `icon-${iconName}`;
+    }
+
+    handleEnabled(iconName: string) {
+      if (!ELEMENT.designLookup.has(iconName)) {
+        return this.handleOverride(iconName);
+      } else {
+        const iconValue = ELEMENT.designLookup.get(iconName);
+        if (iconValue !== undefined && iconValue !== "Unknown") {
+          this.design = true;
+          return `icon-${iconValue}`;
+        }
+      }
+      return null;
+    }
+
+    handleSizeOverride(iconName: string) {
+      return `${iconName.split("_")[0]}_${this.iconFontSize}`;
+    }
+
+    get iconName() {
+      const iconName = this.getIconName();
+
+      this.design = false;
+
+      if (this.override) {
+        return this.handleOverride(iconName);
+      } else if (this.designEnabled) {
+        const enabledResult = this.handleEnabled(iconName);
+        if (enabledResult) {
+          return enabledResult;
+        }
+      }
 
       if (this.sizeOverrided) {
-        return `${iconName.split("_")[0]}_${this.iconFontSize}`;
+        return this.handleSizeOverride(iconName);
       }
       return iconNames.includes(iconName) || iconName === ""
         ? `icon-${iconName}`
@@ -133,7 +179,7 @@ export namespace Icon {
     }
 
     static get styles() {
-      return [reset, styles];
+      return [reset, styles, designStyles];
     }
 
     handleIconClick(event: MouseEvent) {

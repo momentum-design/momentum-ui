@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "MomentumFontIcon";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/MomentumFontIcon.woff2?136efc57c43e46ec8a5abde29095cc25") format("woff2"),
+    url("../../fonts/MomentumFontIcon.woff?7dea9db1672c0d768f9959d047669fe3") format("woff");
+}
+
+@font-face {
   font-family: "momentum-ui-icons";
   font-style: normal;
   font-weight: normal;

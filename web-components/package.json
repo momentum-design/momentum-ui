@@ -71,7 +71,8 @@
     "papaparse": "^5.3.0",
     "sortablejs": "^1.13.0",
     "lit-virtualizer": "0.4.2",
-    "@momentum-design/tokens": "0.0.62"
+    "@momentum-design/tokens": "0.0.62",
+    "@momentum-design/icons": "0.0.145"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -114,7 +115,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "cssstats": "^3.4.1",    
+    "cssstats": "^3.4.1",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^3.1.2",
     "extract-loader": "^4.0.3",

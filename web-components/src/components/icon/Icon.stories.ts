@@ -38,10 +38,11 @@ export default {
 };
 
 export const Icon = () => {
-  const darkTheme = boolean("darkMode", false);
+  const darkTheme = boolean("Dark Mode", false);  
   const theme = select("Theme name", ThemeNameValues, "lumos");
   const name = select("Name", iconNames, "arrow-up_16");
   const color = text("Color", "red");
+  const enable = boolean("Design Enabled", false);
   const title = text("Title", "");
   const type = select("Type", iconType, "");
   const iconStyle = text("Icon Style", "");
@@ -56,8 +57,9 @@ export const Icon = () => {
         .color=${color}
         .iconStyle=${iconStyle}
         .type=${type}
-        .size=${size}
+        .size=${String(size)}
         .sizeOverrided=${sizeOverrided}
+        ?designEnabled=${enable}
         @icon-click=${action("dispatchEvent")}
       >
       </md-icon>

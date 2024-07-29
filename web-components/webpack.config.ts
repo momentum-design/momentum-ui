@@ -123,7 +123,6 @@ export const commonDev = merge(common, {
     }),
     new CopyWebpackPlugin([
       { from: `${pDesign}/dist/fonts`, to: "icons/fonts" },
-      { from: `${pDesign}/dist/fonts`, to: "css/dist/fonts" },
       { from: `${pDesign}/dist/fonts`, to: "fonts" },
       { from: `${pDesign}/dist/data/MomentumFontIcons.css`, to: "css" },
       { from: `${pDesign}/dist/data/MomentumFontIcons.min.css`, to: "css" },

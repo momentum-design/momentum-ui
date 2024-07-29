@@ -72,7 +72,7 @@
     "sortablejs": "^1.13.0",
     "lit-virtualizer": "0.4.2",
     "@momentum-design/tokens": "0.0.62",
-    "@momentum-design/icons": "0.0.144"
+    "@momentum-design/icons": "0.0.145"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

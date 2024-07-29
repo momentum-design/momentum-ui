@@ -112,6 +112,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-agent-history-bg-color: transparent;
 
   --md-nav-divider-primary: #{$mds-color-theme-gradientdivider-default-normal};
+  --md-nav-divider-primary-hover: #{$mds-color-theme-gradientdivider-default-normal};
  
   // Background colours can not be overwritten because they are being used by consumers in unexpected ways
   // New background colours should be introduced and these phased out

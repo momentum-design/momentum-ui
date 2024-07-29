@@ -6,8 +6,8 @@
  *
  */
 
+import "@/components/badge/Badge";
 import "@/components/card/Card";
-import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
@@ -30,8 +30,7 @@ const cardMenu = ["Edit", "View", "Duplicate", "Delete"];
 
 export const Card = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const menu = array("Menu Items", cardMenu);
   const id = text("ID", "12345678");
   const title = text("Title", "Team A Report - Q1");
@@ -41,7 +40,7 @@ export const Card = () => {
   const info = text("Info", "Lorem Ipsum is simply sample text of the printing and typesetting industry.");
 
   return html`
-    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} theme=${theme}>
       <md-card
         .menuOptions=${menu}
         id=${id}

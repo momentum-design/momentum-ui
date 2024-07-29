@@ -8,7 +8,6 @@
 
 import "@/components/list/List";
 import "@/components/list/ListItem";
-import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
@@ -38,15 +37,14 @@ const options = {
 
 export const List = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const disabled = boolean("Disabled", false);
   const selected = number("Preselected", 2);
   const alignment = select("Orientation", options, "vertical");
   const shape = select("Shape", ["pill", "rounded"], "rounded");
 
   return html`
-    <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="list" ?darkTheme=${darkTheme} theme=${theme}>
       <md-list
         @list-item-change=${action("change")}
         label="Transuranium elements"

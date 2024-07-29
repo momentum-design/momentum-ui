@@ -6,15 +6,14 @@
  *
  */
 
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import "@/components/icon/Icon";
 import "@/components/input/Input";
-import "@/components/theme/Theme";
-import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
-import { action } from '@storybook/addon-actions';
 import { ThemeNameValues } from "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
+import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 
 export default {
   title: "Components/Input",
@@ -40,33 +39,31 @@ export default {
 };
 
 const messageArr = [
-    {
-      label: "",
-      message: "",
-      type: "default"
-    },
-    {
-      label: "Success",
-      message: "This is where the success message.",
-      type: "success"
-    },
-    {
-      label: "Warning",
-      message: "This is where the warning message.",
-      type: "warning"
-    },
-    {
-      label: "Error",
-      message: "This is where the error message.",
-      type: "error"
-    }
-  ];
-
+  {
+    label: "",
+    message: "",
+    type: "default"
+  },
+  {
+    label: "Success",
+    message: "This is where the success message.",
+    type: "success"
+  },
+  {
+    label: "Warning",
+    message: "This is where the warning message.",
+    type: "warning"
+  },
+  {
+    label: "Error",
+    message: "This is where the error message.",
+    type: "error"
+  }
+];
 
 export const Input = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const placeholder = text("Enter Text", "Enter Text");
   const label = text("Label", "Label");
   const value = text("Value Text", "Value Text");
@@ -88,17 +85,17 @@ export const Input = () => {
     const nested = select("Nested Level", nestedLevel, 1);
 
     return html`
-    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
-      <md-input label="Default Input"></md-input>
-      <md-input label="Input Nested Level" containerSize="small-12" .nestedLevel=${nested}></md-input>
-    </md-theme>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
+        <md-input label="Default Input"></md-input>
+        <md-input label="Input Nested Level" containerSize="small-12" .nestedLevel=${nested}></md-input>
+      </md-theme>
     `;
   } else if (hasIcon) {
     const position = select("Icon Position", iconPosition, "before");
     const nameIcon = select("Icon Name", iconNames, "accessibility_16");
 
     return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
         <md-input
           label="Input Icon"
           containerSize="small-12"
@@ -111,28 +108,28 @@ export const Input = () => {
     `;
   } else {
     return html`
-    <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
-      <md-input 
-        .label=${label} 
-        .placeholder=${placeholder} 
-        .messageArr=${[messageValue]}
-        .value=${value} 
-        .containerSize="${size}" 
-        .disabled=${disabled}
-        .shape=${shape}
-        ?readOnly=${readOnly}
-        ?multiline=${multiline}
-        .searchable=${searchable}
-        ?clear=${clear}
-        .secondaryLabel=${secondaryLabel}
-        .type=${type}
-        .helpText=${helpText}
-        @input-change=${(action('change'))}
-        @input-blur=${(action('focus out'))}
-        @input-focus=${(action('focus in'))}
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
+        <md-input
+          .label=${label}
+          .placeholder=${placeholder}
+          .messageArr=${[messageValue]}
+          .value=${value}
+          .containerSize="${size}"
+          .disabled=${disabled}
+          .shape=${shape}
+          ?readOnly=${readOnly}
+          ?multiline=${multiline}
+          .searchable=${searchable}
+          ?clear=${clear}
+          .secondaryLabel=${secondaryLabel}
+          .type=${type}
+          .helpText=${helpText}
+          @input-change=${action("change")}
+          @input-blur=${action("focus out")}
+          @input-focus=${action("focus in")}
         >
-      </md-input>
-    </md-theme>
+        </md-input>
+      </md-theme>
     `;
   }
 };

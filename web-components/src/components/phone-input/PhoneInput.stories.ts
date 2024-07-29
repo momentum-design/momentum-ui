@@ -1,9 +1,9 @@
 import "@/components/phone-input/PhoneInput";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "../theme/Theme";
-import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Phone Input",
@@ -18,8 +18,7 @@ export default {
 
 export const PhoneInput = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const pill = boolean("pill", false);
   const disabled = boolean("disabled", false);
   const showFlags = boolean("showFlags", false);
@@ -31,7 +30,7 @@ export const PhoneInput = () => {
   const errorMessage = text("errorMessage", "");
 
   return html`
-    <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="datetimepicker" ?darkTheme=${darkTheme} theme=${theme}>
       <md-phone-input
         ?pill=${pill}
         ?disabled=${disabled}

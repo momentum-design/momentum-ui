@@ -8,15 +8,13 @@
 
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, withKnobs, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
 import { action } from "@storybook/addon-actions";
-import { buttonColor, buttonSize, buttonTag, buttonType, buttonVariant, buttonRoles } from "./Button"; // Keep type import as a relative path
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
+import { buttonColor, buttonRoles, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path
 import mdx from "./Button.mdx";
-import { ifDefined } from "lit-html/directives/if-defined";
 
 export default {
   title: "Components/Button",
@@ -47,8 +45,7 @@ export default {
 
 export const Button = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const variant = select("Variant", buttonVariant, "secondary");
   const color = select("Color", buttonColor, "");
   const disabled = boolean("Disabled Mode", false);
@@ -59,9 +56,9 @@ export const Button = () => {
   const type = select("type", buttonType, "button");
   const ariaLabel = text("AriaLabel", "Button Storybook");
   const ariaLabelledBy = text("AriaLabelledBy", "");
-  const ariaExpanded = boolean("AriaExpanded", false);
-  const ariaHaspopup = boolean("AriaHaspopup", false);
-  const ariaPressed = boolean("AriaPressed", false);
+  const ariaExpanded = boolean("AriaExpanded", false) ? "true" : "false";
+  const ariaHaspopup = boolean("AriaHaspopup", false) ? "true" : "false";
+  const ariaPressed = boolean("AriaPressed", false) ? "true" : "false";
   const containerLarge = boolean("Container Large", false);
   const href = text("href", "");
   const label = text("label", "");
@@ -71,7 +68,7 @@ export const Button = () => {
   const role = select("role", buttonRoles, "button");
 
   return html`
-    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="button" ?darkTheme=${darkTheme} theme=${theme}>
       <md-button
         @button-click=${action("ditail")}
         variant=${variant}

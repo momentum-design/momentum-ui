@@ -450,8 +450,8 @@ export namespace MenuOverlay {
     render() {
       return html`
         ${this.getStyles()}
-        <div aria-expanded=${this.isOpen} class="md-menu-overlay">
-          <slot name="menu-trigger"></slot>
+        <div class="md-menu-overlay">
+          <slot name="menu-trigger" aria-expanded=${this.isOpen}></slot>
           <div
             part="overlay"
             class="overlay-container"

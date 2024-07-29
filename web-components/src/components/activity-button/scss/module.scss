@@ -27,18 +27,18 @@
 
   // Default styles applied outside of media query
   .md-button {
+    @include single-transition(background-color, $button__transition-speed, ease);
     @include button-base;
     @include button-size($height: rem-calc(36), $padding: $button__padding--36, $radius: $button__radius--36);
     @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
 
     &.md-button {
       &--circle {
-        @include radius($button__radius--round);
+        padding: 0;
 
         @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
 
-        padding: 0;
+        @include radius($button__radius--round);
 
         &[class*="--36"] {
           @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);

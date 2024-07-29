@@ -232,6 +232,7 @@
   blockquote {
     margin: 0 0 $paragraph-margin-bottom;
     padding: $blockquote-padding;
+    border-#{$default-float}: $blockquote-border;
 
     cite {
       color: $blockquote-cite-font-color;
@@ -247,7 +248,6 @@
         color: $blockquote-cite-link-color;
       }
     }
-    border-#{$default-float}: $blockquote-border;
   }
 
   blockquote,

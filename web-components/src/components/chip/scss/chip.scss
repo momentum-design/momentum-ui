@@ -3,8 +3,8 @@
 }
 
 .md-chip {
-  @include chip-base();
   @include badge-size;
+  @include chip-base();
 
   &--small {
     @include badge-size($padding: rem-calc(3 12));
@@ -357,9 +357,11 @@
   }
 
   &.md-chip--disabled {
-    @include chip-base();
     color: var(--md-disabled-text-color, $md-gray-40);
     cursor: default;
+
+    // Declarations before nested rules
+    @include chip-base();
 
     md-icon {
       color: var(--md-disabled-text-color, $md-gray-40);

@@ -54,34 +54,37 @@
   $padding: false,
   $radius: false
 ) {
-  font-size: $font-size;
-  line-height: $line-height;
+  // Declarations before nested rules
+  & {
+    font-size: $font-size;
+    line-height: $line-height;
+
+    @if $padding {
+      padding: $padding;
+    }
+
+    @if $full-width {
+      width: 100%;
+    }
+
+    @if $height {
+      height: $height;
+
+      @if $height == auto or $height == initial or $height == inherit {
+        $height: 100%;
+      }
+
+      .#{$prefix}-prepend {
+        margin-right: calc(#{$height} / 4);
+      }
+      .#{$prefix}-append {
+        margin-left: calc(#{$height} / 4);
+      }
+    }
+  }
 
   @if $radius {
     @include radius($radius);
-  }
-
-  @if $height {
-    height: $height;
-
-    @if $height == auto or $height == initial or $height == inherit {
-      $height: 100%;
-    }
-
-    .#{$prefix}-prepend {
-      margin-right: calc(#{$height} / 4);
-    }
-    .#{$prefix}-append {
-      margin-left: calc(#{$height} / 4);
-    }
-  }
-
-  @if $padding {
-    padding: $padding;
-  }
-
-  @if $full-width {
-    width: 100%;
   }
 }
 
@@ -118,9 +121,12 @@
   $opacity: false,
   $outline: false
 ) {
-  background-color: $bg;
-  border-color: transparent;
-  color: $color;
+  // Declarations before nested rules
+  & {
+    background-color: $bg;
+    border-color: transparent;
+    color: $color;
+  }
 
   &:hover {
     background-color: $bg-hover;
@@ -202,18 +208,20 @@
   &.disabled,
   &.md-button--disabled,
   &[disabled] {
-    &:hover,
-    &:focus {
-      background-color: $bg;
-      color: $color;
-      fill: $color;
-    }
+    // Declarations before nested rules
     @if $opacity {
       opacity: $opacity;
     } @else {
       color: $color;
       fill: $color;
       background-color: $bg;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $bg;
+      color: $color;
+      fill: $color;
     }
   }
 }

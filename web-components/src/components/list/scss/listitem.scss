@@ -3,14 +3,11 @@
   outline: none;
 }
 
-
-
 :host(md-list-item) {
   box-sizing: border-box;
   cursor: pointer;
 
   .md-list-item {
-    @include list-item;
     box-sizing: border-box;
     color: var(--list-text-color, $md-list-text-color-light);
     flex: 1 1 auto;
@@ -18,7 +15,10 @@
     line-height: $list-item__line-height;
     min-height: $list-item__min-height;
     padding: $list-item__padding;
-    position: relative;    
+    position: relative;
+
+    // Declarations before nested rules
+    @include list-item;
   }
 
   .md-list-item--pill {

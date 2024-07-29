@@ -13,16 +13,18 @@
 
   // Default styles applied outside of media query
   :host .md-button {
+    @include single-transition(background-color, $button__transition-speed, ease);
     @include button-base;
     @include button-size($height: rem-calc(36), $padding: $button__padding--36, $radius: $button__radius--36);
     @include button-color($focus: true);
-    @include single-transition(background-color, $button__transition-speed, ease);
-
     // default button - secondary styling
-    background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
+    // Declarations before nested rules
+    & {
+      background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
 
-    box-sizing: border-box;
-    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      box-sizing: border-box;
+      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    }
 
     &:hover {
       background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
@@ -88,6 +90,10 @@
 
     // Remove default button element styling
     &--none {
+      // Declarations before nested rules
+      box-shadow: none;
+      min-width: 0;
+
       @include button-color(
         $color: inherit,
         $bg: transparent,
@@ -95,14 +101,13 @@
         $bg-active: transparent,
         $color-disabled: $button__link-color--disabled
       );
+
       @include button-size($radius: 0, $padding: 0, $height: auto);
-      box-shadow: none;
-      min-width: 0;
     }
 
     &--size-none {
-      @include button-size($radius: 0, $padding: 0, $height: auto);
       min-width: 0;
+      @include button-size($radius: 0, $padding: 0, $height: auto);
     }
 
     &--28 {
@@ -136,16 +141,17 @@
     }
 
     &--circle {
-      @include radius($button__radius--round);
-      @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
-
       padding: 0;
+
+      @include button-circle-size($size: $button__size--36, $font-size: $button__font-size--36);
+      @include radius($button__radius--round);
 
       &::after {
         border-radius: $button__radius--round;
       }
 
       &[class*="--none"] {
+        @include button-circle-size($size: auto);
         @include button-color(
           $color: inherit,
           $bg: transparent,
@@ -153,7 +159,6 @@
           $bg-active: transparent,
           $color-disabled: $button__link-color--disabled
         );
-        @include button-circle-size($size: auto);
       }
 
       &[class*="--size-none"] {
@@ -491,14 +496,14 @@
     }
 
     &--link {
+      color: $anchor-font-color;
+
       @include button-color(
         $color: $button__font-color--alt,
         $bg: transparent,
         $bg-hover: $button__background-color--hover,
         $bg-active: $button__background-color--active
       );
-
-      color: $anchor-font-color;
     }
 
     &--color-none {
@@ -518,6 +523,8 @@
     }
 
     &.md-button--icon {
+      min-width: 0;
+
       @include button-color(
         $color: inherit,
         $bg: transparent,
@@ -532,8 +539,6 @@
         $fill-disabled: $button__link-color--disabled
       );
       @include button-size($radius: 0, $padding: 0, $height: auto);
-
-      min-width: 0;
 
       &.md-button--icon-white {
         @include button-color-fill(

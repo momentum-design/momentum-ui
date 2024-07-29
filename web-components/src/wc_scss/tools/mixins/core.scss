@@ -4,7 +4,10 @@
 // $radius - Default: $global-radius || 4px
 @mixin radius($radius: $global-radius) {
   @if $radius {
-    border-radius: $radius;
+    // Declarations before nested rules
+    & {
+      border-radius: $radius;
+    }
   }
 }
 
@@ -104,16 +107,7 @@
 // $color - icon color
 // $hover-color - icon color during hover
 // $offcanvas - Set to true of @include in offcanvas
-@mixin hamburger(
-  $width,
-  $left,
-  $top,
-  $thickness,
-  $gap,
-  $color,
-  $hover-color,
-  $offcanvas
-) {
+@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
   span::after {
     box-shadow: 0 0 0 $thickness $color, 0 $gap + $thickness 0 $thickness $color,
       0 (2 * $gap + 2 * $thickness) 0 $thickness $color;
@@ -128,24 +122,23 @@
         top: $top;
       } @else {
         top: 50%;
-        margin-top: (-$width*0.5);
+        margin-top: (-$width * 0.5);
       }
 
       @if $left {
         left: $left;
       } @else {
-        left: ($tabbar-menu-icon-width - $width)*0.5;
+        left: ($tabbar-menu-icon-width - $width) * 0.5;
       }
     } @else {
-      margin-top: -($width*0.5);
+      margin-top: -($width * 0.5);
       top: 50%;
       #{$opposite-direction}: $topbar-link-padding;
     }
   }
 
   span:hover::after {
-    box-shadow: 0 0 0 $thickness $hover-color,
-      0 $gap + $thickness 0 $thickness $hover-color,
+    box-shadow: 0 0 0 $thickness $hover-color, 0 $gap + $thickness 0 $thickness $hover-color,
       0 (2 * $gap + 2 * $thickness) 0 $thickness $hover-color;
   }
 }
@@ -169,11 +162,7 @@
 // $selector - Used for selector state. Default: focus, Options: hover, active, visited
 // $fade-time - Default: 300ms
 // $glowing-effect-color - Default: fade-out($md-theme-50, .25)
-@mixin block-glowing-effect(
-  $selector: focus,
-  $fade-time: 300ms,
-  $glowing-effect-color: fade-out($md-theme-50, 0.25)
-) {
+@mixin block-glowing-effect($selector: focus, $fade-time: 300ms, $glowing-effect-color: fade-out($md-theme-50, 0.25)) {
   transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
 
   &:#{$selector} {

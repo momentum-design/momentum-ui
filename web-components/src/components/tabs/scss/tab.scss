@@ -180,7 +180,7 @@ button {
 
   :host([selected]) button {
     border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
-    color: ButtonFace;
+    color: HighlightText;
     background-color: Highlight !important;
     forced-color-adjust: none;
 
@@ -206,10 +206,12 @@ button {
       outline-offset: -1px;
     }
   }
+
   button:focus:not(:disabled) {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }
+
   button:disabled {
     forced-color-adjust: none;
     background-color: none;

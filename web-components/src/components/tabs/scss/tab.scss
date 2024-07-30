@@ -179,9 +179,10 @@ button {
   }
 
   :host([selected]) button {
-    box-shadow: inset 0 -3px 0 0 Highlight;
     border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
-    color: Highlight;
+    color: ButtonFace;
+    background-color: Highlight !important;
+    forced-color-adjust: none;
 
     &:active {
       border-radius: $tab-focus-border-radius;

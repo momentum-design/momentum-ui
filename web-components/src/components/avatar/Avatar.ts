@@ -42,9 +42,9 @@ export namespace Avatar {
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
-    @internalProperty() public presenceColor = "";
-    @internalProperty() public presenceIcon = "";
-    @internalProperty() public isCircularWrapper = false;
+    @internalProperty() private presenceColor = "";
+    @internalProperty() private presenceIcon = "";
+    @internalProperty() private isCircularWrapper = false;
 
     static get styles() {
       return [reset, styles];
@@ -205,6 +205,7 @@ export namespace Avatar {
           ${this.newMomentum && this.type && this.type !== "self"
             ? html`
                 <md-presence
+                  class="avatar-presence"
                   name="${this.presenceIcon}"
                   color="${this.presenceColor}"
                   .isCircularWrapper=${this.isCircularWrapper}

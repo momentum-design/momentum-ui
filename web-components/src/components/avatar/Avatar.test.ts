@@ -146,8 +146,15 @@ describe("Avatar", () => {
 
     await element.updateComplete;
 
-    expect(element.presenceColor).toBe("var(--avatar-presence-active)");
-    expect(element.presenceIcon).toBe("unread-filled");
-    expect(element.isCircularWrapper).toBe(true);
+    const presenceIndicator = element.shadowRoot!.querySelector(".avatar-presence");
+    expect(presenceIndicator).not.toBeNull();
+    if (presenceIndicator) {
+      const computedStyle = window.getComputedStyle(presenceIndicator);
+      expect(computedStyle.color).toBe(
+        getComputedStyle(document.documentElement).getPropertyValue("--avatar-presence-active")
+      );
+      expect(presenceIndicator.getAttribute("name")).toBe("unread-badge_12");
+      expect(presenceIndicator.hasAttribute("isCircularWrapper"));
+    }
   });
 });

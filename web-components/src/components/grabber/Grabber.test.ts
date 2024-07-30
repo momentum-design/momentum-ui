@@ -20,7 +20,7 @@ describe("Grabber component", () => {
     expect(component).toBeDefined();
 
     const icon = component.shadowRoot?.querySelector("md-icon");
-    expect(icon?.getAttribute("name")).toEqual("arrow-right-optical_12");
+    expect(icon?.getAttribute("name")).toEqual("arrow-right-bold");
   });
 
   test("should set disabled grappber", async () => {
@@ -37,7 +37,7 @@ describe("Grabber component", () => {
     expect(element.checked).toBeTruthy;
 
     const icon = element.shadowRoot?.querySelector("md-icon");
-    expect(icon?.getAttribute("name")).toEqual("arrow-left-optical_12");
+    expect(icon?.getAttribute("name")).toEqual("arrow-left-bold");
   });
 
   test("should dispatch Action", async () => {

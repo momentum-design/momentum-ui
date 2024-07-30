@@ -93,16 +93,16 @@ export namespace Grabber {
         "md-grabber--active": this.checked,
         "md-grabber--disabled": this.disabled,
         [`md-grabber--${this.alignment}`]: this.alignment,
-        visible: this.visible || this.collapsed
+        visible: this.visible
       };
     }
 
     get iconName() {
       if (this.alignment === "leading" || this.alignment === "trailing") {
-        return this.checked ? "arrow-left-optical_12" : "arrow-right-optical_12";
+        return this.checked ? "arrow-left-bold" : "arrow-right-bold";
       }
 
-      return this.checked ? "arrow-up-optical_12" : "arrow-down-optical_12";
+      return this.checked ? "arrow-up-bold" : "arrow-down-bold";
     }
 
     render() {
@@ -120,7 +120,7 @@ export namespace Grabber {
           @mouseenter="${() => this.handleMouseEnter()}"
           @mouseleave="${() => this.handleMouseLeave()}"
         >
-          <md-icon name="${this.iconName}" size="12"></md-icon>
+          <md-icon name="${this.iconName}" size="12" designEnabled></md-icon>
         </button>
       `;
     }

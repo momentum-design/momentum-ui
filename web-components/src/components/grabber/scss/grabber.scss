@@ -76,6 +76,14 @@
     padding-bottom: 3px;
   }
 
+  &--top md-icon::part(icon) {
+    margin-top: 2px;
+  }
+
+  &--bottom md-icon::part(icon) {
+    margin-top: 2px;
+  }
+
   &:focus::after {
     box-shadow: $focus-boxshadow;
   }
@@ -96,35 +104,23 @@
 }
 
 @media (forced-colors: active) {
-  :host {
-    border: none;
-  }
-
+  
   .md-grabber {
-    background-color: ButtonFace;
+    background-color: Highlight;
+
+    &:hover {
+      background-color: Highlight;
+    }
+  
+    &:active {
+      background-color: Highlight;
+    }
 
     md-icon,
     md-icon::part(icon) {
-      color: ButtonText;
+      forced-color-adjust: none;
+      color: HighlightText;      
     }
 
-    &:focus {
-      outline: 2px solid Highlight;
-    }
-
-    &--disabled {
-      background-color: ButtonFace;
-      color: GrayText;
-
-      md-icon::part(icon) {
-        color: GrayText;
-      }
-    }
-
-    &--active {
-      md-icon::part(icon) {
-        color: ButtonText;
-      }
-    }
   }
 }

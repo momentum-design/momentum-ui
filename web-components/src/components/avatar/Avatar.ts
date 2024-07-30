@@ -6,9 +6,9 @@
  *
  */
 
+import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
-import "@/components/avatar/Presence";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
@@ -17,9 +17,9 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import styles from "./scss/module.scss";
 import { AvatarSize, AvatarType } from "./Avatar.constants";
 import { getPresenceIconColor } from "./Presence.utils";
+import styles from "./scss/module.scss";
 
 export namespace Avatar {
   export type Type = typeof AvatarType[number];
@@ -126,7 +126,7 @@ export namespace Avatar {
     private get avatarIcon() {
       return html`
         <span class="md-avatar__icon ${classMap(this.avatarStyleMap)}">
-          <md-icon .name=${this.iconName}></md-icon>
+          <md-icon .name=${this.iconName} ?designEnabled=${this.newMomentum}></md-icon>
         </span>
       `;
     }
@@ -187,7 +187,7 @@ export namespace Avatar {
           ${this.type === "self"
             ? html`
                 <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
-                  <md-icon .name=${this.chatIconName}></md-icon>
+                  <md-icon .name=${this.chatIconName} ?designEnabled=${this.newMomentum}></md-icon>
                 </span>
               `
             : this.src && !this.imageErrored
@@ -209,7 +209,8 @@ export namespace Avatar {
                   color="${this.presenceColor}"
                   .isCircularWrapper=${this.isCircularWrapper}
                   size="${this.size}"
-                />
+                >
+                </md-presence>
               `
             : nothing}
         </div>

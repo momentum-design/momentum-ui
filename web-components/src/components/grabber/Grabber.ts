@@ -63,7 +63,7 @@ export namespace Grabber {
     }
 
     handleKeyDown(e: KeyboardEvent) {
-      if (e.code === Key.Enter || e.code === Key.Space) {
+      if (e.code === Key.Enter || e.code === Key.Space || e.code === Key.NumpadEnter) {
         e.preventDefault();
         this.toggleGrabber();
       }

@@ -147,7 +147,7 @@ describe("Avatar", () => {
     await element.updateComplete;
 
     expect(element.presenceColor).toBe("var(--avatar-presence-active)");
-    expect(element.presenceIcon).toBe("unread-badge_12");
+    expect(element.presenceIcon).toBe("unread-filled");
     expect(element.isCircularWrapper).toBe(true);
   });
 });

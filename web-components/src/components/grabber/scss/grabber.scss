@@ -1,6 +1,14 @@
 :host {
   @include flex($display: inline-flex);
+}
+
+.md-grabber__container {
+  @include flex($display: inline-flex);
   overflow: hidden;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--md-default-focus-outline-color);    
+  }
 }
 
 .md-grabber {
@@ -27,6 +35,10 @@
     background-color: var(--grabber-pressed-bg-color);
   }
 
+  &:focus {
+    outline: none;
+  }
+
   &--leading,
   &--trailing {
     width: var(--grabber-width, 20px);
@@ -47,7 +59,7 @@
   &--top,
   &--bottom {
     width: 40px;
-    height: var(--grabber-width, 20px);;
+    height: var(--grabber-width, 20px);
     border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
     border: 1px solid var(--grabber-border-color);
     border-top-width: 0;
@@ -64,8 +76,8 @@
   md-icon,
   md-icon::part(icon) {
     color: var(--grabber-text-color);
-    width:fit-content;
-    height:fit-content;
+    width: fit-content;
+    height: fit-content;
   }
 
   &--leading md-icon::part(icon) {
@@ -76,16 +88,9 @@
     padding-bottom: 3px;
   }
 
-  &--top md-icon::part(icon) {
-    margin-top: 2px;
-  }
-
+  &--top md-icon::part(icon),
   &--bottom md-icon::part(icon) {
     margin-top: 2px;
-  }
-
-  &:focus::after {
-    box-shadow: $focus-boxshadow;
   }
 
   &--disabled {
@@ -100,18 +105,24 @@
       color: var(--button-disabled-text-color);
     }
   }
-
 }
 
 @media (forced-colors: active) {
-  
+
+  .md-grabber__container {
+    &:focus-within {
+      outline: 2px solid ButtonText;      
+      outline-offset: 1px;
+    }
+  }
+
   .md-grabber {
     background-color: Highlight;
 
     &:hover {
       background-color: Highlight;
     }
-  
+
     &:active {
       background-color: Highlight;
     }
@@ -119,8 +130,7 @@
     md-icon,
     md-icon::part(icon) {
       forced-color-adjust: none;
-      color: HighlightText;      
+      color: HighlightText;
     }
-
   }
 }

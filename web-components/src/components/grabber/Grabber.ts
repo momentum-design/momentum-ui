@@ -26,6 +26,7 @@ export namespace Grabber {
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) checked = false;
     @property({ type: Boolean }) visible = true;
+    @property({ type: Boolean }) focused = false;
     @property({ type: String, reflect: true }) alignment: "leading" | "trailing" | "top" | "bottom" = "leading";
 
     connectedCallback() {
@@ -57,6 +58,10 @@ export namespace Grabber {
       }
     }
 
+    handleMouseDownn(e: MouseEvent) {
+      this.toggleGrabber();
+    }
+
     handleKeyDown(e: KeyboardEvent) {
       if (e.code === Key.Enter || e.code === Key.Space) {
         e.preventDefault();
@@ -72,6 +77,14 @@ export namespace Grabber {
     handleMouseLeave() {
       this.hovered = false;
       this.dispatchHoverEvent();
+    }
+
+    handleFocus() {
+      this.focused = true;
+    }
+
+    handleBlur() {
+      this.focused = false;
     }
 
     dispatchHoverEvent() {
@@ -93,7 +106,7 @@ export namespace Grabber {
         "md-grabber--active": this.checked,
         "md-grabber--disabled": this.disabled,
         [`md-grabber--${this.alignment}`]: this.alignment,
-        visible: this.visible
+        visible: this.visible || this.focused
       };
     }
 
@@ -107,21 +120,25 @@ export namespace Grabber {
 
     render() {
       return html`
-        <button
-          class="md-grabber ${classMap(this.grabberClassMap)}"
-          aria-pressed=${this.checked}
-          ?disabled=${this.disabled}
-          tabindex="0"
-          aria-label=${ifDefined(this.label.length ? this.label : undefined)}
-          type="button"
-          role="button"
-          @click="${() => this.toggleGrabber()}"
-          @keydown="${(e: KeyboardEvent) => this.handleKeyDown(e)}"
-          @mouseenter="${() => this.handleMouseEnter()}"
-          @mouseleave="${() => this.handleMouseLeave()}"
-        >
-          <md-icon name="${this.iconName}" size="12" designEnabled></md-icon>
-        </button>
+        <div class="md-grabber__container">
+          <button
+            class="md-grabber ${classMap(this.grabberClassMap)}"
+            aria-pressed=${this.checked}
+            ?disabled=${this.disabled}
+            tabindex="0"
+            aria-label=${ifDefined(this.label.length ? this.label : undefined)}
+            type="button"
+            role="button"
+            @click="${(e: MouseEvent) => this.handleMouseDownn(e)}"
+            @keydown="${(e: KeyboardEvent) => this.handleKeyDown(e)}"
+            @mouseenter="${() => this.handleMouseEnter()}"
+            @mouseleave="${() => this.handleMouseLeave()}"
+            @focus="${() => this.handleFocus()}"
+            @blur="${() => this.handleBlur()}"
+          >
+            <md-icon name="${this.iconName}" size="12" designEnabled></md-icon>
+          </button>
+        </div>
       `;
     }
   }

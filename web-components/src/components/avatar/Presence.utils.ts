@@ -24,7 +24,7 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
 
     switch (presenceType) {
       case "active":
-        presenceIcon = "unread-badge_12";
+        presenceIcon = "unread-filled";
         presenceColor = "var(--avatar-presence-active)";
         break;
       case "meeting":
@@ -38,7 +38,7 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         isCircularWrapper = false;
         break;
       case "call":
-        presenceIcon = "handset_16";
+        presenceIcon = "handset-active_16";
         presenceColor = "var(--avatar-presence-unstable)";
         isCircularWrapper = false;
         break;
@@ -47,28 +47,33 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         presenceColor = "var(--avatar-presence-rona)";
         break;
       case "presenting":
-        presenceIcon = "content-share_16"; // share-screen
+        presenceIcon = "content-share_14";
         presenceColor = "var(--avatar-presence-rona)";
         isCircularWrapper = false;
         break;
       case "quiet-hours":
-        presenceIcon = "dnd-presence_14"; // quiet-presence
+        presenceIcon = "quiet-hours-presence-filled"; // quiet-presence
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "away":
         presenceIcon = "recents-presence_14";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
+      case "away-calling":
+        presenceIcon = "call-private-filled";
+        presenceColor = "var(--avatar-presence-inactive)";
+        isCircularWrapper = false;
+        break;
       case "ooo":
-        presenceIcon = "pto_16";
+        presenceIcon = "pto-presence-filled";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "busy":
-        presenceIcon = "unread-badge_12"; // busy-presence
+        presenceIcon = "busy-presence-bold"; // busy-presence
         presenceColor = "var(--avatar-presence-rona)";
         break;
       case "on-mobile":
-        presenceIcon = "phone-ios_16";
+        presenceIcon = "phone-filled";
         presenceColor = "var(--avatar-presence-inactive)";
         isCircularWrapper = false;
         break;
@@ -78,16 +83,16 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         isCircularWrapper = false;
         break;
       case "on-hold":
-        presenceIcon = "pause_16";
+        presenceIcon = "pause-badge-filled";
         presenceColor = "var(--avatar-presence-inactive)";
         isCircularWrapper = false;
         break;
       case "engaged":
-        presenceIcon = "unread-badge_12";
+        presenceIcon = "unread-filled";
         presenceColor = "var(--avatar-presence-engaged)";
         break;
       case "rona":
-        presenceIcon = "unread-badge_12";
+        presenceIcon = "unread-filled";
         presenceColor = "var(--avatar-presence-rona)";
         break;
       default:

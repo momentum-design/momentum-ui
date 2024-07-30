@@ -28,6 +28,7 @@ export namespace Presence {
             color="${this.color}"
             size=${AVATAR_PRESENCE_ICON_SIZE_MAPPING[this.size]}
             title="${this.title}"
+            designEnabled="true"
           />
         </div>
       `;

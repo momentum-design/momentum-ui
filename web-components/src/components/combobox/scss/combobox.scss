@@ -197,10 +197,12 @@ div#md-combobox-listbox {
     
     &:hover {
       background: unset;
+      color: var(--combobox-group-label-color);
     }
     
     &[focused] {
       background: var(--combobox-dropdown-item-focus-bg-color, $lm-combobox-dropdown-item-focus-bg-color-light);
+      color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
     }
 }
 
@@ -276,10 +278,10 @@ div#md-combobox-listbox {
   }
 
   &[focused] {
-    border: 2px solid var(--combobox-dropdown-item-focus-border-color, $lm-combobox-dropdown-item-focus-bg-color-light);
+    border: 2px solid var(--md-default-focus-outline-color);
   }
   &[selected="true"] {
-    background: var(--combobox-dropdown-item-select-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);
+    background: var(--combobox-dropdown-item-selected-bg-color, $lm-combobox-dropdown-item-selected-bg-color-light);
     color: var(--combobox-dropdown-item-select-font-color, $lm-combobox-dropdown-item-select-font-color-light);
     .select-option {
       border: 1px solid #fff;

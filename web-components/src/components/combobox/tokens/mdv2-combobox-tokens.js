@@ -62,6 +62,9 @@ const combobox = {
       "select-font-color": {
         common: "$mds-color-theme-text-primary-normal"
       },
+      "selected-bg-color": {
+        common: "$mds-color-theme-background-primary-active"
+      },
       "checked-bg-color": {
         common: "$mds-color-theme-control-active-normal"
       },

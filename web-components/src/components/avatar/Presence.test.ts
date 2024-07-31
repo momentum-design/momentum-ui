@@ -100,6 +100,15 @@ describe("Presence", () => {
     });
   });
 
+  test("returns correct values for away calling presenceType", () => {
+    const result = getPresenceIconColor("away-calling", false);
+    expect(result).toEqual({
+      presenceIcon: "call-private-filled",
+      presenceColor: "var(--avatar-presence-inactive)",
+      isCircularWrapper: false
+    });
+  });
+
   test("returns correct values for pto presenceType", () => {
     const result = getPresenceIconColor("ooo", false);
     expect(result).toEqual({

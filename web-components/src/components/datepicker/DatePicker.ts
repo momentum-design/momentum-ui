@@ -42,6 +42,7 @@ export namespace DatePicker {
     @property({ type: Boolean }) required = false;
     @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
+    @property({ type: Boolean }) isMenuOverlayOpen = false;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -110,6 +111,7 @@ export namespace DatePicker {
 
     setOpen = (open: boolean) => {
       this.menuOverlay.isOpen = open;
+      this.isMenuOverlayOpen = open;
     };
 
     handleSelect = (e: CustomEvent) => {
@@ -243,6 +245,8 @@ export namespace DatePicker {
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
+                  ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
+                  ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"
                   required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}

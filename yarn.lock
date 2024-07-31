@@ -4741,9 +4741,9 @@ available-typed-arrays@^1.0.7:
     possible-typed-array-names "^1.0.0"
 
 aws-sdk@^2.538.0:
-  version "2.1664.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1664.0.tgz#c6fbbf87fa969c2ba547fe3b33f8cd1db1ad00eb"
-  integrity sha512-S2IA1cCGz38d8ZKsuQGwlK3LE+9cXFt7OFsSGQtKX1Mc40xFXpiqQy7jX1r0vZIiy9ZMnxeTcBPM28G/yYu2kA==
+  version "2.1665.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1665.0.tgz#032812eb4b8d4ad197aa03f749787f7f89f7ec4c"
+  integrity sha512-IhEcdGmiplF3l/pCROxEYIdi0s+LZ2VkbMAq3RgoXTHxY5cgqVRNaqsEsgIHev2Clxa9V08HttnIERTIUqb1+Q==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -5926,14 +5926,14 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30001644"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001644.tgz#7a02ed5bdf4f58dd2d82ed92c5ecd65b3e15cf03"
-  integrity sha512-OlqZDIvlcyBAasO9Qk5dW7+4SxNgtgqOesj6rxWF/OD8fZD5Z8mpCNizy9JzAZNkOra1udaYIH1hAR1r8m8cqw==
+  version "1.0.30001645"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001645.tgz#4c14be8b0c15e09531289d661cbb1f931dcf8c6f"
+  integrity sha512-UAViO9bQ1G9VWHohQKhf4hkJfH5ABLLpmbI5hLXqq1yrW/2n7m2cccMWbA9nSxkqvDS1FeEGvThz8hCjXckT2g==
 
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001640:
-  version "1.0.30001644"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001644.tgz#bcd4212a7a03bdedba1ea850b8a72bfe4bec2395"
-  integrity sha512-YGvlOZB4QhZuiis+ETS0VXR+MExbFf4fZYYeMTEE0aTQd/RdIjkTyZjLrbYVKnHzppDvnOhritRVv+i7Go6mHw==
+  version "1.0.30001645"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001645.tgz#4c4b7427683dea1170a152cd1654be8d0da7bd71"
+  integrity sha512-GFtY2+qt91kzyMk6j48dJcwJVq5uTkk71XxE3RtScx7XWRLsO7bU44LOFkOZYR8w9YMS0UhPSYpN/6rAMImmLw==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -8342,9 +8342,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.4.820:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.3.tgz#032bbb8661c0449656fd896e805c8f7150229a0f"
-  integrity sha512-QNdYSS5i8D9axWp/6XIezRObRHqaav/ur9z1VzCDUCH1XIFOr9WQk5xmgunhsTpjjgDy3oLxO/WMOVZlpUQrlA==
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.4.tgz#cd477c830dd6fca41fbd5465c1ff6ce08ac22343"
+  integrity sha512-orzA81VqLyIGUEA77YkVA1D+N+nNfl2isJVjjmOyrlxuooZ19ynb+dOlaDTqd/idKRS9lDCSBmtzM+kyCsMnkA==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"

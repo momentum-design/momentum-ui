@@ -153,7 +153,7 @@ describe("Avatar", () => {
       expect(computedStyle.color).toBe(
         getComputedStyle(document.documentElement).getPropertyValue("--avatar-presence-active")
       );
-      expect(presenceIndicator.getAttribute("name")).toBe("unread-badge_12");
+      expect(presenceIndicator.getAttribute("name")).toBe("unread-filled");
       expect(presenceIndicator.hasAttribute("isCircularWrapper"));
     }
   });

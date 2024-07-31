@@ -31,7 +31,7 @@ describe("Presence", () => {
   test("returns correct values for active presenceType", () => {
     const result = getPresenceIconColor("active", false);
     expect(result).toEqual({
-      presenceIcon: "unread-badge_12",
+      presenceIcon: "unread-filled",
       presenceColor: "var(--avatar-presence-active)",
       isCircularWrapper: true
     });
@@ -46,7 +46,7 @@ describe("Presence", () => {
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for schedule presenceType", () => {
     const result = getPresenceIconColor("schedule", false);
     expect(result).toEqual({
       presenceIcon: "meetings-presence_14",
@@ -55,16 +55,16 @@ describe("Presence", () => {
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for call presenceType", () => {
     const result = getPresenceIconColor("call", false);
     expect(result).toEqual({
-      presenceIcon: "handset_16",
+      presenceIcon: "handset-active_16",
       presenceColor: "var(--avatar-presence-unstable)",
       isCircularWrapper: false
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for dnd presenceType", () => {
     const result = getPresenceIconColor("dnd", false);
     expect(result).toEqual({
       presenceIcon: "dnd-presence_14",
@@ -73,25 +73,25 @@ describe("Presence", () => {
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for presenting presenceType", () => {
     const result = getPresenceIconColor("presenting", false);
     expect(result).toEqual({
-      presenceIcon: "content-share_16",
+      presenceIcon: "content-share_14",
       presenceColor: "var(--avatar-presence-rona)",
       isCircularWrapper: false
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for quiet hours presenceType", () => {
     const result = getPresenceIconColor("quiet-hours", false);
     expect(result).toEqual({
-      presenceIcon: "dnd-presence_14",
+      presenceIcon: "quiet-hours-presence-filled",
       presenceColor: "var(--avatar-presence-inactive)",
       isCircularWrapper: true
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for away presenceType", () => {
     const result = getPresenceIconColor("away", false);
     expect(result).toEqual({
       presenceIcon: "recents-presence_14",
@@ -100,34 +100,43 @@ describe("Presence", () => {
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
-    const result = getPresenceIconColor("ooo", false);
+  test("returns correct values for away calling presenceType", () => {
+    const result = getPresenceIconColor("away-calling", false);
     expect(result).toEqual({
-      presenceIcon: "pto_16",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: true
-    });
-  });
-
-  test("returns correct values for meeting presenceType", () => {
-    const result = getPresenceIconColor("busy", false);
-    expect(result).toEqual({
-      presenceIcon: "unread-badge_12", // busy-presence
-      presenceColor: "var(--avatar-presence-rona)",
-      isCircularWrapper: true
-    });
-  });
-
-  test("returns correct values for meeting presenceType", () => {
-    const result = getPresenceIconColor("on-mobile", false);
-    expect(result).toEqual({
-      presenceIcon: "phone-ios_16",
+      presenceIcon: "call-private-filled",
       presenceColor: "var(--avatar-presence-inactive)",
       isCircularWrapper: false
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for pto presenceType", () => {
+    const result = getPresenceIconColor("ooo", false);
+    expect(result).toEqual({
+      presenceIcon: "pto-presence-filled",
+      presenceColor: "var(--avatar-presence-inactive)",
+      isCircularWrapper: true
+    });
+  });
+
+  test("returns correct values for busy presenceType", () => {
+    const result = getPresenceIconColor("busy", false);
+    expect(result).toEqual({
+      presenceIcon: "busy-presence-bold",
+      presenceColor: "var(--avatar-presence-rona)",
+      isCircularWrapper: true
+    });
+  });
+
+  test("returns correct values for on mobile presenceType", () => {
+    const result = getPresenceIconColor("on-mobile", false);
+    expect(result).toEqual({
+      presenceIcon: "phone-filled",
+      presenceColor: "var(--avatar-presence-inactive)",
+      isCircularWrapper: false
+    });
+  });
+
+  test("returns correct values for on device presenceType", () => {
     const result = getPresenceIconColor("on-device", false);
     expect(result).toEqual({
       presenceIcon: "generic-device-video_16",
@@ -139,25 +148,25 @@ describe("Presence", () => {
   test("returns correct values for meeting presenceType", () => {
     const result = getPresenceIconColor("on-hold", false);
     expect(result).toEqual({
-      presenceIcon: "pause_16",
+      presenceIcon: "pause-badge-filled",
       presenceColor: "var(--avatar-presence-inactive)",
       isCircularWrapper: false
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for engaged presenceType", () => {
     const result = getPresenceIconColor("engaged", false);
     expect(result).toEqual({
-      presenceIcon: "unread-badge_12",
+      presenceIcon: "unread-filled",
       presenceColor: "var(--avatar-presence-engaged)",
       isCircularWrapper: true
     });
   });
 
-  test("returns correct values for meeting presenceType", () => {
+  test("returns correct values for rona presenceType", () => {
     const result = getPresenceIconColor("rona", false);
     expect(result).toEqual({
-      presenceIcon: "unread-badge_12",
+      presenceIcon: "unread-filled",
       presenceColor: "var(--avatar-presence-rona)",
       isCircularWrapper: true
     });

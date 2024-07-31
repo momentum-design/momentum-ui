@@ -177,6 +177,7 @@ export namespace Input {
     @property({ type: String }) type: Input.Type = "text";
     @property({ type: String, reflect: true }) value = "";
     @property({ type: String }) ariaControls = "";
+    @property({ type: String }) ariaExpanded = "";
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -302,7 +303,7 @@ export namespace Input {
           }
         })
       );
-      document.dispatchEvent(new CustomEvent('on-widget-update')); 
+      document.dispatchEvent(new CustomEvent("on-widget-update"));
       this.handleChange(event);
     }
 
@@ -359,6 +360,10 @@ export namespace Input {
       };
     }
 
+    get ariaExpandedValue() {
+      return this.ariaExpanded === "true" || this.ariaExpanded === "false" ? this.ariaExpanded : "undefined";
+    }
+
     inputTemplate() {
       return this.multiline
         ? html`
@@ -401,6 +406,7 @@ export namespace Input {
               .value=${this.value}
               aria-describedby=${this.ariaDescribedBy}
               aria-controls=${this.ariaControls}
+              aria-expanded=${this.ariaExpandedValue}
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage=${`${this.htmlId}-message`}

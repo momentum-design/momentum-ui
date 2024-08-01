@@ -98,10 +98,12 @@ export class GrabberTemplateSandbox extends LitElement {
         }
 
         .divider {
-          width: 1px;
-          height: calc(100% - 48px);
-          margin-top: 24px;
-          margin-bottom: 24px;
+          height: 1px;
+          width: calc(100% - 48px);
+          margin-left: 24px;
+          margin-right: 24px;
+          transform: rotate(90deg);
+          transform-origin: left top;
           background: var(--md-nav-divider-primary);
         }
       </style>

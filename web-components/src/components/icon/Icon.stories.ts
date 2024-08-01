@@ -6,15 +6,14 @@
  *
  */
 
+import "@/components/icon/Icon";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import "@/components/icon/Icon";
-import "@/components/theme/Theme";
 import { iconSize, iconType } from "./Icon"; // Keep type import as a relative path
-import { action } from '@storybook/addon-actions';
-import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Icon",
@@ -39,11 +38,11 @@ export default {
 };
 
 export const Icon = () => {
-  const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const darkTheme = boolean("Dark Mode", false);  
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const name = select("Name", iconNames, "arrow-up_16");
   const color = text("Color", "red");
+  const enable = boolean("Design Enabled", false);
   const title = text("Title", "");
   const type = select("Type", iconType, "");
   const iconStyle = text("Icon Style", "");
@@ -51,18 +50,19 @@ export const Icon = () => {
   const sizeOverrided = boolean("Size Override", false);
 
   return html`
-    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} theme=${theme}>
       <md-icon
         .name=${`icon-${name}`}
         .title=${title}
         .color=${color}
         .iconStyle=${iconStyle}
         .type=${type}
-        .size=${size}
+        .size=${String(size)}
         .sizeOverrided=${sizeOverrided}
-        @icon-click=${(action('dispatchEvent'))}>
+        ?designEnabled=${enable}
+        @icon-click=${action("dispatchEvent")}
+      >
       </md-icon>
     </md-theme>
   `;
-}
-
+};

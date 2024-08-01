@@ -72,6 +72,7 @@ export namespace Radio {
             class="md-radio-input"
             type="radio"
             aria-label=${ifDefined(this.ariaLabel.length ? this.ariaLabel : undefined)}
+            aria-checked=${this.checked ? "true" : "false"}
             .value=${this.value}
             ?checked=${this.checked}
             ?autofocus=${this.autofocus}

@@ -57,7 +57,21 @@ export const buttonRoles = [
   "switch",
   "tab"
 ] as const;
-export const buttonVariant = ["primary", "secondary", "red", "green", "white", "darkGrey", "promotional"] as const;
+export const buttonVariant = [
+  "primary",
+  "secondary",
+  "red",
+  "green",
+  "ghost",
+  "white",
+  "darkGrey",
+  "promotional",
+  "tab",
+  "available",
+  "unavailable",
+  "engaged",
+  "idle"
+] as const;
 export const buttonColor = [
   "blue",
   "red",
@@ -95,7 +109,7 @@ export namespace Button {
     ariaLive?: string;
     ariaExpanded?: boolean;
     ariaHaspopup?: boolean;
-    ariaPressed?: String;
+    ariaPressed?: string;
     ariaCurrent?: boolean;
     tag: Tag;
     loading: boolean;
@@ -155,6 +169,7 @@ export namespace Button {
     @property({ type: String }) maxWidth = "";
     @property({ type: String }) activityType = "";
     @property({ type: Boolean }) iconActive = false;
+    @property({ type: Boolean }) isActive = false;
     @property({ attribute: false }) clickFunction: Function | null = null;
 
     @query(".md-button") button!: HTMLButtonElement;
@@ -225,6 +240,7 @@ export namespace Button {
         "md-button--outline": this.outline,
         active: this.active && !this.disabled,
         disabled: this.disabled && !this.active,
+        isActive: this.isActive,
         [`md-button--${this.size}`]: !this.hasRemoveStyle,
         [`md-button--${this.color}`]: !this.hasRemoveStyle && !!this.color,
         [`md-activity__${this.activityType}`]: !!this.activityType,

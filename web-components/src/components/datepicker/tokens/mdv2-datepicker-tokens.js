@@ -1,49 +1,79 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
+const { inherits } = require("util");
 
 const datepicker = {
   prefix: "mdv2",
   component: "datepicker",
   default: {
+    navigation: {
+      label: {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      button: {
+        common: "$mds-color-theme-text-primary-normal"
+      }
+    },
+    days: {
+      common: "$mds-color-theme-text-secondary-normal"
+    },
+    number: {
+      color: {
+        common: "$mds-color-theme-text-primary-normal"
+      },
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-normal"
+      }
+    },
     hover: {
       "bg-color": {
-        light: colors.gray[20].name,
-        dark: colors.gray[70].name
+        common: "$mds-color-theme-button-secondary-hover"
       }
+    }
+  },
+  invalid: {
+    "text-color": {
+      common: "$mds-color-theme-text-primary-disabled"
     }
   },
   selected: {
-    today: {
-      "text-color": {
-        light: colors.white[100].name,
-        dark: colors.gray["05"].name
-      }
-    }
-  },
-  range: {
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      common: "$mds-color-theme-common-text-primary-normal"
+    },
+    today: {
+      border: {
+        common: "1px solid $mds-color-theme-outline-button-normal"
+      }
     },
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[60].name
+      common: "$mds-color-theme-background-accent-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.gray[30].name,
-        dark: colors.gray[70].name
+        common: "$mds-color-theme-button-accent-hover"
       }
     },
-    edge: {
-      "text-color": {
-        light: colors.gray["05"].name,
-        dark: colors.gray[100].name
-      },
+    pressed: {
       "bg-color": {
-        light: colors.gray[100].name,
-        dark: colors.gray["05"].name
+        common: "$mds-color-theme-button-accent-pressed"
+      }
+    }
+  },
+  hover: {
+    "bg-color": {
+      common: "$mds-color-theme-button-secondary-hover"
+    }
+  },
+  pressed: {
+    "bg-color": {
+      common: "$mds-color-theme-button-secondary-pressed"
+    }
+  },
+  range: {
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-normal"
       }
     }
   }

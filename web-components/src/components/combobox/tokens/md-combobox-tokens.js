@@ -69,6 +69,10 @@ const combobox = {
         light: colors.blue[70].name,
         dark: colors.blue[40].name
       },
+      "focus-border-color": {
+        light: colors.blue[70].name,
+        dark: colors.blue[40].name
+      },
       "select-bg-color": {
         light: colors.white[60].name,
         dark: colors.gray[90].name

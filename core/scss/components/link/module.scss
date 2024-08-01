@@ -17,7 +17,7 @@
 @import "../../generic/global";
 
 // Typography
-@include brand-font-face-regular
+@include brand-font-face-regular;
 
 // Component Specific
 @import 'mixins';

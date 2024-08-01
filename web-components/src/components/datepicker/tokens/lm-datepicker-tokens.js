@@ -19,6 +19,26 @@ const datepicker = {
         light: colors.white[100].name,
         dark: colors.gray["05"].name
       }
+    },
+    "text-color": {
+      light: colors.gray["05"].name,
+      dark: colors.gray[100].name
+    },
+    "bg-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[95].name,
+        dark: colors.gray[10].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[90].name,
+        dark: colors.gray[10].name
+      }
     }
   },
   range: {

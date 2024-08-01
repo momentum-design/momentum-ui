@@ -23,7 +23,11 @@ describe("Momentun Icon Component", () => {
     const element = await fixture(
       `<md-icon class="test-class" name="arrow-up_16" size="24" sizeOverrided color="red"></md-icon>`
     );
-    expect(element.shadowRoot!.querySelector("i")!.className).toMatch("md-icon icon arrow-up_24");
+
+    const expectedClasses = ["md-icon", "icon", "arrow-up_24"];
+    const classList = element.shadowRoot?.querySelector("i")?.classList;
+    expect(classList?.length).toEqual(expectedClasses.length);
+    expect(expectedClasses.every(className => classList?.contains(className))).toBe(true);
   });
 
   test("should set font-size to default if not specified", async () => {
@@ -71,5 +75,26 @@ describe("Momentun Icon Component", () => {
     const element = await fixture(`<md-icon class="test-class" name="accessories_16" color="#C9F4FF"></md-icon>`);
     expect(element.shadowRoot!.querySelector("i")!.style.fontSize).toEqual("16px");
     expect(console.warn).toBeCalledTimes(1);
+  });
+
+  test("should apply design font class when designEnabled is true", async () => {
+    const element = await fixture(`<md-icon designEnabled="true" name="search_14"></md-icon>`);
+    const classList = element.shadowRoot?.querySelector("i")?.classList;
+    expect(classList?.contains("design-font")).toBe(true);
+    expect(classList?.contains("icon-search-bold")).toBe(true);
+  });
+
+  test("should not apply design font class when designEnabled is true as we don't map the icon", async () => {
+    const element = await fixture(`<md-icon designEnabled="true" name="youtube-circle_24"></md-icon>`);
+    const classList = element.shadowRoot?.querySelector("i")?.classList;
+    expect(classList?.contains("design-font")).toBe(false);
+    expect(classList?.contains("icon-search-bold")).toBe(false);
+  });
+
+  test("should apply design font class when override is true", async () => {
+    const element = await fixture(`<md-icon override="true" name="search-bold"></md-icon>`);
+    const classList = element.shadowRoot?.querySelector("i")?.classList;
+    expect(classList?.contains("design-font")).toBe(true);
+    expect(classList?.contains("icon-search-bold")).toBe(true);
   });
 });

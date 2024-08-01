@@ -554,24 +554,27 @@ export const menuOverlayTemplate = html`
 max-height="465px">
   <md-button slot="menu-trigger" variant="primary">Open Menu Overlay </md-button>
   <div style="padding:1.25rem ; width: 100%;">
-  <md-button variant="primary">Button 1</md-button>
-  <md-button variant="primary">Button 2</md-button>
-  <md-menu-overlay placement="right-start" show-arrow custom-width="200px"
-  position="bottom"
-  id="outdial-overlay"
-  max-height="327px">
-  <md-button slot="menu-trigger" variant="primary">Open child menu overlay</md-button>
-  <div style="padding:1.25rem; width: 100%;">
-  <md-list class="menu-list" role="list" activated="0" alignment="vertical" aria-label="option">
-  <md-list-item slot="list-item" class="status-menu-item" id="id-Select Outdial ANI" aria-label="Select Outdial ANI" role="option" selected="">
-    <md-tooltip message="Select Outdial ANI" disabled="" placement="auto"><div class="agent-status-option-text ellipsis-text">Select Outdial ANI</div></md-tooltip></md-list-item>
-  <md-list-item  slot="list-item" class="status-menu-item" id="id-Parag" aria-label="Parag" role="option" tabindex="-1"><md-tooltip message="Parag" disabled="" placement="auto"><div class="agent-status-option-text ellipsis-text">Parag</div>
-  </md-tooltip></md-list-item>
-  </md-list>
+    <md-button variant="primary">Button 1</md-button>
+    <md-button variant="primary">Button 2</md-button>
+    <md-menu-overlay placement="right-start" show-arrow custom-width="200px" placement="bottom" id="outdial-overlay" max-height="327px">
+     <md-button slot="menu-trigger" variant="primary">Open child menu overlay</md-button>
+       <div style="padding:1.25rem; width: 100%;">
+          <md-list class="menu-list" role="list" activated="0" alignment="vertical" aria-label="option">
+            <md-list-item slot="list-item" class="status-menu-item" id="id-Select Outdial ANI" aria-label="Select Outdial ANI" role="option" selected="">
+              <md-tooltip message="Select Outdial ANI" disabled="" placement="auto">
+                <div class="agent-status-option-text ellipsis-text">Select Outdial ANI</div>
+              </md-tooltip>
+            </md-list-item>
+            <md-list-item  slot="list-item" class="status-menu-item" id="id-Parag" aria-label="Parag" role="option" tabindex="-1">
+              <md-tooltip message="Parag" disabled="" placement="auto">
+                <div class="agent-status-option-text ellipsis-text">Parag</div>
+              </md-tooltip>
+            </md-list-item>
+          </md-list>
+        </div>
+      </md-menu-overlay>
+    </div>
+  </md-menu-overlay>
   </div>
-
-  </div>
-</md-menu-overlay>
 </div>
-  </div>
 `;

@@ -1,0 +1,136 @@
+:host {
+  @include flex($display: inline-flex);
+}
+
+.md-grabber__container {
+  @include flex($display: inline-flex);
+  overflow: hidden;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--md-default-focus-outline-color);    
+  }
+}
+
+.md-grabber {
+  @include flex($display: inline-flex);
+
+  position: relative;
+  gap: 2px;
+  background-color: var(--grabber-bg-color);
+  border-color: var(--grabber-border-color);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 150ms ease-in-out;
+
+  &.visible {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &:hover {
+    background-color: var(--grabber-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--grabber-pressed-bg-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--leading,
+  &--trailing {
+    width: var(--grabber-width, 20px);
+    height: 40px;
+    border-radius: 0 var(--grabber-border-radius) var(--grabber-border-radius) 0;
+    border: 1px solid var(--grabber-border-color);
+    border-left-width: 0;
+
+    &:not(.visible) {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  &--trailing {
+    rotate: 180deg;
+  }
+
+  &--top,
+  &--bottom {
+    width: 40px;
+    height: var(--grabber-width, 20px);
+    border-radius: 0 0 var(--grabber-border-radius) var(--grabber-border-radius);
+    border: 1px solid var(--grabber-border-color);
+    border-top-width: 0;
+
+    &:not(.visible) {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+  &--bottom {
+    rotate: 180deg;
+  }
+
+  md-icon,
+  md-icon::part(icon) {
+    color: var(--grabber-text-color);
+    width: fit-content;
+    height: fit-content;
+  }
+
+  &--leading md-icon::part(icon) {
+    padding-top: 3px;
+  }
+
+  &--trailing md-icon::part(icon) {
+    padding-bottom: 3px;
+  }
+
+  &--top md-icon::part(icon),
+  &--bottom md-icon::part(icon) {
+    margin-top: 2px;
+  }
+
+  &--disabled {
+    background-color: transparent;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+
+    md-icon::part(icon) {
+      color: var(--button-disabled-text-color);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+
+  .md-grabber__container {
+    &:focus-within {
+      outline: 2px solid ButtonText;      
+      outline-offset: 1px;
+    }
+  }
+
+  .md-grabber {
+    background-color: Highlight;
+
+    &:hover {
+      background-color: Highlight;
+    }
+
+    &:active {
+      background-color: Highlight;
+    }
+
+    md-icon,
+    md-icon::part(icon) {
+      forced-color-adjust: none;
+      color: HighlightText;
+    }
+  }
+}

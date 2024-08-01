@@ -6,24 +6,24 @@
 $alert__class: "md-alert";
 $alert__border-radius: rem-calc(5);
 
-$alert__font-size: rem-calc(14) !default;
-$alert__font-size--title: rem-calc(16) !default;
+$alert__font-size: var(--body-secondary-font-size ,rem-calc(14)) !default;
+$alert__font-size--title: var(--body-primary-font-size, rem-calc(16)) !default;
 $alert__icon-font-size: rem-calc(44) !default;
 $alert__close-icon-color: var(--alert-close-text-color, $lm-alert-close-text-color-light);
 
 $alert__background-color: $md-white-100 !default;
-$alert__background-color--info: $md-theme-50 !default;
-$alert__background-color--success: $md-green-50 !default;
-$alert__background-color--warning: $md-yellow-50 !default;
-$alert__background-color--error: $md-red-50 !default;
+$alert__background-color--info: var(--wc-info-bg-color, $md-theme-50) !default;
+$alert__background-color--success: var(--wc-success-bg-color, $md-green-50) !default;
+$alert__background-color--warning: var(--wc-warning-bg-color, $md-yellow-50) !default;
+$alert__background-color--error: var(--wc-error-bg-color, $md-red-50) !default;
 
 $alert__font-color: $md-gray-90 !default;
 $alert__font-color--title: $md-black-100 !default;
 $alert__font-color--status: $md-green-70 !default;
-$alert__font-color--info: $md-theme-50 !default;
-$alert__font-color--success: $md-green-50 !default;
-$alert__font-color--warning: $md-yellow-50 !default;
-$alert__font-color--error: $md-red-50 !default;
+$alert__font-color--info: var(--wc-info-text-color, $md-theme-50) !default;
+$alert__font-color--success: var(--wc-success-text-color, $md-green-50) !default;
+$alert__font-color--warning: var(--wc-warning-text-color, $md-yellow-50) !default;
+$alert__font-color--error: var(--wc-error-text-color, $md-red-50) !default;
 
 $alert__padding: rem-calc(8);
 $alert__padding-right: rem-calc(13);

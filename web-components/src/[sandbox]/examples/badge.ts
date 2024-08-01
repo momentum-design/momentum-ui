@@ -24,6 +24,9 @@ export const badgeTemplate = html`
   <md-badge color="cyan">
     Cyan
   </md-badge>
+  <md-badge color="purple">
+    Purple
+  </md-badge>
 
   <h4 class="sandbox-header">Additional Badges</h4>
   <md-badge color="gray">
@@ -191,5 +194,14 @@ export const badgeTemplate = html`
   </md-badge>
   <md-badge outlined small>
     March 21, 2020
+  </md-badge>
+
+  <h4 class="snadbox-header">Unread count</h4>
+
+  <md-badge color="unreadcount">
+    99
+  </md-badge>
+  <md-badge color="unreadcount">
+    4
   </md-badge>
 `;

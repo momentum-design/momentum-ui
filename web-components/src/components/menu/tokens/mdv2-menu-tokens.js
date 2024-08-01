@@ -1,25 +1,40 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-const colors = require("@momentum-ui/tokens/dist/colors.json");
-
 const menu = {
   prefix: "mdv2",
   component: "menu",
+  "text-color": {
+    common: "$mds-color-theme-text-primary-normal"
+  },
   default: {
-    light: colors.gray[100].name,
-    dark: colors.gray[10].name
+    common: "$mds-color-theme-button-secondary-normal"
   },
   hover: {
-    "bg": {
-      light: colors.blue[10].name,
-      dark: colors.blue[80].name
+    bg: {
+      common: "$mds-color-theme-button-secondary-hover"
     }
   },
   pressed: {
-    "bg": {
-      light: colors.blue[20].name,
-      dark: colors.blue[70].name
+    bg: {
+      common: "$mds-color-theme-button-secondary-pressed"
+    }
+  },
+  selected: {
+    default: {
+      bg: {
+        common: "$mds-color-theme-button-secondary-active-normal"
+      }
+    },
+    hover: {
+      bg: {
+        common: "$mds-color-theme-button-secondary-active-hover"
+      }
+    },
+    pressed: {
+      bg: {
+        common: "$mds-color-theme-button-secondary-active-pressed"
+      }
     }
   }
 };

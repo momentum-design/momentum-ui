@@ -59,8 +59,7 @@ const editableTextfield = {
       dark: colors.red[90].name
     },
     "border-color": {
-      light: colors.red[50].name,
-      dark: colors.red[50].name
+      common: colors.red[50].name
     },
     "text-color": {
       light: colors.gray[100].name,

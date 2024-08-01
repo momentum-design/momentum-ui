@@ -207,6 +207,38 @@ const button = {
       }
     }
   },
+  "ghost-active": {
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[80].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name
+    },
+    disabled: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[90].name
+      },
+      "text-color": {
+        light: colors.gray[40].name,
+        dark: colors.gray[70].name
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[80].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[80].name
+      }
+    }
+  },
   available: {
     "bg-color": {
       light: colors.green["05"].name,

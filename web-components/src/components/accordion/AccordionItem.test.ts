@@ -1,6 +1,6 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
-import { Accordion } from "./Accordion";
 import "./Accordion";
+import { Accordion } from "./Accordion";
 import "./AccordionItem";
 import { AccordionItem } from "./AccordionItem";
 
@@ -34,13 +34,9 @@ describe("AccordionItem", () => {
 
   test("should correct render label", async () => {
     expect(accordionItems[0].label).toEqual("Header №1");
-    expect(accordionItems[0].header.getAttribute("aria-label")).toEqual(
-      "Header №1"
-    );
+    expect(accordionItems[0].header.getAttribute("aria-label")).toEqual("Header №1");
     expect(accordionItems[4].label).toEqual("Header №5");
-    expect(accordionItems[4].header.getAttribute("aria-label")).toEqual(
-      "Header №5"
-    );
+    expect(accordionItems[4].header.getAttribute("aria-label")).toEqual("Header №5");
 
     accordionItems[0].label = "";
     await elementUpdated(accordionItems[0]);
@@ -51,9 +47,7 @@ describe("AccordionItem", () => {
     accordionItems[2].expanded = true;
     await elementUpdated(accordionItems[2]);
     expect(accordionItems[2].expanded).toBeTruthy();
-    expect(accordionItems[2].header.getAttribute("aria-expanded")).toEqual(
-      "true"
-    );
+    expect(accordionItems[2].header.getAttribute("aria-expanded")).toEqual("true");
   });
 
   test("should correct set disabled", async () => {

@@ -8,10 +8,6 @@
   right: 0;
   visibility: visible;
   width: $width;
-
-  .md-modal__title {
-    color: var(--md-primary-text-color, $md-gray-60);
-  }
 }
 
 @mixin modal-size(
@@ -41,12 +37,6 @@
       min-height: $min-height;
     }
 
-    @if $radius==true {
-      @include radius($modal__radius);
-    } @else if $radius {
-      @include radius($radius);
-    }
-
     @if $top-offset {
       max-height: calc(100vh - (#{$top-offset} * 2));
     } @else {
@@ -56,6 +46,12 @@
     @if $border-width !=false {
       border-style: solid;
       border-width: $border-width;
+    }
+
+    @if $radius==true {
+      @include radius($modal__radius);
+    } @else if $radius {
+      @include radius($radius);
     }
   }
 }
@@ -106,7 +102,7 @@
   width: 100%;
 }
 
-@mixin modal-container-center-align(){
+@mixin modal-container-center-align() {
   display: flex;
   flex-direction: column;
   justify-content: center;

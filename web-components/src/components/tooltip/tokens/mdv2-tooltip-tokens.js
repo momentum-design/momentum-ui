@@ -6,12 +6,37 @@ const tooltip = {
   prefix: "mdv2",
   component: "tooltip",
   "font-color": {
-    light: colors.gray["05"].name,
-    dark: colors.gray["05"].name
+    common: "$mds-color-theme-inverted-text-primary-normal"
   },
   "bg-color": {
-    light: colors.gray[90].name,
-    dark: colors.gray[90].name
+    common: "$mds-color-theme-inverted-background-normal"
+  },
+  border: {
+    common: "$mds-color-theme-inverted-outline-primary-normal"
+  },
+  radius: {
+    common: "8px"
+  },
+  shadow: {
+    common: "none"
+  },
+  arrow: {
+    bottom: {
+      top: {
+        common: "-9px"
+      },
+      "before-top": {
+        common: "2px"
+      }
+    },
+    right: {
+      left: {
+        common: "-17px"
+      },
+      "before-top": {
+        common: "2px"
+      }
+    }
   }
 };
 

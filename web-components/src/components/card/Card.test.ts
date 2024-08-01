@@ -1,10 +1,9 @@
+import { cardMenuItems } from "@/[sandbox]/sandbox.mock";
 import "@/components/badge/Badge";
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Card";
 import { Card } from "./Card";
-import { Button } from "@/components/button/Button";
-import { cardMenuItems } from "@/[sandbox]/sandbox.mock";
-import { Key } from "@/constants";
 
 const fixtureFactory = async (id: string, title: string, subtitle: string, info: string): Promise<Card.ELEMENT> => {
   return await fixture(
@@ -12,7 +11,7 @@ const fixtureFactory = async (id: string, title: string, subtitle: string, info:
       <md-card .menuOption=${cardMenuItems} id=${id} title=${title} subtitle=${subtitle} info=${info}>
         <div slot="content">
           <img
-            src="https://media.istockphoto.com/vectors/dashboard-ui-modern-presentation-with-data-graphs-and-hud-diagrams-vector-id1159848977"
+            src="https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
             alt=""
           />
         </div>

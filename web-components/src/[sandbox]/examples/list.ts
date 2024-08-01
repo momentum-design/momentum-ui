@@ -42,4 +42,14 @@ export const listTemplate = html`
     <md-list-item slot="list-item">Berkelium</md-list-item>
     <md-list-item slot="list-item">Californium</md-list-item>
   </md-list>
+
+  <h3>Pill</h3>
+  <md-list label="Transuranium elements">
+    <md-list-item aria-label="Neptunium" slot="list-item" shape="pill">Neptunium</md-list-item>
+    <md-list-item aria-label="Plutonium" slot="list-item" shape="pill">Plutonium</md-list-item>
+    <md-list-item aria-label="Americium" slot="list-item" shape="pill">Americium</md-list-item>
+    <md-list-item aria-label="Curium" slot="list-item" shape="pill">Curium</md-list-item>
+    <md-list-item aria-label="Berkelium" slot="list-item" shape="pill">Berkelium</md-list-item>
+    <md-list-item aria-label="Californium" slot="list-item" shape="pill">Californium</md-list-item>
+  </md-list>
 `;

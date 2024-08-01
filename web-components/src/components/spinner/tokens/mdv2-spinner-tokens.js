@@ -5,13 +5,11 @@ const spinner = {
   prefix: "mdv2",
   component: "spinner",
   "bg-color": {
-    light: "$mds-color-theme-neutral-control-default",
-    dark: "$mds-color-theme-neutral-control-default"
+    common: "$mds-color-theme-control-indicator-inactive-normal"
   },
   color: {
-    light: "$mds-color-theme-neutral-indicator-default",
-    dark: "$mds-color-theme-neutral-indicator-default"
+    common: "$mds-color-theme-outline-input-active"
   }
-}
+};
 
 module.exports = spinner;

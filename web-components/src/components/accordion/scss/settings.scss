@@ -1,4 +1,4 @@
-$accordion-font-size: $font-size-base;
+$accordion-font-size: var(--body-primary-font-size, $font-size-base);
 $accordion-base-indent: rem-calc(8);
 $accordion-border-radius: rem-calc(4);
 $accordion-btn-border-radius: rem-calc(3);

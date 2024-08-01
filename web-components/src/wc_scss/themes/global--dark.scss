@@ -84,4 +84,14 @@
   --md-input-chat-error-color: #{$md-red-50};
   --md-webex-chat-disable-bg-color: #{$md-gray-90};
   --md-webex-chat-disable-color: #{$md-gray-70};
+
+  --md-navigation-bg-color: #{$md-gray-95};
+  --md-app-bg-color: #{$md-gray-100};
+  --md-header-bg-color: #{$md-gray-95};
+  --md-header-separator-color: var(--md-primary-seperator-color);
+  --md-content-bg-color: var(--md-primary-bg-color);
+  --md-task-list-bg-color: var(--md-secondary-bg-color);
+  --md-agent-history-bg-color: var(--md-tertiary-bg-color);
+  --md-nav-divider-primary: var(--md-quaternary-bg-color);
+  --md-nav-divider-primary-hover: var(--md-primary-seperator-color);
 }

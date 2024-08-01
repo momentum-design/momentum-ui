@@ -7,97 +7,110 @@ const button = {
   component: "button",
   primary: {
     "bg-color": {
-      light: "$mds-color-theme-button-primary-normal",
-      dark: "$mds-color-theme-button-primary-normal"
+      common: "$mds-color-theme-button-primary-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-inverted-text-primary-normal",
-      dark: "$mds-color-theme-inverted-text-primary-normal"
+      common: "$mds-color-theme-inverted-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-primary-hover",
-        dark: "$mds-color-theme-button-primary-hover"
+        common: "$mds-color-theme-button-primary-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-button-primary-pressed",
-        dark: "$mds-color-theme-button-primary-pressed"
+        common: "$mds-color-theme-button-primary-pressed"
       }
     },
     outline: {
       color: {
-        light: colors.blue[70].name,
-        dark: colors.blue[40].name
+        common: "$mds-color-theme-outline-theme-normal"
       },
       "text-color": {
-        light: colors.blue[70].name,
-        dark: colors.blue[40].name
+        common: "$mds-color-theme-text-accent-normal"
       }
     }
   },
   secondary: {
     "bg-color": {
-      light: "$mds-color-theme-button-secondary-normal",
-      dark: "$mds-color-theme-button-secondary-normal"
+      common: "$mds-color-theme-button-secondary-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-text-primary-normal",
-      dark: "$mds-color-theme-text-primary-normal"
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-button-normal"
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-primary-disabled"
+      }
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-secondary-hover",
-        dark: "$mds-color-theme-button-secondary-hover"
+        common: "$mds-color-theme-button-secondary-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-button-secondary-pressed",
-        dark: "$mds-color-theme-button-secondary-pressed"
+        common: "$mds-color-theme-button-secondary-pressed"
       }
     },
     outline: {
       color: {
-        light: "$mds-color-theme-outline-button-normal",
-        dark: "$mds-color-theme-outline-button-normal",
+        common: "$mds-color-theme-outline-button-normal"
       },
       "text-color": {
-        light: "$mds-color-theme-text-primary-normal",
-        dark: "$mds-color-theme-text-primary-normal"
+        common: "$mds-color-theme-text-primary-normal"
+      }
+    }
+  },
+  "secondary-active": {
+    normal: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-active-normal"
+      }
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-active-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-active-pressed"
       }
     }
   },
   green: {
     "bg-color": {
-      light: "$mds-color-theme-button-join-normal",
-      dark: "$mds-color-theme-button-join-normal"
+      common: "$mds-color-theme-button-join-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      common: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-join-hover",
-        dark: "$mds-color-theme-button-join-hover"
+        common: "$mds-color-theme-button-join-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-button-join-pressed",
-        dark: "$mds-color-theme-button-join-pressed"
+        common: "$mds-color-theme-button-join-pressed"
       }
     },
     outline: {
       color: {
-        light: colors.green[70].name,
-        dark: colors.green[40].name
+        common: "$mds-color-theme-outline-join-normal"
       },
       "text-color": {
-        light: colors.green[70].name,
-        dark: colors.green[40].name
+        common: "$mds-color-theme-text-success-normal"
       }
     }
   },
@@ -185,158 +198,252 @@ const button = {
   },
   red: {
     "bg-color": {
-      light: "$mds-color-theme-button-cancel-normal",
-      dark: "$mds-color-theme-button-cancel-normal"
+      common: "$mds-color-theme-button-cancel-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      common: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-button-cancel-hover",
-        dark: "$mds-color-theme-button-cancel-hover"
+        common: "$mds-color-theme-button-cancel-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-button-cancel-pressed",
-        dark: "$mds-color-theme-button-cancel-pressed"
+        common: "$mds-color-theme-button-cancel-pressed"
       }
     },
     outline: {
       color: {
-        light: colors.red[70].name,
-        dark: colors.red[40].name
+        common: "$mds-color-theme-outline-cancel-normal"
       },
       "text-color": {
-        light: colors.red[70].name,
-        dark: colors.red[40].name
+        common: "$mds-color-theme-text-error-normal"
+      }
+    }
+  },
+  ghost: {
+    "bg-color": {
+      common: "$mds-color-theme-button-secondary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
+      }
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-pressed"
+      }
+    }
+  },
+  "ghost-active": {
+    "bg-color": {
+      common: "$mds-color-theme-button-secondary-active-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-active-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
+      }
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-active-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-active-pressed"
       }
     }
   },
   promotional: {
     "bg-color": {
-      light: "$mds-color-theme-common-button-promotion-normal",
-      dark: "$mds-color-theme-common-button-promotion-normal"
+      common: "$mds-color-theme-common-button-promotion-normal"
     },
     "text-color": {
-      light: "$mds-color-theme-common-text-white",
-      dark: "$mds-color-theme-common-text-white"
+      common: "$mds-color-theme-common-text-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: "$mds-color-theme-common-button-promotion-hover",
-        dark: "$mds-color-theme-common-button-promotion-hover"
+        common: "$mds-color-theme-common-button-promotion-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: "$mds-color-theme-common-button-promotion-active",
-        dark: "$mds-color-theme-common-button-promotion-active"
+        common: "$mds-color-theme-common-button-promotion-active"
+      }
+    }
+  },
+  accent: {
+    "bg-color": {
+      common: "$mds-color-theme-button-accent-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-common-text-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-accent-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-accent-pressed"
       }
     }
   },
   available: {
     "bg-color": {
-      light: colors.green["05"].name,
-      dark: colors.green[90].name
+      common: "$mds-color-theme-background-alert-success-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-join-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.green[10].name,
-        dark: colors.green[80].name
+        common: "$mds-color-theme-background-alert-success-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.green[10].name,
-        dark: colors.green[80].name
+        common: "$mds-color-theme-background-alert-success-active"
       }
     }
   },
   engaged: {
     "bg-color": {
-      light: colors.yellow["05"].name,
-      dark: colors.yellow[90].name
+      common: "$mds-color-theme-background-alert-warning-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-text-warning-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.yellow[10].name,
-        dark: colors.yellow[80].name
+        common: "$mds-color-theme-background-alert-warning-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.yellow[20].name,
-        dark: colors.yellow[70].name
+        common: "$mds-color-theme-background-alert-warning-active"
       }
     }
   },
   unavailable: {
     "bg-color": {
-      light: colors.red["05"].name,
-      dark: colors.red[90].name
+      common: "$mds-color-theme-background-alert-error-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-cancel-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.red[10].name,
-        dark: colors.red[80].name
+        common: "$mds-color-theme-background-alert-error-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.red[10].name,
-        dark: colors.red[80].name
+        common: "$mds-color-theme-background-alert-error-active"
       }
     }
   },
   idle: {
     "bg-color": {
-      light: colors.gray["05"].name,
-      dark: colors.gray[90].name
+      common: "$mds-color-theme-background-alert-default-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-primary-normal"
     },
     hover: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[80].name
+        common: "$mds-color-theme-background-alert-default-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[80].name
+        common: "$mds-color-theme-background-alert-default-active"
       }
     }
   },
   disabled: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-btn-primary-disabled",
-      dark: "$mds-color-theme-neutral-btn-primary-disabled"
+      common: "$mds-color-theme-button-primary-disabled"
     },
     "text-color": {
-      light: "$mds-color-theme-neutral-text-disabled",
-      dark: "$mds-color-theme-neutral-text-disabled"
+      common: "$mds-color-theme-text-primary-disabled"
     }
   },
   favorite: {
+    "icon-color": {
+      common: "$mds-color-theme-text-warning-normal"
+    },
     hover: {
       "bg-color": {
-        light: colors.gray[10].name,
-        dark: colors.gray[90].name
+        common: "$mds-color-theme-button-secondary-hover"
+      },
+      "icon-color": {
+        common: "$mds-color-theme-text-warning-hover"
       }
     },
     pressed: {
       "bg-color": {
-        light: colors.gray[20].name,
-        dark: colors.gray[80].name
+        common: "$mds-color-theme-button-secondary-pressed"
+      },
+      "icon-color": {
+        common: "$mds-color-theme-text-warning-active"
       }
     }
   },
   "focus-ring": {
     color: {
-      light: colors.blue[60].name,
-      dark: colors.blue[40].name
+      common: "$mds-color-theme-outline-theme-normal"
+    }
+  },
+  font: {
+    size: {
+      "extra-small": {
+        common: "0.75rem"
+      },
+      small: {
+        common: "0.875rem"
+      },
+      medium: {
+        common: "1rem"
+      }
+    }
+  },
+  padding: {
+    28: {
+      common: "0rem 0.625rem 0rem 0.625rem"
+    },
+    32: {
+      common: "0rem 0.75rem 0rem 0.75rem"
+    },
+    36: {
+      common: "0rem 0.875rem 0rem 0.875rem"
+    },
+    40: {
+      common: "0rem 1rem 0rem 1rem"
+    },
+    52: {
+      common: "0rem 1.125rem 0rem 1.125rem"
     }
   }
 };

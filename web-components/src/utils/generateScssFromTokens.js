@@ -106,8 +106,8 @@ const _checkDataFileFormat = (colorDataFileName, colorDataFile) => {
     errorMsg += `\nThe token object in ${colorDataFileName} needs to have it's second property key to be "component".`;
   }
 
-  if (!deepestKeys.includes("light") && !deepestKeys.includes("dark")) {
-    errorMsg += `The token object in ${colorDataFileName} needs to have all colors defined with key name "light" or "dark".\n`;
+  if (!deepestKeys.includes("light") && !deepestKeys.includes("dark") && !deepestKeys.includes("common")) {
+    errorMsg += `The token object in ${colorDataFileName} needs to have all colors defined with key name "light", "dark" or "common".\n`;
   }
 
   if (errorMsg.length > 0) {
@@ -204,9 +204,6 @@ const generateThemeStylesheets = () => {
         themeStyleFiles[
           `${designTheme}${lightDarkTheme}`
         ] += `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-stable.scss";\n`;
-        themeStyleFiles[
-          `${designTheme}${lightDarkTheme}`
-        ] += `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-complete.scss";\n`;        
       }
 
       for (const componentName of componentsWithTokens) {

@@ -2,15 +2,17 @@
   border: none;
   border-radius: $button__radius--36;
   cursor: $cursor-pointer-value;
-  display: inline-block;
-  font-family: $brand-font-regular;
+  display: inline-flex;
+  font-family: var(--brand-font-medium, $brand-font-regular);
+  font-weight: 550;
   font-size: $button__font-size;
-  font-weight: normal;
-  line-height: rem-calc(24);
+  line-height: normal;
   min-width: rem-calc(72);
   position: relative;
   text-align: $button__font-align;
   text-decoration: none;
+  align-items: center;
+  justify-content: center;
 
   > * {
     font-size: inherit;
@@ -18,6 +20,8 @@
 
   .#{$button__class}__children {
     @include flex;
+    max-width: 100%;
+    flex: 1;
   }
 
   + .#{$button__class} {
@@ -54,38 +58,41 @@
   $padding: false,
   $radius: false
 ) {
-  font-size: $font-size;
-  line-height: $line-height;
+  // Declarations before nested rules
+  & {
+    font-size: $font-size;
+    line-height: $line-height;
 
+    @if $full-width {
+      width: 100%;
+    }
+
+    @if $padding {
+      padding: $padding;
+    }
+
+    @if $height {
+      height: $height;
+      @if $height == auto or $height == initial or $height == inherit {
+        $height: 100%;
+      }
+    }
+    @if $height {
+      .#{$prefix}-prepend {
+        margin-right: calc(#{$height} / 4);
+      }
+      .#{$prefix}-append {
+        margin-left: calc(#{$height} / 4);
+      }
+    }
+  }
+
+  // Nested rules with conditional logic
   @if $radius {
     @include radius($radius);
-
     &::after {
       border-radius: $radius;
     }
-  }
-
-  @if $height {
-    height: $height;
-
-    @if $height == auto or $height == initial or $height == inherit {
-      $height: 100%;
-    }
-
-    .#{$prefix}-prepend {
-      margin-right: calc(#{$height} / 4);
-    }
-    .#{$prefix}-append {
-      margin-left: calc(#{$height} / 4);
-    }
-  }
-
-  @if $padding {
-    padding: $padding;
-  }
-
-  @if $full-width {
-    width: 100%;
   }
 }
 
@@ -122,9 +129,32 @@
   $opacity: false,
   $outline: false
 ) {
-  background-color: $bg;
-  border-color: transparent;
-  color: $color;
+  // Declarations before nested rules
+  & {
+    background-color: $bg;
+    border-color: transparent;
+    color: $color;
+
+    @if $border {
+      border: $border;
+    }
+
+    @if $box-shadow {
+      box-shadow: $box-shadow;
+    }
+
+    @if $disabled {
+      @include button-color-disabled($color: $color-disabled, $bg: $bg-disabled, $opacity: $opacity);
+    }
+
+    @if $focus {
+      @include button-color-focus($border-focus);
+    }
+
+    @if $outline {
+      outline: $outline;
+    }
+  }
 
   &:focus {
     background-color: $bg-hover;
@@ -149,26 +179,6 @@
       border: $border-active;
     }
   }
-
-  @if $border {
-    border: $border;
-  }
-
-  @if $box-shadow {
-    box-shadow: $box-shadow;
-  }
-
-  @if $disabled {
-    @include button-color-disabled($color: $color-disabled, $bg: $bg-disabled, $opacity: $opacity);
-  }
-
-  @if $focus {
-    @include button-color-focus($border-focus);
-  }
-
-  @if $outline {
-    outline: $outline;
-  }
 }
 
 @mixin button-color-fill(
@@ -179,9 +189,13 @@
   $bg-disabled: transparent,
   $focus: false
 ) {
+  // Declarations before nested rules
+  & {
+    color: $fill;
+    fill: $fill;
+  }
+
   @include button-color-disabled($color: $fill-disabled, $bg: $bg-disabled);
-  color: $fill;
-  fill: $fill;
 
   &:hover,
   &.hover-state {
@@ -211,18 +225,22 @@
   &.disabled,
   &.md-button--disabled,
   &[disabled] {
+    // Declarations before nested rules
+    & {
+      @if $opacity {
+        opacity: $opacity;
+      } @else {
+        color: $color;
+        fill: $color;
+        background-color: $bg;
+      }
+    }
+
     &:hover,
     &:focus {
       background-color: $bg;
       color: $color;
       fill: $color;
-    }
-    @if $opacity {
-      opacity: $opacity;
-    } @else {
-      color: $color;
-      fill: $color;
-      background-color: $bg;
     }
   }
 }

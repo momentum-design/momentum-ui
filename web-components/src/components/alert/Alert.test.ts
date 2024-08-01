@@ -49,7 +49,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--default");
+    const expectedClassList = ["md-alert", "md-alert--default"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
   });
 
   test("should render Alert with icon reflecting default type", async () => {
@@ -58,7 +60,9 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--default");
+    const expectedClassList = ["md-alert", "md-alert--default"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const iconTypeElement = await element.shadowRoot!.querySelector(".md-alert__icon");
     expect(iconTypeElement).not.toBeNull();
@@ -70,11 +74,13 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--success");
+    const expectedClassList = ["md-alert", "md-alert--success"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("check-circle_36");
-    expect(type?.getAttribute("color")).toEqual("green-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-success-text-color, green)");
   });
 
   test("should render info Alert", async () => {
@@ -83,11 +89,13 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--info");
+    const expectedClassList = ["md-alert", "md-alert--info"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("info_32");
-    expect(type?.getAttribute("color")).toEqual("blue-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-info-text-color, blue)");
   });
 
   test("should render error Alert", async () => {
@@ -96,11 +104,13 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--error");
+    const expectedClassList = ["md-alert", "md-alert--error"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("red-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-error-text-color, red)");
   });
 
   test("should render warning Alert", async () => {
@@ -109,11 +119,13 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--warning");
+    const expectedClassList = ["md-alert", "md-alert--warning"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("orange-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
   test("should render warning Alert", async () => {
@@ -122,11 +134,13 @@ describe("Alert", () => {
     `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
-    expect(alertElement?.className).toEqual("md-alert md-alert--warn");
+    const expectedClassList = ["md-alert", "md-alert--warn"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("icon-warning_32");
-    expect(type?.getAttribute("color")).toEqual("orange-50");
+    expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
   test("should render close button & icon when closable prop is true", async () => {

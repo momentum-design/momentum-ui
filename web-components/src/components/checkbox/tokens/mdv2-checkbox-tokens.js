@@ -5,75 +5,59 @@ const checkbox = {
   prefix: "mdv2",
   component: "checkbox",
   "bg-color": {
-    light: "$mds-color-theme-neutral-btn-secondary-default",
-    dark: "$mds-color-theme-neutral-btn-secondary-default"
+    common: "$mds-color-theme-button-secondary-normal"
   },
   "text-color": {
-    light: "$mds-color-theme-neutral-text-primary",
-    dark: "$mds-color-theme-neutral-text-primary"
+    common: "$mds-color-theme-text-primary-normal"
   },
   "border-color": {
-    light: "$mds-color-theme-neutral-border-default",
-    dark: "$mds-color-theme-neutral-border-default"
+    common: "$mds-color-theme-outline-input-normal"
   },
   "icon-color": {
-    light: "$mds-color-theme-inverse-neutral-text-primary",
-    dark: "$mds-color-theme-inverse-neutral-text-primary"
+    common: "$mds-color-theme-inverted-text-primary-normal"
   },
   hover: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-btn-secondary-pressed", //should be hover needs momentum-design/tokesn fix
-      dark: "$mds-color-theme-neutral-btn-secondary-pressed"
+      common: "$mds-color-theme-inverted-button-secondary-hover"
     },
     "border-color": {
-      light: "$mds-color-theme-neutral-indicator-default",
-      dark: "$mds-color-theme-neutral-indicator-default"
+      common: "$mds-color-theme-outline-input-normal"
     }
   },
   pressed: {
     "bg-color": {
-      light: "$mds-color-theme-neutral-btn-secondary-pressed",
-      dark: "$mds-color-theme-neutral-btn-secondary-pressed"
+      common: "$mds-color-theme-inverted-button-secondary-pressed"
     },
     "border-color": {
-      light: "$mds-color-theme-neutral-indicator-default",
-      dark: "$mds-color-theme-neutral-indicator-default"
+      common: "$mds-color-theme-outline-input-normal"
     }
   },
   selected: {
     "bg-color": {
-      light: "$mds-color-theme-accent-control-default",
-      dark: "$mds-color-theme-accent-control-default"
+      common: "$mds-color-theme-control-active-normal"
     },
     "border-color": {
-      light: "$mds-color-theme-accent-control-default",
-      dark: "$mds-color-theme-accent-control-default"
+      common: "$mds-color-theme-control-active-normal"
     },
     "hover-bg-color": {
-      light: "$mds-color-theme-accent-control-hover",
-      dark: "$mds-color-theme-accent-control-hover"
+      common: "$mds-color-theme-control-active-hover"
     },
     "hover-border-color": {
-      light: "$mds-color-theme-accent-control-hover",
-      dark: "$mds-color-theme-accent-control-hover"
+      common: "$mds-color-theme-control-active-hover"
     },
     "pressed-bg-color": {
-      light: "$mds-color-theme-accent-control-pressed",
-      dark: "$mds-color-theme-accent-control-pressed"
+      common: "$mds-color-theme-control-active-hover"
     },
     "pressed-border-color": {
-      light: "$mds-color-theme-accent-control-pressed",
-      dark: "$mds-color-theme-accent-control-pressed"
+      common: "$mds-color-theme-control-active-hover"
     }
   },
   focus: {
     "border-color": {
-      light: "$mds-color-theme-accent-control-default",
-      dark: "$mds-color-theme-accent-control-default"
+      common: "$mds-color-theme-control-active-normal"
     },
     "shadow-color": {
-      light: "0 0 4px 2px transparent",
-      dark: "0 0 4px 2px transparent"
+      common: "0 0 4px 2px transparent"
     }
   }
 };

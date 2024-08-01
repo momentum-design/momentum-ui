@@ -3,8 +3,8 @@
 }
 
 .md-chip {
-  @include chip-base();
   @include badge-size;
+  @include chip-base();
 
   &--small {
     @include badge-size($padding: rem-calc(3 12));
@@ -22,7 +22,7 @@
 
   &:active,
   &[aria-selected="true"] {
-    background-color: var(--md-quaternary-bg-color, $md-gray-20);
+    background-color: var(--button-secondary-active-normal-bg-color, var(--md-quaternary-bg-color, $md-gray-20));
   }
 
   &--blue,
@@ -327,15 +327,16 @@
   }
 
   .md-chip--clear {
+    display: flow-root;
+    margin-left: $chip-inner-content-margin;
+    margin-right: 0;
+
     @include modal-close-button(
       $size: rem-calc(14),
       $font-size: rem-calc(14),
       $top-offset: rem-calc(12),
       $right-offset: rem-calc(12)
     );
-    display: flow-root;
-    margin-left: $chip-inner-content-margin;
-    margin-right: 0;
   }
 
   .md-chip--loading {
@@ -356,9 +357,11 @@
   }
 
   &.md-chip--disabled {
-    @include chip-base();
     color: var(--md-disabled-text-color, $md-gray-40);
     cursor: default;
+
+    // Declarations before nested rules
+    @include chip-base();
 
     md-icon {
       color: var(--md-disabled-text-color, $md-gray-40);
@@ -382,7 +385,8 @@
   .md-chip {
     outline: 1px solid CanvasText;
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       box-shadow: none;
       outline: 2px solid Highlight;
     }
@@ -392,7 +396,8 @@
     color: GrayText;
     outline: 1px solid GrayText;
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       outline: 2px solid Highlight;
     }
 
@@ -401,4 +406,3 @@
     }
   }
 }
-

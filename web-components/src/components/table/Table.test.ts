@@ -7,8 +7,8 @@
  */
 
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import "./Table";
 import { html } from "lit-element";
+import "./Table";
 import { Table } from "./Table";
 
 const data =
@@ -33,7 +33,11 @@ describe("Table component", () => {
     expect(element.clean).toBeTruthy;
 
     const el = element.shadowRoot?.querySelector(".md-table");
-    expect(el?.getAttribute("class")).toEqual("md-table md-table--clean md-table--stripped md-table--sorting");
+    const expectedClasses = ["md-table", "md-table--clean", "md-table--stripped", "md-table--sorting"];
+    expect(el?.classList.length).toEqual(expectedClasses.length);
+    expectedClasses.forEach(className => {
+      expect(el?.classList.contains(className)).toBe(true);
+    });
   });
 
   test("should render size", async () => {

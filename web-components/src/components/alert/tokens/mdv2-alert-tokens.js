@@ -1,50 +1,43 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const alert = {
   prefix: "mdv2",
   component: "alert",
   default: {
     "bg-color": {
-      light: colors.white[60].name,
-      dark: colors.gray[90].name
+      common: "$mds-color-theme-background-solid-primary-normal"
     },
     "align-items": {
-      light: "flex-start",
-      dark: "flex-start"
+      common: "flex-start"
     },
     "text-color": {
-      light: colors.gray[70].name,
-      dark: colors.gray[20].name
+      common: "$mds-color-theme-text-secondary-normal"
     },
     "icon-size": {
-      light: "24px",
-      dark: "24px"
+      common: "24px"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-secondary-normal"
     }
   },
   title: {
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      common: "$mds-color-theme-text-primary-normal"
     },
     "font-size": {
-      light: "1rem",
-      dark: "1rem"
+      common: "1rem"
     }
   },
   close: {
     "bg-color": {
-      light: colors.white[60].name,
-      dark: colors.gray[90].name
+      common: "transparent"
     },
     size: {
-      light: "1rem",
-      dark: "1rem"
+      common: "1rem"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      common: "$mds-color-theme-text-primary-normal"
     }
   }
 };

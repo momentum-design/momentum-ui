@@ -6,14 +6,13 @@
  *
  */
 
+import "@/components/chip/Chip";
+import "@/components/icon/Icon";
+import { ThemeNameValues } from "@/components/theme/Theme";
+import { badgeColor, BarType, iconColorSample, iconSamples } from "@/utils/enums";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
-import { badgeColor, BarType, iconSamples, iconColorSample } from "@/utils/enums";
-import "@/components/icon/Icon";
-import "@/components/chip/Chip";
-import "@/components/theme/Theme";
-import { ThemeNameValues } from "@/components/theme/Theme";
 
 export default {
   title: "Components/Chip",
@@ -28,8 +27,7 @@ export default {
 
 export const Chip = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const color = select("Color", badgeColor, "blue");
   const bgColor = text("BG Color Overrides", "blue");
   const textColor = text("Text Color Override", "white");
@@ -49,18 +47,18 @@ export const Chip = () => {
 
     return type === "indeterminate"
       ? html`
-          <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+          <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} theme=${theme}>
             <md-chip value="example-chip@cisco.com" indeterminateProgress> </md-chip>
           </md-theme>
         `
       : html`
-          <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+          <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} theme=${theme}>
             <md-chip value="example-chip@cisco.com" determinateProgress="${value}"> </md-chip>
           </md-theme>
         `;
   } else if (slot) {
     return html`
-      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} theme=${theme}>
         <md-chip value="example-chip@cisco.com">
           <md-icon name="icon-alert_16" slot="custom-left-content"></md-icon>
           <md-icon name="icon-alarm_16" slot="custom-right-content"></md-icon>
@@ -72,13 +70,13 @@ export const Chip = () => {
     const colorIcon = select("icon color", iconColorSample, "");
 
     return html`
-      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} theme=${theme}>
         <md-chip value="example-chip@cisco.com" icon="${icon}" iconColor="${colorIcon}"> </md-chip>
       </md-theme>
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+      <md-theme class="theme-toggle" id="chip" ?darkTheme=${darkTheme} theme=${theme}>
         <md-chip
           .color=${color}
           .bgColor=${bgColor}

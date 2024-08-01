@@ -6,13 +6,12 @@
  *
  */
 
+import "@/components/link/Link";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import "@/components/link/Link";
-import { linkTag, linkColor, linkRole } from "./Link"; // Keep type import as a relative path
-import "@/components/theme/Theme";
+import { linkColor, linkRole, linkTag } from "./Link"; // Keep type import as a relative path
 
 export default {
   title: "Components/Link",
@@ -27,8 +26,7 @@ export default {
 
 export const Link = () => {
   const darkTheme = boolean("darkMode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const href = text("href", "http://google.com");
   const tag = select("HTML Tag", linkTag, "");
   const disabled = boolean("Disabled", false);
@@ -39,7 +37,7 @@ export const Link = () => {
   const role = select("Link Role", linkRole, "");
 
   return html`
-    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} theme=${theme}>
       <md-link
         .href=${href}
         .ariaLabel=${ariaLabel}
@@ -48,7 +46,9 @@ export const Link = () => {
         .target="${target}"
         .color="${color}"
         ?disabled=${disabled}
-        ?inline=${inline}>Default Link</md-link>
+        ?inline=${inline}
+        >Default Link</md-link
+      >
     </md-theme>
   `;
 };

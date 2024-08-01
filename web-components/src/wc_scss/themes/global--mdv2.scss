@@ -1,4 +1,158 @@
+@import "@/wc_scss/settings/rem";
+@import "@/wc_scss/typography/settings";
+
+$inter-base-font: "Inter Regular", $font-family-sans-serif;
+$inter-bold-font: "Inter Bold", $font-family-sans-serif;
+$inter-bold-oblique-font: "Inter Bold Oblique", $font-family-sans-serif;
+$inter-extra-light-font: "Inter Extra Light", $font-family-sans-serif;
+$inter-extra-light-oblique-font: "Inter Extra Light Oblique", $font-family-sans-serif;
+$inter-heavy-font: "Inter Heavy", $font-family-sans-serif;
+$inter-heavy-oblique-font: "Inter Heavy Oblique", $font-family-sans-serif;
+$inter-light-font: "Inter Light", $font-family-sans-serif;
+$inter-light-oblique-font: "Inter Light Oblique", $font-family-sans-serif;
+$inter-regular-oblique-font: "Inter Regular Oblique", $font-family-sans-serif;
+$inter-thin-font: "Inter Thin", $font-family-sans-serif;
+$inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
+$inter-medium-font: "Inter Medium", $font-family-sans-serif;
+
 @mixin global-theme-specfic-vars {
-  --rem-base: 14px;
+  --rem-base: 16px;
+  --brand-font-regular: #{$inter-base-font};
+  --brand-font-bold: #{$inter-bold-font};
+  --brand-font-bold-oblique: #{$inter-bold-oblique-font};
+  --brand-font-extra-light: #{$inter-extra-light-font};
+  --brand-font-extra-light-oblique: #{$inter-extra-light-oblique-font};
+  --brand-font-heavy: #{$inter-heavy-font};
+  --brand-font-heavy-oblique: #{$inter-heavy-oblique-font};
+  --brand-font-light: #{$inter-light-font};
+  --brand-font-light-oblique: #{$inter-light-oblique-font};
+  --brand-font-regular-oblique: #{$inter-regular-oblique-font};
+  --brand-font-thin: #{$inter-thin-font};
+  --brand-font-thin-oblique: #{$inter-thin-oblique-font};
+  --brand-font-medium: #{$inter-medium-font};
+
+  --brand-font-weight-light: 350;
+  --brand-font-weight-regular: 450;
+  --brand-font-weight-medium: 550;
+  --brand-font-weight-bold: 700;
+
   font-size: var(--rem-base);
+  font-family: var(--brand-font-regular);
+  font-weight: var(--brand-font-weight-regular);
+  font-family: var(--brand-font-regular);
+
+  --body-primary-font-size: 1rem;
+  --body-secondary-font-size: 0.875rem;
+  --label-compact-font-size: 0.75rem;
+
+  --body-primary-line-height: 1.5rem;
+
+  --wc-menu-padding: 0.5rem;
+  --wc-menu-item-height: 2.5rem;
+  --wc-menu-item-rounded-border-radius: 0.5rem;
+
+  --wc-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
+  --wc-error-text-color: #{$mds-color-theme-text-error-normal};
+  --wc-warning-bg-color: #{$mds-color-theme-background-alert-warning-normal};
+  --wc-warning-text-color: #{$mds-color-theme-text-warning-normal};
+  --wc-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
+  --wc-success-text-color: #{$mds-color-theme-text-success-normal};
+  --wc-info-bg-color: #{$mds-color-theme-background-alert-theme-normal};
+  --wc-info-text-color: #{$mds-color-theme-text-accent-normal};
+
+  //Override the light and dark theme colors vars
+  --main-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+  --md-default-focus-outline-color: #{$mds-color-theme-outline-theme-normal};
+
+  --md-primary-text-color: #{$mds-color-theme-text-primary-normal};
+  --md-secondary-text-color: #{$mds-color-theme-text-secondary-normal};
+  --md-disabled-text-color: #{$mds-color-theme-text-primary-disabled};
+  --md-highlight-text-color: #{$mds-color-theme-text-highlight};
+
+  --md-hyperlink-text-color: #{$mds-color-theme-text-accent-normal};
+  --md-hyperlink-hover-text-color: #{$mds-color-theme-text-accent-hover};
+  --md-hyperlink-focus-text-color: #{$mds-color-theme-text-accent-active};
+
+  --md-primary-gradient-background: #{$mds-color-theme-background-gradient-primary-normal};
+  --md-secondary-gradient-background: #{$mds-color-theme-background-gradient-secondary-normal};
+
+  --md-primary-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
+  --md-primary-success-text-color: #{$mds-color-theme-text-success-normal};
+
+  --md-focus-border-color: #{$mds-color-theme-outline-theme-normal};
+
+  --md-primary-seperator-color: #{$mds-color-theme-outline-primary-normal};
+  --md-secondary-seperator-color: #{$mds-color-theme-outline-secondary-normal};
+
+  --md-alert-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
+  --md-alert-error-text-color: #{$mds-color-theme-text-error-normal};
+  --md-alert-warning-bg-color: #{$mds-color-theme-background-alert-warning-normal};
+  --md-alert-warning-text-color: #{$mds-color-theme-text-warning-normal};
+  --md-alert-success-bg-color: #{$mds-color-theme-background-alert-success-normal};
+  --md-alert-success-text-color: #{$mds-color-theme-text-success-normal};
+  --md-alert-info-bg-color: #{$mds-color-theme-background-alert-theme-normal};
+  --md-alert-info-text-color: #{$mds-color-theme-text-accent-normal};
+
+  --md-nav-tab-hover-bg-color: #{$mds-color-theme-button-secondary-hover};
+  --md-nav-tab-active-bg-color: #{$mds-color-theme-button-secondary-active-normal};
+
+  --md-menu-overlay-border-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-menu-overlay-arrow-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+
+  --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
+  --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
+
+  --md-navigation-bg-color: transparent;
+  --md-header-bg-color: transparent;
+  --md-app-bg-color: var(--md-primary-gradient-background);
+  --md-header-bg-color: transparent;
+  --md-header-separator-color: transparent;
+  --md-content-bg-color: var(--md-secondary-gradient-background);
+  --md-task-list-bg-color: transparent;
+  --md-agent-history-bg-color: transparent;
+
+  --md-nav-divider-primary: linear-gradient(
+    0deg,
+    #{$mds-color-theme-button-secondary-disabled} 0%,
+    #{$mds-color-theme-button-secondary-active-normal} 22.4%,
+    #{$mds-color-theme-button-secondary-active-normal} 72.4%,
+    #{$mds-color-theme-button-secondary-disabled} 100%
+  );
+  --md-nav-divider-primary-hover: var(--md-nav-divider-primary);
+
+  // Background colours can not be overwritten because they are being used by consumers in unexpected ways
+  // New background colours should be introduced and these phased out
+  // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+  // --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
+  // --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  // --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
+  // --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
+  // --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
+  // --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active}
+  // --md-tertiary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  // --md-tertiary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
+  // --md-tertiary-two-bg-color: #{$md-gray-80};
+  // --md-quaternary-bg-color: #{$mds-color-theme-background-alert-default-active};
+  // --md-quaternary-one-bg-color: #{$md-gray-60};
+  // --md-quaternary-two-bg-color: #{$md-gray-90};
+  // --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
+  // --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color
+
+  // --md-presence-active-bg-color: #{$md-green-50};
+  // --md-presence-do-not-disturb-bg-color: #{$md-red-60};
+  // --md-presence-away-bg-color: #{$md-gray-30};
+  // --md-presence-busy-bg-color: #{$md-yellow-40};
+  // --md-email-composer-bg-color: #{$md-gray-95};
+  // --md-email-composer-thread-bar-color: #{$md-violet-40};
+  // --md-email-composer-ccChip-bg-color: #{$md-gray-90};
+  // --md-interaction-history-bg-color: #{$md-gray-95};
+  // --md-auto-wrapup-bg-color: #{$md-blue-90};
+  // --md-input-bg-color: #{$md-gray-95};
+  // --md-input-chat-length-indicator-bg-color: #{$md-gray-90};
+  // --md-input-chat-length-indicator-color: #{$md-gray-40};
+  // --md-input-chat-bg-color: #{$md-gray-90};
+  // --md-input-chat-color: #{$md-gray-05};
+  // --md-input-chat-error-color: #{$md-red-50};
+  // --md-webex-chat-disable-bg-color: #{$md-gray-90};
+  // --md-webex-chat-disable-color: #{$md-gray-70};
 }

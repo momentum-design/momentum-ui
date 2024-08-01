@@ -190,7 +190,7 @@ export namespace Dropdown {
 
     protected handleFocusOut(event: Event) {
       super.handleFocusOut && super.handleFocusOut(event);
-   
+
       this.dispatchEvent(
         new CustomEvent<EventDetail["dropdown-focus-out"]>("dropdown-focus-out", {
           composed: true,
@@ -220,7 +220,7 @@ export namespace Dropdown {
       const selectedIndex = this.focusedIndex !== -1 ? `combo-${this.focusedIndex}` : "";
       document.dispatchEvent(new CustomEvent("on-widget-update"));
       this.label.setAttribute("aria-activedescendant", selectedIndex);
-      if(this.optionsList){
+      if (this.optionsList) {
         (this.optionsList as HTMLElement).focus();
       }
 
@@ -267,7 +267,7 @@ export namespace Dropdown {
       if (path.length) {
         insideSelfClick = !!path.find(element => element === this);
         if (!insideSelfClick) {
-          if(this.expanded){
+          if (this.expanded) {
             this.collapse();
           }
         }
@@ -339,7 +339,7 @@ export namespace Dropdown {
 
     onLabelClick() {
       this.label.focus();
-      this.toggle();      
+      this.toggle();
     }
 
     focusFirst() {
@@ -468,7 +468,7 @@ export namespace Dropdown {
             ?disabled="${this.disabled}"
             @click="${() => this.onLabelClick()}"
             part="dropdown-header"
-            role="combobox" 
+            role="combobox"
             tabindex="0"
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>

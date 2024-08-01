@@ -6,13 +6,13 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "@/components/button/Button";
-import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
 
 export namespace Alert {
@@ -49,20 +49,20 @@ export namespace Alert {
       switch (this.type) {
         case "error":
           return html`
-            <md-icon name="icon-warning_32" color="red-50"></md-icon>
+            <md-icon name="icon-warning_32" color="var(--md-alert-error-text-color, red)"></md-icon>
           `;
         case "info":
           return html`
-            <md-icon name="info_32" color="blue-50"></md-icon>
+            <md-icon name="info_32" color="var(--md-alert-info-text-color, blue)"></md-icon>
           `;
         case "success":
           return html`
-            <md-icon name="check-circle_36" color="green-50"></md-icon>
+            <md-icon name="check-circle_36" color="var(--md-alert-success-text-color, green)"></md-icon>
           `;
         case "warn":
         case "warning":
           return html`
-            <md-icon name="icon-warning_32" color="orange-50"></md-icon>
+            <md-icon name="icon-warning_32" color="var(--md-alert-warning-text-color, orange)"></md-icon>
           `;
         default:
           return html`

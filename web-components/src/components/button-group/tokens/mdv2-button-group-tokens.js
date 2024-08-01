@@ -1,37 +1,39 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const buttonGroup = {
   prefix: "mdv2",
   component: "button-group",
+  indent: { light: "0.0625rem", dark: "0.0625rem" },
+  border: {
+    radius: { light: "1.875rem", dark: "1.875rem" }
+  },
   color: {
-    light: colors.gray[70].name,
-    dark: colors.gray[40].name,
+    common: "$mds-color-theme-text-secondary-normal",
     active: {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    hover: {
+      common: "$mds-color-theme-button-secondary-active-normal"
     }
   },
   "bg-color": {
-    light: colors.gray[20].name,
-    dark: colors.gray[95].name,
+    common: "$mds-color-theme-button-secondary-normal",
     hover: {
-      light: colors.gray[30].name,
-      dark: colors.gray[90].name
+      common: "$mds-color-theme-button-secondary-normal"
     },
     pressed: {
-      light: colors.gray[40].name,
-      dark: colors.gray[80].name
+      common: "$mds-color-theme-button-secondary-normal"
     },
     focus: {
-      light: colors.gray[30].name,
-      dark: colors.gray[90].name
+      common: "$mds-color-theme-button-secondary-active-normal"
     },
     active: {
-      light: colors.white[100].name,
-      dark: colors.gray[60].name
+      common: "$mds-color-theme-button-secondary-active-normal"
     }
+  },
+  "outline-border": {
+    common: "$mds-color-theme-outline-input-normal"
   }
 };
 

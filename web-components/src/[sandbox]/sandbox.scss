@@ -5,16 +5,41 @@
   overflow-y: auto;
   padding: 1rem;
   width: 100%;
+  background: var(--md-primary-bg-color);
+}
+
+.container-color-bg-color-options {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#color-dropdown {
+  margin-left: 0.5rem;
+  width: 240px;
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .toggle-container {
-  height: 1.75rem;
-  margin-left: 0.5rem;
+  height: 1.75rem;  
+  gap: 0.5rem;    
 }
 
-.explorer {
-  height: calc(100vh - 1.75rem);
+.explorer {  
   width: 100vw;
+}
+
+.explorer::part(tabs-list) {
+  height: calc(100vh - 1.75rem);
+  overflow-y: auto;  
+  flex-shrink: 0;
 }
 
 .row::before,

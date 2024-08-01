@@ -17,8 +17,8 @@ import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
-import styles from "./scss/module.scss";
 import { ifDefined } from "lit-html/directives/if-defined";
+import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
   small = "260px",
@@ -52,7 +52,6 @@ export const menuOverlayPlacement = [
 ] as const;
 export const menuOverlayRole = ["menu", "dialog"] as const;
 
-
 export namespace MenuOverlay {
   export type Size = typeof menuOverlaySize[number];
   export type Placement = typeof menuOverlayPlacement[number];
@@ -84,8 +83,8 @@ export namespace MenuOverlay {
     @property({ type: String }) placement: MenuOverlay.Placement = "bottom";
     @property({ type: Boolean, attribute: "allow-hover-toggle" }) allowHoverToggle = false;
     @property({ type: String }) ariaRole: Role = "menu";
-    @property({ type: String }) ariaLabel: string = "";
-
+    @property({ type: String }) ariaLabel = "";
+    @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -99,8 +98,12 @@ export namespace MenuOverlay {
       return this.maxHeight ? `max-height: ${this.maxHeight};` : `max-height: calc(100vh - 48px);`;
     }
 
-    shouldWrapFocus = () => this.ariaRole === 'dialog';
-    
+    shouldWrapFocus = () => this.ariaRole === "dialog";
+
+    private renderOverflowY() {
+      return this.isDatePicker ? `overflow-y: visible;` : `overflow-y: auto;`;
+    }
+
     private renderWidth() {
       if (this.customWidth) {
         return `width: ${this.customWidth};`;
@@ -117,36 +120,37 @@ export namespace MenuOverlay {
           :host .md-menu-overlay .overlay-content {
             ${this.renderMaxHeight()};
             ${this.renderWidth()};
+            ${this.renderOverflowY()};
           }
         </style>
       `;
     }
-    updateActiveMenuOverlayOpened =
-      (event: Event) => {
-        if (this === event.target) {
-          MenuOverlay.ELEMENT.activeOverlay?.push(event.target as ELEMENT);
+    updateActiveMenuOverlayOpened = (event: Event) => {
+      if (this === event.target) {
+        MenuOverlay.ELEMENT.activeOverlay?.push(event.target as ELEMENT);
+      }
+    };
+    updateActiveMenuOverlayClosed = (event: Event) => {
+      const index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
+      if (this === event.target && index !== -1) {
+        MenuOverlay.ELEMENT.activeOverlay.splice(index, 1);
+        if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
+          MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
+          MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnNestedTrigger(
+            this.triggerElement as HTMLElement
+          );
+        } else {
+          this.setFocusableElements!();
         }
-      };
-    updateActiveMenuOverlayClosed =
-      (event: Event) => {
-        let index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
-        if (this === event.target && index !== -1) {
-          MenuOverlay.ELEMENT.activeOverlay.splice(index, 1);
-          if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
-            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
-            MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnNestedTrigger(this.triggerElement as HTMLElement);
-          } else {
-            this.setFocusableElements!();
-          }
-        }
-      };
+      }
+    };
 
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
-      this.addEventListener('menu-overlay-open', this.updateActiveMenuOverlayOpened);
-      this.addEventListener('menu-overlay-close', this.updateActiveMenuOverlayClosed);
+      this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
+      this.addEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
     }
 
     disconnectedCallback() {
@@ -154,8 +158,8 @@ export namespace MenuOverlay {
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
 
-      this.removeEventListener('menu-overlay-open', this.updateActiveMenuOverlayOpened);
-      this.removeEventListener('menu-overlay-close', this.updateActiveMenuOverlayClosed);
+      this.removeEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
+      this.removeEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
 
       if (this.triggerElement) {
         this.triggerElement.removeEventListener("click", this.handleTriggerClick);
@@ -171,7 +175,7 @@ export namespace MenuOverlay {
     }
 
     checkIsInputField(element: HTMLElement) {
-      if (element && element.tagName && element.tagName.toLowerCase() === 'md-input') {
+      if (element && element.tagName && element.tagName.toLowerCase() === "md-input") {
         return true;
       }
       return false;
@@ -231,7 +235,7 @@ export namespace MenuOverlay {
 
           if (this.triggerElement) {
             this.triggerElement.setAttribute("aria-expanded", "true");
-            if(this.triggerElement.hasAttribute("ariaexpanded")){
+            if (this.triggerElement.hasAttribute("ariaexpanded")) {
               this.triggerElement.setAttribute("ariaexpanded", "true");
             }
           }
@@ -239,7 +243,7 @@ export namespace MenuOverlay {
           this.dispatchMenuClose();
           if (this.triggerElement) {
             this.triggerElement.removeAttribute("aria-expanded");
-            if(this.triggerElement.hasAttribute("ariaexpanded")){
+            if (this.triggerElement.hasAttribute("ariaexpanded")) {
               this.triggerElement.setAttribute("ariaexpanded", "false");
             }
           }
@@ -317,10 +321,10 @@ export namespace MenuOverlay {
               }
             },
             {
-              name: 'computeStyles',
+              name: "computeStyles",
               options: {
-                adaptive: false, // this will recompute popper position
-              },
+                adaptive: false // this will recompute popper position
+              }
             }
           ]
         });
@@ -351,12 +355,12 @@ export namespace MenuOverlay {
     }, 100);
 
     private expandPopup = () => {
-      this.setOverlay(true)
-    }
+      this.setOverlay(true);
+    };
 
     private collapsePopup = () => {
-      this.setOverlay(false)
-    }
+      this.setOverlay(false);
+    };
 
     handleOutsideOverlayKeydown = async (event: KeyboardEvent) => {
       let insideMenuKeyDown = false;
@@ -374,7 +378,10 @@ export namespace MenuOverlay {
 
       if (event.code === Key.Escape) {
         event.preventDefault();
-        let lastOverlay = MenuOverlay.ELEMENT.activeOverlay.length > 0 ? MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1] : undefined;
+        const lastOverlay =
+          MenuOverlay.ELEMENT.activeOverlay.length > 0
+            ? MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]
+            : undefined;
         if (lastOverlay === this) {
           this.isOpen = false;
           await this.updateComplete;
@@ -443,11 +450,14 @@ export namespace MenuOverlay {
     render() {
       return html`
         ${this.getStyles()}
-        <div aria-expanded=${this.isOpen} class="md-menu-overlay">
-          <slot name="menu-trigger"></slot>
-          <div part="overlay" class="overlay-container" role=${this.ariaRole}
-          aria-modal=${ifDefined(this.ariaRole === 'dialog' ? "true" : undefined)}
-          aria-label=${ifDefined(this.ariaLabel || undefined)}
+        <div class="md-menu-overlay">
+          <slot name="menu-trigger" aria-expanded=${this.isOpen}></slot>
+          <div
+            part="overlay"
+            class="overlay-container"
+            role=${this.ariaRole}
+            aria-modal=${ifDefined(this.ariaRole === "dialog" ? "true" : undefined)}
+            aria-label=${ifDefined(this.ariaLabel || undefined)}
           >
             <div id="arrow" class="overlay-arrow" data-popper-arrow></div>
             <div class="overlay-content" part="overlay-content">

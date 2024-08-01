@@ -83,7 +83,9 @@ const fixtureFactoryWithCustomAttr = async (
       size=${size}
       ?allow-hover-toggle=${allowHoverToggle}
     >
-      <md-button slot="menu-trigger" ariaexpanded="false" class="menu-trigger" variant="primary">Open Menu Overlay</md-button>
+      <md-button slot="menu-trigger" ariaexpanded="false" class="menu-trigger" variant="primary"
+        >Open Menu Overlay</md-button
+      >
       <div><h1>Menu Overlay Content</h1></div>
     </md-menu-overlay>
   `);
@@ -97,7 +99,7 @@ const fixtureFactoryForNestedOverlays = async (
   maxHeight: string,
   size: MenuOverlay.Size,
   allowHoverToggle = false,
-  isNestedOpen =  false
+  isNestedOpen = false
 ): Promise<MenuOverlay.ELEMENT> => {
   return await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
@@ -113,13 +115,13 @@ const fixtureFactoryForNestedOverlays = async (
       <md-button slot="menu-trigger" class="menu-trigger" variant="primary">Open Menu Overlay</md-button>
       <div>
         <h1>Parent Menu Overlay Content</h1>
-        <md-menu-overlay 
-          placement=${placement} 
-          ?is-open=${isNestedOpen} 
-          show-arrow 
-          max-height=${maxHeight} 
+        <md-menu-overlay
+          placement=${placement}
+          ?is-open=${isNestedOpen}
+          show-arrow
+          max-height=${maxHeight}
           custom-width=${customWidth}
-          position="bottom" 
+          position="bottom"
           id="outdial-overlay"
         >
           <md-button slot="menu-trigger" variant="primary">Open Nested Menu Overlay</md-button>
@@ -182,9 +184,11 @@ describe("MenuOverlay", () => {
 
     await nextFrame();
 
+    expect(triggerElement.getAttribute("aria-expanded")).toBeUndefined;
     triggerElement.dispatchEvent(new MouseEvent("click"));
     await nextFrame();
 
+    expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy;
     expect(element.isOpen).toBeTruthy();
     element.isOpen = false;
   });
@@ -286,7 +290,6 @@ describe("MenuOverlay", () => {
     element.isOpen = false;
   });
 
-
   test("triggerElement should have the correct aria labels", async () => {
     const element = await fixtureFactoryWithCustomAttr(false, false, "bottom", "", "", "large");
 
@@ -324,7 +327,7 @@ describe("MenuOverlay", () => {
     await nextFrame();
     expect(element.isOpen).toBeFalsy();
     jest.clearAllTimers();
-    element.isOpen = false; 
+    element.isOpen = false;
   });
 
   test("should execute handleOutsideClick", async () => {
@@ -338,7 +341,7 @@ describe("MenuOverlay", () => {
     expect(mockhandleOutsideClick).toHaveBeenCalled();
 
     mockhandleOutsideClick.mockRestore();
-    element.isOpen = false; 
+    element.isOpen = false;
   });
 
   test("should test showArrow property", async () => {
@@ -349,7 +352,7 @@ describe("MenuOverlay", () => {
     element.handleOutsideOverlayClick(event);
     await elementUpdated(element);
     expect(element.arrow).not.toBeNull();
-    element.isOpen = false; 
+    element.isOpen = false;
   });
 
   test("should test showArrow property on first render", async () => {
@@ -491,7 +494,6 @@ describe("MenuOverlay", () => {
     await elementUpdated(element);
 
     const trigger = element["triggerElement"]!;
-    const button = element.querySelector("md-button");
 
     trigger.dispatchEvent(new MouseEvent("click"));
 
@@ -501,7 +503,7 @@ describe("MenuOverlay", () => {
 
     await nextFrame();
     expect(element.isOpen).toBeFalsy();
-    expect(document.activeElement).toBe(null)
+    expect(document.activeElement).toBe(null);
   });
 
   test("shouldn't focus on trigger when press any button except escape to close modal", async () => {
@@ -524,71 +526,70 @@ describe("MenuOverlay", () => {
   });
 
   test("should have an aria-label attribute when ariaLabel is set", async () => {
-    const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ariaLabel="Menu Overlay"></md-menu-overlay>`);
+    const component: MenuOverlay.ELEMENT = await fixture(
+      `<md-menu-overlay ariaLabel="Menu Overlay"></md-menu-overlay>`
+    );
     const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
-    expect(overlayPart?.getAttribute('aria-label')).toEqual('Menu Overlay');
+    expect(overlayPart?.getAttribute("aria-label")).toEqual("Menu Overlay");
     component.isOpen = false;
   });
 
   test("should not have an aria-label attribute when ariaLabel is not set", async () => {
     const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ></md-menu-overlay>`);
     const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
-    expect(overlayPart?.hasAttribute('aria-label')).toBe(false);
+    expect(overlayPart?.hasAttribute("aria-label")).toBe(false);
     component.isOpen = false;
   });
 
   test("should have a role when we set ariaRole", async () => {
     const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ariaRole="dialog" ></md-menu-overlay>`);
     const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
-    expect(overlayPart?.getAttribute('role')).toEqual("dialog");
+    expect(overlayPart?.getAttribute("role")).toEqual("dialog");
     // when the role is dialog, aria-modal should be true
-    expect(overlayPart?.getAttribute('aria-modal')).toEqual("true");
+    expect(overlayPart?.getAttribute("aria-modal")).toEqual("true");
     component.isOpen = false;
-
   });
 
   test("should have a role as menu when we are not passing", async () => {
     const component: MenuOverlay.ELEMENT = await fixture(`<md-menu-overlay ></md-menu-overlay>`);
     const overlayPart = component.shadowRoot?.querySelector('div[part="overlay"]');
-    expect(overlayPart?.getAttribute('role')).toEqual("menu");
+    expect(overlayPart?.getAttribute("role")).toEqual("menu");
     // when the role is other than dialog, aria-modal should be false
-    expect(overlayPart?.hasAttribute('aria-modal')).toBe(false);
-component.isOpen = false;
-
+    expect(overlayPart?.hasAttribute("aria-modal")).toBe(false);
+    component.isOpen = false;
   });
 
   test("should focus on trigger when press escape outside close modal", async () => {
     jest.useFakeTimers();
-    
-    const element = await fixtureFactoryForNestedOverlays(true, true, "bottom", "200px", "100px", "large",false, true);
+
+    const element = await fixtureFactoryForNestedOverlays(true, true, "bottom", "200px", "100px", "large", false, true);
     jest.runAllTimers();
     await elementUpdated(element);
-     // Add this line to clear the activeOverlay array
+    // Add this line to clear the activeOverlay array
     const button = element.querySelector("md-button");
-    const nestedMenuOverlay =  (element.querySelector("#outdial-overlay") as MenuOverlay.ELEMENT);
-    
+    const nestedMenuOverlay = element.querySelector("#outdial-overlay") as MenuOverlay.ELEMENT;
+
     const composedPathMockForNested = jest.fn(() => [nestedMenuOverlay]);
     const originalComposedPath = Event.prototype.composedPath;
     Event.prototype.composedPath = composedPathMockForNested;
-  
-  
+
     // Dispatch escape key press event on nested menu overlay
     document.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Escape }));
-    
+
     await elementUpdated(nestedMenuOverlay);
     await elementUpdated(element);
     await nextFrame();
     // Verify that the nested menu overlay is closed and the parent menu overlay is still open
-    
+
     expect(nestedMenuOverlay.isOpen).toBeFalsy();
     expect(element.isOpen).toBeTruthy();
     Event.prototype.composedPath = originalComposedPath;
-  
+
     // Dispatch escape key press event on parent menu overlay
     const composedPathMockForParent = jest.fn(() => [element]);
     const originalComposedPath1 = Event.prototype.composedPath;
     Event.prototype.composedPath = composedPathMockForParent;
-  
+
     document.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Escape }));
     await nextFrame();
 
@@ -598,6 +599,4 @@ component.isOpen = false;
     expect(document.activeElement).toEqual(button);
     Event.prototype.composedPath = originalComposedPath1;
   });
-
-
 });

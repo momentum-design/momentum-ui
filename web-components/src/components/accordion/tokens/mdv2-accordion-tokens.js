@@ -1,25 +1,20 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const accordion = {
   prefix: "mdv2",
   component: "accordion",
   "color-border": {
-    light: colors.gray[10].name,
-    dark: colors.gray[90].name
+    common: "$mds-color-theme-background-primary-active"
   },
   "bg-focus": {
-    light: colors.white[60].name,
-    dark: colors.gray[90].name
+    common: "$mds-color-theme-background-primary-active"
   },
   hover: {
-    light: colors.gray[10].name,
-    dark: colors.gray[80].name
+    common: "$mds-color-theme-background-primary-hover"
   },
   active: {
-    light: colors.blue[60].name,
-    dark: colors.blue[50].name
+    common: "$mds-color-theme-outline-theme-normal"
   }
 };
 

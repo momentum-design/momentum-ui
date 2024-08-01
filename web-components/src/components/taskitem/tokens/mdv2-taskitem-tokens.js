@@ -1,70 +1,56 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const task_item = {
   prefix: "mdv2",
   component: "taskitem",
   "text-color": {
-    light: colors.gray[70].name,
-    dark: colors.gray[40].name
+    common: "$mds-color-theme-text-secondary-normal"
   },
   "hover-bg-color": {
-    light: colors.white[100].name,
-    dark: colors.gray[90].name
+    common: "$mds-color-theme-background-primary-hover"
   },
   "pressed-bg-color": {
-    light: colors.white[100].name,
-    dark: colors.gray[90].name
+    common: "$mds-color-theme-background-primary-active"
   },
   "focus-bg-color": {
-    light: colors.white[100].name,
-    dark: colors.gray[95].name
+    common: "$mds-color-theme-background-primary-ghost"
   },
   "focus-border-color": {
-    light: colors.theme[60].name,
-    dark: colors.theme[40].name
+    common: "$mds-color-theme-outline-theme-normal"
   },
   status: {
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[80].name
+      common: "$mds-color-theme-background-solid-secondary-normal"
     },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray[10].name
+      common: "$mds-color-theme-text-secondary-normal"
     },
     pause: {
       "bg-color": {
-        light: colors.yellow[20].name,
-        dark: colors.yellow[70].name
+        common: "$mds-color-theme-background-alert-warning-normal"
       }
     }
   },
   selected: {
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      common: "$mds-color-theme-text-primary-normal"
     }
   },
   chat: {
     "text-color": {
-      light: colors.gray[70].name,
-      dark: colors.gray[40].name
+      common: "$mds-color-theme-text-secondary-normal"
     },
     "quantity-bg-color": {
-      light: colors.cobalt[30].name,
-      dark: colors.cobalt[70].name
+      common: "$mds-color-theme-background-accent-normal"
     },
     "quantity-text-color": {
-      light: colors.cobalt[80].name,
-      dark: colors.cobalt[20].name
+      common: "$mds-color-theme-common-text-primary-normal"
     }
   },
   timer: {
     "text-color": {
-      light: colors.green[70].name,
-      dark: colors.green[50].name
+      common: "$mds-color-theme-text-success-normal"
     }
   }
 };

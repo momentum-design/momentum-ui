@@ -5,53 +5,41 @@ const link = {
   prefix: "mdv2",
   component: "link",
   default: {
-    light: "$mds-color-theme-accent-text-default",
-    dark: "$mds-color-theme-accent-text-default"
+    common: "$mds-color-theme-text-accent-normal"
   },
   hover: {
-    light: "$mds-color-theme-accent-text-hover",
-    dark: "$mds-color-theme-accent-text-hover"
+    common: "$mds-color-theme-text-accent-hover"
   },
   pressed: {
-    light: "$mds-color-theme-accent-text-active",
-    dark: "$mds-color-theme-accent-text-active"
+    common: "$mds-color-theme-text-accent-active"
   },
   focus: {
-    light: "$mds-color-theme-neutral-text-disabled",
-    dark: "$mds-color-theme-neutral-text-disabled",
+    common: "$mds-color-theme-common-text-primary-disabled",
 
     outline: {
-      light: "$mds-color-theme-neutral-text-disabled",
-      dark: "$mds-color-theme-neutral-text-disabled"
+      common: "$mds-color-theme-common-text-primary-disabled"
     }
   },
   disabled: {
-    light: "$mds-color-theme-neutral-text-disabled",
-    dark: "$mds-color-theme-neutral-text-disabled"
+    common: "$mds-color-theme-text-primary-disabled"
   },
   inline: {
-    light: "$mds-color-theme-negative-text-default",
-    dark: "$mds-color-theme-negative-text-default",
+    common: "$mds-color-theme-text-error-normal",
 
     hover: {
-      light: "$mds-color-theme-negative-text-hover",
-      dark: "$mds-color-theme-negative-text-hover"
+      common: "$mds-color-theme-text-error-hover"
     },
     pressed: {
-      light: "$mds-color-theme-negative-text-active",
-      dark: "$mds-color-theme-negative-text-active"
+      common: "$mds-color-theme-text-error-active"
     },
     focus: {
-      light: "$mds-color-theme-negative-text-default",
-      dark: "$mds-color-theme-negative-text-default"
+      common: "$mds-color-theme-text-error-normal"
     },
     "font-size": {
-      light: "14px",
-      dark: "14px"
+      common: "1rem"
     },
     "font-size__inline": {
-      light: "12px",
-      dark: "12px"
+      common: "0.875rem"
     }
   }
 };

@@ -5,6 +5,9 @@
     padding: $alert-banner__padding;
     position: relative;
     text-align: center;
+    border-radius: var(--alert-banner-border-radius);
+    font-family: var(--brand-font-regular);
+    font-weight: var(--brand-font-weight-regular);
 
     &.md-alert-banner {
       &--default {
@@ -56,10 +59,10 @@
       width: $alert-banner-close__size;
     }
   }
-  @media (forced-colors:active) {
+  @media (forced-colors: active) {
     .md-alert-banner {
-      box-shadow: none; 
-      outline: 2px solid CanvasText; 
+      box-shadow: none;
+      outline: 2px solid CanvasText;
     }
   }
 }

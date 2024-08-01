@@ -261,6 +261,16 @@ const badge = {
       dark: colors.cyan[20].name
     }
   },
+  unreadcount: {
+    "bg-color": {
+      light: colors.red[60].name,
+      dark: colors.red[60].name
+    },
+    "text-color": {
+      light: colors.gray["05"].name,
+      dark: colors.gray["05"].name
+    }
+  },
   hold: {
     "bg-color": {
       light: colors.yellow[10].name,

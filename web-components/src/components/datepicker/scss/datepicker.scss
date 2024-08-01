@@ -1,4 +1,5 @@
 .md-datepicker {
+  overflow: visible;
   &__month-container {
     display: flex;
     flex-direction: column;
@@ -9,7 +10,7 @@
 
   &__navigation--buttons {
     align-items: center;
-    color: var(--md-primary-text-color, inherit);
+    color: var(--datepicker-default-navigation-button, var(--md-primary-text-color, inherit));
     display: flex;
     justify-content: space-between;
     line-height: normal;
@@ -33,6 +34,7 @@
     font-size: rem-calc(16);
     font-weight: 700;
     text-transform: capitalize;
+    color: var(--datepicker-default-navigation-label, inherit);
   }
 
   &__navigation {
@@ -46,13 +48,15 @@
   }
 
   &__day {
+    color: var(--datepicker-default-number-color, inherit);
+    background-color: var(--datepicker-default-number-bg-color, inherit);
     border-radius: 100%;
     display: inline-block;
     height: $day-button-height;
     width: $day-button-height;
 
     &--names {
-      color: var(--md-secondary-text-color, $md-gray-70);
+      color: var(--datepicker-default-days, var(--md-secondary-text-color, $md-gray-70));
       display: flex;
       font-size: $day-name-font-size;
       justify-content: space-around;
@@ -76,7 +80,7 @@
       font-weight: 700;
 
       &::after {
-        border: 1px solid var(--datepicker-range-text-color, $md-gray-100);
+        border: var(--datepicker-selected-today-border, 1px solid var(--datepicker-range-text-color, $md-gray-100));
         height: 1.8rem;
         left: 7%;
         position: absolute;
@@ -86,18 +90,28 @@
     }
 
     &--focus::part(button) {
-      background: var(--datepicker-range-hover-bg-color, $md-gray-20);
+      background: var(--datepicker-default-number-bg-color, var(--datepicker-range-hover-bg-color, $md-gray-20));
     }
 
     &--selected::part(button) {
-      background: var(--md-primary-text-color, $md-gray-100);
-      color: var(--md-secondary-bg-color, $md-white);
+      background: var(--datepicker-selected-bg-color, var(--md-primary-text-color, $md-gray-100));
+      color: var(--datepicker-selected-text-color, var(--md-secondary-bg-color, $md-white));
     }
+
+    &--selected::part(button):hover {
+      background: var(--datepicker-selected-hover-bg-color);
+      color: var(--datepicker-selected-text-color);
+    }
+
+    &--selected::part(button):active {
+      background: var(--datepicker-selected-pressed-bg-color);
+      color: var(--datepicker-selected-text-color);
+    }
+
 
     &--outside-month {
-      color: var(--md-disabled-text-color, inherit);
+      color: var(--datepicker-invalid-text-color, var(--md-disabled-text-color, inherit));
     }
-
 
     // BELOW STYLES ENABLE DATE-RANGE-PICKER
     // The code uses radial-gradients on pseudo elements to create an overlap effect for selected/hovered dates on top of the range-selected bar.
@@ -119,24 +133,35 @@
         z-index: -1;
       }
 
-      &:hover,
+      &:hover {
+        color: var(--datepicker-hover-text-color, var(--datepicker-range-text-color, $md-gray-100));
+      }
+
+      &:active {
+        color: var(--datepicker-pressed-text-color, $md-gray-100);
+      }
+
       &:focus {
-        color: var(--datepicker-range-text-color, $md-gray-100);
+        color: var(--datepicker-focus-text-color, var(--datepicker-range-text-color, $md-gray-100));
 
         &::before {
-          background: radial-gradient(circle at 43% center,
-          var(--datepicker-range-hover-bg-color) 60%,
-          rgba(0, 0, 0, 0) 60%,
-          var(--datepicker-range-bg-color) 60%,
-          var(--datepicker-range-bg-color) 60%);
+          background: radial-gradient(
+            circle at 43% center,
+            var(--datepicker-range-hover-bg-color) 60%,
+            rgba(0, 0, 0, 0) 60%,
+            var(--datepicker-range-bg-color) 60%,
+            var(--datepicker-range-bg-color) 60%
+          );
         }
 
         &::after {
-          background: radial-gradient(circle at 50% center,
-          rgba(0, 0, 0, 0) 50%,
-          var(--datepicker-range-hover-bg-color) 51%,
-          var(--datepicker-range-hover-bg-color) 100%,
-          rgba(0, 0, 0, 0) 100%);
+          background: radial-gradient(
+            circle at 50% center,
+            rgba(0, 0, 0, 0) 50%,
+            var(--datepicker-range-hover-bg-color) 51%,
+            var(--datepicker-range-hover-bg-color) 100%,
+            rgba(0, 0, 0, 0) 100%
+          );
           content: "";
         }
       }
@@ -161,21 +186,25 @@
       color: var(--md-secondary-bg-color, $md-gray-100);
 
       &::before {
-        background: radial-gradient(circle at 40% center,
-        var(--md-primary-text-color, $md-gray-100) 59%,
-        rgba(0, 0, 0, 0) 50%,
-        var(--datepicker-range-bg-color) 50%,
-        var(--datepicker-range-bg-color) 50%);
+        background: radial-gradient(
+          circle at 40% center,
+          var(--md-primary-text-color, $md-gray-100) 59%,
+          rgba(0, 0, 0, 0) 50%,
+          var(--datepicker-range-bg-color) 50%,
+          var(--datepicker-range-bg-color) 50%
+        );
         border-bottom-left-radius: 1rem;
         border-top-left-radius: 1rem;
       }
 
       &::after {
-        background: radial-gradient(circle at 50% center,
-        rgba(0, 0, 0, 0) 50%,
-        var(--datepicker-range-edge-bg-color, $md-gray-100) 51%,
-        var(--datepicker-range-edge-bg-color, $md-gray-100) 100%,
-        rgba(0, 0, 0, 0) 100%);
+        background: radial-gradient(
+          circle at 50% center,
+          rgba(0, 0, 0, 0) 50%,
+          var(--datepicker-range-edge-bg-color, $md-gray-100) 51%,
+          var(--datepicker-range-edge-bg-color, $md-gray-100) 100%,
+          rgba(0, 0, 0, 0) 100%
+        );
         content: "";
       }
     }
@@ -184,26 +213,28 @@
       color: var(--md-secondary-bg-color, $md-gray-100);
 
       &::before {
-        background: radial-gradient(circle at 47% center,
-        var(--datepicker-range-edge-bg-color, $md-gray-100) 58%,
-        rgba(0, 0, 0, 0) 50%,
-        var(--datepicker-range-bg-color) 50%,
-        var(--datepicker-range-bg-color) 50%);
+        background: radial-gradient(
+          circle at 47% center,
+          var(--datepicker-range-edge-bg-color, $md-gray-100) 58%,
+          rgba(0, 0, 0, 0) 50%,
+          var(--datepicker-range-bg-color) 50%,
+          var(--datepicker-range-bg-color) 50%
+        );
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
         width: calc(2rem - 2px);
       }
 
       &::after {
-        background: radial-gradient(circle at 50% center,
-        rgba(0, 0, 0, 0) 50%,
-        var(--datepicker-range-edge-bg-color, $md-gray-100) 51%,
-        var(--datepicker-range-edge-bg-color, $md-gray-100) 100%,
-        rgba(0, 0, 0, 0) 100%);
+        background: radial-gradient(
+          circle at 50% center,
+          rgba(0, 0, 0, 0) 50%,
+          var(--datepicker-range-edge-bg-color, $md-gray-100) 51%,
+          var(--datepicker-range-edge-bg-color, $md-gray-100) 100%,
+          rgba(0, 0, 0, 0) 100%
+        );
         content: "";
       }
     }
-
-    
   }
 }

@@ -7,12 +7,11 @@
  */
 
 import "@/components/form/Form";
-import "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
-import { html } from "lit-element";
 import { ThemeNameValues } from "@/components/theme/Theme";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { html } from "lit-element";
 
 export default {
   title: "Components/Form",
@@ -27,8 +26,7 @@ export default {
 
 export const Form = () => {
   const darkTheme = boolean("Dark Mode", false);
-  const lumos = boolean("Lumos Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "");
+  const theme = select("Theme name", ThemeNameValues, "lumos");
   const noValidate = boolean("Allow form shouldn't be validated when submitted", false);
   const allowRedirect = boolean("Allow redirect to the action URL", true);
   const isValid = boolean("Is form valid", false);
@@ -44,7 +42,7 @@ export const Form = () => {
   );
 
   return html`
-    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} ?lumos=${lumos} theme=${theme}>
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} theme=${theme}>
       <md-form
         ?no-validate=${noValidate}
         ?allow-redirect=${allowRedirect}

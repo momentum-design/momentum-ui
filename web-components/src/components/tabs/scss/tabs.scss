@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   font-size: $tab-font-size;
+  font-family: var(--brand-font-medium);
+  font-weight: var(--brand-font-weight-medium);
   height: 100%;
   padding: 0;
   position: relative;
@@ -197,30 +199,31 @@ md-menu-overlay {
 
 // Vertical Direction
 
-:host-context([direction="vertical"]) {
+//Host context is not supported in Safari or Firefox so set using host
+:host([direction="vertical"]) {
   flex-direction: row;
-}
 
-:host-context([direction="vertical"]) .md-tab__list {
-  border-right: $tab-list-border;
-  display: inline-flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-start;
-  width: auto;
-}
+  .md-tab__list {
+    border-right: $tab-list-border;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    width: auto;
 
-:host-context([direction="vertical"]) .md-tab__list ::slotted([slot="tab"]) {
-  border-left: $tab-border;
-  display: block;
-  height: auto;
-  text-align: left;
-}
+    ::slotted([slot="tab"]) {
+      border-left: $tab-border;
+      display: block;
+      height: auto;
+      text-align: left;
 
-:host-context([direction="vertical"]) .md-tab__list ::slotted([slot="tab"][selected]) {
-  color: var(--tabs-default-active, $lm-tabs-default-active-light);
-}
+      &[selected] {
+        color: var(--tabs-default-active, $lm-tabs-default-active-light);
+      }
+    }
+  }
 
-:host-context([direction="vertical"]) .md-tab__content ::slotted([slot="panel"]) {
-  padding-left: calc($tab-base-indent * 5);
+  .md-tab__content ::slotted([slot="panel"]) {
+    padding-left: calc($tab-base-indent * 5);
+  }
 }

@@ -7,49 +7,43 @@ const slider = {
   component: "slider",
   background: {
     selection: {
-      light: colors.blue[50].name,
-      red: {
-        light: colors.red[50].name
-      },
-      green: {
-        light: colors.green[50].name
-      },
-      blue: {
-        light: colors.blue[50].name
-      }
+      common: "$mds-color-theme-control-active-normal"
     },
     pointer: {
-      light: colors.white[100].name
+      common: "$mds-color-theme-background-solid-primary-normal"
+    },
+    pointerBorder: {
+      common: "$mds-color-theme-outline-primary-normal"
     },
     bar: {
-      light: colors.gray[10].name,
-      dark: colors.gray[40].name
+      common: "$mds-color-theme-outline-input-normal"
     },
 
     hover: {
       pointer: {
-        light: colors.blue[10].name
+        common: "$mds-color-theme-background-solid-primary-normal"
       }
     },
 
     disabled: {
+      bar: {
+        common: "$mds-color-theme-control-inactive-disabled"
+      },
       selection: {
-        light: colors.gray[30].name,
-        dark: colors.white[100].name
+        common: "$mds-color-theme-control-inactive-pressed"
       },
       pointer: {
-        light: colors.gray[10].name,
-        dark: colors.gray[40].name
+        common: "$mds-color-theme-background-solid-tertiary-normal"
       }
     },
+
     focus: {
-      pointer: {
-        light: colors.gray[40].name,
-        dark: colors.gray[40].name
-      },
+      shadow: {
+        common: "none"
+      }
     },
     label: {
-      light: colors.gray[70].name
+      common: "$mds-color-theme-text-secondary-normal"
     }
   }
 };

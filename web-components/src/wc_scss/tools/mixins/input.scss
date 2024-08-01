@@ -1,11 +1,9 @@
 // Remove after fixing checkbox/radio button
-@mixin input__help-text(
-  $color: $input__font-color--help,
-) {
+@mixin input__help-text($color: $input__font-color--help) {
   @include vr-spacing(mb, 0.25);
   color: $input__font-color--help;
   font-family: $brand-font-regular;
-  font-size: rem-calc(14);
+  font-size: var(--body-primary-font-size, rem-calc(14));
   line-height: rem-calc(22);
   padding-left: rem-calc(16);
 
@@ -29,11 +27,18 @@
   $background-color-active: null,
   $border-color: null,
   $border-color-active: null,
-  $focus-border-color: null
+  $focus-border-color: null,
+  $focus-background-color: null
 ) {
   .md-input {
     background-color: $background-color;
     color: $color;
+
+    @if $border-color {
+      border-color: $border-color;
+    } @else {
+      border: none;
+    }
 
     &::placeholder {
       color: $color-placeholder;
@@ -47,6 +52,12 @@
       &:active {
         background-color: $background-color-active;
         border-color: $border-color-active;
+      }
+    }
+
+    &:focus {
+      @if $focus-background-color != null {
+        background-color: $focus-background-color;
       }
     }
 
@@ -76,20 +87,14 @@
       }
     }
 
-    @if $border-color {
-      border-color: $border-color;
-    } @else {
-      border: none;
-    }
-
     &__after,
     &__before {
       @include input-icon($color: $color);
     }
 
     &__icon-clear {
-      @include input-clear-color($color-clear, $color-clear-hover);
       display: flex;
+      @include input-clear-color($color-clear, $color-clear-hover);
     }
   }
 

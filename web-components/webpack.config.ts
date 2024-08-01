@@ -5,11 +5,11 @@ import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import RemovePlugin from "remove-files-webpack-plugin";
+import sass from "sass";
 import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
 import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
-import sass from "sass";
 
 const pSrc = path.resolve("src");
 const pStats = path.resolve("stats");
@@ -19,6 +19,8 @@ const pCss = path.resolve("src/assets/styles");
 const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
+const pDesign = path.resolve("./node_modules/@momentum-design/icons");
+
 const pMomentum = fs.existsSync(p1) ? p1 : fs.existsSync(p2) ? p2 : null;
 if (!pMomentum) {
   throw new Error("Can't find Momentum UI");
@@ -77,7 +79,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },
       { loader: path.resolve("./stats/stats-loader.js") },
       {
-        loader: "sass-loader",        
+        loader: "sass-loader",
         options: {
           implementation: sass,
           sourceMap: isDev,
@@ -120,6 +122,10 @@ export const commonDev = merge(common, {
       favicon: "./src/[sandbox]/favicon.ico"
     }),
     new CopyWebpackPlugin([
+      { from: `${pDesign}/dist/fonts`, to: "icons/fonts" },
+      { from: `${pDesign}/dist/fonts`, to: "fonts" },
+      { from: `${pDesign}/dist/data/MomentumFontIcons.css`, to: "css" },
+      { from: `${pDesign}/dist/data/MomentumFontIcons.min.css`, to: "css" },
       { from: `${pMomentum}/core/fonts`, to: "fonts" },
       { from: `${pMomentum}/core/images`, to: "images" },
       { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
@@ -232,6 +238,12 @@ const commonDist = merge(common, {
       trimNameEnd: 6
     }),
     new CopyWebpackPlugin([
+      { from: `${pDesign}/dist/fonts`, to: "assets/fonts" },
+      { from: `${pDesign}/dist/fonts`, to: "assets/icons/fonts" },
+      { from: `${pDesign}/dist/data/MomentumFontIcons.css`, to: "assets/styles" },
+      { from: `${pDesign}/dist/data/MomentumFontIcons.min.css`, to: "assets/styles" },
+      { from: `${pDesign}/dist/fonts`, to: "assets/fonts" },
+      { from: `${pDesign}/dist/data/scss/`, to: "assets/styles" },
       { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
       { from: `${pMomentum}/core/images`, to: "assets/images" },
       { from: `${pMomentum}/icons/fonts`, to: "assets/fonts" },

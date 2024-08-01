@@ -6,40 +6,23 @@
  *
  */
 
+import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
+import { AvatarSize, AvatarType } from "./Avatar.constants";
+import { getPresenceIconColor } from "./Presence.utils";
 import styles from "./scss/module.scss";
-
-export const AvatarType = [
-  "active",
-  "bot",
-  "call",
-  "dnd",
-  "group",
-  "inactive",
-  "meeting",
-  "ooo",
-  "presenting",
-  "self",
-  "typing",
-  "engaged",
-  "idle",
-  "rona",
-  ""
-] as const;
-export const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 52, 56, 72, 80, 84];
 
 export namespace Avatar {
   export type Type = typeof AvatarType[number];
-
   export type Size = typeof AvatarSize[number];
 
   @customElementWithCheck("md-avatar")
@@ -52,19 +35,40 @@ export namespace Avatar {
     @property({ type: Boolean }) decrypting = false;
     @property({ type: String, attribute: "icon-name" }) iconName = "";
     @property({ type: String }) type: Type = "";
+    @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
+    @internalProperty() private presenceColor = "";
+    @internalProperty() private presenceIcon = "";
+    @internalProperty() private isCircularWrapper = false;
 
     static get styles() {
       return [reset, styles];
     }
 
+    firstUpdated() {
+      const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
+      this.presenceColor = presenceColor!;
+      this.presenceIcon = presenceIcon!;
+      this.isCircularWrapper = isCircularWrapper!;
+    }
+
+    updated(changedProperties: PropertyValues) {
+      if (changedProperties.has("type")) {
+        const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
+        this.presenceColor = presenceColor!;
+        this.presenceIcon = presenceIcon!;
+        this.isCircularWrapper = isCircularWrapper!;
+      }
+    }
+
     private get avatarClassMap() {
       return {
-        [`md-avatar--${this.type}`]: !!this.type,
+        ...(!this.newMomentum && this.type ? { [`md-avatar--${this.type}`]: true } : {}),
         [`md-avatar--${this.size}`]: !!this.size
       };
     }
@@ -109,7 +113,7 @@ export namespace Avatar {
         ? html`
             <span class="md-avatar__letter ${classMap(this.avatarLetterClassMap)}"
               >${this.pretifyTitle}<slot></slot>
-              ${this.type === "typing"
+              ${this.type === "typing" || this.typing
                 ? html`
                     <md-loading></md-loading>
                   `
@@ -122,7 +126,7 @@ export namespace Avatar {
     private get avatarIcon() {
       return html`
         <span class="md-avatar__icon ${classMap(this.avatarStyleMap)}">
-          <md-icon .name=${this.iconName}></md-icon>
+          <md-icon .name=${this.iconName} ?designEnabled=${this.newMomentum}></md-icon>
         </span>
       `;
     }
@@ -175,14 +179,15 @@ export namespace Avatar {
       return html`
         <div
           part="avatar"
-          class="md-avatar ${classMap(this.avatarClassMap)}"
+          class="md-avatar
+          ${classMap(this.avatarClassMap)}"
           role="img"
           aria-label=${ifDefined(this.label)}
         >
           ${this.type === "self"
             ? html`
                 <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
-                  <md-icon .name=${this.chatIconName}></md-icon>
+                  <md-icon .name=${this.chatIconName} ?designEnabled=${this.newMomentum}></md-icon>
                 </span>
               `
             : this.src && !this.imageErrored
@@ -195,6 +200,18 @@ export namespace Avatar {
           ${this.hasNotification
             ? html`
                 <span class="md-avatar__notification-badge"></span>
+              `
+            : nothing}
+          ${this.newMomentum && this.type && this.type !== "self"
+            ? html`
+                <md-presence
+                  class="avatar-presence"
+                  name="${this.presenceIcon}"
+                  color="${this.presenceColor}"
+                  .isCircularWrapper=${this.isCircularWrapper}
+                  size="${this.size}"
+                >
+                </md-presence>
               `
             : nothing}
         </div>

@@ -59,6 +59,10 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         presenceIcon = "recents-presence_14";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
+      case "idle":
+        presenceIcon = "recents-presence_14";
+        presenceColor = "var(--avatar-presence-inactive)";
+        break;
       case "away-calling":
         presenceIcon = "call-private-filled";
         presenceColor = "var(--avatar-presence-inactive)";

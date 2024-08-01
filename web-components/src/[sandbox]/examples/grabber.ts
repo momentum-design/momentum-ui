@@ -98,12 +98,8 @@ export class GrabberTemplateSandbox extends LitElement {
         }
 
         .divider {
-          height: 1px;
-          width: calc(100% - 48px);
-          margin-left: 24px;
-          margin-right: 24px;
-          transform: rotate(90deg);
-          transform-origin: left top;
+          width: 1px;
+          height: 100%;
           background: var(--md-nav-divider-primary);
         }
       </style>
@@ -132,11 +128,7 @@ export class GrabberTemplateSandbox extends LitElement {
         <div class="toggle-container">
           <div class="toggle-div collapsed" id="toggleDiv"></div>
           <div class="divider"></div>
-          <md-grabber
-            id="grabberToggle"
-            alignment="leading"
-            @grabber-toggled="${this.toggleWidth.bind(this)}"
-          ></md-grabber>
+          <md-grabber id="grabberToggle" alignment="leading" @click="${this.toggleWidth.bind(this)}"></md-grabber>
         </div>
       </div>
     `;

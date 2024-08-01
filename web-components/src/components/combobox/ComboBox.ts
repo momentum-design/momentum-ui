@@ -1407,7 +1407,7 @@ export namespace ComboBox {
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
-          aria-hidden=${this.popupChevronAriaHidden}
+          aria-hidden=${this.popupChevronAriaHidden === "true" ? "true" : "false"}
           ?disabled=${this.disabled}
           @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
         >
@@ -1442,11 +1442,11 @@ export namespace ComboBox {
         return nothing;
       } else if (this.isSelectAllSelected()) {
         return html`
-          <md-span class="selected-count">${this.allTextLocalization}</md-span>
+          <span class="selected-count">${this.allTextLocalization}</span>
         `;
       }
       return html`
-        <md-span class="selected-count">${this.selectedOptions.length} ${this.selectedTextLocalization}</md-span>
+        <span class="selected-count">${this.selectedOptions.length} ${this.selectedTextLocalization}</span>
       `;
     }
     checkForVirtualScroll() {

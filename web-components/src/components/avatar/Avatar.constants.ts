@@ -31,6 +31,7 @@ const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 48, 52, 56, 64, 72, 80, 84, 124]
 const AVATAR_PRESENCE_ICON_SIZE_MAPPING: Record<number, number> = {
   24: 14,
   32: 14,
+  40: 16,
   48: 16,
   64: 18,
   72: 20,

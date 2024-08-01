@@ -100,6 +100,15 @@ describe("Presence", () => {
     });
   });
 
+  test("returns correct values for idle presenceType", () => {
+    const result = getPresenceIconColor("idle", false);
+    expect(result).toEqual({
+      presenceIcon: "recents-presence_14",
+      presenceColor: "var(--avatar-presence-inactive)",
+      isCircularWrapper: true
+    });
+  });
+
   test("returns correct values for away calling presenceType", () => {
     const result = getPresenceIconColor("away-calling", false);
     expect(result).toEqual({

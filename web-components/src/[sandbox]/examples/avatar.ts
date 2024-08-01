@@ -67,6 +67,7 @@ export const avatarTemplate = html`
   <h3>New Icon Avatar Status Size</h3>
   <md-avatar title="active" size="24" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="32" type="active" newMomentum></md-avatar>
+  <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="48" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="64" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="72" type="active" newMomentum></md-avatar>
@@ -76,6 +77,7 @@ export const avatarTemplate = html`
   <br />
   <md-avatar title="meeting" size="24" type="meeting" newMomentum></md-avatar>
   <md-avatar title="meeting" size="32" type="meeting" newMomentum></md-avatar>
+  <md-avatar title="meeting" size="40" type="meeting" newMomentum></md-avatar>
   <md-avatar title="meeting" size="48" type="meeting" newMomentum></md-avatar>
   <md-avatar title="meeting" size="64" type="meeting" newMomentum></md-avatar>
   <md-avatar title="meeting" size="72" type="meeting" newMomentum></md-avatar>

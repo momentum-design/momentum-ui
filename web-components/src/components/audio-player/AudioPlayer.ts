@@ -219,7 +219,7 @@ export namespace AudioPlayer {
     }
 
     setVolumeElement(e: MouseEvent){
-      const className = 'volume';
+      const className = "volume";
       this.volumeElement = (e.target as HTMLElement).className === className ? e.target as HTMLElement : (e.target as HTMLElement).parentElement as HTMLElement;
     }
 
@@ -245,12 +245,12 @@ export namespace AudioPlayer {
 
       const cleanupEventListeners = () => {
         isDragging = false;
-        window.removeEventListener('mousemove', onMouseMove);
-        window.removeEventListener('mouseup', onMouseUp);
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseup", onMouseUp);
       }
     
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('mouseup', onMouseUp);
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
     
       // Prevent text selection during drag
       e.preventDefault();

@@ -11,6 +11,7 @@ import { RovingTabIndexMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
 import { ListItem } from "./ListItem"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 
@@ -19,7 +20,7 @@ export namespace List {
   export class ELEMENT extends RovingTabIndexMixin(LitElement) {
     @property({ type: String, reflect: true }) alignment: "horizontal" | "vertical" = "vertical";
     @property({ type: String }) label = "option";
-    @property({ type: String, reflect: true }) role: "list" | "listbox" = "listbox";
+    @property({ type: String, reflect: false }) role: "list" | "listbox" = "listbox";
     @property({ type: Number, reflect: true }) activated = -1;
 
     @query("slot[name='list-item']") listItemSlot?: HTMLSlotElement;
@@ -179,7 +180,9 @@ export namespace List {
 
     render() {
       return html`
-        <ul class="md-list" part="list">
+        <ul 
+        role=${ifDefined(this.role!=="list" ? this.role : undefined)}
+        class="md-list" part="list">
           <slot name="list-item"></slot>
         </ul>
       `;

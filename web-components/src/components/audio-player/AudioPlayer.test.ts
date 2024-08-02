@@ -63,9 +63,11 @@ describe("AudioPlayer", () => {
   test("should control volume", async () => {
     const element: AudioPlayer.ELEMENT = await fixtureFactory();
     await elementUpdated(element);
-    element.getBarPercentage = jest.fn().mockReturnValue(0.2);
+    element.setVolumeElement = jest.fn();
+    element.getVolumeFromSlider = jest.fn().mockReturnValue(0.2);
+    
     const mockMouseEvent = new MouseEvent("mousedown");
-    element.setVolume(mockMouseEvent);
+    element.handleVolumeChange(mockMouseEvent);
 
     expect(element.audio.volume).toBe(0.2);
   });

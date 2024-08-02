@@ -107,6 +107,7 @@ export namespace AudioPlayer {
     @property({ type: Object }) labelMap: LabelMap;
     @internalProperty() events: AudioEvent[] = [];
     @internalProperty() audio: HTMLAudioElement;
+    @internalProperty() volumeElement!: HTMLElement;
     @internalProperty() isPlaying = false;
     @internalProperty() isMuted = false;
     @internalProperty() duration = 0;
@@ -219,8 +220,55 @@ export namespace AudioPlayer {
       this.audio.currentTime = seconds;
     }
 
+    setVolumeElement(e: MouseEvent){
+      const className = "volume";
+      this.volumeElement = (e.target as HTMLElement).className === className ? e.target as HTMLElement : (e.target as HTMLElement).parentElement as HTMLElement;
+    }
+
+    handleVolumeChange(e: MouseEvent) {
+      let isDragging = false;
+      this.setVolumeElement(e);
+      this.setVolume(e);
+
+      const onMouseMove = (moveEvent: MouseEvent) => {
+        if (!isDragging) {
+          isDragging = true;
+        }
+        if (this.volumeExpanded) {
+          this.setVolume(moveEvent);
+        } else {
+          cleanupEventListeners();
+        }
+      };
+    
+      const onMouseUp = (upEvent: MouseEvent) => {
+        cleanupEventListeners();
+      };
+
+      const cleanupEventListeners = () => {
+        isDragging = false;
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseup", onMouseUp);
+      }
+    
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
+    
+      // Prevent text selection during drag
+      e.preventDefault();
+    }
+    
+    getVolumeFromSlider(e: MouseEvent): number {
+      if (this.volumeElement === null) {
+        return 0;
+      }
+      const rect = this.volumeElement.getBoundingClientRect();
+      const clientPos = e.clientX - rect.x;
+      return Math.max(0, Math.min(1, clientPos / rect.width));
+    }
+
     setVolume(e: MouseEvent) {
-      const percentage = this.getBarPercentage(e, "volume");
+      const percentage = this.getVolumeFromSlider(e);
       this.audio.volume = percentage;
     }
 
@@ -230,7 +278,6 @@ export namespace AudioPlayer {
         (e.target as HTMLElement).className === className ? e.target : (e.target as HTMLElement).parentElement;
       const rect = (bar as HTMLElement).getBoundingClientRect();
       const clientPos = e.clientX - rect.x;
-
       return clientPos / rect.width;
     }
 
@@ -418,7 +465,7 @@ export namespace AudioPlayer {
               >
                 <div
                   class="volume"
-                  @click="${this.setVolume}"
+                  @mousedown="${this.handleVolumeChange}"
                   aria-label="${this.labelMap.volumeSlider.ariaLabel} ${Math.trunc(this.volume * 100)}%"
                 >
                   <div class="volume-slider" style="width: ${this.isMuted ? 0 : this.volume * 100}%"></div>

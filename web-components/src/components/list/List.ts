@@ -20,10 +20,11 @@ export namespace List {
   export class ELEMENT extends RovingTabIndexMixin(LitElement) {
     @property({ type: String, reflect: true }) alignment: "horizontal" | "vertical" = "vertical";
     @property({ type: String }) label = "option";
-    @property({ type: String, reflect: false }) role: "list" | "listbox" = "listbox";
     @property({ type: Number, reflect: true }) activated = -1;
 
     @query("slot[name='list-item']") listItemSlot?: HTMLSlotElement;
+
+    private _role: "list" | "listbox" = "listbox";
 
     protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
@@ -55,6 +56,8 @@ export namespace List {
 
     connectedCallback() {
       super.connectedCallback();
+      this._role = (this.getAttribute("role") as "list" | "listbox") || "listbox"; // Capture the role attribute value or use default "listbox"
+      this.removeAttribute("role"); // Ensure the role attribute is not set on the host element
       this.addEventListener("keydown", this.handleKeyDown);
       this.addEventListener("click", this.handleClick);
     }
@@ -181,7 +184,7 @@ export namespace List {
     render() {
       return html`
         <ul 
-        role=${ifDefined(this.role!=="list" ? this.role : undefined)}
+        role=${ifDefined(this._role!=="list" ? this._role : undefined)}
         class="md-list" part="list">
           <slot name="list-item"></slot>
         </ul>

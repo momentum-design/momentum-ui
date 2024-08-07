@@ -27,7 +27,7 @@ export namespace Form {
     @property({ type: Boolean, reflect: true, attribute: "no-validate" }) novalidate = false;
     @property({ type: String, reflect: true, attribute: "accept-charset" }) charset = "UTF-8";
     @property({ type: Boolean, reflect: true, attribute: "is-valid" }) isvalid = false;
-    @property({ type: String, attribute: "autofill-token" }) token: AutoFill = "on";
+    @property({ type: String, attribute: "autofill-token" }) token = "on";
     @property({ type: Boolean, attribute: "allow-redirect" }) allowRedirect = false;
     @property({ type: String, attribute: "autofill-name" }) autofillname = "input-name";
 

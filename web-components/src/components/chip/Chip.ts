@@ -233,13 +233,12 @@ export namespace Chip {
           `
         : nothing;
     }
-    
 
     getToolTipContent() {
       if (this.tooltipText && this.textOverflow) {
         return `${this.value}, ${this.tooltipText}`;
       } else {
-        return this.tooltipText ? this.tooltipText: this.value;
+        return this.tooltipText ? this.tooltipText : this.value;
       }
     }
 
@@ -252,14 +251,17 @@ export namespace Chip {
 
       return html`
         ${this.getStyles()}
-        <md-tooltip ?disabled=${!this.tooltipText && !this.textOverflow} message="${this.getToolTipContent()}" placement="${this.tooltipPlacement}">
+        <md-tooltip
+          ?disabled=${!this.tooltipText && !this.textOverflow}
+          message="${this.getToolTipContent()}"
+          placement="${this.tooltipPlacement}"
+        >
           <span
             role="button"
             tabindex="0"
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
-            aria-selected=${this.selected}
-            aria-readonly=${this.readonly}
+            aria-pressed=${this.selected}
             @click=${(e: MouseEvent) => {
               this.handleClick(e);
             }}

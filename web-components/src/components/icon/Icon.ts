@@ -63,7 +63,7 @@ export namespace Icon {
       if (this.description) {
         return this.description;
       }
-      return "";
+      return "icon";
     }
 
     set ariaLabel(value) {
@@ -201,6 +201,7 @@ export namespace Icon {
           id=${this.id}
           class="md-icon icon ${classMap(this.iconClassMap)}"
           style=${styleMap(this.iconStyleMap)}
+          role="img"
           aria-label=${this.ariaLabel}
           title=${this.title}
           aria-hidden=${ifDefined(this.ariaHidden || undefined)}

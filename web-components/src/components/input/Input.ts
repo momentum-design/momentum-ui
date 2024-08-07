@@ -406,7 +406,9 @@ export namespace Input {
               .value=${this.value}
               aria-describedby=${this.ariaDescribedBy}
               aria-controls=${this.ariaControls}
-              aria-expanded=${this.ariaExpandedValue}
+              aria-expanded=${ifDefined(
+                this.ariaExpandedValue !== undefined ? this.ariaExpandedValue.toString() : undefined
+              )}
               aria-label=${this.ariaLabel}
               aria-invalid=${this.ariaInvalid as ARIA_INVALID}
               aria-errormessage=${`${this.htmlId}-message`}

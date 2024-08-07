@@ -87,33 +87,41 @@ export namespace Alert {
                   ${this.renderIconTemplate()}
                 </div>
                 <div part="content" class="md-alert__content">
-                  <div class="md-alert__title" aria-level="1">
-                    ${this.title}
-                  </div>
+                ${
+                  this.title && this.title !== ""
+                    ? html`
+                        <div class="md-alert__title" role="heading" aria-level="1">
+                          ${this.title}
+                        </div>
+                      `
+                    : nothing
+                }
                   <div class="md-alert__message">
                     ${this.message}
                     <slot name="alert-body"></slot>
                   </div>
                 </div>
-                ${this.closable
-                  ? html`
-                      <div class="md-alert__button">
-                        <md-button
-                          arialabel="${this.btnlabel}"
-                          hasRemoveStyle
-                          color="color-none"
-                          circle
-                          @click="${() => this.close()}"
-                        >
-                          <md-icon slot="icon" name="icon-cancel_16"></md-icon>
-                        </md-button>
-                      </div>
-                    `
-                  : html`
-                      <div class="md-alert__footer">
-                        <slot name="alert-footer"></slot>
-                      </div>
-                    `}
+                ${
+                  this.closable
+                    ? html`
+                        <div class="md-alert__button">
+                          <md-button
+                            arialabel="${this.btnlabel}"
+                            hasRemoveStyle
+                            color="color-none"
+                            circle
+                            @click="${() => this.close()}"
+                          >
+                            <md-icon slot="icon" name="icon-cancel_16"></md-icon>
+                          </md-button>
+                        </div>
+                      `
+                    : html`
+                        <div class="md-alert__footer">
+                          <slot name="alert-footer"></slot>
+                        </div>
+                      `
+                }
               </div>
             `
           : nothing}

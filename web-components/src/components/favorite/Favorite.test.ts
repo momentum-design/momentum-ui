@@ -1,4 +1,5 @@
 import "@/components/button/Button";
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Favorite";
 import { Favorite } from "./Favorite";
@@ -62,5 +63,56 @@ describe("Favorite component", () => {
     expect(mockEnterClick).toHaveBeenCalled();
 
     mockEnterClick.mockRestore();
+  });
+
+  test("should toggle checked state and dispatch event on Enter keydown", async () => {
+    const component = await fixtureFactory();
+    component.value = "test-value";
+    const event = new KeyboardEvent("keydown", { code: Key.Enter });
+    const spy = jest.spyOn(component, "dispatchEvent");
+
+    component.handleElectKeyDown(event);
+
+    expect(component.checked).toBe(true);
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: "favorite-keydown",
+        detail: {
+          active: true,
+          value: "test-value"
+        }
+      })
+    );
+  });
+
+  test("should toggle checked state and dispatch event on Space keydown", async () => {
+    const component = await fixtureFactory();
+    component.value = "test-value";
+    const event = new KeyboardEvent("keydown", { code: Key.Space });
+    const spy = jest.spyOn(component, "dispatchEvent");
+
+    component.handleElectKeyDown(event);
+
+    expect(component.checked).toBe(true);
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: "favorite-keydown",
+        detail: {
+          active: true,
+          value: "test-value"
+        }
+      })
+    );
+  });
+
+  test("should not toggle checked state or dispatch event on other keydown", async () => {
+    const component = await fixtureFactory();
+    const event = new KeyboardEvent("keydown", { code: Key.ArrowDown });
+    const spy = jest.spyOn(component, "dispatchEvent");
+
+    component.handleElectKeyDown(event);
+
+    expect(component.checked).toBe(false);
+    expect(spy).not.toHaveBeenCalled();
   });
 });

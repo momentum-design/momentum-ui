@@ -1,18 +1,23 @@
 import "@/components/button/Button";
-import "@/components/icon/Icon.ts";
-import "@/components/spinner/Spinner.ts";
+import "@/components/icon/Icon";
+import "@/components/spinner/Spinner";
 import "@/components/tooltip/Tooltip";
 import { css, customElement, html, LitElement } from "lit-element";
 
 @customElement("button-template-sandbox")
 export class ButtonTemplateSandbox extends LitElement {
-  toggleIsActive(element: any) {
-    element.isActive = !element.isActive;
+  toggleIsActive(element: EventTarget | null) {
+    if (!element) {
+      return;
+    }
+
+    const el = element as HTMLElement & { isActive?: boolean };
+    el.isActive = !el.isActive;
 
     //demonstrate toggle an icon if isActive is set
-    const icon = element.querySelector('md-icon[slot="icon"]');
+    const icon = el.querySelector('md-icon[slot="icon"]');
     if (icon) {
-      icon.setAttribute("name", element.isActive ? "chat-active_16" : "chat_16");
+      icon.setAttribute("name", el.isActive ? "chat-active_16" : "chat_16");
     }
   }
 
@@ -321,13 +326,13 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="available" class="status-state-button">
           <div class="status-button__children">
             <span class="status-indicator-container">
-              <md-icon slot="icon" name="check-circle-active_16" color="var(--avatar-presence-active)" />
+              <md-icon slot="icon" name="check-circle-active_16" color="var(--avatar-presence-active)"></md-icon>
             </span>
             <span class="status-label">
               Available
             </span>
             <span>10:11</span>
-            <md-icon class="status-arrow" name="arrow-down-optical_8" />
+            <md-icon class="status-arrow" name="arrow-down-optical_8"></md-icon>
           </div>
         </md-button>
       </div>

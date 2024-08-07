@@ -8,7 +8,7 @@
 
 import "@/components/button-group/ButtonGroup";
 import "@/components/button/Button";
-import "@/components/icon/Icon.ts";
+import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 export const buttonGroupTemplate = html`

@@ -1,6 +1,6 @@
-import { Input } from "@/components/input/Input";
-import "@/components/input/Input.ts";
 import "@/components/icon/Icon";
+import "@/components/input/Input";
+import { Input } from "@/components/input/Input";
 import { html } from "lit-element";
 
 const messageArr: Input.Message = {

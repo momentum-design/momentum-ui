@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import { customElementWithCheck, SlottedMixin } from "@/mixins";
 import { html, LitElement, property, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { SlottedMixin, customElementWithCheck } from "@/mixins";
 
 export namespace Form {
-  export type Method = "GET" | "POST" | "dialog";
+  export type Method = "GET" | "get" | "POST" | "post" | "dialog";
   export type Enctype = "application/x-www-form-urlencoded" | "multipart/form-data" | "text/plain";
   export type Target = "_self" | "_blank" | "_parent" | "_top";
   export type SubmittableElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
@@ -21,7 +21,7 @@ export namespace Form {
     @property({ type: String }) name = "";
     @property({ type: String }) action = "";
     @property({ type: String }) label = "";
-    @property({ type: String }) method: Method = "GET";
+    @property({ type: String }) method: Method = "get";
     @property({ type: String }) target: Target = "_self";
     @property({ type: String }) enctype: Enctype = "application/x-www-form-urlencoded";
     @property({ type: Boolean, reflect: true, attribute: "no-validate" }) novalidate = false;
@@ -34,6 +34,16 @@ export namespace Form {
     @query(".md-form") protected form!: HTMLFormElement;
 
     private formElement: HTMLFormElement[] = [];
+
+    private get formMethod() {
+      if (this.method === "GET") {
+        return "get";
+      }
+      if (this.method === "POST") {
+        return "post";
+      }
+      return this.method;
+    }
 
     private isSubmittable(element: HTMLElement) {
       if (
@@ -210,7 +220,7 @@ export namespace Form {
           enctype=${this.enctype}
           aria-label=${ifDefined(this.label || undefined)}
           ?novalidate=${this.novalidate}
-          method=${this.method}
+          method=${this.formMethod}
           target=${this.target}
           part="form"
           @submit=${this.handleFormSubmit}

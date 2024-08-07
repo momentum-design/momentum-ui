@@ -197,7 +197,7 @@ export namespace Tooltip {
       return html`
         <div class="md-tooltip ${classMap(this.tooltipClassMap)}">
           <div class="md-tooltip__popper" role="tooltip" part="tooltip-popper">
-            <div class="md-tooltip__content" part="tooltip-content">
+            <div id="md-tooltip__content" class="md-tooltip__content" part="tooltip-content">
               ${this.message
                 ? this.message
                 : html`
@@ -214,7 +214,7 @@ export namespace Tooltip {
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
-            aria-describedby="tooltip"
+            aria-describedby="md-tooltip__content"
           >
             <slot></slot>
           </div>

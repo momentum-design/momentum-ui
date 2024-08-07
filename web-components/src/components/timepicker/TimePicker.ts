@@ -1,16 +1,17 @@
+import "@/components/combobox/ComboBox";
 import "@/components/input/Input";
+import { Input } from "@/components/input/Input";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";
-import { ValidationRegex } from "@/utils/validations.ts";
+import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import { LitElement, PropertyValues, html, internalProperty, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { DateTime } from "luxon";
-import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
-import { Input } from "../input/Input"; // Keep type import as a relative path
+import { TIME_UNIT } from "../../constants";
 import styles from "./scss/module.scss";
 
 export const timeUnits = [TIME_UNIT.HOUR, TIME_UNIT.MINUTE, TIME_UNIT.SECOND, TIME_UNIT.AM_PM] as const;
@@ -277,7 +278,14 @@ export namespace TimePicker {
     }
 
     handleTimeKeyDown(event: CustomEvent, unit: TimePicker.TimeUnit) {
-      const { key } = event?.detail?.srcEvent;
+      const srcEvent = event?.detail?.srcEvent;
+
+      if (!srcEvent) {
+        console.warn("srcEvent is undefined");
+        return;
+      }
+
+      const { key } = srcEvent;
 
       if (key === Key.ArrowDown || key === Key.ArrowUp) {
         this.tabNext = false;

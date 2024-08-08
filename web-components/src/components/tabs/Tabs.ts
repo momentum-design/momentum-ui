@@ -340,7 +340,7 @@ export namespace Tabs {
         const uniqueId = nanoid(10);
         const tabId = "tab_" + uniqueId;
         const panelId = "tab_panel_" + uniqueId;
-        tab.setAttribute("id", tabId);
+        tab.setAttribute("id", tabId + "_hidden");
         tab.setAttribute("aria-controls", panelId);
         tab.selected = this.selected === index;
 

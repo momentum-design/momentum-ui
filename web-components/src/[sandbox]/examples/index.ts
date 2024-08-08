@@ -41,6 +41,7 @@ export { phoneInputTemplate } from "./phone-input";
 export { progressBarTemplate } from "./progress-bar";
 export { radioGroupTemplate } from "./radio-group";
 export { sliderTemplate } from "./slider";
+export { scrollbarTemplate } from "./scrollbar";
 export { spinnerTemplate } from "./spinner";
 export { tableTemplate } from "./table";
 export { tableAdvancedTemplate } from "./table-advanced";

@@ -182,6 +182,7 @@ const commonDist = merge(common, {
     "comp/md-favorite-entry": "./src/components/favorite/Favorite",
     "comp/md-floating-modal-entry": "./src/components/floating-modal/FloatingModal",
     "comp/md-floating-minimize-entry": "./src/components/floating-modal/FloatingMinimizedModal",
+    "comp/md-grabber-entry": "./src/components/grabber/Grabber",
     "comp/md-help-text-entry": "./src/components/help-text/HelpText",
     "comp/md-icon-entry": "./src/components/icon/Icon",
     "comp/md-input-entry": "./src/components/input/Input",

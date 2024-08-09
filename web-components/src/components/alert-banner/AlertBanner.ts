@@ -4,9 +4,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
-*/
+ */
 
-import { Key } from "@/constants";
+import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { CSSResultArray, html, LitElement, property } from "lit-element";
@@ -37,7 +37,7 @@ export namespace AlertBanner {
 
     handleKeyDown(event: KeyboardEvent) {
       const { code } = event;
-      if (code === Key.Enter || code === Key.Space) {
+      if (isActionKey(code)) {
         this.onHide();
       }
     }

@@ -48,6 +48,7 @@ import {
   progressBarTemplate,
   radioGroupTemplate,
   sliderTemplate,
+  scrollbarTemplate,
   spinnerTemplate,
   tableAdvancedTemplate,
   tableTemplate,
@@ -673,6 +674,18 @@ export class Sandbox extends LitElement {
               <h2>md-slider</h2>
               <sass-stats component="slider">
                 ${sliderTemplate}
+              </sass-stats>
+            </div>
+          </md-tab-panel>
+
+          <md-tab slot="tab" name="Slider">
+            <span>md-scrollbar</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <div class="container" aria-label="md-scrollbar">
+              <h2>md-scrollbar</h2>
+              <sass-stats component="scrollbar">
+                ${scrollbarTemplate}
               </sass-stats>
             </div>
           </md-tab-panel>

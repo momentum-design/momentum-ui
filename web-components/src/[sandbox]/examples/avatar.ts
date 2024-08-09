@@ -103,4 +103,8 @@ export const avatarTemplate = html`
     <md-avatar type="typing" has-notification title="Tom Smith"></md-avatar>
     <md-avatar type="dnd" title="Alyson Hoagland Pace"></md-avatar>
   </md-composite-avatar>
+  <h3>Tooltip Avatar</h3>
+  <md-avatar title="active" size="40" type="active" newMomentum tooltipText="Jason Chai"></md-avatar>
+  <h3>Click Event Avatar</h3>
+  <md-avatar title="active" size="40" type="active" newMomentum tooltipText="Jason Chai" role="button"></md-avatar>
 `;

@@ -11,34 +11,53 @@ import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
+import { Key } from "@/constants";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import { AvatarSize, AvatarType } from "./Avatar.constants";
+import { AvatarSize, AvatarType, AvatarTooltipPlacement } from "./Avatar.constants";
 import { getPresenceIconColor } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
   export type Type = typeof AvatarType[number];
   export type Size = typeof AvatarSize[number];
+  export type Placement = typeof AvatarTooltipPlacement[number];
+  export type Role = "img" | "button";
 
   @customElementWithCheck("md-avatar")
   export class ELEMENT extends LitElement {
+    private _tabIndex = 0;
+    @property({ type: Number, attribute: "tab-index", reflect: true })
+    get tabIndex() {
+      return this._tabIndex;
+    }
+    set tabIndex(newValue: number) {
+      const oldValue = this._tabIndex;
+      this._tabIndex = newValue;
+      this.requestUpdate("tabIndex", oldValue);
+    }
+
     @property({ type: String }) alt = "";
     @property({ type: String }) src = "";
     @property({ type: String }) label = "";
     @property({ type: String }) title = "";
     @property({ type: String }) color = "";
     @property({ type: Boolean }) decrypting = false;
+    @property({ type: String }) role: Avatar.Role = "img";
     @property({ type: String, attribute: "icon-name" }) iconName = "";
     @property({ type: String }) type: Type = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
+    @property({ type: Boolean }) clickable = false;
+    @property({ attribute: false }) clickFunction: Function | null = null;
+    @property({ type: String }) tooltipText = "";
+    @property({ type: String }) tooltipPlacement: Avatar.Placement = "auto";
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
@@ -58,11 +77,15 @@ export namespace Avatar {
     }
 
     updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
       if (changedProperties.has("type")) {
         const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
         this.isCircularWrapper = isCircularWrapper!;
+      }
+      if (changedProperties.has("role")) {
+        this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
       }
     }
 
@@ -175,46 +198,105 @@ export namespace Avatar {
       this.imageErrored = true;
     }
 
+    handleKeyDown(event: KeyboardEvent) {
+      if (!this.clickable) {
+        return;
+      }
+      const { code } = event;
+      if (code === Key.Enter || code === Key.Space) {
+        this.dispatchEvent(
+          new CustomEvent("button-keydown", {
+            composed: true,
+            bubbles: true,
+            detail: {
+              srcEvent: event
+            }
+          })
+        );
+      }
+    }
+
+    handleClick(event: MouseEvent) {
+      const tooltip = this.shadowRoot?.querySelector("md-tooltip");
+      tooltip?.dispatchEvent(
+        new CustomEvent("tooltip-destroy", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            placement: tooltip?.placement,
+            reference: tooltip?.reference,
+            popper: tooltip?.popper
+          }
+        })
+      );
+      if (!this.clickable) {
+        return;
+      }
+      this.clickFunction && this.clickFunction();
+      this.dispatchEvent(
+        new CustomEvent("button-click", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            srcEvent: event
+          }
+        })
+      );
+    }
+
+    getToolTipContent() {
+      return this.tooltipText ? this.tooltipText : "";
+    }
+
     render() {
       return html`
-        <div
-          part="avatar"
-          class="md-avatar
-          ${classMap(this.avatarClassMap)}"
-          role="img"
-          aria-label=${ifDefined(this.label)}
+        <md-tooltip
+          ?disabled=${!this.tooltipText}
+          message="${this.getToolTipContent()}"
+          placement="${this.tooltipPlacement}"
         >
-          ${this.type === "self"
-            ? html`
-                <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
-                  <md-icon .name=${this.chatIconName} ?designEnabled=${this.newMomentum}></md-icon>
-                </span>
-              `
-            : this.src && !this.imageErrored
-            ? this.avatarImage
-            : this.iconName
-            ? this.avatarIcon
-            : this.title
-            ? this.avatarLetter
-            : nothing}
-          ${this.hasNotification
-            ? html`
-                <span class="md-avatar__notification-badge"></span>
-              `
-            : nothing}
-          ${this.newMomentum && this.type && this.type !== "self"
-            ? html`
-                <md-presence
-                  class="avatar-presence"
-                  name="${this.presenceIcon}"
-                  color="${this.presenceColor}"
-                  .isCircularWrapper=${this.isCircularWrapper}
-                  size="${this.size}"
-                >
-                </md-presence>
-              `
-            : nothing}
-        </div>
+          <div
+            part="avatar"
+            class="md-avatar
+          ${classMap(this.avatarClassMap)}"
+            role=${!this.role}
+            @click=${(e: MouseEvent) => this.handleClick(e)}
+            @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+            tabindex=${ifDefined(this.tabIndex || undefined)}
+            aria-label=${ifDefined(this.label)}
+          >
+            ${this.type === "self"
+              ? html`
+                  <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
+                    <md-icon .name=${this.chatIconName} ?designEnabled=${this.newMomentum}></md-icon>
+                  </span>
+                `
+              : this.src && !this.imageErrored
+              ? this.avatarImage
+              : this.iconName
+              ? this.avatarIcon
+              : this.title
+              ? this.avatarLetter
+              : nothing}
+            ${this.hasNotification
+              ? html`
+                  <span class="md-avatar__notification-badge"></span>
+                `
+              : nothing}
+            ${this.newMomentum && this.type && this.type !== "self"
+              ? html`
+                  <md-presence
+                    class="avatar-presence"
+                    name="${this.presenceIcon}"
+                    color="${this.presenceColor}"
+                    .isCircularWrapper=${this.isCircularWrapper}
+                    size="${this.size}"
+                  >
+                  </md-presence>
+                `
+              : nothing}
+          </div>
+        </md-tooltip>
       `;
     }
   }

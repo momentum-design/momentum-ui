@@ -1,6 +1,7 @@
 import "./Avatar";
+import { Key } from "@/constants";
 import { Avatar } from "./Avatar";
-import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 
 describe("Avatar", () => {
@@ -156,5 +157,89 @@ describe("Avatar", () => {
       expect(presenceIndicator.getAttribute("name")).toBe("unread-filled");
       expect(presenceIndicator.hasAttribute("isCircularWrapper"));
     }
+  });
+
+  test("should present tooltip when tooltip text is set", async () => {
+    const component: Avatar.ELEMENT = await fixture(html`
+      <md-avatar title="active" size="40" type="active" newMomentum tooltipText="Jason Chai"></md-avatar>
+    `);
+    const expectedResult = "Jason Chai";
+    expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
+  });
+
+  test("should handle click event in avatar", async () => {
+    jest.spyOn(Avatar.ELEMENT.prototype, "blur");
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar title="active" size="40" type="active" newMomentum clickable="true" role="button"></md-avatar>
+      `
+    );
+    const evt = new MouseEvent("click");
+    setTimeout(() => element.handleClick(evt));
+    const { detail } = await oneEvent(element, "button-click");
+    expect(detail).toBeDefined();
+    expect(detail.srcEvent.type).toBe("click");
+  });
+
+  test("should handle keydown event in avatar", async () => {
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar title="active" size="40" type="active" newMomentum clickable="true" role="button"></md-avatar>
+      `
+    );
+    const spyKeyDown = jest.spyOn(element, "handleKeyDown");
+
+    const mockFn = jest.fn();
+    element.addEventListener("button-keydown", mockFn);
+
+    const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
+    const keyEvent2 = new KeyboardEvent("keydown", { code: Key.Space });
+    element.handleKeyDown(keyEvent);
+    element.handleKeyDown(keyEvent2);
+    expect(spyKeyDown).toHaveBeenCalledTimes(2);
+    expect(mockFn).toHaveBeenCalledTimes(2);
+    spyKeyDown.mockRestore();
+  });
+
+  test("should not dispatch custom keydown event if not clickable", async () => {
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>
+      `
+    );
+    const spyKeyDown = jest.spyOn(element, "handleKeyDown");
+
+    const mockFn = jest.fn();
+    element.addEventListener("button-keydown", mockFn);
+
+    const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
+    const keyEvent2 = new KeyboardEvent("keydown", { code: Key.Space });
+    element.handleKeyDown(keyEvent);
+    element.handleKeyDown(keyEvent2);
+    expect(spyKeyDown).toHaveBeenCalledTimes(2);
+    expect(mockFn).toHaveBeenCalledTimes(0);
+    spyKeyDown.mockRestore();
+  });
+
+  test("should not dispatch custom click if not clickable", async () => {
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>
+      `
+    );
+    const spyHandleClick = jest.spyOn(element, "handleClick");
+
+    const clickFunction = jest.fn();
+    element.clickFunction = clickFunction;
+
+    const mockFn = jest.fn();
+    element.addEventListener("button-click", mockFn);
+
+    const evt = new MouseEvent("click");
+    element.handleClick(evt);
+    expect(spyHandleClick).toHaveBeenCalledTimes(1);
+    expect(clickFunction).toHaveBeenCalledTimes(0);
+    expect(mockFn).toHaveBeenCalledTimes(0);
+    spyHandleClick.mockRestore();
   });
 });

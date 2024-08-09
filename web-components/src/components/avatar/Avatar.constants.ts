@@ -39,4 +39,22 @@ const AVATAR_PRESENCE_ICON_SIZE_MAPPING: Record<number, number> = {
   124: 36
 };
 
-export { AvatarType, AvatarSize, AVATAR_PRESENCE_ICON_SIZE_MAPPING };
+const AvatarTooltipPlacement = [
+  "auto",
+  "auto-start",
+  "auto-end",
+  "left-start",
+  "left",
+  "left-end",
+  "right-start",
+  "right",
+  "right-end",
+  "top-start",
+  "top",
+  "top-end",
+  "bottom-start",
+  "bottom",
+  "bottom-end"
+] as const;
+
+export { AvatarType, AvatarSize, AVATAR_PRESENCE_ICON_SIZE_MAPPING, AvatarTooltipPlacement };

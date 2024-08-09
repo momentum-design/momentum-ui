@@ -137,7 +137,7 @@ export namespace Icon {
         return this.handleOverride(iconName);
       } else {
         const iconValue = ELEMENT.designLookup.get(iconName);
-        if (iconValue !== undefined && iconValue !== "Unknown") {
+        if (iconValue !== undefined && iconValue !== "icon-name") {
           this.design = true;
           return `icon-${iconValue}`;
         }

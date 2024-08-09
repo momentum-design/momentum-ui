@@ -159,14 +159,6 @@ describe("Avatar", () => {
     }
   });
 
-  test("should present tooltip when tooltip text is set", async () => {
-    const component: Avatar.ELEMENT = await fixture(html`
-      <md-avatar title="active" size="40" type="active" newMomentum tooltipText="Jason Chai"></md-avatar>
-    `);
-    const expectedResult = "Jason Chai";
-    expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
-  });
-
   test("should handle click event in avatar", async () => {
     jest.spyOn(Avatar.ELEMENT.prototype, "blur");
     const element = await fixture<Avatar.ELEMENT>(
@@ -194,10 +186,12 @@ describe("Avatar", () => {
 
     const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
     const keyEvent2 = new KeyboardEvent("keydown", { code: Key.Space });
+    const keyEvent3 = new KeyboardEvent("keydown", { code: Key.NumpadEnter });
     element.handleKeyDown(keyEvent);
     element.handleKeyDown(keyEvent2);
-    expect(spyKeyDown).toHaveBeenCalledTimes(2);
-    expect(mockFn).toHaveBeenCalledTimes(2);
+    element.handleKeyDown(keyEvent3);
+    expect(spyKeyDown).toHaveBeenCalledTimes(3);
+    expect(mockFn).toHaveBeenCalledTimes(3);
     spyKeyDown.mockRestore();
   });
 
@@ -214,9 +208,11 @@ describe("Avatar", () => {
 
     const keyEvent = new KeyboardEvent("keydown", { code: Key.Enter });
     const keyEvent2 = new KeyboardEvent("keydown", { code: Key.Space });
+    const keyEvent3 = new KeyboardEvent("keydown", { code: Key.NumpadEnter });
     element.handleKeyDown(keyEvent);
     element.handleKeyDown(keyEvent2);
-    expect(spyKeyDown).toHaveBeenCalledTimes(2);
+    element.handleKeyDown(keyEvent3);
+    expect(spyKeyDown).toHaveBeenCalledTimes(3);
     expect(mockFn).toHaveBeenCalledTimes(0);
     spyKeyDown.mockRestore();
   });

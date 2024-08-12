@@ -18,14 +18,13 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import { AvatarSize, AvatarType, AvatarTooltipPlacement } from "./Avatar.constants";
+import { AvatarSize, AvatarType } from "./Avatar.constants";
 import { getPresenceIconColor } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
   export type Type = typeof AvatarType[number];
   export type Size = typeof AvatarSize[number];
-  export type Placement = typeof AvatarTooltipPlacement[number];
   export type Role = "img" | "button";
 
   @customElementWithCheck("md-avatar")

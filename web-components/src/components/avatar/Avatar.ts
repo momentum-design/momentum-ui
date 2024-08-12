@@ -11,6 +11,7 @@ import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
+import { isActionKey } from "@/utils/keyboard";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -24,21 +25,36 @@ import styles from "./scss/module.scss";
 export namespace Avatar {
   export type Type = typeof AvatarType[number];
   export type Size = typeof AvatarSize[number];
+  export type Role = "img" | "button";
 
   @customElementWithCheck("md-avatar")
   export class ELEMENT extends LitElement {
+    private _tabIndex = 0;
+    @property({ type: Number, attribute: "tab-index", reflect: true })
+    get tabIndex() {
+      return this._tabIndex;
+    }
+    set tabIndex(newValue: number) {
+      const oldValue = this._tabIndex;
+      this._tabIndex = newValue;
+      this.requestUpdate("tabIndex", oldValue);
+    }
+
     @property({ type: String }) alt = "";
     @property({ type: String }) src = "";
     @property({ type: String }) label = "";
     @property({ type: String }) title = "";
     @property({ type: String }) color = "";
     @property({ type: Boolean }) decrypting = false;
+    @property({ type: String }) role: Avatar.Role = "img";
     @property({ type: String, attribute: "icon-name" }) iconName = "";
     @property({ type: String }) type: Type = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
+    @property({ type: Boolean }) clickable = false;
+    @property({ attribute: false }) clickFunction: Function | null = null;
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
@@ -58,11 +74,15 @@ export namespace Avatar {
     }
 
     updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
       if (changedProperties.has("type")) {
         const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
         this.isCircularWrapper = isCircularWrapper!;
+      }
+      if (changedProperties.has("role")) {
+        this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
       }
     }
 
@@ -175,13 +195,50 @@ export namespace Avatar {
       this.imageErrored = true;
     }
 
+    handleKeyDown(event: KeyboardEvent) {
+      if (!this.clickable) {
+        return;
+      }
+      const { code } = event;
+      if (isActionKey(code)) {
+        this.dispatchEvent(
+          new CustomEvent("button-keydown", {
+            composed: true,
+            bubbles: true,
+            detail: {
+              srcEvent: event
+            }
+          })
+        );
+      }
+    }
+
+    handleClick(event: MouseEvent) {
+      if (!this.clickable) {
+        return;
+      }
+      this.clickFunction && this.clickFunction();
+      this.dispatchEvent(
+        new CustomEvent("button-click", {
+          composed: true,
+          bubbles: true,
+          detail: {
+            srcEvent: event
+          }
+        })
+      );
+    }
+
     render() {
       return html`
         <div
           part="avatar"
           class="md-avatar
           ${classMap(this.avatarClassMap)}"
-          role="img"
+          role=${!this.role}
+          @click=${(e: MouseEvent) => this.handleClick(e)}
+          @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          tabindex=${ifDefined(this.tabIndex || undefined)}
           aria-label=${ifDefined(this.label)}
         >
           ${this.type === "self"

@@ -8,7 +8,7 @@
 
 import activityButtonStyles from "@/components/activity-button/scss/module.scss";
 import "@/components/spinner/Spinner";
-import { Key } from "@/constants";
+import { isActionKey } from "@/utils/keyboard";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, query } from "lit-element";
@@ -200,7 +200,7 @@ export namespace Button {
         return;
       }
       const { code } = event;
-      if (code === Key.Enter || code === Key.Space) {
+      if (isActionKey(code)) {
         this.dispatchEvent(
           new CustomEvent("button-keydown", {
             composed: true,

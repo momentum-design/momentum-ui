@@ -71,12 +71,12 @@
     "papaparse": "^5.3.0",
     "sortablejs": "^1.13.0",
     "lit-virtualizer": "0.4.2",
-    "@momentum-design/tokens": "0.0.70",
-    "@momentum-design/icons": "0.0.150"
+    "@momentum-design/tokens": "0.0.73",
+    "@momentum-design/icons": "0.0.154"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.2",
     "@interactjs/types": "1.10.3",
     "@momentum-ui/core": "19.16.0",
     "@momentum-ui/icons": "8.28.5",
@@ -104,7 +104,7 @@
     "@types/papaparse": "^5.2.4",
     "@types/sortablejs": "^1.10.6",
     "@types/webpack-dev-server": "^3.10.0",
-    "@types/webpack-node-externals": "^1.7.1",
+    "@types/webpack-node-externals": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@types/express-serve-static-core": "4.17.30",
@@ -115,9 +115,9 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "cssstats": "^3.4.1",
+    "cssstats": "^4.0.5",
     "eslint": "^8.56.0",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-prettier": "^5.2.1",
     "extract-loader": "^4.0.3",
     "file-loader": "^4.3.0",
     "fs-extra": "^9.0.1",
@@ -132,7 +132,7 @@
     "lit-scss-loader": "1.0.1",
     "sass": "^1.77.8",
     "papaparse": "^5.3.0",
-    "prettier": "^1.19.1",
+    "prettier": "^3.3.3",
     "properties-reader": "^2.2.0",
     "query-selector-shadow-dom": "^0.4.6",
     "remove-files-webpack-plugin": "1.4.0",
@@ -155,11 +155,12 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^5.7.3",
-    "webpack-node-externals": "^1.7.2",
+    "webpack-node-externals": "^2.0.0",
     "@wxcc-desktop/eslint-plugin-no-blocked-words-plugin": "1.0.4",
     "cross-env": "^7.0.3",
     "import-local": "^3.0.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "url-loader": "^4.1.1"
   }
 }

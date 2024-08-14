@@ -37,7 +37,6 @@
 
   // Grid Defaults to get images and embeds to work properly
   img {
-
     // Get rid of gap under images by making them display: inline-block; by default
     display: inline-block;
     height: auto;
@@ -110,5 +109,9 @@
   :root,
   :host {
     line-height: inherit;
+  }
+
+  * {
+    @include scrollbar;
   }
 }

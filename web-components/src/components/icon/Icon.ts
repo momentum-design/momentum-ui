@@ -70,17 +70,21 @@ export namespace Icon {
       }
 
       el.setAttribute("part", "icon");
-      // el.setAttribute("id", this.id);
-      //  el.setAttribute("class", `md-icon icon`);
-      // el.setAttribute("style", styleMap(this.iconStyleMap));
-      // el.setAttribute("role", "img");
-      // el.setAttribute("aria-label", this.ariaLabel);
-      // el.setAttribute("title", this.title);
-      // el.setAttribute("aria-hidden", ifDefined(this.ariaHidden || undefined));
+      el.setAttribute("id", this.id);
+      el.setAttribute("role", "img");
+      el.setAttribute("title", this.title);
+      el.setAttribute("aria-label", this.ariaLabel);
 
       if (this.color) {
-        el.setAttribute("fill", this.color);
+        el.setAttribute("fill", this.iconColor);
+      } else {
+        el.setAttribute("fill", "currentColor");
       }
+
+      //  el.setAttribute("class", `md-icon icon`);
+      // el.setAttribute("style", styleMap(this.iconStyleMap));
+
+      // el.setAttribute("aria-hidden", ifDefined(this.ariaHidden || undefined));
 
       this.svgIcon = el as HTMLElement;
     }
@@ -90,10 +94,7 @@ export namespace Icon {
 
       if (this.designEnabled) {
         if (changedProperties.has("name") || changedProperties.has("designEnabled")) {
-          let lookupName = this.name;
-          if (lookupName.startsWith("icon-")) {
-            lookupName = lookupName.substring(5);
-          }
+          const lookupName = this.getIconName();
 
           const iconName = ELEMENT.designLookup.get(lookupName) || lookupName;
 

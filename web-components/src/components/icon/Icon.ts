@@ -11,12 +11,11 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
-import { html, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import designMapping from "./momentum-ui-to-design-icons.json";
-import designStyles from "./scss/design_module.scss";
 import styles from "./scss/module.scss";
 
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
@@ -42,11 +41,68 @@ export namespace Icon {
     @property({ type: String }) ariaHidden: any;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
-    @property({ type: Boolean }) designEnabled = false; // enable design icon lookup
+    @property({ type: Boolean }) designEnabled = true; // enable design icon lookup
     @property({ type: Boolean }) override = false; // use icon as design icon
 
     private static designLookup = new Map(Object.entries(designMapping));
     private design = false;
+
+    @internalProperty()
+    private svgIcon: HTMLElement | null = null;
+
+    async loadSvgIcon(iconName: string) {
+      const importedIcon = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+      const base64Prefix = "data:image/svg+xml;base64,";
+      let svgContent = importedIcon.default;
+
+      if (svgContent.startsWith(base64Prefix)) {
+        const base64Data = svgContent.slice(base64Prefix.length);
+        svgContent = atob(base64Data);
+      }
+
+      const el = new DOMParser().parseFromString(svgContent, "text/html").body.children[0];
+
+      if (this.iconFontSize) {
+        el.setAttribute("width", `${this.iconFontSize}px`);
+      }
+      if (this.iconFontSize) {
+        el.setAttribute("height", `${this.iconFontSize}px`);
+      }
+
+      el.setAttribute("part", "icon");
+      // el.setAttribute("id", this.id);
+      //  el.setAttribute("class", `md-icon icon`);
+      // el.setAttribute("style", styleMap(this.iconStyleMap));
+      // el.setAttribute("role", "img");
+      // el.setAttribute("aria-label", this.ariaLabel);
+      // el.setAttribute("title", this.title);
+      // el.setAttribute("aria-hidden", ifDefined(this.ariaHidden || undefined));
+
+      if (this.color) {
+        el.setAttribute("fill", this.color);
+      }
+
+      this.svgIcon = el as HTMLElement;
+    }
+
+    updated(changedProperties: PropertyValues) {
+      super.update(changedProperties);
+
+      if (this.designEnabled) {
+        if (changedProperties.has("name") || changedProperties.has("designEnabled")) {
+          let lookupName = this.name;
+          if (lookupName.startsWith("icon-")) {
+            lookupName = lookupName.substring(5);
+          }
+
+          const iconName = ELEMENT.designLookup.get(lookupName) || lookupName;
+
+          if (iconName && iconName !== "Unknown") {
+            this.loadSvgIcon(iconName);
+          }
+        }
+      }
+    }
 
     _ariaLabel = "";
     @property({ type: String })
@@ -179,7 +235,7 @@ export namespace Icon {
     }
 
     static get styles() {
-      return [reset, styles, designStyles];
+      return [reset, styles];
     }
 
     handleIconClick(event: MouseEvent) {
@@ -195,6 +251,10 @@ export namespace Icon {
     }
 
     render() {
+      return this.designEnabled ? this.renderSVGIcon() : this.renderFontIcon();
+    }
+
+    renderFontIcon() {
       return html`
         <i
           part="icon"
@@ -208,6 +268,12 @@ export namespace Icon {
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
         </i>
+      `;
+    }
+
+    renderSVGIcon() {
+      return html`
+        ${this.svgIcon}
       `;
     }
   }

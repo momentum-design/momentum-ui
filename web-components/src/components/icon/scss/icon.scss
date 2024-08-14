@@ -1,6 +1,13 @@
 /** @component icon */
 
 @include exports("md-icon") {
+
+  :host{
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+  }
+
   .md-icon {
     align-items: center;
     display: inline-flex;

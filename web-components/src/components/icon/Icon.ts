@@ -41,8 +41,8 @@ export namespace Icon {
     @property({ type: String }) ariaHidden: any;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
-    @property({ type: Boolean }) designEnabled = true; // enable design icon lookup
-    @property({ type: Boolean }) override = false; // use icon as design icon
+    @property({ type: Boolean }) designEnabled = false; // enable design icon lookup
+    @property({ type: Boolean }) skipLegacyLookup = false; // use icon as design icon
 
     private static designLookup = new Map(Object.entries(designMapping));
     private design = false;
@@ -61,46 +61,65 @@ export namespace Icon {
       }
 
       const el = new DOMParser().parseFromString(svgContent, "text/html").body.children[0];
-
-      if (this.iconFontSize) {
-        el.setAttribute("width", `${this.iconFontSize}px`);
-      }
-      if (this.iconFontSize) {
-        el.setAttribute("height", `${this.iconFontSize}px`);
-      }
-
-      el.setAttribute("part", "icon");
-      el.setAttribute("id", this.id);
-      el.setAttribute("role", "img");
-      el.setAttribute("title", this.title);
-      el.setAttribute("aria-label", this.ariaLabel);
-
-      if (this.color) {
-        el.setAttribute("fill", this.iconColor);
-      } else {
-        el.setAttribute("fill", "currentColor");
-      }
+      this.svgIcon = el as HTMLElement;
 
       //  el.setAttribute("class", `md-icon icon`);
       // el.setAttribute("style", styleMap(this.iconStyleMap));
 
-      // el.setAttribute("aria-hidden", ifDefined(this.ariaHidden || undefined));
-
       this.svgIcon = el as HTMLElement;
     }
 
-    updated(changedProperties: PropertyValues) {
+    setSvgIconAttributes() {
+      if (!this.svgIcon) {
+        return;
+      }
+
+      if (this.iconFontSize) {
+        this.svgIcon.setAttribute("width", `${this.iconFontSize}px`);
+      }
+      if (this.iconFontSize) {
+        this.svgIcon.setAttribute("height", `${this.iconFontSize}px`);
+      }
+
+      this.svgIcon.setAttribute("part", "icon");
+      this.svgIcon.setAttribute("id", this.id);
+      this.svgIcon.setAttribute("role", "img");
+      this.svgIcon.setAttribute("title", this.title);
+      this.svgIcon.setAttribute("aria-label", this.ariaLabel);
+
+      if (this.ariaHidden === "true") {
+        this.svgIcon.setAttribute("aria-hidden", "true");
+      } else {
+        this.svgIcon.removeAttribute("aria-hidden");
+      }
+
+      if (this.color) {
+        this.svgIcon.setAttribute("fill", this.iconColor);
+      } else {
+        this.svgIcon.setAttribute("fill", "currentColor");
+      }
+    }
+
+    private get svgIconName() {
+      if (this.skipLegacyLookup) {
+        return this.name;
+      }
+      const lookupName = this.getIconName();
+      return ELEMENT.designLookup.get(lookupName) || lookupName;
+    }
+
+    update(changedProperties: PropertyValues) {
       super.update(changedProperties);
 
       if (this.designEnabled) {
         if (changedProperties.has("name") || changedProperties.has("designEnabled")) {
-          const lookupName = this.getIconName();
+          const theIconName = this.svgIconName;
 
-          const iconName = ELEMENT.designLookup.get(lookupName) || lookupName;
-
-          if (iconName && iconName !== "Unknown") {
-            this.loadSvgIcon(iconName);
+          if (theIconName && theIconName !== "Unknown") {
+            this.loadSvgIcon(theIconName);
           }
+        } else {
+          this.setSvgIconAttributes();
         }
       }
     }
@@ -184,45 +203,9 @@ export namespace Icon {
       return iconName;
     }
 
-    handleOverride(iconName: string) {
-      this.design = true;
-      return `icon-${iconName}`;
-    }
-
-    handleEnabled(iconName: string) {
-      if (!ELEMENT.designLookup.has(iconName)) {
-        return this.handleOverride(iconName);
-      } else {
-        const iconValue = ELEMENT.designLookup.get(iconName);
-        if (iconValue !== undefined && iconValue !== "Unknown") {
-          this.design = true;
-          return `icon-${iconValue}`;
-        }
-      }
-      return null;
-    }
-
-    handleSizeOverride(iconName: string) {
-      return `${iconName.split("_")[0]}_${this.iconFontSize}`;
-    }
-
     get iconName() {
       const iconName = this.getIconName();
 
-      this.design = false;
-
-      if (this.override) {
-        return this.handleOverride(iconName);
-      } else if (this.designEnabled) {
-        const enabledResult = this.handleEnabled(iconName);
-        if (enabledResult) {
-          return enabledResult;
-        }
-      }
-
-      if (this.sizeOverrided) {
-        return this.handleSizeOverride(iconName);
-      }
       return iconNames.includes(iconName) || iconName === ""
         ? `icon-${iconName}`
         : this.consoleHandler("name-error", iconName);

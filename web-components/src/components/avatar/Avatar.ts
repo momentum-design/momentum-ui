@@ -10,8 +10,8 @@ import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import reset from "@/wc_scss/reset.scss";
 import { isActionKey } from "@/utils/keyboard";
+import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -117,15 +117,11 @@ export namespace Avatar {
     }
 
     private get chatIconName() {
-      return this.size >= 56
-        ? "chat-active_20"
-        : this.size >= 40 && this.size <= 56
-        ? "chat-active_18"
-        : this.size >= 36 && this.size <= 40
-        ? "chat-active_16"
-        : this.size >= 28 && this.size <= 36
-        ? "chat-active_14"
-        : "chat-active_12";
+      return "chat-filled";
+    }
+
+    private get chatIconSize() {
+      return (this.size / 2).toString();
     }
 
     private get avatarLetter() {
@@ -244,7 +240,7 @@ export namespace Avatar {
           ${this.type === "self"
             ? html`
                 <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
-                  <md-icon .name=${this.chatIconName} ?designEnabled=${this.newMomentum}></md-icon>
+                  <md-icon .name=${this.chatIconName} designEnabled .size=${this.chatIconSize}></md-icon>
                 </span>
               `
             : this.src && !this.imageErrored

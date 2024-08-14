@@ -61,12 +61,15 @@ export namespace Icon {
       }
 
       const el = new DOMParser().parseFromString(svgContent, "text/html").body.children[0];
+      this.svgIcon?.setAttribute("class", `${name}`);
       this.svgIcon = el as HTMLElement;
 
       //  el.setAttribute("class", `md-icon icon`);
       // el.setAttribute("style", styleMap(this.iconStyleMap));
 
       this.svgIcon = el as HTMLElement;
+      this.setSvgIconAttributes();
+      this.requestUpdate();
     }
 
     setSvgIconAttributes() {
@@ -108,8 +111,8 @@ export namespace Icon {
       return ELEMENT.designLookup.get(lookupName) || lookupName;
     }
 
-    update(changedProperties: PropertyValues) {
-      super.update(changedProperties);
+    updated(changedProperties: PropertyValues) {
+      super.updated(changedProperties);
 
       if (this.designEnabled) {
         if (changedProperties.has("name") || changedProperties.has("designEnabled")) {
@@ -203,9 +206,16 @@ export namespace Icon {
       return iconName;
     }
 
+    handleSizeOverride(iconName: string) {
+      return `${iconName.split("_")[0]}_${this.iconFontSize}`;
+    }
+
     get iconName() {
       const iconName = this.getIconName();
 
+      if (this.sizeOverrided) {
+        return this.handleSizeOverride(iconName);
+      }
       return iconNames.includes(iconName) || iconName === ""
         ? `icon-${iconName}`
         : this.consoleHandler("name-error", iconName);
@@ -235,7 +245,7 @@ export namespace Icon {
     }
 
     render() {
-      return this.designEnabled ? this.renderSVGIcon() : this.renderFontIcon();
+      return this.designEnabled && this.svgIcon ? this.renderSVGIcon() : this.renderFontIcon();
     }
 
     renderFontIcon() {

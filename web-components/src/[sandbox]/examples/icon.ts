@@ -15,7 +15,7 @@ export const iconTemplate = html`
   <md-icon
     name="pto_28"
     class="testClass"
-    iconSet="autoUpgradeUiToDesignIcons"
+    .iconSet=${"preferMomentumDesign"}
     size="50"
     color="var(--avatar-presence-active)"
   ></md-icon>
@@ -23,7 +23,7 @@ export const iconTemplate = html`
   <h3>Using new icon enabled (enabled):</h3>
   <md-icon
     name="search-bold"
-    iconSet="autoUpgradeUiToDesignIcons"
+    .iconSet=${"preferMomentumDesign"}
     class="testClass"
     size="50"
     color="var(--avatar-presence-active)"
@@ -32,7 +32,7 @@ export const iconTemplate = html`
   <h3>Using new icon skip lookup (override):</h3>
   <md-icon
     name="search-bold"
-    iconSet="momentumDesignIcons"
+    .iconSet=${"momentumDesign"}
     class="testClass"
     size="50"
     color="var(--avatar-presence-active)"

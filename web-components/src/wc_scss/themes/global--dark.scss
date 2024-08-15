@@ -1,4 +1,5 @@
 @import "@/wc_scss/colors/settings.scss";
+@import "@/wc_scss/colors/settings-transparencies.scss";
 
 @mixin global-vars {
   --sandbox-bg-color: #{$md-gray-80};
@@ -94,4 +95,10 @@
   --md-agent-history-bg-color: var(--md-tertiary-bg-color);
   --md-nav-divider-primary: var(--md-quaternary-bg-color);
   --md-nav-divider-primary-hover: var(--md-primary-seperator-color);
+
+  --md-scrollbar-background-indicator: #{$white-40};
+  --md-scrollbar-background-track: #{$white-12};
+  --md-scrollbar-background-hover-indicator: #{$white-48};
+  --md-scrollbar-background-active-indicator: #{$white-60};
+  --md-scrollbar-background-disabled-indicator: #{$white-12};
 }

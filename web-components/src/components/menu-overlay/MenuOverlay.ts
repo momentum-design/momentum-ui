@@ -85,6 +85,7 @@ export namespace MenuOverlay {
     @property({ type: String }) ariaRole: Role = "menu";
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
+    @property({ type: Number, attribute: "overlay-offset" }) overlayOffset = 15;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -308,7 +309,7 @@ export namespace MenuOverlay {
                   if (placement === "left-end" || placement === "right-end") {
                     return [reference.height + reference.y + 3, 14];
                   } else {
-                    return [0, 15];
+                    return [0, this.overlayOffset];
                   }
                 }) as OffsetsFunction
               }

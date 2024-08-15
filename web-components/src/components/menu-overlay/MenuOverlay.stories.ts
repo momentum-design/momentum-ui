@@ -13,7 +13,7 @@ import "@/components/menu-overlay/MenuOverlay";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
@@ -48,6 +48,7 @@ export const MenuOverlay = () => {
   const customWidth = text("custom width", "");
   const ariaRole = select("ariaRole", menuOverlayRole, "menu");
   const ariaLabel = text("AriaLabel", "Link Storybook");
+  const overlayOffset = number("overlay offset", 15);
 
   return html`
     <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} theme=${theme}>
@@ -64,6 +65,7 @@ export const MenuOverlay = () => {
         ?disabled=${disabled}
         @menu-overlay-open=${action("click open")}
         @menu-overlay-close=${action("click close")}
+        overlay-offset=${overlayOffset}
       >
         <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
         <div style="padding:1.25rem ; width: 100%;">

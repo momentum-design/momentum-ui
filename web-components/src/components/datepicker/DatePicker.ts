@@ -228,7 +228,7 @@ export namespace DatePicker {
 
     render() {
       return html`
-        <md-menu-overlay is-date-picker="true" custom-width="248px" ?disabled=${this.disabled}>
+        <md-menu-overlay is-date-picker custom-width="248px" ?disabled=${this.disabled}>
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">
@@ -248,7 +248,7 @@ export namespace DatePicker {
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"
-                  required=${this.required}
+                  ?required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
                   @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
                   ?disabled=${this.disabled}

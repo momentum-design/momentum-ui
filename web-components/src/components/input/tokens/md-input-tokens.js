@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 const colors = require("@momentum-ui/tokens/dist/colors.json");
 
-const button = {
+const input = {
   prefix: "md",
   component: "input",
   default: {
@@ -18,7 +18,7 @@ const button = {
       light: colors.gray[30].name,
       dark: colors.gray[80].name
     },
-    "placeholder-color" : {
+    "placeholder-color": {
       light: colors.gray[70].name,
       dark: colors.gray[40].name
     },
@@ -129,4 +129,4 @@ const button = {
   }
 };
 
-module.exports = button;
+module.exports = input;

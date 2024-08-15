@@ -75,7 +75,7 @@ export const menuOverlayTemplate = html`
   <h3 class="sandbox-header">test overlay positioning</h3>
   <div style="display: flex; margin: .5rem 0; padding: 0; justify-content: space-between">
     <div>
-      <md-menu-overlay>
+      <md-menu-overlay overlay-offset=5>
         <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
         <div style="padding:1.25rem; width: 100%;">
           <md-input htmlId="inputSearchClearPill" containerSize="small-12" placeholder="Enter Text" shape="pill" clear>

@@ -23,9 +23,9 @@ export const iconType = ["", "white"] as const;
 export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign"] as const;
 
 export namespace Icon {
-  export type Size = typeof iconSize[number];
-  export type Type = typeof iconType[number];
-  export type IconSet = typeof iconSet[number];
+  export type Size = (typeof iconSize)[number];
+  export type Type = (typeof iconType)[number];
+  export type IconSet = (typeof iconSet)[number];
   export type ButtonProperty = {
     [key: string]: string;
   };
@@ -276,9 +276,7 @@ export namespace Icon {
     }
 
     renderSVGIcon() {
-      return html`
-        ${this.svgIcon}
-      `;
+      return html` ${this.svgIcon} `;
     }
   }
 }

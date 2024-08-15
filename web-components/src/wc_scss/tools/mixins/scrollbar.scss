@@ -1,0 +1,40 @@
+// @mixins
+//
+// handle scrollbar styles
+@mixin scrollbar() {
+  scrollbar-color: var(--md-scrollbar-background-indicator) var(--md-scrollbar-background-track);
+
+  *::-webkit-scrollbar {
+    width: 1rem;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 100vh;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--md-scrollbar-background-indicator);
+    border: 0.25rem solid transparent;
+    border-radius: 0.5rem;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--md-scrollbar-background-hover-indicator);
+    border: 0.25rem solid transparent;
+    border-radius: 0.5rem;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:active {
+    background: var(--md-scrollbar-background-active-indicator);
+    border: 0.25rem solid transparent;
+    border-radius: 0.5rem;
+    height: 6.25rem;
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-thumb:disabled {
+    background: var(--md-scrollbar-background-disabled-indicator);
+    border: 0.25rem solid transparent;
+    border-radius: 0.5rem;
+    height: 6.25rem;
+    background-clip: content-box;
+  }
+}

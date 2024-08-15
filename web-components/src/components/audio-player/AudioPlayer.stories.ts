@@ -8,13 +8,12 @@
 
 import "@/components/audio-player/AudioPlayer";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Audio Player",
   component: "md-audio-player",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-audio-player"

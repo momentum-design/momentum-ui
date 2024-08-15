@@ -10,13 +10,12 @@ import "@/components/input/Input";
 import "@/components/label/Label";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Label",
   component: "md-label",
-  decorators: [withKnobs],
   argTypes: {
     theme: { table: { disable: true } },
     radioLabel: { table: { disable: true } },

@@ -1,12 +1,11 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./Pagination";
 
 export default {
   title: "Components/Pagination",
   component: "md-pagination",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-pagination"

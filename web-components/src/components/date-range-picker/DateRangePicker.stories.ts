@@ -1,7 +1,7 @@
 import "@/components/date-range-picker/DateRangePicker";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { now } from "@/utils/dateUtils";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { DatePicker as DP } from "../datepicker/DatePicker"; // Keep type import as a relative path
 import "../theme/Theme";
@@ -9,7 +9,6 @@ import "../theme/Theme";
 export default {
   title: "Components/Date Range Picker",
   component: "md-date-range-picker",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-date-range-picker"
@@ -25,19 +24,9 @@ export const DateRangePicker = () => {
   const locale = text("locale", "en-US");
   const disabled = boolean("disabled", false);
 
-  const minDate = text(
-    "minimum date",
-    now()
-      .minus({ day: 5 })
-      .toISODate()
-  );
+  const minDate = text("minimum date", now().minus({ day: 5 }).toISODate());
 
-  const maxDate = text(
-    "maximum date",
-    now()
-      .plus({ day: 30 })
-      .toISODate()
-  );
+  const maxDate = text("maximum date", now().plus({ day: 30 }).toISODate());
 
   const value = text("value", now().toISODate());
   const startDate = text("value", now().toISODate());

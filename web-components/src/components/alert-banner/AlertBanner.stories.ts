@@ -10,14 +10,13 @@ import "@/components/alert-banner/AlertBanner";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import mdx from "./AlertBanner.mdx";
 
 export default {
   title: "Components/Alert Banner",
   component: "md-alert-banner",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-alert-banner"

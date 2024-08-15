@@ -9,13 +9,12 @@
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Radio",
   component: "md-radio",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-radiogroup"

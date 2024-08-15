@@ -9,13 +9,12 @@
 import "@/components/button-group/ButtonGroup";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Button Group",
   component: "md-button-group",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-button-group"

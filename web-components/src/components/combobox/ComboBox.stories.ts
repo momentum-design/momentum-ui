@@ -10,13 +10,12 @@ import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Combobox",
   component: "md-combobox",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-combobox"

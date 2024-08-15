@@ -9,13 +9,12 @@
 import "@/components/menu/Menu";
 import "@/components/menu/MenuItem";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Menu",
   component: "md-menu",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-menu"

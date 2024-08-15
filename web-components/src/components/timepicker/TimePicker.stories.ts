@@ -1,13 +1,12 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { TIME_UNIT } from "@/constants";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { timeSpecificity } from "./TimePicker"; // Keep type import as a relative path
 
 export default {
   title: "Components/Time Picker",
   component: "md-timepicker",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-timepicker"

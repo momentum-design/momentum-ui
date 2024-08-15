@@ -8,14 +8,13 @@
 
 import "@/components/table/Table";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { formatType } from "./Table"; // Keep type import as a relative path
 
 export default {
   title: "Components/Table",
   component: "md-table",
-  decorators: [withKnobs],
   argTypes: {
     nodata: { table: { disable: true } },
     csvData: { table: { disable: true } },

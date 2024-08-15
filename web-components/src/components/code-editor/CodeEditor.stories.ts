@@ -1,11 +1,10 @@
-import { object, text, withKnobs } from '@storybook/addon-knobs';
+import { object, text } from '@storybook/addon-knobs';
 import { html } from "lit-element";
 import "./CodeEditor";
 
 export default {
   title: "Components/Code Editor",
   component: "md-code-editor",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-code-editor"

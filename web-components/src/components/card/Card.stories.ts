@@ -10,14 +10,13 @@ import "@/components/badge/Badge";
 import "@/components/card/Card";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { array, boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { nothing } from "lit-html";
 
 export default {
   title: "Components/Card",
   component: "md-card",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-card"
@@ -53,16 +52,14 @@ export const Card = () => {
         }}
         info=${info}
       >
-        ${avatar
-          ? html`
-              <md-avatar slot="card-header-aside" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
-            `
-          : nothing}
-        ${slotTitle
-          ? html`
-              <div slot="card-header-title"><h2>Test slot Title</h2></div>
-            `
-          : nothing}
+        ${
+          avatar
+            ? html`
+                <md-avatar slot="card-header-aside" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
+              `
+            : nothing
+        }
+        ${slotTitle ? html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
         <div slot="content">
           <img src=https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
           alt="" />

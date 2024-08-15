@@ -10,13 +10,12 @@ import "@/components/badge/Badge";
 import "@/components/taskitem/TaskItem";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Task Item",
   component: "md-task-item",
-  decorators: [withKnobs],
   argTypes: {
     selected: { table: { disable: true } },
     renderTaskType: { table: { disable: true } },

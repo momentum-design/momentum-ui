@@ -10,14 +10,13 @@ import "@/components/icon/Icon";
 import "@/components/input/Input";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 
 export default {
   title: "Components/Input",
   component: "md-input",
-  decorators: [withKnobs],
   argTypes: {
     clearAriaLabel: { table: { disable: true } },
     isFilled: { table: { disable: true } },

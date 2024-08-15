@@ -9,14 +9,13 @@
 import "@/components/grabber/Grabber";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import mdx from "./Grabber.mdx";
 
 export default {
   title: "Components/Grabber",
   component: "md-grabber",
-  decorators: [withKnobs],
   argTypes: {
     toggleSwitchClassMap: { table: { disable: true } },
     autofocus: { table: { disable: true } }

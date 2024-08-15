@@ -8,7 +8,7 @@
 
 import "@/components/editable-textfield/EditableTextfield";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
@@ -17,7 +17,6 @@ import { alignment } from "./EditableTextfield"; // Keep type import as a relati
 export default {
   title: "Components/Editable Textfield",
   component: "md-editable-field",
-  decorators: [withKnobs],
   argTypes: {
     isEditing: { table: { disable: true } },
     alert: { table: { disable: true } },
@@ -73,9 +72,7 @@ export const EditableTextfield = () => {
 
     return html`
       <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-editable-field .message=${{ ...messages[message] }}>
-          ${message} Status
-        </md-editable-field>
+        <md-editable-field .message=${{ ...messages[message] }}> ${message} Status </md-editable-field>
       </md-theme>
     `;
   } else if (inputDiff) {
@@ -84,9 +81,7 @@ export const EditableTextfield = () => {
 
     return html`
       <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-editable-field .message=${errorMessageArr} numberType=${inputType}>
-          12345
-        </md-editable-field>
+        <md-editable-field .message=${errorMessageArr} numberType=${inputType}> 12345 </md-editable-field>
       </md-theme>
     `;
   } else if (inputValid) {

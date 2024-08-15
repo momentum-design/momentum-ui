@@ -8,13 +8,12 @@
 
 import "@/components/spinner/Spinner";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Spinner",
   component: "md-spinner",
-  decorators: [withKnobs],
   argTypes: {
     spinnerStyleMap: { table: { disable: true } }
   },

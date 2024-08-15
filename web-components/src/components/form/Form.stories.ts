@@ -9,13 +9,12 @@
 import "@/components/form/Form";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Form",
   component: "md-form",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-form"

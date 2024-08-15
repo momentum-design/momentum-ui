@@ -8,13 +8,12 @@
 
 import "@/components/chat-message/ChatMessage";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Chat Message",
   component: "md-chat-message",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-chat-message"

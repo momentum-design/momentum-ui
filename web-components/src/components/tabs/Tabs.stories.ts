@@ -11,13 +11,12 @@ import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Tabs",
   component: "md-tabs",
-  decorators: [withKnobs],
   argTypes: {
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },

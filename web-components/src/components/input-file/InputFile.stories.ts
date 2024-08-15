@@ -1,12 +1,11 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./InputFile";
 
 export default {
   title: "Components/Input File",
   component: "md-input-file",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-input-file"

@@ -8,13 +8,12 @@
 
 import "@/components/breadcrumb/Breadcrumb";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Breadcrumb",
   component: "md-breadcrumb",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-breadcrumb"

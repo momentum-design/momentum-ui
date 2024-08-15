@@ -2,13 +2,12 @@ import "@/components/coachmark/Coachmark";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { badgeColor, coachPlacement } from "@/utils/enums";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Coachmark",
   component: "md-coachmark",
-  decorators: [withKnobs],
   argTypes: {
     popper: { table: { disable: true } },
     reference: { table: { disable: true } },

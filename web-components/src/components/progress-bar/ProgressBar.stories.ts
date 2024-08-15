@@ -9,13 +9,12 @@
 import "@/components/progress-bar/ProgressBar";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { BarFormat, BarType } from "@/utils/enums";
-import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Progress Bar",
   component: "md-progress-bar",
-  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-modal"

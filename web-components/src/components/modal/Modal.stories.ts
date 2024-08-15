@@ -9,14 +9,13 @@
 import "@/components/modal/Modal";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { modalType } from "./Modal"; // Keep type import as a relative path
 
 export default {
   title: "Components/Modal",
   component: "md-modal",
-  decorators: [withKnobs],
   argTypes: {
     htmlId: { table: { disable: true } },
     noExitOnEsc: { table: { disable: true } },

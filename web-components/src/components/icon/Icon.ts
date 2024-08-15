@@ -46,29 +46,59 @@ export namespace Icon {
     @property({ type: String }) iconSet: IconSet = "momentumUI";
 
     private static designLookup = new Map(Object.entries(designMapping));
-    private design = false;
 
     @internalProperty()
     private svgIcon: HTMLElement | null = null;
 
-    async loadSvgIcon(iconName: string) {
-      const importedIcon = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
-      const base64Prefix = "data:image/svg+xml;base64,";
-      let svgContent = importedIcon.default;
+    isPath(importedIcon: string) {
+      return importedIcon.endsWith(".svg");
+    }
 
+    async getSvgContentFromFile(importedIcon: string) {
+      const response = await fetch(importedIcon);
+      const responseText = await response.text();
+      console.log("response text: ", responseText);
+
+      try {
+        return new DOMParser().parseFromString(responseText, "text/html").body.children[0] as HTMLElement;
+      } catch (error) {
+        console.error("Error parsing svg content: ", error);
+        return null;
+      }
+    }
+
+    getSvgContentFromInline(importedIcon: string) {
+      const base64Prefix = "data:image/svg+xml;base64,";
+      let svgContent = importedIcon;
       if (svgContent.startsWith(base64Prefix)) {
-        const base64Data = svgContent.slice(base64Prefix.length);
+        const base64Data = importedIcon.slice(base64Prefix.length);
         svgContent = atob(base64Data);
       }
 
-      const el = new DOMParser().parseFromString(svgContent, "text/html").body.children[0];
-      this.svgIcon?.setAttribute("class", `${name}`);
-      this.svgIcon = el as HTMLElement;
+      const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
+      return doc.documentElement;
+    }
+
+    async loadSvgIcon(iconName: string) {
+      //const importedIcon = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+      const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+      console.log("importedIcon: ", importedIcon);
+
+      if (this.isPath(importedIcon)) {
+        // Fetch the SVG content from the relative path
+        console.log("fetching icon from path");
+        this.svgIcon = await this.getSvgContentFromFile(importedIcon);
+      } else {
+        console.log("fetching icon inline");
+        this.svgIcon = this.getSvgContentFromInline(importedIcon);
+        //  fetchedElement = doc.documentElement;
+      }
+
+      this.svgIcon?.setAttribute("class", `${self.name}`);
 
       //  el.setAttribute("class", `md-icon icon`);
       // el.setAttribute("style", styleMap(this.iconStyleMap));
 
-      this.svgIcon = el as HTMLElement;
       this.setSvgIconAttributes();
       this.requestUpdate();
     }
@@ -77,26 +107,22 @@ export namespace Icon {
       if (!this.svgIcon) {
         return;
       }
-
       if (this.iconFontSize) {
         this.svgIcon.setAttribute("width", `${this.iconFontSize}px`);
       }
       if (this.iconFontSize) {
         this.svgIcon.setAttribute("height", `${this.iconFontSize}px`);
       }
-
       this.svgIcon.setAttribute("part", "icon");
       this.svgIcon.setAttribute("id", this.id);
       this.svgIcon.setAttribute("role", "img");
       this.svgIcon.setAttribute("title", this.title);
       this.svgIcon.setAttribute("aria-label", this.ariaLabel);
-
       if (this.ariaHidden === "true") {
         this.svgIcon.setAttribute("aria-hidden", "true");
       } else {
         this.svgIcon.removeAttribute("aria-hidden");
       }
-
       if (this.color) {
         this.svgIcon.setAttribute("fill", this.iconColor);
       } else {
@@ -110,7 +136,9 @@ export namespace Icon {
         return this.name;
       }
       const lookupName = this.getIconName();
-      return ELEMENT.designLookup.get(lookupName) || lookupName;
+      const mappedName = ELEMENT.designLookup.get(lookupName);
+
+      return mappedName || lookupName;
     }
 
     updated(changedProperties: PropertyValues) {
@@ -197,8 +225,7 @@ export namespace Icon {
       return {
         "md-combobox-input__icon": this.isComboBoxIcon,
         "md-combobox-input__icon--active": this.isComboBoxIcon && this.isActive,
-        [`${this.iconName}`]: !!this.iconName,
-        "design-font": !!this.design
+        [`${this.iconName}`]: !!this.iconName
       };
     }
 
@@ -251,7 +278,7 @@ export namespace Icon {
     }
 
     private get isSVGRender() {
-      return this.svgIcon && this.doesIconSetSupportSVG;
+      return (this.svgIcon && this.iconSet === "preferMomentumDesign") || this.iconSet === "momentumDesign";
     }
 
     render() {
@@ -276,7 +303,7 @@ export namespace Icon {
     }
 
     renderSVGIcon() {
-      return html` ${this.svgIcon} `;
+      return html`${this.svgIcon}`;
     }
   }
 }

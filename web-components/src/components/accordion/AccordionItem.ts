@@ -150,7 +150,11 @@ export namespace AccordionItem {
               <slot name="header-content">
                 <span class="md-accordion-expander-label">${this.label}</span>
               </slot>
-              <md-icon name=${this.expanded ? "icon-arrow-up_12" : "icon-arrow-down_12"}></md-icon>
+              <md-icon
+                iconSet=${"momentumDesign"}
+                size="12"
+                name=${this.expanded ? "arrow-up-bold" : "arrow-down-bold"}
+              ></md-icon>
             </button>
           </div>
           <div

@@ -12,7 +12,7 @@ import * as Interact from "@interactjs/types";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined";
-import './FloatingMinimizedModal';
+import "./FloatingMinimizedModal";
 import styles from "./scss/module.scss";
 
 export namespace FloatingModal {
@@ -26,30 +26,33 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true, attribute: "full-screen" }) full = false;
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Modal";
     @property({ type: String, attribute: "resize-aria-label" }) resizeAriaLabel = "Resize Modal";
-    @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel  = "Maximize Modal";
+    @property({ type: String, attribute: "maximize-aria-label" }) maximizeScreenLabel = "Maximize Modal";
     @property({ type: String, attribute: "minimize-aria-label" }) minimizeAriaLabel = "Minimize Modal";
     @property({ type: Boolean, reflect: true }) private minimize = false;
-    @property({type: Object}) position: {
-      x: number;
-      y: number;
-    } | undefined;
-    @property({type: Object}) minPosition: {
-      x: number;
-      y: number;
-    } | undefined;
+    @property({ type: Object }) position:
+      | {
+          x: number;
+          y: number;
+        }
+      | undefined;
+    @property({ type: Object }) minPosition:
+      | {
+          x: number;
+          y: number;
+        }
+      | undefined;
     @property({ type: Boolean, reflect: true }) minimizable = false;
-    @property({type: Object}) containerRect: DOMRect | null = null;
+    @property({ type: Object }) containerRect: DOMRect | null = null;
 
     @internalProperty() private dragOccured: boolean | false = false;
-
 
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;
     @query(".md-floating__header") header!: HTMLDivElement;
-    @query(".md-floating-min-parent") minimizedHeader! : HTMLDivElement;
+    @query(".md-floating-min-parent") minimizedHeader!: HTMLDivElement;
     @query('slot[name="header"]') headerSlot!: HTMLSlotElement;
 
-    private containerTransform = '';
+    private containerTransform = "";
 
     private applyInitialPosition = true;
 
@@ -71,21 +74,22 @@ export namespace FloatingModal {
       }
       if (this.container && changedProperties.has("position") && !changedProperties.has("show")) {
         this.setInitialTargetPosition();
-      } 
-     
+      }
     }
 
     private isNewPositionNotSame() {
-      if(this.container) {
-        return Number(this.container?.getAttribute("data-x")) !== this.position?.x ||
-           Number(this.container?.getAttribute("data-y")) !==this.position?.y;
+      if (this.container) {
+        return (
+          Number(this.container?.getAttribute("data-x")) !== this.position?.x ||
+          Number(this.container?.getAttribute("data-y")) !== this.position?.y
+        );
       }
     }
 
     private setInitialTargetPosition() {
-        if(this.container && this.isNewPositionNotSame()) {
-          this.setTargetPosition(this.container, Number(this.position?.x), Number(this.position?.y));
-        } 
+      if (this.container && this.isNewPositionNotSame()) {
+        this.setTargetPosition(this.container, Number(this.position?.x), Number(this.position?.y));
+      }
     }
 
     private cleanContainerStyles() {
@@ -98,14 +102,14 @@ export namespace FloatingModal {
       if (dataX && dataY) {
         this.dispatchEvent(
           new CustomEvent("floating-modal-location", {
-              composed: true,
-              bubbles: true,
-              detail: {
-              transform: {x: dataX, y: dataY}
-              }
+            composed: true,
+            bubbles: true,
+            detail: {
+              transform: { x: dataX, y: dataY }
+            }
           })
         );
-        return `translate(${dataX}px, ${dataY}px)`;;
+        return `translate(${dataX}px, ${dataY}px)`;
       }
       return this.container!.style.transform;
     }
@@ -113,7 +117,7 @@ export namespace FloatingModal {
     private setContainerRect() {
       requestAnimationFrame(async () => {
         await this.updateComplete;
-      
+
         this.containerRect = this.container!.getBoundingClientRect();
         this.dispatchEvent(
           new CustomEvent("floating-modal-resize", {
@@ -124,7 +128,7 @@ export namespace FloatingModal {
             }
           })
         );
-       
+
         this.containerTransform = this.getContainerTransform();
       });
     }
@@ -148,7 +152,8 @@ export namespace FloatingModal {
                     })
                   ]
                 : undefined
-            }).draggable({
+            })
+            .draggable({
               autoScroll: true,
               allowFrom: this.header,
               ignoreFrom: this.body,
@@ -177,20 +182,20 @@ export namespace FloatingModal {
     }
 
     handleMinimize(event: Event) {
-      if(this.minimizable) {
-        if(!this.dragOccured) {
+      if (this.minimizable) {
+        if (!this.dragOccured) {
           this.minimize = !this.minimize;
           this.dispatchEvent(
-              new CustomEvent("floating-modal-minimize", {
-                  composed: true,
-                  bubbles: true,
-                  detail: {
-                  minimize: this.minimize
-                  }
-              })
-            );
-            }
-            this.dragOccured =false;
+            new CustomEvent("floating-modal-minimize", {
+              composed: true,
+              bubbles: true,
+              detail: {
+                minimize: this.minimize
+              }
+            })
+          );
+        }
+        this.dragOccured = false;
       }
     }
 
@@ -200,11 +205,11 @@ export namespace FloatingModal {
 
     private resizeMoveListener = (event: Interact.ResizeEvent) => {
       const { target } = event;
-      let x = (parseFloat(target.getAttribute("data-x") as string) || 0);
-      let y = (parseFloat(target.getAttribute("data-y") as string) || 0);
+      let x = parseFloat(target.getAttribute("data-x") as string) || 0;
+      let y = parseFloat(target.getAttribute("data-y") as string) || 0;
       target.style.setProperty("width", `${event.rect.width}px`, "important");
       target.style.setProperty("height", `${event.rect.height}px`, "important");
-      const {initialX, initialY} = this.getInitialPosition();
+      const { initialX, initialY } = this.getInitialPosition();
       x += event.deltaRect!.left + initialX;
       y += event.deltaRect!.top + initialY;
 
@@ -214,26 +219,26 @@ export namespace FloatingModal {
 
     private resizeEndListener = () => {
       this.setContainerRect();
-    }
+    };
 
     private getInitialPosition = () => {
-      if(this.applyInitialPosition && this.position) {
-        return {initialX: Number(this.position?.x), initialY:  Number(this.position?.y)};
+      if (this.applyInitialPosition && this.position) {
+        return { initialX: Number(this.position?.x), initialY: Number(this.position?.y) };
       }
-      return {initialX: 0, initialY: 0};
-    }
+      return { initialX: 0, initialY: 0 };
+    };
 
     private getTransformValues(event: Interact.InteractEvent) {
       const { target, dx, dy } = event;
-      const {initialX, initialY} = this.getInitialPosition();
+      const { initialX, initialY } = this.getInitialPosition();
       const x = (parseFloat(target.getAttribute("data-x") as string) || 0) + dx + initialX;
       const y = (parseFloat(target.getAttribute("data-y") as string) || 0) + dy + initialY;
-      return {x , y};
+      return { x, y };
     }
 
     private dragMoveListener = (event: Interact.InteractEvent) => {
       const { target } = event;
-      const {x, y} = this.getTransformValues(event);
+      const { x, y } = this.getTransformValues(event);
       this.setTargetPosition(target, x, y);
       this.applyInitialPosition = false;
     };
@@ -261,16 +266,15 @@ export namespace FloatingModal {
     }
 
     renderedCallback() {
-      this.containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)`: '';
+      this.containerTransform = this.position ? `translate(${this.position.x}px, ${this.position.y}px)` : "";
     }
 
     render() {
-      
       return html`
         ${this.show
           ? html`
               <div
-                class="md-floating ${this.fixed ? "fixed" : ''} ${this.minimize ? "hide" : ''}"
+                class="md-floating ${this.fixed ? "fixed" : ""} ${this.minimize ? "hide" : ""}"
                 part="floating"
                 role="dialog"
                 aria-label=${ifDefined(this.label || undefined)}
@@ -284,41 +288,45 @@ export namespace FloatingModal {
                   bottom: ${this.full ? "0 !important" : ""};
                   right: ${this.full ? "0 !important" : ""};
                   ${this.full ? "transform: none !important" : ""};
-                  ${!this.full? `transform: ${this.position? `translate(${this.position.x}px, ${this.position.y}px)` : this.containerTransform} !important` : ""};`
+                  ${!this.full ? `transform: ${this.position ? `translate(${this.position.x}px, ${this.position.y}px)` : this.containerTransform} !important` : ""};`
                     : undefined
                 )}
               >
                 <div class="md-floating__header">
                   <div class="md-floating__header-text">
                     ${this.heading
-                      ? html`
-                          ${this.heading}
-                        `
-                      : html` 
+                      ? html` ${this.heading} `
+                      : html`
                           ${!this.minimize && this.headerSlot}
                           <slot name="header"></slot>
                         `}
                   </div>
-                  ${this.minimizable ? html `
-                    <md-button
-                      color="color-none"
-                      class="md-floating__minimize"
-                      ariaLabel="${this.minimizeAriaLabel}"
-                      circle
-                      @click=${this.handleMinimize}
-                    >
-                    <md-icon name="minus_16"></md-icon>
-                  </md-button>` : nothing}
-
-                  ${!this.minimize ? html` <md-button
-                    color="color-none"
-                    class="md-floating__resize"
-                    ariaLabel="${this.full ? this.resizeAriaLabel: this.maximizeScreenLabel}"
-                    circle
-                    @click=${this.handleToggleExpandCollapse}
-                  >
-                    <md-icon name=${this.full ? "minimize_16" : "maximize_16"}></md-icon>
-                  </md-button>` : ''}
+                  ${this.minimizable
+                    ? html` <md-button
+                        color="color-none"
+                        class="md-floating__minimize"
+                        ariaLabel="${this.minimizeAriaLabel}"
+                        circle
+                        @click=${this.handleMinimize}
+                      >
+                        <md-icon name="minus-bold" size="16" iconSet="momentumDesign"></md-icon>
+                      </md-button>`
+                    : nothing}
+                  ${!this.minimize
+                    ? html` <md-button
+                        color="color-none"
+                        class="md-floating__resize"
+                        ariaLabel="${this.full ? this.resizeAriaLabel : this.maximizeScreenLabel}"
+                        circle
+                        @click=${this.handleToggleExpandCollapse}
+                      >
+                        <md-icon
+                          name=${this.full ? "minimize-bold" : "maximize-bold"}
+                          size="16"
+                          iconSet="momentumDesign"
+                        ></md-icon>
+                      </md-button>`
+                    : ""}
 
                   <md-button
                     color="color-none"
@@ -327,16 +335,16 @@ export namespace FloatingModal {
                     circle
                     @click=${this.handleClose}
                   >
-                    <md-icon name="cancel_16"></md-icon>
+                    <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                   </md-button>
                 </div>
                 <div class="md-floating__body" part="floating-body">
                   <slot></slot>
                 </div>
               </div>
-              ${this.minimizable ? html`
-                <div class="md-floating-min-parent" part="minimize-floating" tabindex="-1">
-                  <md-floating-modal-minimized
+              ${this.minimizable
+                ? html` <div class="md-floating-min-parent" part="minimize-floating" tabindex="-1">
+                    <md-floating-modal-minimized
                       class="float-modal-min"
                       part="floating-minimized"
                       heading=${this.heading}
@@ -345,11 +353,11 @@ export namespace FloatingModal {
                       @floating-min-modal-minimize=${(event: Event) => this.handleMinimize(event)}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}
-                      >
+                    >
                       ${this.minimize && this.headerSlot}
-                  </md-floating-modal-minimized>
-              </div>` : nothing}
-             
+                    </md-floating-modal-minimized>
+                  </div>`
+                : nothing}
             `
           : nothing}
       `;

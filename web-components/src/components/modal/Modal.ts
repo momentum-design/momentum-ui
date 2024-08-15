@@ -30,7 +30,7 @@ const minisculeLatency = 13;
  */
 
 export namespace Modal {
-  export type Type = typeof modalType[number];
+  export type Type = (typeof modalType)[number];
 
   @customElementWithCheck("md-modal")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
@@ -114,7 +114,7 @@ export namespace Modal {
     }
 
     private transitionPromise(element: HTMLElement) {
-      return new Promise<void>(resolve => {
+      return new Promise<void>((resolve) => {
         const onModalTransitionEnd = () => {
           element.removeEventListener("transitionend", onModalTransitionEnd);
 
@@ -180,7 +180,7 @@ export namespace Modal {
                 @keydown="${this.handleKeyDown}"
                 ariaLabel=${this.ariaLabelClose}
               >
-                <md-icon name="cancel_14"></md-icon>
+                <md-icon name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
               </md-button>
             `
           : nothing}
@@ -202,11 +202,7 @@ export namespace Modal {
         : html`
             <div id="modal_header" part="modal-header" class="md-modal__header">
               <h2 class="md-modal__title">${this.headerLabel}</h2>
-              ${this.headerMessage
-                ? html`
-                    <span class="md-modal__message">${this.headerMessage}</span>
-                  `
-                : nothing}
+              ${this.headerMessage ? html` <span class="md-modal__message">${this.headerMessage}</span> ` : nothing}
               ${this.topCloseBtnTemplate()}
             </div>
           `;
@@ -260,9 +256,7 @@ export namespace Modal {
           ? html`
               <div part="modal-backdrop" class="md-modal__backdrop fade ${classMap(this.modalBackDropClassMap)}">
                 ${this.backdropClickExit
-                  ? html`
-                      <div class="md-modal_overlay" @click="${this.handleCloseBackdrop}"></div>
-                    `
+                  ? html` <div class="md-modal_overlay" @click="${this.handleCloseBackdrop}"></div> `
                   : nothing}
 
                 <div

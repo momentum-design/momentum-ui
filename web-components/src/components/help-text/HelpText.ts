@@ -6,8 +6,8 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { Input } from "../input/Input"; // Keep type import as a relative path
@@ -34,11 +34,11 @@ export namespace HelpText {
     getIconName() {
       switch (this.messageType) {
         case "success":
-          return "check_12";
+          return "check-bold";
         case "error":
-          return "error_12";
+          return "clear-bold";
         case "warning":
-          return "warning_12";
+          return "warning-bold";
         default:
           return "";
       }
@@ -46,11 +46,13 @@ export namespace HelpText {
 
     render() {
       return html`
-        <div class="md-input__message ${classMap(this.inputMessageClassMap)}" 
-            id=${this.id}
-            aria-live=${this.ariaLive}
-             role="alert">
-          <md-icon name="${this.getIconName()}"></md-icon>
+        <div
+          class="md-input__message ${classMap(this.inputMessageClassMap)}"
+          id=${this.id}
+          aria-live=${this.ariaLive}
+          role="alert"
+        >
+          <md-icon name="${this.getIconName()}" size="14" iconSet="momentumDesign"></md-icon>
           <slot>${this.message}</slot>
         </div>
       `;

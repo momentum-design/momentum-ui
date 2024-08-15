@@ -6,19 +6,19 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import Papa from "papaparse";
-import { classMap } from "lit-html/directives/class-map.js";
-import styles from "./scss/module.scss";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
 import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map.js";
+import Papa from "papaparse";
+import styles from "./scss/module.scss";
 
 export const formatType = ["number", "default"] as const;
 type Warn = { [key: number]: any };
 
 export namespace Table {
-  export type Format = typeof formatType[number];
+  export type Format = (typeof formatType)[number];
 
   @customElementWithCheck("md-table")
   export class ELEMENT extends LitElement {
@@ -32,7 +32,7 @@ export namespace Table {
     @property({ type: Boolean, attribute: "no-borders" }) noBorders = false;
     @property({ type: String }) format: Table.Format = "default";
     @property({ type: Array }) warning: (any | Warn)[] = [];
-    @property({ type: Array }) errors:  (any | Warn)[] = [];
+    @property({ type: Array }) errors: (any | Warn)[] = [];
 
     @internalProperty() private sort = { columnName: "", sortting: false };
     @internalProperty() csvData: any = undefined;
@@ -70,26 +70,32 @@ export namespace Table {
       const data = this.rowTable;
 
       data?.forEach((item, idx) => {
-        this.warning.forEach(i => {
-          if ((idx + 1) === i.row) {
+        this.warning.forEach((i) => {
+          if (idx + 1 === i.row) {
             const cell = item.querySelectorAll('td[role="cell"');
             cell.forEach((c, id) => {
-              if ((id + 1) === i.col) {
+              if (id + 1 === i.col) {
                 c.classList.add("warning");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="warning_24" color="yellow"></md-icon>');
+                c.insertAdjacentHTML(
+                  "beforeend",
+                  '<md-icon name="warning-regular" size="24" iconSet="momentumDesign" color="var(--md-alert-warning-text-color)"></md-icon>'
+                );
               }
-            })
+            });
           }
         });
-        this.errors.forEach(i => {
-          if ((idx + 1) === i.row) {
+        this.errors.forEach((i) => {
+          if (idx + 1 === i.row) {
             const cell = item.querySelectorAll('td[role="cell"');
             cell.forEach((c, id) => {
-              if ((id + 1) === i.col) {
+              if (id + 1 === i.col) {
                 c.classList.add("error");
-                c.insertAdjacentHTML('beforeend', '<md-icon name="error_24" color="red"></md-icon>');
+                c.insertAdjacentHTML(
+                  "beforeend",
+                  '<md-icon name="clear-bold" size="24" iconSet="momentumDesign" color="var(--md-alert-error-text-color)"></md-icon>'
+                );
               }
-            })
+            });
           }
         });
       });
@@ -168,44 +174,36 @@ export namespace Table {
                   <thead class="md-table__header" role="rowgroup" tabindex="0">
                     <tr role="row">
                       ${this.headerRow.map(
-                        (i: any) =>
-                          html`
-                            <th role="columnheader">
-                              ${this.sorting
-                                ? html`
-                                    <a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a>
-                                  `
-                                : html`
-                                    ${i}
-                                  `}
-                            </th>
-                          `
+                        (i: any) => html`
+                          <th role="columnheader">
+                            ${this.sorting
+                              ? html` <a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a> `
+                              : html` ${i} `}
+                          </th>
+                        `
                       )}
                     </tr>
                   </thead>
                   <tbody class="md-table__body" role="rowgroup">
                     ${this.csvData.map(
-                      (row: any, rowIndex: number) =>
-                        html`
-                          <tr tabindex="0" role="row" part=${rowIndex === 0 ? "first-row" : "row"}>
-                            ${row.map((item: any, itemIndex: number) => {
-                              const formattedItem =
-                                this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
-                              return html`
-                                <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">
-                                  <span>${formattedItem}</span>
-                                </td>
-                              `;
-                            })}
-                          </tr>
-                        `
+                      (row: any, rowIndex: number) => html`
+                        <tr tabindex="0" role="row" part=${rowIndex === 0 ? "first-row" : "row"}>
+                          ${row.map((item: any, itemIndex: number) => {
+                            const formattedItem =
+                              this.format === "number" && itemIndex !== 0 ? Number(item).toLocaleString() : item;
+                            return html`
+                              <td part=${itemIndex === 0 ? "left-cell" : "cell"} role="cell">
+                                <span>${formattedItem}</span>
+                              </td>
+                            `;
+                          })}
+                        </tr>
+                      `
                     )}
                   </tbody>
                 </table>
               `
-            : html`
-                <p>${this.nodata}</p>
-              `}
+            : html` <p>${this.nodata}</p> `}
         </div>
       `;
     }

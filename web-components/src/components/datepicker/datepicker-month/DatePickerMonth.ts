@@ -8,18 +8,11 @@
 
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import {
-  addWeeks,
-  getMonth,
-  getStartOfMonth,
-  getStartOfWeek,
-  isSameMonth,
-  now
-} from "@/utils/dateUtils";
-import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
+import { addWeeks, getMonth, getStartOfMonth, getStartOfWeek, isSameMonth, now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { DateTime } from "luxon";
+import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import styles from "../scss/module.scss";
 
 export namespace DatePickerMonth {
@@ -36,16 +29,14 @@ export namespace DatePickerMonth {
       const viewAnchorMonth = getMonth(this.day);
 
       do {
-        weeks.push(
-          html`
-            <md-datepicker-week
-              .viewAnchorMonth=${viewAnchorMonth}
-              .startOfWeekDay=${startOfWeekDay}
-              .filterParams=${this.filterParams}
-              .datePickerProps=${this.datePickerProps}
-            ></md-datepicker-week>
-          `
-        );
+        weeks.push(html`
+          <md-datepicker-week
+            .viewAnchorMonth=${viewAnchorMonth}
+            .startOfWeekDay=${startOfWeekDay}
+            .filterParams=${this.filterParams}
+            .datePickerProps=${this.datePickerProps}
+          ></md-datepicker-week>
+        `);
         startOfWeekDay = addWeeks(startOfWeekDay, 1);
       } while (isSameMonth(startOfWeekDay, this.day));
 
@@ -57,11 +48,7 @@ export namespace DatePickerMonth {
     }
 
     render() {
-      return html`
-        <div class="md-datepicker__month">
-          ${this.renderWeeks()}
-        </div>
-      `;
+      return html` <div class="md-datepicker__month">${this.renderWeeks()}</div> `;
     }
   }
 }

@@ -1,6 +1,5 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { now } from "@/utils/dateUtils";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
@@ -8,7 +7,7 @@ import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relati
 export default {
   title: "Components/Date Picker",
   component: "md-datepicker",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-datepicker"

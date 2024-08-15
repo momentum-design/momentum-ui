@@ -20,10 +20,12 @@ import styles from "./scss/module.scss";
 
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
 export const iconType = ["", "white"] as const;
+export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign"] as const;
 
 export namespace Icon {
   export type Size = typeof iconSize[number];
   export type Type = typeof iconType[number];
+  export type IconSet = typeof iconSet[number];
   export type ButtonProperty = {
     [key: string]: string;
   };
@@ -41,8 +43,7 @@ export namespace Icon {
     @property({ type: String }) ariaHidden: any;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
-    @property({ type: Boolean }) designEnabled = false; // enable design icon lookup
-    @property({ type: Boolean }) skipLegacyLookup = false; // use icon as design icon
+    @property({ type: String }) iconSet: IconSet = "momentumUI";
 
     private static designLookup = new Map(Object.entries(designMapping));
     private design = false;
@@ -104,7 +105,8 @@ export namespace Icon {
     }
 
     private get svgIconName() {
-      if (this.skipLegacyLookup) {
+      // If the icon set is momentumDesignIcons, the lookup can be skipped
+      if (this.iconSet === "momentumDesign") {
         return this.name;
       }
       const lookupName = this.getIconName();
@@ -114,8 +116,8 @@ export namespace Icon {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
 
-      if (this.designEnabled) {
-        if (changedProperties.has("name") || changedProperties.has("designEnabled")) {
+      if (this.doesIconSetSupportSVG) {
+        if (changedProperties.has("name") || changedProperties.has("iconSet")) {
           const theIconName = this.svgIconName;
 
           if (theIconName && theIconName !== "Unknown") {
@@ -244,8 +246,16 @@ export namespace Icon {
       );
     }
 
+    private get doesIconSetSupportSVG() {
+      return this.iconSet === "momentumDesign" || this.iconSet === "preferMomentumDesign";
+    }
+
+    private get isSVGRender() {
+      return this.svgIcon && this.doesIconSetSupportSVG;
+    }
+
     render() {
-      return this.designEnabled && this.svgIcon ? this.renderSVGIcon() : this.renderFontIcon();
+      return this.isSVGRender ? this.renderSVGIcon() : this.renderFontIcon();
     }
 
     renderFontIcon() {

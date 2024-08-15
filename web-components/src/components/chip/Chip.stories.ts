@@ -10,14 +10,13 @@ import "@/components/chip/Chip";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { badgeColor, BarType, iconColorSample, iconSamples } from "@/utils/enums";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 
 export default {
   title: "Components/Chip",
   component: "md-chip",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-chip"

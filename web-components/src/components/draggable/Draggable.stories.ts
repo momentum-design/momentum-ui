@@ -10,7 +10,6 @@ import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, color, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { GroupOptions } from "sortablejs";
@@ -19,7 +18,7 @@ import mdx from "./Draggable.mdx";
 export default {
   title: "Components/Draggable",
   component: "md-draggable",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   parameters: {
     docs: {
       page: mdx

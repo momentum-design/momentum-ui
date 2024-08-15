@@ -1,7 +1,6 @@
 import "@/components/date-range-picker/DateRangePicker";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { now } from "@/utils/dateUtils";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { DatePicker as DP } from "../datepicker/DatePicker"; // Keep type import as a relative path
@@ -10,7 +9,7 @@ import "../theme/Theme";
 export default {
   title: "Components/Date Range Picker",
   component: "md-date-range-picker",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-date-range-picker"

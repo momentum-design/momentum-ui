@@ -8,7 +8,6 @@
 
 import "@/components/editable-textfield/EditableTextfield";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
@@ -18,7 +17,7 @@ import { alignment } from "./EditableTextfield"; // Keep type import as a relati
 export default {
   title: "Components/Editable Textfield",
   component: "md-editable-field",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   argTypes: {
     isEditing: { table: { disable: true } },
     alert: { table: { disable: true } },

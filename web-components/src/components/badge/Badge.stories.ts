@@ -10,14 +10,13 @@ import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { badgeColor } from "@/utils/enums";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Badge",
   component: "md-badge",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   argTypes: {
     renderBgColor: { table: { disable: true } },
     renderTextColor: { table: { disable: true } },

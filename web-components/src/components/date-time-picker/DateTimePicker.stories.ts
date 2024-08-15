@@ -2,7 +2,6 @@ import "@/components/date-time-picker/DateTimePicker";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { TIME_UNIT } from "@/constants";
 import { now } from "@/utils/dateUtils";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { DatePicker } from "../datepicker/DatePicker"; // Keep type import as a relative path
@@ -11,7 +10,7 @@ import { timeSpecificity } from "../timepicker/TimePicker"; // Keep type import 
 export default {
   title: "Components/Date Time Picker",
   component: "md-date-time-picker",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-date-time-picker"

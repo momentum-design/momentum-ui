@@ -9,14 +9,13 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
 import "@/components/toggle-switch/ToggleSwitch";
 import { alignLabel } from "@/components/toggle-switch/ToggleSwitch";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Toggle Switch",
   component: "md-toggle-switch",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   argTypes: {
     toggleSwitchClassMap: { table: { disable: true } },
     autofocus: { table: { disable: true } }

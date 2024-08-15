@@ -10,7 +10,6 @@ import "@/components/avatar/Avatar";
 import { AvatarSize, AvatarType } from "@/components/avatar/Avatar.constants";
 import "@/components/avatar/CompositeAvatar";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import mdx from "./Avatar.mdx";
@@ -18,7 +17,7 @@ import mdx from "./Avatar.mdx";
 export default {
   title: "Components/Avatar",
   component: "md-avatar",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   parameters: {
     a11y: {
       element: "md-avatar"

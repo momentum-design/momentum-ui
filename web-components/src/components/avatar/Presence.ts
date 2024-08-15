@@ -1,9 +1,9 @@
 import "@/components/icon/Icon";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
+import { AVATAR_PRESENCE_ICON_SIZE_MAPPING, AvatarSize } from "./Avatar.constants";
 import styles from "./scss/module.scss";
-import { AvatarSize, AVATAR_PRESENCE_ICON_SIZE_MAPPING } from "./Avatar.constants";
 
 export namespace Presence {
   export type Size = typeof AvatarSize[number];
@@ -28,7 +28,7 @@ export namespace Presence {
             color="${this.color}"
             size=${AVATAR_PRESENCE_ICON_SIZE_MAPPING[this.size]}
             title="${this.title}"
-            designEnabled="true"
+            .iconSet=${"momentumDesign"}
           />
         </div>
       `;

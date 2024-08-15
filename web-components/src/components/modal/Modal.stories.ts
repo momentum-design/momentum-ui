@@ -8,7 +8,6 @@
 
 import "@/components/modal/Modal";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -17,7 +16,7 @@ import { modalType } from "./Modal"; // Keep type import as a relative path
 export default {
   title: "Components/Modal",
   component: "md-modal",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   argTypes: {
     htmlId: { table: { disable: true } },
     noExitOnEsc: { table: { disable: true } },

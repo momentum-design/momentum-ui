@@ -9,7 +9,6 @@
 import "@/components/input/Input";
 import "@/components/label/Label";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -17,7 +16,7 @@ import { html } from "lit-element";
 export default {
   title: "Components/Label",
   component: "md-label",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   argTypes: {
     theme: { table: { disable: true } },
     radioLabel: { table: { disable: true } },

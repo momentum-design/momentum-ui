@@ -11,7 +11,6 @@ import "@/components/checkbox/Checkbox";
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -20,7 +19,7 @@ import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOv
 export default {
   title: "Components/Menu Overlay",
   component: "md-menu-overlay",
-  decorators: [withKnobs, withA11y],
+  decorators: [withKnobs],
   argTypes: {
     handleOutsideOverlayClick: { table: { disable: true } },
     handleTriggerKeyDown: { table: { disable: true } },

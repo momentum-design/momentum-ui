@@ -142,7 +142,7 @@ export namespace Avatar {
     private get avatarIcon() {
       return html`
         <span class="md-avatar__icon ${classMap(this.avatarStyleMap)}">
-          <md-icon .name=${this.iconName} ?designEnabled=${this.newMomentum}></md-icon>
+          <md-icon .name=${this.iconName} .iconSet=${this.newMomentum ? "momentumDesign" : "momentumUI"}></md-icon>
         </span>
       `;
     }
@@ -240,7 +240,7 @@ export namespace Avatar {
           ${this.type === "self"
             ? html`
                 <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
-                  <md-icon .name=${this.chatIconName} designEnabled .size=${this.chatIconSize}></md-icon>
+                  <md-icon .name=${this.chatIconName} .iconSet=${"momentumDesign"} .size=${this.chatIconSize}></md-icon>
                 </span>
               `
             : this.src && !this.imageErrored

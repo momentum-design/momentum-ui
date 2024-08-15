@@ -78,7 +78,7 @@ describe("Momentun Icon Component", () => {
   });
 
   test("should not apply design font class when designEnabled is true as we don't map the icon", async () => {
-    const element = await fixture(`<md-icon designEnabled="true" name="youtube-circle_24"></md-icon>`);
+    const element = await fixture(`<md-icon .iconSet=${"momentumDesign"} name="youtube-circle_24"></md-icon>`);
     const classList = element.shadowRoot?.querySelector("i")?.classList;
     expect(classList?.contains("search-bold")).toBe(false);
   });

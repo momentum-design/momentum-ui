@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import "@/components/icon/Icon";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
@@ -152,7 +153,7 @@ export namespace AccordionItem {
               </slot>
               <md-icon
                 iconSet=${"momentumDesign"}
-                size="12"
+                size="14"
                 name=${this.expanded ? "arrow-up-bold" : "arrow-down-bold"}
               ></md-icon>
             </button>

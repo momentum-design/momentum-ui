@@ -58,7 +58,6 @@ const common: webpack.Configuration = {
             name: "icons/[name].[hash:8].[ext]",
             limit: Infinity,
             esModule: false
-            
           }
         },
         include: path.resolve("node_modules/@momentum-design/icons/dist/svg")
@@ -243,8 +242,7 @@ const commonDist = merge(common, {
   externals: [
     nodeExternals({
       modulesFromFile: true,
-      importType: "umd",
-      allowlist: ["node_modules/@momentum-design/icons/dist/svg"]
+      importType: "umd"
     })
   ],
   plugins: [
@@ -269,12 +267,12 @@ const commonDist = merge(common, {
         test: [
           {
             folder: "./dist/types",
-            method: p => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
+            method: (p) => new RegExp(/\.test\.d\.ts(\.map)*$/).test(p),
             recursive: true
           },
           {
             folder: "./dist/types",
-            method: p => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
+            method: (p) => new RegExp(/\.stories\.d\.ts(\.map)*$/).test(p),
             recursive: true
           }
         ]

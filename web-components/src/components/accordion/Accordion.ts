@@ -29,7 +29,7 @@ export namespace Accordion {
     }
 
     private switchFocusedAccordionItem(direction: number) {
-      const focusedAccordionItemIndex = this.slotted.findIndex(accordionItem =>
+      const focusedAccordionItemIndex = this.slotted.findIndex((accordionItem) =>
         (accordionItem as AccordionItem.ELEMENT).hasAttribute("focus-visible")
       );
 
@@ -53,7 +53,7 @@ export namespace Accordion {
 
     private setActiveAccordionItem(accordionItem: AccordionItem.ELEMENT) {
       if (!this.multiple) {
-        this.slotted.forEach(item => {
+        this.slotted.forEach((item) => {
           const anotherAccordionItem = item as AccordionItem.ELEMENT;
           if (anotherAccordionItem.expanded && !item.isEqualNode(accordionItem)) {
             anotherAccordionItem.expanded = false;
@@ -68,7 +68,7 @@ export namespace Accordion {
     private setupExpandedAccordionItems() {
       if (!this.multiple) {
         this.slotted
-          .filter(accordionItem => (accordionItem as AccordionItem.ELEMENT).expanded)
+          .filter((accordionItem) => (accordionItem as AccordionItem.ELEMENT).expanded)
           .forEach((accordionItem, index) => {
             const item = accordionItem as AccordionItem.ELEMENT;
             if (item.expanded && index > 0) {
@@ -87,14 +87,14 @@ export namespace Accordion {
     };
 
     private setupFocusAccordionItems() {
-      this.slotted.forEach(header => {
+      this.slotted.forEach((header) => {
         header.addEventListener("focus", this.handleAccordionItemFocus);
         header.addEventListener("blur", this.handleAccordionItemBlur);
       });
     }
 
     private removeFocusAccordionItems() {
-      this.slotted.forEach(header => {
+      this.slotted.forEach((header) => {
         header.removeEventListener("focus", this.handleAccordionItemFocus);
         header.removeEventListener("blur", this.handleAccordionItemBlur);
       });
@@ -138,7 +138,7 @@ export namespace Accordion {
 
     handleClick(event: CustomEvent<AccordionItem.AccordionEvent>) {
       const { target } = event;
-      const accordionItem = this.slotted.find(item =>
+      const accordionItem = this.slotted.find((item) =>
         (item as AccordionItem.ELEMENT).isSameNode(target as HTMLElement)
       );
       if (accordionItem) {

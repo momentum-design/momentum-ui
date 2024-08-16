@@ -29,7 +29,7 @@ export const MeetingAlertRole = [
 ] as const;
 
 export namespace MeetingAlert {
-  export type Role = typeof MeetingAlertRole[number];
+  export type Role = (typeof MeetingAlertRole)[number];
 
   @customElementWithCheck("md-meeting-alert")
   export class ELEMENT extends LitElement {
@@ -138,9 +138,7 @@ export namespace MeetingAlert {
         if (attendees.length >= 2) {
           return templateHTML(attendees);
         } else {
-          return html`
-            <md-avatar title=${title} label="avatar" src=${src} tabindex="-1"></md-avatar>
-          `;
+          return html` <md-avatar title=${title} label="avatar" src=${src} tabindex="-1"></md-avatar> `;
         }
       };
 
@@ -154,19 +152,11 @@ export namespace MeetingAlert {
                 @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
                 role=${role}
               >
-                <slot name="custom-avatar">
-                  ${renderAvatar()}
-                </slot>
+                <slot name="custom-avatar"> ${renderAvatar()} </slot>
                 <div class=${`md-alert__content ${onSnooze ? "" : " md-alert__content--wide"}`}>
-                  <div class="md-alert__title" title=${title}>
-                    ${title}
-                  </div>
-                  <div class="md-alert__status" title=${status}>
-                    ${status}
-                  </div>
-                  <div class="md-alert__message" title=${message}>
-                    ${message}
-                  </div>
+                  <div class="md-alert__title" title=${title}>${title}</div>
+                  <div class="md-alert__status" title=${status}>${status}</div>
+                  <div class="md-alert__message" title=${message}>${message}</div>
                 </div>
                 ${onSnooze
                   ? html`
@@ -196,7 +186,7 @@ export namespace MeetingAlert {
                     }}
                     .size=${40}
                   >
-                    <md-icon name="icon-cancel_16"></md-icon>
+                    <md-icon name="cancel-bold"></md-icon>
                   </md-button>
                 </slot>
               </div>

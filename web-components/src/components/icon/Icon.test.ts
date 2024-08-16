@@ -21,13 +21,13 @@ describe("Momentun Icon Component", () => {
 
   test("should allow sizeOverride prop to change icon size", async () => {
     const element = await fixture(
-      `<md-icon class="test-class" name="arrow-up_16" size="24" sizeOverrided color="red"></md-icon>`
+      `<md-icon class="test-class" name="arrow-up_16" size="24" sizeOverrided iconSet="momentumUI" color="red"></md-icon>`
     );
 
     const expectedClasses = ["md-icon", "icon", "arrow-up_24"];
     const classList = element.shadowRoot?.querySelector("i")?.classList;
     expect(classList?.length).toEqual(expectedClasses.length);
-    expect(expectedClasses.every(className => classList?.contains(className))).toBe(true);
+    expect(expectedClasses.every((className) => classList?.contains(className))).toBe(true);
   });
 
   test("should set font-size to default if not specified", async () => {
@@ -53,11 +53,9 @@ describe("Momentun Icon Component", () => {
   test("should set aria-label attribute from title & description props", async () => {
     const title = "Test Title";
     const description = "Test Description";
-    const element = await fixture(
-      html`
-        <md-icon title="${title}" description="${description}" name="accessibility_16"></md-icon>
-      `
-    );
+    const element = await fixture(html`
+      <md-icon title="${title}" description="${description}" name="accessibility_16"></md-icon>
+    `);
     expect(element.shadowRoot!.querySelector("i")!.getAttribute("aria-label")).toEqual(`${title} ${description}`);
   });
 

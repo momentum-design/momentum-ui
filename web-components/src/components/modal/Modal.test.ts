@@ -32,15 +32,13 @@ describe("Modal Component", () => {
   let element: Modal.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<Modal.ELEMENT>(
-      html`
-        <md-modal>
-          <input type="text" placeholder="Type Text" />
-          <button slot="footer" type="reset">Reset</button>
-          <button slot="footer" type="submit">Submit</button>
-        </md-modal>
-      `
-    );
+    element = await fixture<Modal.ELEMENT>(html`
+      <md-modal>
+        <input type="text" placeholder="Type Text" />
+        <button slot="footer" type="reset">Reset</button>
+        <button slot="footer" type="submit">Submit</button>
+      </md-modal>
+    `);
   });
   afterEach(fixtureCleanup);
 

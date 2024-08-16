@@ -8,10 +8,12 @@
 
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
+import momentumDesignManifest from "@momentum-design/icons/dist/manifest.json";
+import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { iconSet, iconSize, iconType } from "./Icon"; // Keep type import as a relative path
+import { iconSet, iconSize, iconType } from "./Icon";
 
 export default {
   title: "Components/Icon",
@@ -34,21 +36,36 @@ export default {
   }
 };
 
+const momentumDesignManifestArray = Object.keys(momentumDesignManifest).map((key) => ({
+  name: key,
+  value: (momentumDesignManifest as Record<string, string>)[key]
+}));
+const momentumDesignNames = momentumDesignManifestArray.map((item) => item.name);
+
 export const Icon = () => {
   const darkTheme = boolean("Dark Mode", false);
   const theme = select("Theme name", ThemeNameValues, "lumos");
-  const iconName = text("Icon Name", "accessibility_16");
-  const color = text("Color", "var(--wc-success-text-color");
+  const color = text("Color", "currentColor");
   const theIconSet = select("Icon set", iconSet, iconSet[0]);
+  const momentumUIName = select("Momentum UI Name", iconNames, "arrow-up_16");
+  const momentumDesignName = select("Moment Design Name", momentumDesignNames, "arrow-up-bold");
   const title = text("Title", "");
   const type = select("Type", iconType, "");
   const size = select("Size", iconSize, "16");
   const sizeOverrided = boolean("Size Override", false);
 
+  function getIconSetIconName() {
+    if (theIconSet !== "momentumDesign") {
+      return `icon-${momentumUIName}`;
+    }
+
+    return momentumDesignName;
+  }
+
   return html`
     <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} theme=${theme}>
       <md-icon
-        .name=${iconName}
+        .name=${getIconSetIconName()}
         .title=${title}
         .color=${color}
         .type=${type}

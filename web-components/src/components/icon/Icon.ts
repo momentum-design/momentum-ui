@@ -54,52 +54,56 @@ export namespace Icon {
       return importedIcon.endsWith(".svg");
     }
 
+    decodeIfBase64EncodedSvg(data: string) {
+      const base64DataMatch = data.match(/data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/);
+      if (base64DataMatch && base64DataMatch[1]) {
+        const base64Data = base64DataMatch[1];
+        const decodedData = atob(base64Data);
+        return decodedData;
+      }
+      return data;
+    }
+
     async getSvgContentFromFile(importedIcon: string) {
       const response = await fetch(importedIcon);
       const responseText = await response.text();
-      console.log("response text: ", responseText);
 
-      try {
-        return new DOMParser().parseFromString(responseText, "text/html").body.children[0] as HTMLElement;
-      } catch (error) {
-        console.error("Error parsing svg content: ", error);
-        return null;
-      }
+      return this.getSvgContentFromInline(responseText);
     }
 
     getSvgContentFromInline(importedIcon: string) {
-      const base64Prefix = "data:image/svg+xml;base64,";
-      let svgContent = importedIcon;
-      if (svgContent.startsWith(base64Prefix)) {
-        const base64Data = importedIcon.slice(base64Prefix.length);
-        svgContent = atob(base64Data);
-      }
+      const svgContent = this.decodeIfBase64EncodedSvg(importedIcon);
+      return this.parseSvgContent(svgContent);
+    }
 
-      const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
-      return doc.documentElement;
+    parseSvgContent(svgContent: string) {
+      try {
+        const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
+        return doc.documentElement;
+      } catch (error) {
+        try {
+          return new DOMParser().parseFromString(svgContent, "text/html").body.children[0] as HTMLElement;
+        } catch (error) {
+          console.error("Error parsing svg content: ", error);
+          return null;
+        }
+      }
     }
 
     async loadSvgIcon(iconName: string) {
-      //const importedIcon = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
-
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
-      console.log("importedIcon: ", importedIcon);
 
       if (this.isPath(importedIcon)) {
-        // Fetch the SVG content from the relative path
-        console.log("fetching icon from path");
         this.svgIcon = await this.getSvgContentFromFile(importedIcon);
       } else {
-        console.log("fetching icon inline");
         this.svgIcon = this.getSvgContentFromInline(importedIcon);
-        //  fetchedElement = doc.documentElement;
       }
 
       this.svgIcon?.setAttribute("class", `${self.name}`);
+      this.svgIcon?.setAttribute("part", "icon");
 
       //  el.setAttribute("class", `md-icon icon`);
-      // el.setAttribute("style", styleMap(this.iconStyleMap));
 
       this.setSvgIconAttributes();
       this.requestUpdate();
@@ -115,7 +119,7 @@ export namespace Icon {
       if (this.iconFontSize) {
         this.svgIcon.setAttribute("height", `${this.iconFontSize}px`);
       }
-      this.svgIcon.setAttribute("part", "icon");
+
       this.svgIcon.setAttribute("id", this.id);
       this.svgIcon.setAttribute("role", "img");
       this.svgIcon.setAttribute("title", this.title);
@@ -133,7 +137,6 @@ export namespace Icon {
     }
 
     private get svgIconName() {
-      // If the icon set is momentumDesignIcons, the lookup can be skipped
       if (this.iconSet === "momentumDesign") {
         return this.name;
       }

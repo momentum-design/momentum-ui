@@ -22,7 +22,7 @@ export const iconTemplate = html`
 
   <h3>Using new icon enabled (enabled):</h3>
   <md-icon
-    name="search-bold"
+    name="search_16"
     .iconSet=${"preferMomentumDesign"}
     class="testClass"
     size="50"

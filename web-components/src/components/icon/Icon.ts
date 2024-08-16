@@ -81,6 +81,8 @@ export namespace Icon {
 
     async loadSvgIcon(iconName: string) {
       //const importedIcon = await import(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
       console.log("importedIcon: ", importedIcon);
 

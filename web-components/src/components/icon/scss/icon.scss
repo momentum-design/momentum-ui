@@ -17,13 +17,15 @@
     .md--dark & {
       fill: $md-white-100;
     }
-
   }
-
 }
 
 @media (forced-colors: active) {
-  .icon{
+  .icon {
     color: currentColor;
+  }
+
+  svg {
+    fill: currentColor;
   }
 }

@@ -91,7 +91,7 @@ export namespace Modal {
     }
 
     private focusInsideModal() {
-      if (this.focusableElements && this.focusableElements.length) {
+      if (this.focusableElements?.length) {
         this.setInitialFocus!();
       }
     }
@@ -180,7 +180,7 @@ export namespace Modal {
                 @keydown="${this.handleKeyDown}"
                 ariaLabel=${this.ariaLabelClose}
               >
-                <md-icon name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
+                <md-icon name="cancel_14"></md-icon>
               </md-button>
             `
           : nothing}

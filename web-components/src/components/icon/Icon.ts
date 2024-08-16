@@ -56,8 +56,9 @@ export namespace Icon {
     }
 
     decodeIfBase64EncodedSvg(data: string) {
-      const base64DataMatch = data.match(/data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/);
-      if (base64DataMatch && base64DataMatch[1]) {
+      const base64DataRegex = /data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/;
+      const base64DataMatch = base64DataRegex.exec(data);
+      if (base64DataMatch?.[1]) {
         const base64Data = base64DataMatch[1];
         const decodedData = atob(base64Data);
         return decodedData;
@@ -91,7 +92,19 @@ export namespace Icon {
       }
     }
 
+    isSvgAlreadyLoaded() {
+      if (!this.svgIcon) {
+        return false;
+      }
+
+      return this.svgIcon?.getAttribute("class")?.includes(self.name);
+    }
+
     async loadSvgIcon(iconName: string) {
+      if (this.isSvgAlreadyLoaded()) {
+        return;
+      }
+
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
 
@@ -103,8 +116,6 @@ export namespace Icon {
 
       this.svgIcon?.setAttribute("class", `icon ${self.name}`);
       this.svgIcon?.setAttribute("part", "icon");
-
-      //  el.setAttribute("class", `md-icon icon`);
 
       this.setSvgIconAttributes();
       this.requestUpdate();
@@ -135,7 +146,7 @@ export namespace Icon {
       const lookupName = this.getIconName();
       const mappedName = ELEMENT.designLookup.get(lookupName);
 
-      return mappedName || lookupName;
+      return mappedName ?? lookupName;
     }
 
     updated(changedProperties: PropertyValues) {

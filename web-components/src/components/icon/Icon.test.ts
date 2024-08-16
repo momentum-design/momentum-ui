@@ -3,7 +3,7 @@ import "./Icon";
 
 jest.mock("@momentum-ui/utils/lib/getColorValue", () => jest.fn(() => "rgba(247, 100, 74, 1)"));
 
-describe("Momentun Icon Component", () => {
+describe("Momentum Icon Component", () => {
   beforeEach(() => {
     jest.resetModules();
     console.warn = jest.fn();

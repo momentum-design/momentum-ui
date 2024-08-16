@@ -6,12 +6,12 @@ import { AVATAR_PRESENCE_ICON_SIZE_MAPPING, AvatarSize } from "./Avatar.constant
 import styles from "./scss/module.scss";
 
 export namespace Presence {
-  export type Size = typeof AvatarSize[number];
+  export type Size = (typeof AvatarSize)[number];
 
   @customElementWithCheck("md-presence")
   export class ELEMENT extends LitElement {
     @property({ type: String }) name = "";
-    @property({ type: String }) size: Size = 48;
+    @property({ type: Number }) size: Size = 48;
     @property({ type: String }) title = "";
     @property({ type: String }) color = "";
     @property({ type: Boolean }) isCircularWrapper = true;
@@ -29,7 +29,8 @@ export namespace Presence {
             size=${AVATAR_PRESENCE_ICON_SIZE_MAPPING[this.size]}
             title="${this.title}"
             .iconSet=${"momentumDesign"}
-          />
+          >
+          </md-icon>
         </div>
       `;
     }

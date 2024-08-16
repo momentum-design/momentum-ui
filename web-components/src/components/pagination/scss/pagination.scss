@@ -50,27 +50,10 @@
     }
 
     &-nav {
-      @include flex;
-      background: none;
-      border: 0;
-      border-radius: $pagination-nav-border-radius;
-      color: var(--pagination-nav-color, $md-pagination-nav-color-light);
       cursor: pointer;
-      flex: 0 0 $pagination-arrow-size;
-      outline: none;
-      padding: 0;
-
-      &:hover {
-        color: var(--pagination-nav-hover, $md-pagination-nav-hover-light);
-      }
 
       &:disabled {
-        color: var(--pagination-nav-disabled, $md-pagination-nav-disabled-light);
         cursor: default;
-      }
-
-      &:focus {
-        box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
       }
     }
 
@@ -100,18 +83,20 @@
   box-shadow: $pagination-nav-focus var(--md-default-focus-outline-color, $md-blue-70);
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   :host(md-pagination) {
     .md-pagination {
       &-nav {
-        &:focus, &:hover {
+        &:focus,
+        &:hover {
           outline: 1px solid Highlight;
         }
       }
 
       &-list {
         li:not(.page-ellipsis) {
-          &[aria-current="true"], &:hover {
+          &[aria-current="true"],
+          &:hover {
             forced-color-adjust: none;
             background-color: Highlight;
             color: Canvas;
@@ -122,7 +107,8 @@
       &-dots {
         li {
           background-color: GrayText;
-          &[aria-current="true"], &:hover {
+          &[aria-current="true"],
+          &:hover {
             forced-color-adjust: none;
             background-color: Highlight;
             color: Canvas;
@@ -130,4 +116,5 @@
         }
       }
     }
-  }}
+  }
+}

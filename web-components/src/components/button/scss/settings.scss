@@ -16,6 +16,7 @@ $button__line-height--52: rem-calc(25);
 
 // button font size
 $button__font-size--20: var(--button-font-size-extra-small, rem-calc(8));
+$button__font-size--24: var(--button-font-size-extra-small, rem-calc(10));
 $button__font-size--28: var(--button-font-size-small, rem-calc(12));
 $button__font-size--32: var(--button-font-size-medium, rem-calc(14));
 $button__font-size--36: var(--button-font-size-medium, rem-calc(14));
@@ -29,6 +30,7 @@ $button__font-size--84: rem-calc(40);
 
 // Circle Button Sizes
 $button__size--20: rem-calc(20);
+$button__size--24: rem-calc(24);
 $button__size--28: rem-calc(28);
 $button__size--32: rem-calc(32);
 $button__size--36: rem-calc(36);
@@ -41,8 +43,9 @@ $button__size--72: rem-calc(72);
 $button__size--84: rem-calc(84);
 
 // Border Radius Sizes
-$button__radius--28: rem-calc(16);
-$button__radius--32: rem-calc(18);
+$button__radius--24: rem-calc(12);
+$button__radius--28: rem-calc(14);
+$button__radius--32: rem-calc(16);
 $button__radius--36: rem-calc(18);
 $button__radius--40: rem-calc(20);
 $button__radius--52: rem-calc(26);
@@ -52,6 +55,7 @@ $button__radius--round: $global-rounded !default;
 $button__font-align: center !default;
 
 // Set paddings
+$button__padding--24: var(--button-padding-24, rem-calc(4) rem-calc(12) rem-calc(5) rem-calc(12));
 $button__padding--28: var(--button-padding-28, rem-calc(6) rem-calc(14) rem-calc(7) rem-calc(14));
 $button__padding--32: var(--button-padding-32, rem-calc(8) rem-calc(16) rem-calc(9) rem-calc(16));
 $button__padding--36: var(--button-padding-36, rem-calc(9) rem-calc(18) rem-calc(10) rem-calc(18));

@@ -1,3 +1,5 @@
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
@@ -131,26 +133,30 @@ export namespace Pagination {
           ${this.noNavigation
             ? nothing
             : html`
-                <button
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="First Page"
+                  ariaLabel="First Page"
                   ?disabled=${this.hasPreviousPage}
-                  aria-disabled=${this.hasPreviousPage}
                   @click=${this.computeFirst}
                   part="pagination-first"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
                   <md-icon name="overflow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
-                </button>
-                <button
+                </md-button>
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="Next Page"
+                  ariaLabel="Next Page"
                   ?disabled=${this.hasPreviousPage}
-                  aria-disabled=${this.hasPreviousPage}
                   @click=${() => this.computePrevious(this.currentPage - 1)}
                   part="pagination-prev"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
                   <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
-                </button>
+                </md-button>
               `}
           <div class="md-pagination-container">
             ${this.onlyDots
@@ -175,26 +181,30 @@ export namespace Pagination {
           ${this.noNavigation
             ? nothing
             : html`
-                <button
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="Previous Page"
+                  ariaLabel="Previous Page"
                   ?disabled=${this.hasNextPage}
-                  aria-disabled=${this.hasNextPage}
                   @click=${() => this.computeNext(this.currentPage + 1)}
                   part="pagination-next"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
                   <md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
-                </button>
-                <button
+                </md-button>
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="Last Page"
+                  ariaLabel="Last Page"
                   ?disabled=${this.hasNextPage}
-                  aria-disabled=${this.hasNextPage}
                   @click=${this.computeLast}
                   part="pagination-last"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
                   <md-icon name="overflow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
-                </button>
+                </md-button>
               `}
         </nav>
       `;

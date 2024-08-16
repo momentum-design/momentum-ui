@@ -146,6 +146,7 @@ export class ButtonTemplateSandbox extends LitElement {
       <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Button Sizes</h3>
         <md-button size="size-none"><span slot="text">32</span></md-button>
+        <md-button size="24"><span slot="text">24</span></md-button>
         <md-button size="28"><span slot="text">28</span></md-button>
         <md-button size="32"><span slot="text">32</span></md-button>
         <md-button size="36"><span slot="text">36</span></md-button>
@@ -156,6 +157,7 @@ export class ButtonTemplateSandbox extends LitElement {
       <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Circle Button Sizes (icon)</h3>
         <md-button circle size="size-none"><md-icon slot="icon" name="clear_16"></md-icon></md-button>
+        <md-button circle size="24"><md-icon slot="icon" name="clear_16"></md-icon></md-button>
         <md-button circle size="28"><md-icon slot="icon" name="clear_16"></md-icon></md-button>
         <md-button circle size="32"><md-icon slot="icon" name="clear_16"></md-icon></md-button>
         <md-button circle size="36"><md-icon slot="icon" name="clear_16"></md-icon></md-button>
@@ -167,6 +169,7 @@ export class ButtonTemplateSandbox extends LitElement {
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Circle Button Sizes (text)</h3>
         <md-button circle size="size-none"><span slot="text">no size</span></md-button>
         <md-button circle size="20"><span slot="text">20</span></md-button>
+        <md-button circle size="24"><span slot="text">24</span></md-button>
         <md-button circle size="28"><span slot="text">28</span></md-button>
         <md-button circle size="32"><span slot="text">32</span></md-button>
         <md-button circle size="36"><span slot="text">36</span></md-button>
@@ -328,9 +331,7 @@ export class ButtonTemplateSandbox extends LitElement {
             <span class="status-indicator-container">
               <md-icon slot="icon" name="check-circle-active_16" color="var(--avatar-presence-active)"></md-icon>
             </span>
-            <span class="status-label">
-              Available
-            </span>
+            <span class="status-label"> Available </span>
             <span>10:11</span>
             <md-icon class="status-arrow" name="arrow-down-optical_8"></md-icon>
           </div>
@@ -340,6 +341,4 @@ export class ButtonTemplateSandbox extends LitElement {
   }
 }
 
-export const buttonTemplate = html`
-  <button-template-sandbox></button-template-sandbox>
-`;
+export const buttonTemplate = html` <button-template-sandbox></button-template-sandbox> `;

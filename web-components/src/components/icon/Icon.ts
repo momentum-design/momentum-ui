@@ -12,6 +12,7 @@ import reset from "@/wc_scss/reset.scss";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
@@ -100,7 +101,7 @@ export namespace Icon {
         this.svgIcon = this.getSvgContentFromInline(importedIcon);
       }
 
-      this.svgIcon?.setAttribute("class", `${self.name}`);
+      this.svgIcon?.setAttribute("class", `icon ${self.name}`);
       this.svgIcon?.setAttribute("part", "icon");
 
       //  el.setAttribute("class", `md-icon icon`);
@@ -120,15 +121,6 @@ export namespace Icon {
         this.svgIcon.setAttribute("height", `${this.iconFontSize}px`);
       }
 
-      this.svgIcon.setAttribute("id", this.id);
-      this.svgIcon.setAttribute("role", "img");
-      this.svgIcon.setAttribute("title", this.title);
-      this.svgIcon.setAttribute("aria-label", this.ariaLabel);
-      if (this.ariaHidden === "true") {
-        this.svgIcon.setAttribute("aria-hidden", "true");
-      } else {
-        this.svgIcon.removeAttribute("aria-hidden");
-      }
       if (this.color) {
         this.svgIcon.setAttribute("fill", this.iconColor);
       } else {
@@ -156,7 +148,7 @@ export namespace Icon {
           if (theIconName && theIconName !== "Unknown") {
             this.loadSvgIcon(theIconName);
           }
-        } else {
+        } else if (changedProperties.has("iconFontSize") || changedProperties.has("color")) {
           this.setSvgIconAttributes();
         }
       }
@@ -308,7 +300,19 @@ export namespace Icon {
     }
 
     renderSVGIcon() {
-      return html`${this.svgIcon}`;
+      return html`
+        <div
+          class="svg-icon-container"
+          id=${this.id}
+          role="img"
+          aria-label=${this.ariaLabel}
+          title=${this.title}
+          aria-hidden=${ifDefined(this.ariaHidden || undefined)}
+          @click=${(event: MouseEvent) => this.handleIconClick(event)}
+        >
+          ${this.svgIcon ? this.svgIcon : nothing}
+        </div>
+      `;
     }
   }
 }

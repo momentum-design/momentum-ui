@@ -41,7 +41,7 @@ export namespace Icon {
     @property({ type: Boolean }) sizeOverrided = false;
     @property({ type: String }) title = "";
     @property({ type: String }) type = "";
-    @property({ type: String }) ariaHidden: any;
+    @property({ type: String }) ariaHidden: "true" | "false" | null = null;
     @property({ type: Boolean }) isActive = false;
     @property({ type: Boolean }) isComboBoxIcon = false;
     @property({ type: String }) iconSet: IconSet = "momentumUI";
@@ -92,16 +92,16 @@ export namespace Icon {
       }
     }
 
-    isSvgAlreadyLoaded() {
+    isSvgAlreadyLoaded(iconName: string) {
       if (!this.svgIcon) {
         return false;
       }
 
-      return this.svgIcon?.getAttribute("class")?.includes(self.name);
+      return this.svgIcon?.getAttribute("class")?.includes(iconName);
     }
 
     async loadSvgIcon(iconName: string) {
-      if (this.isSvgAlreadyLoaded()) {
+      if (this.isSvgAlreadyLoaded(iconName)) {
         return;
       }
 
@@ -114,7 +114,7 @@ export namespace Icon {
         this.svgIcon = this.getSvgContentFromInline(importedIcon);
       }
 
-      this.svgIcon?.setAttribute("class", `icon ${self.name}`);
+      this.svgIcon?.setAttribute("class", `icon ${iconName}`);
       this.svgIcon?.setAttribute("part", "icon");
 
       this.setSvgIconAttributes();

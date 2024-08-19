@@ -42,11 +42,11 @@ export class GrabberTemplateSandbox extends LitElement {
     }
   }
 
-  grabberToggled(_e: CustomEvent) {
+  grabberToggled() {
     this.requestUpdate();
   }
 
-  grabberHovered(_e: CustomEvent) {
+  grabberHovered() {
     this.requestUpdate();
   }
 

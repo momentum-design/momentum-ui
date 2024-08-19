@@ -19,7 +19,7 @@ describe("Favorite component", () => {
     expect(component).toBeDefined();
 
     const icon = component.shadowRoot?.querySelector("md-icon");
-    expect(icon?.getAttribute("name")).toEqual("favorite_16");
+    expect(icon?.getAttribute("name")).toEqual("favorite-bold");
   });
 
   test("should set disabled Favorite", async () => {
@@ -36,14 +36,14 @@ describe("Favorite component", () => {
     expect(element.checked).toBeTruthy;
 
     const icon = element.shadowRoot?.querySelector("md-icon");
-    expect(icon?.getAttribute("name")).toEqual("favorite-active_16");
+    expect(icon?.getAttribute("name")).toEqual("favorite-filled");
   });
 
   test("should dispatch Action", async () => {
     const component = await fixtureFactory();
 
     const mockClick = jest.spyOn(component, "handleFavorite");
-    component.handleFavorite(new CustomEvent("click"));
+    component.handleFavorite();
     await elementUpdated(component);
 
     expect(mockClick).toHaveBeenCalled();

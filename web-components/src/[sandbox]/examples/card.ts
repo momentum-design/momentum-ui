@@ -14,8 +14,8 @@ export class CardTemplateSandbox extends LitElement {
     this.addEventListener("card-menu-click", this.handleClickMenu as EventListener);
   }
 
-  private handleClickCard(e: MouseEvent) {
-    const { id } = e.detail as any;
+  private handleClickCard(e: CustomEvent) {
+    const { id } = e.detail;
 
     this.value = "Card " + id + ": is clickable";
   }
@@ -26,8 +26,8 @@ export class CardTemplateSandbox extends LitElement {
     this.value = "Card " + id + ": is key event";
   }
 
-  private handleClickMenu(e: MouseEvent) {
-    const { id, type } = e.detail as any;
+  private handleClickMenu(e: CustomEvent) {
+    const { id, type } = e.detail;
 
     this.value = "Card " + id + ": in " + type + " mode";
   }

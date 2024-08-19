@@ -6,16 +6,15 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import "@/components/icon/Icon";
+import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import "@/components/icon/Icon";
-import styles from "./scss/module.scss";
-import { Key } from "@/constants";
-import { nothing } from "lit-html";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
+import styles from "./scss/module.scss";
 
 export namespace Favorite {
   @customElementWithCheck("md-favorite")
@@ -38,7 +37,7 @@ export namespace Favorite {
       return [reset, styles];
     }
 
-    handleFavorite(event: CustomEvent) {
+    handleFavorite() {
       if (this.disabled) {
         return;
       } else {
@@ -103,8 +102,9 @@ export namespace Favorite {
             name="favorite-checkbox"
           />
           <md-icon
-            name="${this.checked ? "favorite-active_16" : "favorite_16"}"
-            color="${this.checked ? "yellow" : nothing}"
+            name="${this.checked ? "favorite-filled" : "favorite-bold"}"
+            iconSet="momentumDesign"
+            size="16"
           ></md-icon>
         </label>
       `;

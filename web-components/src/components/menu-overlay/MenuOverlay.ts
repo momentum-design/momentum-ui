@@ -339,7 +339,7 @@ export namespace MenuOverlay {
       }
     }
 
-    private handleTriggerClick = (event: MouseEvent) => {
+    private handleTriggerClick = () => {
       this.toggleOverlay();
     };
 

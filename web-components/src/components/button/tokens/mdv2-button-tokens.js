@@ -409,6 +409,9 @@ const button = {
       "icon-color": {
         common: "$mds-color-theme-text-warning-active"
       }
+    },
+    "border-radius": {
+      common: "100%"
     }
   },
   "focus-ring": {

@@ -18,24 +18,22 @@ describe("RovingTabIndex Mixin", () => {
 
   afterEach(fixtureCleanup);
   beforeEach(async () => {
-    el = await fixture<CustomElement & RovingTabIndexInterface>(
-      html`
-        <custom-element selected="2">
-          <div>
-            <span>One</span>
-          </div>
-          <div>
-            <span>Two</span>
-          </div>
-          <div disabled>
-            <span>Three</span>
-          </div>
-          <div>
-            <span>Four</span>
-          </div>
-        </custom-element>
-      `
-    );
+    el = await fixture<CustomElement & RovingTabIndexInterface>(html`
+      <custom-element selected="2">
+        <div>
+          <span>One</span>
+        </div>
+        <div>
+          <span>Two</span>
+        </div>
+        <div disabled>
+          <span>Three</span>
+        </div>
+        <div>
+          <span>Four</span>
+        </div>
+      </custom-element>
+    `);
   });
 
   test("should applying to component", () => {

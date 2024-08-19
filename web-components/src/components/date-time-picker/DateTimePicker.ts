@@ -18,7 +18,7 @@ export namespace DateTimePicker {
   export class ELEMENT extends LitElement {
     @property({ type: String }) maxDate: string | undefined = undefined;
     @property({ type: String }) minDate: string | undefined = undefined;
-    @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+    @property({ type: String }) weekStart: (typeof weekStartDays)[number] = "Sunday";
     @property({ type: String }) ariaLabel = "";
 
     @property({ type: Boolean, attribute: "two-digit-auto-tab" }) twoDigitAutoTab = false;
@@ -49,7 +49,7 @@ export namespace DateTimePicker {
         this.combineDateAndTimeValues(dateString, this.timeValue);
       }
 
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
 
       if (this.datePicker) {
         this.datePicker.addEventListener("date-selection-change", this.handleDateChange);

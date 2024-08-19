@@ -98,6 +98,4 @@ export class FloatingTemplateSandbox extends LitElement {
   }
 }
 
-export const floatingModalTemplate = html`
-  <floating-template-sandbox></floating-template-sandbox>
-`;
+export const floatingModalTemplate = html` <floating-template-sandbox></floating-template-sandbox> `;

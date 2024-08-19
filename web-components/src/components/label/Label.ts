@@ -67,21 +67,12 @@ export namespace Label {
           class="md-label ${classMap(this.labelClassMap)}"
           for="${this.htmlFor}"
         >
-          ${this.label
-            ? html`
-                <span>${this.label}</span>
-              `
-            : html`
-                <slot></slot>
-              `}
+          ${this.label ? html` <span>${this.label}</span> ` : html` <slot></slot> `}
         </label>
       `;
     }
   }
 }
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

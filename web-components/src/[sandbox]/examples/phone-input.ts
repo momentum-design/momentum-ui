@@ -81,8 +81,7 @@ export const phoneInputTemplate = html`
             .countryCodeAriaLabel=${"International Dialing Code"}
             .dialNumberAriaLabel=${"Dial Number"}
             .numberPlaceholder=${"Enter The Phone Number"}
-            @phoneinput-blur="${(e: CustomEvent) =>
-              console.log("blur: ", e.detail)}"
+            @phoneinput-blur="${(e: CustomEvent) => console.log("blur: ", e.detail)}"
           ></md-phone-input>
         </md-form>
       </div>

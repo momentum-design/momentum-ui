@@ -19,7 +19,7 @@ import styles from "./scss/module.scss";
 export const coachmarkPlacement = ["auto", "left", "right", "top", "bottom"];
 
 export namespace Coachmark {
-  export type Place = typeof coachmarkPlacement[number];
+  export type Place = (typeof coachmarkPlacement)[number];
 
   @customElementWithCheck("md-coachmark")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
@@ -109,17 +109,11 @@ export namespace Coachmark {
         <div class="md-coachmark__content">
           ${this.message
             ? this.message
-            : html`
-                <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot>
-              `}
+            : html` <slot name="coachmark-content" @slotchange=${this.handleSlotChange}></slot> `}
           <div class="md-coachmark__action">
             ${this.hidebutton
-              ? html`
-                  <slot name="coachmark-action"></slot>
-                `
-              : html`
-                  <md-button variant="secondary" @button-click=${this.coachAction}>${this.actionname}</md-button>
-                `}
+              ? html` <slot name="coachmark-action"></slot> `
+              : html` <md-button variant="secondary" @button-click=${this.coachAction}>${this.actionname}</md-button> `}
           </div>
         </div>
       `;

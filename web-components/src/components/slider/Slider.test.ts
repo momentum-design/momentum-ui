@@ -10,11 +10,7 @@ describe("Slider Component", () => {
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<Slider.ELEMENT>(
-      html`
-        <md-slider></md-slider>
-      `
-    );
+    element = await fixture<Slider.ELEMENT>(html` <md-slider></md-slider> `);
   });
 
   test("should handle click event", async () => {

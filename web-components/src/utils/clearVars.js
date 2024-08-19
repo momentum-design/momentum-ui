@@ -13,8 +13,8 @@ const rimraf = require("rimraf");
 const fsx = require("fs-extra");
 const { readdirSync } = require("fs");
 
-const removeDirectory = path => {
-  rimraf(path, function() {
+const removeDirectory = (path) => {
+  rimraf(path, function () {
     console.log(`successfully removed ${path}`);
   });
 };
@@ -22,9 +22,9 @@ const removeDirectory = path => {
 const allComponentVars = async () => {
   const source = path.resolve(__dirname, "../components");
   return readdirSync(source, { withFileTypes: true })
-    .filter(componentDir => componentDir.isDirectory())
-    .filter(componentDir => fsx.existsSync(path.resolve(__dirname, `../components/${componentDir.name}/scss/vars/`)))
-    .map(componentDir => {
+    .filter((componentDir) => componentDir.isDirectory())
+    .filter((componentDir) => fsx.existsSync(path.resolve(__dirname, `../components/${componentDir.name}/scss/vars/`)))
+    .map((componentDir) => {
       return componentDir.name;
     });
 };

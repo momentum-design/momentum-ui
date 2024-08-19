@@ -24,18 +24,16 @@ describe("SLotted Mixin", () => {
 
   afterEach(fixtureCleanup);
   beforeEach(async () => {
-    el = await fixture<CustomElement & SlotableInterface>(
-      html`
-        <custom-element>
-          <div>
-            <span>One</span>
-          </div>
-          <div>
-            <span>Two</span>
-          </div>
-        </custom-element>
-      `
-    );
+    el = await fixture<CustomElement & SlotableInterface>(html`
+      <custom-element>
+        <div>
+          <span>One</span>
+        </div>
+        <div>
+          <span>Two</span>
+        </div>
+      </custom-element>
+    `);
   });
 
   test("should applying to component", () => {

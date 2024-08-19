@@ -7,11 +7,7 @@ describe("DatePickerMonth Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePickerMonth.ELEMENT = await fixture(
-      html`
-        <md-datepicker-month></md-datepicker-month>
-      `
-    );
+    const el: DatePickerMonth.ELEMENT = await fixture(html` <md-datepicker-month></md-datepicker-month> `);
     expect(el).not.toBeNull();
   });
 });

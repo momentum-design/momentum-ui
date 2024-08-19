@@ -7,13 +7,9 @@ import "@/index";
 import { now } from "@/utils/dateUtils";
 import { html } from "lit-element";
 
-const minDate = now()
-  .minus({ day: 5 })
-  .toISODate();
+const minDate = now().minus({ day: 5 }).toISODate();
 
-const maxDate = now()
-  .plus({ day: 5 })
-  .toISODate();
+const maxDate = now().plus({ day: 5 }).toISODate();
 
 export const dateRangePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>

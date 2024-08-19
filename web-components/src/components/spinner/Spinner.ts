@@ -28,9 +28,7 @@ export namespace Spinner {
     }
 
     render() {
-      return html`
-        <i class="md-spinner" part="spinner" style=${styleMap(this.spinnerStyleMap)}></i>
-      `;
+      return html` <i class="md-spinner" part="spinner" style=${styleMap(this.spinnerStyleMap)}></i> `;
     }
   }
 }

@@ -9,5 +9,5 @@ export const labelTemplate = html`
   </md-label>
   <md-label htmlFor="htmlId" label="I have both a label and a slotted content">
     <span>I am slotted content</span>
-  </md-label>  
+  </md-label>
 `;

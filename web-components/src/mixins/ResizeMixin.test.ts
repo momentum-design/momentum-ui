@@ -44,9 +44,7 @@ describe("Resize Mixin", () => {
     }
 
     render() {
-      return html`
-        <div>Content</div>
-      `;
+      return html` <div>Content</div> `;
     }
   }
 

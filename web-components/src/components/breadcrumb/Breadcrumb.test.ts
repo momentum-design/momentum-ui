@@ -11,11 +11,7 @@ describe("Breadcrumb component", () => {
   let anchors: HTMLAnchorElement[];
 
   beforeEach(async () => {
-    element = await fixture<Breadcrumb.ELEMENT>(
-      html`
-        <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
-      `
-    );
+    element = await fixture<Breadcrumb.ELEMENT>(html` <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb> `);
     anchors = Array.from(element.shadowRoot!.querySelectorAll("a[href]"));
   });
 

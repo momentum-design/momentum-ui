@@ -33,7 +33,7 @@ export class SassStats extends LitElement {
     for (let index = 0; index < instances.length; index++) {
       const element = instances[index];
       if (element !== undefined) {
-        this.getContrast(element).catch(err => err);
+        this.getContrast(element).catch((err) => err);
       }
     }
   }
@@ -73,7 +73,7 @@ export class SassStats extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.fetchComponentStats()
-      .then(data => {
+      .then((data) => {
         const { humanizedSize, humanizedGzipSize, selectors, declarations } = data;
         this.size = humanizedSize;
         this.gzipSize = humanizedGzipSize;
@@ -81,7 +81,7 @@ export class SassStats extends LitElement {
         this.declarations = this.formatNumber(declarations.total);
         this.repeatedSelectors = selectors.repeated.length;
       })
-      .catch(error => error);
+      .catch((error) => error);
   }
 
   render() {

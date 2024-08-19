@@ -8,11 +8,7 @@ describe("Loading", () => {
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<Loading.ELEMENT>(
-      html`
-        <md-loading></md-loading>
-      `
-    );
+    element = await fixture<Loading.ELEMENT>(html` <md-loading></md-loading> `);
   });
 
   test("should render component", async () => {

@@ -1,8 +1,7 @@
+import { Button } from "@/components/button/Button";
+import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import "./FloatingModal";
 import { FloatingModal } from "./FloatingModal";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
-import { Button } from "@/components/button/Button";
-import interact from "@interactjs/interact/index";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {

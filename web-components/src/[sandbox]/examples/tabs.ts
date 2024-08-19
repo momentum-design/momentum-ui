@@ -22,7 +22,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
-  (value, index, array) => html`
+  (value, index) => html`
     <md-tab slot="tab">
       <md-icon name="recents_16"></md-icon>
       <span>${value || "Tab " + index}</span>
@@ -58,7 +58,7 @@ export class TabsOrderPrefsExample extends LitElement {
     ];
   }
 
-  handleResetTabs(e: any) {
+  handleResetTabs() {
     this.shadowRoot!.querySelector("md-tabs")!.dispatchEvent(
       new CustomEvent("clear-tab-order-prefs", {
         detail: {
@@ -78,8 +78,8 @@ export class TabsOrderPrefsExample extends LitElement {
       <div style="padding: 16px">
         <div>
           <md-button
-            @click=${(e: MouseEvent) => {
-              this.handleResetTabs(e);
+            @click=${() => {
+              this.handleResetTabs();
             }}
             variant="primary"
           >
@@ -471,7 +471,7 @@ export class TabsTemplateSandbox extends LitElement {
         <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
           ${repeat(
             this.currentTabsOrder,
-            (tabElement) => nanoid(10),
+            () => nanoid(10),
             (tabElement) => html` ${unsafeHTML(this.tabs[tabElement])} `
           )}
           ${

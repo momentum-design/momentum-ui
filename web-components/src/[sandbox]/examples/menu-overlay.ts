@@ -331,7 +331,7 @@ export const menuOverlayTemplate = html`
   
 
   <h3 class="sandbox-header" style="margin: .5rem 1rem">with list (focus)</h3>
-  <md-menu-overlay class="queueDropdown" size="large" @menu-overlay-open=${(e: any) => {
+  <md-menu-overlay class="queueDropdown" size="large" @menu-overlay-open=${() => {
     console.log("Opening modal--");
     document.dispatchEvent(new CustomEvent("on-widget-update"));
   }}>

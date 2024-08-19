@@ -130,7 +130,6 @@ export namespace MeetingAlert {
         title,
         closeAriaLabel,
         show,
-        onKeyDown,
         snoozeAriaLabel: remindAriaLabel
       } = this;
 

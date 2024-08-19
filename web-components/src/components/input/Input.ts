@@ -115,17 +115,17 @@ export namespace Input {
     id?: string;
     ariaLive?: "off" | "assertive" | "polite";
   };
-  export type ContainerSize = typeof containerSize[number];
-  export type InputSize = typeof inputSize[number];
+  export type ContainerSize = (typeof containerSize)[number];
+  export type InputSize = (typeof inputSize)[number];
   export type InputType = typeof inputSize;
   export type shape = typeof inputShape;
-  export type AriaInvalidType = typeof ariaInvalidType[number];
+  export type AriaInvalidType = (typeof ariaInvalidType)[number];
 
   export class MessageController {
     determineMessageType(array: Input.Message[]) {
       return array.reduce<Input.MessageType>(
         (accumulator, errorMessage) =>
-          ((errorMessage as unknown) as string) === "error" ? accumulator : errorMessage.type,
+          (errorMessage as unknown as string) === "error" ? accumulator : errorMessage.type,
         "" as Input.MessageType
       );
     }
@@ -203,7 +203,7 @@ export namespace Input {
       let insideInputClick = false;
       const path = event.composedPath();
       if (path.length) {
-        insideInputClick = !!path.find(element => element === this);
+        insideInputClick = !!path.find((element) => element === this);
         if (!insideInputClick) {
           this.input.blur();
           this.isEditing = false;
@@ -429,12 +429,8 @@ export namespace Input {
         return html`
           <div class="md-input__before">
             ${this.isLoading
-              ? html`
-                  <md-spinner size="20"></md-spinner>
-                `
-              : html`
-                  <md-icon ariaHidden="true" name="search_20"></md-icon>
-                `}
+              ? html` <md-spinner size="20"></md-spinner> `
+              : html` <md-icon ariaHidden="true" name="search-bold" size="20" iconSet="momentumDesign"></md-icon> `}
           </div>
         `;
       } else {
@@ -459,7 +455,9 @@ export namespace Input {
             >
               <md-icon
                 class="md-input__icon-clear"
-                name="clear-active_12"
+                name="cancel-bold"
+                size="14"
+                iconSet="momentumDesign"
                 aria-label=${this.clearAriaLabel || "Clear Input"}
               >
               </md-icon>

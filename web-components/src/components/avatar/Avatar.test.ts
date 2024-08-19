@@ -1,8 +1,8 @@
-import "./Avatar";
 import { Key } from "@/constants";
-import { Avatar } from "./Avatar";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
+import "./Avatar";
+import { Avatar } from "./Avatar";
 
 describe("Avatar", () => {
   afterEach(fixtureCleanup);
@@ -83,17 +83,20 @@ describe("Avatar", () => {
     );
     expect(element.shadowRoot!.querySelector(".md-avatar__self")).not.toBeNull();
     expect(element.shadowRoot!.querySelector("md-icon")).not.toBeNull();
-    expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-active_16");
+    expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("18");
 
     element.size = 44;
     await elementUpdated(element);
 
-    expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-active_18");
+    expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("22");
 
     element.size = 28;
     await elementUpdated(element);
 
-    expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-active_14");
+    expect(element.shadowRoot!.querySelector("md-icon")!.name).toEqual("chat-filled");
+    expect(element.shadowRoot!.querySelector("md-icon")!.size).toEqual("14");
   });
 
   test("should render notification bange", async () => {

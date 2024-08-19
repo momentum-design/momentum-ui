@@ -6,11 +6,7 @@ import { HelpText } from "./HelpText";
 describe("TextHelper component", () => {
   let element: HelpText.ELEMENT;
   beforeEach(async () => {
-    element = await fixture<HelpText.ELEMENT>(
-      html`
-        <md-help-text></md-help-text>
-      `
-    );
+    element = await fixture<HelpText.ELEMENT>(html` <md-help-text></md-help-text> `);
   });
 
   afterEach(fixtureCleanup);
@@ -28,12 +24,12 @@ describe("TextHelper component", () => {
   test("should render correct icon type depend on message type", async () => {
     element.messageType = "error";
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("error_12");
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("clear-bold");
     element.messageType = "success";
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("check_12");
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("check-bold");
     element.messageType = "warning";
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("warning_12");
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("warning-bold");
   });
 });

@@ -430,6 +430,9 @@ const button = {
     }
   },
   padding: {
+    24: {
+      common: "0rem 0.5rem 0rem 0.5rem"
+    },
     28: {
       common: "0rem 0.625rem 0rem 0.625rem"
     },

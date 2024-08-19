@@ -66,9 +66,7 @@ export namespace PhoneInput {
         code: "{countryCode}"
       });
       if (this.id === "") {
-        this.id = `md-phone-input-${Math.random()
-          .toString(36)
-          .substr(2, 4)}`;
+        this.id = `md-phone-input-${Math.random().toString(36).substr(2, 4)}`;
       }
       this.validateInput(this.value);
     }
@@ -219,11 +217,7 @@ export namespace PhoneInput {
       return html`
         ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">
-          ${this.showFlags
-            ? html`
-                <span class="flag-box">${this.getCountryFlag(this.countryCode)}</span>
-              `
-            : nothing}
+          ${this.showFlags ? html` <span class="flag-box">${this.getCountryFlag(this.countryCode)}</span> ` : nothing}
           <md-combobox
             part="combobox"
             ?disabled=${this.disabled}

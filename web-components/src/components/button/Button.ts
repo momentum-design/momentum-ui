@@ -8,8 +8,8 @@
 
 import activityButtonStyles from "@/components/activity-button/scss/module.scss";
 import "@/components/spinner/Spinner";
-import { isActionKey } from "@/utils/keyboard";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, query } from "lit-element";
 import { nothing } from "lit-html";
@@ -19,6 +19,7 @@ import styles from "./scss/module.scss";
 
 export const buttonSize = [
   "20",
+  "24",
   "28",
   "32",
   "36",
@@ -31,6 +32,7 @@ export const buttonSize = [
   "84",
   "size-none",
   20,
+  24,
   28,
   32,
   36,
@@ -92,12 +94,12 @@ export const buttonColor = [
 export const buttonAriaLive = ["", "off", "polite", "assertive"] as const;
 
 export namespace Button {
-  export type Tag = typeof buttonTag[number];
-  export type Type = typeof buttonType[number];
-  export type Role = typeof buttonRoles[number];
-  export type variant = typeof buttonVariant[number];
-  export type color = typeof buttonColor[number];
-  export type ariaLive = typeof buttonAriaLive[number];
+  export type Tag = (typeof buttonTag)[number];
+  export type Type = (typeof buttonType)[number];
+  export type Role = (typeof buttonRoles)[number];
+  export type variant = (typeof buttonVariant)[number];
+  export type color = (typeof buttonColor)[number];
+  export type ariaLive = (typeof buttonAriaLive)[number];
   export type Attributes = {
     id?: string;
     disabled: boolean;
@@ -116,7 +118,7 @@ export namespace Button {
     role?: string;
     value: string;
   };
-  export type Size = typeof buttonSize[number];
+  export type Size = (typeof buttonSize)[number];
 
   @customElementWithCheck("md-button")
   export class ELEMENT extends LitElement {
@@ -260,13 +262,9 @@ export namespace Button {
 
     iconTemplate = () => {
       if (this.loading) {
-        return html`
-          <md-spinner size="16"></md-spinner>
-        `;
+        return html` <md-spinner size="16"></md-spinner> `;
       } else {
-        return html`
-          <slot name="icon"></slot>
-        `;
+        return html` <slot name="icon"></slot> `;
       }
     };
 
@@ -274,9 +272,7 @@ export namespace Button {
       if (this.circle && this.hasIcon) {
         return nothing;
       } else {
-        return html`
-          <slot name="text"></slot>
-        `;
+        return html` <slot name="text"></slot> `;
       }
     };
 
@@ -302,11 +298,9 @@ export namespace Button {
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}
-            aria-expanded="${this.ariaExpanded
-              ? this.ariaExpanded === "true"
-                ? true
-                : false
-              : ifDefined(this.ariaExpanded || undefined)}"
+            aria-expanded=${ifDefined(
+              this.ariaExpanded ? (this.ariaExpanded === "true" ? "true" : "false") : undefined
+            )}
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed || undefined)}
             aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
@@ -367,14 +361,10 @@ export namespace Button {
           ? html`
               <div part="button-container" class=${`md-button__container${this.containerLarge ? "" : "--small"}`}>
                 ${this.buttonTemplate(this.tag)}
-                <div part="button-label" class="md-button__label">
-                  ${this.label}
-                </div>
+                <div part="button-label" class="md-button__label">${this.label}</div>
               </div>
             `
-          : html`
-              ${this.buttonTemplate(this.tag)}
-            `}
+          : html` ${this.buttonTemplate(this.tag)} `}
       `;
     }
   }

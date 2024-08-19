@@ -136,7 +136,7 @@ export namespace Grabber {
             @focus="${() => this.handleFocus()}"
             @blur="${() => this.handleBlur()}"
           >
-            <md-icon name="${this.iconName}" size="12" designEnabled></md-icon>
+            <md-icon name="${this.iconName}" size="12" .iconSet=${"momentumDesign"}></md-icon>
           </button>
         </div>
       `;

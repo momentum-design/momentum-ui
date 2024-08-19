@@ -92,6 +92,7 @@ export const avatarTemplate = html`
   <md-avatar title="Self" type="self" size="40"></md-avatar>
   <md-avatar title="Self" type="self" size="44"></md-avatar>
   <md-avatar title="Self" type="self" size="56"></md-avatar>
+  <md-avatar title="Self" type="self" size="124"></md-avatar>
   <h3>Icon Avatar Bot</h3>
   <md-avatar type="bot" title="Tom Smith"></md-avatar>
   <h3>Icon Avatar Notification</h3>

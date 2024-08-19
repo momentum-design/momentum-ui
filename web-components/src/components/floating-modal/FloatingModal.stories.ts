@@ -10,15 +10,13 @@ import "@/components/floating-modal/FloatingModal";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import mdx from "./Floating.mdx";
 
 export default {
   title: "Components/Floating Modal",
   component: "md-floating-modal",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     fixfull: {
       description: "fix modal position to the screen, not parent div"

@@ -1,4 +1,4 @@
-import { addParameters } from "@storybook/client-api";
+import { Parameters } from "@storybook/client-api";
 import { setCustomElements } from "@storybook/web-components";
 import customElements from './custom-elements.json';
 
@@ -9,18 +9,17 @@ import customElements from './custom-elements.json';
 
 setCustomElements(customElements);
 
-addParameters({
+export const parameters:Parameters = {
   docs: {
     inlineStories: false,
   },
-  controls: { expanded: true },
-  a11y: {
+  ally: {
     config: {},
     element: "#storybook-panel-root",
     options: {
       checks: { 'color-contrast': { options: { noScroll: true } } },
       restoreScroll: true,
-    },
+    }
   },
   options: {
     storySort: {
@@ -28,4 +27,4 @@ addParameters({
       method: 'alphabetical'
     }
   }
-});
+};

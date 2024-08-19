@@ -10,8 +10,8 @@ import "@/components/avatar/Presence";
 import "@/components/icon/Icon";
 import "@/components/loading/Loading";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import reset from "@/wc_scss/reset.scss";
 import { isActionKey } from "@/utils/keyboard";
+import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -23,8 +23,8 @@ import { getPresenceIconColor } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
-  export type Type = typeof AvatarType[number];
-  export type Size = typeof AvatarSize[number];
+  export type Type = (typeof AvatarType)[number];
+  export type Size = (typeof AvatarSize)[number];
   export type Role = "img" | "button";
 
   @customElementWithCheck("md-avatar")
@@ -67,7 +67,11 @@ export namespace Avatar {
     }
 
     firstUpdated() {
-      const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
+      const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(
+        this.type,
+        false,
+        this.newMomentum
+      );
       this.presenceColor = presenceColor!;
       this.presenceIcon = presenceIcon!;
       this.isCircularWrapper = isCircularWrapper!;
@@ -76,7 +80,11 @@ export namespace Avatar {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("type")) {
-        const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(this.type, false);
+        const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(
+          this.type,
+          false,
+          this.newMomentum
+        );
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
         this.isCircularWrapper = isCircularWrapper!;
@@ -117,15 +125,11 @@ export namespace Avatar {
     }
 
     private get chatIconName() {
-      return this.size >= 56
-        ? "chat-active_20"
-        : this.size >= 40 && this.size <= 56
-        ? "chat-active_18"
-        : this.size >= 36 && this.size <= 40
-        ? "chat-active_16"
-        : this.size >= 28 && this.size <= 36
-        ? "chat-active_14"
-        : "chat-active_12";
+      return "chat-filled";
+    }
+
+    private get chatIconSize() {
+      return (this.size / 2).toString();
     }
 
     private get avatarLetter() {
@@ -133,11 +137,7 @@ export namespace Avatar {
         ? html`
             <span class="md-avatar__letter ${classMap(this.avatarLetterClassMap)}"
               >${this.pretifyTitle}<slot></slot>
-              ${this.type === "typing" || this.typing
-                ? html`
-                    <md-loading></md-loading>
-                  `
-                : nothing}
+              ${this.type === "typing" || this.typing ? html` <md-loading></md-loading> ` : nothing}
             </span>
           `
         : nothing;
@@ -146,7 +146,7 @@ export namespace Avatar {
     private get avatarIcon() {
       return html`
         <span class="md-avatar__icon ${classMap(this.avatarStyleMap)}">
-          <md-icon .name=${this.iconName} ?designEnabled=${this.newMomentum}></md-icon>
+          <md-icon .name=${this.iconName} .iconSet=${this.newMomentum ? "momentumDesign" : "momentumUI"}></md-icon>
         </span>
       `;
     }
@@ -155,22 +155,12 @@ export namespace Avatar {
       return html`
         ${until(
           this.loadImage()
-            .then(image => {
+            .then((image) => {
               this.handleImageLoad();
-              return html`
-                ${image}
-              `;
+              return html` ${image} `;
             })
             .catch(() => this.handleImageError()),
-          html`
-            ${this.iconName
-              ? this.avatarIcon
-              : this.title
-              ? html`
-                  ${this.avatarLetter}
-                `
-              : nothing}
-          `
+          html` ${this.iconName ? this.avatarIcon : this.title ? html` ${this.avatarLetter} ` : nothing} `
         )}
       `;
     }
@@ -181,7 +171,7 @@ export namespace Avatar {
         img.src = this.src;
         img.alt = this.alt;
         img.onload = () => resolve(img);
-        img.onerror = error => reject(error);
+        img.onerror = (error) => reject(error);
         img.classList.add("md-avatar__img");
         img.classList.toggle("md-avatar__img--hidden", !this.imageLoaded);
       });
@@ -244,21 +234,17 @@ export namespace Avatar {
           ${this.type === "self"
             ? html`
                 <span class="md-avatar__self" style=${styleMap(this.avatarStyleMap)}>
-                  <md-icon .name=${this.chatIconName} ?designEnabled=${this.newMomentum}></md-icon>
+                  <md-icon .name=${this.chatIconName} .iconSet=${"momentumDesign"} .size=${this.chatIconSize}></md-icon>
                 </span>
               `
             : this.src && !this.imageErrored
-            ? this.avatarImage
-            : this.iconName
-            ? this.avatarIcon
-            : this.title
-            ? this.avatarLetter
-            : nothing}
-          ${this.hasNotification
-            ? html`
-                <span class="md-avatar__notification-badge"></span>
-              `
-            : nothing}
+              ? this.avatarImage
+              : this.iconName
+                ? this.avatarIcon
+                : this.title
+                  ? this.avatarLetter
+                  : nothing}
+          ${this.hasNotification ? html` <span class="md-avatar__notification-badge"></span> ` : nothing}
           ${this.newMomentum && this.type && this.type !== "self"
             ? html`
                 <md-presence

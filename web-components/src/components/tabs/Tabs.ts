@@ -180,10 +180,10 @@ export namespace Tabs {
     // This operation may affect render performance when using frequently. Use careful!
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
-        ? this.tabs.map((tab, idx) => {
+        ? this.tabs.map((tab) => {
             return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
           })
-        : this.tabs.map((tab, idx) => {
+        : this.tabs.map((tab) => {
             tab.setAttribute("measuringrealwidth", "");
             const offsetWidth = tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
             tab.removeAttribute("measuringrealwidth");
@@ -192,7 +192,7 @@ export namespace Tabs {
     }
 
     private measureHiddenTabsCopiesOffsetHeight() {
-      return this.tabsCopy.map((tab, idx) => tab.offsetHeight);
+      return this.tabsCopy.map((tab) => tab.offsetHeight);
     }
 
     private async manageOverflow() {
@@ -437,7 +437,7 @@ export namespace Tabs {
           hiddenTabElements.splice(updatedDraggedToIndex, 0, draggedElement);
           hiddenTabElements.pop();
 
-          const filteredVisibleTabElements = visibleTabElements.filter((element: any) => {
+          const filteredVisibleTabElements = visibleTabElements.filter((element: HTMLElement) => {
             return element.id !== this.getNormalizedTabId(event.item.id);
           });
           filteredVisibleTabElements.push(autoMoveElement);
@@ -544,7 +544,7 @@ export namespace Tabs {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
           (element) => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
         );
-        this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: any) => {
+        this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: HTMLElement) => {
           return this.getNormalizedTabId(element.id) !== this.getNormalizedTabId(id);
         });
 
@@ -895,7 +895,7 @@ export namespace Tabs {
       this.removeEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
 
-    private clearTabOrderPrefs(event: any) {
+    private clearTabOrderPrefs(event: CustomEvent) {
       const { compUniqueId } = event.detail;
       if (compUniqueId === this.compUniqueId) {
         localStorage.removeItem(this.tabsId);
@@ -1097,7 +1097,7 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              (tab) => nanoid(10),
+              () => nanoid(10),
               (tab) => html`
                 <md-tab
                   .closable="${tab.closable}"
@@ -1157,7 +1157,7 @@ export namespace Tabs {
             >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
-                (tab) => nanoid(10),
+                () => nanoid(10),
                 (tab) => html`
                   <md-tab
                     slot="draggable-item"

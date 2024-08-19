@@ -54,7 +54,7 @@ export namespace Avatar {
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
     @property({ type: Boolean }) clickable = false;
-    @property({ attribute: false }) clickFunction: Function | null = null;
+    @property({ attribute: false }) clickFunction?: () => void;
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;

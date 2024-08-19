@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+import "@/components/input/Input";
 import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
@@ -471,7 +473,6 @@ describe("Tabs", () => {
     expect(tabs.selected).toBe(3);
     tabs.selected = 0;
     tabs["tabsFilteredAsVisibleList"] = [];
-    const tabId = tabs.slotted[0].id;
     tabs["tabsVisibleIdxHash"] = { tabId: 0 };
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
@@ -618,7 +619,7 @@ describe("Tabs", () => {
   test("should manage overflow", async () => {
     const tabsCount = tabs.slotted.filter((el) => el.tagName === "md-tab").length;
 
-    tabs["tabs"] = tabs["tabs"].map((t) => ({
+    tabs["tabs"] = tabs["tabs"].map(() => ({
       offsetWidth: 160
     })) as Tab.ELEMENT[];
 
@@ -660,7 +661,7 @@ describe("Tabs", () => {
   });
 
   test("should log error is tabs-id is missing and persist-selection is true", async () => {
-    const element: any = await fixture(html`
+    const element = await fixture(html`
       <div style="width: 300px;max-width: 300px;">
         <md-tabs draggable persist-selection>
           <md-tab name="History" slot="tab" disabled>

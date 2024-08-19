@@ -126,7 +126,7 @@ export namespace TimePicker {
 
     getLocaleTimeFormat = (aTimeObject: DateTime) => {
       const stringDate = aTimeObject.toFormat("tt");
-      const [times, amPmValue] = stringDate.split(" ");
+      const [, amPmValue] = stringDate.split(" ");
 
       const localeTwentyFourFormat = !amPmValue;
       return localeTwentyFourFormat;

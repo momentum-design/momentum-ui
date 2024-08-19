@@ -1,6 +1,5 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import { LitElement } from "lit-element";
 import "./AlertBanner";
 import { AlertBanner } from "./AlertBanner";
 
@@ -11,14 +10,10 @@ const fixtureFactory = async (
   show: boolean
 ): Promise<AlertBanner.ELEMENT> => {
   return await fixture<AlertBanner.ELEMENT>(html`
-    <md-alert-banner type=${type} message=${message} ?closable=${closable} ?show=${show}
-      ><p>Test Alert Message</p></md-alert-banner
-    >
+    <md-alert-banner type=${type} message=${message} ?closable=${closable} ?show=${show}>
+      <p>Test Alert Message</p>
+    </md-alert-banner>
   `);
-};
-
-const find = <T extends LitElement>(component: T, selector: string): Element | null => {
-  return component.shadowRoot!.querySelector(selector);
 };
 
 describe("Alert Banner component", () => {

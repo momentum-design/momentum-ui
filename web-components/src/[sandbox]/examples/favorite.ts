@@ -23,8 +23,8 @@ export class FavoriteTemplateSandbox extends LitElement {
     }
   }
 
-  private handleKeydownFavorite(e: KeyboardEvent) {
-    const { active, value } = e.detail as any;
+  private handleKeydownFavorite(e: CustomEvent) {
+    const { active, value } = e.detail;
 
     this.selected = active;
     if (active === true) {

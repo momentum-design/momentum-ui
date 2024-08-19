@@ -11,6 +11,8 @@ import "@/components/favorite/Favorite";
 import "@/components/icon/Icon";
 import "@/components/list/List";
 import "@/components/list/ListItem";
+import "@/components/menu-overlay/MenuOverlay";
+import "@/components/tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
@@ -34,7 +36,7 @@ export namespace Card {
       return [reset, styles];
     }
 
-    handleCardClick(event: MouseEvent) {
+    handleCardClick() {
       this.dispatchEvent(
         new CustomEvent<{ id: string }>("card-click", {
           detail: {
@@ -97,7 +99,7 @@ export namespace Card {
           id="${this.id}"
           part="card"
           tabindex="0"
-          @click=${(ev: MouseEvent) => this.handleCardClick(ev)}
+          @click=${() => this.handleCardClick()}
           @keydown=${(ev: KeyboardEvent) => this.handleCardKeyDown(ev)}
         >
           <div class="md-card-header">

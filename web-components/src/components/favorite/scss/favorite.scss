@@ -6,8 +6,6 @@
   @include flex($display: inline-flex);
   border-radius: $favorite-border;
   height: $favorite-size;
-  padding: calc(#{$favorite-indent} * 1.5);
-  padding-top: calc(#{$favorite-indent} * 2.5);
   position: relative;
   width: $favorite-size;
 

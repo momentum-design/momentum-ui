@@ -43,7 +43,7 @@ describe("Favorite component", () => {
     const component = await fixtureFactory();
 
     const mockClick = jest.spyOn(component, "handleFavorite");
-    component.handleFavorite(new CustomEvent("click"));
+    component.handleFavorite();
     await elementUpdated(component);
 
     expect(mockClick).toHaveBeenCalled();

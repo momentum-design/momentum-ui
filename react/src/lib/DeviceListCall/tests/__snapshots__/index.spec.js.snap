@@ -49,16 +49,16 @@ ShallowWrapper {
           type=""
         />,
         Array [
-          <Unknown
+          <UIDConsumer
             name={[Function]}
           >
             [Function]
-          </Unknown>,
-          <Unknown
+          </UIDConsumer>,
+          <UIDConsumer
             name={[Function]}
           >
             [Function]
-          </Unknown>,
+          </UIDConsumer>,
         ],
       ],
       "className": "",
@@ -144,16 +144,16 @@ ShallowWrapper {
             type=""
           />,
           Array [
-            <Unknown
+            <UIDConsumer
               name={[Function]}
             >
               [Function]
-            </Unknown>,
-            <Unknown
+            </UIDConsumer>,
+            <UIDConsumer
               name={[Function]}
             >
               [Function]
-            </Unknown>,
+            </UIDConsumer>,
           ],
         ],
         "className": "",

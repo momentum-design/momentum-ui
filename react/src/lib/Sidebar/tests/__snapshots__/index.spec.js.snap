@@ -44,7 +44,7 @@ ShallowWrapper {
               }
             }
           >
-            <Unknown />
+            <UIDReset />
           </Context.Provider>
         </div>,
         false,
@@ -68,7 +68,7 @@ ShallowWrapper {
               }
             }
           >
-            <Unknown />
+            <UIDReset />
           </Context.Provider>,
           "className": "md-sidebar md-sidebar--global md-sidebar--indented",
         },
@@ -78,7 +78,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": <Unknown />,
+            "children": <UIDReset />,
             "value": Object {
               "primary": true,
               "secondary": false,
@@ -143,7 +143,7 @@ ShallowWrapper {
                 }
               }
             >
-              <Unknown />
+              <UIDReset />
             </Context.Provider>
           </div>,
           false,
@@ -167,7 +167,7 @@ ShallowWrapper {
                 }
               }
             >
-              <Unknown />
+              <UIDReset />
             </Context.Provider>,
             "className": "md-sidebar md-sidebar--global md-sidebar--indented",
           },
@@ -177,7 +177,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": <Unknown />,
+              "children": <UIDReset />,
               "value": Object {
                 "primary": true,
                 "secondary": false,

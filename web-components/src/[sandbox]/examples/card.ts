@@ -20,8 +20,8 @@ export class CardTemplateSandbox extends LitElement {
     this.value = "Card " + id + ": is clickable";
   }
 
-  private handleKeydownCard(e: KeyboardEvent) {
-    const { id } = e.detail as any;
+  private handleKeydownCard(e: CustomEvent) {
+    const { id } = e.detail;
 
     this.value = "Card " + id + ": is key event";
   }

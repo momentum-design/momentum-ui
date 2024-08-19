@@ -6,6 +6,9 @@
  *
  */
 
+import "@/components/button/Button";
+import "@/components/icon/Icon";
+import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
@@ -244,7 +247,7 @@ export namespace AudioPlayer {
         }
       };
 
-      const onMouseUp = (upEvent: MouseEvent) => {
+      const onMouseUp = () => {
         cleanupEventListeners();
       };
 
@@ -380,12 +383,14 @@ export namespace AudioPlayer {
           }
           break;
         }
-        case Key.Enter: {
-          if (this.showSpeedPopup) {
-            this.setPlaybackSpeed(this.selectedPlaybackSpeed);
-            event.preventDefault();
+        case Key.Enter:
+          {
+            if (this.showSpeedPopup) {
+              this.setPlaybackSpeed(this.selectedPlaybackSpeed);
+              event.preventDefault();
+            }
           }
-        }
+          break;
         default:
           break;
       }

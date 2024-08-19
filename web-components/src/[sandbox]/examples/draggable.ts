@@ -47,8 +47,8 @@ export class DefaultDraggable extends LitElement {
       <md-draggable sort drag-class="custom-drag" ghost-class="custom-ghost">
         ${repeat(
           DraggableOptions,
-          option => option.id,
-          option => html`
+          (option) => option.id,
+          (option) => html`
             <md-draggable-item slot="draggable-item" ?extended=${this.extended}>
               <div>${option.name.first} ${option.name.last}</div>
               <div slot="extended">
@@ -67,6 +67,4 @@ export class DefaultDraggable extends LitElement {
   }
 }
 
-export const draggableTemplate = html`
-  <default-draggable-sandbox></default-draggable-sandbox>
-`;
+export const draggableTemplate = html` <default-draggable-sandbox></default-draggable-sandbox> `;

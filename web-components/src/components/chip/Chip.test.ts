@@ -5,9 +5,7 @@ import "./Chip";
 import { Chip } from "./Chip";
 
 const fixtureFactory = async (): Promise<Chip.ELEMENT> => {
-  return await fixture(html`
-    <md-chip value="chip text content"></md-chip>
-  `);
+  return await fixture(html` <md-chip value="chip text content"></md-chip> `);
 };
 
 describe("Chip component", () => {
@@ -17,49 +15,29 @@ describe("Chip component", () => {
 
   // color
   test("should set chip color", async () => {
-    const component: Chip.ELEMENT = await fixture(
-      html`
-        <md-chip color="blue"></md-chip>
-      `
-    );
+    const component: Chip.ELEMENT = await fixture(html` <md-chip color="blue"></md-chip> `);
     expect(component.color).not.toBeNull();
   });
 
   // small
   test("should set chip to small size", async () => {
-    const component: Chip.ELEMENT = await fixture(
-      html`
-        <md-chip small></md-chip>
-      `
-    );
+    const component: Chip.ELEMENT = await fixture(html` <md-chip small></md-chip> `);
     expect(component.small).toBeTruthy();
   });
 
   // custom bgColor chip
   test("should set user bgColor chip", async () => {
-    const component: Chip.ELEMENT = await fixture(
-      html`
-        <md-chip bgColor="#000"></md-chip>
-      `
-    );
+    const component: Chip.ELEMENT = await fixture(html` <md-chip bgColor="#000"></md-chip> `);
     expect(component.bgColor).toEqual("#000");
   });
   // custom size chip
   test("should set user width", async () => {
-    const component: Chip.ELEMENT = await fixture(
-      html`
-        <md-chip height="100px"></md-chip>
-      `
-    );
+    const component: Chip.ELEMENT = await fixture(html` <md-chip height="100px"></md-chip> `);
     expect(component.height).toEqual("100px");
   });
   // custom textColor chip
   test("should set user textColor", async () => {
-    const component: Chip.ELEMENT = await fixture(
-      html`
-        <md-chip textColor="#000"></md-chip>
-      `
-    );
+    const component: Chip.ELEMENT = await fixture(html` <md-chip textColor="#000"></md-chip> `);
     expect(component.textColor).toEqual("#000");
   });
 
@@ -138,14 +116,14 @@ describe("Chip component", () => {
       <md-chip value="Test Line1" tooltipText="More Info about the Chip"></md-chip>
     `);
     const expectedResult = "More Info about the Chip";
-    expect(component.shadowRoot?.querySelector('md-tooltip')?.getAttribute('message')).toEqual(expectedResult);   
+    expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
   });
-  
+
   test("should truncate long text from value attribute and also add tooltip text", async () => {
     const component: Chip.ELEMENT = await fixture(html`
       <md-chip value="chip text content that is too long" tooltipText="More Info about the Chip"></md-chip>
     `);
     const expectedResult = "chip text content that is too long, More Info about the Chip";
-    expect(component.shadowRoot?.querySelector('md-tooltip')?.getAttribute('message')).toEqual(expectedResult);   
+    expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
   });
 });

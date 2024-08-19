@@ -44,11 +44,7 @@ describe("Tab", () => {
 
   test("should dispatch events to parent component", async () => {
     const id = nanoid();
-    const el = await fixture<Tab.ELEMENT>(
-      html`
-        <md-tab id=${id} name="test-tab"></md-tab>
-      `
-    );
+    const el = await fixture<Tab.ELEMENT>(html` <md-tab id=${id} name="test-tab"></md-tab> `);
 
     const clickEvent = new MouseEvent("mousedown");
     setTimeout(() => el.handleClick(clickEvent));
@@ -60,11 +56,7 @@ describe("Tab", () => {
 
   test("should dispatch keydown events to parent component", async () => {
     const id = nanoid();
-    const el = await fixture<Tab.ELEMENT>(
-      html`
-        <md-tab closable="custom" id=${id} name="test-tab"></md-tab>
-      `
-    );
+    const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="custom" id=${id} name="test-tab"></md-tab> `);
     const createEvent = (code: string) =>
       new KeyboardEvent("keydown", {
         code
@@ -78,11 +70,7 @@ describe("Tab", () => {
 
   test("should dispatch cross events to parent component", async () => {
     const id = nanoid();
-    const el = await fixture<Tab.ELEMENT>(
-      html`
-        <md-tab closable="auto" id=${id} .isCrossVisible=${true}></md-tab>
-      `
-    );
+    const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="auto" id=${id} .isCrossVisible=${true}></md-tab> `);
 
     setTimeout(() => (el.shadowRoot?.querySelector(".tab-action-button") as HTMLElement).click());
 
@@ -93,11 +81,7 @@ describe("Tab", () => {
 
   test("should dispatch cross events to parent component", async () => {
     const id = nanoid();
-    const el = await fixture<Tab.ELEMENT>(
-      html`
-        <md-tab closable="custom" id=${id} .isCrossVisible=${true}></md-tab>
-      `
-    );
+    const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="custom" id=${id} .isCrossVisible=${true}></md-tab> `);
 
     setTimeout(() => (el.shadowRoot?.querySelector(".tab-action-button") as HTMLElement).click());
 

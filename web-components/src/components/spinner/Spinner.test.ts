@@ -12,11 +12,7 @@ describe("Spinner component", () => {
   });
 
   test("should render size", async () => {
-    const element = await fixture<Spinner.ELEMENT>(
-      html`
-        <md-spinner size="20"></md-spinner>
-      `
-    );
+    const element = await fixture<Spinner.ELEMENT>(html` <md-spinner size="20"></md-spinner> `);
     expect(element.size).toEqual(20);
   });
 });

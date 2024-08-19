@@ -3,70 +3,44 @@ import { html } from "lit-element";
 
 export const linkTemplate = html`
   <div class="row">
-    <md-link href="#">
-      Default Link
-    </md-link>
+    <md-link href="#"> Default Link </md-link>
   </div>
   <div class="row">
-    <md-link disabled>
-      Disabled Link
-    </md-link>
+    <md-link disabled> Disabled Link </md-link>
   </div>
   <div class="row">
-    <md-link tag="div">
-      Link Tag DIV
-    </md-link>
+    <md-link tag="div"> Link Tag DIV </md-link>
   </div>
   <div class="row">
-    <md-link tag="div" disabled>
-      Link Tag DIV disabled
-    </md-link>
+    <md-link tag="div" disabled> Link Tag DIV disabled </md-link>
   </div>
   <div class="row">
-    <md-link tag="span">
-      Link Tag Span
-    </md-link>
+    <md-link tag="span"> Link Tag Span </md-link>
   </div>
   <div class="row">
-    <md-link tag="span" disabled>
-      Link Tag Span disabled
-    </md-link>
+    <md-link tag="span" disabled> Link Tag Span disabled </md-link>
   </div>
 
   <div class="row">
-    <md-link inline>
-      Link inline
-    </md-link>
+    <md-link inline> Link inline </md-link>
   </div>
   <div class="row">
-    <md-link inline disabled>
-      Link inline disabled
-    </md-link>
+    <md-link inline disabled> Link inline disabled </md-link>
   </div>
   <div class="row">
-    <md-link inline href="http://test.com" target="_blank">
-      Link Opened in new window
-    </md-link>
+    <md-link inline href="http://test.com" target="_blank"> Link Opened in new window </md-link>
   </div>
 
   <div class="row">
-    <md-link tag="div" tab-index="1">
-      tab index 1
-    </md-link>
+    <md-link tag="div" tab-index="1"> tab index 1 </md-link>
   </div>
   <div class="row">
-    <md-link tag="div" tab-index="-1">
-      tab-index -1
-    </md-link>
+    <md-link tag="div" tab-index="-1"> tab-index -1 </md-link>
   </div>
   <div class="row">
-    <md-link ariaLabel="Test Link">
-      Link with Aria Label
-    </md-link>
+    <md-link ariaLabel="Test Link"> Link with Aria Label </md-link>
   </div>
   <div class="row">
-    <md-link ariaRole="button">
-      Role as button
-    </md-link>
+    <md-link ariaRole="button"> Role as button </md-link>
   </div>
 `;

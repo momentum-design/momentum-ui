@@ -75,7 +75,7 @@ export const ResizeMixin = <T extends AnyConstructor<ResizeClass>>(base: T): T &
         Resize._resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
           Resize._animationFrameID = requestAnimationFrame(() => {
             if (Array.isArray(entries) && entries.length) {
-              entries.forEach(entry => {
+              entries.forEach((entry) => {
                 const { target, contentRect } = entry;
                 (target as Resize).handleResize(contentRect as DOMRect);
               });

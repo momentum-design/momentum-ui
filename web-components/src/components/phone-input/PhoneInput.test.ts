@@ -31,31 +31,19 @@ describe("PhoneInput Component", () => {
   });
 
   test("should render phone input", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
     expect(customArraySpy).toHaveBeenCalled();
     expect(element).not.toBeNull();
   });
 
   test("should render a Pill shape", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input pill></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input pill></md-phone-input> `);
     expect(element.hasAttribute("pill")).toBeTruthy();
     expect(element.shadowRoot!.querySelector("md-combobox")?.shape).toEqual("pill");
     expect(element.shadowRoot!.querySelector("md-input")?.shape).toEqual("pill");
   });
   test("should trigger a Country Change", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
     const event: CustomEvent = new CustomEvent("change-selected", {
       composed: true,
       bubbles: true,
@@ -72,11 +60,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("should not trigger a Country Change if the field is exited without a value", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
     const event: CustomEvent = new CustomEvent("change-selected", {
       composed: true,
       bubbles: true,
@@ -89,16 +73,8 @@ describe("PhoneInput Component", () => {
     expect(element.countryCallingCode).toEqual("");
   });
   test("should emit a custom event on input blur", async () => {
-    const parentElement = await fixture(
-      html`
-        <div class="parent"></div>
-      `
-    );
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
+    const parentElement = await fixture(html` <div class="parent"></div> `);
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
 
     const mockFunc = jest.fn();
     parentElement.appendChild(element);
@@ -111,16 +87,8 @@ describe("PhoneInput Component", () => {
     expect(element.value).toBeFalsy();
   });
   test("should verify phone number on input blur", async () => {
-    const parentElement = await fixture(
-      html`
-        <div class="parent"></div>
-      `
-    );
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input value="(773)-777-6002"></md-phone-input>
-      `
-    );
+    const parentElement = await fixture(html` <div class="parent"></div> `);
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input value="(773)-777-6002"></md-phone-input> `);
 
     parentElement.appendChild(element);
 
@@ -131,11 +99,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("should emit a custom event on input blur with stripping the selected country code", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input ></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
 
     const mockFunc = jest.fn();
     element.addEventListener("phoneinput-blur", mockFunc);
@@ -147,7 +111,7 @@ describe("PhoneInput Component", () => {
       detail: {
         value: "+19997770701"
       }
-    }
+    };
     const inputEvent: CustomEvent = new CustomEvent("input-keydown", eventData);
     phoneInput?.dispatchEvent(inputEvent);
 
@@ -160,11 +124,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("should trigger a Phone Change event", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
     const phoneChangeSpy = jest.spyOn(element, "handlePhoneChange");
     const phoneInput = element.shadowRoot?.querySelector("md-input");
     const event: CustomEvent = new CustomEvent("input-change", {
@@ -178,11 +138,7 @@ describe("PhoneInput Component", () => {
     expect(phoneChangeSpy).toHaveBeenCalled();
   });
   test("should register a KeyDown event", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
     const keyDownSpy = jest.spyOn(element, "handleKeydown");
     const phoneInput = element.shadowRoot?.querySelector("md-input");
     const event: CustomEvent = new CustomEvent("input-keydown", {
@@ -197,11 +153,7 @@ describe("PhoneInput Component", () => {
   });
 
   test("Should render a flag image when show-flags is true", async () => {
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input show-flags></md-phone-input>
-      `
-    );
+    const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input show-flags></md-phone-input> `);
     const getFlagOperation = jest.spyOn(element, "getCountryFlag");
     const event: CustomEvent = new CustomEvent("change-selected", {
       composed: true,
@@ -221,23 +173,17 @@ describe("PhoneInput Component", () => {
   });
 
   test("should not display error on empty input text-box", async () => {
-    const parentElement = await fixture(
-      html`
-        <div class="parent"></div>
-      `
-    );
-    const element = await fixture<PhoneInput.ELEMENT>(
-      html`
-        <md-phone-input
-          type="tel"
-          id="international"
-          name="international-value"
-          value=""
-          country-calling-code="+1"
-          errorMessage="invalid phone number"
-        ></md-phone-input>
-      `
-    );
+    const parentElement = await fixture(html` <div class="parent"></div> `);
+    const element = await fixture<PhoneInput.ELEMENT>(html`
+      <md-phone-input
+        type="tel"
+        id="international"
+        name="international-value"
+        value=""
+        country-calling-code="+1"
+        errorMessage="invalid phone number"
+      ></md-phone-input>
+    `);
 
     parentElement.appendChild(element);
 

@@ -40,17 +40,9 @@ export namespace DraggableItem {
           part="draggable-item"
           aria-disabled=${this.disabled}
         >
-          ${this.extended && this.editable
-            ? html`
-                <md-icon name="panel-control-dragger_16"></md-icon>
-              `
-            : nothing}
+          ${this.extended && this.editable ? html` <md-icon name="panel-control-dragger_16"></md-icon> ` : nothing}
           <slot></slot>
-          ${this.extended
-            ? html`
-                <slot name="extended"></slot>
-              `
-            : nothing}
+          ${this.extended ? html` <slot name="extended"></slot> ` : nothing}
         </div>
       `;
     }

@@ -2,9 +2,9 @@
 // --------------------------------------
 
 export function debounce(ms = 250) {
-  return function(target: any, key: string, descriptor: PropertyDescriptor) {
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
     let timeout: number;
-    return decorateFunction({ target, key, descriptor }, function(funcOriginal: Function, args: any[]) {
+    return decorateFunction({ target, key, descriptor }, function (funcOriginal: Function, args: any[]) {
       clearTimeout(timeout);
       /* istanbul ignore next */
       timeout = window.setTimeout(() => {
@@ -76,7 +76,10 @@ export function evt() {
 type Detail<T> = { detail: T };
 
 export class Evt<T extends Detail<V>, V = any> {
-  constructor(private target: HTMLElement, private eventName: string) {}
+  constructor(
+    private target: HTMLElement,
+    private eventName: string
+  ) {}
 
   emit(
     value: T extends Detail<infer U> ? U : never,
@@ -104,16 +107,15 @@ interface PreviousValue {
 
 const previousValues = new WeakMap<NodePart, PreviousValue>();
 
-
 export type TemplateInfo = {
   content: string;
   insertIndex: number;
   col: number;
   row: number;
-} 
+};
 
-type TCallback = TemplateInfo & { 
-  fragment: DocumentFragment 
+type TCallback = TemplateInfo & {
+  fragment: DocumentFragment;
 };
 
 type TPayload = TemplateInfo & {

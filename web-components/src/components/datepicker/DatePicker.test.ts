@@ -25,21 +25,13 @@ describe("DatePicker Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePicker.ELEMENT = await fixture(
-      html`
-        <md-datepicker></md-datepicker>
-      `
-    );
+    const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker></md-datepicker> `);
     expect(el).not.toBeNull();
   });
 
   test("should open on pressing arrowDown on input", async () => {
     const startDate = now();
-    const el: DatePicker.ELEMENT = await fixture(
-      html`
-        <md-datepicker .focusedDate=${startDate}></md-datepicker>
-      `
-    );
+    const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker .focusedDate=${startDate}></md-datepicker> `);
     const input = el.shadowRoot!.querySelector("md-input");
     input?.dispatchEvent(createKeyboardEvent(Key.ArrowDown));
     expect(el.menuOverlay.isOpen).toBeTruthy();
@@ -48,11 +40,7 @@ describe("DatePicker Component", () => {
   test("should handle date selection update", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.plus({ days: 2 });
-    const el: DatePicker.ELEMENT = await fixture(
-      html`
-        <md-datepicker .selectedDate=${firstDate}></md-datepicker>
-      `
-    );
+    const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker .selectedDate=${firstDate}></md-datepicker> `);
     const event = new CustomEvent("day-select", {
       detail: {
         date: secondDate
@@ -66,11 +54,7 @@ describe("DatePicker Component", () => {
 
   test("should navigate focus with keydown events", async () => {
     const startDate = now();
-    const el: DatePicker.ELEMENT = await fixture(
-      html`
-        <md-datepicker .focusedDate=${startDate}></md-datepicker>
-      `
-    );
+    const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker .focusedDate=${startDate}></md-datepicker> `);
     const selectionFunc = jest.spyOn(el, "handleSelect");
     const navLeft = keyNavEvent("ArrowLeft", startDate);
     el.handleKeyDown(navLeft);
@@ -91,11 +75,7 @@ describe("DatePicker Component", () => {
   });
   test("should select date with keydown events", async () => {
     const startDate = now();
-    const el: DatePicker.ELEMENT = await fixture(
-      html`
-        <md-datepicker .focusedDate=${startDate}></md-datepicker>
-      `
-    );
+    const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker .focusedDate=${startDate}></md-datepicker> `);
     const selectionFunc = jest.spyOn(el, "handleSelect");
     const enterSelect = keyNavEvent("Enter", startDate);
     el.handleKeyDown(enterSelect);
@@ -108,13 +88,11 @@ describe("DatePicker Component", () => {
   });
 
   test("should render with custom date trigger", async () => {
-    const el: DatePicker.ELEMENT = await fixture(
-      html`
-        <md-datepicker custom-trigger>
-          <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
-        </md-datepicker>
-      `
-    );
+    const el: DatePicker.ELEMENT = await fixture(html`
+      <md-datepicker custom-trigger>
+        <md-button slot="date-trigger" variant="primary">Date Trigger</md-button>
+      </md-datepicker>
+    `);
     expect(el).not.toBeNull();
   });
 });

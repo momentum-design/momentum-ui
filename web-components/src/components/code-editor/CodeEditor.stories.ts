@@ -1,4 +1,4 @@
-import { object, text } from '@storybook/addon-knobs';
+import { object, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "./CodeEditor";
 

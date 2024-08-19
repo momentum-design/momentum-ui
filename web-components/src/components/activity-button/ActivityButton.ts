@@ -26,8 +26,8 @@ export const activityButtonType = [
 ] as const;
 
 export namespace ActivityButton {
-  export type Size = typeof activityButtonSize[number];
-  export type Type = typeof activityButtonType[number];
+  export type Size = (typeof activityButtonSize)[number];
+  export type Type = (typeof activityButtonType)[number];
 
   @customElementWithCheck("md-activity-button")
   export class ELEMENT extends LitElement {

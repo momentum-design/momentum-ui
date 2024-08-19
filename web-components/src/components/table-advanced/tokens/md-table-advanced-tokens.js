@@ -59,6 +59,6 @@ const tableAdvanced = {
       dark: colors.gray[70].name
     }
   }
-}
+};
 
 module.exports = tableAdvanced;

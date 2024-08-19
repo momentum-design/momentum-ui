@@ -48,10 +48,10 @@ export namespace InputFile {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
 
-        reader.onload = res => {
+        reader.onload = (res) => {
           resolve(res.target!.result);
         };
-        reader.onerror = err => reject(err);
+        reader.onerror = (err) => reject(err);
         reader.readAsText(file);
       });
     }

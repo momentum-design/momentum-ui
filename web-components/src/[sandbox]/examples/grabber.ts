@@ -60,9 +60,7 @@ export class GrabberTemplateSandbox extends LitElement {
 
   grabberDetailTemplate(grabber: Grabber.ELEMENT | null | undefined) {
     if (grabber === null || grabber === undefined) {
-      return html`
-        <p>Loading...</p>
-      `;
+      return html` <p>Loading...</p> `;
     }
     return html`
       <p>Label: ${grabber.checked ? grabber.checkedLabel : grabber.label}</p>

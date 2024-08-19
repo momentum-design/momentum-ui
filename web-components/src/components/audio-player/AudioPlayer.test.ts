@@ -5,11 +5,7 @@ import clearAllMocks = jest.clearAllMocks;
 import { Key } from "@/constants";
 
 const fixtureFactory = async (): Promise<AudioPlayer.ELEMENT> => {
-  return await fixture(
-    html`
-      <md-audio-player src="somesrc"></md-audio-player>
-    `
-  );
+  return await fixture(html` <md-audio-player src="somesrc"></md-audio-player> `);
 };
 
 describe("AudioPlayer", () => {
@@ -65,7 +61,7 @@ describe("AudioPlayer", () => {
     await elementUpdated(element);
     element.setVolumeElement = jest.fn();
     element.getVolumeFromSlider = jest.fn().mockReturnValue(0.2);
-    
+
     const mockMouseEvent = new MouseEvent("mousedown");
     element.handleVolumeChange(mockMouseEvent);
 

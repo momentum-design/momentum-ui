@@ -26,16 +26,14 @@ describe("ButtonGroup", () => {
     });
 
   beforeEach(async () => {
-    element = await fixture<ButtonGroup.ELEMENT>(
-      html`
-        <md-button-group>
-          <button slot="button" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
-          <button slot="button" type="button"><md-icon name="icon-analysis_16"></md-icon></button>
-          <button slot="button" type="button">Option A</button>
-          <button slot="button" type="button">Option B</button>
-        </md-button-group>
-      `
-    );
+    element = await fixture<ButtonGroup.ELEMENT>(html`
+      <md-button-group>
+        <button slot="button" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
+        <button slot="button" type="button"><md-icon name="icon-analysis_16"></md-icon></button>
+        <button slot="button" type="button">Option A</button>
+        <button slot="button" type="button">Option B</button>
+      </md-button-group>
+    `);
 
     buttons = element.slotted as HTMLButtonElement[];
   });

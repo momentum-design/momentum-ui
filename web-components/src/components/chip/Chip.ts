@@ -37,7 +37,7 @@ export const tooltipPlacement = [
 
 export namespace Chip {
   export type Role = "group" | "option" | "button";
-  export type Placement = typeof tooltipPlacement[number];
+  export type Placement = (typeof tooltipPlacement)[number];
 
   @customElementWithCheck("md-chip")
   export class ELEMENT extends LitElement {
@@ -171,7 +171,7 @@ export namespace Chip {
         case Key.Space:
         case Key.Enter:
           this.handleSelect();
-          this.handleClick((event as unknown) as MouseEvent);
+          this.handleClick(event as unknown as MouseEvent);
           break;
 
         default:
@@ -228,9 +228,7 @@ export namespace Chip {
     protected iconTemplate() {
       const iconColor = !this.disabled ? this.iconColor : "";
       return this.icon
-        ? html`
-            <md-icon class="md-chip--icon" part="chip-icon" name="${this.icon}" color="${iconColor}"></md-icon>
-          `
+        ? html` <md-icon class="md-chip--icon" part="chip-icon" name="${this.icon}" color="${iconColor}"></md-icon> `
         : nothing;
     }
 

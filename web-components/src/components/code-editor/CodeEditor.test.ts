@@ -11,17 +11,15 @@ describe("CodeEditor component", () => {
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<CodeEditor.ELEMENT>(
-      html`
-        <md-code-editor>
-          <span slot="method">post</span>
-          <span slot="code-url">v1/contactCenter/agents/statistics</span>
-          <code class="javascript" slot="code-block">
-            module.exports = { presets: [["@babel/preset-env", { targets: { node: "current" } }]] };
-          </code>
-        </md-code-editor>
-      `
-    );
+    element = await fixture<CodeEditor.ELEMENT>(html`
+      <md-code-editor>
+        <span slot="method">post</span>
+        <span slot="code-url">v1/contactCenter/agents/statistics</span>
+        <code class="javascript" slot="code-block">
+          module.exports = { presets: [["@babel/preset-env", { targets: { node: "current" } }]] };
+        </code>
+      </md-code-editor>
+    `);
   });
 
   test("should render code editor", async () => {

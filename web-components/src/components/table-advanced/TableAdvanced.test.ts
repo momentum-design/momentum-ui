@@ -129,7 +129,7 @@ describe("Table Advanced component", () => {
     const headerClassList = elem.shadowRoot?.querySelector("table")?.classList;
     const expectedClasses = ["sticky-header"];
     expect(headerClassList?.length).toEqual(expectedClasses.length);
-    expect(expectedClasses.every(className => headerClassList?.contains(className))).toBe(true);
+    expect(expectedClasses.every((className) => headerClassList?.contains(className))).toBe(true);
 
     const row = elem.shadowRoot?.querySelector("table tbody tr");
     expect(row?.getAttribute("part")).toEqual("first-row");
@@ -177,7 +177,7 @@ describe("Table Advanced component", () => {
     const colObject = { index: 2, filter: { list: Filter.OPTIONS.equals, input: "inputText" } };
 
     jest.doMock("./src/decorators", () => {
-      return jest.fn().mockImplementation(fn => fn);
+      return jest.fn().mockImplementation((fn) => fn);
     });
 
     setTimeout(() => elem["filter"](colObject as any));
@@ -314,7 +314,7 @@ describe("Table Advanced component", () => {
     elem.tableConfig.head = { caption: "Test Caption", tableDescription: "Test tableDescription" };
 
     // Wait for changes in the shadow DOM
-    await new Promise<void>(resolve => {
+    await new Promise<void>((resolve) => {
       const observer = new MutationObserver(() => {
         resolve();
         observer.disconnect();
@@ -333,7 +333,7 @@ describe("Table Advanced component", () => {
     elem.tableConfig.head = { caption: "Test Caption" };
 
     // Wait for changes in the shadow DOM
-    await new Promise<void>(resolve => {
+    await new Promise<void>((resolve) => {
       const observer = new MutationObserver(() => {
         resolve();
         observer.disconnect();
@@ -351,7 +351,7 @@ describe("Table Advanced component", () => {
     elem.tableConfig.head = { tableDescription: "Test tableDescription" };
 
     // Wait for changes in the shadow DOM
-    await new Promise<void>(resolve => {
+    await new Promise<void>((resolve) => {
       const observer = new MutationObserver(() => {
         resolve();
         observer.disconnect();

@@ -66,11 +66,11 @@ export namespace TaskItem {
             </md-badge>
           `;
         case "progressive_campaign":
-            return html`
-              <md-badge color="green" circle>
-                <md-icon name="icon-icon-campaign_18"></md-icon>
-              </md-badge>
-            `;
+          return html`
+            <md-badge color="green" circle>
+              <md-icon name="icon-icon-campaign_18"></md-icon>
+            </md-badge>
+          `;
         case "chat":
           return html`
             <md-badge color="blue" circle>
@@ -102,46 +102,28 @@ export namespace TaskItem {
             </md-badge>
           `;
         default:
-          return html`
-            <slot name="task-type"></slot>
-          `;
+          return html` <slot name="task-type"></slot> `;
       }
     };
 
     renderStatus = () => {
       switch (this.status) {
         case "consulting":
-          return html`
-            <md-icon name="headset_12"></md-icon>
-          `;
+          return html` <md-icon name="headset_12"></md-icon> `;
         case "play":
-          return html`
-            <md-icon name="play_12"></md-icon>
-          `;
+          return html` <md-icon name="play_12"></md-icon> `;
         case "hold":
-          return html`
-            <md-icon name="pause_12"></md-icon>
-          `;
+          return html` <md-icon name="pause_12"></md-icon> `;
         case "conference":
-          return html`
-            <md-icon name="meet_12"></md-icon>
-          `;
+          return html` <md-icon name="meet_12"></md-icon> `;
         case "transfered":
-          return html`
-            <md-icon name="assign-privilege_12"></md-icon>
-          `;
+          return html` <md-icon name="assign-privilege_12"></md-icon> `;
         case "courtesy_callback":
-          return html`
-            <md-icon name="call-log_12"></md-icon>
-          `;
+          return html` <md-icon name="call-log_12"></md-icon> `;
         case "campaign":
-          return html`
-            <md-icon name="announcement_12"></md-icon>
-          `;
+          return html` <md-icon name="announcement_12"></md-icon> `;
         default:
-          return html`
-            <slot name="task-status"></slot>
-          `;
+          return html` <slot name="task-status"></slot> `;
       }
     };
 
@@ -173,12 +155,8 @@ export namespace TaskItem {
     renderChatCount() {
       return this.quantity > 0
         ? this.quantity > 99
-          ? html`
-              <span class="new-chat-quantity">99+</span>
-            `
-          : html`
-              <span class="new-chat-quantity">${this.quantity}</span>
-            `
+          ? html` <span class="new-chat-quantity">99+</span> `
+          : html` <span class="new-chat-quantity">${this.quantity}</span> `
         : nothing;
     }
 
@@ -232,18 +210,12 @@ export namespace TaskItem {
           <div class="md-taskitem__mediatype">
             ${this.renderTaskType()}
             ${this.status
-              ? html`
-                  <span class=${`md-taskitem__status ` + `${this.status}`}>
-                    ${this.renderStatus()}
-                  </span>
-                `
+              ? html` <span class=${`md-taskitem__status ` + `${this.status}`}> ${this.renderStatus()} </span> `
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
             ${this.popovertitle
-              ? html`
-                  <span class="md-taskitem__content_popover_title">${this.popovertitle}</span>
-                `
+              ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
               : nothing}
             ${this.title
               ? html`
@@ -254,11 +226,7 @@ export namespace TaskItem {
               : nothing}
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
-                ${this.queue.length > 0
-                  ? this.queue
-                  : html`
-                      <slot name="queue"></slot>
-                    `}
+                ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}
               </span>
             </div>
             ${this.lastmessage

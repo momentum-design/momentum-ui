@@ -86,11 +86,7 @@ describe("Link component", () => {
   // disabled
   test("should check if link disabled", async () => {
     expect.hasAssertions();
-    const component: Link.ELEMENT = await fixture(
-      html`
-        <md-link disabled></md-link>
-      `
-    );
+    const component: Link.ELEMENT = await fixture(html` <md-link disabled></md-link> `);
     expect(component.disabled).toBeTruthy();
   });
 

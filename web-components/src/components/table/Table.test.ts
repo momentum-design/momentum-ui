@@ -23,11 +23,7 @@ describe("Table component", () => {
   });
 
   test("should render size", async () => {
-    const element = await fixture<Table.ELEMENT>(
-      html`
-        <md-table clean zebra sorting tableData="${data}"></md-table>
-      `
-    );
+    const element = await fixture<Table.ELEMENT>(html` <md-table clean zebra sorting tableData="${data}"></md-table> `);
     expect(element.zebra).toBeTruthy;
     expect(element.sorting).toBeTruthy;
     expect(element.clean).toBeTruthy;
@@ -35,17 +31,13 @@ describe("Table component", () => {
     const el = element.shadowRoot?.querySelector(".md-table");
     const expectedClasses = ["md-table", "md-table--clean", "md-table--stripped", "md-table--sorting"];
     expect(el?.classList.length).toEqual(expectedClasses.length);
-    expectedClasses.forEach(className => {
+    expectedClasses.forEach((className) => {
       expect(el?.classList.contains(className)).toBe(true);
     });
   });
 
   test("should render size", async () => {
-    const element = await fixture<Table.ELEMENT>(
-      html`
-        <md-table sorting tableData="${data}"></md-table>
-      `
-    );
+    const element = await fixture<Table.ELEMENT>(html` <md-table sorting tableData="${data}"></md-table> `);
     const el = element.shadowRoot?.querySelector(".md-table__header tr th a") as HTMLTableElement;
 
     el.click();

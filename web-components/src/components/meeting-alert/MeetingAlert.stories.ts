@@ -8,9 +8,8 @@
 
 import "@/components/meeting-alert/MeetingAlert";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import { array, boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { array, boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
 import mdx from "./MeetingAlert.mdx";
@@ -18,7 +17,6 @@ import mdx from "./MeetingAlert.mdx";
 export default {
   title: "Components/Meeting Alerts",
   component: "md-meeting-alert",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     attendees: {
       description:

@@ -53,7 +53,7 @@ export namespace ButtonGroup {
     }
 
     private setButtonTabIndex() {
-      this.slotted.forEach(button => ((button as CustomHTMLButtonElement).tabIndex = -1));
+      this.slotted.forEach((button) => ((button as CustomHTMLButtonElement).tabIndex = -1));
     }
 
     protected updated(changedProperties: PropertyValues) {
@@ -104,11 +104,11 @@ export namespace ButtonGroup {
 
     private findBtnIndex(event: MouseEvent | KeyboardEvent) {
       const eventPath = event.composedPath();
-      return this.slotted.findIndex(slotElement => eventPath.includes(slotElement));
+      return this.slotted.findIndex((slotElement) => eventPath.includes(slotElement));
     }
 
     private findSelectedBtnIndex() {
-      return this.slotted.findIndex(slotElement => (slotElement as CustomHTMLButtonElement).hasAttribute("selected"));
+      return this.slotted.findIndex((slotElement) => (slotElement as CustomHTMLButtonElement).hasAttribute("selected"));
     }
 
     private isBtnDisabled(index: number) {

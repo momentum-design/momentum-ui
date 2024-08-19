@@ -8,14 +8,12 @@
 
 import { ThemeNameValues } from "@/components/theme/Theme";
 import "@/internal-components/color-table/ColorTable";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Internal References/Color Table",
   component: "color-table",
-  decorators: [withKnobs, withA11y],
   parameters: {
     a11y: {
       element: "color-table"

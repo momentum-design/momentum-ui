@@ -56,15 +56,21 @@ export namespace Menu {
         item.selected = this.selected === index;
       });
 
-      this.itemsHash = this.items.reduce((acc, item) => {
-        acc[item.id] = item;
-        return acc;
-      }, {} as Record<ItemId, MenuItem.ELEMENT>);
+      this.itemsHash = this.items.reduce(
+        (acc, item) => {
+          acc[item.id] = item;
+          return acc;
+        },
+        {} as Record<ItemId, MenuItem.ELEMENT>
+      );
 
-      this.itemsIdxHash = this.items.reduce((acc, item, idx) => {
-        acc[item.id] = idx;
-        return acc;
-      }, {} as Record<ItemId, number>);
+      this.itemsIdxHash = this.items.reduce(
+        (acc, item, idx) => {
+          acc[item.id] = idx;
+          return acc;
+        },
+        {} as Record<ItemId, number>
+      );
     }
 
     private setupMenuItems() {
@@ -85,14 +91,14 @@ export namespace Menu {
     }
 
     private updateSelectedItem(newSelectedIndex: number) {
-      const oldSelectedIndex = this.slotted.findIndex(element => element.hasAttribute("selected"));
+      const oldSelectedIndex = this.slotted.findIndex((element) => element.hasAttribute("selected"));
 
       if (oldSelectedIndex === newSelectedIndex) {
         return;
       }
 
       if (this.items) {
-        [oldSelectedIndex, newSelectedIndex].forEach(index => {
+        [oldSelectedIndex, newSelectedIndex].forEach((index) => {
           const item = this.items[index];
           item && item.toggleAttribute("selected");
         });
@@ -158,7 +164,7 @@ export namespace Menu {
         case Key.Space:
           // eslint-disable-next-line no-case-declarations
           const tabIndex = this.slotted.findIndex(
-            element => element.id === id && !(element as MenuItem.ELEMENT).disabled
+            (element) => element.id === id && !(element as MenuItem.ELEMENT).disabled
           );
           if (tabIndex !== -1) {
             this.updateSelectedItem(tabIndex);

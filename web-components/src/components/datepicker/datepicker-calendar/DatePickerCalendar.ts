@@ -81,11 +81,7 @@ export namespace DatePickerCalendar {
     };
 
     renderMonthName = () => {
-      return html`
-        <div class="md-datepicker__navigation--current-month" aria-live="polite">
-          ${this.localeMonth}
-        </div>
-      `;
+      return html` <div class="md-datepicker__navigation--current-month" aria-live="polite">${this.localeMonth}</div> `;
     };
 
     renderPreviousMonthButton = () => {
@@ -104,7 +100,7 @@ export namespace DatePickerCalendar {
           tabindex="-1"
           hasRemoveStyle
         >
-          <md-icon name="arrow-left_16"></md-icon>
+          <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
       `;
     };
@@ -123,7 +119,7 @@ export namespace DatePickerCalendar {
           @click=${!allNextDaysDisabled && this.increaseMonth}
           tabindex="-1"
           hasRemoveStyle
-          ><md-icon name="arrow-right_16"></md-icon>
+          ><md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
       `;
     };
@@ -132,15 +128,11 @@ export namespace DatePickerCalendar {
       const startOfWeek = getStartOfWeek(this.viewAnchorDate, this.datePickerProps?.weekStart);
       const dayNames: TemplateResult[] = [];
       return dayNames.concat(
-        [0, 1, 2, 3, 4, 5, 6].map(offset => {
+        [0, 1, 2, 3, 4, 5, 6].map((offset) => {
           const day = addDays(localizeDate(startOfWeek, this.datePickerProps?.locale || "en"), offset);
           const localeData = getLocaleData(day);
           const weekDayName = getWeekdayNameInLocale(localeData, day);
-          return html`
-            <div class="md-datepicker__day--name">
-              ${weekDayName}
-            </div>
-          `;
+          return html` <div class="md-datepicker__day--name">${weekDayName}</div> `;
         })
       );
     };
@@ -155,9 +147,7 @@ export namespace DatePickerCalendar {
                 ${this.renderPreviousMonthButton()} ${this.renderNextMonthButton()}
               </div>
             </div>
-            <div class="md-datepicker__day--names">
-              ${this.header()}
-            </div>
+            <div class="md-datepicker__day--names">${this.header()}</div>
           </div>
           <md-datepicker-month
             .day=${this.viewAnchorDate}
@@ -174,9 +164,7 @@ export namespace DatePickerCalendar {
 
     render() {
       return html`
-        <div class="md-datepicker__calendar" id="Datepicker-Calendar">
-          ${this.viewAnchorDate && this.renderMonth()}
-        </div>
+        <div class="md-datepicker__calendar" id="Datepicker-Calendar">${this.viewAnchorDate && this.renderMonth()}</div>
       `;
     }
   }

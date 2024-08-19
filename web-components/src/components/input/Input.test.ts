@@ -200,7 +200,7 @@ describe("Input Component", () => {
       ` <md-input value="text" containerSize="small-12" placeholder="Enter Text" searchable></md-input>`
     );
 
-    expect(element.shadowRoot!.querySelector("md-icon")!.name).toMatch(/^search?_\w+/);
+    expect(element.shadowRoot!.querySelector("md-icon")!.name).toMatch("search-bold");
   });
   test("should render icon if provided in slot", async () => {
     await fixture<Input.ELEMENT>(
@@ -242,18 +242,16 @@ describe("Input Component", () => {
 
     const messagesSpy = jest.spyOn(Input.ELEMENT.prototype, "messages", "get");
 
-    await fixture<Input.ELEMENT>(
-      html`
-        <md-input
-          label="Warning"
-          htmlId="inputWarning"
-          containerSize="small-12"
-          .messageArr=${[messageArr]}
-          value="Warning Text"
-          placeholder="Enter Text"
-        ></md-input>
-      `
-    );
+    await fixture<Input.ELEMENT>(html`
+      <md-input
+        label="Warning"
+        htmlId="inputWarning"
+        containerSize="small-12"
+        .messageArr=${[messageArr]}
+        value="Warning Text"
+        placeholder="Enter Text"
+      ></md-input>
+    `);
 
     const inputMessageElement = querySelectorAllDeep("md-help-text");
     expect(messagesSpy).toHaveReturnedWith(["This is where the success message would be."]);
@@ -268,18 +266,16 @@ describe("Input Component", () => {
 
     const messagesSpy = jest.spyOn(Input.ELEMENT.prototype, "messages", "get");
 
-    await fixture<Input.ELEMENT>(
-      html`
-        <md-input
-          label="Error"
-          htmlId="inputError"
-          containerSize="small-12"
-          .messageArr=${[messageArr]}
-          value="Error Text"
-          placeholder="Enter Text"
-        ></md-input>
-      `
-    );
+    await fixture<Input.ELEMENT>(html`
+      <md-input
+        label="Error"
+        htmlId="inputError"
+        containerSize="small-12"
+        .messageArr=${[messageArr]}
+        value="Error Text"
+        placeholder="Enter Text"
+      ></md-input>
+    `);
 
     const inputMessageElement = querySelectorAllDeep("md-help-text");
     expect(messagesSpy).toHaveReturnedWith(["This is where the error message would be."]);
@@ -342,11 +338,11 @@ describe("Input Component", () => {
     expect(detail).toBeDefined();
   });
 
-  test("Should not show cancel button if input is readOnly",async()=>{
-    const element= await fixture<Input.ELEMENT>(
+  test("Should not show cancel button if input is readOnly", async () => {
+    const element = await fixture<Input.ELEMENT>(
       html`<md-input label="Multiline" containerSize="small-12" ?readonly=${true}></md-input>`
     );
-      const rightTemplate=element.shadowRoot!.querySelector(".md-input__after")?.querySelector("md-button");
-      expect(rightTemplate).toBeNull();
-  })
+    const rightTemplate = element.shadowRoot!.querySelector(".md-input__after")?.querySelector("md-button");
+    expect(rightTemplate).toBeNull();
+  });
 });

@@ -3,7 +3,7 @@ import "./Icon";
 
 jest.mock("@momentum-ui/utils/lib/getColorValue", () => jest.fn(() => "rgba(247, 100, 74, 1)"));
 
-describe("Momentun Icon Component", () => {
+describe("Momentum Icon Component", () => {
   beforeEach(() => {
     jest.resetModules();
     console.warn = jest.fn();
@@ -21,13 +21,13 @@ describe("Momentun Icon Component", () => {
 
   test("should allow sizeOverride prop to change icon size", async () => {
     const element = await fixture(
-      `<md-icon class="test-class" name="arrow-up_16" size="24" sizeOverrided color="red"></md-icon>`
+      `<md-icon class="test-class" name="arrow-up_16" size="24" sizeOverrided iconSet="momentumUI" color="red"></md-icon>`
     );
 
     const expectedClasses = ["md-icon", "icon", "arrow-up_24"];
     const classList = element.shadowRoot?.querySelector("i")?.classList;
     expect(classList?.length).toEqual(expectedClasses.length);
-    expect(expectedClasses.every(className => classList?.contains(className))).toBe(true);
+    expect(expectedClasses.every((className) => classList?.contains(className))).toBe(true);
   });
 
   test("should set font-size to default if not specified", async () => {
@@ -53,11 +53,9 @@ describe("Momentun Icon Component", () => {
   test("should set aria-label attribute from title & description props", async () => {
     const title = "Test Title";
     const description = "Test Description";
-    const element = await fixture(
-      html`
-        <md-icon title="${title}" description="${description}" name="accessibility_16"></md-icon>
-      `
-    );
+    const element = await fixture(html`
+      <md-icon title="${title}" description="${description}" name="accessibility_16"></md-icon>
+    `);
     expect(element.shadowRoot!.querySelector("i")!.getAttribute("aria-label")).toEqual(`${title} ${description}`);
   });
 
@@ -77,24 +75,9 @@ describe("Momentun Icon Component", () => {
     expect(console.warn).toBeCalledTimes(1);
   });
 
-  test("should apply design font class when designEnabled is true", async () => {
-    const element = await fixture(`<md-icon designEnabled="true" name="search_14"></md-icon>`);
-    const classList = element.shadowRoot?.querySelector("i")?.classList;
-    expect(classList?.contains("design-font")).toBe(true);
-    expect(classList?.contains("icon-search-bold")).toBe(true);
-  });
-
   test("should not apply design font class when designEnabled is true as we don't map the icon", async () => {
-    const element = await fixture(`<md-icon designEnabled="true" name="youtube-circle_24"></md-icon>`);
+    const element = await fixture(`<md-icon .iconSet=${"momentumDesign"} name="youtube-circle_24"></md-icon>`);
     const classList = element.shadowRoot?.querySelector("i")?.classList;
-    expect(classList?.contains("design-font")).toBe(false);
-    expect(classList?.contains("icon-search-bold")).toBe(false);
-  });
-
-  test("should apply design font class when override is true", async () => {
-    const element = await fixture(`<md-icon override="true" name="search-bold"></md-icon>`);
-    const classList = element.shadowRoot?.querySelector("i")?.classList;
-    expect(classList?.contains("design-font")).toBe(true);
-    expect(classList?.contains("icon-search-bold")).toBe(true);
+    expect(classList?.contains("search-bold")).toBe(false);
   });
 });

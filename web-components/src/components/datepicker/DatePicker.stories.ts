@@ -1,14 +1,12 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { now } from "@/utils/dateUtils";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
 
 export default {
   title: "Components/Date Picker",
   component: "md-datepicker",
-  decorators: [withKnobs, withA11y],
   parameters: {
     a11y: {
       element: "md-datepicker"
@@ -24,19 +22,9 @@ export const DatePicker = () => {
   const locale = text("locale", "en-US");
   const disabled = boolean("disabled", false);
 
-  const minDate = text(
-    "minimum date",
-    now()
-      .minus({ day: 5 })
-      .toISODate()
-  );
+  const minDate = text("minimum date", now().minus({ day: 5 }).toISODate());
 
-  const maxDate = text(
-    "maximum date",
-    now()
-      .plus({ day: 30 })
-      .toISODate()
-  );
+  const maxDate = text("maximum date", now().plus({ day: 30 }).toISODate());
 
   const value = text("value", now().toISODate());
 

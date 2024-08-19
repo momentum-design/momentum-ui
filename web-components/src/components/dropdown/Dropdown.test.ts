@@ -35,11 +35,9 @@ describe("Dropdown Component", () => {
     let dropdown: Dropdown.ELEMENT;
 
     beforeEach(async () => {
-      dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown .options="${dropdownStringOptions}"></md-dropdown>
-        `
-      );
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}"></md-dropdown>
+      `);
     });
 
     it("should open/close dropdown if label", async () => {
@@ -152,11 +150,7 @@ describe("Dropdown Component", () => {
       await toggleExpandCollapseDropdown(dropdown);
 
       Event.prototype.composedPath = originalComposedPath;
-      const outsideDiv = await fixture<HTMLElement>(
-        html`
-          <div></div>
-        `
-      );
+      const outsideDiv = await fixture<HTMLElement>(html` <div></div> `);
       const composedPathMock1 = jest.fn(() => [outsideDiv]);
       Event.prototype.composedPath = composedPathMock1;
       dropdown.onOutsideClick(new MouseEvent("click"));
@@ -165,11 +159,9 @@ describe("Dropdown Component", () => {
     });
 
     it("should allow unselected", async () => {
-      const dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown .options="${dropdownStringOptions}" allow-unselected></md-dropdown>
-        `
-      );
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" allow-unselected></md-dropdown>
+      `);
 
       await toggleExpandCollapseDropdown(dropdown);
       expect(dropdown["expanded"]).toBeTruthy();
@@ -217,11 +209,9 @@ describe("Dropdown Component", () => {
     let dropdown: Dropdown.ELEMENT;
 
     beforeEach(async () => {
-      dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
-        `
-      );
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
     });
 
     it("should trim non-trimmed", async () => {
@@ -233,11 +223,9 @@ describe("Dropdown Component", () => {
         " non-trimmed-with-spaces   "
       ];
 
-      dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown .options="${duplicatedDropdownStringOptions}" title="Test"></md-dropdown>
-        `
-      );
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${duplicatedDropdownStringOptions}" title="Test"></md-dropdown>
+      `);
 
       await elementUpdated(dropdown);
 
@@ -254,29 +242,25 @@ describe("Dropdown Component", () => {
     });
 
     it("should apply disabled attribute", async () => {
-      dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown .options="${dropdownStringOptions}" disabled></md-dropdown>
-        `
-      );
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" disabled></md-dropdown>
+      `);
       expect(dropdown.disabled).toBeTruthy();
     });
 
     it("should render correct icon name", () => {
-      expect(dropdown.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("icon-arrow-down_16");
+      expect(dropdown.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("arrow-down-bold");
     });
 
     it("should change selectedKey on update of default option", async () => {
-      const dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown
-            .options="${dropdownObjectLongOptions}"
-            .defaultOption="${dropdownObjectLongOptions[10]}"
-            option-id="id"
-            option-value="country"
-          ></md-dropdown>
-        `
-      );
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownObjectLongOptions}"
+          .defaultOption="${dropdownObjectLongOptions[10]}"
+          option-id="id"
+          option-value="country"
+        ></md-dropdown>
+      `);
       expect(dropdown["selectedKey"]).toEqual(dropdownObjectLongOptions[10].id);
 
       dropdown["defaultOption"] = dropdownObjectLongOptions[1];
@@ -290,11 +274,9 @@ describe("Dropdown Component", () => {
     let dropdown: Dropdown.ELEMENT;
 
     beforeEach(async () => {
-      dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
-        `
-      );
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown .options="${dropdownStringOptions}" title="Test"></md-dropdown>
+      `);
     });
 
     it("should set correct aria label attribute", async () => {
@@ -321,16 +303,14 @@ describe("Dropdown Component", () => {
     let dropdown: Dropdown.ELEMENT;
 
     beforeEach(async () => {
-      dropdown = await fixture<Dropdown.ELEMENT>(
-        html`
-          <md-dropdown
-            .options="${dropdownObjectLongOptions}"
-            .defaultOption="${dropdownObjectLongOptions[10]}"
-            option-id="id"
-            option-value="country"
-          ></md-dropdown>
-        `
-      );
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownObjectLongOptions}"
+          .defaultOption="${dropdownObjectLongOptions[10]}"
+          option-id="id"
+          option-value="country"
+        ></md-dropdown>
+      `);
     });
 
     it("should set selectedKey on default option", async () => {

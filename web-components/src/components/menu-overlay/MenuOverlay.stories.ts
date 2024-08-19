@@ -11,16 +11,14 @@ import "@/components/checkbox/Checkbox";
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import { boolean, number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
   title: "Components/Menu Overlay",
   component: "md-menu-overlay",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     handleOutsideOverlayClick: { table: { disable: true } },
     handleTriggerKeyDown: { table: { disable: true } },

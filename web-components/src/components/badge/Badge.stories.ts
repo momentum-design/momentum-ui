@@ -10,14 +10,12 @@ import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { badgeColor } from "@/utils/enums";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Badge",
   component: "md-badge",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     renderBgColor: { table: { disable: true } },
     renderTextColor: { table: { disable: true } },
@@ -57,13 +55,7 @@ export const Badge = () => {
         .circle=${circle}
         ?disabled=${disabled}
       >
-        ${icon
-          ? html`
-              <md-icon name="chat-active_16"></md-icon>
-            `
-          : html`
-              Badge ${color}
-            `}
+        ${icon ? html` <md-icon name="chat-active_16"></md-icon> ` : html` Badge ${color} `}
       </md-badge>
     </md-theme>
   `;

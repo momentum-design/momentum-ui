@@ -110,6 +110,15 @@
       @include button-size($radius: 0, $padding: 0, $height: auto);
     }
 
+    &--24 {
+      @include button-size(
+        $height: rem-calc(24),
+        $padding: $button__padding--24,
+        $radius: $button__radius--24,
+        $font-size: $button__font-size--24
+      );
+    }
+
     &--28 {
       @include button-size(
         $height: rem-calc(28),
@@ -167,6 +176,10 @@
 
       &[class*="--20"] {
         @include button-circle-size($size: $button__size--20, $font-size: $button__font-size--20);
+      }
+
+      &[class*="--24"] {
+        @include button-circle-size($size: $button__size--24, $font-size: $button__font-size--24);
       }
 
       &[class*="--28"] {

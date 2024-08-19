@@ -120,7 +120,7 @@ export namespace Card {
                         color="color-none"
                         size="size-none"
                       >
-                        <md-icon slot="icon" name="info_16"></md-icon>
+                        <md-icon slot="icon" name="info-circle-bold" size="16" iconSet="momentumDesign"></md-icon>
                       </md-button>
                     </md-tooltip>
                   `
@@ -135,22 +135,21 @@ export namespace Card {
                         size="size-none"
                         slot="menu-trigger"
                       >
-                        <md-icon slot="icon" name="more-adr_16"></md-icon>
+                        <md-icon slot="icon" name="more-adr-bold" size="16" iconSet="momentumDesign"></md-icon>
                       </md-button>
                       <div class="md-card-menu-list-items" style="width: 100%;">
                         <md-list>
                           ${repeat(
                             this.menuOptions,
-                            (item, idx) =>
-                              html`
-                                <md-list-item
-                                  class="${`menu-item-` + idx}"
-                                  slot="list-item"
-                                  @click=${(e: MouseEvent) => this.handleCardMenuEvent(e, item as string)}
-                                  @keydown=${(e: KeyboardEvent) => this.handleCardMenuKeyDown(e, item as string)}
-                                  >${item}</md-list-item
-                                >
-                              `
+                            (item, idx) => html`
+                              <md-list-item
+                                class="${`menu-item-` + idx}"
+                                slot="list-item"
+                                @click=${(e: MouseEvent) => this.handleCardMenuEvent(e, item as string)}
+                                @keydown=${(e: KeyboardEvent) => this.handleCardMenuKeyDown(e, item as string)}
+                                >${item}</md-list-item
+                              >
+                            `
                           )}
                         </md-list>
                       </div>

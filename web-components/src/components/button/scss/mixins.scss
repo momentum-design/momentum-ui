@@ -91,7 +91,7 @@
   @if $radius {
     @include radius($radius);
     &::after {
-      border-radius: $radius;
+      border-radius: calc(#{$radius} + #{2 * $button-focus-gap-ring}),
     }
   }
 }

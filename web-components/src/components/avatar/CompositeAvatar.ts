@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
-*/
+ */
 
 import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -14,7 +14,7 @@ import { AvatarSize } from "./Avatar.constants"; // Keep type import as a relati
 import styles from "./scss/module.scss";
 
 export namespace CompositeAvatar {
-  export type Size = typeof AvatarSize[number];
+  export type Size = (typeof AvatarSize)[number];
 
   @customElementWithCheck("md-composite-avatar")
   export class ELEMENT extends LitElement {
@@ -39,7 +39,6 @@ export namespace CompositeAvatar {
     }
   }
 }
-
 
 declare global {
   interface HTMLElementTagNameMap {

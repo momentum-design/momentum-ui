@@ -3,56 +3,24 @@ import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 export const badgeTemplate = html`
-  <md-badge tabIndexing="0" aria-label="my aria-label">
-    Default
-  </md-badge>
-  <md-badge color="blue">
-    Blue
-  </md-badge>
-  <md-badge color="red">
-    Red
-  </md-badge>
-  <md-badge color="yellow">
-    Yellow
-  </md-badge>
-  <md-badge color="green">
-    Green
-  </md-badge>
-  <md-badge color="mint">
-    Mint
-  </md-badge>
-  <md-badge color="cyan">
-    Cyan
-  </md-badge>
-  <md-badge color="purple">
-    Purple
-  </md-badge>
+  <md-badge tabIndexing="0" aria-label="my aria-label"> Default </md-badge>
+  <md-badge color="blue"> Blue </md-badge>
+  <md-badge color="red"> Red </md-badge>
+  <md-badge color="yellow"> Yellow </md-badge>
+  <md-badge color="green"> Green </md-badge>
+  <md-badge color="mint"> Mint </md-badge>
+  <md-badge color="cyan"> Cyan </md-badge>
+  <md-badge color="purple"> Purple </md-badge>
 
   <h4 class="sandbox-header">Additional Badges</h4>
-  <md-badge color="gray">
-    Gray
-  </md-badge>
-  <md-badge color="violet">
-    Violet
-  </md-badge>
-  <md-badge color="mint">
-    Mint
-  </md-badge>
-  <md-badge color="gold">
-    Gold
-  </md-badge>
-  <md-badge color="lime">
-    Lime
-  </md-badge>
-  <md-badge color="pink">
-    Pink
-  </md-badge>
-  <md-badge color="orange">
-    Orange
-  </md-badge>
-  <md-badge color="cobalt">
-    Cobalt
-  </md-badge>
+  <md-badge color="gray"> Gray </md-badge>
+  <md-badge color="violet"> Violet </md-badge>
+  <md-badge color="mint"> Mint </md-badge>
+  <md-badge color="gold"> Gold </md-badge>
+  <md-badge color="lime"> Lime </md-badge>
+  <md-badge color="pink"> Pink </md-badge>
+  <md-badge color="orange"> Orange </md-badge>
+  <md-badge color="cobalt"> Cobalt </md-badge>
 
   <h3 class="sandbox-header">Lumos Badges</h3>
   <h4 class="sandbox-header">Circle Badges</h4>
@@ -189,19 +157,11 @@ export const badgeTemplate = html`
 
   <h4 class="sandbox-header">Outlined Badges</h4>
 
-  <md-badge outlined>
-    March 21, 2020
-  </md-badge>
-  <md-badge outlined small>
-    March 21, 2020
-  </md-badge>
+  <md-badge outlined> March 21, 2020 </md-badge>
+  <md-badge outlined small> March 21, 2020 </md-badge>
 
   <h4 class="snadbox-header">Unread count</h4>
 
-  <md-badge color="unreadcount">
-    99
-  </md-badge>
-  <md-badge color="unreadcount">
-    4
-  </md-badge>
+  <md-badge color="unreadcount"> 99 </md-badge>
+  <md-badge color="unreadcount"> 4 </md-badge>
 `;

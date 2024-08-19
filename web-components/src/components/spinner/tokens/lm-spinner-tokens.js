@@ -11,6 +11,6 @@ const spinner = {
   color: {
     light: colors.black[100].name
   }
-}
+};
 
 module.exports = spinner;

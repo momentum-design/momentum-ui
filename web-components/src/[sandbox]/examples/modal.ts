@@ -73,7 +73,7 @@ export class ModalTemplateSandbox extends LitElement {
   }
   private handleFormatChange() {
     this.otherInput = !this.otherInput;
-    document.dispatchEvent(new CustomEvent("on-widget-update"))
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
   }
 
   private handleInputChange = debounce(() => {
@@ -100,8 +100,8 @@ export class ModalTemplateSandbox extends LitElement {
         <md-form class="form-class" id="international-form">
           <div class="international-checkbox-wrapper">
             <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${(e: CustomEvent) => {
-                    this.handleFormatChange();
-                  }}"
+              this.handleFormatChange();
+            }}"
               >International dialing format</md-checkbox
             >
           <md-tooltip
@@ -121,49 +121,51 @@ export class ModalTemplateSandbox extends LitElement {
             </md-button>
           </md-tooltip>
           </div>
-          ${this.otherInput
-            ? html`
-                <md-input
-                  type="tel"
-                  id="international"
-                  name="international-value"
-                  pill
-                  value="88997755664"
-                  countryCallingCode="+91"
-                  numberPlaceholder="station Login"
-                  .autofocus="${true}"
-                  @phoneinput-keydown="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-change="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-blur="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                ></md-input>
-              `
-            : html`
-                <md-phone-input
-                  type="tel"
-                  id="national"
-                  name="national-value"
-                  pill
-                  value="222"
-                  countryCallingCode="+91"
-                  numberPlaceholder="station Login"
-                  .autofocus="${true}"
-                  @phoneinput-keydown="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-change="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-blur="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                ></md-phone-input>
-              `}
+          ${
+            this.otherInput
+              ? html`
+                  <md-input
+                    type="tel"
+                    id="international"
+                    name="international-value"
+                    pill
+                    value="88997755664"
+                    countryCallingCode="+91"
+                    numberPlaceholder="station Login"
+                    .autofocus="${true}"
+                    @phoneinput-keydown="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-change="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-blur="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                  ></md-input>
+                `
+              : html`
+                  <md-phone-input
+                    type="tel"
+                    id="national"
+                    name="national-value"
+                    pill
+                    value="222"
+                    countryCallingCode="+91"
+                    numberPlaceholder="station Login"
+                    .autofocus="${true}"
+                    @phoneinput-keydown="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-change="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-blur="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                  ></md-phone-input>
+                `
+          }
         </md-form>
       </md-modal>
 
@@ -441,6 +443,4 @@ export class ModalTemplateSandbox extends LitElement {
   }
 }
 
-export const modalTemplate = html`
-  <modal-template-sandbox></modal-template-sandbox>
-`;
+export const modalTemplate = html` <modal-template-sandbox></modal-template-sandbox> `;

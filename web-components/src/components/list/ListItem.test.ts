@@ -48,12 +48,12 @@ describe("ListItem", () => {
     const listItem = await element.shadowRoot!.querySelector(".md-list-item--rounded");
     let expectedClassList = ["md-list-item", "md-list-item--rounded"];
     expect(listItem?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => listItem?.classList?.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => listItem?.classList?.contains(className))).toBe(true);
 
     element.shape = "pill";
     await elementUpdated(element);
     expectedClassList = ["md-list-item", "md-list-item--pill"];
     expect(listItem?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => listItem?.classList?.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => listItem?.classList?.contains(className))).toBe(true);
   });
 });

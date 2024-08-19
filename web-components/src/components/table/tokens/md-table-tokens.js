@@ -37,6 +37,6 @@ const table = {
       dark: colors.gray[70].name
     }
   }
-}
+};
 
 module.exports = table;

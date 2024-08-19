@@ -174,7 +174,7 @@ export const comboBoxTemplate = html`
   <md-combobox with-custom-content>
     ${repeat(
       testCustomValue,
-      item => item.name,
+      (item) => item.name,
       (item: { name: string; value: string }, index) => html`
         <div slot=${index} display-value=${item.name} aria-label="+${item.value}${item.name}">
           <span>${item.name}</span>

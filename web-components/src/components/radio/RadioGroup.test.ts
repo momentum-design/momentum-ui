@@ -18,16 +18,14 @@ describe("RadioGroup", () => {
     });
 
   beforeEach(async () => {
-    element = await fixture<RadioGroup.ELEMENT>(
-      html`
-        <md-radiogroup group-label="recommendations">
-          <md-radio slot="radio" value="developing">Developing</md-radio>
-          <md-radio slot="radio" value="linting">Linting</md-radio>
-          <md-radio slot="radio" value="testing">Testing</md-radio>
-          <md-radio slot="radio" value="building">Building</md-radio>
-        </md-radiogroup>
-      `
-    );
+    element = await fixture<RadioGroup.ELEMENT>(html`
+      <md-radiogroup group-label="recommendations">
+        <md-radio slot="radio" value="developing">Developing</md-radio>
+        <md-radio slot="radio" value="linting">Linting</md-radio>
+        <md-radio slot="radio" value="testing">Testing</md-radio>
+        <md-radio slot="radio" value="building">Building</md-radio>
+      </md-radiogroup>
+    `);
     radioButtons = element.slotted as Radio.ELEMENT[];
   });
   afterEach(fixtureCleanup);
@@ -159,16 +157,14 @@ describe("RadioGroup", () => {
   });
 
   test("set first checked radio if checked property index provided", async () => {
-    const el = await fixture<RadioGroup.ELEMENT>(
-      html`
-        <md-radiogroup group-label="recommendations" checked="2">
-          <md-radio slot="radio" value="developing">Developing</md-radio>
-          <md-radio slot="radio" value="linting">Linting</md-radio>
-          <md-radio slot="radio" value="testing">Testing</md-radio>
-          <md-radio slot="radio" value="building">Building</md-radio>
-        </md-radiogroup>
-      `
-    );
+    const el = await fixture<RadioGroup.ELEMENT>(html`
+      <md-radiogroup group-label="recommendations" checked="2">
+        <md-radio slot="radio" value="developing">Developing</md-radio>
+        <md-radio slot="radio" value="linting">Linting</md-radio>
+        <md-radio slot="radio" value="testing">Testing</md-radio>
+        <md-radio slot="radio" value="building">Building</md-radio>
+      </md-radiogroup>
+    `);
     expect(el.selected).toEqual(2);
   });
   test("should dispatch event when radio change", async () => {
@@ -185,32 +181,29 @@ describe("RadioGroup", () => {
     expect(detail).toBeDefined();
   });
 
-
   test("disable check on radio group", async () => {
-    const el = await fixture<RadioGroup.ELEMENT>(
-      html`
-        <md-radiogroup disabled="true" group-label="recommendations">
-          <md-radio slot="radio" value="developing">Developing</md-radio>
-          <md-radio slot="radio" value="linting">Linting</md-radio>
-          <md-radio slot="radio" value="testing">Testing</md-radio>
-          <md-radio slot="radio" value="building">Building</md-radio>
-        </md-radiogroup>
-      `
-    );
-  const clickEvent = new MouseEvent("click");
-  setTimeout(() => {
+    const el = await fixture<RadioGroup.ELEMENT>(html`
+      <md-radiogroup disabled="true" group-label="recommendations">
+        <md-radio slot="radio" value="developing">Developing</md-radio>
+        <md-radio slot="radio" value="linting">Linting</md-radio>
+        <md-radio slot="radio" value="testing">Testing</md-radio>
+        <md-radio slot="radio" value="building">Building</md-radio>
+      </md-radiogroup>
+    `);
+    const clickEvent = new MouseEvent("click");
+    setTimeout(() => {
       radioButtons[0].click();
       el.handleClick(clickEvent);
     });
     const { detail } = await oneEvent(element, "radio-change");
-     await elementUpdated(element);
-     expect(detail).toBeDefined();
-     const notifyEvent = jest.spyOn(el, "notifySelectedChange" as never);
-     expect(notifyEvent).toBeCalledTimes(0);
+    await elementUpdated(element);
+    expect(detail).toBeDefined();
+    const notifyEvent = jest.spyOn(el, "notifySelectedChange" as never);
+    expect(notifyEvent).toBeCalledTimes(0);
 
     const keyboardEvent = new KeyboardEvent("keydown");
-     el.handleKeyDown(keyboardEvent)
+    el.handleKeyDown(keyboardEvent);
     await elementUpdated(element);
-     expect(notifyEvent).toBeCalledTimes(0);
+    expect(notifyEvent).toBeCalledTimes(0);
   });
 });

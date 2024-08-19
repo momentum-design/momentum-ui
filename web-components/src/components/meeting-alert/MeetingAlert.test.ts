@@ -12,11 +12,7 @@ describe("MeetingAlert", () => {
   });
 
   test("should render one MeetingAlert", async () => {
-    const el = await fixture(
-      html`
-        <md-meeting-alert title="Test Name"></md-meeting-alert>
-      `
-    );
+    const el = await fixture(html` <md-meeting-alert title="Test Name"></md-meeting-alert> `);
     expect(el).not.toBeNull;
   });
 
@@ -26,11 +22,7 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle role prop", async () => {
-    const el: MeetingAlert.ELEMENT = await fixture(
-      html`
-        <md-meeting-alert role="button"></md-meeting-alert>
-      `
-    );
+    const el: MeetingAlert.ELEMENT = await fixture(html` <md-meeting-alert role="button"></md-meeting-alert> `);
     expect(el.getAttribute("role")).toEqual("button");
   });
 
@@ -40,11 +32,9 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle message prop", async () => {
-    const el: MeetingAlert.ELEMENT = await fixture(
-      html`
-        <md-meeting-alert message="Test message"></md-meeting-alert>
-      `
-    );
+    const el: MeetingAlert.ELEMENT = await fixture(html`
+      <md-meeting-alert message="Test message"></md-meeting-alert>
+    `);
     expect(el.getAttribute("message")).toEqual("Test message");
   });
 
@@ -54,20 +44,12 @@ describe("MeetingAlert", () => {
   });
 
   test("should handle status prop", async () => {
-    const el: MeetingAlert.ELEMENT = await fixture(
-      html`
-        <md-meeting-alert status="Test status"></md-meeting-alert>
-      `
-    );
+    const el: MeetingAlert.ELEMENT = await fixture(html` <md-meeting-alert status="Test status"></md-meeting-alert> `);
     expect(el.getAttribute("status")).toEqual("Test status");
   });
 
   test("should handle title prop", async () => {
-    const el: MeetingAlert.ELEMENT = await fixture(
-      html`
-        <md-meeting-alert title="Test title"></md-meeting-alert>
-      `
-    );
+    const el: MeetingAlert.ELEMENT = await fixture(html` <md-meeting-alert title="Test title"></md-meeting-alert> `);
     expect(el.getAttribute("title")).toEqual("Test title");
   });
 
@@ -117,13 +99,11 @@ describe("MeetingAlert", () => {
       jest.restoreAllMocks();
     });
 
-    const mockEvent = () => {};
+    const mockEvent = jest.fn();
     test("Should trigger a passed Snooze event", async () => {
-      const element: MeetingAlert.ELEMENT = await fixture(
-        html`
-          <md-meeting-alert show .onSnooze=${mockEvent}> </md-meeting-alert>
-        `
-      );
+      const element: MeetingAlert.ELEMENT = await fixture(html`
+        <md-meeting-alert show .onSnooze=${mockEvent}> </md-meeting-alert>
+      `);
       const spyClick = jest.spyOn(element, "handleSnooze");
       const snoozeElement = await element.shadowRoot!.querySelector("md-button[aria-label='snooze']");
       snoozeElement!.dispatchEvent(new MouseEvent("click"));
@@ -138,11 +118,9 @@ describe("MeetingAlert", () => {
 
     describe("Should handle KeyDown events", () => {
       test("Should trigger a passed Keydown event", async () => {
-        const element: MeetingAlert.ELEMENT = await fixture(
-          html`
-            <md-meeting-alert show .onKeyDown=${mockEvent}> </md-meeting-alert>
-          `
-        );
+        const element: MeetingAlert.ELEMENT = await fixture(html`
+          <md-meeting-alert show .onKeyDown=${mockEvent}> </md-meeting-alert>
+        `);
         const spyKeyDown = jest.spyOn(element, "handleKeyDown");
         const meetingAlert = element.shadowRoot!.querySelector("div");
         meetingAlert!.dispatchEvent(
@@ -163,17 +141,15 @@ describe("MeetingAlert", () => {
         expect(spyKeyDown).toHaveBeenCalledTimes(3);
       });
       test("Should handleClose when escape key is pressed", async () => {
-        const element: MeetingAlert.ELEMENT = await fixture(
-          html`
-            <md-meeting-alert
-              show
-              status="Queue_Demo7"
-              title="John Doe"
-              src="https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
-            >
-            </md-meeting-alert>
-          `
-        );
+        const element: MeetingAlert.ELEMENT = await fixture(html`
+          <md-meeting-alert
+            show
+            status="Queue_Demo7"
+            title="John Doe"
+            src="https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
+          >
+          </md-meeting-alert>
+        `);
         const spyKeyDown = jest.spyOn(element, "handleKeyDown");
         const spyClose = jest.spyOn(element, "handleClose");
         const meetingAlert = await element.shadowRoot!.querySelector("div");
@@ -215,11 +191,9 @@ describe("MeetingAlert", () => {
       //   expect(spyClose).toHaveBeenCalledTimes(2);
       // });
       test("Should handle custom key event", async () => {
-        const el: MeetingAlert.ELEMENT = await fixture(
-          html`
-            <md-meeting-alert title="Test title"></md-meeting-alert>
-          `
-        );
+        const el: MeetingAlert.ELEMENT = await fixture(html`
+          <md-meeting-alert title="Test title"></md-meeting-alert>
+        `);
         expect(el.getAttribute("title")).toEqual("Test title");
       });
     });

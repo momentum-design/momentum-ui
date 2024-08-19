@@ -5,9 +5,7 @@ import "./Favorite";
 import { Favorite } from "./Favorite";
 
 const fixtureFactory = async (): Promise<Favorite.ELEMENT> => {
-  return await fixture(html`
-    <md-favorite> </md-favorite>
-  `);
+  return await fixture(html` <md-favorite> </md-favorite> `);
 };
 
 describe("Favorite component", () => {

@@ -102,27 +102,14 @@ export namespace Slider {
       const ticks = new Array(tickCount + 1)
         .fill(0, 0, tickCount + 1)
         .map((_, index) => min + index * step)
-        .filter(tick => tick >= min && tick <= max);
+        .filter((tick) => tick >= min && tick <= max);
       return html`
-        <div class="md-slider__hashlabel">
-          ${repeat(
-            ticks,
-            tick => html`
-              <div class="tick">
-                ${tick}
-              </div>
-            `
-          )}
-        </div>
+        <div class="md-slider__hashlabel">${repeat(ticks, (tick) => html` <div class="tick">${tick}</div> `)}</div>
       `;
     }
 
     private displayValueTemplate() {
-      return html`
-        <span class="md-slider__value">
-          ${this.now}
-        </span>
-      `;
+      return html` <span class="md-slider__value"> ${this.now} </span> `;
     }
 
     private notifyChanges() {

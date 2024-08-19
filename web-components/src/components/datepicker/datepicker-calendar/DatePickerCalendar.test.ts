@@ -8,11 +8,7 @@ describe("DatePickerCalendar Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePickerCalendar.ELEMENT = await fixture(
-      html`
-        <md-datepicker-calendar></md-datepicker-calendar>
-      `
-    );
+    const el: DatePickerCalendar.ELEMENT = await fixture(html` <md-datepicker-calendar></md-datepicker-calendar> `);
     expect(el).not.toBeNull();
   });
   // test("should handle date selection update", async () => {
@@ -34,11 +30,7 @@ describe("DatePickerCalendar Component", () => {
   //   expect(el.selected).toEqual(secondDate);
   // });
   test("should update view anchor date when changing months", async () => {
-    const el: DatePickerCalendar.ELEMENT = await fixture(
-      html`
-        <md-datepicker-calendar></md-datepicker-calendar>
-      `
-    );
+    const el: DatePickerCalendar.ELEMENT = await fixture(html` <md-datepicker-calendar></md-datepicker-calendar> `);
     const event = new MouseEvent("click");
     const setDateFunc = jest.spyOn(el, "setDate");
 
@@ -51,11 +43,7 @@ describe("DatePickerCalendar Component", () => {
   });
 
   test("should generate correct day names in header", async () => {
-    const el: DatePickerCalendar.ELEMENT = await fixture(
-      html`
-        <md-datepicker-calendar></md-datepicker-calendar>
-      `
-    );
+    const el: DatePickerCalendar.ELEMENT = await fixture(html` <md-datepicker-calendar></md-datepicker-calendar> `);
 
     // Set the viewAnchorDate and weekStart
     el.viewAnchorDate = DateTime.now();
@@ -68,7 +56,7 @@ describe("DatePickerCalendar Component", () => {
 
     const header = el.header();
 
-    const dayNames = header.map(dayTemplate => dayTemplate.values[0]);
+    const dayNames = header.map((dayTemplate) => dayTemplate.values[0]);
 
     expect(dayNames).toHaveLength(7);
     expect(dayNames[0]).toContain("M");

@@ -7,11 +7,7 @@ describe("SassStats component", () => {
 
   test("should render", async () => {
     expect.hasAssertions();
-    const component: SassStats = await fixture(
-      html`
-        <sass-stats component="badge"></sass-stats>
-      `
-    );
+    const component: SassStats = await fixture(html` <sass-stats component="badge"></sass-stats> `);
     expect(component.component).toEqual("badge");
   });
 });

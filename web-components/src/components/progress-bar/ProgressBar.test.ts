@@ -3,11 +3,7 @@ import "./ProgressBar";
 import { ProgressBar } from "./ProgressBar";
 
 const fixtureFactory = async (): Promise<ProgressBar.ELEMENT> => {
-  return await fixture(
-    html`
-      <md-progress-bar label="test list" value="55"></md-progress-bar>
-    `
-  );
+  return await fixture(html` <md-progress-bar label="test list" value="55"></md-progress-bar> `);
 };
 
 describe("ProgressBar", () => {
@@ -37,11 +33,9 @@ describe("ProgressBar", () => {
   });
 
   test("should display correct displayFormat as fraction", async () => {
-    const element: ProgressBar.ELEMENT = await fixture(
-      html`
-        <md-progress-bar label="test list" value="55" type="determinate"></md-progress-bar>
-      `
-    );
+    const element: ProgressBar.ELEMENT = await fixture(html`
+      <md-progress-bar label="test list" value="55" type="determinate"></md-progress-bar>
+    `);
     element.displayFormat = "fraction";
     await elementUpdated(element);
 
@@ -50,11 +44,9 @@ describe("ProgressBar", () => {
   });
 
   test("should display correct displayFormat", async () => {
-    const element: ProgressBar.ELEMENT = await fixture(
-      html`
-        <md-progress-bar label="test list" type="determinate"></md-progress-bar>
-      `
-    );
+    const element: ProgressBar.ELEMENT = await fixture(html`
+      <md-progress-bar label="test list" type="determinate"></md-progress-bar>
+    `);
     element.value = 20;
     element.dynamic = true;
     await elementUpdated(element);
@@ -79,11 +71,7 @@ describe("ProgressBar", () => {
   });
 
   test("dynamic get color", async () => {
-    const element: ProgressBar.ELEMENT = await fixture(
-      html`
-        <md-progress-bar label="test list"></md-progress-bar>
-      `
-    );
+    const element: ProgressBar.ELEMENT = await fixture(html` <md-progress-bar label="test list"></md-progress-bar> `);
 
     element.dynamic = true;
 
@@ -105,11 +93,9 @@ describe("ProgressBar", () => {
   });
 
   test("adjusted value", async () => {
-    const element: ProgressBar.ELEMENT = await fixture(
-      html`
-        <md-progress-bar label="test list" type="determinate"></md-progress-bar>
-      `
-    );
+    const element: ProgressBar.ELEMENT = await fixture(html`
+      <md-progress-bar label="test list" type="determinate"></md-progress-bar>
+    `);
 
     element.min = 0;
     element.max = 100;

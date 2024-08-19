@@ -365,7 +365,7 @@ describe("MenuOverlay", () => {
         }
         protected async firstUpdated(changedProperties: PropertyValues) {
           super.firstUpdated(changedProperties);
-          await new Promise(resolve => setTimeout(resolve, 0));
+          await new Promise((resolve) => setTimeout(resolve, 0));
           this.dispatchEvent(new CustomEvent("first-updated"));
         }
       }

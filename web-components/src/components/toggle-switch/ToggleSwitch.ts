@@ -18,7 +18,7 @@ export const alignLabel = ["left", "right"] as const;
 const accessibleDescriptionLabelId = "md-toggle-switch__accessible-description";
 
 export namespace ToggleSwitch {
-  export type alignLabel = typeof alignLabel[number];
+  export type alignLabel = (typeof alignLabel)[number];
   @customElementWithCheck("md-toggle-switch")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: String }) htmlId = "";
@@ -48,7 +48,10 @@ export namespace ToggleSwitch {
       if (this.alignLabel === "left") {
         return html`
           <slot></slot>
-          <span class="md-toggle-switch__label__container md-toggle-switch__label__container__left" part="toggle-label"></span>
+          <span
+            class="md-toggle-switch__label__container md-toggle-switch__label__container__left"
+            part="toggle-label"
+          ></span>
         `;
       } else {
         return html`
@@ -76,10 +79,9 @@ export namespace ToggleSwitch {
             tabindex=${this.disabled ? -1 : 0}
             aria-describedby=${ifDefined(this.description ? accessibleDescriptionLabelId : undefined)}
           />
-          <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label">
-            ${this.switchTemplate()}
-          </md-label>
-          ${this.description && html`
+          <md-label .htmlFor=${this.htmlId} class="md-toggle-switch__label"> ${this.switchTemplate()} </md-label>
+          ${this.description &&
+          html`
             <div id=${accessibleDescriptionLabelId} class="md-toggle-switch__accessible-description">
               ${this.description}
             </div>

@@ -11,13 +11,13 @@ const menu = {
     dark: colors.gray[20].name
   },
   hover: {
-    "bg": {
+    bg: {
       light: colors.blue[20].name,
       dark: colors.blue[80].name
     }
   },
   pressed: {
-    "bg": {
+    bg: {
       light: colors.blue[30].name,
       dark: colors.blue[70].name
     }

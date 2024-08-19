@@ -8,7 +8,7 @@ const slider = {
   background: {
     selection: {
       light: colors.blue[50].name,
-      dark: colors.blue[50].name,
+      dark: colors.blue[50].name
     },
     pointer: {
       light: colors.white[100].name
@@ -28,7 +28,7 @@ const slider = {
     disabled: {
       selection: {
         light: colors.gray[50].name,
-        dark: colors.gray[50].name,
+        dark: colors.gray[50].name
       },
       pointer: {
         light: colors.gray[30].name,

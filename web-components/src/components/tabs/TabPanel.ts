@@ -32,9 +32,7 @@ export namespace TabPanel {
     }
 
     render() {
-      return html`
-        <slot></slot>
-      `;
+      return html` <slot></slot> `;
     }
   }
 }

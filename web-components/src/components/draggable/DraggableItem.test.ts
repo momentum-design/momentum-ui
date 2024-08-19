@@ -9,11 +9,7 @@ describe("Draggable Item Component", () => {
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<DraggableItem.ELEMENT>(
-      html`
-        <md-draggable-item></md-draggable-item>
-      `
-    );
+    element = await fixture<DraggableItem.ELEMENT>(html` <md-draggable-item></md-draggable-item> `);
   });
 
   test("should render with correct class", async () => {

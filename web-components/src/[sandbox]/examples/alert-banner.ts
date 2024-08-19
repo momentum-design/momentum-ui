@@ -97,6 +97,4 @@ export class AlertBannerTemplateSandbox extends LitElement {
   }
 }
 
-export const alertBannerTemplate = html`
-  <alert-banner-template-sandbox></alert-banner-template-sandbox>
-`;
+export const alertBannerTemplate = html` <alert-banner-template-sandbox></alert-banner-template-sandbox> `;

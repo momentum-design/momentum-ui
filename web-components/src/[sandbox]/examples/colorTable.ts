@@ -9,6 +9,4 @@
 import "@/internal-components/color-table/ColorTable";
 import { html } from "lit-element";
 
-export const colorTableTemplate = html`
-  <color-table></color-table>
-`;
+export const colorTableTemplate = html` <color-table></color-table> `;

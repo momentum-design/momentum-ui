@@ -46,7 +46,7 @@ const slider = {
       pointer: {
         light: colors.gray[40].name,
         dark: colors.gray[40].name
-      },
+      }
     },
     label: {
       light: colors.gray[70].name

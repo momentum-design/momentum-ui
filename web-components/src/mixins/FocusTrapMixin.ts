@@ -205,7 +205,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         } else if (child.tagName === "SLOT") {
           const childElements = (child as HTMLSlotElement)
             .assignedNodes()
-            .filter(node => node.nodeType === node.ELEMENT_NODE);
+            .filter((node) => node.nodeType === node.ELEMENT_NODE);
           if (childElements.length) {
             const parent = childElements[0].parentElement;
             if (parent) {
@@ -227,7 +227,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     private findElement(activeElement: HTMLElement) {
-      return this.focusableElements.findIndex(element => this.isEqualFocusNode(activeElement, element));
+      return this.focusableElements.findIndex((element) => this.isEqualFocusNode(activeElement, element));
     }
 
     private focusTrap(direction: boolean) {
@@ -237,7 +237,8 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
         if (activeIndex === -1 && this.focusTrapIndex - 1 > 0) {
           this.focusTrapIndex--;
         } else {
-          this.focusTrapIndex = activeIndex > (this.shouldWrapFocus() ? 1 : 0) ? activeIndex - 1 : this.focusableElements.length - 1;
+          this.focusTrapIndex =
+            activeIndex > (this.shouldWrapFocus() ? 1 : 0) ? activeIndex - 1 : this.focusableElements.length - 1;
         }
       } else if (activeIndex === -1 && this.focusTrapIndex + 1 < this.focusableElements.length) {
         this.focusTrapIndex++;
@@ -247,13 +248,14 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
           this.tryFocus(nextEleToFocus);
         }
       } else {
-        this.focusTrapIndex = activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : (this.shouldWrapFocus() ? 1 : 0);
+        this.focusTrapIndex =
+          activeIndex + 1 < this.focusableElements.length ? activeIndex + 1 : this.shouldWrapFocus() ? 1 : 0;
       }
     }
 
     handleFocusOnClear = () => {
       this.focusTrap(true);
-    }
+    };
 
     private hasAutofocus(element: HTMLElement) {
       return element.hasAttribute("autofocus");
@@ -282,11 +284,11 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     }
 
     /**
-    * this method is used to set focus on trigger element by finding the focusable element in the trigger element.
-    *
-    * @param   triggerElement  The trigger element.
-    * @returns void
-    */
+     * this method is used to set focus on trigger element by finding the focusable element in the trigger element.
+     *
+     * @param   triggerElement  The trigger element.
+     * @returns void
+     */
     protected setFocusOnTrigger(triggerElement: HTMLElement) {
       let deepNestedTriggerElement;
       if (triggerElement.shadowRoot!) {
@@ -296,7 +298,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       } else {
         deepNestedTriggerElement = this.findFocusable(triggerElement, new Set());
       }
-      if(deepNestedTriggerElement[0]){
+      if (deepNestedTriggerElement[0]) {
         const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
         this.focusTrapIndex = focusableIndex;
       }
@@ -308,7 +310,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
       this.setFocusableElements();
     }
 
@@ -362,7 +364,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       let insideTrapClick = false;
       const path = event.composedPath();
       if (path.length) {
-        insideTrapClick = !!path.find(node => node === this);
+        insideTrapClick = !!path.find((node) => node === this);
         if (!insideTrapClick && !this.preventClickOutside && this.activeFocusTrap) {
           this.deactivateFocusTrap();
         } else if (insideTrapClick && this.activeFocusTrap && this.initialFocusComplete) {
@@ -373,7 +375,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
 
     private handleClickInsideTrap(event: MouseEvent) {
       const path = event.composedPath();
-      const pathIndex = path.findIndex(element => this.findElement(element as HTMLElement) !== -1);
+      const pathIndex = path.findIndex((element) => this.findElement(element as HTMLElement) !== -1);
       if (pathIndex !== -1) {
         const focusableElement = path[pathIndex] as HTMLElement;
         const focusableIndex = this.findElement(focusableElement);

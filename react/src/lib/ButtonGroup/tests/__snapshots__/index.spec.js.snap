@@ -42,7 +42,7 @@ ShallowWrapper {
         className="md-button-group md-button-group--justified"
         role="group"
       >
-        <Unknown>
+        <UIDReset>
           <Context.Provider
             value={
               Object {
@@ -59,7 +59,7 @@ ShallowWrapper {
               1
             </ForwardRef(render)>
           </Context.Provider>
-        </Unknown>
+        </UIDReset>
       </div>,
       "value": Object {
         "parentKeyDown": [Function],
@@ -73,7 +73,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "aria-label": "",
-        "children": <Unknown>
+        "children": <UIDReset>
           <Context.Provider
             value={
               Object {
@@ -90,7 +90,7 @@ ShallowWrapper {
               1
             </ForwardRef(render)>
           </Context.Provider>
-        </Unknown>,
+        </UIDReset>,
         "className": "md-button-group md-button-group--justified",
         "role": "group",
       },
@@ -207,7 +207,7 @@ ShallowWrapper {
           className="md-button-group md-button-group--justified"
           role="group"
         >
-          <Unknown>
+          <UIDReset>
             <Context.Provider
               value={
                 Object {
@@ -224,7 +224,7 @@ ShallowWrapper {
                 1
               </ForwardRef(render)>
             </Context.Provider>
-          </Unknown>
+          </UIDReset>
         </div>,
         "value": Object {
           "parentKeyDown": [Function],
@@ -238,7 +238,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "aria-label": "",
-          "children": <Unknown>
+          "children": <UIDReset>
             <Context.Provider
               value={
                 Object {
@@ -255,7 +255,7 @@ ShallowWrapper {
                 1
               </ForwardRef(render)>
             </Context.Provider>
-          </Unknown>,
+          </UIDReset>,
           "className": "md-button-group md-button-group--justified",
           "role": "group",
         },

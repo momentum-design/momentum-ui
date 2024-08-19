@@ -6,13 +6,13 @@
  *
  */
 
-import { isActionKey } from "@/utils/keyboard";
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { CSSResultArray, html, LitElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map.js";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { isActionKey } from "@/utils/keyboard";
+import reset from "@/wc_scss/reset.scss";
+import { CSSResultArray, html, LitElement, property } from "lit-element";
+import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace AlertBanner {
@@ -61,7 +61,7 @@ export namespace AlertBanner {
               @click="${this.onHide}"
               @keydown="${this.handleKeyDown}"
             >
-              <md-icon name="icon-cancel_16"></md-icon>
+              <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
             </md-button>
           `
         : null;

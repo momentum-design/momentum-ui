@@ -49,25 +49,43 @@ export namespace Alert {
       switch (this.type) {
         case "error":
           return html`
-            <md-icon name="icon-warning_32" color="var(--md-alert-error-text-color, red)"></md-icon>
+            <md-icon
+              name="warning-regular"
+              size="32"
+              iconSet="momentumDesign"
+              color="var(--md-alert-error-text-color, red)"
+            ></md-icon>
           `;
         case "info":
           return html`
-            <md-icon name="info_32" color="var(--md-alert-info-text-color, blue)"></md-icon>
+            <md-icon
+              name="info-circle-regular"
+              size="32"
+              iconSet="momentumDesign"
+              color="var(--md-alert-info-text-color, blue)"
+            ></md-icon>
           `;
         case "success":
           return html`
-            <md-icon name="check-circle_36" color="var(--md-alert-success-text-color, green)"></md-icon>
+            <md-icon
+              name="check-circle-regular"
+              size="32"
+              iconSet="momentumDesign"
+              color="var(--md-alert-success-text-color, green)"
+            ></md-icon>
           `;
         case "warn":
         case "warning":
           return html`
-            <md-icon name="icon-warning_32" color="var(--md-alert-warning-text-color, orange)"></md-icon>
+            <md-icon
+              name="warning-regular"
+              size="32"
+              iconSet="momentumDesign"
+              color="var(--md-alert-warning-text-color, orange)"
+            ></md-icon>
           `;
         default:
-          return html`
-            <slot name="alert-icon"></slot>
-          `;
+          return html` <slot name="alert-icon"></slot> `;
       }
     };
 
@@ -89,11 +107,7 @@ export namespace Alert {
                 <div part="content" class="md-alert__content">
                 ${
                   this.title && this.title !== ""
-                    ? html`
-                        <div class="md-alert__title" role="heading" aria-level="1">
-                          ${this.title}
-                        </div>
-                      `
+                    ? html` <div class="md-alert__title" role="heading" aria-level="1">${this.title}</div> `
                     : nothing
                 }
                   <div class="md-alert__message">
@@ -112,7 +126,7 @@ export namespace Alert {
                             circle
                             @click="${() => this.close()}"
                           >
-                            <md-icon slot="icon" name="icon-cancel_16"></md-icon>
+                            <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign"></md-icon>
                           </md-button>
                         </div>
                       `

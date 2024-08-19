@@ -220,9 +220,12 @@ export namespace AudioPlayer {
       this.audio.currentTime = seconds;
     }
 
-    setVolumeElement(e: MouseEvent){
+    setVolumeElement(e: MouseEvent) {
       const className = "volume";
-      this.volumeElement = (e.target as HTMLElement).className === className ? e.target as HTMLElement : (e.target as HTMLElement).parentElement as HTMLElement;
+      this.volumeElement =
+        (e.target as HTMLElement).className === className
+          ? (e.target as HTMLElement)
+          : ((e.target as HTMLElement).parentElement as HTMLElement);
     }
 
     handleVolumeChange(e: MouseEvent) {
@@ -240,7 +243,7 @@ export namespace AudioPlayer {
           cleanupEventListeners();
         }
       };
-    
+
       const onMouseUp = (upEvent: MouseEvent) => {
         cleanupEventListeners();
       };
@@ -249,15 +252,15 @@ export namespace AudioPlayer {
         isDragging = false;
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseup", onMouseUp);
-      }
-    
+      };
+
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
-    
+
       // Prevent text selection during drag
       e.preventDefault();
     }
-    
+
     getVolumeFromSlider(e: MouseEvent): number {
       if (this.volumeElement === null) {
         return 0;
@@ -294,7 +297,7 @@ export namespace AudioPlayer {
       let insideSelfClick = false;
       const path = e.composedPath();
       if (path.length) {
-        insideSelfClick = !!path.find(element => (element as HTMLElement).id === "speed-btn");
+        insideSelfClick = !!path.find((element) => (element as HTMLElement).id === "speed-btn");
         if (!insideSelfClick) {
           this.showSpeedPopup = false;
         }
@@ -358,7 +361,7 @@ export namespace AudioPlayer {
         case Key.ArrowUp: {
           if (this.showSpeedPopup) {
             this.currentlySelectingPlaybackSpeed = true;
-            const currentIndex = playbackSpeeds.findIndex(speed => speed.value === this.selectedPlaybackSpeed);
+            const currentIndex = playbackSpeeds.findIndex((speed) => speed.value === this.selectedPlaybackSpeed);
             const newIndex = Math.max(0, currentIndex - 1);
             this.selectedPlaybackSpeed = playbackSpeeds[newIndex].value;
             event.preventDefault();
@@ -369,7 +372,7 @@ export namespace AudioPlayer {
         case Key.ArrowDown: {
           if (this.showSpeedPopup) {
             this.currentlySelectingPlaybackSpeed = true;
-            const currentIndex = playbackSpeeds.findIndex(speed => speed.value === this.selectedPlaybackSpeed);
+            const currentIndex = playbackSpeeds.findIndex((speed) => speed.value === this.selectedPlaybackSpeed);
             const newIndex = Math.min(playbackSpeeds.length - 1, currentIndex + 1);
             this.selectedPlaybackSpeed = playbackSpeeds[newIndex].value;
             event.preventDefault();
@@ -424,12 +427,8 @@ export namespace AudioPlayer {
                   aria-label="${this.isPlaying ? this.labelMap.pauseBtn.ariaLabel : this.labelMap.playBtn.ariaLabel}"
                 >
                   ${this.isPlaying
-                    ? html`
-                        <md-icon slot="icon" name="icon-pause_16"></md-icon>
-                      `
-                    : html`
-                        <md-icon slot="icon" name="icon-play_16"></md-icon>
-                      `}
+                    ? html` <md-icon slot="icon" name="pause-bold" size="16" iconSet="momentumDesign"></md-icon> `
+                    : html` <md-icon slot="icon" name="play-bold" size="16" iconSet="momentumDesign"></md-icon> `}
                 </md-button>
               </md-tooltip>
             </div>
@@ -480,23 +479,21 @@ export namespace AudioPlayer {
                 >
                   ${this.isMuted
                     ? html`
-                        <md-icon slot="icon" name="icon-speaker-muted_16"></md-icon>
+                        <md-icon slot="icon" name="speaker-muted-bold" size="16" iconSet="momentumDesign"></md-icon>
                       `
-                    : html`
-                        <md-icon slot="icon" name="icon-speaker_16"></md-icon>
-                      `}
+                    : html` <md-icon slot="icon" name="speaker-bold" size="16" iconSet="momentumDesign"></md-icon> `}
                 </md-button>
               </md-tooltip>
             </div>
             <div class="speed-icon-container" aria-label="${this.labelMap.playbackSpeedBtn.ariaLabel}">
               <md-tooltip placement="top" message="${this.labelMap.playbackSpeedBtn.tooltipText}">
                 <md-button hasRemoveStyle id="speed-btn" @click="${this.toggleSpeedPopup}">
-                  <md-icon slot="icon" name="icon-too-fast_16"></md-icon>
+                  <md-icon slot="icon" name="too-fast-bold" size="16" iconSet="momentumDesign"></md-icon>
                 </md-button>
               </md-tooltip>
               <div class="speed-popup ${classMap(this.popupClassMap)}">
                 <ul id="speed-popup-menu">
-                  ${playbackSpeeds.map(speed => {
+                  ${playbackSpeeds.map((speed) => {
                     const isCurrentlySelected =
                       this.selectedPlaybackSpeed == speed.value && !this.currentlySelectingPlaybackSpeed;
                     return html`
@@ -507,7 +504,13 @@ export namespace AudioPlayer {
                         <span>${speed.label}</span>
                         ${this.playbackSpeed == speed.value
                           ? html`
-                              <md-icon slot="icon" color="md-blue-60" name="icon-check_16"></md-icon>
+                              <md-icon
+                                slot="icon"
+                                color="md-blue-60"
+                                name="check-bold"
+                                size="16"
+                                iconSet="momentumDesign"
+                              ></md-icon>
                             `
                           : nothing}
                       </li>

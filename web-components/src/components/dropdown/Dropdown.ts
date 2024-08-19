@@ -90,7 +90,7 @@ export namespace Dropdown {
           this.updateRenderOptions();
         }
         if (name === "selectedKey") {
-          const idx = this.renderOptions.findIndex(o => o.key === this.selectedKey);
+          const idx = this.renderOptions.findIndex((o) => o.key === this.selectedKey);
           if (idx !== -1) {
             this.focusToIndex(idx);
           }
@@ -149,7 +149,7 @@ export namespace Dropdown {
     }
 
     async resizeDropdownList() {
-      await new Promise<void>(resolve =>
+      await new Promise<void>((resolve) =>
         requestAnimationFrame(() => {
           if (this.optionsListItems) {
             if (this.optionsListItems.length > this.visibleOptions) {
@@ -265,7 +265,7 @@ export namespace Dropdown {
       let insideSelfClick = false;
       const path = e.composedPath();
       if (path.length) {
-        insideSelfClick = !!path.find(element => element === this);
+        insideSelfClick = !!path.find((element) => element === this);
         if (!insideSelfClick) {
           if (this.expanded) {
             this.collapse();
@@ -387,7 +387,7 @@ export namespace Dropdown {
     }
 
     async scrollToIndex(n: number) {
-      await new Promise<void>(resolve => {
+      await new Promise<void>((resolve) => {
         requestAnimationFrame(() => {
           if (
             this.optionsListItems &&
@@ -442,7 +442,7 @@ export namespace Dropdown {
 
     get labelTitle() {
       if (this.selectedKey) {
-        const option = this.renderOptions.find(o => o.key === this.selectedKey);
+        const option = this.renderOptions.find((o) => o.key === this.selectedKey);
         if (option) {
           return option.value;
         }
@@ -473,7 +473,7 @@ export namespace Dropdown {
           >
             <span class="md-dropdown-label--text">${this.labelTitle}</span>
             <span class="md-dropdown-label--icon">
-              <md-icon name="icon-arrow-down_16"></md-icon>
+              <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
             </span>
           </label>
           <ul
@@ -487,7 +487,7 @@ export namespace Dropdown {
           >
             ${repeat(
               this.renderOptions,
-              o => o.key,
+              (o) => o.key,
               (o, idx) => html`
                 <li
                   id="combo-${idx}"

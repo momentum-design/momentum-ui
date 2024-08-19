@@ -1,5 +1,6 @@
 /* eslint-disable */
 module.exports = {
+  testEnvironment: "jsdom",
   collectCoverage: true,
   coverageProvider: "v8",
   transform: {

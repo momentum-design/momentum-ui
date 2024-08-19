@@ -41,19 +41,19 @@
 
       &--icon {
         @include arrow-transition;
-        display: inline-block;
-
-        background-color: transparent;
-        border: none;
+        align-self: center;
+        background: transparent;
+        border: 0;
         cursor: pointer;
-        height: $dropdown-icon-height;
         margin: 0;
-        margin-left: calc(#{$dropdown-main-indent} * 3);
+        margin-left: calc(#{$dropdown-main-indent} * 2);
         outline: none;
         padding: 0;
         padding-top: calc(#{$dropdown-main-indent} / 2);
         position: relative;
         vertical-align: bottom;
+        height: inherit;
+        display: flex;
 
         md-icon {
           color: var(--md-primary-text-color, $md-gray-05);

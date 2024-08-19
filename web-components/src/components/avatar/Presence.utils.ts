@@ -4,7 +4,11 @@ type ReturnType = {
   isCircularWrapper?: boolean;
 };
 
-export const getPresenceIconColor = (presenceType: string, failureBadge: boolean): ReturnType => {
+export const getPresenceIconColor = (
+  presenceType: string,
+  failureBadge: boolean,
+  isMomentumDesign = false
+): ReturnType => {
   let presenceIcon = "";
   let presenceColor = "";
   let isCircularWrapper = true;
@@ -28,26 +32,26 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         presenceColor = "var(--avatar-presence-active)";
         break;
       case "meeting":
-        presenceIcon = "camera-presence_14";
+        presenceIcon = isMomentumDesign ? "camera-presence-filled" : "camera-presence_14";
         presenceColor = "var(--avatar-presence-unstable)";
         isCircularWrapper = false;
         break;
       case "schedule":
-        presenceIcon = "meetings-presence_14";
+        presenceIcon = isMomentumDesign ? "meetings-presence-filled" : "meetings-presence_14";
         presenceColor = "var(--avatar-presence-unstable)";
         isCircularWrapper = false;
         break;
       case "call":
-        presenceIcon = "handset-active_16";
+        presenceIcon = isMomentumDesign ? "handset-filled" : "handset-active_16";
         presenceColor = "var(--avatar-presence-unstable)";
         isCircularWrapper = false;
         break;
       case "dnd":
-        presenceIcon = "dnd-presence_14";
+        presenceIcon = isMomentumDesign ? "dnd-presence-filled" : "dnd-presence_14";
         presenceColor = "var(--avatar-presence-rona)";
         break;
       case "presenting":
-        presenceIcon = "content-share_14";
+        presenceIcon = isMomentumDesign ? "share-screen-filled" : "content-share_14";
         presenceColor = "var(--avatar-presence-rona)";
         isCircularWrapper = false;
         break;
@@ -56,11 +60,11 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "away":
-        presenceIcon = "recents-presence_14";
+        presenceIcon = isMomentumDesign ? "recents-presence-filled" : "recents-presence_14";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "idle":
-        presenceIcon = "recents-presence_14";
+        presenceIcon = isMomentumDesign ? "recents-presence-filled" : "recents-presence_14";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "away-calling":
@@ -82,7 +86,7 @@ export const getPresenceIconColor = (presenceType: string, failureBadge: boolean
         isCircularWrapper = false;
         break;
       case "on-device":
-        presenceIcon = "generic-device-video_16";
+        presenceIcon = isMomentumDesign ? "generic-device-video-filled" : "generic-device-video_16";
         presenceColor = "var(--avatar-presence-inactive)";
         isCircularWrapper = false;
         break;

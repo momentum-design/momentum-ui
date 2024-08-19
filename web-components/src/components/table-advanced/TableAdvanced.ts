@@ -117,10 +117,10 @@ export namespace TableAdvanced {
           ? f == "forString"
             ? Filter.optionsString
             : f == "forNumber"
-            ? Filter.optionsNumber
-            : f.length
-            ? f
-            : null
+              ? Filter.optionsNumber
+              : f.length
+                ? f
+                : null
           : null;
 
         this.COLS.push({
@@ -142,9 +142,9 @@ export namespace TableAdvanced {
         });
       };
 
-      this.tableConfig.cols.define.forEach(col => {
+      this.tableConfig.cols.define.forEach((col) => {
         if ("children" in col) {
-          col.children.forEach(c => pushCol(c, { name: col.groupName, length: col.children.length }));
+          col.children.forEach((c) => pushCol(c, { name: col.groupName, length: col.children.length }));
         } else {
           pushCol(col);
         }
@@ -160,23 +160,23 @@ export namespace TableAdvanced {
       if ("csv" in this.tableData) {
         const parse = Papa.parse(this.tableData.csv, {
           skipEmptyLines: true,
-          transform: x => x.trim()
+          transform: (x) => x.trim()
         });
         if (parse.errors) {
           this.error = "PARSE ERROR:\n" + JSON.stringify(parse.errors, null, 2);
           return;
         } else {
           const data = parse.data as string[][];
-          this.ROWS = data.map(x => x.map(text => ({ text })));
+          this.ROWS = data.map((x) => x.map((text) => ({ text })));
         }
       } else if ("list2d" in this.tableData) {
-        this.ROWS = this.tableData.list2d.map(x => x.map(text => ({ text })));
+        this.ROWS = this.tableData.list2d.map((x) => x.map((text) => ({ text })));
       } else {
         while (this.tableData.list.length > lenNodes) {
-          this.ROWS.push(this.tableData.list.splice(0, lenNodes).map(text => ({ text })));
+          this.ROWS.push(this.tableData.list.splice(0, lenNodes).map((text) => ({ text })));
         }
         if (this.tableData.list.length != 0) {
-          this.ROWS.push(this.tableData.list.map(text => ({ text })));
+          this.ROWS.push(this.tableData.list.map((text) => ({ text })));
         }
       }
 
@@ -246,7 +246,7 @@ export namespace TableAdvanced {
     private setDefaultFilterAndSort() {
       const s = this.tableConfig.default?.sort;
       if (s) {
-        const col = this.COLS.find(c => c.options.id == s.colId);
+        const col = this.COLS.find((c) => c.options.id == s.colId);
         if (col) {
           this.sort(col, s.order);
         } else {
@@ -256,7 +256,7 @@ export namespace TableAdvanced {
 
       const f = this.tableConfig.default?.filter;
       if (f) {
-        const col = this.COLS.find(c => c.options.id == f.colId);
+        const col = this.COLS.find((c) => c.options.id == f.colId);
         if (col) {
           if (col.filter) {
             col.filter.selectedIndex = f.selectedIndex;
@@ -316,7 +316,7 @@ export namespace TableAdvanced {
         this.COLS[this.dragCol] = drop;
         this.COLS[this.dropCol] = drag;
 
-        this.ROWS.forEach(row => {
+        this.ROWS.forEach((row) => {
           const rDrag = row[this.dragCol];
           const rDrop = row[this.dropCol];
           row[this.dragCol] = rDrop;
@@ -337,7 +337,7 @@ export namespace TableAdvanced {
       this.clearSelection();
       this.drops = [];
 
-      this.COLS.forEach(c => {
+      this.COLS.forEach((c) => {
         if (c.options.id == col.options.id) {
           c.sort = order ? order : c.sort == "default" ? "ascending" : c.sort == "ascending" ? "descending" : "default";
         } else {
@@ -400,7 +400,7 @@ export namespace TableAdvanced {
 
         this["md-table-advanced-change"].emit({
           type: "multi-select",
-          rows: Object.keys(this.selected).map(k => +k)
+          rows: Object.keys(this.selected).map((k) => +k)
         });
       } else {
         if (isSelected) {
@@ -452,7 +452,7 @@ export namespace TableAdvanced {
       const t = e.target as HTMLDivElement;
       e.dataTransfer?.setDragImage(IMG, 0, 0);
 
-      const elems = this.COLS.map(c => this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${c.index}`)!);
+      const elems = this.COLS.map((c) => this.shadowRoot!.querySelector<HTMLElement>(`th.col-index-${c.index}`)!);
       this.COLS.forEach((c, i) => (c.width = elems[i].offsetWidth + "px"));
       this.updCols();
 
@@ -511,10 +511,7 @@ export namespace TableAdvanced {
     // ----------------------------------
 
     render() {
-      if (this.error)
-        return html`
-          <div>${this.error}</div>
-        `;
+      if (this.error) return html` <div>${this.error}</div> `;
 
       const { head } = this.tableConfig;
       const tableClass = classMap({
@@ -530,19 +527,17 @@ export namespace TableAdvanced {
                   <caption>
                     ${head?.caption}
                     ${head?.tableDescription
-                      ? html`
-                          <span style="position: absolute; top: -30em">${head?.tableDescription}</span>
-                        `
+                      ? html` <span style="position: absolute; top: -30em">${head?.tableDescription}</span> `
                       : nothing}
                   </caption>
                 `
               : head?.tableDescription
-              ? html`
-                  <caption>
-                    <span style="position: absolute; top: -30em">${head?.tableDescription}</span>
-                  </caption>
-                `
-              : nothing}
+                ? html`
+                    <caption>
+                      <span style="position: absolute; top: -30em">${head?.tableDescription}</span>
+                    </caption>
+                  `
+                : nothing}
             ${this.renderHead()} ${this.renderBody()}
           </table>
         </div>
@@ -555,22 +550,18 @@ export namespace TableAdvanced {
       if (hasGroup) {
         let gName = "";
         groups = html`
-          ${this.COLS.map(c => {
+          ${this.COLS.map((c) => {
             if (c.group) {
               if (gName != c.group.name) {
                 gName = c.group.name;
-                return html`
-                  <colgroup span=${c.group.length}></colgroup>
-                `;
+                return html` <colgroup span=${c.group.length}></colgroup> `;
               }
             } else {
-              return html`
-                <col />
-              `;
+              return html` <col /> `;
             }
           })}
           <tr tabindex="0">
-            ${this.COLS.map(col => {
+            ${this.COLS.map((col) => {
               if (col.group) {
                 if (gName != col.group.name) {
                   gName = col.group.name;
@@ -593,7 +584,7 @@ export namespace TableAdvanced {
 
       const heads = html`
         <tr tabindex="0">
-          ${this.COLS.map(col => {
+          ${this.COLS.map((col) => {
             if (hasGroup) {
               if (col.group) {
                 return this.renderCol(col);
@@ -638,18 +629,14 @@ export namespace TableAdvanced {
               ? html`
                   <button class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</button>
                 `
-              : html`
-                  <span>${col.options.title}</span>
-                `}
+              : html` <span>${col.options.title}</span> `}
 
             <!-- FILTER -->
             ${col.filter
               ? html`
                   <div class="filter-wrap">
                     ${col.filter.active
-                      ? html`
-                          <md-icon class="filter-active" name="filter-adr_14"></md-icon>
-                        `
+                      ? html` <md-icon class="filter-active" name="filter-adr_14"></md-icon> `
                       : nothing}
                     <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
                       <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
@@ -659,7 +646,7 @@ export namespace TableAdvanced {
                         <select
                           name="filter-type"
                           @change=${(e: Event) => {
-                            col.filter!.selectedIndex = ((e.target! as HTMLSelectElement).value as unknown) as number;
+                            col.filter!.selectedIndex = (e.target! as HTMLSelectElement).value as unknown as number;
                             this.updCols();
                             this.filter(col);
                           }}
@@ -744,7 +731,7 @@ export namespace TableAdvanced {
 
       // filter
       const len = this.COLS.length;
-      rows = rows.filter(row => {
+      rows = rows.filter((row) => {
         for (let i = 0; i < len; i++) {
           const col = this.COLS[i];
           if (col.filter?.active) {
@@ -757,7 +744,7 @@ export namespace TableAdvanced {
       });
 
       // sort
-      const sortCol = this.COLS.find(c => c.sort != "default");
+      const sortCol = this.COLS.find((c) => c.sort != "default");
       if (sortCol) {
         const map = this.ROWS.map((r, i) => ({ v: r[sortCol.index].text, i }));
         const dir = sortCol.sort == "ascending" ? 1 : -1;
@@ -772,28 +759,31 @@ export namespace TableAdvanced {
           rowsSorted = map.sort((a, b) => func(a.v, b.v, dir));
         }
 
-        rows = rowsSorted.map(s => rows[s.i]);
+        rows = rowsSorted.map((s) => rows[s.i]);
       }
 
       // collapse
-      const collapseCol = this.COLS.find(c => c.isCollapsable);
+      const collapseCol = this.COLS.find((c) => c.isCollapsable);
       if (collapseCol) {
         const colIdx = collapseCol.index;
 
-        const groups = rows.reduce((acc, row) => {
-          const key = row.cells[colIdx].text;
-          const group = acc.find(x => x.key == key);
-          if (group) {
-            row.collapse = "child";
-            group.children.push(row);
-          } else {
-            acc.push({ key, root: row, children: [] });
-          }
-          return acc;
-        }, [] as { key: string; root: Row; children: Row[] }[]);
+        const groups = rows.reduce(
+          (acc, row) => {
+            const key = row.cells[colIdx].text;
+            const group = acc.find((x) => x.key == key);
+            if (group) {
+              row.collapse = "child";
+              group.children.push(row);
+            } else {
+              acc.push({ key, root: row, children: [] });
+            }
+            return acc;
+          },
+          [] as { key: string; root: Row; children: Row[] }[]
+        );
 
         rows = [];
-        groups.forEach(g => {
+        groups.forEach((g) => {
           rows.push(g.root);
           g.root.collapse =
             g.children.length == 0 ? "none" : this.expandedRowIdx[g.root.idx] ? "expanded" : "collapsed";
@@ -817,11 +807,11 @@ export namespace TableAdvanced {
 
       return html`
         <tbody>
-          ${rows.map(row => {
+          ${rows.map((row) => {
             const len = rows.length;
             const isRenderChild = row.children.length > 0 && row.collapse == "expanded" && !row.isGhost;
             return html`
-              ${this.renderRow(row, len)} ${isRenderChild ? row.children.map(c => this.renderRow(c, len)) : nothing}
+              ${this.renderRow(row, len)} ${isRenderChild ? row.children.map((c) => this.renderRow(c, len)) : nothing}
             `;
           })}
         </tbody>
@@ -863,9 +853,7 @@ export namespace TableAdvanced {
                       col: j
                     })}
                   `
-                : html`
-                    ${templateContent(t.template)}
-                  `;
+                : html` ${templateContent(t.template)} `;
               if (t.insertIndex != -1) {
                 content = html`
                   ${t.insertIndex > 0 ? cell.text.substring(0, t.insertIndex) : nothing} ${content}
@@ -941,30 +929,20 @@ export namespace TableAdvanced {
                               color="color-none"
                             >
                               ${row.collapse == "collapsed"
-                                ? html`
-                                    <md-icon slot="icon" name="plus_12"></md-icon>
-                                  `
-                                : html`
-                                    <md-icon slot="icon" name="minus_12"></md-icon>
-                                  `}
+                                ? html` <md-icon slot="icon" name="plus_12"></md-icon> `
+                                : html` <md-icon slot="icon" name="minus_12"></md-icon> `}
                             </md-button>
                           `
                         : nothing}
                       <span>${row.collapse == "child" ? nothing : content}</span>
                     `
-                  : html`
-                      <span>${content}</span>
-                    `}
+                  : html` <span>${content}</span> `}
               </div>
             `;
 
             return col.options.isHeader
-              ? html`
-                  <th part="cell-ishead" scope="row" title="${cell.text}">${cellRenderResult}</th>
-                `
-              : html`
-                  <td part=${j === 0 ? "first-cell" : "cell"} title="${cell.text}">${cellRenderResult}</td>
-                `;
+              ? html` <th part="cell-ishead" scope="row" title="${cell.text}">${cellRenderResult}</th> `
+              : html` <td part=${j === 0 ? "first-cell" : "cell"} title="${cell.text}">${cellRenderResult}</td> `;
           })}
         </tr>
       `;

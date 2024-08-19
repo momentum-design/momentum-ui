@@ -8,17 +8,16 @@
 
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
+import momentumDesignManifest from "@momentum-design/icons/dist/manifest.json";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
-import { iconSize, iconType } from "./Icon"; // Keep type import as a relative path
+import { iconSet, iconSize, iconType } from "./Icon";
 
 export default {
   title: "Components/Icon",
   component: "md-icon",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     iconClassMap: { table: { disable: true } },
     iconStyleMap: { table: { disable: true } },
@@ -37,29 +36,42 @@ export default {
   }
 };
 
+const momentumDesignManifestArray = Object.keys(momentumDesignManifest).map((key) => ({
+  name: key,
+  value: (momentumDesignManifest as Record<string, string>)[key]
+}));
+const momentumDesignNames = momentumDesignManifestArray.map((item) => item.name);
+
 export const Icon = () => {
-  const darkTheme = boolean("Dark Mode", false);  
+  const darkTheme = boolean("Dark Mode", false);
   const theme = select("Theme name", ThemeNameValues, "lumos");
-  const name = select("Name", iconNames, "arrow-up_16");
-  const color = text("Color", "red");
-  const enable = boolean("Design Enabled", false);
+  const color = text("Color", "currentColor");
+  const theIconSet = select("Icon set", iconSet, iconSet[0]);
+  const momentumUIName = select("Momentum UI Name", iconNames, "arrow-up_16");
+  const momentumDesignName = select("Moment Design Name", momentumDesignNames, "arrow-up-bold");
   const title = text("Title", "");
   const type = select("Type", iconType, "");
-  const iconStyle = text("Icon Style", "");
   const size = select("Size", iconSize, "16");
   const sizeOverrided = boolean("Size Override", false);
+
+  function getIconSetIconName() {
+    if (theIconSet !== "momentumDesign") {
+      return `icon-${momentumUIName}`;
+    }
+
+    return momentumDesignName;
+  }
 
   return html`
     <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} theme=${theme}>
       <md-icon
-        .name=${`icon-${name}`}
+        .name=${getIconSetIconName()}
         .title=${title}
         .color=${color}
-        .iconStyle=${iconStyle}
         .type=${type}
         .size=${String(size)}
         .sizeOverrided=${sizeOverrided}
-        ?designEnabled=${enable}
+        .iconSet=${theIconSet}
         @icon-click=${action("dispatchEvent")}
       >
       </md-icon>

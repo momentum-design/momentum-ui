@@ -1,28 +1,22 @@
-import "./Presence";
-import { Presence } from "./Presence";
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
+import "./Presence";
+import { Presence } from "./Presence";
 import { getPresenceIconColor } from "./Presence.utils";
 
 describe("Presence", () => {
   afterEach(fixtureCleanup);
 
   test("should set size property", async () => {
-    const element = await fixture<Presence.ELEMENT>(
-      html`
-        <md-presence size="36" title="active"></md-presence>
-      `
-    );
-    expect(element.size).toEqual("36");
+    const element = await fixture<Presence.ELEMENT>(html` <md-presence size="36" title="active"></md-presence> `);
+    expect(element.size).toEqual(36);
     expect(element.title).toEqual("active");
   });
 
   test("should set color property", async () => {
-    const element = await fixture<Presence.ELEMENT>(
-      html`
-        <md-presence color="var(--mds-color-theme-indicator-stable)" title="active"></md-presence>
-      `
-    );
+    const element = await fixture<Presence.ELEMENT>(html`
+      <md-presence color="var(--mds-color-theme-indicator-stable)" title="active"></md-presence>
+    `);
     expect(element.color).toEqual("var(--mds-color-theme-indicator-stable)");
     expect(element.title).toEqual("active");
   });

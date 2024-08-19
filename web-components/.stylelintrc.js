@@ -10,7 +10,7 @@ module.exports = {
     "max-nesting-depth": 5,
     "selector-class-pattern": null,
     "scss/at-import-partial-extension-blacklist": null,
-    "declaration-property-value-blacklist": {
+    "declaration-property-value-disallowed-list": {
       "border": ["none"]
     },
     "scss/dollar-variable-pattern": null

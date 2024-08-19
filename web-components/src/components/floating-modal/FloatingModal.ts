@@ -181,7 +181,7 @@ export namespace FloatingModal {
       );
     }
 
-    handleMinimize(event: Event) {
+    handleMinimize() {
       if (this.minimizable) {
         if (!this.dragOccured) {
           this.minimize = !this.minimize;
@@ -350,7 +350,7 @@ export namespace FloatingModal {
                       heading=${this.heading}
                       .minimize=${this.minimize}
                       .minPosition=${this.minPosition}
-                      @floating-min-modal-minimize=${(event: Event) => this.handleMinimize(event)}
+                      @floating-min-modal-minimize=${() => this.handleMinimize()}
                       @floating-modal-close=${this.handleClose}
                       ?show=${this.show}
                     >

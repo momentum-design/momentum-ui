@@ -1,16 +1,21 @@
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/button/Button";
+import "@/components/checkbox/Checkbox";
 import "@/components/combobox/ComboBox";
 import "@/components/form/Form";
 import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
+import "@/components/list/List";
+import "@/components/list/ListItem";
 import "@/components/modal/Modal";
+import "@/components/phone-input/PhoneInput";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
+import "@/components/tooltip/Tooltip";
 import { debounce } from "@/utils/helpers";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { dropdownObjectLongOptions } from "./dropdown";
 
@@ -99,7 +104,7 @@ export class ModalTemplateSandbox extends LitElement {
       <md-modal ?show=${this.isStationLoginModal} closeBtnName="Submit This" @close-modal="${this.closeStationLogin}">
         <md-form class="form-class" id="international-form">
           <div class="international-checkbox-wrapper">
-            <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${(e: CustomEvent) => {
+            <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${() => {
               this.handleFormatChange();
             }}"
               >International dialing format</md-checkbox

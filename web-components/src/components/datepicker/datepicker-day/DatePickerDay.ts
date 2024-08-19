@@ -73,14 +73,20 @@ export namespace DatePickerDay {
 
     isDateInRange = () => {
       const rangePicker = this.parentRangePicker;
-      const startDate = rangePicker?.startDate!;
-      const endDate = rangePicker?.endDate!;
-      return this.isPrimarySelection()
-        ? false
-        : (this.day.toSQLDate() > startDate && this.day.toSQLDate() < endDate) ||
-            this.day.toSQLDate() == startDate ||
-            this.day.toSQLDate() == endDate ||
-            false;
+      const startDate = rangePicker?.startDate;
+      const endDate = rangePicker?.endDate;
+
+      if (!startDate || !endDate) {
+        return false;
+      }
+
+      const daySQLDate = this.day.toSQLDate();
+
+      const isBetweenDates = daySQLDate > startDate && daySQLDate < endDate;
+      const isStartDate = daySQLDate === startDate;
+      const isEndDate = daySQLDate === endDate;
+
+      return !this.isPrimarySelection() && (isBetweenDates || isStartDate || isEndDate);
     };
 
     isPrimarySelection() {

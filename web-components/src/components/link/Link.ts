@@ -29,9 +29,9 @@ export const linkRole = [
 ] as const;
 
 export namespace Link {
-  export type Tag = typeof linkTag[number];
-  export type Color = typeof linkColor[number];
-  export type Role = typeof linkRole[number];
+  export type Tag = (typeof linkTag)[number];
+  export type Color = (typeof linkColor)[number];
+  export type Role = (typeof linkRole)[number];
 
   @customElementWithCheck("md-link")
   export class ELEMENT extends LitElement {
@@ -69,12 +69,12 @@ export namespace Link {
         switch (this.tag) {
           case "div":
             return html`
-              <div 
+              <div
                 class="md-link ${classMap(linkClassNamesInfo)}"
-                tabindex=${this.tabIndex}  
-                aria-label=${ifDefined(this.ariaLabel || undefined)} 
+                tabindex=${this.tabIndex}
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
                 aria-disabled=${ifDefined(this.disabled || undefined)}
-                role=${this.ariaRole} 
+                role=${this.ariaRole}
                 part="link"
               >
                 <slot></slot>
@@ -82,14 +82,14 @@ export namespace Link {
             `;
           case "span":
             return html`
-              <span 
-                class="md-link ${classMap(linkClassNamesInfo)}" 
-                tabindex=${this.tabIndex}  
-                aria-label=${ifDefined(this.ariaLabel || undefined)} 
+              <span
+                class="md-link ${classMap(linkClassNamesInfo)}"
+                tabindex=${this.tabIndex}
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
                 aria-disabled=${ifDefined(this.disabled || undefined)}
-                role=${this.ariaRole} 
+                role=${this.ariaRole}
                 part="link"
-              > 
+              >
                 <slot></slot>
               </span>
             `;
@@ -111,9 +111,7 @@ export namespace Link {
             `;
         }
       };
-      return html`
-        ${linkElement()}
-      `;
+      return html` ${linkElement()} `;
     }
   }
 }

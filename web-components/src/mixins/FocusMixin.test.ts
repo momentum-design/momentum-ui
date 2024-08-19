@@ -64,9 +64,7 @@ describe("Focus Mixin", () => {
       }
 
       render() {
-        return html`
-          <input type="text" ?autofocus=${this.autofocus} />
-        `;
+        return html` <input type="text" ?autofocus=${this.autofocus} /> `;
       }
     }
 
@@ -82,9 +80,7 @@ describe("Focus Mixin", () => {
     @customElement("deep-focusable-child")
     class DeepFocusableChild extends FocusMixin(LitElement) {
       render() {
-        return html`
-          <input type="text" />
-        `;
+        return html` <input type="text" /> `;
       }
     }
 

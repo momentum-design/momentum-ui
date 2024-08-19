@@ -7,11 +7,7 @@ describe("DatePickerWeek Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: DatePickerWeek.ELEMENT = await fixture(
-      html`
-        <md-datepicker-week></md-datepicker-week>
-      `
-    );
+    const el: DatePickerWeek.ELEMENT = await fixture(html` <md-datepicker-week></md-datepicker-week> `);
     expect(el).not.toBeNull();
   });
 });

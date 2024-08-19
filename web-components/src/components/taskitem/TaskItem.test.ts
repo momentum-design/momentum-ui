@@ -15,26 +15,24 @@ const fixtureFactory = async (
   customAriaLabel = "",
   iconSrc = ""
 ): Promise<TaskItem.ELEMENT> => {
-  return await fixture(
-    html`
-      <md-task-item
-        mediaType="${mediaType}"
-        title="${title}"
-        popovertitle="${popovertitle}"
-        status="${status}"
-        quantity="${quantity}"
-        lastmessage="${lastmessage}"
-        .selected="${selected}"
-        customAriaLabel="${customAriaLabel}"
-        iconSrc="${iconSrc}"
-      >
-        <span slot="queue">
-          <span className="queue-name">Test Queue Name 00:00</span>
-        </span>
-        <div slot="task-addition">00:08</div>
-      </md-task-item>
-    `
-  );
+  return await fixture(html`
+    <md-task-item
+      mediaType="${mediaType}"
+      title="${title}"
+      popovertitle="${popovertitle}"
+      status="${status}"
+      quantity="${quantity}"
+      lastmessage="${lastmessage}"
+      .selected="${selected}"
+      customAriaLabel="${customAriaLabel}"
+      iconSrc="${iconSrc}"
+    >
+      <span slot="queue">
+        <span className="queue-name">Test Queue Name 00:00</span>
+      </span>
+      <div slot="task-addition">00:08</div>
+    </md-task-item>
+  `);
 };
 
 describe("TaskItem", () => {

@@ -51,8 +51,8 @@ const timeUnitProps = (isTwentyFourHour: boolean) => {
 };
 
 export namespace TimePicker {
-  export type TimeUnit = typeof timeUnits[number];
-  export type TimeSpecificity = typeof timeSpecificity[number];
+  export type TimeUnit = (typeof timeUnits)[number];
+  export type TimeSpecificity = (typeof timeSpecificity)[number];
 
   @customElementWithCheck("md-timepicker")
   export class ELEMENT extends LitElement {
@@ -199,7 +199,7 @@ export namespace TimePicker {
     };
 
     isEntireTimeValid = () => {
-      return Object.values(this.timeValidity).every(timeUnitValidity => timeUnitValidity);
+      return Object.values(this.timeValidity).every((timeUnitValidity) => timeUnitValidity);
     };
 
     updateTimeUnit = (unit: TIME_UNIT) => {
@@ -251,7 +251,7 @@ export namespace TimePicker {
         const allInputs = this.shadowRoot?.querySelectorAll("md-input, md-combobox");
 
         if (allInputs) {
-          const currentIndex = Array.prototype.findIndex.call(allInputs, el => currentNode?.isEqualNode(el));
+          const currentIndex = Array.prototype.findIndex.call(allInputs, (el) => currentNode?.isEqualNode(el));
           const targetIndex = (currentIndex + 1) % allInputs.length;
 
           if (currentIndex < allInputs.length - 1) {
@@ -360,15 +360,13 @@ export namespace TimePicker {
 
       return html`
         ${unit === TIME_UNIT.MINUTE || unit === TIME_UNIT.SECOND
-          ? html`
-              <span class="colon-separator">:</span>
-            `
+          ? html` <span class="colon-separator">:</span> `
           : nothing}
         <md-input
           compact
           select-when-in-focus
           class="${`time-input-box ${unit}`}"
-          id="time-${timeUnits.findIndex(aUnit => aUnit === unit) + 1}"
+          id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"
           value="${this.timeValue[unit]}"
           type="${unitProperties.type}"
           min=${ifDefined(unitProperties.min)}

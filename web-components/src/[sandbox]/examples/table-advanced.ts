@@ -38,7 +38,7 @@ export class DefaultTableAdvanced extends LitElement {
         contentCb: ({ content, insertIndex }) => {
           return content.substring(0, insertIndex) + " hide " + content.substring(insertIndex);
         },
-        templateCb: p => {
+        templateCb: (p) => {
           const span = p.fragment.querySelector<HTMLElement>(".sp")!;
           span.innerText = `${p.content}[${p.row},${p.col}]`;
 
@@ -54,9 +54,7 @@ export class DefaultTableAdvanced extends LitElement {
 
     return html`
       <md-table-advanced .config=${CONF} .data=${DATA}>
-        <template id="tmp1">
-          [OK]
-        </template>
+        <template id="tmp1"> [OK] </template>
 
         <template id="tmp2">
           ${this.litProp}
@@ -104,9 +102,7 @@ export class DefaultTableAdvanced extends LitElement {
 @customElement("custom-table-advanced-sandbox")
 export class CustomTableAdvanced extends LitElement {
   render() {
-    return html`
-      <md-table-advanced .config=${ComplexTable.config} .data=${ComplexTable.data}> </md-table-advanced>
-    `;
+    return html` <md-table-advanced .config=${ComplexTable.config} .data=${ComplexTable.data}> </md-table-advanced> `;
   }
 }
 

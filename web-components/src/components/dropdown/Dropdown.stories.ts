@@ -9,10 +9,10 @@
 import "@/components/dropdown/Dropdown";
 
 import {
-    dropdownObjectKeyValueOptions,
-    dropdownObjectLongOptions,
-    dropdownStringLongOptions,
-    dropdownStringOptions
+  dropdownObjectKeyValueOptions,
+  dropdownObjectLongOptions,
+  dropdownStringLongOptions,
+  dropdownStringOptions
 } from "@/[sandbox]/examples/dropdown";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { boolean, select, text } from "@storybook/addon-knobs";

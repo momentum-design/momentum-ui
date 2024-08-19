@@ -7,11 +7,7 @@ describe("Toggle Switch Component", () => {
   let element: ToggleSwitch.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<ToggleSwitch.ELEMENT>(
-      html`
-        <md-toggle-switch></md-toggle-switch>
-      `
-    );
+    element = await fixture<ToggleSwitch.ELEMENT>(html` <md-toggle-switch></md-toggle-switch> `);
   });
   afterEach(fixtureCleanup);
   test("shouldn't toggle if disabled property provided", async () => {
@@ -81,7 +77,7 @@ describe("Toggle Switch Component", () => {
 
     const input = element.shadowRoot!.querySelector(".md-toggle-switch__input")!;
     let accessibleDescriptionLabel = element.shadowRoot!.getElementById("md-toggle-switch__accessible-description");
-  
+
     expect(input.hasAttribute("aria-describedby")).toBe(false);
     expect(accessibleDescriptionLabel).toBeNull();
 

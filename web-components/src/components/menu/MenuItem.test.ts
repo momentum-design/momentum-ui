@@ -27,11 +27,7 @@ describe("MenuItem component", () => {
 
   test("should dispatch events to parent component", async () => {
     const id = nanoid();
-    const component = await fixture<MenuItem.ELEMENT>(
-      html`
-        <md-menu-item id=${id}><span>Test</span></md-menu-item>
-      `
-    );
+    const component = await fixture<MenuItem.ELEMENT>(html` <md-menu-item id=${id}><span>Test</span></md-menu-item> `);
 
     const clickEvent = new MouseEvent("mousedown");
     setTimeout(() => component.handleClick(clickEvent));
@@ -50,5 +46,4 @@ describe("MenuItem component", () => {
     expect(keydown.id).toBe(id);
     expect(keydown.key).toBe(Key.Enter);
   });
-
 });

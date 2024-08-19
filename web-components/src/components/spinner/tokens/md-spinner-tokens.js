@@ -13,6 +13,6 @@ const spinner = {
     light: colors.black[100].name,
     dark: colors.white[100].name
   }
-}
+};
 
 module.exports = spinner;

@@ -18,21 +18,19 @@ describe("List", () => {
     });
 
   beforeEach(async () => {
-    element = await fixture<List.ELEMENT>(
-      html`
-        <md-list label="Transuranium elements">
-          <md-list-item slot="list-item">Neptunium</md-list-item>
-          <md-list-item slot="list-item">Plutonium</md-list-item>
-          <md-list-item slot="list-item">Americium</md-list-item>
-          <md-list-item slot="list-item">Curium</md-list-item>
-        </md-list>
-      `
-    );
+    element = await fixture<List.ELEMENT>(html`
+      <md-list label="Transuranium elements">
+        <md-list-item slot="list-item">Neptunium</md-list-item>
+        <md-list-item slot="list-item">Plutonium</md-list-item>
+        <md-list-item slot="list-item">Americium</md-list-item>
+        <md-list-item slot="list-item">Curium</md-list-item>
+      </md-list>
+    `);
     listItems = element.slotted as ListItem.ELEMENT[];
   });
   afterEach(fixtureCleanup);
   test("should set correct attribute", async () => {
-    expect(element.shadowRoot?.querySelector('ul')?.getAttribute("role")).toEqual("listbox");
+    expect(element.shadowRoot?.querySelector("ul")?.getAttribute("role")).toEqual("listbox");
     expect(element.getAttribute("aria-label")).toEqual("Transuranium elements");
     expect(element.getAttribute("alignment")).toEqual("vertical");
 

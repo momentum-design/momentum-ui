@@ -10,9 +10,8 @@ import styles from "./scss/module.scss";
 
 @customElement("color-table")
 export class ColorTableSandbox extends LitElement {
-  @internalProperty() colorTokenTableData:
-    | { config: TableAdvanced.Config; data: TableAdvanced.Data }
-    | undefined = undefined;
+  @internalProperty() colorTokenTableData: { config: TableAdvanced.Config; data: TableAdvanced.Data } | undefined =
+    undefined;
 
   firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
@@ -78,8 +77,6 @@ export class ColorTableSandbox extends LitElement {
   }
 
   render() {
-    return html`
-      ${this.renderColorTable()}
-    `;
+    return html` ${this.renderColorTable()} `;
   }
 }

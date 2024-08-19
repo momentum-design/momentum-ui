@@ -176,7 +176,7 @@ export namespace Theme {
           this.virtualTooltipContent.firstElementChild.remove();
         }
 
-        slotContent.forEach(element => this.virtualTooltipContent!.append(element));
+        slotContent.forEach((element) => this.virtualTooltipContent!.append(element));
       }
     }
 
@@ -344,7 +344,7 @@ export namespace Theme {
 
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
       this.setupEvents();
     }
 

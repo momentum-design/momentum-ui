@@ -9,29 +9,23 @@ describe("TimePicker Component", () => {
     fixtureCleanup();
   });
   test("should render", async () => {
-    const el: TimePicker.ELEMENT = await fixture(
-      html`
-        <md-timepicker></md-timepicker>
-      `
-    );
+    const el: TimePicker.ELEMENT = await fixture(html` <md-timepicker></md-timepicker> `);
     expect(el).not.toBeNull();
   });
 
   test("should render 24 hour", async () => {
-    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(
-      html`
-        <md-timepicker twenty-four-hour-format></md-timepicker>
-      `
-    );
+    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(html`
+      <md-timepicker twenty-four-hour-format></md-timepicker>
+    `);
 
-    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input.ELEMENT;
-    const input = hourInput?.shadowRoot?.querySelector('input') as HTMLInputElement;
-    expect(input?.type).toEqual('number');
+    const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+    const input = hourInput?.shadowRoot?.querySelector("input") as HTMLInputElement;
+    expect(input?.type).toEqual("number");
     expect(input?.min).toEqual("0");
     expect(input?.max).toEqual("23");
 
     const text = "12";
-    hourInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: text }}));
+    hourInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: text } }));
     await elementUpdated(element);
 
     const val = hourInput?.value;
@@ -41,15 +35,13 @@ describe("TimePicker Component", () => {
   });
 
   test("should render time specificity: hour", async () => {
-    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(
-      html`
-        <md-timepicker timeSpecificity="hour"></md-timepicker>
-      `
-    );
+    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(html`
+      <md-timepicker timeSpecificity="hour"></md-timepicker>
+    `);
 
-    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input.ELEMENT;
-    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input.ELEMENT;
-    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input.ELEMENT;
+    const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+    const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+    const secondInput = element.shadowRoot?.querySelector(".time-input-box.second") as Input.ELEMENT;
 
     expect(hourInput).toBeDefined();
     expect(minuteInput).toBeNull();
@@ -57,15 +49,13 @@ describe("TimePicker Component", () => {
   });
 
   test("should render time specificity: minute", async () => {
-    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(
-      html`
-        <md-timepicker timeSpecificity="minute"></md-timepicker>
-      `
-    );
+    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(html`
+      <md-timepicker timeSpecificity="minute"></md-timepicker>
+    `);
 
-    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input.ELEMENT;
-    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input.ELEMENT;
-    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input.ELEMENT;
+    const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+    const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+    const secondInput = element.shadowRoot?.querySelector(".time-input-box.second") as Input.ELEMENT;
 
     expect(hourInput).toBeDefined();
     expect(minuteInput).toBeDefined();
@@ -73,15 +63,13 @@ describe("TimePicker Component", () => {
   });
 
   test("should render time specificity: second", async () => {
-    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(
-      html`
-        <md-timepicker timeSpecificity="second"></md-timepicker>
-      `
-    );
+    const element: TimePicker.ELEMENT = await fixture<TimePicker.ELEMENT>(html`
+      <md-timepicker timeSpecificity="second"></md-timepicker>
+    `);
 
-    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input.ELEMENT;
-    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input.ELEMENT;
-    const secondInput = element.shadowRoot?.querySelector('.time-input-box.second') as Input.ELEMENT;
+    const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+    const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+    const secondInput = element.shadowRoot?.querySelector(".time-input-box.second") as Input.ELEMENT;
 
     expect(hourInput).toBeDefined();
     expect(minuteInput).toBeDefined();
@@ -89,17 +77,15 @@ describe("TimePicker Component", () => {
   });
 
   test("should focus on next input after two digits are entered when twoDigitAutoTab is true", async () => {
-    const element = await fixture<TimePicker.ELEMENT>(
-      html`
-        <md-timepicker twenty-four-hour-format two-digit-auto-tab></md-timepicker>
-      `
-    );
+    const element = await fixture<TimePicker.ELEMENT>(html`
+      <md-timepicker twenty-four-hour-format two-digit-auto-tab></md-timepicker>
+    `);
 
     const timeChangeSpy = jest.spyOn(element, "handleTimeChange");
-    const hourInput = element.shadowRoot?.querySelector('.time-input-box.hour') as Input.ELEMENT;
-    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input.ELEMENT;
+    const hourInput = element.shadowRoot?.querySelector(".time-input-box.hour") as Input.ELEMENT;
+    const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
 
-    expect(minuteInput.hasAttribute('focus-visible')).toBeFalsy();
+    expect(minuteInput.hasAttribute("focus-visible")).toBeFalsy();
 
     const keyDownEvent: CustomEvent = new CustomEvent("input-keydown", {
       bubbles: true,
@@ -109,7 +95,7 @@ describe("TimePicker Component", () => {
           key: Key.Digit1
         }
       }
-    })
+    });
     hourInput?.dispatchEvent(keyDownEvent);
     await elementUpdated(element);
 
@@ -125,31 +111,27 @@ describe("TimePicker Component", () => {
 
     expect(timeChangeSpy).toHaveBeenCalled();
     expect(hourInput.value).toEqual("12");
-    expect(minuteInput.hasAttribute('focus-visible')).toBeTruthy();
+    expect(minuteInput.hasAttribute("focus-visible")).toBeTruthy();
   });
 
   test("should render invalid input with aria-invalid onBlur when time value is invalid", async () => {
-    const element = await fixture<TimePicker.ELEMENT>(
-      html`
-        <md-timepicker></md-timepicker>
-      `
-    );
+    const element = await fixture<TimePicker.ELEMENT>(html` <md-timepicker></md-timepicker> `);
 
-    const minuteInput = element.shadowRoot?.querySelector('.time-input-box.minute') as Input.ELEMENT;
-    const input = minuteInput?.shadowRoot?.querySelector('input') as HTMLInputElement;
-    expect(input?.type).toEqual('number');
+    const minuteInput = element.shadowRoot?.querySelector(".time-input-box.minute") as Input.ELEMENT;
+    const input = minuteInput?.shadowRoot?.querySelector("input") as HTMLInputElement;
+    expect(input?.type).toEqual("number");
     expect(input?.min).toEqual("0");
     expect(input?.max).toEqual("59");
 
     const invalidMinuteText = "70";
-    minuteInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: invalidMinuteText }}));
+    minuteInput.dispatchEvent(new CustomEvent("input-change", { detail: { value: invalidMinuteText } }));
     await elementUpdated(element);
 
     const blurEvent: CustomEvent = new CustomEvent("input-blur", {
       bubbles: true,
       composed: true,
       detail: {
-        srcEvent: 'genericEvent'
+        srcEvent: "genericEvent"
       }
     });
     minuteInput?.dispatchEvent(blurEvent);
@@ -158,6 +140,6 @@ describe("TimePicker Component", () => {
     expect(minuteInput?.value).toEqual(invalidMinuteText);
     expect(minuteInput.ariaInvalid).toBeTruthy();
     expect(minuteInput.value).toEqual(invalidMinuteText);
-    expect(minuteInput.messageArr).toEqual([{"message": "", "type": "error"}]);
+    expect(minuteInput.messageArr).toEqual([{ message: "", type: "error" }]);
   });
 });

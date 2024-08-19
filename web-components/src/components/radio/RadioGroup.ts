@@ -85,11 +85,11 @@ export namespace RadioGroup {
 
     private findRadioIndex(event: MouseEvent | KeyboardEvent) {
       const eventPath = event.composedPath();
-      return this.slotted.findIndex(radio => eventPath.includes(radio));
+      return this.slotted.findIndex((radio) => eventPath.includes(radio));
     }
 
     private findCheckedRadioIndex() {
-      return this.slotted.findIndex(radio => (radio as Radio.ELEMENT).checked);
+      return this.slotted.findIndex((radio) => (radio as Radio.ELEMENT).checked);
     }
 
     private setChecked(newIndex: number) {

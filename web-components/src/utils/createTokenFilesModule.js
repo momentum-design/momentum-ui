@@ -16,25 +16,25 @@ const { readdirSync } = require("fs");
 const _getComponentsWithTokens = async () => {
   const source = path.resolve(__dirname, "../components");
   return readdirSync(source, { withFileTypes: true })
-    .filter(componentDir => componentDir.isDirectory())
-    .filter(componentDir => fsx.existsSync(path.resolve(__dirname, `../components/${componentDir.name}/tokens/`)))
-    .map(componentDir => {
+    .filter((componentDir) => componentDir.isDirectory())
+    .filter((componentDir) => fsx.existsSync(path.resolve(__dirname, `../components/${componentDir.name}/tokens/`)))
+    .map((componentDir) => {
       return componentDir.name;
     });
 };
 
-const _getTokenFiles = async componentName => {
+const _getTokenFiles = async (componentName) => {
   const source = path.join(__dirname, `../components/${componentName}/tokens`);
-  return readdirSync(source, { withFileTypes: true }).map(tokenFile => {
+  return readdirSync(source, { withFileTypes: true }).map((tokenFile) => {
     return tokenFile.name;
   });
 };
 
-const _createImportName = input => {
+const _createImportName = (input) => {
   return input
     .split(".")[0]
     .toLowerCase()
-    .replace(/-(.)/g, function(match, group1) {
+    .replace(/-(.)/g, function (match, group1) {
       return group1.toUpperCase();
     });
 };
@@ -60,11 +60,10 @@ const createTokenFilesModule = async () => {
     for (const tokenFileName of tokenFileNames) {
       if (tokenFileName === ".DS_Store") {
         continue;
-      }
-      else if (!tokenFileName.endsWith(".js")) {
+      } else if (!tokenFileName.endsWith(".js")) {
         console.error(`${tokenFileName} is not the correct file type. It should be a javascript file.`);
         process.exit(1);
-      }  
+      }
 
       const importName = _createImportName(tokenFileName);
       references.push(importName);
@@ -81,7 +80,7 @@ const createTokenFilesModule = async () => {
 
   // check this path exists
   const tokenFileModule = path.resolve(__dirname, "../tokens/vars/tokenFiles.js");
-  fsPath.writeFile(tokenFileModule, result, err => {
+  fsPath.writeFile(tokenFileModule, result, (err) => {
     if (err) throw err;
     console.log(tokenFileModule + " updated");
   });

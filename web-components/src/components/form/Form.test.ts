@@ -9,15 +9,13 @@ describe("Form Component", () => {
   let element: Form.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<Form.ELEMENT>(
-      html`
-        <md-form name="form-name" action="https://someurl.com" method="POST">
-          <md-input required></md-input>
-          <md-input disabled></md-input>
-          <button type="submit">Click</button>
-        </md-form>
-      `
-    );
+    element = await fixture<Form.ELEMENT>(html`
+      <md-form name="form-name" action="https://someurl.com" method="POST">
+        <md-input required></md-input>
+        <md-input disabled></md-input>
+        <button type="submit">Click</button>
+      </md-form>
+    `);
   });
   afterEach(fixtureCleanup);
 

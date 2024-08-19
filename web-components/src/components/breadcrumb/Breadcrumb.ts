@@ -59,11 +59,9 @@ export namespace Breadcrumb {
             ${repeat(
               this.navCrumbs,
               (navCrumb: NavCrumb) => navCrumb.link,
-              navCrumb => html`
+              (navCrumb) => html`
                 <li>
-                  <a href="${navCrumb.link}">
-                    ${navCrumb.label}
-                  </a>
+                  <a href="${navCrumb.link}"> ${navCrumb.label} </a>
                 </li>
               `
             )}
@@ -73,10 +71,6 @@ export namespace Breadcrumb {
     }
   }
 }
-
-
-
-
 
 declare global {
   interface HTMLElementTagNameMap {

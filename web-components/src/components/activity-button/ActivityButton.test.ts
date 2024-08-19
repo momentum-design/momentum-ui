@@ -13,17 +13,13 @@ describe("ActivityButton", () => {
   test("should render ActivityButton by passing size properties as number or string value type", async () => {
     const numberSize = 68;
     const stringSize = "68";
-    const elementNumber = await fixture(
-      html`
-        <md-activity-button .type=${"chat"} .size=${numberSize}></md-activity-button>
-      `
-    );
+    const elementNumber = await fixture(html`
+      <md-activity-button .type=${"chat"} .size=${numberSize}></md-activity-button>
+    `);
     const buttonNumber = elementNumber.shadowRoot!.querySelector("md-button");
-    const elementString = await fixture(
-      html`
-        <md-activity-button .type=${"camera"} .size=${stringSize}></md-activity-button>
-      `
-    );
+    const elementString = await fixture(html`
+      <md-activity-button .type=${"camera"} .size=${stringSize}></md-activity-button>
+    `);
     const buttonString = elementString.shadowRoot!.querySelector("md-button");
     expect(buttonNumber!.size).toEqual(numberSize);
     expect(buttonString!.size).toEqual(stringSize);

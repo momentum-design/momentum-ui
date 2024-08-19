@@ -18,13 +18,13 @@ const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   const source = await fse.readFile(template, "utf8");
 
   var hbs = handlebars.create();
-  hbs.registerHelper('nodash', (value) => {
+  hbs.registerHelper("nodash", (value) => {
     return value.replace(/-/g, "");
   });
 
   const compile = hbs.compile(source);
   const finalFile = path.join(dest, fileName);
-  await fsPath.writeFile(finalFile, compile(data), err => {
+  await fsPath.writeFile(finalFile, compile(data), (err) => {
     if (err) throw err;
     else console.warn(`${finalFile} written!`);
   });

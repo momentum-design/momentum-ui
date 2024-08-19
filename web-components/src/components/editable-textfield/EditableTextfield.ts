@@ -22,8 +22,8 @@ import styles from "./scss/module.scss";
 export const alignment = ["left", "right", "center"] as const;
 
 export namespace EditableTextfield {
-  export type Alignment = typeof alignment[number];
-  export type InputType = typeof numInputTypes[number];
+  export type Alignment = (typeof alignment)[number];
+  export type InputType = (typeof numInputTypes)[number];
 
   @customElementWithCheck("md-editable-field")
   export class ELEMENT extends LitElement {
@@ -143,12 +143,15 @@ export namespace EditableTextfield {
     handleKeydown = (e: KeyboardEvent) => {
       const flaggedKeys = ["Tab", "Meta", "Shift", "Delete", "Backspace", "Arrow"];
       const { key, code } = e;
-    
-      if (flaggedKeys.some(s => code.includes(s))) {
+
+      if (flaggedKeys.some((s) => code.includes(s))) {
         return;
       }
-      
-      if ((this.type === "integer" && key.includes(".")) || ((this.type === "integer" || this.type === "decimal") && code.match("Space"))) {
+
+      if (
+        (this.type === "integer" && key.includes(".")) ||
+        ((this.type === "integer" || this.type === "decimal") && code.match("Space"))
+      ) {
         e.preventDefault();
       }
 
@@ -240,7 +243,7 @@ export namespace EditableTextfield {
           @keydown=${(e: KeyboardEvent) => {
             this.handleKeydown(e);
           }}
-          aria-invalid=${ifDefined(!this.disabled ? this.alert ? "true" : "false" : undefined)}
+          aria-invalid=${ifDefined(!this.disabled ? (this.alert ? "true" : "false") : undefined)}
           aria-label=${ifDefined(!this.disabled ? this.ariaLabel : undefined)}
           aria-describedby=${ifDefined(!this.disabled ? this.ariaDescribedBy : undefined)}
         >

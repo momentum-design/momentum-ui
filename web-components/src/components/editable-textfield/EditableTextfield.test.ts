@@ -21,9 +21,7 @@ const invalidInputs = {
 };
 
 const fixtureFactory = async (fieldAlignment: EditableTextfield.Alignment): Promise<EditableTextfield.ELEMENT> => {
-  return await fixture(html`
-    <md-editable-field .alignment="${fieldAlignment}">Test text Message</md-editable-field>
-  `);
+  return await fixture(html` <md-editable-field .alignment="${fieldAlignment}">Test text Message</md-editable-field> `);
 };
 
 const errorMessageArr: Input.Message = {
@@ -71,14 +69,14 @@ describe("Editable Textfield component", () => {
     const el = component.shadowRoot?.querySelector("div.md-editable-textfield");
     let expectedClassList = ["md-editable-textfield", "md-editable-textfield--center"];
     expect(el?.classList?.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => el?.classList?.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => el?.classList?.contains(className))).toBe(true);
 
     component.alignment = "right";
     await elementUpdated(component);
 
     expectedClassList = ["md-editable-textfield", "md-editable-textfield--right"];
     expect(el?.classList?.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => el?.classList?.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => el?.classList?.contains(className))).toBe(true);
   });
 
   test("should update slot element's contenteditable attribute when clicked", async () => {
@@ -108,69 +106,45 @@ describe("Editable Textfield component", () => {
   });
 
   test("should render default text", async () => {
-    const element: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field></md-editable-field>
-      `
-    );
+    const element: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     expect(element.innerText.trim()).toEqual(element.content);
   });
   test("should reset the alert when renewing validation", async () => {
-    const element: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field></md-editable-field>
-      `
-    );
+    const element: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     element.handleBlur();
     expect(element.alert).toBeFalsy;
   });
   test("should trigger validation function on blur", async () => {
-    const element: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field></md-editable-field>
-      `
-    );
+    const element: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     const validationFunc = jest.spyOn(element, "handleValidation");
     element.handleBlur();
     expect(validationFunc).toHaveBeenCalled;
   });
   test("should trigger checkValidity when inputType is present", async () => {
-    const element: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field numberType="integer"></md-editable-field>
-      `
-    );
+    const element: EditableTextfield.ELEMENT = await fixture(html`
+      <md-editable-field numberType="integer"></md-editable-field>
+    `);
     const validationFunc = jest.spyOn(element, "checkValidity");
     element.handleBlur();
     expect(validationFunc).toHaveBeenCalled;
   });
   test("should trigger checkValidity when pattern is present", async () => {
-    const element: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
-      `
-    );
+    const element: EditableTextfield.ELEMENT = await fixture(html`
+      <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
+    `);
     const validationFunc = jest.spyOn(element, "checkValidity");
     element.handleBlur();
     expect(validationFunc).toHaveBeenCalled;
   });
   test("should NOT checkValidity when pattern or inputType are missing", async () => {
-    const element: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field></md-editable-field>
-      `
-    );
+    const element: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     const validationFunc = jest.spyOn(element, "checkValidity");
     element.handleBlur();
     expect(validationFunc).not.toHaveBeenCalled;
   });
 
   test("should return true if there is no validation error", async () => {
-    const el: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field></md-editable-field>
-      `
-    );
+    const el: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     el.type = "integer";
     await el.updateComplete;
     expect(el.checkValidity && el.checkValidity(validInputs.integer)).toBeTruthy;
@@ -179,11 +153,9 @@ describe("Editable Textfield component", () => {
     expect(el.checkValidity && el.checkValidity(validInputs.decimal)).toBeTruthy;
   });
   test("should check keydown entry for type violation", async () => {
-    const el: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field numberType="integer">1236</md-editable-field>
-      `
-    );
+    const el: EditableTextfield.ELEMENT = await fixture(html`
+      <md-editable-field numberType="integer">1236</md-editable-field>
+    `);
     const keyEvent = jest.spyOn(el, "handleKeydown");
     const event = new KeyboardEvent("keydown", {
       key: ".",
@@ -195,27 +167,19 @@ describe("Editable Textfield component", () => {
     expect(event.preventDefault).toHaveBeenCalled;
   });
   test("should return true for valid pattern", async () => {
-    const el: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
-      `
-    );
+    const el: EditableTextfield.ELEMENT = await fixture(html`
+      <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
+    `);
     expect(el.checkValidity && el.checkValidity(validInputs.integer)).toBeTruthy;
   });
   test("should return false for invalid pattern", async () => {
-    const el: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
-      `
-    );
+    const el: EditableTextfield.ELEMENT = await fixture(html`
+      <md-editable-field pattern="^([+-]?[1-9]\\d*|0)$"></md-editable-field>
+    `);
     expect(el.checkValidity && el.checkValidity(invalidInputs.integer)).toBeTruthy;
   });
   test("should return error message if there is a validation error", async () => {
-    const el: EditableTextfield.ELEMENT = await fixture(
-      html`
-        <md-editable-field></md-editable-field>
-      `
-    );
+    const el: EditableTextfield.ELEMENT = await fixture(html` <md-editable-field></md-editable-field> `);
     expect(el.checkValidity && el.checkValidity(invalidInputs.integer)).not.toBeNull;
     expect(el.checkValidity && el.checkValidity(invalidInputs.decimal)).not.toBeNull;
     expect(el.checkValidity && el.checkValidity(invalidInputs.date)).not.toBeNull;

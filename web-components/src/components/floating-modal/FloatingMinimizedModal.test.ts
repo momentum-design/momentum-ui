@@ -20,27 +20,23 @@ describe("Floating Modal Component", () => {
   let element: FloatingMinimizedModal.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<FloatingMinimizedModal.ELEMENT>(
-      html`
-        <md-floating-modal-minimized></md-floating-modal-minimized>
-      `
-    );
+    element = await fixture<FloatingMinimizedModal.ELEMENT>(html`
+      <md-floating-modal-minimized></md-floating-modal-minimized>
+    `);
   });
   afterEach(fixtureCleanup);
 
   test("should show modal and set initial location", async () => {
     element.show = true;
     element.minimize = true;
-    element.minPosition = {x: 0, y: 12};
+    element.minPosition = { x: 0, y: 12 };
     await nextFrame();
     await elementUpdated(element);
 
     expect(element.show).toBeTruthy();
     const ele = element.shadowRoot!.querySelector(".md-floating-minimize") as HTMLElement;
-    expect(ele.style.transform).toBe('translate(0px, 12px)');
-
+    expect(ele.style.transform).toBe("translate(0px, 12px)");
   });
-
 
   test("should close modal with button click", async () => {
     element.show = true;
@@ -87,7 +83,7 @@ describe("Floating Modal Component", () => {
   test("should render text in header", async () => {
     element.show = true;
     element.minimize = true;
-    element.heading = "momentum"
+    element.heading = "momentum";
     await nextFrame();
     await elementUpdated(element);
     const headerText = element.shadowRoot!.querySelector(".md-floating__header-text") as HTMLElement;

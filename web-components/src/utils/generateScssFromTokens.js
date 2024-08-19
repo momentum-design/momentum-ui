@@ -24,7 +24,7 @@ const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   const source = await fse.readFile(template, "utf8");
   const compile = handlebars.compile(source);
   const finalFile = path.join(dest, fileName);
-  await fsPath.writeFile(finalFile, compile(data), err => {
+  await fsPath.writeFile(finalFile, compile(data), (err) => {
     if (err) throw err;
     else console.warn(`${finalFile} written!`);
   });
@@ -76,13 +76,13 @@ const generateSemanticColorsFromTokens = async () => {
   );
 };
 
-const _getDeepestKeys = obj => {
+const _getDeepestKeys = (obj) => {
   let keys = [];
   for (const key in obj) {
     if (typeof obj[key] === "object") {
       const subkeys = _getDeepestKeys(obj[key]);
       keys = keys.concat(
-        subkeys.map(function(subkey) {
+        subkeys.map(function (subkey) {
           return subkey;
         })
       );
@@ -150,8 +150,8 @@ const _generateComponentColors = async (componentName, colorDataFileName, colorD
   createdStyleSheets.push(path.join(`${filePrefix}--dark`));
 };
 
-const _lowercaseFirstLetter = word => {
-  return word.replace(/([A-Z])([a-zA-Z]*)/g, function(group1) {
+const _lowercaseFirstLetter = (word) => {
+  return word.replace(/([A-Z])([a-zA-Z]*)/g, function (group1) {
     return group1.toLowerCase();
   });
 };
@@ -182,38 +182,31 @@ const generateThemeStylesheets = () => {
     for (const designTheme of designThemes) {
       const lowercaseLightDarkTheme = _lowercaseFirstLetter(lightDarkTheme);
 
-      themeStyleFiles[
-        `${designTheme}${lightDarkTheme}`
-      ] += `@import "@/wc_scss/colors/vars/css-color-variables.scss";\n`;
+      themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+        `@import "@/wc_scss/colors/vars/css-color-variables.scss";\n`;
 
-      themeStyleFiles[
-        `${designTheme}${lightDarkTheme}`
-      ] += `@import "@/wc_scss/colors/vars/semantic-color-settings.scss";\n`;
+      themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+        `@import "@/wc_scss/colors/vars/semantic-color-settings.scss";\n`;
 
-      themeStyleFiles[
-        `${designTheme}${lightDarkTheme}`
-      ] += `@import "@/wc_scss/colors/vars/semantic-colors--${lowercaseLightDarkTheme}.scss";\n`;
+      themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+        `@import "@/wc_scss/colors/vars/semantic-colors--${lowercaseLightDarkTheme}.scss";\n`;
 
-      themeStyleFiles[
-        `${designTheme}${lightDarkTheme}`
-      ] += `@import "@/wc_scss/themes/global--${lowercaseLightDarkTheme}.scss";\n`;
+      themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+        `@import "@/wc_scss/themes/global--${lowercaseLightDarkTheme}.scss";\n`;
 
       themeStyleFiles[`${designTheme}${lightDarkTheme}`] += `@import "@/wc_scss/themes/global--${designTheme}.scss";\n`;
 
       if (designTheme === "mdv2") {
-        themeStyleFiles[
-          `${designTheme}${lightDarkTheme}`
-        ] += `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-stable.scss";\n`;
+        themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+          `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-stable.scss";\n`;
       }
 
       for (const componentName of componentsWithTokens) {
-        themeStyleFiles[
-          `${designTheme}${lightDarkTheme}`
-        ] += `@import "@/components/${componentName}/scss/vars/${designTheme}-${componentName}-settings.scss";\n`;
+        themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+          `@import "@/components/${componentName}/scss/vars/${designTheme}-${componentName}-settings.scss";\n`;
 
-        themeStyleFiles[
-          `${designTheme}${lightDarkTheme}`
-        ] += `@import "@/components/${componentName}/scss/vars/${designTheme}-${componentName}--${lowercaseLightDarkTheme}.scss";\n`;
+        themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
+          `@import "@/components/${componentName}/scss/vars/${designTheme}-${componentName}--${lowercaseLightDarkTheme}.scss";\n`;
       }
     }
   }
@@ -231,7 +224,7 @@ const generateThemeStylesheets = () => {
     themeStyleFiles[themeStyleName] += `}\n`;
 
     const themeStyleFilePath = path.resolve(__dirname + `/../wc_scss/themes/vars/${themeStyleName}.scss`);
-    fsPath.writeFile(themeStyleFilePath, themeStyleFiles[themeStyleName], err => {
+    fsPath.writeFile(themeStyleFilePath, themeStyleFiles[themeStyleName], (err) => {
       if (err) throw err;
       console.log(themeStyleFilePath + " updated");
     });

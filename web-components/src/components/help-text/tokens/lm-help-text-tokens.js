@@ -6,7 +6,7 @@ const helpText = {
   prefix: "lm",
   component: "help-text",
   default: {
-    "color": {
+    color: {
       light: colors.gray[70].name,
       dark: colors.gray[30].name
     }

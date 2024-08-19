@@ -10,11 +10,7 @@ describe("InputFile component", () => {
   afterEach(fixtureCleanup);
 
   beforeEach(async () => {
-    element = await fixture<InputFile.ELEMENT>(
-      html`
-        <md-input-file></md-input-file>
-      `
-    );
+    element = await fixture<InputFile.ELEMENT>(html` <md-input-file></md-input-file> `);
   });
 
   test("should render input file", async () => {

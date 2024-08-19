@@ -79,11 +79,7 @@ describe("FocusTrap Mixin", () => {
   afterEach(fixtureCleanup);
   let el: FocusableElement;
   beforeEach(async () => {
-    el = await fixture<FocusableElement>(
-      html`
-        <focusable-element></focusable-element>
-      `
-    );
+    el = await fixture<FocusableElement>(html` <focusable-element></focusable-element> `);
   });
 
   @customElement("focus-trap")
@@ -122,26 +118,27 @@ describe("FocusTrap Mixin", () => {
     await elementUpdated(el);
 
     expect(focusTrap!["focusTrapIndex"]).toEqual(5);
-
   });
 
   test("should decrease trap index when input-clear event is dispatched", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
     const input = focusableChild!.shadowRoot!.querySelector("input");
-  
+
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
     await nextFrame();
     await elementUpdated(el);
     focusTrap!["focusTrapIndex"] = 5;
-    input!.dispatchEvent(new CustomEvent("input-clear", {
-      bubbles: true,
-      composed: true,
-      detail: {
-        srcEvent: new KeyboardEvent("keydown", { code: "Enter" })
-      }
-    }));
+    input!.dispatchEvent(
+      new CustomEvent("input-clear", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          srcEvent: new KeyboardEvent("keydown", { code: "Enter" })
+        }
+      })
+    );
     await nextFrame();
     await elementUpdated(el);
     expect(focusTrap!["focusTrapIndex"]).toEqual(4);
@@ -151,7 +148,6 @@ describe("FocusTrap Mixin", () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelector<FocusableChild>("focusable-child");
     const mdInput = focusableChild!.shadowRoot!.querySelector("md-input");
-
 
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
@@ -166,11 +162,9 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!["focusTrapIndex"]).toEqual(6);
   });
 
-
   test("should set trap index of button inside div", async () => {
     const focusTrap = el.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const focusableChild = focusTrap!.querySelectorAll<FocusableChild>("div")[1];
-
 
     focusTrap!["activateFocusTrap"]!();
     focusTrap!["setFocusableElements"]!();
@@ -185,13 +179,8 @@ describe("FocusTrap Mixin", () => {
     expect(focusTrap!["focusTrapIndex"]).toEqual(4);
   });
 
-
   test("should transfer focus-trap to child when child traps focus", async () => {
-    const parentFocusTrap = await fixture<FocusTrap>(
-      html`
-        <focus-trap><focus-trap></focus-trap></focus-trap>
-      `
-    );
+    const parentFocusTrap = await fixture<FocusTrap>(html` <focus-trap><focus-trap></focus-trap></focus-trap> `);
     const childFocusTrap = parentFocusTrap.querySelector<FocusTrap>("focus-trap")!;
     parentFocusTrap["activateFocusTrap"]!();
     expect(parentFocusTrap.activeFocusTrap).toBeTruthy();
@@ -513,11 +502,7 @@ describe("FocusTrap Mixin", () => {
         `;
       }
     }
-    const elWithCB = await fixture<comboboxElement>(
-      html`
-        <combobox-element></combobox-element>
-      `
-    );
+    const elWithCB = await fixture<comboboxElement>(html` <combobox-element></combobox-element> `);
     const focusTrap = elWithCB.shadowRoot!.querySelector<FocusTrap>("focus-trap");
     const combobox = focusTrap!.querySelector("md-combobox");
 

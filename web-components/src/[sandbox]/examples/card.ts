@@ -15,13 +15,13 @@ export class CardTemplateSandbox extends LitElement {
   }
 
   private handleClickCard(e: MouseEvent) {
-    const id = (e.detail as number).toString();
+    const { id } = e.detail as any;
+
     this.value = "Card " + id + ": is clickable";
-    console.log("Card " + id + ": is clickable");
   }
 
-  private handleKeydownCard(e: KeyboardEvent) {
-    const { id } = e.detail as any;
+  private handleKeydownCard(e: CustomEvent) {
+    const { id } = e.detail;
 
     this.value = "Card " + id + ": is key event";
   }

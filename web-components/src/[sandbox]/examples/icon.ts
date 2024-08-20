@@ -24,7 +24,7 @@ export const iconTemplate = html`
   <h3>Using new icon enabled (enabled):</h3>
   <md-icon
     name="search_16"
-    iconSet="momentumDesign"
+    iconSet="preferMomentumDesign"
     class="testClass"
     size="50"
     color="var(--avatar-presence-active)"

@@ -100,7 +100,11 @@
 }
 
 .tab-slot {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
 }
 
 slot {
@@ -136,6 +140,7 @@ slot {
 .closable {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 md-icon {
@@ -160,6 +165,7 @@ button {
   text-decoration: none;
   white-space: nowrap;
   width: 100%;
+  vertical-align: middle;
 
   &:disabled {
     background: $tab-none-bg;
@@ -186,7 +192,6 @@ button {
 
   span {
     @include tab-button-span;
-    padding: $tab-slot-padding;
   }
 
   &:hover {
@@ -205,20 +210,26 @@ button {
 
 button.newMomentum {
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 
   /* Sizing and spacing */
   min-height: 1.75rem;
-  padding: 0 .625rem 0 .625rem;
+  padding: 0 0.625rem 0 0.625rem;
   justify-content: center;
 
-  .tab-slot {
-    justify-content: center !important;
-    align-items: center !important;
-  }
-
   .tab-action-button {
-    height:90%;
+    height: 90%;
+  }
+}
+
+:host([vertical])  {
+  button {
+    .tab-slot {
+      justify-content: flex-start;
+    }
   }
 }
 

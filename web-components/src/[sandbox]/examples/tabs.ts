@@ -662,6 +662,45 @@ export const tabsTemplate = html`
       </md-tabs>
     </div>
     <br />
+    <h3>md-tabs draggable each with a closable property (New Momentum)</h3>
+    <div>
+      <md-tabs selected="0" draggable newMomentum type="Pill">
+        <md-tab slot="tab" name="History">
+          <span>All</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "All Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" closable="auto" name="History" label="History">
+          <md-icon name="recents_16"></md-icon>
+          <span>Contact History</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span>Cisco WxM</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" closable="auto" name="Answer">
+          <md-icon name="alarm_16"></md-icon>
+          <span>Cisco Answer</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Cisco Answer"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History">
+          <md-icon name="alert_16"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Fourth Tab"</span>
+        </md-tab-panel>
+      </md-tabs>
+    </div>
+    <br />
     <div style="max-width: 400px;">
       <h3>md-tabs justified</h3>
       <md-tabs draggable justified>
@@ -672,7 +711,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History">
-          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}"/></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
@@ -714,7 +753,7 @@ export const tabsTemplate = html`
     </md-menu-overlay>
   </div>
   <br />
-  <div style="height: 500px;">
+  <div style="height: 300px;">
     <h3>md-tabs vertical</h3>
     <md-tabs direction="vertical">
       <md-tab slot="tab" name="History">
@@ -739,6 +778,40 @@ export const tabsTemplate = html`
         <span>Content for "Cisco Answer"</span>
       </md-tab-panel>
       <md-tab slot="tab" name="History">
+        <md-icon name="camera-photo_16"></md-icon>
+        <span>Cisco Turbo</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "Cisco Turbo"</span>
+      </md-tab-panel>
+    </md-tabs>
+  </div>
+  <br />
+  <div style="height: 300px;">
+    <h3>md-tabs vertical (New Momentum)</h3>
+    <md-tabs direction="vertical" newMomentum type="Pill">
+      <md-tab slot="tab" name="History" newMomentum type="Pill">
+        <md-icon name="recents_16"></md-icon>
+        <span>Contact History</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "Contact History"</span>
+      </md-tab-panel>
+      <md-tab slot="tab" name="History" newMomentum type="Pill">
+        <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+        <span>Cisco WxM</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "WxM"</span>
+      </md-tab-panel>
+      <md-tab slot="tab" name="History" newMomentum type="Pill">
+        <md-icon name="alarm_16"></md-icon>
+        <span>Cisco Answer</span>
+      </md-tab>
+      <md-tab-panel slot="panel">
+        <span>Content for "Cisco Answer"</span>
+      </md-tab-panel>
+      <md-tab slot="tab" name="History" newMomentum type="Pill">
         <md-icon name="camera-photo_16"></md-icon>
         <span>Cisco Turbo</span>
       </md-tab>

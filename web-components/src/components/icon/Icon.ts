@@ -33,17 +33,143 @@ export namespace Icon {
 
   @customElementWithCheck("md-icon")
   export class ELEMENT extends LitElement {
+    /**
+     * @property {String} color - This property sets the color for font icons and the fill color for SVG icons.
+     * It can accept any color value supported by CSS, including CSS variables.
+     *
+     * Example usage:
+     * ```html
+     * <md-icon color="#ff0000"></md-icon> <!-- Sets the icon color to red -->
+     * <md-icon color="var(--my-custom-color)"></md-icon> <!-- Uses a CSS variable for the icon color -->
+     * ```
+     */
     @property({ type: String }) color = "";
+
+    /**
+     * @property {String} description - This property is used to set extra information on the `aria-label` attribute for the icon.
+     * It provides additional descriptive text that can be used in conjunction with the `title` property to form a more complete `aria-label`.
+     *
+     */
     @property({ type: String }) description = "";
+
+    /**
+     * @property {String} name - This property sets the name of the icon.
+     * It determines the icon to be displayed and affects the class and SVG icon name.
+     *
+     *
+     * Example usage:
+     * ```html
+     * <md-icon name="search"></md-icon> <!-- Sets the icon name to "search" -->
+     * <md-icon name="icon-search"></md-icon> <!-- Sets the icon name to "search" after removing the "icon-" prefix -->
+     * ```
+     */
     @property({ type: String }) name = "";
+
+    /**
+     * @property {String} id - This property sets the `id` attribute for the icon element.
+     * It allows you to specify a unique identifier for the icon.
+     */
     @property({ type: String }) id = "";
+
+    /**
+     * @property {String} size - This property sets the size of the icon.
+     * For SVG icon sets ("momentumDesign"), it sets the width and height in pixels.
+     * For font-based icon sets ("momentumUI"), it sets the font-size in pixels.
+     *
+     * Example usage:
+     * ```html
+     * <md-icon iconSet="momentumUI" name="search_16" size="24"></md-icon> <!-- Sets the font-size to 24px for the legacy font-based icon set -->
+     * <md-icon iconSet="momentumDesign" name="search-bold" size="24"></md-icon> <!-- Sets the width and height to 24px for the new SVG-based icon set -->
+     * ```
+     */
     @property({ type: String }) size = "";
-    @property({ type: Boolean }) sizeOverrided = false;
+
+    /**
+     * @property {String} title - This property sets the `title` attribute for the icon element.
+     * It provides a tooltip text when the user hovers over the icon and is also used in the computation of the `aria-label` for accessibility purposes.
+     *
+     * Example in HTML:
+     * ```html
+     * <md-icon title="Search Icon"></md-icon> <!-- Sets the title attribute to "Search Icon" -->
+     * ```
+     */
     @property({ type: String }) title = "";
-    @property({ type: String }) type = "";
+
+    /**
+     * @property {String} ariaHidden - This property sets the `aria-hidden` attribute for the icon.
+     * It can accept the following values:
+     * - "true": Hides the icon from assistive technologies.
+     * - "false": Makes the icon visible to assistive technologies.
+     * - null: Removes the `aria-hidden` attribute.
+     *
+     * Example usage:
+     * ```html
+     * <md-icon ariaHidden="true"></md-icon> <!-- Hides the icon from assistive technologies -->
+     * <md-icon ariaHidden="false"></md-icon> <!-- Makes the icon visible to assistive technologies -->
+     * <md-icon ariaHidden=null></md-icon> <!-- Removes the aria-hidden attribute -->
+     * ```
+     */
     @property({ type: String }) ariaHidden: "true" | "false" | null = null;
+
+    @property({ type: String }) type = "";
+
+    /**
+     * @property {Boolean} isActive - This property indicates whether the icon is in an active state.
+     * It is only relevant for `momentumUI` icons.
+     *
+     * When `isActive` is true, the `iconClassMap` getter method includes specific classes for styling the active state of the icon.
+     *
+     * Example usage:
+     * ```html
+     * <md-icon name="search" isActive></md-icon> <!-- Sets the icon to an active state -->
+     * ```
+     *
+     * The `iconClassMap` getter method:
+     * - Adds the class `md-combobox-input__icon--active` when `isComboBoxIcon` and `isActive` are both true.
+     * - Adds other relevant classes based on the icon's state.
+     */
     @property({ type: Boolean }) isActive = false;
+
+    /**
+     * @property {Boolean} isComboBoxIcon - This property indicates whether the icon is used within a combobox input.
+     * It is only relevant for `momentumUI` icons.
+     *
+     * When `isComboBoxIcon` is true, the `iconClassMap` getter method includes specific classes for styling the combobox icon.
+     *
+     * Example usage:
+     * ```html
+     * <md-icon name="search" isComboBoxIcon></md-icon> <!-- Adds combobox-specific classes to the icon -->
+     * ```
+     */
     @property({ type: Boolean }) isComboBoxIcon = false;
+
+    /**
+     * @property {Boolean} sizeOverrided - This property indicates whether the size of the icon has been overridden.
+     * It is only used with `momentumUI` icons.
+     *
+     * When `sizeOverrided` is true, the `handleSizeOverride` method is called to adjust the icon name based on the overridden size.
+     * This has no effect on momentumDesign icons
+     */
+    @property({ type: Boolean }) sizeOverrided = false;
+
+    /**
+     * @property {String} iconSet - This property allows selection of the icon set to be used.
+     * It supports the following values:
+     * - "momentumUI": Always use the legacy font-based icon set. from @momentum-ui/icons
+     * - "momentumDesign": Always use the new SVG-based icon set. from @momentum-design/icons
+     * - "preferMomentumDesign": Attempt to map icons from the legacy "momentumUI" set to their "momentumDesign" counterparts automatically.
+     *   A lookup is done to get the momentum-design name, and if an icon is found and loaded, this is used instead of the font icon.
+     *
+     * Note: momentum-design icons do not contain size as part of their name, so the size needs to be specified; otherwise, the default size of 16 is used.
+     *       for this reason the size property should always be used to allow for easier migration. if no size specified default of 16 used
+     *
+     * Example usage:
+     * ```html
+     * <md-icon iconSet="momentumUI" name="search_16"></md-icon> <!-- Uses the legacy font-based icon set -->
+     * <md-icon iconSet="momentumDesign" name="search-bold" size="16"></md-icon> <!-- Uses the new SVG-based icon set -->
+     * <md-icon iconSet="preferMomentumDesign name="search+16""></md-icon> <!-- Attempts to map icons to the new SVG-based set -->
+     * ```
+     */
     @property({ type: String }) iconSet: IconSet = "momentumUI";
 
     private static designLookup = new Map(Object.entries(designMapping));

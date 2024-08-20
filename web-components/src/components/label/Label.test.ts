@@ -10,8 +10,7 @@ describe("Label", () => {
   });
   test("should dispatch click", async () => {
     const element = await fixture<Label.ELEMENT>(`<md-label label="Test Label Text" htmlFor="firstValue"></md-label>`);
-    const event = new MouseEvent("click");
-    setTimeout(() => element.handleClick(event));
+    setTimeout(() => element.handleClick());
     const { detail } = await oneEvent(element, "label-click");
     expect(detail).toBeDefined();
     expect(detail.htmlFor).toBe("firstValue");

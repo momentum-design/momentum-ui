@@ -34,7 +34,7 @@ export namespace CodeEditor {
 
     handleSlotChange() {
       if (this.slotNodes && this.slotNodes.length) {
-        const codeBlock = this.slotNodes.find(node => (node as Element).tagName === "CODE");
+        const codeBlock = this.slotNodes.find((node) => (node as Element).tagName === "CODE");
         if (codeBlock) {
           const codeBlockText = codeBlock.textContent;
           if (codeBlockText) {
@@ -47,7 +47,7 @@ export namespace CodeEditor {
     handleUrlSlotChange() {
       this.copied = false;
       if (this.slotUrl && this.slotUrl.length) {
-        const codeUrl = this.slotUrl.find(node => node as HTMLSpanElement);
+        const codeUrl = this.slotUrl.find((node) => node as HTMLSpanElement);
         if (codeUrl) {
           const codeUrlText = codeUrl.textContent;
           if (codeUrlText) {
@@ -61,7 +61,7 @@ export namespace CodeEditor {
       if (text) {
         this.codeBlock.innerText = text;
       }
-      hljs.highlightBlock(this.codeBlock);
+      hljs.highlightElement(this.codeBlock);
     }
 
     private copyUrl(copyUrl: string) {

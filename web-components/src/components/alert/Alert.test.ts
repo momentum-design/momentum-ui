@@ -10,16 +10,12 @@ describe("Alert", () => {
   });
 
   test("should render an Alert component", async () => {
-    const el = await fixture(html`
-      <md-alert></md-alert>
-    `);
+    const el = await fixture(html` <md-alert></md-alert> `);
     expect(el).not.toBeNull();
   });
 
   test("should create Alert element with all default props", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert></md-alert> `);
 
     expect(element.closable).toBeFalsy();
     expect(element.message).toEqual("");
@@ -44,121 +40,103 @@ describe("Alert", () => {
   });
 
   test("should render visible Alert component with default html class names", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--default"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
   });
 
   test("should render Alert with icon reflecting default type", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--default"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const iconTypeElement = await element.shadowRoot!.querySelector(".md-alert__icon");
     expect(iconTypeElement).not.toBeNull();
   });
 
   test("should render success Alert", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert type="success" show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="success" show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--success"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("check-circle_36");
+    expect(type?.getAttribute("name")).toEqual("check-circle-regular");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-success-text-color, green)");
   });
 
   test("should render info Alert", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert type="info" show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="info" show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--info"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("info_32");
+    expect(type?.getAttribute("name")).toEqual("info-circle-regular");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-info-text-color, blue)");
   });
 
   test("should render error Alert", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert type="error" show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="error" show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--error"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("icon-warning_32");
+    expect(type?.getAttribute("name")).toEqual("warning-regular");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-error-text-color, red)");
   });
 
   test("should render warning Alert", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert type="warning" show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="warning" show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--warning"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("icon-warning_32");
+    expect(type?.getAttribute("name")).toEqual("warning-regular");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
   test("should render warning Alert", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert type="warn" show></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="warn" show></md-alert> `);
 
     const alertElement = await element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--warn"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
-    expect(expectedClassList.every(className => alertElement?.classList.contains(className))).toBe(true);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("icon-warning_32");
+    expect(type?.getAttribute("name")).toEqual("warning-regular");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
   test("should render close button & icon when closable prop is true", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert show closable></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show closable></md-alert> `);
 
     const buttomElements = element.shadowRoot!.querySelectorAll(".md-alert__button md-button");
     expect(buttomElements.length).toEqual(1);
 
     const iconElement = await element.shadowRoot!.querySelector(".md-alert__button md-button md-icon");
-    expect(iconElement?.getAttribute("name")).toEqual("icon-cancel_16");
+    expect(iconElement?.getAttribute("name")).toEqual("cancel-bold");
   });
 
   test("should handle Click event", async () => {
-    const element = await fixture<Alert.ELEMENT>(html`
-      <md-alert show closable></md-alert>
-    `);
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show closable></md-alert> `);
 
     const mockClick = jest.spyOn(element, "close");
     element.close();

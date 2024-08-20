@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-const button = {
+const input = {
   prefix: "mdv2",
   component: "input",
   default: {
@@ -148,7 +148,10 @@ const button = {
     color: {
       common: "$mds-color-theme-outline-theme-normal"
     }
+  },
+  "border-radius": {
+    common: "8px"
   }
 };
 
-module.exports = button;
+module.exports = input;

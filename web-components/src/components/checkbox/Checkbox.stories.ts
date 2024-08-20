@@ -9,14 +9,12 @@
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Checkbox",
   component: "md-checkbox",
-  decorators: [withKnobs, withA11y],
   parameters: {
     a11y: {
       element: "md-checkbox"

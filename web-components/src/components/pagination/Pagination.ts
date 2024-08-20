@@ -1,5 +1,7 @@
-import reset from "@/wc_scss/reset.scss";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import styles from "./scss/module.scss";
@@ -104,11 +106,9 @@ export namespace Pagination {
     }
 
     private pagesTemplate(shouldCompute: boolean) {
-      return this.computePageList(shouldCompute).map(page =>
+      return this.computePageList(shouldCompute).map((page) =>
         page === "..."
-          ? html`
-              <li class="page-ellipsis">${page}</li>
-            `
+          ? html` <li class="page-ellipsis">${page}</li> `
           : html`
               <li @click=${() => this.computeCurrent(page as number)} aria-current=${page === this.currentPage}>
                 ${page}
@@ -118,7 +118,7 @@ export namespace Pagination {
     }
 
     private dotsTemplate(shouldCompute: boolean) {
-      return this.computePageList(shouldCompute).map(page =>
+      return this.computePageList(shouldCompute).map((page) =>
         page === "..."
           ? nothing
           : html`
@@ -133,26 +133,30 @@ export namespace Pagination {
           ${this.noNavigation
             ? nothing
             : html`
-                <button
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="First Page"
+                  ariaLabel="First Page"
                   ?disabled=${this.hasPreviousPage}
-                  aria-disabled=${this.hasPreviousPage}
                   @click=${this.computeFirst}
                   part="pagination-first"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
-                  <md-icon name="icon-overflow-left_16"></md-icon>
-                </button>
-                <button
+                  <md-icon name="overflow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
+                </md-button>
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="Next Page"
+                  ariaLabel="Next Page"
                   ?disabled=${this.hasPreviousPage}
-                  aria-disabled=${this.hasPreviousPage}
                   @click=${() => this.computePrevious(this.currentPage - 1)}
                   part="pagination-prev"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
-                  <md-icon name="icon-arrow-left_16"></md-icon>
-                </button>
+                  <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
+                </md-button>
               `}
           <div class="md-pagination-container">
             ${this.onlyDots
@@ -177,26 +181,30 @@ export namespace Pagination {
           ${this.noNavigation
             ? nothing
             : html`
-                <button
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="Previous Page"
+                  ariaLabel="Previous Page"
                   ?disabled=${this.hasNextPage}
-                  aria-disabled=${this.hasNextPage}
                   @click=${() => this.computeNext(this.currentPage + 1)}
                   part="pagination-next"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
-                  <md-icon name="icon-arrow-right_16"></md-icon>
-                </button>
-                <button
+                  <md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
+                </md-button>
+                <md-button
                   class="md-pagination-nav"
-                  aria-label="Last Page"
+                  ariaLabel="Last Page"
                   ?disabled=${this.hasNextPage}
-                  aria-disabled=${this.hasNextPage}
                   @click=${this.computeLast}
                   part="pagination-last"
+                  variant="ghost"
+                  size="24"
+                  circle
                 >
-                  <md-icon name="icon-overflow-right_16"></md-icon>
-                </button>
+                  <md-icon name="overflow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
+                </md-button>
               `}
         </nav>
       `;

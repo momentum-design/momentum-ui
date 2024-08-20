@@ -41,8 +41,8 @@ export type TooltipEvent = {
 };
 
 export namespace Tooltip {
-  export type Placement = typeof tooltipPlacement[number];
-  export type Strategy = typeof tooltipStrategy[number];
+  export type Placement = (typeof tooltipPlacement)[number];
+  export type Strategy = (typeof tooltipStrategy)[number];
 
   @customElementWithCheck("md-tooltip")
   export class ELEMENT extends FocusMixin(LitElement) {
@@ -200,9 +200,7 @@ export namespace Tooltip {
             <div id="md-tooltip__content" class="md-tooltip__content" part="tooltip-content">
               ${this.message
                 ? this.message
-                : html`
-                    <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot>
-                  `}
+                : html` <slot name="tooltip-content" @slotchange=${this.handleSlotContentChange}></slot> `}
             </div>
             <div id="arrow" class="md-tooltip__arrow" data-popper-arrow></div>
           </div>

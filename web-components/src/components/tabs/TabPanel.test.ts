@@ -28,5 +28,4 @@ describe("TabPanel", () => {
     await elementUpdated(el);
     expect(el.hasAttribute("tabindex")).not.toBeTruthy();
   });
-
 });

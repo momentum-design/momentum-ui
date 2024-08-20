@@ -24,7 +24,7 @@ export namespace DatePickerWeek {
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
     renderDays = () => {
-      const days = [0, 1, 2, 3, 4, 5, 6].map(offset => {
+      const days = [0, 1, 2, 3, 4, 5, 6].map((offset) => {
         const offsetDay = addDays(this.startOfWeekDay, offset);
         return html`
           <md-datepicker-day
@@ -44,11 +44,7 @@ export namespace DatePickerWeek {
     }
 
     render() {
-      return html`
-        <div class="md-datepicker__week">
-          ${this.renderDays()}
-        </div>
-      `;
+      return html` <div class="md-datepicker__week">${this.renderDays()}</div> `;
     }
   }
 }

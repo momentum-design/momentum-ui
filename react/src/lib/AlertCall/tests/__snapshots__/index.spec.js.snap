@@ -86,7 +86,7 @@ ShallowWrapper {
             +1 408-555-1212
           </div>
         </div>,
-        <Unknown />,
+        <UIDReset />,
         <div
           className="md-alert--call--buttons"
         >
@@ -396,7 +396,7 @@ ShallowWrapper {
               +1 408-555-1212
             </div>
           </div>,
-          <Unknown />,
+          <UIDReset />,
           <div
             className="md-alert--call--buttons"
           >
@@ -788,7 +788,7 @@ ShallowWrapper {
             +1 408-555-1212
           </div>
         </div>,
-        <Unknown>
+        <UIDReset>
           <DeviceListCall
             className=""
             defaultSelected={0}
@@ -808,7 +808,7 @@ ShallowWrapper {
             header="Device selection"
             onSelect={null}
           />
-        </Unknown>,
+        </UIDReset>,
         <div
           className="md-alert--call--buttons"
         >
@@ -1160,7 +1160,7 @@ ShallowWrapper {
               +1 408-555-1212
             </div>
           </div>,
-          <Unknown>
+          <UIDReset>
             <DeviceListCall
               className=""
               defaultSelected={0}
@@ -1180,7 +1180,7 @@ ShallowWrapper {
               header="Device selection"
               onSelect={null}
             />
-          </Unknown>,
+          </UIDReset>,
           <div
             className="md-alert--call--buttons"
           >

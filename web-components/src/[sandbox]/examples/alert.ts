@@ -20,7 +20,9 @@ export const alertTemplate = html`
   <md-alert message="Who's awesome? You are!" show>
     <md-link slot="alert-body" href="/">Test</md-link>
     <div slot="alert-footer">
-      <md-button variant="primary"><span slot="text">primary</span></md-button>
+      <md-button variant="primary">
+        <span slot="text">primary</span>
+      </md-button>
     </div>
   </md-alert>
   <md-alert title="Success" message="Who's awesome? You are!" type="success" inline show></md-alert>

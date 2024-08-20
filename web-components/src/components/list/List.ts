@@ -70,7 +70,7 @@ export namespace List {
 
     private findListItemIndex(event: MouseEvent | KeyboardEvent) {
       const eventPath = event.composedPath();
-      return this.slotted.findIndex(listItem => eventPath.includes(listItem));
+      return this.slotted.findIndex((listItem) => eventPath.includes(listItem));
     }
 
     private switchListItemOnArrowPress(startIndex: number, increment = 1) {
@@ -89,7 +89,7 @@ export namespace List {
     }
 
     private findSelectedListItemIndex() {
-      return this.slotted.findIndex(listItem => (listItem as ListItem.ELEMENT).selected);
+      return this.slotted.findIndex((listItem) => (listItem as ListItem.ELEMENT).selected);
     }
 
     private setSelected(newIndex: number) {
@@ -183,9 +183,7 @@ export namespace List {
 
     render() {
       return html`
-        <ul 
-        role=${ifDefined(this._role!=="list" ? this._role : undefined)}
-        class="md-list" part="list">
+        <ul role=${ifDefined(this._role !== "list" ? this._role : undefined)} class="md-list" part="list">
           <slot name="list-item"></slot>
         </ul>
       `;

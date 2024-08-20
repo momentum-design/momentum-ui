@@ -99,7 +99,6 @@ export namespace MenuItem {
           composed: true
         })
       );
-
     }
 
     handleKeyDown(event: KeyboardEvent) {
@@ -133,17 +132,17 @@ export namespace MenuItem {
     }
 
     render() {
-      
       return html`
         <li
           role="menuitem"
           part="menu-item"
-          class="md-menu-item ${classMap(this.menuItemClassMap)}" 
+          class="md-menu-item ${classMap(this.menuItemClassMap)}"
           ?disabled=${this.disabled}
-          tabindex="-1" 
+          tabindex="-1"
           aria-hidden="true"
           aria-selected="false"
-          aria-label=${ifDefined(this.label)}>
+          aria-label=${ifDefined(this.label)}
+        >
           <a href="${ifDefined(this.href || undefined)}">
             <slot></slot>
           </a>

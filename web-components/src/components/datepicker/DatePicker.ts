@@ -31,7 +31,7 @@ export namespace DatePicker {
     @property({ type: String }) maxDate: string | undefined = undefined;
     @property({ type: String }) minDate: string | undefined = undefined;
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
-    @property({ type: String }) weekStart: typeof weekStartDays[number] = "Sunday";
+    @property({ type: String }) weekStart: (typeof weekStartDays)[number] = "Sunday";
     @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean, reflect: true, attribute: "includes-time" }) includesTime = false;
@@ -213,8 +213,8 @@ export namespace DatePicker {
         dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
           ? ValidationRegex.dateRangeString
           : this.includesTime
-          ? ValidationRegex.ISOString
-          : ValidationRegex.ISODateString;
+            ? ValidationRegex.ISOString
+            : ValidationRegex.ISODateString;
       const regex = RegExp(regexString);
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
@@ -228,7 +228,7 @@ export namespace DatePicker {
 
     render() {
       return html`
-        <md-menu-overlay is-date-picker="true" custom-width="248px" ?disabled=${this.disabled}>
+        <md-menu-overlay is-date-picker custom-width="248px" ?disabled=${this.disabled}>
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">
@@ -248,7 +248,7 @@ export namespace DatePicker {
                   ariaExpanded=${this.isMenuOverlayOpen ? "true" : "false"}
                   ariaControls="date-overlay-content"
                   auxiliaryContentPosition="before"
-                  required=${this.required}
+                  ?required=${this.required}
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
                   @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
                   ?disabled=${this.disabled}
@@ -258,7 +258,7 @@ export namespace DatePicker {
                     ? [{ message: this.errorMessage, type: "error" }]
                     : [{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
                 >
-                  <md-icon slot="input-section" name="calendar-month_16"></md-icon>
+                  <md-icon slot="input-section" name="calendar-month-bold" size="16" iconSet="momentumDesign"></md-icon>
                 </md-input>
               `}
 

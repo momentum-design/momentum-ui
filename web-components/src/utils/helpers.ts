@@ -61,7 +61,7 @@ export const findHighlight = (text: string, query: string) => {
   const queries = [query];
   const matches: number[][] = [];
 
-  queries.forEach(query => {
+  queries.forEach((query) => {
     matches.push(...indicesOf(text, query));
   });
 
@@ -100,10 +100,10 @@ export const findHighlight = (text: string, query: string) => {
 export function debounce<T>(func: Function, wait: number, immediate?: boolean) {
   let timeout: ReturnType<typeof setTimeout> | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return function(this: T, ...args: any[]) {
+  return function (this: T, ...args: any[]) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const context = this;
-    const later = function() {
+    const later = function () {
       timeout = null;
       if (!immediate) {
         func.apply(context, args);

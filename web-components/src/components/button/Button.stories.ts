@@ -9,9 +9,8 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { buttonColor, buttonRoles, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path
 import mdx from "./Button.mdx";
@@ -19,7 +18,6 @@ import mdx from "./Button.mdx";
 export default {
   title: "Components/Button",
   component: "md-button",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     renderWidth: { table: { disable: true } },
     renderMaxWidth: { table: { disable: true } },
@@ -93,12 +91,8 @@ export const Button = () => {
         role=${role}
       >
         ${circle
-          ? html`
-              <md-icon slot="icon" name="icon-search_12"></md-icon>
-            `
-          : html`
-              <span slot="text">Button</span>
-            `}
+          ? html` <md-icon slot="icon" name="icon-search_12"></md-icon> `
+          : html` <span slot="text">Button</span> `}
       </md-button>
     </md-theme>
   `;

@@ -1,16 +1,21 @@
+import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/button/Button";
+import "@/components/checkbox/Checkbox";
 import "@/components/combobox/ComboBox";
 import "@/components/form/Form";
 import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
+import "@/components/list/List";
+import "@/components/list/ListItem";
 import "@/components/modal/Modal";
+import "@/components/phone-input/PhoneInput";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
+import "@/components/tooltip/Tooltip";
 import { debounce } from "@/utils/helpers";
-import { comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import { customElement, html, LitElement, property, query } from "lit-element";
 import { dropdownObjectLongOptions } from "./dropdown";
 
@@ -73,7 +78,7 @@ export class ModalTemplateSandbox extends LitElement {
   }
   private handleFormatChange() {
     this.otherInput = !this.otherInput;
-    document.dispatchEvent(new CustomEvent("on-widget-update"))
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
   }
 
   private handleInputChange = debounce(() => {
@@ -99,9 +104,9 @@ export class ModalTemplateSandbox extends LitElement {
       <md-modal ?show=${this.isStationLoginModal} closeBtnName="Submit This" @close-modal="${this.closeStationLogin}">
         <md-form class="form-class" id="international-form">
           <div class="international-checkbox-wrapper">
-            <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${(e: CustomEvent) => {
-                    this.handleFormatChange();
-                  }}"
+            <md-checkbox slot="checkbox" .checked="${true}" @checkbox-change="${() => {
+              this.handleFormatChange();
+            }}"
               >International dialing format</md-checkbox
             >
           <md-tooltip
@@ -121,49 +126,51 @@ export class ModalTemplateSandbox extends LitElement {
             </md-button>
           </md-tooltip>
           </div>
-          ${this.otherInput
-            ? html`
-                <md-input
-                  type="tel"
-                  id="international"
-                  name="international-value"
-                  pill
-                  value="88997755664"
-                  countryCallingCode="+91"
-                  numberPlaceholder="station Login"
-                  .autofocus="${true}"
-                  @phoneinput-keydown="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-change="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-blur="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                ></md-input>
-              `
-            : html`
-                <md-phone-input
-                  type="tel"
-                  id="national"
-                  name="national-value"
-                  pill
-                  value="222"
-                  countryCallingCode="+91"
-                  numberPlaceholder="station Login"
-                  .autofocus="${true}"
-                  @phoneinput-keydown="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-change="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                  @phoneinput-blur="${(e: CustomEvent) => {
-                    e.stopImmediatePropagation();
-                  }}"
-                ></md-phone-input>
-              `}
+          ${
+            this.otherInput
+              ? html`
+                  <md-input
+                    type="tel"
+                    id="international"
+                    name="international-value"
+                    pill
+                    value="88997755664"
+                    countryCallingCode="+91"
+                    numberPlaceholder="station Login"
+                    .autofocus="${true}"
+                    @phoneinput-keydown="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-change="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-blur="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                  ></md-input>
+                `
+              : html`
+                  <md-phone-input
+                    type="tel"
+                    id="national"
+                    name="national-value"
+                    pill
+                    value="222"
+                    countryCallingCode="+91"
+                    numberPlaceholder="station Login"
+                    .autofocus="${true}"
+                    @phoneinput-keydown="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-change="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                    @phoneinput-blur="${(e: CustomEvent) => {
+                      e.stopImmediatePropagation();
+                    }}"
+                  ></md-phone-input>
+                `
+          }
         </md-form>
       </md-modal>
 
@@ -441,6 +448,4 @@ export class ModalTemplateSandbox extends LitElement {
   }
 }
 
-export const modalTemplate = html`
-  <modal-template-sandbox></modal-template-sandbox>
-`;
+export const modalTemplate = html` <modal-template-sandbox></modal-template-sandbox> `;

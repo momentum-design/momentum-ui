@@ -41,12 +41,8 @@ export class TooltipTemplateSandbox extends LitElement {
     return html`
       <md-tooltip placement="top">
         ${this.isClicked
-          ? html`
-              <md-icon slot="tooltip-content" name="icon-copy_16"></md-icon>
-            `
-          : html`
-              <md-icon slot="tooltip-content" name="icon-mouse-cursor_16"></md-icon>
-            `}
+          ? html` <md-icon slot="tooltip-content" name="icon-copy_16"></md-icon> `
+          : html` <md-icon slot="tooltip-content" name="icon-mouse-cursor_16"></md-icon> `}
         <md-button
           type="button"
           circle
@@ -83,9 +79,7 @@ export class TooltipDisconnectedSandbox extends LitElement {
   render() {
     return html`
       <md-tooltip placement="top" message="You can remove tooltip by clicking button">
-        <md-button type="button" color="mint" size="36" @click=${this.handleClick}>
-          Remove Trigger Button
-        </md-button>
+        <md-button type="button" color="mint" size="36" @click=${this.handleClick}> Remove Trigger Button </md-button>
       </md-tooltip>
     `;
   }

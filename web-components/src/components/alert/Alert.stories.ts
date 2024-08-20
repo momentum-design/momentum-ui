@@ -9,9 +9,8 @@
 import "@/components/alert/Alert";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { alertTypes } from "@/utils/enums";
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 import "../badge/Badge";
 import mdx from "./Alert.mdx";
@@ -19,7 +18,6 @@ import mdx from "./Alert.mdx";
 export default {
   title: "Components/Alerts",
   component: "md-alert",
-  decorators: [withKnobs, withA11y],
   argTypes: {
     renderIconTemplate: { table: { disable: true } },
     alertClassMap: { table: { disable: true } },

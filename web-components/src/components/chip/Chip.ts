@@ -6,15 +6,15 @@
  *
  */
 
-import { Key } from "@/constants";
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
 import "@/components/icon/Icon";
 import "@/components/progress-bar/ProgressBar";
 import "@/components/tooltip/Tooltip";
+import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export const tooltipPlacement = [
@@ -37,7 +37,7 @@ export const tooltipPlacement = [
 
 export namespace Chip {
   export type Role = "group" | "option" | "button";
-  export type Placement = typeof tooltipPlacement[number];
+  export type Placement = (typeof tooltipPlacement)[number];
 
   @customElementWithCheck("md-chip")
   export class ELEMENT extends LitElement {
@@ -144,7 +144,7 @@ export namespace Chip {
       this.selectionChange(false);
     };
 
-    handleClick(e: MouseEvent) {
+    handleClick() {
       const tooltip = this.shadowRoot?.querySelector("md-tooltip");
       tooltip?.dispatchEvent(
         new CustomEvent("tooltip-destroy", {
@@ -171,7 +171,7 @@ export namespace Chip {
         case Key.Space:
         case Key.Enter:
           this.handleSelect();
-          this.handleClick((event as unknown) as MouseEvent);
+          this.handleClick();
           break;
 
         default:
@@ -228,9 +228,7 @@ export namespace Chip {
     protected iconTemplate() {
       const iconColor = !this.disabled ? this.iconColor : "";
       return this.icon
-        ? html`
-            <md-icon class="md-chip--icon" part="chip-icon" name="${this.icon}" color="${iconColor}"></md-icon>
-          `
+        ? html` <md-icon class="md-chip--icon" part="chip-icon" name="${this.icon}" color="${iconColor}"></md-icon> `
         : nothing;
     }
 
@@ -262,8 +260,8 @@ export namespace Chip {
             class="md-chip ${classMap(classNamesInfo)}"
             part="chip"
             aria-pressed=${this.selected}
-            @click=${(e: MouseEvent) => {
-              this.handleClick(e);
+            @click=${() => {
+              this.handleClick();
             }}
             @keydown=${(e: KeyboardEvent) => {
               this.handleKeydown(e);

@@ -1,14 +1,12 @@
 import "@/components/phone-input/PhoneInput";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import "../theme/Theme";
 
 export default {
   title: "Components/Phone Input",
   component: "md-phone-input",
-  decorators: [withKnobs, withA11y],
   parameters: {
     a11y: {
       element: "md-phone-input"

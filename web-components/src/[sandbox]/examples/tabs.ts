@@ -22,7 +22,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
-  (value, index, array) => html`
+  (value, index) => html`
     <md-tab slot="tab">
       <md-icon name="recents_16"></md-icon>
       <span>${value || "Tab " + index}</span>
@@ -58,7 +58,7 @@ export class TabsOrderPrefsExample extends LitElement {
     ];
   }
 
-  handleResetTabs(e: any) {
+  handleResetTabs() {
     this.shadowRoot!.querySelector("md-tabs")!.dispatchEvent(
       new CustomEvent("clear-tab-order-prefs", {
         detail: {
@@ -78,8 +78,8 @@ export class TabsOrderPrefsExample extends LitElement {
       <div style="padding: 16px">
         <div>
           <md-button
-            @click=${(e: MouseEvent) => {
-              this.handleResetTabs(e);
+            @click=${() => {
+              this.handleResetTabs();
             }}
             variant="primary"
           >
@@ -294,7 +294,7 @@ export class TabsTemplateSandbox extends LitElement {
     if (event && tabLabel) {
       const path = event.composedPath();
       const checkboxElement = Array.from(path).find(
-        element => (element as HTMLElement).nodeName.toLowerCase() === "md-checkbox"
+        (element) => (element as HTMLElement).nodeName.toLowerCase() === "md-checkbox"
       );
       if (checkboxElement) {
         const isCheckboxChecked = (checkboxElement as HTMLInputElement).checked;
@@ -471,10 +471,8 @@ export class TabsTemplateSandbox extends LitElement {
         <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
           ${repeat(
             this.currentTabsOrder,
-            tabElement => nanoid(10),
-            tabElement => html`
-              ${unsafeHTML(this.tabs[tabElement])}
-            `
+            () => nanoid(10),
+            (tabElement) => html` ${unsafeHTML(this.tabs[tabElement])} `
           )}
           ${
             !this.isSingleButtonResetEnabled
@@ -498,7 +496,7 @@ export class TabsTemplateSandbox extends LitElement {
                       </div>
                       <p>Unselect Tabs to Hide</p>
                       <md-checkboxgroup style="display: flex" group-label="group_process">
-                        ${this.defaultTabsOrder.map(tabLabel => {
+                        ${this.defaultTabsOrder.map((tabLabel) => {
                           return html`
                             <md-checkbox
                               checked
@@ -555,7 +553,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="WxM" closable="auto" label="WxM">
-          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -619,7 +617,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="WxM" label="WxM">
-          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -646,7 +644,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
-          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -746,9 +744,7 @@ export const tabsTemplate = html`
         </md-button>
       </md-tooltip>
       <div style="width: 100%;">
-        <md-tabs selected="0" more-items-scroll-limit="4">
-          ${repeat(tabsOverlayHtmlList, _html => _html)}
-        </md-tabs>
+        <md-tabs selected="0" more-items-scroll-limit="4"> ${repeat(tabsOverlayHtmlList, (_html) => _html)} </md-tabs>
       </div>
     </md-menu-overlay>
   </div>
@@ -764,7 +760,7 @@ export const tabsTemplate = html`
         <span>Content for "Contact History"</span>
       </md-tab-panel>
       <md-tab slot="tab" name="History">
-        <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+        <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
         <span>Cisco WxM</span>
       </md-tab>
       <md-tab-panel slot="panel">

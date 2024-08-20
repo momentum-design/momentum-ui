@@ -30,7 +30,7 @@ const toggleSwitch = {
     dark: colors.blue["90"].name
   },
   slider: {
-    "color": {
+    color: {
       light: colors.white["100"].name,
       dark: colors.white["100"].name
     },
@@ -43,7 +43,7 @@ const toggleSwitch = {
       dark: colors.gray["70"].name
     }
   },
-  "focus": {
+  focus: {
     light: colors.blue["60"].name,
     dark: colors.blue["60"].name
   }

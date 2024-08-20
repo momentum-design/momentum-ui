@@ -5,9 +5,7 @@ import "./DateRangePicker";
 import { DateRangePicker } from "./DateRangePicker";
 
 const fixtureFactory = async (): Promise<DateRangePicker.ELEMENT> => {
-  return await fixture(html`
-    <md-date-range-picker></md-date-range-picker>
-  `);
+  return await fixture(html` <md-date-range-picker></md-date-range-picker> `);
 };
 
 describe("DatePicker Component", () => {
@@ -19,11 +17,7 @@ describe("DatePicker Component", () => {
     expect(el).not.toBeNull();
   });
   test("should return a SQL formatted date string", async () => {
-    const el: DateRangePicker.ELEMENT = await fixture(
-      html`
-        <md-date-range-picker></md-date-range-picker>
-      `
-    );
+    const el: DateRangePicker.ELEMENT = await fixture(html` <md-date-range-picker></md-date-range-picker> `);
     const date = now();
     const formatted = date.toSQLDate();
     expect(el.dateToSqlTranslate(date)).toEqual(formatted);
@@ -37,28 +31,27 @@ describe("DatePicker Component", () => {
   test("should handle date selection and value update", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.plus({ days: 5 });
-  
+
     const el: DateRangePicker.ELEMENT = await fixture(
       html`
         <md-date-range-picker value={''}></md-date-range-picker>
       `
     );
-  
+
     const selectFunc = jest.spyOn(el, "handleDateSelection");
     const updateFunc = jest.spyOn(el, "updateValue");
     const initialValue = el.value;
-  
+
     el.handleDateSelection({ detail: { data: firstDate } });
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
-  
+
     el.handleDateSelection({ detail: { data: secondDate } });
     expect(selectFunc).toHaveBeenCalled();
     expect(updateFunc).toHaveBeenCalled();
     expect(el.value?.length).toBeGreaterThan(initialValue!.length);
   });
-  
-  
+
   test("should correctly assign start/end values if use enters in reverse order", async () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.minus({ days: 5 });

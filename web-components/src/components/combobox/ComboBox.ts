@@ -105,9 +105,9 @@ export namespace ComboBox {
         } else {
           newId = this.getOptionId(this.filteredOptions[index]);
         }
-        const newList = this.lists ? [...this.lists]?.find(list => list.offsetHeight !== 0 && list.id === newId) : "";
+        const newList = this.lists ? [...this.lists]?.find((list) => list.offsetHeight !== 0 && list.id === newId) : "";
         if (this.lists) {
-          [...this.lists].forEach(list => {
+          [...this.lists].forEach((list) => {
             list.toggleAttribute("focused", false);
           });
         }
@@ -269,7 +269,7 @@ export namespace ComboBox {
     private findFilteredOption(option: string | OptionMember) {
       if (this.isOptionObject(option)) {
         return (this.filteredOptions as OptionMember[]).findIndex(
-          filteredOption =>
+          (filteredOption) =>
             this.getOptionId(filteredOption) === this.getOptionId(option) &&
             this.getOptionValue(filteredOption) === this.getOptionValue(option)
         );
@@ -280,7 +280,7 @@ export namespace ComboBox {
     private setInitialValue() {
       if (this.value.length) {
         if (this.isMulti) {
-          this.value.forEach(v => {
+          this.value.forEach((v) => {
             const selectedIndex = this.findFilteredOption(v);
             if (selectedIndex !== -1) {
               this.setSelectedOption(v);
@@ -332,7 +332,7 @@ export namespace ComboBox {
       } else {
         this.customContent = [...this.querySelectorAll(`[slot]`)];
         if (this.customContent && this.customContent.length) {
-          this.options = this.customContent.map(content => {
+          this.options = this.customContent.map((content) => {
             const customValue = content.getAttribute("aria-label");
             const displayCustomValue = content.getAttribute("display-value");
             if (customValue && displayCustomValue) {
@@ -392,7 +392,7 @@ export namespace ComboBox {
     private findSelectedOption(option: string | OptionMember) {
       if (this.optionId && option) {
         return this.selectedOptions.findIndex(
-          selectedOption =>
+          (selectedOption) =>
             selectedOption &&
             (selectedOption as OptionMember)[this.optionId] === (option as OptionMember)[this.optionId]
         );
@@ -405,20 +405,20 @@ export namespace ComboBox {
       const eventPath = event.composedPath();
       if (this.checkForVirtualScroll()) {
         let id = "";
-        [...this.lists!].forEach(listOption => {
+        [...this.lists!].forEach((listOption) => {
           if (eventPath.includes(listOption)) {
             id = listOption.id;
           }
         });
         return this.filteredOptions.findIndex((option: any) => this.getOptionId(option) === id);
       } else {
-        return [...this.lists!].findIndex(listOption => eventPath.includes(listOption));
+        return [...this.lists!].findIndex((listOption) => eventPath.includes(listOption));
       }
     }
     private checkSelectedOptions() {
       if (this.checkForVirtualScroll()) {
-        const selectedOptionIds = this.selectedOptions.map(option => this.getOptionId(option));
-        const updatedLists = [...this.lists!].filter(list => list.id !== "selectAll");
+        const selectedOptionIds = this.selectedOptions.map((option) => this.getOptionId(option));
+        const updatedLists = [...this.lists!].filter((list) => list.id !== "selectAll");
         updatedLists?.forEach((list: HTMLDivElement) => {
           if (selectedOptionIds.includes(list.id)) {
             if (this.isMulti) {
@@ -478,13 +478,13 @@ export namespace ComboBox {
     }, 0);
 
     private handleGroupFilter = (finalFilteredOption: (string | OptionMember)[]) => {
-      const tempGroupExpandedList = finalFilteredOption.filter(item => {
+      const tempGroupExpandedList = finalFilteredOption.filter((item) => {
         if (typeof item !== "string" && item.isLabel === "true") {
           return item.groupName;
         }
       });
       this.searchItem = true;
-      this.groupExpandedList = tempGroupExpandedList.map(a => {
+      this.groupExpandedList = tempGroupExpandedList.map((a) => {
         if (typeof a !== "string") {
           return a.groupName;
         }
@@ -492,7 +492,7 @@ export namespace ComboBox {
 
       return finalFilteredOption.filter((option: string | OptionMember) => {
         if (typeof option !== "string" && option.isLabel === "true") {
-          const isGroupOption = finalFilteredOption.find(option2 => {
+          const isGroupOption = finalFilteredOption.find((option2) => {
             if (typeof option !== "string" && typeof option2 !== "string") {
               return option.groupName === option2.groupName && option2.isLabel === "false";
             }
@@ -550,7 +550,7 @@ export namespace ComboBox {
         const verticalPadding: number = this.getListBoxVerticalPadding();
         if (this.lists) {
           const updatedList = this.checkForVirtualScroll()
-            ? [...this.lists].filter(list => list.offsetHeight !== 0)
+            ? [...this.lists].filter((list) => list.offsetHeight !== 0)
             : [...this.lists];
 
           height = updatedList
@@ -699,7 +699,7 @@ export namespace ComboBox {
 
     private removeMultiTag() {
       if (this.selected) {
-        this.multiSelected.forEach(index => {
+        this.multiSelected.forEach((index) => {
           const selected = this.selected![index];
           if (selected && selected.hasAttribute("selected")) {
             this.removeSelected(this.selectedOptions[index]);
@@ -710,7 +710,7 @@ export namespace ComboBox {
 
     private unselectedAllMultiTag() {
       if (this.selected) {
-        this.selected.forEach(selected => selected.removeAttribute("selected"));
+        this.selected.forEach((selected) => selected.removeAttribute("selected"));
       }
       this.multiSelectedIndex = -1;
     }
@@ -957,7 +957,7 @@ export namespace ComboBox {
         this.setVisualListbox(true);
       }
       if (this.filteredGroupOptions.length > 0 && this.focusedGroupIndex === -1) {
-        this.focusedGroupIndex = this.filteredGroupOptions.findIndex(item => {
+        this.focusedGroupIndex = this.filteredGroupOptions.findIndex((item) => {
           return typeof item !== "string" && item.groupName === this.groupExpandedList[0];
         });
       }
@@ -1262,7 +1262,7 @@ export namespace ComboBox {
 
     toggleGroupListBox(e: Event, data: string) {
       e.stopPropagation();
-      this.focusedGroupIndex = this.filteredGroupOptions.findIndex(item => {
+      this.focusedGroupIndex = this.filteredGroupOptions.findIndex((item) => {
         return typeof item !== "string" && item.groupName === data;
       });
       this.setGroupList(data);
@@ -1278,7 +1278,7 @@ export namespace ComboBox {
       let insideInputClick = false;
       const path = event.composedPath();
       if (path.length) {
-        insideInputClick = !!path.find(element => element === this);
+        insideInputClick = !!path.find((element) => element === this);
         if (!insideInputClick) {
           this.setVisualListbox(false);
           this.unselectedAllMultiTag();
@@ -1345,7 +1345,7 @@ export namespace ComboBox {
 
     searchIconTemplate() {
       return html`
-        <md-icon name="icon-search_16" @click=${this.toggleVisualListBox}></md-icon>
+        <md-icon name="search-bold" size="16" iconSet="momentumDesign" @click=${this.toggleVisualListBox}></md-icon>
       `;
     }
 
@@ -1353,7 +1353,13 @@ export namespace ComboBox {
       return html`
         <div class="md-combobox-selected-item">
           <span>${this.getOptionValue(selectedOption)}</span>
-          <md-icon class="remove-item" name="cancel_8" @click=${() => this.removeSelected(selectedOption)}></md-icon>
+          <md-icon
+            class="remove-item"
+            name="cancel-bold"
+            size="8"
+            iconSet="momentumDesign"
+            @click=${() => this.removeSelected(selectedOption)}
+          ></md-icon>
         </div>
       `;
     }
@@ -1372,7 +1378,9 @@ export namespace ComboBox {
           <span>
             <md-icon
               class="md-input__icon-clear"
-              name="clear-active_12"
+              name="cancel-bold"
+              size="14"
+              iconSet="momentumDesign"
               style="height: ${this.clearIconHeight};"
             ></md-icon
           ></span>
@@ -1393,13 +1401,15 @@ export namespace ComboBox {
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
-          <span><md-icon name="icon-arrow-down_16"></md-icon> </span>
+          <span>
+            <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
+          </span>
         </button>
       `;
     }
 
     groupArrowButtonTemplate(data: string) {
-      const iconName = this.groupExpandedList.includes(data) ? "icon-arrow-up_12" : "icon-arrow-down_12";
+      const iconName = this.groupExpandedList.includes(data) ? "arrow-up-bold" : "arrow-down-bold";
       return html`
         <button
           type="button"
@@ -1411,7 +1421,9 @@ export namespace ComboBox {
           ?disabled=${this.disabled}
           @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
         >
-          <span><md-icon name=${iconName}></md-icon> </span>
+          <span>
+            <md-icon name=${iconName} size="12" iconSet="momentumDesign"></md-icon>
+          </span>
         </button>
       `;
     }
@@ -1429,7 +1441,7 @@ export namespace ComboBox {
           role="checkbox"
         >
           <span class="select-option" aria-hidden="true">
-            <md-icon name="icon-check_14"></md-icon>
+            <md-icon name="check-bold" size="14" iconSet="momentumDesign"></md-icon>
           </span>
 
           <span part="label" class="select-label" aria-hidden="true">${this.selectAllTextLocalization}</span>
@@ -1441,9 +1453,7 @@ export namespace ComboBox {
       if (this.selectedOptions.length === 0) {
         return nothing;
       } else if (this.isSelectAllSelected()) {
-        return html`
-          <span class="selected-count">${this.allTextLocalization}</span>
-        `;
+        return html` <span class="selected-count">${this.allTextLocalization}</span> `;
       }
       return html`
         <span class="selected-count">${this.selectedOptions.length} ${this.selectedTextLocalization}</span>
@@ -1467,16 +1477,14 @@ export namespace ComboBox {
     getCustomContent(option: string | OptionMember) {
       const slotName = this.getCustomContentName(option);
       if (this.isOptGroup) {
-        const slot = [...this.querySelectorAll(`[slot]`)].find(element => element.slot === slotName);
+        const slot = [...this.querySelectorAll(`[slot]`)].find((element) => element.slot === slotName);
         if (slot) {
           return document.createRange().createContextualFragment(`${slot.outerHTML}`);
         } else {
           return html``;
         }
       } else {
-        return html`
-          <slot name=${ifDefined(slotName)}></slot>
-        `;
+        return html` <slot name=${ifDefined(slotName)}></slot> `;
       }
     }
 
@@ -1521,12 +1529,8 @@ export namespace ComboBox {
         this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
       ).map(({ text, matching }) =>
         matching
-          ? html`
-              <span class="highlight-text" part="select-label">${text}</span>
-            `
-          : html`
-              <span class="selected-label-text" part="select-label">${text}</span>
-            `
+          ? html` <span class="highlight-text" part="select-label">${text}</span> `
+          : html` <span class="selected-label-text" part="select-label">${text}</span> `
       );
     }
 
@@ -1572,7 +1576,7 @@ export namespace ComboBox {
           ${this.isMulti
             ? html`
                 <span class="select-option" aria-hidden="true">
-                  <md-icon name="icon-check_14"></md-icon>
+                  <md-icon name="check-bold" size="14" iconSet="momentumDesign"></md-icon>
                 </span>
               `
             : nothing}
@@ -1601,7 +1605,7 @@ export namespace ComboBox {
             <div class="md-combobox__multiwrap" part="multiwrap">
               ${this.isMulti
                 ? this.isMulti && !this.showSelectedCount
-                  ? repeat(this.selectedOptions, selectedOption => this.selectedOptionTemplate(selectedOption))
+                  ? repeat(this.selectedOptions, (selectedOption) => this.selectedOptionTemplate(selectedOption))
                   : this.getSelctedCount()
                 : nothing}
               <input
@@ -1631,8 +1635,8 @@ export namespace ComboBox {
             ${this.compact
               ? nothing
               : this.shouldChangeButton()
-              ? this.clearButtonTemplate()
-              : this.arrowButtonTemplate()}
+                ? this.clearButtonTemplate()
+                : this.arrowButtonTemplate()}
           </div>
           ${this.showLoader || this.showCustomError
             ? html`
@@ -1660,25 +1664,25 @@ export namespace ComboBox {
                   ${!this.checkForVirtualScroll()
                     ? this.renderWithoutVirtualScroll()
                     : this.options.length !== 0 &&
-                      this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
-                        .length > 0
-                    ? html`
-                        <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
-                          ${scroll({
-                            items: this.filterOptions(
-                              this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
-                            ),
-                            renderItem: (item: string | OptionMember, index?: number) =>
-                              this.renderItem(item, index || 0),
-                            useShadowDOM: false,
-                            scrollToIndex: {
-                              index: this.focusedIndex,
-                              position: this.focusedIndex === -1 ? "start" : "center"
-                            }
-                          })}
-                        </div>
-                      `
-                    : nothing}
+                        this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
+                          .length > 0
+                      ? html`
+                          <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
+                            ${scroll({
+                              items: this.filterOptions(
+                                this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
+                              ),
+                              renderItem: (item: string | OptionMember, index?: number) =>
+                                this.renderItem(item, index || 0),
+                              useShadowDOM: false,
+                              scrollToIndex: {
+                                index: this.focusedIndex,
+                                position: this.focusedIndex === -1 ? "start" : "center"
+                              }
+                            })}
+                          </div>
+                        `
+                      : nothing}
                   ${this.options.length &&
                   this.filteredOptions.length === 0 &&
                   this.inputValue &&

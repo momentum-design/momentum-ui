@@ -80,19 +80,6 @@
     height: fit-content;
   }
 
-  &--leading md-icon::part(icon) {
-    padding-top: 3px;
-  }
-
-  &--trailing md-icon::part(icon) {
-    padding-bottom: 3px;
-  }
-
-  &--top md-icon::part(icon),
-  &--bottom md-icon::part(icon) {
-    margin-top: 2px;
-  }
-
   &--disabled {
     background-color: transparent;
 

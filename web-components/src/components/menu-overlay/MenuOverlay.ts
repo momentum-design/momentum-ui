@@ -53,9 +53,9 @@ export const menuOverlayPlacement = [
 export const menuOverlayRole = ["menu", "dialog"] as const;
 
 export namespace MenuOverlay {
-  export type Size = typeof menuOverlaySize[number];
-  export type Placement = typeof menuOverlayPlacement[number];
-  export type Role = typeof menuOverlayRole[number];
+  export type Size = (typeof menuOverlaySize)[number];
+  export type Placement = (typeof menuOverlayPlacement)[number];
+  export type Role = (typeof menuOverlayRole)[number];
 
   @customElementWithCheck("md-menu-overlay")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
@@ -85,6 +85,7 @@ export namespace MenuOverlay {
     @property({ type: String }) ariaRole: Role = "menu";
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
+    @property({ type: Number, attribute: "overlay-offset" }) overlayOffset = 15;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -183,7 +184,7 @@ export namespace MenuOverlay {
 
     protected async firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
 
       if (this.trigger) {
         this.triggerElement = this.trigger[0];
@@ -308,7 +309,7 @@ export namespace MenuOverlay {
                   if (placement === "left-end" || placement === "right-end") {
                     return [reference.height + reference.y + 3, 14];
                   } else {
-                    return [0, 15];
+                    return [0, this.overlayOffset];
                   }
                 }) as OffsetsFunction
               }
@@ -338,7 +339,7 @@ export namespace MenuOverlay {
       }
     }
 
-    private handleTriggerClick = (event: MouseEvent) => {
+    private handleTriggerClick = () => {
       this.toggleOverlay();
     };
 
@@ -366,7 +367,7 @@ export namespace MenuOverlay {
       let insideMenuKeyDown = false;
       const path = event.composedPath();
       if (path.length) {
-        insideMenuKeyDown = !!path.find(element => element === this);
+        insideMenuKeyDown = !!path.find((element) => element === this);
         if (!insideMenuKeyDown) {
           return;
         }
@@ -436,7 +437,7 @@ export namespace MenuOverlay {
       let insideMenuClick = false;
       const path = event.composedPath();
       if (path.length) {
-        insideMenuClick = !!path.find(element => element === this);
+        insideMenuClick = !!path.find((element) => element === this);
         if (!insideMenuClick && !this.preventClickOutside) {
           this.isOpen = false;
         }

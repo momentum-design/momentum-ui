@@ -33,9 +33,7 @@ export namespace ChatMessage {
               <div class="md-chat-message_title">
                 <span>${this.self ? "You" : this.title}</span>
               </div>
-              <div class="md-chat-message_time">
-                ${this.time}
-              </div>
+              <div class="md-chat-message_time">${this.time}</div>
             </div>
             <div class="md-chat-message_text">
               <slot name="message"></slot>

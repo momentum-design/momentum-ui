@@ -39,32 +39,20 @@ export const chipTemplate = html`
     <md-icon name="icon-alarm_16" slot="custom-right-content"></md-icon>
   </md-chip>
   <h3>Color Chips (Read Only)</h3>
-  <md-chip readonly value="developer@cisco.ninja">
-    cisco-developer@cisco.ninja
-  </md-chip>
-  <md-chip color="blue" readonly value="developer@cisco.ninja">
-    cisco-developer@cisco.ninja
-  </md-chip>
-  <md-chip color="red" readonly value="developer@cisco.ninja">
-    cisco-developer@cisco.ninja
-  </md-chip>
-  <md-chip color="yellow" readonly value="developer@cisco.ninja">
-    cisco-developer@cisco.ninja
-  </md-chip>
-  <md-chip color="green" readonly value="developer@cisco.ninja">
-    cisco-developer@cisco.ninja
-  </md-chip>
-  <md-chip color="mint" readonly value="developer@cisco.ninja">
-    cisco-developer@cisco.ninja
-  </md-chip>
+  <md-chip readonly value="developer@cisco.ninja"> cisco-developer@cisco.ninja </md-chip>
+  <md-chip color="blue" readonly value="developer@cisco.ninja"> cisco-developer@cisco.ninja </md-chip>
+  <md-chip color="red" readonly value="developer@cisco.ninja"> cisco-developer@cisco.ninja </md-chip>
+  <md-chip color="yellow" readonly value="developer@cisco.ninja"> cisco-developer@cisco.ninja </md-chip>
+  <md-chip color="green" readonly value="developer@cisco.ninja"> cisco-developer@cisco.ninja </md-chip>
+  <md-chip color="mint" readonly value="developer@cisco.ninja"> cisco-developer@cisco.ninja </md-chip>
   <md-chip color="cyan" readonly value="developer@cisco.ninja">
     <md-icon name="icon-alert_16" slot="custom-left-content"></md-icon>
     <md-icon name="icon-alarm_16" slot="custom-right-content"></md-icon>
   </md-chip>
   <md-tooltip message="more info on filter1" placement="bottom">
-  <md-chip value="Test Agent Filter1">
-    <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>
-  </md-chip>
+    <md-chip value="Test Agent Filter1">
+      <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>
+    </md-chip>
   </md-tooltip>
   <md-chip tooltipText="more info on filter2" value="Test Agent Filter 2" tooltipPlacement="right">
     <md-icon name="icon-cancel_8" slot="custom-right-content"></md-icon>

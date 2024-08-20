@@ -170,13 +170,13 @@ export namespace Tabs {
 
     private async ensureTabsUpdateComplete(tabs: Tab.ELEMENT[]) {
       const tabUpdatesCompletesPromises = tabs
-        .map(tab => {
+        .map((tab) => {
           if (typeof tab.updateComplete !== "undefined") {
             return tab.updateComplete;
           }
           return null;
         })
-        .filter(promise => promise !== null);
+        .filter((promise) => promise !== null);
 
       tabUpdatesCompletesPromises.length && (await Promise.all(tabUpdatesCompletesPromises));
     }
@@ -184,10 +184,10 @@ export namespace Tabs {
     // This operation may affect render performance when using frequently. Use careful!
     private measureTabsOffsetWidth() {
       return !this.justified && this.direction !== "vertical"
-        ? this.tabs.map((tab, idx) => {
+        ? this.tabs.map((tab) => {
             return tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
           })
-        : this.tabs.map((tab, idx) => {
+        : this.tabs.map((tab) => {
             tab.setAttribute("measuringrealwidth", "");
             const offsetWidth = tab.closable ? tab.offsetWidth + TAB_CROSS_WIDTH : tab.offsetWidth;
             tab.removeAttribute("measuringrealwidth");
@@ -196,7 +196,7 @@ export namespace Tabs {
     }
 
     private measureHiddenTabsCopiesOffsetHeight() {
-      return this.tabsCopy.map((tab, idx) => tab.offsetHeight);
+      return this.tabsCopy.map((tab) => tab.offsetHeight);
     }
 
     private async manageOverflow() {
@@ -208,12 +208,9 @@ export namespace Tabs {
           tabList = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
         }
 
-        tabList.forEach(tab => {
+        tabList.forEach((tab) => {
           if (tab.children?.length && tab.children[0]?.children?.length === 0) {
-            const slotHeaderNode = tab
-              ?.querySelector("slot")
-              ?.assignedNodes({ flatten: true })[0]
-              .cloneNode(true);
+            const slotHeaderNode = tab?.querySelector("slot")?.assignedNodes({ flatten: true })[0].cloneNode(true);
             if (slotHeaderNode) {
               (slotHeaderNode as HTMLElement).classList.add("tab-content");
               tab?.children[0]?.appendChild(slotHeaderNode);
@@ -272,38 +269,44 @@ export namespace Tabs {
             );
 
             // Make more button hidden update
-            this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find(tvd => tvd.isTabInViewportHidden);
+            this.isMoreTabMenuVisible = !!this.tabsViewportDataList.find((tvd) => tvd.isTabInViewportHidden);
 
             // Only tabs going visible
             this.tabsFilteredAsVisibleList = tabList.filter(
               (t, idx) => !this.tabsViewportDataList[idx].isTabInViewportHidden
             );
-            this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
-              acc[tab.id] = idx;
-              return acc;
-            }, {} as Record<TabId, number>);
+            this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce(
+              (acc, tab, idx) => {
+                acc[tab.id] = idx;
+                return acc;
+              },
+              {} as Record<TabId, number>
+            );
 
             // Only tabs going hidden
             this.tabsFilteredAsHiddenList = tabList.filter(
               (t, idx) => this.tabsViewportDataList[idx].isTabInViewportHidden
             );
-            this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
-              acc[tab.id] = idx;
-              return acc;
-            }, {} as Record<TabId, number>);
+            this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce(
+              (acc, tab, idx) => {
+                acc[tab.id] = idx;
+                return acc;
+              },
+              {} as Record<TabId, number>
+            );
           }
         }
 
         this.updateIsMoreTabMenuSelected();
 
-        const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find(t => !t.disabled);
+        const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find((t) => !t.disabled);
         this.updateHiddenIdPositiveTabIndex(firstNotDisabledHiddenTab);
       }
     }
 
     private updateIsMoreTabMenuSelected() {
       // More menu selected check
-      this.isMoreTabMenuSelected = !!this.tabsFilteredAsHiddenList.find(tab => tab.selected);
+      this.isMoreTabMenuSelected = !!this.tabsFilteredAsHiddenList.find((tab) => tab.selected);
     }
 
     private updateHiddenIdPositiveTabIndex(hiddenTab?: Tab.ELEMENT) {
@@ -375,15 +378,21 @@ export namespace Tabs {
       tabs[selectedIndex].selected = true;
       panels[selectedIndex].selected = true;
 
-      this.tabsHash = this.tabs.reduce((acc, tab) => {
-        acc[tab.id] = tab;
-        return acc;
-      }, {} as Record<TabId, Tab.ELEMENT>);
+      this.tabsHash = this.tabs.reduce(
+        (acc, tab) => {
+          acc[tab.id] = tab;
+          return acc;
+        },
+        {} as Record<TabId, Tab.ELEMENT>
+      );
 
-      this.tabsIdxHash = this.tabs.reduce((acc, tab, idx) => {
-        acc[tab.id] = idx;
-        return acc;
-      }, {} as Record<TabId, number>);
+      this.tabsIdxHash = this.tabs.reduce(
+        (acc, tab, idx) => {
+          acc[tab.id] = idx;
+          return acc;
+        },
+        {} as Record<TabId, number>
+      );
     }
 
     get slotItem() {
@@ -432,7 +441,7 @@ export namespace Tabs {
           hiddenTabElements.splice(updatedDraggedToIndex, 0, draggedElement);
           hiddenTabElements.pop();
 
-          const filteredVisibleTabElements = visibleTabElements.filter((element: any) => {
+          const filteredVisibleTabElements = visibleTabElements.filter((element: HTMLElement) => {
             return element.id !== this.getNormalizedTabId(event.item.id);
           });
           filteredVisibleTabElements.push(autoMoveElement);
@@ -487,9 +496,9 @@ export namespace Tabs {
 
       if (this.compUniqueId) {
         const tabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-        const newSelectedIndex = tabsOrder.findIndex(tabItem => tabItem.selected);
+        const newSelectedIndex = tabsOrder.findIndex((tabItem) => tabItem.selected);
         this.storeSelectedTabIndex(newSelectedIndex);
-        this.tabsOrderPrefsArray = tabsOrder.map(tabElement => tabElement.name);
+        this.tabsOrderPrefsArray = tabsOrder.map((tabElement) => tabElement.name);
         localStorage.setItem(this.compUniqueId, this.tabsOrderPrefsArray.join(","));
       }
     };
@@ -537,9 +546,9 @@ export namespace Tabs {
       const tab = this.tabsHash[this.getNormalizedTabId(id)];
       if (tab && !tab.disabled && (tab.closable === "auto" || tab.closable === "custom")) {
         const crossTabIndex = this.tabsFilteredAsVisibleList.findIndex(
-          element => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
+          (element) => this.getNormalizedTabId(element.id) === this.getNormalizedTabId(id)
         );
-        this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: any) => {
+        this.tabsFilteredAsVisibleList = this.tabsFilteredAsVisibleList.filter((element: HTMLElement) => {
           return this.getNormalizedTabId(element.id) !== this.getNormalizedTabId(id);
         });
 
@@ -576,7 +585,7 @@ export namespace Tabs {
       }
       if (selectedTabPanelIndex !== -1) {
         const newSelectedIndex = this.tabs.findIndex(
-          element => element.id === this.tabsFilteredAsVisibleList[selectedTabPanelIndex].id
+          (element) => element.id === this.tabsFilteredAsVisibleList[selectedTabPanelIndex].id
         );
         this.updateSelectedTab(newSelectedIndex);
       } else {
@@ -589,10 +598,10 @@ export namespace Tabs {
 
     private updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
-      const oldSelectedIndex = this.tabs.findIndex(element => element.hasAttribute("selected"));
+      const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
 
       if (tabs && panels) {
-        [oldSelectedIndex, newSelectedIndex].forEach(index => {
+        [oldSelectedIndex, newSelectedIndex].forEach((index) => {
           const tab = tabs[index];
           tab && tab.toggleAttribute("selected");
           const panel = panels[index];
@@ -616,7 +625,7 @@ export namespace Tabs {
             ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
             : this.tabs;
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(
-          element => element.id === tabs[newSelectedIndex].id
+          (element) => element.id === tabs[newSelectedIndex].id
         );
         this.changeSelectedTabIdx(newSelectedTabIdx);
       }
@@ -625,10 +634,10 @@ export namespace Tabs {
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
       const currentTabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
-      const newIndex = currentTabsOrder.findIndex(element => element.id === newSelectedTabId);
+      const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
 
       const newTabArrangement: string[] = [];
-      currentTabsOrder.forEach(tabElement => {
+      currentTabsOrder.forEach((tabElement) => {
         newTabArrangement.push(tabElement.name);
       });
 
@@ -729,7 +738,7 @@ export namespace Tabs {
     handleTabKeydown(event: any) {
       let elementId;
 
-      if (event.target != this && !this.tabs.find(tab => tab.id === event.target.id)) {
+      if (event.target != this && !this.tabs.find((tab) => tab.id === event.target.id)) {
         return false;
       }
 
@@ -851,9 +860,9 @@ export namespace Tabs {
         case Key.NumpadEnter:
         case Key.Space: {
           if (isMoreTriggerTab) {
-            const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter(t => !t.disabled);
+            const tabsFilteredAsHiddenNonDisabledList = this.tabsFilteredAsHiddenList.filter((t) => !t.disabled);
             const t = tabsFilteredAsHiddenNonDisabledList.length
-              ? tabsFilteredAsHiddenNonDisabledList.find(t => t.selected) || tabsFilteredAsHiddenNonDisabledList[0]
+              ? tabsFilteredAsHiddenNonDisabledList.find((t) => t.selected) || tabsFilteredAsHiddenNonDisabledList[0]
               : undefined;
             this.updateHiddenIdPositiveTabIndex(t);
             if (t) {
@@ -890,7 +899,7 @@ export namespace Tabs {
       this.removeEventListener("clear-tab-order-prefs", this.clearTabOrderPrefs as EventListener);
     }
 
-    private clearTabOrderPrefs(event: any) {
+    private clearTabOrderPrefs(event: CustomEvent) {
       const { compUniqueId } = event.detail;
       if (compUniqueId === this.compUniqueId) {
         localStorage.removeItem(this.tabsId);
@@ -911,7 +920,7 @@ export namespace Tabs {
         this.panels = this.panelSlotElement.assignedElements() as TabPanel.ELEMENT[];
       }
 
-      this.defaultTabsOrderArray = this.tabs.map(tab => tab.name);
+      this.defaultTabsOrderArray = this.tabs.map((tab) => tab.name);
     }
 
     private async setupMoreTab() {
@@ -1015,21 +1024,30 @@ export namespace Tabs {
 
       if (changedProperties.has("tabsFilteredAsHiddenList")) {
         this.tabsCopy = Array.from(this.tabsCopyHiddenListElements?.values() || []);
-        this.tabsCopyHash = this.tabsCopy.reduce((acc, tab) => {
-          acc[tab.id] = tab;
-          return acc;
-        }, {} as Record<TabId, Tab.ELEMENT>);
+        this.tabsCopyHash = this.tabsCopy.reduce(
+          (acc, tab) => {
+            acc[tab.id] = tab;
+            return acc;
+          },
+          {} as Record<TabId, Tab.ELEMENT>
+        );
       }
 
       if (changedProperties.has("tabsFilteredAsVisibleList") || changedProperties.has("tabsFilteredAsHiddenList")) {
-        this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce((acc, tab, idx) => {
-          acc[tab.id] = idx;
-          return acc;
-        }, {} as Record<TabId, number>);
-        this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce((acc, tab, idx) => {
-          acc[tab.id] = idx;
-          return acc;
-        }, {} as Record<TabId, number>);
+        this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce(
+          (acc, tab, idx) => {
+            acc[tab.id] = idx;
+            return acc;
+          },
+          {} as Record<TabId, number>
+        );
+        this.tabsHiddenIdxHash = this.tabsFilteredAsHiddenList.reduce(
+          (acc, tab, idx) => {
+            acc[tab.id] = idx;
+            return acc;
+          },
+          {} as Record<TabId, number>
+        );
       }
 
       if (changedProperties.has("isMoreTabMenuOpen")) {
@@ -1085,8 +1103,8 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              tab => nanoid(10),
-              tab => html`
+              () => nanoid(10),
+              (tab) => html`
                 <md-tab
                   .closable="${tab.closable}"
                   .disabled="${tab.disabled}"
@@ -1149,8 +1167,8 @@ export namespace Tabs {
             >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
-                tab => nanoid(10),
-                tab => html`
+                () => nanoid(10),
+                (tab) => html`
                   <md-tab
                     slot="draggable-item"
                     .disabled="${tab.disabled}"

@@ -9,11 +9,9 @@ describe("Pagination component", () => {
   let element: Pagination.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<Pagination.ELEMENT>(
-      html`
-        <md-pagination total-page="20" current-page="10" visible-page="3"></md-pagination>
-      `
-    );
+    element = await fixture<Pagination.ELEMENT>(html`
+      <md-pagination total-page="20" current-page="10" visible-page="3"></md-pagination>
+    `);
   });
 
   test("should render pagination correctly", async () => {

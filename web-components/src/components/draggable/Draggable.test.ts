@@ -23,16 +23,14 @@ describe("Draggable Component", () => {
   beforeEach(async () => {
     resetMocks();
 
-    element = await fixture<Draggable.ELEMENT>(
-      html`
-        <md-draggable>
-          <md-draggable-item slot="draggable-item">Sortable Item1</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item2</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
-        </md-draggable>
-      `
-    );
+    element = await fixture<Draggable.ELEMENT>(html`
+      <md-draggable>
+        <md-draggable-item slot="draggable-item">Sortable Item1</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item2</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
+      </md-draggable>
+    `);
   });
 
   test("should create sortable instance with options", async () => {
@@ -54,13 +52,13 @@ describe("Draggable Component", () => {
   ])("emitted `%s` event from sortable", async (event: string, functionName: string) => {
     const mockSortableEvent = new CustomEvent<SortableEvent>(event, {
       detail: {
-        from: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
-        clone: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
-        item: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
-        target: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
-        to: (jest.fn().mockReturnValue(element) as unknown) as HTMLElement,
-        newIndex: (jest.fn().mockReturnValue(0) as unknown) as number,
-        oldIndex: (jest.fn().mockReturnValue(1) as unknown) as number
+        from: jest.fn().mockReturnValue(element) as unknown as HTMLElement,
+        clone: jest.fn().mockReturnValue(element) as unknown as HTMLElement,
+        item: jest.fn().mockReturnValue(element) as unknown as HTMLElement,
+        target: jest.fn().mockReturnValue(element) as unknown as HTMLElement,
+        to: jest.fn().mockReturnValue(element) as unknown as HTMLElement,
+        newIndex: jest.fn().mockReturnValue(0) as unknown as number,
+        oldIndex: jest.fn().mockReturnValue(1) as unknown as number
       } as SortableEvent
     });
 
@@ -75,9 +73,9 @@ describe("Draggable Component", () => {
   });
 
   test("should cleanup sortable instance after disconnected from DOM", async () => {
-    element["sortableInstance"] = (jest.fn().mockReturnValue(({
+    element["sortableInstance"] = jest.fn().mockReturnValue({
       el: element
-    } as unknown) as SortableOptions) as unknown) as Sortable;
+    } as unknown as SortableOptions) as unknown as Sortable;
 
     const mockDestroy = jest.fn();
 
@@ -93,11 +91,9 @@ describe("Draggable Component", () => {
     const initializeSortableMock = jest.fn();
     element["slottedChanged"] = initializeSortableMock;
 
-    const draggableItem = await fixture<DraggableItem.ELEMENT>(
-      html`
-        <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
-      `
-    );
+    const draggableItem = await fixture<DraggableItem.ELEMENT>(html`
+      <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
+    `);
     element.append(draggableItem);
     await elementUpdated(element);
 
@@ -105,9 +101,9 @@ describe("Draggable Component", () => {
   });
 
   test("should update sortable options if any related property changed", async () => {
-    element["sortableInstance"] = (jest.fn().mockReturnValue(({
+    element["sortableInstance"] = jest.fn().mockReturnValue({
       el: element
-    } as unknown) as SortableOptions) as unknown) as Sortable;
+    } as unknown as SortableOptions) as unknown as Sortable;
 
     const optionMock = jest.fn();
     element["sortableInstance"].destroy = jest.fn();

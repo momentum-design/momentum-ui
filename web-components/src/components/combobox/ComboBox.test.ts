@@ -1,19 +1,7 @@
+import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import {
-  comboBoxComplexObjectOption,
-  comboBoxObjectLongOptions,
-  comboBoxObjectOptions,
-  comboBoxOptions
-} from "@/[sandbox]/sandbox.mock";
-import {
-  elementUpdated,
-  fixture,
-  fixtureCleanup,
-  html,
-  nextFrame,
-  oneEvent
-} from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 import "./ComboBox";
 import { ComboBox } from "./ComboBox";
@@ -25,11 +13,7 @@ describe("Combobox Component", () => {
     let el: ComboBox.ELEMENT;
 
     beforeEach(async () => {
-      el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions} is-multi></md-combobox> `);
     });
     test("should set class if combobox with multi attribute", async () => {
       expect(el.group!.classList.contains("md-combobox-multiselect")).toBeTruthy();
@@ -113,11 +97,7 @@ describe("Combobox Component", () => {
     });
 
     test("shouldn't render selected options without multi attribute", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
       expect(el.selectedOptions.length).toEqual(0);
       expect(el.selected!.length).toEqual(0);
 
@@ -159,7 +139,7 @@ describe("Combobox Component", () => {
         <md-combobox with-custom-content is-multi>
           ${repeat(
             comboBoxComplexObjectOption,
-            country => country.countryNameEn,
+            (country) => country.countryNameEn,
             (country: { countryNameEn: string; countryCallingCode: string }, index) => html`
               <div
                 slot=${index}
@@ -234,11 +214,9 @@ describe("Combobox Component", () => {
 
   describe("Combobox", () => {
     test("should set correct aria attributes", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
+      `);
 
       el.expanded = true;
       await elementUpdated(el);
@@ -247,11 +225,9 @@ describe("Combobox Component", () => {
     });
 
     test("should open/close dropdown if clicked", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} no-clear-icon></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} no-clear-icon></md-combobox>
+      `);
       const event = new MouseEvent("click");
       el.input!.dispatchEvent(event);
       el.input!.focus();
@@ -265,30 +241,24 @@ describe("Combobox Component", () => {
     });
 
     test("should set placeholder if property exist", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} placeholder="Placeholder Input"></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} placeholder="Placeholder Input"></md-combobox>
+      `);
 
       expect(el.placeholder).toEqual("Placeholder Input");
     });
 
     test("should apply disabled attribute", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
+      `);
       expect(el.disabled).toBeTruthy();
     });
 
     test("should set input value in handler", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} disabled></md-combobox>
+      `);
       const event = new Event("input");
       el.input!.value = "combobox";
       el.input!.dispatchEvent(event);
@@ -297,11 +267,7 @@ describe("Combobox Component", () => {
     });
 
     test("should handle keyUp event", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
       const createEvent = (code: string) =>
         new KeyboardEvent("keyup", {
           code
@@ -330,11 +296,9 @@ describe("Combobox Component", () => {
     });
 
     test("should handle keyDown event", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+      `);
       const createEvent = (code: string) =>
         new KeyboardEvent("keydown", {
           code
@@ -504,11 +468,9 @@ describe("Combobox Component", () => {
       expect(el.focusedIndex).toEqual(0);
     });
     test("should remove all selected option if clear icon clicked", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+      `);
 
       el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
       const event = new MouseEvent("click");
@@ -520,15 +482,13 @@ describe("Combobox Component", () => {
     });
 
     test("should remove option if option icon clicked", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+      `);
       el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
       await elementUpdated(el);
 
-      const clearOptionIcon = el.shadowRoot!.querySelector("md-icon[name='cancel_8']");
+      const clearOptionIcon = el.shadowRoot!.querySelector("md-icon[name='cancel-bold']");
 
       clearOptionIcon!.dispatchEvent(new MouseEvent("click"));
 
@@ -537,86 +497,72 @@ describe("Combobox Component", () => {
     });
 
     test("should render correct multi icon name", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+      `);
 
       expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
-        "icon-arrow-down_16"
+        "arrow-down-bold"
       );
 
       el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
-        "clear-active_12"
-      );
+      expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual("cancel-bold");
     });
     test("should render correct icon name", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
 
       expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
-        "icon-arrow-down_16"
+        "arrow-down-bold"
       );
 
       el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
       await elementUpdated(el);
       expect(el.shadowRoot!.querySelector(".md-combobox-button md-icon")!.getAttribute("name")).toEqual(
-        "icon-arrow-down_16"
+        "arrow-down-bold"
       );
     });
 
     test("should set correct icon for different combobox state", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
       const event = new InputEvent("input", {
         data: "a"
       });
       el.input!.value = "a";
-      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).not.toBeNull();
-      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='arrow-down-bold']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='cancel-bold']")).toBeNull();
       el.input!.dispatchEvent(event);
 
       await elementUpdated(el);
 
-      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).toBeNull();
-      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='arrow-down-bold']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='cancel-bold']")).not.toBeNull();
 
       const backspace = new KeyboardEvent("keydown", {
         code: Key.Backspace
       });
       el.input!.dispatchEvent(backspace);
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).toBeNull();
-      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='arrow-down-bold']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='cancel-bold']")).not.toBeNull();
     });
     test("should set correct icon for different combobox state in multi mode", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+      `);
       const arrowDown = new KeyboardEvent("keydown", {
         code: Key.ArrowDown
       });
       el.input!.value = "Afghanistan";
 
-      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).not.toBeNull();
-      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='arrow-down-bold']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='cancel-bold']")).toBeNull();
       el.input!.dispatchEvent(arrowDown);
 
       await elementUpdated(el);
 
-      expect(el.shadowRoot!.querySelector("md-icon[name='icon-arrow-down_16']")).toBeNull();
-      expect(el.shadowRoot!.querySelector("md-icon[name='clear-active_12']")).not.toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='arrow-down-bold']")).toBeNull();
+      expect(el.shadowRoot!.querySelector("md-icon[name='cancel-bold']")).not.toBeNull();
     });
   });
 
@@ -625,11 +571,7 @@ describe("Combobox Component", () => {
     afterEach(fixtureCleanup);
 
     beforeEach(async () => {
-      el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions} is-multi></md-combobox> `);
     });
     test("should add selected options", async () => {
       const event = new MouseEvent("click");
@@ -651,8 +593,8 @@ describe("Combobox Component", () => {
       expect(el.selected!.length).toEqual(2);
       expect(el.selectedOptions.length).toEqual(2);
 
-      const firstListIcon = el.selected![0].querySelector("md-icon[name='cancel_8']");
-      const secondListIcon = el.selected![1].querySelector("md-icon[name='cancel_8']");
+      const firstListIcon = el.selected![0].querySelector("md-icon[name='cancel-bold']");
+      const secondListIcon = el.selected![1].querySelector("md-icon[name='cancel-bold']");
 
       firstListIcon!.dispatchEvent(event);
       secondListIcon!.dispatchEvent(event);
@@ -756,7 +698,7 @@ describe("Combobox Component", () => {
 
       const selectedAttribute = {
         get count() {
-          return [...el.selected!].filter(selected => selected.hasAttribute("selected"));
+          return [...el.selected!].filter((selected) => selected.hasAttribute("selected"));
         }
       };
 
@@ -781,20 +723,14 @@ describe("Combobox Component", () => {
 
   describe("Listbox", () => {
     test("should set correct aria label attribute", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} label="Country"></md-combobox>
+      `);
       expect(el.listBox!.getAttribute("aria-label")).toEqual("Country");
     });
 
     test("should set correct styles", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
       expect(el.expanded).toBeFalsy();
       expect(el.listBox!.style.display).toEqual("none");
 
@@ -805,11 +741,7 @@ describe("Combobox Component", () => {
     });
 
     test("should correct render options depends on input value", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
       el["inputValue"] = "f";
       await elementUpdated(el);
       expect(el.lists!.length).toEqual(1);
@@ -821,18 +753,16 @@ describe("Combobox Component", () => {
     });
 
     test("should set correct id to each option in dom", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
+      `);
 
       const optionsCheckbox = el.shadowRoot!.querySelectorAll(".select-option");
 
-      const matcherId = [...el.lists!].map(option => option.getAttribute("id"));
-      const matcherChecked = [...el.lists!].every(option => option.hasAttribute("aria-checked"));
+      const matcherId = [...el.lists!].map((option) => option.getAttribute("id"));
+      const matcherChecked = [...el.lists!].every((option) => option.hasAttribute("aria-checked"));
 
-      expect(matcherId).toEqual(expect.arrayContaining(comboBoxObjectOptions.map(option => option.id)));
+      expect(matcherId).toEqual(expect.arrayContaining(comboBoxObjectOptions.map((option) => option.id)));
       expect(optionsCheckbox.length).toEqual(29);
       expect(matcherChecked).toBeTruthy();
     });
@@ -840,11 +770,7 @@ describe("Combobox Component", () => {
 
   describe("Option", () => {
     test("should dispatch event when option clicked", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
 
       const event = new MouseEvent("click");
 
@@ -855,11 +781,9 @@ describe("Combobox Component", () => {
       expect(el.expanded).toBeFalsy();
     });
     test("should dispatch event when option clicked (multi)", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} is-multi></md-combobox>
+      `);
 
       const event = new MouseEvent("click");
 
@@ -873,11 +797,9 @@ describe("Combobox Component", () => {
     });
 
     test("should toggle aria tags", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxObjectOptions} option-id="id" option-value="country" is-multi></md-combobox>
+      `);
 
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       expect(el.expanded).toBeTruthy();
@@ -912,11 +834,7 @@ describe("Combobox Component", () => {
       );
     });
     test("should handle selected option without multi attribute", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
 
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
@@ -932,11 +850,7 @@ describe("Combobox Component", () => {
     });
 
     test("should change selected option", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${comboBoxOptions}></md-combobox> `);
       el.expanded = true;
       el.lists![0].dispatchEvent(new MouseEvent("click"));
 
@@ -949,25 +863,21 @@ describe("Combobox Component", () => {
   });
 
   test("should set initial value", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[0]]}></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[0]]}></md-combobox>
+    `);
 
     expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[0]]));
     expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
   });
   test("should set initial value for multi", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox
-          .options=${comboBoxOptions}
-          .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
-          is-multi
-        ></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox
+        .options=${comboBoxOptions}
+        .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
+        is-multi
+      ></md-combobox>
+    `);
 
     expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[1], comboBoxOptions[2]]));
     expect(el.selected!.length).toEqual(2);
@@ -975,17 +885,15 @@ describe("Combobox Component", () => {
   });
 
   test("should set initial value for option object", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox
-          .options=${comboBoxObjectOptions}
-          .value=${[comboBoxObjectOptions[4], comboBoxObjectOptions[5], { country: "Andorra", id: "17" }]}
-          is-multi
-          option-id="id"
-          option-value="country"
-        ></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox
+        .options=${comboBoxObjectOptions}
+        .value=${[comboBoxObjectOptions[4], comboBoxObjectOptions[5], { country: "Andorra", id: "17" }]}
+        is-multi
+        option-id="id"
+        option-value="country"
+      ></md-combobox>
+    `);
 
     expect(el.value).toEqual(expect.arrayContaining([comboBoxObjectOptions[4], comboBoxObjectOptions[5]]));
     expect(el.selected!.length).toEqual(2);
@@ -1000,11 +908,7 @@ describe("Combobox Component", () => {
   });
 
   test("should render no options list if empty options provided", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${[]}></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html` <md-combobox .options=${[]}></md-combobox> `);
     el.expanded = true;
     await elementUpdated(el);
     expect(el.shadowRoot!.querySelector(".no-result")!.textContent!.trim()).toEqual("No Options");
@@ -1022,11 +926,9 @@ describe("Combobox Component", () => {
   });
 
   test("should set custom value for default options", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[1]]} allow-custom-value></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} .value=${[comboBoxOptions[1]]} allow-custom-value></md-combobox>
+    `);
     el.expanded = true;
     const enter = new KeyboardEvent("keydown", { code: Key.Enter });
 
@@ -1049,18 +951,16 @@ describe("Combobox Component", () => {
   });
 
   test("should not set custom value for object options", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox
-          .options=${comboBoxObjectOptions}
-          .value=${[comboBoxObjectOptions[4]]}
-          option-id="id"
-          option-value="country"
-          is-multi
-          allow-custom-value
-        ></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox
+        .options=${comboBoxObjectOptions}
+        .value=${[comboBoxObjectOptions[4]]}
+        option-id="id"
+        option-value="country"
+        is-multi
+        allow-custom-value
+      ></md-combobox>
+    `);
     el.expanded = true;
     const enter = new KeyboardEvent("keydown", { code: Key.Enter });
 
@@ -1075,16 +975,14 @@ describe("Combobox Component", () => {
   });
 
   test("should correct render invalid state", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox
-          .options=${comboBoxOptions}
-          .value=${[comboBoxOptions[4]]}
-          invalid
-          invalid-text-i18n="Error Message from Combobox"
-        ></md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox
+        .options=${comboBoxOptions}
+        .value=${[comboBoxOptions[4]]}
+        invalid
+        invalid-text-i18n="Error Message from Combobox"
+      ></md-combobox>
+    `);
 
     expect(el.invalid).toBeTruthy();
     expect(el.shadowRoot!.querySelector(".md-combobox-error")).not.toBeNull();
@@ -1092,22 +990,18 @@ describe("Combobox Component", () => {
   });
 
   test("should render with Slect All option", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all> </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} is-multi allow-select-all> </md-combobox>
+    `);
     el.expanded = true;
     await elementUpdated(el);
     expect(el.shadowRoot!.querySelector("#md-combobox-listbox")?.querySelector("#selectAll")).not.toBeNull();
   });
 
   test("should select/unselect all options on clicking Select All", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
+    `);
     el.expanded = true;
     await elementUpdated(el);
     const selectAllEl = el.shadowRoot!.querySelector("#md-combobox-listbox")?.querySelector("#selectAll");
@@ -1129,11 +1023,9 @@ describe("Combobox Component", () => {
   });
 
   test("should show selected option's count", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} is-multi allow-select-all show-selected-count> </md-combobox>
+    `);
     el.expanded = true;
     await elementUpdated(el);
 
@@ -1145,13 +1037,11 @@ describe("Combobox Component", () => {
   });
 
   test("should render with custom error", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox .options=${comboBoxOptions} show-custom-error>
-          <div slot="custom-error">Custom Error!!!</div>
-        </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox .options=${comboBoxOptions} show-custom-error>
+        <div slot="custom-error">Custom Error!!!</div>
+      </md-combobox>
+    `);
     el.expanded = true;
     await elementUpdated(el);
     expect(el.shadowRoot!.querySelector('[slot="custom-error"]')).not.toBeNull();
@@ -1160,28 +1050,26 @@ describe("Combobox Component", () => {
 
   describe("Combobox with group options", () => {
     test("should render group label", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox with-custom-content>
-            <optgroup label="Countries">
-              <div slot="Australia" aria-label="Australia" display-value="Australia">
-                <span>Australia</span>
-              </div>
-              <div slot="Austria" aria-label="Austria" display-value="Austria">
-                <span>Austria</span>
-              </div>
-            </optgroup>
-            <optgroup label="Cites">
-              <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
-                <span>Ambala</span>
-              </div>
-              <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
-                <span>Banaras</span>
-              </div>
-            </optgroup>
-          </md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox with-custom-content>
+          <optgroup label="Countries">
+            <div slot="Australia" aria-label="Australia" display-value="Australia">
+              <span>Australia</span>
+            </div>
+            <div slot="Austria" aria-label="Austria" display-value="Austria">
+              <span>Austria</span>
+            </div>
+          </optgroup>
+          <optgroup label="Cites">
+            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+              <span>Ambala</span>
+            </div>
+            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+              <span>Banaras</span>
+            </div>
+          </optgroup>
+        </md-combobox>
+      `);
 
       el.expanded = true;
       await elementUpdated(el);
@@ -1255,28 +1143,26 @@ describe("Combobox Component", () => {
   });
 
   test("should navigate through tab between groups", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox with-custom-content>
-          <optgroup label="Countries">
-            <div slot="Australia" aria-label="Australia" display-value="Australia">
-              <span>Australia</span>
-            </div>
-            <div slot="Austria" aria-label="Austria" display-value="Austria">
-              <span>Austria</span>
-            </div>
-          </optgroup>
-          <optgroup label="Cites">
-            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
-              <span>Ambala</span>
-            </div>
-            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
-              <span>Banaras</span>
-            </div>
-          </optgroup>
-        </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox with-custom-content>
+        <optgroup label="Countries">
+          <div slot="Australia" aria-label="Australia" display-value="Australia">
+            <span>Australia</span>
+          </div>
+          <div slot="Austria" aria-label="Austria" display-value="Austria">
+            <span>Austria</span>
+          </div>
+        </optgroup>
+        <optgroup label="Cites">
+          <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+            <span>Ambala</span>
+          </div>
+          <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+            <span>Banaras</span>
+          </div>
+        </optgroup>
+      </md-combobox>
+    `);
 
     el.expanded = true;
     await elementUpdated(el);
@@ -1358,37 +1244,35 @@ describe("Combobox Component", () => {
   });
 
   test("should list all group related options on match", async () => {
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox with-custom-content>
-          <optgroup label="Countries">
-            <div slot="Australia" aria-label="Australia" display-value="Australia">
-              <span>Australia</span>
-            </div>
-            <div slot="Austria" aria-label="Austria" display-value="Austria">
-              <span>Austria</span>
-            </div>
-            <div slot="India" aria-label="India" display-value="India">
-              <span>India</span>
-            </div>
-          </optgroup>
-          <optgroup label="Cites">
-            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
-              <span>Ambala</span>
-            </div>
-            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
-              <span>Banaras</span>
-            </div>
-            <div slot="Ujjaini" aria-label="Ujjaini" display-value="Ujjaini">
-              <span>Indonasia</span>
-            </div>
-            <div slot="Indore" aria-label="Indore" display-value="Indore">
-              <span>Indore</span>
-            </div>
-          </optgroup>
-        </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox with-custom-content>
+        <optgroup label="Countries">
+          <div slot="Australia" aria-label="Australia" display-value="Australia">
+            <span>Australia</span>
+          </div>
+          <div slot="Austria" aria-label="Austria" display-value="Austria">
+            <span>Austria</span>
+          </div>
+          <div slot="India" aria-label="India" display-value="India">
+            <span>India</span>
+          </div>
+        </optgroup>
+        <optgroup label="Cites">
+          <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+            <span>Ambala</span>
+          </div>
+          <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+            <span>Banaras</span>
+          </div>
+          <div slot="Ujjaini" aria-label="Ujjaini" display-value="Ujjaini">
+            <span>Indonasia</span>
+          </div>
+          <div slot="Indore" aria-label="Indore" display-value="Indore">
+            <span>Indore</span>
+          </div>
+        </optgroup>
+      </md-combobox>
+    `);
 
     el.expanded = true;
     await elementUpdated(el);
@@ -1426,42 +1310,38 @@ describe("Combobox Component", () => {
   });
 
   test("should navigate through tab between groups for multi select", async () => {
-    const el2 = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder="Placeholder">
-          <div label="Countries">
-            <div slot="Austria" aria-label="Austria" display-value="Austria">
-              <span>Austria</span>
-            </div>
+    const el2 = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox with-custom-content is-multi use-virtual-scroll allow-select-all placeholder="Placeholder">
+        <div label="Countries">
+          <div slot="Austria" aria-label="Austria" display-value="Austria">
+            <span>Austria</span>
           </div>
-        </md-combobox>
-      `
-    );
+        </div>
+      </md-combobox>
+    `);
     await elementUpdated(el2);
     await nextFrame();
 
-    const el = await fixture<ComboBox.ELEMENT>(
-      html`
-        <md-combobox with-custom-content is-multi placeholder="Placeholder">
-          <optgroup label="Countries">
-            <div slot="Australia" aria-label="Australia" display-value="Australia">
-              <span>Australia</span>
-            </div>
-            <div slot="Austria" aria-label="Austria" display-value="Austria">
-              <span>Austria</span>
-            </div>
-          </optgroup>
-          <optgroup label="Cites">
-            <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
-              <span>Ambala</span>
-            </div>
-            <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
-              <span>Banaras</span>
-            </div>
-          </optgroup>
-        </md-combobox>
-      `
-    );
+    const el = await fixture<ComboBox.ELEMENT>(html`
+      <md-combobox with-custom-content is-multi placeholder="Placeholder">
+        <optgroup label="Countries">
+          <div slot="Australia" aria-label="Australia" display-value="Australia">
+            <span>Australia</span>
+          </div>
+          <div slot="Austria" aria-label="Austria" display-value="Austria">
+            <span>Austria</span>
+          </div>
+        </optgroup>
+        <optgroup label="Cites">
+          <div slot="Ambala" aria-label="Ambala" display-value="Ambala">
+            <span>Ambala</span>
+          </div>
+          <div slot="Banaras" aria-label="Banaras" display-value="Banaras">
+            <span>Banaras</span>
+          </div>
+        </optgroup>
+      </md-combobox>
+    `);
 
     el.expanded = true;
     await elementUpdated(el);
@@ -1541,13 +1421,10 @@ describe("Combobox Component", () => {
   });
 
   describe("Combobox with virtual scroll", () => {
-   
     test("should handle keyUp event", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
+      `);
       const createEvent = (code: string) =>
         new KeyboardEvent("keyup", {
           code
@@ -1559,7 +1436,6 @@ describe("Combobox Component", () => {
       const mock = jest.fn();
 
       el.listBox!.style.maxHeight = mock();
-      
 
       expect(el.expanded).toBeTruthy();
       expect(mock).toBeCalled();
@@ -1576,16 +1452,14 @@ describe("Combobox Component", () => {
       expect(mock).not.toBeCalled();
     });
     test("should set initial value for multi", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox
-            .options=${comboBoxOptions}
-            .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
-            is-multi
-            use-virtual-scroll
-          ></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox
+          .options=${comboBoxOptions}
+          .value=${[comboBoxOptions[1], comboBoxOptions[2]]}
+          is-multi
+          use-virtual-scroll
+        ></md-combobox>
+      `);
 
       expect(el.value).toEqual(expect.arrayContaining([comboBoxOptions[1], comboBoxOptions[2]]));
       expect(el.selected!.length).toEqual(2);
@@ -1593,11 +1467,9 @@ describe("Combobox Component", () => {
     });
 
     test("should update ariaLabelForComboBox based on search result count", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${["One", "Two", "Three"]}></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${["One", "Two", "Three"]}></md-combobox>
+      `);
 
       el.searchResultAriaLabel = "Search results: {{count}} results found.";
       el.inputValue = "One";
@@ -1618,11 +1490,9 @@ describe("Combobox Component", () => {
     });
 
     test("should change selected option for virtual scroll", async () => {
-      const el = await fixture<ComboBox.ELEMENT>(
-        html`
-          <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
-        `
-      );
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
+      `);
       el.expanded = true;
       const lists = comboBoxOptions.map((item, _index) => {
         return `<div id=${item} class="md-combobox-option" role="option" style="height:12px;">${item}</div>`;
@@ -1633,7 +1503,7 @@ describe("Combobox Component", () => {
       }
       const upd = el.lists![0];
       if (el.lists![0]) {
-        upd.onclick = event => el.handleListClick(event);
+        upd.onclick = (event) => el.handleListClick(event);
       }
       el.lists![0].dispatchEvent(new MouseEvent("click"));
 

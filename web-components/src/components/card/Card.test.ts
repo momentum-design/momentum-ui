@@ -6,20 +6,18 @@ import "./Card";
 import { Card } from "./Card";
 
 const fixtureFactory = async (id: string, title: string, subtitle: string, info: string): Promise<Card.ELEMENT> => {
-  return await fixture(
-    html`
-      <md-card .menuOption=${cardMenuItems} id=${id} title=${title} subtitle=${subtitle} info=${info}>
-        <div slot="content">
-          <img
-            src="https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
-            alt=""
-          />
-        </div>
-        <md-badge slot="footer" color="violet" small>Active</md-badge>
-        <md-badge slot="footer" color="mint" small>Stock Report</md-badge>
-      </md-card>
-    `
-  );
+  return await fixture(html`
+    <md-card .menuOption=${cardMenuItems} id=${id} title=${title} subtitle=${subtitle} info=${info}>
+      <div slot="content">
+        <img
+          src="https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
+          alt=""
+        />
+      </div>
+      <md-badge slot="footer" color="violet" small>Active</md-badge>
+      <md-badge slot="footer" color="mint" small>Stock Report</md-badge>
+    </md-card>
+  `);
 };
 
 describe("Card component", () => {

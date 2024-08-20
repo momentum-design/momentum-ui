@@ -230,7 +230,7 @@
 
   .md-input {
     border: $input__border-width solid;
-    border-radius: $input__border-radius;
+    border-radius: var(--input-border-radius, $input__border-radius);
     font-family: $input__font-family;
     font-size: 1rem;
     height: $input__height;

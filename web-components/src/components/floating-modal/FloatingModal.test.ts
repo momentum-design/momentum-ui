@@ -1,8 +1,7 @@
+import { Button } from "@/components/button/Button";
+import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import "./FloatingModal";
 import { FloatingModal } from "./FloatingModal";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
-import { Button } from "@/components/button/Button";
-import interact from "@interactjs/interact/index";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -21,11 +20,7 @@ describe("Floating Modal Component", () => {
   let element: FloatingModal.ELEMENT;
 
   beforeEach(async () => {
-    element = await fixture<FloatingModal.ELEMENT>(
-      html`
-        <md-floating-modal></md-floating-modal>
-      `
-    );
+    element = await fixture<FloatingModal.ELEMENT>(html` <md-floating-modal></md-floating-modal> `);
   });
   afterEach(fixtureCleanup);
 
@@ -107,11 +102,11 @@ describe("Floating Modal Component", () => {
     await nextFrame();
     await elementUpdated(element);
 
-   // Change the viewport to 500px.
-   global.innerWidth = 500;
+    // Change the viewport to 500px.
+    global.innerWidth = 500;
 
-   // Trigger the window resize event.
-   global.dispatchEvent(new Event('resize'));
+    // Trigger the window resize event.
+    global.dispatchEvent(new Event("resize"));
 
     await elementUpdated(element);
     expect(element.show).toBeTruthy();

@@ -76,17 +76,15 @@ describe("Coachmark component", () => {
 
   test("should render coachmark-action slot when hidebutton is true", async () => {
     // Setup the component with hidebutton property set to true
-    const component = await fixture(
-      html`
-        <md-coachmark hidebutton>
-          <div slot="coachmark-content">
-            <span>Coachmark test content</span>
-            <md-button slot="coachmark-content">Coachmark next</md-button>
-          </div>
-          <md-button>Coachmark Default</md-button>
-        </md-coachmark>
-      `
-    );
+    const component = await fixture(html`
+      <md-coachmark hidebutton>
+        <div slot="coachmark-content">
+          <span>Coachmark test content</span>
+          <md-button slot="coachmark-content">Coachmark next</md-button>
+        </div>
+        <md-button>Coachmark Default</md-button>
+      </md-coachmark>
+    `);
 
     // Wait for the component to update
     await elementUpdated(component);

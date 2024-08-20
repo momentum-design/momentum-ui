@@ -58,7 +58,7 @@ export namespace Grabber {
       }
     }
 
-    handleMouseDownn(e: MouseEvent) {
+    handleMouseDownn() {
       this.toggleGrabber();
     }
 
@@ -129,14 +129,14 @@ export namespace Grabber {
             aria-label=${ifDefined(this.label.length ? this.label : undefined)}
             type="button"
             role="button"
-            @click="${(e: MouseEvent) => this.handleMouseDownn(e)}"
+            @click="${() => this.handleMouseDownn()}"
             @keydown="${(e: KeyboardEvent) => this.handleKeyDown(e)}"
             @mouseenter="${() => this.handleMouseEnter()}"
             @mouseleave="${() => this.handleMouseLeave()}"
             @focus="${() => this.handleFocus()}"
             @blur="${() => this.handleBlur()}"
           >
-            <md-icon name="${this.iconName}" size="12" designEnabled></md-icon>
+            <md-icon name="${this.iconName}" size="12" .iconSet=${"momentumDesign"}></md-icon>
           </button>
         </div>
       `;

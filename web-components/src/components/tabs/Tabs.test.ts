@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+import "@/components/input/Input";
 import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
@@ -170,7 +172,6 @@ describe("Tabs", () => {
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
     expect(tabs["visibleTabsContainerElement"]?.children[1].id).toEqual(currentID);
 
-
     currentID = tabs["tabsFilteredAsVisibleList"][0].id;
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
@@ -237,7 +238,7 @@ describe("Tabs", () => {
     expect(tabs["tabsFilteredAsVisibleList"][1].id).toEqual(currentID);
     let visibleTab = tabs["visibleTabsContainerElement"]!.children[1].getAttribute("name");
     expect(tabs["defaultTabsOrderArray"][0]).toEqual(visibleTab);
-    
+
     (tabs as Tabs.ELEMENT).handleOnDragEnd({
       item: {
         id: tabs.slotted[0].id
@@ -336,7 +337,7 @@ describe("Tabs", () => {
     tab.forEach((t: Tab.ELEMENT) => {
       tabs["tabsFilteredAsVisibleList"].push(t);
     });
-    
+
     const createKeyboardEvent = (id: string, code: string) => {
       return {
         originalTarget: {
@@ -353,7 +354,7 @@ describe("Tabs", () => {
       };
     };
     tabs.selected = 1;
-    
+
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);
 
@@ -378,7 +379,7 @@ describe("Tabs", () => {
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
     expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
-    
+
     tabs.selected = 2;
     await elementUpdated(tabs);
 
@@ -389,8 +390,7 @@ describe("Tabs", () => {
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
     expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
-    
-    
+
     tabs.selected = tabs.slotted.length - 1;
     await elementUpdated(tabs);
 
@@ -401,7 +401,7 @@ describe("Tabs", () => {
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
     expect(tabs.slotted[2].getAttribute("tabindex")).toBe("0");
-    
+
     tabs.selected = 0;
     await elementUpdated(tabs);
 
@@ -412,7 +412,7 @@ describe("Tabs", () => {
     expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
     expect(tabs.slotted[1].getAttribute("tabindex")).toBe("-1");
     expect(tabs.slotted[2].getAttribute("tabindex")).toBe("-1");
-    
+
     tabs.selected = 0;
     await elementUpdated(tabs);
 
@@ -421,7 +421,7 @@ describe("Tabs", () => {
 
     expect(tabs.selected).toBe(0);
     expect(panels[0].hasAttribute("hidden")).toBeTruthy();
-    
+
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.Space));
     await elementUpdated(tabs);
     expect(panels[2].hasAttribute("hidden")).toBeFalsy();
@@ -431,7 +431,7 @@ describe("Tabs", () => {
     await elementUpdated(tabs);
   });
 
-  test("should handle Keydown event with More Button", async() => {
+  test("should handle Keydown event with More Button", async () => {
     tabs["tabsFilteredAsVisibleList"] = [tab[0], tab[1]];
     tabs["tabsFilteredAsHiddenList"] = [tab[2]];
     tabs["updateIsMoreTabMenuSelected"]();
@@ -452,12 +452,12 @@ describe("Tabs", () => {
     };
     await elementUpdated(tabs);
     tabs.selected = 3;
-    tabs["isMoreTabMenuVisible"]=true;
+    tabs["isMoreTabMenuVisible"] = true;
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
     await elementUpdated(tabs);
     expect(tabs.selected).toBe(3);
     tabs.selected = 1;
-     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
+    (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent("tab-more", Key.Tab));
     await elementUpdated(tabs);
     expect(tabs.selected).toBe(1);
 
@@ -465,16 +465,15 @@ describe("Tabs", () => {
     tabs.selected = 3;
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.End));
     await elementUpdated(tabs);
-    
+
     expect(tabs.selected).toBe(3);
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[2].id, Key.Home));
     await elementUpdated(tabs);
-    
+
     expect(tabs.selected).toBe(3);
     tabs.selected = 0;
     tabs["tabsFilteredAsVisibleList"] = [];
-    const tabId = tabs.slotted[0].id;
-    tabs["tabsVisibleIdxHash"]={ tabId : 0 };
+    tabs["tabsVisibleIdxHash"] = { tabId: 0 };
 
     (tabs as Tabs.ELEMENT).handleTabKeydown(createKeyboardEvent(tabs.slotted[0].id, Key.Home));
     await elementUpdated(tabs);
@@ -483,7 +482,7 @@ describe("Tabs", () => {
 
   test("should handle Enter Press keydown event with More Button and focus appropriate tab", async () => {
     tabs["tabsFilteredAsVisibleList"] = [tab[0]];
-    tabs["tabsFilteredAsHiddenList"] = [ tab[1], tab[2]];
+    tabs["tabsFilteredAsHiddenList"] = [tab[1], tab[2]];
     tabs["updateIsMoreTabMenuSelected"]();
     const createKeyboardEvent = (id: string, code: string) => {
       return {
@@ -618,9 +617,9 @@ describe("Tabs", () => {
   });
 
   test("should manage overflow", async () => {
-    const tabsCount = tabs.slotted.filter(el => el.tagName === "md-tab").length;
+    const tabsCount = tabs.slotted.filter((el) => el.tagName === "md-tab").length;
 
-    tabs["tabs"] = tabs["tabs"].map(t => ({
+    tabs["tabs"] = tabs["tabs"].map(() => ({
       offsetWidth: 160
     })) as Tab.ELEMENT[];
 
@@ -651,7 +650,6 @@ describe("Tabs", () => {
     expect(tabs["tabHiddenIdPositiveTabIndex"]).toBe(t.id);
   });
 
-
   test("should handle keydown event and focused appropriate tabPanel upon Tab Press", async () => {
     const createKeyboardEvent = (code: string) =>
       new KeyboardEvent("keydown", {
@@ -663,17 +661,15 @@ describe("Tabs", () => {
   });
 
   test("should log error is tabs-id is missing and persist-selection is true", async () => {
-    const element: any = await fixture(
-      html`
-        <div style="width: 300px;max-width: 300px;">
-          <md-tabs draggable persist-selection>
-            <md-tab name="History" slot="tab" disabled>
-              <span>Contact History</span>
-            </md-tab>
-          </md-tabs>
-        </div>
-      `
-    );
+    const element = await fixture(html`
+      <div style="width: 300px;max-width: 300px;">
+        <md-tabs draggable persist-selection>
+          <md-tab name="History" slot="tab" disabled>
+            <span>Contact History</span>
+          </md-tab>
+        </md-tabs>
+      </div>
+    `);
     expect(element).not.toBeNull();
   });
 });

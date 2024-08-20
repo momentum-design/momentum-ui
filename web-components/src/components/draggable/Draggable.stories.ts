@@ -10,8 +10,7 @@ import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { withA11y } from "@storybook/addon-a11y";
-import { boolean, color, select, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, color, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-element";
 import { GroupOptions } from "sortablejs";
 import mdx from "./Draggable.mdx";
@@ -19,7 +18,6 @@ import mdx from "./Draggable.mdx";
 export default {
   title: "Components/Draggable",
   component: "md-draggable",
-  decorators: [withKnobs, withA11y],
   parameters: {
     docs: {
       page: mdx
@@ -46,8 +44,8 @@ export const Draggable = () => {
     "Select pull option",
     {
       clone: "clone",
-      TurnOn: (true as unknown) as any,
-      TurnOff: (false as unknown) as any,
+      TurnOn: true as unknown as any,
+      TurnOff: false as unknown as any,
       GroupArray: [leftGroupName]
     },
     "clone",
@@ -56,11 +54,11 @@ export const Draggable = () => {
   const leftGroupPut = select(
     "Select left put option",
     {
-      TurnOn: (true as unknown) as any,
-      TurnOff: (false as unknown) as any,
+      TurnOn: true as unknown as any,
+      TurnOff: false as unknown as any,
       GroupArray: [leftGroupName]
     },
-    (true as unknown) as any,
+    true as unknown as any,
     "Left List"
   );
   const leftHandle = text("Drag handle selector within left list items", "md-draggable-item", "Left List");
@@ -73,8 +71,8 @@ export const Draggable = () => {
     "Select pull option",
     {
       clone: "clone",
-      TurnOn: (true as unknown) as any,
-      TurnOff: (false as unknown) as any,
+      TurnOn: true as unknown as any,
+      TurnOff: false as unknown as any,
       GroupArray: [rightGroupName]
     },
     "clone",
@@ -83,11 +81,11 @@ export const Draggable = () => {
   const rightGroupPut = select(
     "Select right put option",
     {
-      TurnOn: (true as unknown) as any,
-      TurnOff: (false as unknown) as any,
+      TurnOn: true as unknown as any,
+      TurnOff: false as unknown as any,
       GroupArray: [rightGroupName]
     },
-    (true as unknown) as any,
+    true as unknown as any,
     "Right List"
   );
   const rightHandle = text("Drag handle selector within right list items", "md-draggable-item", "Right List");

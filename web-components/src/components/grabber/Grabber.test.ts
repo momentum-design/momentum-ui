@@ -4,9 +4,7 @@ import "./Grabber";
 import { Grabber } from "./Grabber";
 
 const fixtureFactory = async (): Promise<Grabber.ELEMENT> => {
-  return await fixture(html`
-    <md-grabber> </md-grabber>
-  `);
+  return await fixture(html` <md-grabber> </md-grabber> `);
 };
 
 describe("Grabber component", () => {

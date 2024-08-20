@@ -61,7 +61,7 @@ describe("Tab", () => {
       new KeyboardEvent("keydown", {
         code
       });
-    setTimeout(() => (el as any).handleCrossKeydown(createEvent(Key.Enter)), 10);
+    setTimeout(() => (el as Tab.ELEMENT).handleCrossKeydown(createEvent(Key.Enter)), 10);
 
     const { detail: click } = await oneEvent(el, "tab-close-click");
     expect(click).toBeDefined();

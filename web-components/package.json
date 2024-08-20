@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.13.11",
+  "version": "2.13.12",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -102,7 +102,7 @@
     "@types/html-webpack-plugin": "^3.2.2",
     "@types/jest": "26.0.10",
     "@types/luxon": "^1.25.0",
-    "@types/node": "^13.7.7",
+    "@types/node": "^20.15.1",
     "@types/papaparse": "^5.2.4",
     "@types/sortablejs": "^1.10.6",
     "@types/webpack": "^4.41.38",

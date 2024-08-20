@@ -9,21 +9,22 @@ export const iconTemplate = html`
   <h2>New Design Icons:</h2>
 
   <h3>Old icon:</h3>
-  <md-icon name="pto_28" class="testClass" color="green-50"></md-icon>
+  <md-icon name="pto_28" class="testClass" color="green-50" title="pto"></md-icon>
 
   <h3>Swapping from old icon -> new icon (enabled):</h3>
   <md-icon
     name="pto_28"
     class="testClass"
-    .iconSet=${"preferMomentumDesign"}
+    iconSet="preferMomentumDesign"
     size="50"
+    title="pto"
     color="var(--avatar-presence-active)"
   ></md-icon>
 
   <h3>Using new icon enabled (enabled):</h3>
   <md-icon
     name="search_16"
-    .iconSet=${"preferMomentumDesign"}
+    iconSet="momentumDesign"
     class="testClass"
     size="50"
     color="var(--avatar-presence-active)"
@@ -32,8 +33,9 @@ export const iconTemplate = html`
   <h3>Using new icon skip lookup (override):</h3>
   <md-icon
     name="search-bold"
-    .iconSet=${"momentumDesign"}
+    iconSet="momentumDesign"
     class="testClass"
+    title="search"
     size="50"
     color="var(--avatar-presence-active)"
   ></md-icon>

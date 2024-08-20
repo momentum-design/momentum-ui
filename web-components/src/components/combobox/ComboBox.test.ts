@@ -1494,7 +1494,7 @@ describe("Combobox Component", () => {
         <md-combobox .options=${comboBoxOptions} use-virtual-scroll></md-combobox>
       `);
       el.expanded = true;
-      const lists = comboBoxOptions.map((item, _index) => {
+      const lists = comboBoxOptions.map((item) => {
         return `<div id=${item} class="md-combobox-option" role="option" style="height:12px;">${item}</div>`;
       });
 

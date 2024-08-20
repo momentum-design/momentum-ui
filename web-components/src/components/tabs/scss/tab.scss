@@ -29,6 +29,14 @@
   }
 }
 
+:host([selected]) button.isPill.onlyIcon {
+  border-radius: 100%;
+
+  &:active {
+    border-radius: 100%;
+  }
+}
+
 :host([vertical]) button {
   text-align: left !important;
 }
@@ -51,9 +59,15 @@
   }
 }
 
-:host(:focus) {
-  // background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
+:host([selected][vertical]) button.isPill.onlyIcon {
+  border-radius: 100%;
 
+  &:active {
+    border-radius: 100%;
+  }
+}
+
+:host(:focus) {
   button {
     outline: $tab-main-focus-border !important;
     outline-offset: rem-calc(-2);
@@ -62,12 +76,6 @@
 
   button.newMomentum {
     background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
-  }
-
-  button.newMomentum.isPill {
-    outline: none !important;
-    outline-offset: 0;
-    box-shadow: none !important;
   }
 }
 
@@ -155,9 +163,8 @@ button {
 
   &:disabled {
     background: $tab-none-bg;
-    color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light);
+    color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light) !important;
     cursor: not-allowed;
-    filter: invert(100%);
 
     @media screen and (-ms-high-contrast: active) {
       filter: brightness(1) contrast(1) saturate(1.5);
@@ -217,6 +224,10 @@ button.newMomentum {
 
 button.isPill {
   border-radius: $tab-new-border-radius;
+}
+
+button.isPill.onlyIcon {
+  border-radius: 100%;
 }
 
 /* High Contrast Mode */

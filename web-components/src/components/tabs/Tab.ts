@@ -39,6 +39,7 @@ export namespace Tab {
     @property({ type: String }) ariaRole = "tab";
     @property({ type: String }) type: Tabs.TabsType = "Line";
     @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Boolean }) onlyIcon = false;
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -180,7 +181,8 @@ export namespace Tab {
           class="${classMap({
             closable: this.closable !== "",
             isPill: this.type === "Pill",
-            newMomentum: this.newMomentum
+            newMomentum: this.newMomentum,
+            onlyIcon: this.onlyIcon
           })}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
         >

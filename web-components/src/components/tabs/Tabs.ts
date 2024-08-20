@@ -1117,6 +1117,7 @@ export namespace Tabs {
                   tabIndex="${this.getTabIndex(tab)}"
                   .newMomentum=${this.newMomentum}
                   type=${this.type}
+                  .onlyIcon="${tab.onlyIcon}"
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
@@ -1182,6 +1183,7 @@ export namespace Tabs {
                     ariaRole="menuitem"
                     .newMomentum=${this.newMomentum}
                     type=${this.type}
+                    .onlyIcon="${tab.onlyIcon}"
                   >
                     ${unsafeHTML(tab.innerHTML)}
                   </md-tab>

@@ -690,7 +690,7 @@ export const tabsTemplate = html`
         <md-tab-panel slot="panel">
           <span>Content for "Cisco Answer"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History">
+        <md-tab slot="tab" name="History" onlyIcon>
           <md-icon name="alert_16"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">

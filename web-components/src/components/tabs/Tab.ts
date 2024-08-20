@@ -13,6 +13,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { Tabs } from "./Tabs";
 import styles from "./scss/module.scss";
 
 export const TAB_CROSS_WIDTH = 22;
@@ -36,6 +37,9 @@ export namespace Tab {
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
     @property({ type: String }) ariaRole = "tab";
+    @property({ type: String }) type: Tabs.TabsType = "Line";
+    @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Boolean }) onlyIcon = false;
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -175,7 +179,10 @@ export namespace Tab {
           tabindex="-1"
           part="tab"
           class="${classMap({
-            closable: this.closable !== ""
+            closable: this.closable !== "",
+            isPill: this.type === "Pill",
+            newMomentum: this.newMomentum,
+            onlyIcon: this.onlyIcon
           })}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
         >

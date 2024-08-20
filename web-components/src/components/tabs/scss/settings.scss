@@ -1,7 +1,9 @@
 $tab-border: rem-calc(2) solid transparent;
 $tab-focus-border-radius: rem-calc(4);
+$tab-new-border-radius: 1rem;
 $tab-base-indent: rem-calc(2);
 $tab-height: rem-calc(48);
+$new-tab-height: rem-calc(32);
 $tab-overflow-button-height: rem-calc(45);
 $tab-span-height: rem-calc(27);
 $tab-none-bg: transparent;
@@ -17,3 +19,4 @@ $tab-focus-border: var(--tabs-default-focus-border, $lm-tabs-default-focus-borde
 $tab-focus-bg: var(--tabs-default-bg-color, $lm-tabs-default-bg-color-light);
 $tab-more-list-bg: var(--tabs-default-bg-color, $lm-tabs-default-bg-color-light);
 $tab-menu-manual-offset: rem-calc(13);
+$tab-between-gap: 4px;

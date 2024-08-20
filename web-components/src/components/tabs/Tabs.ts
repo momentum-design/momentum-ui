@@ -44,6 +44,8 @@ export namespace Tabs {
   type TabsViewportDataList = TabViewportData[];
 
   type TabId = Element["id"];
+  export type TabsType = "Line" | "Pill";
+
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
@@ -63,6 +65,8 @@ export namespace Tabs {
     @property({ type: String, attribute: "tabs-id" }) tabsId = "";
     @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
     @property({ type: String, attribute: "comp-unique-id" }) compUniqueId = "";
+    @property({ type: String }) type: Tabs.TabsType = "Line";
+    @property({ type: Boolean }) newMomentum = false;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -1079,7 +1083,8 @@ export namespace Tabs {
           class="md-tab__list ${classMap({
             "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
             "no-tabs-visible": this.noTabsVisible,
-            "vertical-tab-list": this.direction === "vertical"
+            "vertical-tab-list": this.direction === "vertical",
+            "tab-new-momentum": this.newMomentum
           })}"
           role="tablist"
         >
@@ -1092,7 +1097,8 @@ export namespace Tabs {
           <div
             id="visible-tabs-list"
             class="visible-tabs-container ${classMap({
-              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible
+              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+              "visible-new-tabs": this.newMomentum
             })}"
           >
             ${repeat(
@@ -1109,6 +1115,9 @@ export namespace Tabs {
                   aria-controls="${this.getAriaConrolId(tab)}"
                   .isCrossVisible=${true}
                   tabIndex="${this.getTabIndex(tab)}"
+                  .newMomentum=${this.newMomentum}
+                  type=${this.type}
+                  .onlyIcon="${tab.onlyIcon}"
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
@@ -1137,6 +1146,8 @@ export namespace Tabs {
                 "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
               })}"
               ariaRole="button"
+              .newMomentum=${this.newMomentum}
+              type=${this.type}
             >
               <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
               <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
@@ -1170,6 +1181,9 @@ export namespace Tabs {
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                     ariaRole="menuitem"
+                    .newMomentum=${this.newMomentum}
+                    type=${this.type}
+                    .onlyIcon="${tab.onlyIcon}"
                   >
                     ${unsafeHTML(tab.innerHTML)}
                   </md-tab>

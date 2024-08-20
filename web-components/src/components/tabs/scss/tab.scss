@@ -19,6 +19,24 @@
   }
 }
 
+:host([selected]) button.isPill {
+  box-shadow: none;
+  border-radius: $tab-new-border-radius;
+  background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
+
+  &:active {
+    border-radius: $tab-new-border-radius;
+  }
+}
+
+:host([selected]) button.isPill.onlyIcon {
+  border-radius: 100%;
+
+  &:active {
+    border-radius: 100%;
+  }
+}
+
 :host([vertical]) button {
   text-align: left !important;
 }
@@ -32,13 +50,32 @@
   }
 }
 
-:host(:focus) {
-  background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
+:host([selected][vertical]) button.isPill {
+  border-radius: $tab-new-border-radius;
+  box-shadow: none;
 
+  &:active {
+    border-radius: $tab-new-border-radius;
+  }
+}
+
+:host([selected][vertical]) button.isPill.onlyIcon {
+  border-radius: 100%;
+
+  &:active {
+    border-radius: 100%;
+  }
+}
+
+:host(:focus) {
   button {
     outline: $tab-main-focus-border !important;
     outline-offset: rem-calc(-2);
     box-shadow: var(--tabs-default-focus-shadow, $lm-tabs-default-focus-shadow-light) !important;
+  }
+
+  button.newMomentum {
+    background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
   }
 }
 
@@ -126,9 +163,8 @@ button {
 
   &:disabled {
     background: $tab-none-bg;
-    color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light);
+    color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light) !important;
     cursor: not-allowed;
-    filter: invert(100%);
 
     @media screen and (-ms-high-contrast: active) {
       filter: brightness(1) contrast(1) saturate(1.5);
@@ -165,6 +201,33 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+button.newMomentum {
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+  /* Sizing and spacing */
+  min-height: 1.75rem;
+  padding: 0 .625rem 0 .625rem;
+  justify-content: center;
+
+  .tab-slot {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .tab-action-button {
+    height:90%;
+  }
+}
+
+button.isPill {
+  border-radius: $tab-new-border-radius;
+}
+
+button.isPill.onlyIcon {
+  border-radius: 100%;
 }
 
 /* High Contrast Mode */

@@ -56,7 +56,7 @@
   $height: false,
   $line-height: $button__line-height,
   $padding: false,
-  $radius: false
+  $radius: null
 ) {
   // Declarations before nested rules
   & {
@@ -88,10 +88,16 @@
   }
 
   // Nested rules with conditional logic
-  @if $radius {
+  @if $radius != null {
     @include radius($radius);
+    
     &::after {
-      border-radius: calc(#{$radius} + #{2 * $button-focus-gap-ring}),
+      @if $radius > 0 {
+        border-radius: calc(#{$radius} + #{$button-focus-gap-ring});
+      }
+      @else{
+        border-radius: $radius;
+      }
     }
   }
 }

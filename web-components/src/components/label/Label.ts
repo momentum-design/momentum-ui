@@ -6,8 +6,8 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
@@ -47,7 +47,7 @@ export namespace Label {
       };
     }
 
-    handleClick(event: MouseEvent) {
+    handleClick() {
       this.setFocus();
       this.dispatchEvent(
         new CustomEvent<LabelEventDetail>("label-click", {
@@ -63,7 +63,7 @@ export namespace Label {
     render() {
       return html`
         <label
-          @click="${(event: MouseEvent) => this.handleClick(event)}"
+          @click="${() => this.handleClick()}"
           class="md-label ${classMap(this.labelClassMap)}"
           for="${this.htmlFor}"
         >

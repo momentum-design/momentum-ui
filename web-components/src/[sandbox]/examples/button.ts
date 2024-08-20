@@ -24,9 +24,6 @@ export class ButtonTemplateSandbox extends LitElement {
   static get styles() {
     return [
       css`
-        :host {
-        }
-
         .status-state-button::part(button) {
           width: 206px;
         }
@@ -145,7 +142,7 @@ export class ButtonTemplateSandbox extends LitElement {
 
       <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Button Sizes</h3>
-        <md-button size="size-none"><span slot="text">32</span></md-button>
+        <md-button size="size-none"><span slot="text">size-none</span></md-button>
         <md-button size="24"><span slot="text">24</span></md-button>
         <md-button size="28"><span slot="text">28</span></md-button>
         <md-button size="32"><span slot="text">32</span></md-button>

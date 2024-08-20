@@ -1,9 +1,9 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import Sortable, { SortableEvent, SortableOptions } from "sortablejs";
 import { mocked } from "ts-jest/utils";
 import "./Draggable";
-import "./DraggableItem";
 import { Draggable } from "./Draggable";
-import Sortable, { SortableEvent, SortableOptions } from "sortablejs";
+import "./DraggableItem";
 import { DraggableItem } from "./DraggableItem";
 
 jest.mock("sortablejs");
@@ -62,9 +62,7 @@ describe("Draggable Component", () => {
       } as SortableEvent
     });
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    setTimeout(() => element[functionName](mockSortableEvent));
+    setTimeout(() => (element as any)[functionName](mockSortableEvent));
 
     const { detail } = await oneEvent(element, `drag-${event}`);
 

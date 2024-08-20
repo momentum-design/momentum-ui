@@ -22,6 +22,11 @@
   width: 100%;
 }
 
+.visible-new-tabs {
+  width: auto;
+  gap: $tab-between-gap;
+}
+
 .md-tab__list {
   border-bottom: $tab-list-border;
   display: inline-flex;
@@ -95,6 +100,16 @@
 
   md-menu-overlay::part(overlay) {
     top: -$tab-menu-manual-offset;
+  }
+}
+
+.tab-new-momentum {
+  height: $new-tab-height;
+  min-height: $new-tab-height;
+
+  md-icon,
+  img {
+    margin-right: 0rem !important;
   }
 }
 

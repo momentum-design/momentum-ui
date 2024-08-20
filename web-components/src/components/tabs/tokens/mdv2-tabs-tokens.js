@@ -41,7 +41,7 @@ const tabs = {
       common: "$mds-color-theme-button-secondary-pressed"
     },
     disabled: {
-      common: "$mds-color-theme-button-secondary-disabled"
+      common: "$mds-color-theme-text-primary-disabled"
     },
     active: {
       common: "$mds-color-theme-text-primary-normal"

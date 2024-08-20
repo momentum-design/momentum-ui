@@ -54,8 +54,7 @@ describe("Input Component", () => {
     const spyLabelHandler = jest.spyOn(Input.ELEMENT.prototype, "handleLabelClick");
 
     const labelElement = element.shadowRoot!.querySelector("md-label");
-    const event = new MouseEvent("click");
-    labelElement!.handleClick(event);
+    labelElement!.handleClick();
 
     expect(spyLabelHandler).toHaveBeenCalled();
     expect(element.shadowRoot!.activeElement).toEqual(element.input);

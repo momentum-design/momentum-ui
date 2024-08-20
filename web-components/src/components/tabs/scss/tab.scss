@@ -52,11 +52,12 @@
 }
 
 :host(:focus) {
+  // background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
+
   button {
     outline: $tab-main-focus-border !important;
     outline-offset: rem-calc(-2);
     box-shadow: var(--tabs-default-focus-shadow, $lm-tabs-default-focus-shadow-light) !important;
-    background-color: var(--tabs-default-focus-bg, $lm-tabs-default-focus-bg-light);
   }
 
   button.newMomentum {

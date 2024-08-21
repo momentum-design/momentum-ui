@@ -1,4 +1,4 @@
-import { Meta, Story, Props } from "@storybook/addon-docs";
+import { Meta, Props, Story } from "@storybook/addon-docs";
 import { MeetingAlert } from "./MeetingAlert.ts";
 
 # Meeting Alert
@@ -107,7 +107,7 @@ An array of objects to be passed to attendees property. If more than 2 attendees
     title="Jane Doe"
   >
     <md-button ariaLabel="Action" circle size=${44} role="button">
-      <md-icon name="icon-alarm_16"></md-icon>
+      <md-icon name="alarm-bold" size="16" iconSet="momentumDesign"></md-icon>
     </md-button>
   </md-meeting-alert>
 ```
@@ -146,7 +146,7 @@ Any action can be passed through `slot` in meeting alert by enclosing the elemen
       size=${44}
       role="button"
     >
-      <md-icon name="icon-alarm_16"></md-icon>
+      <md-icon name="alarm-bold" size="16" iconSet="momentumDesign"></md-icon>
     </md-button>
 </md-meeting-alert>
 ```

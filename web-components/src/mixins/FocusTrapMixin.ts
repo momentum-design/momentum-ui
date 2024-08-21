@@ -118,7 +118,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       const elStyle = element.style;
 
       if (!elStyle) {
-        return true;
+        return element instanceof HTMLElement == false;
       }
 
       return (

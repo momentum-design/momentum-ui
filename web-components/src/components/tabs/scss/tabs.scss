@@ -121,13 +121,17 @@
 
 md-menu-overlay {
   md-tab {
-    md-tooltip {
+    md-tooltip {      
       width: 170px;
-      position: absolute;
+      position: relative;
+      display: inline-flex;
+      min-height: 28px;      
+      align-items: center;
 
       .text-ellipsis {
-        width: 170px;
-        position: absolute;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;

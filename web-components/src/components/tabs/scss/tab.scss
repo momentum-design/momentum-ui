@@ -191,7 +191,7 @@ button {
   }
 
   span {
-    @include tab-button-span;
+    @include tab-button-span;    
   }
 
   &:hover {
@@ -219,10 +219,6 @@ button.newMomentum {
   min-height: 1.75rem;
   padding: 0 0.625rem 0 0.625rem;
   justify-content: center;
-
-  .tab-action-button {
-    height: 90%;
-  }
 }
 
 :host([vertical])  {

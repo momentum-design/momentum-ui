@@ -167,6 +167,20 @@ export namespace Tab {
       }
     }
 
+    renderCrossButton() {
+      return html`
+        <div
+          ?disabled=${this.disabled}
+          tabindex="-1"
+          class="tab-action-button"
+          @click=${(e: MouseEvent) => this.handleCrossClick(e)}
+          @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
+        >
+          <md-icon tabindex="0" name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
+        </div>
+      `;
+    }
+
     render() {
       return html`
         <button
@@ -187,19 +201,7 @@ export namespace Tab {
           @click=${(e: MouseEvent) => this.handleClick(e)}
         >
           <slot class="tab-slot"></slot>
-          ${this.isCrossVisible && this.closable
-            ? html`
-                <div
-                  ?disabled=${this.disabled}
-                  tabindex="-1"
-                  class="tab-action-button"
-                  @click=${(e: MouseEvent) => this.handleCrossClick(e)}
-                  @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
-                >
-                  <md-icon tabindex="0" name="cancel_14"></md-icon>
-                </div>
-              `
-            : ""}
+          ${this.isCrossVisible && this.closable ? this.renderCrossButton() : ""}
         </button>
       `;
     }

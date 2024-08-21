@@ -37,12 +37,13 @@
   text-align: center;
   width: 100%;
 
-  .md-menu-overlay__more {
+  .md-menu-overlay__more {    
     height: 100%;
     margin-left: auto;
     width: auto;
     max-width: 128.5px;
     .md-menu-overlay__overflow-label{
+      display: inline-block;
       max-width: 70px;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -93,7 +94,7 @@
       &::part(tab) {
         text-align: left;
         padding-left: 16px;
-        padding-right: 16px;
+        padding-right: 16px; 
       }
     }
   }
@@ -119,27 +120,22 @@
   padding: $tab-base-indent;
 }
 
-md-tab {
-  md-icon,
-  img {
-    margin-right: 0.5rem;
-
-    &.more-icon{
-      margin-right: 0;
-      margin-left: 0.5rem;
-    }
-  }
-}
-
 md-menu-overlay {
   md-tab {
-    md-tooltip {
+    md-tooltip {      
       width: 170px;
-      position: absolute;
+      position: relative;
+      display: inline-flex;
+      min-height: 28px;      
+      align-items: center;
+      overflow: hidden;      
 
       .text-ellipsis {
-        width: 170px;
-        position: absolute;
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;

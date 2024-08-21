@@ -177,7 +177,7 @@ export class Sandbox extends LitElement {
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
-        <md-tabs direction="vertical" class="explorer">
+        <md-tabs direction="vertical" class="explorer" persist-selection tabs-id="explorer">
           <md-tab slot="tab" name="Accordion">
             <span>md-accordion</span>
           </md-tab>

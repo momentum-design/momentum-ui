@@ -546,7 +546,7 @@ export const tabsTemplate = html`
     <div>
       <md-tabs selected="2" draggable>
         <md-tab disabled slot="tab" name="History" closable="auto" label="History">
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -560,7 +560,7 @@ export const tabsTemplate = html`
           <span>Content for "WxM"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="Answer" closable="auto">
-          <md-icon name="alarm_16"></md-icon>
+          <md-icon name="alarm_16" iconSet="preferMomentumDesign"></md-icon>
           <md-tooltip placement="top" message="Cisco Answer for very very long label">
             <span class="text-ellipsis">Cisco Answer for very very long label</span>
           </md-tooltip>
@@ -677,7 +677,7 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
-          <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -709,13 +709,13 @@ export const tabsTemplate = html`
           <span>Content for "Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History">
-          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}"/></span>
+          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
         <md-tab slot="tab" name="History">
-          <md-icon name="browser_16"></md-icon>
+          <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Third Tab"</span>
@@ -794,7 +794,7 @@ export const tabsTemplate = html`
         <span>Content for "Contact History"</span>
       </md-tab-panel>
       <md-tab slot="tab" name="History" newMomentum type="Pill">
-        <span style="height: 16px; width: 16px"><img src="${svgWxm}"/></span>
+        <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
         <span>Cisco WxM</span>
       </md-tab>
       <md-tab-panel slot="panel">

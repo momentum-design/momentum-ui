@@ -167,7 +167,7 @@ export namespace Icon {
      * ```html
      * <md-icon iconSet="momentumUI" name="search_16"></md-icon> <!-- Uses the legacy font-based icon set -->
      * <md-icon iconSet="momentumDesign" name="search-bold" size="16"></md-icon> <!-- Uses the new SVG-based icon set -->
-     * <md-icon iconSet="preferMomentumDesign name="search+16""></md-icon> <!-- Attempts to map icons to the new SVG-based set -->
+     * <md-icon iconSet="preferMomentumDesign name="search_16""></md-icon> <!-- Attempts to map icons to the new SVG-based set -->
      * ```
      */
     @property({ type: String }) iconSet: IconSet = "momentumUI";

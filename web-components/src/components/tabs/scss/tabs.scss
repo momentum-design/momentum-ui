@@ -119,17 +119,6 @@
   padding: $tab-base-indent;
 }
 
-md-tab {
-  md-icon,
-  img {
-    
-    &.more-icon{
-      margin-right: 0;
-      margin-left: 0.5rem;
-    }
-  }
-}
-
 md-menu-overlay {
   md-tab {
     md-tooltip {

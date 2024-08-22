@@ -34,11 +34,13 @@ export namespace HelpText {
     getIconName() {
       switch (this.messageType) {
         case "success":
-          return "check-bold";
+          return "check-circle-badge-filled";
         case "error":
-          return "clear-bold";
+          return "clear-filled";
         case "warning":
-          return "warning-bold";
+          return "warning-filled";
+        case "priority":
+          return "priority-badge-filled";
         default:
           return "";
       }

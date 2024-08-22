@@ -226,6 +226,93 @@
         $background-color-hover: var(--input-filled-hover-bg-color, $input__background--filled--hover)
       );
     }
+
+    &.md-new-momentum {
+      @include input-color(
+        $background-color: transparent,
+        $background-color-disabled: transparent,
+        $background-color-hover: var(--input-default-hover-bg-color),
+        $background-color-active: var(--input-default-pressed-bg-color),
+        $border-color: var(--input-default-new-border-color),
+        $border-color-active: var(--input-default-new-border-color),
+        $border-color-disabled: var(--input-default-new-disabled-color),
+        $border-color-read-only: var(--input-default-new-disabled-color),
+        $focus-border-color: var(--input-default-new-focus-border-color),
+        $color: var(--input-default-text-color),
+        $color-clear: var(--md-secondary-text-color),
+        $color-clear-hover: $input__clear-icon__color--hover,
+        $color-disabled: var(--input-default-new-disabled-color),
+        $color-help: $input__font-color--help,
+        $color-placeholder: var(--input-default-placeholder-color, $input__font-color--placeholder),
+        $color-read-only: var(--md-primary-text-color),
+        $focus-background-color: var(--input-default-focus-background-color, var(--input-default-bg-color))
+      );
+
+      .md-input {
+        border-radius: 8px;
+
+        &:focus {
+          outline: 2px solid var(--input-default-outline-color);
+          outline-offset: rem-calc(2);
+          box-shadow: none; 
+        }
+      }
+
+      .md-input__messages {
+        padding-left: 0;
+      }
+
+      // Error
+      &.md-error {
+        @include input-color(
+          $border-color: var(--input-error-border-color),
+          $border-color-active: var(--input-error-border-color),
+        );
+  
+        &:focus {
+          @include focus-styles($border-color: var(--input-error-focus-border-color));
+  
+          transition: border ease-in 0.15s;
+        }
+
+      }
+
+      // Warning
+      &.md-warning {
+        @include input-color(
+          $border-color:
+            var(--input-warning-border-color),
+          $border-color-active:
+            var(--input-warning-border-color),
+        );
+      }
+  
+      // Success
+      &.md-success {
+        @include input-color(
+          $border-color:
+            var(--input-success-border-color),
+          $border-color-active:
+            var(--input-success-border-color)
+        );
+      }
+
+      // Priority
+      &.md-priority {
+        @include input-color(
+          $border-color: var(--input-default-outline-color),
+          $border-color-active: var(--input-default-outline-color)
+        );
+
+        .md-input {
+          &__message {
+            &::before {
+              @include icon-warning_16;
+            }
+          }
+        }
+      }
+    }
   }
 
   .md-input {

@@ -155,6 +155,60 @@ export const inputTemplate = html`
     </div>
   </section>
 
+  <h3>New Momentum</h3>
+  <section id="rectangle" class="section">
+    <div class="row">
+      <div class="column">
+        <md-input label="Normal" containerSize="small-12" newMomentum helpText="Help Text"></md-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <md-input
+          label="Search"
+          htmlId="inputSearchClearRectangle"
+          containerSize="small-12"
+          placeholder="Enter Text"
+          searchable
+          shape="rectangle"
+          newMomentum
+        ></md-input>
+      </div>
+      <div class="column">
+        <md-input
+          label="Search Clear"
+          htmlId="inputSearchClearRectangle"
+          containerSize="small-12"
+          placeholder="Enter Text"
+          searchable
+          shape="rectangle"
+          clear
+          newMomentum
+        ></md-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <md-input label="Read Only" value="Read Only" readonly containerSize="small-12" helpText="Help Text" newMomentum></md-input>
+      </div>
+      <div class="column">
+        <md-input label="Disabled" value="Disabled" disabled containerSize="small-12" newMomentum helpText="Help Text"></md-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <md-input
+          label="Multi Line"
+          value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by ..."
+          multiline
+          containerSize="small-12"
+          newMomentum
+          helpText="Help Text"
+        ></md-input>
+      </div>
+    </div>
+  </section>
+
   <h3>Error Message</h3>
   <section id="error" class="section">
     <div class="row pill">
@@ -213,6 +267,15 @@ export const inputTemplate = html`
     .messageArr=${[{ ...messageArr, ...{ type: "error" } } as Input.Message]}
     value="Error Text"
     placeholder="Enter Text"
+  ></md-input>
+  <md-input
+    label="Priority"
+    htmlId="inputPriority"
+    containerSize="small-12"
+    .messageArr=${[{ ...messageArr, ...{ type: "priority" } } as Input.Message]}
+    value="Priority Text"
+    placeholder="Enter Text"
+    newMomentum
   ></md-input>
   <hr />
   <md-label>Copy to Clipboard example</md-label>

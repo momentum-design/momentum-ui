@@ -169,7 +169,7 @@ export namespace MeetingAlert {
                           }}
                           .size=${40}
                         >
-                          <md-icon name="icon-alarm_16"></md-icon>
+                          <md-icon name="alarm-bold" size="16" iconSet="momentumDesign"></md-icon>
                         </md-button>
                       </div>
                     `

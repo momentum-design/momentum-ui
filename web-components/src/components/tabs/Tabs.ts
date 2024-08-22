@@ -135,7 +135,7 @@ export namespace Tabs {
       }
     }
 
-    private getAriaConrolId(tab: Tab.ELEMENT) {
+    private getAriaControlId(tab: Tab.ELEMENT) {
       if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
         return `${MORE_MENU_TAB_COPY_ID_PREFIX}${tab.id}`;
       } else {
@@ -706,7 +706,7 @@ export namespace Tabs {
       this.moveFocusToTab(visibleTabs[newIndex]);
     }
 
-    moveFocusToTab(tabElement: any) {
+    moveFocusToTab(tabElement: Element | undefined) {
       setTimeout(() => (tabElement as HTMLElement)?.focus(), 0);
     }
 
@@ -1112,7 +1112,7 @@ export namespace Tabs {
                   name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
-                  aria-controls="${this.getAriaConrolId(tab)}"
+                  aria-controls="${this.getAriaControlId(tab)}"
                   .isCrossVisible=${true}
                   tabIndex="${this.getTabIndex(tab)}"
                   .newMomentum=${this.newMomentum}
@@ -1150,7 +1150,12 @@ export namespace Tabs {
               type=${this.type}
             >
               <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
-              <md-icon name="${!this.isMoreTabMenuOpen ? "arrow-down_16" : "arrow-up_16"}" class="more-icon"></md-icon>
+              <md-icon
+                name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
+                iconSet="momentumDesign"
+                size="16"
+                class="more-icon"
+              ></md-icon>
             </md-tab>
             <div
               id="tabs-more-list"
@@ -1177,7 +1182,7 @@ export namespace Tabs {
                     name="${tab.name}"
                     id="${this.getCopyTabId(tab)}"
                     aria-label=${tab.ariaLabel}
-                    aria-controls="${this.getAriaConrolId(tab)}"
+                    aria-controls="${this.getAriaControlId(tab)}"
                     @click="${() => this.handleOverlayClose()}"
                     tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                     ariaRole="menuitem"

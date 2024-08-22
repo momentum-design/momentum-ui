@@ -7,6 +7,7 @@
  */
 
 import "@/components/icon/Icon";
+import { Icon } from "@/components/icon/Icon";
 import "@/components/progress-bar/ProgressBar";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
@@ -15,6 +16,7 @@ import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const tooltipPlacement = [
@@ -47,6 +49,7 @@ export namespace Chip {
     @property({ type: String }) height = "";
     @property({ type: String }) icon = "";
     @property({ type: String }) iconColor = "";
+    @property({ type: String }) iconSize: string | undefined = "";
     @property({ type: String }) role: Chip.Role = "group";
     @property({ type: String, reflect: true }) id = "";
     @property({ type: Boolean }) small = false;
@@ -57,6 +60,7 @@ export namespace Chip {
     @property({ type: Boolean }) indeterminateProgress = false;
     @property({ type: String }) tooltipText = "";
     @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
+    @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
 
     @property({
       type: String,
@@ -228,7 +232,17 @@ export namespace Chip {
     protected iconTemplate() {
       const iconColor = !this.disabled ? this.iconColor : "";
       return this.icon
-        ? html` <md-icon class="md-chip--icon" part="chip-icon" name="${this.icon}" color="${iconColor}"></md-icon> `
+        ? html`
+            <md-icon
+              class="md-chip--icon"
+              part="chip-icon"
+              name="${this.icon}"
+              color="${iconColor}"
+              iconSet=${ifDefined(this.iconSet || undefined)}
+              size="${ifDefined(this.iconSize || undefined)}"
+            >
+            </md-icon>
+          `
         : nothing;
     }
 

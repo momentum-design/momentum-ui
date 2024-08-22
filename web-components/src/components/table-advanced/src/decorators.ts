@@ -26,11 +26,7 @@ function decorateFunction(p: Payload, funcWrap: FuncWrap): PropertyDescriptor {
   const funcOriginal: Function = p.descriptor.value;
   const className: string = p.target.constructor.name;
 
-  p.descriptor.value = function wrap(this: any) {
-    const args: any[] = [];
-    for (let i = 0; i < arguments.length; i++) {
-      args[i] = arguments[i];
-    }
+  p.descriptor.value = function wrap(this: any, ...args: any[]) {
     return funcWrap.call(this, funcOriginal, args, className);
   };
 

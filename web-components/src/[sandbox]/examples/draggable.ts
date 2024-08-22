@@ -1,10 +1,10 @@
+import { DraggableOptions } from "@/[sandbox]/sandbox.mock";
+import "@/components/checkbox/Checkbox";
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
-import "@/components/checkbox/Checkbox";
 import "@/components/icon/Icon";
 import "@/components/toggle-switch/ToggleSwitch";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
-import { DraggableOptions } from "@/[sandbox]/sandbox.mock";
 import { repeat } from "lit-html/directives/repeat";
 
 const draggableItemStyle = css`
@@ -56,7 +56,7 @@ export class DefaultDraggable extends LitElement {
               </div>
               <div slot="extended">${option.company}</div>
               <div slot="extended">
-                <md-icon name="plus-circle_24" size="16"></md-icon>
+                <md-icon name="plus-circle-bold" size="16" iconSet="momentumDesign"></md-icon>
                 ${option.email}
               </div>
             </md-draggable-item>

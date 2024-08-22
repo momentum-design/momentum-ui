@@ -636,11 +636,18 @@ export namespace TableAdvanced {
               ? html`
                   <div class="filter-wrap">
                     ${col.filter.active
-                      ? html` <md-icon class="filter-active" name="filter-adr_14"></md-icon> `
+                      ? html`
+                          <md-icon
+                            class="filter-active"
+                            name="filter-bold"
+                            size="14"
+                            iconSet="momentumDesign"
+                          ></md-icon>
+                        `
                       : nothing}
                     <md-menu-overlay placement="bottom" class="filter" custom-width="188px">
                       <md-button class="filter-icon" slot="menu-trigger" color="color-none" size="size-none">
-                        <md-icon slot="icon" name="filter_16"></md-icon>
+                        <md-icon slot="icon" name="filter-bold" size="16" iconSet="momentumDesign"></md-icon>
                       </md-button>
                       <div class="filter-menu" style="width: 100%;">
                         <select
@@ -912,7 +919,9 @@ export namespace TableAdvanced {
                           this.dragRowElem = (e.target! as Node).parentNode as HTMLElement;
                           this.dragRowElem.setAttribute("draggable", "true");
                         }}
-                        name="panel-control-dragger_16"
+                        name="dragger-vertical-bold"
+                        size="16"
+                        iconSet="momentumDesign"
                       >
                       </md-icon>
                     `
@@ -921,17 +930,11 @@ export namespace TableAdvanced {
                   ? html`
                       ${row.collapse == "expanded" || row.collapse == "collapsed"
                         ? html`
-                            <md-button
-                              class="row-collapsible"
-                              size="size-none"
-                              @click=${(e: Event) => this.collapseToggle(e, row.idx)}
-                              outline
-                              color="color-none"
-                            >
+                            <button class="row-collapsible" @click=${(e: Event) => this.collapseToggle(e, row.idx)}>
                               ${row.collapse == "collapsed"
-                                ? html` <md-icon slot="icon" name="plus_12"></md-icon> `
-                                : html` <md-icon slot="icon" name="minus_12"></md-icon> `}
-                            </md-button>
+                                ? html` <md-icon name="plus-bold" size="12" iconSet="momentumDesign"></md-icon> `
+                                : html` <md-icon name="minus-bold" size="12" iconSet="momentumDesign"></md-icon> `}
+                            </button>
                           `
                         : nothing}
                       <span>${row.collapse == "child" ? nothing : content}</span>

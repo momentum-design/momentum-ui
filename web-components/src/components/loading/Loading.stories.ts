@@ -7,6 +7,7 @@
  */
 
 import "@/components/loading/Loading";
+import { Loading } from "@/components/loading/Loading";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { boolean, select } from "@storybook/addon-knobs";
 import { html } from "lit-element";
@@ -31,14 +32,14 @@ const options = {
   None: ""
 };
 
-export const Loading = () => {
+export const LoadingStory = () => {
   const darkTheme = boolean("darkMode", false);
   const theme = select("Theme name", ThemeNameValues, "lumos");
   const size = select("Size", options, "small");
 
   return html`
     <md-theme class="theme-toggle" id="loading" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-loading .size=${size as any}></md-loading>
+      <md-loading size=${size as Loading.LoadingSize}></md-loading>
     </md-theme>
   `;
 };

@@ -30,8 +30,12 @@ export const ButtonGroup = () => {
   return html`
     <md-theme class="theme-toggle" ?darkTheme=${darkTheme} theme=${theme}>
       <md-button-group ?disabled=${disabled}>
-        <button slot="button" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
-        <button slot="button" type="button"><md-icon name="icon-analysis_16"></md-icon></button>
+        <button slot="button" type="button">
+          <md-icon name="table-bold" size="16" iconSet="momentumDesign"></md-icon>
+        </button>
+        <button slot="button" type="button">
+          <md-icon name="analysis-bold" size="16" iconSet="momentumDesign"></md-icon>
+        </button>
         <button slot="button" type="button">Option A</button>
         <button slot="button" type="button">Option B</button>
       </md-button-group>

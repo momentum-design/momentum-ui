@@ -1,7 +1,7 @@
+import "@/components/icon/Icon";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 import "./DraggableItem";
-import "@/components/icon/Icon";
 import { DraggableItem } from "./DraggableItem";
 
 describe("Draggable Item Component", () => {
@@ -29,17 +29,17 @@ describe("Draggable Item Component", () => {
 
   test("should render different html depending on the properties value", async () => {
     expect(element.shadowRoot!.querySelector("slot[name='extended']")).toBeNull();
-    expect(element.shadowRoot!.querySelector("md-icon[name='panel-control-dragger_16']")).toBeNull();
+    expect(element.shadowRoot!.querySelector("md-icon[name='dragger-vertical-bold']")).toBeNull();
 
     element.extended = true;
     await elementUpdated(element);
 
     expect(element.shadowRoot!.querySelector("slot[name='extended']")).not.toBeNull();
-    expect(element.shadowRoot!.querySelector("md-icon[name='panel-control-dragger_16']")).toBeNull();
+    expect(element.shadowRoot!.querySelector("md-icon[name='dragger-vertical-bold']")).toBeNull();
 
     element.editable = true;
     await elementUpdated(element);
 
-    expect(element.shadowRoot!.querySelector("md-icon[name='panel-control-dragger_16']")).not.toBeNull();
+    expect(element.shadowRoot!.querySelector("md-icon[name='dragger-vertical-bold']")).not.toBeNull();
   });
 });

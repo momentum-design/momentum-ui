@@ -155,7 +155,7 @@ describe("Table Advanced component", () => {
 
     expect(collapseBtn).toBeDefined;
     const collapseIcon = elem.shadowRoot?.querySelector("table tbody tr td .row-collapsible md-icon") as HTMLElement;
-    expect(collapseIcon?.getAttribute("name")).toEqual("plus_12");
+    expect(collapseIcon?.getAttribute("name")).toEqual("plus-bold");
 
     collapseIcon.click();
     await elementUpdated(elem);

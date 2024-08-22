@@ -12,6 +12,10 @@
   &.md-warning {
     @include message-format(var(--md-alert-warning-text-color, $md-yellow-70));
   }
+
+  &.md-priority {
+    @include message-format(var(--md-alert-info-text-color, $md-blue-70));
+  }
 }
 
 :host(.help-text),
@@ -31,4 +35,16 @@
 :host(.help-text-checkbox),
 :host(.help-text-radio) {
   padding-left: rem-calc(32);
+}
+
+:host(.help-text.newMomentum),
+:host(.help-text-checkbox.newMomentum),
+:host(.help-text-radio.newMomentum) {
+  padding-left: 0;
+}
+
+:host(.help-text.disabled.newMomentum),
+:host(.help-text-checkbox.disabled.newMomentum),
+:host(.help-text-radio.disabled.newMomentum) {
+  color: var(--input-default-new-disabled-color, $md-gray-40) !important;
 }

@@ -108,7 +108,7 @@ export const ariaInvalidType = ["grammar", "false", "spelling", "true"];
 
 export namespace Input {
   export type Type = "text" | "number" | "password" | "email" | "tel" | "checkbox";
-  export type MessageType = "error" | "success" | "warning";
+  export type MessageType = "error" | "success" | "warning" | "priority";
   export type Message = {
     type: MessageType;
     message: string;
@@ -178,6 +178,7 @@ export namespace Input {
     @property({ type: String, reflect: true }) value = "";
     @property({ type: String }) ariaControls = "";
     @property({ type: String }) ariaExpanded = "";
+    @property({ type: Boolean }) newMomentum = false;
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -334,7 +335,8 @@ export namespace Input {
         "md-disabled": this.disabled,
         [`md-${this.messageType}`]: !!this.messageType,
         [`md-input--nested-${this.nestedLevel}`]: !!this.nestedLevel,
-        "md-multi": this.multi
+        "md-multi": this.multi,
+        "md-new-momentum": this.newMomentum
       };
     }
 
@@ -477,7 +479,7 @@ export namespace Input {
       return this.secondaryLabel
         ? html`
             <md-label
-              class="md-input__secondary-label ${classMap({ disabled: this.disabled })}"
+              class="md-input__secondary-label ${classMap({ disabled: this.disabled, newMomentum: this.newMomentum })}"
               secondaryLabel
               .htmlFor=${this.htmlId}
               .label=${this.secondaryLabel}
@@ -491,7 +493,7 @@ export namespace Input {
       return this.helpText
         ? html`
             <md-help-text
-              class="help-text"
+              class="help-text ${classMap({ disabled: this.disabled, newMomentum: this.newMomentum })}"
               .message=${this.helpText}
               style=${styleMap({ width: "100%" })}
             ></md-help-text>
@@ -522,7 +524,7 @@ export namespace Input {
       return this.label
         ? html`
             <md-label
-              class="md-input__label ${classMap({ disabled: this.disabled })}"
+              class="md-input__label ${classMap({ disabled: this.disabled, newMomentum: this.newMomentum })}"
               .htmlFor=${this.htmlId}
               .label=${this.label}
               @label-click="${() => this.handleLabelClick()}"

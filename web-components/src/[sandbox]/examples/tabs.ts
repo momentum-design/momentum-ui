@@ -24,7 +24,7 @@ import { nanoid } from "nanoid";
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index) => html`
     <md-tab slot="tab">
-      <md-icon name="recents_16"></md-icon>
+      <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
       <span>${value || "Tab " + index}</span>
     </md-tab>
     <md-tab-panel slot="panel">
@@ -109,7 +109,7 @@ export class TabsOrderPrefsExample extends LitElement {
         </ul>
         <md-tabs persist-selection tabs-id="tabOrder" draggable comp-unique-id="tabs-test-component">
           <md-tab slot="tab" name="History" closable="custom" label="History">
-            <md-icon name="recents_16"></md-icon>
+            <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
             <span>Contact History</span>
           </md-tab>
           <md-tab-panel name="History" slot="panel">
@@ -170,7 +170,7 @@ export class TabsTemplateSandbox extends LitElement {
     this.tabs = {
       History: `
         <md-tab slot="tab" name="History" closable="custom" label="History">
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -610,7 +610,7 @@ export const tabsTemplate = html`
     <div>
       <md-tabs selected="2" justified draggable>
         <md-tab slot="tab" name="History" label="History">
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -637,7 +637,7 @@ export const tabsTemplate = html`
     <div>
       <md-tabs selected="0" draggable>
         <md-tab slot="tab" closable="auto" name="History" label="History">
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -670,7 +670,7 @@ export const tabsTemplate = html`
           <span>Content for "All Contact History"</span>
         </md-tab-panel>
         <md-tab slot="tab" closable="auto" name="History" label="History">
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -753,7 +753,7 @@ export const tabsTemplate = html`
     <h3>md-tabs vertical</h3>
     <md-tabs direction="vertical">
       <md-tab slot="tab" name="History">
-        <md-icon name="recents_16"></md-icon>
+        <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
         <span>Contact History</span>
       </md-tab>
       <md-tab-panel slot="panel">
@@ -787,7 +787,7 @@ export const tabsTemplate = html`
     <h3>md-tabs vertical (New Momentum)</h3>
     <md-tabs direction="vertical" newMomentum type="Pill">
       <md-tab slot="tab" name="History" newMomentum type="Pill">
-        <md-icon name="recents_16"></md-icon>
+        <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
         <span>Contact History</span>
       </md-tab>
       <md-tab-panel slot="panel">

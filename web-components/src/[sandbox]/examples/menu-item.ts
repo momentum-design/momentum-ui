@@ -6,27 +6,27 @@
  *
  */
 
+import "@/components/icon/Icon";
 import "@/components/menu/Menu";
 import "@/components/menu/MenuItem";
-import "@/components/icon/Icon";
 import { html } from "lit-element";
 
 export const menuItemTemplate = html`
   <md-menu>
     <md-menu-item>
-      <md-icon name="recents_16"></md-icon>
+      <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
       <span>Contact History</span>
     </md-menu-item>
     <md-menu-item disabled>
-      <md-icon name="apps_16"></md-icon>
+      <md-icon name="apps-bold" size="16" iconSet="momentumDesign"></md-icon>
       <span>Cisco WxM</span>
     </md-menu-item>
     <md-menu-item>
-      <md-icon name="cancel_16"></md-icon>
+      <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
       <span>Cisco Test</span>
     </md-menu-item>
     <md-menu-item>
-      <md-icon name="alarm_16"></md-icon>
+      <md-icon name="alarm-bold" size="16" iconSet="momentumDesign"></md-icon>
       <span>Cisco Answer</span>
     </md-menu-item>
   </md-menu>

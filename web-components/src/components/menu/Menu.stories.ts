@@ -36,23 +36,23 @@ export const Menu = () => {
     <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} theme=${theme}>
       <md-menu .direction="${direction}" .justified=${justified}>
         <md-menu-item>
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-menu-item>
         <md-menu-item .disabled=${disabled}>
-          <md-icon name="apps_16"></md-icon>
+          <md-icon name="apps-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Cisco WxM</span>
         </md-menu-item>
         <md-menu-item href="${href}">
-          <md-icon name="cancel_16"></md-icon>
+          <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Cisco Test</span>
         </md-menu-item>
         <md-menu-item>
-          <md-icon name="favorite_16"></md-icon>
+          <md-icon name="favorite-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Cisco Favorite</span>
         </md-menu-item>
         <md-menu-item>
-          <md-icon name="alarm_16"></md-icon>
+          <md-icon name="alarm-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Cisco Answer</span>
         </md-menu-item>
       </md-menu>

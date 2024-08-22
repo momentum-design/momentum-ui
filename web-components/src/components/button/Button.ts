@@ -172,7 +172,7 @@ export namespace Button {
     @property({ type: String }) activityType = "";
     @property({ type: Boolean }) iconActive = false;
     @property({ type: Boolean }) isActive = false;
-    @property({ attribute: false }) clickFunction: Function | null = null;
+    @property({ attribute: false }) clickFunction?: () => void;
 
     @query(".md-button") button!: HTMLButtonElement;
 

@@ -14,7 +14,7 @@ export const alertTemplate = html`
   <md-alert title="Error" message="Who's awesome? You are!" type="error" closable show></md-alert>
   <md-alert message="Who's awesome? You are!" show closable>
     <md-badge slot="alert-icon" color="darkmint" circle>
-      <md-icon name="sms_16" color="white-100"></md-icon>
+      <md-icon name="social-sms" size="16" iconSet="momentumDesign" color="var(--md-white-text-color)"></md-icon>
     </md-badge>
   </md-alert>
   <md-alert message="Who's awesome? You are!" show>

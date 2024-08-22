@@ -58,8 +58,11 @@ export namespace DateRangePicker {
             this.endDate = this.dateToSqlTranslate(selection);
           }
         } else {
-          // @ts-ignore DateTime allows this comparison operation
-          if (Math.abs(selection - endObj) < Math.abs(selection - startObj)) {
+          const selectionTime = selection.toMillis();
+          const endObjTime = endObj.toMillis();
+          const startObjTime = startObj.toMillis();
+
+          if (Math.abs(selectionTime - endObjTime) < Math.abs(selectionTime - startObjTime)) {
             // scenario 3 : date is inside, closer to end
             this.endDate = this.dateToSqlTranslate(selection);
           } else {

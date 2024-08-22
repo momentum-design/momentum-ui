@@ -33,6 +33,9 @@ export default {
   }
 };
 
+const closeOptions = ["", "auto", "custom"] as const;
+type CloseOption = (typeof closeOptions)[number];
+
 export const Tabs = () => {
   const darkTheme = boolean("darkMode", false);
   const draggable = boolean("draggable", false);
@@ -41,8 +44,7 @@ export const Tabs = () => {
   const justified = boolean("Justified", false);
   const options = { vertical: "vertical", horizontal: "horizontal" };
   const alignment = select("Orientation", options, "horizontal");
-  const closeOptions = { none: "", auto: "auto" };
-  const closable = select("Closable", closeOptions, "none");
+  const closable: CloseOption = select("Closable", closeOptions, "");
   const settings = boolean("settings", false);
   const more = alignment === "horizontal" ? boolean("Show Tabs with More Button", false) : false;
   const moreItemsScrollLimit = more ? number("Show Tabs More menu scroll for items limit", 3) : Number.MAX_SAFE_INTEGER;
@@ -108,7 +110,7 @@ export const Tabs = () => {
               <span>Content for "Cisco Weather"</span>
             </md-tab-panel>
             <md-tab slot="tab" closable="${closable}">
-              <md-icon name="camera-photo_16"></md-icon>
+              <md-icon name="camera-photo-bold" size="16" iconSet="momentumDesign"></md-icon>
               <span>Cisco Turbo</span>
             </md-tab>
             <md-tab-panel slot="panel">
@@ -118,7 +120,7 @@ export const Tabs = () => {
               ? html`
                   <button slot="settings" class="menu-trigger-button">
                     <md-tooltip placement="bottom" message=${"More Button"}>
-                      <md-icon name="icon-reset_16"></md-icon>
+                      <md-icon name="reset-bold" size="16" iconSet="momentumDesign"></md-icon>
                     </md-tooltip>
                   </button>
                 `

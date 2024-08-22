@@ -36,19 +36,19 @@ export namespace TaskItem {
         case "telephony":
           return html`
             <md-badge color="green" circle>
-              <md-icon name="handset-active_16"></md-icon>
+              <md-icon name="handset-filled" size="20" iconSet="momentumDesign"></md-icon>
             </md-badge>
           `;
         case "outbound telephony":
           return html`
             <md-badge color="green" circle>
-              <md-icon name="outgoing-call-active_16"></md-icon>
+              <md-icon name="outgoing-call-legacy-filled" size="20" iconSet="momentumDesign"></md-icon>
             </md-badge>
           `;
         case "inbound telephony":
           return html`
             <md-badge color="green" circle>
-              <md-icon name="incoming-call-active_16"></md-icon>
+              <md-icon name="incoming-call-legacy-filled" size="20" iconSet="momentumDesign"></md-icon>
             </md-badge>
           `;
         case "applemessages":
@@ -74,31 +74,31 @@ export namespace TaskItem {
         case "chat":
           return html`
             <md-badge color="blue" circle>
-              <md-icon name="chat-active_16"></md-icon>
+              <md-icon name="chat-filled" size="20" iconSet="momentumDesign"></md-icon>
             </md-badge>
           `;
         case "email":
           return html`
             <md-badge color="violet" circle>
-              <md-icon name="email-active_16"></md-icon>
+              <md-icon name="email-filled" size="20" iconSet="momentumDesign"></md-icon>
             </md-badge>
           `;
         case "sms":
           return html`
             <md-badge color="darkmint" circle>
-              <md-icon name="sms_16" color="white-100"></md-icon>
+              <md-icon name="social-sms" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
             </md-badge>
           `;
         case "facebook":
           return html`
             <md-badge bgColor="#0078FF" circle>
-              <md-icon name="messenger_16" color="white-100"></md-icon>
+              <md-icon name="social-fbmessenger" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
             </md-badge>
           `;
         case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
-              <md-icon name="whatsApp_16" color="white-100"></md-icon>
+              <md-icon name="social-whatsapp" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
             </md-badge>
           `;
         default:
@@ -109,19 +109,19 @@ export namespace TaskItem {
     renderStatus = () => {
       switch (this.status) {
         case "consulting":
-          return html` <md-icon name="headset_12"></md-icon> `;
+          return html` <md-icon name="headset-bold" size="12" iconSet="momentumDesign"></md-icon> `;
         case "play":
-          return html` <md-icon name="play_12"></md-icon> `;
+          return html` <md-icon name="play-bold" size="12" iconSet="momentumDesign"></md-icon> `;
         case "hold":
-          return html` <md-icon name="pause_12"></md-icon> `;
+          return html` <md-icon name="pause-bold" size="12" iconSet="momentumDesign"></md-icon> `;
         case "conference":
-          return html` <md-icon name="meet_12"></md-icon> `;
+          return html` <md-icon name="meet-bold" size="16" iconSet="momentumDesign"></md-icon> `;
         case "transfered":
-          return html` <md-icon name="assign-privilege_12"></md-icon> `;
+          return html` <md-icon name="assign-privilege-bold" size="16" iconSet="momentumDesign"></md-icon> `;
         case "courtesy_callback":
-          return html` <md-icon name="call-log_12"></md-icon> `;
+          return html` <md-icon name="callrate-bold" size="12" iconSet="momentumDesign"></md-icon> `;
         case "campaign":
-          return html` <md-icon name="announcement_12"></md-icon> `;
+          return html` <md-icon name="announcement-bold" size="12" iconSet="momentumDesign"></md-icon> `;
         default:
           return html` <slot name="task-status"></slot> `;
       }
@@ -196,12 +196,16 @@ export namespace TaskItem {
       return [reset, styles];
     }
 
+    private get sanitizedTabIndexForContainer() {
+      return parseInt(this.tabIndexForContainer) ?? 0;
+    }
+
     render() {
       return html`
         <div
           part="task-item-container"
           class="md-taskitem ${classMap({ selected: this.selected })}"
-          tabindex=${this.tabIndexForContainer}
+          tabindex=${this.sanitizedTabIndexForContainer}
           aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}

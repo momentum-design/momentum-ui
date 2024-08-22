@@ -52,8 +52,8 @@ describe("TaskItem", () => {
     expect(element).not.toBeNull();
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(type?.getAttribute("name")).toEqual("handset-active_16");
-    expect(status?.getAttribute("name")).toEqual("headset_12");
+    expect(type?.getAttribute("name")).toEqual("handset-filled");
+    expect(status?.getAttribute("name")).toEqual("headset-bold");
   });
 
   test("should render TaskItem Component", async () => {
@@ -68,7 +68,7 @@ describe("TaskItem", () => {
       false
     );
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("messenger_16");
+    expect(type?.getAttribute("name")).toEqual("social-fbmessenger");
   });
 
   test("should render TaskItem Component", async () => {
@@ -83,7 +83,7 @@ describe("TaskItem", () => {
       false
     );
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("whatsApp_16");
+    expect(type?.getAttribute("name")).toEqual("social-whatsapp");
   });
 
   test("should render TaskItem Component for Apple Chat Messenger", async () => {
@@ -132,8 +132,8 @@ describe("TaskItem", () => {
 
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(type?.getAttribute("name")).toEqual("chat-active_16");
-    expect(status?.getAttribute("name")).toEqual("play_12");
+    expect(type?.getAttribute("name")).toEqual("chat-filled");
+    expect(status?.getAttribute("name")).toEqual("play-bold");
   });
 
   test("should render correct outbound type ", async () => {
@@ -149,7 +149,7 @@ describe("TaskItem", () => {
     );
 
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("outgoing-call-active_16");
+    expect(type?.getAttribute("name")).toEqual("outgoing-call-legacy-filled");
   });
 
   test("should render midcall type", async () => {
@@ -199,7 +199,7 @@ describe("TaskItem", () => {
     );
 
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("incoming-call-active_16");
+    expect(type?.getAttribute("name")).toEqual("incoming-call-legacy-filled");
   });
 
   test("should update type and status", async () => {
@@ -217,8 +217,8 @@ describe("TaskItem", () => {
     expect(element.selected).toBeTruthy;
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(type?.getAttribute("name")).toEqual("email-active_16");
-    expect(status?.getAttribute("name")).toEqual("pause_12");
+    expect(type?.getAttribute("name")).toEqual("email-filled");
+    expect(status?.getAttribute("name")).toEqual("pause-bold");
   });
 
   test("should update type and status", async () => {
@@ -235,8 +235,8 @@ describe("TaskItem", () => {
     expect(element).not.toBeNull();
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(type?.getAttribute("name")).toEqual("sms_16");
-    expect(status?.getAttribute("name")).toEqual("meet_12");
+    expect(type?.getAttribute("name")).toEqual("social-sms");
+    expect(status?.getAttribute("name")).toEqual("meet-bold");
   });
 
   test("should update type and status", async () => {
@@ -254,7 +254,7 @@ describe("TaskItem", () => {
     const type = element.shadowRoot?.querySelector(".md-taskitem__mediatype slot");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
     expect(type?.getAttribute("name")).toEqual("task-type");
-    expect(status?.getAttribute("name")).toEqual("assign-privilege_12");
+    expect(status?.getAttribute("name")).toEqual("assign-privilege-bold");
   });
 
   test("should update campaign status", async () => {
@@ -270,7 +270,7 @@ describe("TaskItem", () => {
     );
     expect(element).not.toBeNull();
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(status?.getAttribute("name")).toEqual("announcement_12");
+    expect(status?.getAttribute("name")).toEqual("announcement-bold");
   });
 
   test("should update courtesy_callback status", async () => {
@@ -286,7 +286,7 @@ describe("TaskItem", () => {
     );
     expect(element).not.toBeNull();
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(status?.getAttribute("name")).toEqual("call-log_12");
+    expect(status?.getAttribute("name")).toEqual("callrate-bold");
   });
 
   test("should upadte type and status", async () => {

@@ -6,7 +6,8 @@ module.exports = {
   transform: {
     "^.+\\.ts$": "ts-jest",
     "^.+\\.js$": "babel-jest",
-    "\\.(png|svg|jpg|jpeg)$": "<rootDir>/jest/imgTransform.js",
+    "\\.(png|jpg|jpeg)$": "<rootDir>/jest/imgTransform.js",
+    "\\.svg$": "<rootDir>/jest/svgTransform.js",
     "\\.(scss)$": "<rootDir>/jest/cssTransform.js"
   },
   testRegex: "^.+\\.test\\.ts$",

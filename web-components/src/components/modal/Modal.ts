@@ -180,7 +180,7 @@ export namespace Modal {
                 @keydown="${this.handleKeyDown}"
                 ariaLabel=${this.ariaLabelClose}
               >
-                <md-icon name="cancel_14"></md-icon>
+                <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
               </md-button>
             `
           : nothing}

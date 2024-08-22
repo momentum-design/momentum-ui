@@ -114,17 +114,34 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return false;
     }
 
+    private hasHiddenStyle(element: HTMLElement) {
+      const elStyle = element.style;
+
+      if (!elStyle) {
+        return element instanceof HTMLElement == false;
+      }
+
+      return (
+        elStyle.display === "none" ||
+        elStyle.opacity === "0" ||
+        elStyle.visibility === "hidden" ||
+        elStyle.visibility === "collapse"
+      );
+    }
+
+    private hasComputedHidden(element: HTMLElement) {
+      const computedStyle = getComputedStyle(element);
+
+      return computedStyle.visibility === "hidden" || computedStyle.height === "0";
+    }
+
     private isHidden(element: HTMLElement) {
       return (
         element.hasAttribute("hidden") ||
         (element.hasAttribute("aria-hidden") && element.getAttribute("aria-hidden") === "true") ||
-        element.style.display === "none" ||
-        element.style.opacity === "0" ||
-        element.style.visibility === "hidden" ||
-        element.style.visibility === "collapse" ||
+        this.hasHiddenStyle(element) ||
         this.isNotVisible(element) ||
-        getComputedStyle(element).visibility === "hidden" ||
-        getComputedStyle(element).height === "0"
+        this.hasComputedHidden(element)
       );
     }
 

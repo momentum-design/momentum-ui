@@ -27,6 +27,8 @@
   $background-color-active: null,
   $border-color: null,
   $border-color-active: null,
+  $border-color-disabled: null,
+  $border-color-read-only: null,
   $focus-border-color: null,
   $focus-background-color: null
 ) {
@@ -52,6 +54,7 @@
       &:active {
         background-color: $background-color-active;
         border-color: $border-color-active;
+        outline: none;
       }
     }
 
@@ -59,12 +62,19 @@
       @if $focus-background-color != null {
         background-color: $focus-background-color;
       }
+      @if $focus-border-color != null {
+        border-color: $focus-border-color;
+      }
     }
 
     &:disabled,
     &.md-disabled {
       background-color: $background-color-disabled;
-      border-color: $input__border-color--read-only;
+      @if $border-color-disabled != null {
+        border-color: $border-color-disabled;
+      } @else {
+        border-color: $input__border-color--read-only;
+      }      
       color: $color-disabled !important;
 
       &::placeholder {
@@ -79,7 +89,11 @@
     &[readonly],
     &.md-readonly {
       background-color: $background-color-disabled;
-      border-color: $input__border-color--read-only;
+      @if $border-color-read-only != null {
+        border-color: $border-color-disabled;
+      } @else {
+        border-color: $input__border-color--read-only;
+      }
       color: $color-read-only;
 
       &:hover {

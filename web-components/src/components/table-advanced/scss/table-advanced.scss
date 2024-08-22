@@ -22,7 +22,6 @@ table {
   width: 100%;
 
   &.sticky-header {
-   
     height: 100%;
 
     thead {
@@ -106,7 +105,6 @@ thead {
     padding: 0 calc(0.375rem);
     position: relative;
     text-align: left;
-   
 
     .filter {
       display: inline-block;
@@ -335,6 +333,7 @@ tbody {
     .inner-cell {
       display: flex;
       white-space: nowrap;
+      align-items: center;
 
       .warn-icon {
         display: inline-block;
@@ -362,7 +361,6 @@ tbody {
 
     .drag-handle {
       cursor: grab;
-      display: block;
       float: left;
       margin-right: calc(#{$advanced-table-main-indent} * 1.5);
     }
@@ -409,18 +407,26 @@ tbody {
   }
 }
 
-md-button.row-collapsible {
-  height: $advanced-table-collapse-btn;
-  margin-right: calc(#{$advanced-table-main-indent} * 1.5);
-  max-width: $advanced-table-collapse-btn;
-  min-width: $advanced-table-collapse-btn;
+button.row-collapsible {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  &::part(button) {
-    border-radius: calc(#{$advanced-table-main-indent} / 2);
-    padding: 0 $advanced-table-main-indent;
+  height: $advanced-table-collapse-btn;
+  width: $advanced-table-collapse-btn;
+  margin-right: calc(#{$advanced-table-main-indent} * 1.5);
+
+  background-color: transparent;
+  border: 1px solid var(--table-advanced-border-color);
+  border-radius: 2px;
+
+  &:hover {
+    background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
+    border: 0;
   }
 
-  md-icon::part(icon) {
-    line-height: calc(#{$advanced-table-main-indent} * 4);
+  &:active {
+    background-color: var(--table-advanced-filter-pressed-bg-color);
+    border: 0;
   }
 }

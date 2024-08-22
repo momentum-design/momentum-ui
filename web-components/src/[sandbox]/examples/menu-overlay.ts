@@ -464,7 +464,7 @@ export const menuOverlayTemplate = html`
       <md-tabs>
         <md-tab slot="tab" name="contactHistory">
           <span>Contact History</span>
-          <md-icon name="recents_16"></md-icon>
+          <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>

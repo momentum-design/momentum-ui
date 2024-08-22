@@ -36,7 +36,7 @@
 :host(.md-input__label.disabled.newMomentum),
 :host(.md-input__secondary-label.disabled.newMomentum) {
   label {
-    color: var(--input-default-new-disabled-color, $md-gray-40) !important;
+    color: var(--input-default-new-disabled-color) !important;
   }
 }
 

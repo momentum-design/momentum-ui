@@ -33,19 +33,19 @@ export class FloatingTemplateSandbox extends LitElement {
     this.isOpen = false;
   }
 
-  private resize(event: any) {
+  private resize(event: CustomEvent) {
     console.log("resize", event.detail.size);
     this.containerRect = event.detail.size;
     localStorage.setItem("resize", JSON.stringify(event.detail.size));
   }
 
-  private saveLocation(event: any) {
+  private saveLocation(event: CustomEvent) {
     console.log("location", event);
     this.location = event.detail.transform;
     localStorage.setItem("location", JSON.stringify(event.detail.transform));
   }
 
-  private saveMinLocation(event: any) {
+  private saveMinLocation(event: CustomEvent) {
     console.log("min-location", event);
     this.minLocation = event.detail.transform;
     localStorage.setItem("min-location", JSON.stringify(event.detail.transform));

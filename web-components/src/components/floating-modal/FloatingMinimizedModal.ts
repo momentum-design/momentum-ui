@@ -1,20 +1,20 @@
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import styles from "./scss/module.scss";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { nothing } from "lit-html";
-import "@interactjs/auto-start";
-import "@interactjs/actions/drag";
-import "@interactjs/modifiers";
-import "@interactjs/actions/resize";
-import * as Interact from "@interactjs/types";
-import interact from "@interactjs/interact/index";
-import { debounce } from "@/utils/helpers";
-import { FocusMixin } from "@/mixins";
 import { Key } from "@/constants";
+import { FocusMixin } from "@/mixins";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { debounce } from "@/utils/helpers";
+import reset from "@/wc_scss/reset.scss";
+import "@interactjs/actions/drag";
+import "@interactjs/actions/resize";
+import "@interactjs/auto-start";
+import interact from "@interactjs/interact/index";
+import "@interactjs/modifiers";
+import * as Interact from "@interactjs/types";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { nothing } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined";
+import styles from "./scss/module.scss";
 
 export namespace FloatingMinimizedModal {
   @customElementWithCheck("md-floating-modal-minimized")
@@ -260,7 +260,7 @@ export namespace FloatingMinimizedModal {
                     circle
                     @click=${this.handleClose}
                   >
-                    <md-icon name="cancel_16"></md-icon>
+                    <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
                   </md-button>
                 </div>
               </div>

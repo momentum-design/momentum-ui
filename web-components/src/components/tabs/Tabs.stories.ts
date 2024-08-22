@@ -61,7 +61,7 @@ export const Tabs = () => {
             justified
           >
             <md-tab slot="tab" closable="${closable}" label="History">
-              <md-icon name="recents_16"></md-icon>
+              <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
               <span>Contact History</span>
             </md-tab>
             <md-tab-panel slot="panel">
@@ -140,7 +140,7 @@ export const Tabs = () => {
             .justified=${justified}
           >
             <md-tab slot="tab" closable="${closable}">
-              <md-icon name="recents_16"></md-icon>
+              <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
               <span>Tab 1</span>
             </md-tab>
             <md-tab-panel slot="panel">

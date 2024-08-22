@@ -91,7 +91,7 @@ export const Button = () => {
         role=${role}
       >
         ${circle
-          ? html` <md-icon slot="icon" name="icon-search_12"></md-icon> `
+          ? html` <md-icon slot="icon" name="search-bold" size="12" iconSet="momentumDesign"></md-icon> `
           : html` <span slot="text">Button</span> `}
       </md-button>
     </md-theme>

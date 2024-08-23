@@ -430,7 +430,7 @@ export namespace Input {
           <div class="md-input__before">
             ${this.isLoading
               ? html` <md-spinner size="20"></md-spinner> `
-              : html` <md-icon ariaHidden="true" name="search-bold" size="20" iconSet="momentumDesign"></md-icon> `}
+              : html` <md-icon ariaHidden="true" name="search-bold" size="16" iconSet="momentumDesign"></md-icon> `}
           </div>
         `;
       } else {

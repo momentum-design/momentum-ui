@@ -125,7 +125,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("busy", false);
     expect(result).toEqual({
       presenceIcon: "busy-presence-bold",
-      presenceColor: "var(--avatar-presence-rona)",
+      presenceColor: "var(--avatar-presence-unstable)",
       isCircularWrapper: true
     });
   });
@@ -160,7 +160,7 @@ describe("Presence", () => {
   test("returns correct values for engaged presenceType", () => {
     const result = getPresenceIconColor("engaged", false);
     expect(result).toEqual({
-      presenceIcon: "unread-filled",
+      presenceIcon: "busy-presence-light",
       presenceColor: "var(--avatar-presence-engaged)",
       isCircularWrapper: true
     });
@@ -169,7 +169,7 @@ describe("Presence", () => {
   test("returns correct values for rona presenceType", () => {
     const result = getPresenceIconColor("rona", false);
     expect(result).toEqual({
-      presenceIcon: "unread-filled",
+      presenceIcon: "dnd-presence-badge-filled",
       presenceColor: "var(--avatar-presence-rona)",
       isCircularWrapper: true
     });

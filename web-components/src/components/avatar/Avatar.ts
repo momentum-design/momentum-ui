@@ -122,6 +122,8 @@ export namespace Avatar {
           return fullName[0].charAt(0) + fullName[fullName.length - 1].charAt(0);
         }
       }
+
+      return this.title;
     }
 
     private get chatIconName() {
@@ -132,12 +134,17 @@ export namespace Avatar {
       return (this.size / 2).toString();
     }
 
+    get renderIsTyping() {
+      return this.type === "typing" || this.typing ? html` <md-loading></md-loading> ` : nothing
+    }
+
     private get avatarLetter() {
       return this.title
         ? html`
-            <span class="md-avatar__letter ${classMap(this.avatarLetterClassMap)}"
-              >${this.pretifyTitle}<slot></slot>
-              ${this.type === "typing" || this.typing ? html` <md-loading></md-loading> ` : nothing}
+            <span class="md-avatar__letter ${classMap(this.avatarLetterClassMap)}">
+              ${this.pretifyTitle}
+              <slot></slot>
+              ${this.renderIsTyping}
             </span>
           `
         : nothing;
@@ -219,13 +226,24 @@ export namespace Avatar {
       );
     }
 
+    get avatarContent() {
+      if (this.src && !this.imageErrored) {
+        return this.avatarImage;
+      } else if (this.iconName) {
+        return this.avatarIcon;
+      } else if (this.title) {
+        return this.avatarLetter;
+      }
+      return nothing;
+    }
+
     render() {
       return html`
         <div
           part="avatar"
           class="md-avatar
           ${classMap(this.avatarClassMap)}"
-          role=${!this.role}
+          role=${this.role}
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
           tabindex=${ifDefined(this.tabIndex || undefined)}
@@ -237,13 +255,7 @@ export namespace Avatar {
                   <md-icon .name=${this.chatIconName} .iconSet=${"momentumDesign"} .size=${this.chatIconSize}></md-icon>
                 </span>
               `
-            : this.src && !this.imageErrored
-              ? this.avatarImage
-              : this.iconName
-                ? this.avatarIcon
-                : this.title
-                  ? this.avatarLetter
-                  : nothing}
+            : this.avatarContent}
           ${this.hasNotification ? html` <span class="md-avatar__notification-badge"></span> ` : nothing}
           ${this.newMomentum && this.type && this.type !== "self"
             ? html`

@@ -748,8 +748,11 @@
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
-  &--32{
+  &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    &::after {
+      border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
+    }
   }
 
   &:hover {
@@ -776,8 +779,11 @@
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
-  &--32{
+  &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    &::after {
+      border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
+    }
   }
 
   &:hover {
@@ -804,8 +810,11 @@
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
-  &--32{
+  &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    &::after {
+      border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
+    }
   }
 
   &:hover {
@@ -874,8 +883,12 @@
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
-  &--32{
+  &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+
+    &::after {
+      border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
+    }
   }
 
   &:hover {

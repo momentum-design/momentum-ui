@@ -382,6 +382,11 @@ const button = {
       }
     }
   },
+  "state-selector": {
+    "border-radius": {
+      common: "8px"
+    }
+  },
   disabled: {
     "bg-color": {
       common: "$mds-color-theme-button-primary-disabled"

@@ -47,7 +47,7 @@ export const getPresenceIconColor = (
         isCircularWrapper = false;
         break;
       case "dnd":
-        presenceIcon = isMomentumDesign ? "dnd-presence-filled" : "dnd-presence_14";
+        presenceIcon = isMomentumDesign ? "dnd-presence-badge-filled" : "dnd-presence_14";
         presenceColor = "var(--avatar-presence-rona)";
         break;
       case "presenting":
@@ -60,11 +60,8 @@ export const getPresenceIconColor = (
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "away":
-        presenceIcon = isMomentumDesign ? "recents-presence-filled" : "recents-presence_14";
-        presenceColor = "var(--avatar-presence-inactive)";
-        break;
       case "idle":
-        presenceIcon = isMomentumDesign ? "recents-presence-filled" : "recents-presence_14";
+        presenceIcon = isMomentumDesign ? "recents-presence-badge-filled" : "recents-presence_14";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "away-calling":
@@ -77,8 +74,8 @@ export const getPresenceIconColor = (
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "busy":
-        presenceIcon = "busy-presence-bold"; // busy-presence
-        presenceColor = "var(--avatar-presence-rona)";
+        presenceIcon = "busy-presence-bold";
+        presenceColor = "var(--avatar-presence-unstable)";
         break;
       case "on-mobile":
         presenceIcon = "phone-filled";
@@ -96,12 +93,16 @@ export const getPresenceIconColor = (
         isCircularWrapper = false;
         break;
       case "engaged":
-        presenceIcon = "unread-filled";
+        presenceIcon = "busy-presence-light";
         presenceColor = "var(--avatar-presence-engaged)";
         break;
       case "rona":
-        presenceIcon = "unread-filled";
+        presenceIcon = "dnd-presence-badge-filled";
         presenceColor = "var(--avatar-presence-rona)";
+        break;
+      case "inactive":
+        presenceIcon = "unread-filled";
+        presenceColor = "var(--avatar-presence-inactive)";
         break;
       default:
         break;

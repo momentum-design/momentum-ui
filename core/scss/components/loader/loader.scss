@@ -185,7 +185,7 @@
           }
 
           $i: 0;
-          $increment: 180deg / 100;
+          $increment: calc(180deg / 100);
 
           @for $i from 0 through 100 {
             &.md-spinner-progress__percentage-#{$i} {

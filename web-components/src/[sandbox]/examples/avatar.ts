@@ -31,6 +31,7 @@ export const avatarTemplate = html`
   </md-avatar>
   <h3>Icon Avatar with Color</h3>
   <md-avatar alt="avatar" title="Warning Icon" size="80" color="mint" icon-name="warning_20"></md-avatar>
+  <md-avatar alt="avatar" title="Warning Icon" size="80" icon-name="bot-bold" newMomentum></md-avatar>
   <h3>Icon Avatar Status</h3>
   <md-avatar title="active" size="36" type="active"></md-avatar>
   <md-avatar title="bot" size="36" type="bot"></md-avatar>
@@ -64,6 +65,7 @@ export const avatarTemplate = html`
   <md-avatar title="active" size="48" type="active" newMomentum typing></md-avatar>
   <md-avatar title="engaged" size="48" type="engaged" newMomentum></md-avatar>
   <md-avatar title="rona" size="48" type="rona" newMomentum></md-avatar>
+  <md-avatar title="idle" size="48" type="idle" newMomentum></md-avatar>
   <h3>New Icon Avatar Status Size</h3>
   <md-avatar title="active" size="24" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="32" type="active" newMomentum></md-avatar>
@@ -96,6 +98,7 @@ export const avatarTemplate = html`
   <md-avatar title="Self" type="self" size="124"></md-avatar>
   <h3>Icon Avatar Bot</h3>
   <md-avatar type="bot" title="Tom Smith"></md-avatar>
+  <md-avatar type="bot" title="Tom Smith" newMomentum></md-avatar>
   <h3>Icon Avatar Notification</h3>
   <md-avatar has-notification type="active" size="72" title="Tom Smith"></md-avatar>
   <h3>Icon Avatar Typing</h3>

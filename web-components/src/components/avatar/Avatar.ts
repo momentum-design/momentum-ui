@@ -131,11 +131,15 @@ export namespace Avatar {
     }
 
     private get chatIconSize() {
+      return this.iconSize;
+    }
+
+    private get iconSize() {
       return (this.size / 2).toString();
     }
 
     get renderIsTyping() {
-      return this.type === "typing" || this.typing ? html` <md-loading></md-loading> ` : nothing
+      return this.type === "typing" || this.typing ? html` <md-loading></md-loading> ` : nothing;
     }
 
     private get avatarLetter() {
@@ -153,7 +157,11 @@ export namespace Avatar {
     private get avatarIcon() {
       return html`
         <span class="md-avatar__icon ${classMap(this.avatarStyleMap)}">
-          <md-icon .name=${this.iconName} .iconSet=${this.newMomentum ? "momentumDesign" : "momentumUI"}></md-icon>
+          <md-icon
+            .name=${this.iconName}
+            .iconSet=${this.newMomentum ? "momentumDesign" : "momentumUI"}
+            .size=${this.newMomentum ? this.iconSize : ""}
+          ></md-icon>
         </span>
       `;
     }
@@ -237,6 +245,21 @@ export namespace Avatar {
       return nothing;
     }
 
+    renderPresence() {
+      return this.newMomentum && this.type && this.type !== "self" && this.presenceIcon
+        ? html`
+            <md-presence
+              class="avatar-presence"
+              name="${this.presenceIcon}"
+              color="${this.presenceColor}"
+              .isCircularWrapper=${this.isCircularWrapper}
+              size="${this.size}"
+            >
+            </md-presence>
+          `
+        : nothing;
+    }
+
     render() {
       return html`
         <div
@@ -257,18 +280,7 @@ export namespace Avatar {
               `
             : this.avatarContent}
           ${this.hasNotification ? html` <span class="md-avatar__notification-badge"></span> ` : nothing}
-          ${this.newMomentum && this.type && this.type !== "self"
-            ? html`
-                <md-presence
-                  class="avatar-presence"
-                  name="${this.presenceIcon}"
-                  color="${this.presenceColor}"
-                  .isCircularWrapper=${this.isCircularWrapper}
-                  size="${this.size}"
-                >
-                </md-presence>
-              `
-            : nothing}
+          ${this.renderPresence()}
         </div>
       `;
     }

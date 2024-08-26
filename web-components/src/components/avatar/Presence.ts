@@ -22,12 +22,19 @@ export namespace Presence {
     }
 
     render() {
+      const iconSize = getPresenceSize(this.size);
+
       return html`
-        <div class="avatar-presence-wrapper" data-shape=${this.isCircularWrapper} data-size=${this.size}>
+        <div
+          class="avatar-presence-wrapper"
+          data-shape=${this.isCircularWrapper}
+          data-size=${this.size}
+          data-icon-size=${iconSize}
+        >
           <md-icon
             name="${this.name}"
             color="${this.color}"
-            size=${getPresenceSize(this.size)}
+            size=${iconSize}
             title="${this.title}"
             .iconSet=${"momentumDesign"}
           >

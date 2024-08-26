@@ -181,9 +181,13 @@ const avatar = {
       light: colors.yellow[50].name,
       dark: colors.yellow[70].name
     },
-    rona: {
+    dnd: {
       light: colors.red[50].name,
       dark: colors.red[60].name
+    },
+    rona: {
+      light: colors.gray[50].name,
+      dark: colors.gray[80].name
     },
     unstable: {
       light: colors.red[50].name,

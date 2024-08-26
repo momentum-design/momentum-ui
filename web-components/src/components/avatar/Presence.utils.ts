@@ -37,7 +37,7 @@ export const getPresenceIconColor = (
         isCircularWrapper = false;
         break;
       case "schedule":
-        presenceIcon = isMomentumDesign ? "meetings-presence-filled" : "meetings-presence_14";
+        presenceIcon = isMomentumDesign ? "meetings-presence-badge-filled" : "meetings-presence_14";
         presenceColor = "var(--avatar-presence-unstable)";
         isCircularWrapper = false;
         break;
@@ -48,11 +48,11 @@ export const getPresenceIconColor = (
         break;
       case "dnd":
         presenceIcon = isMomentumDesign ? "dnd-presence-badge-filled" : "dnd-presence_14";
-        presenceColor = "var(--avatar-presence-rona)";
+        presenceColor = "var(--avatar-presence-dnd)";
         break;
       case "presenting":
-        presenceIcon = isMomentumDesign ? "share-screen-filled" : "content-share_14";
-        presenceColor = "var(--avatar-presence-rona)";
+        presenceIcon = isMomentumDesign ? "share-screen-badge-filled" : "content-share_14";
+        presenceColor = "var(--avatar-presence-dnd)";
         isCircularWrapper = false;
         break;
       case "quiet-hours":
@@ -61,11 +61,12 @@ export const getPresenceIconColor = (
         break;
       case "away":
       case "idle":
+      case "inactive":
         presenceIcon = isMomentumDesign ? "recents-presence-badge-filled" : "recents-presence_14";
         presenceColor = "var(--avatar-presence-inactive)";
         break;
       case "away-calling":
-        presenceIcon = "call-private-filled";
+        presenceIcon = "away-calling-presence-filled";
         presenceColor = "var(--avatar-presence-inactive)";
         isCircularWrapper = false;
         break;
@@ -93,16 +94,12 @@ export const getPresenceIconColor = (
         isCircularWrapper = false;
         break;
       case "engaged":
-        presenceIcon = "busy-presence-light";
+        presenceIcon = "busy-presence-bold";
         presenceColor = "var(--avatar-presence-engaged)";
         break;
       case "rona":
-        presenceIcon = "dnd-presence-badge-filled";
+        presenceIcon = "recents-presence-badge-filled";
         presenceColor = "var(--avatar-presence-rona)";
-        break;
-      case "inactive":
-        presenceIcon = "unread-filled";
-        presenceColor = "var(--avatar-presence-inactive)";
         break;
       default:
         break;

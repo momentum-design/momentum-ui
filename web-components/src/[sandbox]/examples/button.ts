@@ -31,21 +31,14 @@ export class ButtonTemplateSandbox extends LitElement {
         .status-button__children {
           display: flex;
           flex-direction: row;
+          align-items: center;
           justify-content: space-between;
           width: 100%;
         }
 
         .status-button__children .status-indicator-container {
-          width: 16px;
-          height: 16px;
-          border: 1.25px solid var(--md-primary-one-bg-color, --md-primary-bg-color);
-          border-radius: 50%;
-        }
-
-        .status-button__children svg {
-          width: 13.5px;
-          height: 13.5px;
-          background-color: var(--md-primary-one-bg-color, --md-primary-bg-color);
+          display: flex;
+          align-items: center;
           border-radius: 50%;
         }
 
@@ -322,15 +315,68 @@ export class ButtonTemplateSandbox extends LitElement {
       </div>
 
       <h3 class="sandbox-header" style="margin: .5rem 1rem">State button</h3>
-      <div class="row" style="display: flex; margin: .5rem 0">
+      <div class="row" style="display: flex; margin: .5rem 0; gap: 8px;">
         <md-button variant="available" class="status-state-button">
           <div class="status-button__children">
             <span class="status-indicator-container">
-              <md-icon slot="icon" name="check-circle-active_16" color="var(--avatar-presence-active)"></md-icon>
+              <md-icon
+                slot="icon"
+                name="unread-filled"
+                size="16"
+                iconSet="momentumDesign"
+                color="var(--avatar-presence-active)"
+              ></md-icon>
             </span>
             <span class="status-label"> Available </span>
             <span>10:11</span>
-            <md-icon class="status-arrow" name="arrow-down-optical_8"></md-icon>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="idle" class="status-state-button">
+          <div class="status-button__children">
+            <span class="status-indicator-container">
+              <md-icon
+                slot="icon"
+                name="recents-presence-badge-filled"
+                iconSet="momentumDesign"
+                color="var(--avatar-presence-inactive)"
+              ></md-icon>
+            </span>
+            <span class="status-label"> Idle </span>
+            <span>10:11</span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="idle" class="status-state-button">
+          <div class="status-button__children">
+            <span class="status-indicator-container">
+              <md-icon
+                slot="icon"
+                name="recents-presence-badge-filled"
+                iconSet="momentumDesign"
+                size="16"
+                color="var(--avatar-presence-rona)"
+              ></md-icon>
+            </span>
+            <span class="status-label"> RONA </span>
+            <span>10:11</span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="engaged" class="status-state-button">
+          <div class="status-button__children">
+            <span class="status-indicator-container">
+              <md-icon
+                slot="icon"
+                name="busy-presence-bold"
+                iconSet="momentumDesign"
+                size="16"
+                color="var(--avatar-presence-engaged)"
+              ></md-icon>
+            </span>
+            <span class="status-label"> Engaged </span>
+            <span>10:11</span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
           </div>
         </md-button>
       </div>

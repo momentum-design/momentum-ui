@@ -66,16 +66,22 @@ export const avatarTemplate = html`
   <md-avatar title="engaged" size="48" type="engaged" newMomentum></md-avatar>
   <md-avatar title="rona" size="48" type="rona" newMomentum></md-avatar>
   <md-avatar title="idle" size="48" type="idle" newMomentum></md-avatar>
+  <md-avatar title="inactive" size="48" type="inactive" newMomentum></md-avatar>
   <h3>New Icon Avatar Status Size</h3>
   <md-avatar title="active" size="24" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="32" type="active" newMomentum></md-avatar>
-  <md-avatar title="active" size="36" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="48" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="64" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="72" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="88" type="active" newMomentum></md-avatar>
   <md-avatar title="active" size="124" type="active" newMomentum></md-avatar>
+  <h3>New Icon Avatar Status legacy size</h3>
+  <md-avatar size="28" type="idle" title="2 8" newMomentum></md-avatar>
+  <md-avatar size="36" type="idle" title="3 6" newMomentum></md-avatar>
+  <md-avatar size="44" type="idle" title="4 4" newMomentum></md-avatar>
+  <md-avatar size="52" type="idle" title="5 2" newMomentum></md-avatar>
+  <md-avatar size="56" type="idle" title="5 6" newMomentum></md-avatar>
   <br />
   <br />
   <md-avatar title="meeting" size="24" type="meeting" newMomentum></md-avatar>

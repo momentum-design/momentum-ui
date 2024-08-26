@@ -111,3 +111,25 @@ export const getPresenceIconColor = (
 
   return { presenceColor, presenceIcon, isCircularWrapper };
 };
+
+export function getPresenceSize(size: number): number {
+  if (size <= 24) {
+    return 14;
+  } else if (size <= 32) {
+    return 14;
+  } else if (size <= 36) {
+    return 16;
+  } else if (size <= 40) {
+    return 16;
+  } else if (size <= 48) {
+    return 16;
+  } else if (size <= 64) {
+    return 18;
+  } else if (size <= 72) {
+    return 20;
+  } else if (size <= 88) {
+    return 28;
+  } else {
+    return 36;
+  }
+}

@@ -96,7 +96,7 @@ export namespace Avatar {
 
     private get avatarClassMap() {
       return {
-        ...(!this.newMomentum && this.type ? { [`md-avatar--${this.type}`]: true } : {}),
+        ...((!this.newMomentum || this.type === "bot") && this.type ? { [`md-avatar--${this.type}`]: true } : {}),
         [`md-avatar--${this.size}`]: !!this.size
       };
     }

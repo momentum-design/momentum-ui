@@ -750,6 +750,7 @@
 
   &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    padding: var(--button-state-selector-padding, $button__padding--32);
     &::after {
       border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
     }
@@ -781,6 +782,7 @@
 
   &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    padding: var(--button-state-selector-padding, $button__padding--32);
     &::after {
       border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
     }
@@ -812,6 +814,7 @@
 
   &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    padding: var(--button-state-selector-padding, $button__padding--32);
     &::after {
       border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);
     }
@@ -885,6 +888,7 @@
 
   &--32 {
     border-radius: var(--button-state-selector-border-radius, $button__radius--32);
+    padding: var(--button-state-selector-padding, $button__padding--32);
 
     &::after {
       border-radius: calc(var(--button-state-selector-border-radius, $button__radius--32) + 2px);

@@ -330,19 +330,19 @@ const button = {
   },
   engaged: {
     "bg-color": {
-      common: "$mds-color-theme-background-alert-warning-normal"
+      common: "$mds-color-theme-background-alert-orange-normal"
     },
     "border-color": {
-      common: "$mds-color-theme-text-warning-normal"
+      common: "$mds-color-theme-outline-label-orange"
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-background-alert-warning-hover"
+        common: "$mds-color-theme-background-alert-orange-hover"
       }
     },
     pressed: {
       "bg-color": {
-        common: "$mds-color-theme-background-alert-warning-active"
+        common: "$mds-color-theme-background-alert-orange-active"
       }
     }
   },
@@ -385,6 +385,9 @@ const button = {
   "state-selector": {
     "border-radius": {
       common: "8px"
+    },
+    padding: {
+      common: "0.5rem 0.5rem"
     }
   },
   disabled: {

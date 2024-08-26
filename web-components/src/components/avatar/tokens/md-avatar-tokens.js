@@ -154,6 +154,9 @@ const avatar = {
       light: colors.gray["05"].name,
       dark: colors.lime[20].name
     }
+  },
+  "inactive-opacity": {
+    common: 0.55
   }
 };
 

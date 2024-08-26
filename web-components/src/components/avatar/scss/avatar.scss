@@ -109,7 +109,7 @@
 
   .md-avatar__icon {
     @include avatar-contents-base;
-    background-color: $avatar-icon__background;
+    background-color: var(--avatar-icon-bg-color, $avatar-icon__background);
 
     color: $avatar-icon__color;
     fill: currentColor;

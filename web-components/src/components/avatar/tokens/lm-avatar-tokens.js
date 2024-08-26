@@ -165,6 +165,9 @@ const avatar = {
       dark: colors.lime[20].name
     }
   },
+  "inactive-opacity": {
+    common: 0.55
+  },
   presence: {
     active: {
       light: colors.green[50].name,

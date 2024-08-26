@@ -2,7 +2,8 @@ import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
-import { AVATAR_PRESENCE_ICON_SIZE_MAPPING, AvatarSize } from "./Avatar.constants";
+import { AvatarSize } from "./Avatar.constants";
+import { getPresenceSize } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Presence {
@@ -26,7 +27,7 @@ export namespace Presence {
           <md-icon
             name="${this.name}"
             color="${this.color}"
-            size=${AVATAR_PRESENCE_ICON_SIZE_MAPPING[this.size]}
+            size=${getPresenceSize(this.size)}
             title="${this.title}"
             .iconSet=${"momentumDesign"}
           >

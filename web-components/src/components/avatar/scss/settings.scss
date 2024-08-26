@@ -1,5 +1,5 @@
 
-$avatar--inactive__opacity: 0.55;
+$avatar--inactive__opacity: var(--avatar-inactive-opacity);
 
 $avatar__font-size: rem-calc(14);
 $avatar__size: rem-calc(40);

@@ -15,6 +15,9 @@ const avatar = {
   icon: {
     "icon-color": {
       common: "$mds-color-theme-common-text-primary-normal"
+    },
+    "bg-color": {
+      common: "$mds-color-theme-avatar-default"
     }
   },
   blue: {

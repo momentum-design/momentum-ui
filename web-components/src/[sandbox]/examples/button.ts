@@ -46,7 +46,7 @@ export class ButtonTemplateSandbox extends LitElement {
           flex-grow: 1;
           text-align: left;
           width: 1%;
-          padding: 0.5px 0 0 calc(5px * 2);
+          padding: 0.5px 0 0 calc(4px * 2);
         }
 
         .status-arrow {
@@ -329,7 +329,7 @@ export class ButtonTemplateSandbox extends LitElement {
             </span>
             <span class="status-label"> Available </span>
             <span>10:11</span>
-            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
         <md-button variant="idle" class="status-state-button">
@@ -344,10 +344,10 @@ export class ButtonTemplateSandbox extends LitElement {
             </span>
             <span class="status-label"> Idle </span>
             <span>10:11</span>
-            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
-        <md-button variant="idle" class="status-state-button">
+        <md-button variant="unavailable" class="status-state-button">
           <div class="status-button__children">
             <span class="status-indicator-container">
               <md-icon
@@ -360,7 +360,7 @@ export class ButtonTemplateSandbox extends LitElement {
             </span>
             <span class="status-label"> RONA </span>
             <span>10:11</span>
-            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
         <md-button variant="engaged" class="status-state-button">
@@ -376,7 +376,7 @@ export class ButtonTemplateSandbox extends LitElement {
             </span>
             <span class="status-label"> Engaged </span>
             <span>10:11</span>
-            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
       </div>

@@ -31,6 +31,7 @@ export { inputFileTemplate } from "./input-file";
 export { labelTemplate } from "./label";
 export { linkTemplate } from "./link";
 export { listTemplate } from "./list";
+export { virtualListTemplate } from "./virtual-list";
 export { loadingTemplate } from "./loading";
 export { meetingAlertTemplate } from "./meeting-alert";
 export { menuItemTemplate } from "./menu-item";

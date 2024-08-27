@@ -55,7 +55,8 @@ import {
   taskItemTemplate,
   timePickerTemplate,
   toggleSwitchTemplate,
-  tooltipTemplate
+  tooltipTemplate,
+  virtualListTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -554,6 +555,18 @@ export class Sandbox extends LitElement {
               <h2>md-list</h2>
               <sass-stats component="list">
                 ${listTemplate}
+              </sass-stats>
+            </div>
+          </md-tab-panel>
+
+            <md-tab slot="tab" name="List">
+            <span>md-list</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <div class="container" aria-label="md-list">
+              <h2>Virtual list test</h2>
+              <sass-stats component="list">
+                ${virtualListTemplate}
               </sass-stats>
             </div>
           </md-tab-panel>

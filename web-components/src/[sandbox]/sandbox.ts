@@ -56,7 +56,7 @@ import {
   timePickerTemplate,
   toggleSwitchTemplate,
   tooltipTemplate,
-  infiniteScrollListTemplate
+  advanceListTemplate
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
@@ -504,7 +504,7 @@ export class Sandbox extends LitElement {
             <div class="container" aria-label="md-list">
               <h2>Virtual list test</h2>
               <sass-stats component="list">
-                ${infiniteScrollListTemplate}
+                ${advanceListTemplate}
               </sass-stats>
             </div>
           </md-tab-panel>

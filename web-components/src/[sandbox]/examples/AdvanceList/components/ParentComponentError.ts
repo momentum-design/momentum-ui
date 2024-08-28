@@ -1,5 +1,6 @@
 import { html, LitElement, css, property, internalProperty } from "lit-element";
 import "@/components/list/InfiniteScrollList";
+import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import './ErrorLoader/ErrorLoader';
 
@@ -30,7 +31,7 @@ export namespace ParentComponentError {
         }
         this.loading = true;
         const newItems = await this.fetchItems(this.page);
-        const infiniteScrollList = this.shadowRoot?.querySelector('infinite-scroll-list');
+        const infiniteScrollList = this.shadowRoot?.querySelector('md-advance-list');
         if (infiniteScrollList) {
           infiniteScrollList.setItems([...this.items, ...newItems]);
         }
@@ -71,12 +72,12 @@ export namespace ParentComponentError {
     render() {
       return html`
         <h2>Error scenario</h2>
-        <infinite-scroll-list 
+        <md-advance-list 
           .items=${this.items}
           .loading=${this.loading}
           .error=${this.error}
           @load-more=${this.loadMoreItems}>
-        </infinite-scroll-list>
+        </md-advance-list>
         
         ${this.loading ? html`<md-spinner size="24"></md-spinner>` : ''}
         ${this.error ? html`

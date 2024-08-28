@@ -1,5 +1,6 @@
 import { html, LitElement, css, property, internalProperty } from "lit-element";
 import "@/components/list/InfiniteScrollList";
+import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
 export namespace ParentComponentGeneric {
@@ -54,12 +55,12 @@ export namespace ParentComponentGeneric {
         render() {
             return html`
         <h2>Generic Item List</h2>
-        <infinite-scroll-list 
+        <md-advance-list
           .items=${this.items}
           .loading=${this.loading}
           .error=${this.error}
           @load-more=${this.loadMoreItems}>
-        </infinite-scroll-list>
+        </md-advance-list>
         ${this.loading ? html`<md-spinner size="24"></md-spinner>` : ''}
          ${this.error ? html`<p class="error">${this.error}</p>` : ''}
         `;

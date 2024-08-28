@@ -60,14 +60,22 @@ export namespace Tooltip {
       this.handleKeyDown(e);
     };
 
+    private _scrollListener = (e: Event) => {
+      if (this.opened) {
+        this.notifyTooltipDestroy();
+      }
+    }
+
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("keydown", this._keyDownListener);
+      window.addEventListener("scroll", this._scrollListener);
     }
 
     disconnectedCallback(): void {
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
+      window.removeEventListener("scroll", this._scrollListener);
     }
 
     protected handleFocusIn(event: Event) {
@@ -212,6 +220,7 @@ export namespace Tooltip {
             @focusin=${(event: Event) => this.handleFocusIn(event)}
             @focusout=${(event: Event) => this.handleFocusOut(event)}
             @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}
+            @scroll=${(event: Event) => this._scrollListener(event)}
             aria-describedby="md-tooltip__content"
           >
             <slot></slot>

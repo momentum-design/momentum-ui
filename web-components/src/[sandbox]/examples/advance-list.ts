@@ -1,7 +1,7 @@
 import "@/components/list/VirtualList";
 import "@/components/list/ListItem";
-import "../examples/infiniteScroll/components/ParentComponentGeneric";
-import "../examples/infiniteScroll/components/ParentComponentError";
+import "./AdvanceList/components/ParentComponentGeneric";
+import "./AdvanceList/components/ParentComponentError";
 import { html } from "lit-element";
 
 const data = [
@@ -15,7 +15,7 @@ const data = [
 
 
 
-export const infiniteScrollListTemplate = html`
+export const advanceListTemplate = html`
   <h3>VIRTUAL LIST</h3>
 
   <md-virtual-list ?virtual={true} .options=${data} label="Transuranium elements">
@@ -24,6 +24,15 @@ export const infiniteScrollListTemplate = html`
   <parent-component-generic></parent-component-generic>
   
   <parent-component-error></parent-component-error>
+
+  <div style="width: 300px; margin-bottom: 50px"> 
+  <parent-component-generic></parent-component-generic>
+  </div>
+
+    <div style="width: 300px; margin-bottom: 50px"> 
+  <parent-component-error></parent-component-error>
+  </div>
+
   
 `;
 

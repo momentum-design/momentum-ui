@@ -29,6 +29,30 @@ export namespace ComboBox {
     value?: string | OptionMember;
     selected: (string | OptionMember)[];
   };
+  export type MessageType = "error" | "success" | "warning";
+  export type Message = {
+    type: MessageType;
+    message: string;
+    id?: string;
+    ariaLive?: "off" | "assertive" | "polite";
+  };
+
+  export class MessageController {
+    determineMessageType(array: ComboBox.Message[]) {
+      return array.reduce<ComboBox.MessageType>(
+        (accumulator, errorMessage) =>
+          (errorMessage as unknown as string) === "error" ? accumulator : errorMessage.type,
+        "" as ComboBox.MessageType
+      );
+    }
+    filterMessagesByType(array: ComboBox.Message[], value: string) {
+      return array.reduce(
+        (accumulator, errorMessage) =>
+          errorMessage.type === value ? accumulator.concat(errorMessage.message) : accumulator,
+        [] as string[]
+      );
+    }
+  }
 
   @customElementWithCheck("md-combobox")
   export class ELEMENT extends FocusMixin(LitElement) {
@@ -83,8 +107,13 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-loader", reflect: true }) showLoader = false;
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
+    @property({ type: Boolean, reflect: true }) newMomentum = true;
 
     @property({ type: String }) comboboxId = "";
+    @property({ type: String }) helpText = "";
+    @property({ type: Array }) messageArr: ComboBox.Message[] = [];
+    @property({ type: String }) htmlId = "";
+    private readonly messageController = new MessageController();
 
     @property({ type: Number, attribute: false })
     @internalProperty()
@@ -149,6 +178,20 @@ export namespace ComboBox {
       }
       this._focusedGroupIndex = index;
       this.requestUpdate("focusedGroupIndex", oldIndex);
+    }
+
+    get messageType(): ComboBox.MessageType | null {
+      if (this.messageArr.length > 0) {
+        return this.messageController.determineMessageType(this.messageArr);
+      }
+      return null;
+    }
+
+    get messages() {
+      if (this.messageType) {
+        return this.messageController.filterMessagesByType(this.messageArr, this.messageType);
+      }
+      return null;
     }
 
     private multiSelectedIndex = -1;
@@ -1339,13 +1382,15 @@ export namespace ComboBox {
     get comboBoxTemplateClassMap() {
       return {
         [`md-combobox--${this.shape}`]: !!this.shape,
-        "md-combobox-searchable": this.searchable
+        "md-combobox-searchable": this.searchable,
+        "md-new-combobox": this.newMomentum,
+        [`md-${this.messageType}`]: !!this.messageType
       };
     }
 
     searchIconTemplate() {
       return html`
-        <md-icon name="search-bold" size="16" iconSet="momentumDesign" @click=${this.toggleVisualListBox}></md-icon>
+        <md-icon name="search-bold" class="search-icon" size="16" iconSet="momentumDesign" @click=${this.toggleVisualListBox}></md-icon>
       `;
     }
 
@@ -1356,7 +1401,7 @@ export namespace ComboBox {
           <md-icon
             class="remove-item"
             name="cancel-bold"
-            size="8"
+            size=${this.newMomentum ? "16" : "8"}
             iconSet="momentumDesign"
             @click=${() => this.removeSelected(selectedOption)}
           ></md-icon>
@@ -1597,6 +1642,37 @@ export namespace ComboBox {
       return this.selectedOptions.length > 0 ? this.getOptionValue(this.selectedOptions[0]) : this.placeholder;
     }
 
+    helpTextTemplate() {
+      return this.helpText
+        ? html`
+            <md-help-text
+              class="help-text ${classMap({ disabled: this.disabled, newMomentum: this.newMomentum })}"
+              .message=${this.helpText}
+              style=${styleMap({ width: "100%" })}
+            ></md-help-text>
+          `
+        : nothing;
+    }
+
+    messagesTemplate() {
+      return this.messages && !!this.messages.length
+        ? html`
+            <div id="${this.htmlId}-message" part="message" class="md-combobox__messages">
+              ${repeat(this.messages, (message, id) => {
+                return html`
+                  <md-help-text
+                    .message=${message}
+                    .id=${this.messageArr[id].id || ""}
+                    .ariaLive=${this.messageArr[id].ariaLive || "polite"}
+                    .messageType=${this.messageType as ComboBox.MessageType}
+                  ></md-help-text>
+                `;
+              })}
+            </div>
+          `
+        : nothing;
+    }
+
     render() {
       return html`
         <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
@@ -1705,11 +1781,13 @@ export namespace ComboBox {
         </div>
         ${this.invalid
           ? html`
-              <div part="message" class="md-combobox-error">
+              <div part="message" class="md-combobox-error ${classMap({ "md-new-combobox-error": this.newMomentum })}">
                 <md-help-text .message=${this.invalidText} messageType="error"></md-help-text>
               </div>
             `
           : nothing}
+        ${this.messagesTemplate()} ${this.helpTextTemplate()}
+
       `;
     }
   }

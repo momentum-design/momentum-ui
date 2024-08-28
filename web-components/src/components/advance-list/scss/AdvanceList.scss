@@ -1,0 +1,39 @@
+:host {
+    display: block;
+    position: relative;
+}
+
+.virtual-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+.default-wrapper {
+    padding: 5px;
+    background: white;
+    cursor: pointer;
+    width: 100%;
+    
+    &:hover {
+        background-color: var(--list-hover-background, $md-list-hover-background-light);
+        color: var(--list-hover-text-color, $md-list-hover-text-color-light);
+    }
+}
+
+.select {
+    background-color: var(--list-active-background, $md-list-active-background-light);
+    color: var(--list-active-text-color, $md-list-active-text-color-light);
+}
+
+.spinner {
+    text-align: center;
+    padding: 16px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    padding: 16px;
+}

@@ -25,14 +25,15 @@ export const advanceListTemplate = html`
   
   <parent-component-error></parent-component-error>
 
-  <div style="width: 300px; margin-bottom: 50px"> 
-  <parent-component-generic></parent-component-generic>
-  </div>
-
-    <div style="width: 300px; margin-bottom: 50px"> 
-  <parent-component-error></parent-component-error>
   </div>
 
   
 `;
 
+
+// <div style="width: 300px; margin-bottom: 50px"> 
+// <parent-component-generic></parent-component-generic>
+// </div>
+
+//   <div style="width: 300px; margin-bottom: 50px"> 
+// <parent-component-error></parent-component-error>

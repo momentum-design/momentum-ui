@@ -1,14 +1,15 @@
 import { html, LitElement, css, property, internalProperty } from "lit-element";
-import './InfiniteScrollList';
+import "@/components/list/InfiniteScrollList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import '@components/list/ListItem';
+import './ErrorLoader/ErrorLoader';
 
-export namespace ParentComponent {
-  @customElementWithCheck("parent-component")
+export namespace ParentComponentError {
+  @customElementWithCheck("parent-component-error")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
     @internalProperty() page = 1;
     @property({ type: Boolean }) loading = false;
+    @internalProperty() shouldFail = false;
     @property({ type: String }) error: string | null = null;
 
     constructor() {
@@ -18,11 +19,15 @@ export namespace ParentComponent {
       this.loading = false;
       this.error = null;
       this.loadMoreItems();
+      this.shouldFail = false; // Initialize the flag
     }
 
     async loadMoreItems() {
-      console.log('event dispatched ----->>>')
+      console.log('event dispatched ----->>>');
       try {
+        if (this.shouldFail) {
+          throw new Error('Simulated alternating failure');
+        }
         this.loading = true;
         const newItems = await this.fetchItems(this.page);
         const infiniteScrollList = this.shadowRoot?.querySelector('infinite-scroll-list');
@@ -33,11 +38,18 @@ export namespace ParentComponent {
         this.page += 1;
         this.loading = false;
         this.error = null;
+
       } catch (err) {
         this.loading = false;
         this.error = 'Failed to load more items. Please try again.';
+        console.log('line no 44', this.loading, this.error);
+      } finally {
+        // Toggle the flag after each attempt
+        this.shouldFail = !this.shouldFail;
       }
     }
+
+
 
     async fetchItems(page: number) {
       console.log('Fetching items for page', page);
@@ -45,24 +57,40 @@ export namespace ParentComponent {
 
       const newItems = Array.from({ length: 20 }, (_, i) => ({
         data: `Item ${(page - 1) * 20 + i + 1}`,
-        template: (data: string) => html`<md-list-item >${data}</md-list-item>`
+        id: crypto.randomUUID(),
+        template: (data: string) => html`<div>${data}</<div>`
       }));
       return newItems;
     }
 
+    handleRetry() {
+      console.log('Retry triggered');
+      this.loadMoreItems();
+    }
+
     render() {
       return html`
-        <h2>Item List</h2>
+        <h2>Error scenario</h2>
         <infinite-scroll-list 
           .items=${this.items}
           .loading=${this.loading}
           .error=${this.error}
           @load-more=${this.loadMoreItems}>
         </infinite-scroll-list>
-        `;
-        // this should inside backtik
-        // ${this.loading ? html`<p>Loading...</p>` : ''}
-        // ${this.error ? html`<p class="error">${this.error}</p>` : ''}
+        
+        ${this.loading ? html`<md-spinner size="24"></md-spinner>` : ''}
+        ${this.error ? html`
+          <md-fetch-error
+           messageType="error"
+            style="color: red;"
+            commonErrorMsg="An error occurred while fetching data"
+            commonTryAgain="Try Again"
+            trackingId="12345"
+            trackingIdInputLabel="Tracking ID:"
+            @retry="${this.handleRetry}">
+          </md-fetch-error>
+        ` : ''}
+      `;
     }
 
     static get styles() {
@@ -81,6 +109,6 @@ export namespace ParentComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "parent-component": ParentComponent.ELEMENT;
+    "parent-component-error": ParentComponentError.ELEMENT;
   }
 }

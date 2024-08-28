@@ -1,5 +1,5 @@
 import { html, LitElement, css, property, internalProperty } from "lit-element";
-import "@/components/list/InfiniteScrollList";
+// import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import './ErrorLoader/ErrorLoader';
@@ -9,16 +9,16 @@ export namespace ParentComponentError {
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
     @internalProperty() page = 1;
-    @property({ type: Boolean }) loading = false;
+    @property({ type: Boolean }) isLoading = false;
     @internalProperty() shouldFail = false;
-    @property({ type: String }) error: string | null = null;
+    @property({ type: String }) isError: string | null = null;
 
     constructor() {
       super();
       this.items = [];
       this.page = 1;
-      this.loading = false;
-      this.error = null;
+      this.isLoading = false;
+      this.isError = null;
       this.loadMoreItems();
       this.shouldFail = false; // Initialize the flag
     }
@@ -29,7 +29,7 @@ export namespace ParentComponentError {
         if (this.shouldFail) {
           throw new Error('Simulated alternating failure');
         }
-        this.loading = true;
+        this.isLoading = true;
         const newItems = await this.fetchItems(this.page);
         const infiniteScrollList = this.shadowRoot?.querySelector('md-advance-list');
         if (infiniteScrollList) {
@@ -37,16 +37,17 @@ export namespace ParentComponentError {
         }
         this.items = [...this.items, ...newItems];
         this.page += 1;
-        this.loading = false;
-        this.error = null;
+        this.isLoading = false;
+        this.isError = null;
 
       } catch (err) {
-        this.loading = false;
-        this.error = 'Failed to load more items. Please try again.';
-        console.log('line no 44', this.loading, this.error);
+        this.isLoading = false;
+        this.isError = 'Failed to load more items. Please try again.';
+        console.log('line no 44', this.isLoading, this.isError);
       } finally {
         // Toggle the flag after each attempt
         this.shouldFail = !this.shouldFail;
+        // this.requestUpdate(); // re-rendering is not happening
       }
     }
 
@@ -70,17 +71,19 @@ export namespace ParentComponentError {
     }
 
     render() {
+      console.log("rendering parent component--generic", this.items)
+      console.log("rendering parent component--error", this.isLoading)
       return html`
         <h2>Error scenario</h2>
         <md-advance-list 
           .items=${this.items}
-          .loading=${this.loading}
-          .error=${this.error}
+          .isLoading=${this.isLoading}
+          .error=${this.isError}
           @load-more=${this.loadMoreItems}>
+          <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>
         
-        ${this.loading ? html`<md-spinner size="24"></md-spinner>` : ''}
-        ${this.error ? html`
+        ${this.isError ? html`
           <md-fetch-error
            messageType="error"
             style="color: red;"

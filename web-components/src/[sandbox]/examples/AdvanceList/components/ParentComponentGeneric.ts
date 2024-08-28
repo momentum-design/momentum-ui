@@ -1,5 +1,5 @@
 import { html, LitElement, css, property, internalProperty } from "lit-element";
-import "@/components/list/InfiniteScrollList";
+// import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
@@ -8,34 +8,34 @@ export namespace ParentComponentGeneric {
     export class ELEMENT extends LitElement {
         @property({ type: Array }) items: any = [];
         @internalProperty() page = 1;
-        @property({ type: Boolean }) loading = false;
-        @property({ type: String }) error: string | null = null;
+        @property({ type: Boolean }) isLoading = false;
+        @property({ type: String }) isError: string | null = null;
 
         constructor() {
             super();
             this.items = [];
             this.page = 1;
-            this.loading = false;
-            this.error = null;
+            this.isLoading = false;
+            this.isError = null;
             this.loadMoreItems();
         }
 
         async loadMoreItems() {
             console.log('event dispatched ----->>>')
             try {
-                this.loading = true;
+                this.isLoading = true;
                 const newItems = await this.fetchItems(this.page);
-                const infiniteScrollList = this.shadowRoot?.querySelector('infinite-scroll-list');
+                const infiniteScrollList = this.shadowRoot?.querySelector('md-advance-list');
                 if (infiniteScrollList) {
                     infiniteScrollList.setItems([...this.items, ...newItems]);
                 }
                 this.items = [...this.items, ...newItems];
                 this.page += 1;
-                this.loading = false;
-                this.error = null;
+                this.isLoading = false;
+                this.isError = null;
             } catch (err) {
-                this.loading = false;
-                this.error = 'Failed to load more items. Please try again.';
+                this.isLoading = false;
+                this.isError = 'Failed to load more items. Please try again.';
             }
         }
 
@@ -46,27 +46,34 @@ export namespace ParentComponentGeneric {
             const newItems = Array.from({ length: 20 }, (_, i) => ({
                 data: `Item ${(page - 1) * 20 + i + 1}`,
                 id: crypto.randomUUID(),
-                template: (data: string) => html`<div>${data}</div>`
+                template: (data: string) => html`<md-list-item>${data}</md-list-item>`
             }));
             console.log('newItems', newItems)
             return newItems;
         }
 
+        private handleListItemChange(event: CustomEvent) {
+            console.log('event dispatched from momentum ----->>>', event)
+            //API call send to end point to upate the item
+        }
+
         render() {
+            console.log("rendering parent component--generic", this.items)
             return html`
         <h2>Generic Item List</h2>
         <md-advance-list
           .items=${this.items}
-          .loading=${this.loading}
-          .error=${this.error}
+          .isLoading=${this.isLoading}
+          .isError=${this.isError}
+          @list-item-change=${this.handleListItemChange}
           @load-more=${this.loadMoreItems}>
+          <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>
-        ${this.loading ? html`<md-spinner size="24"></md-spinner>` : ''}
-         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
+
         `;
             // this should inside backtik
-            // ${this.loading ? html`<p>Loading...</p>` : ''}
-            // ${this.error ? html`<p class="error">${this.error}</p>` : ''}
+            // ${this.isLoading ? html`<p>isLoading...</p>` : ''}
+            // ${this.isError ? html`<p class="isError">${this.isError}</p>` : ''}
         }
 
         static get styles() {

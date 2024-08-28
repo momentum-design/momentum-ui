@@ -31,10 +31,7 @@ export namespace ParentComponentError {
         }
         this.isLoading = true;
         const newItems = await this.fetchItems(this.page);
-        const infiniteScrollList = this.shadowRoot?.querySelector('md-advance-list');
-        if (infiniteScrollList) {
-          infiniteScrollList.setItems([...this.items, ...newItems]);
-        }
+
         this.items = [...this.items, ...newItems];
         this.page += 1;
         this.isLoading = false;
@@ -60,8 +57,9 @@ export namespace ParentComponentError {
       const newItems = Array.from({ length: 20 }, (_, i) => ({
         data: `Item ${(page - 1) * 20 + i + 1}`,
         id: crypto.randomUUID(),
-        template: (data: string) => html`<div>${data}</<div>`
-      }));
+        index: i,
+        template: (data: string, index: number) => html`<div indexing="${index}" >${data}</div>`
+    }));
       return newItems;
     }
 
@@ -69,6 +67,7 @@ export namespace ParentComponentError {
       console.log('Retry triggered');
       this.loadMoreItems();
     }
+
 
     render() {
       console.log("rendering parent component--generic", this.items)

@@ -46,7 +46,7 @@ export namespace ParentComponentGeneric {
             const newItems = Array.from({ length: 20 }, (_, i) => ({
                 data: `Item ${(page - 1) * 20 + i + 1}`,
                 id: crypto.randomUUID(),
-                template: (data: string) => html`<md-list-item>${data}</md-list-item>`
+                template: (data: string) => html`<div>${data}</div>`
             }));
             console.log('newItems', newItems)
             return newItems;

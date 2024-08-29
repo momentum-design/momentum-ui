@@ -437,9 +437,7 @@ div#md-combobox-listbox {
     cursor: pointer;
     display: flex;
     font-size: $font-size-small;
-    // margin-bottom: calc(#{$combobox-main-indent} / 2);
     margin-right: $combobox-main-indent;
-    // margin-top: $combobox-main-indent;
     max-height: $combobox-selected-height;
     padding: $combobox-input-padding;
 

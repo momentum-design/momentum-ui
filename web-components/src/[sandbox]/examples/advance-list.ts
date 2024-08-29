@@ -1,4 +1,3 @@
-import "@/components/list/VirtualList";
 import "@/components/list/ListItem";
 import "./AdvanceList/components/ParentComponentGeneric";
 import "./AdvanceList/components/ParentComponentError";

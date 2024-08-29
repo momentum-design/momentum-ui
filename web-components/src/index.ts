@@ -9,6 +9,7 @@
 export { Accordion } from "./components/accordion/Accordion";
 export { AccordionItem } from "./components/accordion/AccordionItem";
 export { ActivityButton } from "./components/activity-button/ActivityButton";
+export {AdvanceList} from "./components/advance-list/AdvanceList";
 export { AlertBanner } from "./components/alert-banner/AlertBanner";
 export { Alert } from "./components/alert/Alert";
 export { AudioPlayer } from "./components/audio-player/AudioPlayer";

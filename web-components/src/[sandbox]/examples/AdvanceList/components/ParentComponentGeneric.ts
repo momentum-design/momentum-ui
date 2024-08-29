@@ -43,7 +43,7 @@ export namespace ParentComponentGeneric {
                 data: `Item ${(page - 1) * 20 + i + 1}`,
                 id: crypto.randomUUID(),
                 index: i,
-                template: (data: string, index: number) => html`<div indexing="${index}" >${data}</div>`
+                template: (data: string, index: number) => html`<md-list-item indexing="${index}" >${data}</md-list-item>`
             }));
             console.log('newItems', newItems)
             return newItems;
@@ -55,7 +55,8 @@ export namespace ParentComponentGeneric {
         }
 
         render() {
-            console.log("rendering parent component--generic", this.items)
+            // console.log("rendering parent component--generic", this.items)
+            console.log("rendering parent component--generic is loading", this.isLoading)
             return html`
         <h2>Generic Item List</h2>
         <md-advance-list

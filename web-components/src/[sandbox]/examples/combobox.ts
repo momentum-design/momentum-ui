@@ -88,6 +88,9 @@ export const comboBoxTemplate = html`
     helpText="This is help text"
     newMomentum
   ></md-combobox>
+  <h3>Read Only State (New Momentum)</h3>
+  <md-combobox readOnly .options=${comboBoxOptions} placeholder="Placeholder" helpText="This is help text" searchable newMomentum> </md-combobox>
+  </md-combobox>
   <h3>Disabled State (New Momentum)</h3>
   <md-combobox disabled .options=${comboBoxOptions} placeholder="Placeholder" helpText="This is help text" searchable newMomentum> </md-combobox>
   </md-combobox>

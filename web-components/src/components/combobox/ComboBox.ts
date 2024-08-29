@@ -113,6 +113,8 @@ export namespace ComboBox {
     @property({ type: String }) helpText = "";
     @property({ type: Array }) messageArr: ComboBox.Message[] = [];
     @property({ type: String }) htmlId = "";
+    @property({ type: Boolean, reflect: true }) readOnly = false;
+
     private readonly messageController = new MessageController();
 
     @property({ type: Number, attribute: false })
@@ -278,7 +280,7 @@ export namespace ComboBox {
     }
 
     protected handleFocusIn(event: Event) {
-      if (!this.disabled) {
+      if (!this.disabled || this.readOnly) {
         if (this.noClearIcon) {
           requestAnimationFrame(() => {
             this.input!.focus();
@@ -1274,6 +1276,9 @@ export namespace ComboBox {
     }
 
     toggleVisualListBox(e: any) {
+      if (this.readOnly) {
+        return;
+      }
       if (e.target.classList.contains("md-combobox-listbox")) {
         e.target.focus();
       } else if (e.target.localName === "md-icon") {
@@ -1384,7 +1389,8 @@ export namespace ComboBox {
         [`md-combobox--${this.shape}`]: !!this.shape,
         "md-combobox-searchable": this.searchable,
         "md-new-combobox": this.newMomentum,
-        [`md-${this.messageType}`]: !!this.messageType
+        [`md-${this.messageType}`]: !!this.messageType,
+        "md-combobox-readonly": this.readOnly
       };
     }
 
@@ -1418,6 +1424,7 @@ export namespace ComboBox {
           aria-controls="md-combobox-listbox"
           tabindex="0"
           ?disabled=${this.disabled}
+          ?readonly=${this.readOnly}
           @click=${this.handleRemoveAll}
         >
           <span>
@@ -1444,6 +1451,7 @@ export namespace ComboBox {
           tabindex="-1"
           aria-hidden=${this.popupChevronAriaHidden}
           ?disabled=${this.disabled}
+          ?readonly=${this.readOnly}
           @click=${this.toggleVisualListBox}
         >
           <span>
@@ -1464,6 +1472,7 @@ export namespace ComboBox {
           tabindex="-1"
           aria-hidden=${this.popupChevronAriaHidden === "true" ? "true" : "false"}
           ?disabled=${this.disabled}
+          ?readonly=${this.readOnly}
           @click=${(e: MouseEvent) => this.toggleGroupListBox(e, data)}
         >
           <span>
@@ -1697,7 +1706,7 @@ export namespace ComboBox {
                   ? ""
                   : this.placeholder}
                 aria-controls="md-combobox-listbox"
-                ?readonly=${this.allowSelectAll}
+                ?readonly=${this.allowSelectAll || this.readOnly}
                 ?disabled=${this.disabled}
                 ?autofocus=${this.autofocus}
                 title=${ifDefined(this.inputTitle())}

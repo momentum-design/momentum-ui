@@ -223,6 +223,14 @@
       border-color: var(--input-success-border-color) !important;
     }
   }
+
+  &.md-combobox-readonly {
+    .group,
+    .group:hover,
+    .group:active {
+      border-color: var(--combobox-disabled-bg-color) !important;
+    }
+  }
 }
 
 .md-combobox__messages,

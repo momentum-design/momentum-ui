@@ -560,7 +560,7 @@ export class Sandbox extends LitElement {
           </md-tab-panel>
 
             <md-tab slot="tab" name="List">
-            <span>infinite-scroll</span>
+            <span>md-advance-list</span>
           </md-tab>
           <md-tab-panel slot="panel">
             <div class="container" aria-label="md-list">

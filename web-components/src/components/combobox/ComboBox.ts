@@ -107,7 +107,7 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-loader", reflect: true }) showLoader = false;
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
-    @property({ type: Boolean, reflect: true }) newMomentum = true;
+    @property({ type: Boolean, reflect: true }) newMomentum = false;
 
     @property({ type: String }) comboboxId = "";
     @property({ type: String }) helpText = "";

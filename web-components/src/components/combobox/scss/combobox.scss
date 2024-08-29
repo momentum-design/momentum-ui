@@ -9,10 +9,29 @@
   outline: none !important;
 }
 
+:host(:active) {
+  .md-new-combobox {
+    .group {
+      outline: 2px solid var(--input-default-outline-color);
+      outline-offset: rem-calc(2);
+      box-shadow: none; 
+      border: $combobox-border !important;
+    }
+  }
+}
+
 :host([focus-visible]) {
   .group {
     border-color: var(--combobox-focus-border-color, $lm-combobox-focus-border-color-light);
     box-shadow: none;
+  }
+  .md-new-combobox {
+    .group {
+      outline: 2px solid var(--combobox-focus-border-color);
+      outline-offset: rem-calc(2);
+      box-shadow: none; 
+      border-color: var(--combobox-focus-new-border-color);
+    }
   }
 }
 
@@ -23,8 +42,36 @@
     background: var(--combobox-disabled-bg-color, $lm-combobox-disabled-bg-color-light);
     pointer-events: none;
 
-    > md-icon {
+    md-icon {
       opacity: $combobox-disabled-opacity;
+    }
+  }
+
+  .md-new-combobox {
+    .group,
+    .group:hover,
+    .group:active {
+      outline: none;
+      box-shadow: none; 
+      border-color: var(--combobox-disabled-bg-color) !important;
+      background-color: transparent;
+
+      md-icon {
+        color: var(--md-primary-text-color);
+        fill: var(--md-primary-text-color);
+      }
+    }
+
+    .md-combobox__multiwrap {
+      input {
+        color: var(--combobox-disabled-bg-color);
+      }
+
+      input::placeholder,
+      input::-webkit-input-placeholder{
+        opacity: 1;
+        color: var(--combobox-disabled-bg-color);
+      }
     }
   }
 }
@@ -80,6 +127,10 @@
       }
     }
 
+    .search-icon {
+      height: 100%
+    }
+
     &:hover {
       background: var(--combobox-hover-bg-color, $lm-combobox-hover-bg-color-light);
     }
@@ -108,6 +159,83 @@
       border-radius: 18px;
     }
   }
+}
+
+.md-new-combobox {
+  .group {
+    border-radius: 8px;
+    background: transparent;
+
+    md-icon {
+      color: var(--md-primary-text-color);
+      cursor: pointer;
+      fill: var(--md-primary-text-color);
+
+      &:focus {
+        @include remove-focus;
+        @include focus-boxshadow(
+          rem-calc(2),
+          var(--md-focus-border-color, $lm-combobox-dropdown-item-focus-bg-color-light)
+        );
+      }
+    }
+
+    &:active {
+      border: $combobox-border;
+    }
+  }
+
+  .md-combobox__multiwrap {
+    input {
+      color: var(--md-primary-text-color);
+    }
+    .md-combobox-selected-item {
+      border-radius: 4px;
+      background: var(--combobox-selected-new-bg-color, $lm-combobox-selected-bg-color-light);
+      border-color: var(--combobox-selected-new-border-color, $lm-combobox-selected-bg-color-light);
+
+      md-icon {
+        font-size: 16px
+      }
+    }
+  }
+
+  // Error
+  &.md-error {
+      .group,
+      .group:active {
+        border-color: var(--input-error-border-color) !important;
+      }
+  }
+
+  // Warning
+  &.md-warning {
+    .group,
+    .group:active {
+      border-color: var(--input-warning-border-color) !important;
+    }
+  }
+
+  // Success
+  &.md-success {
+    .group,
+    .group:active {
+      border-color: var(--input-success-border-color) !important;
+    }
+  }
+
+  &.md-combobox-readonly {
+    .group,
+    .group:hover,
+    .group:active {
+      border-color: var(--combobox-disabled-bg-color) !important;
+    }
+  }
+}
+
+.md-combobox__messages,
+.help-text {
+  padding-top: rem-calc(4);
 }
 
 .md-combobox-button {
@@ -246,7 +374,7 @@ div#md-combobox-listbox {
       height: $combobox-select-icon-size;
       left: $combobox-select-icon-left;
       position: absolute;
-      top: -$combobox-select-icon-top;
+      top: auto;
       vertical-align: top;
       visibility: hidden;
     }
@@ -309,9 +437,7 @@ div#md-combobox-listbox {
     cursor: pointer;
     display: flex;
     font-size: $font-size-small;
-    margin-bottom: calc(#{$combobox-main-indent} / 2);
     margin-right: $combobox-main-indent;
-    margin-top: $combobox-main-indent;
     max-height: $combobox-selected-height;
     padding: $combobox-input-padding;
 

@@ -86,11 +86,12 @@ export namespace ComboBox {
 
     @property({ type: String }) comboboxId = "";
 
-    @property({ type: Number, attribute: false })
+    
     @internalProperty()
     private isOptGroup = false;
     @internalProperty()
     private isSelectAllChecked = false;
+    @property({ type: Number, attribute: false })
     get focusedIndex() {
       return this._focusedIndex;
     }

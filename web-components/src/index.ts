@@ -6,6 +6,8 @@
  *
  */
 
+import { AdvanceList } from "./components/advance-list/AdvanceList";
+
 export { Accordion } from "./components/accordion/Accordion";
 export { AccordionItem } from "./components/accordion/AccordionItem";
 export { ActivityButton } from "./components/activity-button/ActivityButton";
@@ -73,5 +75,6 @@ export { Theme, ThemeName } from "./components/theme/Theme";
 export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
+export {AdvanceList} from "./components/advance-list/AdvanceList"
 
 // eslint-disable-next-line prettier/prettier

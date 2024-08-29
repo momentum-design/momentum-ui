@@ -1,17 +1,58 @@
-import { LitElement, html, css, property, internalProperty } from 'lit-element';
+import { LitElement, html, css, property, internalProperty, query, queryAll } from 'lit-element';
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { scroll } from 'lit-virtualizer';
 import { Key } from "@/constants";
-
+import styles from "./scss/module.scss";
+import reset from "@/wc_scss/reset.scss";
+import { FocusMixin } from '@/mixins/FocusMixin';
+import { RovingTabIndexMixin } from '@/mixins';
 export namespace AdvanceList {
     @customElementWithCheck('md-advance-list')
-    export class ELEMENT extends LitElement {
+    export class ELEMENT extends FocusMixin(LitElement) {
         @property({ type: Array }) items: any[] = [];
         @property({ type: Boolean }) isLoading = false;
         @property({ type: String }) selectedItemId = '';
         @property({ type: String }) isError: string | null = null;
+        @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
         @internalProperty() page = 1;
-        @internalProperty() focusedIndex = -1;
+        private _focusedIndex = -1;
+        @internalProperty()
+        get focusedIndex() {
+            return this._focusedIndex;
+          }
+          set focusedIndex(index: number) {
+            const oldIndex = this._focusedIndex;
+            console.log("New Data---",index,this.items[index], this.items)
+            const newId = this.items[index]?.id
+            console.log("Focused Id--", newId);
+
+            const newList = this.lists ? [...this.lists]?.find(list => { 
+                const newIndex = list.getAttribute("index");
+                if(newIndex !== null){
+                    return parseInt(newIndex) === index;
+                }
+                return false;
+            }) : null;
+            console.log("Focused List:", newList)
+        if (this.lists) {
+          [...this.lists].forEach(list => {
+            list.toggleAttribute("focused", false);
+          });
+        }
+        if (newList) {
+          newList?.toggleAttribute("focused", true);
+        }
+        const newListIndex = newList?.getAttribute("index");
+        if(newListIndex){
+            this._focusedIndex = parseInt(newListIndex);
+        } else {
+            this._focusedIndex = 0
+        }
+            
+            console.log("focusIndex---", index, oldIndex);
+            this.requestUpdate("focusedIndex", index);
+          }
+        @internalProperty() selectedIndex = -1;
 
         constructor() {
             super();
@@ -22,56 +63,93 @@ export namespace AdvanceList {
             this.focusedIndex = -1;
             this.selectedItemId = '';
         }
-
-        static styles = css`
-            :host {
-                display: block;
-                position: relative;
-            }
-
-            .virtual-scroll {
-                max-height: 400px;
-                overflow-y: auto;
-                position: relative;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .default-wrapper {
-                padding: 5px;
-                background: white;
-                cursor: pointer; 
-                width: 100%;
-            }
-            .default-wrapper.select {
-                background-color: var(--list-active-background, $md-list-active-background-light);
-                color: var(--list-active-text-color, $md-list-active-text-color-light);
-            }
-
-            .default-wrapper:hover {
-                background-color: var(--list-hover-background, $md-list-hover-background-light);
-                color: var(--list-hover-text-color, $md-list-hover-text-color-light);
-            }
-
-            .spinner, .error {
-                text-align: center;
-                padding: 16px;
-            }
-
-            .error {
-                color: red;
-            }
-        `;
-
-   
-
-        connectedCallback() {
+        connectedCallback(): void {
             super.connectedCallback();
+            this.addEventListener("keydown", this.handleKeyDown);
             this.addEventListener("click", this.handleClick);
         }
+        static get styles() {
+            return [reset, styles];
+          }
+        handleKeyDown = (event: KeyboardEvent) => {
+            const { code } = event;
+            console.log("Focus---", event);
+            switch (code) {
+              
+              case Key.ArrowUp:
+              case Key.ArrowLeft:
+                event.preventDefault();
+                  if (this.focusedIndex !== 0) {
+                    this.focusedIndex--;
+                  } 
+                break;
+              case Key.ArrowDown:
+              case Key.ArrowRight:
+                event.preventDefault();
+                console.log("Items on key down", this.items.length);
+                if (this.items.length - 1 === this.focusedIndex) {
+                    this.focusedIndex = 0;
+                  } else {
+                    this.focusedIndex++
+                  }
+                break;
+              case Key.Enter:
+              case Key.Space:
+                if (this.focusedIndex > -1) {
+                    this.selectedIndex = this.focusedIndex;
+                    this.notifySelectedChange();
+                  }
+                break;
+              default:
+                break;
+            }
+          }
+
+        // static styles = css`
+        //     :host {
+        //         display: block;
+        //         position: relative;
+        //     }
+
+        //     .virtual-scroll {
+        //         max-height: 400px;
+        //         overflow-y: auto;
+        //         position: relative;
+        //         -webkit-overflow-scrolling: touch;
+        //     }
+
+        //     .default-wrapper {
+        //         padding: 5px;
+        //         background: white;
+        //         cursor: pointer; 
+        //         width: 100%;
+        //     }
+        //     .default-wrapper.select {
+        //         background-color: var(--list-active-background, $md-list-active-background-light);
+        //         color: var(--list-active-text-color, $md-list-active-text-color-light);
+        //     }
+
+        //     .default-wrapper:hover {
+        //         background-color: var(--list-hover-background, $md-list-hover-background-light);
+        //         color: var(--list-hover-text-color, $md-list-hover-text-color-light);
+        //     }
+
+        //     .spinner, .error {
+        //         text-align: center;
+        //         padding: 16px;
+        //     }
+
+        //     .error {
+        //         color: red;
+        //     }
+        // `;
+
+   
 
         disconnectedCallback() {
             super.disconnectedCallback();
             this.removeEventListener("click", this.handleClick);
+            this.removeEventListener("keydown", this.handleKeyDown);
         }
 
         handleScroll() {
@@ -143,6 +221,10 @@ export namespace AdvanceList {
                         items: this.items,
                         renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
                         useShadowDOM: true,
+                        // scrollToIndex: {
+                        //     index: this.focusedIndex,
+                        //     position: this.focusedIndex === -1 ? "start" : "center"
+                        //   }
                     })}
                 </div>
                 ${this.isLoading ? html`<slot name="spin-loader"></slot>` : ''}

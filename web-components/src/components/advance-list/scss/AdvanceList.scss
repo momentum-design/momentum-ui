@@ -13,27 +13,31 @@
 .default-wrapper {
     padding: 5px;
     background: white;
-    cursor: pointer;
+    cursor: pointer; 
     width: 100%;
-    
-    &:hover {
-        background-color: var(--list-hover-background, $md-list-hover-background-light);
-        color: var(--list-hover-text-color, $md-list-hover-text-color-light);
-    }
+}
+.default-wrapper.select {
+    background-color: var(--list-active-background, $md-advance-list-active-background-light);
+    color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
+}
+.default-wrapper {
+    &[focused] {
+        border: 2px solid var(--md-default-focus-outline-color);
+        
+      }
+   
 }
 
-.select {
-    background-color: var(--list-active-background, $md-list-active-background-light);
-    color: var(--list-active-text-color, $md-list-active-text-color-light);
+.default-wrapper:hover {
+    background-color: var(--list-hover-background, $md-advance-list-hover-background-light);
+    color: var(--list-hover-text-color, $md-advance-list-hover-text-color-light);
 }
 
-.spinner {
+.spinner, .error {
     text-align: center;
     padding: 16px;
 }
 
 .error {
     color: red;
-    text-align: center;
-    padding: 16px;
 }

@@ -52,10 +52,10 @@ export namespace ParentComponentError {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       const newItems = Array.from({ length: 20 }, (_, i) => ({
-        data: `Item ${(page - 1) * 20 + i + 1}`,
+        name: `Item ${(page - 1) * 20 + i + 1}`,
         id: crypto.randomUUID(),
         index: i,
-        template: (data: string, index: number) => html`<div indexing="${index}" >${data}</div>`
+        template: (data: any, index: number) => html`<div indexing="${index}" >${data.name}</div>`
       }));
       return newItems;
     }

@@ -12,7 +12,7 @@ export namespace AdvanceList {
         @property({ type: Array }) items: any[] = [];
         @property({ type: Boolean }) isLoading = false;
         @property({ type: String }) selectedItemId = '';
-        @property({ type: String }) isError: string | null = null;
+        @property({ type: Boolean }) isError = false;
         @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
         @internalProperty() page = 1;
         private _focusedIndex = -1;
@@ -58,7 +58,7 @@ export namespace AdvanceList {
             super();
             this.items = [];
             this.isLoading = false;
-            this.isError = null;
+            this.isError = false;
             this.page = 1;
             this.focusedIndex = -1;
             this.selectedItemId = '';
@@ -104,45 +104,6 @@ export namespace AdvanceList {
                 break;
             }
           }
-
-        // static styles = css`
-        //     :host {
-        //         display: block;
-        //         position: relative;
-        //     }
-
-        //     .virtual-scroll {
-        //         max-height: 400px;
-        //         overflow-y: auto;
-        //         position: relative;
-        //         -webkit-overflow-scrolling: touch;
-        //     }
-
-        //     .default-wrapper {
-        //         padding: 5px;
-        //         background: white;
-        //         cursor: pointer; 
-        //         width: 100%;
-        //     }
-        //     .default-wrapper.select {
-        //         background-color: var(--list-active-background, $md-list-active-background-light);
-        //         color: var(--list-active-text-color, $md-list-active-text-color-light);
-        //     }
-
-        //     .default-wrapper:hover {
-        //         background-color: var(--list-hover-background, $md-list-hover-background-light);
-        //         color: var(--list-hover-text-color, $md-list-hover-text-color-light);
-        //     }
-
-        //     .spinner, .error {
-        //         text-align: center;
-        //         padding: 16px;
-        //     }
-
-        //     .error {
-        //         color: red;
-        //     }
-        // `;
 
    
 
@@ -209,7 +170,7 @@ export namespace AdvanceList {
         renderItem(item: any, index: number) {
             return html`
                 <div class="default-wrapper" id="${item.id}" index="${index}">
-                    ${item.template(item.data, index)} 
+                    ${item.template(item, index)} 
                 </div>
             `;
         }
@@ -233,8 +194,7 @@ export namespace AdvanceList {
 
         handleRangeChange(e: any) {
             const { last } = e;
-            if (last >= this.items.length - 1 && !this.isLoading) {
-                this.isLoading = true;
+            if (last >= this.items.length - 1 && !this.isLoading && !this.isError) {
                 this.dispatchEvent(new CustomEvent('load-more', {
                     detail: { page: this.page },
                     bubbles: true,

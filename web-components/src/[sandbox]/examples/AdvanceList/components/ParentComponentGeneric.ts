@@ -21,7 +21,7 @@ export namespace ParentComponentGeneric {
         }
 
         async loadMoreItems() {
-            console.log('event dispatched ----->>>')
+            console.log("load more called")
             try {
                 this.isLoading = true;
                 const newItems = await this.fetchItems(this.page);
@@ -29,34 +29,35 @@ export namespace ParentComponentGeneric {
                 this.page += 1;
                 this.isLoading = false;
                 this.isError = null;
+                console.log('try calledddd')
             } catch (err) {
                 this.isLoading = false;
                 this.isError = 'Failed to load more items. Please try again.';
+                console.log("error caled")
+            }finally{
+                this.isLoading = false;
+                console.log("finally called")
             }
         }
 
         async fetchItems(page: number) {
-            console.log('Fetching items for page', page);
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             const newItems = Array.from({ length: 20 }, (_, i) => ({
-                data: `Item ${(page - 1) * 20 + i + 1}`,
+                name: `Item ${(page - 1) * 20 + i + 1}`,
                 id: crypto.randomUUID(),
                 index: i,
-                template: (data: string, index: number) => html`<md-list-item indexing="${index}" >${data}</md-list-item>`
+                template: (data: any, index: number) => html`<md-list-item indexing="${index}" >${data.name}</md-list-item>`
             }));
-            console.log('newItems', newItems)
             return newItems;
         }
 
         private handleListItemChange(event: CustomEvent) {
-            console.log('event dispatched from momentum ----->>>', event)
             //API call send to end point to upate the item
         }
 
         render() {
             // console.log("rendering parent component--generic", this.items)
-            console.log("rendering parent component--generic is loading", this.isLoading)
             return html`
         <h2>Generic Item List</h2>
         <md-advance-list
@@ -65,13 +66,9 @@ export namespace ParentComponentGeneric {
           .isError=${this.isError}
           @list-item-change=${this.handleListItemChange}
           @load-more=${this.loadMoreItems}>
-          <md-spinner size="24" slot="spin-loader"></md-spinner>
+        <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>
-
         `;
-            // this should inside backtik
-            // ${this.isLoading ? html`<p>isLoading...</p>` : ''}
-            // ${this.isError ? html`<p class="isError">${this.isError}</p>` : ''}
         }
 
         static get styles() {

@@ -1,21 +1,32 @@
-import { LitElement, html, css, property, internalProperty, query, queryAll } from 'lit-element';
+import { LitElement, html, css, property, internalProperty, query, queryAll, PropertyValues } from 'lit-element';
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { scroll } from 'lit-virtualizer';
 import { Key } from "@/constants";
 import styles from "./scss/module.scss";
 import reset from "@/wc_scss/reset.scss";
 import { FocusMixin } from '@/mixins/FocusMixin';
-import { RovingTabIndexMixin } from '@/mixins';
+
+
 export namespace AdvanceList {
     @customElementWithCheck('md-advance-list')
     export class ELEMENT extends FocusMixin(LitElement) {
         @property({ type: Array }) items: any[] = [];
         @property({ type: Boolean }) isLoading = false;
         @property({ type: String }) selectedItemId = '';
+        @property({ type: String }) value = '';
+
+        @property({ type: String }) ariaRoleList = '';
+        // @property({ type: String }) ariaRoleListItem = '';
+        @property({ type: String }) ariaLabelList = '';
+        // @property({ type: String }) ariaLabelListItem = '';
+
         @property({ type: Boolean }) isError = false;
         @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
         @internalProperty() page = 1;
+        @internalProperty() hasSlotContent = false;
+
         private _focusedIndex = -1;
+
         @internalProperty()
         get focusedIndex() {
             return this._focusedIndex;
@@ -51,7 +62,7 @@ export namespace AdvanceList {
             
             console.log("focusIndex---", index, oldIndex);
             this.requestUpdate("focusedIndex", index);
-          }
+        }
         @internalProperty() selectedIndex = -1;
 
         constructor() {
@@ -105,8 +116,6 @@ export namespace AdvanceList {
             }
           }
 
-   
-
         disconnectedCallback() {
             super.disconnectedCallback();
             this.removeEventListener("click", this.handleClick);
@@ -117,6 +126,16 @@ export namespace AdvanceList {
             this.updateSelectedState();
         }
 
+        updated(changedProperties: PropertyValues) {
+            if (changedProperties.has('value')) {
+                this.selectedItemId = this.value;
+                // Wait for the update to complete before running your logic.
+                this.requestUpdate().then(() => {
+                    this.updateSelectedState();
+                });
+            }
+        }
+        
         private updateSelectedState() {
             const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
             wrappers.forEach(wrapper => {
@@ -169,7 +188,7 @@ export namespace AdvanceList {
 
         renderItem(item: any, index: number) {
             return html`
-                <div class="default-wrapper" id="${item.id}" index="${index}">
+                <div class="default-wrapper"  aria-label=${item.name} id="${item.id}" index="${index}">
                     ${item.template(item, index)} 
                 </div>
             `;
@@ -177,22 +196,19 @@ export namespace AdvanceList {
 
         render() {
             return html`
-                <div class="virtual-scroll md-list-item" @scroll=${this.handleScroll} @rangechange=${this.handleRangeChange}>
+                <div class="md-advance-list-wrapper" tabindex="0" aria-label=${this.ariaLabelList} role=${this.ariaRoleList} @rangechange=${this.handleRangeChange}>
                     ${scroll({
                         items: this.items,
                         renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
                         useShadowDOM: true,
-                        // scrollToIndex: {
-                        //     index: this.focusedIndex,
-                        //     position: this.focusedIndex === -1 ? "start" : "center"
-                        //   }
                     })}
                 </div>
-                ${this.isLoading ? html`<slot name="spin-loader"></slot>` : ''}
+                ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : ''}
             `;
         }
 
         handleRangeChange(e: any) {
+            this.handleScroll()
             const { last } = e;
             if (last >= this.items.length - 1 && !this.isLoading && !this.isError) {
                 this.dispatchEvent(new CustomEvent('load-more', {

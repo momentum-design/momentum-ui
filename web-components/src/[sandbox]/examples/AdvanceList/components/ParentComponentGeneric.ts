@@ -9,14 +9,15 @@ export namespace ParentComponentGeneric {
         @property({ type: Array }) items: any = [];
         @internalProperty() page = 1;
         @property({ type: Boolean }) isLoading = false;
-        @property({ type: String }) isError: string | null = null;
+        @property({ type: String })  value = '';
+        @property({ type: String }) isError = false;
 
         constructor() {
             super();
             this.items = [];
             this.page = 1;
             this.isLoading = false;
-            this.isError = null;
+            this.isError = false;
             this.loadMoreItems();
         }
 
@@ -28,11 +29,14 @@ export namespace ParentComponentGeneric {
                 this.items = [...this.items, ...newItems];
                 this.page += 1;
                 this.isLoading = false;
-                this.isError = null;
+                this.value = this.items[1].id;
+
+                // this.isError = null;
                 console.log('try calledddd')
             } catch (err) {
                 this.isLoading = false;
-                this.isError = 'Failed to load more items. Please try again.';
+                this.isError = true;
+                // this.isError = 'Failed to load more items. Please try again.';
                 console.log("error caled")
             }finally{
                 this.isLoading = false;
@@ -53,6 +57,7 @@ export namespace ParentComponentGeneric {
         }
 
         private handleListItemChange(event: CustomEvent) {
+            console.log(event.detail.selected)
             //API call send to end point to upate the item
         }
 
@@ -64,6 +69,9 @@ export namespace ParentComponentGeneric {
           .items=${this.items}
           .isLoading=${this.isLoading}
           .isError=${this.isError}
+          .value=${this.value}
+          ariaRoleList="listbox"
+          ariaLabelList="state selector"
           @list-item-change=${this.handleListItemChange}
           @load-more=${this.loadMoreItems}>
         <md-spinner size="24" slot="spin-loader"></md-spinner>

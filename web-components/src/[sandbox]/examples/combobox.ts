@@ -4,6 +4,7 @@ import "@/components/icon/Icon";
 import "@/components/spinner/Spinner";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
+import { ComboBox } from "@/components/combobox/ComboBox";
 
 const dropdownValue: string[] = [];
 const testCustomValue = [
@@ -25,6 +26,11 @@ const comboboxOnExpand2 = (e: CustomEvent) => {
   setTimeout(() => {
     target.options = comboBoxObjectOptions;
   }, 500);
+};
+
+const messageArr: ComboBox.Message = {
+  message: "This is where the message would be.",
+  type: "success"
 };
 
 export const comboBoxTemplate = html`
@@ -71,6 +77,51 @@ export const comboBoxTemplate = html`
     invalid
     invalid-text-i18n="This is error message"
   ></md-combobox>
+  <br />
+  <h3>Default (New Momentum)</h3>
+  <md-combobox
+    style="width: 240px; display: inline-block;"
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    ariaLabel="Select the country"
+    search-result-aria-label="Select the country, {{count}} results found."
+    helpText="This is help text"
+    newMomentum
+  ></md-combobox>
+  <h3>Read Only State (New Momentum)</h3>
+  <md-combobox readOnly .options=${comboBoxOptions} placeholder="Placeholder" helpText="This is help text" searchable newMomentum> </md-combobox>
+  </md-combobox>
+  <h3>Disabled State (New Momentum)</h3>
+  <md-combobox disabled .options=${comboBoxOptions} placeholder="Placeholder" helpText="This is help text" searchable newMomentum> </md-combobox>
+  </md-combobox>
+  <h3>Success Text (New Momentum)</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    .value=${[comboBoxOptions[5]]}
+    htmlId="comboBoxError"
+    .messageArr=${[{ ...messageArr } as ComboBox.Message]}
+    placeholder="Enter Text"
+    newMomentum
+  ></md-combobox>
+  <h3>Warning Text (New Momentum)</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    .value=${[comboBoxOptions[5]]}
+    htmlId="comboBoxError"
+    .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as ComboBox.Message]}
+    placeholder="Enter Text"
+    newMomentum
+  ></md-combobox>
+  <h3>Error Text (New Momentum)</h3>
+  <md-combobox
+    .options=${comboBoxOptions}
+    .value=${[comboBoxOptions[5]]}
+    htmlId="comboBoxError"
+    .messageArr=${[{ ...messageArr, ...{ type: "error" } } as ComboBox.Message]}
+    placeholder="Enter Text"
+    newMomentum
+  ></md-combobox>
+  <br />
   <h3>Multi Data with Custom Values</h3>
   <md-combobox
     .options=${comboBoxOptions}

@@ -27,6 +27,9 @@ const combobox = {
   focus: {
     "border-color": {
       common: "$mds-color-theme-outline-theme-normal"
+    },
+    "new-border-color": {
+      common: "mds-color-theme-outline-input-active"
     }
   },
   disabled: {
@@ -95,8 +98,14 @@ const combobox = {
     "bg-color": {
       common: "$mds-color-theme-background-alert-default-normal"
     },
+    "new-bg-color":{
+      common: "$mds-color-theme-background-solid-tertiary-normal"
+    },
     "border-color": {
       common: "mds-color-theme-background-alert-default-normal"
+    },
+    "new-border-color": {
+      common: "mds-color-theme-inverted-outline-button-normal"
     },
     hover: {
       common: "$mds-color-theme-background-alert-default-hover"

@@ -70,22 +70,83 @@ export namespace AdvanceList {
                 });
             }
         }
+        
+        private updateSelectedState() {
+            const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
+            wrappers.forEach(wrapper => {
+              // Check if any child element within the wrapper has the 'disabled' attribute
+              const childWithDisabled = wrapper.querySelector('[disabled]');
+              
+              if (wrapper.id === this.selectedItemId) {
+                wrapper.classList.add('selected');
+                wrapper.setAttribute('selected', 'true');
+              } else {
+                wrapper.classList.remove('selected');
+                wrapper.removeAttribute('selected');
+              }
+          
+              if (childWithDisabled) {
+                wrapper.setAttribute('disabled', '');
+                wrapper.setAttribute('aria-disabled', 'true');
+              } else {
+                wrapper.removeAttribute('disabled');
+                wrapper.removeAttribute('aria-disabled');
+              }
+            });
+          }
 
 
+        findClickedItem(event: Event): HTMLElement | 0 | undefined {
+            const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
+            const eventPath = event.composedPath();
+        
+            const clickedItem = wrappers.find(wrapper => eventPath.includes(wrapper)) as HTMLElement | undefined;
+            console.log('clickedItems', clickedItem);
+        
+            if (clickedItem) {
+                const isDisabled = Array.from(clickedItem.children).some(child => 
+                    child.hasAttribute('disabled')
+                ) || clickedItem.getAttribute('aria-disabled') === 'true';
+                
+                console.log("Disabled state:", isDisabled);
+                
+                if (isDisabled) {
+                    return 0; // Indicate that the item is disabled and stop execution
+                }
+                
+                return clickedItem;
+            }
+        
+            return undefined;
+        }
+        
+        
+        
+
+        clearSelectedState() {
+            const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
+            wrappers.forEach(wrapper => {
+                wrapper.classList.remove('selected');
+                wrapper.removeAttribute('selected');
+            });
+        }
+
+        selectItem(item: HTMLElement) {
+            item.classList.add('selected');
+            item.setAttribute('selected', 'true');
+        }
 
 
     
     getVisibleElementById = (id: string) => {
       // Get all elements with the specified ID
       const elements: NodeListOf<HTMLElement> | undefined = this.shadowRoot?.querySelector(`.virtual-scroll`)?.querySelectorAll(`#${id}`);
-
       // Iterate over the elements and return the first one that is not hidden
       if (elements) {
         for (let element of elements) {
           if (window.getComputedStyle(element).display !== "none") {
             return element;
           }
-        }
       }
 
       // If no visible element is found, return null
@@ -177,13 +238,6 @@ export namespace AdvanceList {
 
 
 
-    private updateSelectedState() {
-      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
-      wrappers.forEach((wrapper) => {
-        wrapper.classList.toggle("select", wrapper.id === this.selectedItemId);
-
-      });
-    }
 
 
 
@@ -204,18 +258,6 @@ export namespace AdvanceList {
         
       }
     }
-    findClickedItem(event: Event): HTMLElement | undefined {
-      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
-      const eventPath = event.composedPath();
-      return wrappers.find((wrapper) => eventPath.includes(wrapper)) as HTMLElement | undefined;
-    }
-
-    clearSelectedState() {
-      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
-      wrappers.forEach((wrapper) => {
-        wrapper.classList.remove("select");
-      });
-    }
 
     clearFocusedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
@@ -227,9 +269,6 @@ export namespace AdvanceList {
       item.classList.add("focused");
     }
 
-    selectItem(item: HTMLElement) {
-      item.classList.add("select");
-    }
 
     setSelected(newId: string) {
       if (this.selectedItemId !== newId) {

@@ -502,7 +502,7 @@ export class Sandbox extends LitElement {
           </md-tab>
           <md-tab-panel slot="panel">
             <div class="container" aria-label="md-list">
-              <h2>Virtual list test</h2>
+              <h2>md-advance-list</h2>
               <sass-stats component="list">
                 ${advanceListTemplate}
               </sass-stats>

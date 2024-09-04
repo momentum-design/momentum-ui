@@ -18,6 +18,9 @@ const dropdown = {
     },
     active: {
       common: "$mds-color-theme-background-primary-active"
+    },
+    disabled: {
+      common: "$mds-color-theme-background-primary-disabled"
     }
   },
   "border-color": {

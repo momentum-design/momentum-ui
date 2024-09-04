@@ -51,7 +51,14 @@ export namespace ParentComponentGeneric {
                 name: `Item ${(page - 1) * 20 + i + 1}`,
                 id: crypto.randomUUID(),
                 index: i,
-                template: (data: any, index: number) => html`<md-list-item indexing="${index}" >${data.name}</md-list-item>`
+                ariaLabel : `Item ${(page - 1) * 20 + i + 1}`,
+                template: (data: any, index: number) => html`
+                <div
+                  indexing="${index}" 
+                  ?disabled="${index % 2 === 0}"
+                  >
+                  ${data.name}
+                </div>`
             }));
             return newItems;
         }

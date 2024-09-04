@@ -139,10 +139,27 @@ export namespace AdvanceList {
         private updateSelectedState() {
             const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
             wrappers.forEach(wrapper => {
-                wrapper.classList.toggle('select', wrapper.id === this.selectedItemId);
+              // Check if any child element within the wrapper has the 'disabled' attribute
+              const childWithDisabled = wrapper.querySelector('[disabled]');
+              
+              if (wrapper.id === this.selectedItemId) {
+                wrapper.classList.add('selected');
+                wrapper.setAttribute('selected', 'true');
+              } else {
+                wrapper.classList.remove('selected');
+                wrapper.removeAttribute('selected');
+              }
+          
+              if (childWithDisabled) {
+                wrapper.setAttribute('disabled', '');
+                wrapper.setAttribute('aria-disabled', 'true');
+              } else {
+                wrapper.removeAttribute('disabled');
+                wrapper.removeAttribute('aria-disabled');
+              }
             });
-        }
-        
+          }
+
         handleClick(event: Event) {
             const clickedItem = this.findClickedItem(event);
             if (clickedItem) {
@@ -151,22 +168,45 @@ export namespace AdvanceList {
                 this.setSelected(clickedItem.id);
             }
         }
-        findClickedItem(event: Event): HTMLElement | undefined {
+
+
+        findClickedItem(event: Event): HTMLElement | 0 | undefined {
             const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
             const eventPath = event.composedPath();
-            return wrappers.find(wrapper => eventPath.includes(wrapper)) as HTMLElement | undefined;
+        
+            const clickedItem = wrappers.find(wrapper => eventPath.includes(wrapper)) as HTMLElement | undefined;
+            console.log('clickedItems', clickedItem);
+        
+            if (clickedItem) {
+                const isDisabled = Array.from(clickedItem.children).some(child => 
+                    child.hasAttribute('disabled')
+                ) || clickedItem.getAttribute('aria-disabled') === 'true';
+                
+                console.log("Disabled state:", isDisabled);
+                
+                if (isDisabled) {
+                    return 0; // Indicate that the item is disabled and stop execution
+                }
+                
+                return clickedItem;
+            }
+        
+            return undefined;
         }
+        
+        
+        
 
         clearSelectedState() {
             const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
             wrappers.forEach(wrapper => {
-                wrapper.classList.remove('select');
+                wrapper.classList.remove('selected');
                 wrapper.removeAttribute('selected');
             });
         }
 
         selectItem(item: HTMLElement) {
-            item.classList.add('select');
+            item.classList.add('selected');
             item.setAttribute('selected', 'true');
         }
 
@@ -188,7 +228,7 @@ export namespace AdvanceList {
 
         renderItem(item: any, index: number) {
             return html`
-                <div class="default-wrapper"  aria-label=${item.name} id="${item.id}" index="${index}">
+                <div class="default-wrapper"  aria-label=${item.ariaLabel} id="${item.id}" index="${index}">
                     ${item.template(item, index)} 
                 </div>
             `;

@@ -54,10 +54,6 @@ export namespace AdvanceList {
       this.removeEventListener("keydown", this.handleKeyDown);
     }
 
-    handleScroll() {
-      this.updateSelectedState();
-    }
-
     updated(changedProperties: PropertyValues) {
       if (changedProperties.has("value")) {
         this.selectedItemId = `item-${this.value}`;
@@ -71,6 +67,7 @@ export namespace AdvanceList {
     }
 
     private updateSelectedState() {
+      console.log("Selected Id in update---", this.selectedItemId);
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
         // Check if any child element within the wrapper has the 'disabled' attribute
@@ -172,11 +169,11 @@ export namespace AdvanceList {
 
     handleKeyDown(event: KeyboardEvent) {
       console.log("HandleKeyDown---", event);
-      this.setFocusOnHost(true);
+      //this.setFocusOnHost(true);
       switch (event.key) {
         case "ArrowDown":
           {
-            this.setFocusOnHost(true);
+            //this.setFocusOnHost(true);
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
             console.log("CurrentIndex---", currentIndex);
             if (currentIndex === this.totalRecords - 1) {
@@ -195,7 +192,7 @@ export namespace AdvanceList {
           break;
         case "ArrowUp":
           {
-            this.setFocusOnHost(true);
+            //this.setFocusOnHost(true);
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
             console.log("CurrentIndex---", currentIndex);
             if (currentIndex > 0) {
@@ -212,21 +209,27 @@ export namespace AdvanceList {
           }
           break;
         case "Enter":
-          const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-          this.handleItemSelect(currentIndex);
+          if (this.activeItem) {
+            console.log("ActiveItem on Enter--", this.activeId, this.activeItem);
+            const isDisabled =
+              Array.from(this.activeItem.children).some((child) => child.hasAttribute("disabled")) ||
+              this.activeItem.getAttribute("aria-disabled") === "true";
+            this.listContainer?.focus();
+            if (!isDisabled) {
+              this.clearSelectedState();
+              this.selectItem(this.activeItem);
+              this.setSelected(`item-${this.activeId}`);
+              console.log("ActiveId---", this.activeId);
+
+              this.cyclicIndex = parseInt(this.activeItem.getAttribute("index") || "0");
+            }
+          }
           break;
         default:
           break;
       }
     }
 
-    handleItemSelect(index: number) {
-      if (index >= 0 && index < this.items.length) {
-        const selectedItem = this.items[index];
-        console.log("Selected item:", selectedItem);
-        // You can dispatch an event or handle the selection as needed
-      }
-    }
 
     handleClick(event: Event) {
       const clickedItem = this.findClickedItem(event);
@@ -326,9 +329,9 @@ export namespace AdvanceList {
       const { last, firstVisible } = e;
       this.clearSelectedState();
       this.updateSelectedState();
-      console.log("Handle RangeChange---", this.cyclicIndex);
+      console.log("Handle RangeChange---", this.cyclicIndex, this.activeItem);
       this.scrollToActiveItem();
-      this.setFocusOnHost(true);
+      //this.setFocusOnHost(true);
       this.listContainer?.focus();
       console.log("Total Length", last, this.totalRecords, this.items.length, this.activeItem);
       if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {

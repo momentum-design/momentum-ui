@@ -1,53 +1,70 @@
 
 :host(md-advance-list) {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      overflow: auto;
-      position: relative;
-  }
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    position: relative;
+}
 
 
-.default-wrapper {
-    box-sizing: border-box;
-    padding: 5px;
-    background: white;
-    cursor: pointer; 
-    width: 100%;
+
+.virtual-scroll {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x:hidden;
+  position: relative;
 }
 
 .default-wrapper[aria-disabled="true"],
 .default-wrapper:has([disabled]),
 .default-wrapper:has([disabled]):hover
- {
-    color : var(--advance-list-disabled-text-color);
-    background-color: transparent;
+{
+  color : var(--advance-list-disabled-text-color);
+  background-color: transparent;
 }
 
 slot.spin-loader{
-    display: flex;
-    justify-content: center;
-    width:100%;
+  display: flex;
+  justify-content: center;
+  width:100%;
 }
 
 .default-wrapper.selected {
-    background-color: var(--list-active-background, $md-advance-list-active-background-light);
-    color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
+  background-color: var(--list-active-background, $md-advance-list-active-background-light);
+  color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
+}
+.default-wrapper.focused {
+  padding-bottom: 0px !important;
+  border: 2px solid var(--md-default-focus-outline-color);
+}
+.default-wrapper {
+  &[focused] {
+      border: 2px solid var(--md-default-focus-outline-color);
+      
+    }
+ 
+ 
+}
+.default-wrapper {
+  padding: 5px;
+  background: white;
+  cursor: pointer; 
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 38px;
 }
 
-
 .default-wrapper:hover {
-    background-color: var(--list-hover-background, $md-advance-list-hover-background-light);
-    color: var(--list-hover-text-color, $md-advance-list-hover-text-color-light);
+  background-color: var(--list-hover-background, $md-advance-list-hover-background-light);
+  color: var(--list-hover-text-color, $md-advance-list-hover-text-color-light);
 }
 
 .default-wrapper:focus {
-   border: var(--advance-list-focus-border-color)
+ border: var(--advance-list-focus-border-color)
 }
 
-.default-wrapper[focused] {
-  }
 .default-wrapper.selected:hover {
-    background-color: var(--list-active-background, $md-advance-list-active-background-light);
-    color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
+  background-color: var(--list-active-background, $md-advance-list-active-background-light);
+  color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
 }

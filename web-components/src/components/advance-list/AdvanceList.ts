@@ -313,8 +313,7 @@ export namespace AdvanceList {
       this.setFocusOnHost(true);
       this.listContainer?.focus();
       console.log("Total Length", last, this.totalRecords, this.items.length, this.activeItem);
-      if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading) {
-        this.isLoading = true;
+      if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
         this.cyclicIndex = last;
         this.dispatchEvent(
           new CustomEvent("load-more", {

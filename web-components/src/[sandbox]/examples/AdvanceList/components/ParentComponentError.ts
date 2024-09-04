@@ -11,6 +11,8 @@ export namespace ParentComponentError {
     @property({ type: Boolean }) isLoading = false;
     @internalProperty() shouldFail = false;
     @property({ type: Boolean }) isError = false;
+    @internalProperty() totalRecords = 0;
+
 
     constructor() {
       super();
@@ -32,6 +34,7 @@ export namespace ParentComponentError {
         const newItems = await this.fetchItems(this.page);
 
         this.items = [...this.items, ...newItems];
+        this.totalRecords = 60;
         this.page += 1;
         this.isLoading = false;
         this.isError = false;
@@ -55,7 +58,8 @@ export namespace ParentComponentError {
         name: `Item ${(page - 1) * 20 + i + 1}`,
         id: crypto.randomUUID(),
         index: i,
-        template: (data: any, index: number) => html`<div indexing="${index}" >${data.name}</div>`
+        template: (data: any, index: number) => html`<div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" ?disabled="${index % 2 === 0}" indexing="${index}" >${data.name}</div>`
+
       }));
       return newItems;
     }
@@ -73,6 +77,7 @@ export namespace ParentComponentError {
           .items=${this.items}
           .isLoading=${this.isLoading}
           .isError=${this.isError}
+          .totalRecords=${this.totalRecords}
           @load-more=${this.loadMoreItems}>
           <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>

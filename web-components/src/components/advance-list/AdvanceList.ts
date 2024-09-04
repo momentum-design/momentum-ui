@@ -1,6 +1,6 @@
 import { LitElement, html, css, property, internalProperty, query, queryAll, PropertyValues } from 'lit-element';
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { scroll } from 'lit-virtualizer';
+import { scroll } from "lit-virtualizer";
 import { Key } from "@/constants";
 import styles from "./scss/module.scss";
 import reset from "@/wc_scss/reset.scss";
@@ -22,47 +22,13 @@ export namespace AdvanceList {
 
         @property({ type: Boolean }) isError = false;
         @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
+        @query(".virtual-scroll") listContainer?: HTMLDivElement;
         @internalProperty() page = 1;
         @internalProperty() hasSlotContent = false;
-
-        private _focusedIndex = -1;
-
-        @internalProperty()
-        get focusedIndex() {
-            return this._focusedIndex;
-          }
-          set focusedIndex(index: number) {
-            const oldIndex = this._focusedIndex;
-            console.log("New Data---",index,this.items[index], this.items)
-            const newId = this.items[index]?.id
-            console.log("Focused Id--", newId);
-
-            const newList = this.lists ? [...this.lists]?.find(list => { 
-                const newIndex = list.getAttribute("index");
-                if(newIndex !== null){
-                    return parseInt(newIndex) === index;
-                }
-                return false;
-            }) : null;
-            console.log("Focused List:", newList)
-        if (this.lists) {
-          [...this.lists].forEach(list => {
-            list.toggleAttribute("focused", false);
-          });
-        }
-        if (newList) {
-          newList?.toggleAttribute("focused", true);
-        }
-        const newListIndex = newList?.getAttribute("index");
-        if(newListIndex){
-            this._focusedIndex = parseInt(newListIndex);
-        } else {
-            this._focusedIndex = 0
-        }
-            
-            console.log("focusIndex---", index, oldIndex);
-            this.requestUpdate("focusedIndex", index);
-        }
+        @property ({type: Number}) totalRecords = 0;
+        @internalProperty() activeItem: HTMLElement | null | undefined = null;
+        @internalProperty() cyclicIndex = -1;
+        @internalProperty() activeId: string = "";
         @internalProperty() selectedIndex = -1;
 
         constructor() {
@@ -71,7 +37,6 @@ export namespace AdvanceList {
             this.isLoading = false;
             this.isError = false;
             this.page = 1;
-            this.focusedIndex = -1;
             this.selectedItemId = '';
         }
         connectedCallback(): void {
@@ -82,39 +47,7 @@ export namespace AdvanceList {
         static get styles() {
             return [reset, styles];
           }
-        handleKeyDown = (event: KeyboardEvent) => {
-            const { code } = event;
-            console.log("Focus---", event);
-            switch (code) {
-              
-              case Key.ArrowUp:
-              case Key.ArrowLeft:
-                event.preventDefault();
-                  if (this.focusedIndex !== 0) {
-                    this.focusedIndex--;
-                  } 
-                break;
-              case Key.ArrowDown:
-              case Key.ArrowRight:
-                event.preventDefault();
-                console.log("Items on key down", this.items.length);
-                if (this.items.length - 1 === this.focusedIndex) {
-                    this.focusedIndex = 0;
-                  } else {
-                    this.focusedIndex++
-                  }
-                break;
-              case Key.Enter:
-              case Key.Space:
-                if (this.focusedIndex > -1) {
-                    this.selectedIndex = this.focusedIndex;
-                    this.notifySelectedChange();
-                  }
-                break;
-              default:
-                break;
-            }
-          }
+ 
 
         disconnectedCallback() {
             super.disconnectedCallback();
@@ -129,101 +62,248 @@ export namespace AdvanceList {
         updated(changedProperties: PropertyValues) {
             if (changedProperties.has('value')) {
                 this.selectedItemId = this.value;
+                console.log("Value---",this.value, this.selectedItemId);
                 // Wait for the update to complete before running your logic.
                 this.requestUpdate().then(() => {
+                    console.log("After request updated");
                     this.updateSelectedState();
                 });
             }
         }
-        
-        private updateSelectedState() {
-            const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
-            wrappers.forEach(wrapper => {
-                wrapper.classList.toggle('select', wrapper.id === this.selectedItemId);
-            });
-        }
-        
-        handleClick(event: Event) {
-            const clickedItem = this.findClickedItem(event);
-            if (clickedItem) {
-                this.clearSelectedState();
-                this.selectItem(clickedItem);
-                this.setSelected(clickedItem.id);
-            }
-        }
-        findClickedItem(event: Event): HTMLElement | undefined {
-            const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
-            const eventPath = event.composedPath();
-            return wrappers.find(wrapper => eventPath.includes(wrapper)) as HTMLElement | undefined;
-        }
 
-        clearSelectedState() {
-            const wrappers = Array.from(this.shadowRoot?.querySelectorAll('.default-wrapper') || []);
-            wrappers.forEach(wrapper => {
-                wrapper.classList.remove('select');
-                wrapper.removeAttribute('selected');
-            });
-        }
 
-        selectItem(item: HTMLElement) {
-            item.classList.add('select');
-            item.setAttribute('selected', 'true');
-        }
 
-        setSelected(newId: string) {
-            if (this.selectedItemId !== newId) {
-                this.selectedItemId = newId;
-                this.requestUpdate();
-                this.notifySelectedChange();
-            }
-        }
 
-        notifySelectedChange() {
-            this.dispatchEvent(new CustomEvent("list-item-change", {
-                detail: { selected: this.selectedItemId },
-                bubbles: true,
-                composed: true,
-            }));
-        }
+    
+    getVisibleElementById = (id: string) => {
+      // Get all elements with the specified ID
+      const elements: NodeListOf<HTMLElement> | undefined = this.shadowRoot?.querySelector(`.virtual-scroll`)?.querySelectorAll(`#${id}`);
 
-        renderItem(item: any, index: number) {
-            return html`
-                <div class="default-wrapper"  aria-label=${item.name} id="${item.id}" index="${index}">
-                    ${item.template(item, index)} 
-                </div>
-            `;
+      // Iterate over the elements and return the first one that is not hidden
+      if (elements) {
+        for (let element of elements) {
+          if (window.getComputedStyle(element).display !== "none") {
+            return element;
+          }
         }
+      }
 
-        render() {
-            return html`
-                <div class="md-advance-list-wrapper" tabindex="0" aria-label=${this.ariaLabelList} role=${this.ariaRoleList} @rangechange=${this.handleRangeChange}>
-                    ${scroll({
-                        items: this.items,
-                        renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
-                        useShadowDOM: true,
-                    })}
-                </div>
-                ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : ''}
-            `;
-        }
+      // If no visible element is found, return null
+      return null;
+    };
 
-        handleRangeChange(e: any) {
-            this.handleScroll()
-            const { last } = e;
-            if (last >= this.items.length - 1 && !this.isLoading && !this.isError) {
-                this.dispatchEvent(new CustomEvent('load-more', {
-                    detail: { page: this.page },
-                    bubbles: true,
-                    composed: true,
-                }));
-                this.page += 1;
-            }
-        }
+    findActiveItem = (activeId: string) => {
+        const activeItem: HTMLElement | null = this.getVisibleElementById(`item-${activeId}`);
+        const dispalyedActiveItem = activeItem?.offsetHeight !== 0 ? activeItem : null;
+        return dispalyedActiveItem;
     }
+
+    scrollToActiveItem() {
+      console.log("ActiveItem--", this.activeId);
+      
+        const activeItem: HTMLElement | null = this.getVisibleElementById(`item-${this.activeId}`);
+      
+      const dispalyedActiveItem = activeItem?.offsetHeight !== 0 ? activeItem : null;
+      console.log("ActiveItem1233--", activeItem, dispalyedActiveItem, this.cyclicIndex);
+      this.clearFocusedState();
+     
+      if (dispalyedActiveItem) {
+        this.focusItem(dispalyedActiveItem);
+      } 
+      return dispalyedActiveItem
+    }
+    private setFocusOnHost(force: boolean) {
+        if (this.setFocus) {
+          this.setFocus(force);
+        }
+      }
+
+    handleKeyDown(event: KeyboardEvent) {
+        console.log("HandleKeyDown---", event);
+        this.setFocusOnHost(true);
+      switch (event.key) {
+        case "ArrowDown": {
+            this.setFocusOnHost(true);
+            const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
+            console.log("CurrentIndex---", currentIndex);
+            if(currentIndex === this.totalRecords - 1){
+                this.activeId = this.items[0].id;
+                this.cyclicIndex = 0;
+            } else if (currentIndex < this.totalRecords - 1) {
+            this.activeId = this.items[currentIndex + 1].id;
+            console.log("ArrowDown ActiveId--", this.activeId);
+            this.activeItem = this.scrollToActiveItem();
+            console.log("ArrowDown ActiveItem--", this.activeItem);
+            this.cyclicIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "")
+            console.log("ArrowDown CyclicIndex--", this.cyclicIndex);
+          } else {
+
+          }
+        }
+          break;
+        case "ArrowUp": {
+            this.setFocusOnHost(true);
+             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
+             console.log("CurrentIndex---", currentIndex);
+          if (currentIndex > 0) {
+            this.activeId = this.items[currentIndex - 1].id;
+            console.log("ArrowUP ActiveId--", this.activeId);
+            this.activeItem = this.scrollToActiveItem();
+            console.log("ArrowUP ActiveItem--", this.activeItem);
+            this.cyclicIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "") ?? 0
+            console.log("ArrowUP CyclicIndex--", this.cyclicIndex);
+          } else if(currentIndex === 0  && this.items.length === this.totalRecords){
+            this.activeId = this.items[this.totalRecords - 1].id;
+            this.cyclicIndex = this.items.length - 1;
+          }
+        }
+          break;
+        case "Enter":
+        const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
+          this.handleItemSelect(currentIndex);
+          break;
+        default:
+          break;
+      }
+    }
+
+    handleItemSelect(index: number) {
+      if (index >= 0 && index < this.items.length) {
+        const selectedItem = this.items[index];
+        console.log("Selected item:", selectedItem);
+        // You can dispatch an event or handle the selection as needed
+      }
+    }
+
+
+
+    private updateSelectedState() {
+      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
+      wrappers.forEach((wrapper) => {
+        wrapper.classList.toggle("select", wrapper.id === this.selectedItemId);
+
+      });
+    }
+
+
+
+    handleClick(event: Event) {
+      const clickedItem = this.findClickedItem(event);
+      event.preventDefault();
+      if (clickedItem) {
+        
+        this.clearSelectedState();
+        this.selectItem(clickedItem);
+        this.setSelected(clickedItem.id);
+        this.setFocusOnHost(true);
+        this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
+        this.scrollToActiveItem();
+        console.log("ActiveId---", this.activeId);
+        this.cyclicIndex = parseInt(clickedItem.getAttribute("index") || "0");
+        this.listContainer?.focus();
+        
+      }
+    }
+    findClickedItem(event: Event): HTMLElement | undefined {
+      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
+      const eventPath = event.composedPath();
+      return wrappers.find((wrapper) => eventPath.includes(wrapper)) as HTMLElement | undefined;
+    }
+
+    clearSelectedState() {
+      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
+      wrappers.forEach((wrapper) => {
+        wrapper.classList.remove("select");
+      });
+    }
+
+    clearFocusedState() {
+      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
+      wrappers.forEach((wrapper) => {
+        wrapper.classList.remove("focused");
+      });
+    }
+    focusItem(item: HTMLElement) {
+      item.classList.add("focused");
+    }
+
+    selectItem(item: HTMLElement) {
+      item.classList.add("select");
+    }
+
+    setSelected(newId: string) {
+      if (this.selectedItemId !== newId) {
+        console.log("Selected item id---", newId);
+        this.selectedItemId = newId;
+        this.requestUpdate();
+        this.notifySelectedChange();
+      }
+    }
+
+    notifySelectedChange() {
+      this.dispatchEvent(
+        new CustomEvent("list-item-change", {
+          detail: { selected: this.selectedItemId },
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
+
+    renderItem(item: any, index: number) {
+      console.log("Focused---", this.activeId, item, this.activeId === item.id);
+      return html`
+        <div class="default-wrapper" aria-label=${item.name} id="item-${item.id}" index="${index}">${item.template(item, index)}</div>
+      `;
+    }
+
+    render() {
+      return html`
+        <div
+        class="md-advance-list-wrapper virtual-scroll" tabindex="0" aria-label=${this.ariaLabelList} role=${this.ariaRoleList} @rangechange=${this.handleRangeChange}
+        >
+          ${scroll({
+            items: this.items,
+            renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
+            useShadowDOM: true,
+            scrollToIndex: {
+                index: this.cyclicIndex,
+                position: this.cyclicIndex === 0 ? "start" : "center"
+              }
+          })}
+        </div>
+        ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : ''}
+      `;
+    }
+
+    handleRangeChange = (e: any) => {
+      const { last, firstVisible } = e;
+      this.clearSelectedState();
+      this.updateSelectedState();
+      console.log("Handle RangeChange---", this.cyclicIndex);
+      this.scrollToActiveItem();
+      this.setFocusOnHost(true);
+      this.listContainer?.focus();
+      console.log("Total Length", last, this.totalRecords, this.items.length, this.activeItem);
+      if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading) {
+        this.isLoading = true;
+        this.cyclicIndex = last;
+        this.dispatchEvent(
+          new CustomEvent("load-more", {
+            detail: { page: this.page },
+            bubbles: true,
+            composed: true
+          })
+        );
+        this.page += 1;
+      }
+
+    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'md-advance-list': AdvanceList.ELEMENT;
-    }
+  interface HTMLElementTagNameMap {
+    "md-advance-list": AdvanceList.ELEMENT;
+  }
 }

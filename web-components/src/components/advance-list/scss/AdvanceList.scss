@@ -8,13 +8,15 @@
   }
 
 
-.default-wrapper {
-    box-sizing: border-box;
-    padding: 5px;
-    background: white;
-    cursor: pointer; 
+
+.virtual-scroll {
     width: 100%;
+    overflow-y: auto;
+    overflow-x:hidden;
+    position: relative;
 }
+
+
 
 slot.spin-loader{
     display: flex;
@@ -26,7 +28,26 @@ slot.spin-loader{
     background-color: var(--list-active-background, $md-advance-list-active-background-light);
     color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
 }
-
+.default-wrapper.focused {
+    padding-bottom: 0px !important;
+    border: 2px solid var(--md-default-focus-outline-color);
+}
+.default-wrapper {
+    &[focused] {
+        border: 2px solid var(--md-default-focus-outline-color);
+        
+      }
+   
+   
+}
+.default-wrapper {
+    padding: 5px;
+    background: white;
+    cursor: pointer; 
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 38px;
+}
 
 .default-wrapper:hover {
     background-color: var(--list-hover-background, $md-advance-list-hover-background-light);

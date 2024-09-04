@@ -7,8 +7,6 @@
     position: relative;
 }
 
-
-
 .virtual-scroll {
   width: 100%;
   overflow-y: auto;
@@ -24,7 +22,7 @@
   background-color: transparent;
 }
 
-slot.spin-loader{
+.spin-loader{
   display: flex;
   justify-content: center;
   width:100%;
@@ -41,10 +39,7 @@ slot.spin-loader{
 .default-wrapper {
   &[focused] {
       border: 2px solid var(--md-default-focus-outline-color);
-      
     }
- 
- 
 }
 .default-wrapper {
   padding: 5px;

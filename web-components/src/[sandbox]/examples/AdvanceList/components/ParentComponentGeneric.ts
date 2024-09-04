@@ -30,7 +30,7 @@ export namespace ParentComponentGeneric {
                 this.isLoading = true;
                 const newItems = await this.fetchItems(this.page);
                 this.items = [...this.items, ...newItems];
-                this.totalRecords = 60;
+                this.totalRecords = 600;
                 this.page += 1;
                 this.isLoading = false;
                 this.value = this.items[1].id;
@@ -80,9 +80,9 @@ export namespace ParentComponentGeneric {
           .totalRecords=${this.totalRecords}
           @list-item-change=${this.handleListItemChange}
           @load-more=${this.loadMoreItems}>
-        <md-spinner size="24" slot="spin-loader"></md-spinner>
-        </md-advance-list>
-        `;
+          <md-spinner size="24" slot="spin-loader"></md-spinner>
+          </md-advance-list>
+          `;
         }
 
         static get styles() {

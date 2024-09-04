@@ -40,6 +40,7 @@ export namespace AdvanceList {
     }
     connectedCallback(): void {
       super.connectedCallback();
+      this.hasSlottedContent();
       this.addEventListener("keydown", this.handleKeyDown);
       this.addEventListener("click", this.handleClick);
     }
@@ -262,6 +263,18 @@ export namespace AdvanceList {
       }
     }
 
+    hasSlottedContent() {
+        setTimeout(() => {
+            const spinLoaderSlot = this.querySelector('[slot="spin-loader"]');
+            if (spinLoaderSlot) {
+              this.hasSlotContent = true;
+              return true;
+            } else {
+              return false;
+            }
+        }, 50);
+    }
+
     notifySelectedChange() {
       this.dispatchEvent(
         new CustomEvent("list-item-change", {
@@ -300,8 +313,13 @@ export namespace AdvanceList {
             }
           })}
         </div>
-        ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : ""}
-      `;
+            ${this.isLoading ? 
+            (this.hasSlotContent ? 
+                html`<slot class="spin-loader" name="spin-loader"></slot>` : 
+                html`<div class="spin-loader"><md-spinner size="34"></md-spinner></div>`
+            ) : 
+            ''}     
+         `;
     }
 
     handleRangeChange = (e: any) => {

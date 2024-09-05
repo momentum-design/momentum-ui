@@ -7,9 +7,17 @@
     position: relative;
 }
 
+:host {
+    .virtual-scroll:focus-visible {
+      outline: none;
+    }
+  }
+  
+
 .virtual-scroll {
   width: 100%;
   overflow-y: auto;
+  height: 400px;
   overflow-x:hidden;
   position: relative;
 }

@@ -60,7 +60,7 @@ export namespace Tooltip {
       this.handleKeyDown(e);
     };
 
-    private _wheelListener = (e: Event) => { 
+    private _wheelListener = (e: Event) => {
       if (this.opened) {
         this.notifyTooltipDestroy();
       }

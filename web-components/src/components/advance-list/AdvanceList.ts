@@ -76,9 +76,11 @@ export namespace AdvanceList {
         if (wrapper.id === this.selectedItemId) {
           wrapper.classList.add("selected");
           wrapper.setAttribute("selected", "true");
+          wrapper.setAttribute("aria-selected", "true");
         } else {
           wrapper.classList.remove("selected");
           wrapper.removeAttribute("selected");
+          wrapper.setAttribute("aria-selected", "false");
         }
 
         if (childWithDisabled) {
@@ -103,15 +105,13 @@ export namespace AdvanceList {
           Array.from(clickedItem.children).some((child) => child.hasAttribute("disabled")) ||
           clickedItem.getAttribute("aria-disabled") === "true";
 
-        console.log("Disabled state:", isDisabled);
+          console.log("Disabled state:", isDisabled);
 
         if (isDisabled) {
           return 0; // Indicate that the item is disabled and stop execution
         }
-
         return clickedItem;
       }
-
       return undefined;
     }
 
@@ -291,7 +291,7 @@ export namespace AdvanceList {
     renderItem(item: any, index: number) {
       console.log("Focused---", this.activeId, item, this.activeId === item.id);
       return html`
-        <div class="default-wrapper" aria-label=${item.name} id="item-${item.id}" index="${index}">
+        <div class="default-wrapper"  aria-live="assertive" aria-setsize="${this.totalRecords}" aria-posinset="${index + 1}" role="option" aria-label=${item.name} id="item-${item.id}" index="${index}">
           ${item.template(item, index)}
         </div>
       `;
@@ -302,6 +302,7 @@ export namespace AdvanceList {
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
+          aria-activedescendant=${this.activeId ? `item-${this.activeId}` : `item-${this.items[0].id}`}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}

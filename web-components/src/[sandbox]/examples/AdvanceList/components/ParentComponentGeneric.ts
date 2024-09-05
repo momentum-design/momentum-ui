@@ -55,7 +55,7 @@ export namespace ParentComponentGeneric {
                 id: crypto.randomUUID(),
                 index: i,
                 ariaLabel : `Item ${(page - 1) * 20 + i + 1}`,
-                template: (data: any, index: number) => html`<div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" ?disabled="${index % 2 === 0}" indexing="${index}" >${data.name}</div>`
+                template: (data: any, index: number) => html`<div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" ?disabled="${index % 2 === 0}" aria-hidden="true" indexing="${index}" >${data.name}</div>`
                 
             }));
             return newItems;

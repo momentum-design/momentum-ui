@@ -835,7 +835,7 @@ export namespace Dropdown {
                     part="dropdown-input"
                     aria-expanded=${this.expanded}
                     placeholder=${this.placeholder}
-                    aria-controls="md-combobox-listbox"
+                    aria-controls="md-dropdown-list"
                     ?readonly=${this.readOnly}
                     ?disabled=${this.disabled}
                     ?autofocus=${this.autofocus}

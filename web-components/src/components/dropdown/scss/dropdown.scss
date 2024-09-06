@@ -352,6 +352,8 @@
     &-label {
       background-color: transparent;
       border-color: var(--dropdown-bg-color-disabled);
+      outline: none !important;
+      box-shadow: none;
 
       &--text {
         color: var(--dropdown-bg-color-disabled);
@@ -367,10 +369,13 @@
       &:active {
         background-color: transparent;
         pointer-events: none;
+        outline: none !important;
+        box-shadow: none;
       }
       &:focus-visible {
         border-color: var(--dropdown-bg-color-disabled);
-        outline: none;
+        outline: none !important;
+        box-shadow: none;
       }
     }
   }
@@ -414,13 +419,31 @@
         }
       }
     }
+    .group {
+      input {
+        color: HighlightText;
+      }
+      ::input-placeholder {
+        color: GrayText;
+      }
+    }
   }
 
   :host([disabled]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 1px solid GrayText;
+        border: 1px solid GrayText !important;
+      }
+    }
+    .group,
+    .group:active {
+      border: 1px solid GrayText !important;
+      outline: none !important;
+      input {
         color: GrayText;
+      }
+      ::input-placeholder {
+        color: HighlightText !important;
       }
     }
   }

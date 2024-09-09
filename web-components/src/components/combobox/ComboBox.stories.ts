@@ -39,6 +39,7 @@ export const Combobox = () => {
   const customContentInit = boolean("Multi Custom Content InitialValue", false);
   const ariaLabel = text("aria-label", "Select the country");
   const searchSpecificAriaLabel = text("aria-label", "Select the country, {{count}} results found");
+  const newMomentum = boolean("newMomentum", true);
 
   if (init) {
     return html`
@@ -51,6 +52,7 @@ export const Combobox = () => {
           .value=${[comboBoxOptions[3]]}
           ariaLabel=${ariaLabel}
           search-result-aria-label=${searchSpecificAriaLabel}
+          ?newMomentum="${newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
@@ -68,6 +70,7 @@ export const Combobox = () => {
           .options=${comboBoxOptions}
           .is-multi=${multi}
           allow-custom-value
+          ?newMomentum="${newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
@@ -79,6 +82,7 @@ export const Combobox = () => {
           .options=${comboBoxOptions}
           is-multi
           .value=${[comboBoxOptions[3], comboBoxOptions[5]]}
+          ?newMomentum="${newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
@@ -91,6 +95,7 @@ export const Combobox = () => {
           option-id="id"
           option-value="country"
           .is-multi=${multi}
+          ?newMomentum="${newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
@@ -105,13 +110,14 @@ export const Combobox = () => {
           .is-multi=${multi}
           .value=${[comboBoxObjectOptions[4]]}
           ?search-trim-space=${trimSpace}
+          ?newMomentum="${newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
   } else if (customContent) {
     return html`
       <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-combobox with-custom-content .is-multi=${multi}>
+        <md-combobox with-custom-content .is-multi=${multi} ?newMomentum="${newMomentum}">
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
             <md-icon name="icon-facebook_16"></md-icon>
@@ -134,7 +140,12 @@ export const Combobox = () => {
   } else if (customContentInit) {
     return html`
       <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-combobox with-custom-content is-multi .value=${[{ id: "Wikipedia", value: "Wikipedia" }]}>
+        <md-combobox
+          with-custom-content
+          is-multi
+          .value=${[{ id: "Wikipedia", value: "Wikipedia" }]}
+          ?newMomentum="${newMomentum}"
+        >
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
             <md-icon name="icon-facebook_16"></md-icon>
@@ -162,6 +173,7 @@ export const Combobox = () => {
           placeholder=${placeholder}
           ?disabled=${disabled}
           ?search-trim-space=${trimSpace}
+          ?newMomentum="${newMomentum}"
         ></md-combobox>
       </md-theme>
     `;

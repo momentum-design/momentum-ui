@@ -163,6 +163,28 @@ export const dropdownTemplate = html`
       }}"
     ></md-dropdown>
   </div>
+  <h3>Dropdown Icon Searchable</h3>
+  <md-dropdown
+    .options="${dropdownStringOptions}"
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+      console.log("[Strings Options] Selected: ", e.detail);
+    }}"
+    left-icon="search-bold"
+    helpText="This is help text"
+    searchable
+  ></md-dropdown>
+  <h3>Dropdown Icon Searchable Disabled</h3>
+  <md-dropdown
+    .options="${dropdownStringOptions}"
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+      console.log("[Strings Options] Selected: ", e.detail);
+    }}"
+    left-icon="search-bold"
+    helpText="This is help text"
+    searchable
+    disabled
+  ></md-dropdown>
+  <br />
   <h3>Dropdown Default (New Momentum)</h3>
   <md-dropdown
     .options="${dropdownStringOptions}"
@@ -201,6 +223,7 @@ export const dropdownTemplate = html`
     disabled
     searchable
     newMomentum
+    left-icon="search-bold"
   ></md-dropdown>
   <h3>Dropdown Searchable ReadOnly (New Momentum)</h3>
   <md-dropdown .options="${dropdownStringOptions}" readOnly searchable newMomentum></md-dropdown>

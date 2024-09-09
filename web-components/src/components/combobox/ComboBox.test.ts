@@ -1418,7 +1418,7 @@ describe("Combobox Component", () => {
     await nextFrame();
     groupList![0]!.dispatchEvent(end);
     groupList![0]!.dispatchEvent(escape);
-  });
+  }, 2000);
 
   describe("Combobox with virtual scroll", () => {
     test("should handle keyUp event", async () => {

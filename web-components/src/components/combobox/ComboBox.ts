@@ -1396,7 +1396,13 @@ export namespace ComboBox {
 
     searchIconTemplate() {
       return html`
-        <md-icon name="search-bold" class="search-icon" size="16" iconSet="momentumDesign" @click=${this.toggleVisualListBox}></md-icon>
+        <md-icon
+          name="search-bold"
+          class="search-icon"
+          size="16"
+          iconSet="momentumDesign"
+          @click=${this.toggleVisualListBox}
+        ></md-icon>
       `;
     }
 
@@ -1721,8 +1727,14 @@ export namespace ComboBox {
               ? nothing
               : this.shouldChangeButton()
                 ? this.clearButtonTemplate()
-                : this.arrowButtonTemplate()}
+                : !this.newMomentum
+                  ? this.arrowButtonTemplate()
+                  : nothing}
+            ${this.newMomentum
+              ? html` <div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div> `
+              : nothing}
           </div>
+
           ${this.showLoader || this.showCustomError
             ? html`
                 <div
@@ -1796,7 +1808,6 @@ export namespace ComboBox {
             `
           : nothing}
         ${this.messagesTemplate()} ${this.helpTextTemplate()}
-
       `;
     }
   }

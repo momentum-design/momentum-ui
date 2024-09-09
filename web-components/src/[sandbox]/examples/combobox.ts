@@ -98,7 +98,7 @@ export const comboBoxTemplate = html`
   <md-combobox
     .options=${comboBoxOptions}
     .value=${[comboBoxOptions[5]]}
-    htmlId="comboBoxError"
+    htmlId="comboBoxSuccess"
     .messageArr=${[{ ...messageArr } as ComboBox.Message]}
     placeholder="Enter Text"
     newMomentum
@@ -107,7 +107,7 @@ export const comboBoxTemplate = html`
   <md-combobox
     .options=${comboBoxOptions}
     .value=${[comboBoxOptions[5]]}
-    htmlId="comboBoxError"
+    htmlId="comboBoxWarning"
     .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as ComboBox.Message]}
     placeholder="Enter Text"
     newMomentum

@@ -36,11 +36,11 @@ export namespace HelpText {
         case "success":
           return "check-circle-badge-filled";
         case "error":
-          return "clear-filled";
+          return "error-legacy-badge-filled";
         case "warning":
-          return "warning-filled";
+          return "warning-badge-filled";
         case "priority":
-          return "priority-badge-filled";
+          return "info-badge-filled";
         default:
           return "";
       }

@@ -27,9 +27,9 @@
 }
   
 @mixin badge-style(
-  $bg: var(--badge-default-bg-color, $lm-badge-default-bg-color-light),
+  $bg: var(--badge-default-bg-color),
   $radius: false,
-  $color: var(--badge-default-text-color, $lm-badge-default-text-color-light)
+  $color: var(--badge-default-text-color)
 ) {
   @if $bg {
     background-color: $bg;

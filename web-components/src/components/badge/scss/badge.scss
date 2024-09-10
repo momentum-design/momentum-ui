@@ -35,73 +35,73 @@
     }
 
     &--outline {
-      @include badge-outline-style(var(--badge-outline-color, $lm-badge-outline-color-light), false, transparent);
+      @include badge-outline-style(var(--badge-outline-color), false, transparent);
       border: 1px solid;
       min-width: auto;
     }
 
     &--gray {
       @include badge-style(
-        var(--badge-gray-bg-color, $lm-badge-gray-bg-color-light),
+        var(--badge-gray-bg-color),
         false,
-        var(--badge-gray-text-color, $lm-badge-gray-text-color-light)
+        var(--badge-gray-text-color)
       );
     }
 
     &--gold {
       @include badge-style(
-        var(--badge-gold-bg-color, $lm-badge-gold-bg-color-light),
+        var(--badge-gold-bg-color),
         false,
-        var(--badge-gold-text-color, $lm-badge-gold-text-color-light)
+        var(--badge-gold-text-color)
       );
     }
 
     &--lime {
       @include badge-style(
-        var(--badge-lime-bg-color, $lm-badge-lime-bg-color-light),
+        var(--badge-lime-bg-color),
         false,
-        var(--badge-lime-text-color, $lm-badge-lime-text-color-light)
+        var(--badge-lime-text-color)
       );
     }
 
     &--blue,
     &--cobalt {
       @include badge-style(
-        var(--badge-blue-bg-color, $lm-badge-blue-bg-color-light),
+        var(--badge-blue-bg-color),
         false,
-        var(--badge-blue-text-color, $lm-badge-blue-text-color-light)
+        var(--badge-blue-text-color)
       );
     }
 
     &--mint {
       @include badge-style(
-        var(--badge-mint-bg-color, $lm-badge-mint-bg-color-light),
+        var(--badge-mint-bg-color),
         false,
-        var(--badge-mint-text-color, $lm-badge-mint-text-color-light)
+        var(--badge-mint-text-color)
       );
     }
 
     &--darkmint {
       @include badge-style(
-        var(--badge-darkmint-bg-color, $lm-badge-darkmint-bg-color-light),
+        var(--badge-darkmint-bg-color),
         false,
-        var(--badge-darkmint-text-color, $lm-badge-darkmint-text-color-light)
+        var(--badge-darkmint-text-color)
       );
     }
 
     &--green {
       @include badge-style(
-        var(--badge-green-bg-color, $lm-badge-green-bg-color-light),
+        var(--badge-green-bg-color),
         false,
-        var(--badge-green-text-color, $lm-badge-green-text-color-light)
+        var(--badge-green-text-color)
       );
     }
 
     &--yellow {
       @include badge-style(
-        var(--badge-yellow-bg-color, $lm-badge-yellow-bg-color-light),
+        var(--badge-yellow-bg-color),
         false,
-        var(--badge-yellow-text-color, $lm-badge-yellow-text-color-light)
+        var(--badge-yellow-text-color)
       );
     }
 
@@ -109,15 +109,15 @@
       @include badge-style(
         var(--badge-red-bg-color),
         false,
-        var(--badge-red-text-color, $lm-badge-red-text-color-light)
+        var(--badge-red-text-color)
       );
     }
 
     &--darkred {
       @include badge-style(
-        var(--badge-darkred-bg-color, $lm-badge-darkmint-bg-color-light),
+        var(--badge-darkred-bg-color),
         false,
-        var(--badge-darkred-text-color, $lm-badge-darkred-text-color-light)
+        var(--badge-darkred-text-color)
       );
     }
 
@@ -138,61 +138,61 @@
 
     &--orange {
       @include badge-style(
-        var(--badge-orange-bg-color, $lm-badge-orange-bg-color-light),
+        var(--badge-orange-bg-color),
         false,
-        var(--badge-orange-text-color, $lm-badge-orange-text-color-light)
+        var(--badge-orange-text-color)
       );
     }
 
     &--purple {
       @include badge-style(
-        var(--badge-purple-bg-color, $lm-badge-purple-bg-color-light),
+        var(--badge-purple-bg-color),
         false,
-        var(--badge-purple-text-color, $lm-badge-purple-text-color-light)
+        var(--badge-purple-text-color)
       );
     }
 
     &--violet {
       @include badge-style(
-        var(--badge-violet-bg-color, $lm-badge-violet-bg-color-light),
+        var(--badge-violet-bg-color),
         false,
-        var(--badge-violet-text-color, $lm-badge-violet-text-color-light)
+        var(--badge-violet-text-color)
       );
     }
 
     &--cyan {
       @include badge-style(
-        var(--badge-cyan-bg-color, $lm-badge-cyan-bg-color-light),
+        var(--badge-cyan-bg-color),
         false,
-        var(--badge-cyan-text-color, $lm-badge-cyan-text-color-light)
+        var(--badge-cyan-text-color)
       );
     }
 
     &--pink {
       @include badge-style(
-        var(--badge-pink-bg-color, $lm-badge-pink-bg-color-light),
+        var(--badge-pink-bg-color),
         false,
-        var(--badge-pink-text-color, $lm-badge-pink-text-color-light)
+        var(--badge-pink-text-color)
       );
     }
 
     &--hold {
       @include badge-style(
-        var(--badge-hold-bg-color, $lm-badge-hold-bg-color-light),
+        var(--badge-hold-bg-color),
         false,
-        var(--badge-hold-text-color, $lm-badge-hold-text-color-light)
+        var(--badge-hold-text-color)
       );
     }
 
     &--disabled {
       @include badge-style(
-        var(--md-quaternary-two-bg-color, $lm-badge-disabled-bg-color-light),
+        var(--md-quaternary-two-bg-color),
         false,
-        var(--md-disabled-text-color, $lm-badge-disabled-text-color-light)
+        var(--md-disabled-text-color)
       );
 
       ::slotted(md-icon) {
-        color: var(--md-disabled-text-color, $lm-badge-disabled-text-color-light);
+        color: var(--md-disabled-text-color);
       }
     }
   }

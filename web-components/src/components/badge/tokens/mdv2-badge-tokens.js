@@ -323,6 +323,69 @@ const badge = {
       light: colors.gray[40].name,
       dark: colors.gray[70].name
     }
+  },
+  positive: {
+    "bg-color": {
+      common: "$mds-color-theme-background-alert-success-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-text-success-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-success-hover"
+      }
+    },
+    active: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-success-active"
+      }
+    }
+  },
+  negative: {
+    "bg-color": {
+      common: "$mds-color-theme-background-alert-error-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-text-error-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-error-hover"
+      }
+    },
+    active: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-error-active"
+      }
+    }
+  },
+  neutral: {
+    "bg-color": {
+      common: "$mds-color-theme-background-alert-default-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-button-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-default-hover"
+      }
+    },
+    active: {
+      "bg-color": {
+        common: "$mds-color-theme-background-alert-default-active"
+      }
+    }
   }
 };
 

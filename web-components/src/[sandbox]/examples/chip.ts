@@ -95,4 +95,14 @@ export const chipTemplate = html`
     <md-chip value="developer@cisco.ninja" slot="list-item" id="Chip4"></md-chip>
     <md-chip value="developer@cisco.ninja" slot="list-item" id="Chip5"></md-chip>
   </ul>
+  <h3 class="sandbox-header">sentiment chip</h3>
+  <md-chip value="- % #" color="positive" small>
+    <md-icon name="emoji-happy-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="- % #" color="negative" small>
+    <md-icon name="emoji-unhappy-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="- % #" color="neutral" small>
+    <md-icon name="emoji-passive-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
 `;

@@ -24,15 +24,15 @@ describe("TextHelper component", () => {
   test("should render correct icon type depend on message type", async () => {
     element.messageType = "error";
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("clear-filled");
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("error-legacy-badge-filled");
     element.messageType = "success";
     await elementUpdated(element);
     expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("check-circle-badge-filled");
     element.messageType = "warning";
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("warning-filled");
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("warning-badge-filled");
     element.messageType = "priority";
     await elementUpdated(element);
-    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("priority-badge-filled");
+    expect(element.shadowRoot!.querySelector("md-icon")!.getAttribute("name")).toEqual("info-badge-filled");
   });
 });

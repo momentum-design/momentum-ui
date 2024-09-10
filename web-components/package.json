@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.13.18",
+  "version": "2.13.19",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -60,8 +60,8 @@
     "@interactjs/interact": "1.10.3",
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
-    "@momentum-design/icons": "0.0.160",
-    "@momentum-design/tokens": "0.0.84",
+    "@momentum-design/icons": "0.0.161",
+    "@momentum-design/tokens": "0.0.91",
     "@popperjs/core": "^2.4.4",
     "country-codes-list": "1.6.8",
     "country-flags-svg": "1.1.4",

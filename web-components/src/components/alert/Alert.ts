@@ -101,7 +101,7 @@ export namespace Alert {
               name="chat-bold"
               size="${!this.newMomentum ? 32 : 24}"
               iconSet="momentumDesign"
-              color="var(--alert-title-text-color, $lm-alert-title-text-color-light)"
+              color="var(--alert-title-text-color)"
             ></md-icon>
           `;
         case "loading":

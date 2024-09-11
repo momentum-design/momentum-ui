@@ -8,7 +8,7 @@
 .md-alert {
   @include flex($jc: space-between, $ai: flex-start);
   @include border-radius($alert__border-radius);
-  background-color: var(--alert-default-bg-color, $lm-alert-default-bg-color-light);
+  background-color: var(--alert-default-bg-color);
   border: 1px solid var(--alert-default-border-color, $black-12);
   box-shadow: 0 8px 16px 0 $black-08;
   flex: 1 1 100%;
@@ -40,7 +40,7 @@
   &__title {
     @include line-dots(2);
     text-overflow: ellipsis;
-    color: var(--alert-title-text-color, $lm-alert-title-text-color-light);
+    color: var(--alert-title-text-color);
     font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
     line-height: rem-calc(24);
     width: calc(100%);
@@ -48,7 +48,7 @@
 
   &__message {
     @include line-dots(2);
-    color: var(--alert-default-text-color, $lm-alert-default-text-color-light);
+    color: var(--alert-default-text-color);
     font-family: $brand-font-light;
     font-size: $alert__font-size;
     line-height: 1.35;
@@ -61,7 +61,7 @@
     align-self: center;
     md-button::part(button) {
       align-items: center;
-      background-color: var(--alert-close-bg-color, $lm-alert-close-bg-color-light);
+      background-color: var(--alert-close-bg-color);
       border-radius: 50%;
       display: inline-flex;
       height: var(--alert-close-size, $lm-alert-close-size-light);
@@ -118,7 +118,7 @@
   &__title {
     @include line-dots(2);
     text-overflow: ellipsis;
-    color: var(--alert-title-text-color, $lm-alert-title-text-color-light);
+    color: var(--alert-title-text-color);
     font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
     line-height: rem-calc(24);
     width: calc(100%);
@@ -126,7 +126,7 @@
 
   &__message {
     @include line-dots(3);
-    color: var(--alert-title-text-color, $lm-alert-title-text-color-light);
+    color: var(--alert-title-text-color);
     font-family: $brand-font-light;
     font-size: $alert__font-size;
     line-height: 1.35;
@@ -144,7 +144,7 @@
     margin-left: rem-calc(2);
     md-button::part(button) {
       align-items: center;
-      background-color: var(--alert-close-bg-color, $lm-alert-close-bg-color-light);
+      background-color: var(--alert-close-bg-color);
       border-radius: 50%;
       display: inline-flex;
       height: var(--alert-close-size, $lm-alert-close-size-light);

@@ -92,4 +92,21 @@ export const alertTemplate = html`
     <span slot="alert-body"><b>Username</b> joined the session</span></md-alert
   >
   <md-alert type="loading" title="Connecting" closable show newMomentum></md-alert>
+  <md-alert
+    title="Ready to pause and recharge?"
+    message="Hey there, you're on a roll. How about a wellness break? This break is pre-approved by your organization for your well-being. You deserve it."
+    primaryButton="Take a Break"
+    secondaryButton="Later"
+    closable
+    show
+    newMomentum
+  >
+    <img
+      slot="alert-icon"
+      alt="avatar"
+      src="https://help.webex.com/images/ciscoAiLogo.png"
+      height="24"
+      width="24"
+    ></img>
+  </md-alert>
 `;

@@ -13,6 +13,7 @@ export const badgeColor = ["default", "blue", "red", "yellow", "green", "mint"];
 export const BarFormat = ["none", "fraction", "percentage"];
 export const BarType = ["determinate", "indeterminate"];
 export const coachPlacement = ["auto", "left", "right", "top", "bottom"];
+export const chipColor = [...badgeColor, "positive", "negative", "neutral"];
 
 export const TooltipDirection = ["top", "left", "right", "bottom"];
 

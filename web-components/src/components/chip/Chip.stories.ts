@@ -9,7 +9,7 @@
 import "@/components/chip/Chip";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { badgeColor, BarType, iconColorSample, iconSamples } from "@/utils/enums";
+import { BarType, chipColor, iconColorSample, iconSamples } from "@/utils/enums";
 import { boolean, number, select, text } from "@storybook/addon-knobs";
 import { html } from "lit-html";
 
@@ -26,7 +26,7 @@ export default {
 export const Chip = () => {
   const darkTheme = boolean("darkMode", false);
   const theme = select("Theme name", ThemeNameValues, "lumos");
-  const color = select("Color", badgeColor, "blue");
+  const color = select("Color", chipColor, "blue");
   const bgColor = text("BG Color Overrides", "blue");
   const textColor = text("Text Color Override", "white");
   const height = text("Height Override", "");

@@ -59,11 +59,11 @@ const input = {
         common: "$mds-color-theme-outline-input-normal"
       },
       "focus-border-color": {
-          common: "$mds-color-theme-outline-input-active"
+        common: "$mds-color-theme-outline-input-active"
       },
       "disabled-color": {
-          common: "$mds-color-theme-button-primary-disabled"
-      },
+        common: "$mds-color-theme-button-primary-disabled"
+      }
     }
   },
   disabled: {

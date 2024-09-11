@@ -189,10 +189,24 @@ export const inputTemplate = html`
     </div>
     <div class="row">
       <div class="column">
-        <md-input label="Read Only" value="Read Only" readonly containerSize="small-12" helpText="Help Text" newMomentum></md-input>
+        <md-input
+          label="Read Only"
+          value="Read Only"
+          readonly
+          containerSize="small-12"
+          helpText="Help Text"
+          newMomentum
+        ></md-input>
       </div>
       <div class="column">
-        <md-input label="Disabled" value="Disabled" disabled containerSize="small-12" newMomentum helpText="Help Text"></md-input>
+        <md-input
+          label="Disabled"
+          value="Disabled"
+          disabled
+          containerSize="small-12"
+          newMomentum
+          helpText="Help Text"
+        ></md-input>
       </div>
     </div>
     <div class="row">

@@ -383,7 +383,7 @@ export namespace TableAdvanced {
 
     private selectRow(p: { row: Row; shiftKey: boolean; metaKey: boolean }) {
       const i = p.row.idx;
-      const isSelected = this.selected.hasOwnProperty(i);
+      const isSelected = Object.prototype.hasOwnProperty.call(this.selected, i);
       if (this.tableConfig.rows?.selectable == "multiple") {
         if (p.metaKey) {
           if (isSelected) {
@@ -826,7 +826,7 @@ export namespace TableAdvanced {
     }
 
     private renderRow(row: Row, rowsLen: number) {
-      const isSelected = this.selected.hasOwnProperty(row.idx);
+      const isSelected = Object.prototype.hasOwnProperty.call(this.selected, row.idx);
       const rowStyles = classMap({
         selected: isSelected,
         selectable: this.isSelectable && !isSelected,

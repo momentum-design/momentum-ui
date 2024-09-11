@@ -8,7 +8,7 @@
 .md-alert {
   @include flex($jc: space-between, $ai: flex-start);
   @include border-radius($alert__border-radius);
-  background-color: var(--alert-default-bg-color, $lm-alert-default-bg-color-light);
+  background-color: var(--alert-default-bg-color);
   border: 1px solid var(--alert-default-border-color, $black-12);
   box-shadow: 0 8px 16px 0 $black-08;
   flex: 1 1 100%;
@@ -40,7 +40,7 @@
   &__title {
     @include line-dots(2);
     text-overflow: ellipsis;
-    color: var(--alert-title-text-color, $lm-alert-title-text-color-light);
+    color: var(--alert-title-text-color);
     font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
     line-height: rem-calc(24);
     width: calc(100%);
@@ -48,7 +48,7 @@
 
   &__message {
     @include line-dots(2);
-    color: var(--alert-default-text-color, $lm-alert-default-text-color-light);
+    color: var(--alert-default-text-color);
     font-family: $brand-font-light;
     font-size: $alert__font-size;
     line-height: 1.35;
@@ -56,13 +56,12 @@
     word-wrap: break-word;
   }
 
-
   &__button {
     margin-left: rem-calc(4);
     align-self: center;
     md-button::part(button) {
       align-items: center;
-      background-color: var(--alert-close-bg-color, $lm-alert-close-bg-color-light);
+      background-color: var(--alert-close-bg-color);
       border-radius: 50%;
       display: inline-flex;
       height: var(--alert-close-size, $lm-alert-close-size-light);
@@ -72,6 +71,112 @@
 
     md-icon::part(icon) {
       color: $alert__close-icon-color;
+    }
+  }
+
+  &.md-alert__inline {
+    border: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+}
+
+.md-new-alert {
+  @include border-radius($alert_new_border-radius);
+  background-color: var(--alert-default-bg-color);
+  border: 1px solid var(--alert-default-new-border-color, $black-12);
+  box-shadow: 0 24px 48px 0 var(--alert-default-border-color, $black-12);
+  flex: 1 1 100%;
+  margin-bottom: rem-calc(8);
+  max-height: rem-calc(220);
+  max-width: $alert_new-width;
+  min-height: rem-calc(56);
+  padding: rem-calc(16);
+  flex-direction: column;
+
+  &__body {
+    @include flex($jc: space-between, $ai: flex-start);
+    width: 100%;
+  }
+
+  &__icon {
+    md-icon::part(icon) {
+      font-size: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
+      line-height: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-basis: 0;
+    flex-direction: column;
+    flex-grow: 2;
+    max-width: $alert_new_content-width;
+    align-self: center;
+  }
+
+  &__title {
+    @include line-dots(2);
+    text-overflow: ellipsis;
+    color: var(--alert-title-text-color);
+    font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
+    line-height: rem-calc(24);
+    width: calc(100%);
+  }
+
+  &__message {
+    @include line-dots(5);
+    color: var(--alert-title-text-color);
+    font-family: $brand-font-light;
+    font-size: $alert__font-size;
+    line-height: 1.25rem;
+    width: calc(100%);
+    word-wrap: break-word;
+    margin-top: rem-calc(4);
+
+    md-link::part(link) {
+      font-size: $alert__font-size;
+      color: var(--md-hyperlink-text-color);
+    }
+  }
+
+  &__button {
+    margin-left: rem-calc(2);
+    md-button::part(button) {
+      align-items: center;
+      background-color: var(--alert-close-bg-color);
+      border-radius: 50%;
+      display: inline-flex;
+      height: var(--alert-close-size, $lm-alert-close-size-light);
+      justify-content: center;
+      width: var(--alert-close-size, $lm-alert-close-size-light);
+      margin-top: rem-calc(3);
+    }
+
+    md-icon::part(icon) {
+      color: $alert__close-icon-color;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: end;
+    margin-top: rem-calc(16);
+    width: 100%;
+
+    md-button:not(:first-child) {
+      margin-left: rem-calc(8);
+    }
+  }
+
+  &__link {
+    margin-top: rem-calc(4);
+    display: flex;
+    justify-content: center;
+    font-family: $brand-font-light;
+
+    md-icon {
+      margin-left: rem-calc(8);
     }
   }
 
@@ -95,7 +200,7 @@
         color: CanvasText;
       }
     }
-    .md-badge{
+    .md-badge {
       // forced-color-adjust: none;
       background-color: inherit;
     }

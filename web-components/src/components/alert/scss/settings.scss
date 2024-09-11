@@ -6,7 +6,7 @@
 $alert__class: "md-alert";
 $alert__border-radius: rem-calc(5);
 
-$alert__font-size: var(--body-secondary-font-size ,rem-calc(14)) !default;
+$alert__font-size: var(--body-secondary-font-size, rem-calc(14)) !default;
 $alert__font-size--title: var(--body-primary-font-size, rem-calc(16)) !default;
 $alert__icon-font-size: rem-calc(44) !default;
 $alert__close-icon-color: var(--alert-close-text-color, $lm-alert-close-text-color-light);
@@ -35,3 +35,7 @@ $alert__padding-bottom--call: rem-calc(25);
 
 $alert__width: rem-calc(368);
 $alert__content_width: rem-calc(272);
+
+$alert_new_border-radius: rem-calc(8);
+$alert_new-width: rem-calc(340);
+$alert_new_content-width: rem-calc(244);

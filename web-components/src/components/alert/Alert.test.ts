@@ -69,7 +69,7 @@ describe("Alert", () => {
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("check-circle-regular");
+    expect(type?.getAttribute("name")).toEqual("check-circle-bold");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-success-text-color, green)");
   });
 
@@ -95,7 +95,7 @@ describe("Alert", () => {
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("warning-regular");
+    expect(type?.getAttribute("name")).toEqual("error-legacy-bold");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-error-text-color, red)");
   });
 
@@ -108,7 +108,7 @@ describe("Alert", () => {
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("warning-regular");
+    expect(type?.getAttribute("name")).toEqual("warning-bold");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
@@ -121,7 +121,7 @@ describe("Alert", () => {
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("warning-regular");
+    expect(type?.getAttribute("name")).toEqual("warning-bold");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-warning-text-color, orange)");
   });
 
@@ -146,5 +146,98 @@ describe("Alert", () => {
 
     mockClick.mockRestore();
     expect(element.show).toBeFalsy();
+  });
+});
+
+describe("New Alert", () => {
+  afterEach(fixtureCleanup);
+  test("Alert component is not null", async () => {
+    const alert = await fixture(`<md-alert newMomentum></md-alert>`);
+    expect(alert).not.toBeNull();
+  });
+
+  test("should render an New Momentum Alert component", async () => {
+    const el = await fixture(html` <md-alert newMomentum show></md-alert> `);
+
+    expect(el.shadowRoot!.querySelector(".md-new-alert")).not.toBeNull();
+  });
+
+  test("should render message Alert", async () => {
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="message" show newMomentum></md-alert> `);
+
+    const alertElement = await element.shadowRoot!.querySelector(".md-new-alert");
+    const expectedClassList = ["md-new-alert", "md-alert--message"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
+
+    const type = element.shadowRoot?.querySelector(".md-new-alert__icon md-icon");
+    expect(type?.getAttribute("name")).toEqual("chat-bold");
+    expect(type?.getAttribute("color")).toEqual("var(--alert-title-text-color, $lm-alert-title-text-color-light)");
+  });
+
+  test("should render loading Alert", async () => {
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert type="loading" show newMomentum></md-alert> `);
+
+    const alertElement = await element.shadowRoot!.querySelector(".md-new-alert");
+    const expectedClassList = ["md-new-alert", "md-alert--loading"];
+    expect(alertElement?.classList.length).toEqual(expectedClassList.length);
+    expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
+
+    const type = element.shadowRoot?.querySelector(".md-new-alert__icon md-spinner");
+    expect(type).not.toBeNull();
+  });
+
+  test("should render close button & icon when closable prop is true", async () => {
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show closable newMomentum></md-alert> `);
+
+    const buttomElements = element.shadowRoot!.querySelectorAll(".md-new-alert__button md-button");
+    expect(buttomElements.length).toEqual(1);
+
+    const iconElement = await element.shadowRoot!.querySelector(".md-new-alert__button md-button md-icon");
+    expect(iconElement?.getAttribute("name")).toEqual("cancel-bold");
+  });
+
+  test("should handle close button Click event", async () => {
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show closable newMomentum></md-alert> `);
+
+    const mockClick = jest.spyOn(element, "close");
+    element.close();
+    await elementUpdated(element);
+
+    expect(mockClick).toHaveBeenCalled();
+
+    mockClick.mockRestore();
+    expect(element.show).toBeFalsy();
+  });
+
+  test("should render primary button if primaryButton is set", async () => {
+    const element = await fixture<Alert.ELEMENT>(html`
+      <md-alert show closable newMomentum primaryButton="OK"></md-alert>
+    `);
+
+    const buttomElements = element.shadowRoot!.querySelectorAll(".md-new-alert__footer md-button");
+    expect(buttomElements.length).toEqual(1);
+
+    const primaryButton = await element.shadowRoot!.querySelector(".md-new-alert__footer md-button");
+    expect(primaryButton?.getAttribute("variant")).toEqual("primary");
+  });
+
+  test("should render secondary button if secondaryButton is set", async () => {
+    const element = await fixture<Alert.ELEMENT>(html`
+      <md-alert show closable newMomentum secondaryButton="OK"></md-alert>
+    `);
+
+    const buttomElements = element.shadowRoot!.querySelectorAll(".md-new-alert__footer md-button");
+    expect(buttomElements.length).toEqual(1);
+
+    const primaryButton = await element.shadowRoot!.querySelector(".md-new-alert__footer md-button");
+    expect(primaryButton?.getAttribute("variant")).toEqual("secondary");
+  });
+
+  test("should render link if link is set", async () => {
+    const element = await fixture<Alert.ELEMENT>(html` <md-alert show closable newMomentum link href="/"></md-alert> `);
+
+    const linkElement = await element.shadowRoot!.querySelector(".md-new-alert__link");
+    expect(linkElement).not.toBeNull();
   });
 });

@@ -96,6 +96,8 @@ export const alertTemplate = html`
     title="Ready to pause and recharge?"
     message="Hey there, you're on a roll. How about a wellness break? This break is pre-approved by your organization for your well-being. You deserve it."
     primaryButton="Take a Break"
+    primaryButtonColor="blue"
+    primaryButtonVariant=""
     secondaryButton="Later"
     closable
     show

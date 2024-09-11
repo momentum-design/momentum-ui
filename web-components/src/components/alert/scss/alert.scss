@@ -84,11 +84,11 @@
 .md-new-alert {
   @include border-radius($alert_new_border-radius);
   background-color: var(--alert-default-bg-color);
-  border: 1px solid var(--alert-default-new-border-color);
+  border: 1px solid var(--alert-default-new-border-color, $black-12);
   box-shadow: 0 24px 48px 0 var(--alert-default-border-color, $black-12);
   flex: 1 1 100%;
   margin-bottom: rem-calc(8);
-  max-height: rem-calc(168);
+  max-height: rem-calc(220);
   max-width: $alert_new-width;
   min-height: rem-calc(56);
   padding: rem-calc(16);
@@ -125,7 +125,7 @@
   }
 
   &__message {
-    @include line-dots(3);
+    @include line-dots(5);
     color: var(--alert-title-text-color);
     font-family: $brand-font-light;
     font-size: $alert__font-size;

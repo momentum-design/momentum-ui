@@ -14,8 +14,12 @@ import { html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
+import { buttonVariant, buttonColor } from "@/components/button/Button";
 
 export namespace Alert {
+  export type buttonVariant = (typeof buttonVariant)[number];
+  export type buttonColor = (typeof buttonColor)[number];
+
   @customElementWithCheck("md-alert")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) closable = false;
@@ -30,6 +34,8 @@ export namespace Alert {
     @property({ type: Boolean }) newMomentum = false;
 
     @property({ type: String }) primaryButton = "";
+    @property({ type: String }) primaryButtonVariant: Alert.buttonVariant = "primary";
+    @property({ type: String }) primaryButtonColor: Alert.buttonColor = "";
     @property({ type: Function }) primaryButtonClickFunction?: () => void;
     @property({ type: String }) secondaryButton = "";
     @property({ type: Function }) secondaryButtonClickFunction?: () => void;
@@ -220,7 +226,10 @@ export namespace Alert {
                       >`
                     : nothing}
                   ${this.primaryButton
-                    ? html`<md-button variant="primary" .clickFunction="${this.primaryButtonClickFunction}"
+                    ? html`<md-button
+                        variant=${this.primaryButtonVariant}
+                        color=${this.primaryButtonColor}
+                        .clickFunction="${this.primaryButtonClickFunction}"
                         >${this.primaryButton}</md-button
                       >`
                     : nothing}

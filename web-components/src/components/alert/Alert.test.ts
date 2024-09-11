@@ -172,7 +172,7 @@ describe("New Alert", () => {
 
     const type = element.shadowRoot?.querySelector(".md-new-alert__icon md-icon");
     expect(type?.getAttribute("name")).toEqual("chat-bold");
-    expect(type?.getAttribute("color")).toEqual("var(--alert-title-text-color, $lm-alert-title-text-color-light)");
+    expect(type?.getAttribute("color")).toEqual("var(--alert-title-text-color)");
   });
 
   test("should render loading Alert", async () => {

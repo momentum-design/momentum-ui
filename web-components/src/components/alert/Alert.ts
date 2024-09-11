@@ -173,7 +173,7 @@ export namespace Alert {
               ? html` <div class="md-new-alert__title" role="heading" aria-level="1">${this.title}</div> `
               : nothing
           }
-            <div class="md-new-alert__message">
+            <div class="md-new-alert__message" title="${this.message}">
               ${this.message}
               <slot name="alert-body"></slot>
               ${this.showMore ? html`<md-link href=${this.href} inline>Show more...</md-link>` : nothing}

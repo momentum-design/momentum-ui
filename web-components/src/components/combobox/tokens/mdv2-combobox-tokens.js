@@ -98,7 +98,7 @@ const combobox = {
     "bg-color": {
       common: "$mds-color-theme-background-alert-default-normal"
     },
-    "new-bg-color":{
+    "new-bg-color": {
       common: "$mds-color-theme-background-solid-tertiary-normal"
     },
     "border-color": {

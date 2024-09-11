@@ -103,10 +103,6 @@ export const MeetingAlertActionThroughSlot = () => {
   const darkTheme = boolean("darkMode", false);
   const theme = select("Theme name", ThemeNameValues, "lumos");
   const show = boolean("Show", true);
-  const src = text(
-    "Src",
-    "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
-  );
   const status = text("Status", "Webex Teams Status");
   const title = text("Title", "Webex Teams Title");
 

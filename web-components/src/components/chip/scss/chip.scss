@@ -332,7 +332,7 @@
 
   &--positive {
     --left-content-right-margin: 4px;
-    padding: 8px 4px;
+    padding: 0px 4px;
     font-weight: 500;
     font-family: var(--brand-font-regular);
     background-color: var(--badge-positive-bg-color);
@@ -351,7 +351,7 @@
 
   &--negative {
     --left-content-right-margin: 4px;
-    padding: 8px 4px;
+    padding: 0px 4px;
     font-weight: 500;
     font-family: var(--brand-font-regular);
     background-color: var(--badge-negative-bg-color);
@@ -370,7 +370,7 @@
 
   &--neutral {
     --left-content-right-margin: 4px;
-    padding: 8px 4px;
+    padding: 0px 4px;
     font-weight: 500;
     font-family: var(--brand-font-regular);
     background-color: var(--badge-neutral-bg-color);

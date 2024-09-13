@@ -624,7 +624,7 @@
 
 :host([variant="ghost"]) .md-button {
   background-color: var(--button-ghost-bg-color, transparent);
-  color: var(--button-ghost-text-color, var(--button-text-color));
+  color: var(--button-ghost-text-color, var(--button-secondary-text-color));
   border: unset;
 
   &:hover {
@@ -907,7 +907,7 @@
 :host([variant="tab"]) .md-button {
   &:not(.isActive) {
     background-color: var(--button-ghost-bg-color, transparent);
-    color: var(--button-ghost-text-color, var(--button-text-color));
+    color: var(--button-ghost-text-color, var(--button-secondary-text-color));
 
     &:hover {
       background-color: var(--button-ghost-hover-bg-color, var(--button-secondary-hover-bg-color));

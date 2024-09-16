@@ -348,19 +348,19 @@ const button = {
   },
   unavailable: {
     "bg-color": {
-      common: "$mds-color-theme-background-alert-default-normal"
+      common: "$mds-color-theme-background-alert-error-normal"
     },
     "border-color": {
-      common: "$mds-color-theme-outline-primary-normal"
+      common: "$mds-color-theme-outline-cancel-normal"
     },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-background-alert-default-hover"
+        common: "$mds-color-theme-background-alert-error-hover"
       }
     },
     pressed: {
       "bg-color": {
-        common: "$mds-color-theme-background-alert-default-active"
+        common: "$mds-color-theme-background-alert-error-active"
       }
     }
   },

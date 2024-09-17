@@ -89,7 +89,9 @@ export namespace Slider {
       }
       const pointerPosition = this.calculateHandlePosition(this.currentMouseEvent);
 
+      const oldValue = this.now;
       this.moveSliderTo(pointerPosition);
+      this.notifyChanging(oldValue, this.now);
 
       requestAnimationFrame(() => {
         this.trackMouseEvent();
@@ -119,6 +121,23 @@ export namespace Slider {
           composed: true,
           detail: {
             value: this.now
+          }
+        })
+      );
+    }
+
+    private notifyChanging(oldValue: number, newValue: number) {
+      if (oldValue === newValue) {
+        return;
+      }
+
+      this.dispatchEvent(
+        new CustomEvent<{ oldValue: number; newValue: number }>("slider-changing", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            oldValue: oldValue,
+            newValue: newValue
           }
         })
       );
@@ -164,6 +183,8 @@ export namespace Slider {
     handleKeyDown(event: KeyboardEvent) {
       const { code } = event;
 
+      const oldValue = this.now;
+
       switch (code) {
         case Key.ArrowLeft:
         case Key.ArrowDown:
@@ -190,6 +211,8 @@ export namespace Slider {
         default:
           break;
       }
+
+      this.notifyChanging(oldValue, this.now);
 
       const handleKeyUp = () => {
         document.removeEventListener("keyup", handleKeyUp);

@@ -1,8 +1,8 @@
-import "./Slider";
-import { Slider } from "./Slider";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
+import "./Slider";
+import { Slider } from "./Slider";
 
 describe("Slider Component", () => {
   let element: Slider.ELEMENT;

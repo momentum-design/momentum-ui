@@ -15,6 +15,7 @@ import {
   buttonGroupTemplate,
   buttonTemplate,
   cardTemplate,
+  cardAiTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
@@ -275,6 +276,16 @@ export class Sandbox extends LitElement {
             <div class="container" aria-label="md-card">
               <h2>md-card</h2>
               <sass-stats component="card"> ${cardTemplate} </sass-stats>
+            </div>
+          </md-tab-panel>
+
+          <md-tab slot="tab" name="Card - AI">
+            <span>md-card-ai</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <div class="container" aria-label="md-card-ai">
+              <h2>md-card-ai</h2>
+              <sass-stats component="card-ai"> ${cardAiTemplate} </sass-stats>
             </div>
           </md-tab-panel>
 

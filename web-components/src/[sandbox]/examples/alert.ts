@@ -1,4 +1,5 @@
 import "@/components/alert/Alert";
+import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import { html } from "lit-element";
 
@@ -96,8 +97,6 @@ export const alertTemplate = html`
     title="Ready to pause and recharge?"
     message="Hey there, you're on a roll. How about a wellness break? This break is pre-approved by your organization for your well-being. You deserve it."
     primaryButton="Take a Break"
-    primaryButtonColor="blue"
-    primaryButtonVariant=""
     secondaryButton="Later"
     closable
     show
@@ -110,5 +109,33 @@ export const alertTemplate = html`
       height="24"
       width="24"
     ></img>
+  </md-alert>
+
+  <h3>New Momentum with slotted footer</h3>
+  <md-alert
+    title="Ready to pause and recharge?"
+    message="Hey there, you're on a roll. How about a wellness break? This break is pre-approved by your organization for your well-being. You deserve it."
+    closable
+    show
+    newMomentum
+  >
+    <md-icon
+        slot="alert-icon"
+        size="24"
+        iconSet="momentumDesign"
+        name="cisco-ai-assistant-default"
+      >
+    </md-icon>
+    <div slot="alert-footer">
+      <md-button variant="primary">
+        <span slot="text">primary</span>
+      </md-button>
+      <md-button variant="secondary">
+        <span slot="text">secondary</span>
+      </md-button>
+      <md-button variant="secondary">
+        <span slot="text">secondary</span>
+      </md-button>
+    </div>
   </md-alert>
 `;

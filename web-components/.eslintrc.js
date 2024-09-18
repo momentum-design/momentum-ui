@@ -13,6 +13,7 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "@wxcc-desktop/no-blocked-words-plugin/no-blocked-words": [
       "error",
       ["master", "slave", "dummy", "whitelist", "blacklist"]

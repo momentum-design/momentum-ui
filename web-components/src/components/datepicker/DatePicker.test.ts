@@ -55,7 +55,6 @@ describe("DatePicker Component", () => {
   test("should navigate focus with keydown events", async () => {
     const startDate = now();
     const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker .focusedDate=${startDate}></md-datepicker> `);
-    const selectionFunc = jest.spyOn(el, "handleSelect");
     const navLeft = keyNavEvent("ArrowLeft", startDate);
     el.handleKeyDown(navLeft);
     await elementUpdated(el);

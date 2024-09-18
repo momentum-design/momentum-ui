@@ -126,6 +126,10 @@ export namespace ComboBox {
       return this._focusedIndex;
     }
     set focusedIndex(index: number) {
+      this.updateFocusedIndex(index);
+    }
+
+    updateFocusedIndex(index: number) {
       const oldIndex = this._focusedIndex;
       if (this.checkForVirtualScroll()) {
         // Virtual Scroll is Enabled.
@@ -947,7 +951,7 @@ export namespace ComboBox {
       if (option) {
         optionId = this.getOptionId(option);
       }
-      this.lists?.forEach((list, index) => {
+      this.lists?.forEach((list, _index) => {
         if (list?.id === optionId) {
           list?.setAttribute("selected", "true");
         } else {
@@ -1524,7 +1528,7 @@ export namespace ComboBox {
     }
 
     rangeChanged() {
-      this.focusedIndex = this.focusedIndex;
+      this.updateFocusedIndex(this.focusedIndex);
       this.checkSelectedOptions();
       this.resizeListbox();
     }

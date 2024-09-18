@@ -160,13 +160,17 @@
 
   &__footer {
     display: flex;
-    justify-content: end;
     margin-top: rem-calc(16);
+    justify-content: end;
     width: 100%;
-
+  
     md-button:not(:first-child) {
       margin-left: rem-calc(8);
     }
+  }
+
+  &__footer.is-empty{
+    display: none;  
   }
 
   &__link {

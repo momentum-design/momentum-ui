@@ -240,4 +240,37 @@ describe("New Alert", () => {
     const linkElement = await element.shadowRoot!.querySelector(".md-new-alert__link");
     expect(linkElement).not.toBeNull();
   });
+
+  test("alert with slotted buttons", async () => {
+    const element = await fixture<Alert.ELEMENT>(html`
+      <md-alert title="title" message="message" closable show newMomentum>
+        <md-icon slot="alert-icon" size="24" iconSet="momentumDesign" name="cisco-ai-assistant-default"> </md-icon>
+        <div slot="alert-footer">
+          <md-button variant="primary">
+            <span slot="text">primary</span>
+          </md-button>
+          <md-button variant="secondary">
+            <span slot="text">secondary</span>
+          </md-button>
+          <md-button variant="secondary">
+            <span slot="text">secondary</span>
+          </md-button>
+        </div>
+      </md-alert>
+    `);
+
+    const elementFooter = await element.shadowRoot!.querySelector(".md-new-alert__footer");
+    expect(elementFooter?.classList.contains("is-empty")).toBeFalsy();
+  });
+
+  test("alert without footer slot", async () => {
+    const element = await fixture<Alert.ELEMENT>(html`
+      <md-alert title="title" message="message" closable show newMomentum>
+        <md-icon slot="alert-icon" size="24" iconSet="momentumDesign" name="cisco-ai-assistant-default"> </md-icon>
+      </md-alert>
+    `);
+
+    const elementFooter = await element.shadowRoot!.querySelector(".md-new-alert__footer.is-empty");
+    expect(elementFooter).not.toBeNull();
+  });
 });

@@ -124,6 +124,17 @@ export namespace Alert {
       };
     }
 
+    get slottedFooterClassMap() {
+      return {
+        "is-empty": !this.hasFooterSlotContent
+      };
+    }
+
+    get hasFooterSlotContent() {
+      //TODO: improve this check
+      return this.innerHTML.includes('<div slot="alert-footer">');
+    }
+
     legacyRender(): TemplateResult {
       return html`
         <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
@@ -198,7 +209,7 @@ export namespace Alert {
     }
 
     renderSlottedFooter(): TemplateResult {
-      return html` <div class="md-new-alert__footer">
+      return html` <div class="md-new-alert__footer ${classMap(this.slottedFooterClassMap)}">
         <slot name="alert-footer"></slot>
       </div>`;
     }

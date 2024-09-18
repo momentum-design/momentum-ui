@@ -83,7 +83,7 @@
   --md-input-chat-length-indicator-color: #{$md-gray-70};
   --md-input-chat-bg-color: #{$md-white-100};
   --md-input-chat-color: #{$md-gray-100};
-  --md-input-chat-error-color: #A12512;
+  --md-input-chat-error-color: #a12512;
   --md-webex-chat-disable-bg-color: #{$md-gray-20};
   --md-webex-chat-disable-color: #{$md-gray-40};
 
@@ -102,4 +102,12 @@
   --md-scrollbar-background-hover-indicator: #{$black-48};
   --md-scrollbar-background-active-indicator: #{$black-60};
   --md-scrollbar-background-disabled-indicator: #{$black-12};
+
+  --md-table-primary-bg-color: #{$md-gray-20};
+  --md-table-header-bg-color: #{$md-gray-05};
+  --md-table-header-border-bottom: none;
+  --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
+  --md-table-border-style: solid;
+  --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
 }

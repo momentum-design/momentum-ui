@@ -45,12 +45,7 @@ export const iconTemplate = html`
   <md-icon name="social-microsoft-colored" iconSet="momentumDesign" title="microsoft" size="32"></md-icon>
   <md-icon name="social-viber-colored" iconSet="momentumDesign" title="viber" size="32"></md-icon>
   <md-icon name="social-telegram-colored" iconSet="momentumDesign" title="telegram" size="32"></md-icon>
-  <md-icon
-    name="social-googlebusinessmessages-colored"
-    iconSet="momentumDesign"
-    title="google business messages"
-    size="32"
-  ></md-icon>
+  <md-icon name="social-sms-colored-mint" iconSet="momentumDesign" title="social-sms-colored-mint" size="32"></md-icon>
   <md-icon name="social-rcs-colored" iconSet="momentumDesign" title="rcs" size="32"></md-icon>
   <md-icon name="social-wechat-colored" iconSet="momentumDesign" title="wechat" size="32"></md-icon>
   <md-icon name="social-whatsapp-colored" iconSet="momentumDesign" title="whatsapp" size="32"></md-icon>

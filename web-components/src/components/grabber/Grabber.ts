@@ -58,7 +58,7 @@ export namespace Grabber {
       }
     }
 
-    handleMouseDownn() {
+    handleMouseDown() {
       this.toggleGrabber();
     }
 
@@ -129,7 +129,7 @@ export namespace Grabber {
             aria-label=${ifDefined(this.label.length ? this.label : undefined)}
             type="button"
             role="button"
-            @click="${() => this.handleMouseDownn()}"
+            @click="${() => this.handleMouseDown()}"
             @keydown="${(e: KeyboardEvent) => this.handleKeyDown(e)}"
             @mouseenter="${() => this.handleMouseEnter()}"
             @mouseleave="${() => this.handleMouseLeave()}"

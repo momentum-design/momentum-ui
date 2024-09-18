@@ -207,7 +207,7 @@ const button = {
       }
     }
   },
-  "ghost": {
+  ghost: {
     "text-color": {
       light: colors.gray[100].name,
       dark: colors.gray["05"].name

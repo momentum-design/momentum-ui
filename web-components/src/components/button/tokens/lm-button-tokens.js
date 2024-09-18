@@ -207,6 +207,12 @@ const button = {
       }
     }
   },
+  ghost: {
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name
+    }
+  },
   "ghost-active": {
     "bg-color": {
       light: colors.gray[20].name,

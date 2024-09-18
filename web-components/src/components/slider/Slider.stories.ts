@@ -41,6 +41,7 @@ export const Slider = () => {
     <md-theme class="theme-toggle" id="slider" ?darkTheme=${darkTheme} theme=${theme}>
       <md-slider
         @slider-change=${action("change")}
+        @slider-changing=${action("changing")}
         .disabled=${disabled}
         .min=${min}
         .max=${max}

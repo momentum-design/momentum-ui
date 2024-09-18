@@ -11,6 +11,7 @@ import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { boolean, color, select, text } from "@storybook/addon-knobs";
+import { SelectTypeKnobValue } from "@storybook/addon-knobs/dist/components/types";
 import { html } from "lit-element";
 import { GroupOptions } from "sortablejs";
 import mdx from "./Draggable.mdx";
@@ -44,8 +45,8 @@ export const Draggable = () => {
     "Select pull option",
     {
       clone: "clone",
-      TurnOn: true as unknown as any,
-      TurnOff: false as unknown as any,
+      TurnOn: true as SelectTypeKnobValue,
+      TurnOff: false as SelectTypeKnobValue,
       GroupArray: [leftGroupName]
     },
     "clone",
@@ -54,11 +55,11 @@ export const Draggable = () => {
   const leftGroupPut = select(
     "Select left put option",
     {
-      TurnOn: true as unknown as any,
-      TurnOff: false as unknown as any,
+      TurnOn: true as SelectTypeKnobValue,
+      TurnOff: false as SelectTypeKnobValue,
       GroupArray: [leftGroupName]
     },
-    true as unknown as any,
+    true as SelectTypeKnobValue,
     "Left List"
   );
   const leftHandle = text("Drag handle selector within left list items", "md-draggable-item", "Left List");
@@ -71,8 +72,8 @@ export const Draggable = () => {
     "Select pull option",
     {
       clone: "clone",
-      TurnOn: true as unknown as any,
-      TurnOff: false as unknown as any,
+      TurnOn: true as SelectTypeKnobValue,
+      TurnOff: false as SelectTypeKnobValue,
       GroupArray: [rightGroupName]
     },
     "clone",
@@ -81,11 +82,11 @@ export const Draggable = () => {
   const rightGroupPut = select(
     "Select right put option",
     {
-      TurnOn: true as unknown as any,
-      TurnOff: false as unknown as any,
+      TurnOn: true as SelectTypeKnobValue,
+      TurnOff: false as SelectTypeKnobValue,
       GroupArray: [rightGroupName]
     },
-    true as unknown as any,
+    true as SelectTypeKnobValue,
     "Right List"
   );
   const rightHandle = text("Drag handle selector within right list items", "md-draggable-item", "Right List");

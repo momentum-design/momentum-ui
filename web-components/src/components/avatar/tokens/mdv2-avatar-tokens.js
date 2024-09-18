@@ -165,7 +165,7 @@ const avatar = {
       common: "$mds-color-theme-indicator-attention"
     },
     rona: {
-      common: "$mds-color-theme-indicator-locked"
+      common: "$mds-color-theme-indicator-attention"
     },
     unstable: {
       common: "$mds-color-theme-indicator-unstable"

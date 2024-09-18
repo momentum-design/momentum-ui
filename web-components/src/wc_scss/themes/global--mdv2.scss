@@ -127,6 +127,13 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-scrollbar-background-active-indicator: #{$mds-color-theme-scrollbar-button-pressed};
   --md-scrollbar-background-disabled-indicator: #{$mds-color-theme-scrollbar-background-secondary-normal};
 
+  --md-table-primary-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
+  --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
+  --md-table-border-style: none;
+  --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
+  --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
 
   // Background colours can not be overwritten because they are being used by consumers in unexpected ways
   // New background colours should be introduced and these phased out

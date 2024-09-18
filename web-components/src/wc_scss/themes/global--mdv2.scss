@@ -127,7 +127,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-scrollbar-background-active-indicator: #{$mds-color-theme-scrollbar-button-pressed};
   --md-scrollbar-background-disabled-indicator: #{$mds-color-theme-scrollbar-background-secondary-normal};
 
-
   // Background colours can not be overwritten because they are being used by consumers in unexpected ways
   // New background colours should be introduced and these phased out
   // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
@@ -163,4 +162,12 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   // --md-input-chat-error-color: #{$md-red-50};
   // --md-webex-chat-disable-bg-color: #{$md-gray-90};
   // --md-webex-chat-disable-color: #{$md-gray-70};
+
+  // wxcc TPW colors
+  --md-tpw-primary-bg-color: transparent;
+  --md-tpw-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
+  --md-tpw-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
+  --md-tpw-border-none: none;
+  --md-tpw-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
+  --md-tpw-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
 }

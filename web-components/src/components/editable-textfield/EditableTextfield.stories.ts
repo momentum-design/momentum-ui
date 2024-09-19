@@ -49,7 +49,7 @@ const warningMessageArr: Input.Message = {
   type: "warning"
 };
 
-type EditableMap = { [key: string]: any };
+type EditableMap = { [key: string]: Input.Message };
 
 const messages: EditableMap = {
   success: successMessageArr,
@@ -81,7 +81,7 @@ export const EditableTextfield = () => {
 
     return html`
       <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-editable-field .message=${errorMessageArr} numberType=${inputType}> 12345 </md-editable-field>
+        <md-editable-field .message=${errorMessageArr} type=${inputType}> 12345 </md-editable-field>
       </md-theme>
     `;
   } else if (inputValid) {

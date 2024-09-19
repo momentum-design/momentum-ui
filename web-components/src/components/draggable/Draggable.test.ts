@@ -62,6 +62,7 @@ describe("Draggable Component", () => {
       } as SortableEvent
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setTimeout(() => (element as any)[functionName](mockSortableEvent));
 
     const { detail } = await oneEvent(element, `drag-${event}`);

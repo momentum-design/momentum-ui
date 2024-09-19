@@ -26,7 +26,6 @@ export namespace DateRangePicker {
 
     disconnectedCallback() {
       super.disconnectedCallback();
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
       this.removeEventListener("date-selection-change", this.handleDateSelection);
     }
 

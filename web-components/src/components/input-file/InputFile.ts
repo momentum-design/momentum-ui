@@ -33,13 +33,12 @@ export namespace InputFile {
       const fileList = this.input.files;
       if (fileList && fileList.length !== 0)
         for (const file of fileList) {
-          let fileTextContent = "";
           this.fileName = file.name;
 
           try {
-            fileTextContent = (await this.readFile(file)) as string;
+            (await this.readFile(file)) as string;
           } catch (e) {
-            fileTextContent = "";
+            console.error("Error reading file", e);
           }
         }
     }

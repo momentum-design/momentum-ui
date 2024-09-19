@@ -32,7 +32,11 @@ export const Radio = () => {
 
   return html`
     <md-theme class="theme-toggle" id="radio" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-radiogroup group-label="group_process" .alignment=${alignment as any} .checked="${check}">
+      <md-radiogroup
+        group-label="group_process"
+        .alignment=${alignment as "horizontal" | "vertical"}
+        .checked="${check}"
+      >
         <md-radio slot="radio" value="developing">Developing</md-radio>
         <md-radio slot="radio" value="linting" .disabled=${disabled}>Linting</md-radio>
         <md-radio slot="radio" value="testing">Testing</md-radio>

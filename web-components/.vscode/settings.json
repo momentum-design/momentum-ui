@@ -25,5 +25,8 @@
   "sonarlint.connectedMode.project": {
     "connectionId": "cisco",
     "projectKey": "Momentum-UI-Web-Components"
-  }
+  },
+  "cSpell.words": [
+    "lumos"
+  ]
 }

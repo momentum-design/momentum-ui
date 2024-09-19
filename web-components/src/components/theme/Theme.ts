@@ -30,6 +30,7 @@ declare global {
   }
 
   interface ThemeStyleSheet {
+    // eslint-disable-next-line @typescript-eslint/ban-types
     replaceSync: Function;
   }
 }

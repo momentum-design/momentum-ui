@@ -80,14 +80,13 @@ export namespace Menu {
       }
     }
 
-    private getChildrenFromTree(elem: { children: Element[] }, menuItems: MenuItem.ELEMENT[]) {
-      for (let i = 0; i < elem.children.length; i++) {
-        const child = elem.children[i];
+    private getChildrenFromTree(element: { children: Element[] }, menuItems: MenuItem.ELEMENT[]): void {
+      element.children.forEach((child: Element) => {
         if (child instanceof MenuItem.ELEMENT) {
           menuItems.push(child);
         }
-        this.getChildrenFromTree(child as any, menuItems); // RECURSION
-      }
+        this.getChildrenFromTree({ children: Array.from(child.children) as Element[] }, menuItems); // RECURSION
+      });
     }
 
     private updateSelectedItem(newSelectedIndex: number) {

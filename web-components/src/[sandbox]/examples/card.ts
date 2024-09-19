@@ -32,8 +32,8 @@ export class CardTemplateSandbox extends LitElement {
     this.value = "Card " + id + ": in " + type + " mode";
   }
 
-  private handleKeydownMenu(e: KeyboardEvent) {
-    const { id, type } = e.detail as any;
+  private handleKeydownMenu(e: CustomEvent) {
+    const { id, type } = e.detail;
 
     this.value = "Card " + id + ": in " + type + " mode by keyboard event";
   }
@@ -46,7 +46,7 @@ export class CardTemplateSandbox extends LitElement {
         id="123456789"
         title="Team A Report - Q1"
         subtitle="Updated 2 hours ago"
-        @card-menu-keydown="${(e: KeyboardEvent) => this.handleKeydownMenu(e)}"
+        @card-menu-keydown="${(e: CustomEvent) => this.handleKeydownMenu(e)}"
         info="Lorem Ipsum is simply sample text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard sample text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
       >
         <div slot="content">

@@ -41,20 +41,19 @@ export namespace Table {
 
     headerRow: any;
     results: any;
-    config = {
+    config: Papa.ParseConfig = {
       quoteChar: '"',
       escapeChar: '""',
       header: false,
       preview: 0,
       comments: false,
       step: undefined,
-      complete: undefined,
-      download: false
+      complete: undefined
     };
 
     connectedCallback() {
       super.connectedCallback();
-      // @ts-ignore
+
       this.results = Papa.parse(this.tabledata, this.config);
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
@@ -139,7 +138,6 @@ export namespace Table {
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
       if (changedProperties.has("tabledata")) {
-        // @ts-ignore
         this.results = Papa.parse(this.tabledata, this.config);
         this.headerRow = this.results.data[0];
         this.csvData = this.results.data.slice(1, this.results.data.length);

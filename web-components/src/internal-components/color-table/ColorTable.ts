@@ -1,17 +1,18 @@
 import "@/components/table-advanced/TableAdvanced";
-import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
-import { colorTableData } from "@/wc_scss/colors/vars/color-table-data-string";
 import { TableAdvanced } from "@/components/table-advanced/TableAdvanced";
+import { colorTableData } from "@/wc_scss/colors/vars/color-table-data-string";
+import reset from "@/wc_scss/reset.scss";
+import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
 import { colorCellTemplates } from "./data";
-import { allColorTemplates } from "./utils";
-import reset from "@/wc_scss/reset.scss";
 import styles from "./scss/module.scss";
+import { allColorTemplates } from "./utils";
 
 @customElement("color-table")
 export class ColorTableSandbox extends LitElement {
-  @internalProperty() colorTokenTableData: { config: TableAdvanced.Config; data: TableAdvanced.Data } | undefined =
-    undefined;
+  @internalProperty() private colorTokenTableData:
+    | { config: TableAdvanced.Config; data: TableAdvanced.Data }
+    | undefined = undefined;
 
   firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
@@ -19,7 +20,7 @@ export class ColorTableSandbox extends LitElement {
     // convert string to 2d array
     const colorTableRowData = colorTableData.split("\n");
 
-    const colorTable2DArray: any = [];
+    const colorTable2DArray: string[][] = [];
     for (let i = 1; i < colorTableRowData.length - 1; i++) {
       colorTable2DArray[i] = colorTableRowData[i].split(",");
     }

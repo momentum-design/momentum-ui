@@ -84,7 +84,7 @@ export const MeetingAlert = () => {
         <md-meeting-alert
           .show=${show}
           .closeAriaLabel=${closeAriaLabel}
-          .remindAriaLabel=${remindAriaLabel}
+          .snoozeAriaLabel=${remindAriaLabel}
           .message=${message}
           .status="${status}"
           .role="${role}"

@@ -46,6 +46,7 @@ export namespace DatePicker {
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
+    // eslint-disable-next-line @typescript-eslint/ban-types
     @internalProperty() filterDate: Function | undefined = undefined;
     @internalProperty() maxDateData: DateTime | undefined = undefined;
     @internalProperty() minDateData: DateTime | undefined = undefined;

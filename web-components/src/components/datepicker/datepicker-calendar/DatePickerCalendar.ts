@@ -32,6 +32,7 @@ export namespace DatePickerCalendar {
   export class ELEMENT extends LitElement {
     @property({ attribute: false }) monthFormat = "MMMM yyyy";
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
+    // eslint-disable-next-line @typescript-eslint/ban-types
     @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
@@ -63,6 +64,7 @@ export namespace DatePickerCalendar {
       }
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-types
     setDate = (date: DateTime, cb?: Function) => {
       this.viewAnchorDate = date;
       cb && cb();

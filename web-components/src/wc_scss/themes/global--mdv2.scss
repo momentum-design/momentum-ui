@@ -50,6 +50,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;
   --wc-menu-item-rounded-border-radius: 0.5rem;
+  --md-menu-active-background-color: #{$mds-color-theme-background-primary-active};
 
   --wc-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
   --wc-error-text-color: #{$mds-color-theme-text-error-normal};

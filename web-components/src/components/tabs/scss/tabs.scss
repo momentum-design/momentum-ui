@@ -37,14 +37,14 @@
   text-align: center;
   width: 100%;
 
-  .md-menu-overlay__more {    
+  .md-menu-overlay__more {
     height: 100%;
     margin-left: auto;
     width: auto;
     max-width: 128.5px;
-    .md-menu-overlay__overflow-label{
+    .md-menu-overlay__overflow-label {
       display: inline-block;
-      max-width: 70px;
+      max-width: 80px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
@@ -94,7 +94,11 @@
       &::part(tab) {
         text-align: left;
         padding-left: 16px;
-        padding-right: 16px; 
+        padding-right: 16px;
+        box-shadow: none;        
+      }
+      &[selected]::part(tab){
+          background-color: var(--md-menu-active-background-color);
       }
     }
   }
@@ -122,13 +126,13 @@
 
 md-menu-overlay {
   md-tab {
-    md-tooltip {      
+    md-tooltip {
       width: 170px;
       position: relative;
       display: inline-flex;
-      min-height: 28px;      
+      min-height: 28px;
       align-items: center;
-      overflow: hidden;      
+      overflow: hidden;
 
       .text-ellipsis {
         display: inline-block;
@@ -157,7 +161,6 @@ md-menu-overlay {
     display: inline-block;
     width: 100%;
   }
-
 }
 
 .md-tab__list ::slotted([slot="tab"][selected]),

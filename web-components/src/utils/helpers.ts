@@ -97,6 +97,7 @@ export const findHighlight = (text: string, query: string) => {
   return chunks;
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function debounce<T>(func: Function, wait: number, immediate?: boolean) {
   let timeout: ReturnType<typeof setTimeout> | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

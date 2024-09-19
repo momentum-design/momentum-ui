@@ -150,6 +150,34 @@ export class TabsOrderPrefsExample extends LitElement {
           <md-tab-panel name="Weather" slot="panel">
             <span>Content for "Cisco Weather"</span>
           </md-tab-panel>
+          <md-tab slot="tab" name="Accessibility" closable="auto">
+            <md-icon name="accessibility-bold" iconSet="momentumDesign" size="16"></md-icon>
+            <span>Accessibility</span>
+          </md-tab>
+          <md-tab-panel name="Accessibility" slot="panel">
+            <span>Content for "Accessibility"</span>
+          </md-tab-panel>
+          <md-tab slot="tab" name="Ideas" closable="auto">
+            <md-icon name="add-option-bold" iconSet="momentumDesign" size="16"></md-icon>
+            <span>Ideas</span>
+          </md-tab>
+          <md-tab-panel name="Ideas" slot="panel">
+            <span>Content for "Ideas"</span>
+          </md-tab-panel>
+          <md-tab slot="tab" name="Audio" closable="auto">
+            <md-icon name="adjust-audio-bold" iconSet="momentumDesign" size="16"></md-icon>
+            <span>Audio</span>
+          </md-tab>
+          <md-tab-panel name="Audio" slot="panel">
+            <span>Content for "Audio"</span>
+          </md-tab-panel>
+          <md-tab slot="tab" name="Charts" closable="auto">
+            <md-icon name="area-chart-filled" iconSet="momentumDesign" size="16"></md-icon>
+            <span>Charts</span>
+          </md-tab>
+          <md-tab-panel name="Charts" slot="panel">
+            <span>Content for "Charts"</span>
+          </md-tab-panel>
           ${this.moreOptions()}
         </md-tabs>
       </div>

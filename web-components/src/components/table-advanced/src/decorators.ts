@@ -4,6 +4,7 @@
 export function debounce(ms = 250) {
   return function (target: any, key: string, descriptor: PropertyDescriptor) {
     let timeout: number;
+    // eslint-disable-next-line @typescript-eslint/ban-types
     return decorateFunction({ target, key, descriptor }, function (funcOriginal: Function, args: any[]) {
       clearTimeout(timeout);
       /* istanbul ignore next */
@@ -23,6 +24,7 @@ function decorateFunction(p: Payload, funcWrap: FuncWrap): PropertyDescriptor {
     return p.descriptor;
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   const funcOriginal: Function = p.descriptor.value;
   const className: string = p.target.constructor.name;
 
@@ -39,6 +41,7 @@ type Payload = {
   descriptor: PropertyDescriptor;
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type FuncWrap = (this: any, funcOriginal: Function, args: any[], className: string) => any;
 
 // EVT decorator

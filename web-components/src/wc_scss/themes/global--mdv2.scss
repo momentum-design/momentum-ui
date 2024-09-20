@@ -135,6 +135,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-border-style: none;
   --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
   --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
 
   // Background colours can not be overwritten because they are being used by consumers in unexpected ways
   // New background colours should be introduced and these phased out

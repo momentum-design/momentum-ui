@@ -658,10 +658,14 @@ export namespace Tabs {
       this.selected = newSelectedTabIdx;
       this.updateComplete.then(() => {
         if (newSelectedTabIdx < this.tabsFilteredAsVisibleList.length) {
-          (this.visibleTabsContainerElement?.children[this.selected] as HTMLElement)?.focus();
+          const selectedVisibleTab = this.visibleTabsContainerElement?.children[this.selected] as HTMLElement;
+          selectedVisibleTab?.focus();
+          selectedVisibleTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
         } else {
           const hiddenTabIdx = this.selected - this.tabsFilteredAsVisibleList.length;
-          (this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement)?.focus();
+          const selectedHiddenTab = this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement;
+          selectedHiddenTab?.focus();
+          selectedHiddenTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
           const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
           !newHiddenTab?.disabled && this.updateHiddenIdPositiveTabIndex(newHiddenTab);
         }

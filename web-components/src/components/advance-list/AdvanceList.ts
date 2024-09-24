@@ -7,6 +7,7 @@ import reset from "@/wc_scss/reset.scss";
 import { FocusMixin } from "@/mixins/FocusMixin";
 
 export namespace AdvanceList {
+  export const prefixId = "item-";
   @customElementWithCheck("md-advance-list")
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Array }) items: any[] = [];
@@ -15,9 +16,7 @@ export namespace AdvanceList {
     @property({ type: String }) value = "";
 
     @property({ type: String }) ariaRoleList = "";
-    // @property({ type: String }) ariaRoleListItem = '';
     @property({ type: String }) ariaLabelList = "";
-    // @property({ type: String }) ariaLabelListItem = '';
 
     @property({ type: Boolean }) isError = false;
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
@@ -26,24 +25,16 @@ export namespace AdvanceList {
     @internalProperty() hasSlotContent = false;
     @property({ type: Number }) totalRecords = 0;
     @internalProperty() activeItem: HTMLElement | null | undefined = null;
-    @internalProperty() cyclicIndex = -1;
+    @internalProperty() scrollIndex = -1;
     @internalProperty() activeId: string = "";
     @internalProperty() selectedIndex = -1;
 
-    constructor() {
-      super();
-      this.items = [];
-      this.isLoading = false;
-      this.isError = false;
-      this.page = 1;
-      this.selectedItemId = "";
-    }
     connectedCallback(): void {
       super.connectedCallback();
-      this.hasSlottedContent();
       this.addEventListener("keydown", this.handleKeyDown);
       this.addEventListener("click", this.handleClick);
     }
+
     static get styles() {
       return [reset, styles];
     }
@@ -56,31 +47,29 @@ export namespace AdvanceList {
 
     updated(changedProperties: PropertyValues) {
       if (changedProperties.has("value")) {
-        this.selectedItemId = `item-${this.value}`;
-        console.log("Value---", this.value, this.selectedItemId);
+        this.selectedItemId = `${prefixId}${this.value}`;
         // Wait for the update to complete before running your logic.
         this.requestUpdate().then(() => {
-          console.log("After request updated");
           this.updateSelectedState();
         });
       }
     }
 
-    private updateSelectedState() {
-      console.log("Selected Id in update---", this.selectedItemId);
+    protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        // Check if any child element within the wrapper has the 'disabled' attribute
         const childWithDisabled = wrapper.querySelector("[disabled]");
 
         if (wrapper.id === this.selectedItemId) {
           wrapper.classList.add("selected");
           wrapper.setAttribute("selected", "true");
           wrapper.setAttribute("aria-selected", "true");
+          wrapper.setAttribute("tabindex", "0");
         } else {
           wrapper.classList.remove("selected");
           wrapper.removeAttribute("selected");
           wrapper.setAttribute("aria-selected", "false");
+          wrapper.setAttribute("tabindex", "-1");
         }
 
         if (childWithDisabled) {
@@ -98,14 +87,11 @@ export namespace AdvanceList {
       const eventPath = event.composedPath();
 
       const clickedItem = wrappers.find((wrapper) => eventPath.includes(wrapper)) as HTMLElement | undefined;
-      console.log("clickedItems", clickedItem);
 
       if (clickedItem) {
         const isDisabled =
           Array.from(clickedItem.children).some((child) => child.hasAttribute("disabled")) ||
           clickedItem.getAttribute("aria-disabled") === "true";
-
-          console.log("Disabled state:", isDisabled);
 
         if (isDisabled) {
           return 0; // Indicate that the item is disabled and stop execution
@@ -120,6 +106,7 @@ export namespace AdvanceList {
       wrappers.forEach((wrapper) => {
         wrapper.classList.remove("selected");
         wrapper.removeAttribute("selected");
+        wrapper.removeAttribute("tabindex");
       });
     }
 
@@ -129,11 +116,9 @@ export namespace AdvanceList {
     }
 
     getVisibleElementById = (id: string) => {
-      // Get all elements with the specified ID
       const elements: NodeListOf<HTMLElement> | undefined = this.shadowRoot
         ?.querySelector(`.virtual-scroll`)
         ?.querySelectorAll(`#${id}`);
-      // Iterate over the elements and return the first one that is not hidden
       if (elements) {
         for (let element of elements) {
           if (window.getComputedStyle(element).display !== "none") {
@@ -141,87 +126,60 @@ export namespace AdvanceList {
           }
         }
       }
-
-      // If no visible element is found, return null
       return null;
     };
 
-    scrollToActiveItem() {
-      console.log("ActiveItem--", this.activeId);
+    getVisibleElement = () => {
+      const activeItem: HTMLElement | null = this.getVisibleElementById(`${prefixId}${this.activeId}`);
+      return activeItem?.offsetHeight !== 0 ? activeItem : null;
+    };
 
-      const activeItem: HTMLElement | null = this.getVisibleElementById(`item-${this.activeId}`);
-
-      const dispalyedActiveItem = activeItem?.offsetHeight !== 0 ? activeItem : null;
-      console.log("ActiveItem1233--", activeItem, dispalyedActiveItem, this.cyclicIndex);
+    resetFocusToVisibleElement() {
       this.clearFocusedState();
-
-      if (dispalyedActiveItem) {
-        this.focusItem(dispalyedActiveItem);
+      const visibleElement = this.getVisibleElement();
+      if (visibleElement) {
+        this.focusItem(visibleElement);
       }
-      return dispalyedActiveItem;
+      return visibleElement;
     }
 
-    private setFocusOnHost(force: boolean) {
-      if (this.setFocus) {
-        this.setFocus(force);
-      }
-    }
+    resetSelectedState = (id: string, itemToBeSelected: HTMLElement) => {
+      this.clearSelectedState();
+      this.selectItem(itemToBeSelected);
+      this.setSelected(id);
+    };
 
     handleKeyDown(event: KeyboardEvent) {
-      console.log("HandleKeyDown---", event);
-      //this.setFocusOnHost(true);
       switch (event.key) {
-        case "ArrowDown":
+        case Key.ArrowDown:
           {
-            //this.setFocusOnHost(true);
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-            console.log("CurrentIndex---", currentIndex);
-            if (currentIndex === this.totalRecords - 1) {
-              this.activeId = this.items[0].id;
-              this.cyclicIndex = 0;
-            } else if (currentIndex < this.totalRecords - 1) {
+            if (currentIndex < this.totalRecords - 1) {
               this.activeId = this.items[currentIndex + 1].id;
-              console.log("ArrowDown ActiveId--", this.activeId);
-              this.activeItem = this.scrollToActiveItem();
-              console.log("ArrowDown ActiveItem--", this.activeItem);
-              this.cyclicIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "");
-              console.log("ArrowDown CyclicIndex--", this.cyclicIndex);
-            } else {
+              this.activeItem = this.resetFocusToVisibleElement();
+              this.scrollIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "");
             }
           }
           break;
-        case "ArrowUp":
+        case Key.ArrowUp:
           {
-            //this.setFocusOnHost(true);
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-            console.log("CurrentIndex---", currentIndex);
             if (currentIndex > 0) {
               this.activeId = this.items[currentIndex - 1].id;
-              console.log("ArrowUP ActiveId--", this.activeId);
-              this.activeItem = this.scrollToActiveItem();
-              console.log("ArrowUP ActiveItem--", this.activeItem);
-              this.cyclicIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "") ?? 0;
-              console.log("ArrowUP CyclicIndex--", this.cyclicIndex);
-            } else if (currentIndex === 0 && this.items.length === this.totalRecords) {
-              this.activeId = this.items[this.totalRecords - 1].id;
-              this.cyclicIndex = this.items.length - 1;
+              this.activeItem = this.resetFocusToVisibleElement();
+              this.scrollIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "") ?? 0;
             }
           }
           break;
-        case "Enter":
+        case Key.Enter:
           if (this.activeItem) {
-            console.log("ActiveItem on Enter--", this.activeId, this.activeItem);
             const isDisabled =
               Array.from(this.activeItem.children).some((child) => child.hasAttribute("disabled")) ||
               this.activeItem.getAttribute("aria-disabled") === "true";
             this.listContainer?.focus();
             if (!isDisabled) {
-              this.clearSelectedState();
-              this.selectItem(this.activeItem);
-              this.setSelected(`item-${this.activeId}`);
-              console.log("ActiveId---", this.activeId);
-
-              this.cyclicIndex = parseInt(this.activeItem.getAttribute("index") || "0");
+              this.resetSelectedState(`${prefixId}${this.activeId}`, this.activeItem);
+              this.scrollIndex = parseInt(this.activeItem.getAttribute("index") || "0");
             }
           }
           break;
@@ -230,22 +188,38 @@ export namespace AdvanceList {
       }
     }
 
-
     handleClick(event: Event) {
       const clickedItem = this.findClickedItem(event);
       event.preventDefault();
       if (clickedItem) {
-        this.clearSelectedState();
-        this.selectItem(clickedItem);
-        this.setSelected(clickedItem.id);
-        this.setFocusOnHost(true);
+        this.resetSelectedState(clickedItem.id, clickedItem);
         this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-        this.scrollToActiveItem();
-        console.log("ActiveId---", this.activeId);
-        this.cyclicIndex = parseInt(clickedItem.getAttribute("index") || "0");
+        this.resetFocusToVisibleElement();
+        this.scrollIndex = parseInt(clickedItem.getAttribute("index") || "0");
         this.listContainer?.focus();
       }
     }
+
+    handleRangeChange = (e: any) => {
+      const { last } = e;
+      this.clearSelectedState();
+      this.updateSelectedState();
+      this.resetFocusToVisibleElement();
+      this.listContainer?.focus();
+
+
+      if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
+        this.scrollIndex = last;
+        this.dispatchEvent(
+          new CustomEvent("load-more", {
+            detail: { page: this.page },
+            bubbles: true,
+            composed: true
+          })
+        );
+        this.page += 1;
+      }
+    };
 
     clearFocusedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
@@ -253,30 +227,19 @@ export namespace AdvanceList {
         wrapper.classList.remove("focused");
       });
     }
+
     focusItem(item: HTMLElement) {
       item.classList.add("focused");
     }
 
     setSelected(newId: string) {
       if (this.selectedItemId !== newId) {
-        console.log("Selected item id---", newId);
         this.selectedItemId = newId;
         this.requestUpdate();
         this.notifySelectedChange();
       }
     }
 
-    hasSlottedContent() {
-        setTimeout(() => {
-            const spinLoaderSlot = this.querySelector('[slot="spin-loader"]');
-            if (spinLoaderSlot) {
-              this.hasSlotContent = true;
-              return true;
-            } else {
-              return false;
-            }
-        }, 50);
-    }
 
     notifySelectedChange() {
       this.dispatchEvent(
@@ -289,9 +252,16 @@ export namespace AdvanceList {
     }
 
     renderItem(item: any, index: number) {
-      console.log("Focused---", this.activeId, item, this.activeId === item.id);
       return html`
-        <div class="default-wrapper"  aria-live="assertive" aria-setsize="${this.totalRecords}" aria-posinset="${index + 1}" role="option" aria-label=${item.name} id="item-${item.id}" index="${index}">
+        <div
+          class="default-wrapper"
+          aria-setsize="${this.totalRecords}"
+          aria-posinset="${index + 1}"
+          role="option"
+          aria-label=${item.name}
+          id="${prefixId}${item.id}"
+          index="${index}"
+        >
           ${item.template(item, index)}
         </div>
       `;
@@ -302,51 +272,27 @@ export namespace AdvanceList {
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
-          aria-activedescendant=${this.activeId ? `item-${this.activeId}` : `item-${this.items[0].id}`}
+          aria-live="polite"
+          aria-activedescendant=${this.activeId ? `${prefixId}${this.activeId}` : `${prefixId}${this.items[0].id}`}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}
         >
           ${scroll({
-            items: this.items,
-            renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
-            useShadowDOM: true,
-            scrollToIndex: {
-              index: this.cyclicIndex,
-              position: this.cyclicIndex === 0 ? "start" : "center"
-            }
-          })}
+        items: this.items,
+        renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
+        useShadowDOM: true,
+        scrollToIndex: {
+          index: this.scrollIndex,
+          position: this.scrollIndex === 0 ? "start" : "center"
+        }
+      })}
         </div>
-            ${this.isLoading ? 
-            (this.hasSlotContent ? 
-                html`<slot class="spin-loader" name="spin-loader"></slot>` : 
-                html`<div class="spin-loader"><md-spinner size="34"></md-spinner></div>`
-            ) : 
-            ''}     
-         `;
+            ${this.isLoading ?
+          html`<slot class="spin-loader" name="spin-loader"></slot>` : null
+        }     
+      `;
     }
-
-    handleRangeChange = (e: any) => {
-      const { last, firstVisible } = e;
-      this.clearSelectedState();
-      this.updateSelectedState();
-      console.log("Handle RangeChange---", this.cyclicIndex, this.activeItem);
-      this.scrollToActiveItem();
-      //this.setFocusOnHost(true);
-      this.listContainer?.focus();
-      console.log("Total Length", last, this.totalRecords, this.items.length, this.activeItem);
-      if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
-        this.cyclicIndex = last;
-        this.dispatchEvent(
-          new CustomEvent("load-more", {
-            detail: { page: this.page },
-            bubbles: true,
-            composed: true
-          })
-        );
-        this.page += 1;
-      }
-    };
   }
 }
 

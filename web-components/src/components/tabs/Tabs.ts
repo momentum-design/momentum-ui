@@ -660,12 +660,10 @@ export namespace Tabs {
         if (newSelectedTabIdx < this.tabsFilteredAsVisibleList.length) {
           const selectedVisibleTab = this.visibleTabsContainerElement?.children[this.selected] as HTMLElement;
           selectedVisibleTab?.focus();
-          selectedVisibleTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
         } else {
           const hiddenTabIdx = this.selected - this.tabsFilteredAsVisibleList.length;
           const selectedHiddenTab = this.hiddenTabsContainerElement?.children[hiddenTabIdx] as HTMLElement;
-          selectedHiddenTab?.focus();
-          selectedHiddenTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+          this.moveFocusToTab(selectedHiddenTab);
           const newHiddenTab = this.tabsFilteredAsHiddenList[hiddenTabIdx];
           !newHiddenTab?.disabled && this.updateHiddenIdPositiveTabIndex(newHiddenTab);
         }

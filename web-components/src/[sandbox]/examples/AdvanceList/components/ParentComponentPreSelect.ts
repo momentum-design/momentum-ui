@@ -3,8 +3,8 @@ import { html, LitElement, css, property, internalProperty } from "lit-element";
 import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
-export namespace ParentComponentGeneric {
-    @customElementWithCheck("parent-component-generic")
+export namespace ParentComponentPreSelect {
+    @customElementWithCheck("parent-component-pre-select")
     export class ELEMENT extends LitElement {
         @property({ type: Array }) items: any = [];
         @internalProperty() page = 1;
@@ -21,16 +21,13 @@ export namespace ParentComponentGeneric {
             this.isError = false;
             this.loadMoreItems();
         }
-
-         generateUUID() {
+        generateUUID() {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                 const r = Math.random() * 16 | 0;
                 const v = c === 'x' ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
         }
-                
-
         async loadMoreItems() {
             console.log("load more called")
             console.log('event dispatched ----->>>');
@@ -78,19 +75,19 @@ export namespace ParentComponentGeneric {
         render() {
             // console.log("rendering parent component--generic", this.items)
             return html`
-        <h2>Generic Item List</h2>
+        <h2>Pre Select Item List</h2>
         <md-advance-list
           .items=${this.items}
           .isLoading=${this.isLoading}
           .isError=${this.isError}
-          
+          .value=${this.value}
           ariaRoleList="listbox"
           ariaLabelList="state selector"
           .totalRecords=${this.totalRecords}
-          @list-item-change=${this.handleListItemChange}
+          @list-item-change=${this.handleListItemChange}  
           @load-more=${this.loadMoreItems}>
           <md-spinner size="24" slot="spin-loader"></md-spinner>
-          </md-advance-list>
+        </md-advance-list>
           `;
         }
 
@@ -110,6 +107,6 @@ export namespace ParentComponentGeneric {
 
 declare global {
     interface HTMLElementTagNameMap {
-        "parent-component-generic": ParentComponentGeneric.ELEMENT;
+        "parent-component-pre-select": ParentComponentPreSelect.ELEMENT;
     }
 }

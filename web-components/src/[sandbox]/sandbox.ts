@@ -14,8 +14,8 @@ import {
   breadcrumbTemplate,
   buttonGroupTemplate,
   buttonTemplate,
-  cardTemplate,
   cardAiTemplate,
+  cardTemplate,
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
@@ -377,6 +377,7 @@ export class Sandbox extends LitElement {
               <sass-stats component="date-time-picker"> ${dateTimePickerTemplate} </sass-stats>
             </div>
           </md-tab-panel>
+
           <md-tab slot="tab" name="Dropdown">
             <span>md-dropdown</span>
           </md-tab>
@@ -526,6 +527,7 @@ export class Sandbox extends LitElement {
               <sass-stats component="meeting-alert"> ${meetingAlertTemplate} </sass-stats>
             </div>
           </md-tab-panel>
+
           <md-tab slot="tab" name="Menu">
             <span>md-menu</span>
           </md-tab>

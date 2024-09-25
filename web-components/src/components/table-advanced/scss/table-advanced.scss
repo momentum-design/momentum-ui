@@ -176,7 +176,8 @@ thead {
       background: transparent;
       border: 0;
       color: var(--md-secondary-text-color);
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       min-width: calc(#{$advanced-table-sort-icon} * 2.5);
       overflow: hidden;
       padding-right: calc(#{$advanced-table-main-indent} * 4);
@@ -222,43 +223,9 @@ thead {
 
   .sortable {
     cursor: pointer;
-    position: relative;
     z-index: 1;
-
-    &::before,
-    &::after {
-      border: $advanced-table-main-indent solid transparent;
-      content: "";
-      display: block;
-      height: 0;
-      opacity: 0.3;
-      position: absolute;
-      right: $advanced-table-main-indent;
-      top: 50%;
-      width: 0;
-    }
-
-    &::before {
-      border-bottom-color: var(--md-secondary-text-color);
-      margin-top: -9px;
-    }
-
-    &::after {
-      border-top-color: var(--md-secondary-text-color);
-      margin-top: 1px;
-    }
-
-    &.ascending {
-      &::after {
-        opacity: 1;
-      }
-    }
-
-    &.descending {
-      &::before {
-        opacity: 1;
-      }
-    }
+    gap: 0.5rem;
+    
   }
 }
 

@@ -17,6 +17,7 @@ import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/tooltip/Tooltip";
 import svgWxm from "@img/wxm.svg";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
+import { TemplateResult } from "lit-html";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import { nanoid } from "nanoid";
@@ -566,6 +567,71 @@ export class TabsTemplateSandbox extends LitElement {
   }
 }
 
+@customElement("tabs-justified-sandbox-example")
+export class TabsJustifiedTemplateSandbox extends LitElement {
+  get tabsJustifiedTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs justified</h3>
+      <md-tabs draggable justified>
+        <md-tab slot="tab" name="History">
+          <span>All</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History">
+          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History">
+          <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Third Tab"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History">
+          <md-icon name="alert_16"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Fourth Tab"</span>
+        </md-tab-panel>
+      </md-tabs>
+    `;
+  }
+
+  get tabsJustifiedWithTooltipTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs justified with tooltip</h3>
+      <md-tabs draggable justified>
+        <md-tab slot="tab" name="History">
+          <md-tooltip placement="top" message="Browser">
+            <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
+          </md-tooltip>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Third Tab"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History">
+          <md-tooltip placement="top" message="Alert">
+            <md-icon name="alert_16"></md-icon>
+          </md-tooltip>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Fourth Tab"</span>
+        </md-tab-panel>
+      </md-tabs>
+    `;
+  }
+
+  render(): TemplateResult {
+    return html`
+      <div style="max-width: 600px;">${this.tabsJustifiedTemplate}${this.tabsJustifiedWithTooltipTemplate}</div>
+    `;
+  }
+}
+
 export const tabsTemplate = html`
   <default-tabs-sandbox></default-tabs-sandbox>
   <tabs-order-prefs-example></tabs-order-prefs-example>
@@ -728,33 +794,7 @@ export const tabsTemplate = html`
     </div>
     <br />
     <div style="max-width: 400px;">
-      <h3>md-tabs justified</h3>
-      <md-tabs draggable justified>
-        <md-tab slot="tab" name="History">
-          <span>All</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Contact History"</span>
-        </md-tab-panel>
-        <md-tab slot="tab" name="History">
-          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "WxM"</span>
-        </md-tab-panel>
-        <md-tab slot="tab" name="History">
-          <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Third Tab"</span>
-        </md-tab-panel>
-        <md-tab slot="tab" name="History">
-          <md-icon name="alert_16"></md-icon>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Fourth Tab"</span>
-        </md-tab-panel>
-      </md-tabs>
+      <tabs-justified-sandbox-example></tabs-justified-sandbox-example>
     </div>
   </div>
   <br />

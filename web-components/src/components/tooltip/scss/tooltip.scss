@@ -2,7 +2,6 @@
 
 :host {
   display: inline-flex;
-  align-items: center;
 }
 
 .md-tooltip {
@@ -17,11 +16,6 @@
 
   &__content {
     display: inline-block;
-  }
-
-  &__reference {
-    display:flex;
-    align-items: center;
   }
 
   &__popper {

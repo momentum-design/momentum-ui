@@ -1,5 +1,7 @@
 :host {
   box-sizing: border-box;
+  font-family: var(--brand-font-medium);
+  font-weight: var(--brand-font-weight-medium);
 }
 
 :host(:focus) {
@@ -106,7 +108,17 @@
   gap: 0.5rem;
   
   max-width: 100%;
-  height: 100%;  
+  height: 100%;
+}
+
+md-tooltip{
+  display: inline-flex;
+  align-items: center;
+}
+
+::part(tooltip_reference) {
+  display: flex;
+  align-items: center;
 }
 
 slot {

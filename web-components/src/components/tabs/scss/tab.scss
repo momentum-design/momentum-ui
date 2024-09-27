@@ -1,7 +1,5 @@
 :host {
   box-sizing: border-box;
-  font-family: var(--brand-font-medium);
-  font-weight: var(--brand-font-weight-medium);
 }
 
 :host(:focus) {
@@ -166,6 +164,8 @@ md-icon {
 }
 
 button {
+  font-family: var(--brand-font-medium);
+  font-weight: var(--brand-font-weight-medium);
   background: $tab-none-bg;
   border: none;
   border-radius: $tab-focus-border-radius;

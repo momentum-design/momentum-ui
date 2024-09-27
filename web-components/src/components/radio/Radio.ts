@@ -21,6 +21,7 @@ export namespace Radio {
     @property({ type: String }) value = "";
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, reflect: true }) autofocus = false;
+    @property({ type: String }) langAttr = "";
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -80,7 +81,7 @@ export namespace Radio {
             aria-hidden="true"
             id="radio-label"
           />
-          <label for="radio-label" class="md-radio-label" part="radio-label"><slot></slot></label>
+          <label lang=${ifDefined(this.langAttr !== "" ? this.langAttr : undefined)} for="radio-label" class="md-radio-label" part="radio-label" ><slot></slot></label>
         </div>
       `;
     }

@@ -322,7 +322,8 @@ div#md-combobox-listbox {
   border-radius: $combobox-dropdown-radius;
   box-shadow: $combobox-dropdown-shadow;
   box-sizing: border-box;
-  font-size: var(--body-primary-font-size, $font-size-base);
+  font-family: $brand-font-regular;
+  font-size: $font-size-base;
   left: 0;
   list-style: none;
   margin: 0;

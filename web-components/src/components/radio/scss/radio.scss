@@ -17,10 +17,11 @@
       cursor: pointer;
       font-size: $font-size-base;
       line-height: $radio-input-max-height;
-      padding-left: calc(#{$radio-input-size} * 1.8);
-      padding-right: calc(#{$radio-main-indent} / 2);
+      padding-left: $radio-input-left-padding;
+      padding-right: rem-calc(8);
       pointer-events: none;
       position: relative;
+      vertical-align: middle;
       @include text-dots;
 
       &::before {

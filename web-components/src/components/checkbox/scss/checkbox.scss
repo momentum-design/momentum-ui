@@ -20,12 +20,14 @@
 
   .checkbox-label {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
     padding-left: $checkbox__label-size;
     padding-right: calc(#{$checkbox__main-indent} / 2);
     position: relative;
     width: 100%;
     z-index: 1;
+    align-items: center;
+    gap: 0.5rem;
 
     &::before {
       background: var(--checkbox-bg-color, $lm-checkbox-bg-color-light);

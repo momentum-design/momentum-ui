@@ -6,7 +6,7 @@
     position: relative;
     text-align: center;
     border-radius: var(--alert-banner-border-radius);
-    font-family: var(--brand-font-regular);
+    font-family: $brand-font-regular;
     font-weight: var(--brand-font-weight-regular);
 
     &.md-alert-banner {

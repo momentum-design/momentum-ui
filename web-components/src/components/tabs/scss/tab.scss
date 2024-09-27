@@ -106,7 +106,17 @@
   gap: 0.5rem;
   
   max-width: 100%;
-  height: 100%;  
+  height: 100%;
+}
+
+md-tooltip{
+  display: inline-flex;
+  align-items: center;
+}
+
+::part(tooltip_reference) {
+  display: flex;
+  align-items: center;
 }
 
 slot {
@@ -154,6 +164,8 @@ md-icon {
 }
 
 button {
+  font-family: var(--brand-font-medium);
+  font-weight: var(--brand-font-weight-medium);
   background: $tab-none-bg;
   border: none;
   border-radius: $tab-focus-border-radius;

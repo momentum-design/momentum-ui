@@ -109,14 +109,14 @@ export class TabsOrderPrefsExample extends LitElement {
           <li>Each pair of <code>md-tab</code> and <code>md-tab-panel</code> should have <i>name</i> attribute</li>
         </ul>
         <md-tabs persist-selection tabs-id="tabOrder" draggable comp-unique-id="tabs-test-component">
-          <md-tab slot="tab" name="History" closable="custom" label="History">
+          <md-tab slot="tab" name="History" closable="custom" aria-label="History">
             <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
             <span>Contact History</span>
           </md-tab>
           <md-tab-panel name="History" slot="panel">
             <span>Content for "Contact History"</span>
           </md-tab-panel>
-          <md-tab slot="tab" name="WxM" closable="custom" label="WxM">
+          <md-tab slot="tab" name="WxM" closable="custom" aria-label="WxM">
             <md-icon name="apps_16"></md-icon>
             <span>Cisco WxM</span>
           </md-tab>
@@ -198,7 +198,7 @@ export class TabsTemplateSandbox extends LitElement {
   private setUpTabs() {
     this.tabs = {
       History: `
-        <md-tab slot="tab" name="History" closable="custom" label="History">
+        <md-tab slot="tab" name="History" closable="custom" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
@@ -207,7 +207,7 @@ export class TabsTemplateSandbox extends LitElement {
         </md-tab-panel>
       `,
       WxM: `
-        <md-tab slot="tab" name="WxM" closable="custom" label="WxM">
+        <md-tab slot="tab" name="WxM" closable="custom" aria-label="WxM">
           <md-icon name="apps_16"></md-icon>
           <span>Cisco WxM</span>
         </md-tab>
@@ -319,7 +319,7 @@ export class TabsTemplateSandbox extends LitElement {
     this.addEventListener("tab-close-click", this.handleTabCustomClose as EventListener);
   }
 
-  private handleCheckboxChange(event: any, tabLabel: string) {
+  private handleCheckboxChange(event: Event, tabLabel: string) {
     if (event && tabLabel) {
       const path = event.composedPath();
       const checkboxElement = Array.from(path).find(
@@ -372,139 +372,96 @@ export class TabsTemplateSandbox extends LitElement {
           Single Button Reset
         </md-toggle-switch>
         <div>
-        <md-tabs justified selected="0" ref={tabElm}>
-        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
-          <span>Entry Point</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <md-list role="listbox">
-            <md-list-item
-              slot="list-item"
-              type="auto"
-              aria-label="item-1"
-              shape="rounded">
-              <div
-                aria-label="item-1-div"
-                display-value="12345678"
-                style="display: flex; alignItems: center;">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
-                  <p>
-                    Item-1
-                  </p>
-                  <p>
-                    Item-1-sub
-                  </p>
-                </div>
+          <md-tabs justified selected="0">
+            <md-tab slot="tab" aria-label="entry-point">
+              <span>Entry Point</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <md-list role="listbox">
+                <md-list-item slot="list-item" aria-label="item-1" shape="rounded">
+                  <div aria-label="item-1-div" style="display: flex; alignItems: center;">
+                    <div style="{paddingLeft: 12px;}">
+                      <div class="address-dn"></div>
+                      <p>Item-1</p>
+                      <p>Item-1-sub</p>
+                    </div>
+                  </div>
+                </md-list-item>
+                <md-list-item slot="list-item" aria-label="item-2" shape="rounded">
+                  <div aria-label="item-2-div" style="display: flex, alignItems: center">
+                    <div style="paddingLeft: 12px;">
+                      <div class="address-dn"></div>
+                      <p>Item-2</p>
+                      <p>Item-2-sub</p>
+                    </div>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </md-tab-panel>
+            <md-tab slot="tab" aria-label="{transferModal.addressBookSectionLabel}" aria-label="address-book">
+              <span>Address Book</span>
+            </md-tab>
+            <md-tab-panel slot="panel" class="address-panel">
+              <md-list role="listbox">
+                <md-list-item slot="list-item" aria-label="item-1">
+                  <div aria-label="item-1-div" style="display: flex, alignItems: center">
+                    <div style="paddingLeft: 12px;">
+                      <div class="address-dn"></div>
+                      <p>Item-1</p>
+                      <p>Item-1-sub</p>
+                    </div>
+                  </div>
+                </md-list-item>
+                <md-list-item slot="list-item" aria-label="item-2">
+                  <div aria-label="item-2-div" style="display: flex, alignItems: center">
+                    <div style="paddingLeft: 12px;">
+                      <div class="address-dn"></div>
+                      <p>Item-2</p>
+                      <p>Item-2-sub</p>
+                    </div>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </md-tab-panel>
+          </md-tabs>
+          <md-tabs justified>
+            <md-tab slot="tab" aria-label="Dial Number">
+              <span>Dial Number</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <div class="phone-fromat">
+                <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
+                  <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
+                  <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
+                </md-radiogroup>
               </div>
-            </md-list-item>
-            <md-list-item
-              slot="list-item"
-              type="auto"
-              aria-label="item-2"
-              shape="rounded">
-              <div
-                aria-label="item-2-div"
-                display-value="12345678"
-                style="display: flex, alignItems: center">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
-                  <p>
-                    Item-2
-                  </p>
-                  <p>
-                    Item-2-sub
-                  </p>
-                </div>
+              <md-input
+                type="tel"
+                id="dn"
+                class="dial-number"
+                placeholder="Dial Number"
+                shape="pill"
+                autofocus
+                clear
+              ></md-input>
+            </md-tab-panel>
+            <md-tab slot="tab" aria-label="Extension">
+              <span>Extension</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <div class="extension-format">
+                <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
               </div>
-            </md-list-item>
-          </md-list>
-        </md-tab-panel>
-        <md-tab slot="tab" aria-label={transferModal.addressBookSectionLabel} label="address-book">
-          <span>Address Book</span>
-        </md-tab>
-        <md-tab-panel slot="panel" class="address-panel">
-        <md-list role="listbox">
-            <md-list-item
-              slot="list-item"
-              type="auto"
-              aria-label="item-1">
-              <div
-                aria-label="item-1-div"
-                display-value="12345678"
-                style="display: flex, alignItems: center">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
-                  <p>
-                    Item-1
-                  </p>
-                  <p>
-                    Item-1-sub
-                  </p>
-                </div>
-              </div>
-            </md-list-item>
-            <md-list-item
-              slot="list-item"
-              type="auto"
-              aria-label="item-2">
-              <div
-                aria-label="item-2-div"
-                display-value="12345678"
-                style="display: flex, alignItems: center">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
-                  <p>
-                    Item-2
-                  </p>
-                  <p>
-                    Item-2-sub
-                  </p>
-                </div>
-              </div>
-            </md-list-item>
-      </md-list>
-        </md-tab-panel>
-      </md-tabs>
-      <md-tabs justified>
-        <md-tab slot="tab" label="Dial Number">
-          <span>Dial Number</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <div class="phone-fromat">
-            <md-radiogroup group-label="phone-fromat" alignment="horizontal" checked="0">
-              <md-radio slot="radio" value="US" aria-label="US Format">US Format</md-radio>
-              <md-radio slot="radio" value="Other" ariaLabel="Other">Other</md-radio>
-            </md-radiogroup>
-          </div>
-          <md-input
-            type="tel"
-            id="dn"
-            class="dial-number"
-            placeholder="Dial Number"
-            shape="pill"
-            autofocus
-            clear
-          ></md-input>
-        </md-tab-panel>
-        <md-tab slot="tab" label="Extension">
-          <span>Extension</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <div class="extension-format">
-            <md-input aria-label="Team X" type="tel" id="ext" placeholder="Team X" shape="pill"></md-input>
-          </div>
-          <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
-        </md-tab-panel>
-      </md-tabs>
-        <md-tabs selected="0" persist-selection tabs-id="tabOrder"  draggable justified>
-          ${repeat(
-            this.currentTabsOrder,
-            () => nanoid(10),
-            (tabElement) => html` ${unsafeHTML(this.tabs[tabElement])} `
-          )}
-          ${
-            !this.isSingleButtonResetEnabled
+              <md-combobox placeholder="Choose Team" .options=${comboBoxOptions}></md-combobox>
+            </md-tab-panel>
+          </md-tabs>
+          <md-tabs selected="0" persist-selection tabs-id="tabOrder" draggable justified>
+            ${repeat(
+              this.currentTabsOrder,
+              () => nanoid(10),
+              (tabElement) => html` ${unsafeHTML(this.tabs[tabElement])} `
+            )}
+            ${!this.isSingleButtonResetEnabled
               ? html`
                   <md-menu-overlay
                     slot="settings"
@@ -549,8 +506,7 @@ export class TabsTemplateSandbox extends LitElement {
                       <md-icon name="icon-reset_16"></md-icon>
                     </md-tooltip>
                   </button>
-                `
-          }
+                `}
           </md-tabs>
         </div>
         <br />
@@ -639,14 +595,14 @@ export const tabsTemplate = html`
     <h3>Draggable horizontal md-tabs with More button</h3>
     <div>
       <md-tabs selected="2" draggable>
-        <md-tab disabled slot="tab" name="History" closable="auto" label="History">
+        <md-tab disabled slot="tab" name="History" closable="auto" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="WxM" closable="auto" label="WxM">
+        <md-tab slot="tab" name="WxM" closable="auto" aria-label="WxM">
           <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
@@ -703,14 +659,14 @@ export const tabsTemplate = html`
     <h3>md-tabs draggable tabs without closable property</h3>
     <div>
       <md-tabs selected="2" justified draggable>
-        <md-tab slot="tab" name="History" label="History">
+        <md-tab slot="tab" name="History" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="WxM" label="WxM">
+        <md-tab slot="tab" name="WxM" aria-label="WxM">
           <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
@@ -730,14 +686,14 @@ export const tabsTemplate = html`
     <h3>md-tabs draggable each with a closable property</h3>
     <div>
       <md-tabs selected="0" draggable>
-        <md-tab slot="tab" closable="auto" name="History" label="History">
+        <md-tab slot="tab" closable="auto" name="History" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
+        <md-tab slot="tab" closable="auto" name="WxM" aria-label="WxM">
           <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>
@@ -763,14 +719,14 @@ export const tabsTemplate = html`
         <md-tab-panel slot="panel">
           <span>Content for "All Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable="auto" name="History" label="History">
+        <md-tab slot="tab" closable="auto" name="History" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable="auto" name="WxM" label="WxM">
+        <md-tab slot="tab" closable="auto" name="WxM" aria-label="WxM">
           <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
           <span>Cisco WxM</span>
         </md-tab>

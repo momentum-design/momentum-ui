@@ -7,6 +7,8 @@
  */
 
 import { tableWarns } from "@/[sandbox]/sandbox.mock";
+import "@/components/checkbox/Checkbox";
+import "@/components/checkbox/CheckboxGroup";
 import "@/components/table/Table";
 import { css, customElement, html, internalProperty, LitElement, query, TemplateResult } from "lit-element";
 

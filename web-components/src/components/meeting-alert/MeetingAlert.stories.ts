@@ -65,6 +65,7 @@ export const MeetingAlert = () => {
   if (withAttendees) {
     const attendees = array("Attendees", defaultValue);
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     return html`
       <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${darkTheme} theme=${theme}>
         <md-meeting-alert

@@ -93,24 +93,19 @@ export const alertTemplate = html`
     <span slot="alert-body"><b>Username</b> joined the session</span></md-alert
   >
   <md-alert type="loading" title="Connecting" closable show newMomentum></md-alert>
-  <md-alert
-    title="Ready to pause and recharge?"
-    message="Hey there, you're on a roll. How about a wellness break? This break is pre-approved by your organization for your well-being. You deserve it."
-    primaryButton="Take a Break"
-    secondaryButton="Later"
-    closable
-    show
-    newMomentum
-  >
-    <img
-      slot="alert-icon"
-      alt="avatar"
-      src="https://help.webex.com/images/ciscoAiLogo.png"
-      height="24"
-      width="24"
-    ></img>
-  </md-alert>
-
+  <div style="position: absolute; right: 48px; top: 48px; width: 340px;">
+    <md-alert
+      title="Ready to pause and recharge?"
+      message="Hey there, you're on a roll. How about a wellness break? This break is pre-approved by your organization for your well-being. You deserve it."
+      primaryButton="Take a Break"
+      secondaryButton="Later"
+      closable
+      show
+      newMomentum
+    >
+      <md-icon slot="alert-icon" size="24" iconSet="momentumDesign" name="cisco-ai-assistant-default"> </md-icon>
+    </md-alert>
+  </div>
   <h3>New Momentum with slotted footer</h3>
   <md-alert
     title="Ready to pause and recharge?"
@@ -119,13 +114,7 @@ export const alertTemplate = html`
     show
     newMomentum
   >
-    <md-icon
-        slot="alert-icon"
-        size="24"
-        iconSet="momentumDesign"
-        name="cisco-ai-assistant-default"
-      >
-    </md-icon>
+    <md-icon slot="alert-icon" size="24" iconSet="momentumDesign" name="cisco-ai-assistant-default"> </md-icon>
     <div slot="alert-footer">
       <md-button variant="primary">
         <span slot="text">primary</span>

@@ -83,9 +83,10 @@
 
 .md-new-alert {
   @include border-radius($alert_new_border-radius);
+  
   background-color: var(--alert-default-bg-color);
   border: 1px solid var(--alert-default-new-border-color, $black-12);
-  box-shadow: 0 24px 48px 0 var(--alert-default-border-color, $black-12);
+  box-shadow: 0px 0px 1px 0px #0000001F, 0px 8px 48px 0px #00000033;
   flex: 1 1 100%;
   margin-bottom: rem-calc(8);
   max-height: rem-calc(220);
@@ -119,6 +120,8 @@
     @include line-dots(2);
     text-overflow: ellipsis;
     color: var(--alert-title-text-color);
+    font-family: $brand-font-medium;
+    font-weight: 500;
     font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
     line-height: rem-calc(24);
     width: calc(100%);
@@ -127,9 +130,9 @@
   &__message {
     @include line-dots(5);
     color: var(--alert-title-text-color);
-    font-family: $brand-font-light;
-    font-size: $alert__font-size;
-    line-height: 1.25rem;
+    font-family: $brand-font-regular;
+    font-size: var(--body-secondary-font-size, rem-calc(14));
+    line-height: rem-calc(20);
     width: calc(100%);
     word-wrap: break-word;
     margin-top: rem-calc(4);
@@ -177,7 +180,7 @@
     margin-top: rem-calc(4);
     display: flex;
     justify-content: center;
-    font-family: $brand-font-light;
+    font-family: $brand-font-regular;
 
     md-icon {
       margin-left: rem-calc(8);

@@ -372,7 +372,7 @@ export class ButtonTemplateSandbox extends LitElement {
             <span class="status-indicator-container">
               <md-icon
                 slot="icon"
-                name="recents-presence-badge-filled"
+                name="dnd-presence-badge-filled"
                 iconSet="momentumDesign"
                 size="16"
                 color="var(--avatar-presence-rona)"

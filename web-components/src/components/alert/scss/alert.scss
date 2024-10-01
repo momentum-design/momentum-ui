@@ -86,7 +86,7 @@
   
   background-color: var(--alert-default-bg-color);
   border: 1px solid var(--alert-default-new-border-color, $black-12);
-  box-shadow: 0px 0px 1px 0px #0000001F, 0px 8px 48px 0px #00000033;
+  box-shadow: 0px 0px 1px 0px #0000001F, 0px 8px 16px 0px #00000033;
   flex: 1 1 100%;
   margin-bottom: rem-calc(8);
   max-height: rem-calc(220);

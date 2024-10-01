@@ -58,9 +58,22 @@ export const chipTemplate = html`
     iconSize="16"
     iconSet="momentumDesign"
     iconColor="violet-60"
+    tooltipText="super-long-cisco-tihng-filename_001239084.png"
     value="super-long-cisco-tihng-filename_001239084.png"
   >
   </md-chip>
+
+  <h3 class="sandbox-header">Text Overflow Chip with different tooltip</h3>
+  <md-chip
+    icon="file-pdf-bold"
+    iconSize="16"
+    iconSet="momentumDesign"
+    iconColor="violet-60"
+    tooltipText="a more descriptive tooltip"
+    value="super-long-cisco-tihng-filename_001239084.png"
+  >
+  </md-chip>
+
   <h3 class="sandbox-header">Minimum Width Chip</h3>
   <md-chip icon="file-pdf-bold" iconSize="16" iconSet="momentumDesign" iconColor="violet-60" value="i"> </md-chip>
   <h3 class="sandbox-header">Named Custom content Slots</h3>

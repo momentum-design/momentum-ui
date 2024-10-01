@@ -248,7 +248,7 @@ export namespace Chip {
 
     getToolTipContent() {
       if (this.tooltipText && this.textOverflow) {
-        return `${this.value}, ${this.tooltipText}`;
+        return this.value === this.tooltipText ? this.tooltipText : `${this.value}, ${this.tooltipText}`;
       } else {
         return this.tooltipText ? this.tooltipText : this.value;
       }

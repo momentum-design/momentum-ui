@@ -169,7 +169,7 @@ describe("Presence", () => {
   test("returns correct values for rona presenceType", () => {
     const result = getPresenceIconColor("rona", false);
     expect(result).toEqual({
-      presenceIcon: "recents-presence-badge-filled",
+      presenceIcon: "dnd-presence-badge-filled",
       presenceColor: "var(--avatar-presence-rona)",
       isCircularWrapper: true
     });

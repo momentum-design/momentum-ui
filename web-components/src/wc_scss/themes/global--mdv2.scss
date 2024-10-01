@@ -16,8 +16,8 @@ $inter-thin-font: "Inter Thin", $font-family-sans-serif;
 $inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
 $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
-@mixin global-theme-specfic-vars {
-  --rem-base: 14px;
+@mixin global-theme-specific-vars {
+  --rem-base: 16px;
   --brand-font-regular: #{$inter-base-font};
   --brand-font-bold: #{$inter-bold-font};
   --brand-font-bold-oblique: #{$inter-bold-oblique-font};
@@ -41,10 +41,10 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   font-family: var(--brand-font-regular);
   font-weight: var(--brand-font-weight-regular);
 
-  --body-large-font-size: rem-calc(16);
-  --body-primary-font-size: rem-calc(14);
-  --body-secondary-font-size: rem-calc(12);
-  --label-compact-font-size: rem-calc(10);
+  --body-large-font-size: 1.125rem;
+  --body-primary-font-size: 1rem;
+  --body-secondary-font-size: 0.875rem;
+  --label-compact-font-size: 0.75rem;
 
   --body-primary-line-height: 1.5rem;
 
@@ -138,8 +138,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
   --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
 
-  // Background colours can not be overwritten because they are being used by consumers in unexpected ways
-  // New background colours should be introduced and these phased out
+  // Background colors can not be overwritten because they are being used by consumers in unexpected ways
+  // New background colors should be introduced and these phased out
   // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   // --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   // --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};

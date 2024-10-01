@@ -5,7 +5,6 @@ import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import RemovePlugin from "remove-files-webpack-plugin";
-import sass from "sass";
 import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
@@ -92,7 +91,6 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       {
         loader: "sass-loader",
         options: {
-          implementation: sass,
           sourceMap: isDev,
           sassOptions: {
             outputStyle: "compressed"

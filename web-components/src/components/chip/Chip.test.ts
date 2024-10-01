@@ -126,4 +126,12 @@ describe("Chip component", () => {
     const expectedResult = "chip text content that is too long, More Info about the Chip";
     expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
   });
+
+  test("should truncate long text and if the tooltip is the same string as the value attribute then use only one of them.", async () => {
+    const component: Chip.ELEMENT = await fixture(html`
+      <md-chip value="chip text content that is too long" tooltipText="chip text content that is too long"></md-chip>
+    `);
+    const expectedResult = "chip text content that is too long";
+    expect(component.shadowRoot?.querySelector("md-tooltip")?.getAttribute("message")).toEqual(expectedResult);
+  });
 });

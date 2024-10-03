@@ -149,7 +149,7 @@ export namespace MenuOverlay {
     connectedCallback() {
       super.connectedCallback();
       this.handleIframeClick = this.handleIframeClick.bind(this);
-      window.addEventListener('blur', this.handleIframeClick);
+      window.addEventListener("blur", this.handleIframeClick);
       document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
       this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
@@ -160,7 +160,7 @@ export namespace MenuOverlay {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
-      window.removeEventListener('blur', this.handleIframeClick);
+      window.removeEventListener("blur", this.handleIframeClick);
 
       this.removeEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.removeEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);

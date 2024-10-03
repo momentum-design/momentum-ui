@@ -599,4 +599,36 @@ describe("MenuOverlay", () => {
     expect(document.activeElement).toEqual(button);
     Event.prototype.composedPath = originalComposedPath1;
   });
+
+  test('should close the menu when an iframe is clicked and the menu is open', async () => {
+    const element = await fixtureFactory(true, false, "bottom", "", "", "large");
+    element.isOpen = true;
+    await nextFrame();
+    expect(element.isOpen).toBeTruthy();
+
+    const iframe = document.createElement('iframe');
+    document.body.appendChild(iframe);
+    iframe.focus();
+    element.handleIframeClick();
+    await nextFrame();
+
+    expect(element.isOpen).toBeFalsy();
+    document.body.removeChild(iframe);
+  });
+
+  test('should try to close the menu when an iframe is clicked and the menu is closed', async () => {
+    const element = await fixtureFactory(true, false, "bottom", "", "", "large");
+    element.isOpen = false;
+    await nextFrame();
+    expect(element.isOpen).toBeFalsy();
+
+    const iframe = document.createElement('iframe');
+    document.body.appendChild(iframe);
+    iframe.focus();
+    element.handleIframeClick();
+    await nextFrame();
+
+    expect(element.isOpen).toBeFalsy();
+    document.body.removeChild(iframe);
+  });
 });

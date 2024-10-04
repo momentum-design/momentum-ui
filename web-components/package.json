@@ -60,6 +60,7 @@
     "@interactjs/interact": "1.10.3",
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
+    "@momentum-design/brand-visuals": "0.0.27",
     "@momentum-design/icons": "0.0.166",
     "@momentum-design/tokens": "0.0.95",
     "@popperjs/core": "^2.4.4",

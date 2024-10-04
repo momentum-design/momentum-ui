@@ -59,7 +59,10 @@ const common: webpack.Configuration = {
             esModule: false
           }
         },
-        include: path.resolve("node_modules/@momentum-design/icons/dist/svg")
+        include: [
+          path.resolve("node_modules/@momentum-design/icons/dist/svg"),
+          path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg")
+        ]
       }
     ]
   }

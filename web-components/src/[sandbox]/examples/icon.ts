@@ -40,17 +40,27 @@ export const iconTemplate = html`
     color="var(--avatar-presence-active)"
   ></md-icon>
 
-  <h3>Icon with svg colouring</h3>
-  <md-icon name="social-fbmessenger-colored" iconSet="momentumDesign" title="facebook messenger" size="32"></md-icon>
-  <md-icon name="social-microsoft-colored" iconSet="momentumDesign" title="microsoft" size="32"></md-icon>
-  <md-icon name="social-viber-colored" iconSet="momentumDesign" title="viber" size="32"></md-icon>
-  <md-icon name="social-telegram-colored" iconSet="momentumDesign" title="telegram" size="32"></md-icon>
-  <md-icon name="social-sms-colored-mint" iconSet="momentumDesign" title="social-sms-colored-mint" size="32"></md-icon>
-  <md-icon name="social-rcs-colored" iconSet="momentumDesign" title="rcs" size="32"></md-icon>
-  <md-icon name="social-wechat-colored" iconSet="momentumDesign" title="wechat" size="32"></md-icon>
-  <md-icon name="social-whatsapp-colored" iconSet="momentumDesign" title="whatsapp" size="32"></md-icon>
-  <md-icon name="social-alexa-colored" iconSet="momentumDesign" title="alexa" size="32"></md-icon>
-  <md-icon name="social-facebook-colored" iconSet="momentumDesign" title="facebook" size="32"></md-icon>
-  <md-icon name="apple-business-chat-colored" iconSet="momentumDesign" title="apple business chat" size="32"></md-icon>
-  <md-icon name="social-x" iconSet="momentumDesign" title="X" size="32"></md-icon>
+  <h3>Logos (svg) from Brand Visuals Library</h3>
+  <md-icon
+    name="social-fbmessenger-color"
+    iconSet="momentumBrandVisuals"
+    title="facebook messenger"
+    size="32"
+  ></md-icon>
+  <md-icon name="social-microsoft-color" iconSet="momentumBrandVisuals" title="microsoft" size="32"></md-icon>
+  <md-icon name="social-viber-color" iconSet="momentumBrandVisuals" title="viber" size="32"></md-icon>
+  <md-icon name="social-telegram-color" iconSet="momentumBrandVisuals" title="telegram" size="32"></md-icon>
+  <md-icon name="cisco-ai-assistant-color" iconSet="momentumBrandVisuals" title="assistant" size="32"></md-icon>
+  <md-icon name="social-rcs-color" iconSet="momentumBrandVisuals" title="rcs" size="32"></md-icon>
+  <md-icon name="social-wechat-color" iconSet="momentumBrandVisuals" title="wechat" size="32"></md-icon>
+  <md-icon name="social-whatsapp-color" iconSet="momentumBrandVisuals" title="whatsapp" size="32"></md-icon>
+  <md-icon name="social-alexa-color" iconSet="momentumBrandVisuals" title="alexa" size="32"></md-icon>
+  <md-icon name="social-facebook-color" iconSet="momentumBrandVisuals" title="facebook" size="32"></md-icon>
+  <md-icon
+    name="apple-business-chat-color"
+    iconSet="momentumBrandVisuals"
+    title="apple business chat"
+    size="32"
+  ></md-icon>
+  <md-icon name="social-x" iconSet="momentumBrandVisuals" title="X" size="32"></md-icon>
 `;

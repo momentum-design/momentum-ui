@@ -64,6 +64,12 @@ export class Sandbox extends LitElement {
   @property({ type: Boolean }) darkTheme = false;
   @property({ type: String }) theme: ThemeName = "lumos";
 
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.loadSettingsFromStorage();
+    console.log("connected");
+  }
+
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (this.darkTheme) {
@@ -75,14 +81,28 @@ export class Sandbox extends LitElement {
     }
   }
 
+  loadSettingsFromStorage() {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      this.theme = storedTheme as ThemeName;
+    }
+
+    const storedDarkTheme = localStorage.getItem("darkTheme");
+    if (storedDarkTheme) {
+      this.darkTheme = JSON.parse(storedDarkTheme);
+    }
+  }
+
   toggleSetting(event: MouseEvent) {
     const composedPath = event.composedPath();
     const target = composedPath[0] as unknown as HTMLOrSVGElement;
     const { aspect } = target.dataset;
     if (aspect === "lumos" || aspect === "momentumV2" || aspect === "momentum") {
       this.theme = aspect;
+      localStorage.setItem("theme", this.theme);
     } else if (aspect === "darkTheme") {
       this.darkTheme = !this.darkTheme;
+      localStorage.setItem("darkTheme", JSON.stringify(this.darkTheme));
     } else {
       console.error("Invalid data-aspect input");
       return;

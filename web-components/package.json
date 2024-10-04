@@ -41,9 +41,7 @@
     "jest": "^26.4.2",
     "jest-config": "^26.4.2",
     "lit-element": "2.3.1",
-    "lit-html": "^1.2.1",
-    "@types/express-serve-static-core": "4.17.33",
-    "wc-sass-render/**/sass": "1.77.8"
+    "lit-html": "^1.2.1"
   },
   "peerDependencies": {
     "@momentum-ui/core": "19.16.0",
@@ -61,9 +59,9 @@
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
     "@momentum-design/brand-visuals": "0.0.27",
-    "@momentum-design/icons": "0.0.166",
+    "@momentum-design/icons": "0.1.0",
     "@momentum-design/tokens": "0.0.95",
-    "@popperjs/core": "^2.4.4",
+    "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",
     "country-flags-svg": "1.1.4",
     "dompurify": "^3.1.6",
@@ -74,7 +72,7 @@
     "luxon": "^1.25.0",
     "nanoid": "^3.1.16",
     "papaparse": "^5.4.1",
-    "sortablejs": "^1.13.0"
+    "sortablejs": "^1.15.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -135,15 +133,15 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1",
     "lit-scss-loader": "1.0.1",
-    "postcss": "^8.4.29",
-    "postcss-selector-parser": "^6.1.1",
+    "postcss": "^8.4.47",
+    "postcss-selector-parser": "^6.1.2",
     "prettier": "^3.3.3",
     "properties-reader": "^2.3.0",
-    "query-selector-shadow-dom": "^0.4.6",
+    "query-selector-shadow-dom": "^1.0.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "remove-files-webpack-plugin": "1.4.0",
-    "sass": "^1.77.8",
+    "sass": "^1.79.4",
     "sass-loader": "^10.5.2",
     "sonarqube-scanner": "^2.8.1",
     "string-replace-loader": "^2.3.0",
@@ -158,10 +156,10 @@
     "url-loader": "^4.1.1",
     "wc-sass-render": "^1.4.0",
     "wcag-color": "^1.1.1",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
+    "webpack": "^4.47.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.15.2",
     "webpack-merge": "^5.7.3",
-    "webpack-node-externals": "^2.0.0"
+    "webpack-node-externals": "^3.0.0"
   }
 }

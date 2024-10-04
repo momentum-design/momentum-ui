@@ -126,7 +126,11 @@ export class GrabberTemplateSandbox extends LitElement {
         <div class="toggle-container">
           <div class="toggle-div collapsed" id="toggleDiv"></div>
           <div class="divider"></div>
-          <md-grabber id="grabberToggle" alignment="leading" @click="${this.toggleWidth.bind(this)}"></md-grabber>
+          <md-grabber
+            id="grabberToggle"
+            alignment="leading"
+            @grabber-toggled="${this.toggleWidth.bind(this)}"
+          ></md-grabber>
         </div>
       </div>
     `;

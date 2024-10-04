@@ -91,7 +91,7 @@ export namespace CardAi {
         return html`
           <div class="md-card-ai-header">
             <slot name="card-header-aside">
-              <md-icon name="cisco-ai-assistant-default" iconSet="momentumDesign"></md-icon>
+              <md-icon name="cisco-ai-assistant-color" iconSet="momentumBrandVisuals"></md-icon>
             </slot>
             <div class="md-card-ai-header-title">
               <slot name="card-header-title">

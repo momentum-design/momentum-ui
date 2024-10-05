@@ -600,7 +600,7 @@ describe("MenuOverlay", () => {
     Event.prototype.composedPath = originalComposedPath1;
   });
 
-  test('should close the menu when an iframe is clicked and the menu is open', async () => {
+  test('should close the menu when window loses focus, such as iframe click, and the menu is open', async () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
     element.isOpen = true;
     await nextFrame();
@@ -609,14 +609,14 @@ describe("MenuOverlay", () => {
     const iframe = document.createElement('iframe');
     document.body.appendChild(iframe);
     iframe.focus();
-    element.handleIframeClick();
+    element.handleWindowBlurEvent();
     await nextFrame();
 
     expect(element.isOpen).toBeFalsy();
     document.body.removeChild(iframe);
   });
 
-  test('should try to close the menu when an iframe is clicked and the menu is closed', async () => {
+  test('should not try to close the menu when window loses focus, such as iframe click, and the menu is closed', async () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
     element.isOpen = false;
     await nextFrame();
@@ -625,7 +625,7 @@ describe("MenuOverlay", () => {
     const iframe = document.createElement('iframe');
     document.body.appendChild(iframe);
     iframe.focus();
-    element.handleIframeClick();
+    element.handleWindowBlurEvent();
     await nextFrame();
 
     expect(element.isOpen).toBeFalsy();

@@ -117,11 +117,12 @@ export namespace ComboBox {
 
     private readonly messageController = new MessageController();
 
-    @property({ type: Number, attribute: false })
+    
     @internalProperty()
     private isOptGroup = false;
     @internalProperty()
     private isSelectAllChecked = false;
+    @property({ type: Number, attribute: false })
     get focusedIndex() {
       return this._focusedIndex;
     }
@@ -1417,6 +1418,7 @@ export namespace ComboBox {
           <md-icon
             class="remove-item"
             name="cancel-bold"
+            size="8"
             size=${this.newMomentum ? "16" : "8"}
             iconSet="momentumDesign"
             @click=${() => this.removeSelected(selectedOption)}

@@ -11,7 +11,7 @@ export namespace ParentComponentGeneric {
         @property({ type: Boolean }) isLoading = false;
         @property({ type: String })  value = '';
         @property({ type: String }) isError = false;
-        @internalProperty() totalRecords = 0;
+        @internalProperty() totalRecords = 60000;  // Total count is set to 6000
 
         constructor() {
             super();
@@ -39,17 +39,14 @@ export namespace ParentComponentGeneric {
                 this.isLoading = true;
                 const newItems = await this.fetchItems(this.page);
                 this.items = [...this.items, ...newItems];
-                this.totalRecords = 600;
                 this.page += 1;
                 this.isLoading = false;
                 this.value = this.items[1].id;
-                // this.isError = null;
                 console.log('try calledddd')
             } catch (err) {
                 this.isLoading = false;
                 this.isError = true;
-                // this.isError = 'Failed to load more items. Please try again.';
-                console.log("error caled")
+                console.log("error called")
             }finally{
                 this.isLoading = false;
                 console.log("finally called")
@@ -59,31 +56,32 @@ export namespace ParentComponentGeneric {
         async fetchItems(page: number) {
             await new Promise(resolve => setTimeout(resolve, 1000));
 
-            const newItems = Array.from({ length: 20 }, (_, i) => ({
-                name: `Item ${(page - 1) * 20 + i + 1}`,
+            // Adjusted the length to 200 for initial render
+            const newItems = Array.from({ length: 2000 }, (_, i) => ({
+                name: `Item ${(page - 1) * 2000 + i + 1}`,
                 id: this.generateUUID(),
                 index: i,
-                ariaLabel : `Item ${(page - 1) * 20 + i + 1}`,
-                template: (data: any, index: number) => html`<div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" ?disabled="${index % 2 === 0}" aria-hidden="true" indexing="${index}" >${data.name}</div>`
-                
+                ariaLabel: `Item ${(page - 1) * 2000 + i + 1}`,
+                template: (data: any, index: number) => html`
+                    <div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" ?disabled="${index % 2 === 0}" aria-hidden="true" indexing="${index}">
+                        ${data.name}
+                    </div>`
             }));
             return newItems;
         }
 
         private handleListItemChange(event: CustomEvent) {
             console.log(event.detail.selected)
-            //API call send to end point to upate the item
+            //API call send to end point to update the item
         }
 
         render() {
-            // console.log("rendering parent component--generic", this.items)
             return html`
         <h2>Generic Item List</h2>
         <md-advance-list
           .items=${this.items}
           .isLoading=${this.isLoading}
           .isError=${this.isError}
-          
           ariaRoleList="listbox"
           ariaLabelList="state selector"
           .totalRecords=${this.totalRecords}

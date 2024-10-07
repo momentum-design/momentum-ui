@@ -42,7 +42,7 @@ export namespace ParentComponentError {
         const newItems = await this.fetchItems(this.page);
 
         this.items = [...this.items, ...newItems];
-        this.totalRecords = 600;
+        this.totalRecords = 60000;
         this.page += 1;
         this.isLoading = false;
         this.isError = false;
@@ -66,8 +66,8 @@ export namespace ParentComponentError {
       console.log('Fetching items for page', page);
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const newItems = Array.from({ length: 20 }, (_, i) => ({
-        name: `Item ${(page - 1) * 20 + i + 1}`,
+      const newItems = Array.from({ length: 2000 }, (_, i) => ({
+        name: `Item ${(page - 1) * 2000 + i + 1}`,
         id: this.generateUUID(),
         index: i,
         template: (data: any, index: number) => html`<div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" indexing="${index}" >${data.name}</div>`

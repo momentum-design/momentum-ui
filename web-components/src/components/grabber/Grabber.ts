@@ -19,14 +19,46 @@ import styles from "./scss/module.scss";
 export namespace Grabber {
   @customElementWithCheck("md-grabber")
   export class ELEMENT extends FocusMixin(LitElement) {
+    /**
+     * aria label of unchecked grabber
+     */
     @property({ type: String }) label = "Expand";
+
+    /**
+     * aria label of checked grabber
+     */
     @property({ type: String }) checkedLabel = "Collapse";
+
+    /**
+     * If true, the grabber is hovered. grabber-hover-changed event is dispatched on hover change
+     */
     @property({ type: Boolean }) hovered = false;
 
+    /**
+     * If true, the grabber is disabled
+     */
     @property({ type: Boolean }) disabled = false;
+
+    /**
+     * If true, the grabber is checked
+     */
     @property({ type: Boolean }) checked = false;
+
+    /**
+     * If true, the grabber is visible. Grabber will also be visible if it is focused
+     */
     @property({ type: Boolean }) visible = true;
+
+    /**
+     * True when grabber has keyboard focus
+     */
     @property({ type: Boolean }) focused = false;
+
+    /**
+     * Alignment that says if the `md-grabbewr` is being used for leading, trailing, top or bottom
+     *
+     * Default: leading
+     */
     @property({ type: String, reflect: true }) alignment: "leading" | "trailing" | "top" | "bottom" = "leading";
 
     connectedCallback() {

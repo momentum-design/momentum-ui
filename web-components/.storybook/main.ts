@@ -24,10 +24,10 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "@storybook/addon-controls",
-    "@storybook/addon-actions",
-    "@storybook/addon-viewport",
-    "@storybook/addon-postcss"
+    "@storybook/addon-actions"
   ],
+
+  framework: "@storybook/web-components",
 
   webpackFinal: async (
     storybookConfig: webpack.Configuration,

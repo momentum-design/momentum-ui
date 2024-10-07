@@ -82,7 +82,6 @@ const createTokenFilesModule = async () => {
   const tokenFileModule = path.resolve(__dirname, "../tokens/vars/tokenFiles.js");
   fsPath.writeFile(tokenFileModule, result, (err) => {
     if (err) throw err;
-    console.log(tokenFileModule + " updated");
   });
 };
 

@@ -47,14 +47,14 @@ const render = (args: Args) => {
     return html`
       <md-theme class="theme-toggle" id="avatar" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-avatar
-          .title=${args.title}
-          alt="Avatar"
+          title=${args.title}
+          alt=${args.title}
           icon-name=${args.iconName}
-          label="Avatar"
-          .type=${args.type}
-          .src="${args.customUrl ? `${args.url}` : ""}"
-          .color=${args.preDefinedColor}
-          .size=${args.size}
+          label=${args.label}
+          type=${args.type}
+          src="${args.customUrl ? `${args.url}` : ""}"
+          color=${args.preDefinedColor}
+          size=${args.size}
           ?has-notification=${args.hasNotification}
           ?newMomentum=${args.newMomentum}
         >
@@ -71,7 +71,7 @@ export const Primary: StoryObj = {
     darkTheme: false,
     title: "Rachell Harris",
     label: "Avatar",
-    size: "32",
+    size: 32,
     url: "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"
   }
 };

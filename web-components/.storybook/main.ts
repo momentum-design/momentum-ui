@@ -20,11 +20,11 @@ module.exports = {
   ],
 
   addons: [
-    "@storybook/addon-knobs",
+    "@storybook/addon-controls",    
     "@storybook/addon-a11y",
-    "@storybook/addon-docs",
-    "@storybook/addon-controls",
-    "@storybook/addon-actions"
+    "@storybook/addon-docs",    
+    "@storybook/addon-actions",
+    "@storybook/addon-knobs"
   ],
 
   framework: "@storybook/web-components",

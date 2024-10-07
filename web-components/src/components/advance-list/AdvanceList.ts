@@ -1,10 +1,10 @@
-import { LitElement, html, css, property, internalProperty, query, queryAll, PropertyValues } from "lit-element";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { scroll } from "lit-virtualizer";
 import { Key } from "@/constants";
-import styles from "./scss/module.scss";
-import reset from "@/wc_scss/reset.scss";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
+import reset from "@/wc_scss/reset.scss";
+import { LitElement, PropertyValues, html, internalProperty, property, query, queryAll } from "lit-element";
+import { scroll } from "lit-virtualizer";
+import styles from "./scss/module.scss";
 
 export namespace AdvanceList {
   export const prefixId = "item-";
@@ -14,24 +14,22 @@ export namespace AdvanceList {
     @property({ type: Boolean }) isLoading = false;
     @property({ type: String }) selectedItemId = "";
     @property({ type: String }) value = "";
-
     @property({ type: String }) ariaRoleList = "";
     @property({ type: String }) ariaLabelList = "";
-
     @property({ type: Boolean }) isError = false;
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @internalProperty() page = 1;
-    @internalProperty() hasSlotContent = false;
+    // @internalProperty() hasSlotContent = false;
     @property({ type: Number }) totalRecords = 0;
-    @internalProperty() activeItem: HTMLElement | null | undefined = null;
+    // @internalProperty() activeItem: HTMLElement | null | undefined = null;
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId: string = "";
-    @internalProperty() selectedIndex = -1;
+    // @internalProperty() selectedIndex = -1;
+    @internalProperty() isUserNavigated = false;
 
     connectedCallback(): void {
       super.connectedCallback();
-      this.addEventListener("keydown", this.handleKeyDown);
       this.addEventListener("click", this.handleClick);
     }
 
@@ -41,15 +39,21 @@ export namespace AdvanceList {
 
     disconnectedCallback() {
       super.disconnectedCallback();
+      // Clean up event listeners when the component is removed
       this.removeEventListener("click", this.handleClick);
-      this.removeEventListener("keydown", this.handleKeyDown);
+      this.listContainer?.removeEventListener("keydown", this.handleKeyDown.bind(this));
+    }
+
+    protected firstUpdated(_changedProperties: PropertyValues): void {
+      // Add keydown event listener to the list container
+      this.listContainer?.addEventListener("keydown", this.handleKeyDown.bind(this));
     }
 
     updated(changedProperties: PropertyValues) {
       if (changedProperties.has("value")) {
-        this.selectedItemId = `${prefixId}${this.value}`;
-        // Wait for the update to complete before running your logic.
+        // Update the selected item for the preselect
         this.requestUpdate().then(() => {
+          this.selectedItemId = `${this.value}`;
           this.updateSelectedState();
         });
       }
@@ -58,9 +62,10 @@ export namespace AdvanceList {
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        const childWithDisabled = wrapper.querySelector("[disabled]");
+        const childWithDisabled = wrapper.firstElementChild?.hasAttribute("disabled") || wrapper.firstElementChild?.getAttribute("aria-disabled") === "true";
 
-        if (wrapper.id === this.selectedItemId) {
+        if (wrapper.id === `${prefixId}${this.selectedItemId}`) {
+          // Update selected item styles and attributes
           wrapper.classList.add("selected");
           wrapper.setAttribute("selected", "true");
           wrapper.setAttribute("aria-selected", "true");
@@ -70,6 +75,19 @@ export namespace AdvanceList {
           wrapper.removeAttribute("selected");
           wrapper.setAttribute("aria-selected", "false");
           wrapper.setAttribute("tabindex", "-1");
+        }
+
+        //active item should be focusable
+        if (wrapper.id === `${prefixId}${this.activeId}`) {
+          wrapper.setAttribute("tabindex", "0");
+          (wrapper as any).focus();
+        } else {
+          wrapper.setAttribute("tabindex", "-1");
+        }
+
+        // Handle pre-selection of the active item if none is currently active
+        if (this.activeId == "" && wrapper.id === `${prefixId}${this.value}`) {
+          wrapper.setAttribute("tabindex", "0");
         }
 
         if (childWithDisabled) {
@@ -85,129 +103,97 @@ export namespace AdvanceList {
     findClickedItem(event: Event): HTMLElement | 0 | undefined {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       const eventPath = event.composedPath();
-
       const clickedItem = wrappers.find((wrapper) => eventPath.includes(wrapper)) as HTMLElement | undefined;
 
       if (clickedItem) {
         const isDisabled =
-          Array.from(clickedItem.children).some((child) => child.hasAttribute("disabled")) ||
-          clickedItem.getAttribute("aria-disabled") === "true";
-
+          clickedItem?.hasAttribute("disabled") ||
+          clickedItem.firstElementChild?.getAttribute("aria-disabled") === "true";
         if (isDisabled) {
-          return 0; // Indicate that the item is disabled and stop execution
+          return 0; // Return 0 if the item is disabled
         }
         return clickedItem;
       }
       return undefined;
     }
 
-    clearSelectedState() {
-      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
-      wrappers.forEach((wrapper) => {
-        wrapper.classList.remove("selected");
-        wrapper.removeAttribute("selected");
-        wrapper.removeAttribute("tabindex");
-      });
-    }
-
-    selectItem(item: HTMLElement) {
-      item.classList.add("selected");
-      item.setAttribute("selected", "true");
-    }
-
-    getVisibleElementById = (id: string) => {
-      const elements: NodeListOf<HTMLElement> | undefined = this.shadowRoot
-        ?.querySelector(`.virtual-scroll`)
-        ?.querySelectorAll(`#${id}`);
-      if (elements) {
-        for (let element of elements) {
-          if (window.getComputedStyle(element).display !== "none") {
-            return element;
-          }
-        }
-      }
-      return null;
-    };
-
-    getVisibleElement = () => {
-      const activeItem: HTMLElement | null = this.getVisibleElementById(`${prefixId}${this.activeId}`);
-      return activeItem?.offsetHeight !== 0 ? activeItem : null;
-    };
-
-    resetFocusToVisibleElement() {
-      this.clearFocusedState();
-      const visibleElement = this.getVisibleElement();
-      if (visibleElement) {
-        this.focusItem(visibleElement);
-      }
-      return visibleElement;
-    }
-
-    resetSelectedState = (id: string, itemToBeSelected: HTMLElement) => {
-      this.clearSelectedState();
-      this.selectItem(itemToBeSelected);
-      this.setSelected(id);
-    };
-
     handleKeyDown(event: KeyboardEvent) {
       switch (event.key) {
         case Key.ArrowDown:
-          {
-            const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-            if (currentIndex < this.totalRecords - 1) {
-              this.activeId = this.items[currentIndex + 1].id;
-              this.activeItem = this.resetFocusToVisibleElement();
-              this.scrollIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "");
-            }
+          event.preventDefault();
+          this.isUserNavigated = true;
+          // incase of preselected value
+          if (this.activeId === "" && this.value) {
+            this.activeId = this.value;
+          }
+          const currentIndex = this.items.findIndex(item => item.id === this.activeId);
+          if (currentIndex < this.items.length - 1) {
+            this.scrollIndex = currentIndex + 1;
+            this.activeId = this.items[this.scrollIndex].id;  
           }
           break;
+
         case Key.ArrowUp:
-          {
-            const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-            if (currentIndex > 0) {
-              this.activeId = this.items[currentIndex - 1].id;
-              this.activeItem = this.resetFocusToVisibleElement();
-              this.scrollIndex = parseInt(this.activeItem?.getAttribute("index") || currentIndex + "") ?? 0;
-            }
+          event.preventDefault();
+          this.isUserNavigated = true;
+          // in case of preselected value
+          if (this.activeId === "" && this.value) {
+            this.activeId = this.value;
+          }
+          const upIndex = this.items.findIndex(item => item.id === this.activeId);
+          if (upIndex > 0) {
+            this.scrollIndex = upIndex - 1;
+            this.activeId = this.items[this.scrollIndex].id;  
           }
           break;
+
         case Key.Enter:
-          if (this.activeItem) {
-            const isDisabled =
-              Array.from(this.activeItem.children).some((child) => child.hasAttribute("disabled")) ||
-              this.activeItem.getAttribute("aria-disabled") === "true";
-            this.listContainer?.focus();
-            if (!isDisabled) {
-              this.resetSelectedState(`${prefixId}${this.activeId}`, this.activeItem);
-              this.scrollIndex = parseInt(this.activeItem.getAttribute("index") || "0");
+          if (this.activeId) {
+            const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
+            if (selectedItem) {
+              const isDisabled = selectedItem.getAttribute("aria-disabled") === "true" || selectedItem.hasAttribute("disabled");
+              if (!isDisabled) {
+                this.selectItem(selectedItem as HTMLElement);
+              }
             }
           }
-          break;
         default:
           break;
       }
     }
 
+    selectItem(clickedItem: HTMLElement) {
+      if (!clickedItem) return;
+
+      this.clearFocusedState();
+      clickedItem.focus();
+      clickedItem.classList.add("selected");
+      clickedItem.setAttribute("selected", "true");
+      clickedItem.setAttribute("aria-selected", "true");
+
+      this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
+      this.selectedItemId = this.activeId;
+
+      this.notifySelectedChange();
+    }
+
     handleClick(event: Event) {
-      const clickedItem = this.findClickedItem(event);
       event.preventDefault();
+      this.isUserNavigated = false; // Clear navigation flag on click
+      const clickedItem = this.findClickedItem(event);
       if (clickedItem) {
-        this.resetSelectedState(clickedItem.id, clickedItem);
-        this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-        this.resetFocusToVisibleElement();
         this.scrollIndex = parseInt(clickedItem.getAttribute("index") || "0");
-        this.listContainer?.focus();
+        this.selectItem(clickedItem);
       }
     }
 
     handleRangeChange = (e: any) => {
       const { last } = e;
-      this.clearSelectedState();
+
       this.updateSelectedState();
-      this.resetFocusToVisibleElement();
-      this.listContainer?.focus();
+      
 
-
+      // Trigger 'load-more' event when more items need to be loaded
       if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
         this.scrollIndex = last;
         this.dispatchEvent(
@@ -219,27 +205,17 @@ export namespace AdvanceList {
         );
         this.page += 1;
       }
+      this.isUserNavigated = false;
     };
 
     clearFocusedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        wrapper.classList.remove("focused");
+        wrapper.classList.remove("selected");
+        wrapper.removeAttribute("selected");
+        wrapper.removeAttribute("aria-selected");
       });
     }
-
-    focusItem(item: HTMLElement) {
-      item.classList.add("focused");
-    }
-
-    setSelected(newId: string) {
-      if (this.selectedItemId !== newId) {
-        this.selectedItemId = newId;
-        this.requestUpdate();
-        this.notifySelectedChange();
-      }
-    }
-
 
     notifySelectedChange() {
       this.dispatchEvent(
@@ -268,29 +244,36 @@ export namespace AdvanceList {
     }
 
     render() {
+      let ariaActiveDescendant: string = "";
+      if (this.activeId) {
+        ariaActiveDescendant = `${prefixId}${this.activeId}`;
+      } else if (this.value) {
+        ariaActiveDescendant = `${prefixId}${this.value}`;
+      }
+
       return html`
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
           aria-live="polite"
-          aria-activedescendant=${this.activeId ? `${prefixId}${this.activeId}` : `${prefixId}${this.items[0].id}`}
+          aria-activedescendant=${ariaActiveDescendant}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}
         >
           ${scroll({
-        items: this.items,
-        renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
-        useShadowDOM: true,
-        scrollToIndex: {
-          index: this.scrollIndex,
-          position: this.scrollIndex === 0 ? "start" : "center"
-        }
-      })}
+            items: this.items,
+            renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
+            useShadowDOM: true,
+            scrollToIndex: this.isUserNavigated
+              ? {
+                index: this.scrollIndex,
+                position: this.scrollIndex === 0 ? "start" : "center"
+              }
+              : undefined
+          })}
         </div>
-            ${this.isLoading ?
-          html`<slot class="spin-loader" name="spin-loader"></slot>` : null
-        }     
+        ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : null}
       `;
     }
   }

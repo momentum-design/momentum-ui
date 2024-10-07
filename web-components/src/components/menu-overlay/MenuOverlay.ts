@@ -148,8 +148,8 @@ export namespace MenuOverlay {
 
     connectedCallback() {
       super.connectedCallback();
-      this.handleIframeClick = this.handleIframeClick.bind(this);
-      window.addEventListener("blur", this.handleIframeClick);
+      this.handleWindowBlurEvent = this.handleWindowBlurEvent.bind(this);
+      window.addEventListener("blur", this.handleWindowBlurEvent);
       document.addEventListener("click", this.handleOutsideOverlayClick);
       document.addEventListener("keydown", this.handleOutsideOverlayKeydown);
       this.addEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
@@ -160,7 +160,7 @@ export namespace MenuOverlay {
       super.disconnectedCallback();
       document.removeEventListener("click", this.handleOutsideOverlayClick);
       document.removeEventListener("keydown", this.handleOutsideOverlayKeydown);
-      window.removeEventListener("blur", this.handleIframeClick);
+      window.removeEventListener("blur", this.handleWindowBlurEvent);
 
       this.removeEventListener("menu-overlay-open", this.updateActiveMenuOverlayOpened);
       this.removeEventListener("menu-overlay-close", this.updateActiveMenuOverlayClosed);
@@ -447,8 +447,8 @@ export namespace MenuOverlay {
       }
     };
 
-    handleIframeClick() {
-      if (document.activeElement?.tagName === 'IFRAME' && this._isOpen) {
+    handleWindowBlurEvent() {
+      if (this._isOpen) {
         this.isOpen = false;
       }
     }

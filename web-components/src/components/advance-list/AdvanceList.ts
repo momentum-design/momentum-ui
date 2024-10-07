@@ -20,13 +20,10 @@ export namespace AdvanceList {
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @internalProperty() page = 1;
-    // @internalProperty() hasSlotContent = false;
     @property({ type: Number }) totalRecords = 0;
-    // @internalProperty() activeItem: HTMLElement | null | undefined = null;
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId: string = "";
-    // @internalProperty() selectedIndex = -1;
-    @internalProperty() isUserNavigated = false;
+    @internalProperty() isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
 
     connectedCallback(): void {
       super.connectedCallback();
@@ -62,7 +59,6 @@ export namespace AdvanceList {
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        const childWithDisabled = wrapper.firstElementChild?.hasAttribute("disabled") || wrapper.firstElementChild?.getAttribute("aria-disabled") === "true";
 
         if (wrapper.id === `${prefixId}${this.selectedItemId}`) {
           // Update selected item styles and attributes
@@ -90,6 +86,7 @@ export namespace AdvanceList {
           wrapper.setAttribute("tabindex", "0");
         }
 
+        const childWithDisabled = wrapper.firstElementChild?.hasAttribute("disabled") || wrapper.firstElementChild?.getAttribute("aria-disabled") === "true";
         if (childWithDisabled) {
           wrapper.setAttribute("disabled", "");
           wrapper.setAttribute("aria-disabled", "true");
@@ -108,7 +105,7 @@ export namespace AdvanceList {
       if (clickedItem) {
         const isDisabled =
           clickedItem?.hasAttribute("disabled") ||
-          clickedItem.firstElementChild?.getAttribute("aria-disabled") === "true";
+          clickedItem?.getAttribute("aria-disabled") === "true";
         if (isDisabled) {
           return 0; // Return 0 if the item is disabled
         }
@@ -148,6 +145,7 @@ export namespace AdvanceList {
           break;
 
         case Key.Enter:
+          event.preventDefault();
           if (this.activeId) {
             const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
             if (selectedItem) {
@@ -157,6 +155,8 @@ export namespace AdvanceList {
               }
             }
           }
+          break;
+
         default:
           break;
       }
@@ -165,15 +165,9 @@ export namespace AdvanceList {
     selectItem(clickedItem: HTMLElement) {
       if (!clickedItem) return;
 
-      this.clearFocusedState();
-      clickedItem.focus();
-      clickedItem.classList.add("selected");
-      clickedItem.setAttribute("selected", "true");
-      clickedItem.setAttribute("aria-selected", "true");
-
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
       this.selectedItemId = this.activeId;
-
+      this.updateSelectedState();
       this.notifySelectedChange();
     }
 
@@ -189,13 +183,10 @@ export namespace AdvanceList {
 
     handleRangeChange = (e: any) => {
       const { last } = e;
-
       this.updateSelectedState();
       
-
       // Trigger 'load-more' event when more items need to be loaded
       if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
-        this.scrollIndex = last;
         this.dispatchEvent(
           new CustomEvent("load-more", {
             detail: { page: this.page },
@@ -207,15 +198,6 @@ export namespace AdvanceList {
       }
       this.isUserNavigated = false;
     };
-
-    clearFocusedState() {
-      const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
-      wrappers.forEach((wrapper) => {
-        wrapper.classList.remove("selected");
-        wrapper.removeAttribute("selected");
-        wrapper.removeAttribute("aria-selected");
-      });
-    }
 
     notifySelectedChange() {
       this.dispatchEvent(

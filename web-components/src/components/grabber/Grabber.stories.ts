@@ -8,12 +8,13 @@
 
 import "@/components/grabber/Grabber";
 import "@/components/theme/Theme";
+import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 
 const render = (args: Args) => html`
-  <md-theme ?darkTheme=${args.darkTheme} theme=${args.theme}>
+  <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
     <md-grabber
       @grabber-toggled=${action("grabber-toggled")}
       ?checked=${args.checked}
@@ -44,7 +45,7 @@ const meta: Meta = {
   component: "md-grabber",
   render,
   argTypes: {
-    theme: { control: { type: "select", options: ["momentum", "lumos", "momentumV2"] } },
+    theme: { control: { type: "select", options: ThemeNameValues } },
     darkTheme: { control: "boolean" },
     checked: { control: "boolean" },
     visible: { control: "boolean" },

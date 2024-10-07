@@ -51,7 +51,7 @@
 .default-wrapper {
   margin-bottom: 2px;
   padding: 5px;
-  background: white;
+  color: var( --advance-list-text-color, $md-advance-list-text-color-light);
   cursor: pointer;
   width: calc(100% - 2px);
   box-sizing: border-box;

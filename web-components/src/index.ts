@@ -20,6 +20,7 @@ export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
 export { Card } from "./components/card/Card";
+export { CardAi } from "./components/card-ai/CardAi";
 export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";

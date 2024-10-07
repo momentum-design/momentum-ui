@@ -36,31 +36,31 @@ module.exports = {
     console.log("Storybook build mode: ", configType);
 
     // RESOLVE
-    storybookConfig.resolve = storybookConfig.resolve || {};
+    storybookConfig.resolve = storybookConfig.resolve ?? {};    
 
     // EXTENSIONS
     storybookConfig.resolve.extensions = mergeUnique(
-      storybookConfig.resolve?.extensions || [],
-      commonDev.resolve?.extensions || []
+      storybookConfig.resolve?.extensions ?? [],
+      commonDev.resolve?.extensions ?? []
     );
 
     // ALIAS
     storybookConfig.resolve.alias = commonDev.resolve?.alias;
 
     // MODULE
-    storybookConfig.module = storybookConfig.module || { rules: [] };
+    storybookConfig.module = storybookConfig.module ?? { rules: [] };
 
     // RULES
-    storybookConfig.module.rules = mergeUnique(storybookConfig.module.rules, commonDev.module?.rules || []);
+    storybookConfig.module.rules = mergeUnique(storybookConfig.module.rules ?? [], commonDev.module?.rules || []);
 
     // PLUGINS
 
     // Storybook production has it's own tuned HtmlWebpackPlugin
     const omitPluginNames = configType === "DEVELOPMENT" ? [] : ["HtmlWebpackPlugin"];
-    
-    const plugins = (commonDev.plugins || []).filter(p => omitPluginNames.indexOf(p.constructor.name) === -1);
 
-    storybookConfig.plugins = mergeUnique(storybookConfig.plugins || [], plugins);
+    const plugins = (commonDev.plugins ?? []).filter((p) => p && omitPluginNames.indexOf(p.constructor.name) === -1);
+
+    storybookConfig.plugins = mergeUnique(storybookConfig.plugins ?? [], plugins);
 
     return storybookConfig;
   }

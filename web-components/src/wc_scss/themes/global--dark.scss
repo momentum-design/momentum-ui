@@ -102,4 +102,13 @@
   --md-scrollbar-background-hover-indicator: #{$white-48};
   --md-scrollbar-background-active-indicator: #{$white-60};
   --md-scrollbar-background-disabled-indicator: #{$white-12};
+
+  --md-table-primary-bg-color: #{$md-gray-80};
+  --md-table-header-bg-color: #{$md-gray-95};
+  --md-table-header-border-bottom: none;
+  --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
+  --md-table-border-style: solid;
+  --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-table-pinned-border-color: #{$md-gray-80};
 }

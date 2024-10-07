@@ -61,25 +61,9 @@
 
       a {
         color: var(--table-text-color, $lm-table-text-color-light);
-
-        &.sortedAbc {
-          &:after {
-            content: $icon-arrow-filled-down_10;
-            display: inline-block;
-            font-family: $icon-font-name;
-            padding-left: $table-main-indent;
-            vertical-align: bottom;
-          }
-        }
-        &.sortedZyx {
-          &:after {
-            content: $icon-arrow-filled-up_10;
-            display: inline-block;
-            font-family: $icon-font-name;
-            padding-left: $table-main-indent;
-            vertical-align: bottom;
-          }
-        }
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
       }
     }
   }

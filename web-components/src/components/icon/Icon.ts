@@ -21,7 +21,7 @@ import styles from "./scss/module.scss";
 
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
 export const iconType = ["", "white"] as const;
-export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign"] as const;
+export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals"] as const;
 
 export namespace Icon {
   export type Size = (typeof iconSize)[number];
@@ -80,6 +80,7 @@ export namespace Icon {
      * ```html
      * <md-icon iconSet="momentumUI" name="search_16" size="24"></md-icon> <!-- Sets the font-size to 24px for the legacy font-based icon set -->
      * <md-icon iconSet="momentumDesign" name="search-bold" size="24"></md-icon> <!-- Sets the width and height to 24px for the new SVG-based icon set -->
+     * <md-icon iconSet="momentumBrandVisuals" name="social-facebook-color" size="24"></md-icon> <!-- Sets the width and height to 24px for the brands visuals logo set -->
      * ```
      */
     @property({ type: String }) size = "";
@@ -168,6 +169,7 @@ export namespace Icon {
      * <md-icon iconSet="momentumUI" name="search_16"></md-icon> <!-- Uses the legacy font-based icon set -->
      * <md-icon iconSet="momentumDesign" name="search-bold" size="16"></md-icon> <!-- Uses the new SVG-based icon set -->
      * <md-icon iconSet="preferMomentumDesign name="search_16""></md-icon> <!-- Attempts to map icons to the new SVG-based set -->
+     * <md-icon iconSet="momentumBrandVisuals" name="social-facebook-color"</md-icon> <!-- Uses the SVG-based brands visuals logo set -->
      * ```
      */
     @property({ type: String }) iconSet: IconSet = "momentumUI";
@@ -232,7 +234,10 @@ export namespace Icon {
       }
 
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const importedIcon = require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+      const importedIcon =
+        this.iconSet === "momentumBrandVisuals"
+          ? require(`@momentum-design/brand-visuals/dist/svg/${iconName}.svg`)
+          : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
 
       if (this.isPath(importedIcon)) {
         this.svgIcon = await this.getSvgContentFromFile(importedIcon);
@@ -266,7 +271,7 @@ export namespace Icon {
     }
 
     private get svgIconName() {
-      if (this.iconSet === "momentumDesign") {
+      if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals") {
         return this.name;
       }
       const lookupName = this.getIconName();
@@ -408,11 +413,19 @@ export namespace Icon {
     }
 
     private get doesIconSetSupportSVG() {
-      return this.iconSet === "momentumDesign" || this.iconSet === "preferMomentumDesign";
+      return (
+        this.iconSet === "momentumDesign" ||
+        this.iconSet === "preferMomentumDesign" ||
+        this.iconSet === "momentumBrandVisuals"
+      );
     }
 
     private get isSVGRender() {
-      return (this.svgIcon && this.iconSet === "preferMomentumDesign") || this.iconSet === "momentumDesign";
+      return (
+        (this.svgIcon && this.iconSet === "preferMomentumDesign") ||
+        this.iconSet === "momentumDesign" ||
+        this.iconSet === "momentumBrandVisuals"
+      );
     }
 
     render() {

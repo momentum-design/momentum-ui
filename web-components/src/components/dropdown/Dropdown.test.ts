@@ -268,6 +268,16 @@ describe("Dropdown Component", () => {
 
       expect(dropdown["selectedKey"]).toEqual(dropdownObjectLongOptions[1].id);
     });
+
+    test("should render correct icon name", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(
+        html`<md-dropdown .options="${dropdownStringOptions}" title="Test" searchable newMomentum></md-dropdown>`
+      );
+
+      expect(dropdown.shadowRoot!.querySelector(".md-dropdown-button md-icon")!.getAttribute("name")).toEqual(
+        "arrow-down-bold"
+      );
+    });
   });
 
   describe("List", () => {
@@ -319,6 +329,133 @@ describe("Dropdown Component", () => {
       expect(dropdown["selectedKey"]).toEqual(dropdownObjectLongOptions[10].id);
       expect(dropdown.optionId).toEqual("id");
       expect(dropdown.optionValue).toEqual("country");
+    });
+  });
+
+  describe("Input", () => {
+    let dropdown: Dropdown.ELEMENT;
+
+    beforeEach(async () => {
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          Placeholder="Jason"
+          searchable
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+    });
+
+    test("should set new-dropbox if newMomentum set", async () => {
+      expect(dropdown.newMomentum).toEqual(true);
+      expect(dropdown.shadowRoot!.querySelector(".md-new-dropdown")).not.toBeNull();
+    });
+
+    test("should render input field if searchable set", async () => {
+      expect(dropdown.searchable).toEqual(true);
+      expect(dropdown.shadowRoot!.querySelector(".group")).not.toBeNull();
+    });
+
+    test("should set placeholder if property exist", async () => {
+      expect(dropdown.placeholder).toEqual("Jason");
+    });
+
+    test("should set input value in handler", async () => {
+      const event = new Event("input");
+      dropdown.input!.value = "dropdown";
+      dropdown.input!.dispatchEvent(event);
+
+      expect(dropdown["inputValue"]).toEqual("dropdown");
+    });
+
+    test('should stop event propagation and dispatch "remove-all-selected" event', async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .defaultOption="${dropdownStringOptions[0]}"
+          searchable
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      const clearButton = dropdown.shadowRoot!.querySelector(".md-dropdown-button.clear") as HTMLElement;
+      expect(clearButton).not.toBeNull();
+
+      // Set up an event listener to check if the 'remove-all-selected' event is dispatched
+      const eventSpy = jest.fn();
+      dropdown.addEventListener("remove-all-selected", eventSpy);
+
+      // Create a mock event to check if propagation is stopped
+      const mockEvent = new Event("click", { bubbles: true, cancelable: true });
+      const stopPropagationSpy = jest.spyOn(mockEvent, "stopPropagation");
+
+      // Dispatch the event
+      clearButton!.dispatchEvent(mockEvent);
+
+      expect(stopPropagationSpy).toHaveBeenCalled();
+
+      expect(eventSpy).toHaveBeenCalled();
+
+      stopPropagationSpy.mockRestore();
+    });
+  });
+
+  describe("Left Icon", () => {
+    let dropdown: Dropdown.ELEMENT;
+
+    beforeEach(async () => {
+      dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          Placeholder="Jason"
+          left-icon="search-bold"
+          searchable
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+    });
+
+    test("should render left icon if left-icon set", async () => {
+      expect(dropdown.shadowRoot!.querySelector(".md-dropdown-left-icon")).not.toBeNull();
+    });
+  });
+
+  describe("Help Text", () => {
+    const messageArr: Dropdown.Message = {
+      message: "This is where the message would be.",
+      type: "success"
+    };
+
+    test("should render help text if helpText set", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          helpText="This is help text"
+          searchable
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      expect(dropdown.shadowRoot!.querySelector(".help-text")).not.toBeNull();
+    });
+
+    test("should render message type help text if type set", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          htmlId="dropDownWarning"
+          .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as Dropdown.Message]}
+          searchable
+          newMomentum
+          title="Test"
+        ></md-dropdown>
+      `);
+
+      expect(dropdown.shadowRoot!.querySelector(".md-dropbox__messages")).not.toBeNull();
     });
   });
 });

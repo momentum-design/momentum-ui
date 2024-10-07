@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import "@/components/icon/Icon";
 import "@/components/input/Input";
 import { ThemeNameValues } from "@/components/theme/Theme";
@@ -98,7 +100,7 @@ export const Input = () => {
           label="Input Icon"
           containerSize="small-12"
           placeholder="Enter Text"
-          .auxiliaryContentPosition=${position}
+          .auxiliaryContentPosition=${position as any}
         >
           <md-icon slot="input-section${position === "after" ? "-right" : ""}" name=${nameIcon}></md-icon>
         </md-input>
@@ -120,7 +122,7 @@ export const Input = () => {
           .searchable=${searchable}
           ?clear=${clear}
           .secondaryLabel=${secondaryLabel}
-          .type=${type}
+          .type=${type as any}
           .helpText=${helpText}
           @input-change=${action("change")}
           @input-blur=${action("focus out")}

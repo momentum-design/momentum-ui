@@ -49,6 +49,26 @@ export class ButtonTemplateSandbox extends LitElement {
           padding: 0.5px 0 0 calc(4px * 2);
         }
 
+        .status-label.available {
+          color: var(--avatar-presence-active);
+        }
+
+        .status-label.engaged {
+          color: var(--avatar-presence-engaged);
+        }
+
+        .status-label.idle {
+          color: var(--avatar-presence-inactive);
+        }
+
+        .status-label.rona {
+          color: var(--avatar-presence-rona);
+        }
+
+        .status-time {
+          color: var(--md-secondary-text-color);
+        }
+
         .status-arrow {
           margin-left: 8px;
         }
@@ -327,8 +347,8 @@ export class ButtonTemplateSandbox extends LitElement {
                 color="var(--avatar-presence-active)"
               ></md-icon>
             </span>
-            <span class="status-label"> Available </span>
-            <span>10:11</span>
+            <span class="status-label available"> Available </span>
+            <span class="status-time">10:11</span>
             <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
@@ -342,8 +362,8 @@ export class ButtonTemplateSandbox extends LitElement {
                 color="var(--avatar-presence-inactive)"
               ></md-icon>
             </span>
-            <span class="status-label"> Idle </span>
-            <span>10:11</span>
+            <span class="status-label idle"> Idle </span>
+            <span class="status-time">10:11</span>
             <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
@@ -352,14 +372,14 @@ export class ButtonTemplateSandbox extends LitElement {
             <span class="status-indicator-container">
               <md-icon
                 slot="icon"
-                name="recents-presence-badge-filled"
+                name="dnd-presence-badge-filled"
                 iconSet="momentumDesign"
                 size="16"
                 color="var(--avatar-presence-rona)"
               ></md-icon>
             </span>
-            <span class="status-label"> RONA </span>
-            <span>10:11</span>
+            <span class="status-label rona"> RONA </span>
+            <span class="status-time">10:11</span>
             <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>
@@ -374,8 +394,8 @@ export class ButtonTemplateSandbox extends LitElement {
                 color="var(--avatar-presence-engaged)"
               ></md-icon>
             </span>
-            <span class="status-label"> Engaged </span>
-            <span>10:11</span>
+            <span class="status-label engaged"> Engaged </span>
+            <span class="status-time">10:11</span>
             <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="16"></md-icon>
           </div>
         </md-button>

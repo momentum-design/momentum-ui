@@ -1,4 +1,5 @@
-import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import { Icon } from "@/components/icon/Icon";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Icon";
 
 jest.mock("@momentum-ui/utils/lib/getColorValue", () => jest.fn(() => "rgba(247, 100, 74, 1)"));
@@ -144,5 +145,37 @@ describe("Momentum Icon Component", () => {
     const element = await fixture(`<md-icon .iconSet=${"momentumDesign"} name="youtube-circle_24"></md-icon>`);
     const classList = element.shadowRoot?.querySelector("i")?.classList;
     expect(classList?.contains("search-bold")).toBe(false);
+  });
+
+  test("should return correct icon font size", async () => {
+    const element = await fixture<Icon.ELEMENT>(`<md-icon name="search_16"></md-icon>`);
+    expect(element.iconFontSize).toEqual("16");
+  });
+
+  test("should return correct icon name", async () => {
+    const element = await fixture<Icon.ELEMENT>(`<md-icon name="icon-search"></md-icon>`);
+    expect(element.getIconName()).toEqual("search");
+  });
+
+  test("should handle icon click", async () => {
+    const element = await fixture<Icon.ELEMENT>(`<md-icon></md-icon>`);
+    const mockEvent = new MouseEvent("click");
+    const mockDispatchEvent = jest.spyOn(element, "dispatchEvent");
+
+    element.handleIconClick(mockEvent);
+    expect(mockDispatchEvent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: "icon-click",
+        detail: { srcEvent: mockEvent }
+      })
+    );
+
+    mockDispatchEvent.mockRestore();
+  });
+
+  test("should render SVG icon", async () => {
+    const element = await fixture<Icon.ELEMENT>(`<md-icon iconSet="momentumDesign" name="search-bold"></md-icon>`);
+    await elementUpdated(element);
+    expect(element.shadowRoot?.querySelector(".svg-icon-container")).not.toBeNull();
   });
 });

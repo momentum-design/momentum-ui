@@ -9,7 +9,7 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import { nothing } from "lit-html";
+import { nothing, TemplateResult } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
@@ -41,20 +41,19 @@ export namespace Table {
 
     headerRow: any;
     results: any;
-    config = {
+    config: Papa.ParseConfig = {
       quoteChar: '"',
       escapeChar: '""',
       header: false,
       preview: 0,
       comments: false,
       step: undefined,
-      complete: undefined,
-      download: false
+      complete: undefined
     };
 
     connectedCallback() {
       super.connectedCallback();
-      // @ts-ignore
+
       this.results = Papa.parse(this.tabledata, this.config);
       this.headerRow = this.results.data[0];
       this.csvData = this.results.data.slice(1, this.results.data.length);
@@ -139,7 +138,6 @@ export namespace Table {
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
       if (changedProperties.has("tabledata")) {
-        // @ts-ignore
         this.results = Papa.parse(this.tabledata, this.config);
         this.headerRow = this.results.data[0];
         this.csvData = this.results.data.slice(1, this.results.data.length);
@@ -160,6 +158,20 @@ export namespace Table {
       };
     }
 
+    getSortTemplate(key: any): TemplateResult | typeof nothing {
+      if (this.sort.columnName !== key) {
+        return nothing;
+      }
+
+      return html`
+        <md-icon
+          name=${this.sort.sortting ? "arrow-tail-down-bold" : "arrow-tail-up-bold"}
+          iconSet="momentumDesign"
+          size="12"
+        ></md-icon>
+      `;
+    }
+
     render() {
       return html`
         <div class=${`md-table-container ` + `${this.stickheader ? "md-table-container_stickly" : nothing}`}>
@@ -177,8 +189,12 @@ export namespace Table {
                         (i: any) => html`
                           <th role="columnheader">
                             ${this.sorting
-                              ? html` <a @click=${(e: CustomEvent) => this.sortTab(e, i)}>${i}</a> `
-                              : html` ${i} `}
+                              ? html`
+                                  <a @click=${(e: CustomEvent) => this.sortTab(e, i)}>
+                                    ${i}${this.getSortTemplate(i)}
+                                  </a>
+                                `
+                              : html` ${i}`}
                           </th>
                         `
                       )}

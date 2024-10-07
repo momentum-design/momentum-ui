@@ -8,6 +8,7 @@ export { breadcrumbTemplate } from "./breadcrumb";
 export { buttonTemplate } from "./button";
 export { buttonGroupTemplate } from "./button-group";
 export { cardTemplate } from "./card";
+export { cardAiTemplate } from "./card-ai";
 export { chatMessageTemplate } from "./chat-message";
 export { checkboxTemplate } from "./checkbox";
 export { chipTemplate } from "./chip";

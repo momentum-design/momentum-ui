@@ -14,6 +14,7 @@ import {
   breadcrumbTemplate,
   buttonGroupTemplate,
   buttonTemplate,
+  cardAiTemplate,
   cardTemplate,
   chatMessageTemplate,
   checkboxTemplate,
@@ -64,6 +65,12 @@ export class Sandbox extends LitElement {
   @property({ type: Boolean }) darkTheme = false;
   @property({ type: String }) theme: ThemeName = "lumos";
 
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.loadSettingsFromStorage();
+    console.log("connected");
+  }
+
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (this.darkTheme) {
@@ -75,14 +82,28 @@ export class Sandbox extends LitElement {
     }
   }
 
+  loadSettingsFromStorage() {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      this.theme = storedTheme as ThemeName;
+    }
+
+    const storedDarkTheme = localStorage.getItem("darkTheme");
+    if (storedDarkTheme) {
+      this.darkTheme = JSON.parse(storedDarkTheme);
+    }
+  }
+
   toggleSetting(event: MouseEvent) {
     const composedPath = event.composedPath();
     const target = composedPath[0] as unknown as HTMLOrSVGElement;
     const { aspect } = target.dataset;
     if (aspect === "lumos" || aspect === "momentumV2" || aspect === "momentum") {
       this.theme = aspect;
+      localStorage.setItem("theme", this.theme);
     } else if (aspect === "darkTheme") {
       this.darkTheme = !this.darkTheme;
+      localStorage.setItem("darkTheme", JSON.stringify(this.darkTheme));
     } else {
       console.error("Invalid data-aspect input");
       return;
@@ -278,6 +299,16 @@ export class Sandbox extends LitElement {
             </div>
           </md-tab-panel>
 
+          <md-tab slot="tab" name="Card - AI">
+            <span>md-card-ai</span>
+          </md-tab>
+          <md-tab-panel slot="panel">
+            <div class="container" aria-label="md-card-ai">
+              <h2>md-card-ai</h2>
+              <sass-stats component="card-ai"> ${cardAiTemplate} </sass-stats>
+            </div>
+          </md-tab-panel>
+
           <md-tab slot="tab" name="Chat Message">
             <span>md-chat-message</span>
           </md-tab>
@@ -367,6 +398,7 @@ export class Sandbox extends LitElement {
               <sass-stats component="date-time-picker"> ${dateTimePickerTemplate} </sass-stats>
             </div>
           </md-tab-panel>
+
           <md-tab slot="tab" name="Dropdown">
             <span>md-dropdown</span>
           </md-tab>
@@ -528,6 +560,7 @@ export class Sandbox extends LitElement {
               <sass-stats component="meeting-alert"> ${meetingAlertTemplate} </sass-stats>
             </div>
           </md-tab-panel>
+
           <md-tab slot="tab" name="Menu">
             <span>md-menu</span>
           </md-tab>

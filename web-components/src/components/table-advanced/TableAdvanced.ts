@@ -383,7 +383,7 @@ export namespace TableAdvanced {
 
     private selectRow(p: { row: Row; shiftKey: boolean; metaKey: boolean }) {
       const i = p.row.idx;
-      const isSelected = this.selected.hasOwnProperty(i);
+      const isSelected = Object.prototype.hasOwnProperty.call(this.selected, i);
       if (this.tableConfig.rows?.selectable == "multiple") {
         if (p.metaKey) {
           if (isSelected) {
@@ -603,6 +603,15 @@ export namespace TableAdvanced {
       `;
     }
 
+    sortIconTemplate(sortOrder: SortOrder): TemplateResult | typeof nothing {
+      if (sortOrder === "ascending") {
+        return html`<md-icon name="arrow-tail-down-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+      } else if (sortOrder === "descending") {
+        return html`<md-icon name="arrow-tail-up-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+      }
+      return html`<md-icon name="unsorted-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+    }
+
     private renderCol(col: Col, rowspan?: number) {
       const input = col.filter?.list[col.filter.selectedIndex]?.input;
       const sortClass = classMap({
@@ -627,7 +636,9 @@ export namespace TableAdvanced {
             <!-- SORT  -->
             ${col.sorter
               ? html`
-                  <button class="sortable ${sortClass}" @click=${() => this.sort(col)}>${col.options.title}</button>
+                  <button class="sortable ${sortClass}" @click=${() => this.sort(col)}>
+                    ${col.options.title} ${this.sortIconTemplate(col.sort)}
+                  </button>
                 `
               : html` <span>${col.options.title}</span> `}
 
@@ -826,7 +837,7 @@ export namespace TableAdvanced {
     }
 
     private renderRow(row: Row, rowsLen: number) {
-      const isSelected = this.selected.hasOwnProperty(row.idx);
+      const isSelected = Object.prototype.hasOwnProperty.call(this.selected, row.idx);
       const rowStyles = classMap({
         selected: isSelected,
         selectable: this.isSelectable && !isSelected,

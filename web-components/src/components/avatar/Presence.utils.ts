@@ -98,7 +98,7 @@ export const getPresenceIconColor = (
         presenceColor = "var(--avatar-presence-engaged)";
         break;
       case "rona":
-        presenceIcon = "recents-presence-badge-filled";
+        presenceIcon = "dnd-presence-badge-filled";
         presenceColor = "var(--avatar-presence-rona)";
         break;
       default:

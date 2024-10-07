@@ -1,4 +1,5 @@
 @import "@/wc_scss/settings/rem";
+@import "@/wc_scss/tools/functions/core";
 @import "@/wc_scss/typography/settings";
 
 $inter-base-font: "Inter Regular", $font-family-sans-serif;
@@ -15,7 +16,7 @@ $inter-thin-font: "Inter Thin", $font-family-sans-serif;
 $inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
 $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
-@mixin global-theme-specfic-vars {
+@mixin global-theme-specific-vars {
   --rem-base: 16px;
   --brand-font-regular: #{$inter-base-font};
   --brand-font-bold: #{$inter-bold-font};
@@ -32,15 +33,15 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --brand-font-medium: #{$inter-medium-font};
 
   --brand-font-weight-light: 350;
-  --brand-font-weight-regular: 450;
-  --brand-font-weight-medium: 550;
+  --brand-font-weight-regular: 400;
+  --brand-font-weight-medium: 500;
   --brand-font-weight-bold: 700;
 
   font-size: var(--rem-base);
   font-family: var(--brand-font-regular);
   font-weight: var(--brand-font-weight-regular);
-  font-family: var(--brand-font-regular);
 
+  --body-large-font-size: 1.125rem;
   --body-primary-font-size: 1rem;
   --body-secondary-font-size: 0.875rem;
   --label-compact-font-size: 0.75rem;
@@ -50,6 +51,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --wc-menu-padding: 0.5rem;
   --wc-menu-item-height: 2.5rem;
   --wc-menu-item-rounded-border-radius: 0.5rem;
+  --md-menu-active-background-color: #{$mds-color-theme-background-primary-active};
 
   --wc-error-bg-color: #{$mds-color-theme-background-alert-error-normal};
   --wc-error-text-color: #{$mds-color-theme-text-error-normal};
@@ -127,9 +129,17 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-scrollbar-background-active-indicator: #{$mds-color-theme-scrollbar-button-pressed};
   --md-scrollbar-background-disabled-indicator: #{$mds-color-theme-scrollbar-background-secondary-normal};
 
+  --md-table-primary-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
+  --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
+  --md-table-border-style: none;
+  --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
+  --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
 
-  // Background colours can not be overwritten because they are being used by consumers in unexpected ways
-  // New background colours should be introduced and these phased out
+  // Background colors can not be overwritten because they are being used by consumers in unexpected ways
+  // New background colors should be introduced and these phased out
   // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   // --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
   // --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};

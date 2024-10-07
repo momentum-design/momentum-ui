@@ -60,14 +60,22 @@ export namespace Tooltip {
       this.handleKeyDown(e);
     };
 
+    private _wheelListener = (_e: Event) => {
+      if (this.opened) {
+        this.notifyTooltipDestroy();
+      }
+    };
+
     connectedCallback() {
       super.connectedCallback();
       document.addEventListener("keydown", this._keyDownListener);
+      window.addEventListener("wheel", this._wheelListener, { passive: true });
     }
 
     disconnectedCallback(): void {
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
+      window.removeEventListener("wheel", this._wheelListener);
     }
 
     protected handleFocusIn(event: Event) {

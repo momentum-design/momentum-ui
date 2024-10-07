@@ -58,9 +58,22 @@ export const chipTemplate = html`
     iconSize="16"
     iconSet="momentumDesign"
     iconColor="violet-60"
+    tooltipText="super-long-cisco-tihng-filename_001239084.png"
     value="super-long-cisco-tihng-filename_001239084.png"
   >
   </md-chip>
+
+  <h3 class="sandbox-header">Text Overflow Chip with different tooltip</h3>
+  <md-chip
+    icon="file-pdf-bold"
+    iconSize="16"
+    iconSet="momentumDesign"
+    iconColor="violet-60"
+    tooltipText="a more descriptive tooltip"
+    value="super-long-cisco-tihng-filename_001239084.png"
+  >
+  </md-chip>
+
   <h3 class="sandbox-header">Minimum Width Chip</h3>
   <md-chip icon="file-pdf-bold" iconSize="16" iconSet="momentumDesign" iconColor="violet-60" value="i"> </md-chip>
   <h3 class="sandbox-header">Named Custom content Slots</h3>
@@ -95,4 +108,14 @@ export const chipTemplate = html`
     <md-chip value="developer@cisco.ninja" slot="list-item" id="Chip4"></md-chip>
     <md-chip value="developer@cisco.ninja" slot="list-item" id="Chip5"></md-chip>
   </ul>
+  <h3 class="sandbox-header">sentiment chip</h3>
+  <md-chip value="- % #" color="positive" small>
+    <md-icon name="emoji-happy-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="- % #" color="negative" small>
+    <md-icon name="emoji-unhappy-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="- % #" color="neutral" small>
+    <md-icon name="emoji-passive-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
 `;

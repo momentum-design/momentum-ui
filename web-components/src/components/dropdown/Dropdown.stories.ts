@@ -34,6 +34,11 @@ export const Dropdown = () => {
   const title = text("title", "Select...?");
   const disabled = boolean("Disabled", false);
 
+  const newMomentum = boolean("newMomentum", false);
+  const searchable = boolean("searchable", false);
+  const leftIcon = text("Left Icon", "");
+  const placeholder = text("Placeholder (searchable)", "Select...");
+
   const simpleLong = boolean("Simple Long strings", false);
 
   const singleKeyValue = boolean("Single KeyValue objects", false);
@@ -47,6 +52,10 @@ export const Dropdown = () => {
           .defaultOption="${dropdownStringLongOptions[29]}"
           .title="${title}"
           ?disabled="${disabled}"
+          ?newMomentum="${newMomentum}"
+          ?searchable="${searchable}"
+          .leftIcon="${leftIcon}"
+          .placeholder="${placeholder}"
         ></md-dropdown>
       </md-theme>
     `;
@@ -57,6 +66,10 @@ export const Dropdown = () => {
           .options="${dropdownObjectKeyValueOptions}"
           .title="${title}"
           ?disabled="${disabled}"
+          ?newMomentum="${newMomentum}"
+          ?searchable="${searchable}"
+          .leftIcon="${leftIcon}"
+          .placeholder="${placeholder}"
         ></md-dropdown>
       </md-theme>
     `;
@@ -69,13 +82,25 @@ export const Dropdown = () => {
           option-value="country"
           .title="${title}"
           ?disabled="${disabled}"
+          ?newMomentum="${newMomentum}"
+          ?searchable="${searchable}"
+          .leftIcon="${leftIcon}"
+          .placeholder="${placeholder}"
         ></md-dropdown>
       </md-theme>
     `;
   } else {
     return html`
       <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${darkTheme}" theme=${theme}>
-        <md-dropdown .options="${dropdownStringOptions}" .title="${title}" ?disabled="${disabled}"></md-dropdown>
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          .title="${title}"
+          ?disabled="${disabled}"
+          ?newMomentum="${newMomentum}"
+          ?searchable="${searchable}"
+          .leftIcon="${leftIcon}"
+          .placeholder="${placeholder}"
+        ></md-dropdown>
       </md-theme>
     `;
   }

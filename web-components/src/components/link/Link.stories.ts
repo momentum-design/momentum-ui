@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import "@/components/link/Link";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { boolean, select, text } from "@storybook/addon-knobs";
@@ -39,7 +41,7 @@ export const Link = () => {
       <md-link
         .href=${href}
         .ariaLabel=${ariaLabel}
-        .ariaRole=${role}
+        .ariaRole=${role as any}
         .tag=${tag as any}
         .target="${target}"
         .color="${color}"

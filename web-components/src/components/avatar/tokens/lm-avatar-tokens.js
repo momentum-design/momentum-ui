@@ -170,28 +170,22 @@ const avatar = {
   },
   presence: {
     active: {
-      light: colors.green[50].name,
-      dark: colors.green[70].name
+      common: colors.green[60].name
     },
     inactive: {
-      light: colors.gray[50].name,
-      dark: colors.gray[80].name
+      common: colors.gray[60].name
     },
     engaged: {
-      light: colors.yellow[50].name,
-      dark: colors.yellow[70].name
+      common: colors.yellow[60].name
     },
     dnd: {
-      light: colors.red[50].name,
-      dark: colors.red[60].name
+      common: colors.red[60].name
     },
     rona: {
-      light: colors.red[50].name,
-      dark: colors.red[60].name
+      common: colors.red[60].name
     },
     unstable: {
-      light: colors.red[50].name,
-      dark: colors.red[70].name
+      common: colors.orange[60].name
     }
   }
 };

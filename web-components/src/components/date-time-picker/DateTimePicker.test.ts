@@ -1,8 +1,7 @@
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { Settings } from "luxon";
-import { DateTimePicker } from "./DateTimePicker";
-import { now } from "@/utils/dateUtils";
 import "./DateTimePicker";
+import { DateTimePicker } from "./DateTimePicker";
 
 describe("DateTimePicker Component", () => {
   beforeEach(() => {
@@ -21,15 +20,6 @@ describe("DateTimePicker Component", () => {
 
   test("should render with default date and time", async () => {
     const el: DateTimePicker.ELEMENT = await fixture(html` <md-date-time-picker></md-date-time-picker>> `);
-
-    let defaultToday = now();
-    defaultToday = defaultToday.set({
-      hour: 0,
-      minute: 0,
-      second: 0,
-      millisecond: 0
-    });
-
     expect(el.value).not.toBeNull();
   });
 

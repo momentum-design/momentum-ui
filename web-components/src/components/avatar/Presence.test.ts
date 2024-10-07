@@ -2,7 +2,7 @@ import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 import "./Presence";
 import { Presence } from "./Presence";
-import { getPresenceIconColor } from "./Presence.utils";
+import { getPresenceIconColor, getPresenceSize } from "./Presence.utils";
 
 describe("Presence", () => {
   afterEach(fixtureCleanup);
@@ -169,7 +169,7 @@ describe("Presence", () => {
   test("returns correct values for rona presenceType", () => {
     const result = getPresenceIconColor("rona", false);
     expect(result).toEqual({
-      presenceIcon: "recents-presence-badge-filled",
+      presenceIcon: "dnd-presence-badge-filled",
       presenceColor: "var(--avatar-presence-rona)",
       isCircularWrapper: true
     });
@@ -187,5 +187,53 @@ describe("Presence", () => {
   test("returns an empty object for invalid presenceType", () => {
     const result = getPresenceIconColor("", false);
     expect(result).toEqual({});
+  });
+});
+
+describe("getPresenceSize", () => {
+  it("should return 14 for sizes <= 24", () => {
+    expect(getPresenceSize(24)).toBe(14);
+    expect(getPresenceSize(20)).toBe(14);
+    expect(getPresenceSize(10)).toBe(14);
+  });
+
+  it("should return 14 for sizes <= 32", () => {
+    expect(getPresenceSize(32)).toBe(14);
+    expect(getPresenceSize(25)).toBe(14);
+  });
+
+  it("should return 16 for sizes <= 36", () => {
+    expect(getPresenceSize(36)).toBe(16);
+    expect(getPresenceSize(33)).toBe(16);
+  });
+
+  it("should return 16 for sizes <= 40", () => {
+    expect(getPresenceSize(40)).toBe(16);
+    expect(getPresenceSize(37)).toBe(16);
+  });
+
+  it("should return 16 for sizes <= 48", () => {
+    expect(getPresenceSize(48)).toBe(16);
+    expect(getPresenceSize(41)).toBe(16);
+  });
+
+  it("should return 18 for sizes <= 64", () => {
+    expect(getPresenceSize(64)).toBe(18);
+    expect(getPresenceSize(49)).toBe(18);
+  });
+
+  it("should return 20 for sizes <= 72", () => {
+    expect(getPresenceSize(72)).toBe(20);
+    expect(getPresenceSize(65)).toBe(20);
+  });
+
+  it("should return 28 for sizes <= 88", () => {
+    expect(getPresenceSize(88)).toBe(28);
+    expect(getPresenceSize(73)).toBe(28);
+  });
+
+  it("should return 36 for sizes > 88", () => {
+    expect(getPresenceSize(89)).toBe(36);
+    expect(getPresenceSize(100)).toBe(36);
   });
 });

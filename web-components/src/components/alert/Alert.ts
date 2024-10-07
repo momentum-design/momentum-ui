@@ -7,7 +7,9 @@
  */
 
 import "@/components/button/Button";
+import { buttonColor, buttonVariant } from "@/components/button/Button";
 import "@/components/icon/Icon";
+import "@/components/link/Link";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, TemplateResult } from "lit-element";
@@ -16,6 +18,9 @@ import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export namespace Alert {
+  export type buttonVariant = (typeof buttonVariant)[number];
+  export type buttonColor = (typeof buttonColor)[number];
+
   @customElementWithCheck("md-alert")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) closable = false;
@@ -27,6 +32,18 @@ export namespace Alert {
     @property({ type: String }) type = "default";
     @property({ type: Boolean }) inline = false;
 
+    @property({ type: Boolean }) newMomentum = false;
+
+    @property({ type: String }) primaryButton = "";
+    @property({ type: String }) primaryButtonVariant: Alert.buttonVariant = "primary";
+    @property({ type: String }) primaryButtonColor: Alert.buttonColor = "";
+    @property() primaryButtonClickFunction?: () => void;
+    @property({ type: String }) secondaryButton = "";
+    @property() secondaryButtonClickFunction?: () => void;
+    @property({ type: Boolean }) link = false;
+    @property({ type: Boolean }) showMore = false;
+    @property({ type: String }) href = "";
+
     close() {
       this.dispatchEvent(
         new CustomEvent("alert-close", {
@@ -35,7 +52,7 @@ export namespace Alert {
         })
       );
 
-      // By default closing internally, othervise - controlling outer via .show
+      // By default closing internally, otherwise - controlling outer via .show
       if (this.internalClose) {
         this.show = false;
       }
@@ -50,8 +67,8 @@ export namespace Alert {
         case "error":
           return html`
             <md-icon
-              name="warning-regular"
-              size="32"
+              name="error-legacy-bold"
+              size="${!this.newMomentum ? 32 : 24}"
               iconSet="momentumDesign"
               color="var(--md-alert-error-text-color, red)"
             ></md-icon>
@@ -60,7 +77,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="info-circle-regular"
-              size="32"
+              size="${!this.newMomentum ? 32 : 24}"
               iconSet="momentumDesign"
               color="var(--md-alert-info-text-color, blue)"
             ></md-icon>
@@ -68,8 +85,8 @@ export namespace Alert {
         case "success":
           return html`
             <md-icon
-              name="check-circle-regular"
-              size="32"
+              name="check-circle-bold"
+              size="${!this.newMomentum ? 32 : 24}"
               iconSet="momentumDesign"
               color="var(--md-alert-success-text-color, green)"
             ></md-icon>
@@ -78,12 +95,23 @@ export namespace Alert {
         case "warning":
           return html`
             <md-icon
-              name="warning-regular"
-              size="32"
+              name="warning-bold"
+              size="${!this.newMomentum ? 32 : 24}"
               iconSet="momentumDesign"
               color="var(--md-alert-warning-text-color, orange)"
             ></md-icon>
           `;
+        case "message":
+          return html`
+            <md-icon
+              name="chat-bold"
+              size="${!this.newMomentum ? 32 : 24}"
+              iconSet="momentumDesign"
+              color="var(--alert-title-text-color)"
+            ></md-icon>
+          `;
+        case "loading":
+          return html`<md-spinner size="24"></md-spinner>`;
         default:
           return html` <slot name="alert-icon"></slot> `;
       }
@@ -96,50 +124,136 @@ export namespace Alert {
       };
     }
 
-    render(): TemplateResult {
+    get slottedFooterClassMap() {
+      return {
+        "is-empty": !this.hasFooterSlotContent
+      };
+    }
+
+    get hasFooterSlotContent() {
+      //TODO: improve this check
+      return this.innerHTML.includes('<div slot="alert-footer">');
+    }
+
+    legacyRender(): TemplateResult {
       return html`
-        ${this.show
-          ? html`
-              <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
-              <div class="md-alert__icon aria-hidden="true">
-                  ${this.renderIconTemplate()}
+        <div role="alert" aria-live="polite" part="alert" class="md-alert ${classMap(this.alertClassMap)}">
+          <div class="md-alert__icon aria-hidden=true">${this.renderIconTemplate()}</div>
+          <div part="content" class="md-alert__content">
+            ${this.title && this.title !== ""
+              ? html` <div class="md-alert__title" role="heading" aria-level="1">${this.title}</div> `
+              : nothing}
+            <div class="md-alert__message">
+              ${this.message}
+              <slot name="alert-body"></slot>
+            </div>
+          </div>
+          ${this.closable
+            ? html`
+                <div class="md-alert__button">
+                  <md-button
+                    ariaLabel="${this.btnlabel}"
+                    hasRemoveStyle
+                    color="color-none"
+                    circle
+                    @click="${() => this.close()}"
+                  >
+                    <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign"></md-icon>
+                  </md-button>
                 </div>
-                <div part="content" class="md-alert__content">
-                ${
-                  this.title && this.title !== ""
-                    ? html` <div class="md-alert__title" role="heading" aria-level="1">${this.title}</div> `
-                    : nothing
-                }
-                  <div class="md-alert__message">
-                    ${this.message}
-                    <slot name="alert-body"></slot>
-                  </div>
+              `
+            : html`
+                <div class="md-alert__footer">
+                  <slot name="alert-footer"></slot>
                 </div>
-                ${
-                  this.closable
-                    ? html`
-                        <div class="md-alert__button">
-                          <md-button
-                            arialabel="${this.btnlabel}"
-                            hasRemoveStyle
-                            color="color-none"
-                            circle
-                            @click="${() => this.close()}"
-                          >
-                            <md-icon slot="icon" name="cancel-bold" size="18" iconSet="momentumDesign"></md-icon>
-                          </md-button>
-                        </div>
-                      `
-                    : html`
-                        <div class="md-alert__footer">
-                          <slot name="alert-footer"></slot>
-                        </div>
-                      `
-                }
-              </div>
-            `
-          : nothing}
+              `}
+        </div>
       `;
+    }
+
+    renderNewAlertDefaultFooter(): TemplateResult {
+      return html`
+        <div class="md-new-alert__footer">
+          ${this.link
+            ? html`
+                <md-link href="${this.href}">
+                  <span class="md-new-alert__link"
+                    >Link
+                    <md-icon
+                      name="pop-out-bold"
+                      size="16"
+                      iconSet="momentumDesign"
+                      color="var(--md-alert-info-text-color, blue)"
+                    >
+                    </md-icon>
+                  </span>
+                </md-link>
+              `
+            : nothing}
+          ${this.secondaryButton
+            ? html` <md-button variant="secondary" .clickFunction="${this.secondaryButtonClickFunction}">
+                ${this.secondaryButton}
+              </md-button>`
+            : nothing}
+          ${this.primaryButton
+            ? html`<md-button
+                variant=${this.primaryButtonVariant}
+                color=${this.primaryButtonColor}
+                .clickFunction="${this.primaryButtonClickFunction}"
+              >
+                ${this.primaryButton}
+              </md-button>`
+            : nothing}
+        </div>
+      `;
+    }
+
+    renderSlottedFooter(): TemplateResult {
+      return html` <div class="md-new-alert__footer ${classMap(this.slottedFooterClassMap)}">
+        <slot name="alert-footer"></slot>
+      </div>`;
+    }
+
+    newRender(): TemplateResult {
+      return html`
+        <div role="alert" aria-live="polite" part="alert" class="md-new-alert ${classMap(this.alertClassMap)}">
+          <div class="md-new-alert__body">
+            <div class="md-new-alert__icon aria-hidden=true">${this.renderIconTemplate()}</div>
+            <div part="content" class="md-new-alert__content">
+              ${this.title && this.title !== ""
+                ? html` <div class="md-new-alert__title" role="heading" aria-level="1">${this.title}</div> `
+                : nothing}
+              <div class="md-new-alert__message" title="${this.message}">
+                ${this.message}
+                <slot name="alert-body"></slot>
+                ${this.showMore ? html`<md-link href=${this.href} inline>Show more...</md-link>` : nothing}
+              </div>
+            </div>
+            ${this.closable
+              ? html`
+                  <div class="md-new-alert__button">
+                    <md-button
+                      ariaLabel="${this.btnlabel}"
+                      hasRemoveStyle
+                      color="color-none"
+                      circle
+                      @click="${() => this.close()}"
+                    >
+                      <md-icon slot="icon" name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+                    </md-button>
+                  </div>
+                `
+              : nothing}
+          </div>
+          ${this.primaryButton || this.secondaryButton || this.link
+            ? this.renderNewAlertDefaultFooter()
+            : this.renderSlottedFooter()}
+        </div>
+      `;
+    }
+
+    render(): TemplateResult {
+      return html` ${this.show ? (!this.newMomentum ? this.legacyRender() : this.newRender()) : nothing} `;
     }
   }
 }

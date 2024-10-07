@@ -513,7 +513,7 @@ export const menuOverlayTemplate = html`
     <md-button slot="menu-trigger" slot="menu-trigger" variant="primary">Click</md-button>
       <div style="margin:1.25rem; width: 100%">
           <md-checkboxgroup group-label="group_process" alignment="horizontal">
-            <md-checkbox slot="checkbox">Option one"</md-checkbox>
+            <md-checkbox slot="checkbox">Option one</md-checkbox>
             <md-checkbox slot="checkbox" checked>Option two</md-checkbox>
           </md-checkboxgroup>
           <md-input autofocus placeholder="Enter Text" shape="pill" clear></md-input>

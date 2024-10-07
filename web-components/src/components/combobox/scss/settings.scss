@@ -18,13 +18,14 @@ $combobox-dropdown-shadow: 0 4px 8px $black-16, 0 0 1px $black-16;
 
 $combobox-input-padding: 0 rem-calc(12);
 $combobox-error-padding: rem-calc(3) 0 0 rem-calc(12);
+$combobox-new-error-padding: rem-calc(3) 0 0 0;
 
 $combobox-option-padding: rem-calc(5) rem-calc(12) rem-calc(6);
 $combobox-select-size: rem-calc(20);
 $combobox-select-icon-size: rem-calc(18);
 $combobox-select-icon-top: rem-calc(3);
 $combobox-select-icon-left: rem-calc(2);
-$combobox-select-margin: rem-calc(16);
+$combobox-select-margin: rem-calc(12);
 
 $combobox-selected-radius: rem-calc(14);
 $combobox-selected-height: rem-calc(24);

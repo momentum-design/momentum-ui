@@ -83,6 +83,7 @@ export const MenuOverlay = () => {
           </div>
         </div>
       </md-menu-overlay>
+      <iframe style="float: left; margin-top: 200px;" title="iframe-to-test-menu-closing" src="http://127.0.0.1:8080/?path=/story/components-date-range-picker--date-range-picker"></iframe>
     </md-theme>
   `;
 };

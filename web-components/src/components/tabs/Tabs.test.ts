@@ -78,6 +78,7 @@ describe("Tabs", () => {
     new_target = new_target_scope.querySelector("md-input") as Element;
     tab = Array.from(tabs.querySelectorAll("md-tab")) as Tab.ELEMENT[];
     panels = Array.from(tabs.querySelectorAll("md-tab-panel")) as TabPanel.ELEMENT[];
+    Element.prototype.scrollIntoView = jest.fn();
   });
 
   afterEach(fixtureCleanup);

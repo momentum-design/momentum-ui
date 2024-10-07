@@ -6,6 +6,10 @@
   @include badge-size;
   @include chip-base();
 
+  & {
+    --left-content-right-margin: #{$chip-inner-content-margin};
+  }
+
   &--small {
     @include badge-size($padding: rem-calc(3 12));
     height: rem-calc(24);
@@ -28,302 +32,359 @@
   &--blue,
   &--cobalt {
     @include color-chip(
-      var(--badge-blue-bg-color, $lm-badge-blue-bg-color-light),
+      var(--badge-blue-bg-color),
       false,
-      var(--badge-blue-text-color, $lm-badge-blue-text-color-light),
-      var(--badge-blue-bg-color, $lm-badge-blue-bg-color-light),
-      var(--badge-blue-text-color, $lm-badge-blue-text-color-light)
+      var(--badge-blue-text-color),
+      var(--badge-blue-bg-color),
+      var(--badge-blue-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-blue-hover-bg-color, $lm-badge-blue-hover-bg-color-light),
+        var(--badge-blue-hover-bg-color),
         false,
-        var(--badge-blue-text-color, $lm-badge-blue-text-color-light),
-        var(--badge-blue-hover-bg-color, $lm-badge-blue-hover-bg-color-light),
-        var(--badge-blue-text-color, $lm-badge-blue-text-color-light)
+        var(--badge-blue-text-color),
+        var(--badge-blue-hover-bg-color),
+        var(--badge-blue-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-blue-active-bg-color, $lm-badge-blue-active-bg-color-light),
+        var(--badge-blue-active-bg-color),
         false,
-        var(--badge-blue-text-color, $lm-badge-blue-text-color-light),
-        var(--badge-blue-active-bg-color, $lm-badge-blue-active-bg-color-light),
-        var(--badge-blue-text-color, $lm-badge-blue-text-color-light)
+        var(--badge-blue-text-color),
+        var(--badge-blue-active-bg-color),
+        var(--badge-blue-text-color)
       );
     }
   }
 
   &--gray {
     @include color-chip(
-      var(--badge-gray-bg-color, $lm-badge-gray-bg-color-light),
+      var(--badge-gray-bg-color),
       false,
-      var(--badge-gray-text-color, $lm-badge-gray-text-color-light),
-      var(--badge-gray-bg-color, $lm-badge-gray-bg-color-light),
-      var(--badge-gray-text-color, $lm-badge-gray-text-color-light)
+      var(--badge-gray-text-color),
+      var(--badge-gray-bg-color),
+      var(--badge-gray-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-gray-hover-bg-color, $lm-badge-gray-hover-bg-color-light),
+        var(--badge-gray-hover-bg-color),
         false,
-        var(--badge-gray-text-color, $lm-badge-gray-text-color-light),
-        var(--badge-gray-hover-bg-color, $lm-badge-gray-hover-bg-color-light),
-        var(--badge-gray-text-color, $lm-badge-gray-text-color-light)
+        var(--badge-gray-text-color),
+        var(--badge-gray-hover-bg-color),
+        var(--badge-gray-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-gray-active-bg-color, $lm-badge-gray-active-bg-color-light),
+        var(--badge-gray-active-bg-color),
         false,
-        var(--badge-gray-text-color, $lm-badge-gray-text-color-light),
-        var(--badge-gray-active-bg-color, $lm-badge-gray-active-bg-color-light),
-        var(--badge-gray-text-color, $lm-badge-gray-text-color-light)
+        var(--badge-gray-text-color),
+        var(--badge-gray-active-bg-color),
+        var(--badge-gray-text-color)
       );
     }
   }
 
   &--mint {
     @include color-chip(
-      var(--badge-mint-bg-color, $lm-badge-mint-bg-color-light),
+      var(--badge-mint-bg-color),
       false,
-      var(--badge-mint-text-color, $lm-badge-mint-text-color-light),
-      var(--badge-mint-bg-color, $lm-badge-mint-bg-color-light),
-      var(--badge-mint-text-color, $lm-badge-mint-text-color-light)
+      var(--badge-mint-text-color),
+      var(--badge-mint-bg-color),
+      var(--badge-mint-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-mint-hover-bg-color, $lm-badge-mint-hover-bg-color-light),
+        var(--badge-mint-hover-bg-color),
         false,
-        var(--badge-mint-text-color, $lm-badge-mint-text-color-light),
-        var(--badge-mint-hover-bg-color, $lm-badge-mint-hover-bg-color-light),
-        var(--badge-mint-text-color, $lm-badge-mint-text-color-light)
+        var(--badge-mint-text-color),
+        var(--badge-mint-hover-bg-color),
+        var(--badge-mint-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-mint-active-bg-color, $lm-badge-mint-active-bg-color-light),
+        var(--badge-mint-active-bg-color),
         false,
-        var(--badge-mint-text-color, $lm-badge-mint-text-color-light),
-        var(--badge-mint-active-bg-color, $lm-badge-mint-active-bg-color-light),
-        var(--badge-mint-text-color, $lm-badge-mint-text-color-light)
+        var(--badge-mint-text-color),
+        var(--badge-mint-active-bg-color),
+        var(--badge-mint-text-color)
       );
     }
   }
 
   &--darkmint {
     @include color-chip(
-      var(--badge-darkmint-bg-color, $lm-badge-darkmint-bg-color-light),
+      var(--badge-darkmint-bg-color),
       false,
-      var(--badge-darkmint-text-color, $lm-badge-darkmint-text-color-light),
-      var(--badge-darkmint-bg-color, $lm-badge-darkmint-bg-color-light),
-      var(--badge-darkmint-text-color, $lm-badge-darkmint-text-color-light)
+      var(--badge-darkmint-text-color),
+      var(--badge-darkmint-bg-color),
+      var(--badge-darkmint-text-color)
     );
   }
 
   &--green {
     @include color-chip(
-      var(--badge-green-bg-color, $lm-badge-green-bg-color-light),
+      var(--badge-green-bg-color),
       false,
-      var(--badge-green-text-color, $lm-badge-green-text-color-light),
-      var(--badge-green-bg-color, $lm-badge-green-bg-color-light),
-      var(--badge-green-text-color, $lm-badge-green-text-color-light)
+      var(--badge-green-text-color),
+      var(--badge-green-bg-color),
+      var(--badge-green-text-color)
     );
   }
 
   &--yellow {
     @include color-chip(
-      var(--badge-yellow-bg-color, $lm-badge-yellow-bg-color-light),
+      var(--badge-yellow-bg-color),
       false,
-      var(--badge-yellow-text-color, $lm-badge-yellow-text-color-light),
-      var(--badge-yellow-bg-color, $lm-badge-yellow-bg-color-light),
-      var(--badge-yellow-text-color, $lm-badge-yellow-text-color-light)
+      var(--badge-yellow-text-color),
+      var(--badge-yellow-bg-color),
+      var(--badge-yellow-text-color)
     );
   }
 
   &--red {
     @include color-chip(
-      var(--badge-red-bg-color, $lm-badge-red-bg-color-light),
+      var(--badge-red-bg-color),
       false,
-      var(--badge-red-text-color, $lm-badge-red-text-color-light),
-      var(--badge-red-bg-color, $lm-badge-red-bg-color-light),
-      var(--badge-red-text-color, $lm-badge-red-text-color-light)
+      var(--badge-red-text-color),
+      var(--badge-red-bg-color),
+      var(--badge-red-text-color)
     );
   }
 
   &--orange {
     @include color-chip(
-      var(--badge-orange-bg-color, $lm-badge-orange-bg-color-light),
+      var(--badge-orange-bg-color),
       false,
-      var(--badge-orange-text-color, $lm-badge-orange-text-color-light),
-      var(--badge-orange-bg-color, $lm-badge-orange-bg-color-light),
-      var(--badge-orange-text-color, $lm-badge-orange-text-color-light)
+      var(--badge-orange-text-color),
+      var(--badge-orange-bg-color),
+      var(--badge-orange-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-orange-hover-bg-color, $lm-badge-orange-hover-bg-color-light),
+        var(--badge-orange-hover-bg-color),
         false,
-        var(--badge-orange-text-color, $lm-badge-orange-text-color-light),
-        var(--badge-orange-hover-bg-color, $lm-badge-orange-hover-bg-color-light),
-        var(--badge-orange-text-color, $lm-badge-orange-text-color-light)
+        var(--badge-orange-text-color),
+        var(--badge-orange-hover-bg-color),
+        var(--badge-orange-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-orange-active-bg-color, $lm-badge-orange-active-bg-color-light),
+        var(--badge-orange-active-bg-color),
         false,
-        var(--badge-orange-text-color, $lm-badge-orange-text-color-light),
-        var(--badge-orange-active-bg-color, $lm-badge-orange-active-bg-color-light),
-        var(--badge-orange-text-color, $lm-badge-orange-text-color-light)
+        var(--badge-orange-text-color),
+        var(--badge-orange-active-bg-color),
+        var(--badge-orange-text-color)
       );
     }
   }
 
   &--gold {
     @include color-chip(
-      var(--badge-gold-bg-color, $lm-badge-gold-bg-color-light),
+      var(--badge-gold-bg-color),
       false,
-      var(--badge-gold-text-color, $lm-badge-gold-text-color-light),
-      var(--badge-gold-bg-color, $lm-badge-gold-bg-color-light),
-      var(--badge-gold-text-color, $lm-badge-gold-text-color-light)
+      var(--badge-gold-text-color),
+      var(--badge-gold-bg-color),
+      var(--badge-gold-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-gold-hover-bg-color, $lm-badge-gold-hover-bg-color-light),
+        var(--badge-gold-hover-bg-color),
         false,
-        var(--badge-gold-text-color, $lm-badge-gold-text-color-light),
-        var(--badge-gold-hover-bg-color, $lm-badge-gold-hover-bg-color-light),
-        var(--badge-gold-text-color, $lm-badge-gold-text-color-light)
+        var(--badge-gold-text-color),
+        var(--badge-gold-hover-bg-color),
+        var(--badge-gold-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-gold-active-bg-color, $lm-badge-gold-active-bg-color-light),
+        var(--badge-gold-active-bg-color),
         false,
-        var(--badge-gold-text-color, $lm-badge-gold-text-color-light),
-        var(--badge-gold-active-bg-color, $lm-badge-gold-active-bg-color-light),
-        var(--badge-gold-text-color, $lm-badge-gold-text-color-light)
+        var(--badge-gold-text-color),
+        var(--badge-gold-active-bg-color),
+        var(--badge-gold-text-color)
       );
     }
   }
 
   &--lime {
     @include color-chip(
-      var(--badge-lime-bg-color, $lm-badge-lime-bg-color-light),
+      var(--badge-lime-bg-color),
       false,
-      var(--badge-lime-text-color, $lm-badge-lime-text-color-light),
-      var(--badge-lime-bg-color, $lm-badge-lime-bg-color-light),
-      var(--badge-lime-text-color, $lm-badge-lime-text-color-light)
+      var(--badge-lime-text-color),
+      var(--badge-lime-bg-color),
+      var(--badge-lime-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-lime-hover-bg-color, $lm-badge-lime-hover-bg-color-light),
+        var(--badge-lime-hover-bg-color),
         false,
-        var(--badge-lime-text-color, $lm-badge-lime-text-color-light),
-        var(--badge-lime-hover-bg-color, $lm-badge-lime-hover-bg-color-light),
-        var(--badge-lime-text-color, $lm-badge-lime-text-color-light)
+        var(--badge-lime-text-color),
+        var(--badge-lime-hover-bg-color),
+        var(--badge-lime-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-lime-active-bg-color, $lm-badge-lime-active-bg-color-light),
+        var(--badge-lime-active-bg-color),
         false,
-        var(--badge-lime-text-color, $lm-badge-lime-text-color-light),
-        var(--badge-lime-active-bg-color, $lm-badge-lime-active-bg-color-light),
-        var(--badge-lime-text-color, $lm-badge-lime-text-color-light)
+        var(--badge-lime-text-color),
+        var(--badge-lime-active-bg-color),
+        var(--badge-lime-text-color)
       );
     }
   }
 
   &--pink {
     @include color-chip(
-      var(--badge-pink-bg-color, $lm-badge-pink-bg-color-light),
+      var(--badge-pink-bg-color),
       false,
-      var(--badge-pink-text-color, $lm-badge-pink-text-color-light),
-      var(--badge-pink-bg-color, $lm-badge-pink-bg-color-light),
-      var(--badge-pink-text-color, $lm-badge-pink-text-color-light)
+      var(--badge-pink-text-color),
+      var(--badge-pink-bg-color),
+      var(--badge-pink-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-pink-hover-bg-color, $lm-badge-pink-hover-bg-color-light),
+        var(--badge-pink-hover-bg-color),
         false,
-        var(--badge-pink-text-color, $lm-badge-pink-text-color-light),
-        var(--badge-pink-hover-bg-color, $lm-badge-pink-hover-bg-color-light),
-        var(--badge-pink-text-color, $lm-badge-pink-text-color-light)
+        var(--badge-pink-text-color),
+        var(--badge-pink-hover-bg-color),
+        var(--badge-pink-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-pink-active-bg-color, $lm-badge-pink-active-bg-color-light),
+        var(--badge-pink-active-bg-color),
         false,
-        var(--badge-pink-text-color, $lm-badge-pink-text-color-light),
-        var(--badge-pink-active-bg-color, $lm-badge-pink-active-bg-color-light),
-        var(--badge-pink-text-color, $lm-badge-pink-text-color-light)
+        var(--badge-pink-text-color),
+        var(--badge-pink-active-bg-color),
+        var(--badge-pink-text-color)
       );
     }
   }
 
   &--purple {
     @include color-chip(
-      var(--badge-purple-bg-color, $lm-badge-purple-bg-color-light),
+      var(--badge-purple-bg-color),
       false,
-      var(--badge-purple-text-color, $lm-badge-purple-text-color-light),
-      var(--badge-purple-bg-color, $lm-badge-purple-bg-color-light),
-      var(--badge-purple-text-color, $lm-badge-purple-text-color-light)
+      var(--badge-purple-text-color),
+      var(--badge-purple-bg-color),
+      var(--badge-purple-text-color)
     );
   }
 
   &--violet {
     @include color-chip(
-      var(--badge-violet-bg-color, $lm-badge-violet-bg-color-light),
+      var(--badge-violet-bg-color),
       false,
-      var(--badge-violet-text-color, $lm-badge-violet-text-color-light),
-      var(--badge-violet-bg-color, $lm-badge-violet-bg-color-light),
-      var(--badge-violet-text-color, $lm-badge-violet-text-color-light)
+      var(--badge-violet-text-color),
+      var(--badge-violet-bg-color),
+      var(--badge-violet-text-color)
     );
 
     &:hover {
       @include color-chip(
-        var(--badge-violet-hover-bg-color, $lm-badge-violet-hover-bg-color-light),
+        var(--badge-violet-hover-bg-color),
         false,
-        var(--badge-violet-text-color, $lm-badge-violet-text-color-light),
-        var(--badge-violet-hover-bg-color, $lm-badge-violet-hover-bg-color-light),
-        var(--badge-violet-text-color, $lm-badge-violet-text-color-light)
+        var(--badge-violet-text-color),
+        var(--badge-violet-hover-bg-color),
+        var(--badge-violet-text-color)
       );
     }
 
     &:active {
       @include color-chip(
-        var(--badge-violet-active-bg-color, $lm-badge-violet-active-bg-color-light),
+        var(--badge-violet-active-bg-color),
         false,
-        var(--badge-violet-text-color, $lm-badge-violet-text-color-light),
-        var(--badge-violet-active-bg-color, $lm-badge-violet-active-bg-color-light),
-        var(--badge-violet-text-color, $lm-badge-violet-text-color-light)
+        var(--badge-violet-text-color),
+        var(--badge-violet-active-bg-color),
+        var(--badge-violet-text-color)
       );
     }
   }
 
   &--cyan {
     @include color-chip(
-      var(--badge-cyan-bg-color, $lm-badge-cyan-bg-color-light),
+      var(--badge-cyan-bg-color),
       false,
-      var(--badge-cyan-text-color, $lm-badge-cyan-text-color-light),
-      var(--badge-cyan-bg-color, $lm-badge-cyan-bg-color-light),
-      var(--badge-cyan-text-color, $lm-badge-cyan-text-color-light)
+      var(--badge-cyan-text-color),
+      var(--badge-cyan-bg-color),
+      var(--badge-cyan-text-color)
     );
+  }
+
+  &--positive {
+    --left-content-right-margin: 4px;
+    padding: 0px 4px;
+    font-weight: 500;
+    font-family: var(--brand-font-regular);
+    background-color: var(--badge-positive-bg-color);
+    color: var(--badge-positive-text-color);
+    border: 1px solid var(--badge-positive-border-color);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--badge-positive-hover-bg-color);
+    }
+
+    &:active {
+      background-color: var(--badge-positive-active-bg-color);
+    }
+  }
+
+  &--negative {
+    --left-content-right-margin: 4px;
+    padding: 0px 4px;
+    font-weight: 500;
+    font-family: var(--brand-font-regular);
+    background-color: var(--badge-negative-bg-color);
+    color: var(--badge-negative-text-color);
+    border: 1px solid var(--badge-negative-border-color);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--badge-negative-hover-bg-color);
+    }
+
+    &:active {
+      background-color: var(--badge-negative-active-bg-color);
+    }
+  }
+
+  &--neutral {
+    --left-content-right-margin: 4px;
+    padding: 0px 4px;
+    font-weight: 500;
+    font-family: var(--brand-font-regular);
+    background-color: var(--badge-neutral-bg-color);
+    color: var(--badge-neutral-text-color);
+    border: 1px solid var(--badge-neutral-border-color);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--badge-neutral-hover-bg-color);
+    }
+
+    &:active {
+      background-color: var(--badge-neutral-active-bg-color);
+    }
   }
 
   .md-chip--clear {
@@ -353,7 +414,7 @@
 
   md-icon {
     display: flex;
-    margin-right: $chip-inner-content-margin;
+    margin-right: var(--left-content-right-margin);
   }
 
   &.md-chip--disabled {
@@ -374,7 +435,7 @@
 }
 
 ::slotted([slot="custom-left-content"]) {
-  margin-right: $chip-inner-content-margin;
+  margin-right: var(--left-content-right-margin);
 }
 
 ::slotted([slot="custom-right-content"]) {

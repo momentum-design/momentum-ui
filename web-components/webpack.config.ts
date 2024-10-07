@@ -5,7 +5,6 @@ import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import RemovePlugin from "remove-files-webpack-plugin";
-import sass from "sass";
 import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
@@ -60,7 +59,10 @@ const common: webpack.Configuration = {
             esModule: false
           }
         },
-        include: path.resolve("node_modules/@momentum-design/icons/dist/svg")
+        include: [
+          path.resolve("node_modules/@momentum-design/icons/dist/svg"),
+          path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg")
+        ]
       }
     ]
   }
@@ -92,7 +94,6 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       {
         loader: "sass-loader",
         options: {
-          implementation: sass,
           sourceMap: isDev,
           sassOptions: {
             outputStyle: "compressed"
@@ -170,6 +171,7 @@ const commonDist = merge(common, {
     "comp/md-button-entry": "./src/components/button/Button",
     "comp/md-button-group-entry": "./src/components/button-group/ButtonGroup",
     "comp/md-card-entry": "./src/components/card/Card",
+    "comp/md-card-ai-entry": "./src/components/card-ai/CardAi",
     "comp/md-chat-message-entry": "./src/components/chat-message/ChatMessage",
     "comp/md-checkbox-entry": "./src/components/checkbox/Checkbox",
     "comp/md-checkboxgroup-entry": "./src/components/checkbox/CheckboxGroup",

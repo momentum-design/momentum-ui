@@ -3,6 +3,7 @@ import type { Args, Meta, StoryObj } from "@storybook/web-components";
 
 import { html } from "lit-element";
 import "./Accordion";
+import mdx from "./Accordion.mdx";
 import "./AccordionItem";
 
 const render = (args: Args) => html`
@@ -39,6 +40,9 @@ const meta: Meta = {
   parameters: {
     a11y: {
       element: "md-accordion"
+    },
+    docs: {
+      page: mdx
     }
   },
   args: Primary.args

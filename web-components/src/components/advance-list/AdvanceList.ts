@@ -38,12 +38,13 @@ export namespace AdvanceList {
       super.disconnectedCallback();
       // Clean up event listeners when the component is removed
       this.removeEventListener("click", this.handleClick);
-      this.listContainer?.removeEventListener("keydown", this.handleKeyDown.bind(this));
+      this.listContainer?.addEventListener("keydown", this.handleKeyDown);
+
     }
 
     protected firstUpdated(_changedProperties: PropertyValues): void {
       // Add keydown event listener to the list container
-      this.listContainer?.addEventListener("keydown", this.handleKeyDown.bind(this));
+      this.listContainer?.addEventListener("keydown", this.handleKeyDown);
     }
 
     updated(changedProperties: PropertyValues) {
@@ -114,7 +115,7 @@ export namespace AdvanceList {
       return undefined;
     }
 
-    handleKeyDown(event: KeyboardEvent) {
+     handleKeyDown = (event: KeyboardEvent): void => {
       switch (event.key) {
         case Key.ArrowDown:
           event.preventDefault();

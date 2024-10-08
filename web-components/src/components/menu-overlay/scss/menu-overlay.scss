@@ -56,7 +56,6 @@
     border-left: solid $arrow-size transparent;
     border-right: solid $arrow-size transparent;
     top: $arrow-offset;
-    filter: drop-shadow(0px -14px 8px rgba(0, 0, 0, 0.16));
   }
 
   .overlay-container[data-popper-placement^="right"] > .overlay-arrow {

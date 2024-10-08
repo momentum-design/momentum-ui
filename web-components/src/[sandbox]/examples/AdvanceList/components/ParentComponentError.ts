@@ -33,7 +33,6 @@ export namespace ParentComponentError {
   }
 
     async loadMoreItems() {
-      console.log('event dispatched ----->>>');
       try {
         if (this.shouldFail) {
           throw new Error('Simulated alternating failure');
@@ -50,7 +49,6 @@ export namespace ParentComponentError {
       } catch (err) {
         this.isLoading = false;
         this.isError = true;
-        console.log('line no 44', this.isLoading, this.isError);
       } finally {
         // Toggle the flag after each attempt
         this.shouldFail = !this.shouldFail;
@@ -59,11 +57,9 @@ export namespace ParentComponentError {
     }
 
     private handleListItemChange(event: CustomEvent) {
-      console.log(event.detail.selected)
       //API call send to end point to upate the item
   }
     async fetchItems(page: number) {
-      console.log('Fetching items for page', page);
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       const newItems = Array.from({ length: 2000 }, (_, i) => ({
@@ -77,15 +73,13 @@ export namespace ParentComponentError {
     }
 
     handleRetry() {
-      console.log('Retry triggered');
       this.loadMoreItems();
     }
 
     render() {
-      console.log("rendering parent component--error is loading", this.isLoading);
       return html`
         <h2>Error scenario</h2>
-        <md-advance-list style="width:400px"
+        <md-advance-list
           class="advance-list"
           .items=${this.items}
           .isLoading=${this.isLoading}
@@ -110,21 +104,6 @@ export namespace ParentComponentError {
             @retry="${this.handleRetry}">
           </md-fetch-error>
         ` : ''}
-      `;
-    }
-
-    static get styles() {
-      return css`
-        .item {
-          padding: 16px;
-          border-bottom: 1px solid #ccc;
-        }
-        .error {
-          color: red;
-        }
-        .advance-list{
-          margin-bottom: 200px;
-        }
       `;
     }
   }

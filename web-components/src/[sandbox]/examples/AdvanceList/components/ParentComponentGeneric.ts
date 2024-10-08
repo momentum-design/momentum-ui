@@ -32,9 +32,6 @@ export namespace ParentComponentGeneric {
                 
 
         async loadMoreItems() {
-            console.log("load more called")
-            console.log('event dispatched ----->>>');
-            
             try {
                 this.isLoading = true;
                 const newItems = await this.fetchItems(this.page);
@@ -42,14 +39,11 @@ export namespace ParentComponentGeneric {
                 this.page += 1;
                 this.isLoading = false;
                 this.value = this.items[1].id;
-                console.log('try calledddd')
             } catch (err) {
                 this.isLoading = false;
                 this.isError = true;
-                console.log("error called")
             }finally{
                 this.isLoading = false;
-                console.log("finally called")
             }
         }
 
@@ -71,7 +65,6 @@ export namespace ParentComponentGeneric {
         }
 
         private handleListItemChange(event: CustomEvent) {
-            console.log(event.detail.selected)
             //API call send to end point to update the item
         }
 
@@ -90,18 +83,6 @@ export namespace ParentComponentGeneric {
           <md-spinner size="24" slot="spin-loader"></md-spinner>
           </md-advance-list>
           `;
-        }
-
-        static get styles() {
-            return css`
-        .item {
-          padding: 16px;
-          border-bottom: 1px solid #ccc;
-        }
-        .error {
-          color: red;
-        }
-      `;
         }
     }
 }

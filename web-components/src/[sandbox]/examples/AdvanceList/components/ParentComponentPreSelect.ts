@@ -29,9 +29,6 @@ export namespace ParentComponentPreSelect {
             });
         }
         async loadMoreItems() {
-            console.log("load more called")
-            console.log('event dispatched ----->>>');
-            
             try {
                 this.isLoading = true;
                 const newItems = await this.fetchItems(this.page);
@@ -40,16 +37,11 @@ export namespace ParentComponentPreSelect {
                 this.page += 1;
                 this.isLoading = false;
                 this.value = this.items[1].id;
-                // this.isError = null;
-                console.log('try calledddd')
             } catch (err) {
                 this.isLoading = false;
                 this.isError = true;
-                // this.isError = 'Failed to load more items. Please try again.';
-                console.log("error caled")
             }finally{
                 this.isLoading = false;
-                console.log("finally called")
             }
         }
 
@@ -68,12 +60,10 @@ export namespace ParentComponentPreSelect {
         }
 
         private handleListItemChange(event: CustomEvent) {
-            console.log(event.detail.selected)
-            //API call send to end point to upate the item
+           
         }
 
         render() {
-            // console.log("rendering parent component--generic", this.items)
             return html`
         <h2>Pre Select Item List</h2>
         <md-advance-list
@@ -89,18 +79,6 @@ export namespace ParentComponentPreSelect {
           <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>
           `;
-        }
-
-        static get styles() {
-            return css`
-        .item {
-          padding: 16px;
-          border-bottom: 1px solid #ccc;
-        }
-        .error {
-          color: red;
-        }
-      `;
         }
     }
 }

@@ -37,7 +37,7 @@ const render = (args: Args) => {
   if (args.composite) {
     return html`
       <md-theme class="theme-toggle" id="avatar" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-        <md-composite-avatar .size=${args.sizeComos}>
+        <md-composite-avatar .size=${args.compositeAvatarSizes}>
           <md-avatar title="Anthony Russell" type="dnd" has-notification alt="Avatar"></md-avatar>
           <md-avatar type="typing" title="Alyson Hoagland Pace" alt="Avatar"></md-avatar>
         </md-composite-avatar>
@@ -53,7 +53,7 @@ const render = (args: Args) => {
           label=${args.label}
           type=${args.type}
           src="${args.customUrl ? `${args.url}` : ""}"
-          color=${args.preDefinedColor}
+          color=${args.color}
           size=${args.size}
           ?has-notification=${args.hasNotification}
           ?newMomentum=${args.newMomentum}
@@ -84,9 +84,9 @@ const meta: Meta = {
     theme: { control: { type: "select", options: ThemeNameValues } },
     darkTheme: { control: "boolean" },
     type: { control: { type: "select", options: AvatarType } },
-    preDefinedColor: { control: { type: "select", options } },
-    size: { control: { type: AvatarSize } },
-    sizeComos: { control: { type: compositeAvatarSize } }
+    color: { control: { type: "select", options: options } },
+    size: { control: { type: "select", options: AvatarSize } },
+    compositeAvatarSizes: { control: { type: "select", options: compositeAvatarSize } }
   },
   parameters: {
     a11y: {

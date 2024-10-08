@@ -9,15 +9,39 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
 import "@/components/toggle-switch/ToggleSwitch";
 import { alignLabel } from "@/components/toggle-switch/ToggleSwitch";
-import { boolean, select } from "@storybook/addon-knobs";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 
-export default {
-  title: "Components/Toggle Switch",
-  component: "md-toggle-switch",
+export const render = (args: Args) => html`
+  <md-theme class="theme-toggle" id="toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+    <md-toggle-switch
+      htmlId="toggleSwitch"
+      ?checked=${args.checked}
+      ?disabled=${args.disabled}
+      .smaller=${args.smaller}
+      .alignLabel=${args.align}
+    >
+      Label Toggle Switch
+    </md-toggle-switch>
+  </md-theme>
+`;
+
+export const Primary: StoryObj = {
+  args: {
+    align: "right"
+  }
+};
+
+const meta: Meta = {
+  title: "Internal References/Color Table",
+  component: "color-table",
+  render: render,
   argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues } },
+    darkTheme: { control: "boolean" },
     toggleSwitchClassMap: { table: { disable: true } },
-    autofocus: { table: { disable: true } }
+    autofocus: { table: { disable: true } },
+    align: { control: { type: "select", options: alignLabel } }
   },
   parameters: {
     a11y: {
@@ -26,25 +50,4 @@ export default {
   }
 };
 
-export const ToggleSwitch = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const checked = boolean("Checked", false);
-  const disabled = boolean("Disabled", false);
-  const smaller = boolean("Smaller", false);
-  const align = select("Align Label", alignLabel, "right");
-
-  return html`
-    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-toggle-switch
-        htmlId="toggleSwitch"
-        ?checked=${checked}
-        ?disabled=${disabled}
-        .smaller=${smaller}
-        ?alignLabel=${align}
-      >
-        Label Toggle Switch
-      </md-toggle-switch>
-    </md-theme>
-  `;
-};
+export default meta;

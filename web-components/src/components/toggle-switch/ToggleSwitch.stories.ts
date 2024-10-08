@@ -12,7 +12,7 @@ import { alignLabel } from "@/components/toggle-switch/ToggleSwitch";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 
-export const render = (args: Args) => html`
+const render = (args: Args) => html`
   <md-theme class="theme-toggle" id="toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
     <md-toggle-switch
       htmlId="toggleSwitch"
@@ -33,11 +33,11 @@ export const Primary: StoryObj = {
 };
 
 const meta: Meta = {
-  title: "Internal References/Color Table",
-  component: "color-table",
+  title: "Components/Toggle Switch",
+  component: "md-toggle-switch",
   render: render,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
     toggleSwitchClassMap: { table: { disable: true } },
     autofocus: { table: { disable: true } },

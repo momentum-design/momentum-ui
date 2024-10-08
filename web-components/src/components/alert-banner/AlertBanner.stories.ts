@@ -43,7 +43,7 @@ const meta: Meta = {
   component: "md-alert-banner",
   render,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
     type: { control: { type: "select", options: ["default", "warning", "error", "success"] } }
   },

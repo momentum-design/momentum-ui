@@ -9,7 +9,7 @@
 import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import type { Args, Meta, StoryObj } from "@storybook/web-components";
+import type { Args, Meta } from "@storybook/web-components";
 import { html } from "lit-element";
 import { AvatarSize, AvatarType } from "./Avatar.constants";
 import mdx from "./Avatar.mdx";
@@ -33,7 +33,7 @@ const options = {
 
 const compositeAvatarSize = [0, 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84] as const;
 
-const render = (args: Args) => {
+export const Avatar = (args: Args) => {
   if (args.composite) {
     return html`
       <md-theme class="theme-toggle" id="avatar" ?darkTheme=${args.darkTheme} theme=${args.theme}>
@@ -65,28 +65,24 @@ const render = (args: Args) => {
   }
 };
 
-export const Primary: StoryObj = {
-  args: {
-    theme: "lumos",
-    darkTheme: false,
-    title: "Rachell Harris",
-    label: "Avatar",
-    size: 32,
-    url: "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"
-  }
-};
-
 const meta: Meta = {
   title: "Components/Avatar",
   component: "md-avatar",
-  render,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues } },
-    darkTheme: { control: "boolean" },
-    type: { control: { type: "select", options: AvatarType } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    type: { control: { type: "select", options: AvatarType }, defaultValue: "" },
+    title: { control: "text", defaultValue: "Rachell Harris" },
+    label: { control: "text", defaultValue: "Avatar" },
     color: { control: { type: "select", options: options } },
-    size: { control: { type: "select", options: AvatarSize } },
-    compositeAvatarSizes: { control: { type: "select", options: compositeAvatarSize } }
+    iconName: { control: "text", defaultValue: "" },
+    size: { control: { type: "select", options: AvatarSize }, defaultValue: 32 },
+    compositeAvatarSizes: { control: { type: "select", options: compositeAvatarSize } },
+    url: {
+      control: "text",
+      defaultValue:
+        "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"
+    }
   },
   parameters: {
     a11y: {
@@ -95,8 +91,7 @@ const meta: Meta = {
     docs: {
       page: mdx
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

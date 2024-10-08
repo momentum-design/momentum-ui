@@ -43,7 +43,7 @@ const meta: Meta = {
   component: "md-badge",
   render,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
     color: { control: { type: "select", options: badgeColor } },
     renderBgColor: { table: { disable: true } },

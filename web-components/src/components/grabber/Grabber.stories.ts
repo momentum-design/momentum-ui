@@ -45,7 +45,7 @@ const meta: Meta = {
   component: "md-grabber",
   render,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
     checked: { control: "boolean" },
     visible: { control: "boolean" },

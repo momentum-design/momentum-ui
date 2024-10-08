@@ -8,55 +8,31 @@
 
 import "@/components/table-advanced/TableAdvanced";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args, Meta } from "@storybook/web-components";
 import { html } from "lit-element";
 import { TableAdvanced as TableAdvancedType } from "./TableAdvanced"; // Keep type import as a relative path
 import mdx from "./TableAdvanced.mdx";
 
-export default {
-  title: "Components/Table Advanced",
-  component: "md-table-advanced",
-  parameters: {
-    a11y: {
-      element: "md-table-advanced"
-    },
-    docs: {
-      page: mdx
-    }
-  }
-};
-
-export const TableAdvanced = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const stickheader = boolean("Sticky Header", false);
-  const resize = boolean("Column Resize", false);
-  const dragRow = boolean("Row Draggable", false);
-  const dragCol = boolean("Column Draggable", false);
-  const collapse = boolean("Collapse Row", false);
-  const caption = text("Table Caption", "");
-  const sum = text("Table Summary", "");
-  const customize = boolean("Use custom template for replace", false);
-
+export const TableAdvanced = (args: Args) => {
   const DefaultAdvancedTable: { config: TableAdvancedType.Config; data: TableAdvancedType.Data } = {
     config: {
-      isStickyHeader: stickheader,
+      isStickyHeader: args.stickheader,
 
       rows: {
-        isDraggable: dragRow,
+        isDraggable: args.dragRow,
         selectable: "single"
       },
 
       head: {
-        caption: caption,
-        summary: sum
+        caption: args.caption,
+        summary: args.sum
       },
 
       cellTemplates: { "00:52": { templateName: "tmp1" } },
 
       cols: {
-        isDraggable: dragCol,
-        isResizable: resize,
+        isDraggable: args.dragCol,
+        isResizable: args.resize,
         define: [
           { id: "col-ani", title: "ANI", sorter: "byString" },
           { id: "col-stage", title: "Abandoment Statge", filters: "forString" },
@@ -86,16 +62,16 @@ export const TableAdvanced = () => {
 
   const ColapseData: { config: TableAdvancedType.Config; data: TableAdvancedType.Data } = {
     config: {
-      isStickyHeader: stickheader,
+      isStickyHeader: args.stickheader,
 
       rows: {
-        isDraggable: dragRow,
+        isDraggable: args.dragRow,
         selectable: "single"
       },
 
       cols: {
-        isDraggable: dragCol,
-        isResizable: resize,
+        isDraggable: args.dragCol,
+        isResizable: args.resize,
         collapse: "col-ani",
         define: [
           { id: "col-ani", title: "ANI", sorter: "byString" },
@@ -126,53 +102,65 @@ export const TableAdvanced = () => {
     }
   };
 
-  const CONF = DefaultAdvancedTable.config;
-  CONF.cellTemplates = {
-    "00:52": {
-      templateName: "tmp1"
-    }
-  };
+  return html`
+    <md-theme class="theme-toggle" id="table" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      ${args.customize
+        ? html`
+            <div style="${args.stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
+              <md-table-advanced
+                style="${args.collapse ? `display: block;` : `display: none;`}"
+                .config=${ColapseData.config}
+                .data=${ColapseData.data}
+              >
+              </md-table-advanced>
+              <md-table-advanced
+                style="${args.collapse ? `display: none;` : `display: block;`}"
+                .config=${DefaultAdvancedTable.config}
+                .data=${DefaultAdvancedTable.data}
+              >
+                <template id="tmp1">
+                  <div style="background: yellow">[OK]</div>
+                </template>
+              </md-table-advanced>
+            </div>
+          `
+        : html`
+            <div style="${args.stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
+              <md-table-advanced
+                style="${args.collapse ? `display: block;` : `display: none;`}"
+                .config=${ColapseData.config}
+                .data=${ColapseData.data}
+              >
+              </md-table-advanced>
+              <md-table-advanced
+                style="${args.collapse ? `display: none;` : `display: block;`}"
+                .config=${DefaultAdvancedTable.config}
+                .data=${DefaultAdvancedTable.data}
+              >
+              </md-table-advanced>
+            </div>
+          `}
+    </md-theme>
+  `;
+};
 
-  if (customize) {
-    return html`
-      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} theme=${theme}>
-        <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
-          <md-table-advanced
-            .style="${collapse ? `display: block;` : `display: none;`}"
-            .config=${ColapseData.config}
-            .data=${ColapseData.data}
-          >
-          </md-table-advanced>
-          <md-table-advanced
-            .style="${collapse ? `display: none;` : `display: block;`}"
-            .config=${DefaultAdvancedTable.config}
-            .data=${DefaultAdvancedTable.data}
-          >
-            <template id="tmp1">
-              <div style="background: yellow">[OK]</div>
-            </template>
-          </md-table-advanced>
-        </div>
-      </md-theme>
-    `;
-  } else {
-    return html`
-      <md-theme class="theme-toggle" id="table" ?darkTheme=${darkTheme} theme=${theme}>
-        <div style="${stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
-          <md-table-advanced
-            .style="${collapse ? `display: block;` : `display: none;`}"
-            .config=${ColapseData.config}
-            .data=${ColapseData.data}
-          >
-          </md-table-advanced>
-          <md-table-advanced
-            .style="${collapse ? `display: none;` : `display: block;`}"
-            .config=${DefaultAdvancedTable.config}
-            .data=${DefaultAdvancedTable.data}
-          >
-          </md-table-advanced>
-        </div>
-      </md-theme>
-    `;
+const meta: Meta = {
+  title: "Components/Table Advanced",
+  component: "md-table-advanced",
+  render: TableAdvanced,
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    customize: { control: "boolean", description: "Use custom template for replace", defaultValue: false }
+  },
+  parameters: {
+    a11y: {
+      element: "md-table-advanced"
+    },
+    docs: {
+      page: mdx
+    }
   }
 };
+
+export default meta;

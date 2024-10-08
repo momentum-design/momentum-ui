@@ -48,7 +48,7 @@ const meta: Meta = {
   component: "md-breadcrumb",
   render,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" }
   },
   parameters: {

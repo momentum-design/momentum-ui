@@ -544,6 +544,13 @@ export namespace TableAdvanced {
       `;
     }
 
+    private ariaSortOrder(sortOrder: SortOrder) {
+      if (sortOrder === "ascending") return sortOrder;
+      else if (sortOrder === "descending") return sortOrder;
+
+      return "none";
+    }
+
     private renderHead() {
       let groups = nothing;
       const hasGroup = this.COLS.reduce((acc, col) => (acc = col.group ? true : acc), false);
@@ -625,7 +632,7 @@ export namespace TableAdvanced {
           width=${ifDefined(col.width ? col.width : col.options.width)}
           scope="col"
           part="head-col"
-          aria-sort=${col.sort}
+          aria-sort=${this.ariaSortOrder(col.sort)}
           title="${col.options.title}"
           class=${"col-index-" + col.index}
         >

@@ -98,6 +98,11 @@ const meta: Meta = {
   title: "Components/Alerts",
   component: "md-alert",
   argTypes: {
+    renderIconTemplate: { table: { disable: true } },
+    alertClassMap: { table: { disable: true } },
+    hasFooterSlotContent: { table: { disable: true } },
+    slottedFooterClassMap: { table: { disable: true } },
+    internalClose: { description: "By default closing internally, otherwise - controlling outer via .show" },
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
     type: { control: { type: "select", options: alertTypes } }

@@ -30,7 +30,7 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const Link: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
@@ -42,13 +42,13 @@ export const Primary: StoryObj = {
     color: "blue",
     ariaLabel: "Link Storybook",
     role: ""
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Link",
   component: "md-link",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
@@ -60,8 +60,7 @@ const meta: Meta = {
     a11y: {
       element: "md-link"
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

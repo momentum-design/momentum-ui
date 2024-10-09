@@ -17,18 +17,18 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const TimePicker: StoryObj = {
   args: {
     theTimeSpecificity: TIME_UNIT.SECOND,
     locale: "en-US",
     value: "00:00:00-08:00"
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Time Picker",
   component: "md-timepicker",
-  render: render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },

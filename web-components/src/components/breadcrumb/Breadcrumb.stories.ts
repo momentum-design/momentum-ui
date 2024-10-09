@@ -36,17 +36,17 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const Breadcrumb: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Breadcrumb",
   component: "md-breadcrumb",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" }
@@ -55,8 +55,7 @@ const meta: Meta = {
     a11y: {
       element: "md-breadcrumb"
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

@@ -30,18 +30,18 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const Badge: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
     color: "blue"
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Badge",
   component: "md-badge",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
@@ -56,8 +56,7 @@ const meta: Meta = {
     a11y: {
       element: "md-badge"
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

@@ -38,7 +38,7 @@ const render = (args: Args) => html`
       `}
 `;
 
-export const Primary: StoryObj = {
+export const Checkbox: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
@@ -47,13 +47,13 @@ export const Primary: StoryObj = {
     disable: false,
     indeter: false,
     group: false
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Checkbox",
   component: "md-checkbox",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" }

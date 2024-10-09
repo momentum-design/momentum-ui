@@ -22,17 +22,17 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const Accordion: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
-  title: "Components/Accordian",
+  title: "Components/Accordion",
   component: "md-accordion",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" }
@@ -44,8 +44,7 @@ const meta: Meta = {
     docs: {
       page: mdx
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

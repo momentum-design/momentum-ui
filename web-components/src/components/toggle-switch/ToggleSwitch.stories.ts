@@ -9,10 +9,10 @@
 import { ThemeNameValues } from "@/components/theme/Theme";
 import "@/components/toggle-switch/ToggleSwitch";
 import { alignLabel } from "@/components/toggle-switch/ToggleSwitch";
-import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { Args, Meta } from "@storybook/web-components";
 import { html } from "lit-element";
 
-const render = (args: Args) => html`
+export const ToggleSwitch = (args: Args) => html`
   <md-theme class="theme-toggle" id="toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
     <md-toggle-switch
       htmlId="toggleSwitch"
@@ -26,22 +26,15 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
-  args: {
-    align: "right"
-  }
-};
-
 const meta: Meta = {
   title: "Components/Toggle Switch",
   component: "md-toggle-switch",
-  render: render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
     toggleSwitchClassMap: { table: { disable: true } },
     autofocus: { table: { disable: true } },
-    align: { control: { type: "select", options: alignLabel } }
+    align: { control: { type: "select", options: alignLabel }, defaultValue: "right" }
   },
   parameters: {
     a11y: {

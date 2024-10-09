@@ -56,7 +56,7 @@ const alertWithSlots = (args: Args) => html`
   </md-theme>
 `;
 
-export const Alert: StoryObj = {
+export const Alerts: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
@@ -66,21 +66,37 @@ export const Alert: StoryObj = {
     type: "default",
     closable: true,
     inline: false
-  }
+  },
+  render: render
 };
 
 export const AlertWithIcon: StoryObj = {
+  args: {
+    show: true,
+    title: "Alert",
+    message: "Who is awesome? You are!",
+    type: "default",
+    closable: true,
+    inline: false
+  },
   render: alertWithIconRender
 };
 
 export const AlertWithSlots: StoryObj = {
+  args: {
+    show: true,
+    title: "Alert",
+    message: "Who is awesome? You are!",
+    type: "default",
+    closable: true,
+    inline: false
+  },
   render: alertWithSlots
 };
 
 const meta: Meta = {
   title: "Components/Alerts",
   component: "md-alert",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
@@ -96,8 +112,7 @@ const meta: Meta = {
         component: "A typical usage of Alert, with text added within the element tags or message attribute"
       }
     }
-  },
-  args: Alert.args
+  }
 };
 
 export default meta;

@@ -27,18 +27,18 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const ButtonGroup: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
     disabled: false
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Button Group",
   component: "md-button-group",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" }

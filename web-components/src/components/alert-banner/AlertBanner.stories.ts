@@ -28,20 +28,20 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const AlertBanner: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
     type: "default",
     closable: false,
     textContent: "Test Alert Message"
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Alert Banner",
   component: "md-alert-banner",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
@@ -57,8 +57,7 @@ const meta: Meta = {
         component: "A typical usage of Alert Banner, with text added within the element tags or message attribute"
       }
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

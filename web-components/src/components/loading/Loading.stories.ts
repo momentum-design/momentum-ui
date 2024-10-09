@@ -8,7 +8,7 @@
 
 import "@/components/loading/Loading";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { Args } from "@storybook/web-components";
+import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 
 const options = {
@@ -34,10 +34,13 @@ export default {
   }
 };
 
-export const LoadingStory = (args: Args) => {
+export const Loading: StoryObj = {
+  args: {},
+  render: (args: Args) => {
   return html`
     <md-theme class="theme-toggle" id="loading" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-loading size=${args.size}></md-loading>
     </md-theme>
   `;
+  }
 };

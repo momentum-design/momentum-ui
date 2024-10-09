@@ -27,7 +27,7 @@ const render = (args: Args) => html`
   </md-theme>
 `;
 
-export const Primary: StoryObj = {
+export const Grabber: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
@@ -37,13 +37,13 @@ export const Primary: StoryObj = {
     alignment: "leading",
     checkedLabel: "Collapse",
     label: "Expand"
-  }
+  },
+  render: render
 };
 
 const meta: Meta = {
   title: "Components/Grabber",
   component: "md-grabber",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },
@@ -55,8 +55,7 @@ const meta: Meta = {
     a11y: {
       element: "md-grabber"
     }
-  },
-  args: Primary.args
+  }
 };
 
 export default meta;

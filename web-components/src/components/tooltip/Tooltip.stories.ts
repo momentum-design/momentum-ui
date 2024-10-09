@@ -15,33 +15,33 @@ import { action } from "@storybook/addon-actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 
-const render = (args: Args) => html`
-  <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-    <md-tooltip
-      message=${args.message}
-      placement=${args.placement}
-      @tooltip-create=${action("show")}
-      @tooltip-destroy=${action("hide")}
-      ?opened=${args.opened}
-    >
-      <md-button variant="secondary">Test Button</md-button>
-    </md-tooltip>
-  </md-theme>
-`;
-
-export const Primary: StoryObj = {
+export const Tooltip: StoryObj = {
   args: {
     theme: "lumos",
     darkTheme: false,
     message: "Test tooltip",
     placement: "right"
+  },
+  render: (args: Args) => {
+    return html`
+      <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-tooltip
+          message=${args.message}
+          placement=${args.placement}
+          @tooltip-create=${action("show")}
+          @tooltip-destroy=${action("hide")}
+          ?opened=${args.opened}
+        >
+          <md-button variant="secondary">Test Button</md-button>
+        </md-tooltip>
+      </md-theme>
+    `;
   }
 };
 
 const meta: Meta = {
   title: "Components/Tooltip",
   component: "md-tooltip",
-  render,
   argTypes: {
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
     darkTheme: { control: "boolean" },

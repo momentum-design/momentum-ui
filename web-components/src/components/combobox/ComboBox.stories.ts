@@ -10,12 +10,33 @@ import { comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock
 import "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Combobox",
   component: "md-combobox",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    comboboxClassMap: { table: { disable: true } },
+    autofocus: { table: { disable: true } },
+    align: { table: { disable: true } },
+    placeholder: { control: "text", defaultValue: "Add Country" },
+    disabled: { control: "boolean" },
+    trimSpace: { control: "boolean" },
+    init: { control: "boolean" },
+    customValue: { control: "boolean" },
+    multi: { control: "boolean" },
+    multiInit: { control: "boolean" },
+    object: { control: "boolean" },
+    objectInit: { control: "boolean" },
+    customContent: { control: "boolean" },
+    customContentInit: { control: "boolean" },
+    ariaLabel: { control: "text", defaultValue: "Select the country" },
+    searchSpecificAriaLabel: { control: "text", defaultValue: "Select the country, {{count}} results found" },
+    newMomentum: { control: "boolean", defaultValue: true }
+  },
   parameters: {
     a11y: {
       element: "md-combobox"
@@ -23,101 +44,84 @@ export default {
   }
 };
 
-export const Combobox = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const placeholder = text("placeholder", "Add Country");
-  const disabled = boolean("Disabled", false);
-  const trimSpace = boolean("Trim white space", false);
-  const init = boolean("InitialValue", false);
-  const customValue = boolean("Custom Value", false);
-  const multi = boolean("Multi", false);
-  const multiInit = boolean("Multi InitialValue", false);
-  const object = boolean("Object Data", false);
-  const objectInit = boolean("Object Data InitialValue", false);
-  const customContent = boolean("Custom Content", false);
-  const customContentInit = boolean("Multi Custom Content InitialValue", false);
-  const ariaLabel = text("aria-label", "Select the country");
-  const searchSpecificAriaLabel = text("aria-label", "Select the country, {{count}} results found");
-  const newMomentum = boolean("newMomentum", true);
-
-  if (init) {
+export const Combobox = (args: Args) => {
+  if (args.init) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
-          placeholder=${placeholder}
-          .options=${comboBoxOptions}
-          ?disabled=${disabled}
-          ?search-trim-space=${trimSpace}
+          placeholder=${args.placeholder}
+          .options=${args.comboBoxOptions}
+          ?disabled=${args.disabled}
+          ?search-trim-space=${args.trimSpace}
           .value=${[comboBoxOptions[3]]}
-          ariaLabel=${ariaLabel}
-          search-result-aria-label=${searchSpecificAriaLabel}
-          ?newMomentum="${newMomentum}"
+          ariaLabel=${args.ariaLabel}
+          search-result-aria-label=${args.searchSpecificAriaLabel}
+          ?newMomentum="${args.newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
-  } else if (multi) {
+  } else if (args.multi) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-combobox placeholder=${placeholder} .options=${comboBoxOptions} is-multi></md-combobox>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-combobox placeholder=${args.placeholder} .options=${comboBoxOptions} is-multi></md-combobox>
       </md-theme>
     `;
-  } else if (customValue) {
+  } else if (args.customValue) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
-          placeholder=${placeholder}
-          .options=${comboBoxOptions}
-          .is-multi=${multi}
+          placeholder=${args.placeholder}
+          .options=${args.comboBoxOptions}
+          ?is-multi=${args.multi}
           allow-custom-value
-          ?newMomentum="${newMomentum}"
+          ?newMomentum="${args.newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
-  } else if (multiInit) {
+  } else if (args.multiInit) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
-          placeholder=${placeholder}
+          placeholder=${args.placeholder}
           .options=${comboBoxOptions}
           is-multi
           .value=${[comboBoxOptions[3], comboBoxOptions[5]]}
-          ?newMomentum="${newMomentum}"
+          ?newMomentum="${args.newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
-  } else if (object) {
+  } else if (args.object) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
-          placeholder=${placeholder}
+          placeholder=${args.placeholder}
           .options=${comboBoxObjectOptions}
           option-id="id"
           option-value="country"
-          .is-multi=${multi}
-          ?newMomentum="${newMomentum}"
+          ?is-multi=${args.multi}
+          ?newMomentum="${args.newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
-  } else if (objectInit) {
+  } else if (args.objectInit) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
-          placeholder=${placeholder}
+          placeholder=${args.placeholder}
           .options=${comboBoxObjectOptions}
           option-id="id"
           option-value="country"
-          .is-multi=${multi}
+          ?is-multi=${args.multi}
           .value=${[comboBoxObjectOptions[4]]}
-          ?search-trim-space=${trimSpace}
-          ?newMomentum="${newMomentum}"
+          ?search-trim-space=${args.trimSpace}
+          ?newMomentum="${args.newMomentum}"
         ></md-combobox>
       </md-theme>
     `;
-  } else if (customContent) {
+  } else if (args.customContent) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-combobox with-custom-content .is-multi=${multi} ?newMomentum="${newMomentum}">
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-combobox with-custom-content ?is-multi=${args.multi} ?newMomentum="${args.newMomentum}">
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
             <md-icon name="icon-facebook_16"></md-icon>
@@ -137,14 +141,14 @@ export const Combobox = () => {
         </md-combobox>
       </md-theme>
     `;
-  } else if (customContentInit) {
+  } else if (args.customContentInit) {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
           with-custom-content
           is-multi
           .value=${[{ id: "Wikipedia", value: "Wikipedia" }]}
-          ?newMomentum="${newMomentum}"
+          ?newMomentum="${args.newMomentum}"
         >
           <div slot="one" aria-label="Facebook" display-value="Facebook">
             <span>Facebook</span>
@@ -167,13 +171,13 @@ export const Combobox = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="combobox" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-combobox
           .options=${comboBoxOptions}
-          placeholder=${placeholder}
-          ?disabled=${disabled}
-          ?search-trim-space=${trimSpace}
-          ?newMomentum="${newMomentum}"
+          placeholder=${args.placeholder}
+          ?disabled=${args.disabled}
+          ?search-trim-space=${args.trimSpace}
+          ?newMomentum="${args.newMomentum}"
         ></md-combobox>
       </md-theme>
     `;

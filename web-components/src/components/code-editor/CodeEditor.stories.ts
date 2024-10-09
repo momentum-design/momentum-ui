@@ -25,8 +25,7 @@ export const CodeEditor = (args: Args) => {
     <md-code-editor>
       <span slot="method">${args.method}</span>
       <span slot="code-url">${args.url}</span>
-      <code class="javascript" slot="code-block">
-        ${args.code}
+      <code class="javascript" slot="code-block"> ${args.code} </code>
     </md-code-editor>
   `;
 };

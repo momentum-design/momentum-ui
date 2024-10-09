@@ -23,7 +23,7 @@ export default {
     config: { table: { disable: true } },
     tableClassMap: { table: { disable: true } },
     theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" },
+    darkTheme: { control: "boolean", defaultValue: false },
     tableData: {
       control: "text",
       defaultValue:

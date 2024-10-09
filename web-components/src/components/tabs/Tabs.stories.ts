@@ -68,14 +68,14 @@ const moreTabs = (args: Args) => {
         ?draggable=${args.draggable}
         justified
       >
-        <md-tab slot="tab" closable="${args.closable}" label="History">
+        <md-tab slot="tab" closable="${args.closable}" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" closable="${args.closable}" label="WxM">
+        <md-tab slot="tab" closable="${args.closable}" aria-label="WxM">
           <md-icon name="apps_16"></md-icon>
           <span>Cisco WxM</span>
         </md-tab>

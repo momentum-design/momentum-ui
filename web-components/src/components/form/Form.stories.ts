@@ -7,14 +7,28 @@
  */
 
 import "@/components/form/Form";
+import "@/components/input/Input";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Form",
   component: "md-form",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    noValidate: { control: "boolean", defaultValue: false },
+    allowRedirect: { control: "boolean", defaultValue: true },
+    isValid: { control: "boolean", defaultValue: false },
+    target: { control: { type: "select", options: ["_self", "_blank", "_parent", "_top"] }, defaultValue: "_self" },
+    enctype: {
+      control: { type: "select", options: ["application/x-www-form-urlencoded", "multipart/form-data", "text/plain"] },
+      defaultValue: "application/x-www-form-urlencoded"
+    },
+    autoFillName: { control: "text", defaultValue: "submittable-element" }
+  },
   parameters: {
     a11y: {
       element: "md-form"
@@ -22,36 +36,20 @@ export default {
   }
 };
 
-export const Form = () => {
-  const darkTheme = boolean("Dark Mode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const noValidate = boolean("Allow form shouldn't be validated when submitted", false);
-  const allowRedirect = boolean("Allow redirect to the action URL", true);
-  const isValid = boolean("Is form valid", false);
-  const target = select("Choose browsing context", ["_self", "_blank", "_parent", "_top"], "_self");
-  const enctype = select(
-    "Choose MIME type of the form submission",
-    ["application/x-www-form-urlencoded", "multipart/form-data", "text/plain"],
-    "application/x-www-form-urlencoded"
-  );
-  const autoFillName = text(
-    "Enter value for `id` and `name` attributes for any submittable elements (in case if they aren't provided)",
-    "submittable-element"
-  );
-
+export const Form = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-form
-        ?no-validate=${noValidate}
-        ?allow-redirect=${allowRedirect}
-        ?is-valid=${isValid}
+        ?no-validate=${args.noValidate}
+        ?allow-redirect=${args.allowRedirect}
+        ?is-valid=${args.isValid}
         @form-submitted=${action("Form Submitted")}
         action="https://www.wikipedia.org/"
         rel="search"
         label="User Submit Form"
-        target=${target}
-        enctype=${enctype}
-        autofill-name=${autoFillName}
+        target=${args.target}
+        enctype=${args.enctype}
+        autofill-name=${args.autoFillName}
       >
         <md-input name="user-surname"></md-input>
         <md-button type="submit">Submit</md-button>

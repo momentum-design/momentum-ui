@@ -7,50 +7,55 @@
  */
 
 import "@/components/grabber/Grabber";
+import "@/components/theme/Theme";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
-import mdx from "./Grabber.mdx";
 
-export default {
+const render = (args: Args) => html`
+  <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+    <md-grabber
+      @grabber-toggled=${action("grabber-toggled")}
+      ?checked=${args.checked}
+      ?disabled=${args.disabled}
+      label=${args.label}
+      checkedLabel=${args.checkedLabel}
+      alignment=${args.alignment}
+      ?visible=${args.visible}
+    ></md-grabber>
+  </md-theme>
+`;
+
+export const Grabber: StoryObj = {
+  args: {
+    theme: "lumos",
+    darkTheme: false,
+    visible: true,
+    checked: false,
+    disabled: false,
+    alignment: "leading",
+    checkedLabel: "Collapse",
+    label: "Expand"
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Grabber",
   component: "md-grabber",
   argTypes: {
-    toggleSwitchClassMap: { table: { disable: true } },
-    autofocus: { table: { disable: true } }
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    checked: { control: "boolean" },
+    visible: { control: "boolean" },
+    alignment: { control: { type: "select", options: ["leading", "trailing", "top", "bottom"] } }
   },
   parameters: {
     a11y: {
       element: "md-grabber"
-    },
-    docs: {
-      page: mdx
     }
   }
 };
 
-export const Grabber = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const active = boolean("Checked", false);
-  const disabled = boolean("Disabled", false);
-  const label = text("Label", "Expand");
-  const checkedLabel = text("Label", "Collapse");
-  const alignment = select("Alignment", ["leading", "trailing", "top", "bottom"], "leading");
-  const visible = boolean("Visible", true);
-
-  return html`
-    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-grabber
-        @grabber-toggled=${action("grabber-toggled")}
-        ?checked=${active}
-        ?disabled=${disabled}
-        label=${label}
-        checkedLabel=${checkedLabel}
-        alignment=${alignment}
-        ?visible=${visible}
-      ></md-grabber>
-    </md-theme>
-  `;
-};
+export default meta;

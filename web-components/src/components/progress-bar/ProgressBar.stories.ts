@@ -8,44 +8,41 @@
 
 import "@/components/progress-bar/ProgressBar";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { BarFormat, BarType } from "@/utils/enums";
-import { boolean, number, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
+
+export const ProgressBar = (args: Args) => {
+  return html`
+    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      <md-progress-bar
+        .value=${args.value}
+        .type=${args.type}
+        label="${args.label}"
+        .color=${args.color}
+        ?dynamic=${args.dynamic}
+        .displayFormat=${args.format}
+      >
+      </md-progress-bar>
+    </md-theme>
+  `;
+};
 
 export default {
   title: "Components/Progress Bar",
   component: "md-progress-bar",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    label: { control: "text", defaultValue: "Test Progress Bar" },
+    color: { control: "text", defaultValue: "blue" },
+    dynamic: { control: "boolean", defaultValue: false },
+    format: { control: "select", options: ["none", "percentage", "fraction"], defaultValue: "none" },
+    type: { control: "select", options: ["determinate", "indeterminate"], defaultValue: "determinate" },
+    value: { control: "number", defaultValue: 25 }
+  },
   parameters: {
     a11y: {
       element: "md-modal"
     }
   }
-};
-
-type BarFormatType = "none" | "percentage" | "fraction";
-type BarTypeType = "determinate" | "indeterminate";
-
-export const ProgressBar = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const label = text("Label", "Test Progress Bar");
-  const color = text("color", "blue");
-  const dynamic = boolean("dynamic", false);
-  const format = select("dispalyFormat", BarFormat, "none") as BarFormatType;
-  const type = select("Type", BarType, "determinate") as BarTypeType;
-  const value = number("Value", 25);
-
-  return html`
-    <md-theme class="theme-toggle" id="progress-bar" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-progress-bar
-        .value=${value}
-        .type=${type}
-        label="${label}"
-        .color=${color}
-        ?dynamic=${dynamic}
-        .displayFormat=${format}
-      >
-      </md-progress-bar>
-    </md-theme>
-  `;
 };

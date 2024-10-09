@@ -10,13 +10,43 @@ import "@/components/alert-banner/AlertBanner";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-html";
 import mdx from "./AlertBanner.mdx";
 
-export default {
+const render = (args: Args) => html`
+  <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+    <md-alert-banner
+      @alertBanner-hide=${action("dispatchEvent")}
+      show
+      type="${args.type}"
+      ?closable=${args.closable}
+      message="${args.textContent}"
+    >
+      ${args.textContent ? `${args.textContent}` : `Text with slotted tag element`}
+    </md-alert-banner>
+  </md-theme>
+`;
+
+export const AlertBanner: StoryObj = {
+  args: {
+    theme: "lumos",
+    darkTheme: false,
+    type: "default",
+    closable: false,
+    textContent: "Test Alert Message"
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Alert Banner",
   component: "md-alert-banner",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    type: { control: { type: "select", options: ["default", "warning", "error", "success"] } }
+  },
   parameters: {
     a11y: {
       element: "md-alert-banner"
@@ -30,24 +60,4 @@ export default {
   }
 };
 
-export const AlertBanner = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const type = select("type", ["default", "warning", "error, success"], "default");
-  const closable = boolean("closable", false);
-  const textContent = text("alert message", "Test Alert Message");
-
-  return html`
-    <md-theme class="theme-toggle" id="alert-banner" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-alert-banner
-        @alertBanner-hide=${action("dispatchEvent")}
-        show
-        type="${type}"
-        ?closable=${closable}
-        message="${textContent}"
-      >
-        ${textContent ? `${textContent}` : `Text with slotted tag element`}
-      </md-alert-banner>
-    </md-theme>
-  `;
-};
+export default meta;

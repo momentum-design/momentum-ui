@@ -10,20 +10,24 @@ import "@/components/input/Input";
 import "@/components/label/Label";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Label",
   component: "md-label",
   argTypes: {
-    theme: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
     radioLabel: { table: { disable: true } },
     checkboxLabel: { table: { disable: true } },
     toggleSwitchLabel: { table: { disable: true } },
     active: { table: { disable: true } },
     indeterminate: { table: { disable: true } },
-    labelClassMap: { table: { disable: true } }
+    labelClassMap: { table: { disable: true } },
+    label: { control: "text", defaultValue: "Label" },
+    withInput: { control: "boolean", defaultValue: false },
+    secondaryLabel: { control: "text", defaultValue: "" }
   },
   parameters: {
     a11y: {
@@ -32,29 +36,23 @@ export default {
   }
 };
 
-export const Label = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const label = text("Label", "Label");
-  const withInput = boolean("With Input", false);
-  const secondaryLabel = text("Secondary Label", "");
-
-  if (withInput) {
+export const Label = (args: Args) => {
+  if (args.withInput) {
     return html`
-      <md-theme class="theme-toggle" id="label" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="label" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-input
           @label-click=${action("click")}
-          .label=${label}
+          .label=${args.label}
           placeholder="placeholder text"
-          .secondaryLabel=${secondaryLabel}
+          .secondaryLabel=${args.secondaryLabel}
         >
         </md-input>
       </md-theme>
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-label htmlFor="#">${label}</md-label>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-label htmlFor="#">${args.label}</md-label>
       </md-theme>
     `;
   }

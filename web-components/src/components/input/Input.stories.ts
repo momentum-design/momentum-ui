@@ -12,31 +12,9 @@ import "@/components/icon/Icon";
 import "@/components/input/Input";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
-
-export default {
-  title: "Components/Input",
-  component: "md-input",
-  argTypes: {
-    clearAriaLabel: { table: { disable: true } },
-    isFilled: { table: { disable: true } },
-    isLoading: { table: { disable: true } },
-    input: { table: { disable: true } },
-    inputClassMap: { table: { disable: true } },
-    inputWrapperClassMap: { table: { disable: true } },
-    inputTemplateClassMap: { table: { disable: true } },
-    multi: { table: { disable: true } },
-    autofocus: { table: { disable: true } },
-    htmlId: { table: { disable: true } }
-  },
-  parameters: {
-    a11y: {
-      element: "md-input"
-    }
-  }
-};
 
 const messageArr = [
   {
@@ -61,69 +39,45 @@ const messageArr = [
   }
 ];
 
-export const Input = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const placeholder = text("Enter Text", "Enter Text");
-  const label = text("Label", "Label");
-  const value = text("Value Text", "Value Text");
-  const size = select("Container Size", containerSize, "small-12");
-  const messageValue = select("Message Type", messageArr, messageArr[1] as any);
-  const disabled = boolean("Input Disabled", false);
-  const readOnly = boolean("Read Only", false);
-  const shape = select("Shape Pill", inputShape, "pill");
-  const multiline = boolean("Input Multiline", false);
-  const searchable = boolean("Searchable", false);
-  const clear = boolean("Input Clear", false);
-  const type = select("Input Type", inputType, "text");
-  const secondaryLabel = text("Secondary Label", "");
-  const hasNested = boolean("Has Nested Element", false);
-  const hasIcon = boolean("Has Icon", false);
-  const helpText = text("Help Text", "");
-
-  if (hasNested) {
-    const nested = select("Nested Level", nestedLevel, 1);
-
+export const Input = (args: Args) => {
+  if (args.hasNested) {
     return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-input label="Default Input"></md-input>
-        <md-input label="Input Nested Level" containerSize="small-12" .nestedLevel=${nested}></md-input>
+        <md-input label="Input Nested Level" containerSize="small-12" .nestedLevel=${args.nested}></md-input>
       </md-theme>
     `;
-  } else if (hasIcon) {
-    const position = select("Icon Position", iconPosition, "before");
-    const nameIcon = select("Icon Name", iconNames, "accessibility_16");
-
+  } else if (args.hasIcon) {
     return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-input
           label="Input Icon"
           containerSize="small-12"
           placeholder="Enter Text"
-          .auxiliaryContentPosition=${position as any}
+          .auxiliaryContentPosition=${args.position as any}
         >
-          <md-icon slot="input-section${position === "after" ? "-right" : ""}" name=${nameIcon}></md-icon>
+          <md-icon slot="input-section${args.position === "after" ? "-right" : ""}" name=${args.nameIcon}></md-icon>
         </md-input>
       </md-theme>
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-input
-          .label=${label}
-          .placeholder=${placeholder}
-          .messageArr=${[messageValue]}
-          .value=${value}
-          .containerSize="${size}"
-          .disabled=${disabled}
-          .shape=${shape}
-          ?readOnly=${readOnly}
-          ?multiline=${multiline}
-          .searchable=${searchable}
-          ?clear=${clear}
-          .secondaryLabel=${secondaryLabel}
-          .type=${type as any}
-          .helpText=${helpText}
+          .label=${args.label}
+          .placeholder=${args.placeholder}
+          .messageArr=${[args.messageValue]}
+          .value=${args.value}
+          .containerSize="${args.size}"
+          .disabled=${args.disabled}
+          .shape=${args.shape}
+          ?readOnly=${args.readOnly}
+          ?multiline=${args.multiline}
+          .searchable=${args.searchable}
+          ?clear=${args.clear}
+          .secondaryLabel=${args.secondaryLabel}
+          .type=${args.type}
+          .helpText=${args.helpText}
           @input-change=${action("change")}
           @input-blur=${action("focus out")}
           @input-focus=${action("focus in")}
@@ -131,5 +85,49 @@ export const Input = () => {
         </md-input>
       </md-theme>
     `;
+  }
+};
+
+export default {
+  title: "Components/Input",
+  component: "md-input",
+  argTypes: {
+    clearAriaLabel: { table: { disable: true } },
+    isFilled: { table: { disable: true } },
+    isLoading: { table: { disable: true } },
+    input: { table: { disable: true } },
+    inputClassMap: { table: { disable: true } },
+    inputWrapperClassMap: { table: { disable: true } },
+    inputTemplateClassMap: { table: { disable: true } },
+    multi: { table: { disable: true } },
+    autofocus: { table: { disable: true } },
+    htmlId: { table: { disable: true } },
+    theme: { conrol: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    placeholder: { control: "text", defaultValue: "Enter Text" },
+    label: { control: "text", defaultValue: "Label" },
+    value: { control: "text", defaultValue: "Value Text" },
+    size: { control: { type: "select", options: containerSize }, defaultValue: "small-12" },
+    messageValue: { control: { type: "select", options: messageArr }, defaultValue: messageArr[1] },
+    disabled: { control: "boolean", defaultValue: false },
+    readOnly: { control: "boolean", defaultValue: false },
+    shape: { control: { type: "select", options: inputShape }, defaultValue: "pill" },
+    multiline: { control: "boolean", defaultValue: false },
+    searchable: { control: "boolean", defaultValue: false },
+    clear: { control: "boolean", defaultValue: false },
+    type: { control: { type: "select", options: inputType }, defaultValue: "text" },
+    secondaryLabel: { control: "text", defaultValue: "" },
+    helpText: { control: "text", defaultValue: "" },
+    hasNested: { control: "boolean", defaultValue: false },
+    hasIcon: { control: "boolean", defaultValue: false },
+    nested: { control: { type: "select", options: nestedLevel }, defaultValue: 1 },
+    position: { control: { type: "select", options: iconPosition }, defaultValue: "before" },
+    nameIcon: { control: { type: "select", options: iconNames }, defaultValue: "accessibility_16" },
+    newMomentum: { control: "boolean", defaultValue: false }
+  },
+  parameters: {
+    a11y: {
+      element: "md-input"
+    }
   }
 };

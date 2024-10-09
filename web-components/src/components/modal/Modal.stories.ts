@@ -9,7 +9,7 @@
 import "@/components/modal/Modal";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { modalType } from "./Modal"; // Keep type import as a relative path
 
@@ -22,7 +22,18 @@ export default {
     backDrop: { table: { disable: true } },
     handleCloseOutside: { table: { disable: true } },
     modalBackDropClassMap: { table: { disable: true } },
-    modalContainerClassMap: { table: { disable: true } }
+    modalContainerClassMap: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    show: { control: "boolean", defaultValue: false },
+    headerLabel: { control: "text", defaultValue: "Test header text" },
+    headerMessage: { control: "text", defaultValue: "Test message in header" },
+    size: { control: { type: "select", options: modalType }, defaultValue: "default" },
+    closeBtnName: { control: "text", defaultValue: "Save" },
+    showCloseButton: { control: "boolean", defaultValue: true },
+    backdropClickExit: { control: "boolean", defaultValue: false },
+    hideFooter: { control: "boolean", defaultValue: false },
+    hideHeader: { control: "boolean", defaultValue: false }
   },
   parameters: {
     a11y: {
@@ -39,31 +50,19 @@ const content = html`
   </p>
 `;
 
-export const Modal = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const show = boolean("show", false);
-  const headerLabel = text("headerLabel", "Test header text");
-  const headerMessage = text("message", "Test message in header");
-  const size = select("Modal size", modalType, "default");
-  const closeBtnName = text("closeBtnName", "Save");
-  const showCloseButton = boolean("showCloseButton", true);
-  const backdropClickExit = boolean("OutsideClick", false);
-  const hideFooter = boolean("hideFooter", false);
-  const hideHeader = boolean("hideHeader", false);
-
+export const Modal = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="modal" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" id="modal" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-modal
-        .size="${size}"
-        .show=${show}
-        headerLabel="${headerLabel}"
-        headerMessage="${headerMessage}"
-        closeBtnName="${closeBtnName}"
-        .showCloseButton="${showCloseButton}"
-        .backdropClickExit="${backdropClickExit}"
-        ?hideFooter=${hideFooter}
-        ?hideHeader=${hideHeader}
+        .size="${args.size}"
+        .show=${args.show}
+        headerLabel="${args.headerLabel}"
+        headerMessage="${args.headerMessage}"
+        closeBtnName="${args.closeBtnName}"
+        .showCloseButton="${args.showCloseButton}"
+        .backdropClickExit="${args.backdropClickExit}"
+        ?hideFooter=${args.hideFooter}
+        ?hideHeader=${args.hideHeader}
         @close-modal=${action("click")}
       >
         <div slot="header">

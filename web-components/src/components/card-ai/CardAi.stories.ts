@@ -10,12 +10,25 @@ import "@/components/badge/Badge";
 import { CardAiVariant } from "@/components/card-ai/CardAi";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Card Ai",
   component: "md-card-ai",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    variant: {
+      control: { type: "select", options: Object.values(CardAiVariant) },
+      defaultValue: CardAiVariant.RESPONSE
+    },
+    id: { control: "text", defaultValue: "12345678" },
+    title: { control: "text", defaultValue: "Title" },
+    cardText: { control: "text", defaultValue: "Card Text" },
+    timestamp: { control: "text", defaultValue: "12:35 PM" },
+    summariseMoreVisible: { control: "boolean", defaultValue: false }
+  },
   parameters: {
     a11y: {
       element: "md-card-ai"
@@ -23,25 +36,16 @@ export default {
   }
 };
 
-export const CardAi = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const variant = select("Variant", Object.values(CardAiVariant), CardAiVariant.RESPONSE);
-  const id = text("ID", "12345678");
-  const title = text("Title", "Title");
-  const cardText = text("Card Text", "Card Text");
-  const timestamp = text("Timestamp", "12:35 PM");
-  const summariseMoreVisible = boolean("Summarise more visible", false);
-
+export const CardAi = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-card-ai
-        id=${id}
-        title=${title}
-        cardText=${cardText}
-        timestamp=${timestamp}
-        variant=${variant}
-        .summariseMoreVisible=${summariseMoreVisible}
+        id=${args.id}
+        title=${args.title}
+        cardText=${args.cardText}
+        timestamp=${args.timestamp}
+        variant=${args.variant}
+        .summariseMoreVisible=${args.summariseMoreVisible}
         @thumbs-up-toggled=${(e: CustomEvent<{ id: string }>) => {
           action("thumbs-up-toggled")(e.detail);
         }}

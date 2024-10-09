@@ -7,23 +7,9 @@
  */
 
 import "@/components/loading/Loading";
-import { Loading } from "@/components/loading/Loading";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select } from "@storybook/addon-knobs";
+import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
-
-export default {
-  title: "Components/Loading",
-  component: "md-loading",
-  argTypes: {
-    loadingClassMap: { table: { disable: true } }
-  },
-  parameters: {
-    a11y: {
-      element: "md-loading"
-    }
-  }
-};
 
 const options = {
   Small: "small",
@@ -32,14 +18,29 @@ const options = {
   None: ""
 };
 
-export const LoadingStory = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const size = select("Size", options, "small");
+export default {
+  title: "Components/Loading",
+  component: "md-loading",
+  argTypes: {
+    loadingClassMap: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    size: { control: { type: "select", options }, defaultValue: "middle" }
+  },
+  parameters: {
+    a11y: {
+      element: "md-loading"
+    }
+  }
+};
 
+export const Loading: StoryObj = {
+  args: {},
+  render: (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="loading" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-loading size=${size as Loading.LoadingSize}></md-loading>
+    <md-theme class="theme-toggle" id="loading" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      <md-loading size=${args.size}></md-loading>
     </md-theme>
   `;
+  }
 };

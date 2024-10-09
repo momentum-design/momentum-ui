@@ -8,18 +8,8 @@
 
 import "@/components/breadcrumb/Breadcrumb";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select } from "@storybook/addon-knobs";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
-
-export default {
-  title: "Components/Breadcrumb",
-  component: "md-breadcrumb",
-  parameters: {
-    a11y: {
-      element: "md-breadcrumb"
-    }
-  }
-};
 
 const breadCrumb = [
   {
@@ -40,13 +30,32 @@ const breadCrumb = [
   }
 ];
 
-export const Breadcrumb = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
+const render = (args: Args) => html`
+  <md-theme class="theme-toggle" id="breadcrumb" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+    <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
+  </md-theme>
+`;
 
-  return html`
-    <md-theme class="theme-toggle" id="breadcrumb" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
-    </md-theme>
-  `;
+export const Breadcrumb: StoryObj = {
+  args: {
+    theme: "lumos",
+    darkTheme: false
+  },
+  render: render
 };
+
+const meta: Meta = {
+  title: "Components/Breadcrumb",
+  component: "md-breadcrumb",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" }
+  },
+  parameters: {
+    a11y: {
+      element: "md-breadcrumb"
+    }
+  }
+};
+
+export default meta;

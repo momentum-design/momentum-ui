@@ -63,7 +63,7 @@ export default {
 
 export const MeetingAlert: StoryObj = {
   args: {
-    src: "https://api.adorable.io/avatars/285/abott@adorable.png"
+    src: "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
   },
   render: (args: Args) => {
     if (args.withAttendees) {
@@ -160,6 +160,10 @@ export const MeetingAlertImageThroughSlot: StoryObj = {
 };
 
 export const MeetingAlertSrcThroughSlot: StoryObj = {
+  args: {
+    show: true,
+    src: "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
+  },
   render: (args: Args) => {
     return html`
       <md-theme class="theme-toggle" id="meeting-alert" ?darkTheme=${args.darkTheme} theme=${args.theme}>

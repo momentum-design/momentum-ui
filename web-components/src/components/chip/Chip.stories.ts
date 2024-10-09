@@ -52,7 +52,7 @@ export const Chip = (args: Args) => {
         `
       : html`
           <md-theme class="theme-toggle" id="chip" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-            <md-chip value="example-chip@cisco.com" determinateProgress="${value}"> </md-chip>
+            <md-chip value="example-chip@cisco.com" determinateProgress="${args.value}"> </md-chip>
           </md-theme>
         `;
   } else if (args.slot) {

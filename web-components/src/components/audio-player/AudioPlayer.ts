@@ -404,6 +404,7 @@ export namespace AudioPlayer {
 
     setPlaybackSpeed(speed: number) {
       this.playbackSpeed = speed;
+      this.selectedPlaybackSpeed = speed;
       this.audio.playbackRate = this.playbackSpeed;
       this.showSpeedPopup = false;
     }

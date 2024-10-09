@@ -6,60 +6,39 @@
  *
  */
 
+import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/card/Card";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { array, boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { nothing } from "lit-html";
 
-export default {
-  title: "Components/Card",
-  component: "md-card",
-  parameters: {
-    a11y: {
-      element: "md-card"
-    }
-  }
-};
-
-const cardMenu = ["Edit", "View", "Duplicate", "Delete"];
-
-export const Card = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const menu = array("Menu Items", cardMenu);
-  const id = text("ID", "12345678");
-  const title = text("Title", "Team A Report - Q1");
-  const subtitle = text("Subtitle", "Updated 2 hours ago");
-  const avatar = boolean("Change Favorite Icon in header on slot - 'card-header-icon'", false);
-  const slotTitle = boolean("Add custom Title in slot - 'card-header-title'", false);
-  const info = text("Info", "Lorem Ipsum is simply sample text of the printing and typesetting industry.");
-
+export const Card = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-card
-        .menuOptions=${menu}
-        id=${id}
-        title=${title}
-        subtitle=${subtitle}
+        .menuOptions=${args.menu}
+        id=${args.id}
+        title=${args.title}
+        subtitle=${args.subtitle}
         @card-menu-click=${(e: MouseEvent) => {
           action("card-click")(e.detail);
         }}
         @card-menu-keydown=${(e: KeyboardEvent) => {
           action("card-keydown")(e.detail, e);
         }}
-        info=${info}
+        info=${args.info}
       >
         ${
-          avatar
+          args.avatar
             ? html`
                 <md-avatar slot="card-header-aside" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
               `
             : nothing
         }
-        ${slotTitle ? html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
+        ${args.slotTitle ? html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
         <div slot="content">
           <img src=https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
           alt="" />
@@ -76,4 +55,35 @@ export const Card = () => {
       </md-card>
     </md-theme>
   `;
+};
+
+const cardMenu = ["Edit", "View", "Duplicate", "Delete"];
+
+export default {
+  title: "Components/Card",
+  component: "md-card",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    menu: { control: { type: "array" }, description: "Menu Items", defaultValue: cardMenu },
+    id: { defaultValue: "12345678" },
+    title: { defaultValue: "Team A Report - Q1" },
+    subtitle: { defaultValue: "Updated 2 hours ago" },
+    avatar: {
+      control: "boolean",
+      defaultValue: false,
+      description: "Change Favorite Icon in header on slot - 'card-header-icon'"
+    },
+    slotTitle: {
+      control: "boolean",
+      defaultValue: false,
+      description: "Add custom Title in slot - 'card-header-title'"
+    },
+    info: { defaultValue: "Lorem Ipsum is simply sample text of the printing and typesetting industry." }
+  },
+  parameters: {
+    a11y: {
+      element: "md-card"
+    }
+  }
 };

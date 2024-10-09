@@ -11,9 +11,41 @@ import { ThemeNameValues } from "@/components/theme/Theme";
 import momentumDesignManifest from "@momentum-design/icons/dist/manifest.json";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { iconSet, iconSize, iconType } from "./Icon";
+
+const momentumDesignManifestArray = Object.keys(momentumDesignManifest).map((key) => ({
+  name: key,
+  value: (momentumDesignManifest as Record<string, string>)[key]
+}));
+const momentumDesignNames = momentumDesignManifestArray.map((item) => item.name);
+
+export const Icon = (args: Args) => {
+  function getIconSetIconName(args: Args) {
+    if (args.theIconSet !== "momentumDesign") {
+      return `icon-${args.momentumUIName}`;
+    }
+
+    return args.momentumDesignName;
+  }
+
+  return html`
+    <md-theme class="theme-toggle" id="icon" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      <md-icon
+        .name=${getIconSetIconName(args)}
+        .title=${args.title}
+        .color=${args.color}
+        .type=${args.type}
+        .size=${String(args.size)}
+        .sizeOverrided=${args.sizeOverrided}
+        .iconSet=${args.theIconSet}
+        @icon-click=${action("dispatchEvent")}
+      >
+      </md-icon>
+    </md-theme>
+  `;
+};
 
 export default {
   title: "Components/Icon",
@@ -27,54 +59,21 @@ export default {
     consoleHandler: { table: { disable: true } },
     buttonClassMap: { table: { disable: true } },
     isComboBoxIcon: { table: { disable: true } },
-    isActive: { table: { disable: true } }
+    isActive: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    color: { control: "color", defaultValue: "currentColor" },
+    theIconSet: { control: { type: "select", options: iconSet }, defaultValue: "momentumDesign" },
+    momentumUIName: { control: { type: "select", options: iconNames }, defaultValue: "arrow-up_16" },
+    momentumDesignName: { control: { type: "select", options: momentumDesignNames }, defaultValue: "arrow-up-bold" },
+    title: { control: "text", defaultValue: "" },
+    type: { control: { type: "select", options: iconType }, defaultValue: "" },
+    size: { control: { type: "select", options: iconSize }, defaultValue: "16" },
+    sizeOverrided: { control: "boolean", defaultValue: false }
   },
   parameters: {
     a11y: {
       element: "md-icon"
     }
   }
-};
-
-const momentumDesignManifestArray = Object.keys(momentumDesignManifest).map((key) => ({
-  name: key,
-  value: (momentumDesignManifest as Record<string, string>)[key]
-}));
-const momentumDesignNames = momentumDesignManifestArray.map((item) => item.name);
-
-export const Icon = () => {
-  const darkTheme = boolean("Dark Mode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const color = text("Color", "currentColor");
-  const theIconSet = select("Icon set", iconSet, iconSet[0]);
-  const momentumUIName = select("Momentum UI Name", iconNames, "arrow-up_16");
-  const momentumDesignName = select("Moment Design Name", momentumDesignNames, "arrow-up-bold");
-  const title = text("Title", "");
-  const type = select("Type", iconType, "");
-  const size = select("Size", iconSize, "16");
-  const sizeOverrided = boolean("Size Override", false);
-
-  function getIconSetIconName() {
-    if (theIconSet !== "momentumDesign") {
-      return `icon-${momentumUIName}`;
-    }
-
-    return momentumDesignName;
-  }
-
-  return html`
-    <md-theme class="theme-toggle" id="icon" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-icon
-        .name=${getIconSetIconName()}
-        .title=${title}
-        .color=${color}
-        .type=${type}
-        .size=${String(size)}
-        .sizeOverrided=${sizeOverrided}
-        .iconSet=${theIconSet}
-        @icon-click=${action("dispatchEvent")}
-      >
-      </md-icon>
-    </md-theme>
-  `;
 };

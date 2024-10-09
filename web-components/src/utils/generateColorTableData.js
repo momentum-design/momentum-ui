@@ -26,7 +26,6 @@ const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   const finalFile = path.join(dest, fileName);
   await fsPath.writeFile(finalFile, compile(data), (err) => {
     if (err) throw err;
-    else console.warn(`${finalFile} written!`);
   });
 };
 

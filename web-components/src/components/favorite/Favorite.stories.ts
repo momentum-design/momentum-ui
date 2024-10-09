@@ -9,7 +9,7 @@
 import "@/components/favorite/Favorite";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import mdx from "./Favorite.mdx";
 
@@ -18,7 +18,10 @@ export default {
   component: "md-favorite",
   argTypes: {
     toggleSwitchClassMap: { table: { disable: true } },
-    autofocus: { table: { disable: true } }
+    autofocus: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    value: { control: "text", defaultValue: "Select favorite" }
   },
   parameters: {
     a11y: {
@@ -30,21 +33,15 @@ export default {
   }
 };
 
-export const Favorite = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const active = boolean("Checked", false);
-  const disabled = boolean("Disabled", false);
-  const value = text("Value", "Select favorite");
-
+export const Favorite = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" id="toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-favorite
         @favorite-toggle=${action("favorite-toggle")}
         id="favorite-switch"
-        ?checked=${active}
-        ?disabled=${disabled}
-        value=${value}
+        ?checked=${args.active}
+        ?disabled=${args.disabled}
+        value=${args.value}
       ></md-favorite>
     </md-theme>
   `;

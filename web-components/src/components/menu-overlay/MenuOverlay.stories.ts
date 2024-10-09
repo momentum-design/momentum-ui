@@ -12,7 +12,7 @@ import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, number, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
@@ -25,7 +25,19 @@ export default {
     handleOutsideOverlayKeydown: { table: { disable: true } },
     trigger: { table: { disable: true } },
     arrow: { table: { disable: true } },
-    overlayContainer: { table: { disable: true } }
+    overlayContainer: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    isOpen: { control: "boolean", defaultValue: false },
+    disabled: { control: "boolean", defaultValue: false },
+    placement: { control: { type: "select", options: menuOverlayPlacement }, defaultValue: "bottom" },
+    showArrow: { control: "boolean", defaultValue: false },
+    size: { control: { type: "select", options: menuOverlaySize }, defaultValue: "large" },
+    maxHeight: { control: "text", defaultValue: "" },
+    customWidth: { control: "text", defaultValue: "" },
+    ariaRole: { control: { type: "select", options: menuOverlayRole }, defaultValue: "menu" },
+    ariaLabel: { control: "text", defaultValue: "Link Storybook" },
+    overlayOffset: { control: "number", defaultValue: 15 }
   },
   parameters: {
     a11y: {
@@ -34,36 +46,23 @@ export default {
   }
 };
 
-export const MenuOverlay = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const isOpen = boolean("isOpen", false);
-  const disabled = boolean("Disabled", false);
-  const placement = select("placement", menuOverlayPlacement, "bottom");
-  const showArrow = boolean("Show Arrow", false);
-  const size = select("size", menuOverlaySize, "large");
-  const maxHeight = text("max height", "");
-  const customWidth = text("custom width", "");
-  const ariaRole = select("ariaRole", menuOverlayRole, "menu");
-  const ariaLabel = text("AriaLabel", "Link Storybook");
-  const overlayOffset = number("overlay offset", 15);
-
+export const MenuOverlay = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-menu-overlay
         style="margin: 10rem"
-        placement=${placement}
-        size=${size}
-        max-height=${maxHeight}
-        custom-width=${customWidth}
-        ariaRole=${ariaRole}
-        ariaLabel=${ariaLabel}
-        ?is-open=${isOpen}
-        ?show-arrow=${showArrow}
-        ?disabled=${disabled}
+        placement=${args.placement}
+        size=${args.size}
+        max-height=${args.maxHeight}
+        custom-width=${args.customWidth}
+        ariaRole=${args.ariaRole}
+        ariaLabel=${args.ariaLabel}
+        ?is-open=${args.isOpen}
+        ?show-arrow=${args.showArrow}
+        ?disabled=${args.disabled}
         @menu-overlay-open=${action("click open")}
         @menu-overlay-close=${action("click close")}
-        overlay-offset=${overlayOffset}
+        overlay-offset=${args.overlayOffset}
       >
         <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
         <div style="padding:1.25rem ; width: 100%;">
@@ -83,7 +82,11 @@ export const MenuOverlay = () => {
           </div>
         </div>
       </md-menu-overlay>
-      <iframe style="float: left; margin-top: 200px;" title="iframe-to-test-menu-closing" src="http://127.0.0.1:8080/?path=/story/components-date-range-picker--date-range-picker"></iframe>
+      <iframe
+        style="float: left; margin-top: 200px;"
+        title="iframe-to-test-menu-closing"
+        src="http://127.0.0.1:8080/?path=/story/components-date-range-picker--date-range-picker"
+      ></iframe>
     </md-theme>
   `;
 };

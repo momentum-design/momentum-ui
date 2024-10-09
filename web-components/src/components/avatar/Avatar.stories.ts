@@ -7,25 +7,12 @@
  */
 
 import "@/components/avatar/Avatar";
-import { AvatarSize, AvatarType } from "@/components/avatar/Avatar.constants";
 import "@/components/avatar/CompositeAvatar";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import type { Args, Meta } from "@storybook/web-components";
 import { html } from "lit-element";
+import { AvatarSize, AvatarType } from "./Avatar.constants";
 import mdx from "./Avatar.mdx";
-
-export default {
-  title: "Components/Avatar",
-  component: "md-avatar",
-  parameters: {
-    a11y: {
-      element: "md-avatar"
-    },
-    docs: {
-      page: mdx
-    }
-  }
-};
 
 const options = {
   Purple: "purple",
@@ -44,30 +31,13 @@ const options = {
   Pink: "pink"
 };
 
-export const Avatar = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const type = select("Type", AvatarType, "");
-  const title = text("Title", "Rachell Harris");
-  const preDefinedColor = select("PreDefined Color", options, "mint");
-  const size = select("Size", AvatarSize, 44);
-  const customUrl = boolean("Custom Src", false);
-  const customImage = boolean("Custom Image", false);
-  const url = text(
-    "src",
-    "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"
-  );
-  const hasNotification = boolean("Has Notification", false);
-  const composite = boolean("Composite", false);
-  const compositeAvatarSize = [0, 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84] as const;
-  const sizeComos = select("Composite Size", compositeAvatarSize, 56);
-  const iconName = text("Icon Name", "");
-  const newMomentum = boolean("New Momentum", false);
+const compositeAvatarSize = [0, 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84] as const;
 
-  if (composite) {
+export const Avatar = (args: Args) => {
+  if (args.composite) {
     return html`
-      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-composite-avatar .size=${sizeComos}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-composite-avatar .size=${args.compositeAvatarSizes}>
           <md-avatar title="Anthony Russell" type="dnd" has-notification alt="Avatar"></md-avatar>
           <md-avatar type="typing" title="Alyson Hoagland Pace" alt="Avatar"></md-avatar>
         </md-composite-avatar>
@@ -75,22 +45,53 @@ export const Avatar = () => {
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="avatar" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-avatar
-          .title=${title}
-          alt="Avatar"
-          icon-name=${iconName}
-          label="Avatar"
-          .type=${type}
-          .src="${customUrl ? `${url}` : ""}"
-          .color=${preDefinedColor}
-          .size=${size}
-          ?has-notification=${hasNotification}
-          ?newMomentum=${newMomentum}
+          title=${args.title}
+          alt=${args.title}
+          icon-name=${args.iconName}
+          label=${args.label}
+          type=${args.type}
+          src="${args.customUrl ? `${args.url}` : ""}"
+          color=${args.color}
+          size=${args.size}
+          ?has-notification=${args.hasNotification}
+          ?newMomentum=${args.newMomentum}
         >
-          ${customImage ? html` <img width="100" height="100" src=${url} /> ` : ``}
+          ${args.customImage ? html` <img width="100" height="100" src=${args.url} /> ` : ``}
         </md-avatar>
       </md-theme>
     `;
   }
 };
+
+const meta: Meta = {
+  title: "Components/Avatar",
+  component: "md-avatar",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    type: { control: { type: "select", options: AvatarType }, defaultValue: "" },
+    title: { control: "text", defaultValue: "Rachell Harris" },
+    label: { control: "text", defaultValue: "Avatar" },
+    color: { control: { type: "select", options: options } },
+    iconName: { control: "text", defaultValue: "" },
+    size: { control: { type: "select", options: AvatarSize }, defaultValue: 32 },
+    compositeAvatarSizes: { control: { type: "select", options: compositeAvatarSize } },
+    url: {
+      control: "text",
+      defaultValue:
+        "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"
+    }
+  },
+  parameters: {
+    a11y: {
+      element: "md-avatar"
+    },
+    docs: {
+      page: mdx
+    }
+  }
+};
+
+export default meta;

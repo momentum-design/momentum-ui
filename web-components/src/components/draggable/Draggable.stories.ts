@@ -10,8 +10,7 @@ import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, color, select, text } from "@storybook/addon-knobs";
-import { SelectTypeKnobValue } from "@storybook/addon-knobs/dist/components/types";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { GroupOptions } from "sortablejs";
 import mdx from "./Draggable.mdx";
@@ -19,6 +18,58 @@ import mdx from "./Draggable.mdx";
 export default {
   title: "Components/Draggable",
   component: "md-draggable",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    leftSort: { control: "boolean", description: "Allow sorting inside left draggable list", defaultValue: false },
+    leftDisabled: { control: "boolean", description: "Disables the left sortable", defaultValue: false },
+    leftFiltered: {
+      control: "text",
+      description: "Left list items that will be filtered out",
+      defaultValue: "md-draggable-item[disabled]"
+    },
+    leftGroupName: { control: "text", description: "Group name", defaultValue: "shared-list" },
+    leftGroupPull: {
+      control: { type: "select", options: ["clone", true, false, ["shared-list"]] },
+      description: "Select pull option",
+      defaultValue: "clone"
+    },
+    leftGroupPut: {
+      control: { type: "select", options: [true, false, ["shared-list"]] },
+      description: "Select left put option",
+      defaultValue: true
+    },
+    leftHandle: {
+      control: "text",
+      description: "Drag handle selector within left list items",
+      defaultValue: "md-draggable-item"
+    },
+    rightSort: { control: "boolean", description: "Allow sorting inside right draggable list", defaultValue: false },
+    rightDisabled: { control: "boolean", description: "Disables the right sortable", defaultValue: false },
+    rightFiltered: {
+      control: "text",
+      description: "Right list items that will be filtered out",
+      defaultValue: "md-draggable-item[disabled]"
+    },
+    rightGroupName: { control: "text", description: "Group name", defaultValue: "shared-list" },
+    rightGroupPull: {
+      control: { type: "select", options: ["clone", true, false, ["shared-list"]] },
+      description: "Select pull option",
+      defaultValue: "clone"
+    },
+    rightGroupPut: {
+      control: { type: "select", options: [true, false, ["shared-list"]] },
+      description: "Select right put option",
+      defaultValue: true
+    },
+    rightHandle: {
+      control: "text",
+      description: "Drag handle selector within right list items",
+      defaultValue: "md-draggable-item"
+    },
+    ghostClass: { control: "color", description: "Class name for the drop placeholder", defaultValue: "#c8ebfb" },
+    chooseClass: { control: "color", description: "Class name for the chosen item", defaultValue: "#ddc74e" }
+  },
   parameters: {
     docs: {
       page: mdx
@@ -34,66 +85,7 @@ export default {
   }
 };
 
-export const Draggable = () => {
-  const darkTheme = boolean("Dark Mode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const leftSort = boolean("Allow sorting inside left draggable list", false, "Left List");
-  const leftDisabled = boolean("Disables the left sortable", false, "Left List");
-  const leftFiltered = text("Left list items that will be filtered out", "md-draggable-item[disabled]", "Left List");
-  const leftGroupName = text("Group name", "shared-list", "Left List");
-  const leftGroupPull = select(
-    "Select pull option",
-    {
-      clone: "clone",
-      TurnOn: true as SelectTypeKnobValue,
-      TurnOff: false as SelectTypeKnobValue,
-      GroupArray: [leftGroupName]
-    },
-    "clone",
-    "Left List"
-  );
-  const leftGroupPut = select(
-    "Select left put option",
-    {
-      TurnOn: true as SelectTypeKnobValue,
-      TurnOff: false as SelectTypeKnobValue,
-      GroupArray: [leftGroupName]
-    },
-    true as SelectTypeKnobValue,
-    "Left List"
-  );
-  const leftHandle = text("Drag handle selector within left list items", "md-draggable-item", "Left List");
-
-  const rightSort = boolean("Allow sorting inside right draggable list", false, "Right List");
-  const rightDisabled = boolean("Disables the right sortable", false, "Right List");
-  const rightFiltered = text("Right list items that will be filtered out", "md-draggable-item[disabled]", "Right List");
-  const rightGroupName = text("Group name", "shared-list", "Right List");
-  const rightGroupPull = select(
-    "Select pull option",
-    {
-      clone: "clone",
-      TurnOn: true as SelectTypeKnobValue,
-      TurnOff: false as SelectTypeKnobValue,
-      GroupArray: [rightGroupName]
-    },
-    "clone",
-    "Right List"
-  );
-  const rightGroupPut = select(
-    "Select right put option",
-    {
-      TurnOn: true as SelectTypeKnobValue,
-      TurnOff: false as SelectTypeKnobValue,
-      GroupArray: [rightGroupName]
-    },
-    true as SelectTypeKnobValue,
-    "Right List"
-  );
-  const rightHandle = text("Drag handle selector within right list items", "md-draggable-item", "Right List");
-
-  const ghostClass = color("Class name for the drop placeholder", "#c8ebfb");
-  const chooseClass = color("Class name for the chosen item", "#ddc74e");
-
+export const Draggable = (args: Args) => {
   return html`
     <style>
       md-draggable-item {
@@ -109,11 +101,11 @@ export const Draggable = () => {
       }
 
       .custom-ghost {
-        background-color: ${ghostClass};
+        background-color: ${args.ghostClass};
       }
 
       .custom-choose {
-        border: 3px dashed ${chooseClass};
+        border: 3px dashed ${args.chooseClass};
       }
 
       .draggable-wrapper {
@@ -126,17 +118,17 @@ export const Draggable = () => {
         margin-right: 10px;
       }
     </style>
-    <md-theme class="theme-toggle" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <div class="draggable-wrapper">
         <md-draggable
-          ?sort=${leftSort}
-          ?disabled=${leftDisabled}
-          .filter=${leftFiltered}
-          .handle=${leftHandle}
+          ?sort=${args.leftSort}
+          ?disabled=${args.leftDisabled}
+          .filter=${args.leftFiltered}
+          .handle=${args.leftHandle}
           .group=${{
-            name: leftGroupName,
-            pull: leftGroupPull as unknown,
-            put: leftGroupPut as unknown
+            name: args.leftGroupName,
+            pull: args.leftGroupPull as unknown,
+            put: args.leftGroupPut as unknown
           } as GroupOptions}
           ghost-class="custom-ghost"
           chosen-class="custom-choose"
@@ -152,14 +144,14 @@ export const Draggable = () => {
         </md-draggable>
 
         <md-draggable
-          ?sort=${rightSort}
-          ?disabled=${rightDisabled}
-          .filter=${rightFiltered}
-          .handle=${rightHandle}
+          ?sort=${args.rightSort}
+          ?disabled=${args.rightDisabled}
+          .filter=${args.rightFiltered}
+          .handle=${args.rightHandle}
           .group=${{
-            name: rightGroupName,
-            pull: rightGroupPull as unknown,
-            put: rightGroupPut as unknown
+            name: args.rightGroupName,
+            pull: args.rightGroupPull as unknown,
+            put: args.rightGroupPut as unknown
           } as GroupOptions}
           ghost-class="custom-ghost"
           chosen-class="custom-choose"

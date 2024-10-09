@@ -85,50 +85,6 @@ export default {
   }
 };
 
-// const leftGroupPull = select(
-//   "Select pull option",
-//   {
-//     clone: "clone",
-//     TurnOn: true as SelectTypeKnobValue,
-//     TurnOff: false as SelectTypeKnobValue,
-//     GroupArray: [leftGroupName]
-//   },
-//   "clone",
-//   "Left List"
-// );
-// const leftGroupPut = select(
-//   "Select left put option",
-//   {
-//     TurnOn: true as SelectTypeKnobValue,
-//     TurnOff: false as SelectTypeKnobValue,
-//     GroupArray: [leftGroupName]
-//   },
-//   true as SelectTypeKnobValue,
-//   "Left List"
-// );
-
-// const rightGroupPull = select(
-//   "Select pull option",
-//   {
-//     clone: "clone",
-//     TurnOn: true as SelectTypeKnobValue,
-//     TurnOff: false as SelectTypeKnobValue,
-//     GroupArray: [rightGroupName]
-//   },
-//   "clone",
-//   "Right List"
-// );
-// const rightGroupPut = select(
-//   "Select right put option",
-//   {
-//     TurnOn: true as SelectTypeKnobValue,
-//     TurnOff: false as SelectTypeKnobValue,
-//     GroupArray: [rightGroupName]
-//   },
-//   true as SelectTypeKnobValue,
-//   "Right List"
-// );
-
 export const Draggable = (args: Args) => {
   return html`
     <style>

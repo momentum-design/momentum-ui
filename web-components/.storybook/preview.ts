@@ -21,10 +21,18 @@ export const parameters:Parameters = {
       restoreScroll: true,
     }
   },
+  controls: {
+    disableSaveFromUI: true,
+    expanded: true,
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    }
+  },
   options: {
     storySort: {
       order: ['Components', 'Internal References'],
       method: 'alphabetical'
     }
-  }
+  }  
 };

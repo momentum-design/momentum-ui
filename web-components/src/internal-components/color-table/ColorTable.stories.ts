@@ -8,12 +8,27 @@
 
 import { ThemeNameValues } from "@/components/theme/Theme";
 import "@/internal-components/color-table/ColorTable";
-import { boolean, select } from "@storybook/addon-knobs";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 
-export default {
+const render = (args: Args) => html`
+  <md-theme class="theme-toggle" id="color-table" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+    <color-table></color-table>
+  </md-theme>
+`;
+
+export const ColorTable: StoryObj = {
+  args: {},
+  render: render
+};
+
+const meta: Meta = {
   title: "Internal References/Color Table",
   component: "color-table",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" }
+  },
   parameters: {
     a11y: {
       element: "color-table"
@@ -21,13 +36,4 @@ export default {
   }
 };
 
-export const ColorTable = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-
-  return html`
-    <md-theme class="theme-toggle" id="color-table" ?darkTheme=${darkTheme} theme=${theme}>
-      <color-table></color-table>
-    </md-theme>
-  `;
-};
+export default meta;

@@ -6,15 +6,24 @@
  *
  */
 
+import "@/components/icon/Icon";
 import "@/components/menu/Menu";
 import "@/components/menu/MenuItem";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Menu",
   component: "md-menu",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    direction: { control: { type: "select", options: ["horizontal", "vertical"] }, defaultValue: "horizontal" },
+    justified: { control: "boolean" },
+    disabled: { control: "boolean" },
+    href: { control: "text", defaultValue: "" }
+  },
   parameters: {
     a11y: {
       element: "md-menu"
@@ -22,28 +31,19 @@ export default {
   }
 };
 
-const menuDirection = ["horizontal", "vertical"];
-
-export const Menu = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const direction = select("Direction", menuDirection, "horizontal");
-  const justified = boolean("Justified", false);
-  const disabled = boolean("Disabled", false);
-  const href = text("href", "");
-
+export const Menu = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-menu .direction="${direction}" .justified=${justified}>
+    <md-theme class="theme-toggle" style="width: 100%;" id="menu" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      <md-menu .direction="${args.direction}" .justified=${args.justified}>
         <md-menu-item>
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>
         </md-menu-item>
-        <md-menu-item .disabled=${disabled}>
+        <md-menu-item .disabled=${args.disabled}>
           <md-icon name="apps-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Cisco WxM</span>
         </md-menu-item>
-        <md-menu-item href="${href}">
+        <md-menu-item href="${args.href}">
           <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Cisco Test</span>
         </md-menu-item>

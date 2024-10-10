@@ -10,13 +10,52 @@
 
 import "@/components/link/Link";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-element";
 import { linkColor, linkRole, linkTag } from "./Link"; // Keep type import as a relative path
 
-export default {
+const render = (args: Args) => html`
+  <md-theme class="theme-toggle" id="link" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+    <md-link
+      .href=${args.href}
+      .ariaLabel=${args.ariaLabel}
+      .ariaRole=${args.role as any}
+      .tag=${args.tag as any}
+      .target="${args.target}"
+      .color="${args.color}"
+      ?disabled=${args.disabled}
+      ?inline=${args.inline}
+      >Default Link</md-link
+    >
+  </md-theme>
+`;
+
+export const Link: StoryObj = {
+  args: {
+    theme: "lumos",
+    darkTheme: false,
+    href: "http://google.com",
+    tag: "",
+    disabled: false,
+    inline: false,
+    target: "_self",
+    color: "blue",
+    ariaLabel: "Link Storybook",
+    role: ""
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Link",
   component: "md-link",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean" },
+    tag: { control: { type: "select", options: linkTag } },
+    color: { control: { type: "select", options: linkColor } },
+    role: { control: { type: "select", options: linkRole } }
+  },
   parameters: {
     a11y: {
       element: "md-link"
@@ -24,31 +63,4 @@ export default {
   }
 };
 
-export const Link = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const href = text("href", "http://google.com");
-  const tag = select("HTML Tag", linkTag, "");
-  const disabled = boolean("Disabled", false);
-  const inline = boolean("Link Inline", false);
-  const target = text("Target", "_self");
-  const color = select("Link color", linkColor, "blue");
-  const ariaLabel = text("AriaLabel", "Link Storybook");
-  const role = select("Link Role", linkRole, "");
-
-  return html`
-    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-link
-        .href=${href}
-        .ariaLabel=${ariaLabel}
-        .ariaRole=${role as any}
-        .tag=${tag as any}
-        .target="${target}"
-        .color="${color}"
-        ?disabled=${disabled}
-        ?inline=${inline}
-        >Default Link</md-link
-      >
-    </md-theme>
-  `;
-};
+export default meta;

@@ -9,12 +9,19 @@
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, number, select } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 
 export default {
   title: "Components/Radio",
   component: "md-radio",
+  argTypes: {
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    alignment: { control: { type: "select", options: ["horizontal", "vertical"] }, defaultValue: "horizontal" },
+    check: { control: "number", defaultValue: 1 },
+    disabled: { control: "boolean", defaultValue: false }
+  },
   parameters: {
     a11y: {
       element: "md-radiogroup"
@@ -22,25 +29,18 @@ export default {
   }
 };
 
-export const Radio = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const options = { Vertical: "vertical", Horizontal: "horizontal" };
-  const alignment = select("Orientation", options, "horizontal");
-  const check = number("Precheck", 1);
-  const disabled = boolean("Disabled", false);
-
+export const Radio = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="radio" ?darkTheme=${darkTheme} theme=${theme}>
+    <md-theme class="theme-toggle" id="radio" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-radiogroup
         group-label="group_process"
-        .alignment=${alignment as "horizontal" | "vertical"}
-        .checked="${check}"
+        .alignment=${args.alignment as "horizontal" | "vertical"}
+        .checked="${args.check}"
       >
         <md-radio slot="radio" value="developing">Developing</md-radio>
-        <md-radio slot="radio" value="linting" .disabled=${disabled}>Linting</md-radio>
+        <md-radio slot="radio" value="linting" .disabled=${args.disabled}>Linting</md-radio>
         <md-radio slot="radio" value="testing">Testing</md-radio>
-        <md-radio slot="radio" value="building" .disabled=${disabled}>Building</md-radio>
+        <md-radio slot="radio" value="building" .disabled=${args.disabled}>Building</md-radio>
       </md-radiogroup>
     </md-theme>
   `;

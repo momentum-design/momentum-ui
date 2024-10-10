@@ -8,33 +8,11 @@
 
 import "@/components/editable-textfield/EditableTextfield";
 import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { Args } from "@storybook/web-components";
 import { html } from "lit-element";
 import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
-
-export default {
-  title: "Components/Editable Textfield",
-  component: "md-editable-field",
-  argTypes: {
-    isEditing: { table: { disable: true } },
-    alert: { table: { disable: true } },
-    hideMessage: { table: { disable: true } },
-    editableField: { table: { disable: true } },
-    reportValidity: { table: { disable: true } },
-    checkValidity: { table: { disable: true } },
-    handleFocus: { table: { disable: true } },
-    handleKeydown: { table: { disable: true } },
-    handleBlur: { table: { disable: true } },
-    overflowStyles: { table: { disable: true } }
-  },
-  parameters: {
-    a11y: {
-      element: "md-editable-field"
-    }
-  }
-};
 
 const successMessageArr: Input.Message = {
   message: "This is where the message would be.",
@@ -57,55 +35,72 @@ const messages: EditableMap = {
   warning: warningMessageArr
 };
 
-export const EditableTextfield = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const fieldAlignment = select("Alignment", alignment, "left");
-  const disabledSetting = boolean("disabled", false);
-  const messageStatus = boolean("Add message Status", false);
-  const inputDiff = boolean("Input Type", false);
-  const inputValid = boolean("Validation Pattern", false);
-
-  if (messageStatus) {
-    const messageOptions = ["success", "error", "warning"];
-    const message = select("message", messageOptions, "error");
-
+export const EditableTextfield = (args: Args) => {
+  if (args.messageStatus) {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-editable-field .message=${{ ...messages[message] }}> ${message} Status </md-editable-field>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-editable-field .message=${{ ...messages[args.message] }}> ${args.message} Status </md-editable-field>
       </md-theme>
     `;
-  } else if (inputDiff) {
-    const inputTypes = numInputTypes;
-    const inputType = select("Input Type", inputTypes, "text");
-
+  } else if (args.inputDiff) {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-editable-field .message=${errorMessageArr} type=${inputType}> 12345 </md-editable-field>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-editable-field .message=${errorMessageArr} type=${args.inputType}> 12345 </md-editable-field>
       </md-theme>
     `;
-  } else if (inputValid) {
-    const regexString = text("Regex String", "^([+-]?[1-9]\\d*|0)$");
-
+  } else if (args.inputValid) {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
-        <md-editable-field .message=${errorMessageArr} .pattern=${regexString}>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+        <md-editable-field .message=${errorMessageArr} .pattern=${args.regexString}>
           Test Regex Match . . .
         </md-editable-field>
       </md-theme>
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${darkTheme} theme=${theme}>
+      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
         <md-editable-field
-          maxLines="2"
-          ?disabled=${disabledSetting}
-          .alignment=${fieldAlignment}
+          max-lines="2"
+          ?disabled=${args.disabledSetting}
+          .alignment=${args.fieldAlignment}
           content="Text from Content Attribute"
         >
           Test editable text in slot
         </md-editable-field>
       </md-theme>
     `;
+  }
+};
+
+export default {
+  title: "Components/Editable Textfield",
+  component: "md-editable-field",
+  argTypes: {
+    isEditing: { table: { disable: true } },
+    alert: { table: { disable: true } },
+    hideMessage: { table: { disable: true } },
+    editableField: { table: { disable: true } },
+    reportValidity: { table: { disable: true } },
+    checkValidity: { table: { disable: true } },
+    handleFocus: { table: { disable: true } },
+    handleKeydown: { table: { disable: true } },
+    handleBlur: { table: { disable: true } },
+    overflowStyles: { table: { disable: true } },
+    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
+    darkTheme: { control: "boolean", defaultValue: false },
+    maxLines: { control: "number", defaultValue: 2 },
+    fieldAlignment: { control: { type: "select", options: alignment }, defaultValue: "left" },
+    disabledSetting: { control: "boolean", defaultValue: false },
+    messageStatus: { control: "boolean", defaultValue: false },
+    inputDiff: { control: "boolean", defaultValue: false },
+    inputValid: { control: "boolean", defaultValue: false },
+    message: { control: { type: "select", options: ["success", "error", "warning"] }, defaultValue: "error" },
+    inputType: { control: { type: "select", options: numInputTypes }, defaultValue: "text" },
+    regexString: { control: "text", description: "Regex String", defaultValue: "^([+-]?[1-9]\\d*|0)$" }
+  },
+  parameters: {
+    a11y: {
+      element: "md-editable-field"
+    }
   }
 };

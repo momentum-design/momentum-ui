@@ -68,7 +68,7 @@ export namespace ParentComponentGeneric {
             //API call send to end point to update the item
         }
 
-        render() {
+        render() { 
             return html`
         <h2>Generic Item List</h2>
         <md-advance-list
@@ -76,6 +76,7 @@ export namespace ParentComponentGeneric {
           .isLoading=${this.isLoading}
           .isError=${this.isError}
           ariaRoleList="listbox"
+          ariaRoleListItem="option"
           ariaLabelList="state selector"
           .totalRecords=${this.totalRecords}
           @list-item-change=${this.handleListItemChange}

@@ -14,12 +14,12 @@ export namespace AdvanceList {
     @property({ type: Boolean }) isLoading = false;
     @property({ type: String }) selectedItemId = "";
     @property({ type: String }) value = "";
-    @property({ type: String }) ariaRoleList = "";
+    @property({ type: String }) ariaRoleList = "listbox";
+    @property({ type: String }) ariaRoleListItem = "option";
     @property({ type: String }) ariaLabelList = "";
     @property({ type: Boolean }) isError = false;
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
-    @internalProperty() page = 1;
     @property({ type: Number }) totalRecords = 0;
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId: string = "";
@@ -57,22 +57,19 @@ export namespace AdvanceList {
       }
     }
 
+    updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
+      wrapper.classList.toggle("selected", isSelected);
+      wrapper.setAttribute("selected", isSelected.toString());
+      wrapper.setAttribute("aria-selected", isSelected.toString());
+      wrapper.setAttribute("tabindex", isSelected ? "0" : "-1");
+    }
+
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-
-        if (wrapper.id === `${prefixId}${this.selectedItemId}`) {
-          // Update selected item styles and attributes
-          wrapper.classList.add("selected");
-          wrapper.setAttribute("selected", "true");
-          wrapper.setAttribute("aria-selected", "true");
-          wrapper.setAttribute("tabindex", "0");
-        } else {
-          wrapper.classList.remove("selected");
-          wrapper.removeAttribute("selected");
-          wrapper.setAttribute("aria-selected", "false");
-          wrapper.setAttribute("tabindex", "-1");
-        }
+        const isSelected = wrapper.id === `${prefixId}${this.selectedItemId}`;
+        // update the wrapper attributes
+        this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
         //active item should be focusable
         if (wrapper.id === `${prefixId}${this.activeId}`) {
@@ -190,12 +187,10 @@ export namespace AdvanceList {
       if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
         this.dispatchEvent(
           new CustomEvent("load-more", {
-            detail: { page: this.page },
             bubbles: true,
             composed: true
           })
         );
-        this.page += 1;
       }
       this.isUserNavigated = false;
     };
@@ -216,7 +211,7 @@ export namespace AdvanceList {
           class="default-wrapper"
           aria-setsize="${this.totalRecords}"
           aria-posinset="${index + 1}"
-          role="option"
+          role="${this.ariaRoleListItem}"
           aria-label=${item.name}
           id="${prefixId}${item.id}"
           index="${index}"

@@ -201,7 +201,7 @@ const commonDist = merge(common, {
     "comp/md-link-entry": "./src/components/link/Link",
     "comp/md-list-entry": "./src/components/list/List",
     "comp/md-list-item-entry": "./src/components/list/ListItem",
-        "comp/md-loading-entry": "./src/components/loading/Loading",
+    "comp/md-loading-entry": "./src/components/loading/Loading",
     "comp/md-meeting-alert-entry": "./src/components/meeting-alert/MeetingAlert",
     "comp/md-menu-entry": "./src/components/menu/Menu",
     "comp/md-menu-item-entry": "./src/components/menu/MenuItem",

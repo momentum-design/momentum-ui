@@ -221,20 +221,23 @@ export namespace AdvanceList {
       `;
     }
 
-    render() {
-      let ariaActiveDescendant: string = "";
+    getActiveDescendant(){
       if (this.activeId) {
-        ariaActiveDescendant = `${prefixId}${this.activeId}`;
+        return  `${prefixId}${this.activeId}`;
       } else if (this.value) {
-        ariaActiveDescendant = `${prefixId}${this.value}`;
+        return `${prefixId}${this.value}`;
+      }else{
+        return "";
       }
+    }
 
+    render() {
       return html`
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
           aria-live="polite"
-          aria-activedescendant=${ariaActiveDescendant}
+          aria-activedescendant=${this.getActiveDescendant()}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}

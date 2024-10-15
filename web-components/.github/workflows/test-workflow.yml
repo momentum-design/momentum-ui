@@ -3,7 +3,7 @@ name: Test Workflow
 on: 
   push:
     branches:
-      - CX-16614-GITHUB-ACTIONS-STORYBOOK  # Change to your branch name
+      - "CX-16614-GITHUB-ACTIONS-STORYBOOK"
 
 jobs:
   test:

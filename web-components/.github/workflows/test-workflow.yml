@@ -1,0 +1,25 @@
+name: Test Workflow
+
+on: 
+  push:
+    branches:
+      - CX-16614-GITHUB-ACTIONS-STORYBOOK  # Change to your branch name
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Change to your preferred Node version
+
+      - name: Run a simple command
+        run: echo "GitHub Actions is working!"
+
+      - name: List files
+        run: ls -la

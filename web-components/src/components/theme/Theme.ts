@@ -216,16 +216,18 @@ export namespace Theme {
     }
 
     handleVirtualTooltipChangeMessage(event: CustomEvent<TooltipEvent>) {
-      const { popper } = event.detail;
+      const { popper, reference } = event.detail;
 
-      const content = popper.querySelector(".md-tooltip__content");
-      const virtualContent = this.virtualWrapper.querySelector(".md-tooltip__content");
+      if (this.virtualReference === reference) {
+        const content = popper.querySelector(".md-tooltip__content");
+        const virtualContent = this.virtualWrapper.querySelector(".md-tooltip__content");
 
-      if (content && virtualContent) {
-        const message = content.textContent;
-        const virtualMessage = virtualContent.textContent;
-        if (message && virtualMessage) {
-          virtualContent.textContent = message;
+        if (content && virtualContent) {
+          const message = content.textContent;
+          const virtualMessage = virtualContent.textContent;
+          if (message && virtualMessage) {
+            virtualContent.textContent = message;
+          }
         }
       }
     }

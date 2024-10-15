@@ -85,4 +85,73 @@ describe("Theme", () => {
     expect(element.theme).toBe("momentum");
     expect(element.darkTheme).toBeFalsy;
   });
+
+  test("handleVirtualTooltipChangeMessage should update virtual tooltip content if reference matches", async () => {
+    const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
+    await new Promise(resolve => setTimeout(resolve, 0));
+    const reference = document.createElement("div");
+    const popper = document.createElement("div");
+    const content = document.createElement("div");
+    content.classList.add("md-tooltip__content");
+    content.textContent = "New Tooltip Message";
+    popper.appendChild(content);
+
+    await elementUpdated(element);
+
+    Object.defineProperty(element, "virtualReference", {
+      value: reference,
+      configurable: true
+    });
+
+    const virtualWrapper = document.createElement("div");
+    const virtualContent = document.createElement("div");
+    virtualContent.classList.add("md-tooltip__content");
+    virtualContent.textContent = "Old Tooltip Message";
+    virtualWrapper.appendChild(virtualContent);
+    Object.defineProperty(element, "virtualWrapper", {
+      value: virtualWrapper,
+      configurable: true
+    });
+
+    const event = new CustomEvent("tooltip-message", {
+      detail: { popper, reference },
+      bubbles: true,
+      composed: true
+    });
+    element.dispatchEvent(event);
+
+    const updatedVirtualContent = virtualWrapper.querySelector(".md-tooltip__content");
+    console.log("Updated Virtual Content:", updatedVirtualContent?.textContent); // Debugging log
+    expect(updatedVirtualContent).not.toBeNull();
+    expect(updatedVirtualContent!.textContent).toBe("New Tooltip Message");
+  });
+
+  test("handleVirtualTooltipChangeMessage should not update virtual tooltip content if reference does not match", async () => {
+    const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
+    await new Promise(resolve => setTimeout(resolve, 0));
+    const reference = document.createElement("div");
+    const differentReference = document.createElement("div");
+    const popper = document.createElement("div");
+    const content = document.createElement("div");
+    content.classList.add("md-tooltip__content");
+    content.textContent = "New Tooltip Message";
+    popper.appendChild(content);
+
+    await elementUpdated(element);
+
+    Object.defineProperty(element, "virtualReference", {
+      value: reference,
+      configurable: true
+    });
+
+    const event = new CustomEvent("tooltip-message", {
+      detail: { popper, reference: differentReference },
+      bubbles: true,
+      composed: true
+    });
+    element.dispatchEvent(event);
+
+    const virtualContent = element.shadowRoot!.querySelector(".md-tooltip__content");
+    expect(virtualContent).toBeNull();
+  });
 });

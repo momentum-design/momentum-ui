@@ -37,8 +37,11 @@ export const Avatar: StoryObj = {
     size: 32,
     title: "Rachell Harris",
     label: "Avatar",
+    src: "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600",
+    customUrl: false,
     iconName: "bot-bold",
-    url: "https://4b4dc97add6b1dcc891a-54bf3b4e4579920861d23cc001530c2a.ssl.cf1.rackcdn.com/V1~b33cb17c-42e3-41ac-a045-497e4002646c~b18d4572b17a4e98a16708797343ee7a~1600"
+    customImage: false,
+    newMomentum: true
   },
   render: (args: Args) => {
     if (args.composite) {
@@ -56,13 +59,13 @@ export const Avatar: StoryObj = {
           icon-name=${args.iconName}
           label=${args.label}
           type=${args.type}
-          src="${args.customUrl ? `${args.url}` : ""}"
+          src="${args.customUrl ? `${args.src}` : ""}"
           color=${args.color}
           size=${args.size}
           ?has-notification=${args.hasNotification}
           ?newMomentum=${args.newMomentum}
         >
-          ${args.customImage ? html` <img width="100" height="100" src=${args.url} /> ` : ``}
+          ${args.customImage ? html` <img width="100" height="100" src=${args.src} /> ` : ``}
         </md-avatar>
       `;
     }
@@ -73,16 +76,14 @@ const meta: Meta = {
   title: "Components/Avatar",
   component: "md-avatar",
   argTypes: {
+    renderIsTyping: { table: { disable: true } },
+    avatarContent: { table: { disable: true } },
     type: { control: { type: "select" }, options: AvatarType },
-    title: { control: "text" },
-    label: { control: "text" },
     color: { control: { type: "select" }, options: avatarColorOptions },
-    iconName: { control: "text" },
     size: { control: { type: "select" }, options: AvatarSize, defaultValue: 40 },
     compositeAvatarSizes: { control: { type: "select" }, options: compositeAvatarSize },
-    url: {
-      control: "text"
-    }
+    customUrl: { control: "boolean" },
+    customImage: { control: "boolean" }
   },
   parameters: {
     a11y: {

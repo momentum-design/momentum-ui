@@ -8,24 +8,21 @@
 
 import "@/components/badge/Badge";
 import "@/components/taskitem/TaskItem";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 export default {
   title: "Components/Task Item",
   component: "md-task-item",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" },
-    title: { control: "text", defaultValue: "Mihael Varificantare" },
-    quantity: { control: "number", defaultValue: 12 },
-    mediaType: { control: "text", defaultValue: "voice" },
-    status: { control: "text", defaultValue: "conference" },
-    queue: { control: "text", defaultValue: "IRV_quelle_11" },
-    message: { control: "text", defaultValue: "" },
-    time: { control: "text", defaultValue: "00:00" },
+    title: { control: "text" },
+    quantity: { control: "number" },
+    mediaType: { control: "text" },
+    status: { control: "text" },
+    queue: { control: "text" },
+    message: { control: "text" },
+    time: { control: "text" },
     selected: { table: { disable: true } },
     renderTaskType: { table: { disable: true } },
     renderStatus: { table: { disable: true } },
@@ -40,24 +37,34 @@ export default {
   }
 };
 
-export const TaskItem = (args: Args) => {
+const render = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="taskitem" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-      <md-task-item
-        mediaType="${args.mediaType}"
-        status="${args.status}"
-        title="${args.title}"
-        queue="${args.queue}"
-        quantity="${args.quantity}"
-        lastmessage="${args.message}"
-        @taskitem-click=${action("click")}
-        @taskitem-keydown=${action("keydown")}
-      >
-        <md-badge slot="task-type" color="darkmint" circle>
-          <md-icon name="social-sms" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
-        </md-badge>
-        <div>${args.time}</div>
-      </md-task-item>
-    </md-theme>
+    <md-task-item
+      mediaType="${args.mediaType}"
+      status="${args.status}"
+      title="${args.title}"
+      queue="${args.queue}"
+      quantity="${args.quantity}"
+      lastmessage="${args.message}"
+      @taskitem-click=${action("click")}
+      @taskitem-keydown=${action("keydown")}
+    >
+      <md-badge slot="task-type" color="darkmint" circle>
+        <md-icon name="social-sms" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
+      </md-badge>
+      <div>${args.time}</div>
+    </md-task-item>
   `;
+};
+
+export const TaskItem: StoryObj = {
+  args: {
+    title: "Mihael Varificantare",
+    quantitiy: 12,
+    mediaType: "voice",
+    status: "conference",
+    queue: "IRV_quelle_11",
+    time: "00:00"
+  },
+  render: render
 };

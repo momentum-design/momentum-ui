@@ -7,9 +7,8 @@
  */
 
 import "@/components/breadcrumb/Breadcrumb";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 
 const breadCrumb = [
   {
@@ -30,27 +29,17 @@ const breadCrumb = [
   }
 ];
 
-const render = (args: Args) => html`
-  <md-theme class="theme-toggle" id="breadcrumb" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-    <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb>
-  </md-theme>
-`;
+const render = (_args: Args) => html` <md-breadcrumb .navCrumbs="${breadCrumb}"></md-breadcrumb> `;
 
 export const Breadcrumb: StoryObj = {
-  args: {
-    theme: "lumos",
-    darkTheme: false
-  },
+  args: {},
   render: render
 };
 
 const meta: Meta = {
   title: "Components/Breadcrumb",
   component: "md-breadcrumb",
-  argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" }
-  },
+  argTypes: {},
   parameters: {
     a11y: {
       element: "md-breadcrumb"

@@ -23,15 +23,29 @@ export namespace Coachmark {
 
   @customElementWithCheck("md-coachmark")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
-    @property({ type: String }) message = "";
-    @property({ type: String }) actionname = "Next";
-    @property({ type: Boolean }) hidebutton = false;
-    @property({ type: String }) placement: Place = "auto";
-    @property({ type: Boolean }) show = false;
-    @property({ type: String }) color = "default";
+    @property({ type: String })
+    message = "";
 
-    @query(".md-coachmark__popper") popper!: HTMLDivElement;
-    @query(".md-coachmark__reference") reference!: HTMLDivElement;
+    @property({ type: String })
+    actionname = "Next";
+
+    @property({ type: Boolean })
+    hidebutton = false;
+
+    @property({ type: String })
+    placement: Place = "auto";
+
+    @property({ type: Boolean })
+    show = false;
+
+    @property({ type: String })
+    color = "default";
+
+    @query(".md-coachmark__popper")
+    popper!: HTMLDivElement;
+
+    @query(".md-coachmark__reference")
+    reference!: HTMLDivElement;
 
     private slotContent: Element[] | null = null;
 

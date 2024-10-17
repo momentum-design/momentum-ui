@@ -1,9 +1,11 @@
+@use "@/wc_scss/tools/mixins/flex";
+
 :host {
-  @include flex($display: inline-flex);
+  @include flex.flex($display: inline-flex);
 }
 
 .md-grabber__container {
-  @include flex($display: inline-flex);
+  @include flex.flex($display: inline-flex);
   overflow: hidden;
 
   &:focus-within {
@@ -12,7 +14,7 @@
 }
 
 .md-grabber {
-  @include flex($display: inline-flex);
+  @include flex.flex($display: inline-flex);
 
   position: relative;
   gap: 2px;

@@ -1,5 +1,6 @@
 // Namespace Variables
 @use "sass:math";
+@use "rem";
 
 $namespace: "md" !default;
 $prefix: "md" !default;
@@ -12,7 +13,7 @@ $contrast-class: "#{$prefix}--contrast" !default;
 $base-cap-height: 0.0618em;
 
 // 8px used in _trumps.spacing.responsive.scss
-$base-unit-rem: math.div($rem-base, 1px);
+$base-unit-rem: math.div(rem.$rem-base, 1px);
 $base-unit-px: 4;
 $base-rem: 0.5rem;
 
@@ -51,7 +52,7 @@ $definition-list-margin-bottom: 0.5rem;
 $base-scale: math.div($base-unit-rem * $base-line-height-ratio, $base-unit-px);
 
 // 4px = 0.25rem
-$base-unit: math.div($base-line-height, $base-scale) * $rem-base;
+$base-unit: math.div($base-line-height, $base-scale) * rem.$rem-base;
 
 // We use these to control text direction settings
 $text-direction: ltr;

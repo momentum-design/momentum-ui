@@ -1,4 +1,6 @@
-$coachmark-min-width: rem-calc(170);
-$coachmark-main-raduis: rem-calc(4);
-$coachmark-main-padding: rem-calc(12);
-$coachmark-arrow-size: rem-calc(10);
+@use "@/wc_scss/tools/functions/core" as core;
+
+$min-width: core.rem-calc(170);
+$main-raduis: core.rem-calc(4);
+$main-padding: core.rem-calc(12);
+$arrow-size: core.rem-calc(10);

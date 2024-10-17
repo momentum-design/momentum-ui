@@ -9,10 +9,10 @@
 import "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
-import { ThemeNameValues } from "@/components/theme/Theme";
+import "@/components/tooltip/Tooltip";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 const closeOptions = ["", "auto", "custom"] as const;
 
@@ -138,20 +138,19 @@ const moreTabs = (args: Args) => {
   `;
 };
 
-export const Tabs = (args: Args) => {
-  return html`
-    <md-theme class="theme-toggle" id="tabs" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-      ${args.more ? moreTabs(args) : tabs(args)}
-    </md-theme>
-  `;
+export const Tabs: StoryObj = {
+  args: {
+    alignment: "horizontal"
+  },
+  render: (args: Args) => {
+    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
+  }
 };
 
 export default {
   title: "Components/Tabs",
   component: "md-tabs",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues, defaultValue: "lumos" } },
-    darkTheme: { control: "boolean" },
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },
     panelSlotElement: { table: { disable: true } },
@@ -160,8 +159,8 @@ export default {
     tabsListElement: { table: { disable: true } },
     slotItem: { table: { disable: true } },
     draggable: { control: "boolean", defaultValue: false },
-    alignment: { control: { type: "select", options: ["horizontal", "vertical"] }, defaultValue: "horizontal" },
-    closable: { control: { type: "select", options: closeOptions }, defaultValue: "" },
+    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"], defaultValue: "horizontal" },
+    closable: { control: { type: "select" }, options: closeOptions },
     settings: { control: "boolean", defaultValue: false }
   },
   parameters: {

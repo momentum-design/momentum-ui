@@ -10,10 +10,9 @@
 
 import "@/components/icon/Icon";
 import "@/components/input/Input";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 
 const messageArr = [
@@ -39,17 +38,37 @@ const messageArr = [
   }
 ];
 
-export const Input = (args: Args) => {
-  if (args.hasNested) {
-    return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+export const Input: StoryObj = {
+  args: {
+    placeholder: "Enter Text",
+    label: "Label",
+    value: "Value Text",
+    size: "small-12",
+    messageValue: "Message 2",
+    disabled: false,
+    readOnly: false,
+    shape: "pill",
+    multiline: false,
+    searchable: false,
+    clear: false,
+    type: "text",
+    secondaryLabel: "",
+    helpText: "",
+    hasNested: false,
+    hasIcon: false,
+    nested: 1,
+    position: "before",
+    nameIcon: "accessibility_16",
+    newMomentum: false
+  },
+  render: (args: Args) => {
+    if (args.hasNested) {
+      return html`
         <md-input label="Default Input"></md-input>
         <md-input label="Input Nested Level" containerSize="small-12" .nestedLevel=${args.nested}></md-input>
-      </md-theme>
-    `;
-  } else if (args.hasIcon) {
-    return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      `;
+    } else if (args.hasIcon) {
+      return html`
         <md-input
           label="Input Icon"
           containerSize="small-12"
@@ -58,11 +77,9 @@ export const Input = (args: Args) => {
         >
           <md-icon slot="input-section${args.position === "after" ? "-right" : ""}" name=${args.nameIcon}></md-icon>
         </md-input>
-      </md-theme>
-    `;
-  } else {
-    return html`
-      <md-theme class="theme-toggle" id="input" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+      `;
+    } else {
+      return html`
         <md-input
           .label=${args.label}
           .placeholder=${args.placeholder}
@@ -83,8 +100,8 @@ export const Input = (args: Args) => {
           @input-focus=${action("focus in")}
         >
         </md-input>
-      </md-theme>
-    `;
+      `;
+    }
   }
 };
 
@@ -102,28 +119,26 @@ export default {
     multi: { table: { disable: true } },
     autofocus: { table: { disable: true } },
     htmlId: { table: { disable: true } },
-    theme: { conrol: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean", defaultValue: false },
-    placeholder: { control: "text", defaultValue: "Enter Text" },
-    label: { control: "text", defaultValue: "Label" },
-    value: { control: "text", defaultValue: "Value Text" },
-    size: { control: { type: "select", options: containerSize }, defaultValue: "small-12" },
-    messageValue: { control: { type: "select", options: messageArr }, defaultValue: messageArr[1] },
-    disabled: { control: "boolean", defaultValue: false },
-    readOnly: { control: "boolean", defaultValue: false },
-    shape: { control: { type: "select", options: inputShape }, defaultValue: "pill" },
-    multiline: { control: "boolean", defaultValue: false },
-    searchable: { control: "boolean", defaultValue: false },
-    clear: { control: "boolean", defaultValue: false },
-    type: { control: { type: "select", options: inputType }, defaultValue: "text" },
-    secondaryLabel: { control: "text", defaultValue: "" },
-    helpText: { control: "text", defaultValue: "" },
-    hasNested: { control: "boolean", defaultValue: false },
-    hasIcon: { control: "boolean", defaultValue: false },
-    nested: { control: { type: "select", options: nestedLevel }, defaultValue: 1 },
-    position: { control: { type: "select", options: iconPosition }, defaultValue: "before" },
-    nameIcon: { control: { type: "select", options: iconNames }, defaultValue: "accessibility_16" },
-    newMomentum: { control: "boolean", defaultValue: false }
+    placeholder: { control: "text" },
+    label: { control: "text" },
+    value: { control: "text" },
+    size: { control: { type: "select" }, options: containerSize },
+    messageValue: { control: { type: "select" }, options: messageArr },
+    disabled: { control: "boolean" },
+    readOnly: { control: "boolean" },
+    shape: { control: { type: "select" }, options: inputShape },
+    multiline: { control: "boolean" },
+    searchable: { control: "boolean" },
+    clear: { control: "boolean" },
+    type: { control: { type: "select" }, options: inputType },
+    secondaryLabel: { control: "text" },
+    helpText: { control: "text" },
+    hasNested: { control: "boolean" },
+    hasIcon: { control: "boolean" },
+    nested: { control: { type: "select" }, options: nestedLevel },
+    position: { control: { type: "select" }, options: iconPosition },
+    nameIcon: { control: { type: "select" }, options: iconNames },
+    newMomentum: { control: "boolean" }
   },
   parameters: {
     a11y: {

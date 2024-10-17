@@ -7,9 +7,8 @@
  */
 
 import "@/components/table-advanced/TableAdvanced";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { Args, Meta } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 import { TableAdvanced as TableAdvancedType } from "./TableAdvanced"; // Keep type import as a relative path
 import mdx from "./TableAdvanced.mdx";
 
@@ -103,44 +102,42 @@ export const TableAdvanced = (args: Args) => {
   };
 
   return html`
-    <md-theme class="theme-toggle" id="table" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-      ${args.customize
-        ? html`
-            <div style="${args.stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
-              <md-table-advanced
-                style="${args.collapse ? `display: block;` : `display: none;`}"
-                .config=${ColapseData.config}
-                .data=${ColapseData.data}
-              >
-              </md-table-advanced>
-              <md-table-advanced
-                style="${args.collapse ? `display: none;` : `display: block;`}"
-                .config=${DefaultAdvancedTable.config}
-                .data=${DefaultAdvancedTable.data}
-              >
-                <template id="tmp1">
-                  <div style="background: yellow">[OK]</div>
-                </template>
-              </md-table-advanced>
-            </div>
-          `
-        : html`
-            <div style="${args.stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
-              <md-table-advanced
-                style="${args.collapse ? `display: block;` : `display: none;`}"
-                .config=${ColapseData.config}
-                .data=${ColapseData.data}
-              >
-              </md-table-advanced>
-              <md-table-advanced
-                style="${args.collapse ? `display: none;` : `display: block;`}"
-                .config=${DefaultAdvancedTable.config}
-                .data=${DefaultAdvancedTable.data}
-              >
-              </md-table-advanced>
-            </div>
-          `}
-    </md-theme>
+    ${args.customize
+      ? html`
+          <div style="${args.stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
+            <md-table-advanced
+              style="${args.collapse ? `display: block;` : `display: none;`}"
+              .config=${ColapseData.config}
+              .data=${ColapseData.data}
+            >
+            </md-table-advanced>
+            <md-table-advanced
+              style="${args.collapse ? `display: none;` : `display: block;`}"
+              .config=${DefaultAdvancedTable.config}
+              .data=${DefaultAdvancedTable.data}
+            >
+              <template id="tmp1">
+                <div style="background: yellow">[OK]</div>
+              </template>
+            </md-table-advanced>
+          </div>
+        `
+      : html`
+          <div style="${args.stickheader ? `height: 350px; overflow: hidden; overflow-y: auto;` : ``}">
+            <md-table-advanced
+              style="${args.collapse ? `display: block;` : `display: none;`}"
+              .config=${ColapseData.config}
+              .data=${ColapseData.data}
+            >
+            </md-table-advanced>
+            <md-table-advanced
+              style="${args.collapse ? `display: none;` : `display: block;`}"
+              .config=${DefaultAdvancedTable.config}
+              .data=${DefaultAdvancedTable.data}
+            >
+            </md-table-advanced>
+          </div>
+        `}
   `;
 };
 
@@ -149,8 +146,6 @@ const meta: Meta = {
   component: "md-table-advanced",
   render: TableAdvanced,
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" },
     customize: { control: "boolean", description: "Use custom template for replace", defaultValue: false }
   },
   parameters: {

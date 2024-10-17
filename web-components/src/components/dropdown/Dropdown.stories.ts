@@ -14,16 +14,13 @@ import {
   dropdownStringLongOptions,
   dropdownStringOptions
 } from "@/[sandbox]/examples/dropdown";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 
 export default {
   title: "Components/Dropdown",
   component: "md-dropdown",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" },
     title: { control: "text", defaultValue: "Select..." },
     disabled: { control: "boolean" },
     newMomentum: { control: "boolean" },
@@ -43,68 +40,60 @@ export default {
 
 const renderSimpleLong = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${args.darkTheme}" theme=${args.theme}>
-      <md-dropdown
-        .options="${dropdownStringLongOptions}"
-        .defaultOption="${dropdownStringLongOptions[29]}"
-        .title="${args.title}"
-        ?disabled="${args.disabled}"
-        ?newMomentum="${args.newMomentum}"
-        ?searchable="${args.searchable}"
-        .leftIcon="${args.leftIcon}"
-        .placeholder="${args.placeholder}"
-      ></md-dropdown>
-    </md-theme>
+    <md-dropdown
+      .options="${dropdownStringLongOptions}"
+      .defaultOption="${dropdownStringLongOptions[29]}"
+      .title="${args.title}"
+      ?disabled="${args.disabled}"
+      ?newMomentum="${args.newMomentum}"
+      ?searchable="${args.searchable}"
+      .leftIcon="${args.leftIcon}"
+      .placeholder="${args.placeholder}"
+    ></md-dropdown>
   `;
 };
 
 const renderSimpleKeyValue = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${args.darkTheme}" theme=${args.theme}>
-      <md-dropdown
-        .options="${dropdownObjectKeyValueOptions}"
-        .title="${args.title}"
-        ?disabled="${args.disabled}"
-        ?newMomentum="${args.newMomentum}"
-        ?searchable="${args.searchable}"
-        .leftIcon="${args.leftIcon}"
-        .placeholder="${args.placeholder}"
-      ></md-dropdown>
-    </md-theme>
+    <md-dropdown
+      .options="${dropdownObjectKeyValueOptions}"
+      .title="${args.title}"
+      ?disabled="${args.disabled}"
+      ?newMomentum="${args.newMomentum}"
+      ?searchable="${args.searchable}"
+      .leftIcon="${args.leftIcon}"
+      .placeholder="${args.placeholder}"
+    ></md-dropdown>
   `;
 };
 
 const renderMultiKeyValue = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${args.darkTheme}" theme=${args.theme}>
-      <md-dropdown
-        .options="${dropdownObjectLongOptions}"
-        option-id="id"
-        option-value="country"
-        .title="${args.title}"
-        ?disabled="${args.disabled}"
-        ?newMomentum="${args.newMomentum}"
-        ?searchable="${args.searchable}"
-        .leftIcon="${args.leftIcon}"
-        .placeholder="${args.placeholder}"
-      ></md-dropdown>
-    </md-theme>
+    <md-dropdown
+      .options="${dropdownObjectLongOptions}"
+      option-id="id"
+      option-value="country"
+      .title="${args.title}"
+      ?disabled="${args.disabled}"
+      ?newMomentum="${args.newMomentum}"
+      ?searchable="${args.searchable}"
+      .leftIcon="${args.leftIcon}"
+      .placeholder="${args.placeholder}"
+    ></md-dropdown>
   `;
 };
 
 const renderDropdownStringValues = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="dropdown" ?darkTheme="${args.darkTheme}" theme=${args.theme}>
-      <md-dropdown
-        .options="${dropdownStringOptions}"
-        .title="${args.title}"
-        ?disabled="${args.disabled}"
-        ?newMomentum="${args.newMomentum}"
-        ?searchable="${args.searchable}"
-        .leftIcon="${args.leftIcon}"
-        .placeholder="${args.placeholder}"
-      ></md-dropdown>
-    </md-theme>
+    <md-dropdown
+      .options="${dropdownStringOptions}"
+      .title="${args.title}"
+      ?disabled="${args.disabled}"
+      ?newMomentum="${args.newMomentum}"
+      ?searchable="${args.searchable}"
+      .leftIcon="${args.leftIcon}"
+      .placeholder="${args.placeholder}"
+    ></md-dropdown>
   `;
 };
 

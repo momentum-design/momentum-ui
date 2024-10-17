@@ -9,9 +9,8 @@
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 import { GroupOptions } from "sortablejs";
 import mdx from "./Draggable.mdx";
 
@@ -19,8 +18,6 @@ export default {
   title: "Components/Draggable",
   component: "md-draggable",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean", defaultValue: false },
     leftSort: { control: "boolean", description: "Allow sorting inside left draggable list", defaultValue: false },
     leftDisabled: { control: "boolean", description: "Disables the left sortable", defaultValue: false },
     leftFiltered: {
@@ -118,54 +115,52 @@ export const Draggable = (args: Args) => {
         margin-right: 10px;
       }
     </style>
-    <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-      <div class="draggable-wrapper">
-        <md-draggable
-          ?sort=${args.leftSort}
-          ?disabled=${args.leftDisabled}
-          .filter=${args.leftFiltered}
-          .handle=${args.leftHandle}
-          .group=${{
-            name: args.leftGroupName,
-            pull: args.leftGroupPull as unknown,
-            put: args.leftGroupPut as unknown
-          } as GroupOptions}
-          ghost-class="custom-ghost"
-          chosen-class="custom-choose"
-          draggable-items="md-draggable-item"
+    <div class="draggable-wrapper">
+      <md-draggable
+        ?sort=${args.leftSort}
+        ?disabled=${args.leftDisabled}
+        .filter=${args.leftFiltered}
+        .handle=${args.leftHandle}
+        .group=${{
+          name: args.leftGroupName,
+          pull: args.leftGroupPull as unknown,
+          put: args.leftGroupPut as unknown
+        } as GroupOptions}
+        ghost-class="custom-ghost"
+        chosen-class="custom-choose"
+        draggable-items="md-draggable-item"
+      >
+        <md-draggable-item slot="draggable-item"
+          ><md-icon name="icon-drag_16"></md-icon>Sortable Item1 (Handle)</md-draggable-item
         >
-          <md-draggable-item slot="draggable-item"
-            ><md-icon name="icon-drag_16"></md-icon>Sortable Item1 (Handle)</md-draggable-item
-          >
-          <md-draggable-item slot="draggable-item" disabled>Sortable Item2 (Disabled)</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
-        </md-draggable>
+        <md-draggable-item slot="draggable-item" disabled>Sortable Item2 (Disabled)</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item3</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item5</md-draggable-item>
+      </md-draggable>
 
-        <md-draggable
-          ?sort=${args.rightSort}
-          ?disabled=${args.rightDisabled}
-          .filter=${args.rightFiltered}
-          .handle=${args.rightHandle}
-          .group=${{
-            name: args.rightGroupName,
-            pull: args.rightGroupPull as unknown,
-            put: args.rightGroupPut as unknown
-          } as GroupOptions}
-          ghost-class="custom-ghost"
-          chosen-class="custom-choose"
-          draggable-items="md-draggable-item"
+      <md-draggable
+        ?sort=${args.rightSort}
+        ?disabled=${args.rightDisabled}
+        .filter=${args.rightFiltered}
+        .handle=${args.rightHandle}
+        .group=${{
+          name: args.rightGroupName,
+          pull: args.rightGroupPull as unknown,
+          put: args.rightGroupPut as unknown
+        } as GroupOptions}
+        ghost-class="custom-ghost"
+        chosen-class="custom-choose"
+        draggable-items="md-draggable-item"
+      >
+        <md-draggable-item slot="draggable-item">Sortable Item6</md-draggable-item>
+        <md-draggable-item slot="draggable-item"
+          ><md-icon name="icon-drag_16"></md-icon>Sortable Item7 (Handle)</md-draggable-item
         >
-          <md-draggable-item slot="draggable-item">Sortable Item6</md-draggable-item>
-          <md-draggable-item slot="draggable-item"
-            ><md-icon name="icon-drag_16"></md-icon>Sortable Item7 (Handle)</md-draggable-item
-          >
-          <md-draggable-item slot="draggable-item">Sortable Item8</md-draggable-item>
-          <md-draggable-item slot="draggable-item" disabled>Sortable Item9 (Disabled)</md-draggable-item>
-          <md-draggable-item slot="draggable-item">Sortable Item10</md-draggable-item>
-        </md-draggable>
-      </div>
-    </md-theme>
+        <md-draggable-item slot="draggable-item">Sortable Item8</md-draggable-item>
+        <md-draggable-item slot="draggable-item" disabled>Sortable Item9 (Disabled)</md-draggable-item>
+        <md-draggable-item slot="draggable-item">Sortable Item10</md-draggable-item>
+      </md-draggable>
+    </div>
   `;
 };

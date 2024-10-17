@@ -6,16 +6,11 @@
  *
  */
 
-import { ThemeNameValues } from "@/components/theme/Theme";
 import "@/internal-components/color-table/ColorTable";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 
-const render = (args: Args) => html`
-  <md-theme class="theme-toggle" id="color-table" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-    <color-table></color-table>
-  </md-theme>
-`;
+const render = (_args: Args) => html` <color-table></color-table> `;
 
 export const ColorTable: StoryObj = {
   args: {},
@@ -25,10 +20,7 @@ export const ColorTable: StoryObj = {
 const meta: Meta = {
   title: "Internal References/Color Table",
   component: "color-table",
-  argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" }
-  },
+  argTypes: {},
   parameters: {
     a11y: {
       element: "color-table"

@@ -23,7 +23,8 @@ module.exports = {
     "@storybook/addon-controls",    
     "@storybook/addon-a11y",
     "@storybook/addon-docs",    
-    "@storybook/addon-actions"
+    "@storybook/addon-actions",
+    "@storybook/addon-toolbars"
   ],
 
   framework: "@storybook/web-components",

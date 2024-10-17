@@ -7,17 +7,14 @@
  */
 
 import "@/components/spinner/Spinner";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 export default {
   title: "Components/Spinner",
   component: "md-spinner",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues, defaultValue: "lumos" } },
-    darkTheme: { control: "boolean" },
-    size: { control: "number", defaultValue: 20 },
+    size: { control: "number", defaultValue: 56 },
     spinnerStyleMap: { table: { disable: true } }
   },
   parameters: {
@@ -27,10 +24,13 @@ export default {
   }
 };
 
-export const Spinner = (args: Args) => {
-  return html`
-    <md-theme class="theme-toggle" id="spinner" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-      <md-spinner .size="${args.size}"></md-spinner>
-    </md-theme>
-  `;
+const render = (args: Args) => {
+  return html` <md-spinner .size="${args.size}"></md-spinner> `;
+};
+
+export const Spinner: StoryObj = {
+  args: {
+    size: 20
+  },
+  render: render
 };

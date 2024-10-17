@@ -6,50 +6,54 @@
  *
  */
 
-import "@/components/list/List";
-import "@/components/list/ListItem";
-import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import "@/components/link/Link";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-html";
+import { linkColor, linkRole, linkTag } from "./Link"; // Keep type import as a relative path
 
-const options = {
-  Vertical: "vertical",
-  Horizontal: "horizontal"
+const render = (args: Args) => html`
+  <md-link
+    .href=${args.href}
+    .ariaLabel=${args.ariaLabel}
+    .ariaRole=${args.role as any}
+    .tag=${args.tag as any}
+    .target="${args.target}"
+    .color="${args.color}"
+    ?disabled=${args.disabled}
+    ?inline=${args.inline}
+    >Default Link</md-link
+  >
+`;
+
+export const Link: StoryObj = {
+  args: {
+    href: "http://google.com",
+    tag: "a",
+    disabled: false,
+    inline: false,
+    target: "_self",
+    color: "blue",
+    ariaLabel: "Link Storybook",
+    role: "link"
+  },
+  render: render
 };
 
-export const List = (args: Args) => {
-  return html`
-    <md-list
-      @list-item-change=${action("change")}
-      label="Transuranium elements"
-      .activated="${args.selected}"
-      .alignment=${args.alignment as "horizontal" | "vertical"}
-    >
-      <md-list-item shape=${args.shape} slot="list-item">Neptunium</md-list-item>
-      <md-list-item shape=${args.shape} slot="list-item" ?disabled=${args.disabled}>Plutonium</md-list-item>
-      <md-list-item shape=${args.shape} slot="list-item">Americium</md-list-item>
-      <md-list-item shape=${args.shape} slot="list-item" ?disabled=${args.disabled}>Curium</md-list-item>
-      <md-list-item shape=${args.shape} slot="list-item">Berkelium</md-list-item>
-      <md-list-item shape=${args.shape} slot="list-item">Californium</md-list-item>
-    </md-list>
-  `;
-};
-
-export default {
-  title: "Components/List",
-  component: "md-list",
+const meta: Meta = {
+  title: "Components/Link",
+  component: "md-link",
   argTypes: {
-    slotElement: { table: { disable: true } },
-    listItemSlot: { table: { disable: true } },
-    activated: { table: { disable: true } },
-    alignment: { control: { type: "select", options }, defaultValue: "vertical" },
-    shape: { control: { type: "select", options: ["pill", "rounded"] }, defaultValue: "rounded" },
-    disabled: { control: "boolean", defaultValue: false },
-    selected: { control: "number", defaultValue: 2 }
+    tag: { control: { type: "select" }, options: linkTag },
+    color: { control: { type: "select" }, options: linkColor },
+    role: { control: { type: "select" }, options: linkRole }
   },
   parameters: {
     a11y: {
-      element: "md-list"
+      element: "md-link"
     }
   }
 };
+
+export default meta;

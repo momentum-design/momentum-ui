@@ -7,6 +7,7 @@
  */
 
 import "@/components/button/Button";
+import "@/components/icon/Icon";
 import { Theme } from "@/components/theme/Theme";
 import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -37,6 +38,42 @@ export namespace Coachmark {
 
     @property({ type: Boolean })
     show = false;
+
+    //new properties
+    @property({ type: String })
+    iconName?: string = undefined;
+
+    @property({ type: String })
+    header?: string = undefined;
+
+    @property({ type: Boolean, reflect: true, attribute: "hide-close-button" })
+    hideCloseButton = true;
+
+    @property({ type: Boolean, reflect: true, attribute: "new-momentum" })
+    newMomentum = false;
+
+    @property({ type: String })
+    primaryButton?: string;
+
+    @property()
+    primaryButtonClickFunction?: () => void;
+
+    @property({ type: String })
+    secondaryButton?: string;
+
+    @property()
+    secondaryButtonClickFunction?: () => void;
+
+    @property({ type: String })
+    linkText?: string;
+
+    @property({ type: String })
+    href = "";
+
+    @property()
+    linkClickFunction?: () => void;
+
+    //end new properties
 
     @property({ type: String })
     color = "default";
@@ -110,7 +147,8 @@ export namespace Coachmark {
     get coachClassMap() {
       return {
         [`md-coachmark__popper--${this.placement}`]: !!this.placement,
-        [`md-coachmark__popper--${this.color}`]: !!this.color
+        [`md-coachmark__popper--${this.color}`]: !!this.color && !this.newMomentum,
+        newMomentum: this.newMomentum
       };
     }
 
@@ -147,11 +185,68 @@ export namespace Coachmark {
     }
 
     render() {
+      return this.newMomentum ? this.renderRefresh() : this.renderLegacy();
+    }
+
+    renderLegacy() {
       return html`
         <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
           <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
             ${this.wrappedCoachmarkContentTemplate()}
             <div id="arrow" class="md-coachmark__arrow" data-popper-arrow></div>
+          </div>
+          <div class="md-coachmark__reference" @click=${() => this.notifyCoachCreate()} aria-describedby="coachmark">
+            <slot></slot>
+          </div>
+        </div>
+      `;
+    }
+
+    renderHeader() {
+      return html`
+        <div class="header-continaer">
+          ${this.iconName ? html`<md-icon name=${this.iconName} size="16" iconSet="momentumDesign"></md-icon>` : ""}
+          ${this.header ? html`<span class="header-title">${this.header}</span>` : ""}
+          ${!this.hideCloseButton
+            ? html`<md-button size="20" variant="ghost" circle @button-click=${() => (this.show = false)}>
+                <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+              </md-button>`
+            : ""}
+        </div>
+      `;
+    }
+
+    renderBody() {
+      return html` <div class="body-container">${this.coachmarkContentTemplate()}</div> `;
+    }
+
+    renderFooter() {
+      return html`
+        <div class="footer-container">
+          ${this.primaryButton
+            ? html`<md-button variant="inverted-primary" @button-click=${this.primaryButtonClickFunction}
+                >${this.primaryButton}</md-button
+              >`
+            : ""}
+          ${this.secondaryButton
+            ? html`<md-button variant="inverted-secondary" @button-click=${this.secondaryButtonClickFunction}
+                >${this.secondaryButton}</md-button
+              >`
+            : ""}
+          ${this.linkText
+            ? html`<a href=${this.href} @click=${this.linkClickFunction} target="_blank" rel="noreferrer"
+                >${this.linkText}</a
+              >`
+            : ""}
+        </div>
+      `;
+    }
+
+    renderRefresh() {
+      return html`
+        <div class="md-coachmark ${classMap(this.coachWrapClassMap)}">
+          <div class="md-coachmark__popper ${classMap(this.coachClassMap)}" tabindex="0">
+            ${this.renderHeader()} ${this.renderBody()} ${this.renderFooter()}
           </div>
           <div class="md-coachmark__reference" @click=${() => this.notifyCoachCreate()} aria-describedby="coachmark">
             <slot></slot>

@@ -10,15 +10,29 @@
     border-radius: coachmark-settings.$main-raduis;
     display: none;
     min-width: coachmark-settings.$min-width;
+    max-width: coachmark-settings.$max-width;
     padding: coachmark-settings.$main-padding;
     position: absolute;
-    width: auto;
+    width: 100%;
     z-index: 1;
+
+    .header-title {
+      font-family: var(--brand-font-bold);
+      font-size: var(--body-primary-font-size, 1rem);
+      font-weight: var(--brand-font-weight-bold, 700);
+      line-height: rem-calc(24);
+    }
 
     .md-coachmark__arrow {
       height: 0;
       position: absolute;
       width: 0;
+    }
+
+    &.newMomentum {
+      background: var(--coachmark-modern-bg-color);
+      color: var(--coachmark-modern-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-modern-bg-color);
     }
 
     &--right {
@@ -83,7 +97,7 @@
 
     &--default {
       background: var(--coachmark-default-bg-color);
-      color: var(-coachmark-default-text-color);
+      color: var(--coachmark-default-text-color);
     }
 
     &--blue {

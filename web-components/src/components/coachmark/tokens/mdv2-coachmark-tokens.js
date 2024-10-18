@@ -111,6 +111,14 @@ const coachmark = {
   },
   "border-color": {
     common: "$mds-color-theme-outline-primary-normal"
+  },
+  modern: {
+    "bg-color": {
+      common: "$mds-color-theme-inverted-background-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    }
   }
 };
 

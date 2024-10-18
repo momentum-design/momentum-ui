@@ -382,6 +382,54 @@ const button = {
       }
     }
   },
+  "inverted-primary": {
+    "bg-color": {
+      common: "$mds-color-theme-inverted-button-primary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-inverted-button-primary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-inverted-button-primary-pressed"
+      }
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-inverted-button-primary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-inverted-text-primary-disabled"
+      }
+    }
+  },
+  "inverted-secondary": {
+    "bg-color": {
+      common: "$mds-color-theme-inverted-button-secondary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    },
+    "border-color": {
+      common: "$mds-color-theme-inverted-outline-button-normal"
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-inverted-button-secondary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-inverted-text-primary-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-inverted-outline-disabled-normal"
+      }
+    }
+  },
   "state-selector": {
     "border-radius": {
       common: "8px"

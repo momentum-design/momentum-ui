@@ -1,8 +1,9 @@
-import "@/components/button/Button";
-import "@/components/icon/Icon";
-import "@/components/coachmark/Coachmark";
 import "@/components/activity-button/ActivityButton";
+import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
+import "@/components/button/Button";
+import "@/components/coachmark/Coachmark";
+import "@/components/icon/Icon";
 import "@/components/taskitem/TaskItem";
 import { customElement, html, LitElement, property } from "lit-element";
 
@@ -12,6 +13,12 @@ export class CoachTemplateSandbox extends LitElement {
   @property({ type: Boolean }) isOpenSecond = false;
   @property({ type: Boolean }) isOpenThird = false;
   @property({ type: Boolean }) isOpenFourth = false;
+
+  @property({ type: Boolean }) isNewMomentumOpen = false;
+
+  private openNewMomentum() {
+    this.isNewMomentumOpen = true;
+  }
 
   private openCoach() {
     this.isOpen = true;
@@ -79,6 +86,24 @@ export class CoachTemplateSandbox extends LitElement {
         >
           <div>01:08:00</div>
         </md-task-item>
+      </md-coachmark>
+
+      <md-coachmark
+        ?show=${this.isNewMomentumOpen}
+        placement="bottom"
+        new-momentum
+        hidebutton
+        header="Change your interaction preferences"
+        @coach-action=${this.closeCoach}
+        primaryButton="Got it"
+        secondaryButton="Dismiss"
+      >
+        <div slot="coachmark-content">
+          <span>Come here to adjust your call and team details anytime.</span>
+        </div>
+        <md-button hasRemoveStyle circle @button-click=${this.openNewMomentum}>
+          <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
+        </md-button>
       </md-coachmark>
     `;
   }

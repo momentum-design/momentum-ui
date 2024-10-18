@@ -134,6 +134,14 @@ const coachmark = {
       light: colors.gray[50].name,
       dark: colors.gray["05"].name
     }
+  },
+  modern: {
+    "bg-color": {
+      common: "$mds-color-theme-inverted-background-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    }
   }
 };
 

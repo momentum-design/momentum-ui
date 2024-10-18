@@ -72,7 +72,9 @@ export const buttonVariant = [
   "available",
   "unavailable",
   "engaged",
-  "idle"
+  "idle",
+  "inverted-primary",
+  "inverted-secondary"
 ] as const;
 export const buttonColor = [
   "blue",

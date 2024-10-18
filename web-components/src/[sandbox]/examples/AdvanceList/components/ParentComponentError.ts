@@ -1,7 +1,7 @@
-import { html, LitElement, css, property, internalProperty } from "lit-element";
 import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import './ErrorLoader/ErrorLoader';
+import { html, internalProperty, LitElement, property } from "lit-element";
+import "./ErrorLoader/ErrorLoader";
 
 export namespace ParentComponentError {
   @customElementWithCheck("parent-component-error")
@@ -12,7 +12,6 @@ export namespace ParentComponentError {
     @internalProperty() shouldFail = false;
     @property({ type: Boolean }) isError = false;
     @internalProperty() totalRecords = 0;
-
 
     constructor() {
       super();
@@ -25,17 +24,17 @@ export namespace ParentComponentError {
     }
 
     generateUUID() {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          const r = Math.random() * 16 | 0;
-          const v = c === 'x' ? r : (r & 0x3 | 0x8);
-          return v.toString(16);
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
       });
-  }
+    }
 
     async loadMoreItems() {
       try {
         if (this.shouldFail) {
-          throw new Error('Simulated alternating failure');
+          throw new Error("Simulated alternating failure");
         }
         this.isLoading = true;
         const newItems = await this.fetchItems(this.page);
@@ -45,7 +44,6 @@ export namespace ParentComponentError {
         this.page += 1;
         this.isLoading = false;
         this.isError = false;
-
       } catch (err) {
         this.isLoading = false;
         this.isError = true;
@@ -56,18 +54,23 @@ export namespace ParentComponentError {
       }
     }
 
-    private handleListItemChange(event: CustomEvent) {
+    private handleListItemChange(_event: CustomEvent) {
       //API call send to end point to upate the item
-  }
+    }
     async fetchItems(page: number) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const newItems = Array.from({ length: 2000 }, (_, i) => ({
         name: `Item ${(page - 1) * 2000 + i + 1}`,
         id: this.generateUUID(),
         index: i,
-        template: (data: any, index: number) => html`<div style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;" indexing="${index}" >${data.name}</div>`
-
+        template: (data: any, index: number) =>
+          html`<div
+            style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;"
+            indexing="${index}"
+          >
+            ${data.name}
+          </div>`
       }));
       return newItems;
     }
@@ -88,22 +91,26 @@ export namespace ParentComponentError {
           .isError=${this.isError}
           .totalRecords=${this.totalRecords}
           @list-item-change=${this.handleListItemChange}
-          @load-more=${this.loadMoreItems}>
+          @load-more=${this.loadMoreItems}
+        >
           <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>
-        
-        ${this.isError ? html`
-          <md-fetch-error 
-            class="fetch-error"
-            messageType="error"
-            style="color: red;"
-            commonErrorMsg="An error occurred while fetching data"
-            commonTryAgain="Try Again"
-            trackingId="12345"
-            trackingIdInputLabel="Tracking ID:"
-            @retry="${this.handleRetry}">
-          </md-fetch-error>
-        ` : ''}
+
+        ${this.isError
+          ? html`
+              <md-fetch-error
+                class="fetch-error"
+                messageType="error"
+                style="color: red;"
+                commonErrorMsg="An error occurred while fetching data"
+                commonTryAgain="Try Again"
+                trackingId="12345"
+                trackingIdInputLabel="Tracking ID:"
+                @retry="${this.handleRetry}"
+              >
+              </md-fetch-error>
+            `
+          : ""}
       `;
     }
   }

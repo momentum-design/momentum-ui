@@ -740,7 +740,7 @@ export namespace Tabs {
       }
     }
 
-    handleTabKeydown(event: any) {
+    handleTabKeydown(event: KeyboardEvent) {
       let elementId;
 
       if (event.target != this && !this.tabs.find((tab) => tab.id === event.target.id)) {

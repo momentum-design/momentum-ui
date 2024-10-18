@@ -9,7 +9,7 @@
 export { Accordion } from "./components/accordion/Accordion";
 export { AccordionItem } from "./components/accordion/AccordionItem";
 export { ActivityButton } from "./components/activity-button/ActivityButton";
-export {AdvanceList} from "./components/advance-list/AdvanceList";
+export { AdvanceList } from "./components/advance-list/AdvanceList";
 export { AlertBanner } from "./components/alert-banner/AlertBanner";
 export { Alert } from "./components/alert/Alert";
 export { AudioPlayer } from "./components/audio-player/AudioPlayer";
@@ -19,8 +19,8 @@ export { Badge } from "./components/badge/Badge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
-export { Card } from "./components/card/Card";
 export { CardAi } from "./components/card-ai/CardAi";
+export { Card } from "./components/card/Card";
 export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";

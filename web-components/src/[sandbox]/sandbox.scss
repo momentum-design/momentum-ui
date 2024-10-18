@@ -33,7 +33,7 @@
 }
 
 .explorer {  
-  width: 100vw;
+  width: calc(100vw - 1rem);
   height: calc(100vh - 1.75rem);
 }
 

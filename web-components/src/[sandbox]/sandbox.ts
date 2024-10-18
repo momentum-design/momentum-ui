@@ -28,6 +28,7 @@ import {
   chatMessageTemplate,
   checkboxTemplate,
   chipTemplate,
+  coachmarkPopoverTemplate,
   coachTemplate,
   codeEditorTemplate,
   colorTableTemplate,
@@ -279,6 +280,7 @@ export class Sandbox extends LitElement {
           ${this.getTabTemplate("Checkbox", "md-checkbox", "checkbox", checkboxTemplate)}
           ${this.getTabTemplate("Chip", "md-chip", "chip", chipTemplate)}
           ${this.getTabTemplate("Coachmark", "md-coachmark", "coachmark", coachTemplate)}
+          ${this.getTabTemplate("CoachmarkPopover", "md-coachmark-popover", "coachmark", coachmarkPopoverTemplate)}
           ${this.getTabTemplate("Code Editor", "md-code-editor", "code-editor", codeEditorTemplate)}
           ${this.getTabTemplate("Combo Box", "md-combobox", "combobox", comboBoxTemplate)}
           ${this.getTabTemplate("Datepicker", "md-datepicker", "datepicker", datePickerTemplate)}

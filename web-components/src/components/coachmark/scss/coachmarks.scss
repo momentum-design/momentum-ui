@@ -29,12 +29,6 @@
       width: 0;
     }
 
-    &.newMomentum {
-      background: var(--coachmark-modern-bg-color);
-      color: var(--coachmark-modern-text-color);
-      --coachmark-arrow-border-color: var(--coachmark-modern-bg-color);
-    }
-
     &--right {
       animation: coach-fade 1s, coach-slide-right 0.5s ease;
       left: calc(100% + 1rem);

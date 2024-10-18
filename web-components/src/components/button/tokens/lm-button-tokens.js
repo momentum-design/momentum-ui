@@ -245,6 +245,24 @@ const button = {
       }
     }
   },
+  promotional: {
+    "bg-color": {
+      common: "$mds-color-theme-common-button-promotion-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-common-text-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-common-button-promotion-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-common-button-promotion-active"
+      }
+    }
+  },
   available: {
     "bg-color": {
       light: colors.green["05"].name,

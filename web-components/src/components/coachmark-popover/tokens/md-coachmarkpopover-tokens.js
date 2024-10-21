@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-const coachmark = {
+const coachmarkPopover = {
   prefix: "md",
   component: "coachmark-popover",
   "bg-color": {
@@ -9,7 +9,10 @@ const coachmark = {
   },
   "text-color": {
     common: "$mds-color-theme-inverted-text-primary-normal"
+  },
+  "border-color": {
+    common: "$mds-color-theme-inverted-outline-primary-normal"
   }
 };
 
-module.exports = coachmark;
+module.exports = coachmarkPopover;

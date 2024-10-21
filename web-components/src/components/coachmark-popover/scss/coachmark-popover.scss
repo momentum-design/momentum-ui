@@ -186,27 +186,10 @@
 
 @media (forced-colors:active) {
   .md-coachmark {
-    md-task-item {
-      outline: 2px solid transparent;
-    }
-
-    &__popper {
-
-      &--default,
-      &--violet,
-      &--green,
-      &--mint,
-      &--blue,
-      &--purple,
-      &--darkmint,
-      &--yellow,
-      &--red,
-      &--darked,
-      &--orange,
-      &--cyan {
-        background-color: Canvas;
-        outline: 1px solid CanvasText;
-      }
+    
+    &__popper {  
+      background-color: Canvas;
+      outline: 1px solid CanvasText;
     }
   }
 

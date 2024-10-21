@@ -1,5 +1,6 @@
 import { Parameters } from "@storybook/client-api";
 import { setCustomElements } from "@storybook/web-components";
+import { ThemeNameValues } from "../src/components/theme/Theme";
 import customElements from './custom-elements.json';
 import { withThemeDecorator } from "./themeDecorator";
 
@@ -49,7 +50,7 @@ export const globalTypes = {
     toolbar: {
       title: "Theme",
       icon: "globe",
-      items: ["momentum", "lumos", "momentumV2"],
+      items: ThemeNameValues,
       dynamicTitle: true
     }
   },

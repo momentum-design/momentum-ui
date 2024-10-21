@@ -35,8 +35,8 @@ declare global {
   }
 }
 
-export type ThemeName = "momentum" | "lumos" | "momentumV2" | "";
-export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2", ""];
+export type ThemeName = "momentum" | "lumos" | "momentumV2";
+export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2"];
 
 export namespace Theme {
   export type Attributes = {
@@ -57,7 +57,7 @@ export namespace Theme {
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) darkTheme = false;
     @property({ type: Boolean }) lumos = false;
-    @property({ type: String }) theme: ThemeName = "";
+    @property({ type: String }) theme?: ThemeName;
 
     @internalProperty() private activeTheme = momentumLight;
 
@@ -218,16 +218,18 @@ export namespace Theme {
     handleVirtualTooltipChangeMessage(event: CustomEvent<TooltipEvent>) {
       const { popper, reference } = event.detail;
 
-      if (this.virtualReference === reference) {
-        const content = popper.querySelector(".md-tooltip__content");
-        const virtualContent = this.virtualWrapper.querySelector(".md-tooltip__content");
+      if (this.virtualReference !== reference) {
+        return;
+      }
 
-        if (content && virtualContent) {
-          const message = content.textContent;
-          const virtualMessage = virtualContent.textContent;
-          if (message && virtualMessage) {
-            virtualContent.textContent = message;
-          }
+      const content = popper.querySelector(".md-tooltip__content");
+      const virtualContent = this.virtualWrapper.querySelector(".md-tooltip__content");
+
+      if (content && virtualContent) {
+        const message = content.textContent;
+        const virtualMessage = virtualContent.textContent;
+        if (message && virtualMessage) {
+          virtualContent.textContent = message;
         }
       }
     }

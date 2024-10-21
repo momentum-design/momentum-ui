@@ -1,21 +1,18 @@
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { now } from "@/utils/dateUtils";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
 
 export default {
   title: "Components/Date Picker",
   component: "md-datepicker",
   argTypes: {
-    darkTheme: { control: "boolean", defaultValue: false },
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    weekStart: { control: { type: "select", options: DP.weekStartDays }, defaultValue: "" },
-    locale: { control: "text", defaultValue: "en-US" },
+    weekStart: { control: { type: "select" }, options: DP.weekStartDays },
+    locale: { control: { type: "text" } },
     disabled: { control: "boolean" },
-    minDate: { control: "text", defaultValue: now().minus({ day: 5 }).toISODate() },
-    maxDate: { control: "text", defaultValue: now().plus({ day: 30 }).toISODate() },
-    value: { control: "text", defaultValue: now().toISODate() }
+    minDate: { control: { type: "text" } },
+    maxDate: { control: { type: "text" } },
+    value: { control: { type: "text" } }
   },
   parameters: {
     a11y: {
@@ -24,9 +21,15 @@ export default {
   }
 };
 
-export const DatePicker = (args: Args) => {
-  return html`
-    <md-theme class="theme-toggle" id="datepicker" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+export const DatePicker: StoryObj = {
+  args: {
+    locale: "en-US",
+    minDate: now().minus({ day: 5 }).toISODate(),
+    maxDate: now().plus({ day: 30 }).toISODate(),
+    value: now().toISODate()
+  },
+  render: (args: Args) => {
+    return html`
       <md-datepicker
         ?disabled=${args.disabled}
         ?should-close-on-select=${args.shouldCloseOnSelect}
@@ -37,6 +40,6 @@ export const DatePicker = (args: Args) => {
         maxDate=${args.maxDate}
       >
       </md-datepicker>
-    </md-theme>
-  `;
+    `;
+  }
 };

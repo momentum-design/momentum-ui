@@ -9,15 +9,12 @@
 import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
 import "@/components/card/Card";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
-import { nothing } from "lit-html";
+import { html, nothing } from "lit-html";
 
 export const Card = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" ?darkTheme=${args.darkTheme} theme=${args.theme}>
       <md-card
         .menuOptions=${args.menu}
         id=${args.id}
@@ -53,7 +50,6 @@ export const Card = (args: Args) => {
         <md-badge slot="footer" color="blue" small>Some long long label</md-badge>
         <md-badge slot="footer" color="pink" small>Confidential</md-badge>
       </md-card>
-    </md-theme>
   `;
 };
 
@@ -63,8 +59,6 @@ export default {
   title: "Components/Card",
   component: "md-card",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" },
     menu: { control: { type: "array" }, description: "Menu Items", defaultValue: cardMenu },
     id: { defaultValue: "12345678" },
     title: { defaultValue: "Team A Report - Q1" },

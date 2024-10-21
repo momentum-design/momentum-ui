@@ -6,61 +6,50 @@
  *
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import "@/components/list/List";
+import "@/components/list/ListItem";
+import { action } from "@storybook/addon-actions";
+import { Args } from "@storybook/web-components";
+import { html } from "lit-html";
 
-import "@/components/link/Link";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-element";
-import { linkColor, linkRole, linkTag } from "./Link"; // Keep type import as a relative path
-
-const render = (args: Args) => html`
-  <md-theme class="theme-toggle" id="link" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-    <md-link
-      .href=${args.href}
-      .ariaLabel=${args.ariaLabel}
-      .ariaRole=${args.role as any}
-      .tag=${args.tag as any}
-      .target="${args.target}"
-      .color="${args.color}"
-      ?disabled=${args.disabled}
-      ?inline=${args.inline}
-      >Default Link</md-link
-    >
-  </md-theme>
-`;
-
-export const Link: StoryObj = {
-  args: {
-    theme: "lumos",
-    darkTheme: false,
-    href: "http://google.com",
-    tag: "",
-    disabled: false,
-    inline: false,
-    target: "_self",
-    color: "blue",
-    ariaLabel: "Link Storybook",
-    role: ""
-  },
-  render: render
+const options = {
+  Vertical: "vertical",
+  Horizontal: "horizontal"
 };
 
-const meta: Meta = {
-  title: "Components/Link",
-  component: "md-link",
+export const List = (args: Args) => {
+  return html`
+    <md-list
+      @list-item-change=${action("change")}
+      label="Transuranium elements"
+      .activated="${args.selected}"
+      .alignment=${args.alignment as "horizontal" | "vertical"}
+    >
+      <md-list-item shape=${args.shape} slot="list-item">Neptunium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item" ?disabled=${args.disabled}>Plutonium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item">Americium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item" ?disabled=${args.disabled}>Curium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item">Berkelium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item">Californium</md-list-item>
+    </md-list>
+  `;
+};
+
+export default {
+  title: "Components/List",
+  component: "md-list",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean" },
-    tag: { control: { type: "select", options: linkTag } },
-    color: { control: { type: "select", options: linkColor } },
-    role: { control: { type: "select", options: linkRole } }
+    slotElement: { table: { disable: true } },
+    listItemSlot: { table: { disable: true } },
+    activated: { table: { disable: true } },
+    alignment: { control: { type: "select", options }, defaultValue: "vertical" },
+    shape: { control: { type: "select", options: ["pill", "rounded"] }, defaultValue: "rounded" },
+    disabled: { control: "boolean", defaultValue: false },
+    selected: { control: "number", defaultValue: 2 }
   },
   parameters: {
     a11y: {
-      element: "md-link"
+      element: "md-list"
     }
   }
 };
-
-export default meta;

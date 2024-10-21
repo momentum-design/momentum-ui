@@ -7,9 +7,8 @@
  */
 
 import "@/components/editable-textfield/EditableTextfield";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
@@ -38,36 +37,26 @@ const messages: EditableMap = {
 export const EditableTextfield = (args: Args) => {
   if (args.messageStatus) {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-        <md-editable-field .message=${{ ...messages[args.message] }}> ${args.message} Status </md-editable-field>
-      </md-theme>
+      <md-editable-field .message=${{ ...messages[args.message] }}> ${args.message} Status </md-editable-field>
     `;
   } else if (args.inputDiff) {
-    return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-        <md-editable-field .message=${errorMessageArr} type=${args.inputType}> 12345 </md-editable-field>
-      </md-theme>
-    `;
+    return html` <md-editable-field .message=${errorMessageArr} type=${args.inputType}> 12345 </md-editable-field> `;
   } else if (args.inputValid) {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-        <md-editable-field .message=${errorMessageArr} .pattern=${args.regexString}>
-          Test Regex Match . . .
-        </md-editable-field>
-      </md-theme>
+      <md-editable-field .message=${errorMessageArr} .pattern=${args.regexString}>
+        Test Regex Match . . .
+      </md-editable-field>
     `;
   } else {
     return html`
-      <md-theme class="theme-toggle" id="editable-field" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-        <md-editable-field
-          max-lines="2"
-          ?disabled=${args.disabledSetting}
-          .alignment=${args.fieldAlignment}
-          content="Text from Content Attribute"
-        >
-          Test editable text in slot
-        </md-editable-field>
-      </md-theme>
+      <md-editable-field
+        max-lines="2"
+        ?disabled=${args.disabledSetting}
+        .alignment=${args.fieldAlignment}
+        content="Text from Content Attribute"
+      >
+        Test editable text in slot
+      </md-editable-field>
     `;
   }
 };
@@ -86,8 +75,6 @@ export default {
     handleKeydown: { table: { disable: true } },
     handleBlur: { table: { disable: true } },
     overflowStyles: { table: { disable: true } },
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean", defaultValue: false },
     maxLines: { control: "number", defaultValue: 2 },
     fieldAlignment: { control: { type: "select", options: alignment }, defaultValue: "left" },
     disabledSetting: { control: "boolean", defaultValue: false },

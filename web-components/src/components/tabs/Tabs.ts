@@ -632,7 +632,10 @@ export namespace Tabs {
     }
 
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
-      const currentTabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+      const currentTabsOrder =
+        this.direction === "horizontal"
+          ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
+          : this.tabs;
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
       const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
 

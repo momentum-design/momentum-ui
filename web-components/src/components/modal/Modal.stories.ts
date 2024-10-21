@@ -7,10 +7,9 @@
  */
 
 import "@/components/modal/Modal";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { html } from "lit-html";
 import { modalType } from "./Modal"; // Keep type import as a relative path
 
 export default {
@@ -23,8 +22,7 @@ export default {
     handleCloseOutside: { table: { disable: true } },
     modalBackDropClassMap: { table: { disable: true } },
     modalContainerClassMap: { table: { disable: true } },
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean", defaultValue: false },
+
     show: { control: "boolean", defaultValue: false },
     headerLabel: { control: "text", defaultValue: "Test header text" },
     headerMessage: { control: "text", defaultValue: "Test message in header" },
@@ -52,27 +50,25 @@ const content = html`
 
 export const Modal = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="modal" ?darkTheme=${args.darkTheme} theme=${args.theme}>
-      <md-modal
-        .size="${args.size}"
-        .show=${args.show}
-        headerLabel="${args.headerLabel}"
-        headerMessage="${args.headerMessage}"
-        closeBtnName="${args.closeBtnName}"
-        .showCloseButton="${args.showCloseButton}"
-        .backdropClickExit="${args.backdropClickExit}"
-        ?hideFooter=${args.hideFooter}
-        ?hideHeader=${args.hideHeader}
-        @close-modal=${action("click")}
-      >
-        <div slot="header">
-          <span>Test slot header</span>
-        </div>
-        ${content}
-        <div slot="footer">
-          <span>Test slot footer</span>
-        </div>
-      </md-modal>
-    </md-theme>
+    <md-modal
+      .size="${args.size}"
+      .show=${args.show}
+      headerLabel="${args.headerLabel}"
+      headerMessage="${args.headerMessage}"
+      closeBtnName="${args.closeBtnName}"
+      .showCloseButton="${args.showCloseButton}"
+      .backdropClickExit="${args.backdropClickExit}"
+      ?hideFooter=${args.hideFooter}
+      ?hideHeader=${args.hideHeader}
+      @close-modal=${action("click")}
+    >
+      <div slot="header">
+        <span>Test slot header</span>
+      </div>
+      ${content}
+      <div slot="footer">
+        <span>Test slot footer</span>
+      </div>
+    </md-modal>
   `;
 };

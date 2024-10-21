@@ -7,19 +7,16 @@
  */
 
 import "@/components/chat-message/ChatMessage";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 export default {
   title: "Components/Chat Message",
   component: "md-chat-message",
   argTypes: {
-    theme: { control: { type: "select", options: ThemeNameValues }, defaultValue: "lumos" },
-    darkTheme: { control: "boolean", defaultValue: false },
-    title: { control: "text", defaultValue: "John Doe" },
-    message: { control: "text", defaultValue: "I have issue with my silencer" },
-    selfMode: { control: "boolean", defaultValue: false }
+    title: { control: "text" },
+    message: { control: "text" },
+    selfMode: { control: "boolean" }
   },
   parameters: {
     a11y: {
@@ -28,12 +25,17 @@ export default {
   }
 };
 
-export const ChatMessage = (args: Args) => {
-  return html`
-    <md-theme class="theme-toggle" id="chat" ?darkTheme=${args.darkTheme} theme=${args.theme}>
+export const ChatMessage: StoryObj = {
+  args: {
+    title: "John Doe",
+    message: "I have issue with my silencer",
+    selfMode: false
+  },
+  render: (args: Args) => {
+    return html`
       <md-chat-message .self=${args.selfMode} title=${args.title} time="11:27AM">
         <p slot="message">${args.message}</p>
       </md-chat-message>
-    </md-theme>
-  `;
+    `;
+  }
 };

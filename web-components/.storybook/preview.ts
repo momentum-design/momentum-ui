@@ -1,6 +1,7 @@
 import { Parameters } from "@storybook/client-api";
 import { setCustomElements } from "@storybook/web-components";
 import customElements from './custom-elements.json';
+import { withThemeDecorator } from "./themeDecorator";
 
 /** 
  * Custom element file generated automatically by execute this command
@@ -36,3 +37,33 @@ export const parameters:Parameters = {
     }
   }  
 };
+
+export const decorators = [
+  withThemeDecorator
+];
+
+export const globalTypes = {
+  theme: {
+    description: "Global theme for components",
+    defaultValue: "lumos",
+    toolbar: {
+      title: "Theme",
+      icon: "globe",
+      items: ["momentum", "lumos", "momentumV2"],
+      dynamicTitle: true
+    }
+  },
+  isDark: {
+    description: "Global dark mode for components",
+    defaultValue: false,
+    toolbar: {
+      title: "Dark",
+      icon: "circlehollow",
+      items: [
+        { value: false, title: "Light", icon: "circlehollow" },
+        { value: true, title: "Dark", icon: "circle" }
+      ],
+      dynamicTitle: true
+    }
+  }
+}

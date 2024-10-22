@@ -1,0 +1,33 @@
+name: Build and Publish Storybook to GitHub Pages
+
+on:
+  push:
+    branches: ["master"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # github workflows only run from root directory
+      # the wc-dist build command is run from root but accesses the web-components directory 
+      # so we need to ensure dependencies are installed - hence two separate yarn install commands
+      - name: Install Dependencies
+        run: cd ./web-components && yarn install
+
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          install_command: yarn install
+          build_command: yarn storybook:wc-dist
+          path: ./web-components/.out
+          checkout: false

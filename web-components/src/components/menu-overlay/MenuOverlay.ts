@@ -6,10 +6,10 @@
  *
  */
 
+import { Placement as PopoverPlacement } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
-import { Popover } from "@/PopoverTypes";
 import { debounce } from "@/utils/helpers";
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
@@ -37,7 +37,7 @@ type OffsetsFunction = ({
 }) => [number, number];
 
 export const menuOverlaySize = ["small", "large"] as const;
-export const menuOverlayPlacement = Popover.Placement;
+export const menuOverlayPlacement = PopoverPlacement;
 export const menuOverlayRole = ["menu", "dialog"] as const;
 
 export namespace MenuOverlay {

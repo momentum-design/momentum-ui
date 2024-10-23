@@ -8,11 +8,11 @@
 
 import "@/components/icon/Icon";
 import { Icon } from "@/components/icon/Icon";
+import { PlacementType } from "@/components/popover/Popover.types";
 import "@/components/progress-bar/ProgressBar";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { Popover } from "@/PopoverTypes";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import { nothing } from "lit-html";
@@ -22,7 +22,7 @@ import styles from "./scss/module.scss";
 
 export namespace Chip {
   export type Role = "group" | "option" | "button";
-  export type Placement = Popover.PlacementType;
+  export type Placement = PlacementType;
 
   @customElementWithCheck("md-chip")
   export class ELEMENT extends LitElement {

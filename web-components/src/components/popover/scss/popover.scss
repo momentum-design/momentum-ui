@@ -1,0 +1,85 @@
+@use "@/wc_scss/tools/functions/core";
+@use "./settings" as *;
+
+/** @component popover */
+
+@include core.exports("md-popover") {
+  .md-popover {
+    box-sizing: border-box;
+    position: relative;
+
+    * {
+      box-sizing: inherit;
+    }
+
+    //Container of whole popover
+    .popover-container {
+      
+      box-shadow:
+        0 8px 16px rgba(230, 13, 13, 0.16),
+        0 0 1px rgba(112, 173, 37, 0.14);
+      box-sizing: border-box;
+      display: none;
+      position: absolute;
+      z-index: 1000;
+      width: 280px;
+      
+      background-color: var(--popover-bg-color);
+      border: 1px solid var(--popover-border-color);
+      border-radius: core.rem-calc(8);
+      min-height: 24px;
+
+      &[data-show] {
+        display: flex;        
+      }
+    }
+
+    //Div container for slot
+    .popover-content {      
+      display: inline-flex;
+      width: fit-content;
+      height: fit-content;
+      align-items: stretch;
+    }
+  }
+
+  .popover-arrow {
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.16));
+    height: 0;
+    visibility: hidden;
+    width: 0;
+    z-index: -1;
+
+    &[data-show] {
+      visibility: visible;
+    }
+  }
+
+  .popover-container[data-popper-placement^="top"] > .popover-arrow {
+    border-left: solid $arrow-size transparent;
+    border-right: solid $arrow-size transparent;
+    border-top: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    bottom: $arrow-offset;
+  }
+
+  .popover-container[data-popper-placement^="bottom"] > .popover-arrow {
+    border-bottom: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-left: solid $arrow-size transparent;
+    border-right: solid $arrow-size transparent;
+    top: $arrow-offset;
+  }
+
+  .popover-container[data-popper-placement^="right"] > .popover-arrow {
+    border-bottom: solid $arrow-size transparent;
+    border-right: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-top: solid $arrow-size transparent;
+    left: $arrow-offset;
+  }
+
+  .popover-container[data-popper-placement^="left"] > .popover-arrow {
+    border-bottom: solid $arrow-size transparent;
+    border-left: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-top: solid $arrow-size transparent;
+    right: $arrow-offset;
+  }
+}

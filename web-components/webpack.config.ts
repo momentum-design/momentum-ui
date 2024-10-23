@@ -210,6 +210,7 @@ const commonDist = merge(common, {
     "comp/md-modal-entry": "./src/components/modal/Modal",
     "comp/md-pagination-entry": "./src/components/pagination/Pagination",
     "comp/md-phone-input-entry": "./src/components/phone-input/PhoneInput",
+    "comp/md-popover-entry": "./src/components/popover/Popover",
     "comp/md-progress-bar-entry": "./src/components/progress-bar/ProgressBar",
     "comp/md-radio-entry": "./src/components/radio/Radio",
     "comp/md-radiogroup-entry": "./src/components/radio/RadioGroup",

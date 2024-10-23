@@ -1,24 +1,19 @@
 @use "settings" as constants;
 
 .md-coachmark {
-  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);
-
-  display: inline-flex;
-  position: relative;
-  overflow: visible;
+  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);  
 
   &__popper {
-    border-radius: constants.$main-raduis;
-    display: none;
+    border-radius: constants.$main-radius;    
     min-width: constants.$min-width;
     max-width: constants.$max-width;
     width: 280px;
     padding: constants.$main-padding;
-    position: absolute;    
+    position: absolute;
     z-index: 9999;
 
-    background-color: var(--coachmark-popover-bg-color);
-    color: var(--coachmark-popover-text-color);    
+    // background-color: var(--coachmark-popover-bg-color);
+     color: var(--coachmark-popover-text-color);    
 
     //Header
     .header-container {
@@ -62,125 +57,6 @@
       padding-top: constants.$main-padding;
       flex-grow: 1;
     }
-
-    //Arrow
-    .md-coachmark__arrow {
-      height: 0;
-      position: absolute;
-      width: 0;
-    }
-
-    &--right {
-      animation: coach-fade 1s, coach-slide-right 0.5s ease;
-      left: calc(100% + 1rem);
-      top: 50%;
-      transform: translateY(-50%);
-
-      .md-coachmark__arrow {
-        border-bottom: constants.$arrow-width solid transparent;
-        border-top: constants.$arrow-width solid transparent;
-        left: -(constants.$arrow-height);
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    }
-
-    &--left {
-      animation: coach-fade 1s, coach-slide-left 0.5s ease;
-      right: calc(100% + 1rem);
-      top: 50%;
-      transform: translateY(-50%);
-
-      .md-coachmark__arrow {
-        border-bottom: constants.$arrow-width solid transparent;
-        border-top: constants.$arrow-width solid transparent;
-        right: -(constants.$arrow-height);
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    }
-
-    &--top {
-      animation: coach-fade 1s, coach-slide-top 0.5s ease;
-      bottom: calc(100% + 0.5rem);
-      left: 50%;
-      transform: translateX(-50%);
-
-      .md-coachmark__arrow {
-        border-left: constants.$arrow-width solid transparent;
-        border-right: constants.$arrow-width solid transparent;
-        bottom: -(constants.$arrow-height);
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-
-    &--bottom {
-      animation: coach-fade 1s, coach-slide-bottom 0.5s ease;
-      left: 50%;
-      top: calc(100% + 0.5rem);
-      transform: translateX(-50%);
-
-      .md-coachmark__arrow {
-        border-left: constants.$arrow-width solid transparent;
-        border-right: constants.$arrow-width solid transparent;
-        left: 50%;
-        top: -(constants.$arrow-height);
-        transform: translateX(-50%);
-      }
-    }
-  }
-    
-
-  &--active {
-    .md-coachmark__popper {
-      display: block;
-    }
-  }
-}
-
-@keyframes coach-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes coach-slide-right {
-  from {
-    left: 100%;
-  }
-  to {
-    left: calc(100% + 1rem);
-  }
-}
-
-@keyframes coach-slide-top {
-  from {
-    bottom: 100%;
-  }
-  to {
-    bottom: calc(100% + 0.5rem);
-  }
-}
-
-@keyframes coach-slide-left {
-  from {
-    right: 100%;
-  }
-  to {
-    right: calc(100% + 1rem);
-  }
-}
-
-@keyframes coach-slide-bottom {
-  from {
-    top: 100%;
-  }
-  to {
-    top: calc(100% + 0.5rem);
   }
 }
 

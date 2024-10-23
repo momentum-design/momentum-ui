@@ -21,8 +21,7 @@
 
   md-icon,
   md-icon::part(icon) {
-    color: var(--button-secondary-text-color);
-    line-height: rem-calc(13);
+    color: var(--button-secondary-text-color);   
   }
 
   &:hover {

@@ -1,4 +1,4 @@
-@import "@/wc_scss/settings/focus";
+@forward "@/wc_scss/settings/focus";
 
 @mixin button-focus-styles() {
   box-shadow: none;

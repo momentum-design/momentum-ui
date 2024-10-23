@@ -14,7 +14,6 @@
 
     //Container of whole popover
     .popover-container {
-      
       box-shadow:
         0 8px 16px rgba(230, 13, 13, 0.16),
         0 0 1px rgba(112, 173, 37, 0.14);
@@ -22,64 +21,91 @@
       display: none;
       position: absolute;
       z-index: 1000;
-      width: 280px;
-      
       background-color: var(--popover-bg-color);
       border: 1px solid var(--popover-border-color);
       border-radius: core.rem-calc(8);
+
+      padding: core.rem-calc(14);
+
       min-height: 24px;
+      min-width: 14px;
 
       &[data-show] {
-        display: flex;        
+        display: flex;
       }
     }
 
     //Div container for slot
-    .popover-content {      
-      display: inline-flex;
-      width: fit-content;
-      height: fit-content;
-      align-items: stretch;
+    .popover-content {
+      display: flex;
+      justify-content: space-around;
+
+      color: var(--popover-text-color);
+      font-size: core.rem-calc(16);
+      font-weight: 400;
+      line-height: core.rem-calc(24);
     }
-  }
 
-  .popover-arrow {
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.16));
-    height: 0;
-    visibility: hidden;
-    width: 0;
-    z-index: -1;
+    .popover-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      visibility: hidden;
 
-    &[data-show] {
-      visibility: visible;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: var(--popover-bg-color);
+        border: 1px solid var(--popover-border-color);
+        transform: rotate(45deg);
+        visibility: visible;
+      }
     }
   }
 
   .popover-container[data-popper-placement^="top"] > .popover-arrow {
-    border-left: solid $arrow-size transparent;
-    border-right: solid $arrow-size transparent;
-    border-top: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
-    bottom: $arrow-offset;
+    bottom: 0;
+    &::before {
+      left: calc(50% - 8px);
+      bottom: -9px;
+      border-top: none;
+      border-left: none;
+      border-bottom-right-radius: 3px;
+    }
   }
 
   .popover-container[data-popper-placement^="bottom"] > .popover-arrow {
-    border-bottom: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
-    border-left: solid $arrow-size transparent;
-    border-right: solid $arrow-size transparent;
-    top: $arrow-offset;
+    top: 0;
+    &::before {
+      left: calc(50% - 8px);
+      top: -9px;
+      border-bottom: none;
+      border-right: none;
+      border-top-left-radius: 3px;
+    }
   }
 
   .popover-container[data-popper-placement^="right"] > .popover-arrow {
-    border-bottom: solid $arrow-size transparent;
-    border-right: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
-    border-top: solid $arrow-size transparent;
-    left: $arrow-offset;
+    left:0;
+    &::before {
+      left: -9px;
+      top: calc(50% - 8px);
+      border-right: none;
+      border-top: none;
+      border-bottom-left-radius: 3px;
+    }  
   }
 
   .popover-container[data-popper-placement^="left"] > .popover-arrow {
-    border-bottom: solid $arrow-size transparent;
-    border-left: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
-    border-top: solid $arrow-size transparent;
-    right: $arrow-offset;
+    right: 0;
+    &::before {
+      right: -9px;
+      border-bottom: none;
+      border-left: none;
+      top: calc(50% - 8px);
+      border-top-right-radius: 3px;
+    }
   }
 }

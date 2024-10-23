@@ -346,16 +346,25 @@ const button = {
     }
   },
   favorite: {
+    "icon-color": {
+      common: colors.yellow[50].name
+    },
     hover: {
       "bg-color": {
         light: colors.gray[10].name,
         dark: colors.gray[90].name
+      },
+      "icon-color": {
+        common: colors.yellow[50].name
       }
     },
     pressed: {
       "bg-color": {
         light: colors.gray[20].name,
         dark: colors.gray[80].name
+      },
+      "icon-color": {
+        common: colors.yellow[50].name
       }
     }
   },

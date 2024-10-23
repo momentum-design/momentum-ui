@@ -349,6 +349,7 @@ export namespace CoachmarkPopover {
           ?is-open=${this.show}
           role="dialog"
           show-arrow
+          trigger="manual"
           placement=${this.placement}
           @popover-open-changed="${(e: CustomEvent) => {
             if (!e.detail.isOpen) {

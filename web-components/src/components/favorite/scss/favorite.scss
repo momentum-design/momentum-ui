@@ -1,4 +1,5 @@
 @use "@/wc_scss/tools/mixins/flex";
+@use "@/wc_scss/tools/mixins/focus";
 
 :host {
   @include flex.flex($display: inline-flex);
@@ -48,7 +49,7 @@
   }
 
   &:focus::after {
-    box-shadow: $focus-boxshadow;
+    box-shadow: focus.$focus-boxshadow;
   }
 
   &--disabled {

@@ -8,6 +8,7 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import { isActionKey } from "@/utils/keyboard";
 import { arrow, createPopper, flip, Instance, offset, Placement, preventOverflow, Rect } from "@popperjs/core";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
@@ -89,6 +90,9 @@ export namespace Popover {
     @query(".popover-arrow")
     popoverArrow!: HTMLDivElement;
 
+    @property({ type: String })
+    trigger?: string = "click";
+
     private triggerElement: HTMLElement | null = null;
 
     private popperInstance: Instance | null = null;
@@ -107,12 +111,61 @@ export namespace Popover {
       super.disconnectedCallback();
       this.removeEventListener("popover-open", this.updateActivePopoverOpened);
       this.removeEventListener("popover-close", this.updateActivePopoverClosed);
+
+      if (this.triggerElement) {
+        if (this.trigger?.includes("click")) {
+          this.triggerElement.removeEventListener("click", this.onTriggerElementClicked);
+          this.triggerElement.removeEventListener("keydown", this.onTriggerElementKeydown);
+        }
+
+        if (this.trigger?.includes("mouseenter")) {
+          this.triggerElement.removeEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.triggerElement.removeEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
+          this.popoverContainer?.removeEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.popoverContainer?.removeEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
+        }
+      }
     }
 
     private handleTriggerElementSlotChange() {
       const assignedElements = this.triggerSlot.assignedElements({ flatten: true });
       this.triggerElement = assignedElements.length > 0 ? (assignedElements[0] as HTMLElement) : null;
     }
+
+    private setupTriggerEvents() {
+      if (this.triggerElement) {
+        if (this.trigger?.includes("click")) {
+          this.triggerElement.addEventListener("click", this.onTriggerElementClicked.bind(this));
+          this.triggerElement.addEventListener("keydown", this.onTriggerElementKeydown.bind(this));
+        }
+
+        if (this.trigger?.includes("mouseenter")) {
+          this.triggerElement.addEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.triggerElement.addEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
+          this.popoverContainer?.addEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.popoverContainer?.addEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
+        }
+      }
+    }
+
+    onTriggerElementClicked = () => {
+      this.toggleOverlay();
+    };
+
+    onTriggerElementKeydown = (event: KeyboardEvent) => {
+      if (isActionKey(event.code)) {
+        event.preventDefault();
+        this.toggleOverlay();
+      }
+    };
+
+    onMouseEnterdTriggerOrPopup = (_event: MouseEvent) => {
+      //Handle show on mouse enter
+    };
+
+    onMouseLeaveTriggerOrPopup = (_event: MouseEvent) => {
+      //Handle close on mouse leave
+    };
 
     protected override firstUpdated(changedProperties: PropertyValues): void {
       super.firstUpdated(changedProperties);
@@ -121,9 +174,7 @@ export namespace Popover {
       //await this.updateComplete;
       this.handleTriggerElementSlotChange();
 
-      if (this.triggerElement) {
-        //popoverContainer
-      }
+      this.setupTriggerEvents();
 
       if (this.popoverContainer && this.isOpen) {
         //Create instance on first updated
@@ -140,6 +191,14 @@ export namespace Popover {
           this.setInitialFocus!();
         }
       }
+    }
+
+    private toggleOverlay(): void {
+      if (this.triggerElement?.hasAttribute("disabled")) {
+        return;
+      }
+
+      this.isOpen = !this.isOpen;
     }
 
     private createInstance() {

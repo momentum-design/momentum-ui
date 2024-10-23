@@ -19,6 +19,7 @@ export const Placement = [
 export const ARROW_HEIGHT = 16;
 export const Strategy = ["fixed", "absolute"] as const;
 export const PopoverRole = ["dialog", "menu", "tooltip"] as const;
+export const Triggers = ["click", "mouseenter", "manual"] as const;
 
 export type PlacementType = (typeof Placement)[number];
 export type StrategyType = (typeof Strategy)[number];

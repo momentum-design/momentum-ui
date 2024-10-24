@@ -124,6 +124,10 @@ export namespace Popover {
           this.popoverContainer?.removeEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
           this.popoverContainer?.removeEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
         }
+
+        if (this.trigger?.includes("focus")) {
+          //TODO
+        }
       }
     }
 
@@ -133,17 +137,24 @@ export namespace Popover {
     }
 
     private setupTriggerEvents() {
+      //Show the popover when the trigger lement is activated through click or keydown
       if (this.triggerElement) {
         if (this.trigger?.includes("click")) {
           this.triggerElement.addEventListener("click", this.onTriggerElementClicked.bind(this));
           this.triggerElement.addEventListener("keydown", this.onTriggerElementKeydown.bind(this));
         }
 
+        //Show popover on mouse enter and hide on mouse exit
         if (this.trigger?.includes("mouseenter")) {
           this.triggerElement.addEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
           this.triggerElement.addEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
           this.popoverContainer?.addEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
           this.popoverContainer?.addEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
+        }
+
+        //Show popover when the trigger element gets keyboard focus
+        if (this.trigger?.includes("focus")) {
+          //TODO
         }
       }
     }
@@ -232,7 +243,7 @@ export namespace Popover {
             name: "offset",
             options: {
               offset: (({ placement, reference }) => {
-                if (placement === "left-end" || placement === "right-end") {
+                if (placement === "left" || placement === "right") {
                   return [reference.height + reference.y + this.offsetDistance, 14];
                 } else {
                   return [0, this.showArrow ? ARROW_HEIGHT + this.offsetDistance : this.offsetDistance];

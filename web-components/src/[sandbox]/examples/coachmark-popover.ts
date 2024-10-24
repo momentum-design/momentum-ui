@@ -85,7 +85,9 @@ export class CoachTemplateSandbox extends LitElement {
 
         <md-coachmark-popover
           placement="left"
-          header="Change your interaction preferences"
+          headerIconName="room-lights-bold"
+          header="Tip Name"
+          message="Promote the feature, add some delight 🎉 and let the user know any top level information but don’t be instructional or technical. Max 4 lines of copy."
           primaryButton="Got it"
           secondaryButton="Dismiss"
           ?show=${this.thirdOpen}
@@ -96,9 +98,6 @@ export class CoachTemplateSandbox extends LitElement {
           <md-button hasRemoveStyle circle @button-click=${this.openThirdCoach}>
             <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
           </md-button>
-          <div slot="coachmark-content">
-            <span>Come here to adjust your call and team details anytime.</span>
-          </div>
         </md-coachmark-popover>
 
         <md-coachmark-popover
@@ -122,7 +121,7 @@ export class CoachTemplateSandbox extends LitElement {
         <md-popover placement="bottom">
           <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Test</md-button>
           <div class="popoverContent">
-            <span>text</span>
+            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>
         </md-popover>
       </div>

@@ -14,9 +14,8 @@
 
     //Container of whole popover
     .popover-container {
-      box-shadow:
-        0 8px 16px rgba(230, 13, 13, 0.16),
-        0 0 1px rgba(112, 173, 37, 0.14);
+      filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1)) drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.1));
+
       box-sizing: border-box;
       display: none;
       position: absolute;

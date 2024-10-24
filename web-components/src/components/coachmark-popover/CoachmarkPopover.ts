@@ -278,7 +278,7 @@ export namespace CoachmarkPopover {
      */
     private renderHeader() {
       return html`
-        <div class="header-continaer">
+        <div class="header-container">
           ${this.headerIconName
             ? html`<md-icon name=${this.headerIconName} size="16" iconSet="momentumDesign"></md-icon>`
             : ""}

@@ -3,22 +3,26 @@
 .md-coachmark {
   --coachmark-arrow-border-color: var(--coachmark-default-bg-color);  
 
+  md-popover::part(popover) {    
+
+    min-width: constants.$min-width;
+    max-width: constants.$max-width;    
+
+    color: var(--coachmark-popover-text-color);
+  }
+
   &__popper {
-    border-radius: constants.$main-radius;    
+    border-radius: constants.$main-radius;
+
     min-width: constants.$min-width;
     max-width: constants.$max-width;
-    width: 280px;
-    padding: constants.$main-padding;
-    position: absolute;
-    z-index: 9999;
-
-    // background-color: var(--coachmark-popover-bg-color);
-     color: var(--coachmark-popover-text-color);    
+    width: 282px;
 
     //Header
     .header-container {
-      display: flex;
+      display: flex;      
       width: 100%;
+      gap: constants.$header-spacing;
     }
 
     .header-title {

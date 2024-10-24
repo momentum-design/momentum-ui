@@ -10,6 +10,7 @@ $arrow-width: core.rem-calc(32);
 
 $header-font-size: var(--body-primary-font-size, core.rem-calc(16));
 $header-line-height: core.rem-calc(24);
+$header-spacing: core.rem-calc(4);
 
 $body-font-size: var(--body-secondary-font-size, core.rem-calc(14));
 $body-line-height: core.rem-calc(22);

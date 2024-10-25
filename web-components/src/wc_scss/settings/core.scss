@@ -1,6 +1,7 @@
 // Namespace Variables
 @use "sass:math";
 @use "rem";
+@use "@/wc_scss/colors/settings-base";
 
 $namespace: "md" !default;
 $prefix: "md" !default;
@@ -60,8 +61,8 @@ $opposite-direction: right;
 $default-float: left;
 $last-child-float: $opposite-direction;
 
-$link-color: $md-theme-50;
-$link-hover-color: $md-theme-70;
+$link-color: settings-base.$md-theme-50;
+$link-hover-color: settings-base.$md-theme-70;
 
 $global-radius: 4px;
 $border-radius-base: $global-radius;
@@ -114,18 +115,18 @@ $line-height-large: 1.33;
 
 $border-radius-large: 3px;
 
-$component-active-color: $md-white-100;
+$component-active-color: settings-base.$md-white-100;
 
 $cursor-disabled: not-allowed;
 
-$brand-default: $md-gray-90; // legacy bootstrap - used in Atlas
+$brand-default: settings-base.$md-gray-90; // legacy bootstrap - used in Atlas
 
 $images-path: "~@momentum-ui/core/images" !default;
 
 // Dropdown Max Height for Select/Menu/SubMenu
 $dropdown-height: rem-calc(308);
 
-$focus-color: $md-theme-50;
+$focus-color: settings-base.$md-theme-50;
 
-$body-bg: $md-white-100;
-$body-font-color: $md-gray-90;
+$body-bg: settings-base.$md-white-100;
+$body-font-color: settings-base.$md-gray-90;

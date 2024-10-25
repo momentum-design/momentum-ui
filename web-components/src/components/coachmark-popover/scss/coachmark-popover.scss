@@ -6,9 +6,7 @@
   md-popover::part(popover) {    
 
     min-width: constants.$min-width;
-    max-width: constants.$max-width;    
-
-    color: var(--coachmark-popover-text-color);
+    max-width: constants.$max-width;
   }
 
   &__popper {
@@ -30,14 +28,8 @@
       font-size: constants.$header-font-size;
       font-weight: var(--brand-font-weight-bold, 700);
       line-height: constants.$header-line-height;
-      flex-grow: 1;
-    }
-
-    .cancel-icon-button {
-      position: absolute;
-      right: constants.$main-padding;
-      top: constants.$main-padding;      
-      cursor: pointer;
+      padding-right: constants.$header-padding-right;
+      flex-grow: 1;      
     }
 
     //Body

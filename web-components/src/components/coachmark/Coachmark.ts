@@ -80,7 +80,7 @@ export namespace Coachmark {
       if (changedProperties.has("show")) {
         if (this.show) {
           this.setFocusableElements!();
-          if (this.focusableElements && this.focusableElements.length) {
+          if (this.focusableElements?.length) {
             this.focusableElements[0].focus();
           }
         }

@@ -4,8 +4,8 @@ import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
 import { css, customElement, html, internalProperty, LitElement } from "lit-element";
 
-@customElement("coachmark-popover-template-sandbox")
-export class CoachTemplateSandbox extends LitElement {
+@customElement("popover-template-sandbox")
+export class PopoverTemplateSandbox extends LitElement {
   @internalProperty()
   private firstOpen = false;
 
@@ -39,6 +39,11 @@ export class CoachTemplateSandbox extends LitElement {
       css`
         .popover-trigger-element-container {
           display: inline-flex;
+          gap: 116px;
+        }
+
+        .popoverContent {
+          width: 212px;
         }
       `
     ];
@@ -129,7 +134,7 @@ export class CoachTemplateSandbox extends LitElement {
   }
 }
 
-export const coachmarkPopoverTemplate = html`
+export const popoverTemplate = html`
   <div class="row md-margin__bottom"><h3>md-coachmark-popover</h3></div>
-  <coachmark-popover-template-sandbox></coachmark-popover-template-sandbox>
+  <popover-template-sandbox></popover-template-sandbox>
 `;

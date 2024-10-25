@@ -10,7 +10,6 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/popover/Popover";
 import { PlacementType } from "@/components/popover/Popover.types";
-import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { LitElement, PropertyValues, html, property, query } from "lit-element";
@@ -24,7 +23,7 @@ export namespace CoachmarkPopover {
    * @fires coachmark-close - Fired when the coachmark is closed.
    */
   @customElementWithCheck("md-coachmark-popover")
-  export class ELEMENT extends FocusTrapMixin(LitElement) {
+  export class ELEMENT extends LitElement {
     /**
      * The placement of the coachmark popover.
      * This property determines where the popover will be positioned relative to the reference element.
@@ -349,6 +348,7 @@ export namespace CoachmarkPopover {
           ?is-open=${this.show}
           role="dialog"
           show-arrow
+          interactive
           trigger="manual"
           placement=${this.placement}
           @popover-open-changed="${(e: CustomEvent) => {

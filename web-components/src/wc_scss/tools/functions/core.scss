@@ -1,6 +1,5 @@
 @use "sass:math";
-
-@import "../../settings/rem";
+@use "../../settings/rem";
 
 @function char($iso-char) {
   @return unquote('"\\e#{$iso-char}"');
@@ -44,7 +43,7 @@ $modules: () !default;
 //===============================================
 
 // convert px to em
-@function em($px: 0, $font-size: $rem-base) {
+@function em($px: 0, $font-size: rem.$rem-base) {
   @return math.div($px, $font-size) + em;
 }
 
@@ -62,7 +61,7 @@ $modules: () !default;
 }
 
 // convert rem to px
-@function px($val, $base: $rem-base) {
+@function px($val, $base: rem.$rem-base) {
   @if unitless($val) {
     @return $val * 1px;
   }
@@ -133,7 +132,7 @@ $modules: () !default;
   @return $return;
 }
 
-@function convert-to-rem($value, $base-value: $rem-base) {
+@function convert-to-rem($value, $base-value: rem.$rem-base) {
   $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
 
   @if ($value == 0) {
@@ -147,7 +146,7 @@ $modules: () !default;
   @return "[data-" + $attr + "]";
 }
 
-@function rem-calc($values, $base-value: $rem-base) {
+@function rem-calc($values, $base-value: rem.$rem-base) {
   $max: length($values);
 
   @if $max == 1 {

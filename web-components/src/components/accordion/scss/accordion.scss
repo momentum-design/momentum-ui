@@ -1,3 +1,5 @@
+@use "./settings.scss" as *;
+
 :host(:focus) {
   box-shadow: none;
   outline: none !important;
@@ -14,7 +16,7 @@
 
 :host(md-accordion[focusable]) {
   .md-accordion {
-    box-shadow: 0 0 0 rem-calc(2) $accordion-border_focus;
+    box-shadow: 0 0 0 $accordion-border_focus-width $accordion-border_focus;
 
     &-header {
       background: $accordion-bg_focus;

@@ -507,8 +507,8 @@ export namespace Input {
                 return html`
                   <md-help-text
                     .message=${message}
-                    .id=${this.messageArr[id].id || ""}
-                    .ariaLive=${this.messageArr[id].ariaLive || "polite"}
+                    .id=${this.messageArr[id].id ?? ""}
+                    .ariaLive=${this.messageArr[id].ariaLive ?? "polite"}
                     .messageType=${this.messageType as Input.MessageType}
                   ></md-help-text>
                 `;

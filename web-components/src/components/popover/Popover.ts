@@ -6,6 +6,9 @@
  *
  */
 
+import "@/components/button/Button";
+import "@/components/icon/Icon";
+import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { isActionKey } from "@/utils/keyboard";
@@ -33,68 +36,140 @@ export namespace Popover {
   @customElementWithCheck("md-popover")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     /**
+     * The placement of the popover relative to the trigger element.
      *
+     * This property specifies where the popover should appear in relation to the trigger element.
+     * The default placement is "bottom", but it can be customized to other positions such as "top", "left", or "right".
      *
+     * @type {PlacementType}
      */
     @property({ type: String })
     placement: PlacementType = "bottom";
 
     /**
+     * Indicates whether the popover is open.
      *
+     * This property controls the visibility of the popover. When set to true, the popover is displayed.
+     * When set to false, the popover is hidden.
      *
-     *
+     * @type {boolean}
      */
     @property({ type: Boolean, attribute: "is-open" })
     isOpen = false;
 
     /**
+     * Indicates whether the arrow should be shown on the popover.
      *
+     * This property controls the visibility of the arrow on the popover. When set to true, the arrow is displayed.
+     * When set to false, the arrow is hidden.
      *
+     * @type {boolean}
      */
     @property({ type: Boolean, attribute: "show-arrow" })
     showArrow = true;
 
+    /**
+     * Indicates whether the close button should be shown on the popover.
+     *
+     * This property controls the visibility of the close button on the popover. When set to true, the close button is displayed.
+     * When set to false, the close button is hidden.
+     *
+     * @type {boolean}
+     */
+    @property({ type: Boolean, attribute: "show-close" })
+    showClose? = false;
+
+    /**
+     * Indicates whether the popover is interactive.
+     *
+     * When set to true, the popover will allow user interactions within it.
+     * This property is used to determine if the popover should trap focus.
+     *
+     * @type {boolean}
+     */
     @property({ type: Boolean })
     interactive = false;
 
     //Override FocusTrap Mixin property
-    shouldWrapFocus = () => true;
+    shouldWrapFocus = () => this.interactive;
 
     /**
+     * The role attribute for the popover.
      *
+     * This property specifies the `role` attribute for the popover, which defines its role in the accessibility tree.
+     * The default role is "dialog", but it can be customized to "dialog", "menu" or "tooltip.
      *
+     * @type {PopoverRoleType}
      */
     @property({ type: String, attribute: "role" })
     role: PopoverRoleType = "dialog";
 
     /**
+     * The accessible label for the popover.
      *
+     * This property specifies the `aria-label` attribute for the popover, which provides an accessible name for the popover element.
+     * It is used by screen readers to announce the purpose of the popover to users with visual impairments.
      *
+     * @type {string | null}
      */
     @property({ type: String, attribute: "aria-label" })
     ariaLabel: string | null = null;
 
     /**
+     * The offset distance (in pixels) from the trigger element.
      *
-     * The offset distance (in px) from the trigger element.
+     * This property specifies the distance between the trigger element and the popover.
+     * It is used to control the spacing between the trigger element and the popover when the popover is displayed.
+     *
+     * @type {number}
      */
     @property({ type: Number, attribute: "offset-distance" })
     offsetDistance = 5;
 
+    /**
+     * The slot element that contains the trigger element for the popover.
+     *
+     * This property is used to query the slot with the name "triggerElement" and store a reference to it.
+     * The trigger element is the element that, when interacted with, will open or close the popover.
+     *
+     * @type {HTMLSlotElement}
+     */
     @query('slot[name="triggerElement"]')
     triggerSlot!: HTMLSlotElement;
 
+    /**
+     *
+     * The offset distance (in px) from the trigger element.
+     */
     @query(".popover-container")
     popoverContainer!: HTMLDivElement;
 
+    /**
+     *
+     * The offset distance (in px) from the trigger element.
+     */
     @query(".popover-arrow")
     popoverArrow!: HTMLDivElement;
 
+    /**
+     *
+     * The offset distance (in px) from the trigger element.
+     */
     @property({ type: String })
     trigger?: string = "click";
 
+    /**
+     *
+     * The offset distance (in px) from the trigger element.
+     */
     private triggerElement: HTMLElement | null = null;
 
+    /**
+     * The Popper.js instance used to manage the positioning of the popover.
+     *
+     * This instance is created when the popover is opened and destroyed when the popover is closed.
+     * It is used to handle the positioning and alignment of the popover relative to the trigger element.
+     */
     private popperInstance: Instance | null = null;
 
     static get styles() {
@@ -103,14 +178,14 @@ export namespace Popover {
 
     override connectedCallback(): void {
       super.connectedCallback();
-      this.addEventListener("popover-open", this.updateActivePopoverOpened);
-      this.addEventListener("popover-close", this.updateActivePopoverClosed);
     }
 
     override disconnectedCallback(): void {
       super.disconnectedCallback();
-      this.removeEventListener("popover-open", this.updateActivePopoverOpened);
-      this.removeEventListener("popover-close", this.updateActivePopoverClosed);
+
+      window.removeEventListener("blur", this.onWindowBlurEvent);
+      document.removeEventListener("click", this.onOutsideOverlayClick);
+      document.removeEventListener("keydown", this.onOutsideOverlayKeydown);
 
       if (this.triggerElement) {
         if (this.trigger?.includes("click")) {
@@ -126,14 +201,9 @@ export namespace Popover {
         }
 
         if (this.trigger?.includes("focus")) {
-          //TODO
+          //remove foucusin listener
         }
       }
-    }
-
-    private handleTriggerElementSlotChange() {
-      const assignedElements = this.triggerSlot.assignedElements({ flatten: true });
-      this.triggerElement = assignedElements.length > 0 ? (assignedElements[0] as HTMLElement) : null;
     }
 
     private setupTriggerEvents() {
@@ -154,19 +224,75 @@ export namespace Popover {
 
         //Show popover when the trigger element gets keyboard focus
         if (this.trigger?.includes("focus")) {
-          //TODO
+          //add foucusin listener
         }
       }
+    }
+
+    onOutsideOverlayClick = (event: MouseEvent) => {
+      //Should there be an extra prop to not close on outside clicks
+      if (this.trigger?.includes("manual")) {
+        //Consumer controls closing of popover
+        //so do not close on outside clicks
+        return;
+      }
+
+      let insideMenuClick = false;
+      const path = event.composedPath();
+      if (path.length) {
+        insideMenuClick = !!path.find((element) => element === this);
+        if (!insideMenuClick) {
+          this.isOpen = false;
+        }
+      }
+    };
+
+    onWindowBlurEvent = () => {
+      if (this.isOpen) {
+        this.isOpen = false;
+      }
+    };
+
+    async onOutsideOverlayKeydown(event: KeyboardEvent) {
+      if (this.trigger?.includes("manual")) {
+        return;
+      }
+
+      if (!this.isOpen || event.code !== Key.Escape) {
+        return;
+      }
+
+      event.preventDefault();
+      this.isOpen = false;
+      await this.updateComplete;
+      this.focusOnTrigger();
+    }
+
+    private handleTriggerElementSlotChange() {
+      const assignedElements = this.triggerSlot.assignedElements({ flatten: true });
+      this.triggerElement = assignedElements.length > 0 ? (assignedElements[0] as HTMLElement) : null;
+    }
+
+    private onContentSlotChanged() {
+      //popover container slot changed
     }
 
     onTriggerElementClicked = () => {
       this.toggleOverlay();
     };
 
-    onTriggerElementKeydown = (event: KeyboardEvent) => {
+    onTriggerElementKeydown = async (event: KeyboardEvent) => {
       if (isActionKey(event.code)) {
         event.preventDefault();
         this.toggleOverlay();
+      }
+
+      if (event.code === Key.Escape) {
+        if (this.isOpen) {
+          this.isOpen = false;
+          await this.updateComplete;
+          this.focusOnTrigger();
+        }
       }
     };
 
@@ -197,11 +323,19 @@ export namespace Popover {
     private focusInsideOverlay() {
       if (this.focusableElements) {
         if (this.focusableElements.length > 1) {
-          this.setInitialFocus!(1);
+          this.setInitialFocus?.(1);
         } else if (this.focusableElements.length) {
-          this.setInitialFocus!();
+          this.setInitialFocus?.();
         }
       }
+    }
+
+    private async focusOnTrigger() {
+      requestAnimationFrame(() => {
+        if (this.focusableElements?.length) {
+          this.focusableElements[0].focus();
+        }
+      });
     }
 
     private toggleOverlay(): void {
@@ -212,6 +346,14 @@ export namespace Popover {
       this.isOpen = !this.isOpen;
     }
 
+    private async handleCreatePopperFirstUpdate() {
+      if (this.isOpen && this.interactive) {
+        this.setFocusableElements?.();
+        await this.updateComplete;
+        this.focusInsideOverlay();
+      }
+    }
+
     private createInstance() {
       if (!this.triggerElement) {
         console.warn("No trigger element not creating popper instance");
@@ -219,12 +361,10 @@ export namespace Popover {
       }
 
       this.popperInstance = createPopper(this.triggerElement, this.popoverContainer, {
-        onFirstUpdate: async () => {
+        onFirstUpdate: () => {
           // We need to find all focusable elements, after Popper finish its positioning calculation
           if (this.isOpen) {
-            this.setFocusableElements!();
-            await this.updateComplete;
-            this.focusInsideOverlay();
+            this.handleCreatePopperFirstUpdate();
           }
         },
         placement: this.placement,
@@ -244,7 +384,7 @@ export namespace Popover {
             options: {
               offset: (({ placement, reference }) => {
                 if (placement === "left" || placement === "right") {
-                  return [reference.height + reference.y + this.offsetDistance, 14];
+                  return [reference.height + reference.y + this.offsetDistance, ARROW_HEIGHT];
                 } else {
                   return [0, this.showArrow ? ARROW_HEIGHT + this.offsetDistance : this.offsetDistance];
                 }
@@ -275,43 +415,6 @@ export namespace Popover {
       }
     }
 
-    private createOrDestoryInstance(open: boolean) {
-      if (open) {
-        this.createInstance();
-      } else {
-        this.destroyInstance();
-      }
-    }
-
-    //       if (this.trigger) {
-    //         this.triggerElement = this.trigger[0];
-    //         this.triggerElement.addEventListener("click", this.handleTriggerClick);
-
-    //         if (this.allowHoverToggle) {
-    //           this.triggerElement.addEventListener("mouseenter", this.expandPopup);
-    //           this.triggerElement.addEventListener("mouseleave", this.collapsePopup);
-    //           this.overlayContainer.addEventListener("mouseenter", this.expandPopup);
-    //           this.overlayContainer.addEventListener("mouseleave", this.collapsePopup);
-    //         }
-
-    //         if (!this.checkIsInputField(this.triggerElement)) {
-    //           // Prevent adding keydown event, if the slot element type is md-input
-    //           // This will allow users to use ENTER and SPACE key without issues.
-    //           this.triggerElement.addEventListener("keydown", this.handleTriggerKeyDown);
-    //         }
-    //         this.triggerElement.setAttribute("aria-haspopup", "true");
-    //       }
-
-    //       if (this.overlayContainer && this.isOpen) {
-    //         this.handleInstance(true);
-    //         this.overlayContainer.toggleAttribute("data-show", true);
-    //       }
-
-    //       if (this.arrow && this.showArrow) {
-    //         this.arrow.toggleAttribute("data-show", true);
-    //       }
-    //     }
-
     protected override updated(changedProperties: PropertyValues): void {
       super.updated(changedProperties);
 
@@ -327,42 +430,34 @@ export namespace Popover {
         return;
       }
 
-      console.log("is updated changed value:", newValue);
-
-      this.createOrDestoryInstance(newValue);
-      this.dispatchPopoverIsOpenChanged(newValue);
-
       if (newValue) {
+        this.createInstance();
+
+        this.dispatchPopoverIsOpenChanged(newValue);
+
+        //When the overlay is open listen to blur, click, and keydown events to close
+        //if needed when the window loses focus
+        window.addEventListener("blur", this.onWindowBlurEvent);
+        document.addEventListener("click", this.onOutsideOverlayClick);
+        document.addEventListener("keydown", this.onOutsideOverlayKeydown);
+
         this.activateFocusTrap?.();
         this.triggerElement?.setAttribute("aria-expanded", "true");
         this.popoverContainer?.setAttribute("data-show", "");
       } else {
+        this.destroyInstance();
+
+        window.removeEventListener("blur", this.onWindowBlurEvent);
+        document.removeEventListener("click", this.onOutsideOverlayClick);
+        document.removeEventListener("keydown", this.onOutsideOverlayKeydown);
+
+        this.dispatchPopoverIsOpenChanged(newValue);
+
         this.deactivateFocusTrap?.();
         this.triggerElement?.removeAttribute("aria-expanded");
         this.popoverContainer?.removeAttribute("data-show");
       }
     }
-
-    private updateActivePopoverOpened = (event: Event) => {
-      if (this === event.target) {
-        //MenuOverlay.ELEMENT.activeOverlay?.push(event.target as ELEMENT);
-      }
-    };
-
-    private updateActivePopoverClosed = (_event: Event) => {
-      // const index = MenuOverlay.ELEMENT.activeOverlay.indexOf(event.target as ELEMENT);
-      // if (this === event.target && index !== -1) {
-      //   MenuOverlay.ELEMENT.activeOverlay.splice(index, 1);
-      //   if (MenuOverlay.ELEMENT.activeOverlay.length > 0) {
-      //     MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.setFocusableElements!();
-      //     MenuOverlay.ELEMENT.activeOverlay[MenuOverlay.ELEMENT.activeOverlay.length - 1]?.focusOnNestedTrigger(
-      //       this.triggerElement as HTMLElement
-      //     );
-      //   } else {
-      //     this.setFocusableElements!();
-      //   }
-      // }
-    };
 
     private dispatchPopoverIsOpenChanged(isOpen: boolean) {
       this.dispatchEvent(
@@ -383,11 +478,22 @@ export namespace Popover {
             class="popover-container"
             role=${this.role}
             aria-modal=${ifDefined(this.interactive ? "true" : undefined)}
-            aria-label=${ifDefined(this.ariaLabel || undefined)}
+            aria-label=${ifDefined(this.ariaLabel ?? undefined)}
           >
+            ${this.showClose
+              ? html`<md-button
+                  class="cancel-icon-button"
+                  size="24"
+                  hasRemoveStyle
+                  circle
+                  @button-click=${() => (this.isOpen = false)}
+                >
+                  <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+                </md-button>`
+              : nothing}
             ${this.showArrow ? html`<div id="arrow" class="popover-arrow"></div>` : nothing}
             <div class="popover-content" part="popover-content">
-              <slot></slot>
+              <slot @slotchange=${this.onContentSlotChanged}></slot>
             </div>
           </div>
         </div>

@@ -1,5 +1,8 @@
 // We use these to define default font stacks
 @use "sass:math";
+@use "@/wc_scss/settings/rem";
+@use "@/wc_scss/tools/functions/core";
+@use "@/wc_scss/colors/settings" as color-token;
 
 $brand-font-folder: "~@momentum-ui/core/fonts" !default;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -62,15 +65,15 @@ $line-height-computed: floor(($font-size-base * $line-height-base));
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
-$font-color-primary: $md-gray-90;
+$font-color-primary: color-token.$md-gray-90;
 
-$text-color: $md-gray-70;
+$text-color: color-token.$md-gray-70;
 
 // We use these to control header font styles
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
 $header-font-style: normal !default;
-$header-font-color: $md-gray-70 !default;
+$header-font-color: color-token.$md-gray-70 !default;
 
 $header-line-height: 1.4 !default;
 $header-top-margin: 0.2rem !default;
@@ -79,19 +82,19 @@ $header-text-rendering: optimizeLegibility !default;
 
 // We use these to control header font sizes
 $title-heading-font-size-pixel: 62;
-$title-heading-font-size: rem-calc($title-heading-font-size-pixel) !default;
+$title-heading-font-size: core.rem-calc($title-heading-font-size-pixel) !default;
 $h1-font-size-pixel: 48;
-$h1-font-size: rem-calc($h1-font-size-pixel) !default;
+$h1-font-size: core.rem-calc($h1-font-size-pixel) !default;
 $h2-font-size-pixel: 36;
-$h2-font-size: rem-calc($h2-font-size-pixel) !default;
+$h2-font-size: core.rem-calc($h2-font-size-pixel) !default;
 $h3-font-size-pixel: 26;
-$h3-font-size: rem-calc($h3-font-size-pixel) !default;
+$h3-font-size: core.rem-calc($h3-font-size-pixel) !default;
 $h4-font-size-pixel: 20;
-$h4-font-size: rem-calc($h4-font-size-pixel) !default;
+$h4-font-size: core.rem-calc($h4-font-size-pixel) !default;
 $h5-font-size-pixel: 16;
-$h5-font-size: rem-calc($h5-font-size-pixel) !default;
+$h5-font-size: core.rem-calc($h5-font-size-pixel) !default;
 $h6-font-size-pixel: 14;
-$h6-font-size: rem-calc($h6-font-size-pixel) !default;
+$h6-font-size: core.rem-calc($h6-font-size-pixel) !default;
 
 // We use these to control header size reduction on small screens
 $h1-font-reduction: 0 !default;
@@ -101,7 +104,7 @@ $h4-font-reduction: 0 !default;
 $h5-font-reduction: 0 !default;
 $h6-font-reduction: 0 !default;
 
-$base-font-size: $rem-base;
+$base-font-size: rem.$rem-base;
 
 // These control how subheaders are styled.
 $subheader-line-height: 1.4 !default;
@@ -119,47 +122,46 @@ $small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 $paragraph-font-family: inherit !default;
 $paragraph-font-weight: $font-weight-normal !default;
 $paragraph-font-size-pixel: 14;
-$paragraph-font-size: rem-calc($paragraph-font-size-pixel) !default;
+$paragraph-font-size: core.rem-calc($paragraph-font-size-pixel) !default;
 
 $paragraph-line-height: 1.6 !default;
-$paragraph-margin-bottom: rem-calc(20) !default;
-$paragraph-aside-font-size: rem-calc(14) !default;
+$paragraph-margin-bottom: core.rem-calc(20) !default;
+$paragraph-aside-font-size: core.rem-calc(14) !default;
 $paragraph-aside-line-height: 1.35 !default;
 $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 // body-small/est styling
 $body-small-font-size-pixel: 12;
-$body-small-font-size: rem-calc($body-small-font-size-pixel) !default;
+$body-small-font-size: core.rem-calc($body-small-font-size-pixel) !default;
 $body-smallest-font-size-pixel: 10;
-$body-smallest-font-size: rem-calc($body-smallest-font-size-pixel) !default;
+$body-smallest-font-size: core.rem-calc($body-smallest-font-size-pixel) !default;
 
-$lead-font-size: rem-calc(14) !default;
+$lead-font-size: core.rem-calc(14) !default;
 
 // We use these to style <code> tags
-$code-color: $md-gray-90 !default;
+$code-color: color-token.$md-gray-90 !default;
 $code-font-family: $font-family-monospace !default;
 $code-font-weight: $font-weight-normal !default;
 $code-background-color: transparent !default;
 
-//scale-color($md-gray-70, $lightness: 70%) !default;
 $code-border-size: 0 !default;
 
 $code-border-style: solid !default;
 $code-border-color: scale-color($code-background-color, $lightness: -10%) !default;
-$code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
+$code-padding: core.rem-calc(2) core.rem-calc(5) core.rem-calc(1) !default;
 
 // We use these to style anchors
 $anchor-text-decoration: none !default;
 $anchor-text-decoration-hover: none !default;
-$anchor-font-color: $md-theme-60 !default;
-$anchor-font-color-hover: $md-theme-70 !default;
+$anchor-font-color: color-token.$md-theme-60 !default;
+$anchor-font-color-hover: color-token.$md-theme-70 !default;
 
 // We use these to style the <hr> element
 $hr-border-width: 1px !default;
 $hr-border-style: solid !default;
-$hr-border-color: $md-gray-20 !default;
-$hr-margin: rem-calc(20) !default;
+$hr-border-color: color-token.$md-gray-20 !default;
+$hr-margin: core.rem-calc(20) !default;
 
 // We use these to style lists
 $list-font-family: $paragraph-font-family !default;
@@ -171,36 +173,36 @@ $list-side-margin: 1rem !default;
 $list-ordered-side-margin: 1.5rem !default;
 
 $list-side-margin-no-bullet: 0 !default;
-$list-nested-margin: rem-calc(20) !default;
+$list-nested-margin: core.rem-calc(20) !default;
 $definition-list-header-weight: $font-weight-bold !default;
 $definition-list-header-margin-bottom: 0.3rem !default;
-$definition-list-margin-bottom: rem-calc(12) !default;
+$definition-list-margin-bottom: core.rem-calc(12) !default;
 
 // We use these to style blockquotes
 $blockquote-font-color: inherit !default;
-$blockquote-padding: rem-calc(9 20 0 19) !default;
+$blockquote-padding: core.rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
 $blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width}) 1rem !default;
-$blockquote-border: $blockquote-border-width solid $md-gray-50 !default;
+$blockquote-border: $blockquote-border-width solid color-token.$md-gray-50 !default;
 
 $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: inherit !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
 // Acronym styles
-$acronym-underline: 1px dotted $md-gray-20 !default;
+$acronym-underline: 1px dotted color-token.$md-gray-20 !default;
 
 // line height (px) divided by font-size
 $title-heading-line-height: rem-calc(math.div(80, $title-heading-font-size-pixel)) !default;
-$h1-line-height: rem-calc(math.div(64, $h1-font-size-pixel)) !default;
-$h2-line-height: rem-calc(math.div(48, $h2-font-size-pixel)) !default;
-$h3-line-height: rem-calc(math.div(32, $h3-font-size-pixel)) !default;
-$h4-line-height: rem-calc(math.div(32, $h4-font-size-pixel)) !default;
-$h5-line-height: rem-calc(math.div(24, $h5-font-size-pixel)) !default;
-$h6-line-height: rem-calc(math.div(24, $h6-font-size-pixel)) !default;
-$paragraph-line-height: rem-calc(math.div(24, $paragraph-font-size-pixel)) !default;
-$body-small-line-height: rem-calc(math.div(16, $body-small-font-size-pixel)) !default;
-$body-smallest-line-height: rem-calc(math.div(16, $body-smallest-font-size-pixel)) !default;
+$h1-line-height: core.rem-calc(math.div(64, $h1-font-size-pixel)) !default;
+$h2-line-height: core.rem-calc(math.div(48, $h2-font-size-pixel)) !default;
+$h3-line-height: core.rem-calc(math.div(32, $h3-font-size-pixel)) !default;
+$h4-line-height: core.rem-calc(math.div(32, $h4-font-size-pixel)) !default;
+$h5-line-height: core.rem-calc(math.div(24, $h5-font-size-pixel)) !default;
+$h6-line-height: core.rem-calc(math.div(24, $h6-font-size-pixel)) !default;
+$paragraph-line-height: core.rem-calc(math.div(24, $paragraph-font-size-pixel)) !default;
+$body-small-line-height: core.rem-calc(math.div(16, $body-small-font-size-pixel)) !default;
+$body-smallest-line-height: core.rem-calc(math.div(16, $body-smallest-font-size-pixel)) !default;
 
 //------------------------------------
 //    #FONT-SIZE-VARIABLES
@@ -269,10 +271,10 @@ $fontVariations: (
 );
 
 $fontColors: (
-  primary: $md-gray-90,
-  alternate: $md-black-100,
-  secondary: $md-gray-70,
-  disabled: $md-gray-50
+  primary: color-token.$md-gray-90,
+  alternate: color-token.$md-black-100,
+  secondary: color-token.$md-gray-70,
+  disabled: color-token.$md-gray-50
 );
 
 //------------------------------------

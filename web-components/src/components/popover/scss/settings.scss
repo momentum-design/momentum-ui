@@ -1,6 +1,10 @@
-$arrow-size: rem-calc(16);
-$arrow-offset: rem-calc(2) - $arrow-size;
+@use "@/wc_scss/tools/functions/core" as core;
 
-:host {
-  --vw-padding: 16px;
-}
+$arrow-size: core.rem-calc(16);
+$arrow-offset: core.rem-calc(2) - $arrow-size;
+$main-padding: core.rem-calc(12);
+$container-border-radius: core.rem-calc(8);
+$main-padding-with-cancel: core.rem-calc(40);
+
+$content-font-size: core.rem-calc(16);
+$content-line-height: core.rem-calc(24);

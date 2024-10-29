@@ -18,6 +18,7 @@ export namespace AdvanceList {
     @property({ type: String }) ariaRoleListItem = "option";
     @property({ type: String }) ariaLabelList = "";
     @property({ type: Boolean }) isError = false;
+    @property({ type: String }) containerHeight = "292px";
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
@@ -32,6 +33,16 @@ export namespace AdvanceList {
 
     static get styles() {
       return [reset, styles];
+    }
+
+    private getStyles() {
+      return html`
+        <style>
+          :host .virtual-scroll {
+            height: ${this.containerHeight};
+          }
+        </style>
+      `;
     }
 
     disconnectedCallback() {
@@ -208,7 +219,7 @@ export namespace AdvanceList {
     renderItem(item: any, index: number) {
       return html`
         <div
-          class="default-wrapper"
+          class="default-wrapper ${item.id}"
           aria-setsize="${this.totalRecords}"
           aria-posinset="${index + 1}"
           role="${this.ariaRoleListItem}"
@@ -221,18 +232,19 @@ export namespace AdvanceList {
       `;
     }
 
-    getActiveDescendant(){
+    getActiveDescendant() {
       if (this.activeId) {
-        return  `${prefixId}${this.activeId}`;
+        return `${prefixId}${this.activeId}`;
       } else if (this.value) {
         return `${prefixId}${this.value}`;
-      }else{
+      } else {
         return "";
       }
     }
 
     render() {
       return html`
+        ${this.getStyles()}
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
@@ -254,7 +266,6 @@ export namespace AdvanceList {
               : undefined
           })}
         </div>
-        ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : null}
       `;
     }
   }

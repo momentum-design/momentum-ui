@@ -1,11 +1,16 @@
-import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, number, select } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { Args } from "@storybook/web-components";
+import { html } from "lit-html";
 import "./Pagination";
 
 export default {
   title: "Components/Pagination",
   component: "md-pagination",
+  argTypes: {
+    visiblePage: { control: "number", defaultValue: 10 },
+    dots: { control: "boolean", defaultValue: false },
+    navigation: { control: "boolean", defaultValue: false },
+    onlyDots: { control: "boolean", defaultValue: false }
+  },
   parameters: {
     a11y: {
       element: "md-pagination"
@@ -13,24 +18,15 @@ export default {
   }
 };
 
-export const Pagination = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const visiblePage = number("Limit", 10);
-  const dots = boolean("Add Dots", false);
-  const navigation = boolean("No Navigation", false);
-  const onlyDots = boolean("Only Dots", false);
-
+export const Pagination = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="pagination" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-pagination
-        total-page="20"
-        current-page="10"
-        .visible-page=${visiblePage}
-        ?dots=${dots}
-        ?no-navigation=${navigation}
-        ?only-dots=${onlyDots}
-      ></md-pagination>
-    </md-theme>
+    <md-pagination
+      total-page="20"
+      current-page="10"
+      visible-page=${args.visiblePage}
+      ?dots=${args.dots}
+      ?no-navigation=${args.navigation}
+      ?only-dots=${args.onlyDots}
+    ></md-pagination>
   `;
 };

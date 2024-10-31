@@ -1,8 +1,8 @@
+import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./AudioPlayer";
 import { AudioPlayer } from "./AudioPlayer";
 import clearAllMocks = jest.clearAllMocks;
-import { Key } from "@/constants";
 
 const fixtureFactory = async (): Promise<AudioPlayer.ELEMENT> => {
   return await fixture(html` <md-audio-player src="somesrc"></md-audio-player> `);
@@ -90,6 +90,7 @@ describe("AudioPlayer", () => {
 
     element.setPlaybackSpeed(0.25);
     expect(element.playbackSpeed).toBe(0.25);
+    expect(element.selectedPlaybackSpeed).toBe(element.playbackSpeed);
   });
 
   test("should adjust playback speed using up arrow key in combination with enter key", async () => {

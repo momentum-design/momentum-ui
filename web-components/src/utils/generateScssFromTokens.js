@@ -26,7 +26,6 @@ const _generateFileFromTemplate = async (dest, fileName, data, template) => {
   const finalFile = path.join(dest, fileName);
   await fsPath.writeFile(finalFile, compile(data), (err) => {
     if (err) throw err;
-    else console.warn(`${finalFile} written!`);
   });
 };
 
@@ -224,7 +223,6 @@ const generateThemeStylesheets = () => {
     const themeStyleFilePath = path.resolve(__dirname + `/../wc_scss/themes/vars/${themeStyleName}.scss`);
     fsPath.writeFile(themeStyleFilePath, themeStyleFiles[themeStyleName], (err) => {
       if (err) throw err;
-      console.log(themeStyleFilePath + " updated");
     });
   }
 };

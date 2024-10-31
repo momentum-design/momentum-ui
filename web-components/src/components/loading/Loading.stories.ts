@@ -7,23 +7,8 @@
  */
 
 import "@/components/loading/Loading";
-import { Loading } from "@/components/loading/Loading";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-
-export default {
-  title: "Components/Loading",
-  component: "md-loading",
-  argTypes: {
-    loadingClassMap: { table: { disable: true } }
-  },
-  parameters: {
-    a11y: {
-      element: "md-loading"
-    }
-  }
-};
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 const options = {
   Small: "small",
@@ -32,14 +17,23 @@ const options = {
   None: ""
 };
 
-export const LoadingStory = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const size = select("Size", options, "small");
+export default {
+  title: "Components/Loading",
+  component: "md-loading",
+  argTypes: {
+    loadingClassMap: { table: { disable: true } },
+    size: { control: { type: "select", options }, defaultValue: "middle" }
+  },
+  parameters: {
+    a11y: {
+      element: "md-loading"
+    }
+  }
+};
 
-  return html`
-    <md-theme class="theme-toggle" id="loading" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-loading size=${size as Loading.LoadingSize}></md-loading>
-    </md-theme>
-  `;
+export const Loading: StoryObj = {
+  args: {},
+  render: (args: Args) => {
+    return html` <md-loading size=${args.size}></md-loading> `;
+  }
 };

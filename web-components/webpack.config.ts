@@ -160,6 +160,7 @@ const commonDist = merge(common, {
     "comp/md-accordion-entry": "./src/components/accordion/Accordion",
     "comp/md-accordion-item-entry": "./src/components/accordion/AccordionItem",
     "comp/md-activity-button-entry": "./src/components/activity-button/ActivityButton",
+    "comp/md-advance-list-entry": "./src/components/advance-list/AdvanceList",
     "comp/md-alert-entry": "./src/components/alert/Alert",
     "comp/md-alert-banner-entry": "./src/components/alert-banner/AlertBanner",
     "comp/md-audio-player-entry": "./src/components/audio-player/AudioPlayer",

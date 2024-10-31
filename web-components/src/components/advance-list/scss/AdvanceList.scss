@@ -1,0 +1,69 @@
+:host(md-advance-list) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+}
+
+.virtual-scroll {
+  width: 100%;
+  overflow-y: auto;
+  height: 400px;
+  overflow-x: hidden;
+  position: relative;
+  padding: 1px;
+}
+
+.virtual-scroll:focus-visible {
+  outline: 2px solid var(--md-default-focus-outline-color);
+}
+
+.default-wrapper:focus-visible,
+.default-wrapper:focus {
+  outline: 2px solid var(--md-default-focus-outline-color);
+  outline-offset: -2px;
+}
+
+.default-wrapper[aria-disabled="true"],
+.default-wrapper:has([disabled]),
+.default-wrapper:has([disabled]):hover {
+  color: var(--advance-list-disabled-text-color);
+  background-color: transparent;
+}
+
+.spin-loader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.default-wrapper.selected {
+  background-color: var(--list-active-background, $md-advance-list-active-background-light);
+  color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
+}
+
+.default-wrapper.focused {
+  outline: 2px solid var(--md-default-focus-outline-color);
+  outline-offset: -2px;
+}
+
+.default-wrapper {
+  margin-bottom: 2px;
+  padding: 5px;
+  color: var( --advance-list-text-color, $md-advance-list-text-color-light);
+  cursor: pointer;
+  width: calc(100% - 2px);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.default-wrapper:hover {
+  background-color: var(--list-hover-background, $md-advance-list-hover-background-light);
+  color: var(--list-hover-text-color, $md-advance-list-hover-text-color-light);
+}
+
+.default-wrapper.selected:hover {
+  background-color: var(--list-active-background, $md-advance-list-active-background-light);
+  color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
+}

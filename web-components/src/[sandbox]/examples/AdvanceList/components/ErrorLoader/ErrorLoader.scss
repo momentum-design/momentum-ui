@@ -1,0 +1,22 @@
+.infinite-scroll-error {
+    display: flex;
+    padding-left: 15px;
+    font-size: var(--font-size-small);
+    color: var(--md-alert-error-text-color, --red-70-color);
+    flex-direction: column;
+    .error-block {
+      display: flex;
+      flex-direction: column;
+      .error-span-padding {
+        padding-right: 8px;
+      }
+      .tracking-error-block {
+        display: inline-flex;
+      }
+      .infinite-scroll-retry-link::part(link) {
+        font-size: var(--font-size-small);
+        color: var(--md-alert-error-text-color, --red-70-color);
+      }
+    }
+  }
+  

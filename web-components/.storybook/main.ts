@@ -20,14 +20,14 @@ module.exports = {
   ],
 
   addons: [
-    "@storybook/addon-knobs",
+    "@storybook/addon-controls",    
     "@storybook/addon-a11y",
-    "@storybook/addon-docs",
-    "@storybook/addon-controls",
+    "@storybook/addon-docs",    
     "@storybook/addon-actions",
-    "@storybook/addon-viewport",
-    "@storybook/addon-postcss"
+    "@storybook/addon-toolbars"
   ],
+
+  framework: "@storybook/web-components",
 
   webpackFinal: async (
     storybookConfig: webpack.Configuration,

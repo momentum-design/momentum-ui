@@ -44,11 +44,12 @@ export namespace Tabs {
   type TabsViewportDataList = TabViewportData[];
 
   type TabId = Element["id"];
-  export type TabsType = "Line" | "Pill";
+  export type TabsType = "line" | "pill" | "primaryPill";
 
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
     @property({ type: Boolean }) justified = false;
+    @property({ type: Boolean, attribute: "hug-tabs" }) hugTabs = false;
     @property({ type: String }) overflowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
@@ -65,7 +66,7 @@ export namespace Tabs {
     @property({ type: String, attribute: "tabs-id" }) tabsId = "";
     @property({ type: Boolean, attribute: "persist-selection" }) persistSelection = false;
     @property({ type: String, attribute: "comp-unique-id" }) compUniqueId = "";
-    @property({ type: String }) type: Tabs.TabsType = "Line";
+    @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
 
     @internalProperty() private isMoreTabMenuVisible = false;
@@ -632,7 +633,10 @@ export namespace Tabs {
     }
 
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
-      const currentTabsOrder = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
+      const currentTabsOrder =
+        this.direction === "horizontal"
+          ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
+          : this.tabs;
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
       const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
 
@@ -1084,6 +1088,7 @@ export namespace Tabs {
           part="tabs-list"
           class="md-tab__list ${classMap({
             "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+            "md-tab__hug": this.hugTabs,
             "no-tabs-visible": this.noTabsVisible,
             "vertical-tab-list": this.direction === "vertical",
             "tab-new-momentum": this.newMomentum
@@ -1100,6 +1105,7 @@ export namespace Tabs {
             id="visible-tabs-list"
             class="visible-tabs-container ${classMap({
               "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+              "md-tab__hug": this.hugTabs,
               "visible-new-tabs": this.newMomentum
             })}"
           >

@@ -1,9 +1,8 @@
 import "@/components/coachmark/Coachmark";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { badgeColor, coachPlacement } from "@/utils/enums";
 import { action } from "@storybook/addon-actions";
-import { boolean, select } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 export default {
   title: "Components/Coachmark",
@@ -12,7 +11,10 @@ export default {
     popper: { table: { disable: true } },
     reference: { table: { disable: true } },
     coachWrapClassMap: { table: { disable: true } },
-    coachClassMap: { table: { disable: true } }
+    coachClassMap: { table: { disable: true } },
+    show: { control: "boolean", defaultValue: false },
+    color: { control: { type: "select" }, options: badgeColor, defaultValue: "default" },
+    placement: { control: { type: "select" }, options: coachPlacement, defaultValue: "right" }
   },
   parameters: {
     a11y: {
@@ -21,22 +23,27 @@ export default {
   }
 };
 
-export const Coachmark = () => {
-  const dark = boolean("Dark Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const show = boolean("Open", false);
-  const color = select("Color", badgeColor, "default");
-  const placement = select("Placement", coachPlacement, "right");
-
+const render = (args: Args) => {
   return html`
-    <md-theme .darkTheme=${dark} theme=${theme}>
-      <md-coachmark ?show=${show} .placement="${placement}" .color="${color}" @coach-create=${action("coach-create")}>
-        <div slot="coachmark-content">
-          <span>Coachmark test content</span>
-          <md-button slot="coachmark-content">Coachmark next</md-button>
-        </div>
-        <md-button>Coachmark Default</md-button>
-      </md-coachmark>
-    </md-theme>
+    <md-coachmark
+      ?show=${args.show}
+      .placement="${args.placement}"
+      .color="${args.color}"
+      @coach-create=${action("coach-create")}
+    >
+      <div slot="coachmark-content">
+        <span>Coachmark test content</span>
+        <md-button slot="coachmark-content">Coachmark next</md-button>
+      </div>
+      <md-button>Coachmark Default</md-button>
+    </md-coachmark>
   `;
+};
+
+export const Coachmark: StoryObj = {
+  args: {
+    color: "default",
+    placement: "right"
+  },
+  render: render
 };

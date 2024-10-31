@@ -1,12 +1,19 @@
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { now } from "@/utils/dateUtils";
-import { boolean, select, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
 
 export default {
   title: "Components/Date Picker",
   component: "md-datepicker",
+  argTypes: {
+    weekStart: { control: { type: "select" }, options: DP.weekStartDays },
+    locale: { control: { type: "text" } },
+    disabled: { control: "boolean" },
+    minDate: { control: { type: "text" } },
+    maxDate: { control: { type: "text" } },
+    value: { control: { type: "text" } }
+  },
   parameters: {
     a11y: {
       element: "md-datepicker"
@@ -14,32 +21,25 @@ export default {
   }
 };
 
-export const DatePicker = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const shouldCloseOnSelect = boolean("shouldCloseOnSelect", false);
-  const weekStart = select("weekStart", DP.weekStartDays, "");
-  const locale = text("locale", "en-US");
-  const disabled = boolean("disabled", false);
-
-  const minDate = text("minimum date", now().minus({ day: 5 }).toISODate());
-
-  const maxDate = text("maximum date", now().plus({ day: 30 }).toISODate());
-
-  const value = text("value", now().toISODate());
-
-  return html`
-    <md-theme class="theme-toggle" id="datepicker" ?darkTheme=${darkTheme} theme=${theme}>
+export const DatePicker: StoryObj = {
+  args: {
+    locale: "en-US",
+    minDate: now().minus({ day: 5 }).toISODate(),
+    maxDate: now().plus({ day: 30 }).toISODate(),
+    value: now().toISODate()
+  },
+  render: (args: Args) => {
+    return html`
       <md-datepicker
-        ?disabled=${disabled}
-        ?should-close-on-select=${shouldCloseOnSelect}
-        value=${value}
-        weekStart=${weekStart}
-        locale=${locale}
-        minDate=${minDate}
-        maxDate=${maxDate}
+        ?disabled=${args.disabled}
+        ?should-close-on-select=${args.shouldCloseOnSelect}
+        value=${args.value}
+        weekStart=${args.weekStart}
+        locale=${args.locale}
+        minDate=${args.minDate}
+        maxDate=${args.maxDate}
       >
       </md-datepicker>
-    </md-theme>
-  `;
+    `;
+  }
 };

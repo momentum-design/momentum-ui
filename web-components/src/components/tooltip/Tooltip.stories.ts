@@ -7,19 +7,43 @@
  */
 
 import "@/components/button/Button";
-import { ThemeNameValues } from "@/components/theme/Theme";
+import "@/components/theme/Theme";
 import "@/components/tooltip/Tooltip";
+import { tooltipPlacement } from "@/components/tooltip/Tooltip";
 import { action } from "@storybook/addon-actions";
-import { boolean, select, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import { tooltipPlacement } from "./Tooltip"; // Keep type import as a relative path
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
-export default {
+export const Tooltip: StoryObj = {
+  args: {
+    message: "Test tooltip",
+    placement: "right"
+  },
+  render: (args: Args) => {
+    return html`
+      <md-tooltip
+        message=${args.message}
+        placement=${args.placement}
+        @tooltip-create=${action("show")}
+        @tooltip-destroy=${action("hide")}
+        ?opened=${args.opened}
+      >
+        <md-button variant="secondary">Test Button</md-button>
+      </md-tooltip>
+    `;
+  }
+};
+
+const meta: Meta = {
   title: "Components/Tooltip",
   component: "md-tooltip",
   argTypes: {
     reference: { table: { disable: true } },
-    popper: { table: { disable: true } }
+    popper: { table: { disable: true } },
+    placement: {
+      control: { type: "select" },
+      options: tooltipPlacement
+    }
   },
   parameters: {
     a11y: {
@@ -28,24 +52,4 @@ export default {
   }
 };
 
-export const Tooltip = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const message = text("message", "Test tooltip");
-  const placement = select("placement", tooltipPlacement, "right");
-  const opened = boolean("Opened", false);
-
-  return html`
-    <md-theme class="theme-toggle" id="tooltip" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-tooltip
-        message=${message}
-        placement=${placement}
-        @tooltip-create=${action("show")}
-        @tooltip-destroy=${action("hide")}
-        ?opened=${opened}
-      >
-        <md-button>Test Button</md-button>
-      </md-tooltip>
-    </md-theme>
-  `;
-};
+export default meta;

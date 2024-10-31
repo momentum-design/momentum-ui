@@ -3,9 +3,18 @@ import "@/components/sass-stats/SassStats";
 import "@/components/theme/Theme";
 import { ThemeName } from "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
-import { customElement, html, LitElement, property, PropertyValues } from "lit-element";
+import {
+  customElement,
+  html,
+  internalProperty,
+  LitElement,
+  property,
+  PropertyValues,
+  TemplateResult
+} from "lit-element";
 import {
   accordionTemplate,
+  advanceListTemplate,
   alertBannerTemplate,
   alertTemplate,
   audioPlayerTemplate,
@@ -61,13 +70,32 @@ import {
 
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends LitElement {
-  @property({ type: Boolean }) darkTheme = false;
-  @property({ type: String }) theme: ThemeName = "lumos";
+  @property({ type: Boolean })
+  darkTheme = false;
+
+  @property({ type: String })
+  theme: ThemeName = "lumos";
+
+  @internalProperty()
+  private selectedTab = "Accordion";
 
   connectedCallback(): void {
     super.connectedCallback();
     this.loadSettingsFromStorage();
     console.log("connected");
+    this.addEventListener("selected-changed", this.selectedTabChanged as EventListener);
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    console.log("disconnected");
+    this.removeEventListener("selected-changed", this.selectedTabChanged as EventListener);
+  }
+
+  selectedTabChanged(event: CustomEvent) {
+    const { value, tabsOrder } = event.detail;
+    const tab = tabsOrder[value];
+    this.selectedTab = tab;
   }
 
   protected updated(changedProperties: PropertyValues) {
@@ -79,6 +107,10 @@ export class Sandbox extends LitElement {
       document.body.style.backgroundColor = "#fff";
       document.body.style.color = "#000";
     }
+  }
+
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    super.firstUpdated(_changedProperties);
   }
 
   loadSettingsFromStorage() {
@@ -192,531 +224,99 @@ export class Sandbox extends LitElement {
     return [reset, styles];
   }
 
+  getTabTemplate(
+    componentName: string,
+    component: string,
+    componentSassStatsName: string,
+    componentPanelTemplate: TemplateResult
+  ) {
+    return html`
+      <md-tab slot="tab" name=${componentName}>
+        <span>${component}</span>
+      </md-tab>
+      ${this.getComponentTabPanelTemplate(componentName, component, componentSassStatsName, componentPanelTemplate)}
+    `;
+  }
+
+  getComponentTabPanelTemplate(
+    componentName: string,
+    component: string,
+    componentSassStatsName: string,
+    componentPanelTemplate: TemplateResult
+  ) {
+    return html`
+      <md-tab-panel slot="panel">
+        <div class="container" aria-label=${component}>
+          <h2>${componentName}</h2>
+          ${componentName.length !== 0
+            ? componentSassStatsName.length !== 0
+              ? html`<sass-stats component=${componentSassStatsName}> ${componentPanelTemplate} </sass-stats>`
+              : html`${componentPanelTemplate}`
+            : html``}
+        </div>
+      </md-tab-panel>
+    `;
+  }
+
   render() {
     return html`
       <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
         <md-tabs direction="vertical" class="explorer" persist-selection tabs-id="explorer">
-          <md-tab slot="tab" name="Accordion">
-            <span>md-accordion</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-accordion">
-              <h2>md-accordion</h2>
-              <sass-stats component="accordion"> ${accordionTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Alert Banner">
-            <span>md-alert-banner</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-alert-banner">
-              <h2>md-alert-banner</h2>
-              <sass-stats component="alert-banner"> ${alertBannerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Alert">
-            <span>md-alert</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-alert">
-              <h2>md-alert</h2>
-              <sass-stats component="alert"> ${alertTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Audio Player">
-            <span>md-audio-player</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-audio-player">
-              <h2>md-audio-player</h2>
-              <sass-stats component="audio-player"> ${audioPlayerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Avatar">
-            <span>md-avatar</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-avatar">
-              <h2>md-avatar</h2>
-              <sass-stats component="avatar"> ${avatarTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Badge">
-            <span>md-badge</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-badge">
-              <h2>md-badge</h2>
-              <sass-stats component="badge"> ${badgeTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Breadcrumb">
-            <span>md-breadcrumb</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-breadcrumb">
-              <h2>md-breadcrumb</h2>
-              <sass-stats component="breadcrumb"> ${breadcrumbTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Button">
-            <span>md-button</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-button">
-              <h2>md-button</h2>
-              <sass-stats component="button"> ${buttonTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Button Group">
-            <span>md-button-group</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-button-group">
-              <h2>md-button-group</h2>
-              <sass-stats component="button-group"> ${buttonGroupTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Card">
-            <span>md-card</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-card">
-              <h2>md-card</h2>
-              <sass-stats component="card"> ${cardTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Card - AI">
-            <span>md-card-ai</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-card-ai">
-              <h2>md-card-ai</h2>
-              <sass-stats component="card-ai"> ${cardAiTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Chat Message">
-            <span>md-chat-message</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-chat-message">
-              <h2>md-chat-message</h2>
-              <sass-stats component="chat-message"> ${chatMessageTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Checkbox">
-            <span>md-checkbox</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-checkbox">
-              <h2>md-checkbox</h2>
-              <sass-stats component="checkbox"> ${checkboxTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Chip">
-            <span>md-chip</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-chip">
-              <h2>md-chip</h2>
-              <sass-stats component="chip"> ${chipTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Coachmark">
-            <span>md-coachmark</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-coachmark">
-              <h2>md-coachmark</h2>
-              <sass-stats component="coachmark"> ${coachTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Code Editor">
-            <span>md-code-editor</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-code-editor">
-              <h2>md-code-editor</h2>
-              <sass-stats component="code-editor"> ${codeEditorTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Combo Box">
-            <span>md-combobox</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-combo-box">
-              <h2>md-combobox</h2>
-              <sass-stats component="combobox"> ${comboBoxTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Datepicker">
-            <span>md-datepicker</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-datepicker">
-              <h2>md-datepicker</h2>
-              <sass-stats component="datepicker"> ${datePickerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Date Range Picker">
-            <span>md-date-range-picker</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-date-range-picker">
-              <h2>md-date-range-picker</h2>
-              <sass-stats component="datepicker"> ${dateRangePickerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Date Time Picker">
-            <span>md-date-time-picker</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-date-time-picker">
-              <h2>md-date-time-picker</h2>
-              <sass-stats component="date-time-picker"> ${dateTimePickerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Dropdown">
-            <span>md-dropdown</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-dropdown">
-              <h2>md-dropdown</h2>
-              <sass-stats component="dropdown"> ${dropdownTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Draggable">
-            <span>md-draggable</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-draggable">
-              <h2>md-draggable</h2>
-              <sass-stats component="draggable"> ${draggableTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Editable Field">
-            <span>md-editable-field</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-editable-field">
-              <h2>md-editable-field</h2>
-              <sass-stats component="editable-textfield"> ${editableField} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Favorite">
-            <span>md-favorite</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-favorite">
-              <h2>md-favorite</h2>
-              <sass-stats component="favorite"> ${favoriteTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Floating Modal">
-            <span>md-floating-modal</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-floating-modal">
-              <h2>md-floating-modal</h2>
-              <sass-stats component="floating-modal"> ${floatingModalTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Form">
-            <span>md-form</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-form">
-              <h2>md-form</h2>
-              ${formTemplate}
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Grabber">
-            <span>md-grabber</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-grabber">
-              <h2>md-grabber</h2>
-              ${grabberTemplate}
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Icon">
-            <span>md-icon</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-icon">
-              <h2>md-icon</h2>
-              <sass-stats component="icon"> ${iconTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Input">
-            <span>md-input</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-input">
-              <h2>md-input</h2>
-              <sass-stats component="input"> ${inputTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Input File">
-            <span>md-input-file</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-input-file">
-              <h2>md-input-file</h2>
-              <sass-stats component="input-file"> ${inputFileTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Label">
-            <span>md-label</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-label">
-              <h2>md-label</h2>
-              <sass-stats component="label"> ${labelTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Link">
-            <span>md-link</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-link">
-              <h2>md-link</h2>
-              <sass-stats component="link"> ${linkTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="List">
-            <span>md-list</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-list">
-              <h2>md-list</h2>
-              <sass-stats component="list"> ${listTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Loading">
-            <span>md-loading</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-loading">
-              <h2>md-loading</h2>
-              <sass-stats component="loading"> ${loadingTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Meeting Alert">
-            <span>md-meeting-alert</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-meeting-alert">
-              <h2>md-meeting-alert</h2>
-              <sass-stats component="meeting-alert"> ${meetingAlertTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Menu">
-            <span>md-menu</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-menu">
-              <h2>md-menu and md-menu-item</h2>
-              <sass-stats component="menu"> ${menuItemTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Menu Overlay">
-            <span>md-menu-overlay</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-menu-overlay">
-              <h2>md-menu-overlay</h2>
-              <sass-stats component="menu-overlay"> ${menuOverlayTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Modal">
-            <span>md-modal</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-modal">
-              <h2>md-modal</h2>
-              <sass-stats component="modal"> ${modalTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Pagination">
-            <span>md-pagination</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-pagination">
-              <h2>md-pagination</h2>
-              <sass-stats component="pagination"> ${paginationTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Phone Input">
-            <span>md-phone-input</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-phone-input">
-              <h2>md-phone-input</h2>
-              <sass-stats component="phone-input"> ${phoneInputTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Progress Bar">
-            <span>md-progress-bar</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-progress-bar">
-              <h2>md-progress-bar</h2>
-              <sass-stats component="progress-bar"> ${progressBarTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Radio">
-            <span>md-radio</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-radio">
-              <h2>md-radio</h2>
-              <sass-stats component="radio"> ${radioGroupTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Slider">
-            <span>md-slider</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-slider">
-              <h2>md-slider</h2>
-              <sass-stats component="slider"> ${sliderTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Spinner">
-            <span>md-spinner</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-spinner">
-              <h2>md-spinner</h2>
-              <sass-stats component="spinner"> ${spinnerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Table">
-            <span>md-table</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-table">
-              <h2>md-table</h2>
-              <sass-stats component="table"> ${tableTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Table Advanced">
-            <span>md-table-advanced</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-table-advanced">
-              <h2>md-table-advanced</h2>
-              <sass-stats component="table-advanced"> ${tableAdvancedTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Tabs">
-            <span>md-tabs</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-tabs">
-              <h2>md-tabs</h2>
-              <sass-stats component="tabs"> ${tabsTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Task Item">
-            <span>md-task-item</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-task-item">
-              <h2>md-task-item</h2>
-              <sass-stats component="taskitem"> ${taskItemTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Timepicker">
-            <span>md-timepicker</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-timepicker">
-              <h2>md-timepicker</h2>
-              <sass-stats component="timepicker"> ${timePickerTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Toggle Switch">
-            <span>md-toggle-switch</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-toggle-switch">
-              <h2>md-toggle-switch</h2>
-              <sass-stats component="toggle-switch"> ${toggleSwitchTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Tooltip">
-            <span>md-tooltip</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="md-tooltip">
-              <h2>md-tooltip</h2>
-              <sass-stats component="tooltip"> ${tooltipTemplate} </sass-stats>
-            </div>
-          </md-tab-panel>
-
-          <md-tab slot="tab" name="Colors">
-            <span>Colors</span>
-          </md-tab>
-          <md-tab-panel slot="panel">
-            <div class="container" aria-label="internal/colors">
-              <h2>Colors</h2>
-              ${colorTableTemplate}
-            </div>
-          </md-tab-panel>
+          ${this.getTabTemplate("Accordion", "md-accordion", "accordion", accordionTemplate)}
+          ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)};
+          ${this.getTabTemplate("Alert", "md-alert", "alert", alertTemplate)}
+          ${this.getTabTemplate("Audio Player", "md-audio-player", "audio-player", audioPlayerTemplate)}
+          ${this.getTabTemplate("Avatar", "md-avatar", "avatar", avatarTemplate)}
+          ${this.getTabTemplate("Badge", "md-badge", "badge", badgeTemplate)}
+          ${this.getTabTemplate("Breadcrumb", "md-breadcrumb", "breadcrumb", breadcrumbTemplate)}
+          ${this.getTabTemplate("Button", "md-button", "button", buttonTemplate)}
+          ${this.getTabTemplate("Button Group", "md-button-group", "button-group", buttonGroupTemplate)}
+          ${this.getTabTemplate("Card", "md-card", "card", cardTemplate)}
+          ${this.getTabTemplate("Card - AI", "md-card-ai", "card-ai", cardAiTemplate)}
+          ${this.getTabTemplate("Chat Message", "md-chat-message", "chat-message", chatMessageTemplate)}
+          ${this.getTabTemplate("Checkbox", "md-checkbox", "checkbox", checkboxTemplate)}
+          ${this.getTabTemplate("Chip", "md-chip", "chip", chipTemplate)}
+          ${this.getTabTemplate("Coachmark", "md-coachmark", "coachmark", coachTemplate)}
+          ${this.getTabTemplate("Code Editor", "md-code-editor", "code-editor", codeEditorTemplate)}
+          ${this.getTabTemplate("Combo Box", "md-combobox", "combobox", comboBoxTemplate)}
+          ${this.getTabTemplate("Datepicker", "md-datepicker", "datepicker", datePickerTemplate)}
+          ${this.getTabTemplate("Date Range Picker", "md-date-range-picker", "datepicker", dateRangePickerTemplate)}
+          ${this.getTabTemplate("Date Time Picker", "md-date-time-picker", "date-time-picker", dateTimePickerTemplate)}
+          ${this.getTabTemplate("Dropdown", "md-dropdown", "dropdown", dropdownTemplate)}
+          ${this.getTabTemplate("Draggable", "md-draggable", "draggable", draggableTemplate)}
+          ${this.getTabTemplate("Editable Field", "md-editable-field", "editable-textfield", editableField)}
+          ${this.getTabTemplate("Favorite", "md-favorite", "favorite", favoriteTemplate)}
+          ${this.getTabTemplate("Floating Modal", "md-floating-modal", "floating-modal", floatingModalTemplate)}
+          ${this.getTabTemplate("Form", "md-form", "", formTemplate)}
+          ${this.getTabTemplate("Grabber", "md-grabber", "grabber", grabberTemplate)}
+          ${this.getTabTemplate("Icon", "md-icon", "icon", iconTemplate)}
+          ${this.getTabTemplate("Input", "md-input", "input", inputTemplate)}
+          ${this.getTabTemplate("Input File", "md-input-file", "input-file", inputFileTemplate)}
+          ${this.getTabTemplate("Label", "md-label", "label", labelTemplate)}
+          ${this.getTabTemplate("Link", "md-link", "link", linkTemplate)}
+          ${this.getTabTemplate("List", "md-list", "list", listTemplate)}
+          ${this.getTabTemplate("Advanced List", "md-advance-list", "list", advanceListTemplate)}
+          ${this.getTabTemplate("Loading", "md-loading", "loading", loadingTemplate)}
+          ${this.getTabTemplate("Meeting Alert", "md-meeting-alert", "meeting-alert", meetingAlertTemplate)}
+          ${this.getTabTemplate("Menu", "md-menu", "menu", menuItemTemplate)}
+          ${this.getTabTemplate("Menu Overlay", "md-menu-overlay", "menu-overlay", menuOverlayTemplate)}
+          ${this.getTabTemplate("Modal", "md-modal", "modal", modalTemplate)}
+          ${this.getTabTemplate("Pagination", "md-pagination", "pagination", paginationTemplate)}
+          ${this.getTabTemplate("Phone Input", "md-phone-input", "phone-input", phoneInputTemplate)}
+          ${this.getTabTemplate("Progress Bar", "md-progress-bar", "progress-bar", progressBarTemplate)}
+          ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
+          ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}
+          ${this.getTabTemplate("Spinner", "md-spinner", "spinner", spinnerTemplate)}
+          ${this.getTabTemplate("Table", "md-table", "table", tableTemplate)}
+          ${this.getTabTemplate("Table Advanced", "md-table-advanced", "table-advanced", tableAdvancedTemplate)}
+          ${this.getTabTemplate("Tabs", "md-tabs", "tabs", tabsTemplate)}
+          ${this.getTabTemplate("Task Item", "md-task-item", "taskitem", taskItemTemplate)}
+          ${this.getTabTemplate("Timepicker", "md-timepicker", "timepicker", timePickerTemplate)}
+          ${this.getTabTemplate("Toggle Switch", "md-toggle-switch", "toggle-switch", toggleSwitchTemplate)}
+          ${this.getTabTemplate("Tooltip", "md-tooltip", "tooltip", tooltipTemplate)}
+          ${this.getTabTemplate("Colors", "Colors", "", colorTableTemplate)}
         </md-tabs>
       </md-theme>
     `;

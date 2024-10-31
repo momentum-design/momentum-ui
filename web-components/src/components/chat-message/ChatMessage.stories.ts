@@ -7,13 +7,17 @@
  */
 
 import "@/components/chat-message/ChatMessage";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
 export default {
   title: "Components/Chat Message",
   component: "md-chat-message",
+  argTypes: {
+    title: { control: "text" },
+    message: { control: "text" },
+    selfMode: { control: "boolean" }
+  },
   parameters: {
     a11y: {
       element: "md-chat-message"
@@ -21,18 +25,17 @@ export default {
   }
 };
 
-export const ChatMessage = () => {
-  const darkTheme = boolean("Dark Theme", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const title = text("title", "John Doe");
-  const message = text("message", "I have issue with my silencer");
-  const selfMode = boolean("Self", false);
-
-  return html`
-    <md-theme class="theme-toggle" id="chat" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-chat-message .self=${selfMode} title=${title} time="11:27AM">
-        <p slot="message">${message}</p>
+export const ChatMessage: StoryObj = {
+  args: {
+    title: "John Doe",
+    message: "I have issue with my silencer",
+    selfMode: false
+  },
+  render: (args: Args) => {
+    return html`
+      <md-chat-message .self=${args.selfMode} title=${args.title} time="11:27AM">
+        <p slot="message">${args.message}</p>
       </md-chat-message>
-    </md-theme>
-  `;
+    `;
+  }
 };

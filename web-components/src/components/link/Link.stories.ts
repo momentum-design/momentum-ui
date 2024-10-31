@@ -6,49 +6,50 @@
  *
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import "@/components/list/List";
+import "@/components/list/ListItem";
+import { action } from "@storybook/addon-actions";
+import { Args } from "@storybook/web-components";
+import { html } from "lit-html";
 
-import "@/components/link/Link";
-import { ThemeNameValues } from "@/components/theme/Theme";
-import { boolean, select, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
-import { linkColor, linkRole, linkTag } from "./Link"; // Keep type import as a relative path
-
-export default {
-  title: "Components/Link",
-  component: "md-link",
-  parameters: {
-    a11y: {
-      element: "md-link"
-    }
-  }
+const options = {
+  Vertical: "vertical",
+  Horizontal: "horizontal"
 };
 
-export const Link = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const href = text("href", "http://google.com");
-  const tag = select("HTML Tag", linkTag, "");
-  const disabled = boolean("Disabled", false);
-  const inline = boolean("Link Inline", false);
-  const target = text("Target", "_self");
-  const color = select("Link color", linkColor, "blue");
-  const ariaLabel = text("AriaLabel", "Link Storybook");
-  const role = select("Link Role", linkRole, "");
-
+export const List = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="link" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-link
-        .href=${href}
-        .ariaLabel=${ariaLabel}
-        .ariaRole=${role as any}
-        .tag=${tag as any}
-        .target="${target}"
-        .color="${color}"
-        ?disabled=${disabled}
-        ?inline=${inline}
-        >Default Link</md-link
-      >
-    </md-theme>
+    <md-list
+      @list-item-change=${action("change")}
+      label="Transuranium elements"
+      .activated="${args.selected}"
+      .alignment=${args.alignment as "horizontal" | "vertical"}
+    >
+      <md-list-item shape=${args.shape} slot="list-item">Neptunium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item" ?disabled=${args.disabled}>Plutonium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item">Americium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item" ?disabled=${args.disabled}>Curium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item">Berkelium</md-list-item>
+      <md-list-item shape=${args.shape} slot="list-item">Californium</md-list-item>
+    </md-list>
   `;
+};
+
+export default {
+  title: "Components/List",
+  component: "md-list",
+  argTypes: {
+    slotElement: { table: { disable: true } },
+    listItemSlot: { table: { disable: true } },
+    activated: { table: { disable: true } },
+    alignment: { control: { type: "select", options }, defaultValue: "vertical" },
+    shape: { control: { type: "select", options: ["pill", "rounded"] }, defaultValue: "rounded" },
+    disabled: { control: "boolean", defaultValue: false },
+    selected: { control: "number", defaultValue: 2 }
+  },
+  parameters: {
+    a11y: {
+      element: "md-list"
+    }
+  }
 };

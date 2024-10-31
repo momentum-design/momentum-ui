@@ -10,10 +10,9 @@ import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
-import { boolean, number, select, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { Args, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 import { menuOverlayPlacement, menuOverlayRole, menuOverlaySize } from "./MenuOverlay"; // Keep type import as a relative path
 
 export default {
@@ -25,7 +24,18 @@ export default {
     handleOutsideOverlayKeydown: { table: { disable: true } },
     trigger: { table: { disable: true } },
     arrow: { table: { disable: true } },
-    overlayContainer: { table: { disable: true } }
+    overlayContainer: { table: { disable: true } },
+
+    isOpen: { control: "boolean", defaultValue: false },
+    disabled: { control: "boolean", defaultValue: false },
+    placement: { control: { type: "select" }, options: menuOverlayPlacement, defaultValue: "bottom" },
+    showArrow: { control: "boolean", defaultValue: false },
+    size: { control: { type: "select" }, options: menuOverlaySize, defaultValue: "large" },
+    maxHeight: { control: "text", defaultValue: "" },
+    customWidth: { control: "text", defaultValue: "" },
+    ariaRole: { control: { type: "select" }, options: menuOverlayRole, defaultValue: "menu" },
+    ariaLabel: { control: "text", defaultValue: "Link Storybook" },
+    overlayOffset: { control: "number", defaultValue: 15 }
   },
   parameters: {
     a11y: {
@@ -34,56 +44,61 @@ export default {
   }
 };
 
-export const MenuOverlay = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const isOpen = boolean("isOpen", false);
-  const disabled = boolean("Disabled", false);
-  const placement = select("placement", menuOverlayPlacement, "bottom");
-  const showArrow = boolean("Show Arrow", false);
-  const size = select("size", menuOverlaySize, "large");
-  const maxHeight = text("max height", "");
-  const customWidth = text("custom width", "");
-  const ariaRole = select("ariaRole", menuOverlayRole, "menu");
-  const ariaLabel = text("AriaLabel", "Link Storybook");
-  const overlayOffset = number("overlay offset", 15);
-
+const render = (args: Args) => {
   return html`
-    <md-theme class="theme-toggle" id="menu-overlay" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-menu-overlay
-        style="margin: 10rem"
-        placement=${placement}
-        size=${size}
-        max-height=${maxHeight}
-        custom-width=${customWidth}
-        ariaRole=${ariaRole}
-        ariaLabel=${ariaLabel}
-        ?is-open=${isOpen}
-        ?show-arrow=${showArrow}
-        ?disabled=${disabled}
-        @menu-overlay-open=${action("click open")}
-        @menu-overlay-close=${action("click close")}
-        overlay-offset=${overlayOffset}
-      >
-        <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
-        <div style="padding:1.25rem ; width: 100%;">
-          <md-input
-            htmlId="inputSearchClearPill"
-            containerSize="small-12"
-            placeholder="Enter Text"
-            shape="pill"
-            clear
-          ></md-input>
-          <md-checkbox>Default Checkbox</md-checkbox>
-          <md-checkbox checked>Default Checked Checkbox</md-checkbox>
-          <md-checkbox indeterminate>Default Indeterminate Checkbox</md-checkbox>
-          <div style="text-align: center">
-            <p style="margin-bottom: .5rem">Please complete the entire form</p>
-            <md-button variant="primary">Submit</md-button>
-          </div>
+    <md-menu-overlay
+      style="margin: 10rem"
+      placement=${args.placement}
+      size=${args.size}
+      max-height=${args.maxHeight}
+      custom-width=${args.customWidth}
+      ariaRole=${args.ariaRole}
+      ariaLabel=${args.ariaLabel}
+      ?is-open=${args.isOpen}
+      ?show-arrow=${args.showArrow}
+      ?disabled=${args.disabled}
+      @menu-overlay-open=${action("click open")}
+      @menu-overlay-close=${action("click close")}
+      overlay-offset=${args.overlayOffset}
+    >
+      <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
+      <div style="padding:1.25rem ; width: 100%;">
+        <md-input
+          htmlId="inputSearchClearPill"
+          containerSize="small-12"
+          placeholder="Enter Text"
+          shape="pill"
+          clear
+        ></md-input>
+        <md-checkbox>Default Checkbox</md-checkbox>
+        <md-checkbox checked>Default Checked Checkbox</md-checkbox>
+        <md-checkbox indeterminate>Default Indeterminate Checkbox</md-checkbox>
+        <div style="text-align: center">
+          <p style="margin-bottom: .5rem">Please complete the entire form</p>
+          <md-button variant="primary">Submit</md-button>
         </div>
-      </md-menu-overlay>
-      <iframe style="float: left; margin-top: 200px;" title="iframe-to-test-menu-closing" src="http://127.0.0.1:8080/?path=/story/components-date-range-picker--date-range-picker"></iframe>
-    </md-theme>
+      </div>
+    </md-menu-overlay>
+    <iframe
+      style="float: left; margin-top: 200px;"
+      title="iframe-to-test-menu-closing"
+      src="http://127.0.0.1:8080/?path=/story/components-date-range-picker--date-range-picker"
+    ></iframe>
   `;
+};
+
+export const MenuOverlay: StoryObj = {
+  args: {
+    isOpen: false,
+    disabled: false,
+    placement: "bottom",
+    showArrow: false,
+    size: "large",
+    maxHeight: "",
+    customWidth: "",
+    ariaRole: "menu",
+    ariaLabel: "Link Storybook",
+    overlayOffset: 15
+  },
+  render: render
 };

@@ -8,15 +8,37 @@
 
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
-import { ThemeNameValues } from "@/components/theme/Theme";
 import { badgeColor } from "@/utils/enums";
-import { boolean, select, text } from "@storybook/addon-knobs";
-import { html } from "lit-element";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit-html";
 
-export default {
+const render = (args: Args) => html`
+  <md-badge
+    .color=${args.color}
+    .bgColor=${args.bgColor}
+    .small=${args.small}
+    .textColor=${args.textColor}
+    .height=${args.height}
+    .width=${args.width}
+    .circle=${args.circle}
+    ?disabled=${args.disabled}
+  >
+    ${args.icon ? html` <md-icon name="chat-active_16"></md-icon> ` : html` Badge ${args.color} `}
+  </md-badge>
+`;
+
+export const Badge: StoryObj = {
+  args: {
+    color: "blue"
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Badge",
   component: "md-badge",
   argTypes: {
+    color: { control: { type: "select" }, options: badgeColor },
     renderBgColor: { table: { disable: true } },
     renderTextColor: { table: { disable: true } },
     renderHeight: { table: { disable: true } },
@@ -30,33 +52,4 @@ export default {
   }
 };
 
-export const Badge = () => {
-  const darkTheme = boolean("darkMode", false);
-  const theme = select("Theme name", ThemeNameValues, "lumos");
-  const color = select("Color", badgeColor, "blue");
-  const bgColor = text("BG Color Overrides", "");
-  const textColor = text("Text Color Override", "");
-  const height = text("Height Override", "");
-  const width = text("Width Override", "");
-  const circle = boolean("Circle", false);
-  const small = boolean("Small", false);
-  const icon = boolean("With icon", false);
-  const disabled = boolean("Disabled", false);
-
-  return html`
-    <md-theme class="theme-toggle" id="badge" ?darkTheme=${darkTheme} theme=${theme}>
-      <md-badge
-        .color=${color}
-        .bgColor=${bgColor}
-        .small=${small}
-        .textColor=${textColor}
-        .height=${height}
-        .width=${width}
-        .circle=${circle}
-        ?disabled=${disabled}
-      >
-        ${icon ? html` <md-icon name="chat-active_16"></md-icon> ` : html` Badge ${color} `}
-      </md-badge>
-    </md-theme>
-  `;
-};
+export default meta;

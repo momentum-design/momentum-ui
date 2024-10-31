@@ -7,9 +7,9 @@
  */
 
 import "@/components/icon/Icon";
-import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
@@ -55,7 +55,13 @@ export namespace Grabber {
     @property({ type: Boolean }) focused = false;
 
     /**
-     * Alignment that says if the `md-grabbewr` is being used for leading, trailing, top or bottom
+     * By default clicking the grabber toggles the checked state and fires an event.
+     * Setting this attribute will prevent the checked state from being toggled
+     */
+    @property({ type: Boolean, attribute: "disable-click-toggle" }) disableClickToggle = false;
+
+    /**
+     * Alignment that says if the `md-grabber` is being used for leading, trailing, top or bottom
      *
      * Default: leading
      */
@@ -91,11 +97,19 @@ export namespace Grabber {
     }
 
     handleMouseDown() {
+      if (this.disableClickToggle) {
+        return;
+      }
+
       this.toggleGrabber();
     }
 
     handleKeyDown(e: KeyboardEvent) {
-      if (e.code === Key.Enter || e.code === Key.Space || e.code === Key.NumpadEnter) {
+      if (this.disableClickToggle) {
+        return;
+      }
+
+      if (isActionKey(e.code)) {
         e.preventDefault();
         this.toggleGrabber();
       }
@@ -155,6 +169,7 @@ export namespace Grabber {
         <div class="md-grabber__container">
           <button
             class="md-grabber ${classMap(this.grabberClassMap)}"
+            part="grabber"
             aria-pressed=${this.checked}
             ?disabled=${this.disabled}
             tabindex="0"

@@ -559,27 +559,27 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
 
   get tabsJustifiedHugTemplate(): TemplateResult {
     return html`
-      <h3>md-tabs justified hug primaryPill</h3>
-      <md-tabs draggable justified hug-tabs type="primaryPill" newMomentum>
-        <md-tab slot="tab" name="History" type="primaryPill" newMomentum>
+      <h3>md-tabs justified hug rounded primary</h3>
+      <md-tabs draggable justified hug-tabs type="rounded" newMomentum variant="primary">
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
           <span>All</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History" type="primaryPill" newMomentum>
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
           <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History" type="primaryPill" newMomentum>
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
           <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Third Tab"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History" type="primaryPill" newMomentum>
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
           <md-icon name="alert_16"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">

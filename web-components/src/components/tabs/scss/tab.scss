@@ -8,7 +8,7 @@
 }
 
 :host([selected]) button {
-  box-shadow: var(--tabs-default-active-bottom-border, $tab-active-border);
+  box-shadow: $tab-active-border;
   border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
   color: var(--tabs-default-active);
   font-family: var(--brand-font-bold);
@@ -29,23 +29,32 @@
   }
 }
 
+:host([selected]) button.isRounded {
+  box-shadow: $tab-rounded-active-border;
+  border-radius: $tab-rounded-border-radius;
+
+  &:active {
+    border-radius: $tab-rounded-border-radius;
+  }
+}
+
 :host([selected]) button.primary {
 
-  background-color: var(--button-primary-bg-color);
-  color: var(--button-primary-text-color);
+  background-color: var(--tabs-primary-bg-color);
+  color: var(--tabs-primary-text-color);
 
   &:hover {
-    background-color: var(--button-primary-hover-bg-color);
+    background-color: var(--tabs-primary-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-primary-pressed-bg-color);
+    background-color: var(--tabs-primary-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color);
-    color: var(--button-disabled-text-color);
+    background: $tab-none-bg;
+    color: var(--tabs-default-disabled) !important;
   }
 }
 
@@ -89,9 +98,9 @@
 
 :host(:focus) {
   button {
-    outline: $tab-main-focus-border !important;
+    outline: $tab-main-focus-border;
     outline-offset: rem-calc(-2);
-    box-shadow: var(--tabs-default-focus-shadow) !important;
+    box-shadow: var(--tabs-default-focus-shadow);
   }
 }
 
@@ -185,7 +194,7 @@ button {
   background: $tab-none-bg;
   border: none;
   border-radius: $tab-focus-border-radius;
-  color: var(--tabs-default-text-color, $lm-tabs-default-text-color-light);
+  color: var(--tabs-default-text-color);
   display: block;
   height: 100%;
   min-height: $tab-overflow-button-height;
@@ -199,7 +208,7 @@ button {
 
   &:disabled {
     background: $tab-none-bg;
-    color: var(--tabs-default-disabled, $lm-tabs-default-disabled-light) !important;
+    color: var(--tabs-default-disabled) !important;
     cursor: not-allowed;
 
     @media screen and (-ms-high-contrast: active) {
@@ -225,11 +234,11 @@ button {
   }
 
   &:hover {
-    background-color: var(--tabs-default-hover, $lm-tabs-default-hover-light);
+    background-color: var(--tabs-default-hover);
   }
 
   &:active {
-    background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
+    background-color: var(--tabs-default-pressed);
     outline: none;
   }
 

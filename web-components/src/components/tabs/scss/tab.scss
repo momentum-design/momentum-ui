@@ -10,7 +10,7 @@
 :host([selected]) button {
   box-shadow: var(--tabs-default-active-bottom-border, $tab-active-border);
   border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
-  color: var(--tabs-default-active, $lm-tabs-default-active-light);
+  color: var(--tabs-default-active);
   font-family: var(--brand-font-bold);
   font-weight: var(--brand-font-weight-bold);
 
@@ -22,10 +22,30 @@
 :host([selected]) button.isPill {
   box-shadow: none;
   border-radius: $tab-new-border-radius;
-  background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
+  background-color: var(--tabs-default-pressed);
 
   &:active {
     border-radius: $tab-new-border-radius;
+  }
+}
+
+:host([selected]) button.primary {
+
+  background-color: var(--button-primary-bg-color);
+  color: var(--button-primary-text-color);
+
+  &:hover {
+    background-color: var(--button-primary-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--button-primary-pressed-bg-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
@@ -71,11 +91,7 @@
   button {
     outline: $tab-main-focus-border !important;
     outline-offset: rem-calc(-2);
-    box-shadow: var(--tabs-default-focus-shadow, $lm-tabs-default-focus-shadow-light) !important;
-  }
-
-  button.newMomentum {
-    background-color: var(--tabs-default-pressed, $lm-tabs-default-pressed-light);
+    box-shadow: var(--tabs-default-focus-shadow) !important;
   }
 }
 
@@ -104,12 +120,12 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  
+
   max-width: 100%;
   height: 100%;
 }
 
-md-tooltip{
+md-tooltip {
   display: inline-flex;
   align-items: center;
 }
@@ -205,7 +221,7 @@ button {
   }
 
   span {
-    @include tab-button-span;    
+    @include tab-button-span;
   }
 
   &:hover {
@@ -235,7 +251,7 @@ button.newMomentum {
   justify-content: center;
 }
 
-:host([vertical])  {
+:host([vertical]) {
   button {
     .tab-slot {
       justify-content: flex-start;

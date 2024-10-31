@@ -21,8 +21,11 @@
 }
 
 .visible-new-tabs {
-  width: auto;
-  gap: $tab-between-gap;
+  
+  &:not(.md-tab__justified) {
+    width: auto;
+    gap: $tab-between-gap;    
+  }
 }
 
 .md-tab__list {
@@ -93,10 +96,10 @@
         text-align: left;
         padding-left: 16px;
         padding-right: 16px;
-        box-shadow: none;        
+        box-shadow: none;
       }
-      &[selected]::part(tab){
-          background-color: var(--md-menu-active-background-color);
+      &[selected]::part(tab) {
+        background-color: var(--md-menu-active-background-color);
       }
     }
   }
@@ -158,6 +161,12 @@ md-menu-overlay {
   md-tab {
     display: inline-block;
     width: 100%;
+  }
+
+  &.md-tab__hug {
+    md-tab {
+      width: auto;
+    }
   }
 }
 
@@ -230,7 +239,7 @@ md-menu-overlay {
       text-align: left;
 
       &[selected] {
-        color: var(--tabs-default-active, $lm-tabs-default-active-light);
+        color: var(--tabs-default-active);
       }
     }
   }

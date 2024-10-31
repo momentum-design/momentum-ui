@@ -37,7 +37,7 @@ export namespace Tab {
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
     @property({ type: String }) ariaRole = "tab";
-    @property({ type: String }) type: Tabs.TabsType = "Line";
+    @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) onlyIcon = false;
 
@@ -194,7 +194,8 @@ export namespace Tab {
           part="tab"
           class="${classMap({
             closable: this.closable !== "",
-            isPill: this.type === "Pill",
+            isPill: this.type === "pill" || this.type === "primaryPill",
+            primary: this.type === "primaryPill",
             newMomentum: this.newMomentum,
             onlyIcon: this.onlyIcon
           })}"

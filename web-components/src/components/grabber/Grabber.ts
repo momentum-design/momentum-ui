@@ -22,50 +22,67 @@ export namespace Grabber {
     /**
      * aria label of unchecked grabber
      */
-    @property({ type: String }) label = "Expand";
+    @property({ type: String })
+    label = "Expand";
 
     /**
      * aria label of checked grabber
      */
-    @property({ type: String }) checkedLabel = "Collapse";
+    @property({ type: String })
+    checkedLabel = "Collapse";
 
     /**
      * If true, the grabber is hovered. grabber-hover-changed event is dispatched on hover change
      */
-    @property({ type: Boolean }) hovered = false;
+    @property({ type: Boolean })
+    hovered = false;
 
     /**
      * If true, the grabber is disabled
      */
-    @property({ type: Boolean }) disabled = false;
+    @property({ type: Boolean })
+    disabled = false;
 
     /**
      * If true, the grabber is checked
      */
-    @property({ type: Boolean }) checked = false;
+    @property({ type: Boolean })
+    checked = false;
 
     /**
      * If true, the grabber is visible. Grabber will also be visible if it is focused
      */
-    @property({ type: Boolean }) visible = true;
+    @property({ type: Boolean })
+    visible = true;
 
     /**
      * True when grabber has keyboard focus
      */
-    @property({ type: Boolean }) focused = false;
+    @property({ type: Boolean })
+    focused = false;
 
     /**
      * By default clicking the grabber toggles the checked state and fires an event.
      * Setting this attribute will prevent the checked state from being toggled
      */
-    @property({ type: Boolean, attribute: "disable-click-toggle" }) disableClickToggle = false;
+    @property({ type: Boolean, attribute: "disable-click-toggle" })
+    disableClickToggle = false;
 
     /**
      * Alignment that says if the `md-grabber` is being used for leading, trailing, top or bottom
      *
      * Default: leading
      */
-    @property({ type: String, reflect: true }) alignment: "leading" | "trailing" | "top" | "bottom" = "leading";
+    @property({ type: String, reflect: true })
+    alignment: "leading" | "trailing" | "top" | "bottom" = "leading";
+
+    /**
+     * Update the icon and icon size for dragger type
+     *
+     * Default: false
+     */
+    @property({ type: Boolean })
+    dragger = false;
 
     connectedCallback() {
       super.connectedCallback();
@@ -151,17 +168,26 @@ export namespace Grabber {
       return {
         "md-grabber--active": this.checked,
         "md-grabber--disabled": this.disabled,
+        "md-grabber--dragger": this.dragger,
         [`md-grabber--${this.alignment}`]: this.alignment,
         visible: this.visible || this.focused
       };
     }
 
     get iconName() {
+      if (this.dragger) {
+        return "list-menu-bold";
+      }
+
       if (this.alignment === "leading" || this.alignment === "trailing") {
         return this.checked ? "arrow-left-bold" : "arrow-right-bold";
       }
 
       return this.checked ? "arrow-up-bold" : "arrow-down-bold";
+    }
+
+    get iconSize() {
+      return this.dragger ? "10" : "12";
     }
 
     render() {
@@ -183,7 +209,7 @@ export namespace Grabber {
             @focus="${() => this.handleFocus()}"
             @blur="${() => this.handleBlur()}"
           >
-            <md-icon name="${this.iconName}" size="12" iconSet="momentumDesign"></md-icon>
+            <md-icon name="${this.iconName}" size="${this.iconSize}" iconSet="momentumDesign"></md-icon>
           </button>
         </div>
       `;

@@ -34,11 +34,9 @@
   }
 
   .overlay-arrow {
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.16));
     height: 0;
     visibility: hidden;
     width: 0;
-    z-index: -1;
 
     &[data-show] {
       visibility: visible;
@@ -48,12 +46,13 @@
   .overlay-container[data-popper-placement^="top"] > .overlay-arrow {
     border-left: solid $arrow-size transparent;
     border-right: solid $arrow-size transparent;
-    border-top: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-top: solid $arrow-size var(--md-menu-overlay-border-color, --gray-20);
     bottom: $arrow-offset;
+    filter: drop-shadow(0px 14px 8px rgba(0, 0, 0, 0.16));
   }
 
   .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow {
-    border-bottom: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-bottom: solid $arrow-size var(--md-menu-overlay-border-color, --gray-20);
     border-left: solid $arrow-size transparent;
     border-right: solid $arrow-size transparent;
     top: $arrow-offset;
@@ -61,15 +60,50 @@
 
   .overlay-container[data-popper-placement^="right"] > .overlay-arrow {
     border-bottom: solid $arrow-size transparent;
-    border-right: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-right: solid $arrow-size var(--md-menu-overlay-border-color, --gray-20);
     border-top: solid $arrow-size transparent;
     left: $arrow-offset;
+    filter: drop-shadow(-16px 0px 10px rgba(0, 0, 0, 0.16));
   }
 
   .overlay-container[data-popper-placement^="left"] > .overlay-arrow {
     border-bottom: solid $arrow-size transparent;
-    border-left: solid $arrow-size var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-left: solid $arrow-size var(--md-menu-overlay-border-color, --gray-20);
     border-top: solid $arrow-size transparent;
     right: $arrow-offset;
+    filter: drop-shadow(16px 0px 10px rgba(0, 0, 0, 0.16));
+  }
+
+  .overlay-container > .overlay-arrow:after {
+    content: "";
+    position: absolute;
+    border-width: 19px;
+    border-style: solid;
+    border-color: transparent;
+  }
+
+  // styling to create triangle border to match menu for pointer
+  .overlay-container[data-popper-placement^="top"] > .overlay-arrow:after {
+    border-top-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    bottom: -17px;
+    right: -19px;
+  }
+
+  .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow:after {
+    border-bottom-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    top: -17px;
+    left: -19px;
+  }
+
+  .overlay-container[data-popper-placement^="right"] > .overlay-arrow:after {
+    border-right-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    bottom: -19px;
+    left: -17px;
+  }
+
+  .overlay-container[data-popper-placement^="left"] > .overlay-arrow:after {
+    border-left-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    top: -19px;
+    right: -17px;
   }
 }

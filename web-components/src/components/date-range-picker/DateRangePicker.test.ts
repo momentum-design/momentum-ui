@@ -71,6 +71,37 @@ describe("DatePicker Component", () => {
     expect(el.startDate).toEqual(secondDate.toSQLDate());
     expect(el.endDate).toEqual(firstDate.toSQLDate());
   });
+
+  test("should only emit date-range-change event when both start and end dates set", async () => {
+    const el: DateRangePicker.ELEMENT = new DateRangePicker.ELEMENT();
+    expect(el.startDate).toBeUndefined();
+    expect(el.endDate).toBeUndefined();
+
+    let capturedEvent: CustomEvent | null = null;
+    const eventSpy = jest.fn((event: CustomEvent) => {
+      capturedEvent = event;
+    });
+    el.addEventListener('date-range-change', eventSpy);
+
+    el.handleDateSelection({ detail: { data: DateTime.fromObject({ month: 1, day: 1 }) } });
+    expect(el.startDate).not.toBeUndefined();
+    expect(el.endDate).toBeUndefined();
+
+    expect(eventSpy).not.toHaveBeenCalled();
+    expect(capturedEvent).toBeNull();
+
+    el.handleDateSelection({ detail: { data: DateTime.fromObject({ month: 1, day: 2 }) } });
+    expect(el.startDate).not.toBeUndefined();
+    expect(el.startDate).not.toBeUndefined();
+
+    expect(eventSpy).toHaveBeenCalledTimes(1);
+    expect(capturedEvent).not.toBeNull();
+    expect(capturedEvent!.detail).toEqual({
+      startDate: el.startDate,
+      endDate: el.endDate,
+    });
+  });
+
   describe("should handle range modification scenarios", () => {
     const startDate = DateTime.fromObject({ month: 11, day: 15 });
     const endDate = startDate.plus({ days: 5 });

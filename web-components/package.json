@@ -59,7 +59,7 @@
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
     "@momentum-design/brand-visuals": "0.1.1",
-    "@momentum-design/icons": "0.3.1",
+    "@momentum-design/icons": "0.2.1",
     "@momentum-design/tokens": "0.2.2",
     "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",

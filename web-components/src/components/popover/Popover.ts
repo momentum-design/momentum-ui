@@ -138,29 +138,44 @@ export namespace Popover {
     triggerSlot!: HTMLSlotElement;
 
     /**
+     * The popover container element.
      *
-     * The offset distance (in px) from the trigger element.
+     * This property is used to query the popover container element in the DOM.
+     * The popover container is the main element that contains the popover content.
+     *
+     * @type {HTMLDivElement}
      */
     @query(".popover-container")
     popoverContainer!: HTMLDivElement;
 
     /**
+     * The popover arrow element.
      *
-     * The offset distance (in px) from the trigger element.
+     * This property is used to query the popover arrow element in the DOM.
+     * The popover arrow is the element that visually connects the popover to the trigger element.
+     *
+     * @type {HTMLDivElement}
      */
     @query(".popover-arrow")
     popoverArrow!: HTMLDivElement;
 
     /**
+     * The event that triggers the popover.
      *
-     * The offset distance (in px) from the trigger element.
+     * This property specifies the event that will trigger the popover to open or close.
+     * The default event is "click", but it can be customized to other events such as "mouseenter" or "focus".
+     *
+     * @type {string}
      */
     @property({ type: String })
     trigger?: string = "click";
 
     /**
+     * The trigger element for the popover.
      *
-     * The offset distance (in px) from the trigger element.
+     * This property holds a reference to the trigger element that, when interacted with, will open or close the popover.
+     *
+     * @type {HTMLElement | null}
      */
     private triggerElement: HTMLElement | null = null;
 

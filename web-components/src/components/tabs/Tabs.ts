@@ -44,7 +44,8 @@ export namespace Tabs {
   type TabsViewportDataList = TabViewportData[];
 
   type TabId = Element["id"];
-  export type TabsType = "line" | "pill" | "primaryPill";
+  export type TabsType = "line" | "pill" | "rounded";
+  export type TabVariant = "ghost" | "primary";
 
   @customElementWithCheck("md-tabs")
   export class ELEMENT extends ResizeMixin(RovingTabIndexMixin(SlottedMixin(LitElement))) {
@@ -68,6 +69,7 @@ export namespace Tabs {
     @property({ type: String, attribute: "comp-unique-id" }) compUniqueId = "";
     @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
+    @property({ type: String }) variant: TabVariant = "ghost";
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -1124,6 +1126,7 @@ export namespace Tabs {
                   .isCrossVisible=${true}
                   tabIndex="${this.getTabIndex(tab)}"
                   .newMomentum=${this.newMomentum}
+                  variant=${this.variant}
                   type=${this.type}
                   .onlyIcon="${tab.onlyIcon}"
                 >

@@ -40,6 +40,7 @@ export namespace Tab {
     @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) onlyIcon = false;
+    @property({ type: String }) variant: Tabs.TabVariant = "ghost";
 
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
@@ -194,8 +195,9 @@ export namespace Tab {
           part="tab"
           class="${classMap({
             closable: this.closable !== "",
-            isPill: this.type === "pill" || this.type === "primaryPill",
-            primary: this.type === "primaryPill",
+            isPill: this.type === "pill",
+            isRounded: this.type === "rounded",
+            primary: this.variant === "primary",
             newMomentum: this.newMomentum,
             onlyIcon: this.onlyIcon
           })}"

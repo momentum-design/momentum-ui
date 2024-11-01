@@ -80,8 +80,8 @@ describe("DatePicker Component", () => {
     let capturedEvent: CustomEvent | null = null;
     const eventSpy = jest.fn((event: CustomEvent) => {
       capturedEvent = event;
-    });
-    el.addEventListener('date-range-change', eventSpy);
+    }) as unknown as EventListener;
+    el.addEventListener('date-range-change', eventSpy as EventListener);
 
     el.handleDateSelection({ detail: { data: DateTime.fromObject({ month: 1, day: 1 }) } });
     expect(el.startDate).not.toBeUndefined();

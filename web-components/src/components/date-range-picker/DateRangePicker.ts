@@ -80,8 +80,23 @@ export namespace DateRangePicker {
       } else {
         this.startDate = this.dateToSqlTranslate(e.detail.data);
       }
+      this.emitDateRange();
       this.updateValue();
     };
+
+    emitDateRange() {
+      if (!this.startDate || !this.endDate) {
+        return;
+      }
+      
+      const event = new CustomEvent("date-range-change", {
+        detail: {
+          startDate: this.startDate,
+          endDate: this.endDate,
+        },
+      });
+      this.dispatchEvent(event);
+    }
   }
 }
 

@@ -35,8 +35,8 @@ declare global {
   }
 }
 
-export type ThemeName = "momentum" | "lumos" | "momentumV2" | "";
-export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2", ""];
+export type ThemeName = "momentum" | "lumos" | "momentumV2";
+export const ThemeNameValues: ThemeName[] = ["momentum", "lumos", "momentumV2"];
 
 export namespace Theme {
   export type Attributes = {
@@ -57,7 +57,7 @@ export namespace Theme {
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) darkTheme = false;
     @property({ type: Boolean }) lumos = false;
-    @property({ type: String }) theme: ThemeName = "";
+    @property({ type: String }) theme?: ThemeName;
 
     @internalProperty() private activeTheme = momentumLight;
 

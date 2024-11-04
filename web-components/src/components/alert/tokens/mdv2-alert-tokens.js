@@ -22,6 +22,9 @@ const alert = {
     },
     "new-border-color": {
       common: "$mds-color-theme-outline-primary-normal"
+    },
+    "new-body-text-color": {
+      common: "$mds-color-theme-text-primary-normal"
     }
   },
   title: {

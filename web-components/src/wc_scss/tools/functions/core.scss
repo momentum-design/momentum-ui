@@ -1,9 +1,11 @@
 @use "sass:math";
+@use "sass:list";
+@use "sass:string";
 
-@import "../../settings/rem";
+@use "../../settings/rem";
 
 @function char($iso-char) {
-  @return unquote('"\\e#{$iso-char}"');
+  @return string.unquote('"\\e#{$iso-char}"');
 }
 
 $modules: () !default;
@@ -12,10 +14,10 @@ $modules: () !default;
   // Import from global scope
   $modules: $modules;
   // Check if a module is already on the list
-  $module_index: index($modules, $name);
+  $module_index: list.index($modules, $name);
 
   @if (($module_index == null) or ($module_index == false)) {
-    $modules: append($modules, $name);
+    $modules: list.append($modules, $name);
 
     @content;
   }
@@ -44,15 +46,15 @@ $modules: () !default;
 //===============================================
 
 // convert px to em
-@function em($px: 0, $font-size: $rem-base) {
+@function em($px: 0, $font-size: rem.$rem-base) {
   @return math.div($px, $font-size) + em;
 }
 
 // convert unitless or px to rem
 @function rem($val) {
-  @if unit($val) == "px" or unitless($val) {
+  @if math.unit($val) == "px" or math.is-unitless($val) {
     @return rem-calc($val);
-  } @else if unit($val) == "rem" {
+  } @else if math.unit($val) == "rem" {
     @return $val;
   } @else {
     @warn "`#{$val}` is not a supported try a px or rem value";
@@ -62,14 +64,14 @@ $modules: () !default;
 }
 
 // convert rem to px
-@function px($val, $base: $rem-base) {
-  @if unitless($val) {
+@function px($val, $base: rem.$rem-base) {
+  @if math.is-unitless($val) {
     @return $val * 1px;
   }
 
-  @if unit($val) == "px" {
+  @if math.unit($val) == "px" {
     @return $val;
-  } @else if unit($val) == "rem" {
+  } @else if math.unit($val) == "rem" {
     @return math.div($val * $base, 1rem);
   } @else {
     @warn "`#{$val}` is not a supported try a px or rem value";
@@ -80,7 +82,7 @@ $modules: () !default;
 
 // find the nearest ceiling rem value to a baseline unit
 @function vr-adjust($val: 1px, $remove: 0, $base-unit: rem($base-unit)) {
-  @return ceil(math.div(rem($val), $base-unit)) * $base-unit - rem($remove);
+  @return math.ceil(math.div(rem($val), $base-unit)) * $base-unit - rem($remove);
 }
 
 // round to the nearest specified number
@@ -89,19 +91,19 @@ $modules: () !default;
 }
 
 @function lower-bound($range) {
-  @if length($range) <= 0 {
+  @if list.length($range) <= 0 {
     @return 0;
   }
 
-  @return nth($range, 1);
+  @return list.nth($range, 1);
 }
 
 @function upper-bound($range) {
-  @if length($range) < 2 {
+  @if list.length($range) < 2 {
     @return 999999999999;
   }
 
-  @return nth($range, 2);
+  @return list.nth($range, 2);
 }
 
 @function strip-unit($num) {
@@ -121,19 +123,19 @@ $modules: () !default;
   @each $type in $types {
     @if $type == textarea {
       @if $selector == input {
-        $return: append($return, unquote("#{$type}"), comma);
+        $return: list.append($return, string.unquote("#{$type}"), comma);
       } @else {
-        $return: append($return, unquote("#{$type}#{$selector}"), comma);
+        $return: list.append($return, string.unquote("#{$type}#{$selector}"), comma);
       }
     } @else {
-      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma);
+      $return: list.append($return, string.unquote('#{$selector}[type="#{$type}"]'), comma);
     }
   }
 
   @return $return;
 }
 
-@function convert-to-rem($value, $base-value: $rem-base) {
+@function convert-to-rem($value, $base-value: rem.$rem-base) {
   $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
 
   @if ($value == 0) {
@@ -147,18 +149,18 @@ $modules: () !default;
   @return "[data-" + $attr + "]";
 }
 
-@function rem-calc($values, $base-value: $rem-base) {
-  $max: length($values);
+@function rem-calc($values, $base-value: rem.$rem-base) {
+  $max: list.length($values);
 
   @if $max == 1 {
-    @return convert-to-rem(nth($values, 1), $base-value);
+    @return convert-to-rem(list.nth($values, 1), $base-value);
   }
 
   $remValues: ();
 
   @for $i from 1 through $max {
-    $remValues: append($remValues,
-    convert-to-rem(nth($values, $i), $base-value));
+    $remValues: list.append($remValues,
+    convert-to-rem(list.nth($values, $i), $base-value));
   }
 
   @return $remValues;
@@ -167,16 +169,16 @@ $modules: () !default;
 @function em-calc($values) {
   $remValues: rem-calc($values);
 
-  $max: length($remValues);
+  $max: list.length($remValues);
 
   @if $max == 1 {
-    @return strip-unit(nth($remValues, 1)) * 1em;
+    @return strip-unit(list.nth($remValues, 1)) * 1em;
   }
 
   $emValues: ();
 
   @for $i from 1 through $max {
-    $emValues: append($emValues, strip-unit(nth($remValues, $i)) * 1em);
+    $emValues: list.append($emValues, strip-unit(list.nth($remValues, $i)) * 1em);
   }
 
   @return $emValues;

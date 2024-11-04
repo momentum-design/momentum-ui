@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $taskitem-border-radius: rem-calc(8);
 $taskitem-border-circle: 50%;
 $taskitem-main-indent: rem-calc(2);
@@ -32,7 +34,7 @@ $taskitem-selected-bg: var(--taskitem-pressed-bg-color, $lm-taskitem-pressed-bg-
 
 $taskitem-additional-width: rem-calc(100);
 $taskitem-chat-padding: rem-calc(40);
-$taskitem-newchat-font-size: ceil($font-size-base * 0.71);
+$taskitem-newchat-font-size: math.ceil($font-size-base * 0.71);
 $taskitem-newchat-right: -20%;
 $taskitem-newchat-margin: rem-calc(20);
 $taskitem-newchat-padding: rem-calc(2 4); 

@@ -1,6 +1,10 @@
+@use "@/wc_scss/settings/core" as *;
+@use "~@momentum-ui/icons/scss/mixins" as *;
+@use "@/wc_scss/tools/mixins/flex";
+
 @include exports("md-loading") {
   .md-loading {
-    @include flex();
+    @include flex.flex();
 
     button &,
     .md-button {

@@ -21,6 +21,16 @@ const alert = {
     "icon-size": {
       light: "24px",
       dark: "24px"
+    },
+    "border-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[80].name
+    },
+    "new-border-color": {
+      common: "$mds-color-theme-outline-primary-normal"
+    },
+    "new-body-text-color": {
+      common: "$mds-color-theme-text-primary-normal"
     }
   },
   title: {

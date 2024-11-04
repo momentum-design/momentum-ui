@@ -82,7 +82,7 @@ describe("Alert", () => {
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
     const type = element.shadowRoot?.querySelector(".md-alert__icon md-icon");
-    expect(type?.getAttribute("name")).toEqual("info-circle-regular");
+    expect(type?.getAttribute("name")).toEqual("info-circle-bold");
     expect(type?.getAttribute("color")).toEqual("var(--md-alert-info-text-color, blue)");
   });
 

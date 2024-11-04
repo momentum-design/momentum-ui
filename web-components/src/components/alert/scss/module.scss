@@ -1,19 +1,4 @@
 @import "@/wc_scss/tools/functions/core";
-@import "@/wc_scss/tools/mixins/core";
-
-// Settings
-@import "@/wc_scss/colors/settings-base";
-@import "@/wc_scss/colors/settings-transparencies";
-@import "@/wc_scss/settings/core";
-@import "@/wc_scss/typography/settings";
-@import "@/wc_scss/icon/settings";
-
-// Tools
-@import "@/wc_scss/tools/mixins/border-radius";
-@import "@/wc_scss/tools/mixins/flex";
-
-//vars
-@import "./vars/lm-alert-settings";
 
 // Alert Specific
 @import "settings";

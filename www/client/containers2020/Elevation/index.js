@@ -122,7 +122,7 @@ class Elevation extends React.PureComponent {
           backgroundImage={elevationBanner}
           backgroundSize='600px'
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A789'
-          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/elevation.json'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/main/tokens/data/elevation.json'
           heroTitle='Elevation'
         />
         <div className='site-warp scrollable-body-wrapper'>

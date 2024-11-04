@@ -3,9 +3,9 @@ const WP_URL = process.env.WP_URL || 'https://wp.momentum.design';
 const CHANGE_LOG_URL = process.env.CHANGE_LOG_URL || 'https://raw.githubusercontent.com/momentum-design';
 
 const CHANGE_LOG_URLS = {
-  'momentum-ui-icons':`${CHANGE_LOG_URL}/momentum-ui/master/icons/CHANGELOG.md`,
-  'momentum-ui-core':`${CHANGE_LOG_URL}/momentum-ui/master/core/CHANGELOG.md`,
-  'momentum-ui-react':`${CHANGE_LOG_URL}/momentum-ui/master/react/CHANGELOG.md`,
+  'momentum-ui-icons':`${CHANGE_LOG_URL}/momentum-ui/main/icons/CHANGELOG.md`,
+  'momentum-ui-core':`${CHANGE_LOG_URL}/momentum-ui/main/core/CHANGELOG.md`,
+  'momentum-ui-react':`${CHANGE_LOG_URL}/momentum-ui/main/react/CHANGELOG.md`,
 };
 
 const config = {

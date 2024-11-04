@@ -293,7 +293,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - storybook_web_components
 
@@ -303,7 +303,7 @@ workflows:
             filters:
               branches:
                 only:
-                  - master
+                  - main
               tags:
                 only: /^.force-deploy/
 
@@ -314,7 +314,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - lint_test_release
 

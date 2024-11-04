@@ -137,7 +137,7 @@ class Typography extends React.PureComponent {
           backgroundImage={typographyBanner}
           backgroundSize='600px'
           figmaURL="https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=494%3A344"
-          githubURL="https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/font.json"
+          githubURL="https://github.com/momentum-design/momentum-ui/blob/main/tokens/data/font.json"
           heroTitle='Typography'
         />
         <div className='site-warp scrollable-body-wrapper'>

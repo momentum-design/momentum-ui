@@ -3747,7 +3747,7 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 * **list-item**:
-  * Rebase from master
+  * Rebase from main
   * Add styling for list-item separator
 * **button**: added white button style
 * **alert-container**: Styles for displaying alerts

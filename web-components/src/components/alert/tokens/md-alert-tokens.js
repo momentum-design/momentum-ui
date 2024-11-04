@@ -27,7 +27,8 @@ const alert = {
       dark: colors.gray[80].name
     },
     "new-border-color": {
-      common: "$mds-color-theme-outline-primary-normal"
+      light: colors.gray[20].name,
+      dark: colors.gray[80].name
     },
     "new-body-text-color": {
       common: "$mds-color-theme-text-primary-normal"

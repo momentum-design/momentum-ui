@@ -123,6 +123,10 @@ export namespace AdvanceList {
       return undefined;
     }
 
+    isNextElemenentStatusIndicator(index: number) {
+      return (this.isLoading || this.isError) && index === this.items.length - 2;
+    }
+
      handleKeyDown = (event: KeyboardEvent): void => {
       switch (event.key) {
         case Key.ArrowDown:
@@ -133,9 +137,9 @@ export namespace AdvanceList {
             this.activeId = this.value;
           }
           const currentIndex = this.items.findIndex(item => item.id === this.activeId);
-          if (currentIndex < this.items.length - 1) {
+          if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
             this.scrollIndex = currentIndex + 1;
-            this.activeId = this.items[this.scrollIndex].id;  
+            this.activeId = this.items[this.scrollIndex].id;
           }
           break;
 
@@ -149,7 +153,7 @@ export namespace AdvanceList {
           const upIndex = this.items.findIndex(item => item.id === this.activeId);
           if (upIndex > 0) {
             this.scrollIndex = upIndex - 1;
-            this.activeId = this.items[this.scrollIndex].id;  
+            this.activeId = this.items[this.scrollIndex].id;
           }
           break;
 
@@ -193,7 +197,6 @@ export namespace AdvanceList {
     handleRangeChange = (e: any) => {
       const { last } = e;
       this.updateSelectedState();
-      
       // Trigger 'load-more' event when more items need to be loaded
       if (this.items.length < this.totalRecords && last >= this.items.length - 1 && !this.isLoading && !this.isError) {
         this.dispatchEvent(
@@ -217,6 +220,11 @@ export namespace AdvanceList {
     }
 
     renderItem(item: any, index: number) {
+      if (item.id === "status-indicator") {
+        return html`
+          <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
+        `;
+      }
       return html`
         <div
           class="default-wrapper ${item.id}"

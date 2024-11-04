@@ -19,8 +19,8 @@
   outline: 2px solid var(--md-default-focus-outline-color);
 }
 
-.default-wrapper:focus-visible:not(.status-indicator),
-.default-wrapper:focus:not(.status-indicator) {
+.default-wrapper:focus-visible,
+.default-wrapper:focus {
   outline: 2px solid var(--md-default-focus-outline-color);
   outline-offset: -2px;
 }
@@ -38,12 +38,12 @@
   width: 100%;
 }
 
-.default-wrapper.selected:not(.status-indicator) {
+.default-wrapper.selected {
   background-color: var(--list-active-background, $md-advance-list-active-background-light);
   color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
 }
 
-.default-wrapper.focused:not(.status-indicator) {
+.default-wrapper.focused {
   outline: 2px solid var(--md-default-focus-outline-color);
   outline-offset: -2px;
 }
@@ -57,18 +57,21 @@
   box-sizing: border-box;
   position: relative;
 }
+.default-wrapper-status-indicator {
+  padding: 5px;
+  color: var( --advance-list-text-color, $md-advance-list-text-color-light);
+  cursor: pointer;
+  width: calc(100% - 2px);
+  box-sizing: border-box;
+  position: relative;
+}
 
-.default-wrapper:hover:not(.status-indicator) {
+.default-wrapper:hover {
   background-color: var(--list-hover-background, $md-advance-list-hover-background-light);
   color: var(--list-hover-text-color, $md-advance-list-hover-text-color-light);
 }
 
-.default-wrapper.selected:hover:not(.status-indicator) {
+.default-wrapper.selected:hover {
   background-color: var(--list-active-background, $md-advance-list-active-background-light);
   color: var(--list-active-text-color, $md-advance-list-active-text-color-light);
-}
-
-.infinite-scroll-spinner {
-  display: flex;
-  justify-content: center;
 }

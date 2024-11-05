@@ -1,4 +1,7 @@
 // * Spacing utilities
+@use "sass:math";
+@use "sass:list";
+@use "sass:map";
 @import "../../settings/rem.scss";
 @import "../../colors/settings.scss";
 @import "../../settings/core.scss";
@@ -51,17 +54,17 @@ $spacing-paddings: (
 );
 
 @mixin generateSpacingClasses($type: "margin", $locations: $spacing-margins, $sizes: $spacing-sizes) {
-  @each $location in map-keys($locations) {
-    $value: map-get($locations, $location);
-    $spacing-location: map-get($locations, $location);
+  @each $location in map.keys($locations) {
+    $value: map.get($locations, $location);
+    $spacing-location: map.get($locations, $location);
     @if $location != $type {
       $spacing-location-name: "__#{$location}" !global;
     } @else {
       $spacing-location-name: null !global;
     }
 
-    @each $size in map-keys($sizes) {
-      $spacing-size-value: map-get($sizes, $size);
+    @each $size in map.keys($sizes) {
+      $spacing-size-value: map.get($sizes, $size);
       @if $size != "m" {
         $spacing-size-name: "--#{$size}" !global;
       } @else {
@@ -69,10 +72,10 @@ $spacing-paddings: (
       }
 
       .#{$prefix}-#{$type}#{$spacing-location-name}#{$spacing-size-name} {
-        #{nth($value, 1)}: $spacing-size-value !important;
+        #{list.nth($value, 1)}: $spacing-size-value !important;
 
-        @if length($value) != 1 {
-          #{nth($value, 2)}: $spacing-size-value !important;
+        @if list.length($value) != 1 {
+          #{list.nth($value, 2)}: $spacing-size-value !important;
         }
       }
 
@@ -83,17 +86,17 @@ $spacing-paddings: (
 }
 
 @mixin generateSpacingPlaceholders($type: "margin", $locations: $spacing-margins, $sizes: $spacing-sizes) {
-  @each $location in map-keys($locations) {
-    $value: map-get($locations, $location);
-    $spacing-location: map-get($locations, $location);
+  @each $location in map.keys($locations) {
+    $value: map.get($locations, $location);
+    $spacing-location: map.get($locations, $location);
     @if $location != $type {
       $spacing-location-name: "__#{$location}" !global;
     } @else {
       $spacing-location-name: null !global;
     }
 
-    @each $size in map-keys($sizes) {
-      $spacing-size-value: map-get($sizes, $size);
+    @each $size in map.keys($sizes) {
+      $spacing-size-value: map.get($sizes, $size);
       @if $size != "m" {
         $spacing-size-name: "--#{$size}" !global;
       } @else {
@@ -101,10 +104,10 @@ $spacing-paddings: (
       }
 
       %#{$prefix}-#{type}#{$spacing-location-name}#{$spacing-size-name} {
-        #{nth($value, 1)}: $spacing-size-value !important;
+        #{list.nth($value, 1)}: $spacing-size-value !important;
 
-        @if length($value) != 1 {
-          #{nth($value, 2)}: $spacing-size-value !important;
+        @if list.length($value) != 1 {
+          #{list.nth($value, 2)}: $spacing-size-value !important;
         }
       }
 
@@ -170,13 +173,13 @@ $vr-spacings: (
     @warn "invalid spacing type: try m, mt, mr, mb, ml, mh, mv, p, pt, pr, pb, pl, ph, pv";
   } @else if $border != 0 and unit($border) != "px" {
     @warn "a pixel value is required for $border: try 1px, 2px";
-  } @else if unit($val) != "" {
+  } @else if math.unit($val) != "" {
     @warn "a unitless value is required for $val: try 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2";
   } @else if map_has_key($vr-spacing-breakpoints, $media) == false {
     @warn "a valid breakpoint value is required for $media: try small-up, medium-up, large-up etc.";
   } @else {
     // get spacing attribute type
-    $sp: map-get($vr-spacings, $spacing);
+    $sp: map.get($vr-spacings, $spacing);
 
     // get negative
     $n: if($negative, "-", "");
@@ -186,22 +189,22 @@ $vr-spacings: (
 
     @if $media != "small-up" {
       // use media query as needed
-      @media #{map-get($vr-spacing-breakpoints, $media)} {
+      @media #{map.get($vr-spacing-breakpoints, $media)} {
         // first attribute
-        #{nth($sp, 1)}: #{$n}#{$v};
+        #{list.nth($sp, 1)}: #{$n}#{$v};
 
-        @if length($sp) != 1 {
+        @if list.length($sp) != 1 {
           // second attribute as needed
-          #{nth($sp, 2)}: #{$n}#{$v};
+          #{list.nth($sp, 2)}: #{$n}#{$v};
         }
       }
     } @else {
       // first attribute
-      #{nth($sp, 1)}: #{$n}#{$v};
+      #{list.nth($sp, 1)}: #{$n}#{$v};
 
-      @if length($sp) != 1 {
+      @if list.length($sp) != 1 {
         // second attribute as needed
-        #{nth($sp, 2)}: #{$n}#{$v};
+        #{list.nth($sp, 2)}: #{$n}#{$v};
       }
     }
   }

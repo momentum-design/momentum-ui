@@ -32,7 +32,7 @@ export const alertTemplate = html`
   <md-alert
     title="Header"
     message="Turpis id scelerisque porta purus ut vel nisl a. Pulvinar felis convallis praesent viverra porta."
-    type="success"
+    type="info"
     closable
     show
     newMomentum

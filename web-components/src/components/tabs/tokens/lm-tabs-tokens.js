@@ -68,6 +68,24 @@ const tabs = {
         "linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.53) 24%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 100%)",
       dark: "linear-gradient(to right, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.5) 25%, rgba(18, 18, 18, 1) 50%, rgba(18, 18, 18, 1) 100%)"
     }
+  },
+  primary: {
+    "bg-color": {
+      common: "$mds-color-theme-button-primary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-primary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-primary-pressed"
+      }
+    }
   }
 };
 

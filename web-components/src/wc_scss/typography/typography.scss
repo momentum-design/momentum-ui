@@ -1,4 +1,5 @@
 /** @component typography */
+@use "sass:map";
 
 @include exports("type-bem") {
   @include align-classes;
@@ -295,11 +296,11 @@
     font-family: $brand-font-regular;
   }
 
-  @each $variation in map-keys($fontVariations) {
+  @each $variation in map.keys($fontVariations) {
     $fontFamily: "" !default;
 
-    @if map-has-key($fontVariations, $variation) {
-      $fontFamily: map-get($fontVariations, $variation);
+    @if map.has-key($fontVariations, $variation) {
+      $fontFamily: map.get($fontVariations, $variation);
     }
 
     .md-#{$variation} {
@@ -307,11 +308,11 @@
     }
   }
 
-  @each $fontColorClass in map-keys($fontColors) {
+  @each $fontColorClass in map.keys($fontColors) {
     $fontColor: "" !default;
 
-    @if map-has-key($fontColors, $fontColorClass) {
-      $fontColor: map-get($fontColors, $fontColorClass);
+    @if map.has-key($fontColors, $fontColorClass) {
+      $fontColor: map.get($fontColors, $fontColorClass);
     }
 
     .md-font-color--#{$fontColorClass} {

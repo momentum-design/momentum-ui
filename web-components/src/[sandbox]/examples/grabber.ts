@@ -79,7 +79,17 @@ export class GrabberTemplateSandbox extends LitElement {
         .toggle-container {
           display: flex;
           align-items: center;
-          height: 800px;
+          height: 500px;
+        }
+
+        .dragger-container {
+          display: flex;
+          align-items: center;
+          width: 400px;
+          max-height: 200px;
+          min-height: 0px;
+          height: 100px;
+          flex-direction: column;
         }
 
         .toggle-div {
@@ -95,10 +105,21 @@ export class GrabberTemplateSandbox extends LitElement {
           width: 0px;
         }
 
+        .dragger-div {
+          max-height: 200px;
+          min-height: 0px;
+        }
+
         .divider {
           width: 1px;
           height: 100%;
           background: var(--md-nav-divider-primary);
+        }
+
+        .h-divider {
+          height: 1px;
+          width: 100%;
+          background: var(--md-nav-h-divider-primary);
         }
       </style>
       <div>
@@ -121,6 +142,11 @@ export class GrabberTemplateSandbox extends LitElement {
         <md-grabber id="grabberBottom" alignment="bottom"></md-grabber>
         ${this.grabberDetailTemplate(this.grabberBottom)}
       </div>
+      <div class="custom-grabber">
+        <h3 class="sandbox-header" style="margin: .5rem 1rem">Bottom disable-click-toggle dragger</h3>
+        <md-grabber id="grabberBottom" alignment="bottom" disable-click-toggle dragger></md-grabber>
+        ${this.grabberDetailTemplate(this.grabberBottom)}
+      </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Toggle Width Example</h3>
         <div class="toggle-container">
@@ -131,6 +157,14 @@ export class GrabberTemplateSandbox extends LitElement {
             alignment="leading"
             @grabber-toggled="${this.toggleWidth.bind(this)}"
           ></md-grabber>
+        </div>
+      </div>
+      <div>
+        <h3 class="sandbox-header" style="margin: .5rem 1rem">Drag height Example</h3>
+        <div class="dragger-container">
+          <md-grabber id="grabberDrag" alignment="bottom" disable-click-toggle dragger></md-grabber>
+          <div class="dragger-div" id="draggerDiv"></div>
+          <div class="h-divider"></div>
         </div>
       </div>
     `;

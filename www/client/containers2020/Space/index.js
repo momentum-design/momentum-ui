@@ -64,7 +64,7 @@ class Space extends React.PureComponent {
           backgroundImage={spaceBanner}
           backgroundSize='450px'
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=2647%3A661'
-          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/space.json'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/main/tokens/data/space.json'
           heroTitle='Space'
         />
         <div className='site-warp scrollable-body-wrapper'>

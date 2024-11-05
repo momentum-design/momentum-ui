@@ -98,7 +98,7 @@ to read on GitHub as well as in various git tools.
 
 Footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
 
-Samples: (even more [samples](https://github.com/angular/angular/commits/master))
+Samples: (even more [samples](https://github.com/angular/angular/commits/main))
 
 ```
 docs(changelog): update change log to beta.5
@@ -169,7 +169,7 @@ Before you submit your pull request consider the following guidelines:
 * Make your changes in a new git branch:
 
      ```shell
-     git checkout -b my-fix-branch master
+     git checkout -b my-fix-branch main
      ```
 
 * Create your patch, **including appropriate test cases**.
@@ -195,7 +195,7 @@ Before you submit your pull request consider the following guidelines:
     git push <username> my-fix-branch
     ```
 
-* In GitHub, send a pull request to `momentum-design/momentum-ui:master`.
+* In GitHub, send a pull request to `momentum-design/momentum-ui:main`.
 * If we suggest changes then:
   * Make the required updates.
   * Re-run the @momentum-ui test suite to ensure tests are still passing.
@@ -205,7 +205,7 @@ Before you submit your pull request consider the following guidelines:
 * If the PR gets too outdated we may ask you to rebase and force push to update the PR:
 
     ```shell
-    git rebase master -i
+    git rebase main -i
     git push <username> my-fix-branch -f
     ```
 
@@ -225,10 +225,10 @@ from the main (upstream) repository:
     git push <username> --delete my-fix-branch
     ```
 
-* Check out the master branch:
+* Check out the main branch:
 
     ```shell
-    git checkout master -f
+    git checkout main -f
     ```
 
 * Delete the local branch:
@@ -237,10 +237,10 @@ from the main (upstream) repository:
     git branch -D my-fix-branch
     ```
 
-* Update your master with the latest upstream version:
+* Update your main with the latest upstream version:
 
     ```shell
-    git pull --ff upstream master
+    git pull --ff upstream main
     ```
 
 ## License

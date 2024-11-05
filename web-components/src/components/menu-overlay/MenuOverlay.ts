@@ -275,6 +275,7 @@ export namespace MenuOverlay {
           onFirstUpdate: async () => {
             // We need to find all focusable elements, after Popper finish its positioning calculation
             if (this.isOpen) {
+              this.popperInstance?.update();
               this.setFocusableElements!();
               await this.updateComplete;
               this.focusInsideOverlay();

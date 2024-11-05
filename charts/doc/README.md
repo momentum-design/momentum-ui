@@ -20,7 +20,7 @@ or
 
 ### Github
 
-You can clone Momentum Charts from [github](https://github.com/momentum-design/momentum-ui/tree/master/charts).
+You can clone Momentum Charts from [github](https://github.com/momentum-design/momentum-ui/tree/main/charts).
 
 After you download and go to charts folder, you can run ```yarn build``` to generate different files for usage.
 

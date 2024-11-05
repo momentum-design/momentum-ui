@@ -1,7 +1,8 @@
 // Namespace Variables
 @use "sass:math";
-@use "rem";
-@use "@/wc_scss/colors/settings-base";
+@use "@/wc_scss/settings/rem";
+@use "@/wc_scss/colors/settings-base.scss" as color-token;
+@use "@/wc_scss/tools/functions/core.scss" as core-functions;
 
 $namespace: "md" !default;
 $prefix: "md" !default;
@@ -61,8 +62,8 @@ $opposite-direction: right;
 $default-float: left;
 $last-child-float: $opposite-direction;
 
-$link-color: settings-base.$md-theme-50;
-$link-hover-color: settings-base.$md-theme-70;
+$link-color: color-token.$md-theme-50;
+$link-hover-color: color-token.$md-theme-70;
 
 $global-radius: 4px;
 $border-radius-base: $global-radius;
@@ -80,10 +81,10 @@ $select-border-radius: 3px;
 
 $body-font-style: normal;
 
-$row-width: rem-calc(1366) !default;
+$row-width: core-functions.rem-calc(1366) !default;
 $total-columns: 12 !default;
 $last-child-float: $opposite-direction !default;
-$column-gutter: rem-calc(16) !default;
+$column-gutter: core-functions.rem-calc(16) !default;
 
 // legacy Bootstrap Variable
 $grid-gutter-width: 30px;
@@ -115,18 +116,18 @@ $line-height-large: 1.33;
 
 $border-radius-large: 3px;
 
-$component-active-color: settings-base.$md-white-100;
+$component-active-color: color-token.$md-white-100;
 
 $cursor-disabled: not-allowed;
 
-$brand-default: settings-base.$md-gray-90; // legacy bootstrap - used in Atlas
+$brand-default: color-token.$md-gray-90; // legacy bootstrap - used in Atlas
 
 $images-path: "~@momentum-ui/core/images" !default;
 
 // Dropdown Max Height for Select/Menu/SubMenu
-$dropdown-height: rem-calc(308);
+$dropdown-height: core-functions.rem-calc(308);
 
-$focus-color: settings-base.$md-theme-50;
+$focus-color: color-token.$md-theme-50;
 
-$body-bg: settings-base.$md-white-100;
-$body-font-color: settings-base.$md-gray-90;
+$body-bg: color-token.$md-white-100;
+$body-font-color: color-token.$md-gray-90;

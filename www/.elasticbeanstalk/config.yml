@@ -1,5 +1,5 @@
 branch-defaults:
-  master:
+  main:
     environment: collab-ui-server-1
 environment-defaults:
   collab-ui-server-1:

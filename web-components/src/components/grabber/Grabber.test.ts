@@ -168,4 +168,27 @@ describe("Grabber component", () => {
 
     mockDispatchEvent.mockRestore();
   });
+
+  describe("disableClickToggle property", () => {
+    test("should have disableClickToggle default to false", async () => {
+      const element = await fixture<Grabber.ELEMENT>(html`<md-grabber></md-grabber>`);
+      expect(element.disableClickToggle).toBe(false);
+    });
+
+    test("should reflect the disable-click-toggle attribute", async () => {
+      const element = await fixture<Grabber.ELEMENT>(html`<md-grabber disable-click-toggle></md-grabber>`);
+      expect(element.disableClickToggle).toBe(true);
+    });
+
+    test("should toggle disableClickToggle property when attribute changes", async () => {
+      const element = await fixture<Grabber.ELEMENT>(html`<md-grabber></md-grabber>`);
+      element.setAttribute("disable-click-toggle", "");
+      await element.updateComplete;
+      expect(element.disableClickToggle).toBe(true);
+
+      element.removeAttribute("disable-click-toggle");
+      await element.updateComplete;
+      expect(element.disableClickToggle).toBe(false);
+    });
+  });
 });

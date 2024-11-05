@@ -121,6 +121,9 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
     #{$mds-color-theme-button-secondary-disabled} 100%
   );
   --md-nav-divider-primary-hover: var(--md-nav-divider-primary);
+  
+  --md-nav-h-divider-primary: #{$mds-color-theme-gradientdivider-default-normal};
+  --md-nav-h-divider-primary-hover: #{$mds-color-theme-gradientdivider-default-hover};
 
   --md-scrollbar-background-indicator: #{$mds-color-theme-scrollbar-button-normal};
   --md-scrollbar-background-track: #{$mds-color-theme-background-primary-active};

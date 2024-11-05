@@ -79,7 +79,7 @@ class IconsContainer extends React.Component {
           backgroundImage={iconBanner}
           backgroundSize='450px'
           figmaURL='https://www.figma.com/file/jwIr6nD0hC7r1K87LaYkJn/Momentum-icons?node-id=0%3A1'
-          githubURL='https://github.com/momentum-design/momentum-ui/tree/master/icons'
+          githubURL='https://github.com/momentum-design/momentum-ui/tree/main/icons'
           heroTitle='Icons'
         />
         <div className="site-warp">

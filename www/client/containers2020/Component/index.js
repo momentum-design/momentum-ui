@@ -49,7 +49,7 @@ class ComponentContainer extends React.Component {
         <h3>Can't find component '<span>{match.params.component}</span>'</h3>
         <p>There might be a typo in your search, or this component doesn't exist. If it doesn't exist, you can change that!</p>
         <div className="component-does-not-exist-buttons">
-          <a href="https://github.com/momentum-design/momentum-ui/blob/master/core/README.md">
+          <a href="https://github.com/momentum-design/momentum-ui/blob/main/core/README.md">
             <Button
               ariaLabel='Built with us'
               className="md-button--blue"

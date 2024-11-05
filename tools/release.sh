@@ -54,7 +54,7 @@ else
   git commit -m "chore(release): [skip ci]" -m "$commitMessage"
 
   # Push commit to GitHub
-  git push origin master --follow-tags
+  git push origin main --follow-tags
 
   # Add tags and push to GitHub
   for tag in $tags;

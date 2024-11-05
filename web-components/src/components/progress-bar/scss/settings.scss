@@ -1,8 +1,9 @@
+@use "sass:color";
+
 $progress-bar-height: rem-calc(4) !default;
 $progress-bar-color: $md-gray-10;
 
-$progress-bar-border-color: scale-color($md-white-100,
-$lightness: 20%) !default;
+$progress-bar-border-color: color.scale($md-white-100, $lightness: 20%) !default;
 $progress-bar-border-size: 1px !default;
 $progress-bar-border-style: solid !default;
 $progress-bar-border-radius: var(--progress-bar-border-radius, $global-radius) !default;
@@ -22,7 +23,7 @@ $progress-bg: var(--progress-bar-track-bg-color, $md-gray-20);
 $progress-bar-color: $md-white-100;
 $progress-border-radius: var(--progress-bar-border-radius, $border-radius-base);
 $progress-bar-bg: var(--progress-bar-indicator-in-progress, $md-theme-50);
-$progress-bar-success-bg: var(--progress-bar-indicator-complete ,$md-green-50);
+$progress-bar-success-bg: var(--progress-bar-indicator-complete, $md-green-50);
 $progress-bar-warning-bg: var(--progress-bar-indicator-caution, $md-yellow-50);
 $progress-bar-danger-bg: var(--progress-bar-indicator-failed, $md-red-50);
 $progress-bar-info-bg: $md-mint-50;

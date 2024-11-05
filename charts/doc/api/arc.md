@@ -1,7 +1,7 @@
 # Arc
 
-[![CircleCI](https://img.shields.io/circleci/project/github/momentum-design/momentum-ui/master.svg)](https://circleci.com/gh/momentum-design/momentum-ui/)
-[![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/charts/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/momentum-design/momentum-ui/main.svg)](https://circleci.com/gh/momentum-design/momentum-ui/)
+[![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/main/charts/LICENSE)
 
 > @momentum-ui/charts/arc
 
@@ -49,7 +49,7 @@ Besides generator and modify, the config here contains property ```pie```.
 
 ## generator
 
-Generator defines how to create the shape with data. We use the D3 [arc](https://github.com/d3/d3/blob/master/API.md#arcs) generator here.
+Generator defines how to create the shape with data. We use the D3 [arc](https://github.com/d3/d3/blob/main/API.md#arcs) generator here.
 
 You can set the following prototoype according D3's settings.
 

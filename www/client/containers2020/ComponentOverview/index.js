@@ -17,7 +17,7 @@ class Components extends React.Component {
           backgroundImage={componentBanner}
           backgroundSize='700px'
           figmaURL='https://www.figma.com/file/FKFSq0HQpjp8wYHnQDBRum/Web?node-id=0%3A1'
-          githubURL='https://github.com/momentum-design/momentum-ui/tree/master/react/src/lib'
+          githubURL='https://github.com/momentum-design/momentum-ui/tree/main/react/src/lib'
           heroTitle='Components'
         />
         <div className="site-con">

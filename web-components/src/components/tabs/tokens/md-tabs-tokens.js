@@ -62,6 +62,24 @@ const tabs = {
       light: colors.white[100].name,
       dark: colors.gray[90].name
     }
+  },
+  primary: {
+    "bg-color": {
+      common: "$mds-color-theme-button-primary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-primary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-primary-pressed"
+      }
+    }
   }
 };
 

@@ -68,7 +68,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="error-legacy-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-error-text-color, red)"
             ></md-icon>
@@ -76,8 +76,8 @@ export namespace Alert {
         case "info":
           return html`
             <md-icon
-              name="info-circle-regular"
-              size="${!this.newMomentum ? 32 : 24}"
+              name="info-circle-bold"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-info-text-color, blue)"
             ></md-icon>
@@ -86,7 +86,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="check-circle-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-success-text-color, green)"
             ></md-icon>
@@ -96,7 +96,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="warning-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-warning-text-color, orange)"
             ></md-icon>
@@ -105,7 +105,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="chat-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 32 : 24}"
               iconSet="momentumDesign"
               color="var(--alert-title-text-color)"
             ></md-icon>

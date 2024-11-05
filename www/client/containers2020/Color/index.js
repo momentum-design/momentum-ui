@@ -118,7 +118,7 @@ class Color extends React.PureComponent {
           backgroundColor='#E5F8FF'
           backgroundImage={colorBanner}
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=3519%3A749'
-          githubURL='https://github.com/momentum-design/momentum-ui/blob/master/tokens/data/semanticColor.json'
+          githubURL='https://github.com/momentum-design/momentum-ui/blob/main/tokens/data/semanticColor.json'
           heroTitle='Color'
         />
         <div className='site-warp scrollable-body-wrapper'>

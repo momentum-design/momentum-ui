@@ -50,6 +50,7 @@ $button__radius--36: rem-calc(18);
 $button__radius--40: rem-calc(20);
 $button__radius--52: rem-calc(26);
 $button__radius--round: $global-rounded !default;
+$button__radius--rounded: rem-calc(8) !default;
 
 // Set text alignment
 $button__font-align: center !default;

@@ -227,6 +227,13 @@
       }
     }
 
+    &--rounded {
+      @include radius($button__radius--rounded);
+      &::after {
+        border-radius: $button__radius--rounded;
+      }
+    }
+
     .md-loading {
       left: 50%;
       position: absolute;

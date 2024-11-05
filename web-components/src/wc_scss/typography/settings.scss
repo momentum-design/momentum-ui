@@ -82,19 +82,19 @@ $header-text-rendering: optimizeLegibility !default;
 
 // We use these to control header font sizes
 $title-heading-font-size-pixel: 62;
-$title-heading-font-size: core.rem-calc($title-heading-font-size-pixel) !default;
+$title-heading-font-size: rem-calc($title-heading-font-size-pixel) !default;
 $h1-font-size-pixel: 48;
-$h1-font-size: core.rem-calc($h1-font-size-pixel) !default;
+$h1-font-size: rem-calc($h1-font-size-pixel) !default;
 $h2-font-size-pixel: 36;
-$h2-font-size: core.rem-calc($h2-font-size-pixel) !default;
+$h2-font-size: rem-calc($h2-font-size-pixel) !default;
 $h3-font-size-pixel: 26;
-$h3-font-size: core.rem-calc($h3-font-size-pixel) !default;
+$h3-font-size: rem-calc($h3-font-size-pixel) !default;
 $h4-font-size-pixel: 20;
-$h4-font-size: core.rem-calc($h4-font-size-pixel) !default;
+$h4-font-size: rem-calc($h4-font-size-pixel) !default;
 $h5-font-size-pixel: 16;
-$h5-font-size: core.rem-calc($h5-font-size-pixel) !default;
+$h5-font-size: rem-calc($h5-font-size-pixel) !default;
 $h6-font-size-pixel: 14;
-$h6-font-size: core.rem-calc($h6-font-size-pixel) !default;
+$h6-font-size: rem-calc($h6-font-size-pixel) !default;
 
 // We use these to control header size reduction on small screens
 $h1-font-reduction: 0 !default;
@@ -122,22 +122,22 @@ $small-font-color: color.scale($header-font-color, $lightness: 35%) !default;
 $paragraph-font-family: inherit !default;
 $paragraph-font-weight: $font-weight-normal !default;
 $paragraph-font-size-pixel: 14;
-$paragraph-font-size: core.rem-calc($paragraph-font-size-pixel) !default;
+$paragraph-font-size: rem-calc($paragraph-font-size-pixel) !default;
 
 $paragraph-line-height: 1.6 !default;
-$paragraph-margin-bottom: core.rem-calc(20) !default;
-$paragraph-aside-font-size: core.rem-calc(14) !default;
+$paragraph-margin-bottom: rem-calc(20) !default;
+$paragraph-aside-font-size: rem-calc(14) !default;
 $paragraph-aside-line-height: 1.35 !default;
 $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 // body-small/est styling
 $body-small-font-size-pixel: 12;
-$body-small-font-size: core.rem-calc($body-small-font-size-pixel) !default;
+$body-small-font-size: rem-calc($body-small-font-size-pixel) !default;
 $body-smallest-font-size-pixel: 10;
-$body-smallest-font-size: core.rem-calc($body-smallest-font-size-pixel) !default;
+$body-smallest-font-size: rem-calc($body-smallest-font-size-pixel) !default;
 
-$lead-font-size: core.rem-calc(14) !default;
+$lead-font-size: rem-calc(14) !default;
 
 // We use these to style <code> tags
 $code-color: color-tokens.$md-gray-90 !default;
@@ -174,14 +174,14 @@ $list-side-margin: 1rem !default;
 $list-ordered-side-margin: 1.5rem !default;
 
 $list-side-margin-no-bullet: 0 !default;
-$list-nested-margin: core.rem-calc(20) !default;
+$list-nested-margin: rem-calc(20) !default;
 $definition-list-header-weight: $font-weight-bold !default;
 $definition-list-header-margin-bottom: 0.3rem !default;
-$definition-list-margin-bottom: core.rem-calc(12) !default;
+$definition-list-margin-bottom: rem-calc(12) !default;
 
 // We use these to style blockquotes
 $blockquote-font-color: inherit !default;
-$blockquote-padding: core.rem-calc(9 20 0 19) !default;
+$blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border-width: 4px !default;
 $blockquote-padding: 0.5rem 1rem calc(0.25rem + #{$blockquote-border-width}) 1rem !default;
 $blockquote-border: $blockquote-border-width solid color-tokens.$md-gray-50 !default;
@@ -195,15 +195,15 @@ $acronym-underline: 1px dotted color-tokens.$md-gray-20 !default;
 
 // line height (px) divided by font-size
 $title-heading-line-height: rem-calc(math.div(80, $title-heading-font-size-pixel)) !default;
-$h1-line-height: core.rem-calc(math.div(64, $h1-font-size-pixel)) !default;
-$h2-line-height: core.rem-calc(math.div(48, $h2-font-size-pixel)) !default;
-$h3-line-height: core.rem-calc(math.div(32, $h3-font-size-pixel)) !default;
-$h4-line-height: core.rem-calc(math.div(32, $h4-font-size-pixel)) !default;
-$h5-line-height: core.rem-calc(math.div(24, $h5-font-size-pixel)) !default;
-$h6-line-height: core.rem-calc(math.div(24, $h6-font-size-pixel)) !default;
-$paragraph-line-height: core.rem-calc(math.div(24, $paragraph-font-size-pixel)) !default;
-$body-small-line-height: core.rem-calc(math.div(16, $body-small-font-size-pixel)) !default;
-$body-smallest-line-height: core.rem-calc(math.div(16, $body-smallest-font-size-pixel)) !default;
+$h1-line-height: rem-calc(math.div(64, $h1-font-size-pixel)) !default;
+$h2-line-height: rem-calc(math.div(48, $h2-font-size-pixel)) !default;
+$h3-line-height: rem-calc(math.div(32, $h3-font-size-pixel)) !default;
+$h4-line-height: rem-calc(math.div(32, $h4-font-size-pixel)) !default;
+$h5-line-height: rem-calc(math.div(24, $h5-font-size-pixel)) !default;
+$h6-line-height: rem-calc(math.div(24, $h6-font-size-pixel)) !default;
+$paragraph-line-height: rem-calc(math.div(24, $paragraph-font-size-pixel)) !default;
+$body-small-line-height: rem-calc(math.div(16, $body-small-font-size-pixel)) !default;
+$body-smallest-line-height: rem-calc(math.div(16, $body-smallest-font-size-pixel)) !default;
 
 //------------------------------------
 //    #FONT-SIZE-VARIABLES

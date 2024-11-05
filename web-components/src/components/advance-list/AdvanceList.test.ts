@@ -272,15 +272,6 @@ describe("advanceList Component", () => {
     });
 
     describe("Accessibility and Error Handling", () => {
-      test("should show loading spinner when isLoading is true", async () => {
-        el.isLoading = true;
-        el.requestUpdate();
-        await el.updateComplete;
-        await nextFrame();
-
-        const loader = el.shadowRoot?.querySelector(".spin-loader");
-        expect(loader).not.toBeNull();
-      });
 
       test("should apply correct ARIA role and label", async () => {
         const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");

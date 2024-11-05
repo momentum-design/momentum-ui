@@ -151,6 +151,7 @@ export namespace Button {
     @property({ type: String }) ariaHaspopup = "false";
     @property({ type: String }) ariaPressed = "";
     @property({ type: Boolean }) circle = false;
+    @property({ type: Boolean }) rounded = false;
     @property({ type: String }) color: Button.color = "";
     @property({ type: Boolean }) containerLarge = false;
     @property({ type: Boolean }) disabled = false;
@@ -238,6 +239,7 @@ export namespace Button {
     get buttonClassMap() {
       return {
         "md-button--circle": this.circle,
+        "md-button--rounded": this.rounded,
         "md-button--none": this.hasRemoveStyle,
         "md-button--outline": this.outline,
         active: this.active && !this.disabled,

@@ -352,6 +352,7 @@ export namespace Input {
         "md-input--multiline": this.multiline,
         "md-input--multi": this.multi,
         [`md-input--${this.shape}`]: !!this.shape,
+        "md-input--compact": this.compact,
         "md-input--before": this.auxiliaryContentPosition === "before" || this.searchable,
         "md-input--after": this.auxiliaryContentPosition === "after",
         "md-active": this.isEditing,

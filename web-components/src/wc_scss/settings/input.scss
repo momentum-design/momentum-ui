@@ -57,3 +57,7 @@ $input__background--warning: $md-yellow-10 !default;
 $input__background--warning--hover: $md-yellow-20 !default;
 $input__border-color--warning: $md-yellow-40 !default;
 $input__message__font-color--warning: $md-yellow-70 !default;
+
+$input__height--momentum: rem-calc(32) !default;
+$input__height--compact--momentum: rem-calc(28) !default;
+$input__font-size-compact--momentum: rem-calc(14) !default;

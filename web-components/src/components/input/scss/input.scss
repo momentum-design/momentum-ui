@@ -250,14 +250,28 @@
 
       .md-input {
         border-radius: 8px;
+        height: $input__height--momentum;
 
         &:focus {
           outline: 2px solid var(--input-default-outline-color);
           outline-offset: rem-calc(2);
           box-shadow: none; 
         }
-      }
 
+        &--pill {
+          border-radius: calc($input__height--momentum / 2);
+        }
+
+        &--compact {
+          font-size: $input__font-size-compact--momentum;
+          height: $input__height--compact--momentum;
+
+          &.md-input--pill {
+            border-radius: calc($input__height--compact--momentum / 2);
+          }
+        }
+      }
+      
       .md-input__messages {
         padding-left: 0;
       }

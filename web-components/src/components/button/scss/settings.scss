@@ -63,8 +63,10 @@ $button__padding--36: var(--button-padding-36, rem-calc(9) rem-calc(18) rem-calc
 $button__padding--40: var(--button-padding-40, rem-calc(11) rem-calc(20) rem-calc(12) rem-calc(20));
 $button__padding--52: var(--button-padding-52, rem-calc(14) rem-calc(26) rem-calc(15) rem-calc(26));
 
-$button__padding__state-selector--32: var(--button-state-selector-padding, rem-calc(8) rem-calc(10) rem-calc(8) rem-calc(10));
-
+$button__padding__state-selector--32: var(
+  --button-state-selector-padding,
+  rem-calc(8) rem-calc(10) rem-calc(8) rem-calc(10)
+);
 
 $button__transition-speed: 150ms;
 
@@ -101,7 +103,7 @@ $button__background-color--hover--dark--contrast: $white-92 !default;
 $button__background-color--active--dark--contrast: $white-84 !default;
 
 // Blue button colors
-$button--blue__outline-color: var(--button-primary-outline-color, $lm-button-primary-outline-color-light) !default;
+$button--blue__outline-color: var(--button-primary-outline-color) !default;
 $button--blue__background-color: $md-theme-50 !default;
 $button--blue__background-color--hover: $md-theme-60 !default;
 $button--blue__background-color--active: $md-theme-70 !default;
@@ -216,14 +218,10 @@ $button--white__background-color--active: $md-gray-30 !default;
 $button--white__border: 0 0 0 1px $md-gray-30 !default;
 
 // Dark Gray button colors
-$button--dark-gray__background-color: var(
-  --button-inverted-white-hover-bg-color,
-  $lm-button-inverted-white-hover-bg-color-light
-) !default;
+$button--dark-gray__background-color: var(--button-inverted-white-hover-bg-color) !default;
 $button--dark-gray__background-color--hover: $md-gray-80 !default;
 $button--dark-gray__background-color--active: $md-gray-70 !default;
-$button--dark-gray__border: 0 0 0 1px
-  var(--button-inverted-white-hover-bg-color, $lm-button-inverted-white-hover-bg-color-light) !default;
+$button--dark-gray__border: 0 0 0 1px var(--button-inverted-white-hover-bg-color) !default;
 
 // Duck Egg button colors
 $button--duck-egg__background-color: $md-gray-50 !default;

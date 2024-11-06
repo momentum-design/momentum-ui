@@ -6,6 +6,7 @@
  *
  */
 
+import { Placement as PopoverPlacement } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
@@ -36,20 +37,7 @@ type OffsetsFunction = ({
 }) => [number, number];
 
 export const menuOverlaySize = ["small", "large"] as const;
-export const menuOverlayPlacement = [
-  "left-start",
-  "left",
-  "left-end",
-  "right-start",
-  "right",
-  "right-end",
-  "top-start",
-  "top",
-  "top-end",
-  "bottom-start",
-  "bottom",
-  "bottom-end"
-] as const;
+export const menuOverlayPlacement = PopoverPlacement;
 export const menuOverlayRole = ["menu", "dialog"] as const;
 
 export namespace MenuOverlay {

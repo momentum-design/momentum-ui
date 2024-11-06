@@ -1,28 +1,27 @@
-import { html, LitElement, css, property, internalProperty, PropertyValues } from 'lit-element';
-import { customElementWithCheck } from '@/mixins/CustomElementCheck';
-import './ErrorLoader.scss';
-import '@/components/help-text/HelpText';
-import '@/components/link/Link';
+import "@/components/help-text/HelpText";
+import "@/components/link/Link";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import "./ErrorLoader.scss";
 export namespace MdFetchError {
-  @customElementWithCheck('md-fetch-error')
+  @customElementWithCheck("md-fetch-error")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) messageType = 'error';
-    @property({ type: String }) customStyle = '';
-    @property({ type: String }) commonErrorMsg = '';
-    @property({ type: String }) commonTryAgain = '';
-    @property({ type: String }) trackingId = '';
-    @property({ type: String }) trackingIdInputLabel = '';
+    @property({ type: String }) messageType = "error";
+    @property({ type: String }) customStyle = "";
+    @property({ type: String }) commonErrorMsg = "";
+    @property({ type: String }) commonTryAgain = "";
+    @property({ type: String }) trackingId = "";
+    @property({ type: String }) trackingIdInputLabel = "";
 
     @internalProperty() isLoading = false;
     @internalProperty() hasError = false;
 
-
-    private onRetry(event: Event) {
+    private onRetry(_event: Event) {
       this.dispatchEvent(
-        new CustomEvent('retry', {
-          detail: { message: 'Retrying fetch...' },
+        new CustomEvent("retry", {
+          detail: { message: "Retrying fetch..." },
           bubbles: true,
-          composed: true,
+          composed: true
         })
       );
     }
@@ -37,9 +36,7 @@ export namespace MdFetchError {
         >
           <div class="error-block">
             <span>
-              <span class="error-span-padding">
-                ${this.commonErrorMsg}.
-              </span>
+              <span class="error-span-padding"> ${this.commonErrorMsg}. </span>
               <md-link
                 inline
                 class="infinite-scroll-retry-link"
@@ -52,10 +49,8 @@ export namespace MdFetchError {
                 ${this.commonTryAgain}
               </md-link>
             </span>
-            ${this.trackingId && this.trackingId !== ''
-              ? html`<span class="tracking-error-block">
-                  ${this.trackingIdInputLabel} ${this.trackingId}
-                </span>`
+            ${this.trackingId && this.trackingId !== ""
+              ? html`<span class="tracking-error-block"> ${this.trackingIdInputLabel} ${this.trackingId} </span>`
               : null}
           </div>
         </md-help-text>
@@ -63,7 +58,7 @@ export namespace MdFetchError {
     }
 
     updated(changedProperties: PropertyValues) {
-      if (changedProperties.has('hasError') && this.hasError) {
+      if (changedProperties.has("hasError") && this.hasError) {
         this.requestUpdate();
       }
     }
@@ -72,6 +67,6 @@ export namespace MdFetchError {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'md-fetch-error': MdFetchError.ELEMENT;
+    "md-fetch-error": MdFetchError.ELEMENT;
   }
 }

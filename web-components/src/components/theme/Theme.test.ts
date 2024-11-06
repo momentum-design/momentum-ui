@@ -88,7 +88,7 @@ describe("Theme", () => {
 
   test("handleVirtualTooltipChangeMessage should update virtual tooltip content if reference matches", async () => {
     const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
     const reference = document.createElement("div");
     const popper = document.createElement("div");
     const content = document.createElement("div");
@@ -128,7 +128,7 @@ describe("Theme", () => {
 
   test("handleVirtualTooltipChangeMessage should not update virtual tooltip content if reference does not match", async () => {
     const element = await fixture<Theme.ELEMENT>(`<md-theme></md-theme>`);
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
     const reference = document.createElement("div");
     const differentReference = document.createElement("div");
     const popper = document.createElement("div");

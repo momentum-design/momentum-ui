@@ -1,0 +1,14 @@
+@use "@/wc_scss/tools/functions/core" as core;
+
+$min-width: core.rem-calc(170);
+$max-width: core.rem-calc(300);
+$main-radius: core.rem-calc(5);
+$main-padding: core.rem-calc(12);
+
+$header-font-size: core.rem-calc(14);
+$header-line-height: core.rem-calc(20);
+$header-spacing: core.rem-calc(4);
+$header-padding-right: core.rem-calc(28);
+
+$body-font-size: core.rem-calc(14);
+$body-line-height: core.rem-calc(20);

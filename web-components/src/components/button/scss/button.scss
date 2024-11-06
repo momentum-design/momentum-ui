@@ -20,29 +20,29 @@
     // default button - secondary styling
     // Declarations before nested rules
     & {
-      background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
+      background-color: var(--button-secondary-bg-color);
 
       box-sizing: border-box;
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      color: var(--button-secondary-text-color);
     }
 
     &:hover {
-      background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      background-color: var(--button-secondary-hover-bg-color);
+      color: var(--button-secondary-text-color);
     }
 
     &:active {
-      background-color: var(--button-secondary-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      background-color: var(--button-secondary-pressed-bg-color);
+      color: var(--button-secondary-text-color);
     }
 
     &:disabled,
     &.disabled {
-      background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-      color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+      background-color: var(--button-disabled-bg-color);
+      color: var(--button-disabled-text-color);
       &:focus {
-        background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-        color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+        background-color: var(--button-disabled-bg-color);
+        color: var(--button-disabled-text-color);
       }
     }
 
@@ -59,7 +59,7 @@
     }
 
     &:focus::after {
-      box-shadow: 0 0 0 $focus-ring-size var(--button-focus-ring-color, $lm-button-focus-ring-color-light);
+      box-shadow: 0 0 0 $focus-ring-size var(--button-focus-ring-color);
     }
 
     + .md-button__label {
@@ -592,40 +592,81 @@
 }
 
 :host([variant="primary"]) .md-button {
-  background-color: var(--button-primary-bg-color, $lm-button-primary-bg-color-light);
-  color: var(--button-primary-text-color, $lm-button-primary-text-color-light);
+  background-color: var(--button-primary-bg-color);
+  color: var(--button-primary-text-color);
 
   &:hover {
-    background-color: var(--button-primary-hover-bg-color, $lm-button-primary-hover-bg-color-light);
+    background-color: var(--button-primary-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-primary-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
+    background-color: var(--button-primary-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+  }
+}
+
+:host([variant="inverted-primary"]) .md-button {
+  background-color: var(--button-inverted-primary-bg-color);
+  color: var(--button-inverted-primary-text-color);
+
+  &:hover {
+    background-color: var(--button-inverted-primary-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--button-inverted-primary-pressed-bg-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-inverted-primary-disabled-bg-color);
+    color: var(--button-inverted-primary-disabled-text-color);
+  }
+}
+
+:host([variant="inverted-secondary"]) .md-button {
+  background-color: var(--button-inverted-secondary-bg-color);
+  color: var(--button-inverted-secondary-text-color);
+  border: 1px solid var(--button-inverted-secondary-border-color);
+
+  &:hover {
+    background-color: var(--button-inverted-secondary-hover-bg-color);
+    color: var(--button-inverted-secondary-text-color);
+  }
+
+  &:active {
+    background-color: var(--button-inverted-secondary-pressed-bg-color);
+    color: var(--button-inverted-secondary-text-color);
+  }
+
+  &:disabled, &.disabled {
+    background-color: var(--button-inverted-secondary-disabled-bg-color);
+    border: 1px solid var(--button-inverted-secondary-disabled-border-color);
+    color: var(--button-inverted-secondary-disabled-text-color);
   }
 }
 
 :host([variant="promotional"]) .md-button {
-  background: var(--button-promotional-bg-color, $lm-button-primary-bg-color-light);
-  color: var(--button-promotional-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
+  background: var(--button-promotional-bg-color);
+  color: var(--button-promotional-text-color, var(--button-primary-text-color));
 
   &:hover {
-    background: var(--button-promotional-hover-bg-color, $lm-button-primary-hover-bg-color-light);
+    background: var(--button-promotional-hover-bg-color);
   }
 
   &:active {
-    background: var(--button-promotional-pressed-bg-color, $lm-button-primary-pressed-bg-color-light);
+    background: var(--button-promotional-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
@@ -651,105 +692,105 @@
 
 :host([variant="secondary"]) .md-button {
   &:not(.isActive) {
-    background-color: var(--button-secondary-bg-color, $lm-button-secondary-bg-color-light);
-    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    background-color: var(--button-secondary-bg-color);
+    color: var(--button-secondary-text-color);
     border: 1px solid var(--button-secondary-border-color);
 
     &:hover {
-      background-color: var(--button-secondary-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      background-color: var(--button-secondary-hover-bg-color);
+      color: var(--button-secondary-text-color);
     }
 
     &:active {
-      background-color: var(--button-secondary-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      background-color: var(--button-secondary-pressed-bg-color);
+      color: var(--button-secondary-text-color);
     }
 
     &:disabled,
     &.disabled {
       background-color: var(
         --button-secondary-disabled-bg-color,
-        var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light)
+        var(--button-disabled-bg-color)
       );
       border: 1px solid var(--button-secondary-disabled-border-color);
       color: var(
         --button-secondary-disabled-text-color,
-        var(--button-disabled-text-color, $lm-button-disabled-text-color-light)
+        var(--button-disabled-text-color)
       );
     }
   }
 
   &.isActive {
-    background-color: var(--button-secondary-active-bg-color, $lm-button-secondary-bg-color-light);
-    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+    background-color: var(--button-secondary-active-bg-color);
+    color: var(--button-secondary-text-color);
     border: 1px solid var(--button-secondary-border-color);
 
     &:hover {
-      background-color: var(--button-secondary-active-hover-bg-color, $lm-button-secondary-hover-bg-color-light);
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      background-color: var(--button-secondary-active-hover-bg-color);
+      color: var(--button-secondary-text-color);
     }
 
     &:active {
-      background-color: var(--button-secondary-active-pressed-bg-color, $lm-button-secondary-pressed-bg-color-light);
-      color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+      background-color: var(--button-secondary-active-pressed-bg-color);
+      color: var(--button-secondary-text-color);
     }
 
     &:disabled,
     &.disabled {
       background-color: var(
         --button-secondary-disabled-bg-color,
-        var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light)
+        var(--button-disabled-bg-color)
       );
       border: 1px solid var(--button-secondary-disabled-border-color);
       color: var(
         --button-secondary-disabled-text-color,
-        var(--button-disabled-text-color, $lm-button-disabled-text-color-light)
+        var(--button-disabled-text-color)
       );
     }
   }
 }
 
 :host([variant="red"]) .md-button {
-  background-color: var(--button-red-bg-color, $lm-button-red-bg-color-light);
-  color: var(--button-red-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
+  background-color: var(--button-red-bg-color);
+  color: var(--button-red-text-color, var(--button-primary-text-color));
 
   &:hover {
-    background-color: var(--button-red-hover-bg-color, $lm-button-red-hover-bg-color-light);
+    background-color: var(--button-red-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-red-pressed-bg-color, $lm-button-red-pressed-bg-color-light);
+    background-color: var(--button-red-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
 :host([variant="green"]) .md-button {
-  background-color: var(--button-green-bg-color, $lm-button-green-bg-color-light);
-  color: var(--button-green-text-color, var(--button-primary-text-color, $lm-button-primary-text-color-light));
+  background-color: var(--button-green-bg-color);
+  color: var(--button-green-text-color, var(--button-primary-text-color));
 
   &:hover {
-    background-color: var(--button-green-hover-bg-color, $lm-button-green-hover-bg-color-light);
+    background-color: var(--button-green-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-green-pressed-bg-color, $lm-button-green-pressed-bg-color-light);
+    background-color: var(--button-green-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
 :host([variant="available"]) .md-button {
-  background-color: var(--button-available-bg-color, $lm-button-available-bg-color-light);
-  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  background-color: var(--button-available-bg-color);
+  color: var(--button-secondary-text-color);
   border: 1px solid var(--button-available-border-color);
   font-size: var(--body-secondary-font-size, $button__font-size);
   font-family: var(--brand-font-regular, $brand-font-regular);
@@ -764,23 +805,23 @@
   }
 
   &:hover {
-    background-color: var(--button-available-hover-bg-color, $lm-button-available-hover-bg-color-light);
+    background-color: var(--button-available-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-available-pressed-bg-color, $lm-button-available-pressed-bg-color-light);
+    background-color: var(--button-available-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
 :host([variant="unavailable"]) .md-button {
-  background-color: var(--button-unavailable-bg-color, $lm-button-unavailable-bg-color-light);
-  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  background-color: var(--button-unavailable-bg-color);
+  color: var(--button-secondary-text-color);
   border: 1px solid var(--button-unavailable-border-color);
   border-radius: var(--button-state-selector-border-radius);
   font-size: var(--body-secondary-font-size, $button__font-size);
@@ -796,23 +837,23 @@
   }
 
   &:hover {
-    background-color: var(--button-unavailable-hover-bg-color, $lm-button-unavailable-hover-bg-color-light);
+    background-color: var(--button-unavailable-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-unavailable-pressed-bg-color, $lm-button-unavailable-pressed-bg-color-light);
+    background-color: var(--button-unavailable-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
 :host([variant="idle"]) .md-button {
-  background-color: var(--button-idle-bg-color, $lm-button-idle-bg-color-light);
-  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  background-color: var(--button-idle-bg-color);
+  color: var(--button-secondary-text-color);
   border: 1px solid var(--button-idle-border-color);
   border-radius: var(--button-state-selector-border-radius);
   font-size: var(--body-secondary-font-size, $button__font-size);
@@ -828,65 +869,65 @@
   }
 
   &:hover {
-    background-color: var(--button-idle-hover-bg-color, $lm-button-idle-hover-bg-color-light);
+    background-color: var(--button-idle-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-idle-pressed-bg-color, $lm-button-idle-pressed-bg-color-light);
+    background-color: var(--button-idle-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 }
 
 :host([variant="white"]) .md-button {
-  background-color: var(--button-white-bg-color, $lm-button-white-bg-color-light);
-  color: var(--button-white-text-color, $lm-button-white-text-color-light);
+  background-color: var(--button-white-bg-color);
+  color: var(--button-white-text-color);
 
   &:hover {
-    background-color: var(--button-white-hover-bg-color, $lm-button-white-hover-bg-color-light);
+    background-color: var(--button-white-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-white-pressed-bg-color, $lm-button-white-pressed-bg-color-light);
+    background-color: var(--button-white-pressed-bg-color);
   }
 
   &--outline {
-    box-shadow: 0 0 0 1px var(--button-white-outline-color, $lm-button-white-outline-color-light);
-    color: var(--button-white-outline-text-color, $lm-button-white-outline-text-color-light);
+    box-shadow: 0 0 0 1px var(--button-white-outline-color);
+    color: var(--button-white-outline-text-color);
   }
 }
 
 :host([variant="inverted-white"]) .md-button {
-  background-color: var(--button-inverted-white-bg-color, $lm-button-inverted-white-bg-color-light);
-  color: var(--button-inverted-white-text-color, $lm-button-inverted-white-text-color-light);
+  background-color: var(--button-inverted-white-bg-color);
+  color: var(--button-inverted-white-text-color);
 
   &:hover {
-    background-color: var(--button-inverted-white-hover-bg-color, $lm-button-inverted-white-hover-bg-color-light);
+    background-color: var(--button-inverted-white-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-inverted-white-pressed-bg-color, $lm-button-inverted-white-pressed-bg-color-light);
+    background-color: var(--button-inverted-white-pressed-bg-color);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--button-disabled-bg-color, $lm-button-disabled-bg-color-light);
-    color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
   }
 
   &--outline {
-    box-shadow: 0 0 0 1px var(--button-inverted-white-outline-color, $lm-button-inverted-white-outline-color-light);
-    color: var(--button-inverted-white-outline-text-color, $lm-button-inverted-white-outline-text-color-light);
+    box-shadow: 0 0 0 1px var(--button-inverted-white-outline-color);
+    color: var(--button-inverted-white-outline-text-color);
   }
 }
 
 :host([variant="engaged"]) .md-button {
-  background-color: var(--button-engaged-bg-color, $lm-button-engaged-bg-color-light);
-  color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
+  background-color: var(--button-engaged-bg-color);
+  color: var(--button-secondary-text-color);
   border: 1px solid var(--button-engaged-border-color);
   border-radius: var(--button-state-selector-border-radius);
   font-size: var(--body-secondary-font-size, $button__font-size);
@@ -903,11 +944,11 @@
   }
 
   &:hover {
-    background-color: var(--button-engaged-hover-bg-color, $lm-button-engaged-hover-bg-color-light);
+    background-color: var(--button-engaged-hover-bg-color);
   }
 
   &:active {
-    background-color: var(--button-engaged-pressed-bg-color, $lm-button-engaged-pressed-bg-color-light);
+    background-color: var(--button-engaged-pressed-bg-color);
   }
 }
 

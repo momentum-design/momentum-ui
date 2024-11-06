@@ -126,6 +126,14 @@ const combobox = {
     color: {
       common: "$mds-color-theme-text-secondary-normal"
     }
+  },
+  "primary-button": {
+    "bg-color": {
+      common: "$mds-color-theme-background-solid-primary-normal"
+    },
+    test: {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    }
   }
 };
 

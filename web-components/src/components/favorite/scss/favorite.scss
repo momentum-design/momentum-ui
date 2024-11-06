@@ -1,9 +1,12 @@
+@use "@/wc_scss/tools/mixins/flex";
+@use "@/wc_scss/tools/mixins/focus";
+
 :host {
-  @include flex($display: inline-flex);
+  @include flex.flex($display: inline-flex);
 }
 
 .md-favorite {
-  @include flex($display: inline-flex);
+  @include flex.flex($display: inline-flex);
   border-radius: $favorite-border;
   height: $favorite-size;
   position: relative;
@@ -19,12 +22,11 @@
 
   md-icon,
   md-icon::part(icon) {
-    color: var(--button-secondary-text-color, $lm-button-secondary-text-color-light);
-    line-height: rem-calc(13);
+    color: var(--button-secondary-text-color);   
   }
 
   &:hover {
-    background-color: var(--button-favorite-hover-bg-color, $lm-button-favorite-hover-bg-color-light);
+    background-color: var(--button-favorite-hover-bg-color);
   }
 
   &:focus {
@@ -32,7 +34,7 @@
   }
 
   &:active {
-    background-color: var(--button-favorite-pressed-bg-color, $lm-button-favorite-pressed-bg-color-light);
+    background-color: var(--button-favorite-pressed-bg-color);
   }
 
   &::after {
@@ -47,7 +49,7 @@
   }
 
   &:focus::after {
-    box-shadow: $focus-boxshadow;
+    box-shadow: focus.$focus-boxshadow;
   }
 
   &--disabled {
@@ -59,23 +61,23 @@
     }
 
     md-icon::part(icon) {
-      color: var(--button-disabled-text-color, $lm-button-disabled-text-color-light);
+      color: var(--button-disabled-text-color);
     }
   }
 
   &--active {
     md-icon::part(icon) {
-      color: var(--button-favorite-icon-color, $md-yellow-50);
+      color: var(--button-favorite-icon-color);
     }
 
     &:hover {
       md-icon::part(icon) {
-        color: var(--button-favorite-hover-icon-color, $md-yellow-50);
+        color: var(--button-favorite-hover-icon-color);
       }
     }
     &:active {
       md-icon::part(icon) {
-        color: var(--button-favorite-pressed-icon-color, $md-yellow-50);
+        color: var(--button-favorite-pressed-icon-color);
       }
     }
   }

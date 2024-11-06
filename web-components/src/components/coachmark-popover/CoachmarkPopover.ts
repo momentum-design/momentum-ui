@@ -13,6 +13,7 @@ import { PlacementType } from "@/components/popover/Popover.types";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { LitElement, PropertyValues, html, property, query } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 export namespace CoachmarkPopover {
   /**
@@ -134,12 +135,6 @@ export namespace CoachmarkPopover {
      * @type {Element[] | null}
      */
     private slotContent: Element[] | null = null;
-
-    get coachWrapClassMap() {
-      return {
-        "md-coachmark--active": !!this.show
-      };
-    }
 
     /**
      * Returns the styles for the component.
@@ -277,22 +272,11 @@ export namespace CoachmarkPopover {
      */
     private renderHeader() {
       return html`
-        <div class="header-container">
+        <div class="header-container ${classMap({ "hide-close": this.hideCloseButton })}">
           ${this.headerIconName
             ? html`<md-icon name=${this.headerIconName} size="16" iconSet="momentumDesign"></md-icon>`
             : ""}
           ${this.header ? html`<span class="header-title">${this.header}</span>` : ""}
-          ${!this.hideCloseButton
-            ? html`<md-button
-                class="cancel-icon-button"
-                size="24"
-                hasRemoveStyle
-                circle
-                @button-click=${() => (this.show = false)}
-              >
-                <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
-              </md-button>`
-            : ""}
         </div>
       `;
     }
@@ -317,12 +301,20 @@ export namespace CoachmarkPopover {
       return html`
         <div class="footer-container">
           ${this.primaryButton
-            ? html`<md-button variant="inverted-primary" @button-click=${() => this.notifyPrimaryButtonAction()}>
+            ? html`<md-button
+                variant="inverted-primary"
+                size="28"
+                @button-click=${() => this.notifyPrimaryButtonAction()}
+              >
                 ${this.primaryButton}</md-button
               >`
             : ""}
           ${this.secondaryButton
-            ? html`<md-button variant="inverted-secondary" @button-click=${() => this.notifySecondaryButtonAction()}>
+            ? html`<md-button
+                variant="inverted-secondary"
+                size="28"
+                @button-click=${() => this.notifySecondaryButtonAction()}
+              >
                 ${this.secondaryButton}</md-button
               >`
             : ""}
@@ -348,6 +340,7 @@ export namespace CoachmarkPopover {
           ?is-open=${this.show}
           role="dialog"
           show-arrow
+          ?show-close=${!this.hideCloseButton}
           interactive
           trigger="manual"
           placement=${this.placement}

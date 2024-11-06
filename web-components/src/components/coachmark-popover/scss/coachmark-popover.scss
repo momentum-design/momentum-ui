@@ -21,6 +21,12 @@
       display: flex;      
       width: 100%;
       gap: constants.$header-spacing;
+      padding-right: constants.$header-padding-right;
+      align-items: center;
+
+      &.hide-close {
+        margin-right: constants.$main-padding;;
+      }
     }
 
     .header-title {
@@ -28,8 +34,6 @@
       font-size: constants.$header-font-size;
       font-weight: var(--brand-font-weight-bold, 700);
       line-height: constants.$header-line-height;
-      padding-right: constants.$header-padding-right;
-      flex-grow: 1;      
     }
 
     //Body
@@ -47,7 +51,7 @@
     //Footer
     .footer-container {
       display: flex;
-      justify-content: flex-start;
+      justify-content: flex-end;
       flex-direction: row;
       gap: 0.5rem;
       padding-top: constants.$main-padding;

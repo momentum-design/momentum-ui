@@ -55,6 +55,8 @@
       right: $main-padding;
       top: $main-padding;
       padding-left: core.rem-calc(8);
+      width: $cancel-button-size;
+      height: $cancel-button-size;
       cursor: pointer;
     }
 

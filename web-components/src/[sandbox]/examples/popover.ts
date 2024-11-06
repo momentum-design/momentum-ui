@@ -122,9 +122,33 @@ export class PopoverTemplateSandbox extends LitElement {
             <md-avatar newMomentum size="32" title="Avatar" type="active"></md-avatar>
           </md-button>
         </md-coachmark-popover>
-
+      </div>
+      <br />
+      <br />
+      <div class="popover-trigger-element-container">
         <md-popover placement="bottom">
-          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Test</md-button>
+          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Click</md-button>
+          <div class="popoverContent">
+            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
+          </div>
+        </md-popover>
+
+        <md-popover placement="bottom" trigger="mouseenter">
+          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Hover</md-button>
+          <div class="popoverContent">
+            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
+          </div>
+        </md-popover>
+
+        <md-popover placement="bottom" trigger="focus">
+          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Focus</md-button>
+          <div class="popoverContent">
+            <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
+          </div>
+        </md-popover>
+
+        <md-popover placement="bottom" trigger="focus mouseenter">
+          <md-button slot="triggerElement" class="popover-button" variant="primary" size="32">Focus Hover</md-button>
           <div class="popoverContent">
             <span>Lorem ipsum dolor site ate aetns ctetuer.</span>
           </div>

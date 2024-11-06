@@ -5,13 +5,10 @@ $max-width: core.rem-calc(300);
 $main-radius: core.rem-calc(5);
 $main-padding: core.rem-calc(12);
 
-$arrow-height: core.rem-calc(16);
-$arrow-width: core.rem-calc(32);
-
-$header-font-size: var(--body-primary-font-size, core.rem-calc(16));
-$header-line-height: core.rem-calc(24);
+$header-font-size: core.rem-calc(14);
+$header-line-height: core.rem-calc(20);
 $header-spacing: core.rem-calc(4);
 $header-padding-right: core.rem-calc(28);
 
-$body-font-size: var(--body-secondary-font-size, core.rem-calc(14));
-$body-line-height: core.rem-calc(22);
+$body-font-size: core.rem-calc(14);
+$body-line-height: core.rem-calc(20);

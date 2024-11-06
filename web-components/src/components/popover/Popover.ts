@@ -11,13 +11,20 @@ import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
+import { debounce } from "@/utils/helpers";
 import { isActionKey } from "@/utils/keyboard";
-import { arrow, createPopper, flip, Instance, offset, Placement, preventOverflow, Rect } from "@popperjs/core";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { nothing } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { ARROW_HEIGHT, PlacementType, PopoverRoleType } from "./Popover.types";
 import styles from "./scss/module.scss";
+
+import { Placement } from "@popperjs/core/lib";
+import arrow from "@popperjs/core/lib/modifiers/arrow";
+import flip from "@popperjs/core/lib/modifiers/flip";
+import offset from "@popperjs/core/lib/modifiers/offset";
+import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
+import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
 
 type OffsetsFunction = ({
   popper,
@@ -187,6 +194,15 @@ export namespace Popover {
      */
     private popperInstance: Instance | null = null;
 
+    /**
+     * If mouse is over the trigger element or popover container.
+     *
+     * This property is used when both focus and mouse triggers are present
+     * When focus leaves the trigger element if mouse is hovering we should not close the popover
+     */
+    @internalProperty()
+    private isMouseOver = false;
+
     static get styles() {
       return [styles];
     }
@@ -209,14 +225,15 @@ export namespace Popover {
         }
 
         if (this.trigger?.includes("mouseenter")) {
-          this.triggerElement.removeEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.triggerElement.removeEventListener("mouseenter", this.onMouseEnteredTriggerOrPopup);
           this.triggerElement.removeEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
-          this.popoverContainer?.removeEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.popoverContainer?.removeEventListener("mouseenter", this.onMouseEnteredTriggerOrPopup);
           this.popoverContainer?.removeEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
         }
 
         if (this.trigger?.includes("focus")) {
-          //remove foucusin listener
+          this.triggerElement.removeEventListener("focusin", this.onFocusInTrigger);
+          this.triggerElement.removeEventListener("focusout", this.onFocusOutTrigger);
         }
       }
     }
@@ -231,15 +248,16 @@ export namespace Popover {
 
         //Show popover on mouse enter and hide on mouse exit
         if (this.trigger?.includes("mouseenter")) {
-          this.triggerElement.addEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.triggerElement.addEventListener("mouseenter", this.onMouseEnteredTriggerOrPopup);
           this.triggerElement.addEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
-          this.popoverContainer?.addEventListener("mouseenter", this.onMouseEnterdTriggerOrPopup);
+          this.popoverContainer?.addEventListener("mouseenter", this.onMouseEnteredTriggerOrPopup);
           this.popoverContainer?.addEventListener("mouseleave", this.onMouseLeaveTriggerOrPopup);
         }
 
         //Show popover when the trigger element gets keyboard focus
         if (this.trigger?.includes("focus")) {
-          //add foucusin listener
+          this.triggerElement.addEventListener("focusin", this.onFocusInTrigger);
+          this.triggerElement.addEventListener("focusout", this.onFocusOutTrigger);
         }
       }
     }
@@ -263,15 +281,21 @@ export namespace Popover {
     };
 
     onWindowBlurEvent = () => {
+      if (this.trigger?.includes("manual")) {
+        return;
+      }
+
       if (this.isOpen) {
         this.isOpen = false;
       }
     };
 
-    async onOutsideOverlayKeydown(event: KeyboardEvent) {
-      if (this.trigger?.includes("manual")) {
-        return;
-      }
+    onOutsideOverlayKeydown = async (event: KeyboardEvent) => {
+      // if (this.trigger?.includes("manual")) {
+      //   return;
+      // }
+
+      console.log("onOutsideOverlayKeydown", event.code, this.isOpen);
 
       if (!this.isOpen || event.code !== Key.Escape) {
         return;
@@ -281,7 +305,7 @@ export namespace Popover {
       this.isOpen = false;
       await this.updateComplete;
       this.focusOnTrigger();
-    }
+    };
 
     private handleTriggerElementSlotChange() {
       const assignedElements = this.triggerSlot.assignedElements({ flatten: true });
@@ -311,13 +335,45 @@ export namespace Popover {
       }
     };
 
-    onMouseEnterdTriggerOrPopup = (_event: MouseEvent) => {
-      //Handle show on mouse enter
+    onFocusInTrigger = () => {
+      if (this.trigger?.includes("focus")) {
+        this.isOpen = true;
+      }
+    };
+
+    onFocusOutTrigger = () => {
+      if (this.trigger?.includes("focus") && !this.isMouseOver) {
+        this.isOpen = false;
+      }
+    };
+
+    onMouseEnteredTriggerOrPopup = (_event: MouseEvent) => {
+      this.isMouseOver = true;
+
+      if (this.trigger?.includes("mouseenter")) {
+        this.setIsOpenDebounced(true);
+      }
     };
 
     onMouseLeaveTriggerOrPopup = (_event: MouseEvent) => {
-      //Handle close on mouse leave
+      this.isMouseOver = false;
+
+      if (this.trigger?.includes("mouseenter") && !this.shouldStayOpenOnTriggerFocus()) {
+        this.setIsOpenDebounced(false);
+      }
     };
+
+    private shouldStayOpenOnTriggerFocus() {
+      if (this.trigger?.includes("focus")) {
+        const activeElement = (this.getRootNode() as Document).activeElement;
+        return activeElement === this.triggerElement;
+      }
+      return false;
+    }
+
+    private setIsOpenDebounced = debounce((flag: boolean) => {
+      this.isOpen = flag;
+    }, 100);
 
     protected override firstUpdated(changedProperties: PropertyValues): void {
       super.firstUpdated(changedProperties);
@@ -384,6 +440,7 @@ export namespace Popover {
         },
         placement: this.placement,
         modifiers: [
+          ...defaultModifiers,
           flip,
           offset,
           preventOverflow,
@@ -456,7 +513,10 @@ export namespace Popover {
         document.addEventListener("click", this.onOutsideOverlayClick);
         document.addEventListener("keydown", this.onOutsideOverlayKeydown);
 
-        this.activateFocusTrap?.();
+        if (this.interactive) {
+          this.activateFocusTrap?.();
+        }
+
         this.triggerElement?.setAttribute("aria-expanded", "true");
         this.popoverContainer?.setAttribute("data-show", "");
       } else {
@@ -498,7 +558,7 @@ export namespace Popover {
             ${this.showClose
               ? html`<md-button
                   class="cancel-icon-button"
-                  size="24"
+                  size="20"
                   hasRemoveStyle
                   circle
                   @button-click=${() => (this.isOpen = false)}

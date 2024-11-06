@@ -13,18 +13,17 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import { debounce } from "@/utils/helpers";
 import { isActionKey } from "@/utils/keyboard";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined.js";
-import { ARROW_HEIGHT, PlacementType, PopoverRoleType } from "./Popover.types";
-import styles from "./scss/module.scss";
-
 import { Placement } from "@popperjs/core/lib";
 import arrow from "@popperjs/core/lib/modifiers/arrow";
 import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
+import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { nothing } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined.js";
+import { ARROW_HEIGHT, PlacementType, PopoverRoleType } from "./Popover.types";
+import styles from "./scss/module.scss";
 
 type OffsetsFunction = ({
   popper,
@@ -291,11 +290,8 @@ export namespace Popover {
     };
 
     onOutsideOverlayKeydown = async (event: KeyboardEvent) => {
-      // if (this.trigger?.includes("manual")) {
-      //   return;
-      // }
-
-      console.log("onOutsideOverlayKeydown", event.code, this.isOpen);
+      //For now escape will close popover with manual trigger.
+      //This can be changed are allowed to be configured in the future
 
       if (!this.isOpen || event.code !== Key.Escape) {
         return;
@@ -473,7 +469,7 @@ export namespace Popover {
           {
             name: "computeStyles",
             options: {
-              adaptive: true // this will recompute popper position
+              adaptive: true
             }
           }
         ]

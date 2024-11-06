@@ -54,7 +54,7 @@
       position: absolute;
       right: $main-padding;
       top: $main-padding;
-      padding-left: core.rem-calc(8);
+      padding-left: $cancel-padding-left;
       width: $cancel-button-size;
       height: $cancel-button-size;
       cursor: pointer;
@@ -66,6 +66,12 @@
       height: 0;
       visibility: hidden;
 
+      /* 
+       * This only works if the width and height are the same.
+       * The arrow is rotated 45 degrees into a diamond shape and
+       * then the border is removed where the arrow overlaps the container
+       * Update implementation in the future as width should be twice the height
+       */
       &::before {
         content: "";
         position: absolute;

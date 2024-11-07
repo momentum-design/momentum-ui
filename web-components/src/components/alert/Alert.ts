@@ -6,13 +6,12 @@
  *
  */
 
-import "@/components/button/Button";
 import { buttonColor, buttonVariant } from "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/link/Link";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, TemplateResult } from "lit-element";
+import { html, internalProperty, LitElement, property, query, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
@@ -44,6 +43,17 @@ export namespace Alert {
     @property({ type: Boolean }) showMore = false;
     @property({ type: String }) href = "";
 
+    @query('slot[name="alert-footer"]')
+    private readonly alertFooterSlot!: HTMLSlotElement;
+
+    @internalProperty()
+    private hasFooterSlotContent = false;
+
+    connectedCallback(): void {
+      super.connectedCallback();
+      this.updateFooterSlotInUse();
+    }
+
     close() {
       this.dispatchEvent(
         new CustomEvent("alert-close", {
@@ -68,7 +78,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="error-legacy-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-error-text-color, red)"
             ></md-icon>
@@ -76,8 +86,8 @@ export namespace Alert {
         case "info":
           return html`
             <md-icon
-              name="info-circle-regular"
-              size="${!this.newMomentum ? 32 : 24}"
+              name="info-circle-bold"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-info-text-color, blue)"
             ></md-icon>
@@ -86,7 +96,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="check-circle-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-success-text-color, green)"
             ></md-icon>
@@ -96,7 +106,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="warning-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--md-alert-warning-text-color, orange)"
             ></md-icon>
@@ -105,7 +115,7 @@ export namespace Alert {
           return html`
             <md-icon
               name="chat-bold"
-              size="${!this.newMomentum ? 32 : 24}"
+              size="${this.newMomentum ? 24 : 32}"
               iconSet="momentumDesign"
               color="var(--alert-title-text-color)"
             ></md-icon>
@@ -124,15 +134,10 @@ export namespace Alert {
       };
     }
 
-    get slottedFooterClassMap() {
+    private get slottedFooterClassMap() {
       return {
         "is-empty": !this.hasFooterSlotContent
       };
-    }
-
-    get hasFooterSlotContent() {
-      //TODO: improve this check
-      return this.innerHTML.includes('<div slot="alert-footer">');
     }
 
     legacyRender(): TemplateResult {
@@ -208,9 +213,17 @@ export namespace Alert {
       `;
     }
 
+    handleSlotContentChange(_event: Event) {
+      this.updateFooterSlotInUse();
+    }
+
+    private updateFooterSlotInUse() {
+      this.hasFooterSlotContent = this.alertFooterSlot?.assignedNodes().length > 0;
+    }
+
     renderSlottedFooter(): TemplateResult {
       return html` <div class="md-new-alert__footer ${classMap(this.slottedFooterClassMap)}">
-        <slot name="alert-footer"></slot>
+        <slot name="alert-footer" @slotchange=${this.handleSlotContentChange}></slot>
       </div>`;
     }
 
@@ -252,8 +265,12 @@ export namespace Alert {
       `;
     }
 
+    get alertRender(): TemplateResult {
+      return this.newMomentum ? this.newRender() : this.legacyRender();
+    }
+
     render(): TemplateResult {
-      return html` ${this.show ? (!this.newMomentum ? this.legacyRender() : this.newRender()) : nothing} `;
+      return html` ${this.show ? this.alertRender : nothing} `;
     }
   }
 }

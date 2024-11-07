@@ -2,12 +2,12 @@
 
 [![CircleCI](https://img.shields.io/circleci/build/github/momentum-design/momentum-ui)](https://circleci.com/gh/momentum-design/momentum-ui/)
 ![npm (scoped)](https://img.shields.io/npm/v/@momentum-ui/react.svg)
-[![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/master/react/LICENSE)
+[![license](https://img.shields.io/github/license/momentum-design/momentum-ui.svg?color=blueviolet)](https://github.com/momentum-design/momentum-ui/blob/main/react/LICENSE)
 
 **`Momentum UI React`** is a resuable, component based, flexible React library available as
 npm module. It provides set of UI components and utilities based on [Momentum Design](https://momentum.design).
 
-The git repo can be cloned from the [momentum-ui monorepo](https://github.com/momentum-design/momentum-ui) and found at [https://github.com/momentum-design/momentum-ui/tree/master/react](https://github.com/momentum-design/momentum-ui/tree/master/react).
+The git repo can be cloned from the [momentum-ui monorepo](https://github.com/momentum-design/momentum-ui) and found at [https://github.com/momentum-design/momentum-ui/tree/main/react](https://github.com/momentum-design/momentum-ui/tree/main/react).
 
 Checkout the [documentation](https://momentum.design) for documentation and live examples.
 

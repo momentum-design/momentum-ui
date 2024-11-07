@@ -1,0 +1,131 @@
+@use "@/wc_scss/tools/functions/core";
+@use "./settings" as *;
+
+/** @component popover */
+
+@include core.exports("md-popover") {
+  .md-popover {
+    box-sizing: border-box;
+    position: relative;
+    color: var(--popover-text-color);
+
+    
+
+    * {
+      box-sizing: inherit;
+    }
+
+    //Container of whole popover
+    .popover-container {
+      filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12)) drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.2));
+
+      box-sizing: border-box;
+      display: none;
+      position: absolute;
+      z-index: 1000;
+      background-color: var(--popover-bg-color);
+      border: 1px solid var(--popover-border-color);
+      border-radius: $container-border-radius;
+      padding: $main-padding;
+
+      min-height: 24px;
+      min-width: 14px;
+      max-width: 292px;
+
+      &[data-show] {
+        display: flex;
+      }     
+    }
+
+     //Div container for slot
+     .popover-content {
+      display: flex;
+      justify-content: space-around;
+
+      width: 100%;
+      flex-grow: 1;
+
+      font-size: $content-font-size;
+      font-weight: 400;
+      line-height: $content-line-height;
+    }
+
+    .cancel-icon-button {
+      position: absolute;
+      right: $main-padding;
+      top: $main-padding;
+      padding-left: $cancel-padding-left;
+      width: $cancel-button-size;
+      height: $cancel-button-size;
+      cursor: pointer;
+    }
+
+    .popover-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      visibility: hidden;
+
+      /* 
+       * This only works if the width and height are the same.
+       * The arrow is rotated 45 degrees into a diamond shape and
+       * then the border is removed where the arrow overlaps the container
+       * Update implementation in the future as width should be twice the height
+       */
+      &::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: var(--popover-bg-color);
+        border: 1px solid var(--popover-border-color);
+        transform: rotate(45deg);
+        visibility: visible;
+      }
+    }
+  }
+
+  .popover-container[data-popper-placement^="top"] > .popover-arrow {
+    bottom: 0;
+    &::before {
+      left: calc(50% - 8px);
+      bottom: -9px;
+      border-top: none;
+      border-left: none;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  .popover-container[data-popper-placement^="bottom"] > .popover-arrow {
+    top: 0;
+    &::before {
+      left: calc(50% - 8px);
+      top: -9px;
+      border-bottom: none;
+      border-right: none;
+      border-top-left-radius: 3px;
+    }
+  }
+
+  .popover-container[data-popper-placement^="right"] > .popover-arrow {
+    left: 0;
+    &::before {
+      left: -9px;
+      top: calc(50% - 8px);
+      border-right: none;
+      border-top: none;
+      border-bottom-left-radius: 3px;
+    }
+  }
+
+  .popover-container[data-popper-placement^="left"] > .popover-arrow {
+    right: 0;
+    &::before {
+      right: -9px;
+      border-bottom: none;
+      border-left: none;
+      top: calc(50% - 8px);
+      border-top-right-radius: 3px;
+    }
+  }
+}

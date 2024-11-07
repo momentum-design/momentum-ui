@@ -15,8 +15,8 @@ const tabs = {
     "border-color": {
       common: "transparent"
     },
-    "active-bottom-border": {
-      common: "inset 0 -2px 0 0 $mds-color-theme-outline-input-active"
+    "active-border": {
+      common: "$mds-color-theme-outline-input-active"
     },
     "active-vertical-border": {
       common: "inset 2px 0 0 0 $mds-color-theme-outline-input-active"
@@ -45,6 +45,24 @@ const tabs = {
     },
     active: {
       common: "$mds-color-theme-text-primary-normal"
+    }
+  },
+  primary: {
+    "bg-color": {
+      common: "$mds-color-theme-button-primary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-inverted-text-primary-normal"
+    },
+    hover: {
+      "bg-color": {
+        common: "$mds-color-theme-button-primary-hover"
+      }
+    },
+    pressed: {
+      "bg-color": {
+        common: "$mds-color-theme-button-primary-pressed"
+      }
     }
   }
 };

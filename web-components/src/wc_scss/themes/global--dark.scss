@@ -96,6 +96,8 @@
   --md-agent-history-bg-color: var(--md-tertiary-bg-color);
   --md-nav-divider-primary: var(--md-quaternary-bg-color);
   --md-nav-divider-primary-hover: var(--md-primary-seperator-color);
+  --md-nav-h-divider-primary: var(--md-nav-divider-primary);
+  --md-nav-h-divider-primary-hover: var(--md-nav-divider-primary-hover);
 
   --md-scrollbar-background-indicator: #{$white-40};
   --md-scrollbar-background-track: #{$white-12};

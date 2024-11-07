@@ -36,7 +36,7 @@ class TokensLanding extends React.PureComponent {
         <PageHero
           backgroundColor='#EDEDED'
           figmaURL='https://www.figma.com/file/zktddifdcJ47X9m12xVVfy/Core-Styles?node-id=421%3A531'
-          githubURL='https://github.com/momentum-design/momentum-ui/tree/master/tokens'
+          githubURL='https://github.com/momentum-design/momentum-ui/tree/main/tokens'
           heroTitle='Tokens'
         />
         <div className='site-warp'>

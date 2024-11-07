@@ -1,6 +1,5 @@
 import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
-import "@/components/theme/Theme";
 import { ThemeName } from "@/components/theme/Theme";
 import reset from "@/wc_scss/reset.scss";
 import {
@@ -55,6 +54,7 @@ import {
   modalTemplate,
   paginationTemplate,
   phoneInputTemplate,
+  popoverTemplate,
   progressBarTemplate,
   radioGroupTemplate,
   sliderTemplate,
@@ -265,7 +265,7 @@ export class Sandbox extends LitElement {
 
         <md-tabs direction="vertical" class="explorer" persist-selection tabs-id="explorer">
           ${this.getTabTemplate("Accordion", "md-accordion", "accordion", accordionTemplate)}
-          ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)};
+          ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)}
           ${this.getTabTemplate("Alert", "md-alert", "alert", alertTemplate)}
           ${this.getTabTemplate("Audio Player", "md-audio-player", "audio-player", audioPlayerTemplate)}
           ${this.getTabTemplate("Avatar", "md-avatar", "avatar", avatarTemplate)}
@@ -305,6 +305,7 @@ export class Sandbox extends LitElement {
           ${this.getTabTemplate("Modal", "md-modal", "modal", modalTemplate)}
           ${this.getTabTemplate("Pagination", "md-pagination", "pagination", paginationTemplate)}
           ${this.getTabTemplate("Phone Input", "md-phone-input", "phone-input", phoneInputTemplate)}
+          ${this.getTabTemplate("Popover", "md-popover", "popover", popoverTemplate)}
           ${this.getTabTemplate("Progress Bar", "md-progress-bar", "progress-bar", progressBarTemplate)}
           ${this.getTabTemplate("Radio", "md-radio", "radio", radioGroupTemplate)}
           ${this.getTabTemplate("Slider", "md-slider", "slider", sliderTemplate)}

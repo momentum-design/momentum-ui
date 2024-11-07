@@ -1,4 +1,8 @@
 /** @component alert */
+@use "@/wc_scss/typography/settings" as typography;
+@use "@/wc_scss/colors/settings-transparencies.scss" as alpha-color-tokens;
+@use "@/wc_scss/tools/mixins/flex" as *;
+@use "@/wc_scss/tools/mixins/border-radius.scss" as *;
 
 :host(md-alert) {
   display: flex;
@@ -9,21 +13,27 @@
   @include flex($jc: space-between, $ai: flex-start);
   @include border-radius($alert__border-radius);
   background-color: var(--alert-default-bg-color);
-  border: 1px solid var(--alert-default-border-color, $black-12);
-  box-shadow: 0 8px 16px 0 $black-08;
+  border: 1px solid var(--alert-default-border-color);
+  box-shadow: 0 8px 16px 0 alpha-color-tokens.$black-08;
   flex: 1 1 100%;
   margin-bottom: rem-calc(8);
   max-height: rem-calc(308);
   max-width: $alert__width;
   min-height: rem-calc(78);
   padding: rem-calc(12);
+  gap: rem-calc(12);
 
   &__icon {
     align-self: center;
     md-icon::part(icon) {
-      font-size: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
-      line-height: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
+      font-size: var(--alert-default-icon-size);
+      line-height: var(--alert-default-icon-size);
     }
+  }
+
+  &__body {
+    @include flex($jc: space-between, $ai: flex-start);
+    width: 100%;
   }
 
   &__content {
@@ -32,7 +42,6 @@
     flex-direction: column;
     flex-grow: 2;
     max-width: $alert__content_width;
-    padding-left: rem-calc(12);
     padding-right: rem-calc(2);
     align-self: center;
   }
@@ -41,7 +50,7 @@
     @include line-dots(2);
     text-overflow: ellipsis;
     color: var(--alert-title-text-color);
-    font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
+    font-size: var(--alert-title-font-size);
     line-height: rem-calc(24);
     width: calc(100%);
   }
@@ -49,7 +58,7 @@
   &__message {
     @include line-dots(2);
     color: var(--alert-default-text-color);
-    font-family: $brand-font-light;
+    font-family: typography.$brand-font-light;
     font-size: $alert__font-size;
     line-height: 1.35;
     width: calc(100%);
@@ -57,16 +66,15 @@
   }
 
   &__button {
-    margin-left: rem-calc(4);
     align-self: center;
     md-button::part(button) {
       align-items: center;
       background-color: var(--alert-close-bg-color);
       border-radius: 50%;
       display: inline-flex;
-      height: var(--alert-close-size, $lm-alert-close-size-light);
+      height: var(--alert-close-size);
       justify-content: center;
-      width: var(--alert-close-size, $lm-alert-close-size-light);
+      width: var(--alert-close-size);
     }
 
     md-icon::part(icon) {
@@ -84,12 +92,13 @@
 .md-new-alert {
   @include border-radius($alert_new_border-radius);
   
+  box-sizing: border-box;
   background-color: var(--alert-default-bg-color);
-  border: 1px solid var(--alert-default-new-border-color, $black-12);
+  border: 1px solid var(--alert-default-new-border-color);
   box-shadow: 0px 0px 1px 0px #0000001F, 0px 8px 16px 0px #00000033;
   flex: 1 1 100%;
   margin-bottom: rem-calc(8);
-  max-height: rem-calc(220);
+  max-height: rem-calc(240);
   max-width: $alert_new-width;
   min-height: rem-calc(56);
   padding: rem-calc(16);
@@ -97,13 +106,14 @@
 
   &__body {
     @include flex($jc: space-between, $ai: flex-start);
+    gap: rem-calc(12);
     width: 100%;
   }
 
   &__icon {
     md-icon::part(icon) {
-      font-size: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
-      line-height: var(--alert-default-icon-size, $lm-alert-default-icon-size-light) !important;
+      font-size: var(--alert-default-icon-size);
+      line-height: var(--alert-default-icon-size);
     }
   }
 
@@ -120,17 +130,17 @@
     @include line-dots(2);
     text-overflow: ellipsis;
     color: var(--alert-title-text-color);
-    font-family: $brand-font-medium;
+    font-family: typography.$brand-font-medium;
     font-weight: 500;
-    font-size: var(--alert-title-font-size, $lm-alert-title-font-size-light);
+    font-size: var(--alert-title-font-size);
     line-height: rem-calc(24);
     width: calc(100%);
   }
 
   &__message {
     @include line-dots(5);
-    color: var(--alert-title-text-color);
-    font-family: $brand-font-regular;
+    color: var(--alert-default-new-body-text-color);
+    font-family: typography.$brand-font-regular;
     font-size: var(--body-secondary-font-size, rem-calc(14));
     line-height: rem-calc(20);
     width: calc(100%);
@@ -150,9 +160,9 @@
       background-color: var(--alert-close-bg-color);
       border-radius: 50%;
       display: inline-flex;
-      height: var(--alert-close-size, $lm-alert-close-size-light);
+      height: var(--alert-close-size);
       justify-content: center;
-      width: var(--alert-close-size, $lm-alert-close-size-light);
+      width: var(--alert-close-size);
       margin-top: rem-calc(3);
     }
 
@@ -166,10 +176,7 @@
     margin-top: rem-calc(16);
     justify-content: end;
     width: 100%;
-  
-    md-button:not(:first-child) {
-      margin-left: rem-calc(8);
-    }
+    gap: rem-calc(8);
   }
 
   &__footer.is-empty{
@@ -180,7 +187,7 @@
     margin-top: rem-calc(4);
     display: flex;
     justify-content: center;
-    font-family: $brand-font-regular;
+    font-family: typography.$brand-font-regular;
 
     md-icon {
       margin-left: rem-calc(8);
@@ -207,8 +214,7 @@
         color: CanvasText;
       }
     }
-    .md-badge {
-      // forced-color-adjust: none;
+    .md-badge {      
       background-color: inherit;
     }
   }

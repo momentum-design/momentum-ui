@@ -1,14 +1,19 @@
+@use "settings" as coachmark-settings;
+
 .md-coachmark {
+  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);
+
   display: inline-flex;
   position: relative;
 
   &__popper {
-    border-radius: $coachmark-main-raduis;
+    border-radius: coachmark-settings.$main-raduis;
     display: none;
-    min-width: $coachmark-min-width;
-    padding: $coachmark-main-padding;
+    min-width: coachmark-settings.$min-width;
+    max-width: coachmark-settings.$max-width;
+    padding: coachmark-settings.$main-padding;
     position: absolute;
-    width: auto;
+    width: 100%;
     z-index: 1;
 
     .md-coachmark__arrow {
@@ -24,9 +29,9 @@
       transform: translateY(-50%);
 
       .md-coachmark__arrow {
-        border-bottom: $coachmark-arrow-size solid transparent;
-        border-top: $coachmark-arrow-size solid transparent;
-        left: -$coachmark-arrow-size;
+        border-bottom: coachmark-settings.$arrow-size solid transparent;
+        border-top: coachmark-settings.$arrow-size solid transparent;
+        left: -(coachmark-settings.$arrow-size);
         top: 50%;
         transform: translateY(-50%);
       }
@@ -39,9 +44,9 @@
       transform: translateY(-50%);
 
       .md-coachmark__arrow {
-        border-bottom: $coachmark-arrow-size solid transparent;
-        border-top: $coachmark-arrow-size solid transparent;
-        right: -$coachmark-arrow-size;
+        border-bottom: coachmark-settings.$arrow-size solid transparent;
+        border-top: coachmark-settings.$arrow-size solid transparent;
+        right: -(coachmark-settings.$arrow-size);
         top: 50%;
         transform: translateY(-50%);
       }
@@ -54,9 +59,9 @@
       transform: translateX(-50%);
 
       .md-coachmark__arrow {
-        border-left: $coachmark-arrow-size solid transparent;
-        border-right: $coachmark-arrow-size solid transparent;
-        bottom: -$coachmark-arrow-size;
+        border-left: coachmark-settings.$arrow-size solid transparent;
+        border-right: coachmark-settings.$arrow-size solid transparent;
+        bottom: -(coachmark-settings.$arrow-size);
         left: 50%;
         transform: translateX(-50%);
       }
@@ -69,408 +74,115 @@
       transform: translateX(-50%);
 
       .md-coachmark__arrow {
-        border-left: $coachmark-arrow-size solid transparent;
-        border-right: $coachmark-arrow-size solid transparent;
+        border-left: coachmark-settings.$arrow-size solid transparent;
+        border-right: coachmark-settings.$arrow-size solid transparent;
         left: 50%;
-        top: -$coachmark-arrow-size;
+        top: -(coachmark-settings.$arrow-size);
         transform: translateX(-50%);
       }
     }
 
     &--default {
-      background: var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
-      color: var(-coachmark-default-text-color, $lm-coachmark-default-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid
-            var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid
-            var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-default-bg-color, $lm-coachmark-default-bg-color-light);
-        }
-      }
+      background: var(--coachmark-default-bg-color);
+      color: var(--coachmark-default-text-color);
     }
 
     &--blue {
-      background: var(--coachmark-blue-bg-color, $lm-coachmark-blue-bg-color-light);
-      color: var(--coachmark-blue-text-color, $lm-coachmark-blue-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-blue-bg-color, $lm-coachmark-blue-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid var(--coachmark-blue-bg-color, $lm-coachmark-blue-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-blue-bg-color, $lm-coachmark-blue-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid var(--coachmark-blue-bg-color, $lm-coachmark-blue-bg-color-light);
-        }
-      }
+      background: var(--coachmark-blue-bg-color);
+      color: var(--coachmark-blue-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-blue-bg-color);
     }
 
     &--green {
-      background: var(--coachmark-green-bg-color, $lm-coachmark-green-bg-color-light);
-      color: var(--coachmark-green-text-color, $lm-coachmark-green-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-green-bg-color, $lm-coachmark-green-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid var(--coachmark-green-bg-color, $lm-coachmark-green-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-green-bg-color, $lm-coachmark-green-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid var(--coachmark-green-bg-color, $lm-coachmark-green-bg-color-light);
-        }
-      }
+      background: var(--coachmark-green-bg-color);
+      color: var(--coachmark-green-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-green-bg-color);
     }
 
     &--purple {
-      background: var(--coachmark-purple-bg-color, $lm-coachmark-purple-bg-color-light);
-      color: var(--coachmark-purple-text-color, $lm-coachmark-purple-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-purple-bg-color, $lm-coachmark-purple-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-purple-bg-color, $lm-coachmark-purple-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-purple-bg-color, $lm-coachmark-purple-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-purple-bg-color, $lm-coachmark-purple-bg-color-light);
-        }
-      }
+      background: var(--coachmark-purple-bg-color);
+      color: var(--coachmark-purple-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-purple-bg-color);
     }
 
     &--violet {
-      background: var(--coachmark-violet-bg-color, $lm-coachmark-violet-bg-color-light);
-      color: var(--coachmark-violet-text-color, $lm-coachmark-violet-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-violet-bg-color, $lm-coachmark-violet-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-violet-bg-color, $lm-coachmark-violet-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-violet-bg-color, $lm-coachmark-violet-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-violet-bg-color, $lm-coachmark-violet-bg-color-light);
-        }
-      }
+      background: var(--coachmark-violet-bg-color);
+      color: var(--coachmark-violet-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-violet-bg-color);
     }
 
     &--mint {
-      background: var(--coachmark-mint-bg-color, $lm-coachmark-mint-bg-color-light);
-      color: var(--coachmark-mint-text-color, $lm-coachmark-mint-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-mint-bg-color, $lm-coachmark-mint-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid var(--coachmark-mint-bg-color, $lm-coachmark-mint-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: 1$coachmark-arrow-size solid var(--coachmark-mint-bg-color, $lm-coachmark-mint-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid var(--coachmark-mint-bg-color, $lm-coachmark-mint-bg-color-light);
-        }
-      }
+      background: var(--coachmark-mint-bg-color);
+      color: var(--coachmark-mint-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-mint-bg-color);
     }
 
     &--darkmint {
-      background: var(--coachmark-darkmint-bg-color, $lm-coachmark-darkmint-bg-color-light);
-      color: var(--coachmark-darkmint-text-color, $lm-coachmark-darkmint-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid
-            var(--coachmark-darkmint-bg-color, $lm-coachmark-darkmint-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-darkmint-bg-color, $lm-coachmark-darkmint-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid
-            var(--coachmark-darkmint-bg-color, $lm-coachmark-darkmint-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-darkmint-bg-color, $lm-coachmark-darkmint-bg-color-light);
-        }
-      }
+      background: var(--coachmark-darkmint-bg-color);
+      color: var(--coachmark-darkmint-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-darkmint-bg-color);
     }
 
     &--yellow {
-      background: var(--coachmark-yellow-bg-color, $lm-coachmark-yellow-bg-color-light);
-      color: var(--coachmark-yellow-text-color, $lm-coachmark-yellow-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-yellow-bg-color, $lm-coachmark-yellow-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-yellow-bg-color, $lm-coachmark-yellow-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-yellow-bg-color, $lm-coachmark-yellow-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-yellow-bg-color, $lm-coachmark-yellow-bg-color-light);
-        }
-      }
+      background: var(--coachmark-yellow-bg-color);
+      color: var(--coachmark-yellow-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-yellow-bg-color);
     }
 
     &--red {
-      background: var(--coachmark-red-bg-color, $lm-coachmark-red-bg-color-light);
-      color: var(--coachmark-red-text-color, $lm-coachmark-red-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-red-bg-color, $lm-coachmark-red-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid var(--coachmark-red-bg-color, $lm-coachmark-red-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-red-bg-color, $lm-coachmark-red-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid var(--coachmark-red-bg-color, $lm-coachmark-red-bg-color-light);
-        }
-      }
+      background: var(--coachmark-red-bg-color);
+      color: var(--coachmark-red-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-red-bg-color);
     }
 
     &--darkred {
-      background: var(--coachmark-darkred-bg-color, $lm-coachmark-darkred-bg-color-light);
-      color: var(--coachmark-darkred-text-color, $lm-coachmark-darkred-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid
-            var(--coachmark-darkred-bg-color, $lm-coachmark-darkred-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-darkred-bg-color, $lm-coachmark-darkred-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid
-            var(--coachmark-darkred-bg-color, $lm-coachmark-darkred-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-darkred-bg-color, $lm-coachmark-darkred-bg-color-light);
-        }
-      }
+      background: var(--coachmark-darkred-bg-color);
+      color: var(--coachmark-darkred-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-darkred-bg-color);
     }
 
     &--orange {
-      background: var(--coachmark-orange-bg-color, $lm-coachmark-orange-bg-color-light);
-      color: var(--coachmark-orange-text-color, $lm-coachmark-orange-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-orange-bg-color, $lm-coachmark-orange-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid
-            var(--coachmark-orange-bg-color, $lm-coachmark-orange-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-orange-bg-color, $lm-coachmark-orange-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid
-            var(--coachmark-orange-bg-color, $lm-coachmark-orange-bg-color-light);
-        }
-      }
+      background: var(--coachmark-orange-bg-color);
+      color: var(--coachmark-orange-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-orange-bg-color);
     }
 
     &--cyan {
-      background: var(--coachmark-cyan-bg-color, $lm-coachmark-cyan-bg-color-light);
-      color: var(--coachmark-cyan-text-color, $lm-coachmark-cyan-text-color-light);
-
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-cyan-bg-color, $lm-coachmark-cyan-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid var(--coachmark-cyan-bg-color, $lm-coachmark-cyan-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-cyan-bg-color, $lm-coachmark-cyan-bg-color-light);
-        }
-      }
-
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid var(--coachmark-cyan-bg-color, $lm-coachmark-cyan-bg-color-light);
-        }
-      }
+      background: var(--coachmark-cyan-bg-color);
+      color: var(--coachmark-cyan-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-cyan-bg-color);
     }
 
     &--outline {
-      background: var(--coachmark-outline-color, $lm-coachmark-outline-color-light);
-      color: var(--coachmark-outline-text-color, $lm-coachmark-outline-text-color-light);
+      background: var(--coachmark-outline-color);
+      color: var(--coachmark-outline-text-color);
+      --coachmark-arrow-border-color: var(--coachmark-outline-color);
+    }
 
-      &.md-coachmark__popper--left {
-        .md-coachmark__arrow {
-          border-left: $coachmark-arrow-size solid var(--coachmark-outline-color, $lm-coachmark-outline-color-light);
-        }
+    
+    &.md-coachmark__popper--left {
+      .md-coachmark__arrow {
+        border-left: coachmark-settings.$arrow-size solid var(--coachmark-arrow-border-color);
       }
+    }
 
-      &.md-coachmark__popper--right {
-        .md-coachmark__arrow {
-          border-right: $coachmark-arrow-size solid var(--coachmark-outline-color, $lm-coachmark-outline-color-light);
-        }
+    &.md-coachmark__popper--right {
+      .md-coachmark__arrow {
+        border-right: coachmark-settings.$arrow-size solid
+          var(--coachmark-arrow-border-color);
       }
+    }
 
-      &.md-coachmark__popper--top {
-        .md-coachmark__arrow {
-          border-top: $coachmark-arrow-size solid var(--coachmark-outline-color, $lm-coachmark-outline-color-light);
-        }
+    &.md-coachmark__popper--top {
+      .md-coachmark__arrow {
+        border-top: coachmark-settings.$arrow-size solid var(--coachmark-arrow-border-color);
       }
+    }
 
-      &.md-coachmark__popper--bottom {
-        .md-coachmark__arrow {
-          border-bottom: $coachmark-arrow-size solid var(--coachmark-outline-color, $lm-coachmark-outline-color-light);
-        }
+    &.md-coachmark__popper--bottom {
+      .md-coachmark__arrow {
+        border-bottom: coachmark-settings.$arrow-size solid
+          var(--coachmark-arrow-border-color);
       }
     }
   }

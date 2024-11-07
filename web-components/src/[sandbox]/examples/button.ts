@@ -193,6 +193,15 @@ export class ButtonTemplateSandbox extends LitElement {
       </div>
 
       <div class="row" style="display: flex; margin: .5rem 0">
+        <h3 class="sandbox-header" style="gap: 0.5rem margin: .5rem 1rem">Rounded Button Sizes</h3>
+        <md-button rounded variant="secondary" size="24"><span slot="text">24</span></md-button>
+        <md-button rounded variant="secondary" size="28"><span slot="text">28</span></md-button>
+        <md-button rounded variant="secondary" size="32"><span slot="text">32</span></md-button>
+        <md-button rounded variant="secondary" size="36"><span slot="text">36</span></md-button>
+        <md-button rounded variant="secondary" size="40"><span slot="text">40</span></md-button>
+      </div>
+
+      <div class="row" style="display: flex; margin: .5rem 0">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Variants</h3>
         <md-button variant="primary"><span slot="text">primary</span></md-button>
         <md-button variant="secondary"><span slot="text">secondary</span></md-button>

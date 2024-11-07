@@ -1,0 +1,84 @@
+@use "settings" as constants;
+
+.md-coachmark {
+  --coachmark-arrow-border-color: var(--coachmark-default-bg-color);  
+
+  md-popover::part(popover) {    
+
+    min-width: constants.$min-width;
+    max-width: constants.$max-width;
+  }
+
+  &__popper {
+    border-radius: constants.$main-radius;
+
+    min-width: constants.$min-width;
+    max-width: constants.$max-width;
+    width: 282px;
+
+    //Header
+    .header-container {
+      display: flex;      
+      width: 100%;
+      gap: constants.$header-spacing;
+      padding-right: constants.$header-padding-right;
+      align-items: center;
+
+      &.hide-close {
+        margin-right: constants.$main-padding;;
+      }
+    }
+
+    .header-title {
+      font-family: var(--brand-font-bold);
+      font-size: constants.$header-font-size;
+      font-weight: var(--brand-font-weight-bold, 700);
+      line-height: constants.$header-line-height;
+    }
+
+    //Body
+    .body-container {
+      display: flex;      
+    }
+
+    .md-coachmark__content {      
+      font-family: var(--brand-font-regular);
+      font-size: constants.$body-font-size;
+      font-weight: 450;
+      line-height: constants.$body-line-height;      
+    }
+
+    //Footer
+    .footer-container {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      gap: 0.5rem;
+      padding-top: constants.$main-padding;
+      flex-grow: 1;
+    }
+  }
+}
+
+@media (forced-colors:active) {
+  .md-coachmark {
+    
+    &__popper {  
+      background-color: Canvas;
+      outline: 1px solid CanvasText;
+    }
+  }
+
+  .md-coachmark__popper--top .md-coachmark__arrow,
+  .md-coachmark__popper--bottom .md-coachmark__arrow {
+    border-left: 0.625rem solid Canvas;
+    border-right: 0.625rem solid Canvas;
+  }
+
+  .md-coachmark__popper--right .md-coachmark__arrow,
+  .md-coachmark__popper--left .md-coachmark__arrow {
+    border-top: 0.625rem solid Canvas;
+    border-bottom: 0.625rem solid Canvas;
+  }
+
+}

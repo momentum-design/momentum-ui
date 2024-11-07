@@ -8,6 +8,7 @@
 
 import "@/components/icon/Icon";
 import { Icon } from "@/components/icon/Icon";
+import { PlacementType } from "@/components/popover/Popover.types";
 import "@/components/progress-bar/ProgressBar";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
@@ -19,27 +20,9 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
-export const tooltipPlacement = [
-  "auto",
-  "auto-start",
-  "auto-end",
-  "left-start",
-  "left",
-  "left-end",
-  "right-start",
-  "right",
-  "right-end",
-  "top-start",
-  "top",
-  "top-end",
-  "bottom-start",
-  "bottom",
-  "bottom-end"
-] as const;
-
 export namespace Chip {
   export type Role = "group" | "option" | "button";
-  export type Placement = (typeof tooltipPlacement)[number];
+  export type Placement = PlacementType;
 
   @customElementWithCheck("md-chip")
   export class ELEMENT extends LitElement {

@@ -8,7 +8,7 @@
 
   .md-button-group {
     @include flex($display: inline-flex, $ac:flex-start, $jc:flex-start);
-    background: var(--button-group-bg-color, $lm-button-group-bg-color-light);
+    background: var(--button-group-bg-color);
     border-radius: $button-group-border-radius;
     font-size: $font-size-small;
     padding: $button-group-indent;
@@ -17,11 +17,11 @@
     border: 1px solid var(--button-group-outline-border);
 
     &:hover {
-      background: var(--button-group-bg-color-hover, $lm-button-group-bg-color-hover-light);
+      background: var(--button-group-bg-color-hover);
     }
 
     &:active {
-      background: var(--button-group-bg-color-pressed, $lm-button-group-bg-color-pressed-light);
+      background: var(--button-group-bg-color-pressed);
     }
 
     ::slotted(button) {
@@ -29,7 +29,7 @@
       background: none;
       border: 0;
       border-radius: $button-group-border-radius;
-      color: var(--button-group-color, $lm-button-group-color-light);
+      color: var(--button-group-color);
       cursor: pointer;
       height: $button-group-btn-height;
       margin: 0 $button-group-indent;
@@ -47,20 +47,20 @@
 
     ::slotted(:hover) {
       background: var(--button-group-color-hover, none);
-      color: var(--button-group-color-active, $lm-button-group-color-active-light);
+      color: var(--button-group-color-active);
     }
     
     ::slotted([selected]) {
-      background: var(--button-group-bg-color-active, $lm-button-group-bg-color-active-light);
+      background: var(--button-group-bg-color-active);
       box-shadow: $button-group-btn-shadow;
-      color: var(--button-group-color-active, $lm-button-group-color-active-light);
+      color: var(--button-group-color-active);
     }
   }
 }
 
 :host([focus-visible]:not([disabled])) {
   .md-button-group {
-    @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+    @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color));
   }
 }
 

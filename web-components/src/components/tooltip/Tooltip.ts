@@ -6,6 +6,7 @@
  *
  */
 
+import { Placement, PlacementType, StrategyType } from "@/components/popover/Popover.types";
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
@@ -14,23 +15,7 @@ import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
-export const tooltipPlacement = [
-  "auto",
-  "auto-start",
-  "auto-end",
-  "left-start",
-  "left",
-  "left-end",
-  "right-start",
-  "right",
-  "right-end",
-  "top-start",
-  "top",
-  "top-end",
-  "bottom-start",
-  "bottom",
-  "bottom-end"
-] as const;
+export const tooltipPlacement = Placement;
 
 export const tooltipStrategy = ["fixed", "absolute"] as const;
 export type TooltipEvent = {
@@ -41,8 +26,8 @@ export type TooltipEvent = {
 };
 
 export namespace Tooltip {
-  export type Placement = (typeof tooltipPlacement)[number];
-  export type Strategy = (typeof tooltipStrategy)[number];
+  export type Placement = PlacementType;
+  export type Strategy = StrategyType;
 
   @customElementWithCheck("md-tooltip")
   export class ELEMENT extends FocusMixin(LitElement) {

@@ -1,7 +1,9 @@
-$focus__color: $focus-color !default;
-$focus__color--dark: $focus-color !default;
+@use "@/wc_scss/settings/core";
+
 $focus__size: 2px !default;
 
 $focus-ring-gap: rem-calc(2);
 $focus-ring-size: rem-calc(2);
-$focus-boxshadow: 0 0 0 rem-calc(2) var(--md-default-focus-outline-color, $md-blue-60);
+$focus-boxshadow: 0 0 0 rem-calc(2) var(--md-default-focus-outline-color);
+$focus__color: core.$focus-color !default;
+$focus__color--dark: core.$focus-color !default;

@@ -3,6 +3,7 @@
     &-wrapper {
       max-height: $radio-input-max-height;
       display: inline-flex;
+      max-width: 100%;
     }
 
     &-input {

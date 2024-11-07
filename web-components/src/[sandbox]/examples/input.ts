@@ -159,7 +159,7 @@ export const inputTemplate = html`
   <section id="rectangle" class="section">
     <div class="row">
       <div class="column">
-        <md-input label="Normal" containerSize="small-12" newMomentum helpText="Help Text"></md-input>
+        <md-input label="Normal" newMomentum helpText="Help Text"></md-input>
       </div>
     </div>
     <div class="row">
@@ -170,6 +170,7 @@ export const inputTemplate = html`
           containerSize="small-12"
           placeholder="Enter Text"
           searchable
+          compact
           shape="rectangle"
           newMomentum
         ></md-input>

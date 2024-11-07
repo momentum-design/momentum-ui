@@ -352,6 +352,7 @@ export namespace Input {
         "md-input--multiline": this.multiline,
         "md-input--multi": this.multi,
         [`md-input--${this.shape}`]: !!this.shape,
+        "md-input--compact": this.compact,
         "md-input--before": this.auxiliaryContentPosition === "before" || this.searchable,
         "md-input--after": this.auxiliaryContentPosition === "after",
         "md-active": this.isEditing,
@@ -507,8 +508,8 @@ export namespace Input {
                 return html`
                   <md-help-text
                     .message=${message}
-                    .id=${this.messageArr[id].id || ""}
-                    .ariaLive=${this.messageArr[id].ariaLive || "polite"}
+                    .id=${this.messageArr[id].id ?? ""}
+                    .ariaLive=${this.messageArr[id].ariaLive ?? "polite"}
                     .messageType=${this.messageType as Input.MessageType}
                   ></md-help-text>
                 `;

@@ -338,13 +338,12 @@ export const menuOverlayTemplate = html`
         <md-input
           placeholder="Search field with tabs"
           shape="pill"
-          slot="menu-trigger"
-          variant="primary"
+          slot="menu-trigger"          
           clear
           autoFocus></md-input>
         <div style="padding:1.25rem; width: 100%;">
         <md-tabs justified selected="0" ref={tabElm}>
-        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} label="entry-point">
+        <md-tab slot="tab" aria-label={transferModal.entryPointSectionLabel} name="entry-point">
           <span>Entry Point</span>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -357,8 +356,8 @@ export const menuOverlayTemplate = html`
                 aria-label="item-1-div"
                 display-value="12345678"
                 style="display: flex; alignItems: center;">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
+                <div style="paddingLeft: 12px">
+                  <div class="address-dn"></div>
                   <p>
                     Item-1
                   </p>
@@ -376,8 +375,8 @@ export const menuOverlayTemplate = html`
                 aria-label="item-2-div"
                 display-value="12345678"
                 style="display: flex, alignItems: center">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
+                <div style="paddingLeft: 12px">
+                  <div class="address-dn"></div>
                   <p>
                     Item-2
                   </p>
@@ -402,8 +401,8 @@ export const menuOverlayTemplate = html`
                 aria-label="item-1-div"
                 display-value="12345678"
                 style="display: flex, alignItems: center">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
+                <div style="paddingLeft: 12px">
+                  <div class="address-dn"></div>
                   <p>
                     Item-1
                   </p>
@@ -421,8 +420,8 @@ export const menuOverlayTemplate = html`
                 aria-label="item-2-div"
                 display-value="12345678"
                 style="display: flex, alignItems: center">
-                <div style={{ paddingLeft: '12px' }}>
-                  <div className="address-dn"></div>
+                <div style="paddingLeft: 12px">
+                  <div class="address-dn"></div>
                   <p>
                     Item-2
                   </p>

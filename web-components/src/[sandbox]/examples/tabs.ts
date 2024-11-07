@@ -557,6 +557,38 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     `;
   }
 
+  get tabsJustifiedHugTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs justified hug rounded primary</h3>
+      <md-tabs draggable justified hug-tabs type="rounded" newMomentum variant="primary">
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
+          <span>All</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Contact History"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
+          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "WxM"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
+          <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Third Tab"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
+          <md-icon name="alert_16"></md-icon>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Fourth Tab"</span>
+        </md-tab-panel>
+      </md-tabs>
+    `;
+  }
+
   get tabsJustifiedWithTooltipTemplate(): TemplateResult {
     return html`
       <h3>md-tabs justified with tooltip</h3>
@@ -583,7 +615,9 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
 
   render(): TemplateResult {
     return html`
-      <div style="max-width: 600px;">${this.tabsJustifiedTemplate}${this.tabsJustifiedWithTooltipTemplate}</div>
+      <div style="max-width: 600px;">
+        ${this.tabsJustifiedTemplate} ${this.tabsJustifiedHugTemplate} ${this.tabsJustifiedWithTooltipTemplate}
+      </div>
     `;
   }
 }
@@ -712,7 +746,7 @@ export const tabsTemplate = html`
     <br />
     <h3>md-tabs draggable each with a closable property (New Momentum)</h3>
     <div>
-      <md-tabs selected="0" draggable newMomentum type="Pill">
+      <md-tabs selected="0" draggable newMomentum type="pill">
         <md-tab slot="tab" name="History">
           <span>All</span>
         </md-tab>
@@ -809,29 +843,29 @@ export const tabsTemplate = html`
   <br />
   <div style="height: 300px;">
     <h3>md-tabs vertical (New Momentum)</h3>
-    <md-tabs direction="vertical" newMomentum type="Pill">
-      <md-tab slot="tab" name="History" newMomentum type="Pill">
+    <md-tabs direction="vertical" newMomentum type="pill">
+      <md-tab slot="tab" name="History" newMomentum type="pill">
         <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
         <span>Contact History</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "Contact History"</span>
       </md-tab-panel>
-      <md-tab slot="tab" name="History" newMomentum type="Pill">
+      <md-tab slot="tab" name="History" newMomentum type="pill">
         <span style="height: 16px; width: 16px"><img src="${svgWxm}" /></span>
         <span>Cisco WxM</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "WxM"</span>
       </md-tab-panel>
-      <md-tab slot="tab" name="History" newMomentum type="Pill">
+      <md-tab slot="tab" name="History" newMomentum type="pill">
         <md-icon name="alarm_16"></md-icon>
         <span>Cisco Answer</span>
       </md-tab>
       <md-tab-panel slot="panel">
         <span>Content for "Cisco Answer"</span>
       </md-tab-panel>
-      <md-tab slot="tab" name="History" newMomentum type="Pill">
+      <md-tab slot="tab" name="History" newMomentum type="pill">
         <md-icon name="camera-photo_16"></md-icon>
         <span>Cisco Turbo</span>
       </md-tab>

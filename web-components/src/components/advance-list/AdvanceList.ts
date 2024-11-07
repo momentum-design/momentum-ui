@@ -18,6 +18,7 @@ export namespace AdvanceList {
     @property({ type: String }) ariaRoleListItem = "option";
     @property({ type: String }) ariaLabelList = "";
     @property({ type: Boolean }) isError = false;
+    @property({ type: String }) containerHeight = "292px";
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
@@ -32,6 +33,16 @@ export namespace AdvanceList {
 
     static get styles() {
       return [reset, styles];
+    }
+
+    private getStyles() {
+      return html`
+        <style>
+          :host .virtual-scroll {
+            height: ${this.containerHeight};
+          }
+        </style>
+      `;
     }
 
     disconnectedCallback() {
@@ -112,6 +123,9 @@ export namespace AdvanceList {
       return undefined;
     }
 
+    isNextElemenentStatusIndicator(index: number) {
+      return (this.isLoading || this.isError) && index === this.items.length - 2;
+    }
     handleKeyDown = (event: KeyboardEvent): void => {
       switch (event.key) {
         case Key.ArrowDown:
@@ -123,13 +137,13 @@ export namespace AdvanceList {
               this.activeId = this.value;
             }
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-            if (currentIndex < this.items.length - 1) {
+             if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
               this.scrollIndex = currentIndex + 1;
               this.activeId = this.items[this.scrollIndex].id;
             }
           }
           break;
-
+          
         case Key.ArrowUp:
           {
             event.preventDefault();
@@ -213,9 +227,14 @@ export namespace AdvanceList {
     }
 
     renderItem(item: any, index: number) {
+      if (item.id === "status-indicator") {
+        return html`
+          <div class="default-wrapper-status-indicator" id="status-indicator">${item.template(item, index)}</div>
+        `;
+      }
       return html`
         <div
-          class="default-wrapper"
+          class="default-wrapper ${item.id}"
           aria-setsize="${this.totalRecords}"
           aria-posinset="${index + 1}"
           role="${this.ariaRoleListItem}"
@@ -240,6 +259,7 @@ export namespace AdvanceList {
 
     render() {
       return html`
+        ${this.getStyles()}
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
@@ -261,7 +281,6 @@ export namespace AdvanceList {
               : undefined
           })}
         </div>
-        ${this.isLoading ? html`<slot class="spin-loader" name="spin-loader"></slot>` : null}
       `;
     }
   }

@@ -48,6 +48,7 @@ export namespace Avatar {
     @property({ type: Boolean }) decrypting = false;
     @property({ type: String }) role: Avatar.Role = "img";
     @property({ type: String, attribute: "icon-name" }) iconName = "";
+    @property({ type: Boolean }) failurePresence = false;
     @property({ type: String }) type: Type = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) typing = false;
@@ -60,34 +61,23 @@ export namespace Avatar {
     @internalProperty() private imageErrored = false;
     @internalProperty() private presenceColor = "";
     @internalProperty() private presenceIcon = "";
-    @internalProperty() private isCircularWrapper = false;
 
     static get styles() {
       return [reset, styles];
     }
 
     firstUpdated() {
-      const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(
-        this.type,
-        false,
-        this.newMomentum
-      );
+      const { presenceColor, presenceIcon } = getPresenceIconColor(this.type, this.failurePresence, this.newMomentum);
       this.presenceColor = presenceColor!;
       this.presenceIcon = presenceIcon!;
-      this.isCircularWrapper = isCircularWrapper!;
     }
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("type")) {
-        const { presenceColor, presenceIcon, isCircularWrapper } = getPresenceIconColor(
-          this.type,
-          false,
-          this.newMomentum
-        );
+        const { presenceColor, presenceIcon } = getPresenceIconColor(this.type, this.failurePresence, this.newMomentum);
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
-        this.isCircularWrapper = isCircularWrapper!;
       }
       if (changedProperties.has("role")) {
         this.style.setProperty("--avatar-cursor", this.role === "button" ? "pointer" : "default");
@@ -252,7 +242,6 @@ export namespace Avatar {
               class="avatar-presence"
               name="${this.presenceIcon}"
               color="${this.presenceColor}"
-              .isCircularWrapper=${this.isCircularWrapper}
               size="${this.size}"
             >
             </md-presence>

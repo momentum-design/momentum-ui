@@ -1,47 +1,50 @@
 .avatar-presence-wrapper {
   position: absolute;
   background-color: var(--md-primary-bg-color);
-  border-radius: 100vh;
-  width: 1.125rem;
-  height: 1.125rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: -0.1rem;
-  right: -0.1rem;
+  bottom: -0.15rem;
+  right: -0.15rem;
 
-  &[data-shape="false"] {
-    border-radius: 25%;
+  &[data-icon-size="13.94"] {
+    width: 1.064375rem;
+    height: 1.064375rem;
+    bottom: -0.5px;
+    right: -0.5px;
   }
 
   &[data-icon-size="14"] {
-    width: 1rem;
-    height: 1rem;
+    width: 1.0625rem;
+    height: 1.0625rem;
   }
 
-  &[data-icon-size="16"] {
-    width: 1.125rem;
-    height: 1.125rem;
+  &[data-icon-size="18.58"] {
+    width: 1.419375rem;
+    height: 1.419375rem;
+    bottom: -0.05rem;
+    right: -0.05rem;
   }
 
-  &[data-icon-size="18"] {
-    width: 1.375rem;
-    height: 1.375rem;
+  &[data-icon-size="20.9"] {
+    width: 1.596875rem;
+    height: 1.596875rem;
+    bottom: 0rem;
+    right: 0rem;
   }
 
-  &[data-icon-size="20"] {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  &[data-icon-size="28"] {
-    width: 2rem;
-    height: 2rem;
+  &[data-icon-size="25.55"] {
+    width: 1.951875rem;
+    height: 1.951875rem;
+    bottom: 0rem;
+    right: 0rem;
   }
 
   &[data-icon-size="36"] {
     width: 2.75rem;
     height: 2.75rem;
+    bottom: 0rem;
+    right: 0rem;
   }
-
 }

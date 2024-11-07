@@ -1,10 +1,10 @@
 import { comboBoxObjectLongOptions, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/combobox/ComboBox";
+import { ComboBox } from "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import "@/components/spinner/Spinner";
 import { html } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
-import { ComboBox } from "@/components/combobox/ComboBox";
 
 const dropdownValue: string[] = [];
 const testCustomValue = [
@@ -121,6 +121,22 @@ export const comboBoxTemplate = html`
     placeholder="Enter Text"
     newMomentum
   ></md-combobox>
+  <h3>Filter new momentum compact</h3>
+  <div style="width: 250px;">
+  <md-combobox
+    .options=${comboBoxOptions}
+    .value=${[comboBoxOptions[5]]}
+    placeholder="Select country"
+    show-filter-icon
+    newMomentum
+    visible-option="8"
+    compact
+    is-multi
+    no-clear-icon
+    allow-select-all
+    show-selected-count
+  ></md-combobox>
+  </div>
   <br />
   <h3>Multi Data with Custom Values</h3>
   <md-combobox

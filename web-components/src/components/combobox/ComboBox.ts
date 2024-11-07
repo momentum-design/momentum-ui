@@ -13,8 +13,8 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { LitElement, PropertyValues, html, internalProperty, property, query, queryAll } from "lit-element";
-import { nothing } from "lit-html";
+import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { nothing, TemplateResult } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
@@ -108,8 +108,10 @@ export namespace ComboBox {
     @property({ type: Boolean, attribute: "show-selected-count", reflect: true }) showSelectedCount = false;
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
     @property({ type: Boolean, reflect: true }) newMomentum = false;
+    @property({ type: Boolean, attribute: "show-filter-icon" }) showFilterIcon = false;
 
-    @property({ type: String }) comboboxId = "";
+    @property({ type: String })
+    comboboxId = "";
     @property({ type: String }) helpText = "";
     @property({ type: Array }) messageArr: ComboBox.Message[] = [];
     @property({ type: String }) htmlId = "";
@@ -1356,7 +1358,8 @@ export namespace ComboBox {
 
     get listItemOptionMap() {
       return {
-        "md-combobox-multiselect": this.isMulti
+        "md-combobox-multiselect": this.isMulti,
+        compact: this.compact
       };
     }
 
@@ -1392,17 +1395,27 @@ export namespace ComboBox {
       return {
         [`md-combobox--${this.shape}`]: !!this.shape,
         "md-combobox-searchable": this.searchable,
+        "md-combobox-has-leading-icon": this.searchable || this.showFilterIcon,
         "md-new-combobox": this.newMomentum,
         [`md-${this.messageType}`]: !!this.messageType,
-        "md-combobox-readonly": this.readOnly
+        "md-combobox-readonly": this.readOnly,
+        "md-combobox-compact": this.compact
       };
     }
 
     searchIconTemplate() {
+      return this.leadingIconTemplate("search-bold", "search-icon");
+    }
+
+    filterIconTemplate() {
+      return this.leadingIconTemplate("filter-bold", "filter-icon");
+    }
+
+    leadingIconTemplate(iconName: string, iconClass: string) {
       return html`
         <md-icon
-          name="search-bold"
-          class="search-icon"
+          name=${iconName}
+          class=${iconClass}
           size="16"
           iconSet="momentumDesign"
           @click=${this.toggleVisualListBox}
@@ -1437,15 +1450,13 @@ export namespace ComboBox {
           ?readonly=${this.readOnly}
           @click=${this.handleRemoveAll}
         >
-          <span>
-            <md-icon
-              class="md-input__icon-clear"
-              name="cancel-bold"
-              size="14"
-              iconSet="momentumDesign"
-              style="height: ${this.clearIconHeight};"
-            ></md-icon
-          ></span>
+          <md-icon
+            class="md-input__icon-clear"
+            name="cancel-bold"
+            size="14"
+            iconSet="momentumDesign"
+            style="height: ${this.clearIconHeight};"
+          ></md-icon>
         </button>
       `;
     }
@@ -1459,14 +1470,12 @@ export namespace ComboBox {
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"
-          aria-hidden=${this.popupChevronAriaHidden}
+          aria-hidden=${ifDefined(this.popupChevronAriaHidden === "true" ? "true" : undefined)}
           ?disabled=${this.disabled}
           ?readonly=${this.readOnly}
           @click=${this.toggleVisualListBox}
         >
-          <span>
-            <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
-          </span>
+          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
         </button>
       `;
     }
@@ -1692,11 +1701,19 @@ export namespace ComboBox {
         : nothing;
     }
 
+    get renderNewMomentumArrow(): TemplateResult {
+      return html`
+        ${this.showFilterIcon
+          ? this.arrowButtonTemplate()
+          : html`<div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div>`}
+      `;
+    }
+
     render() {
       return html`
         <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
           <div part="group" class="group ${classMap(this.listItemOptionMap)}">
-            ${this.searchable ? this.searchIconTemplate() : nothing}
+            ${this.searchable ? this.searchIconTemplate() : this.showFilterIcon ? this.filterIconTemplate() : nothing}
             <div class="md-combobox__multiwrap" part="multiwrap">
               ${this.isMulti
                 ? this.isMulti && !this.showSelectedCount
@@ -1734,9 +1751,7 @@ export namespace ComboBox {
                 : !this.newMomentum
                   ? this.arrowButtonTemplate()
                   : nothing}
-            ${this.newMomentum
-              ? html` <div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div> `
-              : nothing}
+            ${this.newMomentum ? this.renderNewMomentumArrow : nothing}
           </div>
 
           ${this.showLoader || this.showCustomError

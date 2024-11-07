@@ -22,7 +22,11 @@ describe("Avatar", () => {
   });
 
   test("should set size property", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar alt="avatar" size="44"></md-avatar> `);
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar alt="avatar" size="44"></md-avatar>
+      `
+    );
     expect(element.size).toEqual(44);
   });
 
@@ -34,7 +38,11 @@ describe("Avatar", () => {
 
     expect(letter!.textContent!.trim()).toEqual("AH");
 
-    const element2 = await fixture<Avatar.ELEMENT>(html` <md-avatar alt="avatar" title="Chandler"></md-avatar> `);
+    const element2 = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar alt="avatar" title="Chandler"></md-avatar>
+      `
+    );
     const letter2 = element2.shadowRoot!.querySelector(".md-avatar__letter");
 
     expect(letter2!.textContent!.trim()).toEqual("C");
@@ -89,13 +97,21 @@ describe("Avatar", () => {
   });
 
   test("should provide loading status if type is typing", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar type="typing" title="Tom Smith"></md-avatar> `);
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar type="typing" title="Tom Smith"></md-avatar>
+      `
+    );
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
   });
 
   test("should provide loading status if boolean typing is true", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar typing="true" title="Tom Smith"></md-avatar> `);
+    const element = await fixture<Avatar.ELEMENT>(
+      html`
+        <md-avatar typing="true" title="Tom Smith"></md-avatar>
+      `
+    );
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
   });
@@ -123,7 +139,7 @@ describe("Avatar", () => {
       expect(computedStyle.color).toBe(
         getComputedStyle(document.documentElement).getPropertyValue("--avatar-presence-active")
       );
-      expect(presenceIndicator.getAttribute("name")).toBe("unread-filled");
+      expect(presenceIndicator.getAttribute("name")).toBe("active-presence-small-filled");
       expect(presenceIndicator.hasAttribute("isCircularWrapper"));
     }
   });

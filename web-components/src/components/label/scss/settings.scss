@@ -1,8 +1,8 @@
 $label__font-family: $brand-font-regular !default;
-$label__font-size: var(--body-primary-font-size, rem-calc(14)) !default;
+$label__font-size: var(--body-secondary-font-size, rem-calc(14)) !default;
 $label__line-height: rem-calc(20) !default;
 $label__spacing: rem-calc(16) !default;
 
-$secondary-label__font-size: var(--body-primary-font-size, rem-calc(14)) !default;
+$secondary-label__font-size: var(--body-secondary-font-size, rem-calc(14)) !default;
 $secondary-label__line-height: rem-calc(18) !default;
 $secondary-label__indent: rem-calc(4 16 0) !default;

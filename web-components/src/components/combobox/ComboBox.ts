@@ -110,6 +110,13 @@ export namespace ComboBox {
     @property({ type: Boolean, reflect: true }) newMomentum = false;
     @property({ type: Boolean, attribute: "show-filter-icon" }) showFilterIcon = false;
 
+    /**
+     * When using the new momentum style sets whether to use the new combobox style arrow
+     * or the arrow not in a div what a border to the right. This will be used for filter dropdowns
+     * that were implemented using a combobox
+     */
+    @property({ type: Boolean, attribute: "is-dropdown-arrow" }) isDropdownArrow = false;
+
     @property({ type: String })
     comboboxId = "";
     @property({ type: String }) helpText = "";
@@ -119,7 +126,6 @@ export namespace ComboBox {
 
     private readonly messageController = new MessageController();
 
-    @property({ type: Number, attribute: false })
     @internalProperty()
     private isOptGroup = false;
     @internalProperty()
@@ -1703,7 +1709,7 @@ export namespace ComboBox {
 
     get renderNewMomentumArrow(): TemplateResult {
       return html`
-        ${this.showFilterIcon
+        ${this.isDropdownArrow
           ? this.arrowButtonTemplate()
           : html`<div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div>`}
       `;

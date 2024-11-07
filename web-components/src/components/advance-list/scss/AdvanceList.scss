@@ -1,15 +1,17 @@
 :host(md-advance-list) {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 2px;
   overflow: auto;
   position: relative;
+  line-height: 1.125rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .virtual-scroll {
   width: 100%;
   overflow-y: auto;
-  height: 400px;
   overflow-x: hidden;
   position: relative;
   padding: 1px;
@@ -50,6 +52,14 @@
 
 .default-wrapper {
   margin-bottom: 2px;
+  padding: 11px 12px;
+  color: var( --advance-list-text-color, $md-advance-list-text-color-light);
+  cursor: pointer;
+  width: calc(100% - 2px);
+  box-sizing: border-box;
+  position: relative;
+}
+.default-wrapper-status-indicator {
   padding: 5px;
   color: var( --advance-list-text-color, $md-advance-list-text-color-light);
   cursor: pointer;

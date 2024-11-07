@@ -184,13 +184,17 @@
 
     span {
       margin-right: -$combobox-main-indent;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
+      display: inline-block;
+      width: 100%;
     }
 
     &.compact {
       height: $combobox-new-height-compact;
 
-      .md-combobox-button{
+      .md-combobox-button {
         width: 20px;
         height: 20px;
         justify-content: center;
@@ -202,10 +206,10 @@
         align-items: center;
         width: 50%;
         max-height: $combobox-new-height-compact;
-         
+
         input {
           height: $combobox-new-height-compact;
-          min-width : 0;
+          min-width: 0;
           flex-grow: 1;
           flex-shrink: 1;
           width: auto;
@@ -344,7 +348,7 @@
   align-items: center;
   width: 24px;
   border-left: $combobox-border;
-  
+
   .md-combobox-button.clear:focus,
   .md-combobox-button.arrow-down:focus {
     outline: none;

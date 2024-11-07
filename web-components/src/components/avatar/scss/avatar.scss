@@ -126,63 +126,63 @@
   .md-avatar__icon,
   .md-avatar__letter {
     &.md-avatar--blue {
-      background-color: var(--avatar-blue-bg-color, $lm-avatar-blue-bg-color-light);
+      background-color: var(--avatar-blue-bg-color);
     }
 
     &.md-avatar--mint {
-      background-color: var(--avatar-mint-bg-color, $lm-avatar-mint-bg-color-light);
+      background-color: var(--avatar-mint-bg-color);
     }
 
     &.md-avatar--darkmint {
-      background-color: var(--avatar-darkmint-bg-color, $lm-avatar-darkmint-bg-color-light);
+      background-color: var(--avatar-darkmint-bg-color);
     }
 
     &.md-avatar--green {
-      background-color: var(--avatar-green-bg-color, $lm-avatar-green-text-color-light);
+      background-color: var(--avatar-green-bg-color);
     }
 
     &.md-avatar--yellow {
-      background-color: var(--avatar-yellow-bg-color, $lm-avatar-yellow-bg-color-light);
+      background-color: var(--avatar-yellow-bg-color);
     }
 
     &.md-avatar--red {
-      background-color: var(--avatar-red-bg-color, $lm-avatar-red-bg-color-light);
+      background-color: var(--avatar-red-bg-color);
     }
 
     &.md-avatar--orange {
-      background-color: var(--avatar-orange-bg-color, $lm-avatar-orange-bg-color-light);
+      background-color: var(--avatar-orange-bg-color);
     }
 
     &.md-avatar--purple {
-      background-color: var(--avatar-purple-bg-color, $lm-avatar-purple-bg-color-light);
+      background-color: var(--avatar-purple-bg-color);
     }
 
     &.md-avatar--violet {
-      background-color: var(--avatar-violet-bg-color, $lm-avatar-violet-bg-color-light);
+      background-color: var(--avatar-violet-bg-color);
     }
 
     &.md-avatar--cyan {
-      background-color: var(--avatar-cyan-bg-color, $lm-avatar-cyan-bg-color-light);
+      background-color: var(--avatar-cyan-bg-color);
     }
 
     &.md-avatar--cobalt {
-      background-color: var(--avatar-cobalt-bg-color, $lm-avatar-cobalt-bg-color-light);
+      background-color: var(--avatar-cobalt-bg-color);
     }
 
     &.md-avatar--pink {
-      background-color: var(--avatar-pink-bg-color, $lm-avatar-pink-bg-color-light);
+      background-color: var(--avatar-pink-bg-color);
     }
 
     &.md-avatar--slate {
-      background-color: var(--avatar-slate-bg-color, $lm-avatar-slate-bg-color-light);
+      background-color: var(--avatar-slate-bg-color);
     }
 
     &.md-avatar--gold {
-      background-color: var(--avatar-gold-bg-color, $lm-avatar-gold-bg-color-light);
+      background-color: var(--avatar-gold-bg-color);
     }
 
     &.md-avatar--lime {
-      background-color: var(--avatar-lime-bg-color, $lm-avatar-lime-bg-color-light);
+      background-color: var(--avatar-lime-bg-color);
     }
   }
 

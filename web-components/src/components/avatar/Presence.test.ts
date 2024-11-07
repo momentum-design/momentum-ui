@@ -8,7 +8,11 @@ describe("Presence", () => {
   afterEach(fixtureCleanup);
 
   test("should set size property", async () => {
-    const element = await fixture<Presence.ELEMENT>(html` <md-presence size="36" title="active"></md-presence> `);
+    const element = await fixture<Presence.ELEMENT>(
+      html`
+        <md-presence size="36" title="active"></md-presence>
+      `
+    );
     expect(element.size).toEqual(36);
     expect(element.title).toEqual("active");
   });
@@ -25,9 +29,8 @@ describe("Presence", () => {
   test("returns correct values for active presenceType", () => {
     const result = getPresenceIconColor("active", false);
     expect(result).toEqual({
-      presenceIcon: "unread-filled",
-      presenceColor: "var(--avatar-presence-active)",
-      isCircularWrapper: true
+      presenceIcon: "active-presence-small-filled",
+      presenceColor: "var(--avatar-presence-active)"
     });
   });
 
@@ -35,8 +38,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("meeting", false);
     expect(result).toEqual({
       presenceIcon: "camera-presence_14",
-      presenceColor: "var(--avatar-presence-unstable)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-unstable)"
     });
   });
 
@@ -44,8 +46,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("schedule", false);
     expect(result).toEqual({
       presenceIcon: "meetings-presence_14",
-      presenceColor: "var(--avatar-presence-unstable)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-unstable)"
     });
   });
 
@@ -53,8 +54,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("call", false);
     expect(result).toEqual({
       presenceIcon: "handset-active_16",
-      presenceColor: "var(--avatar-presence-unstable)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-unstable)"
     });
   });
 
@@ -62,8 +62,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("dnd", false);
     expect(result).toEqual({
       presenceIcon: "dnd-presence_14",
-      presenceColor: "var(--avatar-presence-dnd)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-dnd)"
     });
   });
 
@@ -71,8 +70,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("presenting", false);
     expect(result).toEqual({
       presenceIcon: "content-share_14",
-      presenceColor: "var(--avatar-presence-dnd)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-dnd)"
     });
   });
 
@@ -80,8 +78,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("quiet-hours", false);
     expect(result).toEqual({
       presenceIcon: "quiet-hours-presence-filled",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -89,8 +86,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("away", false);
     expect(result).toEqual({
       presenceIcon: "recents-presence_14",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -98,8 +94,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("idle", false);
     expect(result).toEqual({
       presenceIcon: "recents-presence_14",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -107,8 +102,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("away-calling", false);
     expect(result).toEqual({
       presenceIcon: "away-calling-presence-filled",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -116,8 +110,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("ooo", false);
     expect(result).toEqual({
       presenceIcon: "pto-presence-filled",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -125,8 +118,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("busy", false);
     expect(result).toEqual({
       presenceIcon: "busy-presence-bold",
-      presenceColor: "var(--avatar-presence-unstable)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-unstable)"
     });
   });
 
@@ -134,8 +126,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("on-mobile", false);
     expect(result).toEqual({
       presenceIcon: "phone-filled",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -143,8 +134,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("on-device", false);
     expect(result).toEqual({
       presenceIcon: "generic-device-video_16",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -152,8 +142,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("on-hold", false);
     expect(result).toEqual({
       presenceIcon: "pause-badge-filled",
-      presenceColor: "var(--avatar-presence-inactive)",
-      isCircularWrapper: false
+      presenceColor: "var(--avatar-presence-inactive)"
     });
   });
 
@@ -161,8 +150,7 @@ describe("Presence", () => {
     const result = getPresenceIconColor("engaged", false);
     expect(result).toEqual({
       presenceIcon: "busy-presence-bold",
-      presenceColor: "var(--avatar-presence-engaged)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-engaged)"
     });
   });
 
@@ -170,17 +158,15 @@ describe("Presence", () => {
     const result = getPresenceIconColor("rona", false);
     expect(result).toEqual({
       presenceIcon: "dnd-presence-badge-filled",
-      presenceColor: "var(--avatar-presence-rona)",
-      isCircularWrapper: true
+      presenceColor: "var(--avatar-presence-rona)"
     });
   });
 
   test("returns correct values when failureBadge is true", () => {
     const result = getPresenceIconColor("", true);
     expect(result).toEqual({
-      presenceIcon: "warning",
-      presenceColor: "var(--mds-color-theme-indicator-attention)",
-      isCircularWrapper: true
+      presenceIcon: "warning-badge-filled",
+      presenceColor: "var(--mds-color-theme-indicator-attention)"
     });
   });
 
@@ -203,33 +189,33 @@ describe("getPresenceSize", () => {
   });
 
   it("should return 16 for sizes <= 36", () => {
-    expect(getPresenceSize(36)).toBe(16);
-    expect(getPresenceSize(33)).toBe(16);
+    expect(getPresenceSize(36)).toBe(13.94);
+    expect(getPresenceSize(33)).toBe(13.94);
   });
 
   it("should return 16 for sizes <= 40", () => {
-    expect(getPresenceSize(40)).toBe(16);
-    expect(getPresenceSize(37)).toBe(16);
+    expect(getPresenceSize(40)).toBe(13.94);
+    expect(getPresenceSize(37)).toBe(13.94);
   });
 
   it("should return 16 for sizes <= 48", () => {
-    expect(getPresenceSize(48)).toBe(16);
-    expect(getPresenceSize(41)).toBe(16);
+    expect(getPresenceSize(48)).toBe(13.94);
+    expect(getPresenceSize(41)).toBe(13.94);
   });
 
   it("should return 18 for sizes <= 64", () => {
-    expect(getPresenceSize(64)).toBe(18);
-    expect(getPresenceSize(49)).toBe(18);
+    expect(getPresenceSize(64)).toBe(18.58);
+    expect(getPresenceSize(49)).toBe(18.58);
   });
 
   it("should return 20 for sizes <= 72", () => {
-    expect(getPresenceSize(72)).toBe(20);
-    expect(getPresenceSize(65)).toBe(20);
+    expect(getPresenceSize(72)).toBe(20.9);
+    expect(getPresenceSize(65)).toBe(20.9);
   });
 
   it("should return 28 for sizes <= 88", () => {
-    expect(getPresenceSize(88)).toBe(28);
-    expect(getPresenceSize(73)).toBe(28);
+    expect(getPresenceSize(88)).toBe(25.55);
+    expect(getPresenceSize(73)).toBe(25.55);
   });
 
   it("should return 36 for sizes > 88", () => {

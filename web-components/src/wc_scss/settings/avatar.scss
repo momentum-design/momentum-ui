@@ -7,155 +7,46 @@ $avatar__size: rem-calc(40);
 $avatar__font-factor: 0.35;
 $avatar__line-height-factor: 0.5;
 
-$avatar-sizes: (
-  xsmall,
-  $icon-dnd_8,
-  $icon-pto_8,
-  $icon-handset_8,
-  $icon-camera_12,
-  $icon-share-screen_8,
-  18
-),
-  (
-  small,
-  $icon-dnd_14,
-  $icon-pto_14,
-  $icon-handset_14,
-  $icon-camera_16,
-  $icon-share-screen_14,
-  28
-),
-  (
-  medium,
-  $icon-dnd_20,
-  $icon-pto_20,
-  $icon-handset_20,
-  $icon-camera_20,
-  $icon-share-screen_20,
-  40
-),
-  (
-  large,
-  $icon-dnd_28,
-  $icon-pto_28,
-  $icon-handset_28,
-  $icon-camera_26,
-  $icon-share-screen_28,
-  52
-),
-  (
-  xlarge,
-  $icon-dnd_40,
-  $icon-pto_32,
-  $icon-handset_40,
-  $icon-camera_32,
-  $icon-share-screen_36,
-  84
-),
-  (
-  18,
-  $icon-dnd_8,
-  $icon-pto_8,
-  $icon-handset_8,
-  $icon-camera_12,
-  $icon-share-screen_8
-),
-  (
-  24,
-  $icon-dnd_12,
-  $icon-pto_12,
-  $icon-handset_12,
-  $icon-camera_12,
-  $icon-share-screen_12
-),
-  (
-  28,
-  $icon-dnd_14,
-  $icon-pto_14,
-  $icon-handset_14,
-  $icon-camera_16,
-  $icon-share-screen_14
-),
-  (
-  36,
-  $icon-dnd_18,
-  $icon-pto_18,
-  $icon-handset_18,
-  $icon-camera_18,
-  $icon-share-screen_18
-),
-  (
-  40,
-  $icon-dnd_20,
-  $icon-pto_20,
-  $icon-handset_20,
-  $icon-camera_20,
-  $icon-share-screen_20
-),
-  (
-  44,
-  $icon-dnd_24,
-  $icon-pto_24,
-  $icon-handset_24,
-  $icon-camera_24,
-  $icon-share-screen_24
-),
-  (
-  52,
-  $icon-dnd_28,
-  $icon-pto_28,
-  $icon-handset_28,
-  $icon-camera_26,
-  $icon-share-screen_28
-),
-  (
-  56,
-  $icon-dnd_28,
-  $icon-pto_28,
-  $icon-handset_28,
-  $icon-camera_26,
-  $icon-share-screen_28
-),
-  (
-  72,
-  $icon-dnd_36,
-  $icon-pto_32,
-  $icon-handset_36,
-  $icon-camera_32,
-  $icon-share-screen_36
-),
-  (
-  80,
-  $icon-dnd_40,
-  $icon-pto_32,
-  $icon-handset_40,
-  $icon-camera_32,
-  $icon-share-screen_36
-),
-  (
-  84,
-  $icon-dnd_40,
-  $icon-pto_32,
-  $icon-handset_40,
-  $icon-camera_32,
-  $icon-share-screen_36
-);
+$avatar-sizes: (xsmall, $icon-dnd_8, $icon-pto_8, $icon-handset_8, $icon-camera_12, $icon-share-screen_8, 18),
+  (small, $icon-dnd_14, $icon-pto_14, $icon-handset_14, $icon-camera_16, $icon-share-screen_14, 28),
+  (medium, $icon-dnd_20, $icon-pto_20, $icon-handset_20, $icon-camera_20, $icon-share-screen_20, 40),
+  (large, $icon-dnd_28, $icon-pto_28, $icon-handset_28, $icon-camera_26, $icon-share-screen_28, 52),
+  (xlarge, $icon-dnd_40, $icon-pto_32, $icon-handset_40, $icon-camera_32, $icon-share-screen_36, 84),
+  (18, $icon-dnd_8, $icon-pto_8, $icon-handset_8, $icon-camera_12, $icon-share-screen_8),
+  (24, $icon-dnd_12, $icon-pto_12, $icon-handset_12, $icon-camera_12, $icon-share-screen_12),
+  (28, $icon-dnd_14, $icon-pto_14, $icon-handset_14, $icon-camera_16, $icon-share-screen_14),
+  (36, $icon-dnd_18, $icon-pto_18, $icon-handset_18, $icon-camera_18, $icon-share-screen_18),
+  (40, $icon-dnd_20, $icon-pto_20, $icon-handset_20, $icon-camera_20, $icon-share-screen_20),
+  (44, $icon-dnd_24, $icon-pto_24, $icon-handset_24, $icon-camera_24, $icon-share-screen_24),
+  (52, $icon-dnd_28, $icon-pto_28, $icon-handset_28, $icon-camera_26, $icon-share-screen_28),
+  (56, $icon-dnd_28, $icon-pto_28, $icon-handset_28, $icon-camera_26, $icon-share-screen_28),
+  (72, $icon-dnd_36, $icon-pto_32, $icon-handset_36, $icon-camera_32, $icon-share-screen_36),
+  (80, $icon-dnd_40, $icon-pto_32, $icon-handset_40, $icon-camera_32, $icon-share-screen_36),
+  (84, $icon-dnd_40, $icon-pto_32, $icon-handset_40, $icon-camera_32, $icon-share-screen_36);
 
-$avatar--active__shadow: inset 0 0 0 rem-calc(1) $md-green-50,
+$avatar--active__shadow:
+  inset 0 0 0 rem-calc(1) $md-green-50,
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--active__shadow--dark: inset 0 0 0 rem-calc(1) $md-green-50,
+$avatar--active__shadow--dark:
+  inset 0 0 0 rem-calc(1) $md-green-50,
   inset 0 0 0 rem-calc(2) $black-24;
-$avatar--engaged__shadow: inset 0 0 0 rem-calc(1) $md-yellow-40,
+$avatar--engaged__shadow:
+  inset 0 0 0 rem-calc(1) $md-yellow-40,
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--engaged__shadow--dark: inset 0 0 0 rem-calc(1) $md-yellow-40,
+$avatar--engaged__shadow--dark:
+  inset 0 0 0 rem-calc(1) $md-yellow-40,
   inset 0 0 0 rem-calc(2) $black-24;
-$avatar--idle__shadow: inset 0 0 0 rem-calc(1) var(--md-primary-seperator-color-default),
+$avatar--idle__shadow:
+  inset 0 0 0 rem-calc(1) var(--md-primary-seperator-color-default),
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--idle__shadow--dark: inset 0 0 0 rem-calc(1) var(--md-primary-seperator-color-default),
+$avatar--idle__shadow--dark:
+  inset 0 0 0 rem-calc(1) var(--md-primary-seperator-color-default),
   inset 0 0 0 rem-calc(2) $black-24;
-$avatar--rona__shadow: inset 0 0 0 rem-calc(1) $md-red-60,
+$avatar--rona__shadow:
+  inset 0 0 0 rem-calc(1) $md-red-60,
   inset 0 0 0 rem-calc(2) $white-24;
-$avatar--rona__shadow--dark: inset 0 0 0 rem-calc(1) $md-red-60,
+$avatar--rona__shadow--dark:
+  inset 0 0 0 rem-calc(1) $md-red-60,
   inset 0 0 0 rem-calc(2) $black-24;
 
 $avatar-letter__color: $black-80;

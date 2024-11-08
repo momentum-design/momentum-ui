@@ -13,6 +13,7 @@ import "@/components/tabs/Tab";
 import { TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
+import { Tabs } from "@/components/tabs/Tabs";
 import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/tooltip/Tooltip";
 import svgWxm from "@img/wxm.svg";
@@ -525,29 +526,48 @@ export class TabsTemplateSandbox extends LitElement {
 
 @customElement("tabs-justified-sandbox-example")
 export class TabsJustifiedTemplateSandbox extends LitElement {
-  get tabsJustifiedTemplate(): TemplateResult {
+  getTabsTemplate(
+    draggable: boolean,
+    justified: boolean,
+    hug: boolean,
+    newMomentum: boolean,
+    variant: Tabs.TabVariant,
+    type: Tabs.TabsType
+  ): TemplateResult {
     return html`
-      <h3>md-tabs justified</h3>
-      <md-tabs draggable justified>
-        <md-tab slot="tab" name="History">
+      <md-tabs
+        ?draggable=${draggable}
+        ?justified=${justified}
+        ?hug-tabs=${hug}
+        type=${type}
+        ?newMomentum=${newMomentum}
+        variant=${variant}
+      >
+        <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <span>All</span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Contact History"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History">
+        <md-tab slot="tab" name="Messages" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Messages</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Messages"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "WxM"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History">
+        <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
           <span>Content for "Third Tab"</span>
         </md-tab-panel>
-        <md-tab slot="tab" name="History">
+        <md-tab slot="tab" name="History" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
           <md-icon name="alert_16"></md-icon>
         </md-tab>
         <md-tab-panel slot="panel">
@@ -557,35 +577,24 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
     `;
   }
 
+  get tabsJustifiedTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs justified</h3>
+      ${this.getTabsTemplate(true, true, false, false, "ghost", "line")}
+    `;
+  }
+
   get tabsJustifiedHugTemplate(): TemplateResult {
     return html`
-      <h3>md-tabs justified hug rounded primary</h3>
-      <md-tabs draggable justified hug-tabs type="rounded" newMomentum variant="primary">
-        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
-          <span>All</span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Contact History"</span>
-        </md-tab-panel>
-        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
-          <span style="height: 16px; width: 16px; height: 100%"><img src="${svgWxm}" /></span>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "WxM"</span>
-        </md-tab-panel>
-        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
-          <md-icon name="browser-bold" size="16" iconSet="momentumDesign"></md-icon>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Third Tab"</span>
-        </md-tab-panel>
-        <md-tab slot="tab" name="History" type="rounded" newMomentum variant="primary">
-          <md-icon name="alert_16"></md-icon>
-        </md-tab>
-        <md-tab-panel slot="panel">
-          <span>Content for "Fourth Tab"</span>
-        </md-tab-panel>
-      </md-tabs>
+      <h3>md-tabs justified hug newMomentum rounded primary</h3>
+      ${this.getTabsTemplate(true, true, true, true, "primary", "rounded")}
+    `;
+  }
+
+  get tabsLinePrimaryTemplate(): TemplateResult {
+    return html`
+      <h3>md-tabs line primary newMomentum primary</h3>
+      ${this.getTabsTemplate(false, true, true, true, "primary", "line")}
     `;
   }
 
@@ -616,7 +625,8 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
   render(): TemplateResult {
     return html`
       <div style="max-width: 600px;">
-        ${this.tabsJustifiedTemplate} ${this.tabsJustifiedHugTemplate} ${this.tabsJustifiedWithTooltipTemplate}
+        ${this.tabsJustifiedTemplate} ${this.tabsJustifiedHugTemplate} ${this.tabsLinePrimaryTemplate}
+        ${this.tabsJustifiedWithTooltipTemplate}
       </div>
     `;
   }

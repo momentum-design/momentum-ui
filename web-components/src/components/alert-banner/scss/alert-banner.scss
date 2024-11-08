@@ -1,47 +1,50 @@
 /** @component alert-banner */
+@use "settings" as constants;
+@use "mixins";
 
 @include exports("md-alert-banner") {
   .md-alert-banner {
-    padding: $alert-banner__padding;
+    padding: constants.$alert-banner__padding;
     position: relative;
     text-align: center;
     border-radius: var(--alert-banner-border-radius);
     font-family: $brand-font-regular;
     font-weight: var(--brand-font-weight-regular);
+    line-height: constants.$alert-banner__line-height;
 
     &.md-alert-banner {
       &--default {
-        @include alert-banner-color(
-          var(--alert-banner-default-bg-color, $alert-banner-info__background),
-          var(--alert-banner-default-text-color, $alert-banner-info__color)
+        @include mixins.alert-banner-color(
+          var(--alert-banner-default-bg-color),
+          var(--alert-banner-default-text-color)
         );
       }
 
       &--warning {
-        @include alert-banner-color(
-          var(--alert-banner-warning-bg-color, $alert-banner-warning__background),
-          var(--alert-banner-warning-text-color, $alert-banner-warning__color)
+        @include mixins.alert-banner-color(
+          var(--alert-banner-warning-bg-color),
+          var(--alert-banner-warning-text-color)
         );
       }
 
       &--error {
-        @include alert-banner-color(
-          var(--alert-banner-error-bg-color, $alert-banner-error__background),
-          var(--alert-banner-error-text-color, $alert-banner-error__color)
+        @include mixins.alert-banner-color(
+          var(--alert-banner-error-bg-color),
+          var(--alert-banner-error-text-color)
         );
       }
 
       &--success {
-        @include alert-banner-color(
-          var(--alert-banner-success-bg-color, $alert-banner-info__background),
-          var(--alert-banner-success-text-color, $alert-banner-info__color)
+        @include mixins.alert-banner-color(
+          var(--alert-banner-success-bg-color),
+          var(--alert-banner-success-text-color)
         );
       }
     }
 
     &__text {
-      font-size: $alert-banner__font-size;
-      padding: $alert-banner-text__padding;
+      font-size: constants.$alert-banner__font-size;
+      padding: constants.$alert-banner-text__padding;
       text-align: center;
 
       a {
@@ -52,11 +55,11 @@
 
     &__close {
       cursor: pointer;
-      height: $alert-banner-close__size;
+      height: constants.$alert-banner-close__size;
       position: absolute;
-      right: $alert-banner-close__size;
-      top: $alert-banner-close__top-space;
-      width: $alert-banner-close__size;
+      right: constants.$alert-banner-close__size;
+      top: constants.$alert-banner-close__top-space;
+      width: constants.$alert-banner-close__size;
     }
   }
   @media (forced-colors: active) {

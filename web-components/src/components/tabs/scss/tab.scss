@@ -19,7 +19,7 @@
   }
 }
 
-:host([selected]) button.isPill {
+:host([selected]) button.pill {
   box-shadow: none;
   border-radius: $tab-new-border-radius;
   background-color: var(--tabs-default-pressed);
@@ -29,7 +29,7 @@
   }
 }
 
-:host([selected]) button.isRounded {
+:host([selected]) button.rounded {
   box-shadow: $tab-rounded-active-border;
   border-radius: $tab-rounded-border-radius;
 
@@ -39,7 +39,6 @@
 }
 
 :host([selected]) button.primary {
-
   background-color: var(--tabs-primary-bg-color);
   color: var(--tabs-primary-text-color);
 
@@ -58,7 +57,57 @@
   }
 }
 
-:host([selected]) button.isPill.onlyIcon {
+button.primary {
+  font-family: var(--brand-font-bold);
+  font-weight: var(--brand-font-weight-bold);
+  color: var(--tabs-default-active);
+}
+
+button.primary.line {  
+  background: $tab-none-bg;  
+
+  &:hover {
+    background-color: var(--tabs-default-hover);
+    color: var(--tabs-default-active);
+  }
+
+  &:active {
+    background-color: var(--tabs-default-pressed);
+    color: var(--tabs-default-active);
+    outline: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    background: $tab-none-bg;
+    color: var(--tabs-default-disabled) !important;
+  }
+}
+
+:host([selected]) button.primary.line {  
+  background: $tab-none-bg;
+  color: var(--tabs-default-active);
+
+  &:hover {
+    background-color: var(--tabs-default-hover);
+    color: var(--tabs-default-active);
+  }
+
+  &:active {
+    background-color: var(--tabs-default-pressed);
+    color: var(--tabs-default-active);
+    outline: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    background: $tab-none-bg;
+    color: var(--tabs-default-disabled) !important;
+  }
+}
+
+
+:host([selected]) button.pill.onlyIcon {
   border-radius: 100%;
 
   &:active {
@@ -79,7 +128,7 @@
   }
 }
 
-:host([selected][vertical]) button.isPill {
+:host([selected][vertical]) button.pill {
   border-radius: $tab-new-border-radius;
   box-shadow: none;
 
@@ -88,7 +137,7 @@
   }
 }
 
-:host([selected][vertical]) button.isPill.onlyIcon {
+:host([selected][vertical]) button.pill.onlyIcon {
   border-radius: 100%;
 
   &:active {
@@ -268,11 +317,11 @@ button.newMomentum {
   }
 }
 
-button.isPill {
+button.pill {
   border-radius: $tab-new-border-radius;
 }
 
-button.isPill.onlyIcon {
+button.pill.onlyIcon {
   border-radius: 100%;
 }
 

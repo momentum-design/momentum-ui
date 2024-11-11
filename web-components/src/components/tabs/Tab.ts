@@ -195,8 +195,9 @@ export namespace Tab {
           part="tab"
           class="${classMap({
             closable: this.closable !== "",
-            isPill: this.type === "pill",
-            isRounded: this.type === "rounded",
+            pill: this.type === "pill",
+            rounded: this.type === "rounded",
+            line: this.type === "line",
             primary: this.variant === "primary",
             newMomentum: this.newMomentum,
             onlyIcon: this.onlyIcon

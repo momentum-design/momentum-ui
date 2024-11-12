@@ -263,7 +263,6 @@ export namespace AdvanceList {
         <div
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
-          aria-live="polite"
           aria-activedescendant=${this.getActiveDescendant()}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}

@@ -45,41 +45,23 @@ export namespace DateRangePicker {
 
     handleDateSelection = (e: any) => {
       const selection: DateTime = e.detail.data;
-      if (this.startDate && this.endDate) {
-        const startObj = DateTime.fromSQL(this.startDate);
-        const endObj = DateTime.fromSQL(this.endDate);
-        if (selection < startObj || selection > endObj) {
-          if (selection < startObj) {
-            // scenario 1 : date is outside, before current start
-            this.startDate = this.dateToSqlTranslate(selection);
-          } else {
-            // scenario 2 : date is outside, after current end
-            this.endDate = this.dateToSqlTranslate(selection);
-          }
-        } else {
-          const selectionTime = selection.toMillis();
-          const endObjTime = endObj.toMillis();
-          const startObjTime = startObj.toMillis();
-
-          if (Math.abs(selectionTime - endObjTime) < Math.abs(selectionTime - startObjTime)) {
-            // scenario 3 : date is inside, closer to end
-            this.endDate = this.dateToSqlTranslate(selection);
-          } else {
-            // scenario 4 : date is inside, closer to start
-            this.startDate = this.dateToSqlTranslate(selection);
-          }
-        }
-      } else if (this.startDate) {
-        const existing = DateTime.fromSQL(this.startDate);
-        if (selection > existing) {
-          this.endDate = this.dateToSqlTranslate(selection);
-        } else {
+      if (!this.startDate) {
+        this.startDate = this.dateToSqlTranslate(selection);
+      }
+      else if (!this.endDate) {
+        if (selection < DateTime.fromISO(this.startDate)) {
           this.endDate = this.startDate;
           this.startDate = this.dateToSqlTranslate(selection);
         }
-      } else {
-        this.startDate = this.dateToSqlTranslate(e.detail.data);
+        else {
+          this.endDate = this.dateToSqlTranslate(selection);
+        }
       }
+      else {
+        this.startDate = this.dateToSqlTranslate(selection);
+        this.endDate = undefined;
+      }
+
       this.emitDateRange();
       this.updateValue();
     };

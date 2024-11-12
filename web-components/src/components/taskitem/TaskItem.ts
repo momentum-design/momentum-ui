@@ -21,7 +21,7 @@ export namespace TaskItem {
     @property({ type: String }) mediaType = "call";
     @property({ type: String }) status = "";
     @property({ type: String }) popovertitle = "";
-    @property({ type: String }) title = "";
+    @property({ type: String }) itemTitle = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Number }) quantity = 0;
@@ -187,7 +187,7 @@ export namespace TaskItem {
           }
         }
       }
-      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${
+      return `${this.mediaType} ${this.status} ${this.itemTitle} ${queueContent} ${this.quantity ? this.quantity : ""} ${
         this.lastmessage
       }`;
     }
@@ -221,10 +221,10 @@ export namespace TaskItem {
             ${this.popovertitle
               ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
               : nothing}
-            ${this.title
+            ${this.itemTitle
               ? html`
                   <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
-                    >${this.title}</span
+                    >${this.itemTitle}</span
                   >
                 `
               : nothing}

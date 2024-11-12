@@ -7,6 +7,7 @@ const fixtureFactory = async (
   mediaType: string,
   popovertitle: string,
   title: string,
+  itemTitle: string,
   queue: string,
   status: string,
   quantity: number,
@@ -20,6 +21,7 @@ const fixtureFactory = async (
       mediaType="${mediaType}"
       title="${title}"
       popovertitle="${popovertitle}"
+      itemTitle="${itemTitle}"
       status="${status}"
       quantity="${quantity}"
       lastmessage="${lastmessage}"
@@ -43,6 +45,7 @@ describe("TaskItem", () => {
       "telephony",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "consulting",
       0,
@@ -61,6 +64,7 @@ describe("TaskItem", () => {
       "facebook",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "consulting",
       0,
@@ -76,6 +80,7 @@ describe("TaskItem", () => {
       "whatsapp",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "consulting",
       0,
@@ -89,6 +94,7 @@ describe("TaskItem", () => {
   test("should render TaskItem Component for Apple Chat Messenger", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "applemessages",
+      "Mihael Varificantare",
       "Mihael Varificantare",
       "Mihael Varificantare",
       "quelle_1",
@@ -108,6 +114,7 @@ describe("TaskItem", () => {
       "progressive_campaign",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "consulting",
       0,
@@ -123,6 +130,7 @@ describe("TaskItem", () => {
       "chat",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "play",
       0,
@@ -141,6 +149,7 @@ describe("TaskItem", () => {
       "outbound telephony",
       "Mihael Varificantare",
       "Mihael Varificantare",
+      "Mihael Varificantare",
       "quelle_1",
       "play",
       0,
@@ -155,6 +164,7 @@ describe("TaskItem", () => {
   test("should render midcall type", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "midcall telephony",
+      "Mihael Varificantare",
       "Mihael Varificantare",
       "Mihael Varificantare",
       "quelle_1",
@@ -175,6 +185,7 @@ describe("TaskItem", () => {
       "callback",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "play",
       0,
@@ -191,6 +202,7 @@ describe("TaskItem", () => {
       "inbound telephony",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "play",
       0,
@@ -207,6 +219,7 @@ describe("TaskItem", () => {
       "email",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "hold",
       0,
@@ -226,6 +239,7 @@ describe("TaskItem", () => {
       "sms",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "conference",
       0,
@@ -244,6 +258,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "transfered",
       0,
@@ -262,6 +277,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "campaign",
       0,
@@ -278,6 +294,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "courtesy_callback",
       0,
@@ -294,6 +311,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "call",
       10,
@@ -315,6 +333,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "call",
       101,
@@ -331,6 +350,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "",
       "call",
       0,
@@ -347,6 +367,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "transfered",
       0,
@@ -367,6 +388,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "transfered",
       0,
@@ -387,6 +409,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "transfered",
       0,
@@ -404,6 +427,7 @@ describe("TaskItem", () => {
       "twitter",
       "Mihael Varificantare",
       "",
+      "Mihael Varificantare",
       "quelle_1",
       "transfered",
       0,
@@ -412,6 +436,24 @@ describe("TaskItem", () => {
     );
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
-    expect(ariaLabel).toEqual("twitter transfered  Test Queue Name 0 minutes 0 seconds  ");
+    expect(ariaLabel).toEqual("twitter transfered Mihael Varificantare Test Queue Name 0 minutes 0 seconds  ");
   });
+
+  test("should render titleName as the visible title of the task-item", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "Not Mihael Varificantare",
+      "Mihael Varificantare",
+      "quelle_1",
+      "transfered",
+      0,
+      "",
+      false
+    );
+    await elementUpdated(element);
+    const itemTitle = element.shadowRoot?.querySelector(".md-taskitem__content_title");
+    expect(itemTitle?.textContent).toEqual("Mihael Varificantare");
+  });
+  
 });

@@ -245,7 +245,7 @@ export namespace TaskItem {
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
-          ${this.popovertitle
+            ${this.popovertitle
               ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
               : nothing}
             ${this.title

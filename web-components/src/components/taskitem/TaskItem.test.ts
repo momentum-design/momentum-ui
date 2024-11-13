@@ -19,9 +19,9 @@ const fixtureFactory = async (
   return await fixture(html`
     <md-task-item
       mediaType="${mediaType}"
-      title="${title}"
       popovertitle="${popovertitle}"
       itemTitle="${itemTitle}"
+      title="${title}"
       status="${status}"
       quantity="${quantity}"
       lastmessage="${lastmessage}"

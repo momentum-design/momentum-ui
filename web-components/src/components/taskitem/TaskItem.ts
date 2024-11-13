@@ -29,34 +29,40 @@ export namespace TaskItem {
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
+    @property({ type: String }) titleValue = "";
+    @property({ type: String }) itemTitleValue = "";
 
     /**
     * @deprecated Use `itemTitle` instead.
-    * Using title will may cause an unwanted tooltip.
+    * Using title may cause an unwanted tooltip.
     */
-    @property({ type: String, reflect: true })
+    @property({ type: String, reflect: true})
     get title(): string {
       return this.displayTitle;
     }
     set title(title: string) {
-      this.updateTitle(title);
+      this.titleValue = title;
+      this.updateTitle();
     }
     /**
     * The visible text for the Title.
     */
-    @property({ type: String, reflect: true})
+    @property({ type: String, reflect: true, attribute: "itemtitle" })
     get itemTitle() {
       return this.displayTitle;
     }
     set itemTitle(itemTitle: string) {
-      this.updateTitle(itemTitle);
+      this.itemTitleValue = itemTitle;
+      this.updateTitle();
     }
 
-    private updateTitle(title: string) {
-      if (!title) {
-        return;
+    private updateTitle() {
+      if(!this.itemTitleValue){
+      this.displayTitle = this.titleValue;
       }
-      this.displayTitle = title;
+      else{
+        this.displayTitle = this.itemTitleValue;
+      }
     }
 
     private displayTitle = "";

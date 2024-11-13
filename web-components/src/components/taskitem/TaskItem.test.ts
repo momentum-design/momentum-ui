@@ -455,5 +455,22 @@ describe("TaskItem", () => {
     const itemTitle = element.shadowRoot?.querySelector(".md-taskitem__content_title");
     expect(itemTitle?.textContent).toEqual("Mihael Varificantare");
   });
-  
+
+  test("should render title as the visible title of the task-item in the absence of titleName", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "Not Mihael Varificantare",
+      "",
+      "quelle_1",
+      "transfered",
+      0,
+      "",
+      false
+    );
+    await elementUpdated(element);
+    const itemTitle = element.shadowRoot?.querySelector(".md-taskitem__content_title");
+    expect(itemTitle?.textContent).toEqual("Not Mihael Varificantare");
+  });
+
 });

@@ -29,8 +29,6 @@ export namespace TaskItem {
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
-    @property({ type: String }) titleValue = "";
-    @property({ type: String }) itemTitleValue = "";
 
     /**
     * @deprecated Use `itemTitle` instead.
@@ -47,7 +45,7 @@ export namespace TaskItem {
     /**
     * The visible text for the Title.
     */
-    @property({ type: String, reflect: true, attribute: "itemtitle" })
+    @property({ type: String, reflect: true, attribute: "item-title" })
     get itemTitle() {
       return this.displayTitle;
     }
@@ -66,6 +64,8 @@ export namespace TaskItem {
     }
 
     private displayTitle = "";
+    private titleValue = "";
+    private itemTitleValue = "";
 
     renderTaskType = () => {
       switch (this.mediaType.toLowerCase()) {

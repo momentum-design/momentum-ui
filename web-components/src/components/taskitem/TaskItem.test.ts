@@ -20,7 +20,7 @@ const fixtureFactory = async (
     <md-task-item
       mediaType="${mediaType}"
       popovertitle="${popovertitle}"
-      itemTitle="${itemTitle}"
+      item-title="${itemTitle}"
       title="${title}"
       status="${status}"
       quantity="${quantity}"

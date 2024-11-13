@@ -44,7 +44,7 @@ export namespace TaskItem {
     /**
     * The visible text for the Title.
     */
-    @property({ type: String, reflect: true })
+    @property({ type: String, reflect: true})
     get itemTitle() {
       return this.displayTitle;
     }
@@ -53,6 +53,9 @@ export namespace TaskItem {
     }
 
     private updateTitle(title: string) {
+      if (!title) {
+        return;
+      }
       this.displayTitle = title;
     }
 

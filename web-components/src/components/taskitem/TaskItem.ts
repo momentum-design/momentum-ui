@@ -18,7 +18,6 @@ import styles from "./scss/module.scss";
 export namespace TaskItem {
   @customElementWithCheck("md-task-item")
   export class ELEMENT extends LitElement {
-
     @property({ type: String }) mediaType = "call";
     @property({ type: String }) status = "";
     @property({ type: String }) popovertitle = "";
@@ -246,7 +245,10 @@ export namespace TaskItem {
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
-          ${this.title
+          ${this.popovertitle
+              ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
+              : nothing}
+            ${this.title
               ? html`
                   <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
                     >${this.title}</span

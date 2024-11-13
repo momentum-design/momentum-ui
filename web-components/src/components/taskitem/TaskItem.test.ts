@@ -422,12 +422,12 @@ describe("TaskItem", () => {
     expect(ariaLabel).toEqual("Custom area label");
   });
 
-  test("should have custom aria label", async () => {
+  test("should have custom aria label title", async () => {
     const element: TaskItem.ELEMENT = await fixtureFactory(
       "twitter",
       "Mihael Varificantare",
+      "Mihael Varificantare aria label",
       "",
-      "Mihael Varificantare",
       "quelle_1",
       "transfered",
       0,
@@ -436,7 +436,24 @@ describe("TaskItem", () => {
     );
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
-    expect(ariaLabel).toEqual("twitter transfered Mihael Varificantare Test Queue Name 0 minutes 0 seconds  ");
+    expect(ariaLabel).toEqual("twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  ");
+  });
+
+  test("should have custom aria label new title", async () => {
+    const element: TaskItem.ELEMENT = await fixtureFactory(
+      "twitter",
+      "Mihael Varificantare",
+      "",
+      "Mihael Varificantare aria label",
+      "quelle_1",
+      "transfered",
+      0,
+      "",
+      false
+    );
+    await elementUpdated(element);
+    const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
+    expect(ariaLabel).toEqual("twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  ");
   });
 
   test("should render titleName as the visible title of the task-item", async () => {

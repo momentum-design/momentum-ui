@@ -188,9 +188,13 @@ export namespace TaskItem {
           }
         }
       }
-      return `${this.mediaType} ${this.status} ${this.itemTitle} ${queueContent} ${this.quantity ? this.quantity : ""} ${
-        this.lastmessage
-      }`;
+      let ariaLabel = ``;
+      if (this.itemTitle) {
+        ariaLabel = `${this.mediaType} ${this.status} ${this.itemTitle} ${queueContent} ${this.quantity ? this.quantity : ""} ${this.lastmessage}`;
+      } else {
+        ariaLabel = `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${this.lastmessage}`;
+      }
+      return ariaLabel;
     }
 
     static get styles() {

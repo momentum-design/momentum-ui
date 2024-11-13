@@ -373,7 +373,7 @@ export class TabsTemplateSandbox extends LitElement {
           Single Button Reset
         </md-toggle-switch>
         <div>
-          <md-tabs justified selected="0">
+          <md-tabs justified selected-index="0">
             <md-tab slot="tab" aria-label="entry-point">
               <span>Entry Point</span>
             </md-tab>

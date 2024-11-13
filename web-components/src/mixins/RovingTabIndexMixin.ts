@@ -48,11 +48,36 @@ export const RovingTabIndexMixin = <T extends AnyConstructor<SlotableClass & Rov
   class RovingTabIndex extends SlottedMixin(base) {
     private _selected = 0;
     @property({ type: Boolean, reflect: true, attribute: "roving-prevent-focus" }) rovingPreventFocus = false;
+
+    /**
+     * @deprecated Use `selected-index` instead.
+     * The index of the currently selected element.
+     */
     @property({ type: Number, reflect: true })
     get selected() {
       return this._selected;
     }
     set selected(index: number) {
+      this.updateSelectedIndex(index);
+    }
+
+    /**
+     * The index of the currently selected element.
+     */
+    @property({ type: Number, reflect: true, attribute: "selected-index" })
+    get selectedIndex() {
+      return this._selected;
+    }
+    set selectedIndex(index: number) {
+      this.updateSelectedIndex(index);
+    }
+
+    /**
+     * Updates the selected index and manages the tabIndex of the slotted elements.
+     *
+     * @param index - The new selected index.
+     */
+    private updateSelectedIndex(index: number) {
       const oldIndex = this._selected;
 
       if (this.slotted[oldIndex]) {

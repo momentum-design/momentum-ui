@@ -10,7 +10,6 @@ export const taskItemTemplate = html`
       mediaType="telephony"
       status="conference"
       title="Mihael Varificantare for test text overflow"
-      itemTitle="Mihael Varificantare for test text overflow"
       queue="IRV_quelle_1167676776767676asdadadas"
       lastmessage="I can ask one more question"
       quantity="0"
@@ -65,7 +64,6 @@ export const taskItemTemplate = html`
     <md-task-item
       mediaType="progressive_campaign"
       title="Media Type progressive_campaign"
-      itemTitle="Media Type progressive_campaign"
       queue="IRV_quelle_11"
       lastmessage=" "
       quantity="123"

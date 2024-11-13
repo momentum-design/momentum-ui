@@ -22,6 +22,7 @@ export namespace TaskItem {
     @property({ type: String }) status = "";
     @property({ type: String }) popovertitle = "";
     @property({ type: String }) itemTitle = "";
+    @property({ type: String }) title = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Number }) quantity = 0;
@@ -222,12 +223,11 @@ export namespace TaskItem {
               ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
               : nothing}
             ${this.itemTitle
-              ? html`
-                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
-                    >${this.itemTitle}</span
-                  >
-                `
-              : nothing}
+              ? html`<span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}">${this.itemTitle}</span>`
+                : this.title 
+                ? html`<span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}">${this.title}</span>` 
+                : nothing
+            }
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}

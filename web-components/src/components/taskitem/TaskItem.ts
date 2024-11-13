@@ -18,11 +18,10 @@ import styles from "./scss/module.scss";
 export namespace TaskItem {
   @customElementWithCheck("md-task-item")
   export class ELEMENT extends LitElement {
+
     @property({ type: String }) mediaType = "call";
     @property({ type: String }) status = "";
     @property({ type: String }) popovertitle = "";
-    @property({ type: String }) itemTitle = "";
-    @property({ type: String }) title = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Number }) quantity = 0;
@@ -31,6 +30,34 @@ export namespace TaskItem {
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
+
+    /**
+    * @deprecated Use `itemTitle` instead.
+    * Using title will may cause an unwanted tooltip.
+    */
+    @property({ type: String, reflect: true })
+    get title(): string {
+      return this.displayTitle;
+    }
+    set title(title: string) {
+      this.updateTitle(title);
+    }
+    /**
+    * The visible text for the Title.
+    */
+    @property({ type: String, reflect: true })
+    get itemTitle() {
+      return this.displayTitle;
+    }
+    set itemTitle(itemTitle: string) {
+      this.updateTitle(itemTitle);
+    }
+
+    private updateTitle(title: string) {
+      this.displayTitle = title;
+    }
+
+    private displayTitle = "";
 
     renderTaskType = () => {
       switch (this.mediaType.toLowerCase()) {
@@ -188,13 +215,9 @@ export namespace TaskItem {
           }
         }
       }
-      let ariaLabel = ``;
-      if (this.itemTitle) {
-        ariaLabel = `${this.mediaType} ${this.status} ${this.itemTitle} ${queueContent} ${this.quantity ? this.quantity : ""} ${this.lastmessage}`;
-      } else {
-        ariaLabel = `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${this.lastmessage}`;
-      }
-      return ariaLabel;
+      return `${this.mediaType} ${this.status} ${this.title} ${queueContent} ${this.quantity ? this.quantity : ""} ${
+        this.lastmessage
+      }`;
     }
 
     static get styles() {
@@ -223,15 +246,13 @@ export namespace TaskItem {
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
-            ${this.popovertitle
-              ? html` <span class="md-taskitem__content_popover_title">${this.popovertitle}</span> `
+          ${this.title
+              ? html`
+                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
+                    >${this.title}</span
+                  >
+                `
               : nothing}
-            ${this.itemTitle
-              ? html`<span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}">${this.itemTitle}</span>`
-                : this.title 
-                ? html`<span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}">${this.title}</span>` 
-                : nothing
-            }
             <div class="md-taskitem__content_inner">
               <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0 ? this.queue : html` <slot name="queue"></slot> `}

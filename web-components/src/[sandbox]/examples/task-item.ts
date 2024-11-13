@@ -19,8 +19,7 @@ export const taskItemTemplate = html`
     <md-task-item
       mediaType="outbound telephony"
       status="hold"
-      title="Mihael Varificantare"
-      itemTitle="Mihael Varificantare"
+      itemTitle="No title tooltip test"
       queue="IRV_quelle_11"
       lastmessage=" "
       quantity="123"

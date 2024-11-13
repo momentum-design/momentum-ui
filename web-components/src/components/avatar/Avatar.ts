@@ -94,7 +94,9 @@ export namespace Avatar {
     private get avatarLetterClassMap() {
       return {
         "md-decrypting": this.decrypting,
-        [`md-avatar--${this.color}`]: this.color
+        [`md-avatar--${this.color}`]: this.color,
+        "new-momentum": this.newMomentum,
+        "has-color": !!this.color
       };
     }
 

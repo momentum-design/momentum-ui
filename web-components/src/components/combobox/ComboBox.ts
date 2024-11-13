@@ -92,7 +92,8 @@ export namespace ComboBox {
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
-    @internalProperty() ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
+    @internalProperty()
+    private ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
 
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
     @property({ type: String, attribute: "arrow-aria-label" }) arrowAriaLabel = "Expand";

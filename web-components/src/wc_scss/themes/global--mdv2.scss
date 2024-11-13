@@ -104,14 +104,18 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
 
-  --md-navigation-bg-color: transparent;
-  --md-header-bg-color: transparent;
-  --md-app-bg-color: var(--md-primary-gradient-background);
-  --md-header-bg-color: transparent;
   --md-header-separator-color: transparent;
-  --md-content-bg-color: var(--md-secondary-gradient-background);
-  --md-task-list-bg-color: transparent;
-  --md-agent-history-bg-color: transparent;
+
+  /**
+   * Temporarily disable overriding token  background colours for mdv2
+   * 
+  **/
+  //--md-header-bg-color: transparent;
+  //--md-navigation-bg-color: transparent;
+  //--md-app-bg-color: var(--md-primary-gradient-background);
+  //--md-content-bg-color: var(--md-secondary-gradient-background);
+  //--md-task-list-bg-color: transparent;//#{$mds-color-theme-inverted-outline-button-normal};
+  //--md-agent-history-bg-color: #{$mds-color-theme-inverted-outline-button-normal};
 
   --md-nav-divider-primary: linear-gradient(
     0deg,

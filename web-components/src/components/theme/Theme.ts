@@ -42,8 +42,9 @@ export namespace Theme {
   export type Attributes = {
     darkTheme: boolean;
     mdTheme: boolean;
+    newLookEnabled: boolean;
   };
-
+ 
   /**
    * Popper.js can't position overlay content correct in
    * case when element inside container with overflow: hidden.
@@ -57,6 +58,7 @@ export namespace Theme {
   export class ELEMENT extends LitElement {
     @property({ type: Boolean }) darkTheme = false;
     @property({ type: Boolean }) lumos = false;
+    @property({ type: Boolean }) newLookEnabled = false;
     @property({ type: String }) theme?: ThemeName;
 
     @internalProperty() private activeTheme = momentumLight;
@@ -183,7 +185,7 @@ export namespace Theme {
 
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme")) {
+      if (changedProperties.has("lumos") || changedProperties.has("darkTheme") || changedProperties.has("theme") || changedProperties.has("newLookEnabled")) {
         this.dispatchEvent(
           new CustomEvent("theme-changed", {
             composed: true,
@@ -191,7 +193,8 @@ export namespace Theme {
             detail: {
               darkTheme: this.darkTheme,
               lumos: this.lumos,
-              theme: this.theme
+              theme: this.theme,
+              newLookEnabled: this.newLookEnabled
             }
           })
         );

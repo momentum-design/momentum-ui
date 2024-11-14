@@ -21,7 +21,6 @@ export namespace TaskItem {
     @property({ type: String }) mediaType = "call";
     @property({ type: String }) status = "";
     @property({ type: String }) popovertitle = "";
-    @property({ type: String }) title = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Number }) quantity = 0;
@@ -30,6 +29,43 @@ export namespace TaskItem {
     @property({ type: String }) customAriaLabel = "";
     @property({ type: String }) iconSrc = "";
     @property({ type: String }) tabIndexForContainer = "0";
+
+    /**
+    * @deprecated Use `itemTitle` instead.
+    * Using title may cause an unwanted tooltip.
+    */
+    @property({ type: String, reflect: true})
+    get title(): string {
+      return this.displayTitle;
+    }
+    set title(title: string) {
+      this.titleValue = title;
+      this.updateTitle();
+    }
+    /**
+    * The visible text for the Title.
+    */
+    @property({ type: String, reflect: true, attribute: "item-title" })
+    get itemTitle() {
+      return this.displayTitle;
+    }
+    set itemTitle(itemTitle: string) {
+      this.itemTitleValue = itemTitle;
+      this.updateTitle();
+    }
+
+    private updateTitle() {
+      if(!this.itemTitleValue){
+      this.displayTitle = this.titleValue;
+      }
+      else{
+        this.displayTitle = this.itemTitleValue;
+      }
+    }
+
+    private displayTitle = "";
+    private titleValue = "";
+    private itemTitleValue = "";
 
     renderTaskType = () => {
       switch (this.mediaType.toLowerCase()) {

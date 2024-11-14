@@ -63,7 +63,7 @@
 
         &::after {
           border-radius: 100%;          
-          box-shadow: 0 1px 2px 0 $black-32;
+          box-shadow: 0 1px 2px 0 $slider-box-shadow-color;
           content: "";
           height: $toggle-switch__size;
           left: 2px;

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
+const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const datepicker = {
   prefix: "mdv2",
@@ -18,10 +19,7 @@ const datepicker = {
     },
     number: {
       color: {
-        common: "$mds-color-theme-text-primary-normal"
-      },
-      "bg-color": {
-        common: "$mds-color-theme-button-secondary-normal"
+        common: "$mds-color-theme-text-secondary-normal"
       }
     },
     hover: {
@@ -69,9 +67,22 @@ const datepicker = {
     }
   },
   range: {
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    "bg-color": {
+      light: colors.gray[20].name,
+      dark: colors.gray[60].name
+    },
     hover: {
       "bg-color": {
-        common: "$mds-color-theme-button-secondary-normal"
+        light: colors.gray[30].name,
+        dark: colors.gray[70].name
+      }
+    },
+    edge: {
+      "bg-color": {
+        common: "$mds-color-theme-background-accent-normal"
       }
     }
   }

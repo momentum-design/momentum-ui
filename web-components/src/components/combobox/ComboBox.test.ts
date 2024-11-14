@@ -1475,18 +1475,21 @@ describe("Combobox Component", () => {
       el.inputValue = "One";
       el["notifySearchResultCount"]();
       await elementUpdated(el);
-      expect(el.ariaLabelForComboBox).toEqual("Search results: 1 results found.");
+
+      const inputEl = el.shadowRoot!.querySelector("input");
+
+      expect(inputEl?.getAttribute("aria-label")).toEqual("Search results: 1 results found.");
 
       el.searchResultAriaLabel = "";
       el.ariaLabel = "Search results";
       el["notifySearchResultCount"]();
       await elementUpdated(el);
-      expect(el.ariaLabelForComboBox).toEqual("Search results, 1 results found.");
+      expect(inputEl?.getAttribute("aria-label")).toEqual("Search results, 1 results found.");
 
       el.ariaLabel = "";
       el["notifySearchResultCount"]();
       await elementUpdated(el);
-      expect(el.ariaLabelForComboBox).toEqual("ComboBox Element, 1 results found.");
+      expect(inputEl?.getAttribute("aria-label")).toEqual("ComboBox Element, 1 results found.");
     });
 
     test("should change selected option for virtual scroll", async () => {

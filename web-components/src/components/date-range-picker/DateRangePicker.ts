@@ -47,17 +47,14 @@ export namespace DateRangePicker {
       const selection: DateTime = e.detail.data;
       if (!this.startDate) {
         this.startDate = this.dateToSqlTranslate(selection);
-      }
-      else if (!this.endDate) {
+      } else if (!this.endDate) {
         if (selection < DateTime.fromISO(this.startDate)) {
           this.endDate = this.startDate;
           this.startDate = this.dateToSqlTranslate(selection);
-        }
-        else {
+        } else {
           this.endDate = this.dateToSqlTranslate(selection);
         }
-      }
-      else {
+      } else {
         this.startDate = this.dateToSqlTranslate(selection);
         this.endDate = undefined;
       }
@@ -70,12 +67,12 @@ export namespace DateRangePicker {
       if (!this.startDate || !this.endDate) {
         return;
       }
-      
+
       const event = new CustomEvent("date-range-change", {
         detail: {
           startDate: this.startDate,
-          endDate: this.endDate,
-        },
+          endDate: this.endDate
+        }
       });
       this.dispatchEvent(event);
     }

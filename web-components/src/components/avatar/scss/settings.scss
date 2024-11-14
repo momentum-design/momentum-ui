@@ -55,6 +55,11 @@ $avatar--rona__shadow--dark:
 $avatar-letter__color: var(--avatar-letter-text-color);
 $avatar-letter__background: var(--avatar-letter-bg-color);
 
+$avatar-legacy-letter__color: var(--avatar-letter-legacy-text-color, var(--avatar-letter-text-color));
+$avatar-legacy-letter__background: var(--avatar-letter-legacy-bg-color, var(--avatar-letter-bg-color));
+
+$avatar-letter__color-text-color: var(--avatar-letter-color-avatar-text-color, --avatar-letter-text-color);
+
 $avatar-icon__color: var(--avatar-icon-icon-color, $black-80);
 $avatar-icon__background: $gray-5-88;
 

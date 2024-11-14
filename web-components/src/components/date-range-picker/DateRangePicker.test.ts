@@ -32,11 +32,7 @@ describe("DatePicker Component", () => {
     const firstDate = DateTime.fromObject({ month: 11, day: 15 });
     const secondDate = firstDate.plus({ days: 5 });
 
-    const el: DateRangePicker.ELEMENT = await fixture(
-      html`
-        <md-date-range-picker value={''}></md-date-range-picker>
-      `
-    );
+    const el: DateRangePicker.ELEMENT = await fixture(html` <md-date-range-picker value=""></md-date-range-picker> `);
 
     const selectFunc = jest.spyOn(el, "handleDateSelection");
     const updateFunc = jest.spyOn(el, "updateValue");
@@ -81,7 +77,7 @@ describe("DatePicker Component", () => {
     const eventSpy = jest.fn((event: CustomEvent) => {
       capturedEvent = event;
     }) as unknown as EventListener;
-    el.addEventListener('date-range-change', eventSpy as EventListener);
+    el.addEventListener("date-range-change", eventSpy as EventListener);
 
     el.handleDateSelection({ detail: { data: DateTime.fromObject({ month: 1, day: 1 }) } });
     expect(el.startDate).not.toBeUndefined();
@@ -98,12 +94,12 @@ describe("DatePicker Component", () => {
     expect(capturedEvent).not.toBeNull();
     expect(capturedEvent!.detail).toEqual({
       startDate: el.startDate,
-      endDate: el.endDate,
+      endDate: el.endDate
     });
   });
 
   describe("should handle range modification scenarios", () => {
-    const date1 =  DateTime.fromObject({ month: 11, day: 15 });
+    const date1 = DateTime.fromObject({ month: 11, day: 15 });
     const date2 = date1.plus({ days: 10 });
     const date3 = date2.plus({ days: 10 });
     const date4 = date3.plus({ days: 10 });
@@ -113,9 +109,7 @@ describe("DatePicker Component", () => {
       [date4, date3, date2, date1],
       [date2, date1, date4, date3],
       [date3, date4, date1, date2]
-      ]
-    )
-    ("should handle date selection in order %s %s %s %s", async (dateA, dateB, dateC, dateD) => {
+    ])("should handle date selection in order %s %s %s %s", async (dateA, dateB, dateC, dateD) => {
       const el = await fixtureFactory();
       expect(el.startDate).toBeUndefined();
       expect(el.endDate).toBeUndefined();

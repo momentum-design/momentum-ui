@@ -57,10 +57,6 @@ const datepicker = {
       }
     },
     edge: {
-      "text-color": {
-        light: colors.gray["05"].name,
-        dark: colors.gray[100].name
-      },
       "bg-color": {
         light: colors.gray[100].name,
         dark: colors.gray["05"].name

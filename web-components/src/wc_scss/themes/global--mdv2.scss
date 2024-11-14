@@ -36,7 +36,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --brand-font-weight-medium: 500;
   --brand-font-weight-bold: 700;
 
-  font-size: var(--rem-base);
+  font-size: 14px;
   font-family: var(--brand-font-regular);
   font-weight: var(--brand-font-weight-regular);
 
@@ -104,14 +104,18 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-dynamic-layout-button-border-color: #{$mds-color-theme-outline-button-normal};
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
 
-  --md-navigation-bg-color: transparent;
-  --md-header-bg-color: transparent;
-  --md-app-bg-color: var(--md-primary-gradient-background);
-  --md-header-bg-color: transparent;
   --md-header-separator-color: transparent;
-  --md-content-bg-color: var(--md-secondary-gradient-background);
-  --md-task-list-bg-color: transparent;
-  --md-agent-history-bg-color: transparent;
+
+  /**
+   * Temporarily disable overriding token  background colours for mdv2
+   * 
+  **/
+  //--md-header-bg-color: transparent;
+  //--md-navigation-bg-color: transparent;
+  //--md-app-bg-color: var(--md-primary-gradient-background);
+  //--md-content-bg-color: var(--md-secondary-gradient-background);
+  //--md-task-list-bg-color: transparent;//#{$mds-color-theme-inverted-outline-button-normal};
+  //--md-agent-history-bg-color: #{$mds-color-theme-inverted-outline-button-normal};
 
   --md-nav-divider-primary: linear-gradient(
     0deg,
@@ -131,14 +135,18 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-scrollbar-background-active-indicator: #{$mds-color-theme-scrollbar-button-pressed};
   --md-scrollbar-background-disabled-indicator: #{$mds-color-theme-scrollbar-background-secondary-normal};
 
-  --md-table-primary-bg-color: #{$mds-color-theme-background-primary-ghost};
-  --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
-  --md-table-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
-  --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
-  --md-table-border-style: none;
-  --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
-  --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
-  --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
+  /**
+   * Temporarily disable overriding table background colours for mdv2
+   * 
+  **/
+  // --md-table-primary-bg-color: #{$mds-color-theme-background-primary-ghost};
+  // --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
+  // --md-table-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
+  // --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
+  // --md-table-border-style: none;
+  // --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
+  // --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  // --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
 
   // Background colors can not be overwritten because they are being used by consumers in unexpected ways
   // New background colors should be introduced and these phased out

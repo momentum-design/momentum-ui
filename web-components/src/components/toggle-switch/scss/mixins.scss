@@ -1,15 +1,17 @@
 @mixin toggle-switch-vars (
-  $background-color: var(--toggle-switch-bg-color, $lm-toggle-switch-bg-color-light),
-  $background-color--hover:  var(--toggle-switch-bg-color--hover, $lm-toggle-switch-bg-color--hover-light),
-  $background-color--checked: var( --toggle-switch-bg-color--checked, $lm-toggle-switch-bg-color--checked-light),
-  $background-color--checked-hover: var(--toggle-switch-bg-color--checked-hover, $lm-toggle-switch-bg-color--checked-hover-light),
-  $background-color--disabled: var(--toggle-switch-bg-color--disabled, $lm-toggle-switch-bg-color--disabled-light),
-  $background-color--disabled-checked: var(--toggle-switch-bg-color--disabled--checked, $lm-toggle-switch-bg-color--disabled--checked-light),
-  $background-color-slider: var(--toggle-switch-slider-color, $lm-toggle-switch-slider-color-light),
-  $background-color-slider-checked: var(--toggle-switch-slider-color--checked, $background-color-slider),
-  $background-color-slider-disabled:  var(--toggle-switch-slider-color-disabled, $lm-toggle-switch-slider-color-disabled-light),
-  $background-color-slider-disabled--checked:  var(  --toggle-switch-slider-color-disabled--checked, $lm-toggle-switch-slider-color-disabled--checked-light),
-  $border-focus: var( --toggle-switch-focus, $lm-toggle-switch-focus-light)
+  $background-color: var(--toggle-switch-bg-color),
+  $background-color--hover: var(--toggle-switch-bg-color--hover),
+  $background-color--active: var(--toggle-switch-bg-color--pressed, var(--toggle-switch-bg-color--hover)),
+  $background-color--checked: var(--toggle-switch-bg-color--checked),
+  $background-color--checked-hover: var(--toggle-switch-bg-color--checked-hover),
+  $background-color--checked-active: var(--toggle-switch-bg-color--checked-pressed, var(--toggle-switch-bg-color--checked-hover)),
+  $background-color--disabled: var(--toggle-switch-bg-color--disabled),  
+  $background-color--disabled-checked: var(--toggle-switch-bg-color--disabled--checked),
+  $background-color-slider: var(--toggle-switch-slider-color),
+  $background-color-slider-checked: var(--toggle-switch-slider-color--checked),
+  $background-color-slider-disabled:  var(--toggle-switch-slider-color-disabled),
+  $background-color-slider-disabled--checked: var(--toggle-switch-slider-color-disabled--checked),
+  $border-focus: var(--toggle-switch-focus)
 ) {
   .md-toggle-switch__input {
     + .md-toggle-switch__label {
@@ -25,13 +27,19 @@
           background-color: $background-color--hover;
         }
       }
+
+      &:active {
+        .md-toggle-switch__label__container {
+          background-color: $background-color--active;
+        }
+      }
     }
 
     &:focus,
     &.focus {
       + .md-toggle-switch__label {
         .md-toggle-switch__label__container {
-          outline: 2px solid var(--md-focus-border-color, $md-blue-70);
+          outline: 2px solid var(--md-focus-border-color);
         }
       }
     }
@@ -53,6 +61,12 @@
             background-color: $background-color--checked-hover;
           }
         }
+
+        &:active {
+          .md-toggle-switch__label__container {
+            background-color: $background-color--checked-active;
+          }
+        }
       }
     }
 
@@ -67,7 +81,8 @@
             background-color: $background-color-slider-disabled;
           }
         }
-        &:hover {
+        &:hover,
+        &:active {
           .md-toggle-switch__label__container {
             background-color: $background-color--disabled;
           }
@@ -86,7 +101,8 @@
               }
             }
 
-          &:hover {
+          &:hover,
+          &:active {
             .md-toggle-switch__label__container {
               background-color: $background-color--disabled-checked;
             }

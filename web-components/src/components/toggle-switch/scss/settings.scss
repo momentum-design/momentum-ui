@@ -1,14 +1,16 @@
-$toggle-switch__size: rem-calc(20); //20px;
-$toggle-switch__size--small: rem-calc(18); //18px;
-$toggle-switch__size--smaller: rem-calc(16); //16px;
+@use "@/wc_scss/colors/settings-transparencies.scss" as color-token;
 
-$toggle-switch__width: rem-calc(40); //40px;
-$toggle-switch__height: 24px !default;
+$toggle-switch__size: rem-calc(20);
+$toggle-switch__size--small: rem-calc(18);
+$toggle-switch__size--smaller: rem-calc(16);
 
-$toggle-switch__width--small: rem-calc(36); //36px;
-$toggle-switch__height--small: rem-calc(22); //22px;
+$toggle-switch__width: rem-calc(40);
+$toggle-switch__height: rem-calc(24) !default;
 
-$toggle-switch__width--smaller: rem-calc(32); //32px;
-$toggle-switch__height--smaller: rem-calc(20); //20px;
+$toggle-switch__width--small: rem-calc(36);
+$toggle-switch__height--small: rem-calc(22);
 
-$slider-box-shadow-color: $black-16;
+$toggle-switch__width--smaller: rem-calc(32);
+$toggle-switch__height--smaller: rem-calc(20);
+
+$slider-box-shadow-color: color-token.$black-32;

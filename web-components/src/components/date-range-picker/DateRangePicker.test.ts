@@ -103,102 +103,60 @@ describe("DatePicker Component", () => {
   });
 
   describe("should handle range modification scenarios", () => {
-    const startDate = DateTime.fromObject({ month: 11, day: 15 });
-    const endDate = startDate.plus({ days: 5 });
+    const date1 =  DateTime.fromObject({ month: 11, day: 15 });
+    const date2 = date1.plus({ days: 10 });
+    const date3 = date2.plus({ days: 10 });
+    const date4 = date3.plus({ days: 10 });
 
-    test("select date outside of and before existing range", async () => {
+    test.each([
+      [date1, date2, date3, date4],
+      [date4, date3, date2, date1],
+      [date2, date1, date4, date3],
+      [date3, date4, date1, date2]
+      ]
+    )
+    ("should handle date selection in order %s %s %s %s", async (dateA, dateB, dateC, dateD) => {
       const el = await fixtureFactory();
+      expect(el.startDate).toBeUndefined();
+      expect(el.endDate).toBeUndefined();
+
       const firstSelect = new CustomEvent("day-select", {
         detail: {
-          date: startDate
-        }
-      });
-      const secondSelect = new CustomEvent("day-select", {
-        detail: {
-          date: endDate
-        }
-      });
-      const sqlConvertFunc = jest.spyOn(el, "dateToSqlTranslate");
-      el.handleSelect(firstSelect);
-      el.handleSelect(secondSelect);
-      const additionalSelect = new CustomEvent("day-select", {
-        detail: {
-          date: startDate.minus({ days: 1 })
-        }
-      });
-      el.handleSelect(additionalSelect);
-      const dateObj = DateTime.fromSQL(el.startDate!);
-      expect(dateObj.ordinal).toBeLessThan(startDate.ordinal);
-      expect(sqlConvertFunc).toHaveBeenCalled();
-    });
-    test("select date outside of and after existing range", async () => {
-      const el = await fixtureFactory();
-      const firstSelect = new CustomEvent("day-select", {
-        detail: {
-          date: startDate
-        }
-      });
-      const secondSelect = new CustomEvent("day-select", {
-        detail: {
-          date: endDate
+          date: dateA
         }
       });
       el.handleSelect(firstSelect);
-      el.handleSelect(secondSelect);
-      const additionalSelect = new CustomEvent("day-select", {
-        detail: {
-          date: endDate.plus({ days: 1 })
-        }
-      });
-      el.handleSelect(additionalSelect);
-      const dateObj = DateTime.fromSQL(el.endDate!);
-      expect(dateObj.ordinal).toBeGreaterThan(endDate.ordinal);
-    });
-    test("select date inside of and closer to start date", async () => {
-      const el = await fixtureFactory();
-      const firstSelect = new CustomEvent("day-select", {
-        detail: {
-          date: startDate
-        }
-      });
+      expect(el.startDate).toEqual(dateA.toSQLDate());
+      expect(el.endDate).toBeUndefined();
+
       const secondSelect = new CustomEvent("day-select", {
         detail: {
-          date: endDate
+          date: dateB
         }
       });
-      el.handleSelect(firstSelect);
       el.handleSelect(secondSelect);
-      const additionalSelect = new CustomEvent("day-select", {
+      // why use OR for the following two expects?
+      // see above "should correctly assign start/end values if use enters in reverse order" test
+      expect(el.startDate === dateA.toSQLDate() || el.startDate === dateB.toSQLDate()).toBeTruthy();
+      expect(el.endDate === dateA.toSQLDate() || el.endDate === dateB.toSQLDate()).toBeTruthy();
+
+      const thirdSelect = new CustomEvent("day-select", {
         detail: {
-          date: startDate.plus({ days: 2 })
+          date: dateC
         }
       });
-      el.handleSelect(additionalSelect);
-      const dateObj = DateTime.fromSQL(el.startDate!);
-      expect(dateObj.ordinal).toBeGreaterThan(startDate.ordinal);
-    });
-    test("select date inside of and closer to end date", async () => {
-      const el = await fixtureFactory();
-      const firstSelect = new CustomEvent("day-select", {
+      el.handleSelect(thirdSelect);
+      expect(el.startDate).toEqual(dateC.toSQLDate());
+      expect(el.endDate).toBeUndefined();
+
+      const fourthSelect = new CustomEvent("day-select", {
         detail: {
-          date: startDate
+          date: dateD
         }
       });
-      const secondSelect = new CustomEvent("day-select", {
-        detail: {
-          date: endDate
-        }
-      });
-      el.handleSelect(firstSelect);
-      el.handleSelect(secondSelect);
-      const additionalSelect = new CustomEvent("day-select", {
-        detail: {
-          date: endDate.minus({ days: 2 })
-        }
-      });
-      el.handleSelect(additionalSelect);
-      const dateObj = DateTime.fromSQL(el.endDate!);
-      expect(dateObj.ordinal).toBeLessThan(endDate.ordinal);
+      el.handleSelect(fourthSelect);
+      expect(el.startDate === dateC.toSQLDate() || el.startDate === dateD.toSQLDate()).toBeTruthy();
+      expect(el.endDate === dateC.toSQLDate() || el.endDate === dateD.toSQLDate()).toBeTruthy();
     });
   });
 });

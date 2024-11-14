@@ -243,7 +243,7 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
       return false;
     }
 
-    private findElement(activeElement: HTMLElement) {
+    private findElement(activeElement: HTMLElement): number {
       return this.focusableElements.findIndex((element) => this.isEqualFocusNode(activeElement, element));
     }
 
@@ -306,23 +306,35 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
      * @param   triggerElement  The trigger element.
      * @returns void
      */
-    protected setFocusOnTrigger(triggerElement: HTMLElement) {
-      let deepNestedTriggerElement;
-      if (triggerElement.shadowRoot!) {
-        deepNestedTriggerElement = this.findFocusable(triggerElement.shadowRoot!, new Set());
-      } else if (this.isFocusable(triggerElement)) {
-        deepNestedTriggerElement = [triggerElement];
-      } else {
-        deepNestedTriggerElement = this.findFocusable(triggerElement, new Set());
+    protected setFocusOnTrigger(triggerElement?: HTMLElement) {
+      if (!triggerElement) {
+        return;
       }
-      if (deepNestedTriggerElement[0]) {
-        const focusableIndex = this.findElement(deepNestedTriggerElement[0] as HTMLElement);
+
+      const deepNestedTriggerElement = this.getDeepNestedTriggerElement(triggerElement);
+
+      if (deepNestedTriggerElement.length > 0) {
+        const focusableIndex = this.findElement(deepNestedTriggerElement[0]);
         this.focusTrapIndex = focusableIndex;
       }
     }
 
+    private getDeepNestedTriggerElement(triggerElement: HTMLElement): HTMLElement[] {
+      if (triggerElement.shadowRoot) {
+        return this.findFocusable(triggerElement.shadowRoot, new Set());
+      } else if (this.isFocusable(triggerElement)) {
+        return [triggerElement];
+      } else {
+        return this.findFocusable(triggerElement, new Set());
+      }
+    }
+
     protected setFocusableElements() {
-      this.focusableElements = this.findFocusable(this.shadowRoot!, new Set());
+      if (this.shadowRoot) {
+        this.focusableElements = this.findFocusable(this.shadowRoot, new Set());
+      } else {
+        console.warn("shadow root is not available");
+      }
     }
 
     protected async firstUpdated(changedProperties: PropertyValues) {

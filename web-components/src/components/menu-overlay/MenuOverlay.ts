@@ -422,7 +422,7 @@ export namespace MenuOverlay {
     }
 
     private focusOnNestedTrigger(triggerElement?: HTMLElement) {
-      this.setFocusOnTrigger!(triggerElement);
+      this.setFocusOnTrigger?.(triggerElement);
     }
 
     handleOutsideOverlayClick = (event: MouseEvent) => {

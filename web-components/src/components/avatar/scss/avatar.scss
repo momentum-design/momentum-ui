@@ -81,14 +81,9 @@
   }
 
   .md-avatar__letter {
-    @include avatar-contents-base;
-    background-color: $avatar-legacy-letter__background;
-    color: $avatar-legacy-letter__color;
-
-    &.new-momentum {
-      background-color: $avatar-letter__background;
-      color: $avatar-letter__color;
-    }
+    @include avatar-contents-base;       
+    background-color: $avatar-letter__background;
+    color: $avatar-letter__color;
 
     md-loading {
       align-items: center;
@@ -188,10 +183,6 @@
 
     &.md-avatar--lime {
       background-color: var(--avatar-lime-bg-color);
-    }
-
-    &.has-color {
-      color: $avatar-letter__color-text-color;
     }
   }
 

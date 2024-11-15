@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-const colors = require("@momentum-ui/tokens/dist/colors.json");
 
 const avatar = {
   prefix: "mdv2",
@@ -10,17 +9,6 @@ const avatar = {
       common: "$mds-color-theme-avatar-default"
     },
     "text-color": {
-      common: "$mds-color-theme-common-text-primary-normal"
-    },
-    "legacy-bg-color": {
-      light: colors.gray[10].name,
-      dark: colors.gray[80].name
-    },
-    "legacy-text-color": {
-      light: colors.gray[90].name,
-      dark: colors.gray[10].name
-    },
-    "color-avatar-text-color": {
       common: "$mds-color-theme-common-text-primary-normal"
     }
   },
@@ -164,6 +152,9 @@ const avatar = {
     }
   },
   presence: {
+    "cutout-bg-color": {
+      common: "$mds-color-theme-background-solid-primary-normal"
+    },
     active: {
       common: "$mds-color-theme-indicator-stable"
     },

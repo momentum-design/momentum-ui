@@ -16,6 +16,7 @@ export const taskItemTemplate = html`
     >
       <div>01:08:00</div>
     </md-task-item>
+
     <md-task-item
       mediaType="outbound telephony"
       status="hold"
@@ -27,6 +28,7 @@ export const taskItemTemplate = html`
     >
       <div>01:08:00</div>
     </md-task-item>
+
     <md-task-item
       mediaType="inbound telephony"
       status="transfered"
@@ -38,6 +40,7 @@ export const taskItemTemplate = html`
     >
       <div>01:08:00</div>
     </md-task-item>
+
     <md-task-item
       mediaType="midcall telephony"
       title="MediaType: midcall telephony"
@@ -49,6 +52,7 @@ export const taskItemTemplate = html`
     >
       <div>01:08:00</div>
     </md-task-item>
+
     <md-task-item
       mediaType="callback"
       status="campaign"
@@ -60,6 +64,7 @@ export const taskItemTemplate = html`
     >
       <div>01:08:00</div>
     </md-task-item>
+
     <md-task-item
       mediaType="progressive_campaign"
       title="Media Type progressive_campaign"
@@ -69,29 +74,63 @@ export const taskItemTemplate = html`
     >
       <div>01:08:00</div>
     </md-task-item>
-    <md-task-item mediaType="email" status="play" title="mlittlefoot@gmail.com" item-title="mlittlefoot@gmail.com" queue="IRV_quelle_12" selected>
+
+    <md-task-item
+      mediaType="email"
+      status="play"
+      title="mlittlefoot@gmail.com"
+      item-title="mlittlefoot@gmail.com"
+      queue="IRV_quelle_12"
+      selected
+    >
       <div>00:08</div>
     </md-task-item>
-    <md-task-item mediaType="telephony" status="consulting" title="Mihael Varificantare" item-title="Mihael Varificantare" queue="IRV_quelle_11">
+
+    <md-task-item
+      mediaType="telephony"
+      status="consulting"
+      title="Mihael Varificantare"
+      item-title="Mihael Varificantare"
+      queue="IRV_quelle_11"
+    >
       <div>Ringing</div>
     </md-task-item>
-    <md-task-item mediaType="messenger" title="Mihael Varificantare" item-title="Mihael Varificantare" queue="IRV_quelle_11">
+
+    <md-task-item
+      mediaType="messenger"
+      title="Mihael Varificantare"
+      item-title="Mihael Varificantare"
+      queue="IRV_quelle_11"
+    >
       <div>Ringing</div>
     </md-task-item>
-    <md-task-item mediaType="whatsApp" title="Mihael Varificantare" item-title="Mihael Varificantare" queue="IRV_quelle_11">
+
+    <md-task-item
+      mediaType="whatsApp"
+      title="Mihael Varificantare"
+      item-title="Mihael Varificantare"
+      queue="IRV_quelle_11"
+    >
       <div>01:10:25</div>
     </md-task-item>
-    <md-task-item mediaType="facebook" title="MediaType: facebook" item-title="Mihael Varificantare" queue="IRV_quelle_11">
+
+    <md-task-item
+      mediaType="facebook"
+      title="MediaType: facebook"
+      item-title="Mihael Varificantare"
+      queue="IRV_quelle_11"
+    >
       <div>01:10:25</div>
     </md-task-item>
+
     <md-task-item mediaType="chat" title="Mihael Varificantare" item-title="Mihael Varificantare" queue="IRV_quelle_11">
       <div>01:10:25</div>
     </md-task-item>
+
     <md-task-item
       mediaType="sms"
       status="courtesy_callback"
-      title="Mihael Varificantare for test text overflow"
-      itemTitle="Mihael Varificantare for test text overflow"
+      item-title="Mihael Varificantare for test text overflow"
       queue="IRV_quelle_1167676776767676asdadadas"
     >
       <md-badge slot="task-type" color="darkmint" circle>

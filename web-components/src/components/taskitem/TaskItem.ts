@@ -31,10 +31,10 @@ export namespace TaskItem {
     @property({ type: String }) tabIndexForContainer = "0";
 
     /**
-    * @deprecated Use `itemTitle` instead.
-    * Using title may cause an unwanted tooltip.
-    */
-    @property({ type: String, reflect: true})
+     * @deprecated Use `itemTitle` instead.
+     * Using title may cause an unwanted tooltip.
+     */
+    @property({ type: String, reflect: true })
     get title(): string {
       return this.displayTitle;
     }
@@ -43,8 +43,8 @@ export namespace TaskItem {
       this.updateTitle();
     }
     /**
-    * The visible text for the Title.
-    */
+     * The visible text for the Title.
+     */
     @property({ type: String, reflect: true, attribute: "item-title" })
     get itemTitle() {
       return this.displayTitle;
@@ -55,10 +55,9 @@ export namespace TaskItem {
     }
 
     private updateTitle() {
-      if(!this.itemTitleValue){
-      this.displayTitle = this.titleValue;
-      }
-      else{
+      if (!this.itemTitleValue) {
+        this.displayTitle = this.titleValue;
+      } else {
         this.displayTitle = this.itemTitleValue;
       }
     }
@@ -122,19 +121,19 @@ export namespace TaskItem {
         case "sms":
           return html`
             <md-badge color="darkmint" circle>
-              <md-icon name="social-sms" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
+              <md-icon name="sms-filled" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
             </md-badge>
           `;
         case "facebook":
           return html`
             <md-badge bgColor="#0078FF" circle>
-              <md-icon name="social-fbmessenger" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
+              <md-icon name="messenger_16" iconSet="momentumUI" color="white-100"></md-icon>
             </md-badge>
           `;
         case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
-              <md-icon name="social-whatsapp" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
+              <md-icon name="whatsApp_16" iconSet="momentumUI" color="white-100"></md-icon>
             </md-badge>
           `;
         default:

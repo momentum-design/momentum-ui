@@ -30,7 +30,7 @@ const fixtureFactory = async (
       iconSrc="${iconSrc}"
     >
       <span slot="queue">
-        <span className="queue-name">Test Queue Name 00:00</span>
+        <span class="queue-name">Test Queue Name 00:00</span>
       </span>
       <div slot="task-addition">00:08</div>
     </md-task-item>
@@ -72,7 +72,7 @@ describe("TaskItem", () => {
       false
     );
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("social-fbmessenger");
+    expect(type?.getAttribute("name")).toEqual("messenger_16");
   });
 
   test("should render TaskItem Component", async () => {
@@ -88,7 +88,7 @@ describe("TaskItem", () => {
       false
     );
     const type = element.shadowRoot?.querySelector("md-icon");
-    expect(type?.getAttribute("name")).toEqual("social-whatsapp");
+    expect(type?.getAttribute("name")).toEqual("whatsApp_16");
   });
 
   test("should render TaskItem Component for Apple Chat Messenger", async () => {
@@ -249,7 +249,7 @@ describe("TaskItem", () => {
     expect(element).not.toBeNull();
     const type = element.shadowRoot?.querySelector("md-icon");
     const status = element.shadowRoot?.querySelector(".md-taskitem__status md-icon");
-    expect(type?.getAttribute("name")).toEqual("social-sms");
+    expect(type?.getAttribute("name")).toEqual("sms-filled");
     expect(status?.getAttribute("name")).toEqual("meet-bold");
   });
 
@@ -436,7 +436,9 @@ describe("TaskItem", () => {
     );
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
-    expect(ariaLabel).toEqual("twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  ");
+    expect(ariaLabel).toEqual(
+      "twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  "
+    );
   });
 
   test("should have custom aria label new title", async () => {
@@ -453,7 +455,9 @@ describe("TaskItem", () => {
     );
     await elementUpdated(element);
     const ariaLabel = element.shadowRoot?.querySelector(".md-taskitem")?.getAttribute("aria-label");
-    expect(ariaLabel).toEqual("twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  ");
+    expect(ariaLabel).toEqual(
+      "twitter transfered Mihael Varificantare aria label Test Queue Name 0 minutes 0 seconds  "
+    );
   });
 
   test("should render titleName as the visible title of the task-item", async () => {
@@ -489,5 +493,4 @@ describe("TaskItem", () => {
     const itemTitle = element.shadowRoot?.querySelector(".md-taskitem__content_title");
     expect(itemTitle?.textContent).toEqual("Not Mihael Varificantare");
   });
-
 });

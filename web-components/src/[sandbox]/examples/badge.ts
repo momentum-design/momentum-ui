@@ -35,7 +35,7 @@ export const badgeTemplate = html`
     <md-icon name="chat-active_16"></md-icon>
   </md-badge>
   <md-badge color="mint" circle>
-    <md-icon name="social-sms" size="16" iconSet="momentumDesign"></md-icon>
+    <md-icon name="sms-filled" size="16" iconSet="momentumDesign"></md-icon>
   </md-badge>
 
   <h4 class="sandbox-header">Large Badges</h4>

@@ -81,7 +81,7 @@
   }
 
   .md-avatar__letter {
-    @include avatar-contents-base;       
+    @include avatar-contents-base;
     background-color: $avatar-letter__background;
     color: $avatar-letter__color;
 

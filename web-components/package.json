@@ -35,7 +35,8 @@
     "eslint": "eslint --ext .ts,.js ./src --ignore-path .eslintignore",
     "eslint:fix": "eslint --ext .ts,.js ./src --ignore-path .eslintignore --fix",
     "create-package": "node -e 'require(\"./publish-conf\").createPackageJson()'",
-    "notify": "node -e 'require(\"./publish-conf\").notify()'"
+    "notify": "node -e 'require(\"./publish-conf\").notify()'",
+    "validateIconMapping": "node ./src/utils/validateIconMapping.js"
   },
   "resolutions": {
     "jest": "^26.4.2",
@@ -59,7 +60,7 @@
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
     "@momentum-design/brand-visuals": "0.1.2",
-    "@momentum-design/icons": "0.6.1",
+    "@momentum-design/icons": "0.7.0",
     "@momentum-design/tokens": "0.2.6",
     "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",

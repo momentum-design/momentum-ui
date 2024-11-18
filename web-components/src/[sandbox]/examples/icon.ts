@@ -65,7 +65,8 @@ export const iconTemplate = html`
   <md-icon name="social-x" iconSet="momentumBrandVisuals" title="X" size="32"></md-icon>
 
   <h3>Icons moved to brand visuals preferMomentumDesign uses momentumUI</h3>
-  <md-icon name="twitter_16" class="testClass" iconSet="preferMomentumDesign" title="twitter_16"></md-icon>
-  <md-icon name="facebook_16" class="testClass" iconSet="preferMomentumDesign" title="facebook_16"></md-icon>
-  <md-icon name="whatsApp_16" class="testClass" iconSet="preferMomentumDesign" title="whatsApp_16"></md-icon>
+  <md-icon name="twitter_16" iconSet="preferMomentumDesign" title="twitter_16"></md-icon>
+  <md-icon name="facebook_16" iconSet="preferMomentumDesign" title="facebook_16"></md-icon>
+  <md-icon name="whatsApp_16" iconSet="preferMomentumDesign" title="whatsApp_16"></md-icon>
+  <br />
 `;

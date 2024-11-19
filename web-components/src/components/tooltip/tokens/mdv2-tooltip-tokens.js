@@ -22,7 +22,7 @@ const tooltip = {
   arrow: {
     bottom: {
       top: {
-        common: "-9px"
+        common: "-8px"
       },
       "before-top": {
         common: "2px"
@@ -30,7 +30,7 @@ const tooltip = {
     },
     right: {
       left: {
-        common: "-17px"
+        common: "-9px"
       },
       "before-top": {
         common: "2px"

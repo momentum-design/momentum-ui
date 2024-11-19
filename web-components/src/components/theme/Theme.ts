@@ -8,7 +8,7 @@
 
 import styles from "@/components/tooltip/scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { arrow, createPopper, flip, Instance, offset } from "@popperjs/core/lib";
+import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
@@ -255,6 +255,9 @@ export namespace Theme {
 
     private createPopperInstance(placement: Tooltip.Placement) {
       if (this.virtualPopper) {
+        const halfArrowSize = 8;
+        const additionalPadding = 4;
+
         this.popperInstance = createPopper(this.virtualReference, this.virtualPopper, {
           placement,
           modifiers: [
@@ -265,7 +268,15 @@ export namespace Theme {
             {
               name: "offset",
               options: {
-                offset: [8, 8]
+                offset: ({ placement }: { placement: Placement }) => {
+                  const padding = halfArrowSize + additionalPadding;
+                  if (placement.startsWith("left") || placement.startsWith("right")) {
+                    return [0, padding];
+                  } else if (placement.startsWith("top") || placement.startsWith("bottom")) {
+                    return [0, padding];
+                  }
+                  return [8, 8]; // leave old defaults
+                }
               }
             },
             ...(this.virtualArrow
@@ -274,7 +285,7 @@ export namespace Theme {
                     name: "arrow",
                     options: {
                       element: this.virtualArrow,
-                      padding: 5
+                      padding: halfArrowSize
                     }
                   }
                 ]

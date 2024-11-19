@@ -96,8 +96,8 @@ export const tooltipTemplate = html`
     <md-tooltip message="Tooltip" placement="right">
       <md-button variant="secondary">Tooltip Right</md-button>
     </md-tooltip>
-    <md-tooltip message="Tooltip" placement="right">
-      <md-button variant="secondary">Tooltip Right</md-button>
+    <md-tooltip message="Long Tooltip Long Tooltip Long Tooltip Long Tooltip Long Tooltip" placement="left">
+      <md-button variant="secondary">Tooltip left</md-button>
     </md-tooltip>
   </div>
   <div class="row md-padding__vertical">
@@ -116,7 +116,7 @@ export const tooltipTemplate = html`
     </md-tooltip>
   </div>
   <div class="row md-padding__vertical">
-    <md-tooltip message="Tooltip" placement="right">
+    <md-tooltip message="Long Tooltip Long Tooltip Long Tooltip Long Tooltip Long Tooltip" placement="right">
       <md-button variant="secondary">Tooltip Right</md-button>
     </md-tooltip>
   </div>

@@ -16,7 +16,7 @@ $inter-thin-oblique-font: "Inter Thin Oblique", $font-family-sans-serif;
 $inter-medium-font: "Inter Medium", $font-family-sans-serif;
 
 @mixin global-theme-specific-vars {
-  --rem-base: 16px;
+  --rem-base: 14px;
   --brand-font-regular: #{$inter-base-font};
   --brand-font-bold: #{$inter-bold-font};
   --brand-font-bold-oblique: #{$inter-bold-oblique-font};

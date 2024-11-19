@@ -24,7 +24,7 @@ const dropdown = {
     }
   },
   "border-color": {
-    light: colors.gray[30].name,
+    light: colors.gray[40].name,
     dark: colors.gray[80].name,
     focus: {
       light: colors.theme[70].name,

@@ -36,10 +36,12 @@ const link = {
       common: "$mds-color-theme-text-error-normal"
     },
     "font-size": {
-      common: "1rem"
+      light: "14px",
+      dark: "14px"
     },
     "font-size__inline": {
-      common: "0.875rem"
+      light: "12px",
+      dark: "12px"
     }
   }
 };

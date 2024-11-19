@@ -50,7 +50,7 @@ const render = (args: Args) => {
       @taskitem-keydown=${action("keydown")}
     >
       <md-badge slot="task-type" color="darkmint" circle>
-        <md-icon name="social-sms" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
+        <md-icon name="sms-filled" size="20" iconSet="momentumDesign" color="white-100"></md-icon>
       </md-badge>
       <div>${args.time}</div>
     </md-task-item>

@@ -58,6 +58,8 @@ export namespace Tooltip {
     }
 
     disconnectedCallback(): void {
+      this.notifyTooltipDisconnected();
+
       super.disconnectedCallback();
       document.removeEventListener("keydown", this._keyDownListener);
       window.removeEventListener("wheel", this._wheelListener);
@@ -88,6 +90,16 @@ export namespace Tooltip {
             popper: this.popper,
             ...(!this.message && { slotContent: this.slotContent })
           }
+        })
+      );
+    }
+
+    private notifyTooltipDisconnected() {
+      document.dispatchEvent(
+        new CustomEvent("tooltip-disconnected", {
+          bubbles: true,
+          composed: true,
+          detail: {}
         })
       );
     }

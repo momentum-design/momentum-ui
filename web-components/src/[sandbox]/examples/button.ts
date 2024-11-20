@@ -409,6 +409,45 @@ export class ButtonTemplateSandbox extends LitElement {
           </div>
         </md-button>
       </div>
+      <h3 class="sandbox-header" style="margin: .5rem 1rem">Drop down button</h3>
+      <div class="row" style="display: flex; margin: .5rem 0; gap: 8px;">
+        <md-button variant="dropdown">
+          <div class="status-button__children">
+            <span> Selected text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" is-placeholder-text>
+          <div class="status-button__children">
+            <span> Placeholder text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" rounded>
+          <div class="status-button__children">
+            <span> Selected text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" is-placeholder-text rounded>
+          <div class="status-button__children">
+            <span> Placeholder text </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" rounded disabled>
+          <div class="status-button__children">
+            <span> Selected text disabled </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+        <md-button variant="dropdown" is-placeholder-text rounded disabled>
+          <div class="status-button__children">
+            <span> Placeholder text disabled </span>
+            <md-icon class="status-arrow" name="arrow-down-bold" iconSet="momentumDesign" size="12"></md-icon>
+          </div>
+        </md-button>
+      </div>
     `;
   }
 }

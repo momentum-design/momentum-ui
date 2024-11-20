@@ -421,6 +421,46 @@ const button = {
         common: "$mds-color-theme-inverted-outline-disabled-normal"
       }
     }
+  },
+  dropdown: {
+    "bg-color": {
+      light: colors.white[100].name,
+      dark: colors.gray[100].name
+    },
+    "text-color": {
+      light: colors.gray[100].name,
+      dark: colors.gray["05"].name,
+      placeholder: {
+        light: colors.gray[70].name,
+        dark: colors.gray[40].name
+      }
+    },
+    "border-color": {
+      light: colors.gray[30].name,
+      dark: colors.gray[80].name
+    },
+    hover: {
+      light: colors.gray[20].name,
+      dark: colors.gray[90].name
+    },
+    active: {
+      light: colors.gray[30].name,
+      dark: colors.gray[70].name
+    },
+    disabled: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      },
+      "border-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      },
+      "text-color": {
+        light: colors.gray[70].name,
+        dark: colors.gray[40].name
+      }
+    }
   }
 };
 

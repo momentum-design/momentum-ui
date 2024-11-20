@@ -74,7 +74,8 @@ export const buttonVariant = [
   "engaged",
   "idle",
   "inverted-primary",
-  "inverted-secondary"
+  "inverted-secondary",
+  "dropdown"
 ] as const;
 export const buttonColor = [
   "blue",
@@ -176,6 +177,7 @@ export namespace Button {
     @property({ type: Boolean }) iconActive = false;
     @property({ type: Boolean }) isActive = false;
     @property({ attribute: false }) clickFunction?: () => void;
+    @property({ type: Boolean, attribute: "is-placeholder-text" }) isPlaceholderText?: boolean;
 
     @query(".md-button") button!: HTMLButtonElement;
 
@@ -252,7 +254,8 @@ export namespace Button {
         [`md-activity__${this.activityType}`]: !!this.activityType,
         "md-activity": !!this.activityType,
         "md-button--icon": this.iconActive,
-        "md-button--onlyicon": this.hasIcon && !this.slottedText
+        "md-button--onlyicon": this.hasIcon && !this.slottedText,
+        "md-button--placeholder-text": this.isPlaceholderText === true
       };
     }
 

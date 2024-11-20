@@ -281,7 +281,7 @@
 
   .md-new-dropdown {
     &-label {
-      background-color: transparent;
+      background-color: var(--dropdown-bg-color-default);
       border-radius: 8px;
 
       &--text {

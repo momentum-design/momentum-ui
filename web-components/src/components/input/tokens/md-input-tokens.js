@@ -49,6 +49,20 @@ const input = {
         light: colors.gray[30].name,
         dark: colors.gray[70].name
       }
+    },
+    new: {
+      "border-color": {
+        light: colors.gray[30].name,
+        dark: colors.gray[80].name
+      },
+      "focus-border-color": {
+        light: colors.gray[30].name,
+        dark: colors.gray[80].name
+      },
+      "disabled-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[90].name
+      }
     }
   },
   disabled: {
@@ -94,7 +108,7 @@ const input = {
   success: {
     "border-color": {
       light: colors.green[50].name,
-      dark: colors.blue[40].name
+      dark: colors.green[40].name
     }
   },
   warning: {

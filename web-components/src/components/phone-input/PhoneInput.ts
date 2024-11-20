@@ -7,6 +7,7 @@ import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
 import { LitElement, html, internalProperty, property, query } from "lit-element";
 import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
@@ -50,6 +51,7 @@ export namespace PhoneInput {
     @property({ type: String }) clearAriaLabel = "Clear Input";
     @property({ type: String }) clearCountryCodeAriaLabel = "Clear Country Code";
     @property({ type: String }) id = "";
+    @property({ type: Boolean }) newMomentum = false;
 
     @internalProperty() private countryCode: CountryCode = "US";
     @internalProperty() private codeList = [];
@@ -188,6 +190,10 @@ export namespace PhoneInput {
       this.formattedValue = new AsYouType(this.countryCode).input(input);
     }
 
+    get flagClassMap() {
+      return { "new-momentum": this.newMomentum };
+    }
+
     getFormatedCountryCallingCode() {
       return { id: this.countryCallingCode, value: this.countryCallingCode.split(",")[0]?.trim() };
     }
@@ -217,7 +223,11 @@ export namespace PhoneInput {
       return html`
         ${this.showFlags ? this.getModStyle() : nothing}
         <div class="md-phone-input__container">
-          ${this.showFlags ? html` <span class="flag-box">${this.getCountryFlag(this.countryCode)}</span> ` : nothing}
+          ${this.showFlags
+            ? html`
+                <span class="flag-box ${classMap(this.flagClassMap)}">${this.getCountryFlag(this.countryCode)}</span>
+              `
+            : nothing}
           <md-combobox
             part="combobox"
             ?disabled=${this.disabled}
@@ -228,6 +238,8 @@ export namespace PhoneInput {
             @change-selected="${(e: CustomEvent) => this.handleCountryChange(e)}"
             clear-icon-height="${this.clearIconHeight}"
             with-custom-content
+            ?newMomentum=${this.newMomentum}
+            is-dropdown-arrow
             .clearAriaLabel="${this.clearCountryCodeAriaLabel}"
           >
             ${repeat(
@@ -248,6 +260,7 @@ export namespace PhoneInput {
             shape="${this.pill ? "pill" : "none"}"
             .ariaControls=${this.id}
             clear
+            ?newMomentum=${this.newMomentum}
             clearAriaLabel="${this.clearAriaLabel}"
             type="tel"
             value="${this.formattedValue}"

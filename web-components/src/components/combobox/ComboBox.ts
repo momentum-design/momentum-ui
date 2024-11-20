@@ -1716,6 +1716,26 @@ export namespace ComboBox {
       `;
     }
 
+    get renderTrailingInputControls(): TemplateResult {
+      const showClearButton = this.shouldChangeButton();
+
+      if (this.newMomentum) {
+        if (showClearButton && this.isDropdownArrow) {
+          return html`${this.clearButtonTemplate()}`;
+        } else if (showClearButton) {
+          return html`${this.clearButtonTemplate()} ${this.renderNewMomentumArrow}`;
+        }
+
+        return this.renderNewMomentumArrow;
+      }
+
+      if (this.compact) {
+        return html`${nothing}`;
+      }
+
+      return html`${showClearButton ? this.clearButtonTemplate() : this.arrowButtonTemplate()}`;
+    }
+
     render() {
       return html`
         <div part="combobox" class="md-combobox md-combobox-list ${classMap(this.comboBoxTemplateClassMap)}">
@@ -1751,14 +1771,7 @@ export namespace ComboBox {
                 @keydown=${this.handleInputKeyDown}
               />
             </div>
-            ${this.compact
-              ? nothing
-              : this.shouldChangeButton()
-                ? this.clearButtonTemplate()
-                : !this.newMomentum
-                  ? this.arrowButtonTemplate()
-                  : nothing}
-            ${this.newMomentum ? this.renderNewMomentumArrow : nothing}
+            ${this.renderTrailingInputControls}
           </div>
 
           ${this.showLoader || this.showCustomError

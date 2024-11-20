@@ -1,3 +1,4 @@
+import "@/components/form/Form";
 import "@/components/phone-input/PhoneInput";
 import { html } from "lit-element";
 
@@ -85,6 +86,27 @@ export const phoneInputTemplate = html`
           ></md-phone-input>
         </md-form>
       </div>
+    </div>
+  </div>
+  <div>
+    <h4>(New momentum) Example with Initial Value</h4>
+    <div class="row">
+      <md-form>
+        <md-phone-input
+          newMomentum
+          .countryCallingCode=${"+91, India, IN"}
+          .errorMessage=${"This phone number is invalid"}
+          .value=${"9997770100"}
+          .countryCodeAriaLabel=${"International Dialing Code"}
+          .dialNumberAriaLabel=${"Dial Number"}
+          .numberPlaceholder=${"Enter The Phone Number"}
+          @phoneinput-keydown="${(e: CustomEvent) => console.log("keydown: ", e.detail.value)}"
+          @phoneinput-blur="${(e: CustomEvent) =>
+            console.log("blur: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+          @phoneinput-change="${(e: CustomEvent) =>
+            console.log("change: ", e.detail.value, " is valid: ", e.detail.isValid)}"
+        ></md-phone-input>
+      </md-form>
     </div>
   </div>
 `;

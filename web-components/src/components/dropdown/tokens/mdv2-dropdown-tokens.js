@@ -13,6 +13,9 @@ const dropdown = {
   prefix: "mdv2",
   component: "dropdown",
   "bg-color": {
+    default: {
+      common: "$mds-color-theme-background-primary-ghost"
+    },
     hover: {
       common: "$mds-color-theme-background-primary-hover"
     },

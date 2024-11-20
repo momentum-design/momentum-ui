@@ -430,6 +430,37 @@ const button = {
       }
     }
   },
+  dropdown: {
+    "bg-color": {
+      common: "$mds-color-theme-background-primary-ghost"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal",
+      placeholder: {
+        common: "$mds-color-theme-text-secondary-normal"
+      }
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-input-normal"
+    },
+    hover: {
+      common: "$mds-color-theme-background-primary-hover"
+    },
+    active: {
+      common: "$mds-color-theme-background-primary-active"
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-background-primary-disabled"
+      },
+      "border-color": {
+        common: "$mds-color-theme-outline-primary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
+      }
+    }
+  },
   "state-selector": {
     "border-radius": {
       common: "8px"

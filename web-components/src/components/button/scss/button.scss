@@ -629,6 +629,34 @@
   }
 }
 
+:host([variant="dropdown"]) .md-button {
+  font-family: var(--brand-font-regular, $brand-font-regular);
+  font-weight: 400;
+  font-size: rem-calc(14);
+
+  background-color: var(--button-dropdown-bg-color);
+  color: var(--button-dropdown-text-color);
+  border: 1px solid var(--button-dropdown-border-color);
+
+  &--placeholder-text {
+    color: var(--button-dropdown-text-color-placeholder)
+  }
+
+  &:hover {
+    background-color: var(--button-dropdown-hover);
+  }
+  &:active {
+    background-color: var(--button-dropdown-active);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-dropdown-disabled-bg-color);
+    color: var(--button-dropdown-disabled-text-color);
+    border: 1px solid var(--button-dropdown-disabled-border-color);
+  }
+}
+
 :host([variant="inverted-secondary"]) .md-button {
   background-color: var(--button-inverted-secondary-bg-color);
   color: var(--button-inverted-secondary-text-color);
@@ -644,7 +672,8 @@
     color: var(--button-inverted-secondary-text-color);
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--button-inverted-secondary-disabled-bg-color);
     border: 1px solid var(--button-inverted-secondary-disabled-border-color);
     color: var(--button-inverted-secondary-disabled-text-color);
@@ -708,15 +737,9 @@
 
     &:disabled,
     &.disabled {
-      background-color: var(
-        --button-secondary-disabled-bg-color,
-        var(--button-disabled-bg-color)
-      );
+      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));
       border: 1px solid var(--button-secondary-disabled-border-color);
-      color: var(
-        --button-secondary-disabled-text-color,
-        var(--button-disabled-text-color)
-      );
+      color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color));
     }
   }
 
@@ -737,15 +760,9 @@
 
     &:disabled,
     &.disabled {
-      background-color: var(
-        --button-secondary-disabled-bg-color,
-        var(--button-disabled-bg-color)
-      );
+      background-color: var(--button-secondary-disabled-bg-color, var(--button-disabled-bg-color));
       border: 1px solid var(--button-secondary-disabled-border-color);
-      color: var(
-        --button-secondary-disabled-text-color,
-        var(--button-disabled-text-color)
-      );
+      color: var(--button-secondary-disabled-text-color, var(--button-disabled-text-color));
     }
   }
 }
@@ -792,7 +809,7 @@
   background-color: var(--button-available-bg-color);
   color: var(--button-secondary-text-color);
   border: 1px solid var(--button-available-border-color);
-  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-size: rem-calc(14);
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
@@ -824,7 +841,7 @@
   color: var(--button-secondary-text-color);
   border: 1px solid var(--button-unavailable-border-color);
   border-radius: var(--button-state-selector-border-radius);
-  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-size: rem-calc(14);
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
@@ -856,7 +873,7 @@
   color: var(--button-secondary-text-color);
   border: 1px solid var(--button-idle-border-color);
   border-radius: var(--button-state-selector-border-radius);
-  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-size: rem-calc(14);
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 
@@ -930,7 +947,7 @@
   color: var(--button-secondary-text-color);
   border: 1px solid var(--button-engaged-border-color);
   border-radius: var(--button-state-selector-border-radius);
-  font-size: var(--body-secondary-font-size, $button__font-size);
+  font-size: rem-calc(14);
   font-family: var(--brand-font-regular, $brand-font-regular);
   font-weight: 400;
 

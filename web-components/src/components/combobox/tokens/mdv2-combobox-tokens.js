@@ -29,7 +29,7 @@ const combobox = {
       common: "$mds-color-theme-outline-theme-normal"
     },
     "new-border-color": {
-      common: "mds-color-theme-outline-input-active"
+      common: "$mds-color-theme-outline-input-active"
     },
     "bg-color": {
       common: "$mds-color-theme-background-primary-active"
@@ -38,6 +38,9 @@ const combobox = {
   disabled: {
     "bg-color": {
       common: "$mds-color-theme-background-primary-disabled"
+    },
+    "border-color": {
+      common: "$mds-color-theme-outline-primary-disabled"
     }
   },
   invalid: {

@@ -1406,7 +1406,8 @@ export namespace ComboBox {
         "md-new-combobox": this.newMomentum,
         [`md-${this.messageType}`]: !!this.messageType,
         "md-combobox-readonly": this.readOnly,
-        "md-combobox-compact": this.compact
+        "md-combobox-compact": this.compact,
+        "md-combobox-dropdown-arrow": this.isDropdownArrow
       };
     }
 
@@ -1708,12 +1709,14 @@ export namespace ComboBox {
         : nothing;
     }
 
+    get newArrowButtonTemplate() {
+      //TODO: implement a new button instead of a div and the old button template
+      //      This should be tabbable
+      return html`<div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div>`;
+    }
+
     get renderNewMomentumArrow(): TemplateResult {
-      return html`
-        ${this.isDropdownArrow
-          ? this.arrowButtonTemplate()
-          : html`<div class="md-combobox-right-arrow">${this.arrowButtonTemplate()}</div>`}
-      `;
+      return html` ${this.isDropdownArrow ? this.arrowButtonTemplate() : this.newArrowButtonTemplate} `;
     }
 
     get renderTrailingInputControls(): TemplateResult {

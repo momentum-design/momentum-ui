@@ -25,7 +25,7 @@
 
 :host([focus-visible]) {
   .group {
-    border-color: var(--combobox-focus-border-color, $lm-combobox-focus-border-color-light);
+    border-color: var(--combobox-focus-border-color);
     box-shadow: none;
   }
   .md-new-combobox {
@@ -182,6 +182,14 @@
     max-width: 100%;
     flex-grow: 1;
 
+    &:not(.md-combobox-dropdown-arrow) {
+      padding-right: 0;
+
+      .md-combobox-button {
+        margin-left: 0;
+      }
+    }
+
     span {
       margin-right: -$combobox-main-indent;
       overflow: hidden;
@@ -218,7 +226,7 @@
     }
 
     .md-combobox-button.clear {
-      margin-right: $combobox-main-indent !important;
+      margin-right: rem-calc(4);
     }
 
     md-icon {
@@ -313,6 +321,7 @@
   @include arrow-transition;
   align-self: center;
   align-items: center;
+  justify-content: center;
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -322,7 +331,10 @@
   position: relative;
   vertical-align: bottom;
   height: inherit;
-  display: flex;
+  display: inline-flex;
+  border-radius: 50%;
+  width: rem-calc(20);
+  height: rem-calc(20);
 
   .md-input__icon-clear {
     align-items: center;
@@ -336,9 +348,7 @@
 .md-combobox-button.clear {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: rem-calc(24);
-  height: rem-calc(28);
+  justify-content: center;  
 }
 
 .md-combobox-right-arrow {
@@ -346,8 +356,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
+  width: rem-calc(32);  
   border-left: $combobox-border;
+
+  .md-combobox-right-arrow {
+    margin-left: 0;
+  }
 
   .md-combobox-button.clear:focus,
   .md-combobox-button.arrow-down:focus {

@@ -9,13 +9,13 @@
 import "@/components/icon/Icon";
 import { ATTRIBUTES, Key } from "@/constants";
 import { customElementWithCheck, FocusMixin } from "@/mixins";
+import { debounce } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
 import { internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { repeat } from "lit-html/directives/repeat";
-import { debounce } from "@/utils/helpers";
 import { styleMap } from "lit-html/directives/style-map";
 import styles from "./scss/module.scss";
 
@@ -764,15 +764,13 @@ export namespace Dropdown {
           ?disabled=${this.disabled}
           @click=${this.handleRemoveAll}
         >
-          <span>
-            <md-icon
-              class="md-input__icon-clear"
-              name="cancel-bold"
-              size="14"
-              iconSet="momentumDesign"
-              style="height: ${this.clearIconHeight};"
-            ></md-icon
-          ></span>
+          <md-icon
+            class="md-input__icon-clear"
+            name="cancel-bold"
+            size="16"
+            iconSet="momentumDesign"
+            style="height: ${this.clearIconHeight};"
+          ></md-icon>
         </button>
       `;
     }
@@ -786,14 +784,12 @@ export namespace Dropdown {
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-dropdown-input"
           tabindex="-1"
-          aria-hidden=${this.popupChevronAriaHidden}
+          aria-hidden=${ifDefined(this.popupChevronAriaHidden === "true" ? "true" : undefined)}
           ?readonly=${this.readOnly}
           ?disabled=${this.disabled}
           @click=${this.toggleVisualListBox}
         >
-          <span>
-            <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
-          </span>
+          <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>
         </button>
       `;
     }

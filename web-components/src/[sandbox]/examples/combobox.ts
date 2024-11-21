@@ -48,7 +48,7 @@ export const comboBoxTemplate = html`
 
   <h3>Default</h3>
   <md-combobox
-    style="width: 240px; display: inline-block;"
+    style="width: 250px; display: inline-block;"
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     ariaLabel="Select the country"
@@ -80,7 +80,7 @@ export const comboBoxTemplate = html`
   <br />
   <h3>Default (New Momentum)</h3>
   <md-combobox
-    style="width: 240px; display: inline-block;"
+    style="width: 250px; display: inline-block;"
     .options=${comboBoxOptions}
     placeholder="Placeholder"
     ariaLabel="Select the country"

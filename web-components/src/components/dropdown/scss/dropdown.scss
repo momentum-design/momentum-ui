@@ -183,12 +183,16 @@
         flex: 1 1 auto;
         height: $dropdown-min-height;
         outline: none;
+
+        &::placeholder{
+          color: var(--md-secondary-text-color);
+        }
       }
 
       ::input-placeholder {
         @include text-dots;
         display: inline-block;
-        width: calc(100%);
+        width: calc(100%);        
       }
 
       .md-dropdown-left-icon {
@@ -251,19 +255,13 @@
     margin: 0;
     margin-left: calc(#{$dropdown-main-indent} * 2);
     outline: none;
-    padding: 0;
-    padding-top: calc(#{$dropdown-main-indent} * 1.5);
-    position: relative;
-    vertical-align: bottom;
-    height: inherit;
+    padding: 0;    
+    position: relative;    
+    width: rem-calc(20);
+    height: rem-calc(20);
     display: flex;
     align-items: center;
-
-    &.clear {
-      align-items: center;
-      padding-top: #{$dropdown-main-indent};
-      display: flex;
-    }
+    justify-content: center;
 
     md-icon {
       color: var(--combobox-dropdown-item-icon-color);
@@ -298,8 +296,10 @@
     }
 
     .group {
-      border-radius: 8px;
+      height: $dropdown-new-height;
+      border-radius: $dropdown-new-border-radius;
       background-color: transparent;
+      padding-right: $dropdown-new-padding-right;
     }
   }
 }

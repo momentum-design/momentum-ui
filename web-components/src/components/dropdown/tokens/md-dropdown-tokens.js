@@ -21,6 +21,10 @@ const dropdown = {
     active: {
       light: colors.gray[20].name,
       dark: colors.gray[80].name
+    },
+    focus: {
+      light: colors.white[100].name,
+      dark: colors.gray[100].name
     }
   },
   "border-color": {

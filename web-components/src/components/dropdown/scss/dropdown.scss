@@ -167,11 +167,11 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+        background-color: var(--dropdown-bg-color-hover);
       }
 
       &:active {
-        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+        background-color: var(--dropdown-bg-color-active);
       }
 
       input {
@@ -287,11 +287,15 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+        background-color: var(--dropdown-bg-color-hover);
       }
 
       &:active {
-        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+        background-color: var(--dropdown-bg-color-active);
+      }
+
+      &:focus {
+        background-color: var(--dropdown-bg-color-focus)
       }
     }
 
@@ -318,12 +322,13 @@
 
 :host([focus-visible]) {
   .md-dropdown-label {
-    border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+    border-color: var(--dropdown-border-color-focus);
     box-shadow: none;
     outline: none;
   }
   .group {
-    border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+    border-color: var(--dropdown-border-color-focus);
+    background-color: var(--dropdown-bg-color-focus);
   }
 
   .md-new-dropdown {

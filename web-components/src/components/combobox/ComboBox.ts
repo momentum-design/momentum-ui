@@ -1366,7 +1366,8 @@ export namespace ComboBox {
     get listItemOptionMap() {
       return {
         "md-combobox-multiselect": this.isMulti,
-        compact: this.compact
+        compact: this.compact,
+        "md-combobox-dropdown-arrow": this.isDropdownArrow
       };
     }
 

@@ -137,6 +137,29 @@ export const comboBoxTemplate = html`
     show-selected-count
   ></md-combobox>
   </div>
+  <h3>new momentum multi dropdown arrow</h3>  
+  <md-combobox
+    .options=${comboBoxOptions}
+    .value=${[comboBoxOptions[5]]}
+    placeholder="Select country"    
+    newMomentum
+    visible-option="8"
+    is-dropdown-arrow
+    is-multi
+    no-clear-icon
+    allow-select-all
+    show-selected-count
+  ></md-combobox>
+  <h3>new momentum multi dropdown arrow</h3>  
+  <md-combobox  
+    .options=${comboBoxOptions}
+    placeholder="Placeholder"
+    ariaLabel="Select the country"
+    search-result-aria-label="Select the country, {{count}} results found."
+    helpText="This is help text"    
+    is-dropdown-arrow    
+    newMomentum
+  ></md-combobox>  
   <br />
   <h3>Multi Data with Custom Values</h3>
   <md-combobox

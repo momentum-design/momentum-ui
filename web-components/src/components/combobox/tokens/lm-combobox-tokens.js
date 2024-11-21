@@ -37,6 +37,14 @@ const combobox = {
     "border-color": {
       light: colors.theme[70].name,
       dark: colors.theme[50].name
+    },
+    "new-border-color": {
+      light: colors.gray[70].name,
+      dark: colors.gray[40].name
+    },
+    "bg-color": {
+      light: colors.white[100].name,
+      dark: colors.gray[100].name
     }
   },
   disabled: {

@@ -51,6 +51,10 @@ const combobox = {
     "bg-color": {
       light: colors.gray[10].name,
       dark: colors.gray[90].name
+    },
+    "border-color": {
+      light: colors.gray[40].name,
+      dark: colors.gray[80].name
     }
   },
   invalid: {

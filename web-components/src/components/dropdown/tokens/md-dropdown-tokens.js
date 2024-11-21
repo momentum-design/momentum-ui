@@ -14,6 +14,8 @@ const dropdown = {
   prefix: "md",
   component: "dropdown",
   "bg-color": {
+    light: colors.white[100].name,
+    dark: colors.gray[100].name,
     hover: {
       light: colors.gray[10].name,
       dark: colors.gray[80].name

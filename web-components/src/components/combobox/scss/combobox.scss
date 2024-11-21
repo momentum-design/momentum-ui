@@ -60,28 +60,29 @@
     .group:active {
       outline: none;
       box-shadow: none;
-      border-color: var(--combobox-disabled-bg-color) !important;
-      background-color: transparent;
+      border-color: var(--combobox-disabled-border-color) !important;
+      background-color: var(--combobox-disabled-bg-color);
 
       md-icon {
-        color: var(--md-primary-text-color);
-        fill: var(--md-primary-text-color);
+        opacity: 1;
+        color: var(--md-disabled-text-color);
+        fill: var(--md-disabled-text-color);
       }
 
       .md-combobox-right-arrow {
-        border-color: var(--combobox-disabled-bg-color);
+        border-color: var(--combobox-disabled-border-color);
       }
     }
 
     .md-combobox__multiwrap {
       input {
-        color: var(--combobox-disabled-bg-color);
+        color: var(--md-disabled-text-color);
       }
 
       input::placeholder,
       input::-webkit-input-placeholder {
         opacity: 1;
-        color: var(--combobox-disabled-bg-color);
+        color: var(--md-disabled-text-color);
       }
     }
   }

@@ -192,7 +192,7 @@
       ::input-placeholder {
         @include text-dots;
         display: inline-block;
-        width: calc(100%);        
+        width: calc(100%);    
       }
 
       .md-dropdown-left-icon {
@@ -239,7 +239,7 @@
   }
 
   .group[readonly] {
-    border-color: var(--dropdown-bg-color-disabled) !important;
+    border-color: var(--dropdown-border-color-disabled) !important;
 
     md-icon {
       color: var(--dropdown-bg-color-disabled) !important;
@@ -374,23 +374,23 @@
   }
 
   md-help-text {
-    color: var(--dropdown-bg-color-disabled, $md-gray-40);
+    color: var(--md-disabled-text-color, $md-gray-40);
   }
 
   .md-new-dropdown {
     &-label {
       background-color: transparent;
-      border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+      border-color: var(--dropdown-border-color-disabled, $md-gray-40);
       outline: none !important;
       box-shadow: none;
 
       &--text {
-        color: var(--dropdown-bg-color-disabled, $md-gray-40);
+        color: var(--md-disabled-text-color);
       }
 
       .md-dropdown-label--icon {
         md-icon {
-          color: var(--dropdown-bg-color-disabled, $md-gray-40);
+          color: var(--md-disabled-text-color);
         }
       }
 
@@ -400,30 +400,34 @@
         pointer-events: none;
         outline: none !important;
         box-shadow: none;
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled, $md-gray-40);
       }
       &:focus-visible {
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled);
         outline: none !important;
         box-shadow: none;
       }
     }
     .group {
       background: transparent;
-      border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+      border-color: var(--dropdown-border-color-disabled);
       pointer-events: none;
       outline: none !important;
 
       input {
-        color: var(--dropdown-bg-color-disabled, $md-gray-40);
+        color: var(--md-disabled-text-color);
+
+        &::placeholder{
+          color: var(--md-disabled-text-color);
+        }
       }
 
       &:hover,
       &:active {
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled);
       }
       &:focus-visible {
-        border-color: var(--dropdown-bg-color-disabled, $md-gray-40) !important;
+        border-color: var(--dropdown-border-color-disabled);
       }
     }
   }

@@ -29,6 +29,10 @@ const dropdown = {
     focus: {
       light: colors.theme[70].name,
       dark: colors.theme[50].name
+    },
+    disabled: {
+      light: colors.gray[10].name,
+      dark: colors.gray[90].name
     }
   },
   label: {

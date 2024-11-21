@@ -30,6 +30,9 @@ const dropdown = {
     common: "$mds-color-theme-outline-input-normal",
     focus: {
       common: "$mds-color-theme-outline-theme-normal"
+    },
+    disabled: {
+      common: "$mds-color-theme-outline-primary-disabled"
     }
   },
   label: {

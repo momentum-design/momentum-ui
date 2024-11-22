@@ -31,12 +31,6 @@ export class ThemeManager {
    */
   @observable isMomentumAvatarEnabled = false;
 
-  /**
-   * Observable property to indicate if Momentum Components are enabled
-   * Should be used set the newMomentum styles on components
-   */
-  @observable isMomentumComponentsEnabled = false;
-
   private static instance: ThemeManager;
 
   /**
@@ -66,10 +60,6 @@ export class ThemeManager {
 
   @action setMomentumAvatar(value: boolean) {
     this.isMomentumAvatarEnabled = value;
-  }
-
-  @action setMomentumComponents(value: boolean) {
-    this.isMomentumComponentsEnabled = value;
   }
 
   /**

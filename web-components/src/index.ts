@@ -74,7 +74,7 @@ export { TabPanel } from "./components/tabs/TabPanel";
 export { Tabs } from "./components/tabs/Tabs";
 export { TaskItem } from "./components/taskitem/TaskItem";
 export { Theme, ThemeName } from "./components/theme/Theme";
-export { ThemeManager } from "./components/theme/ThemeManager";
+export { ThemeManager, default as themeManager } from "./components/theme/ThemeManager";
 export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";

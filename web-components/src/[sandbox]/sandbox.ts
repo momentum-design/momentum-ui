@@ -1,16 +1,11 @@
 import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import { ThemeName } from "@/components/theme/Theme";
+import "@/components/theme/ThemeManager";
+import themeManager from "@/components/theme/ThemeManager";
 import reset from "@/wc_scss/reset.scss";
-import {
-  customElement,
-  html,
-  internalProperty,
-  LitElement,
-  property,
-  PropertyValues,
-  TemplateResult
-} from "lit-element";
+import { MobxLitElement } from "@adobe/lit-mobx";
+import { customElement, html, internalProperty, PropertyValues, TemplateResult } from "lit-element";
 import {
   accordionTemplate,
   advanceListTemplate,
@@ -69,13 +64,7 @@ import {
 } from "./examples";
 
 @customElement("momentum-ui-web-components-sandbox")
-export class Sandbox extends LitElement {
-  @property({ type: Boolean })
-  darkTheme = false;
-
-  @property({ type: String })
-  theme: ThemeName = "lumos";
-
+export class Sandbox extends MobxLitElement {
   @internalProperty()
   private selectedTab = "Accordion";
 
@@ -100,7 +89,7 @@ export class Sandbox extends LitElement {
 
   protected updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    if (this.darkTheme) {
+    if (themeManager.isDarkMode) {
       document.body.style.backgroundColor = "#000";
       document.body.style.color = "#fff";
     } else {
@@ -116,12 +105,12 @@ export class Sandbox extends LitElement {
   loadSettingsFromStorage() {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
-      this.theme = storedTheme as ThemeName;
+      themeManager.setThemeName(storedTheme as ThemeName);
     }
 
     const storedDarkTheme = localStorage.getItem("darkTheme");
     if (storedDarkTheme) {
-      this.darkTheme = JSON.parse(storedDarkTheme);
+      themeManager.setDarkMode(JSON.parse(storedDarkTheme));
     }
   }
 
@@ -130,11 +119,11 @@ export class Sandbox extends LitElement {
     const target = composedPath[0] as unknown as HTMLOrSVGElement;
     const { aspect } = target.dataset;
     if (aspect === "lumos" || aspect === "momentumV2" || aspect === "momentum") {
-      this.theme = aspect;
-      localStorage.setItem("theme", this.theme);
+      themeManager.setThemeName(aspect);
+      localStorage.setItem("theme", themeManager.themeName);
     } else if (aspect === "darkTheme") {
-      this.darkTheme = !this.darkTheme;
-      localStorage.setItem("darkTheme", JSON.stringify(this.darkTheme));
+      themeManager.setDarkMode(!themeManager.isDarkMode);
+      localStorage.setItem("darkTheme", JSON.stringify(themeManager.isDarkMode));
     } else {
       console.error("Invalid data-aspect input");
       return;
@@ -151,7 +140,7 @@ export class Sandbox extends LitElement {
             class="theme-switch"
             data-aspect="darkTheme"
             @click=${this.toggleSetting}
-            ?checked=${this.darkTheme}
+            ?checked=${themeManager.isDarkMode}
           />
           Dark Mode
         </label>
@@ -162,7 +151,7 @@ export class Sandbox extends LitElement {
             class="momentum-switch"
             data-aspect="momentum"
             @click=${this.toggleSetting}
-            ?checked=${this.theme === "momentum"}
+            ?checked=${themeManager.themeName === "momentum"}
           />
           Momentum
         </label>
@@ -173,7 +162,7 @@ export class Sandbox extends LitElement {
             class="lumos-switch"
             data-aspect="lumos"
             @click=${this.toggleSetting}
-            ?checked=${this.theme === "lumos"}
+            ?checked=${themeManager.themeName === "lumos"}
           />
           Lumos
         </label>
@@ -184,7 +173,7 @@ export class Sandbox extends LitElement {
             class="momentumv2-switch"
             data-aspect="momentumV2"
             @click=${this.toggleSetting}
-            ?checked=${this.theme === "momentumV2"}
+            ?checked=${themeManager.themeName === "momentumV2"}
           />
           MomentumV2
         </label>
@@ -260,7 +249,12 @@ export class Sandbox extends LitElement {
 
   render() {
     return html`
-      <md-theme class="theme-toggle" id="app-theme" ?darkTheme=${this.darkTheme} theme=${this.theme}>
+      <md-theme
+        class="theme-toggle"
+        id="app-theme"
+        ?darkTheme=${themeManager.isDarkMode}
+        theme=${themeManager.themeName}
+      >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
         <md-tabs direction="vertical" class="explorer" persist-selection tabs-id="explorer">

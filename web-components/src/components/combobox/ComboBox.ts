@@ -109,6 +109,7 @@ export namespace ComboBox {
     @property({ type: String, attribute: "popup-chevron-aria-hidden" }) popupChevronAriaHidden = "true";
     @property({ type: Boolean, reflect: true }) newMomentum = false;
     @property({ type: Boolean, attribute: "show-filter-icon" }) showFilterIcon = false;
+    @property({ type: Boolean, attribute: "prevent-filter" }) preventFilter = false;
 
     /**
      * When using the new momentum style sets whether to use the new combobox style arrow
@@ -562,6 +563,11 @@ export namespace ComboBox {
     };
 
     private filterOptions(value: string): (string | OptionMember)[] {
+      if(this.preventFilter)
+      {
+         this.searchItem = false;
+         return this.options;
+      }
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {
           if (this.isOptGroup && typeof option !== "string" && option.isLabel === "true") {

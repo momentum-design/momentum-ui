@@ -1513,5 +1513,15 @@ describe("Combobox Component", () => {
       expect(el.selectedOptions.length).toEqual(1);
       expect(el.selectedOptions).toEqual(expect.arrayContaining(["Afghanistan"]));
     });
+
+    test("should preserve options list when preventFilter is true", async () => {
+      const el = await fixture<ComboBox.ELEMENT>(html`
+        <md-combobox .options=${comboBoxOptions} prevent-filter></md-combobox>
+      `);
+      el.inputValue = "Afghanistan";
+      await elementUpdated(el);
+      expect(el.filteredOptions.length).toEqual(comboBoxOptions.length);
+      expect(el.filteredOptions).toEqual(expect.arrayContaining(comboBoxOptions));
+    });
   });
 });

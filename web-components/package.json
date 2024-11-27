@@ -52,7 +52,7 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1"
   },
-  "dependencies": {
+  "dependencies": {    
     "@interactjs/actions": "1.10.3",
     "@interactjs/auto-start": "1.10.3",
     "@interactjs/core": "1.10.3",
@@ -71,13 +71,13 @@
     "libphonenumber-js": "^1.7.57",
     "lit-virtualizer": "0.4.2",
     "luxon": "^1.25.0",
+    "mobx": "^5.15.4",
     "nanoid": "^3.1.16",
     "papaparse": "^5.4.1",
-    "sortablejs": "^1.15.3",
-    "mobx": "^5.15.4",
-    "@adobe/lit-mobx": "^1.0.1"
+    "sortablejs": "^1.15.3"
   },
   "devDependencies": {
+    "@adobe/lit-mobx": "^1.0.1",
     "@babel/core": "^7.25.7",
     "@babel/preset-env": "^7.25.7",
     "@interactjs/types": "1.10.3",

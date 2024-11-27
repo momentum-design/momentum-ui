@@ -226,7 +226,8 @@ const commonDist = merge(common, {
     "comp/md-timepicker-entry": "./src/components/timepicker/TimePicker",
     "comp/md-toggle-switch-entry": "./src/components/toggle-switch/ToggleSwitch",
     "comp/md-tooltip-entry": "./src/components/tooltip/Tooltip",
-    "comp/md-form-entry": "./src/components/form/Form"
+    "comp/md-form-entry": "./src/components/form/Form",
+    "managers/thememanager-entry": "./src/managers/ThemeManager"
   },
   output: {
     path: pDist,

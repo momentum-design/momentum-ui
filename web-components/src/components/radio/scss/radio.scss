@@ -14,7 +14,7 @@
     }
 
     &-label {
-      color: var(--md-primary-text-color, $md-gray-100);
+      color: var(--md-primary-text-color);
       cursor: pointer;
       font-size: $font-size-base;
       line-height: $radio-input-max-height;
@@ -48,7 +48,7 @@
 }
 
 :host([focus-visible]:not([disabled])) {
-  @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color, $md-blue-70));
+  @include focus-boxshadow(rem-calc(2), var(--md-default-focus-outline-color  ));
 }
 
 :host(:hover:not([disabled])) {
@@ -79,27 +79,27 @@
 
 :host([aria-checked="true"]) {
   .md-radio-label:before {
-    border-color: var(--radio-input-selected-border-color, $lm-radio-input-selected-border-color-light);
+    border-color: var(--radio-input-selected-border-color);
     box-shadow: inset 0 0 0 $radio-input-selected-size $radio-input-selected-bg,
-      inset 0 0 0 $radio-input-size var(--radio-input-icon-color, $md-white-100);
+      inset 0 0 0 $radio-input-size var(--radio-input-icon-color);
   }
 }
 
 :host([aria-checked="true"]:hover:not([disabled])) {
   .md-radio-label:before {
-    border-color: var(--radio-input-selected-hover-border-color, $lm-radio-input-selected-hover-border-color-light);
+    border-color: var(--radio-input-selected-hover-border-color);
     box-shadow: inset 0 0 0 $radio-input-selected-size
-        var(--radio-input-selected-hover-bg-color, $lm-radio-input-selected-hover-bg-color-light),
-      inset 0 0 0 $radio-input-size var(--radio-input-icon-color, $md-white-100);
+        var(--radio-input-selected-hover-bg-color),
+      inset 0 0 0 $radio-input-size var(--radio-input-icon-color);
   }
 }
 
 :host([aria-checked="true"]:active:not([disabled])) {
   .md-radio-label:before {
-    border-color: var(--radio-input-selected-pressed-border-color, $lm-radio-input-selected-pressed-border-color-light);
+    border-color: var(--radio-input-selected-pressed-border-color);
     box-shadow: inset 0 0 0 $radio-input-selected-size
-        var(--radio-input-selected-pressed-bg-color, $lm-radio-input-selected-pressed-bg-color-light),
-      inset 0 0 0 $radio-input-size var(--radio-input-icon-color, $md-white-100);
+        var(--radio-input-selected-pressed-bg-color),
+      inset 0 0 0 $radio-input-size var(--radio-input-icon-color);
   }
 }
 

@@ -1,8 +1,7 @@
 import styles from "@/[sandbox]/sandbox.scss";
 import "@/components/sass-stats/SassStats";
 import { ThemeName } from "@/components/theme/Theme";
-import "@/components/theme/ThemeManager";
-import themeManager from "@/components/theme/ThemeManager";
+import { themeManager } from "@/managers/ThemeManager";
 import reset from "@/wc_scss/reset.scss";
 import { MobxLitElement } from "@adobe/lit-mobx";
 import { customElement, html, internalProperty, PropertyValues, TemplateResult } from "lit-element";

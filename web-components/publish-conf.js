@@ -7,7 +7,7 @@ const exec = require("child_process").exec;
 const filePkg = fs.readFileSync(path.resolve("./package.json"));
 const p = JSON.parse(filePkg.toString());
 
-module.exports.notify = function() {
+module.exports.notify = function () {
   const email = spawn(`npm config get email`).result.trim();
   const markdown = `**${p.name} - ${p.version}** by ${email} at https://www.npmjs.com/package/@momentum-ui/web-components`;
   const curl = `curl -X POST -H "Content-Type: application/json" -d '{"markdown" : "${markdown}"}' "https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svMDc3ZjBlNTMtZjhlNC00NDM2LTk2MzYtNGVmYzk3NmRkNjNj"`;
@@ -23,7 +23,7 @@ function spawn(cmd) {
   };
 }
 
-module.exports.createPackageJson = function() {
+module.exports.createPackageJson = function () {
   const pkg = {
     name: p.name,
     version: p.version,
@@ -33,6 +33,7 @@ module.exports.createPackageJson = function() {
     repository: p.repository,
     main: p.main,
     types: p.types,
+    exports: p.exports,
     dependencies: p.dependencies,
     peerDependencies: p.peerDependencies,
     publishConfig: {

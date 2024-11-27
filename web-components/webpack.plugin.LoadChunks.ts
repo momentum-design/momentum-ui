@@ -1,6 +1,7 @@
+import * as path from "path";
 import { Compiler } from "webpack";
-import path = require("path");
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require("webpack");
 const { RawSource } = webpack.sources || require("webpack-sources");
 
@@ -45,7 +46,7 @@ export default class WebpackLoadChunksPlugin {
   }
 
   addAssets() {
-    const entrypoints = Array.from(this.compilation.entrypoints.keys()) as string[];
+    const entrypoints: string[] = Array.from(this.compilation.entrypoints.keys());
 
     for (const entry of entrypoints) {
       const files = this.compilation.entrypoints.get(entry).getFiles() as string[];
@@ -56,11 +57,19 @@ export default class WebpackLoadChunksPlugin {
       const filePath = sub == 0 ? "./" : "../".repeat(sub);
 
       const fileChunks = files
-        .filter(file => path.extname(file).substr(1) === "js")
-        .map(file => `require("${filePath}${file.substring(0, file.length - 3)}");`);
+        .filter((file) => path.extname(file).substring(1) === "js")
+        .map((file) => {
+          const importPath = `${filePath}${file.substring(0, file.length - 3)}`;
+          if (importPath.endsWith("-entry")) {
+            return `module.exports = require("${importPath}");`;
+          } else {
+            return `require("${importPath}");`;
+          }
+        });
 
       const fileName = entry.substring(0, entry.length - this.options.trimNameEnd) + ".js";
       const fileSource = new RawSource(fileChunks.join("\n"), false);
+
       this.compilation.emitAsset(fileName, fileSource);
     }
   }

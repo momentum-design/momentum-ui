@@ -392,6 +392,7 @@ export namespace TimePicker {
           class="amPm-combo-box"
           .options=${options}
           .value=${[options[0]]}
+          .preventFilter=${true}
           .inputValue=${this.timeValue[TIME_UNIT.AM_PM]}
           .ariaLabel=${this.timeValue[TIME_UNIT.AM_PM]}
           @change-selected="${(e: CustomEvent) => this.handleTimeChange(e, TIME_UNIT.AM_PM)}"

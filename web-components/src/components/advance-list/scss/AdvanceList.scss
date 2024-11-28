@@ -58,6 +58,8 @@
   box-sizing: border-box;
   position: relative;
   border-radius: var(--advance-list-border-radius-rounded, 0);
+  display: flex;
+  gap: 0.5rem;
 }
 .default-wrapper-status-indicator {
   padding: 5px;

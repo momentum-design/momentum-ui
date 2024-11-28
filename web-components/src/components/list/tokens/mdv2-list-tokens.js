@@ -40,9 +40,6 @@ const list = {
     rounded: {
       common: "0.5rem"
     }
-  },
-  "line-height": {
-    common: "1.5rem"
   }
 };
 

@@ -235,6 +235,7 @@ export namespace AdvanceList {
       return html`
         <div
           class="default-wrapper ${item.id}"
+          part="advance-list-item-wrapper"
           aria-setsize="${this.totalRecords}"
           aria-posinset="${index + 1}"
           role="${this.ariaRoleListItem}"

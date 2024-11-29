@@ -83,8 +83,7 @@
       top: calc(100% + #{$dropdown-main-indent});
       width: 100%;
       z-index: 99;
-      padding: calc((var(--dropdown-list-padding) / 16) * 1rem);
-      font-size: var(--body-primary-font-size, inherit);
+      padding: calc((var(--dropdown-list-padding) / 16) * 1rem);      
     }
 
     &-option {

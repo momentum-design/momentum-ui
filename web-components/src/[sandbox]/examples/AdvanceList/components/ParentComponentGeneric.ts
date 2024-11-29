@@ -57,11 +57,12 @@ export namespace ParentComponentGeneric {
         ariaLabel: `Item ${(page - 1) * 2000 + i + 1}`,
         template: (data: any, index: number) =>
           html` <div
-            style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;"
+            style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:20px; gap:0.5rem;"
             ?disabled="${index % 2 === 0}"
             aria-hidden="true"
             indexing="${index}"
           >
+            <md-icon name="info-badge-filled" iconSet="momentumDesign"> </md-icon>
             ${data.name}
           </div>`
       }));

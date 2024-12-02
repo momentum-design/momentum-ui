@@ -55,7 +55,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
-
+    @property({ type: Number, reflect: true, attribute: 'selected-index' }) selectedIndex = 0;
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
@@ -602,6 +602,9 @@ export namespace Tabs {
     private updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
+      if (oldSelectedIndex === -1) {
+        return;
+      }
 
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach((index) => {
@@ -1081,6 +1084,10 @@ export namespace Tabs {
 
       if (changedProperties.has("tabsId")) {
         this.selectTabFromStorage();
+      }
+
+      if (changedProperties.has("selectedIndex")) {
+        this.updateSelectedTab(this.selectedIndex);
       }
     }
 

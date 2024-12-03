@@ -17,7 +17,7 @@ import { Tabs } from "@/components/tabs/Tabs";
 import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/tooltip/Tooltip";
 import svgWxm from "@img/wxm.svg";
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
+import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { TemplateResult } from "lit-html";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
@@ -195,6 +195,7 @@ export class TabsTemplateSandbox extends LitElement {
   @internalProperty() private currentTabsOrder = this.defaultTabsOrder;
   @internalProperty() private isSingleButtonResetEnabled = false;
   closeTabName = "";
+  @property({ type: Number }) selectedTabIndex = 0;
 
   private setUpTabs() {
     this.tabs = {
@@ -364,6 +365,10 @@ export class TabsTemplateSandbox extends LitElement {
     if (draggableTabsOrder) this.currentTabsOrder = draggableTabsOrder.split(",");
   }
 
+  handleTabIndexChange() {
+    this.selectedTabIndex = this.selectedTabIndex === 0 ? 1 : 0;
+  }
+
   render() {
     return html`
       <div style="max-width: 600px; padding-top: 16px;">
@@ -508,6 +513,59 @@ export class TabsTemplateSandbox extends LitElement {
                     </md-tooltip>
                   </button>
                 `}
+          </md-tabs>
+          <h3>Allows the tab index to be changed programmatically without requiring a mouse click event on the tab item</h3>
+        <md-toggle-switch @click=${() => this.handleTabIndexChange()}>
+          Programmatically change tab index
+        </md-toggle-switch>
+        <div>
+          <md-tabs justified selected-index="${this.selectedTabIndex}">
+            <md-tab slot="tab" aria-label="Consult Label">
+              <span>Consult</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <md-list role="listbox">
+                <md-list-item slot="list-item" aria-label="item-1" shape="rounded">
+                  <div aria-label="item-1-div">
+                    <div>
+                      <p>Alan Johnson</p>
+                      <p>1234434</p>
+                    </div>
+                  </div>
+                </md-list-item>
+                <md-list-item slot="list-item" aria-label="item-2" shape="rounded">
+                  <div aria-label="item-2-div">
+                    <div>
+                      <p>Mark Corrigan</p>
+                      <p>43454334</p>
+                    </div>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </md-tab-panel>
+            <md-tab slot="tab" aria-label="Transfer label" aria-label="address-book">
+              <span>Transfer</span>
+            </md-tab>
+            <md-tab-panel slot="panel">
+              <md-list role="listbox">
+                <md-list-item slot="list-item" aria-label="item-1">
+                  <div aria-label="item-1-div">
+                    <div>
+                      <p>Jermey Usborne</p>
+                      <p>83498347</p>
+                    </div>
+                  </div>
+                </md-list-item>
+                <md-list-item slot="list-item" aria-label="item-2">
+                  <div aria-label="item-2-div">
+                    <div>
+                      <p>Sophie Chapman</p>
+                      <p>22384758</p>
+                    </div>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </md-tab-panel>
           </md-tabs>
         </div>
         <br />

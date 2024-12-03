@@ -5,6 +5,12 @@
 :host(:focus) {
   box-shadow: none !important;
   outline: none;
+
+  button {
+    outline: $tab-main-focus-border;
+    outline-offset: rem-calc(-2);
+    box-shadow: var(--tabs-default-focus-shadow);
+  }
 }
 
 :host([selected]) button {
@@ -38,33 +44,14 @@
   }
 }
 
-:host([selected]) button.primary {
-  background-color: var(--tabs-primary-bg-color);
-  color: var(--tabs-primary-text-color);
-
-  &:hover {
-    background-color: var(--tabs-primary-hover-bg-color);
-  }
-
-  &:active {
-    background-color: var(--tabs-primary-pressed-bg-color);
-  }
-
-  &:disabled,
-  &.disabled {
-    background: $tab-none-bg;
-    color: var(--tabs-default-disabled) !important;
-  }
-}
-
 button.primary {
-  font-family: var(--brand-font-bold);
-  font-weight: var(--brand-font-weight-bold);
-  color: var(--tabs-default-active);
+  color: var(--tabs-default-text-color);
+  font-family: var(--brand-font-medium);
+  font-weight: var(--brand-font-weight-medium);
 }
 
-button.primary.line {  
-  background: $tab-none-bg;  
+button.primary.line {
+  background: $tab-none-bg;
 
   &:hover {
     background-color: var(--tabs-default-hover);
@@ -84,7 +71,28 @@ button.primary.line {
   }
 }
 
-:host([selected]) button.primary.line {  
+:host([selected]) button.primary {
+  font-family: var(--brand-font-bold);
+  font-weight: var(--brand-font-weight-bold);
+  background-color: var(--tabs-primary-bg-color);
+  color: var(--tabs-primary-text-color);
+
+  &:hover {
+    background-color: var(--tabs-primary-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--tabs-primary-pressed-bg-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background: $tab-none-bg;
+    color: var(--tabs-default-disabled) !important;
+  }
+}
+
+:host([selected]) button.primary.line {
   background: $tab-none-bg;
   color: var(--tabs-default-active);
 
@@ -106,7 +114,6 @@ button.primary.line {
   }
 }
 
-
 :host([selected]) button.pill.onlyIcon {
   border-radius: 100%;
 
@@ -117,6 +124,10 @@ button.primary.line {
 
 :host([vertical]) button {
   text-align: left !important;
+
+  .tab-slot {
+    justify-content: flex-start;
+  }
 }
 
 :host([selected][vertical]) button {
@@ -142,14 +153,6 @@ button.primary.line {
 
   &:active {
     border-radius: 100%;
-  }
-}
-
-:host(:focus) {
-  button {
-    outline: $tab-main-focus-border;
-    outline-offset: rem-calc(-2);
-    box-shadow: var(--tabs-default-focus-shadow);
   }
 }
 
@@ -304,17 +307,9 @@ button.newMomentum {
     border-color 0.2s;
 
   /* Sizing and spacing */
-  min-height: 1.75rem;
+  min-height: rem-calc(28);
   padding: 0 0.625rem 0 0.625rem;
   justify-content: center;
-}
-
-:host([vertical]) {
-  button {
-    .tab-slot {
-      justify-content: flex-start;
-    }
-  }
 }
 
 button.pill {

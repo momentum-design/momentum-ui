@@ -10,7 +10,7 @@
     border-radius: 50%;
     display: block;
     position: relative;
-    // Declarations before nested rules
+    
     @include spinner-style();
 
     &::after {

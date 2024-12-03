@@ -39,6 +39,7 @@ export const iconTemplate = html`
     size="50"
     color="var(--avatar-presence-active)"
   ></md-icon>
+  <md-icon name="queue-contact-bold" iconSet="momentumDesign" title="queue-contact-bold" size="32"></md-icon>
 
   <h3>Logos (svg) from Brand Visuals Library</h3>
   <md-icon

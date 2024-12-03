@@ -3,7 +3,7 @@
   @include vr-spacing(mb, 0.25);
   color: $input__font-color--help;
   font-family: $brand-font-regular;
-  font-size: var(--body-primary-font-size, rem-calc(14));
+  font-size: rem-calc(14);
   line-height: rem-calc(22);
   padding-left: rem-calc(16);
 

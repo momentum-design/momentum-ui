@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import * as fs from "fs";
@@ -19,7 +18,12 @@ const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
 
-const pMomentum = fs.existsSync(p1) ? p1 : fs.existsSync(p2) ? p2 : null;
+let pMomentum: string | null = null;
+if (fs.existsSync(p1)) {
+  pMomentum = p1;
+} else if (fs.existsSync(p2)) {
+  pMomentum = p2;
+}
 if (!pMomentum) {
   throw new Error("Can't find Momentum UI");
 }
@@ -54,7 +58,7 @@ const common: webpack.Configuration = {
         use: {
           loader: "url-loader",
           options: {
-            name: "icons/[name].[hash:8].[ext]",
+            name: "assets/icons/[name].[hash:8].[ext]",
             limit: Infinity,
             esModule: false
           }
@@ -283,7 +287,7 @@ const commonDist = merge(common, {
           }
         ]
       }
-    }) as any
+    })
   ]
 });
 

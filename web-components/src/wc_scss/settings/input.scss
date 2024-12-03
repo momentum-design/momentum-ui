@@ -1,3 +1,5 @@
+@use "@/wc_scss/colors/settings" as color-token;
+
 $input__class: "md-input";
 $input__class--filled: "md-input--filled";
 
@@ -19,44 +21,44 @@ $input__message__line-height: rem-calc(22) !default;
 
 //  Color
 // Outline
-$input__background: $md-white-100 !default;
-$input__background--disabled: $md-gray-10 !default;
-$input__background--hover: $md-gray-20 !default;
-$input__border-color: $md-gray-30 !default;
+$input__background: color-token.$md-white-100 !default;
+$input__background--disabled: color-token.$md-gray-10 !default;
+$input__background--hover: color-token.$md-gray-20 !default;
+$input__border-color: color-token.$md-gray-30 !default;
 $input__border-color--read-only: transparent !default;
-$input__clear-icon__color: $md-gray-60;
-$input__clear-icon__color--hover: $md-gray-70;
-$input__font-color: $md-gray-100 !default;
-$input__font-color--disabled: $md-gray-30 !default;
-$input__font-color--help: $md-gray-70 !default;
-$input__font-color--placeholder: $md-gray-70 !default;
+$input__clear-icon__color: color-token.$md-gray-60;
+$input__clear-icon__color--hover: color-token.$md-gray-70;
+$input__font-color: color-token.$md-gray-100 !default;
+$input__font-color--disabled: color-token.$md-gray-30 !default;
+$input__font-color--help: color-token.$md-gray-70 !default;
+$input__font-color--placeholder: color-token.$md-gray-70 !default;
 $input__font-color--read-only: $input__font-color !default;
 
 // Filled
-$input__background--filled: $md-gray-10 !default;
-$input__background--filled--hover: $md-gray-20 !default;
+$input__background--filled: color-token.$md-gray-10 !default;
+$input__background--filled--hover: color-token.$md-gray-20 !default;
 $input__border-color--filled: transparent !default;
 
 //  Error Color
 // Default
-$input__background--error: $md-red-10 !default;
-$input__background--error--hover: $md-red-20 !default;
-$input__border-color--error: $md-red-50 !default;
-$input__message__font-color--error: $md-red-70 !default;
+$input__background--error: color-token.$md-red-10 !default;
+$input__background--error--hover: color-token.$md-red-20 !default;
+$input__border-color--error: color-token.$md-red-50 !default;
+$input__message__font-color--error: color-token.$md-red-70 !default;
 
 //  Success Color
 // Default
-$input__background--success: $md-green-10 !default;
-$input__background--success--hover: $md-green-20 !default;
-$input__border-color--success: $md-green-50 !default;
-$input__message__font-color--success: $md-green-70 !default;
+$input__background--success: color-token.$md-green-10 !default;
+$input__background--success--hover: color-token.$md-green-20 !default;
+$input__border-color--success: color-token.$md-green-50 !default;
+$input__message__font-color--success: color-token.$md-green-70 !default;
 
 //  Warning Color
 // Default
-$input__background--warning: $md-yellow-10 !default;
-$input__background--warning--hover: $md-yellow-20 !default;
-$input__border-color--warning: $md-yellow-40 !default;
-$input__message__font-color--warning: $md-yellow-70 !default;
+$input__background--warning: color-token.$md-yellow-10 !default;
+$input__background--warning--hover: color-token.$md-yellow-20 !default;
+$input__border-color--warning: color-token.$md-yellow-40 !default;
+$input__message__font-color--warning: color-token.$md-yellow-70 !default;
 
 $input__height--momentum: rem-calc(32) !default;
 $input__height--compact--momentum: rem-calc(28) !default;

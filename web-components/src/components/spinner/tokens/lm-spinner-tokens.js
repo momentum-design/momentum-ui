@@ -6,10 +6,10 @@ const spinner = {
   prefix: "lm",
   component: "spinner",
   "bg-color": {
-    light: colors.gray[40].name
+    common: colors.gray[40].name
   },
   color: {
-    light: colors.black[100].name
+    common: colors.black[100].name
   }
 };
 

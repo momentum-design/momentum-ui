@@ -1,3 +1,5 @@
+@use "settings" as *;
+
 @mixin spinner-style(
   $border: $spinner__bg-color,
   $border-progress-left: $spinner__color,

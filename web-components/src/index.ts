@@ -77,5 +77,6 @@ export { Theme, ThemeName } from "./components/theme/Theme";
 export { TimePicker } from "./components/timepicker/TimePicker";
 export { ToggleSwitch } from "./components/toggle-switch/ToggleSwitch";
 export { Tooltip } from "./components/tooltip/Tooltip";
+export { ThemeManager, themeManager } from "./managers/ThemeManager";
 
 // eslint-disable-next-line prettier/prettier

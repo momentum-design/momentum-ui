@@ -1,14 +1,14 @@
 :host {
-  --radio-label-text-color: var(--radio-input-text-color, $lm-radio-input-text-color-light);
+  --radio-label-text-color: var(--radio-input-text-color);
 }
 
-$radio-input-bg: var(--radio-input-bg-color, $lm-radio-input-bg-color-light);
-$radio-input-border: rem-calc(1) solid var(--radio-input-border-color, $lm-radio-input-border-color-light);
-$radio-input-hover-border: rem-calc(1) solid var(--radio-input-hover-border-color, $lm-radio-input-hover-border-color-light);
-$radio-input-pressed-border: rem-calc(1) solid var(--radio-input-pressed-border-color, $lm-radio-input-pressed-border-color-light);
-$radio-input-hover-bg: var(--radio-input-hover-bg-color, $lm-radio-input-border-color-light);
-$radio-input-pressed-bg: var(--radio-input-pressed-bg-color, $lm-radio-input-pressed-bg-color-light);
-$radio-input-selected-bg: var(--radio-input-selected-bg-color, $lm-radio-input-selected-bg-color-light);
+$radio-input-bg: var(--radio-input-bg-color);
+$radio-input-border: rem-calc(1) solid var(--radio-input-border-color);
+$radio-input-hover-border: rem-calc(1) solid var(--radio-input-hover-border-color);
+$radio-input-pressed-border: rem-calc(1) solid var(--radio-input-pressed-border-color);
+$radio-input-hover-bg: var(--radio-input-hover-bg-color);
+$radio-input-pressed-bg: var(--radio-input-pressed-bg-color);
+$radio-input-selected-bg: var(--radio-input-selected-bg-color);
 $radio-main-indent: rem-calc(4);
 $radio-input-size: rem-calc(20);
 $radio-input-left-padding: rem-calc(30);

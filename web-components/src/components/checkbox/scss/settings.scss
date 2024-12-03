@@ -1,11 +1,11 @@
 
-$checkbox__border: rem-calc(1) solid var(--checkbox-border-color, $lm-checkbox-border-color-light);
-$checkbox__hover-border: rem-calc(1) solid var(--checkbox-hover-border-color, $lm-checkbox-hover-border-color-light);
-$checkbox__pressed-border: rem-calc(1) solid var(--checkbox-pressed-border-color, $lm-checkbox-pressed-border-color-light);
-$checkbox__selected-border: rem-calc(1) solid var(--checkbox-selected-border-color, $lm-checkbox-selected-border-color-light);
-$checkbox__hover-bg: var(--checkbox-hover-bg-color, $lm-checkbox-hover-bg-color-light);
-$checkbox__pressed-bg: var(--checkbox-pressed-bg-color, $lm-checkbox-pressed-bg-color-light);
-$checkbox__selected-bg: var(--checkbox-selected-bg-color, $lm-checkbox-selected-bg-color-light);
+$checkbox__border: rem-calc(1) solid var(--checkbox-border-color);
+$checkbox__hover-border: rem-calc(1) solid var(--checkbox-hover-border-color);
+$checkbox__pressed-border: rem-calc(1) solid var(--checkbox-pressed-border-color);
+$checkbox__selected-border: rem-calc(1) solid var(--checkbox-selected-border-color);
+$checkbox__hover-bg: var(--checkbox-hover-bg-color);
+$checkbox__pressed-bg: var(--checkbox-pressed-bg-color);
+$checkbox__selected-bg: var(--checkbox-selected-bg-color);
 $checkbox__horizontal-max-width: rem-calc(400);
 $checkbox__main-indent: rem-calc(4);
 $checkbox__size: rem-calc(20);

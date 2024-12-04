@@ -83,7 +83,7 @@
       top: calc(100% + #{$dropdown-main-indent});
       width: 100%;
       z-index: 99;
-      padding: calc((var(--dropdown-list-padding) / 16) * 1rem);      
+      padding: calc((var(--dropdown-list-padding) / 16) * 1rem);
     }
 
     &-option {
@@ -183,7 +183,7 @@
         height: $dropdown-min-height;
         outline: none;
 
-        &::placeholder{
+        &::placeholder {
           color: var(--md-secondary-text-color);
         }
       }
@@ -191,7 +191,7 @@
       ::input-placeholder {
         @include text-dots;
         display: inline-block;
-        width: calc(100%);    
+        width: calc(100%);
       }
 
       .md-dropdown-left-icon {
@@ -254,8 +254,8 @@
     margin: 0;
     margin-left: calc(#{$dropdown-main-indent} * 2);
     outline: none;
-    padding: 0;    
-    position: relative;    
+    padding: 0;
+    position: relative;
     width: rem-calc(20);
     height: rem-calc(20);
     display: flex;
@@ -277,6 +277,7 @@
   }
 
   .md-new-dropdown {
+    height: $dropdown-new-height;
     &-label {
       background-color: var(--dropdown-bg-color-default);
       border-radius: 8px;
@@ -294,7 +295,7 @@
       }
 
       &:focus {
-        background-color: var(--dropdown-bg-color-focus)
+        background-color: var(--dropdown-bg-color-focus);
       }
     }
 
@@ -421,7 +422,7 @@
       input {
         color: var(--md-disabled-text-color);
 
-        &::placeholder{
+        &::placeholder {
           color: var(--md-disabled-text-color);
         }
       }

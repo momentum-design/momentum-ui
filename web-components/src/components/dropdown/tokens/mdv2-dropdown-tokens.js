@@ -65,7 +65,7 @@ const dropdown = {
         common: "8"
       },
       height: {
-        common: "40"
+        common: "36"
       }
     }
   }

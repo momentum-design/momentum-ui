@@ -453,6 +453,8 @@ export namespace Input {
               hasRemoveStyle
               @click=${(event: MouseEvent) => this.handleClear(event)}
               @keydown=${(event: KeyboardEvent) => this.handleClear(event)}
+              size="20"
+              circle
             >
               <md-icon
                 class="md-input__icon-clear"

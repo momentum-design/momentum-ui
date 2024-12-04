@@ -86,6 +86,9 @@ export namespace Dropdown {
     @property({ type: Boolean, reflect: true, attribute: "search-trim-space" }) trimSpace = false;
     @property({ type: String, attribute: "no-results-i18n" }) resultsTextLocalization = "No Results";
 
+    @property({ type: Boolean })
+    pill: boolean | null = false;
+
     @property({ type: String }) helpText = "";
     @property({ type: Array }) messageArr: Dropdown.Message[] = [];
     @property({ type: String }) htmlId = "";
@@ -97,7 +100,9 @@ export namespace Dropdown {
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
-    @internalProperty() ariaLabelForDropdown = ""; // This internal property is used to conditionally set aria-label.
+
+    @internalProperty()
+    private ariaLabelForDropdown = ""; // This internal property is used to conditionally set aria-label.
 
     @internalProperty() private renderOptions: RenderOptionMember[] = [];
     @internalProperty() private selectedKey: string = EMPTY_KEY;
@@ -682,7 +687,8 @@ export namespace Dropdown {
       return {
         "md-dropdown__expanded": this.expanded,
         [`md-${this.messageType}`]: !!this.messageType,
-        "md-new-dropdown": this.newMomentum
+        "md-new-dropdown": this.newMomentum,
+        "md-dropdown--pill": this.pill === true
       };
     }
 

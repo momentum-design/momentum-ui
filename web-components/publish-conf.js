@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
 const fs = require("fs");
 const fse = require("fs-extra");
 const path = require("path");
 const spawnSync = require("child_process").spawnSync;
-const exec = require("child_process").exec;
 
 const filePkg = fs.readFileSync(path.resolve("./package.json"));
 const p = JSON.parse(filePkg.toString());
@@ -27,7 +28,7 @@ module.exports.createPackageJson = function () {
   const pkg = {
     name: p.name,
     version: p.version,
-    description: p.description || p.description,
+    description: p.description,
     author: p.author,
     license: p.license,
     repository: p.repository,

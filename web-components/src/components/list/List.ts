@@ -115,7 +115,8 @@ export namespace List {
       }
     }
     private isListItemDisabled(index: number) {
-      return (this.slotted[index] as ListItem.ELEMENT).disabled;
+      const item = this.slotted[index] as ListItem.ELEMENT;
+      return item?.disabled ?? true;
     }
 
     handleClick(event: MouseEvent) {

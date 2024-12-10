@@ -287,12 +287,13 @@ export namespace Input {
     }
 
     handleClear(event: MouseEvent | KeyboardEvent) {
+      event.preventDefault();
+      event.stopPropagation();
       if (event.type === "keydown") {
         const { code } = event as KeyboardEvent;
         if (code !== Key.Space && code !== Key.Enter) {
           return;
         }
-        event.preventDefault();
       }
       this.input.focus();
       this.dispatchEvent(

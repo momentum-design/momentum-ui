@@ -179,6 +179,7 @@ export namespace Input {
     @property({ type: String }) ariaControls = "";
     @property({ type: String }) ariaExpanded = "";
     @property({ type: Boolean }) newMomentum = false;
+    @property({ type: Boolean }) stopPropagationOnClear = false;
 
     @query(".md-input") input!: HTMLInputElement;
 
@@ -287,6 +288,10 @@ export namespace Input {
     }
 
     handleClear(event: MouseEvent | KeyboardEvent) {
+      if (this.stopPropagationOnClear) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
       if (event.type === "keydown") {
         const { code } = event as KeyboardEvent;
         if (code !== Key.Space && code !== Key.Enter) {

@@ -73,6 +73,7 @@ export namespace MenuOverlay {
     @property({ type: String }) ariaRole: Role = "menu";
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
+    @property({ type: Boolean, attribute: "noToggleOnClearInput" }) noToggleOnClearInput = false; // This will prevent the overlay from toggling when the input field is cleared
     @property({ type: Number, attribute: "overlay-offset" }) overlayOffset = 15;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
@@ -270,58 +271,72 @@ export namespace MenuOverlay {
     }
 
     private create() {
-      if (this.triggerElement) {
-        this.popperInstance = createPopper(this.triggerElement, this.overlayContainer, {
-          onFirstUpdate: async () => {
-            // We need to find all focusable elements, after Popper finish its positioning calculation
-            if (this.isOpen) {
-              this.popperInstance?.update();
-              this.setFocusableElements!();
-              await this.updateComplete;
-              this.focusInsideOverlay();
+      // Dynamically determine the trigger element(s) based on the exclusion condition
+      const container = this.triggerElement;
+      if (!container) return;
+      let referenceElement: Element | null = container;
+
+      if (this.noToggleOnClearInput) {
+        const shadowRoot = container.shadowRoot;
+        if (shadowRoot) {
+          const wrapper = shadowRoot.querySelector(".md-input__wrapper");
+          if (wrapper) {
+            const validChildren = Array.from(wrapper.children).filter(
+              (child) => !child.classList.contains("md-input__after")
+            );
+            referenceElement = validChildren.length > 0 ? validChildren[0] : wrapper;
+          }
+        }
+      }
+      this.popperInstance = createPopper(referenceElement, this.overlayContainer, {
+        onFirstUpdate: async () => {
+          if (this.isOpen) {
+            this.popperInstance?.update();
+            this.setFocusableElements!();
+            await this.updateComplete;
+            this.focusInsideOverlay();
+          }
+        },
+        placement: this.placement,
+        modifiers: [
+          ...defaultModifiers,
+          flip,
+          offset,
+          preventOverflow,
+          arrow,
+          {
+            name: "preventOverflow",
+            options: {
+              padding: 16
             }
           },
-          placement: this.placement,
-          modifiers: [
-            ...defaultModifiers,
-            flip,
-            offset,
-            preventOverflow,
-            arrow,
-            {
-              name: "preventOverflow",
-              options: {
-                padding: 16
-              }
-            },
-            {
-              name: "offset",
-              options: {
-                offset: (({ placement, reference }) => {
-                  if (placement === "left-end" || placement === "right-end") {
-                    return [reference.height + reference.y + 3, 14];
-                  } else {
-                    return [0, this.overlayOffset];
-                  }
-                }) as OffsetsFunction
-              }
-            },
-            {
-              name: "arrow",
-              options: {
-                element: this.arrow,
-                padding: 5
-              }
-            },
-            {
-              name: "computeStyles",
-              options: {
-                adaptive: false // this will recompute popper position
-              }
+          {
+            name: "offset",
+            options: {
+              offset: (({ placement, reference }) => {
+                if (placement === "left-end" || placement === "right-end") {
+                  return [reference.height + reference.y + 3, 14];
+                } else {
+                  return [0, this.overlayOffset];
+                }
+              }) as OffsetsFunction
             }
-          ]
-        });
-      }
+          },
+          {
+            name: "arrow",
+            options: {
+              element: this.arrow,
+              padding: 5
+            }
+          },
+          {
+            name: "computeStyles",
+            options: {
+              adaptive: false // This will recompute popper position
+            }
+          }
+        ]
+      });
     }
 
     private destroy() {

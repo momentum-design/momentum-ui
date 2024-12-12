@@ -128,12 +128,19 @@
         var(--badge-unreadcount-text-color, var(--button-primary-text-color))
       );
       font-family: var(--brand-font-medium);
-      font-size: var(--label-compact-font-size, rem-calc(12));
-      font-weight: 550;
+      font-size: rem-calc(12);
+      font-weight: 500;
       padding: 0rem 0.25rem;
-      min-width: rem-calc(20);
-      height: rem-calc(20);
+      min-width: rem-calc(16);
+      height: rem-calc(16);
       justify-content: center;
+
+      &.md-badge--outline {
+        border: 1px solid;
+        min-width: rem-calc(18);
+        height: rem-calc(18);
+        border-color: var(--md-primary-bg-color);
+      }
     }
 
     &--orange {

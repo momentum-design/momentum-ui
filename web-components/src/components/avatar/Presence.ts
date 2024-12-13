@@ -7,7 +7,7 @@ import { getPresenceSize } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Presence {
-  export type Size = typeof AvatarSize[number];
+  export type Size = (typeof AvatarSize)[number];
 
   @customElementWithCheck("md-presence")
   export class ELEMENT extends LitElement {

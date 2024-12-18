@@ -165,6 +165,11 @@ export const badgeTemplate = html`
 
   <h4 class="snadbox-header">Unread count</h4>
 
+  <md-badge color="unreadcount"> 999 </md-badge>
   <md-badge color="unreadcount"> 99 </md-badge>
   <md-badge color="unreadcount"> 4 </md-badge>
+
+  <md-badge color="unreadcount" outlined> 99 </md-badge>
+  <md-badge color="unreadcount" outlined> 99 </md-badge>
+  <md-badge color="unreadcount" outlined> 4 </md-badge>
 `;

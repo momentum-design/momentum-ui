@@ -1,6 +1,8 @@
 /** @component icon */
+@use "@/wc_scss/tools/functions/core";
+@use "@/wc_scss/colors/settings-base" as color-base;
 
-@include exports("md-icon") {
+@include core.exports("md-icon") {
   :host {
     display: inline-flex;
     align-items: center;
@@ -20,7 +22,7 @@
     line-height: inherit;
 
     .md--dark & {
-      fill: $md-white-100;
+      fill: color-base.$md-white-100;
     }
   }
 }

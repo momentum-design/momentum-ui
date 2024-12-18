@@ -287,12 +287,13 @@ export namespace Input {
     }
 
     handleClear(event: MouseEvent | KeyboardEvent) {
+      event.preventDefault();
+      event.stopPropagation();
       if (event.type === "keydown") {
         const { code } = event as KeyboardEvent;
         if (code !== Key.Space && code !== Key.Enter) {
           return;
         }
-        event.preventDefault();
       }
       this.input.focus();
       this.dispatchEvent(
@@ -453,6 +454,8 @@ export namespace Input {
               hasRemoveStyle
               @click=${(event: MouseEvent) => this.handleClear(event)}
               @keydown=${(event: KeyboardEvent) => this.handleClear(event)}
+              size="20"
+              circle
             >
               <md-icon
                 class="md-input__icon-clear"

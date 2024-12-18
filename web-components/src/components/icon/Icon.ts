@@ -236,7 +236,7 @@ export namespace Icon {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon =
         this.iconSet === "momentumBrandVisuals"
-          ? require(`@momentum-design/brand-visuals/dist/svg/${iconName}.svg`)
+          ? require(`@momentum-design/brand-visuals/dist/logos/${iconName}.svg`)
           : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
 
       if (this.isPath(importedIcon)) {
@@ -274,7 +274,7 @@ export namespace Icon {
       if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals") {
         return this.name;
       }
-      const lookupName = this.getIconName();
+      const lookupName = this.momentumUIIconLookupName;
       const mappedName = ELEMENT.designLookup.get(lookupName);
 
       return mappedName ?? lookupName;
@@ -366,6 +366,14 @@ export namespace Icon {
         "md-combobox-input__icon--active": this.isComboBoxIcon && this.isActive,
         [`${this.iconName}`]: !!this.iconName
       };
+    }
+
+    get momentumUIIconLookupName() {
+      //The lookup map has the icon name without the size
+      let iconName = this.name;
+      iconName = iconName.startsWith("icon-") ? iconName.substring(5) : iconName;
+      iconName = iconName.split("_")[0];
+      return iconName;
     }
 
     getIconName() {

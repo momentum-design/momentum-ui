@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import * as fs from "fs";
@@ -19,7 +18,12 @@ const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
 
-const pMomentum = fs.existsSync(p1) ? p1 : fs.existsSync(p2) ? p2 : null;
+let pMomentum: string | null = null;
+if (fs.existsSync(p1)) {
+  pMomentum = p1;
+} else if (fs.existsSync(p2)) {
+  pMomentum = p2;
+}
 if (!pMomentum) {
   throw new Error("Can't find Momentum UI");
 }
@@ -54,14 +58,14 @@ const common: webpack.Configuration = {
         use: {
           loader: "url-loader",
           options: {
-            name: "icons/[name].[hash:8].[ext]",
+            name: "assets/icons/[name].[hash:8].[ext]",
             limit: Infinity,
             esModule: false
           }
         },
         include: [
           path.resolve("node_modules/@momentum-design/icons/dist/svg"),
-          path.resolve("node_modules/@momentum-design/brand-visuals/dist/svg")
+          path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos")
         ]
       }
     ]
@@ -133,17 +137,19 @@ export const commonDev = merge(common, {
       template: "./src/[sandbox]/index.html",
       favicon: "./src/[sandbox]/favicon.ico"
     }),
-    new CopyWebpackPlugin([
-      { from: `${pMomentum}/core/fonts`, to: "fonts" },
-      { from: `${pMomentum}/core/images`, to: "images" },
-      { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
-      { from: `${pMomentum}/icons/fonts`, to: "fonts" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
-      { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
-      { from: `${pCss}/*.css`, to: "css", flatten: true },
-      { from: `${pStats}/**/*.json`, to: "stats", flatten: true }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: `${pMomentum}/core/fonts`, to: "fonts" },
+        { from: `${pMomentum}/core/images`, to: "images" },
+        { from: `${pMomentum}/icons/fonts`, to: "icons/fonts" },
+        { from: `${pMomentum}/icons/fonts`, to: "fonts" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
+        { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
+        { from: `${pCss}/*.css`, to: "css/[name].[ext]" },
+        { from: `${pStats}/**/*.json`, to: "stats/[name].[ext]" }
+      ]
+    })
   ]
 });
 
@@ -256,16 +262,18 @@ const commonDist = merge(common, {
     new WebpackLoadChunksPlugin({
       trimNameEnd: 6
     }),
-    new CopyWebpackPlugin([
-      { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
-      { from: `${pMomentum}/core/images`, to: "assets/images" },
-      { from: `${pMomentum}/icons/fonts`, to: "assets/fonts" },
-      { from: `${pMomentum}/icons/fonts`, to: "assets/icons/fonts" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
-      { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
-      { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
-      { from: `${pCss}/*.css`, to: "assets/styles", flatten: true }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
+        { from: `${pMomentum}/core/images`, to: "assets/images" },
+        { from: `${pMomentum}/icons/fonts`, to: "assets/fonts" },
+        { from: `${pMomentum}/icons/fonts`, to: "assets/icons/fonts" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
+        { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
+        { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
+        { from: `${pCss}/*.css`, to: "assets/styles/[name].[ext]" }
+      ]
+    }),
     new RemovePlugin({
       after: {
         log: false,
@@ -283,7 +291,7 @@ const commonDist = merge(common, {
           }
         ]
       }
-    }) as any
+    })
   ]
 });
 

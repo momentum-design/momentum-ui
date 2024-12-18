@@ -1,6 +1,6 @@
 $list-item__font-size: rem-calc(14);
 $list-item__line-height: var(--list-line-height, rem-calc(18));
-$list-item__padding: (rem-calc(8) rem-calc(12));
+$list-item__padding: (rem-calc(4) rem-calc(12));
 $list-item__margin: $base-unit;
 $list-item__min-height: (rem-calc(36));
 $list-item__focus-shadow: 0 0 0 rem-calc(2) var(--list-focus-border-color, $md-list-focus-border-color-light);

@@ -74,7 +74,7 @@ export namespace Avatar {
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("type")) {
+      if (changedProperties.has("type") || changedProperties.has("newMomentum")) {
         const { presenceColor, presenceIcon } = getPresenceIconColor(this.type, this.failurePresence, this.newMomentum);
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;

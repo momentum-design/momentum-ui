@@ -9,7 +9,7 @@ const datepicker = {
     hover: {
       "bg-color": {
         light: colors.gray[20].name,
-        dark: colors.gray[70].name
+        dark: colors.gray[90].name
       }
     }
   },

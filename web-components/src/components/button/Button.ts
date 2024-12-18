@@ -327,7 +327,7 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${ifDefined(this.tabIndex || undefined)}
-            aria-pressed=${this.ariaPressed === "true" ? true : false}
+            aria-pressed=${this.ariaPressed === "true"}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}

@@ -208,9 +208,31 @@ const button = {
     }
   },
   ghost: {
+    "bg-color": {
+      common: "$mds-color-theme-button-secondary-normal"
+    },
     "text-color": {
-      light: colors.gray[100].name,
-      dark: colors.gray["05"].name
+      common: "$mds-color-theme-text-primary-normal"
+    },
+    disabled: {
+      "bg-color": {
+        common: "$mds-color-theme-button-secondary-disabled"
+      },
+      "text-color": {
+        common: "$mds-color-theme-text-primary-disabled"
+      }
+    },
+    hover: {
+      "bg-color": {
+        light: colors.gray[10].name,
+        dark: colors.gray[90].name
+      }
+    },
+    pressed: {
+      "bg-color": {
+        light: colors.gray[20].name,
+        dark: colors.gray[95].name
+      }
     }
   },
   "ghost-active": {

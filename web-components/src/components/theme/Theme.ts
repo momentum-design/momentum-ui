@@ -66,7 +66,7 @@ export namespace Theme {
 
     private placement: Tooltip.Placement = "bottom";
     private popperInstance: Instance | null = null;
-    private eventListeners: {
+    private readonly eventListeners: {
       mouseEnter?: (event: MouseEvent) => void;
       mouseLeave?: (event: MouseEvent) => void;
     } = {};
@@ -270,9 +270,12 @@ export namespace Theme {
               options: {
                 offset: ({ placement }: { placement: Placement }) => {
                   const padding = halfArrowSize + additionalPadding;
-                  if (placement.startsWith("left") || placement.startsWith("right")) {
-                    return [0, padding];
-                  } else if (placement.startsWith("top") || placement.startsWith("bottom")) {
+                  if (
+                    placement.startsWith("left") ||
+                    placement.startsWith("right") ||
+                    placement.startsWith("top") ||
+                    placement.startsWith("bottom")
+                  ) {
                     return [0, padding];
                   }
                   return [8, 8]; // leave old defaults

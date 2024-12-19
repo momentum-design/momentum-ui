@@ -514,69 +514,72 @@ export class TabsTemplateSandbox extends LitElement {
                   </button>
                 `}
           </md-tabs>
-          <h3>Allows the tab index to be changed programmatically without requiring a mouse click event on the tab item</h3>
-        <md-toggle-switch @click=${() => this.handleTabIndexChange()}>
-          Programmatically change tab index
-        </md-toggle-switch>
-        <div>
-          <md-tabs justified selected-index="${this.selectedTabIndex}">
-            <md-tab slot="tab" aria-label="Consult Label">
-              <span>Consult</span>
-            </md-tab>
-            <md-tab-panel slot="panel">
-              <md-list role="listbox">
-                <md-list-item slot="list-item" aria-label="item-1" shape="rounded">
-                  <div aria-label="item-1-div">
-                    <div>
-                      <p>Alan Johnson</p>
-                      <p>1234434</p>
+          <h3>
+            Allows the tab index to be changed programmatically without requiring a mouse click event on the tab item
+          </h3>
+          <md-toggle-switch @click=${() => this.handleTabIndexChange()}>
+            Programmatically change tab index
+          </md-toggle-switch>
+          <div>
+            <md-tabs justified selected-index="${this.selectedTabIndex}">
+              <md-tab slot="tab" aria-label="Consult Label">
+                <span>Consult</span>
+              </md-tab>
+              <md-tab-panel slot="panel">
+                <md-list role="listbox">
+                  <md-list-item slot="list-item" aria-label="item-1" shape="rounded">
+                    <div aria-label="item-1-div">
+                      <div>
+                        <p>Alan Johnson</p>
+                        <p>1234434</p>
+                      </div>
                     </div>
-                  </div>
-                </md-list-item>
-                <md-list-item slot="list-item" aria-label="item-2" shape="rounded">
-                  <div aria-label="item-2-div">
-                    <div>
-                      <p>Mark Corrigan</p>
-                      <p>43454334</p>
+                  </md-list-item>
+                  <md-list-item slot="list-item" aria-label="item-2" shape="rounded">
+                    <div aria-label="item-2-div">
+                      <div>
+                        <p>Mark Corrigan</p>
+                        <p>43454334</p>
+                      </div>
                     </div>
-                  </div>
-                </md-list-item>
-              </md-list>
-            </md-tab-panel>
-            <md-tab slot="tab" aria-label="Transfer label" aria-label="address-book">
-              <span>Transfer</span>
-            </md-tab>
-            <md-tab-panel slot="panel">
-              <md-list role="listbox">
-                <md-list-item slot="list-item" aria-label="item-1">
-                  <div aria-label="item-1-div">
-                    <div>
-                      <p>Jermey Usborne</p>
-                      <p>83498347</p>
+                  </md-list-item>
+                </md-list>
+              </md-tab-panel>
+              <md-tab slot="tab" aria-label="Transfer label" aria-label="address-book">
+                <span>Transfer</span>
+              </md-tab>
+              <md-tab-panel slot="panel">
+                <md-list role="listbox">
+                  <md-list-item slot="list-item" aria-label="item-1">
+                    <div aria-label="item-1-div">
+                      <div>
+                        <p>Jermey Usborne</p>
+                        <p>83498347</p>
+                      </div>
                     </div>
-                  </div>
-                </md-list-item>
-                <md-list-item slot="list-item" aria-label="item-2">
-                  <div aria-label="item-2-div">
-                    <div>
-                      <p>Sophie Chapman</p>
-                      <p>22384758</p>
+                  </md-list-item>
+                  <md-list-item slot="list-item" aria-label="item-2">
+                    <div aria-label="item-2-div">
+                      <div>
+                        <p>Sophie Chapman</p>
+                        <p>22384758</p>
+                      </div>
                     </div>
-                  </div>
-                </md-list-item>
-              </md-list>
-            </md-tab-panel>
-          </md-tabs>
-        </div>
-        <br />
-        <md-modal htmlId="modal-1" ?show=${this.isModalOpen} size="dialog" hideFooter hideHeader noExitOnEsc>
-          <div slot="header">
-            <span>Close Tab Confirmation</span>
+                  </md-list-item>
+                </md-list>
+              </md-tab-panel>
+            </md-tabs>
           </div>
-          <p>Are you sure you want to close the Tab?</p>
-          <md-button slot="footer" @click="${() => (this.isModalOpen = false)}">Cancel</md-button>
-          <md-button slot="footer" @click="${this.closeTab}" type="submit">Confirm</md-button>
-        </md-modal>
+          <br />
+          <md-modal htmlId="modal-1" ?show=${this.isModalOpen} size="dialog" hideFooter hideHeader noExitOnEsc>
+            <div slot="header">
+              <span>Close Tab Confirmation</span>
+            </div>
+            <p>Are you sure you want to close the Tab?</p>
+            <md-button slot="footer" @click="${() => (this.isModalOpen = false)}">Cancel</md-button>
+            <md-button slot="footer" @click="${this.closeTab}" type="submit">Confirm</md-button>
+          </md-modal>
+        </div>
       </div>
     `;
   }

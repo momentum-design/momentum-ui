@@ -55,7 +55,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
-    @property({ type: Number, reflect: true, attribute: 'selected-index' }) selectedIndex = 0;
+    @property({ type: Number, reflect: true, attribute: "selected-index" }) selectedIndex = 0;
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";

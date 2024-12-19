@@ -106,6 +106,9 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-dynamic-layout-button-inverted-border-color: #{$mds-color-theme-inverted-outline-button-normal};
 
   --md-header-separator-color: transparent;
+  --md-glass-bg-color: #{$mds-color-theme-background-glass-normal};
+  --md-glass-overlay-bg-color: #{$mds-color-theme-background-glass-overlay-normal};
+  --md-glass-overlay-inactive-bg-color: #{$mds-color-theme-background-glass-overlay-inactive};
 
   /**
    * Temporarily disable overriding token  background colours for mdv2

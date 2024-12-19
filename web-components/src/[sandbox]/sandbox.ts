@@ -5,6 +5,7 @@ import { themeManager } from "@/managers/ThemeManager";
 import reset from "@/wc_scss/reset.scss";
 import { MobxLitElement } from "@adobe/lit-mobx";
 import { customElement, html, internalProperty, PropertyValues, TemplateResult } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
 import {
   accordionTemplate,
   advanceListTemplate,
@@ -86,17 +87,6 @@ export class Sandbox extends MobxLitElement {
     this.selectedTab = tab;
   }
 
-  protected updated(changedProperties: PropertyValues) {
-    super.updated(changedProperties);
-    if (themeManager.isDarkMode) {
-      document.body.style.backgroundColor = "#000";
-      document.body.style.color = "#fff";
-    } else {
-      document.body.style.backgroundColor = "#fff";
-      document.body.style.color = "#000";
-    }
-  }
-
   protected firstUpdated(_changedProperties: PropertyValues): void {
     super.firstUpdated(_changedProperties);
   }
@@ -110,6 +100,11 @@ export class Sandbox extends MobxLitElement {
     const storedDarkTheme = localStorage.getItem("darkTheme");
     if (storedDarkTheme) {
       themeManager.setDarkMode(JSON.parse(storedDarkTheme));
+    }
+
+    const storedVisualRebrand = localStorage.getItem("is-visual-rebrand-enabled");
+    if (storedVisualRebrand) {
+      themeManager.setVisualRebrandEnabled(JSON.parse(storedVisualRebrand));
     }
   }
 
@@ -127,6 +122,11 @@ export class Sandbox extends MobxLitElement {
       console.error("Invalid data-aspect input");
       return;
     }
+  }
+
+  toggleVisualRebrandEnabled() {
+    themeManager.setVisualRebrandEnabled(!themeManager.isVisualRebrandEnabled);
+    localStorage.setItem("is-visual-rebrand-enabled", JSON.stringify(themeManager.isVisualRebrandEnabled));
   }
 
   themeToggle() {
@@ -176,6 +176,17 @@ export class Sandbox extends MobxLitElement {
           />
           MomentumV2
         </label>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="theme-switch"
+            class="visual-rebrand-switch"
+            data-aspect="momentumV2"
+            @click=${this.toggleVisualRebrandEnabled}
+            ?checked=${themeManager.isVisualRebrandEnabled}
+          />
+          Visual rebrand
+        </label>
       </div>
     `;
   }
@@ -185,10 +196,10 @@ export class Sandbox extends MobxLitElement {
       <div class="container-color-bg-color-options">
         <label for="color-dropdown">container color:</label>
         <select id="color-dropdown" name="colors" @change=${this.handleContainerColorChange}>
+          <option value="--md-glass-bg-color">--md-glass-bg-color</option>
+          <option value="transparent">transparent</option>
           <option value="--md-primary-bg-color">--md-primary-bg-color</option>
           <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
-          <option value="--md-primary-gradient-background">--md-primary-gradient-background</option>
-          <option value="--md-secondary-gradient-background">--md-secondary-gradient-background</option>
           <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>
           <option value="--md-tertiary-one-bg-color">--md-tertiary-one-bg-color</option>
           <option value="--md-quaternary-bg-color">--md-md-quaternary-bg-color</option>
@@ -204,7 +215,11 @@ export class Sandbox extends MobxLitElement {
     const elements = this.shadowRoot?.querySelectorAll(".container");
     elements?.forEach((element) => {
       const containerElement = element as HTMLElement;
-      containerElement.style.background = `var(${selectedColor})`;
+      if (selectedColor === "transparent") {
+        containerElement.style.background = `${selectedColor}`;
+      } else {
+        containerElement.style.background = `var(${selectedColor})`;
+      }
     });
   }
 
@@ -246,10 +261,17 @@ export class Sandbox extends MobxLitElement {
     `;
   }
 
+  get themeClassMap() {
+    return {
+      "theme-toggle": true,
+      "is-visual-rebrand": themeManager.isVisualRebrandEnabled
+    };
+  }
+
   render() {
     return html`
       <md-theme
-        class="theme-toggle"
+        class="${classMap(this.themeClassMap)}"
         id="app-theme"
         ?darkTheme=${themeManager.isDarkMode}
         theme=${themeManager.themeName}

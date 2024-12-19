@@ -55,7 +55,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
-    @property({ type: Number, reflect: true, attribute: 'selected-index' }) selectedIndex = 0;
+    @property({ type: Number, reflect: true, attribute: "selected-index" }) selectedIndex = 0;
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
@@ -323,8 +323,8 @@ export namespace Tabs {
       }
 
       const comparator = (a: Tab.ELEMENT | TabPanel.ELEMENT, b: Tab.ELEMENT | TabPanel.ELEMENT) => {
-        const aName = a.getAttribute("name") || "";
-        const bName = b.getAttribute("name") || "";
+        const aName = a.getAttribute("name") ?? "";
+        const bName = b.getAttribute("name") ?? "";
         return this.tabsOrderPrefsArray.indexOf(aName) - this.tabsOrderPrefsArray.indexOf(bName);
       };
 
@@ -594,8 +594,7 @@ export namespace Tabs {
       } else {
         this.updateSelectedTab(selectedTabPanelIndex);
       }
-      this.noTabsVisible =
-        this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0 ? true : false;
+      this.noTabsVisible = this.tabsFilteredAsVisibleList.length === 0 && this.tabsFilteredAsHiddenList.length === 0;
       this.requestUpdate();
     }
 
@@ -609,9 +608,9 @@ export namespace Tabs {
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach((index) => {
           const tab = tabs[index];
-          tab && tab.toggleAttribute("selected");
+          tab?.toggleAttribute("selected");
           const panel = panels[index];
-          panel && panel.toggleAttribute("selected");
+          panel?.toggleAttribute("selected");
           if (tab) {
             const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
             if (tabCopy) {
@@ -688,7 +687,7 @@ export namespace Tabs {
     }
 
     private getCurrentIndex(tabId: string) {
-      const arrayLength = this.visibleTabsContainerElement?.children.length || 0;
+      const arrayLength = this.visibleTabsContainerElement?.children.length ?? 0;
       for (let i = 0; i < arrayLength; i++) {
         if (this.visibleTabsContainerElement?.children[i].id === tabId) {
           return i;
@@ -700,7 +699,7 @@ export namespace Tabs {
     private moveFocusToAdjacentTab(elementId: string, direction: "previous" | "next" | "fromMoreTabs") {
       const currentTabIndex = this.getCurrentIndex(elementId);
       const visibleTabs = this.visibleTabsContainerElement?.children;
-      const visibleArrayLength = visibleTabs?.length || 0;
+      const visibleArrayLength = visibleTabs?.length ?? 0;
 
       if (!visibleTabs || visibleArrayLength === 0) return;
 

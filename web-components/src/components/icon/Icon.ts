@@ -174,7 +174,7 @@ export namespace Icon {
      */
     @property({ type: String }) iconSet: IconSet = "momentumUI";
 
-    private static designLookup = new Map(Object.entries(designMapping));
+    private static readonly designLookup = new Map(Object.entries(designMapping));
 
     @internalProperty()
     private svgIcon: HTMLElement | null = null;
@@ -450,7 +450,7 @@ export namespace Icon {
           role="img"
           aria-label=${this.ariaLabel}
           title=${this.title}
-          aria-hidden=${ifDefined(this.ariaHidden || undefined)}
+          aria-hidden=${ifDefined(this.ariaHidden ?? undefined)}
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
         </i>
@@ -465,7 +465,7 @@ export namespace Icon {
           role="img"
           aria-label=${this.ariaLabel}
           title=${this.title}
-          aria-hidden=${ifDefined(this.ariaHidden || undefined)}
+          aria-hidden=${ifDefined(this.ariaHidden ?? undefined)}
           @click=${(event: MouseEvent) => this.handleIconClick(event)}
         >
           ${this.svgIcon ? this.svgIcon : nothing}

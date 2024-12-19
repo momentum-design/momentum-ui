@@ -292,6 +292,13 @@ export namespace Button {
       `;
     }
 
+    get computedAriaExpand(): "true" | "false" | undefined {
+      if (this.ariaExpanded === "true") return "true";
+      else if (this.ariaExpanded === "false") return "false";
+
+      return undefined;
+    }
+
     buttonTemplate(tag: Button.Tag) {
       if (tag === "button") {
         return html`
@@ -305,9 +312,7 @@ export namespace Button {
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}
-            aria-expanded=${ifDefined(
-              this.ariaExpanded ? (this.ariaExpanded === "true" ? "true" : "false") : undefined
-            )}
+            aria-expanded=${ifDefined(this.computedAriaExpand)}
             aria-haspopup=${ifDefined(this.ariaHaspopup === "false" ? undefined : this.ariaHaspopup)}
             aria-pressed=${ifDefined(this.ariaPressed || undefined)}
             aria-disabled=${ifDefined(this.disabled || this.loading || undefined)}
@@ -347,7 +352,7 @@ export namespace Button {
             @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
             role=${this.role}
             tabindex=${ifDefined(this.tabIndex || undefined)}
-            aria-pressed=${this.ariaPressed === "true" ? true : false}
+            aria-pressed=${this.ariaPressed === "true" ? "true" : "false"}
             aria-label=${ifDefined(this.ariaLabel || undefined)}
             aria-labelledby=${ifDefined(this.ariaLabelledBy || undefined)}
             aria-live=${ifDefined(this.ariaLive || undefined)}
@@ -361,12 +366,19 @@ export namespace Button {
       return nothing;
     }
 
+    get buttonContainerClassMap() {
+      return {
+        "md-button__container": this.containerLarge,
+        "md-button__container--small": !this.containerLarge
+      };
+    }
+
     render() {
       return html`
         ${this.getStyles()}
         ${this.label
           ? html`
-              <div part="button-container" class=${`md-button__container${this.containerLarge ? "" : "--small"}`}>
+              <div part="button-container" class=${classMap(this.buttonContainerClassMap)}>
                 ${this.buttonTemplate(this.tag)}
                 <div part="button-label" class="md-button__label">${this.label}</div>
               </div>

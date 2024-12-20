@@ -151,6 +151,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-border-style: none;
   --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};
   --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-table-column-divider-color: #{$mds-color-theme-background-primary-ghost};
+  --md-table-row-divider-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
   
 

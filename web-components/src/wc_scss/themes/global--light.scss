@@ -117,5 +117,7 @@
   --md-table-border-style: solid;
   --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-vertical-divider-color: #{$mds-color-theme-outline-secondary-normal};
+  --md-table-column-divider-color: #{$md-gray-20};
+  --md-table-row-divider-color: #{$md-gray-20};
   --md-table-pinned-border-color: #{$md-gray-20};
 }

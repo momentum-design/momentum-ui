@@ -253,7 +253,7 @@ describe("advanceList Component", () => {
     test("should update selected state and handle disabled items", async () => {
       el.items = createItems(1, 20);
       el.activeId = el.items[1].id;
-      el.selectedItemId = el.items[1].id;
+      el.selectedItemsIds = [el.items[1].id];
 
       (el as any).updateSelectedState();
       await nextFrame();

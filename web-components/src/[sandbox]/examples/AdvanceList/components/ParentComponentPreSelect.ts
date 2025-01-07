@@ -37,6 +37,7 @@ export namespace ParentComponentPreSelect {
         this.page += 1;
         this.isLoading = false;
         this.value.push(this.items[1].id);
+        this.value.push(this.items[3].id);
       } catch (err) {
         this.isLoading = false;
         this.isError = true;

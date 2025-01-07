@@ -12,9 +12,9 @@ export namespace AdvanceList {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Array }) items: any[] = [];
     @property({ type: Boolean }) isLoading = false;
-    @property({ type: Boolean }) isMultiSelectEnabled = false;
-    @property({ type: Boolean }) groupOnMultiSelect = false;
-    @property({ type: Array }) selectedItemId: string[] = [];
+    @property({ type: Boolean }) isMultiSelectEnabled = true;
+    @property({ type: Boolean }) groupOnMultiSelect = true;
+    @property({ type: Array }) selectedItemsIds: string[] = [];
     @property({ type: Array }) value: string[] = [];
     @property({ type: String }) ariaRoleList = "listbox";
     @property({ type: String }) ariaRoleListItem = "option";
@@ -27,6 +27,7 @@ export namespace AdvanceList {
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId = "";
     @internalProperty() isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
+    @internalProperty() isBorderDisplayed = false;
 
     connectedCallback(): void {
       super.connectedCallback();
@@ -63,7 +64,7 @@ export namespace AdvanceList {
       if (changedProperties.has("value")) {
         // Update the selected item for the preselect
         this.requestUpdate().then(() => {
-          this.selectedItemId = this.value;
+          this.selectedItemsIds = this.value;
           this.updateSelectedState();
         });
       }
@@ -71,6 +72,9 @@ export namespace AdvanceList {
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
       // check how and when to update classList
+      // if (!this.isMultiSelectEnabled) {
+      //   wrapper.classList.toggle("selected", isSelected);
+      // }
       wrapper.classList.toggle("selected", isSelected);
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
@@ -80,9 +84,16 @@ export namespace AdvanceList {
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        const isSelected = this.selectedItemId.some((id) => wrapper.id === `${prefixId}${id}`);
+        const isSelected = this.selectedItemsIds.some((id) => wrapper.id === `${prefixId}${id}`);
         // update the wrapper attributes
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
+
+        if (this.groupOnMultiSelect && !this.selectedItemsIds.includes(wrapper.id) && !this.isBorderDisplayed) {
+          wrapper.classList.add("selected-border");
+          this.isBorderDisplayed = true;
+          console.log("border log in if", wrapper);
+          wrapper.setAttribute("namagoel", isSelected.toString());
+        }
 
         //active item should be focusable
         if (wrapper.id === `${prefixId}${this.activeId}`) {
@@ -188,15 +199,15 @@ export namespace AdvanceList {
       if (!clickedItem) return;
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-      const index = this.selectedItemId.indexOf(this.activeId);
+      const index = this.selectedItemsIds.indexOf(this.activeId);
       if (index === -1) {
         if (this.isMultiSelectEnabled) {
-          this.selectedItemId.push(this.activeId);
+          this.selectedItemsIds.push(this.activeId);
         } else {
-          this.selectedItemId = [this.activeId];
+          this.selectedItemsIds = [this.activeId];
         }
       } else if (this.isMultiSelectEnabled) {
-        this.selectedItemId.splice(index, 1);
+        this.selectedItemsIds.splice(index, 1);
       }
       this.updateSelectedState();
       this.notifySelectedChange();
@@ -231,7 +242,7 @@ export namespace AdvanceList {
     notifySelectedChange() {
       this.dispatchEvent(
         new CustomEvent("list-item-change", {
-          detail: { selected: this.selectedItemId },
+          detail: { selected: this.selectedItemsIds },
           bubbles: true,
           composed: true
         })
@@ -261,12 +272,23 @@ export namespace AdvanceList {
       `;
     }
 
+    getOrderedItems() {
+      if (this.groupOnMultiSelect) {
+        return [
+          ...this.items.filter((item) => this.value.includes(item.id)),
+          ...this.items.filter((item) => !this.value.includes(item.id))
+        ];
+      } else {
+        return this.items;
+      }
+    }
+
     // check how to handle active descendant
     getActiveDescendant() {
       if (this.activeId) {
         return `${prefixId}${this.activeId}`;
       } else if (this.value) {
-        return `${prefixId}${this.value}`;
+        return `${prefixId}${this.value[0]}`;
       } else {
         return "";
       }
@@ -284,7 +306,7 @@ export namespace AdvanceList {
           @rangechange=${this.handleRangeChange}
         >
           ${scroll({
-            items: this.items,
+            items: this.getOrderedItems(),
             renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
             useShadowDOM: true,
             scrollToIndex: this.isUserNavigated

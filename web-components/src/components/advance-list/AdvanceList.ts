@@ -27,7 +27,7 @@ export namespace AdvanceList {
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId = "";
     @internalProperty() isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
-    @internalProperty() isBorderDisplayed = false;
+    @internalProperty() lastSelectedIdByOrder = "";
 
     connectedCallback(): void {
       super.connectedCallback();
@@ -88,11 +88,10 @@ export namespace AdvanceList {
         // update the wrapper attributes
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
-        if (this.groupOnMultiSelect && !this.selectedItemsIds.includes(wrapper.id) && !this.isBorderDisplayed) {
+        if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
           wrapper.classList.add("selected-border");
-          this.isBorderDisplayed = true;
-          console.log("border log in if", wrapper);
-          wrapper.setAttribute("namagoel", isSelected.toString());
+        }else{
+          wrapper.classList.remove("selected-border");
         }
 
         //active item should be focusable
@@ -274,14 +273,23 @@ export namespace AdvanceList {
 
     getOrderedItems() {
       if (this.groupOnMultiSelect) {
+        const selectedItems = this.items.filter((item) => this.value.includes(item.id));
+    
+        // Log the last ID from the selected items
+        if (selectedItems.length > 0) {
+          this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
+        } 
+        // if it is not going inside the if block then it will be empty string, so condition will be false
+
         return [
-          ...this.items.filter((item) => this.value.includes(item.id)),
+          ...selectedItems,
           ...this.items.filter((item) => !this.value.includes(item.id))
         ];
       } else {
         return this.items;
       }
     }
+    
 
     // check how to handle active descendant
     getActiveDescendant() {

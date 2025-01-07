@@ -12,8 +12,10 @@ export namespace AdvanceList {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Array }) items: any[] = [];
     @property({ type: Boolean }) isLoading = false;
-    @property({ type: String }) selectedItemId = "";
-    @property({ type: String }) value = "";
+    @property({ type: Boolean }) isMultiSelectEnabled = false;
+    @property({ type: Boolean }) groupOnMultiSelect = false;
+    @property({ type: Array }) selectedItemId: string[] = [];
+    @property({ type: Array }) value: string[] = [];
     @property({ type: String }) ariaRoleList = "listbox";
     @property({ type: String }) ariaRoleListItem = "option";
     @property({ type: String }) ariaLabelList = "";
@@ -61,13 +63,14 @@ export namespace AdvanceList {
       if (changedProperties.has("value")) {
         // Update the selected item for the preselect
         this.requestUpdate().then(() => {
-          this.selectedItemId = `${this.value}`;
+          this.selectedItemId = this.value;
           this.updateSelectedState();
         });
       }
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
+      // check how and when to update classList
       wrapper.classList.toggle("selected", isSelected);
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
@@ -77,7 +80,7 @@ export namespace AdvanceList {
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        const isSelected = wrapper.id === `${prefixId}${this.selectedItemId}`;
+        const isSelected = this.selectedItemId.some((id) => wrapper.id === `${prefixId}${id}`);
         // update the wrapper attributes
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
@@ -90,7 +93,7 @@ export namespace AdvanceList {
         }
 
         // Handle pre-selection of the active item if none is currently active
-        if (this.activeId == "" && wrapper.id === `${prefixId}${this.value}`) {
+        if (this.activeId == "" && wrapper.id === `${prefixId}${this.value[0]}`) {
           wrapper.setAttribute("tabindex", "0");
         }
 
@@ -134,23 +137,23 @@ export namespace AdvanceList {
             this.isUserNavigated = true;
             // incase of preselected value
             if (this.activeId === "" && this.value) {
-              this.activeId = this.value;
+              this.activeId = this.value[0];
             }
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-             if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
+            if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
               this.scrollIndex = currentIndex + 1;
               this.activeId = this.items[this.scrollIndex].id;
             }
           }
           break;
-          
+
         case Key.ArrowUp:
           {
             event.preventDefault();
             this.isUserNavigated = true;
             // in case of preselected value
             if (this.activeId === "" && this.value) {
-              this.activeId = this.value;
+              this.activeId = this.value[0];
             }
             const upIndex = this.items.findIndex((item) => item.id === this.activeId);
             if (upIndex > 0) {
@@ -169,7 +172,7 @@ export namespace AdvanceList {
                 const isDisabled =
                   selectedItem.getAttribute("aria-disabled") === "true" || selectedItem.hasAttribute("disabled");
                 if (!isDisabled) {
-                  this.selectItem(selectedItem as HTMLElement);
+                  this.updateItemSelection(selectedItem as HTMLElement);
                 }
               }
             }
@@ -181,11 +184,20 @@ export namespace AdvanceList {
       }
     };
 
-    selectItem(clickedItem: HTMLElement) {
+    updateItemSelection(clickedItem: HTMLElement) {
       if (!clickedItem) return;
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-      this.selectedItemId = this.activeId;
+      const index = this.selectedItemId.indexOf(this.activeId);
+      if (index === -1) {
+        if (this.isMultiSelectEnabled) {
+          this.selectedItemId.push(this.activeId);
+        } else {
+          this.selectedItemId = [this.activeId];
+        }
+      } else if (this.isMultiSelectEnabled) {
+        this.selectedItemId.splice(index, 1);
+      }
       this.updateSelectedState();
       this.notifySelectedChange();
     }
@@ -196,7 +208,7 @@ export namespace AdvanceList {
       const clickedItem = this.findClickedItem(event);
       if (clickedItem) {
         this.scrollIndex = parseInt(clickedItem.getAttribute("index") || "0");
-        this.selectItem(clickedItem);
+        this.updateItemSelection(clickedItem);
       }
     }
 
@@ -226,6 +238,7 @@ export namespace AdvanceList {
       );
     }
 
+    // update the render if grouping is enabled
     renderItem(item: any, index: number) {
       if (item.id === "status-indicator") {
         return html`
@@ -248,6 +261,7 @@ export namespace AdvanceList {
       `;
     }
 
+    // check how to handle active descendant
     getActiveDescendant() {
       if (this.activeId) {
         return `${prefixId}${this.activeId}`;

@@ -6,8 +6,8 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
@@ -28,10 +28,13 @@ export const linkRole = [
   "tab"
 ] as const;
 
+export const linkSize = ["large", "midsize", "small"] as const;
+
 export namespace Link {
   export type Tag = (typeof linkTag)[number];
   export type Color = (typeof linkColor)[number];
   export type Role = (typeof linkRole)[number];
+  export type Size = (typeof linkSize)[number];
 
   @customElementWithCheck("md-link")
   export class ELEMENT extends LitElement {
@@ -40,9 +43,11 @@ export namespace Link {
     @property({ type: String }) ariaRole: Role = "link";
     @property({ type: Boolean }) disabled = false;
     @property({ type: Boolean }) inline = false;
+    @property({ type: Boolean }) inverted?: boolean = undefined;
     @property({ type: String }) href = "";
     @property({ type: String }) tag: Tag = "a";
     @property({ type: String }) target = "_self";
+    @property({ type: String }) size?: Size = undefined;
     private _tabIndex = 0;
     @property({ type: Number, attribute: "tab-index", reflect: true })
     get tabIndex() {
@@ -62,6 +67,8 @@ export namespace Link {
       const linkClassNamesInfo = {
         [`md-link--${this.color}`]: this.color,
         [`md-link--inline`]: this.inline,
+        [`${this.size}`]: !!this.size,
+        inverted: this.inverted === true,
         disabled: this.disabled
       };
 

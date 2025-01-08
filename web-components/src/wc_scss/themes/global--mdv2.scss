@@ -40,10 +40,12 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   font-family: var(--brand-font-regular);
   font-weight: var(--brand-font-weight-regular);
 
-  --body-large-font-size: 1.125rem;
   --body-primary-font-size: 1rem;
-  --body-secondary-font-size: 0.875rem;
-  --label-compact-font-size: 0.75rem;
+  --body-secondary-font-size: 0.875rem;  
+
+  --font-size-body-large: 1rem;
+  --font-size-body-midsize: 0.875rem;
+  --font-size-body-small: 0.75rem;
 
   --body-primary-line-height: 1.5rem;
   --list-line-height: rem-calc(20);
@@ -139,10 +141,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-scrollbar-background-active-indicator: #{$mds-color-theme-scrollbar-button-pressed};
   --md-scrollbar-background-disabled-indicator: #{$mds-color-theme-scrollbar-background-secondary-normal};
 
-  /**
-   * Temporarily disable overriding table background colours for mdv2
-   * 
-  **/
   --md-table-primary-bg-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-header-text-color: #{$mds-color-theme-text-primary-normal};
@@ -154,7 +152,8 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-column-divider-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-row-divider-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
-  
+
+  --md-inverted-primary-bg-color: #{$mds-color-theme-inverted-background-normal};
 
   // Background colors can not be overwritten because they are being used by consumers in unexpected ways
   // New background colors should be introduced and these phased out

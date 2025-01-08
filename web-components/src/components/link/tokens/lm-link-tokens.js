@@ -31,6 +31,23 @@ const link = {
     light: colors.gray[40].name,
     dark: colors.gray[70].name
   },
+  inverted: {
+    common: "$mds-color-theme-inverted-text-accent-normal",
+
+    hover: {
+      common: "$mds-color-theme-inverted-text-accent-hover"
+    },
+    pressed: {
+      common: "$mds-color-theme-inverted-text-accent-active"
+    },
+    focus: {
+      common: "$mds-color-theme-inverted-text-accent-normal",
+
+      outline: {
+        common: "$mds-color-theme-inverted-text-accent-normal"
+      }
+    }
+  },
   inline: {
     light: colors.red[70].name,
     dark: colors.red[50].name,
@@ -47,14 +64,12 @@ const link = {
       light: colors.red[70].name,
       dark: colors.red[50].name
     },
-    "font-size": {
-      light: "14px",
-      dark: "14px"
-    },
     "font-size__inline": {
-      light: "12px",
-      dark: "12px"
+      common: "12px"
     }
+  },
+  "font-size": {
+    common: "14px"
   },
   blue: {
     light: colors.blue[50].name,

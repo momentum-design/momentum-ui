@@ -43,4 +43,18 @@ export const linkTemplate = html`
   <div class="row">
     <md-link ariaRole="button"> Role as button </md-link>
   </div>
+
+  <div class="row">
+    <md-link tag="a" size="large"> large </md-link>
+  </div>
+  <div class="row">
+    <md-link tag="a" size="midsize"> midsize </md-link>
+  </div>
+  <div class="row">
+    <md-link tag="a" size="small"> small </md-link>
+  </div>
+
+  <div class="row" style="background-color: var(--md-inverted-primary-bg-color)">
+    <md-link tag="a" size="large" inverted> large inverted </md-link>
+  </div>
 `;

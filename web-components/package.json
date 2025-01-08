@@ -61,7 +61,7 @@
     "@interactjs/utils": "1.10.3",
     "@momentum-design/brand-visuals": "0.2.0",
     "@momentum-design/icons": "0.8.0",
-    "@momentum-design/tokens": "0.3.0",
+    "@momentum-design/tokens": "0.3.1",
     "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",
     "country-flags-svg": "1.1.4",

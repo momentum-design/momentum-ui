@@ -48,9 +48,25 @@ const link = {
       dark: colors.red["50"].name
     }
   },
+  inverted: {
+    common: "$mds-color-theme-inverted-text-accent-normal",
+
+    hover: {
+      common: "$mds-color-theme-inverted-text-accent-hover"
+    },
+    pressed: {
+      common: "$mds-color-theme-inverted-text-accent-active"
+    },
+    focus: {
+      common: "$mds-color-theme-inverted-text-accent-normal",
+
+      outline: {
+        common: "$mds-color-theme-inverted-text-accent-normal"
+      }
+    }
+  },
   "font-size": {
-    light: "16px",
-    dark: "16px"
+    common: "16px"
   },
   blue: {
     light: colors.blue[50].name,

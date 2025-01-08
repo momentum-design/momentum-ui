@@ -21,7 +21,7 @@ export namespace AdvanceList {
     @property({ type: String }) ariaLabelList = "";
     @property({ type: Boolean }) isError = false;
     @property({ type: String }) containerHeight = "292px";
-    @property({ type: String }) parentState = "close";
+    @property({ type: String }) groupOnDemand = "false";
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
@@ -69,17 +69,15 @@ export namespace AdvanceList {
           this.updateSelectedState();
         });
       }
-      if (changedProperties.has("parentState") && this.parentState === "open") {
+      if (changedProperties.has("groupOnDemand") && this.groupOnDemand === "true" && this.groupOnMultiSelect) {
         this.items = this.getOrderedItems();
       }
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
-      // check how and when to update classList
-      // if (!this.isMultiSelectEnabled) {
-      //   wrapper.classList.toggle("selected", isSelected);
-      // }
-      wrapper.classList.toggle("selected", isSelected);
+      if (!this.isMultiSelectEnabled) {
+        wrapper.classList.toggle("selected", isSelected);
+      }
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
       wrapper.setAttribute("tabindex", isSelected ? "0" : "-1");

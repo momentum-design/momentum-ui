@@ -14,6 +14,7 @@ export namespace ParentComponentWithMdOverlay {
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
+    @property({ type: String }) groupOnDemand = "false";
     @internalProperty() totalRecords = 0;
 
     constructor() {
@@ -49,24 +50,32 @@ export namespace ParentComponentWithMdOverlay {
     }
 
     async fetchItems(page: number) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      const newItems = Array.from({ length: 2000 }, (_, i) => ({
-        name: `Item ${(page - 1) * 2000 + i + 1}`,
-        id: this.generateUUID(),
-        index: i,
-        ariaLabel: `Item ${(page - 1) * 2000 + i + 1}`,
-        template: (data: any, index: number) =>
-          html`<div
-            style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row unwrap;justify-content:flex-start;align-items:center;line-height:30px;"
-            ?disabled="${index % 2 === 0}"
-            aria-hidden="true"
-            indexing="${index}"
-          >
-            ${data.name}
-          </div>`
-      }));
+      // Generate new items
+      const newItems = this.generateItems(page);
       return newItems;
+    }
+
+    private generateItems(page: number) {
+      const itemsPerPage = 2000;
+      return Array.from({ length: itemsPerPage }, (_, i) => {
+        const id = this.generateUUID(); // Generate a unique ID for each item
+        const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
+        return {
+          name: itemName,
+          id,
+          index: i,
+          ariaLabel: itemName,
+          template: (data: any, index: number) =>
+            html`<div
+              style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row nowrap;justify-content:flex-start;align-items:center;line-height:30px;"
+              ?disabled="${index % 2 === 0}"
+              aria-hidden="true"
+              indexing="${index}"
+            >
+              <md-checkbox .checked=${this.value.includes(id)}>${data.name}</md-checkbox>
+            </div>`
+        };
+      });
     }
 
     private handleListItemChange(_event: CustomEvent) {
@@ -77,38 +86,38 @@ export namespace ParentComponentWithMdOverlay {
       return html`
         <h2>With overlay</h2>
 
-         <md-menu-overlay class="queueDropdown test-overlay" size="large" @menu-overlay-open=${() => {
-    console.log("Opening modal--");
-    document.dispatchEvent(new CustomEvent("on-widget-update"));
-  }}>
-        <md-input
-          placeholder="Search field with tabs"
-          shape="pill"
-          slot="menu-trigger"          
-          clear
-          autoFocus></md-input>
-          
-          <md-input
-          placeholder="Search..."
-          shape="pill"
-          clear
-          autoFocus></md-input>
-
-  <div style="margin:1.25rem; width: 100%">
-        <md-advance-list
-          .items=${this.items}
-          .isLoading=${this.isLoading}
-          .isError=${this.isError}
-          .value=${this.value}
-          ariaRoleList="listbox"
-          ariaLabelList="state selector"
-          .totalRecords=${this.totalRecords}
-          @list-item-change=${this.handleListItemChange}
-          @load-more=${this.loadMoreItems}
+        <md-menu-overlay
+          class="queueDropdown test-overlay"
+          size="large"
+          @menu-overlay-open=${() => {
+            console.log("Opening modal--");
+            this.groupOnDemand = "true";
+            document.dispatchEvent(new CustomEvent("on-widget-update"));
+          }}
+          @menu-overlay-close=${() => {
+            console.log("Closing modal--");
+            this.groupOnDemand = "true";
+            document.dispatchEvent(new CustomEvent("on-widget-update"));
+          }}
         >
-          <md-spinner size="24" slot="spin-loader"></md-spinner>
-        </md-advance-list>
-        </div>
+          <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
+          <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
+          <div style="margin:1.25rem; width: 100%">
+            <md-advance-list
+              .items=${this.items}
+              .isLoading=${this.isLoading}
+              .isError=${this.isError}
+              .value=${this.value}
+              ariaRoleList="listbox"
+              ariaLabelList="state selector"
+              .totalRecords=${this.totalRecords}
+              .groupOnDemand=${this.groupOnDemand}
+              @list-item-change=${this.handleListItemChange}
+              @load-more=${this.loadMoreItems}
+            >
+              <md-spinner size="24" slot="spin-loader"></md-spinner>
+            </md-advance-list>
+          </div>
         </md-menu-overlay>
       `;
     }

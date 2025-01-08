@@ -1,10 +1,13 @@
 import { html, internalProperty, LitElement, property } from "lit-element";
 // import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
+import "@/components/list/List";
+import "@/components/list/ListItem";
+import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 
-export namespace ParentComponentPreSelect {
-  @customElementWithCheck("parent-component-pre-select")
+export namespace ParentComponentWithMdOverlay {
+  @customElementWithCheck("parent-component-with-overlay")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
     @internalProperty() page = 1;
@@ -72,7 +75,26 @@ export namespace ParentComponentPreSelect {
 
     render() {
       return html`
-        <h2>Pre Select Item List</h2>
+        <h2>With overlay</h2>
+
+         <md-menu-overlay class="queueDropdown test-overlay" size="large" @menu-overlay-open=${() => {
+    console.log("Opening modal--");
+    document.dispatchEvent(new CustomEvent("on-widget-update"));
+  }}>
+        <md-input
+          placeholder="Search field with tabs"
+          shape="pill"
+          slot="menu-trigger"          
+          clear
+          autoFocus></md-input>
+          
+          <md-input
+          placeholder="Search..."
+          shape="pill"
+          clear
+          autoFocus></md-input>
+
+  <div style="margin:1.25rem; width: 100%">
         <md-advance-list
           .items=${this.items}
           .isLoading=${this.isLoading}
@@ -86,6 +108,8 @@ export namespace ParentComponentPreSelect {
         >
           <md-spinner size="24" slot="spin-loader"></md-spinner>
         </md-advance-list>
+        </div>
+        </md-menu-overlay>
       `;
     }
   }
@@ -93,6 +117,6 @@ export namespace ParentComponentPreSelect {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "parent-component-pre-select": ParentComponentPreSelect.ELEMENT;
+    "parent-component-with-overlay": ParentComponentWithMdOverlay.ELEMENT;
   }
 }

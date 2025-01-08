@@ -141,7 +141,7 @@
     @include line-dots(5);
     color: var(--alert-default-new-body-text-color);
     font-family: typography.$brand-font-regular;
-    font-size: var(--body-secondary-font-size, rem-calc(14));
+    font-size: var(--font-size-body-midsize, rem-calc(14));
     line-height: rem-calc(20);
     width: calc(100%);
     word-wrap: break-word;

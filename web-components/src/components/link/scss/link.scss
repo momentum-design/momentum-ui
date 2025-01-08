@@ -17,12 +17,34 @@
 
     &.disabled {
       pointer-events: none;
+      text-decoration: underline;
     }
 
     &--inline {
       font-size: $link-inline__font-size;
       line-height: $link-inline__line-height;
       text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      text-decoration: underline;
+    }
+
+    //If a font size has been specified override the defaults
+    &.large {
+      font-size: var(--font-size-body-large, 1rem);
+    }
+
+    &.midsize {
+      font-size: var(--font-size-body-midsize, 0.875rem);     
+    }
+
+    &.small {
+      font-size: var(--font-size-body-small, 0.75rem);
     }
   }
 }

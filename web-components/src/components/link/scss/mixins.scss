@@ -23,7 +23,12 @@
   $color-yellow-active: var(--link-yellow-active),
   $color-orange: var(--link-orange),
   $color-orange-hover: var(--link-orange-hover),
-  $color-orange-active: var(--link-orange-active)
+  $color-orange-active: var(--link-orange-active),
+  $color-inverted: var(--link-inverted),
+  $color-inverted-hover: var(--link-inverted-hover),
+  $color-inverted-pressed: var(--link-inverted-pressed),
+  $color-inverted-focus: var(--link-inverted-focus),
+  $color-inverted-focus-outline: var(--link-inverted-focus-outline)
 ) {
   color: $color;
 
@@ -58,6 +63,23 @@
 
     &.active {
       color: $color-inline-pressed;
+    }
+  }
+
+  &.inverted {
+    color: $color-inverted;
+
+    &:hover {
+      color: $color-inverted-hover;
+    }
+
+    &:active {
+      color: $color-inverted-pressed;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px $color-inverted-focus-outline;      
+      color: $color-inverted-focus;
     }
   }
 

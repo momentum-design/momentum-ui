@@ -174,6 +174,12 @@ export namespace Grabber {
       };
     }
 
+    private get grabberContainerClassMap() {
+      return {
+        [`${this.alignment}`]: true
+      };
+    }
+
     get iconName() {
       if (this.dragger) {
         return "list-menu-bold";
@@ -192,7 +198,7 @@ export namespace Grabber {
 
     render() {
       return html`
-        <div class="md-grabber__container">
+        <div class="md-grabber__container ${classMap(this.grabberContainerClassMap)}">
           <button
             class="md-grabber ${classMap(this.grabberClassMap)}"
             part="grabber"

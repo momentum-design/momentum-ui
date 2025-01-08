@@ -21,6 +21,23 @@ const link = {
       common: "$mds-color-theme-outline-theme-normal"
     }
   },
+  inverted: {
+    common: "$mds-color-theme-inverted-text-accent-normal",
+
+    hover: {
+      common: "$mds-color-theme-inverted-text-accent-hover"
+    },
+    pressed: {
+      common: "$mds-color-theme-inverted-text-accent-active"
+    },
+    focus: {
+      common: "$mds-color-theme-inverted-text-accent-normal",
+
+      outline: {
+        common: "$mds-color-theme-inverted-text-accent-normal"
+      }
+    }
+  },
   disabled: {
     common: "$mds-color-theme-text-primary-disabled"
   },
@@ -36,14 +53,12 @@ const link = {
     focus: {
       common: "$mds-color-theme-text-error-normal"
     },
-    "font-size": {
-      light: "14px",
-      dark: "14px"
-    },
     "font-size__inline": {
-      light: "12px",
-      dark: "12px"
+      common: "12px"
     }
+  },
+  "font-size": {
+    common: "14px"
   },
   blue: {
     light: colors.blue[50].name,
@@ -60,17 +75,13 @@ const link = {
     }
   },
   red: {
-    light: colors.red[50].name,
-    dark: colors.red[50].name,
+    common: "$mds-color-theme-text-error-normal",
 
     hover: {
-      light: colors.red[60].name,
-      dark: colors.red[60].name
+      common: "$mds-color-theme-text-error-hover"
     },
-
     active: {
-      light: colors.red[70].name,
-      dark: colors.red[70].name
+      common: "$mds-color-theme-text-error-active"
     }
   },
   green: {

@@ -21,6 +21,7 @@ export namespace AdvanceList {
     @property({ type: String }) ariaLabelList = "";
     @property({ type: Boolean }) isError = false;
     @property({ type: String }) containerHeight = "292px";
+    @property({ type: String }) parentState = "close";
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
@@ -68,6 +69,9 @@ export namespace AdvanceList {
           this.updateSelectedState();
         });
       }
+      if (changedProperties.has("parentState") && this.parentState === "open") {
+        this.items = this.getOrderedItems();
+      }
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
@@ -90,7 +94,7 @@ export namespace AdvanceList {
 
         if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
           wrapper.classList.add("selected-border");
-        }else{
+        } else {
           wrapper.classList.remove("selected-border");
         }
 
@@ -271,25 +275,19 @@ export namespace AdvanceList {
       `;
     }
 
+    //consume the open event -> only order the items when we get the event and the flag is enabled
     getOrderedItems() {
       if (this.groupOnMultiSelect) {
         const selectedItems = this.items.filter((item) => this.value.includes(item.id));
-    
         // Log the last ID from the selected items
         if (selectedItems.length > 0) {
           this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
-        } 
-        // if it is not going inside the if block then it will be empty string, so condition will be false
-
-        return [
-          ...selectedItems,
-          ...this.items.filter((item) => !this.value.includes(item.id))
-        ];
+        }
+        return [...selectedItems, ...this.items.filter((item) => !this.value.includes(item.id))];
       } else {
         return this.items;
       }
     }
-    
 
     // check how to handle active descendant
     getActiveDescendant() {
@@ -314,7 +312,7 @@ export namespace AdvanceList {
           @rangechange=${this.handleRangeChange}
         >
           ${scroll({
-            items: this.getOrderedItems(),
+            items: this.items,
             renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
             useShadowDOM: true,
             scrollToIndex: this.isUserNavigated

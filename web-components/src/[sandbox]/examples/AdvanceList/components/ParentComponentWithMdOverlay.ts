@@ -60,6 +60,7 @@ export namespace ParentComponentWithMdOverlay {
       return Array.from({ length: itemsPerPage }, (_, i) => {
         const id = this.generateUUID(); // Generate a unique ID for each item
         const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
+        const disabled = i % 2 === 0 ? "true" : "";
         return {
           name: itemName,
           id,
@@ -68,11 +69,13 @@ export namespace ParentComponentWithMdOverlay {
           template: (data: any, index: number) =>
             html`<div
               style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row nowrap;justify-content:flex-start;align-items:center;line-height:30px;"
-              ?disabled="${index % 2 === 0}"
+              ?disabled=${disabled}
               aria-hidden="true"
               indexing="${index}"
             >
-              <md-checkbox .checked=${this.value.includes(id)}>${data.name}</md-checkbox>
+              <md-checkbox .checked=${this.value.includes(id)} .disabled=${disabled === "true"}
+                >${data.name}</md-checkbox
+              >
             </div>`
         };
       });
@@ -96,7 +99,7 @@ export namespace ParentComponentWithMdOverlay {
           }}
           @menu-overlay-close=${() => {
             console.log("Closing modal--");
-            this.groupOnDemand = "true";
+            this.groupOnDemand = "false";
             document.dispatchEvent(new CustomEvent("on-widget-update"));
           }}
         >

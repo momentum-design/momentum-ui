@@ -45,13 +45,14 @@
         text-align: center;
       }
     }
+  }
 
-    .md-modal__close {
-      @include flex;
+  .md-modal__close {
+    @include flex;
 
-      border: 0;
-      position: absolute;
-    }
+    border: 0;
+    position: absolute;
+    @include modal-close-button($right-offset: rem-calc(16));
   }
 
   &__content {
@@ -115,10 +116,6 @@
         line-height: rem-calc(32);
         padding-top: rem-calc(20);
       }
-
-      .md-modal__close {
-        @include modal-close-button($size: rem-calc(20), $font-size: rem-calc(20), $right-offset: rem-calc(24));
-      }
     }
 
     .md-modal__footer {
@@ -142,10 +139,6 @@
         line-height: rem-calc(24);
         text-align: left;
       }
-
-      .md-modal__close {
-        @include modal-close-button($size: rem-calc(16), $font-size: rem-calc(16), $right-offset: rem-calc(16));
-      }
     }
 
     @media #{$medium-only} {
@@ -159,10 +152,6 @@
           line-height: rem-calc(24);
           text-align: center;
         }
-
-        .md-modal__close {
-          @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-        }
       }
     }
 
@@ -175,11 +164,7 @@
 
   &.md-modal--medium,
   &.md-modal--default {
-    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
-
-    .md-modal__close {
-      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-    }
+    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);    
 
     @media #{$medium-only} {
       @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
@@ -195,10 +180,6 @@
   &.md-modal--small {
     @include modal-size($width: $modal__width--small, $min-height: $modal__height--small);
 
-    .md-modal__close {
-      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-    }
-
     // Media Query for Tablet
     @media #{$medium-only} {
       @include modal-size($width: $modal__width--small, $min-height: $modal__height--small);
@@ -207,10 +188,6 @@
 
   &.md-modal--dialog {
     @include modal-size($width: $modal__width--small, $radius: true);
-
-    .md-modal__close {
-      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-    }
 
     .md-modal__content {
       flex-direction: row;
@@ -275,11 +252,8 @@
           line-height: rem-calc(24);
           padding-top: rem-calc(12);
         }
-
-        .md-modal__close {
-          @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-        }
       }
+
 
       .md-modal__footer {
         padding: $modal__padding;
@@ -313,37 +287,15 @@
 
 /** @component close */
 
-.md-close {
-  color: $close__font-color;
-  float: right;
-  font-size: ($font-size-base * 1.5);
-  font-weight: bold;
-  line-height: 1;
+.md-close {  
+  float: right;      
   text-shadow: 0 1px 0 $md-white-100;
 
   &:hover,
   &:focus {
-    color: $close__font-color--focus;
+    
     cursor: pointer;
     text-decoration: none;
-  }
-}
-
-.md-close {
-  background: transparent;
-  border-radius: 0;
-  cursor: pointer;
-  font-weight: normal;
-  min-width: initial;
-  padding: 0;
-
-  &::before {
-    font-family: $icon-font-name;
-    vertical-align: middle;
-  }
-
-  &:hover {
-    color: $close__font-color--hover;
   }
 }
 

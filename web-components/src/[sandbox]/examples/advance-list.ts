@@ -7,7 +7,7 @@ import "./AdvanceList/components/ParentComponentWithMdOverlay";
 
 export const advanceListTemplate = html`
   <div style="width: 300px">
-  <parent-component-with-overlay></parent-component-with-overlay>
+    <parent-component-with-overlay></parent-component-with-overlay>
     <parent-component-generic></parent-component-generic>
     <parent-component-pre-select></parent-component-pre-select>
     <parent-component-error></parent-component-error>

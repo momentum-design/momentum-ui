@@ -14,8 +14,9 @@ export namespace ParentComponentWithMdOverlay {
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
-    @property({ type: String }) groupOnDemand = "false";
+    @property({ type: Boolean }) groupOnMultiSelect = true;
     @internalProperty() totalRecords = 0;
+    @internalProperty() lastSelectedIdByOrder = "";
 
     constructor() {
       super();
@@ -25,6 +26,7 @@ export namespace ParentComponentWithMdOverlay {
       this.isError = false;
       this.loadMoreItems();
     }
+
     generateUUID() {
       return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
         const r = (Math.random() * 16) | 0;
@@ -32,6 +34,7 @@ export namespace ParentComponentWithMdOverlay {
         return v.toString(16);
       });
     }
+
     async loadMoreItems() {
       try {
         this.isLoading = true;
@@ -81,8 +84,23 @@ export namespace ParentComponentWithMdOverlay {
       });
     }
 
+    getOrderedItems() {
+      if (this.groupOnMultiSelect) {
+        const selectedItems = this.items.filter((item: any) => this.value.includes(item.id));
+        if (selectedItems.length > 0) {
+          this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
+        } else {
+          this.lastSelectedIdByOrder = "";
+        }
+        return [...selectedItems, ...this.items.filter((item: any) => !this.value.includes(item.id))];
+      } else {
+        return this.items;
+      }
+    }
+
     private handleListItemChange(_event: CustomEvent) {
       // stub for implementation of event handler
+      // this.value = event.detail.selected;
     }
 
     render() {
@@ -94,13 +112,7 @@ export namespace ParentComponentWithMdOverlay {
           size="large"
           @menu-overlay-open=${() => {
             console.log("Opening modal--");
-            this.groupOnDemand = "true";
-            document.dispatchEvent(new CustomEvent("on-widget-update"));
-          }}
-          @menu-overlay-close=${() => {
-            console.log("Closing modal--");
-            this.groupOnDemand = "false";
-            document.dispatchEvent(new CustomEvent("on-widget-update"));
+            this.items = this.getOrderedItems();
           }}
         >
           <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
@@ -114,7 +126,9 @@ export namespace ParentComponentWithMdOverlay {
               ariaRoleList="listbox"
               ariaLabelList="state selector"
               .totalRecords=${this.totalRecords}
-              .groupOnDemand=${this.groupOnDemand}
+              .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
+              .isMultiSelectEnabled=${true}
+              .groupOnMultiSelect=${this.groupOnMultiSelect}
               @list-item-change=${this.handleListItemChange}
               @load-more=${this.loadMoreItems}
             >

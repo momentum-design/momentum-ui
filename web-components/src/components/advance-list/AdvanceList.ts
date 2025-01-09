@@ -12,8 +12,8 @@ export namespace AdvanceList {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Array }) items: any[] = [];
     @property({ type: Boolean }) isLoading = false;
-    @property({ type: Boolean }) isMultiSelectEnabled = true;
-    @property({ type: Boolean }) groupOnMultiSelect = true;
+    @property({ type: Boolean }) isMultiSelectEnabled = false;
+    @property({ type: Boolean }) groupOnMultiSelect = false;
     @property({ type: Array }) selectedItemsIds: string[] = [];
     @property({ type: Array }) value: string[] = [];
     @property({ type: String }) ariaRoleList = "listbox";
@@ -21,14 +21,13 @@ export namespace AdvanceList {
     @property({ type: String }) ariaLabelList = "";
     @property({ type: Boolean }) isError = false;
     @property({ type: String }) containerHeight = "292px";
-    @property({ type: String }) groupOnDemand = "false";
+    @property({ type: String }) lastSelectedIdByOrder = "";
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId = "";
     @internalProperty() isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
-    @internalProperty() lastSelectedIdByOrder = "";
 
     connectedCallback(): void {
       super.connectedCallback();
@@ -63,14 +62,10 @@ export namespace AdvanceList {
 
     updated(changedProperties: PropertyValues) {
       if (changedProperties.has("value")) {
-        // Update the selected item for the preselect
         this.requestUpdate().then(() => {
           this.selectedItemsIds = this.value;
           this.updateSelectedState();
         });
-      }
-      if (changedProperties.has("groupOnDemand") && this.groupOnDemand === "true" && this.groupOnMultiSelect) {
-        this.items = this.getOrderedItems();
       }
     }
 
@@ -250,7 +245,6 @@ export namespace AdvanceList {
       );
     }
 
-    // update the render if grouping is enabled
     renderItem(item: any, index: number) {
       if (item.id === "status-indicator") {
         return html`
@@ -273,21 +267,6 @@ export namespace AdvanceList {
       `;
     }
 
-    //consume the open event -> only order the items when we get the event and the flag is enabled
-    getOrderedItems() {
-      if (this.groupOnMultiSelect) {
-        const selectedItems = this.items.filter((item) => this.value.includes(item.id));
-        // Log the last ID from the selected items
-        if (selectedItems.length > 0) {
-          this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
-        }
-        return [...selectedItems, ...this.items.filter((item) => !this.value.includes(item.id))];
-      } else {
-        return this.items;
-      }
-    }
-
-    // check how to handle active descendant
     getActiveDescendant() {
       if (this.activeId) {
         return `${prefixId}${this.activeId}`;

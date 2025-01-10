@@ -22,6 +22,9 @@ export namespace AdvanceList {
     @property({ type: Boolean }) isError = false;
     @property({ type: String }) containerHeight = "292px";
     @property({ type: String }) lastSelectedIdByOrder = "";
+    @property({ type: String }) firstSelectedIdByOrder = "";
+    @property({ type: Boolean }) selectAllItems = false;
+    @property({ type: Array }) disabledItems: string[] = [];
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
@@ -67,6 +70,17 @@ export namespace AdvanceList {
           this.updateSelectedState();
         });
       }
+      if (changedProperties.has("selectAllItems")) {
+        if (this.selectAllItems) {
+          this.selectedItemsIds = this.items
+            .filter((item) => !this.disabledItems.includes(item.id))
+            .map((item) => item.id);
+        } else {
+          this.selectedItemsIds = [];
+        }
+        this.updateSelectedState();
+        this.notifySelectedChange();
+      }
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
@@ -74,9 +88,9 @@ export namespace AdvanceList {
         wrapper.classList.toggle("selected", isSelected);
       }
 
-      if(isSelected){
+      if (isSelected && wrapper.querySelector("md-checkbox")?.getAttribute("aria-disabled") === "false") {
         wrapper.querySelector("md-checkbox")?.setAttribute("checked", "true");
-      }else{
+      } else {
         wrapper.querySelector("md-checkbox")?.removeAttribute("checked");
       }
 
@@ -93,9 +107,14 @@ export namespace AdvanceList {
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
         if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
-          wrapper.classList.add("selected-border");
+          wrapper.classList.add("selected-border-bottom");
+          wrapper.classList.remove("selected-border-top");
+        } else if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.firstSelectedIdByOrder}`) {
+          wrapper.classList.add("selected-border-top");
+          wrapper.classList.remove("selected-border-bottom");
         } else {
-          wrapper.classList.remove("selected-border");
+          wrapper.classList.remove("selected-border-bottom");
+          wrapper.classList.remove("selected-border-top");
         }
 
         //active item should be focusable

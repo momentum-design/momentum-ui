@@ -1,4 +1,4 @@
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 // import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
 import "@/components/list/List";
@@ -17,6 +17,9 @@ export namespace ParentComponentWithMdOverlay {
     @property({ type: Boolean }) groupOnMultiSelect = true;
     @internalProperty() totalRecords = 0;
     @internalProperty() lastSelectedIdByOrder = "";
+    @internalProperty() firstSelectedIdByOrder = "";
+    @internalProperty() selectAllItems = false;
+    @internalProperty() disabledItems: string[] = [];
 
     constructor() {
       super();
@@ -42,10 +45,8 @@ export namespace ParentComponentWithMdOverlay {
         this.items = [...this.items, ...newItems];
         this.totalRecords = 60000;
         this.page += 1;
-        this.isLoading = false;
         this.value.push(this.items[1].id);
       } catch (err) {
-        this.isLoading = false;
         this.isError = true;
       } finally {
         this.isLoading = false;
@@ -64,6 +65,9 @@ export namespace ParentComponentWithMdOverlay {
         const id = this.generateUUID(); // Generate a unique ID for each item
         const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
         const disabled = i % 2 === 0 ? "true" : "";
+        if (disabled) {
+          this.disabledItems.push(id);
+        }
         return {
           name: itemName,
           id,
@@ -76,9 +80,7 @@ export namespace ParentComponentWithMdOverlay {
               aria-hidden="true"
               indexing="${index}"
             >
-                <md-checkbox .disabled=${disabled === "true"}
-                >${data.name}</md-checkbox
-              >
+              <md-checkbox .disabled=${disabled === "true"}>${data.name}</md-checkbox>
             </div>`
         };
       });
@@ -88,8 +90,10 @@ export namespace ParentComponentWithMdOverlay {
       if (this.groupOnMultiSelect) {
         const selectedItems = this.items.filter((item: any) => this.value.includes(item.id));
         if (selectedItems.length > 0) {
+          this.firstSelectedIdByOrder = selectedItems[0].id;
           this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
         } else {
+          this.firstSelectedIdByOrder = "";
           this.lastSelectedIdByOrder = "";
         }
         return [...selectedItems, ...this.items.filter((item: any) => !this.value.includes(item.id))];
@@ -98,9 +102,15 @@ export namespace ParentComponentWithMdOverlay {
       }
     }
 
-    private handleListItemChange(_event: CustomEvent) {
+    private handleListItemChange(event: CustomEvent) {
       // stub for implementation of event handler
       // this.value = event.detail.selected;
+      console.log("Event--", event);
+    }
+
+    setSelectAllItems() {
+      console.log("Select All in UI--");
+      this.selectAllItems = !this.selectAllItems;
     }
 
     render() {
@@ -118,6 +128,9 @@ export namespace ParentComponentWithMdOverlay {
           <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
           <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
           <div style="margin:1.25rem; width: 100%">
+            <div aria-hidden="true">
+              <md-checkbox @checkbox-change=${this.setSelectAllItems}>Select All in UI</md-checkbox>
+            </div>
             <md-advance-list
               .items=${this.items}
               .isLoading=${this.isLoading}
@@ -127,8 +140,11 @@ export namespace ParentComponentWithMdOverlay {
               ariaLabelList="state selector"
               .totalRecords=${this.totalRecords}
               .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
+              .firstSelectedIdByOrder=${this.firstSelectedIdByOrder}
               .isMultiSelectEnabled=${true}
               .groupOnMultiSelect=${this.groupOnMultiSelect}
+              .selectAllItems=${this.selectAllItems}
+              .disabledItems=${this.disabledItems}
               @list-item-change=${this.handleListItemChange}
               @load-more=${this.loadMoreItems}
             >

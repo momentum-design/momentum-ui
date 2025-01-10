@@ -81,6 +81,10 @@
   color: var(--list-active-text-color);
 }
 
-.selected-border {
+.selected-border-bottom {
   border-bottom: 1px solid black;
+}
+
+.selected-border-top {
+  border-top: 1px solid black;
 }

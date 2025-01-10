@@ -76,7 +76,7 @@ export namespace ParentComponentWithMdOverlay {
               aria-hidden="true"
               indexing="${index}"
             >
-              <md-checkbox .checked=${this.value.includes(id)} .disabled=${disabled === "true"}
+                <md-checkbox .disabled=${disabled === "true"}
                 >${data.name}</md-checkbox
               >
             </div>`

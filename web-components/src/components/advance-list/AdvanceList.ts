@@ -73,6 +73,13 @@ export namespace AdvanceList {
       if (!this.isMultiSelectEnabled) {
         wrapper.classList.toggle("selected", isSelected);
       }
+
+      if(isSelected){
+        wrapper.querySelector("md-checkbox")?.setAttribute("checked", "true");
+      }else{
+        wrapper.querySelector("md-checkbox")?.removeAttribute("checked");
+      }
+
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
       wrapper.setAttribute("tabindex", isSelected ? "0" : "-1");

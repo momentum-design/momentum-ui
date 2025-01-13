@@ -149,6 +149,8 @@ export namespace ParentComponentWithMdOverlay {
           }}
         >
           <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
+
+          <div style="margin:1.25rem; width: 100%">
           <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
           <div style="margin:1.25rem; width: 100%">
             <div aria-hidden="true">
@@ -176,6 +178,7 @@ export namespace ParentComponentWithMdOverlay {
              <div aria-hidden="true">
               <md-button @button-click=${this.resetFilter} variant="white">Reset the filter</md-button>
             </div>
+          </div>
           </div>
         </md-menu-overlay>
       `;

@@ -24,6 +24,7 @@ export namespace AdvanceList {
     @property({ type: String }) lastSelectedIdByOrder = "";
     @property({ type: String }) firstSelectedIdByOrder = "";
     @property({ type: Boolean }) selectAllItems = false;
+    @property({ type: Boolean }) unselectAllItems = false;
     @property({ type: Array }) disabledItems: string[] = [];
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
@@ -53,13 +54,11 @@ export namespace AdvanceList {
 
     disconnectedCallback() {
       super.disconnectedCallback();
-      // Clean up event listeners when the component is removed
       this.removeEventListener("click", this.handleClick);
       this.listContainer?.addEventListener("keydown", this.handleKeyDown);
     }
 
     protected firstUpdated(_changedProperties: PropertyValues): void {
-      // Add keydown event listener to the list container
       this.listContainer?.addEventListener("keydown", this.handleKeyDown);
     }
 
@@ -75,7 +74,12 @@ export namespace AdvanceList {
           this.selectedItemsIds = this.items
             .filter((item) => !this.disabledItems.includes(item.id))
             .map((item) => item.id);
-        } else {
+        }
+        this.updateSelectedState();
+        this.notifySelectedChange();
+      }
+      if (changedProperties.has("unselectAllItems")) {
+        if (this.unselectAllItems) {
           this.selectedItemsIds = [];
         }
         this.updateSelectedState();
@@ -83,17 +87,18 @@ export namespace AdvanceList {
       }
     }
 
-    updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
-      if (!this.isMultiSelectEnabled) {
-        wrapper.classList.toggle("selected", isSelected);
-      }
-
+    setCheckboxAttributes(isSelected: boolean, wrapper: HTMLElement) {
       if (isSelected && wrapper.querySelector("md-checkbox")?.getAttribute("aria-disabled") === "false") {
         wrapper.querySelector("md-checkbox")?.setAttribute("checked", "true");
       } else {
         wrapper.querySelector("md-checkbox")?.removeAttribute("checked");
       }
+    }
 
+    updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
+      this.isMultiSelectEnabled
+        ? this.setCheckboxAttributes(isSelected, wrapper)
+        : wrapper.classList.toggle("selected", isSelected);
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
       wrapper.setAttribute("tabindex", isSelected ? "0" : "-1");
@@ -103,7 +108,6 @@ export namespace AdvanceList {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
         const isSelected = this.selectedItemsIds.some((id) => wrapper.id === `${prefixId}${id}`);
-        // update the wrapper attributes
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
         if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
@@ -217,20 +221,32 @@ export namespace AdvanceList {
       }
     };
 
+    updateItemForMultiSelect(clickedItem: HTMLElement, activeId: string) {
+      const index = this.selectedItemsIds.indexOf(activeId);
+      if (index === -1) {
+        this.selectedItemsIds.push(this.activeId);
+        if (this.selectedItemsIds.length === this.items.length - this.disabledItems.length) {
+          this.selectAllItems = true;
+          this.unselectAllItems = false;
+          this.notifySelectAllChange();
+        }
+      } else {
+        this.selectedItemsIds.splice(index, 1);
+        this.selectAllItems = false;
+        if (this.selectedItemsIds.length === 0) {
+          this.unselectAllItems = true;
+        }
+        this.notifySelectAllChange();
+      }
+    }
+
     updateItemSelection(clickedItem: HTMLElement) {
       if (!clickedItem) return;
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-      const index = this.selectedItemsIds.indexOf(this.activeId);
-      if (index === -1) {
-        if (this.isMultiSelectEnabled) {
-          this.selectedItemsIds.push(this.activeId);
-        } else {
-          this.selectedItemsIds = [this.activeId];
-        }
-      } else if (this.isMultiSelectEnabled) {
-        this.selectedItemsIds.splice(index, 1);
-      }
+      this.isMultiSelectEnabled
+        ? this.updateItemForMultiSelect(clickedItem, this.activeId)
+        : (this.selectedItemsIds = [this.activeId]);
       this.updateSelectedState();
       this.notifySelectedChange();
     }
@@ -265,6 +281,16 @@ export namespace AdvanceList {
       this.dispatchEvent(
         new CustomEvent("list-item-change", {
           detail: { selected: this.selectedItemsIds },
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
+
+    notifySelectAllChange() {
+      this.dispatchEvent(
+        new CustomEvent("update-select-all", {
+          detail: { selectAll: this.selectAllItems, unselectAll: this.unselectAllItems },
           bubbles: true,
           composed: true
         })

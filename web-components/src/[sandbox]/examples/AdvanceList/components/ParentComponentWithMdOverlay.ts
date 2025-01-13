@@ -1,5 +1,4 @@
-import { html, internalProperty, LitElement, property, query, PropertyValues } from "lit-element";
-// import "@/components/list/InfiniteScrollList";
+import { html, internalProperty, LitElement, property } from "lit-element";
 import "@/components/advance-list/AdvanceList";
 import "@/components/list/List";
 import "@/components/list/ListItem";
@@ -14,14 +13,15 @@ export namespace ParentComponentWithMdOverlay {
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
+    @property({ type: Boolean }) isMultiSelectEnabled = true;
     @property({ type: Boolean }) groupOnMultiSelect = true;
     @internalProperty() totalRecords = 0;
+    @internalProperty() loadedRecords = 0;
     @internalProperty() lastSelectedIdByOrder = "";
     @internalProperty() firstSelectedIdByOrder = "";
     @internalProperty() selectAllItems = false;
+    @internalProperty() unselectAllItems = false;
     @internalProperty() disabledItems: string[] = [];
-    @query("#select-all-one") selectAllOne?: HTMLDivElement;
-
 
     constructor() {
       super();
@@ -48,6 +48,7 @@ export namespace ParentComponentWithMdOverlay {
         this.totalRecords = 60000;
         this.page += 1;
         this.value.push(this.items[1].id);
+        this.loadedRecords = this.items.length;
       } catch (err) {
         this.isError = true;
       } finally {
@@ -90,51 +91,61 @@ export namespace ParentComponentWithMdOverlay {
 
     getOrderedItems() {
       if (this.groupOnMultiSelect) {
-        // Filter selected and unselected items
         const selectedItems = this.items.filter((item: any) => this.value.includes(item.id));
         const unselectedItems = this.items.filter((item: any) => !this.value.includes(item.id));
-       
-        // Sort selected and unselected items using natural sort
+
         selectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
         unselectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
 
-         // Update first and last selected IDs
-         if (selectedItems.length > 0) {
+        if (selectedItems.length > 0) {
           this.firstSelectedIdByOrder = selectedItems[0].id;
           this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
         } else {
           this.firstSelectedIdByOrder = "";
           this.lastSelectedIdByOrder = "";
         }
-    
-        // Combine sorted selected and unselected items
         return [...selectedItems, ...unselectedItems];
       } else {
-        // Sort all items using natural sort when grouping is disabled
         return [...this.items].sort((a, b) => this.naturalSort(a.name, b.name));
       }
     }
-    
+
     private naturalSort(a: string, b: string): number {
       return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
     }
-    
+
     private handleListItemChange(event: CustomEvent) {
       // stub for implementation of event handler
       this.value = event.detail.selected;
     }
 
     setSelectAllItems() {
-      console.log("Select All in UI--");
-      this.selectAllItems = !this.selectAllItems;
+      this.selectAllItems = true;
+      this.unselectAllItems = false;
+    }
+
+    setUnselectAllItems() {
+      this.unselectAllItems = true;
+      this.selectAllItems = false;
+    }
+
+    updateSelectAllCheckboxOnClick() {
+      this.selectAllItems ? this.setUnselectAllItems() : this.setSelectAllItems();
+    }
+
+    updateSelectAllCheckboxOnEvent(event: CustomEvent) {
+      this.selectAllItems = event.detail.selectAll;
+      this.unselectAllItems = event.detail.unselectAll;
     }
 
     resetFilter() {
-      console.log("Reset the filter--");
-      this.selectAllItems = false;
+      this.setUnselectAllItems();
       this.value = [];
-      this.selectAllOne?.removeAttribute("checked");
-    } 
+    }
+
+    getSelectAllLabel() {
+      return this.items.length < 100 ? "Select all" : `Select ${this.loadedRecords} of ${this.totalRecords}`;
+    }
 
     render() {
       return html`
@@ -144,41 +155,48 @@ export namespace ParentComponentWithMdOverlay {
           class="queueDropdown test-overlay"
           size="large"
           @menu-overlay-open=${() => {
-            console.log("Opening modal--");
             this.items = this.getOrderedItems();
           }}
         >
           <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
 
           <div style="margin:1.25rem; width: 100%">
-          <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
-          <div style="margin:1.25rem; width: 100%">
+            <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
+            <div style="margin:1.25rem; width: 100%">
+              <div aria-hidden="true" style="padding-left:15px">
+                <md-checkbox
+                  id="select-all-one"
+                  class="selectAll"
+                  @checkbox-change=${this.updateSelectAllCheckboxOnClick}
+                  .checked=${this.selectAllItems}
+                  >${this.getSelectAllLabel()}</md-checkbox
+                >
+              </div>
+              <md-advance-list
+                .items=${this.items}
+                .isLoading=${this.isLoading}
+                .isError=${this.isError}
+                .value=${this.value}
+                ariaRoleList="listbox"
+                ariaLabelList="state selector"
+                .totalRecords=${this.totalRecords}
+                .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
+                .firstSelectedIdByOrder=${this.firstSelectedIdByOrder}
+                .isMultiSelectEnabled=${this.isMultiSelectEnabled}
+                .groupOnMultiSelect=${this.groupOnMultiSelect}
+                .selectAllItems=${this.selectAllItems}
+                .unselectAllItems=${this.unselectAllItems}
+                .disabledItems=${this.disabledItems}
+                @list-item-change=${this.handleListItemChange}
+                @load-more=${this.loadMoreItems}
+                @update-select-all=${this.updateSelectAllCheckboxOnEvent}
+              >
+                <md-spinner size="24" slot="spin-loader"></md-spinner>
+              </md-advance-list>
+            </div>
             <div aria-hidden="true">
-              <md-checkbox id="select-all-one" class="selectAll" @checkbox-change=${this.setSelectAllItems}>Select All in UI</md-checkbox>
+              <md-button @button-click=${this.resetFilter} variant="primary">Reset the filter</md-button>
             </div>
-            <md-advance-list
-              .items=${this.items}
-              .isLoading=${this.isLoading}
-              .isError=${this.isError}
-              .value=${this.value}
-              ariaRoleList="listbox"
-              ariaLabelList="state selector"
-              .totalRecords=${this.totalRecords}
-              .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
-              .firstSelectedIdByOrder=${this.firstSelectedIdByOrder}
-              .isMultiSelectEnabled=${true}
-              .groupOnMultiSelect=${this.groupOnMultiSelect}
-              .selectAllItems=${this.selectAllItems}
-              .disabledItems=${this.disabledItems}
-              @list-item-change=${this.handleListItemChange}
-              @load-more=${this.loadMoreItems}
-            >
-              <md-spinner size="24" slot="spin-loader"></md-spinner>
-            </md-advance-list>
-             <div aria-hidden="true">
-              <md-button @button-click=${this.resetFilter} variant="white">Reset the filter</md-button>
-            </div>
-          </div>
           </div>
         </md-menu-overlay>
       `;

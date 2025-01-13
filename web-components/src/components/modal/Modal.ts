@@ -9,6 +9,7 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
+import { themeManager } from "@/managers/ThemeManager";
 import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
@@ -19,6 +20,7 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
 export const modalType = ["default", "full", "large", "small", "dialog"] as const;
+export const modalAlignment = ["leading", "center"] as const;
 
 const minisculeLatency = 13;
 /**
@@ -31,6 +33,7 @@ const minisculeLatency = 13;
 
 export namespace Modal {
   export type Type = (typeof modalType)[number];
+  export type Alignment = (typeof modalAlignment)[number];
 
   @customElementWithCheck("md-modal")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
@@ -51,6 +54,8 @@ export namespace Modal {
     @property({ type: Boolean }) hideFooter = false;
     @property({ type: Boolean }) hideHeader = false;
     @property({ type: Boolean }) disableInitialFocus = false;
+
+    @property({ type: String }) alignment?: Alignment = undefined;
 
     @internalProperty() private animating = false;
 
@@ -79,6 +84,13 @@ export namespace Modal {
           this.modalFadeOut();
         }
       }
+    }
+
+    private get computedAlignment(): Alignment {
+      if (this.alignment === undefined) {
+        return themeManager.isMomentumV2Enabled ? "leading" : "center";
+      }
+      return this.alignment;
     }
 
     private notifyModalClose() {
@@ -247,7 +259,8 @@ export namespace Modal {
     get modalContainerClassMap() {
       return {
         in: this.show,
-        [`md-modal--${this.size}`]: !!this.size
+        [`md-modal--${this.size}`]: !!this.size,
+        [`md-modal--${this.computedAlignment}`]: !!this.computedAlignment
       };
     }
 

@@ -21,6 +21,11 @@ const modal = {
       common: "1rem 1rem"
     }
   },
+  section: {
+    "h-padding": {
+      common: "0"
+    }
+  },
   title: {
     "text-color": {
       common: "$mds-color-theme-text-primary-normal"

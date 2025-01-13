@@ -1,4 +1,4 @@
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, internalProperty, LitElement, property, query, PropertyValues } from "lit-element";
 // import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
 import "@/components/list/List";
@@ -20,6 +20,8 @@ export namespace ParentComponentWithMdOverlay {
     @internalProperty() firstSelectedIdByOrder = "";
     @internalProperty() selectAllItems = false;
     @internalProperty() disabledItems: string[] = [];
+    @query("#select-all-one") selectAllOne?: HTMLDivElement;
+
 
     constructor() {
       super();
@@ -88,30 +90,51 @@ export namespace ParentComponentWithMdOverlay {
 
     getOrderedItems() {
       if (this.groupOnMultiSelect) {
+        // Filter selected and unselected items
         const selectedItems = this.items.filter((item: any) => this.value.includes(item.id));
-        if (selectedItems.length > 0) {
+        const unselectedItems = this.items.filter((item: any) => !this.value.includes(item.id));
+       
+        // Sort selected and unselected items using natural sort
+        selectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
+        unselectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
+
+         // Update first and last selected IDs
+         if (selectedItems.length > 0) {
           this.firstSelectedIdByOrder = selectedItems[0].id;
           this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
         } else {
           this.firstSelectedIdByOrder = "";
           this.lastSelectedIdByOrder = "";
         }
-        return [...selectedItems, ...this.items.filter((item: any) => !this.value.includes(item.id))];
+    
+        // Combine sorted selected and unselected items
+        return [...selectedItems, ...unselectedItems];
       } else {
-        return this.items;
+        // Sort all items using natural sort when grouping is disabled
+        return [...this.items].sort((a, b) => this.naturalSort(a.name, b.name));
       }
     }
-
+    
+    private naturalSort(a: string, b: string): number {
+      return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+    }
+    
     private handleListItemChange(event: CustomEvent) {
       // stub for implementation of event handler
-      // this.value = event.detail.selected;
-      console.log("Event--", event);
+      this.value = event.detail.selected;
     }
 
     setSelectAllItems() {
       console.log("Select All in UI--");
       this.selectAllItems = !this.selectAllItems;
     }
+
+    resetFilter() {
+      console.log("Reset the filter--");
+      this.selectAllItems = false;
+      this.value = [];
+      this.selectAllOne?.removeAttribute("checked");
+    } 
 
     render() {
       return html`
@@ -129,7 +152,7 @@ export namespace ParentComponentWithMdOverlay {
           <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
           <div style="margin:1.25rem; width: 100%">
             <div aria-hidden="true">
-              <md-checkbox @checkbox-change=${this.setSelectAllItems}>Select All in UI</md-checkbox>
+              <md-checkbox id="select-all-one" class="selectAll" @checkbox-change=${this.setSelectAllItems}>Select All in UI</md-checkbox>
             </div>
             <md-advance-list
               .items=${this.items}
@@ -150,6 +173,9 @@ export namespace ParentComponentWithMdOverlay {
             >
               <md-spinner size="24" slot="spin-loader"></md-spinner>
             </md-advance-list>
+             <div aria-hidden="true">
+              <md-button @button-click=${this.resetFilter} variant="white">Reset the filter</md-button>
+            </div>
           </div>
         </md-menu-overlay>
       `;

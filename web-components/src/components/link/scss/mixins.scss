@@ -3,7 +3,7 @@
   $color-hover: var(--link-hover),
   $color-pressed: var(--link-pressed),
   $color-focus: var(--link-focus),
-  $focus-outline: var( --link-focus-outline),
+  $focus-outline: var(--link-focus-outline),
   $color-disabled: var(--link-disabled),
   $color-inline: var(--link-inline),
   $color-inline-hover: var(--link-inline-hover),
@@ -51,18 +51,20 @@
   }
 
   &.md-link--inline {
-    color: $color-inline;
+    &:not(.md-link--inline-style-default) {
+      color: $color-inline;
 
-    &:hover {
-      color: $color-inline-hover;
-    }
+      &:hover {
+        color: $color-inline-hover;
+      }
 
-    &:focus {
-      color: $color-inline-focus;
-    }
+      &:focus {
+        color: $color-inline-focus;
+      }
 
-    &.active {
-      color: $color-inline-pressed;
+      &.active {
+        color: $color-inline-pressed;
+      }
     }
   }
 
@@ -78,7 +80,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px $color-inverted-focus-outline;      
+      box-shadow: 0 0 0 2px $color-inverted-focus-outline;
       color: $color-inverted-focus;
     }
   }
@@ -143,4 +145,3 @@
     }
   }
 }
-

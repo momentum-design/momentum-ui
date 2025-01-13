@@ -57,4 +57,8 @@ export const linkTemplate = html`
   <div class="row" style="background-color: var(--md-inverted-primary-bg-color)">
     <md-link tag="a" size="large" inverted> large inverted </md-link>
   </div>
+
+  <div class="row">
+    <md-link tag="a" size="midsize" inline inline-style="default"> midsize inline default style </md-link>
+  </div>
 `;

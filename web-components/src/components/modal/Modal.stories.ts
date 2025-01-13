@@ -31,7 +31,8 @@ export default {
     showCloseButton: { control: "boolean", defaultValue: true },
     backdropClickExit: { control: "boolean", defaultValue: false },
     hideFooter: { control: "boolean", defaultValue: false },
-    hideHeader: { control: "boolean", defaultValue: false }
+    hideHeader: { control: "boolean", defaultValue: false },
+    alignment: { control: "select", options: [undefined, "leading", "center"], defaultValue: undefined }
   },
   parameters: {
     a11y: {

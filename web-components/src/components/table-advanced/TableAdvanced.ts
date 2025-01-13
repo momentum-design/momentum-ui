@@ -612,11 +612,11 @@ export namespace TableAdvanced {
 
     sortIconTemplate(sortOrder: SortOrder): TemplateResult | typeof nothing {
       if (sortOrder === "ascending") {
-        return html`<md-icon name="arrow-tail-down-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+        return html`<md-icon name="sort-descending-bold" size="16" iconSet="momentumDesign"></md-icon>`;
       } else if (sortOrder === "descending") {
-        return html`<md-icon name="arrow-tail-up-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+        return html`<md-icon name="sort-ascending-bold" size="16" iconSet="momentumDesign"></md-icon>`;
       }
-      return html`<md-icon name="unsorted-bold" size="12" iconSet="momentumDesign"></md-icon>`;
+      return html`<md-icon name="unsorted-bold" size="16" iconSet="momentumDesign"></md-icon>`;
     }
 
     private renderCol(col: Col, rowspan?: number) {

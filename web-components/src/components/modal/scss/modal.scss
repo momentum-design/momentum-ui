@@ -5,7 +5,15 @@
   @include modal-size($radius: true);
 
   .md-modal__title {
-    color: var(--md-primary-text-color, $md-gray-60);
+    color: var(--md-primary-text-color);
+  }
+
+  --md-modal-text-align: center;
+  --md-modal-justify-content: center;
+
+  &--leading {
+    --md-modal-text-align: left;
+    --md-modal-justify-content: flex-start;
   }
 
   &:focus {
@@ -16,8 +24,10 @@
     @include modal-header-size;
     flex-shrink: 0;
     padding-bottom: $modal-main__padding;
-    padding-left: calc(#{$modal-main__padding} / 2);
-    padding-right: calc(#{$modal-main__padding} / 2);
+    padding-left: var(--modal-section-h-padding);
+    padding-right: var(--modal-section-h-padding);
+
+    align-items: var(--md-modal-justify-content);
 
     h2 {
       font-size: inherit;
@@ -28,7 +38,7 @@
 
     .md-modal__title {
       overflow: hidden;
-      text-align: center;
+      text-align: var(--md-modal-text-align);
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 100%;
@@ -40,18 +50,20 @@
         $font-size: rem-calc(14),
         $line-height: rem-calc(24)
       ) {
-        color: var(--modal-main-text-color, $lm-modal-main-text-color-light);
+        color: var(--modal-main-text-color);
         flex-flow: row wrap;
-        text-align: center;
+        justify-content: var(--md-modal-justify-content);
+        text-align: var(--md-modal-text-align);
       }
     }
+  }
 
-    .md-modal__close {
-      @include flex;
+  .md-modal__close {
+    @include flex;
 
-      border: 0;
-      position: absolute;
-    }
+    border: 0;
+    position: absolute;
+    @include modal-close-button($right-offset: rem-calc(16));
   }
 
   &__content {
@@ -62,21 +74,21 @@
   }
 
   &__flex-container {
-    @include modal-flex-container;
+    @include modal-flex-container;    
   }
 
   &__body {
     align-items: stretch; // IE fix
     align-self: stretch;
-    background: var(--modal-main-bg-color, $lm-modal-main-bg-color-light);
+    background: var(--modal-main-bg-color);
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: auto;
-    padding-left: calc(#{$modal-main__padding} / 2);
-    padding-right: calc(#{$modal-main__padding} / 2);
+    overflow-y: auto;    
+    padding-left: var(--modal-section-h-padding);
+    padding-right: var(--modal-section-h-padding);
 
     &--padding {
       padding: $modal__padding--body;
@@ -85,9 +97,9 @@
 
   &__footer {
     @include flex($jc: flex-end);
-    flex-shrink: 0;
-    padding-left: calc(#{$modal-main__padding} / 2);
-    padding-right: calc(#{$modal-main__padding} / 2);
+    flex-shrink: 0;    
+    padding-left: var(--modal-section-h-padding);
+    padding-right: var(--modal-section-h-padding);
     padding-top: $modal-main__padding;
     width: 100%;
 
@@ -115,10 +127,6 @@
         line-height: rem-calc(32);
         padding-top: rem-calc(20);
       }
-
-      .md-modal__close {
-        @include modal-close-button($size: rem-calc(20), $font-size: rem-calc(20), $right-offset: rem-calc(24));
-      }
     }
 
     .md-modal__footer {
@@ -140,11 +148,7 @@
       .md-modal__message {
         font-size: rem-calc(16);
         line-height: rem-calc(24);
-        text-align: left;
-      }
-
-      .md-modal__close {
-        @include modal-close-button($size: rem-calc(16), $font-size: rem-calc(16), $right-offset: rem-calc(16));
+        text-align: var(--md-modal-text-align);
       }
     }
 
@@ -159,10 +163,6 @@
           line-height: rem-calc(24);
           text-align: center;
         }
-
-        .md-modal__close {
-          @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-        }
       }
     }
 
@@ -175,11 +175,7 @@
 
   &.md-modal--medium,
   &.md-modal--default {
-    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
-
-    .md-modal__close {
-      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-    }
+    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);    
 
     @media #{$medium-only} {
       @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
@@ -195,10 +191,6 @@
   &.md-modal--small {
     @include modal-size($width: $modal__width--small, $min-height: $modal__height--small);
 
-    .md-modal__close {
-      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-    }
-
     // Media Query for Tablet
     @media #{$medium-only} {
       @include modal-size($width: $modal__width--small, $min-height: $modal__height--small);
@@ -207,10 +199,6 @@
 
   &.md-modal--dialog {
     @include modal-size($width: $modal__width--small, $radius: true);
-
-    .md-modal__close {
-      @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-    }
 
     .md-modal__content {
       flex-direction: row;
@@ -239,7 +227,7 @@
 
       .md-modal__footer {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-end;        
         padding: 0;
       }
     }
@@ -275,10 +263,10 @@
           line-height: rem-calc(24);
           padding-top: rem-calc(12);
         }
+      }
 
-        .md-modal__close {
-          @include modal-close-button($size: rem-calc(14), $font-size: rem-calc(14), $right-offset: rem-calc(12));
-        }
+      .md-modal__close {
+        @include modal-close-button($right-offset: rem-calc(12));
       }
 
       .md-modal__footer {
@@ -313,37 +301,15 @@
 
 /** @component close */
 
-.md-close {
-  color: $close__font-color;
-  float: right;
-  font-size: ($font-size-base * 1.5);
-  font-weight: bold;
-  line-height: 1;
+.md-close {  
+  float: right;      
   text-shadow: 0 1px 0 $md-white-100;
 
   &:hover,
   &:focus {
-    color: $close__font-color--focus;
+    
     cursor: pointer;
     text-decoration: none;
-  }
-}
-
-.md-close {
-  background: transparent;
-  border-radius: 0;
-  cursor: pointer;
-  font-weight: normal;
-  min-width: initial;
-  padding: 0;
-
-  &::before {
-    font-family: $icon-font-name;
-    vertical-align: middle;
-  }
-
-  &:hover {
-    color: $close__font-color--hover;
   }
 }
 

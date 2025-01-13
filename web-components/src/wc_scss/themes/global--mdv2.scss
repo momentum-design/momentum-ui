@@ -112,6 +112,13 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-glass-overlay-bg-color: #{$mds-color-theme-background-glass-overlay-normal};
   --md-glass-overlay-inactive-bg-color: #{$mds-color-theme-background-glass-overlay-inactive};
 
+  --md-elevation-1: #{$mds-elevation-1};
+  --md-elevation-2: #{$mds-elevation-2};
+  --md-elevation-3: #{$mds-elevation-3};
+  --md-elevation-4: #{$mds-elevation-4};
+  
+  --md-backdrop-filter: #{$mds-backdrop-filter};
+
   /**
    * Temporarily disable overriding token  background colours for mdv2
    * 

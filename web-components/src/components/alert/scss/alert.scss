@@ -105,7 +105,7 @@
   flex-direction: column;
 
   &__body {
-    @include flex($jc: space-between, $ai: flex-start);
+    @include flex($jc: flex-start, $ai: flex-start);
     gap: rem-calc(12);
     width: 100%;
   }

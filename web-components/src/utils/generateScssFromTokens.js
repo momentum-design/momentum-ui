@@ -198,14 +198,6 @@ const generateThemeStylesheets = () => {
       themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
         `@import "@momentum-design/tokens/dist/scss/theme/webex/${lowercaseLightDarkTheme}-stable.scss";\n`;
 
-      //import tokens for effects like backdrop filter
-      themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
-        `@import "@momentum-design/tokens/dist/scss/effect/complete.scss";\n`;
-
-      //import tokens for elevation box shadow
-      themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
-        `@import "@momentum-design/tokens/dist/scss/elevation/complete.scss";\n`;
-
       for (const componentName of componentsWithTokens) {
         themeStyleFiles[`${designTheme}${lightDarkTheme}`] +=
           `@import "@/components/${componentName}/scss/vars/${designTheme}-${componentName}-settings.scss";\n`;

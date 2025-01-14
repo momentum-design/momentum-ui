@@ -210,6 +210,7 @@
 
       .md-modal__title {
         font-family: $brand-font-bold;
+        font-weight: var(--brand-font-weight-bold, inherit);
         font-size: $font-size-large;
         line-height: rem-calc(24);
       }

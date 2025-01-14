@@ -112,12 +112,11 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-glass-overlay-bg-color: #{$mds-color-theme-background-glass-overlay-normal};
   --md-glass-overlay-inactive-bg-color: #{$mds-color-theme-background-glass-overlay-inactive};
 
-  --md-elevation-1: #{$mds-elevation-1};
-  --md-elevation-2: #{$mds-elevation-2};
-  --md-elevation-3: #{$mds-elevation-3};
-  --md-elevation-4: #{$mds-elevation-4};
-  
-  --md-backdrop-filter: #{$mds-backdrop-filter};
+  --md-elevation-1: 0px 2px 8px rgba(0,0,0,0.2);
+  --md-elevation-2: 0px 4px 16px rgba(0,0,0,0.2);
+  --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
+  --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
+  --md-backdrop-filter: 10px;
 
   /**
    * Temporarily disable overriding token  background colours for mdv2
@@ -159,6 +158,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-column-divider-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-row-divider-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-pinned-border-color: #{$mds-color-theme-outline-share-inactive};
+  --md-table-pinned-bg-color: #{$mds-color-theme-background-solid-primary-normal};
 
   --md-inverted-primary-bg-color: #{$mds-color-theme-inverted-background-normal};
 

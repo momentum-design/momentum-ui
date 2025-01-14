@@ -1,8 +1,8 @@
-$advanced-table-main-border: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+$advanced-table-main-border: 1px solid var(--table-advanced-border-color);
 $advanced-table-filter-border: 1px solid
-  var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+  var(--table-advanced-filter-border-color);
 $advanced-table-dragarea-border: 2px dashed
-  var(--table-advanced-filter-border-color, $lm-table-advanced-filter-border-color-light);
+  var(--table-advanced-filter-border-color);
 $advanced-table-focus-border: 2px solid var(--md-focus-border-color);
 $advanced-table-main-indent: rem-calc(4);
 $advanced-table-row-height: rem-calc(40);

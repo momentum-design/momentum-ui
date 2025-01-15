@@ -184,6 +184,12 @@ export namespace Input {
 
     @internalProperty() private isEditing = false;
 
+    @query('slot[name="input-section-right"]')
+    private readonly inputSectionRightSlot!: HTMLSlotElement;
+
+    @internalProperty()
+    private hasRightSlotContent = false;
+
     private readonly messageController = new MessageController();
 
     connectedCallback() {
@@ -313,6 +319,10 @@ export namespace Input {
       this.input.focus();
     }
 
+    handleRighSlotChange() {
+      this.hasRightSlotContent = this.inputSectionRightSlot?.assignedNodes().length > 0;
+    }
+
     get messageType(): Input.MessageType | null {
       if (this.messageArr.length > 0) {
         return this.messageController.determineMessageType(this.messageArr);
@@ -360,12 +370,25 @@ export namespace Input {
         "md-focus": this.isEditing,
         "md-read-only": this.readOnly,
         "md-disabled": this.disabled,
-        "md-dirty": !!this.value
+        "md-dirty": !!this.value,
+        "md-has-right-icon": this.hasRightIcon
       };
     }
 
     get ariaExpandedValue() {
       return this.ariaExpanded === "true" || this.ariaExpanded === "false" ? this.ariaExpanded : "undefined";
+    }
+
+    get hasRightIcon() {
+      if (this.clear && !this.disabled && !!this.value && !this.readOnly) {
+        return true;
+      }
+
+      if (this.compact) {
+        return false;
+      }
+
+      return this.hasRightSlotContent;
     }
 
     inputTemplate() {
@@ -471,7 +494,7 @@ export namespace Input {
       } else if (!this.compact) {
         return html`
           <div class="md-input__after">
-            <slot name="input-section-right"></slot>
+            <slot name="input-section-right" @slotchange=${this.handleRighSlotChange}></slot>
           </div>
         `;
       }

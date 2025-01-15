@@ -361,6 +361,10 @@
     width: 100%;
 
     &.md-dirty {
+      padding-right: rem-calc(8);
+    }
+
+    &.md-dirty.md-has-right-icon {
       padding-right: rem-calc(34);
     }
 

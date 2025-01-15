@@ -197,6 +197,7 @@ export class Sandbox extends MobxLitElement {
         <label for="color-dropdown">container color:</label>
         <select id="color-dropdown" name="colors" @change=${this.handleContainerColorChange}>
           <option value="--md-glass-bg-color">--md-glass-bg-color</option>
+          <option value="--md-glass-overlay-bg-color">--md-glass-overlay-bg-color</option>
           <option value="transparent">transparent</option>
           <option value="--md-primary-bg-color">--md-primary-bg-color</option>
           <option value="--md-secondary-bg-color">--md-secondary-bg-color</option>

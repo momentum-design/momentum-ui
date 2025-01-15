@@ -122,7 +122,7 @@
   --md-table-column-divider-color: #{$md-gray-80};
   --md-table-row-divider-color: #{$md-gray-80};
   --md-table-pinned-border-color: #{$md-gray-80};
-  --md-table-pinned-bg-color: #{$md-gray-80};
+  --md-table-pinned-bg-color: var(--md-primary-bg-color);
 
   --md-elevation-1: 0px 2px 8px rgba(0,0,0,0.2);
   --md-elevation-2: 0px 4px 16px rgba(0,0,0,0.2);

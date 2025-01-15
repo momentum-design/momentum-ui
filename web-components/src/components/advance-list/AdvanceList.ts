@@ -74,16 +74,16 @@ export namespace AdvanceList {
           this.selectedItemsIds = this.items
             .filter((item) => !this.disabledItems.includes(item.id))
             .map((item) => item.id);
+            this.updateSelectedState();
+            this.notifySelectedChange();
         }
-        this.updateSelectedState();
-        this.notifySelectedChange();
       }
       if (changedProperties.has("unselectAllItems")) {
         if (this.unselectAllItems) {
           this.selectedItemsIds = [];
+          this.updateSelectedState();
+          this.notifySelectedChange();
         }
-        this.updateSelectedState();
-        this.notifySelectedChange();
       }
     }
 

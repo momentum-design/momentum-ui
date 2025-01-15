@@ -658,7 +658,7 @@ export namespace TableAdvanced {
                           <md-icon
                             class="filter-active"
                             name="filter-bold"
-                            size="14"
+                            size="16"
                             iconSet="momentumDesign"
                           ></md-icon>
                         `

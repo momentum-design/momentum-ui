@@ -137,13 +137,14 @@ thead {
     }
 
     .filter-icon {
-      color: var(--md-secondary-text-color);
+      color: var(--md-primary-text-color);
       cursor: pointer;
       display: inline-block;
       height: $advanced-table-filter-btn;
       min-width: $advanced-table-collapse-btn;
       position: relative;
       z-index: 1;
+      border-radius: 4px;
 
       &::part(button) {
         padding: $advanced-table-main-indent;

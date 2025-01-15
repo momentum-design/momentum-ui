@@ -22,6 +22,7 @@ export namespace ParentComponentWithMdOverlay {
     @internalProperty() selectAllItems = false;
     @internalProperty() unselectAllItems = false;
     @internalProperty() disabledItems: string[] = [];
+    @internalProperty() inputIcon = "arrow-down-bold";
 
     constructor() {
       super();
@@ -156,9 +157,15 @@ export namespace ParentComponentWithMdOverlay {
           size="large"
           @menu-overlay-open=${() => {
             this.items = this.getOrderedItems();
+            this.inputIcon = "arrow-up-bold";
+          }}
+          @menu-overlay-close=${() => {
+            this.inputIcon = "arrow-down-bold";
           }}
         >
-          <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
+          <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus>
+            <md-icon slot="input-section-right" name=${this.inputIcon} iconset="momentumDesign"></md-icon>
+          </md-input>
 
           <div style="margin:1.25rem; width: 100%">
             <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>

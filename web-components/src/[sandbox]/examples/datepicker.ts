@@ -38,4 +38,6 @@ export const datePickerTemplate = html`
   <md-datepicker weekStart="Monday" value="2021-01-31" disabled></md-datepicker>
   <h3>Call Date</h3>
   <md-datepicker ariaLabel="Call Date" weekStart="Monday" value="2021-01-31"></md-datepicker>
+  <h3>datepicker with initial value compact newMomentum</h3>
+  <md-datepicker weekStart="Monday" value="2021-01-31" compact-input newMomentum></md-datepicker>
 `;

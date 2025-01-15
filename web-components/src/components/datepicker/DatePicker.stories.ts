@@ -12,7 +12,9 @@ export default {
     disabled: { control: "boolean" },
     minDate: { control: { type: "text" } },
     maxDate: { control: { type: "text" } },
-    value: { control: { type: "text" } }
+    value: { control: { type: "text" } },
+    newMomentum: { control: { type: "select" }, options: [undefined, "true", "false"] },
+    compactInput: { control: { type: "select" }, options: [undefined, "true", "false"] }
   },
   parameters: {
     a11y: {

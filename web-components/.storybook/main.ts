@@ -20,9 +20,9 @@ module.exports = {
   ],
 
   addons: [
-    "@storybook/addon-controls",    
-    "@storybook/addon-a11y",
-    "@storybook/addon-docs",    
+    "@storybook/addon-docs",
+    "@storybook/addon-controls",
+    "@storybook/addon-a11y",    
     "@storybook/addon-actions",
     "@storybook/addon-toolbars"
   ],

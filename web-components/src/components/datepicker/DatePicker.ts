@@ -45,6 +45,7 @@ export namespace DatePicker {
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
     @property({ type: Boolean }) isMenuOverlayOpen = false;
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
+    @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -268,6 +269,7 @@ export namespace DatePicker {
                   .messageArr=${this.errorMessage
                     ? [{ message: this.errorMessage, type: "error" }]
                     : [{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
+                  ?compact=${this.compactInput}
                 >
                   <md-icon slot="input-section" name="calendar-month-bold" size="16" iconSet="momentumDesign"></md-icon>
                 </md-input>

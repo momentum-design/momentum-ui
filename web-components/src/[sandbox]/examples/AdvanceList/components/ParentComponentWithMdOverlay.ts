@@ -19,7 +19,6 @@ export namespace ParentComponentWithMdOverlay {
     @internalProperty() loadedRecords = 0;
     @internalProperty() lastSelectedIdByOrder = "";
     @internalProperty() selectAllItems = false;
-    @internalProperty() unselectAllItems = false;
     @internalProperty() disabledItems: string[] = [];
     @internalProperty() inputIcon = "arrow-down-bold";
 
@@ -45,7 +44,7 @@ export namespace ParentComponentWithMdOverlay {
         this.isLoading = true;
         const newItems = await this.fetchItems(this.page);
         this.items = [...this.items, ...newItems];
-        this.totalRecords = 60000;
+        this.totalRecords = 5;
         this.page += 1;
         this.value.push(this.items[1].id);
         this.loadedRecords = this.items.length;
@@ -63,7 +62,7 @@ export namespace ParentComponentWithMdOverlay {
     }
 
     private generateItems(page: number) {
-      const itemsPerPage = 2000;
+      const itemsPerPage = 5;
       return Array.from({ length: itemsPerPage }, (_, i) => {
         const id = this.generateUUID(); // Generate a unique ID for each item
         const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
@@ -113,31 +112,24 @@ export namespace ParentComponentWithMdOverlay {
     }
 
     private handleListItemChange(event: CustomEvent) {
-      // stub for implementation of event handler
       this.value = event.detail.selected;
-    }
-
-    setSelectAllItems() {
-      this.selectAllItems = true;
-      this.unselectAllItems = false;
-    }
-
-    setUnselectAllItems() {
-      this.unselectAllItems = true;
-      this.selectAllItems = false;
+      if (this.value.length === this.items.length - this.disabledItems.length) {
+        this.selectAllItems = true;
+      } else {
+        this.selectAllItems = false;
+      }
     }
 
     updateSelectAllCheckboxOnClick() {
-      this.selectAllItems ? this.setUnselectAllItems() : this.setSelectAllItems();
-    }
-
-    updateSelectAllCheckboxOnEvent(event: CustomEvent) {
-      this.selectAllItems = event.detail.selectAll;
-      this.unselectAllItems = event.detail.unselectAll;
+      if (this.selectAllItems) {
+        this.resetFilter();
+      } else {
+        this.selectAllItems = true;
+      }
     }
 
     resetFilter() {
-      this.setUnselectAllItems();
+      this.selectAllItems = false;
       this.value = [];
     }
 
@@ -191,11 +183,9 @@ export namespace ParentComponentWithMdOverlay {
                 .isMultiSelectEnabled=${this.isMultiSelectEnabled}
                 .groupOnMultiSelect=${this.groupOnMultiSelect}
                 .selectAllItems=${this.selectAllItems}
-                .unselectAllItems=${this.unselectAllItems}
                 .disabledItems=${this.disabledItems}
                 @list-item-change=${this.handleListItemChange}
                 @load-more=${this.loadMoreItems}
-                @update-select-all=${this.updateSelectAllCheckboxOnEvent}
               >
                 <md-spinner size="24" slot="spin-loader"></md-spinner>
               </md-advance-list>

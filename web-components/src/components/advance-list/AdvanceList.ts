@@ -23,7 +23,6 @@ export namespace AdvanceList {
     @property({ type: String }) containerHeight = "292px";
     @property({ type: String }) lastSelectedIdByOrder = "";
     @property({ type: Boolean }) selectAllItems = false;
-    @property({ type: Boolean }) unselectAllItems = false;
     @property({ type: Array }) disabledItems: string[] = [];
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
@@ -73,13 +72,6 @@ export namespace AdvanceList {
           this.selectedItemsIds = this.items
             .filter((item) => !this.disabledItems.includes(item.id))
             .map((item) => item.id);
-            this.updateSelectedState();
-            this.notifySelectedChange();
-        }
-      }
-      if (changedProperties.has("unselectAllItems")) {
-        if (this.unselectAllItems) {
-          this.selectedItemsIds = [];
           this.updateSelectedState();
           this.notifySelectedChange();
         }
@@ -215,22 +207,16 @@ export namespace AdvanceList {
       }
     };
 
-    updateItemForMultiSelect(clickedItem: HTMLElement, activeId: string) {
+    updateItemForMultiSelect(activeId: string) {
       const index = this.selectedItemsIds.indexOf(activeId);
       if (index === -1) {
         this.selectedItemsIds.push(this.activeId);
         if (this.selectedItemsIds.length === this.items.length - this.disabledItems.length) {
           this.selectAllItems = true;
-          this.unselectAllItems = false;
-          this.notifySelectAllChange();
         }
       } else {
         this.selectedItemsIds.splice(index, 1);
         this.selectAllItems = false;
-        if (this.selectedItemsIds.length === 0) {
-          this.unselectAllItems = true;
-        }
-        this.notifySelectAllChange();
       }
     }
 
@@ -239,7 +225,7 @@ export namespace AdvanceList {
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
       this.isMultiSelectEnabled
-        ? this.updateItemForMultiSelect(clickedItem, this.activeId)
+        ? this.updateItemForMultiSelect(this.activeId)
         : (this.selectedItemsIds = [this.activeId]);
       this.updateSelectedState();
       this.notifySelectedChange();
@@ -275,16 +261,6 @@ export namespace AdvanceList {
       this.dispatchEvent(
         new CustomEvent("list-item-change", {
           detail: { selected: this.selectedItemsIds },
-          bubbles: true,
-          composed: true
-        })
-      );
-    }
-
-    notifySelectAllChange() {
-      this.dispatchEvent(
-        new CustomEvent("update-select-all", {
-          detail: { selectAll: this.selectAllItems, unselectAll: this.unselectAllItems },
           bubbles: true,
           composed: true
         })

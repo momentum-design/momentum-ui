@@ -111,12 +111,10 @@ export namespace DateTimePicker {
     };
 
     updateDateTimeObject = () => {
-      
       if (this.value) {
         this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
       }
-      else
-      {
+      else{
         this.fullDateTime = DateTime.fromISO("", { locale: this.locale });;
       }
 

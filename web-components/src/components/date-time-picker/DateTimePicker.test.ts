@@ -34,4 +34,23 @@ describe("DateTimePicker Component", () => {
     const el: DateTimePicker.ELEMENT = await fixture(html` <md-date-time-picker></md-date-time-picker>> `);
     expect(el?.getAttribute("ariaLabel")).toBeNull();
   });
+
+  test("should fire date-time-change when a blank value is passed from date-input-change", async () => {
+    const el: DateTimePicker.ELEMENT = await fixture(html` <md-date-time-picker></md-date-time-picker>> `);
+    expect(el?.getAttribute("ariaLabel")).toBeNull();
+    const eventSpy = jest.spyOn(el, "dispatchEvent");
+    el.handleDateTimeInputChange(new CustomEvent("date-input-change", { detail: { value: "" } }));
+    expect(el.value).toBe("");
+    expect(eventSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: "date-time-change",
+        detail: expect.objectContaining({
+          dateTimeString: "",
+          dateTime: null,
+          locale: el.locale,
+          twentyFourHourFormat: el.twentyFourHourFormat
+        })
+      })
+    );
+  });
 });

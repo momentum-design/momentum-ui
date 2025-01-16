@@ -98,9 +98,7 @@ export namespace DateTimePicker {
     };
 
     handleDateTimeInputChange = (event: CustomEvent) => {
-      if (event?.detail?.value) {
-        this.value = event?.detail?.value;
-      }
+      this.value = event?.detail?.value;
     };
 
     parseValueForVisuals = (value: string) => {

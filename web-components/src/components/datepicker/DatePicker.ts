@@ -103,10 +103,7 @@ export namespace DatePicker {
     }
 
     handleDateInputChange = (event: CustomEvent) => {
-      if (event?.detail?.value) {
-        this.value = event?.detail?.value;
-      }
-
+      this.value = event?.detail?.value;
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
           bubbles: true,

@@ -719,6 +719,26 @@
   }
 }
 
+:host([variant="ghostInheritTextColor"]) .md-button {
+  background-color: var(--button-ghost-bg-color, transparent);
+  color: inherit;
+  border: unset;
+
+  &:hover {
+    background-color: var(--button-ghost-hover-bg-color, var(--button-secondary-hover-bg-color));
+  }
+
+  &:active {
+    background-color: var(--button-ghost-pressed-bg-color, var(--button-secondary-pressed-bg-color));
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-ghost-disabled-bg-color, transparent);
+    color: inherit;
+  }
+}
+
 :host([variant="secondary"]) .md-button {
   &:not(.isActive) {
     background-color: var(--button-secondary-bg-color);

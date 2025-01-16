@@ -5,6 +5,7 @@ import { customElement, html, LitElement, property } from "lit-element";
 @customElement("alert-banner-template-sandbox")
 export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: Boolean }) default = false;
+  @property({ type: Boolean }) refresh = false;
   @property({ type: Boolean }) warning = false;
   @property({ type: Boolean }) error = false;
   @property({ type: Boolean }) success = false;
@@ -13,6 +14,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
     switch (kind) {
       case "default":
         this.default = true;
+        break;
+      case "refresh":
+        this.refresh = true;
         break;
       case "warning":
         this.warning = true;
@@ -33,6 +37,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
     switch (kind) {
       case "default":
         this.default = false;
+        break;
+      case "refresh":
+        this.refresh = true;
         break;
       case "warning":
         this.warning = false;
@@ -62,10 +69,28 @@ export class AlertBannerTemplateSandbox extends LitElement {
         <md-button variant="secondary" @click=${() => this.openAlert("default")}>Trigger Default Alert</md-button>
       </div>
       <div style="margin-bottom: 15px;">
+        <md-button variant="secondary" @click=${() => this.openAlert("refresh")}
+          >Trigger Refresh Alert (inline styled icons and button)</md-button
+        >
+      </div>
+      <div style="margin-bottom: 15px;">
         <md-button variant="secondary" @click=${() => this.openAlert("success")}>Trigger Success Alert</md-button>
       </div>
       <md-alert-banner ?show=${this.default} type="default" @alertBanner-hide=${() => this.hideAlert("default")}>
         Test Alert Message
+      </md-alert-banner>
+      <md-alert-banner ?show=${this.refresh} type="default" @alertBanner-hide=${() => this.hideAlert("refresh")}>
+        <md-icon name="info-badge-filled" iconSet="momentumDesign" size="16"> </md-icon>
+        Refresh to see 5 new interactions
+        <md-button variant="ghostInheritTextColor" circle size="24">
+          <md-icon
+            class="md-alert-banner__text"
+            name="refresh-bold"
+            iconSet="momentumDesign"
+            size="16"
+            style="line-height: 16px"
+          ></md-icon>
+        </md-button>
       </md-alert-banner>
       <md-alert-banner
         ?show="${this.warning}"

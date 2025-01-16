@@ -36,6 +36,18 @@ const table = {
       light: colors.gray[20].name,
       dark: colors.gray[70].name
     }
+  },
+  "main-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "column-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "row-border": {
+    common: "1px solid var(--table-border-color)"
+  },
+  "header-row-border": {
+    common: "1px solid var(--table-border-color)"
   }
 };
 

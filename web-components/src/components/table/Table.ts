@@ -166,9 +166,9 @@ export namespace Table {
 
       return html`
         <md-icon
-          name=${this.sort.sortting ? "arrow-tail-down-bold" : "arrow-tail-up-bold"}
+          name=${this.sort.sortting ? "sort-descending-bold" : "sort-ascending-bold"}
           iconSet="momentumDesign"
-          size="12"
+          size="16"
         ></md-icon>
       `;
     }

@@ -84,25 +84,25 @@
 
   // styling to create triangle border to match menu for pointer
   .overlay-container[data-popper-placement^="top"] > .overlay-arrow:after {
-    border-top-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-top-color: var(--md-primary-bg-color);
     bottom: -17px;
     right: -19px;
   }
 
   .overlay-container[data-popper-placement^="bottom"] > .overlay-arrow:after {
-    border-bottom-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-bottom-color: var(--md-primary-bg-color);
     top: -17px;
     left: -19px;
   }
 
   .overlay-container[data-popper-placement^="right"] > .overlay-arrow:after {
-    border-right-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-right-color: var(--md-primary-bg-color);
     bottom: -19px;
     left: -17px;
   }
 
   .overlay-container[data-popper-placement^="left"] > .overlay-arrow:after {
-    border-left-color: var(--md-menu-overlay-arrow-bg-color, var(--md-tertiary-white-bg-color));
+    border-left-color: var(--md-primary-bg-color);
     top: -19px;
     right: -17px;
   }

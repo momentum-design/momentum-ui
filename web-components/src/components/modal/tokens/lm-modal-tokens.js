@@ -27,6 +27,11 @@ const modal = {
       dark: "1.5rem 1rem"
     }
   },
+  section: {
+    "h-padding": {
+      common: "0.5rem"
+    }
+  },
   title: {
     "text-color": {
       light: colors.black[100].name,

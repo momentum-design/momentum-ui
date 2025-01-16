@@ -26,11 +26,11 @@ table {
 
     thead {
       th:first-child {
-        border-left: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+        border-left: 1px solid var(--table-advanced-border-color);
       }
 
       th {
-        background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+        background-color: var(--table-advanced-header-bg-color);
         border-left: 0;
         border-top: 0;
         position: sticky;
@@ -90,11 +90,11 @@ table {
 
 thead {
   th:first-child {
-    border-left: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+    border-left: 1px solid var(--table-advanced-border-color);
   }
 
   th {
-    background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
+    background-color: var(--table-advanced-header-bg-color);
     border: $advanced-table-main-border;
     border-left: 0;
     color: var(--md-secondary-text-color);
@@ -137,13 +137,14 @@ thead {
     }
 
     .filter-icon {
-      color: var(--md-secondary-text-color);
+      color: var(--md-primary-text-color);
       cursor: pointer;
       display: inline-block;
       height: $advanced-table-filter-btn;
       min-width: $advanced-table-collapse-btn;
       position: relative;
       z-index: 1;
+      border-radius: 4px;
 
       &::part(button) {
         padding: $advanced-table-main-indent;
@@ -152,14 +153,11 @@ thead {
       }
 
       &:hover {
-        background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
+        background-color: var(--table-advanced-filter-hover-bg-color);
       }
 
       &:active {
-        background-color: var(
-          --table-advanced-filter-pressed-bg-color,
-          $lm-table-advanced-filter-pressed-bg-color-light
-        );
+        background-color: var(--table-advanced-filter-pressed-bg-color);
       }
     }
 
@@ -225,7 +223,6 @@ thead {
     cursor: pointer;
     z-index: 1;
     gap: 0.5rem;
-    
   }
 }
 
@@ -242,13 +239,13 @@ thead {
 }
 
 .filter-menu {
-  background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+  background-color: var(--table-advanced-filter-bg-color);
   padding: calc(#{$advanced-table-main-indent} * 3);
   position: relative;
   z-index: 1;
 
   select {
-    background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+    background-color: var(--table-advanced-filter-bg-color);
     border: $advanced-table-filter-border;
     color: var(--md-secondary-text-color);
     min-height: calc(#{$advanced-table-filter-height} * 1.8);
@@ -256,7 +253,7 @@ thead {
   }
 
   input {
-    background-color: var(--table-advanced-filter-bg-color, $lm-table-advanced-filter-bg-color-light);
+    background-color: var(--table-advanced-filter-bg-color);
     border: $advanced-table-filter-border;
     color: var(--md-secondary-text-color);
     margin-top: calc(#{$advanced-table-main-indent} * 2);
@@ -269,12 +266,12 @@ tbody {
     position: relative;
 
     td:first-child {
-      border-left: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      border-left: 1px solid var(--table-advanced-border-color);
     }
 
     td {
-      border-bottom: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
-      border-right: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      border-bottom: 1px solid var(--table-advanced-border-color);
+      border-right: 1px solid var(--table-advanced-border-color);
       font-size: $font-size-base;
       height: $advanced-table-row-height;
       max-width: 0;
@@ -283,13 +280,13 @@ tbody {
     }
 
     th:first-child {
-      border-top: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      border-top: 1px solid var(--table-advanced-border-color);
     }
 
     th {
-      background-color: var(--table-advanced-header-bg-color, $lm-table-advanced-header-bg-color-light);
-      border-bottom: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
-      border-right: 1px solid var(--table-advanced-border-color, $lm-table-advanced-border-color-light);
+      background-color: var(--table-advanced-header-bg-color);
+      border-bottom: 1px solid var(--table-advanced-border-color);
+      border-right: 1px solid var(--table-advanced-border-color);
       font-size: $font-size-base;
       max-width: 0;
       padding: 0 calc(#{$advanced-table-main-indent} * 4);
@@ -354,21 +351,21 @@ tbody {
     }
 
     &:hover {
-      background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+      background-color: var(--table-advanced-hover-bg-color);
 
       td,
       th {
-        background-color: var(--table-advanced-hover-bg-color, $lm-table-advanced-hover-bg-color-light);
+        background-color: var(--table-advanced-hover-bg-color);
       }
     }
 
     &:active,
     &.selected {
-      background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
+      background-color: var(--table-advanced-selected-bg-color);
 
       td,
       th {
-        background-color: var(--table-advanced-selected-bg-color, $lm-table-advanced-selected-bg-color-light);
+        background-color: var(--table-advanced-selected-bg-color);
       }
     }
   }
@@ -388,7 +385,7 @@ button.row-collapsible {
   border-radius: 2px;
 
   &:hover {
-    background-color: var(--table-advanced-filter-hover-bg-color, $lm-table-advanced-filter-hover-bg-color-light);
+    background-color: var(--table-advanced-filter-hover-bg-color);
     border: 0;
   }
 

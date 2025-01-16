@@ -10,6 +10,7 @@ import "@/components/datepicker/datepicker-calendar/DatePickerCalendar";
 import "@/components/input/Input";
 import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
+import { themeManager } from "@/managers/ThemeManager";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
@@ -43,6 +44,8 @@ export namespace DatePicker {
     @property({ type: String, reflect: true }) errorMessage = "";
     @property({ type: Boolean, attribute: "custom-trigger" }) customTrigger = false;
     @property({ type: Boolean }) isMenuOverlayOpen = false;
+    @property({ type: Boolean }) newMomentum?: boolean = undefined;
+    @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
 
     @internalProperty() selectedDate: DateTime = now();
     @internalProperty() focusedDate: DateTime = now();
@@ -52,6 +55,13 @@ export namespace DatePicker {
     @internalProperty() minDateData: DateTime | undefined = undefined;
 
     @query("md-menu-overlay") menuOverlay!: MenuOverlay.ELEMENT;
+    get computedNewMomentum() {
+      if (this.newMomentum !== undefined) {
+        return this.newMomentum;
+      }
+
+      return themeManager.isMomentumV2Enabled;
+    }
 
     connectedCallback() {
       super.connectedCallback();
@@ -241,6 +251,7 @@ export namespace DatePicker {
                   class="date-input"
                   slot="menu-trigger"
                   role="combobox"
+                  ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
                   value=${ifDefined(this.value)}
                   htmlId=${this.htmlId}
@@ -258,6 +269,7 @@ export namespace DatePicker {
                   .messageArr=${this.errorMessage
                     ? [{ message: this.errorMessage, type: "error" }]
                     : [{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
+                  ?compact=${this.compactInput}
                 >
                   <md-icon slot="input-section" name="calendar-month-bold" size="16" iconSet="momentumDesign"></md-icon>
                 </md-input>

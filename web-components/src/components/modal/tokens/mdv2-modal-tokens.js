@@ -18,7 +18,12 @@ const modal = {
       common: "0.5rem"
     },
     padding: {
-      common: "1.5rem 1rem"
+      common: "1rem 1rem"
+    }
+  },
+  section: {
+    "h-padding": {
+      common: "0"
     }
   },
   title: {

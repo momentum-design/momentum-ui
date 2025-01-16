@@ -6,6 +6,6 @@
  *
  */
 
-$table-main-border: 1px solid var(--table-border-color, $lm-table-border-color-light);
+$table-main-border: var(--table-main-border);
 $table-main-indent: rem-calc(4);
 $table-row-height: rem-calc(40);

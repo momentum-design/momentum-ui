@@ -17,6 +17,8 @@
   --md-primary-one-bg-color: #{$md-gray-95};
   --md-primary-two-bg-color: #{$md-gray-90};
 
+  --md-inverted-primary-bg-color: #{$md-white};
+
   --md-secondary-bg-color: #{$md-gray-100};
   --md-secondary-one-bg-color: #{$md-gray-95};
   --md-secondary-two-bg-color: #{$md-gray-90};
@@ -120,4 +122,11 @@
   --md-table-column-divider-color: #{$md-gray-80};
   --md-table-row-divider-color: #{$md-gray-80};
   --md-table-pinned-border-color: #{$md-gray-80};
+  --md-table-pinned-bg-color: var(--md-primary-bg-color);
+
+  --md-elevation-1: 0px 2px 8px rgba(0,0,0,0.2);
+  --md-elevation-2: 0px 4px 16px rgba(0,0,0,0.2);
+  --md-elevation-3: 0px 6px 24px rgba(0,0,0,0.25);
+  --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
+  --md-backdrop-filter: 10px;
 }

@@ -1,4 +1,4 @@
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import "@/components/advance-list/AdvanceList";
 import "@/components/list/List";
 import "@/components/list/ListItem";
@@ -21,6 +21,7 @@ export namespace ParentComponentWithMdOverlay {
     @internalProperty() selectAllItems = false;
     @internalProperty() disabledItems: string[] = [];
     @internalProperty() inputIcon = "arrow-down-bold";
+    @internalProperty() overlayTriggerPlaceholder = "Search field with tabs";
 
     constructor() {
       super();
@@ -29,6 +30,13 @@ export namespace ParentComponentWithMdOverlay {
       this.isLoading = false;
       this.isError = false;
       this.loadMoreItems();
+    }
+
+    updated(changedProperties: PropertyValues) {
+      console.log("changedProperties", changedProperties);
+      if (changedProperties.has("value")) {
+        this.updatePlaceholder();
+      }
     }
 
     generateUUID() {
@@ -44,7 +52,7 @@ export namespace ParentComponentWithMdOverlay {
         this.isLoading = true;
         const newItems = await this.fetchItems(this.page);
         this.items = [...this.items, ...newItems];
-        this.totalRecords = 5;
+        this.totalRecords = 60000;
         this.page += 1;
         this.value.push(this.items[1].id);
         this.loadedRecords = this.items.length;
@@ -56,13 +64,12 @@ export namespace ParentComponentWithMdOverlay {
     }
 
     async fetchItems(page: number) {
-      // Generate new items
       const newItems = this.generateItems(page);
       return newItems;
     }
 
     private generateItems(page: number) {
-      const itemsPerPage = 5;
+      const itemsPerPage = 2000;
       return Array.from({ length: itemsPerPage }, (_, i) => {
         const id = this.generateUUID(); // Generate a unique ID for each item
         const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
@@ -111,8 +118,14 @@ export namespace ParentComponentWithMdOverlay {
       return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
     }
 
+    updatePlaceholder() {
+      const selectedItemsCount = this.value.length;
+      this.overlayTriggerPlaceholder = selectedItemsCount ? `${selectedItemsCount} selected` : "Search field with tabs";
+    }
+
     private handleListItemChange(event: CustomEvent) {
       this.value = event.detail.selected;
+      this.updatePlaceholder();
       if (this.value.length === this.items.length - this.disabledItems.length) {
         this.selectAllItems = true;
       } else {
@@ -143,7 +156,7 @@ export namespace ParentComponentWithMdOverlay {
 
         <md-menu-overlay
           class="queueDropdown test-overlay"
-          size="large"
+          custom-width="300px"
           @menu-overlay-open=${() => {
             this.items = this.getOrderedItems();
             this.inputIcon = "arrow-up-bold";
@@ -152,13 +165,20 @@ export namespace ParentComponentWithMdOverlay {
             this.inputIcon = "arrow-down-bold";
           }}
         >
-          <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus>
+          <md-input
+            value=${this.overlayTriggerPlaceholder}
+            slot="menu-trigger"
+            autoFocus
+            shape="pill"
+            readonly
+            newMomentum
+          >
             <md-icon slot="input-section-right" name=${this.inputIcon} iconset="momentumDesign"></md-icon>
           </md-input>
 
-          <div style="margin:1.25rem; width: 100%">
+          <div style="margin:1rem; width: 268px">
             <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
-            <div style="margin:1.25rem; width: 100%">
+            <div style="margin-top:1rem; width: 100%">
               <div
                 aria-hidden="true"
                 style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);"

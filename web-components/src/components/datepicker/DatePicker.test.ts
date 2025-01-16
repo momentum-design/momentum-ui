@@ -102,13 +102,13 @@ describe("DatePicker Component", () => {
     el.handleDateInputChange(event);
     expect(el.value).toBe("");
     expect(eventSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
+      new CustomEvent("date-input-change",{
         bubbles: true,
         composed: true,
-        detail: expect.objectContaining({
+        detail: {
           sourceEvent: event,
           value: ""
-        })
+        }
       })
     );
   });

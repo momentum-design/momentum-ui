@@ -82,9 +82,6 @@
 }
 
 .selected-border-bottom {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--md-gray-20);
 }
 
-.selected-border-top {
-  border-top: 1px solid black;
-}

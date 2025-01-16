@@ -18,7 +18,6 @@ export namespace ParentComponentWithMdOverlay {
     @internalProperty() totalRecords = 0;
     @internalProperty() loadedRecords = 0;
     @internalProperty() lastSelectedIdByOrder = "";
-    @internalProperty() firstSelectedIdByOrder = "";
     @internalProperty() selectAllItems = false;
     @internalProperty() unselectAllItems = false;
     @internalProperty() disabledItems: string[] = [];
@@ -99,10 +98,8 @@ export namespace ParentComponentWithMdOverlay {
         unselectedItems.sort((a: any, b: any) => this.naturalSort(a.name, b.name));
 
         if (selectedItems.length > 0) {
-          this.firstSelectedIdByOrder = selectedItems[0].id;
           this.lastSelectedIdByOrder = selectedItems[selectedItems.length - 1].id;
         } else {
-          this.firstSelectedIdByOrder = "";
           this.lastSelectedIdByOrder = "";
         }
         return [...selectedItems, ...unselectedItems];
@@ -170,7 +167,10 @@ export namespace ParentComponentWithMdOverlay {
           <div style="margin:1.25rem; width: 100%">
             <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
             <div style="margin:1.25rem; width: 100%">
-              <div aria-hidden="true" style="padding-left:15px">
+              <div
+                aria-hidden="true"
+                style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);"
+              >
                 <md-checkbox
                   id="select-all-one"
                   class="selectAll"
@@ -188,7 +188,6 @@ export namespace ParentComponentWithMdOverlay {
                 ariaLabelList="state selector"
                 .totalRecords=${this.totalRecords}
                 .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
-                .firstSelectedIdByOrder=${this.firstSelectedIdByOrder}
                 .isMultiSelectEnabled=${this.isMultiSelectEnabled}
                 .groupOnMultiSelect=${this.groupOnMultiSelect}
                 .selectAllItems=${this.selectAllItems}

@@ -22,7 +22,6 @@ export namespace AdvanceList {
     @property({ type: Boolean }) isError = false;
     @property({ type: String }) containerHeight = "292px";
     @property({ type: String }) lastSelectedIdByOrder = "";
-    @property({ type: String }) firstSelectedIdByOrder = "";
     @property({ type: Boolean }) selectAllItems = false;
     @property({ type: Boolean }) unselectAllItems = false;
     @property({ type: Array }) disabledItems: string[] = [];
@@ -112,13 +111,8 @@ export namespace AdvanceList {
 
         if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
           wrapper.classList.add("selected-border-bottom");
-          wrapper.classList.remove("selected-border-top");
-        } else if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.firstSelectedIdByOrder}`) {
-          wrapper.classList.add("selected-border-top");
-          wrapper.classList.remove("selected-border-bottom");
         } else {
           wrapper.classList.remove("selected-border-bottom");
-          wrapper.classList.remove("selected-border-top");
         }
 
         //active item should be focusable

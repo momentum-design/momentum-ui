@@ -84,7 +84,7 @@ export namespace ParentComponentWithMdOverlay {
           ariaLabel: itemName,
           template: (data: any, index: number) =>
             html`<div
-              style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row nowrap;justify-content:flex-start;align-items:center;line-height:30px;"
+              style="position:relative;min-height:1.25rem;box-sizing: border-box;display:flex;flex-flow:row nowrap;justify-content:flex-start;align-items:center;line-height:26px;"
               ?disabled=${disabled}
               aria-hidden="true"
               indexing="${index}"
@@ -176,9 +176,9 @@ export namespace ParentComponentWithMdOverlay {
             <md-icon slot="input-section-right" name=${this.inputIcon} iconset="momentumDesign"></md-icon>
           </md-input>
 
-          <div style="margin:1rem; width: 268px">
+          <div style="margin:0.5rem; width: 100%">
             <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
-            <div style="margin-top:1rem; width: 100%">
+            <div style="margin-top:0.5rem; width: 100%">
               <div
                 aria-hidden="true"
                 style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);"

@@ -119,6 +119,50 @@ describe("advanceList Component", () => {
       }
     });
 
+    test("should select and unselect multiple items on click with multi select", async () => {
+      const items = el.shadowRoot?.querySelectorAll(".default-wrapper");
+      expect(items).not.toBeNull();
+      el.isMultiSelectEnabled = true;
+      const firstItem = items?.[0] as HTMLElement;
+      const secondItem = items?.[1] as HTMLElement;
+      if (firstItem) {
+        firstItem.click();
+        await el.updateComplete;
+        await nextFrame();
+        expect(firstItem.getAttribute("selected")).toBe("true");
+      }
+      if (secondItem) {
+        secondItem.click();
+        await el.updateComplete;
+        await nextFrame();
+        expect(firstItem.getAttribute("selected")).toBe("true");
+      }
+      if (firstItem) {
+        firstItem.click();
+        await el.updateComplete;
+        await nextFrame();
+        expect(firstItem.getAttribute("selected")).toBe("false");
+      }
+    });
+
+    test("should set selectAllItems as true on checking all items with multi select", async () => {
+      const items = Array.from(el.shadowRoot?.querySelectorAll(".default-wrapper") || []) as HTMLElement[];
+      expect(items).not.toBeNull();
+      el.isMultiSelectEnabled = true;
+      items.forEach(async (item) => {
+        if (item) {
+          item.click();
+          await el.updateComplete;
+        }
+      });
+      expect(el.selectAllItems).toBe(true);
+      if (items[0]) {
+        items[0].click();
+        await el.updateComplete;
+        expect(el.selectAllItems).toBe(false);
+      }
+    });
+
     test("should not select disabled item on click", async () => {
       const disabledId = el.items[10].id;
       (el as any).updateSelectedState();

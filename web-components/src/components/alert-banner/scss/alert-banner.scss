@@ -7,11 +7,11 @@
     padding: constants.$alert-banner__padding;
     position: relative;
     text-align: center;
-    border-radius: var(--alert-banner-border-radius);
+    border-radius: constants.$alert-banner__border-radius;
     font-family: $brand-font-regular;
     font-weight: var(--brand-font-weight-regular);
     line-height: constants.$alert-banner__line-height;
-
+    
     &.md-alert-banner {
       &--default {
         @include mixins.alert-banner-color(
@@ -45,12 +45,11 @@
     &__text {
       font-size: constants.$alert-banner__font-size;
       padding: constants.$alert-banner-text__padding;
-      text-align: center;
 
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: constants.$alert-banner__flexbox-gap;
 
       a {
         color: inherit;

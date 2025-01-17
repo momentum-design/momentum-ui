@@ -147,7 +147,9 @@ export namespace ParentComponentWithMdOverlay {
     }
 
     getSelectAllLabel() {
-      return this.items.length < 100 ? "Select all" : `Select ${this.loadedRecords} of ${this.totalRecords}`;
+      return this.items.length < 100
+        ? "Select all"
+        : `Select ${this.loadedRecords - this.disabledItems.length} of ${this.totalRecords}`;
     }
 
     render() {

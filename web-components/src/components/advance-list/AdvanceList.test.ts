@@ -63,7 +63,7 @@ describe("advanceList Component", () => {
         .items=${initialItems}
         .isLoading=${false}
         .isError=${false}
-        .value=${"2"}
+        .value=${["2"]}
         ariaRoleList="listbox"
         ariaLabelList="state selector"
         .totalRecords=${100}
@@ -159,7 +159,7 @@ describe("advanceList Component", () => {
     test("should handle ArrowDown for preselected value", async () => {
       el.items = createItems(1, 20);
       el.activeId = "";
-      el.value = el.items[3].id;
+      el.value = [el.items[3].id];
 
       el.requestUpdate();
       await el.updateComplete;
@@ -185,7 +185,7 @@ describe("advanceList Component", () => {
     test("should handle ArrowUp for preselected value", async () => {
       el.items = createItems(1, 20);
       el.activeId = "";
-      el.value = el.items[4].id; // Preselect item 5
+      el.value = [el.items[4].id]; // Preselect item 5
 
       el.requestUpdate();
       await el.updateComplete;
@@ -272,7 +272,6 @@ describe("advanceList Component", () => {
     });
 
     describe("Accessibility and Error Handling", () => {
-
       test("should apply correct ARIA role and label", async () => {
         const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");
         expect(wrapper?.getAttribute("role")).toBe("listbox");

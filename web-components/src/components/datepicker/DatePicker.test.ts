@@ -94,4 +94,22 @@ describe("DatePicker Component", () => {
     `);
     expect(el).not.toBeNull();
   });
+
+  test("should update value and fire the date-input-change event when handleDateInputChange is called with an empty string", async () => {
+    const el: DatePicker.ELEMENT = await fixture(html` <md-datepicker></md-datepicker> `);
+    const eventSpy = jest.spyOn(el, "dispatchEvent");
+    const event = new CustomEvent("input-change", { detail: { value: "" } });
+    el.handleDateInputChange(event);
+    expect(el.value).toBe("");
+    expect(eventSpy).toHaveBeenCalledWith(
+      new CustomEvent("date-input-change",{
+        bubbles: true,
+        composed: true,
+        detail: {
+          sourceEvent: event,
+          value: ""
+        }
+      })
+    );
+  });
 });

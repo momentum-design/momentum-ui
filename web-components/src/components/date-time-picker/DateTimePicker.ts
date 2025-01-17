@@ -63,8 +63,10 @@ export namespace DateTimePicker {
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
 
-      if (this.value && changedProperties.has("value")) {
-        this.parseValueForVisuals(this.value);
+      if (changedProperties.has("value")) {
+        if (this.value) {
+          this.parseValueForVisuals(this.value);
+        }
         if (!this.firstCycle) {
           this.updateDateTimeObject();
         } else {
@@ -98,9 +100,7 @@ export namespace DateTimePicker {
     };
 
     handleDateTimeInputChange = (event: CustomEvent) => {
-      if (event?.detail?.value) {
-        this.value = event?.detail?.value;
-      }
+      this.value = event?.detail?.value;
     };
 
     parseValueForVisuals = (value: string) => {
@@ -113,19 +113,23 @@ export namespace DateTimePicker {
     updateDateTimeObject = () => {
       if (this.value) {
         this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
-        this.dispatchEvent(
-          new CustomEvent(`date-time-change`, {
-            bubbles: true,
-            composed: true,
-            detail: {
-              dateTimeString: this.value,
-              dateTime: this.fullDateTime,
-              locale: this.locale,
-              twentyFourHourFormat: this.twentyFourHourFormat
-            }
-          })
-        );
       }
+      else{
+        this.fullDateTime = DateTime.fromISO("", { locale: this.locale });;
+      }
+
+      this.dispatchEvent(
+        new CustomEvent(`date-time-change`, {
+          bubbles: true,
+          composed: true,
+          detail: {
+            dateTimeString: this.value,
+            dateTime: this.fullDateTime,
+            locale: this.locale,
+            twentyFourHourFormat: this.twentyFourHourFormat
+          }
+        })
+      );
     };
 
     combineDateAndTimeValues = (dateString: string | undefined, timeString: string) => {

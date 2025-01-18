@@ -22,7 +22,7 @@ If you have questions about how to use a component or element in Momentum-UI, pl
 
 ### <a name="issue"></a> Found an Issue?
 
-If you find a bug in the source code or a mistake in the documentation, you can help us by
+If you find a bug in the source code or a mistake in t1he documentation, you can help us by
 submitting an issue to our [GitHub Repository](https://github.com/momentum-design/momentum-ui/issues).  Even better you can submit a Pull Request
 with a fix.
 

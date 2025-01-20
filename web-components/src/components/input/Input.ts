@@ -293,14 +293,21 @@ export namespace Input {
     }
 
     handleClear(event: MouseEvent | KeyboardEvent) {
-      event.preventDefault();
-      event.stopPropagation();
       if (event.type === "keydown") {
         const { code } = event as KeyboardEvent;
         if (code !== Key.Space && code !== Key.Enter) {
           return;
         }
+
+        event.preventDefault();
+        event.stopPropagation();
+      } else if (event.type === "click") {
+        //When handling the click clear button do not propagate the event to the parent
+        //As this will close overlay menus that we do not want to close
+        event.preventDefault();
+        event.stopPropagation();
       }
+
       this.input.focus();
       this.dispatchEvent(
         new CustomEvent("input-clear", {

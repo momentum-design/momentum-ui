@@ -31,7 +31,7 @@
 
     h2 {
       font-size: inherit;
-      font-weight: inherit;
+      font-weight: var(--brand-font-weight-bold, inherit);
       line-height: inherit;
       margin: 0;
     }

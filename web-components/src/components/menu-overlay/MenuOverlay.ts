@@ -167,7 +167,7 @@ export namespace MenuOverlay {
     }
 
     checkIsInputField(element: HTMLElement) {
-      if (element && element.tagName && element.tagName.toLowerCase() === "md-input") {
+      if (element?.tagName?.toLowerCase() === "md-input") {
         return true;
       }
       return false;

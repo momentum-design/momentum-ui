@@ -159,8 +159,13 @@ export namespace AdvanceList {
             event.preventDefault();
             this.isUserNavigated = true;
             // incase of preselected value
-            if (this.activeId === "" && this.value) {
-              this.activeId = this.value[0];
+            if (this.activeId === "" && this.value.length > 0) {
+              this.activeId = this.value[0];  
+              return;
+            } 
+            else if(this.activeId === "" && this.items.length > 0){
+              this.activeId = this.items[0].id;
+              return;
             }
             const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
             if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
@@ -185,6 +190,14 @@ export namespace AdvanceList {
             }
           }
           break;
+        case Key.Tab:
+          {
+            if (!this.isMultiSelectEnabled && this.activeId === "" && this.value.length > 0) {
+              this.activeId = this.value[0];  
+              return;
+            } 
+            break;
+          }
 
         case Key.Enter:
           {

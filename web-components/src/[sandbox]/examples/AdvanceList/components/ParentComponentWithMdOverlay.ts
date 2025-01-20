@@ -19,10 +19,12 @@ export namespace ParentComponentWithMdOverlay {
     @internalProperty() loadedRecords = 0;
     @internalProperty() lastSelectedIdByOrder = "";
     @internalProperty() selectAllItems = false;
+    @internalProperty() isMenuOverlayOpen = false;
     @internalProperty() disabledItems: string[] = [];
     @internalProperty() inputIcon = "arrow-down-bold";
     @internalProperty() overlayTriggerPlaceholder = "Search field with tabs";
 
+    private counter = 0;
     constructor() {
       super();
       this.items = [];
@@ -40,11 +42,18 @@ export namespace ParentComponentWithMdOverlay {
     }
 
     generateUUID() {
-      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+      const baseUUID = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
         const r = (Math.random() * 16) | 0;
         const v = c === "x" ? r : (r & 0x3) | 0x8;
         return v.toString(16);
       });
+    
+      // Increment the counter and pad with zeros to ensure 3 characters
+      this.counter++;
+      const counterString = this.counter.toString().padStart(3, "0");
+    
+      // Replace the last 3 characters of the UUID with the counter
+      return baseUUID.slice(0, -3) + counterString;
     }
 
     async loadMoreItems() {
@@ -75,7 +84,7 @@ export namespace ParentComponentWithMdOverlay {
         const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
         const disabled = i % 2 === 0 ? "true" : "";
         if (disabled) {
-          this.disabledItems.push(id);
+          // this.disabledItems.push(id);
         }
         return {
           name: itemName,
@@ -89,7 +98,7 @@ export namespace ParentComponentWithMdOverlay {
               aria-hidden="true"
               indexing="${index}"
             >
-              <md-checkbox .disabled=${disabled === "true"}>${data.name}</md-checkbox>
+              <md-checkbox >${data.name}</md-checkbox>
             </div>`
         };
       });
@@ -125,6 +134,14 @@ export namespace ParentComponentWithMdOverlay {
 
     private handleListItemChange(event: CustomEvent) {
       this.value = event.detail.selected;
+     // Filter and sort the selected items based on the `name` property
+      const selectedItems = this.items
+      .filter((item: any) => this.value.includes(item.id))
+      .sort((a: any, b: any) => this.naturalSort(a.name, b.name));
+
+      // Update `this.value` with the sorted IDs
+      this.value = selectedItems.map((item: any) => item.id);
+
       this.updatePlaceholder();
       if (this.value.length === this.items.length - this.disabledItems.length) {
         this.selectAllItems = true;
@@ -162,9 +179,12 @@ export namespace ParentComponentWithMdOverlay {
           @menu-overlay-open=${() => {
             this.items = this.getOrderedItems();
             this.inputIcon = "arrow-up-bold";
+            this.isMenuOverlayOpen = true;
+
           }}
           @menu-overlay-close=${() => {
             this.inputIcon = "arrow-down-bold";
+            this.isMenuOverlayOpen = false;
           }}
         >
           <md-input
@@ -182,7 +202,6 @@ export namespace ParentComponentWithMdOverlay {
             <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
             <div style="margin-top:0.5rem; width: 100%">
               <div
-                aria-hidden="true"
                 style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);"
               >
                 <md-checkbox
@@ -193,7 +212,9 @@ export namespace ParentComponentWithMdOverlay {
                   >${this.getSelectAllLabel()}</md-checkbox
                 >
               </div>
-              <md-advance-list
+            ${this.isMenuOverlayOpen
+                ? html`
+                <md-advance-list
                 .items=${this.items}
                 .isLoading=${this.isLoading}
                 .isError=${this.isError}
@@ -210,9 +231,11 @@ export namespace ParentComponentWithMdOverlay {
                 @load-more=${this.loadMoreItems}
               >
                 <md-spinner size="24" slot="spin-loader"></md-spinner>
-              </md-advance-list>
+              </md-advance-list>`
+                : html``
+                }
             </div>
-            <div aria-hidden="true">
+            <div>
               <md-button @button-click=${this.resetFilter} variant="primary">Reset the filter</md-button>
             </div>
           </div>

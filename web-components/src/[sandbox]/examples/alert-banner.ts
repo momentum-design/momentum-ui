@@ -1,13 +1,27 @@
 import "@/components/alert-banner/AlertBanner";
 import "@/components/button/Button";
+import { Dropdown } from "@/components/dropdown/Dropdown";
 import { customElement, html, LitElement, property } from "lit-element";
+
+enum BannerType {
+  Default = "default",
+  Warning = "warning",
+  Error = "error",
+  Success = "success"
+}
 
 @customElement("alert-banner-template-sandbox")
 export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: Boolean }) default = false;
+  @property({ type: Boolean }) refresh = false;
   @property({ type: Boolean }) warning = false;
   @property({ type: Boolean }) error = false;
   @property({ type: Boolean }) success = false;
+  @property({ type: Number }) refreshClickCount = 0;
+
+  iconBannerType = BannerType.Default;
+  showLeftIcon = true;
+  showRefreshButton = true;
 
   async openAlert(kind: string) {
     switch (kind) {
@@ -22,6 +36,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         break;
       case "success":
         this.success = true;
+        break;
+      case "refresh":
+        this.refresh = true;
         break;
       default:
         break;
@@ -42,6 +59,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
         break;
       case "success":
         this.success = false;
+        break;
+      case "refresh":
+        this.refresh = false;
         break;
       default:
         break;
@@ -93,6 +113,47 @@ export class AlertBannerTemplateSandbox extends LitElement {
         @alertBanner-hide=${() => this.hideAlert("success")}
         message="success text from a message attribute"
       ></md-alert-banner>
+
+      <h2>New Momentum Alert Banner With Icons</h2>
+      <div style="margin-bottom: 15px; display: flex; align-items: center;">
+        Type:
+        <md-dropdown
+          .options="${Object.values(BannerType)}"
+          .defaultOption="${BannerType.Default}"
+          @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+            this.iconBannerType = e.detail.option as BannerType;
+          }}"
+        ></md-dropdown>
+        <md-checkboxgroup group-label="group_process" alignment="horizontal">
+          <md-checkbox
+            slot="checkbox"
+            ?checked=${this.showLeftIcon}
+            @checkbox-change=${() => (this.showLeftIcon = !this.showLeftIcon)}
+            >Show left icon</md-checkbox
+          >
+          <md-checkbox
+            slot="checkbox"
+            ?checked=${this.showRefreshButton}
+            @checkbox-change=${() => (this.showRefreshButton = !this.showRefreshButton)}
+            >Show refresh button</md-checkbox
+          >
+        </md-checkboxgroup>
+        <md-button variant="secondary" @click=${() => this.openAlert("refresh")}>Trigger Alert with Icon</md-button>
+      </div>
+      <md-alert-banner
+        ?showBannerTypeIcon=${this.showLeftIcon}
+        ?showRefreshButton=${this.showRefreshButton}
+        ?show=${this.refresh}
+        type=${this.iconBannerType}
+        @alertBanner-hide=${() => this.hideAlert("refresh")}
+        @alertBanner-refresh-button-click=${() => {
+          this.refreshClickCount++;
+          console.log("Refresh button clicked", this.refreshClickCount, "times.");
+        }}
+      >
+        Refresh to see 5 new interactions
+      </md-alert-banner>
+      <span>Refresh button clicked <strong>${this.refreshClickCount}</strong> times.</span>
     `;
   }
 }

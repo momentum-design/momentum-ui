@@ -11,7 +11,7 @@
     font-family: $brand-font-regular;
     font-weight: var(--brand-font-weight-regular);
     line-height: constants.$alert-banner__line-height;
-
+    
     &.md-alert-banner {
       &--default {
         @include mixins.alert-banner-color(
@@ -45,11 +45,20 @@
     &__text {
       font-size: constants.$alert-banner__font-size;
       padding: constants.$alert-banner-text__padding;
-      text-align: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: constants.$alert-banner__flexbox-gap;
 
       a {
         color: inherit;
         text-decoration: underline;
+      }
+
+      > * {
+        align-self: center;
+        height: auto;
       }
     }
 

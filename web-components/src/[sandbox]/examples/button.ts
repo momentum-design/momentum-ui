@@ -208,6 +208,7 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="red"><span slot="text">red</span></md-button>
         <md-button variant="green"><span slot="text">green</span></md-button>
         <md-button variant="ghost"><span slot="text">ghost</span></md-button>
+        <md-button variant="ghostInheritTextColor"><span slot="text">ghostInheritTextColor</span></md-button>
         <md-button variant="white"><span slot="text">White</span></md-button>
         <md-button variant="promotional"><span slot="text">Promotional</span></md-button>
         <md-button variant="tab"><span slot="text">tab</span></md-button>

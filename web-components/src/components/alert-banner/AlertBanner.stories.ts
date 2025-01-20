@@ -13,7 +13,14 @@ import { html } from "lit-html";
 import mdx from "./AlertBanner.mdx";
 
 const render = (args: Args) => html`
-  <md-alert-banner show type="${args.type}" ?closable=${args.closable} message="${args.textContent}">
+  <md-alert-banner
+    ?show=${args.show}
+    type="${args.type}"
+    ?closable=${args.closable}
+    message="${args.textContent}"
+    ?showBannerTypeIcon=${args.showBannerTypeIcon}
+    ?showRefreshButton=${args.showRefreshButton}
+  >
     ${args.textContent ? `${args.textContent}` : `Text with slotted tag element`}
   </md-alert-banner>
 `;
@@ -22,7 +29,10 @@ export const AlertBanner: StoryObj = {
   args: {
     type: "default",
     closable: false,
-    textContent: "Test Alert Message"
+    show: true,
+    textContent: "Test Alert Message",
+    showBannerTypeIcon: true,
+    showRefreshButton: true
   },
   render: render
 };

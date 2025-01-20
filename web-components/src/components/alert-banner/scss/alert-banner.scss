@@ -7,7 +7,7 @@
     padding: constants.$alert-banner__padding;
     position: relative;
     text-align: center;
-    border-radius: constants.$alert-banner__border-radius;
+    border-radius: var(--alert-banner-border-radius);
     font-family: $brand-font-regular;
     font-weight: var(--brand-font-weight-regular);
     line-height: constants.$alert-banner__line-height;

@@ -214,7 +214,7 @@ export namespace DatePicker {
         : undefined;
     };
 
-    isValueValid = () => {
+    isValueValid = (): boolean => {
       if (!this.value && this.value !== EMPTY_STRING) return true;
       const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
       const regexString =
@@ -227,7 +227,7 @@ export namespace DatePicker {
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       const isValid =
-        this.value &&
+        !!this.value &&
         regex.test(this.value) &&
         !isDayDisabled(DateTime.fromISO(this.value, { locale: this.locale }), filters);
 
@@ -261,7 +261,7 @@ export namespace DatePicker {
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
                   @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
                   ?disabled=${this.disabled}
-                  hide-message=${!this.errorMessage && this.isValueValid()}
+                  ?hide-message=${!this.errorMessage && this.isValueValid()}
                   ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
                   .messageArr=${this.errorMessage
                     ? [{ message: this.errorMessage, type: "error" }]

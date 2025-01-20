@@ -344,4 +344,50 @@ describe("Input Component", () => {
     const rightTemplate = element.shadowRoot!.querySelector(".md-input__after")?.querySelector("md-button");
     expect(rightTemplate).toBeNull();
   });
+
+  test("Should propogate tab key event", async () => {
+    //Test case to ensure issue where the clear button became a focus trap does not reoccur
+    const el = await fixture(html` <md-input clear value="test value"></md-input> `);
+
+    const input = el.shadowRoot!.querySelector("input") as HTMLInputElement;
+    const clearButton = el.shadowRoot!.querySelector(".md-input__icon-clear") as HTMLElement;
+
+    // Focus the input and then the clear button
+    input.focus();
+    clearButton.focus();
+
+    // Simulate Tab key press
+    const tabEvent = new KeyboardEvent("keydown", {
+      key: "Tab",
+      bubbles: true,
+      cancelable: true
+    });
+    clearButton.dispatchEvent(tabEvent);
+
+    // Check if the event was propagated and focus moved to the next element
+    expect(document.activeElement).not.toBe(clearButton);
+  });
+
+  test("Clicking clear button should not propogate", async () => {
+    //The focus trap bug was caused by not wanting to propogate the click event
+    //Test that this still works
+    const el = await fixture(html` <md-input clear value="test value"></md-input> `);
+
+    const input = el.shadowRoot!.querySelector("input") as HTMLInputElement;
+    const clearButton = el.shadowRoot!.querySelector(".md-input__icon-clear") as HTMLElement;
+
+    // Focus the input and then the clear button
+    input.focus();
+    clearButton.focus();
+
+    // Simulate Click event
+    const clickEvent = new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true
+    });
+    clearButton.dispatchEvent(clickEvent);
+
+    // Check if the event was propagated and focus moved to the next element
+    expect(document.activeElement).not.toBe(clearButton);
+  });
 });

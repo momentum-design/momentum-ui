@@ -63,7 +63,7 @@ describe("advanceList Component", () => {
         .items=${initialItems}
         .isLoading=${false}
         .isError=${false}
-        .value=${"2"}
+        .value=${["2"]}
         ariaRoleList="listbox"
         ariaLabelList="state selector"
         .totalRecords=${100}
@@ -119,6 +119,50 @@ describe("advanceList Component", () => {
       }
     });
 
+    test("should select and unselect multiple items on click with multi select", async () => {
+      const items = el.shadowRoot?.querySelectorAll(".default-wrapper");
+      expect(items).not.toBeNull();
+      el.isMultiSelectEnabled = true;
+      const firstItem = items?.[0] as HTMLElement;
+      const secondItem = items?.[1] as HTMLElement;
+      if (firstItem) {
+        firstItem.click();
+        await el.updateComplete;
+        await nextFrame();
+        expect(firstItem.getAttribute("selected")).toBe("true");
+      }
+      if (secondItem) {
+        secondItem.click();
+        await el.updateComplete;
+        await nextFrame();
+        expect(firstItem.getAttribute("selected")).toBe("true");
+      }
+      if (firstItem) {
+        firstItem.click();
+        await el.updateComplete;
+        await nextFrame();
+        expect(firstItem.getAttribute("selected")).toBe("false");
+      }
+    });
+
+    test("should set selectAllItems as true on checking all items with multi select", async () => {
+      const items = Array.from(el.shadowRoot?.querySelectorAll(".default-wrapper") || []) as HTMLElement[];
+      expect(items).not.toBeNull();
+      el.isMultiSelectEnabled = true;
+      items.forEach(async (item) => {
+        if (item) {
+          item.click();
+          await el.updateComplete;
+        }
+      });
+      expect(el.selectAllItems).toBe(true);
+      if (items[0]) {
+        items[0].click();
+        await el.updateComplete;
+        expect(el.selectAllItems).toBe(false);
+      }
+    });
+
     test("should not select disabled item on click", async () => {
       const disabledId = el.items[10].id;
       (el as any).updateSelectedState();
@@ -159,7 +203,7 @@ describe("advanceList Component", () => {
     test("should handle ArrowDown for preselected value", async () => {
       el.items = createItems(1, 20);
       el.activeId = "";
-      el.value = el.items[3].id;
+      el.value = [el.items[3].id];
 
       el.requestUpdate();
       await el.updateComplete;
@@ -185,7 +229,7 @@ describe("advanceList Component", () => {
     test("should handle ArrowUp for preselected value", async () => {
       el.items = createItems(1, 20);
       el.activeId = "";
-      el.value = el.items[4].id; // Preselect item 5
+      el.value = [el.items[4].id]; // Preselect item 5
 
       el.requestUpdate();
       await el.updateComplete;
@@ -253,7 +297,7 @@ describe("advanceList Component", () => {
     test("should update selected state and handle disabled items", async () => {
       el.items = createItems(1, 20);
       el.activeId = el.items[1].id;
-      el.selectedItemId = el.items[1].id;
+      el.selectedItemsIds = [el.items[1].id];
 
       (el as any).updateSelectedState();
       await nextFrame();
@@ -272,7 +316,6 @@ describe("advanceList Component", () => {
     });
 
     describe("Accessibility and Error Handling", () => {
-
       test("should apply correct ARIA role and label", async () => {
         const wrapper = el.shadowRoot?.querySelector(".md-advance-list-wrapper");
         expect(wrapper?.getAttribute("role")).toBe("listbox");

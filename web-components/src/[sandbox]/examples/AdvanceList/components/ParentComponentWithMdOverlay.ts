@@ -180,7 +180,7 @@ export namespace ParentComponentWithMdOverlay {
             this.items = this.getOrderedItems();
             this.inputIcon = "arrow-up-bold";
             this.isMenuOverlayOpen = true;
-
+            document.dispatchEvent(new CustomEvent("on-widget-update"));
           }}
           @menu-overlay-close=${() => {
             this.inputIcon = "arrow-down-bold";

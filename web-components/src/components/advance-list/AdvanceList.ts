@@ -154,67 +154,66 @@ export namespace AdvanceList {
     }
     handleKeyDown = (event: KeyboardEvent): void => {
       switch (event.code) {
-        case Key.ArrowDown:
-          {
-            event.preventDefault();
-            this.isUserNavigated = true;
-            // incase of preselected value
-            if (this.activeId === "" && this.value.length > 0) {
-              this.activeId = this.value[0];  
-              return;
-            } 
-            else if(this.activeId === "" && this.items.length > 0){
-              this.activeId = this.items[0].id;
-              return;
-            }
-            const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-            if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
-              this.scrollIndex = currentIndex + 1;
-              this.activeId = this.items[this.scrollIndex].id;
-            }
+        case Key.ArrowDown: {
+          event.preventDefault();
+          this.isUserNavigated = true;
+    
+          // In case of preselected value
+          if (this.activeId === "" && this.value.length > 0) {
+            this.activeId = this.value[0];
+            return;
+          } else if (this.activeId === "" && this.items.length > 0) {
+            this.activeId = this.items[0].id;
+            return;
+          }
+          const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
+          if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
+            this.scrollIndex = currentIndex + 1;
+            this.activeId = this.items[this.scrollIndex].id;
           }
           break;
-
-        case Key.ArrowUp:
-          {
-            event.preventDefault();
-            this.isUserNavigated = true;
-            // in case of preselected value
-            if (this.activeId === "" && this.value) {
-              this.activeId = this.value[0];
-            }
-            const upIndex = this.items.findIndex((item) => item.id === this.activeId);
-            if (upIndex > 0) {
-              this.scrollIndex = upIndex - 1;
-              this.activeId = this.items[this.scrollIndex].id;
-            }
+        }
+    
+        case Key.ArrowUp: {
+          event.preventDefault();
+          this.isUserNavigated = true;
+    
+          // In case of preselected value
+          if (this.activeId === "" && this.value.length > 0) {
+            this.activeId = this.value[0];
+          }
+    
+          const upIndex = this.items.findIndex((item) => item.id === this.activeId);
+          if (upIndex > 0) {
+            this.scrollIndex = upIndex - 1;
+            this.activeId = this.items[this.scrollIndex].id;
           }
           break;
-        case Key.Tab:
-          {
-            if (!this.isMultiSelectEnabled && this.activeId === "" && this.value.length > 0) {
-              this.activeId = this.value[0];  
-              return;
-            } 
-            break;
+        }
+    
+        case Key.Tab: {
+          if (this.activeId === "" && this.value.length > 0) {
+            this.activeId = this.value[0];
+            return;
           }
-
-        case Key.Space:
-          {
-            event.preventDefault();
-            if (this.activeId) {
-              const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
-              if (selectedItem) {
-                const isDisabled =
-                  selectedItem.getAttribute("aria-disabled") === "true" || selectedItem.hasAttribute("disabled");
-                if (!isDisabled) {
-                  this.updateItemSelection(selectedItem as HTMLElement);
-                }
+          break;
+        }
+    
+        case Key.Space: {
+          event.preventDefault();
+          if (this.activeId) {
+            const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
+            if (selectedItem) {
+              const isDisabled =
+                selectedItem.getAttribute("aria-disabled") === "true" || selectedItem.hasAttribute("disabled");
+              if (!isDisabled) {
+                this.updateItemSelection(selectedItem as HTMLElement);
               }
             }
           }
           break;
-
+        }
+    
         default:
           break;
       }

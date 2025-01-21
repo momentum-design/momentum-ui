@@ -84,7 +84,7 @@ export namespace ParentComponentWithMdOverlay {
         const itemName = `Item ${(page - 1) * itemsPerPage + i + 1}`;
         const disabled = i % 2 === 0 ? "true" : "";
         if (disabled) {
-          // this.disabledItems.push(id);
+          this.disabledItems.push(id);
         }
         return {
           name: itemName,
@@ -98,7 +98,7 @@ export namespace ParentComponentWithMdOverlay {
               aria-hidden="true"
               indexing="${index}"
             >
-              <md-checkbox >${data.name}</md-checkbox>
+              <md-checkbox .disabled=${disabled} >${data.name}</md-checkbox>
             </div>`
         };
       });

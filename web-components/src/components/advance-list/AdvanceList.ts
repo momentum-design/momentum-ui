@@ -79,7 +79,7 @@ export namespace AdvanceList {
     }
 
     setCheckboxAttributes(isSelected: boolean, wrapper: HTMLElement) {
-      if (isSelected && wrapper.querySelector("md-checkbox")?.getAttribute("aria-disabled") === "false") {
+      if (isSelected && (!wrapper.firstElementChild?.hasAttribute('disabled') || wrapper.firstElementChild?.getAttribute("aria-disabled") !== "true")) {
         wrapper.querySelector("md-checkbox")?.setAttribute("checked", "true");
       } else {
         wrapper.querySelector("md-checkbox")?.removeAttribute("checked");
@@ -101,7 +101,7 @@ export namespace AdvanceList {
         const isSelected = this.selectedItemsIds.some((id) => wrapper.id === `${prefixId}${id}`);
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
-        if (this.groupOnMultiSelect && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
+        if (this.groupOnMultiSelect && this.value.length > 0 && this.items.length !== this.value.length && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
           wrapper.classList.add("selected-border-bottom");
         } else {
           wrapper.classList.remove("selected-border-bottom");
@@ -153,7 +153,7 @@ export namespace AdvanceList {
       return (this.isLoading || this.isError) && index === this.items.length - 2;
     }
     handleKeyDown = (event: KeyboardEvent): void => {
-      switch (event.key) {
+      switch (event.code) {
         case Key.ArrowDown:
           {
             event.preventDefault();
@@ -199,7 +199,7 @@ export namespace AdvanceList {
             break;
           }
 
-        case Key.Enter:
+        case Key.Space:
           {
             event.preventDefault();
             if (this.activeId) {
@@ -319,6 +319,7 @@ export namespace AdvanceList {
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
           aria-activedescendant=${this.getActiveDescendant()}
+          aria-multiselectable=${this.isMultiSelectEnabled}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}

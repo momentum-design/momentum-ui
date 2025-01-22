@@ -13,7 +13,6 @@ export namespace ParentComponentWithMdOverlay {
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
-    @property({ type: Boolean }) isMultiSelectEnabled = true;
     @property({ type: Boolean }) groupOnMultiSelect = true;
     @internalProperty() totalRecords = 0;
     @internalProperty() loadedRecords = 0;
@@ -223,7 +222,7 @@ export namespace ParentComponentWithMdOverlay {
                 ariaLabelList="state selector"
                 .totalRecords=${this.totalRecords}
                 .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
-                .isMultiSelectEnabled=${this.isMultiSelectEnabled}
+                is-multi
                 .groupOnMultiSelect=${this.groupOnMultiSelect}
                 .selectAllItems=${this.selectAllItems}
                 .disabledItems=${this.disabledItems}

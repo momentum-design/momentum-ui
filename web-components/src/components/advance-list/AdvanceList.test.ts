@@ -122,7 +122,7 @@ describe("advanceList Component", () => {
     test("should select and unselect multiple items on click with multi select", async () => {
       const items = el.shadowRoot?.querySelectorAll(".default-wrapper");
       expect(items).not.toBeNull();
-      el.isMultiSelectEnabled = true;
+      el.isMulti = true;
       const firstItem = items?.[0] as HTMLElement;
       const secondItem = items?.[1] as HTMLElement;
       if (firstItem) {
@@ -148,7 +148,7 @@ describe("advanceList Component", () => {
     test("should set selectAllItems as true on checking all items with multi select", async () => {
       const items = Array.from(el.shadowRoot?.querySelectorAll(".default-wrapper") || []) as HTMLElement[];
       expect(items).not.toBeNull();
-      el.isMultiSelectEnabled = true;
+      el.isMulti = true;
       items.forEach(async (item) => {
         if (item) {
           item.click();
@@ -236,6 +236,7 @@ describe("advanceList Component", () => {
       await nextFrame();
 
       const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
+      el.handleKeyDown(arrowUpEvent);
       el.handleKeyDown(arrowUpEvent);
       await nextFrame();
 

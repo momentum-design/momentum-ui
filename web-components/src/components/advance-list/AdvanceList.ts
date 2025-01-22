@@ -12,9 +12,8 @@ export namespace AdvanceList {
   export class ELEMENT extends FocusMixin(LitElement) {
     @property({ type: Array }) items: any[] = [];
     @property({ type: Boolean }) isLoading = false;
-    @property({ type: Boolean }) isMultiSelectEnabled = false;
+    @property({ type: Boolean, attribute: "is-multi" }) isMulti = false;
     @property({ type: Boolean }) groupOnMultiSelect = false;
-    @property({ type: Array }) selectedItemsIds: string[] = [];
     @property({ type: Array }) value: string[] = [];
     @property({ type: String }) ariaRoleList = "listbox";
     @property({ type: String }) ariaRoleListItem = "option";
@@ -29,6 +28,7 @@ export namespace AdvanceList {
     @property({ type: Number }) totalRecords = 0;
     @internalProperty() scrollIndex = -1;
     @internalProperty() activeId = "";
+    @internalProperty() selectedItemsIds: string[] = [];
     @internalProperty() isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
 
     connectedCallback(): void {
@@ -75,7 +75,7 @@ export namespace AdvanceList {
           this.updateSelectedState();
           this.notifySelectedChange();
         }
-      }
+      }   
     }
 
     setCheckboxAttributes(isSelected: boolean, wrapper: HTMLElement) {
@@ -87,7 +87,7 @@ export namespace AdvanceList {
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
-      this.isMultiSelectEnabled
+      this.isMulti
         ? this.setCheckboxAttributes(isSelected, wrapper)
         : wrapper.classList.toggle("selected", isSelected);
       wrapper.setAttribute("selected", isSelected.toString());
@@ -152,72 +152,61 @@ export namespace AdvanceList {
     isNextElemenentStatusIndicator(index: number) {
       return (this.isLoading || this.isError) && index === this.items.length - 2;
     }
+
     handleKeyDown = (event: KeyboardEvent): void => {
-      switch (event.code) {
-        case Key.ArrowDown: {
-          event.preventDefault();
-          this.isUserNavigated = true;
+      const { ArrowDown, ArrowUp, Tab, Space } = Key;
+      const { code } = event;
+      const isArrowDown = code === ArrowDown;
+      const isArrowUp = code === ArrowUp;
+      const isTab = code === Tab;
+      const isSpace = code === Space;
     
-          // In case of preselected value
-          if (this.activeId === "" && this.value.length > 0) {
-            this.activeId = this.value[0];
-            return;
-          } else if (this.activeId === "" && this.items.length > 0) {
-            this.activeId = this.items[0].id;
-            return;
-          }
-          const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
+      if (isArrowDown || isArrowUp) {
+        event.preventDefault();
+        this.isUserNavigated = true;
+    
+        // In case of preselected value
+        if (this.activeId === "" && this.value.length > 0) {
+          this.activeId = this.value[0];
+          return;
+        } else if (this.activeId === "" && !isArrowUp && this.items.length > 0) {
+          // Only for ArrowDown: Set to first item if no selection
+          this.activeId = this.items[0].id;
+          return;
+        }
+    
+        const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
+        
+        if (isArrowDown) {
           if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
             this.scrollIndex = currentIndex + 1;
             this.activeId = this.items[this.scrollIndex].id;
           }
-          break;
-        }
-    
-        case Key.ArrowUp: {
-          event.preventDefault();
-          this.isUserNavigated = true;
-    
-          // In case of preselected value
-          if (this.activeId === "" && this.value.length > 0) {
-            this.activeId = this.value[0];
-          }
-    
-          const upIndex = this.items.findIndex((item) => item.id === this.activeId);
-          if (upIndex > 0) {
-            this.scrollIndex = upIndex - 1;
+        } else { // isArrowUp
+          if (currentIndex > 0) {
+            this.scrollIndex = currentIndex - 1;
             this.activeId = this.items[this.scrollIndex].id;
           }
-          break;
         }
-    
-        case Key.Tab: {
-          if (this.activeId === "" && this.value.length > 0) {
-            this.activeId = this.value[0];
-            return;
-          }
-          break;
+      } else if (isTab) {
+        if (this.activeId === "" && this.value.length > 0) {
+          this.activeId = this.value[0];
         }
-    
-        case Key.Space: {
-          event.preventDefault();
-          if (this.activeId) {
-            const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
-            if (selectedItem) {
-              const isDisabled =
-                selectedItem.getAttribute("aria-disabled") === "true" || selectedItem.hasAttribute("disabled");
-              if (!isDisabled) {
-                this.updateItemSelection(selectedItem as HTMLElement);
-              }
+      } else if (isSpace) {
+        event.preventDefault();
+        if (this.activeId) {
+          const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
+          if (selectedItem) {
+            const isDisabled = 
+              selectedItem.getAttribute("aria-disabled") === "true" || 
+              selectedItem.hasAttribute("disabled");
+            if (!isDisabled) {
+              this.updateItemSelection(selectedItem as HTMLElement);
             }
           }
-          break;
         }
-    
-        default:
-          break;
       }
-    };
+    }; 
 
     updateItemForMultiSelect(activeId: string) {
       const index = this.selectedItemsIds.indexOf(activeId);
@@ -236,7 +225,7 @@ export namespace AdvanceList {
       if (!clickedItem) return;
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-      this.isMultiSelectEnabled
+      this.isMulti
         ? this.updateItemForMultiSelect(this.activeId)
         : (this.selectedItemsIds = [this.activeId]);
       this.updateSelectedState();
@@ -318,7 +307,7 @@ export namespace AdvanceList {
           class="md-advance-list-wrapper virtual-scroll"
           tabindex="0"
           aria-activedescendant=${this.getActiveDescendant()}
-          aria-multiselectable=${this.isMultiSelectEnabled}
+          aria-multiselectable=${this.isMulti}
           aria-label=${this.ariaLabelList}
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}

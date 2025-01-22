@@ -185,14 +185,14 @@ describe("advanceList Component", () => {
       await el.updateComplete;
       await nextFrame();
 
-      const arrowDownEvent = new KeyboardEvent("keydown", { key: "ArrowDown" });
+      const arrowDownEvent = new KeyboardEvent("keydown", { code: "ArrowDown" });
       el.handleKeyDown(arrowDownEvent);
       await nextFrame();
 
       let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(1);
 
-      const arrowUpEvent = new KeyboardEvent("keydown", { key: "ArrowUp" });
+      const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
       el.handleKeyDown(arrowUpEvent);
       await nextFrame();
 
@@ -204,26 +204,26 @@ describe("advanceList Component", () => {
       el.items = createItems(1, 20);
       el.activeId = "";
       el.value = [el.items[3].id];
-
+    
       el.requestUpdate();
       await el.updateComplete;
       await nextFrame();
 
-      const arrowDownEvent = new KeyboardEvent("keydown", { key: "ArrowDown" });
+      const arrowDownEvent = new KeyboardEvent("keydown", { code: "ArrowDown" });
       el.handleKeyDown(arrowDownEvent);
       await nextFrame();
 
-      expect(el.activeId).toBe(el.items[4].id);
+      expect(el.activeId).toBe(el.items[3].id);
       let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
-      expect(currentIndex).toBe(4);
+      expect(currentIndex).toBe(3);
 
-      const arrowUpEvent = new KeyboardEvent("keydown", { key: "ArrowUp" });
+      const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
       el.handleKeyDown(arrowUpEvent);
       await nextFrame();
 
-      expect(el.activeId).toBe(el.items[3].id);
+      expect(el.activeId).toBe(el.items[2].id);
       currentIndex = el.items.findIndex((item) => item.id === el.activeId);
-      expect(currentIndex).toBe(3);
+      expect(currentIndex).toBe(2);
     });
 
     test("should handle ArrowUp for preselected value", async () => {
@@ -235,7 +235,7 @@ describe("advanceList Component", () => {
       await el.updateComplete;
       await nextFrame();
 
-      const arrowUpEvent = new KeyboardEvent("keydown", { key: "ArrowUp" });
+      const arrowUpEvent = new KeyboardEvent("keydown", { code: "ArrowUp" });
       el.handleKeyDown(arrowUpEvent);
       await nextFrame();
 
@@ -244,7 +244,7 @@ describe("advanceList Component", () => {
       let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(3);
 
-      const arrowDownEvent = new KeyboardEvent("keydown", { key: "ArrowDown" });
+      const arrowDownEvent = new KeyboardEvent("keydown", { code: "ArrowDown" });
       el.handleKeyDown(arrowDownEvent);
       await nextFrame();
 
@@ -258,6 +258,25 @@ describe("advanceList Component", () => {
       expect(preselectedItem.getAttribute("tabindex")).toBe("0");
     });
 
+    test("should handle Tab for preselected value", async () => {
+      el.items = createItems(1, 20);
+      el.activeId = "";
+      el.value = [el.items[4].id]; // Preselect item 5
+
+      el.requestUpdate();
+      await el.updateComplete;
+      await nextFrame();
+
+      const tabEvent = new KeyboardEvent("keydown", { code: "Tab" });
+      el.handleKeyDown(tabEvent);
+      await nextFrame();
+
+      // Assert activeId is now the 5th item
+      expect(el.activeId).toBe(el.items[4].id);
+      let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
+      expect(currentIndex).toBe(4);
+    });
+
     test("should handle Enter key and select non-disabled item", async () => {
       el.items = createItems(1, 20);
       el.activeId = el.items[1].id;
@@ -266,13 +285,29 @@ describe("advanceList Component", () => {
       await el.updateComplete;
       await nextFrame();
 
-      const enterEvent = new KeyboardEvent("keydown", { key: "Enter" });
+      const enterEvent = new KeyboardEvent("keydown", { code: "Space" });
       el.handleKeyDown(enterEvent);
       await nextFrame();
 
       const selectedItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`) as HTMLElement;
       expect(selectedItem?.classList.contains("selected")).toBe(true);
     });
+
+    test("should select all items if the selectAll flag is true", async () => {
+      el.items = createItems(1, 5); 
+      el.selectAllItems = true; 
+      el.requestUpdate();
+      await el.updateComplete;
+      await nextFrame();
+    
+      await el.updateComplete;
+    
+      el.items.forEach((item) => {
+        const selectedItem = el.shadowRoot?.querySelector(`#item-${item.id}`) as HTMLElement;
+        expect(selectedItem?.classList.contains("selected")).toBe(true);
+      });
+    });
+    
 
     test("should not select disabled item on Enter key press", async () => {
       el.items = createItems(1, 20);
@@ -287,7 +322,7 @@ describe("advanceList Component", () => {
         secondItem.setAttribute("aria-disabled", "true");
       }
 
-      const enterEvent = new KeyboardEvent("keydown", { key: "Enter" });
+      const enterEvent = new KeyboardEvent("keydown", { code: "Space" });
       el.handleKeyDown(enterEvent);
       await nextFrame();
 

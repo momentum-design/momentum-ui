@@ -4,6 +4,7 @@
 
 @include exports("md-alert-banner") {
   .md-alert-banner {
+    display: flex;
     padding: constants.$alert-banner__padding;
     position: relative;
     text-align: center;
@@ -11,7 +12,17 @@
     font-family: $brand-font-regular;
     font-weight: var(--brand-font-weight-regular);
     line-height: constants.$alert-banner__line-height;
-    
+    gap: constants.$alert-banner__flexbox-gap;
+
+    &.closable {
+      padding-right: calc(
+        constants.$alert-banner-close__size + constants.$alert-banner__padding + constants.$alert-banner__flexbox-gap
+      );
+    }
+
+    align-items: center;
+    justify-content: center;
+
     &.md-alert-banner {
       &--default {
         @include mixins.alert-banner-color(
@@ -28,10 +39,7 @@
       }
 
       &--error {
-        @include mixins.alert-banner-color(
-          var(--alert-banner-error-bg-color),
-          var(--alert-banner-error-text-color)
-        );
+        @include mixins.alert-banner-color(var(--alert-banner-error-bg-color), var(--alert-banner-error-text-color));
       }
 
       &--success {
@@ -42,11 +50,14 @@
       }
     }
 
+    &--leading {
+      text-align: left;
+      justify-content: space-between;
+    }
+
     &__text {
       font-size: constants.$alert-banner__font-size;
-      padding: constants.$alert-banner-text__padding;
-
-      display: flex;
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       gap: constants.$alert-banner__flexbox-gap;
@@ -56,21 +67,44 @@
         text-decoration: underline;
       }
 
-      > * {
-        align-self: center;
-        height: auto;
+      .refresh-button {
+        display: inline-flex;
+      }
+
+      &.leading {
+        justify-content: flex-start;
       }
     }
 
-    &__close {
-      cursor: pointer;
-      height: constants.$alert-banner-close__size;
+    &__right {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      &.trailing {
+        justify-content: flex-end;
+      }
+    }
+
+    .close-div {
       position: absolute;
-      right: constants.$alert-banner-close__size;
-      top: constants.$alert-banner-close__top-space;
+      display: flex;
+      align-items: center;
+
+      right: constants.$alert-banner-close__padding;
+      top: constants.$alert-banner-close__padding;
+      bottom: constants.$alert-banner-close__padding;
       width: constants.$alert-banner-close__size;
+
+      .md-alert-banner__close {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
+
   @media (forced-colors: active) {
     .md-alert-banner {
       box-shadow: none;

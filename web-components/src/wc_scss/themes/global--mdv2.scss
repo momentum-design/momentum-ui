@@ -151,6 +151,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-header-bg-color: #{$mds-color-theme-background-primary-ghost};
   --md-table-header-text-color: #{$mds-color-theme-text-primary-normal};
   --md-table-header-border-bottom: 0 -1px 0 0 #{$mds-color-theme-outline-primary-normal} inset;
+  --md-table-header-border-bottom-color: #{$mds-color-theme-outline-primary-normal};
   --md-table-cell-border-bottom: 1px solid #{$mds-color-theme-outline-secondary-normal};
   --md-table-border-style: none;
   --md-table-sub-nav-bg-color: #{$mds-color-theme-background-primary-hover};

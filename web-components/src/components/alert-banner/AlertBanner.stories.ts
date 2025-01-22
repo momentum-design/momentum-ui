@@ -20,6 +20,7 @@ const render = (args: Args) => html`
     message="${args.textContent}"
     ?showBannerTypeIcon=${args.showBannerTypeIcon}
     ?showRefreshButton=${args.showRefreshButton}
+    alignment=${args.alignment}
   >
     ${args.textContent ? `${args.textContent}` : `Text with slotted tag element`}
   </md-alert-banner>
@@ -41,7 +42,8 @@ const meta: Meta = {
   title: "Components/Alert Banner",
   component: "md-alert-banner",
   argTypes: {
-    type: { control: { type: "select" }, options: ["default", "warning", "error", "success"] }
+    type: { control: { type: "select" }, options: ["default", "warning", "error", "success"] },
+    alignment: { control: { type: "select" }, options: ["leading", "center"] }
   },
   parameters: {
     a11y: {

@@ -147,6 +147,7 @@ export namespace ParentComponentWithMdOverlay {
       } else {
         this.selectAllItems = false;
       }
+      document.dispatchEvent(new CustomEvent("on-widget-update"));
     }
 
     updateSelectAllCheckboxOnClick() {

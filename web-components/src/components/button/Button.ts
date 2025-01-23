@@ -65,6 +65,7 @@ export const buttonVariant = [
   "red",
   "green",
   "ghost",
+  "ghostInheritTextColor",
   "white",
   "darkGrey",
   "promotional",

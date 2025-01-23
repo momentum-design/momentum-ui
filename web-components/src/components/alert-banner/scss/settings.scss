@@ -3,7 +3,8 @@
 $alert-banner__font-size: core.rem-calc(14);
 $alert-banner__line-height: core.rem-calc(20);
 $alert-banner__padding: core.rem-calc(12);
-$alert-banner-text__padding: 0 core.rem-calc(28);
+$alert-banner-text__padding: 0 core.rem-calc(16);
 $alert-banner-close__size: core.rem-calc(16);
-$alert-banner-close__top-space: core.rem-calc(12);
+$alert-banner-close__padding: core.rem-calc(12);
 $alert-banner-column__border: 1px solid transparent;
+$alert-banner__flexbox-gap: 12px;

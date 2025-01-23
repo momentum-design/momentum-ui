@@ -80,3 +80,8 @@
   background-color: var(--list-active-background);
   color: var(--list-active-text-color);
 }
+
+.selected-border-bottom {
+  border-bottom: 1px solid var(--md-gray-20);
+}
+

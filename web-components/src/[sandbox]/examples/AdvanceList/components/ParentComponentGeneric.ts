@@ -9,7 +9,7 @@ export namespace ParentComponentGeneric {
     @property({ type: Array }) items: any = [];
     @internalProperty() page = 1;
     @property({ type: Boolean }) isLoading = false;
-    @property({ type: String }) value = "";
+    @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
     @internalProperty() totalRecords = 60000; // Total count is set to 6000
 

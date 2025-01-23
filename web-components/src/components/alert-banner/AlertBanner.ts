@@ -16,14 +16,16 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
+export const alertBannerType = ["default", "accent", "warning", "error", "success", "default-momentum", "promotional"];
 export const alertBannerAlignment = ["center", "leading"];
 
 export namespace AlertBanner {
+  export type Type = (typeof alertBannerType)[number];
   export type Alignment = (typeof alertBannerAlignment)[number];
 
   @customElementWithCheck("md-alert-banner")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) type = "";
+    @property({ type: String }) type: AlertBanner.Type = "";
     @property({ type: String }) message = "";
     @property({ type: Boolean }) closable = false;
     @property({ type: Boolean }) show = false;
@@ -93,21 +95,25 @@ export namespace AlertBanner {
       };
     }
 
+    private get closeButtonTemplate() {
+      return html`
+        <div class="close-div">
+          <md-button
+            class="md-alert-banner__close"
+            hasRemoveStyle
+            circle
+            ariaLabel=${this.closeAriaLabel}
+            @click="${this.onHide}"
+            @keydown="${this.handleKeyDown}"
+          >
+            <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
+          </md-button>
+        </div>
+      `;
+    }
+
     render() {
-      const closeBtn = this.closable
-        ? html`
-            <md-button
-              class="md-alert-banner__close"
-              hasRemoveStyle
-              circle
-              ariaLabel=${this.closeAriaLabel}
-              @click="${this.onHide}"
-              @keydown="${this.handleKeyDown}"
-            >
-              <md-icon name="cancel-bold" size="16" iconSet="momentumDesign"></md-icon>
-            </md-button>
-          `
-        : null;
+      const closeBtn = this.closable ? html` ${this.closeButtonTemplate} ` : null;
 
       const leftOfTextSlot = this.showBannerTypeIcon
         ? html` <md-icon name="${this.getIconForType()}" iconSet="momentumDesign" size="16"> </md-icon> `
@@ -137,7 +143,7 @@ export namespace AlertBanner {
                 <div class="md-alert-banner__right ${classMap(this.alertBannerRightClassMap)}">
                   <slot name="right"></slot>
                 </div>
-                <div class="close-div">${closeBtn}</div>
+                ${closeBtn}
               </div>
             `
           : null}

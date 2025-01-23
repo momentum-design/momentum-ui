@@ -75,7 +75,7 @@
     "git-url-parse": "^11.1.2",
     "husky": "^4.2.3",
     "lerna": "^8.1.8",
-    "mime": "^2.4.4",    
+    "mime": "^2.4.4",
     "remark-parse": "^6.0.3",
     "rimraf": "^4.4.1",
     "semantic-release": "^15.13.24",

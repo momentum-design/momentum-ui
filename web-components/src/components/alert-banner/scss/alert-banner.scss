@@ -31,6 +31,20 @@
         );
       }
 
+      &--default-momentum {
+        @include mixins.alert-banner-color(
+          var(--alert-banner-default-momentum-bg-color),
+          var(--alert-banner-default-momentum-text-color)
+        );
+      }
+
+      &--accent {
+        @include mixins.alert-banner-color(
+          var(--alert-banner-default-bg-color),
+          var(--alert-banner-default-text-color)
+        );
+      }
+
       &--warning {
         @include mixins.alert-banner-color(
           var(--alert-banner-warning-bg-color),
@@ -46,6 +60,13 @@
         @include mixins.alert-banner-color(
           var(--alert-banner-success-bg-color),
           var(--alert-banner-success-text-color)
+        );
+      }
+
+      &--promotional {
+        @include mixins.alert-banner-color-gradient(
+          var(--alert-banner-promotional-bg),
+          var(--alert-banner-promotional-text-color)
         );
       }
     }

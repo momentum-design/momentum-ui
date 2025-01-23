@@ -44,6 +44,22 @@ const alertBanner = {
       light: colors.green[70].name,
       dark: colors.green[10].name
     }
+  },
+  "default-momentum": {
+    "bg-color": {
+      common: "$mds-color-theme-background-secondary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    }
+  },
+  promotional: {
+    bg: {
+      common: "$mds-color-theme-common-button-promotion-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-common-text-primary-normal"
+    }
   }
 };
 

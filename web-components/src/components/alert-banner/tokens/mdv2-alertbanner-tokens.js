@@ -36,6 +36,22 @@ const alertBanner = {
       common: "$mds-color-theme-text-success-normal"
     }
   },
+  "default-momentum": {
+    "bg-color": {
+      common: "$mds-color-theme-background-secondary-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-text-primary-normal"
+    }
+  },
+  promotional: {
+    bg: {
+      common: "$mds-color-theme-common-button-promotion-normal"
+    },
+    "text-color": {
+      common: "$mds-color-theme-common-text-primary-normal"
+    }
+  },
   "border-radius": {
     common: "0.5rem"
   }

@@ -3,7 +3,7 @@ import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import { Dropdown } from "@/components/dropdown/Dropdown";
-import { customElement, html, LitElement, property } from "lit-element";
+import { customElement, html, internalProperty, LitElement, property } from "lit-element";
 
 enum BannerType {
   Default = "default",
@@ -24,6 +24,9 @@ export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: String }) iconBannerType = BannerType.Default;
   @property({ type: Boolean }) showLeftIcon = true;
   @property({ type: Boolean }) showRefreshButton = true;
+
+  @internalProperty()
+  private showErrorExpandBanner = false;
 
   async openAlert(kind: string) {
     switch (kind) {
@@ -115,13 +118,61 @@ export class AlertBannerTemplateSandbox extends LitElement {
   }
 
   private get renderWarningAlertBannerWithSlot() {
-    return html`<div style="width: 640px">
+    return html`<div style="width: 640px; margin-bottom: 15px;">
       <md-alert-banner show showBannerTypeIcon closable type="warning" alignment="leading">
         %No connection detected. Attempting to reconnect in the background...%
         <md-button slot="right" variant="secondary" size="28">
           <md-icon slot="icon" name="refresh-bold" iconSet="momentumDesign"></md-icon>
           <span>%Refresh%</span>
         </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderErrorWithExpandButton() {
+    return html`<div style="width: 368px; margin-bottom: 15px;">
+        <md-alert-banner show showBannerTypeIcon type="error" alignment="leading">
+          %Failed to change status/accept.Show more%
+          <md-button
+            slot="right"
+            variant="ghostInheritTextColor"
+            circle
+            size="24"
+            @button-click=${() => (this.showErrorExpandBanner = !this.showErrorExpandBanner)}
+          >
+            <md-icon
+              slot="icon"
+              name=${this.showErrorExpandBanner ? "arrow-up-bold" : "arrow-down-bold"}
+              iconSet="momentumDesign"
+            ></md-icon>
+          </md-button>
+        </md-alert-banner>
+      </div>
+      ${this.renderErrorInfoBanner}`;
+  }
+
+  private get renderErrorInfoBanner() {
+    return html`<div style="width: 368px; margin-bottom: 15px;">
+      <md-alert-banner ?show=${this.showErrorExpandBanner} type="default-momentum" alignment="leading">
+        Tracking ID: AHKDUJ-098DBJ-HSYBKIO-345KBK
+        <md-button
+          slot="right"
+          variant="ghostInheritTextColor"
+          circle
+          size="24"
+          @button-click=${() => (this.showErrorExpandBanner = !this.showErrorExpandBanner)}
+        >
+          <md-icon slot="icon" name="copy-bold" iconSet="momentumDesign"></md-icon>
+        </md-button>
+      </md-alert-banner>
+    </div>`;
+  }
+
+  private get renderPromotionalBanner() {
+    return html`<div style="width: 368px; margin-bottom: 15px;">
+      <md-alert-banner show type="promotional" alignment="leading">
+        <md-icon slot="left" name="sparkle-bold" iconSet="momentumDesign"></md-icon>
+        New feature available! Upgrade to the latest version to get access to the new feature.
       </md-alert-banner>
     </div>`;
   }
@@ -170,7 +221,8 @@ export class AlertBannerTemplateSandbox extends LitElement {
         @alertBanner-hide=${() => this.hideAlert("success")}
         message="success text from a message attribute"
       ></md-alert-banner>
-      ${this.renderAlertBannerWithIcons}${this.renderWarningAlertBannerWithSlot}
+      ${this.renderAlertBannerWithIcons} ${this.renderWarningAlertBannerWithSlot} ${this.renderErrorWithExpandButton}
+      ${this.renderPromotionalBanner}
     `;
   }
 }

@@ -7,6 +7,7 @@
  */
 
 import "@/components/alert-banner/AlertBanner";
+import { alertBannerType } from "@/components/alert-banner/AlertBanner";
 import "@/components/icon/Icon";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-html";
@@ -42,7 +43,7 @@ const meta: Meta = {
   title: "Components/Alert Banner",
   component: "md-alert-banner",
   argTypes: {
-    type: { control: { type: "select" }, options: ["default", "warning", "error", "success"] },
+    type: { control: { type: "select" }, options: alertBannerType },
     alignment: { control: { type: "select" }, options: ["leading", "center"] }
   },
   parameters: {

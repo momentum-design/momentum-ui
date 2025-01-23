@@ -6,3 +6,12 @@
     color: $text-color;
   }
 }
+
+@mixin alert-banner-color-gradient($background, $text-color) {
+  background: $background;
+  color: $text-color;
+
+  md-icon {
+    color: $text-color;
+  }
+}

@@ -286,8 +286,25 @@ describe("advanceList Component", () => {
       await el.updateComplete;
       await nextFrame();
 
-      const enterEvent = new KeyboardEvent("keydown", { code: "Space" });
-      el.handleKeyDown(enterEvent);
+      const enterKey = new KeyboardEvent("keydown", { code: "Enter" });
+      el.handleKeyDown(enterKey);
+      await nextFrame();
+
+      const selectedItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`) as HTMLElement;
+      expect(selectedItem?.classList.contains("selected")).toBe(true);
+    });
+
+
+    test("should handle Space key and select non-disabled item", async () => {
+      el.items = createItems(1, 20);
+      el.activeId = el.items[1].id;
+
+      el.requestUpdate();
+      await el.updateComplete;
+      await nextFrame();
+
+      const enterSpace = new KeyboardEvent("keydown", { code: "Space" });
+      el.handleKeyDown(enterSpace);
       await nextFrame();
 
       const selectedItem = el.shadowRoot?.querySelector(`#item-${el.activeId}`) as HTMLElement;
@@ -323,8 +340,8 @@ describe("advanceList Component", () => {
         secondItem.setAttribute("aria-disabled", "true");
       }
 
-      const enterEvent = new KeyboardEvent("keydown", { code: "Space" });
-      el.handleKeyDown(enterEvent);
+      const enterSpace = new KeyboardEvent("keydown", { code: "Space" });
+      el.handleKeyDown(enterSpace);
       await nextFrame();
 
       expect(secondItem?.classList.contains("selected")).toBe(false);

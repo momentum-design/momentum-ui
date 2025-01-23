@@ -154,12 +154,13 @@ export namespace AdvanceList {
     }
 
     handleKeyDown = (event: KeyboardEvent): void => {
-      const { ArrowDown, ArrowUp, Tab, Space } = Key;
+      const { ArrowDown, ArrowUp, Tab, Space, Enter } = Key;
       const { code } = event;
       const isArrowDown = code === ArrowDown;
       const isArrowUp = code === ArrowUp;
       const isTab = code === Tab;
       const isSpace = code === Space;
+      const isEnter = code === Enter;
     
       if (isArrowDown || isArrowUp) {
         event.preventDefault();
@@ -192,7 +193,7 @@ export namespace AdvanceList {
         if (this.activeId === "" && this.value.length > 0) {
           this.activeId = this.value[0];
         }
-      } else if (isSpace) {
+      } else if (isSpace || isEnter) {
         event.preventDefault();
         if (this.activeId) {
           const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);

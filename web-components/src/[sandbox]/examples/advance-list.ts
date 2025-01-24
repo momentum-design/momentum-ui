@@ -4,10 +4,12 @@ import "./AdvanceList/components/ParentComponentError";
 import "./AdvanceList/components/ParentComponentGeneric";
 import "./AdvanceList/components/ParentComponentPreSelect";
 import "./AdvanceList/components/ParentComponentWithMdOverlay";
+import "./AdvanceList/components/ParentComponentWithStaticData";
 
 export const advanceListTemplate = html`
   <div style="width: 300px">
     <parent-component-with-overlay></parent-component-with-overlay>
+    <parent-component-with-static-data></parent-component-with-static-data>
     <parent-component-generic></parent-component-generic>
     <parent-component-pre-select></parent-component-pre-select>
     <parent-component-error></parent-component-error>

@@ -20,11 +20,6 @@
     position: absolute;
   }
 
-  md-icon,
-  md-icon::part(icon) {
-    color: var(--button-secondary-text-color);   
-  }
-
   &:hover {
     background-color: var(--button-favorite-hover-bg-color);
   }
@@ -94,6 +89,7 @@
     md-icon,
     md-icon::part(icon) {
       color: ButtonText;
+      fill: ButtonText;
     }
 
     &:focus{
@@ -106,12 +102,14 @@
 
       md-icon::part(icon) {
         color: GrayText;
+        fill: GrayText;
       }
     }
 
     &--active {
       md-icon::part(icon) {
         color: ButtonText;
+        fill: ButtonText;
       }
     }
   }

@@ -7,6 +7,7 @@
  */
 
 import "@/components/chat-message/ChatMessage";
+import { statusType } from "@/components/chat-message/ChatMessage";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit-html";
 
@@ -16,7 +17,8 @@ export default {
   argTypes: {
     title: { control: "text" },
     message: { control: "text" },
-    selfMode: { control: "boolean" }
+    selfMode: { control: "boolean" },
+    status: { control: { type: "select" }, options: statusType }
   },
   parameters: {
     a11y: {
@@ -29,11 +31,12 @@ export const ChatMessage: StoryObj = {
   args: {
     title: "John Doe",
     message: "I have issue with my silencer",
-    selfMode: false
+    selfMode: false,
+    status: "Sent"
   },
   render: (args: Args) => {
     return html`
-      <md-chat-message .self=${args.selfMode} title=${args.title} time="11:27AM">
+      <md-chat-message .self=${args.selfMode} title=${args.title} time="11:27AM" status=${args.status}>
         <p slot="message">${args.message}</p>
       </md-chat-message>
     `;

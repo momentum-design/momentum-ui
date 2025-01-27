@@ -6,16 +6,17 @@ import "@/components/icon/Icon";
 import "@/components/alert-banner/AlertBanner";
 
 export const chatMessageTemplate = html`
-  <md-chat-message title="John Doe" time="11:27AM">
+  <md-chat-message title="John Doe" time="11:27AM" status="Sent">
     <p slot="message">I have issue with my silencer</p>
   </md-chat-message>
-  <md-chat-message self time="11:27AM">
+  <md-chat-message self time="11:27AM" status="Failed">
     <p slot="message">Sure. I will help with that.</p>
   </md-chat-message>
   <md-chat-message
     title="Barbara"
     time="11:27AM"
     src="https://static.skillshare.com/uploads/users/7330753/user-image-large.png"
+    status=""
   >
     <p slot="message">
       <md-alert message="Who's awesome? You are!" show closable>
@@ -25,7 +26,7 @@ export const chatMessageTemplate = html`
       </md-alert>
     </p>
   </md-chat-message>
-  <md-chat-message self time="11:27AM">
+  <md-chat-message self time="11:27AM" status="Delivered">
     <p slot="message">
       <img src="https://static.skillshare.com/uploads/users/7330753/user-image-large.png" alt="" />
     </p>

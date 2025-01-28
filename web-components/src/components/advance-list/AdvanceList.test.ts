@@ -204,7 +204,7 @@ describe("advanceList Component", () => {
       el.items = createItems(1, 20);
       el.activeId = "";
       el.value = [el.items[3].id];
-    
+
       el.requestUpdate();
       await el.updateComplete;
       await nextFrame();
@@ -274,7 +274,7 @@ describe("advanceList Component", () => {
 
       // Assert activeId is now the 5th item
       expect(el.activeId).toBe(el.items[4].id);
-      let currentIndex = el.items.findIndex((item) => item.id === el.activeId);
+      const currentIndex = el.items.findIndex((item) => item.id === el.activeId);
       expect(currentIndex).toBe(4);
     });
 
@@ -294,7 +294,6 @@ describe("advanceList Component", () => {
       expect(selectedItem?.classList.contains("selected")).toBe(true);
     });
 
-
     test("should handle Space key and select non-disabled item", async () => {
       el.items = createItems(1, 20);
       el.activeId = el.items[1].id;
@@ -312,20 +311,19 @@ describe("advanceList Component", () => {
     });
 
     test("should select all items if the selectAll flag is true", async () => {
-      el.items = createItems(1, 5); 
-      el.selectAllItems = true; 
+      el.items = createItems(1, 5);
+      el.selectAllItems = true;
       el.requestUpdate();
       await el.updateComplete;
       await nextFrame();
-    
+
       await el.updateComplete;
-    
+
       el.items.forEach((item) => {
         const selectedItem = el.shadowRoot?.querySelector(`#item-${item.id}`) as HTMLElement;
         expect(selectedItem?.classList.contains("selected")).toBe(true);
       });
     });
-    
 
     test("should not select disabled item on Enter key press", async () => {
       el.items = createItems(1, 20);

@@ -26,10 +26,18 @@ export namespace AdvanceList {
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
     @property({ type: Number }) totalRecords = 0;
-    @internalProperty() scrollIndex = -1;
-    @internalProperty() activeId = "";
-    @internalProperty() selectedItemsIds: string[] = [];
-    @internalProperty() isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
+
+    @internalProperty()
+    private scrollIndex = -1;
+
+    @internalProperty()
+    activeId = "";
+
+    @internalProperty()
+    selectedItemsIds: string[] = [];
+
+    @internalProperty()
+    private isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
 
     connectedCallback(): void {
       super.connectedCallback();
@@ -75,11 +83,15 @@ export namespace AdvanceList {
           this.updateSelectedState();
           this.notifySelectedChange();
         }
-      }   
+      }
     }
 
     setCheckboxAttributes(isSelected: boolean, wrapper: HTMLElement) {
-      if (isSelected && (!wrapper.firstElementChild?.hasAttribute('disabled') || wrapper.firstElementChild?.getAttribute("aria-disabled") !== "true")) {
+      if (
+        isSelected &&
+        (!wrapper.firstElementChild?.hasAttribute("disabled") ||
+          wrapper.firstElementChild?.getAttribute("aria-disabled") !== "true")
+      ) {
         wrapper.querySelector("md-checkbox")?.setAttribute("checked", "true");
       } else {
         wrapper.querySelector("md-checkbox")?.removeAttribute("checked");
@@ -87,9 +99,7 @@ export namespace AdvanceList {
     }
 
     updateWrapperAttributes(wrapper: HTMLElement, isSelected: boolean) {
-      this.isMulti
-        ? this.setCheckboxAttributes(isSelected, wrapper)
-        : wrapper.classList.toggle("selected", isSelected);
+      this.isMulti ? this.setCheckboxAttributes(isSelected, wrapper) : wrapper.classList.toggle("selected", isSelected);
       wrapper.setAttribute("selected", isSelected.toString());
       wrapper.setAttribute("aria-selected", isSelected.toString());
       wrapper.setAttribute("tabindex", isSelected ? "0" : "-1");
@@ -101,7 +111,12 @@ export namespace AdvanceList {
         const isSelected = this.selectedItemsIds.some((id) => wrapper.id === `${prefixId}${id}`);
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
-        if (this.groupOnMultiSelect && this.value.length > 0 && this.items.length !== this.value.length && wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`) {
+        if (
+          this.groupOnMultiSelect &&
+          this.value.length > 0 &&
+          this.items.length !== this.value.length &&
+          wrapper.id === `${prefixId}${this.lastSelectedIdByOrder}`
+        ) {
           wrapper.classList.add("selected-border-bottom");
         } else {
           wrapper.classList.remove("selected-border-bottom");
@@ -161,11 +176,11 @@ export namespace AdvanceList {
       const isTab = code === Tab;
       const isSpace = code === Space;
       const isEnter = code === Enter;
-    
+
       if (isArrowDown || isArrowUp) {
         event.preventDefault();
         this.isUserNavigated = true;
-    
+
         // In case of preselected value
         if (this.activeId === "" && this.value.length > 0) {
           this.activeId = this.value[0];
@@ -175,19 +190,18 @@ export namespace AdvanceList {
           this.activeId = this.items[0].id;
           return;
         }
-    
+
         const currentIndex = this.items.findIndex((item) => item.id === this.activeId);
-        
+
         if (isArrowDown) {
           if (currentIndex < this.items.length - 1 && !this.isNextElemenentStatusIndicator(currentIndex)) {
             this.scrollIndex = currentIndex + 1;
             this.activeId = this.items[this.scrollIndex].id;
           }
-        } else { // isArrowUp
-          if (currentIndex > 0) {
-            this.scrollIndex = currentIndex - 1;
-            this.activeId = this.items[this.scrollIndex].id;
-          }
+        } else if (currentIndex > 0) {
+          // isArrowUp
+          this.scrollIndex = currentIndex - 1;
+          this.activeId = this.items[this.scrollIndex].id;
         }
       } else if (isTab) {
         if (this.activeId === "" && this.value.length > 0) {
@@ -198,16 +212,15 @@ export namespace AdvanceList {
         if (this.activeId) {
           const selectedItem = this.shadowRoot?.querySelector(`#${prefixId}${this.activeId}`);
           if (selectedItem) {
-            const isDisabled = 
-              selectedItem.getAttribute("aria-disabled") === "true" || 
-              selectedItem.hasAttribute("disabled");
+            const isDisabled =
+              selectedItem.getAttribute("aria-disabled") === "true" || selectedItem.hasAttribute("disabled");
             if (!isDisabled) {
               this.updateItemSelection(selectedItem as HTMLElement);
             }
           }
         }
       }
-    }; 
+    };
 
     updateItemForMultiSelect(activeId: string) {
       const index = this.selectedItemsIds.indexOf(activeId);
@@ -226,9 +239,7 @@ export namespace AdvanceList {
       if (!clickedItem) return;
 
       this.activeId = clickedItem.id.substring(clickedItem.id.indexOf("-") + 1);
-      this.isMulti
-        ? this.updateItemForMultiSelect(this.activeId)
-        : (this.selectedItemsIds = [this.activeId]);
+      this.isMulti ? this.updateItemForMultiSelect(this.activeId) : (this.selectedItemsIds = [this.activeId]);
       this.updateSelectedState();
       this.notifySelectedChange();
     }

@@ -13,8 +13,11 @@ export namespace MdFetchError {
     @property({ type: String }) trackingId = "";
     @property({ type: String }) trackingIdInputLabel = "";
 
-    @internalProperty() isLoading = false;
-    @internalProperty() hasError = false;
+    @internalProperty()
+    private readonly isLoading = false;
+
+    @internalProperty()
+    private readonly hasError = false;
 
     private onRetry(_event: Event) {
       this.dispatchEvent(

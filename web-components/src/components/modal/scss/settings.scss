@@ -25,8 +25,8 @@ $modal-header__font-size: rem-calc(16);
 $modal-header__line-height: rem-calc(24);
 
 $modal-header__padding--large: rem-calc(32) rem-calc(16) rem-calc(16) rem-calc(16);
-$modal-header__font-size--large: rem-calc(26);
-$modal-header__line-height--large: rem-calc(32);
+$modal-header__font-size--large: var(--font-size-heading-small, rem-calc(26));
+$modal-header__line-height--large: var(--font-lineheight-heading-small, rem-calc(32));
 
 $modal-header__padding--full-screen: rem-calc(32) rem-calc(16) rem-calc(16) rem-calc(16);
 $modal-header__font-size--full-screen: rem-calc(36);

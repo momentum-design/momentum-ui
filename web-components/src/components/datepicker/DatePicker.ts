@@ -234,6 +234,16 @@ export namespace DatePicker {
       return isValid;
     };
 
+    private get messageArray(): Input.Message[] {
+      if (this.errorMessage) {
+        return [{ message: this.errorMessage, type: "error" }];
+      } else if (!this.isValueValid()) {
+        return [{ message: "", type: "error" }];
+      } else {
+        return [];
+      }
+    }
+
     render() {
       return html`
         <md-menu-overlay is-date-picker custom-width="248px" ?disabled=${this.disabled}>
@@ -261,11 +271,9 @@ export namespace DatePicker {
                   @keydown=${(event: KeyboardEvent) => this.handleInputKeyDown(event)}
                   @input-change="${(e: CustomEvent) => this.handleDateInputChange(e)}"
                   ?disabled=${this.disabled}
-                  ?hide-message=${!this.errorMessage && this.isValueValid()}
+                  ?hide-message=${!this.errorMessage || this.isValueValid()}
                   ariaInvalid=${!!this.errorMessage || !this.isValueValid()}
-                  .messageArr=${this.errorMessage
-                    ? [{ message: this.errorMessage, type: "error" }]
-                    : [{ message: "", type: this.isValueValid() ? "" : "error" } as Input.Message]}
+                  .messageArr=${this.messageArray}
                   ?compact=${this.compactInput}
                 >
                   <md-icon slot="input-section" name="calendar-month-bold" size="16" iconSet="momentumDesign"></md-icon>

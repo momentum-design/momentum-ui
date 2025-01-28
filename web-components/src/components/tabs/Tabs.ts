@@ -8,6 +8,7 @@
 
 import "@/components/icon/Icon";
 import "@/components/menu-overlay/MenuOverlay";
+import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
 import reset from "@/wc_scss/reset.scss";
@@ -84,6 +85,7 @@ export namespace Tabs {
     @internalProperty() private noTabsVisible = false;
     @internalProperty() private defaultTabsOrderArray: string[] = [];
     @internalProperty() private tabsOrderPrefsArray: string[] = [];
+    @internalProperty() private isMoreTabTruncated = false;
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -196,6 +198,18 @@ export namespace Tabs {
             tab.removeAttribute("measuringrealwidth");
             return offsetWidth;
           });
+    }
+
+    private updateIsMoreTabTruncated() {
+      const overflowLabelElement = this.shadowRoot?.querySelector(".md-menu-overlay__overflow-label");
+
+      if (overflowLabelElement) {
+        const truncated = overflowLabelElement.scrollWidth > overflowLabelElement.clientWidth;
+
+        if (this.isMoreTabTruncated != truncated) {
+          this.isMoreTabTruncated = truncated;
+        }
+      }
     }
 
     private measureHiddenTabsCopiesOffsetHeight() {
@@ -409,6 +423,7 @@ export namespace Tabs {
     protected async handleResize(contentRect: DOMRect) {
       super.handleResize && super.handleResize(contentRect);
       await this.manageOverflow();
+      this.updateIsMoreTabTruncated();
     }
 
     private getDragDirection(event: Sortable.SortableEvent) {
@@ -1088,6 +1103,10 @@ export namespace Tabs {
       if (changedProperties.has("selectedIndex")) {
         this.updateSelectedTab(this.selectedIndex);
       }
+
+      if (changedProperties.has("overflowLabel")) {
+        this.updateIsMoreTabTruncated();
+      }
     }
 
     render() {
@@ -1166,7 +1185,9 @@ export namespace Tabs {
               .newMomentum=${this.newMomentum}
               type=${this.type}
             >
-              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
+              <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
+                <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
+              </md-tooltip>
               <md-icon
                 name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
                 iconSet="momentumDesign"

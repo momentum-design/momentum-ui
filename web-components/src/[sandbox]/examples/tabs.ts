@@ -699,7 +699,7 @@ export const tabsTemplate = html`
   <div style="max-width: 600px;">
     <h3>Draggable horizontal md-tabs with More button</h3>
     <div>
-      <md-tabs selected="2" draggable>
+      <md-tabs selected="2" draggable overflowLabel="More tabs bb">
         <md-tab disabled slot="tab" name="History" closable="auto" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
           <span>Contact History</span>

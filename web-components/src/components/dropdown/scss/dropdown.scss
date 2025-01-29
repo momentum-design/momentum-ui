@@ -61,11 +61,11 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-bg-color-hover, $lm-dropdown-bg-color-hover-light);
+        background-color: var(--dropdown-bg-color-hover);
       }
 
       &:active {
-        background-color: var(--dropdown-bg-color-active, $lm-dropdown-bg-color-active-light);
+        background-color: var(--dropdown-bg-color-active);
       }
     }
 
@@ -101,17 +101,17 @@
       }
 
       &:hover {
-        background-color: var(--dropdown-list-item-bg-color-hover, $lm-dropdown-list-item-bg-color-hover-light);
+        background-color: var(--dropdown-list-item-bg-color-hover);
       }
 
       &[focused] {
-        background-color: var(--dropdown-list-item-bg-color-hover, $lm-dropdown-list-item-bg-color-hover-light);
+        background-color: var(--dropdown-list-item-bg-color-hover);
         @include remove-focus;
         @include focus-boxshadow(rem-calc(1.5), var(--dropdown-list-item-border-focus));
       }
 
       &[selected] {
-        background-color: var(--dropdown-list-item-bg-color-focus, $lm-dropdown-list-item-bg-color-focus-light);
+        background-color: var(--dropdown-list-item-bg-color-focus);
         @include remove-focus;
         @include focus-boxshadow(rem-calc(1.5), var(--dropdown-list-item-border-focus));
       }
@@ -356,7 +356,7 @@
       }
     }
     &:focus-visible {
-      border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+      border-color: var(--dropdown-border-color-focus);
       outline: none;
     }
   }
@@ -373,7 +373,7 @@
       pointer-events: none;
     }
     &:focus-visible {
-      border-color: var(--dropdown-border-color-focus, $lm-dropdown-border-color-focus-light);
+      border-color: var(--dropdown-border-color-focus);
       outline: none;
     }
   }
@@ -443,6 +443,7 @@
     .md-dropdown {
       .md-dropdown-label {
         border: 2px solid Highlight;
+        outline: none;
         &--text {
           forced-color-adjust: none;
           background-color: Canvas;
@@ -469,17 +470,19 @@
     .group {
       input {
         color: HighlightText;
+
+        &::placeholder {
+          color: GrayText;
+        }
       }
-      ::input-placeholder {
-        color: GrayText;
-      }
+      
     }
   }
 
   :host([disabled]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 1px solid GrayText !important;
+        border: 1px solid GrayText;
       }
     }
     .group,
@@ -488,10 +491,11 @@
       outline: none !important;
       input {
         color: GrayText;
-      }
-      ::input-placeholder {
-        color: HighlightText !important;
-      }
+
+        &::placeholder {
+          color: GrayText;
+        }
+      }      
     }
   }
 }

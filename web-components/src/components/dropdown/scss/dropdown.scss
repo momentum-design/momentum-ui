@@ -442,8 +442,7 @@
   :host([focus-visible]) {
     .md-dropdown {
       .md-dropdown-label {
-        border: 2px solid Highlight;
-        outline: none;
+        border: 2px solid Highlight;        
         &--text {
           forced-color-adjust: none;
           background-color: Canvas;

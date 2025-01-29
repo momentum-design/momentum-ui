@@ -21,10 +21,9 @@
 }
 
 .visible-new-tabs {
-  
   &:not(.md-tab__justified) {
     width: auto;
-    gap: $tab-between-gap;    
+    gap: $tab-between-gap;
   }
 }
 
@@ -246,5 +245,11 @@ md-menu-overlay {
 
   .md-tab__content ::slotted([slot="panel"]) {
     padding-left: calc($tab-base-indent * 5);
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    --tabs-default-border-color: ButtonFace;
   }
 }

@@ -10,7 +10,7 @@ $dropdown-main-indent: rem-calc(4);
 $dropdown-border: 1px solid var(--dropdown-border-color, var(--md-secondary-seperator-color));
 $dropdown-min-height: rem-calc(32);
 
-$dropdown-label-radius: var(--dropdown-group-radius, $lm-dropdown-label-radius-light);
+$dropdown-label-radius: var(--dropdown-group-radius);
 $dropdown-label-padding: 0 rem-calc(12);
 $dropdown-icon-height: rem-calc(28);
 

@@ -63,6 +63,7 @@ export namespace AdvanceList {
     updated(changedProperties: PropertyValues) {
       if (changedProperties.has("value")) {
         this.requestUpdate().then(() => {
+          console.log(">>>>>> this.value", this.value)
           this.selectedItemsIds = this.value;
           this.updateSelectedState();
         });
@@ -98,6 +99,7 @@ export namespace AdvanceList {
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
+        console.log(">>>>>> this.selectedItemsIds", this.selectedItemsIds)
         const isSelected = this.selectedItemsIds.some((id) => wrapper.id === `${prefixId}${id}`);
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
@@ -302,6 +304,7 @@ export namespace AdvanceList {
     }
 
     render() {
+      console.log(">>>>>> advanceList render", this.isMulti)
       return html`
         ${this.getStyles()}
         <div

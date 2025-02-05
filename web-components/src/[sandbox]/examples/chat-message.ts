@@ -6,10 +6,19 @@ import "@/components/icon/Icon";
 import "@/components/alert-banner/AlertBanner";
 
 export const chatMessageTemplate = html`
-  <md-chat-message title="John Doe" time="11:27AM" status="Sent">
+  <md-chat-message title="John Doe" time="11:27AM" status="Received">
+    <span slot="custom-content">
+      <md-tooltip message="Content restricted as it violates the company data security policy" placement="top">
+        <md-icon name="icon-priority_12"></md-icon>
+      </md-tooltip>
+    </span>
+
     <p slot="message">I have issue with my silencer</p>
   </md-chat-message>
   <md-chat-message self time="11:27AM" status="Failed">
+    <div slot="custom-content">
+      <md-icon name="icon-blocked_12"></md-icon>
+    </div>
     <p slot="message">Sure. I will help with that.</p>
   </md-chat-message>
   <md-chat-message

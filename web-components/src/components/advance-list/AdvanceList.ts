@@ -61,6 +61,9 @@ export namespace AdvanceList {
     }
 
     updated(changedProperties: PropertyValues) {
+      console.log(">>>>>> updated isLoading", this.isLoading)
+      console.log(">>>>>> updated this.isMulti", this.isMulti)
+
       if (changedProperties.has("value")) {
         this.requestUpdate().then(() => {
           console.log(">>>>>> this.value", this.value)

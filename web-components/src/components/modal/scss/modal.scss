@@ -74,7 +74,7 @@
   }
 
   &__flex-container {
-    @include modal-flex-container;    
+    @include modal-flex-container;
   }
 
   &__body {
@@ -86,7 +86,7 @@
     flex-direction: column;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: auto;    
+    overflow-y: auto;
     padding-left: var(--modal-section-h-padding);
     padding-right: var(--modal-section-h-padding);
 
@@ -97,7 +97,7 @@
 
   &__footer {
     @include flex($jc: flex-end);
-    flex-shrink: 0;    
+    flex-shrink: 0;
     padding-left: var(--modal-section-h-padding);
     padding-right: var(--modal-section-h-padding);
     padding-top: $modal-main__padding;
@@ -136,7 +136,13 @@
   }
 
   &.md-modal--large {
-    @include modal-size($width: $modal__width--large, $min-height: $modal__height--large, $radius: true);
+    @include modal-size(
+      $width: $modal__width--large,
+      $height: $modal__height--large,
+      $min-height: $modal__min_height,
+      $radius: true,
+      $setHeightWhenSettingMinHeight: true
+    );
 
     .md-modal__header {
       @include modal-header-size(
@@ -153,7 +159,12 @@
     }
 
     @media #{$medium-only} {
-      @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
+      @include modal-size(
+        $width: $modal__width--medium,
+        $height: $modal__height--large,
+        $min-height: $modal__min_height,
+        $setHeightWhenSettingMinHeight: true
+      );
 
       .md-modal__header {
         @include modal-header-size;
@@ -165,17 +176,11 @@
         }
       }
     }
-
-    @media #{$v-medium-down} {
-      .md-modal__content {
-        min-height: auto;
-      }
-    }
   }
 
   &.md-modal--medium,
   &.md-modal--default {
-    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);    
+    @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
 
     @media #{$medium-only} {
       @include modal-size($width: $modal__width--medium, $min-height: $modal__height--medium);
@@ -228,7 +233,7 @@
 
       .md-modal__footer {
         display: flex;
-        justify-content: flex-end;        
+        justify-content: flex-end;
         padding: 0;
       }
     }
@@ -302,13 +307,12 @@
 
 /** @component close */
 
-.md-close {  
-  float: right;      
+.md-close {
+  float: right;
   text-shadow: 0 1px 0 $md-white-100;
 
   &:hover,
   &:focus {
-    
     cursor: pointer;
     text-decoration: none;
   }

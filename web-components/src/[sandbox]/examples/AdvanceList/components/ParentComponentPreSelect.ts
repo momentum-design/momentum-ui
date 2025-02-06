@@ -1,17 +1,21 @@
-import { html, internalProperty, LitElement, property } from "lit-element";
-// import "@/components/list/InfiniteScrollList";
 import "@/components/advance-list/AdvanceList";
+import "@/components/spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property } from "lit-element";
 
 export namespace ParentComponentPreSelect {
   @customElementWithCheck("parent-component-pre-select")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
-    @internalProperty() page = 1;
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
-    @internalProperty() totalRecords = 0;
+
+    @internalProperty()
+    private totalRecords = 0;
+
+    @internalProperty()
+    private page = 1;
 
     constructor() {
       super();

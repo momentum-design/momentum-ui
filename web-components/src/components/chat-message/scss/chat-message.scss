@@ -29,7 +29,7 @@
     &_title {
       @include flex();
       flex: 0 1 auto;
-      
+
       span {
         @include text-dots;
         display: block;
@@ -39,11 +39,15 @@
     &_time {
       margin-left: calc(#{$chat-message-indent} * 1.5);
     }
+
+    &_status {
+      margin-left: calc(#{$chat-message-indent} * 1.5);
+    }
   }
 }
 
 @media (forced-colors: active) {
-  .md-alert__icon{
+  .md-alert__icon {
     background-color: Canvas;
   }
 }

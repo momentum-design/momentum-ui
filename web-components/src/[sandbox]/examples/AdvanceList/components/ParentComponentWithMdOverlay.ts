@@ -1,27 +1,47 @@
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 import "@/components/advance-list/AdvanceList";
+import "@/components/checkbox/Checkbox";
+import "@/components/input/Input";
 import "@/components/list/List";
 import "@/components/list/ListItem";
 import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
 
 export namespace ParentComponentWithMdOverlay {
   @customElementWithCheck("parent-component-with-overlay")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
-    @internalProperty() page = 1;
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
     @property({ type: Boolean }) groupOnMultiSelect = true;
-    @internalProperty() totalRecords = 0;
-    @internalProperty() loadedRecords = 0;
-    @internalProperty() lastSelectedIdByOrder = "";
-    @internalProperty() selectAllItems = false;
-    @internalProperty() isMenuOverlayOpen = false;
-    @internalProperty() disabledItems: string[] = [];
-    @internalProperty() inputIcon = "arrow-down-bold";
-    @internalProperty() overlayTriggerPlaceholder = "Search field with tabs";
+
+    @internalProperty()
+    private page = 1;
+
+    @internalProperty()
+    private totalRecords = 0;
+
+    @internalProperty()
+    private loadedRecords = 0;
+
+    @internalProperty()
+    private lastSelectedIdByOrder = "";
+
+    @internalProperty()
+    private selectAllItems = false;
+
+    @internalProperty()
+    private isMenuOverlayOpen = false;
+
+    @internalProperty()
+    private readonly disabledItems: string[] = [];
+
+    @internalProperty()
+    private inputIcon = "arrow-down-bold";
+
+    @internalProperty()
+    private overlayTriggerPlaceholder = "Search field with tabs";
 
     private counter = 0;
     constructor() {
@@ -46,11 +66,11 @@ export namespace ParentComponentWithMdOverlay {
         const v = c === "x" ? r : (r & 0x3) | 0x8;
         return v.toString(16);
       });
-    
+
       // Increment the counter and pad with zeros to ensure 3 characters
       this.counter++;
       const counterString = this.counter.toString().padStart(3, "0");
-    
+
       // Replace the last 3 characters of the UUID with the counter
       return baseUUID.slice(0, -3) + counterString;
     }
@@ -97,7 +117,7 @@ export namespace ParentComponentWithMdOverlay {
               aria-hidden="true"
               indexing="${index}"
             >
-              <md-checkbox .disabled=${disabled} >${data.name}</md-checkbox>
+              <md-checkbox ?disabled=${disabled === "true"}>${data.name}</md-checkbox>
             </div>`
         };
       });
@@ -133,10 +153,10 @@ export namespace ParentComponentWithMdOverlay {
 
     private handleListItemChange(event: CustomEvent) {
       this.value = event.detail.selected;
-     // Filter and sort the selected items based on the `name` property
+      // Filter and sort the selected items based on the `name` property
       const selectedItems = this.items
-      .filter((item: any) => this.value.includes(item.id))
-      .sort((a: any, b: any) => this.naturalSort(a.name, b.name));
+        .filter((item: any) => this.value.includes(item.id))
+        .sort((a: any, b: any) => this.naturalSort(a.name, b.name));
 
       // Update `this.value` with the sorted IDs
       this.value = selectedItems.map((item: any) => item.id);
@@ -201,9 +221,7 @@ export namespace ParentComponentWithMdOverlay {
           <div style="margin:0.5rem; width: 100%">
             <md-input placeholder="Search..." shape="pill" clear autoFocus></md-input>
             <div style="margin-top:0.5rem; width: 100%">
-              <div
-                style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);"
-              >
+              <div style="padding-left:15px; padding-bottom:10px; border-bottom: 1px solid var(--md-gray-20);">
                 <md-checkbox
                   id="select-all-one"
                   class="selectAll"
@@ -212,28 +230,26 @@ export namespace ParentComponentWithMdOverlay {
                   >${this.getSelectAllLabel()}</md-checkbox
                 >
               </div>
-            ${this.isMenuOverlayOpen
-                ? html`
-                <md-advance-list
-                .items=${this.items}
-                .isLoading=${this.isLoading}
-                .isError=${this.isError}
-                .value=${this.value}
-                ariaRoleList="listbox"
-                ariaLabelList="state selector"
-                .totalRecords=${this.totalRecords}
-                .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
-                is-multi
-                .groupOnMultiSelect=${this.groupOnMultiSelect}
-                .selectAllItems=${this.selectAllItems}
-                .disabledItems=${this.disabledItems}
-                @list-item-change=${this.handleListItemChange}
-                @load-more=${this.loadMoreItems}
-              >
-                <md-spinner size="24" slot="spin-loader"></md-spinner>
-              </md-advance-list>`
-                : html``
-                }
+              ${this.isMenuOverlayOpen
+                ? html` <md-advance-list
+                    .items=${this.items}
+                    .isLoading=${this.isLoading}
+                    .isError=${this.isError}
+                    .value=${this.value}
+                    ariaRoleList="listbox"
+                    ariaLabelList="state selector"
+                    .totalRecords=${this.totalRecords}
+                    .lastSelectedIdByOrder=${this.lastSelectedIdByOrder}
+                    is-multi
+                    .groupOnMultiSelect=${this.groupOnMultiSelect}
+                    .selectAllItems=${this.selectAllItems}
+                    .disabledItems=${this.disabledItems}
+                    @list-item-change=${this.handleListItemChange}
+                    @load-more=${this.loadMoreItems}
+                  >
+                    <md-spinner size="24" slot="spin-loader"></md-spinner>
+                  </md-advance-list>`
+                : html``}
             </div>
             <div>
               <md-button @button-click=${this.resetFilter} variant="primary">Reset the filter</md-button>

@@ -7,11 +7,17 @@ export namespace ParentComponentError {
   @customElementWithCheck("parent-component-error")
   export class ELEMENT extends LitElement {
     @property({ type: Array }) items: any = [];
-    @internalProperty() page = 1;
     @property({ type: Boolean }) isLoading = false;
-    @internalProperty() shouldFail = false;
     @property({ type: Boolean }) isError = false;
-    @internalProperty() totalRecords = 0;
+
+    @internalProperty()
+    private page = 1;
+
+    @internalProperty()
+    private shouldFail = false;
+
+    @internalProperty()
+    private totalRecords = 0;
 
     constructor() {
       super();

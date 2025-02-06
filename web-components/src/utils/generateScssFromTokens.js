@@ -13,10 +13,8 @@ const handlebars = require("handlebars");
 const colorData = require("@momentum-ui/tokens/dist/colors.json");
 const semanticColorData = require("@momentum-ui/tokens/dist/semanticColor.json");
 const tokenFileData = require("../tokens/vars/tokenFiles.js");
-const tokenImports = require("../tokens/tokenImports.js");
 const fse = require("fs-extra");
 const fsPath = require("fs-path");
-
 const createdStyleSheets = [];
 const componentsWithTokens = [];
 
@@ -228,7 +226,7 @@ const generateThemeStylesheets = () => {
 };
 
 const generateComponentScssFromTokens = async () => {
-  const allTokenFiles = tokenFileData.tokenFiles.concat(tokenImports);
+  const allTokenFiles = tokenFileData.tokenFiles;
   let index = 0;
   for (const tokenObject of allTokenFiles) {
     const componentName = tokenObject.component;

@@ -5,6 +5,8 @@ import styles from "./scss/module.scss";
 import "@/components/avatar/Avatar";
 import { ifDefined } from "lit-html/directives/if-defined";
 
+export const statusType = ["Delivered", "Failed", "Read", "Seen", "Sent", ""] as const;
+
 export namespace ChatMessage {
   @customElementWithCheck("md-chat-message")
   export class ELEMENT extends LitElement {
@@ -13,6 +15,7 @@ export namespace ChatMessage {
     @property({ type: String }) time = "";
     @property({ type: String }) label = "Avatar";
     @property({ type: Boolean }) self = false;
+    @property({ type: String }) status: (typeof statusType)[number] = "";
 
     static get styles() {
       return [reset, styles];
@@ -34,6 +37,7 @@ export namespace ChatMessage {
                 <span>${this.self ? "You" : this.title}</span>
               </div>
               <div class="md-chat-message_time">${this.time}</div>
+              <div class="md-chat-message_status">${this.status}</div>
             </div>
             <div class="md-chat-message_text">
               <slot name="message"></slot>

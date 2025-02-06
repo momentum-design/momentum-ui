@@ -6,10 +6,18 @@ import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import "@/index";
 import { now } from "@/utils/dateUtils";
 import { html } from "lit-element";
+import { DateTime } from "luxon";
 
 const minDate = now().minus({ day: 5 }).toISODate();
 
 const maxDate = now().plus({ day: 5 }).toISODate();
+
+export const DEFAULT_SEARCH_START_TIME = DateTime.local().minus({ days: 1 }).toMillis();
+export const DEFAULT_SEARCH_END_TIME = DateTime.local().minus({ seconds: 1 }).toMillis();
+
+const startDate = DateTime.fromMillis(DEFAULT_SEARCH_START_TIME).toISODate() ?? "";
+const endDate = DateTime.fromMillis(DEFAULT_SEARCH_END_TIME).toISODate() ?? "";
+const datePickerValue = `${startDate} - ${endDate}`;
 
 export const dateRangePickerTemplate = html`
   <h2 class="sandbox-header">md-datepicker</h2>
@@ -23,4 +31,6 @@ export const dateRangePickerTemplate = html`
   <md-date-range-picker weekStart="Monday" value="2021-01-31"></md-date-range-picker>
   <h3>disabled datepicker</h3>
   <md-date-range-picker weekStart="Monday" value="2021-01-31" disabled></md-date-range-picker>
+  <h3>error date picker</h3>
+  <md-date-range-picker value=${datePickerValue} newMomentum></md-date-range-picker>
 `;

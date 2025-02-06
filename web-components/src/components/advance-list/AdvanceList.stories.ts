@@ -22,31 +22,32 @@ const render = (args: Args): any => {
     >
     </md-advance-list>
   `;
-}
+};
 
 export const AdvanceListWithLoader: any = {
   args: {
-    items: [1, 2, 3, 4, 5].map((n) => ({
-      id: `${n}`,
-      name: `Item ${n}`,
-      template: (item: any) =>
-        html`<div style="padding: 0.5rem">${item.name}</div>`,
-    })).concat({
-      id: "status-indicator",
-      name: "loading",
-      template: () =>
-        html`<div class="infinite-scroll-spinner" part="spinner"><md-spinner size="18"></md-spinner></div>`
-    }),
+    items: [1, 2, 3, 4, 5]
+      .map((n) => ({
+        id: `${n}`,
+        name: `Item ${n}`,
+        template: (item: any) => html`<div style="padding: 0.5rem">${item.name}</div>`
+      }))
+      .concat({
+        id: "status-indicator",
+        name: "loading",
+        template: () =>
+          html`<div class="infinite-scroll-spinner" part="spinner"><md-spinner size="18"></md-spinner></div>`
+      }),
     isLoading: true,
     isMulti: false, // Default value
     groupOnMultiSelect: false,
-    value: [ ],
+    value: [],
     totalRecords: 100,
     containerHeight: "400px",
     disabledItems: [],
     isError: false
   },
-  render: render,
+  render: render
 };
 
 export const AdvanceList: any = {
@@ -54,19 +55,18 @@ export const AdvanceList: any = {
     items: [1, 2, 3, 4, 5].map((n) => ({
       id: `${n}`,
       name: `Item ${n}`,
-      template: (item: any) =>
-        html`<div style="padding: 0.5rem">${item.name}</div>`,
+      template: (item: any) => html`<div style="padding: 0.5rem">${item.name}</div>`
     })),
     isLoading: false,
     isMulti: false, // Default value
     groupOnMultiSelect: false,
-    value: [ ],
+    value: [],
     totalRecords: 100,
     containerHeight: "400px",
     disabledItems: [],
     isError: false
   },
-  render: render,
+  render: render
 };
 
 const meta: Meta = {
@@ -75,26 +75,26 @@ const meta: Meta = {
   argTypes: {
     items: {
       control: "object",
-      description: "Array of list items with template functions",
+      description: "Array of list items with template functions"
     },
     isLoading: { table: { disable: true } },
     isMulti: {
       control: "boolean",
-      description: "Enable multiple selection mode",
+      description: "Enable multiple selection mode"
     },
     groupOnMultiSelect: { table: { disable: true } },
     value: {
       control: "array",
-      description: "Array of selected item IDs",
+      description: "Array of selected item IDs"
     },
     containerHeight: {
       control: "text",
-      description: "Height of the scroll container (e.g., '300px')",
+      description: "Height of the scroll container (e.g., '300px')"
     },
     disabledItems: { table: { disable: true } },
     totalRecords: {
       control: "number",
-      description: "Total records for virtual scroll pagination",
+      description: "Total records for virtual scroll pagination"
     },
     handleKeyDown: { table: { disable: true } },
     handleRangeChange: { table: { disable: true } },
@@ -107,12 +107,11 @@ const meta: Meta = {
     isUserNavigated: { table: { disable: true } },
     selectedItemsIds: { table: { disable: true } },
     selectAllItems: { table: { disable: true } }
-
   },
   parameters: {
     a11y: {
-      element: "md-advance-list",
-    },
-  },
+      element: "md-advance-list"
+    }
+  }
 };
 export default meta;

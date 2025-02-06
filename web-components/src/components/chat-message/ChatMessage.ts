@@ -5,8 +5,6 @@ import styles from "./scss/module.scss";
 import "@/components/avatar/Avatar";
 import { ifDefined } from "lit-html/directives/if-defined";
 
-// export const statusType = ["Delivered", "Failed", "Read", "Seen", "Sent", ""] as const;
-
 export namespace ChatMessage {
   @customElementWithCheck("md-chat-message")
   export class ELEMENT extends LitElement {

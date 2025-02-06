@@ -61,20 +61,19 @@ export namespace AdvanceList {
     }
 
     updated(changedProperties: PropertyValues) {
-      console.log(">>>>>> updated isLoading", this.isLoading)
-      console.log(">>>>>> updated this.isMulti", this.isMulti)
-
       if (changedProperties.has("value")) {
         this.requestUpdate().then(() => {
-          console.log(">>>>>> this.value", this.value)
           this.selectedItemsIds = this.value;
           this.updateSelectedState();
         });
       }
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {
-          this.selectedItemsIds = this.items
-            .filter((item) => !this.disabledItems.includes(item.id))
+            this.selectedItemsIds = this.items
+            .filter((item) => {
+              const isNotDisabled = !this.disabledItems.includes(item.id);
+              return isNotDisabled;
+            })
             .map((item) => item.id);
           this.updateSelectedState();
           this.notifySelectedChange();
@@ -102,7 +101,6 @@ export namespace AdvanceList {
     protected updateSelectedState() {
       const wrappers = Array.from(this.shadowRoot?.querySelectorAll(".default-wrapper") || []);
       wrappers.forEach((wrapper) => {
-        console.log(">>>>>> this.selectedItemsIds", this.selectedItemsIds)
         const isSelected = this.selectedItemsIds.some((id) => wrapper.id === `${prefixId}${id}`);
         this.updateWrapperAttributes(wrapper as HTMLElement, isSelected);
 
@@ -307,7 +305,6 @@ export namespace AdvanceList {
     }
 
     render() {
-      console.log(">>>>>> advanceList render", this.isMulti)
       return html`
         ${this.getStyles()}
         <div

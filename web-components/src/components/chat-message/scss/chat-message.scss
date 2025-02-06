@@ -43,6 +43,9 @@
     &_status {
       margin-left: calc(#{$chat-message-indent} * 1.5);
     }
+    &_custom_content {
+      margin-left: calc(#{$chat-message-indent} * 1);
+    }
   }
 }
 

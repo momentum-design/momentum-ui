@@ -69,11 +69,8 @@ export namespace AdvanceList {
       }
       if (changedProperties.has("selectAllItems")) {
         if (this.selectAllItems) {
-            this.selectedItemsIds = this.items
-            .filter((item) => {
-              const isNotDisabled = !this.disabledItems.includes(item.id);
-              return isNotDisabled;
-            })
+          this.selectedItemsIds = this.items
+            .filter((item) => !this.disabledItems.includes(item.id))
             .map((item) => item.id);
           this.updateSelectedState();
           this.notifySelectedChange();

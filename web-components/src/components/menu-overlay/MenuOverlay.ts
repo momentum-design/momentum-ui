@@ -74,6 +74,7 @@ export namespace MenuOverlay {
     @property({ type: String }) ariaLabel = "";
     @property({ type: Boolean, attribute: "is-date-picker" }) isDatePicker = false;
     @property({ type: Number, attribute: "overlay-offset" }) overlayOffset = 15;
+    @property({ type: Boolean, attribute: "keep-open-on-iframe-click" }) keepOpenOnIframeClick = false;
 
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
@@ -437,7 +438,7 @@ export namespace MenuOverlay {
     };
 
     handleWindowBlurEvent() {
-      if (this._isOpen) {
+      if (this._isOpen && !this.keepOpenOnIframeClick) {
         this.isOpen = false;
       }
     }

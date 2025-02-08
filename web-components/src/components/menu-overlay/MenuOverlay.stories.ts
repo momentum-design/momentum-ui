@@ -60,6 +60,7 @@ const render = (args: Args) => {
       @menu-overlay-open=${action("click open")}
       @menu-overlay-close=${action("click close")}
       overlay-offset=${args.overlayOffset}
+      ?keep-open-on-iframe-click=${args.keepOpenOnIframeClick}
     >
       <md-button slot="menu-trigger" variant="primary">Open Menu Overlay</md-button>
       <div style="padding:1.25rem ; width: 100%;">
@@ -98,7 +99,8 @@ export const MenuOverlay: StoryObj = {
     customWidth: "",
     ariaRole: "menu",
     ariaLabel: "Link Storybook",
-    overlayOffset: 15
+    overlayOffset: 15,
+    keepOpenOnIframeClick: false
   },
   render: render
 };

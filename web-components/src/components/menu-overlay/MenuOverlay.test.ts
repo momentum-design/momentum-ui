@@ -46,7 +46,8 @@ const fixtureFactory = async (
   customWidth: string,
   maxHeight: string,
   size: MenuOverlay.Size,
-  allowHoverToggle = false
+  allowHoverToggle = false,
+  keepOpenOnIframeClick = false
 ): Promise<MenuOverlay.ELEMENT> => {
   return await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
@@ -57,6 +58,7 @@ const fixtureFactory = async (
       max-height=${maxHeight}
       size=${size}
       ?allow-hover-toggle=${allowHoverToggle}
+      ?keep-open-on-iframe-click=${keepOpenOnIframeClick}
     >
       <md-button slot="menu-trigger" class="menu-trigger" variant="primary">Open Menu Overlay</md-button>
       <div><h1>Menu Overlay Content</h1></div>
@@ -609,7 +611,7 @@ describe("MenuOverlay", () => {
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.focus();
-    element.handleWindowBlurEvent();
+    window.dispatchEvent(new Event("blur"));
     await nextFrame();
 
     expect(element.isOpen).toBeFalsy();
@@ -625,10 +627,26 @@ describe("MenuOverlay", () => {
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.focus();
-    element.handleWindowBlurEvent();
+    window.dispatchEvent(new Event("blur"));
     await nextFrame();
 
     expect(element.isOpen).toBeFalsy();
+    document.body.removeChild(iframe);
+  });
+
+  test("should not close menu if keepOpenOnIframeClick is set to true, and window loses focus", async () => {
+    const element = await fixtureFactory(true, false, "bottom", "", "", "large", false, true);
+    element.isOpen = true;
+    await nextFrame();
+    expect(element.isOpen).toBeTruthy();
+
+    const iframe = document.createElement("iframe");
+    document.body.appendChild(iframe);
+    iframe.focus();
+    window.dispatchEvent(new Event("blur"));
+    await nextFrame();
+
+    expect(element.isOpen).toBeTruthy();
     document.body.removeChild(iframe);
   });
 });

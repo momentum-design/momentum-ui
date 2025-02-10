@@ -1,6 +1,6 @@
 {
   "name": "@momentum-ui/web-components",
-  "version": "2.17.8",
+  "version": "2.17.9",
   "author": "Yana Harris",
   "license": "MIT",
   "repository": "https://github.com/momentum-design/momentum-ui.git",
@@ -52,7 +52,7 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1"
   },
-  "dependencies": {    
+  "dependencies": {
     "@interactjs/actions": "1.10.3",
     "@interactjs/auto-start": "1.10.3",
     "@interactjs/core": "1.10.3",
@@ -118,7 +118,7 @@
     "copy-webpack-plugin": "^6.4.1",
     "cross-env": "^7.0.3",
     "css-loader": "^3.4.2",
-    "cssstats": "^4.0.5",    
+    "cssstats": "^4.0.5",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.2.1",
     "extract-loader": "^4.0.3",

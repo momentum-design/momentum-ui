@@ -437,12 +437,8 @@ export namespace MenuOverlay {
     };
 
     handleWindowBlurEvent() {
-      if (this._isOpen) {
-        if (this.keepOpenOnWindowBlur) {
-          this.isOpen = this._isOpen;
-        } else {
-          this.isOpen = false;
-        }
+      if (this._isOpen && !this.keepOpenOnWindowBlur) {
+        this.isOpen = false;
       }
     }
 

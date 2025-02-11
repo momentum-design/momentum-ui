@@ -21,6 +21,7 @@ const render = (args: Args) => html`
     checkedLabel=${args.checkedLabel}
     alignment=${args.alignment}
     ?visible=${args.visible}
+    ?shadow=${args.shadow}
   ></md-grabber>
 `;
 
@@ -31,7 +32,8 @@ export const Grabber: StoryObj = {
     disabled: false,
     alignment: "leading",
     checkedLabel: "Collapse",
-    label: "Expand"
+    label: "Expand",
+    shadow: false
   },
   render: render
 };

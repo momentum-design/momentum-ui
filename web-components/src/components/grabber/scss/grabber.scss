@@ -8,7 +8,13 @@
   @include flex.flex($display: inline-flex);
   overflow: hidden;
 
+  &.shadow {
+    transition: box-shadow 0.150s ease-in-out;
+    box-shadow: var(--grabber-shadow);
+  }
+
   &:focus-within {
+    transition: box-shadow 0 ease-in-out;
     box-shadow: 0 0 0 2px var(--md-default-focus-outline-color);
   }
 

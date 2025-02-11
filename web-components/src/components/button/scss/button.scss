@@ -787,6 +787,67 @@
   }
 }
 
+:host([variant="secondary-negative"]) .md-button {
+  background-color: var(--button-secondary-negative-bg-color);
+  color: var(--button-secondary-negative-text-color);
+  border: 1px solid var(--button-secondary-negative-border-color);
+
+  &:hover {
+    background-color: var(--button-secondary-negative-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--button-secondary-negative-pressed-bg-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+  }
+}
+
+:host([variant="secondary-positive"]) .md-button {
+  background-color: var(--button-secondary-positive-bg-color);
+  color: var(--button-secondary-positive-text-color);
+  border: 1px solid var(--button-secondary-positive-border-color);
+
+  &:hover {
+    background-color: var(--button-secondary-positive-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--button-secondary-positive-pressed-bg-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+  }
+}
+
+:host([variant="secondary-accent"]) .md-button {
+  background-color: var(--button-secondary-accent-bg-color);
+  color: var(--button-secondary-accent-text-color);
+  border: 1px solid var(--button-secondary-accent-border-color);
+
+  &:hover {
+    background-color: var(--button-secondary-accent-hover-bg-color);
+  }
+
+  &:active {
+    background-color: var(--button-secondary-accent-pressed-bg-color);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+  }
+}
+
+
 :host([variant="red"]) .md-button {
   background-color: var(--button-red-bg-color);
   color: var(--button-red-text-color, var(--button-primary-text-color));

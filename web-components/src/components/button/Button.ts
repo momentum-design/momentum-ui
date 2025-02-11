@@ -76,7 +76,10 @@ export const buttonVariant = [
   "idle",
   "inverted-primary",
   "inverted-secondary",
-  "dropdown"
+  "dropdown",
+  "secondary-negative",
+  "secondary-positive",
+  "secondary-accent"
 ] as const;
 export const buttonColor = [
   "blue",

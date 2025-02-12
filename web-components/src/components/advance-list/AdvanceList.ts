@@ -65,11 +65,13 @@ export namespace AdvanceList {
     }
 
     protected firstUpdated(_changedProperties: PropertyValues): void {
+      super.firstUpdated(_changedProperties);
       this.listContainer?.addEventListener("keydown", this.handleKeyDown);
     }
 
     updated(changedProperties: PropertyValues) {
-      if (changedProperties.has("value")) {
+      super.updated(changedProperties);
+      if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
         this.requestUpdate().then(() => {
           this.selectedItemsIds = this.value;
           this.updateSelectedState();

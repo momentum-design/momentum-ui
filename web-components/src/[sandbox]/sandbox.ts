@@ -68,6 +68,9 @@ export class Sandbox extends MobxLitElement {
   @internalProperty()
   private selectedTab = "Accordion";
 
+  @internalProperty()
+  private renderSelectedTabPanelOnly = true;
+
   connectedCallback(): void {
     super.connectedCallback();
     this.loadSettingsFromStorage();
@@ -106,6 +109,14 @@ export class Sandbox extends MobxLitElement {
     if (storedVisualRebrand) {
       themeManager.setVisualRebrandEnabled(JSON.parse(storedVisualRebrand));
     }
+
+    const storedRenderSelectedTabOnly = localStorage.getItem("is-render-selected-tab-only-enabled");
+    if (storedRenderSelectedTabOnly) {
+      const parsedValue = JSON.parse(storedRenderSelectedTabOnly);
+      if (parsedValue !== this.renderSelectedTabPanelOnly) {
+        localStorage.setItem("is-render-selected-tab-only-enabled", JSON.stringify(this.renderSelectedTabPanelOnly));
+      }
+    }
   }
 
   toggleSetting(event: MouseEvent) {
@@ -127,6 +138,11 @@ export class Sandbox extends MobxLitElement {
   toggleVisualRebrandEnabled() {
     themeManager.setVisualRebrandEnabled(!themeManager.isVisualRebrandEnabled);
     localStorage.setItem("is-visual-rebrand-enabled", JSON.stringify(themeManager.isVisualRebrandEnabled));
+  }
+
+  toggleSelectedTabPanelRender() {
+    this.renderSelectedTabPanelOnly = !this.renderSelectedTabPanelOnly;
+    localStorage.setItem("is-render-selected-tab-only-enabled", JSON.stringify(this.renderSelectedTabPanelOnly));
   }
 
   themeToggle() {
@@ -181,11 +197,22 @@ export class Sandbox extends MobxLitElement {
             type="checkbox"
             name="theme-switch"
             class="visual-rebrand-switch"
-            data-aspect="momentumV2"
+            data-aspect="visual-rebrand"
             @click=${this.toggleVisualRebrandEnabled}
             ?checked=${themeManager.isVisualRebrandEnabled}
           />
           Visual rebrand
+        </label>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="selectedTabRender"
+            class="visual-rebrand-switch"
+            data-aspect="selected-tab-render"
+            @click=${this.toggleSelectedTabPanelRender}
+            ?checked=${this.renderSelectedTabPanelOnly}
+          />
+          Only render selected tab panel
         </label>
       </div>
     `;
@@ -228,7 +255,7 @@ export class Sandbox extends MobxLitElement {
     return [reset, styles];
   }
 
-  getTabTemplate(
+  private getTabTemplate(
     componentName: string,
     component: string,
     componentSassStatsName: string,
@@ -242,7 +269,21 @@ export class Sandbox extends MobxLitElement {
     `;
   }
 
-  getComponentTabPanelTemplate(
+  private getTabPanelTemplate(
+    componentName: string,
+    componentSassStatsName: string,
+    componentPanelTemplate: TemplateResult
+  ) {
+    if (componentName === this.selectedTab || !this.renderSelectedTabPanelOnly) {
+      //Not all tabs have sass stats if they don't have any, don't render the sass-stats above the component
+      return componentSassStatsName.length !== 0
+        ? html`<sass-stats component=${componentSassStatsName}> ${componentPanelTemplate} </sass-stats>`
+        : html`${componentPanelTemplate}`;
+    }
+    return html``;
+  }
+
+  private getComponentTabPanelTemplate(
     componentName: string,
     component: string,
     componentSassStatsName: string,
@@ -252,11 +293,7 @@ export class Sandbox extends MobxLitElement {
       <md-tab-panel slot="panel">
         <div class="container" aria-label=${component}>
           <h2>${componentName}</h2>
-          ${componentName.length !== 0
-            ? componentSassStatsName.length !== 0
-              ? html`<sass-stats component=${componentSassStatsName}> ${componentPanelTemplate} </sass-stats>`
-              : html`${componentPanelTemplate}`
-            : html``}
+          ${this.getTabPanelTemplate(componentName, componentSassStatsName, componentPanelTemplate)}
         </div>
       </md-tab-panel>
     `;

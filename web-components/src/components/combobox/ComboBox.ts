@@ -564,10 +564,9 @@ export namespace ComboBox {
     };
 
     private filterOptions(value: string): (string | OptionMember)[] {
-      if(this.preventFilter)
-      {
-         this.searchItem = false;
-         return this.options;
+      if (this.preventFilter) {
+        this.searchItem = false;
+        return this.options;
       }
       if (value && value.length) {
         const finalFilteredOption = this.options.filter((option: string | OptionMember) => {

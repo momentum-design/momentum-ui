@@ -42,7 +42,7 @@
 @font-face {
   font-display: fallback;
   font-family: "Inter Thin Oblique";
-  font-style: 200;
+  font-style: oblique;
   font-weight: 400;
   src: url("../../fonts/Inter.var.woff2") format("woff2");
 }

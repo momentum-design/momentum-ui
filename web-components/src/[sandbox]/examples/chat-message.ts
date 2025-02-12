@@ -1,9 +1,10 @@
-import "@/components/chat-message/ChatMessage";
-import { html } from "lit-element";
+import "@/components/alert-banner/AlertBanner";
 import "@/components/alert/Alert";
 import "@/components/badge/Badge";
+import "@/components/chat-message/ChatMessage";
 import "@/components/icon/Icon";
-import "@/components/alert-banner/AlertBanner";
+import "@/components/tooltip/Tooltip";
+import { html } from "lit-element";
 
 export const chatMessageTemplate = html`
   <md-chat-message title="John Doe" time="11:27AM" status="Received">

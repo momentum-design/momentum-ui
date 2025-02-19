@@ -19,6 +19,8 @@
   }
 
   &__popper {
+    animation-duration: 0.15s;
+    animation-name: tooltip-fade;
     background-color: var(--tooltip-bg-color);
     border: 1px solid $tooltip-border-color;
     border-radius: var(--tooltip-radius, $tooltip__radius);
@@ -106,6 +108,15 @@
         border-top: none;
         border-bottom-left-radius: $tooltip__radius;
       }
+    }
+  }
+
+  @keyframes tooltip-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 

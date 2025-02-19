@@ -61,7 +61,7 @@ export namespace AdvanceList {
     disconnectedCallback() {
       super.disconnectedCallback();
       this.removeEventListener("click", this.handleClick);
-      this.listContainer?.addEventListener("keydown", this.handleKeyDown);
+      this.listContainer?.removeEventListener("keydown", this.handleKeyDown);
     }
 
     protected firstUpdated(_changedProperties: PropertyValues): void {

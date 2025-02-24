@@ -204,6 +204,18 @@ export namespace MenuOverlay {
       if (this.arrow && this.showArrow) {
         this.arrow.toggleAttribute("data-show", true);
       }
+
+      if (changedProperties.has("isOpen")) {
+        if (this.isOpen) {
+          if (this.triggerElement) {
+            this.triggerElement.setAttribute("aria-expanded", "true");
+          }
+        } else {
+          if (this.triggerElement) {
+            this.triggerElement.setAttribute("aria-expanded", "false");
+          }
+        }
+      }
     }
 
     protected update(changedProperties: PropertyValues) {
@@ -331,7 +343,7 @@ export namespace MenuOverlay {
       }
     }
 
-    private handleTriggerClick = () => {
+    private readonly handleTriggerClick = () => {
       this.toggleOverlay();
     };
 
@@ -341,17 +353,17 @@ export namespace MenuOverlay {
       }
     }
 
-    private setOverlay = debounce((flag: boolean) => {
+    private readonly setOverlay = debounce((flag: boolean) => {
       if (!this.disabled) {
         this.isOpen = flag;
       }
     }, 100);
 
-    private expandPopup = () => {
+    private readonly expandPopup = () => {
       this.setOverlay(true);
     };
 
-    private collapsePopup = () => {
+    private readonly collapsePopup = () => {
       this.setOverlay(false);
     };
 
@@ -405,7 +417,7 @@ export namespace MenuOverlay {
 
     private focusOnTrigger() {
       requestAnimationFrame(() => {
-        if (this.focusableElements && this.focusableElements.length) {
+        if (this.focusableElements?.length) {
           this.focusableElements[0].focus();
         }
       });
@@ -450,7 +462,7 @@ export namespace MenuOverlay {
       return html`
         ${this.getStyles()}
         <div class="md-menu-overlay">
-          <slot name="menu-trigger" aria-expanded=${this.isOpen}></slot>
+          <slot name="menu-trigger"></slot>
           <div
             part="overlay"
             class="overlay-container"

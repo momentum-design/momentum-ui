@@ -10,11 +10,10 @@
     border-radius: 50%;
     display: block;
     position: relative;
-    
+
     @include spinner-style();
 
-    &::after {
-      animation: load8 1s infinite linear;
+    &::after {      
       border-radius: 50%;
       content: "";
       height: calc(100% + 2px);
@@ -23,16 +22,7 @@
       top: -1px;
       width: calc(100% + 2px);
     }
-  }
-}
-
-@keyframes load8 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
+    
   }
 }
 

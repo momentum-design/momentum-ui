@@ -119,44 +119,4 @@
       opacity: 1;
     }
   }
-
-  @keyframes tooltip-slide-bottom {
-    from {
-      top: 100%;
-    }
-
-    to {
-      top: calc(100% + 0.7rem);
-    }
-  }
-
-  @keyframes tooltip-slide-top {
-    from {
-      bottom: 100%;
-    }
-
-    to {
-      bottom: calc(100% + 0.7rem);
-    }
-  }
-
-  @keyframes tooltip-slide-left {
-    from {
-      right: 100%;
-    }
-
-    to {
-      right: calc(100% + 0.7rem);
-    }
-  }
-
-  @keyframes tooltip-slide-right {
-    from {
-      left: 100%;
-    }
-
-    to {
-      left: calc(100% + 0.7rem);
-    }
-  }
 }

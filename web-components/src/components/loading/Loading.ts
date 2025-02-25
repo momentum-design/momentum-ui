@@ -63,12 +63,12 @@ export namespace Loading {
             // Animation growing phase (0% to 20%)
             const growProgress = 0.1 + (adjustedProgress / 280) * 0.9;
             scale = growProgress;
-            opacity = 0.1 + (adjustedProgress / 280) * 0.9;
+            opacity = growProgress;
           } else if (adjustedProgress < 1400) {
             // Animation fading phase (20% to 100%)
-            const fadingProgress = Math.min(((adjustedProgress - 280) / (duration - 280)) * 4, 1);
-            scale = Math.max(1 - fadingProgress * 0.9, 0.1);
-            opacity = Math.max(1 - fadingProgress * 0.9, 0.1);
+            const fadingProgress = Math.min(((adjustedProgress - 280) / (duration - 280)) * 2, 1);
+            scale = Math.max(1 - fadingProgress * 0.9, 0.9);
+            opacity = Math.max(1 - fadingProgress * 0.9, 0.2);
           }
 
           element.style.transform = `scale(${scale})`;

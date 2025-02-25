@@ -1,5 +1,6 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import "@/components/loading/Loading";
 import "@/components/spinner/Spinner";
 import "@/components/tooltip/Tooltip";
 import { css, customElement, html, LitElement } from "lit-element";
@@ -90,6 +91,9 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="green" circle loading>
           <md-icon slot="icon" name="pause_16"></md-icon>
           <span slot="text">loading</span>
+        </md-button>
+        <md-button variant="primary" disabled>
+          <md-loading></md-loading>
         </md-button>
       </div>
 

@@ -128,10 +128,7 @@ export const badgeTemplate = html`
       </md-badge>
       ${"00:01"}
     </span>
-    <span slot="split-right">
-      <md-icon name="archive_12" style="margin-right:.375rem;height:1rem"></md-icon>
-      Wrap Up ${"00:01"}
-    </span>
+    <span slot="split-right"> Wrap Up ${"00:01"} </span>
   </md-badge>
   <md-badge split>
     <span slot="split-left">
@@ -172,4 +169,26 @@ export const badgeTemplate = html`
   <md-badge color="unreadcount" outlined> 99 </md-badge>
   <md-badge color="unreadcount" outlined> 99 </md-badge>
   <md-badge color="unreadcount" outlined> 4 </md-badge>
+
+  <h3 class="sandbox-header">status badge</h3>
+  <md-badge color="status-positive" small>
+    <md-icon name="participant-filled" iconSet="momentumDesign"></md-icon>
+    Agent name - 00:00
+  </md-badge>
+  <md-badge color="status-negative" small suppress-default-max-width>
+    <md-icon name="alert-active-filled" iconSet="momentumDesign"></md-icon>
+    %Wrap-up alert% - 00:00
+  </md-badge>
+  <md-badge color="status-accent" small>
+    <md-icon name="archive-filled" iconSet="momentumDesign"></md-icon>
+    Wrap-up - 00:00
+  </md-badge>
+  <md-badge color="status-warning" small>
+    <md-icon name="call-barge-filled" iconSet="momentumDesign"></md-icon>
+    Barged - 00:00
+  </md-badge>
+  <md-badge color="status-orange" small>
+    <md-icon name="call-hold-filled" iconSet="momentumDesign"></md-icon>
+    On hold - 00:00
+  </md-badge>
 `;

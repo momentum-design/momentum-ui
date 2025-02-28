@@ -114,7 +114,7 @@ export class Sandbox extends MobxLitElement {
     if (storedRenderSelectedTabOnly) {
       const parsedValue = JSON.parse(storedRenderSelectedTabOnly);
       if (parsedValue !== this.renderSelectedTabPanelOnly) {
-        localStorage.setItem("is-render-selected-tab-only-enabled", JSON.stringify(this.renderSelectedTabPanelOnly));
+        this.renderSelectedTabPanelOnly = parsedValue;
       }
     }
   }

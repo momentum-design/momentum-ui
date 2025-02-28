@@ -64,6 +64,20 @@ export namespace Badge {
       return [reset, styles];
     }
 
+    private get computedAriaHiddenSplits(): boolean | undefined {
+      if (this.ariaHiddenSplits === "true") {
+        return true;
+      } else if (this.ariaHiddenSplits === "false") {
+        return false;
+      }
+      return undefined;
+    }
+
+    private get computedTabIndex(): number | undefined {
+      const parsedValue = parseInt(this.tabIndexing);
+      return isNaN(parsedValue) ? undefined : parsedValue;
+    }
+
     render() {
       const classNamesInfo = {
         "md-badge--circle": this.circle,
@@ -78,13 +92,13 @@ export namespace Badge {
       const splitContent = () => {
         return html`
           <slot
-            aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)}
+            aria-hidden=${ifDefined(this.computedAriaHiddenSplits)}
             name="split-left"
             class="split split-left"
           ></slot>
           <span aria-hidden="true" class="split-separator"> | </span>
           <slot
-            aria-hidden=${ifDefined(this.ariaHiddenSplits || undefined)}
+            aria-hidden=${ifDefined(this.computedAriaHiddenSplits)}
             name="split-right"
             class="split split-right"
           ></slot>
@@ -94,7 +108,7 @@ export namespace Badge {
       return html`
         ${this.getStyles()}
         <span
-          tabindex=${this.tabIndexing}
+          tabindex=${ifDefined(this.computedTabIndex)}
           part="badge"
           class="md-badge ${classMap(classNamesInfo)}"
           aria-label=${this.ariaLabel}

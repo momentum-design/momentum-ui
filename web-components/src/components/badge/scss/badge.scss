@@ -6,6 +6,8 @@
     @include badge-size;
     @include badge-style($radius: $badge--round__radius);
 
+    gap: rem-calc(8);
+
     &:focus {
       outline: 2px solid var(--button-focus-ring-color);
       outline-offset: 2px;
@@ -191,6 +193,41 @@
       );
     }
 
+    &--status-negative {
+      @include badge-status-style(
+        var(--badge-status-negative-bg-color),
+        var(--badge-status-negative-text-color)
+      );
+    }
+    
+    &--status-positive {
+      @include badge-status-style(
+        var(--badge-status-positive-bg-color),
+        var(--badge-status-positive-text-color)
+      );
+    }
+    
+    &--status-warning {
+      @include badge-status-style(
+        var(--badge-status-warning-bg-color),
+        var(--badge-status-warning-text-color)
+      );
+    }
+    
+    &--status-accent {
+      @include badge-status-style(
+        var(--badge-status-accent-bg-color),
+        var(--badge-status-accent-text-color)
+      );
+    }
+    
+    &--status-orange {
+      @include badge-status-style(
+        var(--badge-status-orange-bg-color),
+        var(--badge-status-orange-text-color)
+      );
+    }
+
     &--disabled {
       @include badge-style(
         var(--md-quaternary-two-bg-color),
@@ -216,14 +253,12 @@
 }
 
 ::slotted(md-icon) {
-  height: rem-calc(16);
-  margin-right: rem-calc(8);
+  height: rem-calc(16);  
   width: rem-calc(16);
 }
 
 ::slotted(md-badge) {
-  height: rem-calc(16);
-  margin-right: rem-calc(8);
+  height: rem-calc(16);  
   width: rem-calc(16);
 }
 
@@ -235,7 +270,7 @@
 }
 
 .split-separator {
-  margin: rem-calc(0 8);
+  margin: rem-calc(0 0);
   opacity: 0.4;
 }
 

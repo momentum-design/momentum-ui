@@ -768,17 +768,25 @@ export namespace Tabs {
     }
 
     handleTabKeydown(event: any) {
-      let elementId;
+      const targetElement: HTMLElement | undefined = event.target as HTMLElement;
 
-      if (event.target != this && !this.tabs.find((tab) => tab.id === event.target.id)) {
+      if (event.target != this && !this.tabs.find((tab) => tab.id === targetElement?.id)) {
         return false;
       }
 
-      if (event.path) {
-        elementId = event.path[0].id;
-      } else {
-        elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
+      let elementId: string | undefined;
+
+      if (event.composedPath()?.length > 0) {
+        elementId = (event.composedPath()[0] as HTMLElement).id;
+      } else if (event.originalTarget) {
+        elementId = event.originalTarget.id;
       }
+
+      if (!elementId) {
+        //Unable to find elemnt return
+        return;
+      }
+
       const id = this.getNormalizedTabId(elementId);
       this.dispatchKeydownEvent(event, id);
 

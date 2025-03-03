@@ -52,15 +52,15 @@
     "lit-element": "2.3.1",
     "lit-html": "^1.2.1"
   },
-  "dependencies": {    
+  "dependencies": {
     "@interactjs/actions": "1.10.3",
     "@interactjs/auto-start": "1.10.3",
     "@interactjs/core": "1.10.3",
     "@interactjs/interact": "1.10.3",
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
-    "@momentum-design/brand-visuals": "0.3.0",
-    "@momentum-design/icons": "0.8.0",
+    "@momentum-design/brand-visuals": "^0.4.0",
+    "@momentum-design/icons": "0.10.0",
     "@momentum-design/tokens": "0.3.2",
     "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",
@@ -118,7 +118,7 @@
     "copy-webpack-plugin": "^6.4.1",
     "cross-env": "^7.0.3",
     "css-loader": "^3.4.2",
-    "cssstats": "^4.0.5",    
+    "cssstats": "^4.0.5",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.2.1",
     "extract-loader": "^4.0.3",

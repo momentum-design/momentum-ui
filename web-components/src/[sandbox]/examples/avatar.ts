@@ -113,6 +113,76 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Self" type="self" size="44"></md-avatar>
       <md-avatar title="Self" type="self" size="56"></md-avatar>
       <md-avatar title="Self" type="self" size="124"></md-avatar>
+      <h3>Icon Avatar Channel with no Background Color</h3>
+      <md-avatar title="Channel Chat" type="channel-chat"></md-avatar>
+      <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound"></md-avatar>
+      <md-avatar title="Channel SMS Outbound" type="channel-sms-outbound"></md-avatar>
+      <md-avatar title="Channel Email Inbound" type="channel-email-inbound"></md-avatar>
+      <md-avatar title="Channel Email Outbound" type="channel-email-outbound"></md-avatar>
+      <md-avatar title="Channel Call" type="channel-call"></md-avatar>
+      <md-avatar title="Channel Callback" type="channel-callback"></md-avatar>
+      <md-avatar title="Channel Headset" type="channel-headset"></md-avatar>
+      <md-avatar title="Channel Campaign" type="channel-campaign"></md-avatar>
+      <md-avatar title="Channel Emoji" type="channel-emoji"></md-avatar>
+      <md-avatar title="Channel Webex" type="channel-webex"></md-avatar>
+      <md-avatar title="Channel FB Messenger" type="channel-fb-messenger"></md-avatar>
+      <md-avatar title="Channel Apple Chat" type="channel-apple-chat"></md-avatar>
+      <md-avatar title="Channel Line" type="channel-line"></md-avatar>
+      <md-avatar title="Channel Twitter X" type="channel-twitter-x"></md-avatar>
+      <md-avatar title="Channel Viber" type="channel-viber"></md-avatar>
+      <md-avatar title="Channel Whats App" type="channel-whats-app"></md-avatar>
+      <md-avatar title="Channel We Chat" type="channel-we-chat"></md-avatar>
+      <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
+      <h3>Icon Avatar Channel with Background Color:white</h3>
+      <md-avatar title="Channel Chat" type="channel-chat" color="white"></md-avatar>
+      <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" color="white"></md-avatar>
+      <md-avatar title="Channel SMS Outbound" type="channel-sms-outbound" color="white"></md-avatar>
+      <md-avatar title="Channel Email Inbound" type="channel-email-inbound" color="white"></md-avatar>
+      <md-avatar title="Channel Email Outbound" type="channel-email-outbound" color="white"></md-avatar>
+      <md-avatar title="Channel Call" type="channel-call" color="white"></md-avatar>
+      <md-avatar title="Channel Callback" type="channel-callback" color="white"></md-avatar>
+      <md-avatar title="Channel Headset" type="channel-headset" color="white"></md-avatar>
+      <md-avatar title="Channel Campaign" type="channel-campaign" color="white"></md-avatar>
+      <md-avatar title="Channel Emoji" type="channel-emoji" color="white"></md-avatar>
+      <md-avatar title="Channel Webex" type="channel-webex" color="white"></md-avatar>
+      <md-avatar title="Channel FB Messenger" type="channel-fb-messenger" color="white"></md-avatar>
+      <md-avatar title="Channel Apple Chat" type="channel-apple-chat" color="white"></md-avatar>
+      <md-avatar title="Channel Line" type="channel-line" color="white"></md-avatar>
+      <md-avatar title="Channel Twitter X" type="channel-twitter-x" color="white"></md-avatar>
+      <md-avatar title="Channel Viber" type="channel-viber" color="white"></md-avatar>
+      <md-avatar title="Channel Whats App" type="channel-whats-app" color="white"></md-avatar>
+      <md-avatar title="Channel We Chat" type="channel-we-chat" color="white"></md-avatar>
+      <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
+      <h3>Icon Avatar Channel with Background Color:dark gray</h3>
+      <md-avatar title="Channel Chat" type="channel-chat" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel SMS Outbound" type="channel-sms-outbound" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Email Inbound" type="channel-email-inbound" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Email Outbound" type="channel-email-outbound" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Call" type="channel-call" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Callback" type="channel-callback" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Headset" type="channel-headset" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Campaign" type="channel-campaign" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Emoji" type="channel-emoji" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Webex" type="channel-webex" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel FB Messenger" type="channel-fb-messenger" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Apple Chat" type="channel-apple-chat" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Line" type="channel-line" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Twitter X" type="channel-twitter-x" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Viber" type="channel-viber" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel Whats App" type="channel-whats-app" color="dark-gray"></md-avatar>
+      <md-avatar title="Channel We Chat" type="channel-we-chat" color="dark-gray"></md-avatar>
+      <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
+      <h3>Icon Avatar Channel with Custom Icon</h3>
+      <md-avatar title="Custom Channel" type="channel-custom" color="dark-gray">
+        <md-icon slot="custom-icon" name="placeholder-filled" iconSet="momentumDesign"></md-icon>
+      </md-avatar>
+      <md-avatar title="Custom Channel" type="channel-custom" color="white">
+        <md-icon slot="custom-icon" name="placeholder-filled" iconSet="momentumDesign"></md-icon>
+      </md-avatar>
+      <md-avatar title="Custom Channel" type="channel-custom">
+        <md-icon slot="custom-icon" name="placeholder-filled" iconSet="momentumDesign"></md-icon>
+      </md-avatar>
       <h3>Icon Avatar Bot</h3>
       <md-avatar type="bot" title="Tom Smith"></md-avatar>
       <md-avatar type="bot" title="Tom Smith" newMomentum></md-avatar>

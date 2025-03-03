@@ -22,11 +22,7 @@ describe("Avatar", () => {
   });
 
   test("should set size property", async () => {
-    const element = await fixture<Avatar.ELEMENT>(
-      html`
-        <md-avatar alt="avatar" size="44"></md-avatar>
-      `
-    );
+    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar alt="avatar" size="44"></md-avatar> `);
     expect(element.size).toEqual(44);
   });
 
@@ -38,11 +34,7 @@ describe("Avatar", () => {
 
     expect(letter!.textContent!.trim()).toEqual("AH");
 
-    const element2 = await fixture<Avatar.ELEMENT>(
-      html`
-        <md-avatar alt="avatar" title="Chandler"></md-avatar>
-      `
-    );
+    const element2 = await fixture<Avatar.ELEMENT>(html` <md-avatar alt="avatar" title="Chandler"></md-avatar> `);
     const letter2 = element2.shadowRoot!.querySelector(".md-avatar__letter");
 
     expect(letter2!.textContent!.trim()).toEqual("C");
@@ -97,28 +89,20 @@ describe("Avatar", () => {
   });
 
   test("should provide loading status if type is typing", async () => {
-    const element = await fixture<Avatar.ELEMENT>(
-      html`
-        <md-avatar type="typing" title="Tom Smith"></md-avatar>
-      `
-    );
+    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar type="typing" title="Tom Smith"></md-avatar> `);
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
   });
 
   test("should provide loading status if boolean typing is true", async () => {
-    const element = await fixture<Avatar.ELEMENT>(
-      html`
-        <md-avatar typing="true" title="Tom Smith"></md-avatar>
-      `
-    );
+    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar ?typing=${true} title="Tom Smith"></md-avatar> `);
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
   });
 
   test("should render presence if boolean newMomentum is true", async () => {
     const element = await fixture<Avatar.ELEMENT>(html`
-      <md-avatar type="active" title="active" newMomentum="true"></md-avatar>
+      <md-avatar type="active" title="active" ?newMomentum=${true}></md-avatar>
     `);
 
     expect(element.shadowRoot!.querySelector("md-presence")).not.toBeNull();
@@ -127,7 +111,7 @@ describe("Avatar", () => {
 
   test("should set presenceColor, presenceIcon, and isCircularWrapper based on type", async () => {
     const element = await fixture<Avatar.ELEMENT>(html`
-      <md-avatar type="active" title="active" newMomentum="true"></md-avatar>
+      <md-avatar type="active" title="active" ?newMomentum=${true}></md-avatar>
     `);
 
     await element.updateComplete;
@@ -147,7 +131,7 @@ describe("Avatar", () => {
   test("should handle click event in avatar", async () => {
     jest.spyOn(Avatar.ELEMENT.prototype, "blur");
     const element = await fixture<Avatar.ELEMENT>(html`
-      <md-avatar title="active" size="40" type="active" newMomentum clickable="true" role="button"></md-avatar>
+      <md-avatar title="active" size="40" type="active" newMomentum ?clickable=${true} role="button"></md-avatar>
     `);
     const evt = new MouseEvent("click");
     setTimeout(() => element.handleClick(evt));
@@ -158,7 +142,7 @@ describe("Avatar", () => {
 
   test("should handle keydown event in avatar", async () => {
     const element = await fixture<Avatar.ELEMENT>(html`
-      <md-avatar title="active" size="40" type="active" newMomentum clickable="true" role="button"></md-avatar>
+      <md-avatar title="active" size="40" type="active" newMomentum ?clickable=${true} role="button"></md-avatar>
     `);
     const spyKeyDown = jest.spyOn(element, "handleKeyDown");
 
@@ -214,5 +198,19 @@ describe("Avatar", () => {
     expect(clickFunction).toHaveBeenCalledTimes(0);
     expect(mockFn).toHaveBeenCalledTimes(0);
     spyHandleClick.mockRestore();
+  });
+  test("should render custom channel icon slot when type is channel-custom", async () => {
+    const element = await fixture<Avatar.ELEMENT>(html`
+      <md-avatar type="channel-custom">
+        <span slot="custom-icon">Custom Icon Content</span>
+      </md-avatar>
+    `);
+
+    const customIconWrapper = element.shadowRoot!.querySelector(".md-avatar__custom-icon");
+    expect(customIconWrapper).not.toBeNull();
+
+    const slotElement = customIconWrapper!.querySelector("slot");
+    expect(slotElement).not.toBeNull();
+    expect(slotElement!.getAttribute("name")).toBe("custom-icon");
   });
 });

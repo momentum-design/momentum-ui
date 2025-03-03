@@ -106,6 +106,12 @@
     border: $avatar-self__border;
     color: $avatar-self__color;
   }
+  .md-avatar__logo{
+    @include avatar-contents-base;
+  }
+  .md-avatar__custom-icon {
+    @include avatar-contents-base;
+  }
 
   .md-avatar__icon {
     @include avatar-contents-base;

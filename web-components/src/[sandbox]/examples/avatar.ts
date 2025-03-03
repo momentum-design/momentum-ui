@@ -175,13 +175,13 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
       <h3>Icon Avatar Channel with Custom Icon</h3>
       <md-avatar title="Custom Channel" type="channel-custom" color="dark-gray">
-        <md-icon slot="custom-icon" name="placeholder-filled" iconSet="momentumDesign"></md-icon>
+        <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
       <md-avatar title="Custom Channel" type="channel-custom" color="white">
-        <md-icon slot="custom-icon" name="placeholder-filled" iconSet="momentumDesign"></md-icon>
+        <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
       <md-avatar title="Custom Channel" type="channel-custom">
-        <md-icon slot="custom-icon" name="placeholder-filled" iconSet="momentumDesign"></md-icon>
+        <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
       <h3>Icon Avatar Bot</h3>
       <md-avatar type="bot" title="Tom Smith"></md-avatar>

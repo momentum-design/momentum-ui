@@ -312,7 +312,6 @@
   display: inline-block;
   line-height: 0rem;
   vertical-align: middle;
-  --icon-color-channel-chat: var(--avatar-self-icon-color);
   --icon-color-channel-sms-inbound: var(--avatar-letter-bg-color);
   --icon-color-channel-sms-outbound: var(--avatar-letter-bg-color);
   --icon-color-channel-email-inbound: var(--avatar-violet-bg-color);
@@ -321,7 +320,8 @@
   --icon-color-channel-callback: var(--avatar-green-bg-color);
   --icon-color-channel-headset: var(--avatar-pink-bg-color);
   --icon-color-channel-campaign: var(--avatar-pink-bg-color);
-  --icon-color-channel-emoji: var(--avatar-self-icon-color);
+  --icon-color-channel-chat: #1170CF;
+  --icon-color-channel-emoji:#1170CF;
   --icon-color-suspected-spam: #A65E00;
   --icon-color-light-gray: #F7F7F7;
   --icon-color-dark-gray: #E6E6E6;

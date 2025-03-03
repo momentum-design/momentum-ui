@@ -199,18 +199,35 @@ describe("Avatar", () => {
     expect(mockFn).toHaveBeenCalledTimes(0);
     spyHandleClick.mockRestore();
   });
-  test("should render custom channel icon slot when type is channel-custom", async () => {
+
+  test("should render custom channel content when type is channel-custom", async () => {
     const element = await fixture<Avatar.ELEMENT>(html`
-      <md-avatar type="channel-custom">
-        <span slot="custom-icon">Custom Icon Content</span>
+      <md-avatar type="channel-custom" alt="avatar">
+        <span class="custom-content">Custom Channel Content</span>
       </md-avatar>
     `);
 
-    const customIconWrapper = element.shadowRoot!.querySelector(".md-avatar__custom-icon");
-    expect(customIconWrapper).not.toBeNull();
-
-    const slotElement = customIconWrapper!.querySelector("slot");
+    const customIcon = element.shadowRoot!.querySelector(".md-avatar__custom-icon");
+    expect(customIcon).not.toBeNull();
+    const slotElement = customIcon!.querySelector("slot");
     expect(slotElement).not.toBeNull();
-    expect(slotElement!.getAttribute("name")).toBe("custom-icon");
+  });
+
+  test("should render correct channel icons for different channel types", async () => {
+    const channelTypes = [
+      { type: "channel-chat", icon: "chat-filled" },
+      { type: "channel-sms-inbound", icon: "sms-filled" },
+      { type: "channel-email-inbound", icon: "email-filled" },
+      { type: "channel-call", icon: "handset-filled" },
+      { type: "channel-webex", icon: "webex-app-icon-color-container" }
+    ];
+
+    for (const { type, icon } of channelTypes) {
+      const element = await fixture<Avatar.ELEMENT>(html` <md-avatar type="${type}" size="40"></md-avatar> `);
+
+      const mdIcon = element.shadowRoot!.querySelector("md-icon");
+      expect(mdIcon).not.toBeNull();
+      expect(mdIcon!.name).toBe(icon);
+    }
   });
 });

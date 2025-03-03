@@ -54,6 +54,7 @@ export namespace Avatar {
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
+    @internalProperty() private iconSet: "momentumDesign" | "momentumBrandVisuals" = "momentumDesign";
     @property({ type: Boolean }) clickable = false;
     @property({ attribute: false }) clickFunction?: () => void;
 
@@ -251,6 +252,21 @@ export namespace Avatar {
       );
     }
 
+    private checkIconAvailability(iconName: string) {
+      const brandIcons = new Set([
+        "webex-app-icon-color-container",
+        "social-fbmessenger-color",
+        "apple-business-chat-color",
+        "social-line-color",
+        "social-viber-color",
+        "social-x",
+        "social-whatsapp-color",
+        "social-wechat-color"
+      ]);
+
+      this.iconSet = brandIcons.has(iconName) ? "momentumBrandVisuals" : "momentumDesign";
+    }
+
     get avatarContent() {
       if (this.src && !this.imageErrored) {
         return this.avatarImage;
@@ -281,22 +297,17 @@ export namespace Avatar {
       if (this.type === "channel-custom") {
         return html`
           <span class="md-avatar__custom-icon">
-            <slot name="custom-icon"></slot>
+            <slot></slot>
           </span>
         `;
       } else if (iconName) {
         const iconColor = `var(--icon-color-${this.type})`;
+        this.checkIconAvailability(iconName);
         return html`
           <span class="md-avatar__logo" style=${styleMap(this.avatarStyleMap)}>
             <md-icon
               .name=${iconName}
-              iconSet="momentumDesign"
-              .size=${this.chatIconSize}
-              style="color: ${iconColor};"
-            ></md-icon>
-            <md-icon
-              .name=${iconName}
-              iconSet="momentumBrandVisuals"
+              .iconSet=${this.iconSet}
               .size=${this.chatIconSize}
               style="color: ${iconColor};"
             ></md-icon>

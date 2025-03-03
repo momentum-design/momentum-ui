@@ -576,4 +576,17 @@ max-height="465px">
   </md-menu-overlay>
   </div>
 </div>
+
+<h3 class="sandbox-header" style="margin: .5rem 1rem">Preserve the open state of the Menu overlay when the window loses focus</h3>
+<div>
+<md-menu-overlay keep-open-on-window-blur id="menu-inside" ariaRole="dialog" ariaLabel="sample label" custom-width="254px"
+max-height="465px">
+  <md-button slot="menu-trigger" variant="primary">Open Menu Overlay </md-button>
+  <div style="padding:1.25rem ; width: 100%;">
+    <md-button variant="primary">Button 1</md-button>
+    <md-button variant="primary">Button 2</md-button>
+    </div>
+  </md-menu-overlay>
+  </div>
+</div>
 `;

@@ -1,8 +1,9 @@
+import { Button } from "@/components/button/Button";
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { nothing } from "lit-html";
 import "./Button";
-import { Button } from "./Button";
 
 describe("Button Component", () => {
   afterEach(fixtureCleanup);

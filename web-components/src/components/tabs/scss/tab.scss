@@ -263,7 +263,7 @@ button {
     color: var(--tabs-default-disabled) !important;
     cursor: not-allowed;
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (forced-colors: active) {
       filter: brightness(1) contrast(1) saturate(1.5);
     }
 

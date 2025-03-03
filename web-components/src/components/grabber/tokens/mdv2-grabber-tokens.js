@@ -32,6 +32,9 @@ const grabber = {
   },
   "border-width": {
     common: "1px"
+  },
+  shadow: {
+    common: "var(--md-elevation-1)"
   }
 };
 

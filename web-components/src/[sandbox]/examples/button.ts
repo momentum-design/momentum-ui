@@ -1,5 +1,6 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import "@/components/loading/Loading";
 import "@/components/spinner/Spinner";
 import "@/components/tooltip/Tooltip";
 import { css, customElement, html, LitElement } from "lit-element";
@@ -90,6 +91,9 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="green" circle loading>
           <md-icon slot="icon" name="pause_16"></md-icon>
           <span slot="text">loading</span>
+        </md-button>
+        <md-button variant="primary" disabled>
+          <md-loading></md-loading>
         </md-button>
       </div>
 
@@ -201,8 +205,8 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button rounded variant="secondary" size="40"><span slot="text">40</span></md-button>
       </div>
 
-      <div class="row" style="display: flex; margin: .5rem 0">
-        <h3 class="sandbox-header" style="margin: .5rem 1rem">Variants</h3>
+      <h3 class="sandbox-header" style="margin: .5rem 1rem">Variants</h3>
+      <div class="row" style="display: flex; margin: .5rem 0; gap: 8px;">
         <md-button variant="primary"><span slot="text">primary</span></md-button>
         <md-button variant="secondary"><span slot="text">secondary</span></md-button>
         <md-button variant="red"><span slot="text">red</span></md-button>
@@ -220,6 +224,11 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="unavailable"><span slot="text">Unavailable</span></md-button>
         <md-button variant="engaged"><span slot="text">Engaged</span></md-button>
         <md-button variant="idle"><span slot="text">Idle</span></md-button>
+      </div>
+      <div class="row" style="display: flex; gap: 8px;">
+        <md-button variant="secondary-negative"><span slot="text">secondary negative</span></md-button>
+        <md-button variant="secondary-positive"><span slot="text">secondary positive</span></md-button>
+        <md-button variant="secondary-accent"><span slot="text">secondary accent</span></md-button>
       </div>
 
       <h3 class="sandbox-header" style="margin: .5rem 1rem">Toggle state variant button</h3>
@@ -279,7 +288,7 @@ export class ButtonTemplateSandbox extends LitElement {
         <md-button variant="secondary" tag="a" ariaLabel="Link">Link</md-button>
         <md-button variant="secondary" tag="a" variant="primary" ariaLabel="Link">Link</md-button>
         <md-button variant="secondary" tag="a" variant="secondary" ariaLabel="Link">Link</md-button>
-        <md-button variant="secondary" tag="a" variant="red" ariaLabel="Link">Link</md-button>
+        <md-button variant="secondary" tag="a" variant="red" outline ariaLabel="Link">Link</md-button>
         <md-button variant="secondary" tag="a" variant="green" ariaLabel="Link">Link</md-button>
       </div>
 

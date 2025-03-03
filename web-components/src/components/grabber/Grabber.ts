@@ -7,6 +7,7 @@
  */
 
 import "@/components/icon/Icon";
+import { themeManager } from "@/managers/ThemeManager";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
@@ -83,6 +84,14 @@ export namespace Grabber {
      */
     @property({ type: Boolean })
     dragger = false;
+
+    /**
+     * Update the icon and icon size for dragger type
+     *
+     * Default: false
+     */
+    @property({ type: Boolean })
+    shadow = false;
 
     connectedCallback() {
       super.connectedCallback();
@@ -176,7 +185,8 @@ export namespace Grabber {
 
     private get grabberContainerClassMap() {
       return {
-        [`${this.alignment}`]: true
+        [`${this.alignment}`]: true,
+        shadow: this.shadow && (this.visible || this.checked)
       };
     }
 
@@ -193,7 +203,10 @@ export namespace Grabber {
     }
 
     get iconSize() {
-      return this.dragger ? "10" : "12";
+      if (this.dragger) {
+        return "10";
+      }
+      return themeManager.isMomentumV2Enabled === false ? "10" : "12";
     }
 
     render() {

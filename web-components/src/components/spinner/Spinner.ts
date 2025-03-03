@@ -6,16 +6,23 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
-import { styleMap } from "lit-html/directives/style-map";
-import { html, LitElement, property } from "lit-element";
-import styles from "./scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { styleMap } from "lit-html/directives/style-map";
+import styles from "./scss/module.scss";
 
 export namespace Spinner {
   @customElementWithCheck("md-spinner")
   export class ELEMENT extends LitElement {
-    @property({ type: Number, reflect: true }) size = 56;
+    @property({ type: Number, reflect: true })
+    size = 56;
+
+    @internalProperty()
+    private isAnimating = false;
+
+    private animationFrameId: number | null = null;
+
     static get styles() {
       return [reset, styles];
     }
@@ -25,6 +32,54 @@ export namespace Spinner {
         width: `${this.size}px`,
         height: `${this.size}px`
       };
+    }
+
+    protected firstUpdated(_changedProperties: PropertyValues): void {
+      super.firstUpdated(_changedProperties);
+      this.isAnimating = true;
+      this.startAnimation();
+    }
+
+    disconnectedCallback(): void {
+      super.disconnectedCallback();
+      this.isAnimating = false;
+      this.stopAnimation();
+    }
+
+    private startAnimation() {
+      const spinner = this.shadowRoot?.querySelector<HTMLElement>(".md-spinner");
+      if (!spinner) return;
+
+      let start: number | null = null;
+      const duration = 1000;
+
+      const animate = (timestamp: number) => {
+        if (!this.isAnimating) return;
+
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const rotation = (progress / duration) * 360;
+        spinner.style.transform = `rotate(${rotation}deg)`;
+
+        if (progress >= duration) {
+          start = timestamp;
+        }
+
+        this.animationFrameId = requestAnimationFrame(animate);
+      };
+
+      this.animationFrameId = requestAnimationFrame(animate);
+    }
+
+    private stopAnimation() {
+      if (this.animationFrameId !== null) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = null;
+      }
+      const spinner = this.shadowRoot?.querySelector<HTMLElement>(".md-spinner");
+      if (spinner) {
+        spinner.style.transform = "";
+      }
     }
 
     render() {

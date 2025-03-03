@@ -118,4 +118,20 @@ export const chipTemplate = html`
   <md-chip value="- % #" color="neutral" small>
     <md-icon name="emoji-passive-filled" size="16" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
   </md-chip>
+  <h3 class="sandbox-header">status chip</h3>
+  <md-chip value="Agent name - 00:00" color="status-positive" small>
+    <md-icon name="participant-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="%Wrap-up alert% - 00:00" color="status-negative" small suppress-default-max-width>
+    <md-icon name="alert-active-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="Wrap-up - 00:00" color="status-accent" small>
+    <md-icon name="archive-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="Barged - 00:00" color="status-warning" small>
+    <md-icon name="call-barge-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
+  <md-chip value="On hold - 00:00" color="status-orange" small>
+    <md-icon name="call-hold-filled" iconSet="momentumDesign" slot="custom-left-content"></md-icon>
+  </md-chip>
 `;

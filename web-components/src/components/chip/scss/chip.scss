@@ -331,60 +331,68 @@
   }
 
   &--positive {
-    --left-content-right-margin: 4px;
-    padding: 0px 4px;
-    font-weight: 500;
-    font-family: var(--brand-font-regular);
-    background-color: var(--badge-positive-bg-color);
-    color: var(--badge-positive-text-color);
-    border: 1px solid var(--badge-positive-border-color);
-    border-radius: 4px;
-
-    &:hover {
-      background-color: var(--badge-positive-hover-bg-color);
-    }
-
-    &:active {
-      background-color: var(--badge-positive-active-bg-color);
-    }
+    @include chip-sentiment-style(
+      var(--badge-positive-bg-color),
+      var(--badge-positive-text-color),
+      var(--badge-positive-border-color),
+      var(--badge-positive-hover-bg-color),
+      var(--badge-positive-active-bg-color)
+    );
   }
-
+  
   &--negative {
-    --left-content-right-margin: 4px;
-    padding: 0px 4px;
-    font-weight: 500;
-    font-family: var(--brand-font-regular);
-    background-color: var(--badge-negative-bg-color);
-    color: var(--badge-negative-text-color);
-    border: 1px solid var(--badge-negative-border-color);
-    border-radius: 4px;
-
-    &:hover {
-      background-color: var(--badge-negative-hover-bg-color);
-    }
-
-    &:active {
-      background-color: var(--badge-negative-active-bg-color);
-    }
+    @include chip-sentiment-style(
+      var(--badge-negative-bg-color),
+      var(--badge-negative-text-color),
+      var(--badge-negative-border-color),
+      var(--badge-negative-hover-bg-color),
+      var(--badge-negative-active-bg-color)
+    );
+  }
+  
+  &--neutral {
+    @include chip-sentiment-style(
+      var(--badge-neutral-bg-color),
+      var(--badge-neutral-text-color),
+      var(--badge-neutral-border-color),
+      var(--badge-neutral-hover-bg-color),
+      var(--badge-neutral-active-bg-color)
+    );
   }
 
-  &--neutral {
-    --left-content-right-margin: 4px;
-    padding: 0px 4px;
-    font-weight: 500;
-    font-family: var(--brand-font-regular);
-    background-color: var(--badge-neutral-bg-color);
-    color: var(--badge-neutral-text-color);
-    border: 1px solid var(--badge-neutral-border-color);
-    border-radius: 4px;
-
-    &:hover {
-      background-color: var(--badge-neutral-hover-bg-color);
-    }
-
-    &:active {
-      background-color: var(--badge-neutral-active-bg-color);
-    }
+  &--status-negative {
+    @include chip-status-style(
+      var(--badge-status-negative-bg-color),
+      var(--badge-status-negative-text-color)
+    );
+  }
+  
+  &--status-positive {
+    @include chip-status-style(
+      var(--badge-status-positive-bg-color),
+      var(--badge-status-positive-text-color)
+    );
+  }
+  
+  &--status-warning {
+    @include chip-status-style(
+      var(--badge-status-warning-bg-color),
+      var(--badge-status-warning-text-color)
+    );
+  }
+  
+  &--status-accent {
+    @include chip-status-style(
+      var(--badge-status-accent-bg-color),
+      var(--badge-status-accent-text-color)
+    );
+  }
+  
+  &--status-orange {
+    @include chip-status-style(
+      var(--badge-status-orange-bg-color),
+      var(--badge-status-orange-text-color)
+    );
   }
 
   .md-chip--clear {

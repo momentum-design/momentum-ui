@@ -57,7 +57,7 @@
         width: 100%;
         border: 1px solid var(--slider-background-pointerBorder);
 
-        @media screen and (-ms-high-contrast: active) {
+        @media screen and (forced-colors: active) {
           filter: brightness(1) contrast(1) saturate(1.5);
         }
       }

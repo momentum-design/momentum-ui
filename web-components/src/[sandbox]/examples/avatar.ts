@@ -9,7 +9,7 @@ export class AvatarTemplateSandbox extends LitElement {
   @internalProperty()
   private isNewMomentumEnabled = false;
 
-  private toggleMomentum = () => {
+  private readonly toggleMomentum = () => {
     this.isNewMomentumEnabled = !this.isNewMomentumEnabled;
   };
 

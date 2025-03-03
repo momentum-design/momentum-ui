@@ -6,7 +6,6 @@
  *
  */
 
-import "@/components/icon/Icon";
 import { Icon } from "@/components/icon/Icon";
 import { PlacementType } from "@/components/popover/Popover.types";
 import "@/components/progress-bar/ProgressBar";
@@ -44,6 +43,7 @@ export namespace Chip {
     @property({ type: String }) tooltipText = "";
     @property({ type: String }) tooltipPlacement: Chip.Placement = "auto";
     @property({ type: String }) iconSet: Icon.IconSet | undefined = "momentumUI";
+    @property({ type: Boolean, attribute: "suppress-default-max-width" }) suppressDefaultMaxWidth = false;
 
     @property({
       type: String,
@@ -221,8 +221,8 @@ export namespace Chip {
               part="chip-icon"
               name="${this.icon}"
               color="${iconColor}"
-              iconSet=${ifDefined(this.iconSet || undefined)}
-              size="${ifDefined(this.iconSize || undefined)}"
+              iconSet=${ifDefined(this.iconSet)}
+              size="${ifDefined(this.iconSize)}"
             >
             </md-icon>
           `
@@ -237,11 +237,19 @@ export namespace Chip {
       }
     }
 
+    private get textContentClassMap() {
+      return {
+        "md-chip--textcontent": true,
+        "md-chip--suppress-default-max-width": this.suppressDefaultMaxWidth
+      };
+    }
+
     render() {
       const classNamesInfo = {
         "md-chip--small": this.small,
         "md-chip--disabled": this.disabled,
-        [`md-chip--${this.color}`]: this.color
+        [`md-chip--${this.color}`]: this.color,
+        "suppress-max-width": this.suppressDefaultMaxWidth
       };
 
       return html`
@@ -266,7 +274,7 @@ export namespace Chip {
           >
             ${this.loadingTemplate()} ${this.iconTemplate()}
             <slot name="custom-left-content" part="chip-left"> </slot>
-            <span class="md-chip--textcontent"> ${this.renderedText}</span>
+            <span class=${classMap(this.textContentClassMap)}> ${this.renderedText}</span>
             <slot name="custom-right-content" part="chip-right"> </slot>
           </span>
         </md-tooltip>

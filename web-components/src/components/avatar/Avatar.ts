@@ -54,6 +54,7 @@ export namespace Avatar {
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
+    @internalProperty() private iconSet: "momentumDesign" | "momentumBrandVisuals" = "momentumDesign";
     @property({ type: Boolean }) clickable = false;
     @property({ attribute: false }) clickFunction?: () => void;
 
@@ -87,7 +88,8 @@ export namespace Avatar {
     private get avatarClassMap() {
       return {
         ...((!this.newMomentum || this.type === "bot") && this.type ? { [`md-avatar--${this.type}`]: true } : {}),
-        [`md-avatar--${this.size}`]: !!this.size
+        [`md-avatar--${this.size}`]: !!this.size,
+        [`md-avatar--${this.color}`]: !!this.color
       };
     }
 
@@ -119,6 +121,31 @@ export namespace Avatar {
 
     private get chatIconName() {
       return "chat-filled";
+    }
+    private iconNameMap: { [key: string]: string } = {
+      "channel-chat": "chat-filled",
+      "channel-sms-inbound": "sms-filled",
+      "channel-sms-outbound": "sms-outgoing-filled",
+      "channel-email-inbound": "email-filled",
+      "channel-email-outbound": "email-outgoing-filled",
+      "channel-call": "handset-filled",
+      "channel-callback": "outgoing-call-legacy-filled",
+      "channel-headset": "headset-filled",
+      "channel-campaign": "campaign-management-bold",
+      "channel-emoji": "emoji-happy-filled",
+      "channel-webex": "webex-app-icon-color-container",
+      "channel-fb-messenger": "social-fbmessenger-color",
+      "channel-apple-chat": "apple-business-chat-color",
+      "channel-line": "social-line-color",
+      "channel-twitter-x": "social-x",
+      "channel-viber": "social-viber-color",
+      "channel-whats-app": "social-whatsapp-color",
+      "channel-we-chat": "social-wechat-color",
+      "suspected-spam": "participant-unknown-bold"
+    };
+
+    private getIconName(type: string): string {
+      return this.iconNameMap[type] || "";
     }
 
     private get chatIconSize() {
@@ -225,6 +252,21 @@ export namespace Avatar {
       );
     }
 
+    private checkIconAvailability(iconName: string) {
+      const brandIcons = new Set([
+        "webex-app-icon-color-container",
+        "social-fbmessenger-color",
+        "apple-business-chat-color",
+        "social-line-color",
+        "social-viber-color",
+        "social-x",
+        "social-whatsapp-color",
+        "social-wechat-color"
+      ]);
+
+      this.iconSet = brandIcons.has(iconName) ? "momentumBrandVisuals" : "momentumDesign";
+    }
+
     get avatarContent() {
       if (this.src && !this.imageErrored) {
         return this.avatarImage;
@@ -250,11 +292,36 @@ export namespace Avatar {
         : nothing;
     }
 
+    private renderAvatarContent() {
+      const iconName = this.getIconName(this.type);
+      if (this.type === "channel-custom") {
+        return html`
+          <span class="md-avatar__custom-icon">
+            <slot></slot>
+          </span>
+        `;
+      } else if (iconName) {
+        const iconColor = `var(--icon-color-${this.type})`;
+        this.checkIconAvailability(iconName);
+        return html`
+          <span class="md-avatar__logo" style=${styleMap(this.avatarStyleMap)}>
+            <md-icon
+              .name=${iconName}
+              .iconSet=${this.iconSet}
+              .size=${this.chatIconSize}
+              style="color: ${iconColor};"
+            ></md-icon>
+          </span>
+        `;
+      }
+      return this.avatarContent;
+    }
+
     render() {
       return html`
         <div
           part="avatar"
-          class="md-avatar
+          class="md-avatar 
           ${classMap(this.avatarClassMap)}"
           role=${this.role}
           @click=${(e: MouseEvent) => this.handleClick(e)}
@@ -268,7 +335,7 @@ export namespace Avatar {
                   <md-icon .name=${this.chatIconName} .iconSet=${"momentumDesign"} .size=${this.chatIconSize}></md-icon>
                 </span>
               `
-            : this.avatarContent}
+            : this.renderAvatarContent()}
           ${this.hasNotification ? html` <span class="md-avatar__notification-badge"></span> ` : nothing}
           ${this.renderPresence()}
         </div>

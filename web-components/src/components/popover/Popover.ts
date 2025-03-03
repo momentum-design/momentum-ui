@@ -367,7 +367,7 @@ export namespace Popover {
       return false;
     }
 
-    private setIsOpenDebounced = debounce((flag: boolean) => {
+    private readonly setIsOpenDebounced = debounce((flag: boolean) => {
       this.isOpen = flag;
     }, 100);
 

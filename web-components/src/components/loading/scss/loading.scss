@@ -18,25 +18,13 @@
 
       &::before {
         @include icon-unread-badge_16;
-        animation-duration: 1.4s;
-        animation-fill-mode: both;
-        animation-iteration-count: infinite;
-        animation-name: loading;
 
         font-family: $icon-font-name;
         vertical-align: middle;
       }
 
-      &:nth-of-type(2)::before {
-        animation-delay: 0.2s;
-      }
-
-      &:nth-of-type(3)::before {
-        animation-delay: 0.4s;
-      }
-
       &:not(:last-child) {
-        margin-right: 0.5em;
+        margin-right: 0.25rem;
       }
     }
 
@@ -54,19 +42,6 @@
     
     &.md-loading--large {
       font-size: 3rem;
-    }
-  }
-
-  @keyframes loading {
-    0%,
-    100% {
-      opacity: 0.1;
-      transform: scale(0, 0);
-    }
-
-    20% {
-      opacity: 1;
-      transform: scale(1, 1);
     }
   }
 }

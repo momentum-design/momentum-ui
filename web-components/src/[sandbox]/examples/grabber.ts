@@ -1,14 +1,27 @@
+import "@/components/checkbox/Checkbox";
 import "@/components/grabber/Grabber";
 import { Grabber } from "@/components/grabber/Grabber";
-import { customElement, html, LitElement, PropertyValues, query } from "lit-element";
+import { customElement, html, internalProperty, LitElement, PropertyValues, query } from "lit-element";
 
 @customElement("grabber-template-sandbox")
 export class GrabberTemplateSandbox extends LitElement {
-  @query("#grabberLeading") grabberLeading!: Grabber.ELEMENT;
-  @query("#grabberTrailing") grabberTrailing!: Grabber.ELEMENT;
-  @query("#grabberTop") grabberTop!: Grabber.ELEMENT;
-  @query("#grabberBottom") grabberBottom!: Grabber.ELEMENT;
-  @query("#grabberToggle") grabberToggle!: Grabber.ELEMENT;
+  @query("#grabberLeading")
+  private grabberLeading!: Grabber.ELEMENT;
+
+  @query("#grabberTrailing")
+  private grabberTrailing!: Grabber.ELEMENT;
+
+  @query("#grabberTop")
+  private grabberTop!: Grabber.ELEMENT;
+
+  @query("#grabberBottom")
+  private grabberBottom!: Grabber.ELEMENT;
+
+  @query("#grabberToggle")
+  private grabberToggle!: Grabber.ELEMENT;
+
+  @internalProperty()
+  private shadow = false;
 
   constructor() {
     super();
@@ -123,28 +136,39 @@ export class GrabberTemplateSandbox extends LitElement {
         }
       </style>
       <div>
+        <md-checkbox slot="checkbox" ?checked=${this.shadow} @checkbox-change=${() => (this.shadow = !this.shadow)}>
+          shadow
+        </md-checkbox>
+      </div>
+      <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Leading</h3>
-        <md-grabber id="grabberLeading" alignment="leading"></md-grabber>
+        <md-grabber id="grabberLeading" alignment="leading" ?shadow=${this.shadow}></md-grabber>
         ${this.grabberDetailTemplate(this.grabberLeading)}
       </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Trailing</h3>
-        <md-grabber id="grabberTrailing" alignment="trailing"></md-grabber>
+        <md-grabber id="grabberTrailing" alignment="trailing" ?shadow=${this.shadow}></md-grabber>
         ${this.grabberDetailTemplate(this.grabberTrailing)}
       </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Top</h3>
-        <md-grabber id="grabberTop" alignment="top"></md-grabber>
+        <md-grabber id="grabberTop" alignment="top" ?shadow=${this.shadow}></md-grabber>
         ${this.grabberDetailTemplate(this.grabberTop)}
       </div>
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Bottom</h3>
-        <md-grabber id="grabberBottom" alignment="bottom"></md-grabber>
+        <md-grabber id="grabberBottom" alignment="bottom" ?shadow=${this.shadow}></md-grabber>
         ${this.grabberDetailTemplate(this.grabberBottom)}
       </div>
       <div class="custom-grabber">
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Bottom disable-click-toggle dragger</h3>
-        <md-grabber id="grabberBottom" alignment="bottom" disable-click-toggle dragger></md-grabber>
+        <md-grabber
+          id="grabberBottom"
+          alignment="bottom"
+          ?shadow=${this.shadow}
+          disable-click-toggle
+          dragger
+        ></md-grabber>
         ${this.grabberDetailTemplate(this.grabberBottom)}
       </div>
       <div>
@@ -155,6 +179,7 @@ export class GrabberTemplateSandbox extends LitElement {
           <md-grabber
             id="grabberToggle"
             alignment="leading"
+            ?shadow=${this.shadow}
             @grabber-toggled="${this.toggleWidth.bind(this)}"
           ></md-grabber>
         </div>
@@ -162,7 +187,13 @@ export class GrabberTemplateSandbox extends LitElement {
       <div>
         <h3 class="sandbox-header" style="margin: .5rem 1rem">Drag height Example</h3>
         <div class="dragger-container">
-          <md-grabber id="grabberDrag" alignment="bottom" disable-click-toggle dragger></md-grabber>
+          <md-grabber
+            id="grabberDrag"
+            alignment="bottom"
+            ?shadow=${this.shadow}
+            disable-click-toggle
+            dragger
+          ></md-grabber>
           <div class="dragger-div" id="draggerDiv"></div>
           <div class="h-divider"></div>
         </div>

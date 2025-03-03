@@ -39,6 +39,7 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   font-size: 14px;
   font-family: var(--brand-font-regular);
   font-weight: var(--brand-font-weight-regular);
+  font-feature-settings: "ss02";
 
   --body-primary-font-size: 1rem;
   --body-secondary-font-size: 0.875rem;  
@@ -120,17 +121,6 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-elevation-4: 0px 12px 48px rgba(0,0,0,0.25);
   --md-backdrop-filter: 10px;
 
-  /**
-   * Temporarily disable overriding token  background colours for mdv2
-   * 
-  **/
-  //--md-header-bg-color: transparent;
-  //--md-navigation-bg-color: transparent;
-  //--md-app-bg-color: var(--md-primary-gradient-background);
-  //--md-content-bg-color: var(--md-secondary-gradient-background);
-  //--md-task-list-bg-color: transparent;//#{$mds-color-theme-inverted-outline-button-normal};
-  //--md-agent-history-bg-color: #{$mds-color-theme-inverted-outline-button-normal};
-
   --md-nav-divider-primary: linear-gradient(
     0deg,
     #{$mds-color-theme-button-secondary-disabled} 0%,
@@ -164,40 +154,4 @@ $inter-medium-font: "Inter Medium", $font-family-sans-serif;
   --md-table-pinned-bg-color: #{$mds-color-theme-background-solid-primary-normal};
 
   --md-inverted-primary-bg-color: #{$mds-color-theme-inverted-background-normal};
-
-  // Background colors can not be overwritten because they are being used by consumers in unexpected ways
-  // New background colors should be introduced and these phased out
-  // --md-primary-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  // --md-primary-one-bg-color: #{$mds-color-theme-background-solid-primary-normal};
-  // --md-primary-two-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-secondary-bg-color: #{$mds-color-theme-background-solid-tertiary-normal};
-  // --md-secondary-one-bg-color: #{$mds-color-theme-background-secondary-normal};
-  // --md-secondary-two-bg-color: #{$mds-color-theme-background-secondary-hover};
-  // --md-secondary-three-bg-color: #{$mds-color-theme-background-secondary-active}
-  // --md-tertiary-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-tertiary-one-bg-color: #{$mds-color-theme-background-solid-secondary-normal};
-  // --md-tertiary-two-bg-color: #{$md-gray-80};
-  // --md-quaternary-bg-color: #{$mds-color-theme-background-alert-default-active};
-  // --md-quaternary-one-bg-color: #{$md-gray-60};
-  // --md-quaternary-two-bg-color: #{$md-gray-90};
-  // --md-secondary-white-bg-color: #{$mds-color-theme-background-solid-primary-normal}; // use --md-primary-one-bg-color
-  // --md-tertiary-white-bg-color: #{$mds-color-theme-background-solid-secondary-normal}; // use --md-primary-two-bg-color
-
-  // --md-presence-active-bg-color: #{$md-green-50};
-  // --md-presence-do-not-disturb-bg-color: #{$md-red-60};
-  // --md-presence-away-bg-color: #{$md-gray-30};
-  // --md-presence-busy-bg-color: #{$md-yellow-40};
-  // --md-email-composer-bg-color: #{$md-gray-95};
-  // --md-email-composer-thread-bar-color: #{$md-violet-40};
-  // --md-email-composer-ccChip-bg-color: #{$md-gray-90};
-  // --md-interaction-history-bg-color: #{$md-gray-95};
-  // --md-auto-wrapup-bg-color: #{$md-blue-90};
-  // --md-input-bg-color: #{$md-gray-95};
-  // --md-input-chat-length-indicator-bg-color: #{$md-gray-90};
-  // --md-input-chat-length-indicator-color: #{$md-gray-40};
-  // --md-input-chat-bg-color: #{$md-gray-90};
-  // --md-input-chat-color: #{$md-gray-05};
-  // --md-input-chat-error-color: #{$md-red-50};
-  // --md-webex-chat-disable-bg-color: #{$md-gray-90};
-  // --md-webex-chat-disable-color: #{$md-gray-70};
 }

@@ -1,9 +1,9 @@
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import styles from "./scss/module.scss";
-import { repeat } from "lit-html/directives/repeat";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { repeat } from "lit-html/directives/repeat";
+import styles from "./scss/module.scss";
 
 export namespace Breadcrumb {
   type NavCrumb = {
@@ -23,7 +23,7 @@ export namespace Breadcrumb {
     }
 
     private setLastAnchorCurrent() {
-      if (this.anchors && this.anchors.length) {
+      if (this.anchors?.length) {
         this.anchors[this.anchors.length - 1].setAttribute("aria-current", "page");
       }
     }
@@ -44,7 +44,7 @@ export namespace Breadcrumb {
     handleClick(event: MouseEvent) {
       const navCrumb = event.target as HTMLAnchorElement;
 
-      if (this.anchors && this.anchors.length) {
+      if (this.anchors?.length) {
         const navCrumbIndex = Array.from(this.anchors).indexOf(navCrumb);
         if (navCrumbIndex !== -1) {
           this.navCrumbs = [...this.navCrumbs.splice(0, navCrumbIndex + 1)];

@@ -631,4 +631,38 @@ describe("MenuOverlay", () => {
     expect(element.isOpen).toBeFalsy();
     document.body.removeChild(iframe);
   });
+
+  test("should not close the menu when window loses focus and keepOpenOnWindowBlur is true", async () => {
+    const element = await fixtureFactory(true, false, "bottom", "", "", "large");
+    element.keepOpenOnWindowBlur = true;
+    element.isOpen = true;
+    await nextFrame();
+    expect(element.isOpen).toBeTruthy();
+
+    const iframe = document.createElement("iframe");
+    document.body.appendChild(iframe);
+    iframe.focus();
+    element.handleWindowBlurEvent();
+    await nextFrame();
+
+    expect(element.isOpen).toBeTruthy();
+    document.body.removeChild(iframe);
+  });
+
+  test("should close the menu when window loses focus and keepOpenOnWindowBlur is false", async () => {
+    const element = await fixtureFactory(true, false, "bottom", "", "", "large");
+    element.keepOpenOnWindowBlur = false;
+    element.isOpen = true;
+    await nextFrame();
+    expect(element.isOpen).toBeTruthy();
+
+    const iframe = document.createElement("iframe");
+    document.body.appendChild(iframe);
+    iframe.focus();
+    element.handleWindowBlurEvent();
+    await nextFrame();
+
+    expect(element.isOpen).toBeFalsy();
+    document.body.removeChild(iframe);
+  });
 });

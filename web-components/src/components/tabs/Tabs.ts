@@ -56,7 +56,15 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
     @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
-    @property({ type: Number, reflect: true, attribute: "selected-index" }) selectedIndex = 0;
+
+    private _selectedIndex = 0;
+    @property({ type: Number, reflect: true, attribute: "selected-index" })
+    get selectedIndex(): number {
+      return this._selectedIndex;
+    }
+    set selectedIndex(value: number) {
+      this._selectedIndex = value;
+    }
     @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
@@ -131,6 +139,12 @@ export namespace Tabs {
 
     private visibleTabsSortableInstance: Sortable | null = null;
     private hiddenTabsSortableInstance: Sortable | null = null;
+
+    private get currentTabsLayout(): Tab.ELEMENT[] {
+      return this.direction === "horizontal"
+        ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
+        : this.tabs;
+    }
 
     private getCopyTabId(tab: Tab.ELEMENT) {
       if (tab.id?.startsWith(MORE_MENU_TAB_COPY_ID_PREFIX)) {
@@ -256,10 +270,7 @@ export namespace Tabs {
 
             let isTabsFitInViewport = true;
             if (tabsListViewportOffsetWidth < tabsTotalOffsetWidth) {
-              // console.log("Applied More button");
               isTabsFitInViewport = false;
-            } else {
-              // console.log("Removed More button");
             }
 
             const newTabsViewportList: TabsViewportDataList = [];
@@ -613,37 +624,36 @@ export namespace Tabs {
       this.requestUpdate();
     }
 
+    private toggleSelectedAttribute(tab?: Tab.ELEMENT, tabPanel?: TabPanel.ELEMENT) {
+      tab?.toggleAttribute("selected");
+      tabPanel?.toggleAttribute("selected");
+
+      if (tab) {
+        const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
+        if (tabCopy) {
+          tabCopy.toggleAttribute("selected");
+          this.isMoreTabMenuSelected = true;
+        } else {
+          this.isMoreTabMenuSelected = false;
+        }
+      }
+    }
+
     private updateSelectedTab(newSelectedIndex: number) {
       const { tabs, panels } = this;
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
-      if (oldSelectedIndex === -1) {
-        return;
-      }
 
       if (tabs && panels) {
         [oldSelectedIndex, newSelectedIndex].forEach((index) => {
-          const tab = tabs[index];
-          tab?.toggleAttribute("selected");
-          const panel = panels[index];
-          panel?.toggleAttribute("selected");
-          if (tab) {
-            const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-            if (tabCopy) {
-              tabCopy.toggleAttribute("selected");
-              this.isMoreTabMenuSelected = true;
-            } else {
-              this.isMoreTabMenuSelected = false;
-            }
+          if (index >= 0) {
+            this.toggleSelectedAttribute(tabs[index], panels[index]);
           }
         });
       }
 
       if (newSelectedIndex >= 0) {
         this.dispatchSelectedChangedEvent(newSelectedIndex);
-        const currentTabsConfiguration =
-          this.direction === "horizontal"
-            ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
-            : this.tabs;
+        const currentTabsConfiguration = this.currentTabsLayout;
         const newSelectedTabIdx = currentTabsConfiguration.findIndex(
           (element) => element.id === tabs[newSelectedIndex].id
         );
@@ -652,10 +662,7 @@ export namespace Tabs {
     }
 
     private dispatchSelectedChangedEvent(newSelectedIndex: number) {
-      const currentTabsOrder =
-        this.direction === "horizontal"
-          ? [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList]
-          : this.tabs;
+      const currentTabsOrder = this.currentTabsLayout;
       const newSelectedTabId = this.tabs[newSelectedIndex].id;
       const newIndex = currentTabsOrder.findIndex((element) => element.id === newSelectedTabId);
 
@@ -761,17 +768,25 @@ export namespace Tabs {
     }
 
     handleTabKeydown(event: any) {
-      let elementId;
+      const targetElement: HTMLElement | undefined = event.target as HTMLElement;
 
-      if (event.target != this && !this.tabs.find((tab) => tab.id === event.target.id)) {
+      if (event.target != this && !this.tabs.find((tab) => tab.id === targetElement?.id)) {
         return false;
       }
 
-      if (event.path) {
-        elementId = event.path[0].id;
-      } else {
-        elementId = event.composedPath() ? event.composedPath()[0].id : event.originalTarget.id;
+      let elementId: string | undefined;
+
+      if (event.composedPath()?.length > 0) {
+        elementId = (event.composedPath()[0] as HTMLElement).id;
+      } else if (event.originalTarget) {
+        elementId = event.originalTarget.id;
       }
+
+      if (!elementId) {
+        //Unable to find elemnt return
+        return;
+      }
+
       const id = this.getNormalizedTabId(elementId);
       this.dispatchKeydownEvent(event, id);
 
@@ -1015,9 +1030,10 @@ export namespace Tabs {
           selectedTabIndex = idx > -1 ? idx : this.selected;
         }
 
-        const currentTabsLayout = [...this.tabsFilteredAsVisibleList, ...this.tabsFilteredAsHiddenList];
-        if (currentTabsLayout.length && currentTabsLayout[selectedTabIndex].id) {
-          this.handleNewSelectedTab(currentTabsLayout[selectedTabIndex].id);
+        const tabsLayout = this.currentTabsLayout;
+        if (tabsLayout.length && tabsLayout[selectedTabIndex].id) {
+          this._selectedIndex = selectedTabIndex;
+          this.handleNewSelectedTab(tabsLayout[selectedTabIndex].id);
         } else {
           this.selected = selectedTabIndex;
         }

@@ -22,7 +22,7 @@ export type TooltipEvent = {
   placement: Tooltip.Placement;
   reference: HTMLElement;
   popper: HTMLElement;
-  slotContent?: Element[] | undefined | null;
+  slotContent?: Element[] | null;
 };
 
 export namespace Tooltip {
@@ -41,11 +41,11 @@ export namespace Tooltip {
 
     private slotContent: Element[] | null = null;
 
-    private _keyDownListener = (e: KeyboardEvent) => {
+    private readonly _keyDownListener = (e: KeyboardEvent) => {
       this.handleKeyDown(e);
     };
 
-    private _wheelListener = (_e: Event) => {
+    private readonly _wheelListener = (_e: Event) => {
       if (this.opened) {
         this.notifyTooltipDestroy();
       }

@@ -70,7 +70,7 @@ describe("Link component", () => {
     const component: Link.ELEMENT = await fixture(` <md-link tab-index="1"></md-link> `);
     expect(component.getAttribute("tab-index")).toEqual("1");
 
-    const linkShadow = component!.shadowRoot!.querySelector(".md-link");
+    const linkShadow = component.shadowRoot!.querySelector(".md-link");
     expect(linkShadow!.getAttribute("tabindex")).toContain("1");
   });
 
@@ -79,7 +79,7 @@ describe("Link component", () => {
     const component: Link.ELEMENT = await fixture<Link.ELEMENT>(` <md-link tab-index="1" disabled></md-link> `);
     expect(component.disabled).toBeTruthy();
 
-    const linkShadow = component!.shadowRoot!.querySelector(".md-link");
+    const linkShadow = component.shadowRoot!.querySelector(".md-link");
     expect(linkShadow!.getAttribute("aria-disabled")).toBeTruthy;
   });
 

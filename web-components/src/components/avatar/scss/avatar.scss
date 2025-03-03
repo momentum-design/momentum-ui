@@ -312,6 +312,21 @@
   display: inline-block;
   line-height: 0rem;
   vertical-align: middle;
+  --icon-color-channel-chat: var(--avatar-self-icon-color);
+  --icon-color-channel-sms-inbound: var(--avatar-letter-bg-color);
+  --icon-color-channel-sms-outbound: var(--avatar-letter-bg-color);
+  --icon-color-channel-email-inbound: var(--avatar-violet-bg-color);
+  --icon-color-channel-email-outbound: var(--avatar-violet-bg-color);
+  --icon-color-channel-call: var(--avatar-green-bg-color);
+  --icon-color-channel-callback: var(--avatar-green-bg-color);
+  --icon-color-channel-headset: var(--avatar-pink-bg-color);
+  --icon-color-channel-campaign: var(--avatar-pink-bg-color);
+  --icon-color-channel-emoji: var(--avatar-self-icon-color);
+  --icon-color-suspected-spam: #A65E00;
+  --icon-color-light-gray: #F7F7F7;
+  --icon-color-dark-gray: #E6E6E6;
+  --icon-color-white: #FDFDFD;
+  --icon-color-beige: #FFEBC2;
 }
 
 ::slotted(*) {
@@ -334,4 +349,19 @@
   .md-avatar {
     outline: 1px solid CanvasText;
   }
+}
+.md-avatar--beige{
+  background-color: var(--icon-color-beige);
+}
+
+.md-avatar--light-gray {
+  background-color: var(--icon-color-light-gray);
+}
+
+.md-avatar--dark-gray {
+  background-color: var(--icon-color-dark-gray);
+}
+
+.md-avatar--white {
+  background-color: var(--icon-color-white);
 }

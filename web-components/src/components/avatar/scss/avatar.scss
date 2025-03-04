@@ -106,6 +106,12 @@
     border: $avatar-self__border;
     color: $avatar-self__color;
   }
+  .md-avatar__logo{
+    @include avatar-contents-base;
+  }
+  .md-avatar__custom-icon {
+    @include avatar-contents-base;
+  }
 
   .md-avatar__icon {
     @include avatar-contents-base;
@@ -306,6 +312,19 @@
   display: inline-block;
   line-height: 0rem;
   vertical-align: middle;
+  --icon-color-channel-sms-inbound: var(--avatar-sms-icon-color);
+  --icon-color-channel-sms-outbound: var(--avatar-sms-icon-color);
+  --icon-color-channel-email-inbound: var(--avatar-email-icon-color);
+  --icon-color-channel-email-outbound: var(--avatar-email-icon-color);
+  --icon-color-channel-call: var(--avatar-call-icon-color);
+  --icon-color-channel-callback: var(--avatar-call-icon-color);
+  --icon-color-channel-headset: var(--avatar-headset-icon-color);
+  --icon-color-channel-campaign: var(--avatar-campaign-icon-color);
+  --icon-color-channel-chat: var(--avatar-chat-icon-color);
+  --icon-color-channel-emoji:var(--avatar-emoji-icon-color);
+  --icon-color-channel-spam: var(--avatar-spam-icon-color);
+  --icon-color-white: var(--avatar-white-bg-color);
+  --icon-color-dark-gray: var(--avatar-darkgray-bg-color);
 }
 
 ::slotted(*) {
@@ -328,4 +347,12 @@
   .md-avatar {
     outline: 1px solid CanvasText;
   }
+}
+
+.md-avatar--dark-gray {
+  background-color: var(--icon-color-dark-gray);
+}
+
+.md-avatar--white {
+  background-color: var(--icon-color-white);
 }

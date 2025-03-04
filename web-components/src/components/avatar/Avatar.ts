@@ -141,7 +141,7 @@ export namespace Avatar {
       "channel-viber": "social-viber-color",
       "channel-whats-app": "social-whatsapp-color",
       "channel-we-chat": "social-wechat-color",
-      "suspected-spam": "participant-unknown-bold"
+      "channel-spam": "participant-unknown-bold"
     };
 
     private getIconName(type: string): string {
@@ -301,15 +301,19 @@ export namespace Avatar {
           </span>
         `;
       } else if (iconName) {
-        const iconColor = `var(--icon-color-${this.type})`;
         this.checkIconAvailability(iconName);
         return html`
-          <span class="md-avatar__logo" style=${styleMap(this.avatarStyleMap)}>
+          <span
+            class="md-avatar__logo ${this.type}"
+            style=${styleMap({
+              backgroundColor: this.type === "channel-spam" ? "var(--avatar-spam-bg-color)" : "transparent"
+            })}
+          >
             <md-icon
               .name=${iconName}
               .iconSet=${this.iconSet}
               .size=${this.chatIconSize}
-              style="color: ${iconColor};"
+              style="color: var(--icon-color-${this.type})"
             ></md-icon>
           </span>
         `;

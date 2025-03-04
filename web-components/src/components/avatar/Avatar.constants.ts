@@ -41,7 +41,7 @@ const AvatarType = [
   "channel-viber",
   "channel-whats-app",
   "channel-we-chat",
-  "suspected-spam",
+  "channel-spam",
   "channel-custom",
   ""
 ] as const;

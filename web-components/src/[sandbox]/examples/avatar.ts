@@ -132,7 +132,7 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Channel Viber" type="channel-viber"></md-avatar>
       <md-avatar title="Channel Whats App" type="channel-whats-app"></md-avatar>
       <md-avatar title="Channel We Chat" type="channel-we-chat"></md-avatar>
-      <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
+      <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
       <h3>Icon Avatar Channel with Background Color:white</h3>
       <md-avatar title="Channel Chat" type="channel-chat" color="white"></md-avatar>
       <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" color="white"></md-avatar>
@@ -152,7 +152,7 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Channel Viber" type="channel-viber" color="white"></md-avatar>
       <md-avatar title="Channel Whats App" type="channel-whats-app" color="white"></md-avatar>
       <md-avatar title="Channel We Chat" type="channel-we-chat" color="white"></md-avatar>
-      <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
+      <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
       <h3>Icon Avatar Channel with Background Color:dark gray</h3>
       <md-avatar title="Channel Chat" type="channel-chat" color="dark-gray"></md-avatar>
       <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" color="dark-gray"></md-avatar>
@@ -172,15 +172,15 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Channel Viber" type="channel-viber" color="dark-gray"></md-avatar>
       <md-avatar title="Channel Whats App" type="channel-whats-app" color="dark-gray"></md-avatar>
       <md-avatar title="Channel We Chat" type="channel-we-chat" color="dark-gray"></md-avatar>
-      <md-avatar title="Suspected Spam" type="suspected-spam" color="beige"></md-avatar>
+      <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
       <h3>Icon Avatar Channel with Custom Icon</h3>
-      <md-avatar title="Custom Channel" type="channel-custom" color="dark-gray">
+      <md-avatar title="Custom Channel" type="channel-custom">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
       <md-avatar title="Custom Channel" type="channel-custom" color="white">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
-      <md-avatar title="Custom Channel" type="channel-custom">
+      <md-avatar title="Custom Channel" type="channel-custom" color="dark-gray">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
       <h3>Icon Avatar Bot</h3>

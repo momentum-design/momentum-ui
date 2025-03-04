@@ -312,21 +312,19 @@
   display: inline-block;
   line-height: 0rem;
   vertical-align: middle;
-  --icon-color-channel-sms-inbound: var(--avatar-letter-bg-color);
-  --icon-color-channel-sms-outbound: var(--avatar-letter-bg-color);
-  --icon-color-channel-email-inbound: var(--avatar-violet-bg-color);
-  --icon-color-channel-email-outbound: var(--avatar-violet-bg-color);
-  --icon-color-channel-call: var(--avatar-green-bg-color);
-  --icon-color-channel-callback: var(--avatar-green-bg-color);
-  --icon-color-channel-headset: var(--avatar-pink-bg-color);
-  --icon-color-channel-campaign: var(--avatar-pink-bg-color);
-  --icon-color-channel-chat: #1170CF;
-  --icon-color-channel-emoji:#1170CF;
-  --icon-color-suspected-spam: #A65E00;
-  --icon-color-light-gray: #F7F7F7;
-  --icon-color-dark-gray: #E6E6E6;
-  --icon-color-white: #FDFDFD;
-  --icon-color-beige: #FFEBC2;
+  --icon-color-channel-sms-inbound: var(--avatar-sms-icon-color);
+  --icon-color-channel-sms-outbound: var(--avatar-sms-icon-color);
+  --icon-color-channel-email-inbound: var(--avatar-email-icon-color);
+  --icon-color-channel-email-outbound: var(--avatar-email-icon-color);
+  --icon-color-channel-call: var(--avatar-call-icon-color);
+  --icon-color-channel-callback: var(--avatar-call-icon-color);
+  --icon-color-channel-headset: var(--avatar-headset-icon-color);
+  --icon-color-channel-campaign: var(--avatar-campaign-icon-color);
+  --icon-color-channel-chat: var(--avatar-chat-icon-color);
+  --icon-color-channel-emoji:var(--avatar-emoji-icon-color);
+  --icon-color-channel-spam: var(--avatar-spam-icon-color);
+  --icon-color-white: var(--avatar-white-bg-color);
+  --icon-color-dark-gray: var(--avatar-darkgray-bg-color);
 }
 
 ::slotted(*) {
@@ -349,13 +347,6 @@
   .md-avatar {
     outline: 1px solid CanvasText;
   }
-}
-.md-avatar--beige{
-  background-color: var(--icon-color-beige);
-}
-
-.md-avatar--light-gray {
-  background-color: var(--icon-color-light-gray);
 }
 
 .md-avatar--dark-gray {

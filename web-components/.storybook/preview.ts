@@ -1,4 +1,3 @@
-import { Parameters } from "@storybook/client-api";
 import { setCustomElements } from "@storybook/web-components";
 import { ThemeNameValues } from "../src/components/theme/Theme";
 import customElements from './custom-elements.json';
@@ -11,7 +10,7 @@ import { withThemeDecorator } from "./themeDecorator";
 
 setCustomElements(customElements);
 
-export const parameters:Parameters = {
+export const parameters = {
   docs: {
     inlineStories: false,
   },

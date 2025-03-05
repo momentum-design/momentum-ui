@@ -27,7 +27,7 @@ module.exports = {
     "@storybook/addon-toolbars"
   ],
 
-  framework: "@storybook/web-components",
+  framework: "@storybook/web-components-webpack5",
 
   webpackFinal: async (
     storybookConfig: webpack.Configuration,
@@ -36,7 +36,8 @@ module.exports = {
     console.log("Storybook build mode: ", configType);
 
     // RESOLVE
-    storybookConfig.resolve = storybookConfig.resolve ?? {};    
+    storybookConfig.resolve = storybookConfig.resolve ?? {};
+    storybookConfig.resolve.fallback = commonDev.resolve?.fallback;
 
     // EXTENSIONS
     storybookConfig.resolve.extensions = mergeUnique(
@@ -45,7 +46,10 @@ module.exports = {
     );
 
     // ALIAS
-    storybookConfig.resolve.alias = commonDev.resolve?.alias;
+    storybookConfig.resolve.alias = {      
+      "lit/directive-helpers.js": require.resolve("lit-html/directive-helpers"),
+      ...commonDev.resolve?.alias
+    };
 
     // MODULE
     storybookConfig.module = storybookConfig.module ?? { rules: [] };

@@ -75,7 +75,16 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
       { loader: "extract-loader" },
       { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },
       { loader: path.resolve("./stats/stats-loader.js") },
-      { loader: "sass-loader", options: { sourceMap: isDev, sassOptions: { outputStyle: "compressed" } } },
+      {
+        loader: "sass-loader",
+        options: {
+          sourceMap: isDev,
+          sassOptions: {
+            silenceDeprecations: ["global-builtin", "legacy-js-api", "import", "mixed-decls"],
+            outputStyle: "compressed"
+          }
+        }
+      },
       { loader: "alias-resolve-loader", options: { alias: { "@css": pCss, "@img": pImg } } }
     ],
     include: pSrc

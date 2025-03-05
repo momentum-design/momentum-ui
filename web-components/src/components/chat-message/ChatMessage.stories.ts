@@ -50,7 +50,7 @@ export const ChatMessage: StoryObj = {
         status=${args.status}
         avatar-type=${ifDefined(args.avatarType)}
         avatar-color=${ifDefined(args.avatarColor)}
-        avatar-size=${ifDefined(args.size)}
+        avatar-size=${ifDefined(args.avatarSize)}
         self-label=${ifDefined(args.selfLabel)}
       >
         <md-icon slot="custom-content" name="icon-chat"></md-icon>

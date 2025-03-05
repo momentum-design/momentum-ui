@@ -6,9 +6,12 @@
  *
  */
 
+import { AvatarSize, AvatarType } from "@/components/avatar/Avatar.constants";
 import "@/components/chat-message/ChatMessage";
+import { avatarColorOptions } from "@/utils/enums";
 import { Args, StoryObj } from "@storybook/web-components";
 import { html } from "lit-html";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 export default {
   title: "Components/Chat Message",
@@ -17,7 +20,11 @@ export default {
     title: { control: "text" },
     message: { control: "text" },
     selfMode: { control: "boolean" },
-    status: { control: "text" }
+    status: { control: "text" },
+    selfLabel: { control: "text" },
+    avatarType: { control: { type: "select" }, options: AvatarType },
+    avatarColor: { control: { type: "select" }, options: avatarColorOptions },
+    avatarSize: { control: { type: "select" }, options: AvatarSize }
   },
   parameters: {
     a11y: {
@@ -33,9 +40,19 @@ export const ChatMessage: StoryObj = {
     selfMode: false,
     status: "Sent"
   },
+
   render: (args: Args) => {
     return html`
-      <md-chat-message .self=${args.selfMode} title=${args.title} time="11:27AM" status=${args.status}>
+      <md-chat-message
+        ?self=${args.selfMode}
+        title=${args.title}
+        time="11:27AM"
+        status=${args.status}
+        avatar-type=${ifDefined(args.avatarType)}
+        avatar-color=${ifDefined(args.avatarColor)}
+        avatar-size=${ifDefined(args.size)}
+        self-label=${ifDefined(args.selfLabel)}
+      >
         <md-icon slot="custom-content" name="icon-chat"></md-icon>
         <p slot="message">${args.message}</p>
       </md-chat-message>

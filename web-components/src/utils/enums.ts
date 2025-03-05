@@ -15,6 +15,23 @@ export const BarType = ["determinate", "indeterminate"];
 export const coachPlacement = ["auto", "left", "right", "top", "bottom"];
 export const chipColor = [...badgeColor, "positive", "negative", "neutral"];
 
+export const avatarColorOptions = [
+  "purple",
+  "mint",
+  "slate",
+  "gold",
+  "lime",
+  "darkmint",
+  "green",
+  "yellow",
+  "red",
+  "orange",
+  "violet",
+  "cyan",
+  "cobalt",
+  "pink"
+] as const;
+
 export const TooltipDirection = ["top", "left", "right", "bottom"];
 
 export const iconColorSample = [

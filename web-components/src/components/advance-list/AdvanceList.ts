@@ -22,6 +22,7 @@ export namespace AdvanceList {
     @property({ type: String }) containerHeight = "292px";
     @property({ type: String }) lastSelectedIdByOrder = "";
     @property({ type: Boolean }) selectAllItems = false;
+    @property({ type: Boolean }) focusReset = false;
     @property({ type: Array }) disabledItems: string[] = [];
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
@@ -84,6 +85,11 @@ export namespace AdvanceList {
             .map((item) => item.id);
           this.updateSelectedState();
           this.notifySelectedChange();
+        }
+      }
+      if (changedProperties.has("focusReset")) {
+        if (this.focusReset) {
+          this.activeId = "";
         }
       }
     }
@@ -184,7 +190,7 @@ export namespace AdvanceList {
         this.isUserNavigated = true;
 
         // In case of preselected value
-        if (this.activeId === "" && this.value.length > 0) {
+        if (this.activeId === "" && this.value.length > 0 && this.value[0] !== "") {
           this.activeId = this.value[0];
           return;
         } else if (this.activeId === "" && !isArrowUp && this.items.length > 0) {

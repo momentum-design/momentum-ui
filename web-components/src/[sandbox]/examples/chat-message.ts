@@ -41,4 +41,22 @@ export const chatMessageTemplate = html`
       <img src="https://static.skillshare.com/uploads/users/7330753/user-image-large.png" alt="" />
     </p>
   </md-chat-message>
+
+  <md-chat-message avatar-type="self" time="11:27AM" status="Delivered" self-label="あなた">
+    <span slot="custom-content">
+      <md-tooltip message="Content restricted as it violates the company data security policy" placement="top">
+        <md-icon name="icon-priority_12"></md-icon>
+      </md-tooltip>
+    </span>
+    <p slot="message">I have issue with my silencer</p>
+  </md-chat-message>
+
+  <md-chat-message title="John Doe" avatar-size="32" avatar-color="orange" time="11:27AM" status="Delivered">
+    <span slot="custom-content">
+      <md-tooltip message="Content restricted as it violates the company data security policy" placement="top">
+        <md-icon name="icon-priority_12"></md-icon>
+      </md-tooltip>
+    </span>
+    <p slot="message">I have issue with my silencer</p>
+  </md-chat-message>
 `;

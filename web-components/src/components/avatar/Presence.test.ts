@@ -8,11 +8,7 @@ describe("Presence", () => {
   afterEach(fixtureCleanup);
 
   test("should set size property", async () => {
-    const element = await fixture<Presence.ELEMENT>(
-      html`
-        <md-presence size="36" title="active"></md-presence>
-      `
-    );
+    const element = await fixture<Presence.ELEMENT>(html` <md-presence size="36" title="active"></md-presence> `);
     expect(element.size).toEqual(36);
     expect(element.title).toEqual("active");
   });

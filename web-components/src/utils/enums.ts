@@ -9,7 +9,19 @@
 export const alertTypes = ["error", "info", "success", "warn", "default"];
 export const messageType = ["", "warning", "success", "error"];
 export const numInputTypes = ["integer", "decimal"];
-export const badgeColor = ["default", "blue", "red", "yellow", "green", "mint"];
+export const badgeColor = [
+  "default",
+  "blue",
+  "red",
+  "yellow",
+  "green",
+  "mint",
+  "status-positive",
+  "status-negative",
+  "status-accent",
+  "status-warning",
+  "status-orange"
+];
 export const BarFormat = ["none", "fraction", "percentage"];
 export const BarType = ["determinate", "indeterminate"];
 export const coachPlacement = ["auto", "left", "right", "top", "bottom"];

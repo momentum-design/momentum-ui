@@ -45,7 +45,7 @@ export const decorators = [
 export const globalTypes = {
   theme: {
     description: "Global theme for components",
-    defaultValue: "lumos",
+    defaultValue: "momentumV2",
     toolbar: {
       title: "Theme",
       icon: "globe",

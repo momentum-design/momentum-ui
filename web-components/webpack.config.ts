@@ -7,6 +7,7 @@ import RemovePlugin from "remove-files-webpack-plugin";
 import * as webpack from "webpack";
 import merge from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
+import WebpackLoadChunksPlugin from "./webpack.plugin.LoadChunks";
 
 const pSrc = path.resolve("src");
 const pStats = path.resolve("stats");
@@ -38,15 +39,15 @@ const common: webpack.Configuration = {
     rules: [
       {
         test: /\.(png|svg|jpe?g)$/,
-        type: "asset/resource",
-        generator: { filename: "images/[name].[hash:8].[ext]" },
+        use: { loader: "file-loader", options: { name: "images/[name].[hash:8].[ext]", esModule: false } },
         include: pSrc
       },
       {
         test: /\.svg$/,
-        type: "asset/resource",
-        parser: { dataUrlCondition: { maxSize: Infinity } },
-        generator: { filename: "assets/icons/[name].[hash:8].[ext]" },
+        use: {
+          loader: "url-loader",
+          options: { name: "assets/icons/[name].[hash:8].[ext]", limit: Infinity, esModule: false }
+        },
         include: [
           path.resolve("node_modules/@momentum-design/icons/dist/svg"),
           path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos")
@@ -111,8 +112,8 @@ export const commonDev = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
-        { from: `${pCss}/*.css`, to: "css/[name].[ext]" },
-        { from: `${pStats}/**/*.json`, to: "stats/[name].[ext]" },
+        { from: `${pCss}/*.css`, to: "css/[name][ext]" },
+        { from: `${pStats}/**/*.json`, to: "stats/[name][ext]" },
         { from: `node_modules/@momentum-design/brand-visuals/dist/backgrounds`, to: "images/brand-visuals/backgrounds" }
       ]
     })
@@ -208,31 +209,12 @@ const commonDist = merge(common, {
     chunkLoadingGlobal: "momentum-web-components-[id]"
   },
   optimization: {
-    splitChunks: {
-      chunks: "all",
-      maxInitialRequests: Infinity,
-      maxAsyncRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module: any, chunks: any, cacheGroupKey: any) {
-            const moduleFileName = module
-              .identifier()
-              .split("/")
-              .reduceRight((item: any) => item);
-            const allChunksNames = chunks.map((item: any) => item.name).join("~");
-            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-          },
-          chunks: "all"
-        },
-        default: { minChunks: 2, priority: -20, reuseExistingChunk: true }
-      }
-    }
+    splitChunks: { chunks: "all", maxInitialRequests: Infinity, maxAsyncRequests: Infinity, minSize: 0 }
   },
   externals: [nodeExternals({ modulesFromFile: true, importType: "umd" })],
   plugins: [
     new CleanWebpackPlugin(),
+    new WebpackLoadChunksPlugin({ trimNameEnd: 6 }),
     new CopyWebpackPlugin({
       patterns: [
         { from: `${pMomentum}/core/fonts`, to: "assets/fonts" },
@@ -242,7 +224,7 @@ const commonDist = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
-        { from: `${pCss}/*.css`, to: "assets/styles/[name].[ext]" }
+        { from: `${pCss}/*.css`, to: "assets/styles/[name][ext]" }
       ]
     }),
     new RemovePlugin({

@@ -22,7 +22,7 @@ module.exports = {
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-controls",
-    "@storybook/addon-a11y",    
+    "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-toolbars"
   ],
@@ -47,7 +47,6 @@ module.exports = {
 
     // ALIAS
     storybookConfig.resolve.alias = {      
-      "lit/directive-helpers.js": require.resolve("lit-html/directive-helpers"),
       ...commonDev.resolve?.alias
     };
 

@@ -9,7 +9,7 @@
 import "@/components/modal/Modal";
 import { action } from "@storybook/addon-actions";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { modalType } from "./Modal"; // Keep type import as a relative path
 
 export default {

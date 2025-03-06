@@ -10,7 +10,7 @@ import { AvatarSize, AvatarType } from "@/components/avatar/Avatar.constants";
 import "@/components/chat-message/ChatMessage";
 import { avatarColorOptions } from "@/utils/enums";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { ifDefined } from "lit-html/directives/if-defined";
 
 export default {

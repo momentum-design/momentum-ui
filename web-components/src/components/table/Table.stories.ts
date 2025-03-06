@@ -8,7 +8,7 @@
 
 import "@/components/table/Table";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { formatType } from "./Table"; // Keep type import as a relative path
 
 export default {

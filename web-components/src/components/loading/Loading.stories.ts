@@ -8,7 +8,7 @@
 
 import "@/components/loading/Loading";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const options = {
   Small: "small",

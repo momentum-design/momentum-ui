@@ -9,7 +9,7 @@
 import "@/components/meeting-alert/MeetingAlert";
 import { action } from "@storybook/addon-actions";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
 import mdx from "./MeetingAlert.mdx";
 

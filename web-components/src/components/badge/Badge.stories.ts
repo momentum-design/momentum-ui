@@ -10,7 +10,7 @@ import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { badgeColor } from "@/utils/enums";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   <md-badge

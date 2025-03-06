@@ -10,7 +10,7 @@ import "@/components/badge/Badge";
 import { CardAiVariant } from "@/components/card-ai/CardAi";
 import { action } from "@storybook/addon-actions";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Card Ai",

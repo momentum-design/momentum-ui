@@ -6,8 +6,8 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues } from "lit-element";
 import { score } from "wcag-color";
 
@@ -30,8 +30,7 @@ export class SassStats extends LitElement {
   }
 
   private loopInstances(instances: NodeListOf<Element>) {
-    for (let index = 0; index < instances.length; index++) {
-      const element = instances[index];
+    for (const element of instances) {
       if (element !== undefined) {
         this.getContrast(element).catch((err) => err);
       }
@@ -50,7 +49,7 @@ export class SassStats extends LitElement {
         shadowContent.setAttribute("data-bgcolor", `bg color: ${backgroundColor}`);
         shadowContent.setAttribute("data-textcolor", `text color: ${foreground}`);
         resolve();
-      } else reject("Invalid Instance");
+      } else reject(Error("Invalid Instance"));
     });
   }
 

@@ -10,7 +10,7 @@ import "@/components/form/Form";
 import "@/components/input/Input";
 import { action } from "@storybook/addon-actions";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Form",

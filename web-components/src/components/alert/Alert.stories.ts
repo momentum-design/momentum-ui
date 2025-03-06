@@ -9,7 +9,7 @@
 import "@/components/alert/Alert";
 import { alertTypes } from "@/utils/enums";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import "../badge/Badge";
 import mdx from "./Alert.mdx";
 

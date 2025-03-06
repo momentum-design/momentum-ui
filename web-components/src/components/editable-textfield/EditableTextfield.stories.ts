@@ -8,7 +8,7 @@
 
 import "@/components/editable-textfield/EditableTextfield";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { alignment } from "./EditableTextfield"; // Keep type import as a relative path

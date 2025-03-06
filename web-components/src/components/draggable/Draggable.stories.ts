@@ -10,7 +10,7 @@ import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { GroupOptions } from "sortablejs";
 import mdx from "./Draggable.mdx";
 

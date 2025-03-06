@@ -10,7 +10,7 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { action } from "@storybook/addon-actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { buttonColor, buttonRoles, buttonSize, buttonTag, buttonType, buttonVariant } from "./Button"; // Keep type import as a relative path
 import mdx from "./Button.mdx";
 

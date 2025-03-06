@@ -1,5 +1,4 @@
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import "./SassStats";
 import { SassStats } from "./SassStats";
 
 describe("SassStats component", () => {

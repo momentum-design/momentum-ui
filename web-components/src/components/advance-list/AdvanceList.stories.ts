@@ -2,7 +2,7 @@ import "@/components/advance-list/AdvanceList";
 import "@/components/spinner/Spinner";
 import { action } from "@storybook/addon-actions";
 import type { Args, Meta } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => {
   return html`

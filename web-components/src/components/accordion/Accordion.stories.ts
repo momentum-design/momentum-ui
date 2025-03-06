@@ -1,5 +1,5 @@
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import "./Accordion";
 import mdx from "./Accordion.mdx";
 import "./AccordionItem";

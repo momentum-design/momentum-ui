@@ -16,7 +16,6 @@ const pCss = path.resolve("src/assets/styles");
 const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
-const pLitElement = path.resolve("./node_modules/lit-element");
 
 let pMomentum: string | null = null;
 if (fs.existsSync(p1)) {
@@ -32,7 +31,7 @@ const common: webpack.Configuration = {
   output: { publicPath: "/" },
   resolve: {
     extensions: [".ts", ".js", ".scss"],
-    alias: { "@": pSrc, "@css": pCss, "@img": pImg, lit: pLitElement },
+    alias: { "@": pSrc, "@css": pCss, "@img": pImg },
     fallback: { timers: require.resolve("timers-browserify") }
   },
   module: {

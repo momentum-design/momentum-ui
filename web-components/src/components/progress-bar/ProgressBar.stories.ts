@@ -8,7 +8,7 @@
 
 import "@/components/progress-bar/ProgressBar";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export const ProgressBar = (args: Args) => {
   return html`

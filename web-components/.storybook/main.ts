@@ -13,10 +13,8 @@ const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
 
 module.exports = {
   stories: [
-    "../src/components/**/*.stories.ts",
-    "../src/components/**/*.stories.mdx",
-    "../src/internal-components/color-table/ColorTable.stories.ts",
-    "../src/internal-components/color-table/*.stories.mdx"
+    "../src/components/**/*.stories.ts",    
+    "../src/internal-components/color-table/ColorTable.stories.ts"
   ],
 
   addons: [

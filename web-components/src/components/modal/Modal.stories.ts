@@ -8,38 +8,9 @@
 
 import "@/components/modal/Modal";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { modalType } from "./Modal"; // Keep type import as a relative path
-
-export default {
-  title: "Components/Modal",
-  component: "md-modal",
-  argTypes: {
-    htmlId: { table: { disable: true } },
-    noExitOnEsc: { table: { disable: true } },
-    backDrop: { table: { disable: true } },
-    handleCloseOutside: { table: { disable: true } },
-    modalBackDropClassMap: { table: { disable: true } },
-    modalContainerClassMap: { table: { disable: true } },
-
-    show: { control: "boolean", defaultValue: false },
-    headerLabel: { control: "text", defaultValue: "Test header text" },
-    headerMessage: { control: "text", defaultValue: "Test message in header" },
-    size: { control: { type: "select", options: modalType }, defaultValue: "default" },
-    closeBtnName: { control: "text", defaultValue: "Save" },
-    showCloseButton: { control: "boolean", defaultValue: true },
-    backdropClickExit: { control: "boolean", defaultValue: false },
-    hideFooter: { control: "boolean", defaultValue: false },
-    hideHeader: { control: "boolean", defaultValue: false },
-    alignment: { control: "select", options: [undefined, "leading", "center"], defaultValue: undefined }
-  },
-  parameters: {
-    a11y: {
-      element: "md-modal"
-    }
-  }
-};
 
 const content = html`
   <p>
@@ -49,7 +20,7 @@ const content = html`
   </p>
 `;
 
-export const Modal = (args: Args) => {
+const render = (args: Args) => {
   return html`
     <md-modal
       .size="${args.size}"
@@ -73,3 +44,40 @@ export const Modal = (args: Args) => {
     </md-modal>
   `;
 };
+
+export const Modal: StoryObj = {
+  args: {
+    show: true,
+    size: "default",
+    headerLabel: "Test header text",
+    headerMessage: "Test message in header",
+    closeBtnName: "Save",
+    showCloseButton: true,
+    backdropClickExit: false,
+    hideFooter: false,
+    hideHeader: false
+  },
+  render: render
+};
+
+const meta: Meta = {
+  title: "Components/Modal",
+  component: "md-modal",
+  argTypes: {
+    htmlId: { table: { disable: true } },
+    noExitOnEsc: { table: { disable: true } },
+    backDrop: { table: { disable: true } },
+    handleCloseOutside: { table: { disable: true } },
+    modalBackDropClassMap: { table: { disable: true } },
+    modalContainerClassMap: { table: { disable: true } },
+
+    size: { control: { type: "select" }, options: modalType },
+    closeBtnName: { control: "text" },
+    showCloseButton: { control: "boolean" },
+    backdropClickExit: { control: "boolean" },
+    alignment: { control: { type: "select" }, options: [undefined, "leading", "center"] }
+  },
+  parameters: { a11y: { element: "md-modal" } }
+};
+
+export default meta;

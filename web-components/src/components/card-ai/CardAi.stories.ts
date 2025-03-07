@@ -9,32 +9,10 @@
 import "@/components/badge/Badge";
 import { CardAiVariant } from "@/components/card-ai/CardAi";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
-export default {
-  title: "Components/Card Ai",
-  component: "md-card-ai",
-  argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: Object.values(CardAiVariant),
-      defaultValue: CardAiVariant.RESPONSE
-    },
-    id: { control: "text", defaultValue: "12345678" },
-    title: { control: "text", defaultValue: "Title" },
-    cardText: { control: "text", defaultValue: "Card Text" },
-    timestamp: { control: "text", defaultValue: "12:35 PM" },
-    summariseMoreVisible: { control: "boolean", defaultValue: false }
-  },
-  parameters: {
-    a11y: {
-      element: "md-card-ai"
-    }
-  }
-};
-
-export const CardAi = (args: Args) => {
+const render = (args: Args) => {
   return html`
     <md-card-ai
       id=${args.id}
@@ -56,3 +34,24 @@ export const CardAi = (args: Args) => {
     </md-card-ai>
   `;
 };
+
+export const CardAi: StoryObj = {
+  args: {
+    id: "12345678",
+    title: "Title",
+    cardText: "Card Text",
+    timestamp: "12:35 PM",
+    variant: CardAiVariant.RESPONSE,
+    summariseMoreVisible: false
+  },
+  render: render
+};
+
+const meta: Meta = {
+  title: "Components/Card Ai",
+  component: "md-card-ai",
+  argTypes: { variant: { control: { type: "select" }, options: Object.values(CardAiVariant) } },
+  parameters: { a11y: { element: "md-card-ai" } }
+};
+
+export default meta;

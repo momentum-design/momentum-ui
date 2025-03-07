@@ -15,9 +15,7 @@ export default {
   title: "Components/Radio",
   component: "md-radio",
   argTypes: {
-    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"], defaultValue: "vertical" },
-    check: { control: "number", defaultValue: 1 },
-    disabled: { control: "boolean", defaultValue: false }
+    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] }
   },
   parameters: {
     a11y: {
@@ -43,7 +41,9 @@ const render = (args: Args) => {
 
 export const Radio: StoryObj = {
   args: {
-    alignment: "vertical"
+    alignment: "vertical",
+    checked: 1,
+    disabled: false
   },
   render: render
 };

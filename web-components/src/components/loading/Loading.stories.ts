@@ -7,22 +7,17 @@
  */
 
 import "@/components/loading/Loading";
-import { Args, StoryObj } from "@storybook/web-components";
+import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
-const options = {
-  Small: "small",
-  Middle: "middle",
-  Large: "large",
-  None: ""
-};
+const sizeOptions = ["small", "middle", "large", ""];
 
-export default {
+const meta: Meta = {
   title: "Components/Loading",
   component: "md-loading",
   argTypes: {
     loadingClassMap: { table: { disable: true } },
-    size: { control: { type: "select", options }, defaultValue: "middle" }
+    size: { control: "select", options: sizeOptions }
   },
   parameters: {
     a11y: {
@@ -32,8 +27,12 @@ export default {
 };
 
 export const Loading: StoryObj = {
-  args: {},
+  args: {
+    size: "middle"
+  },
   render: (args: Args) => {
     return html` <md-loading size=${args.size}></md-loading> `;
   }
 };
+
+export default meta;

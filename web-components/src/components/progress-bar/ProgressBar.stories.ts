@@ -7,10 +7,10 @@
  */
 
 import "@/components/progress-bar/ProgressBar";
-import { Args } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
-export const ProgressBar = (args: Args) => {
+const render = (args: Args) => {
   return html`
     <md-progress-bar
       .value=${args.value}
@@ -24,16 +24,28 @@ export const ProgressBar = (args: Args) => {
   `;
 };
 
-export default {
+export const ProgressBar: StoryObj = {
+  args: {
+    label: "Test Progress Bar",
+    color: "blue",
+    dynamic: false,
+    format: "none",
+    type: "determinate",
+    value: 25
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Progress Bar",
   component: "md-progress-bar",
   argTypes: {
-    label: { control: "text", defaultValue: "Test Progress Bar" },
-    color: { control: "text", defaultValue: "blue" },
-    dynamic: { control: "boolean", defaultValue: false },
-    format: { control: "select", options: ["none", "percentage", "fraction"], defaultValue: "none" },
-    type: { control: "select", options: ["determinate", "indeterminate"], defaultValue: "determinate" },
-    value: { control: "number", defaultValue: 25 }
+    label: { control: "text" },
+    color: { control: "text" },
+    dynamic: { control: "boolean" },
+    format: { control: "select", options: ["none", "percentage", "fraction"] },
+    type: { control: "select", options: ["determinate", "indeterminate"] },
+    value: { control: "number" }
   },
   parameters: {
     a11y: {
@@ -41,3 +53,5 @@ export default {
     }
   }
 };
+
+export default meta;

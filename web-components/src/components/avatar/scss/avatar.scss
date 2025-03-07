@@ -108,6 +108,15 @@
   }
   .md-avatar__logo{
     @include avatar-contents-base;
+    background-color: transparent;
+
+    &.channel-twitter-x {
+        filter: var(--avatar-invertable-icon-filter);
+      }
+
+      &.channel-spam {
+        background-color: var(--avatar-spam-bg-color);
+      }
   }
   .md-avatar__custom-icon {
     @include avatar-contents-base;
@@ -128,7 +137,7 @@
       color: $md-white-100;
     }
   }
-
+  
   .md-avatar__icon,
   .md-avatar__letter {
     &.md-avatar--blue {

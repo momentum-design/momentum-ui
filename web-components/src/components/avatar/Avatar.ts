@@ -303,17 +303,12 @@ export namespace Avatar {
       } else if (iconName) {
         this.checkIconAvailability(iconName);
         return html`
-          <span
-            class="md-avatar__logo ${this.type}"
-            style=${styleMap({
-              backgroundColor: this.type === "channel-spam" ? "var(--avatar-spam-bg-color)" : "transparent"
-            })}
-          >
+          <span class="md-avatar__logo ${this.type}">
             <md-icon
               .name=${iconName}
               .iconSet=${this.iconSet}
               .size=${this.chatIconSize}
-              style="color: var(--icon-color-${this.type})"
+              color="var(--icon-color-${this.type})"
             ></md-icon>
           </span>
         `;

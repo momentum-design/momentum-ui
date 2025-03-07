@@ -229,6 +229,12 @@ const avatar = {
   },
   notificationBadge: {
     common: "$mds-color-theme-background-accent-normal"
+  },
+  "invertable-icon": {
+    filter: {
+      light: "invert(0)",
+      dark: "invert(1)"
+    }
   }
 };
 

@@ -1,5 +1,5 @@
 import * as webpack from "webpack";
-import { commonDev } from "../webpack.config";
+import { commonAlias, commonDev } from "../webpack.config";
 
 /**
  * merge two arrays into one and remove the duplicates
@@ -44,9 +44,7 @@ module.exports = {
     );
 
     // ALIAS
-    storybookConfig.resolve.alias = {      
-      ...commonDev.resolve?.alias
-    };
+    storybookConfig.resolve.alias = commonAlias;
 
     // MODULE
     storybookConfig.module = storybookConfig.module ?? { rules: [] };

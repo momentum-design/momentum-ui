@@ -18,6 +18,8 @@ const pImg = path.resolve("src/assets/images");
 const p1 = path.resolve("./node_modules/@momentum-ui");
 const p2 = path.resolve("../node_modules/@momentum-ui");
 
+export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
+
 let pMomentum: string | null = null;
 if (fs.existsSync(p1)) {
   pMomentum = p1;
@@ -32,7 +34,7 @@ const common: webpack.Configuration = {
   output: { publicPath: "/" },
   resolve: {
     extensions: [".ts", ".js", ".scss"],
-    alias: { "@": pSrc, "@css": pCss, "@img": pImg },
+    alias: { ...commonAlias },
     fallback: { timers: require.resolve("timers-browserify") }
   },
   module: {
@@ -62,6 +64,7 @@ function ruleTS({ isDev }: { isDev: boolean }) {
     test: /\.ts$/,
     loader: "ts-loader",
     include: pSrc,
+    exclude: [/\.test\.ts$/, /node_modules/],
     options: { compilerOptions: { declarationMap: isDev, sourceMap: isDev } }
   };
 }
@@ -70,7 +73,7 @@ function ruleCSS({ isDev }: { isDev: boolean }) {
   return {
     test: /\.scss$/,
     use: [
-      { loader: "lit-scss-loader", options: { minify: !isDev } },
+      { loader: "lit1-scss-loader", options: { minify: !isDev } },
       { loader: "string-replace-loader", options: { search: /\\/g, replace: "\\\\" } },
       { loader: "extract-loader" },
       { loader: "css-loader", options: { sourceMap: isDev, importLoaders: 2 } },

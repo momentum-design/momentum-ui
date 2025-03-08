@@ -7,34 +7,21 @@
  */
 
 import "@/components/editable-textfield/EditableTextfield";
-import { Args } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import { alignment } from "./EditableTextfield"; // Keep type import as a relative path
 
-const successMessageArr: Input.Message = {
-  message: "This is where the message would be.",
-  type: "success"
-};
-const errorMessageArr: Input.Message = {
-  message: "This is where the message would be.",
-  type: "error"
-};
-const warningMessageArr: Input.Message = {
-  message: "This is where the message would be.",
-  type: "warning"
-};
+const successMessageArr: Input.Message = { message: "This is where the message would be.", type: "success" };
+const errorMessageArr: Input.Message = { message: "This is where the message would be.", type: "error" };
+const warningMessageArr: Input.Message = { message: "This is where the message would be.", type: "warning" };
 
 type EditableMap = { [key: string]: Input.Message };
 
-const messages: EditableMap = {
-  success: successMessageArr,
-  error: errorMessageArr,
-  warning: warningMessageArr
-};
+const messages: EditableMap = { success: successMessageArr, error: errorMessageArr, warning: warningMessageArr };
 
-export const EditableTextfield = (args: Args) => {
+const render = (args: Args) => {
   if (args.messageStatus) {
     return html`
       <md-editable-field .message=${{ ...messages[args.message] }}> ${args.message} Status </md-editable-field>
@@ -61,7 +48,21 @@ export const EditableTextfield = (args: Args) => {
   }
 };
 
-export default {
+export const EditableTextfield: StoryObj = {
+  args: {
+    disabledSetting: false,
+    messageStatus: false,
+    inputDiff: false,
+    inputValid: false,
+    message: "error",
+    inputType: "text",
+    regexString: "^([+-]?[1-9]\\d*|0)$",
+    fieldAlignment: "left"
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/Editable Textfield",
   component: "md-editable-field",
   argTypes: {
@@ -76,18 +77,16 @@ export default {
     handleBlur: { table: { disable: true } },
     overflowStyles: { table: { disable: true } },
     maxLines: { control: "number", defaultValue: 2 },
-    fieldAlignment: { control: { type: "select", options: alignment }, defaultValue: "left" },
-    disabledSetting: { control: "boolean", defaultValue: false },
-    messageStatus: { control: "boolean", defaultValue: false },
-    inputDiff: { control: "boolean", defaultValue: false },
-    inputValid: { control: "boolean", defaultValue: false },
-    message: { control: { type: "select", options: ["success", "error", "warning"] }, defaultValue: "error" },
-    inputType: { control: { type: "select", options: numInputTypes }, defaultValue: "text" },
-    regexString: { control: "text", description: "Regex String", defaultValue: "^([+-]?[1-9]\\d*|0)$" }
+    fieldAlignment: { control: { type: "select" }, options: alignment },
+    disabledSetting: { control: "boolean" },
+    messageStatus: { control: "boolean" },
+    inputDiff: { control: "boolean" },
+    inputValid: { control: "boolean" },
+    message: { control: { type: "select" }, options: ["success", "error", "warning"] },
+    inputType: { control: { type: "select" }, options: numInputTypes },
+    regexString: { control: "text", description: "Regex String" }
   },
-  parameters: {
-    a11y: {
-      element: "md-editable-field"
-    }
-  }
+  parameters: { a11y: { element: "md-editable-field" } }
 };
+
+export default meta;

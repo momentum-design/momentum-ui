@@ -14,36 +14,19 @@ import { html } from "lit";
 export default {
   title: "Components/Radio",
   component: "md-radio",
-  argTypes: {
-    alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] }
-  },
-  parameters: {
-    a11y: {
-      element: "md-radiogroup"
-    }
-  }
+  argTypes: { alignment: { control: { type: "select" }, options: ["horizontal", "vertical"] } },
+  parameters: { a11y: { element: "md-radiogroup" } }
 };
 
 const render = (args: Args) => {
   return html`
-    <md-radiogroup
-      group-label="group_process"
-      .alignment=${args.alignment as "horizontal" | "vertical"}
-      .checked="${args.check}"
-    >
+    <md-radiogroup group-label="group_process" alignment=${args.alignment} checked=${args.check}>
       <md-radio slot="radio" value="developing">Developing</md-radio>
-      <md-radio slot="radio" value="linting" .disabled=${args.disabled}>Linting</md-radio>
+      <md-radio slot="radio" value="linting" ?disabled=${args.disabled}>Linting</md-radio>
       <md-radio slot="radio" value="testing">Testing</md-radio>
-      <md-radio slot="radio" value="building" .disabled=${args.disabled}>Building</md-radio>
+      <md-radio slot="radio" value="building" ?disabled=${args.disabled}>Building</md-radio>
     </md-radiogroup>
   `;
 };
 
-export const Radio: StoryObj = {
-  args: {
-    alignment: "vertical",
-    checked: 1,
-    disabled: false
-  },
-  render: render
-};
+export const Radio: StoryObj = { args: { alignment: "vertical", checked: 1, disabled: false }, render: render };

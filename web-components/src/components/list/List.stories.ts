@@ -14,7 +14,7 @@ import { html } from "lit";
 
 const alignmentOptions = ["vertical", "horizontal"];
 
-export const render = (args: Args) => {
+const render = (args: Args) => {
   return html`
     <md-list
       @list-item-change=${action("change")}

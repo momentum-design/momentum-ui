@@ -9,31 +9,10 @@
 import "@/components/form/Form";
 import "@/components/input/Input";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
-export default {
-  title: "Components/Form",
-  component: "md-form",
-  argTypes: {
-    noValidate: { control: "boolean", defaultValue: false },
-    allowRedirect: { control: "boolean", defaultValue: true },
-    isValid: { control: "boolean", defaultValue: false },
-    target: { control: { type: "select", options: ["_self", "_blank", "_parent", "_top"] }, defaultValue: "_self" },
-    enctype: {
-      control: { type: "select", options: ["application/x-www-form-urlencoded", "multipart/form-data", "text/plain"] },
-      defaultValue: "application/x-www-form-urlencoded"
-    },
-    autoFillName: { control: "text", defaultValue: "submittable-element" }
-  },
-  parameters: {
-    a11y: {
-      element: "md-form"
-    }
-  }
-};
-
-export const Form = (args: Args) => {
+const render = (args: Args) => {
   return html`
     <md-form
       ?no-validate=${args.noValidate}
@@ -52,3 +31,34 @@ export const Form = (args: Args) => {
     </md-form>
   `;
 };
+
+export const Form: StoryObj = {
+  args: {
+    noValidate: false,
+    allowRedirect: true,
+    isValid: false,
+    target: "_self",
+    enctype: "application/x-www-form-urlencoded",
+    autoFillName: "submittable-element"
+  },
+  render: render
+};
+
+const meta: Meta = {
+  title: "Components/Form",
+  component: "md-form",
+  argTypes: {
+    noValidate: { control: "boolean" },
+    allowRedirect: { control: "boolean" },
+    isValid: { control: "boolean" },
+    target: { control: { type: "select" }, options: ["_self", "_blank", "_parent", "_top"] },
+    enctype: {
+      control: { type: "select" },
+      options: ["application/x-www-form-urlencoded", "multipart/form-data", "text/plain"]
+    },
+    autoFillName: { control: "text" }
+  },
+  parameters: { a11y: { element: "md-form" } }
+};
+
+export default meta;

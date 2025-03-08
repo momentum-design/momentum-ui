@@ -8,7 +8,7 @@
 
 import "@/components/audio-player/AudioPlayer";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html` <md-audio-player src=${args.src}></md-audio-player> `;
 

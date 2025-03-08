@@ -104,7 +104,7 @@ export const RovingTabIndexMixin = <T extends AnyConstructor<SlotableClass & Rov
       if (super.slottedChanged) {
         super.slottedChanged();
       }
-      const newIndex = this.getAvailableSelectedIndex(this.selected, 1);
+      const newIndex = this.getAvailableSelectedIndex(this.selected ?? 0, 1);
 
       if (newIndex !== -1) {
         this.selected = newIndex;

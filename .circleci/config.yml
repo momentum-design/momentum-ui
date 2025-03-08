@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: yarn global add @percy/agent lerna@4.0.0
-      - run: yarn bootstrap      
+      - run: yarn bootstrap
       - run: yarn cypress:verify
       - persist_to_workspace:
           root: ~/
@@ -125,22 +125,6 @@ jobs:
           name: Clear Git changed files
           command: git checkout -- .
 
-  storybook_web_components:
-    <<: *image_defaults
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: yarn bootstrap
-      - run:
-          name: Build web components library
-          command: yarn build:wc
-      - run:
-          name: Deploy Storybook
-          command: yarn storybook:wc-deploy
-      - run:
-          name: Clear Git changed files
-          command: git checkout -- .
-
   static_analysis:
     <<: *image_defaults
     steps:
@@ -189,7 +173,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
-      - run: yarn bootstrap      
+      - run: yarn bootstrap
       - run: yarn cypress:verify
       - run:
           name: Lint all Libraries
@@ -247,7 +231,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: yarn global add @percy/agent lerna@4.0.0 && yarn install --frozen-lockfile --non-interactive
-      - run: yarn bootstrap      
+      - run: yarn bootstrap
       - run:
           name: Pre build website
           command: yarn build:www
@@ -286,26 +270,15 @@ workflows:
           requires:
             - build_tokens
 
-  daily_storybook_deploy:
-    triggers:
-      - schedule:
-          cron: '30 5 * * *'
+  force_release:
+    jobs:
+      - lint_test_release:
           filters:
             branches:
               only:
                 - main
-    jobs:
-      - storybook_web_components
-
-  force_release:
-      jobs:
-        - lint_test_release:
-            filters:
-              branches:
-                only:
-                  - main
-              tags:
-                only: /^.force-deploy/
+            tags:
+              only: /^.force-deploy/
 
   daily_release:
     triggers:

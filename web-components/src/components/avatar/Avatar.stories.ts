@@ -10,7 +10,7 @@ import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import { avatarColorOptions } from "@/utils/enums";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { AvatarSize, AvatarType } from "./Avatar.constants";
 import mdx from "./Avatar.mdx";
 

@@ -78,11 +78,11 @@ export namespace Accordion {
       }
     }
 
-    private handleAccordionItemFocus = () => {
+    private readonly handleAccordionItemFocus = () => {
       this.toggleAttribute("focusable", true);
     };
 
-    private handleAccordionItemBlur = () => {
+    private readonly handleAccordionItemBlur = () => {
       this.toggleAttribute("focusable", false);
     };
 

@@ -7,9 +7,10 @@
  */
 
 import "@/components/alert/Alert";
+import { buttonColor, buttonVariant } from "@/components/button/Button";
 import { alertTypes } from "@/utils/enums";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import "../badge/Badge";
 import mdx from "./Alert.mdx";
 
@@ -53,19 +54,9 @@ export const Alerts: StoryObj = {
   render: render
 };
 
-export const AlertWithIcon: StoryObj = {
-  args: {
-    ...Alerts.args
-  },
-  render: alertWithIconRender
-};
+export const AlertWithIcon: StoryObj = { args: { ...Alerts.args }, render: alertWithIconRender };
 
-export const AlertWithSlots: StoryObj = {
-  args: {
-    ...Alerts.args
-  },
-  render: alertWithSlots
-};
+export const AlertWithSlots: StoryObj = { args: { ...Alerts.args }, render: alertWithSlots };
 
 const meta: Meta = {
   title: "Components/Alerts",
@@ -76,12 +67,12 @@ const meta: Meta = {
     hasFooterSlotContent: { table: { disable: true } },
     slottedFooterClassMap: { table: { disable: true } },
     internalClose: { description: "By default closing internally, otherwise - controlling outer via .show" },
-    type: { control: { type: "select" }, options: alertTypes }
+    type: { control: { type: "select" }, options: alertTypes },
+    primaryButtonVariant: { control: { type: "select" }, options: buttonVariant },
+    primaryButtonColor: { control: { type: "select" }, options: buttonColor }
   },
   parameters: {
-    a11y: {
-      element: "md-alert"
-    },
+    a11y: { element: "md-alert" },
     docs: {
       page: mdx,
       description: {

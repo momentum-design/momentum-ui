@@ -9,7 +9,7 @@
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   ${args.group

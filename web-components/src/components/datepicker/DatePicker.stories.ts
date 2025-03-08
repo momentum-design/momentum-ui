@@ -1,6 +1,6 @@
 import { now } from "@/utils/dateUtils";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { DatePicker as DP } from "./DatePicker"; // Keep type import as a relative path
 
 export default {

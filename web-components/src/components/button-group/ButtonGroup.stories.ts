@@ -9,7 +9,7 @@
 import "@/components/button-group/ButtonGroup";
 import "@/components/icon/Icon";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   <md-button-group ?disabled=${args.disabled}>

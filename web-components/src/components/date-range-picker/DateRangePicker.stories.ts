@@ -1,17 +1,16 @@
 import "@/components/date-range-picker/DateRangePicker";
 import { now } from "@/utils/dateUtils";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
 import { DatePicker as DP } from "../datepicker/DatePicker"; // Keep type import as a relative path
 import "../theme/Theme";
 
-export default {
+const meta: Meta = {
   title: "Components/Date Range Picker",
   component: "md-date-range-picker",
   argTypes: {
-    shouldCloseOnSelect: { control: "boolean" },
-    weekStart: { control: { type: "select", options: DP.weekStartDays }, defaultValue: "" },
-    locale: { control: "text", defaultValue: "en-US" },
+    weekStart: { control: { type: "select" }, options: DP.weekStartDays },
+    locale: { control: "text" },
     disabled: { control: "boolean" },
     minDate: { control: "text", defaultValue: now().minus({ day: 5 }).toISODate() },
     maxDate: { control: "text", defaultValue: now().plus({ day: 30 }).toISODate() },
@@ -19,14 +18,12 @@ export default {
     startDate: { control: "text", defaultValue: now().toISODate() },
     endDate: { control: "text", defaultValue: now().toISODate() }
   },
-  parameters: {
-    a11y: {
-      element: "md-date-range-picker"
-    }
-  }
+  parameters: { a11y: { element: "md-date-range-picker" } }
 };
 
-export const DateRangePicker = (args: Args) => {
+export default meta;
+
+const render = (args: Args) => {
   return html`
     <md-date-range-picker
       ?disabled=${args.disabled}
@@ -41,4 +38,9 @@ export const DateRangePicker = (args: Args) => {
     >
     </md-date-range-picker>
   `;
+};
+
+export const DateRangePicker: StoryObj = {
+  args: { disabled: false, shouldCloseOnSelect: false, locale: "en-US" },
+  render: render
 };

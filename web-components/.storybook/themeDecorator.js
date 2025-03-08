@@ -1,6 +1,6 @@
 import "@/components/theme/Theme";
 import { themeManager } from "@/managers/ThemeManager";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export const withThemeDecorator = (story, context) => {
   const isDark = context.globals.isDark === true;

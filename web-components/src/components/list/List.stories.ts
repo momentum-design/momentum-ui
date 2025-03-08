@@ -9,15 +9,12 @@
 import "@/components/list/List";
 import "@/components/list/ListItem";
 import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
 
-const options = {
-  Vertical: "vertical",
-  Horizontal: "horizontal"
-};
+const alignmentOptions = ["vertical", "horizontal"];
 
-export const List = (args: Args) => {
+const render = (args: Args) => {
   return html`
     <md-list
       @list-item-change=${action("change")}
@@ -35,21 +32,27 @@ export const List = (args: Args) => {
   `;
 };
 
-export default {
+export const List: StoryObj = {
+  args: {
+    alignment: "vertical",
+    shape: "rounded",
+    disabled: false,
+    selected: 2
+  },
+  render: render
+};
+
+const meta: Meta = {
   title: "Components/List",
   component: "md-list",
   argTypes: {
     slotElement: { table: { disable: true } },
     listItemSlot: { table: { disable: true } },
     activated: { table: { disable: true } },
-    alignment: { control: { type: "select", options }, defaultValue: "vertical" },
-    shape: { control: { type: "select", options: ["pill", "rounded"] }, defaultValue: "rounded" },
-    disabled: { control: "boolean", defaultValue: false },
-    selected: { control: "number", defaultValue: 2 }
+    alignment: { control: { type: "select" }, options: alignmentOptions },
+    shape: { control: { type: "select" }, options: ["pill", "rounded"] }
   },
-  parameters: {
-    a11y: {
-      element: "md-list"
-    }
-  }
+  parameters: { a11y: { element: "md-list" } }
 };
+
+export default meta;

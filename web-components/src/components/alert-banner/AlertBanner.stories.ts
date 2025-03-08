@@ -6,11 +6,10 @@
  *
  */
 
-import "@/components/alert-banner/AlertBanner";
 import { alertBannerType } from "@/components/alert-banner/AlertBanner";
 import "@/components/icon/Icon";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import mdx from "./AlertBanner.mdx";
 
 const render = (args: Args) => html`

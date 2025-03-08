@@ -1,6 +1,6 @@
 import "@/components/phone-input/PhoneInput";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Phone Input",

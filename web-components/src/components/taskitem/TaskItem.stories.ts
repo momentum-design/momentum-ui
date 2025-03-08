@@ -10,7 +10,7 @@ import "@/components/badge/Badge";
 import "@/components/taskitem/TaskItem";
 import { action } from "@storybook/addon-actions";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Task Item",

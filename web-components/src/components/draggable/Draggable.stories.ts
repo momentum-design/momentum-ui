@@ -9,63 +9,59 @@
 import "@/components/draggable/Draggable";
 import "@/components/draggable/DraggableItem";
 import "@/components/icon/Icon";
-import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
 import { GroupOptions } from "sortablejs";
 import mdx from "./Draggable.mdx";
 
-export default {
+const meta: Meta = {
   title: "Components/Draggable",
   component: "md-draggable",
   argTypes: {
-    leftSort: { control: "boolean", description: "Allow sorting inside left draggable list", defaultValue: false },
-    leftDisabled: { control: "boolean", description: "Disables the left sortable", defaultValue: false },
+    leftSort: { control: "boolean", description: "Allow sorting inside left draggable list" },
+    leftDisabled: { control: "boolean", description: "Disables the left sortable" },
     leftFiltered: {
       control: "text",
-      description: "Left list items that will be filtered out",
-      defaultValue: "md-draggable-item[disabled]"
+      description: "Left list items that will be filtered out"
     },
-    leftGroupName: { control: "text", description: "Group name", defaultValue: "shared-list" },
+    leftGroupName: { control: "text", description: "Group name" },
     leftGroupPull: {
-      control: { type: "select", options: ["clone", true, false, ["shared-list"]] },
-      description: "Select pull option",
-      defaultValue: "clone"
+      control: { type: "select" },
+      options: ["clone", true, false, ["shared-list"]],
+      description: "Select pull option"
     },
     leftGroupPut: {
-      control: { type: "select", options: [true, false, ["shared-list"]] },
-      description: "Select left put option",
-      defaultValue: true
+      control: { type: "select" },
+      options: [true, false, ["shared-list"]],
+      description: "Select left put option"
     },
     leftHandle: {
       control: "text",
-      description: "Drag handle selector within left list items",
-      defaultValue: "md-draggable-item"
+      description: "Drag handle selector within left list items"
     },
-    rightSort: { control: "boolean", description: "Allow sorting inside right draggable list", defaultValue: false },
-    rightDisabled: { control: "boolean", description: "Disables the right sortable", defaultValue: false },
+    rightSort: { control: "boolean", description: "Allow sorting inside right draggable list" },
+    rightDisabled: { control: "boolean", description: "Disables the right sortable" },
     rightFiltered: {
       control: "text",
-      description: "Right list items that will be filtered out",
-      defaultValue: "md-draggable-item[disabled]"
+      description: "Right list items that will be filtered out"
     },
-    rightGroupName: { control: "text", description: "Group name", defaultValue: "shared-list" },
+    rightGroupName: { control: "text", description: "Group name" },
     rightGroupPull: {
-      control: { type: "select", options: ["clone", true, false, ["shared-list"]] },
-      description: "Select pull option",
-      defaultValue: "clone"
+      control: { type: "select" },
+      options: ["clone", true, false, ["shared-list"]],
+      description: "Select pull option"
     },
     rightGroupPut: {
-      control: { type: "select", options: [true, false, ["shared-list"]] },
-      description: "Select right put option",
-      defaultValue: true
+      control: { type: "select" },
+      options: [true, false, ["shared-list"]],
+      description: "Select right put option"
     },
     rightHandle: {
       control: "text",
-      description: "Drag handle selector within right list items",
-      defaultValue: "md-draggable-item"
+      description: "Drag handle selector within right list items"
     },
-    ghostClass: { control: "color", description: "Class name for the drop placeholder", defaultValue: "#c8ebfb" },
-    chooseClass: { control: "color", description: "Class name for the chosen item", defaultValue: "#ddc74e" }
+    ghostClass: { control: "color", description: "Class name for the drop placeholder" },
+    chooseClass: { control: "color", description: "Class name for the chosen item" }
   },
   parameters: {
     docs: {
@@ -82,7 +78,9 @@ export default {
   }
 };
 
-export const Draggable = (args: Args) => {
+export default meta;
+
+const render = (args: Args) => {
   return html`
     <style>
       md-draggable-item {
@@ -163,4 +161,26 @@ export const Draggable = (args: Args) => {
       </md-draggable>
     </div>
   `;
+};
+
+export const Draggable: StoryObj = {
+  args: {
+    leftSort: false,
+    leftDisabled: false,
+    leftFiltered: "md-draggable-item[disabled]",
+    leftGroupName: "shared-list",
+    leftGroupPull: "clone",
+    leftGroupPut: true,
+    leftHandle: "md-draggable-item",
+    rightSort: false,
+    rightDisabled: false,
+    rightFiltered: "md-draggable-item[disabled]",
+    rightGroupName: "shared-list",
+    rightGroupPull: "clone",
+    rightGroupPut: true,
+    rightHandle: "md-draggable-item",
+    ghostClass: "#c8ebfb",
+    chooseClass: "#ddc74e"
+  },
+  render: render
 };

@@ -13,8 +13,8 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
-import styles from "./scss/module.scss";
 import { classMap } from "lit-html/directives/class-map.js";
+import styles from "./scss/module.scss";
 
 export enum CardAiVariant {
   USER_QUERY = "user_query",
@@ -42,13 +42,7 @@ export namespace CardAi {
       this.thumbsDownChecked = false;
       this.thumbsUpChecked = !this.thumbsUpChecked;
       this.dispatchEvent(
-        new CustomEvent<{ id: string }>("thumbs-up-toggled", {
-          detail: {
-            id: this.id
-          },
-          bubbles: true,
-          composed: true
-        })
+        new CustomEvent<{ id: string }>("thumbs-up-toggled", { detail: { id: this.id }, bubbles: true, composed: true })
       );
     }
 
@@ -57,9 +51,7 @@ export namespace CardAi {
       this.thumbsDownChecked = !this.thumbsDownChecked;
       this.dispatchEvent(
         new CustomEvent<{ id: string }>("thumbs-down-toggled", {
-          detail: {
-            id: this.id
-          },
+          detail: { id: this.id },
           bubbles: true,
           composed: true
         })
@@ -69,9 +61,7 @@ export namespace CardAi {
     summariseMoreToggled() {
       this.dispatchEvent(
         new CustomEvent<{ id: string }>("summarise-more-toggled", {
-          detail: {
-            id: this.id
-          },
+          detail: { id: this.id },
           bubbles: true,
           composed: true
         })
@@ -84,6 +74,17 @@ export namespace CardAi {
       setTimeout(() => {
         this.copyChecked = false;
       }, 2000);
+    }
+
+    private get bottomBorderRadiusClass(): string {
+      return this.timestamp ? "with-bottom-border-radius" : "no-bottom-border-radius";
+    }
+
+    private get cardTextClassMap() {
+      return {
+        "md-card-ai-card-body-user-query": this.variant === CardAiVariant.USER_QUERY,
+        [`md-card-ai-card-body-response-${this.bottomBorderRadiusClass}`]: this.variant === CardAiVariant.RESPONSE
+      };
     }
 
     private renderHeader() {
@@ -105,15 +106,9 @@ export namespace CardAi {
     }
 
     private renderCardText() {
-      const bottomBorderRadiusClass = this.timestamp ? "with-bottom-border-radius" : "no-bottom-border-radius";
-      const classes = {
-        "md-card-ai-card-body-user-query": this.variant === CardAiVariant.USER_QUERY,
-        [`md-card-ai-card-body-response-${bottomBorderRadiusClass}`]: this.variant === CardAiVariant.RESPONSE
-      };
-
       if (this.cardText !== "") {
         return html`
-          <div class=${classMap(classes)}>
+          <div class=${classMap(this.cardTextClassMap)}>
             <h3>${this.cardText}</h3>
             ${this.renderResponseCard()}
           </div>

@@ -14,7 +14,7 @@ import {
   addMonths,
   getLocaleData,
   getStartOfWeek,
-  getWeekdayNameInLocale,
+  getWeekdayNameVeryShortInLocale,
   localizeDate,
   now,
   shouldNextMonthDisable,
@@ -37,7 +37,8 @@ export namespace DatePickerCalendar {
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
     @internalProperty() viewAnchorDate: DateTime = now();
-    @internalProperty() localeMonth: string | undefined = undefined;
+    @internalProperty()
+    private localeMonth: string | undefined = undefined;
 
     connectedCallback() {
       super.connectedCallback();
@@ -133,7 +134,7 @@ export namespace DatePickerCalendar {
         [0, 1, 2, 3, 4, 5, 6].map((offset) => {
           const day = addDays(localizeDate(startOfWeek, this.datePickerProps?.locale || "en"), offset);
           const localeData = getLocaleData(day);
-          const weekDayName = getWeekdayNameInLocale(localeData, day);
+          const weekDayName = getWeekdayNameVeryShortInLocale(localeData, day);
           return html` <div class="md-datepicker__day--name">${weekDayName}</div> `;
         })
       );

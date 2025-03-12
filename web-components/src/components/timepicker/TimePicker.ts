@@ -60,7 +60,7 @@ export namespace TimePicker {
     @property({ type: Boolean, attribute: "twenty-four-hour-format", reflect: true }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
     @property({ type: String }) locale = "en-US";
-    @property({ type: String, reflect: true }) value = "00:00:00-08:00"; // ISO FORMAT
+    @property({ type: String, reflect: true }) value: string | null = "00:00:00-08:00"; // ISO FORMAT
 
     @internalProperty() private localeTwentyFourFormat = false;
     @internalProperty() private finalTwentyFourFormat = false;

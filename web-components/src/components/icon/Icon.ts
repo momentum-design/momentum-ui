@@ -236,7 +236,7 @@ export namespace Icon {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon =
         this.iconSet === "momentumBrandVisuals"
-          ? require(`@momentum-design/brand-visuals/dist/logos/${iconName}.svg`)
+          ? require(`@momentum-design/brand-visuals/dist/logos/svg/${iconName}.svg`)
           : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
 
       if (this.isPath(importedIcon)) {

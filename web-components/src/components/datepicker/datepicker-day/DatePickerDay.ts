@@ -80,7 +80,10 @@ export namespace DatePickerDay {
         return false;
       }
 
-      const daySQLDate = this.day.toSQLDate();
+      const daySQLDate = this.day?.isValid ? this.day.toSQLDate() : null;
+      if (!daySQLDate) {
+        return false;
+      }
 
       const isBetweenDates = daySQLDate > startDate && daySQLDate < endDate;
       const isStartDate = daySQLDate === startDate;

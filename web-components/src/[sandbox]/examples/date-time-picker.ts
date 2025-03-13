@@ -1,6 +1,7 @@
 import "@/components/date-time-picker/DateTimePicker";
 import { now } from "@/utils/dateUtils";
 import { html } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 const minDate = now().minus({ day: 5 }).toISODate();
 
@@ -13,7 +14,10 @@ export const dateTimePickerTemplate = html`
   <h3>date-time-picker with ru locale</h3>
   <md-date-time-picker locale="ru"></md-date-time-picker>
   <h3>date-time-picker with minDate & maxDate</h3>
-  <md-date-time-picker minDate=${minDate} maxDate=${maxDate}></md-date-time-picker>
+  <md-date-time-picker
+    minDate=${ifDefined(minDate ?? undefined)}
+    maxDate=${ifDefined(maxDate ?? undefined)}
+  ></md-date-time-picker>
   <h3>date-time-picker with dateValue & timeValue</h3>
   <md-date-time-picker date-value="2021-01-31" time-value="08:20:00-08:00"></md-date-time-picker>
   <h3>date-time-picker with value</h3>

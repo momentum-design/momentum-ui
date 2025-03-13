@@ -32,9 +32,14 @@ export namespace DateTimePicker {
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean }) disabled = false;
 
-    @internalProperty() fullDateTime: DateTime | undefined = undefined;
-    @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
-    @internalProperty() selectedDateObject: DateTime = now();
+    @internalProperty()
+    private fullDateTime: DateTime | undefined = undefined;
+
+    @internalProperty()
+    private selectedTimeObject: DateTime | undefined = undefined;
+
+    @internalProperty()
+    private selectedDateObject: DateTime = now();
 
     firstCycle = true;
 
@@ -168,6 +173,7 @@ export namespace DateTimePicker {
           placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
+            <div class="time-picker-separator"></div>
             <md-timepicker
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}

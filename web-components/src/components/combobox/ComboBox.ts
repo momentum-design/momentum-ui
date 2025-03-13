@@ -117,7 +117,8 @@ export namespace ComboBox {
      * or the arrow not in a div what a border to the right. This will be used for filter dropdowns
      * that were implemented using a combobox
      */
-    @property({ type: Boolean, attribute: "is-dropdown-arrow" }) isDropdownArrow = false;
+    @property({ type: Boolean, attribute: "is-dropdown-arrow" })
+    isDropdownArrow = false;
 
     @property({ type: String })
     comboboxId = "";

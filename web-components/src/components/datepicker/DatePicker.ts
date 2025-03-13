@@ -260,7 +260,7 @@ export namespace DatePicker {
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
-                  value=${ifDefined(this.value)}
+                  value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.ariaLabel + this.chosenDateLabel()}

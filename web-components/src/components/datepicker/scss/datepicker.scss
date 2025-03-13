@@ -15,6 +15,14 @@
     display: flex;
     justify-content: space-between;
     line-height: normal;
+
+    md-button::part(button) {
+      &::after {
+        margin: 0;
+        height: 28px;
+        width: 28px;
+      }
+    }
   }
 
   &__month {
@@ -25,13 +33,16 @@
   }
 
   &__week {
-    height: $week-height;
-    width: $week-width;
+    display:flex;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
     font-size: var(--brand-font-midsize, rem-calc(14));
   }
 
   &__navigation--current-month {
     font-size: rem-calc(16);
+    font-family: var(--brand-font-bold, inherit);
+    line-height: var(--font-lineheight-body-large, rem-calc(24));
     font-weight: 700;
     text-transform: capitalize;
     color: var(--datepicker-default-navigation-label, inherit);
@@ -40,6 +51,7 @@
   &__navigation {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: $calendar-heading-padding;
   }
 
@@ -61,9 +73,10 @@
       display: flex;
       gap: 0.25rem;
       font-size: $day-name-font-size;
-      font-family: var(--brand-font-bold);
+      font-family: var(--brand-font-bold, "CiscoSansTT Bold");
       font-weight: var(--brand-font-weight-bold, 700);
       justify-content: center;
+      align-items: center;
       line-height: $day-name-line-height;
       margin: $day-name-margin;
       text-transform: capitalize;
@@ -72,7 +85,11 @@
       letter-spacing: 0;
 
       .md-datepicker__day--name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: $day-button-height;
+        height: $day-button-height;
       }
     }
 
@@ -183,15 +200,15 @@
 
     &--week-first::part(button) {
       &::before {
-        border-bottom-left-radius: 50%;
-        border-top-left-radius: 50%;
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
       }
     }
 
     &--week-last::part(button) {
       &::before {
-        border-bottom-right-radius: 50%;
-        border-top-right-radius: 50%;
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
         width: calc(#{$day-button-height} + 4px - 2px);
       }
     }

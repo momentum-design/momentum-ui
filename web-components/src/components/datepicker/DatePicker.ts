@@ -246,7 +246,7 @@ export namespace DatePicker {
 
     render() {
       return html`
-        <md-menu-overlay is-date-picker custom-width="248px" ?disabled=${this.disabled}>
+        <md-menu-overlay is-date-picker custom-width="272px" ?disabled=${this.disabled}>
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">
@@ -290,6 +290,7 @@ export namespace DatePicker {
                 focused: this.focusedDate,
                 weekStart: this.weekStart
               }}
+              ?short-day=${this.computedNewMomentum}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>

@@ -147,7 +147,7 @@ export namespace DatePickerDay {
       return html`
         <md-button
           circle
-          size=${28}
+          size=${32}
           color=${"color-none"}
           ?disabled=${this.disabled}
           class="md-datepicker__day ${classMap(this.getDayClassMap)}"

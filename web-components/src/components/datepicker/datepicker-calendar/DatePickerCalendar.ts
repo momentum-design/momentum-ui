@@ -14,6 +14,7 @@ import {
   addMonths,
   getLocaleData,
   getStartOfWeek,
+  getWeekdayNameShortInLocale,
   getWeekdayNameVeryShortInLocale,
   localizeDate,
   now,
@@ -35,6 +36,7 @@ export namespace DatePickerCalendar {
     // eslint-disable-next-line @typescript-eslint/ban-types
     @property({ attribute: false }) handleMonthChange: Function | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
+    @property({ type: Boolean, reflect: true, attribute: "short-day" }) shortDay = false;
 
     @internalProperty() viewAnchorDate: DateTime = now();
     @internalProperty()
@@ -101,7 +103,6 @@ export namespace DatePickerCalendar {
           ?disabled=${allPrevDaysDisabled}
           @click=${!allPrevDaysDisabled && this.decreaseMonth}
           tabindex="-1"
-          hasRemoveStyle
         >
           <md-icon name="arrow-left-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
@@ -121,11 +122,16 @@ export namespace DatePickerCalendar {
           ?disabled=${allNextDaysDisabled}
           @click=${!allNextDaysDisabled && this.increaseMonth}
           tabindex="-1"
-          hasRemoveStyle
           ><md-icon name="arrow-right-bold" size="16" iconSet="momentumDesign"></md-icon>
         </md-button>
       `;
     };
+
+    private getWeekDayName(localeData: string | null, day: DateTime) {
+      return this.shortDay
+        ? getWeekdayNameShortInLocale(localeData, day)
+        : getWeekdayNameVeryShortInLocale(localeData, day);
+    }
 
     header = () => {
       const startOfWeek = getStartOfWeek(this.viewAnchorDate, this.datePickerProps?.weekStart);
@@ -134,7 +140,7 @@ export namespace DatePickerCalendar {
         [0, 1, 2, 3, 4, 5, 6].map((offset) => {
           const day = addDays(localizeDate(startOfWeek, this.datePickerProps?.locale || "en"), offset);
           const localeData = getLocaleData(day);
-          const weekDayName = getWeekdayNameVeryShortInLocale(localeData, day);
+          const weekDayName = this.getWeekDayName(localeData, day);
           return html` <div class="md-datepicker__day--name">${weekDayName}</div> `;
         })
       );

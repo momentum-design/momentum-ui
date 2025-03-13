@@ -54,6 +54,8 @@ export namespace Avatar {
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
+    @property({ type: String }) channelStyle: "default" | "table" = "default";
+    @property({ type: String }) channelState: "default" | "active" = "default";
     @internalProperty() private iconSet: "momentumDesign" | "momentumBrandVisuals" = "momentumDesign";
     @property({ type: Boolean }) clickable = false;
     @property({ attribute: false }) clickFunction?: () => void;
@@ -303,7 +305,11 @@ export namespace Avatar {
       } else if (iconName) {
         this.checkIconAvailability(iconName);
         return html`
-          <span class="md-avatar__logo ${this.type}">
+          <span
+            class="md-avatar__logo ${this.type}"
+            data-channel-style=${this.channelStyle}
+            data-channel-state=${this.channelState}
+          >
             <md-icon
               .name=${iconName}
               .iconSet=${this.iconSet}

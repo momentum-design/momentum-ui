@@ -113,6 +113,15 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Self" type="self" size="44"></md-avatar>
       <md-avatar title="Self" type="self" size="56"></md-avatar>
       <md-avatar title="Self" type="self" size="124"></md-avatar>
+      <h3>default</h3>
+      <md-avatar type="channel-twitter-x" channelStyle="default" channelState="default"></md-avatar>
+      <md-avatar type="channel-twitter-x" channelStyle="default" channelState="active"></md-avatar>
+
+      <h3>table</h3>
+
+      <md-avatar type="channel-twitter-x" channelStyle="table" channelState="default"></md-avatar>
+      <md-avatar type="channel-twitter-x" channelStyle="table" channelState="active"></md-avatar>
+
       <h3>Icon Avatar Channel with no Background Color</h3>
       <md-avatar title="Channel Chat" type="channel-chat"></md-avatar>
       <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound"></md-avatar>

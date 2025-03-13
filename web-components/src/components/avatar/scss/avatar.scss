@@ -110,14 +110,57 @@
     @include avatar-contents-base;
     background-color: transparent;
 
-    &.channel-twitter-x {
-        filter: var(--avatar-invertable-icon-filter);
-      }
-
       &.channel-spam {
         background-color: var(--avatar-spam-bg-color);
       }
-  }
+
+      &.channel-twitter-x {
+        &[data-channel-style="default"][data-channel-state="default"] {
+          background-color: transparent;
+          filter: invert(0); 
+        }
+    
+        &[data-channel-style="default"][data-channel-state="active"] {
+          background-color: transparent;
+          filter: var(--avatar-invertable-icon-filter);
+        }
+    
+        &[data-channel-style="table"][data-channel-state="default"] {
+          background-color: var(--icon-color-dark-gray);
+          filter: invert(0); 
+        
+        }
+    
+        &[data-channel-style="table"][data-channel-state="active"] {
+          background-color: var(--icon-color-dark-gray);
+          filter: var(--avatar-invertable-icon-filter);
+        }
+      }
+
+      // &.channel-twitter-x {
+      //   // Case 1: Default style, Default state
+      //   &[data-channel-style="default"][data-channel-state="default"] {
+      //     filter: var(--avatar-invertable-icon-filter);
+      //   }
+    
+      //   // Case 2: Default style, Active state
+      //   &[data-channel-style="default"][data-channel-state="active"] {
+      //     filter: invert(1); // Forces white
+      //   }
+    
+      //   // Case 3: Table style, Default state
+      //   &[data-channel-style="table"][data-channel-state="default"] {
+      //     filter: invert(0); // Forces black
+      //   }
+    
+      //   // Case 4: Table style, Active state
+      //   &[data-channel-style="table"][data-channel-state="active"] {
+      //     filter: invert(1); // Forces white
+      //   }
+      //   // filter: invert(1);
+      //   // mix-blend-mode: difference;
+      // }
+    }
   .md-avatar__custom-icon {
     @include avatar-contents-base;
   }

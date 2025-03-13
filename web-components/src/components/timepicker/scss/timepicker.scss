@@ -23,7 +23,11 @@
 
   .amPm-combo-box::part(group) {
     padding-right: 4px;
-    padding-left: 0;
+    padding-left: 8px;
+  }
+
+  .amPm-combo-box::part(combobox-button-arrow) {
+    margin-left: 0;
   }
 
   .amPm-combo-box::part(multiwrap-input) {
@@ -58,6 +62,7 @@
   md-input::part(input) {
     padding: 0;
     text-align: center;
+    color: var(--md-secondary-text-color);
   }
 
   md-input::part(message) {

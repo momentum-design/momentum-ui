@@ -1481,6 +1481,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button arrow-down"
+          part="combobox-button-arrow"
           aria-expanded=${this.expanded}
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
@@ -1501,6 +1502,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button"
+          part="combobox-button-arrow"
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"

@@ -363,7 +363,6 @@ export namespace TimePicker {
           : nothing}
         <md-input
           newMomentum
-          .clear=${false}
           select-when-in-focus
           class="${`time-input-box ${unit}`}"
           id="time-${timeUnits.findIndex((aUnit) => aUnit === unit) + 1}"

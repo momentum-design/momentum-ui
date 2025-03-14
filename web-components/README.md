@@ -13,6 +13,14 @@ Checkout the [documentation](https://momentum.design) for documentation and live
 * **Performant** - high performance guaranteed with use of CSS3 Flexbox and non-bloated architecture.
 * **Reliable** — each component is rigorously tested.
 
+
+### Development
+1. Run `yarn install` from the "web-components" directory.
+2. Run `yarn start` from the "web-components" directory.
+
+* [yarn](https://github.com/yarnpkg/yarn) - BSD-2-Clause
+
+
 ### Package manager
 
 * [yarn](https://github.com/yarnpkg/yarn) - BSD-2-Clause

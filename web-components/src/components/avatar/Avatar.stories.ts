@@ -10,9 +10,8 @@ import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import { avatarColorOptions } from "@/utils/enums";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
-import { AvatarSize, AvatarType, ChannelState, ChannelStyle } from "./Avatar.constants";
 import { html } from "lit";
+import { AvatarSize, AvatarType, ChannelState, ChannelStyle } from "./Avatar.constants";
 import mdx from "./Avatar.mdx";
 
 const compositeAvatarSize = [0, 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84] as const;

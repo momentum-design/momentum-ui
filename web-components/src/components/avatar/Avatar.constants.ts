@@ -1,5 +1,9 @@
 import "@/components/icon/Icon";
 
+const ChannelState = ["active", "rest"] as const;
+
+const ChannelStyle = ["default", "table"] as const;
+
 const AvatarType = [
   "active",
   "away",
@@ -48,4 +52,4 @@ const AvatarType = [
 
 const AvatarSize = [18, 24, 28, 32, 36, 40, 44, 48, 52, 56, 64, 72, 80, 84, 124];
 
-export { AvatarSize, AvatarType };
+export { AvatarSize, AvatarType, ChannelState, ChannelStyle };

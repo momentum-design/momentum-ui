@@ -10,7 +10,7 @@ import "@/components/avatar/Avatar";
 import "@/components/avatar/CompositeAvatar";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit-html";
-import { AvatarSize, AvatarType } from "./Avatar.constants";
+import { AvatarSize, AvatarType, ChannelState, ChannelStyle } from "./Avatar.constants";
 import mdx from "./Avatar.mdx";
 
 const avatarColorOptions = [
@@ -83,7 +83,9 @@ const meta: Meta = {
     size: { control: { type: "select" }, options: AvatarSize, defaultValue: 40 },
     compositeAvatarSizes: { control: { type: "select" }, options: compositeAvatarSize },
     customUrl: { control: "boolean" },
-    customImage: { control: "boolean" }
+    customImage: { control: "boolean" },
+    channelState: { control: { type: "select" }, options: ChannelState },
+    channelStyle: { control: { type: "select" }, options: ChannelStyle }
   },
   parameters: {
     a11y: {

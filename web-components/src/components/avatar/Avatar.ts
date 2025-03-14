@@ -18,13 +18,15 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import { AvatarSize, AvatarType } from "./Avatar.constants";
+import { AvatarSize, AvatarType, ChannelState, ChannelStyle } from "./Avatar.constants";
 import { getPresenceIconColor } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
   export type Type = (typeof AvatarType)[number];
   export type Size = (typeof AvatarSize)[number];
+  export type State = (typeof ChannelState)[number];
+  export type Style = (typeof ChannelStyle)[number];
   export type Role = "img" | "button";
 
   @customElementWithCheck("md-avatar")
@@ -54,8 +56,8 @@ export namespace Avatar {
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
-    @property({ type: String }) channelStyle: "default" | "table" = "default";
-    @property({ type: String }) channelState: "default" | "active" = "default";
+    @property({ type: String }) channelStyle: Style = "default";
+    @property({ type: String }) channelState: State = "rest";
     @internalProperty() private iconSet: "momentumDesign" | "momentumBrandVisuals" = "momentumDesign";
     @property({ type: Boolean }) clickable = false;
     @property({ attribute: false }) clickFunction?: () => void;
@@ -298,7 +300,7 @@ export namespace Avatar {
       const iconName = this.getIconName(this.type);
       if (this.type === "channel-custom") {
         return html`
-          <span class="md-avatar__custom-icon">
+          <span class="md-avatar__logo" data-channel-style=${this.channelStyle} data-channel-state=${this.channelState}>
             <slot></slot>
           </span>
         `;

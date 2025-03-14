@@ -29,8 +29,8 @@ export namespace DatePicker {
   @customElementWithCheck("md-datepicker")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
-    @property({ type: String }) maxDate: string | undefined = undefined;
-    @property({ type: String }) minDate: string | undefined = undefined;
+    @property({ type: String }) maxDate: string | undefined | null = undefined;
+    @property({ type: String }) minDate: string | undefined | null = undefined;
     @property({ type: String, reflect: true }) value: string | null | undefined = undefined;
     @property({ type: String }) weekStart: (typeof weekStartDays)[number] = "Sunday";
     @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;

@@ -51,7 +51,6 @@
     "publish:icons": "cd ./icons && yarn updateIconDatabase && yarn uploadIconSvgs",
     "release": "./tools/release.sh",
     "storybook:wc-dist": "cd ./web-components && yarn storybook:dist",
-    "storybook:wc-deploy": "cd ./web-components && yarn storybook:deploy-ci",
     "start:all": "start:core & start:react",
     "start:core": "cd ./core && yarn start",
     "start:react": "cd ./react && yarn start",

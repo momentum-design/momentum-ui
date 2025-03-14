@@ -8,7 +8,7 @@
 
 import "@/components/table-advanced/TableAdvanced";
 import { Args, Meta } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { TableAdvanced as TableAdvancedType } from "./TableAdvanced"; // Keep type import as a relative path
 import mdx from "./TableAdvanced.mdx";
 

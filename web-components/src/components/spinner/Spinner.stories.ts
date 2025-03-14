@@ -8,7 +8,7 @@
 
 import "@/components/spinner/Spinner";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Spinner",

@@ -1,7 +1,9 @@
-/* eslint-disable */
+// eslint-disable-next-line no-undef
 module.exports = {
-  process() {
-    return "module.exports = '<svg></svg>';";
+  process(_src, _filename) {
+    return {
+      code: "module.exports = '<svg></svg>';"
+    };
   },
   getCacheKey() {
     return "svgTransform";

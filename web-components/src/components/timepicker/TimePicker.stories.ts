@@ -1,6 +1,6 @@
 import { TIME_UNIT } from "@/constants";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { timeSpecificity } from "./TimePicker"; // Keep type import as a relative path
 
 const render = (args: Args) => html`

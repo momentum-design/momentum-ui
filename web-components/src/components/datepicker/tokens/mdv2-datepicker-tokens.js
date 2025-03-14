@@ -71,8 +71,8 @@ const datepicker = {
       common: "$mds-color-theme-text-primary-normal"
     },
     "bg-color": {
-      light: colors.gray[20].name,
-      dark: colors.gray[60].name
+      light: colors.gray[30].name,
+      dark: colors.gray[70].name
     },
     hover: {
       "bg-color": {

@@ -12,7 +12,7 @@ import "@/components/icon/Icon";
 import "@/components/input/Input";
 import { action } from "@storybook/addon-actions";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { containerSize, iconNames, iconPosition, inputShape, inputType, nestedLevel } from "./Input"; // Keep type import as a relative path
 
 const messageArr = [

@@ -8,8 +8,8 @@
 
 import "@/components/meeting-alert/MeetingAlert";
 import { action } from "@storybook/addon-actions";
-import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
 import { MeetingAlertRole } from "./MeetingAlert"; // Keep type import as a relative path
 import mdx from "./MeetingAlert.mdx";
 
@@ -19,15 +19,13 @@ const defaultAttendee = [
   `{title: 'Jefe Guadelupe', src:${MEETING_ALERT_SRC}, alt:'Alt Text'}`
 ];
 
-export default {
+const meta: Meta = {
   title: "Components/Meeting Alerts",
   component: "md-meeting-alert",
   argTypes: {
     attendees: {
-      control: { type: "array" },
       description:
-        "Attendees story is limited, the array() only accepts and array of strings where as the property expects an array of objects",
-      defaultValue: defaultAttendee
+        "Attendees story is limited, the array() only accepts and array of strings where as the property expects an array of objects"
     },
     snoozeAriaLabel: { table: { disable: true } },
     onKeyDown: { table: { disable: true } },
@@ -35,34 +33,27 @@ export default {
     handleSnooze: { table: { disable: true } },
     handleClose: { table: { disable: true } },
     handleKeyDown: { table: { disable: true } },
-    show: { control: "boolean", defaultValue: true },
-    closeAriaLabel: { control: "text", defaultValue: "Webex Teams aria label" },
-    remindAriaLabel: { control: "text", defaultValue: "Webex Teams Remind" },
-    message: { control: "text", defaultValue: "Webex Teams Message" },
-    status: { control: "text", defaultValue: "Webex Teams Status" },
-    title: { control: "text", defaultValue: "Webex Teams Title" },
-    role: { control: { type: "select", options: MeetingAlertRole }, defaultValue: "alert" },
-    userStyles: { control: "text", defaultValue: " " },
-    withAttendees: { control: "boolean", defaultValue: false }
+    role: { control: { type: "select" }, options: MeetingAlertRole },
+    userStyles: { control: "text" },
+    withAttendees: { control: "boolean" }
   },
   parameters: {
-    a11y: {
-      element: "md-meeting-alert"
-    },
+    a11y: { element: "md-meeting-alert" },
     docs: {
       page: mdx,
-      description: {
-        component: "A typical usage of Meeting Alert, with different variations as individual stories"
-      }
+      description: { component: "A typical usage of Meeting Alert, with different variations as individual stories" }
     }
   }
 };
+
+export default meta;
 
 export const MeetingAlert: StoryObj = {
   args: {
     show: true,
     status: "Webex Teams Status",
     title: "Webex Teams Title",
+    attendees: defaultAttendee,
     src: "https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
   },
   render: (args: Args) => {
@@ -100,9 +91,7 @@ export const MeetingAlert: StoryObj = {
 };
 
 export const MeetingAlertActionThroughSlot: StoryObj = {
-  args: {
-    ...MeetingAlert.args
-  },
+  args: { ...MeetingAlert.args },
   render: (args: Args) => {
     return html`
       <h3>md-meeting-alert action through slot</h3>
@@ -126,9 +115,7 @@ export const MeetingAlertActionThroughSlot: StoryObj = {
 };
 
 export const MeetingAlertImageThroughSlot: StoryObj = {
-  args: {
-    ...MeetingAlert.args
-  },
+  args: { ...MeetingAlert.args },
   render: (args: Args) => {
     return html`
       <h3>md-meeting-alert image through slot</h3>
@@ -147,9 +134,7 @@ export const MeetingAlertImageThroughSlot: StoryObj = {
 };
 
 export const MeetingAlertSrcThroughSlot: StoryObj = {
-  args: {
-    ...MeetingAlert.args
-  },
+  args: { ...MeetingAlert.args },
   render: (args: Args) => {
     return html`
       <h3>md-meeting-alert src through slot</h3>
@@ -163,9 +148,7 @@ export const MeetingAlertSrcThroughSlot: StoryObj = {
 };
 
 export const MeetingAlertThroughSrc: StoryObj = {
-  args: {
-    ...MeetingAlert.args
-  },
+  args: { ...MeetingAlert.args },
   render: (args: Args) => {
     return html`
       <h3>md-meeting-alert image through src</h3>

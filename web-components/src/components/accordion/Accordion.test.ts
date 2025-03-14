@@ -1,9 +1,9 @@
+import "@/components/input/Input";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame } from "@open-wc/testing-helpers";
-import { Accordion } from "./Accordion";
 import "./Accordion";
+import { Accordion } from "./Accordion";
 import "./AccordionItem";
 import { AccordionItem } from "./AccordionItem";
-import "@/components/input/Input";
 
 describe("Accordion", () => {
   let accordion: Accordion.ELEMENT;
@@ -32,7 +32,9 @@ describe("Accordion", () => {
     `);
     accordionItems = accordion.slotted as AccordionItem.ELEMENT[];
   });
-  afterEach(fixtureCleanup);
+  afterEach(async () => {
+    fixtureCleanup();
+  });
 
   test("slotted item", async () => {
     expect(accordion.slotItem.name).toBe("accordion-item");

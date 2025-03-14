@@ -1,6 +1,7 @@
 .md-timepicker {
   padding-right: $timepicker-right-padding;
-  width: fit-content;
+  display: flex;
+  justify-content: center;
 
   &.twenty-four-hour-format {
     padding-right: 0;
@@ -16,12 +17,17 @@
     display: inline-block;
     height: $time-box-height;
     margin-left: $am-pm-combobox-left-margin;
-    width: $time-box-width;
+    width: $ampm-box-width;
     position: relative;
   }
 
   .amPm-combo-box::part(group) {
-    padding: 0;
+    padding-right: 4px;
+    padding-left: 8px;
+  }
+
+  .amPm-combo-box::part(combobox-button-arrow) {
+    margin-left: 0;
   }
 
   .amPm-combo-box::part(multiwrap-input) {
@@ -56,6 +62,7 @@
   md-input::part(input) {
     padding: 0;
     text-align: center;
+    color: var(--md-secondary-text-color);
   }
 
   md-input::part(message) {
@@ -63,9 +70,11 @@
   }
 
   .colon-separator {
-    color: var(--md-secondary-text-color, $md-gray-70);
+    color: var(--md-secondary-text-color);
     font-size: $colon-separator-font-size;
-    line-height: 125%;
+    line-height: 24px;
     margin: 0 $colon-side-margin;
+    letter-spacing: 0;
+    width: 4px;
   }
 }

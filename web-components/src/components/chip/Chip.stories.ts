@@ -10,7 +10,7 @@ import "@/components/chip/Chip";
 import "@/components/icon/Icon";
 import { BarType, chipColor, iconColorSample, iconSamples } from "@/utils/enums";
 import { Args, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 export default {
   title: "Components/Chip",

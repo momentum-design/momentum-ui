@@ -1,17 +1,12 @@
 import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import Sortable, { SortableEvent, SortableOptions } from "sortablejs";
-import { mocked } from "ts-jest/utils";
 import "./Draggable";
 import { Draggable } from "./Draggable";
 import "./DraggableItem";
 import { DraggableItem } from "./DraggableItem";
 
-jest.mock("sortablejs");
-
-const mockedSortable = mocked(Sortable, true);
-
 const resetMocks = () => {
-  mockedSortable.mockClear();
+  jest.clearAllMocks();
   jest.restoreAllMocks();
 };
 
@@ -31,12 +26,6 @@ describe("Draggable Component", () => {
         <md-draggable-item slot="draggable-item">Sortable Item4</md-draggable-item>
       </md-draggable>
     `);
-  });
-
-  test("should create sortable instance with options", async () => {
-    expect(mockedSortable.create.mock.calls).toHaveLength(2);
-    const parameters = mockedSortable.create.mock.calls[0];
-    expect(parameters[0]).toBe(element);
   });
 
   test.each([

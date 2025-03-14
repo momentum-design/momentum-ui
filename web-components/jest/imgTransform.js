@@ -1,7 +1,9 @@
-/* eslint-disable */
+// eslint-disable-next-line no-undef
 module.exports = {
-  process() {
-    return "module.exports = 'fake-file-url';";
+  process(_src, _filename) {
+    return {
+      code: "module.exports = 'fake-file-url';"
+    };
   },
   getCacheKey() {
     return "imgTransform";

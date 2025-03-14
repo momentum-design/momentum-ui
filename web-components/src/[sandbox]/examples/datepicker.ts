@@ -5,6 +5,7 @@ import "@/components/datepicker/datepicker-month/DatePickerMonth";
 import "@/components/datepicker/datepicker-week/DatePickerWeek";
 import { now } from "@/utils/dateUtils";
 import { html } from "lit-element";
+import { ifDefined } from "lit-html/directives/if-defined";
 
 const minDate = now().minus({ day: 5 }).toISODate();
 
@@ -29,7 +30,7 @@ export const datePickerTemplate = html`
   <h3>datepicker with different locale</h3>
   <md-datepicker locale="ru"></md-datepicker>
   <h3>datepicker with min / max filters</h3>
-  <md-datepicker minDate=${minDate} maxDate=${maxDate}></md-datepicker>
+  <md-datepicker minDate=${ifDefined(minDate ?? undefined)} maxDate=${ifDefined(maxDate ?? undefined)}></md-datepicker>
   <h3>datepicker with Monday start week start</h3>
   <md-datepicker weekStart="Monday"></md-datepicker>
   <h3>datepicker with initial value</h3>

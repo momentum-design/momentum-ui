@@ -10,7 +10,7 @@ import "@/components/grabber/Grabber";
 import "@/components/theme/Theme";
 import { action } from "@storybook/addon-actions";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   <md-grabber

@@ -10,7 +10,7 @@ import "@/components/floating-modal/FloatingModal";
 import "@/components/radio/Radio";
 import "@/components/radio/RadioGroup";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import mdx from "./Floating.mdx";
 
 export default {

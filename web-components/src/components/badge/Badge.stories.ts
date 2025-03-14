@@ -10,7 +10,7 @@ import "@/components/badge/Badge";
 import "@/components/icon/Icon";
 import { badgeColor } from "@/utils/enums";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 
 const render = (args: Args) => html`
   <md-badge
@@ -23,7 +23,25 @@ const render = (args: Args) => html`
     .circle=${args.circle}
     ?disabled=${args.disabled}
   >
-    ${args.icon ? html` <md-icon name="chat-active_16"></md-icon> ` : html` Badge ${args.color} `}
+    ${html`Badge ${args.color}`}
+  </md-badge>
+`;
+
+const renderWithIconAndText = (args: Args) => html`
+  <md-badge
+    .color=${args.color}
+    .bgColor=${args.bgColor}
+    .small=${args.small}
+    .textColor=${args.textColor}
+    .height=${args.height}
+    .width=${args.width}
+    .circle=${args.circle}
+    ?disabled=${args.disabled}
+  >
+    ${html`
+      <md-icon name="call-hold-filled" iconSet="momentumDesign"></md-icon>
+      On hold - 00:00
+    `}
   </md-badge>
 `;
 
@@ -32,6 +50,14 @@ export const Badge: StoryObj = {
     color: "blue"
   },
   render: render
+};
+
+export const BadgeWithIconAndText: StoryObj = {
+  args: {
+    color: "status-orange",
+    small: true
+  },
+  render: renderWithIconAndText
 };
 
 const meta: Meta = {

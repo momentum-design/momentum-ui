@@ -1,5 +1,5 @@
 import * as webpack from "webpack";
-import { commonDev } from "../webpack.config";
+import { commonAlias, commonDev } from "../webpack.config";
 
 /**
  * merge two arrays into one and remove the duplicates
@@ -13,21 +13,19 @@ const mergeUnique = (merger: Array<any>, mergee?: Array<any>) =>
 
 module.exports = {
   stories: [
-    "../src/components/**/*.stories.ts",
-    "../src/components/**/*.stories.mdx",
-    "../src/internal-components/color-table/ColorTable.stories.ts",
-    "../src/internal-components/color-table/*.stories.mdx"
+    "../src/components/**/*.stories.ts",    
+    "../src/internal-components/color-table/ColorTable.stories.ts"
   ],
 
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-controls",
-    "@storybook/addon-a11y",    
+    "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-toolbars"
   ],
 
-  framework: "@storybook/web-components",
+  framework: "@storybook/web-components-webpack5",
 
   webpackFinal: async (
     storybookConfig: webpack.Configuration,
@@ -36,7 +34,8 @@ module.exports = {
     console.log("Storybook build mode: ", configType);
 
     // RESOLVE
-    storybookConfig.resolve = storybookConfig.resolve ?? {};    
+    storybookConfig.resolve = storybookConfig.resolve ?? {};
+    storybookConfig.resolve.fallback = commonDev.resolve?.fallback;
 
     // EXTENSIONS
     storybookConfig.resolve.extensions = mergeUnique(
@@ -45,7 +44,7 @@ module.exports = {
     );
 
     // ALIAS
-    storybookConfig.resolve.alias = commonDev.resolve?.alias;
+    storybookConfig.resolve.alias = commonAlias;
 
     // MODULE
     storybookConfig.module = storybookConfig.module ?? { rules: [] };

@@ -11,7 +11,7 @@ import "@/components/icon/Icon";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import { action } from "@storybook/addon-actions";
 import { Args } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { iconSet, iconSize, iconType } from "./Icon";
 
 const momentumDesignManifestArray = Object.keys(momentumDesignManifest).map((key) => ({

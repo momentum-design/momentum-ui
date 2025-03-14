@@ -38,7 +38,7 @@ export namespace DatePickerMonth {
           ></md-datepicker-week>
         `);
         startOfWeekDay = addWeeks(startOfWeekDay, 1);
-      } while (isSameMonth(startOfWeekDay, this.day));
+      } while (isSameMonth(startOfWeekDay, this.day) || weeks.length < 6);
 
       return weeks;
     };

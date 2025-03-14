@@ -68,7 +68,7 @@ export namespace PhoneInput {
         code: "{countryCode}"
       });
       if (this.id === "") {
-        this.id = `md-phone-input-${Math.random().toString(36).substr(2, 4)}`;
+        this.id = `md-phone-input-${Math.random().toString(36).substring(2, 6)}`;
       }
       this.validateInput(this.value);
     }

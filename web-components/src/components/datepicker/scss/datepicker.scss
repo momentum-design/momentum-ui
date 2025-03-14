@@ -10,28 +10,39 @@
 
   &__navigation--buttons {
     align-items: center;
+    gap: 0.5rem;
     color: var(--datepicker-default-navigation-button, var(--md-primary-text-color, inherit));
     display: flex;
     justify-content: space-between;
     line-height: normal;
-    width: $month-nav-button-width;
 
-    md-button[disabled]::part(button) {
-      background-color: none;
-      color: var(--md-disabled-text-color, inherit);
+    md-button::part(button) {
+      &::after {
+        margin: 0;
+        height: 28px;
+        width: 28px;
+      }
     }
   }
 
   &__month {
-    width: auto;
+    display: flex;
+    flex-direction: column;
+    width: $week-width;
+    gap: 0.25rem;
   }
 
   &__week {
-    height: $week-height;    
+    display:flex;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    font-size: var(--brand-font-midsize, rem-calc(14));
   }
 
   &__navigation--current-month {
     font-size: rem-calc(16);
+    font-family: var(--brand-font-bold, inherit);
+    line-height: var(--font-lineheight-body-large, rem-calc(24));
     font-weight: 700;
     text-transform: capitalize;
     color: var(--datepicker-default-navigation-label, inherit);
@@ -40,18 +51,19 @@
   &__navigation {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: $calendar-heading-padding;
   }
 
   &__day--names {
-    display: flex;    
+    display: flex;
   }
 
   &__day {
     color: var(--datepicker-default-number-color, inherit);
-    
+
     border-radius: 100%;
-    display: inline-block;
+    display: inline-flex;
     height: $day-button-height;
     width: $day-button-height;
     font-weight: 400;
@@ -59,15 +71,32 @@
     &--names {
       color: var(--datepicker-default-days, var(--md-secondary-text-color));
       display: flex;
+      gap: 0.25rem;
       font-size: $day-name-font-size;
-      font-family: var(--brand-font-bold);
-      justify-content: space-around;
+      font-family: var(--brand-font-bold, "CiscoSansTT Bold");
+      font-weight: var(--brand-font-weight-bold, 700);
+      justify-content: center;
+      align-items: center;
       line-height: $day-name-line-height;
       margin: $day-name-margin;
       text-transform: capitalize;
+      text-align: center;
+      width: $week-width;
+      letter-spacing: 0;
+
+      .md-datepicker__day--name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $day-button-height;
+        height: $day-button-height;
+      }
     }
 
     &::part(button) {
+      align-items: center;
+      justify-content: center;
+      display: inline-flex;
       &:hover {
         background: var(--datepicker-default-hover-bg-color);
       }
@@ -83,11 +112,11 @@
 
       &::after {
         border: var(--datepicker-selected-today-border, 1px solid var(--datepicker-range-text-color));
-        height: 1.8rem;
+        height: 2rem;
         left: 7%;
         position: absolute;
         top: 4%;
-        width: 1.8rem;
+        width: 2rem;
       }
     }
 
@@ -110,7 +139,6 @@
       color: var(--datepicker-selected-text-color);
     }
 
-
     &--outside-month {
       color: var(--datepicker-invalid-text-color, var(--md-disabled-text-color, inherit));
     }
@@ -128,10 +156,10 @@
         background: var(--datepicker-range-bg-color);
         content: "";
         display: block;
-        height: 1.75rem;
+        height: $day-button-height;
         position: absolute;
         top: 0;
-        width: 2.25rem;
+        width: calc(#{$day-button-height} + 8px);
         z-index: -1;
       }
 
@@ -181,14 +209,14 @@
       &::before {
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
-        width: calc(2rem - 2px);
+        width: calc(#{$day-button-height} + 4px - 2px);
       }
     }
 
     &--start-date::part(button) {
       font-family: var(--brand-font-bold);
       color: var(--datepicker-selected-text-color, var(--md-secondary-bg-color));
-      z-index: 11 ;
+      z-index: 11;
 
       &:hover {
         color: var(--datepicker-selected-text-color, var(--md-secondary-bg-color));
@@ -223,7 +251,7 @@
       }
     }
 
-    &--end-date::part(button) {      
+    &--end-date::part(button) {
       font-family: var(--brand-font-bold);
       color: var(--datepicker-selected-text-color, var(--md-secondary-bg-color));
 

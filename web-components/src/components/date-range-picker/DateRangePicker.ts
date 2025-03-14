@@ -14,8 +14,11 @@ import { DatePicker } from "../datepicker/DatePicker";
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
   export class ELEMENT extends DatePicker.ELEMENT {
-    @property({ type: String, attribute: "start-date", reflect: true }) startDate: string | undefined = undefined;
-    @property({ type: String, attribute: "end-date", reflect: true }) endDate: string | undefined = undefined;
+    @property({ type: String, attribute: "start-date", reflect: true })
+    startDate: string | undefined | null = undefined;
+
+    @property({ type: String, attribute: "end-date", reflect: true })
+    endDate: string | undefined | null = undefined;
 
     connectedCallback() {
       super.connectedCallback();

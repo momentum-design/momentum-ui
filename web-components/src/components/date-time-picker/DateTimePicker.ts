@@ -25,16 +25,21 @@ export namespace DateTimePicker {
     @property({ type: Boolean, attribute: "twenty-four-hour-format" }) twentyFourHourFormat = false;
     @property({ type: String }) timeSpecificity: TimePicker.TimeSpecificity = TIME_UNIT.SECOND;
 
-    @property({ type: String, attribute: "date-value" }) dateValue: string | undefined = undefined;
-    @property({ type: String, attribute: "time-value" }) timeValue = "00:00:00-08:00"; // ISO FORMAT
+    @property({ type: String, attribute: "date-value" }) dateValue: string | undefined | null = undefined;
+    @property({ type: String, attribute: "time-value" }) timeValue: string | null = "00:00:00-08:00"; // ISO FORMAT
     @property({ type: String, reflect: true }) value: string | undefined = undefined;
 
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean }) disabled = false;
 
-    @internalProperty() fullDateTime: DateTime | undefined = undefined;
-    @internalProperty() selectedTimeObject: DateTime | undefined = undefined;
-    @internalProperty() selectedDateObject: DateTime = now();
+    @internalProperty()
+    private fullDateTime: DateTime | undefined = undefined;
+
+    @internalProperty()
+    private selectedTimeObject: DateTime | undefined = undefined;
+
+    @internalProperty()
+    private selectedDateObject: DateTime = now();
 
     firstCycle = true;
 
@@ -113,9 +118,8 @@ export namespace DateTimePicker {
     updateDateTimeObject = () => {
       if (this.value) {
         this.fullDateTime = DateTime.fromISO(this.value, { locale: this.locale });
-      }
-      else{
-        this.fullDateTime = DateTime.fromISO("", { locale: this.locale });;
+      } else {
+        this.fullDateTime = DateTime.fromISO("", { locale: this.locale });
       }
 
       this.dispatchEvent(
@@ -132,7 +136,7 @@ export namespace DateTimePicker {
       );
     };
 
-    combineDateAndTimeValues = (dateString: string | undefined, timeString: string) => {
+    combineDateAndTimeValues = (dateString: string | undefined | null, timeString: string | null) => {
       if (dateString) {
         if (timeString) {
           this.value = `${dateString}T${timeString}`;
@@ -169,6 +173,7 @@ export namespace DateTimePicker {
           placeholder="YYYY-MM-DDTHH:MM:SS-HH:MM"
           locale=${ifDefined(this.locale)}>
           <div slot="time-picker" class="included-timepicker-wrapper">
+            <div class="time-picker-separator"></div>
             <md-timepicker
               ?two-digit-auto-tab=${this.twoDigitAutoTab}
               ?twenty-four-hour-format=${this.twentyFourHourFormat}

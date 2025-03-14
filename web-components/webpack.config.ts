@@ -52,7 +52,7 @@ const common: webpack.Configuration = {
         },
         include: [
           path.resolve("node_modules/@momentum-design/icons/dist/svg"),
-          path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos")
+          path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg")
         ]
       }
     ]

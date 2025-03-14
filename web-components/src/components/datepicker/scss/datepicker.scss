@@ -159,7 +159,7 @@
         height: $day-button-height;
         position: absolute;
         top: 0;
-        width: calc(#{$day-button-height} + 8px);
+        width: calc(#{$day-button-height} + 5px);
         z-index: -1;
       }
 
@@ -209,7 +209,7 @@
       &::before {
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
-        width: calc(#{$day-button-height} + 4px - 2px);
+        width: calc(#{$day-button-height} + 4px);
       }
     }
 
@@ -235,8 +235,7 @@
           var(--datepicker-range-bg-color) 50%
         );
         border-bottom-left-radius: 1rem;
-        border-top-left-radius: 1rem;
-        width: 100%;
+        border-top-left-radius: 1rem;        
       }
 
       &::after {
@@ -272,8 +271,7 @@
           var(--datepicker-range-bg-color) 50%
         );
         border-bottom-right-radius: 1rem;
-        border-top-right-radius: 1rem;
-        width: 100%;
+        border-top-right-radius: 1rem;        
       }
 
       &::after {

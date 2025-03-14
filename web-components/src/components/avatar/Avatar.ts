@@ -56,8 +56,8 @@ export namespace Avatar {
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
-    @property({ type: String }) channelStyle: Style = "default";
-    @property({ type: String }) channelState: State = "rest";
+    @property({ type: String, attribute: "channel-style" }) channelStyle: Style = "default";
+    @property({ type: String, attribute: "channel-state" }) channelState: State = "rest";
     @internalProperty() private iconSet: "momentumDesign" | "momentumBrandVisuals" = "momentumDesign";
     @property({ type: Boolean }) clickable = false;
     @property({ attribute: false }) clickFunction?: () => void;

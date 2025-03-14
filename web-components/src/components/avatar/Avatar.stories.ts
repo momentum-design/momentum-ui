@@ -46,8 +46,8 @@ export const Avatar: StoryObj = {
           src="${args.customUrl ? `${args.src}` : ""}"
           color=${args.color}
           size=${args.size}
-          channelState=${args.channelState}
-          channelStyle=${args.channelStyle}
+          channel-state=${args.channelState}
+          channel-style=${args.channelStyle}
           ?has-notification=${args.hasNotification}
           ?newMomentum=${args.newMomentum}
         >

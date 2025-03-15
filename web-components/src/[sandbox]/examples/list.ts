@@ -52,4 +52,10 @@ export const listTemplate = html`
     <md-list-item aria-label="Berkelium" slot="list-item" shape="pill">Berkelium</md-list-item>
     <md-list-item aria-label="Californium" slot="list-item" shape="pill">Californium</md-list-item>
   </md-list>
+
+  <h3>List item with trailing icon</h3>
+  <md-list label="Trailing list items">
+    <md-list-item slot="list-item">
+      <md-button><md-icon></md-icon><md-button></md-list-item>
+  </md-list>
 `;

@@ -18,15 +18,15 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
-import { AvatarSize, AvatarType, ChannelState, ChannelStyle } from "./Avatar.constants";
+import { AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import { getPresenceIconColor } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
   export type Type = (typeof AvatarType)[number];
   export type Size = (typeof AvatarSize)[number];
-  export type State = (typeof ChannelState)[number];
-  export type Style = (typeof ChannelStyle)[number];
+  export type State = (typeof AvatarState)[number];
+  export type Style = (typeof AvatarStyle)[number];
   export type Role = "img" | "button";
 
   @customElementWithCheck("md-avatar")
@@ -56,11 +56,29 @@ export namespace Avatar {
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
-    @property({ type: String, attribute: "channel-style" }) channelStyle: Style = "default";
-    @property({ type: String, attribute: "channel-state" }) channelState: State = "rest";
-    @internalProperty() private iconSet: "momentumDesign" | "momentumBrandVisuals" = "momentumDesign";
     @property({ type: Boolean }) clickable = false;
     @property({ attribute: false }) clickFunction?: () => void;
+
+    /**
+     * The style of the avatar based on where it is used.
+     * Currently only affects channel avatars.
+     * @type {Avatar.Style}
+     * @default "default"
+     * @property {Avatar.Style} avatarStyle - Options: "default" | "table"
+     */
+    @property({ type: String, attribute: "avatar-style" })
+    avatarStyle: Style = "default";
+
+    /**
+     * The state determines the background color of channel avatars,
+     * in combination with the avatar style.
+     * Currently only affects channel avatars.
+     * @type {Avatar.State}
+     * @default "rest"
+     * @property {Avatar.State} state - Options: "rest" | "active"
+     */
+    @property({ type: String })
+    state: State = "rest";
 
     @internalProperty() private imageLoaded = false;
     @internalProperty() private imageErrored = false;
@@ -126,7 +144,7 @@ export namespace Avatar {
     private get chatIconName() {
       return "chat-filled";
     }
-    private iconNameMap: { [key: string]: string } = {
+    private readonly iconNameMap: { [key: string]: string } = {
       "channel-chat": "chat-filled",
       "channel-sms-inbound": "sms-filled",
       "channel-sms-outbound": "sms-outgoing-filled",
@@ -256,7 +274,7 @@ export namespace Avatar {
       );
     }
 
-    private checkIconAvailability(iconName: string) {
+    private getBrandOrDesignIconSet(iconName: string) {
       const brandIcons = new Set([
         "webex-app-icon-color-container",
         "social-fbmessenger-color",
@@ -268,7 +286,7 @@ export namespace Avatar {
         "social-wechat-color"
       ]);
 
-      this.iconSet = brandIcons.has(iconName) ? "momentumBrandVisuals" : "momentumDesign";
+      return brandIcons.has(iconName) ? "momentumBrandVisuals" : "momentumDesign";
     }
 
     get avatarContent() {
@@ -300,21 +318,21 @@ export namespace Avatar {
       const iconName = this.getIconName(this.type);
       if (this.type === "channel-custom") {
         return html`
-          <span class="md-avatar__logo" data-channel-style=${this.channelStyle} data-channel-state=${this.channelState}>
+          <span class="md-avatar__logo" data-channel-style=${this.avatarStyle} data-channel-state=${this.state}>
             <slot></slot>
           </span>
         `;
       } else if (iconName) {
-        this.checkIconAvailability(iconName);
+        const iconSet = this.getBrandOrDesignIconSet(iconName);
         return html`
           <span
             class="md-avatar__logo ${this.type}"
-            data-channel-style=${this.channelStyle}
-            data-channel-state=${this.channelState}
+            data-channel-style=${this.avatarStyle}
+            data-channel-state=${this.state}
           >
             <md-icon
               .name=${iconName}
-              .iconSet=${this.iconSet}
+              .iconSet=${iconSet}
               .size=${this.chatIconSize}
               color="var(--icon-color-${this.type})"
             ></md-icon>

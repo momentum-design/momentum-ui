@@ -16,193 +16,118 @@ export class AvatarTemplateSandbox extends LitElement {
   get channelAvatarTemplate() {
     return html`
       <h3>Icon Avatar Channel with style:table (no Background Color)</h3>
-      <md-avatar title="Channel Chat" type="channel-chat" channel-style="table"></md-avatar>
-      <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" channel-style="table"></md-avatar>
-      <md-avatar title="Channel SMS Outbound" type="channel-sms-outbound" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Email Inbound" type="channel-email-inbound" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Email Outbound" type="channel-email-outbound" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Call" type="channel-call" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Callback" type="channel-callback" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Headset" type="channel-headset" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Campaign" type="channel-campaign" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Emoji" type="channel-emoji" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Webex" type="channel-webex" channel-style="table"></md-avatar>
-      <md-avatar title="Channel FB Messenger" type="channel-fb-messenger" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Apple Chat" type="channel-apple-chat" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Line" type="channel-line" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Twitter X" type="channel-twitter-x" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Viber" type="channel-viber" channel-style="table"></md-avatar>
-      <md-avatar title="Channel Whats App" type="channel-whats-app" channel-style="table"></md-avatar>
-      <md-avatar title="Channel We Chat" type="channel-we-chat" channel-style="table"></md-avatar>
+      <md-avatar title="Channel Chat" type="channel-chat" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel SMS Outbound" type="channel-sms-outbound" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Email Inbound" type="channel-email-inbound" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Email Outbound" type="channel-email-outbound" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Call" type="channel-call" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Callback" type="channel-callback" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Headset" type="channel-headset" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Campaign" type="channel-campaign" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Emoji" type="channel-emoji" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Webex" type="channel-webex" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel FB Messenger" type="channel-fb-messenger" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Apple Chat" type="channel-apple-chat" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Line" type="channel-line" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Twitter X" type="channel-twitter-x" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Viber" type="channel-viber" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel Whats App" type="channel-whats-app" avatar-style="table"></md-avatar>
+      <md-avatar title="Channel We Chat" type="channel-we-chat" avatar-style="table"></md-avatar>
       <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
       <h3>Icon Avatar Channel with style:default and state:active (Background Color:white)</h3>
-      <md-avatar title="Channel Chat" type="channel-chat" channel-style="default" channel-state="active"></md-avatar>
+      <md-avatar title="Channel Chat" type="channel-chat" avatar-style="default" state="active"></md-avatar>
       <md-avatar
         title="Channel SMS Inbound"
         type="channel-sms-inbound"
-        channel-style="default"
-        channel-state="active"
+        avatar-style="default"
+        state="active"
       ></md-avatar>
       <md-avatar
         title="Channel SMS Outbound"
         type="channel-sms-outbound"
-        channel-style="default"
-        channel-state="active"
+        avatar-style="default"
+        state="active"
       ></md-avatar>
       <md-avatar
         title="Channel Email Inbound"
         type="channel-email-inbound"
-        channel-style="default"
-        channel-state="active"
+        avatar-style="default"
+        state="active"
       ></md-avatar>
       <md-avatar
         title="Channel Email Outbound"
         type="channel-email-outbound"
-        channel-style="default"
-        channel-state="active"
+        avatar-style="default"
+        state="active"
       ></md-avatar>
-      <md-avatar title="Channel Call" type="channel-call" channel-style="default" channel-state="active"></md-avatar>
-      <md-avatar
-        title="Channel Callback"
-        type="channel-callback"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
-      <md-avatar
-        title="Channel Headset"
-        type="channel-headset"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
-      <md-avatar
-        title="Channel Campaign"
-        type="channel-campaign"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
-      <md-avatar title="Channel Emoji" type="channel-emoji" channel-style="default" channel-state="active"></md-avatar>
-      <md-avatar title="Channel Webex" type="channel-webex" channel-style="default" channel-state="active"></md-avatar>
+      <md-avatar title="Channel Call" type="channel-call" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Callback" type="channel-callback" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Headset" type="channel-headset" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Campaign" type="channel-campaign" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Emoji" type="channel-emoji" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Webex" type="channel-webex" avatar-style="default" state="active"></md-avatar>
       <md-avatar
         title="Channel FB Messenger"
         type="channel-fb-messenger"
-        channel-style="default"
-        channel-state="active"
+        avatar-style="default"
+        state="active"
       ></md-avatar>
-      <md-avatar
-        title="Channel Apple Chat"
-        type="channel-apple-chat"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
-      <md-avatar title="Channel Line" type="channel-line" channel-style="default" channel-state="active"></md-avatar>
-      <md-avatar
-        title="Channel Twitter X"
-        type="channel-twitter-x"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
-      <md-avatar title="Channel Viber" type="channel-viber" channel-style="default" channel-state="active"></md-avatar>
-      <md-avatar
-        title="Channel Whats App"
-        type="channel-whats-app"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
-      <md-avatar
-        title="Channel We Chat"
-        type="channel-we-chat"
-        channel-style="default"
-        channel-state="active"
-      ></md-avatar>
+      <md-avatar title="Channel Apple Chat" type="channel-apple-chat" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Line" type="channel-line" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Twitter X" type="channel-twitter-x" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Viber" type="channel-viber" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel Whats App" type="channel-whats-app" avatar-style="default" state="active"></md-avatar>
+      <md-avatar title="Channel We Chat" type="channel-we-chat" avatar-style="default" state="active"></md-avatar>
       <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
       <h3>Icon Avatar Channel with style:default state:rest (Background Color:dark gray)</h3>
-      <md-avatar title="Channel Chat" type="channel-chat" channel-style="default" channel-state="rest"></md-avatar>
-      <md-avatar
-        title="Channel SMS Inbound"
-        type="channel-sms-inbound"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
+      <md-avatar title="Channel Chat" type="channel-chat" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel SMS Inbound" type="channel-sms-inbound" avatar-style="default" state="rest"></md-avatar>
       <md-avatar
         title="Channel SMS Outbound"
         type="channel-sms-outbound"
-        channel-style="default"
-        channel-state="rest"
+        avatar-style="default"
+        state="rest"
       ></md-avatar>
       <md-avatar
         title="Channel Email Inbound"
         type="channel-email-inbound"
-        channel-style="default"
-        channel-state="rest"
+        avatar-style="default"
+        state="rest"
       ></md-avatar>
       <md-avatar
         title="Channel Email Outbound"
         type="channel-email-outbound"
-        channel-style="default"
-        channel-state="rest"
+        avatar-style="default"
+        state="rest"
       ></md-avatar>
-      <md-avatar title="Channel Call" type="channel-call" channel-style="default" channel-state="rest"></md-avatar>
-      <md-avatar
-        title="Channel Callback"
-        type="channel-callback"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
-      <md-avatar
-        title="Channel Headset"
-        type="channel-headset"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
-      <md-avatar
-        title="Channel Campaign"
-        type="channel-campaign"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
-      <md-avatar title="Channel Emoji" type="channel-emoji" channel-style="default" channel-state="rest"></md-avatar>
-      <md-avatar title="Channel Webex" type="channel-webex" channel-style="default" channel-state="rest"></md-avatar>
+      <md-avatar title="Channel Call" type="channel-call" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Callback" type="channel-callback" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Headset" type="channel-headset" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Campaign" type="channel-campaign" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Emoji" type="channel-emoji" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Webex" type="channel-webex" avatar-style="default" state="rest"></md-avatar>
       <md-avatar
         title="Channel FB Messenger"
         type="channel-fb-messenger"
-        channel-style="default"
-        channel-state="rest"
+        avatar-style="default"
+        state="rest"
       ></md-avatar>
-      <md-avatar
-        title="Channel Apple Chat"
-        type="channel-apple-chat"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
-      <md-avatar title="Channel Line" type="channel-line" channel-style="default" channel-state="rest"></md-avatar>
-      <md-avatar
-        title="Channel Twitter X"
-        type="channel-twitter-x"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
-      <md-avatar title="Channel Viber" type="channel-viber" channel-style="default" channel-state="rest"></md-avatar>
-      <md-avatar
-        title="Channel Whats App"
-        type="channel-whats-app"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
-      <md-avatar
-        title="Channel We Chat"
-        type="channel-we-chat"
-        channel-style="default"
-        channel-state="rest"
-      ></md-avatar>
+      <md-avatar title="Channel Apple Chat" type="channel-apple-chat" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Line" type="channel-line" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Twitter X" type="channel-twitter-x" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Viber" type="channel-viber" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel Whats App" type="channel-whats-app" avatar-style="default" state="rest"></md-avatar>
+      <md-avatar title="Channel We Chat" type="channel-we-chat" avatar-style="default" state="rest"></md-avatar>
       <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
       <h3>Icon Avatar Channel with Custom Icon</h3>
-      <md-avatar title="Custom Channel" type="channel-custom" channel-style="table" channel-state="rest">
+      <md-avatar title="Custom Channel" type="channel-custom" avatar-style="table" state="rest">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
-      <md-avatar title="Custom Channel" type="channel-custom" channel-style="default" channel-state="active">
+      <md-avatar title="Custom Channel" type="channel-custom" avatar-style="default" state="active">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
-      <md-avatar title="Custom Channel" type="channel-custom" channel-style="default" channel-state="rest">
+      <md-avatar title="Custom Channel" type="channel-custom" avatar-style="default" state="rest">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
     `;

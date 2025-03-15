@@ -1,11 +1,12 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
-import "./Avatar";
 import { Avatar } from "./Avatar";
 
 describe("Avatar", () => {
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    fixtureCleanup();
+  });
 
   test("should set source property", async () => {
     const element = await fixture<Avatar.ELEMENT>(html`
@@ -133,6 +134,7 @@ describe("Avatar", () => {
     const element = await fixture<Avatar.ELEMENT>(html`
       <md-avatar title="active" size="40" type="active" newMomentum ?clickable=${true} role="button"></md-avatar>
     `);
+
     const evt = new MouseEvent("click");
     setTimeout(() => element.handleClick(evt));
     const { detail } = await oneEvent(element, "button-click");
@@ -203,18 +205,18 @@ describe("Avatar", () => {
   test("should render custom channel content when type is channel-custom", async () => {
     const element = await fixture<Avatar.ELEMENT>(html`
       <md-avatar type="channel-custom" alt="avatar">
-        <span class="custom-content">Custom Channel Content</span>
+        <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>
     `);
 
-    const customIcon = element.shadowRoot!.querySelector(".md-avatar__custom-icon");
+    const customIcon = element.shadowRoot!.querySelector(".md-avatar__logo");
     expect(customIcon).not.toBeNull();
     const slotElement = customIcon!.querySelector("slot");
     expect(slotElement).not.toBeNull();
   });
 
   test("should render correct channel icons for different channel types", async () => {
-    const channelTypes = [
+    const channelTypes: Array<{ type: Avatar.Type; icon: string }> = [
       { type: "channel-chat", icon: "chat-filled" },
       { type: "channel-sms-inbound", icon: "sms-filled" },
       { type: "channel-email-inbound", icon: "email-filled" },

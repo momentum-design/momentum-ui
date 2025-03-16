@@ -10,6 +10,7 @@ describe("Input Component", () => {
 
   afterEach(() => {
     jest.runOnlyPendingTimers();
+    jest.clearAllTimers();
     jest.useRealTimers();
     fixtureCleanup();
   });

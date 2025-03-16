@@ -1,34 +1,47 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
-import { Avatar } from "./Avatar";
+import { html, TemplateResult } from "lit-element";
+import "./Avatar";
+import { type Avatar } from "./Avatar";
+
+async function createFixture<T extends Element>(template: string | TemplateResult): Promise<T> {
+  const element = await fixture<T>(template);
+  jest.runAllTimers();
+  return element;
+}
 
 describe("Avatar", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 
   test("should set source property", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar alt="avatar" title="Alyson Born" src="https://example.com"></md-avatar>
     `);
     expect(element.src).toEqual("https://example.com");
   });
 
   test("should set color property", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar alt="avatar" title="Alyson Born" color="mint"></md-avatar>
     `);
     expect(element.color).toEqual("mint");
   });
 
   test("should set size property", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar alt="avatar" size="44"></md-avatar> `);
+    const element = await createFixture<Avatar.ELEMENT>(html` <md-avatar alt="avatar" size="44"></md-avatar> `);
     expect(element.size).toEqual(44);
   });
 
   test("should set correct pretify title", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar alt="avatar" title=" Alyson Born Hoaland "></md-avatar>
     `);
     const letter = element.shadowRoot!.querySelector(".md-avatar__letter");
@@ -49,7 +62,7 @@ describe("Avatar", () => {
   });
 
   test("should render icon even if title is provided", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar alt="avatar" title="Alyson Born Hoaland" color="mint" icon-name="warning_20"></md-avatar>
     `);
 
@@ -59,7 +72,7 @@ describe("Avatar", () => {
   });
 
   test("should render self avatar type if type property provided with self value", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar alt="avatar" size="36" title="Alyson Born Hoaland" type="self"></md-avatar>
     `);
     expect(element.shadowRoot!.querySelector(".md-avatar__self")).not.toBeNull();
@@ -81,7 +94,7 @@ describe("Avatar", () => {
   });
 
   test("should render notification bange", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar has-notification type="active" size="72" title="Tom Smith"></md-avatar>
     `);
 
@@ -90,19 +103,23 @@ describe("Avatar", () => {
   });
 
   test("should provide loading status if type is typing", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar type="typing" title="Tom Smith"></md-avatar> `);
+    const element = await createFixture<Avatar.ELEMENT>(html`
+      <md-avatar type="typing" title="Tom Smith"></md-avatar>
+    `);
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
   });
 
   test("should provide loading status if boolean typing is true", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html` <md-avatar ?typing=${true} title="Tom Smith"></md-avatar> `);
+    const element = await createFixture<Avatar.ELEMENT>(html`
+      <md-avatar ?typing=${true} title="Tom Smith"></md-avatar>
+    `);
 
     expect(element.shadowRoot!.querySelector("md-loading")).not.toBeNull();
   });
 
   test("should render presence if boolean newMomentum is true", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar type="active" title="active" ?newMomentum=${true}></md-avatar>
     `);
 
@@ -111,7 +128,7 @@ describe("Avatar", () => {
   });
 
   test("should set presenceColor, presenceIcon, and isCircularWrapper based on type", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar type="active" title="active" ?newMomentum=${true}></md-avatar>
     `);
 
@@ -130,14 +147,16 @@ describe("Avatar", () => {
   });
 
   test("should handle click event in avatar", async () => {
-    jest.spyOn(Avatar.ELEMENT.prototype, "blur");
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar title="active" size="40" type="active" newMomentum ?clickable=${true} role="button"></md-avatar>
     `);
 
+    const eventPromise = oneEvent(element, "button-click");
     const evt = new MouseEvent("click");
-    setTimeout(() => element.handleClick(evt));
-    const { detail } = await oneEvent(element, "button-click");
+    element.handleClick(evt);
+
+    const { detail } = await eventPromise;
+
     expect(detail).toBeDefined();
     expect(detail.srcEvent.type).toBe("click");
   });
@@ -163,7 +182,7 @@ describe("Avatar", () => {
   });
 
   test("should not dispatch custom keydown event if not clickable", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>
     `);
     const spyKeyDown = jest.spyOn(element, "handleKeyDown");
@@ -183,7 +202,7 @@ describe("Avatar", () => {
   });
 
   test("should not dispatch custom click if not clickable", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar title="active" size="40" type="active" newMomentum></md-avatar>
     `);
     const spyHandleClick = jest.spyOn(element, "handleClick");
@@ -203,7 +222,7 @@ describe("Avatar", () => {
   });
 
   test("should render custom channel content when type is channel-custom", async () => {
-    const element = await fixture<Avatar.ELEMENT>(html`
+    const element = await createFixture<Avatar.ELEMENT>(html`
       <md-avatar type="channel-custom" alt="avatar">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>
       </md-avatar>

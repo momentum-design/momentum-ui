@@ -32,6 +32,8 @@ describe("Modal Component", () => {
   let element: Modal.ELEMENT;
 
   beforeEach(async () => {
+    jest.useFakeTimers();
+
     element = await fixture<Modal.ELEMENT>(html`
       <md-modal>
         <input type="text" placeholder="Type Text" />
@@ -40,16 +42,22 @@ describe("Modal Component", () => {
       </md-modal>
     `);
   });
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should dispatch event when modal closed", async () => {
-    jest.useRealTimers();
+    const closeModalPromise = oneEvent(element, "close-modal");
+
     element.show = true;
     element.backdropClickExit = true;
     await elementUpdated(element);
 
-    setTimeout(() => element["handleCloseBackdrop"]());
-    const enterEvent = await oneEvent(element, "close-modal");
+    element["handleCloseBackdrop"]();
+    const enterEvent = await closeModalPromise;
     expect(enterEvent).toBeDefined();
   });
 
@@ -99,7 +107,6 @@ describe("Modal Component", () => {
   });
 
   test("should close modal if noExitOnEsc is set to true and escape key is pressed", async () => {
-    jest.useFakeTimers();
     element.show = true;
     element.noExitOnEsc = false;
     element.backdropClickExit = true;
@@ -107,11 +114,9 @@ describe("Modal Component", () => {
     const escapePressEvent = new KeyboardEvent("keydown", { code: Key.Escape });
     element.handleCloseOutside(escapePressEvent);
     expect(element.show).toBeFalsy();
-    jest.clearAllTimers();
   });
 
   test("should not close modal if noExitOnEsc is set to false and escape key is pressed", async () => {
-    jest.useFakeTimers();
     element.show = true;
     element.noExitOnEsc = true;
     element.backdropClickExit = true;
@@ -122,7 +127,6 @@ describe("Modal Component", () => {
   });
 
   test("should not close modal when enter key is pressed and focus is not on close buttons", async () => {
-    jest.useFakeTimers();
     element.show = true;
     await elementUpdated(element);
     const enterPressEvent = new KeyboardEvent("keydown", { code: "Enter" });
@@ -131,7 +135,6 @@ describe("Modal Component", () => {
   });
 
   test("should not close modal when enter space is pressed and focus is not on close buttons", async () => {
-    jest.useFakeTimers();
     element.show = true;
     await elementUpdated(element);
     const enterPressEvent = new KeyboardEvent("keydown", { code: "Space" });
@@ -140,7 +143,6 @@ describe("Modal Component", () => {
   });
 
   test("should close modal if backdrop button clicked", async () => {
-    jest.useFakeTimers();
     element.show = true;
     element.backdropClickExit = true;
     element.noExitOnEsc = false;
@@ -149,11 +151,9 @@ describe("Modal Component", () => {
     await nextFrame();
     jest.runAllTimers();
     expect(element.show).toBeFalsy();
-    jest.clearAllTimers();
   });
 
   test("should close modal if clicked on modal footer button", async () => {
-    jest.useFakeTimers();
     element.show = true;
     element.showCloseButton = true;
     await elementUpdated(element);
@@ -200,7 +200,6 @@ describe("Modal Component", () => {
   });
 
   test("should close modal when showCloseButton is true and X button is clicked", async () => {
-    jest.useFakeTimers();
     element.show = true;
     element.showCloseButton = true;
     await elementUpdated(element);

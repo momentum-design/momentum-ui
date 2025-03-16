@@ -4,7 +4,7 @@ import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 import "./ComboBox";
-import { ComboBox } from "./ComboBox";
+import { type ComboBox } from "./ComboBox";
 
 describe("Combobox Component", () => {
   afterEach(fixtureCleanup);
@@ -71,8 +71,6 @@ describe("Combobox Component", () => {
     });
 
     test("should dispatch input event", async () => {
-      jest.useRealTimers();
-
       el.input!.value = "a";
       el["inputValue"] = "a";
       el.input!.dispatchEvent(new Event("input"));
@@ -81,7 +79,6 @@ describe("Combobox Component", () => {
 
       expect(detail).toBeDefined();
       expect(detail).toEqual(expect.objectContaining({ value: "a" }));
-      jest.clearAllTimers();
     });
 
     test("should render selected options with multi attribute", async () => {

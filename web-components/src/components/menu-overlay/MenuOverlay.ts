@@ -48,7 +48,7 @@ export namespace MenuOverlay {
   @customElementWithCheck("md-menu-overlay")
   export class ELEMENT extends FocusTrapMixin(LitElement) {
     private _isOpen = false;
-    private static activeOverlay: ELEMENT[] = [];
+    private static readonly activeOverlay: ELEMENT[] = [];
     @property({ type: Boolean, attribute: "is-open", reflect: true })
     get isOpen() {
       return this._isOpen;

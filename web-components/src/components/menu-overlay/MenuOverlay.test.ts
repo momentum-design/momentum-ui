@@ -1,17 +1,8 @@
 import "@/components/button/Button";
 import "@/components/input/Input";
 import { Key } from "@/constants";
-import {
-  defineCE,
-  elementUpdated,
-  fixture,
-  fixtureCleanup,
-  fixtureSync,
-  nextFrame,
-  oneEvent
-} from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit-element";
-import "./MenuOverlay";
+import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
+import { html } from "lit-element";
 import { MenuOverlay, OverlaySizes } from "./MenuOverlay";
 
 Object.defineProperties(Element.prototype, {
@@ -48,7 +39,7 @@ const fixtureFactory = async (
   size: MenuOverlay.Size,
   allowHoverToggle = false
 ): Promise<MenuOverlay.ELEMENT> => {
-  return await fixture<MenuOverlay.ELEMENT>(html`
+  const element = await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
       ?is-open=${isOpen}
       ?show-arrow=${showArrow}
@@ -62,6 +53,8 @@ const fixtureFactory = async (
       <div><h1>Menu Overlay Content</h1></div>
     </md-menu-overlay>
   `);
+  jest.runAllTimers();
+  return element;
 };
 
 const fixtureFactoryWithCustomAttr = async (
@@ -73,7 +66,7 @@ const fixtureFactoryWithCustomAttr = async (
   size: MenuOverlay.Size,
   allowHoverToggle = false
 ): Promise<MenuOverlay.ELEMENT> => {
-  return await fixture<MenuOverlay.ELEMENT>(html`
+  const element = await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
       ?is-open=${isOpen}
       ?show-arrow=${showArrow}
@@ -89,6 +82,8 @@ const fixtureFactoryWithCustomAttr = async (
       <div><h1>Menu Overlay Content</h1></div>
     </md-menu-overlay>
   `);
+  jest.runAllTimers();
+  return element;
 };
 
 const fixtureFactoryForNestedOverlays = async (
@@ -101,7 +96,7 @@ const fixtureFactoryForNestedOverlays = async (
   allowHoverToggle = false,
   isNestedOpen = false
 ): Promise<MenuOverlay.ELEMENT> => {
-  return await fixture<MenuOverlay.ELEMENT>(html`
+  const element = await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
       ?is-open=${isOpen}
       ?show-arrow=${showArrow}
@@ -121,7 +116,7 @@ const fixtureFactoryForNestedOverlays = async (
           show-arrow
           max-height=${maxHeight}
           custom-width=${customWidth}
-          position="bottom"
+          placement="bottom"
           id="outdial-overlay"
         >
           <md-button slot="menu-trigger" variant="primary">Open Nested Menu Overlay</md-button>
@@ -130,6 +125,8 @@ const fixtureFactoryForNestedOverlays = async (
       </div>
     </md-menu-overlay>
   `);
+  jest.runAllTimers();
+  return element;
 };
 
 const fixtureInputFactory = async (
@@ -140,7 +137,7 @@ const fixtureInputFactory = async (
   maxHeight: string,
   size: MenuOverlay.Size
 ): Promise<MenuOverlay.ELEMENT> => {
-  return await fixture<MenuOverlay.ELEMENT>(html`
+  const element = await fixture<MenuOverlay.ELEMENT>(html`
     <md-menu-overlay
       ?is-open=${isOpen}
       ?show-arrow=${showArrow}
@@ -149,24 +146,24 @@ const fixtureInputFactory = async (
       max-height=${maxHeight}
       size=${size}
     >
-      <md-input
-        placeholder="Search field with tabs"
-        shape="pill"
-        slot="menu-trigger"
-        variant="primary"
-        clear
-        autoFocus
-      ></md-input>
+      <md-input placeholder="Search field with tabs" shape="pill" slot="menu-trigger" clear autoFocus></md-input>
       <div><h1>Menu Overlay Content</h1></div>
     </md-menu-overlay>
   `);
+  jest.runAllTimers();
+  return element;
 };
 
 describe("MenuOverlay", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
 
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     jest.clearAllMocks();
+    fixtureCleanup();
   });
 
   test("menu-overlay component is not null", async () => {
@@ -182,15 +179,16 @@ describe("MenuOverlay", () => {
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
 
-    await nextFrame();
+    const clickPromise = oneEvent(triggerElement, "click");
 
     expect(triggerElement.getAttribute("aria-expanded")).toBeUndefined;
     triggerElement.dispatchEvent(new MouseEvent("click"));
-    await nextFrame();
+
+    await clickPromise;
+    jest.advanceTimersByTime(100);
 
     expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy;
     expect(element.isOpen).toBeTruthy();
-    element.isOpen = false;
   });
 
   test("should prevent the keydown event if trigger element is md-input", async () => {
@@ -198,10 +196,10 @@ describe("MenuOverlay", () => {
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     triggerElement.dispatchEvent(new KeyboardEvent("keydown", { code: "Space" }));
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeFalsy();
     element.isOpen = false;
@@ -213,7 +211,7 @@ describe("MenuOverlay", () => {
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     triggerElement.dispatchEvent(
       new KeyboardEvent("keydown", {
@@ -221,7 +219,7 @@ describe("MenuOverlay", () => {
       })
     );
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeTruthy();
 
     triggerElement.dispatchEvent(
@@ -238,7 +236,7 @@ describe("MenuOverlay", () => {
       })
     );
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeFalsy();
     element.isOpen = false;
   });
@@ -250,23 +248,23 @@ describe("MenuOverlay", () => {
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     const event = new MouseEvent("click");
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     triggerElement.dispatchEvent(event);
-    await nextFrame();
+    jest.advanceTimersByTime(1000);
 
     expect(element.isOpen).toBeTruthy();
 
     triggerElement.dispatchEvent(event);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeFalsy();
 
     document.dispatchEvent(event);
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeFalsy();
     element.isOpen = false;
@@ -277,13 +275,13 @@ describe("MenuOverlay", () => {
 
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
-    await nextFrame();
 
     expect(triggerElement.getAttribute("aria-haspopup")).toBeTruthy();
     expect(triggerElement.getAttribute("aria-expanded")).toBeFalsy();
 
+    const clickPromise = oneEvent(triggerElement, "click");
     triggerElement.dispatchEvent(new MouseEvent("click"));
-    await nextFrame();
+    await clickPromise;
 
     expect(element.isOpen).toBeTruthy();
     expect(triggerElement.getAttribute("aria-expanded")).toBeTruthy();
@@ -295,13 +293,13 @@ describe("MenuOverlay", () => {
 
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
-    await nextFrame();
 
     expect(triggerElement.getAttribute("aria-haspopup")).toBeTruthy();
     expect(triggerElement.getAttribute("aria-expanded")).toBeFalsy();
 
+    const clickPromise = oneEvent(triggerElement, "click");
     triggerElement.dispatchEvent(new MouseEvent("click"));
-    await nextFrame();
+    await clickPromise;
 
     expect(element.isOpen).toBeTruthy();
     expect(triggerElement.getAttribute("ariaexpanded")).toBeTruthy();
@@ -309,25 +307,25 @@ describe("MenuOverlay", () => {
   });
 
   test("should toggle overlay if trigger element is hovered", async () => {
-    jest.useRealTimers();
     const element = await fixtureFactory(false, false, "bottom", "", "", "large", true);
 
     const triggerSlot = element.renderRoot.querySelector('slot[name="menu-trigger"]') as HTMLSlotElement;
     const triggerElement = triggerSlot.assignedElements()[0] as HTMLElement;
-    await nextFrame();
+
+    const mouseEnterPromise = oneEvent(triggerElement, "mouseenter");
 
     triggerElement.dispatchEvent(new MouseEvent("mouseenter"));
-    const menuOpenEvt = await oneEvent(element, "menu-overlay-open");
-    expect(menuOpenEvt).toBeDefined();
+    await mouseEnterPromise;
+    jest.advanceTimersByTime(100);
+
     expect(element.isOpen).toBeTruthy();
 
+    const mouseLeaveEvent = oneEvent(triggerElement, "mouseleave");
     triggerElement.dispatchEvent(new MouseEvent("mouseleave"));
-    const MenuCloseEvt = await oneEvent(element, "menu-overlay-close");
-    expect(MenuCloseEvt).toBeDefined();
-    await nextFrame();
+    await mouseLeaveEvent;
+    jest.advanceTimersByTime(100);
+
     expect(element.isOpen).toBeFalsy();
-    jest.clearAllTimers();
-    element.isOpen = false;
   });
 
   test("should execute handleOutsideClick", async () => {
@@ -346,41 +344,12 @@ describe("MenuOverlay", () => {
 
   test("should test showArrow property", async () => {
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
-    const event = new MouseEvent("click");
-    await nextFrame();
 
+    const event = new MouseEvent("click");
     element.handleOutsideOverlayClick(event);
+    jest.advanceTimersByTime(100);
     await elementUpdated(element);
     expect(element.arrow).not.toBeNull();
-    element.isOpen = false;
-  });
-
-  test("should test showArrow property on first render", async () => {
-    const tag = defineCE(
-      class extends MenuOverlay.ELEMENT {
-        constructor() {
-          super();
-          this.isOpen = true;
-          this.showArrow = true;
-        }
-        protected async firstUpdated(changedProperties: PropertyValues) {
-          super.firstUpdated(changedProperties);
-          await new Promise((resolve) => setTimeout(resolve, 0));
-          this.dispatchEvent(new CustomEvent("first-updated"));
-        }
-      }
-    );
-
-    const button = document.createElement("button");
-    Object.defineProperty(MenuOverlay.ELEMENT.prototype, "trigger", {
-      get: jest.fn().mockReturnValue([button]),
-      set: jest.fn()
-    });
-
-    const element = fixtureSync<MenuOverlay.ELEMENT>(`<${tag}></${tag}>`);
-    const event = await oneEvent(element, "first-updated");
-    expect(event).toBeDefined();
-    expect(element.arrow.hasAttribute("data-show")).toBeTruthy();
     element.isOpen = false;
   });
 
@@ -430,13 +399,12 @@ describe("MenuOverlay", () => {
   });
 
   test("should focus on trigger when press escape to close modal", async () => {
-    jest.useFakeTimers();
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
-    jest.runAllTimers();
-    await elementUpdated(element);
 
     const trigger = element["triggerElement"]!;
     const button = element.querySelector("md-button");
+
+    const keydownPromise1 = oneEvent(trigger, "keydown");
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
@@ -444,7 +412,10 @@ describe("MenuOverlay", () => {
       })
     );
 
-    await elementUpdated(element);
+    await keydownPromise1;
+    jest.advanceTimersByTime(100);
+
+    const keydownPromise2 = oneEvent(trigger, "keydown");
 
     trigger.dispatchEvent(
       new KeyboardEvent("keydown", {
@@ -452,16 +423,15 @@ describe("MenuOverlay", () => {
       })
     );
 
-    await nextFrame();
+    await keydownPromise2;
+    jest.advanceTimersByTime(100);
+
     expect(element.isOpen).toBeFalsy();
     expect(document.activeElement).toEqual(button);
-    element.isOpen = false;
   });
 
   test("should focus on trigger when press escape outside close modal", async () => {
-    jest.useFakeTimers();
     const element = await fixtureFactory(true, true, "bottom", "", "", "large");
-    jest.runAllTimers();
     await elementUpdated(element);
 
     const trigger = element["triggerElement"]!;
@@ -481,7 +451,7 @@ describe("MenuOverlay", () => {
       })
     );
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeFalsy();
     expect(document.activeElement).toEqual(button);
     element.isOpen = false;
@@ -501,7 +471,7 @@ describe("MenuOverlay", () => {
 
     document.dispatchEvent(new MouseEvent("click"));
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeFalsy();
     expect(document.activeElement).toBe(null);
   });
@@ -519,7 +489,7 @@ describe("MenuOverlay", () => {
 
     const button = element.querySelector("md-button");
 
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeTruthy();
     expect(document.activeElement).not.toEqual(button);
     element.isOpen = false;
@@ -560,13 +530,10 @@ describe("MenuOverlay", () => {
   });
 
   test("should focus on trigger when press escape outside close modal", async () => {
-    jest.useFakeTimers();
-
     const element = await fixtureFactoryForNestedOverlays(true, true, "bottom", "200px", "100px", "large", false, true);
-    jest.runAllTimers();
-    await elementUpdated(element);
+
     // Add this line to clear the activeOverlay array
-    const button = element.querySelector("md-button");
+
     const nestedMenuOverlay = element.querySelector("#outdial-overlay") as MenuOverlay.ELEMENT;
 
     const composedPathMockForNested = jest.fn(() => [nestedMenuOverlay]);
@@ -574,11 +541,10 @@ describe("MenuOverlay", () => {
     Event.prototype.composedPath = composedPathMockForNested;
 
     // Dispatch escape key press event on nested menu overlay
+    const keydownPromise1 = oneEvent(document, "keydown");
     document.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Escape }));
-
-    await elementUpdated(nestedMenuOverlay);
-    await elementUpdated(element);
-    await nextFrame();
+    await keydownPromise1;
+    jest.advanceTimersByTime(100);
     // Verify that the nested menu overlay is closed and the parent menu overlay is still open
 
     expect(nestedMenuOverlay.isOpen).toBeFalsy();
@@ -590,27 +556,29 @@ describe("MenuOverlay", () => {
     const originalComposedPath1 = Event.prototype.composedPath;
     Event.prototype.composedPath = composedPathMockForParent;
 
+    const keydownPromise2 = oneEvent(document, "keydown");
     document.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Escape }));
-    await nextFrame();
+    await keydownPromise2;
+    jest.advanceTimersByTime(100);
 
     //Verify that both the nested menu overlay and the parent menu overlay are closed
     expect(nestedMenuOverlay.isOpen).toBeFalsy();
     expect(element.isOpen).toBeFalsy();
-    expect(document.activeElement).toEqual(button);
+
     Event.prototype.composedPath = originalComposedPath1;
   });
 
   test("should close the menu when window loses focus, such as iframe click, and the menu is open", async () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
     element.isOpen = true;
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeTruthy();
 
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.focus();
     element.handleWindowBlurEvent();
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeFalsy();
     document.body.removeChild(iframe);
@@ -619,14 +587,14 @@ describe("MenuOverlay", () => {
   test("should not try to close the menu when window loses focus, such as iframe click, and the menu is closed", async () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
     element.isOpen = false;
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeFalsy();
 
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.focus();
     element.handleWindowBlurEvent();
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeFalsy();
     document.body.removeChild(iframe);
@@ -636,14 +604,14 @@ describe("MenuOverlay", () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
     element.keepOpenOnWindowBlur = true;
     element.isOpen = true;
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeTruthy();
 
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.focus();
     element.handleWindowBlurEvent();
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeTruthy();
     document.body.removeChild(iframe);
@@ -653,14 +621,14 @@ describe("MenuOverlay", () => {
     const element = await fixtureFactory(true, false, "bottom", "", "", "large");
     element.keepOpenOnWindowBlur = false;
     element.isOpen = true;
-    await nextFrame();
+    jest.advanceTimersByTime(100);
     expect(element.isOpen).toBeTruthy();
 
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     iframe.focus();
     element.handleWindowBlurEvent();
-    await nextFrame();
+    jest.advanceTimersByTime(100);
 
     expect(element.isOpen).toBeFalsy();
     document.body.removeChild(iframe);

@@ -1,5 +1,5 @@
 import { Key } from "@/constants";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./Modal";
 import { Modal } from "./Modal";
 
@@ -148,8 +148,8 @@ describe("Modal Component", () => {
     element.noExitOnEsc = false;
     await elementUpdated(element);
     element.handleCloseBackdrop();
-    await nextFrame();
-    jest.runAllTimers();
+    jest.advanceTimersByTime(100);
+
     expect(element.show).toBeFalsy();
   });
 

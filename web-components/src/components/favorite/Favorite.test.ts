@@ -9,7 +9,13 @@ const fixtureFactory = async (): Promise<Favorite.ELEMENT> => {
 };
 
 describe("Favorite component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 

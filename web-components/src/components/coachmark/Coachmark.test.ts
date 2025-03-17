@@ -1,7 +1,7 @@
 import "@/components/button/Button";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Coachmark";
-import { Coachmark } from "./Coachmark";
+import { type Coachmark } from "./Coachmark";
 
 const fixtureFactory = async (): Promise<Coachmark.ELEMENT> => {
   return await fixture(html`
@@ -16,7 +16,13 @@ const fixtureFactory = async (): Promise<Coachmark.ELEMENT> => {
 };
 
 describe("Coachmark component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 

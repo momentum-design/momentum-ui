@@ -1,7 +1,7 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import { Settings } from "luxon";
 import "./DateTimePicker";
-import { DateTimePicker } from "./DateTimePicker";
+import { type DateTimePicker } from "./DateTimePicker";
 
 describe("DateTimePicker Component", () => {
   beforeEach(() => {
@@ -45,13 +45,13 @@ describe("DateTimePicker Component", () => {
     await elementUpdated(el);
     expect(eventSpy).toHaveBeenCalledWith(
       new CustomEvent(`date-time-change`, {
-          bubbles: true,
-          composed: true,
-          detail: {
-            dateTimeString: "",
-            dateTime: null,
-            locale: "en-US",
-            twentyFourHourFormat: false
+        bubbles: true,
+        composed: true,
+        detail: {
+          dateTimeString: "",
+          dateTime: null,
+          locale: "en-US",
+          twentyFourHourFormat: false
         }
       })
     );

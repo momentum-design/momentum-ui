@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./AlertBanner";
-import { AlertBanner } from "./AlertBanner";
+import { type AlertBanner } from "./AlertBanner";
 
 const fixtureFactory = async (
   type: string,
@@ -17,7 +17,13 @@ const fixtureFactory = async (
 };
 
 describe("Alert Banner component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
   test("should render component", async () => {

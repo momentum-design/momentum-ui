@@ -11,7 +11,7 @@ import "@/components/avatar/CompositeAvatar";
 import { avatarColorOptions } from "@/utils/enums";
 import type { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import { AvatarSize, AvatarType } from "./Avatar.constants";
+import { AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
 import mdx from "./Avatar.mdx";
 
 const compositeAvatarSize = [0, 18, 24, 28, 36, 40, 44, 52, 56, 72, 80, 84] as const;
@@ -46,6 +46,8 @@ export const Avatar: StoryObj = {
           src="${args.customUrl ? `${args.src}` : ""}"
           color=${args.color}
           size=${args.size}
+          state=${args.state}
+          avatar-style=${args.avatarStyle}
           ?has-notification=${args.hasNotification}
           ?newMomentum=${args.newMomentum}
         >
@@ -67,7 +69,9 @@ const meta: Meta = {
     size: { control: { type: "select" }, options: AvatarSize, defaultValue: 40 },
     compositeAvatarSizes: { control: { type: "select" }, options: compositeAvatarSize },
     customUrl: { control: "boolean" },
-    customImage: { control: "boolean" }
+    customImage: { control: "boolean" },
+    state: { control: { type: "select" }, options: AvatarState },
+    avatarStyle: { control: { type: "select" }, options: AvatarStyle }
   },
   parameters: {
     a11y: {

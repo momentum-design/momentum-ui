@@ -9,7 +9,13 @@ const fixtureFactory = async (): Promise<DateRangePicker.ELEMENT> => {
 };
 
 describe("DatePicker Component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
   test("should render", async () => {

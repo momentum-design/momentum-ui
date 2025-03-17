@@ -1,7 +1,7 @@
 import { Button } from "@/components/button/Button";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import "./FloatingModal";
-import { FloatingModal } from "./FloatingModal";
+import { type FloatingModal } from "./FloatingModal";
 
 Object.defineProperties(Element.prototype, {
   getBoundingClientRect: {
@@ -20,13 +20,19 @@ describe("Floating Modal Component", () => {
   let element: FloatingModal.ELEMENT;
 
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<FloatingModal.ELEMENT>(html` <md-floating-modal></md-floating-modal> `);
+    jest.runAllTimers();
   });
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should show modal", async () => {
     element.show = true;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     expect(element.show).toBeTruthy();
@@ -35,7 +41,7 @@ describe("Floating Modal Component", () => {
   test("should set label is value provided", async () => {
     element.show = true;
     element.label = "Floating Modal";
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     expect(element.container!.getAttribute("aria-label")).toEqual("Floating Modal");
@@ -43,7 +49,7 @@ describe("Floating Modal Component", () => {
 
   test("should close modal with button click", async () => {
     element.show = true;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     const mdButton = element.shadowRoot!.querySelector(".md-floating__close") as Button.ELEMENT;
@@ -56,13 +62,14 @@ describe("Floating Modal Component", () => {
 
   test("should dispatch event when modal close", async () => {
     element.show = true;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     const clickEvent = new MouseEvent("click");
-    setTimeout(() => element.handleClose(clickEvent));
+    const modalClosePromise = oneEvent(element, "floating-modal-close");
+    element.handleClose(clickEvent);
 
-    const { detail } = await oneEvent(element, "floating-modal-close");
+    const { detail } = await modalClosePromise;
 
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(clickEvent);
@@ -70,7 +77,7 @@ describe("Floating Modal Component", () => {
 
   test("should resize modal when resize button click", async () => {
     element.show = true;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     const mdButton = element.shadowRoot!.querySelector(".md-floating__resize") as Button.ELEMENT;
@@ -85,7 +92,7 @@ describe("Floating Modal Component", () => {
   test("should show minimize option", async () => {
     element.show = true;
     element.minimizable = true;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     const mdButton = element.shadowRoot!.querySelector(".md-floating__minimize") as Button.ELEMENT;
@@ -99,7 +106,7 @@ describe("Floating Modal Component", () => {
 
   test("should resize", async () => {
     element.show = true;
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     await elementUpdated(element);
 
     // Change the viewport to 500px.

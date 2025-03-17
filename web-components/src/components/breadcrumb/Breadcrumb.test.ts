@@ -1,11 +1,19 @@
-import "./Breadcrumb";
-import { Breadcrumb } from "./Breadcrumb";
-import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { breadCrumb } from "@/[sandbox]/sandbox.mock";
+import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
+import "./Breadcrumb";
+import { type Breadcrumb } from "./Breadcrumb";
 
 describe("Breadcrumb component", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   let element: Breadcrumb.ELEMENT;
   let anchors: HTMLAnchorElement[];

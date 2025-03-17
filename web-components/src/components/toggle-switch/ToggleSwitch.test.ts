@@ -1,15 +1,22 @@
-import "./ToggleSwitch";
-import { ToggleSwitch } from "./ToggleSwitch";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
+import "./ToggleSwitch";
+import { type ToggleSwitch } from "./ToggleSwitch";
 
 describe("Toggle Switch Component", () => {
   let element: ToggleSwitch.ELEMENT;
 
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<ToggleSwitch.ELEMENT>(html` <md-toggle-switch></md-toggle-switch> `);
   });
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
+
   test("shouldn't toggle if disabled property provided", async () => {
     element.disabled = true;
     await elementUpdated(element);

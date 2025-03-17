@@ -16,9 +16,6 @@ module.exports = {
   testEnvironment: "jsdom",
   collectCoverage: true,
   coverageProvider: "v8",
-  fakeTimers: {    
-    doNotFake: ["requestAnimationFrame", "cancelAnimationFrame"]
-  },
   transform: {
     "^.+\\.ts$": [
       "ts-jest",

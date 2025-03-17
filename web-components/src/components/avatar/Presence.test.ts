@@ -1,11 +1,19 @@
 import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 import "./Presence";
-import { Presence } from "./Presence";
+import { type Presence } from "./Presence";
 import { getPresenceIconColor, getPresenceSize } from "./Presence.utils";
 
 describe("Presence", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should set size property", async () => {
     const element = await fixture<Presence.ELEMENT>(html` <md-presence size="36" title="active"></md-presence> `);

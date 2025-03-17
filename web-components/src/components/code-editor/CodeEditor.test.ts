@@ -2,15 +2,13 @@ import { Button } from "@/index";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 import "./CodeEditor";
-import { CodeEditor } from "./CodeEditor";
-// import { Button } from "../button/Button"; // Keep type import as a relative path
+import { type CodeEditor } from "./CodeEditor";
 
 describe("CodeEditor component", () => {
   let element: CodeEditor.ELEMENT;
 
-  afterEach(fixtureCleanup);
-
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<CodeEditor.ELEMENT>(html`
       <md-code-editor>
         <span slot="method">post</span>
@@ -20,6 +18,12 @@ describe("CodeEditor component", () => {
         </code>
       </md-code-editor>
     `);
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
   });
 
   test("should render code editor", async () => {

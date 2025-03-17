@@ -1,9 +1,17 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Alert";
-import { Alert } from "./Alert";
+import { type Alert } from "./Alert";
 
 describe("Alert", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
   test("Alert component is not null", async () => {
     const alert = await fixture(`<md-alert></md-alert>`);
     expect(alert).not.toBeNull();
@@ -51,19 +59,19 @@ describe("Alert", () => {
   test("should render Alert with icon reflecting default type", async () => {
     const element = await fixture<Alert.ELEMENT>(html` <md-alert show></md-alert> `);
 
-    const alertElement = await element.shadowRoot!.querySelector(".md-alert");
+    const alertElement = element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--default"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
 
-    const iconTypeElement = await element.shadowRoot!.querySelector(".md-alert__icon");
+    const iconTypeElement = element.shadowRoot!.querySelector(".md-alert__icon");
     expect(iconTypeElement).not.toBeNull();
   });
 
   test("should render success Alert", async () => {
     const element = await fixture<Alert.ELEMENT>(html` <md-alert type="success" show></md-alert> `);
 
-    const alertElement = await element.shadowRoot!.querySelector(".md-alert");
+    const alertElement = element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--success"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
@@ -76,7 +84,7 @@ describe("Alert", () => {
   test("should render info Alert", async () => {
     const element = await fixture<Alert.ELEMENT>(html` <md-alert type="info" show></md-alert> `);
 
-    const alertElement = await element.shadowRoot!.querySelector(".md-alert");
+    const alertElement = element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--info"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
@@ -89,7 +97,7 @@ describe("Alert", () => {
   test("should render error Alert", async () => {
     const element = await fixture<Alert.ELEMENT>(html` <md-alert type="error" show></md-alert> `);
 
-    const alertElement = await element.shadowRoot!.querySelector(".md-alert");
+    const alertElement = element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--error"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
@@ -102,7 +110,7 @@ describe("Alert", () => {
   test("should render warning Alert", async () => {
     const element = await fixture<Alert.ELEMENT>(html` <md-alert type="warning" show></md-alert> `);
 
-    const alertElement = await element.shadowRoot!.querySelector(".md-alert");
+    const alertElement = element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--warning"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);
@@ -115,7 +123,7 @@ describe("Alert", () => {
   test("should render warning Alert", async () => {
     const element = await fixture<Alert.ELEMENT>(html` <md-alert type="warn" show></md-alert> `);
 
-    const alertElement = await element.shadowRoot!.querySelector(".md-alert");
+    const alertElement = element.shadowRoot!.querySelector(".md-alert");
     const expectedClassList = ["md-alert", "md-alert--warn"];
     expect(alertElement?.classList.length).toEqual(expectedClassList.length);
     expect(expectedClassList.every((className) => alertElement?.classList.contains(className))).toBe(true);

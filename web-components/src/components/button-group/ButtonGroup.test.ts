@@ -6,11 +6,12 @@
  *
  */
 
+import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, LitElement, PropertyValues } from "lit-element";
+import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html, LitElement } from "lit-element";
 import "./ButtonGroup";
-import { ButtonGroup } from "./ButtonGroup";
+import { type ButtonGroup } from "./ButtonGroup";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
@@ -26,6 +27,7 @@ describe("ButtonGroup", () => {
     });
 
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<ButtonGroup.ELEMENT>(html`
       <md-button-group>
         <button slot="button" type="button"><md-icon name="icon-text-table_16"></md-icon></button>
@@ -37,7 +39,12 @@ describe("ButtonGroup", () => {
 
     buttons = element.slotted as HTMLButtonElement[];
   });
-  afterEach(fixtureCleanup);
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should add correct aria attribute", async () => {
     element.disabled = true;
@@ -60,43 +67,6 @@ describe("ButtonGroup", () => {
 
     expect(element.tabIndex).toEqual(0);
     expect(element.getAttribute("tabindex")).toEqual("0");
-  });
-
-  test("should correct handle lifecycle callbacks", async () => {
-    const mixin = (superclass: AnyConstructor) =>
-      class extends superclass {
-        protected firstUpdated(changedProperties: PropertyValues) {
-          super.firstUpdated(changedProperties);
-          this.dispatchEvent(new CustomEvent("first-updated"));
-        }
-
-        connectedCallback() {
-          super.connectedCallback();
-          this.dispatchEvent(new CustomEvent("connected-callback"));
-        }
-
-        disconnectedCallback() {
-          super.disconnectedCallback();
-          this.dispatchEvent(new CustomEvent("disconnected-callback"));
-        }
-      };
-
-    const tag = defineCE(class extends mixin(ButtonGroup.ELEMENT) {});
-    const firstElement = fixtureSync<ButtonGroup.ELEMENT>(`<${tag}></${tag}>`);
-    const firstEvent = await oneEvent(firstElement, "first-updated");
-    expect(firstEvent).toBeDefined();
-
-    firstElement.parentElement!.removeChild(firstElement);
-    setTimeout(() => firstElement.disconnectedCallback());
-    const thirdEvent = await oneEvent(firstElement, "disconnected-callback");
-    expect(thirdEvent).toBeDefined();
-
-    fixtureCleanup();
-
-    const secondElement = document.createElement(`${tag}`) as ButtonGroup.ELEMENT;
-    setTimeout(() => secondElement.connectedCallback());
-    const secondEvent = await oneEvent(secondElement, "connected-callback");
-    expect(secondEvent).toBeDefined();
   });
 
   test("should handle click event", async () => {

@@ -1,13 +1,18 @@
-import "./Loading";
-import { Loading } from "./Loading";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import "./Loading";
+import { type Loading } from "./Loading";
 
 describe("Loading", () => {
   let element: Loading.ELEMENT;
 
-  afterEach(fixtureCleanup);
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<Loading.ELEMENT>(html` <md-loading></md-loading> `);
   });
 

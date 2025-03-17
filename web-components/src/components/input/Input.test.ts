@@ -5,7 +5,7 @@ import { Input } from "./Input";
 
 describe("Input Component", () => {
   beforeEach(() => {
-    jest.useFakeTimers({ doNotFake: ["setTimeout", "clearTimeout", "requestAnimationFrame", "cancelAnimationFrame"] });
+    jest.useFakeTimers({ doNotFake: ["requestAnimationFrame", "cancelAnimationFrame"] });
   });
 
   afterEach(() => {
@@ -108,9 +108,9 @@ describe("Input Component", () => {
     element.input.dispatchEvent(event);
     expect(spyKeyDownHandler).toHaveBeenCalled();
 
-    setTimeout(() => element.handleKeyDown(event));
-
-    const { detail } = await oneEvent(element, "input-keydown");
+    const keydownPromise = oneEvent(element, "input-keydown");
+    element.handleKeyDown(event);
+    const { detail } = await keydownPromise;
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
   });
@@ -124,9 +124,10 @@ describe("Input Component", () => {
     element.input.dispatchEvent(event);
     expect(spyFocusHandler).toHaveBeenCalled();
 
-    setTimeout(() => element.handleFocus(event));
+    const inputFocusPromise = oneEvent(element, "input-focus");
+    element.handleFocus(event);
 
-    const { detail } = await oneEvent(element, "input-focus");
+    const { detail } = await inputFocusPromise;
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
   });
@@ -140,9 +141,10 @@ describe("Input Component", () => {
     element.input.dispatchEvent(event);
     expect(spyMouseDownHandler).toHaveBeenCalled();
 
-    setTimeout(() => element.handleMouseDown(event));
+    const mouseDownPromise = oneEvent(element, "input-mousedown");
+    element.handleMouseDown(event);
 
-    const { detail } = await oneEvent(element, "input-mousedown");
+    const { detail } = await mouseDownPromise;
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
   });
@@ -170,9 +172,10 @@ describe("Input Component", () => {
     element.input.dispatchEvent(event);
     expect(mockInputHandler).toHaveBeenCalled();
 
-    setTimeout(() => element.handleChange(event));
+    const inputChangePromise = oneEvent(element, "input-change");
+    element.handleChange(event);
 
-    const { detail } = await oneEvent(element, "input-change");
+    const { detail } = await inputChangePromise;
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
   });
@@ -186,9 +189,10 @@ describe("Input Component", () => {
     element.input.dispatchEvent(event);
     expect(spyBlurHandler).toHaveBeenCalled();
 
-    setTimeout(() => element.handleBlur(event));
+    const blurPromise = oneEvent(element, "input-blur");
+    element.handleBlur(event);
 
-    const { detail } = await oneEvent(element, "input-blur");
+    const { detail } = await blurPromise;
     expect(detail).toBeDefined();
     expect(detail.srcEvent).toEqual(event);
 

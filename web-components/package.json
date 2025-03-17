@@ -18,7 +18,7 @@
     "npm:publish:external": "npm run dist && npm run create-package && cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' && npm publish",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "test:ci": "jest --coverage",
+    "test:ci": "jest --coverage --updateSnapshot --maxWorkers=8",
     "storybook:resource": "npx web-component-analyzer src/*components/**/*.ts --outFile .storybook/custom-elements.json",
     "storybook:dist": "npm run storybook:resource && storybook build -c .storybook -o .out",    
     "storybook": "npm run storybook:resource && storybook dev -p 1234",

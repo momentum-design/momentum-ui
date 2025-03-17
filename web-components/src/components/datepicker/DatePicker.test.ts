@@ -33,7 +33,6 @@ describe("DatePicker Component", () => {
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
     jest.clearAllTimers();
     jest.useRealTimers();
     fixtureCleanup();

@@ -2,14 +2,21 @@ import "@/components/icon/Icon";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Chip";
-import { Chip } from "./Chip";
+import { type Chip } from "./Chip";
 
 const fixtureFactory = async (): Promise<Chip.ELEMENT> => {
   return await fixture(html` <md-chip value="chip text content"></md-chip> `);
 };
 
 describe("Chip component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    jest.runAllTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 

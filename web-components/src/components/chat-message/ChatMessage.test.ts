@@ -2,14 +2,13 @@ import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helper
 import { html } from "lit-element";
 import { Avatar } from "../avatar/Avatar"; // Keep type import as a relative path
 import "./ChatMessage";
-import { ChatMessage } from "./ChatMessage";
+import { type ChatMessage } from "./ChatMessage";
 
 describe("Chat Message Component", () => {
   let element: ChatMessage.ELEMENT;
 
-  afterEach(fixtureCleanup);
-
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<ChatMessage.ELEMENT>(html`
       <md-chat-message
         title="John Doe"
@@ -17,6 +16,13 @@ describe("Chat Message Component", () => {
         src="https://st2.depositphotos.com/4967775/11323/v/950/depositphotos_113235752-stock-illustration-avatar-girls-icon-vector-woman.jpg"
       ></md-chat-message>
     `);
+    jest.runAllTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
   });
 
   test("should render correctly if property self is provided", async () => {

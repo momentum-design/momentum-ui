@@ -16,7 +16,7 @@
     "npm:auth": "uuip-publish-auth [momentum-ui-private]",
     "npm:publish": "npm run npm:auth && npm run dist && uuip-publish dist momentum-ui-private",
     "npm:publish:external": "npm run dist && npm run create-package && cp -R ./README.md ./publish/ && cd ./publish && json -I -f package.json -e 'this.publishConfig={\"registry\": \"https://registry.npmjs.org\"}' && npm publish",
-    "test": "jest",
+    "test": "jest --runInBand",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:ci": "jest --coverage --updateSnapshot --maxWorkers=4",
     "storybook:resource": "npx web-component-analyzer src/*components/**/*.ts --outFile .storybook/custom-elements.json",

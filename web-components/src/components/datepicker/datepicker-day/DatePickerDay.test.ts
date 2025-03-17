@@ -1,9 +1,15 @@
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./DatePickerDay";
-import { DatePickerDay } from "./DatePickerDay";
+import { type DatePickerDay } from "./DatePickerDay";
 
 describe("DatePickerDay Component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
   test("should apply a modifier, when the date does not belong to current month", async () => {

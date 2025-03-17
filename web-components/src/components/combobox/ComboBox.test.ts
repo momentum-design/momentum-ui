@@ -1,13 +1,21 @@
 import { comboBoxComplexObjectOption, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/icon/Icon";
 import { Key } from "@/constants";
-import { elementUpdated, fixture, fixtureCleanup, html, nextFrame, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { repeat } from "lit-html/directives/repeat";
 import "./ComboBox";
 import { type ComboBox } from "./ComboBox";
 
 describe("Combobox Component", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   describe("Interaction", () => {
     let el: ComboBox.ELEMENT;
@@ -33,12 +41,14 @@ describe("Combobox Component", () => {
       const eventIn = new Event("focusin");
       const eventOut = new Event("focusOut");
 
-      setTimeout(() => el["handleFocusIn"](eventIn));
-      const focusIn = await oneEvent(el, "combobox-focus-in");
+      const focusInPromsie = oneEvent(el, "combobox-focus-in");
+      el["handleFocusIn"](eventIn);
+      const focusIn = await focusInPromsie;
       expect(focusIn).toBeDefined();
 
-      setTimeout(() => el["handleFocusOut"](eventOut));
-      const focusOut = await oneEvent(el, "combobox-focus-out");
+      const focusOutPromise = oneEvent(el, "combobox-focus-out");
+      el["handleFocusOut"](eventOut);
+      const focusOut = await focusOutPromise;
       expect(focusOut).toBeDefined();
 
       const createEvent = (code: string) =>
@@ -46,9 +56,11 @@ describe("Combobox Component", () => {
           code
         });
       el.input!.dispatchEvent(createEvent(Key.ArrowDown));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
+      const changeSelectedPromise = oneEvent(el, "change-selected");
       el.input!.dispatchEvent(createEvent(Key.Enter));
-      const { detail: detailOne } = await oneEvent(el, "change-selected");
+      jest.advanceTimersByTime(600);
+      const { detail: detailOne } = await changeSelectedPromise;
       expect(detailOne).toBeDefined();
       expect(detailOne).toEqual(
         expect.objectContaining({
@@ -58,9 +70,11 @@ describe("Combobox Component", () => {
       );
       await elementUpdated(el);
       el.input!.dispatchEvent(createEvent(Key.ArrowDown));
-      await nextFrame();
+      jest.advanceTimersByTime(100);
+      const changedSelected2Promise = oneEvent(el, "change-selected");
       el.input!.dispatchEvent(createEvent(Key.Enter));
-      const { detail: detailTwo } = await oneEvent(el, "change-selected");
+      jest.advanceTimersByTime(600);
+      const { detail: detailTwo } = await changedSelected2Promise;
       expect(detailTwo).toBeDefined();
       expect(detailTwo).toEqual(
         expect.objectContaining({
@@ -73,9 +87,11 @@ describe("Combobox Component", () => {
     test("should dispatch input event", async () => {
       el.input!.value = "a";
       el["inputValue"] = "a";
+      const comboBoxInputPromise = oneEvent(el, "combobox-input");
       el.input!.dispatchEvent(new Event("input"));
+      jest.advanceTimersByTime(600);
 
-      const { detail } = await oneEvent(el, "combobox-input");
+      const { detail } = await comboBoxInputPromise;
 
       expect(detail).toBeDefined();
       expect(detail).toEqual(expect.objectContaining({ value: "a" }));
@@ -159,7 +175,7 @@ describe("Combobox Component", () => {
         });
 
       el.input!.dispatchEvent(createEvent(Key.ArrowDown));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
       el.input!.dispatchEvent(createEvent(Key.Enter));
 
       expect(el.input!.value).toEqual("Andorra");
@@ -331,7 +347,7 @@ describe("Combobox Component", () => {
       const enter = createEvent(Key.Enter);
       el.input!.dispatchEvent(enter);
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeFalsy();
       expect(el.selectedOptions.length).toEqual(1);
@@ -345,7 +361,7 @@ describe("Combobox Component", () => {
       const arrowDown = createEvent(Key.ArrowDown);
       el.input!.dispatchEvent(arrowDown);
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(1);
@@ -357,7 +373,7 @@ describe("Combobox Component", () => {
 
       el.input!.dispatchEvent(arrowDown);
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(0);
@@ -369,7 +385,7 @@ describe("Combobox Component", () => {
 
       el.input!.dispatchEvent(arrowDown);
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(0);
@@ -382,7 +398,7 @@ describe("Combobox Component", () => {
       const arrowUp = createEvent(Key.ArrowUp);
       el.input!.dispatchEvent(arrowUp);
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(listLen - 1);
@@ -394,7 +410,7 @@ describe("Combobox Component", () => {
 
       el.input!.dispatchEvent(arrowUp);
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(listLen - 2);
@@ -472,8 +488,9 @@ describe("Combobox Component", () => {
       el.selectedOptions = [comboBoxOptions[0], comboBoxOptions[1]];
       const event = new MouseEvent("click");
 
-      setTimeout(() => el.handleRemoveAll(event));
-      const customEvent = await oneEvent(el, "remove-all-selected");
+      const removeAllSelectedPromise = oneEvent(el, "remove-all-selected");
+      el.handleRemoveAll(event);
+      const customEvent = await removeAllSelectedPromise;
       expect(customEvent).toBeDefined();
       expect(el.selectedOptions.length).toEqual(0);
     });
@@ -608,11 +625,11 @@ describe("Combobox Component", () => {
         });
 
       el.input!.dispatchEvent(createEvent(Key.ArrowDown));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
       el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
       el.input!.dispatchEvent(createEvent(Key.ArrowDown));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
       el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
 
@@ -622,7 +639,7 @@ describe("Combobox Component", () => {
       el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
       el.input!.dispatchEvent(createEvent(Key.ArrowUp));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
       el.input!.dispatchEvent(createEvent(Key.Space));
       await elementUpdated(el);
 
@@ -771,8 +788,9 @@ describe("Combobox Component", () => {
 
       const event = new MouseEvent("click");
 
-      setTimeout(() => el.handleListClick(event));
-      const customEvent = await oneEvent(el, "selected-changed");
+      const selectedChangedPromise = oneEvent(el, "selected-changed");
+      el.handleListClick(event);
+      const customEvent = await selectedChangedPromise;
 
       expect(customEvent).toBeDefined();
       expect(el.expanded).toBeFalsy();
@@ -783,9 +801,10 @@ describe("Combobox Component", () => {
       `);
 
       const event = new MouseEvent("click");
+      const selectedChangedPromise = oneEvent(el, "selected-changed");
 
-      setTimeout(() => el.handleListClick(event));
-      const customEvent = await oneEvent(el, "selected-changed");
+      el.handleListClick(event);
+      const customEvent = await selectedChangedPromise;
 
       await elementUpdated(el);
 
@@ -801,7 +820,7 @@ describe("Combobox Component", () => {
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       expect(el.expanded).toBeTruthy();
 
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.focusedIndex).toEqual(0);
       //expect(el.lists![0].getAttribute("aria-selected")).toEqual("true");
@@ -818,7 +837,7 @@ describe("Combobox Component", () => {
       expect(el.lists![0].getAttribute("selected")).toEqual("true");
 
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Space }));
       await elementUpdated(el);
 
@@ -835,13 +854,13 @@ describe("Combobox Component", () => {
 
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.selectedOptions.length).toEqual(1);
 
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.ArrowDown }));
       el.input!.dispatchEvent(new KeyboardEvent("keydown", { code: Key.Enter }));
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.selectedOptions.length).toEqual(1);
     });
@@ -933,7 +952,7 @@ describe("Combobox Component", () => {
 
     await elementUpdated(el);
     el.input!.dispatchEvent(enter);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.filteredOptions.includes("One")).toBeTruthy();
     expect(el.filteredOptions.length).toEqual(12);
@@ -941,7 +960,7 @@ describe("Combobox Component", () => {
     el.inputValue = comboBoxOptions[2];
     await elementUpdated(el);
     el.input!.dispatchEvent(enter);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.filteredOptions.includes("Albania")).toBeTruthy();
     expect(el.filteredOptions.length).toEqual(1);
@@ -965,7 +984,7 @@ describe("Combobox Component", () => {
 
     await elementUpdated(el);
     el.input!.dispatchEvent(enter);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.filteredOptions.includes("One")).not.toBeTruthy();
     expect(el.filteredOptions.length).toEqual(29);
@@ -1006,7 +1025,9 @@ describe("Combobox Component", () => {
     expect(el.selectedOptions.length).toEqual(0);
     selectAllEl?.dispatchEvent(new MouseEvent("click"));
 
-    await nextFrame();
+    jest.advanceTimersByTime(600);
+    await elementUpdated(el);
+
     expect(el.selectedOptions.length).toEqual(comboBoxOptions.length);
     expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")).not.toBeNull();
     expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")?.textContent).toEqual("All");
@@ -1014,7 +1035,9 @@ describe("Combobox Component", () => {
     el.expanded = true;
     await elementUpdated(el);
     selectAllEl?.dispatchEvent(new MouseEvent("click"));
-    await nextFrame();
+    jest.advanceTimersByTime(600);
+    await elementUpdated(el);
+
     expect(el.selectedOptions.length).toEqual(0);
     expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")).toBeNull();
   });
@@ -1028,7 +1051,8 @@ describe("Combobox Component", () => {
 
     const firstOption = el.shadowRoot!.querySelectorAll("#md-combobox-listbox .md-combobox-option")[1];
     firstOption.dispatchEvent(new MouseEvent("click"));
-    await nextFrame();
+    jest.advanceTimersByTime(600);
+    await elementUpdated(el);
     expect(el.selectedOptions.length).toEqual(1);
     expect(el.shadowRoot!.querySelector(".md-combobox__multiwrap .selected-count")?.textContent).toEqual("1 Selected");
   });
@@ -1087,7 +1111,7 @@ describe("Combobox Component", () => {
       el.input!.dispatchEvent(arrowDown);
 
       await elementUpdated(el);
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(-1);
@@ -1106,21 +1130,21 @@ describe("Combobox Component", () => {
       groupList![0].dispatchEvent(arrowDown);
 
       await elementUpdated(el);
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       expect(el.focusedIndex).toEqual(0);
 
       groupList![0].dispatchEvent(arrowDown);
       await elementUpdated(el);
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.focusedGroupIndex).toEqual(-1);
       expect(el.focusedIndex).toEqual(1);
 
       groupList![0].dispatchEvent(enter);
       await elementUpdated(el);
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.input?.value).toEqual("Austria");
       expect(el.expanded).toBeFalsy();
@@ -1129,7 +1153,7 @@ describe("Combobox Component", () => {
       el.input!.dispatchEvent(arrowUp);
 
       await elementUpdated(el);
-      await nextFrame();
+      jest.advanceTimersByTime(600);
 
       expect(el.expanded).toBeTruthy();
       groupList![0].dispatchEvent(enter);
@@ -1184,7 +1208,7 @@ describe("Combobox Component", () => {
     el.input!.dispatchEvent(arrowUp);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
@@ -1206,7 +1230,7 @@ describe("Combobox Component", () => {
     groupList![0]!.dispatchEvent(tab);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
@@ -1215,13 +1239,13 @@ describe("Combobox Component", () => {
     groupList![1].dispatchEvent(enter);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.lists?.length).toEqual(2);
     groupList![1].dispatchEvent(arrowDown);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     groupList![1].dispatchEvent(arrowUp);
     groupList![1].dispatchEvent(enter);
@@ -1230,12 +1254,12 @@ describe("Combobox Component", () => {
     expect(el.expanded).toBeFalsy();
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     el.input!.dispatchEvent(arrowDown);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     groupList![0]!.dispatchEvent(escape);
   });
@@ -1289,19 +1313,19 @@ describe("Combobox Component", () => {
     el.input!.value = "In";
     el.input!.dispatchEvent(event);
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.lists?.length).toEqual(3);
     const arrowDown = createEvent(Key.ArrowDown);
     el.input!.dispatchEvent(arrowDown);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     const enter = createEvent(Key.Enter);
     el.input!.dispatchEvent(enter);
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.input?.value).toEqual("India");
   });
@@ -1317,7 +1341,7 @@ describe("Combobox Component", () => {
       </md-combobox>
     `);
     await elementUpdated(el2);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     const el = await fixture<ComboBox.ELEMENT>(html`
       <md-combobox with-custom-content is-multi placeholder="Placeholder">
@@ -1364,7 +1388,7 @@ describe("Combobox Component", () => {
     el.input!.dispatchEvent(arrowUp);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
@@ -1386,7 +1410,7 @@ describe("Combobox Component", () => {
     groupList![0]!.dispatchEvent(tab);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.expanded).toBeTruthy();
     expect(el.focusedIndex).toEqual(-1);
@@ -1395,24 +1419,24 @@ describe("Combobox Component", () => {
     groupList![1].dispatchEvent(enter);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.lists?.length).toEqual(2);
     groupList![1].dispatchEvent(arrowDown);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     groupList![1].dispatchEvent(enter);
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
 
     expect(el.input?.value).toEqual("Ambala");
     expect(el.expanded).toBeFalsy();
 
     await elementUpdated(el);
-    await nextFrame();
+    jest.advanceTimersByTime(600);
     groupList![0]!.dispatchEvent(end);
     groupList![0]!.dispatchEvent(escape);
   }, 2000);

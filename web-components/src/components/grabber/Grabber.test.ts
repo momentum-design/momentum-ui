@@ -1,14 +1,20 @@
 import "@/components/button/Button";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Grabber";
-import { Grabber } from "./Grabber";
+import { type Grabber } from "./Grabber";
 
 const fixtureFactory = async (): Promise<Grabber.ELEMENT> => {
   return await fixture(html` <md-grabber> </md-grabber> `);
 };
 
 describe("Grabber component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 

@@ -3,7 +3,7 @@ import "@/components/badge/Badge";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Card";
-import { Card } from "./Card";
+import { type Card } from "./Card";
 
 const fixtureFactory = async (id: string, title: string, subtitle: string, info: string): Promise<Card.ELEMENT> => {
   return await fixture(html`
@@ -21,7 +21,13 @@ const fixtureFactory = async (id: string, title: string, subtitle: string, info:
 };
 
 describe("Card component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 

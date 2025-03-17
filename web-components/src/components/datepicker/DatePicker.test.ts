@@ -23,7 +23,6 @@ const createKeyboardEvent = (code: string) =>
 
 async function createFixture(template: string | TemplateResult): Promise<DatePicker.ELEMENT> {
   const element = await fixture<DatePicker.ELEMENT>(template);
-  jest.runAllTimers();
   return element;
 }
 

@@ -6,7 +6,6 @@ import { type Avatar } from "./Avatar";
 
 async function createFixture<T extends Element>(template: string | TemplateResult): Promise<T> {
   const element = fixture<T>(template);
-  jest.runAllTimers();
   return await element;
 }
 

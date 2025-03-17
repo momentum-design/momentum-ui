@@ -5,7 +5,7 @@ import { Input } from "./Input";
 
 describe("Input Component", () => {
   beforeEach(() => {
-    jest.useFakeTimers({ doNotFake: ["requestAnimationFrame", "cancelAnimationFrame"] });
+    jest.useFakeTimers();
   });
 
   afterEach(() => {

@@ -1,8 +1,7 @@
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./AudioPlayer";
-import { AudioPlayer } from "./AudioPlayer";
-import clearAllMocks = jest.clearAllMocks;
+import { type AudioPlayer } from "./AudioPlayer";
 
 const fixtureFactory = async (): Promise<AudioPlayer.ELEMENT> => {
   return await fixture(html` <md-audio-player src="somesrc"></md-audio-player> `);
@@ -10,6 +9,8 @@ const fixtureFactory = async (): Promise<AudioPlayer.ELEMENT> => {
 
 describe("AudioPlayer", () => {
   beforeEach(() => {
+    jest.useFakeTimers();
+
     const mocks = {
       Audio: {
         pause: jest.fn(),
@@ -31,8 +32,10 @@ describe("AudioPlayer", () => {
     }));
   });
   afterEach(() => {
-    clearAllMocks();
-    fixtureCleanup;
+    jest.clearAllMocks();
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
   });
 
   test("should set source property", async () => {

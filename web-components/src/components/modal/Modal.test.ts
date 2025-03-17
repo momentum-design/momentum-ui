@@ -43,7 +43,6 @@ describe("Modal Component", () => {
     `);
   });
   afterEach(() => {
-    jest.runOnlyPendingTimers();
     jest.clearAllTimers();
     jest.useRealTimers();
     fixtureCleanup();

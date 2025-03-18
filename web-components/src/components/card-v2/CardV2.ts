@@ -25,10 +25,10 @@ export namespace CardV2 {
   @customElementWithCheck("md-card-v2")
   export class ELEMENT extends LitElement {
     @property({ type: String }) type: CardV2.Type = "default";
-    @property({ type: String }) id = "";
-    @property({ type: String }) title = "";
-    @property({ type: String }) info = ""; 
-    @property({ type: String }) data = "";
+    @property({ type: String }) identifier?: string = undefined;
+    @property({ type: String }) header?: string = undefined;
+    @property({ type: String }) info?: string = undefined; 
+    @property({ type: String }) data?: string = undefined;
     @property({ type: Boolean }) expandable = false;
 
     connectedCallback() {
@@ -46,8 +46,8 @@ export namespace CardV2 {
     expandCardToggled() {
       this.type = this.isActive ? "default" : "active";
       this.dispatchEvent(
-        new CustomEvent<{ id: string, active: boolean }>("expand-card-toggled", {
-          detail: { id: this.id, active: this.isActive },
+        new CustomEvent<{ identifier: string, active: boolean }>("expand-card-toggled", {
+          detail: { identifier: this.identifier ?? "", active: this.isActive },
           bubbles: true,
           composed: true
         })
@@ -78,7 +78,7 @@ export namespace CardV2 {
     private renderHeader() {
       return html`
         <div class="md-card-v2-header-title">
-          <h3>${this.title}</h3>
+          <h3>${this.header}</h3>
           ${this.info
             ? html`
                 <md-tooltip message="${this.info}" placement="top">

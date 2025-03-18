@@ -4,8 +4,8 @@ import { CardV2 } from "./CardV2";
 
 const fixtureFactory = async (
   type: CardV2.Type, 
-  id: string, 
-  title: string,
+  identifier: string, 
+  header: string,
   info: string,
   data: string,
   expandable: boolean
@@ -13,8 +13,8 @@ const fixtureFactory = async (
   return await fixture(html`
     <md-card-v2 
       type=${type} 
-      id=${id} 
-      title=${title} 
+      identifier=${identifier} 
+      header=${header} 
       info=${info} 
       data=${data} 
       .expandable=${expandable}>
@@ -35,9 +35,9 @@ describe("Card-v2 component", () => {
 
   it("should render title when title is not empty", async () => {
     const element: CardV2.ELEMENT = await fixtureFactory("active", "123", "Test Title", "Test Info", "Test Data", true);
-    const title = element.shadowRoot?.querySelector(".md-card-v2-header-title h3");
-    expect(title).not.toBeNull();
-    expect(title?.textContent).toBe("Test Title");
+    const header = element.shadowRoot?.querySelector(".md-card-v2-header-title h3");
+    expect(header).not.toBeNull();
+    expect(header?.textContent).toBe("Test Title");
   });
 
   it("should render info when info is not empty", async () => {

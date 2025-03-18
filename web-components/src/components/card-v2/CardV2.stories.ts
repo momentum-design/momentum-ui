@@ -15,9 +15,9 @@ import { html } from "lit";
 const render = (args: Args) => {
   return html`
       <md-card-v2 
-        id=${args.id} 
         type=${args.type} 
-        title=${args.title} 
+        identifier=${args.identifier} 
+        header=${args.header} 
         data=${args.data} 
         info=${args.info} 
         .expandable=${args.expandable}
@@ -31,9 +31,9 @@ const render = (args: Args) => {
 
 export const CardV2: StoryObj = {
   args: {
-    id: "1234567890",
     type: "default",
-    title: "Test Title",
+    identifier: "1234567890",
+    header: "Test Title",
     info: "Test Info",
     data: "00:00:00",
     expandable: true

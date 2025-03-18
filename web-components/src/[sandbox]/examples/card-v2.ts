@@ -30,9 +30,9 @@ export class CardV2TemplateSandbox extends LitElement {
   } 
 
   private handleExpandCardToggled(e: MouseEvent) {
-    const { id, active } = e.detail as any;
+    const { identifier, active } = e.detail as any;
 
-    this.value = "Card (" + id + ") active: " + active;
+    this.value = "Card (" + identifier + ") active: " + active;
   }
 
   render() {
@@ -41,17 +41,17 @@ export class CardV2TemplateSandbox extends LitElement {
       <h3>${this.value}</h3>
       <div class="card-v2-container">
         <h3>Default</h3>
-        <md-card-v2 id="fac3aaf3-677c-4380-bbd5-c2e407514c43" type="default" title="Longest waiting in queue" data="00:12:11" info="Longest waiting in queue" .expandable=${true}>
+        <md-card-v2 identifier="fac3aaf3-677c-4380-bbd5-c2e407514c43" type="default" header="Longest waiting in queue" data="00:12:11" info="Longest waiting in queue" .expandable=${true}>
         </md-card-v2>
 
         <h3>Inactive</h3>
-        <md-card-v2 id="aaa43a56-ec31-4d70-a77c-c797a1239777" type="inactive" title="Avg. handling time" data="00:19:20" info="Avg. handling time" .expandable=${false}>
+        <md-card-v2 identifier="aaa43a56-ec31-4d70-a77c-c797a1239777" type="inactive" header="Avg. handling time" data="00:19:20" info="Avg. handling time" .expandable=${false}>
         </md-card-v2>
       </div>
 
       <div class="card-v2-wide-container">
         <h3>Expanded View</h3>
-        <md-card-v2 id="7002dad2-ed43-4937-a790-48ab8e916d1a" type="inactive" title="Abandoned" data="80" info="Abandoned" .expandable=${false}>
+        <md-card-v2 identifier="7002dad2-ed43-4937-a790-48ab8e916d1a" type="inactive" header="Abandoned" data="80" info="Abandoned" .expandable=${false}>
         </md-card-v2>
       </div>
       </div>

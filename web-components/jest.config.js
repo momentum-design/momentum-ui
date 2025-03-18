@@ -4,7 +4,6 @@ const ignoreAllButTheseModules =
   "lit-element|" +
   "lit-html|" +
   "lit-virtualizer|" +
-  "nanoid|" +
   "query-selector-shadow-dom|" +
   "@popperjs|" +
   "@interactjs|" +

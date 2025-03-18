@@ -10,18 +10,18 @@ import "@/components/menu-overlay/MenuOverlay";
 import "@/components/modal/Modal";
 import "@/components/radio/RadioGroup";
 import "@/components/tabs/Tab";
-import { TabCloseClickEvent } from "@/components/tabs/Tab";
+import { type TabCloseClickEvent } from "@/components/tabs/Tab";
 import "@/components/tabs/TabPanel";
 import "@/components/tabs/Tabs";
-import { Tabs } from "@/components/tabs/Tabs";
+import { type Tabs } from "@/components/tabs/Tabs";
 import "@/components/toggle-switch/ToggleSwitch";
 import "@/components/tooltip/Tooltip";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import svgWxm from "@img/wxm.svg";
 import { css, customElement, html, internalProperty, LitElement, property } from "lit-element";
 import { TemplateResult } from "lit-html";
 import { repeat } from "lit-html/directives/repeat";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
 
 const tabsOverlayHtmlList = ["All templates", "Only Fb Template", ...Array(20)].map(
   (value, index) => html`
@@ -464,7 +464,7 @@ export class TabsTemplateSandbox extends LitElement {
           <md-tabs selected="0" persist-selection tabs-id="tabOrder" draggable justified>
             ${repeat(
               this.currentTabsOrder,
-              () => nanoid(10),
+              () => generateSimpleUniqueId("tabs"),
               (tabElement) => html` ${unsafeHTML(this.tabs[tabElement])} `
             )}
             ${!this.isSingleButtonResetEnabled

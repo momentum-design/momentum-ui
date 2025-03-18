@@ -1,8 +1,7 @@
 import { Key } from "@/constants";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
-import { nanoid } from "nanoid";
-import "./Tab";
 import { Tab } from "./Tab";
 
 describe("Tab", () => {
@@ -51,7 +50,7 @@ describe("Tab", () => {
   });
 
   test("should dispatch events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab id=${id} name="test-tab"></md-tab> `);
 
     const clickEvent = new MouseEvent("mousedown");
@@ -64,7 +63,7 @@ describe("Tab", () => {
   });
 
   test("should dispatch keydown events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="custom" id=${id} name="test-tab"></md-tab> `);
     const tabCloseClickPromise = oneEvent(el, "tab-close-click");
     const createEvent = (code: string) =>
@@ -79,7 +78,7 @@ describe("Tab", () => {
   });
 
   test("should dispatch cross events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="auto" id=${id} .isCrossVisible=${true}></md-tab> `);
 
     const tabCrossClickPromise = oneEvent(el, "tab-cross-click");
@@ -91,7 +90,7 @@ describe("Tab", () => {
   });
 
   test("should dispatch cross events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="custom" id=${id} .isCrossVisible=${true}></md-tab> `);
 
     const tabCloseClick = oneEvent(el, "tab-close-click");

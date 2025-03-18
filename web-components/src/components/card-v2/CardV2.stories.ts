@@ -8,14 +8,14 @@
 
 import "@/components/card-v2/CardV2";
 import { action } from "@storybook/addon-actions";
-import { cardType } from "@/components/card-v2/CardV2";
+import { CardState } from "@/components/card-v2/CardV2";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
 const render = (args: Args) => {
   return html`
       <md-card-v2 
-        type=${args.type} 
+        state=${args.state} 
         identifier=${args.identifier} 
         header=${args.header} 
         data=${args.data} 
@@ -31,7 +31,7 @@ const render = (args: Args) => {
 
 export const CardV2: StoryObj = {
   args: {
-    type: "default",
+    state: CardState.DEFAULT,
     identifier: "1234567890",
     header: "Test Title",
     info: "Test Info",
@@ -44,7 +44,7 @@ export const CardV2: StoryObj = {
 const meta: Meta = {
   title: "Components/CardV2",
   component: "md-card-v2",
-  argTypes: { type: { control: { type: "select" }, options: Object.values(cardType) } },
+  argTypes: { state: { control: { type: "select" }, options: Object.values(CardState) } },
   parameters: { a11y: { element: "md-card-v2" } }
 };
 

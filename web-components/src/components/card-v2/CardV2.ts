@@ -16,15 +16,15 @@ import { classMap } from "lit-html/directives/class-map";
 import { nothing } from "lit-html";
 import styles from "./scss/module.scss";
 
-
-export const cardType = ["default", "active", "inactive"];
-
+export enum CardState {
+  DEFAULT = "default",
+  ACTIVE = "active",
+  INACTIVE = "inactive"
+}
 export namespace CardV2 {
-  export type Type = (typeof cardType)[number];
-
   @customElementWithCheck("md-card-v2")
   export class ELEMENT extends LitElement {
-    @property({ type: String }) type: CardV2.Type = "default";
+    @property({ type: String }) state: CardState = CardState.DEFAULT;
     @property({ type: String }) identifier?: string = undefined;
     @property({ type: String }) header?: string = undefined;
     @property({ type: String }) info?: string = undefined; 
@@ -40,11 +40,11 @@ export namespace CardV2 {
     }
 
     private get isActive() {
-      return this.type === "active";
+      return this.state === CardState.ACTIVE;
     }
 
     expandCardToggled() {
-      this.type = this.isActive ? "default" : "active";
+      this.state = this.isActive ? CardState.DEFAULT : CardState.ACTIVE;
       this.dispatchEvent(
         new CustomEvent<{ identifier: string, active: boolean }>("expand-card-toggled", {
           detail: { identifier: this.identifier ?? "", active: this.isActive },
@@ -57,14 +57,14 @@ export namespace CardV2 {
     private get cardClassMap() {
       return {
         "md-card-v2": true,
-        [`md-card--${this.type}`]: true
+        [`md-card--${this.state}`]: true
       };
     }
 
     private get contentClassMap() {
       return {
         "md-card-v2-content": true,
-        inactive: this.type === "inactive"
+        inactive: this.state === CardState.INACTIVE
       };
     }
 

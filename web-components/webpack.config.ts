@@ -39,7 +39,9 @@ const common: webpack.Configuration = {
   resolve: {
     extensions: [".ts", ".js", ".scss"],
     alias: { ...commonAlias },
-    fallback: { timers: require.resolve("timers-browserify") }
+    fallback: {
+      timers: require.resolve("timers-browserify")
+    }
   },
   module: {
     rules: [

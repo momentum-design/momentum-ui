@@ -1,0 +1,51 @@
+/**
+ * Copyright (c) Cisco Systems, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import "@/components/card-v2/CardV2";
+import { action } from "@storybook/addon-actions";
+import { cardType } from "@/components/card-v2/CardV2";
+import { Args, Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+
+const render = (args: Args) => {
+  return html`
+      <md-card-v2 
+        id=${args.id} 
+        type=${args.type} 
+        title=${args.title} 
+        data=${args.data} 
+        info=${args.info} 
+        .expandable=${args.expandable}
+        @expand-card-toggled=${(e: CustomEvent<{ id: string, active: boolean }>) => {
+          action("expand-card-toggled")(e.detail);
+        }}
+      >
+      </md-card-v2>
+  `;
+};
+
+export const CardV2: StoryObj = {
+  args: {
+    id: "1234567890",
+    type: "default",
+    title: "Test Title",
+    info: "Test Info",
+    data: "00:00:00",
+    expandable: true
+  },
+  render: render
+};
+
+const meta: Meta = {
+  title: "Components/CardV2",
+  component: "md-card-v2",
+  argTypes: { type: { control: { type: "select" }, options: Object.values(cardType) } },
+  parameters: { a11y: { element: "md-card-v2" } }
+};
+
+export default meta;

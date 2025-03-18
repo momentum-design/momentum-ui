@@ -24,9 +24,10 @@ export namespace AdvanceList {
     @property({ type: Boolean }) selectAllItems = false;
     @property({ type: Boolean }) focusReset = false;
     @property({ type: Array }) disabledItems: string[] = [];
+    @property({ type: Number }) totalRecords = 0;
+    @property({ type: Boolean }) isNonSelectable = false;
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
-    @property({ type: Number }) totalRecords = 0;
 
     @internalProperty()
     private scrollIndex = -1;
@@ -296,7 +297,7 @@ export namespace AdvanceList {
       }
       return html`
         <div
-          class="default-wrapper ${item.id}"
+          class="default-wrapper ${item.id} ${this.isNonSelectable ? "non-selectable" : ""}"
           part="advance-list-item-wrapper"
           aria-setsize="${this.totalRecords}"
           aria-posinset="${index + 1}"

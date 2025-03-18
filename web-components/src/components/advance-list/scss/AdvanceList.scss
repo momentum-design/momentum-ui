@@ -52,7 +52,7 @@
 
 .default-wrapper {
   padding: 11px 12px;  
-  color: var( --advance-list-text-color);
+  color: var(--advance-list-text-color);
   cursor: pointer;
   width: calc(100% - 2px);
   box-sizing: border-box;
@@ -63,7 +63,7 @@
 }
 .default-wrapper-status-indicator {
   padding: 5px;
-  color: var( --advance-list-text-color);
+  color: var(--advance-list-text-color);
   cursor: pointer;
   width: calc(100% - 2px);
   box-sizing: border-box;
@@ -85,3 +85,14 @@
   border-bottom: 1px solid var(--md-gray-20);
 }
 
+.non-selectable {
+  &:hover {
+    background-color: transparent;
+  }
+  &.selected {
+    background-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

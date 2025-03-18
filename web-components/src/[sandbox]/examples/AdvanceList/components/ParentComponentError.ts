@@ -9,6 +9,7 @@ export namespace ParentComponentError {
     @property({ type: Array }) items: any = [];
     @property({ type: Boolean }) isLoading = false;
     @property({ type: Boolean }) isError = false;
+    @property({ type: Boolean }) isNonSelectable = false;
 
     @internalProperty()
     private page = 1;
@@ -87,7 +88,7 @@ export namespace ParentComponentError {
 
     render() {
       return html`
-        <h2>Error scenario</h2>
+        <h2>${this.isNonSelectable ? "Non Selectable List" : "Error scenario"}</h2>
         <md-advance-list
           class="advance-list"
           .items=${this.items}
@@ -96,6 +97,7 @@ export namespace ParentComponentError {
           ariaLabelList="state selector"
           .isError=${this.isError}
           .totalRecords=${this.totalRecords}
+          .isNonSelectable=${this.isNonSelectable}
           @list-item-change=${this.handleListItemChange}
           @load-more=${this.loadMoreItems}
         >

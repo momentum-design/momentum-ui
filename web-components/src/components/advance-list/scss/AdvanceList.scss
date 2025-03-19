@@ -86,6 +86,7 @@
 }
 
 .non-selectable {
+  cursor: default;
   &:hover {
     background-color: transparent;
   }

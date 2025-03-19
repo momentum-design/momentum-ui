@@ -1,6 +1,6 @@
 import { Key } from "@/constants";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import { fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
-import { nanoid } from "nanoid";
 import "./MenuItem";
 import { type MenuItem } from "./MenuItem";
 
@@ -32,7 +32,7 @@ describe("MenuItem component", () => {
   });
 
   test("should dispatch events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("menu-item");
     const component = await fixture<MenuItem.ELEMENT>(html` <md-menu-item id=${id}><span>Test</span></md-menu-item> `);
 
     const menuItemClickPromise = oneEvent(component, "menu-item-click");

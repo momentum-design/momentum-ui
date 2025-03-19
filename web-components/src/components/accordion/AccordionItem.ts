@@ -8,10 +8,10 @@
 import "@/components/icon/Icon";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { ifDefined } from "lit-html/directives/if-defined";
-import { nanoid } from "nanoid";
 import styles from "./scss/module.scss";
 
 export namespace AccordionItem {
@@ -24,7 +24,7 @@ export namespace AccordionItem {
     private _expanded = false;
     private _level = 3;
 
-    private uniqueId = nanoid();
+    private readonly uniqueId = generateSimpleUniqueId("accordion-item");
 
     @property({ type: String }) label = "";
     @property({ type: Boolean, reflect: true }) disabled = false;

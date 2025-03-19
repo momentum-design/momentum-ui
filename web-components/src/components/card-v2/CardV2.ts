@@ -12,8 +12,8 @@ import "@/components/tooltip/Tooltip";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
 import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
 export enum CardState {
@@ -27,7 +27,7 @@ export namespace CardV2 {
     @property({ type: String }) state: CardState = CardState.DEFAULT;
     @property({ type: String }) identifier?: string = undefined;
     @property({ type: String }) header?: string = undefined;
-    @property({ type: String }) info?: string = undefined; 
+    @property({ type: String }) info?: string = undefined;
     @property({ type: String }) data?: string = undefined;
     @property({ type: Boolean }) expandable = false;
 
@@ -46,7 +46,7 @@ export namespace CardV2 {
     expandCardToggled() {
       this.state = this.isActive ? CardState.DEFAULT : CardState.ACTIVE;
       this.dispatchEvent(
-        new CustomEvent<{ identifier: string, active: boolean }>("expand-card-toggled", {
+        new CustomEvent<{ identifier: string; active: boolean }>("expand-card-toggled", {
           detail: { identifier: this.identifier ?? "", active: this.isActive },
           bubbles: true,
           composed: true
@@ -82,45 +82,36 @@ export namespace CardV2 {
           ${this.info
             ? html`
                 <md-tooltip message="${this.info}" placement="top">
-                  <md-button
-                    ariaLabel="${this.info}"
-                    size="20"
-                    variant="ghost"
-                    circle
-                  >
+                  <md-button ariaLabel="${this.info}" size="20" variant="ghost" circle>
                     <md-icon slot="icon" name="info-badge-filled" iconSet="momentumDesign"></md-icon>
                   </md-button>
                 </md-tooltip>
               `
-            : nothing}       
+            : nothing}
         </div>
       `;
     }
 
     private renderFooter() {
       return html`
-          <div class="class=${classMap(this.footerClassMap)}" >
-            <md-button
-              ariaLabel=""
-              circle
-              size="28"
-              @click=${this.expandCardToggled}>
-              <md-icon 
-                slot="icon" 
-                name=${this.isActive ? "arrow-circle-down_16" : "arrow-circle-up_16"} 
-                size="18">
-              </md-icon>
-            </md-button>
-          </div>
+        <div class="class=${classMap(this.footerClassMap)}">
+          <md-button ariaLabel="" circle size="28" @click=${this.expandCardToggled}>
+            <md-icon
+              slot="icon"
+              iconSet="momentumDesign"
+              name=${this.isActive ? "arrow-circle-down-bold" : "arrow-circle-up-bold"}
+              size="18"
+            >
+            </md-icon>
+          </md-button>
+        </div>
       `;
     }
 
     render() {
       return html`
         <div class="${classMap(this.cardClassMap)}">
-          <div class="md-card-v2-header">
-            ${this.renderHeader()}
-          </div>
+          <div class="md-card-v2-header">${this.renderHeader()}</div>
           <div class="${classMap(this.contentClassMap)}">
             <h2>${this.data}</h2>
           </div>

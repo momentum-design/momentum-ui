@@ -6,26 +6,25 @@
  *
  */
 
-import "@/components/card-v2/CardV2";
-import { action } from "@storybook/addon-actions";
 import { CardState } from "@/components/card-v2/CardV2";
+import { action } from "@storybook/addon-actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
 const render = (args: Args) => {
   return html`
-      <md-card-v2 
-        state=${args.state} 
-        identifier=${args.identifier} 
-        header=${args.header} 
-        data=${args.data} 
-        info=${args.info} 
-        .expandable=${args.expandable}
-        @expand-card-toggled=${(e: CustomEvent<{ id: string, active: boolean }>) => {
-          action("expand-card-toggled")(e.detail);
-        }}
-      >
-      </md-card-v2>
+    <md-card-v2
+      state=${args.state}
+      identifier=${args.identifier}
+      header=${args.header}
+      data=${args.data}
+      info=${args.info}
+      .expandable=${args.expandable}
+      @expand-card-toggled=${(e: CustomEvent<{ id: string; active: boolean }>) => {
+        action("expand-card-toggled")(e.detail);
+      }}
+    >
+    </md-card-v2>
   `;
 };
 

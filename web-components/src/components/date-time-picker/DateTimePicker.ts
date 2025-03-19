@@ -46,7 +46,7 @@ export namespace DateTimePicker {
     @query("md-datepicker") datePicker!: DatePicker.ELEMENT;
     @query("md-timepicker") timePicker!: TimePicker.ELEMENT;
 
-    protected async firstUpdated(changedProperties: PropertyValues) {
+    protected firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
       if (!this.value) {
@@ -54,8 +54,13 @@ export namespace DateTimePicker {
         this.combineDateAndTimeValues(dateString, this.timeValue);
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 0));
+      (async () => {
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        this.addEventListeners();
+      })();
+    }
 
+    private addEventListeners() {
       if (this.datePicker) {
         this.datePicker.addEventListener("date-selection-change", this.handleDateChange);
         this.datePicker.addEventListener("date-input-change", this.handleDateTimeInputChange as EventListener);
@@ -179,7 +184,7 @@ export namespace DateTimePicker {
               ?twenty-four-hour-format=${this.twentyFourHourFormat}
               timeSpecificity=${this.timeSpecificity}
               locale=${this.locale}
-              value=${this.timeValue}>
+              value=${ifDefined(this.timeValue ?? undefined)}>
             </md-timepicker>
           </div>
         </md-datepicker>

@@ -61,7 +61,7 @@ export namespace TableAdvanced {
     private selected: Record<number, boolean> = {};
     private expandedRowIdx: Record<number, boolean> = {};
 
-    private dragover = (e: Event) => e.preventDefault();
+    private readonly dragover = (e: Event) => e.preventDefault();
 
     @queryAll("tr[tabindex]") tableRaws?: HTMLTableRowElement[];
     disconnectedCallback() {

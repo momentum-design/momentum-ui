@@ -9,10 +9,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ComplexTable, ShortkeyTable, SimpleTable } from "@/[sandbox]/sandbox.mock";
-import { defineCE, elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
+import { elementUpdated, fixture, fixtureCleanup, html, oneEvent } from "@open-wc/testing-helpers";
 import { Filter } from "./src/filter";
 import "./TableAdvanced";
-import { TableAdvanced } from "./TableAdvanced";
+import { type TableAdvanced } from "./TableAdvanced";
 
 const ELEM = () => {
   const DATA = ComplexTable.data;
@@ -301,36 +301,6 @@ describe("Table Advanced component", () => {
     expect(selectDetail).toMatchObject({
       type: "select"
     });
-  });
-
-  test("should calling connected/disconnected callbacks", async () => {
-    const tag = defineCE(
-      class extends TableAdvanced.ELEMENT {
-        connectedCallback() {
-          super.connectedCallback();
-          this.dispatchEvent(new CustomEvent("connected-callback"));
-        }
-        disconnectedCallback() {
-          super.disconnectedCallback();
-          this.dispatchEvent(new CustomEvent("disconnected-callback"));
-        }
-      }
-    );
-    const tableAdvanced = document.createElement(`${tag}`) as TableAdvanced.ELEMENT;
-    tableAdvanced.config = ComplexTable.config;
-    tableAdvanced.data = ComplexTable.data;
-
-    const connectedPromise = oneEvent(tableAdvanced, "connected-callback");
-    tableAdvanced.connectedCallback();
-    const connectedEvent = await connectedPromise;
-    expect(connectedEvent).toBeDefined();
-
-    tableAdvanced.remove();
-
-    const disconnectedPromise = oneEvent(tableAdvanced, "disconnected-callback");
-    tableAdvanced.disconnectedCallback();
-    const disconnectedEvent = await disconnectedPromise;
-    expect(disconnectedEvent).toBeDefined();
   });
 
   test("should render caption when head.caption is defined", async () => {

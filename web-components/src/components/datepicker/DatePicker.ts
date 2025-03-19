@@ -73,7 +73,7 @@ export namespace DatePicker {
       }
     }
 
-    async firstUpdated(changedProperties: PropertyValues) {
+    firstUpdated(changedProperties: PropertyValues) {
       super.firstUpdated(changedProperties);
 
       if (this.value === EMPTY_STRING) {
@@ -130,12 +130,22 @@ export namespace DatePicker {
       this.shouldCloseOnSelect && this.setOpen(false);
     };
 
+    private getLocaleDateString(date: DateTime): string {
+      if (this.includesTime) {
+        return date.toLocaleString(DateTime.DATETIME_SHORT);
+      }
+
+      return date.toLocaleString();
+    }
+
+    private getISODateTime(date: DateTime): string | null {
+      return this.includesTime ? date.startOf("second").toISO({ suppressMilliseconds: true }) : date.toISODate();
+    }
+
     setSelected = (date: DateTime, event: Event) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       if (!isDayDisabled(date, filters)) {
-        const dateString = this.includesTime
-          ? date.startOf("second").toISO({ suppressMilliseconds: true })
-          : date.toISODate();
+        const dateString = this.getISODateTime(date);
         this.selectedDate = date;
         this.value = dateString;
       }
@@ -214,16 +224,22 @@ export namespace DatePicker {
         : undefined;
     };
 
+    private readonly getValidRegexString = (): string => {
+      const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
+      if (dateRangePicker) {
+        return ValidationRegex.dateRangeString;
+      }
+
+      if (this.includesTime) {
+        return ValidationRegex.ISOString;
+      }
+
+      return ValidationRegex.ISODateString;
+    };
+
     isValueValid = (): boolean => {
       if (!this.value && this.value !== EMPTY_STRING) return true;
-      const dateRangePicker = closestElement("md-date-range-picker", this) as DateRangePicker.ELEMENT;
-      const regexString =
-        dateRangePicker && dateRangePicker.startDate && dateRangePicker.endDate
-          ? ValidationRegex.dateRangeString
-          : this.includesTime
-            ? ValidationRegex.ISOString
-            : ValidationRegex.ISODateString;
-      const regex = RegExp(regexString);
+      const regex = RegExp(this.getValidRegexString());
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       const isValid =

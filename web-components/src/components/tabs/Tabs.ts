@@ -14,6 +14,7 @@ import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin 
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
+import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
@@ -371,6 +372,8 @@ export namespace Tabs {
         console.warn(`The amount of tabs (${tabs.length}) doesn't match the amount of panels (${panels.length}).`);
       }
 
+      const isVertical = this.direction === "vertical";
+
       tabs.forEach((tab, index) => {
         const uniqueId = generateSimpleUniqueId("tabs");
         const tabId = "tab_" + uniqueId;
@@ -379,8 +382,12 @@ export namespace Tabs {
         tab.setAttribute("aria-controls", panelId);
         tab.selected = this.selected === index;
 
-        if (this.direction === "vertical") {
-          tab.vertical = true;
+        if (tab.vertical !== isVertical) {
+          tab.vertical = isVertical;
+        }
+
+        if (tab.viewportHidden && isVertical) {
+          tab.viewportHidden = false;
         }
 
         const panel = panels[index];
@@ -1052,8 +1059,32 @@ export namespace Tabs {
       this.selectTabFromStorage();
     }
 
+    private async onDirectionChanged() {
+      this.tabs = [];
+      this.panels = [];
+      this.tabsFilteredAsVisibleList = [];
+      this.tabsFilteredAsHiddenList = [];
+      this.isMoreTabMenuVisible = false;
+      this.setupPanelsAndTabs();
+      await this.linkPanelsAndTabs();
+      if (this.draggable) {
+        this.initializeSortable();
+      }
+      if (this.direction === "horizontal") {
+        await this.manageOverflow();
+      }
+
+      this.selectTabFromStorage();
+    }
+
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
+
+      if (changedProperties.has("direction")) {
+        if (changedProperties.get("direction") !== this.direction) {
+          this.onDirectionChanged();
+        }
+      }
 
       if (changedProperties.has("slotted")) {
         this.initializeTabs();
@@ -1125,6 +1156,88 @@ export namespace Tabs {
       }
     }
 
+    private get moreMenuTemplate() {
+      if (this.direction === "vertical") {
+        return nothing;
+      }
+
+      return html`
+        <md-menu-overlay
+          custom-width="${MORE_MENU_WIDTH}"
+          max-height="${MORE_MENU_HEIGHT}"
+          class="md-menu-overlay__more ${classMap({
+            "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
+          })}"
+          placement="bottom-end"
+          @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
+          @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
+        >
+          <md-tab
+            slot="menu-trigger"
+            id="${MORE_MENU_TAB_TRIGGER_ID}"
+            aria-label="${this.overflowLabel}"
+            aria-haspopup="true"
+            tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
+            .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
+            class="md-menu-overlay__more_tab ${classMap({
+              "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
+            })}"
+            ariaRole="button"
+            .newMomentum=${this.newMomentum}
+            type=${this.type}
+          >
+            <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
+              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
+            </md-tooltip>
+            <md-icon
+              name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
+              iconSet="momentumDesign"
+              size="16"
+              class="more-icon"
+            ></md-icon>
+          </md-tab>
+          <div
+            id="tabs-more-list"
+            part="tabs-more-list"
+            class="md-tab__list md-menu-overlay__more_list"
+            style="${styleMap(
+              this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight
+                ? {
+                    "overflow-y": "auto",
+                    height: this.moreTabMenuMaxHeight,
+                    "max-height": this.moreTabMenuMaxHeight
+                  }
+                : {}
+            )}"
+          >
+            ${repeat(
+              this.tabsFilteredAsHiddenList,
+              () => generateSimpleUniqueId("tabs"),
+              (tab) => html`
+                <md-tab
+                  slot="draggable-item"
+                  .disabled="${tab.disabled}"
+                  .selected="${tab.selected}"
+                  name="${tab.name}"
+                  id="${this.getCopyTabId(tab)}"
+                  aria-label=${tab.ariaLabel}
+                  aria-controls="${this.getAriaControlId(tab)}"
+                  @click="${() => this.handleOverlayClose()}"
+                  tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+                  ariaRole="menuitem"
+                  .newMomentum=${this.newMomentum}
+                  type=${this.type}
+                  .onlyIcon="${tab.onlyIcon}"
+                >
+                  ${unsafeHTML(tab.innerHTML)}
+                </md-tab>
+              `
+            )}
+          </div>
+        </md-menu-overlay>
+      `;
+    }
+
     render() {
       return html`
         <div
@@ -1176,80 +1289,7 @@ export namespace Tabs {
               `
             )}
           </div>
-
-          <md-menu-overlay
-            custom-width="${MORE_MENU_WIDTH}"
-            max-height="${MORE_MENU_HEIGHT}"
-            class="md-menu-overlay__more ${classMap({
-              "md-menu-overlay__more--hidden": this.isMoreTabMenuMeasured && !this.isMoreTabMenuVisible
-            })}"
-            placement="bottom-end"
-            @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
-            @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
-          >
-            <md-tab
-              slot="menu-trigger"
-              id="${MORE_MENU_TAB_TRIGGER_ID}"
-              aria-label="${this.overflowLabel}"
-              aria-haspopup="true"
-              tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
-              .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
-              class="md-menu-overlay__more_tab ${classMap({
-                "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
-              })}"
-              ariaRole="button"
-              .newMomentum=${this.newMomentum}
-              type=${this.type}
-            >
-              <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
-                <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
-              </md-tooltip>
-              <md-icon
-                name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
-                iconSet="momentumDesign"
-                size="16"
-                class="more-icon"
-              ></md-icon>
-            </md-tab>
-            <div
-              id="tabs-more-list"
-              part="tabs-more-list"
-              class="md-tab__list md-menu-overlay__more_list"
-              style="${styleMap(
-                this.isMoreTabMenuScrollable && this.moreTabMenuMaxHeight
-                  ? {
-                      "overflow-y": "auto",
-                      height: this.moreTabMenuMaxHeight,
-                      "max-height": this.moreTabMenuMaxHeight
-                    }
-                  : {}
-              )}"
-            >
-              ${repeat(
-                this.tabsFilteredAsHiddenList,
-                () => generateSimpleUniqueId("tabs"),
-                (tab) => html`
-                  <md-tab
-                    slot="draggable-item"
-                    .disabled="${tab.disabled}"
-                    .selected="${tab.selected}"
-                    name="${tab.name}"
-                    id="${this.getCopyTabId(tab)}"
-                    aria-label=${tab.ariaLabel}
-                    aria-controls="${this.getAriaControlId(tab)}"
-                    @click="${() => this.handleOverlayClose()}"
-                    tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                    ariaRole="menuitem"
-                    .newMomentum=${this.newMomentum}
-                    type=${this.type}
-                    .onlyIcon="${tab.onlyIcon}"
-                  >
-                    ${unsafeHTML(tab.innerHTML)}
-                  </md-tab>
-                `
-              )}
-            </div>
-          </md-menu-overlay>
+          ${this.moreMenuTemplate}
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

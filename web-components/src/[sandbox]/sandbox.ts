@@ -72,6 +72,9 @@ export class Sandbox extends MobxLitElement {
   @internalProperty()
   private renderSelectedTabPanelOnly = true;
 
+  @internalProperty()
+  private tabsOrientation: "horizontal" | "vertical" = "vertical";
+
   connectedCallback(): void {
     super.connectedCallback();
     this.loadSettingsFromStorage();
@@ -86,6 +89,12 @@ export class Sandbox extends MobxLitElement {
   }
 
   selectedTabChanged(event: CustomEvent) {
+    const path = event.composedPath();
+    const originalTarget = path[0] as HTMLElement;
+    if (!originalTarget.classList.contains("explorer")) {
+      return;
+    }
+
     const { value, tabsOrder } = event.detail;
     const tab = tabsOrder[value];
     this.selectedTab = tab;
@@ -117,6 +126,11 @@ export class Sandbox extends MobxLitElement {
       if (parsedValue !== this.renderSelectedTabPanelOnly) {
         this.renderSelectedTabPanelOnly = parsedValue;
       }
+    }
+
+    const storedTabsOrientation = localStorage.getItem("sandbox-tabs-orientation");
+    if (storedTabsOrientation && this.tabsOrientation !== storedTabsOrientation) {
+      this.tabsOrientation = storedTabsOrientation as "horizontal" | "vertical";
     }
   }
 
@@ -215,8 +229,16 @@ export class Sandbox extends MobxLitElement {
           />
           Only render selected tab panel
         </label>
+        <md-button variant="secondary" size="28" @click=${this.toggleTabsOrientation}
+          >Toggle Tabs Orientation</md-button
+        >
       </div>
     `;
+  }
+
+  toggleTabsOrientation() {
+    this.tabsOrientation = this.tabsOrientation === "horizontal" ? "vertical" : "horizontal";
+    localStorage.setItem("sandbox-tabs-orientation", this.tabsOrientation);
   }
 
   containerColorOptionTemplate() {
@@ -317,7 +339,7 @@ export class Sandbox extends MobxLitElement {
       >
         <div class="header-controls">${this.themeToggle()} ${this.containerColorOptionTemplate()}</div>
 
-        <md-tabs direction="vertical" class="explorer" persist-selection tabs-id="explorer">
+        <md-tabs direction=${this.tabsOrientation} class="explorer" persist-selection tabs-id="explorer">
           ${this.getTabTemplate("Accordion", "md-accordion", "accordion", accordionTemplate)}
           ${this.getTabTemplate("Alert Banner", "md-alert-banner", "alert-banner", alertBannerTemplate)}
           ${this.getTabTemplate("Alert", "md-alert", "alert", alertTemplate)}

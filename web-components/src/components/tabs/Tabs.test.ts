@@ -294,11 +294,13 @@ describe("Tabs", () => {
       };
     };
 
+    expect(tabs.selected).toBe(0);
+
     tabs.handleTabKeydown(createKeyboardEvent(tabs.slotted[1].id, Key.ArrowRight));
     await elementUpdated(tabs);
 
-    expect(tabs.selected).toBe(1);
-    expect(tabs.slotted[1].getAttribute("tabindex")).toBe("0");
+    expect(tabs.selected).toBe(0);
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
   });
 
   test("should handle keydown event for vertical tabs", async () => {
@@ -637,9 +639,9 @@ describe("Tabs", () => {
   });
 
   test("should be able make tab focus", () => {
-    const firstTab = tabs.slotted[0] as Tab.ELEMENT;
+    const firstTab = tabs.slotted[1] as Tab.ELEMENT;
     expect(firstTab.getAttribute("focus-visible")).toBeNull();
-    tabs.selected = 0;
+    tabs.selected = 1;
     expect(firstTab.getAttribute("focus-visible")).toBe("");
   });
 
@@ -663,8 +665,9 @@ describe("Tabs", () => {
       new KeyboardEvent("keydown", {
         code
       });
-    tabs.slotted[0].dispatchEvent(createKeyboardEvent(Key.Tab));
-    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("-1");
+
+    tabs.dispatchEvent(createKeyboardEvent(Key.Tab));
+    expect(tabs.slotted[0].getAttribute("tabindex")).toBe("0");
     expect(panels[0].getAttribute("tabindex")).toBe("0");
   });
 

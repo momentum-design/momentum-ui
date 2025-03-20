@@ -240,6 +240,8 @@ describe("Dropdown Component", () => {
         " non-trimmed-with-spaces   "
       ];
 
+      const consoleSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+
       dropdown = await fixture<Dropdown.ELEMENT>(html`
         <md-dropdown .options="${duplicatedDropdownStringOptions}" title="Test"></md-dropdown>
       `);
@@ -247,6 +249,8 @@ describe("Dropdown Component", () => {
       await elementUpdated(dropdown);
 
       expect(dropdown["renderOptions"].length).toBe(4);
+
+      consoleSpy.mockRestore();
     });
 
     it("should set correct aria attributes", async () => {
@@ -254,8 +258,8 @@ describe("Dropdown Component", () => {
 
       await elementUpdated(dropdown);
 
-      expect(dropdown.label!.getAttribute("aria-expanded")).toEqual("true");
-      expect(dropdown.label!.getAttribute("aria-label")).toEqual("Test");
+      expect(dropdown.label.getAttribute("aria-expanded")).toEqual("true");
+      expect(dropdown.label.getAttribute("aria-label")).toEqual("Test");
     });
 
     it("should apply disabled attribute", async () => {

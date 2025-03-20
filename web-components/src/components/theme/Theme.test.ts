@@ -135,7 +135,6 @@ describe("Theme", () => {
     jest.advanceTimersByTime(100);
 
     const updatedVirtualContent = virtualWrapper.querySelector(".md-tooltip__content");
-    console.log("Updated Virtual Content:", updatedVirtualContent?.textContent); // Debugging log
     expect(updatedVirtualContent).not.toBeNull();
     expect(updatedVirtualContent!.textContent).toBe("New Tooltip Message");
   });

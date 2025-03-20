@@ -1,0 +1,18 @@
+$md-card-v2-width: rem-calc(240);
+$md-card-v2-height: rem-calc(128);
+$md-card-v2-border-radius: rem-calc(8);
+$md-card-v2-padding: rem-calc(16);
+$md-card-v2-background: var(--md-glass-overlay-bg-color);
+$md-card-v2-background-inactive: var(--md-glass-overlay-inactive-bg-color);
+$md-card-v2-border-active: 1px solid var(--md-primary-text-color);
+$md-card-v2-border-inactive: 1px solid transparent;
+$md-card-v2-title-font-size: var(--font-size-body-midsize, rem-calc(14));
+$md-card-v2-title-font-weight: var(--brand-font-weight-medium, 500);
+$md-card-v2-title-line-height: rem-calc(20);
+$md-card-v2-title-color: var(--md-secondary-text-color);
+$md-card-v2-info-icon-color: var(--md-secondary-text-color);
+$md-card-v2-content-font-size: rem-calc(24);
+$md-card-v2-content-font-weight: var(--brand-font-weight-bold, 700);
+$md-card-v2-content-line-height: rem-calc(32);
+$md-card-v2-content-color: var(--md-primary-text-color);
+$md-card-v2-content-inactive-color: var(--md-secondary-text-color);

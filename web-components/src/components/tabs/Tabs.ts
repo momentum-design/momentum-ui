@@ -1004,7 +1004,7 @@ export namespace Tabs {
       this.setupTabsEvents();
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
-          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
+          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab");
           return;
         }
         const persistedSelectedTabIdx = localStorage.getItem(this.tabsId);
@@ -1020,7 +1020,7 @@ export namespace Tabs {
     private selectTabFromStorage() {
       if (this.persistSelection) {
         if (!this.tabsId || this.tabsId.trim() === "") {
-          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab ");
+          console.error("Unique tabs-id attribute is mandatory for persist the selection of tab");
           return;
         }
         const persistedSelectedTabIdx = sessionStorage.getItem(this.tabsId);

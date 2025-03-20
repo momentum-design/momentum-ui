@@ -14,6 +14,7 @@ export { AlertBanner } from "./components/alert-banner/AlertBanner";
 export { Alert } from "./components/alert/Alert";
 export { AudioPlayer } from "./components/audio-player/AudioPlayer";
 export { Avatar } from "./components/avatar/Avatar";
+export { AvatarType } from "./components/avatar/Avatar.constants";
 export { CompositeAvatar } from "./components/avatar/CompositeAvatar";
 export { Badge } from "./components/badge/Badge";
 export { Breadcrumb } from "./components/breadcrumb/Breadcrumb";

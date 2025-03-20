@@ -78,7 +78,7 @@ describe("Focus Mixin", () => {
 
     const element = await fixture<FocusableChild>(`<focusable-child></focusable-child>`);
 
-    jest.advanceTimersByTime(100);
+    jest.runAllTimers();
 
     expect(document.activeElement).toEqual(element);
     expect(element["getActiveElement"]!()).toEqual(element);

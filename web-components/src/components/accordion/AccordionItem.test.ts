@@ -82,7 +82,9 @@ describe("AccordionItem", () => {
   });
 
   test("should correct set level", async () => {
-    const warnSpy = jest.spyOn(console, "warn");
+    const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /* */
+    });
     const warnMessage = "Please set appropriate section heading level";
 
     accordionItems[0].level = 0;

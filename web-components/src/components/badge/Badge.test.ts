@@ -90,7 +90,6 @@ describe("Badge component", () => {
     const ariaLabel = "my aria-label";
     const component: Badge.ELEMENT = await fixture(html` <md-badge ariaLabel=${ariaLabel}></md-badge> `);
     const spanElement = component.shadowRoot?.querySelector("span");
-    console.log("spanElement", spanElement?.getAttribute("aria-label"));
     expect(spanElement?.getAttribute("aria-label")).toEqual(ariaLabel);
   });
 

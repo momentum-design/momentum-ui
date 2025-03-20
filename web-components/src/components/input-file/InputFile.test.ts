@@ -2,7 +2,7 @@ import { Button } from "@/components/button/Button";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
 import { html } from "lit-element";
 import "./InputFile";
-import { InputFile } from "./InputFile";
+import { type InputFile } from "./InputFile";
 
 describe("InputFile component", () => {
   let element: InputFile.ELEMENT;
@@ -18,14 +18,16 @@ describe("InputFile component", () => {
   });
 
   test("should check acceptable lang", async () => {
-    element.acceptLanguage = "Jabascript";
+    const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /* */
+    });
 
-    const spyWarn = jest.spyOn(console, "warn");
+    element.acceptLanguage = "Jabascript";
 
     await elementUpdated(element);
 
-    expect(spyWarn).toHaveBeenCalledWith("Please set correct language name");
-    spyWarn.mockRestore();
+    expect(consoleWarnSpy).toHaveBeenCalledWith("Please set correct language name");
+    consoleWarnSpy.mockRestore();
   });
 
   test("should trigger input click", async () => {

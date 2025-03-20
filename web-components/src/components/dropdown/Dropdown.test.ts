@@ -457,5 +457,18 @@ describe("Dropdown Component", () => {
 
       expect(dropdown.shadowRoot!.querySelector(".md-dropbox__messages")).not.toBeNull();
     });
+
+    test("should render left-icon even with passing searchable", async () => {
+      const dropdown = await fixture<Dropdown.ELEMENT>(html`
+        <md-dropdown
+          .options="${dropdownStringOptions}"
+          htmlId="dropDownWarning"
+          left-icon="search-bold"
+          .messageArr=${[{ ...messageArr, ...{ type: "warning" } } as Dropdown.Message]}
+        ></md-dropdown>
+      `);
+
+      expect(dropdown.shadowRoot!.querySelector(".md-dropdown-label--left-icon")).not.toBeNull();
+    });
   });
 });

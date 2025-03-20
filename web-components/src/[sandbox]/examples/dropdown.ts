@@ -111,6 +111,17 @@ export const dropdownTemplate = html`
       console.log("[Strings Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
+
+    <h3>passing left icon with out searchable props</h3>
+    <md-dropdown
+      .options="${dropdownStringOptions}"
+      left-icon="search-bold"
+      @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+      console.log("[Strings Options] Selected: ", e.detail);
+    }}"
+  ></md-dropdown>
+
+
   <h3>Strings Options (Disabled)</h3>
   <md-dropdown .options="${dropdownStringOptions}" disabled></md-dropdown>
   <h3>Strings Options (Allow unselected)</h3>

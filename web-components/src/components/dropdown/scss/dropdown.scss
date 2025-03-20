@@ -39,6 +39,14 @@
         flex: 1 0 auto;
       }
 
+      &--left-icon {
+        margin-right: calc(#{$dropdown-main-indent} * 2);
+        align-self: center;
+        cursor: pointer;
+        height: 15px;
+        display: flex;
+      }
+
       &--icon {
         @include arrow-transition;
         align-self: center;

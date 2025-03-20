@@ -4,7 +4,6 @@ const ignoreAllButTheseModules =
   "lit-element|" +
   "lit-html|" +
   "lit-virtualizer|" +
-  "nanoid|" +
   "query-selector-shadow-dom|" +
   "@popperjs|" +
   "@interactjs|" +
@@ -16,9 +15,6 @@ module.exports = {
   testEnvironment: "jsdom",
   collectCoverage: true,
   coverageProvider: "v8",
-  fakeTimers: {    
-    doNotFake: ["requestAnimationFrame", "cancelAnimationFrame"]
-  },
   transform: {
     "^.+\\.ts$": [
       "ts-jest",

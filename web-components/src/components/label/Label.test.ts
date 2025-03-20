@@ -1,17 +1,26 @@
 import { fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
 import "./Label";
-import { Label } from "./Label";
+import { type Label } from "./Label";
 
 describe("Label", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
   test("should render one Label", async () => {
     const element = await fixture(`<md-label label="Test Label Text"></md-label>`);
     expect(element).not.toBeNull();
   });
   test("should dispatch click", async () => {
     const element = await fixture<Label.ELEMENT>(`<md-label label="Test Label Text" htmlFor="firstValue"></md-label>`);
-    setTimeout(() => element.handleClick());
-    const { detail } = await oneEvent(element, "label-click");
+    const labelClickPromise = oneEvent(element, "label-click");
+    element.handleClick();
+    const { detail } = await labelClickPromise;
     expect(detail).toBeDefined();
     expect(detail.htmlFor).toBe("firstValue");
   });

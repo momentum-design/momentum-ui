@@ -1,10 +1,9 @@
-import "./List";
-import { List } from "./List";
-import "./ListItem";
-import { ListItem } from "./ListItem";
 import { Key } from "@/constants";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, LitElement, PropertyValues } from "lit-element";
+import { List } from "./List";
+import "./ListItem";
+import { type ListItem } from "./ListItem";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyConstructor<A = LitElement> = new (...args: any[]) => A;
@@ -18,6 +17,7 @@ describe("List", () => {
     });
 
   beforeEach(async () => {
+    jest.useFakeTimers();
     element = await fixture<List.ELEMENT>(html`
       <md-list label="Transuranium elements">
         <md-list-item slot="list-item">Neptunium</md-list-item>
@@ -27,8 +27,15 @@ describe("List", () => {
       </md-list>
     `);
     listItems = element.slotted as ListItem.ELEMENT[];
+    jest.runAllTimers();
   });
-  afterEach(fixtureCleanup);
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
+
   test("should set correct attribute", async () => {
     expect(element.shadowRoot?.querySelector("ul")?.getAttribute("role")).toEqual("listbox");
     expect(element.getAttribute("aria-label")).toEqual("Transuranium elements");
@@ -65,15 +72,15 @@ describe("List", () => {
     expect(firstEvent).toBeDefined();
 
     firstElement.parentElement!.removeChild(firstElement);
-    setTimeout(() => firstElement.disconnectedCallback());
-    const thirdEvent = await oneEvent(firstElement, "disconnected-callback");
+    const disconnectedPromise = oneEvent(firstElement, "disconnected-callback");
+    firstElement.disconnectedCallback();
+    const thirdEvent = await disconnectedPromise;
     expect(thirdEvent).toBeDefined();
 
-    fixtureCleanup();
-
     const secondElement = document.createElement(`${tag}`) as List.ELEMENT;
-    setTimeout(() => secondElement.connectedCallback());
-    const secondEvent = await oneEvent(secondElement, "connected-callback");
+    const connectedPromise = oneEvent(secondElement, "connected-callback");
+    secondElement.connectedCallback();
+    const secondEvent = await connectedPromise;
     expect(secondEvent).toBeDefined();
   });
 
@@ -201,11 +208,12 @@ describe("List", () => {
   test("should dispatch event when list item change", async () => {
     const clickEvent = new MouseEvent("click");
 
-    setTimeout(() => {
-      listItems[0].click();
-      element.handleClick(clickEvent);
-    });
-    const { detail } = await oneEvent(element, "list-item-change");
+    const listItemChangePromise = oneEvent(element, "list-item-change");
+
+    listItems[0].click();
+    element.handleClick(clickEvent);
+
+    const { detail } = await listItemChangePromise;
 
     await elementUpdated(element);
 

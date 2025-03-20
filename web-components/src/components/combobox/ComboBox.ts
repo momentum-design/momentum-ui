@@ -117,7 +117,8 @@ export namespace ComboBox {
      * or the arrow not in a div what a border to the right. This will be used for filter dropdowns
      * that were implemented using a combobox
      */
-    @property({ type: Boolean, attribute: "is-dropdown-arrow" }) isDropdownArrow = false;
+    @property({ type: Boolean, attribute: "is-dropdown-arrow" })
+    isDropdownArrow = false;
 
     @property({ type: String })
     comboboxId = "";
@@ -1480,6 +1481,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button arrow-down"
+          part="combobox-button-arrow"
           aria-expanded=${this.expanded}
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
@@ -1500,6 +1502,7 @@ export namespace ComboBox {
         <button
           type="button"
           class="md-combobox-button"
+          part="combobox-button-arrow"
           aria-label=${ifDefined(this.popupChevronAriaHidden === "true" ? undefined : this.arrowAriaLabel)}
           aria-controls="md-combobox-listbox"
           tabindex="-1"

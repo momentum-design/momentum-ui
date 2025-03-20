@@ -1,13 +1,21 @@
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./ProgressBar";
-import { ProgressBar } from "./ProgressBar";
+import { type ProgressBar } from "./ProgressBar";
 
 const fixtureFactory = async (): Promise<ProgressBar.ELEMENT> => {
   return await fixture(html` <md-progress-bar label="test list" value="55"></md-progress-bar> `);
 };
 
 describe("ProgressBar", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should render Progress Bar Component", async () => {
     const element = await fixture(`<md-progress-bar></md-progress-bar>`);

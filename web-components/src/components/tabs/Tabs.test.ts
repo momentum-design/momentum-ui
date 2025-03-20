@@ -6,9 +6,9 @@ import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEven
 import { PropertyValues, html } from "lit-element";
 import Sortable from "sortablejs";
 import "./Tab";
-import { Tab } from "./Tab";
+import { type Tab } from "./Tab";
 import "./TabPanel";
-import { TabPanel } from "./TabPanel";
+import { type TabPanel } from "./TabPanel";
 import "./Tabs";
 import { MORE_MENU_TAB_COPY_ID_PREFIX, Tabs } from "./Tabs";
 

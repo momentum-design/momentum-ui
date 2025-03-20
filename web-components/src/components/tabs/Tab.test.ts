@@ -1,12 +1,19 @@
 import { Key } from "@/constants";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
 import { html, PropertyValues } from "lit-element";
-import { nanoid } from "nanoid";
-import "./Tab";
 import { Tab } from "./Tab";
 
 describe("Tab", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should (un)register event listeners", async () => {
     const tag = defineCE(
@@ -43,49 +50,53 @@ describe("Tab", () => {
   });
 
   test("should dispatch events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab id=${id} name="test-tab"></md-tab> `);
 
     const clickEvent = new MouseEvent("mousedown");
-    setTimeout(() => el.handleClick(clickEvent));
+    const tabClickPromise = oneEvent(el, "tab-click");
+    el.handleClick(clickEvent);
 
-    const { detail: click } = await oneEvent(el, "tab-click");
+    const { detail: click } = await tabClickPromise;
     expect(click).toBeDefined();
     expect(click.id).toBe(id);
   });
 
   test("should dispatch keydown events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="custom" id=${id} name="test-tab"></md-tab> `);
+    const tabCloseClickPromise = oneEvent(el, "tab-close-click");
     const createEvent = (code: string) =>
       new KeyboardEvent("keydown", {
         code
       });
-    setTimeout(() => (el as Tab.ELEMENT).handleCrossKeydown(createEvent(Key.Enter)), 10);
+    (el as Tab.ELEMENT).handleCrossKeydown(createEvent(Key.Enter));
 
-    const { detail: click } = await oneEvent(el, "tab-close-click");
+    const { detail: click } = await tabCloseClickPromise;
     expect(click).toBeDefined();
     expect(click.id).toBe(id);
   });
 
   test("should dispatch cross events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="auto" id=${id} .isCrossVisible=${true}></md-tab> `);
 
-    setTimeout(() => (el.shadowRoot?.querySelector(".tab-action-button") as HTMLElement).click());
+    const tabCrossClickPromise = oneEvent(el, "tab-cross-click");
+    el.shadowRoot?.querySelector<HTMLElement>(".tab-action-button")?.click();
 
-    const { detail: click } = await oneEvent(el, "tab-cross-click");
+    const { detail: click } = await tabCrossClickPromise;
     expect(click).toBeDefined();
     expect(click.id).toBe(id);
   });
 
   test("should dispatch cross events to parent component", async () => {
-    const id = nanoid();
+    const id = generateSimpleUniqueId("tabs");
     const el = await fixture<Tab.ELEMENT>(html` <md-tab closable="custom" id=${id} .isCrossVisible=${true}></md-tab> `);
 
-    setTimeout(() => (el.shadowRoot?.querySelector(".tab-action-button") as HTMLElement).click());
+    const tabCloseClick = oneEvent(el, "tab-close-click");
+    el.shadowRoot?.querySelector<HTMLElement>(".tab-action-button")?.click();
 
-    const { detail: click } = await oneEvent(el, "tab-close-click");
+    const { detail: click } = await tabCloseClick;
     expect(click).toBeDefined();
     expect(click.id).toBe(id);
   });

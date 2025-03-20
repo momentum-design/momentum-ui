@@ -80,7 +80,10 @@ export namespace DatePickerDay {
         return false;
       }
 
-      const daySQLDate = this.day.toSQLDate();
+      const daySQLDate = this.day?.isValid ? this.day.toSQLDate() : null;
+      if (!daySQLDate) {
+        return false;
+      }
 
       const isBetweenDates = daySQLDate > startDate && daySQLDate < endDate;
       const isStartDate = daySQLDate === startDate;
@@ -144,7 +147,7 @@ export namespace DatePickerDay {
       return html`
         <md-button
           circle
-          size=${28}
+          size=${32}
           color=${"color-none"}
           ?disabled=${this.disabled}
           class="md-datepicker__day ${classMap(this.getDayClassMap)}"

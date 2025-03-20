@@ -11,13 +11,13 @@ import "@/components/menu-overlay/MenuOverlay";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
+import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import { styleMap } from "lit-html/directives/style-map";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
-import { nanoid } from "nanoid";
 import Sortable from "sortablejs";
 import { setTimeout } from "timers";
 import { MenuOverlay } from "../menu-overlay/MenuOverlay"; // Keep type import as a relative path
@@ -372,7 +372,7 @@ export namespace Tabs {
       }
 
       tabs.forEach((tab, index) => {
-        const uniqueId = nanoid(10);
+        const uniqueId = generateSimpleUniqueId("tabs");
         const tabId = "tab_" + uniqueId;
         const panelId = "tab_panel_" + uniqueId;
         tab.setAttribute("id", tabId);
@@ -1154,7 +1154,7 @@ export namespace Tabs {
           >
             ${repeat(
               this.tabsFilteredAsVisibleList,
-              () => nanoid(10),
+              () => generateSimpleUniqueId("tabs"),
               (tab) => html`
                 <md-tab
                   .closable="${tab.closable}"
@@ -1227,7 +1227,7 @@ export namespace Tabs {
             >
               ${repeat(
                 this.tabsFilteredAsHiddenList,
-                () => nanoid(10),
+                () => generateSimpleUniqueId("tabs"),
                 (tab) => html`
                   <md-tab
                     slot="draggable-item"

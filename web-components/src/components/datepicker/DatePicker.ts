@@ -29,9 +29,9 @@ export namespace DatePicker {
   @customElementWithCheck("md-datepicker")
   export class ELEMENT extends LitElement {
     @property({ type: Boolean, attribute: "should-close-on-select" }) shouldCloseOnSelect = false;
-    @property({ type: String }) maxDate: string | undefined = undefined;
-    @property({ type: String }) minDate: string | undefined = undefined;
-    @property({ type: String, reflect: true }) value: string | undefined = undefined;
+    @property({ type: String }) maxDate: string | undefined | null = undefined;
+    @property({ type: String }) minDate: string | undefined | null = undefined;
+    @property({ type: String, reflect: true }) value: string | null | undefined = undefined;
     @property({ type: String }) weekStart: (typeof weekStartDays)[number] = "Sunday";
     @property({ type: String, reflect: true }) placeholder: string | undefined = undefined;
     @property({ type: String }) locale = "en-US";
@@ -246,7 +246,7 @@ export namespace DatePicker {
 
     render() {
       return html`
-        <md-menu-overlay is-date-picker custom-width="248px" ?disabled=${this.disabled}>
+        <md-menu-overlay is-date-picker custom-width="272px" ?disabled=${this.disabled}>
           ${this.customTrigger
             ? html`
                 <span slot="menu-trigger">
@@ -260,7 +260,7 @@ export namespace DatePicker {
                   role="combobox"
                   ?newMomentum=${this.computedNewMomentum}
                   placeholder=${this.placeholder ? this.placeholder : "YYYY-MM-DD"}
-                  value=${ifDefined(this.value)}
+                  value=${ifDefined(this.value ?? undefined)}
                   htmlId=${this.htmlId}
                   label=${this.label}
                   ariaLabel=${this.ariaLabel + this.chosenDateLabel()}
@@ -290,6 +290,7 @@ export namespace DatePicker {
                 focused: this.focusedDate,
                 weekStart: this.weekStart
               }}
+              ?short-day=${this.computedNewMomentum}
               .filterParams=${{ minDate: this.minDateData, maxDate: this.maxDateData, filterDate: this.filterDate }}
             ></md-datepicker-calendar>
             <slot name="time-picker"></slot>

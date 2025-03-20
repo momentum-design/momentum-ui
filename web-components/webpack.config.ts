@@ -20,6 +20,10 @@ const p2 = path.resolve("../node_modules/@momentum-ui");
 
 export const commonAlias = { "@": pSrc, "@css": pCss, "@img": pImg };
 
+function toPosixPath(p: string, glob: string) {
+  return path.posix.join(p.replace(/\\/g, "/"), glob);
+}
+
 let pMomentum: string | null = null;
 if (fs.existsSync(p1)) {
   pMomentum = p1;
@@ -35,7 +39,9 @@ const common: webpack.Configuration = {
   resolve: {
     extensions: [".ts", ".js", ".scss"],
     alias: { ...commonAlias },
-    fallback: { timers: require.resolve("timers-browserify") }
+    fallback: {
+      timers: require.resolve("timers-browserify")
+    }
   },
   module: {
     rules: [
@@ -52,7 +58,7 @@ const common: webpack.Configuration = {
         },
         include: [
           path.resolve("node_modules/@momentum-design/icons/dist/svg"),
-          path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos")
+          path.resolve("node_modules/@momentum-design/brand-visuals/dist/logos/svg")
         ]
       }
     ]
@@ -115,8 +121,8 @@ export const commonDev = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "css" },
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "css" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "css" },
-        { from: `${pCss}/*.css`, to: "css/[name][ext]" },
-        { from: `${pStats}/**/*.json`, to: "stats/[name][ext]" },
+        { from: toPosixPath(pCss, "*.css"), to: "css/[name][ext]" },
+        { from: toPosixPath(pStats, "**/*.json"), to: "stats/[name][ext]" },
         { from: `node_modules/@momentum-design/brand-visuals/dist/backgrounds`, to: "images/brand-visuals/backgrounds" }
       ]
     })
@@ -227,7 +233,7 @@ const commonDist = merge(common, {
         { from: `${pMomentum}/core/css/momentum-ui.min.css`, to: "assets/styles" },
         { from: `${pMomentum}/core/css/momentum-ui.min.css.map`, to: "assets/styles" },
         { from: `${pMomentum}/icons/css/momentum-ui-icons.min.css`, to: "assets/styles" },
-        { from: `${pCss}/*.css`, to: "assets/styles/[name][ext]" }
+        { from: toPosixPath(pCss, "*.css"), to: "assets/styles/[name][ext]" }
       ]
     }),
     new RemovePlugin({

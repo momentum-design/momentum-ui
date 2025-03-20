@@ -1,11 +1,17 @@
-import { fixture, fixtureCleanup, html, elementUpdated } from "@open-wc/testing-helpers";
-import "./TimePicker";
-import { Key } from "@/constants";
-import { TimePicker } from "@/components/timepicker/TimePicker";
 import { Input } from "@/components/input/Input";
+import { TimePicker } from "@/components/timepicker/TimePicker";
+import { Key } from "@/constants";
+import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
+import "./TimePicker";
 
 describe("TimePicker Component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
   test("should render", async () => {

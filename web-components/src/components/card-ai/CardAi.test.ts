@@ -37,7 +37,13 @@ const getSummariseMoreButton = (element: CardAi.ELEMENT) =>
   element.shadowRoot?.querySelector(".md-card-ai-footer  md-button");
 
 describe("CardAi component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 
@@ -127,8 +133,6 @@ describe("CardAi component", () => {
       false
     );
 
-    jest.useFakeTimers();
-
     const writeTextMock = jest.fn();
     Object.assign(navigator, {
       clipboard: {
@@ -153,8 +157,6 @@ describe("CardAi component", () => {
     await elementUpdated(element);
 
     expect(copyButton.textContent).toBe(originalText);
-
-    jest.useRealTimers();
   });
 
   test("Actioning thumbs up should dispatch its event", async () => {

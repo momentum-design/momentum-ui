@@ -10,7 +10,7 @@ import {
   getMonth,
   getStartOfMonth,
   getStartOfWeek,
-  getWeekdayNameInLocale,
+  getWeekdayNameVeryShortInLocale,
   isDayDisabled,
   isSameDay,
   isSameMonth,
@@ -88,7 +88,7 @@ describe("DateTime Module", () => {
   });
   test("getWeekdayNameInLocale function returns A letter", async () => {
     const date = DateTime.fromSQL("2020-10-10");
-    const utilFuncReturn = getWeekdayNameInLocale("en-GB", date);
+    const utilFuncReturn = getWeekdayNameVeryShortInLocale("en-GB", date);
     expect(typeof utilFuncReturn).toEqual("string");
     expect(utilFuncReturn.length).toEqual(1);
   });
@@ -130,7 +130,7 @@ describe("DateTime Module", () => {
       minDate: date1.minus({ days: 5 }),
       maxDate: date1.plus({ days: 5 }),
       filterDate: (date: DateTime) => {
-        return date.weekdayShort.startsWith("M");
+        return date.weekdayShort?.startsWith("M");
       }
     };
     const invalidDate1 = date1.plus({ days: 10 });
@@ -142,7 +142,7 @@ describe("DateTime Module", () => {
     const utilFuncReturn3 = isDayDisabled(invalidDate2, filters);
     const utilFuncReturn4 = isDayDisabled(validDate, filters);
 
-    if (date1.weekdayShort.startsWith("M")) {
+    if (date1.weekdayShort?.startsWith("M")) {
       expect(utilFuncReturn1).toBeTruthy;
     } else {
       expect(utilFuncReturn1).toBeFalsy;

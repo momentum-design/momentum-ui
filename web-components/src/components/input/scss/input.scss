@@ -411,6 +411,10 @@
     &__after {
       left: auto;
       right: 0;
+
+      &.hidden {
+        display: none;
+      }
     }
 
     &__before {

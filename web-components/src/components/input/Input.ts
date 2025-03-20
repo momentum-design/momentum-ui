@@ -387,7 +387,7 @@ export namespace Input {
     }
 
     get hasRightIcon() {
-      if (this.clear && !this.disabled && !!this.value && !this.readOnly) {
+      if (this.clear && !this.disabled && this.value && !this.readOnly) {
         return true;
       }
 
@@ -476,8 +476,15 @@ export namespace Input {
       }
     }
 
+    private get inputRightTemplateClassMap() {
+      return {
+        "md-input__after": true,
+        hidden: !this.hasRightIcon
+      };
+    }
+
     inputRightTemplate() {
-      if (this.clear && !this.disabled && !!this.value && !this.readOnly) {
+      if (this.clear && !this.disabled && this.value && !this.readOnly) {
         return html`
           <div class="md-input__after">
             <md-button
@@ -500,7 +507,7 @@ export namespace Input {
         `;
       } else if (!this.compact) {
         return html`
-          <div class="md-input__after">
+          <div class=${classMap(this.inputRightTemplateClassMap)}>
             <slot name="input-section-right" @slotchange=${this.handleRighSlotChange}></slot>
           </div>
         `;

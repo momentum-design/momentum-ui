@@ -1,10 +1,16 @@
 import "@/components/icon/Icon";
 import { fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Badge";
-import { Badge } from "./Badge";
+import { type Badge } from "./Badge";
 
 describe("Badge component", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
     fixtureCleanup();
   });
 

@@ -6,7 +6,15 @@ import { nothing } from "lit-html";
 import "./Button";
 
 describe("Button Component", () => {
-  afterEach(fixtureCleanup);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    fixtureCleanup();
+  });
 
   test("should render one Button", async () => {
     const element: Button.ELEMENT = await fixture(html` <md-button></md-button> `);
@@ -146,8 +154,9 @@ describe("Button Component", () => {
     jest.spyOn(Button.ELEMENT.prototype, "blur");
     const element = await fixture<Button.ELEMENT>(`<md-button label="Button Component"></md-button>`);
     const evt = new MouseEvent("click");
-    setTimeout(() => element.handleClick(evt));
-    const { detail } = await oneEvent(element, "button-click");
+    const buttonClickPromise = oneEvent(element, "button-click");
+    element.handleClick(evt);
+    const { detail } = await buttonClickPromise;
     expect(detail).toBeDefined();
     expect(detail.srcEvent.type).toBe("click");
   });

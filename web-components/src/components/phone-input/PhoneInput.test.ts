@@ -11,14 +11,17 @@ const countryData = [
 ];
 
 describe("PhoneInput Component", () => {
+  let customArraySpy: jest.SpyInstance<unknown, unknown[]>;
+  beforeEach(() => {
+    jest.useFakeTimers();
+    customArraySpy = jest.spyOn(countryCodesList, "customArray").mockReturnValueOnce(countryData);
+  });
+
   afterEach(() => {
     fixtureCleanup();
     jest.restoreAllMocks();
-  });
-
-  let customArraySpy: jest.SpyInstance<unknown, unknown[]>;
-  beforeEach(() => {
-    customArraySpy = jest.spyOn(countryCodesList, "customArray").mockReturnValueOnce(countryData);
+    jest.clearAllTimers();
+    jest.useRealTimers();
   });
 
   test("should get country code list", async () => {
@@ -73,7 +76,9 @@ describe("PhoneInput Component", () => {
     expect(element.countryCallingCode).toEqual("");
   });
   test("should emit a custom event on input blur", async () => {
-    const parentElement = await fixture(html` <div class="parent"></div> `);
+    const parentElementPromise = fixture(html` <div class="parent"></div> `);
+    jest.runOnlyPendingTimers();
+    const parentElement = await parentElementPromise;
     const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input></md-phone-input> `);
 
     const mockFunc = jest.fn();
@@ -87,7 +92,9 @@ describe("PhoneInput Component", () => {
     expect(element.value).toBeFalsy();
   });
   test("should verify phone number on input blur", async () => {
-    const parentElement = await fixture(html` <div class="parent"></div> `);
+    const parentElementPromise = fixture(html` <div class="parent"></div> `);
+    jest.runOnlyPendingTimers();
+    const parentElement = await parentElementPromise;
     const element = await fixture<PhoneInput.ELEMENT>(html` <md-phone-input value="(773)-777-6002"></md-phone-input> `);
 
     parentElement.appendChild(element);
@@ -173,7 +180,9 @@ describe("PhoneInput Component", () => {
   });
 
   test("should not display error on empty input text-box", async () => {
-    const parentElement = await fixture(html` <div class="parent"></div> `);
+    const parentElementPromise = fixture(html` <div class="parent"></div> `);
+    jest.runOnlyPendingTimers();
+    const parentElement = await parentElementPromise;
     const element = await fixture<PhoneInput.ELEMENT>(html`
       <md-phone-input
         type="tel"

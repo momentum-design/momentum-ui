@@ -816,9 +816,11 @@ export namespace Dropdown {
                   part="dropdown-header"
                   role="combobox"
                   tabindex="0"
-                >
+                  >
+                  ${this.leftIcon ? html`<span class="md-dropdown-label--left-icon">${this.iconTemplate()}</span>` : nothing}
                   <span class="md-dropdown-label--text ${classMap({ "md-new-dropdown-label--text": this.newMomentum })}"
-                    >${this.labelTitle}</span
+                  > 
+                    ${this.labelTitle}</span
                   >
                   <span class="md-dropdown-label--icon">
                     <md-icon name="arrow-down-bold" size="16" iconSet="momentumDesign"></md-icon>

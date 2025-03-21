@@ -11,6 +11,7 @@ export const advanceListTemplate = html`
     <parent-component-generic></parent-component-generic>
     <parent-component-pre-select></parent-component-pre-select>
     <parent-component-error></parent-component-error>
+    <parent-component-error .isNonSelectable=${true}></parent-component-error>
     <div class="empty-div" style="height: 200px"></div>
   </div>
 `;

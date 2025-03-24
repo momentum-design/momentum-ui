@@ -214,12 +214,13 @@ slot {
 }
 
 .tab-action-button {
-  display: flex;
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-left: calc(#{$tab-base-indent} * 4);
-
-  md-icon {
-    display: inherit;
-  }
+  height:16px;
+  width: 16px;
+  
 
   &:hover {
     cursor: pointer;

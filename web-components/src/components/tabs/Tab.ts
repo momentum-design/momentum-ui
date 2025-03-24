@@ -170,15 +170,17 @@ export namespace Tab {
 
     renderCrossButton() {
       return html`
-        <div
-          ?disabled=${this.disabled}
-          tabindex="-1"
+        <md-button
+          variant="ghost"
+          size="size-none"
+          circle
           class="tab-action-button"
+          ?disabled=${this.disabled}
           @click=${(e: MouseEvent) => this.handleCrossClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleCrossKeydown(e)}
         >
-          <md-icon tabindex="0" name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
-        </div>
+          <md-icon name="cancel-bold" size="14" iconSet="momentumDesign"></md-icon>
+        </md-button>
       `;
     }
 
@@ -186,11 +188,10 @@ export namespace Tab {
       return html`
         <button
           type="button"
-          role="button"
+          role="presentation"
           ?disabled=${this.disabled}
           aria-selected="false"
           aria-label=${ifDefined(this.ariaLabel || undefined)}
-          aria-hidden="true"
           tabindex="-1"
           part="tab"
           class="${classMap({

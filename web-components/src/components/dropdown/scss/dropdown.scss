@@ -45,6 +45,10 @@
         cursor: pointer;
         height: 15px;
         display: flex;
+
+        md-icon {
+          color: var(--md-primary-text-color, $md-gray-05);
+        }
       }
 
       &--icon {

@@ -22,6 +22,7 @@ export { ButtonGroup } from "./components/button-group/ButtonGroup";
 export { Button } from "./components/button/Button";
 export { CardAi } from "./components/card-ai/CardAi";
 export { Card } from "./components/card/Card";
+export { CardV2 } from "./components/card-v2/CardV2";
 export { ChatMessage } from "./components/chat-message/ChatMessage";
 export { Checkbox } from "./components/checkbox/Checkbox";
 export { CheckboxGroup } from "./components/checkbox/CheckboxGroup";

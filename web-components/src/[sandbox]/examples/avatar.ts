@@ -149,7 +149,7 @@ export class AvatarTemplateSandbox extends LitElement {
         newMomentum
       ></md-avatar>
       <md-avatar
-        title="Channel Email Inbound"
+        title="Channel Social"
         type="channel-social"
         avatar-style="default"
         presenceType="active"

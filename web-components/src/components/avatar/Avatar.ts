@@ -52,6 +52,7 @@ export namespace Avatar {
     @property({ type: String, attribute: "icon-name" }) iconName = "";
     @property({ type: Boolean }) failurePresence = false;
     @property({ type: String }) type: Type = "";
+    @property({ type: String }) presenceType: Type = "";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
@@ -90,15 +91,27 @@ export namespace Avatar {
     }
 
     firstUpdated() {
-      const { presenceColor, presenceIcon } = getPresenceIconColor(this.type, this.failurePresence, this.newMomentum);
+      const { presenceColor, presenceIcon } = getPresenceIconColor(
+        this.presenceType || this.type,
+        this.failurePresence,
+        this.newMomentum
+      );
       this.presenceColor = presenceColor!;
       this.presenceIcon = presenceIcon!;
     }
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
-      if (changedProperties.has("type") || changedProperties.has("newMomentum")) {
-        const { presenceColor, presenceIcon } = getPresenceIconColor(this.type, this.failurePresence, this.newMomentum);
+      if (
+        changedProperties.has("type") ||
+        changedProperties.has("presenceType") ||
+        changedProperties.has("newMomentum")
+      ) {
+        const { presenceColor, presenceIcon } = getPresenceIconColor(
+          this.presenceType || this.type,
+          this.failurePresence,
+          this.newMomentum
+        );
         this.presenceColor = presenceColor!;
         this.presenceIcon = presenceIcon!;
       }
@@ -146,6 +159,7 @@ export namespace Avatar {
     }
     private readonly iconNameMap: { [key: string]: string } = {
       "channel-chat": "chat-filled",
+      "channel-social": "sms-message-filled",
       "channel-sms-inbound": "sms-filled",
       "channel-sms-outbound": "sms-outgoing-filled",
       "channel-email-inbound": "email-filled",
@@ -301,7 +315,7 @@ export namespace Avatar {
     }
 
     renderPresence() {
-      return this.newMomentum && this.type && this.type !== "self" && this.presenceIcon
+      return this.newMomentum && (this.presenceType || this.type) && this.type !== "self" && this.presenceIcon
         ? html`
             <md-presence
               class="avatar-presence"

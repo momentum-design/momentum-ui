@@ -120,6 +120,44 @@ export class AvatarTemplateSandbox extends LitElement {
       <md-avatar title="Channel Whats App" type="channel-whats-app" avatar-style="default" state="rest"></md-avatar>
       <md-avatar title="Channel We Chat" type="channel-we-chat" avatar-style="default" state="rest"></md-avatar>
       <md-avatar title="Suspected Spam" type="channel-spam"></md-avatar>
+      <h3>Icon Avatar Channel with Presence for State Selector</h3>
+      <md-avatar
+        title="Channel Call"
+        type="channel-call"
+        size="36"
+        avatar-style="default"
+        presenceType="engaged"
+        state="rest"
+        newMomentum
+      ></md-avatar>
+      <md-avatar
+        title="Channel Chat"
+        type="channel-chat"
+        size="36"
+        avatar-style="default"
+        presenceType="idle"
+        state="rest"
+        newMomentum
+      ></md-avatar>
+      <md-avatar
+        title="Channel Email Inbound"
+        type="channel-email-inbound"
+        avatar-style="default"
+        presenceType="rona"
+        state="rest"
+        size="36"
+        newMomentum
+      ></md-avatar>
+      <md-avatar
+        title="Channel Email Inbound"
+        type="channel-social"
+        avatar-style="default"
+        presenceType="active"
+        state="rest"
+        size="36"
+        newMomentum
+      ></md-avatar>
+
       <h3>Icon Avatar Channel with Custom Icon</h3>
       <md-avatar title="Custom Channel" type="channel-custom" avatar-style="table" state="rest">
         <md-icon name="placeholder-filled" iconSet="momentumDesign"></md-icon>

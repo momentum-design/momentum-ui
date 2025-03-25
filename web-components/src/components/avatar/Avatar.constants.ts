@@ -33,6 +33,7 @@ const AvatarType = [
   "channel-email-inbound",
   "channel-email-outbound",
   "channel-call",
+  "channel-social",
   "channel-callback",
   "channel-headset",
   "channel-campaign",

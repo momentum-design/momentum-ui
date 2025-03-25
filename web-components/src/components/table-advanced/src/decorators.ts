@@ -97,14 +97,14 @@ export class Evt<T extends Detail<V>, V = any> {
 // TEMPLATE decorator
 // --------------------------------------
 
-import { directive, NodePart, Part } from "lit-html";
+import { ChildPart, directive, Directive, PartInfo, PartType } from "lit/directive.js";
 
 interface PreviousValue {
   readonly template: HTMLTemplateElement;
   readonly fragment: DocumentFragment;
 }
 
-const previousValues = new WeakMap<NodePart, PreviousValue>();
+const previousValues = new WeakMap<ChildPart, PreviousValue>();
 
 export type TemplateInfo = {
   content: string;
@@ -124,27 +124,40 @@ type TPayload = TemplateInfo & {
 
 export type TemplateCallback = (p: TCallback) => void;
 
-export const templateCallback = directive((p: TPayload) => (part: Part): void => {
-  if (!(part instanceof NodePart)) {
-    throw new Error("templateCallback can only be used in text bindings");
+class TemplateCallbackDirective extends Directive {
+  private previousValue?: PreviousValue;
+
+  constructor(partInfo: PartInfo) {
+    super(partInfo);
+    if (partInfo.type !== PartType.CHILD) {
+      throw new Error("templateCallback can only be used in text bindings");
+    }
   }
 
-  const previousValue = previousValues.get(part);
-
-  if (previousValue !== undefined && p.template === previousValue.template && part.value === previousValue.fragment) {
-    return;
+  render(p: TPayload) {
+    return p.template;
   }
 
-  const fragment = document.importNode(p.template.content, true);
+  update(part: ChildPart, [p]: [TPayload]) {
+    const previousValue = previousValues.get(part);
 
-  p.cb({
-    content: p.content,
-    row: p.row,
-    col: p.col,
-    insertIndex: p.insertIndex,
-    fragment
-  });
+    if (previousValue !== undefined && p.template === previousValue.template) {
+      return previousValue.fragment;
+    }
 
-  part.setValue(fragment);
-  previousValues.set(part, { template: p.template, fragment });
-});
+    const fragment = document.importNode(p.template.content, true);
+
+    p.cb({
+      content: p.content,
+      row: p.row,
+      col: p.col,
+      insertIndex: p.insertIndex,
+      fragment
+    });
+
+    previousValues.set(part, { template: p.template, fragment });
+    return fragment;
+  }
+}
+
+export const templateCallback = directive(TemplateCallbackDirective);

@@ -13,13 +13,13 @@ import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { debounce, findHighlight } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
-import { scroll } from "lit-virtualizer";
+import { virtualize, virtualizerRef } from "@lit-labs/virtualizer/virtualize.js";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, query, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
 import { setTimeout } from "timers";
 import styles from "./scss/module.scss";
 
@@ -92,7 +92,7 @@ export namespace ComboBox {
 
     @property({ type: String, reflect: true }) ariaLabel = ""; // This aria-label is used by default when there is no search or list-items are displayed.
     @property({ type: String, attribute: "search-result-aria-label" }) searchResultAriaLabel = ""; // This aria-label is dynamic and used when there is search and list-items are displayed.
-    @internalProperty()
+    @state()
     private ariaLabelForComboBox = ""; // This internal property is used to conditionally set aria-label.
 
     @property({ type: String, attribute: "clear-aria-label" }) clearAriaLabel = "Clear";
@@ -129,9 +129,9 @@ export namespace ComboBox {
 
     private readonly messageController = new MessageController();
 
-    @internalProperty()
+    @state()
     private isOptGroup = false;
-    @internalProperty()
+    @state()
     private isSelectAllChecked = false;
     get focusedIndex() {
       return this._focusedIndex;
@@ -159,6 +159,17 @@ export namespace ComboBox {
         }
         if (newList) {
           newList?.toggleAttribute("focused", true);
+        }
+
+        const element = this.virtualizer?.[virtualizerRef]?.element?.(index);
+        if (element) {
+          try {
+            element.scrollIntoView({
+              block: index === -1 ? "start" : "center"
+            });
+          } catch (e) {
+            console.warn("Error while calling scrollIntoView");
+          }
         }
       } else {
         if (this.lists) {
@@ -1815,18 +1826,14 @@ export namespace ComboBox {
                         this.filterOptions(this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue)
                           .length > 0
                       ? html`
-                          <div class="virtual-scroll" @rangechange=${this.rangeChanged}>
-                            ${scroll({
+                          <div class="virtual-scroll" @rangeChanged=${this.rangeChanged}>
+                            ${virtualize({
+                              scroller: true,
                               items: this.filterOptions(
                                 this.trimSpace ? this.inputValue.replace(/\s+/g, "") : this.inputValue
                               ),
                               renderItem: (item: string | OptionMember, index?: number) =>
-                                this.renderItem(item, index || 0),
-                              useShadowDOM: false,
-                              scrollToIndex: {
-                                index: this.focusedIndex,
-                                position: this.focusedIndex === -1 ? "start" : "center"
-                              }
+                                this.renderItem(item, index || 0)
                             })}
                           </div>
                         `

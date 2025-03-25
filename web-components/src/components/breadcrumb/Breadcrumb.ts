@@ -1,8 +1,9 @@
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, queryAll } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
 import styles from "./scss/module.scss";
 
 export namespace Breadcrumb {

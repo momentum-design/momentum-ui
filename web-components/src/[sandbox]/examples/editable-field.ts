@@ -3,8 +3,8 @@ import "@/components/button/Button";
 import "@/components/editable-textfield/EditableTextfield";
 import { Input } from "@/components/input/Input";
 import { ValidationRegex } from "@/utils/validations";
-import { customElement, html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
+import { html, LitElement, nothing } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
 const successMessageArr: Input.Message = {
   message: "This is where the message would be.",

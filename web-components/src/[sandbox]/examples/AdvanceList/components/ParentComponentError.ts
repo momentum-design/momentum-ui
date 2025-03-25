@@ -1,6 +1,7 @@
 import "@/components/advance-list/AdvanceList";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { property, state } from "lit/decorators.js";
 import "./ErrorLoader/ErrorLoader";
 
 export namespace ParentComponentError {
@@ -11,13 +12,13 @@ export namespace ParentComponentError {
     @property({ type: Boolean }) isError = false;
     @property({ type: Boolean }) isNonSelectable = false;
 
-    @internalProperty()
+    @state()
     private page = 1;
 
-    @internalProperty()
+    @state()
     private shouldFail = false;
 
-    @internalProperty()
+    @state()
     private totalRecords = 0;
 
     constructor() {

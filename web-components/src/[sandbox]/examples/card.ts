@@ -1,7 +1,8 @@
 import { cardMenuItems } from "@/[sandbox]/sandbox.mock";
 import "@/components/badge/Badge";
 import "@/components/card/Card";
-import { customElement, html, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("card-template-sandbox")
 export class CardTemplateSandbox extends LitElement {

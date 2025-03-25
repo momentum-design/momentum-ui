@@ -6,16 +6,16 @@
  *
  */
 
-import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
+import "@/components/input/Input";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { ValidationRegex } from "@/utils/validations";
 import reset from "@/wc_scss/reset.scss";
 import dompurify from "dompurify";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { CSSResultArray, html, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import "@/components/input/Input";
+import { CSSResultArray, html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { numInputTypes } from "../../utils/enums"; // Keep type import as a relative path
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 

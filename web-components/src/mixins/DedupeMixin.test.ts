@@ -1,5 +1,6 @@
 import { defineCE, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { customElement, LitElement } from "lit-element";
+import { LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
 import { AnyConstructor, DedupeMixin, wasApplied } from "./DedupeMixin";
 
 describe("Dedupe Mixin", () => {

@@ -3,7 +3,8 @@ import "@/components/button/Button";
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
 import { Dropdown } from "@/components/dropdown/Dropdown";
-import { customElement, html, internalProperty, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { customElement, property, state } from "lit/decorators.js";
 
 enum BannerType {
   Default = "default",
@@ -25,7 +26,7 @@ export class AlertBannerTemplateSandbox extends LitElement {
   @property({ type: Boolean }) showLeftIcon = true;
   @property({ type: Boolean }) showRefreshButton = true;
 
-  @internalProperty()
+  @state()
   private showErrorExpandBanner = false;
 
   async openAlert(kind: string) {

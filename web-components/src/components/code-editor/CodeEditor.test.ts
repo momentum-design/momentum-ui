@@ -1,6 +1,6 @@
 import { Button } from "@/index";
 import { elementUpdated, fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
+import { html } from "lit";
 import "./CodeEditor";
 import { type CodeEditor } from "./CodeEditor";
 

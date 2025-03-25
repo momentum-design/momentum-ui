@@ -4,7 +4,7 @@ import "@/components/badge/Badge";
 import "@/components/chat-message/ChatMessage";
 import "@/components/icon/Icon";
 import "@/components/tooltip/Tooltip";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const chatMessageTemplate = html`
   <md-chat-message title="John Doe" time="11:27AM" status="Received">

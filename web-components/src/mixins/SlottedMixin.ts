@@ -32,7 +32,8 @@
  * }
  */
 
-import { LitElement, property, PropertyValues, query } from "lit-element";
+import { LitElement, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -77,7 +78,7 @@ export const SlottedMixin = <T extends AnyConstructor<SlotableClass>>(
       return this._slotElement;
     }
 
-    private handleSlotChange = () => {
+    private readonly handleSlotChange = () => {
       this._isSlotted = true;
       this.slotted = this.filterSlotted();
     };

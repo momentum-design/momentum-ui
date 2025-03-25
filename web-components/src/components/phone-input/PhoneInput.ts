@@ -5,10 +5,10 @@ import reset from "@/wc_scss/reset.scss";
 import { customArray } from "country-codes-list";
 import { findFlagUrlByIso2Code } from "country-flags-svg";
 import { AsYouType, CountryCode, isValidNumberForRegion } from "libphonenumber-js";
-import { LitElement, html, internalProperty, property, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { repeat } from "lit-html/directives/repeat.js";
+import { LitElement, html, nothing } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { repeat } from "lit/directives/repeat.js";
 import { Input } from "../input/Input"; // Keep type import as a relative path
 import styles from "./scss/module.scss";
 export namespace PhoneInput {
@@ -53,10 +53,10 @@ export namespace PhoneInput {
     @property({ type: String }) id = "";
     @property({ type: Boolean }) newMomentum = false;
 
-    @internalProperty() private countryCode: CountryCode = "US";
-    @internalProperty() private codeList = [];
-    @internalProperty() private formattedValue = "";
-    @internalProperty() private isValid = true;
+    @state() private countryCode: CountryCode = "US";
+    @state() private codeList = [];
+    @state() private formattedValue = "";
+    @state() private isValid = true;
 
     @query("md-combobox") combobox!: HTMLElement;
 

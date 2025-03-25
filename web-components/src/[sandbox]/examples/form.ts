@@ -1,13 +1,14 @@
 import "@/components/button/Button";
 import "@/components/form/Form";
 import "@/components/input/Input";
-import { customElement, html, internalProperty, LitElement, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
 @customElement("form-sandbox")
 export class FormSandbox extends LitElement {
-  @internalProperty() private isFormValid = false;
-  @internalProperty() private isNameFilled = false;
-  @internalProperty() private isCityFilled = false;
+  @state() private isFormValid = false;
+  @state() private isNameFilled = false;
+  @state() private isCityFilled = false;
 
   handleFormSubmit(event: Event) {
     event.preventDefault();

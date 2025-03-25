@@ -1,5 +1,6 @@
 import "@/components/card-ai/CardAi";
-import { customElement, html, LitElement, css, property } from "lit-element";
+import { css, html, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("card-ai-template-sandbox")
 export class CardAiTemplateSandbox extends LitElement {

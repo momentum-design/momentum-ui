@@ -2,7 +2,7 @@ import "@/components/button/Button";
 import "@/components/input/Input";
 import { Key } from "@/constants";
 import { elementUpdated, fixture, fixtureCleanup, oneEvent } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
+import { html } from "lit";
 import { MenuOverlay, OverlaySizes } from "./MenuOverlay";
 
 Object.defineProperties(Element.prototype, {

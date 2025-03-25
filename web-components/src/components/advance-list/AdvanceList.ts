@@ -2,8 +2,9 @@ import { Key } from "@/constants";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
-import { LitElement, PropertyValues, html, internalProperty, property, query, queryAll } from "lit-element";
-import { scroll } from "lit-virtualizer";
+import { virtualize } from "@lit-labs/virtualizer/virtualize.js";
+import { LitElement, PropertyValues, html } from "lit";
+import { property, query, queryAll, state } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export namespace AdvanceList {
@@ -29,16 +30,16 @@ export namespace AdvanceList {
     @queryAll("div.default-wrapper") lists?: HTMLDivElement[];
     @query(".virtual-scroll") listContainer?: HTMLDivElement;
 
-    @internalProperty()
+    @state()
     private scrollIndex = -1;
 
-    @internalProperty()
+    @state()
     activeId = "";
 
-    @internalProperty()
+    @state()
     selectedItemsIds: string[] = [];
 
-    @internalProperty()
+    @state()
     private isUserNavigated = false; // this flag is used to control scroll to index this will became true only when user navigated using keyboard
 
     connectedCallback(): void {
@@ -74,7 +75,8 @@ export namespace AdvanceList {
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
       if (changedProperties.has("value") && (changedProperties.get("value") !== undefined || this.value.length > 0)) {
-        this.requestUpdate().then(() => {
+        this.requestUpdate();
+        this.updateComplete.then(() => {
           this.selectedItemsIds = this.value;
           this.updateSelectedState();
         });
@@ -333,16 +335,12 @@ export namespace AdvanceList {
           role=${this.ariaRoleList}
           @rangechange=${this.handleRangeChange}
         >
-          ${scroll({
+          ${virtualize({
             items: this.items,
-            renderItem: (item: any, index?: number) => this.renderItem(item, index || 0),
-            useShadowDOM: true,
-            scrollToIndex: this.isUserNavigated
-              ? {
-                  index: this.scrollIndex,
-                  position: this.scrollIndex === 0 ? "start" : "center"
-                }
-              : undefined
+            renderItem: (item: any, index: number) => this.renderItem(item, index),
+            layout: {
+              direction: "vertical"
+            }
           })}
         </div>
       `;

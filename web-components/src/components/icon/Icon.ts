@@ -11,11 +11,11 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
 import iconNames from "@momentum-ui/icons/data/momentumUiIconsNames.json";
 import getColorValue from "@momentum-ui/utils/lib/getColorValue";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { styleMap } from "lit-html/directives/style-map";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { styleMap } from "lit/directives/style-map.js";
 import designMapping from "./momentum-ui-to-design-icons.json";
 import styles from "./scss/module.scss";
 
@@ -176,7 +176,7 @@ export namespace Icon {
 
     private static readonly designLookup = new Map(Object.entries(designMapping));
 
-    @internalProperty()
+    @state()
     private svgIcon: HTMLElement | null = null;
 
     isPath(importedIcon: string) {

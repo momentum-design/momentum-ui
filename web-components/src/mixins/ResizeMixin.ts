@@ -22,7 +22,7 @@
  * }
  */
 
-import { LitElement } from "lit-element";
+import { LitElement } from "lit";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

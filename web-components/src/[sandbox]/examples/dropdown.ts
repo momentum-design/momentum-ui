@@ -1,5 +1,5 @@
 import { Dropdown } from "@/components/dropdown/Dropdown";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const dropdownStringOptions = ["one", "two", "three", "   non-trimmed-with-spaces "];
 
@@ -112,15 +112,14 @@ export const dropdownTemplate = html`
     }}"
   ></md-dropdown>
 
-    <h3>passing left icon with out searchable props</h3>
-    <md-dropdown
-      .options="${dropdownStringOptions}"
-      left-icon="search-bold"
-      @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
+  <h3>passing left icon with out searchable props</h3>
+  <md-dropdown
+    .options="${dropdownStringOptions}"
+    left-icon="search-bold"
+    @dropdown-selected="${(e: CustomEvent<Dropdown.EventDetail["dropdown-selected"]>) => {
       console.log("[Strings Options] Selected: ", e.detail);
     }}"
   ></md-dropdown>
-
 
   <h3>Strings Options (Disabled)</h3>
   <md-dropdown .options="${dropdownStringOptions}" disabled></md-dropdown>

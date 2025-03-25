@@ -19,9 +19,9 @@ import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined.js";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { ARROW_HEIGHT, PlacementType, PopoverRoleType } from "./Popover.types";
 import styles from "./scss/module.scss";
 
@@ -199,7 +199,7 @@ export namespace Popover {
      * This property is used when both focus and mouse triggers are present
      * When focus leaves the trigger element if mouse is hovering we should not close the popover
      */
-    @internalProperty()
+    @state()
     private isMouseOver = false;
 
     static get styles() {

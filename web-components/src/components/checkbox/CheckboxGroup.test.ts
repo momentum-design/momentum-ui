@@ -1,9 +1,9 @@
+import { Key } from "@/constants";
+import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
+import { html } from "lit";
 import "./Checkbox";
 import "./CheckboxGroup";
 import { CheckboxGroup } from "./CheckboxGroup";
-import { Key } from "@/constants";
-import { fixture, fixtureCleanup } from "@open-wc/testing-helpers";
-import { html } from "lit-element";
 
 describe("Checkbox component", () => {
   let element: CheckboxGroup.ELEMENT;

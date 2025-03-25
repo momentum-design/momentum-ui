@@ -15,8 +15,9 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
 import { DateRangePicker } from "../date-range-picker/DateRangePicker";
 import { Input } from "../input/Input"; // Keep type import as a relative path
@@ -47,12 +48,12 @@ export namespace DatePicker {
     @property({ type: Boolean }) newMomentum?: boolean = undefined;
     @property({ type: Boolean, attribute: "compact-input" }) compactInput?: boolean = undefined;
 
-    @internalProperty() selectedDate: DateTime = now();
-    @internalProperty() focusedDate: DateTime = now();
+    @state() selectedDate: DateTime = now();
+    @state() focusedDate: DateTime = now();
     // eslint-disable-next-line @typescript-eslint/ban-types
-    @internalProperty() filterDate: Function | undefined = undefined;
-    @internalProperty() maxDateData: DateTime | undefined = undefined;
-    @internalProperty() minDateData: DateTime | undefined = undefined;
+    @state() filterDate: Function | undefined = undefined;
+    @state() maxDateData: DateTime | undefined = undefined;
+    @state() minDateData: DateTime | undefined = undefined;
 
     @query("md-menu-overlay") menuOverlay!: MenuOverlay.ELEMENT;
     get computedNewMomentum() {

@@ -1,7 +1,8 @@
 import "@/components/advance-list/AdvanceList";
 import "@/components/spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { property, state } from "lit/decorators.js";
 
 export namespace ParentComponentPreSelect {
   @customElementWithCheck("parent-component-pre-select")
@@ -11,10 +12,10 @@ export namespace ParentComponentPreSelect {
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
 
-    @internalProperty()
+    @state()
     private totalRecords = 0;
 
-    @internalProperty()
+    @state()
     private page = 1;
 
     constructor() {

@@ -12,7 +12,6 @@ import "@/components/card/Card";
 import { action } from "@storybook/addon-actions";
 import { Args, Meta, StoryObj } from "@storybook/web-components";
 import { html, nothing } from "lit";
-import { html as lit1Html } from "lit-html";
 
 const render = (args: Args) => {
   return html`
@@ -31,12 +30,12 @@ const render = (args: Args) => {
       >
         ${
           args.avatar
-            ? lit1Html`
+            ? html`
                 <md-avatar slot="card-header-aside" alt="avatar" title="Alyson Hoagland Pace" size="44"></md-avatar>
               `
             : nothing
         }
-        ${args.slotTitle ? lit1Html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
+        ${args.slotTitle ? html` <div slot="card-header-title"><h2>Test slot Title</h2></div> ` : nothing}
         <div slot="content">
           <img src=https://freepngimg.com/download/business/66729-google-business-big-analysis-analytics-data.png"
           alt="" />

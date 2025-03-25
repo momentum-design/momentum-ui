@@ -1,7 +1,7 @@
 import "@/components/icon/Icon";
 import "@/components/input/Input";
 import { Input } from "@/components/input/Input";
-import { html } from "lit-element";
+import { html } from "lit";
 
 const messageArr: Input.Message = {
   message: "This is where the message would be.",

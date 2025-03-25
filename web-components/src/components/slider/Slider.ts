@@ -2,11 +2,11 @@ import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Slider {
@@ -50,7 +50,7 @@ export namespace Slider {
       this.requestUpdate("disabled", oldValue);
     }
 
-    @internalProperty() private dragging = false;
+    @state() private dragging = false;
 
     private currentMouseEvent?: MouseEvent;
 

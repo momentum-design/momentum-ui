@@ -2,8 +2,8 @@ import "@/components/button/Button";
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
+import { html, LitElement, nothing } from "lit";
+import { property } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export namespace Pagination {

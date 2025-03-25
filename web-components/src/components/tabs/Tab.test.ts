@@ -1,7 +1,7 @@
 import { Key } from "@/constants";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { html, PropertyValues } from "lit-element";
+import { html, PropertyValues } from "lit";
 import { Tab } from "./Tab";
 
 describe("Tab", () => {

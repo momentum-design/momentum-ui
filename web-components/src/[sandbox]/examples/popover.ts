@@ -2,20 +2,21 @@ import "@/components/avatar/Avatar";
 import "@/components/button/Button";
 import "@/components/coachmark-popover/CoachmarkPopover";
 import "@/components/icon/Icon";
-import { css, customElement, html, internalProperty, LitElement } from "lit-element";
+import { css, html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
 @customElement("popover-template-sandbox")
 export class PopoverTemplateSandbox extends LitElement {
-  @internalProperty()
+  @state()
   private firstOpen = false;
 
-  @internalProperty()
+  @state()
   private secondOpen = false;
 
-  @internalProperty()
+  @state()
   private thirdOpen = false;
 
-  @internalProperty()
+  @state()
   private fourthOpen = false;
 
   private openFirstCoach() {

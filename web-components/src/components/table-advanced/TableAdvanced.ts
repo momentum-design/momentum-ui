@@ -12,11 +12,11 @@ import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusTrapMixin } from "@/mixins/FocusTrapMixin";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, queryAll } from "lit-element";
-import { nothing, TemplateResult } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { templateContent } from "lit-html/directives/template-content";
+import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
+import { property, queryAll, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { templateContent } from "lit/directives/template-content.js";
 import Papa from "papaparse";
 import styles from "./scss/module.scss";
 import { debounce, Evt, evt, TemplateCallback, templateCallback, TemplateInfo } from "./src/decorators";
@@ -38,23 +38,23 @@ export namespace TableAdvanced {
 
     @evt() "md-table-advanced-change"!: Evt<ChangeEvent>;
 
-    @internalProperty() tableConfig!: Config;
-    @internalProperty() tableData!: Data;
+    @state() tableConfig!: Config;
+    @state() tableData!: Data;
 
-    @internalProperty() private error = "";
+    @state() private error = "";
 
-    @internalProperty() private COLS: Col[] = [];
-    @internalProperty() private ROWS: Cell[][] = [];
-    private updCols = () => this.requestUpdate("COLS");
-    private updRows = () => this.requestUpdate("ROWS");
+    @state() private COLS: Col[] = [];
+    @state() private ROWS: Cell[][] = [];
+    private readonly updCols = () => this.requestUpdate("COLS");
+    private readonly updRows = () => this.requestUpdate("ROWS");
 
-    @internalProperty() private dragRow = -1;
-    @internalProperty() private dropRow = -1;
-    @internalProperty() private drops: [number, number][] = [];
+    @state() private dragRow = -1;
+    @state() private dropRow = -1;
+    @state() private drops: [number, number][] = [];
     private dragRowElem: HTMLElement | null = null;
 
-    @internalProperty() private dragCol = -1;
-    @internalProperty() private dropCol = -1;
+    @state() private dragCol = -1;
+    @state() private dropCol = -1;
 
     private isResizing = false;
     private isSelectable = false;
@@ -552,7 +552,7 @@ export namespace TableAdvanced {
     }
 
     private renderHead() {
-      let groups = nothing;
+      let groups: TemplateResult | symbol = nothing;
       const hasGroup = this.COLS.reduce((acc, col) => (acc = col.group ? true : acc), false);
       if (hasGroup) {
         let gName = "";

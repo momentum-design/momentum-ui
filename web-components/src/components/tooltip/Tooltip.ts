@@ -11,8 +11,9 @@ import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export const tooltipPlacement = Placement;

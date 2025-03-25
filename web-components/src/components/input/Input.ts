@@ -15,12 +15,12 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { FocusMixin } from "@/mixins/FocusMixin";
 import reset from "@/wc_scss/reset.scss";
 import * as iconNamesList from "@momentum-ui/icons/data/momentumUiIconsNames.json";
-import { LitElement, html, internalProperty, property, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
+import { LitElement, html, nothing } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
 export const containerSize = [
@@ -182,12 +182,12 @@ export namespace Input {
 
     @query(".md-input") input!: HTMLInputElement;
 
-    @internalProperty() private isEditing = false;
+    @state() private isEditing = false;
 
     @query('slot[name="input-section-right"]')
     private readonly inputSectionRightSlot!: HTMLSlotElement;
 
-    @internalProperty()
+    @state()
     private hasRightSlotContent = false;
 
     private readonly messageController = new MessageController();

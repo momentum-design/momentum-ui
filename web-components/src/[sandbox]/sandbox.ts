@@ -4,8 +4,9 @@ import { ThemeName } from "@/components/theme/Theme";
 import { themeManager } from "@/managers/ThemeManager";
 import reset from "@/wc_scss/reset.scss";
 import { MobxLitElement } from "@adobe/lit-mobx";
-import { customElement, html, internalProperty, PropertyValues, TemplateResult } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { html, PropertyValues, TemplateResult } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import {
   accordionTemplate,
   advanceListTemplate,
@@ -66,13 +67,13 @@ import {
 
 @customElement("momentum-ui-web-components-sandbox")
 export class Sandbox extends MobxLitElement {
-  @internalProperty()
+  @state()
   private selectedTab = "Accordion";
 
-  @internalProperty()
+  @state()
   private renderSelectedTabPanelOnly = true;
 
-  @internalProperty()
+  @state()
   private tabsOrientation: "horizontal" | "vertical" = "vertical";
 
   connectedCallback(): void {

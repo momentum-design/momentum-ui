@@ -9,7 +9,7 @@
 import "@/components/button-group/ButtonGroup";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const buttonGroupTemplate = html`
   <div class="column">

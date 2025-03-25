@@ -6,11 +6,12 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { CSSResultArray, html, LitElement, property } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { CSSResultArray, html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export const activityButtonSize = ["56", "68", "84", 56, 68, 84] as const;

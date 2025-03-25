@@ -13,10 +13,10 @@ import { themeManager } from "@/managers/ThemeManager";
 import { FocusTrapMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
 export const modalType = ["default", "full", "large", "small", "dialog"] as const;
@@ -57,7 +57,7 @@ export namespace Modal {
 
     @property({ type: String }) alignment?: Alignment = undefined;
 
-    @internalProperty() private animating = false;
+    @state() private animating = false;
 
     @query(".md-modal__backdrop") backDrop!: HTMLElement;
 

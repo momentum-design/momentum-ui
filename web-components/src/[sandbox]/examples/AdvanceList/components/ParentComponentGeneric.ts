@@ -1,7 +1,8 @@
 import "@/components/advance-list/AdvanceList";
 import "@/components/spinner/Spinner";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { property, state } from "lit/decorators.js";
 
 export namespace ParentComponentGeneric {
   @customElementWithCheck("parent-component-generic")
@@ -11,10 +12,10 @@ export namespace ParentComponentGeneric {
     @property({ type: Array }) value: string[] = [];
     @property({ type: Boolean }) isError = false;
 
-    @internalProperty()
+    @state()
     private page = 1;
 
-    @internalProperty()
+    @state()
     private readonly totalRecords = 60000; // Total count is set to 6000
 
     constructor() {

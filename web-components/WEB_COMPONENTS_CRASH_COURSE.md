@@ -64,13 +64,13 @@ Explore the TS intellisense to see more control `@property()` offers, like setti
 ##### Example
 `@property({ type: String, attribute: "alt-text" }) altText : string = "default"`
 
-#### `@internalProperty()`
-The `@internalProperty()` decorator serves a similar function, but does not expose an attribute interface for users. It could be accessed as an element property unless marked as `private`. Properties initialized with this decorator are good for a component's internal logic
+#### `@state()`
+The `@state()` decorator serves a similar function, but does not expose an attribute interface for users. It could be accessed as an element property unless marked as `private`. Properties initialized with this decorator are good for a component's internal logic
 
 ##### Example
-`@internalProperty() loadingState : boolean = false`
+`@state() loadingState : boolean = false`
 
-**NOTE:** you _can_ declare ordinary properties right within the class without a decorator, however `@property()` and `@internalProperty()` are wired to LitElement's lifecycle functions, and make it easier to trigger re-renders when those properties are updated.
+**NOTE:** you _can_ declare ordinary properties right within the class without a decorator, however `@property()` and `@state()` are wired to LitElement's lifecycle functions, and make it easier to trigger re-renders when those properties are updated.
 
 #### `@query()`
 The `@query()` decorator is a convenient way to grab a reference to an element that is within your web component's shadow root.

@@ -17,8 +17,9 @@ import flip from "@popperjs/core/lib/modifiers/flip";
 import offset from "@popperjs/core/lib/modifiers/offset";
 import preventOverflow from "@popperjs/core/lib/modifiers/preventOverflow";
 import { createPopper, defaultModifiers, Instance, Rect } from "@popperjs/core/lib/popper-lite";
-import { html, LitElement, property, PropertyValues, query, queryAssignedNodes } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query, queryAssignedNodes } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./scss/module.scss";
 
 export enum OverlaySizes {
@@ -78,7 +79,7 @@ export namespace MenuOverlay {
     @query(".overlay-container") overlayContainer!: HTMLDivElement;
     @query(".overlay-arrow") arrow!: HTMLDivElement;
 
-    @queryAssignedNodes("menu-trigger", true) trigger?: NodeListOf<HTMLElement>;
+    @queryAssignedNodes({ slot: "menu-trigger", flatten: true }) trigger?: NodeListOf<HTMLElement>;
 
     private popperInstance: Instance | null = null;
     private triggerElement: HTMLElement | null = null;
@@ -206,13 +207,11 @@ export namespace MenuOverlay {
       }
 
       if (changedProperties.has("isOpen")) {
-        if (this.isOpen) {
-          if (this.triggerElement) {
+        if (this.triggerElement) {
+          if (this.isOpen) {
             this.triggerElement.setAttribute("aria-expanded", "true");
-          }
-        } else {
-          if (this.triggerElement) {
-            this.triggerElement.setAttribute("aria-expanded", "false");
+          } else {
+            this.triggerElement.removeAttribute("aria-expanded");
           }
         }
       }

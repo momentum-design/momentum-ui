@@ -11,9 +11,10 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { getDate, isDayDisabled, isSameDay, localizeDate, now } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
 import { DatePickerProps, DayFilters } from "../../../utils/dateUtils"; // Keep type import as a relative path
 import { DateRangePicker } from "../../date-range-picker/DateRangePicker"; // Keep type import as a relative path
@@ -30,10 +31,10 @@ export namespace DatePickerDay {
     @property({ attribute: false }) filterParams: DayFilters | undefined = undefined;
     @property({ attribute: false }) datePickerProps: DatePickerProps | undefined = undefined;
 
-    @internalProperty() protected isOutsideMonth = false;
-    @internalProperty() protected isToday = false;
-    @internalProperty() protected parentRangePicker: DateRangePicker.ELEMENT | null = null;
-    @internalProperty() protected dateIsInRange = false;
+    @state() protected isOutsideMonth = false;
+    @state() protected isToday = false;
+    @state() protected parentRangePicker: DateRangePicker.ELEMENT | null = null;
+    @state() protected dateIsInRange = false;
 
     @query("md-button") button!: HTMLButtonElement;
 

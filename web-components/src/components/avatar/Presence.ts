@@ -1,7 +1,8 @@
 import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
 import { AvatarSize } from "./Avatar.constants";
 import { getPresenceSize } from "./Presence.utils";
 import styles from "./scss/module.scss";

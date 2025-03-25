@@ -8,8 +8,9 @@
 import { FocusMixin } from "@/mixins";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, LitElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { html, LitElement } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export namespace ListItem {

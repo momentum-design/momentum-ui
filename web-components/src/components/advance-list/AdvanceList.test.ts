@@ -2,7 +2,7 @@ import "@/components/advance-list/AdvanceList";
 import { type AdvanceList } from "@/components/advance-list/AdvanceList";
 import "@/components/spinner/Spinner";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
-import { render } from "lit-html"; // Import Lit's render function
+import { render } from "lit"; // Import Lit's render function
 
 // Helper function to create mock items
 const createItems = (start: number, count: number) =>

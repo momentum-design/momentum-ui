@@ -8,9 +8,10 @@
 
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import reset from "@/wc_scss/reset.scss";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query } from "lit/decorators.js";
 import styles from "./scss/module.scss";
 
 export namespace Checkbox {

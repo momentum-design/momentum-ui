@@ -5,7 +5,8 @@ import "@/components/list/List";
 import "@/components/list/ListItem";
 import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
 
 export namespace ParentComponentWithMdOverlay {
   @customElementWithCheck("parent-component-with-overlay")
@@ -16,31 +17,31 @@ export namespace ParentComponentWithMdOverlay {
     @property({ type: Boolean }) isError = false;
     @property({ type: Boolean }) groupOnMultiSelect = true;
 
-    @internalProperty()
+    @state()
     private page = 1;
 
-    @internalProperty()
+    @state()
     private totalRecords = 0;
 
-    @internalProperty()
+    @state()
     private loadedRecords = 0;
 
-    @internalProperty()
+    @state()
     private lastSelectedIdByOrder = "";
 
-    @internalProperty()
+    @state()
     private selectAllItems = false;
 
-    @internalProperty()
+    @state()
     private isMenuOverlayOpen = false;
 
-    @internalProperty()
+    @state()
     private readonly disabledItems: string[] = [];
 
-    @internalProperty()
+    @state()
     private inputIcon = "arrow-down-bold";
 
-    @internalProperty()
+    @state()
     private overlayTriggerPlaceholder = "Search field with tabs";
 
     private counter = 0;

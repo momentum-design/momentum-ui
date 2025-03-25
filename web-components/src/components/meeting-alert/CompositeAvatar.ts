@@ -1,5 +1,5 @@
-import { html } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 export const templateHTML = (attendees: Array<Record<string, any>>) => {
   // TODO: JIRA CAX-327: Replace style overrides with dedicated CompositeAvatar component

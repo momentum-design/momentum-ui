@@ -1,8 +1,9 @@
 import "@/components/button/Button";
 import "@/components/icon/Icon";
 import "@/components/tooltip/Tooltip";
-import { Tooltip } from "@/components/tooltip/Tooltip";
-import { css, customElement, html, LitElement, property, query } from "lit-element";
+import { type Tooltip } from "@/components/tooltip/Tooltip";
+import { css, html, LitElement } from "lit";
+import { customElement, property, query } from "lit/decorators.js";
 
 @customElement("tooltip-message-template-sandbox")
 export class TooltipMessageTemplateSandbox extends LitElement {

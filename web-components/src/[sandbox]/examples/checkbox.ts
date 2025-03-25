@@ -1,6 +1,6 @@
 import "@/components/checkbox/Checkbox";
 import "@/components/checkbox/CheckboxGroup";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const checkboxTemplate = html`
   <h3>Default</h3>

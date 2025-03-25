@@ -3,8 +3,9 @@ import "@/components/menu-overlay/MenuOverlay";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { now } from "@/utils/dateUtils";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DateTime } from "luxon";
 import { TIME_UNIT } from "../../constants"; // Keep type import as a relative path
 import { DatePicker } from "../datepicker/DatePicker";
@@ -32,13 +33,13 @@ export namespace DateTimePicker {
     @property({ type: String }) locale = "en-US";
     @property({ type: Boolean }) disabled = false;
 
-    @internalProperty()
+    @state()
     private fullDateTime: DateTime | undefined = undefined;
 
-    @internalProperty()
+    @state()
     private selectedTimeObject: DateTime | undefined = undefined;
 
-    @internalProperty()
+    @state()
     private selectedDateObject: DateTime = now();
 
     firstCycle = true;

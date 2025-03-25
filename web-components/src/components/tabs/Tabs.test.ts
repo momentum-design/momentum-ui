@@ -3,7 +3,7 @@ import "@/components/input/Input";
 import { Key } from "@/constants";
 import { ResizeObserver } from "@/mixins/ResizeMixin";
 import { defineCE, elementUpdated, fixture, fixtureCleanup, fixtureSync, oneEvent } from "@open-wc/testing-helpers";
-import { PropertyValues, html } from "lit-element";
+import { PropertyValues, html } from "lit";
 import Sortable from "sortablejs";
 import "./Tab";
 import { type Tab } from "./Tab";

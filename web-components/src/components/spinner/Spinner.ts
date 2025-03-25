@@ -8,8 +8,9 @@
 
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import reset from "@/wc_scss/reset.scss";
-import { html, internalProperty, LitElement, property, PropertyValues } from "lit-element";
-import { styleMap } from "lit-html/directives/style-map";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
+import { styleMap } from "lit/directives/style-map.js";
 import styles from "./scss/module.scss";
 
 export namespace Spinner {
@@ -18,7 +19,7 @@ export namespace Spinner {
     @property({ type: Number, reflect: true })
     size = 56;
 
-    @internalProperty()
+    @state()
     private isAnimating = false;
 
     private animationFrameId: number | null = null;

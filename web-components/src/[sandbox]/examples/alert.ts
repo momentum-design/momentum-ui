@@ -1,7 +1,7 @@
 import "@/components/alert/Alert";
 import "@/components/avatar/Avatar";
 import "@/components/badge/Badge";
-import { html } from "lit-element";
+import { html } from "lit";
 
 export const alertTemplate = html`
   <md-alert

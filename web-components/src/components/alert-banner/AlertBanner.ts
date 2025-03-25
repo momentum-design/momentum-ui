@@ -11,9 +11,9 @@ import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { isActionKey } from "@/utils/keyboard";
 import reset from "@/wc_scss/reset.scss";
-import { CSSResultArray, html, LitElement, property } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
+import { CSSResultArray, html, LitElement, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 import styles from "./scss/module.scss";
 
 export const alertBannerType = ["default", "accent", "warning", "error", "success", "default-momentum", "promotional"];

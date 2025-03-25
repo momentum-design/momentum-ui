@@ -1,10 +1,10 @@
 import { comboBoxObjectLongOptions, comboBoxObjectOptions, comboBoxOptions } from "@/[sandbox]/sandbox.mock";
 import "@/components/combobox/ComboBox";
-import { ComboBox } from "@/components/combobox/ComboBox";
+import { type ComboBox } from "@/components/combobox/ComboBox";
 import "@/components/icon/Icon";
 import "@/components/spinner/Spinner";
-import { html } from "lit-element";
-import { repeat } from "lit-html/directives/repeat";
+import { html } from "lit";
+import { repeat } from "lit/directives/repeat.js";
 
 const dropdownValue: string[] = [];
 const testCustomValue = [

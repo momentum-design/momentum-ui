@@ -9,9 +9,9 @@ import "@interactjs/auto-start";
 import interact from "@interactjs/interact/index";
 import "@interactjs/modifiers";
 import * as Interact from "@interactjs/types";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
-import { nothing } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined";
+import { html, LitElement, nothing, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import "./FloatingMinimizedModal";
 import styles from "./scss/module.scss";
 
@@ -44,7 +44,7 @@ export namespace FloatingModal {
     @property({ type: Boolean, reflect: true }) minimizable = false;
     @property({ type: Object }) containerRect: DOMRect | null = null;
 
-    @internalProperty() private dragOccured: boolean | false = false;
+    @state() private dragOccured: boolean | false = false;
 
     @query(".md-floating") container?: HTMLDivElement;
     @query(".md-floating__body") body!: HTMLDivElement;

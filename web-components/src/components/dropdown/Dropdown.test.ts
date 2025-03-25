@@ -248,7 +248,7 @@ describe("Dropdown Component", () => {
 
       await elementUpdated(dropdown);
 
-      expect(dropdown["renderOptions"].length).toBe(4);
+      expect(dropdown["dropdownRenderOptions"].length).toBe(4);
 
       consoleSpy.mockRestore();
     });
@@ -503,6 +503,5 @@ describe("Dropdown Component", () => {
 
       expect(dropdown.shadowRoot!.querySelector(".md-dropdown-label--left-icon")).toBeNull();
     });
-
   });
 });

@@ -10,7 +10,8 @@ import styles from "@/components/tooltip/scss/module.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperjs/core/lib";
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
-import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
+import { html, LitElement, PropertyValues } from "lit";
+import { property, query, state } from "lit/decorators.js";
 import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
 import { lumosDark, lumosLight, momentumDark, momentumLight, momentumV2Dark, momentumV2Light } from "./index";
 
@@ -59,7 +60,7 @@ export namespace Theme {
     @property({ type: Boolean }) lumos = false;
     @property({ type: String }) theme?: ThemeName;
 
-    @internalProperty() private activeTheme = momentumLight;
+    @state() private activeTheme = momentumLight;
 
     @query("[data-virtual-global-popper]") virtualWrapper!: HTMLDivElement;
     @query("[data-virtual-global-reference]") virtualReference!: HTMLDivElement;
@@ -330,7 +331,6 @@ export namespace Theme {
 
       document.removeEventListener("tooltip-disconnected", this.handleTooltipRemoved as EventListener, true);
     }
-
 
     disconnectedCallback() {
       super.disconnectedCallback();

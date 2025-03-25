@@ -23,7 +23,8 @@
  * }
  */
 import { Key } from "@/constants";
-import { internalProperty, LitElement, property, PropertyValues } from "lit-element";
+import { LitElement, PropertyValues } from "lit";
+import { property, state } from "lit/decorators.js";
 import { DedupeMixin, wasApplied } from "./DedupeMixin";
 import { FocusClass, FocusEventDetail, FocusMixin } from "./FocusMixin";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -51,9 +52,9 @@ export const FocusTrapMixin = <T extends AnyConstructor<FocusClass & FocusTrapCl
     return base as ReturnType<() => T & AnyConstructor<FocusTrapClass & FocusTrapInterface & FocusClass>>;
   }
   class FocusTrap extends FocusMixin(base) {
-    @internalProperty() protected focusableElements: HTMLElement[] = [];
-    @internalProperty() protected initialFocusComplete = false;
-    @internalProperty() private focusableTimer: any = [];
+    @state() protected focusableElements: HTMLElement[] = [];
+    @state() protected initialFocusComplete = false;
+    @state() private focusableTimer: any = [];
     @property({ type: Boolean, reflect: true, attribute: "active-focus-trap" }) activeFocusTrap = false;
     @property({ type: Boolean, reflect: true, attribute: "prevent-click-outside" }) preventClickOutside = false;
     @property({ type: Number, reflect: true, attribute: "focus-trap-index" }) focusTrapIndex = -1;

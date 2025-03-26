@@ -3,8 +3,30 @@ type ReturnType = {
   presenceColor: string | undefined;
 };
 
+export const PresenceType = [
+  "active",
+  "meeting",
+  "schedule",
+  "call",
+  "dnd",
+  "presenting",
+  "quiet-hours",
+  "away",
+  "idle",
+  "inactive",
+  "away-calling",
+  "ooo",
+  "busy",
+  "on-mobile",
+  "on-device",
+  "on-hold",
+  "engaged",
+  "rona",
+  ""
+] as const;
+
 export const getPresenceIconColor = (
-  presenceType: string,
+  presenceType: (typeof PresenceType)[number],
   failureBadge: boolean,
   isMomentumDesign = false
 ): ReturnType => {
@@ -15,7 +37,7 @@ export const getPresenceIconColor = (
     presenceIcon = "warning-badge-filled";
     presenceColor = "var(--mds-color-theme-indicator-attention)";
   } else {
-    if (!presenceType || presenceType === "") {
+    if (!presenceType) {
       return {
         presenceIcon: undefined,
         presenceColor: undefined

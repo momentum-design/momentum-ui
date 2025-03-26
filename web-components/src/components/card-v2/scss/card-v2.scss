@@ -37,6 +37,9 @@
                     font-weight: $md-card-v2-title-font-weight;
                     line-height: $md-card-v2-title-line-height;
                     color: $md-card-v2-title-color;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 md-icon {
@@ -46,11 +49,18 @@
         }
 
         &-content {
+            display: flex;
+            flex: 1;
+            gap: 8px;
+
             h2 {
                 font-size: $md-card-v2-content-font-size;
                 font-weight: $md-card-v2-content-font-weight;
                 line-height: $md-card-v2-content-line-height;
                 color: $md-card-v2-content-color;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             &.inactive {

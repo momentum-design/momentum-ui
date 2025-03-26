@@ -438,10 +438,11 @@ export namespace Tabs {
       return this.tabSlotElement.assignedElements() as HTMLElement[];
     }
 
-    protected async handleResize(contentRect: DOMRect) {
-      super.handleResize && super.handleResize(contentRect);
-      await this.manageOverflow();
-      this.updateIsMoreTabTruncated();
+    protected handleResize(contentRect: DOMRect) {
+      super.handleResize?.(contentRect);
+      this.manageOverflow().then(() => {
+        this.updateIsMoreTabTruncated();
+      });
     }
 
     private getDragDirection(event: Sortable.SortableEvent) {
@@ -631,14 +632,16 @@ export namespace Tabs {
       this.requestUpdate();
     }
 
-    private toggleSelectedAttribute(tab?: Tab.ELEMENT, tabPanel?: TabPanel.ELEMENT) {
-      tab?.toggleAttribute("selected");
-      tabPanel?.toggleAttribute("selected");
+    private setSelectedAttribute(tab?: Tab.ELEMENT, tabPanel?: TabPanel.ELEMENT, isSelected = false) {
+      if (tabPanel) {
+        tabPanel.selected = isSelected;
+      }
 
       if (tab) {
+        tab.selected = isSelected;
         const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
         if (tabCopy) {
-          tabCopy.toggleAttribute("selected");
+          tabCopy.selected = isSelected;
           this.isMoreTabMenuSelected = true;
         } else {
           this.isMoreTabMenuSelected = false;
@@ -651,11 +654,8 @@ export namespace Tabs {
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
 
       if (tabs && panels) {
-        [oldSelectedIndex, newSelectedIndex].forEach((index) => {
-          if (index >= 0) {
-            this.toggleSelectedAttribute(tabs[index], panels[index]);
-          }
-        });
+        this.setSelectedAttribute(tabs[oldSelectedIndex], panels[oldSelectedIndex], false);
+        this.setSelectedAttribute(tabs[newSelectedIndex], panels[newSelectedIndex], true);
       }
 
       if (newSelectedIndex >= 0) {
@@ -1182,7 +1182,6 @@ export namespace Tabs {
             class="md-menu-overlay__more_tab ${classMap({
               "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
             })}"
-            ariaRole="button"
             .newMomentum=${this.newMomentum}
             type=${this.type}
           >
@@ -1216,15 +1215,15 @@ export namespace Tabs {
               (tab) => html`
                 <md-tab
                   slot="draggable-item"
-                  .disabled="${tab.disabled}"
-                  .selected="${tab.selected}"
+                  ?disabled=${tab.disabled}
+                  ?selected=${tab.selected}
                   name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
                   aria-controls="${this.getAriaControlId(tab)}"
                   @click="${() => this.handleOverlayClose()}"
                   tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                  ariaRole="menuitem"
+                  role="menuitem"
                   .newMomentum=${this.newMomentum}
                   type=${this.type}
                   .onlyIcon="${tab.onlyIcon}"

@@ -19,11 +19,12 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
 import { AvatarSize, AvatarState, AvatarStyle, AvatarType } from "./Avatar.constants";
-import { getPresenceIconColor } from "./Presence.utils";
+import { getPresenceIconColor, PresenceType } from "./Presence.utils";
 import styles from "./scss/module.scss";
 
 export namespace Avatar {
-  export type Type = (typeof AvatarType)[number];
+  export type PresenceState = (typeof PresenceType)[number];
+  export type Type = (typeof AvatarType)[number] | PresenceState;
   export type Size = (typeof AvatarSize)[number];
   export type State = (typeof AvatarState)[number];
   export type Style = (typeof AvatarStyle)[number];
@@ -52,7 +53,7 @@ export namespace Avatar {
     @property({ type: String, attribute: "icon-name" }) iconName = "";
     @property({ type: Boolean }) failurePresence = false;
     @property({ type: String }) type: Type = "";
-    @property({ type: String }) presenceType: Type = "";
+    @property({ type: String, attribute: "presence-type" }) presenceType?: PresenceState;
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) typing = false;
     @property({ type: Number }) size: Size = 40;
@@ -90,25 +91,32 @@ export namespace Avatar {
       return [reset, styles];
     }
 
+    private isPresenceType(value: string): value is PresenceState {
+      return (PresenceType as readonly string[]).includes(value);
+    }
+
     firstUpdated() {
-      const { presenceColor, presenceIcon } = getPresenceIconColor(
-        this.presenceType || this.type,
-        this.failurePresence,
-        this.newMomentum
-      );
-      this.presenceColor = presenceColor!;
-      this.presenceIcon = presenceIcon!;
+      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
+      if (presenceValue) {
+        const { presenceColor, presenceIcon } = getPresenceIconColor(
+          presenceValue,
+          this.failurePresence,
+          this.newMomentum
+        );
+        this.presenceColor = presenceColor!;
+        this.presenceIcon = presenceIcon!;
+      }
     }
 
     updated(changedProperties: PropertyValues) {
       super.updated(changedProperties);
+      const presenceValue = this.presenceType || (this.isPresenceType(this.type) ? this.type : "");
       if (
-        changedProperties.has("type") ||
-        changedProperties.has("presenceType") ||
-        changedProperties.has("newMomentum")
+        presenceValue &&
+        (changedProperties.has("type") || changedProperties.has("presenceType") || changedProperties.has("newMomentum"))
       ) {
         const { presenceColor, presenceIcon } = getPresenceIconColor(
-          this.presenceType || this.type,
+          presenceValue,
           this.failurePresence,
           this.newMomentum
         );

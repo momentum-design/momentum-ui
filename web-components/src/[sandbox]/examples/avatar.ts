@@ -126,7 +126,7 @@ export class AvatarTemplateSandbox extends LitElement {
         type="channel-call"
         size="36"
         avatar-style="default"
-        presenceType="engaged"
+        presence-type="engaged"
         state="rest"
         newMomentum
       ></md-avatar>
@@ -135,7 +135,7 @@ export class AvatarTemplateSandbox extends LitElement {
         type="channel-chat"
         size="36"
         avatar-style="default"
-        presenceType="idle"
+        presence-type="idle"
         state="rest"
         newMomentum
       ></md-avatar>
@@ -143,7 +143,7 @@ export class AvatarTemplateSandbox extends LitElement {
         title="Channel Email Inbound"
         type="channel-email-inbound"
         avatar-style="default"
-        presenceType="rona"
+        presence-type="rona"
         state="rest"
         size="36"
         newMomentum
@@ -152,7 +152,7 @@ export class AvatarTemplateSandbox extends LitElement {
         title="Channel Social"
         type="channel-social"
         avatar-style="default"
-        presenceType="active"
+        presence-type="active"
         state="rest"
         size="36"
         newMomentum

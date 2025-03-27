@@ -7,10 +7,10 @@ import "@/components/tooltip/Tooltip";
 import { html } from "lit-element";
 
 export const chatMessageTemplate = html`
-  <md-chat-message title="John Doe" time="11:27AM" status="Received">
+  <md-chat-message title="Agent" time="11:27AM" status="Received">
     <span slot="custom-content">
       <md-tooltip message="Content restricted as it violates the company data security policy" placement="top">
-        <md-icon name="icon-priority_12"></md-icon>
+        <md-icon iconSet="momentumDesign" name="priority-circle-bold" size="14"></md-icon>
       </md-tooltip>
     </span>
 

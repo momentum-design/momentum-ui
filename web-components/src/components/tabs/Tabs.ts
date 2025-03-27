@@ -11,6 +11,7 @@ import "@/components/menu-overlay/MenuOverlay";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
+import { getElementSafe } from "@/utils/helpers";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
@@ -438,11 +439,10 @@ export namespace Tabs {
       return this.tabSlotElement.assignedElements() as HTMLElement[];
     }
 
-    protected handleResize(contentRect: DOMRect) {
+    protected async handleResize(contentRect: DOMRect) {
       super.handleResize?.(contentRect);
-      this.manageOverflow().then(() => {
-        this.updateIsMoreTabTruncated();
-      });
+      await this.manageOverflow();
+      this.updateIsMoreTabTruncated();
     }
 
     private getDragDirection(event: Sortable.SortableEvent) {
@@ -654,8 +654,16 @@ export namespace Tabs {
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
 
       if (tabs && panels) {
-        this.setSelectedAttribute(tabs[oldSelectedIndex], panels[oldSelectedIndex], false);
-        this.setSelectedAttribute(tabs[newSelectedIndex], panels[newSelectedIndex], true);
+        this.setSelectedAttribute(
+          getElementSafe(tabs, oldSelectedIndex),
+          getElementSafe(panels, oldSelectedIndex),
+          false
+        );
+        this.setSelectedAttribute(
+          getElementSafe(tabs, newSelectedIndex),
+          getElementSafe(panels, newSelectedIndex),
+          true
+        );
       }
 
       if (newSelectedIndex >= 0) {
@@ -750,9 +758,11 @@ export namespace Tabs {
     }
 
     handleOverlayClose() {
-      if (this.menuOverlayElement) {
-        this.menuOverlayElement.isOpen = false;
-      }
+      setTimeout(() => {
+        if (this.menuOverlayElement) {
+          this.menuOverlayElement.isOpen = false;
+        }
+      }, 0);
     }
 
     dispatchKeydownEvent(event: KeyboardEvent, tabId: string) {
@@ -1177,12 +1187,13 @@ export namespace Tabs {
             id="${MORE_MENU_TAB_TRIGGER_ID}"
             aria-label="${this.overflowLabel}"
             aria-haspopup="true"
+            role="button"
             tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
-            .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
+            ?selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
             class="md-menu-overlay__more_tab ${classMap({
               "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
             })}"
-            .newMomentum=${this.newMomentum}
+            ?newMomentum=${this.newMomentum}
             type=${this.type}
           >
             <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
@@ -1224,9 +1235,9 @@ export namespace Tabs {
                   @click="${() => this.handleOverlayClose()}"
                   tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
                   role="menuitem"
-                  .newMomentum=${this.newMomentum}
+                  ?newMomentum=${this.newMomentum}
                   type=${this.type}
-                  .onlyIcon="${tab.onlyIcon}"
+                  ?onlyIcon=${tab.onlyIcon}
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>
@@ -1269,19 +1280,19 @@ export namespace Tabs {
               () => generateSimpleUniqueId("tabs"),
               (tab) => html`
                 <md-tab
-                  .closable="${tab.closable}"
-                  .disabled="${tab.disabled}"
-                  .selected="${tab.selected}"
+                  closable="${tab.closable}"
+                  ?disabled=${tab.disabled}
+                  ?selected=${tab.selected}
                   name="${tab.name}"
                   id="${this.getCopyTabId(tab)}"
                   aria-label=${tab.ariaLabel}
                   aria-controls="${this.getAriaControlId(tab)}"
-                  .isCrossVisible=${true}
+                  cross-visible
                   tabIndex="${this.getTabIndex(tab)}"
-                  .newMomentum=${this.newMomentum}
+                  ?newMomentum=${this.newMomentum}
                   variant=${this.variant}
                   type=${this.type}
-                  .onlyIcon="${tab.onlyIcon}"
+                  ?onlyIcon=${tab.onlyIcon}
                 >
                   ${unsafeHTML(tab.innerHTML)}
                 </md-tab>

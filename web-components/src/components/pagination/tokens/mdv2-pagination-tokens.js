@@ -11,7 +11,7 @@ const pagination = {
     }
   },
   "bg-current": {
-    common: "$mds-color-theme-control-active-normal"
+    common: "$mds-color-theme-background-accent-normal"
   },
 
   "bg-hover": {
@@ -29,9 +29,9 @@ const pagination = {
     }
   },
   "dots-color": {
-    common: "$mds-color-theme-inverted-control-inactive-normal",
+    common: "$mds-color-theme-control-indicator-inactive-normal",
     current: {
-      common: "$mds-color-theme-control-active-normal"
+      common: "$mds-color-theme-background-accent-normal"
     }
   }
 };

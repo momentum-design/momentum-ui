@@ -9,7 +9,7 @@ const slider = {
       common: "$mds-color-theme-control-active-normal"
     },
     pointer: {
-      common: "$mds-color-theme-background-solid-primary-normal"
+      common: "$mds-color-theme-common-text-primary-normal"
     },
     pointerBorder: {
       common: "$mds-color-theme-outline-primary-normal"
@@ -32,7 +32,7 @@ const slider = {
         common: "$mds-color-theme-control-inactive-pressed"
       },
       pointer: {
-        common: "$mds-color-theme-background-solid-tertiary-normal"
+        common: "$mds-color-theme-common-control-inactive-normal"
       }
     },
 

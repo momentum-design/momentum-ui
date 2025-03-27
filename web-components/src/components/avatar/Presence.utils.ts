@@ -120,7 +120,9 @@ export const getPresenceIconColor = (
 };
 
 export function getPresenceSize(size: number): number {
-  if (size <= 32) {
+  if (size <= 24) {
+    return 10.5;
+  } else if (size <= 32) {
     return 14;
   } else if (size <= 48) {
     return 13.94;

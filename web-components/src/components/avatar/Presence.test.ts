@@ -182,9 +182,9 @@ describe("Presence", () => {
 
 describe("getPresenceSize", () => {
   it("should return 14 for sizes <= 24", () => {
-    expect(getPresenceSize(24)).toBe(14);
-    expect(getPresenceSize(20)).toBe(14);
-    expect(getPresenceSize(10)).toBe(14);
+    expect(getPresenceSize(24)).toBe(10.5);
+    expect(getPresenceSize(20)).toBe(10.5);
+    expect(getPresenceSize(10)).toBe(10.5);
   });
 
   it("should return 14 for sizes <= 32", () => {

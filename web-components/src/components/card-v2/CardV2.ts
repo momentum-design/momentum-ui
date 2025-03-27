@@ -94,7 +94,7 @@ export namespace CardV2 {
 
     private renderFooter() {
       return html`
-        <div class="class=${classMap(this.footerClassMap)}">
+        <div class="${classMap(this.footerClassMap)}">
           <md-button ariaLabel="" circle size="28" @click=${this.expandCardToggled}>
             <md-icon
               slot="icon"

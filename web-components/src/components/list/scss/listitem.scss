@@ -9,7 +9,7 @@
 
   .md-list-item {
     box-sizing: border-box;
-    color: var(--list-text-color, $md-list-text-color-light);
+    color: var(--list-text-color);
     flex: 1 1 auto;
     font-size: $list-item__font-size;
     line-height: $list-item__line-height;
@@ -32,16 +32,16 @@
 
 :host(:hover:not([disabled])) {
   .md-list-item {
-    background-color: var(--list-hover-background, $md-list-hover-background-light);
-    color: var(--list-hover-text-color, $md-list-hover-text-color-light);
+    background-color: var(--list-hover-background);
+    color: var(--list-hover-text-color);
   }
 }
 
 :host(:active:not([disabled])),
 :host([selected]:not([disabled])) {
   .md-list-item {
-    background-color: var(--list-active-background, $md-list-active-background-light);
-    color: var(--list-active-text-color, $md-list-active-text-color-light);
+    background-color: var(--list-active-background);
+    color: var(--list-active-text-color);
   }
 }
 
@@ -54,7 +54,7 @@
 :host(:active[disabled]),
 :host([disabled]) {
   .md-list-item {
-    color: var(--list-disabled-text-color, $md-list-disabled-text-color-light);
+    color: var(--list-disabled-text-color);
     pointer-events: none;
   }
 }

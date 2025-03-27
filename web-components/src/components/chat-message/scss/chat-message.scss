@@ -10,6 +10,7 @@
     font-size: $chat-message-font-size;
     line-height: $chat-message-line-height;
     margin: $chat-message-indent 0;
+    gap: 0.25rem;
 
     &_content {
       display: flex;
@@ -22,8 +23,7 @@
       display: flex;
       flex: 0 1 auto;
       font-size: $chat-message_heading-font-size;
-      line-height: $chat-message_heading-line-height;
-      margin-bottom: calc(#{$chat-message-indent} * 0.5);
+      line-height: $chat-message_heading-line-height;      
     }
 
     &_title {

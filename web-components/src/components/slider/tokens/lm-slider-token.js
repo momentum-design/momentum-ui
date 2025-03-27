@@ -7,19 +7,19 @@ const slider = {
   component: "slider",
   background: {
     selection: {
-      light: colors.blue[50].name,
+      common: colors.blue[50].name,
       red: {
-        light: colors.red[50].name
+        common: colors.red[50].name
       },
       green: {
-        light: colors.green[50].name
+        common: colors.green[50].name
       },
       blue: {
-        light: colors.blue[50].name
+        common: colors.blue[50].name
       }
     },
     pointer: {
-      light: colors.white[100].name
+      common: colors.white[100].name
     },
     bar: {
       light: colors.gray[10].name,
@@ -28,7 +28,7 @@ const slider = {
 
     hover: {
       pointer: {
-        light: colors.blue[10].name
+        common: colors.blue[10].name
       }
     },
 
@@ -49,7 +49,7 @@ const slider = {
       }
     },
     label: {
-      light: colors.gray[70].name
+      common: colors.gray[70].name
     }
   }
 };

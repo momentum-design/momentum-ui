@@ -19,7 +19,7 @@
 
     &__bar {
       @include align-center();
-      background-color: var(--slider-background-bar, $md-slider-background-bar-light);
+      background-color: var(--slider-background-bar);
       border-radius: $slider-bar__border-radius;
       cursor: pointer;
       height: $slider-bar__height;
@@ -30,7 +30,7 @@
 
     &__selection {
       @include align-center();
-      background-color: var(--slider-background-selection, $md-slider-background-selection-light);
+      background-color: var(--slider-background-selection);
       border-radius: $slider-bar__border-radius;
       height: $slider-bar__height;
       left: 0;
@@ -48,7 +48,7 @@
       z-index: 2;
 
       &::after {
-        background-color: var(--slider-background-pointer, $md-slider-background-pointer-light);
+        background-color: var(--slider-background-pointer);
         border-radius: 50%;
         box-shadow: $slider-pointer__box-shadow;
         content: "";
@@ -66,7 +66,7 @@
     &__hashlabel {
       @include flex($jc: space-between);
       bottom: -$slider__indent;
-      color: var(--slider-label, $md-slider-label-light);
+      color: var(--slider-label);
       font-size: $slider-label__size;
       left: 0;
       line-height: $slider-label__size;
@@ -76,7 +76,7 @@
     }
 
     &__value {
-      color: var(--slider-label, $md-slider-label-light);
+      color: var(--slider-label);
       font-size: $slider-label__size;
       line-height: $slider-label__size;
       position: absolute;
@@ -92,7 +92,7 @@
       cursor: not-allowed;
       background-color: var(
         --slider-background-disabled-bar,
-        var(--slider-background-bar, $md-slider-background-bar-light)
+        var(--slider-background-bar)
       );
     }
 
@@ -100,12 +100,12 @@
       cursor: not-allowed;
 
       &::after {
-        background-color: var(--slider-background-disabled-pointer, $md-slider-background-disabled-pointer-light);
+        background-color: var(--slider-background-disabled-pointer);
       }
     }
 
     &__selection {
-      background-color: var(--slider-background-disabled-selection, $md-slider-background-disabled-selection-light);
+      background-color: var(--slider-background-disabled-selection);
     }
   }
 }
@@ -124,7 +124,7 @@
 
 :host(:hover:not([disabled])) {
   .md-slider__pointer::after {
-    background-color: var(--slider-background-hover-pointer, $md-slider-background-hover-pointer-light);
+    background-color: var(--slider-background-hover-pointer);
   }
 }
 

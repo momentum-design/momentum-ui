@@ -12,7 +12,7 @@ import { arrow, createPopper, flip, Instance, offset, Placement } from "@popperj
 import { defaultModifiers } from "@popperjs/core/lib/popper-lite";
 import { html, internalProperty, LitElement, property, PropertyValues, query } from "lit-element";
 import { Tooltip, TooltipEvent } from "../tooltip/Tooltip"; // Keep type import as a relative path
-import { lumosDark, lumosLight, momentumDark, momentumLight, momentumV2Dark, momentumV2Light } from "./index";
+import { lumosDark, lumosLight, momentumV2Dark, momentumV2Light } from "./index";
 
 declare global {
   interface Window {
@@ -59,7 +59,7 @@ export namespace Theme {
     @property({ type: Boolean }) lumos = false;
     @property({ type: String }) theme?: ThemeName;
 
-    @internalProperty() private activeTheme = momentumLight;
+    @internalProperty() private activeTheme = lumosLight;
 
     @query("[data-virtual-global-popper]") virtualWrapper!: HTMLDivElement;
     @query("[data-virtual-global-reference]") virtualReference!: HTMLDivElement;
@@ -70,7 +70,7 @@ export namespace Theme {
     private setTheme() {
       //If the theme property is set, prefer using that theme over the lumos property
       if (this.theme === "momentum") {
-        return this.darkTheme ? momentumDark : momentumLight;
+        return this.darkTheme ? momentumV2Dark : momentumV2Light;
       } else if (this.theme === "lumos") {
         return this.darkTheme ? lumosDark : lumosLight;
       } else if (this.theme === "momentumV2") {
@@ -79,7 +79,7 @@ export namespace Theme {
       if (this.lumos) {
         return this.darkTheme ? lumosDark : lumosLight;
       } else {
-        return this.darkTheme ? momentumDark : momentumLight;
+        return this.darkTheme ? momentumV2Dark : momentumV2Light;
       }
     }
 
@@ -331,7 +331,6 @@ export namespace Theme {
       document.removeEventListener("tooltip-disconnected", this.handleTooltipRemoved as EventListener, true);
     }
 
-
     disconnectedCallback() {
       super.disconnectedCallback();
       this.teardownEvents();
@@ -344,7 +343,7 @@ export namespace Theme {
     }
 
     static get styles() {
-      return [momentumLight];
+      return [lumosLight];
     }
 
     render() {

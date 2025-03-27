@@ -124,6 +124,7 @@
 
 :host([vertical]) .tab-content {
   text-align: left !important;
+  justify-content: flex-start;
 
   .tab-slot {
     justify-content: flex-start;
@@ -248,7 +249,7 @@ md-icon {
   border: none;
   border-radius: $tab-focus-border-radius;
   color: var(--tabs-default-text-color);
-  display: block;
+  display: inline-flex;
   height: 100%;
   min-height: $tab-overflow-button-height;
   padding: $tab-button-padding;
@@ -256,9 +257,9 @@ md-icon {
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
-  width: 100%;
-  vertical-align: middle;
-  align-content: center;
+  width: 100%;  
+  justify-content: center;
+  align-items: center;
   user-select: none;
 
   &:disabled,
@@ -313,7 +314,6 @@ md-icon {
   /* Sizing and spacing */
   min-height: rem-calc(28);
   padding: 0 0.625rem 0 0.625rem;
-  justify-content: center;
 }
 
 .tab-content.pill {
@@ -364,7 +364,7 @@ md-icon {
     }
   }
 
-  .tab-content:focus:not(.data-disabled) {
+  .tab-content:focus:not(.disabled) {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }

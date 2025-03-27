@@ -36,7 +36,7 @@ export namespace Tab {
     @property({ type: String, attribute: "closable" }) closable: "auto" | "custom" | "" = "";
     @property({ type: String, attribute: "name" }) name = "";
     @property({ type: Boolean, attribute: "cross-visible" }) isCrossVisible = false;
-    @property({ type: String, attribute: "role" }) role = "tab";
+    @property({ type: String, attribute: "role", reflect: true }) role = "tab";
     @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: Boolean }) onlyIcon = false;

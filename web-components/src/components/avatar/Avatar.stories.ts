@@ -202,3 +202,30 @@ export const PresenceTypes: StoryObj = {
     }
   }
 };
+
+export const AvailabilityAvatars: StoryObj = {
+  render: () => {
+    const channelTypes: AvatarComponent.Type[] = [
+      "channel-chat",
+      "channel-email-inbound",
+      "channel-call",
+      "channel-social"
+    ];
+
+    return html`
+      <div>
+        <h3>Channel availability at size 24</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+          ${channelTypes.map(
+            (type) => html`
+              <div style="text-align: center;">
+                <md-avatar title=${type} size="24" type=${type} presence-type=${"active"} newMomentum></md-avatar>
+                <div>${type}</div>
+              </div>
+            `
+          )}
+        </div>
+      </div>
+    `;
+  }
+};

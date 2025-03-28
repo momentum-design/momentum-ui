@@ -236,8 +236,13 @@ export namespace Icon {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon =
         this.iconSet === "momentumBrandVisuals"
-          ? require(`@momentum-design/brand-visuals/dist/logos/svg/${iconName}.svg`)
+          ? brandVisualIconsMap[iconName]
           : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+
+      if (!importedIcon) {
+        console.error(`Icon: ${iconName} does not exist in the design system.`);
+        return;
+      }
 
       if (this.isPath(importedIcon)) {
         this.svgIcon = await this.getSvgContentFromFile(importedIcon);

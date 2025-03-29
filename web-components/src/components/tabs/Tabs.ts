@@ -439,9 +439,9 @@ export namespace Tabs {
       return this.tabSlotElement.assignedElements() as HTMLElement[];
     }
 
-    protected async handleResize(contentRect: DOMRect) {
+    protected handleResize(contentRect: DOMRect) {
       super.handleResize?.(contentRect);
-      await this.manageOverflow();
+      this.manageOverflow();
       this.updateIsMoreTabTruncated();
     }
 
@@ -639,14 +639,19 @@ export namespace Tabs {
 
       if (tab) {
         tab.selected = isSelected;
-        const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-        if (tabCopy) {
-          tabCopy.selected = isSelected;
+
+        if (isSelected) {
+          this.isMoreTabMenuSelected = this.isTabInMoreMenu(tab);
+        }
+
+        if (this.isTabInMoreMenu(tab)) {
           this.isMoreTabMenuSelected = true;
-        } else {
-          this.isMoreTabMenuSelected = false;
         }
       }
+    }
+
+    private isTabInMoreMenu(tab: Tab.ELEMENT): boolean {
+      return this.tabsFilteredAsHiddenList.find((t) => t.id === tab.id) !== undefined;
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
@@ -1076,6 +1081,15 @@ export namespace Tabs {
       this.tabsFilteredAsHiddenList = [];
       this.isMoreTabMenuVisible = false;
       this.setupPanelsAndTabs();
+
+      if (this.direction === "vertical") {
+        this.tabs.forEach((tab) => {
+          if (tab.viewportHidden) {
+            tab.viewportHidden = false;
+          }
+        });
+      }
+
       await this.linkPanelsAndTabs();
       if (this.draggable) {
         this.initializeSortable();
@@ -1166,6 +1180,34 @@ export namespace Tabs {
       }
     }
 
+    private get moreMenuListTemplate() {
+      return html`
+        ${repeat(
+          this.tabsFilteredAsHiddenList,
+          () => generateSimpleUniqueId("tabs"),
+          (tab) => html`
+            <md-tab
+              slot="draggable-item"
+              ?disabled=${tab.disabled}
+              ?selected=${tab.selected}
+              name="${tab.name}"
+              id="${this.getCopyTabId(tab)}"
+              aria-label=${tab.ariaLabel}
+              aria-controls="${this.getAriaControlId(tab)}"
+              @click="${() => this.handleOverlayClose()}"
+              tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+              role="menuitem"
+              ?newMomentum=${this.newMomentum}
+              type=${tab.type}
+              ?onlyIcon=${tab.onlyIcon}
+            >
+              ${unsafeHTML(tab.innerHTML)}
+            </md-tab>
+          `
+        )}
+      `;
+    }
+
     private get moreMenuTemplate() {
       if (this.direction === "vertical") {
         return nothing;
@@ -1220,31 +1262,29 @@ export namespace Tabs {
                 : {}
             )}"
           >
-            ${repeat(
-              this.tabsFilteredAsHiddenList,
-              () => generateSimpleUniqueId("tabs"),
-              (tab) => html`
-                <md-tab
-                  slot="draggable-item"
-                  ?disabled=${tab.disabled}
-                  ?selected=${tab.selected}
-                  name="${tab.name}"
-                  id="${this.getCopyTabId(tab)}"
-                  aria-label=${tab.ariaLabel}
-                  aria-controls="${this.getAriaControlId(tab)}"
-                  @click="${() => this.handleOverlayClose()}"
-                  tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                  role="menuitem"
-                  ?newMomentum=${this.newMomentum}
-                  type=${this.type}
-                  ?onlyIcon=${tab.onlyIcon}
-                >
-                  ${unsafeHTML(tab.innerHTML)}
-                </md-tab>
-              `
-            )}
+            ${this.moreMenuListTemplate}
           </div>
         </md-menu-overlay>
+      `;
+    }
+
+    private get renderTabs() {
+      return html` <slot name="tab"></slot> `;
+    }
+
+    private get renderTabsWithMoreMenu() {
+      return html`
+        <div
+          id="visible-tabs-list"
+          class="visible-tabs-container ${classMap({
+            "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+            "md-tab__hug": this.hugTabs,
+            "visible-new-tabs": this.newMomentum
+          })}"
+        >
+          ${this.renderTabs}
+        </div>
+        ${this.moreMenuTemplate}
       `;
     }
 
@@ -1261,45 +1301,7 @@ export namespace Tabs {
           })}"
           role="tablist"
         >
-          <slot
-            name="tab"
-            class="${classMap({
-              "visible-tabs-slot": this.direction === "horizontal"
-            })}"
-          ></slot>
-          <div
-            id="visible-tabs-list"
-            class="visible-tabs-container ${classMap({
-              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
-              "md-tab__hug": this.hugTabs,
-              "visible-new-tabs": this.newMomentum
-            })}"
-          >
-            ${repeat(
-              this.tabsFilteredAsVisibleList,
-              () => generateSimpleUniqueId("tabs"),
-              (tab) => html`
-                <md-tab
-                  closable="${tab.closable}"
-                  ?disabled=${tab.disabled}
-                  ?selected=${tab.selected}
-                  name="${tab.name}"
-                  id="${this.getCopyTabId(tab)}"
-                  aria-label=${tab.ariaLabel}
-                  aria-controls="${this.getAriaControlId(tab)}"
-                  cross-visible
-                  tabIndex="${this.getTabIndex(tab)}"
-                  ?newMomentum=${this.newMomentum}
-                  variant=${this.variant}
-                  type=${this.type}
-                  ?onlyIcon=${tab.onlyIcon}
-                >
-                  ${unsafeHTML(tab.innerHTML)}
-                </md-tab>
-              `
-            )}
-          </div>
-          ${this.moreMenuTemplate}
+          ${this.direction === "vertical" ? this.renderTabs : this.renderTabsWithMoreMenu}
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

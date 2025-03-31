@@ -11,6 +11,7 @@ import "@/components/menu-overlay/MenuOverlay";
 import "@/components/tooltip/Tooltip";
 import { Key } from "@/constants";
 import { customElementWithCheck, ResizeMixin, RovingTabIndexMixin, SlottedMixin } from "@/mixins";
+import { getElementSafe } from "@/utils/helpers";
 import { generateSimpleUniqueId } from "@/utils/uniqueId";
 import reset from "@/wc_scss/reset.scss";
 import { html, internalProperty, LitElement, property, PropertyValues, query, queryAll } from "lit-element";
@@ -438,9 +439,9 @@ export namespace Tabs {
       return this.tabSlotElement.assignedElements() as HTMLElement[];
     }
 
-    protected async handleResize(contentRect: DOMRect) {
-      super.handleResize && super.handleResize(contentRect);
-      await this.manageOverflow();
+    protected handleResize(contentRect: DOMRect) {
+      super.handleResize?.(contentRect);
+      this.manageOverflow();
       this.updateIsMoreTabTruncated();
     }
 
@@ -631,19 +632,26 @@ export namespace Tabs {
       this.requestUpdate();
     }
 
-    private toggleSelectedAttribute(tab?: Tab.ELEMENT, tabPanel?: TabPanel.ELEMENT) {
-      tab?.toggleAttribute("selected");
-      tabPanel?.toggleAttribute("selected");
+    private setSelectedAttribute(tab?: Tab.ELEMENT, tabPanel?: TabPanel.ELEMENT, isSelected = false) {
+      if (tabPanel) {
+        tabPanel.selected = isSelected;
+      }
 
       if (tab) {
-        const tabCopy = this.tabsCopyHash[this.getCopyTabId(tab)];
-        if (tabCopy) {
-          tabCopy.toggleAttribute("selected");
+        tab.selected = isSelected;
+
+        if (isSelected) {
+          this.isMoreTabMenuSelected = this.isTabInMoreMenu(tab);
+        }
+
+        if (this.isTabInMoreMenu(tab)) {
           this.isMoreTabMenuSelected = true;
-        } else {
-          this.isMoreTabMenuSelected = false;
         }
       }
+    }
+
+    private isTabInMoreMenu(tab: Tab.ELEMENT): boolean {
+      return this.tabsFilteredAsHiddenList.find((t) => t.id === tab.id) !== undefined;
     }
 
     private updateSelectedTab(newSelectedIndex: number) {
@@ -651,11 +659,16 @@ export namespace Tabs {
       const oldSelectedIndex = this.tabs.findIndex((element) => element.hasAttribute("selected"));
 
       if (tabs && panels) {
-        [oldSelectedIndex, newSelectedIndex].forEach((index) => {
-          if (index >= 0) {
-            this.toggleSelectedAttribute(tabs[index], panels[index]);
-          }
-        });
+        this.setSelectedAttribute(
+          getElementSafe(tabs, oldSelectedIndex),
+          getElementSafe(panels, oldSelectedIndex),
+          false
+        );
+        this.setSelectedAttribute(
+          getElementSafe(tabs, newSelectedIndex),
+          getElementSafe(panels, newSelectedIndex),
+          true
+        );
       }
 
       if (newSelectedIndex >= 0) {
@@ -750,9 +763,11 @@ export namespace Tabs {
     }
 
     handleOverlayClose() {
-      if (this.menuOverlayElement) {
-        this.menuOverlayElement.isOpen = false;
-      }
+      setTimeout(() => {
+        if (this.menuOverlayElement) {
+          this.menuOverlayElement.isOpen = false;
+        }
+      }, 0);
     }
 
     dispatchKeydownEvent(event: KeyboardEvent, tabId: string) {
@@ -1156,6 +1171,63 @@ export namespace Tabs {
       }
     }
 
+    private get moreMenuButtonTemplate() {
+      return html`
+        <md-tab
+          slot="menu-trigger"
+          id="${MORE_MENU_TAB_TRIGGER_ID}"
+          aria-label="${this.overflowLabel}"
+          aria-haspopup="true"
+          role="button"
+          tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
+          ?selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
+          class="md-menu-overlay__more_tab ${classMap({
+            "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
+          })}"
+          ?newMomentum=${this.newMomentum}
+          type=${this.type}
+        >
+          <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
+            <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
+          </md-tooltip>
+          <md-icon
+            name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
+            iconSet="momentumDesign"
+            size="16"
+            class="more-icon"
+          ></md-icon>
+        </md-tab>
+      `;
+    }
+
+    private get moreMenuListTemplate() {
+      return html`
+        ${repeat(
+          this.tabsFilteredAsHiddenList,
+          () => generateSimpleUniqueId("menuitem_tabs"),
+          (tab) => html`
+            <md-tab
+              slot="draggable-item"
+              ?disabled=${tab.disabled}
+              ?selected=${tab.selected}
+              name="${tab.name}"
+              id="${this.getCopyTabId(tab)}"
+              aria-label=${tab.ariaLabel}
+              aria-controls="${this.getAriaControlId(tab)}"
+              @click="${() => this.handleOverlayClose()}"
+              tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
+              role="menuitem"
+              ?newMomentum=${this.newMomentum}
+              type=${tab.type}
+              ?onlyIcon=${tab.onlyIcon}
+            >
+              ${unsafeHTML(tab.innerHTML)}
+            </md-tab>
+          `
+        )}
+      `;
+    }
+
     private get moreMenuTemplate() {
       if (this.direction === "vertical") {
         return nothing;
@@ -1172,30 +1244,7 @@ export namespace Tabs {
           @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
           @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
         >
-          <md-tab
-            slot="menu-trigger"
-            id="${MORE_MENU_TAB_TRIGGER_ID}"
-            aria-label="${this.overflowLabel}"
-            aria-haspopup="true"
-            tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
-            .selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
-            class="md-menu-overlay__more_tab ${classMap({
-              "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
-            })}"
-            ariaRole="button"
-            .newMomentum=${this.newMomentum}
-            type=${this.type}
-          >
-            <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
-              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
-            </md-tooltip>
-            <md-icon
-              name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
-              iconSet="momentumDesign"
-              size="16"
-              class="more-icon"
-            ></md-icon>
-          </md-tab>
+          ${this.moreMenuButtonTemplate}
           <div
             id="tabs-more-list"
             part="tabs-more-list"
@@ -1210,31 +1259,56 @@ export namespace Tabs {
                 : {}
             )}"
           >
-            ${repeat(
-              this.tabsFilteredAsHiddenList,
-              () => generateSimpleUniqueId("tabs"),
-              (tab) => html`
-                <md-tab
-                  slot="draggable-item"
-                  .disabled="${tab.disabled}"
-                  .selected="${tab.selected}"
-                  name="${tab.name}"
-                  id="${this.getCopyTabId(tab)}"
-                  aria-label=${tab.ariaLabel}
-                  aria-controls="${this.getAriaControlId(tab)}"
-                  @click="${() => this.handleOverlayClose()}"
-                  tabIndex="${this.tabHiddenIdPositiveTabIndex === tab.id ? 0 : -1}"
-                  ariaRole="menuitem"
-                  .newMomentum=${this.newMomentum}
-                  type=${this.type}
-                  .onlyIcon="${tab.onlyIcon}"
-                >
-                  ${unsafeHTML(tab.innerHTML)}
-                </md-tab>
-              `
-            )}
+            ${this.moreMenuListTemplate}
           </div>
         </md-menu-overlay>
+      `;
+    }
+
+    private get renderTabSlot() {
+      return html`<slot
+        name="tab"
+        class="${classMap({
+          "visible-tabs-slot": this.direction === "horizontal"
+        })}"
+      ></slot> `;
+    }
+
+    private get renderTabsWithMoreMenu() {
+      return html`
+        <div
+          id="visible-tabs-list"
+          class="visible-tabs-container ${classMap({
+            "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+            "md-tab__hug": this.hugTabs,
+            "visible-new-tabs": this.newMomentum
+          })}"
+        >
+          ${repeat(
+            this.tabsFilteredAsVisibleList,
+            () => generateSimpleUniqueId("tabs"),
+            (tab) => html`
+              <md-tab
+                .closable="${tab.closable}"
+                .disabled="${tab.disabled}"
+                .selected="${tab.selected}"
+                name="${tab.name}"
+                id="${this.getCopyTabId(tab)}"
+                aria-label=${tab.ariaLabel}
+                aria-controls="${this.getAriaControlId(tab)}"
+                .isCrossVisible=${true}
+                tabIndex="${this.getTabIndex(tab)}"
+                .newMomentum=${this.newMomentum}
+                variant=${this.variant}
+                type=${this.type}
+                .onlyIcon="${tab.onlyIcon}"
+              >
+                ${unsafeHTML(tab.innerHTML)}
+              </md-tab>
+            `
+          )}
+        </div>
+        ${this.moreMenuTemplate}
       `;
     }
 
@@ -1251,45 +1325,7 @@ export namespace Tabs {
           })}"
           role="tablist"
         >
-          <slot
-            name="tab"
-            class="${classMap({
-              "visible-tabs-slot": this.direction === "horizontal"
-            })}"
-          ></slot>
-          <div
-            id="visible-tabs-list"
-            class="visible-tabs-container ${classMap({
-              "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
-              "md-tab__hug": this.hugTabs,
-              "visible-new-tabs": this.newMomentum
-            })}"
-          >
-            ${repeat(
-              this.tabsFilteredAsVisibleList,
-              () => generateSimpleUniqueId("tabs"),
-              (tab) => html`
-                <md-tab
-                  .closable="${tab.closable}"
-                  .disabled="${tab.disabled}"
-                  .selected="${tab.selected}"
-                  name="${tab.name}"
-                  id="${this.getCopyTabId(tab)}"
-                  aria-label=${tab.ariaLabel}
-                  aria-controls="${this.getAriaControlId(tab)}"
-                  .isCrossVisible=${true}
-                  tabIndex="${this.getTabIndex(tab)}"
-                  .newMomentum=${this.newMomentum}
-                  variant=${this.variant}
-                  type=${this.type}
-                  .onlyIcon="${tab.onlyIcon}"
-                >
-                  ${unsafeHTML(tab.innerHTML)}
-                </md-tab>
-              `
-            )}
-          </div>
-          ${this.moreMenuTemplate}
+          ${this.renderTabSlot} ${this.direction === "horizontal" ? this.renderTabsWithMoreMenu : nothing}
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

@@ -6,14 +6,14 @@
   box-shadow: none !important;
   outline: none;
 
-  button {
+  .tab-content {
     outline: $tab-main-focus-border;
     outline-offset: rem-calc(-2);
     box-shadow: var(--tabs-default-focus-shadow);
   }
 }
 
-:host([selected]) button {
+:host([selected]) .tab-content {
   box-shadow: $tab-active-border;
   border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
   color: var(--tabs-default-active);
@@ -25,7 +25,7 @@
   }
 }
 
-:host([selected]) button.pill {
+:host([selected]) .tab-content.pill {
   box-shadow: none;
   border-radius: $tab-new-border-radius;
   background-color: var(--tabs-default-pressed);
@@ -35,7 +35,7 @@
   }
 }
 
-:host([selected]) button.rounded {
+:host([selected]) .tab-content.rounded {
   box-shadow: $tab-rounded-active-border;
   border-radius: $tab-rounded-border-radius;
 
@@ -44,13 +44,13 @@
   }
 }
 
-button.primary {
+.tab-content.primary {
   color: var(--tabs-default-text-color);
   font-family: var(--brand-font-medium);
   font-weight: var(--brand-font-weight-medium);
 }
 
-button.primary.line {
+.tab-content.primary.line {
   background: $tab-none-bg;
 
   &:hover {
@@ -71,7 +71,7 @@ button.primary.line {
   }
 }
 
-:host([selected]) button.primary {
+:host([selected]) .tab-content.primary {
   font-family: var(--brand-font-bold);
   font-weight: var(--brand-font-weight-bold);
   background-color: var(--tabs-primary-bg-color);
@@ -92,7 +92,7 @@ button.primary.line {
   }
 }
 
-:host([selected]) button.primary.line {
+:host([selected]) .tab-content.primary.line {
   background: $tab-none-bg;
   color: var(--tabs-default-active);
 
@@ -114,7 +114,7 @@ button.primary.line {
   }
 }
 
-:host([selected]) button.pill.onlyIcon {
+:host([selected]) .tab-content.pill.onlyIcon {
   border-radius: 100%;
 
   &:active {
@@ -122,15 +122,16 @@ button.primary.line {
   }
 }
 
-:host([vertical]) button {
+:host([vertical]) .tab-content {
   text-align: left !important;
+  justify-content: flex-start;
 
   .tab-slot {
     justify-content: flex-start;
   }
 }
 
-:host([selected][vertical]) button {
+:host([selected][vertical]) .tab-content {
   border-radius: 0 $tab-focus-border-radius $tab-focus-border-radius 0;
   box-shadow: var(--tabs-default-active-vertical-border, $tab-active-vertical-border);
 
@@ -139,7 +140,7 @@ button.primary.line {
   }
 }
 
-:host([selected][vertical]) button.pill {
+:host([selected][vertical]) .tab-content.pill {
   border-radius: $tab-new-border-radius;
   box-shadow: none;
 
@@ -148,7 +149,7 @@ button.primary.line {
   }
 }
 
-:host([selected][vertical]) button.pill.onlyIcon {
+:host([selected][vertical]) .tab-content.pill.onlyIcon {
   border-radius: 100%;
 
   &:active {
@@ -214,12 +215,13 @@ slot {
 }
 
 .tab-action-button {
-  display: flex;
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-left: calc(#{$tab-base-indent} * 4);
-
-  md-icon {
-    display: inherit;
-  }
+  height:16px;
+  width: 16px;
+  
 
   &:hover {
     cursor: pointer;
@@ -240,14 +242,14 @@ md-icon {
   }
 }
 
-button {
+.tab-content {
   font-family: var(--brand-font-medium);
   font-weight: var(--brand-font-weight-medium);
   background: $tab-none-bg;
   border: none;
   border-radius: $tab-focus-border-radius;
   color: var(--tabs-default-text-color);
-  display: block;
+  display: inline-flex;
   height: 100%;
   min-height: $tab-overflow-button-height;
   padding: $tab-button-padding;
@@ -255,10 +257,13 @@ button {
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
-  width: 100%;
-  vertical-align: middle;
+  width: 100%;  
+  justify-content: center;
+  align-items: center;
+  user-select: none;
 
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background: $tab-none-bg;
     color: var(--tabs-default-disabled) !important;
     cursor: not-allowed;
@@ -299,7 +304,7 @@ button {
   }
 }
 
-button.newMomentum {
+.tab-content.newMomentum {
   cursor: pointer;
   transition:
     background-color 0.2s,
@@ -309,14 +314,13 @@ button.newMomentum {
   /* Sizing and spacing */
   min-height: rem-calc(28);
   padding: 0 0.625rem 0 0.625rem;
-  justify-content: center;
 }
 
-button.pill {
+.tab-content.pill {
   border-radius: $tab-new-border-radius;
 }
 
-button.pill.onlyIcon {
+.tab-content.pill.onlyIcon {
   border-radius: 100%;
 }
 
@@ -327,11 +331,11 @@ button.pill.onlyIcon {
     box-shadow: none;
   }
 
-  :host button {
+  :host .tab-content {
     border: none;
   }
 
-  :host([selected]) button {
+  :host([selected]) .tab-content {
     border-radius: $tab-focus-border-radius $tab-focus-border-radius 0 0;
     color: HighlightText;
     background-color: Highlight !important;
@@ -342,7 +346,7 @@ button.pill.onlyIcon {
     }
   }
 
-  :host(:focus) button {
+  :host(:focus) .tab-content {
     outline: 2px solid Highlight;
     outline-offset: -2px;
     box-shadow: none;
@@ -353,19 +357,19 @@ button.pill.onlyIcon {
     background: Canvas;
   }
 
-  button {
+  .tab-content {
     &:hover {
       outline: 1px solid Highlight;
       outline-offset: -1px;
     }
   }
 
-  button:focus:not(:disabled) {
+  .tab-content:focus:not(.disabled) {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }
 
-  button:disabled {
+  .tab-content.disabled {
     forced-color-adjust: none;
     background-color: none;
     color: GrayText;

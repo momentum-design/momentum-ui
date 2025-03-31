@@ -43,7 +43,7 @@ export const datePickerTemplate = html`
   <md-datepicker weekStart="Monday" value="2021-01-31" compact-input newMomentum></md-datepicker>
   <h3>date picker with accept and cancel buttons</h3>
   <md-datepicker
-    .controlButtons=${{ accept: { value: "Accept" }, cancel: { value: "Cancel" } }}
+    .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
     .shouldCloseOnSelect=${true}
     value="2021-01-31"
     newMomentum

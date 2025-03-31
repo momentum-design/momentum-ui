@@ -35,7 +35,7 @@ export const dateRangePickerTemplate = html`
   <md-date-range-picker newMomentum></md-date-range-picker>
   <h3>date range picker with accept and cancel buttons</h3>
   <md-date-range-picker
-    .controlButtons=${{ accept: { value: "Accept" }, cancel: { value: "Cancel" } }}
+    .controlButtons=${{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }}
     .shouldCloseOnSelect=${true}
     value=${datePickerValue}
     newMomentum

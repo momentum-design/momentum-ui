@@ -174,7 +174,7 @@ export namespace DatePicker {
 
       this.setSelected(date, event);
       this.shouldCloseOnSelect && this.setOpen(false);
-    };
+    }
 
     private getLocaleDateString(date: DateTime): string {
       if (this.includesTime) {
@@ -205,7 +205,7 @@ export namespace DatePicker {
           }
         })
       );
-    };
+    }
 
     setPreSelection = (date: DateTime) => {
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };

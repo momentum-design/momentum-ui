@@ -16,7 +16,6 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
-import { brandVisualIconsMap } from "./brand-visual-icons";
 import designMapping from "./momentum-ui-to-design-icons.json";
 import styles from "./scss/module.scss";
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
@@ -244,7 +243,7 @@ export namespace Icon {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon =
         this.iconSet === "momentumBrandVisuals"
-          ? brandVisualIconsMap[iconName]
+          ? (await import(`@momentum-design/brand-visuals/dist/logos/svg/${iconName}.svg`)).default
           : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
 
       if (!importedIcon) {

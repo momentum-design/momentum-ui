@@ -679,7 +679,7 @@ export class AddingAndRemovingTabsTemplate extends LitElement {
   @internalProperty() private showSecondTab = true;
   selectedTab = "tab1";
 
-  private allTabs = ["tab1", "tab2", "tab3"];
+  private readonly allTabs = ["tab1", "tab2", "tab3"];
 
   get filteredTabs() {
     return this.showSecondTab ? this.allTabs : this.allTabs.filter((tab) => tab !== "tab2");
@@ -693,8 +693,8 @@ export class AddingAndRemovingTabsTemplate extends LitElement {
         }}
         slot="checkbox"
         ?checked=${this.showSecondTab}
-        >Show Second Tab</md-checkbox
       >
+        Show Second Tab
       </md-checkbox>
     `;
   }

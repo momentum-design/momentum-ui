@@ -1081,15 +1081,6 @@ export namespace Tabs {
       this.tabsFilteredAsHiddenList = [];
       this.isMoreTabMenuVisible = false;
       this.setupPanelsAndTabs();
-
-      if (this.direction === "vertical") {
-        this.tabs.forEach((tab) => {
-          if (tab.viewportHidden) {
-            tab.viewportHidden = false;
-          }
-        });
-      }
-
       await this.linkPanelsAndTabs();
       if (this.draggable) {
         this.initializeSortable();

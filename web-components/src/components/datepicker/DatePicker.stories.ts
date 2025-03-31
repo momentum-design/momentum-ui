@@ -8,6 +8,10 @@ export default {
   component: "md-datepicker",
   argTypes: {
     weekStart: { control: { type: "select" }, options: DP.weekStartDays },
+    controlButtons: {
+      control: { type: "select" },
+      options: [{ apply: { value: "Apply" }, cancel: { value: "Cancel" } }]
+    },
     locale: { control: { type: "text" } },
     disabled: { control: "boolean" },
     minDate: { control: { type: "text" } },
@@ -38,7 +42,9 @@ export const DatePicker: StoryObj = {
         value=${args.value}
         weekStart=${args.weekStart}
         locale=${args.locale}
+        .controlButtons=${args.controlButtons}
         minDate=${args.minDate}
+        .controlButtons=${args.controlButtons}
         maxDate=${args.maxDate}
       >
       </md-datepicker>

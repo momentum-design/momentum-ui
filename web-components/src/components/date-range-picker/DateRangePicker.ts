@@ -23,12 +23,13 @@ export namespace DateRangePicker {
     connectedCallback() {
       super.connectedCallback();
       super.render();
-      this.addEventListener("date-selection-change", this.handleDateSelection);
+      this.addEventListener("date-pre-selection-change", this.handleDateSelection);
+      this.updateValue();
     }
 
     disconnectedCallback() {
       super.disconnectedCallback();
-      this.removeEventListener("date-selection-change", this.handleDateSelection);
+      this.removeEventListener("date-pre-selection-change", this.handleDateSelection);
     }
 
     updateValue = () => {
@@ -37,16 +38,28 @@ export namespace DateRangePicker {
       }
     };
 
+    setSelected() {
+      // empty overload to stop prevent super's value change
+    }
+
     dateToSqlTranslate(date: DateTime) {
       return date.toSQLDate();
     }
 
-    sqlDateToSlashes(date: string) {
-      return date.replace(/-+/g, "/");
+    onApplyClick() {
+      this.emitDateRange();
+      this.updateValue();
+
+      if (this.shouldCloseOnSelect) {
+        this.setOpen(false);
+      }
     }
 
     handleDateSelection = (e: any) => {
       const selection: DateTime = e.detail.data;
+      if (!selection) {
+        return;
+      }
       if (!this.startDate) {
         this.startDate = this.dateToSqlTranslate(selection);
       } else if (!this.endDate) {
@@ -59,6 +72,10 @@ export namespace DateRangePicker {
       } else {
         this.startDate = this.dateToSqlTranslate(selection);
         this.endDate = undefined;
+      }
+
+      if (this.controlButtons?.apply) {
+        return;
       }
 
       this.emitDateRange();

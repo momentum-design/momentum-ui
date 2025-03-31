@@ -1171,11 +1171,40 @@ export namespace Tabs {
       }
     }
 
+    private get moreMenuButtonTemplate() {
+      return html`
+        <md-tab
+          slot="menu-trigger"
+          id="${MORE_MENU_TAB_TRIGGER_ID}"
+          aria-label="${this.overflowLabel}"
+          aria-haspopup="true"
+          role="button"
+          tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
+          ?selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
+          class="md-menu-overlay__more_tab ${classMap({
+            "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
+          })}"
+          ?newMomentum=${this.newMomentum}
+          type=${this.type}
+        >
+          <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
+            <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
+          </md-tooltip>
+          <md-icon
+            name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
+            iconSet="momentumDesign"
+            size="16"
+            class="more-icon"
+          ></md-icon>
+        </md-tab>
+      `;
+    }
+
     private get moreMenuListTemplate() {
       return html`
         ${repeat(
           this.tabsFilteredAsHiddenList,
-          () => generateSimpleUniqueId("tabs"),
+          () => generateSimpleUniqueId("menuitem_tabs"),
           (tab) => html`
             <md-tab
               slot="draggable-item"
@@ -1215,30 +1244,7 @@ export namespace Tabs {
           @menu-overlay-open="${() => (this.isMoreTabMenuOpen = true)}"
           @menu-overlay-close="${() => (this.isMoreTabMenuOpen = false)}"
         >
-          <md-tab
-            slot="menu-trigger"
-            id="${MORE_MENU_TAB_TRIGGER_ID}"
-            aria-label="${this.overflowLabel}"
-            aria-haspopup="true"
-            role="button"
-            tabindex="${this.isMoreTabMenuVisible ? 0 : -1}"
-            ?selected=${this.isMoreTabMenuVisible ? this.isMoreTabMenuSelected : false}
-            class="md-menu-overlay__more_tab ${classMap({
-              "md-menu-overlay__more_tab--hidden": !this.isMoreTabMenuVisible
-            })}"
-            ?newMomentum=${this.newMomentum}
-            type=${this.type}
-          >
-            <md-tooltip placement="top" message=${this.overflowLabel} ?disabled=${!this.isMoreTabTruncated}>
-              <span class="md-menu-overlay__overflow-label">${this.overflowLabel}</span>
-            </md-tooltip>
-            <md-icon
-              name="${!this.isMoreTabMenuOpen ? "arrow-down-bold" : "arrow-up-bold"}"
-              iconSet="momentumDesign"
-              size="16"
-              class="more-icon"
-            ></md-icon>
-          </md-tab>
+          ${this.moreMenuButtonTemplate}
           <div
             id="tabs-more-list"
             part="tabs-more-list"
@@ -1259,8 +1265,13 @@ export namespace Tabs {
       `;
     }
 
-    private get renderTabs() {
-      return html` <slot name="tab"></slot> `;
+    private get renderTabSlot() {
+      return html`<slot
+        name="tab"
+        class="${classMap({
+          "visible-tabs-slot": this.direction === "horizontal"
+        })}"
+      ></slot> `;
     }
 
     private get renderTabsWithMoreMenu() {
@@ -1273,7 +1284,29 @@ export namespace Tabs {
             "visible-new-tabs": this.newMomentum
           })}"
         >
-          ${this.renderTabs}
+          ${repeat(
+            this.tabsFilteredAsVisibleList,
+            () => generateSimpleUniqueId("tabs"),
+            (tab) => html`
+              <md-tab
+                .closable="${tab.closable}"
+                .disabled="${tab.disabled}"
+                .selected="${tab.selected}"
+                name="${tab.name}"
+                id="${this.getCopyTabId(tab)}"
+                aria-label=${tab.ariaLabel}
+                aria-controls="${this.getAriaControlId(tab)}"
+                .isCrossVisible=${true}
+                tabIndex="${this.getTabIndex(tab)}"
+                .newMomentum=${this.newMomentum}
+                variant=${this.variant}
+                type=${this.type}
+                .onlyIcon="${tab.onlyIcon}"
+              >
+                ${unsafeHTML(tab.innerHTML)}
+              </md-tab>
+            `
+          )}
         </div>
         ${this.moreMenuTemplate}
       `;
@@ -1292,7 +1325,7 @@ export namespace Tabs {
           })}"
           role="tablist"
         >
-          ${this.direction === "vertical" ? this.renderTabs : this.renderTabsWithMoreMenu}
+          ${this.renderTabSlot} ${this.direction === "horizontal" ? this.renderTabsWithMoreMenu : nothing}
           <div class="md-tabs__settings" part="md-tabs__settings">
             <slot name="settings"></slot>
           </div>

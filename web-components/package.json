@@ -40,7 +40,8 @@
     "@momentum-ui/tokens": "1.7.1",
     "@momentum-ui/utils": "6.2.15",
     "lit-element": "2.3.1",
-    "lit-html": "^1.2.1"
+    "lit-html": "^1.2.1",
+    "mobx": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
     "@interactjs/actions": "1.10.3",
@@ -60,12 +61,12 @@
     "libphonenumber-js": "^1.7.57",
     "lit-virtualizer": "0.4.2",
     "luxon": "^3.5.0",
-    "mobx": "^6.13.7",
     "papaparse": "^5.5.2",
     "sortablejs": "^1.15.6"
   },
   "devDependencies": {
-    "@momentum-design/tokens": "0.5.1",    
+    "@momentum-design/tokens": "0.5.1",
+    "mobx": "^5.0.0",
     "@adobe/lit-mobx": "^1.0.1",
     "@babel/core": "^7.26.9",
     "@babel/preset-env": "^7.26.9",

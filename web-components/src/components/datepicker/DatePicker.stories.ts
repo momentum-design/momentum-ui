@@ -44,7 +44,6 @@ export const DatePicker: StoryObj = {
         locale=${args.locale}
         .controlButtons=${args.controlButtons}
         minDate=${args.minDate}
-        .controlButtons=${args.controlButtons}
         maxDate=${args.maxDate}
       >
       </md-datepicker>

@@ -634,6 +634,24 @@ export class TabsJustifiedTemplateSandbox extends LitElement {
         <md-tab-panel slot="panel">
           <span>Content for "Fourth Tab"</span>
         </md-tab-panel>
+        <md-tab slot="tab" name="Label1" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label2" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
+        <md-tab slot="tab" name="Label3" type=${type} ?newMomentum=${newMomentum} variant=${variant}>
+          <span>Label</span>
+        </md-tab>
+        <md-tab-panel slot="panel">
+          <span>Content for "Label Label"</span>
+        </md-tab-panel>
       </md-tabs>
     `;
   }

@@ -55,7 +55,7 @@ export namespace Tabs {
     @property({ type: Boolean, attribute: "hug-tabs" }) hugTabs = false;
     @property({ type: String }) overflowLabel = "More Tabs";
     @property({ type: Boolean, attribute: "draggable" }) draggable = false;
-    @property({ type: String }) direction: "horizontal" | "vertical" = "horizontal";
+    @property({ type: String, reflect: true }) direction: "horizontal" | "vertical" = "horizontal";
     @property({ type: Number, attribute: "more-items-scroll-limit" }) moreItemsScrollLimit = Number.MAX_SAFE_INTEGER;
 
     private _selectedIndex = 0;
@@ -95,6 +95,8 @@ export namespace Tabs {
     @internalProperty() private defaultTabsOrderArray: string[] = [];
     @internalProperty() private tabsOrderPrefsArray: string[] = [];
     @internalProperty() private isMoreTabTruncated = false;
+    @internalProperty() private showLeftArrow = false;
+    @internalProperty() private showRightArrow = false;
 
     @query("slot[name='tab']") tabSlotElement!: HTMLSlotElement;
     @query("slot[name='panel']") panelSlotElement?: HTMLSlotElement;
@@ -266,6 +268,26 @@ export namespace Tabs {
           }, 0);
 
           if (tabsTotalOffsetWidth) {
+            if (this.newMomentum) {
+              this.tabsViewportDataList = tabList.map((tab, idx) => ({
+                isTabInViewportHidden: false,
+                tabOffsetWidth: tabsOffsetsWidths[idx]
+              }));
+
+              this.tabsFilteredAsVisibleList = [...tabList];
+
+              this.tabsVisibleIdxHash = this.tabsFilteredAsVisibleList.reduce(
+                (acc, tab, idx) => {
+                  acc[tab.id] = idx;
+                  return acc;
+                },
+                {} as Record<TabId, number>
+              );
+
+              this.isMoreTabMenuVisible = false;
+              this.updateArrowsVisibility();
+              return;
+            }
             // more
             await this.setupMoreTab();
 
@@ -331,6 +353,14 @@ export namespace Tabs {
         const firstNotDisabledHiddenTab = this.tabsFilteredAsHiddenList.find((t) => !t.disabled);
         this.updateHiddenIdPositiveTabIndex(firstNotDisabledHiddenTab);
       }
+    }
+
+    private updateArrowsVisibility() {
+      if (!this.tabsListElement) return;
+
+      const { scrollLeft, scrollWidth, clientWidth } = this.tabsListElement;
+      this.showLeftArrow = scrollLeft > 0;
+      this.showRightArrow = scrollLeft + clientWidth < scrollWidth;
     }
 
     private updateIsMoreTabMenuSelected() {
@@ -743,6 +773,11 @@ export namespace Tabs {
       }
 
       this.moveFocusToTab(visibleTabs[newIndex]);
+      if (this.newMomentum) {
+        visibleTabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
+        this.updateArrowsVisibility();
+        setTimeout(() => this.moveFocusToTab(visibleTabs[newIndex]), 0);
+      }
     }
 
     moveFocusToTab(tabElement: Element | undefined) {
@@ -1238,61 +1273,87 @@ export namespace Tabs {
       `;
     }
 
+    private scrollTabs(direction: "left" | "right") {
+      if (!this.tabsListElement || this.direction === "vertical") return;
+      const scrollAmount = 100;
+
+      const scrollDistance = direction === "left" ? -scrollAmount : scrollAmount;
+      this.tabsListElement.scrollBy({ left: scrollDistance, behavior: "smooth" });
+
+      setTimeout(() => this.updateArrowsVisibility(), 300);
+    }
+
+    private tabsButtonArrow(direction: "left" | "right") {
+      return html`<md-button
+        class="tabs-${direction}-arrow"
+        @click=${() => this.scrollTabs(direction)}
+        size="28"
+        variant="ghost"
+        circle
+      >
+        <md-icon slot="icon" name="arrow-${direction}-regular" iconSet="momentumDesign"></md-icon>
+      </md-button>`;
+    }
+
     render() {
       return html`
-        <div
-          part="tabs-list"
-          class="md-tab__list ${classMap({
-            "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
-            "md-tab__hug": this.hugTabs,
-            "no-tabs-visible": this.noTabsVisible,
-            "vertical-tab-list": this.direction === "vertical",
-            "tab-new-momentum": this.newMomentum
-          })}"
-          role="tablist"
-        >
-          <slot
-            name="tab"
-            class="${classMap({
-              "visible-tabs-slot": this.direction === "horizontal"
-            })}"
-          ></slot>
+        <div class="md-tabs-wrapper" part="tabs-wrapper">
+          ${this.newMomentum && this.showLeftArrow ? this.tabsButtonArrow("left") : nothing}
           <div
-            id="visible-tabs-list"
-            class="visible-tabs-container ${classMap({
+            part="tabs-list"
+            class="md-tab__list ${classMap({
               "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
               "md-tab__hug": this.hugTabs,
-              "visible-new-tabs": this.newMomentum
+              "no-tabs-visible": this.noTabsVisible,
+              "vertical-tab-list": this.direction === "vertical",
+              "tab-new-momentum": this.newMomentum
             })}"
+            role="tablist"
           >
-            ${repeat(
-              this.tabsFilteredAsVisibleList,
-              () => generateSimpleUniqueId("tabs"),
-              (tab) => html`
-                <md-tab
-                  .closable="${tab.closable}"
-                  .disabled="${tab.disabled}"
-                  .selected="${tab.selected}"
-                  name="${tab.name}"
-                  id="${this.getCopyTabId(tab)}"
-                  aria-label=${tab.ariaLabel}
-                  aria-controls="${this.getAriaControlId(tab)}"
-                  .isCrossVisible=${true}
-                  tabIndex="${this.getTabIndex(tab)}"
-                  .newMomentum=${this.newMomentum}
-                  variant=${this.variant}
-                  type=${this.type}
-                  .onlyIcon="${tab.onlyIcon}"
-                >
-                  ${unsafeHTML(tab.innerHTML)}
-                </md-tab>
-              `
-            )}
+            <slot
+              name="tab"
+              class="${classMap({
+                "visible-tabs-slot": this.direction === "horizontal"
+              })}"
+            ></slot>
+            <div
+              id="visible-tabs-list"
+              class="visible-tabs-container ${classMap({
+                "md-tab__justified": this.justified && !this.isMoreTabMenuVisible,
+                "md-tab__hug": this.hugTabs,
+                "visible-new-tabs": this.newMomentum
+              })}"
+            >
+              ${repeat(
+                this.tabsFilteredAsVisibleList,
+                () => generateSimpleUniqueId("tabs"),
+                (tab) => html`
+                  <md-tab
+                    .closable="${tab.closable}"
+                    .disabled="${tab.disabled}"
+                    .selected="${tab.selected}"
+                    name="${tab.name}"
+                    id="${this.getCopyTabId(tab)}"
+                    aria-label=${tab.ariaLabel}
+                    aria-controls="${this.getAriaControlId(tab)}"
+                    .isCrossVisible=${true}
+                    tabIndex="${this.getTabIndex(tab)}"
+                    .newMomentum=${this.newMomentum}
+                    variant=${this.variant}
+                    type=${this.type}
+                    .onlyIcon="${tab.onlyIcon}"
+                  >
+                    ${unsafeHTML(tab.innerHTML)}
+                  </md-tab>
+                `
+              )}
+            </div>
+            ${!this.newMomentum ? this.moreMenuTemplate : nothing}
+            <div class="md-tabs__settings" part="md-tabs__settings">
+              <slot name="settings"></slot>
+            </div>
           </div>
-          ${this.moreMenuTemplate}
-          <div class="md-tabs__settings" part="md-tabs__settings">
-            <slot name="settings"></slot>
-          </div>
+          ${this.newMomentum && this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
         </div>
         <div
           part="tabs-content"

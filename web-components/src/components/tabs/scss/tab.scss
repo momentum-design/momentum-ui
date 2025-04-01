@@ -11,6 +11,9 @@
     outline-offset: rem-calc(-2);
     box-shadow: var(--tabs-default-focus-shadow);
   }
+  button.rounded {
+    border-radius: $tab-rounded-border-radius;
+  }
 }
 
 :host([selected]) button {
@@ -296,6 +299,10 @@ button {
 
   &:focus {
     outline: none;
+  }
+
+  &.rounded {
+    border-radius: $tab-rounded-border-radius;
   }
 }
 

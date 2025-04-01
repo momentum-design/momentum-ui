@@ -50,7 +50,6 @@
     "@interactjs/interact": "1.10.3",
     "@interactjs/modifiers": "1.10.3",
     "@interactjs/utils": "1.10.3",
-    "@momentum-design/brand-visuals": "0.5.1",
     "@momentum-design/icons": "0.13.0",
     "@popperjs/core": "^2.11.8",
     "country-codes-list": "1.6.8",
@@ -60,11 +59,12 @@
     "json": "^11.0.0",
     "libphonenumber-js": "^1.7.57",
     "lit-virtualizer": "0.4.2",
-    "luxon": "^3.5.0",
+    "luxon": "^3.6.1",
     "papaparse": "^5.5.2",
     "sortablejs": "^1.15.6"
   },
   "devDependencies": {
+    "@momentum-design/brand-visuals": "0.5.1",
     "@momentum-design/tokens": "0.5.1",
     "mobx": "^5.0.0",
     "@adobe/lit-mobx": "^1.0.1",

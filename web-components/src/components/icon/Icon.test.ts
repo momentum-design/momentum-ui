@@ -1,15 +1,10 @@
-import { Icon } from "@/components/icon/Icon";
+import { type Icon } from "@/components/icon/Icon";
 import { elementUpdated, fixture, fixtureCleanup, html } from "@open-wc/testing-helpers";
 import "./Icon";
 
 jest.mock("@momentum-ui/utils/lib/getColorValue", () => jest.fn(() => "rgba(247, 100, 74, 1)"));
 
 describe("Momentum Icon Component", () => {
-  beforeEach(() => {
-    jest.resetModules();
-    console.warn = jest.fn();
-  });
-
   afterEach(fixtureCleanup);
 
   function getSvgElementAttribute(element: Element, attribute: string) {
@@ -134,11 +129,16 @@ describe("Momentum Icon Component", () => {
   });
 
   test("should throw console.warn when color is defined by a hex color", async () => {
+    const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {
+      /**/
+    });
+
     const element = await fixture(
       `<md-icon class="test-class" name="accessories_16" iconSet="momentumUI" color="#C9F4FF"></md-icon>`
     );
     expect(element.shadowRoot!.querySelector("i")!.style.fontSize).toEqual("16px");
-    expect(console.warn).toBeCalledTimes(1);
+    expect(consoleWarnSpy).toBeCalledTimes(1);
+    consoleWarnSpy.mockRestore();
   });
 
   test("should not apply design font class when designEnabled is true as we don't map the icon", async () => {

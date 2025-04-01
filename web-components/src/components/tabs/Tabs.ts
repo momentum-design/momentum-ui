@@ -1320,6 +1320,8 @@ export namespace Tabs {
       >
         <md-icon slot="icon" name="arrow-${direction}-regular" iconSet="momentumDesign"></md-icon>
       </md-button>`;
+    }
+
     private get renderTabSlot() {
       return html`<slot
         name="tab"
@@ -1363,7 +1365,7 @@ export namespace Tabs {
             `
           )}
         </div>
-        ${this.moreMenuTemplate}
+        ${!this.newMomentum ? this.moreMenuTemplate : nothing}
       `;
     }
 
@@ -1382,19 +1384,21 @@ export namespace Tabs {
             })}"
             role="tablist"
           >
-          ${this.renderTabSlot} ${this.direction === "horizontal" ? this.renderTabsWithMoreMenu : nothing}
-          <div class="md-tabs__settings" part="md-tabs__settings">
-            <slot name="settings"></slot>
+            ${this.renderTabSlot} ${this.direction === "horizontal" ? this.renderTabsWithMoreMenu : nothing}
+            <div class="md-tabs__settings" part="md-tabs__settings">
+              <slot name="settings"></slot>
+            </div>
           </div>
           ${this.newMomentum && this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
         </div>
-        <div
-          part="tabs-content"
-          class="md-tab__content ${classMap({
-            "no-tabs-visible": this.noTabsVisible
-          })}"
-        >
-          <slot name="panel"></slot>
+          <div
+            part="tabs-content"
+            class="md-tab__content ${classMap({
+              "no-tabs-visible": this.noTabsVisible
+            })}"
+          >
+            <slot name="panel"></slot>
+          </div>
         </div>
       `;
     }

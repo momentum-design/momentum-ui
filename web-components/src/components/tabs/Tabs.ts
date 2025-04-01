@@ -67,7 +67,6 @@ export namespace Tabs {
     set selectedIndex(value: number) {
       this._selectedIndex = value;
     }
-    @property({ type: Number }) delay = 0;
     @property({ type: Number }) animation = 100;
     @property({ type: String, attribute: "ghost-class" }) ghostClass = "";
     @property({ type: String, attribute: "chosen-class" }) chosenClass = "";
@@ -1391,14 +1390,13 @@ export namespace Tabs {
           </div>
           ${this.newMomentum && this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
         </div>
-          <div
-            part="tabs-content"
-            class="md-tab__content ${classMap({
-              "no-tabs-visible": this.noTabsVisible
-            })}"
-          >
-            <slot name="panel"></slot>
-          </div>
+        <div
+          part="tabs-content"
+          class="md-tab__content ${classMap({
+            "no-tabs-visible": this.noTabsVisible
+          })}"
+        >
+          <slot name="panel"></slot>
         </div>
       `;
     }

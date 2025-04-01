@@ -16,12 +16,14 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import { styleMap } from "lit-html/directives/style-map";
-import { brandVisualIconsMap } from "./brand-visual-icons";
 import designMapping from "./momentum-ui-to-design-icons.json";
 import styles from "./scss/module.scss";
 export const iconSize = ["14", "16", "18", "20", "28", "36", "56", 14, 16, 18, 20, 28, 36, 56] as const;
 export const iconType = ["", "white"] as const;
-export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals"] as const;
+export const iconSet = ["momentumUI", "preferMomentumDesign", "momentumDesign", "momentumBrandVisuals", "svg"] as const;
+
+import { iconUrlManager } from "@/managers/IconUrlManager";
+import { fetchSVG, getMomentumDesignIconContent } from "./Icon.utils";
 
 export namespace Icon {
   export type Size = (typeof iconSize)[number];
@@ -174,59 +176,12 @@ export namespace Icon {
      */
     @property({ type: String }) iconSet: IconSet = "momentumUI";
 
+    @property({ type: String, attribute: "svg-url" }) svgUrl?: string;
+
     private static readonly designLookup = new Map(Object.entries(designMapping));
 
     @internalProperty()
     private svgIcon: HTMLElement | null = null;
-
-    isPath(importedIcon: string | object) {
-      if (typeof importedIcon === "object") {
-        return false;
-      }
-      return importedIcon.endsWith(".svg");
-    }
-
-    decodeIfBase64EncodedSvg(data: string) {
-      const base64DataRegex = /data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/;
-      const base64DataMatch = base64DataRegex.exec(data);
-      if (base64DataMatch?.[1]) {
-        const base64Data = base64DataMatch[1];
-        const decodedData = atob(base64Data);
-        return decodedData;
-      }
-      return data;
-    }
-
-    async getSvgContentFromFile(importedIcon: string) {
-      const response = await fetch(importedIcon);
-      const responseText = await response.text();
-
-      return this.getSvgContentFromInline(responseText);
-    }
-
-    getSvgContentFromInline(importedIcon: string | { data: string }) {
-      let svgContent = "";
-      if (typeof importedIcon === "object" && "data" in importedIcon) {
-        svgContent = importedIcon.data;
-      } else {
-        svgContent = this.decodeIfBase64EncodedSvg(importedIcon);
-      }
-      return this.parseSvgContent(svgContent);
-    }
-
-    parseSvgContent(svgContent: string) {
-      try {
-        const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
-        return doc.documentElement;
-      } catch (error) {
-        try {
-          return new DOMParser().parseFromString(svgContent, "text/html").body.children[0] as HTMLElement;
-        } catch (error) {
-          console.error("Error parsing svg content: ", error);
-          return null;
-        }
-      }
-    }
 
     isSvgAlreadyLoaded(iconName: string) {
       if (!this.svgIcon) {
@@ -241,22 +196,16 @@ export namespace Icon {
         return;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const importedIcon =
-        this.iconSet === "momentumBrandVisuals"
-          ? brandVisualIconsMap[iconName]
-          : require(`@momentum-design/icons/dist/svg/${iconName}.svg`);
+        this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg"
+          ? await fetchSVG(this.computedSvgPath, iconName, "svg")
+          : await getMomentumDesignIconContent(iconName);
 
       if (!importedIcon) {
-        console.error(`Icon: ${iconName} does not exist in the design system.`);
         return;
       }
 
-      if (this.isPath(importedIcon)) {
-        this.svgIcon = await this.getSvgContentFromFile(importedIcon);
-      } else {
-        this.svgIcon = this.getSvgContentFromInline(importedIcon);
-      }
+      this.svgIcon = importedIcon;
 
       this.svgIcon?.setAttribute("class", `icon ${iconName}`);
       this.svgIcon?.setAttribute("part", "icon");
@@ -283,8 +232,17 @@ export namespace Icon {
       }
     }
 
+    private get computedSvgPath() {
+      if (this.svgUrl) {
+        return this.svgUrl;
+      }
+
+      //default to use iconUrlManager url
+      return iconUrlManager.svgIconUrl;
+    }
+
     private get svgIconName() {
-      if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals") {
+      if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg") {
         return this.name;
       }
       const lookupName = this.momentumUIIconLookupName;
@@ -437,7 +395,8 @@ export namespace Icon {
       return (
         this.iconSet === "momentumDesign" ||
         this.iconSet === "preferMomentumDesign" ||
-        this.iconSet === "momentumBrandVisuals"
+        this.iconSet === "momentumBrandVisuals" ||
+        this.iconSet === "svg"
       );
     }
 
@@ -445,7 +404,8 @@ export namespace Icon {
       return (
         (this.svgIcon && this.iconSet === "preferMomentumDesign") ||
         this.iconSet === "momentumDesign" ||
-        this.iconSet === "momentumBrandVisuals"
+        this.iconSet === "momentumBrandVisuals" ||
+        this.iconSet === "svg"
       );
     }
 

@@ -80,6 +80,7 @@ export namespace Tabs {
     @property({ type: String }) type: Tabs.TabsType = "line";
     @property({ type: Boolean }) newMomentum = false;
     @property({ type: String }) variant: TabVariant = "ghost";
+    @property({ type: Boolean, attribute: "scroll-arrow" }) scrollArrow: boolean = false;
 
     @internalProperty() private isMoreTabMenuVisible = false;
     @internalProperty() private isMoreTabMenuMeasured = false;
@@ -268,7 +269,7 @@ export namespace Tabs {
           }, 0);
 
           if (tabsTotalOffsetWidth) {
-            if (this.newMomentum) {
+            if (this.newMomentum && this.scrollArrow) {
               this.tabsViewportDataList = tabList.map((tab, idx) => ({
                 isTabInViewportHidden: false,
                 tabOffsetWidth: tabsOffsetsWidths[idx]
@@ -785,7 +786,7 @@ export namespace Tabs {
       }
 
       this.moveFocusToTab(visibleTabs[newIndex]);
-      if (this.newMomentum) {
+      if (this.newMomentum && this.scrollArrow) {
         visibleTabs[newIndex].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });
         this.updateArrowsVisibility();
         setTimeout(() => this.moveFocusToTab(visibleTabs[newIndex]), 0);
@@ -1364,14 +1365,14 @@ export namespace Tabs {
             `
           )}
         </div>
-        ${!this.newMomentum ? this.moreMenuTemplate : nothing}
+        ${!this.newMomentum || !this.scrollArrow ? this.moreMenuTemplate : nothing}
       `;
     }
 
     render() {
       return html`
         <div class="md-tabs-wrapper" part="tabs-wrapper">
-          ${this.newMomentum && this.showLeftArrow ? this.tabsButtonArrow("left") : nothing}
+          ${this.showLeftArrow ? this.tabsButtonArrow("left") : nothing}
           <div
             part="tabs-list"
             class="md-tab__list ${classMap({
@@ -1388,7 +1389,7 @@ export namespace Tabs {
               <slot name="settings"></slot>
             </div>
           </div>
-          ${this.newMomentum && this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
+          ${this.showRightArrow ? this.tabsButtonArrow("right") : nothing}
         </div>
         <div
           part="tabs-content"

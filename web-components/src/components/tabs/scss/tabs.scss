@@ -41,7 +41,7 @@
     height: 100%;
     margin-left: auto;
     width: auto;
-    max-width: 128.5px;    
+    max-width: 128.5px;
 
     .md-menu-overlay__overflow-label {
       display: inline-block;
@@ -86,7 +86,7 @@
     padding: 0;
     margin: 8px;
     height: auto;
-    max-width: 100%;    
+    max-width: 100%;
     width: 100%;
     overflow-x: hidden;
 
@@ -218,7 +218,7 @@ md-menu-overlay {
   display: none !important;
 }
 
-:host([newMomentum][direction="horizontal"]) {
+:host([newMomentum][direction="horizontal"][scroll-arrow]) {
   .md-tabs-wrapper {
     display: flex;
     align-items: center;

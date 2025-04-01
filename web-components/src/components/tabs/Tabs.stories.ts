@@ -35,6 +35,7 @@ const tabs = (args: Args) => {
       ?hug-tabs=${args.hugTabs}
       more-items-scroll-limit=${args.moreItemsScrollLimit}
       selected-index=${args.selectedIndex}
+      ?scroll-arrow="${args.scrollArrow}"
     >
       <md-tab slot="tab" closable="${args.closable}">
         <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -92,6 +93,7 @@ const moreTabs = (args: Args) => {
         ?hug-tabs=${args.hugTabs}
         more-items-scroll-limit=${args.moreItemsScrollLimit}
         selected-index=${args.selectedIndex}
+        ?scroll-arrow="${args.scrollArrow}"
       >
         <md-tab slot="tab" closable="${args.closable}" aria-label="History">
           <md-icon name="recents-bold" size="16" iconSet="momentumDesign"></md-icon>
@@ -224,6 +226,19 @@ export const NewPrimaryRoundedTabs: StoryObj = {
     return html` ${args.more ? moreTabs(args) : tabs(args)} `;
   }
 };
+export const NewScrollArrowTabs: StoryObj = {
+  args: {
+    alignment: "horizontal",
+    newMomentum: true,
+    variant: "primary",
+    type: "rounded",
+    more: true,
+    scrollArrow: true
+  },
+  render: (args: Args) => {
+    return html` ${args.more ? moreTabs(args) : tabs(args)} `;
+  }
+};
 
 export default {
   title: "Components/Tabs",
@@ -248,6 +263,7 @@ export default {
     hugTabs: { control: "boolean" },
     moreItemsScrollLimit: { control: "number" },
     selectedIndex: { control: "number" },
+    scrollArrow: { control: "boolean" },
 
     overflowLabel: { table: { disable: true } },
     tabSlotElement: { table: { disable: true } },

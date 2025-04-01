@@ -10,6 +10,7 @@ import { customElementWithCheck } from "@/mixins/CustomElementCheck";
 import { property } from "lit-element";
 import { DateTime } from "luxon";
 import { DatePicker } from "../datepicker/DatePicker";
+import { sqlDateToSlashes } from "@/utils/dateUtils";
 
 export namespace DateRangePicker {
   @customElementWithCheck("md-date-range-picker")
@@ -34,7 +35,7 @@ export namespace DateRangePicker {
 
     updateValue = () => {
       if (this.startDate && this.endDate) {
-        this.value = `${this.sqlDateToSlashes(this.startDate)} - ${this.sqlDateToSlashes(this.endDate)}`;
+        this.value = `${sqlDateToSlashes(this.startDate)} - ${sqlDateToSlashes(this.endDate)}`;
       }
     };
 

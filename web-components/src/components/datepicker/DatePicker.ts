@@ -12,7 +12,7 @@ import "@/components/menu-overlay/MenuOverlay";
 import { Key } from "@/constants";
 import { themeManager } from "@/managers/ThemeManager";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { addDays, addWeeks, DayFilters, isDayDisabled, now, subtractDays, subtractWeeks } from "@/utils/dateUtils";
+import { addDays, addWeeks, dateStringToDateTime, DayFilters, isDayDisabled, now, sqlDateToSlashes, subtractDays, subtractWeeks } from "@/utils/dateUtils";
 import { closestElement } from "@/utils/helpers";
 import { ValidationRegex } from "@/utils/validations";
 import { html, internalProperty, LitElement, property, PropertyValues, query, TemplateResult } from "lit-element";
@@ -33,9 +33,6 @@ export interface DatePickerControlButtons {
   apply?: DatePickerControlButton;
   cancel?: DatePickerControlButton;
 }
-
-const DATE_HYPHENS_REGEX = /(?<!\s)-+(?!\s)/g; // Matches hyphens that are *not* surrounded by spaces
-const DATE_SLASHES_REGEX = /\//g; // Matches slashes
 
 export namespace DatePicker {
   export const weekStartDays = ["Sunday", "Monday"];
@@ -86,13 +83,13 @@ export namespace DatePicker {
     connectedCallback() {
       super.connectedCallback();
       if (this.minDate) {
-        this.minDateData = this.dateStringToDateTime(this.minDate);
+        this.minDateData = dateStringToDateTime(this.minDate);
       }
       if (this.maxDate) {
-        this.maxDateData = this.dateStringToDateTime(this.maxDate);
+        this.maxDateData = dateStringToDateTime(this.maxDate);
       }
 
-      this.value = this.sqlDateToSlashes(this.value);
+      this.value = sqlDateToSlashes(this.value);
     }
 
     firstUpdated(changedProperties: PropertyValues) {
@@ -100,13 +97,9 @@ export namespace DatePicker {
 
       if (this.value === EMPTY_STRING) {
         this.value = this.includesTime
-          ? this.sqlDateToSlashes(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
-          : this.sqlDateToSlashes(this.selectedDate?.toISODate());
+          ? sqlDateToSlashes(this.selectedDate?.startOf("second").toISO({ suppressMilliseconds: true }))
+          : sqlDateToSlashes(this.selectedDate?.toISODate());
       }
-    }
-
-    dateStringToDateTime(date: string): DateTime {
-      return DateTime.fromISO(date?.replace(DATE_SLASHES_REGEX, "-"));
     }
 
     updated(changedProperties: PropertyValues) {
@@ -115,22 +108,22 @@ export namespace DatePicker {
         if (closestElement("md-date-range-picker", this)) {
           return;
         }
-        this.selectedDate = this.dateStringToDateTime(this.value);
+        this.selectedDate = dateStringToDateTime(this.value);
         this.setPreSelection(this.selectedDate);
       }
       if (changedProperties.has("locale")) {
         this.render();
       }
       if (this.minDate && changedProperties.has("minDate")) {
-        this.minDateData = this.dateStringToDateTime(this.minDate);
+        this.minDateData = dateStringToDateTime(this.minDate);
       }
       if (this.maxDate && changedProperties.has("maxDate")) {
-        this.maxDateData = this.dateStringToDateTime(this.maxDate);
+        this.maxDateData = dateStringToDateTime(this.maxDate);
       }
     }
 
     handleDateInputChange = (event: CustomEvent) => {
-      this.value = this.sqlDateToSlashes(event?.detail?.value);
+      this.value = sqlDateToSlashes(event?.detail?.value);
       this.dispatchEvent(
         new CustomEvent("date-input-change", {
           bubbles: true,
@@ -142,10 +135,6 @@ export namespace DatePicker {
         })
       );
     };
-
-    sqlDateToSlashes(date: string | null | undefined): string {
-      return date ? date.replace(DATE_HYPHENS_REGEX, "/") : "";
-    }
 
     setOpen = (open: boolean) => {
       this.menuOverlay.isOpen = open;
@@ -193,7 +182,7 @@ export namespace DatePicker {
       if (!isDayDisabled(date, filters)) {
         const dateString = this.getISODateTime(date);
         this.selectedDate = date;
-        this.value = this.sqlDateToSlashes(dateString);
+        this.value = sqlDateToSlashes(dateString);
       }
       this.dispatchEvent(
         new CustomEvent("date-selection-change", {
@@ -289,7 +278,7 @@ export namespace DatePicker {
 
       const filters: DayFilters = { maxDate: this.maxDateData, minDate: this.minDateData, filterDate: this.filterDate };
       const isValid =
-        !!this.value && regex.test(this.value) && !isDayDisabled(this.dateStringToDateTime(this.value), filters);
+        !!this.value && regex.test(this.value) && !isDayDisabled(dateStringToDateTime(this.value), filters);
 
       return isValid;
     };

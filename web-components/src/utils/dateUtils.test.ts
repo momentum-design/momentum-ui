@@ -4,6 +4,7 @@ import {
   addDays,
   addMonths,
   addWeeks,
+  dateStringToDateTime,
   DayFilters,
   getDate,
   getLocaleData,
@@ -18,6 +19,7 @@ import {
   now,
   shouldNextMonthDisable,
   shouldPrevMonthDisable,
+  sqlDateToSlashes,
   subtractDays,
   subtractMonths,
   subtractWeeks
@@ -170,5 +172,16 @@ describe("DateTime Module", () => {
     const utilFuncReturn2 = shouldNextMonthDisable(date, minDateOutsideMonth);
     expect(utilFuncReturn1).toBeTruthy;
     expect(utilFuncReturn2).toBeFalsy;
+  });
+
+  test("sqlDateToSlashes should format a SQL date string with slashes instead of dashes", async () => {
+    expect(sqlDateToSlashes("2021-12-12")).toEqual("2021/12/12");
+    expect(sqlDateToSlashes("2024-12-31 -  2025-02-01")).toEqual("2024/12/31 -  2025/02/01");
+  });
+
+  test("dateStringToDateTime should get valid DateTime from SQL date string with slashes instead of dashes", async () => {
+    const dateTime = dateStringToDateTime("2023-03-15");
+    expect(dateTime).toBeInstanceOf(DateTime);
+    expect(dateTime.toISODate()).toEqual("2023-03-15");
   });
 });

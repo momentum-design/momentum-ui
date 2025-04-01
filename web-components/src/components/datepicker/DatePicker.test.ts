@@ -41,19 +41,6 @@ describe("DatePicker Component", () => {
     expect(el).not.toBeNull();
   });
 
-  test("should format a SQL date string with slashes instead of dashes", async () => {
-    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
-    expect(el.sqlDateToSlashes("2021-12-12")).toEqual("2021/12/12");
-    expect(el.sqlDateToSlashes("2024-12-31 -  2025-02-01")).toEqual("2024/12/31 -  2025/02/01");
-  });
-
-  test("should get valid DateTime from SQL date string with slashes instead of dashes", async () => {
-    const el: DatePicker.ELEMENT = await createFixture(html` <md-datepicker></md-datepicker> `);
-    const dateTime = el.dateStringToDateTime("2023-03-15");
-    expect(dateTime).toBeInstanceOf(DateTime);
-    expect(dateTime.toISODate()).toEqual("2023-03-15");
-  });
-
   test("should open on pressing arrowDown on input", async () => {
     const startDate = now();
     const el: DatePicker.ELEMENT = await createFixture(html`

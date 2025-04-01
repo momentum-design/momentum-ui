@@ -242,7 +242,7 @@ export namespace Icon {
     }
 
     private get svgIconName() {
-      if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals") {
+      if (this.iconSet === "momentumDesign" || this.iconSet === "momentumBrandVisuals" || this.iconSet === "svg") {
         return this.name;
       }
       const lookupName = this.momentumUIIconLookupName;
@@ -395,7 +395,8 @@ export namespace Icon {
       return (
         this.iconSet === "momentumDesign" ||
         this.iconSet === "preferMomentumDesign" ||
-        this.iconSet === "momentumBrandVisuals"
+        this.iconSet === "momentumBrandVisuals" ||
+        this.iconSet === "svg"
       );
     }
 
@@ -403,7 +404,8 @@ export namespace Icon {
       return (
         (this.svgIcon && this.iconSet === "preferMomentumDesign") ||
         this.iconSet === "momentumDesign" ||
-        this.iconSet === "momentumBrandVisuals"
+        this.iconSet === "momentumBrandVisuals" ||
+        this.iconSet === "svg"
       );
     }
 

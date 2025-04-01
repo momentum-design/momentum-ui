@@ -178,4 +178,10 @@ describe("Momentum Icon Component", () => {
     await elementUpdated(element);
     expect(element.shadowRoot?.querySelector(".svg-icon-container")).not.toBeNull();
   });
+
+  test("should render SVG icon", async () => {
+    const element = await fixture<Icon.ELEMENT>(`<md-icon iconSet="svg" name="sample-svg"></md-icon>`);
+    await elementUpdated(element);
+    expect(element.shadowRoot?.querySelector(".svg-icon-container")).not.toBeNull();
+  });
 });
